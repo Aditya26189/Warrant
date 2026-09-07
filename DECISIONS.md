@@ -5636,3 +5636,51 @@ writes files. The script is numbered and structured like the other eighteen.
 **Consequence.** `tests/test_fpr_sweep.py` tests the sweep directly instead of
 through a subprocess, which is what makes the four properties in T3 testable at
 all.
+
+## 128 - Phase 0 close-out: what the sweep found, against the criterion registered before it ran
+
+- **Date:** 2026-09-07
+- **Status:** DECIDED
+- **Commit:** 95c0008 (documentation), artifacts produced at e76f5e3d
+
+**The question.** Is recall 0.079 a ceiling, or a policy choice?
+
+**The answer, under 126's rule.** A policy choice. On `triviaqa-600` lift holds
+at 19 of 20 swept targets, the loosest being a target FPR of 0.20:
+
+    point            achieved FPR   recall                   precision   lift
+    shipped          --             0.0794 [0.0496, 0.1115]  0.8800      1.906
+    target 0.04      0.0186         0.2274 [0.1809, 0.2800]  0.9130      1.978
+    target 0.08      0.0526         0.4116 [0.3610, 0.4733]  0.8702      1.885
+    target 0.20      0.1610         0.6462 [0.5950, 0.7051]  0.7749      1.678
+
+Recall moves by a factor of 8.1 while precision falls 0.88 to 0.77 and lift
+stays inside 1.68-1.98, which is 77-91% of the 2.17 ceiling. 0.6462 clears the
+upper bound of the shipped point's own interval (0.1115), so 126's test for
+"dial" is met with room rather than marginally.
+
+The same probe unrefitted on `triviaqa-longctx-600` holds at 18 of 20 targets:
+recall 0.6209 [0.5667, 0.6815] at target 0.20. The finding survives the
+envelope shift.
+
+**Why this was the expected shape and was still worth measuring.** AUROC 0.8256
+beside precision 0.8800 is the signature of a detector with separating power
+held at a tight budget, not one that cannot separate. But "expected" is not
+"measured", and the alternative -- a probe whose lift collapses the moment the
+budget loosens -- is not visible from AUROC either. Both answers were usable;
+not knowing was not.
+
+**No target refused.** 323 negatives clears the 299 clean units a 1% budget
+needs at alpha 0.05, so every grid point certified. The refusal path is
+exercised by `test_refused_target_is_recorded_not_skipped` rather than by this
+run, which is the weaker of the two ways to know it works and is why the test
+exists.
+
+**What it does not license.** Quoting 0.6462 as a warranted recall. Every figure
+here is in-sample for the reason in 124, which stays OPEN and is the single item
+Phase 0 hands to human review.
+
+**Suite.** 870 passed at the T0 baseline, 892 passed at close, no failures at
+either end. The 22 new tests are 17 in `tests/test_fpr_sweep.py`, one smoke test
+for the new script, and four parametrised guard cases that the existing suite
+picked up automatically for the two new library modules.
