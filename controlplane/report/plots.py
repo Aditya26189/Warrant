@@ -24,10 +24,11 @@ import matplotlib.pyplot as plt  # noqa: E402
 
 from ..model import MetricKind  # noqa: E402
 from ..validation.ablation import TierLadder  # noqa: E402
+from ..validation.fpr_sweep import FprSweep  # noqa: E402
 from ..validation.roc import RocCurve  # noqa: E402
 from ..validation.evalsets import SOURCE_SYNTHETIC  # noqa: E402
 
-__all__ = ["plot_roc_operating_points", "plot_tier_ladder"]
+__all__ = ["plot_fpr_sweep", "plot_roc_operating_points", "plot_tier_ladder"]
 
 _LOG = logging.getLogger(__name__)
 
@@ -147,6 +148,114 @@ def plot_tier_ladder(
     fig.tight_layout(rect=(0, 0.05, 1, 0.94))
     fig.savefig(out, dpi=150)
     plt.close(fig)
+    _LOG.info("wrote %s", out)
+    return out
+
+
+def plot_fpr_sweep(
+    sweep: FprSweep,
+    path: str | Path,
+    *,
+    config_hash: Optional[str] = None,
+    git_commit: Optional[str] = None,
+) -> Path:
+    """Draw recall against target FPR, with lift on a second axis.
+
+    Deliberately plain (Phase 0 brief, D10): matplotlib defaults, labelled axes,
+    a title and a legend. Two things are not styling and so are drawn anyway —
+    every estimate carries its 95% interval, which is a rendering rule rather
+    than a preference, and the pre-registered ``lift = 1`` bar is drawn because
+    a lift axis without it makes the reader estimate by eye the one comparison
+    the whole figure exists to support.
+
+    Args:
+        sweep: The computed sweep.
+        path: Output PNG path.
+        config_hash: Stamped in the caption.
+        git_commit: Stamped in the caption.
+
+    Returns:
+        The path written.
+
+    Raises:
+        ValueError: If the sweep is not measured. A fixture figure travels
+            further than the terminal it was made in, and this one has no
+            caption discipline to fall back on because it prints no table.
+    """
+    if not sweep.is_measured:
+        raise ValueError(
+            f"refusing to plot {sweep.eval_set_id}: data_source is "
+            f"{sweep.data_source!r}, not measured. {sweep.data_source_reason}"
+        )
+    out = Path(path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+
+    certified = [p for p in sweep.points if p.certified and p.recall is not None]
+    refused = [p for p in sweep.points if not p.certified]
+
+    figure, recall_axis = plt.subplots(figsize=(8.0, 5.4))
+    lift_axis = recall_axis.twinx()
+
+    targets = [p.target_fpr for p in certified]
+    recalls = [p.recall.value for p in certified]
+    recall_err = [
+        [p.recall.value - p.recall.ci_low for p in certified],
+        [p.recall.ci_high - p.recall.value for p in certified],
+    ]
+    recall_axis.errorbar(
+        targets, recalls, yerr=recall_err, fmt="o-", capsize=3,
+        color="tab:blue", label="recall (95% CI)",
+    )
+
+    with_lift = [p for p in certified if p.lift is not None]
+    if with_lift:
+        lift_targets = [p.target_fpr for p in with_lift]
+        lifts = [p.lift.value for p in with_lift]
+        lift_err = [
+            [p.lift.value - p.lift.ci_low for p in with_lift],
+            [p.lift.ci_high - p.lift.value for p in with_lift],
+        ]
+        lift_axis.errorbar(
+            lift_targets, lifts, yerr=lift_err, fmt="s--", capsize=3,
+            color="tab:orange", label="lift (95% CI)",
+        )
+        lift_axis.axhline(
+            1.0, color="tab:red", linestyle=":", linewidth=1.2,
+            label="lift = 1 (pre-registered bar)",
+        )
+
+    for index, point in enumerate(refused):
+        recall_axis.axvline(
+            point.target_fpr, color="tab:red", linestyle="-", linewidth=1.0,
+            alpha=0.55, label="REFUSED — no certifiable threshold" if index == 0 else None,
+        )
+
+    recall_axis.set_xlabel("target false-positive rate")
+    recall_axis.set_ylabel("recall")
+    lift_axis.set_ylabel("lift (recall / flag rate)")
+    recall_axis.set_title(
+        f"FPR budget sweep — {sweep.eval_set_id} · {sweep.variant} · "
+        f"n={sweep.n} (in-sample: threshold certified on the split it is scored on)"
+    )
+
+    handles, labels = recall_axis.get_legend_handles_labels()
+    lift_handles, lift_labels = lift_axis.get_legend_handles_labels()
+    recall_axis.legend(handles + lift_handles, labels + lift_labels, loc="upper left")
+
+    caption = (
+        f"base rate {sweep.base_rate:.4f} · ceiling "
+        f"{1.0 / max(sweep.base_rate, 1e-12):.2f} · alpha {sweep.alpha:.3f} · "
+        f"{sweep.bootstrap_samples} resamples · seed {sweep.seed}"
+    )
+    if config_hash:
+        caption += f" · config {config_hash}"
+    if git_commit:
+        caption += f" · commit {git_commit[:8]}"
+    figure.text(0.01, 0.01, caption, fontsize=7, color="#5a6472")
+
+    figure.tight_layout(rect=(0, 0.04, 1, 1))
+    figure.savefig(out, dpi=150)
+    plt.close(figure)
     _LOG.info("wrote %s", out)
     return out
 
