@@ -5,7 +5,7 @@ The build exists to make this run. Read it before Phase 2.5 and grow the runner 
 **Format:** two panes, side by side, one input stream.
 
 - **Left — the conventional stack.** Presidio, a guard model, an LLM judge. Deliberately the modal Round 2 submission. **Everything on the left runs at its documented defaults; we change nothing.**
-- **Right — ControlPlane.** Same stream, same detectors, plus warrants.
+- **Right — Warrant.** Same stream, same detectors, plus warrants.
 
 ---
 

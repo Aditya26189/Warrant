@@ -1,4 +1,4 @@
-# ControlPlane — the four reproduction tiers. Block E, E.4.
+# Warrant — the four reproduction tiers. Block E, E.4.
 #
 #   make smoke     CPU, no network, < 60s   the clone works and the package imports
 #   make test      CPU, ~10 min             584 tests green

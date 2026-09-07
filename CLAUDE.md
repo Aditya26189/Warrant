@@ -254,3 +254,46 @@ clone-and-run path, produces:
 - Any claim of adversarial robustness.
 - Formal verification, multi-tenancy, RBAC, SSO, k8s.
 - Runtime dependency on Llama Guard or ShieldGemma — neither licence is OSI-permissive and our public claim is a fully open self-hostable stack.
+
+---
+
+## Project
+
+Warrant. Formerly ControlPlane. The Python package remains `controlplane`;
+this is deliberate and is not a rename target (see D-0001).
+
+The product is the instrument a model-validation function runs. It certifies
+a detector against a pre-registered threshold, or it refuses. It does not
+issue external certificates and it is not a gateway.
+
+## Working rules
+
+- Never ask for approval mid-task. Decide, log in DECISIONS.md, proceed.
+- Every decision not covered by a written brief gets a DECISIONS.md entry
+  written before the implementing code.
+- Thresholds and success criteria are registered before results are seen.
+  Adjusting a criterion after seeing output is prohibited without a new
+  DECISIONS.md entry that explicitly records the original and the reason.
+- No artifact is produced from a dirty tree. Commit or stash first; record
+  the clean SHA inside the artifact.
+- Numbers derived from synthetic fixtures are never rendered as numbers.
+- When blocked, choose the option that changes least and claims least,
+  log it as OPEN — needs human review, and continue.
+
+## Read-only
+
+validation/warrant_stats.py, validation/stats.py, store/ledger.py,
+drift/**, policy/**, and existing files under results/.
+Read and call. Do not modify. Report suspected bugs as OPEN items.
+
+## Out of scope by default
+
+Package renaming, evalset expansion, CrashLens integration, new detectors,
+refactors of read-only zones, marketing material.
+Anything here requires an explicit written brief.
+
+> **Numbering note.** The brief that introduced this block numbers its
+> pre-registered decisions `D-0001`..`D-0010`. `DECISIONS.md` was already 120
+> entries deep on plain integers and is cited by number from across the
+> codebase, so those ten are recorded there as entry **122** rather than as a
+> second numbering scheme. `D-0001` above is that entry's D1 row.

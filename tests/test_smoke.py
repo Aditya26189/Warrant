@@ -21,6 +21,7 @@ and that is the price of the only test that would have caught either bug.
 from __future__ import annotations
 
 import json
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -536,6 +537,8 @@ def test_every_script_has_a_smoke_test() -> None:
         "15_pilot_seed_stability.py",
         # test_smoke_presidio_coverage
         "17_presidio_coverage.py",
+        # test_smoke_fpr_sweep
+        "19_fpr_sweep.py",
         # test_smoke_the_smoke_check_itself
         "smoke.py",
         # test_smoke_verify_claims_only, test_verify_exits_non_zero_on_drift
@@ -825,6 +828,69 @@ def test_smoke_feasibility(tmp_path: Path) -> None:
         assert 0.0 <= achieved["residual_risk"] <= 1.0
 
     assert "not built" in payload["not_derived_here"]
+
+
+def test_smoke_fpr_sweep(tmp_path: Path) -> None:
+    """`19_fpr_sweep.py` re-analyses frozen scores and writes its three artifacts.
+
+    CPU-only and reads only committed scores, so it gets a real smoke test
+    rather than an exemption. Run over a two-point grid: the full twenty-point
+    sweep takes minutes and this is about wiring, which the grid length does not
+    exercise.
+
+    Asserts the artifacts are internally consistent rather than merely present.
+    A sweep that wrote a plausible file and exited zero is exactly the failure
+    this suite exists for -- and the specific way it could happen here is a
+    certified row carrying no metrics, or a lift whose interval does not
+    bracket its own value.
+    """
+    out = tmp_path / "results"
+    (out / "scores").mkdir(parents=True)
+    for name in ("validation-T1-last_token.json",):
+        shutil.copy(PROJECT_ROOT / "results" / "scores" / name, out / "scores" / name)
+
+    _run_bare(
+        "19_fpr_sweep.py",
+        "--config", str(PROJECT_ROOT / "config.yaml"),
+        "--score-set", "validation-T1-last_token",
+        "--start", "0.05", "--stop", "0.10", "--step", "0.05",
+        "--out", str(out),
+    )
+
+    sweep_dir = out / "fpr_sweep"
+    for artifact in ("sweep.json", "SWEEP.md", "sweep.png"):
+        assert (sweep_dir / artifact).is_file(), f"{artifact} was not written"
+
+    payload = json.loads((sweep_dir / "sweep.json").read_text(encoding="utf-8"))
+    assert payload["provenance"]["git_commit"], "no commit recorded in the sweep"
+    assert payload["grid_spec"]["targets"] == [0.05, 0.10]
+
+    sweep = payload["sweeps"][0]
+    assert sweep["data_source"] == "measured"
+    assert len(sweep["points"]) == 2
+
+    for point in sweep["points"]:
+        if not point["certified"]:
+            # A refusal carries its reason and no numbers at all.
+            assert point["reason"] and point["recall"] is None
+            continue
+        assert point["threshold"] is not None
+        # The certified threshold must actually deliver the budget it certified.
+        assert point["achieved_fpr"] <= point["target_fpr"]
+        assert point["ucb"] <= point["target_fpr"]
+        for name in ("recall", "precision", "flag_rate"):
+            metric = point[name]
+            assert metric["ci_low"] <= metric["value"] <= metric["ci_high"], (
+                f"{name} sits outside its own interval"
+            )
+        lift = point["lift"]
+        if lift is not None:
+            assert lift["ci_low"] <= lift["value"] <= lift["ci_high"]
+            assert point["lift_holds"] == (lift["ci_low"] > 1.0)
+
+    markdown = (sweep_dir / "SWEEP.md").read_text(encoding="utf-8")
+    assert "## Verdict" in markdown
+    assert "in-sample" in markdown, "the selection caveat left the document"
 
 
 def test_smoke_pilot_freeze(tmp_path: Path) -> None:

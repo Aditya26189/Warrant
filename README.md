@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Gradient banner line -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1a1b27,100:2d333b&height=200&section=header&text=🛡️%20ControlPlane&fontSize=42&fontColor=e6edf3&animation=fadeIn&fontAlignY=35&desc=Warrant-Based%20Quality%20Assurance%20for%20LLM%20Guardrails&descSize=18&descAlignY=55&descColor=8b949e" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1a1b27,100:2d333b&height=200&section=header&text=🛡️%20Warrant&fontSize=42&fontColor=e6edf3&animation=fadeIn&fontAlignY=35&desc=The%20instrument%20a%20validation%20function%20runs&descSize=18&descAlignY=55&descColor=8b949e" width="100%" />
 
 <br/>
 
@@ -33,9 +33,9 @@
 
 <br/>
 
-<img src="https://img.shields.io/badge/Tests-870_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="870 tests" />
+<img src="https://img.shields.io/badge/Tests-892_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="892 tests" />
 &nbsp;
-<img src="https://img.shields.io/badge/Claims-31_verified-2da44e?style=for-the-badge" alt="31 claims verified" />
+<img src="https://img.shields.io/badge/Claims-36_verified-2da44e?style=for-the-badge" alt="36 claims verified" />
 &nbsp;
 <img src="https://img.shields.io/badge/AUROC-0.8256-6366f1?style=for-the-badge" alt="AUROC 0.8256" />
 &nbsp;
@@ -49,15 +49,19 @@
 
 Everyone ships detectors. Almost nobody ships the second thing — so a guardrail
 that has quietly stopped working looks exactly like one that works, and the
-dashboard stays green either way. ControlPlane measures each detector on a named
-evaluation envelope, issues a warrant with bounds and an expiry when the evidence
-supports it, and **refuses one when it does not**; policy then reads the warrant
-rather than the score. It is the same idea as a TLS certificate: issued by
-something other than the server, bounded in time, revocable when the facts
-change — and nobody has ever thought the certificate makes the server good.
+dashboard stays green either way. **Warrant is the instrument a model-validation
+function runs.** It measures a detector on a named evaluation envelope, certifies
+it against a threshold registered *before* the measurement, and **refuses when
+the evidence does not support one**; policy then reads the warrant rather than
+the score.
+
+It issues no external certificate and it is not a gateway. It is the bench
+instrument a second line of defence points at a control it is being asked to
+rely on — bounded in time, revocable when the distribution moves, and willing to
+return nothing at all.
 
 > [!NOTE]
-> **Built for the Accenture Innovation Challenge 2026** · Problem Statement 1 · *ControlPlane.ai*
+> **Built for the Accenture Innovation Challenge 2026** · Problem Statement 1 · *Warrant*
 >
 > Team **Dominator** — Indian Institute of Technology Kharagpur
 
@@ -103,8 +107,8 @@ change — and nobody has ever thought the certificate makes the server good.
 > Under five minutes on a laptop. No GPU, no network after the clone.
 
 ```bash
-git clone https://github.com/kksahu444/controlplane.git
-cd controlplane
+git clone https://github.com/Aditya26189/Warrant.git
+cd Warrant
 git fetch origin "refs/notes/*:refs/notes/*"     # see "Reading the history" below
 python -m venv .venv && . .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -r requirements.lock.txt
@@ -175,6 +179,11 @@ here fails the build.**
 | Residual risk `decision_support` actually ships | 0.2231 | - | results/feasibility.json | profiles[operating_point_id=P-decision-support].achieved_risk.residual_risk | python scripts/11_feasibility.py |
 | ...costing this multiple of the perfect-selector floor | 1.5941 | - | results/feasibility.json | profiles[operating_point_id=P-decision-support].achieved_risk.efficiency | python scripts/11_feasibility.py |
 | `customer_support` at the same measure | 1.1490 | - | results/feasibility.json | profiles[operating_point_id=P-customer-support].achieved_risk.efficiency | python scripts/11_feasibility.py |
+| Largest FPR budget where lift still holds | 0.20 | - | results/fpr_sweep/sweep.json | sweeps[eval_set_id=triviaqa-600].headline.largest_target_fpr_where_lift_holds | python scripts/19_fpr_sweep.py |
+| Recall there — the same probe, a looser budget | 0.6462 | [0.5950, 0.7051] | results/fpr_sweep/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].recall.value | python scripts/19_fpr_sweep.py |
+| Precision there | 0.7749 | [0.7227, 0.8290] | results/fpr_sweep/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].precision.value | python scripts/19_fpr_sweep.py |
+| Lift there, against a 2.17 ceiling | 1.678 | [1.545, 1.831] | results/fpr_sweep/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].lift.value | python scripts/19_fpr_sweep.py |
+| ...and it survives the long-context shift | 0.6209 | [0.5667, 0.6815] | results/fpr_sweep/sweep.json | sweeps[eval_set_id=triviaqa-longctx-600].points[target_fpr=0.2].recall.value | python scripts/19_fpr_sweep.py |
 
 <details>
 <summary><strong>📖 How to read this table</strong></summary>
@@ -203,6 +212,20 @@ accurate". It is that the number, its interval and its ceiling are all on the
 record, and that the same machinery **refuses** three of the detectors it was
 pointed at.
 
+**Recall 0.0794 is a dial, not a ceiling.** The last five rows are a sweep of
+the false-positive budget across the same frozen scores
+([results/fpr_sweep/](results/fpr_sweep/)). Loosening the budget from the
+shipped operating point to a 20% target moves recall from 0.0794 to **0.6462**
+— 8.1x — while precision falls only 0.88 → 0.77 and lift holds between 1.68 and
+1.98 the whole way, 77–91% of the 2.17 ceiling. What was binding was the
+false-positive budget, not the probe's ability to separate the classes. The
+criterion for "lift holds" (its 95% lower bound strictly above 1.0) was
+registered before the sweep ran; `DECISIONS.md` 126.
+
+These sweep recalls are **in-sample and are not warrants**: the threshold is
+certified on the same split it is scored on, because only test-split scores are
+frozen. `DECISIONS.md` 124, still open.
+
 </details>
 
 ---
@@ -214,9 +237,9 @@ controlplane/          the package — model, store, validation, matrix, drift, 
 evalsets/ & results/   frozen content-hashed evaluation sets; every artifact behind the table above
 scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
-tests/                 870 tests, including the ones that enforce this README
+tests/                 892 tests, including the ones that enforce this README
 docs/                  spec, methods, limitations, the case matrix, and the move mapping
-DECISIONS.md           118 append-only decision entries
+DECISIONS.md           127 append-only decision entries
 round1/                the Round 1 submission, moved whole
 ```
 
@@ -287,7 +310,7 @@ tour is [docs/CODE_TOUR.md](docs/CODE_TOUR.md).
 | Target | Without `make` | Requires | Time | Proves |
 |:---|:---|:---|:---|:---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | The clone works and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 870 tests green |
+| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 892 tests green |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **Every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` (tier 3) | `python scripts/verify.py` | CPU + cached activations | ~4 min | The frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | Activations regenerate from the source model |
@@ -378,6 +401,13 @@ The ones that would change how you read the table:
 - **8 of 17 populated matrix cells are synthetic fixtures.** Their numbers are
   refused rather than printed — see the warning at the top of
   [results/RESULTS.md](results/RESULTS.md).
+- **The FPR sweep's recalls are in-sample and are not warrants.** Each grid
+  point's threshold is certified on the same frozen test split it is then scored
+  on, because only test-split scores are committed and re-deriving
+  validation-split scores means refitting the probe. `certify_fpr` reads the
+  negatives only, so recall is not being selected for — but the threshold still
+  tracks this sample's negative tail. The sweep describes the shape of the
+  curve; it does not warrant a point on it (`DECISIONS.md` 124, open).
 - **The Presidio finding is a statement about `presidio-analyzer==2.2.364`.**
   It is pinned, the version is inside the refusal reason, and a test fails if
   the environment drifts from the pin.
@@ -399,7 +429,7 @@ for. The ones most readers want first:
 | 📏 [METHODS.md](docs/METHODS.md) | Estimators, bootstraps, null bands and their derivations |
 | 📋 [CASES.md](docs/CASES.md) | Every case, the test covering it, the artifact demonstrating it |
 | ⚠️ [LIMITATIONS.md](docs/LIMITATIONS.md) | Scope, declared gaps, open items |
-| 📝 [DECISIONS.md](DECISIONS.md) | 118 append-only entries — "why did you do it that way?" |
+| 📝 [DECISIONS.md](DECISIONS.md) | 127 append-only entries — "why did you do it that way?" |
 | 📦 [ARTIFACTS.md](docs/ARTIFACTS.md) · [TESTING.md](docs/TESTING.md) | Every output file and its fields; what the suite defends |
 | 🗺️ [CODE_TOUR.md](docs/CODE_TOUR.md) · [GLOSSARY.md](docs/GLOSSARY.md) | The packages, file by file; the vocabulary, defined once |
 | ❓ [FAQ.md](docs/FAQ.md) · [JOURNEY.md](docs/JOURNEY.md) | Reviewer questions; what the project did, phase by phase |
