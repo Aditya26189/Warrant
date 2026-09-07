@@ -2,11 +2,12 @@
 
 Re-analysis of frozen scores in `results/scores/validation-T1-last_token.json`. No inference was run: every number is a function of the committed labels, scores and question ids.
 
-- commit `e76f5e3d0996` · dirty `False` · config `533fb74983fcd8af`
+- commit `8d638be7bff8` · dirty `False` · config `533fb74983fcd8af`
 - detector `probe-qwen2.5-7b-instruct-T1-last_token` · envelope `sha256:e77c64f908491ad1`
-- n 600 (277 positive, 323 negative) · base rate 0.4617
 - certification: Clopper-Pearson one-sided upper bound at alpha 0.050, via `certify_fpr`
 - intervals: percentile bootstrap, 1000 resamples over questions, seed 1729
+
+- n 600 (277 positive, 323 negative) · base rate 0.4617
 
 ## Verdict
 
@@ -60,11 +61,12 @@ The threshold at each grid point is certified on the **same** frozen test split 
 
 Re-analysis of frozen scores in `results/scores/transfer-T1-last_token.json`. No inference was run: every number is a function of the committed labels, scores and question ids.
 
-- commit `e76f5e3d0996` · dirty `False` · config `533fb74983fcd8af`
+- commit `8d638be7bff8` · dirty `False` · config `533fb74983fcd8af`
 - detector `probe-qwen2.5-7b-instruct-T1-last_token` · envelope `sha256:c4733cda255e55d9`
-- n 600 (277 positive, 323 negative) · base rate 0.4617
 - certification: Clopper-Pearson one-sided upper bound at alpha 0.050, via `certify_fpr`
 - intervals: percentile bootstrap, 1000 resamples over questions, seed 1729
+
+- n 600 (277 positive, 323 negative) · base rate 0.4617
 
 ## Verdict
 

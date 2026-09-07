@@ -201,12 +201,12 @@ def render_sweep(sweep: FprSweep, *, provenance: dict[str, Any]) -> str:
         f"{sweep.alpha:.3f}, via `certify_fpr`",
         f"- intervals: percentile bootstrap, {sweep.bootstrap_samples} resamples "
         f"over questions, seed {sweep.seed}",
-        "",
     ]
+    # Appended to the same bullet list rather than started as a second one, so
+    # removing it on the fixture path leaves a list rather than a gap.
     measured = [
         f"- n {sweep.n} ({sweep.n_positive} positive, {sweep.n_negative} negative) "
         f"· base rate {sweep.base_rate:.4f}",
-        "",
     ]
 
     if not sweep.is_measured:
@@ -216,6 +216,7 @@ def render_sweep(sweep: FprSweep, *, provenance: dict[str, Any]) -> str:
         return "\n".join(
             head
             + [
+                "",
                 f"## {SWEEP_FIXTURE_MARKER}",
                 "",
                 f"This sweep's envelope declares `data_source = "
@@ -233,6 +234,7 @@ def render_sweep(sweep: FprSweep, *, provenance: dict[str, Any]) -> str:
         )
 
     lines = head + measured + [
+        "",
         "## Verdict",
         "",
         verdict(sweep),
