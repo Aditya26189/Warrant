@@ -244,19 +244,25 @@ def plot_fpr_sweep(
     lift_handles, lift_labels = lift_axis.get_legend_handles_labels()
     recall_axis.legend(handles + lift_handles, labels + lift_labels, loc="upper left")
 
-    caption = (
+    # Two lines rather than one: on a single line the provenance ran off the
+    # right edge, which is the half a reader needs six weeks later.
+    caveat = (
         "in-sample: threshold certified on the split it is scored on · "
         f"base rate {sweep.base_rate:.4f} · ceiling "
-        f"{1.0 / max(sweep.base_rate, 1e-12):.2f} · alpha {sweep.alpha:.3f} · "
-        f"{sweep.bootstrap_samples} resamples · seed {sweep.seed}"
+        f"{1.0 / max(sweep.base_rate, 1e-12):.2f}"
+    )
+    stamp = (
+        f"alpha {sweep.alpha:.3f} · {sweep.bootstrap_samples} resamples · "
+        f"seed {sweep.seed}"
     )
     if config_hash:
-        caption += f" · config {config_hash}"
+        stamp += f" · config {config_hash}"
     if git_commit:
-        caption += f" · commit {git_commit[:8]}"
-    figure.text(0.01, 0.01, caption, fontsize=7, color="#5a6472")
+        stamp += f" · commit {git_commit[:8]}"
+    figure.text(0.01, 0.035, caveat, fontsize=7, color="#5a6472")
+    figure.text(0.01, 0.008, stamp, fontsize=7, color="#5a6472")
 
-    figure.tight_layout(rect=(0, 0.04, 1, 1))
+    figure.tight_layout(rect=(0, 0.075, 1, 1))
     figure.savefig(out, dpi=150)
     plt.close(figure)
     _LOG.info("wrote %s", out)
