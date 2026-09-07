@@ -247,12 +247,18 @@ class FprSweep:
     def headline(self) -> Optional[SweepPoint]:
         """The largest target FPR at which lift holds. The D6 output.
 
+        Taken by ``max`` on the target rather than as the last holding row: the
+        rows follow the grid they were given, and a caller who passes an
+        unordered grid would otherwise get the last one *evaluated* reported as
+        the loosest budget that holds. Same answer on an ascending grid, and it
+        cannot be wrong on any other.
+
         None when no point on the grid holds, which is a result rather than a
         missing value: it says the probe does not clear the bar anywhere in the
         swept range.
         """
         holding = self.holding_points
-        return holding[-1] if holding else None
+        return max(holding, key=lambda p: p.target_fpr) if holding else None
 
     @property
     def recall_is_a_dial(self) -> Optional[bool]:

@@ -182,6 +182,11 @@ def render_sweep(sweep: FprSweep, *, provenance: dict[str, Any]) -> str:
     """
     commit = provenance.get("git_commit") or "unknown"
     dirty = provenance.get("dirty")
+    # Identifiers and settings only. Nothing here is a function of the scores
+    # or the labels, which is what lets the fixture branch below print it: the
+    # class split and the base rate are properties of whatever produced the
+    # arrays, so on a fixture they describe a generator we wrote and they live
+    # in `measured` instead.
     head = [
         f"# FPR budget sweep — {sweep.eval_set_id} · {sweep.variant}",
         "",
@@ -192,12 +197,15 @@ def render_sweep(sweep: FprSweep, *, provenance: dict[str, Any]) -> str:
         f"- commit `{commit[:12]}` · dirty `{dirty}` · config "
         f"`{provenance.get('config_hash', 'unknown')}`",
         f"- detector `{sweep.detector_id}` · envelope `{sweep.envelope_id}`",
-        f"- n {sweep.n} ({sweep.n_positive} positive, {sweep.n_negative} negative) "
-        f"· base rate {sweep.base_rate:.4f}",
         f"- certification: Clopper-Pearson one-sided upper bound at alpha "
         f"{sweep.alpha:.3f}, via `certify_fpr`",
         f"- intervals: percentile bootstrap, {sweep.bootstrap_samples} resamples "
         f"over questions, seed {sweep.seed}",
+        "",
+    ]
+    measured = [
+        f"- n {sweep.n} ({sweep.n_positive} positive, {sweep.n_negative} negative) "
+        f"· base rate {sweep.base_rate:.4f}",
         "",
     ]
 
@@ -215,14 +223,16 @@ def render_sweep(sweep: FprSweep, *, provenance: dict[str, Any]) -> str:
                 "",
                 f"> {sweep.data_source_reason}",
                 "",
-                f"The grid ran to {len(sweep.grid)} points and "
-                f"{len([p for p in sweep.points if p.certified])} certified. That "
-                "is a statement about the wiring, not a result about a detector.",
+                f"The grid ran to {len(sweep.grid)} points, which is the grid it "
+                "was handed and not a measurement. Nothing else is printed: how "
+                "many certified, the class split and the base rate are all "
+                "functions of what the generator produced, and a count off a "
+                "generator we wrote is still a number off a generator we wrote.",
                 "",
             ]
         )
 
-    lines = head + [
+    lines = head + measured + [
         "## Verdict",
         "",
         verdict(sweep),

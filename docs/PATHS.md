@@ -12,9 +12,10 @@ Rationale: `DECISIONS.md` 095. Reproduction: `make verify`.
 
 ## Why anything moved
 
-The repository is named `controlplane`. Until this date, cloning it landed a
-reader on **Round 1** — the probe/cascade experiment — while the Round 2
-control plane sat one level down in a directory whose name contains a space.
+The repository was named `controlplane` at the time of this move; it is now
+`Warrant`. Until this date, cloning it landed a reader on **Round 1** — the
+probe/cascade experiment — while the Round 2 work sat one level down in a
+directory whose name contains a space.
 Round 2 is now the repository root; Round 1 is under `round1/`, moved whole
 and unmodified.
 

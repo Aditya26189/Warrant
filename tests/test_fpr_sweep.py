@@ -298,6 +298,40 @@ def test_fixture_sweep_renders_no_numbers(fast_config) -> None:
             assert f"{point.threshold:.6f}" not in markdown
 
 
+def test_a_fixture_document_does_not_depend_on_the_fixture(fast_config) -> None:
+    """The strong form of D9: change the generator, get the same document.
+
+    Searching the rendered text for forbidden values is a weak check — the
+    digit "1" appears in `T1-last_token` — and it misses the numbers that do
+    not look like measurements. The class split and the base rate are as much
+    properties of a generator as a threshold is, and both were being printed.
+
+    So the property is stated directly: two fixtures with different labels,
+    different scores and different separability must render byte-identically.
+    Anything derived from the arrays would break that, whatever it is called.
+    Only the grid length survives, and that is a parameter the caller passed in.
+    """
+    grid = fpr_grid(*REGISTERED_GRID)
+    provenance = {"git_commit": "d" * 40, "dirty": False}
+    documents = {
+        render_sweep(
+            sweep_fpr(
+                fast_config,
+                _score_set(seed=seed, separation=separation, base_rate=base_rate),
+                grid=grid,
+                data_source="synthetic",
+                data_source_reason="fixture-set is a synthetic fixture",
+            ),
+            provenance=provenance,
+        )
+        for seed, separation, base_rate in ((7, 1.4, 0.46), (99, 0.2, 0.80))
+    }
+    assert len(documents) == 1, (
+        "two different fixtures rendered two different documents, so something "
+        "measured off the generator is reaching the page"
+    )
+
+
 def test_undeclared_data_source_is_refused_like_a_fixture(fast_config) -> None:
     """Fail-closed: an envelope that declares nothing is not assumed measured."""
     sweep = sweep_fpr(
