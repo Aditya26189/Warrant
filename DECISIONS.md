@@ -5684,3 +5684,55 @@ Phase 0 hands to human review.
 either end. The 22 new tests are 17 in `tests/test_fpr_sweep.py`, one smoke test
 for the new script, and four parametrised guard cases that the existing suite
 picked up automatically for the two new library modules.
+
+## 129 - A fixture leak the fixture test did not catch, and the test that would have
+
+- **Date:** 2026-09-08
+- **Status:** DECIDED
+- **Commit:** 8d638be
+
+**Context.** A recheck of Phase 0 -- not a failing test -- found that the
+fixture branch of `render_sweep` printed three things off the arrays: the class
+split, the base rate, and how many grid points certified. All three are
+functions of what produced the scores, so on a synthetic set they describe a
+generator we wrote. That is what 046 and D9 forbid, and the branch existed
+specifically to obey them.
+
+**Why it survived.** The test written to catch exactly this searched the
+rendered text for the values it expected to be absent -- thresholds and recalls
+at full precision. It found none, and passed. But:
+
+* a **count** does not look like a measurement, so it was never on the list of
+  things to search for;
+* substring search on a small integer is worthless anyway. The document
+  contains `T1-last_token`, so a check that `"1"` is absent can never pass, and
+  a check that `"19"` is absent passes for the wrong reason as soon as no other
+  text happens to contain those two characters.
+
+The general shape: *a test that enumerates forbidden outputs can only catch the
+ones its author already thought of.*
+
+**Decision.** State the property directly instead. Two fixtures with different
+labels, different scores and different separability must render
+**byte-identically**. Nothing derived from the arrays can survive that, whatever
+it is called and however it is formatted, and the test needs no list of
+forbidden values.
+
+To make the property achievable the header was split: identifiers and estimator
+settings (which depend on the config, not the data) render on both paths; `n`,
+the class split and the base rate render only on the measured path.
+
+**Alternative rejected.** Extending the search list to include the counts. It
+would have closed this instance and left the class of defect open, which is the
+same trade 046 already refused once.
+
+**Consequence.** `n` no longer appears on a fixture document at all, so a reader
+cannot tell how large a refused fixture sweep was. That is the intended
+direction: the document's job on that path is to say *no numbers here*, and the
+grid length -- a parameter the caller passed in -- is enough to show the wiring
+ran.
+
+**The objection.** *"You found this by reading, and reading is not a control."*
+Correct, and that is the reason the fix is a property test rather than a patch:
+the next leak of this kind fails a test instead of waiting for someone to
+reread the renderer.

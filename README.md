@@ -216,8 +216,10 @@ pointed at.
 the false-positive budget across the same frozen scores
 ([results/fpr_sweep/](results/fpr_sweep/)). Loosening the budget from the
 shipped operating point to a 20% target moves recall from 0.0794 to **0.6462**
-— 8.1x — while precision falls only 0.88 → 0.77 and lift holds between 1.68 and
-1.98 the whole way, 77–91% of the 2.17 ceiling. What was binding was the
+— 8.1x — while precision falls only 0.88 → 0.77 and lift stays between 1.68 and
+1.98 across every target where it holds, 77–91% of the 2.17 ceiling. ("Holds" is
+the pre-registered term and means its 95% lower bound clears 1.0; it is not used
+loosely here.) What was binding was the
 false-positive budget, not the probe's ability to separate the classes. The
 criterion for "lift holds" (its 95% lower bound strictly above 1.0) was
 registered before the sweep ran; `DECISIONS.md` 126.
@@ -239,7 +241,7 @@ scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
 tests/                 893 tests, including the ones that enforce this README
 docs/                  spec, methods, limitations, the case matrix, and the move mapping
-DECISIONS.md           128 append-only decision entries
+DECISIONS.md           129 append-only decision entries
 round1/                the Round 1 submission, moved whole
 ```
 
@@ -429,7 +431,7 @@ for. The ones most readers want first:
 | 📏 [METHODS.md](docs/METHODS.md) | Estimators, bootstraps, null bands and their derivations |
 | 📋 [CASES.md](docs/CASES.md) | Every case, the test covering it, the artifact demonstrating it |
 | ⚠️ [LIMITATIONS.md](docs/LIMITATIONS.md) | Scope, declared gaps, open items |
-| 📝 [DECISIONS.md](DECISIONS.md) | 128 append-only entries — "why did you do it that way?" |
+| 📝 [DECISIONS.md](DECISIONS.md) | 129 append-only entries — "why did you do it that way?" |
 | 📦 [ARTIFACTS.md](docs/ARTIFACTS.md) · [TESTING.md](docs/TESTING.md) | Every output file and its fields; what the suite defends |
 | 🗺️ [CODE_TOUR.md](docs/CODE_TOUR.md) · [GLOSSARY.md](docs/GLOSSARY.md) | The packages, file by file; the vocabulary, defined once |
 | ❓ [FAQ.md](docs/FAQ.md) · [JOURNEY.md](docs/JOURNEY.md) | Reviewer questions; what the project did, phase by phase |

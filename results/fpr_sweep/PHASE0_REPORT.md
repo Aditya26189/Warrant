@@ -21,11 +21,18 @@ footing `make verify`'s second tier stands on.
 | T0 baseline | 870 tests passed at `1a9c4a71`; `verify.py` tier 1 31/31, tier 2 24/24, tier 3 SKIPPED. Two untracked ffmpeg logs gitignored so artifacts could be clean (`DECISIONS.md` 121). |
 | T1 locate scores | `results/scores/validation-T1-last_token.json` (primary) and `transfer-T1-last_token.json` (secondary). Both `data_source: measured`, both test-split, 600 items, 277 positive / 323 negative. |
 | T2 the sweep | `controlplane/validation/fpr_sweep.py` computes it, `controlplane/report/sweep.py` renders it, `scripts/19_fpr_sweep.py` wires it. Calls the existing `certify_fpr` and `build_warrant_metrics`; no bound and no estimator reimplemented (127). |
-| T3 tests | `tests/test_fpr_sweep.py`, 17 tests covering the four required properties, plus a real end-to-end smoke test in `tests/test_smoke.py`. |
+| T3 tests | `tests/test_fpr_sweep.py`, 18 tests covering the four required properties, plus a real end-to-end smoke test in `tests/test_smoke.py`. |
 | T4 run | `results/fpr_sweep/{sweep.json, SWEEP.md, sweep.png}`, produced from a clean tree at commit `e76f5e3d`, `dirty: false`. |
 | T5 verdict | Three sentences at the top of `SWEEP.md`, assembled from the sweep's own fields rather than typed. |
 | T6 documentation | README and CLAUDE.md renamed to Warrant and repositioned; five sweep rows added to the claim table (31 → 36 verified). |
-| T7 close-out | This document; closing suite compared against the T0 baseline. |
+| T7 close-out | This document; closing suite compared against the T0 baseline (870 → 893, no failures at either end). |
+
+A recheck after close-out found a **fixture leak** in the renderer: the
+fixture branch printed the class split, the base rate and how many grid points
+certified — all functions of the arrays, so on a synthetic set they describe a
+generator we wrote. Fixed, and the test is now the strong form: two fixtures
+with different labels and different separability must render byte-identically
+(`DECISIONS.md` 129).
 
 ---
 
