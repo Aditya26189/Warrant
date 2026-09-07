@@ -233,9 +233,11 @@ def plot_fpr_sweep(
     recall_axis.set_xlabel("target false-positive rate")
     recall_axis.set_ylabel("recall")
     lift_axis.set_ylabel("lift (recall / flag rate)")
+    # Short enough to fit the figure. The in-sample caveat rides in the caption
+    # rather than the title, which clipped at both ends and so carried it
+    # nowhere at all.
     recall_axis.set_title(
-        f"FPR budget sweep — {sweep.eval_set_id} · {sweep.variant} · "
-        f"n={sweep.n} (in-sample: threshold certified on the split it is scored on)"
+        f"FPR budget sweep — {sweep.eval_set_id} · {sweep.variant} · n={sweep.n}"
     )
 
     handles, labels = recall_axis.get_legend_handles_labels()
@@ -243,6 +245,7 @@ def plot_fpr_sweep(
     recall_axis.legend(handles + lift_handles, labels + lift_labels, loc="upper left")
 
     caption = (
+        "in-sample: threshold certified on the split it is scored on · "
         f"base rate {sweep.base_rate:.4f} · ceiling "
         f"{1.0 / max(sweep.base_rate, 1e-12):.2f} · alpha {sweep.alpha:.3f} · "
         f"{sweep.bootstrap_samples} resamples · seed {sweep.seed}"
