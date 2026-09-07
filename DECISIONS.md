@@ -5429,3 +5429,210 @@ false positive; the alternative was to pin a BLAS build, which would trade a
 false alarm for a much larger portability claim. The tolerance is stated in the
 code, cited here, and guarded by tests that fail if it is ever widened to where
 it could hide a real change.
+
+## 121 - Phase 0 baseline
+
+- **Date:** 2026-09-07
+- **Status:** DECIDED
+- **Commit:** 1a9c4a71e2ca125761751a8a7fe868dd259bf2d2
+
+**Context.** Phase 0 re-analyses frozen scores to ask whether recall 0.079 is a
+ceiling or a policy choice. Rule 7 of the brief requires a recorded pass/fail
+count before and after, so a regression introduced by this phase is a fact
+rather than an impression.
+
+**Baseline.** `python -m pytest tests/ -q` at the commit above:
+
+    870 passed, 0 failed, 0 skipped, 0 xfailed   exit 0
+
+No pre-existing failures, so the closing count must be at least 870.
+`scripts/verify.py --no-activations` at the same commit: tier 1 claim table
+31/31 OK, tier 2 frozen scores 24/24 reproduced bit-identically, tier 3 SKIPPED
+as it must be without the caches.
+
+**The tree was dirty and is not any more.** Two ffmpeg two-pass encoder logs sat
+untracked in the repository root. `provenance()` flags an artifact dirty from
+*any* untracked path, so every artifact this phase produced would have recorded
+`dirty: true` -- which Rule 3 makes an invalid artifact. They are gitignored
+rather than deleted or committed: the files stay on disk, nothing is lost, and
+the pattern matches the two entries above it in `.gitignore` for
+`results_bundle (3)/` and `implementation.md`, which exist for exactly this
+reason.
+
+## 122 - The Phase 0 brief's pre-made decisions, and why they are numbered 122 rather than D-0001
+
+- **Date:** 2026-09-07
+- **Status:** DECIDED
+- **Commit:** 1a9c4a71e2ca125761751a8a7fe868dd259bf2d2
+
+**Context.** The brief pre-registers ten decisions (D1-D10) and supplies a
+template numbering them `D-0001` through `D-0010`. This file already holds 120
+entries numbered `1` to `120`, and many of them are cited by number from
+docstrings and comments across the codebase.
+
+**Decision.** The brief's ten are recorded here as one entry, and every Phase 0
+decision continues this file's integer numbering. The brief's *field* structure
+(Context / Decision / Alternatives / Consequences) is adopted, because it is
+better than what this file was doing.
+
+**Alternative rejected.** Opening a parallel `D-00NN` series. Two numbering
+schemes in one append-only log means every future citation has to say which
+series it means, and `DECISIONS 6` would be ambiguous forever.
+
+**The ten, as registered by the brief and not revisited here:**
+
+| id | decision |
+|---|---|
+| D1 | the Python package stays `controlplane`; only user-facing surfaces are renamed |
+| D2 | grid: target FPR 0.01 to 0.20 inclusive, step 0.01, twenty points; a refusal is recorded, never skipped |
+| D3 | primary `triviaqa-600`; secondary `longctx`, `last_token` only |
+| D4 | per point: threshold, achieved FPR, recall, precision, flag rate, lift, lift CI. No F1, no accuracy |
+| D5 | 10,000 resamples, percentile, seed 42 -- unless the repo already has a convention, in which case match it and log (see 125) |
+| D6 | lift *holds* when its 95% CI lower bound is strictly above 1.0; headline is the largest target FPR where it holds, and the recall there |
+| D7 | report lift as an absolute and as a fraction of the 2.17 ceiling; never report the ceiling as achieved |
+| D8 | `results/fpr_sweep/` with `sweep.json`, `SWEEP.md`, `sweep.png` |
+| D9 | fixture-derived points render as `FIXTURE - not reported`, never as a number |
+| D10 | matplotlib defaults; labelled axes, title, legend, stop |
+
+## 123 - The sweep grid is an argparse default, not a config key
+
+- **Date:** 2026-09-07
+- **Status:** DECIDED
+- **Commit:** 1a9c4a71e2ca125761751a8a7fe868dd259bf2d2
+
+**Context.** `CLAUDE.md` says no hardcoded constants -- everything from
+`config.yaml`. The grid (0.01 to 0.20, step 0.01) is a constant. But
+`_from_mapping` rejects unknown config keys, so adding an `fpr_sweep:` block
+means a new dataclass field on `Config`, and `config_hash` is taken over the
+whole rendering: every artifact in `results/` would then record a hash that no
+longer matches the config any of them ran under.
+
+**Decision.** The grid comes from argparse defaults on `scripts/19_fpr_sweep.py`
+and is written verbatim into `sweep.json` as `grid_spec`. Every *statistical*
+knob the sweep uses -- bootstrap count, coverage, seed -- still comes from
+`config.yaml`.
+
+**Alternative rejected.** A new config block. It perturbs a hash that a dozen
+committed artifacts record, to hold a parameter that describes one analysis
+rather than the system.
+
+**Precedent.** `08_paired.py` already carries `--bootstrap 2000` and
+`--baseline-set triviaqa-600` as argparse defaults. This is the existing line
+between "how the system is configured" and "what this run was pointed at".
+
+**The objection.** *"A constant outside config.yaml is exactly what the rule
+forbids."* The rule exists so a measured number cannot come from a value nobody
+can find. The grid is recorded in the artifact it produced, which is where a
+reader would look for it.
+
+## 124 - The sweep certifies and measures on the same split, and says so
+
+- **Date:** 2026-09-07
+- **Status:** OPEN — needs human review
+- **Commit:** 1a9c4a71e2ca125761751a8a7fe868dd259bf2d2
+
+**Context.** The pipeline's discipline is that selection happens on validation
+and test is scored once (`CLAUDE.md` invariant 9). The sweep cannot follow it:
+`results/scores/` holds test-split scores only, and deriving validation-split
+scores means refitting the probe, which Phase 0 forbids outright.
+
+**Decision.** Run the sweep on the frozen test split, and carry the caveat into
+the module docstring, `SWEEP.md` and every `sweep.json` record rather than into
+a footnote.
+
+**How large the bias actually is.** Narrower than "selected on test" usually
+implies. `certify_fpr` reads the negatives only -- the positives that determine
+recall play no part in choosing the threshold, so recall is not being maximised
+over a grid and then reported. What remains is that the threshold tracks *this
+sample's* negative tail rather than the population's, at n- = 323. Each recall
+in the table is therefore an in-sample figure.
+
+**Consequence, and why this is OPEN.** No number the sweep produces is a
+warrant, and none may be published as one. Making these out-of-sample requires
+freezing validation-split scores, which is a GPU task and outside Phase 0.
+Flagged for human review because a reader who takes the table as warranted
+recall would be wrong, and the guard against that is currently prose rather
+than code.
+
+## 125 - D5 deviation: the sweep uses the repository's bootstrap, not the brief's
+
+- **Date:** 2026-09-07
+- **Status:** DECIDED
+- **Commit:** 1a9c4a71e2ca125761751a8a7fe868dd259bf2d2
+
+**Context.** D5 registers 10,000 resamples at seed 42, and provides for matching
+an existing convention instead. There is one: `config.yaml` sets
+`bootstrap_samples: 1000`, `ci: 0.95`, `seed: 1729`, and `stats.estimated`
+computes a percentile interval resampled over question ids.
+
+**Decision.** Take all three from `config.yaml`. The sweep's intervals are then
+the same object every other artifact reports, and `make verify`'s second tier
+recomputes them with the same estimator it uses for everything else. Deviation
+from D5: 1000 resamples not 10,000, seed 1729 not 42. The method -- percentile
+-- matches.
+
+**Second deviation, on lift's interval.** D4 asks for "lift's 95% bootstrap CI".
+`WarrantMetrics.lift` already exists and derives its interval from the recall
+interval divided by the measured flag rate, rather than bootstrapping the ratio
+directly. That convention is reused rather than a second one introduced: two
+implementations of one quantity is the failure class that produced 036, 040 and
+the metrics builder itself.
+
+**The objection.** *"1000 resamples is thin for a percentile interval."* It is
+the count every published number in this repository already carries; changing it
+for the sweep alone would make the sweep incomparable with the artifacts it is
+meant to sit beside, which is a worse defect than a slightly grainier bound.
+
+## 126 - Dial or ceiling, decided by the shipped point's own interval
+
+- **Date:** 2026-09-07
+- **Status:** DECIDED
+- **Commit:** 1a9c4a71e2ca125761751a8a7fe868dd259bf2d2
+
+**Context.** T5 requires the verdict to say whether recall 0.079 is a ceiling or
+a dial. D6 pre-registers the *headline* (largest target FPR where lift holds,
+and the recall there) but not the rule that turns two recalls into that word.
+Without one written down first, the word gets chosen after the numbers are
+visible, which is the failure the phase exists to avoid.
+
+**Decision, registered before the sweep was run.** Recall is a **dial** if
+recall at the headline point lies strictly above the *upper* bound of the
+shipped operating point's 95% recall interval. Otherwise it is a **ceiling**.
+When nothing holds, or the shipped interval is unavailable, the verdict says the
+question cannot be decided from this sweep and names why.
+
+**Why the upper bound and not the point estimate.** The shipped recall is 0.0794
+with a 95% interval of [0.0496, 0.1115] at n = 600. Comparing against 0.0794
+would let a difference of 0.02 -- comfortably inside the sampling noise of the
+number it is being compared to -- be reported as recall increasing. Comparing
+against 0.1115 requires the loosened budget to move recall beyond what this
+sample cannot resolve.
+
+**Consequence.** The bar is deliberately hard to clear at the tight end of the
+grid and easier at the loose end, which is the correct shape: the claim being
+tested is that *loosening buys something*, and a rule that could be satisfied by
+noise would not test it.
+
+**The objection.** *"You picked a rule your data was going to pass."* The rule is
+stated in code as `FprSweep.recall_is_a_dial` and in this entry, both written
+before `scripts/19_fpr_sweep.py` was executed against the frozen scores; the
+commit that adds them precedes the commit that adds `results/fpr_sweep/`.
+
+## 127 - Sweep logic lives in controlplane/, the script stays thin
+
+- **Date:** 2026-09-07
+- **Status:** DECIDED
+- **Commit:** 1a9c4a71e2ca125761751a8a7fe868dd259bf2d2
+
+**Context.** T2 says to write the sweep as `scripts/19_fpr_sweep.py`.
+`CLAUDE.md` says no logic in scripts, because logic that lives only in a script
+is unreviewable and untestable.
+
+**Decision.** Both. `controlplane/validation/fpr_sweep.py` computes the sweep,
+`controlplane/report/sweep.py` renders it, `controlplane/report/plots.py` gains
+`plot_fpr_sweep`, and `scripts/19_fpr_sweep.py` parses arguments, calls them and
+writes files. The script is numbered and structured like the other eighteen.
+
+**Consequence.** `tests/test_fpr_sweep.py` tests the sweep directly instead of
+through a subprocess, which is what makes the four properties in T3 testable at
+all.
