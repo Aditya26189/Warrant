@@ -5736,3 +5736,40 @@ ran.
 Correct, and that is the reason the fix is a property test rather than a patch:
 the next leak of this kind fails a test instead of waiting for someone to
 reread the renderer.
+
+## 130 - Every phase ends with a report, in one place, presented for review
+
+- **Date:** 2026-09-08
+- **Status:** DECIDED
+- **Commit:** db934b9
+
+**Context.** The Phase 0 brief asked for a close-out document at
+`results/fpr_sweep/PHASE0_REPORT.md` -- inside the artifact directory of the one
+analysis that phase happened to run. That location does not generalise: a phase
+that produces no `results/` subdirectory has nowhere to put its report, and a
+reader looking for "what happened in phase N" has nowhere to look.
+
+**Decision.** `reports/PHASE-<N>.md`, one per phase, written at close and
+**presented for review before the phase is called done**. The Phase 0 report
+moved there from the brief's location; the brief's requirement is met by the
+same document at a different path.
+
+**What a report contains**, in order: the question and the answer; what was
+done; what was found, every number traceable to `results/`; what the work does
+not establish; open items and what would close them; a ledger of code,
+artifacts, decisions and reproduction commands.
+
+**The two rules that make it worth reading.** An unfavourable result is stated
+as plainly as a favourable one, in the first two lines. And a defect found
+*after* close-out goes in the report -- particularly one found by rereading
+rather than by a failing test, because that is the one that says what the tests
+were not covering. Phase 0's report carries the fixture leak from 129 for
+exactly this reason.
+
+**Alternative rejected.** Letting the commit log be the record. `git log` is
+already the second half of the record and is organised by change rather than by
+question; nobody reconstructs "was the criterion registered before the run?"
+from sixteen commit messages, which is the first thing a reviewer asks.
+
+**Consequence.** A phase is not done when the tests pass. It is done when the
+report has been read.

@@ -285,6 +285,30 @@ issue external certificates and it is not a gateway.
 - When blocked, choose the option that changes least and claims least,
   log it as OPEN — needs human review, and continue.
 
+## Phase reports
+
+**Every phase or sprint ends with a report at `reports/PHASE-<N>.md`, and the
+report is presented for review before the phase is called done.** One per
+phase, no exceptions, written at close rather than during the build.
+
+A report states, in this order: the question the phase existed to answer and
+the answer; what was done, task by task; what was found, with every number
+traceable to an artifact in `results/`; what the work does **not** establish;
+what is still open and what would close it; and a ledger of the code,
+artifacts, decisions and commands to reproduce it.
+
+Two rules carry the weight:
+
+- **An unfavourable result is reported as plainly as a favourable one.** A
+  report that reads as a case for the work is not a report. If the phase found
+  the idea does not work, that is the headline, in the first two lines.
+- **A defect found after close-out goes in the report, not just in the fix.**
+  Including the ones found by rereading rather than by a failing test —
+  especially those, since they say what the tests were not covering.
+
+The report is the document a reviewer reads first and often the only one they
+read. It is not a summary of the commit log; `git log` already exists.
+
 ## Read-only
 
 validation/warrant_stats.py, validation/stats.py, store/ledger.py,
