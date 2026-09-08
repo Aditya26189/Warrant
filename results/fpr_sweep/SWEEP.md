@@ -1,11 +1,14 @@
 # FPR budget sweep — triviaqa-600 · T1-last_token
 
 Re-analysis of frozen scores in `results/scores/validation-T1-last_token.json`. No inference was run: every number is a function of the committed labels, scores and question ids.
+> **Superseded by `results/fpr_sweep_oos/`.** The thresholds below were certified on the same split they were scored on. The numbers are kept because they are the evidence for how little that biased them, and they are not the ones to quote.
 
-- commit `ba3b4fe9e03d` · dirty `False` · config `533fb74983fcd8af`
+
+- commit `55e9c74e92e4` · dirty `False` · config `533fb74983fcd8af`
 - detector `probe-qwen2.5-7b-instruct-T1-last_token` · envelope `sha256:e77c64f908491ad1`
 - certification: Clopper-Pearson one-sided upper bound at alpha 0.050, via `certify_fpr`
 - intervals: percentile bootstrap, 1000 resamples over questions, seed 1729
+- thresholds certified and metrics measured on the same set, `validation-T1-last_token` — **in sample**
 - n 600 (277 positive, 323 negative) · base rate 0.4617
 
 ## Verdict
@@ -102,11 +105,14 @@ The threshold at each grid point is certified on the **same** frozen test split 
 # FPR budget sweep — triviaqa-longctx-600 · T1-last_token
 
 Re-analysis of frozen scores in `results/scores/transfer-T1-last_token.json`. No inference was run: every number is a function of the committed labels, scores and question ids.
+> **Superseded by `results/fpr_sweep_oos/`.** The thresholds below were certified on the same split they were scored on. The numbers are kept because they are the evidence for how little that biased them, and they are not the ones to quote.
 
-- commit `ba3b4fe9e03d` · dirty `False` · config `533fb74983fcd8af`
+
+- commit `55e9c74e92e4` · dirty `False` · config `533fb74983fcd8af`
 - detector `probe-qwen2.5-7b-instruct-T1-last_token` · envelope `sha256:c4733cda255e55d9`
 - certification: Clopper-Pearson one-sided upper bound at alpha 0.050, via `certify_fpr`
 - intervals: percentile bootstrap, 1000 resamples over questions, seed 1729
+- thresholds certified and metrics measured on the same set, `transfer-T1-last_token` — **in sample**
 - n 600 (277 positive, 323 negative) · base rate 0.4617
 
 ## Verdict

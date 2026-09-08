@@ -1,7 +1,7 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-08T16:30:31+00:00",
-    "git_commit": "ba3b4fe9e03d4e8ae140383732ff2dfc0d406128",
+    "timestamp_utc": "2026-09-08T16:49:28+00:00",
+    "git_commit": "55e9c74e92e4da64e4486278db4b194b0ef980b1",
     "git_branch": "main",
     "dirty": false,
     "dirty_paths": [],
@@ -239,6 +239,8 @@
       "envelope_id": "sha256:e77c64f908491ad1",
       "data_source": "measured",
       "data_source_reason": "",
+      "certified_on_score_set_id": "validation-T1-last_token",
+      "out_of_sample": false,
       "is_measured": true,
       "n": 600,
       "n_positive": 277,
@@ -364,6 +366,7 @@
           "ucb": 0.009231835432524038,
           "k_false_positives": 0,
           "achieved_fpr": 0.0,
+          "achieved_fpr_on_measured_set": 0.0,
           "recall": {
             "name": "recall",
             "value": 0.010830324909747292,
@@ -432,6 +435,7 @@
           "ucb": 0.019362409092046316,
           "k_false_positives": 2,
           "achieved_fpr": 0.006191950464396285,
+          "achieved_fpr_on_measured_set": 0.006191950464396285,
           "recall": {
             "name": "recall",
             "value": 0.06498194945848375,
@@ -500,6 +504,7 @@
           "ucb": 0.02811358131633344,
           "k_false_positives": 4,
           "achieved_fpr": 0.01238390092879257,
+          "achieved_fpr_on_measured_set": 0.01238390092879257,
           "recall": {
             "name": "recall",
             "value": 0.15162454873646208,
@@ -568,6 +573,7 @@
           "ucb": 0.03633280686813942,
           "k_false_positives": 6,
           "achieved_fpr": 0.018575851393188854,
+          "achieved_fpr_on_measured_set": 0.018575851393188854,
           "recall": {
             "name": "recall",
             "value": 0.22743682310469315,
@@ -635,6 +641,7 @@
           "ucb": 0.04811857962563453,
           "k_false_positives": 9,
           "achieved_fpr": 0.02786377708978328,
+          "achieved_fpr_on_measured_set": 0.02786377708978328,
           "recall": {
             "name": "recall",
             "value": 0.23104693140794225,
@@ -702,6 +709,7 @@
           "ucb": 0.05949962817149593,
           "k_false_positives": 12,
           "achieved_fpr": 0.03715170278637771,
+          "achieved_fpr_on_measured_set": 0.03715170278637771,
           "recall": {
             "name": "recall",
             "value": 0.2924187725631769,
@@ -769,6 +777,7 @@
           "ucb": 0.0669312242047539,
           "k_false_positives": 14,
           "achieved_fpr": 0.043343653250773995,
+          "achieved_fpr_on_measured_set": 0.043343653250773995,
           "recall": {
             "name": "recall",
             "value": 0.36101083032490977,
@@ -836,6 +845,7 @@
           "ucb": 0.07790265875549862,
           "k_false_positives": 17,
           "achieved_fpr": 0.05263157894736842,
+          "achieved_fpr_on_measured_set": 0.05263157894736842,
           "recall": {
             "name": "recall",
             "value": 0.41155234657039713,
@@ -902,6 +912,7 @@
           "ucb": 0.08870649864410253,
           "k_false_positives": 20,
           "achieved_fpr": 0.06191950464396285,
+          "achieved_fpr_on_measured_set": 0.06191950464396285,
           "recall": {
             "name": "recall",
             "value": 0.4296028880866426,
@@ -968,6 +979,7 @@
           "ucb": 0.09937609543012473,
           "k_false_positives": 23,
           "achieved_fpr": 0.07120743034055728,
+          "achieved_fpr_on_measured_set": 0.07120743034055728,
           "recall": {
             "name": "recall",
             "value": 0.44765342960288806,
@@ -1034,6 +1046,7 @@
           "ucb": 0.10993458801088653,
           "k_false_positives": 26,
           "achieved_fpr": 0.0804953560371517,
+          "achieved_fpr_on_measured_set": 0.0804953560371517,
           "recall": {
             "name": "recall",
             "value": 0.49458483754512633,
@@ -1100,6 +1113,7 @@
           "ucb": 0.11692036272577275,
           "k_false_positives": 28,
           "achieved_fpr": 0.08668730650154799,
+          "achieved_fpr_on_measured_set": 0.08668730650154799,
           "recall": {
             "name": "recall",
             "value": 0.5126353790613718,
@@ -1166,6 +1180,7 @@
           "ucb": 0.12732901523955584,
           "k_false_positives": 31,
           "achieved_fpr": 0.09597523219814241,
+          "achieved_fpr_on_measured_set": 0.09597523219814241,
           "recall": {
             "name": "recall",
             "value": 0.5306859205776173,
@@ -1232,6 +1247,7 @@
           "ucb": 0.13766297535508795,
           "k_false_positives": 34,
           "achieved_fpr": 0.10526315789473684,
+          "achieved_fpr_on_measured_set": 0.10526315789473684,
           "recall": {
             "name": "recall",
             "value": 0.5415162454873647,
@@ -1298,6 +1314,7 @@
           "ucb": 0.14793071459161775,
           "k_false_positives": 37,
           "achieved_fpr": 0.11455108359133127,
+          "achieved_fpr_on_measured_set": 0.11455108359133127,
           "recall": {
             "name": "recall",
             "value": 0.5631768953068592,
@@ -1364,6 +1381,7 @@
           "ucb": 0.15813906516331247,
           "k_false_positives": 40,
           "achieved_fpr": 0.1238390092879257,
+          "achieved_fpr_on_measured_set": 0.1238390092879257,
           "recall": {
             "name": "recall",
             "value": 0.5703971119133574,
@@ -1430,6 +1448,7 @@
           "ucb": 0.16829363282119333,
           "k_false_positives": 43,
           "achieved_fpr": 0.13312693498452013,
+          "achieved_fpr_on_measured_set": 0.13312693498452013,
           "recall": {
             "name": "recall",
             "value": 0.592057761732852,
@@ -1496,6 +1515,7 @@
           "ucb": 0.1783990844776719,
           "k_false_positives": 46,
           "achieved_fpr": 0.14241486068111456,
+          "achieved_fpr_on_measured_set": 0.14241486068111456,
           "recall": {
             "name": "recall",
             "value": 0.6101083032490975,
@@ -1562,6 +1582,7 @@
           "ucb": 0.1884593541717514,
           "k_false_positives": 49,
           "achieved_fpr": 0.15170278637770898,
+          "achieved_fpr_on_measured_set": 0.15170278637770898,
           "recall": {
             "name": "recall",
             "value": 0.6209386281588448,
@@ -1628,6 +1649,7 @@
           "ucb": 0.19847779407218483,
           "k_false_positives": 52,
           "achieved_fpr": 0.1609907120743034,
+          "achieved_fpr_on_measured_set": 0.1609907120743034,
           "recall": {
             "name": "recall",
             "value": 0.6462093862815884,
@@ -1694,6 +1716,8 @@
       "envelope_id": "sha256:c4733cda255e55d9",
       "data_source": "measured",
       "data_source_reason": "",
+      "certified_on_score_set_id": "transfer-T1-last_token",
+      "out_of_sample": false,
       "is_measured": true,
       "n": 600,
       "n_positive": 277,
@@ -1819,6 +1843,7 @@
           "ucb": 0.009231835432524038,
           "k_false_positives": 0,
           "achieved_fpr": 0.0,
+          "achieved_fpr_on_measured_set": 0.0,
           "recall": {
             "name": "recall",
             "value": 0.018050541516245487,
@@ -1887,6 +1912,7 @@
           "ucb": 0.019362409092046316,
           "k_false_positives": 2,
           "achieved_fpr": 0.006191950464396285,
+          "achieved_fpr_on_measured_set": 0.006191950464396285,
           "recall": {
             "name": "recall",
             "value": 0.032490974729241874,
@@ -1955,6 +1981,7 @@
           "ucb": 0.02811358131633344,
           "k_false_positives": 4,
           "achieved_fpr": 0.01238390092879257,
+          "achieved_fpr_on_measured_set": 0.01238390092879257,
           "recall": {
             "name": "recall",
             "value": 0.15162454873646208,
@@ -2023,6 +2050,7 @@
           "ucb": 0.03633280686813942,
           "k_false_positives": 6,
           "achieved_fpr": 0.018575851393188854,
+          "achieved_fpr_on_measured_set": 0.018575851393188854,
           "recall": {
             "name": "recall",
             "value": 0.20938628158844766,
@@ -2090,6 +2118,7 @@
           "ucb": 0.04811857962563453,
           "k_false_positives": 9,
           "achieved_fpr": 0.02786377708978328,
+          "achieved_fpr_on_measured_set": 0.02786377708978328,
           "recall": {
             "name": "recall",
             "value": 0.26714801444043323,
@@ -2157,6 +2186,7 @@
           "ucb": 0.05949962817149593,
           "k_false_positives": 12,
           "achieved_fpr": 0.03715170278637771,
+          "achieved_fpr_on_measured_set": 0.03715170278637771,
           "recall": {
             "name": "recall",
             "value": 0.33935018050541516,
@@ -2224,6 +2254,7 @@
           "ucb": 0.0669312242047539,
           "k_false_positives": 14,
           "achieved_fpr": 0.043343653250773995,
+          "achieved_fpr_on_measured_set": 0.043343653250773995,
           "recall": {
             "name": "recall",
             "value": 0.36823104693140796,
@@ -2291,6 +2322,7 @@
           "ucb": 0.07790265875549862,
           "k_false_positives": 17,
           "achieved_fpr": 0.05263157894736842,
+          "achieved_fpr_on_measured_set": 0.05263157894736842,
           "recall": {
             "name": "recall",
             "value": 0.40794223826714804,
@@ -2357,6 +2389,7 @@
           "ucb": 0.08870649864410253,
           "k_false_positives": 20,
           "achieved_fpr": 0.06191950464396285,
+          "achieved_fpr_on_measured_set": 0.06191950464396285,
           "recall": {
             "name": "recall",
             "value": 0.4187725631768953,
@@ -2423,6 +2456,7 @@
           "ucb": 0.09937609543012473,
           "k_false_positives": 23,
           "achieved_fpr": 0.07120743034055728,
+          "achieved_fpr_on_measured_set": 0.07120743034055728,
           "recall": {
             "name": "recall",
             "value": 0.4368231046931408,
@@ -2489,6 +2523,7 @@
           "ucb": 0.10993458801088653,
           "k_false_positives": 26,
           "achieved_fpr": 0.0804953560371517,
+          "achieved_fpr_on_measured_set": 0.0804953560371517,
           "recall": {
             "name": "recall",
             "value": 0.44765342960288806,
@@ -2555,6 +2590,7 @@
           "ucb": 0.11692036272577275,
           "k_false_positives": 28,
           "achieved_fpr": 0.08668730650154799,
+          "achieved_fpr_on_measured_set": 0.08668730650154799,
           "recall": {
             "name": "recall",
             "value": 0.4620938628158845,
@@ -2621,6 +2657,7 @@
           "ucb": 0.12732901523955584,
           "k_false_positives": 31,
           "achieved_fpr": 0.09597523219814241,
+          "achieved_fpr_on_measured_set": 0.09597523219814241,
           "recall": {
             "name": "recall",
             "value": 0.4693140794223827,
@@ -2687,6 +2724,7 @@
           "ucb": 0.13766297535508795,
           "k_false_positives": 34,
           "achieved_fpr": 0.10526315789473684,
+          "achieved_fpr_on_measured_set": 0.10526315789473684,
           "recall": {
             "name": "recall",
             "value": 0.48736462093862815,
@@ -2753,6 +2791,7 @@
           "ucb": 0.14793071459161775,
           "k_false_positives": 37,
           "achieved_fpr": 0.11455108359133127,
+          "achieved_fpr_on_measured_set": 0.11455108359133127,
           "recall": {
             "name": "recall",
             "value": 0.5451263537906137,
@@ -2819,6 +2858,7 @@
           "ucb": 0.15813906516331247,
           "k_false_positives": 40,
           "achieved_fpr": 0.1238390092879257,
+          "achieved_fpr_on_measured_set": 0.1238390092879257,
           "recall": {
             "name": "recall",
             "value": 0.5884476534296029,
@@ -2885,6 +2925,7 @@
           "ucb": 0.16829363282119333,
           "k_false_positives": 43,
           "achieved_fpr": 0.13312693498452013,
+          "achieved_fpr_on_measured_set": 0.13312693498452013,
           "recall": {
             "name": "recall",
             "value": 0.5956678700361011,
@@ -2951,6 +2992,7 @@
           "ucb": 0.1783990844776719,
           "k_false_positives": 46,
           "achieved_fpr": 0.14241486068111456,
+          "achieved_fpr_on_measured_set": 0.14241486068111456,
           "recall": {
             "name": "recall",
             "value": 0.6101083032490975,
@@ -3017,6 +3059,7 @@
           "ucb": 0.1884593541717514,
           "k_false_positives": 49,
           "achieved_fpr": 0.15170278637770898,
+          "achieved_fpr_on_measured_set": 0.15170278637770898,
           "recall": {
             "name": "recall",
             "value": 0.6137184115523465,
@@ -3083,6 +3126,7 @@
           "ucb": 0.19847779407218483,
           "k_false_positives": 52,
           "achieved_fpr": 0.1609907120743034,
+          "achieved_fpr_on_measured_set": 0.1609907120743034,
           "recall": {
             "name": "recall",
             "value": 0.6209386281588448,

@@ -324,7 +324,9 @@ def render_sweep(
         ),
     ]
     if superseded_by:
-        head[3:3] = [
+        # After the blank that follows the intro, not before it: a blockquote
+        # butted against a paragraph is a rendering coin-flip.
+        head[4:4] = [
             f"> **Superseded by `{superseded_by}`.** The thresholds below were "
             "certified on the same split they were scored on. The numbers are "
             "kept because they are the evidence for how little that biased "
