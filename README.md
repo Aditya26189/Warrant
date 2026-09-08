@@ -35,7 +35,7 @@
 
 <img src="https://img.shields.io/badge/Tests-904_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="904 tests" />
 &nbsp;
-<img src="https://img.shields.io/badge/Claims-36_verified-2da44e?style=for-the-badge" alt="36 claims verified" />
+<img src="https://img.shields.io/badge/Claims-40_verified-2da44e?style=for-the-badge" alt="40 claims verified" />
 &nbsp;
 <img src="https://img.shields.io/badge/AUROC-0.8256-6366f1?style=for-the-badge" alt="AUROC 0.8256" />
 &nbsp;
@@ -182,6 +182,10 @@ here fails the build.**
 | Precision there | 0.7749 | [0.7227, 0.8290] | results/fpr_sweep/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].precision.value | python scripts/19_fpr_sweep.py |
 | Lift there, against a 2.17 ceiling | 1.678 | [1.545, 1.831] | results/fpr_sweep/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].lift.value | python scripts/19_fpr_sweep.py |
 | ...and it survives the long-context shift | 0.6209 | [0.5667, 0.6815] | results/fpr_sweep/sweep.json | sweeps[eval_set_id=triviaqa-longctx-600].points[target_fpr=0.2].recall.value | python scripts/19_fpr_sweep.py |
+| **Out-of-sample** recall at the same budget | 0.6318 | [0.5782, 0.6880] | results/fpr_sweep_oos/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].recall.value | python scripts/20_fpr_sweep_oos.py |
+| ...its precision | 0.7743 | [0.7220, 0.8281] | results/fpr_sweep_oos/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].precision.value | python scripts/20_fpr_sweep_oos.py |
+| ...its lift | 1.677 | [1.535, 1.826] | results/fpr_sweep_oos/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].lift.value | python scripts/20_fpr_sweep_oos.py |
+| Thresholds certified on validation, scored on test | True | - | results/fpr_sweep_oos/sweep.json | sweeps[eval_set_id=triviaqa-600].out_of_sample | python scripts/20_fpr_sweep_oos.py |
 
 <details>
 <summary><strong>📖 How to read this table</strong></summary>
@@ -222,9 +226,12 @@ false-positive budget, not the probe's ability to separate the classes. The
 criterion for "lift holds" (its 95% lower bound strictly above 1.0) was
 registered before the sweep ran; `DECISIONS.md` 126.
 
-These sweep recalls are **in-sample and are not warrants**: the threshold is
-certified on the same split it is scored on, because only test-split scores are
-frozen. `DECISIONS.md` 124, still open.
+Those figures are in-sample. Certifying thresholds on the **validation** split
+and scoring them on test gives recall **0.6318 [0.5782, 0.6880]** at the same
+budget — 0.0144 below the in-sample number, and lift holds at 20 of 20 targets
+rather than 19. The certified budget was respected on the unseen split at every
+one of the twenty. `DECISIONS.md` 134 closes 124 on that basis; the in-sample
+table is kept as the evidence for how little the bias moved.
 
 </details>
 
@@ -402,13 +409,14 @@ The ones that would change how you read the table:
 - **8 of 17 populated matrix cells are synthetic fixtures.** Their numbers are
   refused rather than printed — see the warning at the top of
   [results/RESULTS.md](results/RESULTS.md).
-- **The FPR sweep's recalls are in-sample and are not warrants.** Each grid
-  point's threshold is certified on the same frozen test split it is then scored
-  on, because only test-split scores are committed and re-deriving
-  validation-split scores means refitting the probe. `certify_fpr` reads the
-  negatives only, so recall is not being selected for — but the threshold still
-  tracks this sample's negative tail. The sweep describes the shape of the
-  curve; it does not warrant a point on it (`DECISIONS.md` 124, open).
+- **The sweep is out-of-sample within one corpus, not out-of-distribution.**
+  Thresholds are certified on the validation split and scored on test
+  (`results/fpr_sweep_oos/`), which removes the in-sample bias `DECISIONS.md`
+  124 was open about — that entry is now closed by 134. What it does not
+  establish is transfer to another corpus: both splits are drawn from the same
+  frozen 2400 items, at n=600 each, one model, no production traffic. The
+  long-context transfer set is the nearest thing to that second question and is
+  reported separately.
 - **The Presidio finding is a statement about `presidio-analyzer==2.2.364`.**
   It is pinned, the version is inside the refusal reason, and a test fails if
   the environment drifts from the pin.
