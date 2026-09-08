@@ -197,7 +197,33 @@ than implying anything about the rest.
 
 ---
 
-## 7. What this does not establish
+## 7. What the closing suite caught
+
+One failure, and it was the system working.
+
+`valsplit-T1-last_token` declared a `ScoreTarget` pointing at
+`sweeps[0].points`, which is not a metrics block. `verify` check 2 could not
+recompute it and `test_every_committed_metrics_block_recomputes` failed.
+
+The cause was inventing a target to satisfy `ScoreSet`'s requirement that every
+frozen score set name something it reproduces. **The requirement is right and
+the invention was wrong.** A frozen score set exists so a stranger can recompute
+a committed number from it; a target pointing at nothing recomputable makes the
+file evidence for nothing, while still looking like evidence.
+
+The artifact now carries `certifying_split_metrics` — what the shipped operating
+point does on the split that certified the thresholds — and the target names it.
+Real, recomputable, and informative in its own right: it is the only view of the
+shipped threshold on data it was not selected against. Check 2 goes from 24 to
+25 score sets.
+
+Worth stating because it is the same failure mode as the fixture leak in Phase
+0: a contract satisfied in form rather than in substance, passing everything
+except the one check that actually reads the content.
+
+---
+
+## 8. What this does not establish
 
 **Out-of-sample within one corpus is not out-of-distribution.** Both splits are
 drawn from the same frozen 2400 items, 600 each, one model, no production
@@ -214,7 +240,7 @@ That is worth recognising rather than pursuing.
 
 ---
 
-## 8. Open items
+## 9. Open items
 
 | Entry | Status | What would close it |
 |---|---|---|
@@ -226,7 +252,7 @@ phase.
 
 ---
 
-## 9. Ledger
+## 10. Ledger
 
 **Code**
 
@@ -250,13 +276,13 @@ phase.
 ```bash
 python scripts/20_fpr_sweep_oos.py --config config.yaml   # needs the cache
 python scripts/21_calibration_power.py --config config.yaml
-python scripts/verify.py --no-activations                 # 40/40 claims
+python scripts/verify.py --no-activations                 # 40/40 claims, 25/25 scores
 python -m pytest tests/ -q                                # 907 tests
 ```
 
 ---
 
-## 10. What this changes
+## 11. What this changes
 
 Phase 0 produced a curve nobody could quote. Phase 1 makes it quotable: recall
 **0.6318 [0.5782, 0.6880]** at a 0.20 FPR budget, certified on one split and
