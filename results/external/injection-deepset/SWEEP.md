@@ -2,7 +2,7 @@
 
 Re-analysis of frozen scores in `results/scores/external-injection-deepset.json`. No inference was run: every number is a function of the committed labels, scores and question ids.
 
-- commit `8e709dc932a6` · dirty `False` · config `533fb74983fcd8af`
+- commit `438269284194` · dirty `False` · config `533fb74983fcd8af`
 - detector `protectai/deberta-v3-base-prompt-injection-v2` · envelope `revision:4f61ecb038e9c3fb`
 - certification: Clopper-Pearson one-sided upper bound at alpha 0.050, via `certify_fpr`
 - intervals: percentile bootstrap, 1000 resamples over questions, seed 1729

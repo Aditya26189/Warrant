@@ -1,10 +1,14 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-08T22:32:47+00:00",
-    "git_commit": "8e709dc932a6f972f68dd7cf025d988ba987a6b6",
+    "timestamp_utc": "2026-09-08T23:03:45+00:00",
+    "git_commit": "438269284194e5d0ac5d231685b257d5911ee173",
     "git_branch": "main",
-    "dirty": false,
-    "dirty_paths": [],
+    "dirty": true,
+    "dirty_paths": [
+      "docs/EXTERNAL.md",
+      "docs/README.md",
+      "reports/PHASE-3.md"
+    ],
     "dirty_excludes": "results",
     "python": "3.12.10",
     "libraries": {
@@ -203,7 +207,7 @@
   },
   "pairing": {
     "id": "presidio-email_address",
-    "task": "does the text contain a EMAIL_ADDRESS? Positive when the row carries an ai4privacy 'EMAIL' span.",
+    "task": "does the text contain an EMAIL_ADDRESS? Positive when the row carries an ai4privacy 'EMAIL' span.",
     "limit": 2000,
     "detector": {
       "id": "presidio-analyzer",
