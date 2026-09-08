@@ -562,6 +562,12 @@ def test_every_script_has_a_smoke_test() -> None:
         # was moved into controlplane/evalsets/banking.py precisely so it
         # could be tested here without one. See test_banking_pilot.py.
         "13_pilot_run.py",
+        # Needs the network: it fetches third-party models and datasets at
+        # pinned revisions rather than redistributing them, and the suite must
+        # run offline. Its pure parts -- the registry's provenance, the label
+        # wiring, and the single-class and misaligned-score guards -- are
+        # unit-tested in tests/test_external.py without touching the network.
+        "23_certify_external.py",
         # Needs the extraction cache, which is gitignored and absent from a
         # clean clone, for the same reason 10_freeze_scores.py is exempt. Its
         # one piece of real logic -- certifying on one split and measuring on
