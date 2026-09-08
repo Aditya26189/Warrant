@@ -541,6 +541,11 @@ def test_every_script_has_a_smoke_test() -> None:
         "19_fpr_sweep.py",
         # test_smoke_calibration_power
         "21_calibration_power.py",
+        # tests/test_intake.py::test_the_examples_are_reproducible_from_their_generator
+        # runs it and asserts the committed examples come back byte-identical,
+        # which is a stronger check than a smoke test: the examples are shipped
+        # evidence and a drifted generator would silently restate them.
+        "22_make_examples.py",
         # test_smoke_the_smoke_check_itself
         "smoke.py",
         # test_smoke_verify_claims_only, test_verify_exits_non_zero_on_drift
