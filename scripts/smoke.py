@@ -90,7 +90,7 @@ def _claim_table_parses() -> str:
 
 
 def main() -> int:
-    print("ControlPlane smoke check")
+    print("Warrant smoke check")
     print("=" * 60)
     checks = [
         ("python version", _python_version),

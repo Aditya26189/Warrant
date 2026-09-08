@@ -8,7 +8,7 @@ Persistent context for agents working in this repo. Read this fully before writi
 
 A reproducible experiment that measures whether a **linear probe on question-time activations** can select which LLM responses are worth sending to an expensive checker.
 
-It exists to produce **one number** for a competition submission (Accenture Innovation Challenge 2026, problem statement 1):
+It exists to produce **one number**:
 
 > **lift = R / f** — the probe's recall divided by its flag rate. How many more errors we catch than random sampling at the same budget.
 

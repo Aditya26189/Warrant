@@ -50,7 +50,7 @@ from ..model.certificate import Certificate
 from ..model.enums import Action
 from ..policy.compose import ComposedDecision
 
-__all__ = ["AdapterResult", "CertificateEnvelope", "ControlPlaneAdapter"]
+__all__ = ["AdapterResult", "CertificateEnvelope", "WarrantAdapter"]
 
 _LOG = logging.getLogger(__name__)
 
@@ -114,7 +114,7 @@ class AdapterResult:
     decision: ComposedDecision
 
 
-class ControlPlaneAdapter:
+class WarrantAdapter:
     """Wraps an OpenAI-format completion call and attaches a certificate.
 
     Args:

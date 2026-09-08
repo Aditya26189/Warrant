@@ -60,7 +60,7 @@ def build_kaggle_notebook() -> dict:
     cells = [
         markdown(
             """
-# ControlPlane — TriviaQA extraction
+# Warrant — TriviaQA extraction
 
 The **only** stage that needs a GPU. Everything downstream runs from the caches
 this writes, which is what makes `/validate` fast enough to be a button a judge
@@ -829,7 +829,7 @@ def build_pilot_notebook() -> dict:
     cells = [
         markdown(
             """
-# ControlPlane.ai — the banking pilot, standalone
+# Warrant — the banking pilot, standalone
 
 Runs `scripts/13_pilot_run.py` **only**, against reference activations attached
 as a dataset instead of re-extracted. Twenty minutes rather than three hours.

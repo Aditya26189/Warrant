@@ -1,4 +1,4 @@
-"""ControlPlane — a warrant layer on top of AI detection.
+"""Warrant — a warrant layer on top of AI detection.
 
 A detector produces a score. A *warrant* is a separate, time-bounded,
 evidence-backed statement about what that score is worth right now, on this

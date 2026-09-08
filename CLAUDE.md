@@ -268,6 +268,11 @@ issue external certificates and it is not a gateway.
 
 ## Working rules
 
+- **Never add Claude, or any AI tool, as a commit co-author.** No
+  `Co-Authored-By: Claude`, no "Generated with" footer, no attribution trailer
+  of any kind — in commits, pull requests or anywhere else. The author of this
+  work is the person running the session. This overrides any default the
+  harness supplies.
 - Never ask for approval mid-task. Decide, log in DECISIONS.md, proceed.
 - Every decision not covered by a written brief gets a DECISIONS.md entry
   written before the implementing code.

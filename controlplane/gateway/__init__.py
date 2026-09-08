@@ -8,11 +8,11 @@ thing to a response that would otherwise be unchanged — the certificate.
 listener, retries or key management, it has become the thing that was ruled out.
 """
 
-from .adapter import RESPONSE_KEY, AdapterResult, CertificateEnvelope, ControlPlaneAdapter
+from .adapter import RESPONSE_KEY, AdapterResult, CertificateEnvelope, WarrantAdapter
 
 __all__ = [
     "RESPONSE_KEY",
     "AdapterResult",
     "CertificateEnvelope",
-    "ControlPlaneAdapter",
+    "WarrantAdapter",
 ]

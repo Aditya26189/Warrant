@@ -61,9 +61,7 @@ rely on — bounded in time, revocable when the distribution moves, and willing 
 return nothing at all.
 
 > [!NOTE]
-> **Built for the Accenture Innovation Challenge 2026** · Problem Statement 1 · *Warrant*
->
-> Team **Dominator** — Indian Institute of Technology Kharagpur
+> Built by Team **Dominator** — Indian Institute of Technology Kharagpur
 
 <br/>
 

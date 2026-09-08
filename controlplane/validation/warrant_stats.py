@@ -1,4 +1,4 @@
-"""Statistics for ControlPlane.ai warrants.
+"""Statistics for Warrant.
 
 Two objects, matching the two things a warrant has to do:
 

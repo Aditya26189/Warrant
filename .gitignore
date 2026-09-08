@@ -91,3 +91,10 @@ implementation.md
 # number produced while they sit here.
 ffmpeg2pass-*.log
 ffmpeg2pass-*.log.mbtree
+
+# Competition-era PDFs: the problem statements and the two deck exports. Kept on
+# disk, out of the repository. Ignored rather than deleted for the same reason as
+# the entries above -- provenance() flags an artifact dirty from ANY untracked
+# path, so an untracked PDF would stamp dirty: true on every number generated
+# while it sits here.
+*.pdf

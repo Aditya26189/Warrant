@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import pytest
 
-from controlplane.gateway import RESPONSE_KEY, ControlPlaneAdapter
+from controlplane.gateway import RESPONSE_KEY, WarrantAdapter
 from controlplane.model import Action, WarrantStatus
 from controlplane.policy.compose import DetectorVerdict, compose
 
@@ -52,10 +52,10 @@ def decide(prompt: str, response: str):
     )
 
 
-def adapter(**kwargs) -> ControlPlaneAdapter:
+def adapter(**kwargs) -> WarrantAdapter:
     kwargs.setdefault("complete", upstream)
     kwargs.setdefault("decide", decide)
-    return ControlPlaneAdapter(**kwargs)
+    return WarrantAdapter(**kwargs)
 
 
 # --------------------------------------------------------------------------- #
@@ -186,7 +186,7 @@ def test_the_adapter_owns_no_credentials_and_no_routing() -> None:
     an adapter: the upstream call is injected, so it never holds a key."""
     import inspect
 
-    source = inspect.getsource(ControlPlaneAdapter)
+    source = inspect.getsource(WarrantAdapter)
     for forbidden in ("api_key", "base_url", "requests.", "httpx.", "retry"):
         assert forbidden not in source, (
             f"{forbidden!r} appears in the adapter; it has started becoming the "
