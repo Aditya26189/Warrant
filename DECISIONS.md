@@ -6116,3 +6116,109 @@ for evidence.
 the same test as D6 — is registered and unfired. The honest reading of Phase 1
 is that the closed-API question is still open, and `README.md` says the measured
 cells assume open-weight access rather than implying anything about the rest.
+
+## 137 - The customer path is a second door into the same certification, not a second implementation
+
+- **Date:** 2026-09-09
+- **Status:** DECIDED
+- **Commit:** 09ea1ad
+
+**Context.** Phase 2 D21-D28 asked for a path where a customer brings a CSV of
+their own scores and labels. The certification machinery already existed; the
+question was whether the customer path should reuse it or get a simplified
+variant tuned for a single file and a single budget.
+
+**Decision.** Reuse, unchanged. `controlplane/intake/certify.py` calls
+`certify_fpr` and `build_warrant_metrics` with the same config-supplied
+bootstrap count, coverage and seed the published numbers use. The intake package
+does three things the pipeline does not -- read a file, validate it, render a
+terminal summary -- and nothing else.
+
+**Why.** A simplified variant would be a second implementation of one quantity,
+which is the failure class that produced 036, 040 and the metrics builder
+itself. It would also be the worse half of the trade: the customer's number is
+the one that has to survive scrutiny from someone who does not trust us, and
+that is precisely the number that must come from the code this project defends.
+
+### Three choices inside it worth recording
+
+**Refusal exits 0.** A refusal is a successful measurement with a negative
+result. A non-zero exit would make every CI pipeline treat *"your detector
+cannot be certified on this evidence"* as a broken tool, teaching users that
+refusals are malfunctions -- which inverts the product. `--require-warrant`
+exists for callers who genuinely want a gate, and it prints the reason to stderr
+so a non-zero exit is never bare.
+
+**Unequal groups raise rather than certify.** `certify_fpr` bounds item-level
+FPR by cluster-level FPR only when clusters are equal-sized; with unequal sizes
+the bound is *anticonservative*. Certifying anyway at item level would promise a
+tighter rate than the data supports while the group column sits there denying
+the independence that assumes. It is the one input shape the tool tells the user
+to change rather than judging.
+
+**A shortage of negatives is a refusal, not a validation error.** Both stop the
+run, but they mean different things: an error is *we cannot read what you sent*,
+a refusal is *we read it and the evidence is insufficient*. Conflating them
+turns a fixable typo into an apparent verdict on the detector, and a real
+verdict into an apparent typo.
+
+**The bug the acceptance test caught immediately.** The summary was drawn with
+box-drawing characters and died with `UnicodeEncodeError` on a cp1252 console
+before printing anything. A stranger on Windows following the quickstart would
+have seen a traceback where the warrant should be. Output is ASCII now and a
+test pins it by running the CLI with `PYTHONIOENCODING=cp1252`.
+
+That the acceptance test runs the commands **parsed out of README.md**, inside a
+fresh `git clone`, is what made this a five-minute find rather than a support
+thread. Its first run also failed correctly, on `warrant.py` missing from the
+clone, because the file was not committed yet.
+
+## 138 - T2, T3 and T4 remain gated, and D30 says stop rather than approximate
+
+- **Date:** 2026-09-09
+- **Status:** OPEN — needs human review
+- **Commit:** 09ea1ad
+
+**Context.** Phase 2 carried three gated tasks forward. All three gates are
+still closed at the end of it.
+
+| task | gate | state |
+|---|---|---|
+| T2 closed-API matrix | provider credentials | no `OPENAI_*`, `ANTHROPIC_API_*`, `AZURE_OPENAI_*` or `GOOGLE_API_*` in the environment, no `.env` |
+| T3 corpus expansion | GPU extraction | the extracted corpus holds 1280 negatives; the target needs new items |
+| T4 out-of-distribution transfer | GPU, and T3 first | not started |
+
+**Decision.** Record and stop, per D30. Specifically: no synthetic stand-in for
+a provider response, no findings written from documentation or recollection, no
+partial implementation against an unavailable dependency.
+
+**Why that is the disciplined answer rather than the lazy one.** Each of these
+tasks has an obvious way to look finished. A closed-API matrix could be built
+with every cell UNVALIDATED and a note; a logprob-availability table could be
+written from what is widely known; an out-of-distribution claim could be made
+against the long-context transfer set and described as a different corpus. All
+three would produce artifacts that pass every test in this repository and
+support conclusions nothing measured.
+
+This project has recorded that failure four times already -- 113, 116, 117, 118
+-- and 118 settled the rule: *a claim about a dependency is checkable by running
+the dependency*. A gate that is closed is closed.
+
+**What each needs, concretely.**
+
+- **T2**: credentials for one provider that exposes logprobs and one that does
+  not, so the matrix carries both a populated Tier 1 and a recorded UNAVAILABLE.
+  Cost is small; it is someone's account.
+- **T3**: a GPU session extracting activations for new items. Size against
+  `internal_knowledge` at 1649 items for the 10% calibration bar, which 135
+  identified as the cheapest meaningful target -- not against 1441, which
+  answers a different question.
+- **T4**: a corpus this project did not construct, plus T3's session. Its
+  criterion is registered and unfired: transfer holds if lift's 95% lower bound
+  exceeds 1.0 at any swept target on the new corpus.
+
+**Consequence.** Phase 2 delivered one task of five, and it was the one that
+needed no gate. That is the honest accounting. The tool is now usable by someone
+outside this repository, which was the phase's stated purpose; what remains
+unmeasured is unchanged from Phase 1 and is named in `README.md` rather than
+implied away.
