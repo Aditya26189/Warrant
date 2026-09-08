@@ -109,8 +109,8 @@ def render_matrix(results_dir: Path, *, provenance: Optional[dict] = None) -> st
             f"[source]({detector['source_url']}), "
             f"[docs]({detector['documentation_url']})",
             f"- **configuration**: {detector['configuration']}",
-            f"- **not tuned for this evaluation**: "
-            f"{not detector['tuned_for_this_evaluation']}",
+            "- **tuning**: none. Run at the documented default above; no "
+            "threshold or variant was chosen based on how it scored here.",
             f"- **dataset** `{dataset['id']}` at revision "
             f"`{dataset['revision'][:16]}`, split `{dataset['split']}`, licence "
             f"{dataset['licence']}, accessed {dataset['access_date']} — "

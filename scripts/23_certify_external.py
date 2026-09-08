@@ -48,6 +48,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
                         help="pairing id, repeatable; see --list")
     parser.add_argument("--all", action="store_true", help="run every pairing")
     parser.add_argument("--list", action="store_true", help="list pairings and exit")
+    parser.add_argument("--matrix-only", action="store_true",
+                        help="re-render MATRIX.md from artifacts already on disk")
     parser.add_argument("--out", default=None, help="results directory override")
     return parser.parse_args(argv)
 
@@ -65,6 +67,13 @@ def main(argv: list[str] | None = None) -> int:
     config = load_config(args.config)
     set_seeds(config.seed)
     results = Path(args.out) if args.out else PROJECT_ROOT / config.paths.results_dir
+
+    if args.matrix_only:
+        prov = provenance(config)
+        matrix = results / "external" / "MATRIX.md"
+        matrix.write_text(render_matrix(results, provenance=prov), encoding="utf-8")
+        _LOG.info("wrote %s", matrix)
+        return 0
 
     selected = pairing_ids() if args.all else (args.pairing or [])
     if not selected:

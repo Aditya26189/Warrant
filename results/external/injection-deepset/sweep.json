@@ -1,0 +1,1732 @@
+{
+  "provenance": {
+    "timestamp_utc": "2026-09-08T22:23:21+00:00",
+    "git_commit": "8e709dc932a6f972f68dd7cf025d988ba987a6b6",
+    "git_branch": "main",
+    "dirty": false,
+    "dirty_paths": [],
+    "dirty_excludes": "results",
+    "python": "3.12.10",
+    "libraries": {
+      "torch": "2.9.1+cpu",
+      "transformers": "5.8.0",
+      "scikit-learn": "1.7.2",
+      "numpy": "2.2.6",
+      "scipy": "1.16.3",
+      "pandas": "2.3.3",
+      "statsmodels": "0.14.6",
+      "presidio-analyzer": "2.2.364",
+      "bitsandbytes": "0.49.2"
+    },
+    "device": {
+      "platform": "Windows-11-10.0.26200-SP0",
+      "processor": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD",
+      "cuda_available": false,
+      "device_name": "cpu"
+    },
+    "config_hash": "533fb74983fcd8af",
+    "seed": 1729,
+    "config": {
+      "seed": 1729,
+      "workload": {
+        "name": "enterprise-3pct",
+        "monthly_interactions": 200000,
+        "base_error_rate": 0.03,
+        "review_minutes_per_item": 3.0,
+        "reviewer_monthly_cost_inr": 85000.0,
+        "reviewer_productive_hours": 160.0,
+        "measured_tpr": 0.1416,
+        "measured_fpr": 0.011
+      },
+      "model": {
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "quantization": "nf4",
+        "layer_fractions": [
+          0.29,
+          0.39,
+          0.5,
+          0.61,
+          0.71,
+          0.82,
+          0.93
+        ],
+        "prefill_chunk_tokens": 2048
+      },
+      "probe": {
+        "aggregations": [
+          "mean_pool",
+          "max_rolling_means",
+          "last_token"
+        ],
+        "rolling_window": 64,
+        "rolling_stride": 32,
+        "standardize": true,
+        "class_weight": "balanced",
+        "C_grid": [
+          0.0001,
+          0.001,
+          0.01,
+          0.1,
+          1.0
+        ],
+        "positive_class": "incorrect"
+      },
+      "evalsets": [
+        {
+          "id": "triviaqa-600",
+          "pad_tokens": null
+        },
+        {
+          "id": "triviaqa-longctx-600",
+          "pad_tokens": [
+            4000,
+            16000
+          ]
+        },
+        {
+          "id": "hinglish-pii-200",
+          "pad_tokens": null
+        },
+        {
+          "id": "hard-negatives-200",
+          "pad_tokens": null
+        },
+        {
+          "id": "canary-20",
+          "pad_tokens": null
+        }
+      ],
+      "validation": {
+        "bootstrap_samples": 1000,
+        "ci": 0.95,
+        "min_n_test": 200,
+        "min_auroc_lower_ci": 0.55,
+        "warrant_ttl_hours": 24,
+        "controls": [
+          "padding_fault",
+          "label_shuffle",
+          "null_feature",
+          "canary",
+          "determinism"
+        ],
+        "null_control_band": [
+          0.45,
+          0.55
+        ],
+        "null_control_min_repeats": 8,
+        "null_control_max_repeats": 200,
+        "calibration_tolerance": 0.25
+      },
+      "drift": {
+        "window_size": 200,
+        "psi_stable": 0.1,
+        "psi_significant": 0.25,
+        "mmd_permutations": 500,
+        "features": [
+          "token_length",
+          "script_mix",
+          "embedding_centroid_distance",
+          "reference_perplexity",
+          "category_mix"
+        ],
+        "max_false_alarm_rate": 0.05
+      },
+      "sampling": {
+        "allocation_month_one": "proportional",
+        "allocation_thereafter": "neyman",
+        "expected_design_effect": 0.67,
+        "score_bands": 4,
+        "double_label_fraction": 0.1,
+        "recall_margin_tiers": [
+          0.05,
+          0.02
+        ],
+        "blind_queue": true
+      },
+      "policy": {
+        "engine": "opa",
+        "fail_closed_on_missing_warrant": true,
+        "weighted_error": {
+          "w_fpr_benign": 50.0,
+          "w_fnr": 5.0,
+          "w_fpr_hard_negative": 2.0
+        }
+      },
+      "profiles": {
+        "customer_support": {
+          "inline_budget_ms": 200,
+          "min_recall": 0.1,
+          "max_fpr_hard_negatives": 0.02,
+          "operating_point": "P-customer-support",
+          "target_flag_rate": 0.1,
+          "on_calibration_drift": "REFUSE",
+          "calibration_sensitivity": 0.25
+        },
+        "internal_knowledge": {
+          "inline_budget_ms": 500,
+          "min_recall": 0.25,
+          "max_fpr_hard_negatives": 0.05,
+          "operating_point": "P-internal-knowledge",
+          "target_flag_rate": 0.2,
+          "on_calibration_drift": "WIDEN_BUDGET",
+          "calibration_sensitivity": 0.25
+        },
+        "decision_support": {
+          "inline_budget_ms": 2000,
+          "min_recall": 0.5,
+          "max_fpr_hard_negatives": 0.1,
+          "operating_point": "P-decision-support",
+          "target_flag_rate": 0.5,
+          "on_calibration_drift": "IGNORE",
+          "calibration_sensitivity": 0.25
+        }
+      },
+      "detectors": {
+        "presidio_configs": [
+          "stock",
+          "enabled",
+          "enabled_plus_custom"
+        ],
+        "qwen3guard": "Qwen/Qwen3Guard-Gen-0.6B"
+      },
+      "store": {
+        "path": "results/controlplane.db",
+        "retention_days": 400,
+        "hash_chain": true
+      },
+      "paths": {
+        "results_dir": "results",
+        "evalsets_dir": "evalsets",
+        "policies_dir": "policies"
+      }
+    }
+  },
+  "pairing": {
+    "id": "injection-deepset",
+    "task": "is the prompt an injection attempt? Positive when the dataset labels it 1.",
+    "limit": 600,
+    "detector": {
+      "id": "protectai/deberta-v3-base-prompt-injection-v2",
+      "version": "90c9989b1a342275dd0d1a95aad283c04e075671",
+      "licence": "apache-2.0",
+      "source_url": "https://huggingface.co/protectai/deberta-v3-base-prompt-injection-v2",
+      "configuration": "AutoModelForSequenceClassification at the pinned revision, eval mode, truncation at the model's own max_length. The item score is softmax(logits)[INJECTION], with the INJECTION index read from the loaded config's id2label rather than assumed.",
+      "documentation_url": "https://huggingface.co/protectai/deberta-v3-base-prompt-injection-v2",
+      "tuned_for_this_evaluation": false
+    },
+    "dataset": {
+      "id": "deepset/prompt-injections",
+      "huggingface_id": "deepset/prompt-injections",
+      "revision": "4f61ecb038e9c3fb77e21034b22511b523772cdd",
+      "split": "train",
+      "licence": "apache-2.0",
+      "source_url": "https://huggingface.co/datasets/deepset/prompt-injections",
+      "access_date": "2026-09-09",
+      "note": "",
+      "redistributed_here": false
+    }
+  },
+  "grid_spec": {
+    "targets": [
+      0.01,
+      0.02,
+      0.03,
+      0.04,
+      0.05,
+      0.06,
+      0.07,
+      0.08,
+      0.09,
+      0.1,
+      0.11,
+      0.12,
+      0.13,
+      0.14,
+      0.15,
+      0.16,
+      0.17,
+      0.18,
+      0.19,
+      0.2
+    ],
+    "n_points": 20
+  },
+  "criterion": {
+    "name": "lift_holds",
+    "rule": "lift ci_low > 1.0, strictly",
+    "registered": "Phase 0 D6, unchanged for third parties (Phase 3 D35)"
+  },
+  "neutrality": "This detector was run at its documented default configuration and was not tuned for this evaluation. A refusal at a given budget is a statement about what this dataset can support at that budget, not about the detector's quality. Phase 3 D34, D36.",
+  "sweeps": [
+    {
+      "score_set_id": "external-injection-deepset",
+      "detector_id": "protectai/deberta-v3-base-prompt-injection-v2",
+      "variant": "90c9989b1a342275",
+      "eval_set_id": "deepset/prompt-injections",
+      "envelope_id": "revision:4f61ecb038e9c3fb",
+      "data_source": "measured",
+      "data_source_reason": "",
+      "certified_on_score_set_id": "external-injection-deepset",
+      "out_of_sample": false,
+      "is_measured": true,
+      "n": 546,
+      "n_positive": 203,
+      "n_negative": 343,
+      "base_rate": 0.3717948717948718,
+      "estimator": {
+        "alpha": 0.050000000000000044,
+        "bootstrap_samples": 1000,
+        "seed": 1729,
+        "certification": "Clopper-Pearson one-sided upper bound via certify_fpr",
+        "interval": "percentile bootstrap over questions; lift inherits recall's interval divided by the measured flag rate"
+      },
+      "grid_spec": {
+        "targets": [
+          0.01,
+          0.02,
+          0.03,
+          0.04,
+          0.05,
+          0.06,
+          0.07,
+          0.08,
+          0.09,
+          0.1,
+          0.11,
+          0.12,
+          0.13,
+          0.14,
+          0.15,
+          0.16,
+          0.17,
+          0.18,
+          0.19,
+          0.2
+        ],
+        "n_points": 20
+      },
+      "cost_axis": {
+        "unit": "judge calls per 1000 requests, on this envelope",
+        "caveat": "flag rate is measured at base rate 0.3718; this is not a production cost projection (DECISIONS 132)",
+        "declared_profile_budgets": {
+          "customer_support": 0.1,
+          "decision_support": 0.5,
+          "internal_knowledge": 0.2
+        }
+      },
+      "criterion": {
+        "name": "lift_holds",
+        "rule": "lift ci_low > 1.0, strictly",
+        "lower_bound": 1.0,
+        "registered": "Phase 0 brief D6, before any sweep output was seen"
+      },
+      "shipped_operating_point": {
+        "operating_point_id": null,
+        "threshold": 0.5,
+        "recall": {
+          "name": "recall",
+          "value": 0.42857142857142855,
+          "kind": "ESTIMATED",
+          "n": 546,
+          "ci_low": 0.3571338837042355,
+          "ci_high": 0.49760765550239233,
+          "ci_level": 0.95,
+          "unit": "rate",
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
+        },
+        "precision": {
+          "name": "precision",
+          "value": 0.9560439560439561,
+          "kind": "ESTIMATED",
+          "n": 546,
+          "ci_low": 0.9090909090909091,
+          "ci_high": 0.9907603578154425,
+          "ci_level": 0.95,
+          "unit": "rate",
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
+        },
+        "flag_rate": {
+          "name": "flag_rate",
+          "value": 0.16666666666666666,
+          "kind": "ESTIMATED",
+          "n": 546,
+          "ci_low": 0.1336996336996337,
+          "ci_high": 0.1978479853479853,
+          "ci_level": 0.95,
+          "unit": "rate",
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
+        },
+        "lift": {
+          "name": "lift",
+          "value": 2.5714285714285716,
+          "kind": "ESTIMATED",
+          "n": 546,
+          "ci_low": 2.142803302225413,
+          "ci_high": 2.985645933014354,
+          "ci_level": 0.95,
+          "unit": "ratio",
+          "estimator": "recall interval at measured flag rate f=0.1667; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+          "convention": "two_sided_95"
+        }
+      },
+      "headline": {
+        "largest_target_fpr_where_lift_holds": 0.2,
+        "recall_there": 0.812807881773399,
+        "recall_ci_there": [
+          0.7549951923076923,
+          0.8659876509179117
+        ],
+        "n_points_holding": 20,
+        "recall_is_a_dial": true
+      },
+      "points": [
+        {
+          "target_fpr": 0.01,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 299,
+          "threshold": 0.9928330183029176,
+          "ucb": 0.008695883509845292,
+          "k_false_positives": 0,
+          "achieved_fpr": 0.0,
+          "achieved_fpr_on_measured_set": 0.0,
+          "recall": {
+            "name": "recall",
+            "value": 0.3497536945812808,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.2828120312031203,
+            "ci_high": 0.41089108910891087,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 1.0,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.9493705920455963,
+            "ci_high": 1.0,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "Clopper-Pearson exact (71/71 events); the bootstrap degenerated to a zero-width interval at the boundary",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.13003663003663005,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.10256410256410256,
+            "ci_high": 0.15567765567765568,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.689655172413793,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.1748643526324463,
+            "ci_high": 3.1598103472319057,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.1300; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 1.0,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 130.03663003663004,
+          "profiles_within_budget": [
+            "decision_support",
+            "internal_knowledge"
+          ]
+        },
+        {
+          "target_fpr": 0.02,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 149,
+          "threshold": 0.9634410738945008,
+          "ucb": 0.018240479721817648,
+          "k_false_positives": 2,
+          "achieved_fpr": 0.0058309037900874635,
+          "achieved_fpr_on_measured_set": 0.0058309037900874635,
+          "recall": {
+            "name": "recall",
+            "value": 0.39901477832512317,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.3317276554404145,
+            "ci_high": 0.46760228516694036,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.9759036144578314,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.9342069115095432,
+            "ci_high": 1.0,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.152014652014652,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.12087912087912088,
+            "ci_high": 0.1813186813186813,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.6248442044038223,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.182208432174293,
+            "ci_high": 3.076034309652403,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.1520; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.9759036144578314,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 152.014652014652,
+          "profiles_within_budget": [
+            "decision_support",
+            "internal_knowledge"
+          ]
+        },
+        {
+          "target_fpr": 0.03,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 99,
+          "threshold": 0.011198805645108225,
+          "ucb": 0.026486656314875654,
+          "k_false_positives": 4,
+          "achieved_fpr": 0.011661807580174927,
+          "achieved_fpr_on_measured_set": 0.011661807580174927,
+          "recall": {
+            "name": "recall",
+            "value": 0.4876847290640394,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.4147227077705387,
+            "ci_high": 0.5598086124401914,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.9611650485436893,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.9191850941850942,
+            "ci_high": 0.991474358974359,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.18864468864468864,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.15384615384615385,
+            "ci_high": 0.2216117216117216,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.585202544358889,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.198432994589458,
+            "ci_high": 2.9675291494402383,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.1886; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.9611650485436894,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 188.64468864468864,
+          "profiles_within_budget": [
+            "decision_support",
+            "internal_knowledge"
+          ]
+        },
+        {
+          "target_fpr": 0.04,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 74,
+          "threshold": 0.002557793632149697,
+          "ucb": 0.037989627782240416,
+          "k_false_positives": 7,
+          "achieved_fpr": 0.02040816326530612,
+          "achieved_fpr_on_measured_set": 0.02040816326530612,
+          "recall": {
+            "name": "recall",
+            "value": 0.5369458128078818,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.4673290905074825,
+            "ci_high": 0.6117282019190654,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.9396551724137931,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.8897419072615923,
+            "ci_high": 0.9765802556818182,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.21245421245421245,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.17582417582417584,
+            "ci_high": 0.2490842490842491,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.527348394768133,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.199669684630047,
+            "ci_high": 2.8793413642052563,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.2125; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.9396551724137931,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 212.45421245421244,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.05,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 59,
+          "threshold": 0.00029015418840572243,
+          "ucb": 0.04895070460355878,
+          "k_false_positives": 10,
+          "achieved_fpr": 0.029154518950437316,
+          "achieved_fpr_on_measured_set": 0.029154518950437316,
+          "recall": {
+            "name": "recall",
+            "value": 0.6157635467980296,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.5467205414779844,
+            "ci_high": 0.6826981707317074,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.9259259259259259,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.8760314562111602,
+            "ci_high": 0.9663879645818059,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.24725274725274726,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.2087912087912088,
+            "ci_high": 0.2838827838827839,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.4904214559386975,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.2111808566442925,
+            "ci_high": 2.7611348238482387,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.2473; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.9259259259259259,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 247.25274725274727,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.06,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 49,
+          "threshold": 6.244309770409019e-05,
+          "ucb": 0.0595837472445388,
+          "k_false_positives": 13,
+          "achieved_fpr": 0.037900874635568516,
+          "achieved_fpr_on_measured_set": 0.037900874635568516,
+          "recall": {
+            "name": "recall",
+            "value": 0.6798029556650246,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.6168059095629189,
+            "ci_high": 0.7400279187817258,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.9139072847682119,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.8662420382165605,
+            "ci_high": 0.9548399223866116,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.2765567765567766,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.23809523809523808,
+            "ci_high": 0.31684981684981683,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.458095455583466,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.230304812061945,
+            "ci_high": 2.6758625407604124,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.2766; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.9139072847682118,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 276.5567765567766,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.07,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 42,
+          "threshold": 3.262756581534632e-05,
+          "ucb": 0.06998920300814253,
+          "k_false_positives": 16,
+          "achieved_fpr": 0.04664723032069971,
+          "achieved_fpr_on_measured_set": 0.04664723032069971,
+          "recall": {
+            "name": "recall",
+            "value": 0.6896551724137931,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.6265027141533166,
+            "ci_high": 0.75,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.8974358974358975,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.849145082105976,
+            "ci_high": 0.9411954459203036,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.2857142857142857,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.24725274725274726,
+            "ci_high": 0.326007326007326,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.4137931034482762,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.192759499536608,
+            "ci_high": 2.625,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.2857; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.8974358974358976,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 285.7142857142857,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.08,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 36,
+          "threshold": 2.6446217816555876e-05,
+          "ucb": 0.07682880029331733,
+          "k_false_positives": 18,
+          "achieved_fpr": 0.052478134110787174,
+          "achieved_fpr_on_measured_set": 0.052478134110787174,
+          "recall": {
+            "name": "recall",
+            "value": 0.6945812807881774,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.6315552394499763,
+            "ci_high": 0.7550138888888889,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.8867924528301887,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.836028596080365,
+            "ci_high": 0.9310398706896551,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.29120879120879123,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.2509157509157509,
+            "ci_high": 0.331547619047619,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.385165907612232,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.1687368599980315,
+            "ci_high": 2.5926892033542974,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.2912; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.8867924528301887,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 291.20879120879124,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.09,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 32,
+          "threshold": 1.8344888303545307e-05,
+          "ucb": 0.08697046782258121,
+          "k_false_positives": 21,
+          "achieved_fpr": 0.061224489795918366,
+          "achieved_fpr_on_measured_set": 0.061224489795918366,
+          "recall": {
+            "name": "recall",
+            "value": 0.6995073891625616,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.6372433407325194,
+            "ci_high": 0.762562918126792,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.8711656441717791,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.8181675242995998,
+            "ci_high": 0.9205348489743176,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.29853479853479853,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.2600732600732601,
+            "ci_high": 0.336996336996337,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.34313518087582,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.1345697180365377,
+            "ci_high": 2.554351860719193,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.2985; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.8711656441717791,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 298.53479853479854,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.1,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 29,
+          "threshold": 9.518030310573524e-06,
+          "ucb": 0.0969945336449926,
+          "k_false_positives": 24,
+          "achieved_fpr": 0.06997084548104957,
+          "achieved_fpr_on_measured_set": 0.06997084548104957,
+          "recall": {
+            "name": "recall",
+            "value": 0.729064039408867,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.6700068094589576,
+            "ci_high": 0.78894587616984,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.8604651162790697,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.8067992424242424,
+            "ci_high": 0.910181559957009,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.315018315018315,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.2765109890109891,
+            "ci_high": 0.3553113553113553,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.314354450681636,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.126882081189482,
+            "ci_high": 2.5044444673763526,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.3150; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.8604651162790697,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 315.01831501831504,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.11,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 26,
+          "threshold": 7.050830845400925e-06,
+          "ucb": 0.10692048209287773,
+          "k_false_positives": 27,
+          "achieved_fpr": 0.07871720116618076,
+          "achieved_fpr_on_measured_set": 0.07871720116618076,
+          "recall": {
+            "name": "recall",
+            "value": 0.7438423645320197,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.682232370433305,
+            "ci_high": 0.8029556650246306,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.848314606741573,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7947295321637428,
+            "ci_high": 0.898307350675247,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.326007326007326,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.2857142857142857,
+            "ci_high": 0.36451465201465194,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.2816737698566447,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.0926903048122725,
+            "ci_high": 2.4629988376598217,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.3260; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.848314606741573,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 326.007326007326,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.12,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 24,
+          "threshold": 4.809883648704273e-06,
+          "ucb": 0.11676268466813079,
+          "k_false_positives": 30,
+          "achieved_fpr": 0.08746355685131195,
+          "achieved_fpr_on_measured_set": 0.08746355685131195,
+          "recall": {
+            "name": "recall",
+            "value": 0.7586206896551724,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.6990157096160414,
+            "ci_high": 0.8165442671848872,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.8369565217391305,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7833304195804196,
+            "ci_high": 0.8870230218435603,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.336996336996337,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.29853479853479853,
+            "ci_high": 0.37545787545787546,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.251124437781109,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.0742531383171663,
+            "ci_high": 2.423006358059502,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.3370; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.8369565217391303,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 336.996336996337,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.13,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 22,
+          "threshold": 3.902616754203337e-06,
+          "ucb": 0.12977394733606526,
+          "k_false_positives": 34,
+          "achieved_fpr": 0.09912536443148688,
+          "achieved_fpr_on_measured_set": 0.09912536443148688,
+          "recall": {
+            "name": "recall",
+            "value": 0.7684729064039408,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7107812033442819,
+            "ci_high": 0.8275942261427426,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.8210526315789474,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7668124065769806,
+            "ci_high": 0.8743340163934425,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.34798534798534797,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.31130952380952387,
+            "ci_high": 0.38644688644688646,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.2083484573502723,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.0425607211893575,
+            "ci_high": 2.3782444603891446,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.3480; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.8210526315789474,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 347.98534798534797,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.14,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 20,
+          "threshold": 3.6909584650857145e-06,
+          "ucb": 0.1394593905717562,
+          "k_false_positives": 37,
+          "achieved_fpr": 0.10787172011661808,
+          "achieved_fpr_on_measured_set": 0.10787172011661808,
+          "recall": {
+            "name": "recall",
+            "value": 0.7733990147783252,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7162042118260392,
+            "ci_high": 0.8299042015172146,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.8092783505154639,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.752495904995905,
+            "ci_high": 0.8651204964453548,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.3553113553113553,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.31684981684981683,
+            "ci_high": 0.39377289377289376,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.17667970138642,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 2.0157087611186464,
+            "ci_high": 2.3357097630329853,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.3553; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.8092783505154638,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 355.3113553113553,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.15,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 19,
+          "threshold": 3.5571783882915047e-06,
+          "ucb": 0.14908953426488425,
+          "k_false_positives": 40,
+          "achieved_fpr": 0.11661807580174927,
+          "achieved_fpr_on_measured_set": 0.11661807580174927,
+          "recall": {
+            "name": "recall",
+            "value": 0.7733990147783252,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7162042118260392,
+            "ci_high": 0.8299042015172146,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.7969543147208121,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.738668753604086,
+            "ci_high": 0.8550018115942029,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.3608058608058608,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.32234432234432236,
+            "ci_high": 0.3992673992673993,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.1435322947663225,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 1.9850126886143016,
+            "ci_high": 2.300140578824361,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.3608; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.7969543147208121,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 360.8058608058608,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.16,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 18,
+          "threshold": 3.305420023025363e-06,
+          "ucb": 0.15866965034598712,
+          "k_false_positives": 43,
+          "achieved_fpr": 0.12536443148688048,
+          "achieved_fpr_on_measured_set": 0.12536443148688048,
+          "recall": {
+            "name": "recall",
+            "value": 0.7733990147783252,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7162042118260392,
+            "ci_high": 0.8299042015172146,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.785,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7254815961472308,
+            "ci_high": 0.8421463815789473,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.3663003663003663,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.32779304029304035,
+            "ci_high": 0.4065934065934066,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.111379310344828,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 1.955237498285087,
+            "ci_high": 2.265638470141996,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.3663; ceiling 2.690 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.689655172413793,
+          "lift_fraction_of_ceiling": 0.7850000000000001,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 366.30036630036625,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.17,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 17,
+          "threshold": 2.826290256052744e-06,
+          "ucb": 0.1682041284249748,
+          "k_false_positives": 46,
+          "achieved_fpr": 0.13411078717201166,
+          "achieved_fpr_on_measured_set": 0.13411078717201166,
+          "recall": {
+            "name": "recall",
+            "value": 0.7832512315270936,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7249784482758621,
+            "ci_high": 0.8392023189341201,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.775609756097561,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7134690339229074,
+            "ci_high": 0.8341242219396291,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.37545787545787546,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.33511904761904765,
+            "ci_high": 0.4157509157509158,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.0861227922624055,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 1.9309182085786376,
+            "ci_high": 2.235143737258681,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.3755; ceiling 2.663 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.6634146341463416,
+          "lift_fraction_of_ceiling": 0.7832512315270936,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 375.45787545787545,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.18,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 16,
+          "threshold": 2.6923144105239776e-06,
+          "ucb": 0.17769666951125687,
+          "k_false_positives": 49,
+          "achieved_fpr": 0.14285714285714285,
+          "achieved_fpr_on_measured_set": 0.14285714285714285,
+          "recall": {
+            "name": "recall",
+            "value": 0.7931034482758621,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7354458450046686,
+            "ci_high": 0.8527956106300388,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.7666666666666667,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7040187096358916,
+            "ci_high": 0.8243302513039356,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.38461538461538464,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.3443223443223443,
+            "ci_high": 0.4249084249084249,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.0620689655172413,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 1.9121591970121383,
+            "ci_high": 2.2172685876381006,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.3846; ceiling 2.600 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.5999999999999996,
+          "lift_fraction_of_ceiling": 0.7931034482758621,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 384.61538461538464,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.19,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 15,
+          "threshold": 2.579893816800905e-06,
+          "ucb": 0.18715042802893478,
+          "k_false_positives": 52,
+          "achieved_fpr": 0.15160349854227406,
+          "achieved_fpr_on_measured_set": 0.15160349854227406,
+          "recall": {
+            "name": "recall",
+            "value": 0.7931034482758621,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7354458450046686,
+            "ci_high": 0.8527956106300388,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.755868544600939,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.6926829268292682,
+            "ci_high": 0.8141624525916562,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.3901098901098901,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.34798534798534797,
+            "ci_high": 0.43223443223443225,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.0330257406508014,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 1.885227377335911,
+            "ci_high": 2.186039452600945,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.3901; ceiling 2.563 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.563380281690141,
+          "lift_fraction_of_ceiling": 0.7931034482758621,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 390.1098901098901,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        },
+        {
+          "target_fpr": 0.2,
+          "certified": true,
+          "reason": "certified",
+          "n_units": 343,
+          "min_units_required": 14,
+          "threshold": 2.2525946405949075e-06,
+          "ucb": 0.19969974893155654,
+          "k_false_positives": 56,
+          "achieved_fpr": 0.16326530612244897,
+          "achieved_fpr_on_measured_set": 0.16326530612244897,
+          "recall": {
+            "name": "recall",
+            "value": 0.812807881773399,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.7549951923076923,
+            "ci_high": 0.8659876509179117,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "precision": {
+            "name": "precision",
+            "value": 0.746606334841629,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.6844358168958398,
+            "ci_high": 0.8044789644012944,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "flag_rate": {
+            "name": "flag_rate",
+            "value": 0.40476190476190477,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 0.3626373626373626,
+            "ci_high": 0.44505494505494503,
+            "ci_level": 0.95,
+            "unit": "rate",
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
+          },
+          "lift": {
+            "name": "lift",
+            "value": 2.0081135902636915,
+            "kind": "ESTIMATED",
+            "n": 546,
+            "ci_low": 1.8652822398190045,
+            "ci_high": 2.139498902267782,
+            "ci_level": 0.95,
+            "unit": "ratio",
+            "estimator": "recall interval at measured flag rate f=0.4048; ceiling 2.471 at base rate 0.3718 (max achievable lift is 1/max(base_rate, flag_rate))",
+            "convention": "two_sided_95"
+          },
+          "lift_ceiling": 2.4705882352941178,
+          "lift_fraction_of_ceiling": 0.8128078817733989,
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 404.76190476190476,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
+        }
+      ]
+    }
+  ]
+}

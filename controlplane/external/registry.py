@@ -289,8 +289,9 @@ PAIRINGS: dict[str, Pairing] = {
         detector=PRESIDIO,
         dataset=PII_200K,
         task=(
-            f"does the text contain a {entity}? Positive when the row carries an "
-            f"ai4privacy '{ds_label}' span."
+            f"does the text contain {'an' if entity[0] in 'AEIOU' else 'a'} "
+            f"{entity}? Positive when the row carries an ai4privacy "
+            f"'{ds_label}' span."
         ),
         items=_pii_items(ds_label),
         score=_presidio_scorer(entity),
