@@ -33,7 +33,7 @@
 
 <br/>
 
-<img src="https://img.shields.io/badge/Tests-904_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="904 tests" />
+<img src="https://img.shields.io/badge/Tests-907_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="907 tests" />
 &nbsp;
 <img src="https://img.shields.io/badge/Claims-40_verified-2da44e?style=for-the-badge" alt="40 claims verified" />
 &nbsp;
@@ -244,7 +244,7 @@ controlplane/          the package — model, store, validation, matrix, drift, 
 evalsets/ & results/   frozen content-hashed evaluation sets; every artifact behind the table above
 scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
-tests/                 904 tests, including the ones that enforce this README
+tests/                 907 tests, including the ones that enforce this README
 docs/                  spec, methods, limitations, the case matrix, and the move mapping
 DECISIONS.md           130 append-only decision entries
 reports/               one close-out report per phase — read PHASE-0.md first
@@ -318,7 +318,7 @@ tour is [docs/CODE_TOUR.md](docs/CODE_TOUR.md).
 | Target | Without `make` | Requires | Time | Proves |
 |:---|:---|:---|:---|:---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | The clone works and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 904 tests green |
+| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 907 tests green |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **Every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` (tier 3) | `python scripts/verify.py` | CPU + cached activations | ~4 min | The frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | Activations regenerate from the source model |

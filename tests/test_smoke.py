@@ -539,6 +539,8 @@ def test_every_script_has_a_smoke_test() -> None:
         "17_presidio_coverage.py",
         # test_smoke_fpr_sweep
         "19_fpr_sweep.py",
+        # test_smoke_calibration_power
+        "21_calibration_power.py",
         # test_smoke_the_smoke_check_itself
         "smoke.py",
         # test_smoke_verify_claims_only, test_verify_exits_non_zero_on_drift
@@ -898,6 +900,50 @@ def test_smoke_fpr_sweep(tmp_path: Path) -> None:
     markdown = (sweep_dir / "SWEEP.md").read_text(encoding="utf-8")
     assert "## Verdict" in markdown
     assert "in-sample" in markdown, "the selection caveat left the document"
+
+
+def test_smoke_calibration_power(tmp_path: Path) -> None:
+    """`21_calibration_power.py` answers D15 from the declared budgets alone.
+
+    CPU, no cache, no scores -- a binomial power question about the flag rate.
+    Asserts the monotonicity that makes the table meaningful rather than merely
+    that it was written: a tighter tolerance always needs more items, and a
+    tighter budget needs more items at a fixed tolerance.
+    """
+    run_script("21_calibration_power.py", out=tmp_path)
+    payload = json.loads(
+        (tmp_path / "calibration_power" / "calibration_power.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert payload["n_available"] == 600
+    rows = payload["budgets"]
+    assert len(rows) >= 4, "the three profiles and the shipped point"
+
+    for row in rows:
+        required = [row["n_required"][f"{t:.2f}"] for t in (0.05, 0.10, 0.25, 0.50)]
+        assert required == sorted(required, reverse=True), (
+            f"{row['name']}: a looser tolerance asked for MORE items, which "
+            "inverts the power relation"
+        )
+        detectable = row["smallest_detectable_at_n_available"]
+        if detectable is not None:
+            # The claim has to survive its own estimator.
+            from controlplane.validation.calibration import n_to_detect_deviation
+            assert n_to_detect_deviation(row["target_flag_rate"], detectable) <= 600
+            assert row["meets_10_percent_bar"] == (detectable <= 0.10)
+
+    by_budget = sorted(rows, key=lambda r: r["target_flag_rate"])
+    tightest, loosest = by_budget[0], by_budget[-1]
+    assert tightest["n_required"]["0.10"] > loosest["n_required"]["0.10"], (
+        "a tighter flag-rate budget must need MORE items at the same tolerance"
+    )
+
+    text = (tmp_path / "calibration_power" / "CALIBRATION_POWER.md").read_text(
+        encoding="utf-8"
+    )
+    assert "1441" in text, "the figure this phase quoted is not located in the table"
+    assert "needs a GPU" in text, "the expansion must not read as done"
 
 
 def test_smoke_pilot_freeze(tmp_path: Path) -> None:

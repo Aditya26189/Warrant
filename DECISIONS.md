@@ -6007,3 +6007,65 @@ claim: this establishes that the threshold does not depend on the items it is
 scored against, not that it transfers to another corpus. The long-context
 transfer set is the nearest thing to the second question and is reported
 separately.
+
+## 135 - T3 is blocked on extraction, and 1441 is the n for a 25% deviation, not a 10% one
+
+- **Date:** 2026-09-08
+- **Status:** OPEN — needs human review (the expansion); the power analysis is DECIDED
+- **Commit:** 088bcc2
+
+**Context.** D14 asks for n⁻ ≥ 1441 negatives. The entire extracted corpus holds
+**1280** negatives across all three splits — 161 short before the train split is
+even excluded, and the train split cannot be certified against because it fits
+the probe. The expansion needs activations for items that do not exist, which is
+GPU work and the one part of D12's session that is genuinely required.
+
+**Decision.** T3 ships the part that needs no GPU — the power analysis D15 asks
+for — and marks the expansion OPEN. Emitted to `results/calibration_power/`
+rather than the brief's `results/calibration_n1441/`: naming a directory for an
+n that was not reached would put a claim in a path.
+
+### Where 1441 comes from, and what it is not
+
+`n_to_detect_deviation(0.05, 0.25) = 1441`. It is the sample needed to detect a
+**25%** relative deviation from the **shipped point's 5% flag-rate budget**. The
+brief's framing — "detectable at 25% and not 10%, because n is 600 against a
+requirement of 1441" — reads as though 1441 buys the 10% bar. It does not:
+
+    budget   n for 25%   n for 10%
+    0.05        1441        7987
+    0.10         673        3761
+    0.20         289        1649
+    0.50          58         381
+
+Detecting 10% at the shipped 0.05 budget needs **7987 items — 3.3x the entire
+2400-item corpus**. n = 1441 buys 25% at that budget and nothing tighter.
+
+**Why the requirement explodes as the budget tightens.** n scales as
+`z²·p'(1−p')/(p·t)²` with `p' = p(1+t)`. The numerator falls roughly linearly in
+`p` while the denominator falls as `p²`, so halving the budget roughly doubles
+the sample needed at a fixed relative tolerance. A tight flag-rate budget is
+intrinsically expensive to calibrate, and that is a property of the binomial,
+not of this probe.
+
+### What is detectable today, at n = 600
+
+    profile              budget   smallest detectable relative deviation
+    decision_support      0.50     8.0%
+    internal_knowledge    0.20    17.0%
+    customer_support      0.10    26.7%
+
+**D15's 10% bar is already met for `decision_support`** and is out of reach for
+the other two at any n this project will plausibly extract. Reported as measured
+rather than tuned, per D15's own instruction.
+
+**Consequence for the expansion.** Extraction should be sized against the
+profile whose calibration actually gates a deploy, not against 1441 as a round
+number. Reaching 10% for `internal_knowledge` needs 1649 items and is the
+cheapest meaningful target; `customer_support` needs 3761; the shipped 0.05
+budget needs 7987 and should probably be recognised as uncalibratable at this
+corpus size rather than pursued.
+
+**The objection.** *"You did not do T3."* Correct — the half that needs a GPU is
+not done and is marked OPEN. The half that does not need one is done, and it
+changes what the GPU half should be asked to buy.

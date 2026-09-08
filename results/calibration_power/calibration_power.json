@@ -1,0 +1,271 @@
+{
+  "provenance": {
+    "timestamp_utc": "2026-09-08T17:01:53+00:00",
+    "git_commit": "088bcc210282cd4254c8a39713835bc571669ed4",
+    "git_branch": "main",
+    "dirty": true,
+    "dirty_paths": [
+      "DECISIONS.md",
+      "scripts/21_calibration_power.py"
+    ],
+    "dirty_excludes": "results",
+    "python": "3.12.10",
+    "libraries": {
+      "torch": "2.9.1",
+      "transformers": "5.8.0",
+      "scikit-learn": "1.7.2",
+      "numpy": "2.2.6",
+      "scipy": "1.16.3",
+      "pandas": "2.3.3",
+      "statsmodels": "0.14.6",
+      "presidio-analyzer": "2.2.364",
+      "bitsandbytes": "0.49.2"
+    },
+    "device": {
+      "platform": "Windows-11-10.0.26200-SP0",
+      "processor": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD",
+      "cuda_available": false,
+      "device_name": "cpu"
+    },
+    "config_hash": "533fb74983fcd8af",
+    "seed": 1729,
+    "config": {
+      "seed": 1729,
+      "workload": {
+        "name": "enterprise-3pct",
+        "monthly_interactions": 200000,
+        "base_error_rate": 0.03,
+        "review_minutes_per_item": 3.0,
+        "reviewer_monthly_cost_inr": 85000.0,
+        "reviewer_productive_hours": 160.0,
+        "measured_tpr": 0.1416,
+        "measured_fpr": 0.011
+      },
+      "model": {
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "quantization": "nf4",
+        "layer_fractions": [
+          0.29,
+          0.39,
+          0.5,
+          0.61,
+          0.71,
+          0.82,
+          0.93
+        ],
+        "prefill_chunk_tokens": 2048
+      },
+      "probe": {
+        "aggregations": [
+          "mean_pool",
+          "max_rolling_means",
+          "last_token"
+        ],
+        "rolling_window": 64,
+        "rolling_stride": 32,
+        "standardize": true,
+        "class_weight": "balanced",
+        "C_grid": [
+          0.0001,
+          0.001,
+          0.01,
+          0.1,
+          1.0
+        ],
+        "positive_class": "incorrect"
+      },
+      "evalsets": [
+        {
+          "id": "triviaqa-600",
+          "pad_tokens": null
+        },
+        {
+          "id": "triviaqa-longctx-600",
+          "pad_tokens": [
+            4000,
+            16000
+          ]
+        },
+        {
+          "id": "hinglish-pii-200",
+          "pad_tokens": null
+        },
+        {
+          "id": "hard-negatives-200",
+          "pad_tokens": null
+        },
+        {
+          "id": "canary-20",
+          "pad_tokens": null
+        }
+      ],
+      "validation": {
+        "bootstrap_samples": 1000,
+        "ci": 0.95,
+        "min_n_test": 200,
+        "min_auroc_lower_ci": 0.55,
+        "warrant_ttl_hours": 24,
+        "controls": [
+          "padding_fault",
+          "label_shuffle",
+          "null_feature",
+          "canary",
+          "determinism"
+        ],
+        "null_control_band": [
+          0.45,
+          0.55
+        ],
+        "null_control_min_repeats": 8,
+        "null_control_max_repeats": 200,
+        "calibration_tolerance": 0.25
+      },
+      "drift": {
+        "window_size": 200,
+        "psi_stable": 0.1,
+        "psi_significant": 0.25,
+        "mmd_permutations": 500,
+        "features": [
+          "token_length",
+          "script_mix",
+          "embedding_centroid_distance",
+          "reference_perplexity",
+          "category_mix"
+        ],
+        "max_false_alarm_rate": 0.05
+      },
+      "sampling": {
+        "allocation_month_one": "proportional",
+        "allocation_thereafter": "neyman",
+        "expected_design_effect": 0.67,
+        "score_bands": 4,
+        "double_label_fraction": 0.1,
+        "recall_margin_tiers": [
+          0.05,
+          0.02
+        ],
+        "blind_queue": true
+      },
+      "policy": {
+        "engine": "opa",
+        "fail_closed_on_missing_warrant": true,
+        "weighted_error": {
+          "w_fpr_benign": 50.0,
+          "w_fnr": 5.0,
+          "w_fpr_hard_negative": 2.0
+        }
+      },
+      "profiles": {
+        "customer_support": {
+          "inline_budget_ms": 200,
+          "min_recall": 0.1,
+          "max_fpr_hard_negatives": 0.02,
+          "operating_point": "P-customer-support",
+          "target_flag_rate": 0.1,
+          "on_calibration_drift": "REFUSE",
+          "calibration_sensitivity": 0.25
+        },
+        "internal_knowledge": {
+          "inline_budget_ms": 500,
+          "min_recall": 0.25,
+          "max_fpr_hard_negatives": 0.05,
+          "operating_point": "P-internal-knowledge",
+          "target_flag_rate": 0.2,
+          "on_calibration_drift": "WIDEN_BUDGET",
+          "calibration_sensitivity": 0.25
+        },
+        "decision_support": {
+          "inline_budget_ms": 2000,
+          "min_recall": 0.5,
+          "max_fpr_hard_negatives": 0.1,
+          "operating_point": "P-decision-support",
+          "target_flag_rate": 0.5,
+          "on_calibration_drift": "IGNORE",
+          "calibration_sensitivity": 0.25
+        }
+      },
+      "detectors": {
+        "presidio_configs": [
+          "stock",
+          "enabled",
+          "enabled_plus_custom"
+        ],
+        "qwen3guard": "Qwen/Qwen3Guard-Gen-0.6B"
+      },
+      "store": {
+        "path": "results/controlplane.db",
+        "retention_days": 400,
+        "hash_chain": true
+      },
+      "paths": {
+        "results_dir": "results",
+        "evalsets_dir": "evalsets",
+        "policies_dir": "policies"
+      }
+    }
+  },
+  "question": "the smallest reliably detectable calibration deviation, at the n available today and at the n each tolerance would require (Phase 1 D15)",
+  "n_available": 600,
+  "declared_tolerance": 0.25,
+  "success_bar": 0.1,
+  "estimator": "n = z^2 * p'(1-p') / (p*t)^2 with p' = p(1+t), z = 1.96; controlplane.validation.calibration.n_to_detect_deviation",
+  "expansion_not_done": "D14's n- >= 1441 needs activations for items that do not exist: the extracted corpus holds 1280 negatives in total. DECISIONS 135.",
+  "budgets": [
+    {
+      "name": "(shipped P-conservative)",
+      "target_flag_rate": 0.05,
+      "n_required": {
+        "0.05": 30576,
+        "0.10": 7987,
+        "0.15": 3702,
+        "0.20": 2167,
+        "0.25": 1441,
+        "0.50": 427
+      },
+      "smallest_detectable_at_n_available": 0.41,
+      "meets_10_percent_bar": false
+    },
+    {
+      "name": "customer_support",
+      "target_flag_rate": 0.1,
+      "n_required": {
+        "0.05": 14441,
+        "0.10": 3761,
+        "0.15": 1738,
+        "0.20": 1015,
+        "0.25": 673,
+        "0.50": 196
+      },
+      "smallest_detectable_at_n_available": 0.267,
+      "meets_10_percent_bar": false
+    },
+    {
+      "name": "internal_knowledge",
+      "target_flag_rate": 0.2,
+      "n_required": {
+        "0.05": 6374,
+        "0.10": 1649,
+        "0.15": 756,
+        "0.20": 438,
+        "0.25": 289,
+        "0.50": 81
+      },
+      "smallest_detectable_at_n_available": 0.17,
+      "meets_10_percent_bar": false
+    },
+    {
+      "name": "decision_support",
+      "target_flag_rate": 0.5,
+      "n_required": {
+        "0.05": 1533,
+        "0.10": 381,
+        "0.15": 167,
+        "0.20": 93,
+        "0.25": 58,
+        "0.50": 12
+      },
+      "smallest_detectable_at_n_available": 0.08,
+      "meets_10_percent_bar": true
+    }
+  ]
+}
