@@ -291,6 +291,12 @@ issue external certificates and it is not a gateway.
 report is presented for review before the phase is called done.** One per
 phase, no exceptions, written at close rather than during the build.
 
+**The report is a markdown file in this repository and nothing else.** Do not
+publish it as an artifact, a hosted page, or any other rendered copy —
+"presented for review" means writing the file and pointing at the path. A
+second copy somewhere else is a copy that drifts from the one under version
+control, and the repo is where a reviewer already is.
+
 A report states, in this order: the question the phase existed to answer and
 the answer; what was done, task by task; what was found, with every number
 traceable to an artifact in `results/`; what the work does **not** establish;
