@@ -6222,3 +6222,101 @@ needed no gate. That is the honest accounting. The tool is now usable by someone
 outside this repository, which was the phase's stated purpose; what remains
 unmeasured is unchanged from Phase 1 and is named in `README.md` rather than
 implied away.
+
+## 139 - Phase 3 feasibility survey: what can be certified without a GPU or a paid key
+
+- **Date:** 2026-09-09
+- **Status:** DECIDED
+- **Commit:** 3d68551
+- **Access date for every source below:** 2026-09-09
+
+**Context.** T1 gates the phase: fewer than three feasible detector-dataset
+pairings including Presidio and Phase 3 stops. Feasible means the detector runs
+on CPU with no paid API, the dataset is public and not built here, and the
+pairing yields enough negatives to certify somewhere on the 0.01-0.20 grid.
+
+**Verdict: the gate is met.** Seven pairings are feasible, five of them
+Presidio.
+
+### The pairings
+
+Counts are measured on the slices named, not estimated.
+
+| detector | dataset | task | positives | negatives | verdict |
+|---|---|---|---:|---:|---|
+| presidio-analyzer 2.2.364 | ai4privacy/pii-masking-200k | EMAIL_ADDRESS | 163 | 1837 | FEASIBLE |
+| presidio-analyzer 2.2.364 | ai4privacy/pii-masking-200k | CREDIT_CARD | 129 | 1871 | FEASIBLE |
+| presidio-analyzer 2.2.364 | ai4privacy/pii-masking-200k | IP_ADDRESS | 127 | 1873 | FEASIBLE |
+| presidio-analyzer 2.2.364 | ai4privacy/pii-masking-200k | PHONE_NUMBER | 107 | 1893 | FEASIBLE |
+| presidio-analyzer 2.2.364 | ai4privacy/pii-masking-200k | URL | 129 | 1871 | FEASIBLE |
+| protectai/deberta-v3-base-prompt-injection-v2 | deepset/prompt-injections | prompt injection | 203 | 343 | FEASIBLE |
+| probe-qwen2.5-7b-instruct-T1-last_token (ours) | triviaqa-600 | answer incorrectness | 277 | 323 | FEASIBLE (already measured, Phase 1) |
+
+Every negative count clears 299, the requirement for the tightest budget on the
+grid, except `deepset/prompt-injections` at 343 in its train split — which also
+clears it.
+
+### Sources, with revisions
+
+| source | revision | licence |
+|---|---|---|
+| `ai4privacy/pii-masking-200k` | `7c22e6816b8fc24b7781e9f4e22016c698842dd0` | **not declared in card metadata** |
+| `deepset/prompt-injections` | `4f61ecb038e9c3fb77e21034b22511b523772cdd` | apache-2.0 |
+| `jackhhao/jailbreak-classification` | `2f2ceeb39658696fd3f462403562b6eea5306287` | apache-2.0 |
+| `protectai/deberta-v3-base-prompt-injection-v2` | `90c9989b1a342275dd0d1a95aad283c04e075671` | apache-2.0 |
+
+`ai4privacy/pii-masking-200k` declares no licence. No dataset is redistributed
+in this repository regardless — every one is fetched by script at run time
+(D32) — but an undeclared licence is recorded rather than assumed permissive.
+
+### How a PII dataset with no negatives yields a certifiable task
+
+**Every row of `pii-masking-200k` contains PII**: zero of 400 sampled rows have
+an empty span list. As a "does this contain PII" task it is single-class and no
+false-positive rate can be bounded on it at all.
+
+The task is therefore defined **per entity type**, using the dataset's own
+annotations: positive if the row carries a span of that type, negative if it
+does not. Negatives still contain other PII, which is correct — the question
+being certified is *"does this text contain a credit card number"*, not *"is
+this text clean"*.
+
+Nothing is constructed here. The partition comes from the dataset's labels, and
+the alternative — pairing these positives with negatives drawn from some general
+corpus — would have been construction, and worse: a Wikipedia sentence naming a
+person **does** contain PII, so labelling it negative would put wrong labels
+into a false-positive rate.
+
+### What is INFEASIBLE, and the one that matters
+
+**D33's Indian identifier classes cannot be done as specified.** No public
+dataset with Aadhaar, PAN, UPI or IFSC labels was located. `pii-masking-200k`
+carries 56 entity types across a 6000-row English sample and none is an Indian
+identifier.
+
+That is a gap in available public data rather than a finding about Presidio, and
+it is worth separating from what this project already measured: presidio-analyzer
+2.2.364 exposes **19 supported entities**, measured by calling
+`get_supported_entities()`, and none is India-specific (`results/presidio_coverage.json`,
+`DECISIONS.md` 118). Coverage was already established. What cannot be done is
+*certifying* Presidio on Indian identifiers at a budget, because no public
+labelled data exists to certify against.
+
+Presidio still receives the fullest treatment available: five entity types,
+which is more than any other detector in the matrix.
+
+Also infeasible and not pursued: any detector requiring a GPU or a paid API
+(D31), which is unchanged from `DECISIONS.md` 138.
+
+### Measured feasibility inputs
+
+- presidio-analyzer: **0.025 s/doc** after warmup, so 2000 documents is under a
+  minute.
+- protectai injection classifier: loads on CPU, `id2label` is
+  `{0: 'SAFE', 1: 'INJECTION'}` read from the loaded config, **62 ms/doc**.
+- `jackhhao/jailbreak-classification` is reachable and balanced (517 benign /
+  527 jailbreak) but is **not paired** in this phase: applying an
+  injection-trained classifier to jailbreak prompts measures transfer to a task
+  the model does not claim, and reporting that beside its own task would invite
+  exactly the misreading D36 forbids. Recorded as available for a later phase
+  with a detector that claims the task.
