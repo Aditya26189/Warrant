@@ -4,7 +4,7 @@
 budget, not the probe's ability to separate the classes.
 
 - **Window:** 2026-09-07 → 2026-09-08
-- **Range:** `1a9c4a7` → `db934b9`, 16 commits, pushed to `origin/main`
+- **Range:** `c0796e6` → `db934b9`, 16 commits, pushed to `origin/main`
 - **Suite:** 870 passing at open → 893 at close, no failures at either end
 - **Verification:** `verify.py` 36/36 claims, 24/24 frozen-score comparisons
 - **Method:** re-analysis of frozen scores only. No inference, no refit, no
@@ -35,7 +35,7 @@ weak, we say so, and the product is the refusal machinery. Nothing in
 
 | Task | Outcome |
 |---|---|
-| **T0** baseline | 870 tests passing at `1a9c4a71`; `verify.py` tier 1 31/31, tier 2 24/24, tier 3 SKIPPED. Two untracked ffmpeg logs gitignored so artifacts could record `dirty: false` (`DECISIONS.md` 121). |
+| **T0** baseline | 870 tests passing at `c0796e61`; `verify.py` tier 1 31/31, tier 2 24/24, tier 3 SKIPPED. Two untracked ffmpeg logs gitignored so artifacts could record `dirty: false` (`DECISIONS.md` 121). |
 | **T1** locate scores | `results/scores/validation-T1-last_token.json` (primary) and `transfer-T1-last_token.json` (secondary). Both `data_source: measured`, both test-split, 600 items, 277 positive / 323 negative. |
 | **T2** the sweep | `controlplane/validation/fpr_sweep.py` computes, `controlplane/report/sweep.py` renders, `controlplane/report/plots.py` draws, `scripts/19_fpr_sweep.py` wires. Calls the existing `certify_fpr` and `build_warrant_metrics` — no bound and no estimator reimplemented (`DECISIONS.md` 127). |
 | **T3** tests | `tests/test_fpr_sweep.py`, 18 tests covering the four required properties, plus a real end-to-end smoke test rather than an exemption. |
@@ -51,9 +51,19 @@ weak, we say so, and the product is the refusal machinery. Nothing in
 ### The criterion, registered before the run
 
 Lift **holds** at a target FPR when the lower bound of its 95% interval is
-strictly above 1.0. Written into `DECISIONS.md` 126 and committed at `2634d89`
-— *before* the sweep first ran at `e76f5e3`. The criterion cannot be said to
-have been fitted to the answer, and the commit order is the evidence.
+strictly above 1.0. Written into `DECISIONS.md` 126 and committed at `337dc7c`
+— *before* the sweep first ran, from the tree at `e58a43d`, and before the
+published artifacts were generated at `0b5964b`. The criterion cannot be said
+to have been fitted to the answer, and the commit order is the evidence:
+`git merge-base --is-ancestor 337dc7c 0b5964b` succeeds, and the author dates
+are 22:11:28 against 22:23:37.
+
+> **SHAs corrected 2026-09-08.** This report originally cited `2634d89` and
+> `e76f5e3`. An authorship rewrite after the report was written changed every
+> SHA in the phase, dangling those citations — they still resolved locally,
+> because unreferenced objects survive until `gc`, but were unreachable from
+> any ref and absent from a fresh clone. The old-to-new mapping is recorded in
+> `DECISIONS.md` 131; the ordering the claim rests on is unchanged.
 
 The same entry registered the harder half: recall counts as a **dial** only if
 it clears the **upper bound** of the shipped point's own 95% recall interval

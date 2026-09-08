@@ -153,20 +153,41 @@ def test_a_selector_key_may_itself_be_dotted() -> None:
     assert resolve(doc, "ops[op.id=P-y].v") == 9
 
 
-def test_the_readme_test_count_is_the_real_one() -> None:
-    """A hardcoded count in the README drifts the moment a test is added.
+#: Every file that states a test count in prose. A count here is a claim like
+#: any other; it just lives in the suite rather than in an artifact, so it is
+#: checked against the suite.
+#:
+#: The Makefile joined this list after drifting by **300 tests** -- it said 584
+#: while the suite collected 893 -- through the whole of Phase 0, because only
+#: the README was policed. One file being checked is what let the other rot:
+#: whoever updated the README had no reason to think anything else stated it.
+FILES_STATING_A_TEST_COUNT = ("README.md", "Makefile")
 
-    It drifted twice while Block E was being written, which is why this is a
-    check rather than a note asking someone to remember. The count is a claim
-    like any other; it just happens to live in the suite instead of in an
-    artifact, so it is checked against the suite.
+
+def test_every_stated_test_count_is_the_real_one() -> None:
+    """A hardcoded count drifts the moment a test is added.
+
+    It drifted twice while Block E was being written and once more across all of
+    Phase 0, which is why this is a check rather than a note asking someone to
+    remember.
     """
     import re
     import subprocess
     import sys
 
-    stated = {int(m) for m in re.findall(r"(\d{3,4}) tests", README.read_text(encoding="utf-8"))}
-    assert stated, "README.md no longer states a test count"
+    stated: dict[str, set[int]] = {}
+    for name in FILES_STATING_A_TEST_COUNT:
+        path = PROJECT_ROOT / name
+        assert path.is_file(), f"{name} is missing"
+        found = {
+            int(m) for m in re.findall(r"(\d{3,4}) tests", path.read_text(encoding="utf-8"))
+        }
+        assert found, (
+            f"{name} no longer states a test count. If that is deliberate, drop "
+            "it from FILES_STATING_A_TEST_COUNT rather than leaving a check that "
+            "silently passes on a file it is not reading."
+        )
+        stated[name] = found
 
     result = subprocess.run(
         [sys.executable, "-m", "pytest", "--collect-only", "tests/"],
@@ -177,8 +198,10 @@ def test_the_readme_test_count_is_the_real_one() -> None:
         "could not read a collection count from pytest:\n" + result.stdout[-1500:]
     )
     collected = int(match.group(1))
-    assert stated == {collected}, (
-        f"README.md states {sorted(stated)} tests; pytest collects {collected}. "
-        "Update the README -- and if two different counts are stated, make them "
-        "agree."
+
+    wrong = {name: sorted(counts) for name, counts in stated.items() if counts != {collected}}
+    assert not wrong, (
+        f"pytest collects {collected} tests; these files disagree: {wrong}. "
+        "Update them -- and if one file states two different counts, make them "
+        "agree with each other as well."
     )

@@ -5773,3 +5773,74 @@ from sixteen commit messages, which is the first thing a reviewer asks.
 
 **Consequence.** A phase is not done when the tests pass. It is done when the
 report has been read.
+
+## 131 - The authorship rewrite dangled every SHA Phase 0 cited, including its provenance evidence
+
+- **Date:** 2026-09-08
+- **Status:** DECIDED
+- **Commit:** 5489301
+
+**Context.** After Phase 0's report was written, all commits were rewritten to a
+single authorship identity and to strip co-author trailers. That changed every
+SHA in the phase. `reports/PHASE-0.md`, `results/fpr_sweep/` and the `Commit:`
+field of entries 121-130 all cite the **pre-rewrite** hashes.
+
+They still resolve on this machine, which is the trap: the old objects sit
+unreferenced in the local object database and `git rev-parse` finds them
+happily. They are **unreachable from any ref**, so `git gc` will delete them and
+a fresh clone never had them. The check that tells the truth is
+`git merge-base --is-ancestor <sha> HEAD`, not `rev-parse`.
+
+Eight of the ten SHAs cited in the Phase 0 report failed that check. Among them
+were the two carrying the most valuable provenance claim in the repository:
+that the D6 criterion was committed *before* the sweep ran.
+
+**Decision.** Record the mapping here, correct the citations in
+`reports/PHASE-0.md`, and regenerate the `results/fpr_sweep/` artifacts so their
+recorded provenance names a reachable commit. Entries 121-130 keep their
+original `Commit:` values -- this file is append-only, and an entry edited after
+the fact is worth less than one that is wrong in a documented way. This entry
+supersedes those fields.
+
+**The mapping**, reconstructed by tree identity (content is unchanged by an
+authorship rewrite, so each old commit has exactly one tree-identical
+successor, and every subject matched):
+
+| old (cited) | new (reachable) | subject |
+|---|---|---|
+| `1a9c4a71e` | `c0796e614` | chore: ignore ffmpeg two-pass logs |
+| `2634d89ed` | `337dc7cfd` | **docs(decisions): the criteria registered before the run** |
+| `a7236f316` | `5888604da` | feat(validation): sweep the FPR budget |
+| `75cfcf662` | `978e695d3` | feat(report): render and plot the sweep |
+| `a07f4d351` | `e58a43de5` | **test: the four properties + CLI wrapper** (tree the first sweep ran from) |
+| `e1692f13c` | `29ca96d23` | fix(report): title clipped |
+| `e76f5e3d0` | `0b5964bbb` | fix(report): caption ran off the edge |
+| `2e8cb6c52` | `6f803af1b` | exp: the FPR sweep answers Phase 0 |
+| `95c00083b` | `6459d7d47` | docs: rename to Warrant |
+| `90c477d99` | `68e7c1397` | docs: Phase 0 close-out |
+| `8d638be7b` | `422fff688` | fix: close a fixture leak |
+| `0a7992ab8` | `7a938265a` | fix(report): header rendered as two lists |
+| `9a1d5e9b1` | `d35beeefe` | exp: regenerate after the fixture-leak fix |
+| `8bbaa831a` | `932ed1edc` | docs: record the fixture leak |
+| `f7119dc83` | `db934b9a0` | docs: the project is Warrant |
+
+**The provenance claim survives.** `337dc7c` (criterion registered) is an
+ancestor of `e58a43d` (the tree the sweep first ran from) and of `0b5964b` (the
+tree the published artifacts were generated from). Author dates agree:
+22:11:28 against 22:23:37 on 2026-09-07. Both are reachable from `HEAD`. The
+claim that the criterion was registered before the run is still checkable by a
+third party, at different hashes.
+
+**Consequences.** A rewrite of authorship is not a cosmetic operation when
+documents cite hashes: it silently invalidates every citation, and it does so in
+a way that is invisible locally because the old objects survive until `gc`. Two
+rules follow, and T0 of Phase 1 exists because of the second:
+
+1. Cite SHAs in prose sparingly, and check reachability rather than resolution
+   when verifying them.
+2. Rewrite history *before* writing the documents that cite it, or not at all.
+
+**The objection.** *"You changed the hashes in the report, so the report no
+longer says what it originally said."* Correct, and the alternative is a report
+whose evidence a reviewer cannot check. The old hashes are preserved in the
+table above, so the correction is auditable in both directions.
