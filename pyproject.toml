@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "warrant"
+version = "0.2.0"
+description = "Certify a detector against a false-positive budget, or refuse."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+
+# Deliberately minimal. The customer path -- `warrant certify` -- reads a CSV and
+# does binomial arithmetic; it needs numpy, scipy and a YAML parser and nothing
+# else. torch, transformers and the rest belong to the research pipeline and are
+# in requirements.txt, so a prospective user installing this to try their own
+# scores does not pull a deep-learning stack to do it.
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "PyYAML>=6.0",
+]
+
+[project.scripts]
+warrant = "controlplane.cli:main"
+
+[tool.setuptools]
+# The package is `controlplane` and the product is Warrant. That split is
+# deliberate and documented: renaming the package touches 170 files and no user
+# ever sees it. DECISIONS 122, D1.
+packages = [
+    "controlplane",
+    "controlplane.demo",
+    "controlplane.detectors",
+    "controlplane.drift",
+    "controlplane.economics",
+    "controlplane.evalsets",
+    "controlplane.extract",
+    "controlplane.gateway",
+    "controlplane.intake",
+    "controlplane.matrix",
+    "controlplane.model",
+    "controlplane.policy",
+    "controlplane.report",
+    "controlplane.store",
+    "controlplane.validation",
+]

@@ -27,6 +27,7 @@
 | 🔍 **Checking whether a number is real** | [../README.md](../README.md) claim table → [ARTIFACTS.md](ARTIFACTS.md) → [METHODS.md](METHODS.md) → `make verify` |
 | 🕵️ **Looking for the flaw** | [LIMITATIONS.md](LIMITATIONS.md) → [../DECISIONS.md](../DECISIONS.md) → [CASES.md](CASES.md) → [TESTING.md](TESTING.md) |
 | 🎤 **Presenting it** | [DIAGRAMS.md](DIAGRAMS.md) → [JOURNEY.md](JOURNEY.md) → [DEMO.md](DEMO.md) → [DEMO_SCRIPT.md](DEMO_SCRIPT.md) |
+| 📥 **Bringing your own data** | [INPUT.md](INPUT.md) → [../examples/README.md](../examples/README.md) |
 | 💬 **Confused by a word** | [GLOSSARY.md](GLOSSARY.md) |
 
 ---
@@ -41,6 +42,7 @@
 | 🗺️ [DIAGRAMS.md](DIAGRAMS.md) | What does the system look like? Eleven diagrams: the three objects, the pipeline, the warrant lifecycle, the controls, policy, composition, drift, verification, the Round 1 → Round 2 journey, and the repository end to end |
 | 🌱 [ONBOARDING.md](ONBOARDING.md) | I have one hour. What do I read, run, and look at, in what order? |
 | 🧭 [CODE_TOUR.md](CODE_TOUR.md) | What is in each package under `controlplane/`, and which file do I open for X? |
+| 📥 [INPUT.md](INPUT.md) | I have my own scores and labels. What file does Warrant want, what does it reject, and when does it refuse? |
 | ⚙️ [SETUP.md](SETUP.md) | How do I get this running — laptop, GPU notebook, offline machine? |
 | 📓 [RUNBOOK.md](RUNBOOK.md) | What does each script do, what does it read, what does it write, and when would I run it? |
 | 🚑 [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | It crashed, or it refused. What does this mean and what do I do? |

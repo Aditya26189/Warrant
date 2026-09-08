@@ -98,3 +98,9 @@ ffmpeg2pass-*.log.mbtree
 # path, so an untracked PDF would stamp dirty: true on every number generated
 # while it sits here.
 *.pdf
+
+# Warrant records written by running the examples. Outputs, not inputs: they
+# carry the git state and timestamp of whoever ran them, so committing one
+# would put a stranger's provenance in this repository.
+examples/*.warrant.json
+*.warrant.json

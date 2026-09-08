@@ -33,7 +33,7 @@
 
 <br/>
 
-<img src="https://img.shields.io/badge/Tests-907_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="907 tests" />
+<img src="https://img.shields.io/badge/Tests-952_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="952 tests" />
 &nbsp;
 <img src="https://img.shields.io/badge/Claims-40_verified-2da44e?style=for-the-badge" alt="40 claims verified" />
 &nbsp;
@@ -100,16 +100,55 @@ return nothing at all.
 
 <br/>
 
-## ⚡ Quickstart
+## ⚡ Quickstart — certify your own detector
 
-> Under five minutes on a laptop. No GPU, no network after the clone.
+> Five minutes on a laptop. No GPU, no model, and **nothing leaves your machine**:
+> no network calls, no telemetry, no uploads. The file is read, the arithmetic is
+> local, the record is written next to it.
 
 ```bash
 git clone https://github.com/Aditya26189/Warrant.git
 cd Warrant
-git fetch origin "refs/notes/*:refs/notes/*"     # see "Reading the history" below
 python -m venv .venv && . .venv/bin/activate     # Windows: .venv\Scripts\activate
+pip install numpy scipy pyyaml
+
+# 1. a detector with enough evidence behind it
+python warrant.py certify --input examples/certifies.csv --budget 0.05
+
+# 2. the same tool refusing -- this is the one that matters
+python warrant.py certify --input examples/refuses.csv --budget 0.01
+```
+
+The first prints a threshold, a Clopper-Pearson bound on its false-positive
+rate, and what the detector does there — recall, precision, flag rate and lift,
+each with a 95% interval.
+
+The second **refuses**, and exits 0 while doing it. A 1% budget needs 299 clean
+negative items to certify at 95% confidence; that file has 37. No threshold on
+it can be certified at that budget however good the detector is, so Warrant says
+so and names both numbers. That is the tool working — a system that always
+returns a number returns one when it has no business doing so, and that number
+looks exactly like the ones that were earned.
+
+Then run your own. Three columns — `id`, `label` (0/1, **1 = the detector should
+fire**), `score` (higher = more likely class 1):
+
+```bash
+python warrant.py certify --input your_scores.csv --budget 0.05
+```
+
+Full contract in **[docs/INPUT.md](docs/INPUT.md)**; the two examples are
+explained in [examples/README.md](examples/README.md). `pip install -e .` gives
+you `warrant certify` as a command instead of `python warrant.py`.
+
+<details>
+<summary><strong>Reproducing this project's own measurements instead</strong></summary>
+
+<br/>
+
+```bash
 pip install -r requirements.lock.txt
+git fetch origin "refs/notes/*:refs/notes/*"     # see "Reading the history" below
 make verify
 ```
 
@@ -118,6 +157,8 @@ measured on your machine, then recomputes every metrics block from the frozen
 per-item scores in `results/scores/`. It exits non-zero if any of them drift.
 Both of those run on a fresh clone; a third, deeper check re-derives the scores
 from cached activations and reports SKIPPED without them.
+
+</details>
 
 ---
 
@@ -244,7 +285,7 @@ controlplane/          the package — model, store, validation, matrix, drift, 
 evalsets/ & results/   frozen content-hashed evaluation sets; every artifact behind the table above
 scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
-tests/                 907 tests, including the ones that enforce this README
+tests/                 952 tests, including the ones that enforce this README
 docs/                  spec, methods, limitations, the case matrix, and the move mapping
 DECISIONS.md           136 append-only decision entries
 reports/               one close-out report per phase — read PHASE-0.md first
@@ -318,7 +359,7 @@ tour is [docs/CODE_TOUR.md](docs/CODE_TOUR.md).
 | Target | Without `make` | Requires | Time | Proves |
 |:---|:---|:---|:---|:---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | The clone works and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 907 tests green |
+| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 952 tests green |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **Every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` (tier 3) | `python scripts/verify.py` | CPU + cached activations | ~4 min | The frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | Activations regenerate from the source model |
