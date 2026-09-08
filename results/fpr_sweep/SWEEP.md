@@ -2,7 +2,7 @@
 
 Re-analysis of frozen scores in `results/scores/validation-T1-last_token.json`. No inference was run: every number is a function of the committed labels, scores and question ids.
 
-- commit `29e568dda8e1` · dirty `False` · config `533fb74983fcd8af`
+- commit `ba3b4fe9e03d` · dirty `False` · config `533fb74983fcd8af`
 - detector `probe-qwen2.5-7b-instruct-T1-last_token` · envelope `sha256:e77c64f908491ad1`
 - certification: Clopper-Pearson one-sided upper bound at alpha 0.050, via `certify_fpr`
 - intervals: percentile bootstrap, 1000 resamples over questions, seed 1729
@@ -80,7 +80,7 @@ Everything flagged routes to the expensive check, so the flag rate is the bill. 
 
 **Most recall available** — target 0.20: recall 0.6462, costing 385 judge calls per 1000 requests (38.5% of this envelope). Within budget for: `decision_support`.
 
-**Best lift per flagged item** — target 0.01: lift 2.166 (100% of ceiling) at recall 0.0108, costing 5 calls per 1000. Within budget for: `customer_support`, `decision_support`, `internal_knowledge`.
+**Best lift per flagged item** — target 0.03: lift 1.978 (91% of ceiling) at recall 0.1516, costing 77 calls per 1000. Within budget for: `customer_support`, `decision_support`, `internal_knowledge`.
 
 The operating point is a business choice between the two, and this table is the whole of what the measurement can say about it. Which profile a point can actually serve is decided by the policy layer, which conjoins a recall floor and an FPR ceiling to the flag-rate budget; fitting the budget is necessary and not sufficient.
 
@@ -103,7 +103,7 @@ The threshold at each grid point is certified on the **same** frozen test split 
 
 Re-analysis of frozen scores in `results/scores/transfer-T1-last_token.json`. No inference was run: every number is a function of the committed labels, scores and question ids.
 
-- commit `29e568dda8e1` · dirty `False` · config `533fb74983fcd8af`
+- commit `ba3b4fe9e03d` · dirty `False` · config `533fb74983fcd8af`
 - detector `probe-qwen2.5-7b-instruct-T1-last_token` · envelope `sha256:c4733cda255e55d9`
 - certification: Clopper-Pearson one-sided upper bound at alpha 0.050, via `certify_fpr`
 - intervals: percentile bootstrap, 1000 resamples over questions, seed 1729
@@ -181,7 +181,7 @@ Everything flagged routes to the expensive check, so the flag rate is the bill. 
 
 **Most recall available** — target 0.20: recall 0.6209, costing 373 judge calls per 1000 requests (37.3% of this envelope). Within budget for: `decision_support`.
 
-**Best lift per flagged item** — target 0.01: lift 2.166 (100% of ceiling) at recall 0.0181, costing 8 calls per 1000. Within budget for: `customer_support`, `decision_support`, `internal_knowledge`.
+**Best lift per flagged item** — target 0.03: lift 1.978 (91% of ceiling) at recall 0.1516, costing 77 calls per 1000. Within budget for: `customer_support`, `decision_support`, `internal_knowledge`.
 
 The operating point is a business choice between the two, and this table is the whole of what the measurement can say about it. Which profile a point can actually serve is decided by the policy layer, which conjoins a recall floor and an FPR ceiling to the flag-rate budget; fitting the budget is necessary and not sufficient.
 
