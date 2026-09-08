@@ -274,13 +274,22 @@ def _refusal_notes(sweep: FprSweep) -> list[str]:
     return lines
 
 
-def render_sweep(sweep: FprSweep, *, provenance: dict[str, Any]) -> str:
+def render_sweep(
+    sweep: FprSweep,
+    *,
+    provenance: dict[str, Any],
+    superseded_by: Optional[str] = None,
+) -> str:
     """Render one sweep to markdown, printing nothing if it is not measured.
 
     Args:
         sweep: The computed sweep.
         provenance: The provenance block of the run that produced it, so the
             commit and config travel with the table rather than beside it.
+        superseded_by: Path of the sweep that replaces this one for any external
+            claim. Rendered as a banner at the top rather than as a footnote:
+            a reader who stops after the first table must not be able to quote
+            a number this document no longer stands behind.
 
     Returns:
         Markdown.
@@ -306,7 +315,22 @@ def render_sweep(sweep: FprSweep, *, provenance: dict[str, Any]) -> str:
         f"{sweep.alpha:.3f}, via `certify_fpr`",
         f"- intervals: percentile bootstrap, {sweep.bootstrap_samples} resamples "
         f"over questions, seed {sweep.seed}",
+        (
+            f"- thresholds certified on `{sweep.certified_on_score_set_id}`, "
+            f"metrics measured on `{sweep.score_set_id}` — **out of sample**"
+            if sweep.out_of_sample
+            else f"- thresholds certified and metrics measured on the same set, "
+            f"`{sweep.score_set_id}` — **in sample**"
+        ),
     ]
+    if superseded_by:
+        head[3:3] = [
+            f"> **Superseded by `{superseded_by}`.** The thresholds below were "
+            "certified on the same split they were scored on. The numbers are "
+            "kept because they are the evidence for how little that biased "
+            "them, and they are not the ones to quote.",
+            "",
+        ]
     # Appended to the same bullet list rather than started as a second one, so
     # removing it on the fixture path leaves a list rather than a gap.
     measured = [

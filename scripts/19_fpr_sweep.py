@@ -129,7 +129,13 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     prov = provenance(config)
-    sections = [render_sweep(s, provenance=prov) for s in sweeps]
+    # The out-of-sample sweep (scripts/20_fpr_sweep_oos.py) is what any external
+    # claim quotes; this one stays as the evidence for how little the in-sample
+    # threshold biased it. DECISIONS 134.
+    sections = [
+        render_sweep(s, provenance=prov, superseded_by="results/fpr_sweep_oos/")
+        for s in sweeps
+    ]
     (out_dir / "SWEEP.md").write_text(
         "\n\n---\n\n".join(sections) + "\n", encoding="utf-8"
     )

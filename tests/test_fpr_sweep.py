@@ -532,6 +532,113 @@ def test_resolve_data_source_fails_closed(tmp_path) -> None:
     assert source == MEASURED and reason == ""
 
 
+# ------------------------------------------------------- out-of-sample sweeps
+
+def _disjoint_pair(**kwargs) -> tuple[ScoreSet, ScoreSet]:
+    """Two score sets from one draw, split in half, with no shared question."""
+    whole = _score_set(n=800, **kwargs)
+    half = whole.n // 2
+    def cut(lo: int, hi: int, name: str) -> ScoreSet:
+        return ScoreSet(
+            score_set_id=name,
+            detector_id=whole.detector_id,
+            variant=whole.variant,
+            eval_set_id=whole.eval_set_id,
+            envelope_id=whole.envelope_id,
+            labels=whole.labels[lo:hi],
+            scores=whole.scores[lo:hi],
+            question_ids=whole.question_ids[lo:hi],
+            targets=whole.targets,
+        )
+    return cut(0, half, "certify-half"), cut(half, whole.n, "measure-half")
+
+
+def test_certifying_on_another_split_is_marked_out_of_sample(fast_config) -> None:
+    """The distinction has to be in the artifact, not in the reader's memory."""
+    certifier, measured = _disjoint_pair()
+    sweep = sweep_fpr(
+        fast_config, measured, grid=fpr_grid(0.05, 0.15, 0.05),
+        data_source=MEASURED, certify_on=certifier,
+    )
+    assert sweep.out_of_sample is True
+    assert sweep.certified_on_score_set_id == "certify-half"
+    assert sweep.score_set_id == "measure-half"
+
+    payload = sweep.to_payload()
+    assert payload["out_of_sample"] is True
+    assert payload["certified_on_score_set_id"] == "certify-half"
+
+    in_sample = sweep_fpr(
+        fast_config, measured, grid=(0.10,), data_source=MEASURED
+    )
+    assert in_sample.out_of_sample is False
+    assert in_sample.certified_on_score_set_id == in_sample.score_set_id
+
+
+def test_overlapping_items_between_the_splits_are_refused(fast_config) -> None:
+    """An "out-of-sample" sweep that shares items is in-sample where it overlaps.
+
+    Nothing about the output would look wrong: every field would still say
+    out_of_sample, and the overlap would quietly reintroduce exactly the bias
+    the second split exists to remove.
+    """
+    certifier, measured = _disjoint_pair()
+    overlapping = ScoreSet(
+        score_set_id="overlapping",
+        detector_id=measured.detector_id,
+        variant=measured.variant,
+        eval_set_id=measured.eval_set_id,
+        envelope_id=measured.envelope_id,
+        labels=measured.labels,
+        scores=measured.scores,
+        # one shared question id is enough to be wrong
+        question_ids=(certifier.question_ids[0],) + measured.question_ids[1:],
+        targets=measured.targets,
+    )
+    with pytest.raises(ValueError, match="share 1 question ids"):
+        sweep_fpr(
+            fast_config, overlapping, grid=(0.10,),
+            data_source=MEASURED, certify_on=certifier,
+        )
+
+
+def test_the_measured_set_gets_its_own_achieved_fpr(fast_config) -> None:
+    """Whether the certified bound held out of sample is the entire question.
+
+    ``achieved_fpr`` is the FPR on the split that certified the threshold, where
+    it holds by construction. The number worth having is the FPR on the split
+    that did not, and reporting only the first would make a bound look verified
+    that was never tested.
+    """
+    certifier, measured = _disjoint_pair()
+    sweep = sweep_fpr(
+        fast_config, measured, grid=fpr_grid(0.05, 0.20, 0.05),
+        data_source=MEASURED, certify_on=certifier,
+    )
+    measured_negatives = np.asarray(
+        [s for s, y in zip(measured.scores, measured.labels) if y == 0]
+    )
+    for point in sweep.points:
+        if not point.certified:
+            continue
+        assert point.achieved_fpr_on_measured_set is not None
+        expected = float((measured_negatives >= point.threshold).mean())
+        assert point.achieved_fpr_on_measured_set == pytest.approx(expected)
+        # certified-set FPR is bounded by construction; the measured one is not,
+        # and the point of recording both is that they can differ.
+        assert point.achieved_fpr <= point.target_fpr
+
+
+def test_in_sample_reports_the_same_fpr_on_both_sets(fast_config) -> None:
+    """With one set doing both jobs the two FPRs are the same number."""
+    sweep = sweep_fpr(
+        fast_config, _score_set(), grid=fpr_grid(0.05, 0.15, 0.05), data_source=MEASURED
+    )
+    for point in sweep.points:
+        if point.certified:
+            assert point.achieved_fpr == pytest.approx(point.achieved_fpr_on_measured_set)
+
+
 # ------------------------------------------------------------------- guards
 
 def test_clustered_items_are_refused_rather_than_certified(fast_config) -> None:

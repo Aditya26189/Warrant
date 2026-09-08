@@ -555,6 +555,13 @@ def test_every_script_has_a_smoke_test() -> None:
         # was moved into controlplane/evalsets/banking.py precisely so it
         # could be tested here without one. See test_banking_pilot.py.
         "13_pilot_run.py",
+        # Needs the extraction cache, which is gitignored and absent from a
+        # clean clone, for the same reason 10_freeze_scores.py is exempt. Its
+        # one piece of real logic -- certifying on one split and measuring on
+        # another -- lives in sweep_fpr(certify_on=...) and is tested directly
+        # in tests/test_fpr_sweep.py, including that overlapping items between
+        # the two splits are refused.
+        "20_fpr_sweep_oos.py",
         # Needs the extraction caches, which are gitignored, so it cannot run
         # on a clean clone by construction -- the same reason 00_extract.py is
         # exempt. What it PRODUCES is covered end to end by tests/test_scores.py,

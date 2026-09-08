@@ -177,6 +177,11 @@ class SweepPoint:
     ucb: Optional[float] = None
     k_false_positives: Optional[int] = None
     achieved_fpr: Optional[float] = None
+    #: FPR of the certified threshold on the set the metrics were measured on.
+    #: Equal to ``achieved_fpr`` for an in-sample sweep. On an out-of-sample one
+    #: this is the number that says whether the bound certified on the other
+    #: split actually held here, which is the entire question.
+    achieved_fpr_on_measured_set: Optional[float] = None
     recall: Optional[Metric] = None
     precision: Optional[Metric] = None
     flag_rate: Optional[Metric] = None
@@ -215,6 +220,7 @@ class SweepPoint:
             "ucb": self.ucb,
             "k_false_positives": self.k_false_positives,
             "achieved_fpr": self.achieved_fpr,
+            "achieved_fpr_on_measured_set": self.achieved_fpr_on_measured_set,
             "recall": to_jsonable(self.recall) if self.recall else None,
             "precision": to_jsonable(self.precision) if self.precision else None,
             "flag_rate": to_jsonable(self.flag_rate) if self.flag_rate else None,
@@ -238,6 +244,11 @@ class FprSweep:
     envelope_id: str
     data_source: str
     data_source_reason: str
+    #: The score set whose negatives certified the thresholds. When this differs
+    #: from ``score_set_id`` the sweep is out-of-sample: selection happened on
+    #: one split and measurement on another, which is the discipline the
+    #: pipeline uses and the thing DECISIONS 124 was open about.
+    certified_on_score_set_id: str
     n: int
     n_positive: int
     n_negative: int
@@ -257,6 +268,17 @@ class FprSweep:
     shipped_precision: Optional[Metric]
     shipped_flag_rate: Optional[Metric]
     shipped_lift: Optional[Metric]
+
+    @property
+    def out_of_sample(self) -> bool:
+        """Whether thresholds were certified on a different split than measured.
+
+        The whole of what separates a warrantable number from a descriptive
+        one here. In-sample, the threshold tracks this sample's negative tail;
+        out-of-sample it does not, and the recall beside it is an estimate of
+        what the operating point would do on unseen data.
+        """
+        return self.certified_on_score_set_id != self.score_set_id
 
     @property
     def is_measured(self) -> bool:
@@ -318,6 +340,8 @@ class FprSweep:
             "envelope_id": self.envelope_id,
             "data_source": self.data_source,
             "data_source_reason": self.data_source_reason,
+            "certified_on_score_set_id": self.certified_on_score_set_id,
+            "out_of_sample": self.out_of_sample,
             "is_measured": self.is_measured,
             "n": self.n,
             "n_positive": self.n_positive,
@@ -419,6 +443,7 @@ def sweep_fpr(
     data_source: str,
     data_source_reason: str = "",
     alpha: Optional[float] = None,
+    certify_on: Optional[ScoreSet] = None,
 ) -> FprSweep:
     """Certify a threshold at each target FPR and score what it bought.
 
@@ -433,6 +458,11 @@ def sweep_fpr(
         alpha: Certification level. Defaults to ``1 - config.validation.ci``, so
             a 95% coverage setting certifies at alpha 0.05 rather than at a
             second number that could drift away from it.
+        certify_on: Score set whose negatives certify the thresholds. Defaults
+            to ``score_set`` itself, which is the in-sample sweep. Pass the
+            **validation** split here and the test split as ``score_set`` to get
+            the pipeline's discipline: selection on one split, measurement on
+            another, scored once. ``DECISIONS.md`` 124, 134.
 
     Returns:
         A :class:`FprSweep`.
@@ -447,22 +477,40 @@ def sweep_fpr(
     question_ids = np.asarray(score_set.question_ids)
     alpha = (1.0 - config.validation.ci) if alpha is None else alpha
 
-    negatives = scores[labels == 0]
+    certifier = certify_on if certify_on is not None else score_set
+    certifier_labels = np.asarray(certifier.labels)
+    certifier_scores = np.asarray(certifier.scores, dtype=float)
+    certifier_qids = np.asarray(certifier.question_ids)
+    negatives = certifier_scores[certifier_labels == 0]
     if negatives.size == 0:
         raise ValueError(
-            f"{score_set.score_set_id} has no negatives; an FPR budget cannot be "
+            f"{certifier.score_set_id} has no negatives; an FPR budget cannot be "
             "certified against a set with nothing to be wrong about"
         )
+    # Selection and measurement must not share items. Overlapping question ids
+    # would make an "out-of-sample" sweep in-sample in the part that overlaps,
+    # while every label on it still said out-of-sample.
+    if certify_on is not None:
+        shared = set(certifier_qids.tolist()) & set(question_ids.tolist())
+        if shared:
+            raise ValueError(
+                f"{certifier.score_set_id} and {score_set.score_set_id} share "
+                f"{len(shared)} question ids. Certifying on items that are also "
+                "measured is the bias this split exists to remove."
+            )
     # Certification here passes no cluster ids, which is only sound while each
     # item is its own question. Asserted rather than assumed: a set with
     # several items per question would be certified as though correlated items
     # were independent, and the bound would be narrower than the data supports.
-    if len(set(question_ids.tolist())) != question_ids.size:
-        raise ValueError(
-            f"{score_set.score_set_id} has repeated question ids, so its items "
-            "are not independent. certify_fpr needs cluster ids for this set; "
-            "certifying without them would overstate the effective sample size."
-        )
+    for candidate in ({score_set, certifier} if certify_on is not None else {score_set}):
+        ids = np.asarray(candidate.question_ids)
+        if len(set(ids.tolist())) != ids.size:
+            raise ValueError(
+                f"{candidate.score_set_id} has repeated question ids, so its "
+                "items are not independent. certify_fpr needs cluster ids for "
+                "this set; certifying without them would overstate the "
+                "effective sample size."
+            )
 
     points: list[SweepPoint] = []
     for target in grid:
@@ -485,6 +533,12 @@ def sweep_fpr(
         metrics = _metrics_at(config, score_set, threshold)
         lift, ceiling, fraction, lift_absent = _lift_of(metrics)
         achieved_fpr = float((negatives >= threshold).mean())
+        measured_negatives = scores[labels == 0]
+        achieved_on_measured = (
+            float((measured_negatives >= threshold).mean())
+            if measured_negatives.size
+            else None
+        )
         holds = None if lift is None else bool(lift.ci_low > LIFT_HOLDS_LOWER_BOUND)
         # Which declared profiles this operating point could serve, on flag
         # rate alone. Read from config rather than compared against an assumed
@@ -507,6 +561,7 @@ def sweep_fpr(
                 ucb=certification.ucb,
                 k_false_positives=certification.k,
                 achieved_fpr=achieved_fpr,
+                achieved_fpr_on_measured_set=achieved_on_measured,
                 recall=metrics.recall,
                 precision=metrics.precision,
                 flag_rate=metrics.flag_rate,
@@ -538,6 +593,7 @@ def sweep_fpr(
         envelope_id=score_set.envelope_id,
         data_source=data_source,
         data_source_reason=data_source_reason,
+        certified_on_score_set_id=certifier.score_set_id,
         n=score_set.n,
         n_positive=int((labels == 1).sum()),
         n_negative=int((labels == 0).sum()),

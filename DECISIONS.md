@@ -5892,3 +5892,118 @@ The brief pre-registered a *criterion* (D17) and a *metric set* (D19); both are
 implemented unchanged. What moved is a rhetorical comparison against a number
 with no source, which is not a pre-registered result and is not protected by
 Rule 10.
+
+## 133 - Closing 124 needs no GPU: the activations were already on disk
+
+- **Date:** 2026-09-08
+- **Status:** DECIDED
+- **Commit:** 6779908
+
+**Context.** Phase 1's D12 schedules T2 and T3 into a single Kaggle session
+because both "need activations". For T3 that is true. For T2 it is not:
+`results/cache-triviaqa-600.npz` is present locally -- 2400 items, 3584
+features, `__data_source: measured`, Qwen2.5-7B-Instruct layer 23. It is
+gitignored, not absent.
+
+The GPU is needed to *extract* activations. T2 needs to *score* rows that are
+already extracted, with a probe fit from those same rows. That is a matrix
+multiply.
+
+**Decision.** Run T2 on CPU from the local cache. Do not push a Kaggle kernel
+for it. The GPU session D12 describes is still required for T3's expansion,
+which needs activations for items that do not exist yet.
+
+**What licenses this.** `paired.fit_on` fits the probe by the same selection
+path `validate` uses, so the question is whether it reproduces the pipeline
+exactly. Checked before anything was built on it:
+
+    split sizes         train 1200 / validation 600 / test 600
+    question ids        identical to the committed frozen set
+    test-split scores   BITWISE identical, max abs diff 0.0
+
+Since the derived test scores are the committed test scores, validation-split
+scores from the same probe are trustworthy in the same measure. Had they
+differed at all, T2 would have stopped there under Rule 4: a probe that scores
+the test split differently from the pipeline is not the pipeline's probe, and
+nothing certified from it would describe the shipped system.
+
+**The naming trap, recorded because it nearly bit.** The existing frozen file is
+`results/scores/validation-T1-last_token.json`, and it holds **test-split**
+scores -- it is named for the *validation run artifact* it reproduces, not for a
+split. The new file holds actual validation-split scores. Calling it anything
+beginning `validation-` would have produced two files whose names differ by a
+suffix and whose contents differ by which split they are, which is the shape of
+mistake that gets found three artifacts downstream. It is `valsplit-T1-last_token`.
+
+**Consequence.** The sole open item from Phase 0 closes without a GPU queue,
+which was the thing gating every quotable number. The validation split carries
+329 negatives, above the 299 the tightest budget needs, so the full grid is
+certifiable there.
+
+## 134 - 124 is CLOSED: out-of-sample, the dial conclusion survives and the bound holds
+
+- **Date:** 2026-09-08
+- **Status:** DECIDED — supersedes the OPEN status of 124
+- **Commit:** 6779908
+
+**What was open.** Every recall in the Phase 0 sweep was in-sample: the
+threshold at each grid point was certified on the same split it was then scored
+on. No number from it could be quoted as a warrant.
+
+**What was done.** Thresholds certified on the **validation** split (600 items,
+329 negatives), metrics measured on the **test** split (600 items) — the
+pipeline's own discipline, selection on one split and test scored once. Same
+grid, same estimator, same seed. `results/fpr_sweep_oos/`.
+
+**D13, registered before the run:** the dial conclusion survives if
+out-of-sample recall at any swept target strictly exceeds **0.1115**, the upper
+bound of the shipped point's 95% recall interval.
+
+**Result: 0.6318 [0.5782, 0.6880] at target 0.20.** The criterion is met by a
+factor of five and a half. **The Phase 0 conclusion stands.** Rule 10 does not
+fire.
+
+### Three findings, two of them stronger than the phase expected
+
+**1. The in-sample figures were not optimistic.** Out-of-sample recall is
+*higher* than in-sample at 16 of 20 targets:
+
+    target   recall in-sample   recall out-of-sample   delta
+    0.04     0.2274            0.2130                 -0.0144
+    0.08     0.4116            0.4332                 +0.0217
+    0.12     0.5126            0.5632                 +0.0505
+    0.20     0.6462            0.6318                 -0.0144
+
+The largest deviation in either direction is 0.05, and the headline moves by
+0.0144. The winner's curse 124 was open about is real in principle and did not
+materialise here in the direction feared — which is what the Phase 0 analysis
+predicted, since `certify_fpr` reads the negatives only and the positives that
+determine recall play no part in choosing the threshold.
+
+**2. The certified budget held on unseen data at every target.** Zero breaches
+in 20: at each grid point the FPR measured on the test split came in at or below
+the target certified on validation. That is the Clopper-Pearson bound doing the
+job it exists for, checked out of sample rather than assumed.
+
+**3. Lift now holds at 20 of 20, not 19.** Target 0.01 clears the bar
+out-of-sample (recall 0.0469) where in-sample it did not (recall 0.0108). The
+in-sample failure at the tight end was an artefact of a threshold fitted to that
+split's own negative tail.
+
+### What this does and does not license
+
+The out-of-sample table is the quotable one, and `results/fpr_sweep/` is
+superseded for any external claim. It remains committed and rendered, marked as
+superseded, because deleting the in-sample numbers would remove the evidence for
+finding 1.
+
+Still true of both: n = 600 per split, one model, one eval set, and no
+production traffic. Out-of-sample within a frozen 2400-item corpus is not the
+same claim as out-of-distribution, and `README.md` says so.
+
+**The objection.** *"You certified on 329 negatives and measured on a split
+drawn from the same 2400 items."* Correct, and that is the boundary of the
+claim: this establishes that the threshold does not depend on the items it is
+scored against, not that it transfers to another corpus. The long-context
+transfer set is the nearest thing to the second question and is reported
+separately.
