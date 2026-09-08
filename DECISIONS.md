@@ -6069,3 +6069,50 @@ corpus size rather than pursued.
 **The objection.** *"You did not do T3."* Correct — the half that needs a GPU is
 not done and is marked OPEN. The half that does not need one is done, and it
 changes what the GPU half should be asked to buy.
+
+## 136 - T4 is blocked on credentials, and the logprob finding is not written from memory
+
+- **Date:** 2026-09-08
+- **Status:** OPEN — needs human review
+- **Commit:** fd1539c
+
+**Context.** T4 builds the closed-API configuration (tiers 0, 1 and 3) and runs
+the same grid against it, to answer whether the product works for buyers who
+cannot run a probe. No provider credentials are configured on this machine: no
+`OPENAI_*`, `ANTHROPIC_API_*`, `AZURE_OPENAI_*` or `GOOGLE_API_*` in the
+environment, and no `.env`.
+
+**Decision.** Mark T4 OPEN and build nothing. In particular, **do not write the
+logprob-availability finding from what the model already believes about these
+providers.**
+
+**Why that restraint is the whole point.** The brief calls provider logprob
+support "a finding worth stating explicitly in `README.md`". A finding is
+something measured. Writing "OpenAI exposes logprobs, Anthropic does not" from
+recollection would produce a claim in the README that traces to nothing in
+`results/` — which is the exact failure this repository has recorded four
+separate times: `DEFF 1.60` (113), the register's provenance tier (116), the
+refusal beat's budget (117), and the Presidio coverage claim (118). Each was
+true and each was unciteable until someone ran the dependency.
+
+118 settled the rule: *a claim about a dependency is checkable by running the
+dependency.* `scripts/17_presidio_coverage.py` exists because of it. The
+closed-API equivalent is a script that asks each provider for logprobs and
+records what came back, and it cannot run without keys.
+
+**What unblocks it.** Credentials for at least one provider that exposes
+logprobs and one that does not, so the matrix has both a populated Tier 1 and a
+recorded UNAVAILABLE. Cost is small — the grid is 20 points over 600 items — but
+it is real money against someone's account, which is a decision for the owner
+rather than for this session.
+
+**What is not lost by waiting.** The warrant matrix already represents
+UNVALIDATED as a first-class state (invariant 2), so the closed-API axis is
+absent rather than wrong. Scaffolding a matrix whose every cell is UNVALIDATED
+would add code that nothing exercises and would let a reader mistake structure
+for evidence.
+
+**Consequence for D17.** Its criterion — lift holding at any grid point under
+the same test as D6 — is registered and unfired. The honest reading of Phase 1
+is that the closed-API question is still open, and `README.md` says the measured
+cells assume open-weight access rather than implying anything about the rest.
