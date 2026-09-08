@@ -184,6 +184,25 @@ class SweepPoint:
     lift_ceiling: Optional[float] = None
     lift_fraction_of_ceiling: Optional[float] = None
     lift_holds: Optional[bool] = None
+    profiles_within_budget: tuple[str, ...] = ()
+
+    @property
+    def judge_calls_per_1000(self) -> Optional[float]:
+        """Flagged items per 1000 requests **on this envelope**.
+
+        The cost axis in the unit the architecture is budgeted in: everything
+        flagged routes to the expensive check, so the flag rate *is* the bill.
+
+        The name carries its condition because the number cannot survive without
+        it. This envelope's base rate is 0.4617; production traffic is nowhere
+        near that, and the same threshold would flag a different share of it.
+        Quoting this as a production cost would put a flag rate from one
+        workload beside a base rate from another, which is the scenario-mixing
+        error ``CLAUDE.md`` names. ``DECISIONS.md`` 132.
+        """
+        if self.flag_rate is None:
+            return None
+        return self.flag_rate.value * 1000.0
 
     def to_payload(self) -> dict[str, Any]:
         return {
@@ -203,6 +222,8 @@ class SweepPoint:
             "lift_ceiling": self.lift_ceiling,
             "lift_fraction_of_ceiling": self.lift_fraction_of_ceiling,
             "lift_holds": self.lift_holds,
+            "judge_calls_per_1000_on_this_envelope": self.judge_calls_per_1000,
+            "profiles_within_budget": list(self.profiles_within_budget),
         }
 
 
@@ -226,6 +247,10 @@ class FprSweep:
     seed: int
     grid: tuple[float, ...]
     points: tuple[SweepPoint, ...]
+    #: Declared flag-rate budgets, profile name to target, read from config.
+    #: Carried on the sweep so the frontier is costed against what the system
+    #: declares rather than against a figure quoted in a brief (DECISIONS 132).
+    profile_budgets: dict[str, float]
     shipped_threshold: float
     shipped_operating_point_id: Optional[str]
     shipped_recall: Optional[Metric]
@@ -311,6 +336,15 @@ class FprSweep:
             "grid_spec": {
                 "targets": list(self.grid),
                 "n_points": len(self.grid),
+            },
+            "cost_axis": {
+                "unit": "judge calls per 1000 requests, on this envelope",
+                "caveat": (
+                    "flag rate is measured at base rate "
+                    f"{self.base_rate:.4f}; this is not a production cost "
+                    "projection (DECISIONS 132)"
+                ),
+                "declared_profile_budgets": dict(sorted(self.profile_budgets.items())),
             },
             "criterion": {
                 "name": "lift_holds",
@@ -452,6 +486,16 @@ def sweep_fpr(
         lift, ceiling, fraction, lift_absent = _lift_of(metrics)
         achieved_fpr = float((negatives >= threshold).mean())
         holds = None if lift is None else bool(lift.ci_low > LIFT_HOLDS_LOWER_BOUND)
+        # Which declared profiles this operating point could serve, on flag
+        # rate alone. Read from config rather than compared against an assumed
+        # budget (DECISIONS 132). This is a necessary condition, not a
+        # sufficient one: a profile also declares min_recall and an FPR
+        # ceiling, and routing.py is what actually resolves a warrant.
+        within = tuple(
+            name
+            for name, profile in sorted(config.profiles.items())
+            if metrics.flag_rate.value <= profile.target_flag_rate
+        )
         points.append(
             SweepPoint(
                 target_fpr=float(target),
@@ -470,6 +514,7 @@ def sweep_fpr(
                 lift_ceiling=ceiling,
                 lift_fraction_of_ceiling=fraction,
                 lift_holds=holds,
+                profiles_within_budget=within,
             )
         )
         _LOG.info(
@@ -502,6 +547,9 @@ def sweep_fpr(
         seed=config.seed,
         grid=tuple(float(t) for t in grid),
         points=tuple(points),
+        profile_budgets={
+            name: profile.target_flag_rate for name, profile in config.profiles.items()
+        },
         shipped_threshold=float(shipped_target.threshold),
         shipped_operating_point_id=shipped_target.operating_point_id,
         shipped_recall=shipped.recall,

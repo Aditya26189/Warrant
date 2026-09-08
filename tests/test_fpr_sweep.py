@@ -274,6 +274,100 @@ def test_headline_is_absent_when_nothing_holds(fast_config) -> None:
         assert "weak" in text
 
 
+# ------------------------------------------------------------- the frontier
+
+def test_judge_calls_carry_the_envelope_in_their_name(fast_config) -> None:
+    """The cost axis is flag rate x 1000, and it is not a production figure.
+
+    The number is only meaningful beside the base rate it was measured at, so
+    the payload key says so. A key called `judge_calls_per_1000` alone would be
+    lifted into a cost model within a week — a flag rate from this envelope
+    beside a base rate from production is the scenario-mixing error CLAUDE.md
+    names.
+    """
+    sweep = sweep_fpr(
+        fast_config, _score_set(), grid=fpr_grid(0.05, 0.10, 0.05), data_source=MEASURED
+    )
+    for point in sweep.points:
+        if not point.certified:
+            continue
+        assert point.judge_calls_per_1000 == pytest.approx(
+            point.flag_rate.value * 1000.0
+        )
+
+    payload = sweep.to_payload()
+    assert "judge_calls_per_1000_on_this_envelope" in payload["points"][0]
+    assert "judge_calls_per_1000" not in payload["points"][0]
+    assert payload["cost_axis"]["declared_profile_budgets"]
+    assert f"{sweep.base_rate:.4f}" in payload["cost_axis"]["caveat"]
+
+
+def test_profiles_within_budget_come_from_config(fast_config) -> None:
+    """Budgets are read from config.yaml, never from a figure quoted in a brief.
+
+    DECISIONS 132: the brief assumed 3-5%; the config declares 0.10, 0.20 and
+    0.50. A point is listed against a profile exactly when its measured flag
+    rate is at or below that profile's declared budget.
+    """
+    sweep = sweep_fpr(
+        fast_config, _score_set(), grid=fpr_grid(*REGISTERED_GRID), data_source=MEASURED
+    )
+    declared = {
+        name: p.target_flag_rate for name, p in fast_config.profiles.items()
+    }
+    assert sweep.profile_budgets == declared
+
+    for point in sweep.points:
+        if not point.certified:
+            assert point.profiles_within_budget == ()
+            continue
+        expected = tuple(
+            sorted(n for n, b in declared.items() if point.flag_rate.value <= b)
+        )
+        assert point.profiles_within_budget == expected
+
+    # A tighter budget can never serve a point a looser one cannot.
+    for point in sweep.points:
+        served = set(point.profiles_within_budget)
+        for name in served:
+            for other, budget in declared.items():
+                if budget >= declared[name]:
+                    assert other in served, (
+                        f"{other} (budget {budget}) excluded while {name} "
+                        f"(budget {declared[name]}) is included — the fit is not monotone"
+                    )
+
+
+def test_the_frontier_section_renders_with_its_caveat(fast_config) -> None:
+    """The cost table exists, and never without the base rate that conditions it."""
+    sweep = sweep_fpr(
+        fast_config, _score_set(), grid=fpr_grid(0.02, 0.10, 0.02), data_source=MEASURED
+    )
+    markdown = render_sweep(sweep, provenance={"git_commit": "e" * 40, "dirty": False})
+
+    assert "## The frontier: what recall costs" in markdown
+    assert "judge calls / 1000" in markdown
+    assert "not production costs" in markdown
+    assert f"{sweep.base_rate:.4f}" in markdown
+    assert "The two ends of the trade" in markdown
+    for name in fast_config.profiles:
+        assert f"`{name}`" in markdown
+
+
+def test_the_frontier_ends_are_chosen_by_measurement(fast_config) -> None:
+    """Most-recall and best-lift are maxima, not points picked by eye."""
+    sweep = sweep_fpr(
+        fast_config, _score_set(), grid=fpr_grid(0.02, 0.20, 0.02), data_source=MEASURED
+    )
+    markdown = render_sweep(sweep, provenance={"git_commit": "f" * 40, "dirty": False})
+    certified = [p for p in sweep.points if p.certified and p.recall is not None]
+
+    most_recall = max(certified, key=lambda p: p.recall.value)
+    best_lift = max((p for p in certified if p.lift), key=lambda p: p.lift.value)
+    assert f"target {most_recall.target_fpr:.2f}: recall" in markdown
+    assert f"target {best_lift.target_fpr:.2f}: lift" in markdown
+
+
 # ------------------------------------------------------------ fixture refusal
 
 def test_fixture_sweep_renders_no_numbers(fast_config) -> None:

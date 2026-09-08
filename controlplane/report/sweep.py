@@ -154,6 +154,95 @@ def _table(sweep: FprSweep) -> list[str]:
     return lines
 
 
+def _frontier(sweep: FprSweep) -> list[str]:
+    """Recall against what recall costs, in the unit the budgets are written in.
+
+    The sweep's first table answers "how much recall is available". This one
+    answers "what does it cost", which is the axis the profiles are actually
+    budgeted on — everything flagged routes to the expensive check, so the flag
+    rate is the bill.
+    """
+    certified = [p for p in sweep.points if p.certified and p.recall is not None]
+    if not certified:
+        return []
+
+    budgets = dict(sorted(sweep.profile_budgets.items(), key=lambda kv: kv[1]))
+    lines = [
+        "",
+        "## The frontier: what recall costs",
+        "",
+        "Everything flagged routes to the expensive check, so the flag rate is "
+        "the bill. Costed against the flag-rate budgets `config.yaml` actually "
+        "declares:",
+        "",
+        "| profile | declared flag-rate budget |",
+        "|---|---:|",
+    ]
+    lines += [f"| `{name}` | {budget:.2f} |" for name, budget in budgets.items()]
+    lines += [
+        "",
+        f"> **These are envelope figures, not production costs.** Flag rate is "
+        f"measured at base rate {sweep.base_rate:.4f}. Production traffic is "
+        "nowhere near that, and the same threshold would flag a different share "
+        "of it. Quoting a judge-call figure from here as a production cost puts "
+        "a flag rate from one workload beside a base rate from another — the "
+        "scenario-mixing error `CLAUDE.md` names. `DECISIONS.md` 132.",
+        "",
+        "| target FPR | recall | flag rate | judge calls / 1000 | lift | profiles within budget |",
+        "|---:|---|---:|---:|---:|---|",
+    ]
+    for point in certified:
+        served = ", ".join(f"`{n}`" for n in point.profiles_within_budget) or "—"
+        lines.append(
+            "| {t:.2f} | {r} | {f:.4f} | {j:.0f} | {l:.3f} | {s} |".format(
+                t=point.target_fpr,
+                r=_cell(point.recall),
+                f=point.flag_rate.value,
+                j=point.judge_calls_per_1000,
+                l=point.lift.value if point.lift else float("nan"),
+                s=served,
+            )
+        )
+
+    # The two ends of the trade, chosen by measured quantities rather than by
+    # eye: the most recall available, and the best lift per flagged item.
+    most_recall = max(certified, key=lambda p: p.recall.value)
+    best_lift = max(
+        (p for p in certified if p.lift is not None), key=lambda p: p.lift.value
+    )
+    lines += [
+        "",
+        "### The two ends of the trade",
+        "",
+        f"**Most recall available** — target {most_recall.target_fpr:.2f}: recall "
+        f"{most_recall.recall.value:.4f}, costing "
+        f"{most_recall.judge_calls_per_1000:.0f} judge calls per 1000 requests "
+        f"({most_recall.flag_rate.value * 100:.1f}% of this envelope). Within "
+        f"budget for: "
+        + (", ".join(f"`{n}`" for n in most_recall.profiles_within_budget) or "no declared profile")
+        + ".",
+        "",
+        f"**Best lift per flagged item** — target {best_lift.target_fpr:.2f}: lift "
+        f"{best_lift.lift.value:.3f}"
+        + (
+            f" ({best_lift.lift_fraction_of_ceiling * 100:.0f}% of ceiling)"
+            if best_lift.lift_fraction_of_ceiling is not None
+            else ""
+        )
+        + f" at recall {best_lift.recall.value:.4f}, costing "
+        f"{best_lift.judge_calls_per_1000:.0f} calls per 1000. Within budget for: "
+        + (", ".join(f"`{n}`" for n in best_lift.profiles_within_budget) or "no declared profile")
+        + ".",
+        "",
+        "The operating point is a business choice between the two, and this "
+        "table is the whole of what the measurement can say about it. Which "
+        "profile a point can actually serve is decided by the policy layer, "
+        "which conjoins a recall floor and an FPR ceiling to the flag-rate "
+        "budget; fitting the budget is necessary and not sufficient.",
+    ]
+    return lines
+
+
 def _refusal_notes(sweep: FprSweep) -> list[str]:
     """Why each refused target was refused, in its own words."""
     refused = [p for p in sweep.points if not p.certified]
@@ -250,6 +339,7 @@ def render_sweep(sweep: FprSweep, *, provenance: dict[str, Any]) -> str:
     ]
     lines += _table(sweep)
     lines += _refusal_notes(sweep)
+    lines += _frontier(sweep)
 
     shipped = [
         "",

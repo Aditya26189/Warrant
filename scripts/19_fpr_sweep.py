@@ -34,7 +34,7 @@ from controlplane.config import (
     setup_logging,
     write_json_artifact,
 )
-from controlplane.report.plots import plot_fpr_sweep
+from controlplane.report.plots import plot_fpr_frontier, plot_fpr_sweep
 from controlplane.report.sweep import render_sweep
 from controlplane.validation.fpr_sweep import (
     fpr_grid,
@@ -143,6 +143,12 @@ def main(argv: list[str] | None = None) -> int:
         plot_fpr_sweep(
             primary,
             out_dir / "sweep.png",
+            config_hash=config.config_hash,
+            git_commit=prov.get("git_commit"),
+        )
+        plot_fpr_frontier(
+            primary,
+            out_dir / "frontier.png",
             config_hash=config.config_hash,
             git_commit=prov.get("git_commit"),
         )

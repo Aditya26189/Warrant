@@ -5844,3 +5844,51 @@ rules follow, and T0 of Phase 1 exists because of the second:
 longer says what it originally said."* Correct, and the alternative is a report
 whose evidence a reviewer cannot check. The old hashes are preserved in the
 table above, so the correction is auditable in both directions.
+
+## 132 - The frontier is costed against the declared profiles, not against an assumed 3-5%
+
+- **Date:** 2026-09-08
+- **Status:** DECIDED
+- **Commit:** 6a1bf29
+
+**Context.** The Phase 1 brief asks the frontier to surface that a 0.385 flag
+rate routes "38.5% of traffic to a 200-1000ms judge against the 3-5% the
+architecture assumes". Neither figure exists in this repository. `config.yaml`
+declares three profiles with real flag-rate budgets and real inline budgets:
+
+| profile | target_flag_rate | inline_budget_ms | min_recall |
+|---|---|---|---|
+| `customer_support` | 0.10 | 200 | 0.10 |
+| `internal_knowledge` | 0.20 | 500 | 0.25 |
+| `decision_support` | 0.50 | 2000 | 0.50 |
+
+**Decision.** Cost the frontier against those three budgets, computed from
+config, and drop the assumed 3-5% and the assumed judge latency band. A grid
+point is reported as fitting a profile when its measured flag rate is at or
+below that profile's declared budget.
+
+**What changes about the brief's headline.** It is wrong in this repository's
+own terms, and in the direction that matters. A 0.385 flag rate is not 8x an
+assumed budget -- it sits **inside** `decision_support`'s declared 0.50 and
+breaks the other two. The honest statement is which profiles each operating
+point can serve, not how far it exceeds a budget nobody declared.
+
+**The caveat that has to travel with every cost figure.** Flag rate here is
+measured on an envelope whose base rate is **0.4617**. Judge calls per 1000
+requests, computed from it, describes *that envelope* and is not a production
+cost projection: production base rates are far lower, and the same threshold
+would flag a different share of real traffic. Quoting it as a production number
+is precisely the scenario-mixing error `CLAUDE.md` names -- a flag rate from one
+workload beside a base rate from another. The field is named
+`judge_calls_per_1000_on_this_envelope` so it cannot be lifted without its
+condition.
+
+**Alternative rejected.** Reporting the brief's framing anyway, with a footnote.
+A headline that compares a measured number against an assumed one is the shape
+of claim this project exists to refuse, and a footnote does not repair it.
+
+**The objection.** *"The brief pre-registered that finding and you changed it."*
+The brief pre-registered a *criterion* (D17) and a *metric set* (D19); both are
+implemented unchanged. What moved is a rhetorical comparison against a number
+with no source, which is not a pre-registered result and is not protected by
+Rule 10.

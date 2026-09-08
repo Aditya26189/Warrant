@@ -28,7 +28,7 @@ from ..validation.fpr_sweep import FprSweep  # noqa: E402
 from ..validation.roc import RocCurve  # noqa: E402
 from ..validation.evalsets import SOURCE_SYNTHETIC  # noqa: E402
 
-__all__ = ["plot_fpr_sweep", "plot_roc_operating_points", "plot_tier_ladder"]
+__all__ = ["plot_fpr_frontier", "plot_fpr_sweep", "plot_roc_operating_points", "plot_tier_ladder"]
 
 _LOG = logging.getLogger(__name__)
 
@@ -255,6 +255,107 @@ def plot_fpr_sweep(
         f"alpha {sweep.alpha:.3f} · {sweep.bootstrap_samples} resamples · "
         f"seed {sweep.seed}"
     )
+    if config_hash:
+        stamp += f" · config {config_hash}"
+    if git_commit:
+        stamp += f" · commit {git_commit[:8]}"
+    figure.text(0.01, 0.035, caveat, fontsize=7, color="#5a6472")
+    figure.text(0.01, 0.008, stamp, fontsize=7, color="#5a6472")
+
+    figure.tight_layout(rect=(0, 0.075, 1, 1))
+    figure.savefig(out, dpi=150)
+    plt.close(figure)
+    _LOG.info("wrote %s", out)
+    return out
+
+
+def plot_fpr_frontier(
+    sweep: FprSweep,
+    path: str | Path,
+    *,
+    config_hash: Optional[str] = None,
+    git_commit: Optional[str] = None,
+) -> Path:
+    """Recall against what recall costs, with lift annotated at each point.
+
+    The companion to :func:`plot_fpr_sweep`. That one asks how much recall the
+    budget buys; this one asks what the budget costs, which is the axis the
+    profiles are declared on. The declared flag-rate budgets are drawn as
+    vertical lines, so "which profiles can this operating point serve" is a
+    thing you read off the figure rather than compute.
+
+    Args:
+        sweep: The computed sweep.
+        path: Output PNG path.
+        config_hash: Stamped in the caption.
+        git_commit: Stamped in the caption.
+
+    Returns:
+        The path written.
+
+    Raises:
+        ValueError: If the sweep is not measured.
+    """
+    if not sweep.is_measured:
+        raise ValueError(
+            f"refusing to plot {sweep.eval_set_id}: data_source is "
+            f"{sweep.data_source!r}, not measured. {sweep.data_source_reason}"
+        )
+    out = Path(path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+
+    points = [
+        p for p in sweep.points
+        if p.certified and p.recall is not None and p.flag_rate is not None
+    ]
+    figure, axes = plt.subplots(figsize=(8.0, 5.6))
+
+    flags = [p.flag_rate.value for p in points]
+    recalls = [p.recall.value for p in points]
+    err = [
+        [p.recall.value - p.recall.ci_low for p in points],
+        [p.recall.ci_high - p.recall.value for p in points],
+    ]
+    axes.errorbar(
+        flags, recalls, yerr=err, fmt="o-", capsize=3, color="tab:blue",
+        label="recall (95% CI)",
+    )
+
+    # Declared budgets, so the reader can see which side of each line a point
+    # falls on rather than checking it against a table.
+    styles = ["--", "-.", ":"]
+    for index, (name, budget) in enumerate(
+        sorted(sweep.profile_budgets.items(), key=lambda kv: kv[1])
+    ):
+        axes.axvline(
+            budget, color="tab:red", linestyle=styles[index % len(styles)],
+            linewidth=1.1, alpha=.8, label=f"{name} budget ({budget:.2f})",
+        )
+
+    # Lift at every other point: at all twenty the labels collide.
+    for point in points[::2]:
+        if point.lift is None:
+            continue
+        axes.annotate(
+            f"{point.lift.value:.2f}",
+            xy=(point.flag_rate.value, point.recall.value),
+            xytext=(4, -12), textcoords="offset points",
+            fontsize=7.5, color="tab:orange",
+        )
+
+    axes.set_xlabel("flag rate — the share of this envelope routed to the expensive check")
+    axes.set_ylabel("recall")
+    axes.set_title(
+        f"Recall against its cost — {sweep.eval_set_id} · {sweep.variant} · n={sweep.n}"
+    )
+    axes.legend(loc="lower right", fontsize=8)
+    axes.grid(alpha=.2, linewidth=.6)
+
+    caveat = (
+        f"orange labels are lift · base rate {sweep.base_rate:.4f}: these are "
+        "envelope figures, not production costs"
+    )
+    stamp = f"{sweep.bootstrap_samples} resamples · seed {sweep.seed}"
     if config_hash:
         stamp += f" · config {config_hash}"
     if git_commit:
