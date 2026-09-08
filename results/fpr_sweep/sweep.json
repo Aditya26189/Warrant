@@ -1,7 +1,7 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-08T16:05:32+00:00",
-    "git_commit": "64af2146f3fabcd3fc6a4c97fdf9b32739f3cae0",
+    "timestamp_utc": "2026-09-08T16:21:08+00:00",
+    "git_commit": "29e568dda8e192818b80ef4c223ae0948bdaa5d9",
     "git_branch": "main",
     "dirty": false,
     "dirty_paths": [],
@@ -276,6 +276,15 @@
         ],
         "n_points": 20
       },
+      "cost_axis": {
+        "unit": "judge calls per 1000 requests, on this envelope",
+        "caveat": "flag rate is measured at base rate 0.4617; this is not a production cost projection (DECISIONS 132)",
+        "declared_profile_budgets": {
+          "customer_support": 0.1,
+          "decision_support": 0.5,
+          "internal_knowledge": 0.2
+        }
+      },
       "criterion": {
         "name": "lift_holds",
         "rule": "lift ci_low > 1.0, strictly",
@@ -405,7 +414,13 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.9999999999999998,
-          "lift_holds": false
+          "lift_holds": false,
+          "judge_calls_per_1000_on_this_envelope": 5.0,
+          "profiles_within_budget": [
+            "customer_support",
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.02,
@@ -467,7 +482,13 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8999999999999998,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 33.333333333333336,
+          "profiles_within_budget": [
+            "customer_support",
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.03,
@@ -529,7 +550,13 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.9130434782608695,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 76.66666666666666,
+          "profiles_within_budget": [
+            "customer_support",
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.04,
@@ -591,7 +618,12 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.9130434782608695,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 115.0,
+          "profiles_within_budget": [
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.05,
@@ -653,7 +685,12 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8767123287671232,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 121.66666666666667,
+          "profiles_within_budget": [
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.06,
@@ -715,7 +752,12 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8709677419354838,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 155.0,
+          "profiles_within_budget": [
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.07,
@@ -777,7 +819,12 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8771929824561403,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 190.0,
+          "profiles_within_budget": [
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.08,
@@ -839,7 +886,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8702290076335878,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 218.33333333333331,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.09,
@@ -901,7 +952,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8561151079136691,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 231.66666666666666,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.1,
@@ -963,7 +1018,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8435374149659863,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 245.0,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.11,
@@ -1025,7 +1084,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8404907975460122,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 271.6666666666667,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.12,
@@ -1087,7 +1150,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8352941176470587,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 283.3333333333333,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.13,
@@ -1149,7 +1216,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8258426966292134,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 296.6666666666667,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.14,
@@ -1211,7 +1282,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8152173913043479,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 306.66666666666663,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.15,
@@ -1273,7 +1348,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8082901554404145,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 321.66666666666663,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.16,
@@ -1335,7 +1414,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.7979797979797979,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 330.0,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.17,
@@ -1397,7 +1480,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.7922705314009661,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 345.0,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.18,
@@ -1459,7 +1546,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.786046511627907,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 358.3333333333333,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.19,
@@ -1521,7 +1612,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.7782805429864252,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 368.33333333333337,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.2,
@@ -1583,7 +1678,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.7748917748917749,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 385.0,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         }
       ]
     },
@@ -1631,6 +1730,15 @@
           0.2
         ],
         "n_points": 20
+      },
+      "cost_axis": {
+        "unit": "judge calls per 1000 requests, on this envelope",
+        "caveat": "flag rate is measured at base rate 0.4617; this is not a production cost projection (DECISIONS 132)",
+        "declared_profile_budgets": {
+          "customer_support": 0.1,
+          "decision_support": 0.5,
+          "internal_knowledge": 0.2
+        }
       },
       "criterion": {
         "name": "lift_holds",
@@ -1761,7 +1869,13 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 1.0,
-          "lift_holds": false
+          "lift_holds": false,
+          "judge_calls_per_1000_on_this_envelope": 8.333333333333334,
+          "profiles_within_budget": [
+            "customer_support",
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.02,
@@ -1823,7 +1937,13 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8181818181818181,
-          "lift_holds": false
+          "lift_holds": false,
+          "judge_calls_per_1000_on_this_envelope": 18.333333333333332,
+          "profiles_within_budget": [
+            "customer_support",
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.03,
@@ -1885,7 +2005,13 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.9130434782608695,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 76.66666666666666,
+          "profiles_within_budget": [
+            "customer_support",
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.04,
@@ -1947,7 +2073,12 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.9062499999999999,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 106.66666666666667,
+          "profiles_within_budget": [
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.05,
@@ -2009,7 +2140,12 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.891566265060241,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 138.33333333333334,
+          "profiles_within_budget": [
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.06,
@@ -2071,7 +2207,12 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8867924528301886,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 176.66666666666666,
+          "profiles_within_budget": [
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.07,
@@ -2133,7 +2274,12 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8793103448275862,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 193.33333333333334,
+          "profiles_within_budget": [
+            "decision_support",
+            "internal_knowledge"
+          ]
         },
         {
           "target_fpr": 0.08,
@@ -2195,7 +2341,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8692307692307691,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 216.66666666666669,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.09,
@@ -2257,7 +2407,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8529411764705883,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 226.66666666666666,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.1,
@@ -2319,7 +2473,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8402777777777778,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 240.0,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.11,
@@ -2381,7 +2539,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8266666666666665,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 250.0,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.12,
@@ -2443,7 +2605,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8205128205128204,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 260.0,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.13,
@@ -2505,7 +2671,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8074534161490683,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 268.3333333333333,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.14,
@@ -2567,7 +2737,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.7988165680473372,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 281.6666666666667,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.15,
@@ -2629,7 +2803,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.803191489361702,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 313.33333333333337,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.16,
@@ -2691,7 +2869,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.8029556650246306,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 338.3333333333333,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.17,
@@ -2753,7 +2935,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.7932692307692307,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 346.6666666666667,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.18,
@@ -2815,7 +3001,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.786046511627907,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 358.3333333333333,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.19,
@@ -2877,7 +3067,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.7762557077625569,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 365.0,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         },
         {
           "target_fpr": 0.2,
@@ -2939,7 +3133,11 @@
           },
           "lift_ceiling": 2.1660649819494586,
           "lift_fraction_of_ceiling": 0.7678571428571428,
-          "lift_holds": true
+          "lift_holds": true,
+          "judge_calls_per_1000_on_this_envelope": 373.33333333333337,
+          "profiles_within_budget": [
+            "decision_support"
+          ]
         }
       ]
     }

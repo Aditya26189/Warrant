@@ -2,7 +2,7 @@
 
 Re-analysis of frozen scores in `results/scores/validation-T1-last_token.json`. No inference was run: every number is a function of the committed labels, scores and question ids.
 
-- commit `64af2146f3fa` · dirty `False` · config `533fb74983fcd8af`
+- commit `29e568dda8e1` · dirty `False` · config `533fb74983fcd8af`
 - detector `probe-qwen2.5-7b-instruct-T1-last_token` · envelope `sha256:e77c64f908491ad1`
 - certification: Clopper-Pearson one-sided upper bound at alpha 0.050, via `certify_fpr`
 - intervals: percentile bootstrap, 1000 resamples over questions, seed 1729
@@ -41,6 +41,49 @@ Lift *holds* at a target FPR when the **lower bound** of its 95% bootstrap inter
 | 0.19 | 0.590980 | 0.1517 | 0.6209 [0.5656, 0.6805] (95% CI, n=600) | 0.7783 [0.7229, 0.8341] (95% CI, n=600) | 0.3683 [0.3317, 0.4067] (95% CI, n=600) | 1.686 [1.536, 1.847] (95% CI, n=600) | yes | 78% |
 | 0.20 | 0.566509 | 0.1610 | 0.6462 [0.5950, 0.7051] (95% CI, n=600) | 0.7749 [0.7227, 0.8290] (95% CI, n=600) | 0.3850 [0.3483, 0.4250] (95% CI, n=600) | 1.678 [1.545, 1.831] (95% CI, n=600) | yes | 77% |
 
+## The frontier: what recall costs
+
+Everything flagged routes to the expensive check, so the flag rate is the bill. Costed against the flag-rate budgets `config.yaml` actually declares:
+
+| profile | declared flag-rate budget |
+|---|---:|
+| `customer_support` | 0.10 |
+| `internal_knowledge` | 0.20 |
+| `decision_support` | 0.50 |
+
+> **These are envelope figures, not production costs.** Flag rate is measured at base rate 0.4617. Production traffic is nowhere near that, and the same threshold would flag a different share of it. Quoting a judge-call figure from here as a production cost puts a flag rate from one workload beside a base rate from another — the scenario-mixing error `CLAUDE.md` names. `DECISIONS.md` 132.
+
+| target FPR | recall | flag rate | judge calls / 1000 | lift | profiles within budget |
+|---:|---|---:|---:|---:|---|
+| 0.01 | 0.0108 [0.0000, 0.0256] (95% CI, n=600) | 0.0050 | 5 | 2.166 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.02 | 0.0650 [0.0390, 0.0962] (95% CI, n=600) | 0.0333 | 33 | 1.949 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.03 | 0.1516 [0.1126, 0.1957] (95% CI, n=600) | 0.0767 | 77 | 1.978 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.04 | 0.2274 [0.1809, 0.2800] (95% CI, n=600) | 0.1150 | 115 | 1.978 | `decision_support`, `internal_knowledge` |
+| 0.05 | 0.2310 [0.1844, 0.2843] (95% CI, n=600) | 0.1217 | 122 | 1.899 | `decision_support`, `internal_knowledge` |
+| 0.06 | 0.2924 [0.2428, 0.3519] (95% CI, n=600) | 0.1550 | 155 | 1.887 | `decision_support`, `internal_knowledge` |
+| 0.07 | 0.3610 [0.3082, 0.4207] (95% CI, n=600) | 0.1900 | 190 | 1.900 | `decision_support`, `internal_knowledge` |
+| 0.08 | 0.4116 [0.3610, 0.4733] (95% CI, n=600) | 0.2183 | 218 | 1.885 | `decision_support` |
+| 0.09 | 0.4296 [0.3754, 0.4892] (95% CI, n=600) | 0.2317 | 232 | 1.854 | `decision_support` |
+| 0.10 | 0.4477 [0.3928, 0.5074] (95% CI, n=600) | 0.2450 | 245 | 1.827 | `decision_support` |
+| 0.11 | 0.4946 [0.4413, 0.5528] (95% CI, n=600) | 0.2717 | 272 | 1.821 | `decision_support` |
+| 0.12 | 0.5126 [0.4601, 0.5751] (95% CI, n=600) | 0.2833 | 283 | 1.809 | `decision_support` |
+| 0.13 | 0.5307 [0.4778, 0.5922] (95% CI, n=600) | 0.2967 | 297 | 1.789 | `decision_support` |
+| 0.14 | 0.5415 [0.4873, 0.6047] (95% CI, n=600) | 0.3067 | 307 | 1.766 | `decision_support` |
+| 0.15 | 0.5632 [0.5083, 0.6241] (95% CI, n=600) | 0.3217 | 322 | 1.751 | `decision_support` |
+| 0.16 | 0.5704 [0.5154, 0.6345] (95% CI, n=600) | 0.3300 | 330 | 1.728 | `decision_support` |
+| 0.17 | 0.5921 [0.5318, 0.6553] (95% CI, n=600) | 0.3450 | 345 | 1.716 | `decision_support` |
+| 0.18 | 0.6101 [0.5522, 0.6717] (95% CI, n=600) | 0.3583 | 358 | 1.703 | `decision_support` |
+| 0.19 | 0.6209 [0.5656, 0.6805] (95% CI, n=600) | 0.3683 | 368 | 1.686 | `decision_support` |
+| 0.20 | 0.6462 [0.5950, 0.7051] (95% CI, n=600) | 0.3850 | 385 | 1.678 | `decision_support` |
+
+### The two ends of the trade
+
+**Most recall available** — target 0.20: recall 0.6462, costing 385 judge calls per 1000 requests (38.5% of this envelope). Within budget for: `decision_support`.
+
+**Best lift per flagged item** — target 0.01: lift 2.166 (100% of ceiling) at recall 0.0108, costing 5 calls per 1000. Within budget for: `customer_support`, `decision_support`, `internal_knowledge`.
+
+The operating point is a business choice between the two, and this table is the whole of what the measurement can say about it. Which profile a point can actually serve is decided by the policy layer, which conjoins a recall floor and an FPR ceiling to the flag-rate budget; fitting the budget is necessary and not sufficient.
+
 ## The shipped operating point, for reference
 
 - `P-conservative` at threshold 0.940337
@@ -60,7 +103,7 @@ The threshold at each grid point is certified on the **same** frozen test split 
 
 Re-analysis of frozen scores in `results/scores/transfer-T1-last_token.json`. No inference was run: every number is a function of the committed labels, scores and question ids.
 
-- commit `64af2146f3fa` · dirty `False` · config `533fb74983fcd8af`
+- commit `29e568dda8e1` · dirty `False` · config `533fb74983fcd8af`
 - detector `probe-qwen2.5-7b-instruct-T1-last_token` · envelope `sha256:c4733cda255e55d9`
 - certification: Clopper-Pearson one-sided upper bound at alpha 0.050, via `certify_fpr`
 - intervals: percentile bootstrap, 1000 resamples over questions, seed 1729
@@ -98,6 +141,49 @@ Lift *holds* at a target FPR when the **lower bound** of its 95% bootstrap inter
 | 0.18 | 0.678095 | 0.1424 | 0.6101 [0.5552, 0.6703] (95% CI, n=600) | 0.7860 [0.7308, 0.8379] (95% CI, n=600) | 0.3583 [0.3217, 0.3950] (95% CI, n=600) | 1.703 [1.549, 1.871] (95% CI, n=600) | yes | 79% |
 | 0.19 | 0.671371 | 0.1517 | 0.6137 [0.5586, 0.6751] (95% CI, n=600) | 0.7763 [0.7212, 0.8295] (95% CI, n=600) | 0.3650 [0.3283, 0.4017] (95% CI, n=600) | 1.681 [1.530, 1.850] (95% CI, n=600) | yes | 78% |
 | 0.20 | 0.664573 | 0.1610 | 0.6209 [0.5667, 0.6815] (95% CI, n=600) | 0.7679 [0.7137, 0.8214] (95% CI, n=600) | 0.3733 [0.3350, 0.4083] (95% CI, n=600) | 1.663 [1.518, 1.825] (95% CI, n=600) | yes | 77% |
+
+## The frontier: what recall costs
+
+Everything flagged routes to the expensive check, so the flag rate is the bill. Costed against the flag-rate budgets `config.yaml` actually declares:
+
+| profile | declared flag-rate budget |
+|---|---:|
+| `customer_support` | 0.10 |
+| `internal_knowledge` | 0.20 |
+| `decision_support` | 0.50 |
+
+> **These are envelope figures, not production costs.** Flag rate is measured at base rate 0.4617. Production traffic is nowhere near that, and the same threshold would flag a different share of it. Quoting a judge-call figure from here as a production cost puts a flag rate from one workload beside a base rate from another — the scenario-mixing error `CLAUDE.md` names. `DECISIONS.md` 132.
+
+| target FPR | recall | flag rate | judge calls / 1000 | lift | profiles within budget |
+|---:|---|---:|---:|---:|---|
+| 0.01 | 0.0181 [0.0036, 0.0355] (95% CI, n=600) | 0.0083 | 8 | 2.166 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.02 | 0.0325 [0.0136, 0.0554] (95% CI, n=600) | 0.0183 | 18 | 1.772 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.03 | 0.1516 [0.1144, 0.1949] (95% CI, n=600) | 0.0767 | 77 | 1.978 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.04 | 0.2094 [0.1673, 0.2577] (95% CI, n=600) | 0.1067 | 107 | 1.963 | `decision_support`, `internal_knowledge` |
+| 0.05 | 0.2671 [0.2193, 0.3207] (95% CI, n=600) | 0.1383 | 138 | 1.931 | `decision_support`, `internal_knowledge` |
+| 0.06 | 0.3394 [0.2884, 0.3963] (95% CI, n=600) | 0.1767 | 177 | 1.921 | `decision_support`, `internal_knowledge` |
+| 0.07 | 0.3682 [0.3185, 0.4233] (95% CI, n=600) | 0.1933 | 193 | 1.905 | `decision_support`, `internal_knowledge` |
+| 0.08 | 0.4079 [0.3571, 0.4655] (95% CI, n=600) | 0.2167 | 217 | 1.883 | `decision_support` |
+| 0.09 | 0.4188 [0.3656, 0.4765] (95% CI, n=600) | 0.2267 | 227 | 1.848 | `decision_support` |
+| 0.10 | 0.4368 [0.3827, 0.4945] (95% CI, n=600) | 0.2400 | 240 | 1.820 | `decision_support` |
+| 0.11 | 0.4477 [0.3938, 0.5036] (95% CI, n=600) | 0.2500 | 250 | 1.791 | `decision_support` |
+| 0.12 | 0.4621 [0.4075, 0.5202] (95% CI, n=600) | 0.2600 | 260 | 1.777 | `decision_support` |
+| 0.13 | 0.4693 [0.4133, 0.5283] (95% CI, n=600) | 0.2683 | 268 | 1.749 | `decision_support` |
+| 0.14 | 0.4874 [0.4325, 0.5475] (95% CI, n=600) | 0.2817 | 282 | 1.730 | `decision_support` |
+| 0.15 | 0.5451 [0.4883, 0.6046] (95% CI, n=600) | 0.3133 | 313 | 1.740 | `decision_support` |
+| 0.16 | 0.5884 [0.5352, 0.6498] (95% CI, n=600) | 0.3383 | 338 | 1.739 | `decision_support` |
+| 0.17 | 0.5957 [0.5424, 0.6552] (95% CI, n=600) | 0.3467 | 347 | 1.718 | `decision_support` |
+| 0.18 | 0.6101 [0.5552, 0.6703] (95% CI, n=600) | 0.3583 | 358 | 1.703 | `decision_support` |
+| 0.19 | 0.6137 [0.5586, 0.6751] (95% CI, n=600) | 0.3650 | 365 | 1.681 | `decision_support` |
+| 0.20 | 0.6209 [0.5667, 0.6815] (95% CI, n=600) | 0.3733 | 373 | 1.663 | `decision_support` |
+
+### The two ends of the trade
+
+**Most recall available** — target 0.20: recall 0.6209, costing 373 judge calls per 1000 requests (37.3% of this envelope). Within budget for: `decision_support`.
+
+**Best lift per flagged item** — target 0.01: lift 2.166 (100% of ceiling) at recall 0.0181, costing 8 calls per 1000. Within budget for: `customer_support`, `decision_support`, `internal_knowledge`.
+
+The operating point is a business choice between the two, and this table is the whole of what the measurement can say about it. Which profile a point can actually serve is decided by the policy layer, which conjoins a recall floor and an FPR ceiling to the flag-rate budget; fitting the budget is necessary and not sufficient.
 
 ## The shipped operating point, for reference
 

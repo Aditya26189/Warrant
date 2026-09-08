@@ -205,10 +205,26 @@ def _frontier(sweep: FprSweep) -> list[str]:
         )
 
     # The two ends of the trade, chosen by measured quantities rather than by
-    # eye: the most recall available, and the best lift per flagged item.
-    most_recall = max(certified, key=lambda p: p.recall.value)
+    # eye — and chosen only from points that clear the pre-registered bar.
+    #
+    # Without that restriction the "best lift" end selects target 0.01, where
+    # lift is 2.166 because three items were flagged and all three were right.
+    # Its interval is [0.000, 5.129]: the point fails the criterion this project
+    # registered, and headlining it would be quoting the one number on the grid
+    # that the bar exists to reject.
+    holding = [p for p in certified if p.lift_holds]
+    if not holding:
+        return lines + [
+            "",
+            "### The two ends of the trade",
+            "",
+            "No point on this grid clears the pre-registered bar, so there is no "
+            "operating point to recommend at either end. The rows above describe "
+            "the shape of the curve and nothing more.",
+        ]
+    most_recall = max(holding, key=lambda p: p.recall.value)
     best_lift = max(
-        (p for p in certified if p.lift is not None), key=lambda p: p.lift.value
+        (p for p in holding if p.lift is not None), key=lambda p: p.lift.value
     )
     lines += [
         "",

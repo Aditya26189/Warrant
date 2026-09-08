@@ -355,17 +355,51 @@ def test_the_frontier_section_renders_with_its_caveat(fast_config) -> None:
 
 
 def test_the_frontier_ends_are_chosen_by_measurement(fast_config) -> None:
-    """Most-recall and best-lift are maxima, not points picked by eye."""
+    """Most-recall and best-lift are maxima over points that CLEAR the bar.
+
+    The restriction is the point. Without it, "best lift" selects the tightest
+    target on the grid, where a handful of flagged items all happen to be right
+    and lift reaches the ceiling with an interval running down to zero — a point
+    that fails the pre-registered criterion. Recommending it would mean
+    headlining the one row the bar exists to reject.
+    """
     sweep = sweep_fpr(
-        fast_config, _score_set(), grid=fpr_grid(0.02, 0.20, 0.02), data_source=MEASURED
+        fast_config, _score_set(), grid=fpr_grid(0.01, 0.20, 0.01), data_source=MEASURED
     )
     markdown = render_sweep(sweep, provenance={"git_commit": "f" * 40, "dirty": False})
-    certified = [p for p in sweep.points if p.certified and p.recall is not None]
+    holding = [p for p in sweep.points if p.lift_holds]
+    assert holding, "fixture produced no holding points; the test proves nothing"
 
-    most_recall = max(certified, key=lambda p: p.recall.value)
-    best_lift = max((p for p in certified if p.lift), key=lambda p: p.lift.value)
+    most_recall = max(holding, key=lambda p: p.recall.value)
+    best_lift = max((p for p in holding if p.lift), key=lambda p: p.lift.value)
     assert f"target {most_recall.target_fpr:.2f}: recall" in markdown
     assert f"target {best_lift.target_fpr:.2f}: lift" in markdown
+
+    # Explicitly: a non-holding point with higher lift is not recommended.
+    non_holding = [
+        p for p in sweep.points
+        if p.certified and p.lift is not None and not p.lift_holds
+    ]
+    for point in non_holding:
+        if point.lift.value > best_lift.lift.value:
+            assert f"target {point.target_fpr:.2f}: lift" not in markdown, (
+                f"target {point.target_fpr:.2f} has higher lift "
+                f"({point.lift.value:.3f}) but does not clear the bar, and was "
+                "recommended anyway"
+            )
+
+
+def test_no_holding_point_means_no_recommendation(fast_config) -> None:
+    """A grid where nothing holds recommends nothing, rather than the least-bad."""
+    sweep = sweep_fpr(
+        fast_config, _score_set(separation=0.0, seed=3),
+        grid=fpr_grid(0.01, 0.05, 0.01), data_source=MEASURED,
+    )
+    if any(p.lift_holds for p in sweep.points):
+        pytest.skip("this fixture happened to clear the bar; nothing to assert")
+    markdown = render_sweep(sweep, provenance={"git_commit": "0" * 40, "dirty": False})
+    assert "No point on this grid clears the pre-registered bar" in markdown
+    assert "Most recall available" not in markdown
 
 
 # ------------------------------------------------------------ fixture refusal
