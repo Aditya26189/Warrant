@@ -52,6 +52,8 @@ from controlplane.validation.scores import (
     ScoreSet,
     ScoreTarget,
     load_score_set,
+    metrics_as_payload,
+    metrics_for_target,
     write_score_set,
 )
 
@@ -137,9 +139,14 @@ def main(argv: list[str] | None = None) -> int:
         scores=tuple(float(x) for x in val_scores.tolist()),
         question_ids=tuple(str(x) for x in val_qids.tolist()),
         targets=(
+            # A real metrics block, not a gesture at one. Every frozen score set
+            # names an artifact field its arrays reproduce, and `make verify`
+            # check 2 recomputes it -- so a target pointing at something that is
+            # not a metrics block fails verification, which is exactly what a
+            # fabricated one did here first time round.
             ScoreTarget(
                 artifact="results/fpr_sweep_oos/sweep.json",
-                metrics_path="sweeps[0].points",
+                metrics_path="certifying_split_metrics",
                 threshold=shipped_threshold,
                 operating_point_id=committed.targets[0].operating_point_id,
             ),
@@ -178,6 +185,14 @@ def main(argv: list[str] | None = None) -> int:
                 "targets": list(grid), "n_points": len(grid),
                 "registered": "Phase 0 brief D2, unchanged",
             },
+            # What the shipped operating point does on the split that certified
+            # the thresholds. Reported because the valsplit score set has to
+            # reproduce something for check 2 to have anything to check, and
+            # informative in its own right: it is the only view of the shipped
+            # threshold on data it was not selected against.
+            "certifying_split_metrics": metrics_as_payload(
+                metrics_for_target(config, valsplit, valsplit.targets[0])
+            ),
             "integrity": {
                 "test_scores_reproduce_committed": True,
                 "checked": (

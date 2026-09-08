@@ -1,10 +1,13 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-08T16:52:12+00:00",
-    "git_commit": "55e9c74e92e4da64e4486278db4b194b0ef980b1",
+    "timestamp_utc": "2026-09-08T17:24:31+00:00",
+    "git_commit": "3523da8748801a14209f4689f783c6d722ffa88d",
     "git_branch": "main",
-    "dirty": false,
-    "dirty_paths": [],
+    "dirty": true,
+    "dirty_paths": [
+      "reports/PHASE-1.md",
+      "scripts/20_fpr_sweep_oos.py"
+    ],
     "dirty_excludes": "results",
     "python": "3.12.10",
     "libraries": {
@@ -229,6 +232,85 @@
     ],
     "n_points": 20,
     "registered": "Phase 0 brief D2, unchanged"
+  },
+  "certifying_split_metrics": {
+    "auroc": {
+      "name": "auroc",
+      "value": 0.8201303289628641,
+      "kind": "ESTIMATED",
+      "n": 600,
+      "ci_low": 0.7851225076494783,
+      "ci_high": 0.8531913779843965,
+      "ci_level": 0.95,
+      "unit": "ratio",
+      "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+      "convention": "two_sided_95"
+    },
+    "recall": {
+      "name": "recall",
+      "value": 0.0996309963099631,
+      "kind": "ESTIMATED",
+      "n": 600,
+      "ci_low": 0.0664145593661819,
+      "ci_high": 0.13572609783212894,
+      "ci_level": 0.95,
+      "unit": "rate",
+      "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+      "convention": "two_sided_95"
+    },
+    "precision": {
+      "name": "precision",
+      "value": 0.9,
+      "kind": "ESTIMATED",
+      "n": 600,
+      "ci_low": 0.7776881720430109,
+      "ci_high": 1.0,
+      "ci_level": 0.95,
+      "unit": "rate",
+      "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+      "convention": "two_sided_95"
+    },
+    "flag_rate": {
+      "name": "flag_rate",
+      "value": 0.05,
+      "kind": "ESTIMATED",
+      "n": 600,
+      "ci_low": 0.035,
+      "ci_high": 0.06666666666666667,
+      "ci_level": 0.95,
+      "unit": "rate",
+      "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+      "convention": "two_sided_95"
+    },
+    "confirmed_errors": {
+      "name": "confirmed_errors",
+      "value": 27.0,
+      "kind": "EXACT",
+      "n": 30,
+      "ci_low": null,
+      "ci_high": null,
+      "ci_level": null,
+      "unit": "count",
+      "estimator": null,
+      "convention": null
+    },
+    "fpr_hard_negatives": null,
+    "base_rate": 0.45166666666666666,
+    "ranking_absent_reason": null,
+    "extra": [
+      {
+        "name": "fpr",
+        "value": 0.00911854103343465,
+        "kind": "ESTIMATED",
+        "n": 600,
+        "ci_low": 0.0,
+        "ci_high": 0.021343095024986946,
+        "ci_level": 0.95,
+        "unit": "rate",
+        "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+        "convention": "two_sided_95"
+      }
+    ]
   },
   "integrity": {
     "test_scores_reproduce_committed": true,

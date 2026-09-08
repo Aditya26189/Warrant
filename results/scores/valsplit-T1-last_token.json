@@ -1,10 +1,13 @@
 {
  "provenance": {
-  "timestamp_utc": "2026-09-08T16:49:44+00:00",
-  "git_commit": "55e9c74e92e4da64e4486278db4b194b0ef980b1",
+  "timestamp_utc": "2026-09-08T17:21:57+00:00",
+  "git_commit": "3523da8748801a14209f4689f783c6d722ffa88d",
   "git_branch": "main",
-  "dirty": false,
-  "dirty_paths": [],
+  "dirty": true,
+  "dirty_paths": [
+   "reports/PHASE-1.md",
+   "scripts/20_fpr_sweep_oos.py"
+  ],
   "dirty_excludes": "results",
   "python": "3.12.10",
   "libraries": {
@@ -214,7 +217,7 @@
  "targets": [
   {
    "artifact": "results/fpr_sweep_oos/sweep.json",
-   "metrics_path": "sweeps[0].points",
+   "metrics_path": "certifying_split_metrics",
    "threshold": 0.9403371394300616,
    "operating_point_id": "P-conservative"
   }
