@@ -27,7 +27,7 @@
 | 🔍 **Checking whether a number is real** | [../README.md](../README.md) claim table → [ARTIFACTS.md](ARTIFACTS.md) → [METHODS.md](METHODS.md) → `make verify` |
 | 🕵️ **Looking for the flaw** | [LIMITATIONS.md](LIMITATIONS.md) → [../DECISIONS.md](../DECISIONS.md) → [CASES.md](CASES.md) → [TESTING.md](TESTING.md) |
 | 🎤 **Presenting it** | [DIAGRAMS.md](DIAGRAMS.md) → [JOURNEY.md](JOURNEY.md) → [DEMO.md](DEMO.md) → [DEMO_SCRIPT.md](DEMO_SCRIPT.md) |
-| 🔬 **Asking whether this means anything outside the repo** | [EXTERNAL.md](EXTERNAL.md) → [../results/external/MATRIX.md](../results/external/MATRIX.md) |
+| 🔬 **Asking whether this means anything outside the repo** | [EXTERNAL.md](EXTERNAL.md) → [REDACT.md](REDACT.md) → [../results/external/MATRIX.md](../results/external/MATRIX.md) |
 | 📥 **Bringing your own data** | [INPUT.md](INPUT.md) → [../examples/README.md](../examples/README.md) |
 | 💬 **Confused by a word** | [GLOSSARY.md](GLOSSARY.md) |
 
@@ -43,6 +43,7 @@
 | 🗺️ [DIAGRAMS.md](DIAGRAMS.md) | What does the system look like? Eleven diagrams: the three objects, the pipeline, the warrant lifecycle, the controls, policy, composition, drift, verification, the Round 1 → Round 2 journey, and the repository end to end |
 | 🌱 [ONBOARDING.md](ONBOARDING.md) | I have one hour. What do I read, run, and look at, in what order? |
 | 🧭 [CODE_TOUR.md](CODE_TOUR.md) | What is in each package under `controlplane/`, and which file do I open for X? |
+| 🧪 [REDACT.md](REDACT.md) | What happens when this certification is run over somebody else's benchmark, and why a rule-based detector has no operating point to tune? |
 | 🔬 [EXTERNAL.md](EXTERNAL.md) | Does this machinery mean anything on detectors we did not build, on data we did not construct? |
 | 📥 [INPUT.md](INPUT.md) | I have my own scores and labels. What file does Warrant want, what does it reject, and when does it refuse? |
 | ⚙️ [SETUP.md](SETUP.md) | How do I get this running — laptop, GPU notebook, offline machine? |

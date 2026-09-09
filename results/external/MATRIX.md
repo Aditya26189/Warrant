@@ -4,7 +4,7 @@ Third-party detectors, at their documented defaults, on public datasets this pro
 
 Each cell is **recall with its 95% interval** at the certified threshold for that false-positive budget. `REFUSED` means no threshold on that data could be certified at that budget. A `*` marks a point where lift's 95% lower bound does not clear 1.0.
 
-Produced at commit `438269284194`, config `533fb74983fcd8af`, dirty `False`.
+Produced at commit `9164879ea02a`, config `533fb74983fcd8af`, dirty `False`.
 
 | detector | task | FPR 0.01 | FPR 0.05 | FPR 0.10 | FPR 0.20 |
 |---|---|---|---|---|---|
@@ -15,6 +15,13 @@ Produced at commit `438269284194`, config `533fb74983fcd8af`, dirty `False`.
 | `presidio-analyzer` | does the text contain an IP_ADDRESS? | 0.000 [0.000, 0.029] * | 0.488 [0.403, 0.577] | 1.000 [0.971, 1.000] | 1.000 [0.971, 1.000] |
 | `presidio-analyzer` | does the text contain a PHONE_NUMBER? | 0.103 [0.050, 0.163] | 0.103 [0.050, 0.163] | 0.673 [0.579, 0.762] | 0.673 [0.579, 0.762] |
 | `presidio-analyzer` | does the text contain an URL? | 1.000 [0.972, 1.000] | 1.000 [0.972, 1.000] | 1.000 [0.972, 1.000] | 1.000 [0.972, 1.000] |
+| `presidio-analyzer` | does the record contain Credit_Card_Numbers? | 0.000 [0.000, 0.034] * | 0.093 [0.039, 0.150] | 0.093 [0.039, 0.150] | 0.093 [0.039, 0.150] |
+| `presidio-analyzer` | does the record contain Personal_Email_Address or Work_Email_Address? | 0.000 [0.000, 0.006] * | 0.990 [0.981, 0.996] | 0.990 [0.981, 0.996] | 0.990 [0.981, 0.996] |
+| `presidio-analyzer` | does the record contain a HIGH-sensitivity entity Presidio claims to detect? | 0.000 [0.000, 0.008] * | 0.000 [0.000, 0.008] * | 0.000 [0.000, 0.008] * | 0.000 [0.000, 0.008] * |
+| `presidio-analyzer` | does the record contain Static_IP_Address? | 0.000 [0.000, 0.054] * | 0.909 [0.836, 0.970] | 0.909 [0.836, 0.970] | 0.909 [0.836, 0.970] |
+| `presidio-analyzer` | does the record contain National_Identification_Number? | 0.011 [0.003, 0.021] * | 0.166 [0.130, 0.201] | 0.166 [0.130, 0.201] | 0.166 [0.130, 0.201] |
+| `presidio-analyzer` | does the record contain Passport_Number? | 0.085 [0.036, 0.143] | 0.266 [0.179, 0.358] | 0.266 [0.179, 0.358] | 0.266 [0.179, 0.358] |
+| `presidio-analyzer` | does the record contain Full_Name? | REFUSED | REFUSED | REFUSED | REFUSED |
 
 ## What each row was run against
 
@@ -86,6 +93,78 @@ Produced at commit `438269284194`, config `533fb74983fcd8af`, dirty `False`.
 - **evidence**: 2000 items, 129 positive, 1871 negative
 - **reproduce**: `python scripts/23_certify_external.py --pairing presidio-url`
 - **note**: Every row contains PII, so a 'contains any PII' task on it is single-class and unbounded. Tasks are defined per entity type from the dataset's own span labels. DECISIONS 139.
+
+### `redact-credit-card`
+
+- **detector** `presidio-analyzer` at version/revision `2.2.364` (MIT) — [source](https://github.com/microsoft/presidio), [docs](https://microsoft.github.io/presidio/analyzer/)
+- **configuration**: AnalyzerEngine() with no arguments -- the stock recognizer registry and the default spaCy en_core_web_lg NLP engine. analyze(text, language='en', entities=[<one entity>]). No threshold is passed, so the engine's own default applies; the item score is the maximum confidence Presidio returns for that entity, or 0.0 when it returns nothing.
+- **tuning**: none. Run at the documented default above; no threshold or variant was chosen based on how it scored here.
+- **dataset** `REDACT locked split (ServiceNow)` at revision `pii_benchmark_sa`, split `locked evaluation split, 1000 records`, licence code MIT; dataset terms permit research, evaluation, auditing, accessed 2026-09-09 — [source](https://github.com/guneeshvats/REDACT-PII-Benchmark)
+- **evidence**: 1000 items, 107 positive, 893 negative
+- **reproduce**: `python scripts/23_certify_external.py --pairing redact-credit-card`
+- **note**: arXiv 2606.19881. The same 1,000 records REDACT's five reported detectors were measured on. 40 records per language across 25 languages, so no SINGLE-LANGUAGE task here can support a budget tighter than 10-20%; pooled it clears 1%. Pooling is used only for regex/checksum recognizers. DECISIONS 140.
+
+### `redact-email`
+
+- **detector** `presidio-analyzer` at version/revision `2.2.364` (MIT) — [source](https://github.com/microsoft/presidio), [docs](https://microsoft.github.io/presidio/analyzer/)
+- **configuration**: AnalyzerEngine() with no arguments -- the stock recognizer registry and the default spaCy en_core_web_lg NLP engine. analyze(text, language='en', entities=[<one entity>]). No threshold is passed, so the engine's own default applies; the item score is the maximum confidence Presidio returns for that entity, or 0.0 when it returns nothing.
+- **tuning**: none. Run at the documented default above; no threshold or variant was chosen based on how it scored here.
+- **dataset** `REDACT locked split (ServiceNow)` at revision `pii_benchmark_sa`, split `locked evaluation split, 1000 records`, licence code MIT; dataset terms permit research, evaluation, auditing, accessed 2026-09-09 — [source](https://github.com/guneeshvats/REDACT-PII-Benchmark)
+- **evidence**: 1000 items, 668 positive, 332 negative
+- **reproduce**: `python scripts/23_certify_external.py --pairing redact-email`
+- **note**: arXiv 2606.19881. The same 1,000 records REDACT's five reported detectors were measured on. 40 records per language across 25 languages, so no SINGLE-LANGUAGE task here can support a budget tighter than 10-20%; pooled it clears 1%. Pooling is used only for regex/checksum recognizers. DECISIONS 140.
+
+### `redact-high-tier`
+
+- **detector** `presidio-analyzer` at version/revision `2.2.364` (MIT) — [source](https://github.com/microsoft/presidio), [docs](https://microsoft.github.io/presidio/analyzer/)
+- **configuration**: AnalyzerEngine() with no arguments -- the stock recognizer registry and the default spaCy en_core_web_lg NLP engine. analyze(text, language='en', entities=[<one entity>]). No threshold is passed, so the engine's own default applies; the item score is the maximum confidence Presidio returns for that entity, or 0.0 when it returns nothing.
+- **tuning**: none. Run at the documented default above; no threshold or variant was chosen based on how it scored here.
+- **dataset** `REDACT locked split (ServiceNow)` at revision `pii_benchmark_sa`, split `locked evaluation split, 1000 records`, licence code MIT; dataset terms permit research, evaluation, auditing, accessed 2026-09-09 — [source](https://github.com/guneeshvats/REDACT-PII-Benchmark)
+- **evidence**: 1000 items, 474 positive, 526 negative
+- **reproduce**: `python scripts/23_certify_external.py --pairing redact-high-tier`
+- **note**: arXiv 2606.19881. The same 1,000 records REDACT's five reported detectors were measured on. 40 records per language across 25 languages, so no SINGLE-LANGUAGE task here can support a budget tighter than 10-20%; pooled it clears 1%. Pooling is used only for regex/checksum recognizers. DECISIONS 140.
+
+### `redact-ip`
+
+- **detector** `presidio-analyzer` at version/revision `2.2.364` (MIT) — [source](https://github.com/microsoft/presidio), [docs](https://microsoft.github.io/presidio/analyzer/)
+- **configuration**: AnalyzerEngine() with no arguments -- the stock recognizer registry and the default spaCy en_core_web_lg NLP engine. analyze(text, language='en', entities=[<one entity>]). No threshold is passed, so the engine's own default applies; the item score is the maximum confidence Presidio returns for that entity, or 0.0 when it returns nothing.
+- **tuning**: none. Run at the documented default above; no threshold or variant was chosen based on how it scored here.
+- **dataset** `REDACT locked split (ServiceNow)` at revision `pii_benchmark_sa`, split `locked evaluation split, 1000 records`, licence code MIT; dataset terms permit research, evaluation, auditing, accessed 2026-09-09 — [source](https://github.com/guneeshvats/REDACT-PII-Benchmark)
+- **evidence**: 1000 items, 66 positive, 934 negative
+- **reproduce**: `python scripts/23_certify_external.py --pairing redact-ip`
+- **note**: arXiv 2606.19881. The same 1,000 records REDACT's five reported detectors were measured on. 40 records per language across 25 languages, so no SINGLE-LANGUAGE task here can support a budget tighter than 10-20%; pooled it clears 1%. Pooling is used only for regex/checksum recognizers. DECISIONS 140.
+
+### `redact-national-id`
+
+- **detector** `presidio-analyzer` at version/revision `2.2.364` (MIT) — [source](https://github.com/microsoft/presidio), [docs](https://microsoft.github.io/presidio/analyzer/)
+- **configuration**: AnalyzerEngine() with no arguments -- the stock recognizer registry and the default spaCy en_core_web_lg NLP engine. analyze(text, language='en', entities=[<one entity>]). No threshold is passed, so the engine's own default applies; the item score is the maximum confidence Presidio returns for that entity, or 0.0 when it returns nothing.
+- **tuning**: none. Run at the documented default above; no threshold or variant was chosen based on how it scored here.
+- **dataset** `REDACT locked split (ServiceNow)` at revision `pii_benchmark_sa`, split `locked evaluation split, 1000 records`, licence code MIT; dataset terms permit research, evaluation, auditing, accessed 2026-09-09 — [source](https://github.com/guneeshvats/REDACT-PII-Benchmark)
+- **evidence**: 1000 items, 374 positive, 626 negative
+- **reproduce**: `python scripts/23_certify_external.py --pairing redact-national-id`
+- **note**: arXiv 2606.19881. The same 1,000 records REDACT's five reported detectors were measured on. 40 records per language across 25 languages, so no SINGLE-LANGUAGE task here can support a budget tighter than 10-20%; pooled it clears 1%. Pooling is used only for regex/checksum recognizers. DECISIONS 140.
+
+### `redact-passport`
+
+- **detector** `presidio-analyzer` at version/revision `2.2.364` (MIT) — [source](https://github.com/microsoft/presidio), [docs](https://microsoft.github.io/presidio/analyzer/)
+- **configuration**: AnalyzerEngine() with no arguments -- the stock recognizer registry and the default spaCy en_core_web_lg NLP engine. analyze(text, language='en', entities=[<one entity>]). No threshold is passed, so the engine's own default applies; the item score is the maximum confidence Presidio returns for that entity, or 0.0 when it returns nothing.
+- **tuning**: none. Run at the documented default above; no threshold or variant was chosen based on how it scored here.
+- **dataset** `REDACT locked split (ServiceNow)` at revision `pii_benchmark_sa`, split `locked evaluation split, 1000 records`, licence code MIT; dataset terms permit research, evaluation, auditing, accessed 2026-09-09 — [source](https://github.com/guneeshvats/REDACT-PII-Benchmark)
+- **evidence**: 1000 items, 94 positive, 906 negative
+- **reproduce**: `python scripts/23_certify_external.py --pairing redact-passport`
+- **note**: arXiv 2606.19881. The same 1,000 records REDACT's five reported detectors were measured on. 40 records per language across 25 languages, so no SINGLE-LANGUAGE task here can support a budget tighter than 10-20%; pooled it clears 1%. Pooling is used only for regex/checksum recognizers. DECISIONS 140.
+
+### `redact-person-en`
+
+- **detector** `presidio-analyzer` at version/revision `2.2.364` (MIT) — [source](https://github.com/microsoft/presidio), [docs](https://microsoft.github.io/presidio/analyzer/)
+- **configuration**: AnalyzerEngine() with no arguments -- the stock recognizer registry and the default spaCy en_core_web_lg NLP engine. analyze(text, language='en', entities=[<one entity>]). No threshold is passed, so the engine's own default applies; the item score is the maximum confidence Presidio returns for that entity, or 0.0 when it returns nothing.
+- **tuning**: none. Run at the documented default above; no threshold or variant was chosen based on how it scored here.
+- **dataset** `REDACT locked split (ServiceNow)` at revision `pii_benchmark_sa`, split `locked evaluation split, 1000 records`, licence code MIT; dataset terms permit research, evaluation, auditing, accessed 2026-09-09 — [source](https://github.com/guneeshvats/REDACT-PII-Benchmark)
+- **evidence**: 40 items, 35 positive, 5 negative
+- **reproduce**: `python scripts/23_certify_external.py --pairing redact-person-en`
+- **note**: arXiv 2606.19881. The same 1,000 records REDACT's five reported detectors were measured on. 40 records per language across 25 languages, so no SINGLE-LANGUAGE task here can support a budget tighter than 10-20%; pooled it clears 1%. Pooling is used only for regex/checksum recognizers. DECISIONS 140.
+
+> Refused at 20 of 20 budgets (tightest certified: nan). A refusal here means the evidence available at that budget could not support a certified threshold. It is a statement about what this dataset can support at that budget, not about the detector.
 
 ## How to read this, and how not to
 

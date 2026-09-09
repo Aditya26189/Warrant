@@ -6411,3 +6411,68 @@ English-only results are reported separately, why the US-only mappings are named
 before the run, and why every cell carries the configuration and a reproduction
 command. The alternative — reporting one aggregate number — is what REDACT's own
 abstract warns against.
+
+## 141 - A rule-based detector has no operating point to tune, and an F1 table cannot show it
+
+- **Date:** 2026-09-09
+- **Status:** DECIDED
+- **Commit:** 9164879
+
+**Context.** Certifying Presidio across REDACT's locked split at twenty target
+FPR budgets produced a result the run was not designed to look for. It is the
+most useful thing to come out of the exercise and it is not a claim about
+Presidio's quality.
+
+**The measurement.** Over twenty budgets from 0.01 to 0.20, each pairing yields
+this many *distinct certified thresholds*:
+
+    redact-email             2        presidio-email_address    1
+    redact-credit-card       2        presidio-credit_card      1
+    redact-ip                2        presidio-ip_address       3
+    redact-national-id       2        presidio-phone_number     2
+    redact-passport          3        presidio-url              2
+    redact-high-tier         1
+    redact-person-en         0  (refused everywhere)
+
+    protectai injection classifier    15
+    our probe                         20
+
+**Presidio emits eight distinct scores over 1,000 records**, and 668 of them are
+exactly 1.0. On the HIGH-tier task, 262 of 526 negative records score 1.0 — the
+same value as 406 of the 474 positives.
+
+**The finding.** A rule-based detector's confidence is a *rule-fired indicator*,
+not a rankable score. There is no threshold between "the regex matched" and "it
+did not", so **a false-positive budget is not a dial you can set on it**. You get
+the single operating point the rules produce; the budget either is or is not
+satisfied there. Ask for something tighter and the only threshold that satisfies
+it is one above the maximum score, which flags nothing and returns recall 0.0 —
+which is what `redact-high-tier` reports at every budget on the grid.
+
+**Why this is not a criticism.** It is a property of the design. A regex either
+matches or it does not, and Presidio never claimed a tunable operating curve.
+The finding is *actionable* rather than damning: if a deployment must hit a 5%
+false-positive budget, a rule-based detector cannot be moved to it, and that is
+a procurement fact worth knowing before signing.
+
+**Why an F1 table cannot show it.** F1 is computed at whatever operating point
+the detector happens to have. It answers "how good is it there". It cannot
+answer "can it be put somewhere else", because it never varies the threshold.
+REDACT reports Presidio at 0.195 partial micro-F1 and that number is correct; it
+simply does not carry the information that the number is the *only* one
+available.
+
+**On the HIGH-tier pairing specifically.** It asks whether a record carries a
+HIGH-sensitivity entity of a type Presidio claims. Presidio detects entity
+*types* and has no notion of a sensitivity tier, so a record with a MEDIUM-tier
+email and a record with a HIGH-tier one look identical to it. The pairing is
+therefore a question about **whether tier triage is thresholdable at all with an
+entity detector**, and the answer is no. Reported that way rather than as a
+Presidio result, and retained rather than dropped because the negative answer is
+the useful part.
+
+**The objection.** *"You constructed a task the detector cannot do and reported
+that it could not do it."* For the HIGH-tier pairing that is exactly right, and
+it is stated in the pairing's own task string and in `docs/REDACT.md`. The
+granularity finding does not depend on it: it holds across all eleven Presidio
+pairings including the five that certify successfully at high recall.
