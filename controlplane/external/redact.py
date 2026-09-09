@@ -38,6 +38,7 @@ __all__ = [
     "REDACT_REPO",
     "ensure_redact",
     "load_redact_records",
+    "COMPLETE",
     "redact_items",
 ]
 
@@ -181,26 +182,80 @@ def _unique_id(row: dict, index: int) -> str:
     return f"{row.get('record_id', index)}#{index}"
 
 
-def redact_items(*canonical_types: str) -> Callable:
-    """Positive when the record carries a gold span of any given type.
+#: The only disclosure form a full-surface detector can be asked about.
+#: See :func:`redact_items` for why this is not a detail.
+COMPLETE = "complete"
 
-    The labels are REDACT's own annotations. A negative record still contains
-    other PII — the question being certified is *"does this contain a
-    ``<type>``"*, not *"is this clean"*, exactly as in the Phase 3 pairings.
 
-    Several types map to one Presidio entity (both email fields map to
-    ``EMAIL_ADDRESS``), so the task is defined over the set rather than run twice
-    against a detector that cannot tell them apart.
+def redact_items(
+    *canonical_types: str, complete_only: bool = True
+) -> Callable:
+    """Positive when the record carries a **complete** gold span of a given type.
+
+    Three-way, and the third way is the point:
+
+    * **positive** — the record carries a ``complete`` span of the type;
+    * **negative** — the record carries no span of the type at all;
+    * **excluded** — the record's only spans of the type are ``partial`` or
+      ``obfuscated``.
+
+    **Why the exclusion matters, learned the hard way.** REDACT annotates
+    ``Credit_Card_Numbers`` at 82.6% ``partial``: 104 of 132 gold spans are
+    four-digit last-four fragments like ``7821``. A first version of this task
+    counted those as positives, measured Presidio at recall 0.0935, and
+    explained the gap as checksum validation rejecting synthetic numbers. That
+    explanation was wrong. Presidio's recognizer is built for full card numbers
+    and **correctly** declines to call four digits a credit card; the low recall
+    was this function's construction, not the detector's behaviour and not the
+    benchmark's generator.
+
+    Nor can such a record be scored as a negative: it does contain card
+    information, so a detector that fired on it would be penalised for being
+    right. The only defensible treatment is to drop it and say how many were
+    dropped.
+
+    Every other type measured here is under 11% partial, so the correction moves
+    one row — but it would have been the row a reviewer opened first.
+
+    Args:
+        canonical_types: REDACT types to treat as one task. Several map to one
+            Presidio entity (both email fields map to ``EMAIL_ADDRESS``), so the
+            task spans them rather than being run twice against a detector that
+            cannot tell them apart.
+        complete_only: Keep the exclusion. Set ``False`` only to reproduce the
+            uncorrected measurement.
+
+    Returns:
+        A callable returning ``(ids, labels, texts)`` over the retained records.
     """
     wanted = set(canonical_types)
 
     def items(rows: Sequence[dict]) -> tuple[list[str], list[int], list[str]]:
         ids, labels, texts = [], [], []
+        dropped = 0
         for index, row in enumerate(rows):
-            present = {e["entity_type"] for e in row.get("entities", ())}
+            spans = [e for e in row.get("entities", ()) if e["entity_type"] in wanted]
+            if not spans:
+                label = 0
+            elif not complete_only:
+                label = 1
+            else:
+                complete = [s for s in spans if s.get("disclosure_form") == COMPLETE]
+                if complete:
+                    label = 1
+                else:
+                    dropped += 1
+                    continue
             ids.append(_unique_id(row, index))
-            labels.append(int(bool(wanted & present)))
+            labels.append(label)
             texts.append(row["text"])
+        if dropped:
+            _LOG.info(
+                "excluded %d record(s) whose only %s spans are partial or "
+                "obfuscated: a full-surface detector cannot be asked about them, "
+                "and scoring them either way would be wrong",
+                dropped, "/".join(sorted(wanted)),
+            )
         return ids, labels, texts
 
     return items

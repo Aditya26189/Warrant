@@ -24,14 +24,18 @@ from controlplane.external.redact import (
 )
 
 
-def _row(record_id, types=(), tiers=None, language="EN", text="t"):
-    tiers = tiers or {}
+def _row(record_id, types=(), tiers=None, language="EN", text="t", forms=None):
+    tiers, forms = tiers or {}, forms or {}
     return {
         "record_id": record_id,
         "text": text,
         "axes": {"language": language},
         "entities": [
-            {"entity_type": t, "sensitivity_tier": tiers.get(t, "MEDIUM")}
+            {
+                "entity_type": t,
+                "sensitivity_tier": tiers.get(t, "MEDIUM"),
+                "disclosure_form": forms.get(t, "complete"),
+            }
             for t in types
         ],
     }
@@ -95,6 +99,80 @@ def test_colliding_record_ids_are_disambiguated_not_dropped() -> None:
 
 def test_unique_id_keeps_the_original_visible() -> None:
     assert _unique_id({"record_id": 42}, 7) == "42#7"
+
+
+# ------------------------------------------- partial disclosure, the correction
+
+def test_a_record_whose_only_span_is_partial_is_excluded_not_scored() -> None:
+    """The correction that mattered, pinned.
+
+    REDACT annotates Credit_Card_Numbers at 82.6% partial — 104 of 132 gold
+    spans are four-digit last-four fragments. Counting those as positives
+    measured Presidio at recall 0.0935 and produced a confident wrong
+    explanation about checksums. Presidio's recognizer is built for full card
+    numbers and correctly declines to call four digits a card.
+
+    Scoring such a record as a negative is equally wrong: it does contain card
+    information, so a detector that fired would be penalised for being right.
+    The only defensible treatment is to drop it.
+    """
+    rows = [
+        _row(1, ("Credit_Card_Numbers",), forms={"Credit_Card_Numbers": "complete"}),
+        _row(2, ("Credit_Card_Numbers",), forms={"Credit_Card_Numbers": "partial"}),
+        _row(3, ()),
+    ]
+    ids, labels, _ = redact_items("Credit_Card_Numbers")(rows)
+    assert labels == [1, 0], "the partial-only record was scored instead of dropped"
+    assert len(ids) == 2
+    assert "2#1" not in ids
+
+
+def test_an_obfuscated_only_record_is_excluded_too() -> None:
+    rows = [_row(1, ("Credit_Card_Numbers",), forms={"Credit_Card_Numbers": "obfuscated"})]
+    ids, labels, _ = redact_items("Credit_Card_Numbers")(rows)
+    assert ids == [] and labels == []
+
+
+def test_a_record_with_both_forms_counts_as_positive() -> None:
+    """A complete span present means the detector can be asked about it."""
+    row = _row(1, ("Credit_Card_Numbers",))
+    row["entities"].append(
+        {"entity_type": "Credit_Card_Numbers", "sensitivity_tier": "HIGH",
+         "disclosure_form": "partial"}
+    )
+    _, labels, _ = redact_items("Credit_Card_Numbers")(rows=[row])
+    assert labels == [1]
+
+
+def test_the_uncorrected_construction_is_still_reachable() -> None:
+    """So the original number can be reproduced rather than taken on trust."""
+    rows = [_row(2, ("Credit_Card_Numbers",), forms={"Credit_Card_Numbers": "partial"})]
+    _, labels, _ = redact_items("Credit_Card_Numbers", complete_only=False)(rows)
+    assert labels == [1]
+
+
+# ------------------------------------------------------------- out of scope
+
+def test_the_three_undefined_tasks_carry_no_numbers() -> None:
+    """A task the detector does not claim is undefined for it, not failed by it.
+
+    `presidio-analyzer | HIGH-sensitivity | 0.000` gets screenshotted without
+    the paragraph that qualifies it, so these carry a reason and no recall.
+    """
+    from controlplane.external import PAIRINGS
+
+    for name in ("redact-national-id", "redact-passport", "redact-high-tier"):
+        pairing = PAIRINGS[name]
+        assert pairing.out_of_scope, f"{name} must declare why it is not scored"
+        assert len(pairing.out_of_scope) > 60
+        assert pairing.task.startswith("OUT OF SCOPE")
+
+
+def test_an_out_of_scope_pairing_refuses_to_be_scored(config) -> None:
+    from controlplane.external.run import run_pairing
+
+    with pytest.raises(ValueError, match="out of scope"):
+        run_pairing(config, "redact-high-tier", grid=(0.10,))
 
 
 # ------------------------------------------------------------ the labels

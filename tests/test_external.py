@@ -62,11 +62,22 @@ def test_every_dataset_is_pinned_and_not_redistributed(pairing_id: str) -> None:
 
 
 @pytest.mark.parametrize("pairing_id", pairing_ids())
-def test_every_pairing_says_what_a_positive_means(pairing_id: str) -> None:
-    """A task nobody can restate is a result nobody can check."""
+def test_every_pairing_says_what_a_positive_means_or_why_it_is_unscored(
+    pairing_id: str,
+) -> None:
+    """A task nobody can restate is a result nobody can check.
+
+    A pairing declared out of scope states the reason instead: it produces no
+    numbers, so there is no positive class to define, and what a reader needs is
+    why the question is undefined for this detector rather than failed by it.
+    """
     pairing = PAIRINGS[pairing_id]
     assert len(pairing.task) > 40
-    assert "positive" in pairing.task.lower()
+    if pairing.out_of_scope:
+        assert pairing.task.startswith("OUT OF SCOPE")
+        assert len(pairing.out_of_scope) > 60
+    else:
+        assert "positive" in pairing.task.lower()
 
 
 def test_an_undeclared_licence_is_recorded_as_undeclared() -> None:

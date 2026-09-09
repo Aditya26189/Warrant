@@ -103,6 +103,12 @@ class Pairing:
     #: Rows to take from the split. Enough for the tightest budget on the grid
     #: with room to spare; the cost is CPU seconds.
     limit: int = 2000
+    #: Why this pairing cannot be scored as a measurement of the detector. When
+    #: set, the pairing is recorded with its reason and **no numbers**: a task
+    #: the detector does not claim is undefined for it, not failed by it, and a
+    #: recall figure beside a vendor's name gets screenshotted without the prose
+    #: that qualifies it.
+    out_of_scope: Optional[str] = None
     #: Loads the rows itself instead of going through HuggingFace. Used where a
     #: benchmark ships as a git repository rather than a dataset.
     loader: Optional[Callable[[], list[dict]]] = None
@@ -414,9 +420,10 @@ def _register_redact() -> None:
          ("EMAIL_ADDRESS",), False),
         ("redact-credit-card", ("Credit_Card_Numbers",), ("CREDIT_CARD",), False),
         ("redact-ip", ("Static_IP_Address",), ("IP_ADDRESS",), False),
-        ("redact-national-id", ("National_Identification_Number",),
-         ("US_SSN", "US_ITIN"), False),
-        ("redact-passport", ("Passport_Number",), ("US_PASSPORT",), False),
+        # national-id and passport are declared out of scope below rather than
+        # scored: Presidio ships US-only recognizers and REDACT spans 40+
+        # national systems, so a recall number here measures the mapping, not
+        # the detector.
         # English only: PERSON is spaCy NER, so the other 24 languages would
         # measure the language mismatch. n=40 refuses at most budgets, and the
         # refusals are the point rather than a problem to route around.
@@ -434,20 +441,35 @@ def _register_redact() -> None:
             english_only=english_only,
         )
 
-    # The stratified question REDACT's metadata makes askable: at a certified
-    # budget, can the detector be relied on where the stakes are highest?
-    high_entities = tuple(
-        e for t in poolable for e in PRESIDIO_MAPPING.get(t, ())
-    )
-    PAIRINGS["redact-high-tier"] = _redact_pairing(
-        "redact-high-tier",
-        "does the record contain a HIGH-sensitivity entity Presidio claims to "
-        "detect? Positive when REDACT labels a gold span HIGH and its type maps "
-        "to a Presidio entity; pooled over 25 languages, regex recognizers only.",
-        redact_high_tier_items(poolable),
-        tuple(dict.fromkeys(high_entities)),
-        english_only=False,
-    )
+    # Three questions that were asked, produced numbers, and must not carry
+    # them. Each is undefined for this detector rather than failed by it.
+    scoped_out = {
+        "redact-national-id": (
+            "Presidio ships US_SSN and US_ITIN. REDACT's catalog spans 40+ "
+            "national identifier systems including Indian Aadhaar. A recall "
+            "figure here measures the coverage mismatch, and pooling across 25 "
+            "languages makes it worse by filling the denominator with "
+            "identifiers the recognizer was never asked about."
+        ),
+        "redact-passport": (
+            "Presidio ships US_PASSPORT only, against a multinational passport "
+            "catalog. Same mismatch as national-id."
+        ),
+        "redact-high-tier": (
+            "Presidio detects entity TYPES and has no representation of a "
+            "sensitivity tier, so a MEDIUM-tier email and a HIGH-tier one are "
+            "the same event to it. Tier triage is undefined for an entity "
+            "detector, not failed by one."
+        ),
+    }
+    for name, reason in scoped_out.items():
+        PAIRINGS[name] = dataclasses.replace(
+            _redact_pairing(
+                name, f"OUT OF SCOPE. {reason}",
+                redact_items("Full_Name"), ("PERSON",), english_only=True,
+            ),
+            out_of_scope=reason,
+        )
 
 
 _register_redact()

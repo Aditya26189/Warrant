@@ -58,7 +58,7 @@ projection.
 - **`warrant certify` works on anyone's CSV**, no model, no config, nothing
   leaving the machine.
 - **The evidence infrastructure**: hash-chained ledger, content-hashed eval sets,
-  provenance on every artifact, 1,027 tests, `make verify` at 40/40 claims and
+  provenance on every artifact, 1,033 tests, `make verify` at 40/40 claims and
   25/25 frozen scores.
 
 **Weak, and it matters:**

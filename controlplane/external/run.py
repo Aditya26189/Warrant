@@ -136,6 +136,12 @@ def run_pairing(
     pairing = PAIRINGS[pairing_id]
     grid = tuple(grid) if grid is not None else fpr_grid(0.01, 0.20, 0.01)
 
+    if pairing.out_of_scope is not None:
+        raise ValueError(
+            f"{pairing.id} is declared out of scope and is not scored: "
+            f"{pairing.out_of_scope}"
+        )
+
     if pairing.frozen_score_set is not None:
         return _run_frozen(config, pairing, grid)
 
