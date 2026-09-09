@@ -28,8 +28,11 @@
 finding that out.**
 
 What survives the correction is **refusal as a terminal outcome**: REDACT reports
-numbers with intervals and never declines to score, and no commercial product I
-found declines either. Since writing that, the REDACT work turned up a second
+numbers with intervals and never declines to score, and **I did not find a
+commercial product that declines** — which, after being wrong twice this session
+by asserting negatives from searches, is stated as a fact about my search rather
+than about the market. Verifying it means trialling products, not reading their
+marketing. Since writing that, the REDACT work turned up a second
 one — **whether a detector has an operating point that can be tuned to your
 budget at all** (§5). Both are real primitives and both are ours.
 
@@ -58,7 +61,7 @@ projection.
 - **`warrant certify` works on anyone's CSV**, no model, no config, nothing
   leaving the machine.
 - **The evidence infrastructure**: hash-chained ledger, content-hashed eval sets,
-  provenance on every artifact, 1,033 tests, `make verify` at 40/40 claims and
+  provenance on every artifact, 1,051 tests, `make verify` at 40/40 claims and
   25/25 frozen scores.
 
 **Weak, and it matters:**

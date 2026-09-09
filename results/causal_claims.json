@@ -1,0 +1,296 @@
+{
+  "provenance": {
+    "timestamp_utc": "2026-09-09T17:03:49+00:00",
+    "git_commit": "9579cf60a1e3e21f77cf57642844b81c376a47a7",
+    "git_branch": "main",
+    "dirty": true,
+    "dirty_paths": [
+      "DECISIONS.md",
+      "README.md",
+      "controlplane/report/causal.py",
+      "docs/EXTERNAL.md",
+      "reports/AUDIT-2026-09-09.md",
+      "reports/STRATEGY-2026-09.md",
+      "scripts/24_causal_claims.py"
+    ],
+    "dirty_excludes": "results",
+    "python": "3.12.10",
+    "libraries": {
+      "torch": "2.9.1",
+      "transformers": "5.8.0",
+      "scikit-learn": "1.7.2",
+      "numpy": "2.2.6",
+      "scipy": "1.16.3",
+      "pandas": "2.3.3",
+      "statsmodels": "0.14.6",
+      "presidio-analyzer": "2.2.364",
+      "bitsandbytes": "0.49.2"
+    },
+    "device": {
+      "platform": "Windows-11-10.0.26200-SP0",
+      "processor": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD",
+      "cuda_available": false,
+      "device_name": "cpu"
+    },
+    "config_hash": "533fb74983fcd8af",
+    "seed": 1729,
+    "config": {
+      "seed": 1729,
+      "workload": {
+        "name": "enterprise-3pct",
+        "monthly_interactions": 200000,
+        "base_error_rate": 0.03,
+        "review_minutes_per_item": 3.0,
+        "reviewer_monthly_cost_inr": 85000.0,
+        "reviewer_productive_hours": 160.0,
+        "measured_tpr": 0.1416,
+        "measured_fpr": 0.011
+      },
+      "model": {
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "quantization": "nf4",
+        "layer_fractions": [
+          0.29,
+          0.39,
+          0.5,
+          0.61,
+          0.71,
+          0.82,
+          0.93
+        ],
+        "prefill_chunk_tokens": 2048
+      },
+      "probe": {
+        "aggregations": [
+          "mean_pool",
+          "max_rolling_means",
+          "last_token"
+        ],
+        "rolling_window": 64,
+        "rolling_stride": 32,
+        "standardize": true,
+        "class_weight": "balanced",
+        "C_grid": [
+          0.0001,
+          0.001,
+          0.01,
+          0.1,
+          1.0
+        ],
+        "positive_class": "incorrect"
+      },
+      "evalsets": [
+        {
+          "id": "triviaqa-600",
+          "pad_tokens": null
+        },
+        {
+          "id": "triviaqa-longctx-600",
+          "pad_tokens": [
+            4000,
+            16000
+          ]
+        },
+        {
+          "id": "hinglish-pii-200",
+          "pad_tokens": null
+        },
+        {
+          "id": "hard-negatives-200",
+          "pad_tokens": null
+        },
+        {
+          "id": "canary-20",
+          "pad_tokens": null
+        }
+      ],
+      "validation": {
+        "bootstrap_samples": 1000,
+        "ci": 0.95,
+        "min_n_test": 200,
+        "min_auroc_lower_ci": 0.55,
+        "warrant_ttl_hours": 24,
+        "controls": [
+          "padding_fault",
+          "label_shuffle",
+          "null_feature",
+          "canary",
+          "determinism"
+        ],
+        "null_control_band": [
+          0.45,
+          0.55
+        ],
+        "null_control_min_repeats": 8,
+        "null_control_max_repeats": 200,
+        "calibration_tolerance": 0.25
+      },
+      "drift": {
+        "window_size": 200,
+        "psi_stable": 0.1,
+        "psi_significant": 0.25,
+        "mmd_permutations": 500,
+        "features": [
+          "token_length",
+          "script_mix",
+          "embedding_centroid_distance",
+          "reference_perplexity",
+          "category_mix"
+        ],
+        "max_false_alarm_rate": 0.05
+      },
+      "sampling": {
+        "allocation_month_one": "proportional",
+        "allocation_thereafter": "neyman",
+        "expected_design_effect": 0.67,
+        "score_bands": 4,
+        "double_label_fraction": 0.1,
+        "recall_margin_tiers": [
+          0.05,
+          0.02
+        ],
+        "blind_queue": true
+      },
+      "policy": {
+        "engine": "opa",
+        "fail_closed_on_missing_warrant": true,
+        "weighted_error": {
+          "w_fpr_benign": 50.0,
+          "w_fnr": 5.0,
+          "w_fpr_hard_negative": 2.0
+        }
+      },
+      "profiles": {
+        "customer_support": {
+          "inline_budget_ms": 200,
+          "min_recall": 0.1,
+          "max_fpr_hard_negatives": 0.02,
+          "operating_point": "P-customer-support",
+          "target_flag_rate": 0.1,
+          "on_calibration_drift": "REFUSE",
+          "calibration_sensitivity": 0.25
+        },
+        "internal_knowledge": {
+          "inline_budget_ms": 500,
+          "min_recall": 0.25,
+          "max_fpr_hard_negatives": 0.05,
+          "operating_point": "P-internal-knowledge",
+          "target_flag_rate": 0.2,
+          "on_calibration_drift": "WIDEN_BUDGET",
+          "calibration_sensitivity": 0.25
+        },
+        "decision_support": {
+          "inline_budget_ms": 2000,
+          "min_recall": 0.5,
+          "max_fpr_hard_negatives": 0.1,
+          "operating_point": "P-decision-support",
+          "target_flag_rate": 0.5,
+          "on_calibration_drift": "IGNORE",
+          "calibration_sensitivity": 0.25
+        }
+      },
+      "detectors": {
+        "presidio_configs": [
+          "stock",
+          "enabled",
+          "enabled_plus_custom"
+        ],
+        "qwen3guard": "Qwen/Qwen3Guard-Gen-0.6B"
+      },
+      "store": {
+        "path": "results/controlplane.db",
+        "retention_days": 400,
+        "hash_chain": true
+      },
+      "paths": {
+        "results_dir": "results",
+        "evalsets_dir": "evalsets",
+        "policies_dir": "policies"
+      }
+    }
+  },
+  "purpose": "Evidence each registered causal claim is checked against. A mechanism stated in a document is a claim in its own right and needs its own falsifier; see controlplane/report/causal.py and DECISIONS.md 142.",
+  "evidence": {
+    "ai4privacy_credit_card": {
+      "corpus": "ai4privacy/pii-masking-200k",
+      "slice": "train[:2000], english",
+      "n_spans": 129,
+      "fragments_under_12_digits": 0,
+      "no_known_prefix": 108,
+      "known_prefix": 21,
+      "known_prefix_luhn_pass": 3,
+      "known_prefix_luhn_fail": 18
+    },
+    "redact_credit_card": {
+      "corpus": "REDACT locked split",
+      "n_spans": 132,
+      "partial": 109,
+      "complete": 23,
+      "fragments_under_12_digits": 115,
+      "complete_full_length": 17,
+      "complete_full_length_luhn_pass": 11,
+      "complete_full_length_luhn_fail": 6
+    },
+    "redact_capacity": {
+      "corpus": "REDACT locked split",
+      "n_records": 1000,
+      "n_languages": 25,
+      "records_per_language": 40,
+      "english_records": 40,
+      "negatives_needed_at_001": 299,
+      "negatives_needed_at_005": 59,
+      "negatives_needed_at_010": 29,
+      "negatives_needed_at_020": 14
+    }
+  },
+  "claims": [
+    {
+      "id": "ai4privacy-credit-card-prefix",
+      "asserted_in": "docs/EXTERNAL.md, 'What the numbers say'",
+      "mechanism": "Presidio's low credit-card recall on ai4privacy is driven mainly by spans having no valid card-network prefix, so the recognizer's pattern never matches and the checksum is never reached.",
+      "evidence_key": "ai4privacy_credit_card",
+      "falsified_means": "most spans carry a real card-network prefix, so the prefix is not the dominant cause and docs/EXTERNAL.md names the wrong mechanism",
+      "withdrawn": null
+    },
+    {
+      "id": "ai4privacy-credit-card-not-fragments",
+      "asserted_in": "docs/EXTERNAL.md, 'What the numbers say'",
+      "mechanism": "The ai4privacy cause is NOT partial fragments: every span there is a full 16-digit string, unlike REDACT.",
+      "evidence_key": "ai4privacy_credit_card",
+      "falsified_means": "ai4privacy does contain card fragments, so it shares REDACT's cause after all and the 'two unrelated causes' claim is wrong",
+      "withdrawn": null
+    },
+    {
+      "id": "redact-credit-card-partial-fragments",
+      "asserted_in": "docs/REDACT.md \u00a73",
+      "mechanism": "Presidio's withdrawn 0.0935 on REDACT was caused by the task counting partial last-four fragments as positives, not by checksums.",
+      "evidence_key": "redact_credit_card",
+      "falsified_means": "most REDACT card spans are complete, so partial fragments cannot explain the withdrawn figure and docs/REDACT.md \u00a73 is wrong",
+      "withdrawn": null
+    },
+    {
+      "id": "redact-luhn-deviation",
+      "asserted_in": "docs/REDACT.md \u00a76, reported to the authors",
+      "mechanism": "Some complete, full-length REDACT card numbers fail Luhn, a deviation from the stated generation contract.",
+      "evidence_key": "redact_credit_card",
+      "falsified_means": "every complete full-length card number passes Luhn, so the observation sent to the REDACT authors is wrong and must be retracted",
+      "withdrawn": null
+    },
+    {
+      "id": "redact-capacity-per-language",
+      "asserted_in": "docs/REDACT.md \u00a71, the headline finding",
+      "mechanism": "REDACT's locked split cannot underwrite a per-language false-positive bound tighter than 10-20%, because 40 records per language cannot supply the 59 clean negatives a 5% budget needs.",
+      "evidence_key": "redact_capacity",
+      "falsified_means": "a single language carries enough records to underwrite a 5% budget, so the headline finding in docs/REDACT.md \u00a71 is wrong",
+      "withdrawn": null
+    },
+    {
+      "id": "presidio-checksum-explanation",
+      "asserted_in": "docs/EXTERNAL.md, until 2026-09-09 \u2014 WITHDRAWN",
+      "mechanism": "Presidio's low credit-card recall is caused by checksum validation rejecting synthetically generated numbers.",
+      "evidence_key": "ai4privacy_credit_card",
+      "falsified_means": "checksum rejection cannot account for the majority of spans; the mechanism was withdrawn on 2026-09-09, DECISIONS 142",
+      "withdrawn": "2026-09-09. Measured: 108 of 129 spans have no valid card-network prefix, so the pattern never matches and Luhn is never reached. Superseded by ai4privacy-credit-card-prefix."
+    }
+  ]
+}

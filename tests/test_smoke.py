@@ -562,6 +562,11 @@ def test_every_script_has_a_smoke_test() -> None:
         # was moved into controlplane/evalsets/banking.py precisely so it
         # could be tested here without one. See test_banking_pilot.py.
         "13_pilot_run.py",
+        # Needs the network: it measures evidence from ai4privacy at a pinned
+        # revision. What it produces -- results/causal_claims.json -- is checked
+        # offline by tests/test_causal_claims.py on every run, which is the
+        # point of freezing the evidence rather than measuring it in the test.
+        "24_causal_claims.py",
         # Needs the network: it fetches third-party models and datasets at
         # pinned revisions rather than redistributing them, and the suite must
         # run offline. Its pure parts -- the registry's provenance, the label

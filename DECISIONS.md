@@ -6476,3 +6476,79 @@ that it could not do it."* For the HIGH-tier pairing that is exactly right, and
 it is stated in the pairing's own task string and in `docs/REDACT.md`. The
 granularity finding does not depend on it: it holds across all eleven Presidio
 pairings including the five that certify successfully at high recall.
+
+## 142 - Three wrong explanations, one shape: supersedes 139 and 141's credit-card reading
+
+- **Date:** 2026-09-09
+- **Status:** DECIDED — supersedes the absence claim in 139 and the causal claim in 141
+- **Commit:** ec1fc03
+
+**Context.** An audit of this session's own output, prompted by being caught
+twice, found a third instance of the same error and one live falsified claim that
+corrections had not propagated to.
+
+### What was wrong, and what is true
+
+**1. "No public dataset with Indian identifier labels exists" (139, and until now
+`docs/EXTERNAL.md`).** False. REDACT's catalog covers Aadhaar — 42 seed entries
+including Devanagari forms — plus PAN and GSTIN inside a National_ID family
+spanning 40+ country systems. IFSC and UPI VPA are absent: two patterns in 4,127.
+The claim was a negative asserted from one search that returned no direct hit,
+and the disconfirming result was in that search's own output.
+
+**2. "Presidio's low credit-card recall on REDACT is checksum validation" (141).**
+False, and corrected there: 109 of 132 gold spans are `partial` last-four
+fragments and the task counted them as positives. Corrected recall 0.6667, up
+from 0.0935.
+
+**3. "…and the same cause on ai4privacy, which replicates it."** False twice
+over. Measured on the 129 `CREDITCARDNUMBER` spans:
+
+    full 16-digit strings                129 of 129   (no fragments)
+    no valid card-network prefix          108 of 129   (84%)
+    of the 21 with a real prefix, Luhn-valid        3
+    Presidio fires on the bare span         9 of 129
+
+The dominant cause is the **network prefix**, not the checksum: a 16-digit string
+beginning `1417` is not a card number under any numbering plan, so Presidio's
+pattern never matches and Luhn never runs. So the two corpora have **different**
+causes producing similar numbers — REDACT's from our task construction, this one
+from prefixes. **A coincidence presented as a replication**, which is what a
+replication argument exists to rule out.
+
+### The shape all three share
+
+Each is a **plausible causal story asserted without running the test that would
+falsify it**, and in each case the test was cheap:
+
+* run Luhn over the spans — four minutes;
+* check the digit counts — one minute;
+* search positively for the thing that would refute the absence — one query.
+
+None was run until someone asked. The rule from 131 covered convenient claims
+and convenient absences. It did not cover **convenient explanations**, which are
+the most seductive of the three because they feel like understanding.
+
+**The rule, extended:** *a causal explanation for a measured number is a claim in
+its own right and needs its own test.* "Detector D scores X because of mechanism
+M" is two claims. The first is measured; the second is usually a guess, and it is
+the half that gets quoted.
+
+### The second-order failure, which is the more useful finding
+
+When the REDACT credit-card explanation was falsified, the fix was applied **to
+the document being discussed and nowhere else**. The identical claim sat in
+`docs/EXTERNAL.md` about a different corpus, and the falsified absence claim sat
+three paragraphs below it, both surviving a correction that had already been
+accepted.
+
+**Correcting an instance is not correcting the claim.** A retraction has to be
+followed by a grep. This entry exists partly to make that concrete: after any
+correction, search every document for the same assertion about a different
+subject.
+
+**Consequence.** `docs/EXTERNAL.md` now carries the measured prefix breakdown,
+states that the two credit-card results do **not** replicate each other, and
+records what REDACT actually covers. 139's absence claim stands in the log as
+written, superseded here rather than edited, because an append-only record that
+gets tidied is worth less than one that is wrong in a documented way.

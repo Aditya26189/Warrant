@@ -51,12 +51,27 @@ budget upward.
 
 CREDIT_CARD is the outlier at recall 0.070 [0.030, 0.117], flat across every
 budget. **That is a property of this pairing, and reading it as a verdict on
-Presidio would be wrong.** Presidio's credit-card recognizer validates a
-checksum; the dataset's numbers are synthetically generated. A generated number
-that does not satisfy the checksum is one the recognizer is designed to reject,
-and a detector declining to fire on a string that cannot be a real card number
-is behaving correctly. What the cell measures is agreement between one vendor's
-validation rules and another project's synthetic generator.
+Presidio would be wrong** — but the reason is not the one this document gave
+until 2026-09-09, and the correction is worth reading because the first
+explanation was asserted rather than measured.
+
+Measured on the 129 `CREDITCARDNUMBER` spans in this slice:
+
+| | |
+|---|---|
+| full 16-digit strings | 129 of 129 — no fragments |
+| **no valid card-network prefix** | **108 of 129 (84%)** |
+| of the 21 with a real prefix, Luhn-valid | 3 |
+| Presidio fires on the bare span | 9 of 129 |
+
+So the dominant cause is the **prefix**, not the checksum. Presidio's recognizer
+matches network-specific patterns first — Visa `4…`, Mastercard `51–55` and
+`2221–2720`, Amex `34/37` — and a 16-digit string beginning `1417` is not a card
+number under any network's numbering plan, so the pattern never matches and the
+checksum never runs. Declining to fire on it is correct behaviour.
+
+The withdrawn explanation named the checksum alone. That was a plausible story
+told without running Luhn, and running it puts 84% of the mass somewhere else.
 
 PHONE_NUMBER runs 0.103 at tight budgets to 0.673 at 0.10 and above.
 
@@ -73,6 +88,15 @@ entry in it. That is the point of including it.
 **They are not a ranking.** The rows answer different questions on different
 data. A number in one row is not comparable with a number in another. What is
 comparable *within* a row is the shape across budgets.
+
+**The two credit-card results do not replicate each other.** An earlier version
+of this work reported Presidio at 0.070 here and 0.093 on REDACT and treated the
+agreement as corroboration of a shared cause. It is not. On REDACT the low figure
+came from *our own task construction* counting last-four fragments as positives,
+and correcting it moved the number to 0.667 (see [REDACT.md](REDACT.md) §3). Here
+the cause is missing network prefixes. **Two corpora, two unrelated causes,
+similar numbers by coincidence** — which is what a replication argument is
+supposed to rule out rather than assume.
 
 **They are not a general claim about any detector.** Each is a measurement of
 one version of one tool on one public dataset at one point in time. Presidio's
@@ -92,15 +116,22 @@ may certify comfortably at a looser one on the same data.
 ## What could not be measured
 
 Warrant was built around Indian identifier classes — Aadhaar, PAN, UPI, IFSC —
-and none of them appears above. **No public dataset with labels for them was
-found.** `pii-masking-200k` carries 56 entity types across its English rows and
-not one is an India-specific identifier.
+and none of them appears above, because `pii-masking-200k` carries 56 entity
+types across its English rows and not one is an India-specific identifier.
 
-That is a gap in available public data rather than a finding about any detector.
-It is also separable from something this project already measured: presidio-analyzer
-2.2.364 exposes 19 supported entity types, none of them India-specific, which is
-a *coverage* result and needs no labelled data. Certifying performance on those
-identifiers needs labelled data that does not appear to exist publicly.
+**An earlier version of this section said no public dataset with such labels
+existed. That was wrong**, and it was wrong in the weakest possible way: a
+negative asserted from one search that returned no direct hit.
+[REDACT](https://github.com/guneeshvats/REDACT-PII-Benchmark)'s pattern catalog
+covers Aadhaar — 42 seed entries including Devanagari surface forms — plus PAN
+and GSTIN, within a National_ID family spanning "40+ country systems". IFSC and
+UPI VPA are genuinely absent from it, which is two patterns in a catalog of
+4,127.
+
+What remains true and is a different statement: presidio-analyzer 2.2.364
+exposes 19 supported entity types and none is India-specific, which is a
+*coverage* result measured by calling `get_supported_entities()` and needs no
+labelled data.
 
 Also absent: anything requiring a GPU or a paid API key.
 
