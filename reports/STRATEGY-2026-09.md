@@ -1,316 +1,260 @@
 # Where this should go next
 
-**Dated 2026-09-09. Strategy decays; re-read the dates before acting on it.**
+**Dated 2026-09-09. Revised 2026-09-09 after the central claim was falsified.**
+
+> ## Correction, and it is not a small one
+>
+> The first version of this document recommended building `dpdp-pii-bench`, a
+> public labelled benchmark for Indian PII identifiers, on the stated ground
+> that **"no public labelled benchmark exists"** for Aadhaar/PAN/UPI/IFSC.
+>
+> **That claim is false, and the recommendation built on it is withdrawn.**
+>
+> ServiceNow published **REDACT** on 18 June 2026 ([arXiv 2606.19881](https://arxiv.org/abs/2606.19881),
+> [repo](https://github.com/guneeshvats/REDACT-PII-Benchmark)): 13,427 records,
+> 324,078 entity annotations, 51 entity types, 4,127 surface-form patterns, 25
+> languages across 9 scripts, a nine-axis covering-array sampler, and a released
+> evaluation harness. I cloned the repository and grepped the catalog. Findings
+> in §2.
+>
+> How the error was made, and why it is worse than the one in §4, is recorded in
+> §4 rather than hidden here.
 
 ---
 
 ## The short version
 
-**Stop leading with the hallucination probe. Lead with Indian PII, and build the
-benchmark nobody has.**
+**There is no benchmark wedge. Do not build one, and do not spend five months
+finding that out.**
 
-Three things came out of the research that change the picture:
+What survives the correction is one thing: **refusal as a terminal outcome**.
+REDACT reports numbers with intervals and never declines to score. No commercial
+product I found declines either. That is a real primitive and it is ours.
 
-1. **The statistics are not a moat.** A peer-reviewed ACL 2026 paper certifies a
-   threshold with Clopper-Pearson bounds — the same shape of guarantee
-   `certify_fpr` produces. A competent competitor rebuilds our core estimator in
-   about a week.
-2. **Both regulatory tailwinds you would assume are later than assumed.** The EU
-   AI Act's high-risk obligations were **deferred to December 2027**, and the
-   revised US banking model-risk guidance **explicitly excludes generative and
-   agentic AI from scope**. I nearly wrote the opposite of that second one — see
-   §3.
-3. **India's DPDP has a hard enforcement date of 13 May 2027**, there are already
-   vendors selling Indian PII detection, and **no public labelled benchmark
-   exists to check any of them.** That is the gap, in the home market, on the
-   nearest real deadline.
+It is also a week of work for anyone who decides to copy it, and its entire
+commercial premise is unverified: **it assumes someone is punished for a wrong
+claim.** In a market where nobody is yet, refusal is a cost, not a feature.
 
-The asset is not the detector. It is the refusal, the evidence trail, and — if
-we build it — the benchmark everyone else has to be measured against.
+That question is not a month-five question. It is the only question, and it is
+answerable in two weeks by talking to compliance and validation leads without
+writing a line of code.
 
 ---
 
 ## 1. What we actually have
 
-An honest inventory, because a plan built on a flattering one is worthless.
+Unchanged by the correction, because this section was an audit rather than a
+projection.
 
 **Genuinely strong:**
 
-- **Refusal as a first-class outcome with no override.** Verified as
-  differentiated: the ACL 2026 conformal-routing work certifies with the same
-  Clopper-Pearson machinery but **never abstains** — it routes everything and
-  guarantees a bound. Ours says *"the evidence does not support this"* and exits
-  0. I could not find a commercial product that does this.
-- **`warrant certify` works on anyone's CSV** (Phase 2). Three columns, no model,
-  no config, nothing leaves the machine.
-- **The external matrix** (Phase 3): seven pairings, third-party detectors at
-  documented defaults, every cell carrying its version, revision, licence and a
-  one-command reproduction.
+- **Refusal as a first-class outcome with no override.** The ACL 2026
+  conformal-routing work ([2026.acl-srw.70](https://aclanthology.org/2026.acl-srw.70/))
+  certifies with the same Clopper-Pearson machinery and **never abstains** — it
+  routes everything under a guarantee. REDACT scores everything. Ours says *"the
+  evidence does not support this"* and exits 0.
+- **`warrant certify` works on anyone's CSV**, no model, no config, nothing
+  leaving the machine.
 - **The evidence infrastructure**: hash-chained ledger, content-hashed eval sets,
-  provenance on every artifact, 992 tests, `make verify` at 40/40 claims.
+  provenance on every artifact, 992 tests, `make verify` at 40/40 claims and
+  25/25 frozen scores.
 
 **Weak, and it matters:**
 
-- **Our own probe is the weakest detector in our own matrix.** At a 0.05 budget
-  it reaches recall 0.231 while Presidio's email recognizer reaches 1.000 and the
-  prompt-injection classifier reaches 0.616 (`results/external/MATRIX.md`). Any
-  pitch that leads with our detector loses to a reader who opens the table.
-- **Zero production traffic. Zero external users. Zero customers.** Everything
-  measured is public or synthetic corpora.
+- **Our own probe is the weakest detector in our own matrix** — recall 0.231 at a
+  0.05 budget against Presidio's 1.000 on email and the injection classifier's
+  0.616 (`results/external/MATRIX.md`).
+- **Zero production traffic, zero external users, zero customers.**
 - **Every external row is in-sample**, ours included.
-- **The founding Indian-identifier thesis has no data behind it yet.** Phase 3
-  established that no public dataset carries Aadhaar/PAN/UPI/IFSC labels, so the
-  most specific claim the project wanted to make is the one it cannot currently
-  support.
-
-**Half-built and worth knowing about:** `sampling/`, `gate/` and
-`economics/sizing.py` are specified and unwritten; the on-traffic warrant —
-clause one of the three in `CLAUDE.md` — does not exist.
+- **`sampling/`, `gate/` and `economics/sizing.py` are unwritten.** The on-traffic
+  warrant — clause one of the three in `CLAUDE.md` — does not exist.
 
 ---
 
-## 2. What the research says
+## 2. What REDACT actually contains
 
-### The method is published
+I cloned it and grepped rather than reading the abstract. Catalog file
+`catalog/PII_Pattern_Catalog_v4_MASTER.md` (584 KB) and
+`catalog/pattern_seed_data_v4.json` (6.8 MB).
 
-**[Conformal LLM Routing with Distribution-Free Safety Guarantees](https://aclanthology.org/2026.acl-srw.70/)**
-(ACL 2026) uses "Clopper-Pearson conformal calibration [to select] a routing
-threshold that guarantees the violation rate among routed queries stays below α
-with probability at least 1 − δ." Related 2026 work:
-[When Can Conformal Risk Control Certify LLM Outputs?](https://arxiv.org/html/2606.29054v1)
-and [Beyond Red-Teaming: Formal Guarantees of LLM Guardrail Classifiers](https://arxiv.org/html/2605.10901v1).
+**Present:**
 
-**Read this correctly.** It does not mean the work is wasted — it means the
-technique is *respectable and reproducible*, which is what you want in something
-an auditor will lean on. It does mean the defensibility has to come from
-somewhere other than the estimator.
+| identifier | evidence |
+|---|---|
+| **Aadhaar** | 10 catalog / 42 seed occurrences, including Devanagari surface forms: `"Aadhaar: 1234 5678 9012, UID: 123456789012, आधार: 1234 5678 9012"` |
+| **PAN** | catalog line 79 — National_ID covers "40+ country systems including US SSN/ITIN, UK NINO, German Steuer-ID, French NIR, Italian Codice Fiscale, **Indian Aadhaar/PAN**" |
+| **GSTIN** | pattern `TX-027`, with structure: "15-char alphanumeric: state code + PAN + entity + Z + check" |
+| Indian addresses, PIN codes, phones, names, email TLDs | patterns AW-057/058, AP-047/048, TW-062/063, TP-027, WE-025, PE-043, FUN-034/035, LFN-034 |
 
-### The eval market is crowded
+**Absent:** `IFSC` (0 occurrences) and **UPI VPA** (0 — the three apparent "UPI"
+hits are the substring inside "gro**upi**ng").
 
-Patronus, Galileo, Braintrust, Future AGI, Langfuse, LangSmith, DeepEval,
-Phoenix, TruLens, Arize. Several are well funded and ship runtime guardrails plus
-evaluation ([Braintrust's own survey](https://www.braintrust.dev/articles/best-ai-governance-platforms-llm-applications-2026),
-[Galileo's](https://galileo.ai/blog/best-ai-agent-evaluation-platforms)).
+**So the honest result is two missing patterns in a 4,127-pattern catalog.** That
+is a pull request. It is not a company, and it is not five months of work.
 
-Every one of them answers *"how good is this?"* with a number. None of the
-material I read describes a product that answers *"we cannot tell you, and here
-is what it would take."* That is the only空 space I found.
+REDACT also **already published the headline finding** I proposed to discover:
+Presidio at recall 0.07 on HIGH-sensitivity entities against Claude Sonnet 4.6's
+0.77 on the same slice, with the abstract stating that "aggregate F1 masks an
+architecture-dependent failure structure" and "the rule-based detector performs
+poorly on the highest-stakes data."
 
-### Both regulatory clocks are slower than assumed
+And **PIIBench** ([arXiv 2604.15776](https://arxiv.org/pdf/2604.15776), April
+2026) ran the consolidate-and-measure play four months earlier: ten public
+datasets, 2,369,883 annotated sequences, 48 canonical entity types, eight
+comparator systems.
 
-**EU AI Act.** Regulation (EU) 2026/1744 (the Digital Omnibus on AI), in force
-27 July 2026, **deferred standalone high-risk obligations from 2 August 2026 to
-2 December 2027**, and embedded-product high-risk to August 2028
-([Holland & Knight](https://www.hklaw.com/en/insights/publications/2026/04/us-companies-face-eu-ai-acts-possible-august-2026-compliance-deadline),
-[CSA](https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-high-risk-deadline-omnibus-20260/)).
-Article 50 transparency, GPAI obligations and Article 5 prohibitions still apply
-now.
+### PIIBench is the natural experiment, and it already reported out
+
+The withdrawn recommendation asserted that a benchmark "earns citations, and
+whoever owns it is in the room for every procurement conversation."
+
+PIIBench tests that. One author, two papers, models on HuggingFace, April to May
+2026. Observed outcome: **cited by REDACT.** Not a company, not a customer, not a
+contract. The citation half of the claim is confirmed. **The procurement half is
+unobserved**, and I asserted it as though the two travelled together.
+
+---
+
+## 3. The regulatory picture, which survives
+
+These were verified against primary sources and stand.
+
+**EU AI Act.** Regulation (EU) 2026/1744 (Digital Omnibus on AI), in force 27
+July 2026, **deferred standalone high-risk obligations to 2 December 2027** and
+embedded-product high-risk to August 2028
+([Holland & Knight](https://www.hklaw.com/en/insights/publications/2026/04/us-companies-face-eu-ai-acts-possible-august-2026-compliance-deadline)).
+Article 50 transparency, GPAI obligations and Article 5 prohibitions apply now.
 
 **US banking.** [SR 26-2](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.htm) /
 [OCC Bulletin 2026-13](https://www.occ.gov/news-issuances/bulletins/2026/bulletin-2026-13.html),
-issued 17 April 2026, revises model-risk guidance for banks over $30bn — and
-says plainly: *"Generative AI and agentic AI models are novel and rapidly
-evolving. As such, they are not within the scope of this guidance."* The agencies
-"plan to issue in the near future a request for information that addresses model
-risk management generally and considers, in particular, banks' use of AI."
+17 April 2026, for banks over $30bn: *"Generative AI and agentic AI models are
+novel and rapidly evolving. As such, they are not within the scope of this
+guidance."* It **does** apply to traditional statistical and non-generative,
+non-agentic AI. The agencies "plan to issue in the near future a request for
+information" covering AI.
 
-**India.** DPDP Rules notified 13 November 2025. Consent Manager provisions bite
-**13 November 2026**; the 18-month transition ends **13 May 2027**, widely treated
-as hard enforcement
-([India Briefing](https://www.india-briefing.com/news/india-dpdp-compliance-timeline-enforcement-2026-27-44740.html/),
-[Fisher Phillips](https://www.fisherphillips.com/en/insights/insights/indias-new-data-privacy-rules-are-here)).
+**India.** DPDP Rules notified 13 November 2025; Consent Manager provisions 13
+November 2026; 18-month transition ends **13 May 2027**.
 
-**India is the nearest real deadline, and it is the home market.**
+### The inferential gap I papered over
 
-### The Indian PII gap is real, and it is a gap in *evidence*, not in tools
+The withdrawn recommendation ran: *DPDP has a hard deadline → therefore there is
+budget for certifying detector false-positive rates.*
 
-Tools exist and are shipping: `dpdpa-pii-scrubber`, `pii-detection-cipherx`, and
-commercial DPDP vendors (Complynz claims 50+ India-specific patterns; also
-dcomply, CrewCheck). What does **not** exist is a public labelled benchmark for
-Aadhaar/PAN/UPI/IFSC with formal evaluation. ai4privacy carries 54–63 classes and
-none of them is an Indian identifier — which Phase 3 measured independently.
-
-So: a market of vendors making detection claims, a regulator-driven deadline
-eight months out, and **no way for a buyer to check any claim.**
+DPDP obliges an organisation to **protect personal data**. It does not oblige
+anyone to **certify a detector's false-positive rate at a stated confidence
+level**. Those are two unstated steps, and they are the same
+"regulation-creates-budget" inference this document correctly demolished for the
+EU and the US — re-imported for India one layer down, because it was the answer I
+wanted.
 
 ---
 
-## 3. The mistake I nearly made, and why it belongs in this document
+## 4. The method failure, twice
 
-A vendor blog stated that SR 26-2 "extends the prior framework to address AI/ML
-systems, LLMs, and agentic architectures" and quoted it as requiring that
-"vendor attestations do not satisfy the requirement" — that institutions
-"cannot transfer risk to a vendor by sourcing an AI model." It read as a perfect
-fit for this product, and I was one step from building the plan on it.
+**First instance (kept from the original).** A vendor blog claimed SR 26-2
+extends to LLMs and agentic AI and requires independent validation because
+"vendor attestations do not satisfy the requirement." It fit the product
+perfectly. The primary sources say the opposite. Caught before it shipped.
 
-The primary sources say the opposite: generative and agentic AI are **out of
-scope**.
+**Second instance, worse.** Having written that lesson down, I then asserted
+**"no public labelled benchmark exists"** on the strength of one web search that
+returned no direct hit — and made it the foundation of the entire
+recommendation.
 
-Had that gone into a deck, the first banking buyer with a compliance team would
-have found it in a minute, and everything else we said would have been
-discounted. This is the same failure mode the project exists to prevent, arriving
-through the business plan rather than through a metric — and the same fix
-applies: **go to the primary source, and treat a convenient claim as the one most
-in need of checking.**
+Three things make it worse than the first:
 
-Make this a rule: **no regulatory or competitive claim in any external material
-without a primary-source link and a date.**
+1. **A negative from a search is the weakest evidence type available.** Absence
+   of a result is not evidence of absence, and I treated it as proof.
+2. **The disconfirming evidence was in my own search output.** The result
+   *"Fine-Tuning Over Architectural Complexity: Broad-Coverage PII Detection on
+   PIIBench with DeBERTa"* ([arXiv 2605.25816](https://arxiv.org/pdf/2605.25816))
+   was returned to me. I read past it because it did not fit.
+3. **It was the single most convenient possible finding**, which by §4's own
+   rule made it the claim most in need of checking, and it got the least.
 
----
-
-## 4. The recommendation
-
-### The wedge: become the reference measurement for Indian PII detection
-
-**Build and publish `dpdp-pii-bench`** — a public, labelled, content-hashed
-benchmark for Indian identifiers (Aadhaar, PAN, UPI VPA, IFSC, GSTIN, voter ID,
-ABHA), with Hinglish and code-mixed text, then certify every available detector
-against it and publish the matrix.
-
-Why this and not something else:
-
-- **It is a moat in a way the maths is not.** Anyone can reimplement
-  Clopper-Pearson. A credible, adopted benchmark takes labelling effort and
-  earns citations, and whoever owns it is in the room for every procurement
-  conversation.
-- **It uses what is already built.** The Presidio adapter, the eval-set
-  machinery with content hashing, `certify_fpr`, the external harness, the
-  matrix renderer. Phase 3's registry takes a new dataset in three dataclasses.
-- **It serves a dated deadline in the home market** where the buyers are and the
-  founders are.
-- **It is a distribution asset.** A table showing which Indian PII detectors can
-  and cannot be certified at a stated false-positive budget is something a
-  compliance lead forwards. Nothing else we have is.
-- **It converts our weakest position into our strongest.** We stop saying "our
-  detector is good" — which the matrix disproves — and start saying "we are the
-  people who measured everyone, including ourselves, and published the method."
-
-**The credibility rule from Phase 3 carries over and gets stricter**: documented
-defaults only, refusals reported neutrally, our own entries on identical terms,
-and one-command reproduction for every cell. If we publish a refusal a vendor can
-show was our misconfiguration, this strategy ends that day.
-
-### What the product becomes
-
-Not a detector. Not another eval platform. **The instrument a compliance or
-validation function runs to check somebody else's claim, that produces evidence
-which stays on their machine.**
-
-The local-only property (Phase 2 D28) stops being a footnote and becomes a lead
-feature: an Indian bank or hospital cannot send production PII to a US SaaS
-evaluator, and every hosted competitor has that problem structurally.
+**The rule, restated so it covers both:** a convenient claim needs a primary
+source, *and a convenient absence needs a positive search for the thing that
+would refute it.* "I searched and found nothing" is a statement about the search.
 
 ---
 
-## 5. The plan
+## 5. What to do instead
 
-Ordered by what unblocks the most. Each is a phase brief in the format that has
-worked.
+### Do not build a competing benchmark
 
-### Phase 4 — the benchmark (highest value, no gate)
+REDACT has eight authors, ServiceNow behind it, a released harness, and covers
+Aadhaar, PAN and GSTIN already. Building a rival is fighting distribution for
+ground already held.
 
-- Design the taxonomy and the label rule per identifier, written before any data
-  exists.
-- Generate candidate items with **checksum-valid** Aadhaar (Verhoeff) and PAN
-  formats, and — critically — **near-miss negatives**: checksum-invalid Aadhaar,
-  PAN-shaped strings that are not PANs, IFSC-shaped non-codes. The negatives are
-  where the benchmark earns its keep, and Phase 3's credit-card finding is the
-  proof: a detector that validates checksums scores 0.070 against a generator
-  that does not, and the number means nothing without knowing that.
-- Hand-label a real subset. Publish inter-rater κ beside every warrant, per the
-  standing rule.
-- Content-hash and freeze. Ship the generator, not just the data.
-- Certify Presidio, the two open-source Indian scrubbers, and any vendor that
-  will let us, on identical terms.
+### The IFSC/UPI gap is a contribution, and should be sized as one
 
-**Gate:** if we cannot get κ above ~0.6 on the hand-labelled subset, the
-benchmark is not publishable and the phase says so.
+IFSC and UPI VPA are genuinely absent. Adding them — checksum-valid generation,
+near-miss negatives, Devanagari and code-mixed surface forms — is real, useful
+work. **Fork REDACT, add the Indian slice, run `certify_fpr` over their released
+harness, and offer it upstream.** MIT-licensed code; dataset terms explicitly
+support "research, evaluation, auditing."
 
-### Phase 5 — close the two open items, or write them off
+**But be clear what that is.** It is a paper. Labelling and regex-taxonomy work
+with a low technical ceiling, using our infrastructure but not our actual edge,
+producing an asset that monetises in citations. Weeks, not months. Worth doing
+for credibility and for the `certify_fpr`-over-someone-else's-harness
+demonstration. **Not a company, and not a reason to defer §5's real task.**
 
-`DECISIONS.md` 138 has been open for three phases: closed-API matrix (needs
-credentials) and corpus expansion / out-of-distribution transfer (needs a GPU).
-Both are cheap. **Decide: fund them or formally scope them out.** An open item
-carried indefinitely is a decision made by default, and the OOD question is the
-one a technical reviewer will ask first.
+### The real task: find out whether anyone is punished for a wrong claim
 
-### Phase 6 — the on-traffic warrant
+This is the load-bearing assumption under the entire product and it has never
+been tested. Two weeks, no code:
 
-Clause one of the three in `CLAUDE.md` — *"what your error rate is on your
-traffic"* — is unbuilt (`sampling/`, `economics/sizing.py`). Until it exists the
-product only certifies against a fixed corpus, which is the weaker half of the
-proposition. This is the largest remaining engineering gap and it is what turns a
-benchmark tool into a monitoring product.
+- **Talk to eight to twelve people** who would run this: model-validation leads
+  in Indian banks and NBFCs, DPO/compliance leads at Indian SaaS firms with EU
+  exposure, one or two AI-assurance practices.
+- **Ask what happens when a control is wrong.** Not whether they would like
+  confidence intervals — everyone says yes. Ask: *has a guardrail ever been found
+  wrong after deployment; what happened to whoever signed it off; what evidence
+  did anyone ask for; who paid.*
+- **Show them a refusal**, not a certification. `examples/refuses.csv` is the
+  demo. Watch whether "we cannot tell you at this budget" reads as integrity or
+  as a broken tool. That reaction is the product's whole thesis, tested.
+- **Write down the answers before interpreting them**, and pre-register what
+  would count as a no.
 
-### Phase 7 — the things that make it usable by someone who is not us
+**The falsifier, registered now:** if fewer than three of twelve can name a
+specific occasion where a wrong AI control claim had a consequence for someone,
+then nobody is punished for a wrong claim, refusal has no buyer, and this is a
+research project with unusually good infrastructure — which is a fine thing to
+be, but should be known before another phase is spent.
 
-Concrete improvements to what exists, in rough priority:
+### Meanwhile, cheap and worth doing
 
-1. **`warrant certify` reports a curve, not a point.** It answers one budget at a
-   time; the sweep machinery already exists. One run should show the whole
-   frontier and what each budget costs.
-2. **A refusal should say what to do next in the user's units** — "you need 262
-   more clean negatives" rather than the requirement and the count separately.
-3. **`--out` defaults beside the input**, which pollutes a user's directory. Make
-   it a directory choice.
-4. **The drift machinery has no customer-facing path.** `drift/` and the
-   revocation ladder are built and reachable only from the research pipeline; a
-   `warrant recheck` that compares a new file against a prior warrant is close to
-   free and is the whole "when the number stops being true" clause.
-5. **The gateway adapter is an adapter and not a gateway** — keep it that way,
-   and either finish it as a reference integration or cut it.
-
-### What not to do
-
-- **Do not build a better detector.** We are worst in our own matrix, the field
-  is crowded, and it is not what anyone would buy from us.
-- **Do not chase EU AI Act high-risk urgency in 2026.** It moved to December
-  2027. Selling against a deadline a buyer's counsel knows has been deferred is
-  the fastest way to lose a room.
-- **Do not claim SR 26-2 covers LLM guardrails.** It does not. Watch for the
-  RFI — being early and substantive on *that* is worth more than a wrong claim
-  now.
-- **Do not publish anything about a named vendor without the reproduction
-  command and the configuration**, per Phase 3 D34/D36.
+1. **`warrant certify` should report the frontier, not one budget.** The sweep
+   machinery exists.
+2. **`warrant recheck`** — compare a new file against a prior warrant. The drift
+   machinery is built and has no customer-facing path, and this is the entire
+   "when the number stops being true" clause.
+3. **Close `DECISIONS.md` 138 or scope it out.** Open for three phases; an item
+   carried indefinitely is a decision made by default.
 
 ---
 
-## 6. What would falsify this
+## 6. What I am still not confident about
 
-Written down now so it cannot be quietly dropped later:
-
-- **Nobody adopts the benchmark.** If after publication and outreach no third
-  party cites or re-runs it in six months, it is a private test set with good
-  documentation, not a moat.
-- **A vendor demonstrates our configuration was wrong** on a published cell.
-  Recoverable once, fatal twice.
-- **The DPDP deadline slips**, as the EU's did. The Consent Manager date of 13
-  November 2026 is the early warning; if that moves, assume May 2027 moves.
-- **An incumbent ships refusal.** It is a week of work for anyone who decides to,
-  and our lead is the discipline and the evidence trail, not the idea.
-- **Buyers turn out to want a number rather than an honest interval.** This is
-  the real commercial risk and it is unresolved: the entire product assumes
-  someone is punished for a wrong claim. In a market where nobody is yet, the
-  refusal is a cost rather than a feature.
-
-## 7. What I am not confident about
-
-- **Whether anyone pays for this, and how much.** I found no pricing data for
-  independent validation of AI controls. Nothing here establishes willingness to
-  pay; it establishes that the evidence gap is real.
-- **Whether the Indian PII benchmark is a business or a marketing asset.** It may
-  be the thing that gets attention and something else entirely that gets bought.
-- **Whether we can label to a defensible standard.** Phase 4's gate exists
-  because I do not know the answer.
-- **The competitive scan is thin.** I read vendor comparison content, much of it
-  written by the vendors. A serious pass would trial two or three products.
+- **Whether anyone pays for any of this.** Unchanged, and now the central
+  question rather than a footnote.
+- **Whether refusal survives contact with a buyer.** It may read as weakness.
+- **The competitive scan is still thin.** I have now been wrong once by not
+  reading past the first page of results; assume the same is true of the vendor
+  landscape, which I assessed largely from vendor-written comparisons.
+- **Whether REDACT's Indian coverage is deep or nominal.** Aadhaar has 42 seed
+  entries and Devanagari forms, which is not nominal. I did not evaluate whether
+  the *generated corpus* exercises them at useful density — that is checkable
+  against their released data and I have not done it.
 
 ---
 
-## 8. The one sentence
+## 7. The one sentence
 
-We are not a detection company and should stop trying to be one; we are the
-people who will tell you, with an interval and a reproduction command, whether
-the thing you bought actually works — and the fastest way to prove that is worth
-something is to measure every Indian PII detector on a benchmark we build and
-publish, including our own, before May 2027.
+The benchmark wedge does not exist, the only thing that is genuinely ours is the
+refusal, and whether the refusal is worth anything is a question about who gets
+punished for a wrong claim — which is answered by twelve conversations, not by
+another phase of code.
