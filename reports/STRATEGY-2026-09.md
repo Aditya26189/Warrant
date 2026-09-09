@@ -27,9 +27,11 @@
 **There is no benchmark wedge. Do not build one, and do not spend five months
 finding that out.**
 
-What survives the correction is one thing: **refusal as a terminal outcome**.
-REDACT reports numbers with intervals and never declines to score. No commercial
-product I found declines either. That is a real primitive and it is ours.
+What survives the correction is **refusal as a terminal outcome**: REDACT reports
+numbers with intervals and never declines to score, and no commercial product I
+found declines either. Since writing that, the REDACT work turned up a second
+one — **whether a detector has an operating point that can be tuned to your
+budget at all** (§5). Both are real primitives and both are ours.
 
 It is also a week of work for anyone who decides to copy it, and its entire
 commercial premise is unverified: **it assumes someone is punished for a wrong
@@ -56,7 +58,7 @@ projection.
 - **`warrant certify` works on anyone's CSV**, no model, no config, nothing
   leaving the machine.
 - **The evidence infrastructure**: hash-chained ledger, content-hashed eval sets,
-  provenance on every artifact, 992 tests, `make verify` at 40/40 claims and
+  provenance on every artifact, 1,027 tests, `make verify` at 40/40 claims and
   25/25 frozen scores.
 
 **Weak, and it matters:**
@@ -200,6 +202,33 @@ with a low technical ceiling, using our infrastructure but not our actual edge,
 producing an asset that monetises in citations. Weeks, not months. Worth doing
 for credibility and for the `certify_fpr`-over-someone-else's-harness
 demonstration. **Not a company, and not a reason to defer §5's real task.**
+
+### What the REDACT contribution actually produced
+
+Done, on 2026-09-09: `certify_fpr` run over REDACT's released locked split, seven
+pairings, results in `results/external/redact-*` and written up in
+[`docs/REDACT.md`](../docs/REDACT.md).
+
+It turned up something the plan did not anticipate, and it is a **second
+primitive alongside refusal**:
+
+> Across twenty budgets, Presidio yields **1–3 distinct operating points**. The
+> injection classifier yields 15; our probe yields 20. Presidio emits eight
+> distinct scores over 1,000 records, 668 of them exactly 1.0.
+
+A rule-based detector's confidence is a rule-fired indicator, not a rankable
+score, so **a false-positive budget is not a dial you can set on it**. And an F1
+table structurally cannot show this: F1 is computed wherever the detector already
+sits and never varies the threshold.
+
+So there are now two things certification says that scoring does not:
+
+1. **Refusal** — the evidence does not support a claim at this budget.
+2. **Tunability** — this detector cannot be moved to your budget at all.
+
+Both are procurement facts. Neither is in REDACT, PIIBench, or any eval platform
+surveyed. That is a stronger position than the first version of this document
+had, and it is still not evidence that anyone pays for it.
 
 ### The real task: find out whether anyone is punished for a wrong claim
 
