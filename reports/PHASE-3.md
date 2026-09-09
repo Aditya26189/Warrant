@@ -10,7 +10,8 @@ Written for outside readers: [`docs/EXTERNAL.md`](../docs/EXTERNAL.md).**
 
 - **Window:** 2026-09-09
 - **Range:** `3d68551` → `HEAD`
-- **Suite:** 952 at open → 990 at close, no failures at either end
+- **Suite:** 952 at open → 992 at close, no failures at either end
+- **Verification:** `verify.py` 40/40 claims, 25/25 frozen scores — unchanged
 - **Method:** CPU only. No GPU, no paid API, no vendor contacted.
 
 ---
@@ -121,7 +122,21 @@ available for a later phase with a detector that claims the task.
 
 ---
 
-## 6. What this does not establish
+## 6. What the closing suite caught
+
+The test-count guard added in Phase 1 fired: the suite collected 992 while
+`README.md` and `Makefile` both said 990. The parametrised library-file guards
+had picked up `controlplane/external/matrix.py` and `registry.py` after the
+count was last written.
+
+Trivial to fix and worth recording anyway, because it is the second time this
+guard has earned its place. It exists because the Makefile drifted by 300 tests
+across the whole of Phase 0 while only the README was policed; it now names
+every file that disagrees, and it named both.
+
+---
+
+## 7. What this does not establish
 
 **These are not rankings.** Rows answer different questions on different data.
 What is comparable within a row is the shape across budgets.
@@ -135,7 +150,7 @@ generator agree. It does not establish behaviour on messy production text.
 
 ---
 
-## 7. Open items
+## 8. Open items
 
 Unchanged from Phase 2 — both still gated on resources:
 
@@ -150,7 +165,7 @@ people's data, not that our probe's numbers survive a corpus it has not seen.
 
 ---
 
-## 8. Ledger
+## 9. Ledger
 
 | Path | What it is |
 |---|---|
@@ -170,12 +185,13 @@ people's data, not that our probe's numbers survive a corpus it has not seen.
 python scripts/23_certify_external.py --list
 python scripts/23_certify_external.py --all          # ~30 min, CPU, needs network
 python scripts/23_certify_external.py --matrix-only  # re-render from disk
-python -m pytest tests/ -q                           # 990 tests
+python -m pytest tests/ -q                           # 992 tests
+python scripts/verify.py --no-activations            # 40/40 claims, 25/25 scores
 ```
 
 ---
 
-## 9. What this changes
+## 10. What this changes
 
 Every number this project had published certified our detector, on our corpus,
 against a budget we chose. That is the good version of self-assessment and it is
