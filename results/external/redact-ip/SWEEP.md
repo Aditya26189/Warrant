@@ -2,16 +2,16 @@
 
 Re-analysis of frozen scores in `results/scores/external-redact-ip.json`. No inference was run: every number is a function of the committed labels, scores and question ids.
 
-- commit `9164879ea02a` · dirty `False` · config `533fb74983fcd8af`
+- commit `ec1fc03bb243` · dirty `False` · config `533fb74983fcd8af`
 - detector `presidio-analyzer` · envelope `revision:pii_benchmark_sa`
 - certification: Clopper-Pearson one-sided upper bound at alpha 0.050, via `certify_fpr`
 - intervals: percentile bootstrap, 1000 resamples over questions, seed 1729
 - thresholds certified and metrics measured on the same set, `external-redact-ip` — **in sample**
-- n 1000 (66 positive, 934 negative) · base rate 0.0660
+- n 997 (63 positive, 934 negative) · base rate 0.0632
 
 ## Verdict
 
-Lift holds at 16 of 20 swept targets, the loosest being a target FPR of 0.20, where the certified threshold achieves FPR 0.0353 and lift 9.775 [8.990, 10.427] — 91% of the 10.75 ceiling. Recall there is 0.9091 [0.8361, 0.9697], against 0.9091 at the shipped operating point. Recall 0.9091 is a ceiling rather than a dial: even at the loosest budget where lift still holds, recall does not clear the upper bound of the shipped point's own 95% interval, so loosening the budget buys nothing this sample can distinguish from where the product already sits.
+Lift holds at 16 of 20 swept targets, the loosest being a target FPR of 0.20, where the certified threshold achieves FPR 0.0353 and lift 10.210 [9.548, 10.720] — 95% of the 10.72 ceiling. Recall there is 0.9524 [0.8906, 1.0000], against 0.9524 at the shipped operating point. Recall 0.9524 is a ceiling rather than a dial: even at the loosest budget where lift still holds, recall does not clear the upper bound of the shipped point's own 95% interval, so loosening the budget buys nothing this sample can distinguish from where the product already sits.
 
 ## The pre-registered criterion
 
@@ -21,26 +21,26 @@ Lift *holds* at a target FPR when the **lower bound** of its 95% bootstrap inter
 
 | target FPR | threshold | achieved FPR | recall | precision | flag rate | lift | lift CI low > 1 | % of ceiling |
 |---:|---:|---:|---|---|---|---|:--:|---:|
-| 0.01 | 0.950000 | 0.0000 | 0.0000 [0.0000, 0.0544] (95% CI, n=1000) | 0.0000 [0.0000, 1.0000] (95% CI, n=1000) | 0.0000 [0.0000, 0.0037] (95% CI, n=1000) | n/a | no | n/a |
-| 0.02 | 0.950000 | 0.0000 | 0.0000 [0.0000, 0.0544] (95% CI, n=1000) | 0.0000 [0.0000, 1.0000] (95% CI, n=1000) | 0.0000 [0.0000, 0.0037] (95% CI, n=1000) | n/a | no | n/a |
-| 0.03 | 0.950000 | 0.0000 | 0.0000 [0.0000, 0.0544] (95% CI, n=1000) | 0.0000 [0.0000, 1.0000] (95% CI, n=1000) | 0.0000 [0.0000, 0.0037] (95% CI, n=1000) | n/a | no | n/a |
-| 0.04 | 0.950000 | 0.0000 | 0.0000 [0.0000, 0.0544] (95% CI, n=1000) | 0.0000 [0.0000, 1.0000] (95% CI, n=1000) | 0.0000 [0.0000, 0.0037] (95% CI, n=1000) | n/a | no | n/a |
-| 0.05 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.06 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.07 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.08 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.09 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.10 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.11 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.12 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.13 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.14 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.15 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.16 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.17 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.18 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.19 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
-| 0.20 | 0.000000 | 0.0353 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.6452 [0.5416, 0.7476] (95% CI, n=1000) | 0.0930 [0.0750, 0.1120] (95% CI, n=1000) | 9.775 [8.990, 10.427] (95% CI, n=1000) | yes | 91% |
+| 0.01 | 0.950000 | 0.0000 | 0.0000 [0.0000, 0.0569] (95% CI, n=997) | 0.0000 [0.0000, 1.0000] (95% CI, n=997) | 0.0000 [0.0000, 0.0037] (95% CI, n=997) | n/a | no | n/a |
+| 0.02 | 0.950000 | 0.0000 | 0.0000 [0.0000, 0.0569] (95% CI, n=997) | 0.0000 [0.0000, 1.0000] (95% CI, n=997) | 0.0000 [0.0000, 0.0037] (95% CI, n=997) | n/a | no | n/a |
+| 0.03 | 0.950000 | 0.0000 | 0.0000 [0.0000, 0.0569] (95% CI, n=997) | 0.0000 [0.0000, 1.0000] (95% CI, n=997) | 0.0000 [0.0000, 0.0037] (95% CI, n=997) | n/a | no | n/a |
+| 0.04 | 0.950000 | 0.0000 | 0.0000 [0.0000, 0.0569] (95% CI, n=997) | 0.0000 [0.0000, 1.0000] (95% CI, n=997) | 0.0000 [0.0000, 0.0037] (95% CI, n=997) | n/a | no | n/a |
+| 0.05 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.06 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.07 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.08 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.09 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.10 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.11 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.12 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.13 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.14 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.15 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.16 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.17 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.18 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.19 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
+| 0.20 | 0.000000 | 0.0353 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.6452 [0.5443, 0.7416] (95% CI, n=997) | 0.0933 [0.0742, 0.1104] (95% CI, n=997) | 10.210 [9.548, 10.720] (95% CI, n=997) | yes | 95% |
 
 ## The frontier: what recall costs
 
@@ -52,46 +52,46 @@ Everything flagged routes to the expensive check, so the flag rate is the bill. 
 | `internal_knowledge` | 0.20 |
 | `decision_support` | 0.50 |
 
-> **These are envelope figures, not production costs.** Flag rate is measured at base rate 0.0660. Production traffic is nowhere near that, and the same threshold would flag a different share of it. Quoting a judge-call figure from here as a production cost puts a flag rate from one workload beside a base rate from another — the scenario-mixing error `CLAUDE.md` names. `DECISIONS.md` 132.
+> **These are envelope figures, not production costs.** Flag rate is measured at base rate 0.0632. Production traffic is nowhere near that, and the same threshold would flag a different share of it. Quoting a judge-call figure from here as a production cost puts a flag rate from one workload beside a base rate from another — the scenario-mixing error `CLAUDE.md` names. `DECISIONS.md` 132.
 
 | target FPR | recall | flag rate | judge calls / 1000 | lift | profiles within budget |
 |---:|---|---:|---:|---:|---|
-| 0.01 | 0.0000 [0.0000, 0.0544] (95% CI, n=1000) | 0.0000 | 0 | nan | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.02 | 0.0000 [0.0000, 0.0544] (95% CI, n=1000) | 0.0000 | 0 | nan | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.03 | 0.0000 [0.0000, 0.0544] (95% CI, n=1000) | 0.0000 | 0 | nan | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.04 | 0.0000 [0.0000, 0.0544] (95% CI, n=1000) | 0.0000 | 0 | nan | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.05 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.06 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.07 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.08 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.09 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.10 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.11 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.12 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.13 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.14 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.15 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.16 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.17 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.18 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.19 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
-| 0.20 | 0.9091 [0.8361, 0.9697] (95% CI, n=1000) | 0.0930 | 93 | 9.775 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.01 | 0.0000 [0.0000, 0.0569] (95% CI, n=997) | 0.0000 | 0 | nan | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.02 | 0.0000 [0.0000, 0.0569] (95% CI, n=997) | 0.0000 | 0 | nan | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.03 | 0.0000 [0.0000, 0.0569] (95% CI, n=997) | 0.0000 | 0 | nan | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.04 | 0.0000 [0.0000, 0.0569] (95% CI, n=997) | 0.0000 | 0 | nan | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.05 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.06 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.07 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.08 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.09 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.10 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.11 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.12 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.13 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.14 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.15 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.16 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.17 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.18 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.19 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
+| 0.20 | 0.9524 [0.8906, 1.0000] (95% CI, n=997) | 0.0933 | 93 | 10.210 | `customer_support`, `decision_support`, `internal_knowledge` |
 
 ### The two ends of the trade
 
-**Most recall available** — target 0.05: recall 0.9091, costing 93 judge calls per 1000 requests (9.3% of this envelope). Within budget for: `customer_support`, `decision_support`, `internal_knowledge`.
+**Most recall available** — target 0.05: recall 0.9524, costing 93 judge calls per 1000 requests (9.3% of this envelope). Within budget for: `customer_support`, `decision_support`, `internal_knowledge`.
 
-**Best lift per flagged item** — target 0.05: lift 9.775 (91% of ceiling) at recall 0.9091, costing 93 calls per 1000. Within budget for: `customer_support`, `decision_support`, `internal_knowledge`.
+**Best lift per flagged item** — target 0.05: lift 10.210 (95% of ceiling) at recall 0.9524, costing 93 calls per 1000. Within budget for: `customer_support`, `decision_support`, `internal_knowledge`.
 
 The operating point is a business choice between the two, and this table is the whole of what the measurement can say about it. Which profile a point can actually serve is decided by the policy layer, which conjoins a recall floor and an FPR ceiling to the flag-rate budget; fitting the budget is necessary and not sufficient.
 
 ## The shipped operating point, for reference
 
 - `None` at threshold 0.500000
-- recall 0.9091 [0.8361, 0.9697] (95% CI, n=1000)
-- precision 0.6452 [0.5416, 0.7476] (95% CI, n=1000)
-- flag rate 0.0930 [0.0750, 0.1120] (95% CI, n=1000)
-- lift 9.775 [8.990, 10.427] (95% CI, n=1000)
+- recall 0.9524 [0.8906, 1.0000] (95% CI, n=997)
+- precision 0.6452 [0.5443, 0.7416] (95% CI, n=997)
+- flag rate 0.0933 [0.0742, 0.1104] (95% CI, n=997)
+- lift 10.210 [9.548, 10.720] (95% CI, n=997)
 
 ## What this sweep does not establish
 
