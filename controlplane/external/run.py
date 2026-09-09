@@ -28,6 +28,9 @@ _LOG = logging.getLogger(__name__)
 
 def load_rows(pairing: Pairing) -> list[dict]:
     """Fetch the dataset at its pinned revision. Network, by design."""
+    if pairing.loader is not None:
+        return pairing.loader()
+
     from datasets import load_dataset
 
     dataset = pairing.dataset

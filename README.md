@@ -33,7 +33,7 @@
 
 <br/>
 
-<img src="https://img.shields.io/badge/Tests-992_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="992 tests" />
+<img src="https://img.shields.io/badge/Tests-1025_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1025 tests" />
 &nbsp;
 <img src="https://img.shields.io/badge/Claims-40_verified-2da44e?style=for-the-badge" alt="40 claims verified" />
 &nbsp;
@@ -285,9 +285,9 @@ controlplane/          the package — model, store, validation, matrix, drift, 
 evalsets/ & results/   frozen content-hashed evaluation sets; every artifact behind the table above
 scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
-tests/                 992 tests, including the ones that enforce this README
+tests/                 1025 tests, including the ones that enforce this README
 docs/                  spec, methods, limitations, the case matrix, and the move mapping
-DECISIONS.md           139 append-only decision entries
+DECISIONS.md           140 append-only decision entries
 reports/               one close-out report per phase — read PHASE-0.md first
 round1/                the Round 1 submission, moved whole
 ```
@@ -359,7 +359,7 @@ tour is [docs/CODE_TOUR.md](docs/CODE_TOUR.md).
 | Target | Without `make` | Requires | Time | Proves |
 |:---|:---|:---|:---|:---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | The clone works and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 992 tests green |
+| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 1025 tests green |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **Every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` (tier 3) | `python scripts/verify.py` | CPU + cached activations | ~4 min | The frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | Activations regenerate from the source model |
@@ -479,7 +479,7 @@ for. The ones most readers want first:
 | 📏 [METHODS.md](docs/METHODS.md) | Estimators, bootstraps, null bands and their derivations |
 | 📋 [CASES.md](docs/CASES.md) | Every case, the test covering it, the artifact demonstrating it |
 | ⚠️ [LIMITATIONS.md](docs/LIMITATIONS.md) | Scope, declared gaps, open items |
-| 📝 [DECISIONS.md](DECISIONS.md) | 139 append-only entries — "why did you do it that way?" |
+| 📝 [DECISIONS.md](DECISIONS.md) | 140 append-only entries — "why did you do it that way?" |
 | 📦 [ARTIFACTS.md](docs/ARTIFACTS.md) · [TESTING.md](docs/TESTING.md) | Every output file and its fields; what the suite defends |
 | 🗺️ [CODE_TOUR.md](docs/CODE_TOUR.md) · [GLOSSARY.md](docs/GLOSSARY.md) | The packages, file by file; the vocabulary, defined once |
 | ❓ [FAQ.md](docs/FAQ.md) · [JOURNEY.md](docs/JOURNEY.md) | Reviewer questions; what the project did, phase by phase |

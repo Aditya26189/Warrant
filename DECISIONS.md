@@ -6320,3 +6320,94 @@ Also infeasible and not pursued: any detector requiring a GPU or a paid API
   the model does not claim, and reporting that beside its own task would invite
   exactly the misreading D36 forbids. Recorded as available for a later phase
   with a detector that claims the task.
+
+## 140 - Certifying on REDACT: a contribution to someone else's benchmark, not a rival to it
+
+- **Date:** 2026-09-09
+- **Status:** DECIDED
+- **Commit:** c054dfb
+
+**Context.** The strategy document's benchmark recommendation was withdrawn:
+REDACT (ServiceNow, arXiv 2606.19881, 18 June 2026) already covers Aadhaar, PAN
+and GSTIN, and already published the Presidio-fails-on-high-stakes finding. What
+survives as ours is **refusal as a terminal outcome** — REDACT scores everything
+and never declines.
+
+**Decision.** Run `certify_fpr` over REDACT's released locked evaluation split
+and publish what a *certified false-positive budget* says about the same
+detectors on the same 1,000 records their five reported systems were measured
+on. Emit to `results/external/redact-*`. Contribute upstream rather than compete.
+
+### These are different questions, and the difference is the contribution
+
+REDACT reports **span-level F1** — did the detector find this entity, here, in
+this text. Warrant asks a **record-level binary** question at a bounded
+false-positive rate: *does this record contain a `<type>`, at a threshold whose
+FPR is certified below b with 95% confidence, or can that not be certified on
+this evidence?*
+
+Neither subsumes the other. F1 says how good the detector is. A certified budget
+says what you are allowed to promise about it. The second is what a compliance
+function has to sign.
+
+### What the split can and cannot support, measured
+
+Clean negatives required at alpha 0.05: **299** at a 1% budget, **59** at 5%,
+**29** at 10%, **14** at 20%.
+
+    entity type                     negatives, EN only (n=40)   pooled (n=1000)
+    Work_Email_Address                                     18               464
+    Personal_Email_Address                                 25               683
+    Credit_Card_Numbers                                    36               893
+    Static_IP_Address                                      35               934
+    National_Identification_Number                         26               626
+
+**Within any single language, the locked split supports no budget tighter than
+10-20%.** Pooled across all 25 it supports 1%.
+
+That is not a defect in REDACT. Forty records per language is a stratification
+built for F1 estimation across languages, and it does that. It simply does not
+carry the evidence for a tight per-language FPR bound, and nothing in an F1 table
+would tell you so. Saying which budgets a benchmark can and cannot underwrite is
+the one thing this project does that theirs does not.
+
+### The language-pooling rule, and why it is not applied everywhere
+
+Presidio runs with `language='en'`. Scoring Hindi or Japanese text under an
+English pipeline measures the mismatch, not the detector.
+
+So pooling across all 25 languages is used **only** for entity types whose
+Presidio recognizer is pattern- or checksum-based and language-independent —
+`EMAIL_ADDRESS`, `IP_ADDRESS`, `CREDIT_CARD`. For NLP-dependent types (`PERSON`,
+`LOCATION`, `NRP`) the English subset is the only defensible sample, and at n=40
+that means most budgets refuse. **The refusals are reported, not worked around.**
+
+The pooling assumption is *tested rather than asserted*: the achieved
+false-positive rate on English records is reported beside the rate on
+non-English records for every pooled pairing. If they diverge materially the
+pooling is unsound and the artifact says so.
+
+### The mapping, and the finding built into it
+
+REDACT's 51 canonical types map onto Presidio's 19 supported entities
+conservatively and explicitly. Two mappings are worth stating in advance because
+they decide a result:
+
+- `National_Identification_Number` -> `US_SSN`/`US_ITIN` and `Passport_Number` ->
+  `US_PASSPORT`. **Presidio's recognizers for both are US-only**, while REDACT's
+  catalog covers 40+ national systems including Indian Aadhaar. A low recall here
+  is a scope mismatch, not a defect, and must be reported as one (D36).
+- `Date_of_Birth` -> `DATE_TIME` is deliberately *not* used. Presidio's
+  `DATE_TIME` fires on any date; scoring it against a date-of-birth label would
+  count every delivery date as a true positive of a different question.
+
+**Nothing is redistributed.** The corpus is fetched from the public repository at
+run time, exactly as the Phase 3 pairings fetch theirs. REDACT's code is MIT and
+its dataset terms explicitly support "research, evaluation, auditing."
+
+**The objection.** *"You are measuring Presidio on a task it was not built for,
+in languages it does not claim."* Correct, and it is why the pooled and
+English-only results are reported separately, why the US-only mappings are named
+before the run, and why every cell carries the configuration and a reproduction
+command. The alternative — reporting one aggregate number — is what REDACT's own
+abstract warns against.

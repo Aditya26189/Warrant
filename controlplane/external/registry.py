@@ -20,6 +20,7 @@ project uses and needs no changes.
 from __future__ import annotations
 
 import dataclasses
+from pathlib import Path
 from typing import Callable, Optional, Sequence
 
 __all__ = [
@@ -102,6 +103,9 @@ class Pairing:
     #: Rows to take from the split. Enough for the tightest budget on the grid
     #: with room to spare; the cost is CPU seconds.
     limit: int = 2000
+    #: Loads the rows itself instead of going through HuggingFace. Used where a
+    #: benchmark ships as a git repository rather than a dataset.
+    loader: Optional[Callable[[], list[dict]]] = None
     #: A frozen score set under ``results/scores/`` to read instead of fetching
     #: and scoring. Used for this project's own detector, whose scores are
     #: already committed -- rescoring them would answer a question about the
@@ -246,6 +250,27 @@ def _presidio_scorer(entity: str) -> Callable[[Sequence[str]], list[float]]:
     return score
 
 
+def _presidio_scorer_multi(entities: tuple[str, ...]) -> Callable[[Sequence[str]], list[float]]:
+    """Max confidence over several Presidio entities, or 0.0 for silence.
+
+    Several REDACT types map to one Presidio entity, and one REDACT type
+    (National_Identification_Number) maps to two. Taking the max is the reading
+    that matches the question: did the detector fire for anything it claims
+    covers this.
+    """
+    def score(texts: Sequence[str]) -> list[float]:
+        from presidio_analyzer import AnalyzerEngine
+
+        engine = AnalyzerEngine()
+        out: list[float] = []
+        for text in texts:
+            found = engine.analyze(text=text, language="en", entities=list(entities))
+            out.append(max((f.score for f in found), default=0.0))
+        return out
+
+    return score
+
+
 def _injection_scorer(revision: str) -> Callable[[Sequence[str]], list[float]]:
     def score(texts: Sequence[str]) -> list[float]:
         import torch
@@ -322,6 +347,110 @@ PAIRINGS["ours-triviaqa"] = Pairing(
     score=lambda texts: [],
     frozen_score_set="validation-T1-last_token",
 )
+
+
+# ------------------------------------------------------------------ REDACT
+
+REDACT = ExternalDataset(
+    id="REDACT locked split (ServiceNow)",
+    hf_id="",
+    revision="pii_benchmark_sample1000.json @ main",
+    split="locked evaluation split, 1000 records",
+    licence="code MIT; dataset terms permit research, evaluation, auditing",
+    source_url="https://github.com/guneeshvats/REDACT-PII-Benchmark",
+    note=(
+        "arXiv 2606.19881. The same 1,000 records REDACT's five reported "
+        "detectors were measured on. 40 records per language across 25 "
+        "languages, so no SINGLE-LANGUAGE task here can support a budget "
+        "tighter than 10-20%; pooled it clears 1%. Pooling is used only for "
+        "regex/checksum recognizers. DECISIONS 140."
+    ),
+)
+
+
+def _redact_pairing(
+    name: str,
+    task: str,
+    items,
+    entities: tuple[str, ...],
+    *,
+    english_only: bool,
+) -> Pairing:
+    from .redact import load_redact_records
+
+    cache = _REDACT_CACHE
+
+    def loader() -> list[dict]:
+        return load_redact_records(cache, english_only=english_only)
+
+    return Pairing(
+        id=name,
+        detector=PRESIDIO,
+        dataset=REDACT,
+        task=task,
+        items=items,
+        score=_presidio_scorer_multi(entities),
+        loader=loader,
+        limit=1000,
+    )
+
+
+#: Where REDACT is cloned. Outside the repository: it is fetched, never vendored.
+_REDACT_CACHE = Path.home() / ".cache" / "warrant" / "benchmarks"
+
+
+def _register_redact() -> None:
+    from .redact import (
+        LANGUAGE_INDEPENDENT,
+        PRESIDIO_MAPPING,
+        redact_high_tier_items,
+        redact_items,
+    )
+
+    poolable = tuple(sorted(LANGUAGE_INDEPENDENT))
+
+    specs = [
+        ("redact-email", ("Personal_Email_Address", "Work_Email_Address"),
+         ("EMAIL_ADDRESS",), False),
+        ("redact-credit-card", ("Credit_Card_Numbers",), ("CREDIT_CARD",), False),
+        ("redact-ip", ("Static_IP_Address",), ("IP_ADDRESS",), False),
+        ("redact-national-id", ("National_Identification_Number",),
+         ("US_SSN", "US_ITIN"), False),
+        ("redact-passport", ("Passport_Number",), ("US_PASSPORT",), False),
+        # English only: PERSON is spaCy NER, so the other 24 languages would
+        # measure the language mismatch. n=40 refuses at most budgets, and the
+        # refusals are the point rather than a problem to route around.
+        ("redact-person-en", ("Full_Name",), ("PERSON",), True),
+    ]
+    for name, canonical, entities, english_only in specs:
+        scope = "English only, n=40" if english_only else "pooled over 25 languages"
+        PAIRINGS[name] = _redact_pairing(
+            name,
+            f"does the record contain {' or '.join(canonical)}? Positive when "
+            f"REDACT's gold annotation carries that span. Scored against "
+            f"Presidio {'/'.join(entities)}; {scope}.",
+            redact_items(*canonical),
+            entities,
+            english_only=english_only,
+        )
+
+    # The stratified question REDACT's metadata makes askable: at a certified
+    # budget, can the detector be relied on where the stakes are highest?
+    high_entities = tuple(
+        e for t in poolable for e in PRESIDIO_MAPPING.get(t, ())
+    )
+    PAIRINGS["redact-high-tier"] = _redact_pairing(
+        "redact-high-tier",
+        "does the record contain a HIGH-sensitivity entity Presidio claims to "
+        "detect? Positive when REDACT labels a gold span HIGH and its type maps "
+        "to a Presidio entity; pooled over 25 languages, regex recognizers only.",
+        redact_high_tier_items(poolable),
+        tuple(dict.fromkeys(high_entities)),
+        english_only=False,
+    )
+
+
+_register_redact()
 
 
 def pairing_ids() -> list[str]:
