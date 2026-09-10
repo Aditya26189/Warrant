@@ -546,6 +546,8 @@ def test_every_script_has_a_smoke_test() -> None:
         # which is a stronger check than a smoke test: the examples are shipped
         # evidence and a drifted generator would silently restate them.
         "22_make_examples.py",
+        # test_smoke_build_lock
+        "build_lock.py",
         # test_smoke_the_smoke_check_itself
         "smoke.py",
         # test_smoke_verify_claims_only, test_verify_exits_non_zero_on_drift
@@ -787,6 +789,49 @@ def test_smoke_the_smoke_check_itself() -> None:
     assert "SMOKE OK" in result.stdout
     for expected in ("package imports", "config loads", "claim table parses"):
         assert expected in result.stdout, f"smoke.py stopped checking {expected!r}"
+
+
+def test_smoke_build_lock() -> None:
+    """The lock generator: its CLI wiring, and its parser on the real file.
+
+    Not a regeneration -- that resolves against PyPI and the suite runs offline.
+    What is checkable without the network is what actually broke: on 2026-09-10
+    the lock was a `pip freeze` carrying a pin PyPI had deleted, and CI could
+    not install it. So this asserts the script imports and parses its flags, and
+    that the reader it shares with `tests/test_packaging.py` reads the whole
+    committed file rather than the first half of it.
+    """
+    import importlib.util
+
+    result = _run_bare("build_lock.py", "--help")
+    for flag in ("--upgrade", "--check"):
+        assert flag in result.stdout, f"build_lock.py no longer offers {flag}"
+
+    spec = importlib.util.spec_from_file_location(
+        "build_lock", PROJECT_ROOT / "scripts" / "build_lock.py"
+    )
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    lock = (PROJECT_ROOT / "requirements.lock.txt").read_text(encoding="utf-8")
+    pins = module.read_pins(lock)
+    assert len(pins) > 100, (
+        f"read_pins found {len(pins)} packages in requirements.lock.txt. The "
+        "closure of requirements.txt is larger than that, so the parser is "
+        "skipping lines -- most likely the ones carrying a marker."
+    )
+    marked = [
+        line for line in lock.splitlines()
+        if line.startswith(("bitsandbytes==", "colorama==", "nvidia-", "triton=="))
+    ]
+    assert marked and all(";" in line for line in marked), (
+        "the platform-specific pins lost their environment markers. Without "
+        "them the lock is unresolvable on the platforms they exclude, which is "
+        "how it came to be uninstallable on Linux in the first place."
+    )
+    assert module.PYTHON_TARGET in lock, (
+        "the lock header no longer names the Python it was resolved for"
+    )
 
 
 def test_smoke_verify_claims_only() -> None:

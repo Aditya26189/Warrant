@@ -6,10 +6,16 @@
 # gigabytes of deep-learning stack to do it.
 #
 # This is a claim, so CI proves it: the `customer-path` job installs exactly this
-# file and runs the CLI end to end plus 21 test files. If an import creeps into
-# the customer path that is not covered here, that job goes red.
+# file and runs the CLI end to end plus the 22 test files in
+# ci/customer-path-tests.txt. If an import creeps into the customer path that is
+# not covered here, that job goes red.
 #
-# Verified 2026-09-10 in a clean venv: CLI runs both examples, 92+ tests pass.
+# Verified 2026-09-10 in a clean venv holding only these three and pytest: the
+# CLI runs both examples and 532 tests pass, on numpy 2.5.3 and scipy 1.18.1 --
+# both well ahead of the versions pinned in requirements.lock.txt, which is the
+# point of the lower bounds here. The customer path is meant to keep working as
+# its dependencies move; the research path is pinned because its numbers are
+# statements about one build.
 numpy>=1.24
 scipy>=1.10
 PyYAML>=6.0
