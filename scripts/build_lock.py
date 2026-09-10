@@ -307,7 +307,11 @@ def main(argv: list[str] | None = None) -> int:
         print("\n--check: nothing written")
         return 1 if moved and not args.upgrade else 0
 
-    LOCK.write_text(rendered, encoding="utf-8")
+    # LF explicitly. A generated file has to be byte-identical whichever
+    # machine generated it, and the default here translates to os.linesep --
+    # so regenerating on Linux after a Windows run would rewrite every line and
+    # bury the one pin that actually moved in a whole-file diff.
+    LOCK.write_text(rendered, encoding="utf-8", newline="\n")
     print(f"\nwrote {LOCK.relative_to(PROJECT_ROOT)}")
 
     if moved and not args.upgrade:
