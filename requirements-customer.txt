@@ -1,0 +1,15 @@
+# The customer path, and nothing else.
+#
+# `warrant certify` reads a CSV and does binomial arithmetic. It needs these
+# three and no more: no torch, no transformers, no spaCy, no scikit-learn, no
+# matplotlib. Someone evaluating their own detector should not download two
+# gigabytes of deep-learning stack to do it.
+#
+# This is a claim, so CI proves it: the `customer-path` job installs exactly this
+# file and runs the CLI end to end plus 21 test files. If an import creeps into
+# the customer path that is not covered here, that job goes red.
+#
+# Verified 2026-09-10 in a clean venv: CLI runs both examples, 92+ tests pass.
+numpy>=1.24
+scipy>=1.10
+PyYAML>=6.0

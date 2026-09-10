@@ -15,4 +15,7 @@ validation, sampling, economics and policy layers stay runnable on a laptop and
 in a test suite.
 """
 
-__version__ = "0.1.0"
+#: Must equal the version in `pyproject.toml`. These had already drifted --
+#: 0.1.0 here against 0.2.0 there -- which `warrant --version` would have
+#: reported to a user as fact. A test now pins them together.
+__version__ = "0.2.0"

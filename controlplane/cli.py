@@ -28,17 +28,37 @@ import sys
 from pathlib import Path
 from typing import Optional, Sequence
 
-from .config import load_config, provenance, write_json_artifact
-from .intake import InputError, certify_items, load_scored_items, render_summary
-from .model import WarrantStatus
-
 __all__ = ["build_parser", "main"]
+
+# Nothing heavy is imported at module scope, and that is deliberate.
+#
+# `warrant certify --help` and every argument error must not pay for scipy.
+# Importing the certification chain eagerly cost **2.83s** before a single
+# argument was parsed, of which 1.39s was `scipy.stats` reached transitively
+# through validation.warrant_stats. A command-line tool that takes three seconds
+# to print its usage reads as research code whatever else is true of it.
+#
+# The imports therefore live inside `_certify`, which is the only place that
+# needs them. `--help`, `--version` and a malformed argument now return in
+# roughly a tenth of that.
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 EXIT_OK = 0
 EXIT_ERROR = 1
 EXIT_BAD_INPUT = 2
+
+
+def _version() -> str:
+    """The installed version, read without importing the package eagerly.
+
+    A plain read of ``controlplane.__version__`` would be simpler and would drag
+    the package import into ``--version``, which is the one command that should
+    cost nothing.
+    """
+    from . import __version__
+
+    return __version__
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -57,6 +77,11 @@ def build_parser() -> argparse.ArgumentParser:
             "detector should fire), score (higher = more likely positive).\n"
             "see docs/INPUT.md.\n"
         ),
+    )
+    parser.add_argument(
+        "--version", "-V", action="version",
+        version=f"warrant {_version()}",
+        help="print the version and exit",
     )
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -97,6 +122,16 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def _certify(args: argparse.Namespace) -> int:
+    # Deferred on purpose; see the note at the top of this module.
+    from .config import load_config, write_json_artifact
+    from .intake import (
+        InputError,
+        certify_items,
+        load_scored_items,
+        render_summary,
+    )
+    from .model import WarrantStatus
+
     config = load_config(args.config)
     try:
         items = load_scored_items(args.input)

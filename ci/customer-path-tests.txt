@@ -1,0 +1,37 @@
+# Test files that run on requirements-customer.txt alone.
+#
+# Derived by measurement rather than by eye: each was imported in a subprocess
+# with the heavy packages absent, then run in a clean venv holding only numpy,
+# scipy, PyYAML and pytest. Verified 2026-09-10.
+#
+# Two files that look light and are not, recorded so nobody re-adds them:
+#
+#   test_banking_pilot.py     imports sklearn inside a test body, so an
+#                             import-time scan misses it
+#   test_optimized_guards.py  spawns `python -O` in a subprocess that needs the
+#                             full environment
+#
+# A file belongs here only if it has been run in the minimal venv and passed.
+# Adding one on the strength of reading its imports is how this list goes stale
+# and CI starts lying.
+tests/test_acceptance.py
+tests/test_calibration.py
+tests/test_cases_matrix.py
+tests/test_categories.py
+tests/test_config.py
+tests/test_docs_index.py
+tests/test_drift.py
+tests/test_drift_response.py
+tests/test_dual_path.py
+tests/test_economics.py
+tests/test_external.py
+tests/test_external_figures.py
+tests/test_intake.py
+tests/test_matrix.py
+tests/test_model.py
+tests/test_model_version.py
+tests/test_override.py
+tests/test_redact.py
+tests/test_script_wiring.py
+tests/test_store.py
+tests/test_warrant_stats.py
