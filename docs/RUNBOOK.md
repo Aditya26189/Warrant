@@ -184,6 +184,7 @@ it. A claim about a dependency is checkable by running the dependency.
 
 | Script | Does |
 |---|---|
+| `build_lock.py` | Regenerates `requirements.lock.txt` as the resolved closure of `requirements.txt`. **Holds every version where it is** — the existing lock is fed back as a constraint and the script exits non-zero if a pin moves. `--upgrade` is the only way to move one, and it prints the diff; `--check` resolves without writing. Needs `uv` |
 | `build_notebooks.py` | Regenerates `notebooks/run_on_kaggle.ipynb`. **The script is the source of truth**; never hand-edit the notebook |
 | `clean_clone_gate.py` | Clones this repository into a temporary directory and runs the gates inside it, so "it works on my machine" cannot be the reason it passes |
 | `kaggle_run.py` | Pushes the extraction notebook to Kaggle as a batch kernel and collects the output. Flags `--yes`, `--accelerator`, `--timeout`, `--poll-seconds` |
