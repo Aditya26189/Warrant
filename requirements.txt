@@ -16,7 +16,12 @@
 torch==2.9.1
 transformers==5.8.0
 accelerate==1.13.0
-bitsandbytes==0.49.2
+# CUDA-only. It publishes no macOS x86_64 wheel at all and an arm64 wheel that
+# needs macOS 14+, so an unmarked pin makes the whole lock unresolvable on a
+# Mac -- for a library that could not have run there anyway. extract/model.py
+# already falls back to unquantised with a loud warning when it is absent, and
+# records the fallback, so the marker costs nothing a Mac user could have used.
+bitsandbytes==0.49.2 ; sys_platform != 'darwin'
 datasets==4.8.5
 
 # ------------------------------------------------------------------ numeric
