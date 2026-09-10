@@ -59,6 +59,11 @@ class CertificationResult:
     lift: Optional[Metric] = None
     lift_ceiling: Optional[float] = None
     metrics_absent_reason: str = ""
+    #: The score distribution, as bin edges and probabilities. Carried so a later
+    #: `warrant recheck` can tell whether the traffic has moved, and stored as a
+    #: histogram rather than values so a record living for a year holds nobody's
+    #: data.
+    score_distribution: Optional[Any] = None
 
     @property
     def certified(self) -> bool:
@@ -90,6 +95,11 @@ class CertificationResult:
                     "the lowest threshold whose bound clears the budget"
                 ),
             },
+            "score_distribution": (
+                to_jsonable(self.score_distribution)
+                if self.score_distribution is not None
+                else None
+            ),
             "metrics": {
                 "n_flagged": self.n_flagged,
                 "recall": to_jsonable(self.recall) if self.recall else None,
@@ -159,6 +169,9 @@ def certify_items(
             "are being treated as independent. See docs/INPUT.md."
         )
 
+    from .recheck import score_distribution
+
+    distribution = score_distribution(scores)
     negatives = scores[labels == 0]
     floor = min_n_for(budget, alpha)
     certification = certify_fpr(
@@ -179,6 +192,7 @@ def certify_items(
         "base_rate": items.base_rate,
         "grouped": groups is not None,
         "min_units_required": floor,
+        "score_distribution": distribution,
     }
 
     if not certification.fpr_certified:

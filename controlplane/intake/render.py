@@ -15,7 +15,7 @@ from typing import Optional
 from ..model import Metric, WarrantStatus
 from .certify import CertificationResult
 
-__all__ = ["render_summary"]
+__all__ = ["render_recheck", "render_summary"]
 
 # ASCII only, deliberately. The first run of this on Windows died with
 # UnicodeEncodeError: the console's cp1252 codepage cannot encode a box-drawing
@@ -108,4 +108,64 @@ def render_summary(result: CertificationResult) -> str:
         _RULE,
         "",
     ]
+    return "\n".join(lines)
+
+
+def render_recheck(result) -> str:
+    """Render a recheck for a terminal.
+
+    The two failure modes are printed separately and never merged into one
+    score. "Your bound broke" and "your traffic moved" call for different
+    actions -- re-certify versus investigate -- and collapsing them into a single
+    health number is how a dashboard stays green while the thing it watches stops
+    being true.
+    """
+    from ..model import WarrantStatus
+
+    lines = [
+        _RULE,
+        f"  RECHECK: {result.status.value}",
+        _RULE,
+        "",
+        f"  warranted     FPR <= {result.budget:.4f} at threshold "
+        f"{result.threshold:.6f}",
+        f"  new file      {result.n_now} items ({result.n_negative_now} negative)",
+        "",
+        "  1. Does the bound still hold?",
+    ]
+    if result.bound_still_holds is None:
+        lines.append("     UNTESTABLE - the new file has no negatives.")
+    else:
+        verdict = "HOLDS" if result.bound_still_holds else "BROKEN"
+        lines += [
+            f"     {verdict}. Measured FPR {result.achieved_fpr_now:.4f} against "
+            f"a {result.budget:.4f} promise",
+            f"     (95% interval {result.fpr_lower_bound_now:.4f} to "
+            f"{result.fpr_upper_bound_now:.4f}).",
+            "     Revocation turns on the LOWER bound: the promise is broken",
+            "     when the data shows the rate exceeds it, not when a fresh",
+            "     sample merely fails to re-prove it.",
+        ]
+
+    lines += ["", "  2. Has the distribution moved?"]
+    if not result.drift_assessed:
+        lines.append(f"     NOT ASSESSED - {result.drift_not_assessed_reason}.")
+    else:
+        moved = "beyond" if result.psi_beyond_noise else "within"
+        lines += [
+            f"     PSI {result.psi:.4f}, {moved} this sample's own noise level "
+            f"of {result.psi_null_p95:.4f}.",
+            "     The noise level is simulated at this file's size, not read off",
+            "     the 0.10/0.25 bands, which are not scale-free.",
+        ]
+
+    lines += ["", f"  {result.reason}", ""]
+    if result.status is WarrantStatus.REVOKED:
+        lines += [
+            "  A revoked warrant is not a broken tool. It is the product doing",
+            "  the one thing a static report cannot: telling you the number you",
+            "  were relying on has stopped being true.",
+            "",
+        ]
+    lines += [_RULE, ""]
     return "\n".join(lines)

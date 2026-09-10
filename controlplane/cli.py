@@ -118,6 +118,34 @@ def build_parser() -> argparse.ArgumentParser:
         "--require-warrant", action="store_true",
         help="exit non-zero when the detector is REFUSED (default: refusal exits 0)",
     )
+
+    recheck = sub.add_parser(
+        "recheck",
+        help="is a warrant issued earlier still true on new data?",
+        description=(
+            "Takes a warrant record and a fresh file of the same shape, and "
+            "answers whether the promise still holds. Two failure modes, "
+            "reported separately: the false-positive bound can break, or the "
+            "score distribution can move far enough that the old measurement no "
+            "longer describes your traffic."
+        ),
+    )
+    recheck.add_argument(
+        "--warrant", "-w", required=True,
+        help="the .warrant.json record produced by an earlier certify",
+    )
+    recheck.add_argument(
+        "--input", "-i", required=True,
+        help="the new .csv or .jsonl, same three columns",
+    )
+    recheck.add_argument("--out", "-o", default=None, help="write the JSON record here")
+    recheck.add_argument("--config", default=str(PROJECT_ROOT / "config.yaml"),
+                         help=argparse.SUPPRESS)
+    recheck.add_argument("--quiet", "-q", action="store_true")
+    recheck.add_argument(
+        "--require-valid", action="store_true",
+        help="exit non-zero when the warrant no longer holds (default: exits 0)",
+    )
     return parser
 
 
@@ -165,11 +193,78 @@ def _certify(args: argparse.Namespace) -> int:
     return EXIT_OK
 
 
+def _recheck(args: argparse.Namespace) -> int:
+    # Deferred on purpose; see the note at the top of this module.
+    import json
+
+    from .config import load_config, write_json_artifact
+    from .intake import InputError, load_scored_items, recheck_items, render_recheck
+    from .model import EnvelopeFeature, WarrantStatus
+
+    config = load_config(args.config)
+    record_path = Path(args.warrant)
+    if not record_path.is_file():
+        print(f"warrant: no warrant record at {record_path}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+    record = json.loads(record_path.read_text(encoding="utf-8"))
+
+    certification = record.get("certification") or {}
+    threshold = certification.get("threshold")
+    budget = record.get("budget_fpr")
+    if threshold is None or budget is None:
+        print(
+            f"warrant: {record_path.name} carries no certified threshold, so "
+            "there is no promise to re-test. A REFUSED warrant has nothing to "
+            "recheck -- certify at a budget the evidence supports first.",
+            file=sys.stderr,
+        )
+        return EXIT_BAD_INPUT
+
+    block = record.get("score_distribution")
+    reference = (
+        EnvelopeFeature(
+            name=block["name"],
+            bin_edges=tuple(block["bin_edges"]),
+            bin_probabilities=tuple(block["bin_probabilities"]),
+            mean=block["mean"],
+            std=block["std"],
+        )
+        if block
+        else None
+    )
+
+    try:
+        items = load_scored_items(args.input)
+    except InputError as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+
+    result = recheck_items(
+        config, items, budget=budget, threshold=threshold, reference=reference
+    )
+
+    source = Path(args.input)
+    out = Path(args.out) if args.out else source.with_suffix(source.suffix + ".recheck.json")
+    write_json_artifact(out, result.to_payload(), config)
+    if not args.quiet:
+        print(render_recheck(result))
+    print(f"  record written to {out}")
+
+    if args.require_valid and result.status is not WarrantStatus.VALID:
+        print(
+            f"warrant: {result.status.value} -- {result.reason}", file=sys.stderr
+        )
+        return EXIT_ERROR
+    return EXIT_OK
+
+
 def main(argv: Optional[Sequence[str]] = None) -> int:
     """Entry point. Returns a process exit code rather than raising."""
     args = build_parser().parse_args(argv)
     if args.command == "certify":
         return _certify(args)
+    if args.command == "recheck":
+        return _recheck(args)
     raise AssertionError(f"unreachable: unhandled command {args.command!r}")
 
 

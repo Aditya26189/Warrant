@@ -17,7 +17,8 @@ from .contract import (
     ScoredItems,
     load_scored_items,
 )
-from .render import render_summary
+from .recheck import RecheckResult, recheck_items, score_distribution
+from .render import render_recheck, render_summary
 
 __all__ = [
     "GROUP_COLUMN",
@@ -25,7 +26,11 @@ __all__ = [
     "CertificationResult",
     "InputError",
     "ScoredItems",
+    "RecheckResult",
     "certify_items",
     "load_scored_items",
+    "recheck_items",
+    "render_recheck",
     "render_summary",
+    "score_distribution",
 ]

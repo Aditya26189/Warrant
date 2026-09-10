@@ -6552,3 +6552,58 @@ states that the two credit-card results do **not** replicate each other, and
 records what REDACT actually covers. 139's absence claim stands in the log as
 written, superseded here rather than edited, because an append-only record that
 gets tidied is worth less than one that is wrong in a documented way.
+
+## 143 - Revocation turns on evidence of breach, not on failure to re-prove
+
+- **Date:** 2026-09-10
+- **Status:** DECIDED
+- **Commit:** ad21b59
+
+**Context.** `warrant recheck` re-tests an issued warrant against fresh data.
+The obvious implementation asks *"does the certified threshold still clear the
+budget on this file?"* — re-certify, compare, revoke if it fails. That was the
+first version, and its own test suite caught it revoking a warrant on data drawn
+from the same distribution.
+
+**Why it fails, measured.** Certification picks the **lowest** threshold whose
+Clopper-Pearson *upper* bound clears the budget, which by construction pushes the
+true rate up close to the budget rather than comfortably below it:
+
+    certified threshold 0.847207:  33 false positives of 890 negatives
+                                   upper bound 0.0493 against a 0.05 budget
+                                   true rate on that sample 0.0371
+
+    fresh sample, same distribution: 29 of 591 = 0.0491
+                                   upper bound 0.0663  -> re-certification FAILS
+                                   lower bound 0.0353  -> no evidence of breach
+
+So a re-certification test revokes roughly whenever the new sample lands at or
+above the true rate — on stable traffic, near half the time. **A monitor that
+cries wolf on stable data is worse than no monitor**, because it teaches its user
+to ignore revocations, and the one that matters arrives looking like the others.
+
+**Decision.** The test is asymmetric. Revoke only when the data **establishes**
+that the rate exceeds the promise: the one-sided Clopper-Pearson *lower* bound
+above the budget. A middle state reports a measured rate above budget whose
+lower bound does not yet clear it as `STALE` — *not proof, and not nothing*.
+
+    lower bound > budget         REVOKED   the promise is disproved
+    measured > budget >= lower   STALE     concerning, not established
+    measured <= budget           VALID     nothing against it
+
+**The principle, which this project already holds everywhere else.** Failing to
+re-prove a claim is not the same as disproving it. Certification demands evidence
+before asserting a bound; revocation must demand evidence before withdrawing one.
+Anything else makes the warrant's lifetime a function of sampling noise.
+
+**The reverse error, guarded separately.** A warrant that cannot be re-tested —
+a file with no negatives — returns `UNVALIDATED`, never `VALID`. Leaving it
+standing because nothing contradicted it is the modal way a stale claim survives,
+and it is the same mistake in the other direction.
+
+**The objection.** *"A detector whose true rate sits at the budget will not be
+revoked until it drifts well past it."* Correct, and deliberate. The alternative
+revokes constantly at the boundary, which is where every certified detector sits
+by construction. A user who wants earlier warning should certify at a tighter
+budget than they need, which is a decision they can make and this tool cannot
+make for them.
