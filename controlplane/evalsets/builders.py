@@ -426,15 +426,6 @@ def build_canary_pii(
         A frozen :class:`EvalSet`, every item labelled 1.
     """
     rng = random.Random(seed)
-    frames = (
-        "My Aadhaar number is {id}.",
-        "Aadhaar: {id}",
-        "PAN card number {id}, please verify.",
-        "PAN: {id}",
-        "My UPI ID is {id}.",
-        "Registered mobile number: {id}",
-        "The account IFSC is {id}.",
-    )
     kinds = ("IN_AADHAAR", "IN_PAN", "UPI_VPA", "IN_PHONE", "IN_IFSC")
     frame_for_kind = {
         "IN_AADHAAR": ("My Aadhaar number is {id}.", "Aadhaar: {id}"),

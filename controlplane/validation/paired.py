@@ -41,12 +41,11 @@ from __future__ import annotations
 
 import dataclasses
 import logging
-from typing import Callable, Mapping, Optional, Sequence
+from typing import Callable, Mapping, Optional
 
 import numpy as np
 
 from ..detectors.probe import LinearProbe, select_regularisation
-from ..model.metrics import Metric, MetricKind
 from .evalsets import TEST, TRAIN, VALIDATION, EvalSet, ExtractionCache, split_by_question
 
 __all__ = [

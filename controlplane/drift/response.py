@@ -26,7 +26,7 @@ import dataclasses
 from typing import Any, Optional
 
 from ..matrix.routing import Profile, RoutingDecision, route
-from ..model.enums import EnvelopeState, WarrantStatus
+from ..model.enums import WarrantStatus
 from ..model.warrant import Warrant
 from .ladder import LadderTransition, apply_ladder
 from .monitor import DriftMonitor

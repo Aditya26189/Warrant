@@ -30,7 +30,6 @@ import numpy as np
 from ..config import Config
 from ..drift import DriftMonitor
 from ..model import (
-    AccessTier,
     Action,
     Category,
     Certificate,
@@ -48,7 +47,7 @@ from ..model import (
 from ..store import Ledger
 from ..validation.evalsets import EvalSet, ExtractionCache
 from ..validation.runner import ValidationRun, validate
-from .stream import Stream, StreamEvent
+from .stream import StreamEvent
 
 __all__ = ["DemoSession", "PaneView", "RequestOutcome"]
 

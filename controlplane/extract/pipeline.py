@@ -31,8 +31,6 @@ from ..evalsets.builders import build_longctx
 from ..validation.evalsets import (
     SOURCE_MEASURED,
     TEST,
-    TRAIN,
-    VALIDATION,
     EvalItem,
     EvalSet,
     ExtractionCache,
@@ -95,7 +93,10 @@ def _label_items(items: list[TriviaItem], answers: list[str]) -> dict[str, Any]:
     """
     how_counts: dict[str, int] = {}
     strict_correct = 0
-    for item, answer in zip(items, answers):
+    # strict: an answer vector shorter than the item list would attach every
+    # answer after the gap to the wrong question, and every downstream label
+    # would be wrong while nothing raised.
+    for item, answer in zip(items, answers, strict=True):
         item.response = answer
         correct, how = is_correct(answer, item.aliases)
         item.label = 0 if correct else 1

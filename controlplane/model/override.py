@@ -50,7 +50,6 @@ import dataclasses
 from datetime import datetime
 from typing import Optional
 
-from .enums import Action
 
 __all__ = [
     "FLAGGED",

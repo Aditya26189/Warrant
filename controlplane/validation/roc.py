@@ -27,7 +27,7 @@ quoted without the interval it was measured over is not reproducible.
 from __future__ import annotations
 
 import dataclasses
-from typing import Optional, Sequence
+from typing import Optional
 
 import numpy as np
 

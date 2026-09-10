@@ -605,7 +605,7 @@ def evalset_from_draft(draft: PilotDraft, answers: Sequence[str]):
 
     items: list[EvalItem] = []
     how_counts: dict[str, int] = {}
-    for draft_item, answer in zip(draft.items, answers):
+    for draft_item, answer in zip(draft.items, answers, strict=True):
         correct, how = is_correct(answer, draft_item.gold_aliases)
         rule = how.split(" on ")[0]
         how_counts[rule] = how_counts.get(rule, 0) + 1

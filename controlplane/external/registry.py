@@ -407,13 +407,9 @@ _REDACT_CACHE = Path.home() / ".cache" / "warrant" / "benchmarks"
 
 def _register_redact() -> None:
     from .redact import (
-        LANGUAGE_INDEPENDENT,
-        PRESIDIO_MAPPING,
-        redact_high_tier_items,
         redact_items,
     )
 
-    poolable = tuple(sorted(LANGUAGE_INDEPENDENT))
 
     specs = [
         ("redact-email", ("Personal_Email_Address", "Work_Email_Address"),

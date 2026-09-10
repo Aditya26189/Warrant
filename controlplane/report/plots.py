@@ -81,7 +81,7 @@ def plot_tier_ladder(
     if len(metrics) == 1:
         axes = [axes]
 
-    for ax, metric_name in zip(axes, metrics):
+    for ax, metric_name in zip(axes, metrics, strict=True):
         for row, run in enumerate(ladder.runs):
             metric = ladder.metric(run.variant, metric_name)
             if metric.kind is not MetricKind.ESTIMATED:

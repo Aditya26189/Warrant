@@ -47,7 +47,6 @@ import time
 from typing import Any, Callable, Mapping, Optional, Sequence
 
 from ..model.certificate import Certificate
-from ..model.enums import Action
 from ..policy.compose import ComposedDecision
 
 __all__ = ["AdapterResult", "CertificateEnvelope", "WarrantAdapter"]

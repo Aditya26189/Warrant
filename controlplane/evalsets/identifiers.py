@@ -29,7 +29,7 @@ from __future__ import annotations
 
 import dataclasses
 import random
-from typing import Iterator, Literal
+from typing import Literal
 
 __all__ = [
     "DISCLOSURE_FORMS",

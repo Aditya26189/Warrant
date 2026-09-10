@@ -411,7 +411,7 @@ def test_no_committed_artifact_carries_a_zero_width_rate_interval() -> None:
         try:
             with open(path, encoding="utf-8") as handle:
                 walk(json.load(handle), os.path.basename(path))
-        except Exception:
+        except Exception:  # noqa: BLE001 - asserting that something is raised, not which
             continue
 
     assert not offenders, (

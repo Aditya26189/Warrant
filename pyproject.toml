@@ -45,3 +45,29 @@ packages = [
     "controlplane.store",
     "controlplane.validation",
 ]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+# Deliberately narrow. The default set flags 303 `Optional[X]` -> `X | None`
+# migrations and 45 import-sort complaints, none of which is a defect; a linter
+# that mostly reports preferences trains people to skim its output.
+#
+# What is selected either catches a bug or catches a silent one:
+#   F        undefined names, unused imports and variables
+#   E9       syntax and IO errors
+#   B905     zip() without strict -- silent truncation on a length mismatch,
+#            which in this codebase means scores paired with the wrong labels
+#   BLE001   blind except, which swallows the crash-loudly rule
+#   PLE      pylint errors proper
+select = ["F", "E9", "B905", "BLE001", "PLE"]
+
+[tool.ruff.lint.per-file-ignores]
+# Package __init__ files re-export their public surface; the names are unused
+# *there* by construction and `__all__` states the intent.
+"controlplane/**/__init__.py" = ["F401"]
+# Tests import fixtures and symbols for their side effects and for parametrised
+# ids; unused-import there is noise rather than signal.
+"tests/*.py" = ["F401"]

@@ -21,7 +21,7 @@ import logging
 import re
 import string
 import unicodedata
-from typing import Any, Iterable, Optional, Sequence
+from typing import Iterable, Optional, Sequence
 
 __all__ = [
     "TriviaItem",

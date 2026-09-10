@@ -168,7 +168,7 @@ def load_model(
                 bnb_4bit_use_double_quant=True,
             )
             applied = "nf4"
-        except Exception as exc:  # pragma: no cover - depends on the environment
+        except Exception as exc:  # pragma: no cover - depends on the environment  # noqa: BLE001 - a model backend fails in ways its library does not name; the handler adds context and re-raises
             _LOG.warning(
                 "NF4 requested but unavailable (%s); loading unquantised. The "
                 "cache will record quantization='none', because a warrant "

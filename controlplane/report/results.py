@@ -23,11 +23,10 @@ from __future__ import annotations
 
 import dataclasses
 import logging
-from pathlib import Path
-from typing import Any, Iterable, Optional, Sequence
+from typing import Any, Optional, Sequence
 
 from ..matrix import WarrantMatrix
-from ..model import Metric, MetricKind, Warrant, WarrantStatus
+from ..model import Metric, Warrant
 
 __all__ = [
     "FIXTURE_MARKER",

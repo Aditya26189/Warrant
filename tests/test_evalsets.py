@@ -218,7 +218,7 @@ def test_longctx_differs_only_in_length(hinglish) -> None:
 
     # The question goes last: a detector reading early positions must not
     # succeed for a reason unrelated to long context.
-    for base_item, long_item in zip(hinglish.items, long_set.items):
+    for base_item, long_item in zip(hinglish.items, long_set.items, strict=True):
         assert long_item.prompt.endswith(base_item.prompt)
 
 

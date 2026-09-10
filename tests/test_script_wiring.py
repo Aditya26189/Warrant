@@ -57,7 +57,7 @@ def _resolve(dotted: str):
     module_path, _, name = dotted.rpartition(".")
     try:
         module = importlib.import_module(module_path)
-    except Exception:  # pragma: no cover - an unimportable module is another test
+    except Exception:  # pragma: no cover - an unimportable module is another test  # noqa: BLE001 - importing every script to see which fail; the exception type is the result
         return None
     target = getattr(module, name, None)
     if target is None or not callable(target):

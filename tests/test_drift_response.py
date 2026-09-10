@@ -468,7 +468,6 @@ def test_the_gate_refuses_and_enqueues_when_nothing_holds_a_warrant() -> None:
     handled; what stops is the *claim*.
     """
     short = _warrant_on("triviaqa-600", _draw(_SHORT, 600, 1729))
-    enqueued: list = []
 
     monitor = DriftMonitor(
         short.envelope,

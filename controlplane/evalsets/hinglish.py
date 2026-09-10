@@ -28,7 +28,6 @@ synthetic.
 from __future__ import annotations
 
 import dataclasses
-from typing import Literal
 
 __all__ = ["NEAR_MISS_NEGATIVES", "PII_SCENARIOS", "PiiScenario", "NearMiss"]
 

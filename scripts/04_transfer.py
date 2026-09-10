@@ -30,7 +30,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from controlplane.config import load_config, provenance, set_seeds, setup_logging, write_json_artifact
+from controlplane.config import load_config, set_seeds, setup_logging, write_json_artifact
 from controlplane.evalsets.registry import load_evalset
 from controlplane.store import Ledger, RecordKind
 from controlplane.detectors.probe import LinearProbe

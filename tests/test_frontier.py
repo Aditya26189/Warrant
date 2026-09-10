@@ -33,7 +33,7 @@ def _csv(tmp_path: Path, n=600, separation=1.9, base=0.25, seed=7, name="f.csv")
     path = tmp_path / name
     path.write_text(
         "id,label,score\n"
-        + "\n".join(f"i{i},{int(l)},{s:.6f}" for i, (s, l) in enumerate(zip(scores, labels)))
+        + "\n".join(f"i{i},{int(l)},{s:.6f}" for i, (s, l) in enumerate(zip(scores, labels, strict=True)))
         + "\n",
         encoding="utf-8",
     )

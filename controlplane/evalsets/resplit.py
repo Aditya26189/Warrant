@@ -30,7 +30,7 @@ from typing import Any, Optional
 
 import numpy as np
 
-from ..validation.evalsets import SPLITS, TEST, TRAIN, VALIDATION, EvalItem, EvalSet, EvalSetError
+from ..validation.evalsets import SPLITS, TEST, TRAIN, VALIDATION, EvalSet, EvalSetError
 from ..validation.paired import split_relationship
 
 __all__ = ["cache_source_id", "resplit_by_question"]

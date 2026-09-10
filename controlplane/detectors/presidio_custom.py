@@ -39,7 +39,6 @@ would have rejected on its checksum.
 
 from __future__ import annotations
 
-import re
 from typing import TYPE_CHECKING, Sequence
 
 if TYPE_CHECKING:  # pragma: no cover - typing only

@@ -34,7 +34,6 @@ from ..model import (
     ControlResult,
     DistributionEnvelope,
     EnvelopeFeature,
-    Metric,
     OperatingPoint,
     Warrant,
     WarrantKey,
@@ -384,10 +383,6 @@ def validate(
     test_labels = labels[test_index]
     test_scores = probe.score(features[test_index])
     test_groups = groups[test_index]
-
-    boot = config.validation.bootstrap_samples
-    ci = config.validation.ci
-    seed = config.seed
 
     metrics = build_warrant_metrics(
         config,

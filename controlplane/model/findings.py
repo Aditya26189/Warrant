@@ -256,7 +256,12 @@ class EnvelopeFeature:
                 f"{len(self.bin_edges) - 1} bins, got "
                 f"{len(self.bin_probabilities)} probabilities"
             )
-        if any(b <= a for a, b in zip(self.bin_edges, self.bin_edges[1:])):
+        # strict=False deliberately: this pairs each edge with its successor,
+        # so the second sequence is shorter by one BY CONSTRUCTION.
+        if any(
+            b <= a
+            for a, b in zip(self.bin_edges, self.bin_edges[1:], strict=False)
+        ):
             raise FindingError(
                 f"envelope feature {self.name}: bin edges must be strictly "
                 "increasing"

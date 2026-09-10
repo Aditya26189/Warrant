@@ -39,8 +39,6 @@ from ..model import (
     ControlResult,
     OperatingPoint,
     WarrantKey,
-    WarrantMetrics,
-    WarrantStatus,
     content_hash,
     utc_now,
 )
@@ -162,7 +160,6 @@ def validate_text_detector(
     scores = detector.score(texts)
     labels = evalset.labels
     groups = evalset.question_ids
-    single_class = len(set(labels.tolist())) < 2
 
     operating_point = OperatingPoint(
         operating_point_id=operating_point_id,

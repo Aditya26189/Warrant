@@ -37,7 +37,6 @@ from __future__ import annotations
 import dataclasses
 from typing import Any, Optional, Sequence
 
-import numpy as np
 
 from ..config import Config
 from ..validation.warrant_stats import certify_fpr, min_n_for

@@ -24,11 +24,11 @@ from __future__ import annotations
 
 import dataclasses
 import re
-from typing import Iterable, Optional, Sequence
+from typing import Iterable, Sequence
 
 import numpy as np
 
-from ..model import AccessTier, Category, Severity, Span
+from ..model import AccessTier, Category, Span
 from .identifiers_patterns import (
     AADHAAR_LOOSE,
     IFSC_PATTERN,

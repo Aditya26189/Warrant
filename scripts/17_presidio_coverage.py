@@ -102,7 +102,7 @@ def _version() -> str:
         from importlib.metadata import version
 
         return version("presidio-analyzer")
-    except Exception:  # pragma: no cover - metadata is best effort
+    except Exception:  # pragma: no cover - metadata is best effort  # noqa: BLE001 - probing a third-party recognizer -- any failure IS the coverage answer
         return "unknown"
 
 

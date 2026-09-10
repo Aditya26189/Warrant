@@ -27,7 +27,7 @@ if str(PROJECT_ROOT) not in sys.path:
 from controlplane.config import load_config, provenance, set_seeds, setup_logging, write_json_artifact
 from controlplane.evalsets.registry import load_evalset
 from controlplane.evalsets.resplit import cache_source_id
-from controlplane.validation.evalsets import TEST, VALIDATION, ExtractionCache, split_by_question
+from controlplane.validation.evalsets import TEST, VALIDATION, ExtractionCache
 from controlplane.report.plots import plot_roc_operating_points
 from controlplane.validation.paired import (
     compare_models,

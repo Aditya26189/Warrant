@@ -17,7 +17,6 @@ from __future__ import annotations
 import dataclasses
 from typing import Any, Optional
 
-import numpy as np
 
 from ..config import Config
 from ..model import Metric, MetricError, WarrantMetrics, WarrantStatus, to_jsonable

@@ -21,12 +21,12 @@ from __future__ import annotations
 
 import logging
 import math
-from typing import Callable, Optional, Sequence
+from typing import Callable, Optional
 
 import numpy as np
 
 from ..config import Config
-from ..detectors.probe import LinearProbe, select_regularisation
+from ..detectors.probe import LinearProbe
 from ..model import ControlResult
 from .evalsets import ExtractionCache, PaddingEvidence
 from .stats import MeasurementError, auroc

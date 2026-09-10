@@ -65,6 +65,11 @@ jobs:
           python warrant.py certify --input examples/refuses.csv --budget 0.01 -q
           echo "refusal exited $? (expected 0)"
 
+      - name: Lint
+        run: |
+          pip install ruff
+          ruff check controlplane/ scripts/ tests/ warrant.py
+
       - name: The tests that run on the customer dependencies
         run: |
           FILES=$(grep -v '^#' ci/customer-path-tests.txt | grep -v '^$' | tr '\n' ' ')

@@ -33,7 +33,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 def _csv(tmp_path: Path, scores, labels, name="f.csv") -> Path:
     path = tmp_path / name
     rows = ["id,label,score"]
-    rows += [f"i{i},{int(l)},{float(s):.6f}" for i, (s, l) in enumerate(zip(scores, labels))]
+    rows += [f"i{i},{int(l)},{float(s):.6f}" for i, (s, l) in enumerate(zip(scores, labels, strict=True))]
     path.write_text("\n".join(rows) + "\n", encoding="utf-8")
     return path
 

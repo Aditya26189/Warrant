@@ -19,7 +19,7 @@ import logging
 from typing import Any, Optional
 
 from ..model import Metric
-from ..validation.fpr_sweep import FprSweep, SweepPoint
+from ..validation.fpr_sweep import FprSweep
 
 __all__ = ["SWEEP_FIXTURE_MARKER", "render_sweep", "verdict"]
 

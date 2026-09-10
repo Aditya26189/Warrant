@@ -109,8 +109,10 @@ def test_grid_is_complete_and_correctly_spaced() -> None:
     # Equality, not almost-equality: a target that is merely close to 0.06 is a
     # different budget from the one the row claims to have certified.
     assert grid == tuple(round(i / 100, 10) for i in range(1, 21))
+    # strict=False deliberately: a sequence zipped with its own tail is a
+    # pairwise walk, so the second is shorter by one BY CONSTRUCTION.
     assert all(
-        round(b - a, 10) == 0.01 for a, b in zip(grid, grid[1:])
+        round(b - a, 10) == 0.01 for a, b in zip(grid, grid[1:], strict=False)
     ), "grid spacing drifted"
 
 
@@ -189,7 +191,7 @@ def test_bootstrap_is_seeded_and_reproducible(fast_config) -> None:
         fast_config, _score_set(), grid=grid, data_source=MEASURED)
 
     assert first.to_payload() == second.to_payload()
-    for a, b in zip(first.points, second.points):
+    for a, b in zip(first.points, second.points, strict=True):
         if a.recall is None or b.recall is None:
             continue
         assert a.recall.ci_low == b.recall.ci_low
@@ -616,7 +618,7 @@ def test_the_measured_set_gets_its_own_achieved_fpr(fast_config) -> None:
         data_source=MEASURED, certify_on=certifier,
     )
     measured_negatives = np.asarray(
-        [s for s, y in zip(measured.scores, measured.labels) if y == 0]
+        [s for s, y in zip(measured.scores, measured.labels, strict=True) if y == 0]
     )
     for point in sweep.points:
         if not point.certified:

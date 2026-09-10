@@ -33,7 +33,7 @@ from __future__ import annotations
 
 import dataclasses
 import json
-from typing import Any, Mapping, Optional
+from typing import Any, Mapping
 
 from ..model.enums import Action
 from .errors import BundleError, PolicyError

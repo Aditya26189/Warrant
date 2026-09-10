@@ -22,7 +22,7 @@ from __future__ import annotations
 
 import dataclasses
 import logging
-from typing import Callable, Optional, Sequence
+from typing import Callable, Optional
 
 import numpy as np
 

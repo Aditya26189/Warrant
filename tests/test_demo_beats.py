@@ -54,7 +54,7 @@ def test_the_refusal_beat_carries_the_uninflated_numbers() -> None:
     assert values[f"across {n_profiles} profiles (Bonferroni)"] == str(
         min_n_for(budget, 0.05 / n_profiles)
     )
-    assert str(budget) in values[f"customer_support hard-negative FPR ceiling"]
+    assert str(budget) in values["customer_support hard-negative FPR ceiling"]
     assert "cluster-uncorrected" in (beat.note or "")
     assert "868" not in str(beat.rows)
 

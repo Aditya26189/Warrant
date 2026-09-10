@@ -26,7 +26,7 @@ from __future__ import annotations
 import dataclasses
 import logging
 from datetime import datetime
-from typing import Iterable, Optional, Sequence
+from typing import Optional, Sequence
 
 from ..model import Warrant, WarrantKey, WarrantStatus, utc_now
 from ..store import Ledger, RecordKind

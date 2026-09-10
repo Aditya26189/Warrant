@@ -25,7 +25,7 @@ import logging
 import re
 import unicodedata
 from pathlib import Path
-from typing import Any, Iterable, Mapping, Optional, Sequence
+from typing import Any, Optional
 
 import numpy as np
 

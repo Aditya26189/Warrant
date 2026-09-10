@@ -302,7 +302,10 @@ def pooling_check(
     unsound and the artifact should say so instead of averaging over it.
     """
     english_fp = english_n = other_fp = other_n = 0
-    for record, score in zip(records, scores):
+    # strict: a length mismatch here would silently truncate and report a
+    # pooling check over a subset without saying so -- the same misalignment
+    # `run_pairing` already refuses, arriving through a different door.
+    for record, score in zip(records, scores, strict=True):
         flagged = score >= threshold
         if record["axes"]["language"] == ENGLISH:
             english_n += 1
