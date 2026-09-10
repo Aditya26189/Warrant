@@ -99,7 +99,15 @@ def build_parser() -> argparse.ArgumentParser:
         help="path to a .csv or .jsonl with columns id, label, score",
     )
     certify.add_argument(
-        "--budget", "-b", type=float, required=True,
+        "--frontier", action="store_true",
+        help=(
+            "show every budget's exact counts instead of certifying one. "
+            "Costs no bootstrap, so it answers in a second rather than two "
+            "minutes; rates with intervals come from --budget."
+        ),
+    )
+    certify.add_argument(
+        "--budget", "-b", type=float, default=None,
         help="false-positive budget, e.g. 0.05 for 'at most 5%% of clean items flagged'",
     )
     certify.add_argument(
@@ -167,6 +175,16 @@ def _certify(args: argparse.Namespace) -> int:
         print(f"warrant: {exc}", file=sys.stderr)
         return EXIT_BAD_INPUT
 
+    if args.frontier:
+        return _frontier(args, config, items)
+    if args.budget is None:
+        print(
+            "warrant: --budget is required unless you pass --frontier. Run with "
+            "--frontier first if you do not yet know which budget to ask for.",
+            file=sys.stderr,
+        )
+        return EXIT_BAD_INPUT
+
     try:
         result = certify_items(config, items, budget=args.budget)
     except ValueError as exc:
@@ -190,6 +208,42 @@ def _certify(args: argparse.Namespace) -> int:
             f"warrant: {result.status.value} -- {result.reason}", file=sys.stderr
         )
         return EXIT_ERROR
+    return EXIT_OK
+
+
+def _frontier(args: argparse.Namespace, config, items) -> int:
+    """Every budget's exact counts, so a person can choose one."""
+    from .config import write_json_artifact
+    from .intake import frontier, render_frontier
+
+    points = frontier(config, items)
+    source = Path(args.input)
+    out = (
+        Path(args.out)
+        if args.out
+        else source.with_suffix(source.suffix + ".frontier.json")
+    )
+    write_json_artifact(
+        out,
+        {
+            "input": {
+                "source": items.source, "n": items.n,
+                "n_positive": items.n_positive, "n_negative": items.n_negative,
+            },
+            "note": (
+                "Every field is exact -- a count of this file or a "
+                "Clopper-Pearson bound. Rates are estimated and are not here; "
+                "they come from `certify --budget`, with a 95% interval."
+            ),
+            "frontier": [p.to_payload() for p in points],
+        },
+        config,
+    )
+    if not args.quiet:
+        print(render_frontier(
+            points, n_positive=items.n_positive, n_negative=items.n_negative
+        ))
+    print(f"  record written to {out}")
     return EXIT_OK
 
 

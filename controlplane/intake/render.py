@@ -15,7 +15,7 @@ from typing import Optional
 from ..model import Metric, WarrantStatus
 from .certify import CertificationResult
 
-__all__ = ["render_recheck", "render_summary"]
+__all__ = ["render_frontier", "render_recheck", "render_summary"]
 
 # ASCII only, deliberately. The first run of this on Windows died with
 # UnicodeEncodeError: the console's cp1252 codepage cannot encode a box-drawing
@@ -210,4 +210,53 @@ def render_recheck(result) -> str:
             "",
         ]
     lines += [_RULE, ""]
+    return "\n".join(lines)
+
+
+def render_frontier(points, *, n_positive: int, n_negative: int) -> str:
+    """The curve, in exact counts.
+
+    No interval appears here and none is missing: every column is a count or a
+    bound, not an estimate. Rates come from certifying at a chosen budget, which
+    costs one bootstrap instead of twenty.
+    """
+    lines = [
+        _RULE,
+        "  THE FRONTIER: what each budget buys",
+        _RULE,
+        "",
+        f"  {n_positive} positive items, {n_negative} clean negatives.",
+        "",
+        "  budget   threshold   FPR bound   flagged   caught   missed   false+",
+        "  " + "-" * 64,
+    ]
+    for p in points:
+        if not p.certified:
+            lines.append(
+                f"  {p.budget:<7.3f}  REFUSED - needs {p.min_negatives_required} "
+                f"clean negatives, this file has {n_negative}"
+            )
+            continue
+        lines.append(
+            f"  {p.budget:<7.3f}  {p.threshold:<10.5f}  {p.fpr_upper_bound:<10.4f}  "
+            f"{p.n_flagged:<8d}  {p.true_positives:<7d}  {p.missed:<7d}  "
+            f"{p.false_positives:<d}"
+        )
+
+    lines += [
+        "",
+        "  Every column above is EXACT -- a count of this file, or a bound. None",
+        "  is an estimate, so none carries an interval and none is missing one.",
+        "",
+        "  Recall and precision are rates. They are estimated, they need a",
+        "  bootstrap, and they come with a 95% interval:",
+        "",
+        "      warrant certify --input <file> --budget <one of the above>",
+        "",
+        "  Reading the table: a tighter budget promises fewer false positives and",
+        "  catches less. The row to pick is the one whose 'missed' you can live",
+        "  with at a 'false+' you can afford.",
+        _RULE,
+        "",
+    ]
     return "\n".join(lines)

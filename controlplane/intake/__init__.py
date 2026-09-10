@@ -17,19 +17,23 @@ from .contract import (
     ScoredItems,
     load_scored_items,
 )
+from .frontier import FrontierPoint, frontier
 from .recheck import RecheckResult, recheck_items, score_distribution
-from .render import render_recheck, render_summary
+from .render import render_frontier, render_recheck, render_summary
 
 __all__ = [
     "GROUP_COLUMN",
     "REQUIRED_COLUMNS",
     "CertificationResult",
+    "FrontierPoint",
     "InputError",
     "ScoredItems",
     "RecheckResult",
     "certify_items",
+    "frontier",
     "load_scored_items",
     "recheck_items",
+    "render_frontier",
     "render_recheck",
     "render_summary",
     "score_distribution",
