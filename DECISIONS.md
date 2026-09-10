@@ -6703,3 +6703,30 @@ with any number in `results/`, and two that made the file unusable.
 **The lesson worth keeping.** A CI job that has never reached its second step
 proves nothing, and reads on the badge exactly like one that does. This one was
 added as evidence of rigour and was, until today, evidence of nothing.
+
+**Amendment, same day.** With the lock fixed the job resolved all 136 packages
+and then died installing them: `[Errno 28] No space left on device`. Measuring
+the Linux download rather than guessing at it:
+
+| | |
+|---|---|
+| `nvidia-*` and `triton` | 3.09 GB — **89%** |
+| everything else | 0.37 GB |
+| `en_core_web_lg` | ~0.59 GB (direct URL) |
+| **total** | **~4.05 GB**, roughly 9 GB unpacked |
+
+`torch` on Linux pulls the entire CUDA runtime. The runner has no GPU and never
+will — extraction is exempt from CI and runs on Kaggle — so this is three
+gigabytes downloaded, unpacked, and never loaded.
+
+**The obvious fix is rejected.** PyTorch publishes a CPU-only build at the same
+version, and installing it would cut the job by 3 GB and several minutes. But
+this job exists to prove that the install command in `README.md` works, and
+installing something other than that command proves nothing about it. A green
+badge over a different install is the same failure as the one above, one level
+up. So the runner makes room instead: the preinstalled Android, .NET, GHC,
+Boost and CodeQL toolchains come off, and pip runs with `--no-cache-dir` so
+3.46 GB of wheels are not kept beside the unpacked copies.
+
+The cost is a slower job. The thing bought is that the check still tests the
+sentence a reader is asked to run.

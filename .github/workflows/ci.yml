@@ -100,14 +100,51 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pip
+          # No `cache: pip` here, deliberately. This job downloads 3.46 GB of
+          # wheels; caching them would blow the repository's 10 GB Actions cache
+          # on its own and evict everything the customer-path job depends on.
+          # The pip cache is also disabled below, so there would be nothing to
+          # save.
+
+      # The install needs about 9 GB and a stock runner does not have it: the
+      # first attempt died on `[Errno 28] No space left on device` partway
+      # through `Installing collected packages`.
+      #
+      # It is worth being precise about where that goes, because the shape of it
+      # is the argument for this step rather than for a smaller install:
+      #
+      #     nvidia-* and triton   3.09 GB   89% of the download
+      #     everything else       0.37 GB
+      #     en_core_web_lg       ~0.59 GB   direct URL, not on PyPI
+      #
+      # torch on Linux pulls the whole CUDA runtime, and this runner has no GPU
+      # and never will -- extraction is exempt from CI and runs on Kaggle. So
+      # this is 3 GB of libraries that are downloaded, unpacked and never
+      # loaded. The honest alternative is the CPU-only torch build, and it is
+      # rejected on purpose: this job exists to prove that the install command
+      # in README.md works, and an install of something else proves nothing
+      # about it. We pay the 3 GB to keep the check honest.
+      - name: Make room for the CUDA stack nothing here will use
+        run: |
+          df -h / | tail -1
+          # Preinstalled toolchains this project does not touch. `|| true`
+          # because a missing path on a future runner image must not fail a
+          # build over housekeeping.
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc \
+                      /usr/local/share/boost /opt/hostedtoolcache/CodeQL || true
+          df -h / | tail -1
 
       - name: Install everything
         run: |
           python -m pip install --upgrade pip
           # pytest and the spaCy model are both in the lock -- the model as a
           # hash-pinned URL, which `spacy download` is not. Nothing to add here.
-          pip install -r requirements.lock.txt
+          #
+          # --no-cache-dir roughly halves peak disk: without it pip keeps every
+          # downloaded wheel alongside the unpacked copy, and 3.46 GB of wheels
+          # is not a saving worth 3.46 GB of disk on a machine that gets one run.
+          pip install --no-cache-dir -r requirements.lock.txt
+          df -h / | tail -1
 
       - name: Full test suite
         run: python -m pytest tests/ -q
