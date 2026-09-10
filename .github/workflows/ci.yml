@@ -146,8 +146,44 @@ jobs:
           pip install --no-cache-dir -r requirements.lock.txt
           df -h / | tail -1
 
+      # The first run ever to reach this step died with exit 134 -- SIGABRT, a
+      # C-level abort with no Python exception. Two candidates, and this step is
+      # arranged to tell them apart rather than to pick one:
+      #
+      #   OpenMP.  torch, scikit-learn and spaCy's blis each ship their own
+      #            OpenMP runtime. Two of them initialising in one process
+      #            aborts on Linux, which is why Windows never saw this.
+      #   Memory.  A failed C++ allocation throws std::bad_alloc, and an
+      #            uncaught one calls abort() -- exit 134, where an OOM-kill
+      #            would have been 137.
+      #
+      # OMP_NUM_THREADS is set for a reason that holds either way: this project
+      # requires two runs at one seed to produce identical numbers, and threaded
+      # BLAS reductions are not bit-reproducible. It may also stop the abort --
+      # and if it does, the peak RSS printed below says which cause it was. A
+      # few GB on a 16 GB runner rules memory out and leaves OpenMP.
+      #
+      # -v rather than -q so the next abort names the test it died in. A dot
+      # does not, and reading the extension-module dump tells you what was
+      # loaded rather than what broke.
+      #
+      # No pipe on the pytest line. `cmd | tail` reports tail's status, so a
+      # crashed suite would read as green -- the trap CLAUDE.md names.
       - name: Full test suite
-        run: python -m pytest tests/ -q
+        env:
+          OMP_NUM_THREADS: "1"
+          MKL_THREADING_LAYER: GNU
+        run: |
+          free -h
+          echo "cores: $(nproc)"
+          if [ -x /usr/bin/time ]; then
+            /usr/bin/time -v python -m pytest tests/ -v
+          else
+            python -m pytest tests/ -v
+          fi
 
       - name: Verify every published claim recomputes
+        env:
+          OMP_NUM_THREADS: "1"
+          MKL_THREADING_LAYER: GNU
         run: python scripts/verify.py --no-activations
