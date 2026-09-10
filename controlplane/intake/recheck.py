@@ -41,7 +41,13 @@ from ..config import Config
 from ..model import EnvelopeFeature, WarrantStatus
 from .contract import ScoredItems
 
-__all__ = ["RecheckResult", "recheck_items", "score_distribution"]
+__all__ = [
+    "RecheckResult",
+    "negatives_needed_to_detect",
+    "recheck_items",
+    "score_distribution",
+    "smallest_detectable_breach",
+]
 
 #: Bins for the score histogram a warrant carries. Ten is the credit-scoring
 #: convention PSI grew up with, and it keeps the null band narrow enough to be
@@ -98,11 +104,25 @@ class RecheckResult:
     fpr_upper_bound_now: Optional[float]
     fpr_lower_bound_now: Optional[float]
     bound_still_holds: Optional[bool]
+    #: Smallest observed rate that would have revoked at this sample size.
+    #: Printed with every verdict, because the dead zone the asymmetric test
+    #: buys is invisible otherwise.
+    detectable_floor: Optional[float] = None
+    #: Negatives that would be needed to catch a breach at 1.5x the budget.
+    negatives_for_tighter_floor: Optional[int] = None
     psi: Optional[float] = None
     psi_null_p95: Optional[float] = None
     psi_beyond_noise: Optional[bool] = None
     drift_assessed: bool = False
     drift_not_assessed_reason: str = ""
+    #: Live bins that were empty where the reference had mass, and were
+    #: therefore floored at the configured epsilon.
+    psi_bins_smoothed: int = 0
+    #: True when those floored bins contribute most of the index. Such a PSI
+    #: is a statement about **absence of data in a region**, not about a
+    #: measured shift there, and must not revoke a warrant on its own.
+    psi_driven_by_smoothing: bool = False
+    psi_epsilon: Optional[float] = None
 
     @property
     def still_valid(self) -> bool:
@@ -113,6 +133,17 @@ class RecheckResult:
             "status": self.status.value,
             "reason": self.reason,
             "prior_warrant": {"budget_fpr": self.budget, "threshold": self.threshold},
+            "detection": {
+                "smallest_detectable_rate": self.detectable_floor,
+                "negatives_here": self.n_negative_now,
+                "negatives_to_detect_1_5x_budget": self.negatives_for_tighter_floor,
+                "note": (
+                    "Revocation requires the one-sided lower bound to exceed the "
+                    "budget, which leaves a dead zone between the budget and this "
+                    "floor. A rate inside it returns VALID and is not evidence "
+                    "the promise holds -- only an absence of evidence it broke."
+                ),
+            },
             "now": {
                 "n": self.n_now,
                 "n_negative": self.n_negative_now,
@@ -127,6 +158,9 @@ class RecheckResult:
                 "psi": self.psi,
                 "psi_null_p95": self.psi_null_p95,
                 "beyond_noise": self.psi_beyond_noise,
+                "bins_smoothed": self.psi_bins_smoothed,
+                "driven_by_smoothing": self.psi_driven_by_smoothing,
+                "epsilon": self.psi_epsilon,
                 "note": (
                     "PSI is compared against a null simulated at this file's own "
                     "sample size, not against the 0.10/0.25 folklore bands, which "
@@ -169,6 +203,8 @@ def recheck_items(
     achieved: Optional[float] = None
     upper: Optional[float] = None
     lower: Optional[float] = None
+    floor: Optional[float] = None
+    needed: Optional[int] = None
     if negatives.size:
         achieved = float((negatives >= threshold).mean())
         k = int((negatives >= threshold).sum())
@@ -194,9 +230,13 @@ def recheck_items(
         # the budget. Failing to re-prove a claim is not the same as disproving
         # it, and that distinction is what this whole project rests on.
         bound_holds = lower <= budget
+        floor = smallest_detectable_breach(int(negatives.size), budget, alpha)
+        needed = negatives_needed_to_detect(budget * 1.5, budget, alpha)
 
     # --- has the ground moved? ------------------------------------------
-    psi = null_p95 = None
+    psi = null_p95 = epsilon = None
+    smoothed = 0
+    by_smoothing = False
     beyond_noise: Optional[bool] = None
     assessed = False
     skip_reason = ""
@@ -214,7 +254,11 @@ def recheck_items(
     else:
         from ..drift import population_stability_index, simulate_null_psi
 
-        psi = float(population_stability_index(reference, scores.tolist()).psi)
+        measured = population_stability_index(reference, scores.tolist())
+        psi = float(measured.psi)
+        smoothed = int(measured.bins_smoothed)
+        by_smoothing = bool(measured.driven_by_smoothing)
+        epsilon = float(measured.epsilon)
         band = simulate_null_psi(
             reference.bin_probabilities,
             n=items.n,
@@ -226,8 +270,10 @@ def recheck_items(
         assessed = True
 
     return _verdict(
-        config, budget, threshold, items, achieved, upper, lower, bound_holds,
+        config, budget, threshold, items, achieved, upper, lower, floor, needed,
+        bound_holds,
         psi, null_p95, beyond_noise, assessed, skip_reason,
+        smoothed, by_smoothing, epsilon,
     )
 
 
@@ -253,6 +299,47 @@ def _lower_bound_at(n: int, k: int, alpha: float) -> float:
         return 0.0
     return float(beta.ppf(alpha, k, n - k + 1))
 
+def smallest_detectable_breach(
+    n_negatives: int, budget: float, alpha: float
+) -> Optional[float]:
+    """The smallest observed false-positive rate that would revoke, at this ``n``.
+
+    Revoking only on the lower bound buys a low false-alarm rate with a **dead
+    zone**, and the zone has to be stated or "no evidence of breach" becomes the
+    same kind of overclaim the asymmetric test was introduced to remove.
+
+    Worked at the sizes this tool actually sees: 591 negatives against a 5%
+    budget, the lower bound first clears 0.05 at k = 40, an observed rate of
+    **6.8%**. A detector that has genuinely drifted from 3.7% to 6.0% sits
+    inside that zone and returns VALID -- correctly, since 6% on 591 negatives
+    does not establish a breach, and misleadingly if the floor is not printed
+    beside the verdict.
+
+    Returns:
+        The rate, or None when no observed count at this ``n`` could establish a
+        breach at all -- which is itself worth saying.
+    """
+    for k in range(1, n_negatives + 1):
+        if _lower_bound_at(n_negatives, k, alpha) > budget:
+            return k / n_negatives
+    return None
+
+
+def negatives_needed_to_detect(rate: float, budget: float, alpha: float) -> int:
+    """Clean negatives needed before an observed ``rate`` would establish a breach.
+
+    The companion to the floor: it turns "this file could not have caught a 6%
+    rate" into "and here is what would have". Mirrors the answer `certify` gives
+    a refusal -- the requirement, not just the shortfall.
+    """
+    n = 10
+    while n < 200_000:
+        k = int(round(rate * n))
+        if k and _lower_bound_at(n, k, alpha) > budget:
+            return n
+        n = int(n * 1.2) + 1
+    return -1
+
 
 def _verdict(
     config: Config,
@@ -262,12 +349,17 @@ def _verdict(
     achieved: Optional[float],
     upper: Optional[float],
     lower: Optional[float],
+    floor: Optional[float],
+    needed: Optional[int],
     bound_holds: Optional[bool],
     psi: Optional[float],
     null_p95: Optional[float],
     beyond_noise: Optional[bool],
     assessed: bool,
     skip_reason: str,
+    smoothed: int = 0,
+    by_smoothing: bool = False,
+    epsilon: Optional[float] = None,
 ) -> RecheckResult:
     """Decide, worst finding first.
 
@@ -279,9 +371,12 @@ def _verdict(
         budget=budget, threshold=threshold, n_now=items.n,
         n_negative_now=items.n_negative, achieved_fpr_now=achieved,
         fpr_upper_bound_now=upper, fpr_lower_bound_now=lower,
-        bound_still_holds=bound_holds,
+        bound_still_holds=bound_holds, detectable_floor=floor,
+        negatives_for_tighter_floor=needed,
         psi=psi, psi_null_p95=null_p95, psi_beyond_noise=beyond_noise,
         drift_assessed=assessed, drift_not_assessed_reason=skip_reason,
+        psi_bins_smoothed=smoothed, psi_driven_by_smoothing=by_smoothing,
+        psi_epsilon=epsilon,
     )
 
     if bound_holds is False:
@@ -313,6 +408,24 @@ def _verdict(
                 f"{budget:.4f} promised, but its lower bound of {lower:.4f} does "
                 f"not establish that the true rate exceeds it. Not proof, and not "
                 f"nothing: re-certify on more data before relying on this."
+            ),
+            **common,
+        )
+    if assessed and by_smoothing:
+        # The index is dominated by bins the live file left empty where the
+        # reference had mass. That is a claim about missing data in a region,
+        # not a measured shift of that size, and the smoothing constant sets its
+        # magnitude: at eps=1e-6 one empty bin contributes ~13, at 1e-4 about 9.
+        # Revoking on it would be revoking on a configuration choice.
+        return RecheckResult(
+            status=WarrantStatus.STALE,
+            reason=(
+                f"the bound holds, and PSI is {psi:.4f} but {smoothed} live "
+                f"bin(s) are empty where the reference had mass, contributing "
+                f"most of that number. This says your new file has no data in a "
+                f"region the warrant was measured over -- not that the "
+                f"distribution shifted by that much. Widen the sample or check "
+                f"the file is complete before treating it as drift."
             ),
             **common,
         )

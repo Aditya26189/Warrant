@@ -146,6 +146,37 @@ def render_recheck(result) -> str:
             "     when the data shows the rate exceeds it, not when a fresh",
             "     sample merely fails to re-prove it.",
         ]
+        # The cost of that asymmetry, printed with every verdict including the
+        # good ones. Revoking only on proof leaves a dead zone between the
+        # budget and this floor, and a VALID that does not say how wide the zone
+        # is overclaims in exactly the way the lower-bound test was introduced
+        # to stop.
+        if result.detectable_floor is not None:
+            lines += [
+                "",
+                f"     What this file could have caught: an observed rate of "
+                f"{result.detectable_floor:.4f} or above.",
+                f"     Between {result.budget:.4f} and that floor, a real breach "
+                f"returns VALID -- and that",
+                "     is an absence of evidence, not evidence of absence.",
+            ]
+            needed = result.negatives_for_tighter_floor
+            # Only when it is a shortfall. Telling someone they need 249
+            # negatives when they brought 589 reads as a deficiency and is not
+            # one; the floor line above already says what this file can catch.
+            if needed and needed > result.n_negative_now:
+                lines.append(
+                    f"     To catch a rate of {result.budget * 1.5:.4f} you would "
+                    f"need {needed} clean negatives; this file has "
+                    f"{result.n_negative_now}."
+                )
+        else:
+            lines += [
+                "",
+                "     No observed rate at this sample size could establish a",
+                "     breach at all. This recheck cannot revoke, whatever the",
+                "     detector does.",
+            ]
 
     lines += ["", "  2. Has the distribution moved?"]
     if not result.drift_assessed:
@@ -158,6 +189,17 @@ def render_recheck(result) -> str:
             "     The noise level is simulated at this file's size, not read off",
             "     the 0.10/0.25 bands, which are not scale-free.",
         ]
+        if result.psi_bins_smoothed:
+            lines.append(
+                f"     {result.psi_bins_smoothed} live bin(s) empty where the "
+                f"reference had mass, floored at eps={result.psi_epsilon:g}."
+            )
+        if result.psi_driven_by_smoothing:
+            lines += [
+                "     Most of that index comes from those empty bins, so it is a",
+                "     statement about MISSING DATA in a region rather than a",
+                "     measured shift. The smoothing constant sets its size.",
+            ]
 
     lines += ["", f"  {result.reason}", ""]
     if result.status is WarrantStatus.REVOKED:

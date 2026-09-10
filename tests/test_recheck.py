@@ -237,3 +237,91 @@ def test_a_missing_warrant_record_is_a_readable_error(tmp_path) -> None:
                   "-i", str(_csv(tmp_path, scores, labels)))
     assert result.returncode == 2
     assert "no warrant record" in result.stderr
+
+
+# ------------------------------------------- the cost of the asymmetric test
+
+def test_the_dead_zone_is_stated_with_every_verdict(tmp_path, config) -> None:
+    """Revoking only on proof buys a low false-alarm rate with a blind spot.
+
+    At 591 negatives against a 5% budget the lower bound first clears 0.05 at
+    k=40 -- an observed rate of 6.8%. A detector that has drifted from 3.7% to
+    6.0% sits inside that zone and returns VALID. That is correct, and saying
+    only "no evidence of breach" would be the same shape of overclaim the
+    asymmetric test was introduced to remove.
+    """
+    scores, labels = _world(1200)
+    reference = score_distribution(scores)
+    later, later_labels = _world(800, seed=12)
+    items = load_scored_items(_csv(tmp_path, later, later_labels))
+
+    result = recheck_items(
+        config, items, budget=0.05, threshold=0.847207, reference=reference
+    )
+    assert result.status is WarrantStatus.VALID
+    assert result.detectable_floor is not None
+    assert result.detectable_floor > result.budget, (
+        "the floor must sit above the budget; if it did not there would be no "
+        "dead zone and nothing to disclose"
+    )
+    text = render_recheck(result)
+    assert "could have caught" in text
+    assert "absence of evidence, not evidence of absence" in text
+
+
+def test_the_floor_tightens_as_the_sample_grows(config) -> None:
+    """The blind spot is a function of n, so it must shrink with n."""
+    from controlplane.intake.recheck import smallest_detectable_breach
+
+    small = smallest_detectable_breach(200, 0.05, 0.05)
+    large = smallest_detectable_breach(5000, 0.05, 0.05)
+    assert small > large > 0.05
+
+
+def test_a_psi_driven_by_empty_bins_does_not_revoke(tmp_path, config) -> None:
+    """Absence of data in a region is not a measured shift of that size.
+
+    The smoothing constant sets the magnitude -- one empty bin contributes ~13
+    at eps=1e-6 and ~9 at 1e-4 -- so revoking on it would be revoking on a
+    configuration choice. It downgrades to STALE and says which it is.
+    """
+    scores, labels = _world(1200)
+    reference = score_distribution(scores)
+    # A live file occupying a narrow slice of the reference range: most
+    # reference bins get no live mass at all.
+    rng = np.random.default_rng(5)
+    narrow = np.clip(rng.normal(0.5, 0.005, 600), 0, 1)
+    narrow_labels = (rng.random(600) < 0.25).astype(int)
+    items = load_scored_items(_csv(tmp_path, narrow, narrow_labels))
+
+    result = recheck_items(
+        config, items, budget=0.05, threshold=0.847207, reference=reference
+    )
+    assert result.psi_bins_smoothed > 0
+    if result.psi_driven_by_smoothing:
+        assert result.status is WarrantStatus.STALE
+        assert "no data in a region" in result.reason
+        assert "not that the distribution shifted" in result.reason
+
+
+def test_out_of_range_scores_register_rather_than_vanish(config) -> None:
+    """Live mass outside the reference edges must not be silently dropped.
+
+    If it were, a detector whose scores moved wholesale out of the warranted
+    range would look stable: the moved items would simply stop being counted.
+    """
+    from controlplane.drift import population_stability_index
+    from controlplane.model import EnvelopeFeature
+
+    edges = tuple(float(x) for x in np.linspace(0, 1, 11))
+    feature = EnvelopeFeature(
+        name="s", bin_edges=edges, bin_probabilities=tuple([0.1] * 10),
+        mean=0.5, std=0.3,
+    )
+    inside = np.random.default_rng(1).uniform(0, 1, 1000)
+    half_outside = np.concatenate([inside[:500], np.full(500, 5.0)])
+
+    stable = population_stability_index(feature, inside.tolist())
+    moved = population_stability_index(feature, half_outside.tolist())
+    assert moved.n_live == 1000, "out-of-range items were dropped from the count"
+    assert moved.psi > stable.psi * 10, "a wholesale shift out of range barely moved PSI"
