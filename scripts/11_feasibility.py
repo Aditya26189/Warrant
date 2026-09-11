@@ -45,6 +45,10 @@ from controlplane.economics import (  # noqa: E402
     recall_sample_size,
     review_volume,
 )
+from controlplane.sampling import (  # noqa: E402
+    labels_for_recall,
+    recall_sensitivity,
+)
 from controlplane.report.claims import resolve  # noqa: E402
 
 _LOG = logging.getLogger("scripts.11_feasibility")
@@ -109,6 +113,49 @@ def main() -> int:
             monthly_interactions=config.workload.monthly_interactions,
             operating_point_id=point,
         )
+        # The label budget, propagated through dR/dq. DECISIONS.md 147: the
+        # earlier figure here sized a binomial on recall directly and was low
+        # by 6x to 13x. The superseded value is kept beside the corrected one
+        # rather than dropped, so whoever holds a pre-147 copy of this artifact
+        # can find their number and see what it was.
+        sensitivity = recall_sensitivity(
+            recall=recall,
+            flag_rate=flag_rate,
+            monthly_interactions=config.workload.monthly_interactions,
+            base_error_rate=config.workload.base_error_rate,
+        )
+        # Two regimes, never one. DECISIONS.md 150: config.yaml's 0.67 is
+        # Neyman's design effect and month one cannot have it, because Neyman
+        # needs the per-band prevalences the first month's labels buy.
+        label_plans = [
+            {
+                "margin": margin,
+                "regime": regime,
+                "design_effect_applied": effect,
+                **{
+                    k: v
+                    for k, v in dataclasses.asdict(
+                        labels_for_recall(
+                            sensitivity=sensitivity,
+                            margin=margin,
+                            design_effect=effect,
+                        )
+                    ).items()
+                    if k != "declared_inputs"
+                },
+            }
+            for margin in config.sampling.recall_margin_tiers
+            # MONTH ONE ONLY, and that is a scope decision rather than an
+            # omission. The steady-state figure needs a design effect measured
+            # from a band structure, that band structure lives in
+            # scripts/25_on_traffic.py and duplicating
+            # it here would put one number in two places with two owners. A
+            # first pass at this produced 1,212 here against 1,434 there for
+            # one profile, which is invariant 6's scenario mixing arriving
+            # between artifacts instead of inside one. results/on_traffic/ owns
+            # the price list; this artifact owns the abstention floor.
+            for regime, effect in (("month_one_proportional", 1.0),)
+        ]
         sizes = [
             recall_sample_size(
                 recall=recall,
@@ -140,7 +187,11 @@ def main() -> int:
                 "review_volume": {
                     k: dataclasses.asdict(v) for k, v in volume.items()
                 },
-                "recall_sample_size": [dataclasses.asdict(s) for s in sizes],
+                "label_plans": label_plans,
+                "recall_sensitivity": dataclasses.asdict(sensitivity),
+                "recall_sample_size_SUPERSEDED": [
+                    dataclasses.asdict(s) for s in sizes
+                ],
             }
         )
 
@@ -162,10 +213,18 @@ def main() -> int:
         "abstention_floor": [dataclasses.asdict(f) for f in floors],
         "profiles": profiles,
         "not_derived_here": (
-            "No cost, headcount or saving figure. The price list "
-            "(controlplane/economics/sizing.py) is specified in five contracts "
-            "and not built -- DECISIONS 096 and 099. Any money figure in the "
-            "proposal or the deck is a declared estimate and must say so."
+            "No cost, headcount or saving figure. The price list is now built "
+            "(controlplane/economics/sizing.py, DECISIONS 146) and so is the "
+            "label budget (controlplane/sampling, DECISIONS 147), and neither "
+            "produces a money figure: a cost needs a reviewer rate, which is "
+            "declared rather than measured. Any money figure in the proposal or "
+            "the deck is a declared estimate and must say so. The "
+            "recall_sample_size_SUPERSEDED block is kept so a reader holding a "
+            "pre-147 copy of this artifact can find their number; it is low by "
+            "6x to 13x as a label budget and must not be quoted -- DECISIONS "
+            "147 and 150. The label_plans here are MONTH ONE only; "
+            "results/on_traffic/ owns the full price list including the "
+            "steady-state regime, so that one number has one owner."
         ),
     }
     write_json_artifact(Path(args.out), payload, config)

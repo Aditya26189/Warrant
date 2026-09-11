@@ -94,7 +94,17 @@ def _measured_points(results: Path, override: str | None) -> dict[str, dict]:
     the declared workload still renders. A missing measurement is reported as
     missing rather than substituted.
     """
-    path = Path(override) if override else results / "policy-triviaqa-600.json"
+    # The same artifact the README claim table resolves its recall and flag-rate
+    # rows against, and the same one scripts/11_feasibility.py reads. Pointing
+    # these two scripts at different policy runs gave two label budgets for one
+    # profile name -- 1,189 against 1,808 for customer_support -- which is the
+    # scenario mixing CLAUDE.md invariant 6 forbids, arriving between artifacts
+    # rather than inside one.
+    path = (
+        Path(override)
+        if override
+        else results / "policy-triviaqa-2400-t960.json"
+    )
     if not path.exists():
         _LOG.warning("no policy artifact at %s; profile rows will be skipped", path)
         return {}
@@ -327,6 +337,11 @@ def main(argv: list[str] | None = None) -> int:
         ),
         "declared": {
             "workload": workload.name,
+            "operating_points_from": str(
+                Path(args.policy_artifact).name
+                if args.policy_artifact
+                else "policy-triviaqa-2400-t960.json"
+            ),
             "monthly_interactions": workload.monthly_interactions,
             "base_error_rate": workload.base_error_rate,
             "measured_tpr": workload.measured_tpr,
@@ -428,7 +443,10 @@ def _write_markdown(out_dir: Path, payload: dict) -> None:
         f"At the declared workload `{declared['workload']}` "
         f"(N={declared['monthly_interactions']:,}, "
         f"base error rate {declared['base_error_rate']:g}, "
-        f"implied flag rate {declared['implied_flag_rate']:.6f}):",
+        f"implied flag rate {declared['implied_flag_rate']:.6f}), with the "
+        f"profile rows' measured operating points from "
+        f"`results/{declared['operating_points_from']}` -- the same artifact the "
+        "README claim table and `scripts/11_feasibility.py` read:",
         "",
         "| quantity | value |",
         "|---|---|",

@@ -651,3 +651,69 @@ def test_review_sizing_now_names_the_estimand_it_is_for() -> None:
         recall=0.2171, margin=0.05, design_effect=0.67
     )
     assert math.isclose(with_declared.value, 175.0, rel_tol=1e-9)
+
+
+def test_the_two_artifacts_agree_on_one_profile_label_budget() -> None:
+    """One profile, one label budget, whichever artifact a reader opens.
+
+    ``results/feasibility.json`` and ``results/on_traffic/on_traffic.json`` both
+    price labels for the same named profiles. Built independently they gave
+    **1,189 against 1,808** for ``customer_support`` at +/-0.05, because one read
+    ``policy-triviaqa-600.json`` and the other ``policy-triviaqa-2400-t960.json``
+    -- two eval sets, one profile name, no indication in either artifact which
+    measurement it came from.
+
+    That is ``CLAUDE.md`` invariant 6's scenario mixing arriving **between**
+    artifacts rather than inside one, and no control in this repository could
+    see it: each number was individually reproducible from its own inputs, which
+    is all any existing check asks. It is the same shape as ``DECISIONS.md``
+    142's finding that correcting an instance is not correcting the claim.
+
+    Both scripts now read the same policy artifact, ``results/on_traffic/`` owns
+    the steady-state regime so one number has one owner, and this test is what
+    stops them drifting apart again.
+    """
+    import json
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    feasibility_path = root / "results" / "feasibility.json"
+    on_traffic_path = root / "results" / "on_traffic" / "on_traffic.json"
+    if not (feasibility_path.is_file() and on_traffic_path.is_file()):
+        pytest.skip("both artifacts must be committed for this comparison")
+
+    feasibility = json.loads(feasibility_path.read_text(encoding="utf-8"))
+    on_traffic = json.loads(on_traffic_path.read_text(encoding="utf-8"))
+
+    # Same source, stated in the artifact rather than inferred.
+    assert on_traffic["declared"]["operating_points_from"] in feasibility[
+        "measured"
+    ]["source"]
+
+    budgets: dict[tuple[str, float], int] = {}
+    for profile in feasibility["profiles"]:
+        for plan in profile["label_plans"]:
+            assert plan["regime"] == "month_one_proportional", (
+                "feasibility.json must quote month one only; the steady-state "
+                "regime is owned by results/on_traffic/"
+            )
+            budgets[(profile["profile"], plan["margin"])] = plan["labels"]
+
+    compared = 0
+    for row in on_traffic["price_list"]:
+        if not str(row["regime"]).startswith("month"):
+            continue
+        name = str(row["subject"]).split(" @ ")[0]
+        key = (name, row["margin"])
+        if key in budgets:
+            assert budgets[key] == row["labels"], (
+                f"{name} at +/-{row['margin']}: feasibility.json says "
+                f"{budgets[key]:,} labels, on_traffic.json says "
+                f"{row['labels']:,}. One profile, one budget."
+            )
+            compared += 1
+
+    assert compared >= 6, (
+        f"only {compared} profile-margin pairs were comparable. A test that "
+        "compares nothing passes for the wrong reason."
+    )

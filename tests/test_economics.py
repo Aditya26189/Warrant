@@ -320,5 +320,12 @@ def test_the_artifact_states_what_it_does_not_derive() -> None:
         pytest.skip("results/feasibility.json is not committed")
     payload = json.loads(ARTIFACT.read_text(encoding="utf-8"))
     note = payload["not_derived_here"]
-    assert "not built" in note
     assert "declared estimate" in note
+    # The note used to say the price list was "not built". It is built now
+    # (DECISIONS 146, 147), so the thing worth asserting changed: what this
+    # artifact still does not derive is a money figure, and the superseded
+    # label budget it carries for traceability must be labelled as one.
+    assert "No cost, headcount or saving figure" in note
+    assert "SUPERSEDED" in note and "147" in note
+    assert "recall_sample_size_SUPERSEDED" in payload["profiles"][0]
+    assert "label_plans" in payload["profiles"][0]

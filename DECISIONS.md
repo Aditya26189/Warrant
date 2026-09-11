@@ -7483,3 +7483,70 @@ the crossover up, and makes every figure here an **upper bound on what `k`
 buys**. It certifies no real detector and `docs/REDACT.md` §5's table is
 unchanged for GPT-4.1 and Claude. Closing that needs a paid key and a budget and
 stays **OPEN** (`DECISIONS.md` 136).
+
+---
+
+## 153 - Two artifacts, one profile name, two label budgets
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED
+- **Found by:** pointing `scripts/11_feasibility.py` at the corrected sizing and
+  comparing its output against the artifact written three hours earlier.
+
+**The defect.** `results/feasibility.json` and `results/on_traffic/on_traffic.json`
+both priced labels for the same named profiles and disagreed:
+
+| profile, ±0.05, month one | feasibility.json | on_traffic.json |
+|---|---|---|
+| `customer_support` | 1,808 | **1,189** |
+
+`11_feasibility.py` reads `policy-triviaqa-2400-t960.json` (recall 0.2171 at
+n=960); `25_on_traffic.py` had defaulted to `policy-triviaqa-600.json` (recall
+0.1661 at n=600). **Two eval sets, one profile name, and neither artifact said
+which measurement it came from.**
+
+**This is invariant 6's scenario mixing arriving between artifacts rather than
+inside one**, and it is a class no control here could see. Every existing check
+asks whether a number is reproducible from its own inputs, and both were, to the
+last digit. Nothing asked whether two artifacts describing the same thing agree.
+It is the same shape as 142 — *correcting an instance is not correcting the
+claim* — one level up: **computing a number correctly twice is not computing it
+consistently.**
+
+A second instance surfaced immediately on fixing the first. With the sources
+aligned, month one matched at 1,808 and steady state still did not — 1,212
+against 1,434 — because one script applied `config.yaml`'s *declared* design
+effect of 0.67 and the other the *measured* 0.7929 from a band structure.
+
+**Decision, two parts.**
+
+1. **One source.** Both scripts read the policy artifact the README claim table
+   resolves against, and each records which one in its own `declared` block, so
+   the question is answerable from the artifact rather than from the script.
+2. **One owner per number.** `results/on_traffic/` owns the price list,
+   including the steady-state regime. `results/feasibility.json` quotes **month
+   one only** and says so. Duplicating the band structure into a second script
+   to make the steady-state figures agree would put one number in two places
+   with two owners, which is the condition that produced this.
+
+**The control, because the decision alone is worth little.**
+`test_the_two_artifacts_agree_on_one_profile_label_budget` compares every
+profile-margin pair the two artifacts share and fails on any disagreement. It
+asserts at least six pairs were actually compared — a cross-artifact test that
+silently finds nothing to compare passes for the wrong reason, which is the
+failure mode of this kind of test.
+
+**The objection.** *"Then the on-traffic price list is quoting a different
+operating point than it did this morning, so a published number moved."* It did,
+and that is the correction: `customer_support` at ±0.05 month one moves from
+1,189 to 1,808 because it is now measured at n=960 rather than n=600, which is
+the row the README claim table has always led with. The smaller number came from
+the smaller eval set, and quoting it beside a claim table built on the larger one
+was the error.
+
+**What this says about the controls.** Three defects this session — 147, 151 and
+this one — were invisible to a suite of eleven hundred tests, and they have one
+shape: **a control exists wherever a number might be arithmetically wrong, and
+nowhere else.** Wrong units, a missing deliverable, and two right numbers that
+disagree are all outside that. The next control worth building is not another
+estimator.
