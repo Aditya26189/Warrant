@@ -43,6 +43,7 @@ from controlplane.evalsets import (
 from controlplane.matrix import Profile, WarrantMatrix, route
 from controlplane.report import render_results
 from controlplane.report.price_list import price_list_sections  # noqa: E402
+from controlplane.report.regression import check_matrix_regression  # noqa: E402
 from controlplane.store import Ledger, RecordKind
 from controlplane.validation.ablation import run_ablation
 from controlplane.validation.synthetic import synthetic_cache, synthetic_evalset
@@ -56,6 +57,15 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--config", default=str(PROJECT_ROOT / "config.yaml"))
     parser.add_argument(
         "--smoke", action="store_true", help="tiny sizes, for the end-to-end check"
+    )
+    parser.add_argument(
+        "--allow-matrix-regression",
+        action="store_true",
+        help=(
+            "write a matrix with fewer populated cells than the one on disk. "
+            "Refused by default: running out of the documented order produces "
+            "exactly that, honestly labelled and quietly poorer."
+        ),
     )
     parser.add_argument("--out", default=None, help="results directory override")
     return parser.parse_args(argv)
@@ -265,9 +275,21 @@ def main(argv: list[str] | None = None) -> int:
                     }
                 )
 
+        # Refuse BEFORE writing anything if this run would replace a matrix
+        # that has measured cells with one that does not. Running out of the
+        # documented order succeeds and produces exactly that, honestly
+        # labelled and quietly poorer -- DECISIONS.md 157, 158.
+        payload = {"matrix": matrix.to_payload(), "routing": routing}
+        comparison = check_matrix_regression(
+            results_dir / "warrant_matrix.json",
+            payload,
+            allow=args.allow_matrix_regression,
+        )
+        _LOG.info("matrix: %s", comparison.message)
+
         write_json_artifact(
             results_dir / "warrant_matrix.json",
-            {"matrix": matrix.to_payload(), "routing": routing},
+            payload,
             config,
         )
         (results_dir / "warrant_matrix.md").write_text(

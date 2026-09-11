@@ -7838,3 +7838,63 @@ here ran `02_validate.py` on the long-context envelope and failed with
 train split; the script does not say so. **OPEN**, and the cheap fix is for each
 script to refuse when the artifact it reads is absent or older than its own
 input rather than proceeding on what it finds.
+
+---
+
+## 158 - A guard against replacing a rich artifact with an honest, poorer one
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED. Closes 157's O-2 for the case that actually occurred.
+
+**The failure, from 157.** `03_matrix.py` builds the warrant matrix from
+whatever the audit ledger holds. Run out of the order `docs/RUNBOOK.md`
+documents — on a fresh ledger, or before `02_validate.py` and `04_transfer.py`
+have appended their measured warrants — it **succeeds**, writes a matrix with
+the measured cells missing, and exits zero. Measured today: 21 table rows
+against 32, and **none** of the 15 measured rows.
+
+**What makes it hard to catch is that the poorer document is not dishonest.**
+Every missing cell reads `UNVALIDATED`, which is exactly what it is, and the
+renderer adds an *Outstanding measurement* banner. It is honest, it is a
+regression, and the two are compatible. A reader who does not compare it against
+yesterday's cannot tell — and no control in this repository compares an artifact
+against its own previous version.
+
+That is the session's pattern for the sixth time: **every control here asks
+whether a number is right, and every defect found has been a number that was
+right in a document that was worse.**
+
+**Decision.** `controlplane/report/regression.py` counts *populated cells* — a
+cell carrying a `warrant_id`, meaning something was measured or refused there —
+and `03_matrix.py` refuses **before writing anything** if the incoming matrix
+has fewer than the artifact on disk.
+
+**A comparison, not a threshold**, because a fresh clone legitimately has no
+measured warrants and must be able to render. What must not happen silently is
+*replacing* an artifact that has them.
+
+**The refusal names the cause, not just the count.** It says the pipeline was
+probably run out of order, gives the order, and names the two scripts whose
+warrants are missing — because "refused: 15 → 3" would send an operator to read
+this module rather than to `RUNBOOK.md`. It also says the poorer document is not
+dishonest, deliberately: a message that implied fraud would teach its reader to
+distrust the wrong thing.
+
+**On the override, which needs justifying.** `CLAUDE.md` invariant 3 is absolute:
+*refusal has no override, no flag, no env var, no admin bypass*. That rule is
+about **warrants** — a claim the evidence does not support must not be issuable
+by anyone, and a bypass would make the whole product theatre.
+
+This is a different object. It guards against **clobbering a file**, and the
+operator sometimes genuinely wants the emptier document: a fresh clone, or a
+deliberate rebuild. Refusing with no way through would mean deleting the
+artifact by hand to proceed, which is a worse outcome than a flag that prints
+what it is discarding. `--allow-matrix-regression` is that flag; it is not
+reachable from any warrant path, and `test_the_override_proceeds_and_says_what_
+it_discards` records the distinction so it cannot be cited as precedent.
+
+**What it does not do.** It guards one artifact. The general problem — a
+documented run order enforced nowhere — is unchanged, and the honest fix is each
+script refusing when the artifact it reads is absent or older than its own
+input. That stays **OPEN** in 157. This closes the one case that bit, which is
+worth more than a design for the ones that have not.
