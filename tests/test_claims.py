@@ -175,13 +175,19 @@ def test_every_stated_test_count_is_the_real_one() -> None:
     import subprocess
     import sys
 
+    # Two forms, because the prose form alone let a badge drift undetected. The
+    # README's shields.io URL spells the count `Tests-1082_passing`, with no
+    # " tests" after the number, so `(\d{3,4}) tests` never read it -- and the
+    # badge is the first number on the page while the prose is four hundred
+    # lines down. It said 1082 beside an alt text of 1122 for an unknown number
+    # of commits, caught by reading rather than by this check.
+    patterns = (r"(\d{3,4}) tests", r"Tests-(\d{3,4})_passing")
     stated: dict[str, set[int]] = {}
     for name in FILES_STATING_A_TEST_COUNT:
         path = PROJECT_ROOT / name
         assert path.is_file(), f"{name} is missing"
-        found = {
-            int(m) for m in re.findall(r"(\d{3,4}) tests", path.read_text(encoding="utf-8"))
-        }
+        text = path.read_text(encoding="utf-8")
+        found = {int(m) for pattern in patterns for m in re.findall(pattern, text)}
         assert found, (
             f"{name} no longer states a test count. If that is deliberate, drop "
             "it from FILES_STATING_A_TEST_COUNT rather than leaving a check that "

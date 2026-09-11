@@ -6907,3 +6907,59 @@ is exact, its premises are declared.**
 and confidence asked for, `plan` says so and names what would have to change.
 A price list that always returns a price is a price list that will one day
 quote an impossible one.
+
+---
+
+## 151 - A required deliverable was destroyed by an unrelated commit and nothing looked for twenty commits
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED
+- **Restored:** `reports/PHASE-3.md`, from `d696832`.
+
+**What happened, from `git`:**
+
+    d696832  docs: Phase 3 report -- the matrix, and what it is not   9,905 bytes
+    49156b9  docs: where this should go next -- strategy, ...              4 bytes
+
+`git show 49156b9 --numstat -- reports/PHASE-3.md` reads `1  207`. The commit
+that emptied it was adding `reports/STRATEGY-2026-09.md`, its message does not
+mention `PHASE-3.md`, and what remained was the single word `can`.
+
+**It survived more than twenty commits, a full `make verify`, and 1,130 tests.**
+
+**The reason is a one-line audit of the test suite:** nothing in `tests/`
+referenced `reports/` at all. Every other required artifact in this project has
+a check on it — the claim table is parsed and recomputed, frozen scores are
+re-derived, eval sets are content-hashed, the stated test count is compared
+against the real one, and since 2026-09-09 every causal claim has a falsifier.
+The phase report, which `CLAUDE.md` calls *"the document a reviewer reads first
+and often the only one they read"*, had none.
+
+**This is the audit of 2026-09-09 a third time, in a third place.** That audit
+found the machinery checked arithmetic and not question design. 147 found it
+checked arithmetic and not the estimand. This finds it checked artifacts and not
+deliverables. The common shape is that **a control exists wherever a number
+might be wrong, and nowhere else** — and the failures that actually happen are
+not wrong numbers.
+
+**Decision.** `tests/test_reports.py`, ten tests:
+
+- every `reports/PHASE-N.md` is at least 3,000 bytes — the four real ones run
+  9.9 KB to 14.2 KB, so this catches emptying and nothing legitimate;
+- every report carries the sections where honesty is expensive: *what this does
+  not establish*, *open items*, and a *ledger*. Taken from what PHASE-0 to
+  PHASE-3 already share rather than invented, so it stops a section being
+  dropped instead of imposing a template;
+- phase numbers are contiguous from zero, so a report that was never written is
+  as visible as one that was emptied.
+
+**What it deliberately does not check.** Whether the report is honest. A test
+cannot read for that. What it can do is make the sections where a weak report
+gets quietly weaker — the limits and the open items — impossible to drop
+silently, which is the failure mode available to a reader in a hurry rather than
+to a commit with a bad redirect.
+
+**The objection.** *"A byte-count minimum is arbitrary."* It is, and it is the
+only property that distinguishes the file that was there from the file that
+replaced it. An arbitrary threshold that catches the one failure that actually
+occurred beats a principled one that catches nothing.
