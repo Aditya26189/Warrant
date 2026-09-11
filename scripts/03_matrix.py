@@ -42,6 +42,7 @@ from controlplane.evalsets import (
 )
 from controlplane.matrix import Profile, WarrantMatrix, route
 from controlplane.report import render_results
+from controlplane.report.price_list import price_list_sections  # noqa: E402
 from controlplane.store import Ledger, RecordKind
 from controlplane.validation.ablation import run_ablation
 from controlplane.validation.synthetic import synthetic_cache, synthetic_evalset
@@ -58,6 +59,63 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--out", default=None, help="results directory override")
     return parser.parse_args(argv)
+
+
+def _preflight_ledger(ledger) -> None:
+    """Refuse before doing any work if the ledger holds unreadable records.
+
+    ``DECISIONS.md`` 110 made ``convention`` mandatory on every ESTIMATED
+    metric. Warrant records written before it carry an ``auroc`` with no
+    convention, and the model refuses to deserialise them -- correctly, because
+    a two-sided 95% bound and a one-sided one are 23% apart at n=200 and an
+    unlabelled one is neither.
+
+    The consequence is that this script, which appends warrants and then
+    rebuilds the matrix from the **whole** ledger, dies on the read-back.
+    Without this check it dies after about two minutes of ablation work and
+    after appending new records, so every attempt leaves the append-only ledger
+    longer, and the failure arrives as a ``MetricError`` from inside
+    deserialisation naming no record and suggesting no action.
+
+    A clean clone is unaffected: the ledger is gitignored, so a fresh run builds
+    one with no pre-110 records in it. This is a development-machine failure and
+    the message says so, because the alternative is a reader concluding the
+    script is broken for everyone.
+    """
+    from controlplane.model.metrics import MetricError
+
+    unreadable: list[str] = []
+    total = 0
+    for record in ledger.query(kind=RecordKind.WARRANT):
+        total += 1
+        try:
+            ledger.get_warrant(record.record_id)
+        except (MetricError, ValueError, TypeError, KeyError) as exc:
+            unreadable.append(f"{record.record_id}: {type(exc).__name__}: {exc}")
+    if not unreadable:
+        return
+
+    sample = chr(10).join("    " + line for line in unreadable[:3])
+    raise SystemExit(
+        f"{chr(10)}REFUSED: {len(unreadable)} of {total} warrant records in this "
+        f"ledger cannot be read by the current model.{chr(10)*2}"
+        f"{sample}{chr(10)*2}"
+        "This script rebuilds the matrix from the whole ledger, so it cannot run "
+        "until every record loads. The usual cause is records written before "
+        "DECISIONS.md 110 made `convention` mandatory on an ESTIMATED metric."
+        f"{chr(10)*2}"
+        "The ledger is gitignored, so a clean clone does not have this problem "
+        "and a fresh run rebuilds it. On a development machine the remedy is to "
+        "move the file aside rather than delete it -- it is an append-only audit "
+        "record and the whole reason it exists is that nobody gets to quietly "
+        "drop entries from it:"
+        f"{chr(10)*2}"
+        "    mv results/controlplane.db results/controlplane.db.pre-110"
+        f"{chr(10)*2}"
+        "Refused before the ablation runs and before any append, so this attempt "
+        "left the ledger exactly as it found it. "
+        f"DECISIONS.md 155.{chr(10)}"
+    )
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -113,6 +171,8 @@ def main(argv: list[str] | None = None) -> int:
         results_dir / Path(config.store.path).name,
         retention_days=config.store.retention_days,
     )
+    _preflight_ledger(ledger)
+
     ladders = []
     try:
         for evalset in (short, long_ctx):
@@ -218,8 +278,19 @@ def main(argv: list[str] | None = None) -> int:
         # RESULTS.md refuses to print any number from a synthetic envelope.
         # Right now that is most of them, and the document says so at the top
         # rather than leaving a reader to work it out (DECISIONS.md 046).
+        # CLAUDE.md's definition of done asks RESULTS.md for the computed price
+        # list and kappa as well as the matrix. Both exist now (DECISIONS.md
+        # 146, 147, 152); price_list_sections renders them, and names the
+        # script that writes each artifact when one is missing rather than
+        # dropping the section, because this is the document a reviewer checks
+        # the definition of done against.
         (results_dir / "RESULTS.md").write_text(
-            render_results(matrix, provenance=provenance(config)), encoding="utf-8"
+            render_results(
+                matrix,
+                provenance=provenance(config),
+                extra_sections=price_list_sections(results_dir),
+            ),
+            encoding="utf-8",
         )
         _LOG.info("wrote %s", results_dir / "RESULTS.md")
 

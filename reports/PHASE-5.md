@@ -215,6 +215,63 @@ and two right numbers that disagree all sit outside that.
 
 ---
 
+## 5b. The definition of done, and a script that cannot run here
+
+**`RESULTS.md` was missing two things the contract names.** `CLAUDE.md`'s
+definition of done asks it for *"the warrant matrix, the tier ladder,
+drift/revocation traces, **the computed price list**, and **κ**"*. The last two
+were absent because neither existed. `controlplane/report/price_list.py` now
+renders three sections into it — the price list with `dR/dq` and both regimes, κ
+with the blinded-queue note, and what it costs to certify a score-free detector.
+
+**A section whose artifact is missing names the script that writes it rather
+than disappearing**, and that behaviour is what the tests check hardest: a
+renderer that silently drops a section produces a document indistinguishable
+from one where the section was never required, in the document a reviewer checks
+the definition of done against. Verified against an empty directory — three
+headings, three absence notices, no invented number.
+
+**And `scripts/03_matrix.py` cannot run on this machine.**
+
+| | |
+|---|---|
+| warrant records in the local ledger | 45 |
+| unreadable by the current model | **34** |
+| written between | 2026-08-27 and 2026-08-30 |
+
+They carry an `auroc` with no `convention`, which `DECISIONS.md` 110 later made
+mandatory. The script appends warrants and then rebuilds the matrix from the
+*whole* ledger, so it dies on the read-back — after two minutes of work, having
+already appended. **Two attempts today took the ledger from 41 records to 45
+before this was understood**, which is the part worth reporting: a broken script
+that writes before it fails makes its own diagnosis more expensive each time it
+is run.
+
+**A clean clone is unaffected, and that was checked rather than assumed.** The
+ledger is gitignored; running the script against an empty directory completed,
+exit 0, from a fresh 11-record ledger. This is a development-machine failure, not
+a reproducibility defect, and saying which is the difference between a note and
+a retraction.
+
+Shipped: a preflight that reads every record first and refuses with the count,
+three real errors, the cause and the one safe remedy — *move the file aside, do
+not delete it, it is an append-only audit record*. Verified to leave the ledger
+at 48 records, exactly as found.
+
+**What is still not done, and it is the contract item.** The **committed**
+`RESULTS.md` does not yet carry the new sections and cannot be regenerated here
+without regressing it: a fresh run produces 21 table rows against the committed
+32 and **zero** of the 15 measured rows, because the committed document reflects
+a ledger accumulated across the whole chain and the chain starts at `00_extract`,
+which needs a GPU. Re-rendering from `results/warrant_matrix.json` is not
+available — `to_payload()` drops the envelope, the controls and the convention.
+
+So the renderer is ready and the document is not. **No failing test was added
+for it**: `DECISIONS.md` 145 settled that a signal firing on a condition nobody
+will act on teaches its reader to ignore the signal. `DECISIONS.md` 155.
+
+---
+
 ## 6. Ledger
 
 **Code** — `controlplane/validation/scorefree.py`,
@@ -226,7 +283,8 @@ and two right numbers that disagree all sit outside that.
 **Claim table** — nine rows added, 49/49 → 58/58.
 
 **Decisions** — 152 (registered before the code, with four falsifiers), 152a
-(results, including C3).
+(results, including C3), 153 (two artifacts, one profile, two budgets), 154 (138
+closed as scope), 155 (`RESULTS.md` sections and the ledger preflight).
 
 **Reproduce**
 

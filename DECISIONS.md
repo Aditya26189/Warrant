@@ -7609,3 +7609,84 @@ out-of-distribution evidence a reviewer should want and this project does not
 have; `README.md` says so and `reports/PHASE-4.md` §6 repeats it. Closing 138
 moves that from a to-do list to the limitations section, which is where an
 unmet requirement belongs when nothing is going to meet it this quarter.
+
+---
+
+## 155 - RESULTS.md gains the price list and κ; and `03_matrix.py` cannot run on this machine
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED, with one part OPEN.
+
+**The contract.** `CLAUDE.md`'s definition of done asks `results/RESULTS.md` for
+*"the warrant matrix, the tier ladder, drift/revocation traces, **the computed
+price list**, and **κ**"*. The last two were absent because neither existed.
+Both exist now (146, 147, 152).
+
+**Built.** `controlplane/report/price_list.py` renders three sections into
+`RESULTS.md` through `render_results`'s existing `extra_sections` hook: the
+price list with `dR/dq` and both regimes, κ with the blinded-queue note, and
+what it costs to certify a score-free detector.
+
+**A section whose artifact is missing names the script that writes it rather
+than disappearing.** A renderer that silently drops a section produces a
+document indistinguishable from one where the section was never required, and
+this is the document a reviewer checks the definition of done against. Verified
+against an empty directory: all three headings appear, each with a one-line
+absence notice and **no invented number**.
+
+### The defect found on the way, and it is not mine
+
+`scripts/03_matrix.py` **cannot run on this machine.** Measured:
+
+| | |
+|---|---|
+| warrant records in `results/controlplane.db` | 45 |
+| unreadable by the current model | **34** |
+| dates of the unreadable ones | 2026-08-27 to 2026-08-30 |
+
+They carry an `auroc` metric with no `convention`, which entry 110 later made
+mandatory. The script appends new warrants and then rebuilds the matrix from the
+**whole** ledger, so it dies on the read-back — after about two minutes of
+ablation work, **having already appended**. Two attempts today took the ledger
+from 41 records to 45 before this was understood.
+
+**A clean clone is unaffected, and that was checked rather than assumed.** The
+ledger is gitignored. Running `03_matrix.py --out` against an empty directory
+completed, exit 0, writing `RESULTS.md`, `warrant_matrix.json` and
+`warrant_matrix.md` from a fresh 11-record ledger. **This is a
+development-machine failure, not a reproducibility defect**, and saying which is
+the difference between a note and a retraction.
+
+**Shipped: a preflight that refuses in a legible way.** It reads every warrant
+record before anything else runs, and on failure names the count, three example
+records with their real error, the cause, and the one safe remedy — *move the
+file aside, do not delete it, it is an append-only audit record and the reason
+it exists is that nobody gets to quietly drop entries from it*. Verified: the
+refusal leaves the ledger at 48 records, exactly as it found it.
+
+**Rejected: making the model tolerate the old records.** A record whose interval
+convention is unknown cannot be read by guessing one, and 110 exists precisely
+because a two-sided 95% bound and a one-sided one are 23% apart at n=200.
+Tolerating them would mean rendering a matrix from intervals whose coverage
+nobody knows, in the document that is supposed to be the evidence.
+
+### OPEN: the committed `RESULTS.md` does not yet carry the new sections
+
+It cannot be regenerated here without regressing it. A fresh run of
+`03_matrix.py` alone produces a **correct but emptier** document — 21 table rows
+against the committed 32, and **zero** of the 15 measured Qwen rows — because
+the committed one reflects a ledger accumulated across the whole chain, and the
+chain starts at `00_extract`, which needs a GPU.
+
+Re-rendering from the committed `results/warrant_matrix.json` was considered and
+is not available: `to_payload()` is lossy — it keeps a metric's value, interval,
+kind and `n`, and drops the envelope, the controls and the convention — so a
+matrix cannot be reconstructed from it faithfully. Adding a `from_payload` means
+widening the payload, which changes a committed artifact's schema to solve a
+rendering problem.
+
+**So the renderer is ready and the document is not**, and that is stated rather
+than papered over. `RESULTS.md` gains the three sections at the next full
+pipeline run. **No failing test is added for it**: entry 145 settled that a
+signal which fires on a condition nobody is going to act on teaches its reader
+to ignore the signal. The renderer is tested; the artifact's gap is an open item.
