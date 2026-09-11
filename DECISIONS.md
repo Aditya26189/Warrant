@@ -7305,3 +7305,181 @@ to a commit with a bad redirect.
 only property that distinguishes the file that was there from the file that
 replaced it. An arbitrary threshold that catches the one failure that actually
 occurred beats a principled one that catches nothing.
+
+---
+
+## 152 - Certifying a detector that emits no score: k is part of the operating point
+
+- **Date:** 2026-09-11
+- **Status:** PRE-REGISTERED. Written before the code, per the working rules.
+- **Closes:** the gap `docs/REDACT.md` §5 states and
+  `reports/AUDIT-2026-09-09.md` calls *"the largest genuine limitation in the
+  method itself"* — and closes it only partway; see the falsifier and the scope.
+
+**The gap.** Certification needs a score to threshold. The detector family that
+*wins* on REDACT — GPT-4.1, Claude Sonnet — emits spans and types with no
+confidence attached. So the method cannot certify the detectors that perform
+best, and `docs/REDACT.md` already says so in a table rather than hiding it.
+
+**The route, which that section named and did not build:** derive a score from
+**repeated-sampling frequency**. Run the judge `k` times at temperature, score
+item `i` as `votes_i / k`. A set-valued extractor becomes rankable.
+
+**The consequence nobody writes down, and it is the load-bearing one.** That
+score takes at most `k + 1` values, so it induces **at most `k + 1` distinct
+decision rules** — flag when `votes >= m`, for `m` in `0..k`. A detector wrapped
+this way does not have a continuous dial. It has `k + 1` notches, and buying
+more notches costs `k` times the inference bill.
+
+That is the **tunability** primitive `reports/STRATEGY-2026-09.md` §5 identified
+as one of the two things genuinely ours, arriving from the other direction:
+`DECISIONS.md` 141 found that Presidio's rule-fired confidence yields one to
+three operating points across twenty budgets, so a false-positive budget is not
+a dial you can set on it. A score-free judge has exactly the same problem, and
+for a score-free judge **the number of notches is a purchase decision**.
+
+**So `k` is part of the operating point, not a runtime detail.** `CLAUDE.md`
+invariant 1 keys warrants by `(detector, operating_point, eval_set)`. A warrant
+certified against a nine-sample consensus describes a nine-sample consensus.
+Deploying the same threshold at `k = 1` is a different detector with a different
+false-positive rate, and the certified bound says nothing about it — the same
+way a threshold certified on one eval set says nothing about another.
+
+**Implementation, minimal-change.** `k` is carried in `detector_id`
+(`judge-gpt-4.1@k=9`) rather than by adding a field to `OperatingPoint`.
+`OperatingPoint` is referenced by the store, the warrant matrix, the policy
+bundles and every committed artifact; a schema change there to express something
+`detector_id` already expresses is the larger change and claims more. Recorded as
+**OPEN**: if a second dimension of this kind appears, the field is the right
+answer and `detector_id` string-packing is not.
+
+### Registered before any number is produced
+
+Four claims, each with the test that would falsify it. They run offline against a
+**simulated** judge — a latent per-item flag probability and `k` Bernoulli draws
+from it — because this repository has no paid API key (`DECISIONS.md` 136) and
+will not write a finding from memory.
+
+| # | claim | falsifier |
+|---|---|---|
+| C1 | A `k`-vote consensus yields at most `k+1` distinct decision rules | count distinct realised `(FPR, recall)` pairs over all `m`; exceeds `k+1` |
+| C2 | Certifying at `k` and deploying at `k' != k` voids the bound | certify at `k=9`, evaluate the same **vote-fraction** threshold at `k=1`; if the realised FPR stays inside the certified upper bound, the claim is wrong |
+| C3 | A budget can be unreachable at small `k` and reachable at larger `k`, so `k` has a price in notches | find a budget no `m` certifies at `k=3` and some `m` certifies at `k=25` |
+| C4 | Finite `k` costs ranking quality, converging as `k` grows | AUROC of the vote fraction against AUROC of the latent probability; must rise monotonically in `k` in expectation and approach it |
+
+**Pre-registered thresholds.** C1 is exact and holds or does not. C4 is measured
+over 200 seeds; *"approaches"* means AUROC at `k = 50` is within 0.02 of the
+latent-probability AUROC. If C4 fails, it is reported as failing — the value of
+repeated sampling would then be granularity alone and not ranking, which is a
+different and weaker claim than `docs/REDACT.md` §5 implies.
+
+**What this does not do, stated now rather than discovered later.** It does not
+certify GPT-4.1 or Claude. It builds and tests the machinery that would, against
+a simulated judge whose vote process is Bernoulli by construction. A real judge's
+repeated samples are **not** independent Bernoulli draws — they share a prompt,
+a system message and a decoding temperature, and correlation between draws makes
+the vote fraction a worse estimate of the latent probability than the simulation
+says. **The simulation is therefore an upper bound on what `k` buys**, and any
+figure from it must be quoted as one. Closing that needs a key and a budget, and
+it stays OPEN.
+
+**The objection a reviewer will raise.** *"You are certifying a procedure you
+invented rather than the detector."* Correct, and it is the right object to
+certify: what gets deployed is the procedure. A bound on a nine-sample consensus
+is a bound on what the user runs. The error would be to certify the procedure and
+then let somebody deploy a cheaper one under the same warrant, which is exactly
+what putting `k` in the key prevents.
+
+---
+
+## 152a - What the score-free registration measured, including the claim that failed once and then did not
+
+- **Date:** 2026-09-11
+- **Status:** RESULTS for 152, which was registered before the code.
+- **Artifact:** `results/scorefree/`
+
+### The headline, and it is not the one the registration expected
+
+**A single-sample judge cannot be certified to a tight false-positive budget,
+however much data you have.** At `k = 1` the tightest budget any *useful*
+threshold reaches is **0.105** — which is nothing but the judge's own
+false-positive rate. One bit gives one usable cut point, so there is no dial.
+The data's own floor at 20,000 negatives is **0.00015**, three orders of
+magnitude tighter and unreachable at any benchmark size.
+
+**The fix is cheap and bounded.** Median crossover — the smallest `k` at which
+granularity stops binding and the benchmark's own certification capacity takes
+over:
+
+| negatives | data floor | crossover `k` (median, range over 40 draws) |
+|---|---|---|
+| 200 | 0.01487 | **3** [3, 5] |
+| 1,000 | 0.00299 | **5** [3, 7] |
+| 5,000 | 0.00060 | **6** [4, 9] |
+| 20,000 | 0.00015 | **7** [5, 10] |
+
+Five to ten samples buys everything `k` can buy. Past the crossover, more
+samples are inference spend purchasing nothing — which is a stopping rule, and
+the reason this is worth having as a number rather than as a principle.
+
+### The four claims
+
+| # | outcome |
+|---|---|
+| C1 | **Holds**, and is loose. At `k = 50` the detector has 51 notches and lands on **10** distinct operating points across twelve budgets. Notches are not operating points. |
+| C2 | **Holds decisively.** Certified at `k = 9`: upper bound 0.0336. The same vote-fraction threshold at `k = 1` realises **0.0790**, 2.4x the bound. The warrant is void, which is why `k` is in the key. |
+| C3 | **Holds on the median, and failed on the first single draw.** §below. |
+| C4 | **Holds**, against the registered threshold. AUROC gap to the latent ceiling: 0.2288 at `k = 1`, 0.0215 at `k = 9`, **0.0021 at `k = 50`** against a registered bar of 0.02. |
+
+### C3, and why its first test said the opposite
+
+C3 was registered as: *find a budget no `m` certifies at `k = 3` and some `m`
+certifies at `k = 25`*. The first run found none, and reporting that as a clean
+falsification would have been wrong twice over.
+
+**The first cause was a defect in my own `smallest_certifiable_budget`.** Its
+candidate thresholds included a cut point above every score. That threshold
+flags no negative, so the function returned the data's floor at every `k` —
+making granularity appear never to bind. It was a true number attached to an
+operating point reached only by a detector that never fires, which is the
+uselessness failure one level along from the units failure in 147. Positives
+are now required, and `test_a_threshold_that_flags_nothing_does_not_count_as_
+capacity` keeps it from coming back.
+
+**The second cause was that a single vote draw is noisy and I read one.** On the
+seed the falsifier happened to use, `k = 3` reached 0.005; on the seed the
+artifact uses it reaches only 0.02, and `k = 25` reaches 0.005. Both are
+legitimate draws of the same process. Over 40 draws C3 holds clearly — at
+`n = 1,000` the tightest reachable budget is 0.111 at `k = 1`, 0.009 at `k = 3`
+and 0.003 at `k = 9`.
+
+**So the honest statement is that C3 holds and that its first test could not
+have told me so.** A one-draw test of a quantity with this much spread is not a
+falsifier, it is a coin. Every floor in the artifact is now a median over 40
+draws with its range printed beside it.
+
+### The correction to the mental model, which is the part worth keeping
+
+The registration assumed granularity was *the* constraint on certifying a
+score-free detector. It is not. **There are two floors and they bind in turn:**
+
+- below the crossover, **granularity** — `k` notches can only land on `k + 1`
+  false-positive rates;
+- above it, **the benchmark's own certification capacity** — `cp_upper(0, n, α)`
+  is positive, so no threshold reaches below it no matter how many samples you
+  buy.
+
+The second is the finding `docs/REDACT.md` §1 already made about REDACT's locked
+split, arriving again one level down. Spending on `k` past the crossover is
+buying inference to fix a data problem.
+
+### Scope, restated because it is the first thing a reviewer should attack
+
+The judge is **simulated**: a latent per-item flag probability with `k`
+independent Bernoulli draws. A real judge's runs share a prompt, a system
+message and a temperature, and are **correlated** — which makes the vote
+fraction a worse estimate of the latent probability than this assumes, pushes
+the crossover up, and makes every figure here an **upper bound on what `k`
+buys**. It certifies no real detector and `docs/REDACT.md` §5's table is
+unchanged for GPT-4.1 and Claude. Closing that needs a paid key and a budget and
+stays **OPEN** (`DECISIONS.md` 136).
