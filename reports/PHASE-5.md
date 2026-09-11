@@ -1,0 +1,213 @@
+# Phase 5 — certifying a detector that emits no score
+
+**The question: can this method certify the detectors that actually win?**
+
+**Answer: not yet for a real one, and the measurement says why in a way the
+registration did not expect.** Repeated sampling turns a score-free judge into
+something rankable, and what that buys is now priced. The headline is that
+**a single-sample judge cannot be certified to a tight false-positive budget
+however much data you have** — at `k = 1` the tightest reachable budget is the
+judge's own error rate, 0.105 here, against a data floor of 0.00015 at 20,000
+negatives. One bit gives one cut point. There is no dial.
+
+The fix is cheap and it stops: five to ten samples buys everything `k` can buy,
+and past that more samples are inference spend fixing a data problem.
+
+**This certifies no real detector.** The judge is simulated. That limit is §5 and
+it is the first thing a reviewer should attack.
+
+- **Window:** 2026-09-11
+- **Range:** `047fa4e` → `HEAD`
+- **Suite:** 1,168 at open → 1,181 at close, no failures at either end
+- **Verification:** claim table 49/49 at open → **58/58** at close
+- **Artifacts:** [`results/scorefree/`](../results/scorefree/)
+- **Decisions:** `DECISIONS.md` 152 (registered before the code), 152a (results)
+- **Method:** CPU only, offline, no paid key
+
+---
+
+## 1. What was done
+
+`docs/REDACT.md` §5 states the limit in a table this phase did not change:
+
+| detector family | score | certifiable |
+|---|---|---|
+| fine-tuned classifiers, probes | continuous | yes |
+| GLiNER, OpenAI Privacy Filter | continuous | yes |
+| Presidio | 8 discrete values | technically, 1–3 operating points |
+| **GPT-4.1, Claude Sonnet** | **none** | **no** |
+
+REDACT's own results put the LLM extractors well ahead, so the method cannot
+certify the family that performs best. `reports/AUDIT-2026-09-09.md` calls this
+*"the largest genuine limitation in the method itself"*.
+
+Built: `controlplane/validation/scorefree.py`, `tests/test_scorefree.py` (10
+tests), `scripts/26_scorefree.py`. Four claims were registered in
+`DECISIONS.md` 152 with their falsifiers **before any code was written**.
+
+---
+
+## 2. What was found
+
+### The two floors, and which one binds
+
+Tightest false-positive budget a *useful* threshold reaches — median over 40
+vote draws, range in the artifact. **Bold** where granularity is what binds:
+
+| negatives | data floor | k=1 | k=2 | k=3 | k=5 | k=9 |
+|---|---|---|---|---|---|---|
+| 200 | 0.01487 | **0.13628** | **0.03831** | **0.01918** | 0.01487 | 0.01487 |
+| 1,000 | 0.00299 | **0.11058** | **0.02180** | **0.00913** | 0.00299 | 0.00299 |
+| 5,000 | 0.00060 | **0.09848** | **0.01684** | **0.00462** | **0.00095** | 0.00060 |
+| 20,000 | 0.00015 | **0.09424** | **0.01516** | **0.00364** | **0.00046** | 0.00015 |
+
+Two constraints, binding in turn:
+
+- **Granularity**, below the crossover. `k` notches land on at most `k + 1`
+  false-positive rates.
+- **The benchmark's own certification capacity**, above it. `cp_upper(0, n, α)`
+  is positive, so no threshold reaches below it at any `k`.
+
+The second is the finding `docs/REDACT.md` §1 already made about REDACT's locked
+split, arriving one level down. **Spending on `k` past the crossover is buying
+inference to fix a data problem.**
+
+| negatives | data floor | crossover `k` (median, range) |
+|---|---|---|
+| 200 | 0.01487 | **3** [3, 5] |
+| 1,000 | 0.00299 | **5** [3, 7] |
+| 5,000 | 0.00060 | **6** [4, 9] |
+| 20,000 | 0.00015 | **7** [5, 10] |
+
+### Notches are not operating points
+
+| k | notches | distinct scores | operating points | budgets reachable |
+|---|---|---|---|---|
+| 1 | 2 | 2 | **1** | 3/12 |
+| 3 | 4 | 4 | **3** | 8/12 |
+| 9 | 10 | 10 | **5** | 10/12 |
+| 50 | 51 | 49 | **10** | 10/12 |
+
+Fifty-one notches buy ten operating points. This is `DECISIONS.md` 141's finding
+about Presidio's rule-fired confidence reached from the other direction, and
+`tunability()` is written against any score vector rather than only consensus
+scores — because that question had been observed for Presidio, written up, and
+never implemented.
+
+### `k` is part of the operating point
+
+Certify at `k = 9`: threshold 0.4444, certified upper bound **0.0336**. Apply the
+identical vote-fraction threshold at `k = 1`: realised false-positive rate
+**0.0790**, **2.35×** the bound. The warrant is void.
+
+So `k` enters the warrant key through `detector_id` (`judge-sim@k=9`). That is
+the minimal change: `OperatingPoint` is referenced by the store, the matrix, the
+policy bundles and every committed artifact, and a schema field there to express
+what `detector_id` already expresses is the larger change. **Open** if a second
+dimension of this kind ever appears.
+
+### What finite `k` costs in ranking
+
+AUROC gap to the latent-probability ceiling of 0.9972: **0.2288** at `k = 1`,
+0.0215 at `k = 9`, **0.0021** at `k = 50` — against the 0.02 bar registered
+before the run.
+
+---
+
+## 3. The claim that failed, and why both reasons are mine
+
+C3 was registered as *"find a budget no `m` certifies at `k = 3` and some `m`
+certifies at `k = 25`"*. **The first run found none.** Reporting that as a clean
+falsification would have been wrong twice.
+
+**A defect in my own `smallest_certifiable_budget`.** Its candidate thresholds
+included a cut point above every score. That threshold flags no negative, so the
+function returned the data's floor at every `k`, making granularity appear never
+to bind. It was a true number attached to an operating point reached only by a
+detector that never fires — the same shape as `DECISIONS.md` 147's defect one
+step along: there the number was in the wrong units, here it was for a useless
+operating point. Positives are now required and
+`test_a_threshold_that_flags_nothing_does_not_count_as_capacity` keeps it out.
+
+**And I read a single vote draw.** On the seed the falsifier used, `k = 3`
+reached 0.005; on another it reaches only 0.02 while `k = 25` reaches 0.005.
+Both are legitimate draws. **A one-draw test of a quantity with this spread is
+not a falsifier, it is a coin.** Every floor in the artifact is now a median over
+40 draws with its range printed beside it.
+
+Over draws, C3 holds. The honest statement is that it holds and that its first
+test could not have told me so.
+
+**The correction to the mental model is the part worth keeping.** The
+registration assumed granularity was *the* constraint. It is one of two, and it
+is not the one that binds where a serious benchmark operates.
+
+---
+
+## 4. What this does not establish
+
+- **It certifies no real detector.** `docs/REDACT.md` §5's table is unchanged for
+  GPT-4.1 and Claude.
+- **The judge is simulated**, with `k` *independent* Bernoulli draws from a
+  latent per-item probability. A real judge's runs share a prompt, a system
+  message and a temperature, and are **correlated** — which makes the vote
+  fraction a worse estimate, pushes the crossover up, and makes **every figure
+  here an upper bound on what `k` buys**.
+- **The 0.105 single-sample floor is this judge's error rate**, not a universal
+  constant. What generalises is the structure: at `k = 1` the only certifiable
+  budget is whatever the detector already does.
+- **No inference cost in currency.** That is a provider price list, not a
+  measurement.
+- **Nothing here says an LLM judge is worth certifying.** It says what it would
+  cost.
+
+---
+
+## 5. Open items
+
+| # | item | what would close it |
+|---|---|---|
+| O-1 | **Certify a real judge.** The whole point. Needs a paid key and a budget; `DECISIONS.md` 136 refused to write a logprob finding from memory and the same rule applies here. | A key, a few hundred dollars, and REDACT's locked split. |
+| O-2 | **Measure the correlation between a real judge's repeated samples.** It is the single assumption every figure here rests on, and it is the one that makes them optimistic. | The same run as O-1. |
+| O-3 | **`k` in `OperatingPoint` rather than packed into `detector_id`.** Deliberately deferred as the change that claims less. | A second dimension of the same kind appearing. |
+| O-4 | Carried from Phase 4, unchanged: the twelve conversations; `DECISIONS.md` 145's Linux abort; `scripts/11_feasibility.py` still publishing the superseded sizing; `gate/` unbuilt; `DECISIONS.md` 138 open for four phases. | See `reports/PHASE-4.md` §7. |
+
+---
+
+## 6. Ledger
+
+**Code** — `controlplane/validation/scorefree.py`,
+`tests/test_scorefree.py` (10 tests), `scripts/26_scorefree.py`.
+
+**Artifacts** — `results/scorefree/scorefree.json`,
+`results/scorefree/SCOREFREE.md`.
+
+**Claim table** — nine rows added, 49/49 → 58/58.
+
+**Decisions** — 152 (registered before the code, with four falsifiers), 152a
+(results, including C3).
+
+**Reproduce**
+
+```
+python -m pytest tests/test_scorefree.py -q
+python scripts/26_scorefree.py --config config.yaml
+python scripts/verify.py --claims-only
+```
+
+---
+
+## 7. What this changes
+
+**The limitation is now priced rather than only named.** Before this phase the
+honest scope was *"classifiers and rule systems, not generative extractors"*.
+It still is — but the reason has moved from *"we have not built it"* to *"here
+is what it costs, here is where it stops paying, and here is the assumption that
+makes those numbers optimistic"*.
+
+**And it produced a procurement fact that is not in REDACT, PIIBench, or any eval
+platform surveyed:** a detector that emits one bit has exactly one operating
+point, so a false-positive budget is not something you can ask it for. That joins
+refusal and tunability as things certification says and scoring does not. An F1
+table cannot show it, because F1 is computed wherever the detector already sits
+and never varies the threshold.
