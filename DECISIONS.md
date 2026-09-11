@@ -8018,3 +8018,63 @@ is a flag an attacker asks to have cleared.
 modules, the demo beat and the README — and
 `test_the_section_makes_no_robustness_claim` asserts the arXiv id is present, so
 the claim cannot lose its source again by an edit that tidies the sentence.
+
+---
+
+## 161 - Checked against the Round 2 brief: one complexity had no beat at all
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED
+
+`controlplane/report/beats.py` opens with a table mapping the Round 2 problem
+statement to the demo beats, and the table has been quoted as evidence that the
+submission answers the question asked. **It was written from memory.** Read
+against the document:
+
+**Six complexities are listed in the brief. The table mapped five.** The one it
+did not map:
+
+> *"Multi-turn conversations and AI agents that take actions (not just generate
+> text) introduce compounding risk, where one questionable output can shape
+> several downstream decisions."*
+
+That complexity had **no beat** before 2026-09-11. Beats 1 to 6 are all about
+text — a warrant on a detector, its lifetime, its revocation, its audit trail.
+None of them is about an agent *acting*. The gate (`DECISIONS.md` 156) is the
+answer to it and did not exist.
+
+**Two solutioning areas were also unmapped and are now the other two new beats:**
+
+> *"Metrics & monitoring — how you would define, measure, and report false
+> positive/negative rates and overall system trustworthiness to a skeptical
+> stakeholder."*
+
+That is clause one and clause three in the brief's own words, and it is beat 7.
+Until 147 the repository could not do it and quoted a label budget low by 6x to
+13x.
+
+> *"Detection techniques — ... a secondary 'AI-as-judge' pattern ..."*
+
+The brief names the judge pattern explicitly. Beat 8 is whether such a detector
+can be certified **at all**, which `docs/REDACT.md` §5 had recorded as the
+method's largest limitation. Worth noting that the gap and the brief's interest
+in it were found independently: the score-free work was motivated by REDACT, not
+by re-reading the problem statement.
+
+**The reference parameters line up, and that is worth stating because they were
+not chosen to.** The brief names *"a customer support assistant, an internal
+knowledge assistant, and a decision-support tool"* — which are `config.yaml`'s
+three profiles by name — and *"tens of thousands of interactions per week"*,
+which the declared 200,000 a month is (46,154). Neither was reverse-engineered
+from the document; both predate this reading, and the agreement is evidence the
+declared workload was a reasonable choice rather than evidence of anything else.
+
+**Decision.** The mapping table in `beats.py` now carries all three, quoted from
+the brief rather than paraphrased, so a reader can check the quotation against
+the PDF in the repository root.
+
+**The lesson, which is the session's lesson again.** A table asserting that the
+work answers the question was itself unchecked against the question. It was not
+wrong about the five it listed; it was silently incomplete about the sixth, and
+the missing one was the only complexity the repository had no answer to. **An
+incomplete map reads exactly like a complete one.**

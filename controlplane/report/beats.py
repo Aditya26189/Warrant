@@ -29,14 +29,33 @@ on this project's three-clause pitch -- *what your error rate is on your
 traffic, when that number stops being true, what it costs to keep it true* --
 and beats 1 to 6 demonstrate only the middle clause.
 
+They also close three gaps against the Round 2 brief, checked against the
+document rather than remembered (``DECISIONS.md`` 161):
+
 ===============================  =============================================
-7                                the on-traffic warrant and the price list:
-                                 clauses one and three
-8                                tunability -- a detector that cannot be moved
-                                 to your budget at all
-9                                the action gate, whose two most important
-                                 rules read no detector score
+Round 2 text                     beat
 ===============================  =============================================
+"Multi-turn conversations and    9 -- the action gate. This complexity had NO
+AI agents that take actions           beat before 2026-09-11: beats 1-6 are
+(not just generate text)              all about text, and the compounding risk
+introduce compounding risk"           of an agent acting was unaddressed
+"Metrics & monitoring -- how     7 -- the on-traffic warrant and the price
+you would define, measure, and        list. Defining and measuring a false-
+report false positive/negative        negative rate on real traffic is what
+rates and overall system              clause one is, and what it costs is
+trustworthiness to a skeptical        clause three
+stakeholder"
+"Detection techniques -- ... a   8 -- tunability. The brief names the judge
+secondary 'AI-as-judge'               pattern explicitly; beat 8 is whether a
+pattern"                              judge can be certified at all, and what
+                                      repeated sampling costs to make it one
+===============================  =============================================
+
+The brief's reference parameters line up with ``config.yaml`` and are worth
+stating because they were not chosen to: it names "a customer support assistant,
+an internal knowledge assistant, and a decision-support tool", which are the
+three profiles by name, and "tens of thousands of interactions per week", which
+the declared 200,000 a month is (46,154).
 """
 
 from __future__ import annotations
