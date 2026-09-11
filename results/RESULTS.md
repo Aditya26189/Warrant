@@ -128,7 +128,7 @@ A warrant is a statement about a threshold, and the detector family that wins on
 ## Provenance
 
 - config hash `533fb74983fcd8af`
-- git commit `2ecdeb24af316feac0b12863e2fb39301c5ab8d8`
-- dirty tree: `True`
+- git commit `840e9d93e2531401a3914e6595a5e92ce87ea700`
+- dirty tree: `False`
 - seed `1729`
-- generated `2026-09-11T19:26:15+00:00`
+- generated `2026-09-11T19:33:00+00:00`
