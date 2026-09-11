@@ -19,7 +19,7 @@ from .contract import (
 )
 from .frontier import FrontierPoint, frontier
 from .recheck import RecheckResult, recheck_items, score_distribution
-from .render import render_frontier, render_recheck, render_summary
+from .render import render_frontier, render_plan, render_recheck, render_summary
 
 __all__ = [
     "GROUP_COLUMN",
@@ -34,6 +34,7 @@ __all__ = [
     "load_scored_items",
     "recheck_items",
     "render_frontier",
+    "render_plan",
     "render_recheck",
     "render_summary",
     "score_distribution",

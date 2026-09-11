@@ -325,20 +325,31 @@ def smallest_detectable_breach(
     return None
 
 
-def negatives_needed_to_detect(rate: float, budget: float, alpha: float) -> int:
+def negatives_needed_to_detect(rate: float, budget: float, alpha: float) -> Optional[int]:
     """Clean negatives needed before an observed ``rate`` would establish a breach.
 
     The companion to the floor: it turns "this file could not have caught a 6%
     rate" into "and here is what would have". Mirrors the answer `certify` gives
     a refusal -- the requirement, not just the shortfall.
+
+    **Corrected in DECISIONS 146, and the number went up.** The first version
+    walked ``n`` in steps of 1.2x and returned the first ``n`` at which the
+    bound cleared. Both halves were wrong for a number somebody plans against.
+    The step overshot by up to 20%; worse, detection is *not monotone in n* --
+    at a 0.05 budget catching 0.075 it first holds at 234 and then fails again
+    at 236 through 246 and at 252. The honest quantity is the smallest ``n``
+    from which it holds at ``n`` and at every larger ``n``: 287 here, against
+    the 249 this used to print.
+
+    Delegates so that a planned sample size and a recheck's own hint cannot
+    drift apart.
+
+    Returns:
+        The count, or ``None`` when no achievable sample detects it.
     """
-    n = 10
-    while n < 200_000:
-        k = int(round(rate * n))
-        if k and _lower_bound_at(n, k, alpha) > budget:
-            return n
-        n = int(n * 1.2) + 1
-    return -1
+    from ..economics.sizing import negatives_for_detection
+
+    return negatives_for_detection(rate, budget, alpha)
 
 
 def _verdict(

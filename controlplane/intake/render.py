@@ -15,7 +15,7 @@ from typing import Optional
 from ..model import Metric, WarrantStatus
 from .certify import CertificationResult
 
-__all__ = ["render_frontier", "render_recheck", "render_summary"]
+__all__ = ["render_frontier", "render_plan", "render_recheck", "render_summary"]
 
 # ASCII only, deliberately. The first run of this on Windows died with
 # UnicodeEncodeError: the console's cp1252 codepage cannot encode a box-drawing
@@ -260,3 +260,85 @@ def render_frontier(points, *, n_positive: int, n_negative: int) -> str:
         "",
     ]
     return "\n".join(lines)
+
+
+def render_plan(plan) -> str:
+    """What keeping the warrant true costs, and on whose numbers.
+
+    A refusal gets the same layout as a plan, for the reason at the top of this
+    module. It also gets the thing a refused plan is actually for: the list of
+    things that would have to change, since "not detectable" is a statement
+    about the budget and the confidence level, not about the user.
+    """
+    declared = plan.declared_inputs
+    lines = [
+        _RULE,
+        "  THE PRICE OF KEEPING IT TRUE",
+        _RULE,
+        "",
+        f"  Certified budget          {plan.budget:.4g}",
+        f"  Breach you want to catch  {plan.breach_rate:.4g}",
+        f"  Confidence (alpha)        {plan.alpha:.3g}",
+        f"  Share of traffic negative {declared.get('negative_share', float('nan')):.3g}",
+        "",
+    ]
+
+    if not plan.feasible:
+        lines += [
+            "  REFUSED -- no sample size detects this.",
+            "",
+            *_wrap(plan.refusal_reason),
+            "",
+            "  A refusal here is a statement about the question, not about you:",
+            "  the gap between the breach and the budget is narrower than the",
+            "  confidence level can resolve at any sample size worth collecting.",
+            _RULE,
+            "",
+        ]
+        return "\n".join(lines)
+
+    floor = plan.detection_floor
+    lines += [
+        f"  ONE RECHECK NEEDS {plan.negatives_per_recheck:,} CLEAN NEGATIVES",
+        f"  which means labelling about {plan.items_per_recheck:,} items, at the",
+        "  negative share declared above.",
+        "",
+    ]
+    if floor is not None:
+        lines += [
+            f"  That sample revokes on an observed rate of {floor:.4f} or higher.",
+            "  Counts are integers, so the achievable floor sits a little above",
+            "  the rate you asked for rather than exactly on it.",
+            "",
+        ]
+    lines += [
+        "  WHAT A YEAR COSTS",
+        "",
+        *[option.render() for option in plan.cadences],
+        "",
+        "  No cadence is recommended, and that is not an omission. How often to",
+        "  recheck depends on how fast your inputs move, which is the thing you",
+        "  do not know and the reason rechecking exists. A default here would be",
+        "  a number with no evidence behind it, printed next to numbers that have",
+        "  some.",
+        "",
+        "  Every figure above is EXACT arithmetic. None of it is measured, so",
+        "  none of it carries an interval and none is missing one. What it rests",
+        "  on is declared:",
+        "",
+        *[f"      {name} = {value:g}" for name, value in declared.items()],
+        "",
+        "  Get one of those wrong and every number here is wrong in proportion.",
+        "  The negative share is the usual one: a plan built on 0.9 when the",
+        "  truth is 0.6 understates the labelling by half.",
+        _RULE,
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def _wrap(text: str, width: int = 64) -> list[str]:
+    """Reflow one paragraph to the block width, indented to match."""
+    import textwrap
+
+    return ["  " + line for line in textwrap.wrap(text, width=width)]

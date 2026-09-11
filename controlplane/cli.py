@@ -153,6 +153,56 @@ def build_parser() -> argparse.ArgumentParser:
         "--require-valid", action="store_true",
         help="exit non-zero when the warrant no longer holds (default: exits 0)",
     )
+
+    plan = sub.add_parser(
+        "plan",
+        help="what it costs to keep a warrant true",
+        description=(
+            "A warrant is a claim about now. Keeping it true means re-testing "
+            "it, and re-testing costs labels. This says how many clean "
+            "negatives one recheck needs to catch a breach of the size you "
+            "name, how many items you must label to get them, and what a year "
+            "of that costs at each of several cadences. It recommends no "
+            "cadence: how often to recheck depends on how fast your inputs "
+            "move, which is the thing you do not know."
+        ),
+    )
+    plan.add_argument(
+        "--warrant", "-w", default=None,
+        help="a .warrant.json record; takes the budget and alpha from it "
+             "rather than having you retype them",
+    )
+    plan.add_argument(
+        "--budget", "-b", type=float, default=None,
+        help="the certified false-positive budget (not needed with --warrant)",
+    )
+    plan.add_argument(
+        "--catch", type=float, default=None,
+        help="the false-positive rate you want to be able to catch, absolute",
+    )
+    plan.add_argument(
+        "--catch-multiple", type=float, default=1.5,
+        help="or as a multiple of the budget (default: 1.5, the same reference "
+             "point `recheck` reports its own detection floor against)",
+    )
+    plan.add_argument(
+        "--negative-share", type=float, default=None,
+        help="REQUIRED: the fraction of YOUR traffic that is truly negative. "
+             "Deliberately not taken from the warrant record -- see below",
+    )
+    plan.add_argument(
+        "--minutes-per-label", type=float, default=None,
+        help="optional; without it the plan reports counts and no hours",
+    )
+    plan.add_argument(
+        "--cost-per-hour", type=float, default=None,
+        help="optional; without it the plan reports hours and no money",
+    )
+    plan.add_argument("--currency", default="", help="label only, e.g. 'INR '")
+    plan.add_argument("--out", "-o", default=None, help="write the JSON record here")
+    plan.add_argument("--config", default=str(PROJECT_ROOT / "config.yaml"),
+                      help=argparse.SUPPRESS)
+    plan.add_argument("--quiet", "-q", action="store_true")
     return parser
 
 
@@ -311,6 +361,80 @@ def _recheck(args: argparse.Namespace) -> int:
     return EXIT_OK
 
 
+def _plan(args: argparse.Namespace) -> int:
+    """The price list. Deferred imports, as everywhere else in this module."""
+    import json
+
+    from .config import load_config, write_json_artifact
+    from .economics.sizing import monitoring_plan
+    from .intake import render_plan
+
+    config = load_config(args.config)
+    # The same place `recheck` takes it from, so a planned sample size and a
+    # measured verdict are the same test at the same level.
+    alpha = 1.0 - config.validation.ci
+
+    budget = args.budget
+    if args.warrant:
+        record_path = Path(args.warrant)
+        if not record_path.is_file():
+            print(f"warrant: no such record: {record_path}", file=sys.stderr)
+            return EXIT_BAD_INPUT
+        record = json.loads(record_path.read_text(encoding="utf-8"))
+        budget = record.get("budget", budget)
+        alpha = record.get("alpha", alpha)
+    if budget is None:
+        print(
+            "warrant: give --budget, or --warrant pointing at a record that "
+            "carries one.",
+            file=sys.stderr,
+        )
+        return EXIT_BAD_INPUT
+
+    # Not defaulted, and not read off the warrant record. The record knows the
+    # class balance of the FILE that was certified, which describes an eval set.
+    # Production traffic is a different distribution, and quoting one for the
+    # other is the scenario-mixing error this project treats as the most
+    # damaging one available. So the number has to be asserted by the person who
+    # knows it.
+    if args.negative_share is None:
+        print(
+            "warrant: --negative-share is required. It is the fraction of your "
+            "traffic that is truly negative, and it turns 'negatives needed' "
+            "into 'items to label'.\n"
+            "It is NOT taken from the warrant record on purpose: that record "
+            "knows the class balance of the file you certified, which describes "
+            "your eval set and not your traffic. Using one for the other is how "
+            "a plan comes out confidently wrong.",
+            file=sys.stderr,
+        )
+        return EXIT_BAD_INPUT
+
+    breach = args.catch if args.catch is not None else budget * args.catch_multiple
+    try:
+        result = monitoring_plan(
+            budget=budget,
+            breach_rate=breach,
+            alpha=alpha,
+            negative_share=args.negative_share,
+            minutes_per_label=args.minutes_per_label,
+            cost_per_hour=args.cost_per_hour,
+            currency=args.currency,
+        )
+    except ValueError as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+
+    out = Path(args.out) if args.out else Path("warrant-plan.json")
+    write_json_artifact(out, result.to_payload(), config)
+
+    if not args.quiet:
+        print(render_plan(result))
+    print(f"  record written to {out}")
+    # A refused plan is a result, the same way a refused certification is.
+    return EXIT_OK
+
+
 def main(argv: Optional[Sequence[str]] = None) -> int:
     """Entry point. Returns a process exit code rather than raising."""
     args = build_parser().parse_args(argv)
@@ -318,6 +442,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         return _certify(args)
     if args.command == "recheck":
         return _recheck(args)
+    if args.command == "plan":
+        return _plan(args)
     raise AssertionError(f"unreachable: unhandled command {args.command!r}")
 
 

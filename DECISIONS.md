@@ -6831,3 +6831,79 @@ branch is only reached when the child actually dies, so if the abort ever stops
 happening the test passes normally and nobody has to remember to remove
 anything. This stays OPEN until the cause is named and the promise in
 `engine.py` is either true on Linux or withdrawn.
+
+---
+
+## 146 - The price list, and the sample size it had been quoting too low
+
+**Pre-registered before the code.** The third clause of this project's own
+pitch — *"what it costs to keep it true"* — has had no implementation. Line 9
+of `config.yaml` reads "Every economic figure in every document is computed
+from this block by `controlplane/economics/sizing.py`. Nothing is typed by
+hand," and `sizing.py` has never existed. `DECISIONS.md` 096 and 099 marked it
+NOT BUILT and it stayed that way through four phases.
+
+**The load-bearing finding, and it arrived before the feature did.**
+`recheck` already answers a smaller version of this question through
+`negatives_needed_to_detect`: how many clean negatives would establish that the
+rate has reached some worse value. That function searches `n` in steps of 1.2×
+and returns **the first `n` at which the lower bound clears the budget**. Both
+halves are wrong for a number somebody budgets from.
+
+The step size is the obvious half: a 1.2× walk overshoots by up to 20%, and
+measured against an exact search it overstates by as much as 50% —
+
+| budget | breach to catch | coarse walk | exact first crossing |
+|---|---|---|---|
+| 0.05 | 0.075 | 249 | 234 |
+| 0.05 | 0.10 | 99 | 66 |
+| 0.01 | 0.015 | 1552 | 1234 |
+
+**The first crossing is the half that matters, and it is not monotone in `n`.**
+Because the count is `round(rate × n)`, the integer jumps and the lower bound at
+`(n, k)` does not improve with every added sample. At a 0.05 budget catching
+0.075, detection first holds at **n = 234** — and then fails again at 236
+through 246, and at 252. Twenty-six values of `n` above the quoted figure do
+not detect the breach the figure was quoted for.
+
+Quoting 234 to someone who then collects 240 negatives tells them they are
+covered when they are not.
+
+**Decision: quote the stable threshold**, the smallest `n` from which detection
+holds at `n` and at every larger `n`.
+
+| budget | breach | first crossing | **stable threshold** |
+|---|---|---|---|
+| 0.05 | 0.075 | 234 | **287** |
+| 0.05 | 0.10 | 66 | **86** |
+| 0.01 | 0.015 | 1234 | **1501** |
+
+Checked rather than assumed: from each stable threshold up to twelve times it,
+there is not one value of `n` where detection fails. The search horizon is
+sized on that.
+
+`recheck` moves to the same function, so its printed hint changes from 249 to
+287 for the default case. **The number went up**, which is the honest
+direction: 249 was an underestimate of what reliably detects a 1.5× breach.
+
+**The tool does not invent a recheck cadence, and will not.** How often to
+recheck depends on how fast your input distribution moves, which is precisely
+the thing you do not know and the reason the drift machinery exists. A default
+of "monthly" would be a hardcoded constant with no evidence behind it, in a
+codebase whose rule is that there are none. So `plan` reports what **one**
+recheck costs and what it buys, then prices a ladder of cadences and lets the
+person choose. The unknown stays visible instead of being absorbed into a
+default nobody would question afterwards.
+
+**Every plan figure is exact arithmetic over declared inputs, not an estimate,
+and says which inputs.** It reuses the idiom `economics/review.py` already set:
+each quantity carries its `declared_inputs`. A plan built on a wrong negative
+rate is wrong in proportion, and the object has to say what it was given rather
+than presenting a number as though it were measured. This is the same
+distinction as *yield is exact, rate is estimated*, one level up: **arithmetic
+is exact, its premises are declared.**
+
+**It refuses.** When no achievable sample size detects the breach at the budget
+and confidence asked for, `plan` says so and names what would have to change.
+A price list that always returns a price is a price list that will one day
+quote an impossible one.

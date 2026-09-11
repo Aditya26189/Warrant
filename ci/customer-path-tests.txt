@@ -2,7 +2,7 @@
 #
 # Derived by measurement rather than by eye: each was imported in a subprocess
 # with the heavy packages absent, then run in a clean venv holding only numpy,
-# scipy, PyYAML and pytest. Verified 2026-09-10.
+# scipy, PyYAML and pytest. Verified 2026-09-11.
 #
 # Two files that look light and are not, recorded so nobody re-adds them:
 #
@@ -34,5 +34,6 @@ tests/test_override.py
 tests/test_packaging.py
 tests/test_redact.py
 tests/test_script_wiring.py
+tests/test_sizing.py
 tests/test_store.py
 tests/test_warrant_stats.py
