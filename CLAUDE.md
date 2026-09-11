@@ -49,7 +49,7 @@ Breaking any of these invalidates the result. If a change would require it, stop
 
 These produce plausible output with nothing raised. They are why the control suite exists.
 
-**Sizing prevalence and calling it recall.** `n = 1.96²·q(1−q)/m²` sizes a *prevalence* estimate. Recall is `TP/(TP+q·N_u)`, and in our regime `∂R/∂q ≈ −4.65` because the unflagged pool is ~232× the flagged one. Sample size scales as `1/margin²`, so mis-sizing this understates labels needed by ~22×. **Always propagate through the derivative. Never quote a sample size in recall units without it.**
+**Sizing prevalence and calling it recall.** `n = 1.96²·q(1−q)/m²` sizes a *prevalence* estimate. Recall is `TP/(TP+q·N_u)`, and in our regime `∂R/∂q ≈ −4.65` because the unflagged pool is ~232× the *confirmed true positives* (it is 66× the flagged pool; the flagged pool never enters the derivative — DECISIONS 148). Sample size scales as `1/margin²`, so mis-sizing this understates labels needed by ~22×. **Always propagate through the derivative. Never quote a sample size in recall units without it.**
 
 **Scenario mixing.** Precision at n=10,000 comes from a 5%-flag-rate workload; recall at ~850 labels comes from a 1.48%-flag-rate workload. Quoting both in one table is wrong. All figures derive from one declared workload, computed by `controlplane/economics/sizing.py`.
 

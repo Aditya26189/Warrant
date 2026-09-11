@@ -191,7 +191,9 @@ def size_for_recall_margin(m_R: float, workload: Workload) -> SampleSize:
 
     Sizing directly in recall units is wrong by a factor of (dR/dq)^2 --
     ~22x at the declared workload, because the unflagged pool is ~232x the
-    flagged one and any error in q is multiplied by that ratio.
+    confirmed true positives and any error in q is multiplied by that ratio.
+    (Not 232x the flagged pool, which is 66x and does not enter the
+    derivative -- DECISIONS 148.)
 
     Enforces CLAUDE.md invariant 6: all inputs come from one declared workload.
     """

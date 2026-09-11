@@ -278,7 +278,7 @@ m_R = 0.05  →  m_q = 0.01075  →  n ≈  847
 m_R = 0.02  →  m_q = 0.00430  →  n ≈ 5,292
 ```
 
-**The trap this encodes.** `1.96²·(0.05)(0.95)/0.02² = 456` sizes a *prevalence* estimate to ±2pp. Calling that "recall to ±2pp" understates the labels needed by roughly 22×, because sample size scales as `1/margin²` and the derivative is 4.65. The amplification is structural: the unflagged pool is ~232× the flagged one, so any error in `q` is multiplied by that ratio on its way into `R`.
+**The trap this encodes.** `1.96²·(0.05)(0.95)/0.02² = 456` sizes a *prevalence* estimate to ±2pp. Calling that "recall to ±2pp" understates the labels needed by roughly 22×, because sample size scales as `1/margin²` and the derivative is 4.65. The amplification is structural: the unflagged pool is ~232× the **confirmed true positives**, so any error in `q` is multiplied by that ratio on its way into `R`. `TP` is the other term in the denominator of `R = TP/(TP + q·N_u)`, which is what makes it the right comparator. The unflagged pool is only ~66× the *flagged* pool, and the flagged pool does not appear in the derivative at all — it holds the false positives, which are exactly the items that do not enter `R`. `DECISIONS.md` 148 records the correction.
 
 **Assert this in code.** `sizing.py` must expose the derivative and a test must confirm that sizing for recall differs from sizing for prevalence by `(∂R/∂q)²`.
 
