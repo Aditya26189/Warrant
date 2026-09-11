@@ -7690,3 +7690,82 @@ than papered over. `RESULTS.md` gains the three sections at the next full
 pipeline run. **No failing test is added for it**: entry 145 settled that a
 signal which fires on a condition nobody is going to act on teaches its reader
 to ignore the signal. The renderer is tested; the artifact's gap is an open item.
+
+---
+
+## 156 - The Rule-of-Two as specified lets the canonical injection through, because the attack's last step is what sets the third flag
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED. Divergence from `SPEC.md` §9.3, deliberate and recorded.
+- **Found by:** building the gate and running the attack it exists to stop.
+
+**`SPEC.md` §9.3 rule 2, verbatim:**
+
+    BLOCK if rule_of_two_violated(session) and reversibility >= IRREVERSIBLE_WRITE
+
+and §9.2 defines a violation as a session holding all three of
+`has_ingested_untrusted_input`, `has_sensitive_access` and
+`can_change_state_or_communicate`.
+
+**Implemented exactly as written, it does not fire on the attack.** Measured, on
+the four-tool banking agent:
+
+    get_balance          -> session [X..]  1/3   sensitive access
+    search_transactions  -> session [XX.]  2/3   + untrusted input
+    transfer_funds       -> session [XX.]  2/3 at decision time  ->  ALLOW
+
+The transfer is the call that sets the third flag, and the rule reads the
+session *before* the call. So the canonical indirect prompt injection — read
+something sensitive, read attacker-controlled text, move money — passes. The
+first version of the scenario in `agent.py` appeared to block it only because a
+legitimate `draft_dispute` sat in between and set the third flag first. **Remove
+one innocuous step and the defence disappears**, which is the worst property a
+security control can have: it works on the demo and not on the attack.
+
+**Decision: evaluate the rule against the session as it would be *after* the
+call.** *"Would running this give the session all three?"* — not *"does it
+already have all three?"*
+
+    would_violate = rule_of_two_violated(session.after(tool))
+
+**Checked against every path, because a rule that blocks the attack by blocking
+everything is not a fix:**
+
+| sequence | flags after the last call | verdict | right? |
+|---|---|---|---|
+| `get_balance` → `transfer_funds` | 2/3 — no untrusted input ever entered | **ALLOW** | yes; nothing hostile has been read |
+| `get_balance` → `search_transactions` → `transfer_funds` | 3/3 | **BLOCK** | yes; this is the attack |
+| `get_balance` → `search_transactions` → `draft_dispute` | 3/3, but `REVERSIBLE_WRITE` | **ALLOW** | yes; rule 2 only bites on irreversible actions, and a draft can be deleted |
+| `search_transactions` → `draft_dispute` → `transfer_funds` | 3/3 | **BLOCK** | yes |
+
+So the rule blocks exactly the irreversible actions that would *complete* the
+triad, and nothing else. The reversibility clause in `SPEC.md`'s rule is what
+keeps it that narrow and is unchanged.
+
+**Why this is a specification defect rather than an implementation choice.** The
+Rule-of-Two comes from agent-security work about what an agent **can do** — its
+capabilities — and `SPEC.md` transcribed it as three booleans describing what a
+session **has done**. Those coincide for the first two flags, because ingesting
+untrusted input and reading sensitive data are things that have happened by the
+time they matter. They come apart for the third, because *changing state* is the
+thing being decided rather than something already done. The transcription lost
+exactly one case, and it is the only one an attacker needs.
+
+**The objection.** *"You have widened a security rule beyond its spec without a
+brief."* The spec's own stated intent is the attack in §9.4, and the rule as
+written does not stop it — verified above rather than argued. `CLAUDE.md`'s
+build rule is to leave a contract alone and record the divergence in the commit
+message; this is that, plus an entry, because a silent divergence in a security
+control is not a divergence anyone should have to find in a diff.
+
+**Registered before the fix:** the tests are the four rows above, and
+`test_gate_no_detector` must still pass with every detector input nulled — the
+change touches only session flags and declared reversibility, so if it stops
+passing, something detector-derived has leaked into rule 2.
+
+**And the cost is measured, not asserted.** Blocking on the completed triad
+means a legitimate workflow that reads a memo and then transfers is blocked too.
+`scripts/27_gate.py` runs a set of declared legitimate workflows through the
+gate and reports the false-block rate, because every other control in this
+repository reports what it costs and a security rule that reports only its
+benefit is the kind nobody measures until it is turned off.
