@@ -109,7 +109,15 @@ def test_the_section_makes_no_robustness_claim() -> None:
     """
     section = _section().lower()
     assert "not** a robustness claim" in section or "not a robustness claim" in section
-    assert "90% attack success" in section
+    # The claim the refusal rests on must carry its primary source. It appears
+    # in six files and had no citation anywhere until it was checked: Nasr et
+    # al., "The Attacker Moves Second", bypassed 12 published defences at above
+    # 90% attack success for most, where the majority had reported near-zero.
+    # "I read it somewhere" is exactly the evidence standard
+    # reports/STRATEGY-2026-09.md was written to stop this project accepting.
+    assert "2510.09023" in section, "the injection claim has lost its citation"
+    assert "90%" in section
+    assert "12" in section
     for overclaim in (
         "immune",
         "cannot be bypassed",

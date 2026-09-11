@@ -21,9 +21,20 @@ remedy is a new session with a fresh context — which is what
 
 **This consults no detector.** Which tool was called and what it does are
 registry facts (``SPEC.md`` §9.1); whether the model was suspicious of the text
-never enters. Published work broke twelve injection defences at over 90% attack
-success, so a control that depends on detection has a ceiling somebody has
-already measured. This one does not.
+never enters. Nasr et al., *The Attacker Moves Second* (`arXiv:2510.09023`)
+bypassed 12 published defences at above 90% attack success for most, so a
+control that depends on detection has a ceiling somebody has already measured.
+This one does not.
+
+**The rule is Meta's, and the formulation matters.** *Agents Rule of Two*
+(ai.meta.com, 31 October 2025) states that within a single session an agent
+should satisfy no more than two of three properties: processing untrustworthy
+input, accessing sensitive systems, and changing state or communicating
+externally — and that an agent needing all three **without starting a new
+session** should not operate autonomously. That is a statement about what the
+agent *can do*, which is why the gate evaluates the rule against the session as
+it would be **after** the call rather than before it (``DECISIONS.md`` 156), and
+why :meth:`Session.successor` exists.
 """
 
 from __future__ import annotations

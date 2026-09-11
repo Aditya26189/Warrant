@@ -477,10 +477,12 @@ def _beat_gate(root: Path) -> Beat:
         ),
         artifacts=("results/gate/GATE.md", "controlplane/gate/gate.py"),
         note=(
-            "This is NOT a robustness claim and this project makes none: "
-            "published work broke twelve injection defences at over 90% attack "
-            "success. The claim is the smaller one that survives -- defeating "
-            "every detector here does not move those two rules."
+            "This is NOT a robustness claim and this project makes none. "
+            "Nasr et al., The Attacker Moves Second (arXiv:2510.09023), "
+            "bypassed 12 published defences at above 90% attack success for "
+            "most of them. The claim here is the smaller one that survives -- "
+            "defeating every detector in this system does not move those two "
+            "rules."
         ),
     )
 

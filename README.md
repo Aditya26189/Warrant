@@ -155,9 +155,8 @@ recoverable by starting a new session — and those counts are *exact*, because
 the workflow set is declared rather than sampled.
 ([`results/gate/`](results/gate/GATE.md))
 
-This is **not** a robustness claim and the repository makes none — published work
-broke twelve injection defences at over 90% attack success. It is the smaller
-claim that survives: defeating every detector here does not move those rules.
+This is **not** a robustness claim and the repository makes none. Nasr et al., *The Attacker Moves Second* ([arXiv:2510.09023](https://arxiv.org/abs/2510.09023)) bypassed **12** published injection and jailbreak defences, at an attack success rate **above 90% for most of them**, where the majority had originally reported near-zero. It is the smaller claim that survives: defeating every detector
+here does not move those rules.
 
 ## ⚡ Quickstart — certify your own detector
 

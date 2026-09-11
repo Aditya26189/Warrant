@@ -22,9 +22,11 @@ three. Two is the limit, and the limit is on the *session*, not on the sentence.
 
 This is deliberately not a demonstration of detection. The point is the
 opposite: **the detector fails, visibly, and the call is refused anyway.** A
-gate whose defence is "our classifier caught it" has the ceiling that published
-work measured at over 90% attack success; a gate keyed to a static tool property
-and three sticky booleans has no sentence for an attacker to rewrite.
+gate whose defence is "our classifier caught it" has the ceiling Nasr et al.
+measured in *The Attacker Moves Second* (`arXiv:2510.09023`) — 12 published
+defences bypassed at above 90% attack success for most of them. A gate keyed to
+a static tool property and three sticky booleans has no sentence for an attacker
+to rewrite.
 """
 
 from __future__ import annotations

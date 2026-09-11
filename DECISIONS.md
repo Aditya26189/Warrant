@@ -7950,3 +7950,71 @@ demonstration behind it fails rather than being noticed on camera.
 covers narrative prose. This is the demo's content, it is generated from
 artifacts by code, and the thing being fixed is a claim on a slide that the
 evidence did not support — which is the one category `CLAUDE.md` never defers.
+
+---
+
+## 160 - The claim the gate rests on was true, quoted in six files, and cited in none
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED
+
+**The claim**, in `SPEC.md` §9.3 and repeated through the gate, the demo and the
+README:
+
+> *published work broke twelve injection defences at >90% attack success*
+
+It is the **only** external evidence the gate's design rests on. Everything about
+rules 1 and 2 — that they read no detector, that this is worth building, that a
+vendor claiming robustness is claiming to be the exception — follows from it. It
+appeared in six files and **carried no citation in any of them.**
+
+`reports/STRATEGY-2026-09.md` §4 is the entry that exists for exactly this: *a
+convenient claim needs a primary source.* This one is maximally convenient — it
+is the reason the product's hardest control is designed the way it is — and it
+had the weakest possible backing, which is none.
+
+**Checked. It holds, with one word wrong.**
+
+Nasr, Carlini, Sitawarin, Schulhoff, Hayes, Ilie, Pluto, Song, Chaudhari,
+Shumailov, Thakurta, Xiao, Terzis and Tramèr, *The Attacker Moves Second:
+Stronger Adaptive Attacks Bypass Defenses Against LLM Jailbreaks and Prompt
+Injections*, [arXiv:2510.09023](https://arxiv.org/abs/2510.09023), 10 October
+2025. From the abstract, verbatim:
+
+> *"we bypass 12 recent defenses (based on a diverse set of techniques) with
+> attack success rate above 90% for most; importantly, the majority of defenses
+> originally reported near-zero attack success rates."*
+
+Twelve is right. Above 90% is right. **"At >90%" is not:** the paper says *above
+90% for most*, not for all. Corrected everywhere, and the "majority originally
+reported near-zero" half is added, because it is the part that makes the point —
+these were not weak defences, they were defences their own authors had measured
+as working.
+
+### And the primary source for the Rule-of-Two confirms 156's correction
+
+The Rule-of-Two is Meta's, from *Agents Rule of Two: A Practical Approach to AI
+Agent Security* (ai.meta.com, 31 October 2025). Its formulation:
+
+> within a single session an agent should satisfy **no more than two** of three
+> properties: it **can** process untrustworthy input, it **can** access
+> sensitive systems or private data, it **can** change state or communicate
+> externally — and an agent that requires all three **without starting a new
+> session** should not operate autonomously.
+
+**That is a statement about what the agent *can do*.** `SPEC.md` §9.2
+transcribed it as three booleans describing what a session *has done*, and 156
+recorded that the transcription loses exactly one case — the one where the
+action being decided is itself the third capability.
+
+**The primary source settles it in 156's favour**, and it was not consulted when
+156 was written: the correction was derived from running the attack. The
+agreement is worth recording precisely because it was not the route taken. It
+also names the remedy the implementation already had — *without starting a new
+session* is `Session.successor`, which exists because a flag that can be cleared
+is a flag an attacker asks to have cleared.
+
+**Both citations now travel with the claim** — in `SPEC.md`, the three gate
+modules, the demo beat and the README — and
+`test_the_section_makes_no_robustness_claim` asserts the arXiv id is present, so
+the claim cannot lose its source again by an edit that tidies the sentence.

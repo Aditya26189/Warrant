@@ -9,10 +9,13 @@
     ALLOW    otherwise
 
 **The first two rules are the product's real claim about adversarial safety, and
-they are the reason this repository makes none.** Published work broke twelve
-injection defences at over 90% attack success. Any control that depends on
-detecting an attack therefore has a ceiling somebody has already measured, and a
-vendor asserting robustness is asserting that their classifier is the exception.
+they are the reason this repository makes none.** Nasr et al., *The Attacker
+Moves Second* (`arXiv:2510.09023`, October 2025) bypassed **12** published
+injection and jailbreak defences at an attack success rate **above 90% for
+most** — and the majority of those defences had originally reported near-zero.
+Any control that depends on detecting an attack therefore has a ceiling somebody
+has already measured, and a vendor asserting robustness is asserting that their
+classifier is the exception.
 
 Rules 1 and 2 depend on three things: the tool's declared reversibility, the
 warrant on the detector that would have been consulted, and the session's

@@ -419,7 +419,7 @@ ESCALATE if severity >= HIGH and confidence_band == UNCERTAIN
 ALLOW    otherwise
 ```
 
-The first two rules consult no detector score. Deliberate: published work broke twelve injection defences at >90% attack success, so any control depending on detection has a measured ceiling. A control keyed to static tool class plus session state holds against an attacker who has completely defeated the probe.
+The first two rules consult no detector score. Deliberate: Nasr et al., *The Attacker Moves Second* (arXiv:2510.09023, October 2025) bypassed 12 published injection and jailbreak defences at an attack success rate above 90% for most, where the majority had originally reported near-zero — so any control depending on detection has a measured ceiling. A control keyed to static tool class plus session state holds against an attacker who has completely defeated the probe.
 
 ### 9.4 The agent
 
