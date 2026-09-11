@@ -1,7 +1,7 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-08-29T06:44:59+00:00",
-    "git_commit": "e440d557ca652c9596a0816ccea6432eaf1b1f2d",
+    "timestamp_utc": "2026-09-11T17:53:46+00:00",
+    "git_commit": "3c4f75035f8923ecc613d7f70352d3695131ffd1",
     "git_branch": "main",
     "dirty": false,
     "dirty_paths": [],
@@ -24,7 +24,7 @@
       "cuda_available": false,
       "device_name": "cpu"
     },
-    "config_hash": "ae6eec9d1f8897af",
+    "config_hash": "533fb74983fcd8af",
     "seed": 1729,
     "config": {
       "seed": 1729,
@@ -156,7 +156,7 @@
         "customer_support": {
           "inline_budget_ms": 200,
           "min_recall": 0.1,
-          "max_fpr": 0.02,
+          "max_fpr_hard_negatives": 0.02,
           "operating_point": "P-customer-support",
           "target_flag_rate": 0.1,
           "on_calibration_drift": "REFUSE",
@@ -165,7 +165,7 @@
         "internal_knowledge": {
           "inline_budget_ms": 500,
           "min_recall": 0.25,
-          "max_fpr": 0.05,
+          "max_fpr_hard_negatives": 0.05,
           "operating_point": "P-internal-knowledge",
           "target_flag_rate": 0.2,
           "on_calibration_drift": "WIDEN_BUDGET",
@@ -174,7 +174,7 @@
         "decision_support": {
           "inline_budget_ms": 2000,
           "min_recall": 0.5,
-          "max_fpr": 0.1,
+          "max_fpr_hard_negatives": 0.1,
           "operating_point": "P-decision-support",
           "target_flag_rate": 0.5,
           "on_calibration_drift": "IGNORE",
@@ -344,11 +344,65 @@
           "note": "Derived from ONE declared workload. The flag rate and recall are measured on an eval set; the volume and production error rate are declared. Mixing rates from two workloads is the error CLAUDE.md names."
         }
       },
-      "recall_sample_size": [
+      "label_plans": [
         {
-          "name": "reviewed items for recall +/- 0.05 @ P-customer-support",
+          "margin": 0.05,
+          "regime": "month_one_proportional",
+          "design_effect_applied": 1.0,
+          "estimand": "recall",
+          "confidence": 0.95,
+          "labels": 1808,
+          "basis": "exact",
+          "labels_normal": 1645,
+          "labels_exact": 1808,
+          "labels_infinite_population": 1645,
+          "prevalence_margin": 0.007730992411843477,
+          "derivative": -6.467474980754426,
+          "naive_labels": 262,
+          "understatement": 6.922938820507189,
+          "feasible": true,
+          "refusal_reason": "",
+          "note": "A planning figure over declared inputs. q is assumed, not measured -- every sample size is, because it is computed before the measurement it sizes. estimator.py reports the realised margin against this one once the labels land."
+        },
+        {
+          "margin": 0.02,
+          "regime": "month_one_proportional",
+          "design_effect_applied": 1.0,
+          "estimand": "recall",
+          "confidence": 0.95,
+          "labels": 10636,
+          "basis": "exact",
+          "labels_normal": 10280,
+          "labels_exact": 10636,
+          "labels_infinite_population": 10280,
+          "prevalence_margin": 0.0030923969647373905,
+          "derivative": -6.467474980754426,
+          "naive_labels": 1633,
+          "understatement": 6.516139583620748,
+          "feasible": true,
+          "refusal_reason": "",
+          "note": "A planning figure over declared inputs. q is assumed, not measured -- every sample size is, because it is computed before the measurement it sizes. estimator.py reports the realised margin against this one once the labels land."
+        }
+      ],
+      "recall_sensitivity": {
+        "recall": 0.21709006928406466,
+        "flag_rate": 0.10625,
+        "monthly_interactions": 200000,
+        "base_error_rate": 0.03,
+        "errors": 6000.0,
+        "flagged_pool": 21250.0,
+        "unflagged_pool": 178750.0,
+        "confirmed_errors": 1302.540415704388,
+        "unflagged_prevalence": 0.02627949417787755,
+        "derivative": -6.467474980754426,
+        "amplification": 137.23182624113477,
+        "pool_ratio": 8.411764705882353
+      },
+      "recall_sample_size_SUPERSEDED": [
+        {
+          "name": "SUPERSEDED: confirmed errors for recall +/- 0.05 @ P-customer-support",
           "value": 175.0,
-          "unit": "reviewed items",
+          "unit": "confirmed errors (NOT reviewed items)",
           "measured_inputs": {
             "recall": 0.21709006928406466
           },
@@ -357,12 +411,12 @@
             "design_effect": 0.67,
             "confidence": 0.95
           },
-          "note": "Normal approximation, sized at the measured recall rather than at p=0.5. The design effect is declared, not measured -- config.yaml says 'measure, don't assume', and it has not been measured."
+          "note": "SUPERSEDED by sampling.planning.labels_for_recall -- DECISIONS.md 147. This is a count of confirmed errors the sample must contain, under a design that draws from the error population and which nobody can run. It was published as 'reviewed items' for four phases and was low by 6x to 13x as a label budget. Normal approximation, sized at the measured recall rather than at p=0.5. The design effect is declared, not measured."
         },
         {
-          "name": "reviewed items for recall +/- 0.02 @ P-customer-support",
+          "name": "SUPERSEDED: confirmed errors for recall +/- 0.02 @ P-customer-support",
           "value": 1094.0,
-          "unit": "reviewed items",
+          "unit": "confirmed errors (NOT reviewed items)",
           "measured_inputs": {
             "recall": 0.21709006928406466
           },
@@ -371,7 +425,7 @@
             "design_effect": 0.67,
             "confidence": 0.95
           },
-          "note": "Normal approximation, sized at the measured recall rather than at p=0.5. The design effect is declared, not measured -- config.yaml says 'measure, don't assume', and it has not been measured."
+          "note": "SUPERSEDED by sampling.planning.labels_for_recall -- DECISIONS.md 147. This is a count of confirmed errors the sample must contain, under a design that draws from the error population and which nobody can run. It was published as 'reviewed items' for four phases and was low by 6x to 13x as a label budget. Normal approximation, sized at the measured recall rather than at p=0.5. The design effect is declared, not measured."
         }
       ]
     },
@@ -447,11 +501,65 @@
           "note": "Derived from ONE declared workload. The flag rate and recall are measured on an eval set; the volume and production error rate are declared. Mixing rates from two workloads is the error CLAUDE.md names."
         }
       },
-      "recall_sample_size": [
+      "label_plans": [
         {
-          "name": "reviewed items for recall +/- 0.05 @ P-internal-knowledge",
+          "margin": 0.05,
+          "regime": "month_one_proportional",
+          "design_effect_applied": 1.0,
+          "estimand": "recall",
+          "confidence": 0.95,
+          "labels": 3582,
+          "basis": "exact",
+          "labels_normal": 3379,
+          "labels_exact": 3582,
+          "labels_infinite_population": 3379,
+          "prevalence_margin": 0.005117699202206245,
+          "derivative": -9.770015396458815,
+          "naive_labels": 355,
+          "understatement": 10.114416500517802,
+          "feasible": true,
+          "refusal_reason": "",
+          "note": "A planning figure over declared inputs. q is assumed, not measured -- every sample size is, because it is computed before the measurement it sizes. estimator.py reports the realised margin against this one once the labels land."
+        },
+        {
+          "margin": 0.02,
+          "regime": "month_one_proportional",
+          "design_effect_applied": 1.0,
+          "estimand": "recall",
+          "confidence": 0.95,
+          "labels": 21598,
+          "basis": "exact",
+          "labels_normal": 21116,
+          "labels_exact": 21598,
+          "labels_infinite_population": 21116,
+          "prevalence_margin": 0.0020470796808824978,
+          "derivative": -9.770015396458815,
+          "naive_labels": 2214,
+          "understatement": 9.757729428394569,
+          "feasible": true,
+          "refusal_reason": "",
+          "note": "A planning figure over declared inputs. q is assumed, not measured -- every sample size is, because it is computed before the measurement it sizes. estimator.py reports the realised margin against this one once the labels land."
+        }
+      ],
+      "recall_sensitivity": {
+        "recall": 0.36027713625866054,
+        "flag_rate": 0.18645833333333334,
+        "monthly_interactions": 200000,
+        "base_error_rate": 0.03,
+        "errors": 6000.0,
+        "flagged_pool": 37291.666666666664,
+        "unflagged_pool": 162708.3333333333,
+        "confirmed_errors": 2161.662817551963,
+        "unflagged_prevalence": 0.023590292542574366,
+        "derivative": -9.770015396458815,
+        "amplification": 75.26998753561253,
+        "pool_ratio": 4.363128491620111
+      },
+      "recall_sample_size_SUPERSEDED": [
+        {
+          "name": "SUPERSEDED: confirmed errors for recall +/- 0.05 @ P-internal-knowledge",
           "value": 238.0,
-          "unit": "reviewed items",
+          "unit": "confirmed errors (NOT reviewed items)",
           "measured_inputs": {
             "recall": 0.36027713625866054
           },
@@ -460,12 +568,12 @@
             "design_effect": 0.67,
             "confidence": 0.95
           },
-          "note": "Normal approximation, sized at the measured recall rather than at p=0.5. The design effect is declared, not measured -- config.yaml says 'measure, don't assume', and it has not been measured."
+          "note": "SUPERSEDED by sampling.planning.labels_for_recall -- DECISIONS.md 147. This is a count of confirmed errors the sample must contain, under a design that draws from the error population and which nobody can run. It was published as 'reviewed items' for four phases and was low by 6x to 13x as a label budget. Normal approximation, sized at the measured recall rather than at p=0.5. The design effect is declared, not measured."
         },
         {
-          "name": "reviewed items for recall +/- 0.02 @ P-internal-knowledge",
+          "name": "SUPERSEDED: confirmed errors for recall +/- 0.02 @ P-internal-knowledge",
           "value": 1483.0,
-          "unit": "reviewed items",
+          "unit": "confirmed errors (NOT reviewed items)",
           "measured_inputs": {
             "recall": 0.36027713625866054
           },
@@ -474,7 +582,7 @@
             "design_effect": 0.67,
             "confidence": 0.95
           },
-          "note": "Normal approximation, sized at the measured recall rather than at p=0.5. The design effect is declared, not measured -- config.yaml says 'measure, don't assume', and it has not been measured."
+          "note": "SUPERSEDED by sampling.planning.labels_for_recall -- DECISIONS.md 147. This is a count of confirmed errors the sample must contain, under a design that draws from the error population and which nobody can run. It was published as 'reviewed items' for four phases and was low by 6x to 13x as a label budget. Normal approximation, sized at the measured recall rather than at p=0.5. The design effect is declared, not measured."
         }
       ]
     },
@@ -550,11 +658,65 @@
           "note": "Derived from ONE declared workload. The flag rate and recall are measured on an eval set; the volume and production error rate are declared. Mixing rates from two workloads is the error CLAUDE.md names."
         }
       },
-      "recall_sample_size": [
+      "label_plans": [
         {
-          "name": "reviewed items for recall +/- 0.05 @ P-decision-support",
+          "margin": 0.05,
+          "regime": "month_one_proportional",
+          "design_effect_applied": 1.0,
+          "estimand": "recall",
+          "confidence": 0.95,
+          "labels": 4049,
+          "basis": "exact",
+          "labels_normal": 3839,
+          "labels_exact": 4049,
+          "labels_infinite_population": 3839,
+          "prevalence_margin": 0.003825064873718629,
+          "derivative": -13.071673723376957,
+          "naive_labels": 299,
+          "understatement": 13.58538222198255,
+          "feasible": true,
+          "refusal_reason": "",
+          "note": "A planning figure over declared inputs. q is assumed, not measured -- every sample size is, because it is computed before the measurement it sizes. estimator.py reports the realised margin against this one once the labels land."
+        },
+        {
+          "margin": 0.02,
+          "regime": "month_one_proportional",
+          "design_effect_applied": 1.0,
+          "estimand": "recall",
+          "confidence": 0.95,
+          "labels": 24591,
+          "basis": "exact",
+          "labels_normal": 23989,
+          "labels_exact": 24591,
+          "labels_infinite_population": 23989,
+          "prevalence_margin": 0.0015300259494874515,
+          "derivative": -13.071673723376957,
+          "naive_labels": 1863,
+          "understatement": 13.201408119368647,
+          "feasible": true,
+          "refusal_reason": "",
+          "note": "A planning figure over declared inputs. q is assumed, not measured -- every sample size is, because it is computed before the measurement it sizes. estimator.py reports the realised margin against this one once the labels land."
+        }
+      ],
+      "recall_sensitivity": {
+        "recall": 0.7367205542725174,
+        "flag_rate": 0.46770833333333334,
+        "monthly_interactions": 200000,
+        "base_error_rate": 0.03,
+        "errors": 6000.0,
+        "flagged_pool": 93541.66666666667,
+        "unflagged_pool": 106458.33333333333,
+        "confirmed_errors": 4420.323325635104,
+        "unflagged_prevalence": 0.014838450170159492,
+        "derivative": -13.071673723376957,
+        "amplification": 24.08383402995472,
+        "pool_ratio": 1.1380846325167038
+      },
+      "recall_sample_size_SUPERSEDED": [
+        {
+          "name": "SUPERSEDED: confirmed errors for recall +/- 0.05 @ P-decision-support",
           "value": 200.0,
-          "unit": "reviewed items",
+          "unit": "confirmed errors (NOT reviewed items)",
           "measured_inputs": {
             "recall": 0.7367205542725174
           },
@@ -563,12 +725,12 @@
             "design_effect": 0.67,
             "confidence": 0.95
           },
-          "note": "Normal approximation, sized at the measured recall rather than at p=0.5. The design effect is declared, not measured -- config.yaml says 'measure, don't assume', and it has not been measured."
+          "note": "SUPERSEDED by sampling.planning.labels_for_recall -- DECISIONS.md 147. This is a count of confirmed errors the sample must contain, under a design that draws from the error population and which nobody can run. It was published as 'reviewed items' for four phases and was low by 6x to 13x as a label budget. Normal approximation, sized at the measured recall rather than at p=0.5. The design effect is declared, not measured."
         },
         {
-          "name": "reviewed items for recall +/- 0.02 @ P-decision-support",
+          "name": "SUPERSEDED: confirmed errors for recall +/- 0.02 @ P-decision-support",
           "value": 1249.0,
-          "unit": "reviewed items",
+          "unit": "confirmed errors (NOT reviewed items)",
           "measured_inputs": {
             "recall": 0.7367205542725174
           },
@@ -577,10 +739,10 @@
             "design_effect": 0.67,
             "confidence": 0.95
           },
-          "note": "Normal approximation, sized at the measured recall rather than at p=0.5. The design effect is declared, not measured -- config.yaml says 'measure, don't assume', and it has not been measured."
+          "note": "SUPERSEDED by sampling.planning.labels_for_recall -- DECISIONS.md 147. This is a count of confirmed errors the sample must contain, under a design that draws from the error population and which nobody can run. It was published as 'reviewed items' for four phases and was low by 6x to 13x as a label budget. Normal approximation, sized at the measured recall rather than at p=0.5. The design effect is declared, not measured."
         }
       ]
     }
   ],
-  "not_derived_here": "No cost, headcount or saving figure. The price list (controlplane/economics/sizing.py) is specified in five contracts and not built -- DECISIONS 096 and 099. Any money figure in the proposal or the deck is a declared estimate and must say so."
+  "not_derived_here": "No cost, headcount or saving figure. The price list is now built (controlplane/economics/sizing.py, DECISIONS 146) and so is the label budget (controlplane/sampling, DECISIONS 147), and neither produces a money figure: a cost needs a reviewer rate, which is declared rather than measured. Any money figure in the proposal or the deck is a declared estimate and must say so. The recall_sample_size_SUPERSEDED block is kept so a reader holding a pre-147 copy of this artifact can find their number; it is low by 6x to 13x as a label budget and must not be quoted -- DECISIONS 147 and 150. The label_plans here are MONTH ONE only; results/on_traffic/ owns the full price list including the steady-state regime, so that one number has one owner."
 }
