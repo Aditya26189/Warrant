@@ -35,7 +35,7 @@
 
 <img src="https://img.shields.io/badge/Tests-1214_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1214 tests" />
 &nbsp;
-<img src="https://img.shields.io/badge/Claims-58_verified-2da44e?style=for-the-badge" alt="58 claims verified" />
+<img src="https://img.shields.io/badge/Claims-65_verified-2da44e?style=for-the-badge" alt="65 claims verified" />
 &nbsp;
 <img src="https://img.shields.io/badge/AUROC-0.8256-6366f1?style=for-the-badge" alt="AUROC 0.8256" />
 &nbsp;
@@ -245,6 +245,13 @@ here fails the build.**
 | AUROC lost to a single sample | 0.2288 | - | results/scorefree/scorefree.json | headline.auroc_gap_at_k1 | python scripts/26_scorefree.py |
 | ...at nine samples | 0.0215 | - | results/scorefree/scorefree.json | headline.auroc_gap_at_k9 | python scripts/26_scorefree.py |
 | Certified at k=9, deployed at k=1: breach of the bound | 2.3521 | - | results/scorefree/scorefree.json | headline.breach_factor_deploying_at_k1 | python scripts/26_scorefree.py |
+| Gate decisions made without reading any detector | 33 | - | results/gate/gate.json | headline.decisions_identical_without_a_detector | python scripts/27_gate.py |
+| ...of how many rule-1/rule-2 decisions swept | 33 | - | results/gate/gate.json | headline.decisions_compared | python scripts/27_gate.py |
+| Injection blocked at step | 4 | - | results/gate/gate.json | headline.injection_blocked_at_step | python scripts/27_gate.py |
+| ...and the detector that flagged it | False | - | results/gate/gate.json | headline.injection_flagged_by_detector | python scripts/27_gate.py |
+| Legitimate workflows the gate blocks (EXACT, declared set) | 2 | - | results/gate/gate.json | headline.legitimate_workflows_blocked | python scripts/27_gate.py |
+| ...of how many declared | 8 | - | results/gate/gate.json | headline.legitimate_workflows | python scripts/27_gate.py |
+| ...that a new session recovers | 2 | - | results/gate/gate.json | headline.blocked_workflows_recoverable | python scripts/27_gate.py |
 
 <details>
 <summary><strong>📖 How to read this table</strong></summary>
