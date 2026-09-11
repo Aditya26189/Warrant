@@ -18,11 +18,11 @@ carries the computed price list, κ, and the score-free certification cost.
 
 - **Window:** 2026-09-11
 - **Range:** `2ecdeb2` → `HEAD`
-- **Suite:** 1,224 tests, green before and after
+- **Suite:** 1,224 at open -> 1,235 at close, green at both
 - **Verification:** **66/66 claims, 25/25 frozen scores, 3/3 activations** — all
   three tiers, for the first time this session
 - **Artifacts:** 15 regenerated, listed in §5
-- **Decisions:** `DECISIONS.md` 157
+- **Decisions:** `DECISIONS.md` 157, 158
 
 ---
 
@@ -145,8 +145,50 @@ than disappearing, which is checked against an empty directory in
 | # | item | what would close it |
 |---|---|---|
 | O-1 | **A chain dirties its own tree.** `01_build_evalsets.py` writes `evalsets/manifest.json`, which `provenance()` does not exclude, so every stage after it records `dirty: true`. The August artifacts carry the same flag. Worked around here by committing and re-rendering; not fixed. | Exclude generated corpora from the dirty check, or make the chain one stage. |
-| O-2 | **The run order is documented and not enforced.** Running a stage out of order succeeds and produces a quietly incomplete artifact. | Each script refusing when the artifact it reads is absent or older than its own input. |
+| O-2 | **The run order is documented and not enforced.** Running a stage out of order succeeds and produces a quietly incomplete artifact. **Partly closed** — see §6a. | Each script refusing when the artifact it reads is absent or older than its own input. |
 | O-3 | Carried forward: the twelve conversations; certifying a real judge; `DECISIONS.md` 145's Linux abort; rule 1 duplicated between the gate and the Rego bundles. | See `reports/PHASE-5.md` §5 and `reports/PHASE-6.md` §6. |
+
+---
+
+## 6a. Closed at write-up: the one case that actually bit
+
+O-2 is a design problem and I did not want to leave it as one, because the case
+that occurred is closeable in a page.
+
+`controlplane/report/regression.py` counts **populated cells** — a cell carrying
+a `warrant_id`, meaning something was measured or refused there — and
+`03_matrix.py` now refuses **before writing anything** if the incoming matrix
+has fewer than the artifact on disk. Verified end to end against a directory
+holding the committed matrix and a fresh ledger:
+
+```
+REFUSED: this run would replace a matrix of 17 populated cells with one of 11.
+...
+Nothing has been written.
+```
+
+and nothing was.
+
+**The hard part was not the check; it was what the message should say.** The
+poorer document is *not dishonest* — every missing cell reads `UNVALIDATED`,
+which is what it is. A refusal that implied fraud would teach its reader to
+distrust the wrong thing, so the message says so explicitly, then names the
+likely out-of-order run and the two scripts whose warrants are missing. *Refused:
+17 → 11* alone would send an operator to read the module instead of the runbook.
+
+**The override needed justifying against `CLAUDE.md` invariant 3**, which is
+absolute: *refusal has no override*. That rule is about **warrants** — a claim
+the evidence does not support must not be issuable by anyone, and a bypass would
+make the product theatre. This guards against clobbering a file, where the
+operator sometimes genuinely wants the emptier document, and refusing with no way
+through would mean deleting the artifact by hand to proceed.
+`--allow-matrix-regression` prints what it discards, is unreachable from any
+warrant path, and a test records the distinction so it cannot be cited as
+precedent.
+
+It guards one artifact, and the general problem stays open. Closing the case that
+bit is worth more than a design for the ones that have not.
+`DECISIONS.md` 158, `tests/test_matrix_regression.py`, 8 tests.
 
 ---
 
@@ -162,7 +204,11 @@ than disappearing, which is checked against an empty directory in
 preflight tells an operator to rename has somewhere to live outside the
 repository.
 
-**Decisions** — 157.
+**Decisions** — 157, 158.
+
+**Added at write-up** — `controlplane/report/regression.py`,
+`tests/test_matrix_regression.py` (8 tests), `--allow-matrix-regression` on
+`03_matrix.py`.
 
 **Reproduce**
 
