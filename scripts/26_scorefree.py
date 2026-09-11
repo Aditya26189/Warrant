@@ -77,6 +77,18 @@ POSITIVE_SHAPE = (5.0, 3.0)
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", default=str(PROJECT_ROOT / "config.yaml"))
+    parser.add_argument(
+        "--draws",
+        type=int,
+        default=DRAWS,
+        help=(
+            "vote draws per cell. The default is what the artifact uses; a "
+            "smoke test passes a small value because it is checking wiring, "
+            "which the draw count does not exercise. A figure from a small "
+            "value is noise and must not be published -- DECISIONS.md 152a "
+            "records one wrong conclusion reached from a single draw."
+        ),
+    )
     parser.add_argument("--out", default=None, help="results directory override")
     return parser.parse_args(argv)
 
@@ -94,7 +106,7 @@ def _judge(n_negatives: int, seed: int):
     return latent, labels
 
 
-def _floors(seed: int) -> list[dict[str, object]]:
+def _floors(seed: int, draws: int = DRAWS) -> list[dict[str, object]]:
     """The tightest certifiable budget, by pool size and ``k``.
 
     Two floors bind and they bind in turn. The **data's capacity** is
@@ -109,7 +121,7 @@ def _floors(seed: int) -> list[dict[str, object]]:
         data_floor = cp_upper(0, pool, 0.05)
         for k in SAMPLE_COUNTS:
             values: list[float] = []
-            for draw in range(DRAWS):
+            for draw in range(draws):
                 votes = np.random.default_rng(
                     900_000 + 1_000 * k + 7 * pool + draw
                 ).binomial(k, latent)
@@ -133,13 +145,13 @@ def _floors(seed: int) -> list[dict[str, object]]:
                         if float(np.median(values)) <= data_floor * 1.05
                         else "granularity"
                     ),
-                    "draws": DRAWS,
+                    "draws": draws,
                 }
             )
     return rows
 
 
-def _crossovers(seed: int) -> list[dict[str, object]]:
+def _crossovers(seed: int, draws: int = DRAWS) -> list[dict[str, object]]:
     """The smallest ``k`` at which granularity stops being what binds.
 
     Past it, more samples buy nothing: the benchmark's own certification
@@ -151,7 +163,7 @@ def _crossovers(seed: int) -> list[dict[str, object]]:
         negatives = labels == 0
         data_floor = cp_upper(0, pool, 0.05)
         crossings: list[int] = []
-        for draw in range(DRAWS):
+        for draw in range(draws):
             found = SAMPLE_COUNTS[-1] + 1
             for k in range(1, 40):
                 votes = np.random.default_rng(
@@ -174,7 +186,7 @@ def _crossovers(seed: int) -> list[dict[str, object]]:
                 "crossover_k_median": int(np.median(crossings)),
                 "crossover_k_min": int(min(crossings)),
                 "crossover_k_max": int(max(crossings)),
-                "draws": DRAWS,
+                "draws": draws,
             }
         )
     return rows
@@ -212,24 +224,28 @@ def _tunability(seed: int) -> list[dict[str, object]]:
     return rows
 
 
-def _ranking(seed: int) -> dict[str, object]:
+def _ranking(seed: int, draws: int = DRAWS) -> dict[str, object]:
     """What finite ``k`` costs in ranking quality, against the latent ceiling."""
     latent, labels = _judge(1000, seed)
     ceiling = auroc(labels, latent)
     rows = []
     for k in SAMPLE_COUNTS:
-        draws = [
+        # Named `measured`, not `draws`: the parameter is the draw *count* and a
+        # local list called `draws` shadowed it, so range(draws) got a list on
+        # the second iteration. Caught immediately here; the same shadowing in a
+        # function whose first iteration is the only one would not have been.
+        measured = [
             auroc(
                 labels,
                 np.random.default_rng(1_000 * k + s).binomial(k, latent) / k,
             )
-            for s in range(DRAWS)
+            for s in range(draws)
         ]
         rows.append(
             {
                 "k": k,
-                "auroc_mean": float(np.mean(draws)),
-                "gap_to_ceiling": float(ceiling - np.mean(draws)),
+                "auroc_mean": float(np.mean(measured)),
+                "gap_to_ceiling": float(ceiling - np.mean(measured)),
             }
         )
     return {"latent_ceiling_auroc": ceiling, "by_k": rows}
@@ -271,10 +287,10 @@ def main(argv: list[str] | None = None) -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     seed = config.seed
-    floors = _floors(seed)
-    crossovers = _crossovers(seed)
+    floors = _floors(seed, args.draws)
+    crossovers = _crossovers(seed, args.draws)
     points = _tunability(seed)
-    ranking = _ranking(seed)
+    ranking = _ranking(seed, args.draws)
     void = _void_at_another_k(seed)
 
     for row in crossovers:
@@ -322,7 +338,7 @@ def main(argv: list[str] | None = None) -> int:
             "budgets": list(BUDGETS),
             "sample_counts": list(SAMPLE_COUNTS),
             "pool_sizes": list(POOL_SIZES),
-            "draws_per_cell": DRAWS,
+            "draws_per_cell": args.draws,
             "negative_beta": list(NEGATIVE_SHAPE),
             "positive_beta": list(POSITIVE_SHAPE),
         },

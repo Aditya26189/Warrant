@@ -541,6 +541,12 @@ def test_every_script_has_a_smoke_test() -> None:
         "19_fpr_sweep.py",
         # test_smoke_calibration_power
         "21_calibration_power.py",
+        # test_smoke_on_traffic
+        "25_on_traffic.py",
+        # test_smoke_scorefree
+        "26_scorefree.py",
+        # test_smoke_gate
+        "27_gate.py",
         # tests/test_intake.py::test_the_examples_are_reproducible_from_their_generator
         # runs it and asserts the committed examples come back byte-identical,
         # which is a stronger check than a smoke test: the examples are shipped
@@ -897,7 +903,21 @@ def test_smoke_feasibility(tmp_path: Path) -> None:
         )
         assert 0.0 <= achieved["residual_risk"] <= 1.0
 
-    assert "not built" in payload["not_derived_here"]
+    # The note used to say the price list was "not built". It is built now
+    # (DECISIONS.md 146, 147), so what this asserts moved with it: the artifact
+    # still derives no money figure, and the superseded label budget it carries
+    # for traceability is labelled as superseded rather than quotable.
+    note = payload["not_derived_here"]
+    assert "No cost, headcount or saving figure" in note
+    assert "declared estimate" in note
+    assert "SUPERSEDED" in note
+    for profile in payload["profiles"]:
+        assert "label_plans" in profile
+        assert "recall_sample_size_SUPERSEDED" in profile
+        for plan in profile["label_plans"]:
+            # DECISIONS.md 150: feasibility.json quotes month one only;
+            # results/on_traffic/ owns the steady-state regime.
+            assert plan["regime"] == "month_one_proportional"
 
 
 def test_smoke_fpr_sweep(tmp_path: Path) -> None:
@@ -1154,3 +1174,155 @@ def test_smoke_presidio_coverage(tmp_path: Path) -> None:
             "changed and the narration must change with it"
         )
     assert payload["presidio_version"] != "unknown"
+
+
+def test_smoke_on_traffic(tmp_path: Path) -> None:
+    """`25_on_traffic.py` prices labels and evidences the estimator.
+
+    CPU-only and seconds long at a small trial count, so it gets a real smoke
+    test. Run at 20 coverage trials rather than 1,000: this checks wiring, and
+    wiring is not what the trial count exercises. **The coverage figure from 20
+    trials is noise and is not asserted against the pre-registered band** --
+    ``DECISIONS.md`` 147 registered that band for 1,000 trials and checking it
+    here would be reading a number from a run too small to produce one.
+
+    What is asserted is internal consistency, because a stage that writes a
+    plausible file and exits zero is the failure this suite exists for.
+    """
+    _run_bare(
+        "25_on_traffic.py",
+        "--config", str(PROJECT_ROOT / "config.yaml"),
+        "--trials", "20",
+        "--out", str(tmp_path),
+    )
+    payload = json.loads(
+        (tmp_path / "on_traffic" / "on_traffic.json").read_text(encoding="utf-8")
+    )
+
+    sensitivity = payload["sensitivity"]
+    assert sensitivity["derivative"] < 0, "dR/dq must be negative by construction"
+    # The two ratios DECISIONS 148 separated must stay separate and unequal.
+    assert sensitivity["amplification"] != sensitivity["pool_ratio"]
+
+    rows = payload["price_list"]
+    assert rows, "no price-list row was derived"
+    regimes = {str(r["regime"]).split(" ")[0] for r in rows}
+    assert regimes == {"month", "steady"}, (
+        f"expected both regimes, got {regimes}. DECISIONS.md 150: quoting month "
+        "one at Neyman's design effect is a named silent failure."
+    )
+    for row in rows:
+        if not row["feasible"]:
+            continue
+        # The whole point of DECISIONS 147: the propagated figure must exceed
+        # the naive one, and by a lot.
+        assert row["labels"] > row["naive_labels"]
+        assert row["understatement"] > 2.0
+        # And the exact basis must cost more than the normal approximation,
+        # which is DECISIONS 149.
+        assert row["labels_exact"] is None or row["labels_exact"] >= row["labels_normal"]
+
+    # Month one is never cheaper than steady state at the same margin.
+    for row in rows:
+        if not str(row["regime"]).startswith("month") or not row["feasible"]:
+            continue
+        steady = next(
+            (
+                other
+                for other in rows
+                if other["subject"] == row["subject"]
+                and other["margin"] == row["margin"]
+                and not str(other["regime"]).startswith("month")
+            ),
+            None,
+        )
+        if steady is not None and steady["feasible"]:
+            assert row["labels"] >= steady["labels"]
+
+    assert payload["coverage"]["trials"] == 20
+    assert payload["not_derived_here"], "the artifact must say what it does not derive"
+
+
+def test_smoke_scorefree(tmp_path: Path) -> None:
+    """`26_scorefree.py` prices what repeated sampling buys a score-free detector.
+
+    Run at 3 draws rather than 40. **No floor from this run is asserted as a
+    value** -- ``DECISIONS.md`` 152a records a wrong conclusion reached from a
+    single draw, and three is not meaningfully better. What is asserted is the
+    structure, which does not depend on the draw count.
+    """
+    _run_bare(
+        "26_scorefree.py",
+        "--config", str(PROJECT_ROOT / "config.yaml"),
+        "--draws", "3",
+        "--out", str(tmp_path),
+    )
+    payload = json.loads(
+        (tmp_path / "scorefree" / "scorefree.json").read_text(encoding="utf-8")
+    )
+
+    assert payload["declared"]["draws_per_cell"] == 3
+    assert "SIMULATED" in payload["scope"], (
+        "the scope caveat must travel with the numbers; every figure here is an "
+        "upper bound because a real judge's runs are correlated"
+    )
+
+    # C1: notches bound the operating points, exactly and always.
+    for row in payload["tunability"]:
+        assert row["notches"] == row["k"] + 1
+        assert row["distinct_operating_points"] <= row["notches"]
+        assert row["distinct_scores"] <= row["notches"]
+
+    # A one-bit detector has exactly one operating point. Structural, not a draw.
+    at_one = next(r for r in payload["tunability"] if r["k"] == 1)
+    assert at_one["distinct_operating_points"] == 1
+
+    # C2: the bound certified at one k does not hold at another.
+    void = payload["void_at_another_k"]
+    assert void["verdict"] == "VOID"
+    assert void["realised_fpr_at_k1"] > void["certified_upper_bound"]
+    assert void["certified_detector_id"] != void["deployed_detector_id"]
+
+    # C4: ranking improves with k and never reaches the latent ceiling.
+    ceiling = payload["ranking"]["latent_ceiling_auroc"]
+    gaps = [row["gap_to_ceiling"] for row in payload["ranking"]["by_k"]]
+    assert all(gap > 0 for gap in gaps)
+    assert gaps == sorted(gaps, reverse=True), "AUROC must improve with k"
+    assert ceiling <= 1.0
+
+
+def test_smoke_gate(tmp_path: Path) -> None:
+    """`27_gate.py` runs the injection and counts what the gate costs.
+
+    Fast enough to run in full, so nothing is scaled down and every figure it
+    writes is the real one.
+    """
+    _run_bare(
+        "27_gate.py",
+        "--config", str(PROJECT_ROOT / "config.yaml"),
+        "--out", str(tmp_path),
+    )
+    payload = json.loads((tmp_path / "gate" / "gate.json").read_text(encoding="utf-8"))
+
+    # The claim the whole package exists to make.
+    evidence = payload["no_detector_evidence"]
+    assert evidence["decisions_compared"] > 0
+    assert evidence["identical"] == evidence["decisions_compared"]
+    assert evidence["mismatches"] == []
+
+    # The attack is refused, and not because a detector caught it.
+    injection = payload["injection"]
+    assert injection["detector_flagged"] is False
+    blocked = [s for s in injection["steps"] if s["action"] == "BLOCK"]
+    assert blocked, "the injection scenario blocked nothing"
+    assert blocked[0]["tool"] == "transfer_funds"
+    assert blocked[0]["consulted_detector"] is False
+
+    # And the cost is reported as a count, not an estimate.
+    cost = payload["cost"]
+    assert cost["kind"] == "EXACT"
+    assert 0 < cost["n_blocked"] < cost["n_workflows"], (
+        "a gate that blocks nothing is not a control, and one that blocks "
+        "everything is not usable"
+    )
+    assert "EXACT" in cost["note"] and "estimated" in cost["note"].lower()

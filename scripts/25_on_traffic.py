@@ -83,6 +83,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=None,
         help="policy JSON holding the measured operating points",
     )
+    parser.add_argument(
+        "--trials",
+        type=int,
+        default=COVERAGE_TRIALS,
+        help=(
+            "coverage-simulation trials. The default is what the artifact uses "
+            "and what DECISIONS.md 147 pre-registered; a smoke test passes a "
+            "small value because it is checking wiring."
+        ),
+    )
     parser.add_argument("--out", default=None, help="results directory override")
     return parser.parse_args(argv)
 
@@ -123,7 +133,7 @@ def _measured_points(results: Path, override: str | None) -> dict[str, dict]:
     return points
 
 
-def _coverage() -> dict[str, object]:
+def _coverage(trials: int = COVERAGE_TRIALS) -> dict[str, object]:
     """Nominal coverage of the recall interval, on traffic with known truth.
 
     The estimand is finite-population recall on one fixed population, which is
@@ -140,7 +150,7 @@ def _coverage() -> dict[str, object]:
 
     covered = 0
     widths: list[float] = []
-    for _ in range(COVERAGE_TRIALS):
+    for _ in range(trials):
         idx = rng.choice(COVERAGE_POOL, size=COVERAGE_N, replace=False)
         errors = int(truth[idx].sum())
         estimate = estimate_on_traffic(
@@ -152,14 +162,14 @@ def _coverage() -> dict[str, object]:
         if estimate.recall.ci_low <= true_recall <= estimate.recall.ci_high:
             covered += 1
     return {
-        "trials": COVERAGE_TRIALS,
+        "trials": trials,
         "pool": COVERAGE_POOL,
         "sample": COVERAGE_N,
         "declared_q": COVERAGE_Q,
         "realised_q": realised_q,
         "true_finite_population_recall": true_recall,
         "covered": covered,
-        "coverage": covered / COVERAGE_TRIALS,
+        "coverage": covered / trials,
         "nominal": 0.95,
         "mean_interval_width": float(np.mean(widths)),
         "registered_band": [0.93, 0.97],
@@ -304,7 +314,7 @@ def main(argv: list[str] | None = None) -> int:
                 _LOG.info("%s | %s", regime, plan.render().replace("\n", " |"))
 
     # 3. Does the interval cover what it claims to?
-    coverage = _coverage()
+    coverage = _coverage(args.trials)
     _LOG.info(
         "coverage %d/%d = %.4f against nominal %.2f",
         coverage["covered"], coverage["trials"], coverage["coverage"], 0.95,
