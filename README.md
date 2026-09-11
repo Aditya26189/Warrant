@@ -33,9 +33,9 @@
 
 <br/>
 
-<img src="https://img.shields.io/badge/Tests-1216_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1216 tests" />
+<img src="https://img.shields.io/badge/Tests-1221_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1221 tests" />
 &nbsp;
-<img src="https://img.shields.io/badge/Claims-65_verified-2da44e?style=for-the-badge" alt="65 claims verified" />
+<img src="https://img.shields.io/badge/Claims-66_verified-2da44e?style=for-the-badge" alt="66 claims verified" />
 &nbsp;
 <img src="https://img.shields.io/badge/AUROC-0.8256-6366f1?style=for-the-badge" alt="AUROC 0.8256" />
 &nbsp;
@@ -99,6 +99,65 @@ return nothing at all.
 <img src="https://capsule-render.vercel.app/api?type=rect&color=0:0d1117,50:161b22,100:0d1117&height=2" width="100%" />
 
 <br/>
+
+## 🧭 The three clauses, and where each one is proved
+
+> *We tell you what your error rate is on **your** traffic, we tell you **when**
+> that number stops being true, and we tell you **what it costs** to keep it
+> true.*
+
+Three sentences, three mechanisms, and each one now has an artifact behind it
+rather than a plan.
+
+| clause | mechanism | evidence |
+|---|---|---|
+| **what your error rate is on your traffic** | Stratified estimation over two strata: the flagged pool is a census, the unflagged pool is sampled. Recall is propagated through `dR/dq` = **-4.650**, not sized as a binomial. | [`results/on_traffic/`](results/on_traffic/ON_TRAFFIC.md) — interval coverage **96.8%** over 1,000 trials against a nominal 95% |
+| **when that number stops being true** | Envelope matrix, drift detection, and a revocation ladder that turns on *evidence of breach* rather than failure to re-prove. | [`results/warrant_matrix.md`](results/warrant_matrix.md), `warrant recheck` |
+| **what it costs to keep it true** | A computed price list. Month one at full simple-random-sampling cost, steady state at a **measured** design effect. | [`results/on_traffic/`](results/on_traffic/ON_TRAFFIC.md) — **1,014** labels for recall to ±0.05, against the **187** this repository quoted before `DECISIONS.md` 147 |
+
+**Yield is exact; rate is estimated.** The flagged stratum is reviewed anyway, so
+the confirmed-error count and precision carry no interval and cost nothing.
+Recall needs the whole sampling apparatus. They are not two views of one
+measurement — they are a free claim and an expensive one, and the estimator
+returns them in separate fields with different types.
+
+### Two things certification says that scoring does not
+
+**Refusal.** *The evidence does not support this at your budget.* No flag, no
+environment variable, no admin bypass.
+
+**Tunability.** *This detector cannot be moved to your budget at all.* A
+single-sample LLM judge emits one bit, so it offers exactly **1** operating
+point, and the tightest false-positive budget it can certify is whatever its own
+error rate already is — **however much data you have**. Buying **51** notches
+with 50 samples buys **10** operating points, not 51.
+
+On a *simulated* judge whose runs are independent draws, that floor is **0.105**
+against a data floor three orders of magnitude tighter, and five to ten samples
+buys everything more samples can buy. **The judge is simulated and a real one's
+repeated runs are correlated**, so that figure is an upper bound on what
+sampling buys and it certifies no real detector.
+([`results/scorefree/`](results/scorefree/SCOREFREE.md))
+
+An F1 table cannot show either, because F1 is computed wherever the detector
+already sits and never varies the threshold.
+
+### And a control for when the detector loses
+
+The action gate's two most important rules read **no detector score at all**.
+Across four tools, six session states and six warrant statuses, **33 of 33**
+decisions are identical whether a detector reports `CRITICAL` or reports
+nothing. An indirect prompt injection that no detector flags is refused at step
+**4**, on the tool's declared reversibility plus three session flags.
+
+It costs **2** of **8** declared legitimate workflows, all **2** of them
+recoverable by starting a new session — and those counts are *exact*, because
+the workflow set is declared rather than sampled.
+([`results/gate/`](results/gate/GATE.md))
+
+This is **not** a robustness claim and the repository makes none — published work
+broke twelve injection defences at over 90% attack success. It is the smaller
+claim that survives: defeating every detector here does not move those rules.
 
 ## ⚡ Quickstart — certify your own detector
 
@@ -235,6 +294,7 @@ here fails the build.**
 | ...what the superseded sizing quoted (DECISIONS 147) | 187 | - | results/on_traffic/on_traffic.json | headline.superseded_sizing_5pp | python scripts/25_on_traffic.py |
 | Labels for recall +/-0.02, month one | 5566 | - | results/on_traffic/on_traffic.json | headline.labels_month_one_2pp | python scripts/25_on_traffic.py |
 | Recall-interval coverage, 1000 trials, nominal 0.95 | 0.9680 | - | results/on_traffic/on_traffic.json | headline.coverage | python scripts/25_on_traffic.py |
+| ...over how many trials | 1000 | - | results/on_traffic/on_traffic.json | headline.coverage_trials | python scripts/25_on_traffic.py |
 | Measured Neyman design effect vs the declared 0.67 | 0.7929 | - | results/on_traffic/on_traffic.json | headline.measured_design_effect | python scripts/25_on_traffic.py |
 | Tightest budget a single-sample judge can certify | 0.1045 | - | results/scorefree/scorefree.json | headline.single_sample_floor_median | python scripts/26_scorefree.py |
 | ...distinct operating points it offers | 1 | - | results/scorefree/scorefree.json | headline.operating_points_at_k1 | python scripts/26_scorefree.py |
@@ -310,7 +370,7 @@ controlplane/          the package — model, store, validation, matrix, drift, 
 evalsets/ & results/   frozen content-hashed evaluation sets; every artifact behind the table above
 scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
-tests/                 1216 tests, including the ones that enforce this README
+tests/                 1221 tests, including the ones that enforce this README
 docs/                  spec, methods, limitations, the case matrix, and the move mapping
 DECISIONS.md           143 append-only decision entries
 reports/               one close-out report per phase — read PHASE-0.md first
@@ -384,7 +444,7 @@ tour is [docs/CODE_TOUR.md](docs/CODE_TOUR.md).
 | Target | Without `make` | Requires | Time | Proves |
 |:---|:---|:---|:---|:---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | The clone works and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 1216 tests green |
+| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 1221 tests green |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **Every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` (tier 3) | `python scripts/verify.py` | CPU + cached activations | ~4 min | The frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | Activations regenerate from the source model |
