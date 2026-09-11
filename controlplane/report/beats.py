@@ -23,6 +23,20 @@ over- and under-flagging         1 -- the refusal, and what it costs to fix
 audit trail behind every         6 -- hash-chained certificates
 decision
 ===============================  =============================================
+
+Beats 7, 8 and 9 were added once the work behind them existed. The demo closes
+on this project's three-clause pitch -- *what your error rate is on your
+traffic, when that number stops being true, what it costs to keep it true* --
+and beats 1 to 6 demonstrate only the middle clause.
+
+===============================  =============================================
+7                                the on-traffic warrant and the price list:
+                                 clauses one and three
+8                                tunability -- a detector that cannot be moved
+                                 to your budget at all
+9                                the action gate, whose two most important
+                                 rules read no detector score
+===============================  =============================================
 """
 
 from __future__ import annotations
@@ -331,6 +345,146 @@ def _beat_audit(root: Path) -> Beat:
     )
 
 
+def _beat_price_list(root: Path) -> Beat:
+    """Clause one and clause three: your traffic, and what it costs to know."""
+    document = _load(root, "on_traffic/on_traffic.json")
+    if document is None:
+        return Beat(
+            number=7,
+            title="What your error rate is on your traffic, and what knowing costs",
+            answers="a number measured on a benchmark is not a number about you",
+            missing="run scripts/25_on_traffic.py",
+        )
+    head = document["headline"]
+    sensitivity = document["sensitivity"]
+    return Beat(
+        number=7,
+        title="What your error rate is on your traffic, and what knowing costs",
+        answers="a number measured on a benchmark is not a number about you",
+        rows=(
+            ("free",
+             "the flagged pool is reviewed anyway -- confirmed errors and "
+             "precision are EXACT counts, no interval, no sampling"),
+            ("expensive",
+             "recall needs the prevalence in the pool nobody read, and that "
+             "costs labels"),
+            ("dR/dq",
+             f"{sensitivity['derivative']:.3f} -- recall is a FUNCTION of that "
+             "prevalence, so the margin travels through the derivative"),
+            ("month one",
+             f"{head['labels_month_one_5pp']:,} labels for recall to +/-0.05, "
+             "at full simple-random-sampling cost"),
+            ("steady state",
+             f"{head['labels_steady_state_5pp']:,}, once per-band prevalences "
+             "exist and Neyman allocation can run"),
+            ("what we used to say",
+             f"{head['superseded_sizing_5pp']} -- low by 6x to 13x, corrected "
+             "in DECISIONS.md 147 rather than quietly fixed"),
+            ("does the interval hold",
+             f"{head['coverage']:.1%} coverage over "
+             f"{head['coverage_trials']:,} trials against a nominal 95%"),
+        ),
+        artifacts=(
+            "results/on_traffic/ON_TRAFFIC.md",
+            "controlplane/sampling/planning.py",
+            "controlplane/sampling/estimator.py",
+        ),
+        note=(
+            "No production traffic exists here. The estimator is evidenced by "
+            "coverage against known ground truth; the price list is arithmetic "
+            "over ONE declared workload and says which inputs are declared."
+        ),
+    )
+
+
+def _beat_tunability(root: Path) -> Beat:
+    """The second thing certification says that scoring does not."""
+    document = _load(root, "scorefree/scorefree.json")
+    if document is None:
+        return Beat(
+            number=8,
+            title="A detector you cannot tune to your budget at all",
+            answers="a procurement fact an F1 table structurally cannot show",
+            missing="run scripts/26_scorefree.py",
+        )
+    head = document["headline"]
+    return Beat(
+        number=8,
+        title="A detector you cannot tune to your budget at all",
+        answers="a procurement fact an F1 table structurally cannot show",
+        rows=(
+            ("the problem",
+             "the detectors that win on REDACT -- GPT-4.1, Claude -- emit no "
+             "score, so there is nothing to threshold"),
+            ("one bit, one notch",
+             f"a single-sample judge offers {head['operating_points_at_k1']} "
+             "operating point, and the tightest budget it can certify is its "
+             "own error rate -- however much data you have"),
+            ("notches are not operating points",
+             f"{head['notches_at_k50']} notches at 50 samples buy "
+             f"{head['operating_points_at_k50']}"),
+            ("and it stops paying",
+             f"granularity stops binding between k={head['crossover_k_smallest_pool']} "
+             f"and k={head['crossover_k_largest_pool']}; past that, more "
+             "samples fix a data problem with inference spend"),
+            ("k is in the warrant key",
+             "certify at k=9 and deploy at k=1 and the realised rate is "
+             f"{head['breach_factor_deploying_at_k1']:.1f}x the certified bound"),
+        ),
+        artifacts=(
+            "results/scorefree/SCOREFREE.md",
+            "controlplane/validation/scorefree.py",
+        ),
+        note=(
+            "The judge is SIMULATED, with independent draws. A real one has "
+            "correlated runs, so every figure here is an UPPER BOUND on what "
+            "sampling buys. It certifies no real detector."
+        ),
+    )
+
+
+def _beat_gate(root: Path) -> Beat:
+    """What happens when the detector this whole system measures is defeated."""
+    document = _load(root, "gate/gate.json")
+    if document is None:
+        return Beat(
+            number=9,
+            title="When the detector loses",
+            answers="over- and under-flagging, when the flag itself is defeated",
+            missing="run scripts/27_gate.py",
+        )
+    head = document["headline"]
+    return Beat(
+        number=9,
+        title="When the detector loses",
+        answers="over- and under-flagging, when the flag itself is defeated",
+        rows=(
+            ("the attack",
+             "an instruction inside a transaction memo -- plain English, no "
+             "tricks -- and no detector flags it"),
+            ("blocked anyway",
+             f"at step {head['injection_blocked_at_step']}, on the declared "
+             "reversibility of the tool plus three sticky session flags"),
+            ("no detector read",
+             f"{head['decisions_identical_without_a_detector']} of "
+             f"{head['decisions_compared']} rule-1 and rule-2 decisions are "
+             "identical whether a detector screams CRITICAL or is absent"),
+            ("what it costs",
+             f"{head['legitimate_workflows_blocked']} of "
+             f"{head['legitimate_workflows']} declared legitimate workflows, "
+             f"all {head['blocked_workflows_recoverable']} recovered by a new "
+             "session -- EXACT counts over a declared set, so no interval"),
+        ),
+        artifacts=("results/gate/GATE.md", "controlplane/gate/gate.py"),
+        note=(
+            "This is NOT a robustness claim and this project makes none: "
+            "published work broke twelve injection defences at over 90% attack "
+            "success. The claim is the smaller one that survives -- defeating "
+            "every detector here does not move those two rules."
+        ),
+    )
+
+
 def assemble_beats(root: Path) -> tuple[Beat, ...]:
     """Every beat, in running order, from whatever artifacts exist.
 
@@ -338,7 +492,7 @@ def assemble_beats(root: Path) -> tuple[Beat, ...]:
         root: The repository root.
 
     Returns:
-        Six :class:`Beat` records. A beat whose artifact is missing carries
+        Nine :class:`Beat` records. A beat whose artifact is missing carries
         ``missing`` rather than empty rows, so the renderer can say so.
     """
     return (
@@ -348,4 +502,10 @@ def assemble_beats(root: Path) -> tuple[Beat, ...]:
         _beat_overlap(root),
         _beat_revocation(root),
         _beat_audit(root),
+        # 7, 8 and 9 close the gap between what the demo showed and what the
+        # product does. The script closes on the three-clause pitch and beats
+        # 1 to 6 demonstrate only the middle clause.
+        _beat_price_list(root),
+        _beat_tunability(root),
+        _beat_gate(root),
     )

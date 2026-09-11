@@ -7898,3 +7898,55 @@ documented run order enforced nowhere — is unchanged, and the honest fix is ea
 script refusing when the artifact it reads is absent or older than its own
 input. That stays **OPEN** in 157. This closes the one case that bit, which is
 worth more than a design for the ones that have not.
+
+---
+
+## 159 - The demo closed on a three-clause pitch and demonstrated one clause
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED
+
+**`docs/DEMO.md`'s closing line is this project's whole proposition:**
+
+> *"We tell you what your error rate is on your traffic. We tell you when that
+> number stops being true. And we tell you what it costs to keep it true."*
+
+**The demo had six beats and all six are the middle clause.** Refusal, profiles,
+the tier ladder, the overlap pilot, drift and revocation, the audit chain — every
+one is about a warrant's lifetime. Nothing on screen showed what an error rate on
+*your* traffic costs to establish, and nothing showed the price list, because
+until 147 and 146 neither existed.
+
+That was defensible while the code did not exist. It is not defensible now, and
+the gap has a specific shape worth naming: **the closing line was making a claim
+the demonstration did not support** — which is the failure this entire product is
+built to prevent, arriving through the deck.
+
+**Decision.** Three beats, each reading its numbers from the artifact it cites:
+
+| beat | shows | artifact |
+|---|---|---|
+| 7 | the on-traffic warrant and the price list — clauses one and three | `results/on_traffic/` |
+| 8 | tunability: a detector that cannot be moved to your budget at all | `results/scorefree/` |
+| 9 | the action gate, whose two most important rules read no detector | `results/gate/` |
+
+Every row is rendered from `results/`; nothing is typed. A beat whose artifact is
+missing reports itself absent rather than rendering blank, which was already the
+module's rule.
+
+**Each carries its caveat on screen rather than in a footnote.** Beat 7 says no
+production traffic exists here. Beat 8 says the judge is simulated and every
+figure is an upper bound. Beat 9 says, in the beat itself, that this is **not** a
+robustness claim and that published work broke twelve injection defences at over
+90% attack success. A demo is where a caveat is most likely to be dropped and
+most expensive to have dropped.
+
+**The test moves with it.** `test_all_six_beats_assemble` becomes
+`test_all_nine_beats_assemble`, gains a check that the numbering has no gaps, and
+gains `test_the_three_clauses_each_have_a_beat` — so a future clause with no
+demonstration behind it fails rather than being noticed on camera.
+
+**The objection.** *"Documentation is deferred to a closing phase."* The deferral
+covers narrative prose. This is the demo's content, it is generated from
+artifacts by code, and the thing being fixed is a claim on a slide that the
+evidence did not support — which is the one category `CLAUDE.md` never defers.

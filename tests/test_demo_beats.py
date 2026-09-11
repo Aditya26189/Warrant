@@ -1,8 +1,13 @@
-"""The six beats assemble from committed artifacts, or say why they cannot.
+"""The nine beats assemble from committed artifacts, or say why they cannot.
 
 A demo that silently skips a beat shows only what happened to work. These
 tests exist so that a missing artifact on submission day is a failing test
 rather than a gap discovered on camera.
+
+Six beats until 2026-09-11. Beats 7, 8 and 9 -- the on-traffic price list,
+tunability, and the action gate -- were added once the work behind them
+existed: the demo closes on this project's three-clause pitch and the first six
+demonstrate only the middle clause.
 """
 
 from __future__ import annotations
@@ -17,11 +22,28 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 BEATS = assemble_beats(PROJECT_ROOT)
 
 
-def test_all_six_beats_assemble() -> None:
+def test_all_nine_beats_assemble() -> None:
     """Every beat has its artifact. A missing one names itself."""
     missing = [f"beat {b.number}: {b.missing}" for b in BEATS if b.missing]
     assert not missing, "beats could not be assembled:\n  " + "\n  ".join(missing)
-    assert len(BEATS) == 6
+    assert len(BEATS) == 9
+    # Numbered in running order with no gaps: a beat that quietly stopped
+    # assembling would otherwise leave a hole nobody notices until the demo.
+    assert [b.number for b in BEATS] == list(range(1, 10))
+
+
+def test_the_three_clauses_each_have_a_beat() -> None:
+    """The demo closes on the pitch; it should also demonstrate it.
+
+    Beats 1 to 6 cover the middle clause -- when a number stops being true.
+    Clause one (what your error rate is on your traffic) and clause three
+    (what it costs to keep it true) had no beat until the work behind them
+    existed, and the closing line claimed all three regardless.
+    """
+    titles = {b.number: b.title.lower() for b in BEATS}
+    assert "your traffic" in titles[7] and "costs" in titles[7]
+    assert "tune" in titles[8]
+    assert "detector loses" in titles[9]
 
 
 @pytest.mark.parametrize("beat", BEATS, ids=lambda b: f"beat{b.number}")
