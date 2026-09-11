@@ -6910,6 +6910,348 @@ quote an impossible one.
 
 ---
 
+## 147 - The recall sample size was a prevalence sizing in recall units, and it is the error this project was built to prevent
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED
+- **Supersedes:** the pointer in `sizing.py::workload_price_list` that named
+  `review.recall_sample_size` as the honest operationalisation of `q`.
+
+**The finding.** `CLAUDE.md` opens its silent-failure list with *"sizing
+prevalence and calling it recall"*, `SPEC.md` §6.2 calls it "the error the spec
+exists to prevent", and `docs/CONTRIBUTING.md` uses a fix for it as the worked
+example of a good commit message. `controlplane/economics/review.py` has been
+committing it since Phase 3.
+
+`recall_sample_size` returns
+
+    n = z^2 * R * (1 - R) / m^2 * design_effect
+
+labelled `unit="reviewed items"` and named *"reviewed items for recall +/- m"*.
+That is a binomial sizing for `R` estimated by drawing `n` items **from the
+population of true errors** and checking whether each was flagged. Nobody can
+run that design: the error population is not enumerable without the labels the
+sample exists to buy. It is the one sampling design that makes the formula
+correct and the only one that is unavailable.
+
+**What the shipped design actually is.** Stratum A (flagged) is reviewed in
+full, so `TP` is an exact count. Stratum B (unflagged) is sampled, and what the
+sample estimates is `q`, the prevalence of errors among the unflagged. Recall is
+a *function* of that estimate:
+
+    R      = TP / (TP + q*N_u)
+    dR/dq  = -TP*N_u / (TP + q*N_u)^2
+    m_q    = m_R / |dR/dq|
+    n      = z^2 * q(1-q) / m_q^2
+
+**Measured, against `results/feasibility.json` as published today.** Both
+columns carry the same declared design effect of 0.67, so the factor is the
+defect and nothing else:
+
+| profile | R | f | q | dR/dq | m_R | shipped | correct | factor |
+|---|---|---|---|---|---|---|---|---|
+| customer_support | 0.2171 | 0.1062 | 0.02628 | -6.467 | 0.05 | 175 | 1,096 | **6.3x** |
+| customer_support | | | | | 0.02 | 1,094 | 6,632 | **6.1x** |
+| internal_knowledge | 0.3603 | 0.1865 | 0.02359 | -9.770 | 0.05 | 238 | 2,233 | **9.4x** |
+| internal_knowledge | | | | | 0.02 | 1,483 | 13,016 | **8.8x** |
+| decision_support | 0.7367 | 0.4677 | 0.01484 | -13.072 | 0.05 | 200 | 2,511 | **12.6x** |
+| decision_support | | | | | 0.02 | 1,249 | 13,964 | **11.2x** |
+
+The factor is `q(1-q)(dR/dq)^2 / (R(1-R))`, damped slightly by the
+finite-population correction at the wider margins. The `(dR/dq)^2` in it is what
+`SPEC.md` §6.2 and the Phase 6 gate both demand a test for. The gate names
+`test_sizing_derivative`; it has never existed.
+
+**The first draft of this table was wrong, and the way it was wrong belongs
+here.** It read 9.4x to 19.2x, because the corrected column was computed
+without the design effect and the shipped column with it — a factor of
+`1/0.67 = 1.49` applied to one side of a ratio and not the other. That is the
+same class of error as the defect this entry corrects, one level up: two
+quantities compared without checking that they were in the same units. It was
+caught by recomputing through the module rather than in a scratch script, which
+is the only reason it did not ship inside a correction notice.
+
+**The second reading is worse, not better.** Read `n` charitably as a count of
+*confirmed errors* the sample must contain, and the formula is right — but
+reaching 175 confirmed errors at a declared 3% base rate costs 5,833 reviewed
+items, not 175. Under either reading the published figure understates the bill
+by roughly an order of magnitude, and under the charitable one the unit is
+simply false.
+
+**No outward-facing number is wrong today**, which is checkable rather than
+asserted: `recall_sample_size` appears in no row of the `README.md` claim table
+and in no line of `results/RESULTS.md`. It reaches `results/feasibility.json`
+and the log of `scripts/11_feasibility.py`. The defect is in what the repository
+would have told the first person who budgeted from it.
+
+**How it survived.** Every control in this repository checks whether a number is
+*arithmetically reproducible from its artifact*. `recall_sample_size` is, to the
+last digit — `make verify` would confirm it forever. Three tests cover it and
+all three test the formula against itself: that sizing at the measured recall
+beats sizing at 0.5, that a finer margin costs more, that a zero margin raises.
+None asks what quantity the number is in. This is the audit's finding of
+2026-09-09 one level deeper: *the machinery checks arithmetic, not question
+design* — and here the wrong question was asked in code rather than in prose, so
+even the causal-claim register could not reach it.
+
+**Decision.** Build `controlplane/sampling/` — the Phase 6 package that four
+contract documents specify and none of which was ever written — and make the
+derivative propagation the only path to a recall sample size.
+
+1. `sampling/planning.py` computes `dR/dq` in closed form and sizes through it.
+   It is a **planning** figure over **declared** inputs and says so, carrying
+   the `declared_inputs` idiom `review.py` already set. A sample size is always
+   a planning figure; the dishonesty is not in declaring `q`, it is in hiding
+   that you did.
+2. `sampling/estimator.py` is the measurement half: stratum A exact, stratum B
+   estimated, recall returned as an interval propagated through the same
+   derivative. Yield exact, rate estimated, at the level of the estimator.
+3. `review.recall_sample_size` is not deleted and not silently corrected. It
+   keeps its arithmetic, gains the estimand it is actually for, and refuses the
+   unit it never had. A function renamed away leaves nothing for a reader who
+   remembers the old number to find.
+
+**The alternative rejected.** Patch the formula in place and move on. Rejected
+because the number moves by up to 19x and the reason has to be findable from the
+number: someone has `results/feasibility.json` from before today, and the only
+thing that explains 175 becoming 1,645 is this entry.
+
+**The objection a reviewer will raise.** *"You derived `q` from a declared
+workload after `sizing.py` refused to, so you did the thing your own code called
+manufacturing an estimand."* Correct that it is derived and not measured, wrong
+that the refusal was the right call. `sizing.py`'s note was right that `q` is an
+estimand and wrong that this makes it unquotable: a sample size is by
+construction computed before the measurement exists, so every sample size in
+statistics is conditioned on an assumed value of the thing being measured. The
+defensible form is to declare it, label it declared, and report the realised
+margin against the planned one once the labels land. That is what
+`estimator.py` returns and what `sizing.py`'s refusal left unbuilt.
+
+**Registered before the code, per the working rules:** the gate is
+`test_sizing_derivative` as `SPEC.md` §6.2 words it — sizing for recall differs
+from sizing for prevalence by exactly `(dR/dq)^2` — plus `test_sizing_units`
+(no sample size without a declared estimand), `test_stratified_unbiased`
+(nominal coverage over 1,000 synthetic trials with known ground truth) and
+`test_blinding`. If coverage lands outside `[0.93, 0.97]` the estimator is
+reported as failing, not retuned.
+
+---
+
+## 148 - The 232x in CLAUDE.md and SPEC.md is the right number attached to the wrong ratio
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED
+- **Found by:** implementing 147, which had to compute the ratio to use it.
+
+**The sentence**, identical in `CLAUDE.md`'s silent-failure list and `SPEC.md`
+§6.2:
+
+> The amplification is structural: the unflagged pool is ~232x the flagged one,
+> so any error in `q` is multiplied by that ratio on its way into `R`.
+
+**At the declared workload, measured:**
+
+| ratio | value |
+|---|---|
+| `N_u / N_flagged` — the unflagged pool against the flagged one | **66.0** |
+| `N_u / TP` — the unflagged pool against the confirmed true positives | **231.9** |
+| `N_u / E` — the unflagged pool against all errors in the month | 32.8 |
+
+`N_u = 197,016`, `N_flagged = 2,984`, `TP = 850`, at `N = 200,000`,
+`base_error_rate = 0.03` and the flag rate `0.014918` implied by the Round 1
+operating point.
+
+**So the number is right and the noun is wrong**, and the second half of the
+sentence is what makes it decidable rather than a matter of taste. `R = TP /
+(TP + q*N_u)`. A perturbation `dq` moves the denominator by `dq*N_u`, and what
+decides whether that matters is its size *relative to `TP`* — the other term in
+the same denominator. So the ratio that multiplies is `N_u/TP = 232`. The
+flagged pool never appears in the derivative at all; it contains the false
+positives, which are exactly the items that do not enter `R`.
+
+**Why it is worth an entry rather than a typo fix.** This is the paragraph the
+project uses to demonstrate that it takes propagation seriously, quoted in five
+documents. A reviewer who checks it finds 66 where the text says 232, and the
+cheapest available conclusion is that the number was invented — which would
+discredit the derivation that is in fact correct. A wrong label on a right
+number is more damaging here than a wrong number would be, because the wrong
+number would be caught by the arithmetic check that the label evades.
+
+**Decision.** Correct the sentence in both contract documents to name `TP`, and
+make the code carry both ratios under distinct names — `amplification` for
+`N_u/TP` and `pool_ratio` for `N_u/N_flagged` — so `render()` prints them side
+by side and the two can no longer be reached by the same word. The
+documentation-phase deferral in `CLAUDE.md` covers narrative and reconciliation
+work, not a factual error in a binding contract that a reader will check.
+
+**The objection.** *"You are editing a contract mid-build, which the process
+forbids."* The rule defers reconciling contracts against *shipped behaviour*,
+because behaviour is still moving. Nothing about this sentence is a divergence
+between code and contract: it is arithmetic, it is wrong, and it will be equally
+wrong at the documentation phase with three more months of documents quoting it.
+
+**No measured number moves.** `dR/dq = -4.650` is unchanged and continues to
+match `SPEC.md` §6.2's worked value; the ratio is a gloss on it, not an input to
+it. Verified by recomputing the derivative both ways: `TP*N_u/E^2` and
+`R*N_u/E` both give 4.6496, and neither expression contains `N_flagged`.
+
+---
+
+## 149 - The spec's closed form does not deliver its own margin, and the cause is the linearisation rather than the exactness
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED
+- **Found by:** `test_a_plan_is_honoured_by_the_estimator`, written to check that
+  two modules agree rather than that one agrees with itself.
+
+**`SPEC.md` §6.2 sizes a recall margin like this:**
+
+    m_q = m_R / |dR/dq|
+    n   = z^2 q(1-q) / m_q^2
+
+That is the delta method: translate the recall margin into a prevalence margin
+through the local slope, then size the prevalence estimate. It is the standard
+move and it is what `sampling/planning.py` implements under `basis="normal"`.
+
+**It does not deliver `m_R`.** At the declared workload, feeding the figure it
+returns into the estimator that publishes the interval:
+
+| target `m_R` | n from the closed form | half-width actually realised | short by |
+|---|---|---|---|
+| 0.05 | 846 | 0.0546 | 9% |
+| 0.02 | 5,286 | 0.0206 | 3% |
+| 0.01 | 21,143 | 0.0101 | 1% |
+
+**The obvious explanation is wrong, and it is worth saying why.** The reflex is
+"Clopper-Pearson is conservative, so an exact interval is wider than the normal
+one the sizing assumed." Decomposing the shortfall into the two candidate
+causes — the linearisation, and the switch from a Wald interval to an exact one —
+says otherwise:
+
+| `m_R` | linearised (what was sized) | Wald on `q`, mapped through `R` | Clopper-Pearson, mapped | share from linearisation | share from exactness |
+|---|---|---|---|---|---|
+| 0.05 | 0.05000 | **0.05751** | 0.05461 | 163% | **-63%** |
+| 0.02 | 0.02000 | 0.02044 | 0.02056 | 79% | 21% |
+| 0.01 | 0.01000 | 0.01004 | 0.01011 | 39% | 61% |
+
+At the margin this project actually quotes, **exactness makes the interval
+narrower, not wider**, and the entire shortfall is the linearisation. The reason
+is that Clopper-Pearson is right-skewed at small `p`: its lower bound on `q`
+sits *above* Wald's, and `R` is steepest at low `q`, so a higher lower bound on
+`q` pulls the upper bound on `R` down hard.
+
+**And the linearisation fails because `R` is nowhere near linear across the
+interval.** At `n = 846` the interval on `q` runs from 0.016 to 0.039, over
+which `R` moves from 0.21 to 0.10 — a factor of two. A first-order expansion is
+being asked to hold across a doubling of the quantity it expands. The error
+shrinks as the margin tightens, which is exactly what a first-order expansion
+should do and is why the shortfall falls from 9% to 1% down the table.
+
+**Decision: size against the interval that will be published.**
+`labels_for_recall` defaults to `basis="exact"` — the smallest `n` from which
+the Clopper-Pearson-induced recall half-width meets the target **and keeps
+meeting it**, by the same stable-threshold rule `DECISIONS.md` 146 established
+for `negatives_for_detection` and for the same reason: the predicate is not
+monotone in `n`, because the observed count is `round(q*n)` and the integer
+jumps.
+
+| `m_R` | closed form | **quoted** | more labels |
+|---|---|---|---|
+| 0.05 | 846 | **1,014** | +20% |
+| 0.02 | 5,286 | **5,566** | +5% |
+| 0.01 | 21,143 | **21,671** | +2% |
+
+**The closed form is still reported on every plan**, in `labels_normal`. It is
+what a reader recomputes by hand from `SPEC.md`, and a quoted figure that
+silently disagrees with the spec reads as an arithmetic error rather than as a
+correction. The gap is printed, not hidden.
+
+**`SPEC.md` §6.2 is not withdrawn.** Its derivative is right, its propagation is
+right, and its identity — that sizing for recall differs from sizing for
+prevalence by `(dR/dq)^2` — is exact and is the registered gate, which
+`test_sizing_derivative` asserts against the closed form and not against the
+exact search. What is wrong is treating a first-order result as a delivery
+promise.
+
+**The objection.** *"You have made the tool quote 20% more labels than the
+published spec, on a refinement most people would not bother with."* The 20%
+buys the difference between a margin promised and a margin met, in a product
+whose entire proposition is that a stated bound is one you can hold someone to.
+A sample size that misses its margin 100% of the time is the cheapest possible
+way to lose that argument, and it costs 168 labels at the widest tier.
+
+**Two guards, because one of them nearly failed.** The finite-population
+correction was applied on the planning side and not on the reporting side while
+this was being built — a plan sized with it against an interval published
+without it, which promises a margin the estimator cannot meet. That is
+`DECISIONS.md` 147's defect in miniature, inside the module fixing it. The
+correction is now off by default on both sides, and
+`test_a_plan_is_honoured_by_the_estimator` is what caught it: the only test here
+that cannot pass by a formula agreeing with itself.
+
+---
+
+## 150 - The month-one price was quoted at Neyman's design effect, which month one cannot have
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED
+- **Found by:** writing `scripts/25_on_traffic.py`, which committed the defect
+  first and then had it read back against `CLAUDE.md`.
+
+**`CLAUDE.md`'s silent-failure list, verbatim:**
+
+> **Neyman allocation on day one.** Neyman needs per-band prevalence `q_h` you
+> don't have yet. Month one runs proportional allocation at **full SRS cost**.
+> Design for it; say it in the README.
+
+`config.yaml` carries `sampling.expected_design_effect: 0.67`, commented
+"~1.5x. Measure, don't assume." That figure is **Neyman's** design effect — the
+variance reduction from concentrating labels in the high-variance bands. It is
+also an expectation rather than a measurement, which its own comment says.
+
+**`scripts/11_feasibility.py` applies it to every sample size it publishes**, and
+`results/feasibility.json` records `expected_design_effect: 0.67` in its
+declared block. Every figure in that artifact is therefore a month-one quantity
+priced at a steady-state discount, on top of the estimand error in 147.
+
+**Measured:** the effect is `1/0.67 = 1.49`, so the first month is under-sized by
+about 50% — in the one month when there is no prior estimate to notice it
+against, which is what makes it the failure `CLAUDE.md` singles out rather than
+a rounding choice.
+
+**Decision.** The price list quotes two regimes and never one:
+
+| subject, ±0.05 | month one (proportional, full SRS) | steady state (Neyman, measured) |
+|---|---|---|
+| declared workload point | **1,014** | 804 |
+| customer_support | **1,189** | 943 |
+| internal_knowledge | **3,226** | 2,558 |
+| decision_support | **4,046** | 3,208 |
+
+The steady-state column uses a design effect **measured** from a band structure
+(0.7929) rather than `config.yaml`'s expected 0.67 — the spec's own instruction,
+and the measured value is 18% worse than the expectation, which is the direction
+`SPEC.md` §6.3 warns about when it says to treat 2x as a good outcome.
+
+`proportional()` returns `design_effect=None` rather than 1.0, deliberately.
+Returning 1.0 would assert a measurement nobody made; `None` says there is
+nothing to compare against yet, which is the true state of month one.
+
+**The objection.** *"Proportional stratification does reduce variance below
+simple random sampling, so 1.0 over-sizes month one."* It does reduce it, and by
+very little — the gain is second-order in the between-band spread of `q_h`,
+which is the quantity month one does not know. Charging full SRS price errs
+toward more labels than needed, which is the safe direction here, and `CLAUDE.md`
+already made that call.
+
+**Not fixed here:** `results/feasibility.json` still carries the 0.67. It is
+superseded rather than regenerated, because the quantity it sizes is the wrong
+estimand under 147 regardless of which design effect multiplies it, and
+regenerating it would produce a corrected-looking wrong number. The artifact
+stands with 147 and 150 against it.
+
+---
+
 ## 151 - A required deliverable was destroyed by an unrelated commit and nothing looked for twenty commits
 
 - **Date:** 2026-09-11

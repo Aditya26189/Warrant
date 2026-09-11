@@ -420,14 +420,20 @@ def workload_price_list(workload: Mapping[str, float]) -> dict[str, object]:
     another is silently wrong and survives a reviewer with a calculator only
     until they use it.
 
-    **``q`` and ``dR/dq`` are deliberately absent**, though the comment in
-    ``config.yaml`` lists them. ``q`` is the prevalence of errors in the
-    *unflagged* pool: an estimand, measured with labels, not derived from a
-    workload block. Deriving it here would manufacture the exact quantity the
-    sampling phase exists to measure, and the recall-sensitivity derivative
-    built on it would inherit that fiction.
-    :func:`controlplane.economics.review.recall_sample_size` is what
-    operationalises it honestly, by sizing the labels needed to learn it.
+    **``q`` and ``dR/dq`` are absent here and live in**
+    :func:`controlplane.sampling.planning.recall_sensitivity`. ``q`` is the
+    prevalence of errors in the *unflagged* pool: an estimand, measured with
+    labels, not a property of a workload block. It is still *declared* for
+    planning purposes -- every sample size is computed before the measurement
+    it sizes, so it is always conditioned on an assumed value -- but it is
+    declared there, labelled as declared, and reported against the realised
+    value once labels land.
+
+    An earlier version of this docstring named
+    :func:`controlplane.economics.review.recall_sample_size` as what
+    operationalises it honestly. That was wrong: the function propagated
+    through no derivative at all and was low by 6x to 13x as a label budget.
+    ``DECISIONS.md`` 147.
 
     Args:
         workload: The ``workload`` block: ``monthly_interactions``,

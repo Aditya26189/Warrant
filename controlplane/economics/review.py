@@ -141,16 +141,28 @@ def recall_sample_size(
     design_effect: float = 1.0,
     operating_point_id: str = "",
 ) -> ReviewSizing:
-    """Reviewed items needed for a recall interval of half-width ``margin``.
+    """**Superseded.** Confirmed *errors* a recall interval needs, not items.
 
-    The normal-approximation sample size for a proportion,
+    .. warning::
 
-        n = z^2 * p * (1 - p) / margin^2,
+       ``DECISIONS.md`` 147. This function shipped for four phases labelled
+       ``unit="reviewed items"``, and it never returned reviewed items. Use
+       :func:`controlplane.sampling.planning.labels_for_recall`, which
+       propagates through ``dR/dq`` and sizes against the interval
+       :mod:`controlplane.sampling.estimator` actually publishes. At the three
+       shipped operating points this figure was low by 6x to 13x.
 
-    inflated by the design effect. ``p`` here is the **measured** recall, which
-    is the right centre to size around: sizing at ``p = 0.5`` is the
-    conservative textbook choice and would overstate the requirement by a factor
-    of nearly three at these recalls.
+    It is kept, with its arithmetic unchanged and its unit corrected, because a
+    function renamed away leaves nothing for a reader who still has the old
+    number to find.
+
+    What the formula is right for: ``n = z^2 p(1-p)/m^2`` at ``p = recall`` is
+    the sample size for estimating recall by drawing ``n`` items **from the
+    population of true errors** and checking whether each was flagged. That is a
+    real design and it is the one design nobody can run, because the error
+    population is not enumerable without the labels the sample exists to buy.
+    Reaching ``n`` confirmed errors costs roughly ``n / base_error_rate``
+    reviewed items -- another factor of 33 at a declared 3% base rate.
 
     Args:
         recall: **Measured** recall at the operating point.
@@ -161,7 +173,8 @@ def recall_sample_size(
         operating_point_id: For labelling only.
 
     Returns:
-        The required number of reviewed items, rounded up.
+        The required number of **confirmed errors**, rounded up. Not items, and
+        not labels.
 
     Raises:
         ValueError: If ``recall`` is not a rate, ``margin`` is not positive, or
@@ -177,11 +190,11 @@ def recall_sample_size(
     n = (_Z_95**2) * recall * (1.0 - recall) / (margin**2) * design_effect
     return ReviewSizing(
         name=(
-            "reviewed items for recall +/- "
+            "SUPERSEDED: confirmed errors for recall +/- "
             f"{margin:g}{f' @ {operating_point_id}' if operating_point_id else ''}"
         ),
         value=float(math.ceil(n)),
-        unit="reviewed items",
+        unit="confirmed errors (NOT reviewed items)",
         measured_inputs={"recall": recall},
         declared_inputs={
             "margin": margin,
@@ -189,8 +202,12 @@ def recall_sample_size(
             "confidence": 0.95,
         },
         note=(
-            "Normal approximation, sized at the measured recall rather than at "
-            "p=0.5. The design effect is declared, not measured -- config.yaml "
-            "says 'measure, don't assume', and it has not been measured."
+            "SUPERSEDED by sampling.planning.labels_for_recall -- DECISIONS.md "
+            "147. This is a count of confirmed errors the sample must contain, "
+            "under a design that draws from the error population and which "
+            "nobody can run. It was published as 'reviewed items' for four "
+            "phases and was low by 6x to 13x as a label budget. Normal "
+            "approximation, sized at the measured recall rather than at p=0.5. "
+            "The design effect is declared, not measured."
         ),
     )

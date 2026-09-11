@@ -26,11 +26,14 @@ measurement and nothing here carries an interval:
   of cadences. It recommends no cadence and it refuses when no sample size
   works.
 
-**Still not built, and still cited by contracts:** the stratified on-traffic
-estimator, the Neyman allocation schedule, the blinded label queue, Cohen's κ,
-and ``test_no_scenario_mixing``. A cost figure that does not come from
-``sizing.py`` remains a hand-derived declared estimate and must be labelled
-one. See ``DECISIONS.md`` 099 for exactly which line moved and which did not.
+**Now built, in** :mod:`controlplane.sampling` (``DECISIONS.md`` 147): the
+stratified on-traffic estimator, the Neyman allocation schedule, the blinded
+label queue, Cohen's κ, and ``test_no_scenario_mixing``. That package also
+supersedes :func:`review.recall_sample_size`, which sized a binomial on recall
+directly and was low by 6x to 13x as a label budget. A cost figure that does
+not come from ``sizing.py`` or ``sampling/`` remains a hand-derived declared
+estimate and must be labelled one. See ``DECISIONS.md`` 099 for exactly which
+line moved and which did not.
 
 The distinction this package keeps: a **measured** input comes from an artifact
 in ``results/``; a **declared** input comes from ``config.yaml`` and is a choice
