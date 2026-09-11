@@ -183,7 +183,17 @@ def decide(
 
     # -- Rule 2. No detector input reaches this either. ---------------------- #
     if violated and irreversible:
-        assert session is not None  # rule_of_two_violated is False for None
+        if session is None:  # pragma: no cover - unreachable by construction
+            # Raised, not asserted: `python -O` strips assert statements, so a
+            # guard written that way is absent exactly in an optimised
+            # production run. rule_of_two_violated() returns False for None, so
+            # reaching here means the two have drifted apart -- and the gate
+            # refusing loudly is the only safe response in a security rule.
+            raise AssertionError(
+                "rule 2 fired with no session. rule_of_two_violated(None) is "
+                "False, so this is unreachable unless session.py and gate.py "
+                "have diverged. Refusing rather than guessing."
+            )
         already = "holds" if already_violated else "would hold"
         trail = " then ".join(session.history) or "no prior tool"
         return GateDecision(

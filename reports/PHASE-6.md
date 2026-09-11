@@ -220,6 +220,14 @@ Two further defects surfaced in the same pass:
   `range(draws)` received a list on the second iteration. Worth recording
   because the same shadowing in a function whose loop runs once would not have
   surfaced at all.
+- **An `assert` in library code**, in the gate itself.
+  `test_no_assert_statements_in_library_code` exists because `python -O` strips
+  `assert` statements, so a guard written that way is **absent exactly in an
+  optimised production run**. Rule 2 carried one — a type-narrowing hint that
+  `session is not None` — and in an optimised run its absence would have turned
+  a clear refusal into an `AttributeError` from inside a security rule. Now an
+  explicit `raise` the optimiser cannot remove. A pre-existing guard caught a
+  new defect in the newest package, which is what the guard is for.
 - **A stale assertion.** `test_smoke_feasibility` checked that the artifact's
   note said the price list was *"not built"*. It is built now, so the test was
   asserting the absence of work that had been done. Both it and the note now
