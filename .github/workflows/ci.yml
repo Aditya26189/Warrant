@@ -188,10 +188,14 @@ jobs:
         run: |
           free -h
           echo "cores: $(nproc)"
+          # -rxX prints the reason on every xfail and xpass. DECISIONS 145 is
+          # carried as an xfail with the child's crash output in its reason, so
+          # without this the one known defect on this platform would be a
+          # silent 'x' in the summary.
           if [ -x /usr/bin/time ]; then
-            /usr/bin/time -v python -m pytest tests/ -vv
+            /usr/bin/time -v python -m pytest tests/ -vv -rxX
           else
-            python -m pytest tests/ -vv
+            python -m pytest tests/ -vv -rxX
           fi
 
       - name: Verify every published claim recomputes

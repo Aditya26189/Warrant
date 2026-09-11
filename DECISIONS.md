@@ -6794,3 +6794,40 @@ tests get to run.
 `regopy`, the fix is in read-only territory and belongs to whoever owns it: run
 the entrypoint probe in a subprocess so a native abort becomes an exit code,
 which is the only way to convert `abort()` into a Python exception.
+
+### Confirmed, and the first Linux result for the rest of the suite
+
+**The isolation worked and the defect is real.** The Linux run reported
+`1 failed, 1088 passed` in 6:53. The child died on **signal 6**, the parent
+survived, and every other test in this repository ran on Linux for the first
+time. All of them pass. That is worth stating on its own: the 1088 were an
+unknown until this run, and "the suite is green" meant "green on one Windows
+laptop" for the whole life of the project.
+
+Peak RSS for the complete run was 7.1 GB against 16 GB — headroom, but not a
+lot of it, and worth knowing before anyone adds a fixture.
+
+**The cause is still not named, and that is my second diagnostic error here.**
+The failure message captured `stderr[-4000:]`. On a fatal signal faulthandler
+prints the reason *first*, then a traceback, then one enormous
+`Extension modules:` line — so the tail is guaranteed to be the back half of a
+module inventory. Four thousand characters of scipy and sklearn internals, and
+not one word about what aborted. Both of my diagnostic mistakes in this entry
+have the same shape: I collected the part of the output that was easy to reach
+rather than the part that carried the answer.
+
+`_cause_of_death` now drops the inventory line and keeps the head.
+
+**Why it is an xfail rather than a failure.** This project already decided the
+principle, in 143, about revocation: a signal that fires on a condition nobody
+is going to act on teaches its reader to ignore the signal, and the one that
+matters then arrives looking like the others. A CI that is permanently red for
+a known, recorded defect in a read-only zone is exactly that mistake. So the
+defect is an `xfail` carrying the crash output in its reason, printed by
+`-rxX`, and CI goes red only for something new.
+
+It is the imperative `pytest.xfail()` rather than a marker, deliberately: the
+branch is only reached when the child actually dies, so if the abort ever stops
+happening the test passes normally and nobody has to remember to remove
+anything. This stays OPEN until the cause is named and the promise in
+`engine.py` is either true on Linux or withdrawn.
