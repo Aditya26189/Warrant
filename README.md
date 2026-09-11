@@ -33,9 +33,9 @@
 
 <br/>
 
-<img src="https://img.shields.io/badge/Tests-1168_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1168 tests" />
+<img src="https://img.shields.io/badge/Tests-1166_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1166 tests" />
 &nbsp;
-<img src="https://img.shields.io/badge/Claims-40_verified-2da44e?style=for-the-badge" alt="40 claims verified" />
+<img src="https://img.shields.io/badge/Claims-49_verified-2da44e?style=for-the-badge" alt="49 claims verified" />
 &nbsp;
 <img src="https://img.shields.io/badge/AUROC-0.8256-6366f1?style=for-the-badge" alt="AUROC 0.8256" />
 &nbsp;
@@ -227,6 +227,15 @@ here fails the build.**
 | ...its precision | 0.7743 | [0.7220, 0.8281] | results/fpr_sweep_oos/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].precision.value | python scripts/20_fpr_sweep_oos.py |
 | ...its lift | 1.677 | [1.535, 1.826] | results/fpr_sweep_oos/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].lift.value | python scripts/20_fpr_sweep_oos.py |
 | Thresholds certified on validation, scored on test | True | - | results/fpr_sweep_oos/sweep.json | sweeps[eval_set_id=triviaqa-600].out_of_sample | python scripts/20_fpr_sweep_oos.py |
+| `dR/dq` at the declared workload | -4.6496 | - | results/on_traffic/on_traffic.json | headline.derivative | python scripts/25_on_traffic.py |
+| Unflagged pool against confirmed true positives | 231.9 | - | results/on_traffic/on_traffic.json | headline.amplification_over_confirmed_errors | python scripts/25_on_traffic.py |
+| ...against the flagged pool, which is a different ratio | 66.0 | - | results/on_traffic/on_traffic.json | headline.pool_ratio_over_flagged | python scripts/25_on_traffic.py |
+| Labels for recall +/-0.05, month one, full SRS cost | 1014 | - | results/on_traffic/on_traffic.json | headline.labels_month_one_5pp | python scripts/25_on_traffic.py |
+| ...at steady state, Neyman at the measured design effect | 804 | - | results/on_traffic/on_traffic.json | headline.labels_steady_state_5pp | python scripts/25_on_traffic.py |
+| ...what the superseded sizing quoted (DECISIONS 147) | 187 | - | results/on_traffic/on_traffic.json | headline.superseded_sizing_5pp | python scripts/25_on_traffic.py |
+| Labels for recall +/-0.02, month one | 5566 | - | results/on_traffic/on_traffic.json | headline.labels_month_one_2pp | python scripts/25_on_traffic.py |
+| Recall-interval coverage, 1000 trials, nominal 0.95 | 0.9680 | - | results/on_traffic/on_traffic.json | headline.coverage | python scripts/25_on_traffic.py |
+| Measured Neyman design effect vs the declared 0.67 | 0.7929 | - | results/on_traffic/on_traffic.json | headline.measured_design_effect | python scripts/25_on_traffic.py |
 
 <details>
 <summary><strong>📖 How to read this table</strong></summary>
@@ -285,7 +294,7 @@ controlplane/          the package — model, store, validation, matrix, drift, 
 evalsets/ & results/   frozen content-hashed evaluation sets; every artifact behind the table above
 scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
-tests/                 1168 tests, including the ones that enforce this README
+tests/                 1166 tests, including the ones that enforce this README
 docs/                  spec, methods, limitations, the case matrix, and the move mapping
 DECISIONS.md           143 append-only decision entries
 reports/               one close-out report per phase — read PHASE-0.md first
@@ -359,7 +368,7 @@ tour is [docs/CODE_TOUR.md](docs/CODE_TOUR.md).
 | Target | Without `make` | Requires | Time | Proves |
 |:---|:---|:---|:---|:---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | The clone works and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 1168 tests green |
+| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 1166 tests green |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **Every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` (tier 3) | `python scripts/verify.py` | CPU + cached activations | ~4 min | The frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | Activations regenerate from the source model |
