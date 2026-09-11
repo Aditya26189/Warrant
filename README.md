@@ -35,7 +35,7 @@
 
 <img src="https://img.shields.io/badge/Tests-1181_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1181 tests" />
 &nbsp;
-<img src="https://img.shields.io/badge/Claims-49_verified-2da44e?style=for-the-badge" alt="49 claims verified" />
+<img src="https://img.shields.io/badge/Claims-58_verified-2da44e?style=for-the-badge" alt="58 claims verified" />
 &nbsp;
 <img src="https://img.shields.io/badge/AUROC-0.8256-6366f1?style=for-the-badge" alt="AUROC 0.8256" />
 &nbsp;
@@ -236,6 +236,15 @@ here fails the build.**
 | Labels for recall +/-0.02, month one | 5566 | - | results/on_traffic/on_traffic.json | headline.labels_month_one_2pp | python scripts/25_on_traffic.py |
 | Recall-interval coverage, 1000 trials, nominal 0.95 | 0.9680 | - | results/on_traffic/on_traffic.json | headline.coverage | python scripts/25_on_traffic.py |
 | Measured Neyman design effect vs the declared 0.67 | 0.7929 | - | results/on_traffic/on_traffic.json | headline.measured_design_effect | python scripts/25_on_traffic.py |
+| Tightest budget a single-sample judge can certify | 0.1045 | - | results/scorefree/scorefree.json | headline.single_sample_floor_median | python scripts/26_scorefree.py |
+| ...distinct operating points it offers | 1 | - | results/scorefree/scorefree.json | headline.operating_points_at_k1 | python scripts/26_scorefree.py |
+| Notches at k=50 | 51 | - | results/scorefree/scorefree.json | headline.notches_at_k50 | python scripts/26_scorefree.py |
+| ...distinct operating points they actually buy | 10 | - | results/scorefree/scorefree.json | headline.operating_points_at_k50 | python scripts/26_scorefree.py |
+| Samples before granularity stops binding, 200 negatives | 3 | - | results/scorefree/scorefree.json | headline.crossover_k_smallest_pool | python scripts/26_scorefree.py |
+| ...at 20,000 negatives | 7 | - | results/scorefree/scorefree.json | headline.crossover_k_largest_pool | python scripts/26_scorefree.py |
+| AUROC lost to a single sample | 0.2288 | - | results/scorefree/scorefree.json | headline.auroc_gap_at_k1 | python scripts/26_scorefree.py |
+| ...at nine samples | 0.0215 | - | results/scorefree/scorefree.json | headline.auroc_gap_at_k9 | python scripts/26_scorefree.py |
+| Certified at k=9, deployed at k=1: breach of the bound | 2.3521 | - | results/scorefree/scorefree.json | headline.breach_factor_deploying_at_k1 | python scripts/26_scorefree.py |
 
 <details>
 <summary><strong>📖 How to read this table</strong></summary>
