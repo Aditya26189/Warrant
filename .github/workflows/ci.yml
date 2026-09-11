@@ -169,53 +169,18 @@ jobs:
       #
       # No pipe on the pytest line. `cmd | tail` reports tail's status, so a
       # crashed suite would read as green -- the trap CLAUDE.md names.
-      # Narrowing the abort, one run rather than four.
-      #
-      # What the last run established: signal 6, peak RSS 1.37 GB on a 16 GB
-      # runner -- so memory is ruled out, it is not a failed allocation. The
-      # last file to finish was tests/test_policy.py, and the next one
-      # alphabetically is tests/test_presidio.py, which is the only file that
-      # loads spaCy's en_core_web_lg. The extension-module dump agrees: the
-      # whole spaCy pipeline is resident, and so is torch.
-      #
-      # What is still unknown is whether spaCy aborts here on its own or only
-      # in a process where torch is already loaded. These probes answer that,
-      # cheapest first. Every one is allowed to fail so a single run reports
-      # all of them instead of stopping at the first.
-      #
-      # It matters beyond CI: controlplane/external/registry.py imports torch
-      # in one scorer and presidio in another, so 23_certify_external.py can
-      # put both in one process. If this is an interaction rather than spaCy
-      # alone, that script has the same fault on Linux and nobody has run it
-      # there.
-      - name: Where does it abort
-        continue-on-error: true
-        env:
-          OMP_NUM_THREADS: "1"
-          MKL_THREADING_LAYER: GNU
-        run: |
-          set +e
-          probe () {
-            echo "--- $1"
-            python -c "$2"
-            echo "    exit $?"
-          }
-          probe "spaCy alone" \
-            "import spacy; spacy.load('en_core_web_lg'); print('ok')"
-          probe "presidio alone" \
-            "from presidio_analyzer import AnalyzerEngine; AnalyzerEngine(); print('ok')"
-          probe "presidio after torch -- the order the suite hits" \
-            "import torch; from presidio_analyzer import AnalyzerEngine; AnalyzerEngine(); print('ok')"
-          probe "torch after presidio -- the reverse order" \
-            "from presidio_analyzer import AnalyzerEngine; AnalyzerEngine(); import torch; print('ok')"
-          echo "--- the presidio file on its own"
-          python -m pytest tests/test_presidio.py -vv
-          echo "    exit $?"
-
       # -vv, not -v. pytest.ini carries `addopts = -q`, and -v only cancels it:
       # verbosity lands back at 0 and pytest prints `file.py ....` rather than
-      # one line per test. That is why the last run still could not name the
-      # test it died in, and it was my error rather than pytest's.
+      # one line per test. That is what finally named the abort:
+      #
+      #   tests/test_policy.py::test_an_entrypoint_the_module_does_not_define...
+      #
+      # printed with no outcome after it, because the process died mid-test.
+      # Not spaCy, which the dot count had suggested and which was a guess.
+      #
+      # That construction now runs in a child process, so a native abort is a
+      # legible failure carrying the signal and the child's stderr rather than
+      # a dead suite reporting nothing. See the test's own docstring.
       - name: Full test suite
         env:
           OMP_NUM_THREADS: "1"

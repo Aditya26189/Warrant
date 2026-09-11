@@ -6730,3 +6730,67 @@ Boost and CodeQL toolchains come off, and pip runs with `--no-cache-dir` so
 
 The cost is a slower job. The thing bought is that the check still tests the
 sentence a reader is asked to run.
+
+---
+
+## 145 - OPEN: a missing Rego entrypoint kills the process on Linux
+
+**Needs human review. `controlplane/policy/**` is read-only, so this is
+reported rather than fixed.**
+
+With the install fixed, the suite ran on Linux for the first time and died at
+`tests/test_policy.py::test_an_entrypoint_the_module_does_not_define_fails_at_construction`
+with **signal 6, SIGABRT**. No Python exception. The remaining ~700 tests never
+ran, and the traceback named `pytest.__main__` rather than any cause.
+
+**What it costs to find this was mostly self-inflicted, and worth recording.**
+Three runs, and the first two produced nothing usable:
+
+| | |
+|---|---|
+| dot count under `-q` | suggested `test_presidio.py` — **wrong** |
+| `-v` added to fix that | cancelled by `addopts = -q` in `pytest.ini`, verbosity back to 0 |
+| `-vv` | printed the test id with no outcome after it — the answer |
+
+Verbosity flags compose by increment and decrement, so `-v` against an ini
+`-q` is not "verbose", it is "default". Two CI cycles were spent on that.
+
+**Memory was ruled out by measurement**, not argument: peak RSS 1.37 GB on a
+16 GB runner. A failed C++ allocation reaching `std::terminate` was the other
+candidate and it is dead. `OMP_NUM_THREADS=1` did not stop the abort either,
+which weakens the OpenMP explanation that the module list invited.
+
+**The suspicion, stated as one.** The test builds an engine whose bundle names
+`data.controlplane.nonexistent`, and `engine.py` already documents this path:
+
+> Querying an entrypoint that does not exist raises a native exception through
+> the FFI boundary rather than a Python error. `__init__` therefore probes the
+> entrypoint at construction and converts the failure into a legible one,
+> because "the bundle names a rule the module does not define" must be a deploy
+> error and not a segfault under traffic.
+
+That mitigation is an `except Exception` around the probe. **`except Exception`
+cannot catch `abort()`.** On Windows the native failure arrives as something
+Python can catch and the test passes; on Linux, on this `regopy` build, it
+appears not to. I have not proved that `regopy` is what aborts — only that this
+is the test that was running.
+
+**Why it is not a test-only problem.** The docstring's promise is a product
+promise: a policy bundle with a typo in its entrypoint must be refused at load,
+because refusal is the behaviour this project sells. If the process aborts
+instead, the deploy-time guard is absent on Linux and the failure arrives as a
+dead worker with no log line.
+
+**What changed, and what did not.** The assertion is unchanged; it now runs in
+a child process. A test that probes a native library's failure handling can
+take the interpreter with it, and when it does, every test after it reports
+nothing — so isolation is right regardless of how this resolves. The child's
+stderr is captured into the failure message, which is where a C-level abort
+prints what it was. The next Linux run turns a silent process death into either
+a pass or a legible failure naming the signal, and either way the other 1088
+tests get to run.
+
+**What would close this.** The child's stderr from that run. If it names
+`regopy`, the fix is in read-only territory and belongs to whoever owns it: run
+the entrypoint probe in a subprocess so a native abort becomes an exit code,
+which is the only way to convert `abort()` into a Python exception.

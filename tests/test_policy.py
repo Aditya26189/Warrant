@@ -464,12 +464,68 @@ def test_a_json_string_payload_is_refused() -> None:
         engine_for().decide('{"detector": {"score": 1.0}}')
 
 
+#: Set inside the child so the assertion runs there instead of recursing.
+_ISOLATED = "WARRANT_ISOLATED_ENTRYPOINT_TEST"
+
+
 def test_an_entrypoint_the_module_does_not_define_fails_at_construction() -> None:
-    """A deploy error, not a crash under traffic."""
-    with pytest.raises(BundleError, match="entrypoint"):
-        build_engine(
-            resolve_bundle(bundle(entrypoint="data.controlplane.nonexistent"), matrix_of(warrant()))
+    """A deploy error, not a crash under traffic -- checked in its own process.
+
+    `engine.py` says a missing entrypoint "surfaces through the FFI as a native
+    exception", catches it broadly and rewrites it, because a bundle naming a
+    rule the module does not define has to be a deploy error rather than a
+    crash. On Windows that holds and this test passes.
+
+    On Linux, the first CI run ever to reach this file died here: **SIGABRT,
+    signal 6**, no Python exception, the whole 1089-test suite gone with it and
+    a stack trace naming pytest rather than a cause. `except Exception` cannot
+    catch `abort()`.
+
+    So the construction runs in a child process. That is right whichever way
+    the result goes: a test that probes a native library's failure handling can
+    take the interpreter with it, and when it does, everything after it in the
+    suite reports nothing at all. Isolation turns a silent process death into a
+    legible failure carrying the signal number and the child's stderr -- which
+    is where a C-level abort prints what it was.
+
+    The assertion itself is unchanged. Only where it runs has moved.
+    """
+    import os
+    import subprocess
+    import sys
+
+    if os.environ.get(_ISOLATED):
+        with pytest.raises(BundleError, match="entrypoint"):
+            build_engine(
+                resolve_bundle(
+                    bundle(entrypoint="data.controlplane.nonexistent"),
+                    matrix_of(warrant()),
+                )
+            )
+        return
+
+    node = f"{__file__}::test_an_entrypoint_the_module_does_not_define_fails_at_construction"
+    result = subprocess.run(
+        [sys.executable, "-m", "pytest", node, "-q", "-p", "no:cacheprovider"],
+        capture_output=True,
+        text=True,
+        cwd=str(Path(__file__).resolve().parents[1]),
+        env={**os.environ, _ISOLATED: "1"},
+        timeout=600,
+    )
+    if result.returncode < 0:
+        pytest.fail(
+            f"building an engine on a missing entrypoint killed the process "
+            f"with signal {-result.returncode} instead of raising BundleError. "
+            f"engine.py's promise that this is a deploy error and not a crash "
+            f"does not hold on this platform ({sys.platform}).\n"
+            f"--- child stderr ---\n{result.stderr[-4000:]}"
         )
+    assert result.returncode == 0, (
+        f"isolated run exited {result.returncode}\n"
+        f"--- stdout ---\n{result.stdout[-3000:]}\n"
+        f"--- stderr ---\n{result.stderr[-3000:]}"
+    )
 
 
 def test_a_module_that_does_not_parse_fails_at_construction() -> None:
