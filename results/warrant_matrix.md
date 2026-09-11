@@ -1,6 +1,6 @@
 | detector | triviaqa-600-synthetic | triviaqa-longctx-600-synthetic | hinglish-pii-200 | hinglish-pii-200-longctx | hard-negatives-200 | triviaqa-600 | triviaqa-longctx-600 |
 |---|---|---|---|---|---|---|---|
-| pii-reference | UNVALIDATED | UNVALIDATED | VALID R=0.79 [0.70, 0.88] @f=0.620 | VALID R=0.79 [0.70, 0.88] @f=0.620 | VALID FPR=0.000 [0.000, 0.018] | UNVALIDATED | UNVALIDATED |
+| pii-reference | UNVALIDATED | UNVALIDATED | VALID R=0.79 [0.70, 0.88] @f=0.620 | VALID R=0.79 [0.70, 0.88] @f=0.620 | VALID FPR=0.000 [0.000, 0.015] | UNVALIDATED | UNVALIDATED |
 | probe-T1-max_rolling_means | VALID R=0.25 [0.16, 0.35] @f=0.050 · CAL:unresolved (±25%) | VALID R=0.16 [0.09, 0.24] @f=0.047 · CAL:unresolved (±25%) | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED |
 | probe-T1-mean_pool | VALID R=0.22 [0.13, 0.31] @f=0.047 · CAL:unresolved (±25%) | **REFUSED** | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED |
 | probe-T2-logprob | VALID R=0.17 [0.10, 0.25] @f=0.052 · CAL:unresolved (±25%) | VALID R=0.14 [0.07, 0.21] @f=0.053 · CAL:unresolved (±25%) | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED |

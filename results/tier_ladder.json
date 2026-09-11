@@ -1,24 +1,11 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-08-27T12:54:58+00:00",
-    "git_commit": "dd10bf375082fdea65391512bdf3b7c15987708e",
+    "timestamp_utc": "2026-09-11T19:17:02+00:00",
+    "git_commit": "2ecdeb24af316feac0b12863e2fb39301c5ab8d8",
     "git_branch": "main",
     "dirty": true,
     "dirty_paths": [
-      "results_bundle (3)",
-      "round 2/CLAUDE.md",
-      "round 2/DECISIONS.md",
-      "round 2/config.yaml",
-      "round 2/scripts/run.sh",
-      "round 2/src/config.py",
-      "round 2/src/matrix/matrix.py",
-      "round 2/src/model/calibration.py",
-      "round 2/src/model/enums.py",
-      "round 2/src/model/warrant.py",
-      "round 2/src/report/results.py",
-      "round 2/src/validation/calibration.py",
-      "round 2/src/validation/issuance.py",
-      "round 2/tests/test_calibration.py"
+      "evalsets/manifest.json"
     ],
     "dirty_excludes": "results",
     "python": "3.12.10",
@@ -30,7 +17,7 @@
       "scipy": "1.16.3",
       "pandas": "2.3.3",
       "statsmodels": "0.14.6",
-      "presidio-analyzer": null,
+      "presidio-analyzer": "2.2.364",
       "bitsandbytes": "0.49.2"
     },
     "device": {
@@ -39,7 +26,7 @@
       "cuda_available": false,
       "device_name": "cpu"
     },
-    "config_hash": "4eb9f8bd410cb192",
+    "config_hash": "533fb74983fcd8af",
     "seed": 1729,
     "config": {
       "seed": 1729,
@@ -143,7 +130,8 @@
           "embedding_centroid_distance",
           "reference_perplexity",
           "category_mix"
-        ]
+        ],
+        "max_false_alarm_rate": 0.05
       },
       "sampling": {
         "allocation_month_one": "proportional",
@@ -170,17 +158,29 @@
         "customer_support": {
           "inline_budget_ms": 200,
           "min_recall": 0.1,
-          "max_fpr": 0.02
+          "max_fpr_hard_negatives": 0.02,
+          "operating_point": "P-customer-support",
+          "target_flag_rate": 0.1,
+          "on_calibration_drift": "REFUSE",
+          "calibration_sensitivity": 0.25
         },
         "internal_knowledge": {
           "inline_budget_ms": 500,
           "min_recall": 0.25,
-          "max_fpr": 0.05
+          "max_fpr_hard_negatives": 0.05,
+          "operating_point": "P-internal-knowledge",
+          "target_flag_rate": 0.2,
+          "on_calibration_drift": "WIDEN_BUDGET",
+          "calibration_sensitivity": 0.25
         },
         "decision_support": {
           "inline_budget_ms": 2000,
           "min_recall": 0.5,
-          "max_fpr": 0.1
+          "max_fpr_hard_negatives": 0.1,
+          "operating_point": "P-decision-support",
+          "target_flag_rate": 0.5,
+          "on_calibration_drift": "IGNORE",
+          "calibration_sensitivity": 0.25
         }
       },
       "detectors": {
@@ -230,7 +230,8 @@
           "ci_high": 0.8567162724940566,
           "ci_level": 0.95,
           "unit": "ratio",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "recall": {
           "name": "recall",
@@ -241,7 +242,8 @@
           "ci_high": 0.11151877240822096,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "precision": {
           "name": "precision",
@@ -252,7 +254,8 @@
           "ci_high": 1.0,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "flag_rate": {
           "name": "flag_rate",
@@ -263,7 +266,8 @@
           "ci_high": 0.058333333333333334,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "confirmed_errors": {
           "name": "confirmed_errors",
@@ -274,10 +278,12 @@
           "ci_high": null,
           "ci_level": null,
           "unit": "count",
-          "estimator": null
+          "estimator": null,
+          "convention": null
         },
         "fpr_hard_negatives": null,
         "base_rate": 0.46166666666666667,
+        "ranking_absent_reason": null,
         "extra": [
           {
             "name": "fpr",
@@ -288,7 +294,8 @@
             "ci_high": 0.020663046393134876,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           }
         ]
       },
@@ -339,7 +346,7 @@
           "applicable": true
         }
       ],
-      "duration_seconds": 20.083963599987328
+      "duration_seconds": 15.74041440000292
     },
     "T1-max_rolling_means": {
       "access_tier": "T1_ACTIVATIONS",
@@ -358,7 +365,8 @@
           "ci_high": 0.8207605168283456,
           "ci_level": 0.95,
           "unit": "ratio",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "recall": {
           "name": "recall",
@@ -369,7 +377,8 @@
           "ci_high": 0.11744295583001883,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "precision": {
           "name": "precision",
@@ -380,7 +389,8 @@
           "ci_high": 1.0,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "flag_rate": {
           "name": "flag_rate",
@@ -391,7 +401,8 @@
           "ci_high": 0.058333333333333334,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "confirmed_errors": {
           "name": "confirmed_errors",
@@ -402,10 +413,12 @@
           "ci_high": null,
           "ci_level": null,
           "unit": "count",
-          "estimator": null
+          "estimator": null,
+          "convention": null
         },
         "fpr_hard_negatives": null,
         "base_rate": 0.46166666666666667,
+        "ranking_absent_reason": null,
         "extra": [
           {
             "name": "fpr",
@@ -416,7 +429,8 @@
             "ci_high": 0.015723270440251572,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           }
         ]
       },
@@ -467,7 +481,7 @@
           "applicable": true
         }
       ],
-      "duration_seconds": 17.592187899863347
+      "duration_seconds": 16.401321200013626
     },
     "T1-mean_pool": {
       "access_tier": "T1_ACTIVATIONS",
@@ -486,7 +500,8 @@
           "ci_high": 0.8211107300292506,
           "ci_level": 0.95,
           "unit": "ratio",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "recall": {
           "name": "recall",
@@ -497,7 +512,8 @@
           "ci_high": 0.11340981967382684,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "precision": {
           "name": "precision",
@@ -508,7 +524,8 @@
           "ci_high": 1.0,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "flag_rate": {
           "name": "flag_rate",
@@ -519,7 +536,8 @@
           "ci_high": 0.056666666666666664,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "confirmed_errors": {
           "name": "confirmed_errors",
@@ -530,10 +548,12 @@
           "ci_high": null,
           "ci_level": null,
           "unit": "count",
-          "estimator": null
+          "estimator": null,
+          "convention": null
         },
         "fpr_hard_negatives": null,
         "base_rate": 0.46166666666666667,
+        "ranking_absent_reason": null,
         "extra": [
           {
             "name": "fpr",
@@ -544,7 +564,8 @@
             "ci_high": 0.015723270440251572,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           }
         ]
       },
@@ -595,7 +616,7 @@
           "applicable": true
         }
       ],
-      "duration_seconds": 17.319921100046486
+      "duration_seconds": 15.94571630001883
     }
   }
 }

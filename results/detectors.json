@@ -1,10 +1,12 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-08-28T19:21:03+00:00",
-    "git_commit": "f4db40a4716168b64d6ab33bd42d66600ef9ef09",
+    "timestamp_utc": "2026-09-11T19:19:41+00:00",
+    "git_commit": "2ecdeb24af316feac0b12863e2fb39301c5ab8d8",
     "git_branch": "main",
-    "dirty": false,
-    "dirty_paths": [],
+    "dirty": true,
+    "dirty_paths": [
+      "evalsets/manifest.json"
+    ],
     "dirty_excludes": "results",
     "python": "3.12.10",
     "libraries": {
@@ -24,7 +26,7 @@
       "cuda_available": false,
       "device_name": "cpu"
     },
-    "config_hash": "ae6eec9d1f8897af",
+    "config_hash": "533fb74983fcd8af",
     "seed": 1729,
     "config": {
       "seed": 1729,
@@ -156,7 +158,7 @@
         "customer_support": {
           "inline_budget_ms": 200,
           "min_recall": 0.1,
-          "max_fpr": 0.02,
+          "max_fpr_hard_negatives": 0.02,
           "operating_point": "P-customer-support",
           "target_flag_rate": 0.1,
           "on_calibration_drift": "REFUSE",
@@ -165,7 +167,7 @@
         "internal_knowledge": {
           "inline_budget_ms": 500,
           "min_recall": 0.25,
-          "max_fpr": 0.05,
+          "max_fpr_hard_negatives": 0.05,
           "operating_point": "P-internal-knowledge",
           "target_flag_rate": 0.2,
           "on_calibration_drift": "WIDEN_BUDGET",
@@ -174,7 +176,7 @@
         "decision_support": {
           "inline_budget_ms": 2000,
           "min_recall": 0.5,
-          "max_fpr": 0.1,
+          "max_fpr_hard_negatives": 0.1,
           "operating_point": "P-decision-support",
           "target_flag_rate": 0.5,
           "on_calibration_drift": "IGNORE",
@@ -203,16 +205,16 @@
   },
   "runs": [
     {
-      "run_id": "run-89e949467ebb",
+      "run_id": "run-098a1004d0f8",
       "detector_id": "presidio-stock",
       "variant": "text",
       "eval_set_id": "hinglish-pii-200",
       "envelope_id": "sha256:39b541efa4299f4d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-08-28T19:19:57+00:00",
-      "completed_at": "2026-08-28T19:20:09+00:00",
-      "duration_seconds": 11.98090249998495,
+      "started_at": "2026-09-11T19:18:38+00:00",
+      "completed_at": "2026-09-11T19:18:49+00:00",
+      "duration_seconds": 11.550271000014618,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -247,7 +249,8 @@
           "ci_high": 0.5669323122091809,
           "ci_level": 0.95,
           "unit": "ratio",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "recall": {
           "name": "recall",
@@ -258,7 +261,8 @@
           "ci_high": 0.20004385964912277,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "precision": {
           "name": "precision",
@@ -269,7 +273,8 @@
           "ci_high": 0.9002272727272725,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "flag_rate": {
           "name": "flag_rate",
@@ -280,7 +285,8 @@
           "ci_high": 0.1818293775190327,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "confirmed_errors": {
           "name": "confirmed_errors",
@@ -291,10 +297,12 @@
           "ci_high": null,
           "ci_level": null,
           "unit": "count",
-          "estimator": null
+          "estimator": null,
+          "convention": null
         },
         "fpr_hard_negatives": null,
         "base_rate": 0.51,
+        "ranking_absent_reason": null,
         "extra": [
           {
             "name": "fpr",
@@ -305,7 +313,8 @@
             "ci_high": 0.21951681448632668,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           }
         ]
       },
@@ -357,7 +366,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-bc55f7dd0b554a91",
+        "warrant_id": "W-b8ea4bcb240f834e",
         "detector_id": "presidio-stock",
         "detector_version": "2.2.364",
         "operating_point": {
@@ -369,9 +378,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hinglish-pii-200",
-        "validation_run_id": "run-89e949467ebb",
-        "issued_at": "2026-08-28T19:19:57+00:00",
-        "expires_at": "2026-08-29T19:19:57+00:00",
+        "validation_run_id": "run-098a1004d0f8",
+        "issued_at": "2026-09-11T19:18:38+00:00",
+        "expires_at": "2026-09-12T19:18:38+00:00",
         "metrics": {
           "auroc": {
             "name": "auroc",
@@ -382,7 +391,8 @@
             "ci_high": 0.5669323122091809,
             "ci_level": 0.95,
             "unit": "ratio",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "recall": {
             "name": "recall",
@@ -393,7 +403,8 @@
             "ci_high": 0.20004385964912277,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "precision": {
             "name": "precision",
@@ -404,7 +415,8 @@
             "ci_high": 0.9002272727272725,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "flag_rate": {
             "name": "flag_rate",
@@ -415,7 +427,8 @@
             "ci_high": 0.1818293775190327,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "confirmed_errors": {
             "name": "confirmed_errors",
@@ -426,10 +439,12 @@
             "ci_high": null,
             "ci_level": null,
             "unit": "count",
-            "estimator": null
+            "estimator": null,
+            "convention": null
           },
           "fpr_hard_negatives": null,
           "base_rate": 0.51,
+          "ranking_absent_reason": null,
           "extra": [
             {
               "name": "fpr",
@@ -440,7 +455,8 @@
               "ci_high": 0.21951681448632668,
               "ci_level": 0.95,
               "unit": "rate",
-              "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+              "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+              "convention": "two_sided_95"
             }
           ]
         },
@@ -544,7 +560,8 @@
             "ci_high": 0.1818293775190327,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "n_to_detect": null,
           "detail": "no target flag rate declared on the operating point",
@@ -556,16 +573,16 @@
       "status_reason": "[presidio-stock==2.2.364] control:canary: measured 0.2000 (margin -0.8000), required recall == 1.0; auroc_lower_ci: measured 0.4456, required > 0.55; lift_lower_ci: measured 1.070 [0.454, 1.819] at measured flag rate 0.1100, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
     },
     {
-      "run_id": "run-61a57a117e58",
+      "run_id": "run-6709d4b4298f",
       "detector_id": "presidio-stock",
       "variant": "text",
       "eval_set_id": "hard-negatives-200",
       "envelope_id": "sha256:d28e4de2024de10d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-08-28T19:20:09+00:00",
-      "completed_at": "2026-08-28T19:20:18+00:00",
-      "duration_seconds": 8.814581599785015,
+      "started_at": "2026-09-11T19:18:50+00:00",
+      "completed_at": "2026-09-11T19:18:58+00:00",
+      "duration_seconds": 8.361414200015133,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -603,7 +620,8 @@
           "ci_high": 0.018275340355136237,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+          "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary",
+          "convention": "two_sided_95"
         },
         "confirmed_errors": {
           "name": "confirmed_errors",
@@ -614,7 +632,8 @@
           "ci_high": null,
           "ci_level": null,
           "unit": "count",
-          "estimator": null
+          "estimator": null,
+          "convention": null
         },
         "fpr_hard_negatives": {
           "name": "fpr_hard_negatives",
@@ -622,12 +641,14 @@
           "kind": "ESTIMATED",
           "n": 200,
           "ci_low": 0.0,
-          "ci_high": 0.018275340355136237,
+          "ci_high": 0.014867039231272083,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+          "estimator": "Clopper-Pearson ONE-SIDED upper bound (0/200 events, alpha=0.050 in one tail); compared against a declared maximum, so it is the object the warrant claims",
+          "convention": "one_sided_95"
         },
         "base_rate": 0.0,
+        "ranking_absent_reason": "single-class envelope: all 200 items carry the same label, so there is no ranking to score",
         "extra": []
       },
       "controls": [
@@ -678,7 +699,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-b125dd84e9304ed4",
+        "warrant_id": "W-71ca98a508982a79",
         "detector_id": "presidio-stock",
         "detector_version": "2.2.364",
         "operating_point": {
@@ -690,9 +711,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hard-negatives-200",
-        "validation_run_id": "run-61a57a117e58",
-        "issued_at": "2026-08-28T19:20:09+00:00",
-        "expires_at": "2026-08-29T19:20:09+00:00",
+        "validation_run_id": "run-6709d4b4298f",
+        "issued_at": "2026-09-11T19:18:50+00:00",
+        "expires_at": "2026-09-12T19:18:50+00:00",
         "metrics": {
           "auroc": null,
           "recall": null,
@@ -706,7 +727,8 @@
             "ci_high": 0.018275340355136237,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary",
+            "convention": "two_sided_95"
           },
           "confirmed_errors": {
             "name": "confirmed_errors",
@@ -717,7 +739,8 @@
             "ci_high": null,
             "ci_level": null,
             "unit": "count",
-            "estimator": null
+            "estimator": null,
+            "convention": null
           },
           "fpr_hard_negatives": {
             "name": "fpr_hard_negatives",
@@ -725,12 +748,14 @@
             "kind": "ESTIMATED",
             "n": 200,
             "ci_low": 0.0,
-            "ci_high": 0.018275340355136237,
+            "ci_high": 0.014867039231272083,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+            "estimator": "Clopper-Pearson ONE-SIDED upper bound (0/200 events, alpha=0.050 in one tail); compared against a declared maximum, so it is the object the warrant claims",
+            "convention": "one_sided_95"
           },
           "base_rate": 0.0,
+          "ranking_absent_reason": "single-class envelope: all 200 items carry the same label, so there is no ranking to score",
           "extra": []
         },
         "n_test": 200,
@@ -833,7 +858,8 @@
             "ci_high": 0.018275340355136237,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary",
+            "convention": "two_sided_95"
           },
           "n_to_detect": null,
           "detail": "no target flag rate declared on the operating point",
@@ -845,16 +871,16 @@
       "status_reason": "[presidio-stock==2.2.364] control:canary: measured 0.2000 (margin -0.8000), required recall == 1.0"
     },
     {
-      "run_id": "run-fbeffa09ebec",
+      "run_id": "run-5089120e4f6e",
       "detector_id": "presidio-enabled",
       "variant": "text",
       "eval_set_id": "hinglish-pii-200",
       "envelope_id": "sha256:39b541efa4299f4d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-08-28T19:20:18+00:00",
-      "completed_at": "2026-08-28T19:20:30+00:00",
-      "duration_seconds": 11.703121499856934,
+      "started_at": "2026-09-11T19:18:58+00:00",
+      "completed_at": "2026-09-11T19:19:10+00:00",
+      "duration_seconds": 11.314346800005296,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -889,7 +915,8 @@
           "ci_high": 0.6629458766970514,
           "ci_level": 0.95,
           "unit": "ratio",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "recall": {
           "name": "recall",
@@ -900,7 +927,8 @@
           "ci_high": 0.3809873949579831,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "precision": {
           "name": "precision",
@@ -911,7 +939,8 @@
           "ci_high": 0.958375,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "flag_rate": {
           "name": "flag_rate",
@@ -922,7 +951,8 @@
           "ci_high": 0.27694444444444444,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "confirmed_errors": {
           "name": "confirmed_errors",
@@ -933,10 +963,12 @@
           "ci_high": null,
           "ci_level": null,
           "unit": "count",
-          "estimator": null
+          "estimator": null,
+          "convention": null
         },
         "fpr_hard_negatives": null,
         "base_rate": 0.51,
+        "ranking_absent_reason": null,
         "extra": [
           {
             "name": "fpr",
@@ -947,7 +979,8 @@
             "ci_high": 0.21951681448632668,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           }
         ]
       },
@@ -999,7 +1032,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-2dcd2b2cb8e13032",
+        "warrant_id": "W-7791b741daa70383",
         "detector_id": "presidio-enabled",
         "detector_version": "2.2.364",
         "operating_point": {
@@ -1011,9 +1044,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hinglish-pii-200",
-        "validation_run_id": "run-fbeffa09ebec",
-        "issued_at": "2026-08-28T19:20:18+00:00",
-        "expires_at": "2026-08-29T19:20:18+00:00",
+        "validation_run_id": "run-5089120e4f6e",
+        "issued_at": "2026-09-11T19:18:58+00:00",
+        "expires_at": "2026-09-12T19:18:58+00:00",
         "metrics": {
           "auroc": {
             "name": "auroc",
@@ -1024,7 +1057,8 @@
             "ci_high": 0.6629458766970514,
             "ci_level": 0.95,
             "unit": "ratio",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "recall": {
             "name": "recall",
@@ -1035,7 +1069,8 @@
             "ci_high": 0.3809873949579831,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "precision": {
             "name": "precision",
@@ -1046,7 +1081,8 @@
             "ci_high": 0.958375,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "flag_rate": {
             "name": "flag_rate",
@@ -1057,7 +1093,8 @@
             "ci_high": 0.27694444444444444,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "confirmed_errors": {
             "name": "confirmed_errors",
@@ -1068,10 +1105,12 @@
             "ci_high": null,
             "ci_level": null,
             "unit": "count",
-            "estimator": null
+            "estimator": null,
+            "convention": null
           },
           "fpr_hard_negatives": null,
           "base_rate": 0.51,
+          "ranking_absent_reason": null,
           "extra": [
             {
               "name": "fpr",
@@ -1082,7 +1121,8 @@
               "ci_high": 0.21951681448632668,
               "ci_level": 0.95,
               "unit": "rate",
-              "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+              "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+              "convention": "two_sided_95"
             }
           ]
         },
@@ -1186,7 +1226,8 @@
             "ci_high": 0.27694444444444444,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "n_to_detect": null,
           "detail": "no target flag rate declared on the operating point",
@@ -1198,16 +1239,16 @@
       "status_reason": "[presidio-enabled==2.2.364] control:canary: measured 0.6000 (margin -0.4000), required recall == 1.0; auroc_lower_ci: measured 0.5409, required > 0.55"
     },
     {
-      "run_id": "run-c71f2511f6f4",
+      "run_id": "run-4a51d0b2c8a0",
       "detector_id": "presidio-enabled",
       "variant": "text",
       "eval_set_id": "hard-negatives-200",
       "envelope_id": "sha256:d28e4de2024de10d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-08-28T19:20:30+00:00",
-      "completed_at": "2026-08-28T19:20:39+00:00",
-      "duration_seconds": 9.11394780012779,
+      "started_at": "2026-09-11T19:19:10+00:00",
+      "completed_at": "2026-09-11T19:19:18+00:00",
+      "duration_seconds": 8.641337300010491,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -1245,7 +1286,8 @@
           "ci_high": 0.018275340355136237,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+          "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary",
+          "convention": "two_sided_95"
         },
         "confirmed_errors": {
           "name": "confirmed_errors",
@@ -1256,7 +1298,8 @@
           "ci_high": null,
           "ci_level": null,
           "unit": "count",
-          "estimator": null
+          "estimator": null,
+          "convention": null
         },
         "fpr_hard_negatives": {
           "name": "fpr_hard_negatives",
@@ -1264,12 +1307,14 @@
           "kind": "ESTIMATED",
           "n": 200,
           "ci_low": 0.0,
-          "ci_high": 0.018275340355136237,
+          "ci_high": 0.014867039231272083,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+          "estimator": "Clopper-Pearson ONE-SIDED upper bound (0/200 events, alpha=0.050 in one tail); compared against a declared maximum, so it is the object the warrant claims",
+          "convention": "one_sided_95"
         },
         "base_rate": 0.0,
+        "ranking_absent_reason": "single-class envelope: all 200 items carry the same label, so there is no ranking to score",
         "extra": []
       },
       "controls": [
@@ -1320,7 +1365,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-0189b1729fa7ef27",
+        "warrant_id": "W-83baee2f01737807",
         "detector_id": "presidio-enabled",
         "detector_version": "2.2.364",
         "operating_point": {
@@ -1332,9 +1377,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hard-negatives-200",
-        "validation_run_id": "run-c71f2511f6f4",
-        "issued_at": "2026-08-28T19:20:30+00:00",
-        "expires_at": "2026-08-29T19:20:30+00:00",
+        "validation_run_id": "run-4a51d0b2c8a0",
+        "issued_at": "2026-09-11T19:19:10+00:00",
+        "expires_at": "2026-09-12T19:19:10+00:00",
         "metrics": {
           "auroc": null,
           "recall": null,
@@ -1348,7 +1393,8 @@
             "ci_high": 0.018275340355136237,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary",
+            "convention": "two_sided_95"
           },
           "confirmed_errors": {
             "name": "confirmed_errors",
@@ -1359,7 +1405,8 @@
             "ci_high": null,
             "ci_level": null,
             "unit": "count",
-            "estimator": null
+            "estimator": null,
+            "convention": null
           },
           "fpr_hard_negatives": {
             "name": "fpr_hard_negatives",
@@ -1367,12 +1414,14 @@
             "kind": "ESTIMATED",
             "n": 200,
             "ci_low": 0.0,
-            "ci_high": 0.018275340355136237,
+            "ci_high": 0.014867039231272083,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+            "estimator": "Clopper-Pearson ONE-SIDED upper bound (0/200 events, alpha=0.050 in one tail); compared against a declared maximum, so it is the object the warrant claims",
+            "convention": "one_sided_95"
           },
           "base_rate": 0.0,
+          "ranking_absent_reason": "single-class envelope: all 200 items carry the same label, so there is no ranking to score",
           "extra": []
         },
         "n_test": 200,
@@ -1475,7 +1524,8 @@
             "ci_high": 0.018275340355136237,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary",
+            "convention": "two_sided_95"
           },
           "n_to_detect": null,
           "detail": "no target flag rate declared on the operating point",
@@ -1487,16 +1537,16 @@
       "status_reason": "[presidio-enabled==2.2.364] control:canary: measured 0.6000 (margin -0.4000), required recall == 1.0"
     },
     {
-      "run_id": "run-ef25c930943f",
+      "run_id": "run-a768fcf1c68b",
       "detector_id": "presidio-enabled_plus_custom",
       "variant": "text",
       "eval_set_id": "hinglish-pii-200",
       "envelope_id": "sha256:39b541efa4299f4d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-08-28T19:20:39+00:00",
-      "completed_at": "2026-08-28T19:20:51+00:00",
-      "duration_seconds": 12.035777899902314,
+      "started_at": "2026-09-11T19:19:19+00:00",
+      "completed_at": "2026-09-11T19:19:30+00:00",
+      "duration_seconds": 11.346586900006514,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -1531,7 +1581,8 @@
           "ci_high": 0.8319846740102075,
           "ci_level": 0.95,
           "unit": "ratio",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "recall": {
           "name": "recall",
@@ -1542,7 +1593,8 @@
           "ci_high": 0.7128039513677811,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "precision": {
           "name": "precision",
@@ -1553,7 +1605,8 @@
           "ci_high": 0.9827659263588544,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "flag_rate": {
           "name": "flag_rate",
@@ -1564,7 +1617,8 @@
           "ci_high": 0.46194985959606866,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "confirmed_errors": {
           "name": "confirmed_errors",
@@ -1575,10 +1629,12 @@
           "ci_high": null,
           "ci_level": null,
           "unit": "count",
-          "estimator": null
+          "estimator": null,
+          "convention": null
         },
         "fpr_hard_negatives": null,
         "base_rate": 0.51,
+        "ranking_absent_reason": null,
         "extra": [
           {
             "name": "fpr",
@@ -1589,7 +1645,8 @@
             "ci_high": 0.21951681448632668,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           }
         ]
       },
@@ -1641,7 +1698,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-5bac46c737890151",
+        "warrant_id": "W-878b4ca66c581344",
         "detector_id": "presidio-enabled_plus_custom",
         "detector_version": "2.2.364",
         "operating_point": {
@@ -1653,9 +1710,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hinglish-pii-200",
-        "validation_run_id": "run-ef25c930943f",
-        "issued_at": "2026-08-28T19:20:39+00:00",
-        "expires_at": "2026-08-29T19:20:39+00:00",
+        "validation_run_id": "run-a768fcf1c68b",
+        "issued_at": "2026-09-11T19:19:19+00:00",
+        "expires_at": "2026-09-12T19:19:19+00:00",
         "metrics": {
           "auroc": {
             "name": "auroc",
@@ -1666,7 +1723,8 @@
             "ci_high": 0.8319846740102075,
             "ci_level": 0.95,
             "unit": "ratio",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "recall": {
             "name": "recall",
@@ -1677,7 +1735,8 @@
             "ci_high": 0.7128039513677811,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "precision": {
             "name": "precision",
@@ -1688,7 +1747,8 @@
             "ci_high": 0.9827659263588544,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "flag_rate": {
             "name": "flag_rate",
@@ -1699,7 +1759,8 @@
             "ci_high": 0.46194985959606866,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "confirmed_errors": {
             "name": "confirmed_errors",
@@ -1710,10 +1771,12 @@
             "ci_high": null,
             "ci_level": null,
             "unit": "count",
-            "estimator": null
+            "estimator": null,
+            "convention": null
           },
           "fpr_hard_negatives": null,
           "base_rate": 0.51,
+          "ranking_absent_reason": null,
           "extra": [
             {
               "name": "fpr",
@@ -1724,7 +1787,8 @@
               "ci_high": 0.21951681448632668,
               "ci_level": 0.95,
               "unit": "rate",
-              "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+              "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+              "convention": "two_sided_95"
             }
           ]
         },
@@ -1828,7 +1892,8 @@
             "ci_high": 0.46194985959606866,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "n_to_detect": null,
           "detail": "no target flag rate declared on the operating point",
@@ -1840,16 +1905,16 @@
       "status_reason": null
     },
     {
-      "run_id": "run-2589fa2513ca",
+      "run_id": "run-ed1b0fc0719c",
       "detector_id": "presidio-enabled_plus_custom",
       "variant": "text",
       "eval_set_id": "hard-negatives-200",
       "envelope_id": "sha256:d28e4de2024de10d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-08-28T19:20:51+00:00",
-      "completed_at": "2026-08-28T19:21:01+00:00",
-      "duration_seconds": 9.254038200015202,
+      "started_at": "2026-09-11T19:19:30+00:00",
+      "completed_at": "2026-09-11T19:19:39+00:00",
+      "duration_seconds": 8.79077910000342,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -1887,7 +1952,8 @@
           "ci_high": 0.1,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "confirmed_errors": {
           "name": "confirmed_errors",
@@ -1898,7 +1964,8 @@
           "ci_high": null,
           "ci_level": null,
           "unit": "count",
-          "estimator": null
+          "estimator": null,
+          "convention": null
         },
         "fpr_hard_negatives": {
           "name": "fpr_hard_negatives",
@@ -1906,12 +1973,14 @@
           "kind": "ESTIMATED",
           "n": 200,
           "ci_low": 0.0,
-          "ci_high": 0.1,
+          "ci_high": 0.07101416861601983,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "Clopper-Pearson ONE-SIDED upper bound (8/200 events, alpha=0.050 in one tail); compared against a declared maximum, so it is the object the warrant claims",
+          "convention": "one_sided_95"
         },
         "base_rate": 0.0,
+        "ranking_absent_reason": "single-class envelope: all 200 items carry the same label, so there is no ranking to score",
         "extra": []
       },
       "controls": [
@@ -1962,7 +2031,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-afe1b8b0dda077f2",
+        "warrant_id": "W-031b149654d71623",
         "detector_id": "presidio-enabled_plus_custom",
         "detector_version": "2.2.364",
         "operating_point": {
@@ -1974,9 +2043,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hard-negatives-200",
-        "validation_run_id": "run-2589fa2513ca",
-        "issued_at": "2026-08-28T19:20:51+00:00",
-        "expires_at": "2026-08-29T19:20:51+00:00",
+        "validation_run_id": "run-ed1b0fc0719c",
+        "issued_at": "2026-09-11T19:19:30+00:00",
+        "expires_at": "2026-09-12T19:19:30+00:00",
         "metrics": {
           "auroc": null,
           "recall": null,
@@ -1990,7 +2059,8 @@
             "ci_high": 0.1,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "confirmed_errors": {
             "name": "confirmed_errors",
@@ -2001,7 +2071,8 @@
             "ci_high": null,
             "ci_level": null,
             "unit": "count",
-            "estimator": null
+            "estimator": null,
+            "convention": null
           },
           "fpr_hard_negatives": {
             "name": "fpr_hard_negatives",
@@ -2009,12 +2080,14 @@
             "kind": "ESTIMATED",
             "n": 200,
             "ci_low": 0.0,
-            "ci_high": 0.1,
+            "ci_high": 0.07101416861601983,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "Clopper-Pearson ONE-SIDED upper bound (8/200 events, alpha=0.050 in one tail); compared against a declared maximum, so it is the object the warrant claims",
+            "convention": "one_sided_95"
           },
           "base_rate": 0.0,
+          "ranking_absent_reason": "single-class envelope: all 200 items carry the same label, so there is no ranking to score",
           "extra": []
         },
         "n_test": 200,
@@ -2117,7 +2190,8 @@
             "ci_high": 0.1,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "n_to_detect": null,
           "detail": "no target flag rate declared on the operating point",
@@ -2129,16 +2203,16 @@
       "status_reason": null
     },
     {
-      "run_id": "run-224e70652a99",
+      "run_id": "run-58ef6a68a908",
       "detector_id": "pii-reference",
       "variant": "text",
       "eval_set_id": "hinglish-pii-200",
       "envelope_id": "sha256:39b541efa4299f4d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-08-28T19:21:01+00:00",
-      "completed_at": "2026-08-28T19:21:02+00:00",
-      "duration_seconds": 1.011194699909538,
+      "started_at": "2026-09-11T19:19:39+00:00",
+      "completed_at": "2026-09-11T19:19:40+00:00",
+      "duration_seconds": 1.01565539999865,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -2173,7 +2247,8 @@
           "ci_high": 0.8561364695334656,
           "ci_level": 0.95,
           "unit": "ratio",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "recall": {
           "name": "recall",
@@ -2184,7 +2259,8 @@
           "ci_high": 0.8846153846153846,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "precision": {
           "name": "precision",
@@ -2195,7 +2271,8 @@
           "ci_high": 0.8099524403555278,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "flag_rate": {
           "name": "flag_rate",
@@ -2206,7 +2283,8 @@
           "ci_high": 0.7350238764044944,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         },
         "confirmed_errors": {
           "name": "confirmed_errors",
@@ -2217,10 +2295,12 @@
           "ci_high": null,
           "ci_level": null,
           "unit": "count",
-          "estimator": null
+          "estimator": null,
+          "convention": null
         },
         "fpr_hard_negatives": null,
         "base_rate": 0.51,
+        "ranking_absent_reason": null,
         "extra": [
           {
             "name": "fpr",
@@ -2231,7 +2311,8 @@
             "ci_high": 0.6339340156794425,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           }
         ]
       },
@@ -2283,7 +2364,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-e416fbde0ad6e088",
+        "warrant_id": "W-4d9fca5da83daa22",
         "detector_id": "pii-reference",
         "detector_version": "0.1.0",
         "operating_point": {
@@ -2295,9 +2376,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hinglish-pii-200",
-        "validation_run_id": "run-224e70652a99",
-        "issued_at": "2026-08-28T19:21:01+00:00",
-        "expires_at": "2026-08-29T19:21:01+00:00",
+        "validation_run_id": "run-58ef6a68a908",
+        "issued_at": "2026-09-11T19:19:39+00:00",
+        "expires_at": "2026-09-12T19:19:39+00:00",
         "metrics": {
           "auroc": {
             "name": "auroc",
@@ -2308,7 +2389,8 @@
             "ci_high": 0.8561364695334656,
             "ci_level": 0.95,
             "unit": "ratio",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "recall": {
             "name": "recall",
@@ -2319,7 +2401,8 @@
             "ci_high": 0.8846153846153846,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "precision": {
             "name": "precision",
@@ -2330,7 +2413,8 @@
             "ci_high": 0.8099524403555278,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "flag_rate": {
             "name": "flag_rate",
@@ -2341,7 +2425,8 @@
             "ci_high": 0.7350238764044944,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "confirmed_errors": {
             "name": "confirmed_errors",
@@ -2352,10 +2437,12 @@
             "ci_high": null,
             "ci_level": null,
             "unit": "count",
-            "estimator": null
+            "estimator": null,
+            "convention": null
           },
           "fpr_hard_negatives": null,
           "base_rate": 0.51,
+          "ranking_absent_reason": null,
           "extra": [
             {
               "name": "fpr",
@@ -2366,7 +2453,8 @@
               "ci_high": 0.6339340156794425,
               "ci_level": 0.95,
               "unit": "rate",
-              "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+              "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+              "convention": "two_sided_95"
             }
           ]
         },
@@ -2470,7 +2558,8 @@
             "ci_high": 0.7350238764044944,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+            "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+            "convention": "two_sided_95"
           },
           "n_to_detect": null,
           "detail": "no target flag rate declared on the operating point",
@@ -2482,16 +2571,16 @@
       "status_reason": null
     },
     {
-      "run_id": "run-7d9e8e9cbc46",
+      "run_id": "run-75014ec5c218",
       "detector_id": "pii-reference",
       "variant": "text",
       "eval_set_id": "hard-negatives-200",
       "envelope_id": "sha256:d28e4de2024de10d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-08-28T19:21:02+00:00",
-      "completed_at": "2026-08-28T19:21:02+00:00",
-      "duration_seconds": 0.3135753001552075,
+      "started_at": "2026-09-11T19:19:40+00:00",
+      "completed_at": "2026-09-11T19:19:40+00:00",
+      "duration_seconds": 0.18012750000343658,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -2529,7 +2618,8 @@
           "ci_high": 0.018275340355136237,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+          "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary",
+          "convention": "two_sided_95"
         },
         "confirmed_errors": {
           "name": "confirmed_errors",
@@ -2540,7 +2630,8 @@
           "ci_high": null,
           "ci_level": null,
           "unit": "count",
-          "estimator": null
+          "estimator": null,
+          "convention": null
         },
         "fpr_hard_negatives": {
           "name": "fpr_hard_negatives",
@@ -2548,12 +2639,14 @@
           "kind": "ESTIMATED",
           "n": 200,
           "ci_low": 0.0,
-          "ci_high": 0.018275340355136237,
+          "ci_high": 0.014867039231272083,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+          "estimator": "Clopper-Pearson ONE-SIDED upper bound (0/200 events, alpha=0.050 in one tail); compared against a declared maximum, so it is the object the warrant claims",
+          "convention": "one_sided_95"
         },
         "base_rate": 0.0,
+        "ranking_absent_reason": "single-class envelope: all 200 items carry the same label, so there is no ranking to score",
         "extra": []
       },
       "controls": [
@@ -2604,7 +2697,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-3b9a6bebf8cabdf8",
+        "warrant_id": "W-6a73dd1612a82cfe",
         "detector_id": "pii-reference",
         "detector_version": "0.1.0",
         "operating_point": {
@@ -2616,9 +2709,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hard-negatives-200",
-        "validation_run_id": "run-7d9e8e9cbc46",
-        "issued_at": "2026-08-28T19:21:02+00:00",
-        "expires_at": "2026-08-29T19:21:02+00:00",
+        "validation_run_id": "run-75014ec5c218",
+        "issued_at": "2026-09-11T19:19:40+00:00",
+        "expires_at": "2026-09-12T19:19:40+00:00",
         "metrics": {
           "auroc": null,
           "recall": null,
@@ -2632,7 +2725,8 @@
             "ci_high": 0.018275340355136237,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary",
+            "convention": "two_sided_95"
           },
           "confirmed_errors": {
             "name": "confirmed_errors",
@@ -2643,7 +2737,8 @@
             "ci_high": null,
             "ci_level": null,
             "unit": "count",
-            "estimator": null
+            "estimator": null,
+            "convention": null
           },
           "fpr_hard_negatives": {
             "name": "fpr_hard_negatives",
@@ -2651,12 +2746,14 @@
             "kind": "ESTIMATED",
             "n": 200,
             "ci_low": 0.0,
-            "ci_high": 0.018275340355136237,
+            "ci_high": 0.014867039231272083,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+            "estimator": "Clopper-Pearson ONE-SIDED upper bound (0/200 events, alpha=0.050 in one tail); compared against a declared maximum, so it is the object the warrant claims",
+            "convention": "one_sided_95"
           },
           "base_rate": 0.0,
+          "ranking_absent_reason": "single-class envelope: all 200 items carry the same label, so there is no ranking to score",
           "extra": []
         },
         "n_test": 200,
@@ -2759,7 +2856,8 @@
             "ci_high": 0.018275340355136237,
             "ci_level": 0.95,
             "unit": "rate",
-            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary"
+            "estimator": "Clopper-Pearson exact (0/200 events); the bootstrap degenerated to a zero-width interval at the boundary",
+            "convention": "two_sided_95"
           },
           "n_to_detect": null,
           "detail": "no target flag rate declared on the operating point",

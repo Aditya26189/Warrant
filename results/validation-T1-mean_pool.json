@@ -1,24 +1,11 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-08-27T12:54:58+00:00",
-    "git_commit": "dd10bf375082fdea65391512bdf3b7c15987708e",
+    "timestamp_utc": "2026-09-11T19:17:02+00:00",
+    "git_commit": "2ecdeb24af316feac0b12863e2fb39301c5ab8d8",
     "git_branch": "main",
     "dirty": true,
     "dirty_paths": [
-      "results_bundle (3)",
-      "round 2/CLAUDE.md",
-      "round 2/DECISIONS.md",
-      "round 2/config.yaml",
-      "round 2/scripts/run.sh",
-      "round 2/src/config.py",
-      "round 2/src/matrix/matrix.py",
-      "round 2/src/model/calibration.py",
-      "round 2/src/model/enums.py",
-      "round 2/src/model/warrant.py",
-      "round 2/src/report/results.py",
-      "round 2/src/validation/calibration.py",
-      "round 2/src/validation/issuance.py",
-      "round 2/tests/test_calibration.py"
+      "evalsets/manifest.json"
     ],
     "dirty_excludes": "results",
     "python": "3.12.10",
@@ -30,7 +17,7 @@
       "scipy": "1.16.3",
       "pandas": "2.3.3",
       "statsmodels": "0.14.6",
-      "presidio-analyzer": null,
+      "presidio-analyzer": "2.2.364",
       "bitsandbytes": "0.49.2"
     },
     "device": {
@@ -39,7 +26,7 @@
       "cuda_available": false,
       "device_name": "cpu"
     },
-    "config_hash": "4eb9f8bd410cb192",
+    "config_hash": "533fb74983fcd8af",
     "seed": 1729,
     "config": {
       "seed": 1729,
@@ -143,7 +130,8 @@
           "embedding_centroid_distance",
           "reference_perplexity",
           "category_mix"
-        ]
+        ],
+        "max_false_alarm_rate": 0.05
       },
       "sampling": {
         "allocation_month_one": "proportional",
@@ -170,17 +158,29 @@
         "customer_support": {
           "inline_budget_ms": 200,
           "min_recall": 0.1,
-          "max_fpr": 0.02
+          "max_fpr_hard_negatives": 0.02,
+          "operating_point": "P-customer-support",
+          "target_flag_rate": 0.1,
+          "on_calibration_drift": "REFUSE",
+          "calibration_sensitivity": 0.25
         },
         "internal_knowledge": {
           "inline_budget_ms": 500,
           "min_recall": 0.25,
-          "max_fpr": 0.05
+          "max_fpr_hard_negatives": 0.05,
+          "operating_point": "P-internal-knowledge",
+          "target_flag_rate": 0.2,
+          "on_calibration_drift": "WIDEN_BUDGET",
+          "calibration_sensitivity": 0.25
         },
         "decision_support": {
           "inline_budget_ms": 2000,
           "min_recall": 0.5,
-          "max_fpr": 0.1
+          "max_fpr_hard_negatives": 0.1,
+          "operating_point": "P-decision-support",
+          "target_flag_rate": 0.5,
+          "on_calibration_drift": "IGNORE",
+          "calibration_sensitivity": 0.25
         }
       },
       "detectors": {
@@ -203,15 +203,16 @@
       }
     }
   },
-  "run_id": "run-1ad0ce3cdc82",
+  "run_id": "run-e2ae5648dd22",
   "detector_id": "probe-qwen2.5-7b-instruct-T1-mean_pool",
   "variant": "T1-mean_pool",
   "eval_set_id": "triviaqa-600",
   "envelope_id": "sha256:e77c64f908491ad1",
+  "model_name": "Qwen/Qwen2.5-7B-Instruct",
   "data_source": "measured",
-  "started_at": "2026-08-27T12:54:40+00:00",
-  "completed_at": "2026-08-27T12:54:57+00:00",
-  "duration_seconds": 17.319921100046486,
+  "started_at": "2026-09-11T19:16:45+00:00",
+  "completed_at": "2026-09-11T19:17:01+00:00",
+  "duration_seconds": 15.94571630001883,
   "splits": {
     "train": 1200,
     "validation": 600,
@@ -252,7 +253,8 @@
       "ci_high": 0.8211107300292506,
       "ci_level": 0.95,
       "unit": "ratio",
-      "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+      "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+      "convention": "two_sided_95"
     },
     "recall": {
       "name": "recall",
@@ -263,7 +265,8 @@
       "ci_high": 0.11340981967382684,
       "ci_level": 0.95,
       "unit": "rate",
-      "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+      "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+      "convention": "two_sided_95"
     },
     "precision": {
       "name": "precision",
@@ -274,7 +277,8 @@
       "ci_high": 1.0,
       "ci_level": 0.95,
       "unit": "rate",
-      "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+      "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+      "convention": "two_sided_95"
     },
     "flag_rate": {
       "name": "flag_rate",
@@ -285,7 +289,8 @@
       "ci_high": 0.056666666666666664,
       "ci_level": 0.95,
       "unit": "rate",
-      "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+      "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+      "convention": "two_sided_95"
     },
     "confirmed_errors": {
       "name": "confirmed_errors",
@@ -296,10 +301,12 @@
       "ci_high": null,
       "ci_level": null,
       "unit": "count",
-      "estimator": null
+      "estimator": null,
+      "convention": null
     },
     "fpr_hard_negatives": null,
     "base_rate": 0.46166666666666667,
+    "ranking_absent_reason": null,
     "extra": [
       {
         "name": "fpr",
@@ -310,7 +317,8 @@
         "ci_high": 0.015723270440251572,
         "ci_level": 0.95,
         "unit": "rate",
-        "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+        "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+        "convention": "two_sided_95"
       }
     ]
   },
@@ -362,7 +370,7 @@
     }
   ],
   "warrant": {
-    "warrant_id": "W-856094a9311dc21f",
+    "warrant_id": "W-52bcaf7d34056492",
     "detector_id": "probe-qwen2.5-7b-instruct-T1-mean_pool",
     "detector_version": "0.1.0",
     "operating_point": {
@@ -374,9 +382,9 @@
       "target_flag_rate": 0.05
     },
     "eval_set_id": "triviaqa-600",
-    "validation_run_id": "run-1ad0ce3cdc82",
-    "issued_at": "2026-08-27T12:54:40+00:00",
-    "expires_at": "2026-08-28T12:54:40+00:00",
+    "validation_run_id": "run-e2ae5648dd22",
+    "issued_at": "2026-09-11T19:16:45+00:00",
+    "expires_at": "2026-09-12T19:16:45+00:00",
     "metrics": {
       "auroc": {
         "name": "auroc",
@@ -387,7 +395,8 @@
         "ci_high": 0.8211107300292506,
         "ci_level": 0.95,
         "unit": "ratio",
-        "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+        "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+        "convention": "two_sided_95"
       },
       "recall": {
         "name": "recall",
@@ -398,7 +407,8 @@
         "ci_high": 0.11340981967382684,
         "ci_level": 0.95,
         "unit": "rate",
-        "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+        "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+        "convention": "two_sided_95"
       },
       "precision": {
         "name": "precision",
@@ -409,7 +419,8 @@
         "ci_high": 1.0,
         "ci_level": 0.95,
         "unit": "rate",
-        "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+        "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+        "convention": "two_sided_95"
       },
       "flag_rate": {
         "name": "flag_rate",
@@ -420,7 +431,8 @@
         "ci_high": 0.056666666666666664,
         "ci_level": 0.95,
         "unit": "rate",
-        "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+        "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+        "convention": "two_sided_95"
       },
       "confirmed_errors": {
         "name": "confirmed_errors",
@@ -431,10 +443,12 @@
         "ci_high": null,
         "ci_level": null,
         "unit": "count",
-        "estimator": null
+        "estimator": null,
+        "convention": null
       },
       "fpr_hard_negatives": null,
       "base_rate": 0.46166666666666667,
+      "ranking_absent_reason": null,
       "extra": [
         {
           "name": "fpr",
@@ -445,7 +459,8 @@
           "ci_high": 0.015723270440251572,
           "ci_level": 0.95,
           "unit": "rate",
-          "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+          "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+          "convention": "two_sided_95"
         }
       ]
     },
@@ -549,7 +564,8 @@
         "ci_high": 0.056666666666666664,
         "ci_level": 0.95,
         "unit": "rate",
-        "estimator": "bootstrap-percentile-1000 over questions, seed=1729"
+        "estimator": "bootstrap-percentile-1000 over questions, seed=1729",
+        "convention": "two_sided_95"
       },
       "n_to_detect": 1441,
       "detail": "target 0.0500 lies inside the realised interval [0.0250, 0.0567] at n=600, so drift is not shown. Point estimate 0.0400 is 0.80x the target. But the interval extends outside the +/-25% band [0.0375, 0.0625], so a deviation worth acting on is NOT ruled out; detecting one needs n>=1441.",

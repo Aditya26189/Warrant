@@ -1,10 +1,12 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-08-23T16:16:47+00:00",
-    "git_commit": "e3622749ec05874f5bb29ac61b43a9c4ab8ed8f9",
+    "timestamp_utc": "2026-09-11T19:15:41+00:00",
+    "git_commit": "2ecdeb24af316feac0b12863e2fb39301c5ab8d8",
     "git_branch": "main",
-    "dirty": false,
-    "dirty_paths": [],
+    "dirty": true,
+    "dirty_paths": [
+      "evalsets/manifest.json"
+    ],
     "dirty_excludes": "results",
     "python": "3.12.10",
     "libraries": {
@@ -15,7 +17,7 @@
       "scipy": "1.16.3",
       "pandas": "2.3.3",
       "statsmodels": "0.14.6",
-      "presidio-analyzer": null,
+      "presidio-analyzer": "2.2.364",
       "bitsandbytes": "0.49.2"
     },
     "device": {
@@ -24,7 +26,7 @@
       "cuda_available": false,
       "device_name": "cpu"
     },
-    "config_hash": "c89257bc4adc10c2",
+    "config_hash": "533fb74983fcd8af",
     "seed": 1729,
     "config": {
       "seed": 1729,
@@ -49,12 +51,14 @@
           0.71,
           0.82,
           0.93
-        ]
+        ],
+        "prefill_chunk_tokens": 2048
       },
       "probe": {
         "aggregations": [
           "mean_pool",
-          "max_rolling_means"
+          "max_rolling_means",
+          "last_token"
         ],
         "rolling_window": 64,
         "rolling_stride": 32,
@@ -112,7 +116,8 @@
           0.55
         ],
         "null_control_min_repeats": 8,
-        "null_control_max_repeats": 200
+        "null_control_max_repeats": 200,
+        "calibration_tolerance": 0.25
       },
       "drift": {
         "window_size": 200,
@@ -125,7 +130,8 @@
           "embedding_centroid_distance",
           "reference_perplexity",
           "category_mix"
-        ]
+        ],
+        "max_false_alarm_rate": 0.05
       },
       "sampling": {
         "allocation_month_one": "proportional",
@@ -152,17 +158,29 @@
         "customer_support": {
           "inline_budget_ms": 200,
           "min_recall": 0.1,
-          "max_fpr": 0.02
+          "max_fpr_hard_negatives": 0.02,
+          "operating_point": "P-customer-support",
+          "target_flag_rate": 0.1,
+          "on_calibration_drift": "REFUSE",
+          "calibration_sensitivity": 0.25
         },
         "internal_knowledge": {
           "inline_budget_ms": 500,
           "min_recall": 0.25,
-          "max_fpr": 0.05
+          "max_fpr_hard_negatives": 0.05,
+          "operating_point": "P-internal-knowledge",
+          "target_flag_rate": 0.2,
+          "on_calibration_drift": "WIDEN_BUDGET",
+          "calibration_sensitivity": 0.25
         },
         "decision_support": {
           "inline_budget_ms": 2000,
           "min_recall": 0.5,
-          "max_fpr": 0.1
+          "max_fpr_hard_negatives": 0.1,
+          "operating_point": "P-decision-support",
+          "target_flag_rate": 0.5,
+          "on_calibration_drift": "IGNORE",
+          "calibration_sensitivity": 0.25
         }
       },
       "detectors": {

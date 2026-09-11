@@ -7769,3 +7769,72 @@ means a legitimate workflow that reads a memo and then transfers is blocked too.
 gate and reports the false-block rate, because every other control in this
 repository reports what it costs and a security rule that reports only its
 benefit is the kind nobody measures until it is turned off.
+
+---
+
+## 157 - The whole measurement chain reproduces from the committed caches, and RESULTS.md now carries what the contract asks for
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED. Closes the OPEN item in 155.
+
+**155 left this open**: the renderer for the price list and κ was built, and the
+committed `results/RESULTS.md` did not carry them, because `03_matrix.py` could
+not run on this machine and a fresh run of it alone produced a *correct but
+emptier* document — 21 table rows against 32 and none of the measured ones.
+
+**It is closed, by running the chain properly.** The earlier fresh run was
+`03_matrix.py` in isolation. That script ablates only the **synthetic**
+envelopes; the measured warrants come from `02_validate.py` on `triviaqa-600`
+and `04_transfer.py` for the long-context envelope, and the matrix is built from
+whatever the ledger has accumulated. Run in the documented order against the
+committed caches, with the pre-110 ledger moved aside:
+
+    01_build_evalsets -> 02_validate (triviaqa-600) -> 09_detectors
+                      -> 04_transfer -> 03_matrix
+
+**The load-bearing result is not the document. It is what the rebuild proves.**
+
+| | |
+|---|---|
+| artifacts regenerated | 15 |
+| numeric metrics compared against the committed versions | **401** |
+| metrics that moved | **0** |
+
+Every measured number in this repository was reproduced from the committed
+activation caches, on a different day, from a rebuilt ledger, with nothing
+carried over but the caches and the seed. The only diffs are provenance
+timestamps and commit hashes.
+
+That is a stronger statement than `make verify` makes. Tier 3 re-runs the
+extraction-tier validation and compares; this re-ran **the whole chain**,
+including the eval-set build, the text detectors and the transfer, and rebuilt
+the matrix from an empty audit ledger. `verify.py` after it: **66/66 claims,
+25/25 frozen scores, 3/3 activations.**
+
+**`RESULTS.md` now has 48 table rows against 32**, all 15 measured rows intact,
+and the three sections `CLAUDE.md`'s definition of done asks for — the computed
+price list, κ, and the score-free certification cost. The *Outstanding
+measurement* banner is gone because the measurements are no longer outstanding.
+
+### Two things this exposed and did not fix
+
+**A chain dirties its own tree.** `provenance()` excludes `results/` from the
+dirty check, so a stage writing there is not self-dirtying — but
+`01_build_evalsets.py` writes `evalsets/manifest.json`, which is not excluded,
+so every stage after it records `dirty: true`. The August artifacts have the
+same flag for the same reason. Mitigated here by committing the chain's output
+and re-running the final render on a clean tree, so `RESULTS.md` and
+`warrant_matrix.json` carry `dirty: false`. **Not fixed generally**: the
+excludes list is a `provenance()` decision and the honest fix is either to
+exclude generated corpora too or to make the chain a single stage, and neither
+is a change to make at the end of a session.
+
+**The order is documented and not enforced.** `docs/RUNBOOK.md` has the sequence
+and nothing checks it. Running `03_matrix.py` alone succeeds and silently
+produces a document missing every measured row — it says *Outstanding
+measurement*, which is honest, but only if somebody reads it. A first attempt
+here ran `02_validate.py` on the long-context envelope and failed with
+`train_index is empty`, because that envelope is scored by transfer and has no
+train split; the script does not say so. **OPEN**, and the cheap fix is for each
+script to refuse when the artifact it reads is absent or older than its own
+input rather than proceeding on what it finds.

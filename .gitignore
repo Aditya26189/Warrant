@@ -25,6 +25,11 @@ results/smoke/
 # The audit store is generated; the hash chain is only meaningful for the run
 # that built it.
 results/controlplane.db
+# A ledger moved aside because it predates a schema change. 03_matrix.py's
+# preflight tells an operator to rename rather than delete -- it is an
+# append-only audit record -- so the renamed file needs somewhere to live that
+# is not the repository (DECISIONS.md 155, 157).
+results/*.db.pre-*
 results/policy.db
 results/**/detectors.db
 results/detectors.db

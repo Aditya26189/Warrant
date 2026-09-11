@@ -1,16 +1,11 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-08-27T18:25:06+00:00",
-    "git_commit": "91482f2562f8c476652c409520159719237aee74",
+    "timestamp_utc": "2026-09-11T19:26:15+00:00",
+    "git_commit": "2ecdeb24af316feac0b12863e2fb39301c5ab8d8",
     "git_branch": "main",
     "dirty": true,
     "dirty_paths": [
-      "results_bundle (3)",
-      "round 2/src/drift/__init__.py",
-      "round 2/src/drift/ladder.py",
-      "round 2/src/drift/response.py",
-      "round 2/src/matrix/matrix.py",
-      "round 2/src/report/results.py"
+      "evalsets/manifest.json"
     ],
     "dirty_excludes": "results",
     "python": "3.12.10",
@@ -22,7 +17,7 @@
       "scipy": "1.16.3",
       "pandas": "2.3.3",
       "statsmodels": "0.14.6",
-      "presidio-analyzer": null,
+      "presidio-analyzer": "2.2.364",
       "bitsandbytes": "0.49.2"
     },
     "device": {
@@ -31,7 +26,7 @@
       "cuda_available": false,
       "device_name": "cpu"
     },
-    "config_hash": "9b2eec811f64271e",
+    "config_hash": "533fb74983fcd8af",
     "seed": 1729,
     "config": {
       "seed": 1729,
@@ -163,17 +158,29 @@
         "customer_support": {
           "inline_budget_ms": 200,
           "min_recall": 0.1,
-          "max_fpr": 0.02
+          "max_fpr_hard_negatives": 0.02,
+          "operating_point": "P-customer-support",
+          "target_flag_rate": 0.1,
+          "on_calibration_drift": "REFUSE",
+          "calibration_sensitivity": 0.25
         },
         "internal_knowledge": {
           "inline_budget_ms": 500,
           "min_recall": 0.25,
-          "max_fpr": 0.05
+          "max_fpr_hard_negatives": 0.05,
+          "operating_point": "P-internal-knowledge",
+          "target_flag_rate": 0.2,
+          "on_calibration_drift": "WIDEN_BUDGET",
+          "calibration_sensitivity": 0.25
         },
         "decision_support": {
           "inline_budget_ms": 2000,
           "min_recall": 0.5,
-          "max_fpr": 0.1
+          "max_fpr_hard_negatives": 0.1,
+          "operating_point": "P-decision-support",
+          "target_flag_rate": 0.5,
+          "on_calibration_drift": "IGNORE",
+          "calibration_sensitivity": 0.25
         }
       },
       "detectors": {
@@ -235,7 +242,7 @@
           },
           "hinglish-pii-200": {
             "status": "VALID",
-            "warrant_id": "W-034bb74ed4d4b60f",
+            "warrant_id": "W-4d9fca5da83daa22",
             "n_test": 200,
             "base_rate": 0.51,
             "controls_run": 2,
@@ -286,7 +293,7 @@
           },
           "hinglish-pii-200-longctx": {
             "status": "VALID",
-            "warrant_id": "W-0de65ad1d0f35c2f",
+            "warrant_id": "W-6f3ddc52985cfa51",
             "n_test": 200,
             "base_rate": 0.51,
             "controls_run": 2,
@@ -337,7 +344,7 @@
           },
           "hard-negatives-200": {
             "status": "VALID",
-            "warrant_id": "W-210de517362ee212",
+            "warrant_id": "W-6a73dd1612a82cfe",
             "n_test": 200,
             "base_rate": 0.0,
             "controls_run": 2,
@@ -359,7 +366,7 @@
               "fpr_hard_negatives": {
                 "value": 0.0,
                 "ci_low": 0.0,
-                "ci_high": 0.018275340355136237,
+                "ci_high": 0.014867039231272083,
                 "kind": "ESTIMATED",
                 "n": 200
               }
@@ -378,7 +385,7 @@
         "cells": {
           "triviaqa-600-synthetic": {
             "status": "VALID",
-            "warrant_id": "W-4b937b0d4fed31dd",
+            "warrant_id": "W-ec55faaad00082d8",
             "n_test": 600,
             "base_rate": 0.14666666666666667,
             "controls_run": 5,
@@ -429,7 +436,7 @@
           },
           "triviaqa-longctx-600-synthetic": {
             "status": "VALID",
-            "warrant_id": "W-8f75822d45ac1c91",
+            "warrant_id": "W-e971514e6d1ce325",
             "n_test": 600,
             "base_rate": 0.14666666666666667,
             "controls_run": 5,
@@ -500,7 +507,7 @@
         "cells": {
           "triviaqa-600-synthetic": {
             "status": "VALID",
-            "warrant_id": "W-f72c9ad6e96fe15e",
+            "warrant_id": "W-05ae6d85e21f7209",
             "n_test": 600,
             "base_rate": 0.14666666666666667,
             "controls_run": 5,
@@ -551,8 +558,8 @@
           },
           "triviaqa-longctx-600-synthetic": {
             "status": "REFUSED",
-            "reason": "lift_lower_ci: measured 1.364 [0.000, 3.077] at measured flag rate 0.0250, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget",
-            "warrant_id": "W-43432396a224a689",
+            "reason": "[probe-T1-mean_pool==0.1.0+fixture] lift_lower_ci: measured 1.364 [0.000, 3.077] at measured flag rate 0.0250, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget",
+            "warrant_id": "W-cb1d03c59c266af7",
             "n_test": 600,
             "base_rate": 0.14666666666666667,
             "controls_run": 5,
@@ -623,7 +630,7 @@
         "cells": {
           "triviaqa-600-synthetic": {
             "status": "VALID",
-            "warrant_id": "W-cd9785171a661d66",
+            "warrant_id": "W-6c8d2c8f080131b6",
             "n_test": 600,
             "base_rate": 0.14666666666666667,
             "controls_run": 5,
@@ -674,7 +681,7 @@
           },
           "triviaqa-longctx-600-synthetic": {
             "status": "VALID",
-            "warrant_id": "W-8359c7140d362ed8",
+            "warrant_id": "W-0c9c6f2ecc92f067",
             "n_test": 600,
             "base_rate": 0.14666666666666667,
             "controls_run": 5,
@@ -745,7 +752,7 @@
         "cells": {
           "triviaqa-600-synthetic": {
             "status": "VALID",
-            "warrant_id": "W-e1a168b0eb812e1f",
+            "warrant_id": "W-af10bb92e2fb3530",
             "n_test": 600,
             "base_rate": 0.14666666666666667,
             "controls_run": 5,
@@ -796,8 +803,8 @@
           },
           "triviaqa-longctx-600-synthetic": {
             "status": "REFUSED",
-            "reason": "auroc_lower_ci: measured 0.5443, required > 0.55; lift_lower_ci: measured 1.180 [0.556, 1.962] at measured flag rate 0.0867, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget",
-            "warrant_id": "W-6b18cc35b4db8c9b",
+            "reason": "[probe-T3-judge==0.1.0+fixture] auroc_lower_ci: measured 0.5443, required > 0.55; lift_lower_ci: measured 1.180 [0.556, 1.962] at measured flag rate 0.0867, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget",
+            "warrant_id": "W-3c7a2956bfb268c9",
             "n_test": 600,
             "base_rate": 0.14666666666666667,
             "controls_run": 5,
@@ -883,7 +890,7 @@
           },
           "triviaqa-600": {
             "status": "VALID",
-            "warrant_id": "W-7ba4b5d911207fb2",
+            "warrant_id": "W-f4bddcaa365cb7d3",
             "n_test": 600,
             "base_rate": 0.46166666666666667,
             "controls_run": 5,
@@ -934,7 +941,7 @@
           },
           "triviaqa-longctx-600": {
             "status": "VALID",
-            "warrant_id": "W-a743e596809fbf2c",
+            "warrant_id": "W-d617e4e30dfa19a3",
             "n_test": 600,
             "base_rate": 0.46166666666666667,
             "controls_run": 5,
@@ -1005,7 +1012,7 @@
           },
           "triviaqa-600": {
             "status": "VALID",
-            "warrant_id": "W-705119add44a871d",
+            "warrant_id": "W-cc259683b0942d69",
             "n_test": 600,
             "base_rate": 0.46166666666666667,
             "controls_run": 5,
@@ -1056,8 +1063,8 @@
           },
           "triviaqa-longctx-600": {
             "status": "REFUSED",
-            "reason": "auroc_lower_ci: measured 0.5105, required > 0.55; lift_lower_ci: measured 1.076 [0.969, 1.182] at measured flag rate 0.5433, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget",
-            "warrant_id": "W-637ebfbd72131943",
+            "reason": "[probe-qwen2.5-7b-instruct-T1-max_rolling_means==0.1.0] auroc_lower_ci: measured 0.5105, required > 0.55; lift_lower_ci: measured 1.076 [0.969, 1.182] at measured flag rate 0.5433, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget",
+            "warrant_id": "W-1c9bdfcc900ac9a4",
             "n_test": 600,
             "base_rate": 0.46166666666666667,
             "controls_run": 5,
@@ -1128,7 +1135,7 @@
           },
           "triviaqa-600": {
             "status": "VALID",
-            "warrant_id": "W-856094a9311dc21f",
+            "warrant_id": "W-52bcaf7d34056492",
             "n_test": 600,
             "base_rate": 0.46166666666666667,
             "controls_run": 5,
@@ -1179,8 +1186,8 @@
           },
           "triviaqa-longctx-600": {
             "status": "REFUSED",
-            "reason": "auroc_lower_ci: measured 0.4546, required > 0.55",
-            "warrant_id": "W-f6b375ddff289339",
+            "reason": "[probe-qwen2.5-7b-instruct-T1-mean_pool==0.1.0] auroc_lower_ci: measured 0.4546, required > 0.55",
+            "warrant_id": "W-6f495dee25c4e824",
             "n_test": 600,
             "base_rate": 0.46166666666666667,
             "controls_run": 5,
@@ -1202,7 +1209,7 @@
               "precision": {
                 "value": 0.0,
                 "ci_low": 0.0,
-                "ci_high": 0.0,
+                "ci_high": 1.0,
                 "kind": "ESTIMATED",
                 "n": 600
               },
@@ -1232,7 +1239,7 @@
         }
       }
     ],
-    "rendered_at": "2026-08-27T18:25:06+00:00"
+    "rendered_at": "2026-09-11T19:26:15+00:00"
   },
   "routing": [
     {
@@ -1267,7 +1274,7 @@
         "probe-qwen2.5-7b-instruct-T1-mean_pool|P-conservative|triviaqa-600-synthetic"
       ],
       "claimed_bounds": {
-        "warrant_id": "W-4b937b0d4fed31dd",
+        "warrant_id": "W-ec55faaad00082d8",
         "detector_id": "probe-T1-max_rolling_means",
         "detector_version": "0.1.0+fixture",
         "operating_point_id": "P-conservative",
@@ -1276,8 +1283,8 @@
         "status": "VALID",
         "n_test": 600,
         "base_rate": 0.14666666666666667,
-        "issued_at": "2026-08-27T18:23:42+00:00",
-        "expires_at": "2026-08-28T18:23:42+00:00",
+        "issued_at": "2026-09-11T19:20:51+00:00",
+        "expires_at": "2026-09-12T19:20:51+00:00",
         "kappa": null,
         "controls_run": 5,
         "controls_inapplicable": [],
@@ -1345,7 +1352,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on triviaqa-longctx-600-synthetic meets customer_support's declared minimums (recall >= 0.1, FPR <= 0.02); customer_support is suspended on this envelope",
+      "reason": "no warrant on triviaqa-longctx-600-synthetic meets customer_support's declared minimums (recall >= 0.1, hard-negative FPR <= 0.02); customer_support is suspended on this envelope",
       "considered": [
         {
           "detector_id": "probe-T1-max_rolling_means",
@@ -1357,11 +1364,11 @@
         },
         {
           "detector_id": "probe-T1-mean_pool",
-          "verdict": "REFUSED on this envelope: lift_lower_ci: measured 1.364 [0.000, 3.077] at measured flag rate 0.0250, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
+          "verdict": "REFUSED on this envelope: [probe-T1-mean_pool==0.1.0+fixture] lift_lower_ci: measured 1.364 [0.000, 3.077] at measured flag rate 0.0250, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
         },
         {
           "detector_id": "probe-T3-judge",
-          "verdict": "REFUSED on this envelope: auroc_lower_ci: measured 0.5443, required > 0.55; lift_lower_ci: measured 1.180 [0.556, 1.962] at measured flag rate 0.0867, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
+          "verdict": "REFUSED on this envelope: [probe-T3-judge==0.1.0+fixture] auroc_lower_ci: measured 0.5443, required > 0.55; lift_lower_ci: measured 1.180 [0.556, 1.962] at measured flag rate 0.0867, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
         }
       ],
       "enqueued_for_validation": [
@@ -1395,7 +1402,7 @@
         "probe-qwen2.5-7b-instruct-T1-mean_pool|P-conservative|hinglish-pii-200"
       ],
       "claimed_bounds": {
-        "warrant_id": "W-034bb74ed4d4b60f",
+        "warrant_id": "W-4d9fca5da83daa22",
         "detector_id": "pii-reference",
         "detector_version": "0.1.0",
         "operating_point_id": "P-declared",
@@ -1404,8 +1411,8 @@
         "status": "VALID",
         "n_test": 200,
         "base_rate": 0.51,
-        "issued_at": "2026-08-27T18:24:44+00:00",
-        "expires_at": "2026-08-28T18:24:44+00:00",
+        "issued_at": "2026-09-11T19:15:42+00:00",
+        "expires_at": "2026-09-12T19:15:42+00:00",
         "kappa": null,
         "controls_run": 2,
         "controls_inapplicable": [
@@ -1494,7 +1501,7 @@
         "probe-qwen2.5-7b-instruct-T1-mean_pool|P-conservative|hinglish-pii-200-longctx"
       ],
       "claimed_bounds": {
-        "warrant_id": "W-0de65ad1d0f35c2f",
+        "warrant_id": "W-6f3ddc52985cfa51",
         "detector_id": "pii-reference",
         "detector_version": "0.1.0",
         "operating_point_id": "P-declared",
@@ -1503,8 +1510,8 @@
         "status": "VALID",
         "n_test": 200,
         "base_rate": 0.51,
-        "issued_at": "2026-08-27T18:24:46+00:00",
-        "expires_at": "2026-08-28T18:24:46+00:00",
+        "issued_at": "2026-09-11T19:15:43+00:00",
+        "expires_at": "2026-09-12T19:15:43+00:00",
         "kappa": null,
         "controls_run": 2,
         "controls_inapplicable": [
@@ -1576,7 +1583,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on hard-negatives-200 meets customer_support's declared minimums (recall >= 0.1, FPR <= 0.02); customer_support is suspended on this envelope",
+      "reason": "no warrant on hard-negatives-200 meets customer_support's declared minimums (recall >= 0.1, hard-negative FPR <= 0.02); customer_support is suspended on this envelope",
       "considered": [
         {
           "detector_id": "pii-reference",
@@ -1600,7 +1607,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on triviaqa-600 meets customer_support's declared minimums (recall >= 0.1, FPR <= 0.02); customer_support is suspended on this envelope",
+      "reason": "no warrant on triviaqa-600 meets customer_support's declared minimums (recall >= 0.1, hard-negative FPR <= 0.02); customer_support is suspended on this envelope",
       "considered": [
         {
           "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
@@ -1630,7 +1637,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on triviaqa-longctx-600 meets customer_support's declared minimums (recall >= 0.1, FPR <= 0.02); customer_support is suspended on this envelope",
+      "reason": "no warrant on triviaqa-longctx-600 meets customer_support's declared minimums (recall >= 0.1, hard-negative FPR <= 0.02); customer_support is suspended on this envelope",
       "considered": [
         {
           "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
@@ -1638,11 +1645,11 @@
         },
         {
           "detector_id": "probe-qwen2.5-7b-instruct-T1-max_rolling_means",
-          "verdict": "REFUSED on this envelope: auroc_lower_ci: measured 0.5105, required > 0.55; lift_lower_ci: measured 1.076 [0.969, 1.182] at measured flag rate 0.5433, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
+          "verdict": "REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-max_rolling_means==0.1.0] auroc_lower_ci: measured 0.5105, required > 0.55; lift_lower_ci: measured 1.076 [0.969, 1.182] at measured flag rate 0.5433, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
         },
         {
           "detector_id": "probe-qwen2.5-7b-instruct-T1-mean_pool",
-          "verdict": "REFUSED on this envelope: auroc_lower_ci: measured 0.4546, required > 0.55"
+          "verdict": "REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-mean_pool==0.1.0] auroc_lower_ci: measured 0.4546, required > 0.55"
         }
       ],
       "enqueued_for_validation": [
@@ -1660,7 +1667,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on triviaqa-600-synthetic meets decision_support's declared minimums (recall >= 0.5, FPR <= 0.1); decision_support is suspended on this envelope",
+      "reason": "no warrant on triviaqa-600-synthetic meets decision_support's declared minimums (recall >= 0.5, hard-negative FPR <= 0.1); decision_support is suspended on this envelope",
       "considered": [
         {
           "detector_id": "probe-T1-max_rolling_means",
@@ -1693,7 +1700,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on triviaqa-longctx-600-synthetic meets decision_support's declared minimums (recall >= 0.5, FPR <= 0.1); decision_support is suspended on this envelope",
+      "reason": "no warrant on triviaqa-longctx-600-synthetic meets decision_support's declared minimums (recall >= 0.5, hard-negative FPR <= 0.1); decision_support is suspended on this envelope",
       "considered": [
         {
           "detector_id": "probe-T1-max_rolling_means",
@@ -1705,11 +1712,11 @@
         },
         {
           "detector_id": "probe-T1-mean_pool",
-          "verdict": "REFUSED on this envelope: lift_lower_ci: measured 1.364 [0.000, 3.077] at measured flag rate 0.0250, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
+          "verdict": "REFUSED on this envelope: [probe-T1-mean_pool==0.1.0+fixture] lift_lower_ci: measured 1.364 [0.000, 3.077] at measured flag rate 0.0250, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
         },
         {
           "detector_id": "probe-T3-judge",
-          "verdict": "REFUSED on this envelope: auroc_lower_ci: measured 0.5443, required > 0.55; lift_lower_ci: measured 1.180 [0.556, 1.962] at measured flag rate 0.0867, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
+          "verdict": "REFUSED on this envelope: [probe-T3-judge==0.1.0+fixture] auroc_lower_ci: measured 0.5443, required > 0.55; lift_lower_ci: measured 1.180 [0.556, 1.962] at measured flag rate 0.0867, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
         }
       ],
       "enqueued_for_validation": [
@@ -1743,7 +1750,7 @@
         "probe-qwen2.5-7b-instruct-T1-mean_pool|P-conservative|hinglish-pii-200"
       ],
       "claimed_bounds": {
-        "warrant_id": "W-034bb74ed4d4b60f",
+        "warrant_id": "W-4d9fca5da83daa22",
         "detector_id": "pii-reference",
         "detector_version": "0.1.0",
         "operating_point_id": "P-declared",
@@ -1752,8 +1759,8 @@
         "status": "VALID",
         "n_test": 200,
         "base_rate": 0.51,
-        "issued_at": "2026-08-27T18:24:44+00:00",
-        "expires_at": "2026-08-28T18:24:44+00:00",
+        "issued_at": "2026-09-11T19:15:42+00:00",
+        "expires_at": "2026-09-12T19:15:42+00:00",
         "kappa": null,
         "controls_run": 2,
         "controls_inapplicable": [
@@ -1842,7 +1849,7 @@
         "probe-qwen2.5-7b-instruct-T1-mean_pool|P-conservative|hinglish-pii-200-longctx"
       ],
       "claimed_bounds": {
-        "warrant_id": "W-0de65ad1d0f35c2f",
+        "warrant_id": "W-6f3ddc52985cfa51",
         "detector_id": "pii-reference",
         "detector_version": "0.1.0",
         "operating_point_id": "P-declared",
@@ -1851,8 +1858,8 @@
         "status": "VALID",
         "n_test": 200,
         "base_rate": 0.51,
-        "issued_at": "2026-08-27T18:24:46+00:00",
-        "expires_at": "2026-08-28T18:24:46+00:00",
+        "issued_at": "2026-09-11T19:15:43+00:00",
+        "expires_at": "2026-09-12T19:15:43+00:00",
         "kappa": null,
         "controls_run": 2,
         "controls_inapplicable": [
@@ -1924,7 +1931,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on hard-negatives-200 meets decision_support's declared minimums (recall >= 0.5, FPR <= 0.1); decision_support is suspended on this envelope",
+      "reason": "no warrant on hard-negatives-200 meets decision_support's declared minimums (recall >= 0.5, hard-negative FPR <= 0.1); decision_support is suspended on this envelope",
       "considered": [
         {
           "detector_id": "pii-reference",
@@ -1948,7 +1955,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on triviaqa-600 meets decision_support's declared minimums (recall >= 0.5, FPR <= 0.1); decision_support is suspended on this envelope",
+      "reason": "no warrant on triviaqa-600 meets decision_support's declared minimums (recall >= 0.5, hard-negative FPR <= 0.1); decision_support is suspended on this envelope",
       "considered": [
         {
           "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
@@ -1978,7 +1985,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on triviaqa-longctx-600 meets decision_support's declared minimums (recall >= 0.5, FPR <= 0.1); decision_support is suspended on this envelope",
+      "reason": "no warrant on triviaqa-longctx-600 meets decision_support's declared minimums (recall >= 0.5, hard-negative FPR <= 0.1); decision_support is suspended on this envelope",
       "considered": [
         {
           "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
@@ -1986,11 +1993,11 @@
         },
         {
           "detector_id": "probe-qwen2.5-7b-instruct-T1-max_rolling_means",
-          "verdict": "REFUSED on this envelope: auroc_lower_ci: measured 0.5105, required > 0.55; lift_lower_ci: measured 1.076 [0.969, 1.182] at measured flag rate 0.5433, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
+          "verdict": "REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-max_rolling_means==0.1.0] auroc_lower_ci: measured 0.5105, required > 0.55; lift_lower_ci: measured 1.076 [0.969, 1.182] at measured flag rate 0.5433, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
         },
         {
           "detector_id": "probe-qwen2.5-7b-instruct-T1-mean_pool",
-          "verdict": "REFUSED on this envelope: auroc_lower_ci: measured 0.4546, required > 0.55"
+          "verdict": "REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-mean_pool==0.1.0] auroc_lower_ci: measured 0.4546, required > 0.55"
         }
       ],
       "enqueued_for_validation": [
@@ -2008,7 +2015,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on triviaqa-600-synthetic meets internal_knowledge's declared minimums (recall >= 0.25, FPR <= 0.05); internal_knowledge is suspended on this envelope",
+      "reason": "no warrant on triviaqa-600-synthetic meets internal_knowledge's declared minimums (recall >= 0.25, hard-negative FPR <= 0.05); internal_knowledge is suspended on this envelope",
       "considered": [
         {
           "detector_id": "probe-T1-max_rolling_means",
@@ -2041,7 +2048,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on triviaqa-longctx-600-synthetic meets internal_knowledge's declared minimums (recall >= 0.25, FPR <= 0.05); internal_knowledge is suspended on this envelope",
+      "reason": "no warrant on triviaqa-longctx-600-synthetic meets internal_knowledge's declared minimums (recall >= 0.25, hard-negative FPR <= 0.05); internal_knowledge is suspended on this envelope",
       "considered": [
         {
           "detector_id": "probe-T1-max_rolling_means",
@@ -2053,11 +2060,11 @@
         },
         {
           "detector_id": "probe-T1-mean_pool",
-          "verdict": "REFUSED on this envelope: lift_lower_ci: measured 1.364 [0.000, 3.077] at measured flag rate 0.0250, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
+          "verdict": "REFUSED on this envelope: [probe-T1-mean_pool==0.1.0+fixture] lift_lower_ci: measured 1.364 [0.000, 3.077] at measured flag rate 0.0250, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
         },
         {
           "detector_id": "probe-T3-judge",
-          "verdict": "REFUSED on this envelope: auroc_lower_ci: measured 0.5443, required > 0.55; lift_lower_ci: measured 1.180 [0.556, 1.962] at measured flag rate 0.0867, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
+          "verdict": "REFUSED on this envelope: [probe-T3-judge==0.1.0+fixture] auroc_lower_ci: measured 0.5443, required > 0.55; lift_lower_ci: measured 1.180 [0.556, 1.962] at measured flag rate 0.0867, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
         }
       ],
       "enqueued_for_validation": [
@@ -2091,7 +2098,7 @@
         "probe-qwen2.5-7b-instruct-T1-mean_pool|P-conservative|hinglish-pii-200"
       ],
       "claimed_bounds": {
-        "warrant_id": "W-034bb74ed4d4b60f",
+        "warrant_id": "W-4d9fca5da83daa22",
         "detector_id": "pii-reference",
         "detector_version": "0.1.0",
         "operating_point_id": "P-declared",
@@ -2100,8 +2107,8 @@
         "status": "VALID",
         "n_test": 200,
         "base_rate": 0.51,
-        "issued_at": "2026-08-27T18:24:44+00:00",
-        "expires_at": "2026-08-28T18:24:44+00:00",
+        "issued_at": "2026-09-11T19:15:42+00:00",
+        "expires_at": "2026-09-12T19:15:42+00:00",
         "kappa": null,
         "controls_run": 2,
         "controls_inapplicable": [
@@ -2190,7 +2197,7 @@
         "probe-qwen2.5-7b-instruct-T1-mean_pool|P-conservative|hinglish-pii-200-longctx"
       ],
       "claimed_bounds": {
-        "warrant_id": "W-0de65ad1d0f35c2f",
+        "warrant_id": "W-6f3ddc52985cfa51",
         "detector_id": "pii-reference",
         "detector_version": "0.1.0",
         "operating_point_id": "P-declared",
@@ -2199,8 +2206,8 @@
         "status": "VALID",
         "n_test": 200,
         "base_rate": 0.51,
-        "issued_at": "2026-08-27T18:24:46+00:00",
-        "expires_at": "2026-08-28T18:24:46+00:00",
+        "issued_at": "2026-09-11T19:15:43+00:00",
+        "expires_at": "2026-09-12T19:15:43+00:00",
         "kappa": null,
         "controls_run": 2,
         "controls_inapplicable": [
@@ -2272,7 +2279,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on hard-negatives-200 meets internal_knowledge's declared minimums (recall >= 0.25, FPR <= 0.05); internal_knowledge is suspended on this envelope",
+      "reason": "no warrant on hard-negatives-200 meets internal_knowledge's declared minimums (recall >= 0.25, hard-negative FPR <= 0.05); internal_knowledge is suspended on this envelope",
       "considered": [
         {
           "detector_id": "pii-reference",
@@ -2296,7 +2303,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on triviaqa-600 meets internal_knowledge's declared minimums (recall >= 0.25, FPR <= 0.05); internal_knowledge is suspended on this envelope",
+      "reason": "no warrant on triviaqa-600 meets internal_knowledge's declared minimums (recall >= 0.25, hard-negative FPR <= 0.05); internal_knowledge is suspended on this envelope",
       "considered": [
         {
           "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
@@ -2326,7 +2333,7 @@
       "routed_to": null,
       "action": "ESCALATE",
       "suspended_profile": true,
-      "reason": "no warrant on triviaqa-longctx-600 meets internal_knowledge's declared minimums (recall >= 0.25, FPR <= 0.05); internal_knowledge is suspended on this envelope",
+      "reason": "no warrant on triviaqa-longctx-600 meets internal_knowledge's declared minimums (recall >= 0.25, hard-negative FPR <= 0.05); internal_knowledge is suspended on this envelope",
       "considered": [
         {
           "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
@@ -2334,11 +2341,11 @@
         },
         {
           "detector_id": "probe-qwen2.5-7b-instruct-T1-max_rolling_means",
-          "verdict": "REFUSED on this envelope: auroc_lower_ci: measured 0.5105, required > 0.55; lift_lower_ci: measured 1.076 [0.969, 1.182] at measured flag rate 0.5433, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
+          "verdict": "REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-max_rolling_means==0.1.0] auroc_lower_ci: measured 0.5105, required > 0.55; lift_lower_ci: measured 1.076 [0.969, 1.182] at measured flag rate 0.5433, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
         },
         {
           "detector_id": "probe-qwen2.5-7b-instruct-T1-mean_pool",
-          "verdict": "REFUSED on this envelope: auroc_lower_ci: measured 0.4546, required > 0.55"
+          "verdict": "REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-mean_pool==0.1.0] auroc_lower_ci: measured 0.4546, required > 0.55"
         }
       ],
       "enqueued_for_validation": [
