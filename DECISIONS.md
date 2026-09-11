@@ -6176,7 +6176,9 @@ clone, because the file was not committed yet.
 ## 138 - T2, T3 and T4 remain gated, and D30 says stop rather than approximate
 
 - **Date:** 2026-09-09
-- **Status:** OPEN — needs human review
+- **Status:** CLOSED 2026-09-11 as a scope exclusion — see entry 154. The
+  decision below is unchanged; what changed is that "OPEN — needs human review"
+  had stopped being true after four phases of nobody reviewing it.
 - **Commit:** 09ea1ad
 
 **Context.** Phase 2 carried three gated tasks forward. All three gates are
@@ -7550,3 +7552,60 @@ shape: **a control exists wherever a number might be arithmetically wrong, and
 nowhere else.** Wrong units, a missing deliverable, and two right numbers that
 disagree are all outside that. The next control worth building is not another
 estimator.
+
+---
+
+## 154 - 138 is CLOSED as a scope exclusion, because carrying it open was itself the decision
+
+- **Date:** 2026-09-11
+- **Status:** DECIDED. Supersedes the `OPEN — needs human review` status on 138.
+
+**138 has been open since 2026-09-09 and across four phases.** `CLAUDE.md` is
+explicit about what that means: *an item carried indefinitely is a decision made
+by default*, and `reports/STRATEGY-2026-09.md` §5 lists closing it among the
+three cheap things worth doing. It is being closed the way the rule intends —
+by naming the decision that was already being made — rather than by doing the
+work, because the work is still gated on things this repository does not have.
+
+**The three tasks and their gates, re-checked today rather than recalled:**
+
+| task | gate | state |
+|---|---|---|
+| T2 closed-API matrix | provider credentials | still absent |
+| T3 corpus expansion | GPU extraction | still absent |
+| T4 out-of-distribution transfer | GPU, and T3 first | still absent |
+
+**138's decision was right and is unchanged.** No synthetic stand-in for a
+provider response, no finding written from documentation or recollection, no
+partial implementation against an unavailable dependency. Entries 113, 116, 117
+and 118 record that failure four times and 118 settled the rule.
+
+**What changes is the status, and it changes because `OPEN — needs human
+review` was making a claim that stopped being true.** That status says *a person
+should look at this and decide*. Four phases of nobody doing so is the decision:
+**these three are out of scope for an unfunded, keyless, GPU-less build, and the
+project ships saying so.** Leaving it marked OPEN implies a pending resolution
+and quietly converts a scope boundary into a backlog item nobody is working.
+
+This is the same distinction the product itself sells. `UNVALIDATED` is an
+honest terminal state and must never decay into `VALID` by nobody objecting;
+an open item that nobody is working is not *pending*, it is **excluded**, and
+saying so is the difference between a limitation and a debt.
+
+**Reopening conditions, written down so the closure is reversible on evidence
+rather than on mood:**
+
+- **T2** reopens the moment one provider credential exists. Cost is small and
+  it is someone's account, not a technical gate.
+- **T3** reopens on a GPU session. `DECISIONS.md` 135 sized it: 1,649 items
+  against the `internal_knowledge` 10% calibration bar, not 1,441, which answers
+  a different question.
+- **T4** reopens after T3, with its criterion already registered and unfired:
+  transfer holds if lift's 95% lower bound exceeds 1.0 at any swept target on a
+  corpus this project did not construct.
+
+**This is not a claim that the three do not matter.** T4 in particular is the
+out-of-distribution evidence a reviewer should want and this project does not
+have; `README.md` says so and `reports/PHASE-4.md` §6 repeats it. Closing 138
+moves that from a to-do list to the limitations section, which is where an
+unmet requirement belongs when nothing is going to meet it this quarter.

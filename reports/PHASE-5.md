@@ -174,6 +174,47 @@ is not the one that binds where a serious benchmark operates.
 
 ---
 
+## 5a. Found after Phase 4 closed, and reported here rather than only fixed
+
+`CLAUDE.md`: *a defect found after close-out goes in the report, not just in the
+fix — including the ones found by rereading rather than by a failing test.*
+
+**Two artifacts priced labels for the same profile and disagreed.**
+`results/feasibility.json` said 1,808 for `customer_support` at ±0.05 month one;
+`results/on_traffic/on_traffic.json`, written three hours earlier in Phase 4,
+said **1,189**. One script read `policy-triviaqa-2400-t960.json` (recall 0.2171
+at n=960) and the other `policy-triviaqa-600.json` (recall 0.1661 at n=600).
+Two eval sets, one profile name, and neither artifact recorded which measurement
+it came from.
+
+**No control could see it.** Every check in this repository asks whether a number
+is reproducible from its own inputs, and both were, to the last digit. Nothing
+asked whether two artifacts describing the same thing agree. It is the shape of
+`DECISIONS.md` 142 one level up: **computing a number correctly twice is not
+computing it consistently.**
+
+A second instance appeared on fixing the first — steady state still differed,
+1,212 against 1,434, because one script used `config.yaml`'s declared design
+effect and the other the measured one.
+
+Fixed by one source and one owner per number, with
+`test_the_two_artifacts_agree_on_one_profile_label_budget` comparing every
+shared profile-margin pair and asserting that at least six were actually
+compared. `DECISIONS.md` 153.
+
+**The Phase 4 figure that moves:** `customer_support` at ±0.05 month one,
+1,189 → 1,808. That is a correction toward the operating point the README claim
+table has always led with, not a new measurement. `reports/PHASE-4.md` §4 quotes
+the superseded value and carries a pointer here.
+
+**The pattern across the two phases is now hard to miss.** Three defects —
+`DECISIONS.md` 147, 151 and 153 — were invisible to a suite of eleven hundred
+tests, and they share one shape: **a control exists wherever a number might be
+arithmetically wrong, and nowhere else.** Wrong units, a missing deliverable,
+and two right numbers that disagree all sit outside that.
+
+---
+
 ## 6. Ledger
 
 **Code** — `controlplane/validation/scorefree.py`,

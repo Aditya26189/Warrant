@@ -165,6 +165,14 @@ at ±0.05 on recall:
 | internal_knowledge | **3,226** | 2,558 | 341 |
 | decision_support | **4,046** | 3,208 | 301 |
 
+> **Superseded after close-out.** The three profile rows read the n=600 policy
+> run while `results/feasibility.json` read the n=960 one, so two artifacts
+> priced the same profile differently — 1,189 against 1,808 for
+> `customer_support`. Both scripts now read the n=960 artifact, which is the row
+> the README claim table leads with. `DECISIONS.md` 153 and
+> [`reports/PHASE-5.md`](PHASE-5.md) §5a. The declared-workload row is computed
+> from `config.yaml` alone and is unchanged.
+
 **The tool refuses.** At ±0.001 on recall, no sample of the 197,016-item
 unflagged pool reaches the margin, and `labels_for_recall` says so and names what
 would have to change. The closed form returns 180,223 for that margin — a number
