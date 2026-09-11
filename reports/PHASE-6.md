@@ -191,6 +191,43 @@ there is no interval field anywhere on the object.
 
 ---
 
+## 6a. Found at close-out: three scripts arrived without a smoke test
+
+`CLAUDE.md`: *a defect found after close-out goes in the report, not just in the
+fix.*
+
+`tests/test_smoke.py::test_every_script_has_a_smoke_test` exists so that a new
+script cannot arrive without one. **Three did** — `25_on_traffic.py`,
+`26_scorefree.py` and `27_gate.py`, across Phases 4, 5 and 6. The guard caught
+all three at once, which is the guard working and the author not reading it.
+
+Each now has a smoke test that asserts the artifact is **internally consistent**
+rather than that the script exited zero, because a stage that writes a plausible
+file and exits cleanly is the failure the suite exists for. What each checks is
+structural rather than numerical — notches equal `k + 1` exactly, a one-bit
+detector has exactly one operating point, month one is never cheaper than steady
+state, every rule-1 decision is identical with and without a detector.
+
+**No figure from a scaled-down run is asserted as a value.** Two scripts gained
+`--trials` and `--draws` so the smoke tests run in seconds, and the docstrings
+say at the point of use that a number from three draws is noise —
+`DECISIONS.md` 152a records a wrong conclusion reached from exactly that.
+
+Two further defects surfaced in the same pass:
+
+- **A shadowing bug**, introduced by the `--draws` change and caught on its
+  first run: a local list named `draws` shadowed the new count parameter, so
+  `range(draws)` received a list on the second iteration. Worth recording
+  because the same shadowing in a function whose loop runs once would not have
+  surfaced at all.
+- **A stale assertion.** `test_smoke_feasibility` checked that the artifact's
+  note said the price list was *"not built"*. It is built now, so the test was
+  asserting the absence of work that had been done. Both it and the note now
+  state what the artifact still does **not** derive — a money figure — which is
+  the claim that is actually load-bearing.
+
+---
+
 ## 7. Ledger
 
 **Code** — `controlplane/gate/` (registry, session, gate, agent, cost),
@@ -200,7 +237,10 @@ there is no interval field anywhere on the object.
 
 **Claim table** — seven rows added, 58/58 → 65/65.
 
-**Decisions** — 156 (the rule as specified lets the attack through).
+**Decisions** — 156 (the rule as specified lets the attack through). Section 6a
+carries three close-out defects with no entry of their own: a missing smoke
+test, a shadowed parameter and a stale assertion are fixes rather than
+methodological choices.
 
 **Reproduce**
 
