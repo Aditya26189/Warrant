@@ -8078,3 +8078,66 @@ work answers the question was itself unchecked against the question. It was not
 wrong about the five it listed; it was silently incomplete about the sixth, and
 the missing one was the only complexity the repository had no answer to. **An
 incomplete map reads exactly like a complete one.**
+
+---
+
+## 162 - Phase 12's first audit line, discharged: every invariant names the test that holds it
+
+- **Date:** 2026-09-12
+- **Status:** DECIDED
+
+**`docs/TASKS.md` Phase 12's documentation audit opens with a line that has
+never been done:**
+
+> *every invariant in `CLAUDE.md` enforced somewhere in code; name file and line*
+
+**"Enforced somewhere" is the claim this session has spent eight phases learning
+not to accept.** All nine invariants are *mentioned* in tests — a grep finds 106
+references — and a mention is not an enforcement. Nothing checked that the
+enforcing test still existed, still ran under that name, or that a tenth
+invariant added to the contract arrived with any enforcement at all.
+
+**Built:** `controlplane/report/invariants.py`, the register, and
+`tests/test_invariants.py`, 30 tests. Each invariant carries its number, its
+headline **quoted from `CLAUDE.md`**, the specific tests that would fail if it
+stopped being true, and a `breaks_as` clause describing the world in which it is
+unenforced.
+
+Four checks, and the third is the one that matters:
+
+1. every invariant in the contract has a register entry, **and every register
+   entry is still in the contract** — so a tenth invariant cannot be added with
+   no enforcement, and a deleted one cannot leave a register describing a
+   contract that has moved;
+2. the registered headline still matches the contract's wording;
+3. **every named enforcing test still exists**;
+4. the enforcing tests are spread across at least seven files, because the
+   cheapest way to make a register like this pass is to name two well-known
+   tests nine times.
+
+**Verified by breaking it**, the way 142's causal register was. Renaming
+`test_no_override` in the register to a name nothing has produces:
+
+    AssertionError: invariant 3 (Refusal has no override) names enforcing
+    test(s) that do not exist: ['tests/test_validation.py::test_no_override_DELETED'].
+    ... it was deleted, in which case the invariant is now unenforced.
+
+**What it deliberately does not do.** It cannot check that a named test actually
+enforces what it claims — that needs mutation testing, and the honest version is
+the deliberate-breakage falsifier 142 uses, which does not generalise to nine
+invariants cheaply. The gap it closes is narrower and was completely open: an
+invariant whose enforcement quietly disappeared left **no trace at all**.
+
+**A defect in the first version, worth recording because of how it failed.** It
+called `pytest --collect-only` at module scope to get the node ids. That
+subprocess collects `tests/`, which imports this module, which spawns another
+subprocess — **unbounded recursion**. It did not fail; it *hung*, which is worse,
+because a hang announces nothing and a failure names itself. Replaced with
+`ast` parsing of the test files: same question, milliseconds, cannot re-enter.
+
+**The objection.** *"A register of tests is itself just an assertion of
+coverage."* Yes, and that is why check 3 exists and why it was verified by
+breaking it. The register asserts nothing about quality; it makes the *absence*
+of enforcement loud, which is the failure mode this repository has now hit four
+times — 147, 151, 153 and 161 were all a control aimed at the wrong thing or a
+map nobody checked against the territory.
