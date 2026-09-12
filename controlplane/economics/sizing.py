@@ -127,6 +127,14 @@ def negatives_for_detection(
 ) -> Optional[int]:
     """Clean negatives needed before ``breach_rate`` establishes a breach.
 
+    Quantity: the clean negatives needed before an observed ``breach_rate``
+    **establishes** that the true rate exceeds ``budget``.
+    Propagation: one-sided Clopper-Pearson lower bound at each achievable
+    integer count, searched exactly rather than inverted in closed form --
+    the predicate is not monotone in ``n`` because the count is
+    ``round(breach_rate * n)``, so a closed form would return a value at
+    which detection does not hold.
+
     **The smallest ``n`` from which detection holds at ``n`` and at every larger
     ``n``** — not the first ``n`` at which it happens to hold. The distinction is
     the whole point of this function and it is worth 20% of the answer.
@@ -207,6 +215,13 @@ def negatives_for_detection(
 
 def smallest_detectable_at(n_negatives: int, budget: float, alpha: float) -> Optional[float]:
     """The smallest observed rate that would revoke, at this ``n``.
+
+    Quantity: the least observed false-positive rate whose one-sided
+    Clopper-Pearson lower bound exceeds the budget at this ``n``.
+    Propagation: exact, by search -- the bound is evaluated at each
+    achievable integer count and the first crossing returned. No normal
+    approximation is involved, which matters because the counts here are
+    small enough that one would be wrong in the unsafe direction.
 
     The plan's own sanity check: having quoted a sample size for a breach of a
     given size, this says what that sample would *actually* catch, which is at

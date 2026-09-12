@@ -55,6 +55,13 @@ def n_to_detect_deviation(
 ) -> int:
     """Sample size needed to detect a deviation of ``tolerance`` from ``target``.
 
+    Quantity: the number of observations needed to distinguish a flag rate of
+    ``target * (1 + tolerance)`` from ``target`` at 95% confidence.
+    Propagation: normal approximation for a proportion,
+    ``n = z^2 * p'(1-p') / (p * tolerance)^2`` with ``p' = p(1 + tolerance)``,
+    sized against a deviation **worth acting on** rather than against the
+    one observed -- see below for why the latter diverges.
+
     Power is measured against **an effect worth acting on**, never against the
     effect that happened to be observed. The first version of this used the
     observed gap, which meant an estimate landing near the target reported an

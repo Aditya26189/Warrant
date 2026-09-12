@@ -8141,3 +8141,69 @@ breaking it. The register asserts nothing about quality; it makes the *absence*
 of enforcement loud, which is the failure mode this repository has now hit four
 times — 147, 151, 153 and 161 were all a control aimed at the wrong thing or a
 map nobody checked against the territory.
+
+---
+
+## 163 - Phase 12's second audit line: 8 of 32 statistical claims carried their derivation
+
+- **Date:** 2026-09-12
+- **Status:** DECIDED
+- **Registered before the code**, per the working rules: the gate is that every
+  function returning an interval, a bound or a sample size carries a
+  `Quantity:` and a `Propagation:` line, and that a register makes the absence
+  of one fail rather than pass silently.
+
+**`CLAUDE.md` requires it, in the section on what still happens during the
+build:**
+
+> **Statistical claims carry their derivation**, wherever they appear. A sample
+> size, interval or projection states the quantity being estimated and the
+> propagation used. This is the discipline that catches a prevalence interval
+> labelled as a recall interval.
+
+**Measured.** Parsing every public function in `controlplane/` and keeping those
+whose name or `Returns:` section is about an interval, a bound, a coverage level
+or a sample size:
+
+| | |
+|---|---|
+| functions returning an interval, a bound or a sample size | **32** |
+| carrying a `Propagation:` line | **8** |
+| not | **24** |
+| — of those, in read-only zones | 8 |
+| — editable | 16 |
+
+**Six of the sixteen are not statistical claims** and are excluded by name
+rather than by a filter, so the exclusion is reviewable: `load_triviaqa` is a
+loader, `has_interval` and `intervals_overlap` and `accepts` are predicates,
+`claimed_bounds` is an accessor, `padding_fault_control` is a control. A test
+that quietly widened its own scope to whatever it could satisfy would be the
+failure this entry is about.
+
+**That leaves ten, and one of them is mine from this session** —
+`scorefree.smallest_certifiable_budget`, written three phases after I started
+citing this rule at other people's code. Worth saying plainly: the convention is
+easy to follow when writing the estimator and easy to forget when writing the
+helper beside it.
+
+**The eight in read-only zones are reported, not touched** (`CLAUDE.md`,
+Read-only): `drift/certify.py::certify_drift_response`,
+`drift/null_band.py::iqr_ratio_power`, `drift/response.py::can_certify`,
+`stats.py::{auroc, bootstrap_interval, estimated, bootstrap_seed_stability}`,
+`warrant_stats.py::certify_fpr`. **OPEN — needs human review.** Four of those
+are the most-used estimators in the repository, so the coverage figure above
+understates the gap in the places it matters most.
+
+**Decision.** Add the two lines to the ten, and register the set in
+`controlplane/report/invariants.py` beside the invariants, with a test that
+fails when a registered function loses its derivation. Same shape as 162 and for
+the same reason: *mentioned in a contract* and *checked by something* are
+different states, and only one of them survives a rename.
+
+**The objection.** *"Two lines in a docstring are not a control."* Correct on
+their own — a wrong derivation stated confidently is worse than none. What the
+register buys is that the derivation cannot *disappear*, which is the failure
+that already happened: `review.recall_sample_size` carried no propagation for
+four phases while computing the wrong one, and `DECISIONS.md` 147 is what it
+cost. A stated propagation is a thing a reviewer can check in ten seconds; an
+absent one is a thing nobody looks for.

@@ -35,7 +35,11 @@ from pathlib import Path
 
 import pytest
 
-from controlplane.report.invariants import INVARIANTS
+from controlplane.report.invariants import (
+    DERIVED_CLAIMS,
+    INVARIANTS,
+    READ_ONLY_WITHOUT_DERIVATION,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 CLAUDE_MD = PROJECT_ROOT / "CLAUDE.md"
@@ -193,4 +197,85 @@ def test_the_register_finds_a_deleted_enforcement() -> None:
     assert (
         _base_node("tests/test_model.py::test_blended_scores_are_refused_by_name[f1]")
         in on_disk
+    )
+
+
+# --------------------------------------------------------------------------- #
+# Statistical claims carry their derivation
+# --------------------------------------------------------------------------- #
+
+
+@lru_cache(maxsize=None)
+def _docstring(module: str, function: str) -> str:
+    """The docstring of one public function, read from source."""
+    path = PROJECT_ROOT / module
+    assert path.is_file(), f"{module} does not exist"
+    tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+    for node in ast.walk(tree):
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            if node.name == function:
+                return ast.get_docstring(node) or ""
+    raise AssertionError(f"{module} has no function named {function!r}")
+
+
+@pytest.mark.parametrize(
+    "module,function", DERIVED_CLAIMS, ids=lambda v: v if isinstance(v, str) else str(v)
+)
+def test_every_registered_statistical_claim_states_its_derivation(
+    module: str, function: str
+) -> None:
+    """``CLAUDE.md``: a sample size, interval or projection states its propagation.
+
+    ``docs/TASKS.md`` Phase 12 repeats it as an audit line, and nothing checked
+    it until `DECISIONS.md` 163 counted: **8 of 32** qualifying functions carried
+    one.
+
+    The check is that the pair cannot *disappear*. Two lines in a docstring are
+    not a control on their own — a wrong derivation stated confidently is worse
+    than none — but an absent one is a thing nobody looks for, and that is the
+    failure that already happened: ``review.recall_sample_size`` carried no
+    propagation for four phases while computing the wrong one.
+    """
+    doc = _docstring(module, function)
+    assert doc, f"{module}::{function} has no docstring at all"
+    low = doc.lower()
+    assert "quantity:" in low, (
+        f"{module}::{function} returns an interval, a bound or a sample size "
+        "and does not say what quantity it estimates"
+    )
+    assert "propagation:" in low, (
+        f"{module}::{function} does not say how the uncertainty was propagated. "
+        "CLAUDE.md requires it wherever a statistical claim appears; "
+        "DECISIONS.md 147 is what an unstated propagation cost."
+    )
+
+
+def test_the_read_only_gap_is_recorded_rather_than_quietly_absent() -> None:
+    """The eight in read-only zones are an OPEN item, not an oversight.
+
+    ``CLAUDE.md`` makes ``stats.py``, ``warrant_stats.py``, ``drift/`` and
+    ``policy/`` read-only, so these cannot be fixed here. Listing them turns a
+    silence into a number — and four of them are the most-used estimators in the
+    repository, so the headline coverage figure understates the gap where it
+    matters most.
+    """
+    assert READ_ONLY_WITHOUT_DERIVATION, "the OPEN list has been emptied"
+    for module, function in READ_ONLY_WITHOUT_DERIVATION:
+        assert (PROJECT_ROOT / module).is_file(), f"{module} no longer exists"
+        # If one of these gains a derivation, it should move out of the list
+        # rather than sit here misreporting the gap.
+        doc = _docstring(module, function).lower()
+        if "propagation:" in doc:
+            pytest.fail(
+                f"{module}::{function} now carries a derivation and should move "
+                "from READ_ONLY_WITHOUT_DERIVATION into DERIVED_CLAIMS"
+            )
+
+
+def test_the_two_registers_do_not_overlap() -> None:
+    """A function is either checked or recorded as unchecked, never both."""
+    checked = set(DERIVED_CLAIMS)
+    opened = set(READ_ONLY_WITHOUT_DERIVATION)
+    assert not (checked & opened), (
+        f"listed as both enforced and open: {sorted(checked & opened)}"
     )

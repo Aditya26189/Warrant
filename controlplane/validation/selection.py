@@ -149,6 +149,14 @@ def selection_aware_recall(
 ) -> SelectionAwareBound:
     """Propagate threshold-selection noise into a recall bound.
 
+    Quantity: recall at the issued threshold, with the uncertainty of having
+    *chosen* that threshold on a finite validation split folded in.
+    Propagation: nested bootstrap -- the validation split is resampled, a
+    threshold reselected on each resample at the same flag-rate budget, and
+    recall recomputed on test at that threshold. The spread across
+    resamples is selection noise, which a bound computed at one fixed
+    threshold omits entirely.
+
     Args:
         validation_scores: Scores on the split the threshold was chosen on.
         validation_labels: 0/1, 1 meaning *incorrect*.

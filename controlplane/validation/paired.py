@@ -307,6 +307,12 @@ def paired_bootstrap(
 ) -> tuple[PairedDifference, ...]:
     """Bootstrap the difference between two models scored on the same items.
 
+    Quantity: the difference in a statistic between two models on one item
+    set. Propagation: paired percentile bootstrap over **items**, both
+    models recomputed on each resample, so the shared item-level variance
+    cancels in the difference. The pairing is the propagation: resampling
+    the two independently estimates a different and much wider quantity.
+
     Items are resampled with replacement and **both** models are recomputed on
     that same resample, so the shared item-level variance cancels in the
     difference. Resampling each model independently would not cancel it and

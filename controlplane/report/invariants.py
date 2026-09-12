@@ -31,7 +31,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-__all__ = ["Invariant", "INVARIANTS"]
+__all__ = [
+    "DERIVED_CLAIMS",
+    "INVARIANTS",
+    "Invariant",
+    "READ_ONLY_WITHOUT_DERIVATION",
+]
 
 
 @dataclass(frozen=True)
@@ -167,4 +172,56 @@ INVARIANTS: tuple[Invariant, ...] = (
             "and selection leaks into the set that scores it"
         ),
     ),
+)
+
+
+#: Public functions that return an interval, a bound, or a sample size, and
+#: therefore must carry a ``Quantity:`` and a ``Propagation:`` line.
+#:
+#: ``CLAUDE.md``: *statistical claims carry their derivation, wherever they
+#: appear. A sample size, interval or projection states the quantity being
+#: estimated and the propagation used.* ``docs/TASKS.md`` Phase 12 repeats it as
+#: an audit line. Nothing checked it until ``DECISIONS.md`` 163: 8 of 32
+#: qualifying functions carried one.
+#:
+#: Entries are ``module path`` to ``function name``. The test reads the
+#: docstring and fails if the pair is gone, so a derivation cannot vanish in a
+#: tidy-up — which is the failure that already happened once, in
+#: ``review.recall_sample_size``, and cost ``DECISIONS.md`` 147.
+DERIVED_CLAIMS: tuple[tuple[str, str], ...] = (
+    ("controlplane/economics/feasibility.py", "abstention_floor"),
+    ("controlplane/economics/review.py", "recall_sample_size"),
+    ("controlplane/economics/sizing.py", "negatives_for_detection"),
+    ("controlplane/economics/sizing.py", "smallest_detectable_at"),
+    ("controlplane/intake/certify.py", "certify_items"),
+    ("controlplane/intake/recheck.py", "smallest_detectable_breach"),
+    ("controlplane/sampling/estimator.py", "estimate_on_traffic"),
+    ("controlplane/sampling/planning.py", "labels_for_prevalence"),
+    ("controlplane/sampling/planning.py", "labels_for_recall"),
+    ("controlplane/sampling/planning.py", "recall_sensitivity"),
+    ("controlplane/sampling/agreement.py", "cohens_kappa"),
+    ("controlplane/sampling/allocation.py", "design_effect"),
+    ("controlplane/validation/calibration.py", "n_to_detect_deviation"),
+    ("controlplane/validation/paired.py", "paired_bootstrap"),
+    ("controlplane/validation/scorefree.py", "smallest_certifiable_budget"),
+    ("controlplane/validation/scorefree.py", "tunability"),
+    ("controlplane/validation/selection.py", "selection_aware_recall"),
+)
+
+#: Qualifying functions in read-only zones (``CLAUDE.md``, Read-only). Reported
+#: rather than fixed, and listed here so the gap is a recorded number rather
+#: than an absence.
+#:
+#: **OPEN — needs human review.** Four of these are the most-used estimators in
+#: the repository, so the coverage figure in ``DECISIONS.md`` 163 understates
+#: the gap in the places it matters most.
+READ_ONLY_WITHOUT_DERIVATION: tuple[tuple[str, str], ...] = (
+    ("controlplane/drift/certify.py", "certify_drift_response"),
+    ("controlplane/drift/null_band.py", "iqr_ratio_power"),
+    ("controlplane/drift/response.py", "can_certify"),
+    ("controlplane/validation/stats.py", "auroc"),
+    ("controlplane/validation/stats.py", "bootstrap_interval"),
+    ("controlplane/validation/stats.py", "estimated"),
+    ("controlplane/validation/stats.py", "bootstrap_seed_stability"),
+    ("controlplane/validation/warrant_stats.py", "certify_fpr"),
 )

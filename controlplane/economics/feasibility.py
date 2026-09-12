@@ -104,6 +104,14 @@ def abstention_floor(
 ) -> AbstentionFloor:
     """Minimum abstention for a target risk, assuming a perfect selector.
 
+    Quantity: the minimum fraction of traffic any selector must abstain on
+    to hold residual risk at ``target_risk``, given a base error rate ``mu``.
+    Propagation: none -- this is an impossibility result, not an estimate.
+    ``floor = (mu - alpha) / (1 - alpha)`` follows from the best possible
+    case in which every abstention removes an error, so no interval
+    attaches to it and attaching one would imply a sampling step that does
+    not exist. The **input** ``mu`` is measured and carries its own.
+
     Args:
         base_error_rate: ``mu``, the measured error rate of the traffic.
         target_risk: ``alpha``, the declared risk ceiling on retained responses.

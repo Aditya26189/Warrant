@@ -132,6 +132,14 @@ def certify_items(
 ) -> CertificationResult:
     """Certify ``items``' detector at ``budget``, or refuse with the shortfall.
 
+    Quantity: the detector's false-positive rate on the supplied negatives,
+    bounded above, and the lowest threshold whose bound clears ``budget``.
+    Propagation: one-sided Clopper-Pearson upper bound at ``alpha``, the
+    same bound :func:`controlplane.validation.warrant_stats.certify_fpr`
+    uses, so a customer's certificate and a published warrant mean the
+    same thing. Recall at the chosen threshold is reported with a
+    percentile bootstrap over items.
+
     Args:
         config: Supplies the bootstrap count, coverage and seed, so a customer's
             intervals are the same object every published number here uses.

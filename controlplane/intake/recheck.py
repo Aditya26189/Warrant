@@ -304,6 +304,13 @@ def smallest_detectable_breach(
 ) -> Optional[float]:
     """The smallest observed false-positive rate that would revoke, at this ``n``.
 
+    Quantity: the least observed false-positive rate that **establishes** a
+    breach -- one whose one-sided Clopper-Pearson lower bound clears the
+    budget. Propagation: exact, by search over achievable integer counts.
+    Revocation turns on evidence of breach rather than failure to re-prove
+    (``DECISIONS.md`` 143), so the lower bound is the right tail and the
+    gap between it and the budget is the dead zone stated below.
+
     Revoking only on the lower bound buys a low false-alarm rate with a **dead
     zone**, and the zone has to be stated or "no evidence of breach" becomes the
     same kind of overclaim the asymmetric test was introduced to remove.

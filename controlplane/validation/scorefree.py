@@ -305,6 +305,13 @@ def smallest_certifiable_budget(
 ) -> Optional[float]:
     """The tightest false-positive budget a **useful** threshold underwrites.
 
+    Quantity: the tightest false-positive budget any threshold that flags at
+    least one positive can certify on these negatives. Propagation:
+    one-sided Clopper-Pearson upper bound evaluated at every realised score
+    cut point, minimised. Exact rather than approximate, and the minimum is
+    over realised cut points only, because a grid finer than the data
+    counts the same partition repeatedly.
+
     Two floors bind on a false-positive budget and they are different
     constraints:
 

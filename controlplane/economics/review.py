@@ -143,6 +143,14 @@ def recall_sample_size(
 ) -> ReviewSizing:
     """**Superseded.** Confirmed *errors* a recall interval needs, not items.
 
+    Quantity: confirmed errors a sample must contain for a recall interval
+    of half-width ``margin`` -- **not** reviewed items, which is the defect.
+    Propagation: normal approximation for a proportion at ``p = recall``,
+    ``n = z^2 p(1-p)/m^2``, inflated by the declared design effect. It
+    propagates through **no derivative at all**, which is why it is wrong
+    for the design this project runs -- see the warning below and
+    ``DECISIONS.md`` 147.
+
     .. warning::
 
        ``DECISIONS.md`` 147. This function shipped for four phases labelled
