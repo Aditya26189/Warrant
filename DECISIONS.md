@@ -8207,3 +8207,68 @@ that already happened: `review.recall_sample_size` carried no propagation for
 four phases while computing the wrong one, and `DECISIONS.md` 147 is what it
 cost. A stated propagation is a thing a reviewer can check in ten seconds; an
 absent one is a thing nobody looks for.
+
+---
+
+## 164 - SPEC section 11 lists twelve things RESULTS.md must contain; six were there
+
+- **Date:** 2026-09-12
+- **Status:** DECIDED
+- **Registered before the code:** the gate is that a test parses `SPEC.md` §11's
+  numbered list and fails when `results/RESULTS.md` has no section for an item,
+  so a thirteenth requirement cannot be added to the spec and silently ignored.
+
+**`SPEC.md` §11 is titled "What `results/RESULTS.md` must contain" and lists
+twelve items.** `CLAUDE.md`'s definition of done names the same document. It has
+never been audited against the list.
+
+**Audited:**
+
+| # | required | present |
+|---|---|---|
+| 1 | run metadata — device, seed, config hash, git commit, timestamp | **yes** |
+| 2 | eval set registry — IDs, hashes, sizes, base rates | no |
+| 3 | the warrant matrix | **yes** |
+| 4 | tier ladder on each envelope, with CIs | no |
+| 5 | control results for every run, including the rejected fault case | no |
+| 6 | drift trace — envelope violation, revocation, routing decision | no |
+| 7 | the computed price list | **yes** (`DECISIONS.md` 155) |
+| 8 | stratified estimator validation — coverage over synthetic trials | **yes** (155) |
+| 9 | Cohen's κ | **yes** (155) |
+| 10 | Presidio three-configuration comparison | no |
+| 11 | action-gate results, including the detector-nulled case | no |
+| 12 | limitations, specific rather than boilerplate | **yes** |
+
+**Six of twelve, and three of the six that are present arrived four days ago.**
+Before `DECISIONS.md` 155 the score was three of twelve, in the document
+`CLAUDE.md`'s definition of done names first.
+
+**Every absent item has a committed artifact behind it.** The eval-set registry
+is `results/evalset_build.json`; the tier ladder is `results/tier_ladder.json`;
+the controls are inside every `validation-*.json`; routing is in
+`warrant_matrix.json`; the Presidio sequence is `results/detectors.json`; the
+gate is `results/gate/gate.json`. **Nothing was missing except the rendering** —
+which is the specific shape of this failure and worth naming: the evidence was
+gathered, committed and verified, and the document that is supposed to present
+it did not mention it.
+
+**Decision.** Render all six, each from its artifact, and add
+`test_results_md_contains_every_spec_section_11_item` — which parses the
+numbered list out of `SPEC.md` rather than hard-coding twelve, so the spec and
+the check cannot drift apart in either direction.
+
+**One item is rendered narrower than the spec asks and says so.** Item 6 wants
+*"envelope violation detected, revocation, routing decision"*. The routing
+decisions exist — 21 of them, including the ESCALATE fallbacks where no valid
+warrant covers an envelope. A live revocation trace does not: nothing in
+`results/` records a drift run that revoked a warrant, because the drift
+machinery has never been pointed at a moving distribution with a warrant
+outstanding. The section renders the routing half and states the missing half
+rather than implying a trace exists. **OPEN.**
+
+**The objection.** *"You are adding sections to hit a checklist."* The checklist
+is the definition of done and the artifacts already existed; what changed is
+that a reader of `RESULTS.md` can now see the controls that ran, including the
+deliberately-broken padding case, without opening six JSON files. That was
+always the document's job. The test is the part that matters, because it means
+the score cannot silently fall back to six.

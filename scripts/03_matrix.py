@@ -44,6 +44,7 @@ from controlplane.matrix import Profile, WarrantMatrix, route
 from controlplane.report import render_results
 from controlplane.report.price_list import price_list_sections  # noqa: E402
 from controlplane.report.regression import check_matrix_regression  # noqa: E402
+from controlplane.report.spec_sections import spec_section_11_sections  # noqa: E402
 from controlplane.store import Ledger, RecordKind
 from controlplane.validation.ablation import run_ablation
 from controlplane.validation.synthetic import synthetic_cache, synthetic_evalset
@@ -310,7 +311,14 @@ def main(argv: list[str] | None = None) -> int:
             render_results(
                 matrix,
                 provenance=provenance(config),
-                extra_sections=price_list_sections(results_dir),
+                # SPEC.md 11 lists twelve things this document must
+                # contain. Six were present until DECISIONS.md 164;
+                # every absent one already had a committed artifact and
+                # was missing only its rendering.
+                extra_sections=(
+                    price_list_sections(results_dir)
+                    + spec_section_11_sections(results_dir)
+                ),
             ),
             encoding="utf-8",
         )
