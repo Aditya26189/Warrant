@@ -7615,7 +7615,8 @@ unmet requirement belongs when nothing is going to meet it this quarter.
 ## 155 - RESULTS.md gains the price list and κ; and `03_matrix.py` cannot run on this machine
 
 - **Date:** 2026-09-11
-- **Status:** DECIDED, with one part OPEN.
+- **Status:** DECIDED. The one OPEN part was closed by 157 on the same
+  day; see the note under that heading below.
 
 **The contract.** `CLAUDE.md`'s definition of done asks `results/RESULTS.md` for
 *"the warrant matrix, the tier ladder, drift/revocation traces, **the computed
@@ -7670,7 +7671,17 @@ because a two-sided 95% bound and a one-sided one are 23% apart at n=200.
 Tolerating them would mean rendering a matrix from intervals whose coverage
 nobody knows, in the document that is supposed to be the evidence.
 
-### OPEN: the committed `RESULTS.md` does not yet carry the new sections
+### CLOSED by 157: the committed `RESULTS.md` does not yet carry the new sections
+
+> **Closed 2026-09-11 by entry 157**, and the reasoning below was half
+> wrong in an instructive way. It concluded that regenerating needed a
+> GPU because the chain starts at `00_extract.py`. Extraction's *output*
+> is the `results/cache-*.npz` files and those are on disk; everything
+> downstream is CPU work. What was missing was not a GPU, it was running
+> the documented order instead of one script. 157 ran it, 401 metrics
+> reproduced with none moved, and `RESULTS.md` gained the sections.
+> Left standing below rather than rewritten, because a wrong reason
+> recorded next to its correction is worth more than a tidy entry.
 
 It cannot be regenerated here without regressing it. A fresh run of
 `03_matrix.py` alone produces a **correct but emptier** document — 21 table rows
@@ -7838,6 +7849,12 @@ here ran `02_validate.py` on the long-context envelope and failed with
 train split; the script does not say so. **OPEN**, and the cheap fix is for each
 script to refuse when the artifact it reads is absent or older than its own
 input rather than proceeding on what it finds.
+
+> **Partly closed by 158**, the same day. The general problem stands; the
+> one case that actually occurred does not. `03_matrix.py` now refuses
+> before writing if the incoming matrix has fewer populated cells than
+> the artifact on disk, which is the specific way an out-of-order run
+> produced a quietly poorer document here.
 
 ---
 
@@ -8272,3 +8289,72 @@ that a reader of `RESULTS.md` can now see the controls that ran, including the
 deliberately-broken padding case, without opening six JSON files. That was
 always the document's job. The test is the part that matters, because it means
 the score cannot silently fall back to six.
+
+---
+
+## 165 - Phase 12's last audit line: 375 citations resolve, and two entries had gone stale
+
+- **Date:** 2026-09-13
+- **Status:** DECIDED
+
+**`docs/TASKS.md` Phase 12 asks that every `DECISIONS.md` entry is still
+accurate.** Accuracy is not testable — an entry can be well-formed and wrong.
+Three properties either side of it are, and none was checked.
+
+**1. The log is well-formed.** 165 entries, numbered 1 to 164 plus `152a`, no
+gaps, no duplicate labels.
+
+**2. Every citation resolves.** `DECISIONS.md` is cited **375 times** — from
+code, tests, `config.yaml`, the policy bundles, committed artifacts and the
+generated notebook. **Every one points at an entry that exists.**
+
+**3. Every OPEN entry says what would close it.** Two carry `OPEN — needs human
+review` as their status and both do.
+
+### The check was wrong three times before it was right, and each time differently
+
+**First, it found 94 entries instead of 165 and reported 46 files as carrying
+broken citations.** The heading format changes mid-file: entries 001–071 are
+`## 001 — Title`, zero-padded with an em dash; 072 onward are `## 072 - Title`,
+unpadded with a hyphen. A regex that knew one form silently ignored the other.
+**Every one of the 46 "broken" files was fine.** Had that been reported rather
+than rechecked, it would have been a false finding against the repository in a
+session whose whole output is findings.
+
+The file was **not** renumbered to make the regex simpler. A log cited 375 times
+is not reformatted for the convenience of one test; the test accepts both forms
+and a second test asserts both are still parsed, so a future tidy-up of either
+cannot quietly halve the check.
+
+**Second, it flagged 134 and 157 as open.** 134 reads *"DECIDED — supersedes the
+OPEN status of 124"*; 157 reads *"DECIDED. Closes the OPEN item in 155"*. Both
+are closures. The check matched the word, not the field.
+
+**Third, stripping at closure words fixed those two and not 155**, which reads
+*"the one OPEN part was closed by 157"* — there the word comes first. The rule
+that works reads the status as a field: **an entry is open when its status value
+begins with OPEN**, and nothing else.
+
+### And it found two real ones
+
+**155 said its OPEN item was open, and 157 had closed it the same day.** The
+entry was accurate when written and stale within hours. Amended in place with a
+closure note — and the note records that 155's reasoning was **half wrong**: it
+concluded the rebuild needed a GPU, when the chain's GPU stage produces the
+caches and the caches were on disk. The wrong reason is left standing beside its
+correction, because a tidy entry is worth less than a visible mistake.
+
+**157 recorded the run order as OPEN, and 158 had closed the case that bit.**
+Amended with a pointer; the general problem stands.
+
+**Neither would have been found by reading forward.** Both are forward
+references nobody wrote, because the entry that closed an item did not go back
+and say so. `test_every_open_entry_says_what_would_close_it` does not catch that
+class either — it catches an OPEN item with no exit condition. What catches
+stale closures is this audit, and it is recorded here so the next one knows to
+look.
+
+**Verified by breaking it.** Appending an entry with status `OPEN` and no exit
+condition fails the test and names the entry. The check also asserts it examined
+at least two entries, because a check that examines nothing passes for the wrong
+reason — the lesson 153 learned about cross-artifact comparisons.
