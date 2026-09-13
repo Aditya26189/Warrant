@@ -8542,3 +8542,98 @@ that buyer's compliance reviewer looks.
 
 **SPEC.md walk after this entry:** §1, §6.2, §9.2–9.3, §10, §11 reconciled; §2–§5,
 §6.1/§6.3–6.5, §7, §8, §9.1/§9.4 not yet walked. **OPEN.**
+
+---
+
+## 169 - SPEC.md 2 walked: the behaviour holds, five statements about it do not
+
+- **Date:** 2026-09-13
+- **Status:** FOUND, fixes not yet made. **OPEN.** Recorded before the session
+  closed so the findings outlive it; `reports/NEXT-STEPS.md` orders the work.
+
+`SPEC.md` §2 walked against `controlplane/validation/` and the three real T1
+validation artifacts (`results/validation-T1-{last_token,mean_pool,max_rolling_means}.json`).
+
+**Holds.** Five controls run and are reported with margins. Padding thresholds
+match (`rel-L2 1.49e-02 <= 0.1`, cosine `0.999888 >= 0.999`, right-padded
+rejected at cosine 0.5664). Bootstrap is 1000 resamples. A validation from cache
+takes 15.7-16.4 s against §2.2's one minute. Progress streams through a
+callback. AUROC, recall-at-bound, hard-negative FPR-at-bound and `n_test`
+refusals are in `issuance.py` as §2.3 states. `/validate` is
+`controlplane/validation/runner.py::validate` plus `scripts/02_validate.py`,
+not an HTTP route; §2.2's `POST` is illustrative, as the spec's preamble says
+reference snippets are.
+
+**Does not hold, in order of what a reviewer would hit first:**
+
+1. **§2.1's measurements are the fixture's, and real data goes the other way.**
+   *"At a holdout of 600 the null spread is 0.068 ... and 0.271"*, *"Hanley-McNeil
+   understates it by 2.1x and 8.3x"*, *"Measured counts: 8 ... 22 ... 125"* are
+   all from 031's fixture run (base rate 0.152). The real T1 runs (d = 3584,
+   n = 600, base rate 0.46) measure a null spread of 0.016-0.023: **0.7-1.0x** the
+   closed form (0.0237), resolved at the 8-repeat minimum. The empirical rule is
+   still the right design -- it costs nothing and guards the low-dimensional case
+   -- but on the only real detectors measured, the closed form would not have
+   understated anything. The same unlabelled figures are in `config.yaml`'s
+   comment, `docs/METHODS.md` §3, `docs/ARCHITECTURE.md`, the
+   `label_shuffle_control` docstring, and as an unqualified "understates the
+   spread here" in `docs/DIAGRAMS.md` and `docs/TROUBLESHOOTING.md`.
+2. **Every real artifact carries a non sequitur.** `_summarise_null`'s note is
+   fixed text: *"measured spread is 0.8x the Hanley-McNeil closed form (0.0237),
+   which is why the closed form is not the reference"*. A spread narrower than
+   the closed form is not a reason to reject it. Fix: branch the wording on the
+   ratio. Artifacts keep the old sentence until the next chain run; no number
+   moves.
+3. **`docs/METHODS.md` describes a ±2 SE floor that does not exist.** 031
+   retired it; `_summarise_null` has none.
+4. **The lift interval's stated justification is false; its lower bound is
+   conservative anyway.** `WarrantMetrics.lift` divides the recall interval by a
+   fixed flag rate because flag-rate uncertainty is *"an order of magnitude
+   smaller"*. Measured relative half-widths: recall 0.38-0.40, flag rate
+   0.36-0.40 -- the same order. A joint bootstrap over the artifacts' counts
+   (20,000 draws, seed 1729):
+
+   | variant | shipped lift interval | joint bootstrap |
+   |---|---|---|
+   | last_token | [1.190, 2.676] | [1.594, 2.207] |
+   | mean_pool | [1.254, 2.835] | [1.695, 2.262] |
+   | max_rolling_means | [1.286, 2.819] | [1.712, 2.264] |
+
+   The lower bound, which `issuance.py` compares against 1.0, is **lower** than
+   the joint one, because recall and flag rate move together (true positives are
+   a subset of flagged items). So the refusal errs toward refusing: it claims less,
+   not more. The upper bound is inflated past the physical ceiling
+   `1/max(b, f) = 2.166`, and `report/sweep.py`, `fpr_sweep.py` and the refusal
+   message render it. **Decision deferred:** keep the computation (replacing it
+   would issue warrants the current bar refuses, and that needs its own
+   pre-registered entry), correct the docstring, and pin the conservatism with a
+   test over the shipped artifacts.
+5. **§2.3 omits a refusal criterion the code enforces**: lift lower bound
+   `<= 1.0` (043). The spec lists five; `issuance.py` enforces six.
+
+**Two more, outside §2 but found by it:**
+
+6. **`n` on a rate is the eval set's size, not the proportion's denominator.**
+   Recall 23/277 and precision 23/25 both carry `n = 600`; precision's
+   `[0.80, 1.00]` is the width of 25 trials. `n` is set in
+   `validation/stats.py::estimated` as `labels.size`, and that file is
+   **read-only**. Invariant 4 says every interval names its `n`; this one names
+   an `n` a reader will misuse. **OPEN -- needs human review.** Minimal non-read-only
+   step: define `n` in `docs/ARTIFACTS.md` and `docs/GLOSSARY.md`, and name the
+   denominator in the rendered tables.
+7. **"Precision carries no interval" and a precision interval sit in the same
+   README.** Both are right about different estimands: this month's flagged
+   traffic, reviewed in full, is a census; eval-set precision is a sample
+   estimate of the detector. Neither sentence says which. Fix: scope the
+   sentence in `README.md` and in `controlplane/report/price_list.py`.
+
+**Not a defect, recorded so nobody reports it as one:** `null_feature` measures
+0.49154039412734557 on all three variants. Noise is drawn per column from the
+feature moments with the same seed, and `LinearProbe` standardises, which
+removes those moments; all three have 3,584 features. The three results are
+one measurement reported three times, not three confirmations. The padding
+evidence is likewise shared.
+
+**SPEC.md walk after this entry:** §1, §2 (findings above, unfixed), §6.2,
+§9.2-9.3, §10, §11; §3-§5, §6.1/§6.3-6.5, §7, §8, §9.1/§9.4 not yet walked.
+**OPEN.**
