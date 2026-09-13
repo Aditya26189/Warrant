@@ -128,6 +128,32 @@ def _n_with_denominators(warrant) -> str:
     return f"{n} ({positives} pos / {flagged} flagged)"
 
 
+def _snapshot_note(matrix: WarrantMatrix, measured: Sequence[Warrant]) -> str:
+    """Say when the statuses below stop being true.
+
+    A warrant is time-bounded, so this document is too. Re-rendering the matrix
+    from a ledger older than the TTL turned every VALID cell STALE, which is the
+    product working and was written down nowhere (``DECISIONS.md`` 177). The TTL
+    is read off a warrant rather than from config, because it is the warrant's
+    own expiry that the matrix applies.
+    """
+    ttls = {
+        round((w.expires_at - w.issued_at).total_seconds() / 3600.0, 2) for w in measured
+    }
+    lifetime = (
+        f"{next(iter(ttls)):g} hours after issue"
+        if len(ttls) == 1
+        else "at each warrant's own expiry"
+    )
+    return (
+        f"**Statuses are as of {matrix.now.isoformat()}.** A warrant expires "
+        f"{lifetime}, so this matrix is a snapshot: rendered again from the same "
+        "ledger after that, its VALID cells report STALE. That is the design, not "
+        "a regression -- re-issuing means re-running the validations "
+        "(`DECISIONS.md` 177)."
+    )
+
+
 def render_results(
     matrix: WarrantMatrix,
     *,
@@ -203,6 +229,8 @@ def render_results(
         "## Warrant matrix",
         "",
         "Cells on synthetic envelopes show their status but not their numbers.",
+        "",
+        _snapshot_note(matrix, measured),
         "",
         matrix.render(mask_synthetic=True),
         "",

@@ -352,3 +352,18 @@ def test_an_unvalidated_cell_never_outranks_a_measured_one(config: Config) -> No
     assert any(
         k.detector_id == "probe-never-tried" for k in decision.enqueued_for_validation
     )
+
+
+def test_results_say_when_their_statuses_expire() -> None:
+    """A committed RESULTS.md is a snapshot, and must say for how long.
+
+    Re-rendering from a ledger older than the TTL turned every VALID cell STALE,
+    correctly, with nothing on the page explaining why (``DECISIONS.md`` 177).
+    """
+    warrant = make_warrant()
+    rendered = render_results(_matrix(warrant), provenance=PROVENANCE)
+    section = rendered.split("## Warrant matrix", 1)[1].split("## Measured results", 1)[0]
+    hours = (warrant.expires_at - warrant.issued_at).total_seconds() / 3600.0
+    assert "Statuses are as of" in section
+    assert f"{hours:g} hours after issue" in section
+    assert "report STALE" in section
