@@ -1,7 +1,7 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-11T20:52:58+00:00",
-    "git_commit": "decac7c66b822734cce642ccaaec430619b64a57",
+    "timestamp_utc": "2026-09-13T22:29:12+00:00",
+    "git_commit": "46c21560b08575c4ce41b0d1a7f7fe5bd034f937",
     "git_branch": "main",
     "dirty": false,
     "dirty_paths": [],
@@ -202,9 +202,9 @@
     }
   },
   "ok": true,
-  "commit": "decac7c66b822734cce642ccaaec430619b64a57",
-  "clone_path": "C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-f0olls8g\\controlplane",
-  "tracked_files": 462,
+  "commit": "46c21560b08575c4ce41b0d1a7f7fe5bd034f937",
+  "clone_path": "C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-_s0ueqhh\\controlplane",
+  "tracked_files": 472,
   "steps": [
     {
       "name": "git clone",
@@ -213,10 +213,10 @@
         "clone",
         "--quiet",
         "C:\\Users\\LawLight\\Desktop\\accenture",
-        "C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-f0olls8g\\controlplane"
+        "C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-_s0ueqhh\\controlplane"
       ],
       "returncode": 0,
-      "duration_seconds": 2.98,
+      "duration_seconds": 3.91,
       "ok": true,
       "skipped": false,
       "detail": "",
@@ -231,7 +231,7 @@
         "refs/notes/*:refs/notes/*"
       ],
       "returncode": 0,
-      "duration_seconds": 0.3,
+      "duration_seconds": 0.34,
       "ok": true,
       "skipped": false,
       "detail": "",
@@ -244,11 +244,11 @@
         "scripts/smoke.py"
       ],
       "returncode": 0,
-      "duration_seconds": 5.74,
+      "duration_seconds": 6.55,
       "ok": true,
       "skipped": false,
       "detail": "",
-      "tail": "Warrant smoke check\n============================================================\n  OK    python version: 3.12.10\n  OK    package imports: controlplane, and its model, policy and validation subpackages\n  OK    config loads: config hash 533fb74983fcd8af, seed 1729\n  OK    provenance resolves: commit decac7c66b82, dirty=False\n  OK    artifacts readable: validation-T1-last_token.json -> AUROC 0.8256, VALID\n  OK    eval sets frozen: 4 frozen eval sets, content-hashed\n  OK    claim table parses: 66 claims, each naming an artifact and a field\n============================================================\nSMOKE OK: 7/7"
+      "tail": "Warrant smoke check\n============================================================\n  OK    python version: 3.12.10\n  OK    package imports: controlplane, and its model, policy and validation subpackages\n  OK    config loads: config hash 533fb74983fcd8af, seed 1729\n  OK    provenance resolves: commit 46c21560b085, dirty=False\n  OK    artifacts readable: validation-T1-last_token.json -> AUROC 0.8256, VALID\n  OK    eval sets frozen: 4 frozen eval sets, content-hashed\n  OK    claim table parses: 77 claims, each naming an artifact and a field\n============================================================\nSMOKE OK: 7/7"
     },
     {
       "name": "make verify",
@@ -257,11 +257,11 @@
         "scripts/verify.py"
       ],
       "returncode": 0,
-      "duration_seconds": 59.77,
+      "duration_seconds": 77.51,
       "ok": true,
       "skipped": false,
       "detail": "",
-      "tail": "  validation-T1-max_rolling_means -> validation-T1-max_rolling_m  OK\n  validation-T1-mean_pool -> validation-T1-mean_pool.json         OK\n  valsplit-T1-last_token -> sweep.json                            OK\n\n25 comparisons reproduced bit-identically (recomputed from frozen scores).\n\n==============================================================================\n3. Frozen scores vs a re-run from cached activations\n==============================================================================\nThe deeper tier. Check 2 proves the metrics follow from the recorded\nscores; it cannot prove those scores came from the model and probe the\nartifact names. This re-runs the extraction-tier validation and\ncompares. The caches are ~100 MB and gitignored, so on a fresh clone\nthis reports SKIPPED -- never a pass it did not earn.\n\nre-derivation SKIPPED\n  extraction cache not found at results\\cache-triviaqa-600.npz. It is ~78 MB and gitignored, so a fresh clone does not have it. Regenerate it on a GPU with `make extract`, or copy it in.\n  What DID run: the claim table against the artifacts, and every metrics block recomputed from the frozen scores. What this tier would add is the only link those cannot make -- that the scores came from the model and probe the artifact names.\n\nTIER|1|claim_table|OK|66/66\nTIER|2|frozen_scores|OK|25/25\nTIER|3|activations|SKIPPED|0/0\n\n==============================================================================\nVERIFIED (activations tier skipped)"
+      "tail": "  validation-T1-max_rolling_means -> validation-T1-max_rolling_m  OK\n  validation-T1-mean_pool -> validation-T1-mean_pool.json         OK\n  valsplit-T1-last_token -> sweep.json                            OK\n\n25 comparisons reproduced bit-identically (recomputed from frozen scores).\n\n==============================================================================\n3. Frozen scores vs a re-run from cached activations\n==============================================================================\nThe deeper tier. Check 2 proves the metrics follow from the recorded\nscores; it cannot prove those scores came from the model and probe the\nartifact names. This re-runs the extraction-tier validation and\ncompares. The caches are ~100 MB and gitignored, so on a fresh clone\nthis reports SKIPPED -- never a pass it did not earn.\n\nre-derivation SKIPPED\n  extraction cache not found at results\\cache-triviaqa-600.npz. It is ~78 MB and gitignored, so a fresh clone does not have it. Regenerate it on a GPU with `make extract`, or copy it in.\n  What DID run: the claim table against the artifacts, and every metrics block recomputed from the frozen scores. What this tier would add is the only link those cannot make -- that the scores came from the model and probe the artifact names.\n\nTIER|1|claim_table|OK|77/77\nTIER|2|frozen_scores|OK|25/25\nTIER|3|activations|SKIPPED|0/0\n\n==============================================================================\nVERIFIED (activations tier skipped)"
     },
     {
       "name": "verify: claim table vs artifacts",
@@ -270,7 +270,7 @@
       "duration_seconds": 0.0,
       "ok": true,
       "skipped": false,
-      "detail": "66/66 reproduced",
+      "detail": "77/77 reproduced",
       "tail": ""
     },
     {
@@ -295,8 +295,8 @@
     }
   ],
   "notes": [
-    "462 tracked files in the clone; no gitignored caches, databases or long-context eval sets came with it.",
+    "472 tracked files in the clone; no gitignored caches, databases or long-context eval sets came with it.",
     "verify tiers that ran in the clone: claim table vs artifacts, metrics recomputed from frozen scores. Skipped: scores re-derived from activations.",
-    "could not fully remove the clone at C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-f0olls8g: PermissionError: [WinError 5] Access is denied: 'C:\\\\Users\\\\LawLight\\\\AppData\\\\Local\\\\Temp\\\\controlplane-clean-clone-f0olls8g\\\\controlplane\\\\.git\\\\objects\\\\00\\\\1b75d59f9a5b1da0a60aea283e3727485935fa'. Not a gate failure -- the checks above all ran -- but it leaves ~26 MB behind, and earlier runs did so silently."
+    "could not fully remove the clone at C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-_s0ueqhh: PermissionError: [WinError 5] Access is denied: 'C:\\\\Users\\\\LawLight\\\\AppData\\\\Local\\\\Temp\\\\controlplane-clean-clone-_s0ueqhh\\\\controlplane\\\\.git\\\\objects\\\\00\\\\1b75d59f9a5b1da0a60aea283e3727485935fa'. Not a gate failure -- the checks above all ran -- but it leaves ~26 MB behind, and earlier runs did so silently."
   ]
 }
