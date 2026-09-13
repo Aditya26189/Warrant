@@ -18,6 +18,8 @@
 
 Cells on synthetic envelopes show their status but not their numbers.
 
+**Statuses are as of 2026-09-13T22:09:57+00:00.** A warrant expires 24 hours after issue, so this matrix is a snapshot: rendered again from the same ledger after that, its VALID cells report STALE. That is the design, not a regression -- re-issuing means re-running the validations (`DECISIONS.md` 177).
+
 | detector | triviaqa-600-synthetic | triviaqa-longctx-600-synthetic | hinglish-pii-200 | hinglish-pii-200-longctx | hard-negatives-200 | triviaqa-600 | triviaqa-longctx-600 |
 |---|---|---|---|---|---|---|---|
 | pii-reference | UNVALIDATED | UNVALIDATED | VALID R=0.79 [0.70, 0.88] P=0.65 [0.51, 0.81] @f=0.620 | VALID R=0.79 [0.70, 0.88] P=0.65 [0.51, 0.81] @f=0.620 | VALID FPR=0.000 [0.000, 0.015] | UNVALIDATED | UNVALIDATED |
@@ -217,7 +219,7 @@ Everything else in this document measures a detector. **This is the part that as
 ## Provenance
 
 - config hash `533fb74983fcd8af`
-- git commit `febe08c0949c54889dce83faa1abf0612a357a0f`
+- git commit `85a6626f83af86c58d3d2001461dada5440c9415`
 - dirty tree: `False`
 - seed `1729`
-- generated `2026-09-13T22:03:22+00:00`
+- generated `2026-09-13T22:09:57+00:00`
