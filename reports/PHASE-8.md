@@ -118,8 +118,17 @@ lose its source to an edit that tidies the sentence.
 statement to the beats, and it has been quoted as evidence the submission
 answers the question asked. **It was written from memory.**
 
-Read against the document in the repository root: **the brief lists six
-real-world complexities and the table mapped five.** The one it did not:
+Read against the document in the repository root: **the brief lists seven
+real-world complexities and the table mapped five.**
+
+> **Corrected 2026-09-13.** This section first said *six*. The first bullet
+> is at the foot of page 1, which the reading behind it had truncated. The
+> two unmapped were agents that act (5) and regulatory change (6); the second
+> was already named in beat 5's `answers` field and only missing from the
+> table. `DECISIONS.md` 161 carries the same correction. The conclusion
+> below is unaffected.
+
+The one with no beat at all:
 
 > *"Multi-turn conversations and AI agents that take actions (not just generate
 > text) introduce compounding risk, where one questionable output can shape

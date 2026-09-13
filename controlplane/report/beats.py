@@ -29,8 +29,14 @@ on this project's three-clause pitch -- *what your error rate is on your
 traffic, when that number stops being true, what it costs to keep it true* --
 and beats 1 to 6 demonstrate only the middle clause.
 
-They also close three gaps against the Round 2 brief, checked against the
-document rather than remembered (``DECISIONS.md`` 161):
+They also close gaps against the Round 2 brief, checked against the document
+rather than remembered (``DECISIONS.md`` 161). **The brief lists seven
+real-world complexities**; the first table above maps five of them. The sixth,
+*"Regulatory expectations differ by geography and industry ... and continue to
+evolve, so rigid, hard-coded rules age quickly"*, is beat 5 -- whose own
+``answers`` field has always named it -- and beat 2, whose three profiles are
+the configurable policy layer the brief asks for. It was missing from this table,
+not from the demo. The seventh, below, was missing from both:
 
 ===============================  =============================================
 Round 2 text                     beat
@@ -65,7 +71,7 @@ import json
 from pathlib import Path
 from typing import Optional
 
-__all__ = ["Beat", "assemble_beats"]
+__all__ = ["BRIEF_COMPLEXITIES", "Beat", "assemble_beats"]
 
 
 @dataclasses.dataclass(frozen=True)
@@ -504,6 +510,61 @@ def _beat_gate(root: Path) -> Beat:
             "rules."
         ),
     )
+
+
+#: The Round 2 brief's real-world complexities for Track 1, **in the brief's
+#: order**, each mapped to the beats that answer it.
+#:
+#: **Seven, not six.** ``DECISIONS.md`` 161 first counted six, because the first
+#: bullet sits at the foot of page 1 and the reading behind that entry truncated
+#: page 1. Checked against the full PDF text on 2026-09-13. The brief is not
+#: tracked in git, so no test can re-read it on a clean clone -- which is why the
+#: quotations live here, verbatim, where a reviewer holding the PDF can check
+#: each one in seconds.
+BRIEF_COMPLEXITIES: tuple[tuple[int, str, tuple[int, ...]], ...] = (
+    (
+        1,
+        "Different AI use cases (customer-facing vs. internal, real-time vs. "
+        "batch) have very different risk tolerance and latency budgets",
+        (2,),
+    ),
+    (
+        2,
+        "Bias, hallucination, and privacy risks often overlap in practice",
+        (4,),
+    ),
+    (
+        3,
+        "There is often no reliable, real-time \"ground truth\" to check a "
+        "claim against",
+        (5,),
+    ),
+    (
+        4,
+        "Over-flagging creates alert fatigue and pushes users to ignore or "
+        "bypass warnings; under-flagging creates real liability",
+        (1, 8),
+    ),
+    (
+        5,
+        "Multi-turn conversations and AI agents that take actions (not just "
+        "generate text) introduce compounding risk",
+        (9,),
+    ),
+    (
+        6,
+        "Regulatory expectations differ by geography and industry ... and "
+        "continue to evolve, so rigid, hard-coded rules age quickly",
+        (2, 5),
+    ),
+    (
+        7,
+        "Enterprises typically consume a foundation model via API rather than "
+        "owning it outright, limiting how deeply a checker can inspect model "
+        "internals",
+        (3,),
+    ),
+)
 
 
 def assemble_beats(root: Path) -> tuple[Beat, ...]:

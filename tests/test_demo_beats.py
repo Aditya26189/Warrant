@@ -123,3 +123,40 @@ def test_every_beat_with_a_known_gap_states_it() -> None:
     notes = {b.number: (b.note or "") for b in BEATS}
     assert "DECISIONS 104" in notes[4], "the pilot's prompt-side privacy scope is unstated"
     assert "session correlation" in notes[5], "the i.i.d. limitation is unstated"
+
+
+def test_every_brief_complexity_maps_to_a_beat_that_assembles() -> None:
+    """All seven of the Round 2 brief's complexities have a beat.
+
+    **Seven, not six.** `DECISIONS.md` 161 first counted six, because the first
+    bullet sits at the foot of page 1 and the reading behind it had truncated
+    the page. The brief is not tracked in git, so this cannot re-read the PDF;
+    it checks the verbatim map in ``beats.py`` instead, which is where a
+    reviewer holding the PDF can compare each quotation against the source.
+    """
+    from controlplane.report.beats import BRIEF_COMPLEXITIES
+
+    assert len(BRIEF_COMPLEXITIES) == 7, (
+        "the Round 2 brief lists seven complexities for Track 1; a map with a "
+        "different count has either dropped one or invented one"
+    )
+    numbers = [n for n, _, _ in BRIEF_COMPLEXITIES]
+    assert numbers == list(range(1, 8)), "complexities must be in the brief's order"
+
+    assembled = {beat.number for beat in BEATS if not beat.missing}
+    for number, quote, beats in BRIEF_COMPLEXITIES:
+        assert beats, f"complexity {number} ({quote[:40]}...) names no beat"
+        unknown = [b for b in beats if b not in assembled]
+        assert not unknown, (
+            f"complexity {number} maps to beat(s) {unknown}, which do not "
+            "assemble"
+        )
+
+
+def test_the_agent_complexity_is_answered_by_the_gate() -> None:
+    """The one complexity that had no beat at all until beat 9 existed."""
+    from controlplane.report.beats import BRIEF_COMPLEXITIES
+
+    agent = next(c for c in BRIEF_COMPLEXITIES if "agents that take actions" in c[1])
+    assert agent[0] == 5, "the agent complexity is the fifth in the brief"
+    assert 9 in agent[2]

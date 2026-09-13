@@ -8048,6 +8048,19 @@ statement to the demo beats, and the table has been quoted as evidence that the
 submission answers the question asked. **It was written from memory.** Read
 against the document:
 
+> **Correction, 2026-09-13. The brief lists seven complexities, not six**, and
+> this entry miscounted for the reason it warns about. The first bullet —
+> *"Different AI use cases ... have very different risk tolerance and latency
+> budgets"* — sits at the foot of page 1, and the reading that produced this
+> entry extracted page 1 truncated at 1,500 characters. The mapping table
+> therefore listed **five of seven**, and **two** were absent from it: agents
+> that act (5), which had no beat at all, and regulatory change (6), which
+> beat 5's own `answers` field already named but the table omitted. The
+> substance below holds — agents that act was the only complexity with no
+> answer — and the count does not. Found while checking whether `SPEC.md`
+> §9.2's reference to *complexity 5* was wrong; it was right, and this entry
+> was not. The original text is left standing below.
+
 **Six complexities are listed in the brief. The table mapped five.** The one it
 did not map:
 
