@@ -39,6 +39,7 @@ from controlplane.report.invariants import (
     DERIVED_CLAIMS,
     INVARIANTS,
     READ_ONLY_WITHOUT_DERIVATION,
+    SPEC_TEST_ALIASES,
 )
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -278,4 +279,50 @@ def test_the_two_registers_do_not_overlap() -> None:
     opened = set(READ_ONLY_WITHOUT_DERIVATION)
     assert not (checked & opened), (
         f"listed as both enforced and open: {sorted(checked & opened)}"
+    )
+
+
+# --------------------------------------------------------------------------- #
+# SPEC.md section 10's test table matches the suite
+# --------------------------------------------------------------------------- #
+
+
+def test_every_test_named_in_spec_section_10_exists() -> None:
+    """``SPEC.md`` §10 is a table of test names; each must resolve.
+
+    Eighteen names. Thirteen exist exactly. Five exist under descriptive names
+    and are registered in :data:`SPEC_TEST_ALIASES`. A name with neither fails
+    here, so the spec's test table cannot silently describe a suite that is not
+    there -- or, the direction that actually occurred, a suite that is there
+    under names the spec does not use.
+    """
+    spec = (PROJECT_ROOT / "docs" / "SPEC.md").read_text(encoding="utf-8")
+    body = spec.split("## 10. Tests", 1)[1].split("## 11.", 1)[0]
+    named = re.findall(r"^\| `(test_[a-z0-9_]+)`", body, re.M)
+    assert len(named) >= 18, f"parsed only {len(named)} test names out of §10"
+
+    on_disk = {node.split("::", 1)[1] for node in _test_functions()}
+    unresolved = []
+    for name in named:
+        if name in on_disk:
+            continue
+        aliases = SPEC_TEST_ALIASES.get(name)
+        if not aliases:
+            unresolved.append(f"{name}: no test by that name and no alias")
+            continue
+        missing = [a for a in aliases if _base_node(a) not in _test_functions()]
+        if missing:
+            unresolved.append(f"{name}: alias targets do not exist {missing}")
+    assert not unresolved, (
+        "SPEC.md §10 names tests the suite cannot account for:\n  "
+        + "\n  ".join(unresolved)
+    )
+
+
+def test_spec_aliases_are_only_for_names_without_an_exact_match() -> None:
+    """An alias for a name that already exists would hide a duplicate."""
+    on_disk = {node.split("::", 1)[1] for node in _test_functions()}
+    shadowing = sorted(name for name in SPEC_TEST_ALIASES if name in on_disk)
+    assert not shadowing, (
+        f"aliased names that now exist exactly: {shadowing}. Remove the alias."
     )

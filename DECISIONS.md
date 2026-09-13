@@ -8413,3 +8413,44 @@ shipped behaviour, and §11 was walked in 164. The Phase 12 audit line *"every
 SPEC section matches shipped behaviour"* is closer and still not passed.
 **OPEN** — what would close it is the same section-by-section pass, for §1–§5,
 §7, §8 and §10.
+
+---
+
+## 167 - SPEC.md 10: five of eighteen test names had drifted, and no behaviour was missing
+
+- **Date:** 2026-09-13
+- **Status:** DECIDED
+
+`SPEC.md` §10 is a table of eighteen named tests. Walked against `tests/` as part
+of 166's open item.
+
+| | |
+|---|---|
+| exist under exactly that name | 13 |
+| exist only as a prefix family (`test_determinism_*`, `test_smoke_*`) | 2 |
+| **no test by that name** | **3** — `test_controls`, `test_padding_equivalence`, `test_policy_refusal` |
+
+**Reading the tests found all three behaviours covered.** The five controls and a
+failure case for each; the padding fault rejected, and left-padding enforced at
+extraction; a bundle naming an unwarranted operating point failing to load. The
+divergence is naming, not coverage.
+
+**Worth recording because the name check alone would have reported three missing
+tests**, in an audit whose purpose is to find gaps, and each would have been
+false. That is 165's lesson a fourth time: a check that matches a pattern is a
+claim about the pattern, and the file has to be read before the claim is made.
+
+**Decision.** `SPEC_TEST_ALIASES` in `controlplane/report/invariants.py` maps each
+of the five spec names to the tests that implement it, and
+`test_every_test_named_in_spec_section_10_exists` fails when a §10 name has
+neither an exact match nor aliases that all exist. A companion test fails if an
+aliased name later appears exactly, so an alias cannot hide a duplicate. §10 gains
+a paragraph naming the five, added under the table rather than rewriting it.
+
+**Rejected: renaming the tests to match the spec.** The descriptive names say what
+each test asserts, and `test_controls` would say less than the five tests it
+stands for. The spec names a concept; the suite names assertions; the alias map
+connects them.
+
+**SPEC.md walk after this entry:** §6.2, §9.2–9.3, §10 and §11 reconciled; §1–§5,
+§6.1/§6.3–6.5, §7, §8 and §9.1/§9.4 not yet walked. **OPEN.**

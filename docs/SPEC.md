@@ -458,6 +458,8 @@ One domain, four tools, clean reversibility gradient. Banking: `get_balance` (RE
 
 `test_stratified_unbiased` is the most important new test. An estimator that is subtly biased produces confident wrong intervals, and nothing raises.
 
+**Names, reconciled.** Thirteen of the eighteen names above exist in `tests/` exactly. Five do not, and every one of those behaviours is tested under a descriptive name: `test_controls` is `test_all_five_controls_run_and_report_margins` plus a failure test per control; `test_padding_equivalence` is `test_padding_control_rejects_the_deliberate_fault` and its siblings; `test_policy_refusal` is `test_a_bundle_naming_an_unwarranted_point_fails_to_load`; `test_determinism` is `test_determinism_control_detects_a_wobble`; `test_smoke` is the `test_smoke_*` family. The map is `controlplane/report/invariants.py::SPEC_TEST_ALIASES`, and `test_every_test_named_in_spec_section_10_exists` fails if a name in this table resolves to nothing. `DECISIONS.md` 167.
+
 ---
 
 ## 11. What `results/RESULTS.md` must contain

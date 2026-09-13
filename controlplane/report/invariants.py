@@ -36,6 +36,7 @@ __all__ = [
     "INVARIANTS",
     "Invariant",
     "READ_ONLY_WITHOUT_DERIVATION",
+    "SPEC_TEST_ALIASES",
 ]
 
 
@@ -225,3 +226,39 @@ READ_ONLY_WITHOUT_DERIVATION: tuple[tuple[str, str], ...] = (
     ("controlplane/validation/stats.py", "bootstrap_seed_stability"),
     ("controlplane/validation/warrant_stats.py", "certify_fpr"),
 )
+
+
+#: ``SPEC.md`` §10 names eighteen tests. Thirteen exist under exactly those
+#: names. These five do not, and in every case **the behaviour is tested under a
+#: descriptive name** -- checked by reading the tests, not inferred from the
+#: absence of a match. Stopping at the name check would have reported three
+#: missing tests that are not missing (``DECISIONS.md`` 167).
+#:
+#: Each maps the spec's name to the tests that implement it. The test for this
+#: table fails if a spec name has neither an exact match nor an alias whose
+#: targets all exist, so the spec's test table cannot drift from the suite again.
+SPEC_TEST_ALIASES: dict[str, tuple[str, ...]] = {
+    "test_controls": (
+        "tests/test_validation.py::test_all_five_controls_run_and_report_margins",
+        "tests/test_validation.py::test_label_shuffle_catches_a_label_leaking_feature",
+        "tests/test_validation.py::test_underpowered_negative_control_fails_rather_than_passing",
+        "tests/test_validation.py::test_canary_control_fails_when_absent",
+        "tests/test_validation.py::test_determinism_control_detects_a_wobble",
+    ),
+    "test_padding_equivalence": (
+        "tests/test_validation.py::test_padding_control_rejects_the_deliberate_fault",
+        "tests/test_validation.py::test_padding_control_fails_when_left_padding_does_not_match",
+        "tests/test_extraction.py::test_assert_left_padding_refuses_right_padding",
+    ),
+    "test_policy_refusal": (
+        "tests/test_policy.py::test_a_bundle_naming_an_unwarranted_point_fails_to_load",
+        "tests/test_policy.py::test_a_bundle_relying_on_no_warrant_is_refused",
+    ),
+    "test_determinism": (
+        "tests/test_validation.py::test_determinism_control_detects_a_wobble",
+    ),
+    "test_smoke": (
+        "tests/test_smoke.py::test_smoke_validate_fixture",
+        "tests/test_smoke.py::test_smoke_matrix",
+    ),
+}
