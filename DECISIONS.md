@@ -8371,3 +8371,45 @@ look.
 condition fails the test and names the entry. The check also asserts it examined
 at least two entries, because a check that examines nothing passes for the wrong
 reason — the lesson 153 learned about cross-artifact comparisons.
+
+---
+
+## 166 - SPEC.md 6.2 and 9.3 reconciled with what shipped
+
+- **Date:** 2026-09-13
+- **Status:** DECIDED
+
+`CLAUDE.md` defers contract reconciliation to the documentation phase: *"where
+shipped behaviour diverges from a contract, leave the contract alone and note the
+divergence in the commit message. Reconcile in the documentation phase."* Phase 9
+is that phase, and two divergences were recorded and left standing.
+
+**§9.3 rule 2** read `rule_of_two_violated(session)`. Implemented as written it
+allows the canonical indirect injection (`DECISIONS.md` 156). It now reads
+`rule_of_two_violated(session.after(tool))`, and §9.2 states that the flags
+describe what a session **can do** — Meta's formulation — and that the rule is
+evaluated after the call. The measured cost is in the section: two of eight
+declared legitimate workflows, both recovered by a new session.
+
+**§6.2** worked a closed-form sample size and said to assert it in `sizing.py`.
+The closed form does not deliver its own margin (149), the shortfall is the
+linearisation rather than the exact interval, the shipped planner defaults to the
+exact basis, and the derivative lives in `sampling/planning.py`. All four now
+said in the section, with the closed-form figures left in place because they are
+what a reader recomputes.
+
+**Added, not rewritten.** Each section keeps its original text and gains a
+paragraph stating what shipped and why. A contract that silently changes under a
+reader is harder to trust than one that shows its correction, and the original
+§9.3 rule is itself evidence: it is the version that looked right and was not.
+
+**Checked before editing, and one supposed defect was not one.** §9.2 says the
+Rule-of-Two answers *"complexity 5"*. Counting the brief's list to verify that
+found seven complexities — agents that act is the fifth — so §9.2 was right, and
+`DECISIONS.md` 161, which had counted six, was wrong. Corrected there.
+
+**Not done.** The other nine sections of `SPEC.md` have not been walked against
+shipped behaviour, and §11 was walked in 164. The Phase 12 audit line *"every
+SPEC section matches shipped behaviour"* is closer and still not passed.
+**OPEN** — what would close it is the same section-by-section pass, for §1–§5,
+§7, §8 and §10.

@@ -280,7 +280,9 @@ m_R = 0.02  →  m_q = 0.00430  →  n ≈ 5,292
 
 **The trap this encodes.** `1.96²·(0.05)(0.95)/0.02² = 456` sizes a *prevalence* estimate to ±2pp. Calling that "recall to ±2pp" understates the labels needed by roughly 22×, because sample size scales as `1/margin²` and the derivative is 4.65. The amplification is structural: the unflagged pool is ~232× the **confirmed true positives**, so any error in `q` is multiplied by that ratio on its way into `R`. `TP` is the other term in the denominator of `R = TP/(TP + q·N_u)`, which is what makes it the right comparator. The unflagged pool is only ~66× the *flagged* pool, and the flagged pool does not appear in the derivative at all — it holds the false positives, which are exactly the items that do not enter `R`. `DECISIONS.md` 148 records the correction.
 
-**Assert this in code.** `sizing.py` must expose the derivative and a test must confirm that sizing for recall differs from sizing for prevalence by `(∂R/∂q)²`.
+**Assert this in code.** The derivative is exposed by `controlplane/sampling/planning.py::recall_sensitivity` (it was specified for `sizing.py`; the sampling package is where the estimator that consumes it lives), and `tests/test_sampling.py::test_sizing_derivative` confirms that sizing for recall differs from sizing for prevalence by `(∂R/∂q)²`.
+
+**The closed form above does not deliver its own margin, and the shipped planner does not use it by default.** It is a first-order expansion, and `R` is far from linear across the interval it is asked to hold over: at `n = 846` the prevalence interval runs from 0.016 to 0.039, over which `R` moves by a factor of two. Fed back through the estimator that publishes the interval, the closed form's sample sizes realise half-widths of 0.0546 and 0.0206 against the ±0.05 and ±0.02 targets worked above, and 0.0101 against ±0.01. The shortfall is the **linearisation**, not the switch to an exact interval — at ±0.05 the exact interval is narrower than the Wald one. `labels_for_recall` therefore defaults to `basis="exact"`: the smallest `n` from which the Clopper-Pearson-induced recall half-width meets the margin and **keeps** meeting it. The closed-form figure is still reported on every plan as `labels_normal`, because it is what a reader recomputes from this section. Month one is additionally priced at full simple-random-sampling cost, not at an expected design effect (§6.3). `DECISIONS.md` 149, 150.
 
 ### 6.3 Allocation
 
@@ -409,17 +411,21 @@ Registered per tool at definition time — a **static property of the tool**, no
 
 Three sticky booleans per session: `has_ingested_untrusted_input`, `has_sensitive_access`, `can_change_state_or_communicate`. **Two of three is the limit.** Sticky for the session — once untrusted content has entered, it has entered. This is complexity 5 answered.
 
+**The rule describes what a session can do, and it is evaluated against the session as it would be after the call.** It is Meta's *Agents Rule of Two* (31 October 2025): an agent should satisfy no more than two of the three properties within a session, and one needing all three without starting a new session should not act autonomously. Read as three flags recording what a session *has done*, it loses exactly one case — the one where the action being decided is itself the third capability. That case is the canonical indirect injection: read something sensitive, read attacker-controlled text, then move money. The only remedy for a session that holds all three is a new session with a fresh context; the flags have no unsetter. `DECISIONS.md` 156.
+
 ### 9.3 The gate
 
 ```
 BLOCK    if reversibility >= IRREVERSIBLE_WRITE and warrant.weakest_status != VALID
-BLOCK    if rule_of_two_violated(session) and reversibility >= IRREVERSIBLE_WRITE
+BLOCK    if rule_of_two_violated(session.after(tool)) and reversibility >= IRREVERSIBLE_WRITE
 CONFIRM  if reversibility >= IRREVERSIBLE_WRITE and severity >= MEDIUM
 ESCALATE if severity >= HIGH and confidence_band == UNCERTAIN
 ALLOW    otherwise
 ```
 
 The first two rules consult no detector score. Deliberate: Nasr et al., *The Attacker Moves Second* (arXiv:2510.09023, October 2025) bypassed 12 published injection and jailbreak defences at an attack success rate above 90% for most, where the majority had originally reported near-zero — so any control depending on detection has a measured ceiling. A control keyed to static tool class plus session state holds against an attacker who has completely defeated the probe.
+
+**Rule 2 reads `session.after(tool)`, not `session`.** This section originally specified the latter, and implemented exactly as written it **allows** the attack §9.4 exists to demonstrate: `get_balance` → `search_transactions` → `transfer_funds` reaches the transfer holding two of three flags, because the transfer is the call that sets the third. The first demonstration appeared to block it only because a legitimate `draft_dispute` sat between the memo and the transfer. Evaluated prospectively, the rule blocks exactly the irreversible actions that would complete the triad: `get_balance` → `transfer_funds` is allowed, a reversible `draft_dispute` after reading a memo is allowed, and the attack is refused. Measured cost on eight declared legitimate workflows: two blocked, both recovered by a new session — an exact count over a declared set, not a production rate. `DECISIONS.md` 156.
 
 ### 9.4 The agent
 
