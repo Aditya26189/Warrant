@@ -8936,3 +8936,51 @@ can see beside one.
 and one that a VALID matrix cell rendering `R=` also renders `P=`.
 
 Both artifacts are regenerated from a clean tree in a separate `exp:` commit.
+
+---
+
+## 177 - A committed warrant matrix is a 24-hour snapshot, and re-rendering it here showed nothing VALID
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED
+
+**What happened.** Re-rendering the matrix with `scripts/03_matrix.py` after 176,
+from a clean tree, turned all 13 VALID cells into **STALE**. Nothing was wrong.
+`validation.warrant_ttl_hours` is 24; the ledger's warrants were issued on
+2026-09-12, and `WarrantMatrix._cell_for` reports a VALID warrant past its expiry
+as STALE. Every routing decision fell back to the conservative action, and the
+precision 176 added to the cell did not appear, because a STALE cell renders no
+bounds.
+
+**That is the product working, and it has a consequence nobody had written
+down.** A committed `results/RESULTS.md` is true for 24 hours after its
+`rendered_at`. `03_matrix.py` does not re-issue warrants; it reads the ledger, so
+on a development machine whose ledger is older than a day, re-rendering cannot
+reproduce a VALID cell -- and should not. A clean clone rebuilds the ledger and
+issues fresh warrants, which is why the clean-clone gate never saw it.
+
+**Decision.**
+
+1. **Do not commit the STALE render**, and do not render "as of" the issuance
+   time either. A matrix printing VALID for an expired warrant is the exact
+   stale claim the TTL exists to prevent; an `--as-of` flag would be an
+   override of it by another name (invariant 3's spirit, if not its letter).
+2. **Re-issue by rebuilding the chain**, as 157 did: move the ledger aside, run
+   `01_build_evalsets -> 02_validate -> 09_detectors -> 04_transfer ->
+   03_matrix` on the committed caches, and compare every numeric metric against
+   the committed artifacts. A rebuild also carries 169's corrected null-control
+   sentence into the validation artifacts.
+3. **Say it where a reader looks.** RESULTS.md's matrix section states that the
+   statuses are as of `rendered_at` and expire 24 hours later by design, and
+   that a later re-render from the same ledger shows STALE.
+
+**A tooling defect, recorded because it was found by reading a diff rather than
+by a test.** The patch scripts behind 168-176 read files with universal newlines
+and wrote them back with `newline="\n"`, converting CRLF files to LF. Commit
+`40031b6` was amended before it left this machine; a scan of every commit since
+`report-4` found **13 files** flipped earlier, in six commits (`3c4f750`,
+`33b04c0`, `7ad9fbb`, `840e9d9`, `f027c52`, `0b843fe`). The
+repository has no line-ending norm -- 254 CRLF files, 173 LF, 7 mixed, no
+`.gitattributes` -- so flipping them back would add a second round of
+whole-file churn and restore nothing a reader or a test depends on. They are
+left, and every patch from here preserves the bytes it found.
