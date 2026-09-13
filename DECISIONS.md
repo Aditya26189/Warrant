@@ -8454,3 +8454,91 @@ connects them.
 
 **SPEC.md walk after this entry:** §6.2, §9.2–9.3, §10 and §11 reconciled; §1–§5,
 §6.1/§6.3–6.5, §7, §8 and §9.1/§9.4 not yet walked. **OPEN.**
+
+---
+
+## 168 - SPEC.md 1: the data model holds, and "DPDP Rule 6" was credited with a requirement it does not make
+
+- **Date:** 2026-09-13
+- **Status:** DECIDED, with one OPEN item in read-only code
+
+`SPEC.md` §1 walked against `controlplane/model/` and `controlplane/store/`.
+
+**The model matches.** Every field §1.2–§1.4 names exists, with the §1.1 enum
+values. The differences are representational or additive:
+
+| spec | shipped | effect |
+|---|---|---|
+| `Warrant.operating_point_id: str` | `operating_point: OperatingPoint` | `Warrant.key` reads `operating_point.operating_point_id`; invariant 1 unchanged |
+| `list[...]` fields | `tuple[...]` | required by `frozen=True`; a frozen record holding a list is mutable |
+| `Finding.category: str` | `Category` enum | documented in `enums.py` |
+| — | `Finding.confidence_band`, `Warrant.access_tier`, `superseded_by`, `calibration`, `Certificate.unchecked` | additions, each with its own entry |
+
+**The regulatory attribution does not hold.** §1.5 read: *"Requirements from DPDP
+Rule 6: ≥1 year retention; queryable by session, time range, policy version,
+detector version, warrant status, and personal-data category accessed."* The
+same attribution — the rule *names* those predicates — is repeated in
+`store/ledger.py`, `drift/certify.py`, `model/certificate.py`,
+`model/override.py`, `tests/test_store.py` and entry 093.
+
+Rule 6(1) of the DPDP Rules 2025, read clause by clause:
+
+- **(c)** *"visibility on the accessing of such personal data, through appropriate
+  logs, monitoring and review, for enabling detection of unauthorised access, its
+  investigation and remediation to prevent recurrence"*
+- **(e)** *"... retain such logs and personal data for a period of one year,
+  unless compliance with any law for the time being in force requires otherwise"*
+
+**It names no query predicate.** Session, time range, policy version, detector
+version, warrant status and category are this project's design for making (c)'s
+logs usable in an investigation. They are good design. They are not the rule's
+words, and a reviewer who opens the rule finds that in a minute.
+
+Two smaller corrections in the same citation:
+
+1. **"Minimum" is Rule 8(3), not Rule 6.** 6(1)(e) says *"for a period of one
+   year"*. 8(3) says *"for a minimum period of one year from the date of such
+   processing"*, for the Seventh Schedule purposes. The 365-day floor is right;
+   the floor is 8(3)'s word.
+2. **Neither rule is in force.** Rules 3, 5–16, 22 and 23 commence eighteen months
+   after notification on 13 November 2025 — 13 May 2027. "DPDP Rule 6 requires"
+   is future tense stated as present.
+
+Sources: Rule 6 and Rule 8 text at dpdpa.com/dpdparules/rule6.html and rule8.html;
+commencement confirmed against `reports/PHASE-4.md` (MeitY, confirmed) and a
+second practitioner summary.
+
+**Found by** checking the regulatory sentence in a binding spec rather than the
+retention number beside it, which was right. The number being right is what
+made the sentence look checked.
+
+**Decision.**
+
+- §1.5 is corrected in place. Unlike §6.2 or §9.3 this is not shipped behaviour
+  diverging from a contract — the contract misquotes a third party, and leaving
+  a misquotation standing with a note under it keeps the misquotation first.
+  The original sentence is preserved here, above.
+- Docstrings and messages in non-read-only files say what the rule says and label
+  the predicates as this project's.
+- `tests/test_regulatory_attribution.py` fails when a tracked file outside the
+  exempt set attributes query predicates to Rule 6. The exempt set is: this file
+  (append-only history), `evalsets/` (frozen corpora — the sentence appears there
+  as hard-negative *input text*, not as a claim), `round1/`, and the two read-only
+  files below, **listed by name**. A companion assertion fails when a listed
+  read-only file no longer carries the attribution, so the exemption cannot
+  outlive the problem.
+
+**OPEN — needs human review.** `controlplane/store/ledger.py` (module docstring,
+`_create_schema`, `certificates_for_session`, `query`; `retention_floor` and
+`purge_older_than`'s refusal credit Rule 6 with "minimum", which is 8(3)'s word) and
+`controlplane/drift/certify.py` (`certify_drift_response` docstring) carry the
+attribution and are read-only. Behaviour is correct; the text is not. Fix is
+docstring and message wording only.
+
+**Rejected: leaving the attribution because the design is sound.** The product
+sells itself to a model-validation function on the strength of not saying things
+it has not checked. A misquoted regulation in its audit store is the first place
+that buyer's compliance reviewer looks.
+
+**SPEC.md walk after this entry:** §1, §6.2, §9.2–9.3, §10, §11 reconciled; §2–§5,
+§6.1/§6.3–6.5, §7, §8, §9.1/§9.4 not yet walked. **OPEN.**

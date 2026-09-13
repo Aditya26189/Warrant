@@ -634,8 +634,9 @@ class DetectorsConfig:
 class StoreConfig:
     """Audit store location, retention and tamper-evidence.
 
-    ``retention_days`` sits above the DPDP Rule 6 one-year minimum
-    (``SPEC.md`` §1.5). ``hash_chain`` is pinned true: without the chain the
+    ``retention_days`` sits above the one-year retention of DPDP Rules
+    6(1)(e) and 8(3), both in force from 13 May 2027 (``SPEC.md`` §1.5,
+    ``DECISIONS.md`` 168). ``hash_chain`` is pinned true: without the chain the
     store is a log, not evidence.
     """
 
@@ -646,8 +647,8 @@ class StoreConfig:
     def __post_init__(self) -> None:
         if self.retention_days < 365:
             raise ConfigError(
-                "store.retention_days must be >= 365; DPDP Rule 6 requires at "
-                f"least one year of retention, got {self.retention_days}"
+                "store.retention_days must be >= 365; DPDP Rule 8(3) sets a "
+                f"one-year minimum, got {self.retention_days}"
             )
         if not self.hash_chain:
             raise ConfigError(

@@ -234,14 +234,19 @@ def test_two_envelopes_are_two_cells(ledger: Ledger) -> None:
 
 
 # --------------------------------------------------------------------------- #
-# DPDP Rule 6 query paths
+# Query paths (SPEC.md 1.5 -- this project's predicates; DECISIONS 168)
 # --------------------------------------------------------------------------- #
 
 
 def test_query_by_session_time_policy_detector_status_and_category(
     ledger: Ledger,
 ) -> None:
-    """Every predicate DPDP Rule 6 names, and they compose."""
+    """Every predicate SPEC.md 1.5 declares, and they compose.
+
+    DPDP Rule 6(1)(c) requires logs giving visibility on access to personal
+    data and names no predicate. These six are this project's reading of what
+    an investigation asks (``DECISIONS.md`` 168).
+    """
     warrant = make_warrant()
     ledger.append_warrant(warrant)
     start = utc_now()
@@ -299,7 +304,7 @@ def test_retention_below_one_year_is_refused(tmp_path: Path) -> None:
 
 
 def test_purge_refuses_to_breach_the_retention_floor(ledger: Ledger) -> None:
-    """DPDP Rule 6 sets a minimum, and this store will not go under it."""
+    """DPDP Rule 8(3) sets a one-year minimum, and this store will not go under it."""
     ledger.append_warrant(make_warrant())
     with pytest.raises(LedgerError, match="retention floor"):
         ledger.purge_older_than(utc_now() - timedelta(days=30), dry_run=False)

@@ -152,7 +152,7 @@ detectors:
 
 store:
   path: "results/controlplane.db"
-  retention_days: 400                    # DPDP Rule 6 minimum is 1 year
+  retention_days: 400                    # DPDP Rules 6(1)(e), 8(3): 1 year
   hash_chain: true
 
 paths:

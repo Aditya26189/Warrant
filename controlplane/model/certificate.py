@@ -114,8 +114,10 @@ class Certificate:
     Args:
         certificate_id: Unique id.
         request_id: The request this describes.
-        session_id: The session it belongs to. Indexed, because DPDP Rule 6
-            requires the store be queryable by session.
+        session_id: The session it belongs to. Indexed, because the store
+            is queried by session when investigating access to personal data;
+            that predicate is this project's, since DPDP Rule 6(1)(c) requires
+            visibility on access and names none (``DECISIONS.md`` 168).
         timestamp: When the decision was made, UTC.
         findings: Every finding produced, including those from detectors with no
             warrant. An unwarranted finding is still information; it just
@@ -162,7 +164,7 @@ class Certificate:
         if not self.certificate_id or not self.request_id or not self.session_id:
             raise CertificateError(
                 "certificate_id, request_id and session_id are all required; the "
-                "store must be queryable by session (DPDP Rule 6)"
+                "store is queried by session (SPEC.md 1.5)"
             )
         if self.timestamp.tzinfo is None:
             raise CertificateError(
@@ -239,8 +241,11 @@ class Certificate:
     def categories_accessed(self) -> tuple[str, ...]:
         """Distinct finding categories on this certificate, sorted.
 
-        Denormalised into a store column because DPDP Rule 6 requires the log be
-        queryable by personal-data category accessed, and scanning every
+        Denormalised into a store column because "which requests touched this
+        category of personal data" is the first question an investigation under
+        DPDP Rule 6(1)(c) asks -- the rule requires visibility on access and
+        names no predicate; the column is this project's (``DECISIONS.md``
+        168) -- and scanning every
         certificate body to answer that would make the query unusable at a
         year's retention.
         """

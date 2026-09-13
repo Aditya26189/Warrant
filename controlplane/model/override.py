@@ -107,8 +107,8 @@ class OverrideRecord:
             required — an override with no certificate is a label with no record
             of what produced it, and cannot be attributed to an operating point.
         item_ref: Opaque reference to the reviewed item. Not the content: this
-            store is queried by session under DPDP Rule 6 and is not a place to
-            accumulate message text.
+            store is queried by session in an access investigation and is not
+            a place to accumulate message text.
         detector_id: Which detector's decision is being judged.
         score: The score it gave.
         threshold_in_force: The threshold **at capture time**. Stored because it

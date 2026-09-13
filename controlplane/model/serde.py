@@ -3,7 +3,8 @@
 Two jobs, and the second is why this is not just ``dataclasses.asdict``:
 
 1. **Round-trip.** A record written to the store in 2026 has to be readable in
-   2027 without the code that wrote it (``SPEC.md`` §1.5, DPDP Rule 6). So the
+   2027 without the code that wrote it (``SPEC.md`` §1.5; DPDP Rules 6(1)(e)
+   and 8(3) keep logs a year). So the
    encoding is plain JSON with no pickling and no type tags, and decoding is
    driven by the target class's annotations.
 2. **Canonical form.** The hash chain is

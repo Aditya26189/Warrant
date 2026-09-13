@@ -191,8 +191,8 @@ clean traffic. That is the failure this system exists to name.
 ## The ledger
 
 Every issuance, refusal, revocation, override and decision is appended to a
-SQLite store with a hash chain over records. Retention is 400 days (DPDP Rule 6
-minimum is one year). An override record **cannot be constructed without its
+SQLite store with a hash chain over records. Retention is 400 days (DPDP Rules
+6(1)(e) and 8(3): one year, from 13 May 2027). An override record **cannot be constructed without its
 stratum and draw probability**, because a record missing those is unusable for
 estimation and would silently bias any recall computed from the review queue.
 

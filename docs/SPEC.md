@@ -64,6 +64,8 @@ class Warrant:
 
 **The key is `(detector_id, operating_point_id, eval_set_id)`.** Not detector alone. This is invariant 1 and the entire matrix depends on it.
 
+As shipped, the record holds the whole `operating_point: OperatingPoint` rather than its id, and `Warrant.key` reads `operating_point.operating_point_id` — the key is unchanged. Sequence fields in §1.2–§1.4 are tuples, not lists, because a frozen record holding a list is still mutable. Additions not shown above (`Finding.confidence_band`, `Warrant.access_tier`, `superseded_by`, `calibration`, `Certificate.unchecked`) each have a `DECISIONS.md` entry. `DECISIONS.md` 168.
+
 `status` on a *record* is one of `VALID`, `STALE`, `REVOKED`, `REFUSED`. **`UNVALIDATED` is a property of a matrix cell, not of a warrant**, and a `Warrant` cannot be constructed carrying it: an unvalidated cell has no metrics, no envelope and no controls, so building a record for one would mean inventing all three. The matrix reports `UNVALIDATED` for a cell holding no warrant. See `DECISIONS.md` 024.
 
 ### 1.4 Certificate
@@ -92,7 +94,11 @@ class Certificate:
 
 SQLite, append-only, hash-chained: `self_hash = SHA256(prev_hash || canonical_json(record))`.
 
-Requirements from DPDP Rule 6: ≥1 year retention; queryable by session, time range, policy version, detector version, warrant status, and personal-data category accessed. Every record self-describing enough to interpret a year later without the current codebase.
+Retention: at least one year. DPDP Rules 2025, Rule 6(1)(e) requires security logs be kept *"for a period of one year"*, and Rule 8(3) sets *"a minimum period of one year"* for processing logs; both commence 13 May 2027. `config.yaml` declares 400 days and the store refuses anything under 365.
+
+Query paths — **this project's design, not the rule's text**: by session, time range, policy version, detector version, warrant status, and personal-data category accessed. Rule 6(1)(c) requires *"visibility on the accessing of such personal data, through appropriate logs, monitoring and review, for enabling detection of unauthorised access, its investigation and remediation"*; it names no predicate. These six are what an investigation of that kind asks, and they are indexed so it can be answered. Every record self-describing enough to interpret a year later without the current codebase.
+
+This paragraph originally credited all of the above to Rule 6. `DECISIONS.md` 168.
 
 Demonstrate tamper-evidence by mutating a row and showing the chain break. This is a two-line test and it is worth a slide.
 
