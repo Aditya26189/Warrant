@@ -145,7 +145,7 @@ the wrong reason standing. `DECISIONS.md` 165.
 
 | # | item | what would close it |
 |---|---|---|
-| O-1 | **Walk the remaining ten `SPEC.md` sections** against shipped behaviour, and reconcile §6.2 and §9.3. | A section-by-section pass, same shape as §11's. |
+| O-1 | **Walk the remaining ten `SPEC.md` sections** against shipped behaviour, and reconcile §6.2 and §9.3. **Closed 2026-09-14** — every section walked; findings in `reports/PHASE-10.md`, `DECISIONS.md` 168–177. | A section-by-section pass, same shape as §11's. |
 | O-2 | Eight read-only estimators lack a stated derivation. | An owner for `validation/stats.py`, `warrant_stats.py` and `drift/`. |
 | O-3 | Revocation trace for `RESULTS.md` §11.6 — no drift run has revoked a warrant. | Point the drift machinery at a moving distribution with a warrant outstanding. |
 | O-4 | Carried: the twelve conversations; certifying a real judge; `DECISIONS.md` 145's Linux abort; rule 1 duplicated between the gate and the Rego bundles. | See `reports/PHASE-8.md` §5. |
