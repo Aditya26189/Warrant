@@ -61,7 +61,7 @@ you:
 |---|---|
 | `padding_fault` | Either the padding really is wrong, **or** the check no longer discriminates. The control deliberately builds a right-padded variant and requires it to be *rejected*; if that variant is accepted, the tolerance is worthless and the run stops |
 | `label_shuffle` | AUROC survived permuting the labels. The signal is an artefact of the fitting, not of the data |
-| `null_feature` | A probe on noise scored outside the null band — the pipeline is manufacturing signal. Note the band is *simulated at construction*, not looked up; the closed form understates the spread here |
+| `null_feature` | A probe on noise scored outside the null band — the pipeline is manufacturing signal. Note the band is *simulated at construction*, not looked up; the closed form can understate the spread at low feature dimension |
 | `canary` | The detector missed items on a deliberately easy set. A regression tripwire, so treat it as "something broke", not as a measurement |
 | `determinism` | Two runs at one seed differed. Look for unseeded randomness, dict ordering, or a device-dependent kernel before anything else |
 

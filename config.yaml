@@ -70,7 +70,8 @@ validation:
   # A negative control averages over repeats and sizes that count from the
   # MEASURED spread of its own null, not from a closed form. See DECISIONS.md 031:
   # a fitted probe's scores are not exchangeable, so the Hanley-McNeil null SE
-  # understates the true spread by 2.1x at d=32 and 8.3x at d=1.
+  # understated the true spread by 2.1x at d=32 and 8.3x at d=1 ON THE SYNTHETIC
+  # FIXTURE. The real d=3584 probes measure 0.7-1.0x (DECISIONS.md 169).
   null_control_min_repeats: 8
   null_control_max_repeats: 200
 
@@ -86,6 +87,8 @@ drift:
   # monitor simulates its own null at construction and refuses a configuration
   # that would exceed this (DECISIONS 070).
   max_false_alarm_rate: 0.05
+  # Declared, not all computed: only token_length is fed to the monitor. The
+  # other four are named in every verdict as not scored (DECISIONS.md 172).
   features: ["token_length", "script_mix", "embedding_centroid_distance",
              "reference_perplexity", "category_mix"]
 

@@ -356,6 +356,28 @@ def test_underpowered_negative_control_fails_rather_than_passing(
     assert "UNDERPOWERED" in result.detail
 
 
+@pytest.mark.parametrize("spread", [0.005, 0.2])
+def test_the_null_note_is_true_at_the_ratio_measured(spread: float) -> None:
+    """The note's reason must match the direction of the measured ratio.
+
+    Every real T1 artifact carried *"measured spread is 0.8x the Hanley-McNeil
+    closed form, which is why the closed form is not the reference"*: a spread
+    narrower than the closed form offered as evidence against it
+    (``DECISIONS.md`` 169). At n=600 and base rate ~0.46 the closed form is
+    ~0.024, so 0.005 sits under it and 0.2 over it.
+    """
+    rng = np.random.default_rng(11)
+    labels = (rng.random(600) < 0.46).astype(int)
+    values = list(0.5 + spread * rng.standard_normal(64))
+    _, _, _, note = controls_module._summarise_null(values, (0.45, 0.55), labels, 200)
+    closed_form = controls_module._null_auroc_se_closed_form(labels)
+    assert "which is why the closed form is not the reference" not in note
+    if spread < closed_form:
+        assert "within it on this run" in note
+    else:
+        assert "wider, which is why" in note
+
+
 def test_canary_control_requires_perfect_recall() -> None:
     labels = np.ones(20, dtype=int)
     caught = canary_control(np.full(20, 0.9), labels, threshold=0.5)

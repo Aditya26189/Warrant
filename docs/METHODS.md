@@ -61,13 +61,21 @@ the second run, so **the model was wrong.**
 
 **Why it was wrong.** Hanley–McNeil assumes exchangeable scores under the null.
 A *fitted* probe's scores are not: the fit itself induces structure that
-survives label permutation. Measured over 200 permutations per variant, the
-true spread exceeded the closed-form SE by **2.1x at d=32 and 8.3x at d=1**.
+survives label permutation. Measured over 200 permutations per variant **on the
+synthetic fixture**, the true spread exceeded the closed-form SE by **2.1x at
+d=32 and 8.3x at d=1**. On the real T1 probes (d=3,584, holdout 600) it is
+**0.7–1.0x** and every negative control resolves at the 8-repeat minimum
+(`results/validation-T1-*.json`), so the closed form would not have understated
+anything there. The measured spread stays the reference: it is free, and the
+low-dimensional case it guards has no real instance yet. `DECISIONS.md` 169.
 
 **What is used.** Each control simulates its own null at construction —
 between 8 and 200 repeats, sized from the *measured* spread — and reports the
-band it actually applied and why. A ±2 SE floor is retained as a backstop for
-holdouts too small for repeats to rescue; it only ever widens, never tightens.
+band it actually applied and why. It passes only if the mean lies inside the
+band **and** the standard error of that mean is at most half the band's
+half-width; a control that cannot get there within the cap fails as
+underpowered. There is no ±2 SE floor — entry 029 proposed one and 031 retired
+it.
 
 `DECISIONS.md` 029, 031.
 

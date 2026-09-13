@@ -533,6 +533,14 @@ def build_longctx(
     """Pad an existing set's prompts out to long context with distractors.
 
     ``SPEC.md`` §4: *same questions padded with distractors to 4-16k tokens*.
+
+    **The band is a target, and ``chars_per_token`` misses it.** At the default
+    4.0 the committed ``triviaqa-longctx-600`` measured 2,838-11,103 tokens at
+    extraction, 82 of 600 under the low end, because this filler tokenises at
+    about 5.8 characters per token on Qwen2.5 (``DECISIONS.md`` 171). The set is
+    frozen and is not rebuilt; a rebuild at a corrected estimate is a new eval
+    set ID. The padding draws from a small fixed pool of paragraphs, so the
+    envelope is repetitive filler rather than a retrieved corpus.
     Same questions matters — the base set and this one differ **only** in
     context length, so any difference in a detector's numbers between the two is
     attributable to length rather than to content.

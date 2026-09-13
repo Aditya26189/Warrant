@@ -75,8 +75,12 @@ def _null_auroc_se_closed_form(labels: np.ndarray) -> float:
     ranks. A fitted probe's scores are not exchangeable — they are a smooth
     function of the features, so similar items get similar scores and the
     effective number of independent draws is far below ``n``. Measured against
-    200 permutations on the fixture, the true null spread is **2.1x** this
-    formula at 32 features and **8.3x** at one feature. ``DECISIONS.md`` 031.
+    200 permutations **on the synthetic fixture**, the true null spread is
+    **2.1x** this formula at 32 features and **8.3x** at one feature
+    (``DECISIONS.md`` 031). On the real T1 runs -- 3,584 features, holdout 600 --
+    it is 0.7-1.0x, so the formula would not have understated anything there
+    (``DECISIONS.md`` 169). The measured spread stays the reference because it
+    costs nothing and the low-dimensional case is where the formula fails.
     """
     labels = np.asarray(labels)
     n_pos = int(labels.sum())
@@ -142,11 +146,23 @@ def _summarise_null(
         if math.isfinite(se_mean) and se_mean > 0
         else f"{array.size} repeats; null spread undefined"
     )
-    note += (
-        f"; measured spread is {ratio:.1f}x the Hanley-McNeil closed form "
-        f"({closed_form:.4f}), which is why the closed form is not the reference "
-        "(DECISIONS.md 031)"
-    )
+    # The closed form is reported, never used, and the sentence explaining that
+    # has to be true at the ratio actually measured. A spread *narrower* than the
+    # closed form is not evidence against the closed form, and every real T1
+    # artifact once said it was (DECISIONS.md 169).
+    if math.isfinite(ratio) and ratio > 1.0:
+        note += (
+            f"; measured spread is {ratio:.1f}x the Hanley-McNeil closed form "
+            f"({closed_form:.4f}) -- wider, which is why the measured spread and "
+            "not the closed form is the reference (DECISIONS.md 031)"
+        )
+    else:
+        note += (
+            f"; measured spread is {ratio:.1f}x the Hanley-McNeil closed form "
+            f"({closed_form:.4f}) -- within it on this run. The measured spread is "
+            "still the reference, because the closed form understates the null at "
+            "low feature dimension (synthetic fixture, DECISIONS.md 031)"
+        )
     if not powered:
         note += (
             f". UNDERPOWERED: {max_repeats} repeats were not enough to bring the "
@@ -285,9 +301,11 @@ def label_shuffle_control(
 
     **The repeat count is sized from the measured spread**, not fixed. A single
     permutation is one draw from a distribution whose width depends on the
-    feature dimensionality in a way no closed form captures: at one feature the
-    shuffle effectively picks a sign, giving a null spread of 0.27, while at 32
-    features it is 0.068. Repeats continue until the standard error of the mean
+    feature dimensionality in a way no closed form captures: on the synthetic
+    fixture, at one feature the shuffle effectively picks a sign, giving a null
+    spread of 0.27, while at 32 features it is 0.068 (``DECISIONS.md`` 031; the
+    real 3,584-feature probes measure 0.016-0.023, ``DECISIONS.md`` 169).
+    Repeats continue until the standard error of the mean
     is at most half the band's half-width, or ``max_repeats`` is reached — in
     which case the control **fails as underpowered**, because a run that cannot
     demonstrate a null result has demonstrated nothing. ``DECISIONS.md`` 031.

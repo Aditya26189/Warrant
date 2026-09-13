@@ -370,9 +370,24 @@ class WarrantMetrics:
 
         Carried as a metric rather than a float so it cannot be quoted without
         its interval, and so the flag rate it was computed at travels with it.
-        Interval bounds come from the recall interval at the measured flag rate:
-        the flag rate is measured on the same run and its own uncertainty is an
-        order of magnitude smaller, so treating it as fixed widens nothing.
+        Interval bounds come from the recall interval at the measured flag rate,
+        holding the flag rate fixed.
+
+        **That is conservative, and not for the reason once given here** -- that
+        the flag rate's uncertainty is an order of magnitude smaller. It is not:
+        on the real T1 artifacts the relative half-widths are 0.36-0.40 for flag
+        rate and 0.38-0.40 for recall. What makes the lower bound safe is that
+        the two move together -- true positives are a subset of flagged items --
+        so the ratio varies *less* than recall does, and dividing recall's
+        interval by a constant over-states the width. Measured against a joint
+        bootstrap on those artifacts' counts, the shipped lower bound is
+        1.19-1.29 where the joint one is 1.59-1.71. The refusal bar
+        (lift lower bound > 1.0) therefore errs toward refusing.
+        ``tests/test_lift_interval.py`` pins that on every shipped artifact.
+
+        The cost is the upper bound, which exceeds :attr:`lift_ceiling` on those
+        same artifacts (2.68-2.84 against 2.166). Treat it as a bound on nothing
+        physical (``DECISIONS.md`` 169).
 
         ``DECISIONS.md`` 018: lift is never quoted without precision. That is a
         reporting rule the renderer enforces, and it is why precision is a

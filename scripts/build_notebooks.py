@@ -70,7 +70,7 @@ This session extracts **both** envelopes:
 | envelope | items | why |
 |---|---|---|
 | `triviaqa-600` | 2,400 questions → 1,200 train / 600 validation / 600 test | the tier ladder anchor |
-| `triviaqa-longctx-600` | the 600 test questions, padded to 4–16k tokens | Beat 4's envelope shift |
+| `triviaqa-longctx-600` | the 600 test questions, padded toward a 4–16k token target (2.8k–11.1k as built, `DECISIONS.md` 171) | Beat 4's envelope shift |
 
 Both in one run. A two-session plan is a plan where the second session does not
 happen, and Beat 4 has no measured basis without the long-context pass.
@@ -82,7 +82,7 @@ examples/s, of which generation is 2.37 s/item and prefill only 0.31 s.
 | pass | items | dominated by | estimate |
 |---|---|---|---|
 | short context | 2,400 | generation | ~1.7 h |
-| long context | 600 | prefill at 4–16k tokens | ~1–2 h |
+| long context | 600 | prefill at ~3–11k tokens | ~1–2 h |
 
 Long context needs **no generation** — it reuses the short pass's answers and
 labels, because they are the same questions — so it is prefill only, and prefill
@@ -398,8 +398,11 @@ result.report
   matching is probably too loose.
 - **match_rules** shows how labels were reached. A large `exact token match on
   short alias` count is expected; a large `empty generation` count is not.
-- **token_length_max** for the long pass should land inside the configured
-  4,000–16,000 band.
+- **token_length_min and token_length_max** for the long pass. The builder aims
+  at 4,000–16,000 using an estimate of 4 characters per token; this filler
+  tokenises at about 5.8, so the committed set measured 2,838–11,103 with 82
+  prompts under 4,000 (`DECISIONS.md` 171). Checking only the max is how that
+  went unnoticed.
 """
         ),
         code(
@@ -616,7 +619,7 @@ as subprocesses with `check=True` so a failure stops the notebook rather than
 leaving a run that looks successful and is missing artifacts.
 
 Two eval sets, two envelopes. `triviaqa-600` is the anchor; `triviaqa-longctx-600`
-is the same questions padded to 4–16k tokens, and the difference between them is
+is the same questions padded to roughly 3–11k tokens, and the difference between them is
 the envelope shift the drift story rests on.
 
 **The last stage is the banking pilot** (`DECISIONS.md` 090 corrected, 101). It

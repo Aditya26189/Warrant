@@ -2,7 +2,8 @@
 
 This is the Beat 4 measurement. The probe is fitted on ``triviaqa-600`` and
 scored, unchanged, on ``triviaqa-longctx-600`` — the same questions padded into
-a 4-16k token context. Nothing is refitted and nothing is reselected: refitting
+a long context: 2,838-11,103 tokens as measured at extraction, against a 4-16k
+target (``DECISIONS.md`` 171). Nothing is refitted and nothing is reselected: refitting
 would produce a better number describing a system nobody runs, since no
 production deployment retrains between one request and the next.
 

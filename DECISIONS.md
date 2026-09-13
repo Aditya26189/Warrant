@@ -8548,8 +8548,9 @@ that buyer's compliance reviewer looks.
 ## 169 - SPEC.md 2 walked: the behaviour holds, five statements about it do not
 
 - **Date:** 2026-09-13
-- **Status:** FOUND, fixes not yet made. **OPEN.** Recorded before the session
-  closed so the findings outlive it; `reports/NEXT-STEPS.md` orders the work.
+- **Status:** FOUND 2026-09-13; items 1-5 and 7 **fixed 2026-09-14** (170, 176).
+  Item 6 remains **OPEN** in read-only `validation/stats.py`, mitigated in the
+  RESULTS table and GLOSSARY.
 
 `SPEC.md` §2 walked against `controlplane/validation/` and the three real T1
 validation artifacts (`results/validation-T1-{last_token,mean_pool,max_rolling_means}.json`).
@@ -8637,3 +8638,301 @@ evidence is likewise shared.
 **SPEC.md walk after this entry:** §1, §2 (findings above, unfixed), §6.2,
 §9.2-9.3, §10, §11; §3-§5, §6.1/§6.3-6.5, §7, §8, §9.1/§9.4 not yet walked.
 **OPEN.**
+
+---
+
+## 170 - SPEC.md 3: invariant 5 fails at the two surfaces a reader stops on
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED
+
+`route()` matches §3.2, and adds two things the pseudo-code lacks: a
+*suspension* (something holds a warrant here, but not one this profile accepts)
+distinct from an empty row, and a `KeyError` on an envelope the matrix does not
+know (050). Ranking is by recall lower bound (042). Three findings.
+
+**1. Recall travels without precision in the matrix cell and the README claim
+table.** Invariant 5: *"Precision and recall travel together. Never lift alone,
+never recall alone."* The cell renders `R=0.08 [0.05, 0.11] @f=0.042` -- 067
+added the budget and cited invariant 5 while doing it, but the invariant names
+precision. The claim table has `internal_knowledge` and `decision_support`
+recall rows with neither precision nor flag rate beside them, and
+`customer_support` recall with flag rate only. `enforced_by` for invariant 5
+names a blended-score test and the FPR sweep; neither surface was covered.
+
+*Decision:* the cell renders `R=… P=… @f=…`; the claim table gains precision for
+all three profiles and flag rate for the two lacking it, each verified by
+`scripts/verify.py` like every other row; a test fails when a claim-table row
+reads `recall.value` without a `precision.value` row on the same artifact and
+selector, and when a VALID matrix cell with recall renders without `P=`. Both
+tests join invariant 5's `enforced_by`.
+
+**2. The standalone matrix shows fixture numbers, and the README cites it.**
+`WarrantMatrix.render` masks synthetic envelopes only when asked, and
+`scripts/03_matrix.py` writes `results/warrant_matrix.md` unmasked, as "an
+internal diagnostic". README's three-clause table links that file as the
+evidence for clause two, so it is not internal. A judge following the link reads
+`probe-T3-judge VALID R=0.17 [0.10, 0.25]` -- a detector this repository has not
+built, on data no model produced. *Decision:* the standalone render masks too.
+The JSON payload keeps the numbers for diagnosis.
+
+**3. "The matrix self-populates from live traffic" is not true.** `route()` calls
+an `enqueue` callback that defaults to a log line, and nothing consumes it.
+Annotated under §3.2.
+
+**§3.1's table was a prediction, and one cell of it was wrong.** It expected
+max-of-rolling-means to stay VALID (wider) under long context. Measured on
+`triviaqa-longctx-600`: last-token VALID, mean-pool and max-of-rolling-means
+both REFUSED (`results/warrant_matrix.md`). The README already reports it; the
+spec did not. Annotated, statuses only.
+
+---
+
+## 171 - SPEC.md 4: the long-context set is 2.8k to 11.1k tokens, not 4k to 16k
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED; the frozen set is not rebuilt
+
+§4, the builder docstring, `scripts/04_transfer.py`, the Kaggle notebook and
+entries 051-052 describe `triviaqa-longctx-600` as *"padded with distractors to
+4-16k tokens"*.
+
+**The project's own extraction cache says otherwise.**
+`results/cache-triviaqa-longctx-600.npz`, field `__token_lengths`, written on the
+GPU run:
+
+| | min | median | max | under 4,000 |
+|---|---|---|---|---|
+| long context | 2,838 | 6,954 | 11,103 | **82 of 600** |
+| short context | 31 | 42 | 166 | -- |
+
+Recounted with the cached `Qwen/Qwen2.5-7B-Instruct` tokenizer on the frozen
+prompts, without the chat template: 2,813 to 11,078, 83 under 4,000. The builder
+sized padding at `chars_per_token_estimate: 4.0`; this filler tokenises at
+**5.77** characters per token (range 5.67-5.86), so every prompt landed at about
+69% of its target. The notebook's check read only `token_length_max`, which
+11,103 satisfies.
+
+**What survives.** The shift is still ~165x the short-context median, and the
+mean-pool collapse is measured on the set as it is. **What does not:** any
+sentence saying 16k. A reader sizing their own long-context risk from "16k"
+overstates what was tested by 45%.
+
+**Two construction facts nobody states.** The padding is drawn from **eight**
+distractor paragraphs, repeated -- median 238 paragraphs per prompt, so the
+long-context envelope is highly repetitive filler, not a retrieved corpus.
+And responses and labels are the short-context pass's (entry 052: the long pass
+is prefill-only), so a label records whether the model answered correctly
+*without* the padding. Both are defensible, both bound what the collapse result
+means, and neither was in `docs/LIMITATIONS.md`.
+
+**Decision.** Correct the range wherever it is claimed, citing the cache field.
+Do not rebuild: the set is frozen and content-hashed, a rebuild is a new ID and
+a new GPU run, and the result measured on the set as built is still correct
+about that set. Add both construction facts to LIMITATIONS.
+
+**`agent-actions-N` does not exist.** The gate is exercised by one declared
+injection scenario and eight declared legitimate workflows (156), counted
+exactly, not by a labelled trace set. Annotated under §4.
+
+---
+
+## 172 - SPEC.md 5: one of five envelope features is monitored, and STALE promises a revalidation nothing schedules
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED for the non-read-only text; **OPEN** for `drift/**`
+
+**1. Four of the five §5.1 features are declared and never computed.**
+`config.yaml` lists `token_length`, `script_mix`, `embedding_centroid_distance`,
+`reference_perplexity`, `category_mix`. The only caller that feeds the monitor
+(`controlplane/demo/session.py`) observes `token_length`. Nothing computes the
+other four. MMD (§5.2) is not implemented; `drift.mmd_permutations` configures
+nothing.
+
+**The code does not hide it.** `DriftMonitor.verdict` names every unscored
+feature in its reason (*"Not scored: script_mix, ..."*), and
+`certify_drift_response` lists MMD under `unchecked` on the certificate. What
+hides it is the documentation: `docs/LIMITATIONS.md` does not say the envelope
+is watched on one axis, and a reader of §5.1 or `config.yaml` would assume five.
+Token length is the axis the project's own failure mode lives on, so the one
+feature built is the right one -- but a Hinglish or code-switched shift would
+pass unseen.
+
+*Decision:* LIMITATIONS states it; §5 is annotated; `config.yaml`'s `features`
+line gains a comment naming the one computed.
+
+**2. STALE says "revalidation is scheduled". Nothing schedules it.**
+`drift/ladder.py` writes *"Reported bounds widen by 1.50x and revalidation is
+scheduled"* into every STALE transition. No revalidation queue, scheduler or
+callback exists. `controlplane/model/enums.py` repeats the claim for
+`WarrantStatus.STALE`. The enum docstring is corrected here; the ladder message
+is read-only. **OPEN -- needs human review**: the transition record states an
+action the system does not take.
+
+**3. The 1.5x widening is declared, disclosed, and hard-coded.** The ladder says
+so plainly -- *"declared policy, not derived from the PSI: no calibration between
+PSI and interval width has been measured"* -- which is the right statement. It
+lives as a default argument in `drift/ladder.py` and `drift/response.py`, not in
+`config.yaml`, against the coding standard. Read-only; **OPEN**.
+
+**4. PSI bands are simulated, not the §5.2 rule of thumb** (070). The monitor
+refuses a configuration whose simulated null false-alarm rate exceeds
+`max_false_alarm_rate`. §5.2's "native vocabulary in Indian banking risk teams"
+is a market claim with no source; annotated as unsourced rather than removed.
+
+---
+
+## 173 - SPEC.md 6.1, 6.3-6.5: a hand-typed price table in the section that forbids one
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED
+
+**1. §6.4 is a typed table under the sentence "No figure here is written by
+hand".** *Recall ±5pp ~847 SRS / ~570 Neyman; ±2pp ~5,292 SRS / ~3,500 Neyman.*
+Those are the closed-form figures 149 showed do not deliver their margin. The
+computed price list says **1,014** for ±0.05 at month one (README, from
+`results/on_traffic/on_traffic.json`). *Decision:* the typed figures are marked
+superseded with a pointer to the rendered table; the section keeps its shape.
+
+**2. "FPR is free, denominator known" is not quite true, and nothing computes it.**
+On traffic `FPR = FP / (FP + TN)`, and `TN` needs the misses `q·N_u` -- the
+estimated quantity. At the declared workload (`N_u` = 197,036, `q` = 0.0261,
+a ±0.01 interval on `q`) the denominator moves by about ±1%, so FPR is nearly
+free, but it depends on an estimate, which makes it `ESTIMATED` under this
+codebase's own type rule. The on-traffic estimator does not return FPR at all.
+Annotated; not built.
+
+**3. §6.5's "48%" had no source, and it is not a κ.** Found: RedactionBench,
+Brynjólfsson et al., arXiv:2606.18782 (17 June 2026). Over 80 participants
+*"show consensus with target labels for mandatory redactions (89.4 percent) and
+safe text preservations (94.1 percent), but fail to agree on contextual
+redactions (47.7 percent)"*. That is agreement with a gold label on the hardest
+slice, not inter-rater κ; the κ = 0.5 in the next sentence is a separate
+illustration. *Decision:* cite it and say what it measures.
+
+**4. "~85 extra reviews" counts one stratum.** It is 10% of 847 -- stratum B at
+the superseded size. §6.5 says double-label ~10% of **both** strata, and at the
+declared workload the flagged stratum is ~2,960 items a month, so both together
+is roughly 400. Annotated without a figure: the price list is where the number
+belongs.
+
+**5. §6.3's "design effect lands near 0.67" is the expected value; the measured
+one is 0.7929** on the declared band structure (`results/on_traffic/ON_TRAFFIC.md`).
+§6.3 itself says to measure it, and the shipped code does. Annotated.
+
+§6.1 matches: the estimator refuses a sampled stratum A (147).
+
+---
+
+## 174 - SPEC.md 7: the weighted-error weights select no shipped operating point
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED to disclose; selection unchanged
+
+§7.4 specifies `τ* = argmin_τ Σ wᵢ·ERRORᵢ(τ) / Σ wᵢ` and says complexity 4 is
+*"answered by declaring the tradeoff"*.
+`controlplane/policy/objective.py::choose_threshold` implements it and
+`tests/test_policy.py` exercises it.
+
+**No shipped operating point is chosen by it.** `choose_threshold` has no caller
+outside tests. All three profiles' points carry
+`objective: "flag_rate_budget=0.1|0.2|0.5"` in
+`results/policy-triviaqa-2400-t960.json`, selected on validation at
+`config.yaml`'s `target_flag_rate`. The weights in every bundle -- declared,
+versioned, content-hashed, and the thing a reviewer is told to disagree with --
+are identical across the three (50 / 5 / 2), so if they did select, all three
+profiles would get one threshold, not three.
+
+**The tradeoff that actually moves the threshold is the flag-rate budget**, and
+it is declared too, in `config.yaml`, with its reason. So the substance of §7.4
+-- the choice is visible and versioned -- holds. What does not is which
+declaration does the choosing.
+
+**Decision: disclose, do not re-select.** Re-selecting by the weights would move
+every published number for three profiles and collapse them to one point. §7.4
+is annotated and LIMITATIONS says it. The bundles are not edited: their comments
+are inside the content hash, and `controlplane/policy/` is read-only.
+
+§7.2 holds: load-time resolution refuses missing, expired, refused, unvalidated
+and below-minimum warrants (`tests/test_policy.py`), and `max_age` parses
+strictly. All three bundles declare `max_fpr_hard_negatives: null` against
+`config.yaml`'s 0.02 / 0.05 / 0.10, and each says why: the probe holds no warrant
+on `hard-negatives-200`. §7.3's latency budgets are checked against a request by
+`gateway/adapter.py`, not measured in any artifact.
+
+---
+
+## 175 - SPEC.md 8 and 9.1, 9.4: the external claims hold, and now say where they come from
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED
+
+**§8.1, checked against the installed `presidio-analyzer` 2.2.364:** six Indian
+recognisers (`InAadhaar`, `InPan`, `InPassport`, `InVehicleRegistration`,
+`InVoter`, `InGstin`), each `supported_languages: [en]` and `enabled: false` in
+`conf/default_recognizers.yaml`. `InAadhaarRecognizer` already validates the
+Verhoeff check digit, and `presidio_adapter.py` already says so -- the
+contribution is the measurement on Hinglish, as §8.1 required.
+
+**The "published Presidio HIGH-sensitivity recall of 0.07"** is REDACT, Vats et
+al., arXiv:2606.19881 (18 June 2026): *"Presidio drops from 0.23 recall on
+LOW-tier entities to 0.07 on the HIGH tier"*, under **partial-overlap** matching,
+on **LLM-generated** documents in which *"all PII is fictional"* and non-verbatim
+disclosure forms are deliberate. §8.1 asked for exactly that disclosure and gave
+no citation to disclose it against. Cited.
+
+**Licences:** Qwen3Guard-Gen-0.6B `apache-2.0` (Hugging Face model card),
+LettuceDetect MIT (repository), Presidio MIT. As stated. Qwen3Guard,
+LettuceDetect and an LLM judge are not built (`CLAUDE.md` layout), so the §8
+table is a plan for three of its five rows. Annotated.
+
+**§9.1 and §9.4 match.** Reversibility is registered on the tool at definition
+(`gate/registry.py`); `banking_registry` has the four tools on the stated
+gradient.
+
+**SPEC.md walk after this entry:** every section walked. Fixes for 169-175 follow.
+
+---
+
+## 176 - What the matrix and RESULTS.md render, after 169 and 170
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED, before the code
+
+Four rendering changes. None moves a measured number; each changes what a reader
+can see beside one.
+
+1. **The matrix cell carries precision.** `R=0.08 [0.05, 0.11] P=0.88 [0.75, 1.00]
+   @f=0.042`. Invariant 5 names precision; 067 put the budget in the cell and
+   stopped there (170). *Rejected: precision point only* -- invariant 4 puts an
+   interval on every rate, and a bare `P=0.88` beside an interval is the
+   inconsistency a reader notices first.
+2. **`results/warrant_matrix.md` masks synthetic envelopes**, exactly as the
+   `RESULTS.md` copy does (170). The JSON payload keeps the numbers.
+3. **The RESULTS table's `n` names its denominators.** `600 (277 pos / 25 flagged)`.
+   `Metric.n` on a rate is the eval set's size, set in read-only
+   `validation/stats.py` (169, item 6); the table is where a reader reaches for
+   it, so the denominators go there. Positives are `round(base_rate × n)`, the
+   same labels the metrics were computed on; the flagged count is
+   `confirmed_errors.n`. When the recall metric's `n` differs from `n_test` the
+   cell shows `n` alone rather than guessing.
+4. **Lift renders its lower bound, not its upper.** `1.993, lower bound 1.286 --
+   92% of the 2.17 ceiling`. The upper bound exceeds the physical ceiling on all
+   three real T1 artifacts (169, item 4), because holding the flag rate fixed
+   widens both ends; the lower bound is the one the refusal bar uses and the one
+   `tests/test_lift_interval.py` pins as conservative. *Rejected: clip the upper
+   bound at the ceiling* -- a clipped bound looks computed and is not.
+   *Rejected: fix the interval* -- a joint bootstrap would raise the lower bound
+   and issue warrants the current bar refuses; that is a threshold change and
+   needs its own pre-registered entry. The refusal message in `issuance.py` keeps
+   the full interval: it records what the bar compared, and the bar compared
+   the lower bound.
+
+**README claim table.** Precision for all three profiles and flag rate for
+`internal_knowledge` and `decision_support` join the rows, from
+`results/policy-triviaqa-2400-t960.json`, each checked by `scripts/verify.py`.
+`tests/test_invariants.py` gains a check that every claim-table row reading a
+`recall.value` has a `precision.value` row on the same artifact and selector,
+and one that a VALID matrix cell rendering `R=` also renders `P=`.
+
+Both artifacts are regenerated from a clean tree in a separate `exp:` commit.

@@ -113,13 +113,13 @@ controlplane/
   evalsets/        hand-written corpora, builders, frozen registry
   validation/      control suite, /validate, warrant issuance and refusal
   matrix/          the (detector × envelope) warrant matrix and routing
-  drift/           envelope computation, PSI, MMD, revocation ladder
-  sampling/        NOT BUILT — Phase 6; DECISIONS 096
-  economics/       feasibility.py, review.py. sizing.py — the price list —
-                   is NOT BUILT; DECISIONS 096, amended by 099
+  drift/           envelope computation, PSI, revocation ladder. Token length
+                   is the only feature computed; MMD is not built (DECISIONS 172)
+  sampling/        on-traffic estimator, allocation, blinded queue, κ (DECISIONS 147-150)
+  economics/       feasibility.py, review.py, sizing.py — the price list (DECISIONS 146)
   policy/          bundle loading, load-time warrant resolution
   detectors/       adapters: probe, presidio (qwen3guard/judge not built)
-  gate/            NOT BUILT — Phase 9
+  gate/            reversibility registry, session Rule-of-Two, action gate (DECISIONS 156)
   report/          renders results/ into markdown and plots
   gateway/         LiteLLM adapter — certificates on an OpenAI-format response
 scripts/           thin CLI wrappers — no logic

@@ -68,7 +68,10 @@ class WarrantStatus(Enum):
     * ``VALID`` — validated here, cleared the bar. Normal operation, full
       claimed bounds.
     * ``STALE`` and ``REVOKED`` — was valid, the envelope moved. ``STALE``
-      widens the reported interval and triggers background revalidation;
+      widens the reported interval by a declared factor. ``SPEC.md`` §5.3 also
+      has it trigger background revalidation; **nothing implements that**, and
+      the ladder's message saying it is scheduled is an OPEN item
+      (``DECISIONS.md`` 172);
       ``REVOKED`` refuses to certify and sends the request to the matrix.
     * ``REFUSED`` — validated here and *failed*. Out of service on this
       envelope until a human revalidates. No override exists (invariant 3).

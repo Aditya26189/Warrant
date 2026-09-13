@@ -77,9 +77,9 @@ artifact. This is the spine. If you are ever unsure whether something is
 measured or asserted, look for it here — if it is not in the table, it is not a
 measured claim.
 
-**[LIMITATIONS.md](LIMITATIONS.md).** Read before quoting anything. The four
-items in §2 change how the claim table should be read; §3 lists what was
-specified and never built. Knowing these before a reviewer raises them is the
+**[LIMITATIONS.md](LIMITATIONS.md).** Read before quoting anything. The items in
+§2 change how the claim table should be read; §3 lists what was specified and
+not built, and what was built since. Knowing these before a reviewer raises them is the
 difference between a defensible answer and a scramble.
 
 ---

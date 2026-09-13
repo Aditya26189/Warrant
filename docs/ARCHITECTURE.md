@@ -116,9 +116,11 @@ promotes it back.
 | `canary` | the detector detects the thing at all | recall below 1.0 on a deliberately easy set |
 | `determinism` | the number is reproducible | two runs at one seed differ |
 
-The null band is **measured, not assumed**: the Hanley–McNeil closed form
-understates the true spread by 2.1x at d=32 because a fitted probe's scores are
-not exchangeable, so the monitor simulates its own null at construction.
+The null band is **measured, not assumed**: on the synthetic fixture the
+Hanley–McNeil closed form understated the true spread by 2.1x at d=32, because a
+fitted probe's scores are not exchangeable; on the real 3,584-feature probes it
+did not (0.7–1.0x, `DECISIONS.md` 169). Measuring costs nothing either way, so
+each control simulates its own null at construction.
 `DECISIONS.md` 029, 031, 070.
 
 ---

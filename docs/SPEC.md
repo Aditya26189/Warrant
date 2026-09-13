@@ -124,6 +124,8 @@ Both are repeated rather than run once, and **each sizes its own repeat count fr
 
 A control that reaches the cap without resolving its null **fails as underpowered** rather than passing. Its job is to show the pipeline *can* produce a null result; without the power to show it, it has shown nothing. Derivation, the measured null distributions and the rejected alternatives are in `DECISIONS.md` 029 and 031.
 
+**The figures in the paragraph above are the fixture's, not a language model's.** The 0.068 and 0.271 spreads, the 2.1× and 8.3× ratios and the 8 / 22 / 125 repeat counts were measured on synthetic data at base rate 0.152 (`DECISIONS.md` 031). On the real T1 runs — 3,584 features, holdout 600, base rate 0.46 — the measured null spread is 0.7–1.0× the Hanley–McNeil closed form and every negative control resolves at the 8-repeat minimum (`results/validation-T1-*.json`, `controls[1..2].detail`). The rule stands: measuring the spread costs nothing, and the low-dimensional case it guards has no real instance here yet. `DECISIONS.md` 169.
+
 ### 2.2 `/validate`
 
 ```
@@ -148,6 +150,8 @@ Recall and hard-negative FPR are compared at the **interval bound**, not the poi
 
 **No override path exists.** Not a flag, not an env var.
 
+**A sixth criterion shipped: lift lower bound ≤ 1.0** — the detector is not demonstrably better than random sampling at the same budget. Found by measurement, not designed in: a warrant was issued `VALID` on recall `[0.000, 0.077]` because AUROC is a ranking bar and the product's claim is about usefulness at a budget. 1.0 is a definitional null rather than a tunable, which is why it is `issuance.py::MIN_LIFT_LOWER_BOUND` and not a `config.yaml` value. `DECISIONS.md` 043, 169.
+
 ---
 
 ## 3. The warrant matrix
@@ -168,6 +172,8 @@ So build:
 
 Cheap to build: Phase 2's ablation extracts all tiers in one pass; run it once per eval set.
 
+**The table above was a prediction, and one cell was wrong.** Measured on `triviaqa-longctx-600`, max-of-rolling-means is `REFUSED`, not `VALID (wider)`; last-token is the probe that holds. `hinglish-pii-200` is measured for the PII reference detector, and T2/T3 rows exist only on synthetic envelopes, which `RESULTS.md` masks. The shipped matrix is `results/warrant_matrix.md`. `DECISIONS.md` 170.
+
 ### 3.2 Routing
 
 Drift fires → *"which detector holds a `VALID` warrant on the envelope I am actually in?"* → route there, adopt **that warrant's bounds**, and if the row is empty, refuse everything and fall back to the profile's most conservative action.
@@ -183,6 +189,8 @@ def route(envelope_id: str, profile: Profile) -> RoutingDecision:
     return RoutingDecision(warrant=None, action=profile.conservative_default,
                            reason=f"no valid warrant on envelope {envelope_id}")
 ```
+
+**As shipped, the matrix does not self-populate.** `route()` hands unvalidated cells to an `enqueue` callback that defaults to a log line, and nothing consumes it. Two additions the sketch lacks: a *suspended* profile — something holds a warrant here, none this profile accepts — is a different event from an empty row; and an envelope the matrix does not know raises rather than reading as a measured absence (`DECISIONS.md` 050). `DECISIONS.md` 170.
 
 ### 3.3 The three states, precisely
 
@@ -214,6 +222,8 @@ Content-hashed, immutable.
 Hand-build the middle three. Do not generate them with an LLM and call them ground truth.
 
 `hard-negatives-200` is the most under-appreciated item here. FPR measured on easy benign traffic makes a damaging filter look excellent.
+
+**`triviaqa-longctx-600` as built is 2,838–11,103 tokens, median 6,954, and 82 of 600 prompts are under 4,000** — not 4–16k. Measured at extraction (`results/cache-triviaqa-longctx-600.npz`, `__token_lengths`). The builder sized padding at 4.0 characters per token and this filler tokenises at 5.77. The padding repeats eight distractor paragraphs, and responses and labels are the short-context pass's, so a label records whether the model was right *without* the padding. The set is frozen and is not rebuilt; the range is corrected wherever it was claimed. `agent-actions-N` does not exist: the gate is measured on one declared injection scenario and eight declared workflows (`DECISIONS.md` 156). `DECISIONS.md` 171.
 
 ---
 
@@ -247,6 +257,8 @@ Computed at validation time, stored **inside the warrant**.
 ### 5.4 Model-version invalidation
 
 A probe is pinned to a model version. On model change, every activation-tier warrant is invalidated until revalidation. State this as an operational cost; the mitigation is that T2 and T3 are model-agnostic and keep working through the gap.
+
+**As shipped, §5 is one feature deep.** Only input token length (§5.1, item 1) is computed and fed to the monitor; the other four features are declared in `config.yaml` and computed nowhere, and MMD (§5.2) is not implemented. The monitor names every unscored feature in its verdict and the certificate lists MMD as unchecked, so nothing is hidden at runtime. PSI bands are simulated from the null rather than taken from the 0.10 / 0.25 rule of thumb (`DECISIONS.md` 070); the claim that PSI is native vocabulary in Indian banking risk teams has no source here. `STALE` widens bounds by a declared 1.5×, stated on the transition as policy rather than derived — and the same message says revalidation is scheduled, which nothing does. `DECISIONS.md` 172.
 
 ---
 
@@ -300,6 +312,8 @@ n_h ∝ W_h · √(q_h(1−q_h))
 
 **Expect ~1.5× reduction, not more.** Neyman variance goes as `[Σ W_h √(q_h(1−q_h))]²`, and √ is concave, so a large band with small-but-nonzero prevalence dominates the sum precisely *because* it is large. On plausible band structure for a detector at AUROC 0.855 the design effect lands near 0.67. Treat 2× as a good outcome. **Size it empirically from the observed score distribution; do not assume a factor.**
 
+Measured on the declared band structure: **0.7929**, against the 0.67 expected above and in `config.yaml` (`results/on_traffic/ON_TRAFFIC.md`). `DECISIONS.md` 173.
+
 **Month one runs proportional allocation** because Neyman needs `q_h` you do not have yet. The first warrant costs full SRS price. Say this in the README rather than letting someone discover it.
 
 ### 6.4 The price list — computed, never typed
@@ -316,15 +330,19 @@ n_h ∝ W_h · √(q_h(1−q_h))
 
 Three of the four are free. The pitch line falls out:
 
+> **The recall rows above are superseded, and typed — which this section forbids.** ~847 and ~5,292 are the closed-form sizes §6.2 shows under-deliver; the Neyman figures assume a design effect month one cannot have. The computed price list is rendered into `results/RESULTS.md` and the README from `results/on_traffic/on_traffic.json`. **FPR is nearly free, not free**: its denominator includes the misses `q·N_u`, which is the estimated quantity, so it is `ESTIMATED` — about ±1% on the denominator at the declared workload — and the on-traffic estimator does not return it. `DECISIONS.md` 173.
+
 > *"Three of the four numbers you need are free — you're already reviewing the flags, you're just throwing the labels away. Only recall costs money, because recall means estimating what you missed across two hundred thousand responses nobody looked at. Here's what each precision level costs. Pick one."*
 
 ### 6.5 Label quality
 
 **Blinding.** Stratum A reviewers see items the system flagged; stratum B reviewers see items it didn't. If flag status, score, stratum or ordering is visible, the two strata get systematically different label distributions and the importance-weighted estimate is biased *in the direction that flatters us*. Interleave both strata into **one blinded queue with identical UI**. Nearly free, and it is the difference between a warrant and a self-report.
 
-**Noise.** Published work measures human agreement near 48% on contextual redaction, and label noise materially degrades measured detector performance. A ±5pp interval is meaningless at κ = 0.5. **Double-label ~10% of both strata; publish Cohen's κ alongside every warrant.** At the ±5pp tier that is ~85 extra reviews.
+**Noise.** Published work measures human agreement near 48% on contextual redaction (RedactionBench, arXiv:2606.18782: 47.7% consensus *with target labels* on contextual redactions, against 89.4% on mandatory ones — agreement with a gold label, not an inter-rater κ), and label noise materially degrades measured detector performance. A ±5pp interval is meaningless at κ = 0.5. **Double-label ~10% of both strata; publish Cohen's κ alongside every warrant.** At the ±5pp tier that is ~85 extra reviews.
 
 A warrant carrying its own label-agreement statistic is doing to itself what it does to detectors — refusing to claim more precision than its evidence supports.
+
+**"~85 extra reviews" counted one stratum** at the superseded ±5pp size. Ten percent of *both* strata includes the flagged stratum, which is several times larger; the price list carries the computed figure. `DECISIONS.md` 173.
 
 ---
 
@@ -379,6 +397,8 @@ Three, each at a **different validated operating point on the same measured curv
 
 Weights live in the bundle, are versioned, and appear on screen. Complexity 4 answered by declaring the tradeoff, not solving it.
 
+**As shipped, these weights select no operating point.** `policy/objective.py::choose_threshold` implements the argmin and is exercised by tests only. The three profiles' points are selected on validation at `config.yaml`'s `target_flag_rate` — `objective: flag_rate_budget=…` in `results/policy-triviaqa-2400-t960.json` — and the bundle weights are identical across the three, so if they selected, the profiles would share one threshold. The tradeoff that moves the threshold is still declared and versioned; it is the flag-rate budget, not these weights. `DECISIONS.md` 174.
+
 ---
 
 ## 8. Detector adapters
@@ -404,6 +424,8 @@ Measure three configurations on `hinglish-pii-200`, all three reported:
 **Verify what the shipped `InAadhaarRecognizer` actually validates before claiming novelty on the checksum.** If it already does Verhoeff, the contribution is the measurement and the Hinglish evaluation, not the algorithm. Claim the right thing.
 
 When citing the published Presidio HIGH-sensitivity recall of 0.07, state that the benchmark is synthetic and deliberately includes obfuscated and non-verbatim disclosure forms. Describing its construction is what stops it being turned against you.
+
+The source is REDACT (arXiv:2606.19881, June 2026): 0.23 recall on LOW-tier entities falling to 0.07 on HIGH, under **partial-overlap** matching, on LLM-generated documents whose PII is fictional. Checked against the installed `presidio-analyzer` 2.2.364: the six recognisers above are English-only and `enabled: false`, and `InAadhaarRecognizer` already validates Verhoeff. Of the §8 table, Qwen3Guard, LettuceDetect and the LLM judge are not built. `DECISIONS.md` 175.
 
 ---
 

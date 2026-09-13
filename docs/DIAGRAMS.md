@@ -204,7 +204,7 @@ activation is meaningless, nothing raises, and AUROC lands near chance — which
 reads as "the idea doesn't work" rather than "the code is broken".
 
 **The null band is measured, not looked up.** The Hanley–McNeil closed form
-understates the true spread here, because a fitted probe's scores are not
+can understate the true spread, because a fitted probe's scores are not
 exchangeable under label permutation, so each control simulates its own null at
 construction and reports the band it applied. `DECISIONS.md` 029, 031, 070.
 
