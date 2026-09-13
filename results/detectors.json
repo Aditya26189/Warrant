@@ -1,12 +1,10 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-11T19:19:41+00:00",
-    "git_commit": "2ecdeb24af316feac0b12863e2fb39301c5ab8d8",
+    "timestamp_utc": "2026-09-13T22:00:11+00:00",
+    "git_commit": "febe08c0949c54889dce83faa1abf0612a357a0f",
     "git_branch": "main",
-    "dirty": true,
-    "dirty_paths": [
-      "evalsets/manifest.json"
-    ],
+    "dirty": false,
+    "dirty_paths": [],
     "dirty_excludes": "results",
     "python": "3.12.10",
     "libraries": {
@@ -212,9 +210,9 @@
       "envelope_id": "sha256:39b541efa4299f4d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-11T19:18:38+00:00",
-      "completed_at": "2026-09-11T19:18:49+00:00",
-      "duration_seconds": 11.550271000014618,
+      "started_at": "2026-09-13T21:59:04+00:00",
+      "completed_at": "2026-09-13T21:59:16+00:00",
+      "duration_seconds": 12.661677099997178,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -379,8 +377,8 @@
         },
         "eval_set_id": "hinglish-pii-200",
         "validation_run_id": "run-098a1004d0f8",
-        "issued_at": "2026-09-11T19:18:38+00:00",
-        "expires_at": "2026-09-12T19:18:38+00:00",
+        "issued_at": "2026-09-13T21:59:04+00:00",
+        "expires_at": "2026-09-14T21:59:04+00:00",
         "metrics": {
           "auroc": {
             "name": "auroc",
@@ -580,9 +578,9 @@
       "envelope_id": "sha256:d28e4de2024de10d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-11T19:18:50+00:00",
-      "completed_at": "2026-09-11T19:18:58+00:00",
-      "duration_seconds": 8.361414200015133,
+      "started_at": "2026-09-13T21:59:17+00:00",
+      "completed_at": "2026-09-13T21:59:26+00:00",
+      "duration_seconds": 8.843850800010841,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -712,8 +710,8 @@
         },
         "eval_set_id": "hard-negatives-200",
         "validation_run_id": "run-6709d4b4298f",
-        "issued_at": "2026-09-11T19:18:50+00:00",
-        "expires_at": "2026-09-12T19:18:50+00:00",
+        "issued_at": "2026-09-13T21:59:17+00:00",
+        "expires_at": "2026-09-14T21:59:17+00:00",
         "metrics": {
           "auroc": null,
           "recall": null,
@@ -878,9 +876,9 @@
       "envelope_id": "sha256:39b541efa4299f4d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-11T19:18:58+00:00",
-      "completed_at": "2026-09-11T19:19:10+00:00",
-      "duration_seconds": 11.314346800005296,
+      "started_at": "2026-09-13T21:59:26+00:00",
+      "completed_at": "2026-09-13T21:59:38+00:00",
+      "duration_seconds": 12.614283100003377,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -1045,8 +1043,8 @@
         },
         "eval_set_id": "hinglish-pii-200",
         "validation_run_id": "run-5089120e4f6e",
-        "issued_at": "2026-09-11T19:18:58+00:00",
-        "expires_at": "2026-09-12T19:18:58+00:00",
+        "issued_at": "2026-09-13T21:59:26+00:00",
+        "expires_at": "2026-09-14T21:59:26+00:00",
         "metrics": {
           "auroc": {
             "name": "auroc",
@@ -1246,9 +1244,9 @@
       "envelope_id": "sha256:d28e4de2024de10d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-11T19:19:10+00:00",
-      "completed_at": "2026-09-11T19:19:18+00:00",
-      "duration_seconds": 8.641337300010491,
+      "started_at": "2026-09-13T21:59:39+00:00",
+      "completed_at": "2026-09-13T21:59:48+00:00",
+      "duration_seconds": 9.223327699990477,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -1378,8 +1376,8 @@
         },
         "eval_set_id": "hard-negatives-200",
         "validation_run_id": "run-4a51d0b2c8a0",
-        "issued_at": "2026-09-11T19:19:10+00:00",
-        "expires_at": "2026-09-12T19:19:10+00:00",
+        "issued_at": "2026-09-13T21:59:39+00:00",
+        "expires_at": "2026-09-14T21:59:39+00:00",
         "metrics": {
           "auroc": null,
           "recall": null,
@@ -1544,9 +1542,9 @@
       "envelope_id": "sha256:39b541efa4299f4d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-11T19:19:19+00:00",
-      "completed_at": "2026-09-11T19:19:30+00:00",
-      "duration_seconds": 11.346586900006514,
+      "started_at": "2026-09-13T21:59:48+00:00",
+      "completed_at": "2026-09-13T22:00:00+00:00",
+      "duration_seconds": 11.705069600022398,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -1711,8 +1709,8 @@
         },
         "eval_set_id": "hinglish-pii-200",
         "validation_run_id": "run-a768fcf1c68b",
-        "issued_at": "2026-09-11T19:19:19+00:00",
-        "expires_at": "2026-09-12T19:19:19+00:00",
+        "issued_at": "2026-09-13T21:59:48+00:00",
+        "expires_at": "2026-09-14T21:59:48+00:00",
         "metrics": {
           "auroc": {
             "name": "auroc",
@@ -1912,9 +1910,9 @@
       "envelope_id": "sha256:d28e4de2024de10d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-11T19:19:30+00:00",
-      "completed_at": "2026-09-11T19:19:39+00:00",
-      "duration_seconds": 8.79077910000342,
+      "started_at": "2026-09-13T22:00:00+00:00",
+      "completed_at": "2026-09-13T22:00:09+00:00",
+      "duration_seconds": 8.889469799993094,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -2044,8 +2042,8 @@
         },
         "eval_set_id": "hard-negatives-200",
         "validation_run_id": "run-ed1b0fc0719c",
-        "issued_at": "2026-09-11T19:19:30+00:00",
-        "expires_at": "2026-09-12T19:19:30+00:00",
+        "issued_at": "2026-09-13T22:00:00+00:00",
+        "expires_at": "2026-09-14T22:00:00+00:00",
         "metrics": {
           "auroc": null,
           "recall": null,
@@ -2210,9 +2208,9 @@
       "envelope_id": "sha256:39b541efa4299f4d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-11T19:19:39+00:00",
-      "completed_at": "2026-09-11T19:19:40+00:00",
-      "duration_seconds": 1.01565539999865,
+      "started_at": "2026-09-13T22:00:09+00:00",
+      "completed_at": "2026-09-13T22:00:10+00:00",
+      "duration_seconds": 1.001960500027053,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -2377,8 +2375,8 @@
         },
         "eval_set_id": "hinglish-pii-200",
         "validation_run_id": "run-58ef6a68a908",
-        "issued_at": "2026-09-11T19:19:39+00:00",
-        "expires_at": "2026-09-12T19:19:39+00:00",
+        "issued_at": "2026-09-13T22:00:09+00:00",
+        "expires_at": "2026-09-14T22:00:09+00:00",
         "metrics": {
           "auroc": {
             "name": "auroc",
@@ -2578,9 +2576,9 @@
       "envelope_id": "sha256:d28e4de2024de10d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-11T19:19:40+00:00",
-      "completed_at": "2026-09-11T19:19:40+00:00",
-      "duration_seconds": 0.18012750000343658,
+      "started_at": "2026-09-13T22:00:10+00:00",
+      "completed_at": "2026-09-13T22:00:10+00:00",
+      "duration_seconds": 0.22836950002238154,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -2710,8 +2708,8 @@
         },
         "eval_set_id": "hard-negatives-200",
         "validation_run_id": "run-75014ec5c218",
-        "issued_at": "2026-09-11T19:19:40+00:00",
-        "expires_at": "2026-09-12T19:19:40+00:00",
+        "issued_at": "2026-09-13T22:00:10+00:00",
+        "expires_at": "2026-09-14T22:00:10+00:00",
         "metrics": {
           "auroc": null,
           "recall": null,

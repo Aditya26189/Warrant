@@ -20,30 +20,30 @@ Cells on synthetic envelopes show their status but not their numbers.
 
 | detector | triviaqa-600-synthetic | triviaqa-longctx-600-synthetic | hinglish-pii-200 | hinglish-pii-200-longctx | hard-negatives-200 | triviaqa-600 | triviaqa-longctx-600 |
 |---|---|---|---|---|---|---|---|
-| pii-reference | UNVALIDATED | UNVALIDATED | VALID R=0.79 [0.70, 0.88] @f=0.620 | VALID R=0.79 [0.70, 0.88] @f=0.620 | VALID FPR=0.000 [0.000, 0.015] | UNVALIDATED | UNVALIDATED |
+| pii-reference | UNVALIDATED | UNVALIDATED | VALID R=0.79 [0.70, 0.88] P=0.65 [0.51, 0.81] @f=0.620 | VALID R=0.79 [0.70, 0.88] P=0.65 [0.51, 0.81] @f=0.620 | VALID FPR=0.000 [0.000, 0.015] | UNVALIDATED | UNVALIDATED |
 | probe-T1-max_rolling_means | VALID · FIXTURE — NOT MEASURED | VALID · FIXTURE — NOT MEASURED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED |
 | probe-T1-mean_pool | VALID · FIXTURE — NOT MEASURED | REFUSED · FIXTURE — NOT MEASURED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED |
 | probe-T2-logprob | VALID · FIXTURE — NOT MEASURED | VALID · FIXTURE — NOT MEASURED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED |
 | probe-T3-judge | VALID · FIXTURE — NOT MEASURED | REFUSED · FIXTURE — NOT MEASURED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED |
-| probe-qwen2.5-7b-instruct-T1-last_token | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | VALID R=0.08 [0.05, 0.11] @f=0.042 · CAL:unresolved (±25%) | VALID R=0.13 [0.09, 0.17] @f=0.065 · CAL:unresolved (±25%) |
-| probe-qwen2.5-7b-instruct-T1-max_rolling_means | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | VALID R=0.08 [0.05, 0.12] @f=0.042 · CAL:unresolved (±25%) | **REFUSED** |
-| probe-qwen2.5-7b-instruct-T1-mean_pool | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | VALID R=0.08 [0.05, 0.11] @f=0.040 · CAL:unresolved (±25%) | **REFUSED** |
+| probe-qwen2.5-7b-instruct-T1-last_token | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | VALID R=0.08 [0.05, 0.11] P=0.88 [0.75, 1.00] @f=0.042 · CAL:unresolved (±25%) | VALID R=0.13 [0.09, 0.17] P=0.90 [0.79, 0.98] @f=0.065 · CAL:unresolved (±25%) |
+| probe-qwen2.5-7b-instruct-T1-max_rolling_means | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | VALID R=0.08 [0.05, 0.12] P=0.92 [0.80, 1.00] @f=0.042 · CAL:unresolved (±25%) | **REFUSED** |
+| probe-qwen2.5-7b-instruct-T1-mean_pool | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | UNVALIDATED | VALID R=0.08 [0.05, 0.11] P=0.92 [0.79, 1.00] @f=0.040 · CAL:unresolved (±25%) | **REFUSED** |
 
 Cell states: VALID 13, REFUSED 4, UNVALIDATED 39. 39 of 56 cells have never been measured, which is the expected shape: UNVALIDATED is the modal state in production.
 
 ## Measured results
 
-| detector | envelope | status | AUROC | recall | precision | flag rate | base rate | lift | n |
+| detector | envelope | status | AUROC | recall | precision | flag rate | base rate | lift | n (positives / flagged) |
 |---|---|---|---|---|---|---|---|---|---|
-| `pii-reference` | `hinglish-pii-200` | VALID | 0.773 [0.690, 0.856] (95% CI, n=200) | 0.794 [0.698, 0.885] (95% CI, n=200) | 0.653 [0.511, 0.810] (95% CI, n=200) | 0.6200 [0.5143, 0.7350] (95% CI, n=200) | 0.5100 | 1.281 [1.126, 1.427] (95% CI, n=200) — 79% of the 1.61 ceiling at base rate 0.510 | 200 |
-| `pii-reference` | `hinglish-pii-200-longctx` | VALID | 0.773 [0.690, 0.856] (95% CI, n=200) | 0.794 [0.698, 0.885] (95% CI, n=200) | 0.653 [0.511, 0.810] (95% CI, n=200) | 0.6200 [0.5143, 0.7350] (95% CI, n=200) | 0.5100 | 1.281 [1.126, 1.427] (95% CI, n=200) — 79% of the 1.61 ceiling at base rate 0.510 | 200 |
+| `pii-reference` | `hinglish-pii-200` | VALID | 0.773 [0.690, 0.856] (95% CI, n=200) | 0.794 [0.698, 0.885] (95% CI, n=200) | 0.653 [0.511, 0.810] (95% CI, n=200) | 0.6200 [0.5143, 0.7350] (95% CI, n=200) | 0.5100 | 1.281, lower bound 1.126 — 79% of the 1.61 ceiling at base rate 0.510 | 200 (102 pos / 124 flagged) |
+| `pii-reference` | `hinglish-pii-200-longctx` | VALID | 0.773 [0.690, 0.856] (95% CI, n=200) | 0.794 [0.698, 0.885] (95% CI, n=200) | 0.653 [0.511, 0.810] (95% CI, n=200) | 0.6200 [0.5143, 0.7350] (95% CI, n=200) | 0.5100 | 1.281, lower bound 1.126 — 79% of the 1.61 ceiling at base rate 0.510 | 200 (102 pos / 124 flagged) |
 | `pii-reference` | `hard-negatives-200` | VALID | n/a | n/a | n/a | 0.0000 [0.0000, 0.0183] (95% CI, n=200) | 0.0000 | n/a | 200 |
-| `probe-qwen2.5-7b-instruct-T1-last_token` | `triviaqa-600` | VALID | 0.826 [0.793, 0.857] (95% CI, n=600) | 0.079 [0.050, 0.112] (95% CI, n=600) | 0.880 [0.750, 1.000] (95% CI, n=600) | 0.0417 [0.0267, 0.0583] (95% CI, n=600) | 0.4617 | 1.906 [1.190, 2.676] (95% CI, n=600) — 88% of the 2.17 ceiling at base rate 0.462 | 600 |
-| `probe-qwen2.5-7b-instruct-T1-max_rolling_means` | `triviaqa-600` | VALID | 0.785 [0.750, 0.821] (95% CI, n=600) | 0.083 [0.054, 0.117] (95% CI, n=600) | 0.920 [0.800, 1.000] (95% CI, n=600) | 0.0417 [0.0283, 0.0583] (95% CI, n=600) | 0.4617 | 1.993 [1.286, 2.819] (95% CI, n=600) — 92% of the 2.17 ceiling at base rate 0.462 | 600 |
-| `probe-qwen2.5-7b-instruct-T1-mean_pool` | `triviaqa-600` | VALID | 0.785 [0.750, 0.821] (95% CI, n=600) | 0.079 [0.050, 0.113] (95% CI, n=600) | 0.917 [0.786, 1.000] (95% CI, n=600) | 0.0400 [0.0250, 0.0567] (95% CI, n=600) | 0.4617 | 1.986 [1.254, 2.835] (95% CI, n=600) — 92% of the 2.17 ceiling at base rate 0.462 | 600 |
-| `probe-qwen2.5-7b-instruct-T1-last_token` | `triviaqa-longctx-600` | VALID | 0.813 [0.780, 0.845] (95% CI, n=600) | 0.126 [0.090, 0.170] (95% CI, n=600) | 0.897 [0.794, 0.978] (95% CI, n=600) | 0.0650 [0.0483, 0.0850] (95% CI, n=600) | 0.4617 | 1.944 [1.388, 2.613] (95% CI, n=600) — 90% of the 2.17 ceiling at base rate 0.462 | 600 |
-| `probe-qwen2.5-7b-instruct-T1-max_rolling_means` | `triviaqa-longctx-600` | REFUSED | 0.555 [0.511, 0.602] (95% CI, n=600) | 0.585 [0.527, 0.642] (95% CI, n=600) | 0.497 [0.447, 0.550] (95% CI, n=600) | 0.5433 [0.5050, 0.5833] (95% CI, n=600) | 0.4617 | 1.076 [0.969, 1.182] (95% CI, n=600) — 58% of the 1.84 ceiling at base rate 0.462 | 600 |
-| `probe-qwen2.5-7b-instruct-T1-mean_pool` | `triviaqa-longctx-600` | REFUSED | 0.502 [0.455, 0.548] (95% CI, n=600) | 0.000 [0.000, 0.013] (95% CI, n=600) | 0.000 [0.000, 1.000] (95% CI, n=600) | 0.0000 [0.0000, 0.0061] (95% CI, n=600) | 0.4617 | n/a | 600 |
+| `probe-qwen2.5-7b-instruct-T1-last_token` | `triviaqa-600` | VALID | 0.826 [0.793, 0.857] (95% CI, n=600) | 0.079 [0.050, 0.112] (95% CI, n=600) | 0.880 [0.750, 1.000] (95% CI, n=600) | 0.0417 [0.0267, 0.0583] (95% CI, n=600) | 0.4617 | 1.906, lower bound 1.190 — 88% of the 2.17 ceiling at base rate 0.462 | 600 (277 pos / 25 flagged) |
+| `probe-qwen2.5-7b-instruct-T1-max_rolling_means` | `triviaqa-600` | VALID | 0.785 [0.750, 0.821] (95% CI, n=600) | 0.083 [0.054, 0.117] (95% CI, n=600) | 0.920 [0.800, 1.000] (95% CI, n=600) | 0.0417 [0.0283, 0.0583] (95% CI, n=600) | 0.4617 | 1.993, lower bound 1.286 — 92% of the 2.17 ceiling at base rate 0.462 | 600 (277 pos / 25 flagged) |
+| `probe-qwen2.5-7b-instruct-T1-mean_pool` | `triviaqa-600` | VALID | 0.785 [0.750, 0.821] (95% CI, n=600) | 0.079 [0.050, 0.113] (95% CI, n=600) | 0.917 [0.786, 1.000] (95% CI, n=600) | 0.0400 [0.0250, 0.0567] (95% CI, n=600) | 0.4617 | 1.986, lower bound 1.254 — 92% of the 2.17 ceiling at base rate 0.462 | 600 (277 pos / 24 flagged) |
+| `probe-qwen2.5-7b-instruct-T1-last_token` | `triviaqa-longctx-600` | VALID | 0.813 [0.780, 0.845] (95% CI, n=600) | 0.126 [0.090, 0.170] (95% CI, n=600) | 0.897 [0.794, 0.978] (95% CI, n=600) | 0.0650 [0.0483, 0.0850] (95% CI, n=600) | 0.4617 | 1.944, lower bound 1.388 — 90% of the 2.17 ceiling at base rate 0.462 | 600 (277 pos / 39 flagged) |
+| `probe-qwen2.5-7b-instruct-T1-max_rolling_means` | `triviaqa-longctx-600` | REFUSED | 0.555 [0.511, 0.602] (95% CI, n=600) | 0.585 [0.527, 0.642] (95% CI, n=600) | 0.497 [0.447, 0.550] (95% CI, n=600) | 0.5433 [0.5050, 0.5833] (95% CI, n=600) | 0.4617 | 1.076, lower bound 0.969 — 58% of the 1.84 ceiling at base rate 0.462 | 600 (277 pos / 326 flagged) |
+| `probe-qwen2.5-7b-instruct-T1-mean_pool` | `triviaqa-longctx-600` | REFUSED | 0.502 [0.455, 0.548] (95% CI, n=600) | 0.000 [0.000, 0.013] (95% CI, n=600) | 0.000 [0.000, 1.000] (95% CI, n=600) | 0.0000 [0.0000, 0.0061] (95% CI, n=600) | 0.4617 | n/a | 600 (277 pos / 0 flagged) |
 
 ## Detection sensitivity — a declared limitation
 
@@ -91,7 +91,7 @@ n      = z^2 q(1-q) / m_q^2
 
 **Month one costs more, and it is not a discount anyone can take early.** Neyman allocation needs the per-band prevalences the first month's labels are bought to discover, so month one runs proportional at full simple-random-sampling cost. **superseded** is what this repository quoted before `DECISIONS.md` 147, and it was low by 6x to 13x.
 
-**Yield is exact; rate is estimated.** The flagged stratum is reviewed in full, so the confirmed-error count and precision carry no interval and cost nothing. Recall needs the whole sampling apparatus. The two are not views of one measurement — they are a free claim and an expensive one.
+**Yield is exact; rate is estimated.** The flagged stratum of *your traffic* is reviewed in full, so this month's confirmed-error count and the precision of this month's flags are a census: no sampling interval, no extra labels. Recall needs the whole sampling apparatus. The two are not views of one measurement — they are a free claim and an expensive one. Precision measured on an *eval set* is a different estimand — the detector's precision, estimated from a sample — and carries an interval (`DECISIONS.md` 169).
 
 Interval coverage on synthetic traffic with known ground truth: **96.8%** over 1,000 trials against a nominal 95%. Above nominal, because Clopper-Pearson is conservative and the published interval carries no finite-population correction. Over-covering claims less than the evidence supports.
 
@@ -217,7 +217,7 @@ Everything else in this document measures a detector. **This is the part that as
 ## Provenance
 
 - config hash `533fb74983fcd8af`
-- git commit `7d16c268d084afc667a030397f1e831426dc217b`
+- git commit `febe08c0949c54889dce83faa1abf0612a357a0f`
 - dirty tree: `False`
 - seed `1729`
-- generated `2026-09-12T03:22:23+00:00`
+- generated `2026-09-13T22:03:22+00:00`

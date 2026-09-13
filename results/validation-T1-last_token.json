@@ -1,12 +1,10 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-11T19:17:02+00:00",
-    "git_commit": "2ecdeb24af316feac0b12863e2fb39301c5ab8d8",
+    "timestamp_utc": "2026-09-13T21:58:40+00:00",
+    "git_commit": "febe08c0949c54889dce83faa1abf0612a357a0f",
     "git_branch": "main",
-    "dirty": true,
-    "dirty_paths": [
-      "evalsets/manifest.json"
-    ],
+    "dirty": false,
+    "dirty_paths": [],
     "dirty_excludes": "results",
     "python": "3.12.10",
     "libraries": {
@@ -210,9 +208,9 @@
   "envelope_id": "sha256:e77c64f908491ad1",
   "model_name": "Qwen/Qwen2.5-7B-Instruct",
   "data_source": "measured",
-  "started_at": "2026-09-11T19:16:13+00:00",
-  "completed_at": "2026-09-11T19:16:28+00:00",
-  "duration_seconds": 15.74041440000292,
+  "started_at": "2026-09-13T21:57:47+00:00",
+  "completed_at": "2026-09-13T21:58:05+00:00",
+  "duration_seconds": 17.82088559999829,
   "splits": {
     "train": 1200,
     "validation": 600,
@@ -338,7 +336,7 @@
       "measured": 0.5043840218037439,
       "expected": "mean AUROC over repeats in [0.45, 0.55], with SE of the mean <= 0.0250",
       "margin": 0.04561597819625618,
-      "detail": "train labels permuted (n=1200), holdout labels intact (n=600); mean AUROC 0.5044. 8 repeats; null spread sd 0.0164, SE of mean 0.0058; band +/-0.05 is +/-8.64 SE; measured spread is 0.7x the Hanley-McNeil closed form (0.0237), which is why the closed form is not the reference (DECISIONS.md 031). Pipeline produces a null result when there is no signal.",
+      "detail": "train labels permuted (n=1200), holdout labels intact (n=600); mean AUROC 0.5044. 8 repeats; null spread sd 0.0164, SE of mean 0.0058; band +/-0.05 is +/-8.64 SE; measured spread is 0.7x the Hanley-McNeil closed form (0.0237) -- within it on this run. The measured spread is still the reference, because the closed form understates the null at low feature dimension (synthetic fixture, DECISIONS.md 031). Pipeline produces a null result when there is no signal.",
       "applicable": true
     },
     {
@@ -347,7 +345,7 @@
       "measured": 0.49154039412734557,
       "expected": "mean AUROC over repeats in [0.45, 0.55], with SE of the mean <= 0.0250",
       "margin": 0.04154039412734556,
-      "detail": "features replaced by Gaussian noise matched per column in mean and variance; labels intact; mean AUROC 0.4915. 8 repeats; null spread sd 0.0226, SE of mean 0.0080; band +/-0.05 is +/-6.25 SE; measured spread is 1.0x the Hanley-McNeil closed form (0.0237), which is why the closed form is not the reference (DECISIONS.md 031).",
+      "detail": "features replaced by Gaussian noise matched per column in mean and variance; labels intact; mean AUROC 0.4915. 8 repeats; null spread sd 0.0226, SE of mean 0.0080; band +/-0.05 is +/-6.25 SE; measured spread is 1.0x the Hanley-McNeil closed form (0.0237) -- within it on this run. The measured spread is still the reference, because the closed form understates the null at low feature dimension (synthetic fixture, DECISIONS.md 031).",
       "applicable": true
     },
     {
@@ -383,8 +381,8 @@
     },
     "eval_set_id": "triviaqa-600",
     "validation_run_id": "run-307c833b4133",
-    "issued_at": "2026-09-11T19:16:13+00:00",
-    "expires_at": "2026-09-12T19:16:13+00:00",
+    "issued_at": "2026-09-13T21:57:47+00:00",
+    "expires_at": "2026-09-14T21:57:47+00:00",
     "metrics": {
       "auroc": {
         "name": "auroc",
@@ -516,7 +514,7 @@
         "measured": 0.5043840218037439,
         "expected": "mean AUROC over repeats in [0.45, 0.55], with SE of the mean <= 0.0250",
         "margin": 0.04561597819625618,
-        "detail": "train labels permuted (n=1200), holdout labels intact (n=600); mean AUROC 0.5044. 8 repeats; null spread sd 0.0164, SE of mean 0.0058; band +/-0.05 is +/-8.64 SE; measured spread is 0.7x the Hanley-McNeil closed form (0.0237), which is why the closed form is not the reference (DECISIONS.md 031). Pipeline produces a null result when there is no signal.",
+        "detail": "train labels permuted (n=1200), holdout labels intact (n=600); mean AUROC 0.5044. 8 repeats; null spread sd 0.0164, SE of mean 0.0058; band +/-0.05 is +/-8.64 SE; measured spread is 0.7x the Hanley-McNeil closed form (0.0237) -- within it on this run. The measured spread is still the reference, because the closed form understates the null at low feature dimension (synthetic fixture, DECISIONS.md 031). Pipeline produces a null result when there is no signal.",
         "applicable": true
       },
       {
@@ -525,7 +523,7 @@
         "measured": 0.49154039412734557,
         "expected": "mean AUROC over repeats in [0.45, 0.55], with SE of the mean <= 0.0250",
         "margin": 0.04154039412734556,
-        "detail": "features replaced by Gaussian noise matched per column in mean and variance; labels intact; mean AUROC 0.4915. 8 repeats; null spread sd 0.0226, SE of mean 0.0080; band +/-0.05 is +/-6.25 SE; measured spread is 1.0x the Hanley-McNeil closed form (0.0237), which is why the closed form is not the reference (DECISIONS.md 031).",
+        "detail": "features replaced by Gaussian noise matched per column in mean and variance; labels intact; mean AUROC 0.4915. 8 repeats; null spread sd 0.0226, SE of mean 0.0080; band +/-0.05 is +/-6.25 SE; measured spread is 1.0x the Hanley-McNeil closed form (0.0237) -- within it on this run. The measured spread is still the reference, because the closed form understates the null at low feature dimension (synthetic fixture, DECISIONS.md 031).",
         "applicable": true
       },
       {
