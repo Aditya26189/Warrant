@@ -249,7 +249,7 @@ def main(argv: list[str] | None = None) -> int:
         )
 
         print()
-        print(matrix.render())
+        print(matrix.render(mask_synthetic=True))
         print()
 
         routing = []
@@ -293,8 +293,9 @@ def main(argv: list[str] | None = None) -> int:
             payload,
             config,
         )
+        # Masked: the README cites this file as evidence (DECISIONS.md 170).
         (results_dir / "warrant_matrix.md").write_text(
-            matrix.render() + "\n", encoding="utf-8"
+            matrix.render(mask_synthetic=True) + "\n", encoding="utf-8"
         )
         _LOG.info("wrote %s", results_dir / "warrant_matrix.md")
 

@@ -122,6 +122,16 @@ Of the items flagged, the fraction that were actually positive. Reported
 **separately** from recall, always. There is no blended F1 anywhere in this
 codebase, and `Metric.__post_init__` refuses the name.
 
+### `n`, and the denominator
+
+Every rate carries an `n`. On recall, precision and flag rate it is the number
+of **eval-set items** the bootstrap resampled — not the denominator of the
+proportion. Recall's denominator is the positives, precision's is the flagged
+items (`confirmed_errors.n`), the false-positive rate's is the negatives. The
+difference matters most for precision, whose interval is as wide as its small
+flagged count makes it while its `n` reads as the whole set. The RESULTS table
+prints both. `DECISIONS.md` 169, 176.
+
 ### AUROC
 
 The probability that a randomly chosen positive is scored above a randomly

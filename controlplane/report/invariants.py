@@ -118,6 +118,9 @@ INVARIANTS: tuple[Invariant, ...] = (
         enforced_by=(
             "tests/test_model.py::test_blended_scores_are_refused_by_name[f1]",
             "tests/test_fpr_sweep.py::test_precision_and_recall_travel_together",
+            # The two surfaces a reader stops on, uncovered until DECISIONS 170.
+            "tests/test_claims.py::test_every_recall_claim_travels_with_precision",
+            "tests/test_matrix.py::test_a_valid_cell_carries_precision_beside_recall",
         ),
         breaks_as=(
             "a blended score fixes the exchange rate between a wasted review "

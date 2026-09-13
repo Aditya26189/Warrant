@@ -211,3 +211,23 @@ def test_every_stated_test_count_is_the_real_one() -> None:
         "Update them -- and if one file states two different counts, make them "
         "agree with each other as well."
     )
+
+
+def test_every_recall_claim_travels_with_precision() -> None:
+    """Invariant 5 at the table a judge checks first.
+
+    `internal_knowledge` and `decision_support` recall stood in this table with
+    no precision beside them, and `customer_support` with only its flag rate
+    (DECISIONS.md 170). A recall row passes when the same artifact carries a
+    precision row whose field is the recall field with `recall` swapped for
+    `precision`.
+    """
+    claims = parse_claim_table(README)
+    fields = {(c.artifact, c.field) for c in claims}
+    alone = [
+        f"{c.label} ({c.artifact} :: {c.field})"
+        for c in claims
+        if c.field.endswith("recall.value")
+        and (c.artifact, c.field[: -len("recall.value")] + "precision.value") not in fields
+    ]
+    assert not alone, "recall claimed without precision:\n  " + "\n  ".join(alone)

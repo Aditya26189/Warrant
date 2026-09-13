@@ -338,9 +338,9 @@ class WarrantMatrix:
                 marker. Set by the ``RESULTS.md`` renderer, because that is the
                 document a judge reads and a fixture number on it would be a
                 claim about a language model that no language model produced.
-                The standalone ``warrant_matrix.md`` leaves them visible: it is
-                an internal diagnostic, and the status still says which cells
-                are which.
+                The standalone ``warrant_matrix.md`` masks them too: the README
+                cites it as evidence, so it is not internal (``DECISIONS.md``
+                170). The JSON payload keeps the numbers for diagnosis.
         """
         header = "| detector | " + " | ".join(self.envelopes) + " |"
         divider = "|---|" + "---|" * len(self.envelopes)
@@ -376,8 +376,17 @@ class WarrantMatrix:
                         label += (
                             f" R={recall.value:.2f} "
                             f"[{recall.ci_low:.2f}, {recall.ci_high:.2f}]"
-                            f" @f={flag.value:.3f}"
                         )
+                        # And precision beside it: invariant 5 names precision,
+                        # not the budget. 067 added @f and stopped there
+                        # (DECISIONS 170, 176).
+                        precision = cell.warrant.metrics.precision
+                        if precision is not None:
+                            label += (
+                                f" P={precision.value:.2f} "
+                                f"[{precision.ci_low:.2f}, {precision.ci_high:.2f}]"
+                            )
+                        label += f" @f={flag.value:.3f}"
                         # Calibration shows only when it is the exception. A
                         # VALID cell whose operating point no longer delivers
                         # its declared budget is sound about ranking and wrong

@@ -98,11 +98,14 @@ def _price_list(document: Optional[dict[str, Any]]) -> str:
         "repository quoted before `DECISIONS.md` 147, and it was low by 6x to "
         "13x.",
         "",
-        "**Yield is exact; rate is estimated.** The flagged stratum is reviewed "
-        "in full, so the confirmed-error count and precision carry no interval "
-        "and cost nothing. Recall needs the whole sampling apparatus. The two "
-        "are not views of one measurement — they are a free claim and an "
-        "expensive one.",
+        "**Yield is exact; rate is estimated.** The flagged stratum of *your "
+        "traffic* is reviewed in full, so this month's confirmed-error count and "
+        "the precision of this month's flags are a census: no sampling interval, "
+        "no extra labels. Recall needs the whole sampling apparatus. The two are "
+        "not views of one measurement — they are a free claim and an expensive "
+        "one. Precision measured on an *eval set* is a different estimand — the "
+        "detector's precision, estimated from a sample — and carries an interval "
+        "(`DECISIONS.md` 169).",
         "",
         f"Interval coverage on synthetic traffic with known ground truth: "
         f"**{document['coverage']['coverage']:.1%}** over "

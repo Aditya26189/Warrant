@@ -46,7 +46,7 @@ measured. Written by `02_validate.py` and `09_detectors.py`.
 | `splits`, `base_rate`, `test_scored` | the split sizes, the envelope's base rate, and the record that test was scored |
 | `probe_fit` | fitting details for probe detectors |
 | `operating_point` | the threshold and the budget it was selected to hit |
-| `metrics` | AUROC, recall, precision, flag rate — **each with `value`, its interval, and its `EXACT`/`ESTIMATED` kind** |
+| `metrics` | AUROC, recall, precision, flag rate — **each with `value`, its interval, and its `EXACT`/`ESTIMATED` kind**. A rate's `n` is the eval-set size, not its denominator: positives for recall, `confirmed_errors.n` for precision (see GLOSSARY, *`n`, and the denominator*) |
 | `controls` | all five, each with pass/fail and the band actually applied |
 | `warrant` | the issued warrant, or the refusal |
 | `warrant_status`, `status_reason` | `VALID` / `REFUSED`, and the reason naming **every** failed criterion |

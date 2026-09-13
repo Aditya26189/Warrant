@@ -26,7 +26,7 @@ and this repository exists to say so.
 
 ---
 
-## 2. The four that change how you read the claim table
+## 2. The six that change how you read the claim table
 
 ### 2.1 Calibration drift is detectable at 25%, not at 10%
 
@@ -98,11 +98,54 @@ tier curve as a *measured* object covers T1 activations and T3 text detectors.
 `DECISIONS.md` 034, and the warning at the top of
 [results/RESULTS.md](../results/RESULTS.md).
 
+### 2.5 The long-context envelope is 2.8k to 11.1k tokens of repeated filler
+
+`triviaqa-longctx-600` was specified as *4-16k tokens*. As built, the
+extraction cache records **2,838 to 11,103 tokens, median 6,954, with 82 of 600
+prompts under 4,000** (`results/cache-triviaqa-longctx-600.npz`,
+`__token_lengths`). The builder estimated four characters per token; this filler
+tokenises at about 5.8.
+
+Two construction facts bound what the long-context results mean:
+
+- **The padding is a small pool of paragraphs, repeated** — a median of 238
+  paragraphs per prompt drawn from eight. It is a dilution test, not a retrieved
+  corpus, and a detector's behaviour on varied long documents is not measured.
+- **Labels are the short-context pass's.** The long pass is prefill-only, so a
+  label records whether the model answered correctly *without* the padding.
+
+The mean-pool collapse and last-token survival are measured on this set and hold
+for it. Nothing here was measured past 11,103 tokens. `DECISIONS.md` 052, 171.
+
+### 2.6 `n` on a rate is the eval set's size, and lift's upper bound is not a bound
+
+Every rate carries `n`, and on recall, precision and flag rate it is the number
+of eval-set items resampled — **not the proportion's denominator**. A precision
+of 23/25 carries `n = 600` and an interval the width of 25 trials. The RESULTS
+table now prints positives and flagged beside `n`; the field itself is set in
+read-only `validation/stats.py` and is an open item.
+
+Lift's interval holds the flag rate fixed. That makes its **lower** bound
+conservative — the one the refusal bar reads, and pinned by
+`tests/test_lift_interval.py` — and pushes its upper bound past the physical
+ceiling on every real T1 artifact. RESULTS.md shows the lower bound only.
+`DECISIONS.md` 169, 176.
+
 ---
 
 ## 3. Specified and not built
 
 ### 3.1 Phase 6 economics — the price list, and five contracts still citing it
+
+> **Closed 2026-09-11** (`DECISIONS.md` 146-150). The price list is built:
+> `controlplane/economics/sizing.py` derives it from the one `workload` block,
+> `controlplane/sampling/` holds the on-traffic estimator it prices, and
+> `tests/test_sampling.py::test_no_scenario_mixing` enforces invariant 6. The
+> figures are rendered into `results/RESULTS.md` from
+> `results/on_traffic/on_traffic.json`. What remains true below: **no production
+> traffic exists**, so the price list is priced on a declared workload and the
+> estimator's coverage is measured on synthetic traffic with known truth. The
+> original text is kept as the record of the gap.
 
 > **Amended 2026-08-29** (`DECISIONS.md` 099). Two quantities that needed no new
 > measurement are now derived rather than declared: the **abstention floor**,
@@ -148,6 +191,14 @@ for something else.
 
 ### 3.2 Phase 9 action gate
 
+> **Closed 2026-09-11** (`DECISIONS.md` 156, 160). The gate is built:
+> `controlplane/gate/`, measured by `scripts/27_gate.py` into `results/gate/`.
+> Its first two rules read no detector. What it does **not** establish: the
+> injection result is one declared scenario, the cost is an exact count over
+> eight declared workflows rather than a production rate, and it is not a
+> robustness claim. `reports/PHASE-6.md` §5 lists what it does not defend
+> against. The original text is kept below.
+
 `controlplane/gate/` — the reversibility registry, session Rule-of-Two and
 action ladder — was specified and not built. Composition produces an action;
 nothing enforces one. Marked NOT BUILT in the `CLAUDE.md` layout block.
@@ -165,6 +216,33 @@ nothing enforces one. Marked NOT BUILT in the `CLAUDE.md` layout block.
 - **OPA is not used.** Rego is evaluated through `regopy` (rego-cpp), which is
   not OPA and does not share its evaluation semantics in every corner.
   `DECISIONS.md` 076.
+
+### 3.4 Specified in `SPEC.md`, declared in config, and not computed
+
+Found by walking the specification against the code, section by section.
+Each is visible at runtime — a verdict or certificate names it — and none was
+stated here.
+
+- **Drift is watched on one axis.** Of the five envelope features in
+  `config.yaml`, only input token length is computed and fed to the monitor.
+  Script mix, embedding centroid distance, reference perplexity and category
+  mix are not, so a shift in language or topic at a constant length passes
+  unseen. MMD on embeddings is not implemented. `DECISIONS.md` 172.
+- **`STALE` promises a revalidation nothing schedules.** The ladder widens
+  bounds by a declared 1.5x and its message says revalidation is scheduled;
+  no scheduler exists. The message is in read-only `drift/`. `DECISIONS.md` 172.
+- **The matrix does not self-populate.** Unvalidated cells are handed to a
+  callback that logs them. `DECISIONS.md` 170.
+- **The weighted-error weights select no threshold.** Every shipped operating
+  point is chosen at a declared flag-rate budget; the objective in §7.4 is
+  implemented and tested and has no caller, and the bundles' weights are
+  identical across the three profiles. The tradeoff that moves the threshold
+  is the flag-rate budget. `DECISIONS.md` 174.
+- **On-traffic FPR is not computed.** The price list calls it free; its
+  denominator depends on the estimated misses, so it is nearly free and
+  estimated. `DECISIONS.md` 173.
+- **There is no labelled agent-action trace set.** The gate is measured on
+  declared scenarios. `DECISIONS.md` 171.
 
 ---
 
@@ -236,3 +314,8 @@ Worth separating, because they read as weaknesses and are not.
   the matrix is that it can say so.
 - **Four warrants are REFUSED.** Also the point. A component correctly refused
   is a stronger artifact than one tuned until it passed.
+- **Our reference PII detector buys its recall with precision.** On
+  `hinglish-pii-200` it has the highest recall of the four configurations and
+  a lower precision than Presidio with custom recognisers; both are in the
+  claim table, side by side, because invariant 5 requires it and because the
+  recall row alone read as a clean win. `DECISIONS.md` 170.

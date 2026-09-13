@@ -393,3 +393,17 @@ def test_render_shows_intervals_never_bare_point_estimates(config: Config) -> No
     matrix = _matrix_with(make_warrant())
     rendered = matrix.render()
     assert "R=" in rendered and "[" in rendered and "]" in rendered
+
+
+def test_a_valid_cell_carries_precision_beside_recall(config: Config) -> None:
+    """Invariant 5 in the compact cell a reader stops on.
+
+    067 put the budget in the cell and stopped there, so the cell read
+    ``R=0.08 [0.05, 0.11] @f=0.042`` -- recall without precision
+    (``DECISIONS.md`` 170, 176).
+    """
+    rendered = _matrix_with(make_warrant()).render()
+    for line in rendered.splitlines():
+        if " R=" in line:
+            assert " P=" in line, f"recall rendered without precision: {line}"
+    assert " R=" in rendered, "no VALID cell with recall rendered; the check checked nothing"

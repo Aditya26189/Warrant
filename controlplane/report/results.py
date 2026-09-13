@@ -111,6 +111,23 @@ def _envelope_is_measured(warrant: Warrant) -> tuple[bool, str]:
     )
 
 
+def _n_with_denominators(warrant) -> str:
+    """``n`` beside the denominators a rate is actually computed over.
+
+    ``Metric.n`` on a rate is the eval set's size (read-only
+    ``validation/stats.py``), so ``n = 600`` sits beside a precision of 23/25
+    whose interval is the width of 25 trials. The table is where a reader reaches
+    for the denominator, so it goes there (``DECISIONS.md`` 169, 176).
+    """
+    metrics = warrant.metrics
+    n = warrant.n_test
+    if metrics.recall is None or metrics.base_rate is None or metrics.recall.n != n:
+        return str(n)
+    positives = int(round(metrics.base_rate * n))
+    flagged = int(metrics.confirmed_errors.n)
+    return f"{n} ({positives} pos / {flagged} flagged)"
+
+
 def render_results(
     matrix: WarrantMatrix,
     *,
@@ -203,7 +220,7 @@ def render_results(
     else:
         lines += [
             "| detector | envelope | status | AUROC | recall | precision | "
-            "flag rate | base rate | lift | n |",
+            "flag rate | base rate | lift | n (positives / flagged) |",
             "|---|---|---|---|---|---|---|---|---|---|",
         ]
         for warrant in measured:
@@ -212,7 +229,11 @@ def render_results(
             if metrics.recall is not None and metrics.flag_rate.value > 0:
                 lift_metric = metrics.lift
                 ceiling = metrics.lift_ceiling
-                lift = lift_metric.render(3)
+                # The lower bound only. Holding the flag rate fixed widens both
+                # ends; the lower is conservative and is what the refusal bar
+                # reads, the upper exceeds the physical ceiling on every real T1
+                # artifact (DECISIONS 169, 176).
+                lift = f"{lift_metric.value:.3f}, lower bound {lift_metric.ci_low:.3f}"
                 if ceiling is not None:
                     lift += (
                         f" — {metrics.lift_fraction_of_ceiling:.0%} of the "
@@ -232,7 +253,7 @@ def render_results(
                 f"{render_metric(metrics.precision, digits=3)} | "
                 f"{render_metric(metrics.flag_rate, digits=4)} | "
                 f"{metrics.base_rate:.4f} | {lift} | "
-                f"{warrant.n_test} |"
+                f"{_n_with_denominators(warrant)} |"
             )
         lines.append("")
 

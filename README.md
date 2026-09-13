@@ -33,9 +33,9 @@
 
 <br/>
 
-<img src="https://img.shields.io/badge/Tests-1340_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1340 tests" />
+<img src="https://img.shields.io/badge/Tests-1342_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1342 tests" />
 &nbsp;
-<img src="https://img.shields.io/badge/Claims-66_verified-2da44e?style=for-the-badge" alt="66 claims verified" />
+<img src="https://img.shields.io/badge/Claims-77_verified-2da44e?style=for-the-badge" alt="77 claims verified" />
 &nbsp;
 <img src="https://img.shields.io/badge/AUROC-0.8256-6366f1?style=for-the-badge" alt="AUROC 0.8256" />
 &nbsp;
@@ -115,9 +115,12 @@ rather than a plan.
 | **when that number stops being true** | Envelope matrix, drift detection, and a revocation ladder that turns on *evidence of breach* rather than failure to re-prove. | [`results/warrant_matrix.md`](results/warrant_matrix.md), `warrant recheck` |
 | **what it costs to keep it true** | A computed price list. Month one at full simple-random-sampling cost, steady state at a **measured** design effect. | [`results/on_traffic/`](results/on_traffic/ON_TRAFFIC.md) — **1,014** labels for recall to ±0.05, against the **187** this repository quoted before `DECISIONS.md` 147 |
 
-**Yield is exact; rate is estimated.** The flagged stratum is reviewed anyway, so
-the confirmed-error count and precision carry no interval and cost nothing.
-Recall needs the whole sampling apparatus. They are not two views of one
+**Yield is exact; rate is estimated.** The flagged stratum of *your traffic* is
+reviewed anyway, so this month's confirmed-error count and the precision of this
+month's flags are a census: no sampling interval, no extra labels. Recall needs
+the whole sampling apparatus. (Precision on an *eval set*, as in the claim table
+below, is a different estimand — the detector's, estimated from a sample — and
+carries an interval.) They are not two views of one
 measurement — they are a free claim and an expensive one, and the estimator
 returns them in separate fields with different types.
 
@@ -256,17 +259,27 @@ here fails the build.**
 | ...and it flags 54% of the stream | 0.5433 | [0.5050, 0.5833] | results/transfer-T1-max_rolling_means.json | target.metrics.flag_rate.value | make verify |
 | `customer_support` recall, n=960 | 0.2171 | [0.1800, 0.2564] | results/policy-triviaqa-2400-t960.json | operating_points[operating_point.operating_point_id=P-customer-support].metrics.recall.value | make verify |
 | `customer_support` measured flag rate | 0.1062 | [0.0885, 0.1260] | results/policy-triviaqa-2400-t960.json | operating_points[operating_point.operating_point_id=P-customer-support].metrics.flag_rate.value | make verify |
+| `customer_support` precision | 0.9216 | [0.8676, 0.9684] | results/policy-triviaqa-2400-t960.json | operating_points[operating_point.operating_point_id=P-customer-support].metrics.precision.value | make verify |
 | `internal_knowledge` recall, n=960 | 0.3603 | [0.3173, 0.4063] | results/policy-triviaqa-2400-t960.json | operating_points[operating_point.operating_point_id=P-internal-knowledge].metrics.recall.value | make verify |
+| `internal_knowledge` measured flag rate | 0.1865 | [0.1635, 0.2125] | results/policy-triviaqa-2400-t960.json | operating_points[operating_point.operating_point_id=P-internal-knowledge].metrics.flag_rate.value | make verify |
+| `internal_knowledge` precision | 0.8715 | [0.8218, 0.9214] | results/policy-triviaqa-2400-t960.json | operating_points[operating_point.operating_point_id=P-internal-knowledge].metrics.precision.value | make verify |
 | `decision_support` recall, n=960 | 0.7367 | [0.6974, 0.7783] | results/policy-triviaqa-2400-t960.json | operating_points[operating_point.operating_point_id=P-decision-support].metrics.recall.value | make verify |
+| `decision_support` measured flag rate | 0.4677 | [0.4365, 0.4990] | results/policy-triviaqa-2400-t960.json | operating_points[operating_point.operating_point_id=P-decision-support].metrics.flag_rate.value | make verify |
+| `decision_support` precision | 0.7105 | [0.6690, 0.7506] | results/policy-triviaqa-2400-t960.json | operating_points[operating_point.operating_point_id=P-decision-support].metrics.precision.value | make verify |
 | Cost of the training reduction, paired on 600 held-out items | -0.0110 | [-0.0200, -0.0026] | results/paired_comparison.json | pinned_to_baseline_threshold[quantity=auroc].difference | make verify |
 | Selection-aware widening of the recall bound | 1.5922 | - | results/paired_comparison.json | selection_aware_bounds[operating_point_id=P-customer-support].widening | make verify |
 | Round 1 reproduced on Round 2's pipeline | 0.8256 | - | results/reconciliation.json | round2.T1-last_token.test_auroc | make verify |
 | ...landing inside Round 1's published interval | A | - | results/reconciliation.json | branch | make verify |
 | `presidio-stock` recall on Hinglish PII, REFUSED | 0.1176 | [0.0500, 0.2000] | results/detectors.json | runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200].metrics.recall.value | make verify |
+| ...its precision there | 0.5455 | [0.2592, 0.9002] | results/detectors.json | runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200].metrics.precision.value | make verify |
 | `presidio-enabled` recall, REFUSED | 0.2843 | [0.2075, 0.3810] | results/detectors.json | runs[detector_id=presidio-enabled,eval_set_id=hinglish-pii-200].metrics.recall.value | make verify |
+| ...its precision there | 0.7436 | [0.5416, 0.9584] | results/detectors.json | runs[detector_id=presidio-enabled,eval_set_id=hinglish-pii-200].metrics.precision.value | make verify |
 | `presidio-enabled_plus_custom` recall, VALID | 0.6176 | [0.5185, 0.7128] | results/detectors.json | runs[detector_id=presidio-enabled_plus_custom,eval_set_id=hinglish-pii-200].metrics.recall.value | make verify |
+| ...its precision there | 0.8630 | [0.7262, 0.9828] | results/detectors.json | runs[detector_id=presidio-enabled_plus_custom,eval_set_id=hinglish-pii-200].metrics.precision.value | make verify |
 | Our `pii-reference` recall, VALID | 0.7941 | [0.6981, 0.8846] | results/detectors.json | runs[detector_id=pii-reference,eval_set_id=hinglish-pii-200].metrics.recall.value | make verify |
+| ...its precision there | 0.6532 | [0.5114, 0.8100] | results/detectors.json | runs[detector_id=pii-reference,eval_set_id=hinglish-pii-200].metrics.precision.value | make verify |
 | `presidio-stock` reproduces out of sample | 0.1471 | [0.0714, 0.2341] | results/holdout/detectors.json | runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200b].metrics.recall.value | make verify |
+| ...its precision there | 0.5357 | [0.2812, 0.8621] | results/holdout/detectors.json | runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200b].metrics.precision.value | make verify |
 | `pii-reference` false-positive rate on benign traffic | 0.0000 | [0.0000, 0.0183] | results/validation-pii-reference-hard-negatives-200.json | metrics.flag_rate.value | make verify |
 | Warrant matrix cells VALID | 13 | - | results/warrant_matrix.json | matrix.summary.VALID | make verify |
 | Warrant matrix cells REFUSED | 4 | - | results/warrant_matrix.json | matrix.summary.REFUSED | make verify |
@@ -281,6 +294,7 @@ here fails the build.**
 | Precision there | 0.7749 | [0.7227, 0.8290] | results/fpr_sweep/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].precision.value | python scripts/19_fpr_sweep.py |
 | Lift there, against a 2.17 ceiling | 1.678 | [1.545, 1.831] | results/fpr_sweep/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].lift.value | python scripts/19_fpr_sweep.py |
 | ...and it survives the long-context shift | 0.6209 | [0.5667, 0.6815] | results/fpr_sweep/sweep.json | sweeps[eval_set_id=triviaqa-longctx-600].points[target_fpr=0.2].recall.value | python scripts/19_fpr_sweep.py |
+| ...its precision there | 0.7679 | [0.7137, 0.8214] | results/fpr_sweep/sweep.json | sweeps[eval_set_id=triviaqa-longctx-600].points[target_fpr=0.2].precision.value | python scripts/19_fpr_sweep.py |
 | **Out-of-sample** recall at the same budget | 0.6318 | [0.5782, 0.6880] | results/fpr_sweep_oos/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].recall.value | python scripts/20_fpr_sweep_oos.py |
 | ...its precision | 0.7743 | [0.7220, 0.8281] | results/fpr_sweep_oos/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].precision.value | python scripts/20_fpr_sweep_oos.py |
 | ...its lift | 1.677 | [1.535, 1.826] | results/fpr_sweep_oos/sweep.json | sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].lift.value | python scripts/20_fpr_sweep_oos.py |
@@ -369,7 +383,7 @@ controlplane/          the package — model, store, validation, matrix, drift, 
 evalsets/ & results/   frozen content-hashed evaluation sets; every artifact behind the table above
 scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
-tests/                 1340 tests, including the ones that enforce this README
+tests/                 1342 tests, including the ones that enforce this README
 docs/                  spec, methods, limitations, the case matrix, and the move mapping
 DECISIONS.md           143 append-only decision entries
 reports/               one close-out report per phase — read PHASE-0.md first
@@ -443,7 +457,7 @@ tour is [docs/CODE_TOUR.md](docs/CODE_TOUR.md).
 | Target | Without `make` | Requires | Time | Proves |
 |:---|:---|:---|:---|:---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | The clone works and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 1340 tests green |
+| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 1342 tests green |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **Every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` (tier 3) | `python scripts/verify.py` | CPU + cached activations | ~4 min | The frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | Activations regenerate from the source model |
