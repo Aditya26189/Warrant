@@ -9093,3 +9093,32 @@ the workaround and this entry get closed rather than outliving the bug.
 change. It was not taken here because the intent of `response.py`'s author --
 which fields a routed payload should carry -- is not written down, and choosing
 them for a read-only module is a design decision about that module.
+
+---
+
+## 180 - The Phase 12 audit, re-run: one read-only sample size was missing from the derivation register
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED; the function itself **OPEN** (read-only)
+
+Re-scanning `controlplane/` for public functions returning an interval, a bound
+or a sample size, against `DERIVED_CLAIMS`, `READ_ONLY_WITHOUT_DERIVATION` and
+163's six named exclusions, found two unregistered:
+
+- `validation/selection.py::interval` -- a nested helper inside
+  `selection_aware_recall`, which is registered and carries the derivation. Not
+  public; a false positive of the scan.
+- `validation/warrant_stats.py::min_n_for` -- **a real gap.** It returns the
+  smallest clean sample that can certify an FPR budget, `ceil(log(alpha) /
+  log(1 - target_fpr))`, and beat 1 puts its output on screen. The docstring
+  states neither the quantity (the one-sided Clopper-Pearson bound at zero
+  events, which reduces to `1 - alpha^(1/n)`) nor the inversion. Read-only.
+
+**Decision.** Add it to `READ_ONLY_WITHOUT_DERIVATION` (8 -> 9), so the gap is a
+recorded number rather than an absence; `test_the_read_only_gap_is_recorded_rather_than_quietly_absent`
+now checks it too.
+
+**Why 163 missed it:** 163's scan matched on the `Returns:` section, and
+`min_n_for` has none. The re-scan matched names as well. The register is only as
+complete as the scan that fed it, which is why this is written down rather than
+folded in.

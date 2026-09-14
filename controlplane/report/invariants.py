@@ -228,6 +228,10 @@ READ_ONLY_WITHOUT_DERIVATION: tuple[tuple[str, str], ...] = (
     ("controlplane/validation/stats.py", "estimated"),
     ("controlplane/validation/stats.py", "bootstrap_seed_stability"),
     ("controlplane/validation/warrant_stats.py", "certify_fpr"),
+    # Missed by 163's scan and found by the Phase 12 re-scan (DECISIONS 180): a
+    # sample size -- the clean negatives beat 1 puts on screen -- whose docstring
+    # gives neither the quantity nor the zero-event bound it inverts.
+    ("controlplane/validation/warrant_stats.py", "min_n_for"),
 )
 
 
