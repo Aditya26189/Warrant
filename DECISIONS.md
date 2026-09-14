@@ -9772,6 +9772,17 @@ to +/-0.05, month one** (`results/on_traffic/on_traffic.json`) -- is that
 figure. It is 183's defect one module over: a sample size whose chance of
 delivering what it names is left implicit.
 
+**Corrected before any assurance was computed.** The paragraph above says the
+recall half-width "grows with" the realised count. It does not. Checked at the
+declared workload (q = 0.0261, TP = 849.6, N_u = 197,016) at n = 1,014, the
+half-width peaks at k = 2 and then **falls** as k rises: the prevalence interval
+widens roughly as sqrt(k), but |dR/dq| = TP N_u / (TP + q N_u)^2 falls roughly as
+1/k^2. So the margin is met when the count lands at or **above** its expectation,
+not below. The conclusion the criteria rest on -- about half -- is unchanged, and
+no criterion moves. The implementation takes the set of counts meeting the margin
+as `k >= k_min(n)` and checks that assumption against brute-force enumeration in
+its tests rather than trusting this paragraph a second time.
+
 This is a known failure of width-based sizing: Kupper and Hafner, "How
 appropriate are popular sample size formulas?", *The American Statistician*
 43(2), 1989, 101-105. The standard remedy is to size with **assurance**, the
