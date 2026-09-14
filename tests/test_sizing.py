@@ -158,7 +158,7 @@ def test_the_floor_at_the_quoted_size_is_at_least_the_rate_asked_for() -> None:
 
 def a_plan(**overrides):
     kwargs = dict(
-        budget=0.05, breach_rate=0.075, alpha=ALPHA, negative_share=0.85
+        budget=0.05, breach_rate=0.075, alpha=ALPHA, power=0.80, negative_share=0.85
     )
     kwargs.update(overrides)
     return monitoring_plan(**kwargs)
@@ -226,7 +226,7 @@ def test_an_infeasible_plan_names_what_would_change_it() -> None:
     plan = a_plan(breach_rate=0.0501)
     assert not plan.feasible
     assert plan.negatives_per_recheck is None
-    for remedy in ("Widen the breach", "loosen alpha", "tighter budget"):
+    for remedy in ("Widen the breach", "loosen alpha", "lower the power", "tighter budget"):
         assert remedy in plan.refusal_reason
     assert f"{MAX_NEGATIVES:,}" in plan.refusal_reason
 
@@ -338,11 +338,13 @@ def test_the_recheck_hint_and_the_plan_cannot_disagree() -> None:
     ``recheck`` tells a user how many negatives would have caught a 1.5x
     breach, and ``plan`` sizes the programme that collects them. Two
     implementations of that would drift, and the first one did: it quoted 249
-    where this quotes 287.
+    where 146 quoted 287. Both were later found to catch a true breach about
+    half the time (DECISIONS 183); they now agree at a declared power.
     """
+    from controlplane.economics.sizing import negatives_for_power
     from controlplane.intake.recheck import negatives_needed_to_detect
 
     for budget in (0.05, 0.02, 0.01):
-        assert negatives_needed_to_detect(budget * 1.5, budget, ALPHA) == (
-            negatives_for_detection(budget * 1.5, budget, ALPHA)
+        assert negatives_needed_to_detect(budget * 1.5, budget, ALPHA, 0.80) == (
+            negatives_for_power(budget * 1.5, budget, ALPHA, 0.80)
         )

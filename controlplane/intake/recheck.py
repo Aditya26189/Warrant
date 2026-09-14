@@ -108,8 +108,14 @@ class RecheckResult:
     #: Printed with every verdict, because the dead zone the asymmetric test
     #: buys is invisible otherwise.
     detectable_floor: Optional[float] = None
-    #: Negatives that would be needed to catch a breach at 1.5x the budget.
+    #: Negatives that would be needed to catch a true breach at 1.5x the budget
+    #: with probability ``recheck_power`` (DECISIONS 183).
     negatives_for_tighter_floor: Optional[int] = None
+    #: This file's own chance of revoking a detector truly at 1.5x the budget.
+    #: The floor above says which observed rate revokes; this says how often a
+    #: real breach of that size produces one.
+    power_against_1_5x_budget: Optional[float] = None
+    recheck_power: Optional[float] = None
     psi: Optional[float] = None
     psi_null_p95: Optional[float] = None
     psi_beyond_noise: Optional[bool] = None
@@ -136,12 +142,17 @@ class RecheckResult:
             "detection": {
                 "smallest_detectable_rate": self.detectable_floor,
                 "negatives_here": self.n_negative_now,
+                "power_against_1_5x_budget": self.power_against_1_5x_budget,
                 "negatives_to_detect_1_5x_budget": self.negatives_for_tighter_floor,
+                "recheck_power": self.recheck_power,
                 "note": (
                     "Revocation requires the one-sided lower bound to exceed the "
                     "budget, which leaves a dead zone between the budget and this "
                     "floor. A rate inside it returns VALID and is not evidence "
-                    "the promise holds -- only an absence of evidence it broke."
+                    "the promise holds -- only an absence of evidence it broke. "
+                    "negatives_to_detect_1_5x_budget is sized to catch a TRUE "
+                    "rate of 1.5x the budget with probability recheck_power "
+                    "(DECISIONS 183)."
                 ),
             },
             "now": {
@@ -205,6 +216,8 @@ def recheck_items(
     lower: Optional[float] = None
     floor: Optional[float] = None
     needed: Optional[int] = None
+    power_here: Optional[float] = None
+    power = config.validation.recheck_power
     if negatives.size:
         achieved = float((negatives >= threshold).mean())
         k = int((negatives >= threshold).sum())
@@ -231,7 +244,15 @@ def recheck_items(
         # it, and that distinction is what this whole project rests on.
         bound_holds = lower <= budget
         floor = smallest_detectable_breach(int(negatives.size), budget, alpha)
-        needed = negatives_needed_to_detect(budget * 1.5, budget, alpha)
+        # A 1.5x breach is only a rate while it is below 1; a budget above 2/3
+        # has no such breach to size, and asking would raise.
+        if budget * 1.5 < 1.0:
+            from ..economics.sizing import revocation_probability
+
+            needed = negatives_needed_to_detect(budget * 1.5, budget, alpha, power)
+            power_here = float(revocation_probability(
+                np.array([negatives.size]), budget * 1.5, budget, alpha
+            )[0])
 
     # --- has the ground moved? ------------------------------------------
     psi = null_p95 = epsilon = None
@@ -269,11 +290,14 @@ def recheck_items(
         beyond_noise = psi > null_p95
         assessed = True
 
-    return _verdict(
+    verdict = _verdict(
         config, budget, threshold, items, achieved, upper, lower, floor, needed,
         bound_holds,
         psi, null_p95, beyond_noise, assessed, skip_reason,
         smoothed, by_smoothing, epsilon,
+    )
+    return dataclasses.replace(
+        verdict, power_against_1_5x_budget=power_here, recheck_power=power
     )
 
 
@@ -332,12 +356,24 @@ def smallest_detectable_breach(
     return None
 
 
-def negatives_needed_to_detect(rate: float, budget: float, alpha: float) -> Optional[int]:
-    """Clean negatives needed before an observed ``rate`` would establish a breach.
+def negatives_needed_to_detect(
+    rate: float, budget: float, alpha: float, power: float
+) -> Optional[int]:
+    """Clean negatives needed to catch a true ``rate`` with probability ``power``.
+
+    Quantity: the smallest stable ``n`` at which a recheck revokes a detector
+    whose true false-positive rate is ``rate`` with probability at least
+    ``power``. Propagation: exact binomial power at the exact Clopper-Pearson
+    critical count, via
+    :func:`controlplane.economics.sizing.negatives_for_power`.
 
     The companion to the floor: it turns "this file could not have caught a 6%
     rate" into "and here is what would have". Mirrors the answer `certify` gives
     a refusal -- the requirement, not just the shortfall.
+
+    **Corrected again in DECISIONS 183, and the number went up again.** 146's
+    size made an observed rate at the breach revoke, which catches a true
+    breach about half the time; 287 became 628 at power 0.80.
 
     **Corrected in DECISIONS 146, and the number went up.** The first version
     walked ``n`` in steps of 1.2x and returned the first ``n`` at which the
@@ -354,9 +390,9 @@ def negatives_needed_to_detect(rate: float, budget: float, alpha: float) -> Opti
     Returns:
         The count, or ``None`` when no achievable sample detects it.
     """
-    from ..economics.sizing import negatives_for_detection
+    from ..economics.sizing import negatives_for_power
 
-    return negatives_for_detection(rate, budget, alpha)
+    return negatives_for_power(rate, budget, alpha, power)
 
 
 def _verdict(

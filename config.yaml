@@ -64,6 +64,11 @@ validation:
   # to be distinguished from it, which says nothing about whether the sample
   # could have caught a deviation that mattered (DECISIONS 069).
   calibration_tolerance: 0.25
+  # Probability one recheck catches a TRUE breach of the size `warrant plan` is
+  # asked about. 0.80 is the conventional minimum, not a measurement. Before
+  # DECISIONS 183 plans were sized so an OBSERVED rate at the breach revoked,
+  # which catches a true breach about half the time.
+  recheck_power: 0.80
   warrant_ttl_hours: 24
   controls: ["padding_fault", "label_shuffle", "null_feature", "canary", "determinism"]
   null_control_band: [0.45, 0.55]

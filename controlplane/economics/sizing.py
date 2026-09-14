@@ -10,9 +10,11 @@ Two questions, and they face opposite directions.
 
 **:func:`monitoring_plan` is the customer one.** You certified a detector at a
 false-positive budget. Keeping that claim true means re-testing it, and
-re-testing costs labels. Given the breach you want to be able to catch, this
-says how many clean negatives one recheck needs, how many items you must label
-to get them, and what a year of rechecks costs at each of several cadences.
+re-testing costs labels. Given the breach you want to be able to catch and the
+probability of catching it, this says how many clean negatives one recheck
+needs, how many items you must label to get them, and what a year of rechecks
+costs at each of several cadences -- in labels, and in the chance that the year
+revokes a detector that kept its promise (``DECISIONS.md`` 183).
 
 **:func:`workload_price_list` is ours.** The declared workload in
 ``config.yaml`` is one scenario — invariant 6 — and every economic figure this
@@ -48,8 +50,13 @@ __all__ = [
     "CadenceOption",
     "MonitoringPlan",
     "DEFAULT_CADENCES",
+    "POWER_LADDER",
+    "critical_counts",
+    "false_revocation_in_year",
     "negatives_for_detection",
+    "negatives_for_power",
     "monitoring_plan",
+    "revocation_probability",
     "workload_price_list",
 ]
 
@@ -71,6 +78,12 @@ MAX_NEGATIVES = 2_000_000
 #: is quoted. Measured, not guessed: from each stable threshold up to twelve
 #: times it, there is no ``n`` at which detection fails (``DECISIONS.md`` 146).
 STABILITY_HORIZON = 12
+
+#: Powers the plan always prints a sample size for, so the declared power is read
+#: beside its neighbours rather than alone (``DECISIONS.md`` 183). Presentation,
+#: like :data:`DEFAULT_CADENCES`: the year is priced at the declared power, and
+#: 0.5 is on the ladder because it is what this module quoted before 183.
+POWER_LADDER: tuple[float, ...] = (0.5, 0.8, 0.9)
 
 
 def _lower_bound_at(n: int, k: int, alpha: float) -> float:
@@ -134,6 +147,14 @@ def negatives_for_detection(
     the predicate is not monotone in ``n`` because the count is
     ``round(breach_rate * n)``, so a closed form would return a value at
     which detection does not hold.
+
+    **Not a sample size to plan from** (``DECISIONS.md`` 183). "Detects" here
+    means an observed rate *equal to* the breach revokes, and at a true breach
+    the observed rate falls short about half the time: the sizes this returns
+    have power near 0.49. :func:`monitoring_plan` and ``recheck``'s hint size
+    at a declared power with :func:`negatives_for_power`. This stays because
+    the stable-threshold search below is the one that function reuses, and its
+    tests pin the sawtooth that makes that search necessary.
 
     **The smallest ``n`` from which detection holds at ``n`` and at every larger
     ``n``** — not the first ``n`` at which it happens to hold. The distinction is
@@ -213,6 +234,169 @@ def negatives_for_detection(
     return stable
 
 
+def critical_counts(ns, budget: float, alpha: float):
+    """The fewest false positives that revoke, for every sample size in ``ns``.
+
+    ``k*(n)`` is the smallest count whose one-sided Clopper-Pearson lower bound
+    at ``alpha`` exceeds ``budget`` -- the rule
+    :func:`controlplane.intake.recheck.recheck_items` revokes on. Where no count
+    up to ``n`` clears, ``k*(n)`` is ``n + 1``, so every probability computed
+    from it is zero rather than undefined.
+
+    The candidate comes from the binomial tail (the bound clears the budget
+    exactly when ``P(Bin(n, budget) >= k) < alpha``), then is corrected against
+    ``beta.ppf`` itself, so a disagreement between the two at a floating-point
+    boundary is settled in favour of the function a recheck actually calls.
+    """
+    import numpy as np
+    from scipy.stats import beta, binom
+
+    ns = np.asarray(ns, dtype=np.int64)
+    ks = np.asarray(binom.isf(alpha, ns, budget), dtype=np.int64) + 1
+    ks = np.clip(ks, 1, ns + 1)
+
+    def clears(k):
+        live = (k >= 1) & (k <= ns)
+        out = np.zeros(ns.shape, dtype=bool)
+        if live.any():
+            out[live] = beta.ppf(alpha, k[live], ns[live] - k[live] + 1) > budget
+        return out
+
+    for _ in range(16):
+        up = (ks <= ns) & ~clears(ks)
+        down = (ks > 1) & clears(ks - 1)
+        if not (up.any() or down.any()):
+            return ks
+        ks = ks + up.astype(np.int64) - down.astype(np.int64)
+    raise AssertionError(  # pragma: no cover - the tail and the bound are duals
+        "critical counts did not settle; the binomial tail and the Clopper-Pearson "
+        "bound disagree by more than a floating-point boundary"
+    )
+
+
+def revocation_probability(ns, true_rate: float, budget: float, alpha: float):
+    """Chance one recheck of ``n`` clean negatives revokes, at a true rate.
+
+    Quantity: ``P(Bin(n, true_rate) >= k*(n))``, the probability that a recheck
+    revokes. At ``true_rate`` above the budget it is the **power**; at the
+    budget it is the **false-revocation rate**, and since the tail increases
+    with the rate, that is the worst case over every rate the warrant promised.
+    Propagation: exact binomial tail at the exact critical count of
+    :func:`critical_counts`; no normal approximation (``DECISIONS.md`` 183).
+    """
+    import numpy as np
+    from scipy.stats import binom
+
+    ns = np.asarray(ns, dtype=np.int64)
+    return binom.sf(critical_counts(ns, budget, alpha) - 1, ns, true_rate)
+
+
+def _power_mask(lo: int, hi: int, breach_rate: float, budget: float, alpha: float, power: float):
+    """Whether each ``n`` in ``[lo, hi]`` reaches ``power`` against the breach."""
+    import numpy as np
+
+    ns = np.arange(lo, hi + 1, dtype=np.int64)
+    return revocation_probability(ns, breach_rate, budget, alpha) >= power
+
+
+def negatives_for_power(
+    breach_rate: float,
+    budget: float,
+    alpha: float,
+    power: float,
+    *,
+    horizon: int = STABILITY_HORIZON,
+    cap: int = MAX_NEGATIVES,
+) -> Optional[int]:
+    """Clean negatives one recheck needs to catch a true breach with ``power``.
+
+    Quantity: the smallest ``n`` from which a recheck revokes, with probability
+    at least ``power``, a detector whose true false-positive rate is
+    ``breach_rate``, at that ``n`` and every larger one up to ``horizon`` times
+    it. Propagation: exact binomial power at the exact critical count, searched
+    over integer ``n`` -- power is a sawtooth in ``n`` for the same reason
+    detection is (:func:`negatives_for_detection`), so the stable-threshold
+    rule of ``DECISIONS.md`` 146 applies unchanged.
+
+    **Why this and not** :func:`negatives_for_detection`. That function asks
+    whether an *observed* rate equal to the breach would revoke. At a *true*
+    breach the observed count is binomial and clears the critical count about
+    half the time: the sizes it quotes (287, 86, 1501 in 146's table) have power
+    0.489, 0.495 and 0.488 (``DECISIONS.md`` 183).
+
+    Args:
+        breach_rate: The true false-positive rate to catch. Must exceed ``budget``.
+        budget: The certified false-positive budget.
+        alpha: One-sided level, the same one certification and recheck use.
+        power: Probability of revoking at ``breach_rate``, in ``(0, 1)``.
+        horizon: How far past a candidate power must keep holding.
+        cap: Give up past this many negatives.
+
+    Returns:
+        The count, or ``None`` when no sample up to ``cap`` reaches the power.
+
+    Raises:
+        ValueError: If the rates are not ordered or not in ``(0, 1)``, or
+            ``power`` is not in ``(0, 1)``.
+    """
+    if not 0.0 < power < 1.0:
+        raise ValueError(f"power={power!r} is not a probability in (0, 1)")
+    # The rate checks are the same questions as detection's; ask them once.
+    if not 0.0 < budget < 1.0:
+        raise ValueError(f"budget={budget!r} is not a rate in (0, 1)")
+    if not 0.0 < breach_rate < 1.0:
+        raise ValueError(f"breach_rate={breach_rate!r} is not a rate in (0, 1)")
+    if breach_rate <= budget:
+        raise ValueError(
+            f"breach_rate={breach_rate} does not exceed budget={budget}. No "
+            "sample can establish that a rate at or below the promise breaks it."
+        )
+    if not 0.0 < alpha < 1.0:
+        raise ValueError(f"alpha={alpha!r} is not in (0, 1)")
+
+    # Same three steps as negatives_for_detection, on power instead of on one
+    # observed count: ask the top of the range, grow until a stretch holds,
+    # walk back to the last failure, then confirm across the horizon.
+    if not _power_mask(max(1, cap - 1000), cap, breach_rate, budget, alpha, power).all():
+        return None
+
+    upper = 10
+    while upper <= cap:
+        span = max(50, upper // 4)
+        if _power_mask(upper, min(upper + span, cap), breach_rate, budget, alpha, power).all():
+            break
+        upper = int(upper * 1.2) + 1
+    else:
+        return None
+
+    below = _power_mask(1, upper, breach_rate, budget, alpha, power)
+    failures = (~below).nonzero()[0]
+    stable = int(failures[-1]) + 2 if failures.size else 1
+
+    ceiling = min(stable * horizon, cap)
+    if not _power_mask(stable, ceiling, breach_rate, budget, alpha, power).all():
+        # pragma: no cover - power converges to 1 above the budget
+        return None
+    return stable
+
+
+def false_revocation_in_year(per_recheck: float, rechecks: int) -> float:
+    """Chance at least one of a year's rechecks revokes a warrant that held.
+
+    Quantity: ``1 - (1 - f)^K`` for ``K`` rechecks each revoking a detector
+    exactly at its budget with probability ``f``. Propagation: exact under
+    independent samples per recheck; a programme that re-labels overlapping
+    items has correlated rechecks and a smaller figure, which this does not
+    model. It is a statement about the schedule, not about any one recheck,
+    and it is what 143's cry-wolf argument looks like at a cadence.
+    """
+    if not 0.0 <= per_recheck <= 1.0:
+        raise ValueError(f"per_recheck={per_recheck!r} is not a probability")
+    if rechecks < 0:
+        raise ValueError(f"rechecks={rechecks!r} is negative")
+    return 1.0 - (1.0 - per_recheck) ** rechecks
+
+
 def smallest_detectable_at(n_negatives: int, budget: float, alpha: float) -> Optional[float]:
     """The smallest observed rate that would revoke, at this ``n``.
 
@@ -249,6 +433,9 @@ class CadenceOption:
     reviewer_hours_per_year: Optional[float] = None
     cost_per_year: Optional[float] = None
     currency: str = ""
+    #: Chance at least one of the year's rechecks revokes a detector sitting
+    #: exactly at its budget (:func:`false_revocation_in_year`, DECISIONS 183).
+    false_revocation_in_year: Optional[float] = None
 
     def render(self) -> str:
         money = (
@@ -261,9 +448,14 @@ class CadenceOption:
             if self.reviewer_hours_per_year is not None
             else ""
         )
+        false_alarm = (
+            f"   false revocation {self.false_revocation_in_year:.2f}"
+            if self.false_revocation_in_year is not None
+            else ""
+        )
         return (
             f"  {self.name:<13} {self.rechecks_per_year:>3} rechecks   "
-            f"{self.labels_per_year:>9,} labels{hours}{money}"
+            f"{self.labels_per_year:>9,} labels{false_alarm}{hours}{money}"
         )
 
 
@@ -280,9 +472,20 @@ class MonitoringPlan:
     alpha: float
     breach_rate: float
     feasible: bool
+    #: The declared probability of catching a true breach, which sizes the plan.
+    power: Optional[float] = None
     negatives_per_recheck: Optional[int] = None
     items_per_recheck: Optional[int] = None
     detection_floor: Optional[float] = None
+    #: Exact power at the quoted size. At least ``power``, and usually a little
+    #: above it, because sizes are integers.
+    power_at_breach: Optional[float] = None
+    #: Chance one recheck of the quoted size revokes a detector exactly at its
+    #: budget. At most ``alpha``, and below it, because counts are integers.
+    false_revocation_per_recheck: Optional[float] = None
+    #: ``(power, negatives)`` for each rung of :data:`POWER_LADDER`; ``None``
+    #: where no sample up to the cap reaches that power.
+    sizes_by_power: tuple[tuple[float, Optional[int]], ...] = ()
     cadences: tuple[CadenceOption, ...] = ()
     declared_inputs: Mapping[str, float] = field(default_factory=dict)
     refusal_reason: str = ""
@@ -295,9 +498,16 @@ class MonitoringPlan:
             "budget": self.budget,
             "alpha": self.alpha,
             "breach_rate": self.breach_rate,
+            "power": self.power,
             "negatives_per_recheck": self.negatives_per_recheck,
             "items_per_recheck": self.items_per_recheck,
             "detection_floor": self.detection_floor,
+            "power_at_breach": self.power_at_breach,
+            "false_revocation_per_recheck": self.false_revocation_per_recheck,
+            "sizes_by_power": [
+                {"power": rung, "negatives_per_recheck": size}
+                for rung, size in self.sizes_by_power
+            ],
             "declared_inputs": dict(self.declared_inputs),
             "refusal_reason": self.refusal_reason,
             "cadences": [
@@ -305,6 +515,7 @@ class MonitoringPlan:
                     "name": option.name,
                     "rechecks_per_year": option.rechecks_per_year,
                     "labels_per_year": option.labels_per_year,
+                    "false_revocation_in_year": option.false_revocation_in_year,
                     "reviewer_hours_per_year": option.reviewer_hours_per_year,
                     "cost_per_year": option.cost_per_year,
                     "currency": option.currency,
@@ -325,6 +536,7 @@ def monitoring_plan(
     budget: float,
     breach_rate: float,
     alpha: float,
+    power: float,
     negative_share: float,
     minutes_per_label: Optional[float] = None,
     cost_per_hour: Optional[float] = None,
@@ -333,12 +545,23 @@ def monitoring_plan(
 ) -> MonitoringPlan:
     """Price keeping one warrant true.
 
+    Quantity: the clean negatives one recheck needs to revoke, with probability
+    ``power``, a detector whose true false-positive rate is ``breach_rate``;
+    the items that must be labelled to get them; and, per cadence, the chance a
+    year of rechecks revokes a detector that kept its promise. Propagation:
+    exact binomial power at the exact Clopper-Pearson critical count
+    (:func:`negatives_for_power`), divided by the declared negative share; the
+    year figure is :func:`false_revocation_in_year` under independent samples.
+
     Args:
         budget: **Declared.** The false-positive budget the detector was
             certified at.
-        breach_rate: **Declared.** The rate you want to be able to catch. Must
-            exceed ``budget``.
+        breach_rate: **Declared.** The true rate you want to be able to catch.
+            Must exceed ``budget``.
         alpha: **Declared.** One-sided confidence, matching certification.
+        power: **Declared.** Probability one recheck catches a true
+            ``breach_rate``. ``validation.recheck_power`` unless overridden;
+            required here so no caller inherits a power it did not choose.
         negative_share: **Declared.** The fraction of your traffic that is
             truly negative. It converts "negatives needed" into "items to
             label", and it is the input most often wrong: a plan built on 0.9
@@ -368,6 +591,7 @@ def monitoring_plan(
         "budget": budget,
         "breach_rate": breach_rate,
         "alpha": alpha,
+        "power": power,
         "negative_share": negative_share,
     }
     if minutes_per_label is not None:
@@ -375,26 +599,38 @@ def monitoring_plan(
     if cost_per_hour is not None:
         declared["cost_per_hour"] = cost_per_hour
 
-    negatives = negatives_for_detection(breach_rate, budget, alpha)
+    negatives = negatives_for_power(breach_rate, budget, alpha, power)
+    ladder = tuple(
+        (rung, negatives if rung == power else negatives_for_power(breach_rate, budget, alpha, rung))
+        for rung in POWER_LADDER
+    )
     if negatives is None:
         return MonitoringPlan(
             budget=budget,
             alpha=alpha,
             breach_rate=breach_rate,
             feasible=False,
+            power=power,
+            sizes_by_power=ladder,
             declared_inputs=declared,
             refusal_reason=(
-                f"no sample up to {MAX_NEGATIVES:,} clean negatives establishes "
-                f"a rate of {breach_rate:.4g} against a {budget:.4g} budget at "
-                f"alpha={alpha:.3g}. The gap between the breach and the budget "
-                "is too small to resolve by labelling. Widen the breach you are "
-                "willing to catch, loosen alpha, or certify at a tighter budget "
-                "so that the same absolute drift is a larger relative one."
+                f"no sample up to {MAX_NEGATIVES:,} clean negatives catches a "
+                f"true rate of {breach_rate:.4g} against a {budget:.4g} budget "
+                f"with probability {power:.2g} at alpha={alpha:.3g}. The gap "
+                "between the breach and the budget is too small to resolve by "
+                "labelling. Widen the breach you are willing to catch, loosen "
+                "alpha, lower the power, or certify at a tighter budget so that "
+                "the same absolute drift is a larger relative one."
             ),
         )
 
+    import numpy as np
+
     items = math.ceil(negatives / negative_share)
     floor = smallest_detectable_at(negatives, budget, alpha)
+    at_n = np.array([negatives])
+    achieved_power = float(revocation_probability(at_n, breach_rate, budget, alpha)[0])
+    per_recheck_false = float(revocation_probability(at_n, budget, budget, alpha)[0])
 
     priced: list[CadenceOption] = []
     for name, per_year in cadences:
@@ -411,6 +647,7 @@ def monitoring_plan(
                 reviewer_hours_per_year=hours,
                 cost_per_year=cost,
                 currency=currency,
+                false_revocation_in_year=false_revocation_in_year(per_recheck_false, per_year),
             )
         )
 
@@ -419,9 +656,13 @@ def monitoring_plan(
         alpha=alpha,
         breach_rate=breach_rate,
         feasible=True,
+        power=power,
         negatives_per_recheck=negatives,
         items_per_recheck=items,
         detection_floor=floor,
+        power_at_breach=achieved_power,
+        false_revocation_per_recheck=per_recheck_false,
+        sizes_by_power=ladder,
         cadences=tuple(priced),
         declared_inputs=declared,
     )
