@@ -230,7 +230,54 @@ def build_parser() -> argparse.ArgumentParser:
     from .release.cli import add_parser
 
     add_parser(sub)
+    chain = sub.add_parser(
+        "chain",
+        help="audit the records of a chain of rechecks",
+        description=(
+            "Reads the recheck records a chain produced and reports what they show: "
+            "forks, restarts, missing links, edited states and links that do not "
+            "extend their predecessor. It cannot recompute the statistics, which "
+            "need the labelled files (DECISIONS 194)."
+        ),
+    )
+    chain_sub = chain.add_subparsers(dest="chain_command", required=True)
+    verify = chain_sub.add_parser("verify", help="verify a set of chained recheck records")
+    verify.add_argument("records", nargs="+", help="every .recheck-NNNN.json you kept")
+    verify.add_argument("--out", "-o", default=None,
+                        help="write the JSON record here (default: chain-verification.json)")
+    verify.add_argument("--quiet", "-q", action="store_true")
+    verify.add_argument(
+        "--require-clean", action="store_true",
+        help="exit non-zero when anything is flagged (default: findings exit 0)",
+    )
     return parser
+
+
+def _chain(args: argparse.Namespace) -> int:
+    """``warrant chain verify``: findings are a result, so they exit 0 (DECISIONS 194)."""
+    from .config import load_config, write_json_artifact
+    from .intake.chain_verify import (
+        RecordError, load_records, render_chain_verification, verify_chain_records,
+    )
+
+    try:
+        records = load_records(args.records)
+    except RecordError as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+    verification = verify_chain_records(records)
+    out = Path(args.out) if args.out else Path("chain-verification.json")
+    write_json_artifact(out, verification.to_payload(), load_config(PROJECT_ROOT / "config.yaml"))
+    if not args.quiet:
+        print(render_chain_verification(verification))
+    print(f"  record written to {out}")
+    if args.require_clean and not verification.clean:
+        print(
+            f"warrant: {len(verification.findings)} finding(s) in the chain records",
+            file=sys.stderr,
+        )
+        return EXIT_ERROR
+    return EXIT_OK
 
 
 def _certify(args: argparse.Namespace) -> int:
@@ -594,6 +641,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         return _recheck(args)
     if args.command == "plan":
         return _plan(args)
+    if args.command == "chain":
+        return _chain(args)
     if args.command == "release":
         from .release.cli import run
 
