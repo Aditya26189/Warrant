@@ -9354,3 +9354,18 @@ The latter condition does not imply mixture wealth reached the boundary.
 reproduce this defect without changing it in this slice. Neither runtime path
 is reused for the new release decision. The earlier power correction (183) is
 now committed at 2259065, with its checks recorded at 7ae68d3.
+
+## 185 -- Reuse intake without hiding a missing denominator (2026-09-14)
+
+Release evidence must record UNVALIDATED when a holdout lacks a class, while
+legacy certification deliberately treats that file as invalid input. Add an
+explicit `require_both_classes` keyword, default true, to the shared reader;
+only the release path opts out. No existing caller changes behaviour. Do not
+invent a fake second-class row or duplicate the parser to get a record written.
+
+The parser currently checks each ID with `ids.count`, scanning the entire list
+once per row. Replace this quadratic duplicate search with a single Counter
+pass, preserving the same sorted error output. This matters before putting the
+new workflow on larger customer exports. It is a complexity correction, not a
+measured throughput claim. Acceptance: unchanged legacy single-class rejection,
+explicit opt-in parsing, identical duplicate detection, and existing intake tests.
