@@ -1,0 +1,6384 @@
+{
+  "provenance": {
+    "timestamp_utc": "2026-09-14T08:39:16+00:00",
+    "git_commit": "71d24345b4cb940af55751301666a6c7de49351c",
+    "git_branch": "main",
+    "dirty": false,
+    "dirty_paths": [],
+    "dirty_excludes": "results",
+    "python": "3.12.10",
+    "libraries": {
+      "torch": "2.9.1+cpu",
+      "transformers": "5.8.0",
+      "scikit-learn": "1.7.2",
+      "numpy": "2.2.6",
+      "scipy": "1.16.3",
+      "pandas": "2.3.3",
+      "statsmodels": "0.14.6",
+      "presidio-analyzer": "2.2.364",
+      "bitsandbytes": "0.49.2"
+    },
+    "device": {
+      "platform": "Windows-11-10.0.26200-SP0",
+      "processor": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD",
+      "cuda_available": false,
+      "device_name": "cpu"
+    },
+    "config_hash": "533fb74983fcd8af",
+    "seed": 1729,
+    "config": {
+      "seed": 1729,
+      "workload": {
+        "name": "enterprise-3pct",
+        "monthly_interactions": 200000,
+        "base_error_rate": 0.03,
+        "review_minutes_per_item": 3.0,
+        "reviewer_monthly_cost_inr": 85000.0,
+        "reviewer_productive_hours": 160.0,
+        "measured_tpr": 0.1416,
+        "measured_fpr": 0.011
+      },
+      "model": {
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "quantization": "nf4",
+        "layer_fractions": [
+          0.29,
+          0.39,
+          0.5,
+          0.61,
+          0.71,
+          0.82,
+          0.93
+        ],
+        "prefill_chunk_tokens": 2048
+      },
+      "probe": {
+        "aggregations": [
+          "mean_pool",
+          "max_rolling_means",
+          "last_token"
+        ],
+        "rolling_window": 64,
+        "rolling_stride": 32,
+        "standardize": true,
+        "class_weight": "balanced",
+        "C_grid": [
+          0.0001,
+          0.001,
+          0.01,
+          0.1,
+          1.0
+        ],
+        "positive_class": "incorrect"
+      },
+      "evalsets": [
+        {
+          "id": "triviaqa-600",
+          "pad_tokens": null
+        },
+        {
+          "id": "triviaqa-longctx-600",
+          "pad_tokens": [
+            4000,
+            16000
+          ]
+        },
+        {
+          "id": "hinglish-pii-200",
+          "pad_tokens": null
+        },
+        {
+          "id": "hard-negatives-200",
+          "pad_tokens": null
+        },
+        {
+          "id": "canary-20",
+          "pad_tokens": null
+        }
+      ],
+      "validation": {
+        "bootstrap_samples": 1000,
+        "ci": 0.95,
+        "min_n_test": 200,
+        "min_auroc_lower_ci": 0.55,
+        "warrant_ttl_hours": 24,
+        "controls": [
+          "padding_fault",
+          "label_shuffle",
+          "null_feature",
+          "canary",
+          "determinism"
+        ],
+        "null_control_band": [
+          0.45,
+          0.55
+        ],
+        "null_control_min_repeats": 8,
+        "null_control_max_repeats": 200,
+        "calibration_tolerance": 0.25
+      },
+      "drift": {
+        "window_size": 200,
+        "psi_stable": 0.1,
+        "psi_significant": 0.25,
+        "mmd_permutations": 500,
+        "features": [
+          "token_length",
+          "script_mix",
+          "embedding_centroid_distance",
+          "reference_perplexity",
+          "category_mix"
+        ],
+        "max_false_alarm_rate": 0.05
+      },
+      "sampling": {
+        "allocation_month_one": "proportional",
+        "allocation_thereafter": "neyman",
+        "expected_design_effect": 0.67,
+        "score_bands": 4,
+        "double_label_fraction": 0.1,
+        "recall_margin_tiers": [
+          0.05,
+          0.02
+        ],
+        "blind_queue": true
+      },
+      "policy": {
+        "engine": "opa",
+        "fail_closed_on_missing_warrant": true,
+        "weighted_error": {
+          "w_fpr_benign": 50.0,
+          "w_fnr": 5.0,
+          "w_fpr_hard_negative": 2.0
+        }
+      },
+      "profiles": {
+        "customer_support": {
+          "inline_budget_ms": 200,
+          "min_recall": 0.1,
+          "max_fpr_hard_negatives": 0.02,
+          "operating_point": "P-customer-support",
+          "target_flag_rate": 0.1,
+          "on_calibration_drift": "REFUSE",
+          "calibration_sensitivity": 0.25
+        },
+        "internal_knowledge": {
+          "inline_budget_ms": 500,
+          "min_recall": 0.25,
+          "max_fpr_hard_negatives": 0.05,
+          "operating_point": "P-internal-knowledge",
+          "target_flag_rate": 0.2,
+          "on_calibration_drift": "WIDEN_BUDGET",
+          "calibration_sensitivity": 0.25
+        },
+        "decision_support": {
+          "inline_budget_ms": 2000,
+          "min_recall": 0.5,
+          "max_fpr_hard_negatives": 0.1,
+          "operating_point": "P-decision-support",
+          "target_flag_rate": 0.5,
+          "on_calibration_drift": "IGNORE",
+          "calibration_sensitivity": 0.25
+        }
+      },
+      "detectors": {
+        "presidio_configs": [
+          "stock",
+          "enabled",
+          "enabled_plus_custom"
+        ],
+        "qwen3guard": "Qwen/Qwen3Guard-Gen-0.6B"
+      },
+      "store": {
+        "path": "results/controlplane.db",
+        "retention_days": 400,
+        "hash_chain": true
+      },
+      "paths": {
+        "results_dir": "results",
+        "evalsets_dir": "evalsets",
+        "policies_dir": "policies"
+      }
+    }
+  },
+  "what_this_is": "a replay of committed token lengths through the shipped drift, ladder, routing and certification code -- not production traffic",
+  "warrant": {
+    "warrant_id": "W-f4bddcaa365cb7d3",
+    "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
+    "operating_point_id": "P-conservative",
+    "eval_set_id": "triviaqa-600",
+    "envelope_id": "sha256:e77c64f908491ad1",
+    "issued_at": "2026-09-13T21:57:47+00:00",
+    "expires_at": "2026-09-14T21:57:47+00:00"
+  },
+  "monitor": {
+    "window_size": 200,
+    "psi_stable": 0.1,
+    "psi_significant": 0.25,
+    "features_configured": [
+      "token_length",
+      "script_mix",
+      "embedding_centroid_distance",
+      "reference_perplexity",
+      "category_mix"
+    ],
+    "features_with_a_reference": [
+      "token_length"
+    ],
+    "null_bands": {
+      "token_length": {
+        "false_alarm_rate": 0.01,
+        "p95": 0.07217443630693716
+      }
+    },
+    "checkpoint_every": 50,
+    "ladder_widen_factor": 1.5
+  },
+  "stream": {
+    "n_normal": 400,
+    "n_shift": 400,
+    "shift_starts_at_request": 401,
+    "token_length_median": {
+      "normal": 42.0,
+      "shift": 7058.0
+    },
+    "events": [
+      {
+        "index": 0,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1643,
+        "token_length": 39
+      },
+      {
+        "index": 1,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2117,
+        "token_length": 41
+      },
+      {
+        "index": 2,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 719,
+        "token_length": 33
+      },
+      {
+        "index": 3,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 491,
+        "token_length": 45
+      },
+      {
+        "index": 4,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1452,
+        "token_length": 43
+      },
+      {
+        "index": 5,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1279,
+        "token_length": 45
+      },
+      {
+        "index": 6,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1764,
+        "token_length": 39
+      },
+      {
+        "index": 7,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 783,
+        "token_length": 37
+      },
+      {
+        "index": 8,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 468,
+        "token_length": 40
+      },
+      {
+        "index": 9,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2385,
+        "token_length": 36
+      },
+      {
+        "index": 10,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2296,
+        "token_length": 43
+      },
+      {
+        "index": 11,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1158,
+        "token_length": 55
+      },
+      {
+        "index": 12,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1137,
+        "token_length": 37
+      },
+      {
+        "index": 13,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 240,
+        "token_length": 35
+      },
+      {
+        "index": 14,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1144,
+        "token_length": 42
+      },
+      {
+        "index": 15,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1568,
+        "token_length": 39
+      },
+      {
+        "index": 16,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1978,
+        "token_length": 40
+      },
+      {
+        "index": 17,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 538,
+        "token_length": 40
+      },
+      {
+        "index": 18,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2370,
+        "token_length": 45
+      },
+      {
+        "index": 19,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 501,
+        "token_length": 57
+      },
+      {
+        "index": 20,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 476,
+        "token_length": 40
+      },
+      {
+        "index": 21,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1761,
+        "token_length": 42
+      },
+      {
+        "index": 22,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 88,
+        "token_length": 32
+      },
+      {
+        "index": 23,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1816,
+        "token_length": 45
+      },
+      {
+        "index": 24,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1078,
+        "token_length": 55
+      },
+      {
+        "index": 25,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 185,
+        "token_length": 39
+      },
+      {
+        "index": 26,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2035,
+        "token_length": 64
+      },
+      {
+        "index": 27,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 379,
+        "token_length": 36
+      },
+      {
+        "index": 28,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1457,
+        "token_length": 51
+      },
+      {
+        "index": 29,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2336,
+        "token_length": 54
+      },
+      {
+        "index": 30,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2292,
+        "token_length": 39
+      },
+      {
+        "index": 31,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1721,
+        "token_length": 38
+      },
+      {
+        "index": 32,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 66,
+        "token_length": 43
+      },
+      {
+        "index": 33,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1983,
+        "token_length": 56
+      },
+      {
+        "index": 34,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 935,
+        "token_length": 61
+      },
+      {
+        "index": 35,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2334,
+        "token_length": 43
+      },
+      {
+        "index": 36,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2361,
+        "token_length": 45
+      },
+      {
+        "index": 37,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1770,
+        "token_length": 44
+      },
+      {
+        "index": 38,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 58,
+        "token_length": 39
+      },
+      {
+        "index": 39,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1728,
+        "token_length": 36
+      },
+      {
+        "index": 40,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1042,
+        "token_length": 46
+      },
+      {
+        "index": 41,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1752,
+        "token_length": 46
+      },
+      {
+        "index": 42,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1216,
+        "token_length": 56
+      },
+      {
+        "index": 43,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 335,
+        "token_length": 46
+      },
+      {
+        "index": 44,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1046,
+        "token_length": 32
+      },
+      {
+        "index": 45,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1408,
+        "token_length": 46
+      },
+      {
+        "index": 46,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1743,
+        "token_length": 35
+      },
+      {
+        "index": 47,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2028,
+        "token_length": 39
+      },
+      {
+        "index": 48,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2329,
+        "token_length": 42
+      },
+      {
+        "index": 49,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1185,
+        "token_length": 44
+      },
+      {
+        "index": 50,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 366,
+        "token_length": 36
+      },
+      {
+        "index": 51,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 695,
+        "token_length": 39
+      },
+      {
+        "index": 52,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1343,
+        "token_length": 42
+      },
+      {
+        "index": 53,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 537,
+        "token_length": 43
+      },
+      {
+        "index": 54,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 767,
+        "token_length": 42
+      },
+      {
+        "index": 55,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 279,
+        "token_length": 34
+      },
+      {
+        "index": 56,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1031,
+        "token_length": 42
+      },
+      {
+        "index": 57,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2251,
+        "token_length": 41
+      },
+      {
+        "index": 58,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1830,
+        "token_length": 45
+      },
+      {
+        "index": 59,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1298,
+        "token_length": 35
+      },
+      {
+        "index": 60,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 588,
+        "token_length": 35
+      },
+      {
+        "index": 61,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 742,
+        "token_length": 50
+      },
+      {
+        "index": 62,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1353,
+        "token_length": 43
+      },
+      {
+        "index": 63,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1927,
+        "token_length": 40
+      },
+      {
+        "index": 64,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1444,
+        "token_length": 33
+      },
+      {
+        "index": 65,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1488,
+        "token_length": 37
+      },
+      {
+        "index": 66,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 54,
+        "token_length": 37
+      },
+      {
+        "index": 67,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1565,
+        "token_length": 42
+      },
+      {
+        "index": 68,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2322,
+        "token_length": 41
+      },
+      {
+        "index": 69,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2382,
+        "token_length": 44
+      },
+      {
+        "index": 70,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2132,
+        "token_length": 48
+      },
+      {
+        "index": 71,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 989,
+        "token_length": 54
+      },
+      {
+        "index": 72,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1132,
+        "token_length": 34
+      },
+      {
+        "index": 73,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1603,
+        "token_length": 36
+      },
+      {
+        "index": 74,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 545,
+        "token_length": 50
+      },
+      {
+        "index": 75,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 596,
+        "token_length": 40
+      },
+      {
+        "index": 76,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2154,
+        "token_length": 52
+      },
+      {
+        "index": 77,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2161,
+        "token_length": 44
+      },
+      {
+        "index": 78,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1317,
+        "token_length": 56
+      },
+      {
+        "index": 79,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1572,
+        "token_length": 37
+      },
+      {
+        "index": 80,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 355,
+        "token_length": 38
+      },
+      {
+        "index": 81,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 275,
+        "token_length": 36
+      },
+      {
+        "index": 82,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1048,
+        "token_length": 41
+      },
+      {
+        "index": 83,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 63,
+        "token_length": 37
+      },
+      {
+        "index": 84,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 321,
+        "token_length": 42
+      },
+      {
+        "index": 85,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1227,
+        "token_length": 64
+      },
+      {
+        "index": 86,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 749,
+        "token_length": 33
+      },
+      {
+        "index": 87,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 716,
+        "token_length": 52
+      },
+      {
+        "index": 88,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 64,
+        "token_length": 34
+      },
+      {
+        "index": 89,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 827,
+        "token_length": 51
+      },
+      {
+        "index": 90,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 45,
+        "token_length": 35
+      },
+      {
+        "index": 91,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2195,
+        "token_length": 39
+      },
+      {
+        "index": 92,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1559,
+        "token_length": 39
+      },
+      {
+        "index": 93,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1146,
+        "token_length": 49
+      },
+      {
+        "index": 94,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 174,
+        "token_length": 32
+      },
+      {
+        "index": 95,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1487,
+        "token_length": 36
+      },
+      {
+        "index": 96,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 291,
+        "token_length": 41
+      },
+      {
+        "index": 97,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 359,
+        "token_length": 43
+      },
+      {
+        "index": 98,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 288,
+        "token_length": 50
+      },
+      {
+        "index": 99,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1543,
+        "token_length": 39
+      },
+      {
+        "index": 100,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 209,
+        "token_length": 45
+      },
+      {
+        "index": 101,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1956,
+        "token_length": 46
+      },
+      {
+        "index": 102,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1804,
+        "token_length": 36
+      },
+      {
+        "index": 103,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 906,
+        "token_length": 67
+      },
+      {
+        "index": 104,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2235,
+        "token_length": 47
+      },
+      {
+        "index": 105,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 90,
+        "token_length": 35
+      },
+      {
+        "index": 106,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1402,
+        "token_length": 38
+      },
+      {
+        "index": 107,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 300,
+        "token_length": 46
+      },
+      {
+        "index": 108,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 346,
+        "token_length": 42
+      },
+      {
+        "index": 109,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 133,
+        "token_length": 61
+      },
+      {
+        "index": 110,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 974,
+        "token_length": 52
+      },
+      {
+        "index": 111,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1526,
+        "token_length": 47
+      },
+      {
+        "index": 112,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 334,
+        "token_length": 35
+      },
+      {
+        "index": 113,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 568,
+        "token_length": 35
+      },
+      {
+        "index": 114,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1937,
+        "token_length": 42
+      },
+      {
+        "index": 115,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 41,
+        "token_length": 39
+      },
+      {
+        "index": 116,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1419,
+        "token_length": 68
+      },
+      {
+        "index": 117,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1116,
+        "token_length": 52
+      },
+      {
+        "index": 118,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 917,
+        "token_length": 51
+      },
+      {
+        "index": 119,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1244,
+        "token_length": 54
+      },
+      {
+        "index": 120,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 293,
+        "token_length": 37
+      },
+      {
+        "index": 121,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 692,
+        "token_length": 45
+      },
+      {
+        "index": 122,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2091,
+        "token_length": 58
+      },
+      {
+        "index": 123,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1946,
+        "token_length": 40
+      },
+      {
+        "index": 124,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 105,
+        "token_length": 37
+      },
+      {
+        "index": 125,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1300,
+        "token_length": 72
+      },
+      {
+        "index": 126,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2113,
+        "token_length": 52
+      },
+      {
+        "index": 127,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 557,
+        "token_length": 37
+      },
+      {
+        "index": 128,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2130,
+        "token_length": 41
+      },
+      {
+        "index": 129,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2092,
+        "token_length": 39
+      },
+      {
+        "index": 130,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 20,
+        "token_length": 41
+      },
+      {
+        "index": 131,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 564,
+        "token_length": 40
+      },
+      {
+        "index": 132,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 601,
+        "token_length": 36
+      },
+      {
+        "index": 133,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 70,
+        "token_length": 38
+      },
+      {
+        "index": 134,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 540,
+        "token_length": 54
+      },
+      {
+        "index": 135,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 104,
+        "token_length": 45
+      },
+      {
+        "index": 136,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1982,
+        "token_length": 45
+      },
+      {
+        "index": 137,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1469,
+        "token_length": 59
+      },
+      {
+        "index": 138,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 746,
+        "token_length": 42
+      },
+      {
+        "index": 139,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1873,
+        "token_length": 37
+      },
+      {
+        "index": 140,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1561,
+        "token_length": 35
+      },
+      {
+        "index": 141,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 959,
+        "token_length": 36
+      },
+      {
+        "index": 142,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 319,
+        "token_length": 37
+      },
+      {
+        "index": 143,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1323,
+        "token_length": 38
+      },
+      {
+        "index": 144,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 92,
+        "token_length": 38
+      },
+      {
+        "index": 145,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 416,
+        "token_length": 48
+      },
+      {
+        "index": 146,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1169,
+        "token_length": 47
+      },
+      {
+        "index": 147,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 987,
+        "token_length": 46
+      },
+      {
+        "index": 148,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1018,
+        "token_length": 46
+      },
+      {
+        "index": 149,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2196,
+        "token_length": 45
+      },
+      {
+        "index": 150,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 285,
+        "token_length": 39
+      },
+      {
+        "index": 151,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1094,
+        "token_length": 38
+      },
+      {
+        "index": 152,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1342,
+        "token_length": 71
+      },
+      {
+        "index": 153,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1781,
+        "token_length": 39
+      },
+      {
+        "index": 154,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 357,
+        "token_length": 34
+      },
+      {
+        "index": 155,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1455,
+        "token_length": 41
+      },
+      {
+        "index": 156,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2021,
+        "token_length": 49
+      },
+      {
+        "index": 157,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 442,
+        "token_length": 37
+      },
+      {
+        "index": 158,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 365,
+        "token_length": 42
+      },
+      {
+        "index": 159,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 254,
+        "token_length": 39
+      },
+      {
+        "index": 160,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 782,
+        "token_length": 38
+      },
+      {
+        "index": 161,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2152,
+        "token_length": 41
+      },
+      {
+        "index": 162,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 325,
+        "token_length": 34
+      },
+      {
+        "index": 163,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1942,
+        "token_length": 39
+      },
+      {
+        "index": 164,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1420,
+        "token_length": 42
+      },
+      {
+        "index": 165,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 425,
+        "token_length": 38
+      },
+      {
+        "index": 166,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2004,
+        "token_length": 42
+      },
+      {
+        "index": 167,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1017,
+        "token_length": 52
+      },
+      {
+        "index": 168,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1382,
+        "token_length": 73
+      },
+      {
+        "index": 169,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2177,
+        "token_length": 43
+      },
+      {
+        "index": 170,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 762,
+        "token_length": 42
+      },
+      {
+        "index": 171,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 778,
+        "token_length": 36
+      },
+      {
+        "index": 172,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1809,
+        "token_length": 37
+      },
+      {
+        "index": 173,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2143,
+        "token_length": 42
+      },
+      {
+        "index": 174,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 844,
+        "token_length": 46
+      },
+      {
+        "index": 175,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1739,
+        "token_length": 45
+      },
+      {
+        "index": 176,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 208,
+        "token_length": 35
+      },
+      {
+        "index": 177,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 949,
+        "token_length": 47
+      },
+      {
+        "index": 178,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 213,
+        "token_length": 34
+      },
+      {
+        "index": 179,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1962,
+        "token_length": 42
+      },
+      {
+        "index": 180,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 141,
+        "token_length": 36
+      },
+      {
+        "index": 181,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1923,
+        "token_length": 50
+      },
+      {
+        "index": 182,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1540,
+        "token_length": 70
+      },
+      {
+        "index": 183,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 47,
+        "token_length": 49
+      },
+      {
+        "index": 184,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2176,
+        "token_length": 33
+      },
+      {
+        "index": 185,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 711,
+        "token_length": 41
+      },
+      {
+        "index": 186,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 892,
+        "token_length": 39
+      },
+      {
+        "index": 187,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 136,
+        "token_length": 35
+      },
+      {
+        "index": 188,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 894,
+        "token_length": 67
+      },
+      {
+        "index": 189,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1238,
+        "token_length": 43
+      },
+      {
+        "index": 190,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 610,
+        "token_length": 40
+      },
+      {
+        "index": 191,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1672,
+        "token_length": 37
+      },
+      {
+        "index": 192,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 828,
+        "token_length": 59
+      },
+      {
+        "index": 193,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 723,
+        "token_length": 41
+      },
+      {
+        "index": 194,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1492,
+        "token_length": 54
+      },
+      {
+        "index": 195,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 56,
+        "token_length": 46
+      },
+      {
+        "index": 196,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1522,
+        "token_length": 72
+      },
+      {
+        "index": 197,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 760,
+        "token_length": 40
+      },
+      {
+        "index": 198,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 57,
+        "token_length": 38
+      },
+      {
+        "index": 199,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1122,
+        "token_length": 36
+      },
+      {
+        "index": 200,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 52,
+        "token_length": 39
+      },
+      {
+        "index": 201,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1635,
+        "token_length": 32
+      },
+      {
+        "index": 202,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 983,
+        "token_length": 36
+      },
+      {
+        "index": 203,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1575,
+        "token_length": 36
+      },
+      {
+        "index": 204,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1853,
+        "token_length": 49
+      },
+      {
+        "index": 205,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1321,
+        "token_length": 50
+      },
+      {
+        "index": 206,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1322,
+        "token_length": 36
+      },
+      {
+        "index": 207,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1086,
+        "token_length": 48
+      },
+      {
+        "index": 208,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2371,
+        "token_length": 36
+      },
+      {
+        "index": 209,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 269,
+        "token_length": 38
+      },
+      {
+        "index": 210,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1996,
+        "token_length": 47
+      },
+      {
+        "index": 211,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 296,
+        "token_length": 47
+      },
+      {
+        "index": 212,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 979,
+        "token_length": 31
+      },
+      {
+        "index": 213,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 715,
+        "token_length": 41
+      },
+      {
+        "index": 214,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 127,
+        "token_length": 37
+      },
+      {
+        "index": 215,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 759,
+        "token_length": 40
+      },
+      {
+        "index": 216,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1756,
+        "token_length": 44
+      },
+      {
+        "index": 217,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1913,
+        "token_length": 50
+      },
+      {
+        "index": 218,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 656,
+        "token_length": 42
+      },
+      {
+        "index": 219,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 475,
+        "token_length": 46
+      },
+      {
+        "index": 220,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1574,
+        "token_length": 37
+      },
+      {
+        "index": 221,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1368,
+        "token_length": 47
+      },
+      {
+        "index": 222,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1583,
+        "token_length": 35
+      },
+      {
+        "index": 223,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1233,
+        "token_length": 67
+      },
+      {
+        "index": 224,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 326,
+        "token_length": 48
+      },
+      {
+        "index": 225,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 165,
+        "token_length": 36
+      },
+      {
+        "index": 226,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 454,
+        "token_length": 38
+      },
+      {
+        "index": 227,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1582,
+        "token_length": 39
+      },
+      {
+        "index": 228,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1771,
+        "token_length": 44
+      },
+      {
+        "index": 229,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 670,
+        "token_length": 37
+      },
+      {
+        "index": 230,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1704,
+        "token_length": 41
+      },
+      {
+        "index": 231,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 470,
+        "token_length": 43
+      },
+      {
+        "index": 232,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 488,
+        "token_length": 40
+      },
+      {
+        "index": 233,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2339,
+        "token_length": 41
+      },
+      {
+        "index": 234,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1006,
+        "token_length": 40
+      },
+      {
+        "index": 235,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1113,
+        "token_length": 43
+      },
+      {
+        "index": 236,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 239,
+        "token_length": 40
+      },
+      {
+        "index": 237,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1605,
+        "token_length": 36
+      },
+      {
+        "index": 238,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 646,
+        "token_length": 43
+      },
+      {
+        "index": 239,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1658,
+        "token_length": 36
+      },
+      {
+        "index": 240,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1154,
+        "token_length": 43
+      },
+      {
+        "index": 241,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1389,
+        "token_length": 38
+      },
+      {
+        "index": 242,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2278,
+        "token_length": 38
+      },
+      {
+        "index": 243,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1822,
+        "token_length": 34
+      },
+      {
+        "index": 244,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1080,
+        "token_length": 42
+      },
+      {
+        "index": 245,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 258,
+        "token_length": 51
+      },
+      {
+        "index": 246,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1174,
+        "token_length": 36
+      },
+      {
+        "index": 247,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 347,
+        "token_length": 46
+      },
+      {
+        "index": 248,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1073,
+        "token_length": 41
+      },
+      {
+        "index": 249,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2249,
+        "token_length": 44
+      },
+      {
+        "index": 250,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 139,
+        "token_length": 37
+      },
+      {
+        "index": 251,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1520,
+        "token_length": 39
+      },
+      {
+        "index": 252,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1791,
+        "token_length": 34
+      },
+      {
+        "index": 253,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1118,
+        "token_length": 50
+      },
+      {
+        "index": 254,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 134,
+        "token_length": 59
+      },
+      {
+        "index": 255,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2124,
+        "token_length": 38
+      },
+      {
+        "index": 256,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 473,
+        "token_length": 36
+      },
+      {
+        "index": 257,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1478,
+        "token_length": 45
+      },
+      {
+        "index": 258,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 837,
+        "token_length": 45
+      },
+      {
+        "index": 259,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1030,
+        "token_length": 37
+      },
+      {
+        "index": 260,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2256,
+        "token_length": 36
+      },
+      {
+        "index": 261,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2266,
+        "token_length": 55
+      },
+      {
+        "index": 262,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 34,
+        "token_length": 40
+      },
+      {
+        "index": 263,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 86,
+        "token_length": 45
+      },
+      {
+        "index": 264,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2078,
+        "token_length": 43
+      },
+      {
+        "index": 265,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 838,
+        "token_length": 47
+      },
+      {
+        "index": 266,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1252,
+        "token_length": 54
+      },
+      {
+        "index": 267,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 761,
+        "token_length": 47
+      },
+      {
+        "index": 268,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1757,
+        "token_length": 46
+      },
+      {
+        "index": 269,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1958,
+        "token_length": 42
+      },
+      {
+        "index": 270,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1597,
+        "token_length": 35
+      },
+      {
+        "index": 271,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1872,
+        "token_length": 44
+      },
+      {
+        "index": 272,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2217,
+        "token_length": 44
+      },
+      {
+        "index": 273,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 338,
+        "token_length": 38
+      },
+      {
+        "index": 274,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 912,
+        "token_length": 38
+      },
+      {
+        "index": 275,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1392,
+        "token_length": 41
+      },
+      {
+        "index": 276,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 302,
+        "token_length": 40
+      },
+      {
+        "index": 277,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1055,
+        "token_length": 44
+      },
+      {
+        "index": 278,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2318,
+        "token_length": 51
+      },
+      {
+        "index": 279,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 668,
+        "token_length": 36
+      },
+      {
+        "index": 280,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1521,
+        "token_length": 58
+      },
+      {
+        "index": 281,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1826,
+        "token_length": 42
+      },
+      {
+        "index": 282,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 80,
+        "token_length": 44
+      },
+      {
+        "index": 283,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1109,
+        "token_length": 40
+      },
+      {
+        "index": 284,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 121,
+        "token_length": 40
+      },
+      {
+        "index": 285,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 114,
+        "token_length": 50
+      },
+      {
+        "index": 286,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1652,
+        "token_length": 35
+      },
+      {
+        "index": 287,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1785,
+        "token_length": 41
+      },
+      {
+        "index": 288,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2034,
+        "token_length": 40
+      },
+      {
+        "index": 289,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1529,
+        "token_length": 39
+      },
+      {
+        "index": 290,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2320,
+        "token_length": 45
+      },
+      {
+        "index": 291,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 576,
+        "token_length": 44
+      },
+      {
+        "index": 292,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 821,
+        "token_length": 45
+      },
+      {
+        "index": 293,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1350,
+        "token_length": 40
+      },
+      {
+        "index": 294,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1778,
+        "token_length": 41
+      },
+      {
+        "index": 295,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2064,
+        "token_length": 42
+      },
+      {
+        "index": 296,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2268,
+        "token_length": 40
+      },
+      {
+        "index": 297,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1655,
+        "token_length": 37
+      },
+      {
+        "index": 298,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1171,
+        "token_length": 45
+      },
+      {
+        "index": 299,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1502,
+        "token_length": 52
+      },
+      {
+        "index": 300,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 272,
+        "token_length": 42
+      },
+      {
+        "index": 301,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1646,
+        "token_length": 41
+      },
+      {
+        "index": 302,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2114,
+        "token_length": 42
+      },
+      {
+        "index": 303,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 412,
+        "token_length": 43
+      },
+      {
+        "index": 304,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 682,
+        "token_length": 46
+      },
+      {
+        "index": 305,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1451,
+        "token_length": 79
+      },
+      {
+        "index": 306,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2305,
+        "token_length": 45
+      },
+      {
+        "index": 307,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2380,
+        "token_length": 41
+      },
+      {
+        "index": 308,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2120,
+        "token_length": 45
+      },
+      {
+        "index": 309,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1414,
+        "token_length": 43
+      },
+      {
+        "index": 310,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2015,
+        "token_length": 38
+      },
+      {
+        "index": 311,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 230,
+        "token_length": 68
+      },
+      {
+        "index": 312,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 798,
+        "token_length": 45
+      },
+      {
+        "index": 313,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1423,
+        "token_length": 35
+      },
+      {
+        "index": 314,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 345,
+        "token_length": 34
+      },
+      {
+        "index": 315,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 151,
+        "token_length": 54
+      },
+      {
+        "index": 316,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 770,
+        "token_length": 32
+      },
+      {
+        "index": 317,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2089,
+        "token_length": 36
+      },
+      {
+        "index": 318,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2127,
+        "token_length": 44
+      },
+      {
+        "index": 319,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 111,
+        "token_length": 40
+      },
+      {
+        "index": 320,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1932,
+        "token_length": 41
+      },
+      {
+        "index": 321,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 262,
+        "token_length": 50
+      },
+      {
+        "index": 322,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 662,
+        "token_length": 46
+      },
+      {
+        "index": 323,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 233,
+        "token_length": 37
+      },
+      {
+        "index": 324,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1964,
+        "token_length": 45
+      },
+      {
+        "index": 325,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1348,
+        "token_length": 37
+      },
+      {
+        "index": 326,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1456,
+        "token_length": 72
+      },
+      {
+        "index": 327,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 182,
+        "token_length": 55
+      },
+      {
+        "index": 328,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1777,
+        "token_length": 49
+      },
+      {
+        "index": 329,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2188,
+        "token_length": 41
+      },
+      {
+        "index": 330,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 967,
+        "token_length": 64
+      },
+      {
+        "index": 331,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1453,
+        "token_length": 61
+      },
+      {
+        "index": 332,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2146,
+        "token_length": 44
+      },
+      {
+        "index": 333,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 927,
+        "token_length": 49
+      },
+      {
+        "index": 334,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1269,
+        "token_length": 65
+      },
+      {
+        "index": 335,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1293,
+        "token_length": 63
+      },
+      {
+        "index": 336,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1167,
+        "token_length": 43
+      },
+      {
+        "index": 337,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1987,
+        "token_length": 47
+      },
+      {
+        "index": 338,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1796,
+        "token_length": 39
+      },
+      {
+        "index": 339,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2094,
+        "token_length": 39
+      },
+      {
+        "index": 340,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 648,
+        "token_length": 40
+      },
+      {
+        "index": 341,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1302,
+        "token_length": 46
+      },
+      {
+        "index": 342,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1076,
+        "token_length": 38
+      },
+      {
+        "index": 343,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1623,
+        "token_length": 35
+      },
+      {
+        "index": 344,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1133,
+        "token_length": 34
+      },
+      {
+        "index": 345,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 168,
+        "token_length": 55
+      },
+      {
+        "index": 346,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1797,
+        "token_length": 44
+      },
+      {
+        "index": 347,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2314,
+        "token_length": 34
+      },
+      {
+        "index": 348,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 480,
+        "token_length": 41
+      },
+      {
+        "index": 349,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2037,
+        "token_length": 43
+      },
+      {
+        "index": 350,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1713,
+        "token_length": 41
+      },
+      {
+        "index": 351,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1523,
+        "token_length": 44
+      },
+      {
+        "index": 352,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 903,
+        "token_length": 35
+      },
+      {
+        "index": 353,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2341,
+        "token_length": 41
+      },
+      {
+        "index": 354,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 521,
+        "token_length": 43
+      },
+      {
+        "index": 355,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2377,
+        "token_length": 35
+      },
+      {
+        "index": 356,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1915,
+        "token_length": 44
+      },
+      {
+        "index": 357,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 950,
+        "token_length": 59
+      },
+      {
+        "index": 358,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1428,
+        "token_length": 45
+      },
+      {
+        "index": 359,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1939,
+        "token_length": 44
+      },
+      {
+        "index": 360,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 459,
+        "token_length": 45
+      },
+      {
+        "index": 361,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1617,
+        "token_length": 39
+      },
+      {
+        "index": 362,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1177,
+        "token_length": 39
+      },
+      {
+        "index": 363,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 816,
+        "token_length": 42
+      },
+      {
+        "index": 364,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 95,
+        "token_length": 38
+      },
+      {
+        "index": 365,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 674,
+        "token_length": 43
+      },
+      {
+        "index": 366,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2276,
+        "token_length": 47
+      },
+      {
+        "index": 367,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1443,
+        "token_length": 35
+      },
+      {
+        "index": 368,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1226,
+        "token_length": 48
+      },
+      {
+        "index": 369,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1935,
+        "token_length": 40
+      },
+      {
+        "index": 370,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 429,
+        "token_length": 39
+      },
+      {
+        "index": 371,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 241,
+        "token_length": 35
+      },
+      {
+        "index": 372,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2308,
+        "token_length": 42
+      },
+      {
+        "index": 373,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1381,
+        "token_length": 35
+      },
+      {
+        "index": 374,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1358,
+        "token_length": 48
+      },
+      {
+        "index": 375,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1693,
+        "token_length": 37
+      },
+      {
+        "index": 376,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1367,
+        "token_length": 40
+      },
+      {
+        "index": 377,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 740,
+        "token_length": 45
+      },
+      {
+        "index": 378,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 221,
+        "token_length": 44
+      },
+      {
+        "index": 379,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2008,
+        "token_length": 39
+      },
+      {
+        "index": 380,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 2058,
+        "token_length": 44
+      },
+      {
+        "index": 381,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 128,
+        "token_length": 37
+      },
+      {
+        "index": 382,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 84,
+        "token_length": 44
+      },
+      {
+        "index": 383,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1115,
+        "token_length": 56
+      },
+      {
+        "index": 384,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1085,
+        "token_length": 39
+      },
+      {
+        "index": 385,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 323,
+        "token_length": 36
+      },
+      {
+        "index": 386,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 728,
+        "token_length": 41
+      },
+      {
+        "index": 387,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1591,
+        "token_length": 44
+      },
+      {
+        "index": 388,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1606,
+        "token_length": 34
+      },
+      {
+        "index": 389,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 548,
+        "token_length": 38
+      },
+      {
+        "index": 390,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1959,
+        "token_length": 42
+      },
+      {
+        "index": 391,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1670,
+        "token_length": 35
+      },
+      {
+        "index": 392,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 401,
+        "token_length": 35
+      },
+      {
+        "index": 393,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 731,
+        "token_length": 45
+      },
+      {
+        "index": 394,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 850,
+        "token_length": 70
+      },
+      {
+        "index": 395,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1700,
+        "token_length": 35
+      },
+      {
+        "index": 396,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 614,
+        "token_length": 41
+      },
+      {
+        "index": 397,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1653,
+        "token_length": 37
+      },
+      {
+        "index": 398,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 1500,
+        "token_length": 67
+      },
+      {
+        "index": 399,
+        "segment": "normal",
+        "eval_set_id": "triviaqa-600",
+        "cache_row": 16,
+        "token_length": 49
+      },
+      {
+        "index": 400,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 452,
+        "token_length": 10571
+      },
+      {
+        "index": 401,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 353,
+        "token_length": 4823
+      },
+      {
+        "index": 402,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 288,
+        "token_length": 4784
+      },
+      {
+        "index": 403,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 275,
+        "token_length": 10805
+      },
+      {
+        "index": 404,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 204,
+        "token_length": 7957
+      },
+      {
+        "index": 405,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 403,
+        "token_length": 10801
+      },
+      {
+        "index": 406,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 213,
+        "token_length": 3020
+      },
+      {
+        "index": 407,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 279,
+        "token_length": 3341
+      },
+      {
+        "index": 408,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 184,
+        "token_length": 4837
+      },
+      {
+        "index": 409,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 100,
+        "token_length": 10699
+      },
+      {
+        "index": 410,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 359,
+        "token_length": 9880
+      },
+      {
+        "index": 411,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 63,
+        "token_length": 4188
+      },
+      {
+        "index": 412,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 24,
+        "token_length": 6884
+      },
+      {
+        "index": 413,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 561,
+        "token_length": 9822
+      },
+      {
+        "index": 414,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 52,
+        "token_length": 4765
+      },
+      {
+        "index": 415,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 415,
+        "token_length": 7509
+      },
+      {
+        "index": 416,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 323,
+        "token_length": 6955
+      },
+      {
+        "index": 417,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 514,
+        "token_length": 3914
+      },
+      {
+        "index": 418,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 495,
+        "token_length": 3764
+      },
+      {
+        "index": 419,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 289,
+        "token_length": 5049
+      },
+      {
+        "index": 420,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 133,
+        "token_length": 10602
+      },
+      {
+        "index": 421,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 139,
+        "token_length": 10802
+      },
+      {
+        "index": 422,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 304,
+        "token_length": 8073
+      },
+      {
+        "index": 423,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 552,
+        "token_length": 7511
+      },
+      {
+        "index": 424,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 587,
+        "token_length": 9321
+      },
+      {
+        "index": 425,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 227,
+        "token_length": 8299
+      },
+      {
+        "index": 426,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 337,
+        "token_length": 5744
+      },
+      {
+        "index": 427,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 387,
+        "token_length": 9330
+      },
+      {
+        "index": 428,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 6,
+        "token_length": 10023
+      },
+      {
+        "index": 429,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 371,
+        "token_length": 5418
+      },
+      {
+        "index": 430,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 161,
+        "token_length": 10199
+      },
+      {
+        "index": 431,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 345,
+        "token_length": 7041
+      },
+      {
+        "index": 432,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 319,
+        "token_length": 4122
+      },
+      {
+        "index": 433,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 442,
+        "token_length": 3426
+      },
+      {
+        "index": 434,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 579,
+        "token_length": 6836
+      },
+      {
+        "index": 435,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 151,
+        "token_length": 7059
+      },
+      {
+        "index": 436,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 101,
+        "token_length": 10433
+      },
+      {
+        "index": 437,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 257,
+        "token_length": 9942
+      },
+      {
+        "index": 438,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 10,
+        "token_length": 7310
+      },
+      {
+        "index": 439,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 79,
+        "token_length": 7509
+      },
+      {
+        "index": 440,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 232,
+        "token_length": 8263
+      },
+      {
+        "index": 441,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 117,
+        "token_length": 5441
+      },
+      {
+        "index": 442,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 554,
+        "token_length": 6846
+      },
+      {
+        "index": 443,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 242,
+        "token_length": 6168
+      },
+      {
+        "index": 444,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 369,
+        "token_length": 7172
+      },
+      {
+        "index": 445,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 448,
+        "token_length": 8587
+      },
+      {
+        "index": 446,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 293,
+        "token_length": 7266
+      },
+      {
+        "index": 447,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 394,
+        "token_length": 6684
+      },
+      {
+        "index": 448,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 511,
+        "token_length": 9098
+      },
+      {
+        "index": 449,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 527,
+        "token_length": 4187
+      },
+      {
+        "index": 450,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 453,
+        "token_length": 8007
+      },
+      {
+        "index": 451,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 155,
+        "token_length": 5828
+      },
+      {
+        "index": 452,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 555,
+        "token_length": 8038
+      },
+      {
+        "index": 453,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 35,
+        "token_length": 9651
+      },
+      {
+        "index": 454,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 575,
+        "token_length": 8348
+      },
+      {
+        "index": 455,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 97,
+        "token_length": 3540
+      },
+      {
+        "index": 456,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 580,
+        "token_length": 3690
+      },
+      {
+        "index": 457,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 114,
+        "token_length": 8397
+      },
+      {
+        "index": 458,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 147,
+        "token_length": 8350
+      },
+      {
+        "index": 459,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 60,
+        "token_length": 3437
+      },
+      {
+        "index": 460,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 179,
+        "token_length": 4576
+      },
+      {
+        "index": 461,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 95,
+        "token_length": 10155
+      },
+      {
+        "index": 462,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 62,
+        "token_length": 2991
+      },
+      {
+        "index": 463,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 530,
+        "token_length": 4951
+      },
+      {
+        "index": 464,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 529,
+        "token_length": 10460
+      },
+      {
+        "index": 465,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 317,
+        "token_length": 6658
+      },
+      {
+        "index": 466,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 542,
+        "token_length": 9271
+      },
+      {
+        "index": 467,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 436,
+        "token_length": 9137
+      },
+      {
+        "index": 468,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 437,
+        "token_length": 4149
+      },
+      {
+        "index": 469,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 596,
+        "token_length": 10680
+      },
+      {
+        "index": 470,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 181,
+        "token_length": 9607
+      },
+      {
+        "index": 471,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 32,
+        "token_length": 6304
+      },
+      {
+        "index": 472,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 59,
+        "token_length": 8983
+      },
+      {
+        "index": 473,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 322,
+        "token_length": 5531
+      },
+      {
+        "index": 474,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 263,
+        "token_length": 10412
+      },
+      {
+        "index": 475,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 211,
+        "token_length": 6448
+      },
+      {
+        "index": 476,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 291,
+        "token_length": 7728
+      },
+      {
+        "index": 477,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 195,
+        "token_length": 6585
+      },
+      {
+        "index": 478,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 223,
+        "token_length": 7282
+      },
+      {
+        "index": 479,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 546,
+        "token_length": 7622
+      },
+      {
+        "index": 480,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 588,
+        "token_length": 6065
+      },
+      {
+        "index": 481,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 434,
+        "token_length": 4427
+      },
+      {
+        "index": 482,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 255,
+        "token_length": 9437
+      },
+      {
+        "index": 483,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 72,
+        "token_length": 3268
+      },
+      {
+        "index": 484,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 480,
+        "token_length": 7151
+      },
+      {
+        "index": 485,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 364,
+        "token_length": 5595
+      },
+      {
+        "index": 486,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 439,
+        "token_length": 10246
+      },
+      {
+        "index": 487,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 205,
+        "token_length": 6069
+      },
+      {
+        "index": 488,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 522,
+        "token_length": 7925
+      },
+      {
+        "index": 489,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 116,
+        "token_length": 5076
+      },
+      {
+        "index": 490,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 416,
+        "token_length": 7374
+      },
+      {
+        "index": 491,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 366,
+        "token_length": 5930
+      },
+      {
+        "index": 492,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 599,
+        "token_length": 10340
+      },
+      {
+        "index": 493,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 390,
+        "token_length": 8042
+      },
+      {
+        "index": 494,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 380,
+        "token_length": 10014
+      },
+      {
+        "index": 495,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 86,
+        "token_length": 7242
+      },
+      {
+        "index": 496,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 593,
+        "token_length": 4492
+      },
+      {
+        "index": 497,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 130,
+        "token_length": 10515
+      },
+      {
+        "index": 498,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 171,
+        "token_length": 10804
+      },
+      {
+        "index": 499,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 444,
+        "token_length": 10544
+      },
+      {
+        "index": 500,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 565,
+        "token_length": 5410
+      },
+      {
+        "index": 501,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 479,
+        "token_length": 4212
+      },
+      {
+        "index": 502,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 506,
+        "token_length": 5371
+      },
+      {
+        "index": 503,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 71,
+        "token_length": 9051
+      },
+      {
+        "index": 504,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 164,
+        "token_length": 9672
+      },
+      {
+        "index": 505,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 137,
+        "token_length": 9954
+      },
+      {
+        "index": 506,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 103,
+        "token_length": 8131
+      },
+      {
+        "index": 507,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 118,
+        "token_length": 10012
+      },
+      {
+        "index": 508,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 8,
+        "token_length": 6111
+      },
+      {
+        "index": 509,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 560,
+        "token_length": 7123
+      },
+      {
+        "index": 510,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 476,
+        "token_length": 9971
+      },
+      {
+        "index": 511,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 7,
+        "token_length": 4889
+      },
+      {
+        "index": 512,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 398,
+        "token_length": 8062
+      },
+      {
+        "index": 513,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 267,
+        "token_length": 10065
+      },
+      {
+        "index": 514,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 20,
+        "token_length": 3201
+      },
+      {
+        "index": 515,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 207,
+        "token_length": 5691
+      },
+      {
+        "index": 516,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 489,
+        "token_length": 6202
+      },
+      {
+        "index": 517,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 272,
+        "token_length": 9964
+      },
+      {
+        "index": 518,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 572,
+        "token_length": 4136
+      },
+      {
+        "index": 519,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 46,
+        "token_length": 7652
+      },
+      {
+        "index": 520,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 473,
+        "token_length": 8059
+      },
+      {
+        "index": 521,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 482,
+        "token_length": 10091
+      },
+      {
+        "index": 522,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 520,
+        "token_length": 6522
+      },
+      {
+        "index": 523,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 484,
+        "token_length": 9043
+      },
+      {
+        "index": 524,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 134,
+        "token_length": 3842
+      },
+      {
+        "index": 525,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 377,
+        "token_length": 10732
+      },
+      {
+        "index": 526,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 598,
+        "token_length": 4190
+      },
+      {
+        "index": 527,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 248,
+        "token_length": 5223
+      },
+      {
+        "index": 528,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 370,
+        "token_length": 4087
+      },
+      {
+        "index": 529,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 141,
+        "token_length": 2838
+      },
+      {
+        "index": 530,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 381,
+        "token_length": 7088
+      },
+      {
+        "index": 531,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 9,
+        "token_length": 4573
+      },
+      {
+        "index": 532,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 384,
+        "token_length": 3994
+      },
+      {
+        "index": 533,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 591,
+        "token_length": 5524
+      },
+      {
+        "index": 534,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 203,
+        "token_length": 3729
+      },
+      {
+        "index": 535,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 287,
+        "token_length": 6194
+      },
+      {
+        "index": 536,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 142,
+        "token_length": 10112
+      },
+      {
+        "index": 537,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 374,
+        "token_length": 10617
+      },
+      {
+        "index": 538,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 262,
+        "token_length": 8550
+      },
+      {
+        "index": 539,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 428,
+        "token_length": 11092
+      },
+      {
+        "index": 540,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 483,
+        "token_length": 4992
+      },
+      {
+        "index": 541,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 438,
+        "token_length": 8888
+      },
+      {
+        "index": 542,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 123,
+        "token_length": 7079
+      },
+      {
+        "index": 543,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 106,
+        "token_length": 4968
+      },
+      {
+        "index": 544,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 594,
+        "token_length": 8320
+      },
+      {
+        "index": 545,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 582,
+        "token_length": 4196
+      },
+      {
+        "index": 546,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 188,
+        "token_length": 3993
+      },
+      {
+        "index": 547,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 26,
+        "token_length": 10489
+      },
+      {
+        "index": 548,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 494,
+        "token_length": 9406
+      },
+      {
+        "index": 549,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 105,
+        "token_length": 10081
+      },
+      {
+        "index": 550,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 297,
+        "token_length": 10620
+      },
+      {
+        "index": 551,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 193,
+        "token_length": 10168
+      },
+      {
+        "index": 552,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 14,
+        "token_length": 8291
+      },
+      {
+        "index": 553,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 401,
+        "token_length": 3957
+      },
+      {
+        "index": 554,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 252,
+        "token_length": 5613
+      },
+      {
+        "index": 555,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 144,
+        "token_length": 3883
+      },
+      {
+        "index": 556,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 315,
+        "token_length": 9445
+      },
+      {
+        "index": 557,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 556,
+        "token_length": 9425
+      },
+      {
+        "index": 558,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 160,
+        "token_length": 8392
+      },
+      {
+        "index": 559,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 321,
+        "token_length": 3149
+      },
+      {
+        "index": 560,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 49,
+        "token_length": 6608
+      },
+      {
+        "index": 561,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 197,
+        "token_length": 10122
+      },
+      {
+        "index": 562,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 157,
+        "token_length": 7227
+      },
+      {
+        "index": 563,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 586,
+        "token_length": 7126
+      },
+      {
+        "index": 564,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 356,
+        "token_length": 5464
+      },
+      {
+        "index": 565,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 305,
+        "token_length": 9430
+      },
+      {
+        "index": 566,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 562,
+        "token_length": 7617
+      },
+      {
+        "index": 567,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 226,
+        "token_length": 2980
+      },
+      {
+        "index": 568,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 411,
+        "token_length": 3609
+      },
+      {
+        "index": 569,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 150,
+        "token_length": 9309
+      },
+      {
+        "index": 570,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 58,
+        "token_length": 4127
+      },
+      {
+        "index": 571,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 550,
+        "token_length": 6426
+      },
+      {
+        "index": 572,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 269,
+        "token_length": 4436
+      },
+      {
+        "index": 573,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 544,
+        "token_length": 3474
+      },
+      {
+        "index": 574,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 13,
+        "token_length": 9533
+      },
+      {
+        "index": 575,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 187,
+        "token_length": 9186
+      },
+      {
+        "index": 576,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 306,
+        "token_length": 3782
+      },
+      {
+        "index": 577,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 55,
+        "token_length": 9067
+      },
+      {
+        "index": 578,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 308,
+        "token_length": 7818
+      },
+      {
+        "index": 579,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 509,
+        "token_length": 9406
+      },
+      {
+        "index": 580,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 111,
+        "token_length": 3285
+      },
+      {
+        "index": 581,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 525,
+        "token_length": 10968
+      },
+      {
+        "index": 582,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 244,
+        "token_length": 8042
+      },
+      {
+        "index": 583,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 487,
+        "token_length": 8240
+      },
+      {
+        "index": 584,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 2,
+        "token_length": 4979
+      },
+      {
+        "index": 585,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 503,
+        "token_length": 6770
+      },
+      {
+        "index": 586,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 29,
+        "token_length": 7496
+      },
+      {
+        "index": 587,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 119,
+        "token_length": 4046
+      },
+      {
+        "index": 588,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 395,
+        "token_length": 9721
+      },
+      {
+        "index": 589,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 140,
+        "token_length": 7529
+      },
+      {
+        "index": 590,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 498,
+        "token_length": 3666
+      },
+      {
+        "index": 591,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 209,
+        "token_length": 8129
+      },
+      {
+        "index": 592,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 120,
+        "token_length": 9932
+      },
+      {
+        "index": 593,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 389,
+        "token_length": 8488
+      },
+      {
+        "index": 594,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 344,
+        "token_length": 5208
+      },
+      {
+        "index": 595,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 84,
+        "token_length": 5362
+      },
+      {
+        "index": 596,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 37,
+        "token_length": 7980
+      },
+      {
+        "index": 597,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 172,
+        "token_length": 10098
+      },
+      {
+        "index": 598,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 328,
+        "token_length": 3919
+      },
+      {
+        "index": 599,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 333,
+        "token_length": 8138
+      },
+      {
+        "index": 600,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 67,
+        "token_length": 8172
+      },
+      {
+        "index": 601,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 126,
+        "token_length": 3759
+      },
+      {
+        "index": 602,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 379,
+        "token_length": 9197
+      },
+      {
+        "index": 603,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 266,
+        "token_length": 9801
+      },
+      {
+        "index": 604,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 51,
+        "token_length": 2955
+      },
+      {
+        "index": 605,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 355,
+        "token_length": 4131
+      },
+      {
+        "index": 606,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 28,
+        "token_length": 10176
+      },
+      {
+        "index": 607,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 208,
+        "token_length": 9842
+      },
+      {
+        "index": 608,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 295,
+        "token_length": 10029
+      },
+      {
+        "index": 609,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 443,
+        "token_length": 10718
+      },
+      {
+        "index": 610,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 93,
+        "token_length": 5265
+      },
+      {
+        "index": 611,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 440,
+        "token_length": 4208
+      },
+      {
+        "index": 612,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 446,
+        "token_length": 5452
+      },
+      {
+        "index": 613,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 386,
+        "token_length": 8624
+      },
+      {
+        "index": 614,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 124,
+        "token_length": 5205
+      },
+      {
+        "index": 615,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 48,
+        "token_length": 6449
+      },
+      {
+        "index": 616,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 567,
+        "token_length": 5560
+      },
+      {
+        "index": 617,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 148,
+        "token_length": 3799
+      },
+      {
+        "index": 618,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 98,
+        "token_length": 9231
+      },
+      {
+        "index": 619,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 571,
+        "token_length": 5925
+      },
+      {
+        "index": 620,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 423,
+        "token_length": 4856
+      },
+      {
+        "index": 621,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 156,
+        "token_length": 10366
+      },
+      {
+        "index": 622,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 159,
+        "token_length": 4714
+      },
+      {
+        "index": 623,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 109,
+        "token_length": 7094
+      },
+      {
+        "index": 624,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 464,
+        "token_length": 9094
+      },
+      {
+        "index": 625,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 11,
+        "token_length": 6809
+      },
+      {
+        "index": 626,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 385,
+        "token_length": 7892
+      },
+      {
+        "index": 627,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 191,
+        "token_length": 7090
+      },
+      {
+        "index": 628,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 300,
+        "token_length": 8727
+      },
+      {
+        "index": 629,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 231,
+        "token_length": 7496
+      },
+      {
+        "index": 630,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 243,
+        "token_length": 10445
+      },
+      {
+        "index": 631,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 229,
+        "token_length": 4261
+      },
+      {
+        "index": 632,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 76,
+        "token_length": 11052
+      },
+      {
+        "index": 633,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 80,
+        "token_length": 5246
+      },
+      {
+        "index": 634,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 163,
+        "token_length": 5127
+      },
+      {
+        "index": 635,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 467,
+        "token_length": 4865
+      },
+      {
+        "index": 636,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 454,
+        "token_length": 10212
+      },
+      {
+        "index": 637,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 68,
+        "token_length": 5074
+      },
+      {
+        "index": 638,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 408,
+        "token_length": 3519
+      },
+      {
+        "index": 639,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 424,
+        "token_length": 2945
+      },
+      {
+        "index": 640,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 247,
+        "token_length": 6138
+      },
+      {
+        "index": 641,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 92,
+        "token_length": 7045
+      },
+      {
+        "index": 642,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 493,
+        "token_length": 6104
+      },
+      {
+        "index": 643,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 21,
+        "token_length": 5530
+      },
+      {
+        "index": 644,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 352,
+        "token_length": 9960
+      },
+      {
+        "index": 645,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 354,
+        "token_length": 7291
+      },
+      {
+        "index": 646,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 259,
+        "token_length": 10271
+      },
+      {
+        "index": 647,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 334,
+        "token_length": 7569
+      },
+      {
+        "index": 648,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 234,
+        "token_length": 4471
+      },
+      {
+        "index": 649,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 339,
+        "token_length": 7418
+      },
+      {
+        "index": 650,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 564,
+        "token_length": 5097
+      },
+      {
+        "index": 651,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 391,
+        "token_length": 3476
+      },
+      {
+        "index": 652,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 265,
+        "token_length": 5228
+      },
+      {
+        "index": 653,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 39,
+        "token_length": 6426
+      },
+      {
+        "index": 654,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 486,
+        "token_length": 9681
+      },
+      {
+        "index": 655,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 430,
+        "token_length": 3483
+      },
+      {
+        "index": 656,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 472,
+        "token_length": 6041
+      },
+      {
+        "index": 657,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 516,
+        "token_length": 7193
+      },
+      {
+        "index": 658,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 517,
+        "token_length": 7053
+      },
+      {
+        "index": 659,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 251,
+        "token_length": 5365
+      },
+      {
+        "index": 660,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 327,
+        "token_length": 6937
+      },
+      {
+        "index": 661,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 349,
+        "token_length": 10557
+      },
+      {
+        "index": 662,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 413,
+        "token_length": 3419
+      },
+      {
+        "index": 663,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 449,
+        "token_length": 4996
+      },
+      {
+        "index": 664,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 433,
+        "token_length": 10555
+      },
+      {
+        "index": 665,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 414,
+        "token_length": 9442
+      },
+      {
+        "index": 666,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 368,
+        "token_length": 5944
+      },
+      {
+        "index": 667,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 559,
+        "token_length": 3735
+      },
+      {
+        "index": 668,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 458,
+        "token_length": 7627
+      },
+      {
+        "index": 669,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 519,
+        "token_length": 3752
+      },
+      {
+        "index": 670,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 168,
+        "token_length": 6978
+      },
+      {
+        "index": 671,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 22,
+        "token_length": 8503
+      },
+      {
+        "index": 672,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 33,
+        "token_length": 8676
+      },
+      {
+        "index": 673,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 17,
+        "token_length": 10368
+      },
+      {
+        "index": 674,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 477,
+        "token_length": 6237
+      },
+      {
+        "index": 675,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 563,
+        "token_length": 4384
+      },
+      {
+        "index": 676,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 418,
+        "token_length": 9022
+      },
+      {
+        "index": 677,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 216,
+        "token_length": 7608
+      },
+      {
+        "index": 678,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 468,
+        "token_length": 6316
+      },
+      {
+        "index": 679,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 264,
+        "token_length": 4406
+      },
+      {
+        "index": 680,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 201,
+        "token_length": 6171
+      },
+      {
+        "index": 681,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 298,
+        "token_length": 6265
+      },
+      {
+        "index": 682,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 492,
+        "token_length": 8740
+      },
+      {
+        "index": 683,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 427,
+        "token_length": 7843
+      },
+      {
+        "index": 684,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 87,
+        "token_length": 5211
+      },
+      {
+        "index": 685,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 132,
+        "token_length": 8508
+      },
+      {
+        "index": 686,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 478,
+        "token_length": 6261
+      },
+      {
+        "index": 687,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 457,
+        "token_length": 10560
+      },
+      {
+        "index": 688,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 363,
+        "token_length": 9046
+      },
+      {
+        "index": 689,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 186,
+        "token_length": 9507
+      },
+      {
+        "index": 690,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 581,
+        "token_length": 5096
+      },
+      {
+        "index": 691,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 332,
+        "token_length": 5318
+      },
+      {
+        "index": 692,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 382,
+        "token_length": 9284
+      },
+      {
+        "index": 693,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 249,
+        "token_length": 8567
+      },
+      {
+        "index": 694,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 85,
+        "token_length": 6140
+      },
+      {
+        "index": 695,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 283,
+        "token_length": 5245
+      },
+      {
+        "index": 696,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 290,
+        "token_length": 4129
+      },
+      {
+        "index": 697,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 331,
+        "token_length": 4960
+      },
+      {
+        "index": 698,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 166,
+        "token_length": 2919
+      },
+      {
+        "index": 699,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 78,
+        "token_length": 6575
+      },
+      {
+        "index": 700,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 200,
+        "token_length": 4461
+      },
+      {
+        "index": 701,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 113,
+        "token_length": 5655
+      },
+      {
+        "index": 702,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 536,
+        "token_length": 9753
+      },
+      {
+        "index": 703,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 510,
+        "token_length": 8779
+      },
+      {
+        "index": 704,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 154,
+        "token_length": 7262
+      },
+      {
+        "index": 705,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 104,
+        "token_length": 9487
+      },
+      {
+        "index": 706,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 185,
+        "token_length": 3440
+      },
+      {
+        "index": 707,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 543,
+        "token_length": 10674
+      },
+      {
+        "index": 708,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 199,
+        "token_length": 6537
+      },
+      {
+        "index": 709,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 547,
+        "token_length": 7223
+      },
+      {
+        "index": 710,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 481,
+        "token_length": 8301
+      },
+      {
+        "index": 711,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 115,
+        "token_length": 5059
+      },
+      {
+        "index": 712,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 577,
+        "token_length": 10103
+      },
+      {
+        "index": 713,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 397,
+        "token_length": 3328
+      },
+      {
+        "index": 714,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 383,
+        "token_length": 9856
+      },
+      {
+        "index": 715,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 583,
+        "token_length": 7635
+      },
+      {
+        "index": 716,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 318,
+        "token_length": 7594
+      },
+      {
+        "index": 717,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 445,
+        "token_length": 6555
+      },
+      {
+        "index": 718,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 233,
+        "token_length": 10773
+      },
+      {
+        "index": 719,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 18,
+        "token_length": 9026
+      },
+      {
+        "index": 720,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 521,
+        "token_length": 8602
+      },
+      {
+        "index": 721,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 218,
+        "token_length": 2890
+      },
+      {
+        "index": 722,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 419,
+        "token_length": 6044
+      },
+      {
+        "index": 723,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 361,
+        "token_length": 8761
+      },
+      {
+        "index": 724,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 77,
+        "token_length": 3146
+      },
+      {
+        "index": 725,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 214,
+        "token_length": 8540
+      },
+      {
+        "index": 726,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 367,
+        "token_length": 3654
+      },
+      {
+        "index": 727,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 496,
+        "token_length": 5696
+      },
+      {
+        "index": 728,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 237,
+        "token_length": 6800
+      },
+      {
+        "index": 729,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 340,
+        "token_length": 8154
+      },
+      {
+        "index": 730,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 202,
+        "token_length": 4627
+      },
+      {
+        "index": 731,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 3,
+        "token_length": 11050
+      },
+      {
+        "index": 732,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 23,
+        "token_length": 5766
+      },
+      {
+        "index": 733,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 504,
+        "token_length": 3734
+      },
+      {
+        "index": 734,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 236,
+        "token_length": 4411
+      },
+      {
+        "index": 735,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 47,
+        "token_length": 3619
+      },
+      {
+        "index": 736,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 568,
+        "token_length": 10332
+      },
+      {
+        "index": 737,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 584,
+        "token_length": 7367
+      },
+      {
+        "index": 738,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 553,
+        "token_length": 8554
+      },
+      {
+        "index": 739,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 167,
+        "token_length": 4880
+      },
+      {
+        "index": 740,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 145,
+        "token_length": 10219
+      },
+      {
+        "index": 741,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 258,
+        "token_length": 5871
+      },
+      {
+        "index": 742,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 346,
+        "token_length": 3644
+      },
+      {
+        "index": 743,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 239,
+        "token_length": 4247
+      },
+      {
+        "index": 744,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 566,
+        "token_length": 2927
+      },
+      {
+        "index": 745,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 261,
+        "token_length": 3850
+      },
+      {
+        "index": 746,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 66,
+        "token_length": 8104
+      },
+      {
+        "index": 747,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 192,
+        "token_length": 6702
+      },
+      {
+        "index": 748,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 162,
+        "token_length": 10638
+      },
+      {
+        "index": 749,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 241,
+        "token_length": 6427
+      },
+      {
+        "index": 750,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 320,
+        "token_length": 4028
+      },
+      {
+        "index": 751,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 64,
+        "token_length": 2863
+      },
+      {
+        "index": 752,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 121,
+        "token_length": 7951
+      },
+      {
+        "index": 753,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 30,
+        "token_length": 5683
+      },
+      {
+        "index": 754,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 589,
+        "token_length": 4405
+      },
+      {
+        "index": 755,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 455,
+        "token_length": 4884
+      },
+      {
+        "index": 756,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 475,
+        "token_length": 4998
+      },
+      {
+        "index": 757,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 107,
+        "token_length": 9531
+      },
+      {
+        "index": 758,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 316,
+        "token_length": 10733
+      },
+      {
+        "index": 759,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 466,
+        "token_length": 9059
+      },
+      {
+        "index": 760,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 459,
+        "token_length": 9408
+      },
+      {
+        "index": 761,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 335,
+        "token_length": 10663
+      },
+      {
+        "index": 762,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 540,
+        "token_length": 5440
+      },
+      {
+        "index": 763,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 512,
+        "token_length": 5756
+      },
+      {
+        "index": 764,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 158,
+        "token_length": 7057
+      },
+      {
+        "index": 765,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 94,
+        "token_length": 10513
+      },
+      {
+        "index": 766,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 189,
+        "token_length": 2925
+      },
+      {
+        "index": 767,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 357,
+        "token_length": 4685
+      },
+      {
+        "index": 768,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 325,
+        "token_length": 7920
+      },
+      {
+        "index": 769,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 597,
+        "token_length": 10501
+      },
+      {
+        "index": 770,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 378,
+        "token_length": 4997
+      },
+      {
+        "index": 771,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 153,
+        "token_length": 9142
+      },
+      {
+        "index": 772,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 412,
+        "token_length": 4009
+      },
+      {
+        "index": 773,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 278,
+        "token_length": 10079
+      },
+      {
+        "index": 774,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 343,
+        "token_length": 10038
+      },
+      {
+        "index": 775,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 41,
+        "token_length": 7438
+      },
+      {
+        "index": 776,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 228,
+        "token_length": 10789
+      },
+      {
+        "index": 777,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 173,
+        "token_length": 4168
+      },
+      {
+        "index": 778,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 499,
+        "token_length": 7007
+      },
+      {
+        "index": 779,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 240,
+        "token_length": 9042
+      },
+      {
+        "index": 780,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 27,
+        "token_length": 10633
+      },
+      {
+        "index": 781,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 40,
+        "token_length": 4989
+      },
+      {
+        "index": 782,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 548,
+        "token_length": 8114
+      },
+      {
+        "index": 783,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 570,
+        "token_length": 10072
+      },
+      {
+        "index": 784,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 90,
+        "token_length": 3586
+      },
+      {
+        "index": 785,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 313,
+        "token_length": 5069
+      },
+      {
+        "index": 786,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 206,
+        "token_length": 6803
+      },
+      {
+        "index": 787,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 312,
+        "token_length": 6245
+      },
+      {
+        "index": 788,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 0,
+        "token_length": 10238
+      },
+      {
+        "index": 789,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 178,
+        "token_length": 5621
+      },
+      {
+        "index": 790,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 182,
+        "token_length": 6599
+      },
+      {
+        "index": 791,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 302,
+        "token_length": 6276
+      },
+      {
+        "index": 792,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 61,
+        "token_length": 6000
+      },
+      {
+        "index": 793,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 190,
+        "token_length": 6935
+      },
+      {
+        "index": 794,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 122,
+        "token_length": 3731
+      },
+      {
+        "index": 795,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 526,
+        "token_length": 4343
+      },
+      {
+        "index": 796,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 143,
+        "token_length": 9792
+      },
+      {
+        "index": 797,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 281,
+        "token_length": 7717
+      },
+      {
+        "index": 798,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 276,
+        "token_length": 8269
+      },
+      {
+        "index": 799,
+        "segment": "shift",
+        "eval_set_id": "triviaqa-longctx-600",
+        "cache_row": 406,
+        "token_length": 6856
+      }
+    ]
+  },
+  "checkpoints": [
+    {
+      "after_request": 200,
+      "window_normal": 200,
+      "window_shift": 0,
+      "envelope_state": "INSIDE",
+      "psi": 0.0106289976863101,
+      "driven_by_smoothing": false,
+      "to_status": "VALID",
+      "reason": "VALID -> VALID. token_length: PSI 0.0106 over 200 requests puts the envelope at INSIDE (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix."
+    },
+    {
+      "after_request": 250,
+      "window_normal": 200,
+      "window_shift": 0,
+      "envelope_state": "INSIDE",
+      "psi": 0.03634405927110179,
+      "driven_by_smoothing": false,
+      "to_status": "VALID",
+      "reason": "VALID -> VALID. token_length: PSI 0.0363 over 200 requests puts the envelope at INSIDE (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix."
+    },
+    {
+      "after_request": 300,
+      "window_normal": 200,
+      "window_shift": 0,
+      "envelope_state": "INSIDE",
+      "psi": 0.03538198881447147,
+      "driven_by_smoothing": false,
+      "to_status": "VALID",
+      "reason": "VALID -> VALID. token_length: PSI 0.0354 over 200 requests puts the envelope at INSIDE (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix."
+    },
+    {
+      "after_request": 350,
+      "window_normal": 200,
+      "window_shift": 0,
+      "envelope_state": "INSIDE",
+      "psi": 0.026493279221198165,
+      "driven_by_smoothing": false,
+      "to_status": "VALID",
+      "reason": "VALID -> VALID. token_length: PSI 0.0265 over 200 requests puts the envelope at INSIDE (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix."
+    },
+    {
+      "after_request": 400,
+      "window_normal": 200,
+      "window_shift": 0,
+      "envelope_state": "INSIDE",
+      "psi": 0.054291097019110515,
+      "driven_by_smoothing": false,
+      "to_status": "VALID",
+      "reason": "VALID -> VALID. token_length: PSI 0.0543 over 200 requests puts the envelope at INSIDE (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix."
+    },
+    {
+      "after_request": 450,
+      "window_normal": 150,
+      "window_shift": 50,
+      "envelope_state": "SIGNIFICANT_SHIFT",
+      "psi": 0.35264742238016006,
+      "driven_by_smoothing": false,
+      "to_status": "REVOKED",
+      "reason": "VALID -> REVOKED. token_length: PSI 0.3526 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here."
+    },
+    {
+      "after_request": 500,
+      "window_normal": 100,
+      "window_shift": 100,
+      "envelope_state": "SIGNIFICANT_SHIFT",
+      "psi": 1.0644998240443726,
+      "driven_by_smoothing": false,
+      "to_status": "REVOKED",
+      "reason": "VALID -> REVOKED. token_length: PSI 1.0645 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here."
+    },
+    {
+      "after_request": 550,
+      "window_normal": 50,
+      "window_shift": 150,
+      "envelope_state": "SIGNIFICANT_SHIFT",
+      "psi": 2.095437538863778,
+      "driven_by_smoothing": false,
+      "to_status": "REVOKED",
+      "reason": "VALID -> REVOKED. token_length: PSI 2.0954 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here."
+    },
+    {
+      "after_request": 600,
+      "window_normal": 0,
+      "window_shift": 200,
+      "envelope_state": "SIGNIFICANT_SHIFT",
+      "psi": 12.063557058803507,
+      "driven_by_smoothing": true,
+      "to_status": "REVOKED",
+      "reason": "VALID -> REVOKED. token_length: PSI 12.0636 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). The magnitude is set by the smoothing epsilon -- 7 of 8 bins were empty, carrying 85% of the index -- so the finding is that traffic left the reference support, not that the shift measured this size. Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here."
+    },
+    {
+      "after_request": 650,
+      "window_normal": 0,
+      "window_shift": 200,
+      "envelope_state": "SIGNIFICANT_SHIFT",
+      "psi": 12.063557058803507,
+      "driven_by_smoothing": true,
+      "to_status": "REVOKED",
+      "reason": "VALID -> REVOKED. token_length: PSI 12.0636 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). The magnitude is set by the smoothing epsilon -- 7 of 8 bins were empty, carrying 85% of the index -- so the finding is that traffic left the reference support, not that the shift measured this size. Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here."
+    },
+    {
+      "after_request": 700,
+      "window_normal": 0,
+      "window_shift": 200,
+      "envelope_state": "SIGNIFICANT_SHIFT",
+      "psi": 12.063557058803507,
+      "driven_by_smoothing": true,
+      "to_status": "REVOKED",
+      "reason": "VALID -> REVOKED. token_length: PSI 12.0636 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). The magnitude is set by the smoothing epsilon -- 7 of 8 bins were empty, carrying 85% of the index -- so the finding is that traffic left the reference support, not that the shift measured this size. Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here."
+    },
+    {
+      "after_request": 750,
+      "window_normal": 0,
+      "window_shift": 200,
+      "envelope_state": "SIGNIFICANT_SHIFT",
+      "psi": 12.063557058803507,
+      "driven_by_smoothing": true,
+      "to_status": "REVOKED",
+      "reason": "VALID -> REVOKED. token_length: PSI 12.0636 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). The magnitude is set by the smoothing epsilon -- 7 of 8 bins were empty, carrying 85% of the index -- so the finding is that traffic left the reference support, not that the shift measured this size. Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here."
+    },
+    {
+      "after_request": 800,
+      "window_normal": 0,
+      "window_shift": 200,
+      "envelope_state": "SIGNIFICANT_SHIFT",
+      "psi": 12.063557058803507,
+      "driven_by_smoothing": true,
+      "to_status": "REVOKED",
+      "reason": "VALID -> REVOKED. token_length: PSI 12.0636 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). The magnitude is set by the smoothing epsilon -- 7 of 8 bins were empty, carrying 85% of the index -- so the finding is that traffic left the reference support, not that the shift measured this size. Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here."
+    }
+  ],
+  "revocation": {
+    "at_request": 450,
+    "live_eval_set_id": "triviaqa-longctx-600",
+    "policy_hash": "sha256:f5746b28b2ec8acb109da92eacac42f07508574090c2ca4621df2b1c3f4799b5",
+    "decisions": [
+      {
+        "profile": "customer_support",
+        "response": {
+          "transition": {
+            "warrant_id": "W-f4bddcaa365cb7d3",
+            "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
+            "eval_set_id": "triviaqa-600",
+            "from_status": "VALID",
+            "to_status": "REVOKED",
+            "changed": true,
+            "envelope_state": "SIGNIFICANT_SHIFT",
+            "widen_factor": null,
+            "needs_routing": true,
+            "reason": "VALID -> REVOKED. token_length: PSI 0.3526 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here.",
+            "verdict": {
+              "state": "SIGNIFICANT_SHIFT",
+              "n_observed": 450,
+              "window_size": 200,
+              "driver": "token_length",
+              "reason": "token_length: PSI 0.3526 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix.",
+              "unobserved_features": [
+                "script_mix",
+                "embedding_centroid_distance",
+                "reference_perplexity",
+                "category_mix"
+              ],
+              "per_feature": {
+                "token_length": {
+                  "feature": "token_length",
+                  "psi": 0.35264742238016006,
+                  "n_live": 200,
+                  "n_reference": 0,
+                  "bins_smoothed": 0,
+                  "epsilon": 1e-06,
+                  "smoothed_share": 0.0,
+                  "driven_by_smoothing": false,
+                  "per_bin": [
+                    0.007332288239483585,
+                    0.030221569122518478,
+                    0.03316617827125489,
+                    5.376551305240851e-05,
+                    0.019080384352035882,
+                    0.008344385820574935,
+                    0.042690669865289584,
+                    0.21175818119595027
+                  ]
+                }
+              }
+            }
+          },
+          "routing": {
+            "envelope_id": "triviaqa-longctx-600",
+            "profile": "customer_support",
+            "routed_to": null,
+            "action": "ESCALATE",
+            "suspended_profile": true,
+            "reason": "no warrant on triviaqa-longctx-600 meets customer_support's declared minimums (recall >= 0.1, hard-negative FPR <= 0.02); customer_support is suspended on this envelope",
+            "considered": [
+              {
+                "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
+                "verdict": "customer_support requires recall >= 0.1; the warrant's lower bound is 0.0903 (point estimate 0.1264)"
+              },
+              {
+                "detector_id": "probe-qwen2.5-7b-instruct-T1-max_rolling_means",
+                "verdict": "REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-max_rolling_means==0.1.0] auroc_lower_ci: measured 0.5105, required > 0.55; lift_lower_ci: measured 1.076 [0.969, 1.182] at measured flag rate 0.5433, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
+              },
+              {
+                "detector_id": "probe-qwen2.5-7b-instruct-T1-mean_pool",
+                "verdict": "REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-mean_pool==0.1.0] auroc_lower_ci: measured 0.4546, required > 0.55"
+              }
+            ],
+            "enqueued_for_validation": [
+              "pii-reference|P-declared|triviaqa-longctx-600",
+              "probe-T1-max_rolling_means|P-conservative|triviaqa-longctx-600",
+              "probe-T1-mean_pool|P-conservative|triviaqa-longctx-600",
+              "probe-T2-logprob|P-conservative|triviaqa-longctx-600",
+              "probe-T3-judge|P-conservative|triviaqa-longctx-600"
+            ]
+          },
+          "claimed_bounds": {},
+          "can_certify": false,
+          "acted_without_operator": true
+        },
+        "certificate": {
+          "certificate_id": "cert-revocation-customer_support-0450",
+          "request_id": "R-replay-0450",
+          "session_id": "S-revocation-replay",
+          "timestamp": "2026-09-14T08:39:16+00:00",
+          "findings": [],
+          "resolution": {
+            "action": "ESCALATE",
+            "policy_version": "drift-ladder-1",
+            "policy_hash": "sha256:f5746b28b2ec8acb109da92eacac42f07508574090c2ca4621df2b1c3f4799b5",
+            "triggering_finding_ids": [],
+            "rule_id": "ladder-SIGNIFICANT_SHIFT",
+            "rationale": "VALID -> REVOKED. token_length: PSI 0.3526 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here. no warrant on triviaqa-longctx-600 meets customer_support's declared minimums (recall >= 0.1, hard-negative FPR <= 0.02); customer_support is suspended on this envelope",
+            "triggered_by": "envelope:SIGNIFICANT_SHIFT"
+          },
+          "warrants_relied_upon": [],
+          "weakest_warrant_status": "REVOKED",
+          "claimed_bounds": {},
+          "envelope_match": {
+            "envelope_id": "sha256:e77c64f908491ad1",
+            "state": "SIGNIFICANT_SHIFT",
+            "psi_by_feature": {
+              "token_length": 0.35264742238016006
+            },
+            "max_psi": 0.35264742238016006,
+            "driving_feature": "token_length",
+            "n_window": 450,
+            "mmd_p_value": null
+          },
+          "access_tier_available": 1,
+          "unchecked": [
+            "multivariate drift (MMD on embeddings) \u2014 declared in SPEC.md \u00a75.2, not implemented; this verdict is per-feature PSI only (DECISIONS.md 072)",
+            "envelope features carried no values in this window and were not scored as stable: category_mix, embedding_centroid_distance, reference_perplexity, script_mix",
+            "everything this detector was warranted for on triviaqa-600: the warrant is revoked and no other detector holds one on the envelope the traffic is in",
+            "the live envelope is 'triviaqa-longctx-600'; the bounds above were measured on 'triviaqa-600'"
+          ],
+          "prev_certificate_hash": "GENESIS",
+          "self_hash": "4c179bf251e9cc5f3235ced9561f63872df0131b110b15341cb205b696796e6c"
+        }
+      },
+      {
+        "profile": "decision_support",
+        "response": {
+          "transition": {
+            "warrant_id": "W-f4bddcaa365cb7d3",
+            "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
+            "eval_set_id": "triviaqa-600",
+            "from_status": "VALID",
+            "to_status": "REVOKED",
+            "changed": true,
+            "envelope_state": "SIGNIFICANT_SHIFT",
+            "widen_factor": null,
+            "needs_routing": true,
+            "reason": "VALID -> REVOKED. token_length: PSI 0.3526 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here.",
+            "verdict": {
+              "state": "SIGNIFICANT_SHIFT",
+              "n_observed": 450,
+              "window_size": 200,
+              "driver": "token_length",
+              "reason": "token_length: PSI 0.3526 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix.",
+              "unobserved_features": [
+                "script_mix",
+                "embedding_centroid_distance",
+                "reference_perplexity",
+                "category_mix"
+              ],
+              "per_feature": {
+                "token_length": {
+                  "feature": "token_length",
+                  "psi": 0.35264742238016006,
+                  "n_live": 200,
+                  "n_reference": 0,
+                  "bins_smoothed": 0,
+                  "epsilon": 1e-06,
+                  "smoothed_share": 0.0,
+                  "driven_by_smoothing": false,
+                  "per_bin": [
+                    0.007332288239483585,
+                    0.030221569122518478,
+                    0.03316617827125489,
+                    5.376551305240851e-05,
+                    0.019080384352035882,
+                    0.008344385820574935,
+                    0.042690669865289584,
+                    0.21175818119595027
+                  ]
+                }
+              }
+            }
+          },
+          "routing": {
+            "envelope_id": "triviaqa-longctx-600",
+            "profile": "decision_support",
+            "routed_to": null,
+            "action": "ESCALATE",
+            "suspended_profile": true,
+            "reason": "no warrant on triviaqa-longctx-600 meets decision_support's declared minimums (recall >= 0.5, hard-negative FPR <= 0.1); decision_support is suspended on this envelope",
+            "considered": [
+              {
+                "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
+                "verdict": "decision_support requires recall >= 0.5; the warrant's lower bound is 0.0903 (point estimate 0.1264)"
+              },
+              {
+                "detector_id": "probe-qwen2.5-7b-instruct-T1-max_rolling_means",
+                "verdict": "REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-max_rolling_means==0.1.0] auroc_lower_ci: measured 0.5105, required > 0.55; lift_lower_ci: measured 1.076 [0.969, 1.182] at measured flag rate 0.5433, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
+              },
+              {
+                "detector_id": "probe-qwen2.5-7b-instruct-T1-mean_pool",
+                "verdict": "REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-mean_pool==0.1.0] auroc_lower_ci: measured 0.4546, required > 0.55"
+              }
+            ],
+            "enqueued_for_validation": [
+              "pii-reference|P-declared|triviaqa-longctx-600",
+              "probe-T1-max_rolling_means|P-conservative|triviaqa-longctx-600",
+              "probe-T1-mean_pool|P-conservative|triviaqa-longctx-600",
+              "probe-T2-logprob|P-conservative|triviaqa-longctx-600",
+              "probe-T3-judge|P-conservative|triviaqa-longctx-600"
+            ]
+          },
+          "claimed_bounds": {},
+          "can_certify": false,
+          "acted_without_operator": true
+        },
+        "certificate": {
+          "certificate_id": "cert-revocation-decision_support-0450",
+          "request_id": "R-replay-0450",
+          "session_id": "S-revocation-replay",
+          "timestamp": "2026-09-14T08:39:16+00:00",
+          "findings": [],
+          "resolution": {
+            "action": "ESCALATE",
+            "policy_version": "drift-ladder-1",
+            "policy_hash": "sha256:f5746b28b2ec8acb109da92eacac42f07508574090c2ca4621df2b1c3f4799b5",
+            "triggering_finding_ids": [],
+            "rule_id": "ladder-SIGNIFICANT_SHIFT",
+            "rationale": "VALID -> REVOKED. token_length: PSI 0.3526 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here. no warrant on triviaqa-longctx-600 meets decision_support's declared minimums (recall >= 0.5, hard-negative FPR <= 0.1); decision_support is suspended on this envelope",
+            "triggered_by": "envelope:SIGNIFICANT_SHIFT"
+          },
+          "warrants_relied_upon": [],
+          "weakest_warrant_status": "REVOKED",
+          "claimed_bounds": {},
+          "envelope_match": {
+            "envelope_id": "sha256:e77c64f908491ad1",
+            "state": "SIGNIFICANT_SHIFT",
+            "psi_by_feature": {
+              "token_length": 0.35264742238016006
+            },
+            "max_psi": 0.35264742238016006,
+            "driving_feature": "token_length",
+            "n_window": 450,
+            "mmd_p_value": null
+          },
+          "access_tier_available": 1,
+          "unchecked": [
+            "multivariate drift (MMD on embeddings) \u2014 declared in SPEC.md \u00a75.2, not implemented; this verdict is per-feature PSI only (DECISIONS.md 072)",
+            "envelope features carried no values in this window and were not scored as stable: category_mix, embedding_centroid_distance, reference_perplexity, script_mix",
+            "everything this detector was warranted for on triviaqa-600: the warrant is revoked and no other detector holds one on the envelope the traffic is in",
+            "the live envelope is 'triviaqa-longctx-600'; the bounds above were measured on 'triviaqa-600'"
+          ],
+          "prev_certificate_hash": "4c179bf251e9cc5f3235ced9561f63872df0131b110b15341cb205b696796e6c",
+          "self_hash": "ee820ae4ff2a77bd3824e565ebf1cfcd2aade0583165049a88cd576b28963529"
+        }
+      },
+      {
+        "profile": "internal_knowledge",
+        "response": {
+          "transition": {
+            "warrant_id": "W-f4bddcaa365cb7d3",
+            "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
+            "eval_set_id": "triviaqa-600",
+            "from_status": "VALID",
+            "to_status": "REVOKED",
+            "changed": true,
+            "envelope_state": "SIGNIFICANT_SHIFT",
+            "widen_factor": null,
+            "needs_routing": true,
+            "reason": "VALID -> REVOKED. token_length: PSI 0.3526 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here.",
+            "verdict": {
+              "state": "SIGNIFICANT_SHIFT",
+              "n_observed": 450,
+              "window_size": 200,
+              "driver": "token_length",
+              "reason": "token_length: PSI 0.3526 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix.",
+              "unobserved_features": [
+                "script_mix",
+                "embedding_centroid_distance",
+                "reference_perplexity",
+                "category_mix"
+              ],
+              "per_feature": {
+                "token_length": {
+                  "feature": "token_length",
+                  "psi": 0.35264742238016006,
+                  "n_live": 200,
+                  "n_reference": 0,
+                  "bins_smoothed": 0,
+                  "epsilon": 1e-06,
+                  "smoothed_share": 0.0,
+                  "driven_by_smoothing": false,
+                  "per_bin": [
+                    0.007332288239483585,
+                    0.030221569122518478,
+                    0.03316617827125489,
+                    5.376551305240851e-05,
+                    0.019080384352035882,
+                    0.008344385820574935,
+                    0.042690669865289584,
+                    0.21175818119595027
+                  ]
+                }
+              }
+            }
+          },
+          "routing": {
+            "envelope_id": "triviaqa-longctx-600",
+            "profile": "internal_knowledge",
+            "routed_to": null,
+            "action": "ESCALATE",
+            "suspended_profile": true,
+            "reason": "no warrant on triviaqa-longctx-600 meets internal_knowledge's declared minimums (recall >= 0.25, hard-negative FPR <= 0.05); internal_knowledge is suspended on this envelope",
+            "considered": [
+              {
+                "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
+                "verdict": "internal_knowledge requires recall >= 0.25; the warrant's lower bound is 0.0903 (point estimate 0.1264)"
+              },
+              {
+                "detector_id": "probe-qwen2.5-7b-instruct-T1-max_rolling_means",
+                "verdict": "REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-max_rolling_means==0.1.0] auroc_lower_ci: measured 0.5105, required > 0.55; lift_lower_ci: measured 1.076 [0.969, 1.182] at measured flag rate 0.5433, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
+              },
+              {
+                "detector_id": "probe-qwen2.5-7b-instruct-T1-mean_pool",
+                "verdict": "REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-mean_pool==0.1.0] auroc_lower_ci: measured 0.4546, required > 0.55"
+              }
+            ],
+            "enqueued_for_validation": [
+              "pii-reference|P-declared|triviaqa-longctx-600",
+              "probe-T1-max_rolling_means|P-conservative|triviaqa-longctx-600",
+              "probe-T1-mean_pool|P-conservative|triviaqa-longctx-600",
+              "probe-T2-logprob|P-conservative|triviaqa-longctx-600",
+              "probe-T3-judge|P-conservative|triviaqa-longctx-600"
+            ]
+          },
+          "claimed_bounds": {},
+          "can_certify": false,
+          "acted_without_operator": true
+        },
+        "certificate": {
+          "certificate_id": "cert-revocation-internal_knowledge-0450",
+          "request_id": "R-replay-0450",
+          "session_id": "S-revocation-replay",
+          "timestamp": "2026-09-14T08:39:16+00:00",
+          "findings": [],
+          "resolution": {
+            "action": "ESCALATE",
+            "policy_version": "drift-ladder-1",
+            "policy_hash": "sha256:f5746b28b2ec8acb109da92eacac42f07508574090c2ca4621df2b1c3f4799b5",
+            "triggering_finding_ids": [],
+            "rule_id": "ladder-SIGNIFICANT_SHIFT",
+            "rationale": "VALID -> REVOKED. token_length: PSI 0.3526 over 200 requests puts the envelope at SIGNIFICANT_SHIFT (bands 0.10 / 0.25). Not scored: script_mix, embedding_centroid_distance, reference_perplexity, category_mix. Refusing to certify on this envelope. The matrix is consulted for a detector holding a valid warrant here. no warrant on triviaqa-longctx-600 meets internal_knowledge's declared minimums (recall >= 0.25, hard-negative FPR <= 0.05); internal_knowledge is suspended on this envelope",
+            "triggered_by": "envelope:SIGNIFICANT_SHIFT"
+          },
+          "warrants_relied_upon": [],
+          "weakest_warrant_status": "REVOKED",
+          "claimed_bounds": {},
+          "envelope_match": {
+            "envelope_id": "sha256:e77c64f908491ad1",
+            "state": "SIGNIFICANT_SHIFT",
+            "psi_by_feature": {
+              "token_length": 0.35264742238016006
+            },
+            "max_psi": 0.35264742238016006,
+            "driving_feature": "token_length",
+            "n_window": 450,
+            "mmd_p_value": null
+          },
+          "access_tier_available": 1,
+          "unchecked": [
+            "multivariate drift (MMD on embeddings) \u2014 declared in SPEC.md \u00a75.2, not implemented; this verdict is per-feature PSI only (DECISIONS.md 072)",
+            "envelope features carried no values in this window and were not scored as stable: category_mix, embedding_centroid_distance, reference_perplexity, script_mix",
+            "everything this detector was warranted for on triviaqa-600: the warrant is revoked and no other detector holds one on the envelope the traffic is in",
+            "the live envelope is 'triviaqa-longctx-600'; the bounds above were measured on 'triviaqa-600'"
+          ],
+          "prev_certificate_hash": "ee820ae4ff2a77bd3824e565ebf1cfcd2aade0583165049a88cd576b28963529",
+          "self_hash": "b1f7d02607595a949dcd6637e18c798696507b7f009eb432ac3db1436b757a78"
+        }
+      }
+    ],
+    "certificate_chain": {
+      "ok": true,
+      "n_records": 3,
+      "head_hash": "b1f7d02607595a949dcd6637e18c798696507b7f009eb432ac3db1436b757a78"
+    }
+  },
+  "criteria": {
+    "1_no_false_alarm": {
+      "passed": true,
+      "checkpoints_entirely_normal": 5,
+      "false_alarms_at": []
+    },
+    "2_revoked_within_one_window": {
+      "passed": true,
+      "first_revoked_after_request": 450,
+      "requests_after_shift_began": 50,
+      "window_size": 200
+    },
+    "3_routing_on_the_live_envelope": {
+      "passed": true,
+      "envelopes_routed_on": [
+        "triviaqa-longctx-600"
+      ]
+    },
+    "4_certificate_says_what_was_not_checked": {
+      "passed": true
+    }
+  },
+  "decided_at": "2026-09-14T08:39:16+00:00"
+}

@@ -40,7 +40,7 @@ EXPECTED: dict[int, tuple[str, ...]] = {
     3: ("## Warrant matrix",),
     4: ("## Tier ladder",),
     5: ("## Control results", "padding_fault"),
-    6: ("## Routing",),
+    6: ("## Routing", "The revocation, replayed", "REVOKED", "Registered before the run"),
     7: ("## The price list",),
     8: ("Interval coverage", "trials"),
     9: ("Inter-rater agreement", "κ ="),

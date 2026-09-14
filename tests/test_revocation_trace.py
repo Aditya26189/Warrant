@@ -41,6 +41,44 @@ def _trace() -> dict:
 
 
 # --------------------------------------------------------------------------- #
+# The committed trace
+# --------------------------------------------------------------------------- #
+
+
+def test_the_committed_trace_meets_every_preregistered_criterion() -> None:
+    criteria = _trace()["criteria"]
+    assert set(criteria) == {
+        "1_no_false_alarm",
+        "2_revoked_within_one_window",
+        "3_routing_on_the_live_envelope",
+        "4_certificate_says_what_was_not_checked",
+    }, "the criteria are DECISIONS.md 178's four; changing the set is a new entry"
+    failed = [name for name, result in criteria.items() if not result["passed"]]
+    assert not failed, f"pre-registered criteria failed: {failed}"
+
+
+def test_the_trace_replays_measured_envelopes_not_fixtures() -> None:
+    trace = _trace()
+    envelopes = {event["eval_set_id"] for event in trace["stream"]["events"]}
+    assert envelopes == {"triviaqa-600", "triviaqa-longctx-600"}
+    assert "synthetic" not in trace["warrant"]["eval_set_id"]
+    assert "not production traffic" in trace["what_this_is"]
+
+
+def test_a_revoked_warrant_with_nowhere_to_route_claims_nothing() -> None:
+    """The failure the ladder exists to prevent: quoting the bounds just lost."""
+    revocation = _trace()["revocation"]
+    assert revocation is not None, "the trace never revoked"
+    assert revocation["certificate_chain"]["ok"]
+    for decision in revocation["decisions"]:
+        routing = decision["response"]["routing"]
+        certificate = decision["certificate"]
+        if routing["routed_to"] is None:
+            assert certificate["claimed_bounds"] == {}, decision["profile"]
+            assert certificate["weakest_warrant_status"] == WarrantStatus.REVOKED.value
+
+
+# --------------------------------------------------------------------------- #
 # The module
 # --------------------------------------------------------------------------- #
 

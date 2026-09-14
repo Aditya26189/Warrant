@@ -18,7 +18,7 @@
 
 Cells on synthetic envelopes show their status but not their numbers.
 
-**Statuses are as of 2026-09-13T22:09:57+00:00.** A warrant expires 24 hours after issue, so this matrix is a snapshot: rendered again from the same ledger after that, its VALID cells report STALE. That is the design, not a regression -- re-issuing means re-running the validations (`DECISIONS.md` 177).
+**Statuses are as of 2026-09-14T08:40:55+00:00.** A warrant expires 24 hours after issue, so this matrix is a snapshot: rendered again from the same ledger after that, its VALID cells report STALE. That is the design, not a regression -- re-issuing means re-running the validations (`DECISIONS.md` 177).
 
 | detector | triviaqa-600-synthetic | triviaqa-longctx-600-synthetic | hinglish-pii-200 | hinglish-pii-200-longctx | hard-negatives-200 | triviaqa-600 | triviaqa-longctx-600 |
 |---|---|---|---|---|---|---|---|
@@ -164,7 +164,7 @@ Five controls run on every validation. **Two are negative controls** — they as
 
 > left-padded: rel-L2 1.49e-02, cosine 0.999888 -> matches unbatched. right-padded (deliberate fault): rel-L2 0.741, cosine 0.5664 -> REJECTED as required. 4 prompts, max 134 pad tokens.
 
-## Routing, and the revocation trace that is missing
+## Routing, and revocation
 
 **21 routing decisions** across the declared profiles and envelopes. Routing reads the **warrant**, never the score — an envelope with no valid warrant falls back rather than guessing.
 
@@ -177,7 +177,57 @@ Five controls run on every validation. **Two are negative controls** — they as
 
 > `customer_support` on `triviaqa-longctx-600-synthetic`: no warrant on triviaqa-longctx-600-synthetic meets customer_support's declared minimums (recall >= 0.1, hard-negative FPR <= 0.02); customer_support is suspended on this envelope
 
-> **The revocation half of this section is missing, and that is stated rather than implied.** `SPEC.md` §11.6 asks for *envelope violation detected, revocation, routing decision*. The routing decisions are above. **Nothing in `results/` records a live drift run that revoked a warrant**, because the drift machinery has never been pointed at a moving distribution with a warrant outstanding. The machinery is built and tested (`controlplane/drift/`, `warrant recheck`); the trace is not measured. `DECISIONS.md` 164, OPEN.
+### The revocation, replayed
+
+**What this is:** a replay of committed token lengths through the shipped drift, ladder, routing and certification code -- not production traffic. The warrant under observation is `probe-qwen2.5-7b-instruct-T1-last_token` at `P-conservative` on `triviaqa-600`, scored against the envelope stored in that warrant. 400 held-out requests from its own envelope (median 42 tokens), then 400 from the long-context envelope (median 7,058), starting at request 401. Window 200, PSI bands 0.1 / 0.25; only token_length has a reference in the envelope, and the hard cut is not a gradual shift.
+
+| after request | window (normal / shift) | envelope | PSI | warrant |
+|---|---|---|---|---|
+| 200 | 200 / 0 | INSIDE | 0.011 | VALID |
+| 250 | 200 / 0 | INSIDE | 0.036 | VALID |
+| 300 | 200 / 0 | INSIDE | 0.035 | VALID |
+| 350 | 200 / 0 | INSIDE | 0.026 | VALID |
+| 400 | 200 / 0 | INSIDE | 0.054 | VALID |
+| 450 | 150 / 50 | SIGNIFICANT_SHIFT | 0.353 | **REVOKED** |
+| 500 | 100 / 100 | SIGNIFICANT_SHIFT | 1.064 | **REVOKED** |
+| 550 | 50 / 150 | SIGNIFICANT_SHIFT | 2.095 | **REVOKED** |
+| 600 | 0 / 200 | SIGNIFICANT_SHIFT | 12.064 | **REVOKED** |
+| 650 | 0 / 200 | SIGNIFICANT_SHIFT | 12.064 | **REVOKED** |
+| 700 | 0 / 200 | SIGNIFICANT_SHIFT | 12.064 | **REVOKED** |
+| 750 | 0 / 200 | SIGNIFICANT_SHIFT | 12.064 | **REVOKED** |
+| 800 | 0 / 200 | SIGNIFICANT_SHIFT | 12.064 | **REVOKED** |
+
+**At request 450 the warrant was revoked** and the matrix was consulted on `triviaqa-longctx-600` — the envelope the traffic is in, not the one just revoked:
+
+| profile | action | served by | why |
+|---|---|---|---|
+| `customer_support` | ESCALATE | **nothing** | no warrant on triviaqa-longctx-600 meets customer_support's declared minimums (recall >= 0.1, hard-negative FPR <= 0.02); customer_support is suspended on this envelope |
+| `decision_support` | ESCALATE | **nothing** | no warrant on triviaqa-longctx-600 meets decision_support's declared minimums (recall >= 0.5, hard-negative FPR <= 0.1); decision_support is suspended on this envelope |
+| `internal_knowledge` | ESCALATE | **nothing** | no warrant on triviaqa-longctx-600 meets internal_knowledge's declared minimums (recall >= 0.25, hard-negative FPR <= 0.05); internal_knowledge is suspended on this envelope |
+
+What the consultation looked at, for the first profile:
+
+- `probe-qwen2.5-7b-instruct-T1-last_token` — customer_support requires recall >= 0.1; the warrant's lower bound is 0.0903 (point estimate 0.1264)
+- `probe-qwen2.5-7b-instruct-T1-max_rolling_means` — REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-max_rolling_means==0.1.0] auroc_lower_ci: measured 0.5105, required > 0.55; lift_lower_ci: measured 1.076 [0.969, 1.182] at measured flag rate 0.5433, required > 1.0 — otherwise not demonstrably better than random sampling at the same budget
+- `probe-qwen2.5-7b-instruct-T1-mean_pool` — REFUSED on this envelope: [probe-qwen2.5-7b-instruct-T1-mean_pool==0.1.0] auroc_lower_ci: measured 0.4546, required > 0.55
+
+Each certificate claims **0 bounds** — a revoked warrant with nowhere to route claims nothing, rather than its last good numbers — and states what it did not check:
+
+- multivariate drift (MMD on embeddings) — declared in SPEC.md §5.2, not implemented; this verdict is per-feature PSI only (DECISIONS.md 072)
+- envelope features carried no values in this window and were not scored as stable: category_mix, embedding_centroid_distance, reference_perplexity, script_mix
+- everything this detector was warranted for on triviaqa-600: the warrant is revoked and no other detector holds one on the envelope the traffic is in
+- the live envelope is 'triviaqa-longctx-600'; the bounds above were measured on 'triviaqa-600'
+
+Certificates sealed into their own chain: 3 records, chain intact.
+
+**Registered before the run** (`DECISIONS.md` 178):
+
+| criterion | result |
+|---|---|
+| no false alarm | PASS |
+| revoked within one window | PASS |
+| routing on the live envelope | PASS |
+| certificate says what was not checked | PASS |
 
 ## Presidio, three configurations
 
@@ -219,7 +269,7 @@ Everything else in this document measures a detector. **This is the part that as
 ## Provenance
 
 - config hash `533fb74983fcd8af`
-- git commit `85a6626f83af86c58d3d2001461dada5440c9415`
+- git commit `71d24345b4cb940af55751301666a6c7de49351c`
 - dirty tree: `False`
 - seed `1729`
-- generated `2026-09-13T22:09:57+00:00`
+- generated `2026-09-14T08:40:55+00:00`
