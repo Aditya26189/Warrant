@@ -549,6 +549,9 @@ def test_every_script_has_a_smoke_test() -> None:
         "27_gate.py",
         # test_smoke_recheck_schedules
         "29_recheck_schedules.py",
+        # tests/test_test_inventory.py runs it on a throwaway repository: a
+        # smoke run here would rewrite this repository's README and Makefile.
+        "refresh_test_inventory.py",
         # tests/test_intake.py::test_the_examples_are_reproducible_from_their_generator
         # runs it and asserts the committed examples come back byte-identical,
         # which is a stronger check than a smoke test: the examples are shipped
