@@ -10312,3 +10312,54 @@ establish.
 beside the input proves the frontier was run, not that the budget was chosen
 from it; adjusting on that inference would certify differently depending on
 which files happen to sit in a directory.
+
+## 196 - The chain's detection outside the one setting 187 measured, pre-registered
+
+- **Date:** 2026-09-15
+- **Status:** PRE-REGISTERED (this entry); results appended after the run
+
+187 chose the chain's rule on one setting: budget 0.05, a breach at 1.5x, 628
+negatives a recheck, a change at mid-year. 193 put it on the customer path, and
+`plan` rightly quotes no detection figure for anything else (PHASE-12 O-10). A
+customer declares their own breach and cadence, and the breach can start early or
+late. Whether the chain's guarantee holds, and how its detection moves, across
+those is unmeasured.
+
+**Design, reusing 187's simulator unchanged** (`economics.schedules.simulate`,
+every rule on the same labels). Budget 0.05, alpha 0.05, certified rate 0.0371
+(143). For each breach -- **0.075, 0.10, 0.15** (1.5x, 2x, 3x) -- the negatives
+per recheck are 183's 0.80-power size, computed by `negatives_for_power`: **628, 191
+and 59** (a weekly chain of 32,656, 9,932 and 3,068 units). Cadences:
+**weekly with the change after 13, 26 and 39 rechecks** (window 13), and **monthly
+with the change after 6** (window 3). Each design runs 187's S0-S3. **2,000
+simulated years per cell, seed 1729.**
+
+**Criteria, registered now.**
+
+- **V (validity), must hold in every design.** The chain (`e_detector`) revokes in
+  at most alpha + 3 MC SE of years under S0 and under S1. A failure anywhere means
+  the guarantee in 193 is wrong for that setting, and it is reported as a defect
+  before anything else.
+- **Predictions, written to be falsifiable.**
+  - P1. At a fixed cadence and change point, the chain's catch-within-window
+    share under S2 does not fall as the breach grows.
+  - P2. Under S3 (after good behaviour) the chain catches at least as often as
+    under S2, less 2 MC SE, in every weekly design -- 187's finding that the chain
+    does not decay through good months, tested beyond one setting.
+  - P3. A breach starting at week 39 is caught within its 13-week window less
+    often than one starting at week 13, because a chain that is late in its
+    horizon has spent most of its threshold's slack. The opposite is not
+    implausible; that is why it is written down.
+- **What is reported, with no pass/fail:** every rule's false revocation, catch
+  share and median delay in every cell, as 187 did.
+
+**What follows from the result.** Nothing is added to `plan` or the README from
+this study: it is a simulation of one budget and three breach sizes, and a CLI
+cannot carry a table of simulated figures honestly. The results close O-10 as a
+measured limitation in `docs/LIMITATIONS.md`, stating where detection is and is
+not good, and any V failure reopens 193.
+
+**Rejected: budget 0.01.** Its 0.80-power sizes are five times larger and the
+per-label simulation is linear in them; it would cost hours for a setting whose
+shape the 0.05 grid already shows. Stated here so its absence is a choice, not an
+omission.
