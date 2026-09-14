@@ -24,7 +24,7 @@ from ..validation.metrics_builder import build_warrant_metrics
 from ..validation.warrant_stats import Certification, certify_fpr, min_n_for
 from .contract import ScoredItems
 
-__all__ = ["CertificationResult", "certify_budget", "certify_items"]
+__all__ = ["CertificationResult", "certify_budget", "certify_items", "input_sha256"]
 
 
 @dataclasses.dataclass(frozen=True)
@@ -63,16 +63,37 @@ class CertificationResult:
     #: histogram rather than values so a record living for a year holds nobody's
     #: data.
     score_distribution: Optional[Any] = None
+    #: Set when the budget was picked off a frontier (``--from-frontier``,
+    #: DECISIONS 195): the frontier record's digest, its grid, and the two levels.
+    #: The certificate is at ``row_alpha``; ``alpha`` above is then that level.
+    selection: Optional[dict[str, Any]] = None
+    #: A frontier record for this same input sat beside it when this warrant was
+    #: issued without ``--from-frontier``. Not proof of a pick; a flag for audit.
+    frontier_record_present: bool = False
 
     @property
     def certified(self) -> bool:
         return self.status is WarrantStatus.VALID
 
+    @property
+    def recheck_alpha(self) -> float:
+        """The level later tests on fresh labels run at (DECISIONS 195).
+
+        A pick off a frontier is a selection made once, paid for by certifying
+        at ``row_alpha``. A recheck, a plan and a chain select nothing, so they
+        run at the family level the frontier split.
+        """
+        return self.selection["family_alpha"] if self.selection else self.alpha
+
     def to_payload(self) -> dict[str, Any]:
         return {
             "status": self.status.value,
             "budget_fpr": self.budget,
-            "alpha": self.alpha,
+            # Read by recheck, plan and a chain. Deliberately the family level
+            # when the budget was picked off a frontier; see `certification.alpha`.
+            "alpha": self.recheck_alpha,
+            "selection": self.selection,
+            "frontier_record_present": self.frontier_record_present,
             "reason": self.reason,
             "input": {
                 "source": self.source,
@@ -85,6 +106,14 @@ class CertificationResult:
                 "base_rate": self.base_rate,
             },
             "certification": {
+                # The level this certificate's bound was computed at. Equal to
+                # the top-level alpha unless the budget was picked off a
+                # frontier, when it is that frontier's row_alpha (195).
+                "alpha": self.alpha,
+                "alpha_governs": (
+                    "this certificate; later rechecks, plans and chains run at the "
+                    "top-level alpha"
+                ),
                 "threshold": self.threshold,
                 "fpr_upper_bound": self.fpr_upper_bound,
                 "false_positives_at_threshold": self.false_positives_at_threshold,
@@ -167,6 +196,7 @@ def certify_items(
     *,
     budget: float,
     alpha: Optional[float] = None,
+    selection: Optional[dict[str, Any]] = None,
 ) -> CertificationResult:
     """Certify ``items``' detector at ``budget``, or refuse with the shortfall.
 
@@ -184,6 +214,10 @@ def certify_items(
         items: The parsed input.
         budget: Target false-positive rate, in (0, 1).
         alpha: Certification level. Defaults to ``1 - config.validation.ci``.
+        selection: When the budget was picked off a frontier, that frontier's
+            digest, grid, ``row_alpha`` and ``family_alpha`` (``DECISIONS.md``
+            195). ``alpha`` must then be its ``row_alpha``; the record keeps
+            ``family_alpha`` for every later test on fresh labels.
 
     Returns:
         A :class:`CertificationResult`, VALID or REFUSED.
@@ -198,6 +232,11 @@ def certify_items(
             "0.05 means 'at most 5% of clean items may be flagged'."
         )
     alpha = (1.0 - config.validation.ci) if alpha is None else alpha
+    if selection is not None and abs(selection["row_alpha"] - alpha) > 1e-15:
+        raise ValueError(
+            f"a budget picked off a frontier is certified at its row_alpha "
+            f"{selection['row_alpha']:g}, not {alpha:g}"
+        )
     labels, scores, groups = items.as_arrays()
 
     from .recheck import score_distribution
@@ -219,6 +258,7 @@ def certify_items(
         "grouped": groups is not None,
         "min_units_required": floor,
         "score_distribution": distribution,
+        "selection": selection,
     }
 
     if not certification.fpr_certified:
@@ -239,6 +279,11 @@ def certify_items(
             f"certified: FPR <= {budget:.4f} at {int(100 * config.validation.ci)}% "
             f"confidence, upper bound {certification.ucb:.4f} on "
             f"{certification.n_eff} independent negative units"
+            if selection is None else
+            f"certified: FPR <= {budget:.4f}, upper bound {certification.ucb:.4f} on "
+            f"{certification.n_eff} independent negative units, at alpha {alpha:.4g} -- "
+            f"this budget was picked off a frontier of {len(selection['grid'])} budgets, "
+            f"whose rows hold together at alpha {selection['family_alpha']:g}"
         ),
         threshold=threshold,
         fpr_upper_bound=certification.ucb,
@@ -252,3 +297,27 @@ def certify_items(
         metrics_absent_reason=lift_absent,
         **common,
     )
+
+
+def input_sha256(items: ScoredItems) -> str:
+    """One digest for one scored file, whatever order its rows are in (195).
+
+    The release path's convention (``release/evaluate.py``, ``data_sha256``):
+    the canonical digest of the sorted ``(sha256 of item id, label, score)``
+    rows, so two commands name one file by one digest. A grouped file -- which
+    the release path refuses -- appends each row's group digest.
+    """
+    from ..release.contract import digest
+
+    labels, scores, groups = items.as_arrays()
+    if groups is None:
+        rows = sorted(
+            (digest({"item_id": i}), int(y), float(s))
+            for i, y, s in zip(items.ids, labels, scores, strict=True)
+        )
+    else:
+        rows = sorted(
+            (digest({"item_id": i}), int(y), float(s), digest({"group": str(g)}))
+            for i, y, s, g in zip(items.ids, labels, scores, groups, strict=True)
+        )
+    return digest(rows)

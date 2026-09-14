@@ -128,6 +128,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--require-warrant", action="store_true",
         help="exit non-zero when the detector is REFUSED (default: refusal exits 0)",
     )
+    certify.add_argument(
+        "--from-frontier", default=None, metavar="RECORD",
+        help="the .frontier.json you picked --budget from; certifies at that "
+             "frontier's row level so the pick still holds (DECISIONS 195)",
+    )
 
     recheck = sub.add_parser(
         "recheck",
@@ -299,6 +304,11 @@ def _certify(args: argparse.Namespace) -> int:
         return EXIT_BAD_INPUT
 
     if args.frontier:
+        if args.from_frontier:
+            print("warrant: --frontier and --from-frontier are two different steps; "
+                  "run the frontier, pick a budget, then certify it --from-frontier.",
+                  file=sys.stderr)
+            return EXIT_BAD_INPUT
         return _frontier(args, config, items)
     if args.budget is None:
         print(
@@ -308,18 +318,92 @@ def _certify(args: argparse.Namespace) -> int:
         )
         return EXIT_BAD_INPUT
 
+    import dataclasses
+    import json
+    import math
+
+    from .intake.certify import input_sha256
+
+    source = Path(args.input)
+    digest = input_sha256(items)
+    selection = None
+    notice = ""
+    if args.from_frontier:
+        # DECISIONS 195: certify a budget picked off a frontier at the level the
+        # frontier held that row to. Every refusal happens before anything is
+        # written.
+        from .intake.chain import canonical_sha256
+
+        record_path = Path(args.from_frontier)
+        try:
+            frontier_record = json.loads(record_path.read_text(encoding="utf-8"))
+            rows = frontier_record["frontier"]
+            grid = [float(row["budget_fpr"]) for row in rows]
+            row_alphas = {float(row["row_alpha"]) for row in rows}
+            family_alphas = {float(row["family_alpha"]) for row in rows}
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            print(f"warrant: {record_path} is not a frontier record with row levels ({exc})",
+                  file=sys.stderr)
+            return EXIT_BAD_INPUT
+        if frontier_record.get("input", {}).get("input_sha256") != digest:
+            print(f"warrant: {record_path.name} was not produced from {source.name} "
+                  "(its input_sha256 differs or is missing); a frontier certifies the "
+                  "file it read and no other. Rerun --frontier on this file.",
+                  file=sys.stderr)
+            return EXIT_BAD_INPUT
+        if not any(math.isclose(args.budget, b, rel_tol=0, abs_tol=1e-12) for b in grid):
+            print(f"warrant: --budget {args.budget} is not on {record_path.name}'s grid "
+                  f"{grid}; only a row the frontier certified can be picked off it.",
+                  file=sys.stderr)
+            return EXIT_BAD_INPUT
+        if len(row_alphas) != 1 or len(family_alphas) != 1:
+            print(f"warrant: {record_path.name} does not carry one row level", file=sys.stderr)
+            return EXIT_BAD_INPUT
+        selection = {
+            "from_frontier": canonical_sha256(frontier_record),
+            "grid": grid,
+            "row_alpha": row_alphas.pop(),
+            "family_alpha": family_alphas.pop(),
+        }
+
     try:
-        result = certify_items(config, items, budget=args.budget)
+        result = certify_items(
+            config, items, budget=args.budget,
+            alpha=selection["row_alpha"] if selection else None, selection=selection,
+        )
     except ValueError as exc:
         print(f"warrant: {exc}", file=sys.stderr)
         return EXIT_BAD_INPUT
 
-    source = Path(args.input)
+    if selection is None:
+        # The default is unchanged (195). A frontier record for this same file at
+        # its default path is a sign a budget may have been picked off it: say so
+        # and record it, change nothing else.
+        sibling = source.with_suffix(source.suffix + ".frontier.json")
+        try:
+            present = (
+                sibling.is_file()
+                and json.loads(sibling.read_text(encoding="utf-8"))
+                .get("input", {}).get("input_sha256") == digest
+            )
+        except (OSError, ValueError, AttributeError):
+            present = False
+        if present:
+            result = dataclasses.replace(result, frontier_record_present=True)
+            notice = (
+                f"  notice: {sibling.name} was run on this file. If you picked this "
+                "budget from it, certify with\n"
+                f"          --from-frontier {sibling.name} so the warrant holds at the "
+                "frontier's level (DECISIONS 195)."
+            )
+
     out = Path(args.out) if args.out else source.with_suffix(source.suffix + ".warrant.json")
     write_json_artifact(out, result.to_payload(), config)
 
     if not args.quiet:
         print(render_summary(result))
+    if notice:
+        print(notice)
     print(f"  record written to {out}")
 
     if args.require_warrant and result.status is not WarrantStatus.VALID:
@@ -338,6 +422,7 @@ def _frontier(args: argparse.Namespace, config, items) -> int:
     """Every budget's exact counts, so a person can choose one."""
     from .config import write_json_artifact
     from .intake import frontier, render_frontier
+    from .intake.certify import input_sha256
 
     try:
         points = frontier(config, items)
@@ -358,6 +443,9 @@ def _frontier(args: argparse.Namespace, config, items) -> int:
                 "source": items.source, "n": items.n,
                 "n_positive": items.n_positive, "n_negative": items.n_negative,
                 "grouped": items.groups is not None,
+                # The digest --from-frontier checks, on the release path's
+                # convention (DECISIONS 195).
+                "input_sha256": input_sha256(items),
             },
             "note": (
                 "Every field is exact -- a count of this file or a "

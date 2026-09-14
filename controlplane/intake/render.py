@@ -51,6 +51,17 @@ def render_summary(result: CertificationResult) -> str:
         f"  base rate      {result.base_rate:.4f}",
         f"  budget         FPR <= {result.budget:.4f} at "
         f"{(1 - result.alpha) * 100:.0f}% confidence",
+    ]
+    if result.selection:
+        # DECISIONS 195: which level governs which test, where the reader looks.
+        selection = result.selection
+        lines += [
+            f"  picked from    a frontier of {len(selection['grid'])} budgets: this certificate "
+            f"is at alpha {selection['row_alpha']:.4g},",
+            f"                 so the pick holds; rechecks, plans and chains run at "
+            f"alpha {selection['family_alpha']:g}",
+        ]
+    lines += [
         "",
     ]
 
