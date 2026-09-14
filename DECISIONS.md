@@ -9122,3 +9122,31 @@ now checks it too.
 `min_n_for` has none. The re-scan matched names as well. The register is only as
 complete as the scan that fed it, which is why this is written down rather than
 folded in.
+
+---
+
+## 181 - The two-pane demo runs on the measured caches, and still has no default
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED
+
+`demo/run_demo.py` refused to run without `--fixture`, saying *"A real
+extraction does not exist yet"*. That stopped being true when the Qwen2.5-7B
+caches landed (051-052), so the only interactive demo showed synthetic numbers
+while every beat and artifact beside it was measured.
+
+**Decision.** A `--measured` mode loads `evalsets/triviaqa-600.json` and
+`results/cache-triviaqa-600.npz`, hash-checked against each other, with the
+measured canary set, and defaults to the last-token probe -- the one holding a
+warrant on both TriviaQA envelopes. **`--measured` and `--fixture` are mutually
+exclusive and one is required**: 027's rule was never about the extraction
+being absent, it was that no default may substitute one data source for the
+other, and that rule is kept. Without the caches -- every clean clone --
+`--measured` refuses and names the missing path rather than falling back.
+
+The measured stream is written to `results/demo_stream_measured.json`, beside
+the fixture's `results/demo_stream.json`; both are gitignored run outputs, and a
+measured run does not overwrite the fixture's.
+
+**Rejected: make `--measured` the default.** A default is exactly what 027
+forbids, and on a clean clone it would fail for every stranger's first run.

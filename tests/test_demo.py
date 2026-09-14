@@ -311,3 +311,33 @@ def test_demo_runner_has_no_logic() -> None:
         "issue_or_refuse",
     ):
         assert forbidden not in runner, f"runner reaches past DemoSession: {forbidden}"
+
+
+def _run_demo(*args: str):
+    import subprocess
+    import sys
+
+    runner = Path(__file__).resolve().parents[1] / "demo" / "run_demo.py"
+    return subprocess.run(
+        [sys.executable, str(runner), *args], capture_output=True, text=True, timeout=300
+    )
+
+
+def test_the_demo_refuses_to_pick_a_data_source_for_you() -> None:
+    """No default between measured and synthetic (DECISIONS.md 027, 181).
+
+    The old refusal said a real extraction did not exist, which stopped being
+    true when the caches landed. The rule it enforced still holds.
+    """
+    result = _run_demo()
+    assert result.returncode == 2
+    assert "--measured" in result.stderr and "--fixture" in result.stderr
+    assert "does not exist yet" not in result.stderr
+
+
+def test_measured_without_caches_refuses_and_names_the_path(tmp_path: Path) -> None:
+    """A clean clone has no caches; the measured demo must say so, not fall back."""
+    result = _run_demo("--measured", "--cache-dir", str(tmp_path), "--auto-prove")
+    assert result.returncode == 2
+    assert "cache-triviaqa-600.npz" in result.stderr
+    assert "--fixture" in result.stderr

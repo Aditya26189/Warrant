@@ -139,8 +139,11 @@ python demo/show_beats.py --beat 5
 ## 3:25 – 4:00 — The live loop
 
 ```bash
-python demo/run_demo.py --fixture --events 4 --auto-prove
+python demo/run_demo.py --measured --events 4 --auto-prove
 ```
+
+Needs the extraction caches in `results/`. Without them it refuses and names the
+path; `--fixture` runs the same loop on synthetic data and says so on screen.
 
 > Left, a conventional stack: a score. Right, the same request with a warrant —
 > recall and precision with intervals and their n, the envelope hash, an expiry,
@@ -213,7 +216,7 @@ python demo/run_demo.py --fixture --events 4 --auto-prove
 | verification | `make verify` |
 | 1–6 | `python demo/show_beats.py --beat N` |
 | all | `python demo/show_beats.py` |
-| live loop | `python demo/run_demo.py --fixture --events 4 --auto-prove` |
+| live loop | `python demo/run_demo.py --measured --events 4 --auto-prove` (or `--fixture` without caches) |
 
 **If a command fails on camera:** say what failed, run
 `python demo/show_beats.py` (committed artifacts only), continue. A beat whose
