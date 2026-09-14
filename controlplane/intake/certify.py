@@ -283,7 +283,9 @@ def certify_items(
             f"certified: FPR <= {budget:.4f}, upper bound {certification.ucb:.4f} on "
             f"{certification.n_eff} independent negative units, at alpha {alpha:.4g} -- "
             f"this budget was picked off a frontier of {len(selection['grid'])} budgets, "
-            f"whose rows hold together at alpha {selection['family_alpha']:g}"
+            f"whose rows hold together at alpha {selection['family_alpha']:g}. Only "
+            f"the FPR bound is adjusted: recall and precision are measured on the "
+            f"file the budget was picked from and carry that pick's optimism"
         ),
         threshold=threshold,
         fpr_upper_bound=certification.ucb,

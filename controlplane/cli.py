@@ -359,11 +359,48 @@ def _certify(args: argparse.Namespace) -> int:
         if len(row_alphas) != 1 or len(family_alphas) != 1:
             print(f"warrant: {record_path.name} does not carry one row level", file=sys.stderr)
             return EXIT_BAD_INPUT
+        # The digest binds the record to this file, not the record's numbers to
+        # anything: an edited row_alpha, or a record cut down to the picked row,
+        # would otherwise certify at the unadjusted level under a selection claim
+        # (195 review). Recompute -- no bootstrap, so it is cheap -- and require
+        # every row to reproduce. The levels used are the recomputed ones.
+        from .intake import frontier as compute_frontier
+
+        try:
+            recomputed = compute_frontier(config, items)
+        except ValueError as exc:
+            print(f"warrant: {exc}", file=sys.stderr)
+            return EXIT_BAD_INPUT
+        expected = [
+            (p.budget, p.certified, p.threshold, p.row_alpha, p.family_alpha)
+            for p in recomputed
+        ]
+        found = [
+            (float(row["budget_fpr"]), bool(row["certified"]), row.get("threshold"),
+             float(row["row_alpha"]), float(row["family_alpha"]))
+            for row in rows
+        ]
+        if found != expected:
+            print(
+                f"warrant: {record_path.name} does not reproduce from {source.name} "
+                "under this configuration -- its budgets, certified rows, thresholds "
+                "or levels differ from a frontier computed now. A record edited, "
+                "truncated or produced under another configuration cannot be picked "
+                "from; rerun --frontier.",
+                file=sys.stderr,
+            )
+            return EXIT_BAD_INPUT
         selection = {
             "from_frontier": canonical_sha256(frontier_record),
-            "grid": grid,
-            "row_alpha": row_alphas.pop(),
-            "family_alpha": family_alphas.pop(),
+            "grid": [p.budget for p in recomputed],
+            "row_alpha": recomputed[0].row_alpha,
+            "family_alpha": recomputed[0].family_alpha,
+            "metrics_note": (
+                "Only the false-positive bound is adjusted for the pick. Recall and "
+                "precision are measured on the file the budget was picked from, and "
+                "a pick made by reading the frontier's caught and missed columns "
+                "selects on them, so they carry that optimism (DECISIONS 195)."
+            ),
         }
 
     try:

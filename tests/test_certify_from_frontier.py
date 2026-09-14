@@ -119,6 +119,8 @@ def test_the_cli_warrant_matches_the_frontier_row_and_names_its_levels(picked) -
     assert warrant["certification"]["alpha"] == row["row_alpha"]
     assert warrant["alpha"] == row["family_alpha"]
     assert warrant["selection"]["grid"] and warrant["selection"]["from_frontier"]
+    assert "only the false-positive bound is adjusted" in warrant["selection"]["metrics_note"].lower()
+    assert "carry that pick's optimism" in warrant["reason"]
     assert "this certificate is at alpha" in stdout and "rechecks, plans and chains run at" in stdout
 
 
@@ -160,7 +162,8 @@ def test_a_recheck_of_a_picked_warrant_runs_at_the_family_level(picked, tmp_path
         expected.fpr_lower_bound_now)
 
 
-@pytest.mark.parametrize("case", ["other_file", "off_grid", "no_digest", "with_frontier"])
+@pytest.mark.parametrize("case", ["other_file", "off_grid", "no_digest", "with_frontier",
+                                  "edited_row_alpha", "cut_to_one_row", "edited_threshold"])
 def test_a_pick_that_is_not_a_pick_is_refused(picked, tmp_path, case) -> None:
     root, _, _ = picked
     record = root / "f.csv.frontier.json"
@@ -178,6 +181,21 @@ def test_a_pick_that_is_not_a_pick_is_refused(picked, tmp_path, case) -> None:
         args = ["-b", "0.05", "--from-frontier", str(record)]
     elif case == "with_frontier":
         args = ["--frontier", "--from-frontier", str(record)]
+    elif case in ("edited_row_alpha", "cut_to_one_row", "edited_threshold"):
+        # The 195 review: the digest binds the record to the file, not its numbers.
+        forged = json.loads(record.read_text(encoding="utf-8"))
+        if case == "edited_row_alpha":
+            for row in forged["frontier"]:
+                row["row_alpha"] = row["family_alpha"]
+        elif case == "cut_to_one_row":
+            forged["frontier"] = [r for r in forged["frontier"] if r["budget_fpr"] == 0.05]
+            forged["frontier"][0]["row_alpha"] = forged["frontier"][0]["family_alpha"]
+        else:
+            row = next(r for r in forged["frontier"] if r["budget_fpr"] == 0.05)
+            row["threshold"] = row["threshold"] - 0.01
+        record = tmp_path / f"{case}.frontier.json"
+        record.write_bytes(json.dumps(forged).encode("utf-8"))
+        args = ["-b", "0.05", "--from-frontier", str(record)]
     out = tmp_path / "w.json"
     result = _run("certify", "-i", str(data), *args, "-q", "-o", str(out))
     assert result.returncode == 2, (case, result.stdout, result.stderr)
