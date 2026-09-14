@@ -9422,6 +9422,31 @@ C is read-only and is called, not changed. D is new code outside the read-only
 zones. Checking only at recheck boundaries is a subset of stopping times, so C's
 and D's guarantees hold unchanged.
 
+**Found while implementing C, before any simulation ran -- a suspected defect in
+read-only `validation/warrant_stats.py`.** `FPRMonitor.wealth` returns `1/alpha`
+whenever the **largest single bet's** log-wealth exceeds `log(1/alpha) + 1`, the
+comment reading "nothing above 1/alpha changes the decision". The monitor's
+e-process is the **mean** over its 40 bets, and one bet at `e/alpha` (54.4 at
+alpha 0.05) puts that mean as low as 54.4 / 40 = 1.36. So `revoked` can be True
+while the mixture is far below `1/alpha`, and the whole-deployment bound does not
+follow from Ville's inequality as the docstring says; a union over the bets gives
+only `40 * alpha / e`. `tests/test_warrant_stats.py::test_the_null_does_not_revoke_at_every_published_point`
+reads `revoked` once, after 500 items, and allows 8 of 40, so it tests neither
+the cap nor "any time". **OPEN -- needs human review:** the file is read-only;
+what would close it is an owner changing the cap to act on the mixture (for
+example, return `1/alpha` only when the mean itself clears it) and a test of the
+running maximum under the null.
+
+Two consequences for this comparison, fixed now:
+
+- **C is run as implemented** -- `FPRMonitor`'s own `revoked`, reproduced from
+  counts and pinned equal to feeding the monitor item by item.
+- **C' is added**: the same grid and the same wealth with the cap removed, the
+  mixture Ville's inequality is actually about. C' is a reference for the cap's
+  effect and is not a candidate under P, because it is not the shipped code.
+
+**Added prediction:** under S0, C revokes in more years than C'.
+
 **Why D is in the comparison.** C's wealth decays while the rate sits below
 `p0`, so a breach arriving after months of good behaviour starts from a small
 wealth and waits. A Shiryaev-Roberts detector restarts implicitly at every
