@@ -35,7 +35,7 @@
 
 <img src="https://img.shields.io/badge/Tests-1357_passing-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1357 tests" />
 &nbsp;
-<img src="https://img.shields.io/badge/Claims-77_verified-2da44e?style=for-the-badge" alt="77 claims verified" />
+<img src="https://img.shields.io/badge/Claims-81_verified-2da44e?style=for-the-badge" alt="81 claims verified" />
 &nbsp;
 <img src="https://img.shields.io/badge/AUROC-0.8256-6366f1?style=for-the-badge" alt="AUROC 0.8256" />
 &nbsp;
@@ -112,7 +112,7 @@ rather than a plan.
 | clause | mechanism | evidence |
 |---|---|---|
 | **what your error rate is on your traffic** | Stratified estimation over two strata: the flagged pool is a census, the unflagged pool is sampled. Recall is propagated through `dR/dq` = **-4.650**, not sized as a binomial. | [`results/on_traffic/`](results/on_traffic/ON_TRAFFIC.md) — interval coverage **96.8%** over 1,000 trials against a nominal 95% |
-| **when that number stops being true** | Envelope matrix, drift detection, and a revocation ladder that turns on *evidence of breach* rather than failure to re-prove. | [`results/warrant_matrix.md`](results/warrant_matrix.md), `warrant recheck` |
+| **when that number stops being true** | Envelope matrix, drift detection, and a revocation ladder that turns on *evidence of breach* rather than failure to re-prove. | [`results/warrant_matrix.md`](results/warrant_matrix.md); [`results/drift/revocation_trace.json`](results/drift/revocation_trace.json) — a measured warrant revoked on a replayed shift, criteria registered before the run; `warrant recheck` |
 | **what it costs to keep it true** | A computed price list. Month one at full simple-random-sampling cost, steady state at a **measured** design effect. | [`results/on_traffic/`](results/on_traffic/ON_TRAFFIC.md) — **1,014** labels for recall to ±0.05, against the **187** this repository quoted before `DECISIONS.md` 147 |
 
 **Yield is exact; rate is estimated.** The flagged stratum of *your traffic* is
@@ -257,6 +257,10 @@ here fails the build.**
 | Mean-pool probe collapses to chance under it | 0.5015 | [0.4546, 0.5479] | results/transfer-T1-mean_pool.json | target.metrics.auroc.value | make verify |
 | Max-rolling-means probe under it | 0.5553 | [0.5105, 0.6015] | results/transfer-T1-max_rolling_means.json | target.metrics.auroc.value | make verify |
 | ...and it flags 54% of the stream | 0.5433 | [0.5050, 0.5833] | results/transfer-T1-max_rolling_means.json | target.metrics.flag_rate.value | make verify |
+| Replayed shift to long context begins at request | 401 | - | results/drift/revocation_trace.json | stream.shift_starts_at_request | python scripts/28_revocation_trace.py |
+| ...the probe's warrant is revoked at request | 450 | - | results/drift/revocation_trace.json | revocation.at_request | python scripts/28_revocation_trace.py |
+| ...at a PSI of | 0.3526 | - | results/drift/revocation_trace.json | checkpoints[after_request=450].psi | python scripts/28_revocation_trace.py |
+| ...where the last all-normal window read | 0.0543 | - | results/drift/revocation_trace.json | checkpoints[after_request=400].psi | python scripts/28_revocation_trace.py |
 | `customer_support` recall, n=960 | 0.2171 | [0.1800, 0.2564] | results/policy-triviaqa-2400-t960.json | operating_points[operating_point.operating_point_id=P-customer-support].metrics.recall.value | make verify |
 | `customer_support` measured flag rate | 0.1062 | [0.0885, 0.1260] | results/policy-triviaqa-2400-t960.json | operating_points[operating_point.operating_point_id=P-customer-support].metrics.flag_rate.value | make verify |
 | `customer_support` precision | 0.9216 | [0.8676, 0.9684] | results/policy-triviaqa-2400-t960.json | operating_points[operating_point.operating_point_id=P-customer-support].metrics.precision.value | make verify |
