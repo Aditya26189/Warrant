@@ -162,8 +162,15 @@ class ChainState:
                 f"{self.alpha:g} for any true false-positive rate at or below "
                 f"{self.p0:g} -- for this chain as kept. Starting a fresh chain after "
                 "an unfavourable record spends the guarantee; keep every record. "
-                "The chain-head sidecar makes a fork declare itself; deleting it "
-                "defeats that check."
+                "The chain-head sidecar makes an accidental fork declare itself; it "
+                "does not prevent a deliberate one."
+            ),
+            "head_check_meaning": (
+                "'matched' means this link's --since record matched the chain-head "
+                "sidecar present when it ran. The sidecar is an ordinary file the user "
+                "can edit, copy or delete, so 'matched' is not proof that this link is "
+                "not a fork; only the kept records, checked together, can show that "
+                "(DECISIONS 194)."
             ),
         }
 
@@ -301,7 +308,20 @@ def continue_chain(
             "does not extend past them. Re-certify and start a new chain."
         )
     previous_sha = canonical_sha256(previous_record)
-    check, left = _head_check(head, previous_sha, fork)
+    if head is None and state.head_check in ("matched", "forked"):
+        # The last link was written under a head and there is none now: the
+        # sidecar was deleted, or the warrant was moved or copied, which starts a
+        # fresh path and so a fresh head (DECISIONS 194, A).
+        if not fork:
+            raise ChainError(
+                "this chain had a head when its last record was written and none is "
+                "present now: the sidecar was deleted, or the warrant record was moved "
+                "or copied. Continue from the warrant's original location, or pass "
+                "--fork to continue here; the fork is recorded."
+            )
+        check, left = "forked", None
+    else:
+        check, left = _head_check(head, previous_sha, fork)
     return dataclasses.replace(
         state, sequence=state.sequence + 1, previous_record_sha256=previous_sha,
         head_check=check, forked_from_head=left,

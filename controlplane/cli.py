@@ -447,7 +447,20 @@ def _recheck(args: argparse.Namespace) -> int:
         return EXIT_BAD_INPUT
 
     source = Path(args.input)
-    out = Path(args.out) if args.out else source.with_suffix(source.suffix + ".recheck.json")
+    if fed is None:
+        default = source.with_suffix(source.suffix + ".recheck.json")
+    else:
+        # A chained record is named by its link, so exporting to one filename
+        # every week cannot overwrite last week's link (DECISIONS 194, C).
+        default = source.with_suffix(source.suffix + f".recheck-{fed.state.sequence:04d}.json")
+    out = Path(args.out) if args.out else default
+    if fed is not None and out.exists():
+        print(
+            f"warrant: {out} already exists. A chained recheck never writes over a "
+            "record: each link is evidence the next depends on. Choose another --out.",
+            file=sys.stderr,
+        )
+        return EXIT_BAD_INPUT
     write_json_artifact(out, payload, config)
     if fed is not None:
         # The head moves to the record as written, provenance included, so the

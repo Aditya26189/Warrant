@@ -221,7 +221,7 @@ id it has already consumed, and cannot recognise the same item under a new one.
 
 ```bash
 python warrant.py recheck --warrant your_scores.csv.warrant.json --input week01.csv --horizon-labels <N from plan>
-python warrant.py recheck --warrant your_scores.csv.warrant.json --input week02.csv --since week01.csv.recheck.json
+python warrant.py recheck --warrant your_scores.csv.warrant.json --input week02.csv --since week01.csv.recheck-0001.json
 ```
 
 <details>

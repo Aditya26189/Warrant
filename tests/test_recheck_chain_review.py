@@ -213,12 +213,16 @@ def test_f5_head_fork_and_restart(tmp_path) -> None:
                   "--horizon-labels", "50000", "-q", "-o", str(restart))
     assert result.returncode == 2 and "already exists" in result.stderr and not restart.exists()
 
-    # Without the sidecar the check cannot run, and the record says so.
+    # A deleted sidecar under a chain that had one is not "no sidecar" any more:
+    # the record knows there was a head (194, A). Refused, then declared.
     sidecar.unlink()
     loose = tmp_path / "loose.json"
+    result = _run("recheck", "-w", str(warrant), "-i", str(_batch(tmp_path, "e", 5)),
+                  "--since", str(forked), "-q", "-o", str(loose))
+    assert result.returncode == 2 and "had a head" in result.stderr and not loose.exists()
     assert _run("recheck", "-w", str(warrant), "-i", str(_batch(tmp_path, "e", 5)),
-                "--since", str(forked), "-q", "-o", str(loose)).returncode == 0
-    assert json.loads(loose.read_text(encoding="utf-8"))["chain"]["head_check"] == "no_sidecar"
+                "--since", str(forked), "--fork", "-q", "-o", str(loose)).returncode == 0
+    assert json.loads(loose.read_text(encoding="utf-8"))["chain"]["head_check"] == "forked"
 
 
 def test_f5_fork_without_a_chain_is_refused(tmp_path) -> None:
@@ -228,3 +232,59 @@ def test_f5_fork_without_a_chain_is_refused(tmp_path) -> None:
     result = _run("recheck", "-w", str(warrant), "-i", str(_batch(tmp_path, "a", 1)),
                   "--fork", "-q", "-o", str(out))
     assert result.returncode == 2 and "--fork only applies" in result.stderr and not out.exists()
+
+
+# --------------------------------------------------------------------------- #
+# F5, second review -- a copied warrant, an edited sidecar, an overwritten record
+# --------------------------------------------------------------------------- #
+
+
+def test_a_copied_warrant_cannot_continue_a_headed_chain_silently(tmp_path) -> None:
+    """A: the sidecar is keyed by path, so a copy starts with no head; the record knows it had one."""
+    import shutil
+
+    warrant = tmp_path / "w.warrant.json"
+    warrant.write_text(json.dumps(WARRANT), encoding="utf-8")
+    r1 = tmp_path / "r1.json"
+    assert _run("recheck", "-w", str(warrant), "-i", str(_batch(tmp_path, "a", 1)),
+                "--horizon-labels", "100000", "-q", "-o", str(r1)).returncode == 0
+    r2 = tmp_path / "r2.json"
+    assert _run("recheck", "-w", str(warrant), "-i", str(_batch(tmp_path, "b", 2)),
+                "--since", str(r1), "-q", "-o", str(r2)).returncode == 0
+
+    copy = tmp_path / "w_copy.json"
+    shutil.copy(warrant, copy)
+    out = tmp_path / "copy-link.json"
+    result = _run("recheck", "-w", str(copy), "-i", str(_batch(tmp_path, "c", 3)),
+                  "--since", str(r2), "-q", "-o", str(out))
+    assert result.returncode == 2 and "had a head" in result.stderr and not out.exists()
+
+    declared = _run("recheck", "-w", str(copy), "-i", str(_batch(tmp_path, "c", 3)),
+                    "--since", str(r2), "--fork", "-q", "-o", str(out))
+    assert declared.returncode == 0, declared.stderr
+    assert json.loads(out.read_text(encoding="utf-8"))["chain"]["head_check"] == "forked"
+
+
+def test_the_record_says_what_matched_does_not_prove(tmp_path) -> None:
+    """B(i): an edited sidecar can read 'matched'; the record must not imply otherwise."""
+    state = start_chain(WARRANT, horizon_units=100, alpha=ALPHA)
+    payload = feed(state, ["u1"], np.zeros(1, dtype=bool)).to_payload()
+    assert "not proof that this link is not a fork" in payload["head_check_meaning"]
+
+
+def test_a_chained_recheck_never_overwrites_and_names_its_link(tmp_path) -> None:
+    """C: one export filename every week must not destroy last week's link."""
+    warrant = tmp_path / "w.warrant.json"
+    warrant.write_text(json.dumps(WARRANT), encoding="utf-8")
+    latest = _batch(tmp_path, "latest", 1)
+    assert _run("recheck", "-w", str(warrant), "-i", str(latest),
+                "--horizon-labels", "100000", "-q").returncode == 0
+    first = latest.with_suffix(latest.suffix + ".recheck-0001.json")
+    assert first.is_file(), "a chained record is named by its link number"
+    before = first.read_bytes()
+    sidecar_before = head_path(warrant).read_bytes()
+
+    result = _run("recheck", "-w", str(warrant), "-i", str(_batch(tmp_path, "b", 2)),
+                  "--since", str(first), "-q", "-o", str(first))
+    assert result.returncode == 2 and "never writes over a record" in result.stderr
+    assert first.read_bytes() == before and head_path(warrant).read_bytes() == sidecar_before
