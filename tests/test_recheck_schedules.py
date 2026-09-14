@@ -212,6 +212,19 @@ def test_the_registered_design_is_the_one_187_wrote_down() -> None:
     assert (REGISTERED.budget, REGISTERED.alpha, REGISTERED.breach) == (0.05, 0.05, 0.075)
     assert REGISTERED.negatives_per_recheck == 628
     assert REGISTERED.years == 4000
+
+
+def test_the_registered_sample_is_what_plan_quotes_at_power_080() -> None:
+    """The study's 628 is 183's size, computed rather than copied.
+
+    If the sizing moves, the study describes a plan nobody is shown any more,
+    and it has to be re-registered rather than silently re-run.
+    """
+    from controlplane.economics.sizing import negatives_for_power
+
+    assert negatives_for_power(
+        REGISTERED.breach, REGISTERED.budget, REGISTERED.alpha, 0.80
+    ) == REGISTERED.negatives_per_recheck
     assert [(c.name, c.rechecks, c.change_after, c.window) for c in REGISTERED.cadences] == [
         ("weekly", 52, 26, 13), ("monthly", 12, 6, 3),
     ]
