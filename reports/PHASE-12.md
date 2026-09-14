@@ -440,3 +440,34 @@ python warrant.py plan -b 0.05 --negative-share 0.9               # prints each 
 python warrant.py recheck -w W.warrant.json -i week01.csv --horizon-labels <N from plan>
 python -m pytest tests/test_recheck_chain.py tests/test_sampling_assurance.py -q
 ```
+
+### 8.9 After the addendum: an independent review of 193 found what its tests had not (194)
+
+accenture-c4 reviewed 193 and 191 read-only, reproducing every finding through
+the CLI. **191's fix was confirmed correct** by brute force over every count and
+390 configurations beyond the shipped points. **193 was not.**
+
+- **A defect.** A file whose bound breaks *and* whose distribution moved lost its
+  drift revocation inside a chain -- the bound-first verdict hid it, and the
+  chain mapped it to STALE. Fixed: drift carries its own verdict, and a chain
+  cannot hide it.
+- **Three overclaims.** The consumed-unit check is per id, not per item; `plan`'s
+  horizon counts negatives fed, not weeks; chained reasons omitted the chain's
+  end and the units it never saw. Each now says so.
+- **Four ways past the fork guard**, three found on a second pass: continuing
+  from an older record, copying the warrant, editing the head sidecar, and
+  overwriting last week's record by exporting to one filename. The first, second
+  and fourth are refused unless `--fork` declares them; the third cannot be
+  refused locally, so `warrant chain verify` (built by accenture-c4) detects forks,
+  restarts, missing links, edited states and spliced links **from the records a
+  user keeps**, and the records say what "matched" cannot prove.
+- **Hardening from the 191 review:** every quoted recall size is now checked
+  against brute force at run time, and raises rather than returning a size it
+  cannot confirm.
+
+**What this says about the process.** 193 shipped with passing acceptance
+criteria written by its author. Every defect above was found by a second reader
+with a reproduction, none by those criteria. A review loop also introduced and
+caught its own line-ending flip before it reached a branch.
+
+Head `86b0f9b`: full suite 0 failures, 1 expected xfail; 1,667 collected.
