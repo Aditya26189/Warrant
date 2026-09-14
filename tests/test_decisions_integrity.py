@@ -33,7 +33,13 @@ DECISIONS = PROJECT_ROOT / "DECISIONS.md"
 #: Both heading forms. ``(\d+)`` then an optional letter suffix -- ``152a`` is a
 #: deliberate second entry recording what ``152`` pre-registered, not a
 #: duplicate -- then an em dash, en dash or hyphen.
-_HEADING = re.compile(r"^## (\d+)([a-z]?)\s*[-–—]\s", re.M)
+_HEADING = re.compile(r"^## (\d+)([a-z]?)\s*(?:--|[-–—])\s", re.M)
+
+
+def test_append_only_heading_variants_remain_citable() -> None:
+    """New ASCII headings must resolve without rewriting committed entries."""
+    for separator in ("-", "--", "–", "—"):
+        assert _HEADING.findall(f"## 184 {separator} Registered choice") == [("184", "")]
 
 #: A citation: "DECISIONS 147", "DECISIONS.md 147", "DECISIONS.md entry 122".
 _CITATION = re.compile(r"DECISIONS(?:\.md)?\s*(?:entry\s*)?(\d{1,3})")

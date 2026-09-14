@@ -9369,3 +9369,18 @@ pass, preserving the same sorted error output. This matters before putting the
 new workflow on larger customer exports. It is a complexity correction, not a
 measured throughput claim. Acceptance: unchanged legacy single-class rejection,
 explicit opt-in parsing, identical duplicate detection, and existing intake tests.
+
+## 186 - Repair audit integration without rewriting history (2026-09-14)
+
+The broad regression run caught two integration defects in this extension:
+new decision headings use a double ASCII hyphen the citation parser does not
+recognise, and adding tests invalidates the manually maintained test-count badge.
+Preserve append-only entries 184 and 185; extend the parser to recognise their
+heading format and test it. Do not rewrite old rationale to accommodate a regex.
+
+Generate the test inventory from successful pytest collection on a clean tree,
+record its source commit, then refresh the README/Makefile count from that
+artifact. Label the number collected, not passing: collection cannot prove
+execution passed. The existing comparison test remains in force. No scientific
+result changes. These repairs do not resolve the separate runtime-monitor or
+grouped-recheck findings recorded in 184.
