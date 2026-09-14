@@ -10390,8 +10390,8 @@ breach caught within the window):
 Every weekly cell catches in at least 0.9900 of years with a median delay of one
 or two rechecks. **The monthly cadence is the weak one**: three rechecks of
 window catch the breach in 0.8325 to 0.8970 of years. A customer rechecking
-monthly should be told that a breach is missed within a quarter in roughly one
-year in six to eight.
+monthly should be told that a breach is missed within a quarter in about one
+year in six (1.5x) to one in ten (3x).
 
 **Predictions.**
 
