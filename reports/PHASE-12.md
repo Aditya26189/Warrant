@@ -389,7 +389,7 @@ and corrected before any code.
 | # | item | what would close it |
 |---|---|---|
 | O-8 | **`FPRMonitor` decays through good behaviour** and almost never catches a breach that follows it in time (187) | an owner for `validation/warrant_stats.py` replacing the runtime trigger with a change detector |
-| O-9 | **The demo still states `FPRMonitor`'s deployment-wide guarantee**: `controlplane/report/beats.py` prints "anytime-valid; P(false revoke) <= alpha over the whole deployment", which 187 found is not established as implemented. No code path runs the monitor | rewording the beat to name the chain (193) or to drop the claim |
+| O-9 | **The demo still states `FPRMonitor`'s deployment-wide guarantee**: `controlplane/report/beats.py` prints "anytime-valid; P(false revoke) <= alpha over the whole deployment", which 187 found is not established as implemented. No code path runs the monitor | **closed at `2a9f7ee`**: the beat and `DEMO_SCRIPT.md` now name the chain's bound |
 | O-10 | **The chain's detection outside 187's registered setting is unmeasured** | a registered study at the cadences and breach sizes a customer declares |
 
 ### 8.7 Defects in how this line was run
