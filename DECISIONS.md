@@ -9832,6 +9832,69 @@ moved off shortcuts for the sawtooth reason (146).
 like power, and the plan prints 0.5, 0.8 and 0.9 so the reader sees what it buys.
 The arbitrary number was already there; it was 0.5 and nobody said so.
 
+### 191 results -- C1, C2, C3 pass; the recall price rises from 1,014 to 1,399 labels
+
+- **Code:** `945f08b`, corrected at `ca5ceab` (below) and sped up at `1c13492`.
+  **Artifacts:** `results/on_traffic/`, `results/feasibility.json` at `05b2a52`
+  (built at `478b02a`); `results/RESULTS.md` through the chain at `478e674`, 3,075
+  metrics compared, 0 moved. `verify.py`: 81/81, 25/25, 3/3.
+- **Tests:** `tests/test_sampling_assurance.py` pins every figure below.
+
+| criterion | registered | result |
+|---|---|---|
+| C1, same estimator | 2,000 seeded samples at the 0.80-assurance size through `estimate_on_traffic` realise the margin within 3 MC SE of the computed assurance | **pass**: 0.8045 realised against 0.8004 computed, 0.46 SE. At the old 1,014: 0.4875 against 0.4882 |
+| C2, the prediction | the 1,014-label headline's assurance lies in [0.35, 0.65] | **pass**: **0.4882** |
+| C3 | the 0.80-assurance size exceeds 1,014 and is at most 2,028 | **pass**: **1,399** (1.38x) |
+
+**The published figures, before and after, month one unless stated.**
+
+| recall margin | sized at the expected count | its assurance | at 0.50 | **at 0.80** | at 0.90 |
+|---|---|---|---|---|---|
+| +/-0.05 | 1,014 | 0.4882 | 1,020 | **1,399** | 1,632 |
+| +/-0.02 | 5,566 | 0.4949 | 5,611 | **6,518** | 7,021 |
+| +/-0.01 | 21,671 | 0.4977 | 21,677 | **23,531** | 24,537 |
+
+Steady state at the measured design effect, +/-0.05: **804 -> 1,109**, under the
+effective-`n` approximation the entry scopes.
+
+**The profiles, month one** (`RESULTS.md`): `customer_support` 1,808 -> 2,283 and
+10,636 -> 11,803; `internal_knowledge` 3,582 -> 4,101 and 21,598 -> 22,886;
+`decision_support` 4,049 -> **4,068** and 24,591 -> **24,659**. Every plan's
+assurance at its size is 0.8001 to 0.8555, and every expected-count size's is
+0.4882 to 0.5571. `decision_support` barely moves because its expected count sits
+at the half-width's peak, where counts on both sides of it narrow the interval.
+
+**A defect found after the first artifact commit, by reading the output.** The
+first implementation (`945f08b`) assumed the counts meeting a margin are one high
+tail past sixteen errors, because at the declared workload the half-width falls
+with the count. It was checked against brute force there, and at flag rate 0.05
+only. The artifacts committed at `11d7d90` were built with it, and the
+re-rendered `RESULTS.md` showed `decision_support` at +/-0.02 needing **fewer**
+labels with 0.80 assurance (21,108) than at the expected count (24,591) -- which
+cannot happen. Brute force at that plan: assurance **0.0000**; the code returned
+1.0000.
+
+The half-width rises to **one peak**, near `k = n TP / (3 N_u)`, then falls:
+checked over every count at every shipped operating point, one sign change in
+the slope. At the declared workload the peak is at a few errors, far below the
+expected count, so one tail was right; at `decision_support` (TP 4,420, q 0.0148)
+the peak sits at the expected count. `ca5ceab` counts both tails; brute force
+now agrees to 4e-14 at all four shipped points, three margins and ten sizes, and
+`tests/test_sampling_assurance.py` pins the failing case. **Every declared-workload
+figure above is unchanged by the fix**; the profile rows moved, and the
+`11d7d90` versions of them were wrong. The commit stays in history.
+
+It was not caught by a test because the tests checked the property where it held.
+The reading that caught it was the one this repository keeps paying for: a
+number that moved in the impossible direction.
+
+**What it does not establish.** The declared `q` is still declared: assurance is
+over sampling noise at an assumed prevalence, not over being wrong about the
+prevalence, which is the larger risk in month one and is what the estimator's
+realised margin reports after the fact. The Neyman row is approximate.
+**0.80 is a convention**, printed beside 0.5 and 0.9, not a measurement of what
+anyone should buy.
+
 ## 192 - The frontier invites choosing a budget on the file that certifies it: how wrong is the chosen row, measured before deciding
 
 - **Date:** 2026-09-14

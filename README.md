@@ -113,7 +113,7 @@ rather than a plan.
 |---|---|---|
 | **what your error rate is on your traffic** | Stratified estimation over two strata: the flagged pool is a census, the unflagged pool is sampled. Recall is propagated through `dR/dq` = **-4.650**, not sized as a binomial. | [`results/on_traffic/`](results/on_traffic/ON_TRAFFIC.md) — interval coverage **96.8%** over 1,000 trials against a nominal 95% |
 | **when that number stops being true** | Envelope matrix, drift detection, and a revocation ladder that turns on *evidence of breach* rather than failure to re-prove. | [`results/warrant_matrix.md`](results/warrant_matrix.md); [`results/drift/revocation_trace.json`](results/drift/revocation_trace.json) — a measured warrant revoked on a replayed shift, criteria registered before the run; `warrant recheck` |
-| **what it costs to keep it true** | A computed price list. Month one at full simple-random-sampling cost, steady state at a **measured** design effect. | [`results/on_traffic/`](results/on_traffic/ON_TRAFFIC.md) — **1,014** labels for recall to ±0.05, against the **187** this repository quoted before `DECISIONS.md` 147 |
+| **what it costs to keep it true** | A computed price list. Month one at full simple-random-sampling cost, steady state at a **measured** design effect. | [`results/on_traffic/`](results/on_traffic/ON_TRAFFIC.md) — **1,399** labels for recall to ±0.05, sized so the realised margin meets it with probability 0.80 (`DECISIONS.md` 191), against the **187** this repository quoted before `DECISIONS.md` 147 |
 
 **Yield is exact; rate is estimated.** The flagged stratum of *your traffic* is
 reviewed anyway, so this month's confirmed-error count and the precision of this
@@ -306,10 +306,10 @@ here fails the build.**
 | `dR/dq` at the declared workload | -4.6496 | - | results/on_traffic/on_traffic.json | headline.derivative | python scripts/25_on_traffic.py |
 | Unflagged pool against confirmed true positives | 231.9 | - | results/on_traffic/on_traffic.json | headline.amplification_over_confirmed_errors | python scripts/25_on_traffic.py |
 | ...against the flagged pool, which is a different ratio | 66.0 | - | results/on_traffic/on_traffic.json | headline.pool_ratio_over_flagged | python scripts/25_on_traffic.py |
-| Labels for recall +/-0.05, month one, full SRS cost | 1014 | - | results/on_traffic/on_traffic.json | headline.labels_month_one_5pp | python scripts/25_on_traffic.py |
-| ...at steady state, Neyman at the measured design effect | 804 | - | results/on_traffic/on_traffic.json | headline.labels_steady_state_5pp | python scripts/25_on_traffic.py |
+| Labels for recall +/-0.05, month one, full SRS cost, 0.80 assurance | 1399 | - | results/on_traffic/on_traffic.json | headline.labels_month_one_5pp | python scripts/25_on_traffic.py |
+| ...at steady state, Neyman at the measured design effect | 1109 | - | results/on_traffic/on_traffic.json | headline.labels_steady_state_5pp | python scripts/25_on_traffic.py |
 | ...what the superseded sizing quoted (DECISIONS 147) | 187 | - | results/on_traffic/on_traffic.json | headline.superseded_sizing_5pp | python scripts/25_on_traffic.py |
-| Labels for recall +/-0.02, month one | 5566 | - | results/on_traffic/on_traffic.json | headline.labels_month_one_2pp | python scripts/25_on_traffic.py |
+| Labels for recall +/-0.02, month one | 6518 | - | results/on_traffic/on_traffic.json | headline.labels_month_one_2pp | python scripts/25_on_traffic.py |
 | Recall-interval coverage, 1000 trials, nominal 0.95 | 0.9680 | - | results/on_traffic/on_traffic.json | headline.coverage | python scripts/25_on_traffic.py |
 | ...over how many trials | 1000 | - | results/on_traffic/on_traffic.json | headline.coverage_trials | python scripts/25_on_traffic.py |
 | Measured Neyman design effect vs the declared 0.67 | 0.7929 | - | results/on_traffic/on_traffic.json | headline.measured_design_effect | python scripts/25_on_traffic.py |
