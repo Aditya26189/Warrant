@@ -244,6 +244,23 @@ stated here.
 - **There is no labelled agent-action trace set.** The gate is measured on
   declared scenarios. `DECISIONS.md` 171.
 
+### 3.5 The recheck chain catches a breach less reliably at a monthly cadence
+
+`warrant recheck --horizon-labels / --since` (`DECISIONS.md` 193, 194) bounds a
+sound detector's false revocation over its declared negatives, and that bound held
+in every setting simulated: at most **0.012** of years across three breach sizes
+and four cadences, against a limit of 0.0646 (`DECISIONS.md` 196,
+`results/chain_detection/grid.json`).
+
+**Detection is not uniform.** Weekly rechecks caught a breach within 13 weeks in
+at least 0.9900 of simulated years. **Monthly rechecks caught it within three
+months in only 0.8325 (a 1.5x breach) to 0.8970 (3x)** -- a breach missed for a
+quarter in about one year in six to one in ten.
+
+What this does not cover: one budget (0.05), step changes, independent fresh
+samples, and the recheck sizes `plan` quotes at power 0.80. `plan` quotes no
+detection figure, and should not, for settings outside this grid.
+
 ---
 
 ## 4. Open items at submission

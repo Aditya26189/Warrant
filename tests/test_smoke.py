@@ -549,6 +549,8 @@ def test_every_script_has_a_smoke_test() -> None:
         "27_gate.py",
         # test_smoke_recheck_schedules
         "29_recheck_schedules.py",
+        # test_smoke_chain_detection
+        "31_chain_detection.py",
         # test_smoke_frontier_selection
         "30_frontier_selection.py",
         # tests/test_test_inventory.py runs it on a throwaway repository: a
@@ -1387,3 +1389,16 @@ def test_smoke_frontier_selection(tmp_path: Path) -> None:
     assert set(payload["criteria"]) == {"M1_material", "M2_bonferroni_alpha", "M3_sanity"}
     assert payload["registered_run"] is False
     assert "Not a measurement" in payload["what_these_are"]
+
+
+def test_smoke_chain_detection(tmp_path: Path) -> None:
+    """`31_chain_detection.py` writes the whole grid and 196's criteria at a smoke size."""
+    _run_bare(
+        "31_chain_detection.py",
+        "--config", str(PROJECT_ROOT / "config.yaml"),
+        "--years", "2",
+        "--out", str(tmp_path),
+    )
+    payload = json.loads((tmp_path / "chain_detection" / "grid.json").read_text(encoding="utf-8"))
+    assert len(payload["cells"]) == 3 * 4 * 4 * 5
+    assert set(payload["criteria"]) == {"V", "P1", "P2", "P3"}
