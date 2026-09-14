@@ -214,11 +214,14 @@ def _parse_score(raw: Any, *, row: int, source: str) -> float:
     return value
 
 
-def load_scored_items(path: str | Path) -> ScoredItems:
+def load_scored_items(path: str | Path, *, require_both_classes: bool = True) -> ScoredItems:
     """Read a customer's scored items, refusing anything that breaks the contract.
 
     Args:
         path: A ``.csv`` or ``.jsonl`` file.
+        require_both_classes: Preserve legacy certification rejection by default.
+            Release evaluation opts out to report a missing denominator as
+            UNVALIDATED instead of discarding the study (DECISIONS 185).
 
     Returns:
         The parsed :class:`ScoredItems`.
@@ -289,7 +292,7 @@ def load_scored_items(path: str | Path) -> ScoredItems:
         )
 
     distinct = set(labels)
-    if len(distinct) < 2:
+    if require_both_classes and len(distinct) < 2:
         only = distinct.pop() if distinct else None
         raise InputError(
             f"{source}: every label is {only}. A detector cannot be certified "

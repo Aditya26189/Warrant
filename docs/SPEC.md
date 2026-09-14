@@ -17,6 +17,14 @@ violation is REFUSED and an inconclusive bound is UNVALIDATED. Verification
 recomputes the measurement and reports STALE after expiry. These claims assume
 IID sampling and an untouched holdout; they do not extend across repeated studies.
 
+The additive CLI is `warrant release register|evaluate|verify`. Registration
+reads specification JSON and two ID lists. Evaluation reads identity JSON and
+the existing scored-file format, writing one companion `.evaluation.json` file
+without replacement. Verification recomputes against the retained inputs.
+`--require-valid` returns 1 for other current states; malformed input returns 2.
+Release alone opts into single-class intake so missing evidence can be recorded;
+legacy callers keep rejecting it. Synthetic human summaries suppress metrics.
+
 ---
 
 ## 1. Core data model

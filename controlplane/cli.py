@@ -208,6 +208,9 @@ def build_parser() -> argparse.ArgumentParser:
     plan.add_argument("--config", default=str(PROJECT_ROOT / "config.yaml"),
                       help=argparse.SUPPRESS)
     plan.add_argument("--quiet", "-q", action="store_true")
+    from .release.cli import add_parser
+
+    add_parser(sub)
     return parser
 
 
@@ -482,6 +485,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         return _recheck(args)
     if args.command == "plan":
         return _plan(args)
+    if args.command == "release":
+        from .release.cli import run
+
+        return run(args)
     raise AssertionError(f"unreachable: unhandled command {args.command!r}")
 
 
