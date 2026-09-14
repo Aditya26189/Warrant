@@ -10252,3 +10252,63 @@ without `--fork` still exits 2, as intended.
   refuses to write over an existing file (exit 2, nothing written, sidecar
   unchanged), and its default output name carries the link number,
   `<input>.recheck-NNNN.json`.
+
+## 195 - A budget picked off the frontier can now be certified at the level the frontier held it to
+
+- **Date:** 2026-09-15
+- **Status:** DECIDED (the opt-in path); OPEN -- needs human review (the default)
+
+192 made the frontier certify every row at `alpha / len(grid)`, so a row chosen
+after reading them all still holds. The command a customer runs next did not
+follow: `certify --budget B` on the same file certifies at alpha, and the
+warrant it issues -- the record `recheck`, `plan` and a chain are built on --
+carries the unadjusted level. `reports/PHASE-12.md` O-1.
+
+**Decision.**
+
+1. **`certify --budget B --from-frontier RECORD`** certifies at the frontier
+   record's `row_alpha`, through `intake.certify.certify_budget` -- the step the
+   frontier row used -- so the warrant's threshold equals that row's exactly.
+   Exit 2, nothing written, if RECORD was not produced from this input or `B` is
+   not on its grid.
+2. **The frontier record gains `input_sha256`.** It is the release path's
+   `data_sha256` convention (`release/evaluate.py`): the canonical digest of the
+   sorted `(sha256 of item id, label, score)` rows, so the two commands name one
+   file by one digest. A grouped file, which the release path refuses, appends
+   each row's group digest; on every file both commands accept, the digests are
+   equal, and a test holds that.
+3. **Which alpha governs which test, stated in the record.** The warrant records
+   `selection: {from_frontier, grid, row_alpha, family_alpha}`; the certificate
+   is at `row_alpha`, and the top-level `alpha` stays `family_alpha`. Selection
+   happened once, when the budget was picked off the grid, so the certificate
+   pays for it. A recheck, a plan and a chain test fresh labels where nothing was
+   selected, so they run at the family level.
+4. **The default is unchanged.** `certify --budget` without `--from-frontier`
+   still certifies at alpha. When a frontier record for the same input digest is
+   at the default sibling path, it prints a notice and records
+   `frontier_record_present: true`, so an auditor can see a pick may have
+   happened; no status changes. **Whether the default should adjust is a product
+   decision and is left OPEN for the user.**
+
+**Criteria.** The warrant's threshold equals the frontier row's at every
+certified budget, on an ungrouped and a grouped file; the refusals in 1 exit 2
+with nothing written; a recheck of a `--from-frontier` warrant runs at the
+family alpha; on an ungrouped file `input_sha256` equals the release path's
+`data_sha256`.
+
+**The objection.** *"A record carrying `alpha` 0.05 and `row_alpha` 0.00625
+reads as a warrant weaker than its certificate."* It is the other way round, and
+the record says so: the certificate's bound was computed at `row_alpha`, stricter
+than the family level, because the budget was chosen by looking; the family
+level is what every later test on new data is held to. Each field names the test
+it governs.
+
+**Rejected: make the adjustment the default now.** It silently changes the
+threshold every existing `certify --budget` user receives, and whether a budget
+was picked off a frontier is a fact about the user's process that a file cannot
+establish.
+
+**Rejected: infer the pick from a sibling frontier record and adjust.** A file
+beside the input proves the frontier was run, not that the budget was chosen
+from it; adjusting on that inference would certify differently depending on
+which files happen to sit in a directory.
