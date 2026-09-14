@@ -16,7 +16,9 @@ This reads every record handed to it and reports what the set shows:
   that does not begin with its predecessor's;
 * **continued after end** -- a link after a record that revoked or ended;
 * **mixed warrants** -- records from more than one warrant, each group still
-  verified.
+  verified;
+* **duplicate** -- one record under several paths, verified once. Reported so
+  ``--require-clean`` sees it, not because anything forked.
 
 A duplicated link number always surfaces as one of these -- a fork, a restart
 or a link numbered wrongly for its predecessor -- and a gap as a missing link,
@@ -111,16 +113,34 @@ def load_records(paths: Sequence[str | Path]) -> dict[str, dict[str, Any]]:
 def verify_chain_records(records: Mapping[str, Mapping[str, Any]]) -> ChainVerification:
     """Every check in the module docstring, over the whole set."""
     findings: list[ChainFinding] = []
-    states: dict[str, ChainState] = {}
-    digests: dict[str, str] = {}
-    for name, record in records.items():
-        digests[name] = canonical_sha256(record)
-        try:
-            states[name] = ChainState.from_payload(dict(record["chain"]))
-        except ChainError as exc:
-            findings.append(ChainFinding("digest", (name,), str(exc)))
 
-    by_digest = {digest: name for name, digest in digests.items()}
+    # The same record under several paths -- a backup copy beside the original --
+    # is one record. Verified once, under its first path; the extra paths are
+    # reported as duplicates, or two copies would read as a fork (found in review).
+    paths_by_digest: dict[str, list[str]] = {}
+    for name in sorted(records):
+        paths_by_digest.setdefault(canonical_sha256(records[name]), []).append(name)
+    by_digest = {digest: paths[0] for digest, paths in paths_by_digest.items()}
+    for digest, paths in sorted(paths_by_digest.items(), key=lambda item: item[1][0]):
+        if len(paths) > 1:
+            findings.append(ChainFinding(
+                "duplicate", tuple(paths),
+                f"the same record under {len(paths)} paths; verified once, as {Path(paths[0]).name}",
+            ))
+
+    states: dict[str, ChainState] = {}
+    for digest, name in sorted(by_digest.items(), key=lambda item: item[1]):
+        try:
+            states[name] = ChainState.from_payload(dict(records[name]["chain"]))
+        except ChainError as exc:
+            # An edit to a record changes its own digest too, so a link that
+            # continued it points at a digest nothing in the set now has, and
+            # reports a missing link. One cause, two findings; say so here,
+            # because the continuing link cannot be named from the edited record.
+            findings.append(ChainFinding(
+                "digest", (name,),
+                f"{exc}. Any link that continued this record also reports a missing link.",
+            ))
     warrants = sorted({state.warrant_sha256 for state in states.values()})
     if len(warrants) > 1:
         findings.append(ChainFinding(

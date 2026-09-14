@@ -246,3 +246,28 @@ def test_the_cli_exits_two_on_a_file_that_is_not_a_chained_record(forged_chain) 
     assert result.returncode == 2
     assert "not a chained recheck record" in result.stderr
     assert not (forged_chain / "v3.json").exists()
+
+
+def test_one_record_under_two_paths_is_a_duplicate_not_a_fork(tmp_path) -> None:
+    """Found in review: a backup copy beside the original read as an undeclared fork."""
+    r1 = _start("a")
+    r2 = _next(r1, "b")
+    paths = []
+    for name, record in (("r1.json", r1), ("r2.json", r2), ("r2 - backup.json", r2)):
+        path = tmp_path / name
+        path.write_text(json.dumps(record), encoding="utf-8")
+        paths.append(path)
+    findings = verify_chain_records(load_records(paths)).findings
+    assert [f.kind for f in findings] == ["duplicate"]
+    assert "2 paths" in findings[0].detail
+    assert len(findings[0].records) == 2
+
+
+def test_an_edited_record_orphans_its_successor_and_says_so() -> None:
+    """Editing a record changes its own digest, so the link after it cannot be matched."""
+    r1 = _start("a")
+    r2 = _next(r1, "b")
+    r1["chain"]["statistics"][0] += 1.0
+    findings = {f.kind: f for f in verify_chain_records({"r1": r1, "r2": r2}).findings}
+    assert set(findings) == {"digest", "missing_link"}
+    assert "also reports a missing link" in findings["digest"].detail
