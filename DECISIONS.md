@@ -9305,3 +9305,52 @@ not how to stop it. Changing the test so the year holds a guarantee is the
 deferred question above, pre-registered separately. And `sampling/planning.py` sizes the recall margin at the expected
 count, which has the same shape -- the realised margin misses its target
 about half the time -- and is not addressed here.
+
+## 184 -- Release evidence: freeze the question before evaluating it (2026-09-14)
+
+The user requested an additive, usable enterprise product with small commits.
+Extend the customer CLI with a local release-evidence workflow; preserve the
+research pipeline, existing commands and frozen results. No service, dashboard,
+new detector, paid compute or external publication is required for this slice.
+
+Register system and detector versions, scope, positive-label meaning, a fixed
+threshold, FPR ceiling, strictly positive recall floor, expiry, alpha, development
+IDs and a disjoint holdout-ID manifest before evaluation. Holdout evaluation
+must match that manifest exactly. Content hashes bind the specification and
+scored data; they do not authenticate the operator, timestamp or claimed model.
+Stable IDs cannot detect semantic duplicates or prove the holdout was unseen.
+Registration is local evidence of a declared procedure, not trusted notarisation.
+
+First implementation supports independent identically distributed items only.
+Reject grouped input rather than silently treat dependent rows as independent.
+Five binomial rates (FPR, recall, precision, flag rate, base rate) each receive
+an equal-tailed Clopper-Pearson interval at alpha/5. By the union bound their
+joint coverage is at least 1-alpha under the declared sampling assumptions.
+Lift is propagated as [recall.lower/flag.upper, recall.upper/flag.lower], with
+an undefined/unbounded result explicitly represented when a denominator is zero.
+No extra inferential claim is introduced by that deterministic propagation.
+References: NIST binomial intervals, https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm ;
+Bonferroni inequality, https://www.itl.nist.gov/div898/handbook/prc/section4/prc473.htm .
+
+VALID requires the FPR upper bound and recall lower bound to clear the registered
+limits. An observed violation is REFUSED; intervals crossing a limit or missing
+a required denominator are UNVALIDATED. Expired evidence is STALE when checked.
+No override. These are scoped detector measurements, not deployment approval,
+regulatory certification or a guarantee about future traffic. Coverage applies
+to one predeclared evaluation; repeated selection across contracts is excluded.
+
+Acceptance registered before implementation: reject overlapping/changed IDs,
+unsupported grouping, invalid/unknown specification fields, changed identity,
+expired contracts, altered evidence and output replacement; reproduce all
+metrics from the bound input; agree with an independent binomial-tail inversion;
+retain existing customer tests and dependency boundary. Synthetic test outputs
+are not product-performance evidence and human summaries must suppress them.
+
+OPEN audit findings in the preserved paths: `intake.recheck` discards groups
+before its row-level binomial test; `FPRMonitor.wealth` caps using the maximum
+component, although its stopping statistic is the average over components.
+The latter condition does not imply mixture wealth reached the boundary.
+`validation/warrant_stats.py` is designated read-only in CLAUDE.md; record and
+reproduce this defect without changing it in this slice. Neither runtime path
+is reused for the new release decision. The earlier power correction (183) is
+now committed at 2259065, with its checks recorded at 7ae68d3.
