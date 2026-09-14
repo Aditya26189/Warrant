@@ -199,17 +199,113 @@ def _routing(results_dir: Path) -> str:
             f"> `{example.get('profile')}` on `{example.get('envelope_id')}`: "
             f"{example.get('reason','—')}",
         ]
-    lines += [
+    trace = _load(results_dir, "drift", "revocation_trace.json")
+    if trace is None:
+        lines += [
+            "",
+            "> **The revocation half of this section is missing, and that is stated "
+            "rather than implied.** `SPEC.md` §11.6 asks for *envelope violation "
+            "detected, revocation, routing decision*. The routing decisions are "
+            "above. **Nothing in `results/` records a drift run that revoked a "
+            "warrant.** `python scripts/28_revocation_trace.py` replays one "
+            "(`DECISIONS.md` 178). `DECISIONS.md` 164, OPEN.",
+        ]
+    else:
+        lines += ["", _revocation(trace)]
+    return "\n".join(lines)
+
+
+def _revocation(trace: dict[str, Any]) -> str:
+    """§11.6's other half: envelope violation detected, revocation, routing.
+
+    Rendered from ``results/drift/revocation_trace.json`` (``DECISIONS.md`` 178).
+    Every number is the artifact's; the caveats are stated before the table,
+    because a replay read as production traffic is the overclaim to prevent.
+    """
+    warrant = trace.get("warrant") or {}
+    monitor = trace.get("monitor") or {}
+    stream = trace.get("stream") or {}
+    medians = stream.get("token_length_median") or {}
+    lines = [
+        "### The revocation, replayed",
         "",
-        "> **The revocation half of this section is missing, and that is stated "
-        "rather than implied.** `SPEC.md` §11.6 asks for *envelope violation "
-        "detected, revocation, routing decision*. The routing decisions are "
-        "above. **Nothing in `results/` records a live drift run that revoked a "
-        "warrant**, because the drift machinery has never been pointed at a "
-        "moving distribution with a warrant outstanding. The machinery is built "
-        "and tested (`controlplane/drift/`, `warrant recheck`); the trace is "
-        "not measured. `DECISIONS.md` 164, OPEN.",
+        f"**What this is:** {trace.get('what_this_is', 'a replay')}. The warrant "
+        f"under observation is `{warrant.get('detector_id')}` at "
+        f"`{warrant.get('operating_point_id')}` on `{warrant.get('eval_set_id')}`, "
+        "scored against the envelope stored in that warrant. "
+        f"{stream.get('n_normal')} held-out requests from its own envelope "
+        f"(median {medians.get('normal', 0):,.0f} tokens), then "
+        f"{stream.get('n_shift')} from the long-context envelope "
+        f"(median {medians.get('shift', 0):,.0f}), starting at request "
+        f"{stream.get('shift_starts_at_request')}. Window "
+        f"{monitor.get('window_size')}, PSI bands "
+        f"{monitor.get('psi_stable')} / {monitor.get('psi_significant')}; only "
+        f"{', '.join(monitor.get('features_with_a_reference') or []) or 'no feature'} "
+        "has a reference in the envelope, and the hard cut is not a gradual shift.",
+        "",
+        "| after request | window (normal / shift) | envelope | PSI | warrant |",
+        "|---|---|---|---|---|",
     ]
+    for checkpoint in trace.get("checkpoints") or []:
+        psi = checkpoint.get("psi")
+        status = checkpoint.get("to_status", "—")
+        lines.append(
+            f"| {checkpoint.get('after_request')} | "
+            f"{checkpoint.get('window_normal')} / {checkpoint.get('window_shift')} | "
+            f"{checkpoint.get('envelope_state')} | "
+            f"{'—' if psi is None else f'{psi:.3f}'} | "
+            f"{'**' + status + '**' if status == 'REVOKED' else status} |"
+        )
+    revocation = trace.get("revocation")
+    if revocation:
+        lines += [
+            "",
+            f"**At request {revocation.get('at_request')} the warrant was revoked** and "
+            f"the matrix was consulted on `{revocation.get('live_eval_set_id')}` — the "
+            "envelope the traffic is in, not the one just revoked:",
+            "",
+            "| profile | action | served by | why |",
+            "|---|---|---|---|",
+        ]
+        for decision in revocation.get("decisions") or []:
+            routing = (decision.get("response") or {}).get("routing") or {}
+            lines.append(
+                f"| `{decision.get('profile')}` | {routing.get('action', '—')} | "
+                f"{routing.get('routed_to') or '**nothing**'} | {routing.get('reason', '—')} |"
+            )
+        first = (revocation.get("decisions") or [{}])[0]
+        considered = ((first.get("response") or {}).get("routing") or {}).get("considered") or []
+        if considered:
+            lines += ["", "What the consultation looked at, for the first profile:", ""]
+            lines += [f"- `{c.get('detector_id')}` — {c.get('verdict')}" for c in considered]
+        certificate = first.get("certificate") or {}
+        unchecked = certificate.get("unchecked") or []
+        chain = revocation.get("certificate_chain") or {}
+        lines += [
+            "",
+            f"Each certificate claims **{len(certificate.get('claimed_bounds') or {})} "
+            "bounds** — a revoked warrant with nowhere to route claims nothing, rather "
+            "than its last good numbers — and states what it did not check:",
+            "",
+        ]
+        lines += [f"- {note}" for note in unchecked]
+        lines += [
+            "",
+            f"Certificates sealed into their own chain: {chain.get('n_records')} records, "
+            f"chain {'intact' if chain.get('ok') else '**BROKEN**'}.",
+        ]
+    criteria = trace.get("criteria") or {}
+    if criteria:
+        lines += [
+            "",
+            "**Registered before the run** (`DECISIONS.md` 178):",
+            "",
+            "| criterion | result |",
+            "|---|---|",
+        ]
+        for name, result in criteria.items():
+            verdict = "PASS" if result.get("passed") else "**FAIL**"
+            lines.append(f"| {name.split('_', 1)[1].replace('_', ' ')} | {verdict} |")
     return "\n".join(lines)
 
 
@@ -307,7 +403,7 @@ def spec_section_11_sections(results_dir: Path) -> list[tuple[str, str]]:
         ("Eval set registry", _evalset_registry(results_dir)),
         ("Tier ladder — what each level of access buys", _tier_ladder(results_dir)),
         ("Control results, including the fault that must be rejected", _controls(results_dir)),
-        ("Routing, and the revocation trace that is missing", _routing(results_dir)),
+        ("Routing, and revocation", _routing(results_dir)),
         ("Presidio, three configurations", _presidio(results_dir)),
         ("The action gate, and the detector-nulled case", _gate(results_dir)),
     ]

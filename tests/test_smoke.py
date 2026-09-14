@@ -594,6 +594,13 @@ def test_every_script_has_a_smoke_test() -> None:
         # which is the stronger check anyway: the frozen scores are the evidence,
         # and they are verified rather than the freezer being smoke-tested.
         "10_freeze_scores.py",
+        # Needs both extraction caches and the rebuilt ledger, neither of which a
+        # clean clone has, and refuses by design once the observed warrant is
+        # past its 24-hour lifetime (DECISIONS 177). Its logic -- held-out rows
+        # only, the expiry refusal, the criteria -- is unit-tested in
+        # tests/test_revocation_trace.py, and the committed trace it writes is
+        # checked there against the criteria DECISIONS 178 registered.
+        "28_revocation_trace.py",
         # RECURSION. The clean-clone gate clones the repository and runs this
         # suite inside the clone. A smoke test that invoked it would clone,
         # run the suite, reach this test, clone again, and not stop. Its pure

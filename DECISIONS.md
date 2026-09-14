@@ -9048,3 +9048,40 @@ repository refuses everywhere else.
 **Not established by this.** Detection on a shift in anything but length; the
 behaviour on a gradual shift (the window slides over a hard cut); anything about
 production traffic.
+
+---
+
+## 179 - A routed drift response cannot be serialised, and nothing had ever tried
+
+- **Date:** 2026-09-14
+- **Status:** **OPEN** -- needs human review; `drift/**` is read-only
+
+Found while building 178's trace. `DriftResponse.to_payload()` in
+`controlplane/drift/response.py` does:
+
+```python
+"routing": None if self.routing is None else self.routing.to_payload(),
+```
+
+`RoutingDecision` has no `to_payload`. So the method raises `AttributeError` on
+exactly the responses that matter -- a revoked warrant whose consultation of the
+matrix produced a decision -- and works only when nothing was routed. No caller
+in `controlplane/`, `scripts/` or `demo/` serialises a routed response, and no
+test does, which is how it survived: every existing path that reaches it stops
+before routing.
+
+**What depends on it:** nothing shipped. The certificate is built from the
+response's fields, not its payload, so no committed certificate is affected.
+
+**Decision.** Not fixed -- read-only. `controlplane/demo/revocation_trace.py`
+serialises the response field by field instead, and
+`tests/test_revocation_trace.py` carries a **strict expected failure** that
+builds a routed `DriftResponse` and calls `to_payload()`. When someone fixes
+`response.py`, that test passes, strict mode turns the pass into a failure, and
+the workaround and this entry get closed rather than outliving the bug.
+
+**Fix, for whoever owns `drift/`:** a `to_payload` on `RoutingDecision` in
+`matrix/routing.py` (not read-only) would also close it, and is the smaller
+change. It was not taken here because the intent of `response.py`'s author --
+which fields a routed payload should carry -- is not written down, and choosing
+them for a read-only module is a design decision about that module.

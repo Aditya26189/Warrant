@@ -109,3 +109,5 @@ ffmpeg2pass-*.log.mbtree
 # would put a stranger's provenance in this repository.
 examples/*.warrant.json
 *.warrant.json
+# the revocation replay's certificate chain; a new chain per run (DECISIONS 178)
+results/drift/*.db*

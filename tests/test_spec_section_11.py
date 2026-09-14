@@ -123,21 +123,32 @@ def test_a_missing_artifact_names_its_script_rather_than_vanishing(tmp_path: Pat
         assert "scripts/" in body, heading
 
 
-def test_the_routing_section_says_the_revocation_trace_is_missing() -> None:
-    """§11.6 asks for a revocation trace and there is not one.
+def test_the_routing_section_carries_the_revocation_or_says_it_is_missing() -> None:
+    """§11.6 asks for envelope violation, revocation and routing decision.
 
-    The routing decisions exist. A live drift run that revoked a warrant does
-    not, because the drift machinery has never been pointed at a moving
-    distribution with a warrant outstanding. Rendering the half that exists and
-    implying the other would be exactly the overclaim this document is for.
+    Until DECISIONS.md 178 the section said the revocation half was missing, and
+    that was the honest rendering. With the trace committed it must render it --
+    and without the trace it must go back to saying so, never to implying it.
     """
-    body = dict(spec_section_11_sections(PROJECT_ROOT / "results"))[
-        "Routing, and the revocation trace that is missing"
-    ]
+    body = dict(spec_section_11_sections(PROJECT_ROOT / "results"))["Routing, and revocation"]
     if "Not generated in this run" in body:
         pytest.skip("results/warrant_matrix.json is not committed")
+    if (PROJECT_ROOT / "results" / "drift" / "revocation_trace.json").is_file():
+        assert "The revocation, replayed" in body
+        assert "REVOKED" in body and "not production traffic" in body
+        assert "Registered before the run" in body
+    else:
+        assert "revocation half of this section is missing" in body
+
+
+def test_without_a_trace_the_section_says_the_revocation_is_missing(tmp_path: Path) -> None:
+    """The absent case renders as absent, naming the script."""
+    import shutil
+
+    shutil.copy(PROJECT_ROOT / "results" / "warrant_matrix.json", tmp_path / "warrant_matrix.json")
+    body = dict(spec_section_11_sections(tmp_path))["Routing, and revocation"]
     assert "revocation half of this section is missing" in body
-    assert "OPEN" in body
+    assert "scripts/28_revocation_trace.py" in body
 
 
 def test_the_gate_section_makes_no_robustness_claim() -> None:
