@@ -717,18 +717,24 @@ def _labels_at_assurances(
             ok[rest] = _assurance(values_ns[rest], **common) >= target
         return ok
 
-    def assurances(values_ns, floor_target):
-        """Exact assurance, or 1.0 where it is proven to reach ``floor_target``.
+    def last_failure(lo_n: int, hi_n: int, target: float) -> int:
+        """The largest ``n`` in ``[lo_n, hi_n]`` whose assurance is below ``target``, or 0.
 
-        Every comparison made against the result is at ``floor_target`` or
-        below, so substituting 1.0 where the certificate holds changes none of
-        them.
+        Scanned from the top in chunks, stopping at the first chunk holding a
+        failure: sizes below the last failure cannot change a stable threshold,
+        so they are never computed. Within a chunk every size is decided --
+        certified cheaply, or computed exactly.
         """
-        out = np.ones(values_ns.shape, dtype=float)
-        rest = ~_certified(values_ns, floor_target, **common)
-        if rest.any():
-            out[rest] = _assurance(values_ns[rest], **common)
-        return out
+        chunk = 4096
+        top_n = hi_n
+        while top_n >= lo_n:
+            bottom = max(lo_n, top_n - chunk + 1)
+            window = np.arange(bottom, top_n + 1)
+            ok = at_least(window, target)
+            if not ok.all():
+                return int(window[~ok][-1])
+            top_n = bottom - 1
+        return 0
 
     top_ns = np.arange(max(1, cap - 200), cap + 1)
     reachable = [target for target in ordered if at_least(top_ns, target).all()]
@@ -737,7 +743,7 @@ def _labels_at_assurances(
     hardest = reachable[-1]
 
     # Grow until a stretch holds for the hardest target, as the single-target
-    # search does, then evaluate everything up to its horizon once.
+    # search does.
     upper = 10
     while upper <= cap:
         span = max(50, upper // 4)
@@ -747,19 +753,25 @@ def _labels_at_assurances(
     else:
         return result
 
-    values = assurances(np.arange(1, upper + 1), hardest)
-    failures = (values < hardest).nonzero()[0]
-    stable_hardest = int(failures[-1]) + 2 if failures.size else 1
-    ceiling = min(stable_hardest * horizon, cap)
-    if ceiling > upper:
-        values = np.concatenate([values, assurances(np.arange(upper + 1, ceiling + 1), hardest)])
+    # The hardest target's stable size, confirmed over its whole horizon; a
+    # failure found above moves the size up and the horizon with it.
+    stable = last_failure(1, upper, hardest) + 1
+    confirmed_to = upper
+    while True:
+        ceiling = min(stable * horizon, cap)
+        if ceiling <= confirmed_to:
+            break
+        failure = last_failure(confirmed_to + 1, ceiling, hardest)
+        confirmed_to = ceiling
+        if failure:
+            stable = failure + 1
+    result[hardest] = max(stable, 1)
 
-    for target in reachable:
-        failures = (values < target).nonzero()[0]
-        stable = int(failures[-1]) + 2 if failures.size else 1
-        if stable * horizon > values.size and values.size < cap:  # pragma: no cover
-            continue  # its horizon was not evaluated; leave it unquoted
-        result[target] = stable
+    # Easier targets hold wherever the hardest does, so only sizes below the
+    # hardest's stable size can fail them; each horizon lies inside the range
+    # already confirmed for the hardest.
+    for target in reachable[:-1]:
+        result[target] = max(last_failure(1, result[hardest] - 1, target) + 1, 1)
     return result
 
 
