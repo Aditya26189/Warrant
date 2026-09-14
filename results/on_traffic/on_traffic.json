@@ -1,7 +1,7 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-14T18:06:44+00:00",
-    "git_commit": "945f08b039d33830800e0006c709bbc43078a235",
+    "timestamp_utc": "2026-09-14T18:43:18+00:00",
+    "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
     "git_branch": "fix/recall-assurance",
     "dirty": false,
     "dirty_paths": [],
@@ -591,33 +591,33 @@
       "estimand": "recall",
       "margin": 0.05,
       "confidence": 0.95,
-      "labels": 4066,
+      "labels": 4068,
       "basis": "exact",
       "labels_normal": 3839,
-      "labels_exact": 4066,
+      "labels_exact": 4068,
       "labels_infinite_population": 3839,
       "prevalence_margin": 0.003825064873718629,
       "naive_labels": 299,
-      "understatement": 13.642421366900729,
+      "understatement": 13.649131854538162,
       "feasible": true,
       "refusal_reason": "",
       "note": "A planning figure over declared inputs. q is assumed, not measured -- every sample size is, because it is computed before the measurement it sizes. estimator.py reports the realised margin against this one once the labels land.",
       "assurance": 0.8,
-      "assurance_at_labels": 1.0,
+      "assurance_at_labels": 0.8294797866604817,
       "labels_at_expected_count": 4049,
-      "assurance_at_expected_count": 0.5217419713081898,
+      "assurance_at_expected_count": 0.5564377710884301,
       "sizes_by_assurance": [
         [
           0.5,
-          4049
+          4044
         ],
         [
           0.8,
-          4066
+          4068
         ],
         [
           0.9,
-          4066
+          4071
         ]
       ]
     },
@@ -634,33 +634,33 @@
       "estimand": "recall",
       "margin": 0.05,
       "confidence": 0.95,
-      "labels": 3224,
+      "labels": 3226,
       "basis": "exact",
       "labels_normal": 3044,
-      "labels_exact": 3224,
+      "labels_exact": 3226,
       "labels_infinite_population": 3044,
       "prevalence_margin": 0.003825064873718629,
       "naive_labels": 237,
-      "understatement": 13.642492849941338,
+      "understatement": 13.650955934835842,
       "feasible": true,
       "refusal_reason": "",
       "note": "A planning figure over declared inputs. q is assumed, not measured -- every sample size is, because it is computed before the measurement it sizes. estimator.py reports the realised margin against this one once the labels land.",
       "assurance": 0.8,
-      "assurance_at_labels": 1.0,
+      "assurance_at_labels": 0.8555068839237044,
       "labels_at_expected_count": 3211,
-      "assurance_at_expected_count": 0.5225095709982731,
+      "assurance_at_expected_count": 0.5570635979246229,
       "sizes_by_assurance": [
         [
           0.5,
-          3211
+          3207
         ],
         [
           0.8,
-          3224
+          3226
         ],
         [
           0.9,
-          3224
+          3228
         ]
       ]
     },
@@ -677,33 +677,33 @@
       "estimand": "recall",
       "margin": 0.02,
       "confidence": 0.95,
-      "labels": 21108,
+      "labels": 24659,
       "basis": "exact",
       "labels_normal": 23989,
-      "labels_exact": 21108,
+      "labels_exact": 24659,
       "labels_infinite_population": 23989,
       "prevalence_margin": 0.0015300259494874515,
       "naive_labels": 1863,
-      "understatement": 11.331597844074393,
+      "understatement": 13.237913172116281,
       "feasible": true,
       "refusal_reason": "",
       "note": "A planning figure over declared inputs. q is assumed, not measured -- every sample size is, because it is computed before the measurement it sizes. estimator.py reports the realised margin against this one once the labels land.",
       "assurance": 0.8,
-      "assurance_at_labels": 1.0,
+      "assurance_at_labels": 0.8067614766983996,
       "labels_at_expected_count": 24591,
-      "assurance_at_expected_count": 1.0,
+      "assurance_at_expected_count": 0.5049317188991311,
       "sizes_by_assurance": [
         [
           0.5,
-          21108
+          24591
         ],
         [
           0.8,
-          21108
+          24659
         ],
         [
           0.9,
-          21108
+          24681
         ]
       ]
     },
@@ -720,33 +720,33 @@
       "estimand": "recall",
       "margin": 0.02,
       "confidence": 0.95,
-      "labels": 16737,
+      "labels": 19553,
       "basis": "exact",
       "labels_normal": 19021,
-      "labels_exact": 16737,
+      "labels_exact": 19553,
       "labels_infinite_population": 19021,
       "prevalence_margin": 0.0015300259494874515,
       "naive_labels": 1478,
-      "understatement": 11.331732150345811,
+      "understatement": 13.238295915379796,
       "feasible": true,
       "refusal_reason": "",
       "note": "A planning figure over declared inputs. q is assumed, not measured -- every sample size is, because it is computed before the measurement it sizes. estimator.py reports the realised margin against this one once the labels land.",
       "assurance": 0.8,
-      "assurance_at_labels": 1.0,
+      "assurance_at_labels": 0.8072073996048541,
       "labels_at_expected_count": 19499,
-      "assurance_at_expected_count": 1.0,
+      "assurance_at_expected_count": 0.5052436573479432,
       "sizes_by_assurance": [
         [
           0.5,
-          16737
+          19499
         ],
         [
           0.8,
-          16737
+          19553
         ],
         [
           0.9,
-          16737
+          19570
         ]
       ]
     },

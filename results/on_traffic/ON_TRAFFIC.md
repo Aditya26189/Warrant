@@ -30,10 +30,10 @@ At the declared workload `enterprise-3pct` (N=200,000, base error rate 0.03, imp
 | customer_support @ P-customer-support | ±0.05 | steady state | **1,810** | 1,305 | 208 | 8.7× |
 | customer_support @ P-customer-support | ±0.02 | month one | **11,803** | 10,280 | 1,633 | 7.2× |
 | customer_support @ P-customer-support | ±0.02 | steady state | **9,359** | 8,151 | 1,295 | 7.2× |
-| decision_support @ P-decision-support | ±0.05 | month one | **4,066** | 3,839 | 299 | 13.6× |
-| decision_support @ P-decision-support | ±0.05 | steady state | **3,224** | 3,044 | 237 | 13.6× |
-| decision_support @ P-decision-support | ±0.02 | month one | **21,108** | 23,989 | 1,863 | 11.3× |
-| decision_support @ P-decision-support | ±0.02 | steady state | **16,737** | 19,021 | 1,478 | 11.3× |
+| decision_support @ P-decision-support | ±0.05 | month one | **4,068** | 3,839 | 299 | 13.6× |
+| decision_support @ P-decision-support | ±0.05 | steady state | **3,226** | 3,044 | 237 | 13.7× |
+| decision_support @ P-decision-support | ±0.02 | month one | **24,659** | 23,989 | 1,863 | 13.2× |
+| decision_support @ P-decision-support | ±0.02 | steady state | **19,553** | 19,021 | 1,478 | 13.2× |
 | internal_knowledge @ P-internal-knowledge | ±0.05 | month one | **4,101** | 3,379 | 355 | 11.6× |
 | internal_knowledge @ P-internal-knowledge | ±0.05 | steady state | **3,252** | 2,679 | 281 | 11.6× |
 | internal_knowledge @ P-internal-knowledge | ±0.02 | month one | **22,886** | 21,116 | 2,214 | 10.3× |
