@@ -186,6 +186,11 @@ def build_parser() -> argparse.ArgumentParser:
              "point `recheck` reports its own detection floor against)",
     )
     plan.add_argument(
+        "--power", type=float, default=None,
+        help="probability one recheck catches a true breach of that size "
+             "(default: validation.recheck_power, 0.80)",
+    )
+    plan.add_argument(
         "--negative-share", type=float, default=None,
         help="REQUIRED: the fraction of YOUR traffic that is truly negative. "
              "Deliberately not taken from the warrant record -- see below",
@@ -448,6 +453,7 @@ def _plan(args: argparse.Namespace) -> int:
             budget=budget,
             breach_rate=breach,
             alpha=alpha,
+            power=args.power if args.power is not None else config.validation.recheck_power,
             negative_share=args.negative_share,
             minutes_per_label=args.minutes_per_label,
             cost_per_hour=args.cost_per_hour,

@@ -160,14 +160,25 @@ def render_recheck(result) -> str:
                 f"returns VALID -- and that",
                 "     is an absence of evidence, not evidence of absence.",
             ]
-            needed = result.negatives_for_tighter_floor
-            # Only when it is a shortfall. Telling someone they need 249
-            # negatives when they brought 589 reads as a deficiency and is not
-            # one; the floor line above already says what this file can catch.
-            if needed and needed > result.n_negative_now:
+            if result.power_against_1_5x_budget is not None:
                 lines.append(
-                    f"     To catch a rate of {result.budget * 1.5:.4f} you would "
-                    f"need {needed} clean negatives; this file has "
+                    f"     A detector truly at {result.budget * 1.5:.4f} would be "
+                    f"revoked by this file with probability "
+                    f"{result.power_against_1_5x_budget:.2f}."
+                )
+            needed = result.negatives_for_tighter_floor
+            # Only when it is a shortfall. Telling someone they need 628
+            # negatives when they brought 900 reads as a deficiency and is not
+            # one; the lines above already say what this file can catch.
+            if needed and needed > result.n_negative_now:
+                chance = (
+                    f"{result.recheck_power:.2f}"
+                    if result.recheck_power is not None
+                    else "the declared power"
+                )
+                lines.append(
+                    f"     To catch it with probability {chance} "
+                    f"you would need {needed} clean negatives; this file has "
                     f"{result.n_negative_now}."
                 )
         else:
@@ -279,6 +290,7 @@ def render_plan(plan) -> str:
         f"  Certified budget          {plan.budget:.4g}",
         f"  Breach you want to catch  {plan.breach_rate:.4g}",
         f"  Confidence (alpha)        {plan.alpha:.3g}",
+        f"  Chance of catching it     {plan.power:.2g}",
         f"  Share of traffic negative {declared.get('negative_share', float('nan')):.3g}",
         "",
     ]
@@ -303,24 +315,41 @@ def render_plan(plan) -> str:
         f"  which means labelling about {plan.items_per_recheck:,} items, at the",
         "  negative share declared above.",
         "",
+        f"  If the true rate has reached {plan.breach_rate:.4g}, that sample revokes",
+        f"  with probability {plan.power_at_breach:.3f}.",
     ]
     if floor is not None:
         lines += [
-            f"  That sample revokes on an observed rate of {floor:.4f} or higher.",
-            "  Counts are integers, so the achievable floor sits a little above",
-            "  the rate you asked for rather than exactly on it.",
-            "",
+            f"  It revokes on an observed rate of {floor:.4f} or higher. A true",
+            "  breach produces one only as often as the probability above says.",
         ]
     lines += [
+        "",
+        "  The chance of catching a true breach, and the sample it takes:",
+        "",
+        *[
+            f"      {rung:.1f}   "
+            + (f"{size:>9,} negatives" if size is not None else "    not reachable")
+            for rung, size in plan.sizes_by_power
+        ],
+        "",
+        "  At 0.5 a recheck misses a real breach as often as it catches one.",
+        "",
         "  WHAT A YEAR COSTS",
         "",
         *[option.render() for option in plan.cadences],
         "",
+        "  'false revocation' is the chance that at least one of the year's",
+        "  rechecks revokes a detector sitting exactly at its budget. One",
+        f"  recheck does so with probability {plan.false_revocation_per_recheck:.4f}; a year of",
+        "  them compounds it. Assumes a fresh sample for every recheck.",
+        "",
         "  No cadence is recommended, and that is not an omission. How often to",
         "  recheck depends on how fast your inputs move, which is the thing you",
-        "  do not know and the reason rechecking exists. A default here would be",
-        "  a number with no evidence behind it, printed next to numbers that have",
-        "  some.",
+        "  do not know and the reason rechecking exists. More rechecks catch a",
+        "  breach sooner and revoke a sound detector more often; a default here",
+        "  would be a number with no evidence behind it, printed next to numbers",
+        "  that have some.",
         "",
         "  Every figure above is EXACT arithmetic. None of it is measured, so",
         "  none of it carries an interval and none is missing one. What it rests",

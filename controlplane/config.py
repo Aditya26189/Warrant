@@ -307,6 +307,10 @@ class ValidationConfig:
         "determinism",
     )
     calibration_tolerance: float = 0.25
+    #: Probability one recheck catches a true breach of the size a plan names.
+    #: Sizes `warrant plan` and `recheck`'s hint (DECISIONS 183). The default
+    #: mirrors config.yaml so fixture configs written before 183 still load.
+    recheck_power: float = 0.80
 
     def __post_init__(self) -> None:
         if self.bootstrap_samples < 100:
@@ -325,6 +329,13 @@ class ValidationConfig:
                 "validation.calibration_tolerance must be in (0, 1) -- it is a "
                 "relative deviation from the flag-rate budget worth acting on. "
                 f"Got {self.calibration_tolerance}"
+            )
+        if not 0.5 <= self.recheck_power < 1.0:
+            raise ConfigError(
+                "validation.recheck_power must be in [0.5, 1) -- it is the "
+                "probability one recheck catches a true breach, and a plan sized "
+                "below 0.5 misses more breaches than it catches. Got "
+                f"{self.recheck_power}"
             )
         if not 0.0 <= self.min_auroc_lower_ci <= 1.0:
             raise ConfigError(
