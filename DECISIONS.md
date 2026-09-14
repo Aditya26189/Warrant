@@ -9756,3 +9756,67 @@ and `certify --frontier` exits 2 on unequal groups instead of raising.
 negative clusters, while `certify` checks every group through
 `ScoredItems.equal_group_sizes`. The frontier's contract is to agree with
 `certify`, so it calls what `certify` calls.
+
+## 191 - The recall price is sized at the expected count, so the margin it buys is a coin flip: assurance, pre-registered
+
+- **Date:** 2026-09-14
+- **Status:** PRE-REGISTERED (this entry); results appended after the run
+
+`sampling.planning.labels_for_recall(basis="exact")` returns the smallest stable
+`n` at which the Clopper-Pearson recall half-width reaches the target **when the
+unflagged sample holds exactly `round(q x n_eff)` errors**. That count is the
+expectation. The realised count is binomial, and the recall half-width grows
+with it, so a sample of the quoted size meets its margin about as often as the
+count lands at or below its mean. The headline price -- **1,014 labels for recall
+to +/-0.05, month one** (`results/on_traffic/on_traffic.json`) -- is that
+figure. It is 183's defect one module over: a sample size whose chance of
+delivering what it names is left implicit.
+
+This is a known failure of width-based sizing: Kupper and Hafner, "How
+appropriate are popular sample size formulas?", *The American Statistician*
+43(2), 1989, 101-105. The standard remedy is to size with **assurance**, the
+probability that the realised interval meets the target width.
+
+**Quantity.** Assurance at `n`: `sum_k P(Bin(n_eff, q) = k) * 1[half-width(k,
+n_eff) <= margin]`, the half-width being the recall interval the estimator
+reports, through `R = TP / (TP + q N_u)`. **Propagation:** exact binomial
+weights over every achievable count; no normal approximation.
+
+**Decision.**
+
+1. `labels_for_recall` gains `assurance`, and the exact basis returns the
+   smallest stable `n` from which assurance is at least the target, at `n` and
+   every `n` up to 12x it. The expected-count figure stays on the plan as
+   `labels_at_expected_count`, with its own assurance printed beside it.
+2. The target is a declared input, `sampling.margin_assurance` in
+   `config.yaml`, **0.80**, the same convention and the same caveat as
+   `validation.recheck_power` (183).
+3. `results/on_traffic/` is regenerated through `scripts/25_on_traffic.py`, and
+   every claim row that moves states its before and after.
+
+**Criteria, registered now.**
+
+- **C1, same estimator.** At the 0.80-assurance size for the month-one plan,
+  2,000 seeded samples pushed through `estimator.estimate_on_traffic` realise the
+  margin in a share within 3 Monte Carlo SE of the computed assurance.
+- **C2, the prediction.** The assurance of the current 1,014-label figure lies
+  in **[0.35, 0.65]**. Outside that band, the premise of this entry is wrong:
+  stop, and record why before changing anything.
+- **C3.** The 0.80-assurance size is larger than 1,014 and at most **2x** it. More
+  than 2x means the half-width is far more sensitive to the count than argued,
+  and the plan's structure has to be re-examined before it is published.
+
+**Scope of the exactness.** At month one (design effect 1, simple random
+sampling of the unflagged pool) the count is binomial and assurance is exact.
+The steady-state row sizes an *effective* `n = n / deff`, and a Neyman-allocated
+count is a sum of per-band binomials, not one binomial; its assurance is the same
+approximation the planner already makes for its margin, and is labelled
+approximate wherever it is printed. C1 is checked at month one only.
+
+**Rejected: size at the upper quantile of the count instead.** That is a normal
+shortcut to the same quantity, and every sizing in this repository has been
+moved off shortcuts for the sawtooth reason (146).
+
+**The objection.** *"Assurance is a second arbitrary number."* It is declared,
+like power, and the plan prints 0.5, 0.8 and 0.9 so the reader sees what it buys.
+The arbitrary number was already there; it was 0.5 and nobody said so.
