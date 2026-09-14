@@ -10096,16 +10096,26 @@ customer-facing change 187 said would follow.
 
 **Acceptance criteria, registered before the code.**
 
-- **A1.** Feeding 187's registered S0 and S2 streams through the CLI-level chain
-  function reproduces `results/recheck_schedules/comparison.json`'s e-detector
-  first-revocation recheck exactly, on a sample of simulated years with fixed
-  seeds -- the product path and the study's rule are one rule.
-- **A2.** Splitting one file into two rechecks, or sending it as one, gives the
-  same statistic at the end; permuting rows within a file gives the same
-  statistic.
+- **A1.** Fed 187's registered streams in the study's order, with fixed seeds,
+  the chain's statistic at every recheck boundary equals the study's e-detector
+  statistic, and its first revocation falls **at or before** the study's recheck
+  -- at, when checked only at boundaries as the study was; possibly before, with
+  8's per-unit check. The product path and the study's rule are one rule.
+- **A2.** Permuting rows within a file gives an identical statistic and verdict.
+  Splitting a file across two rechecks keeps the guarantee but **not** the
+  statistic -- the hash order is per file -- and the test says so rather than
+  asserting equality.
 - **A3.** Every refusal in 3, 5 and 6 exits 2 with nothing written.
 - **A4.** A recheck without `--since`/`--horizon-labels` produces a record
   byte-identical, apart from a `chain: null` field, to today's.
+
+**Corrected before any code was written.** As first committed, A1 claimed the
+chain reproduces the study's first-revocation recheck *exactly* -- false once 8
+checks after every unit, since a statistic can cross and fall back within a
+recheck -- and A2 claimed splitting a file leaves the statistic unchanged, which
+the per-file hash order makes false. The objection below also said `plan` prints
+a monthly detection figure, which 7 forbids. All three are corrected above; no
+decision changed.
 
 **Rejected: make the chain the default.** It needs `N` declared up front and the
 records kept, and a default that silently depends on the user keeping files is a
@@ -10117,5 +10127,5 @@ without the gain.
 
 **The objection.** *"The e-detector lost to the split at monthly cadence in S3."*
 It did, by 0.054 (187). The chain is chosen on the registered weekly criterion;
-the monthly figure is printed by `plan` when it applies, and the choice of rule
-is revisited if a customer's cadence makes that the case that matters.
+7 keeps that figure out of `plan`, and the choice of rule is revisited if a
+customer's cadence makes the monthly case the one that matters.
