@@ -9189,7 +9189,7 @@ a year in a customer's hands, and `recheck` already reads `budget_fpr`.
 ## 183 - The price list sized a recheck to catch its breach half the time, and priced a year of rechecks as if it were one test
 
 - **Date:** 2026-09-14
-- **Status:** PRE-REGISTERED (this entry); results appended after the run
+- **Status:** DECIDED -- pre-registered at `9a5336b`, implemented at `2259065`; results below
 
 `plan` answers *"what it costs to keep it true"*: the clean negatives one
 recheck needs to catch a breach. 146 defined "catch" as **an observed rate
@@ -9274,3 +9274,34 @@ beats the other on labels per detected breach has to be measured.
 
 **The objection.** *"This roughly doubles the quoted price."* It does. The old
 price bought half of what it said it bought.
+
+### Results (2026-09-14, `2259065`)
+
+| budget | breach | 146 | 0.50 | **0.80** | 0.90 | scratch | C3 deviation |
+|---|---|---|---|---|---|---|---|
+| 0.05 | 0.075 | 287 | 302 | **628** | 858 | 638 | 1.6% |
+| 0.05 | 0.10 | 86 | 97 | **191** | 256 | 192 | 0.5% |
+| 0.01 | 0.015 | 1,501 | 1,578 | **3,295** | 4,525 | 3,350 | 1.6% |
+
+- **C1 pass.** Power >= 0.80 at every `n` from the quoted size to 12x it, and
+  below 0.80 one sample under it, on all three rows.
+- **C2 pass.** 20,000 seeded draws per rate, decided by
+  `intake.recheck._lower_bound_at`, within 3 SE of the exact power and of the
+  exact false-revocation rate, which is at most alpha.
+- **C3 pass.** Every size is within 5% of the scratch estimate, and below it:
+  the scratch search stepped `n` in increments of `n/50` and overshot.
+- **C4 pass.** At `n = 628` one recheck revokes a detector exactly at its
+  budget with probability 0.0365. A year: **weekly 0.86, fortnightly 0.62,
+  monthly 0.36, quarterly 0.14**, each under `1 - (1 - alpha)^K`.
+
+`critical_counts` agrees with a brute-force `beta.ppf` search for `n = 1..399`
+at budgets 0.01, 0.05 and 0.2. Also found: `recheck` called the 1.5x sizing
+unguarded, so a record certified at a budget above 2/3 raised; it now reports
+no 1.5x size.
+
+**What this does not settle.** The year figures describe a schedule of
+independent, fixed-size tests; they say how often a sound detector is revoked,
+not how to stop it. Changing the test so the year holds a guarantee is the
+deferred question above, pre-registered separately. And `sampling/planning.py` sizes the recall margin at the expected
+count, which has the same shape -- the realised margin misses its target
+about half the time -- and is not addressed here.
