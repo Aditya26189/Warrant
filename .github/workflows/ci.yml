@@ -55,6 +55,16 @@ jobs:
           print("customer path is clean")
           PY
 
+      - name: Check the installed release package
+        run: |
+          python -m pip install --no-deps .
+          warrant release --help
+          python -I - <<'PY'
+          from controlplane.release.contract import ReleaseSpec, register
+          from controlplane.release.evaluate import evaluate, verify_evaluation
+          print("installed release modules import under isolated Python")
+          PY
+
       - name: The two examples, as a stranger runs them
         run: |
           python warrant.py certify --input examples/certifies.csv --budget 0.05
