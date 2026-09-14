@@ -9496,6 +9496,89 @@ prices it. Implemented under its own entry, after these results.
 question (what a year-valid rule costs) and makes the comparison unequal in
 labels. It is reported as a price, not as a candidate.
 
+### 187 results -- the e-detector is chosen, and the shipped monitor is blind to the breach that matters
+
+- **Run:** `python scripts/29_recheck_schedules.py --config config.yaml` at `b8b0f00`,
+  clean tree, seed 1729, 4,000 simulated years per cell;
+  `results/recheck_schedules/comparison.json`. A first run at `74e38e5`, before
+  the branch was rebased, produced identical figures in every cell.
+- **Every figure below is a simulated operating characteristic of a rule under a
+  declared true false-positive rate, not a measurement of any detector.** Monte
+  Carlo SE is at most 0.008 on any share here.
+
+**Weekly, 52 rechecks of 628 negatives (32,656 labels a year).**
+
+| rule | S0: any false revocation in the year | S2: revoked before the change | S2: caught within 13 weeks | S3: caught within 13 weeks | S3 median delay (rechecks) |
+|---|---|---|---|---|---|
+| fixed (shipped `recheck`) | **0.8515** | 0.6210 | 0.3790 | 0.9940 | 0 |
+| split, alpha/52 | 0.0280 | 0.0140 | 0.9772 | 0.9892 | 1 |
+| monitor (`FPRMonitor` as shipped) | 0.0248 | 0.0160 | 0.9830 | **0.0005** | 20 |
+| monitor, cap removed (reference) | 0.0115 | 0.0060 | 0.9905 | 0.0000 | 20 |
+| **e-detector** | **0.0085** | 0.0035 | **0.9965** | **1.0000** | 2 |
+
+**Monthly, 12 rechecks of 628 negatives (7,536 labels a year).**
+
+| rule | S0 | S2 before change | S2 caught within 3 rechecks | S3 caught within 3 rechecks |
+|---|---|---|---|---|
+| fixed | **0.3598** | 0.2020 | 0.7905 | 0.9922 |
+| split, alpha/12 | 0.0348 | 0.0145 | 0.8323 | **0.8420** |
+| monitor | 0.0147 | 0.0112 | 0.4662 | 0.0025 |
+| monitor, cap removed | 0.0063 | 0.0053 | 0.3945 | 0.0013 |
+| e-detector | 0.0030 | 0.0013 | 0.8417 | 0.7877 |
+
+**Criteria.**
+
+- **V.** The shipped fixed rule fails, as 183 predicted: 0.8515 weekly and 0.3598
+  monthly against a limit of 0.0603. Split, monitor and e-detector pass at both
+  cadences.
+- **P.** Among passing candidates at the weekly cadence in S2, the e-detector
+  catches in 0.9965 of years against 0.9830 for the monitor and 0.9772 for the
+  split. The gap to the monitor is 0.0135, beyond 2 MC SE (0.0019), so no tie.
+  **Chosen: the e-detector.**
+- **Floor.** Met: 0.9965 >= 0.50.
+
+**Predictions, checked.**
+
+- *C has the longest delay of the valid rules in S2 and S3.* **Held**, and far
+  more strongly than written: median delay 5 in S2 against 2 and 1; in S3 the
+  monitor catches within a quarter in 0.0005 of years.
+- *D catches at least as often as B within the window.* **Held weekly** (S2
+  0.9965 v 0.9772; S3 1.0000 v 0.9892). **Failed at the monthly cadence in S3**:
+  0.7877 against the split's 0.8420, a gap of 0.0543, about 8 MC SE. With only
+  three rechecks in the window, a detector that accumulates evidence across
+  labels is slower to clear its year-wide threshold than one fresh test at
+  alpha/12.
+- *A catches soonest and fails V badly.* It fails V badly. It catches soonest in
+  S3 (median delay 0), but in S2 weekly 0.6210 of years were already revoked
+  before the breach began, so it "caught" only 0.3790.
+- *Under S0, C revokes in more years than C'.* **Held**: 0.0248 against 0.0115
+  weekly, 0.0147 against 0.0063 monthly. The cap roughly doubles false
+  revocation. It still sits under alpha here because the monitor is only read at
+  recheck boundaries; read after every label, as its docstring invites, the cap
+  has 628 times as many chances to fire. That case was not simulated.
+
+**The finding that matters most is S3, and it was not the question asked.**
+S3 is the realistic case: a certified detector sits below its budget
+(0.0371, 143's measured rate) and then degrades. `FPRMonitor` -- the research
+path's "anytime-valid revocation trigger" -- catches that degradation within a
+quarter in **2 of 4,000** simulated years weekly, because its wealth decays
+through every month of good behaviour and the breach has to climb out of the
+hole first. The e-detector catches it in every year. A monitor that guarantees
+few false alarms by being unable to fire after a good run is not a monitor; the
+guarantee in its docstring is true of the uncapped mixture and useless for the
+job it is named for. `validation/warrant_stats.py` is read-only: this is recorded
+beside 187's cap defect as **OPEN -- needs human review**, and what would close
+it is an owner replacing the runtime trigger with a change detector.
+
+**What these results do not establish.** Independent fresh samples per recheck;
+one budget, one breach size, one change point, one declared certified rate; a
+step change, not a drift. Checking only at recheck boundaries. No detector,
+labeller or traffic is involved.
+
+**What follows.** The e-detector becomes the stateful customer path: `recheck`
+carrying its statistic forward in the recheck record, and `plan` pricing it.
+Its own entry, before the code.
+
 ## 188 - `recheck` threw away the groups `certify` certified on, so a grouped promise was re-tested in the wrong unit
 
 - **Date:** 2026-09-14
