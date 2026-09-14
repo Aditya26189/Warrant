@@ -2,6 +2,12 @@
 
 Companion to `CLAUDE.md`. Reference snippets are illustrative; preserve the semantics exactly.
 
+Customer extension (DECISIONS 184): `controlplane.release` registers identity,
+scope, label meaning, fixed criteria, expiry and disjoint development/holdout
+ID manifests locally. Content hashes permit checks against retained copies;
+they are not signatures or independently trusted timestamps. Existing research
+and customer certification commands retain their original contracts.
+
 ---
 
 ## 1. Core data model
