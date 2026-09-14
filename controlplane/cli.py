@@ -350,12 +350,33 @@ def _recheck(args: argparse.Namespace) -> int:
         print(f"warrant: {exc}", file=sys.stderr)
         return EXIT_BAD_INPUT
 
+    # The promise and the test must be in one unit. A record certified on
+    # clusters rechecked per item, or the reverse, compares two different
+    # rates, and which one the user meant is not ours to guess (DECISIONS 188).
+    recorded_grouped = (record.get("input") or {}).get("grouped")
+    file_grouped = items.groups is not None
+    if recorded_grouped is not None and bool(recorded_grouped) != file_grouped:
+        certified_as = "clusters" if recorded_grouped else "independent items"
+        given_as = "clusters" if file_grouped else "independent items"
+        print(
+            f"warrant: {record_path.name} was certified on {certified_as}, and "
+            f"{Path(args.input).name} gives {given_as}. The promise and the recheck "
+            "would be about different rates. Recheck with the same grouping the "
+            "warrant was certified with.",
+            file=sys.stderr,
+        )
+        return EXIT_BAD_INPUT
+
     # The level the promise was certified at, not whatever config.yaml says
     # today; a record that predates carrying alpha falls back to the config.
-    result = recheck_items(
-        config, items, budget=budget, threshold=threshold, reference=reference,
-        alpha=record.get("alpha"),
-    )
+    try:
+        result = recheck_items(
+            config, items, budget=budget, threshold=threshold, reference=reference,
+            alpha=record.get("alpha"),
+        )
+    except ValueError as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
 
     source = Path(args.input)
     out = Path(args.out) if args.out else source.with_suffix(source.suffix + ".recheck.json")

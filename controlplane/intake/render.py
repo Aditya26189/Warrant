@@ -129,7 +129,8 @@ def render_recheck(result) -> str:
         "",
         f"  warranted     FPR <= {result.budget:.4f} at threshold "
         f"{result.threshold:.6f}",
-        f"  new file      {result.n_now} items ({result.n_negative_now} negative)",
+        f"  new file      {result.n_now} items ({result.n_negative_now} negative"
+        + (" clusters, each counted once" if result.unit == "cluster" else "") + ")",
         "",
         "  1. Does the bound still hold?",
     ]
@@ -178,7 +179,7 @@ def render_recheck(result) -> str:
                 )
                 lines.append(
                     f"     To catch it with probability {chance} "
-                    f"you would need {needed} clean negatives; this file has "
+                    f"you would need {needed} clean negative {result.unit}s; this file has "
                     f"{result.n_negative_now}."
                 )
         else:

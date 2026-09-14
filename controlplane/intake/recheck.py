@@ -116,6 +116,9 @@ class RecheckResult:
     #: real breach of that size produces one.
     power_against_1_5x_budget: Optional[float] = None
     recheck_power: Optional[float] = None
+    #: ``"item"``, or ``"cluster"`` when the file declares groups. Every count
+    #: and rate in the record is in this unit (DECISIONS 188).
+    unit: str = "item"
     psi: Optional[float] = None
     psi_null_p95: Optional[float] = None
     psi_beyond_noise: Optional[bool] = None
@@ -156,6 +159,7 @@ class RecheckResult:
                 ),
             },
             "now": {
+                "unit": self.unit,
                 "n": self.n_now,
                 "n_negative": self.n_negative_now,
                 "achieved_fpr": self.achieved_fpr_now,
@@ -206,8 +210,17 @@ def recheck_items(
         The verdict, with both failure modes reported separately.
     """
     alpha = (1.0 - config.validation.ci) if alpha is None else alpha
-    labels, scores, _ = items.as_arrays()
-    negatives = scores[labels == 0]
+    labels, scores, groups = items.as_arrays()
+    # A grouped file is re-tested in the unit it was certified in: one maximum
+    # per negative cluster, so `negatives.size` below is the cluster count and
+    # every bound, floor and power is computed at it. Discarding the groups
+    # re-tested a cluster promise per item, at an inflated n (DECISIONS 188).
+    unit = "item" if groups is None else "cluster"
+    negatives = (
+        scores[labels == 0]
+        if groups is None
+        else negative_cluster_maxima(scores, labels, groups, source=items.source)
+    )
 
     # --- has the bound broken? ------------------------------------------
     bound_holds: Optional[bool] = None
@@ -266,6 +279,12 @@ def recheck_items(
             "the prior warrant carries no score distribution, so there is "
             "nothing to compare against"
         )
+    elif groups is not None:
+        skip_reason = (
+            "the file declares groups, and the PSI noise level is simulated for "
+            "independent items; a clustered file's noise is wider than that, so "
+            "a drift verdict here would overstate the evidence"
+        )
     elif items.n < MIN_ITEMS_FOR_DRIFT:
         skip_reason = (
             f"{items.n} items is below the {MIN_ITEMS_FOR_DRIFT} needed before a "
@@ -297,8 +316,38 @@ def recheck_items(
         smoothed, by_smoothing, epsilon,
     )
     return dataclasses.replace(
-        verdict, power_against_1_5x_budget=power_here, recheck_power=power
+        verdict, power_against_1_5x_budget=power_here, recheck_power=power,
+        unit=unit, n_negative_now=int(negatives.size),
     )
+
+
+def negative_cluster_maxima(
+    scores: np.ndarray, labels: np.ndarray, groups: np.ndarray, *, source: str
+) -> np.ndarray:
+    """One score per negative cluster: its maximum, the unit certify counted.
+
+    A cluster is a false positive when any member reaches the threshold, so its
+    maximum decides it -- the rule in
+    :func:`controlplane.validation.warrant_stats.certify_fpr`. Unequal cluster
+    sizes are refused for certify's reason: the cluster bound then no longer
+    dominates the per-item rate the warrant promises.
+
+    Raises:
+        ValueError: If the negative clusters are not all the same size.
+    """
+    negative_scores = scores[labels == 0]
+    negative_groups = groups[labels == 0]
+    keys, inverse, sizes = np.unique(negative_groups, return_inverse=True, return_counts=True)
+    if keys.size and len(set(sizes.tolist())) != 1:
+        raise ValueError(
+            f"{source}: the 'group' column has unequal negative cluster sizes "
+            f"({int(sizes.min())} to {int(sizes.max())} items), so a cluster-level "
+            "recheck would be anticonservative, for the same reason certify "
+            "refuses one. See docs/INPUT.md."
+        )
+    maxima = np.full(keys.size, -np.inf)
+    np.maximum.at(maxima, inverse, negative_scores)
+    return maxima
 
 
 def _upper_bound_at(n: int, k: int, alpha: float) -> float:
