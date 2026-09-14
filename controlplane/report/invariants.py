@@ -204,6 +204,10 @@ DERIVED_CLAIMS: tuple[tuple[str, str], ...] = (
     ("controlplane/economics/sizing.py", "false_revocation_in_year"),
     ("controlplane/economics/sizing.py", "monitoring_plan"),
     ("controlplane/intake/certify.py", "certify_budget"),
+    # DECISIONS 192: the frontier-selection study.
+    ("controlplane/intake/selection.py", "joint_miscoverage"),
+    ("controlplane/intake/selection.py", "pick_rule_miscoverage"),
+    ("controlplane/intake/selection.py", "row_miscoverage"),
     ("controlplane/intake/certify.py", "certify_items"),
     ("controlplane/intake/recheck.py", "smallest_detectable_breach"),
     ("controlplane/intake/recheck.py", "negatives_needed_to_detect"),
