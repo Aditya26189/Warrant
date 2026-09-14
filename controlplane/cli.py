@@ -273,7 +273,12 @@ def _frontier(args: argparse.Namespace, config, items) -> int:
     from .config import write_json_artifact
     from .intake import frontier, render_frontier
 
-    points = frontier(config, items)
+    try:
+        points = frontier(config, items)
+    except ValueError as exc:
+        # Unequal groups: the same input certify --budget refuses (DECISIONS 190).
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
     source = Path(args.input)
     out = (
         Path(args.out)
@@ -286,6 +291,7 @@ def _frontier(args: argparse.Namespace, config, items) -> int:
             "input": {
                 "source": items.source, "n": items.n,
                 "n_positive": items.n_positive, "n_negative": items.n_negative,
+                "grouped": items.groups is not None,
             },
             "note": (
                 "Every field is exact -- a count of this file or a "

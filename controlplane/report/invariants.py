@@ -203,6 +203,7 @@ DERIVED_CLAIMS: tuple[tuple[str, str], ...] = (
     ("controlplane/economics/sizing.py", "negatives_for_power"),
     ("controlplane/economics/sizing.py", "false_revocation_in_year"),
     ("controlplane/economics/sizing.py", "monitoring_plan"),
+    ("controlplane/intake/certify.py", "certify_budget"),
     ("controlplane/intake/certify.py", "certify_items"),
     ("controlplane/intake/recheck.py", "smallest_detectable_breach"),
     ("controlplane/intake/recheck.py", "negatives_needed_to_detect"),

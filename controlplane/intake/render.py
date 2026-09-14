@@ -246,7 +246,11 @@ def render_frontier(points, *, n_positive: int, n_negative: int) -> str:
         if not p.certified:
             lines.append(
                 f"  {p.budget:<7.3f}  REFUSED - needs {p.min_negatives_required} "
-                f"clean negatives, this file has {n_negative}"
+                + (
+                    f"independent negative clusters, this file has {p.negative_units}"
+                    if p.grouped
+                    else f"clean negatives, this file has {n_negative}"
+                )
             )
             continue
         lines.append(

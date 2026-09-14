@@ -39,7 +39,8 @@ from typing import Any, Optional, Sequence
 
 
 from ..config import Config
-from ..validation.warrant_stats import certify_fpr, min_n_for
+from ..validation.warrant_stats import min_n_for
+from .certify import certify_budget
 from .contract import ScoredItems
 
 __all__ = ["FrontierPoint", "frontier"]
@@ -56,7 +57,12 @@ class FrontierPoint:
     budget: float
     certified: bool
     reason: str
+    #: Independent negative units the budget needs: items, or clusters on a
+    #: grouped file, the unit certification counts.
     min_negatives_required: int
+    #: Independent negative units this file has, in the same unit.
+    negative_units: Optional[int] = None
+    grouped: bool = False
     threshold: Optional[float] = None
     fpr_upper_bound: Optional[float] = None
     n_flagged: Optional[int] = None
@@ -70,6 +76,8 @@ class FrontierPoint:
             "certified": self.certified,
             "reason": self.reason,
             "min_negatives_required": self.min_negatives_required,
+            "independent_negative_units": self.negative_units,
+            "unit": "negative cluster" if self.grouped else "negative item",
             "threshold": self.threshold,
             "fpr_upper_bound": self.fpr_upper_bound,
             "counts_exact": {
@@ -96,25 +104,33 @@ def frontier(
         grid: Budgets to evaluate, ascending.
         alpha: Certification level; defaults to ``1 - config.validation.ci``.
 
+    Raises:
+        ValueError: If the file is grouped with unequal group sizes, exactly as
+            ``certify --budget`` does.
+
     Returns:
         One point per budget, refusals kept in place. A refused budget is a fact
         about the evidence and dropping it would turn "you do not have enough
         clean negatives for 1%" into a gap that reads as an oversight.
     """
     alpha = (1.0 - config.validation.ci) if alpha is None else alpha
-    labels, scores, _ = items.as_arrays()
-    negatives = scores[labels == 0]
+    labels, scores, groups = items.as_arrays()
+    grouped = groups is not None
     positives_total = int((labels == 1).sum())
 
     points: list[FrontierPoint] = []
     for budget in grid:
         floor = min_n_for(float(budget), alpha)
-        certification = certify_fpr(negatives, float(budget), alpha=alpha)
+        # The step `certify --budget` runs, not a second copy of it. The copy
+        # that stood here dropped the group column, so a grouped file was
+        # certified at item level at budgets `certify` refuses (DECISIONS 190).
+        certification = certify_budget(items, float(budget), alpha)
         if not certification.fpr_certified:
             points.append(
                 FrontierPoint(
                     budget=float(budget), certified=False,
                     reason=certification.reason, min_negatives_required=floor,
+                    negative_units=certification.n_eff, grouped=grouped,
                 )
             )
             continue
@@ -128,6 +144,8 @@ def frontier(
                 certified=True,
                 reason="certified",
                 min_negatives_required=floor,
+                negative_units=certification.n_eff,
+                grouped=grouped,
                 threshold=threshold,
                 fpr_upper_bound=float(certification.ucb),
                 n_flagged=int(flagged.sum()),

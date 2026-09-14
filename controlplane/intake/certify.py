@@ -21,10 +21,10 @@ from typing import Any, Optional
 from ..config import Config
 from ..model import Metric, MetricError, WarrantMetrics, WarrantStatus, to_jsonable
 from ..validation.metrics_builder import build_warrant_metrics
-from ..validation.warrant_stats import certify_fpr, min_n_for
+from ..validation.warrant_stats import Certification, certify_fpr, min_n_for
 from .contract import ScoredItems
 
-__all__ = ["CertificationResult", "certify_items"]
+__all__ = ["CertificationResult", "certify_budget", "certify_items"]
 
 
 @dataclasses.dataclass(frozen=True)
@@ -123,6 +123,44 @@ def _lift_of(metrics: WarrantMetrics) -> tuple[Optional[Metric], Optional[float]
         return None, metrics.lift_ceiling, str(exc)
 
 
+def certify_budget(items: ScoredItems, budget: float, alpha: float) -> Certification:
+    """The certification step itself, and the only copy of it.
+
+    ``certify --budget`` and ``certify --frontier`` both call this, so the two
+    cannot disagree about a status, a threshold or the unit of inference. They
+    did until ``DECISIONS.md`` 190: the frontier dropped the ``group`` column and
+    certified grouped files at item level, reporting budgets as certified that
+    this function refuses.
+
+    Quantity: the lowest threshold whose one-sided Clopper-Pearson upper bound
+    on the false-positive rate clears ``budget``. Propagation: exact binomial
+    bound over independent negative units -- items, or equal-sized clusters
+    when the file is grouped, a cluster counting as a false positive when any
+    member fires (:func:`controlplane.validation.warrant_stats.certify_fpr`).
+
+    Raises:
+        ValueError: If the file is grouped with unequal group sizes.
+    """
+    labels, scores, groups = items.as_arrays()
+    # Unequal clusters make the cluster-level bound ANTICONSERVATIVE -- it would
+    # promise a tighter FPR than the data supports. Raised rather than silently
+    # certified at item level, because item-level certification on grouped data
+    # assumes an independence the group column explicitly denies. This is the
+    # one shape of input the tool tells you to change rather than judging.
+    if groups is not None and not items.equal_group_sizes:
+        raise ValueError(
+            f"{items.source}: the 'group' column has unequal group sizes, so a "
+            "cluster-level false-positive bound would be anticonservative — it "
+            "would promise a tighter rate than the data supports. Either make "
+            "the groups equal-sized, or drop the column and accept that items "
+            "are being treated as independent. See docs/INPUT.md."
+        )
+    return certify_fpr(
+        scores[labels == 0], budget, alpha=alpha,
+        cluster_ids=None if groups is None else groups[labels == 0],
+    )
+
+
 def certify_items(
     config: Config,
     items: ScoredItems,
@@ -162,30 +200,11 @@ def certify_items(
     alpha = (1.0 - config.validation.ci) if alpha is None else alpha
     labels, scores, groups = items.as_arrays()
 
-    # Unequal clusters make the cluster-level bound ANTICONSERVATIVE -- it would
-    # promise a tighter FPR than the data supports. Raised rather than silently
-    # certified at item level, because item-level certification on grouped data
-    # assumes an independence the group column explicitly denies. This is the
-    # one shape of input the tool tells you to change rather than judging.
-    if groups is not None and not items.equal_group_sizes:
-        raise ValueError(
-            f"{items.source}: the 'group' column has unequal group sizes, so a "
-            "cluster-level false-positive bound would be anticonservative — it "
-            "would promise a tighter rate than the data supports. Either make "
-            "the groups equal-sized, or drop the column and accept that items "
-            "are being treated as independent. See docs/INPUT.md."
-        )
-
     from .recheck import score_distribution
 
+    certification = certify_budget(items, budget, alpha)
     distribution = score_distribution(scores)
-    negatives = scores[labels == 0]
     floor = min_n_for(budget, alpha)
-    certification = certify_fpr(
-        negatives, budget, alpha=alpha, cluster_ids=(
-            None if groups is None else groups[labels == 0]
-        ),
-    )
 
     common = {
         "budget": budget,
