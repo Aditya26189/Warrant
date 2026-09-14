@@ -10363,3 +10363,51 @@ not good, and any V failure reopens 193.
 per-label simulation is linear in them; it would cost hours for a setting whose
 shape the 0.05 grid already shows. Stated here so its absence is a choice, not an
 omission.
+
+### 196 results -- the guarantee holds everywhere measured; one prediction failed at the ceiling; monthly is the weak cadence
+
+- **Run:** `python scripts/31_chain_detection.py --config config.yaml` at `c300d27`,
+  clean tree, seed 1729, 2,000 simulated years per cell, 240 cells;
+  `results/chain_detection/grid.json`. Simulated operating characteristics of
+  rules under a known true false-positive rate, not detector measurements.
+
+**V passes in every design.** Under S0 and S1 the chain revokes in at most
+**0.012** of years, against a limit of 0.0646, across all three breaches and
+four cadences. 193's guarantee holds beyond the one setting 187 measured.
+
+**The chain against the shipped per-recheck test** (S0 false revocation; S2,
+breach caught within the window):
+
+| breach | cadence | per-recheck S0 | chain S0 | per-recheck S2 caught | chain S2 caught |
+|---|---|---|---|---|---|
+| 1.5x | weekly, change at 13 | 0.8470 | 0.0080 | 0.6240 | 0.9985 |
+| 1.5x | weekly, change at 39 | 0.8625 | 0.0060 | 0.2415 | 0.9900 |
+| 1.5x | monthly, change at 6 | 0.3475 | 0.0045 | 0.7815 | **0.8325** |
+| 2x | monthly, change at 6 | 0.3030 | 0.0040 | 0.8180 | **0.8720** |
+| 3x | weekly, change at 26 | 0.7515 | 0.0120 | 0.4795 | 0.9975 |
+| 3x | monthly, change at 6 | 0.2800 | 0.0040 | 0.8465 | **0.8970** |
+
+Every weekly cell catches in at least 0.9900 of years with a median delay of one
+or two rechecks. **The monthly cadence is the weak one**: three rechecks of
+window catch the breach in 0.8325 to 0.8970 of years. A customer rechecking
+monthly should be told that a breach is missed within a quarter in roughly one
+year in six to eight.
+
+**Predictions.**
+
+- **P1 failed, as registered.** Catch shares did not rise monotonically with the
+  breach in two weekly cells: week 13, 2x to 3x, 1.0000 to 0.9990; week 26, 1.5x
+  to 2x, 0.9965 to 0.9955. Both falls are within one Monte Carlo standard error
+  of a ceiling, and the monthly cells rise as predicted (0.8325, 0.8720, 0.8970).
+  The prediction was written strictly and it is reported strictly: at the ceiling
+  the grid cannot resolve the ordering, which is what a strict monotonicity claim
+  near 1.0 should have anticipated.
+- **P2 held** in all nine weekly cells: after good months the chain catches at
+  least as often (S3 0.9995 to 1.0000 against S2 0.9900 to 1.0000). 187's
+  finding that the chain does not decay through good behaviour holds across the
+  grid.
+- **P3 held**, narrowly: a breach at week 39 is caught slightly less often than
+  at week 13 (0.9900 against 0.9985 at 1.5x). Under S3 the difference vanishes.
+
+**What follows.** O-10 is closed as a measured limitation in
+`docs/LIMITATIONS.md`; no `plan` or README figure is added, as registered.
