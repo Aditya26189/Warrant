@@ -218,8 +218,8 @@ each recheck to the last (`DECISIONS.md` 187, 193). Keep every record: a chain
 restarted after a bad result has spent its guarantee.
 
 ```bash
-python warrant.py recheck --warrant W.warrant.json --input week01.csv --horizon-labels <N from plan>
-python warrant.py recheck --warrant W.warrant.json --input week02.csv --since week01.csv.recheck.json
+python warrant.py recheck --warrant your_scores.csv.warrant.json --input week01.csv --horizon-labels <N from plan>
+python warrant.py recheck --warrant your_scores.csv.warrant.json --input week02.csv --since week01.csv.recheck.json
 ```
 
 <details>
