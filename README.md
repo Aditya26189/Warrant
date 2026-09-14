@@ -35,7 +35,7 @@
 
 <img src="https://img.shields.io/badge/Tests-1694_collected-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1694 tests collected" />
 &nbsp;
-<img src="https://img.shields.io/badge/Claims-81_verified-2da44e?style=for-the-badge" alt="81 claims verified" />
+<img src="https://img.shields.io/badge/Claims-87_verified-2da44e?style=for-the-badge" alt="87 claims verified" />
 &nbsp;
 <img src="https://img.shields.io/badge/AUROC-0.8256-6366f1?style=for-the-badge" alt="AUROC 0.8256" />
 &nbsp;
@@ -335,6 +335,12 @@ here fails the build.**
 | Recall-interval coverage, 1000 trials, nominal 0.95 | 0.9680 | - | results/on_traffic/on_traffic.json | headline.coverage | python scripts/25_on_traffic.py |
 | ...over how many trials | 1000 | - | results/on_traffic/on_traffic.json | headline.coverage_trials | python scripts/25_on_traffic.py |
 | Measured Neyman design effect vs the declared 0.67 | 0.7929 | - | results/on_traffic/on_traffic.json | headline.measured_design_effect | python scripts/25_on_traffic.py |
+| A year of weekly per-recheck tests revokes a detector that kept its promise, share of simulated years (DECISIONS 187) | 0.8515 | - | results/recheck_schedules/comparison.json | cells[rule=fixed,cadence=weekly,scenario=S0].revoked_in_year.value | python scripts/29_recheck_schedules.py |
+| ...a chained recheck on the same labels (DECISIONS 193) | 0.0085 | - | results/recheck_schedules/comparison.json | cells[rule=e_detector,cadence=weekly,scenario=S0].revoked_in_year.value | python scripts/29_recheck_schedules.py |
+| A breach after six months at the certified rate, caught within 13 weeks, by FPRMonitor | 0.0005 | - | results/recheck_schedules/comparison.json | cells[rule=monitor,cadence=weekly,scenario=S3].caught_in_window.value | python scripts/29_recheck_schedules.py |
+| ...by the chained recheck | 1.0000 | - | results/recheck_schedules/comparison.json | cells[rule=e_detector,cadence=weekly,scenario=S3].caught_in_window.value | python scripts/29_recheck_schedules.py |
+| Monthly chained rechecks catch a 1.5x breach within three months, share of simulated years (DECISIONS 196) | 0.8325 | - | results/chain_detection/grid.json | cells[breach=0.075,cadence=monthly-6,scenario=S2,rule=e_detector].caught_in_window.value | python scripts/31_chain_detection.py |
+| ...weekly, a 1.5x breach from week 26, within 13 weeks | 0.9965 | - | results/chain_detection/grid.json | cells[breach=0.075,cadence=weekly-26,scenario=S2,rule=e_detector].caught_in_window.value | python scripts/31_chain_detection.py |
 | Tightest budget a single-sample judge can certify | 0.1045 | - | results/scorefree/scorefree.json | headline.single_sample_floor_median | python scripts/26_scorefree.py |
 | ...distinct operating points it offers | 1 | - | results/scorefree/scorefree.json | headline.operating_points_at_k1 | python scripts/26_scorefree.py |
 | Notches at k=50 | 51 | - | results/scorefree/scorefree.json | headline.notches_at_k50 | python scripts/26_scorefree.py |
