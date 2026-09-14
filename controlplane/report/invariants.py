@@ -195,6 +195,7 @@ INVARIANTS: tuple[Invariant, ...] = (
 DERIVED_CLAIMS: tuple[tuple[str, str], ...] = (
     ("controlplane/economics/feasibility.py", "abstention_floor"),
     ("controlplane/economics/review.py", "recall_sample_size"),
+    ("controlplane/economics/detection_grid.py", "run_grid"),
     ("controlplane/economics/schedules.py", "simulate"),
     ("controlplane/economics/sizing.py", "negatives_for_detection"),
     ("controlplane/economics/sizing.py", "smallest_detectable_at"),
