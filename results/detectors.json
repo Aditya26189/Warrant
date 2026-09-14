@@ -1,8 +1,8 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-13T22:00:11+00:00",
-    "git_commit": "febe08c0949c54889dce83faa1abf0612a357a0f",
-    "git_branch": "main",
+    "timestamp_utc": "2026-09-14T18:50:21+00:00",
+    "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+    "git_branch": "fix/recall-assurance",
     "dirty": false,
     "dirty_paths": [],
     "dirty_excludes": "results",
@@ -24,7 +24,7 @@
       "cuda_available": false,
       "device_name": "cpu"
     },
-    "config_hash": "533fb74983fcd8af",
+    "config_hash": "2640a176a26a80a0",
     "seed": 1729,
     "config": {
       "seed": 1729,
@@ -115,7 +115,8 @@
         ],
         "null_control_min_repeats": 8,
         "null_control_max_repeats": 200,
-        "calibration_tolerance": 0.25
+        "calibration_tolerance": 0.25,
+        "recheck_power": 0.8
       },
       "drift": {
         "window_size": 200,
@@ -141,7 +142,8 @@
           0.05,
           0.02
         ],
-        "blind_queue": true
+        "blind_queue": true,
+        "margin_assurance": 0.8
       },
       "policy": {
         "engine": "opa",
@@ -203,16 +205,16 @@
   },
   "runs": [
     {
-      "run_id": "run-098a1004d0f8",
+      "run_id": "run-60ab07db05a0",
       "detector_id": "presidio-stock",
       "variant": "text",
       "eval_set_id": "hinglish-pii-200",
       "envelope_id": "sha256:39b541efa4299f4d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-13T21:59:04+00:00",
-      "completed_at": "2026-09-13T21:59:16+00:00",
-      "duration_seconds": 12.661677099997178,
+      "started_at": "2026-09-14T18:49:08+00:00",
+      "completed_at": "2026-09-14T18:49:21+00:00",
+      "duration_seconds": 13.405328500026371,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -364,7 +366,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-b8ea4bcb240f834e",
+        "warrant_id": "W-a9fa400c6cac6a5e",
         "detector_id": "presidio-stock",
         "detector_version": "2.2.364",
         "operating_point": {
@@ -376,9 +378,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hinglish-pii-200",
-        "validation_run_id": "run-098a1004d0f8",
-        "issued_at": "2026-09-13T21:59:04+00:00",
-        "expires_at": "2026-09-14T21:59:04+00:00",
+        "validation_run_id": "run-60ab07db05a0",
+        "issued_at": "2026-09-14T18:49:08+00:00",
+        "expires_at": "2026-09-15T18:49:08+00:00",
         "metrics": {
           "auroc": {
             "name": "auroc",
@@ -571,16 +573,16 @@
       "status_reason": "[presidio-stock==2.2.364] control:canary: measured 0.2000 (margin -0.8000), required recall == 1.0; auroc_lower_ci: measured 0.4456, required > 0.55; lift_lower_ci: measured 1.070 [0.454, 1.819] at measured flag rate 0.1100, required > 1.0 \u2014 otherwise not demonstrably better than random sampling at the same budget"
     },
     {
-      "run_id": "run-6709d4b4298f",
+      "run_id": "run-b1646174455b",
       "detector_id": "presidio-stock",
       "variant": "text",
       "eval_set_id": "hard-negatives-200",
       "envelope_id": "sha256:d28e4de2024de10d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-13T21:59:17+00:00",
-      "completed_at": "2026-09-13T21:59:26+00:00",
-      "duration_seconds": 8.843850800010841,
+      "started_at": "2026-09-14T18:49:21+00:00",
+      "completed_at": "2026-09-14T18:49:31+00:00",
+      "duration_seconds": 9.580716099997517,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -697,7 +699,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-71ca98a508982a79",
+        "warrant_id": "W-e761b779b21d92df",
         "detector_id": "presidio-stock",
         "detector_version": "2.2.364",
         "operating_point": {
@@ -709,9 +711,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hard-negatives-200",
-        "validation_run_id": "run-6709d4b4298f",
-        "issued_at": "2026-09-13T21:59:17+00:00",
-        "expires_at": "2026-09-14T21:59:17+00:00",
+        "validation_run_id": "run-b1646174455b",
+        "issued_at": "2026-09-14T18:49:21+00:00",
+        "expires_at": "2026-09-15T18:49:21+00:00",
         "metrics": {
           "auroc": null,
           "recall": null,
@@ -869,16 +871,16 @@
       "status_reason": "[presidio-stock==2.2.364] control:canary: measured 0.2000 (margin -0.8000), required recall == 1.0"
     },
     {
-      "run_id": "run-5089120e4f6e",
+      "run_id": "run-6b5dec179779",
       "detector_id": "presidio-enabled",
       "variant": "text",
       "eval_set_id": "hinglish-pii-200",
       "envelope_id": "sha256:39b541efa4299f4d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-13T21:59:26+00:00",
-      "completed_at": "2026-09-13T21:59:38+00:00",
-      "duration_seconds": 12.614283100003377,
+      "started_at": "2026-09-14T18:49:31+00:00",
+      "completed_at": "2026-09-14T18:49:45+00:00",
+      "duration_seconds": 14.191028999979608,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -1030,7 +1032,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-7791b741daa70383",
+        "warrant_id": "W-fe47792ed44463e0",
         "detector_id": "presidio-enabled",
         "detector_version": "2.2.364",
         "operating_point": {
@@ -1042,9 +1044,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hinglish-pii-200",
-        "validation_run_id": "run-5089120e4f6e",
-        "issued_at": "2026-09-13T21:59:26+00:00",
-        "expires_at": "2026-09-14T21:59:26+00:00",
+        "validation_run_id": "run-6b5dec179779",
+        "issued_at": "2026-09-14T18:49:31+00:00",
+        "expires_at": "2026-09-15T18:49:31+00:00",
         "metrics": {
           "auroc": {
             "name": "auroc",
@@ -1237,16 +1239,16 @@
       "status_reason": "[presidio-enabled==2.2.364] control:canary: measured 0.6000 (margin -0.4000), required recall == 1.0; auroc_lower_ci: measured 0.5409, required > 0.55"
     },
     {
-      "run_id": "run-4a51d0b2c8a0",
+      "run_id": "run-aadd91355f68",
       "detector_id": "presidio-enabled",
       "variant": "text",
       "eval_set_id": "hard-negatives-200",
       "envelope_id": "sha256:d28e4de2024de10d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-13T21:59:39+00:00",
-      "completed_at": "2026-09-13T21:59:48+00:00",
-      "duration_seconds": 9.223327699990477,
+      "started_at": "2026-09-14T18:49:46+00:00",
+      "completed_at": "2026-09-14T18:49:56+00:00",
+      "duration_seconds": 10.10890999995172,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -1363,7 +1365,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-83baee2f01737807",
+        "warrant_id": "W-198b5e7adae00dfe",
         "detector_id": "presidio-enabled",
         "detector_version": "2.2.364",
         "operating_point": {
@@ -1375,9 +1377,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hard-negatives-200",
-        "validation_run_id": "run-4a51d0b2c8a0",
-        "issued_at": "2026-09-13T21:59:39+00:00",
-        "expires_at": "2026-09-14T21:59:39+00:00",
+        "validation_run_id": "run-aadd91355f68",
+        "issued_at": "2026-09-14T18:49:46+00:00",
+        "expires_at": "2026-09-15T18:49:46+00:00",
         "metrics": {
           "auroc": null,
           "recall": null,
@@ -1535,16 +1537,16 @@
       "status_reason": "[presidio-enabled==2.2.364] control:canary: measured 0.6000 (margin -0.4000), required recall == 1.0"
     },
     {
-      "run_id": "run-a768fcf1c68b",
+      "run_id": "run-f97f4cb7d2ac",
       "detector_id": "presidio-enabled_plus_custom",
       "variant": "text",
       "eval_set_id": "hinglish-pii-200",
       "envelope_id": "sha256:39b541efa4299f4d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-13T21:59:48+00:00",
-      "completed_at": "2026-09-13T22:00:00+00:00",
-      "duration_seconds": 11.705069600022398,
+      "started_at": "2026-09-14T18:49:56+00:00",
+      "completed_at": "2026-09-14T18:50:08+00:00",
+      "duration_seconds": 12.560989799967501,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -1696,7 +1698,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-878b4ca66c581344",
+        "warrant_id": "W-f03d23ce9dc619d3",
         "detector_id": "presidio-enabled_plus_custom",
         "detector_version": "2.2.364",
         "operating_point": {
@@ -1708,9 +1710,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hinglish-pii-200",
-        "validation_run_id": "run-a768fcf1c68b",
-        "issued_at": "2026-09-13T21:59:48+00:00",
-        "expires_at": "2026-09-14T21:59:48+00:00",
+        "validation_run_id": "run-f97f4cb7d2ac",
+        "issued_at": "2026-09-14T18:49:56+00:00",
+        "expires_at": "2026-09-15T18:49:56+00:00",
         "metrics": {
           "auroc": {
             "name": "auroc",
@@ -1903,16 +1905,16 @@
       "status_reason": null
     },
     {
-      "run_id": "run-ed1b0fc0719c",
+      "run_id": "run-8862ee532e54",
       "detector_id": "presidio-enabled_plus_custom",
       "variant": "text",
       "eval_set_id": "hard-negatives-200",
       "envelope_id": "sha256:d28e4de2024de10d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-13T22:00:00+00:00",
-      "completed_at": "2026-09-13T22:00:09+00:00",
-      "duration_seconds": 8.889469799993094,
+      "started_at": "2026-09-14T18:50:09+00:00",
+      "completed_at": "2026-09-14T18:50:19+00:00",
+      "duration_seconds": 9.898443399986718,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -2029,7 +2031,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-031b149654d71623",
+        "warrant_id": "W-f4d23d6efdc6fa20",
         "detector_id": "presidio-enabled_plus_custom",
         "detector_version": "2.2.364",
         "operating_point": {
@@ -2041,9 +2043,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hard-negatives-200",
-        "validation_run_id": "run-ed1b0fc0719c",
-        "issued_at": "2026-09-13T22:00:00+00:00",
-        "expires_at": "2026-09-14T22:00:00+00:00",
+        "validation_run_id": "run-8862ee532e54",
+        "issued_at": "2026-09-14T18:50:09+00:00",
+        "expires_at": "2026-09-15T18:50:09+00:00",
         "metrics": {
           "auroc": null,
           "recall": null,
@@ -2201,16 +2203,16 @@
       "status_reason": null
     },
     {
-      "run_id": "run-58ef6a68a908",
+      "run_id": "run-050b5351d323",
       "detector_id": "pii-reference",
       "variant": "text",
       "eval_set_id": "hinglish-pii-200",
       "envelope_id": "sha256:39b541efa4299f4d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-13T22:00:09+00:00",
-      "completed_at": "2026-09-13T22:00:10+00:00",
-      "duration_seconds": 1.001960500027053,
+      "started_at": "2026-09-14T18:50:19+00:00",
+      "completed_at": "2026-09-14T18:50:20+00:00",
+      "duration_seconds": 1.0979734000284225,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -2362,7 +2364,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-4d9fca5da83daa22",
+        "warrant_id": "W-517de94918040dba",
         "detector_id": "pii-reference",
         "detector_version": "0.1.0",
         "operating_point": {
@@ -2374,9 +2376,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hinglish-pii-200",
-        "validation_run_id": "run-58ef6a68a908",
-        "issued_at": "2026-09-13T22:00:09+00:00",
-        "expires_at": "2026-09-14T22:00:09+00:00",
+        "validation_run_id": "run-050b5351d323",
+        "issued_at": "2026-09-14T18:50:19+00:00",
+        "expires_at": "2026-09-15T18:50:19+00:00",
         "metrics": {
           "auroc": {
             "name": "auroc",
@@ -2569,16 +2571,16 @@
       "status_reason": null
     },
     {
-      "run_id": "run-75014ec5c218",
+      "run_id": "run-0b1afd2e8ab3",
       "detector_id": "pii-reference",
       "variant": "text",
       "eval_set_id": "hard-negatives-200",
       "envelope_id": "sha256:d28e4de2024de10d",
       "model_name": "none (stateless text detector)",
       "data_source": "measured",
-      "started_at": "2026-09-13T22:00:10+00:00",
-      "completed_at": "2026-09-13T22:00:10+00:00",
-      "duration_seconds": 0.22836950002238154,
+      "started_at": "2026-09-14T18:50:20+00:00",
+      "completed_at": "2026-09-14T18:50:20+00:00",
+      "duration_seconds": 0.21070029999827966,
       "splits": {
         "train": 0,
         "validation": 0,
@@ -2695,7 +2697,7 @@
         }
       ],
       "warrant": {
-        "warrant_id": "W-6a73dd1612a82cfe",
+        "warrant_id": "W-033927c182f2fdf8",
         "detector_id": "pii-reference",
         "detector_version": "0.1.0",
         "operating_point": {
@@ -2707,9 +2709,9 @@
           "target_flag_rate": null
         },
         "eval_set_id": "hard-negatives-200",
-        "validation_run_id": "run-75014ec5c218",
-        "issued_at": "2026-09-13T22:00:10+00:00",
-        "expires_at": "2026-09-14T22:00:10+00:00",
+        "validation_run_id": "run-0b1afd2e8ab3",
+        "issued_at": "2026-09-14T18:50:20+00:00",
+        "expires_at": "2026-09-15T18:50:20+00:00",
         "metrics": {
           "auroc": null,
           "recall": null,
