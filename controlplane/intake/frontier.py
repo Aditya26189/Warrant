@@ -63,6 +63,10 @@ class FrontierPoint:
     #: Independent negative units this file has, in the same unit.
     negative_units: Optional[int] = None
     grouped: bool = False
+    #: The level this row was certified at: the family level split across the
+    #: grid, so every row holds at once (DECISIONS 192).
+    row_alpha: Optional[float] = None
+    family_alpha: Optional[float] = None
     threshold: Optional[float] = None
     fpr_upper_bound: Optional[float] = None
     n_flagged: Optional[int] = None
@@ -77,6 +81,8 @@ class FrontierPoint:
             "reason": self.reason,
             "min_negatives_required": self.min_negatives_required,
             "independent_negative_units": self.negative_units,
+            "row_alpha": self.row_alpha,
+            "family_alpha": self.family_alpha,
             "unit": "negative cluster" if self.grouped else "negative item",
             "threshold": self.threshold,
             "fpr_upper_bound": self.fpr_upper_bound,
@@ -102,7 +108,11 @@ def frontier(
         config: Supplies the confidence level.
         items: The scored file.
         grid: Budgets to evaluate, ascending.
-        alpha: Certification level; defaults to ``1 - config.validation.ci``.
+        alpha: The family level -- the chance that ANY certified row is wrong --
+            defaulting to ``1 - config.validation.ci``. Each row is certified at
+            ``alpha / len(grid)``, because the frontier invites choosing a row
+            after looking at all of them, and a row chosen that way is wrong as
+            often as the worst of them can be (``DECISIONS.md`` 192).
 
     Raises:
         ValueError: If the file is grouped with unequal group sizes, exactly as
@@ -114,23 +124,28 @@ def frontier(
         clean negatives for 1%" into a gap that reads as an oversight.
     """
     alpha = (1.0 - config.validation.ci) if alpha is None else alpha
+    # Bonferroni across the grid. Measured before adopting it: a row picked by
+    # "the tightest budget that catches half the positives" was wrong 0.1064 of
+    # the time at n=150 against a nominal 0.05; split, every row holds at once.
+    row_alpha = alpha / len(grid)
     labels, scores, groups = items.as_arrays()
     grouped = groups is not None
     positives_total = int((labels == 1).sum())
 
     points: list[FrontierPoint] = []
     for budget in grid:
-        floor = min_n_for(float(budget), alpha)
+        floor = min_n_for(float(budget), row_alpha)
         # The step `certify --budget` runs, not a second copy of it. The copy
         # that stood here dropped the group column, so a grouped file was
         # certified at item level at budgets `certify` refuses (DECISIONS 190).
-        certification = certify_budget(items, float(budget), alpha)
+        certification = certify_budget(items, float(budget), row_alpha)
         if not certification.fpr_certified:
             points.append(
                 FrontierPoint(
                     budget=float(budget), certified=False,
                     reason=certification.reason, min_negatives_required=floor,
                     negative_units=certification.n_eff, grouped=grouped,
+                    row_alpha=row_alpha, family_alpha=alpha,
                 )
             )
             continue
@@ -146,6 +161,8 @@ def frontier(
                 min_negatives_required=floor,
                 negative_units=certification.n_eff,
                 grouped=grouped,
+                row_alpha=row_alpha,
+                family_alpha=alpha,
                 threshold=threshold,
                 fpr_upper_bound=float(certification.ucb),
                 n_flagged=int(flagged.sum()),

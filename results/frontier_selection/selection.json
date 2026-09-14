@@ -1,0 +1,795 @@
+{
+  "provenance": {
+    "timestamp_utc": "2026-09-14T18:31:26+00:00",
+    "git_commit": "dcb9a1aa9004c18a0458987579868c6bf915eeeb",
+    "git_branch": "exp/frontier-selection",
+    "dirty": false,
+    "dirty_paths": [],
+    "dirty_excludes": "results",
+    "python": "3.12.10",
+    "libraries": {
+      "torch": "2.9.1+cpu",
+      "transformers": "5.8.0",
+      "scikit-learn": "1.7.2",
+      "numpy": "2.2.6",
+      "scipy": "1.16.3",
+      "pandas": "2.3.3",
+      "statsmodels": "0.14.6",
+      "presidio-analyzer": "2.2.364",
+      "bitsandbytes": "0.49.2"
+    },
+    "device": {
+      "platform": "Windows-11-10.0.26200-SP0",
+      "processor": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD",
+      "cuda_available": false,
+      "device_name": "cpu"
+    },
+    "config_hash": "2640a176a26a80a0",
+    "seed": 1729,
+    "config": {
+      "seed": 1729,
+      "workload": {
+        "name": "enterprise-3pct",
+        "monthly_interactions": 200000,
+        "base_error_rate": 0.03,
+        "review_minutes_per_item": 3.0,
+        "reviewer_monthly_cost_inr": 85000.0,
+        "reviewer_productive_hours": 160.0,
+        "measured_tpr": 0.1416,
+        "measured_fpr": 0.011
+      },
+      "model": {
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "quantization": "nf4",
+        "layer_fractions": [
+          0.29,
+          0.39,
+          0.5,
+          0.61,
+          0.71,
+          0.82,
+          0.93
+        ],
+        "prefill_chunk_tokens": 2048
+      },
+      "probe": {
+        "aggregations": [
+          "mean_pool",
+          "max_rolling_means",
+          "last_token"
+        ],
+        "rolling_window": 64,
+        "rolling_stride": 32,
+        "standardize": true,
+        "class_weight": "balanced",
+        "C_grid": [
+          0.0001,
+          0.001,
+          0.01,
+          0.1,
+          1.0
+        ],
+        "positive_class": "incorrect"
+      },
+      "evalsets": [
+        {
+          "id": "triviaqa-600",
+          "pad_tokens": null
+        },
+        {
+          "id": "triviaqa-longctx-600",
+          "pad_tokens": [
+            4000,
+            16000
+          ]
+        },
+        {
+          "id": "hinglish-pii-200",
+          "pad_tokens": null
+        },
+        {
+          "id": "hard-negatives-200",
+          "pad_tokens": null
+        },
+        {
+          "id": "canary-20",
+          "pad_tokens": null
+        }
+      ],
+      "validation": {
+        "bootstrap_samples": 1000,
+        "ci": 0.95,
+        "min_n_test": 200,
+        "min_auroc_lower_ci": 0.55,
+        "warrant_ttl_hours": 24,
+        "controls": [
+          "padding_fault",
+          "label_shuffle",
+          "null_feature",
+          "canary",
+          "determinism"
+        ],
+        "null_control_band": [
+          0.45,
+          0.55
+        ],
+        "null_control_min_repeats": 8,
+        "null_control_max_repeats": 200,
+        "calibration_tolerance": 0.25,
+        "recheck_power": 0.8
+      },
+      "drift": {
+        "window_size": 200,
+        "psi_stable": 0.1,
+        "psi_significant": 0.25,
+        "mmd_permutations": 500,
+        "features": [
+          "token_length",
+          "script_mix",
+          "embedding_centroid_distance",
+          "reference_perplexity",
+          "category_mix"
+        ],
+        "max_false_alarm_rate": 0.05
+      },
+      "sampling": {
+        "allocation_month_one": "proportional",
+        "allocation_thereafter": "neyman",
+        "expected_design_effect": 0.67,
+        "score_bands": 4,
+        "double_label_fraction": 0.1,
+        "recall_margin_tiers": [
+          0.05,
+          0.02
+        ],
+        "blind_queue": true,
+        "margin_assurance": 0.8
+      },
+      "policy": {
+        "engine": "opa",
+        "fail_closed_on_missing_warrant": true,
+        "weighted_error": {
+          "w_fpr_benign": 50.0,
+          "w_fnr": 5.0,
+          "w_fpr_hard_negative": 2.0
+        }
+      },
+      "profiles": {
+        "customer_support": {
+          "inline_budget_ms": 200,
+          "min_recall": 0.1,
+          "max_fpr_hard_negatives": 0.02,
+          "operating_point": "P-customer-support",
+          "target_flag_rate": 0.1,
+          "on_calibration_drift": "REFUSE",
+          "calibration_sensitivity": 0.25
+        },
+        "internal_knowledge": {
+          "inline_budget_ms": 500,
+          "min_recall": 0.25,
+          "max_fpr_hard_negatives": 0.05,
+          "operating_point": "P-internal-knowledge",
+          "target_flag_rate": 0.2,
+          "on_calibration_drift": "WIDEN_BUDGET",
+          "calibration_sensitivity": 0.25
+        },
+        "decision_support": {
+          "inline_budget_ms": 2000,
+          "min_recall": 0.5,
+          "max_fpr_hard_negatives": 0.1,
+          "operating_point": "P-decision-support",
+          "target_flag_rate": 0.5,
+          "on_calibration_drift": "IGNORE",
+          "calibration_sensitivity": 0.25
+        }
+      },
+      "detectors": {
+        "presidio_configs": [
+          "stock",
+          "enabled",
+          "enabled_plus_custom"
+        ],
+        "qwen3guard": "Qwen/Qwen3Guard-Gen-0.6B"
+      },
+      "store": {
+        "path": "results/controlplane.db",
+        "retention_days": 400,
+        "hash_chain": true
+      },
+      "paths": {
+        "results_dir": "results",
+        "evalsets_dir": "evalsets",
+        "policies_dir": "policies"
+      }
+    }
+  },
+  "kind": "frontier_selection_study",
+  "decision": "DECISIONS.md 192",
+  "design": {
+    "ns": [
+      150,
+      300,
+      600,
+      1200,
+      5000
+    ],
+    "grid": [
+      0.01,
+      0.02,
+      0.03,
+      0.05,
+      0.075,
+      0.1,
+      0.15,
+      0.2
+    ],
+    "alpha": 0.05,
+    "replicates": 20000,
+    "separations": [
+      1.0,
+      2.0
+    ],
+    "positives_per_negative": 0.3333333333333333,
+    "recall_target": 0.5,
+    "crosscheck_n": 300,
+    "crosscheck_replicates": 2000,
+    "material": 0.1
+  },
+  "replicates": 20000,
+  "crosscheck_replicates": 2000,
+  "registered_run": true,
+  "cells": [
+    {
+      "n": 150,
+      "rows": [
+        {
+          "budget": 0.01,
+          "certified": false,
+          "order_statistic": null,
+          "exact_miscoverage": null,
+          "bonferroni_certified": false,
+          "bonferroni_order_statistic": null,
+          "bonferroni_threshold_shift": null
+        },
+        {
+          "budget": 0.02,
+          "certified": true,
+          "order_statistic": 150,
+          "exact_miscoverage": 0.04829602124348769,
+          "bonferroni_certified": false,
+          "bonferroni_order_statistic": null,
+          "bonferroni_threshold_shift": null
+        },
+        {
+          "budget": 0.03,
+          "certified": true,
+          "order_statistic": 150,
+          "exact_miscoverage": 0.010369555489464137,
+          "bonferroni_certified": false,
+          "bonferroni_order_statistic": null,
+          "bonferroni_threshold_shift": null
+        },
+        {
+          "budget": 0.05,
+          "certified": true,
+          "order_statistic": 148,
+          "exact_miscoverage": 0.018154055021944435,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 149,
+          "bonferroni_threshold_shift": 0.006622516556291391
+        },
+        {
+          "budget": 0.075,
+          "certified": true,
+          "order_statistic": 145,
+          "exact_miscoverage": 0.027771985721291456,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 147,
+          "bonferroni_threshold_shift": 0.013245033112582781
+        },
+        {
+          "budget": 0.1,
+          "certified": true,
+          "order_statistic": 142,
+          "exact_miscoverage": 0.030737620475849187,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 144,
+          "bonferroni_threshold_shift": 0.013245033112582781
+        },
+        {
+          "budget": 0.15,
+          "certified": true,
+          "order_statistic": 135,
+          "exact_miscoverage": 0.04933262155352756,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 139,
+          "bonferroni_threshold_shift": 0.026490066225165563
+        },
+        {
+          "budget": 0.2,
+          "certified": true,
+          "order_statistic": 129,
+          "exact_miscoverage": 0.03721602386672594,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 133,
+          "bonferroni_threshold_shift": 0.026490066225165563
+        }
+      ],
+      "joint": {
+        "value": 0.12665,
+        "mc_se": 0.002351699146362051,
+        "rows_certified": 7
+      },
+      "r1": {
+        "d'=1": {
+          "miscoverage": 0.04635,
+          "miscoverage_given_pick": 0.10644161212538752,
+          "pick_rate": 0.43545,
+          "mc_se": 0.0033047076400548317
+        },
+        "d'=2": {
+          "miscoverage": 0.0483,
+          "miscoverage_given_pick": 0.0483,
+          "pick_rate": 1.0,
+          "mc_se": 0.0015160328162675109
+        }
+      }
+    },
+    {
+      "n": 300,
+      "rows": [
+        {
+          "budget": 0.01,
+          "certified": true,
+          "order_statistic": 300,
+          "exact_miscoverage": 0.04904089407128574,
+          "bonferroni_certified": false,
+          "bonferroni_order_statistic": null,
+          "bonferroni_threshold_shift": null
+        },
+        {
+          "budget": 0.02,
+          "certified": true,
+          "order_statistic": 299,
+          "exact_miscoverage": 0.01661315261459266,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 300,
+          "bonferroni_threshold_shift": 0.0033222591362126247
+        },
+        {
+          "budget": 0.03,
+          "certified": true,
+          "order_statistic": 297,
+          "exact_miscoverage": 0.019890031157977068,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 298,
+          "bonferroni_threshold_shift": 0.0033222591362126247
+        },
+        {
+          "budget": 0.05,
+          "certified": true,
+          "order_statistic": 292,
+          "exact_miscoverage": 0.034065813521506706,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 295,
+          "bonferroni_threshold_shift": 0.009966777408637873
+        },
+        {
+          "budget": 0.075,
+          "certified": true,
+          "order_statistic": 286,
+          "exact_miscoverage": 0.033375133513040875,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 289,
+          "bonferroni_threshold_shift": 0.009966777408637873
+        },
+        {
+          "budget": 0.1,
+          "certified": true,
+          "order_statistic": 279,
+          "exact_miscoverage": 0.0458061187991525,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 283,
+          "bonferroni_threshold_shift": 0.013289036544850499
+        },
+        {
+          "budget": 0.15,
+          "certified": true,
+          "order_statistic": 266,
+          "exact_miscoverage": 0.04105590584896813,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 271,
+          "bonferroni_threshold_shift": 0.016611295681063124
+        },
+        {
+          "budget": 0.2,
+          "certified": true,
+          "order_statistic": 252,
+          "exact_miscoverage": 0.045668910744018416,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 258,
+          "bonferroni_threshold_shift": 0.019933554817275746
+        }
+      ],
+      "joint": {
+        "value": 0.15465,
+        "mc_se": 0.002556691001079325,
+        "rows_certified": 8
+      },
+      "r1": {
+        "d'=1": {
+          "miscoverage": 0.04595,
+          "miscoverage_given_pick": 0.08007318985797682,
+          "pick_rate": 0.57385,
+          "mc_se": 0.0025334131009124797
+        },
+        "d'=2": {
+          "miscoverage": 0.0387,
+          "miscoverage_given_pick": 0.0387,
+          "pick_rate": 1.0,
+          "mc_se": 0.0013638605133957065
+        }
+      }
+    },
+    {
+      "n": 600,
+      "rows": [
+        {
+          "budget": 0.01,
+          "certified": true,
+          "order_statistic": 599,
+          "exact_miscoverage": 0.016980823178044738,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 600,
+          "bonferroni_threshold_shift": 0.0016638935108153079
+        },
+        {
+          "budget": 0.02,
+          "certified": true,
+          "order_statistic": 594,
+          "exact_miscoverage": 0.04429524540043381,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 597,
+          "bonferroni_threshold_shift": 0.004991680532445923
+        },
+        {
+          "budget": 0.03,
+          "certified": true,
+          "order_statistic": 590,
+          "exact_miscoverage": 0.028578567106474002,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 593,
+          "bonferroni_threshold_shift": 0.004991680532445923
+        },
+        {
+          "budget": 0.05,
+          "certified": true,
+          "order_statistic": 580,
+          "exact_miscoverage": 0.03195448904308052,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 583,
+          "bonferroni_threshold_shift": 0.004991680532445923
+        },
+        {
+          "budget": 0.075,
+          "certified": true,
+          "order_statistic": 566,
+          "exact_miscoverage": 0.04754557583574881,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 571,
+          "bonferroni_threshold_shift": 0.008319467554076539
+        },
+        {
+          "budget": 0.1,
+          "certified": true,
+          "order_statistic": 553,
+          "exact_miscoverage": 0.04094449680769216,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 559,
+          "bonferroni_threshold_shift": 0.009983361064891847
+        },
+        {
+          "budget": 0.15,
+          "certified": true,
+          "order_statistic": 525,
+          "exact_miscoverage": 0.04614154534380372,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 532,
+          "bonferroni_threshold_shift": 0.011647254575707155
+        },
+        {
+          "budget": 0.2,
+          "certified": true,
+          "order_statistic": 497,
+          "exact_miscoverage": 0.04415528095773645,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 505,
+          "bonferroni_threshold_shift": 0.013311148086522463
+        }
+      ],
+      "joint": {
+        "value": 0.1505,
+        "mc_se": 0.0025283369039746264,
+        "rows_certified": 8
+      },
+      "r1": {
+        "d'=1": {
+          "miscoverage": 0.05205,
+          "miscoverage_given_pick": 0.07201162147205313,
+          "pick_rate": 0.7228,
+          "mc_se": 0.002150049674543246
+        },
+        "d'=2": {
+          "miscoverage": 0.0467,
+          "miscoverage_given_pick": 0.0467,
+          "pick_rate": 1.0,
+          "mc_se": 0.0014919636389671164
+        }
+      }
+    },
+    {
+      "n": 1200,
+      "rows": [
+        {
+          "budget": 0.01,
+          "certified": true,
+          "order_statistic": 1194,
+          "exact_miscoverage": 0.04505830769400139,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 1197,
+          "bonferroni_threshold_shift": 0.002497918401332223
+        },
+        {
+          "budget": 0.02,
+          "certified": true,
+          "order_statistic": 1185,
+          "exact_miscoverage": 0.03309208017843795,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 1188,
+          "bonferroni_threshold_shift": 0.002497918401332223
+        },
+        {
+          "budget": 0.03,
+          "certified": true,
+          "order_statistic": 1174,
+          "exact_miscoverage": 0.04875705518014489,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 1179,
+          "bonferroni_threshold_shift": 0.004163197335553705
+        },
+        {
+          "budget": 0.05,
+          "certified": true,
+          "order_statistic": 1153,
+          "exact_miscoverage": 0.04505743472189141,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 1159,
+          "bonferroni_threshold_shift": 0.004995836802664446
+        },
+        {
+          "budget": 0.075,
+          "certified": true,
+          "order_statistic": 1126,
+          "exact_miscoverage": 0.04171502291258031,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 1133,
+          "bonferroni_threshold_shift": 0.005828476269775187
+        },
+        {
+          "budget": 0.1,
+          "certified": true,
+          "order_statistic": 1098,
+          "exact_miscoverage": 0.0436742140813303,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 1106,
+          "bonferroni_threshold_shift": 0.006661115736885929
+        },
+        {
+          "budget": 0.15,
+          "certified": true,
+          "order_statistic": 1041,
+          "exact_miscoverage": 0.04697333771821942,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 1051,
+          "bonferroni_threshold_shift": 0.00832639467110741
+        },
+        {
+          "budget": 0.2,
+          "certified": true,
+          "order_statistic": 984,
+          "exact_miscoverage": 0.04360360199502052,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 995,
+          "bonferroni_threshold_shift": 0.009159034138218152
+        }
+      ],
+      "joint": {
+        "value": 0.1766,
+        "mc_se": 0.002696409093590956,
+        "rows_certified": 8
+      },
+      "r1": {
+        "d'=1": {
+          "miscoverage": 0.0479,
+          "miscoverage_given_pick": 0.05438855455887363,
+          "pick_rate": 0.8807,
+          "mc_se": 0.0017087602103086814
+        },
+        "d'=2": {
+          "miscoverage": 0.05665,
+          "miscoverage_given_pick": 0.05665,
+          "pick_rate": 1.0,
+          "mc_se": 0.0016346372303970077
+        }
+      }
+    },
+    {
+      "n": 5000,
+      "rows": [
+        {
+          "budget": 0.01,
+          "certified": true,
+          "order_statistic": 4962,
+          "exact_miscoverage": 0.04656573877667888,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 4968,
+          "bonferroni_threshold_shift": 0.0011997600479904018
+        },
+        {
+          "budget": 0.02,
+          "certified": true,
+          "order_statistic": 4917,
+          "exact_miscoverage": 0.04471772600872444,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 4925,
+          "bonferroni_threshold_shift": 0.0015996800639872025
+        },
+        {
+          "budget": 0.03,
+          "certified": true,
+          "order_statistic": 4871,
+          "exact_miscoverage": 0.04217254659859976,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 4880,
+          "bonferroni_threshold_shift": 0.001799640071985603
+        },
+        {
+          "budget": 0.05,
+          "certified": true,
+          "order_statistic": 4776,
+          "exact_miscoverage": 0.04720368171602713,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 4789,
+          "bonferroni_threshold_shift": 0.002599480103979204
+        },
+        {
+          "budget": 0.075,
+          "certified": true,
+          "order_statistic": 4656,
+          "exact_miscoverage": 0.04936662178102085,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 4672,
+          "bonferroni_threshold_shift": 0.003199360127974405
+        },
+        {
+          "budget": 0.1,
+          "certified": true,
+          "order_statistic": 4536,
+          "exact_miscoverage": 0.04596845446638709,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 4553,
+          "bonferroni_threshold_shift": 0.0033993201359728054
+        },
+        {
+          "budget": 0.15,
+          "certified": true,
+          "order_statistic": 4292,
+          "exact_miscoverage": 0.04929139961427379,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 4313,
+          "bonferroni_threshold_shift": 0.004199160167966407
+        },
+        {
+          "budget": 0.2,
+          "certified": true,
+          "order_statistic": 4047,
+          "exact_miscoverage": 0.04944971940309497,
+          "bonferroni_certified": true,
+          "bonferroni_order_statistic": 4071,
+          "bonferroni_threshold_shift": 0.004799040191961607
+        }
+      ],
+      "joint": {
+        "value": 0.18385,
+        "mc_se": 0.0027390616778378684,
+        "rows_certified": 8
+      },
+      "r1": {
+        "d'=1": {
+          "miscoverage": 0.05185,
+          "miscoverage_given_pick": 0.05186555966790037,
+          "pick_rate": 0.9997,
+          "mc_se": 0.001568283782871862
+        },
+        "d'=2": {
+          "miscoverage": 0.04735,
+          "miscoverage_given_pick": 0.04735,
+          "pick_rate": 1.0,
+          "mc_se": 0.001501798546743204
+        }
+      }
+    }
+  ],
+  "crosscheck": [
+    {
+      "budget": 0.01,
+      "exact": 0.04904089407128574,
+      "simulated": 0.0485,
+      "z": -0.11201265948715952,
+      "agrees": true
+    },
+    {
+      "budget": 0.02,
+      "exact": 0.01661315261459266,
+      "simulated": 0.0155,
+      "z": -0.38947670171379956,
+      "agrees": true
+    },
+    {
+      "budget": 0.03,
+      "exact": 0.019890031157977068,
+      "simulated": 0.0155,
+      "z": -1.4061364476826255,
+      "agrees": true
+    },
+    {
+      "budget": 0.05,
+      "exact": 0.034065813521506706,
+      "simulated": 0.0305,
+      "z": -0.8791044419588602,
+      "agrees": true
+    },
+    {
+      "budget": 0.075,
+      "exact": 0.033375133513040875,
+      "simulated": 0.032,
+      "z": -0.3423886634362664,
+      "agrees": true
+    },
+    {
+      "budget": 0.1,
+      "exact": 0.0458061187991525,
+      "simulated": 0.0445,
+      "z": -0.27939434843100813,
+      "agrees": true
+    },
+    {
+      "budget": 0.15,
+      "exact": 0.04105590584896813,
+      "simulated": 0.0305,
+      "z": -2.3791731062811388,
+      "agrees": true
+    },
+    {
+      "budget": 0.2,
+      "exact": 0.045668910744018416,
+      "simulated": 0.041,
+      "z": -1.000162821458109,
+      "agrees": true
+    }
+  ],
+  "criteria": {
+    "M3_sanity": {
+      "worst_row_miscoverage": 0.04944971940309497,
+      "passes": true,
+      "crosscheck_agrees": true
+    },
+    "M1_material": {
+      "worst_r1_miscoverage_given_pick": 0.10644161212538752,
+      "threshold": 0.1,
+      "material": true
+    },
+    "M2_bonferroni_alpha": 0.00625
+  },
+  "what_these_are": "Simulated operating characteristics of the frontier used as a selection device, under uniform negatives and binormal positives. Not a measurement of any detector. Per-row and joint figures hold for any continuous-score detector at item level; R1 depends on the stated ROC shape."
+}

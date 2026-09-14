@@ -76,8 +76,11 @@ def test_every_frontier_row_matches_certify(tmp_path, config, kind) -> None:
     path = (_grouped_csv if kind == "grouped" else _ungrouped_csv)(tmp_path / f"{kind}.csv")
     items = load_scored_items(path)
     rows = {point.budget: point for point in frontier(config, items, grid=BUDGETS)}
+    # The frontier certifies each row at the family level split across its grid
+    # (DECISIONS 192), so it agrees with certify at that level.
+    row_alpha = (1 - config.validation.ci) / len(BUDGETS)
     for budget in BUDGETS:
-        warrant = certify_items(config, items, budget=budget)
+        warrant = certify_items(config, items, budget=budget, alpha=row_alpha)
         row = rows[budget]
         assert row.certified == warrant.certified, (
             f"{kind} budget {budget}: frontier says certified={row.certified}, "

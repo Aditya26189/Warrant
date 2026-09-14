@@ -264,6 +264,19 @@ def render_frontier(points, *, n_positive: int, n_negative: int) -> str:
         "  Every column above is EXACT -- a count of this file, or a bound. None",
         "  is an estimate, so none carries an interval and none is missing one.",
         "",
+        *(
+            [
+                f"  Every certified row holds at {100 * (1 - points[0].family_alpha):.0f}% confidence AT ONCE:",
+                f"  each was certified at alpha {points[0].row_alpha:.4g}, the family level split",
+                f"  across {len(points)} budgets. So you may choose a row after reading them",
+                "  all, and the row you choose still holds. `certify --budget` does not",
+                "  make that adjustment: its level holds for a budget chosen BEFORE",
+                "  looking at this file.",
+                "",
+            ]
+            if points and points[0].row_alpha is not None
+            else []
+        ),
         "  Recall and precision are rates. They are estimated, they need a",
         "  bootstrap, and they come with a 95% interval:",
         "",

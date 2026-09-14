@@ -9831,3 +9831,143 @@ moved off shortcuts for the sawtooth reason (146).
 **The objection.** *"Assurance is a second arbitrary number."* It is declared,
 like power, and the plan prints 0.5, 0.8 and 0.9 so the reader sees what it buys.
 The arbitrary number was already there; it was 0.5 and nobody said so.
+
+## 192 - The frontier invites choosing a budget on the file that certifies it: how wrong is the chosen row, measured before deciding
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED -- pre-registered at `c1463d7`, run at `dcb9a1a` (`eeb45f5`); M1 material, M2 adopted
+
+`warrant certify --frontier` certifies eight budgets (0.01 to 0.20) off one
+file's negatives, and `render_frontier` ends with *"The row to pick is the one
+whose 'missed' you can live with at a 'false+' you can afford."* The user then
+runs `certify --budget` on the same file. **That is selecting the operating
+point on the data that certifies it** -- `CLAUDE.md`'s "Selecting on test", on
+the customer path.
+
+Each row's claim, *true FPR at this threshold <= this budget*, holds with
+probability at least 95% on its own (`certify_fpr`'s docstring; measured 0.0238
+miscoverage). A row chosen by looking at all eight is wrong with probability at
+most `P(any certified row is wrong)`, which the union bound puts at up to 8x
+alpha. `certify_fpr` already Bonferroni-splits alpha across `n_profiles`
+certified off one set, for this reason; nothing does across frontier rows.
+
+**Why `certify_fpr`'s own no-correction argument does not cover this.** Its
+docstring argues that sweeping thresholds *within one budget* needs no
+multiplicity correction: the certifying set `{tau : ucb(k(tau)) <= b}` is an
+upper set, so the only way to err is for the bound to fail at the single fixed
+threshold where the true rate crosses `b` -- one coverage event, bounded by
+alpha. Across budgets each `b_j` has its own fixed crossing threshold, so there
+are eight such events at eight different points of the curve. They are
+positively dependent -- one empirical survival function drives all of them --
+but they are not one event, and a pick that depends on the data can land on
+whichever one occurred.
+
+**Quantity.** For a file of `n` independent negative units: per-row
+miscoverage, `P(FPR(tau_j) > b_j)`; joint miscoverage, `P(any certified row has
+FPR(tau_j) > b_j)`, which bounds every pick rule; and the miscoverage of the
+row a realistic pick rule selects.
+
+**Why most of this is exact for every detector.** Item-level certification
+depends only on the ranks of the negative scores. With continuous scores, the
+certified threshold at budget `b` sits just above the `(n - k*)`-th order
+statistic, where `k*` is the largest count whose one-sided CP upper bound on `n`
+is at most `b` -- an index fixed by `n` and `b` alone. So:
+
+- **the rows that certify, and the false positives shown at each, depend only
+  on `n`.** A pick made on those columns selects nothing about the negatives
+  and cannot inflate error;
+- **per-row miscoverage is an exact binomial tail**, `P(Bin(n, 1 - b) >= n - k*)`;
+- **joint miscoverage is exact up to Monte Carlo error from multinomial counts**
+  of `n` uniforms over the intervals cut at `1 - b_j`, whatever the detector.
+
+**Where selection can bite is the caught column.** A row whose threshold landed
+low catches more positives and looks better -- and is exactly the row whose FPR
+claim is wrong. That depends on the positives' score distribution, so the pick
+rule is simulated under stated shapes rather than for every detector.
+
+**Design.** `n` in {150, 300, 600, 1200, 5000} negatives; the shipped
+`DEFAULT_GRID`; alpha 0.05; 20,000 seeded replicates per cell.
+
+- Joint miscoverage: multinomial counts, detector-free.
+- Pick rule R1, *the tightest budget whose caught count reaches half the
+  positives* -- "the row whose 'missed' you can live with": binormal ROC with
+  separation `d'` in {1, 2}, positives equal to `n / 3`.
+- Cross-check: 2,000 replicates at `n = 300` certified by
+  `intake.certify.certify_budget` on actual files must agree with the exact
+  per-row tails within 3 SE -- the analytic shortcut and the shipped function
+  are held to one answer.
+
+Ties and clusters are out of scope and stated as such.
+
+**Criteria, registered now.**
+
+- **M1, material.** The frontier changes if **R1's miscoverage** exceeds
+  **0.10** -- twice nominal -- in any cell of the design. The joint level is the
+  worst case over every pick rule and is reported beside it, but it does not
+  decide on its own: a bound that no realistic choice approaches is not a reason
+  to tighten every customer's thresholds. At or below 0.10 everywhere, the
+  frontier does not change, and the measured levels are stated on its output
+  instead.
+- **M2, the change if material.** The frontier certifies at `alpha / 8`, so its
+  rows hold simultaneously at 95% by the union bound, and says so. `certify
+  --budget` is unchanged at alpha and its help states that the level holds for a
+  budget chosen before looking at the file. The cost is reported: at each `n`,
+  how many budgets move from certified to refused, and the change in threshold.
+- **M3, sanity.** Every per-row miscoverage is at most 0.05 plus 3 Monte Carlo
+  SE. If one is not, stop: `certify_fpr`'s single-row guarantee would be wrong
+  and nothing downstream stands.
+
+**Predicted before the run:** joint miscoverage between 0.05 and 0.20, rising
+with `n` as more rows certify; the union bound allows up to 0.40. R1 between
+nominal and the joint level, closer to nominal at `d' = 2`, where the caught
+column moves less between adjacent rows.
+
+**Rejected: telling users to split the file.** Correct, and it halves the
+negatives behind every claim on the files customers actually have. The
+Bonferroni frontier keeps all of them and pays in thresholds instead, and M2
+measures that cost.
+
+**Rejected: remove the pick-a-row sentence.** The frontier exists so a person
+can choose; hiding the invitation leaves the selection and loses the warning.
+
+### Results (2026-09-15, `results/frontier_selection/selection.json`)
+
+| n | rows certified | worst row | joint | R1 given pick, d'=1 | R1 given pick, d'=2 | rows under alpha/8 |
+|---|---|---|---|---|---|---|
+| 150 | 7 | 0.0493 | 0.1267 | **0.1064** (pick rate 0.435) | 0.0483 | 5 |
+| 300 | 8 | 0.0490 | 0.1547 | 0.0801 | 0.0387 | 7 |
+| 600 | 8 | 0.0475 | 0.1505 | 0.0720 | 0.0467 | 8 |
+| 1200 | 8 | 0.0488 | 0.1766 | 0.0544 | 0.0566 | 8 |
+| 5000 | 8 | 0.0494 | 0.1839 | 0.0519 | 0.0474 | 8 |
+
+Monte Carlo SE on the joint column is at most 0.0027 and on R1 at most 0.0033.
+
+- **M3 pass.** Every row is within its level alone; the cross-check through
+  `certify_budget` on 2,000 real files agrees with the exact tails on all eight
+  budgets (largest |z| 2.38).
+- **M1: material, narrowly.** R1 at `n = 150, d' = 1` is 0.1064 +/- 0.0033,
+  1.9 SE above the registered 0.10. Every other cell is below it. Joint
+  miscoverage landed inside the predicted 0.05-0.20.
+- **M2 adopted**, as registered. Its measured cost: two budgets (0.02, 0.03)
+  stop certifying at `n = 150` and one (0.01) at `n = 300`; from `n = 600` every
+  row still certifies, with thresholds tightened by at most 1.3 percentage
+  points of expected false-positive rate (at most 2.7 at `n = 150`).
+
+**How M1 was read, stated because it decides the verdict.** The entry says
+"R1's miscoverage". The code committed before the run (`dcb9a1a`) takes it
+conditional on R1 picking a row, and that is the quantity a customer holding a
+picked row has. **Unconditionally** -- counting files where R1 picks nothing as
+not wrong -- R1 is at most 0.0566 in every cell and M1 would not be material.
+The conditional reading was fixed in code before any registered number existed;
+it is recorded here so the verdict is not mistaken for a stronger one than it
+is.
+
+**Seen before the registered run:** a 2,000-replicate speed check at `n = 600`
+(joint 0.161, R1 given pick 0.063), after the criteria were committed. It is not
+part of the result.
+
+**What M2 does not fix.** Registered M2 leaves `certify --budget` at alpha and
+adds a warning. A customer who picks a row off the frontier and then runs
+`certify --budget` on the same file still receives a warrant at the unadjusted
+level. Certifying a picked budget at the frontier's level is a change to the
+warrant command, not to the frontier, and needs its own entry.

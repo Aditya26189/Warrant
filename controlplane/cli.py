@@ -107,7 +107,10 @@ def build_parser() -> argparse.ArgumentParser:
     )
     certify.add_argument(
         "--budget", "-b", type=float, default=None,
-        help="false-positive budget, e.g. 0.05 for 'at most 5%% of clean items flagged'",
+        help="false-positive budget, e.g. 0.05 for 'at most 5%% of clean items flagged'. "
+             "The 95%% level holds for a budget chosen before looking at this "
+             "file; a budget picked off --frontier is covered by the frontier's "
+             "own adjusted rows, not by this command (DECISIONS 192)",
     )
     certify.add_argument(
         "--out", "-o", default=None,
@@ -296,7 +299,9 @@ def _frontier(args: argparse.Namespace, config, items) -> int:
             "note": (
                 "Every field is exact -- a count of this file or a "
                 "Clopper-Pearson bound. Rates are estimated and are not here; "
-                "they come from `certify --budget`, with a 95% interval."
+                "they come from `certify --budget`, with a 95% interval. "
+                "Rows are certified at row_alpha, the family level split across "
+                "the grid, so all certified rows hold at once (DECISIONS 192)."
             ),
             "frontier": [p.to_payload() for p in points],
         },
