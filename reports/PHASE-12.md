@@ -273,3 +273,170 @@ python -m controlplane.report.crosswalk                           # regenerates 
 python warrant.py plan -b 0.05 --negative-share 0.9               # 628 negatives at power 0.80
 python warrant.py certify -i examples/certifies.csv --frontier    # rows certified at alpha/8
 ```
+
+---
+
+## 8. Addendum -- accenture-8a's line: 187, 188, 191, 193
+
+**The question: when a warrant is kept true over time, does the customer path
+tell the truth about how often it will be wrong, and what it costs?**
+
+**Answer: no, twice more, and one of this line's own fixes was wrong when first
+committed.** A year of the shipped per-recheck test revokes a detector that kept
+its promise in 0.8515 of simulated years, and the research path's anytime-valid
+monitor -- the one built to avoid that -- catches a breach that follows six good
+months within a quarter in 2 of 4,000 years. The recall price was sized so its
+margin is realised about half the time (0.4882). Both are fixed or given an
+alternative that measures well. **The first fix to the recall price counted one
+tail where there are two, and committed wrong `decision_support` sizes
+(`11d7d90`)**; it was caught by reading `RESULTS.md`, not by a test.
+
+- **Branch:** `feat/recheck-chain` (merges 189, 190, 192 and this report).
+- **Suite:** 1,635 collected at `baef95a`. Full suite there: one failure,
+  `test_acceptance` on a README template line, fixed at `595dbc4` (8.7).
+- **`verify.py`:** claim table 81/81, frozen scores 25/25, activations 3/3 (at
+  `ab12e41`).
+
+### 8.1 A year of rechecks, measured as change detection (187, pre-registered)
+
+Five rules on the same simulated labels, 4,000 years per cell, seed 1729
+(`results/recheck_schedules/comparison.json`, run at `b8b0f00` and reproduced
+exactly after a rebase). Weekly, 52 rechecks of 628 negatives:
+
+| rule | false revocation, sound year | breach at 26 weeks, caught in 13 | breach after 26 weeks at 0.0371, caught in 13 |
+|---|---|---|---|
+| per-recheck test (shipped `recheck`) | **0.8515** | 0.3790 | 0.9940 |
+| alpha split | 0.0280 | 0.9772 | 0.9892 |
+| `FPRMonitor` (shipped research monitor) | 0.0248 | 0.9830 | **0.0005** |
+| e-detector | **0.0085** | **0.9965** | **1.0000** |
+
+The registered criteria chose the e-detector. **One prediction failed**: at the
+monthly cadence, after good months, the alpha split caught more (0.8420 against
+0.7877). **The finding that matters most was not the question asked:** the
+research path's monitor decays through good behaviour and then cannot fire in
+time, and its cap roughly doubles false revocation (0.0248 against 0.0115
+uncapped). `validation/warrant_stats.py` is read-only; both are OPEN.
+
+Two errors in the pre-registration were corrected **before** any simulation, in
+separate commits: rule D as first written was a single fixed bet with negative
+growth at the breach, and C' was added once the cap was found.
+
+### 8.2 `recheck` discarded the groups `certify` certified on (188)
+
+A grouped warrant was re-tested item by item: a different rate, at a sample size
+counting correlated items as independent. Four whole clusters firing -- 40 false
+positives in 400 items, 4 in 40 clusters -- revoked per item and is STALE per
+cluster. Fixed: cluster units, unequal clusters and grouping mismatches exit 2,
+no drift verdict on grouped files. Codex's 184 had logged it OPEN; `intake/` is
+not read-only, so it was closed rather than carried. 190 then found the same
+omission in `frontier`.
+
+### 8.3 The recall price bought its margin about half the time (191, pre-registered)
+
+`labels_for_recall` sized at the expected error count. Criteria passed: the
+published 1,014 labels realise +/-0.05 with probability **0.4882** (C2); at 0.80
+assurance the size is **1,399** (C3); 2,000 samples through the real estimator
+realise the margin in 0.8045 against 0.8004 computed (C1). Month one, from
+`results/on_traffic/on_traffic.json` at `05b2a52`:
+
+| | +/-0.05 | +/-0.02 |
+|---|---|---|
+| declared workload | 1,014 -> **1,399** | 5,566 -> **6,518** |
+| `customer_support` | 1,808 -> 2,283 | 10,636 -> 11,803 |
+| `internal_knowledge` | 3,582 -> 4,101 | 21,598 -> 22,886 |
+| `decision_support` | 4,049 -> 4,068 | 24,591 -> 24,659 |
+
+**The defect.** The recall half-width rises to one peak near `n TP / (3 N_u)` and
+falls after. The first implementation assumed only the falling side, which holds
+at the declared workload and fails at `decision_support`, where the peak sits at
+the expected count: at +/-0.02 and 21,108 labels it returned assurance 1.0 where
+brute force gives 0.0000, and `11d7d90` committed 21,108 and 16,737 for that
+profile -- below the sizes they replaced, which is how it showed. The tests had
+checked the property only where it held. Fixed at `ca5ceab` with both tails and
+brute-force checks at every shipped operating point; artifacts regenerated at
+`05b2a52`, and `RESULTS.md` through the chain at `478e674` (3,075 metrics, 0
+moved). The wrong commit stays in history.
+
+### 8.4 The chain: 187's rule on the customer path (193)
+
+`warrant recheck --horizon-labels N` starts a chain and `--since RECORD`
+continues it: every recheck's clean-negative units feed one e-detector that
+revokes at `N / alpha`, so a year of rechecks revokes a sound detector with
+probability at most alpha. `N`, alpha and the grid are frozen; units are ordered
+by digest, so arranging a file changes nothing; consumed units, edited states,
+other warrants and ended or revoked chains are refused with exit 2 and nothing
+written. `plan` prints each cadence's `N` as a copyable command. Acceptance A1-A4
+pass, including that the chain equals the study's statistic at every recheck and
+revokes no later. Two acceptance criteria were overclaimed as first committed
+and corrected before any code.
+
+### 8.5 What this does not establish
+
+- **The chain's guarantee holds for the chain as kept.** Discarding a bad record
+  and restarting spends it, and nothing on one machine prevents that; the
+  records only make it visible.
+- **187 is one budget, one breach size, one change point, independent fresh
+  samples, a step change.** The chain's detection is not measured for any other
+  setting, and `plan` quotes none.
+- **Assurance is over sampling noise at a declared prevalence**, not over the
+  prevalence being wrong, which is the larger month-one risk. The Neyman rows use
+  the effective-`n` approximation.
+- **No detector, labeller or production traffic** is involved in any number in
+  this addendum.
+
+### 8.6 Open items added
+
+| # | item | what would close it |
+|---|---|---|
+| O-8 | **`FPRMonitor` decays through good behaviour** and almost never catches a breach that follows it in time (187) | an owner for `validation/warrant_stats.py` replacing the runtime trigger with a change detector |
+| O-9 | **The demo still states `FPRMonitor`'s deployment-wide guarantee**: `controlplane/report/beats.py` prints "anytime-valid; P(false revoke) <= alpha over the whole deployment", which 187 found is not established as implemented. No code path runs the monitor | rewording the beat to name the chain (193) or to drop the claim |
+| O-10 | **The chain's detection outside 187's registered setting is unmeasured** | a registered study at the cadences and breach sizes a customer declares |
+
+### 8.7 Defects in how this line was run
+
+- **A fix committed wrong artifacts** (8.3). Caught by a number moving in the
+  impossible direction, not by a test; the tests now cover the shipped operating
+  points that exposed it.
+- **A chain rebuild was started against a leftover ledger** by backgrounding a
+  whole `&&` list with `&`, which also hid the commit's confirmation. Stopped at
+  its first stage; the ledger was moved aside, not deleted, and the chain rerun
+  clean.
+- **Three pre-registrations needed corrections before running** (187's rule D,
+  191's direction of the half-width, 193's A1 and A2). Each is a separate commit
+  and a note in the entry; none moved a criterion after results were seen.
+- **The README said the price list and gate were never written**, long after
+  both were built; retired at `defd36d`.
+- **A README example broke the fresh-clone acceptance test.** The chained-recheck
+  lines were not marked as templates, so `test_acceptance` ran them; found by the
+  full suite, fixed at `595dbc4`.
+
+### 8.8 Ledger
+
+**Code** -- `controlplane/economics/schedules.py`, `scripts/29_recheck_schedules.py`
+(187); `controlplane/intake/recheck.py` cluster units (188);
+`controlplane/sampling/planning.py` assurance, `config.yaml`
+`sampling.margin_assurance: 0.80` (191); `controlplane/intake/chain.py`,
+`recheck --horizon-labels/--since`, `plan` chain horizons (193).
+
+**Artifacts** -- `results/recheck_schedules/comparison.json` (187, `96f4d65`);
+`results/on_traffic/`, `results/feasibility.json` (191, `05b2a52`);
+`results/RESULTS.md` and the chain's 14 artifacts (`478e674`).
+
+**Tests** -- `test_recheck_schedules.py`, `test_test_inventory.py`,
+`test_recheck_groups.py`, `test_sampling_assurance.py`, `test_recheck_chain.py`.
+
+**Decisions** -- 187 (`cce5d8d`, `194172d`, `6fea4da` registered and corrected;
+`2f9f25c` code; `948a9e8` results); 188 (`f231a68`, `0c8ae39`); 191 (`c94d2c7`,
+`ff004e8` registered and corrected; `945f08b`, `ca5ceab`, `1c13492` code;
+`ab12e41` results); 193 (`01d8117`, `3ff15d9` design and correction; `d33cd4a`
+code).
+
+**Reproduce**
+
+```
+python scripts/29_recheck_schedules.py --config config.yaml       # 187; about ten minutes
+python scripts/25_on_traffic.py --config config.yaml              # 191's price list
+python warrant.py plan -b 0.05 --negative-share 0.9               # prints each cadence's chain horizon
+python warrant.py recheck -w W.warrant.json -i week01.csv --horizon-labels <N from plan>
+python -m pytest tests/test_recheck_chain.py tests/test_sampling_assurance.py -q
+```
