@@ -10312,3 +10312,27 @@ establish.
 beside the input proves the frontier was run, not that the budget was chosen
 from it; adjusting on that inference would certify differently depending on
 which files happen to sit in a directory.
+
+### Review of `6d377fb`: the frontier record was trusted, and the metrics carry the pick
+
+Found by accenture-8a reading the code.
+
+- **The frontier record's own numbers were taken as found.** `input_sha256`
+  binds a record to its file, not to what the record says about that file.
+  Editing every `row_alpha` to 0.05 made `--from-frontier` certify at the
+  unadjusted level while the warrant's `selection` claimed a frontier pick.
+  Checking `row_alpha == family_alpha / len(grid)` would not close it: deleting
+  every row but the picked one makes a one-budget "frontier" whose row level is
+  the family level. **Decision:** `--from-frontier` recomputes the frontier from
+  the input with the current configuration -- it costs no bootstrap -- and
+  refuses (exit 2, nothing written) unless the record's rows reproduce exactly:
+  the same budgets in order, and for each the same certified flag, threshold,
+  `row_alpha` and `family_alpha`. The levels the warrant uses are the recomputed
+  ones.
+- **Only the FPR bound pays for the pick.** The frontier invites choosing "the
+  row whose 'missed' you can live with", so the pick selects on recall too, and
+  the recall and precision `certify` then reports on the same file carry that
+  optimism. The warrant's `selection` block and its reason now say so: the
+  metrics are measured on the file the budget was picked from, and only the FPR
+  bound is adjusted. Adjusting them would need a held-out file, which is the
+  split 192 rejected for the frontier and remains the user's option.
