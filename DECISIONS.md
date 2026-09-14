@@ -9185,3 +9185,92 @@ calls `monitoring_plan` directly, and `test_recheck.py`'s round trip covers
 
 **Rejected: rename `certify`'s key to `budget`.** Records are meant to live for
 a year in a customer's hands, and `recheck` already reads `budget_fpr`.
+
+## 183 - The price list sized a recheck to catch its breach half the time, and priced a year of rechecks as if it were one test
+
+- **Date:** 2026-09-14
+- **Status:** PRE-REGISTERED (this entry); results appended after the run
+
+`plan` answers *"what it costs to keep it true"*: the clean negatives one
+recheck needs to catch a breach. 146 defined "catch" as **an observed rate
+equal to the breach establishes it** -- the one-sided Clopper-Pearson lower
+bound on `round(breach x n)` of `n` clears the budget. That is a statement about
+one observed count. At a **true** breach rate the count is binomial, and it lands
+at or above the critical count about half the time.
+
+**Quantity.** Per-recheck revocation probability, `P(Bin(n, p) >= k*(n))`, where
+`k*(n)` is the smallest count whose one-sided CP lower bound at `alpha` exceeds
+the budget -- the exact rule `recheck` applies. At `p = breach` it is the power;
+at `p = budget` it is the false-revocation rate, and since the tail is increasing
+in `p` that is the worst case over every rate the warrant promised.
+**Propagation:** exact binomial tails, no approximation.
+
+**Measured in scratch before this entry (exact, alpha 0.05):**
+
+| budget | breach | 146 quotes | P(revoke \| true rate = breach) | per-recheck false revocation at budget |
+|---|---|---|---|---|
+| 0.05 | 0.075 | 287 | **0.489** | 0.0324 |
+| 0.05 | 0.10 | 86 | **0.495** | 0.0280 |
+| 0.01 | 0.015 | 1,501 | **0.488** | 0.0322 |
+
+**Two defects.**
+
+1. **The quoted sample is a coin flip.** "ONE RECHECK NEEDS 287 CLEAN NEGATIVES"
+   buys a 49% chance of catching a true 7.5% rate. A sample size with its power
+   left implicit is the 147 error in another unit: a number that reads as
+   sufficient and is not.
+2. **A year of rechecks is `K` tests, not one.** At the 0.05/0.075 row, a
+   detector sitting exactly at its budget sees at least one false revocation in a
+   year with probability `1 - (1 - 0.0324)^K`: **0.82 weekly, 0.33 monthly**.
+   `plan` prices the weekly ladder and says nothing about it -- the cry-wolf
+   failure 143 was written to prevent, arriving at the cadence rather than the
+   single recheck.
+
+**Decision.**
+
+1. `plan` sizes a recheck at a **declared power**: the smallest `n` from which
+   the exact power at the breach is at least the target at `n` and at every `n`
+   up to 12x it (the stable-threshold rule of 146, applied to power, because
+   power is also a sawtooth in `n`).
+2. The target is `validation.recheck_power` in `config.yaml`, **0.80**,
+   overridable with `plan --power`, and printed among the declared inputs. 0.80
+   is the conventional minimum, not a measurement, and the plan says so. The
+   plan also prints the sample at powers 0.5, 0.8 and 0.9, so the choice is
+   visible rather than absorbed.
+3. Beside every cadence, `plan` prints the probability of **at least one false
+   revocation in that year** for a detector exactly at its budget, assuming
+   independent samples.
+4. `recheck`'s hint (`negatives_to_detect_1_5x_budget`) moves to the same
+   power-based size, and its record adds the file's own power against a 1.5x
+   breach. **No verdict changes**: the revocation rule is untouched; only what
+   is quoted about it.
+
+**Criteria, registered now.**
+
+- **C1, exact.** For each row above, at the quoted `n` and at every `n` up to
+  12x it, exact power at the breach >= 0.80; at `n - 1` it is below.
+- **C2, same test.** 20,000 seeded binomial draws at the quoted `n`, decided by
+  `controlplane.intake.recheck._lower_bound_at` -- the function `recheck` uses:
+  the revocation fraction at `p = breach` is within 3 Monte Carlo SE of the exact
+  power, and at `p = budget` it is at most `alpha` plus 3 SE.
+- **C3, expected values.** An approximate scratch search put the 0.80-power
+  sizes near **638, 192 and 3,350** -- about 2.2x the 146 figures. If the
+  implementation lands more than 5% from any of them, stop and explain it before
+  committing.
+- **C4.** Each year column is at most `1 - (1 - alpha)^K`; no value is
+  predicted beyond that.
+
+**Rejected: keep 146's size and relabel it "median detection".** The plan's
+headline is the sample size, and a reader budgets from the headline.
+
+**Rejected: the normal-approximation formula `((z_a + z_b) / delta)^2`.** 146
+showed detection is not monotone in `n` at these counts, and a closed form
+returns a value on the wrong side of the sawtooth.
+
+**Deferred to its own entry: fixing the year, not just stating it.** Splitting
+alpha across `K` rechecks, or carrying `FPRMonitor`'s anytime-valid wealth
+between recheck records, changes the revocation test itself, and whether either
+beats the other on labels per detected breach has to be measured.
+
+**The objection.** *"This roughly doubles the quoted price."* It does. The old
+price bought half of what it said it bought.
