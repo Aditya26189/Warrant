@@ -324,12 +324,40 @@ def _beat_revocation(root: Path) -> Beat:
             "a warrant is keyed by (detector, operating point, eval set). Most "
             "pairs were never tested here, and saying so is the point.",
         ))
+    # The replayed revocation (DECISIONS 178): a real warrant, real token
+    # lengths, the shipped ladder. Without it this beat named a trigger and
+    # never showed one fire.
+    trace = _load(root, "drift/revocation_trace.json")
+    if trace and trace.get("revocation"):
+        checkpoints = trace.get("checkpoints") or []
+        normal = [c["psi"] for c in checkpoints if c.get("window_shift") == 0 and c.get("psi") is not None]
+        revocation = trace["revocation"]
+        fired = next((c for c in checkpoints if c.get("to_status") == "REVOKED"), {})
+        served = [d for d in revocation.get("decisions") or [] if (d.get("response") or {}).get("routing", {}).get("routed_to")]
+        rows.append((
+            "replayed shift (length drift)",
+            f"{trace['stream']['n_normal']} held-out requests, then long context "
+            f"from request {trace['stream']['shift_starts_at_request']}",
+        ))
+        if normal:
+            rows.append(("PSI while inside", f"{min(normal):.3f} to {max(normal):.3f} -- warrant VALID"))
+        rows.append((
+            "revoked at",
+            f"request {revocation['at_request']}, PSI {fired.get('psi', float('nan')):.3f} "
+            f"with {fired.get('window_shift')} of {fired.get('window_shift', 0) + fired.get('window_normal', 0)} "
+            "window requests shifted",
+        ))
+        rows.append((
+            "profiles served after revocation",
+            f"{len(served)} of {len(revocation.get('decisions') or [])} -- nothing valid on the "
+            "long context meets a declared minimum, so each ESCALATEs and claims no bounds",
+        ))
     rows.append((
-        "revocation trigger",
+        "label-driven revocation (warrant recheck)",
         "anytime-valid; P(false revoke) <= alpha over the whole deployment",
     ))
     rows.append((
-        "estimand",
+        "its estimand",
         "the profile's declared max_fpr_hard_negatives (DECISIONS 112)",
     ))
     return Beat(
@@ -340,6 +368,7 @@ def _beat_revocation(root: Path) -> Beat:
         rows=tuple(rows),
         artifacts=(
             "results/warrant_matrix.json",
+            "results/drift/revocation_trace.json",
             "controlplane/drift/",
             "controlplane/validation/warrant_stats.py",
         ),

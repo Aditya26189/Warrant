@@ -160,3 +160,21 @@ def test_the_agent_complexity_is_answered_by_the_gate() -> None:
     agent = next(c for c in BRIEF_COMPLEXITIES if "agents that take actions" in c[1])
     assert agent[0] == 5, "the agent complexity is the fifth in the brief"
     assert 9 in agent[2]
+
+
+def test_the_drift_beat_shows_a_revocation_fire() -> None:
+    """Beat 5 named a trigger and never showed one fire (DECISIONS.md 178).
+
+    The rows come from the committed replay, so a beat that stops finding the
+    trace stops showing a revocation rather than inventing one.
+    """
+    import json
+
+    trace = json.loads(
+        (PROJECT_ROOT / "results" / "drift" / "revocation_trace.json").read_text(encoding="utf-8")
+    )
+    beat = next(b for b in BEATS if b.number == 5)
+    values = dict(beat.rows)
+    assert values["revoked at"].startswith(f"request {trace['revocation']['at_request']},")
+    assert values["profiles served after revocation"].startswith("0 of 3")
+    assert "results/drift/revocation_trace.json" in beat.artifacts
