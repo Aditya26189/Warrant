@@ -167,6 +167,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--since", default=None, metavar="RECORD",
         help="continue the chain in this earlier .recheck.json; keep every record",
     )
+    recheck.add_argument(
+        "--fork", action="store_true",
+        help="continue from a record that is not the chain's latest, or start a new "
+             "chain while one exists; the fork is recorded in the chain (DECISIONS 194)",
+    )
 
     plan = sub.add_parser(
         "plan",
@@ -404,7 +409,9 @@ def _recheck(args: argparse.Namespace) -> int:
     # checked before anything is written, so a refused link leaves no record.
     fed = None
     if args.horizon_labels is not None or args.since is not None:
-        from .intake.chain import ChainError, continue_chain, feed, start_chain
+        from .intake.chain import (
+            ChainError, continue_chain, feed, read_head, start_chain,
+        )
         from .intake.recheck import chain_units
 
         alpha = record.get("alpha", 1.0 - config.validation.ci)
@@ -414,10 +421,14 @@ def _recheck(args: argparse.Namespace) -> int:
                 if not since_path.is_file():
                     raise ChainError(f"no recheck record at {since_path}")
                 state = continue_chain(
-                    json.loads(since_path.read_text(encoding="utf-8")), record, alpha=alpha
+                    json.loads(since_path.read_text(encoding="utf-8")), record, alpha=alpha,
+                    head=read_head(record_path), fork=args.fork,
                 )
             else:
-                state = start_chain(record, horizon_units=args.horizon_labels, alpha=alpha)
+                state = start_chain(
+                    record, horizon_units=args.horizon_labels, alpha=alpha,
+                    head=read_head(record_path), fork=args.fork,
+                )
             unit_ids, fired = chain_units(items, threshold)
             fed = feed(state, unit_ids, fired)
         except (ChainError, ValueError) as exc:
@@ -430,9 +441,21 @@ def _recheck(args: argparse.Namespace) -> int:
     payload = result.to_payload()
     payload["chain"] = fed.to_payload() if fed is not None else None
 
+    if fed is None and args.fork:
+        print("warrant: --fork only applies to a chained recheck (--since or "
+              "--horizon-labels).", file=sys.stderr)
+        return EXIT_BAD_INPUT
+
     source = Path(args.input)
     out = Path(args.out) if args.out else source.with_suffix(source.suffix + ".recheck.json")
     write_json_artifact(out, payload, config)
+    if fed is not None:
+        # The head moves to the record as written, provenance included, so the
+        # next --since is checked against exactly these bytes' content (194).
+        from .intake.chain import canonical_sha256, write_head
+
+        written = json.loads(out.read_text(encoding="utf-8"))
+        write_head(record_path, canonical_sha256(written), fed.state.sequence)
     if not args.quiet:
         print(render_recheck(result, chain=fed))
     print(f"  record written to {out}")

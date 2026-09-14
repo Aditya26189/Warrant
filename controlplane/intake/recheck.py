@@ -119,6 +119,11 @@ class RecheckResult:
     #: ``"item"``, or ``"cluster"`` when the file declares groups. Every count
     #: and rate in the record is in this unit (DECISIONS 188).
     unit: str = "item"
+    #: What drift alone concludes -- ``"REVOKED"``, ``"STALE"``, ``"STABLE"``, or
+    #: ``None`` when not assessed -- by the rule :func:`_verdict` applies. Carried
+    #: separately because the verdict is bound-first, and a chain that reinterprets
+    #: the bound must not lose a drift revocation behind it (DECISIONS 194).
+    drift_verdict: Optional[str] = None
     psi: Optional[float] = None
     psi_null_p95: Optional[float] = None
     psi_beyond_noise: Optional[bool] = None
@@ -168,6 +173,7 @@ class RecheckResult:
                 "bound_still_holds": self.bound_still_holds,
             },
             "drift": {
+                "verdict": self.drift_verdict,
                 "assessed": self.drift_assessed,
                 "not_assessed_reason": self.drift_not_assessed_reason,
                 "psi": self.psi,
@@ -318,6 +324,10 @@ def recheck_items(
     return dataclasses.replace(
         verdict, power_against_1_5x_budget=power_here, recheck_power=power,
         unit=unit, n_negative_now=int(negatives.size),
+        drift_verdict=drift_verdict(
+            config, assessed=assessed, psi=psi, beyond_noise=beyond_noise,
+            by_smoothing=by_smoothing,
+        ),
     )
 
 
@@ -454,6 +464,31 @@ def negatives_needed_to_detect(
     return negatives_for_power(rate, budget, alpha, power)
 
 
+def drift_verdict(
+    config: Config,
+    *,
+    assessed: bool,
+    psi: Optional[float],
+    beyond_noise: Optional[bool],
+    by_smoothing: bool,
+) -> Optional[str]:
+    """What the distribution check alone concludes, by the one rule `_verdict` uses.
+
+    PSI driven by empty bins is a statement about missing data, never a
+    revocation (STALE); beyond both the significant band and this sample's noise
+    is REVOKED; beyond the stable band and the noise is STALE.
+    """
+    if not assessed or psi is None:
+        return None
+    if by_smoothing:
+        return "STALE"
+    if psi >= config.drift.psi_significant and beyond_noise:
+        return "REVOKED"
+    if psi >= config.drift.psi_stable and beyond_noise:
+        return "STALE"
+    return "STABLE"
+
+
 def _verdict(
     config: Config,
     budget: float,
@@ -524,7 +559,10 @@ def _verdict(
             ),
             **common,
         )
-    if assessed and by_smoothing:
+    drift = drift_verdict(
+        config, assessed=assessed, psi=psi, beyond_noise=beyond_noise, by_smoothing=by_smoothing
+    )
+    if drift == "STALE" and by_smoothing:
         # The index is dominated by bins the live file left empty where the
         # reference had mass. That is a claim about missing data in a region,
         # not a measured shift of that size, and the smoothing constant sets its
@@ -542,7 +580,7 @@ def _verdict(
             ),
             **common,
         )
-    if assessed and psi is not None and psi >= config.drift.psi_significant and beyond_noise:
+    if drift == "REVOKED":
         return RecheckResult(
             status=WarrantStatus.REVOKED,
             reason=(
@@ -553,7 +591,7 @@ def _verdict(
             ),
             **common,
         )
-    if assessed and psi is not None and psi >= config.drift.psi_stable and beyond_noise:
+    if drift == "STALE":
         return RecheckResult(
             status=WarrantStatus.STALE,
             reason=(
@@ -601,19 +639,32 @@ def chain_units(items: ScoredItems, threshold: float) -> tuple[list[str], np.nda
 
 
 def apply_chain(result: RecheckResult, fed: Any) -> RecheckResult:
-    """The verdict a recheck carries when it is one link of a chain (DECISIONS 193).
+    """The verdict a recheck carries when it is one link of a chain (DECISIONS 193, 194).
 
     The chain's statistic is what can revoke on the bound: one file's lower
     bound clearing the budget is one test of many in a year, and in a chain it
-    is reported as evidence -- STALE -- not as a revocation. A drift revocation
-    is a different claim and stands.
+    is reported as evidence -- STALE -- not as a revocation. **A drift revocation
+    is a different claim and stands**, whatever the bound did: it is read from
+    the result's separate drift verdict, because the bound-first verdict hides it
+    when both fire (194, F1). Every reason says where the chain is, whether this
+    file's units all reached it, and whether it has ended (194, F2).
     """
     state = fed.state
-    progress = (
-        f"chain statistic {state.mean_statistic:,.1f} against a revocation threshold "
-        f"of {state.threshold:,.0f}, after {state.units_consumed:,} of "
-        f"{state.horizon_units:,} units"
-    )
+    notes = [
+        f"In the chain: statistic {state.mean_statistic:,.1f} against a revocation "
+        f"threshold of {state.threshold:,.0f}, after {state.units_consumed:,} of "
+        f"{state.horizon_units:,} units."
+    ]
+    if fed.units_not_consumed:
+        notes.append(
+            f"{fed.units_not_consumed:,} of this file's {fed.units_in_file:,} units were "
+            "not consumed -- past the horizon, or after the chain revoked -- and the "
+            "chain has not seen them."
+        )
+    if state.ended and state.revoked_at_unit is None:
+        notes.append("The chain has consumed its units; re-certify before relying on it further.")
+    suffix = " " + " ".join(notes)
+
     if state.revoked_at_unit is not None:
         return dataclasses.replace(
             result,
@@ -623,10 +674,23 @@ def apply_chain(result: RecheckResult, fed: Any) -> RecheckResult:
                 f"reached {state.threshold:,.0f} at unit {state.revoked_at_unit:,} of "
                 f"{state.horizon_units:,}. Across the whole chain, a detector keeping "
                 f"its promise is revoked this way with probability at most "
-                f"{state.alpha:g}."
+                f"{state.alpha:g}." + suffix
             ),
         )
-    if result.status is WarrantStatus.REVOKED and result.bound_still_holds is False:
+    if result.bound_still_holds is False:
+        if result.drift_verdict == "REVOKED":
+            return dataclasses.replace(
+                result,
+                status=WarrantStatus.REVOKED,
+                reason=(
+                    f"the score distribution has moved (PSI {result.psi:.4f}, beyond "
+                    f"both the significant band and this sample's noise level of "
+                    f"{result.psi_null_p95:.4f}): the warrant describes traffic you no "
+                    f"longer have. That is a separate claim from the chain's, and it "
+                    f"stands. This file's bound also breaks, which in a chain is "
+                    f"evidence rather than a revocation." + suffix
+                ),
+            )
         return dataclasses.replace(
             result,
             status=WarrantStatus.STALE,
@@ -634,11 +698,8 @@ def apply_chain(result: RecheckResult, fed: Any) -> RecheckResult:
                 f"this file alone would revoke -- its lower bound "
                 f"{result.fpr_lower_bound_now:.4f} exceeds the {result.budget:.4f} "
                 f"budget -- but in a chain one file is one test of many, and the "
-                f"chain has not established a breach ({progress}). Evidence, not a "
-                f"revocation."
+                f"chain has not established a breach. Evidence, not a revocation."
+                + suffix
             ),
         )
-    suffix = f" In the chain: {progress}."
-    if state.ended:
-        suffix += " The chain has consumed its units; re-certify before relying on it further."
     return dataclasses.replace(result, reason=result.reason + suffix)

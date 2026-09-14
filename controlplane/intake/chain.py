@@ -19,7 +19,17 @@ each carries the digest of the warrant and of the record before it.
 **What is not the user's to choose.** ``N``, alpha and the grid are frozen when a
 chain starts. Within a file, units are fed in the order of
 ``sha256(warrant digest, unit id)``, fixed before any score is read, so sorting or
-shuffling a file changes nothing. A unit already consumed cannot be fed again.
+shuffling a file changes nothing. A unit **id** already consumed cannot be fed
+again: ids must be unique and stable across every file of a chain -- an item's own
+id, not a row number that restarts in each file. The check is on ids, not items;
+the same labelled items resubmitted under new ids are not recognised, and nothing
+local could recognise them (DECISIONS 194).
+
+**Forks are made visible, not prevented.** A sidecar ``<warrant>.chain-head``
+holds the digest of the chain's latest record. Continuing from any other record,
+or starting a chain while a head exists, is refused unless ``--fork`` is given,
+and a forked link records the head it left. Deleting the sidecar defeats the
+check, and each record says which check applied (194).
 """
 
 from __future__ import annotations
@@ -32,6 +42,7 @@ from typing import Any, Optional, Sequence
 import numpy as np
 
 __all__ = [
+    "HEAD_SUFFIX",
     "METHOD",
     "ChainError",
     "ChainState",
@@ -39,9 +50,15 @@ __all__ = [
     "canonical_sha256",
     "continue_chain",
     "feed",
+    "head_path",
+    "read_head",
     "start_chain",
     "unit_digest",
+    "write_head",
 ]
+
+#: Appended to the warrant record's path to name its chain-head sidecar (194).
+HEAD_SUFFIX = ".chain-head"
 
 METHOD = "mean_of_shiryaev_roberts_e_detectors_over_fprmonitor_grid"
 
@@ -92,6 +109,11 @@ class ChainState:
     previous_record_sha256: Optional[str]
     consumed_unit_digests: tuple[str, ...]
     revoked_at_unit: Optional[int] = None
+    #: ``"matched"``, ``"forked"`` or ``"no_sidecar"``: which head check this link
+    #: passed (194). ``None`` only in records written before the check existed.
+    head_check: Optional[str] = None
+    #: The head digest a ``--fork`` left behind.
+    forked_from_head: Optional[str] = None
 
     @property
     def threshold(self) -> float:
@@ -106,7 +128,7 @@ class ChainState:
         return float(np.mean(self.statistics))
 
     def _body(self) -> dict[str, Any]:
-        return {
+        body = {
             "method": METHOD,
             "warrant_sha256": self.warrant_sha256,
             "p0": self.p0,
@@ -123,6 +145,12 @@ class ChainState:
             "revoked_at_unit": self.revoked_at_unit,
             "ended": self.ended,
         }
+        # Added by 194. Omitted when unset, so a record written before it still
+        # reproduces its own digest.
+        if self.head_check is not None:
+            body["head_check"] = self.head_check
+            body["forked_from_head"] = self.forked_from_head
+        return body
 
     def to_payload(self) -> dict[str, Any]:
         body = self._body()
@@ -133,7 +161,9 @@ class ChainState:
                 f"P(any false revocation in the first {self.horizon_units} units) <= "
                 f"{self.alpha:g} for any true false-positive rate at or below "
                 f"{self.p0:g} -- for this chain as kept. Starting a fresh chain after "
-                "an unfavourable record spends the guarantee; keep every record."
+                "an unfavourable record spends the guarantee; keep every record. "
+                "The chain-head sidecar makes a fork declare itself; deleting it "
+                "defeats that check."
             ),
         }
 
@@ -152,6 +182,8 @@ class ChainState:
                 previous_record_sha256=block["previous_record_sha256"],
                 consumed_unit_digests=tuple(block["consumed_unit_digests"]),
                 revoked_at_unit=block["revoked_at_unit"],
+                head_check=block.get("head_check"),
+                forked_from_head=block.get("forked_from_head"),
             )
         except (KeyError, TypeError, ValueError) as exc:
             raise ChainError(f"the chain block is incomplete or malformed ({exc})") from exc
@@ -167,24 +199,78 @@ class ChainState:
         return state
 
 
-def start_chain(warrant_record: dict[str, Any], *, horizon_units: int, alpha: float) -> ChainState:
+def head_path(warrant_path: Any) -> Any:
+    """Where a warrant's chain-head sidecar lives: beside the warrant record."""
+    from pathlib import Path
+
+    return Path(str(warrant_path) + HEAD_SUFFIX)
+
+
+def read_head(warrant_path: Any) -> Optional[str]:
+    """The digest of the chain's latest record, or ``None`` with no sidecar."""
+    path = head_path(warrant_path)
+    if not path.is_file():
+        return None
+    try:
+        return str(json.loads(path.read_text(encoding="utf-8"))["head_record_sha256"])
+    except (ValueError, KeyError, TypeError) as exc:
+        raise ChainError(f"{path.name} is not a chain-head sidecar ({exc})") from exc
+
+
+def write_head(warrant_path: Any, record_sha256: str, sequence: int) -> None:
+    """Point the sidecar at the record just written."""
+    note = (
+        "The digest of this warrant's latest chained recheck record. A recheck "
+        "--since any other record, or a new chain while this exists, is refused "
+        "without --fork. Deleting this file defeats that check (DECISIONS 194)."
+    )
+    payload = {"head_record_sha256": record_sha256, "sequence": sequence, "note": note}
+    head_path(warrant_path).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
+def _head_check(head: Optional[str], continuing_from: Optional[str], fork: bool) -> tuple[str, Optional[str]]:
+    """Which head check applies, refusing an undeclared fork."""
+    if head is None:
+        return "no_sidecar", None
+    if continuing_from is not None and continuing_from == head:
+        return "matched", None
+    if not fork:
+        if continuing_from is None:
+            raise ChainError(
+                "a chain already exists for this warrant (its head sidecar is present). "
+                "Continue it with --since on its latest record, or pass --fork to "
+                "start another; a fork is recorded and visible."
+            )
+        raise ChainError(
+            "the --since record is not the chain's latest record, so continuing from "
+            "it would drop every link after it. Use the latest record, or pass --fork "
+            "to branch deliberately; a fork is recorded and visible."
+        )
+    return "forked", head
+
+
+def start_chain(warrant_record: dict[str, Any], *, horizon_units: int, alpha: float,
+                head: Optional[str] = None, fork: bool = False) -> ChainState:
     """A new chain for this warrant, with ``N`` declared now and frozen."""
     if horizon_units < 1:
         raise ChainError(f"--horizon-labels must be a positive number of units, got {horizon_units}")
     budget = warrant_record.get("budget_fpr")
     if budget is None:
         raise ChainError("the warrant record carries no budget_fpr to monitor against")
+    check, left = _head_check(head, None, fork)
     lam_lo, lam_hi, n_lam, _ = _grid(float(budget), alpha)
     return ChainState(
         warrant_sha256=canonical_sha256(warrant_record), p0=float(budget), alpha=alpha,
         lam_lo=lam_lo, lam_hi=lam_hi, n_lam=n_lam, horizon_units=int(horizon_units),
         units_consumed=0, statistics=tuple(0.0 for _ in range(n_lam)), sequence=1,
         previous_record_sha256=None, consumed_unit_digests=(),
+        head_check=check, forked_from_head=left,
     )
 
 
 def continue_chain(
-    previous_record: dict[str, Any], warrant_record: dict[str, Any], *, alpha: float
+    previous_record: dict[str, Any], warrant_record: dict[str, Any], *, alpha: float,
+    head: Optional[str] = None, fork: bool = False,
 ) -> ChainState:
     """The next link, refused unless it continues this warrant's live chain."""
     block = previous_record.get("chain")
@@ -214,9 +300,11 @@ def continue_chain(
             f"this chain has consumed its {state.horizon_units} units; its guarantee "
             "does not extend past them. Re-certify and start a new chain."
         )
+    previous_sha = canonical_sha256(previous_record)
+    check, left = _head_check(head, previous_sha, fork)
     return dataclasses.replace(
-        state, sequence=state.sequence + 1,
-        previous_record_sha256=canonical_sha256(previous_record),
+        state, sequence=state.sequence + 1, previous_record_sha256=previous_sha,
+        head_check=check, forked_from_head=left,
     )
 
 
@@ -281,7 +369,9 @@ def feed(state: ChainState, unit_ids: Sequence[str], fired: np.ndarray, *,
     if reused:
         raise ChainError(
             f"{reused} unit(s) in this file were already consumed by this chain. A label "
-            "the detector has already passed cannot be counted as evidence twice."
+            "the detector has already passed cannot be counted as evidence twice. Unit "
+            "ids must be unique across every file of a chain: use each item's own "
+            "stable id, not a row number that restarts per file."
         )
 
     order = range(len(ids)) if in_given_order else sorted(range(len(ids)), key=digests.__getitem__)

@@ -214,8 +214,10 @@ python warrant.py plan --warrant your_scores.csv.warrant.json --negative-share 0
 Rechecked every week, a detector that kept its promise is eventually revoked by
 chance; `plan` prints how likely that is for each cadence. To make a year of
 rechecks **one** test instead, declare the horizon `plan` prints once and chain
-each recheck to the last (`DECISIONS.md` 187, 193). Keep every record: a chain
-restarted after a bad result has spent its guarantee.
+each recheck to the last (`DECISIONS.md` 187, 193, 194). Keep every record: a
+chain restarted after a bad result has spent its guarantee. Give every item a
+stable id that is unique across all of a chain's files -- the chain refuses an
+id it has already consumed, and cannot recognise the same item under a new one.
 
 ```bash
 python warrant.py recheck --warrant your_scores.csv.warrant.json --input week01.csv --horizon-labels <N from plan>
