@@ -17,9 +17,9 @@ from scipy.stats import binom
 
 from controlplane.sampling import Band, estimate_on_traffic
 from controlplane.sampling.planning import (
-    _SMALL_COUNTS,
     SizingError,
     _assurance,
+    _certified,
     _recall_half_width,
     labels_for_recall,
     recall_sensitivity,
@@ -46,6 +46,36 @@ def _common(s, margin):
     )
 
 
+def _shipped(config):
+    """The declared workload and every profile's measured point, as the price list reads them.
+
+    Loaded through ``scripts/25_on_traffic.py``'s own reader, so a test of the
+    sizing sees exactly the operating points the published price list is built
+    on. The first implementation was checked only at the declared workload and
+    was wrong at ``decision_support`` (DECISIONS.md 191).
+    """
+    import importlib.util
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    spec = importlib.util.spec_from_file_location("on_traffic_script", root / "scripts" / "25_on_traffic.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    points = module._measured_points(root / "results", None)
+    w = config.workload
+    subjects = {"declared workload point": _declared(config)}
+    for name, profile in sorted(config.profiles.items()):
+        point = points.get(profile.operating_point)
+        if point is None:
+            continue
+        subjects[name] = recall_sensitivity(
+            recall=point["recall"], flag_rate=point["flag_rate"],
+            monthly_interactions=w.monthly_interactions, base_error_rate=w.base_error_rate,
+        )
+    assert len(subjects) >= 4, "the shipped operating points did not load"
+    return subjects
+
+
 def _brute(s, n, margin):
     ks = np.arange(0, n + 1)
     widths = _recall_half_width(ks, np.full(ks.shape, n), true_positives=s.confirmed_errors,
@@ -63,16 +93,53 @@ def test_the_fast_assurance_equals_brute_force_enumeration(config, recall, margi
         assert fast == pytest.approx(_brute(s, n, margin), abs=1e-12), (recall, margin, n)
 
 
-def test_past_the_small_counts_the_half_width_only_falls(config) -> None:
-    """The assumption the bisection makes, checked where the binomial has mass."""
-    s = _declared(config)
-    for n in (300, 1014, 5566, 23531):
-        mean = n * s.unflagged_prevalence
-        spread = math.sqrt(mean * (1 - s.unflagged_prevalence))
-        ks = np.arange(max(_SMALL_COUNTS + 1, int(mean - 12 * spread)), int(mean + 12 * spread) + 1)
-        widths = _recall_half_width(ks, np.full(ks.shape, n), true_positives=s.confirmed_errors,
-                                    pool=s.unflagged_pool, confidence=0.95)
-        assert np.all(np.diff(widths) <= 1e-15), f"half-width rises with the count at n={n}"
+def test_the_half_width_has_one_peak_at_every_shipped_operating_point(config) -> None:
+    """The shape the two-tail computation rests on, over every count, not a window.
+
+    One sign change in the slope: rising while q N_u is small against TP, falling
+    after. The first implementation assumed only the falling side, which is true
+    at the declared workload and false at decision_support.
+    """
+    for name, s in _shipped(config).items():
+        for n in (50, 1000, 4066, 21108, 60000):
+            ks = np.arange(0, n + 1)
+            widths = _recall_half_width(ks, np.full(ks.shape, n), true_positives=s.confirmed_errors,
+                                        pool=s.unflagged_pool, confidence=0.95)
+            slope = np.sign(np.diff(widths)[np.abs(np.diff(widths)) > 1e-13])
+            assert np.sum(slope[1:] != slope[:-1]) <= 1, f"{name}: more than one peak at n={n}"
+
+
+@pytest.mark.parametrize("margin", [0.05, 0.02])
+def test_assurance_equals_brute_force_at_every_shipped_operating_point(config, margin) -> None:
+    for name, s in _shipped(config).items():
+        ns = [3, 60, 400, 1014, 2283, 4049, 4066, 11803, 21108]
+        fast = _assurance(ns, **_common(s, margin))
+        for n, value in zip(ns, fast, strict=True):
+            assert value == pytest.approx(_brute(s, n, margin), abs=1e-12), (name, margin, n)
+
+
+def test_the_case_the_first_implementation_got_wrong(config) -> None:
+    """decision_support, +/-0.02, 21,108 labels: brute force 0.0000; it returned 1.0.
+
+    The half-width at the expected count is 0.0216, above the margin, and every
+    count near it is on the rising side of the peak, so almost no sample of that
+    size realises +/-0.02. The published regeneration at 11d7d90 carried 21,108
+    as that plan's size; it was wrong.
+    """
+    s = _shipped(config)["decision_support"]
+    assert float(_assurance([21108], **_common(s, 0.02))[0]) < 1e-6
+    assert _brute(s, 21108, 0.02) < 1e-6
+
+
+def test_a_certified_size_is_never_below_its_target(config) -> None:
+    """The cheap certificate may decline to certify; it must never certify wrongly."""
+    ns = np.unique(np.geomspace(10, 60000, 300).astype(int))
+    for name, s in _shipped(config).items():
+        for margin in (0.05, 0.02):
+            exact = _assurance(ns, **_common(s, margin))
+            for target in (0.5, 0.8, 0.9):
+                certified = _certified(ns, target, **_common(s, margin))
+                assert not np.any(certified & (exact < target)), (name, margin, target)
 
 
 def test_c2_the_published_figure_realised_its_margin_about_half_the_time(config) -> None:

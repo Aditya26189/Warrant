@@ -335,11 +335,6 @@ MAX_LABELS = 2_000_000
 #: roughly what sizing at the expected count delivered.
 ASSURANCE_LADDER: tuple[float, ...] = (0.5, 0.8, 0.9)
 
-#: Counts at or below this are enumerated one by one; above it the counts that
-#: meet a margin are a tail found by bisection. The recall half-width peaks at a
-#: handful of errors and falls after, so the tail is where it is monotone.
-#: ``tests/test_sampling_assurance.py`` checks the tail against brute force.
-_SMALL_COUNTS = 16
 
 
 def _effective_n(ns, *, pool: float, design_effect: float, finite_population: bool):
@@ -462,11 +457,26 @@ def _assurance(
 
     Quantity: ``P(half-width(K, n_eff) <= margin)`` with ``K ~ Bin(n_eff, q)``,
     the probability that the interval the estimator reports is as narrow as the
-    plan promised. Propagation: exact binomial weights -- counts up to
-    :data:`_SMALL_COUNTS` enumerated, the rest a tail ``K >= k_min(n)`` located by
-    bisection on the half-width, which falls with ``K`` once past its peak
-    (``DECISIONS.md`` 191). With a design effect the count is not one binomial
-    and this is the planner's existing effective-``n`` approximation.
+    plan promised. Propagation: exact binomial weights over the counts that meet
+    the margin. With a design effect the count is not one binomial, and this is
+    the planner's existing effective-``n`` approximation.
+
+    **The shape it relies on, and the one it first assumed wrongly.** The
+    half-width in ``k`` is roughly ``sqrt(k) * |dR/dq|``: the prevalence interval
+    widens as ``sqrt(k)`` while ``|dR/dq| = TP N_u / (TP + q N_u)^2`` stays near
+    ``N_u / TP`` until ``q N_u`` approaches ``TP`` and then falls as ``1/k^2``. So
+    it rises to one peak, near ``k = n TP / (3 N_u)``, and falls after. The
+    counts that meet a margin are therefore a low tail ``k <= a`` and a high tail
+    ``k >= b``. The first implementation assumed only the high tail, which holds
+    where the peak sits far below the expected count (the declared workload) and
+    fails where it does not: at ``decision_support`` it returned 1.0 where brute
+    force gives 0.0000 (``DECISIONS.md`` 191). ``tests/test_sampling_assurance.py``
+    checks the single peak at every shipped operating point and the result
+    against brute-force enumeration there.
+
+    Counts are searched within the expected count +/- 12 standard deviations,
+    outside which the binomial mass is below 1e-30; the tails' probabilities are
+    still taken over every count, so nothing inside the bracket is dropped.
     """
     import numpy as np
     from scipy.stats import binom
@@ -475,53 +485,66 @@ def _assurance(
     effective = _effective_n(
         ns, pool=pool, design_effect=design_effect, finite_population=finite_population
     )
-    total = np.zeros(ns.shape, dtype=float)
-    small = min(_SMALL_COUNTS, int(effective.max()))
-    # Enumerate the small counts only where they still carry probability; for a
-    # large sample P(K <= 16) is below 1e-15 and skipping it can only understate.
-    carries = binom.cdf(small, effective, prevalence) > 1e-15
-    if carries.any():
-        eff_c = effective[carries]
-        for k in range(0, small + 1):
-            ks = np.minimum(np.full(eff_c.shape, k, dtype=np.int64), eff_c)
-            ok = (k <= eff_c) & (
-                _recall_half_width(ks, eff_c, true_positives=true_positives,
-                                   pool=pool, confidence=confidence) <= margin
-            )
-            total[carries] += np.where(ok, binom.pmf(k, eff_c, prevalence), 0.0)
 
-    # The tail above the enumerated counts: bisection for the first count that
-    # meets the margin. The bracket is the expected count +/- 12 standard
-    # deviations, outside which the binomial mass is below 1e-30; counts outside
-    # it are treated as failing, so a truncation can only understate assurance.
+    def width(ks):
+        return _recall_half_width(
+            ks, effective, true_positives=true_positives, pool=pool, confidence=confidence
+        )
+
     mean = effective * prevalence
     spread = np.sqrt(np.maximum(effective * prevalence * (1.0 - prevalence), 1.0))
-    lo = np.maximum(np.floor(mean - 12.0 * spread).astype(np.int64), small)
-    hi = np.minimum(np.ceil(mean + 12.0 * spread).astype(np.int64), effective)
-    live = hi > lo
-    w_all = lambda ks, eff: _recall_half_width(  # noqa: E731 - local shorthand
-        ks, eff, true_positives=true_positives, pool=pool, confidence=confidence
-    )
-    reaches = np.zeros(ns.shape, dtype=bool)
-    reaches[live] = w_all(hi[live], effective[live]) <= margin
-    if reaches.any():
-        eff_r = effective[reaches]
-        lo_r, hi_r = lo[reaches], hi[reaches]
-        # If even the bottom of the bracket meets the margin, the tail starts
-        # there; the mass below it is negligible and is not counted.
-        at_floor = (lo_r > small) & (w_all(lo_r, eff_r) <= margin)
-        hi_r = np.where(at_floor, lo_r, hi_r)
+    lo = np.clip(np.floor(mean - 12.0 * spread).astype(np.int64), 0, effective)
+    hi = np.clip(np.ceil(mean + 12.0 * spread).astype(np.int64), 0, effective)
+
+    # 1. The peak within the bracket, by integer ternary search. On a function
+    #    with one peak this converges to it, or to the bracket's end nearer it
+    #    when the peak lies outside.
+    a, b = lo.copy(), hi.copy()
+    while True:
+        open_ = b - a > 2
+        if not open_.any():
+            break
+        third = (b - a) // 3
+        m1, m2 = a + third, b - third
+        rising = width(m1) < width(m2)
+        a = np.where(open_ & rising, m1 + 1, a)
+        b = np.where(open_ & ~rising, m2, b)
+    candidates = np.stack([a, np.minimum(a + 1, b), b])
+    widths = np.stack([width(c) for c in candidates])
+    peak = candidates[np.argmax(widths, axis=0), np.arange(ns.size)]
+    peak_width = widths.max(axis=0)
+
+    total = np.zeros(ns.shape, dtype=float)
+    everywhere = peak_width <= margin
+    total[everywhere] = 1.0
+
+    # 2. Rising side [lo, peak]: the last count still meeting the margin.
+    left_meets = ~everywhere & (width(lo) <= margin)
+    if left_meets.any():
+        l, r = lo.copy(), peak.copy()  # width(l) <= margin < width(r)
         while True:
-            open_ = hi_r - lo_r > 1
+            open_ = left_meets & (r - l > 1)
             if not open_.any():
                 break
-            mid = (lo_r + hi_r) // 2
-            meets = w_all(mid, eff_r) <= margin
-            hi_r = np.where(open_ & meets, mid, hi_r)
-            lo_r = np.where(open_ & ~meets, mid, lo_r)
-        # k_min > small by construction, so this tail excludes every count
-        # already enumerated above.
-        total[reaches] += binom.sf(hi_r - 1, eff_r, prevalence)
+            mid = (l + r) // 2
+            ok = width(mid) <= margin
+            l = np.where(open_ & ok, mid, l)
+            r = np.where(open_ & ~ok, mid, r)
+        total[left_meets] += binom.cdf(l[left_meets], effective[left_meets], prevalence)
+
+    # 3. Falling side [peak, hi]: the first count meeting the margin again.
+    right_meets = ~everywhere & (width(hi) <= margin)
+    if right_meets.any():
+        l, r = peak.copy(), hi.copy()  # width(l) > margin >= width(r)
+        while True:
+            open_ = right_meets & (r - l > 1)
+            if not open_.any():
+                break
+            mid = (l + r) // 2
+            ok = width(mid) <= margin
+            r = np.where(open_ & ok, mid, r)
+            l = np.where(open_ & ~ok, mid, l)
+        total[right_meets] += binom.sf(r[right_meets] - 1, effective[right_meets], prevalence)
     return np.clip(total, 0.0, 1.0)
 
 
@@ -601,6 +624,55 @@ def _labels_for_exact_margin(
     return stable
 
 
+def _certified(
+    ns,
+    target: float,
+    *,
+    prevalence: float,
+    true_positives: float,
+    pool: float,
+    margin: float,
+    design_effect: float,
+    finite_population: bool,
+    confidence: float,
+):
+    """Sample sizes whose assurance is *proven* to reach ``target`` in four evaluations.
+
+    A central count interval ``[k1, k2]`` holding at least ``target`` of the
+    binomial mass certifies ``assurance >= target`` when the half-width is at
+    most ``margin`` everywhere on it. The half-width has one peak
+    (:func:`_assurance`), so its maximum over the interval is an endpoint whenever
+    it is falling at ``k1`` or rising at ``k2`` -- four evaluations. ``False``
+    means *not certified*, not *below target*; the caller computes those exactly.
+    This exists because confirming a size over its 12x horizon asks the question
+    for hundreds of thousands of sizes, nearly all far above target.
+    """
+    import numpy as np
+    from scipy.stats import binom
+
+    ns = np.asarray(ns, dtype=np.int64)
+    effective = _effective_n(
+        ns, pool=pool, design_effect=design_effect, finite_population=finite_population
+    )
+    tail = (1.0 - target) / 2.0
+    k1 = np.asarray(binom.ppf(tail, effective, prevalence), dtype=np.int64)
+    k2 = np.asarray(binom.isf(tail, effective, prevalence), dtype=np.int64)
+    k1 = np.clip(k1, 0, effective)
+    k2 = np.clip(k2, k1, effective)
+    mass = binom.cdf(k2, effective, prevalence) - binom.cdf(k1 - 1, effective, prevalence)
+
+    def width(ks):
+        return _recall_half_width(
+            ks, effective, true_positives=true_positives, pool=pool, confidence=confidence
+        )
+
+    w1, w2 = width(k1), width(k2)
+    falling_at_k1 = width(np.minimum(k1 + 1, effective)) <= w1
+    rising_at_k2 = width(np.maximum(k2 - 1, 0)) <= w2
+    endpoint_max = (falling_at_k1 | rising_at_k2) & (k2 > k1)
+    return (mass >= target) & endpoint_max & (w1 <= margin) & (w2 <= margin)
+
+
 def _labels_at_assurances(
     targets,
     *,
@@ -637,8 +709,29 @@ def _labels_at_assurances(
     if cap < 2:
         return result
 
-    top = _assurance(np.arange(max(1, cap - 200), cap + 1), **common)
-    reachable = [target for target in ordered if (top >= target).all()]
+    def at_least(values_ns, target):
+        """``assurance >= target`` per size: certified cheaply, else computed."""
+        ok = _certified(values_ns, target, **common)
+        rest = ~ok
+        if rest.any():
+            ok[rest] = _assurance(values_ns[rest], **common) >= target
+        return ok
+
+    def assurances(values_ns, floor_target):
+        """Exact assurance, or 1.0 where it is proven to reach ``floor_target``.
+
+        Every comparison made against the result is at ``floor_target`` or
+        below, so substituting 1.0 where the certificate holds changes none of
+        them.
+        """
+        out = np.ones(values_ns.shape, dtype=float)
+        rest = ~_certified(values_ns, floor_target, **common)
+        if rest.any():
+            out[rest] = _assurance(values_ns[rest], **common)
+        return out
+
+    top_ns = np.arange(max(1, cap - 200), cap + 1)
+    reachable = [target for target in ordered if at_least(top_ns, target).all()]
     if not reachable:
         return result
     hardest = reachable[-1]
@@ -648,18 +741,18 @@ def _labels_at_assurances(
     upper = 10
     while upper <= cap:
         span = max(50, upper // 4)
-        if (_assurance(np.arange(upper, min(upper + span, cap) + 1), **common) >= hardest).all():
+        if at_least(np.arange(upper, min(upper + span, cap) + 1), hardest).all():
             break
         upper = int(upper * 1.2) + 1
     else:
         return result
 
-    values = _assurance(np.arange(1, upper + 1), **common)
+    values = assurances(np.arange(1, upper + 1), hardest)
     failures = (values < hardest).nonzero()[0]
     stable_hardest = int(failures[-1]) + 2 if failures.size else 1
     ceiling = min(stable_hardest * horizon, cap)
     if ceiling > upper:
-        values = np.concatenate([values, _assurance(np.arange(upper + 1, ceiling + 1), **common)])
+        values = np.concatenate([values, assurances(np.arange(upper + 1, ceiling + 1), hardest)])
 
     for target in reachable:
         failures = (values < target).nonzero()[0]
