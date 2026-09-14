@@ -209,6 +209,7 @@ DERIVED_CLAIMS: tuple[tuple[str, str], ...] = (
     ("controlplane/intake/selection.py", "pick_rule_miscoverage"),
     ("controlplane/intake/selection.py", "row_miscoverage"),
     ("controlplane/intake/certify.py", "certify_items"),
+    ("controlplane/intake/chain.py", "feed"),
     ("controlplane/intake/recheck.py", "smallest_detectable_breach"),
     ("controlplane/intake/recheck.py", "negatives_needed_to_detect"),
     ("controlplane/sampling/estimator.py", "estimate_on_traffic"),

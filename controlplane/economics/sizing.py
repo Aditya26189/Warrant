@@ -436,6 +436,11 @@ class CadenceOption:
     #: Chance at least one of the year's rechecks revokes a detector sitting
     #: exactly at its budget (:func:`false_revocation_in_year`, DECISIONS 183).
     false_revocation_in_year: Optional[float] = None
+    #: The ``N`` to declare if the year's rechecks are chained
+    #: (``warrant recheck --horizon-labels``, DECISIONS 193): the clean negatives a
+    #: year of this cadence consumes. Over them, a chain revokes a sound
+    #: detector with probability at most alpha.
+    chain_horizon_units: Optional[int] = None
 
     def render(self) -> str:
         money = (
@@ -516,6 +521,7 @@ class MonitoringPlan:
                     "rechecks_per_year": option.rechecks_per_year,
                     "labels_per_year": option.labels_per_year,
                     "false_revocation_in_year": option.false_revocation_in_year,
+                    "chain_horizon_units": option.chain_horizon_units,
                     "reviewer_hours_per_year": option.reviewer_hours_per_year,
                     "cost_per_year": option.cost_per_year,
                     "currency": option.currency,
@@ -648,6 +654,7 @@ def monitoring_plan(
                 cost_per_year=cost,
                 currency=currency,
                 false_revocation_in_year=false_revocation_in_year(per_recheck_false, per_year),
+                chain_horizon_units=negatives * per_year,
             )
         )
 

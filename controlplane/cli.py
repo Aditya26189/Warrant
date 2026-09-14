@@ -156,6 +156,17 @@ def build_parser() -> argparse.ArgumentParser:
         "--require-valid", action="store_true",
         help="exit non-zero when the warrant no longer holds (default: exits 0)",
     )
+    chain = recheck.add_mutually_exclusive_group()
+    chain.add_argument(
+        "--horizon-labels", type=int, default=None, metavar="N",
+        help="start a chain of rechecks that together can revoke falsely with "
+             "probability at most alpha over N clean negatives; declare N once, "
+             "e.g. the negatives a year of rechecks will label (DECISIONS 193)",
+    )
+    chain.add_argument(
+        "--since", default=None, metavar="RECORD",
+        help="continue the chain in this earlier .recheck.json; keep every record",
+    )
 
     plan = sub.add_parser(
         "plan",
@@ -389,11 +400,41 @@ def _recheck(args: argparse.Namespace) -> int:
         print(f"warrant: {exc}", file=sys.stderr)
         return EXIT_BAD_INPUT
 
+    # A chain of rechecks (DECISIONS 193). Everything that can refuse is
+    # checked before anything is written, so a refused link leaves no record.
+    fed = None
+    if args.horizon_labels is not None or args.since is not None:
+        from .intake.chain import ChainError, continue_chain, feed, start_chain
+        from .intake.recheck import chain_units
+
+        alpha = record.get("alpha", 1.0 - config.validation.ci)
+        try:
+            if args.since is not None:
+                since_path = Path(args.since)
+                if not since_path.is_file():
+                    raise ChainError(f"no recheck record at {since_path}")
+                state = continue_chain(
+                    json.loads(since_path.read_text(encoding="utf-8")), record, alpha=alpha
+                )
+            else:
+                state = start_chain(record, horizon_units=args.horizon_labels, alpha=alpha)
+            unit_ids, fired = chain_units(items, threshold)
+            fed = feed(state, unit_ids, fired)
+        except (ChainError, ValueError) as exc:
+            print(f"warrant: {exc}", file=sys.stderr)
+            return EXIT_BAD_INPUT
+        from .intake.recheck import apply_chain
+
+        result = apply_chain(result, fed)
+
+    payload = result.to_payload()
+    payload["chain"] = fed.to_payload() if fed is not None else None
+
     source = Path(args.input)
     out = Path(args.out) if args.out else source.with_suffix(source.suffix + ".recheck.json")
-    write_json_artifact(out, result.to_payload(), config)
+    write_json_artifact(out, payload, config)
     if not args.quiet:
-        print(render_recheck(result))
+        print(render_recheck(result, chain=fed))
     print(f"  record written to {out}")
 
     if args.require_valid and result.status is not WarrantStatus.VALID:

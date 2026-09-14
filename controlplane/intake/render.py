@@ -111,7 +111,7 @@ def render_summary(result: CertificationResult) -> str:
     return "\n".join(lines)
 
 
-def render_recheck(result) -> str:
+def render_recheck(result, chain=None) -> str:
     """Render a recheck for a terminal.
 
     The two failure modes are printed separately and never merged into one
@@ -213,6 +213,27 @@ def render_recheck(result) -> str:
                 "     measured shift. The smoothing constant sets its size.",
             ]
 
+    if chain is not None:
+        state = chain.state
+        lines += [
+            "",
+            "  3. The chain of rechecks (DECISIONS 193)",
+            f"     link {state.sequence}: {chain.units_fed:,} of this file's "
+            f"{chain.units_in_file:,} clean-negative units fed.",
+            f"     statistic {state.mean_statistic:,.1f}; revokes at "
+            f"{state.threshold:,.0f} ({state.horizon_units:,} units / alpha "
+            f"{state.alpha:g}).",
+            f"     {state.units_consumed:,} of {state.horizon_units:,} units consumed.",
+            "     Over the whole chain, a detector keeping its promise is revoked",
+            f"     with probability at most {state.alpha:g} -- for the chain as kept.",
+            "     Keep every record: a fresh chain started after a bad result",
+            "     spends that guarantee.",
+        ]
+        if chain.units_not_consumed:
+            lines.append(
+                f"     {chain.units_not_consumed:,} unit(s) not consumed: past the "
+                "horizon, or after the chain revoked."
+            )
     lines += ["", f"  {result.reason}", ""]
     if result.status is WarrantStatus.REVOKED:
         lines += [
@@ -361,6 +382,20 @@ def render_plan(plan) -> str:
         "  rechecks revokes a detector sitting exactly at its budget. One",
         f"  recheck does so with probability {plan.false_revocation_per_recheck:.4f}; a year of",
         "  them compounds it. Assumes a fresh sample for every recheck.",
+        "",
+        "  CHAINED, the year is one test instead of many (DECISIONS 193):",
+        "",
+        *[
+            f"      {option.name:<13} warrant recheck --horizon-labels "
+            f"{option.chain_horizon_units}"  # no separator: the line is a command to copy
+            for option in plan.cadences
+            if option.chain_horizon_units is not None
+        ],
+        "",
+        "  A chain revokes a detector that kept its promise with probability at",
+        f"  most {plan.alpha:.3g} over that many negatives, at any cadence. How soon it",
+        "  catches a real breach depends on when the breach starts and was",
+        "  simulated for one setting only; no figure is quoted here for yours.",
         "",
         "  No cadence is recommended, and that is not an omission. How often to",
         "  recheck depends on how fast your inputs move, which is the thing you",

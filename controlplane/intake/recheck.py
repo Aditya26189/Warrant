@@ -324,7 +324,17 @@ def recheck_items(
 def negative_cluster_maxima(
     scores: np.ndarray, labels: np.ndarray, groups: np.ndarray, *, source: str
 ) -> np.ndarray:
-    """One score per negative cluster: its maximum, the unit certify counted.
+    """One score per negative cluster: its maximum. See :func:`negative_cluster_units`."""
+    return negative_cluster_units(scores, labels, groups, source=source)[1]
+
+
+def negative_cluster_units(
+    scores: np.ndarray, labels: np.ndarray, groups: np.ndarray, *, source: str
+) -> tuple[np.ndarray, np.ndarray]:
+    """Each negative cluster's id and maximum score, the unit certify counted.
+
+    The ids are what a recheck chain orders and remembers (DECISIONS 193); the
+    maxima are what decides whether each cluster is a false positive.
 
     A cluster is a false positive when any member reaches the threshold, so its
     maximum decides it -- the rule in
@@ -347,7 +357,7 @@ def negative_cluster_maxima(
         )
     maxima = np.full(keys.size, -np.inf)
     np.maximum.at(maxima, inverse, negative_scores)
-    return maxima
+    return keys, maxima
 
 
 def _upper_bound_at(n: int, k: int, alpha: float) -> float:
@@ -573,3 +583,62 @@ def _verdict(
         ),
         **common,
     )
+
+
+def chain_units(items: ScoredItems, threshold: float) -> tuple[list[str], np.ndarray]:
+    """The clean-negative units a chain consumes from one file, and which fired.
+
+    Items when the file is ungrouped; negative clusters, decided by their
+    maximum, when it declares groups -- the unit certify counted (188).
+    """
+    labels, scores, groups = items.as_arrays()
+    if groups is None:
+        negative = labels == 0
+        ids = [items.ids[i] for i in np.flatnonzero(negative)]
+        return ids, scores[negative] >= threshold
+    keys, maxima = negative_cluster_units(scores, labels, groups, source=items.source)
+    return [str(k) for k in keys], maxima >= threshold
+
+
+def apply_chain(result: RecheckResult, fed: Any) -> RecheckResult:
+    """The verdict a recheck carries when it is one link of a chain (DECISIONS 193).
+
+    The chain's statistic is what can revoke on the bound: one file's lower
+    bound clearing the budget is one test of many in a year, and in a chain it
+    is reported as evidence -- STALE -- not as a revocation. A drift revocation
+    is a different claim and stands.
+    """
+    state = fed.state
+    progress = (
+        f"chain statistic {state.mean_statistic:,.1f} against a revocation threshold "
+        f"of {state.threshold:,.0f}, after {state.units_consumed:,} of "
+        f"{state.horizon_units:,} units"
+    )
+    if state.revoked_at_unit is not None:
+        return dataclasses.replace(
+            result,
+            status=WarrantStatus.REVOKED,
+            reason=(
+                f"the chain of rechecks has established a breach: its statistic "
+                f"reached {state.threshold:,.0f} at unit {state.revoked_at_unit:,} of "
+                f"{state.horizon_units:,}. Across the whole chain, a detector keeping "
+                f"its promise is revoked this way with probability at most "
+                f"{state.alpha:g}."
+            ),
+        )
+    if result.status is WarrantStatus.REVOKED and result.bound_still_holds is False:
+        return dataclasses.replace(
+            result,
+            status=WarrantStatus.STALE,
+            reason=(
+                f"this file alone would revoke -- its lower bound "
+                f"{result.fpr_lower_bound_now:.4f} exceeds the {result.budget:.4f} "
+                f"budget -- but in a chain one file is one test of many, and the "
+                f"chain has not established a breach ({progress}). Evidence, not a "
+                f"revocation."
+            ),
+        )
+    suffix = f" In the chain: {progress}."
+    if state.ended:
+        suffix += " The chain has consumed its units; re-certify before relying on it further."
+    return dataclasses.replace(result, reason=result.reason + suffix)
