@@ -547,6 +547,8 @@ def test_every_script_has_a_smoke_test() -> None:
         "26_scorefree.py",
         # test_smoke_gate
         "27_gate.py",
+        # test_smoke_recheck_schedules
+        "29_recheck_schedules.py",
         # tests/test_intake.py::test_the_examples_are_reproducible_from_their_generator
         # runs it and asserts the committed examples come back byte-identical,
         # which is a stronger check than a smoke test: the examples are shipped
@@ -1333,3 +1335,28 @@ def test_smoke_gate(tmp_path: Path) -> None:
         "everything is not usable"
     )
     assert "EXACT" in cost["note"] and "estimated" in cost["note"].lower()
+
+
+def test_smoke_recheck_schedules(tmp_path: Path) -> None:
+    """`29_recheck_schedules.py` writes every cell and applies 187's criteria.
+
+    Scaled down to 20 simulated years, which is why `--out` is required: a
+    smoke-sized study must never land where the registered one lives.
+    """
+    _run_bare(
+        "29_recheck_schedules.py",
+        "--config", str(PROJECT_ROOT / "config.yaml"),
+        "--years", "20",
+        "--out", str(tmp_path),
+    )
+    payload = json.loads(
+        (tmp_path / "recheck_schedules" / "comparison.json").read_text(encoding="utf-8")
+    )
+    # 5 rules x 2 cadences x 4 scenarios.
+    assert len(payload["cells"]) == 40
+    assert set(payload["criteria"]["validity"]) == {
+        f"{rule}/{cadence}"
+        for rule in ("fixed", "split", "monitor", "monitor_uncapped", "e_detector")
+        for cadence in ("weekly", "monthly")
+    }
+    assert "not any detector" in payload["what_these_are"]

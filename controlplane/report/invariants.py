@@ -195,6 +195,7 @@ INVARIANTS: tuple[Invariant, ...] = (
 DERIVED_CLAIMS: tuple[tuple[str, str], ...] = (
     ("controlplane/economics/feasibility.py", "abstention_floor"),
     ("controlplane/economics/review.py", "recall_sample_size"),
+    ("controlplane/economics/schedules.py", "simulate"),
     ("controlplane/economics/sizing.py", "negatives_for_detection"),
     ("controlplane/economics/sizing.py", "smallest_detectable_at"),
     # DECISIONS 183: the power-based sizes that replaced 146's in the plan.
