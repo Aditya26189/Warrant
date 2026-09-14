@@ -45,6 +45,7 @@
 | 🧭 [CODE_TOUR.md](CODE_TOUR.md) | What is in each package under `controlplane/`, and which file do I open for X? |
 | 🧪 [REDACT.md](REDACT.md) | What happens when this certification is run over somebody else's benchmark, and why a rule-based detector has no operating point to tune? |
 | 🔬 [EXTERNAL.md](EXTERNAL.md) | Does this machinery mean anything on detectors we did not build, on data we did not construct? |
+| 🏦 [RBI-MRM-2026-CROSSWALK.md](RBI-MRM-2026-CROSSWALK.md) | Which paragraphs of the RBI's draft model-risk guidance can a warrant supply evidence for, which only in part, and which not at all? Generated; a register, not a compliance claim |
 | 📥 [INPUT.md](INPUT.md) | I have my own scores and labels. What file does Warrant want, what does it reject, and when does it refuse? |
 | ⚙️ [SETUP.md](SETUP.md) | How do I get this running — laptop, GPU notebook, offline machine? |
 | 📓 [RUNBOOK.md](RUNBOOK.md) | What does each script do, what does it read, what does it write, and when would I run it? |
