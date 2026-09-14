@@ -9407,7 +9407,16 @@ rechecks of `n` clean negatives each, `N = K x n` labels.
 | A. shipped | a recheck's one-sided CP lower bound at `alpha` exceeds the budget | none; `1 - (1 - f)^K` at the budget |
 | B. split | the same bound at `alpha / K` | P(any false revocation in the year) <= alpha (Bonferroni) |
 | C. monitor | `validation.warrant_stats.FPRMonitor` over every label, checked at each recheck | <= alpha for all time (Ville) |
-| D. e-detector | a Shiryaev-Roberts e-detector over every label, `R_t = (R_{t-1} + 1) * mean_lam(1 + lam (x_t - p0))` on `FPRMonitor`'s betting grid, checked at each recheck, threshold `N / alpha` | <= alpha over the year: under any `p <= p0`, `V_t = R_t + (N - t)` is a nonnegative supermartingale from `V_0 = N` that dominates `R_t` for `t <= N`, so Ville's inequality bounds `P(max_{t<=N} R_t >= N/alpha)` by alpha (construction: Shin, Ramdas and Rinaldo, NEJSDS 2023) |
+| D. e-detector | the mean over `FPRMonitor`'s betting grid of one Shiryaev-Roberts e-detector per bet, `R^lam_t = (R^lam_{t-1} + 1) * (1 + lam (x_t - p0))`, checked at each recheck, threshold `N / alpha` | <= alpha over the year: under any `p <= p0`, `V_t = R_t + (N - t)` is a nonnegative supermartingale from `V_0 = N` that dominates `R_t` for `t <= N`, so Ville's inequality bounds `P(max_{t<=N} R_t >= N/alpha)` by alpha (construction: Shin, Ramdas and Rinaldo, NEJSDS 2023) |
+
+**Corrected before any simulation ran.** The first text of this entry put the
+grid mean inside the step, `(R_{t-1} + 1) * mean_lam(1 + lam (x_t - p0))`. That
+is one fixed bet at the grid's mean, lam = 1.959, against a Kelly bet of 0.526
+for a 1.5x breach, and its expected log-growth at the breach is -0.0165 per
+label: it would almost never revoke, and D would lose for a reason unrelated to
+change detection. The mean of per-bet detectors is the construction intended,
+and each term, hence the mean, satisfies the Ville argument unchanged. Found by
+checking the growth rate before writing the simulation; no criterion moved.
 
 C is read-only and is called, not changed. D is new code outside the read-only
 zones. Checking only at recheck boundaries is a subset of stopping times, so C's
