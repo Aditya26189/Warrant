@@ -37,6 +37,7 @@ from __future__ import annotations
 import csv
 import dataclasses
 import json
+from collections import Counter
 from pathlib import Path
 from typing import Any, Optional, Sequence
 
@@ -276,7 +277,7 @@ def load_scored_items(path: str | Path) -> ScoredItems:
                 )
             groups.append(str(key).strip())
 
-    duplicates = sorted({i for i in ids if ids.count(i) > 1})
+    duplicates = sorted(i for i, count in Counter(ids).items() if count > 1)
     if duplicates:
         shown = duplicates[:5]
         raise InputError(
