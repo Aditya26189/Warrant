@@ -202,6 +202,26 @@ Full contract in **[docs/INPUT.md](docs/INPUT.md)**; the two examples are
 explained in [examples/README.md](examples/README.md). `pip install -e .` gives
 you `warrant certify` as a command instead of `python warrant.py`.
 
+**Keeping it true.** A warrant is a claim about the file it was issued on. On
+fresh labelled traffic, `recheck` asks whether it still holds, and `plan` says
+what rechecking costs:
+
+```bash
+python warrant.py recheck --warrant your_scores.csv.warrant.json --input next_batch.csv
+python warrant.py plan --warrant your_scores.csv.warrant.json --negative-share 0.9
+```
+
+Rechecked every week, a detector that kept its promise is eventually revoked by
+chance; `plan` prints how likely that is for each cadence. To make a year of
+rechecks **one** test instead, declare the horizon `plan` prints once and chain
+each recheck to the last (`DECISIONS.md` 187, 193). Keep every record: a chain
+restarted after a bad result has spent its guarantee.
+
+```bash
+python warrant.py recheck --warrant W.warrant.json --input week01.csv --horizon-labels <N from plan>
+python warrant.py recheck --warrant W.warrant.json --input week02.csv --since week01.csv.recheck.json
+```
+
 <details>
 <summary><strong>Reproducing this project's own measurements instead</strong></summary>
 
@@ -232,7 +252,7 @@ from cached activations and reports SKIPPED without them.
 | 🔒 **Not deployed** | No auth, no rate limiting, no HA, no deployment manifests. There is no serving layer and adding one is explicitly out of scope. |
 | ⚖️ **Not a verdict** | A detector is a trigger for spending an expensive check. Nothing here blocks, filters or gates a user-facing response. |
 | 🔬 **Not a general result** | Measured on 2,400 TriviaQA items and hand-built PII sets, one model family (Qwen2.5-7B-Instruct, NF4), no real production traffic. |
-| 🚧 **Not fully built** | Phase 9's action gate and Phase 6's price list were specified and never written; five contract documents still cite a `controlplane/economics/sizing.py` that does not exist. So **every cost, headcount or ROI figure anywhere in this repository is a declared estimate**, and says so. The feasibility bound below is the exception — it is derived from measured rates and needs no cost model. `DECISIONS.md` 096 and 099, declared in [docs/LIMITATIONS.md](docs/LIMITATIONS.md). |
+| 🚧 **Priced, not yet paid for** | The price list and the action gate are built (`DECISIONS.md` 146-150, 156, 183, 191): `controlplane/economics/sizing.py` and `controlplane/sampling/` compute every label budget from the one `workload` block, and each figure names the inputs it was declared on. **No production traffic and no customer exist**, so none of those budgets has been spent against real labels, and any money, headcount or ROI figure outside those modules is a declared estimate. The closure of `DECISIONS.md` 096 and 099 is recorded in [docs/LIMITATIONS.md](docs/LIMITATIONS.md) §3.1-3.2. |
 | 🧠 **Not a claim about truthfulness** | The probe is a correlational classifier over activations. It does not measure what a model believes. |
 
 ---
