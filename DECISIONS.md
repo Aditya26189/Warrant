@@ -10129,3 +10129,63 @@ without the gain.
 It did, by 0.054 (187). The chain is chosen on the registered weekly criterion;
 7 keeps that figure out of `plan`, and the choice of rule is revisited if a
 customer's cadence makes the monthly case the one that matters.
+
+## 194 - A read-only review of 193 found a dropped drift revocation, three overclaims and an unguarded fork
+
+- **Date:** 2026-09-15
+- **Status:** DECIDED
+
+accenture-c4 reviewed 193 at `595dbc4`, reproducing everything through the CLI
+and committing nothing. It confirmed the guarantee holds under the composite null
+(`p <= p0` gives each factor mean at most one), that the mixture mean is uncapped,
+that the state digest survives three JSON round trips, and that order and reused
+ids behave as 193 says. It found five things, each with a reproduction.
+
+**F1, a defect: `apply_chain` drops a drift revocation.** `_verdict` decides bound
+first, so a file whose bound breaks *and* whose distribution has moved comes back
+REVOKED with `bound_still_holds=False` and the drift verdict hidden behind it.
+`apply_chain` then maps that to STALE, against its own docstring ("a drift
+revocation is a different claim and stands"). Repro: a 2,000-row file shifted by
++0.8 against a warrant certified on 1,200 rows is REVOKED alone (PSI 0.3695
+against a noise p95 of 0.0157), and STALE under `--horizon-labels 5`.
+**Decision:** the recheck result carries its drift verdict separately, computed
+by the same rule `_verdict` applies, and a chain keeps REVOKED whenever drift
+alone revokes.
+
+**F2: the chain's end and its unconsumed units vanish from two of three reasons.**
+**Decision:** every chained verdict states the chain's progress; when units in the
+file went unconsumed it says so and that the chain never saw them; when the chain
+has ended it says to re-certify.
+
+**F3, an overclaim: "a unit already consumed cannot be fed again" holds per id,
+not per item.** Two files numbering rows `row0..` collide at link two (exit 2),
+and the same labelled items under renamed ids are accepted. Nothing local can
+tell an item from its id. **Decision:** the module, the refusal message and the
+README say that unit ids must be unique and stable across every file of a chain,
+and that the check is on ids. 193 item 6 is read that way from here.
+
+**F4, an overclaim in `plan`: its horizon is the power-sized negatives times the
+cadence.** A real file carries a different number of negatives, so a chain can
+end months before the year does. **Decision:** `plan` says `N` counts clean
+negatives fed, not rechecks or weeks, and that a chain ends when they are
+consumed.
+
+**F5, a mitigation, not prevention: a fork from an older record.** `--since` on
+last month's record silently branches the chain and drops the evidence after it.
+**Decision:** a sidecar `<warrant>.chain-head` holds the digest of the chain's
+latest record. `--since` on any other record, or `--horizon-labels` while a head
+exists, exits 2 unless `--fork` is given, and a forked link records the head it
+left in its hashed state. Every chained record says which check applied
+(matched, forked, or no sidecar). **Deleting the sidecar defeats this**, and the
+record says so; it catches the likely accident and makes a deliberate fork
+declare itself.
+
+**Acceptance.** F1's repro revokes under a chain; F2's reasons carry the end and
+the unconsumed count; F3's refusal names the id rule; F4's plan says what `N`
+counts; F5: a non-head `--since` and a restart over a live head exit 2 with
+nothing written and the sidecar unchanged, `--fork` succeeds and records the head
+it left, and a missing sidecar is recorded as missing.
+
+**Rejected: prevent forks.** It needs a ledger outside the user's control, which
+a local CLI does not have; claiming prevention would be the overclaim 193 was
+written to avoid.
