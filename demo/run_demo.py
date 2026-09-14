@@ -5,9 +5,14 @@
 ledger code as the pipeline. This file lays out text.
 
 Usage:
-    python demo/run_demo.py --fixture                 # play the stream, then prove it
-    python demo/run_demo.py --fixture --events 8      # shorter
-    python demo/run_demo.py --fixture --prove-only    # Beat 5 alone
+    python demo/run_demo.py --measured                # the committed extraction caches
+    python demo/run_demo.py --fixture                 # synthetic, runs anywhere
+    python demo/run_demo.py --measured --events 8     # shorter
+    python demo/run_demo.py --measured --prove-only   # Beat 5 alone
+
+One of ``--measured`` or ``--fixture`` is required. There is no default, so a
+run cannot quietly show synthetic numbers where measured ones were expected, or
+the reverse (``DECISIONS.md`` 027, 181).
 """
 
 from __future__ import annotations
@@ -25,9 +30,10 @@ if str(PROJECT_ROOT) not in sys.path:
 from controlplane.config import load_config, set_seeds, setup_logging
 from controlplane.demo.session import DemoSession, RequestOutcome
 from controlplane.demo.stream import Stream, record_stream
+from controlplane.evalsets import load_evalset
 from controlplane.model import WarrantStatus
 from controlplane.store import Ledger
-from controlplane.validation.evalsets import SOURCE_SYNTHETIC
+from controlplane.validation.evalsets import SOURCE_SYNTHETIC, ExtractionCache
 from controlplane.validation.synthetic import synthetic_cache, synthetic_evalset
 
 WIDTH = 62
@@ -234,9 +240,18 @@ def render_proof(run, elapsed: float) -> str:
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", default=str(PROJECT_ROOT / "config.yaml"))
-    parser.add_argument(
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument(
+        "--measured", action="store_true",
+        help="run on the committed extraction caches (triviaqa-600, Qwen2.5-7B)",
+    )
+    mode.add_argument(
         "--fixture", action="store_true",
-        help="run on the synthetic fixture; required until a real extraction exists",
+        help="run on the synthetic fixture, which needs no caches",
+    )
+    parser.add_argument(
+        "--cache-dir", default=str(PROJECT_ROOT / "results"),
+        help="where the extraction caches live, for --measured",
     )
     parser.add_argument("--events", type=int, default=6, help="requests to play")
     parser.add_argument(
@@ -250,7 +265,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="press Prove it automatically instead of waiting for a keypress",
     )
     parser.add_argument(
-        "--variant", default="T1-max_rolling_means", help="tier variant to demo"
+        "--variant", default=None,
+        help="tier variant; defaults to T1-last_token measured, T1-max_rolling_means fixture",
     )
     return parser.parse_args(argv)
 
@@ -261,31 +277,58 @@ def main(argv: list[str] | None = None) -> int:
     config = load_config(args.config)
     set_seeds(config.seed)
 
-    if not args.fixture:
+    if not (args.fixture or args.measured):
         print(
-            "Refusing to run without --fixture. A real extraction does not exist "
-            "yet, and there is deliberately no default that would quietly "
-            "substitute synthetic data for measured data (DECISIONS.md 027).",
+            "Choose --measured (the committed extraction caches) or --fixture "
+            "(synthetic). There is deliberately no default: a demo that picked "
+            "one silently could show synthetic numbers to an audience expecting "
+            "measured ones (DECISIONS.md 027, 181).",
             file=sys.stderr,
         )
         return 2
 
-    evalset = synthetic_evalset(
-        eval_set_id="triviaqa-600-synthetic", n_items=2400, base_rate=0.152,
-        seed=config.seed, items_per_question=2, declare_splits=True,
-    )
-    cache = synthetic_cache(
-        evalset, seed=config.seed,
-        window=config.probe.rolling_window, stride=config.probe.rolling_stride,
-    )
-    canary_evalset = synthetic_evalset(
-        eval_set_id="canary-20-synthetic", n_items=20, base_rate=0.95, seed=7
-    )
-    canary_cache = synthetic_cache(
-        canary_evalset, seed=7,
-        window=config.probe.rolling_window, stride=config.probe.rolling_stride,
-        signal_by_tier={v: 8.0 for v in cache.variants}, amplitude_spread=0.05,
-    )
+    if args.measured:
+        evalsets = PROJECT_ROOT / config.paths.evalsets_dir
+        cache_dir = Path(args.cache_dir)
+        needed = [cache_dir / "cache-triviaqa-600.npz", cache_dir / "cache-canary-20-triviaqa.npz"]
+        absent = [str(path) for path in needed if not path.is_file()]
+        if absent:
+            print(
+                "Refusing --measured: extraction cache(s) not found: "
+                + ", ".join(absent)
+                + ". They are gitignored, so a clean clone does not have them; "
+                "regenerate on a GPU with `make extract`, copy them in, or run "
+                "--fixture.",
+                file=sys.stderr,
+            )
+            return 2
+        evalset = load_evalset(evalsets / "triviaqa-600.json")
+        cache = ExtractionCache.load(needed[0], expected_hash=evalset.content_hash)
+        canary_set = load_evalset(evalsets / "canary-20-triviaqa.json")
+        canary_cache = ExtractionCache.load(needed[1], expected_hash=canary_set.content_hash)
+        variant = args.variant or "T1-last_token"
+        detector_version = "0.1.0"
+        stream_name = "demo_stream_measured.json"
+    else:
+        evalset = synthetic_evalset(
+            eval_set_id="triviaqa-600-synthetic", n_items=2400, base_rate=0.152,
+            seed=config.seed, items_per_question=2, declare_splits=True,
+        )
+        cache = synthetic_cache(
+            evalset, seed=config.seed,
+            window=config.probe.rolling_window, stride=config.probe.rolling_stride,
+        )
+        canary_evalset = synthetic_evalset(
+            eval_set_id="canary-20-synthetic", n_items=20, base_rate=0.95, seed=7
+        )
+        canary_cache = synthetic_cache(
+            canary_evalset, seed=7,
+            window=config.probe.rolling_window, stride=config.probe.rolling_stride,
+            signal_by_tier={v: 8.0 for v in cache.variants}, amplitude_spread=0.05,
+        )
+        variant = args.variant or "T1-max_rolling_means"
+        detector_version = "0.1.0+fixture"
+        stream_name = "demo_stream.json"
 
     demo_db = PROJECT_ROOT / config.paths.results_dir / "demo.db"
     if demo_db.exists():
@@ -295,9 +338,9 @@ def main(argv: list[str] | None = None) -> int:
     try:
         session = DemoSession(
             config, evalset, cache,
-            variant=args.variant,
-            detector_id=f"probe-{config.model.name.split('/')[-1].lower()}-{args.variant}",
-            detector_version="0.1.0+fixture",
+            variant=variant,
+            detector_id=f"probe-{config.model.name.split('/')[-1].lower()}-{variant}",
+            detector_version=detector_version,
             ledger=ledger,
             canary_cache=canary_cache,
         )
@@ -308,7 +351,7 @@ def main(argv: list[str] | None = None) -> int:
             stream = record_stream(
                 evalset, cache, n_events=args.events, seed=config.seed
             )
-            stream_path = PROJECT_ROOT / config.paths.results_dir / "demo_stream.json"
+            stream_path = PROJECT_ROOT / config.paths.results_dir / stream_name
             stream.save(stream_path)
 
             print(header(session, stream))

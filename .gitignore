@@ -111,3 +111,5 @@ examples/*.warrant.json
 *.warrant.json
 # the revocation replay's certificate chain; a new chain per run (DECISIONS 178)
 results/drift/*.db*
+# a measured demo run's stream, beside the fixture's demo_stream.json (DECISIONS 181)
+results/demo_stream_measured.json
