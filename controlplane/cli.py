@@ -342,8 +342,11 @@ def _recheck(args: argparse.Namespace) -> int:
         print(f"warrant: {exc}", file=sys.stderr)
         return EXIT_BAD_INPUT
 
+    # The level the promise was certified at, not whatever config.yaml says
+    # today; a record that predates carrying alpha falls back to the config.
     result = recheck_items(
-        config, items, budget=budget, threshold=threshold, reference=reference
+        config, items, budget=budget, threshold=threshold, reference=reference,
+        alpha=record.get("alpha"),
     )
 
     source = Path(args.input)
@@ -364,6 +367,7 @@ def _recheck(args: argparse.Namespace) -> int:
 def _plan(args: argparse.Namespace) -> int:
     """The price list. Deferred imports, as everywhere else in this module."""
     import json
+    import math
 
     from .config import load_config, write_json_artifact
     from .economics.sizing import monitoring_plan
@@ -381,7 +385,35 @@ def _plan(args: argparse.Namespace) -> int:
             print(f"warrant: no such record: {record_path}", file=sys.stderr)
             return EXIT_BAD_INPUT
         record = json.loads(record_path.read_text(encoding="utf-8"))
-        budget = record.get("budget", budget)
+        # `budget_fpr` is the key `certify` writes. This read `budget` until
+        # DECISIONS 182, so every real record was reported as carrying none.
+        recorded = record.get("budget_fpr")
+        if recorded is None:
+            print(
+                f"warrant: {record_path.name} carries no budget_fpr, so it is not "
+                "a certify record and there is no budget to plan against.",
+                file=sys.stderr,
+            )
+            return EXIT_BAD_INPUT
+        if record.get("status") == "REFUSED":
+            print(
+                f"warrant: {record_path.name} is a REFUSED warrant. Nothing was "
+                "promised, so there is nothing to keep true. To price monitoring "
+                "at a budget you have not certified, pass --budget without "
+                "--warrant.",
+                file=sys.stderr,
+            )
+            return EXIT_BAD_INPUT
+        # Two sources for one number: refuse rather than pick. Either precedence
+        # silently prices a budget the user did not mean.
+        if budget is not None and not math.isclose(budget, recorded, rel_tol=0, abs_tol=1e-12):
+            print(
+                f"warrant: --budget {budget} disagrees with the {recorded} "
+                f"{record_path.name} was certified at. Pass one or the other.",
+                file=sys.stderr,
+            )
+            return EXIT_BAD_INPUT
+        budget = recorded
         alpha = record.get("alpha", alpha)
     if budget is None:
         print(
