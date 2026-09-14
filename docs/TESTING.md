@@ -61,7 +61,7 @@ exists rather than the rule.
 | Suite | Defends |
 |---|---|
 | `test_validation.py` | The controls, refusal, leakage, polarity and determinism — the core of the harness |
-| `test_warrant_stats.py` | Certification at issuance and the anytime-valid revocation trigger |
+| `test_warrant_stats.py` | Certification at issuance, and `FPRMonitor` -- whose anytime-valid claim `DECISIONS.md` 187 found is not established as implemented; the chained recheck (`test_recheck_chain.py`) is what carries a bound |
 | `test_paired.py` | The paired comparison and the ROC geometry — the fix for the confounded comparison that once shipped |
 | `test_scores.py` | Frozen scores, and the verification tier they make possible |
 | `test_extraction.py` | Everything about extraction that can be checked without a GPU |

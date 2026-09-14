@@ -353,8 +353,10 @@ def _beat_revocation(root: Path) -> Beat:
             "long context meets a declared minimum, so each ESCALATEs and claims no bounds",
         ))
     rows.append((
-        "label-driven revocation (warrant recheck)",
-        "anytime-valid; P(false revoke) <= alpha over the whole deployment",
+        "label-driven revocation (warrant recheck --since)",
+        "a chain of rechecks: P(false revoke) <= alpha over the negatives it declares, "
+        "for the chain as kept (DECISIONS 193). FPRMonitor's deployment-wide bound is "
+        "not established as implemented (187)",
     ))
     rows.append((
         "its estimand",
@@ -369,14 +371,16 @@ def _beat_revocation(root: Path) -> Beat:
         artifacts=(
             "results/warrant_matrix.json",
             "results/drift/revocation_trace.json",
+            "results/recheck_schedules/comparison.json",
             "controlplane/drift/",
-            "controlplane/validation/warrant_stats.py",
+            "controlplane/intake/chain.py",
         ),
         note=(
             "Revocation fires on the INPUT DISTRIBUTION moving, which is "
-            "observable without labels. The false-revocation bound was "
-            "validated on i.i.d. negatives and is NOT validated under session "
-            "correlation -- see LIMITATIONS."
+            "observable without labels. Label-driven revocation needs labelled "
+            "negatives; the chain's false-revocation bound assumes independent "
+            "units and is NOT validated under session correlation -- see "
+            "LIMITATIONS."
         ),
     )
 
