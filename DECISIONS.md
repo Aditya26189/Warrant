@@ -9544,3 +9544,91 @@ exact cluster-level route to avoid one.
 
 **What this does not fix.** Dependence the file does not declare. A recheck on
 undeclared clusters is still an item-level test, exactly as certification is.
+
+## 189 - The RBI's draft model-risk guidance names this product's buyer, and a crosswalk has to say where it stops
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED (the crosswalk); OPEN -- needs human review (exception approval, below)
+
+**The source.** Reserve Bank of India, draft *Guidance on Regulatory Principles
+for Model Risk Management, 2026*, press release 24 June 2026, comments closed
+24 July 2026; read on rbi.org.in on 2026-09-14. **A draft**: no final text had
+been issued when this was written, and paragraph numbers may move.
+
+It matters here for three reasons, each a sentence of the draft rather than an
+inference from it:
+
+- **Scope includes this product's objects.** ¶9: "all models, including AI / ML
+  models, irrespective of whether such models are developed internally, sourced
+  from third-parties, or a combination thereof"; ¶54(2) names "generative AI
+  models". The US agencies' SR 26-2 excludes generative and agentic AI (recorded
+  in `reports/STRATEGY-2026-09.md` §3); this draft does not.
+- **Validation is the regulated entity's, not the vendor's.** ¶29: "all models,
+  including third-party models, are subject to independent validation by the RE";
+  ¶30: "prior to and after deployment of a model, following modification, on
+  internal or external triggers, and periodically".
+- **It sets no evidential standard.** Nothing in it says how much evidence a
+  validation needs, at what confidence, or what to do when the sample cannot
+  support the claim. That is the gap this product fills, and it is also why
+  nothing here is compliance: a crosswalk shows which paragraphs a warrant can
+  supply evidence for, not that supplying it satisfies the RBI.
+
+**How the quotes were read.** The draft's HTML page on rbi.org.in, through a
+fetch tool that returns the page as text; the PDF behind the press release
+returned a verification page instead. Every quote in the register is short and
+was copied from that text, but a quote used outside this repository should be
+checked against the PDF first.
+
+**This is not the demand evidence `STRATEGY-2026-09.md` §5 asked for.** A draft
+obligation to validate is not proof that anyone pays for interval-backed
+validation or for refusal; the twelve conversations are still the test. What it
+changes is whom to call first: model-validation functions at RBI-regulated
+entities, with the draft's paragraph numbers in hand.
+
+**Decision.** A machine-checked crosswalk,
+`controlplane/report/crosswalk.py`, rendered to `docs/RBI-MRM-2026-CROSSWALK.md`
+by `python -m controlplane.report.crosswalk`:
+
+1. One row per requirement: the paragraph, a short verbatim quote, and a
+   coverage of **PROVIDES**, **PARTIAL** or **NOT PROVIDED**.
+2. PROVIDES and PARTIAL rows name the code (`path::symbol`) and at least one
+   test that holds it; PARTIAL and NOT PROVIDED rows state the gap. A test fails
+   if a named symbol or test disappears, as `tests/test_invariants.py` does for
+   the invariants.
+3. The committed markdown must equal the renderer's output, so the page cannot
+   be edited by hand and drift from the table.
+4. It carries no measured number. It points at artifacts by path.
+5. It does not cite `FPRMonitor`'s deployment-wide false-revocation guarantee.
+   Its wealth is capped at `1/alpha` once one bet passes `e/alpha`: at
+   `p0 = 0.05`, two false positives in the first two labels revoke while the
+   mixture is 14.21 against a threshold of 20. The guarantee is not established
+   as implemented, in read-only `validation/warrant_stats.py`, and a test keeps
+   the page from leaning on it.
+
+**The row that is a product decision, not a mapping.** ¶34-37 contemplate
+"models approved with exceptions": an entity may deploy a model that did not
+pass validation, with documented approval, remediation timelines and enhanced
+monitoring. Invariant 3 says a refusal has no override. The two are compatible
+only if an exception is recorded **beside** a REFUSED warrant -- who approved,
+why, until when, under what monitoring -- and never flips it to VALID, and every
+certificate issued under it claims no bounds. **Nothing records such an
+exception today.** Building it touches read-only `policy/` resolution and the
+meaning of a refusal, which is the product's thesis. **OPEN -- needs human
+review**; what would close it is a founder decision on whether the product
+records exceptions at all, and the crosswalk marks ¶34-35 NOT PROVIDED until
+then.
+
+**¶60 is not that conflict.** ¶60(ii) requires "override, suspension, or
+deactivation mechanisms, including kill-switch arrangements" for AI models --
+overriding a model's *outputs*. `model/override.py` records a human override of
+an escalated item, and drift response suspends a profile. Neither overrides a
+warrant, and the crosswalk says so, because a reader who sees "no override" in
+invariant 3 beside ¶60 will assume a conflict.
+
+**Rejected: a compliance matrix with a tick per paragraph.** A tick asserts that
+a requirement is met. What the code can say is narrower: this function produces
+evidence of this kind, and this test holds it.
+
+**Rejected: SEBI's AI/ML consultation alongside.** Only the June 2025
+consultation paper was found, not a final circular; mapping to a consultation
+whose final form is unknown would claim more than is known.
