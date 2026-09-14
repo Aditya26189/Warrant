@@ -149,8 +149,9 @@ hits are the three documents that state this rule.
 - **Nothing here is production evidence.** Every measurement is TriviaQA, a
   hand-built Hinglish PII set, or a replay of those. `LIMITATIONS.md` §1.
 - **The revocation trace is one shift, in one feature, as a hard cut.**
-- **The demo's two-pane runner is fixture-only.** Its beats read real artifacts
-  (`demo/show_beats.py`); the interactive stream does not.
+- **The demo's two-pane runner was fixture-only when this report was written.**
+  Closed the same day; see §9. A clean clone still has no caches, so there it
+  runs `--fixture` or refuses.
 - **A passing audit is a statement about what the checks look for.** 165's
   lesson holds: each check is a claim about a pattern.
 
@@ -161,7 +162,7 @@ hits are the three documents that state this rule.
 | # | item | what would close it |
 |---|---|---|
 | O-1 | **Demo video** | a human recording `demo/show_beats.py` and the two-pane runner |
-| O-2 | two-pane demo on the real caches | a `--cache` mode for `demo/run_demo.py`; the caches are gitignored, so it cannot run on a clean clone |
+| O-2 | two-pane demo on the real caches — **closed after this report**, §9 | — |
 | O-3 | read-only defects: `DriftResponse.to_payload` (179); the ladder's "revalidation is scheduled" (172); the DPDP attribution in `store/ledger.py` and `drift/certify.py` (168); `Metric.n` on rates (169) | an owner for `drift/`, `store/`, `validation/stats.py` |
 | O-4 | nine read-only functions without derivations | the same owner |
 | O-5 | lift's upper bound exceeds the physical ceiling | a pre-registered decision on a joint interval |
@@ -213,3 +214,26 @@ met any profile on the new envelope. A version of this product built to look goo
 would have routed somewhere. This one escalates and says why, which is the
 behaviour a model-validation function should want to buy — and the trace is
 evidence that it exists, not a promise that it would.
+
+---
+
+## 9. Closed after this report
+
+`CLAUDE.md`: a change after close-out goes in the report, not only in the fix.
+
+**O-2 — the two-pane demo runs on the measured caches** (`DECISIONS.md` 181,
+merged in `53608e4`). `demo/run_demo.py` refused anything but `--fixture` with a
+message saying no real extraction existed, which had been false since 051–052.
+It now takes `--measured` or `--fixture`, mutually exclusive and one required,
+because 027's rule — no default that swaps one data source for the other — was
+the point and the missing extraction never was.
+
+**Phase 10's gate, on real data:** `python demo/run_demo.py --measured --events 6
+--auto-prove`, twice, unattended, exit 0 both times. The two runs differ only in
+warrant age, certificate chain hashes and validation wall time (18.6 s and
+25.6 s). The banner shows the last-token
+warrant on `triviaqa-600` — AUROC 0.826, recall 0.079 [0.050, 0.112], precision
+0.880 [0.750, 1.000], yield 22 of 25 — the same figures as the claim table,
+because it validates the same cache through the same code.
+
+`docs/DEMO_SCRIPT.md`'s live loop now names `--measured`. Tests 1,359 → 1,361.
