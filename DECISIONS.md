@@ -9715,3 +9715,44 @@ evidence of this kind, and this test holds it.
 **Rejected: SEBI's AI/ML consultation alongside.** Only the June 2025
 consultation paper was found, not a final circular; mapping to a consultation
 whose final form is unknown would claim more than is known.
+
+## 190 - `certify --frontier` certified on grouped files what `certify` refuses
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED
+
+`frontier` is the view a customer picks a budget from. It called
+`items.as_arrays()`, dropped the `group` column, and certified every budget at
+item level. `certify --budget` certifies a grouped file at cluster level and
+refuses one with unequal groups (107, 137). Found by reading `frontier.py` after
+188 fixed the same omission in `recheck`.
+
+**Measured on a synthetic grouped file** -- 150 groups of four, clustered
+scores, 110 negative clusters and 440 negative items (numbers of a constructed
+file, reported to show the disagreement, not a measurement of any detector):
+
+| budget | frontier | certify |
+|---|---|---|
+| 0.01 | certified, threshold 0.912 | REFUSED: 110 independent units, needs 299 |
+| 0.02 | certified, threshold 0.896 | REFUSED: 110 independent units, needs 149 |
+| 0.03 | certified, threshold 0.885 | VALID, threshold 0.912 |
+
+With one group made larger than the rest, `frontier` still certified and
+`certify` raised. **A budget read off the frontier as certified was one the
+product refuses to certify**, and at a budget both certify the frontier's
+threshold -- and so its caught and flagged counts -- described a lower
+operating point than the warrant `certify` then issues.
+
+**Decision.** One certification step, called by both. `certify_items`'s
+unequal-group check and its call to `certify_fpr` move into a single function in
+`intake/certify.py` that `frontier` calls per budget, so the two cannot
+disagree about a status, a threshold or a unit again. A test asserts they agree
+at every grid budget on an ungrouped file, a grouped file and a file whose
+groups make cluster certification refuse where item certification would not.
+The frontier renders its floor in independent negative units on a grouped file,
+and `certify --frontier` exits 2 on unequal groups instead of raising.
+
+**Rejected: reuse `recheck.negative_cluster_maxima` (188).** It checks only
+negative clusters, while `certify` checks every group through
+`ScoredItems.equal_group_sizes`. The frontier's contract is to agree with
+`certify`, so it calls what `certify` calls.
