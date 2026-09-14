@@ -129,7 +129,9 @@ the VALID cells report STALE if re-rendered 24 hours later. `DECISIONS.md` 177.
   commits since `report-4`, 13 files. `40031b6` was amended before it left the
   machine; the rest are recorded and left, because the repository has no
   line-ending norm to restore. Found by reading `git diff --stat`, which no test
-  reads.
+  reads. **And the rule was already written**: `docs/CONTRIBUTING.md`, *"Do not
+  let a tool rewrite line endings"*, gives the bytes-safe form. It was not read
+  before the scripted edits started (corrected 2026-09-14, `DECISIONS.md` 177).
 - **A shell heredoc failed to append four entries** with a parse error;
   nothing was written, and the entries went in through a file instead. Not
   silent, but only because the shell said so.

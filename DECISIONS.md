@@ -8985,6 +8985,14 @@ repository has no line-ending norm -- 254 CRLF files, 173 LF, 7 mixed, no
 whole-file churn and restore nothing a reader or a test depends on. They are
 left, and every patch from here preserves the bytes it found.
 
+> **Correction, same day.** *"The repository has no line-ending norm"* is true
+> and incomplete: `docs/CONTRIBUTING.md` already has a section, **"Do not let a
+> tool rewrite line endings"**, naming both failure directions and giving the
+> bytes-safe form. The rule existed and the patch scripts ignored it. The
+> finding is not that guidance was missing but that written guidance was not
+> read before scripted edits began -- the same failure 165 names for checks
+> written from memory of a document.
+
 ---
 
 ## 178 - The revocation trace, pre-registered: a real stream, the real warrant, criteria before the run
