@@ -438,6 +438,9 @@ class SamplingConfig:
     double_label_fraction: float
     recall_margin_tiers: tuple[float, ...]
     blind_queue: bool
+    #: Probability a recall plan realises its margin (DECISIONS 191). The default
+    #: mirrors config.yaml so fixture configs written before 191 still load.
+    margin_assurance: float = 0.80
 
     def __post_init__(self) -> None:
         allowed = {"proportional", "neyman"}
@@ -458,6 +461,12 @@ class SamplingConfig:
                 "sampling.expected_design_effect must be in (0, 1], got "
                 f"{self.expected_design_effect}. It is a variance ratio: 1.0 is no "
                 "gain, and a value above 1 would claim Neyman is worse than SRS."
+            )
+        if not 0.5 <= self.margin_assurance < 1.0:
+            raise ConfigError(
+                "sampling.margin_assurance must be in [0.5, 1) -- it is the probability "
+                "a recall plan realises its margin, and below 0.5 a plan misses its "
+                f"margin more often than it meets it. Got {self.margin_assurance}"
             )
         if self.score_bands < 2:
             raise ConfigError(

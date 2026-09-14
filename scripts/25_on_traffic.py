@@ -291,7 +291,8 @@ def main(argv: list[str] | None = None) -> int:
         for margin in margins:
             for regime, effect in regimes:
                 plan = labels_for_recall(
-                    sensitivity=sensitivity, margin=margin, design_effect=effect
+                    sensitivity=sensitivity, margin=margin, design_effect=effect,
+                    assurance=config.sampling.margin_assurance,
                 )
                 rows.append(
                     {

@@ -139,6 +139,7 @@ def main() -> int:
                             sensitivity=sensitivity,
                             margin=margin,
                             design_effect=effect,
+                            assurance=config.sampling.margin_assurance,
                         )
                     ).items()
                     if k != "declared_inputs"

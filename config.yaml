@@ -104,6 +104,11 @@ sampling:
   score_bands: 4
   double_label_fraction: 0.10
   recall_margin_tiers: [0.05, 0.02]
+  # Probability a recall plan's sample REALISES its margin. 0.80 is the
+  # conventional minimum, not a measurement. Before DECISIONS 191 plans were
+  # sized at the expected error count, which realises the margin about half the
+  # time (0.4882 for the published 1,014-label figure).
+  margin_assurance: 0.80
   blind_queue: true                      # never expose flag status/score/stratum
 
 policy:

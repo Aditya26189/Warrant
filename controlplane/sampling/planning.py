@@ -224,6 +224,16 @@ class LabelPlan:
         refusal_reason: Why not, when ``feasible`` is ``False``.
         declared_inputs: Every input that was chosen rather than measured.
         note: What the plan is and is not.
+        assurance: Declared probability that the realised margin meets
+            ``margin`` (``DECISIONS.md`` 191). ``labels_exact`` is sized to it.
+        assurance_at_labels: Exact assurance of ``labels`` -- at least
+            ``assurance`` on the exact basis, and printed on the normal basis so
+            its shortfall is visible.
+        labels_at_expected_count: The exact-interval size at the *expected*
+            error count, which is what the exact basis quoted before 191.
+        assurance_at_expected_count: That size's assurance, about one half.
+        sizes_by_assurance: ``(assurance, labels)`` for each rung of
+            :data:`ASSURANCE_LADDER`; ``None`` where no sample reaches it.
     """
 
     estimand: str
@@ -242,6 +252,11 @@ class LabelPlan:
     refusal_reason: str = ""
     declared_inputs: dict[str, float] = field(default_factory=dict)
     note: str = ""
+    assurance: Optional[float] = None
+    assurance_at_labels: Optional[float] = None
+    labels_at_expected_count: Optional[int] = None
+    assurance_at_expected_count: Optional[float] = None
+    sizes_by_assurance: tuple[tuple[float, Optional[int]], ...] = ()
 
     def render(self) -> str:
         """A human-readable plan, or the refusal and what would lift it."""
@@ -255,6 +270,17 @@ class LabelPlan:
             f"{self.labels:,} labels from the unflagged pool "
             f"({self.basis} basis)"
         )
+        if self.assurance_at_labels is not None:
+            head += (
+                f"\n    realises the margin with probability "
+                f"{self.assurance_at_labels:.3f} (declared assurance {self.assurance:g})"
+            )
+        if self.labels_at_expected_count is not None:
+            head += (
+                f"\n    sized at the expected error count it would be "
+                f"{self.labels_at_expected_count:,}, which realises the margin with "
+                f"probability {self.assurance_at_expected_count:.3f}"
+            )
         if self.labels_exact is not None and self.labels_exact != self.labels_normal:
             head += (
                 f"\n    exact interval needs {self.labels_exact:,}; the "
@@ -302,6 +328,18 @@ STABILITY_HORIZON = 12
 
 #: Past this, the honest answer is "not by labelling".
 MAX_LABELS = 2_000_000
+
+#: Assurances every recall plan prints a sample size for, so the declared one is
+#: read beside its neighbours (``DECISIONS.md`` 191). Presentation, like
+#: :data:`controlplane.economics.sizing.POWER_LADDER`; 0.5 is on it because it is
+#: roughly what sizing at the expected count delivered.
+ASSURANCE_LADDER: tuple[float, ...] = (0.5, 0.8, 0.9)
+
+#: Counts at or below this are enumerated one by one; above it the counts that
+#: meet a margin are a tail found by bisection. The recall half-width peaks at a
+#: handful of errors and falls after, so the tail is where it is monotone.
+#: ``tests/test_sampling_assurance.py`` checks the tail against brute force.
+_SMALL_COUNTS = 16
 
 
 def _effective_n(ns, *, pool: float, design_effect: float, finite_population: bool):
@@ -384,6 +422,109 @@ def _margin_mask(
     return ((recall_hi - recall_lo) / 2.0) <= margin
 
 
+def _recall_half_width(ks, effective, *, true_positives: float, pool: float, confidence: float):
+    """The recall half-width the estimator reports for ``k`` errors in ``n_eff``.
+
+    Clopper-Pearson on the prevalence, pushed through ``R = TP / (TP + q N_u)``,
+    exactly as :func:`_margin_mask` evaluates it at one count.
+    """
+    import numpy as np
+    from scipy.stats import beta
+
+    ks = np.asarray(ks, dtype=np.int64)
+    effective = np.asarray(effective, dtype=np.int64)
+    alpha = 1.0 - confidence
+    q_lo = np.zeros(ks.shape, dtype=float)
+    live = ks > 0
+    if live.any():
+        q_lo[live] = beta.ppf(alpha / 2.0, ks[live], effective[live] - ks[live] + 1)
+    q_hi = np.ones(ks.shape, dtype=float)
+    below = ks < effective
+    if below.any():
+        q_hi[below] = beta.ppf(1.0 - alpha / 2.0, ks[below] + 1, effective[below] - ks[below])
+    recall_lo = true_positives / (true_positives + q_hi * pool)
+    recall_hi = true_positives / (true_positives + q_lo * pool)
+    return (recall_hi - recall_lo) / 2.0
+
+
+def _assurance(
+    ns,
+    *,
+    prevalence: float,
+    true_positives: float,
+    pool: float,
+    margin: float,
+    design_effect: float,
+    finite_population: bool,
+    confidence: float,
+):
+    """Chance that a sample of each ``n`` realises the recall margin.
+
+    Quantity: ``P(half-width(K, n_eff) <= margin)`` with ``K ~ Bin(n_eff, q)``,
+    the probability that the interval the estimator reports is as narrow as the
+    plan promised. Propagation: exact binomial weights -- counts up to
+    :data:`_SMALL_COUNTS` enumerated, the rest a tail ``K >= k_min(n)`` located by
+    bisection on the half-width, which falls with ``K`` once past its peak
+    (``DECISIONS.md`` 191). With a design effect the count is not one binomial
+    and this is the planner's existing effective-``n`` approximation.
+    """
+    import numpy as np
+    from scipy.stats import binom
+
+    ns = np.asarray(ns, dtype=np.int64)
+    effective = _effective_n(
+        ns, pool=pool, design_effect=design_effect, finite_population=finite_population
+    )
+    total = np.zeros(ns.shape, dtype=float)
+    small = min(_SMALL_COUNTS, int(effective.max()))
+    # Enumerate the small counts only where they still carry probability; for a
+    # large sample P(K <= 16) is below 1e-15 and skipping it can only understate.
+    carries = binom.cdf(small, effective, prevalence) > 1e-15
+    if carries.any():
+        eff_c = effective[carries]
+        for k in range(0, small + 1):
+            ks = np.minimum(np.full(eff_c.shape, k, dtype=np.int64), eff_c)
+            ok = (k <= eff_c) & (
+                _recall_half_width(ks, eff_c, true_positives=true_positives,
+                                   pool=pool, confidence=confidence) <= margin
+            )
+            total[carries] += np.where(ok, binom.pmf(k, eff_c, prevalence), 0.0)
+
+    # The tail above the enumerated counts: bisection for the first count that
+    # meets the margin. The bracket is the expected count +/- 12 standard
+    # deviations, outside which the binomial mass is below 1e-30; counts outside
+    # it are treated as failing, so a truncation can only understate assurance.
+    mean = effective * prevalence
+    spread = np.sqrt(np.maximum(effective * prevalence * (1.0 - prevalence), 1.0))
+    lo = np.maximum(np.floor(mean - 12.0 * spread).astype(np.int64), small)
+    hi = np.minimum(np.ceil(mean + 12.0 * spread).astype(np.int64), effective)
+    live = hi > lo
+    w_all = lambda ks, eff: _recall_half_width(  # noqa: E731 - local shorthand
+        ks, eff, true_positives=true_positives, pool=pool, confidence=confidence
+    )
+    reaches = np.zeros(ns.shape, dtype=bool)
+    reaches[live] = w_all(hi[live], effective[live]) <= margin
+    if reaches.any():
+        eff_r = effective[reaches]
+        lo_r, hi_r = lo[reaches], hi[reaches]
+        # If even the bottom of the bracket meets the margin, the tail starts
+        # there; the mass below it is negligible and is not counted.
+        at_floor = (lo_r > small) & (w_all(lo_r, eff_r) <= margin)
+        hi_r = np.where(at_floor, lo_r, hi_r)
+        while True:
+            open_ = hi_r - lo_r > 1
+            if not open_.any():
+                break
+            mid = (lo_r + hi_r) // 2
+            meets = w_all(mid, eff_r) <= margin
+            hi_r = np.where(open_ & meets, mid, hi_r)
+            lo_r = np.where(open_ & ~meets, mid, lo_r)
+        # k_min > small by construction, so this tail excludes every count
+        # already enumerated above.
+        total[reaches] += binom.sf(hi_r - 1, eff_r, prevalence)
+    return np.clip(total, 0.0, 1.0)
+
+
 def _labels_for_exact_margin(
     *,
     prevalence: float,
@@ -394,8 +535,13 @@ def _labels_for_exact_margin(
     finite_population: bool,
     confidence: float,
     horizon: int = STABILITY_HORIZON,
+    assurance: Optional[float] = None,
 ) -> Optional[int]:
     """Smallest ``n`` from which the exact recall margin holds, and keeps holding.
+
+    With ``assurance``, "holds" means the margin is realised with at least that
+    probability over the binomial count (:func:`_assurance`); without it, at the
+    expected count -- which ``DECISIONS.md`` 191 found delivers about half.
 
     Follows :func:`controlplane.economics.sizing.negatives_for_detection` step
     for step, and for the identical reason: the predicate is not monotone in
@@ -409,6 +555,19 @@ def _labels_for_exact_margin(
     cap = int(min(MAX_LABELS, max(pool, 1)))
 
     def mask(lo: int, hi: int):
+        if assurance is not None:
+            import numpy as np
+
+            return _assurance(
+                np.arange(lo, hi + 1, dtype=np.int64),
+                prevalence=prevalence,
+                true_positives=true_positives,
+                pool=pool,
+                margin=margin,
+                design_effect=design_effect,
+                finite_population=finite_population,
+                confidence=confidence,
+            ) >= assurance
         return _margin_mask(
             lo,
             hi,
@@ -440,6 +599,75 @@ def _labels_for_exact_margin(
     if not mask(stable, ceiling).all():  # pragma: no cover - convergence failure
         return None
     return stable
+
+
+def _labels_at_assurances(
+    targets,
+    *,
+    prevalence: float,
+    true_positives: float,
+    pool: float,
+    margin: float,
+    design_effect: float,
+    finite_population: bool,
+    confidence: float,
+    horizon: int = STABILITY_HORIZON,
+) -> dict[float, Optional[int]]:
+    """Stable sizes for several assurances from one exact evaluation.
+
+    The stable-threshold rule of ``DECISIONS.md`` 146 for each target -- the
+    smallest ``n`` from which assurance holds at ``n`` and every ``n`` up to
+    ``horizon`` times it -- but read off a single array of exact assurances over
+    ``[1, horizon x n_max]``, where ``n_max`` is the largest target's size. Each
+    target's own horizon lies inside that range, so every size is confirmed
+    exactly as a separate search would confirm it; the saving is that the
+    binomial sums are computed once instead of once per target (about 4x on a
+    plan's ladder).
+    """
+    import numpy as np
+
+    common = dict(
+        prevalence=prevalence, true_positives=true_positives, pool=pool, margin=margin,
+        design_effect=design_effect, finite_population=finite_population,
+        confidence=confidence,
+    )
+    cap = int(min(MAX_LABELS, max(pool, 1)))
+    ordered = sorted(set(targets))
+    result: dict[float, Optional[int]] = {target: None for target in ordered}
+    if cap < 2:
+        return result
+
+    top = _assurance(np.arange(max(1, cap - 200), cap + 1), **common)
+    reachable = [target for target in ordered if (top >= target).all()]
+    if not reachable:
+        return result
+    hardest = reachable[-1]
+
+    # Grow until a stretch holds for the hardest target, as the single-target
+    # search does, then evaluate everything up to its horizon once.
+    upper = 10
+    while upper <= cap:
+        span = max(50, upper // 4)
+        if (_assurance(np.arange(upper, min(upper + span, cap) + 1), **common) >= hardest).all():
+            break
+        upper = int(upper * 1.2) + 1
+    else:
+        return result
+
+    values = _assurance(np.arange(1, upper + 1), **common)
+    failures = (values < hardest).nonzero()[0]
+    stable_hardest = int(failures[-1]) + 2 if failures.size else 1
+    ceiling = min(stable_hardest * horizon, cap)
+    if ceiling > upper:
+        values = np.concatenate([values, _assurance(np.arange(upper + 1, ceiling + 1), **common)])
+
+    for target in reachable:
+        failures = (values < target).nonzero()[0]
+        stable = int(failures[-1]) + 2 if failures.size else 1
+        if stable * horizon > values.size and values.size < cap:  # pragma: no cover
+            continue  # its horizon was not evaluated; leave it unquoted
+        result[target] = stable
+    return result
 
 
 def _check_common(*, margin: float, confidence: float, design_effect: float) -> None:
@@ -531,6 +759,7 @@ def labels_for_recall(
     design_effect: float = 1.0,
     finite_population: bool = False,
     basis: str = "exact",
+    assurance: float,
 ) -> LabelPlan:
     """Labels to estimate recall to ``+/- margin``, through ``dR/dq``.
 
@@ -546,10 +775,19 @@ def labels_for_recall(
     pool contains, and at that point the honest answer is that the margin is
     unreachable on this traffic, not a number nobody can act on.
 
+    **Sized with assurance** (``DECISIONS.md`` 191). The exact basis returns the
+    smallest stable ``n`` at which the margin is *realised* with probability at
+    least ``assurance`` over the binomial count of errors in the sample. Before
+    191 it sized at the expected count, and the published 1,014-label figure
+    realised its margin with probability 0.4882.
+
     Args:
         sensitivity: From :func:`recall_sensitivity`. Carries ``q``, ``N_u`` and
             the derivative, all from one declared workload.
         margin: Declared half-width wanted on recall.
+        assurance: **Declared.** Probability the realised margin meets
+            ``margin``; ``sampling.margin_assurance`` unless overridden. Required
+            and never defaulted, so no caller inherits one it did not choose.
         confidence: Coverage. Only 0.95 is supported.
         design_effect: Declared variance inflation of the design.
         finite_population: Apply Cochran's correction against the unflagged
@@ -581,6 +819,8 @@ def labels_for_recall(
         SizingError: On an out-of-range input, an unsupported confidence, or an
             unknown ``basis``.
     """
+    if not 0.0 < assurance < 1.0:
+        raise SizingError(f"assurance={assurance!r} must be a probability in (0, 1)")
     if basis not in ("exact", "normal"):
         raise SizingError(
             f"basis={basis!r} is not one of 'exact' or 'normal'. A sample size "
@@ -603,6 +843,7 @@ def labels_for_recall(
         "unflagged_prevalence": q,
         "unflagged_pool": pool,
         "derivative": sensitivity.derivative,
+        "assurance": assurance,
     }
 
     if derivative == 0.0 or q <= 0.0 or q >= 1.0:
@@ -635,7 +876,7 @@ def labels_for_recall(
     naive = _binomial_n(sensitivity.recall, margin, _Z_95, design_effect)
     normal_labels = int(math.ceil(corrected))
 
-    exact_labels = _labels_for_exact_margin(
+    common = dict(
         prevalence=q,
         true_positives=sensitivity.confirmed_errors,
         pool=pool,
@@ -644,7 +885,16 @@ def labels_for_recall(
         finite_population=finite_population,
         confidence=confidence,
     )
+    sizes = _labels_at_assurances((*ASSURANCE_LADDER, assurance), **common)
+    exact_labels = sizes[assurance]
+    at_expected = _labels_for_exact_margin(**common)
+    ladder = tuple((rung, sizes[rung]) for rung in ASSURANCE_LADDER)
     chosen = exact_labels if basis == "exact" else normal_labels
+
+    def assurance_of(n: Optional[int]) -> Optional[float]:
+        if not n:
+            return None
+        return float(_assurance([n], **common)[0])
     understatement = (chosen / naive) if (naive > 0 and chosen) else math.inf
 
     def build(feasible: bool, reason: str = "", note: str = "") -> LabelPlan:
@@ -665,6 +915,11 @@ def labels_for_recall(
             refusal_reason=reason,
             declared_inputs=declared,
             note=note,
+            assurance=assurance,
+            assurance_at_labels=assurance_of(chosen),
+            labels_at_expected_count=at_expected,
+            assurance_at_expected_count=assurance_of(at_expected),
+            sizes_by_assurance=ladder,
         )
 
     if basis == "exact" and exact_labels is None:
@@ -672,8 +927,9 @@ def labels_for_recall(
             False,
             reason=(
                 f"no sample of the {pool:,.0f}-item unflagged pool holds recall "
-                f"to +/-{margin:g} under the exact interval the estimator "
-                f"reports. The normal approximation would have quoted "
+                f"to +/-{margin:g} with probability {assurance:g} under the exact "
+                f"interval the estimator reports. The normal approximation would "
+                f"have quoted "
                 f"{normal_labels:,}, which is what makes this worth refusing "
                 f"rather than rounding up: the closed form returns a number for "
                 f"a margin no sample achieves."
