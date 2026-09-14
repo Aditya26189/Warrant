@@ -10034,3 +10034,88 @@ adds a warning. A customer who picks a row off the frontier and then runs
 `certify --budget` on the same file still receives a warrant at the unadjusted
 level. Certifying a picked budget at the frontier's level is a change to the
 warrant command, not to the frontier, and needs its own entry.
+
+## 193 - `warrant recheck --since`: a year of rechecks as one change detector, carried in the records
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED (design); acceptance criteria registered below, before the code
+
+187 compared five revocation rules over a simulated year and its registered
+criteria chose the **Shiryaev-Roberts e-detector**: weekly, false revocation over
+a sound year 0.0085, a mid-year breach caught within 13 weeks in 0.9965 of years,
+and a breach after six good months caught in 1.0000 -- where the shipped
+per-recheck test revokes a sound detector in 0.8515 of years. The customer path
+still runs the per-recheck test, and `plan` prices it. This entry is the
+customer-facing change 187 said would follow.
+
+**Decision.**
+
+1. **A chain, opt-in.** `warrant recheck --warrant W --input F --horizon-labels N`
+   starts a chain; `--since previous.recheck.json` continues one. A recheck run
+   neither way behaves exactly as today, so nothing an existing user relies on
+   changes, and its record says it was not part of a chain.
+2. **What the chain decides.** The statistic is 187's: the mean over
+   `FPRMonitor`'s betting grid of one Shiryaev-Roberts detector per bet,
+   `R^lam_t = (R^lam_{t-1} + 1)(1 + lam (x_t - p0))`, with `p0` the certified
+   budget, fed one clean-negative unit at a time (a cluster when the warrant is
+   grouped, 188). It **revokes when the mean reaches `N / alpha`**, which bounds
+   the probability of any false revocation over the chain's first `N` units by
+   alpha, for any true rate at or below the budget (Ville on `R_t + N - t`, 187).
+   The per-recheck bound and the drift check are still computed and printed; in
+   a chain, the bound's REVOKED is reported as **evidence** and the chain's
+   verdict is what `status` carries.
+3. **`N` is declared once and frozen.** The first record stores it; every `--since`
+   record must carry the same `N`, the same warrant digest, and the same `alpha`
+   and grid, or the recheck exits 2. When the chain has consumed `N` units it
+   **ends**: the record says so and the next recheck refuses to continue it --
+   re-certify, and start a new chain. A threshold computed for a different `N`
+   would void the bound.
+4. **Order is not the user's to choose.** SR depends on the order units arrive.
+   Within a file, units are fed in the order of `sha256(warrant digest + unit id)`,
+   fixed before any label or score is read, so neither sorting a file nor
+   shuffling it changes the verdict.
+5. **The records are a hash chain.** Each record stores the SHA-256 of the
+   previous record's canonical JSON and of the warrant record. `--since` on a
+   record that does not match its warrant, or whose digest does not reproduce,
+   exits 2. **What this cannot stop, stated in the record:** a user who discards
+   an unfavourable record and starts a fresh chain. The guarantee holds for the
+   chain as kept; only retaining every record makes a restart visible.
+6. **A consumed unit is consumed.** A unit id seen earlier in the same chain is
+   refused (exit 2): re-feeding a label the detector already passed would buy
+   evidence twice. The chain stores unit-id digests, not ids.
+7. **`plan` states what a chain costs and promises, and nothing it cannot back.**
+   For each cadence it prints the chain's horizon `N` -- that cadence's labels per
+   year -- and that false revocation over those `N` units is at most alpha. It
+   quotes **no detection figure**: 187 simulated one setting, an installed CLI
+   has no `results/` to read it from, and a figure for any other inputs would be
+   an extrapolation.
+8. **Checked after every unit.** Within a file the chain revokes as soon as the
+   statistic reaches the threshold, not only at the file's end. Ville's bound is
+   on the maximum over every `t <= N`, so every stopping time is covered, and a
+   breach concentrated early in a file is caught there.
+
+**Acceptance criteria, registered before the code.**
+
+- **A1.** Feeding 187's registered S0 and S2 streams through the CLI-level chain
+  function reproduces `results/recheck_schedules/comparison.json`'s e-detector
+  first-revocation recheck exactly, on a sample of simulated years with fixed
+  seeds -- the product path and the study's rule are one rule.
+- **A2.** Splitting one file into two rechecks, or sending it as one, gives the
+  same statistic at the end; permuting rows within a file gives the same
+  statistic.
+- **A3.** Every refusal in 3, 5 and 6 exits 2 with nothing written.
+- **A4.** A recheck without `--since`/`--horizon-labels` produces a record
+  byte-identical, apart from a `chain: null` field, to today's.
+
+**Rejected: make the chain the default.** It needs `N` declared up front and the
+records kept, and a default that silently depends on the user keeping files is a
+default that fails silently.
+
+**Rejected: the alpha split (B).** It passed 187's criteria and lost on the
+primary; it also needs `K` fixed in advance, which is the same declaration as `N`
+without the gain.
+
+**The objection.** *"The e-detector lost to the split at monthly cadence in S3."*
+It did, by 0.054 (187). The chain is chosen on the registered weekly criterion;
+the monthly figure is printed by `plan` when it applies, and the choice of rule
+is revisited if a customer's cadence makes that the case that matters.
