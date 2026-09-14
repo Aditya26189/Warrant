@@ -10189,3 +10189,25 @@ it left, and a missing sidecar is recorded as missing.
 **Rejected: prevent forks.** It needs a ledger outside the user's control, which
 a local CLI does not have; claiming prevention would be the overclaim 193 was
 written to avoid.
+
+### The same reviewer on 191 (`ca5ceab`, `1c13492`): correct, and two hardenings
+
+Brute force over every count, with no peak assumption, reproduced 1,399 and 6,518
+exactly and found both minimal (1,398 gives 0.799200; 6,517 gives 0.799614);
+119 sizes sampled across each 12x horizon never fell below 0.80; the single-peak
+shape held in 390 configurations far outside the shipped points (TP 20 to
+20,000, q 0.0005 to 0.4). `_certified`'s endpoint argument and `last_failure`'s
+chunking were checked and hold.
+
+**Decision, two hardenings, neither changing a published size:**
+
+1. `_certified` compares slopes strictly (`<`), so an exactly flat step on the
+   rising side -- practically impossible under Clopper-Pearson -- cannot certify.
+2. **Every size `labels_for_recall` quotes is checked at run time against brute
+   force**: assurance enumerated over every count at the quoted size, required
+   to meet the target and to agree with the fast computation within 1e-9, and at
+   the size below it, required to fall short. The fast path rests on a shape the
+   code does not otherwise check; `CLAUDE.md` asks for an assertion at every
+   boundary, and this is the boundary a published number crosses. It raises
+   rather than returning a size it cannot confirm. One pass over the counts at
+   each quoted size, not over the horizon.
