@@ -94,3 +94,53 @@ def test_a_smoke_sized_study_is_marked_as_one() -> None:
     assert {cell["n"] for cell in study["cells"]} == set(REGISTERED.ns)
     assert study["criteria"]["M2_bonferroni_alpha"] == pytest.approx(0.05 / 8)
     assert "Not a measurement" in study["what_these_are"]
+
+
+# --------------------------------------------------------------------------- #
+# M2, adopted: the frontier certifies at the family level split across its grid
+# --------------------------------------------------------------------------- #
+
+
+def test_the_shipped_frontier_certifies_each_row_at_the_split_level(tmp_path, config) -> None:
+    from controlplane.intake import frontier, load_scored_items
+
+    rng = np.random.default_rng(4)
+    path = tmp_path / "f.csv"
+    labels = (rng.random(600) < 0.25).astype(int)
+    scores = rng.random(600)
+    path.write_text("id,label,score\n" + "".join(
+        f"i{i},{l},{s:.6f}\n" for i, (l, s) in enumerate(zip(labels, scores, strict=True))),
+        encoding="utf-8")
+    points = frontier(config, load_scored_items(path))
+    family = 1 - config.validation.ci
+    assert {p.row_alpha for p in points} == {family / len(points)}
+    assert {p.family_alpha for p in points} == {family}
+
+
+@pytest.mark.parametrize("n", [150, 600, 5000])
+def test_the_split_level_holds_every_row_at_once(n: int) -> None:
+    """What M2 buys, checked with the study's own joint estimator."""
+    grid = REGISTERED.grid
+    joint = joint_miscoverage(n, grid, 0.05 / len(grid), 20_000, np.random.default_rng(n))
+    assert joint["value"] <= 0.05 + 3 * joint["mc_se"], joint
+
+
+def test_the_frontier_says_its_rows_hold_together_and_certify_does_not(tmp_path, config) -> None:
+    from controlplane.cli import build_parser
+    from controlplane.intake import frontier, load_scored_items, render_frontier
+
+    rng = np.random.default_rng(9)
+    path = tmp_path / "f.csv"
+    labels = (rng.random(400) < 0.25).astype(int)
+    path.write_text("id,label,score\n" + "".join(
+        f"i{i},{l},{s:.6f}\n" for i, (l, s) in enumerate(zip(labels, rng.random(400), strict=True))),
+        encoding="utf-8")
+    items = load_scored_items(path)
+    text = render_frontier(frontier(config, items), n_positive=items.n_positive,
+                           n_negative=items.n_negative)
+    assert "AT ONCE" in text and "chosen BEFORE" in text
+    text.encode("ascii")
+    parser = build_parser()
+    certify = next(a for a in parser._subparsers._group_actions[0].choices["certify"]._actions
+                   if "--budget" in a.option_strings)
+    assert "chosen before looking" in certify.help
