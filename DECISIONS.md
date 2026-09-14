@@ -9495,3 +9495,52 @@ prices it. Implemented under its own entry, after these results.
 **Rejected: re-size B to 0.80 power at `alpha / K`.** That answers a different
 question (what a year-valid rule costs) and makes the comparison unequal in
 labels. It is reported as a price, not as a candidate.
+
+## 188 - `recheck` threw away the groups `certify` certified on, so a grouped promise was re-tested in the wrong unit
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED
+
+Recorded OPEN in 184 (release evidence, "`intake.recheck` discards groups before
+its row-level binomial test") and in `reports/CLAIM-AUDIT-2026-09.md`. It is not
+in a read-only zone, so it is closed here rather than carried.
+
+`certify` on a file with a `group` column certifies at **cluster level**: the
+negatives are grouped, a cluster is a false positive if any member reaches the
+threshold, and the Clopper-Pearson bound is taken over clusters, refusing
+unequal cluster sizes because the cluster bound is then anticonservative
+(`validation.warrant_stats.certify_fpr`). `recheck_items` calls
+`items.as_arrays()` and drops the third element. The same file is re-tested
+item by item, and two things go wrong at once:
+
+1. **The quantity changes.** The promise is a cluster false-positive rate; the
+   recheck measures an item rate, which for equal clusters is at most the
+   cluster rate. A breach in cluster terms can read as no breach.
+2. **The sample size inflates.** Items that share a source are counted as
+   independent trials, so the lower bound is tighter than the evidence and a
+   recheck can revoke on correlated noise.
+
+The PSI drift check has the same blind spot: its null band is simulated for
+independent items, so a clustered file's null is wider than the band says.
+
+**Decision.**
+
+1. A grouped file is rechecked in certify's unit: negative clusters, a cluster
+   fires on its maximum, `n` is the number of negative clusters, and the
+   detection floor, the 1.5x sizing and 183's power are all computed at that
+   `n` -- quoting power at the item count would overstate what a grouped file
+   can catch.
+2. Unequal negative-cluster sizes are refused with exit 2 and certify's reason.
+3. **A grouping mismatch is refused.** A record certified grouped and a file
+   without groups, or the reverse, exits 2: the promise and the test would be in
+   different units, and neither choice of unit is the user's intent to guess.
+4. **Drift is not assessed on a grouped file**, and says why: the simulated
+   null assumes independent items. Not assessed, rather than assessed wrongly.
+5. The record states the unit (`"unit": "cluster"` or `"item"`).
+
+**Rejected: a design-effect correction on the item-level test.** It needs an
+intra-cluster correlation nobody has measured, and certify deliberately chose the
+exact cluster-level route to avoid one.
+
+**What this does not fix.** Dependence the file does not declare. A recheck on
+undeclared clusters is still an item-level test, exactly as certification is.
