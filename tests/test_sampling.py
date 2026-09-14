@@ -235,7 +235,6 @@ def test_blinding() -> None:
     #    tolerance would be a number chosen to pass, and the null is the thing
     #    the claim is actually about. A concatenated flagged-then-unflagged
     #    queue sits at p = 0 against this null, which is checked below.
-    positions = {p["queue_id"]: i for i, p in enumerate(queue.payloads)}
     by_item = {item.item_id: item for item in items}
     is_flagged = np.array(
         [

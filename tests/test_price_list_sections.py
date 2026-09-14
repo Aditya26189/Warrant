@@ -35,7 +35,7 @@ def test_every_required_section_is_present_by_heading() -> None:
     sections = price_list_sections(PROJECT_ROOT / "results")
     headings = [heading for heading, _ in sections]
     assert len(headings) == len(REQUIRED_HEADINGS)
-    for expected, actual in zip(REQUIRED_HEADINGS, headings):
+    for expected, actual in zip(REQUIRED_HEADINGS, headings, strict=True):
         assert actual.startswith(expected)
 
 

@@ -140,7 +140,7 @@ def proportional(*, populations: Mapping[str, int], total: int) -> Allocation:
     return Allocation(
         rule="proportional",
         total=total,
-        per_band={n: c for n, c in zip(names, counts)},
+        per_band={n: c for n, c in zip(names, counts, strict=True)},
         weights=weights,
         design_effect=None,
         note=(
@@ -207,7 +207,7 @@ def neyman(
     return Allocation(
         rule="neyman",
         total=total,
-        per_band={n: c for n, c in zip(names, counts)},
+        per_band={n: c for n, c in zip(names, counts, strict=True)},
         weights=weights,
         design_effect=design_effect(
             populations=populations, prevalences=prevalences, total=total

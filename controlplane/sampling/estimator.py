@@ -42,7 +42,7 @@ above 1 or below 0, which the transformation cannot.
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional, Sequence
 
 from ..model import Metric, MetricKind

@@ -84,7 +84,7 @@ class Agreement:
 def _kappa(first: Sequence[int], second: Sequence[int]) -> tuple[float, float, Optional[float]]:
     """``(p_o, p_e, kappa)`` for two binary label vectors, kappa ``None`` if undefined."""
     n = len(first)
-    agree = sum(1 for a, b in zip(first, second) if a == b)
+    agree = sum(1 for a, b in zip(first, second, strict=True) if a == b)
     p_o = agree / n
     p1 = sum(first) / n
     p2 = sum(second) / n

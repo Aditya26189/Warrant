@@ -303,9 +303,9 @@ def _write_markdown(out_dir: Path, payload: dict, transcript, cost) -> None:
         "",
         "## The evidence that no detector was read",
         "",
-        f"Every decision the first two rules make, computed twice — once with a "
-        f"detector reporting CRITICAL and CONFIDENT_POSITIVE, once with every "
-        f"detector input set to `None`:",
+        "Every decision the first two rules make, computed twice — once with a "
+        "detector reporting CRITICAL and CONFIDENT_POSITIVE, once with every "
+        "detector input set to `None`:",
         "",
         f"- decisions compared: **{evidence['decisions_compared']}**",
         f"- identical: **{evidence['identical']}**",
