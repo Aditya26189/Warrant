@@ -9384,3 +9384,80 @@ artifact. Label the number collected, not passing: collection cannot prove
 execution passed. The existing comparison test remains in force. No scientific
 result changes. These repairs do not resolve the separate runtime-monitor or
 grouped-recheck findings recorded in 184.
+
+## 187 - A year of rechecks is a change-detection problem: four revocation rules compared on the same labels, pre-registered
+
+- **Date:** 2026-09-14
+- **Status:** PRE-REGISTERED (this entry); results appended after the run
+
+183 made `plan` state what a year of rechecks costs in false revocations: at the
+0.80-power size (628 negatives, budget 0.05, alpha 0.05), a detector exactly at
+its budget is revoked by one recheck with probability 0.0365, so by at least one
+of 52 weekly rechecks with probability about 0.86. Stating it is not fixing it.
+The shipped rule tests each recheck alone; the question a monitoring programme
+actually asks is **how soon a breach that starts mid-year is caught, at a
+bounded chance of revoking a detector that never breached**. That is sequential
+change detection, and it has standard answers.
+
+**Rules, all fed the same labelled negatives in the same order.** A year is `K`
+rechecks of `n` clean negatives each, `N = K x n` labels.
+
+| rule | revokes when | year guarantee |
+|---|---|---|
+| A. shipped | a recheck's one-sided CP lower bound at `alpha` exceeds the budget | none; `1 - (1 - f)^K` at the budget |
+| B. split | the same bound at `alpha / K` | P(any false revocation in the year) <= alpha (Bonferroni) |
+| C. monitor | `validation.warrant_stats.FPRMonitor` over every label, checked at each recheck | <= alpha for all time (Ville) |
+| D. e-detector | a Shiryaev-Roberts e-detector over every label, `R_t = (R_{t-1} + 1) * mean_lam(1 + lam (x_t - p0))` on `FPRMonitor`'s betting grid, checked at each recheck, threshold `N / alpha` | <= alpha over the year: under any `p <= p0`, `V_t = R_t + (N - t)` is a nonnegative supermartingale from `V_0 = N` that dominates `R_t` for `t <= N`, so Ville's inequality bounds `P(max_{t<=N} R_t >= N/alpha)` by alpha (construction: Shin, Ramdas and Rinaldo, NEJSDS 2023) |
+
+C is read-only and is called, not changed. D is new code outside the read-only
+zones. Checking only at recheck boundaries is a subset of stopping times, so C's
+and D's guarantees hold unchanged.
+
+**Why D is in the comparison.** C's wealth decays while the rate sits below
+`p0`, so a breach arriving after months of good behaviour starts from a small
+wealth and waits. A Shiryaev-Roberts detector restarts implicitly at every
+label, which is what change detection needs and what a certificate-style e-process
+does not do.
+
+**Declared setting.** Budget 0.05, alpha 0.05, breach 0.075 (1.5x, `plan`'s
+default). Cadences weekly (`K = 52`) and monthly (`K = 12`). `n = 628` for every
+rule, so every rule spends the same labels; B is **not** re-sized, because the
+comparison is at equal cost. Seed 1729; 4,000 simulated years per scenario and
+cadence.
+
+**Scenarios, true false-positive rate over the year.**
+
+- **S0** at the budget all year -- the worst case over every rate promised.
+- **S1** at 0.0371 all year -- the measured certified rate in 143.
+- **S2** at the budget for the first half-year, then 0.075.
+- **S3** at 0.0371 for the first half-year, then 0.075.
+
+**Criteria, registered now.**
+
+- **V (validity).** Under S0, B, C and D each revoke in at most `alpha` + 3 MC SE
+  of years. A is reported, and 183 already predicts about 0.86 weekly.
+- **P (primary).** Among rules passing V, the one with the highest probability
+  of revoking within **13 weeks of the change** in S2 at the weekly cadence
+  (monthly: within 3 rechecks). Tie within 2 MC SE: the lower median delay.
+- **Floor.** If no V-passing rule catches the S2 breach within the window with
+  probability >= 0.50, the year guarantee is not affordable at this label budget:
+  A stays, its year column stays disclosed, and that is the headline.
+- **Secondary, no decision rides on them:** S1 and S3 false revocation and delay;
+  every rule's figures at the monthly cadence.
+
+**Predictions, written so they can be wrong.** C has the longest delay of the
+three valid rules in S2 and S3. D catches at least as often as B within the
+window. A catches soonest and fails V badly.
+
+**What the numbers are.** Simulated operating characteristics of four decision
+rules under known truth, exact up to Monte Carlo error. They describe the rules,
+not any detector, and are rendered as such, with the scenario beside every
+figure.
+
+**What follows.** The chosen rule becomes the stateful path: a recheck that
+carries the rule's state forward from the previous recheck record, and `plan`
+prices it. Implemented under its own entry, after these results.
+
+**Rejected: re-size B to 0.80 power at `alpha / K`.** That answers a different
+question (what a year-valid rule costs) and makes the comparison unequal in
+labels. It is reported as a price, not as a candidate.
