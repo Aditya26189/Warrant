@@ -163,6 +163,11 @@ here does not move those rules.
 
 ## ⚡ Quickstart — certify your own detector
 
+For a study with criteria and holdout IDs registered before evaluation, use the
+additive [`warrant release` workflow](docs/RELEASE.md). It binds the declared
+identity and scored holdout to reproducible evidence and checks expiry. It is
+scoped detector evidence, not deployment approval.
+
 > Five minutes on a laptop. No GPU, no model, and **nothing leaves your machine**:
 > no network calls, no telemetry, no uploads. The file is read, the arithmetic is
 > local, the record is written next to it.
