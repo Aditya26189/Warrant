@@ -9150,3 +9150,38 @@ measured run does not overwrite the fixture's.
 
 **Rejected: make `--measured` the default.** A default is exactly what 027
 forbids, and on a clean clone it would fail for every stranger's first run.
+
+## 182 - `warrant plan --warrant` never read a warrant, and no test ran `plan` from the command line
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED
+
+`plan --warrant` is documented as taking "the budget and alpha from it rather
+than having you retype them". It read `record["budget"]`; `certify` writes
+`budget_fpr`. Run on `examples/certifies.csv` certified at 0.05, `plan --warrant
+<record> --negative-share 0.9` exits 2 with *"give --budget, or --warrant
+pointing at a record that carries one"*. With `--budget` also given, the record's
+budget was silently ignored. Alpha was read correctly -- that key matches.
+
+No test caught it because none runs `plan` through the CLI: `test_sizing.py`
+calls `monitoring_plan` directly, and `test_recheck.py`'s round trip covers
+`recheck` only.
+
+**Decision.**
+
+1. `plan` reads `budget_fpr` and `alpha` from the record.
+2. A record carrying no `budget_fpr` is refused with exit 2, naming the file.
+3. **`--budget` and `--warrant` disagreeing is refused**, not resolved. Either
+   precedence silently prices a budget the user did not mean.
+4. **A REFUSED record is refused**, as `recheck` already does. Nothing was
+   promised, so there is nothing to keep true; `--budget` alone still prices a
+   hypothetical.
+5. `recheck` takes alpha from the record when present. Today `certify` has no
+   alpha flag, so the two agree; a record certified under a different
+   `validation.ci` would have been re-tested at a different level with nothing
+   said.
+6. A contract test reads every key a CLI consumer takes from a `certify` record
+   and checks the payload writes it, so a rename on either side fails there.
+
+**Rejected: rename `certify`'s key to `budget`.** Records are meant to live for
+a year in a customer's hands, and `recheck` already reads `budget_fpr`.
