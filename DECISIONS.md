@@ -9835,7 +9835,7 @@ The arbitrary number was already there; it was 0.5 and nobody said so.
 ## 192 - The frontier invites choosing a budget on the file that certifies it: how wrong is the chosen row, measured before deciding
 
 - **Date:** 2026-09-14
-- **Status:** PRE-REGISTERED; results appended after the run
+- **Status:** DECIDED -- pre-registered at `c1463d7`, run at `dcb9a1a` (`eeb45f5`); M1 material, M2 adopted
 
 `warrant certify --frontier` certifies eight budgets (0.01 to 0.20) off one
 file's negatives, and `render_frontier` ends with *"The row to pick is the one
@@ -9929,3 +9929,45 @@ measures that cost.
 
 **Rejected: remove the pick-a-row sentence.** The frontier exists so a person
 can choose; hiding the invitation leaves the selection and loses the warning.
+
+### Results (2026-09-15, `results/frontier_selection/selection.json`)
+
+| n | rows certified | worst row | joint | R1 given pick, d'=1 | R1 given pick, d'=2 | rows under alpha/8 |
+|---|---|---|---|---|---|---|
+| 150 | 7 | 0.0493 | 0.1267 | **0.1064** (pick rate 0.435) | 0.0483 | 5 |
+| 300 | 8 | 0.0490 | 0.1547 | 0.0801 | 0.0387 | 7 |
+| 600 | 8 | 0.0475 | 0.1505 | 0.0720 | 0.0467 | 8 |
+| 1200 | 8 | 0.0488 | 0.1766 | 0.0544 | 0.0566 | 8 |
+| 5000 | 8 | 0.0494 | 0.1839 | 0.0519 | 0.0474 | 8 |
+
+Monte Carlo SE on the joint column is at most 0.0027 and on R1 at most 0.0033.
+
+- **M3 pass.** Every row is within its level alone; the cross-check through
+  `certify_budget` on 2,000 real files agrees with the exact tails on all eight
+  budgets (largest |z| 2.38).
+- **M1: material, narrowly.** R1 at `n = 150, d' = 1` is 0.1064 +/- 0.0033,
+  1.9 SE above the registered 0.10. Every other cell is below it. Joint
+  miscoverage landed inside the predicted 0.05-0.20.
+- **M2 adopted**, as registered. Its measured cost: two budgets (0.02, 0.03)
+  stop certifying at `n = 150` and one (0.01) at `n = 300`; from `n = 600` every
+  row still certifies, with thresholds tightened by at most 1.3 percentage
+  points of expected false-positive rate (at most 2.7 at `n = 150`).
+
+**How M1 was read, stated because it decides the verdict.** The entry says
+"R1's miscoverage". The code committed before the run (`dcb9a1a`) takes it
+conditional on R1 picking a row, and that is the quantity a customer holding a
+picked row has. **Unconditionally** -- counting files where R1 picks nothing as
+not wrong -- R1 is at most 0.0566 in every cell and M1 would not be material.
+The conditional reading was fixed in code before any registered number existed;
+it is recorded here so the verdict is not mistaken for a stronger one than it
+is.
+
+**Seen before the registered run:** a 2,000-replicate speed check at `n = 600`
+(joint 0.161, R1 given pick 0.063), after the criteria were committed. It is not
+part of the result.
+
+**What M2 does not fix.** Registered M2 leaves `certify --budget` at alpha and
+adds a warning. A customer who picks a row off the frontier and then runs
+`certify --budget` on the same file still receives a warrant at the unadjusted
+level. Certifying a picked budget at the frontier's level is a change to the
+warrant command, not to the frontier, and needs its own entry.
