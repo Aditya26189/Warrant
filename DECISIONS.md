@@ -10211,3 +10211,34 @@ chunking were checked and hold.
    boundary, and this is the boundary a published number crosses. It raises
    rather than returning a size it cannot confirm. One pass over the counts at
    each quoted size, not over the horizon.
+
+### F5 reviewed again at `92e1f22`: three ways past the head check
+
+The reviewer reproduced three bypasses through the CLI; a non-head `--since`
+without `--fork` still exits 2, as intended.
+
+- **A. A copied or moved warrant starts a fresh head.** The sidecar is keyed by
+  the warrant's path, so `-w w_copy.json --since r1.json` passes as "no sidecar",
+  and its next link reads "matched" with no fork recorded. **Decision:** a
+  `--since` record written under a sidecar (`head_check` matched or forked) with
+  no sidecar now exits 2 unless `--fork`: the chain had a head and does not now
+  -- deleted, moved or copied. Records from before 194 carry no `head_check` and
+  are unaffected.
+- **B. An edited sidecar reads "matched".** Not preventable locally.
+  **Decision:** (i) every chained record says that "matched" means it matched the
+  user-writable sidecar present at the time, not that the link is not a fork;
+  (ii) detection goes where it is possible -- over the records a user keeps.
+  `warrant chain verify <records...>` flags two records sharing a
+  `previous_record_sha256` (a fork, whatever `head_check` says), sequence gaps or
+  duplicates, a `state_sha256` that does not reproduce, a
+  `previous_record_sha256` matching no record given, more than one
+  `warrant_sha256`, and links after a revoked or ended record. It exits 0 when
+  nothing is flagged, 1 when anything is (a finding, as a refusal is), and 2 on
+  unreadable input. This is the counterpart to "keep every record": the auditor
+  gets a tool that uses them.
+- **C. Overwriting last week's record, the likeliest accident.** Exporting to one
+  filename each week makes `--since latest.csv.recheck.json` work every week
+  while each run destroys the record before it. **Decision:** a chained recheck
+  refuses to write over an existing file (exit 2, nothing written, sidecar
+  unchanged), and its default output name carries the link number,
+  `<input>.recheck-NNNN.json`.
