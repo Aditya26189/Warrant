@@ -8984,3 +8984,67 @@ repository has no line-ending norm -- 254 CRLF files, 173 LF, 7 mixed, no
 `.gitattributes` -- so flipping them back would add a second round of
 whole-file churn and restore nothing a reader or a test depends on. They are
 left, and every patch from here preserves the bytes it found.
+
+---
+
+## 178 - The revocation trace, pre-registered: a real stream, the real warrant, criteria before the run
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED, before the code and before the run
+
+`CLAUDE.md`'s definition of done requires `results/RESULTS.md` to carry
+*"drift/revocation traces"*, and `SPEC.md` §11 item 6 asks for *"envelope
+violation detected, revocation, routing decision"*. RESULTS.md has said since
+164 that no drift run in `results/` ever revoked a warrant. The only stream
+artifact, `results/demo_stream.json`, is four synthetic events.
+
+**What is replayed.** Nothing new is measured; every input is committed or
+cached, and the decisions are made by the shipped code paths.
+
+| | |
+|---|---|
+| warrant under observation | the latest `probe-qwen2.5-7b-instruct-T1-last_token` warrant on `triviaqa-600` in the ledger rebuilt by `4deb282` |
+| scored against | the envelope stored **in** that warrant (token length, 8 bins, `n_reference` 2,400) |
+| normal segment | 400 requests: token lengths of the `triviaqa-600` **test** split, drawn without replacement at `config.seed` |
+| shift segment | 400 requests: token lengths of `triviaqa-longctx-600`, drawn without replacement at `config.seed + 1` |
+| monitor | `drift.DriftMonitor` with `config.drift`'s window, bands, features and false-alarm ceiling |
+| checkpoints | a verdict and a ladder transition every 50 requests once the window is full |
+| at the first `REVOKED` | `respond_to_drift` for each of the three profiles, routing on `triviaqa-longctx-600`; `certify_drift_response` for each |
+
+The token lengths are real, from the GPU extraction caches. The stream is a
+**replay**, and every event in the artifact says which cache row it came from.
+It is not production traffic, and the artifact says that too.
+
+**Pre-registered criteria.** Written before the script exists:
+
+1. **No false alarm.** No checkpoint whose window is entirely normal-segment
+   traffic reaches `STALE` or `REVOKED`.
+2. **Revocation within one window.** The first `REVOKED` checkpoint is at most
+   `window_size` (200) requests after the shift begins.
+3. **Routing looks at the live envelope.** Every routing decision is made on
+   `triviaqa-longctx-600`, never on the envelope just revoked.
+4. **The certificate says what was not checked.** Each names `triviaqa-600` as
+   scored and `triviaqa-longctx-600` as live, and lists multivariate drift (MMD)
+   under `unchecked`.
+
+A criterion that fails is reported as the finding, not adjusted.
+
+**Expected, stated so it cannot be quietly relabelled a success afterwards.**
+Last-token is the only measured detector holding `VALID` on
+`triviaqa-longctx-600`, at recall `[0.09, 0.17]` and a 6.5% flag rate. Every
+profile's `min_recall` (0.10, 0.25, 0.50) is above that lower bound. **The
+expected routing outcome is that no profile is served**: each is suspended and
+falls back to its conservative action, naming the detector it considered and
+why it did not qualify. If that is what happens, it is the correct behaviour
+and the unflattering result -- the system notices the shift, stops quoting the
+lost bounds, and has nowhere to send the traffic.
+
+**Rejected: a stream from synthetic token lengths.** The demo already has one,
+and a revocation of a warrant no model produced is not the item the definition
+of done asks for. **Rejected: a permissive profile so routing succeeds.** A
+profile declared to make the trace look better is the tuning-to-pass this
+repository refuses everywhere else.
+
+**Not established by this.** Detection on a shift in anything but length; the
+behaviour on a gradual shift (the window slides over a hard cut); anything about
+production traffic.
