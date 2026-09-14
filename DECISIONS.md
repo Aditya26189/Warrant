@@ -10232,10 +10232,20 @@ without `--fork` still exits 2, as intended.
   `previous_record_sha256` (a fork, whatever `head_check` says), sequence gaps or
   duplicates, a `state_sha256` that does not reproduce, a
   `previous_record_sha256` matching no record given, more than one
-  `warrant_sha256`, and links after a revoked or ended record. It exits 0 when
-  nothing is flagged, 1 when anything is (a finding, as a refusal is), and 2 on
-  unreadable input. This is the counterpart to "keep every record": the auditor
-  gets a tool that uses them.
+  `warrant_sha256`, links after a revoked or ended record, **two sequence-1
+  records for one warrant** (a restart, which 193 item 5 calls unpreventable and
+  which is detectable once both are kept), and **a link that does not extend its
+  previous record** (a different p0, alpha, grid or horizon; units consumed
+  decreasing; the consumed-digest list not extending the previous one, or its
+  length not equal to the units consumed) -- which catches a state spliced from
+  another chain with a valid digest. The statistics themselves cannot be
+  recomputed without the data, and the command says so. A declared `--fork` is
+  still reported, as a fork marked declared: two branches off one prefix are two
+  tests. Findings are grouped by warrant. **Exit codes follow the CLI's
+  convention**: 0 with the findings printed and recorded, 1 only with
+  `--require-clean` when anything is flagged, 2 for unreadable input or a file
+  that is not a chained recheck record. This is the counterpart to "keep every
+  record": the auditor gets a tool that uses them.
 - **C. Overwriting last week's record, the likeliest accident.** Exporting to one
   filename each week makes `--since latest.csv.recheck.json` work every week
   while each run destroys the record before it. **Decision:** a chained recheck
