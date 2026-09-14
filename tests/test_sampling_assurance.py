@@ -220,3 +220,29 @@ def test_config_refuses_an_assurance_below_one_half(project_root, tmp_path) -> N
     target.write_text(yaml.safe_dump(raw), encoding="utf-8")
     with pytest.raises(ConfigError, match="margin_assurance"):
         load_config(target)
+
+
+def test_a_quoted_size_the_enumeration_does_not_confirm_is_refused(config, monkeypatch) -> None:
+    """DECISIONS 194: the fast path is checked at every quoted size, and loses.
+
+    Break the fast computation so it disagrees with enumeration, and the plan must
+    raise rather than return the size the broken path chose.
+    """
+    import controlplane.sampling.planning as planning
+
+    real = planning._assurance
+    monkeypatch.setattr(planning, "_assurance", lambda ns, **kw: np.clip(real(ns, **kw) + 1e-6, 0, 1))
+    with pytest.raises(SizingError, match="not confirmed by enumeration"):
+        labels_for_recall(sensitivity=_declared(config), margin=0.05, assurance=ASSURANCE)
+
+
+def test_enumeration_confirms_every_shipped_size(config) -> None:
+    """The check passes where the sizes are right, at every shipped operating point.
+
+    +/-0.05 only, to keep the suite usable; the +/-0.02 sizes go through the same
+    check every time scripts/25_on_traffic.py regenerates the price list.
+    """
+    for name, s in _shipped(config).items():
+        for margin in (0.05,):
+            plan = labels_for_recall(sensitivity=s, margin=margin, assurance=ASSURANCE)
+            assert plan.feasible, (name, margin)

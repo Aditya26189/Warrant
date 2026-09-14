@@ -667,8 +667,10 @@ def _certified(
         )
 
     w1, w2 = width(k1), width(k2)
-    falling_at_k1 = width(np.minimum(k1 + 1, effective)) <= w1
-    rising_at_k2 = width(np.maximum(k2 - 1, 0)) <= w2
+    # Strict: an exactly flat step is not evidence of which side of the peak
+    # an endpoint sits on (DECISIONS 194).
+    falling_at_k1 = width(np.minimum(k1 + 1, effective)) < w1
+    rising_at_k2 = width(np.maximum(k2 - 1, 0)) < w2
     endpoint_max = (falling_at_k1 | rising_at_k2) & (k2 > k1)
     return (mass >= target) & endpoint_max & (w1 <= margin) & (w2 <= margin)
 
@@ -773,6 +775,62 @@ def _labels_at_assurances(
     for target in reachable[:-1]:
         result[target] = max(last_failure(1, result[hardest] - 1, target) + 1, 1)
     return result
+
+
+def _assurance_by_enumeration(
+    n: int,
+    *,
+    prevalence: float,
+    true_positives: float,
+    pool: float,
+    margin: float,
+    design_effect: float,
+    finite_population: bool,
+    confidence: float,
+) -> float:
+    """Assurance at one size over every count, assuming nothing about the shape.
+
+    The reference :func:`_assurance` is checked against at every quoted size
+    (DECISIONS 194): the fast path rests on the half-width having one peak, and
+    this does not.
+    """
+    import numpy as np
+    from scipy.stats import binom
+
+    effective = int(_effective_n(
+        np.array([n]), pool=pool, design_effect=design_effect,
+        finite_population=finite_population,
+    )[0])
+    ks = np.arange(0, effective + 1)
+    widths = _recall_half_width(ks, np.full(ks.shape, effective), true_positives=true_positives,
+                                pool=pool, confidence=confidence)
+    return float(binom.pmf(ks, effective, prevalence)[widths <= margin].sum())
+
+
+def _confirm_quoted_sizes(sizes: dict, **common) -> None:
+    """Refuse to return a size the brute-force reference does not confirm.
+
+    At each quoted size, assurance by enumeration must reach the target and agree
+    with the fast computation within 1e-9; one size below, it must fall short --
+    the size is where the last failure ends. A published label budget crosses
+    this boundary, so it is asserted here rather than trusted (DECISIONS 194).
+
+    Raises:
+        SizingError: If any quoted size is not confirmed.
+    """
+    for target, size in sizes.items():
+        if size is None:
+            continue
+        exact = _assurance_by_enumeration(size, **common)
+        fast = float(_assurance([size], **common)[0])
+        below = _assurance_by_enumeration(size - 1, **common) if size > 1 else 0.0
+        if exact < target or abs(exact - fast) > 1e-9 or below >= target:
+            raise SizingError(
+                f"the size quoted for assurance {target:g} ({size:,}) is not confirmed by "
+                f"enumeration: {exact:.6f} at it, {below:.6f} one below, {fast:.6f} from "
+                "the fast path. The single-peak shape the fast path relies on may not "
+                "hold for these inputs; no size is returned rather than an unconfirmed one."
+            )
 
 
 def _check_common(*, margin: float, confidence: float, design_effect: float) -> None:
@@ -991,6 +1049,7 @@ def labels_for_recall(
         confidence=confidence,
     )
     sizes = _labels_at_assurances((*ASSURANCE_LADDER, assurance), **common)
+    _confirm_quoted_sizes(sizes, **common)
     exact_labels = sizes[assurance]
     at_expected = _labels_for_exact_margin(**common)
     ladder = tuple((rung, sizes[rung]) for rung in ASSURANCE_LADDER)
