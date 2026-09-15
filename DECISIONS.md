@@ -10960,3 +10960,39 @@ does not say their labels are right. The label error strict cannot see, correct
 answers missing from the alias list, is unmeasured. A 0.20-budget certificate on
 this file needs only 32 such errors among its unflagged negatives to fall below
 0.80, about 12% of that pool. Nothing here says whether that many exist.
+
+### 199 review (accenture-c4, read-only, at `6320c80`) -- the generalisation was stated wider than its conditions
+
+C0, P1 and P2 are reported as registered. The claim rows read as a range
+(`rows_never_below_0_80` = 0, so 2 to 8 spans all 60 rows). The 32-of-271 line
+is exact: at budget 0.20, 31 unflagged-positive errors leave 0.805 and 32 leave
+0.797. **Two corrections to the results section, both to its text, not its
+numbers:**
+
+**(a) Missing conditions.** "It holds wherever scores are untied" also needs:
+- certify's lowest-certifying-threshold rule;
+- a fixed alpha. A `--from-frontier` warrant certifies at the frontier's
+  `row_alpha`, so at the same `n` it has a different largest certifying count and
+  different ladders;
+- on grouped files, untied scores over the negative *units'* maxima, not over
+  items.
+
+*Corrected statement:* wherever the lowest certifying threshold is taken at a
+fixed alpha and the negative units' scores are untied, `k` is the largest count
+certifying at `(n, B, alpha)`. So both ladders depend only on `n`, `B` and alpha.
+
+**(b) "A customer cannot buy a less fragile certificate with a better detector at
+the same `n`" is true of the ladders and wrong as a statement about fragility.**
+The ladders say how many errors a certificate tolerates. How many it is exposed
+to depends on the pools. Flagged-clean errors, the costly kind, can only come
+from flagged positives. At the same budget and `n`, a detector with higher recall
+flags more positives, so at a fixed label-error rate among positives it carries
+more expected costly errors, not fewer. This file shows the limit case: at budget
+0.01, `last_token` flags 3 positives and its ladder falls below 0.80 at 2.
+
+*Corrected statement:* a better detector cannot change how many errors a
+certificate at this `n`, budget and alpha tolerates. It changes how many flagged
+positives there are to be wrong, and one that flags more positives exposes the
+certificate to more of the costly kind. Only more negatives, another budget or
+another alpha change the tolerance. Labelling quality among the flagged positives
+changes the exposure.
