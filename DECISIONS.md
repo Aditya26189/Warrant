@@ -11075,3 +11075,19 @@ commit nobody can check out as it was.
 **The objection.** "Refusing to write loses a long run over an edit." The
 alternative is an artifact whose provenance is wrong. A rerun costs 37 minutes; a
 wrong gate record costs the gate's meaning.
+
+### 200 review (accenture-c4, read-only, at `b65220e`) -- correct; the record now says when its provenance was taken
+
+- **The fix holds.** `head_step` compares full SHAs, which closes the race between
+  `rev-parse` and `clone`. `check_record`'s three refusals cover the three ways a
+  record could pair an outcome with an untested tree, and none fires on the
+  ordinary path. An early failure from a stable source still writes a truthful
+  FAILED record.
+- **A consequence, now stated in the record.** `provenance.timestamp_utc` in
+  `results/clean_clone.json` now means *clone time*. Earlier records meant write
+  time, about 37 minutes later on a full gate. *Decided:* the record carries
+  `provenance_taken: "before cloning"`, so the two kinds cannot be compared
+  unawares. Records written before 200 have no such field.
+- **Practical.** Provenance's dirty flag counts untracked files, so a gate run
+  from a checkout holding untracked work now refuses to write. That is correct,
+  and a reason to run gates from worktrees.
