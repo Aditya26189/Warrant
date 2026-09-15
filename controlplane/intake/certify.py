@@ -70,6 +70,12 @@ class CertificationResult:
     #: A frontier record for this same input sat beside it when this warrant was
     #: issued without ``--from-frontier``. Not proof of a pick; a flag for audit.
     frontier_record_present: bool = False
+    #: What one wrong label at the threshold does to the certificate, or why that
+    #: is not computed (:class:`controlplane.intake.labels.LabelSensitivity`, 197).
+    label_sensitivity: Optional[Any] = None
+    #: ``label_2`` measured beside the certificate, when the file has the column
+    #: (:class:`controlplane.intake.labels.SecondReview`, 197). Changes nothing above.
+    second_review: Optional[Any] = None
 
     @property
     def certified(self) -> bool:
@@ -128,6 +134,22 @@ class CertificationResult:
                 if self.score_distribution is not None
                 else None
             ),
+            "labels": {
+                "decision": "DECISIONS.md 197",
+                "certified_on": "the label column; label_2 changes no status, threshold or bound",
+                "sensitivity": (
+                    self.label_sensitivity.to_payload()
+                    if self.label_sensitivity is not None else None
+                ),
+                "second_review": (
+                    self.second_review.to_payload() if self.second_review is not None
+                    else {"present": False, "note": (
+                        "no label_2 column: agreement between reviewers is not measured, "
+                        "and the certificate is exact about these labels and silent about "
+                        "whether they are right"
+                    )}
+                ),
+            },
             "metrics": {
                 "n_flagged": self.n_flagged,
                 "recall": to_jsonable(self.recall) if self.recall else None,
@@ -261,14 +283,36 @@ def certify_items(
         "selection": selection,
     }
 
-    if not certification.fpr_certified:
+    from .labels import label_sensitivity, second_review
+
+    grouped = groups is not None
+    certified = bool(certification.fpr_certified)
+    threshold = float(certification.threshold) if certified else None
+    flagged_positives = (
+        int(((scores >= threshold) & (labels == 1)).sum()) if certified else None
+    )
+    # DECISIONS 197: both are computed from the certification above and feed
+    # nothing back into it.
+    common["label_sensitivity"] = label_sensitivity(
+        certified=certified, grouped=grouped, k=certification.k, n=certification.n_eff,
+        flagged_positives=flagged_positives, budget=budget, alpha=alpha,
+    )
+    if items.second_labels is not None:
+        common["second_review"] = second_review(
+            labels, items.second_labels, scores,
+            threshold=threshold, k=certification.k, n=certification.n_eff,
+            budget=budget, alpha=alpha, certified=certified, grouped=grouped,
+            seed=config.seed, resamples=config.validation.bootstrap_samples,
+            ci=config.validation.ci,
+        )
+
+    if not certified:
         # A refusal, not an error. The evidence was insufficient; the tool did
         # its job. DECISIONS 138.
         return CertificationResult(
             status=WarrantStatus.REFUSED, reason=certification.reason, **common
         )
 
-    threshold = float(certification.threshold)
     metrics = build_warrant_metrics(
         config, labels, scores, threshold, groups=groups
     )

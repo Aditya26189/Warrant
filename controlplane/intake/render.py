@@ -31,6 +31,83 @@ def _metric_line(label: str, metric: Optional[Metric], digits: int = 4) -> str:
     return f"  {label:<14} {metric.render(digits)}"
 
 
+def _pct(value: float) -> str:
+    return f"{value * 100:.1f}%"
+
+
+def _label_lines(result: CertificationResult) -> list[str]:
+    """How far the certificate depends on its labels (DECISIONS 197)."""
+    lines: list[str] = []
+    sensitivity = result.label_sensitivity
+    if sensitivity is not None and sensitivity.computed:
+        flagged = sensitivity.flagged_positives
+        lines += ["", "  If the labels are wrong:"]
+        lines.append(
+            f"    as labelled, the budget clears at {_pct(sensitivity.confidence_as_labelled)} confidence"
+        )
+        if sensitivity.confidence_if_one_is_clean is not None:
+            lines.append(
+                f"    if one flagged positive is really clean: {_pct(sensitivity.confidence_if_one_is_clean)} "
+                f"(bound {sensitivity.bound_if_one_is_clean:.4f})"
+            )
+        crossings = [
+            f"below {level * 100:.0f}% at {count}" if count is not None
+            else f"never below {level * 100:.0f}%"
+            for level, count in (sensitivity.errors_below or {}).items()
+        ]
+        lines.append(f"    {', '.join(crossings)} of the {flagged} flagged positives")
+        lines.append(
+            "    That is the confidence the budget still clears at, not a probability"
+        )
+        lines.append("    that the detector is within budget.")
+    review = result.second_review
+    if review is None:
+        lines += [
+            "",
+            "  No label_2 column: agreement between reviewers is not measured. This",
+            "  certificate is exact about these labels and silent about whether they",
+            "  are right.",
+        ]
+        return lines
+    agreement = review.agreement
+    lines += ["", "  Second reviewer (label_2), which changes nothing above:"]
+    if agreement.kappa is None:
+        lines.append(f"    kappa undefined over {review.n_pairs} pairs: {agreement.undefined_reason}")
+    else:
+        lines.append(
+            f"    kappa {agreement.kappa:.3f} [{agreement.ci_low:.3f}, {agreement.ci_high:.3f}] "
+            f"over {review.n_pairs} pairs ({review.pairs_by_label[0]} labelled 0, "
+            f"{review.pairs_by_label[1]} labelled 1)"
+        )
+    disputes = review.disputes
+    if disputes is not None:
+        lines.append(
+            f"    {disputes.flagged_positives_disputed} of {disputes.reviewed_flagged_positives} "
+            f"double-labelled flagged positives called clean; "
+            f"{disputes.unflagged_negatives_disputed} unflagged negatives called positive"
+        )
+        lines.append(
+            f"    if every dispute is a primary error: "
+            f"{_pct(disputes.confidence_if_disputes_are_errors)} (a worst case, not the truth)"
+        )
+        if disputes.disputes_upper_bound is not None:
+            lines.append(
+                f"    whole file, at most {disputes.disputes_upper_bound} of {disputes.flagged_positives} "
+                f"flagged positives disputed ({(1 - review.alpha) * 100:.0f}%, "
+                f"n {disputes.reviewed_flagged_positives}, if they were sampled at random): "
+                f"{_pct(disputes.confidence_at_upper_bound)}"
+            )
+            if disputes.reviewed_flagged_positives < disputes.flagged_positives:
+                lines.append(
+                    f"    that bound is as wide as {disputes.reviewed_flagged_positives} reviewed "
+                    f"of {disputes.flagged_positives} makes it; double-labelling more flagged "
+                    "positives narrows it"
+                )
+    for warning in review.warnings:
+        lines.append(f"    warning: {warning}")
+    return lines
+
+
 def render_summary(result: CertificationResult) -> str:
     """Render one certification for a terminal."""
     lines = [
@@ -81,9 +158,8 @@ def render_summary(result: CertificationResult) -> str:
             "  This is the tool working. A detector that cannot be certified on",
             "  the evidence provided is a fact worth having before it ships, not",
             "  an error in the measurement.",
-            _RULE,
-            "",
         ]
+        lines += _label_lines(result) + [_RULE, ""]
         return "\n".join(lines)
 
     lines += [
@@ -111,6 +187,7 @@ def render_summary(result: CertificationResult) -> str:
         )
     if result.metrics_absent_reason:
         lines += ["", f"  note: {result.metrics_absent_reason}"]
+    lines += _label_lines(result)
 
     lines += [
         "",
