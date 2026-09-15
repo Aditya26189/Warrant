@@ -207,6 +207,14 @@ Full contract in **[docs/INPUT.md](docs/INPUT.md)**; the two examples are
 explained in [examples/README.md](examples/README.md). `pip install -e .` gives
 you `warrant certify` as a command instead of `python warrant.py`.
 
+**Are the labels right?** A certificate is exact about the labels it was given
+and cannot see whether they are. So every certificate prints how many mislabelled
+items it can take before its confidence falls below 90%, 80% and 50%, counting
+separately the two errors that flatter it. On this project's own certificates
+that is a handful (claim table, `DECISIONS.md` 199). If a second reviewer labelled
+some items, add their labels as a `label_2` column. Warrant reports kappa and the
+disputed items beside the warrant and changes nothing in it.
+
 **Keeping it true.** A warrant is a claim about the file it was issued on. On
 fresh labelled traffic, `recheck` asks whether it still holds, and `plan` says
 what rechecking costs:
