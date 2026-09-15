@@ -267,6 +267,35 @@ negatives in every recheck -- a real chain that exhausts its horizon early is no
 live through the last window. `plan` quotes no
 detection figure, and should not, for settings outside this grid.
 
+### 3.6 A warrant is exact about its labels and cannot see whether they are right
+
+Every certificate is a statement about the `label` column it was given. Since
+`DECISIONS.md` 197 each one says how far it depends on it, and on this project's
+own measured TriviaQA certificates that is not far. **Between 2 and 8 flagged
+positives that are really clean take a certificate from at least 0.95 to below
+0.80 confidence**, across 60 certified rows (3 probes x 20 budgets;
+`results/label_sensitivity/triviaqa.json`, `DECISIONS.md` 199). How many errors a
+certificate tolerates is set by its negatives, budget and alpha, not by the
+detector. A detector that flags more positives is exposed to more of the costly
+kind.
+
+**What was measured.** The labels are lenient alias matching. Strict exact match
+on the same responses disagrees on 41 of 600 test items (kappa 0.8640
+[0.8213, 0.9035]), every one a response lenient calls correct. Counting all of
+them as labelling errors leaves the lowest certificate at 0.8127.
+
+**What was not.** A correct answer whose wording is missing from the alias list
+is labelled incorrect by both rules, so no comparison of the two can see it. When
+flagged, it is exactly the costly error: at budget 0.20, 8 of `last_token`'s 179
+flagged positives would take its certificate below 0.80. How many exist is
+unknown. What would close it is a blind human audit of a sample of the flagged
+lenient-incorrect answers.
+
+On the customer path, an optional `label_2` column measures agreement beside the
+warrant and changes nothing in it (`docs/INPUT.md`). Recall and precision
+intervals are still silent about label error, and a chained recheck carries no
+sensitivity.
+
 ---
 
 ## 4. Open items at submission
