@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import json
 
+from .contract import utc_time
+
 
 def _number(value: float | None) -> str:
     return "undefined" if value is None else f"{value:.6g}"
@@ -13,13 +15,15 @@ def render_evaluation(record: dict, current_status: str) -> str:
     """Suppress synthetic metrics; customer rates always carry intervals and n.
 
     Render identity with JSON escaping so untrusted metadata cannot inject
-    terminal control codes, newlines or pretend to be a second verdict.
+    terminal control codes, newlines or pretend to be a second verdict. Normalize
+    timestamps too: Python's ISO parser permits a control character separator.
     """
     lines = ["WARRANT RELEASE EVIDENCE", f"Current status: {current_status}",
              f"Status at evaluation: {record['status']}",
              f"Protocol: release/v{record['schema_version']}; simultaneous equal-tailed Clopper-Pearson intervals",
              "Identity: " + json.dumps(record["identity"], sort_keys=True, ensure_ascii=True),
-             f"Evaluated: {record['evaluated_at']} | Expires: {record['expires_at']}"]
+             f"Evaluated: {utc_time(record['evaluated_at']).isoformat()} | "
+             f"Expires: {utc_time(record['expires_at']).isoformat()}"]
     if record["data_origin"] == "synthetic":
         lines.append("SYNTHETIC FIXTURE: metric values suppressed; no product-performance claim.")
     else:
