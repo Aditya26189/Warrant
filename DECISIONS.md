@@ -10253,6 +10253,36 @@ without `--fork` still exits 2, as intended.
   unchanged), and its default output name carries the link number,
   `<input>.recheck-NNNN.json`.
 
+### A to C reviewed (accenture-c4, read-only, at `9c1fc68`): two bypasses, one race, one collision
+
+- **A-1, a bypass that is a limit, and three texts that overstated it.** `state_sha256`
+  is a digest of public fields -- a checksum, not a signature. Rewriting a record
+  with `head_check` cleared and the digest recomputed makes it indistinguishable
+  from a pre-194 record: with the sidecar deleted, `--since` on it passes without
+  `--fork`, and `chain verify` over a set that omits the original reports nothing.
+  **Decision:** no prevention -- tamper-evidence needs a key or an anchor outside the
+  user's control, which a local CLI does not have. The digest's refusal message, the
+  guarantee, `head_check_meaning` and the verifier's `cannot_check` now say that the
+  digest is a checksum, that anyone who can write the records can produce a
+  consistent set, and that a record without `head_check` cannot be told from a
+  pre-194 one.
+- **A-2, the accident A exists for, by another door.** A copied warrant with
+  `--horizon-labels` and no `--fork` starts a second chain silently. The reviewer
+  proposed a per-user registry of chain heads keyed by warrant digest.
+  **Rejected:** the CLI's contract is that what it relies on sits beside the files
+  it is handed, and a hidden per-machine registry makes a command's verdict depend
+  on state the user cannot see and that differs between machines. The limit is
+  stated instead: a restart from a copied warrant is visible to `chain verify` when
+  both starts are kept, and not otherwise.
+- **C-1, a race.** The no-overwrite check tested `exists()` and then opened the file
+  truncating. **Decision:** a chained record is written with exclusive create, so
+  the refusal and the write are one step.
+- **C-2, a collision.** Two warrants chained on one input file collide at
+  `<input>.recheck-0001.json` and the second exits 2 asking for `-o`; nothing is
+  overwritten. **Rejected:** putting a warrant digest in the default name to avoid
+  it, which would make every chained filename unpredictable to avoid a rare case
+  that already refuses clearly.
+
 ## 195 - A budget picked off the frontier can now be certified at the level the frontier held it to
 
 - **Date:** 2026-09-15
