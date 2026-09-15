@@ -10786,3 +10786,27 @@ they label in. A p-value near 0.05 answers a question they did not ask.
 eleven labels are wrong." No: it means *this file* would have revoked with eleven
 such errors. A VALID recheck is an absence of evidence of breach (143), and the
 dead zone below the critical count is unchanged by this. The render says both.
+
+### 198 review (accenture-c4, read-only, at `1b5d8b2`) -- correct; three changes adopted
+
+Verified by brute force over `recheck._lower_bound_at`, independently of
+`labels.py`: the critical counts (42 at 628, 43 at 648, 7 at 59), every row of the
+table, and the correction of 197's `critical - k`. No defect. Three suggestions,
+all adopted:
+
+**(a) A broken bound withheld the observed disputes too, not just the counts.**
+The counts stay withheld: the errors that would clear a revocation are the
+conservative ones, and a count of them is a recipe. But the likeliest spurious
+revocation is **true positives labelled clean and flagged**, which inflate `k`,
+and `label_2`'s count of those is a measurement, not a recipe. It is what a
+customer contests a revocation with. *Decided:* on a broken bound, the record
+carries that observed count and its double-labelled denominator (EXACT, beside
+kappa). It carries no recomputed bound and no "would not have revoked", and it
+says the verdict stands.
+
+**(b)** The conditional reads "would have revoked", in the past tense.
+
+**(c) The chain replacement was path-dependent.** `apply_chain` is the only
+builder of a chained result today. *Decided:* `cli._recheck` raises before
+writing if a chained result still carries per-file counts or disputes, so a
+future path that skips `apply_chain` fails loudly.
