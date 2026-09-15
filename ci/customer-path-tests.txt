@@ -20,6 +20,7 @@ tests/test_cases_matrix.py
 tests/test_categories.py
 tests/test_cli_records.py
 tests/test_config.py
+tests/test_coordination.py
 tests/test_docs_index.py
 tests/test_drift.py
 tests/test_drift_response.py
@@ -28,6 +29,7 @@ tests/test_economics.py
 tests/test_external.py
 tests/test_external_figures.py
 tests/test_intake.py
+tests/test_intake_ambiguity.py
 tests/test_matrix.py
 tests/test_model.py
 tests/test_model_version.py
@@ -39,6 +41,7 @@ tests/test_redact.py
 tests/test_release_cli.py
 tests/test_release_contract.py
 tests/test_release_evaluate.py
+tests/test_release_render.py
 tests/test_script_wiring.py
 tests/test_sizing.py
 tests/test_store.py
