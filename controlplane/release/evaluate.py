@@ -152,16 +152,25 @@ def evaluate(contract: ReleaseContract, items: ScoredItems, identity: dict, *,
         supported = metric["upper"] <= limit if upper_limit else metric["lower"] >= limit
         violated = (metric["value"] > limit if upper_limit else metric["value"] < limit
                     ) if metric["value"] is not None else False
-        verdict = ("UNVALIDATED" if metric["n"] == 0 else
-                   "VALID" if supported else "REFUSED" if violated else "UNVALIDATED")
-        checks.append({"metric": name, "limit": limit,
-                       "direction": "at_most" if upper_limit else "at_least", "status": verdict})
+        reason = ("missing_denominator" if metric["n"] == 0 else
+                  "bound_cleared" if supported else
+                  "observed_violation" if violated else "inconclusive_bound")
+        # DECISIONS 200: tested-but-inconclusive is a refusal, not "never tested".
+        # Preserve protocol 1 exactly so retained registrations still reproduce.
+        verdict = ("VALID" if reason == "bound_cleared" else "REFUSED")
+        if contract.schema_version == 1 and reason in ("missing_denominator", "inconclusive_bound"):
+            verdict = "UNVALIDATED"
+        check = {"metric": name, "limit": limit,
+                 "direction": "at_most" if upper_limit else "at_least", "status": verdict}
+        if contract.schema_version >= 2:
+            check["reason"] = reason
+        checks.append(check)
     statuses = {check["status"] for check in checks}
     status = ("REFUSED" if "REFUSED" in statuses else
               "UNVALIDATED" if "UNVALIDATED" in statuses else "VALID")
     semantic_rows = sorted((digest({"item_id": i}), int(y), float(s))
                            for i, y, s in zip(items.ids, labels, scores, strict=True))
-    return {"schema_version": 1, "kind": "warrant.release.evaluation",
+    return {"schema_version": contract.schema_version, "kind": "warrant.release.evaluation",
             "contract_id": contract.to_dict()["contract_id"],
             "evaluated_at": evaluated_at, "expires_at": contract.spec.expires_at,
             "identity": identity_for(contract), "data_origin": contract.spec.data_origin,

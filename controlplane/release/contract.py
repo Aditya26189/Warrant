@@ -117,8 +117,11 @@ class ReleaseContract:
     created_at: str
     development_ids: tuple[str, ...]
     holdout_ids: tuple[str, ...]
+    schema_version: int = 2
 
     def __post_init__(self) -> None:
+        if type(self.schema_version) is not int or self.schema_version not in (1, 2):
+            raise ValueError("unsupported contract schema_version")
         if utc_time(self.created_at) >= utc_time(self.spec.expires_at):
             raise ValueError("contract must expire after registration")
         for values in (self.development_ids, self.holdout_ids):
@@ -132,7 +135,7 @@ class ReleaseContract:
 
     def to_dict(self) -> dict:
         """Include the method version in the registration's identity."""
-        body = {"schema_version": 1, "kind": "warrant.release.contract",
+        body = {"schema_version": self.schema_version, "kind": "warrant.release.contract",
                 "spec": asdict(self.spec), "created_at": self.created_at,
                 "development_ids": list(self.development_ids),
                 "holdout_ids": list(self.holdout_ids)}
@@ -143,7 +146,7 @@ class ReleaseContract:
         """Check integrity and structure before a record can affect a result."""
         _keys(value, {"schema_version", "kind", "spec", "created_at",
                       "development_ids", "holdout_ids", "contract_id"}, "contract")
-        if type(value["schema_version"]) is not int or value["schema_version"] != 1:
+        if type(value["schema_version"]) is not int or value["schema_version"] not in (1, 2):
             raise ValueError("unsupported contract schema_version")
         if value["kind"] != "warrant.release.contract":
             raise ValueError("not a release contract")
@@ -154,7 +157,8 @@ class ReleaseContract:
             if not isinstance(value[key], list):
                 raise ValueError(f"{key} must be an array")
         return cls(ReleaseSpec.from_dict(value["spec"]), value["created_at"],
-                   tuple(value["development_ids"]), tuple(value["holdout_ids"]))
+                   tuple(value["development_ids"]), tuple(value["holdout_ids"]),
+                   value["schema_version"])
 
 
 def register(spec: ReleaseSpec, development_ids: Iterable[str],

@@ -17,6 +17,7 @@ def render_evaluation(record: dict, current_status: str) -> str:
     """
     lines = ["WARRANT RELEASE EVIDENCE", f"Current status: {current_status}",
              f"Status at evaluation: {record['status']}",
+             f"Protocol: release/v{record['schema_version']}; simultaneous equal-tailed Clopper-Pearson intervals",
              "Identity: " + json.dumps(record["identity"], sort_keys=True, ensure_ascii=True),
              f"Evaluated: {record['evaluated_at']} | Expires: {record['expires_at']}"]
     if record["data_origin"] == "synthetic":
@@ -33,9 +34,15 @@ def render_evaluation(record: dict, current_status: str) -> str:
                      f"n={lift['n']} confidence={_number(lift['confidence'])} ESTIMATED")
         lines.append("EXACT holdout counts: " + json.dumps(record["counts"], sort_keys=True))
     for check in record["checks"]:
-        lines.append(f"Criterion {check['metric']}: {check['status']}")
+        reason = f" ({check['reason']})" if "reason" in check else ""
+        lines.append(f"Criterion {check['metric']}: {check['status']}{reason}")
     lines.append("VALID means the registered confidence bounds cleared the criteria.")
-    lines.append("REFUSED means an observed rate violated a criterion; it is not proof of a population violation.")
-    lines.append("UNVALIDATED means a bound was inconclusive or a denominator was missing.")
+    if record["schema_version"] == 1:
+        lines.append("LEGACY protocol 1: UNVALIDATED means inconclusive or missing evidence, not an untested study.")
+        lines.append("REFUSED means an observed rate violated a criterion; it is not proof of a population violation.")
+    else:
+        lines.append("REFUSED means the evidence did not clear every bound; this is not proof of a population violation.")
+    lines.append("Release divides alpha across the interval family and both tails; certify uses a one-sided FPR bound.")
+    lines.append("Status is conditional on that protocol; the two workflows' verdicts are not interchangeable.")
     lines.extend(record["assumptions"])
     return "\n".join(lines)

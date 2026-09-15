@@ -72,7 +72,7 @@ def test_failed_criterion_exits_one_only_when_required(workflow):
     assert run("verify", *arguments(workflow)).returncode == 0
 
 
-def test_missing_class_is_unvalidated_only_on_release_path(workflow):
+def test_missing_class_is_a_recorded_refusal_on_release_path(workflow):
     path = workflow / "scores.csv"
     path.write_bytes(path.read_bytes().replace(b",1,0.9", b",0,0.1"))
     with pytest.raises(InputError):
@@ -80,7 +80,8 @@ def test_missing_class_is_unvalidated_only_on_release_path(workflow):
     assert load_scored_items(path, require_both_classes=False).n_positive == 0
     result = run("evaluate", *arguments(workflow), "--require-valid")
     assert result.returncode == 1, result.stderr
-    assert "UNVALIDATED" in result.stdout
+    assert "REFUSED" in result.stdout
+    assert "missing_denominator" in result.stdout
 
 
 def test_changed_scores_are_detected_even_without_changed_counts(workflow):

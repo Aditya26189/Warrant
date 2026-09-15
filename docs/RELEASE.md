@@ -96,9 +96,13 @@ repeated studies or selection among several contracts.
 | Status | Meaning |
 |---|---|
 | VALID | Both registered acceptance bounds clear their limits on this evidence. |
-| REFUSED | An observed rate violates a criterion. This is not proof of a population violation. |
-| UNVALIDATED | A bound is inconclusive or a required denominator is missing. |
+| REFUSED | At least one bound did not clear: observed violation, inconclusive bound or missing denominator. This is not proof of a population violation. |
 | STALE | Verification finds that the registered expiry has passed. |
+
+New registrations use release protocol 2 (DECISIONS 200). Protocol-1 records
+remain verifiable with their original UNVALIDATED spelling for inconclusive or
+missing evidence, explicitly labelled LEGACY in the output. A tested study is
+not the same as an untested warrant-matrix cell.
 
 FPR, recall, precision, flag rate and base rate each receive an exact two-sided
 Clopper-Pearson interval with error allocation `alpha / 5`. Their simultaneous
@@ -107,6 +111,13 @@ names its denominator. Lift uses measured recall divided by measured flag rate;
 its interval conservatively propagates the two bounds. Undefined values and
 unbounded endpoints are explicit. There is no model-selection or lifetime
 monitoring guarantee. See [DECISIONS 184](../DECISIONS.md).
+
+A release verdict is conditional on this simultaneous interval protocol. The
+separate `certify` workflow uses a one-sided FPR bound at alpha; release
+allocates alpha across the interval family and both tails. Identical observed
+counts can therefore clear certify and still be inconclusive in release. Read
+the protocol and registered criteria with the status; the verdicts are not
+interchangeable.
 
 ## Verify retained evidence
 
