@@ -10996,3 +10996,33 @@ positives there are to be wrong, and one that flags more positives exposes the
 certificate to more of the costly kind. Only more negatives, another budget or
 another alpha change the tolerance. Labelling quality among the flagged positives
 changes the exposure.
+
+### 199 correction, found by rereading -- the last paragraph of the results put the unmeasured error in the wrong pool
+
+**Found while drafting the phase report, after the 199 review.** Neither the
+review nor any test covered prose polarity. The results section's closing
+paragraph reads: *"The label error strict cannot see, correct answers missing
+from the alias list, is unmeasured. A 0.20-budget certificate on this file needs
+only 32 such errors among its unflagged negatives to fall below 0.80, about 12%
+of that pool."* **The polarity is wrong.**
+
+A correct answer whose wording is missing from the alias list is labelled
+**incorrect**, which is class 1, a positive:
+- **flagged**, it is the costly flagged-clean error, `(k+1, n+1)`;
+- **unflagged**, it is conservative and never counted.
+
+The 32-of-271 figure belongs to the *opposite* error: an unflagged item labelled
+correct that is really incorrect. That is a wrong answer the lenient rule
+credits because it contains an alias, and the strict disputes are exactly the
+candidates for it.
+
+*Corrected.* At budget 0.20, the error both rules miss needs **8** flagged
+positives that are really correct answers to take a certificate below 0.80. That
+is 8 of 179 flagged positives (4.5%) for `last_token`, 8 of 153 for
+`max_rolling_means`, and 8 of 146 for `mean_pool`. The error the disputes bound
+needs 32 of the 271 unflagged negatives. There are 29 or 30 disputes there, and
+counting all of them as errors leaves 0.8127 to 0.8203.
+
+The correction makes the unmeasured error *more* material than the text said,
+not less. The review's arithmetic check on 32/271 was right; the sentence around
+it was wrong. The phase report carries this correction.
