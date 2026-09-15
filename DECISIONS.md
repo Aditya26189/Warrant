@@ -10463,3 +10463,16 @@ exactly at year end; real files vary (194, F4), and a chain that exhausts its
 horizon early is not live through the last window.
 
 `docs/LIMITATIONS.md` 3.5 and the README claim row are corrected to say so.
+
+**P3's scenario, and what was seen before it was fixed.** The entry (`507a972`)
+names no scenario for P3; the code (`c300d27`) evaluates it on S2 and reports S3
+beside it, the default P1's explicit S2 and P2's use of S3 as the contrast both
+imply. Between those two commits the only simulations run were two-year smoke
+runs inside tests that assert the grid's structure, whose numbers were not read;
+the only figures computed were the recheck sizes, which are in the entry. The
+reading was fixed before any registered number existed, so P3 stands as
+registered. **Its stated mechanism does not**: a chain late in its horizon having
+spent its threshold's slack does not depend on the rate before the change, so it
+predicts the week-39 gap should survive under S3 -- and there it vanishes (1.0000
+at week 39 against 1.0000 at 13 for 1.5x). The prediction held on S2; the reason
+given for it is not supported.
