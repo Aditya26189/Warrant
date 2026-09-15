@@ -221,6 +221,83 @@ def render_summary(result: CertificationResult) -> str:
     return "\n".join(lines)
 
 
+def _recheck_label_lines(result) -> list[str]:
+    """How many wrong labels would have made this recheck revoke (DECISIONS 198)."""
+    lines: list[str] = []
+    sensitivity = result.label_sensitivity
+    if sensitivity is None:
+        return lines
+    lines += ["", "  If the labels are wrong:"]
+    if not sensitivity.computed:
+        lines.append(f"     {sensitivity.reason}.")
+    else:
+        unit = sensitivity.unit
+        lines.append(
+            f"     this file revokes at {sensitivity.revokes_at_count} false positives of "
+            f"{sensitivity.n} negative {unit}; it has {sensitivity.k}."
+            if sensitivity.revokes_at_count is not None else
+            f"     no count of false positives on {sensitivity.n} negative {unit} revokes."
+        )
+        for count, what, pool in (
+            (sensitivity.flagged_clean_to_revoke,
+             "flagged positives that are really clean", sensitivity.flagged_positives),
+            (sensitivity.unflagged_positive_to_revoke,
+             "unflagged negatives that are really positive", sensitivity.n - sensitivity.k),
+        ):
+            lines.append(
+                f"     it would have revoked with {count} {what} (of {pool})"
+                if count is not None else
+                f"     no number of {what} (of {pool}) would have revoked it"
+            )
+        lines += [
+            "     A recheck that does not revoke is still an absence of evidence of",
+            "     breach; these counts say how far this file is from showing one, not",
+            "     that none exists.",
+        ]
+    review = result.second_review
+    if review is None:
+        return lines
+    agreement = review.agreement
+    lines += ["", "  Second reviewer (label_2), which changes no verdict:"]
+    if agreement.kappa is None:
+        lines.append(f"     kappa undefined over {review.n_pairs} pairs: {agreement.undefined_reason}")
+    else:
+        lines.append(
+            f"     kappa {agreement.kappa:.3f} [{agreement.ci_low:.3f}, {agreement.ci_high:.3f}] "
+            f"over {review.n_pairs} pairs"
+        )
+    disputes = review.disputes
+    if disputes is None:
+        lines.append(f"     disputes: {review.disputes_reason}")
+    else:
+        revokes = "would revoke" if disputes.revokes_if_disputes_are_errors else "would not revoke"
+        lines += [
+            f"     {disputes.flagged_positives_disputed} of {disputes.reviewed_flagged_positives} "
+            "double-labelled flagged positives called clean;",
+            f"     {disputes.unflagged_negatives_disputed} of {disputes.reviewed_unflagged_negatives} "
+            "double-labelled unflagged negatives called positive",
+            f"     if every dispute is a primary error, the lower bound is "
+            f"{disputes.lower_bound_if_disputes_are_errors:.4f} and {revokes}",
+        ]
+        if disputes.lower_bound_at_upper_bounds is not None:
+            whole = "would revoke" if disputes.revokes_at_upper_bounds else "would not revoke"
+            lines += [
+                "     whole file, if the double-labelled items were sampled at random:",
+                f"     at most {disputes.flagged_upper_bound} of {disputes.flagged_positives} flagged "
+                f"positives and {disputes.unflagged_upper_bound} of {disputes.unflagged_negatives} "
+                f"unflagged negatives disputed",
+                f"     (each at {(1 - review.alpha) * 100:.0f}%, both together at >= "
+                f"{(1 - 2 * review.alpha) * 100:.0f}%);",
+                f"     lower bound {disputes.lower_bound_at_upper_bounds:.4f}, {whole} "
+                "(a sensitivity at those bounds, not a joint confidence)",
+            ]
+        else:
+            lines.append(f"     whole file: not computed -- {disputes.upper_bound_reason}")
+    for warning in review.warnings:
+        lines.append(f"     warning: {warning}")
+    return lines
+
+
 def render_recheck(result, chain=None) -> str:
     """Render a recheck for a terminal.
 
@@ -322,6 +399,8 @@ def render_recheck(result, chain=None) -> str:
                 "     statement about MISSING DATA in a region rather than a",
                 "     measured shift. The smoothing constant sets its size.",
             ]
+
+    lines += _recheck_label_lines(result)
 
     if chain is not None:
         state = chain.state

@@ -54,6 +54,13 @@ __all__ = [
     "label_sensitivity",
     "second_review",
     "single_label_groups",
+    "RecheckDisputes",
+    "RecheckSensitivity",
+    "chained_sensitivity",
+    "errors_to_revoke",
+    "lower_bound",
+    "recheck_label_sensitivity",
+    "recheck_second_review",
 ]
 
 #: The confidence levels a certificate's label-error sensitivity is read against.
@@ -441,8 +448,52 @@ def second_review(
     :func:`confidence_after`; each pool's whole-file dispute bound by
     :func:`disputes_upper_bound` at ``alpha``, the two jointly at ``>= 1 - 2 alpha``.
     """
+    agreement_part, warnings, reviewed = _agreement(labels, second, seed=seed, resamples=resamples, ci=ci)
+    common = dict(**agreement_part, alpha=alpha)
+    if not certified or grouped:
+        return SecondReview(
+            **common, warnings=warnings,
+            disputes_reason=(
+                "not computed on a refusal (DECISIONS 197)" if not certified else
+                "not computed on a grouped file: label_2 is per item, and a dispute "
+                "inside a group is not a whole-group relabelling (DECISIONS 197)"
+            ),
+        )
+    if threshold is None or k is None:
+        raise ValueError("a certified result carries its threshold and k")
+
+    pools = _pools(labels, second, scores, reviewed, threshold=threshold, k=k, n=n,
+                   alpha=alpha, subject="certificate")
+    at_pairs = confidence_after(
+        k, n, budget, flagged_clean=pools["d1"], unflagged_positive=pools["d2"])
+    at_upper = (
+        confidence_after(k, n, budget, flagged_clean=pools["f_upper"],
+                         unflagged_positive=pools["u_upper"])
+        if pools["f_upper"] is not None and pools["u_upper"] is not None else None
+    )
+    return SecondReview(
+        **common, warnings=warnings + pools["warnings"],
+        disputes=Disputes(
+            flagged_positives=pools["f_population"],
+            reviewed_flagged_positives=pools["f_reviewed"],
+            flagged_positives_disputed=pools["d1"],
+            unflagged_negatives=pools["u_population"],
+            reviewed_unflagged_negatives=pools["u_reviewed"],
+            unflagged_negatives_disputed=pools["d2"],
+            confidence_if_disputes_are_errors=at_pairs,
+            flagged_upper_bound=pools["f_upper"],
+            unflagged_upper_bound=pools["u_upper"],
+            confidence_at_upper_bounds=at_upper,
+            upper_bound_reason=pools["reason"],
+        ),
+    )
+
+
+def _agreement(
+    labels: np.ndarray, second: Sequence[Optional[int]], *, seed: int, resamples: int, ci: float,
+) -> tuple[dict[str, Any], tuple[str, ...], np.ndarray]:
+    """Kappa, the 2x2 table and the per-class pair counts, shared by certify and recheck."""
     labels = np.asarray(labels)
-    scores = np.asarray(scores, dtype=float)
     reviewed = np.array([value is not None for value in second], dtype=bool)
     if reviewed.shape != labels.shape:
         raise ValueError("label_2 must have one entry per item")
@@ -460,23 +511,32 @@ def second_review(
         f"disagreement about {'clean items' if y == 0 else 'positives'} goes unmeasured"
         for y in (0, 1) if pairs_by_label[y] == 0
     )
-    common = dict(
+    part = dict(
         n_pairs=int(reviewed.sum()), pairs_by_label=pairs_by_label, table=table,
-        agreement=agreement, alpha=alpha,
+        agreement=agreement,
     )
+    return part, warnings, reviewed
 
-    if not certified or grouped:
-        return SecondReview(
-            **common, warnings=warnings,
-            disputes_reason=(
-                "not computed on a refusal (DECISIONS 197)" if not certified else
-                "not computed on a grouped file: label_2 is per item, and a dispute "
-                "inside a group is not a whole-group relabelling (DECISIONS 197)"
-            ),
-        )
-    if threshold is None or k is None:
-        raise ValueError("a certified result carries its threshold and k")
 
+def _pools(
+    labels: np.ndarray,
+    second: Sequence[Optional[int]],
+    scores: np.ndarray,
+    reviewed: np.ndarray,
+    *,
+    threshold: float,
+    k: int,
+    n: int,
+    alpha: float,
+    subject: str,
+) -> dict[str, Any]:
+    """The two flattering pools at ``threshold``: sizes, reviewed, disputed, and bounds.
+
+    Items only. ``k`` and ``n`` must be the same file's item counts, which is
+    checked, so a caller cannot pair these disputes with another unit's bound.
+    """
+    labels = np.asarray(labels)
+    scores = np.asarray(scores, dtype=float)
     second_full = np.array([-1 if value is None else value for value in second], dtype=int)
     flagged = scores >= threshold
     flagged_positive = flagged & (labels == 1)
@@ -489,9 +549,9 @@ def second_review(
     u_reviewed = int((unflagged_negative & reviewed).sum())
     d1 = int((flagged_positive & (second_full == 0)).sum())
     d2 = int((unflagged_negative & (second_full == 1)).sum())
-    at_pairs = confidence_after(k, n, budget, flagged_clean=d1, unflagged_positive=d2)
 
-    reasons = []
+    reasons: list[str] = []
+    warnings: tuple[str, ...] = ()
     f_upper: Optional[int] = None
     if f_population == 0:
         f_upper = 0
@@ -500,9 +560,9 @@ def second_review(
             "no flagged positive was double-labelled, so the error that costs most per "
             "item went unreviewed"
         )
-        warnings = warnings + (
+        warnings += (
             f"none of the {f_population} flagged positives was double-labelled: the "
-            "label error that costs this certificate most per item was not reviewed",
+            f"label error that costs this {subject} most per item was not reviewed",
         )
     else:
         f_upper = disputes_upper_bound(d1, f_reviewed, f_population, alpha)
@@ -512,30 +572,303 @@ def second_review(
             "no unflagged negative was double-labelled, so the error that realistic "
             "noise makes material on a large file went unreviewed"
         )
-        warnings = warnings + (
+        warnings += (
             f"none of the {u_population} unflagged negatives was double-labelled: an "
-            "unflagged negative that is really positive also flatters this certificate",
+            f"unflagged negative that is really positive also flatters this {subject}",
         )
     else:
         u_upper = disputes_upper_bound(d2, u_reviewed, u_population, alpha)
-    at_upper = (
-        confidence_after(k, n, budget, flagged_clean=f_upper, unflagged_positive=u_upper)
-        if f_upper is not None and u_upper is not None else None
+    return dict(
+        f_population=f_population, u_population=u_population,
+        f_reviewed=f_reviewed, u_reviewed=u_reviewed, d1=d1, d2=d2,
+        f_upper=f_upper, u_upper=u_upper, warnings=warnings, reason="; ".join(reasons),
     )
 
+
+# ------------------------------------------------------------------ recheck (198)
+
+def lower_bound(k: int, n: int, alpha: float) -> float:
+    """One-sided Clopper-Pearson lower bound for ``k`` of ``n``, the bound a recheck revokes on.
+
+    The same formula as ``intake.recheck._lower_bound_at``, kept here so this
+    module does not import the recheck it annotates; a test holds them equal.
+    """
+    if n <= 0:
+        raise ValueError("n must be positive")
+    if k <= 0:
+        return 0.0
+    return float(stats.beta.ppf(alpha, k, n - k + 1))
+
+
+def errors_to_revoke(
+    k: int, n: int, budget: float, alpha: float, limit: int, *, kind: str,
+) -> Optional[int]:
+    """The fewest errors of one kind at which this recheck's counts would revoke.
+
+    Quantity: the smallest ``a`` in ``1..limit`` with ``lower(k+a, n+a) > budget``
+    (``kind="flagged_clean"``), or the smallest ``b`` in ``1..limit`` with
+    ``lower(k, n-b) > budget`` (``kind="unflagged_positive"``). Propagation: exact;
+    every count up to ``limit`` is evaluated, so no monotonicity is assumed.
+    ``None`` when none revokes.
+    """
+    if limit <= 0:
+        return None
+    e = np.arange(1, limit + 1)
+    if kind == FLAGGED_CLEAN:
+        lows = stats.beta.ppf(alpha, k + e, n - k + 1)
+    elif kind == UNFLAGGED_POSITIVE:
+        if limit > n - k:
+            raise ValueError(f"only {n - k} unflagged negatives can be relabelled, not {limit}")
+        remaining = n - e
+        if k <= 0:
+            return None
+        lows = np.where(remaining >= k, stats.beta.ppf(alpha, k, np.maximum(remaining - k + 1, 1)), 1.0)
+    else:
+        raise ValueError(f"unknown error kind {kind!r}")
+    hit = np.flatnonzero(lows > budget)
+    return int(e[hit[0]]) if hit.size else None
+
+
+_RECHECK_MEANING = (
+    "How many labels of each kind would have to be wrong for this file's own bound "
+    "test to have revoked. A VALID recheck remains an absence of evidence of breach, "
+    "not evidence that the promise holds, whatever the verdict; these counts do not "
+    "change that."
+)
+
+
+@dataclasses.dataclass(frozen=True)
+class RecheckSensitivity:
+    """How many wrong labels would have turned this recheck into a revocation."""
+
+    computed: bool
+    reason: str = ""
+    unit: str = "items"
+    k: Optional[int] = None
+    n: Optional[int] = None
+    revokes_at_count: Optional[int] = None
+    flagged_positives: Optional[int] = None
+    flagged_clean_to_revoke: Optional[int] = None
+    unflagged_positive_to_revoke: Optional[int] = None
+
+    def to_payload(self) -> dict[str, Any]:
+        if not self.computed:
+            return {"computed": False, "reason": self.reason}
+        return {
+            "computed": True,
+            "kind": MetricKind.EXACT.value,
+            "meaning": _RECHECK_MEANING,
+            "direction": _DIRECTION,
+            "unit": self.unit,
+            "false_positives": self.k,
+            "negatives": self.n,
+            "revokes_at_false_positives": self.revokes_at_count,
+            "flagged_positive_really_clean": {
+                f"flagged_positive_{self.unit}": self.flagged_positives,
+                "errors_to_revoke": self.flagged_clean_to_revoke,
+            },
+            "unflagged_negative_really_positive": {
+                f"unflagged_negative_{self.unit}": (
+                    None if self.n is None or self.k is None else self.n - self.k
+                ),
+                "errors_to_revoke": self.unflagged_positive_to_revoke,
+            },
+        }
+
+
+def recheck_label_sensitivity(
+    *,
+    bound_holds: Optional[bool],
+    grouped: bool,
+    single_label: bool,
+    k: Optional[int],
+    n: int,
+    flagged_positives: Optional[int],
+    budget: float,
+    alpha: float,
+) -> RecheckSensitivity:
+    """The recheck's label-error counts, or why there are none (``DECISIONS.md`` 198)."""
+    if bound_holds is None:
+        return RecheckSensitivity(
+            computed=False,
+            reason="not computed: the file has no negatives, so nothing was tested (DECISIONS 198)",
+        )
+    if bound_holds is False:
+        return RecheckSensitivity(
+            computed=False,
+            reason=(
+                "not computed: the bound has already broken. The errors that flatter it "
+                "only deepen a breach, and the ones that would clear a revocation are "
+                "never counted -- that count would be a recipe (DECISIONS 198)"
+            ),
+        )
+    if grouped and not single_label:
+        return RecheckSensitivity(
+            computed=False,
+            reason=(
+                "not computed: a group holds both labels, so relabelling an item "
+                "changes its group's negative size and no corrected count is defined "
+                "(DECISIONS 197, 198)"
+            ),
+        )
+    if k is None or flagged_positives is None:
+        raise ValueError("a tested recheck carries k and its flagged positives")
+    revokes_at = next((c for c in range(1, n + 1) if lower_bound(c, n, alpha) > budget), None)
+    return RecheckSensitivity(
+        computed=True,
+        unit="groups" if grouped else "items",
+        k=k, n=n, revokes_at_count=revokes_at,
+        flagged_positives=flagged_positives,
+        flagged_clean_to_revoke=errors_to_revoke(
+            k, n, budget, alpha, flagged_positives, kind=FLAGGED_CLEAN),
+        unflagged_positive_to_revoke=errors_to_revoke(
+            k, n, budget, alpha, n - k, kind=UNFLAGGED_POSITIVE),
+    )
+
+
+def chained_sensitivity() -> RecheckSensitivity:
+    """What a chained recheck carries instead of the counts (198)."""
+    return RecheckSensitivity(
+        computed=False,
+        reason=(
+            "not computed on a chained recheck: one file's bound is evidence, the "
+            "chain's statistic decides, and what an error does to that statistic "
+            "depends on where the unit sits in the chain (DECISIONS 198)"
+        ),
+    )
+
+
+@dataclasses.dataclass(frozen=True)
+class RecheckDisputes:
+    """At the warrant's threshold on the fresh file, the disputes that could hide a breach."""
+
+    flagged_positives: int
+    reviewed_flagged_positives: int
+    flagged_positives_disputed: int
+    unflagged_negatives: int
+    reviewed_unflagged_negatives: int
+    unflagged_negatives_disputed: int
+    lower_bound_if_disputes_are_errors: float
+    revokes_if_disputes_are_errors: bool
+    flagged_upper_bound: Optional[int]
+    unflagged_upper_bound: Optional[int]
+    lower_bound_at_upper_bounds: Optional[float]
+    revokes_at_upper_bounds: Optional[bool]
+    upper_bound_reason: str = ""
+
+    def to_payload(self, alpha: float) -> dict[str, Any]:
+        whole: dict[str, Any]
+        if self.lower_bound_at_upper_bounds is None:
+            whole = {"computed": False, "reason": self.upper_bound_reason}
+        else:
+            whole = {
+                "computed": True,
+                "kind": MetricKind.ESTIMATED.value,
+                "flagged_positive_disputes_at_most": self.flagged_upper_bound,
+                "flagged_positive_n": self.reviewed_flagged_positives,
+                "unflagged_negative_disputes_at_most": self.unflagged_upper_bound,
+                "unflagged_negative_n": self.reviewed_unflagged_negatives,
+                "alpha_each": alpha,
+                "joint_level": (
+                    f"each bound holds at 1 - alpha; both hold together at >= "
+                    f"{1 - 2 * alpha:.4f}, by the union bound"
+                ),
+                "assumes": (
+                    "the double-labelled items in each pool are a simple random sample "
+                    "of that pool; Warrant cannot see how they were chosen"
+                ),
+                "lower_bound_if_all_are_errors": self.lower_bound_at_upper_bounds,
+                "would_revoke": self.revokes_at_upper_bounds,
+                "meaning": (
+                    "This file's lower bound if the disputes are at those bounds and "
+                    "every one is a primary error: a sensitivity at upper confidence "
+                    "bounds, not a joint confidence, and it changes no verdict."
+                ),
+            }
+        return {
+            "kind": MetricKind.EXACT.value,
+            "flagged_positives": self.flagged_positives,
+            "reviewed_flagged_positives": self.reviewed_flagged_positives,
+            "flagged_positives_label_2_calls_clean": self.flagged_positives_disputed,
+            "unflagged_negatives": self.unflagged_negatives,
+            "reviewed_unflagged_negatives": self.reviewed_unflagged_negatives,
+            "unflagged_negatives_label_2_calls_positive": self.unflagged_negatives_disputed,
+            "lower_bound_if_every_dispute_is_a_primary_error": (
+                self.lower_bound_if_disputes_are_errors
+            ),
+            "would_revoke_if_every_dispute_is_a_primary_error": (
+                self.revokes_if_disputes_are_errors
+            ),
+            "worst_case_meaning": (
+                "Every disagreement among the pairs counted against the primary label: "
+                "a worst case over the pairs, not a bound on the truth."
+            ),
+            "whole_file": whole,
+        }
+
+
+def recheck_second_review(
+    labels: np.ndarray,
+    second: Sequence[Optional[int]],
+    scores: np.ndarray,
+    *,
+    threshold: float,
+    k: Optional[int],
+    n: int,
+    budget: float,
+    alpha: float,
+    bound_holds: Optional[bool],
+    grouped: bool,
+    seed: int,
+    resamples: int,
+    ci: float,
+) -> SecondReview:
+    """Kappa on a recheck file, and the disputes that could hide a breach (198).
+
+    Quantity: as :func:`second_review`, with the recheck's decision in place of the
+    certificate's confidence: this file's one-sided lower bound with the disputes
+    counted as errors, and whether it clears the budget. Propagation: exact
+    Clopper-Pearson lower bound; each pool's dispute bound by
+    :func:`disputes_upper_bound` at ``alpha``, jointly ``>= 1 - 2 alpha``.
+    """
+    agreement_part, warnings, reviewed = _agreement(labels, second, seed=seed, resamples=resamples, ci=ci)
+    common = dict(**agreement_part, alpha=alpha)
+    reason = ""
+    if bound_holds is None:
+        reason = "not computed: the file has no negatives (DECISIONS 198)"
+    elif bound_holds is False:
+        reason = "not computed: the bound has already broken (DECISIONS 198)"
+    elif grouped:
+        reason = (
+            "not computed on a grouped file: label_2 is per item, and a dispute inside "
+            "a group is not a whole-group relabelling (DECISIONS 197, 198)"
+        )
+    if reason:
+        return SecondReview(**common, warnings=warnings, disputes_reason=reason)
+    if k is None:
+        raise ValueError("a tested recheck carries k")
+
+    pools = _pools(labels, second, scores, reviewed, threshold=threshold, k=k, n=n,
+                   alpha=alpha, subject="recheck")
+    low_pairs = lower_bound(k + pools["d1"], n + pools["d1"] - pools["d2"], alpha)
+    low_upper: Optional[float] = None
+    if pools["f_upper"] is not None and pools["u_upper"] is not None:
+        low_upper = lower_bound(k + pools["f_upper"], n + pools["f_upper"] - pools["u_upper"], alpha)
     return SecondReview(
-        **common, warnings=warnings,
-        disputes=Disputes(
-            flagged_positives=f_population,
-            reviewed_flagged_positives=f_reviewed,
-            flagged_positives_disputed=d1,
-            unflagged_negatives=u_population,
-            reviewed_unflagged_negatives=u_reviewed,
-            unflagged_negatives_disputed=d2,
-            confidence_if_disputes_are_errors=at_pairs,
-            flagged_upper_bound=f_upper,
-            unflagged_upper_bound=u_upper,
-            confidence_at_upper_bounds=at_upper,
-            upper_bound_reason="; ".join(reasons),
+        **common, warnings=warnings + pools["warnings"],
+        disputes=RecheckDisputes(
+            flagged_positives=pools["f_population"],
+            reviewed_flagged_positives=pools["f_reviewed"],
+            flagged_positives_disputed=pools["d1"],
+            unflagged_negatives=pools["u_population"],
+            reviewed_unflagged_negatives=pools["u_reviewed"],
+            unflagged_negatives_disputed=pools["d2"],
+            lower_bound_if_disputes_are_errors=low_pairs,
+            revokes_if_disputes_are_errors=low_pairs > budget,
+            flagged_upper_bound=pools["f_upper"],
+            unflagged_upper_bound=pools["u_upper"],
+            lower_bound_at_upper_bounds=low_upper,
+            revokes_at_upper_bounds=None if low_upper is None else low_upper > budget,
+            upper_bound_reason=pools["reason"],
         ),
     )

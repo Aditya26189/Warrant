@@ -137,6 +137,11 @@ class RecheckResult:
     #: measured shift there, and must not revoke a warrant on its own.
     psi_driven_by_smoothing: bool = False
     psi_epsilon: Optional[float] = None
+    #: How many wrong labels would have made this file revoke, or why that is not
+    #: computed (:class:`controlplane.intake.labels.RecheckSensitivity`, DECISIONS 198).
+    label_sensitivity: Optional[Any] = None
+    #: ``label_2`` measured beside the recheck, when the file has the column (198).
+    second_review: Optional[Any] = None
 
     @property
     def still_valid(self) -> bool:
@@ -186,6 +191,20 @@ class RecheckResult:
                     "PSI is compared against a null simulated at this file's own "
                     "sample size, not against the 0.10/0.25 folklore bands, which "
                     "are not scale-free (DECISIONS 070)."
+                ),
+            },
+            "labels": {
+                "decision": "DECISIONS.md 198",
+                "tested_on": "the label column; label_2 changes no verdict",
+                "sensitivity": (
+                    self.label_sensitivity.to_payload()
+                    if self.label_sensitivity is not None else None
+                ),
+                "second_review": (
+                    self.second_review.to_payload() if self.second_review is not None
+                    else {"present": False, "note": (
+                        "no label_2 column: agreement between reviewers is not measured"
+                    )}
                 ),
             },
         }
@@ -321,6 +340,36 @@ def recheck_items(
         psi, null_p95, beyond_noise, assessed, skip_reason,
         smoothed, by_smoothing, epsilon,
     )
+
+    # --- how far does it depend on its labels? (DECISIONS 198) ----------
+    # Computed from the counts above and fed back into nothing.
+    from .labels import recheck_label_sensitivity, recheck_second_review, single_label_groups
+
+    grouped = groups is not None
+    single_label = not grouped or single_label_groups(labels, groups)
+    k_now = int((negatives >= threshold).sum()) if negatives.size else None
+    flagged_positives: Optional[int] = None
+    if bound_holds and not grouped:
+        flagged_positives = int(((scores >= threshold) & (labels == 1)).sum())
+    elif bound_holds and single_label:
+        flagged_positives = len({
+            g for g, y, s in zip(groups, labels, scores, strict=True)
+            if y == 1 and s >= threshold
+        })
+    sensitivity = recheck_label_sensitivity(
+        bound_holds=bound_holds, grouped=grouped, single_label=single_label,
+        k=k_now, n=int(negatives.size), flagged_positives=flagged_positives,
+        budget=budget, alpha=alpha,
+    )
+    review = None
+    if items.second_labels is not None:
+        review = recheck_second_review(
+            labels, items.second_labels, scores,
+            threshold=threshold, k=k_now, n=int(negatives.size), budget=budget,
+            alpha=alpha, bound_holds=bound_holds, grouped=grouped,
+            seed=config.seed, resamples=config.validation.bootstrap_samples,
+            ci=config.validation.ci,
+        )
     return dataclasses.replace(
         verdict, power_against_1_5x_budget=power_here, recheck_power=power,
         unit=unit, n_negative_now=int(negatives.size),
@@ -328,6 +377,7 @@ def recheck_items(
             config, assessed=assessed, psi=psi, beyond_noise=beyond_noise,
             by_smoothing=by_smoothing,
         ),
+        label_sensitivity=sensitivity, second_review=review,
     )
 
 
@@ -649,6 +699,20 @@ def apply_chain(result: RecheckResult, fed: Any) -> RecheckResult:
     when both fire (194, F1). Every reason says where the chain is, whether this
     file's units all reached it, and whether it has ended (194, F2).
     """
+    from .labels import chained_sensitivity
+
+    # 198: a per-file count would read as the chain's, which it is not.
+    result = dataclasses.replace(
+        result,
+        label_sensitivity=chained_sensitivity(),
+        second_review=(
+            dataclasses.replace(
+                result.second_review, disputes=None,
+                disputes_reason=chained_sensitivity().reason,
+            )
+            if result.second_review is not None else None
+        ),
+    )
     state = fed.state
     notes = [
         f"In the chain: statistic {state.mean_statistic:,.1f} against a revocation "
