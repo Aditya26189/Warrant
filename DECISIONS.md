@@ -11026,3 +11026,52 @@ counting all of them as errors leaves 0.8127 to 0.8203.
 The correction makes the unmeasured error *more* material than the text said,
 not less. The review's arithmetic check on 32/271 was right; the sentence around
 it was wrong. The phase report carries this correction.
+
+## 200 - The clean-clone gate names what it tested: one commit, at clone time, and a record that refuses to disagree
+
+- **Date:** 2026-09-15
+- **Status:** DECIDED
+
+**Found by accenture-c4 while the gate ran at `1a3fd58`**, while a fix to the
+phase report waited so as not to disturb it. The gate passed, and its record's
+two commits agree only because nothing was committed during the run. Two races
+had nothing refusing them:
+
+1. **Between the source's HEAD and the clone.** `run_clean_clone_gate` reads
+   `git rev-parse HEAD` in the source, then clones it as a separate step. A commit
+   landing between the two means the clone tests one commit and the record names
+   another.
+2. **Between the run and the record.** `scripts/clean_clone_gate.py` calls
+   `provenance(config)` inside `write_artifact`, after a run of about 37 minutes
+   (2,165.6 s of tests at `1a3fd58`), while `result.commit` is the HEAD read at the
+   start. If the source commits, switches branch or goes dirty in between,
+   `results/clean_clone.json` carries `commit`, what was tested, beside
+   `provenance.git_commit`, what the tree was at write time. Its `dirty` flag
+   describes the wrong moment.
+
+That is the class of silent mismatch the gate exists to rule out.
+
+**Decided.**
+
+- **The clone's own HEAD must equal the recorded commit.** It is read inside the
+  clone right after cloning, and a mismatch is a failed step named
+  `clone matches source HEAD`. The gate fails, since it tested something it
+  cannot name.
+- **Provenance is captured before cloning.** The record describes the moment of
+  the test, not the moment of writing.
+- **At write time the record refuses to disagree.** `check_record` compares the
+  provenance from before cloning, the provenance at write time and
+  `result.commit`. If the source was dirty at clone time, or its commit or dirty
+  state changed during the run, it refuses: exit 1, and no artifact. The rendered
+  outcome still prints, so a 37-minute run is not silent, but nothing is written
+  that names a state nobody tested.
+
+**Rejected: write anyway with both provenance blocks.** A record with two commits
+asks its reader to work out which one passed, which is the ambiguity being
+removed. **Rejected: only capture provenance early.** That fixes the record's
+moment, and it still lets a source that changed mid-run publish a pass for a
+commit nobody can check out as it was.
+
+**The objection.** "Refusing to write loses a long run over an edit." The
+alternative is an artifact whose provenance is wrong. A rerun costs 37 minutes; a
+wrong gate record costs the gate's meaning.
