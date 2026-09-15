@@ -10658,3 +10658,59 @@ treatment on the recheck record, counted against the critical count.
 safe." The record names it the confidence at which the budget still clears if one
 flagged positive is really clean. It is not a probability that the detector is
 within budget, and the render says so in those words.
+
+### 197 review (accenture-c4, read-only, at `aa7b0af`) -- the second flattering error, and a composite on two scales
+
+The duality, the table, the hypergeometric bound, the render's "not a
+probability" wording and the withholding on refusals held. Four findings, all
+accepted; the fourth with a narrower premise.
+
+**F1 -- the per-certificate figure named one flattering error of two.** An
+**unflagged item labelled negative that is really positive** takes `(k, n)` to
+`(k, n-1)`: a clean negative that did not fire is removed, so the truth has fewer
+negatives than the file claims. The entry's direction text listed the two
+conservative errors and not this one, so it read as though the first were the
+only way labels flatter. Per error it is weak; at realistic noise it is not. At
+3.3% of the unflagged negatives (Northcutt et al.):
+
+| `n` | `k` | errors | c | errors to fall below 0.90 / 0.80 / 0.50 |
+|---|---|---|---|---|
+| 5,000 | 224 | 158 | 0.878 | 122 / 257 / 507 |
+| 628 | 22 | 20 | 0.934 | 46 / 93 / 175 |
+| 59 | 0 | 2 | 0.946 | 15 / 28 / 46 |
+
+On the large file, where one flagged error costs under a point, this is the
+error that realistic noise makes material. *Decided:* every certificate carries
+both ladders, exact, from the same formula: `c = 1 - P(Bin(n+a-b, B) <= k+a)`
+with `a` flagged clean errors and `b` unflagged positive ones. The direction text
+names both flattering errors and both conservative ones.
+
+**F2 -- the whole-file figure extrapolated one direction and counted the
+other.** `D_up` extrapolated flagged-positive disputes over every flagged
+positive, but `d2` entered only as counted among the pairs. The unflagged
+negatives are the large pool and are the least double-labelled, so the figure
+understated F1's error exactly where it matters. *Decided:* `d2` is extrapolated
+the same way. The exact hypergeometric upper bound over the `n-k` unflagged
+negatives comes from the double-labelled ones, at alpha. The two bounds hold
+jointly at `>= 1 - 2 alpha` by the union bound, and the record says so. The
+file-level figure is not computed when either pool has no double-labelled item,
+with the reason. A file with no flagged positive has a flagged bound of 0, not a
+missing one.
+
+**F3 -- a sensitivity evaluated at an upper confidence bound is not a joint
+confidence.** Two levels are in play: alpha on the dispute bounds, and `c` on the
+certificate. *Decided:* the record says `c` there is the certificate's confidence
+if the disputes are at their bounds and are all errors, and that it must not be
+composed with the bounds' level into one figure.
+
+**F4 -- grouped files.** The review argued that certifying grouped files already
+have single-label groups, so whole-group relabelling is well defined in cluster
+units. **The premise is not quite true.** A file whose every group holds one
+positive and one negative has negative clusters of size 1, all equal, and
+certifies. *Decided:* on a grouped file whose groups each carry one label,
+both ladders are reported in whole-group units. A positive group with any member
+at or above the threshold is a flagged positive group. `(k+1, n+1)` and `(k, n-1)`
+are then defined, because group sizes do not change. On a grouped file with any
+mixed group, the figure is not computed, with the reason. Disputes on grouped
+files stay uncomputed. `label_2` is per item, and a dispute inside a group is not
+a whole-group relabelling. Kappa is still reported.
