@@ -10912,3 +10912,51 @@ fitted to the results:
 - **The README row is a range over `N` certified rows, with `N` stated.** Its two
   ends are extremes selected from up to 60 rows, and neither is one
   certificate's figure.
+
+### 199 results -- C0 and P1 hold; P2 fails; the sensitivity belongs to the evidence, not the detector
+
+- **Run:** `python scripts/32_label_sensitivity.py --config config.yaml` at `bb800be`,
+  clean tree; `results/label_sensitivity/triviaqa.json`, committed at `7a6e93c`.
+  All 60 rows (3 sets x 20 budgets) certified.
+- **C0 holds.** On the 20 `last_token` rows `sweep.json` covers, the customer path
+  reproduces every status, threshold and `k`. The other 40 rows are `null`, per
+  the amendment.
+- **P1 holds.** One flagged positive that is really clean takes every certificate
+  below 0.95; the highest is 0.94982. As the amendment says, P1 could fail at
+  `n` = 323 only through ties or threshold slack, and there are none: every set's
+  negative scores are untied.
+- **P2 fails as registered.** Every dispute counted as a lenient error (29 to 41
+  per row, all `label` 0 with `label_2` 1, so `d1` = 0) takes no certificate
+  below 0.80. The lowest is **0.8127** (`last_token`, budget 0.20), the highest
+  0.9412 (budget 0.01). The registration named this outcome as possible, because
+  the dispute kind at work costs little per error at this `n`; it is still a
+  failed prediction.
+- **Reported, as registered, as a range over the 60 certified rows:**
+  - flagged-clean errors to fall below 0.80, **2 to 8**;
+  - confidence at the disputes, **0.8127 to 0.9412**;
+  - kappa between the two rules, **0.8640 [0.8213, 0.9035]** over 600 pairs,
+    observed agreement 0.9317.
+- **Descriptive, not registered:**
+  - unflagged-positive errors to fall below 0.80 range from 32 to 163;
+  - 42 of the 60 rows fall below 0.90 at the disputes;
+  - at budget 0.01, `last_token` flags 3 positives and 2 of them being clean
+    takes its certificate below 0.80.
+
+**Not predicted: the sensitivity is identical across the three detectors.** At
+every budget the three sets certify with the same `k`, and so the same `c(0)` and
+the same two ladders. They differ only in how many positives they flag and how
+many disputes fall where. The reason is structural. On untied scores the lowest
+certifying threshold admits exactly the largest count that clears the budget at
+`n` = 323, and `k` equals that count on every row (checked). So a certificate's
+label-error sensitivity is a property of **how many negatives it was certified on
+and at what budget**, not of the detector. A customer cannot buy a less fragile
+certificate with a better detector at the same `n`; only more negatives, or
+another budget, change it. Stated as a consequence of the rule, it holds wherever
+scores are untied, and it does not need this data.
+
+**What it does not establish.** Strict EM is not a better labeller, so P2's failure
+says the strict/lenient ambiguity alone does not break these certificates. It
+does not say their labels are right. The label error strict cannot see, correct
+answers missing from the alias list, is unmeasured. A 0.20-budget certificate on
+this file needs only 32 such errors among its unflagged negatives to fall below
+0.80, about 12% of that pool. Nothing here says whether that many exist.
