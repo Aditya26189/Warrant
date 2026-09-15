@@ -242,6 +242,56 @@ def _remove_clone(path: Path, attempts: int = 3) -> str:
     return "" if not path.exists() else last
 
 
+def head_step(source_commit: str, clone_commit: str) -> StepResult:
+    """Whether the clone is the commit the record will name (``DECISIONS.md`` 200).
+
+    The source's HEAD is read before a separate ``git clone``, so a commit landing
+    between the two would have the gate test one commit and name another.
+    """
+    matches = bool(source_commit) and source_commit == clone_commit
+    return StepResult(
+        name="clone matches source HEAD",
+        command=["git", "rev-parse", "HEAD"],
+        returncode=0 if matches else 1,
+        duration_seconds=0.0,
+        ok=matches,
+        detail="" if matches else (
+            f"the source's HEAD was {source_commit[:12] or '(unreadable)'} and the clone's is "
+            f"{clone_commit[:12] or '(unreadable)'}; the gate would test a commit it does not name"
+        ),
+    )
+
+
+def check_record(result: GateResult, before: dict, after: dict) -> Optional[str]:
+    """Why the gate's record must not be written, or ``None`` when it may (200).
+
+    ``before`` is the source's provenance taken before cloning, ``after`` at write
+    time. The record may name one state only: the commit cloned, clean at clone
+    time, and unchanged by the time it is written. Anything else would publish a
+    pass, or a failure, for a state nobody tested.
+    """
+    if before.get("dirty"):
+        return (
+            "the source tree was dirty when it was cloned, so its uncommitted changes "
+            "were not tested and the record would describe a tree that differs from "
+            "the clone. Commit or stash, then rerun."
+        )
+    if before.get("git_commit") != result.commit:
+        return (
+            f"provenance before cloning names {str(before.get('git_commit'))[:12]} but the "
+            f"gate cloned {result.commit[:12]}; the source moved while the gate started."
+        )
+    if after.get("git_commit") != result.commit or after.get("dirty"):
+        return (
+            f"the source changed during the run: it was {result.commit[:12]}, clean, when "
+            f"cloned, and is {str(after.get('git_commit'))[:12]}"
+            f"{', dirty' if after.get('dirty') else ''} now. The outcome above stands for "
+            "the commit cloned, but no record is written that a later reader could pair "
+            "with the wrong tree. Rerun from an unchanging checkout."
+        )
+    return None
+
+
 def run_clean_clone_gate(
     root: Path,
     *,
@@ -284,6 +334,14 @@ def run_clean_clone_gate(
         )
         result.steps.append(cloned)
         if not cloned.ok:
+            result.ok = False
+            return result
+        clone_commit = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=str(target), capture_output=True, text=True,
+        ).stdout.strip()
+        matched = head_step(commit, clone_commit)
+        result.steps.append(matched)
+        if not matched.ok:
             result.ok = False
             return result
 
