@@ -10810,3 +10810,72 @@ says the verdict stands.
 builder of a chained result today. *Decided:* `cli._recheck` raises before
 writing if a chained result still carries per-file counts or disputes, so a
 future path that skips `apply_chain` fails loudly.
+
+## 199 - The project's own measured certificates under label error, with its strict matching rule as a second labeller, pre-registered
+
+- **Date:** 2026-09-15
+- **Status:** PRE-REGISTERED (this entry); results appended after the run
+
+197 and 198 gave every customer certificate a label-error sensitivity. So far it
+has been computed on arithmetic and synthetic files, never on a measured
+warrant. This project has measured warrants, and labels made by a rule known to
+be ambiguous. The TriviaQA labels are **lenient alias matching** (052, 054). The
+same generations were also graded by **strict exact match**, and the two rules
+disagree on 6.75% of the 2,400 items (054). The strict label is recomputable from
+the frozen eval set's responses and aliases, with no GPU.
+
+**Seen before this entry was written, and nothing else:** on the 600-item test
+split behind `results/scores/validation-T1-*.json`, the recomputed lenient label
+reproduces every committed label (0 mismatches). Strict disagrees with lenient on
+**41** items, and **all 41 are lenient-correct, strict-incorrect**. No
+certificate, ladder or dispute count at a threshold has been computed on these
+files.
+
+**Design.**
+
+- **Score sets:** the three measured test-split sets `validation-T1-last_token`,
+  `-max_rolling_means` and `-mean_pool`: the same 600 questions, 277 positive and
+  323 negative.
+- **Budgets:** the D2 grid, 0.01 to 0.20 in steps of 0.01 (20 per set, 60 rows),
+  alpha 0.05, certified by `intake.certify_items`.
+- **Labels:** `label` is the committed lenient label. `label_2` is
+  `extract.triviaqa.is_exact_match` on the frozen response and aliases, on every
+  item, so every dispute count is exact and no bound is extrapolated.
+- **Reported per certified row:** threshold, `k`, `n`; `c(0)`; both ladders
+  (confidence after one error, and errors to fall below 0.90, 0.80 and 0.50);
+  kappa between the rules; `d1`, `d2`; and `c` with every dispute counted as a
+  lenient error.
+- **Run:** clean tree; results to `results/label_sensitivity/triviaqa.json`.
+
+**Registered checks and predictions.**
+
+- **C0, must hold or the run stops:** every row's certified status, threshold and
+  `k` reproduce `results/fpr_sweep/sweep.json`'s in-sample rows for the same set
+  and budget. A mismatch means the customer path and the research path certify
+  differently, and that is the finding.
+- **P1:** every certified row has `c(1)` for a flagged-clean error below 0.95.
+  It follows from the lowest-threshold rule except where ties or the grid leave
+  slack, which is what it tests.
+- **P2:** on at least one certified row, counting every strict-lenient dispute as
+  a lenient error takes `c` below 0.80. Uncertain. Every observed dispute is of
+  the second kind (lenient-correct, the item labelled negative), so its effect
+  runs through unflagged negatives removed from `n`. Per 197's review, that costs
+  little per error at this `n`, and 41 disputes spread over flagged and unflagged
+  items may not be enough.
+- **Reported with no pass or fail:** the minimum and maximum across certified
+  rows of `c` at the disputes, and of the flagged-clean errors to fall below
+  0.80. These go into one README claim row, whatever they are.
+
+**What the strict label is and is not.** It is not a better labeller. Strict EM
+marks correct paraphrases wrong, which 052 is the record of. Counting its
+disagreements as lenient errors asks what the certificates would say if the
+lenient rule's extra credit were all wrong. That is a bound on one identified
+ambiguity of this labelling rule, not an estimate of its label error. The 41
+disputes mix wrong answers that happen to contain an alias with correct answers
+phrased at length, and nothing here separates them. The other lenient error, a
+correct answer whose wording is missing from the alias list and so labelled
+wrong, is invisible to strict matching as well, and is not measured.
+
+**Rejected: the transfer (long-context) sets.** They are the same questions under
+an envelope shift, so their labels and disputes are identical to these. Their
+certificates would add rows without adding a label question.
