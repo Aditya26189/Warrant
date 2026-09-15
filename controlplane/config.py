@@ -1255,6 +1255,8 @@ def write_json_artifact(
     path: str | os.PathLike,
     payload: dict[str, Any],
     config: Optional[Config] = None,
+    *,
+    exclusive: bool = False,
 ) -> Path:
     """Write a results artifact with its provenance block attached.
 
@@ -1267,6 +1269,10 @@ def write_json_artifact(
         path: Destination JSON path.
         payload: The stage's own results.
         config: Config to stamp into the provenance block.
+        exclusive: Create the file or fail with :class:`FileExistsError`, in one
+            step. For records that must never replace an earlier one -- a
+            chained recheck (``DECISIONS.md`` 194) -- where checking first and
+            then opening leaves a window.
 
     Returns:
         The path written.
@@ -1274,7 +1280,7 @@ def write_json_artifact(
     out = Path(path)
     out.parent.mkdir(parents=True, exist_ok=True)
     document = {"provenance": provenance(config), **payload}
-    with out.open("w", encoding="utf-8") as fh:
+    with out.open("x" if exclusive else "w", encoding="utf-8") as fh:
         json.dump(document, fh, indent=2, sort_keys=False, default=_json_default)
         fh.write("\n")
     logging.getLogger(__name__).info("wrote %s", out)

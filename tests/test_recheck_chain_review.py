@@ -288,3 +288,44 @@ def test_a_chained_recheck_never_overwrites_and_names_its_link(tmp_path) -> None
                   "--since", str(first), "-q", "-o", str(first))
     assert result.returncode == 2 and "never writes over a record" in result.stderr
     assert first.read_bytes() == before and head_path(warrant).read_bytes() == sidecar_before
+
+
+# --------------------------------------------------------------------------- #
+# A-C reviewed -- what the digests cannot prove, and an atomic refusal
+# --------------------------------------------------------------------------- #
+
+
+def test_a_rewritten_record_passes_and_every_text_says_it_would() -> None:
+    """A-1, pinned as a limit: a cleared head_check with a recomputed digest verifies."""
+    import dataclasses as dc
+
+    import controlplane.intake.chain as chain
+    from controlplane.intake.chain import ChainState
+    from controlplane.intake.chain_verify import verify_chain_records
+
+    state = start_chain(WARRANT, horizon_units=1000, alpha=ALPHA)
+    fed = feed(state, [f"u{i}" for i in range(20)], np.zeros(20, dtype=bool))
+    honest = fed.to_payload()
+    assert honest["head_check"] == "no_sidecar"
+    laundered = dc.replace(fed.state, head_check=None, forked_from_head=None).to_payload()
+    assert "head_check" not in laundered
+    assert ChainState.from_payload(laundered).head_check is None, "a re-digested edit is accepted"
+    report = verify_chain_records({"r1": {"chain": laundered}}).to_payload()
+    assert report["clean"] is True
+    assert "checksums, not signatures" in report["cannot_check"]
+    assert "checksums, not signatures" in honest["guarantee"]
+    assert "not signatures" in chain.__doc__
+
+
+def test_a_chained_record_is_created_exclusively(tmp_path) -> None:
+    """C-1: the refusal and the write are one step."""
+    import pytest
+
+    from controlplane.config import write_json_artifact
+
+    target = tmp_path / "link.json"
+    write_json_artifact(target, {"a": 1}, exclusive=True)
+    before = target.read_bytes()
+    with pytest.raises(FileExistsError):
+        write_json_artifact(target, {"a": 2}, exclusive=True)
+    assert target.read_bytes() == before

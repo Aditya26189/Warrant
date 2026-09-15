@@ -29,7 +29,15 @@ local could recognise them (DECISIONS 194).
 holds the digest of the chain's latest record. Continuing from any other record,
 or starting a chain while a head exists, is refused unless ``--fork`` is given,
 and a forked link records the head it left. Deleting the sidecar defeats the
-check, and each record says which check applied (194).
+check, and each record says which check applied (194). Starting a chain from a
+**copy** of the warrant, which has no sidecar of its own, is not refused; it is
+visible to ``warrant chain verify`` only when both chains' records are kept.
+
+**The digests are checksums, not signatures.** Anyone who can write the records
+can produce a consistent set: a record edited and re-digested passes every check
+here, and one with ``head_check`` cleared cannot be told from a record written
+before 194. Tamper-evidence would need a key or an anchor outside the user's
+control, which a local tool does not have (194).
 """
 
 from __future__ import annotations
@@ -163,13 +171,16 @@ class ChainState:
                 f"{self.p0:g} -- for this chain as kept. Starting a fresh chain after "
                 "an unfavourable record spends the guarantee; keep every record. "
                 "The chain-head sidecar makes an accidental fork declare itself; it "
-                "does not prevent a deliberate one."
+                "does not prevent a deliberate one. The digests here are checksums, "
+                "not signatures: anyone who can write these records can produce a "
+                "consistent set."
             ),
             "head_check_meaning": (
                 "'matched' means this link's --since record matched the chain-head "
                 "sidecar present when it ran. The sidecar is an ordinary file the user "
                 "can edit, copy or delete, so 'matched' is not proof that this link is "
-                "not a fork; only the kept records, checked together, can show that "
+                "not a fork; only the kept records, checked together, can show that -- "
+                "and only if they were not rewritten with recomputed digests "
                 "(DECISIONS 194)."
             ),
         }
@@ -198,8 +209,10 @@ class ChainState:
             raise ChainError(f"the chain was built by {block.get('method')!r}, not {METHOD!r}")
         if canonical_sha256(state._body()) != block.get("state_sha256"):
             raise ChainError(
-                "the chain state does not reproduce its digest: it was edited after it "
-                "was written, and a statistic that has been edited carries no guarantee"
+                "the chain state does not reproduce its digest: it was edited without "
+                "its digest being recomputed, and a statistic that has been edited "
+                "carries no guarantee. The digest is a checksum, not a signature: an "
+                "edit that recomputes it is not caught here (DECISIONS 194)"
             )
         if len(state.statistics) != state.n_lam:
             raise ChainError("the chain's statistics do not match its betting grid")

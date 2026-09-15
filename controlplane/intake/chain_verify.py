@@ -88,7 +88,10 @@ class ChainVerification:
             "cannot_check": (
                 "The statistics are not recomputed: that needs the labelled files, "
                 "which records do not hold. A set pruned to one clean branch verifies "
-                "clean; a missing record is visible only if a kept record points at it."
+                "clean; a missing record is visible only if a kept record points at it. "
+                "The digests are checksums, not signatures: a set rewritten with "
+                "recomputed digests verifies clean, and a record without head_check "
+                "cannot be told apart from one written before DECISIONS 194."
             ),
         }
 
@@ -232,6 +235,8 @@ def render_chain_verification(verification: ChainVerification) -> str:
             names = ", ".join(Path(r).name for r in finding.records)
             lines += ["", f"  [{finding.kind}] {names}", f"      {finding.detail}"]
     lines += ["", "  What this cannot check: the statistics themselves, which need the",
-              "  labelled files; and a record nobody kept. A set pruned to one clean",
-              "  branch verifies clean.", rule, ""]
+              "  labelled files; a record nobody kept; and a set rewritten with",
+              "  recomputed digests, which verifies clean -- the digests are",
+              "  checksums, not signatures. A set pruned to one clean branch",
+              "  verifies clean.", rule, ""]
     return "\n".join(lines)
