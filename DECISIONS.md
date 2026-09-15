@@ -10879,3 +10879,36 @@ wrong, is invisible to strict matching as well, and is not measured.
 **Rejected: the transfer (long-context) sets.** They are the same questions under
 an envelope shift, so their labels and disputes are identical to these. Their
 certificates would add rows without adding a label question.
+
+### 199 amendment, before the run -- C0 can check one set of three; c4's registration review
+
+**Found while wiring the script, before any certificate was computed.**
+`results/fpr_sweep/sweep.json` holds in-sample rows for `validation-T1-last_token`
+and `transfer-T1-last_token` only. Nothing in it covers `max_rolling_means` or
+`mean_pool`. C0 as registered read *"every row's certified status, threshold and
+`k` reproduce `results/fpr_sweep/sweep.json`'s in-sample rows for the same set and
+budget"*, which assumed all three sets were there.
+
+*Amended:* C0 applies to the 20 `validation-T1-last_token` rows, and must hold
+there or the run stops. The other two sets have no reference, and their rows
+record `reproduces_sweep: null`, not a pass. The sets and budgets are unchanged:
+dropping two sets would change the design to fit the check. Because the customer
+and research paths call the same `certify_fpr`, one set reproducing is evidence
+the paths agree, not proof for the other two.
+
+**accenture-c4 reviewed the registration at `f4a0cda`, before the run.** Nothing
+needs re-registering; three clarifications are recorded now so they cannot be
+fitted to the results:
+
+- **d1 is 0 by construction.** Every dispute is `label` 0 with `label_2` 1. An
+  unflagged one is 197's second flattering kind. A flagged one is the
+  conservative kind, which the formula ignores, so the flagged share of the 41
+  counts for nothing.
+- **P1's rationale was imprecise.** The lowest-threshold rule guarantees the next
+  lower cut fails at `(k+1, n)`, but `c(1)` is evaluated at `(k+1, n+1)`. Without
+  ties, P1 fails exactly when `kmax(n+1) = kmax(n) + 1`. At `n` = 323 no budget
+  on the grid does that (0 of 20, data-free arithmetic). So on this data P1 can
+  fail only through ties or threshold slack, which is what it tests.
+- **The README row is a range over `N` certified rows, with `N` stated.** Its two
+  ends are extremes selected from up to 60 rows, and neither is one
+  certificate's figure.
