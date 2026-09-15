@@ -97,11 +97,13 @@ without `label_2`, whatever it says. What you get is:
 - how many of those pairs sit in each class, and a warning if either class has
   none -- double-label both, or disagreement about that class goes unmeasured;
 - at the certified threshold, how many double-labelled **flagged positives** the
-  second reviewer calls clean, and what the certificate's confidence would be if
-  each of those disputes were an error in `label`;
-- if only some flagged positives were double-labelled, an upper bound on how many
-  in the whole file would be disputed, assuming the double-labelled ones were
-  picked at random. It narrows as more are double-labelled.
+  second reviewer calls clean and how many **unflagged negatives** they call
+  positive, and what the certificate's confidence would be if each of those
+  disputes were an error in `label`;
+- if only some of each were double-labelled, an upper bound on how many in the
+  whole file would be disputed, assuming the double-labelled ones were picked at
+  random from their pool. The bounds narrow as more are double-labelled, and the
+  confidence evaluated at them is a sensitivity, not a joint confidence.
 
 A disagreement is not an error, and an agreement is not a correct label. Warrant
 cannot see whether your reviewers were blind to the score, or how you chose the
@@ -112,13 +114,17 @@ mistake, not a second review.
 
 **Every certificate, with or without `label_2`, says how far it depends on its
 labels.** Warrant picks the lowest threshold whose bound clears your budget, so
-the certificate sits at the edge of it. A clean item that is labelled `1` and
-flagged is counted as a hit rather than a false positive, and each one lowers the
-confidence at which the budget still clears. The summary prints that confidence
-after one such error, and how many it takes to fall below 90%, 80% and 50%.
-With few negatives it moves fast; see `DECISIONS.md` 197. It is not computed on
-a refusal, where it would be a count of relabellings that turns the refusal into
-a warrant, nor on a grouped file.
+the certificate sits at the edge of it. Two label errors flatter it: a clean
+item labelled `1` and flagged (a false positive counted as a hit), and a
+positive item labelled `0` and not flagged (a clean negative your file has and
+the truth does not). The first costs more per error; the second is the one that
+realistic label noise makes material on a large file, because unflagged
+negatives are most of it. For each, the summary prints the confidence at which
+the budget still clears after one error, and how many it takes to fall below
+90%, 80% and 50%; see `DECISIONS.md` 197. It is not computed on a refusal, where
+it would be a count of relabellings that turns the refusal into a warrant. On a
+grouped file it is counted in whole groups when every group carries one label,
+and not computed when any group holds both.
 
 ## Optional: anything else
 
