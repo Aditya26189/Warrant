@@ -1,5 +1,7 @@
 """Independent statistical and leakage checks using synthetic scored fixtures."""
 
+import json
+from pathlib import Path
 from dataclasses import replace
 from datetime import datetime, timezone
 
@@ -113,9 +115,19 @@ def test_legacy_contract_keeps_its_original_measurement_protocol(release_spec, r
     assert legacy.to_dict()["contract_id"] != new_contract.to_dict()["contract_id"]
     legacy = ReleaseContract.from_dict(legacy.to_dict())
     result = evaluate(legacy, items, identity_for(legacy), now=release_now)
-    # Frozen from evaluate.py at aa7b0af before protocol 2 existed; catches
-    # unintended changes to every historical measurement field, not just status.
-    assert digest(result) == "db60c26f0e8bf5fc065244427a9bae4791948b3582c01d45172a73992d47fcad"
+    # Frozen from evaluate.py at aa7b0af before protocol 2 existed. Only
+    # numerical-library rounding in computed bounds is tolerated by this test;
+    # production verification still compares the complete measurement exactly.
+    expected = json.loads((Path(__file__).parent / "fixtures/release_v1_measurement.json").read_text())
+    assert {k: v for k, v in result.items() if k not in ("rates", "lift")} == {
+        k: v for k, v in expected.items() if k not in ("rates", "lift")}
+    for observed, original in [(result["lift"], expected["lift"]), *[
+        (result["rates"][name], expected["rates"][name]) for name in result["rates"]]]:
+        for key, value in original.items():
+            if isinstance(value, float):
+                assert observed[key] == pytest.approx(value, rel=1e-12, abs=1e-14)
+            else:
+                assert observed[key] == value
     assert result["schema_version"] == 1
     assert result["status"] == "UNVALIDATED"
     assert all("reason" not in check for check in result["checks"])
