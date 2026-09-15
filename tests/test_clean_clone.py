@@ -258,4 +258,6 @@ def test_the_script_refuses_to_write_when_the_source_moved(tmp_path, monkeypatch
     states = iter([{"git_commit": commit, "dirty": False}, {"git_commit": commit, "dirty": False}])
     monkeypatch.setattr(module, "provenance", lambda config: next(states))
     assert module.main() == 0
-    assert json.loads(out.read_text(encoding="utf-8"))["provenance"]["git_commit"] == commit
+    record = json.loads(out.read_text(encoding="utf-8"))
+    assert record["provenance"]["git_commit"] == commit
+    assert record["provenance_taken"] == "before cloning"

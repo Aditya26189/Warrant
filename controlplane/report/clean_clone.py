@@ -439,10 +439,17 @@ def render(result: GateResult) -> str:
     return "\n".join(lines)
 
 
-def write_artifact(result: GateResult, path: Path, provenance: dict) -> None:
-    """Write the gate's outcome to ``results/`` with the usual provenance block."""
+def write_artifact(
+    result: GateResult, path: Path, provenance: dict, *, provenance_taken: str = "before cloning",
+) -> None:
+    """Write the gate's outcome to ``results/`` with the usual provenance block.
+
+    ``provenance_taken`` says which moment the block describes. Since 200 it is
+    the clone, so its timestamp is when the tested state was cloned, not when the
+    record was written; records from before 200 carry no such field.
+    """
     path.parent.mkdir(parents=True, exist_ok=True)
-    payload = {"provenance": provenance, **result.to_dict()}
+    payload = {"provenance": provenance, "provenance_taken": provenance_taken, **result.to_dict()}
     path.write_text(
         json.dumps(payload, indent=2, sort_keys=False) + "\n", encoding="utf-8"
     )
