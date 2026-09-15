@@ -189,7 +189,7 @@ and is not mapped.
 | O-5 | **`FPRMonitor`'s cap** (187) | an owner for read-only `validation/warrant_stats.py` |
 | O-6 | **Merge order.** Five branches chain on `feat/release-evidence`, which no human has reviewed; only 182-183 are on `main` | a human review of that branch, then `--no-ff` merges in chain order |
 | O-7 | **This branch carries 191's code at `945f08b`, before its post-artifact fix** (`ca5ceab`, `1c13492` on accenture-8a's line) | merging accenture-8a's fixed line ahead of or into this one |
-| carried | demo video; read-only defects; four drift features and MMD; customer conversations; `DECISIONS.md` 145's Linux Rego abort | `reports/PHASE-11.md` §6 |
+| carried | demo video; read-only defects; four drift features and MMD; customer conversations; `DECISIONS.md` 145's Linux Rego abort -- **cause named and a one-line guard verified on Linux and Windows (2026-09-15)**, still needing an owner for read-only `policy/` | `reports/PHASE-11.md` §6 |
 
 ---
 
