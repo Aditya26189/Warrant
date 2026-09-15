@@ -10714,3 +10714,75 @@ are then defined, because group sizes do not change. On a grouped file with any
 mixed group, the figure is not computed, with the reason. Disputes on grouped
 files stay uncomputed. `label_2` is per item, and a dispute inside a group is not
 a whole-group relabelling. Kappa is still reported.
+
+## 198 - A recheck says how many label errors would have hidden a revocation
+
+- **Date:** 2026-09-15
+- **Status:** DECIDED
+
+**Closes 197's OPEN scope.** 197 put label-error sensitivity on the certificate.
+A recheck reads the same `label` column and is flattered by the same two errors:
+
+- a flagged item labelled positive that is really clean, `(k, n) -> (k+1, n+1)`;
+- an unflagged item labelled negative that is really positive, `(k, n) -> (k, n-1)`.
+
+On a recheck each error hides evidence of a breach rather than inflating a
+certificate. The recheck revokes when the one-sided Clopper-Pearson **lower**
+bound clears the budget (143), so the question is a count: **how many errors of
+each kind would the truth need to hold for this file to have revoked?**
+
+**Why a count here, not 197's confidence.** A certificate always sits at the edge
+of its budget, because `certify` picks the lowest threshold that clears. A recheck
+does not. Its count sits wherever the fresh traffic put it, so its fragility
+varies from file to file, and the decision it guards is binary. At budget 0.05,
+alpha 0.05, exact:
+
+| negatives | revokes at `k` >= | `k` | flagged-clean errors to revoke | unflagged-positive errors to revoke |
+|---|---|---|---|---|
+| 628 | 42 | 23 (the certified true rate, 0.0371) | 20 | 311 |
+| 628 | 42 | 31 | 11 | 176 |
+| 628 | 42 | 41 | 1 | 3 |
+| 59 | 7 | 6 | 1 | 6 |
+
+**197 called this `critical - k`, which is wrong.** Each flagged-clean error adds a
+negative as well as a false positive, and the critical count moves with `n`: 42
+at 628 negatives, 43 at 648. At `k` = 23 it is 20 errors, not 19. A recheck at
+the certified rate would need many errors to have hidden a revocation. One a step below the critical count would need one. Both figures
+are the recheck's to report, and neither can be read off the verdict.
+
+**Decided.**
+
+1. **Every recheck whose bound holds** reports both counts. Each is the smallest
+   `a` in `1..F` with `lower(k+a, n+a) > B`, and the smallest `b` in `1..n-k`
+   with `lower(k, n-b) > B`, over flagged positive and unflagged negative units.
+   A count that is not reached is `None`, stated. These are **EXACT**: every
+   value is evaluated, and none is inferred by monotonicity. Units are the
+   recheck's own: items, or whole groups on a grouped file whose groups each
+   carry one label (197 review, F4).
+2. **`label_2` on a recheck** reports kappa and the pairs per class, as on
+   `certify`. At the warrant's threshold it reports the disputed counts `d1` and
+   `d2`, the lower bound with every dispute counted as an error, and whether that
+   lower bound revokes. When some of each pool was double-labelled, it also
+   reports the exact hypergeometric upper bound on disputes in each pool (jointly
+   `>= 1 - 2 alpha`), the lower bound at those bounds, and whether it revokes: a
+   sensitivity at bounds, not a joint confidence (197 review, F3). The verdict
+   does not change.
+3. **Not computed, with the reason on the record:**
+   - *when the bound has already broken.* The flattering errors only deepen a
+     breach, and the errors that would clear a revocation are the conservative
+     ones, which are never counted. Counting them would be a recipe (invariant 3).
+   - *on a file with no negatives*, where nothing is tested.
+   - *on a grouped file with a mixed group.*
+   - *on a chained recheck.* In a chain one file's bound is evidence, and the
+     chain's statistic decides (193, 194). What one error does to that statistic
+     depends on where the unit sits in the chain, and a per-file count would read
+     as the chain's. Kappa is still reported on all four.
+
+**Rejected: the revocation p-value after `e` errors,** 197's form. A recheck's
+reader asks whether it would have revoked, and a count answers that in the unit
+they label in. A p-value near 0.05 answers a question they did not ask.
+
+**The objection.** "Eleven errors to revoke means the detector is fine unless
+eleven labels are wrong." No: it means *this file* would have revoked with eleven
+such errors. A VALID recheck is an absence of evidence of breach (143), and the
+dead zone below the critical count is unchanged by this. The render says both.
