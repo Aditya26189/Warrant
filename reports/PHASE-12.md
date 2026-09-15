@@ -521,3 +521,164 @@ as a note, not a failure.
 section and its fixes (`287d366`, `ef8996d`) -- and this section. They were
 checked by the chain, verifier, config and acceptance tests and by the full suite
 at the head, not by a clean clone.
+
+### 8.11 After the gate: how far a warrant depends on its labels (197, 198, 199)
+
+**The question.** `certify` and `recheck` treat the customer's `label` column as
+truth, and `CLAUDE.md` requires kappa beside every warrant. The customer path
+published none, and nothing said how far a certificate moves if labels are wrong.
+
+**The answer.** Further than the interval suggests. How many errors a
+certificate tolerates is set by the evidence, not the detector. `certify` picks
+the lowest threshold whose bound clears the budget, so every certificate sits at
+the edge. On this project's own
+measured TriviaQA certificates (60 rows: 3 probes x 20 budgets),
+**between 2 and 8 flagged positives that are really clean take a certificate from
+at least 0.95 to below 0.80 confidence**. The one labelling ambiguity this
+project can measure does not do that: counting every strict/lenient matching
+dispute as a lenient error leaves the lowest at **0.8127**.
+(`results/label_sensitivity/triviaqa.json`; `DECISIONS.md` 199.)
+
+**What was done.**
+
+- **197:** every VALID certificate carries two exact ladders, one for each label
+  error that flatters its bound. A flagged positive that is really clean gives
+  `(k+1, n+1)`; an unflagged negative that is really positive gives `(k, n-1)`.
+  The confidence is `c = 1 - P(Bin(n+a-b, B) <= k+a)`. Ladders are counted in
+  items, or in whole groups when each group carries one label. An optional
+  `label_2` column gives kappa, the disputed counts, and exact hypergeometric
+  bounds on disputes in the whole file.
+- **198:** the recheck analogue, as counts: how many errors of each kind would have
+  made this file revoke. At 628 negatives, a recheck at the certified rate needs
+  20 or 311; one a step below the critical count needs 1 or 3.
+- **199, pre-registered:** 197 on the project's measured certificates, with strict
+  exact match recomputed from the frozen eval set as `label_2`.
+
+None of the three changes a verdict. A test certifies and rechecks one file three
+ways and compares the records: with no `label_2`, with one, and with a `label_2`
+that contradicts every label. Nothing is computed where it would be a recipe (a
+refusal, a broken bound), undefined (a mixed-label group), or misread (a chain
+link).
+
+**What was found.**
+
+- **At the minimum file, one label error is most of the certificate.** 59
+  negatives go from 0.952 to 0.808 with one flagged-clean error and to 0.376 with
+  three (arithmetic, held by `tests/test_label_sensitivity.py`).
+- **On large files the other error matters.** At 5,000 negatives, 3.3% of the
+  unflagged negatives really positive (158 items, the average label-error rate
+  Northcutt et al. measured across ten benchmark test sets) takes a certificate to
+  0.878. A flagged-clean error costs it under a point.
+- **The tolerance is identical across the three probes (199, not predicted).**
+  At a fixed alpha, with untied negative-unit scores, the lowest certifying
+  threshold admits exactly the largest count that certifies, so `k` and both
+  ladders depend only on `n`, the budget and alpha. A better detector cannot
+  change how many errors a certificate tolerates. It changes how many flagged
+  positives there are to be wrong, and one that flags more positives is exposed
+  to more of the costly kind. This file shows the limit case: at budget 0.01,
+  `last_token` flags 3 positives, and 2 errors take it below 0.80. As first
+  written, this finding was wider than its conditions and conflated tolerance
+  with exposure; review corrected both (199 review).
+- **199's registered criteria.**
+  - C0 holds: the customer path reproduces the research sweep's 20 `last_token`
+    rows.
+  - P1 holds: one flagged-clean error takes every certificate below 0.95.
+  - **P2 fails:** the strict/lenient disputes take no certificate below 0.80.
+  - Kappa between the rules is 0.8640 [0.8213, 0.9035] over 600 pairs.
+
+**What review found (accenture-c4, read-only).**
+
+- **197, at `aa7b0af`:**
+  - F1: the entry named one flattering error of two, and the one it missed is
+    what matters at scale.
+  - F2: the whole-file figure extrapolated one pool and counted the other.
+  - F3: a confidence at a bound read as a joint confidence.
+  - F4: grouped files could carry whole-group ladders. The premise (certifying
+    groups carry one label) was wrong, and it was accepted in narrower form.
+  - The same review's full suite found a ruff B905 in a new test file and a stale
+    test count.
+- **198, at `1b5d8b2`:** correct, verified by brute force over the recheck's own
+  bound. Three changes were adopted:
+  - report the observed disputes on a broken bound, which a customer contests a
+    revocation with;
+  - a past-tense conditional;
+  - a loud check that chained records carry no per-file counts.
+- **199's registration, before the run:** sound. It sharpened P1's rationale and
+  asked for the claim rows to read as a range over N rows. Wiring the script then
+  found that the sweep covers one set of three, so C0 was amended before any
+  certificate was computed, with the original wording kept.
+- **199's results, at `6320c80`:** the numbers and claim rows checked out, and the
+  review recomputed the 32-of-271 line. The one finding that wasn't predicted
+  was stated wider than its conditions: it needed a fixed alpha and untied
+  negative-unit scores. It also said a better detector cannot buy a less fragile
+  certificate, which is true of tolerance and false of exposure. Both were
+  corrected in text.
+
+**What the full suite covered.** Each run was by accenture-c4 in its own
+worktree, and each had 0 failures:
+
+- `1f6dc69` (197 and its review fixes): 1,731 passed, 1 xfail.
+- `d97fc02` (the 198 review fixes, the 199 pre-registration): 1,751 passed, 1 xfail.
+- `93aca48` (the 199 study code and artifact, `LIMITATIONS` 3.6): 1,759 passed,
+  1 xfail, 1,760 collected.
+
+The xfail is 179's strict one on Windows. The only commit after `93aca48` is the
+README paragraph (`0762f53`, docs), and no clean-clone gate has run since
+`9c1fc68`.
+
+**Defects in how this was run.**
+
+- **The pipe trap, a third time.** A backgrounded suite chained `; tail` after
+  `run.sh`. One named file did not exist, pytest collected nothing, and the task
+  reported exit 0, which was `tail`'s. It was caught by reading the log and rerun
+  without the trailing command. `CLAUDE.md`'s rule was known; the correct form was
+  still not the default.
+- **Selected suites instead of the lint job.** The related-suite runs omitted
+  `tests/test_lint.py`, which is how B905 reached a commit.
+- **197 stated the recheck figure as `critical - k`.** It was found while writing
+  198. Each flagged-clean error also adds a negative, the critical count moves
+  with `n`, and at `k` = 23 of 628 the count is 20, not 19.
+- **A commit hash sent to the reviewing session was written from memory, not
+  read from `git log`**, and was wrong. It was corrected in the next message.
+  Nothing in the repository cites it.
+- **Twice the inventory went stale while a full suite was requested at that
+  head.** Both times it was refreshed before the suite started.
+- **A polarity error in 199's committed results, found by rereading this
+  report.** The closing paragraph put the unmeasured alias-list error among the
+  unflagged negatives (32 of 271). Those answers are labelled incorrect, so they
+  are flagged-clean errors, and 8 of 179 flagged positives break the certificate.
+  The review had checked the arithmetic of 32/271, which was right, and not which
+  pool the sentence placed the error in; the reviewing session counts it as a miss
+  of its own. Author and reviewer both missed it. Nothing tests prose polarity, and this is the kind of
+  error the codebase's `EXACT`/`ESTIMATED` and positive-class conventions exist to
+  stop in code (`DECISIONS.md` 199 correction).
+
+**What this does not establish.**
+
+- A disagreement is not an error. Every dispute figure counts disagreements
+  against the primary label: a worst case over the pairs. Two reviewers who both
+  saw the score agree and are counted clean.
+- Strict EM is not a better labeller. P2's failure says the strict/lenient
+  ambiguity alone does not break these certificates. It does not say their labels
+  are right. Correct answers missing from the alias list are labelled incorrect,
+  are invisible to both rules, and when flagged are the costly error: at budget
+  0.20, 8 of `last_token`'s 179 flagged positives (4.5%) take its certificate
+  below 0.80.
+- The whole-file bounds assume the double-labelled items were sampled at random
+  from each pool.
+- Recall and precision intervals are still silent about label error.
+- A chained recheck carries no sensitivity.
+- No customer file has been run.
+
+**Open.**
+
+- **Recall and precision under label error:** would close with the same two-error
+  treatment on those intervals.
+- **Chain sensitivity:** would close with a simulation of the e-detector with
+  mislabelled units.
+- **Alias-list completeness on TriviaQA:** would close with a blind human audit of
+  a sample of lenient-incorrect answers, the only way to measure the error both
+  rules share.
+- **No clean-clone gate since `9c1fc68`:** would close with
+  `scripts/clean_clone_gate.py` at the head. It covers 194's A to C fixes and
+  197 to 199, which full suites have covered only in worktrees.
