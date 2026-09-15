@@ -10695,3 +10695,24 @@ and duplicated field in the error. Apply this to metadata too: silently dropping
 it contradicts the contract. Preserve label_2, grouping, valid exports and the
 explicit release-only single-class option. Tests must exercise conflicting
 labels/scores, normalized columns, metadata and clean-file compatibility.
+
+
+## 200 - Refuse inconclusive release studies and version their protocol (2026-09-15)
+
+Claude's review found release's UNVALIDATED status conflicted with the product
+meaning "never tested here". New release registrations use protocol/schema 2:
+a tested study is VALID only when every registered confidence bound clears;
+otherwise REFUSED, with distinct reasons for a point-estimate violation, an
+inconclusive bound or a missing denominator. Refusal does not establish a
+population violation. UNVALIDATED remains the legacy protocol-1 spelling for
+inconclusive/missing evidence; retained protocol-1 records must still reproduce
+exactly, and verification must identify that older protocol explicitly.
+
+Keep the preregistered five equal-tailed Clopper-Pearson intervals, each at
+alpha/5, and the union-bound joint coverage of at least 1-alpha. The acceptance
+bounds therefore use alpha/10 in each tail. The single-FPR certify workflow
+uses a one-sided alpha bound; its VALID verdict is conditional on that different
+protocol. Name the release protocol in output and test a case where certify
+clears but simultaneous release evidence refuses. Do not loosen uncertainty
+to make status strings agree. Existing contract versions retain their original
+method; new contracts bind schema 2 into their identity before evaluation.
