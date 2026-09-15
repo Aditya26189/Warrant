@@ -252,13 +252,19 @@ in every setting simulated: at most **0.012** of years across three breach sizes
 and four cadences, against a limit of 0.0646 (`DECISIONS.md` 196,
 `results/chain_detection/grid.json`).
 
-**Detection is not uniform.** Weekly rechecks caught a breach within 13 weeks in
-at least 0.9900 of simulated years. **Monthly rechecks caught it within three
-months in only 0.8325 (a 1.5x breach) to 0.8970 (3x)** -- a breach missed for a
-quarter in about one year in six to one in ten.
+**Detection is not uniform.** Each breach size was rechecked at its own 0.80-power
+size -- 628, 191 and 59 negatives. At those sizes, weekly rechecks caught a breach
+within 13 weeks in at least 0.9900 of simulated years, and **monthly rechecks caught
+it within three months in only 0.8325 to 0.8970** -- a breach missed for a quarter
+in about one year in six to one in ten. **The miss rate depends on the labels per
+recheck as much as on the breach size**: the larger breaches were rechecked with
+far fewer labels, so these figures do not order detection by breach size at
+comparable effort (`DECISIONS.md` 196, review).
 
 What this does not cover: one budget (0.05), step changes, independent fresh
-samples, and the recheck sizes `plan` quotes at power 0.80. `plan` quotes no
+samples, the recheck sizes `plan` quotes at power 0.80, and a fixed number of
+negatives in every recheck -- a real chain that exhausts its horizon early is not
+live through the last window. `plan` quotes no
 detection figure, and should not, for settings outside this grid.
 
 ---

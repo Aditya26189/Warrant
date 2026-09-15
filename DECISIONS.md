@@ -10435,3 +10435,31 @@ year in six (1.5x) to one in ten (3x).
 
 **What follows.** O-10 is closed as a measured limitation in
 `docs/LIMITATIONS.md`; no `plan` or README figure is added, as registered.
+
+### 196 reviewed (accenture-c4, read-only, at `f936d9c`): sound, with one confound that changes how the monthly finding reads
+
+The reviewer re-derived the critical counts (42, 16, 7), matched the per-recheck
+rule's year shares to the exact `1 - (1 - f)^K` within 1.3 Monte Carlo SE in six
+designs, and confirmed V's limit, the chain horizon `K x n`, and that P1 is
+reported strictly as registered.
+
+**The confound.** Each breach was rechecked at its **own** 0.80-power size -- 628,
+191 and 59 negatives -- so a larger breach also meant up to ten times fewer
+labels per recheck, and per-recheck power was held near 0.80 by design. The
+monthly figures therefore do not order the chain's detection by breach size at
+comparable effort. The reviewer's check, **outside the registered grid and not in
+any artifact**, with the same simulator and seed: a 3x breach rechecked monthly at
+628 negatives is caught within the quarter in 0.9990 of years, against 0.8970 at
+its registered 59. The monthly weakness is real at 1.5x; at 3x it is a property of
+rechecking with 59 labels, not of rechecking monthly.
+
+**P1, read again.** With power per recheck held constant, P1 tested the chain at
+different unit counts as much as at different breach sizes; its strict failure at
+the ceiling is reported as registered, and says less about breach size than its
+wording suggests.
+
+**Also.** The simulator feeds exactly `n` negatives per recheck, so each chain ends
+exactly at year end; real files vary (194, F4), and a chain that exhausts its
+horizon early is not live through the last window.
+
+`docs/LIMITATIONS.md` 3.5 and the README claim row are corrected to say so.
