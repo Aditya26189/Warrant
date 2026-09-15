@@ -1,5 +1,16 @@
 # AGENTS.md
 
+## Concurrent coding sessions
+
+Read `COORDINATION.md` and the local `SHARED_CONTEXT.md` before editing. The
+founder requested communication between Codex and Claude through this board.
+Use `python -m controlplane.coordination --root SHARED_CHECKOUT read` to see
+current status and path claims, and post your status and intended paths before
+editing overlapping work. Use distinct agent names for simultaneous sessions.
+The board is local operational state, ignored by Git; posting may happen during
+an edit. This does not relax the clean-tree rule for scientific artifacts.
+Use separate worktrees, stage named files, and preserve other agents' changes.
+
 Persistent context for agents working in this repo. Read this fully before writing code. Read `SPEC.md` for the technical detail and `TASKS.md` for the build order.
 
 ---

@@ -1,62 +1,68 @@
-# Shared checkout handoff
+# Shared context for coding sessions
 
-Updated for the founder's 2026-09-15 request to work alongside Claude.
-This file records declared ownership; it is not a live connection between agents.
-Claude's current task has not yet been confirmed in this session.
+Open [SHARED_CONTEXT.md](SHARED_CONTEXT.md) for the current conversation,
+status and path claims. Both Codex and Claude have posted there. The page is
+generated from local JSON messages; this file describes how to participate.
 
-## Current checkout
+## Read and post
 
-- Branch observed by Codex: `feat/release-evidence`.
-- Last committed checkpoint at handoff: `deac5d7`.
-- Codex's pending files: README release-guide paragraph, `docs/README.md`,
-  `docs/RELEASE.md`, `reports/STARTUP-VIABILITY-2026-09.md`, and
-  `reports/CLAIM-AUDIT-2026-09.md`.
-- Previous documentation commit was rejected when automatic approval review
-  exhausted its account allowance. These edits remained intact and uncommitted.
+From the shared checkout:
 
-## Codex's reserved work
+```shell
+python -m controlplane.coordination read
+python -m controlplane.coordination post --agent codex --kind status --state working --message "Reviewing release evidence"
+python -m controlplane.coordination post --agent claude-8a --kind claim --paths controlplane/intake/chain.py --message "Fixing chain continuation"
+python -m controlplane.coordination post --agent codex --to claude-8a --kind message --message "Review finding and reproduction details"
+python -m controlplane.coordination post --agent claude-8a --kind release --paths controlplane/intake/chain.py --message "Committed and verified; ready for handoff"
+```
 
-- `controlplane/release/` and `tests/test_release_*.py`: finish review and
-  validation of register/evaluate/verify.
-- `controlplane/report/test_inventory.py`, `scripts/refresh_test_inventory.py`,
-  and a focused smoke test: close the missing script-coverage regression.
-- The pending release guide and claim audit listed above.
-- Generated test counts in README/Makefile and `results/test_inventory.json`:
-  refresh only after all agents' test additions are committed and the tree is clean.
+In another worktree, pass `--root` with the absolute path to the shared checkout
+before `read`, `post` or `refresh`. Worktrees have separate working directories;
+they must use the same board root to exchange messages. Use a distinct agent
+name for each concurrent session, and retain that name when releasing claims.
 
-An internal Codex reviewer is reviewing the release implementation read-only.
-It is not the external Claude session.
+Use `--message-file path/to/message.txt` for long text. `read --after N --json`
+returns posts after a sequence number. `refresh` rebuilds the page if a process
+stopped after publishing its JSON message. The page shows recent messages;
+`read --json` and `.coordination/messages/` retain the complete local history.
 
-## Suggested independent work for Claude
+Post status when beginning work, changing scope, finding a blocker, or completing
+a verified checkpoint. Include branch, commit, owned paths, checks run and
+remaining limitations. Read again before editing shared files or taking a new
+decision number. Messages only reach a session when it reads the board; this
+is not a background agent runner or an automatic notification service.
 
-Record the actual scope here before editing overlapping files. Useful separate
-work is a read-only review of sampling/recheck contracts or customer workflow
-gaps. The legacy mixture-monitor and grouped-recheck defects are described in
-DECISIONS 184 and the claim audit. Review does not by itself authorise editing
-the explicitly read-only zones in `CLAUDE.md`.
+## Ownership and Git
 
-## Shared Git discipline
+Claims reject overlapping ownership across agent names, including a directory
+and any of its descendants. They are advisory: they do not prevent direct
+filesystem edits, authenticate authors, or reserve Git branches. A crashed
+session's claim stays visible until its owner releases it. Ask for a handoff
+before editing claimed paths. Release without `--paths` frees all of that
+agent's claims; release a directory claim before claiming only part of it.
 
-- Do not switch the shared checkout's branch while the other agent is working.
-- Stage named owned files only; inspect both staged and unstaged diffs before
-  committing. Do not include the other agent's staged changes in a commit.
-- Do not reset, clean, stash, rewrite history, or revert unfamiliar changes.
-- Use separate worktrees for overlapping implementation if coordination cannot
-  establish one owner. Merely naming separate branches does not isolate one directory.
-- Reserve new decision numbers by checking the end of DECISIONS immediately
-  before appending. Preserve the append-only record.
-- Do not run artifact generators against a dirty tree. Existing research scores
-  remain frozen; no unregistered rescoring.
+Use separate worktrees for overlapping implementation. Do not switch another
+session's branch, reset or stash its changes, or stage unrelated files. Inspect
+both staged and unstaged diffs and commit named files only. Before appending a
+decision, check the integrated branch and board, then commit the next contiguous
+number before its implementing code. Publish that commit so other sessions can
+base their next entry on it.
 
-## Verification status to carry forward
+The CLI, tests and this protocol are committed. `.coordination/` and the generated
+`SHARED_CONTEXT.md` are ignored local operational state: conversation updates
+must not dirty scientific provenance. Existing posts remain on disk; a fresh
+clone starts with an empty board until its first post or refresh. Copy or back
+up the messages separately if their history must survive losing this checkout.
+Do not put secrets or customer data in messages.
 
-The first broad run completed with three failures: stale test-count claims,
-unrecognised decision headings, and missing smoke coverage for the new test
-inventory script. The heading repair has passed its focused tests. Counts must
-be refreshed again after final additions. The script smoke test is still to add.
-This is not a green full-suite checkpoint yet.
+## Integration evidence
 
-Release-specific tests passed in the isolated customer environment. The installed
-wheel also completed registration, evaluation and verification without the
-research stack. Full-run output and final repair checks belong in the closing
-phase report; do not infer that the entire product is verified from these checks.
+Claude's integrated line is `feat/recheck-chain`; Codex's board work builds on
+that line in `feat/shared-context`. Consult Git and current posts for their
+latest commits. Static branch snapshots in the former handoff page are
+superseded by the board.
+
+A passing test collection count is not a passing suite. Cite the exact commit
+and completed check, and distinguish an agent's report from independently
+reproduced evidence. No scientific generator runs against a dirty worktree;
+posting operational status does not relax that rule.

@@ -10659,7 +10659,6 @@ safe." The record names it the confidence at which the budget still clears if on
 flagged positive is really clean. It is not a probability that the detector is
 within budget, and the render says so in those words.
 
-
 ## 198 - A shared context board for concurrent coding sessions (2026-09-15)
 
 The founder explicitly requested a shared page where Codex and a parallel
