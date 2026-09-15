@@ -10682,3 +10682,16 @@ Operational messages and SHARED_CONTEXT.md are local, ignored runtime state.
 The CLI, tests and participation protocol are versioned; messages are preserved
 on disk but do not dirty scientific provenance. Separate worktrees pass --root
 to the shared checkout. Authors are self-declared, and claims are advisory.
+
+
+## 199 - Refuse ambiguous scored-input fields before dictionary conversion (2026-09-15)
+
+CSV DictReader and JSON object parsing currently retain the last duplicate
+field silently. A file can therefore change a score or label by column order
+while appearing to satisfy the strict intake contract. Reject duplicate CSV
+column names, including collisions after the existing whitespace normalization,
+and duplicate JSON keys before conversion to dictionaries. Include the source
+and duplicated field in the error. Apply this to metadata too: silently dropping
+it contradicts the contract. Preserve label_2, grouping, valid exports and the
+explicit release-only single-class option. Tests must exercise conflicting
+labels/scores, normalized columns, metadata and clean-file compatibility.
