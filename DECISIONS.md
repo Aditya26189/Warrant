@@ -10550,3 +10550,111 @@ spent its threshold's slack does not depend on the rate before the change, so it
 predicts the week-39 gap should survive under S3 -- and there it vanishes (1.0000
 at week 39 against 1.0000 at 13 for 1.5x). The prediction held on S2; the reason
 given for it is not supported.
+
+## 197 - A certificate's sensitivity to label error, on every warrant; a second reviewer's label, measured beside it
+
+- **Date:** 2026-09-15
+- **Status:** DECIDED
+
+**The gap.** `CLAUDE.md` requires kappa next to every warrant: *a +/-5pp recall
+interval is meaningless at inter-rater kappa = 0.5.* The research path publishes
+kappa (155). The customer path, `warrant certify`, reads one `label` column and
+treats it as truth, and nothing on the warrant says how far the certificate
+depends on it. Measured label error in widely used benchmark test sets averages
+3.3% across ten datasets (Northcutt, Athalye & Mueller, NeurIPS Datasets and
+Benchmarks 2021, arXiv:2103.14749). A customer's labels are unlikely to be
+cleaner.
+
+**Why it matters more here than it looks.** `certify` picks the *lowest*
+threshold whose Clopper-Pearson bound clears the budget, so the next lower cut
+fails, and the certificate sits at the edge by construction. The error that
+flatters it is a **clean item labelled positive and flagged**: one false positive
+is counted as a true positive. Its effect is exact arithmetic on the counts. With
+`k` false positives on `n` negative units at budget `B`, the bound clears `B` at
+level `alpha` iff `P(Bin(n, B) <= k) <= alpha`. So with `e` such items, the counts
+become `(k+e, n+e)`, and the certificate holds only at confidence
+
+    c(e) = 1 - P(Bin(n+e, B) <= k+e).
+
+`c(e)` is non-increasing in `e`: `Bin(n+e+1, B)` is `Bin(n+e, B)` plus one
+Bernoulli, which adds at most 1, so its CDF at `k+e+1` is at least the CDF of
+`Bin(n+e, B)` at `k+e`. At `B` = 0.05, `alpha` = 0.05, and `k` the largest count
+that certifies, c(0), c(1), c(3) and c(5) are:
+
+| `n` | `k` | c(0) | c(1) | c(3) | c(5) |
+|---|---|---|---|---|---|
+| 59 | 0 | 0.952 | 0.808 | 0.376 | 0.100 |
+| 200 | 4 | 0.974 | 0.939 | 0.800 | 0.577 |
+| 628 | 22 | 0.954 | 0.932 | 0.867 | 0.772 |
+| 5,000 | 224 | 0.953 | 0.946 | 0.931 | 0.912 |
+
+At the smallest file that can certify, three mislabelled flagged items leave a
+"95%" certificate at 38%.
+
+**Decided.**
+
+1. **Every VALID certificate on an ungrouped file carries its label-error
+   sensitivity**: c(1) and the bound after one such error; the smallest `e` at
+   which `c(e)` falls below 0.90, 0.80 and 0.50 (none, stated, if that needs more
+   errors than there are flagged positives). These are **EXACT**: functions of
+   the counts, with no sampling and no assumption about how the labels were made.
+   The direction is stated. A flagged negative that is really positive, or an
+   unflagged positive that is really clean, makes the bound conservative. That
+   is never used to tighten it.
+2. **An optional `label_2` column**: a second reviewer's label, blank on items
+   not double-labelled, 0 or 1 where given, parsed as `label` is. A column
+   present and blank on every row is refused as an export mistake. Reported:
+   - **kappa** over the double-labelled items, through
+     `sampling.agreement.cohens_kappa` (percentile bootstrap over pairs, with
+     `n_pairs` named), and the 2x2 table;
+   - the pairs in each primary stratum, and a warning when either stratum has
+     none (`CLAUDE.md`: double-label both strata);
+   - at the certified threshold, the **disputed counts** (EXACT). `d1` is flagged
+     positives the second reviewer calls clean. `d2` is unflagged negatives the
+     second reviewer calls positive, each of which removes one negative unit.
+     Also `c` with every dispute counted as a primary error:
+     `1 - P(Bin(n+d1-d2, B) <= k+d1)`;
+   - **an upper bound on flagged-positive disputes in the whole file**
+     (ESTIMATED). `m1` of the `F` flagged positives were double-labelled, and
+     `d1` of those were disputed. The bound is the exact hypergeometric
+     `D_up = max{D : P(X <= d1 | F, D, m1) >= alpha}`, at the certificate's
+     alpha, with `c` at `D_up`. `D_up = d1` when every flagged positive was
+     double-labelled. Not computed when none was; that absence is itself the
+     warning, because the flattering direction went unreviewed.
+3. **The verdict does not change.** `label` is what certifies. `label_2`
+   changes no status, threshold or bound, and a test holds it to that.
+4. **Not computed, with the reason on the record**: on REFUSED certificates, and
+   on grouped files. A count of relabellings that would turn a refusal into a
+   warrant is a recipe, and refusal has no override (invariant 3). Relabelling
+   one item changes its cluster's size, `certify` requires equal sizes, so no
+   corrected count is defined. Kappa is still reported on both.
+
+**What it assumes and cannot check.** A disagreement is not an error. Counting
+every dispute against the primary label is a worst case over the pairs, not a
+bound on the truth. Two reviewers who were both wrong, or both saw the score
+(invariant 7), agree and are counted clean. `D_up` assumes the double-labelled
+flagged positives are a random sample of the flagged positives. Warrant cannot
+see how they were chosen, and says so on the record.
+
+**Rejected.**
+
+- *A fragility index* (Walsh et al., J Clin Epidemiol 2014): the fewest
+  relabellings that overturn the verdict. At the lowest certifying threshold it
+  is 1 on every row above, since c(1) < 1 - alpha. A figure that is the same on
+  every certificate informs no one.
+- *Resolving disputed labels against the detector during certification.* A
+  customer who double-labels would then get a worse verdict than one who does
+  not, which pays people not to check their labels.
+- *Kappa alone.* It does not say how the certificate moves. Kappa 0.8 over 20
+  pairs with one disputed flagged positive costs a 59-negative certificate 14
+  points of confidence, and a 5,000-negative one under one.
+
+**Scope.** `certify` only. A `recheck` or chain file with `label_2` is read and
+the column is not used. Its sensitivity is `critical - k` flagged
+positives, a different quantity, and it is OPEN. What would close it: the same
+treatment on the recheck record, counted against the critical count.
+
+**The objection.** "A customer will read c(1) = 0.81 as the detector being 81%
+safe." The record names it the confidence at which the budget still clears if one
+flagged positive is really clean. It is not a probability that the detector is
+within budget, and the render says so in those words.
