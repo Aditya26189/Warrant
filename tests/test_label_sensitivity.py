@@ -215,23 +215,42 @@ def test_a_certificate_carries_its_sensitivity_and_the_disputes_count_what_they_
     second = np.array([-1 if v is None else v for v in items.second_labels])
 
     sensitivity = result.label_sensitivity
-    assert sensitivity.computed
-    assert sensitivity.flagged_positives == int((flagged & (labels == 1)).sum())
+    assert sensitivity.computed and sensitivity.unit == "items"
     assert sensitivity.confidence_as_labelled >= 0.95
-    assert sensitivity.confidence_if_one_is_clean == pytest.approx(
-        1 - stats.binom.cdf(k + 1, n + 1, 0.05))
-    assert sensitivity.bound_if_one_is_clean == pytest.approx(cp_upper(k + 1, n + 1, result.alpha))
+    flagged_clean, unflagged_positive = sensitivity.flagged_clean, sensitivity.unflagged_positive
+    assert flagged_clean.limit == int((flagged & (labels == 1)).sum())
+    assert flagged_clean.confidence_if_one == pytest.approx(1 - stats.binom.cdf(k + 1, n + 1, 0.05))
+    assert flagged_clean.bound_if_one == pytest.approx(cp_upper(k + 1, n + 1, result.alpha))
+    # The second flattering error (197 review, F1): one fewer negative.
+    assert unflagged_positive.limit == n - k == int((~flagged & (labels == 0)).sum())
+    assert unflagged_positive.confidence_if_one == pytest.approx(1 - stats.binom.cdf(k, n - 1, 0.05))
+    assert unflagged_positive.bound_if_one == pytest.approx(cp_upper(k, n - 1, result.alpha))
+    assert unflagged_positive.errors_below == errors_below(
+        k, n, 0.05, n - k, kind="unflagged_positive")
 
     disputes = result.second_review.disputes
     d1 = int((flagged & (labels == 1) & (second == 0)).sum())
     d2 = int((~flagged & (labels == 0) & (second == 1)).sum())
+    m1 = int((flagged & (labels == 1) & (second >= 0)).sum())
+    m2 = int((~flagged & (labels == 0) & (second >= 0)).sum())
     assert (disputes.flagged_positives_disputed, disputes.unflagged_negatives_disputed) == (d1, d2)
-    assert disputes.reviewed_flagged_positives == int((flagged & (labels == 1) & (second >= 0)).sum())
+    assert (disputes.reviewed_flagged_positives, disputes.reviewed_unflagged_negatives) == (m1, m2)
     assert disputes.confidence_if_disputes_are_errors == pytest.approx(
         1 - stats.binom.cdf(k + d1, n + d1 - d2, 0.05))
+    # Both pools extrapolated on the same footing (197 review, F2).
+    f_up = disputes_upper_bound(d1, m1, flagged_clean.limit, result.alpha)
+    u_up = disputes_upper_bound(d2, m2, n - k, result.alpha)
+    assert (disputes.flagged_upper_bound, disputes.unflagged_upper_bound) == (f_up, u_up)
+    assert disputes.confidence_at_upper_bounds == pytest.approx(
+        confidence_after(k, n, 0.05, flagged_clean=f_up, unflagged_positive=u_up))
     assert result.second_review.n_pairs == int((second >= 0).sum())
 
     record = json.loads(json.dumps(to_jsonable(result.to_payload())))
+    whole = record["labels"]["second_review"]["disputes"]["whole_file"]
+    assert "union bound" in whole["joint_level"]
+    assert "not a joint confidence" in whole["confidence_meaning"]
+    direction = record["labels"]["sensitivity"]["direction"]
+    assert "unflagged item labelled negative that is really positive" in direction
     assert record["labels"]["sensitivity"]["kind"] == "EXACT"
     assert record["labels"]["second_review"]["kappa"]["kind"] == "ESTIMATED"
     assert record["labels"]["second_review"]["kappa"]["n"] == result.second_review.n_pairs
@@ -250,11 +269,12 @@ def test_a_refusal_carries_no_count_of_relabellings(tmp_path, fast):
     assert labels["second_review"]["disputes"]["computed"] is False
     assert "kappa" in labels["second_review"]
     text = json.dumps(to_jsonable(result.to_payload()))
-    assert "errors_to_fall_below" not in text and "if_one_flagged_positive" not in text
+    assert "errors_to_fall_below" not in text and "confidence_if_one" not in text
     assert "If the labels are wrong" not in render_summary(result)
 
 
-def test_a_grouped_file_reports_kappa_and_no_sensitivity(tmp_path, fast):
+def test_a_single_label_grouped_file_counts_whole_groups(tmp_path, fast):
+    """197 review, F4: each group carries one label, so an error relabels a group."""
     rng = np.random.default_rng(3)
     lines = ["id,label,score,group,label_2"]
     for g in range(400):
@@ -265,11 +285,78 @@ def test_a_grouped_file_reports_kappa_and_no_sensitivity(tmp_path, fast):
             lines.append(f"g{g}-{j},{label},{score:.6f},g{g},{second}")
     items = load_scored_items(_write(tmp_path, "\n".join(lines) + "\n"))
     result = certify_items(fast, items, budget=0.05)
-    assert result.grouped
-    assert not result.label_sensitivity.computed
-    assert "grouped" in result.label_sensitivity.reason
+    assert result.grouped and result.status is WarrantStatus.VALID
+    sensitivity = result.label_sensitivity
+    assert sensitivity.computed and sensitivity.unit == "groups"
+    k, n = result.false_positives_at_threshold, result.negative_units
+    assert n == 300
+    labels, scores, groups = items.as_arrays()
+    flagged_groups = {g for g, y, s in zip(groups, labels, scores) if y == 1 and s >= result.threshold}
+    assert sensitivity.flagged_clean.limit == len(flagged_groups)
+    assert sensitivity.unflagged_positive.limit == n - k
+    assert sensitivity.flagged_clean.confidence_if_one == pytest.approx(
+        confidence_after(k, n, 0.05, flagged_clean=1))
+    assert "whole group" in json.dumps(to_jsonable(result.to_payload()))
     assert result.second_review.n_pairs == 160
     assert result.second_review.disputes is None
+    assert "per item" in result.second_review.disputes_reason
+    assert "counted in groups" in render_summary(result)
+
+
+def test_a_grouped_file_with_a_mixed_group_has_no_sensitivity(tmp_path, fast):
+    """One positive and one negative per group certifies -- F4's premise does not hold."""
+    rng = np.random.default_rng(1)
+    lines = ["id,label,score,group"]
+    for g in range(120):
+        for label in (0, 1):
+            lines.append(f"g{g}-{label},{label},{rng.normal(2.0 * label, 1):.6f},g{g}")
+    items = load_scored_items(_write(tmp_path, "\n".join(lines) + "\n"))
+    result = certify_items(fast, items, budget=0.05)
+    assert result.grouped and result.status is WarrantStatus.VALID
+    assert not result.label_sensitivity.computed
+    assert "both labels" in result.label_sensitivity.reason
+
+
+def test_the_review_table_for_the_unflagged_error_is_what_the_code_computes():
+    """The F1 table in 197's review section: 3.3% of the unflagged negatives."""
+    for n, k, errors, c, ladder in (
+        (5000, 224, 158, 0.878, (122, 257, 507)),
+        (628, 22, 20, 0.934, (46, 93, 175)),
+        (59, 0, 2, 0.946, (15, 28, 46)),
+    ):
+        assert _largest_certifying_k(n, 0.05, 0.05) == k
+        assert round(confidence_after(k, n, 0.05, unflagged_positive=errors), 3) == c
+        found = errors_below(k, n, 0.05, n - k, kind="unflagged_positive")
+        assert tuple(found[level] for level in CONFIDENCE_LADDER) == ladder
+
+
+def test_the_unflagged_ladder_matches_a_scan():
+    k, n = 22, 628
+    found = errors_below(k, n, 0.05, n - k, kind="unflagged_positive")
+    for level in CONFIDENCE_LADDER:
+        scan = next(
+            (b for b in range(n - k + 1)
+             if confidence_after(k, n, 0.05, unflagged_positive=b) < level), None)
+        assert found[level] == scan
+    with pytest.raises(ValueError, match="unflagged"):
+        errors_below(k, n, 0.05, n - k + 1, kind="unflagged_positive")
+
+
+def test_the_file_level_figure_needs_both_pools_reviewed(tmp_path, fast):
+    lines = _rows().splitlines()
+    # label_2 only on positives: no unflagged negative is double-labelled.
+    kept = [lines[0]] + [
+        line if line.split(",")[1] == "1" else ",".join(line.split(",")[:3]) + ","
+        for line in lines[1:]
+    ]
+    result = certify_items(fast, load_scored_items(_write(tmp_path, "\n".join(kept) + "\n")), budget=0.05)
+    disputes = result.second_review.disputes
+    assert disputes.reviewed_unflagged_negatives == 0
+    assert disputes.unflagged_upper_bound is None
+    assert disputes.confidence_at_upper_bounds is None
+    assert "no unflagged negative was double-labelled" in disputes.upper_bound_reason
+    assert any("unflagged negative that is really positive" in w for w in result.second_review.warnings)
+    assert "whole file: not computed" in render_summary(result)
 
 
 def test_no_reviewed_flagged_positive_is_a_warning_not_a_bound(tmp_path, fast):
@@ -284,10 +371,12 @@ def test_no_reviewed_flagged_positive_is_a_warning_not_a_bound(tmp_path, fast):
     result = certify_items(fast, items, budget=0.05)
     review = result.second_review
     assert review.pairs_by_label[1] == 0
-    assert review.disputes.disputes_upper_bound is None
+    assert review.disputes.flagged_upper_bound is None
+    assert review.disputes.unflagged_upper_bound is not None
+    assert review.disputes.confidence_at_upper_bounds is None
     assert "unreviewed" in review.disputes.upper_bound_reason
     assert any("labelled 1 was double-labelled" in w for w in review.warnings)
-    assert any("flatters this certificate" in w for w in review.warnings)
+    assert any("costs this certificate most per item" in w for w in review.warnings)
 
 
 def test_the_summary_says_what_the_confidence_is_not(tmp_path, fast):

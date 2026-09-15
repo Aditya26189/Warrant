@@ -283,18 +283,27 @@ def certify_items(
         "selection": selection,
     }
 
-    from .labels import label_sensitivity, second_review
+    from .labels import label_sensitivity, second_review, single_label_groups
 
     grouped = groups is not None
     certified = bool(certification.fpr_certified)
     threshold = float(certification.threshold) if certified else None
-    flagged_positives = (
-        int(((scores >= threshold) & (labels == 1)).sum()) if certified else None
-    )
+    single_label = not grouped or single_label_groups(labels, groups)
+    flagged_positives: Optional[int] = None
+    if certified and not grouped:
+        flagged_positives = int(((scores >= threshold) & (labels == 1)).sum())
+    elif certified and single_label:
+        # Whole-group units, as the certificate counts them: a positive group is
+        # flagged when any member is (197 review, F4).
+        flagged_positives = len({
+            g for g, y, s in zip(groups, labels, scores, strict=True)
+            if y == 1 and s >= threshold
+        })
     # DECISIONS 197: both are computed from the certification above and feed
     # nothing back into it.
     common["label_sensitivity"] = label_sensitivity(
-        certified=certified, grouped=grouped, k=certification.k, n=certification.n_eff,
+        certified=certified, grouped=grouped, single_label=single_label,
+        k=certification.k, n=certification.n_eff,
         flagged_positives=flagged_positives, budget=budget, alpha=alpha,
     )
     if items.second_labels is not None:

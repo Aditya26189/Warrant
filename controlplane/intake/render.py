@@ -40,22 +40,33 @@ def _label_lines(result: CertificationResult) -> list[str]:
     lines: list[str] = []
     sensitivity = result.label_sensitivity
     if sensitivity is not None and sensitivity.computed:
-        flagged = sensitivity.flagged_positives
-        lines += ["", "  If the labels are wrong:"]
+        unit = sensitivity.unit
+        noun = "group" if unit == "groups" else "item"
+        lines += ["", f"  If the labels are wrong (counted in {unit}):"]
         lines.append(
             f"    as labelled, the budget clears at {_pct(sensitivity.confidence_as_labelled)} confidence"
         )
-        if sensitivity.confidence_if_one_is_clean is not None:
+        for ladder, what, pool in (
+            (sensitivity.flagged_clean, f"a flagged positive {noun} that is really clean",
+             f"flagged positive {unit}"),
+            (sensitivity.unflagged_positive, f"an unflagged negative {noun} that is really positive",
+             f"unflagged negative {unit}"),
+        ):
+            lines.append(f"    {what}:")
+            if ladder.confidence_if_one is None:
+                lines.append("      none of those in this file")
+                continue
+            crossings = [
+                f"below {level * 100:.0f}% at {count}" if count is not None
+                else f"never below {level * 100:.0f}%"
+                for level, count in ladder.errors_below.items()
+            ]
             lines.append(
-                f"    if one flagged positive is really clean: {_pct(sensitivity.confidence_if_one_is_clean)} "
-                f"(bound {sensitivity.bound_if_one_is_clean:.4f})"
+                f"      one costs "
+                f"{(sensitivity.confidence_as_labelled - ladder.confidence_if_one) * 100:.1f} "
+                f"points, to {_pct(ladder.confidence_if_one)} (bound {ladder.bound_if_one:.4f})"
             )
-        crossings = [
-            f"below {level * 100:.0f}% at {count}" if count is not None
-            else f"never below {level * 100:.0f}%"
-            for level, count in (sensitivity.errors_below or {}).items()
-        ]
-        lines.append(f"    {', '.join(crossings)} of the {flagged} flagged positives")
+            lines.append(f"      {', '.join(crossings)} of the {ladder.limit} {pool}")
         lines.append(
             "    That is the confidence the budget still clears at, not a probability"
         )
@@ -83,26 +94,37 @@ def _label_lines(result: CertificationResult) -> list[str]:
     if disputes is not None:
         lines.append(
             f"    {disputes.flagged_positives_disputed} of {disputes.reviewed_flagged_positives} "
-            f"double-labelled flagged positives called clean; "
-            f"{disputes.unflagged_negatives_disputed} unflagged negatives called positive"
+            f"double-labelled flagged positives called clean"
+        )
+        lines.append(
+            f"    {disputes.unflagged_negatives_disputed} of {disputes.reviewed_unflagged_negatives} "
+            f"double-labelled unflagged negatives called positive"
         )
         lines.append(
             f"    if every dispute is a primary error: "
             f"{_pct(disputes.confidence_if_disputes_are_errors)} (a worst case, not the truth)"
         )
-        if disputes.disputes_upper_bound is not None:
-            lines.append(
-                f"    whole file, at most {disputes.disputes_upper_bound} of {disputes.flagged_positives} "
-                f"flagged positives disputed ({(1 - review.alpha) * 100:.0f}%, "
-                f"n {disputes.reviewed_flagged_positives}, if they were sampled at random): "
-                f"{_pct(disputes.confidence_at_upper_bound)}"
-            )
-            if disputes.reviewed_flagged_positives < disputes.flagged_positives:
+        if disputes.confidence_at_upper_bounds is not None:
+            level = (1 - review.alpha) * 100
+            joint = (1 - 2 * review.alpha) * 100
+            lines += [
+                "    whole file, if the double-labelled items were sampled at random:",
+                f"      at most {disputes.flagged_upper_bound} of {disputes.flagged_positives} flagged "
+                f"positives (n {disputes.reviewed_flagged_positives}) and "
+                f"{disputes.unflagged_upper_bound} of {disputes.unflagged_negatives} unflagged "
+                f"negatives (n {disputes.reviewed_unflagged_negatives}) disputed,",
+                f"      each at {level:.0f}%, both together at >= {joint:.0f}%",
+                f"      if all of those were errors: {_pct(disputes.confidence_at_upper_bounds)}",
+                "      (a sensitivity at those bounds, not a joint confidence)",
+            ]
+            if (disputes.reviewed_flagged_positives < disputes.flagged_positives
+                    or disputes.reviewed_unflagged_negatives < disputes.unflagged_negatives):
                 lines.append(
-                    f"    that bound is as wide as {disputes.reviewed_flagged_positives} reviewed "
-                    f"of {disputes.flagged_positives} makes it; double-labelling more flagged "
-                    "positives narrows it"
+                    "      the bounds are as wide as the double-labelled counts make them;"
                 )
+                lines.append("      double-labelling more of each pool narrows them")
+        else:
+            lines.append(f"    whole file: not computed -- {disputes.upper_bound_reason}")
     for warning in review.warnings:
         lines.append(f"    warning: {warning}")
     return lines
