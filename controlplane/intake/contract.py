@@ -147,11 +147,48 @@ class ScoredItems:
 
 
 def _rows_from_csv(path: Path) -> tuple[list[dict[str, str]], list[str]]:
+    """Reject ambiguity before dictionary conversion can discard it (DECISIONS 199)."""
     with path.open("r", encoding="utf-8-sig", newline="") as handle:
-        reader = csv.DictReader(handle)
-        if reader.fieldnames is None:
-            raise InputError(f"{path.name} is empty: no header row to read columns from")
-        return list(reader), [name.strip() for name in reader.fieldnames]
+        reader = csv.reader(handle, strict=True)
+        try:
+            header = next(reader, None)
+            if header is None:
+                raise InputError(f"{path.name} is empty: no header row to read columns from")
+            columns = [name.strip() for name in header]
+            if not columns or any(not name for name in columns):
+                raise InputError(f"{path.name}: every CSV header must name a non-blank column")
+            duplicates = sorted(name for name, count in Counter(columns).items() if count > 1)
+            if duplicates:
+                raise InputError(
+                    f"{path.name}: duplicate CSV column(s) {duplicates} after whitespace "
+                    "normalization; each field must have exactly one value per row"
+                )
+            rows: list[dict[str, str]] = []
+            for values in reader:
+                if not values:  # Preserve DictReader's treatment of empty lines.
+                    continue
+                if len(values) != len(columns):
+                    raise InputError(
+                        f"{path.name} row ending at line {reader.line_num}: "
+                        f"expected {len(columns)} CSV fields, found {len(values)}; "
+                        "missing or extra fields cannot be filled or dropped"
+                    )
+                rows.append(dict(zip(columns, values, strict=True)))
+        except csv.Error as exc:
+            raise InputError(
+                f"{path.name} line {reader.line_num} is not valid CSV: {exc}"
+            ) from exc
+        return rows, columns
+
+
+def _unique_json_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    """Keep JSON's last-value-wins rule out of the input contract (DECISIONS 199)."""
+    record: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in record:
+            raise InputError(f"duplicate JSON field {key!r}; every key must be unique")
+        record[key] = value
+    return record
 
 
 def _rows_from_jsonl(path: Path) -> tuple[list[dict[str, Any]], list[str]]:
@@ -161,9 +198,11 @@ def _rows_from_jsonl(path: Path) -> tuple[list[dict[str, Any]], list[str]]:
         if not line.strip():
             continue
         try:
-            record = json.loads(line)
+            record = json.loads(line, object_pairs_hook=_unique_json_object)
         except json.JSONDecodeError as exc:
             raise InputError(f"{path.name} line {number} is not valid JSON: {exc}") from exc
+        except InputError as exc:
+            raise InputError(f"{path.name} line {number}: {exc}") from exc
         if not isinstance(record, dict):
             raise InputError(
                 f"{path.name} line {number} is a {type(record).__name__}, not an "
@@ -232,8 +271,9 @@ def load_scored_items(path: str | Path, *, require_both_classes: bool = True) ->
     Args:
         path: A ``.csv`` or ``.jsonl`` file.
         require_both_classes: Preserve legacy certification rejection by default.
-            Release evaluation opts out to report a missing denominator as
-            UNVALIDATED instead of discarding the study (DECISIONS 185).
+            Release evaluation opts out to retain a study with a missing
+            denominator. New release registrations report REFUSED; the legacy
+            protocol retains UNVALIDATED for replay (DECISIONS 185, 200).
 
     Returns:
         The parsed :class:`ScoredItems`.
