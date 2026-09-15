@@ -6836,6 +6836,47 @@ anything. This stays OPEN until the cause is named and the promise in
 
 ---
 
+### The cause, named (2026-09-15, reproduced under WSL Ubuntu, regopy 1.5.2, Python 3.12.3)
+
+The step that aborts is not the query. Mirroring `engine.py` one call at a time in
+a child process, with the child's whole stderr kept:
+
+    set_input({"probe": True})                 ok
+    query("data.controlplane.nonexistent")     ok -- returns an Output whose string is "undefined"
+    output.expressions()                       ABORT
+
+    terminate called after throwing an instance of 'std::out_of_range'
+      what():  Index out of range
+    Fatal Python error: Aborted
+      File ".../regopy/output.py", line 132 in expressions
+
+`Output.expressions()` asks the native library for expression 0 of an output that
+has none; `rego-cpp` throws `std::out_of_range` across the FFI, nothing on the C++
+side catches it, and `std::terminate` sends SIGABRT. The control -- an entrypoint
+the module defines -- runs to completion.
+
+**Why Windows passes.** The same script on Windows, same regopy 1.5.2, turns the
+throw into `OSError [WinError -529697949] Windows Error 0xe06d7363` -- the MSVC C++
+exception code, which structured exception handling hands to `ctypes` as a Python
+error. `engine.py`'s `except Exception` catches that and raises the intended
+`BundleError`. On Linux there is no such translation, so the guard never runs.
+
+**The fix, exact, and still in read-only territory.** `regopy`'s `Output` already
+parses its results in Python at construction: for an undefined output it holds one
+result with an empty expression list, and `str(output)` is `"undefined"`. So
+`PolicyEngine._evaluate` can decide "produced no value" before the native call:
+
+    output = self._interpreter.query(self.bundle.entrypoint)
+    if str(output) == "undefined" or not output[0].expressions:
+        raise BundleError(...)          # the existing "produced no value" message
+    expressions = output.expressions()
+
+That keeps the deploy-time refusal on every platform and needs no subprocess.
+`controlplane/policy/**` is read-only, so this stays **OPEN -- needs human review**;
+what would close it is an owner applying that guard, after which
+`tests/test_policy.py::test_an_entrypoint_the_module_does_not_define_fails_at_construction`
+passes on Linux and its xfail branch is no longer reached.
+
 ## 146 - The price list, and the sample size it had been quoting too low
 
 **Pre-registered before the code.** The third clause of this project's own
