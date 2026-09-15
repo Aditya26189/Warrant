@@ -565,10 +565,11 @@ link).
 - **At the minimum file, one label error is most of the certificate.** 59
   negatives go from 0.952 to 0.808 with one flagged-clean error and to 0.376 with
   three (arithmetic, held by `tests/test_label_sensitivity.py`).
-- **On large files the other error matters.** At 5,000 negatives, 3.3% of the
-  unflagged negatives really positive (158 items, the average label-error rate
-  Northcutt et al. measured across ten benchmark test sets) takes a certificate to
-  0.878. A flagged-clean error costs it under a point.
+- **On large files the other error matters.** At 5,000 negatives, if 3.3% of
+  the unflagged negatives were really positive (158 items), the certificate would
+  be at 0.878. A flagged-clean error costs it under a point. The 3.3% is
+  Northcutt et al.'s average label error over all labels in ten benchmark test
+  sets, not a measured rate of this one error direction.
 - **The tolerance is identical across the three probes (199, not predicted).**
   At a fixed alpha, with untied negative-unit scores, the lowest certifying
   threshold admits exactly the largest count that certifies, so `k` and both
@@ -622,9 +623,25 @@ worktree, and each had 0 failures:
 - `93aca48` (the 199 study code and artifact, `LIMITATIONS` 3.6): 1,759 passed,
   1 xfail, 1,760 collected.
 
-The xfail is 179's strict one on Windows. The only commit after `93aca48` is the
-README paragraph (`0762f53`, docs), and no clean-clone gate has run since
-`9c1fc68`.
+The xfail is 179's strict one on Windows.
+
+**The clean-clone gate passed at `1a3fd58`** (`results/clean_clone.json`, committed
+at `897446b`):
+- a fresh clone of 529 tracked files (519 at `9c1fc68`);
+- `make smoke`, `make test` (2,165.6 s in the clone) and `make verify` all ok;
+- the claim table 92/92 (87/87 before; the five 199 rows added, no existing row
+  moved) and frozen scores 25/25;
+- the activations tier skipped for gitignored caches, as before;
+- the clone again could not be fully deleted (about 26 MB left in TEMP).
+
+**While it ran, the gate itself was found to have a race (200).** The source's
+HEAD was read before a separate clone, and provenance was taken after the
+roughly 37-minute run. A commit or a dirty tree during the run would have
+produced a record naming two commits, with nothing refusing. This run is
+unaffected: both commits are `1a3fd588` and the tree was clean. The gate now
+fails when the clone is not the commit it names, takes provenance at clone time,
+and refuses to write a record whose source changed. Commits after `1a3fd58` (200's
+fix and this section's revisions) are covered by their own tests, not by a gate.
 
 **Defects in how this was run.**
 
@@ -652,9 +669,20 @@ README paragraph (`0762f53`, docs), and no clean-clone gate has run since
   of its own. Author and reviewer both missed it. Nothing tests prose polarity, and this is the kind of
   error the codebase's `EXACT`/`ESTIMATED` and positive-class conventions exist to
   stop in code (`DECISIONS.md` 199 correction).
+- **The clean-clone gate could have recorded two commits (200).** This was
+  latent since the gate was written, and was found by the reviewing session while
+  the author held an edit so as not to disturb a run. The gate existed to rule
+  out exactly this kind of silent mismatch, and no test covered its own record.
 
 **What this does not establish.**
 
+- **The ladders are for the certificate as issued, at its threshold.** They say
+  how far this certificate's confidence moves if its labels are wrong. They do not
+  say that no certificate exists on corrected labels. Certifying the corrected
+  file could choose a higher threshold and certify again at 95%, at a different
+  recall; nothing here measures that.
+- **Each ladder counts one error kind at a time.** A file with some of each is
+  worse than either ladder read alone.
 - A disagreement is not an error. Every dispute figure counts disagreements
   against the primary label: a worst case over the pairs. Two reviewers who both
   saw the score agree and are counted clean.
@@ -679,6 +707,5 @@ README paragraph (`0762f53`, docs), and no clean-clone gate has run since
 - **Alias-list completeness on TriviaQA:** would close with a blind human audit of
   a sample of lenient-incorrect answers, the only way to measure the error both
   rules share.
-- **No clean-clone gate since `9c1fc68`:** would close with
-  `scripts/clean_clone_gate.py` at the head. It covers 194's A to C fixes and
-  197 to 199, which full suites have covered only in worktrees.
+- **The gate's own fix (200) has not run a gate.** That would close with
+  `scripts/clean_clone_gate.py` at a head that includes it.

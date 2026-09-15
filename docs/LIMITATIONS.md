@@ -277,7 +277,9 @@ positives that are really clean take a certificate from at least 0.95 to below
 `results/label_sensitivity/triviaqa.json`, `DECISIONS.md` 199). How many errors a
 certificate tolerates is set by its negatives, budget and alpha, not by the
 detector. A detector that flags more positives is exposed to more of the costly
-kind.
+kind. The figure is for the certificate as issued, at its threshold, and counts
+one error kind at a time. It does not say that corrected labels could not be
+certified: they could be, at another threshold and another recall.
 
 **What was measured.** The labels are lenient alias matching. Strict exact match
 on the same responses disagrees on 41 of 600 test items (kappa 0.8640
