@@ -6,6 +6,14 @@ This assessment concerns a global enterprise startup with no customer interviews
 
 ## 1. Investment judgment
 
+**Implementation follow-up, 14 September:** the monitoring-power correction is
+now committed, and a separate scoped release-evidence CLI has been built. The
+[claim audit](CLAIM-AUDIT-2026-09.md) records the new implementation, the narrower
+interpretation of long-context labels, and confirmed OPEN runtime defects.
+These changes do not establish customer demand or reverse this report's
+commercial conclusion. Historical implementation statements below describe the
+revision named above unless the follow-up explicitly supersedes them.
+
 The central problem is real: organisations deploy AI systems whose behaviour changes, whose outputs require judgment, and whose validation processes are expensive. The missing business evidence is whether a particular buyer will pay Warrant to solve a particular part of that problem, repeatedly, rather than use an existing platform, a consultant, or an internal script.
 
 There is unusually relevant independent evidence for the problem. The Bank of England's February 2026 summary of industry roundtables reports deployment delays involving second-line risk functions, skills bottlenecks, concerns about whether traditional validation can scale to generative systems, and friction in procurement of third-party AI. Participants favoured more attention to testing and monitoring system outcomes. These are reported industry views, not proof that Warrant's proposed solution is the one firms want. [Bank of England roundtables][s1]
