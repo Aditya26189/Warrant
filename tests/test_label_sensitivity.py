@@ -73,7 +73,7 @@ def test_the_confidence_never_rises_as_errors_are_added():
                 continue
             k = _largest_certifying_k(n, budget, 0.05)
             series = [confidence_after(k, n, budget, flagged_clean=e) for e in range(60)]
-            assert all(b <= a + 1e-12 for a, b in zip(series, series[1:]))
+            assert all(b <= a + 1e-12 for a, b in zip(series, series[1:], strict=False))
 
 
 @pytest.mark.parametrize("n,k,c0,c1,c3,c5", [
@@ -291,7 +291,7 @@ def test_a_single_label_grouped_file_counts_whole_groups(tmp_path, fast):
     k, n = result.false_positives_at_threshold, result.negative_units
     assert n == 300
     labels, scores, groups = items.as_arrays()
-    flagged_groups = {g for g, y, s in zip(groups, labels, scores) if y == 1 and s >= result.threshold}
+    flagged_groups = {g for g, y, s in zip(groups, labels, scores, strict=True) if y == 1 and s >= result.threshold}
     assert sensitivity.flagged_clean.limit == len(flagged_groups)
     assert sensitivity.unflagged_positive.limit == n - k
     assert sensitivity.flagged_clean.confidence_if_one == pytest.approx(
