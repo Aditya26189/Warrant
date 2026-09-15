@@ -75,6 +75,51 @@ it would promise a tighter false-positive rate than your data supports. Warrant
 raises rather than certifying, and tells you to either equalise the groups or
 drop the column and accept that items are treated as independent.
 
+## Optional: `label_2`
+
+If a second reviewer labelled some of your items, add their label as `label_2`:
+`0` or `1` where they reviewed the item, **blank** where they did not.
+
+```csv
+id,label,score,label_2
+item_1,0,0.11,0
+item_2,1,0.88,
+item_3,1,0.91,0
+item_4,0,0.14,
+```
+
+It is **measured beside the warrant and changes nothing in it.** `label` is what
+certifies; the status, threshold, bound and every rate are identical with or
+without `label_2`, whatever it says. What you get is:
+
+- **kappa** between the two reviewers over the double-labelled items, with a 95%
+  interval and the number of pairs it rests on;
+- how many of those pairs sit in each class, and a warning if either class has
+  none -- double-label both, or disagreement about that class goes unmeasured;
+- at the certified threshold, how many double-labelled **flagged positives** the
+  second reviewer calls clean, and what the certificate's confidence would be if
+  each of those disputes were an error in `label`;
+- if only some flagged positives were double-labelled, an upper bound on how many
+  in the whole file would be disputed, assuming the double-labelled ones were
+  picked at random. It narrows as more are double-labelled.
+
+A disagreement is not an error, and an agreement is not a correct label. Warrant
+cannot see whether your reviewers were blind to the score, or how you chose the
+items to double-label; the record says so.
+
+A `label_2` column that is blank on every row is rejected: that is an export
+mistake, not a second review.
+
+**Every certificate, with or without `label_2`, says how far it depends on its
+labels.** Warrant picks the lowest threshold whose bound clears your budget, so
+the certificate sits at the edge of it. A clean item that is labelled `1` and
+flagged is counted as a hit rather than a false positive, and each one lowers the
+confidence at which the budget still clears. The summary prints that confidence
+after one such error, and how many it takes to fall below 90%, 80% and 50%.
+With few negatives it moves fast; see `DECISIONS.md` 197. It is not computed on
+a refusal, where it would be a count of relabellings that turns the refusal into
+a warrant, nor on a grouped file.
+
 ## Optional: anything else
 
 Every other column is carried into the JSON record untouched and used in no
@@ -98,6 +143,8 @@ These are different, and the difference matters.
 | duplicate `id` values | the offending ids |
 | only one class present | which class |
 | a `group` column with a blank cell | the row |
+| a `label_2` that is not 0, 1 or blank | the row and the value |
+| a `label_2` column blank on every row | what to do instead |
 | unequal group sizes | what to do instead |
 
 Nothing is coerced, filled or dropped. A blank is not a zero and `0.7` is not a
@@ -158,7 +205,8 @@ file is read, the arithmetic is local, and the record is written next to it.
 A terminal summary and a JSON record carrying: the status, the budget and
 confidence level, your input's shape, the certified threshold and its
 Clopper-Pearson upper bound, and — when certified — recall, precision, flag rate
-and lift, each with a 95% interval.
+and lift, each with a 95% interval, and how far the certificate depends on its
+labels (above, under `label_2`).
 
 Two rules the output always follows:
 
