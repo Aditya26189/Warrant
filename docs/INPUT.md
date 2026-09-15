@@ -112,6 +112,14 @@ items to double-label; the record says so.
 A `label_2` column that is blank on every row is rejected: that is an export
 mistake, not a second review.
 
+**On `warrant recheck`** the same column gives the same kappa and, at the
+warrant's threshold, the same disputed counts, with this file's lower bound if
+every dispute were an error and whether that would have revoked. And every
+recheck whose bound holds says how many labels of each kind would have to be
+wrong for it to have revoked (`DECISIONS.md` 198). A recheck that does not revoke
+is still an absence of evidence of breach; the counts say how far this file is
+from showing one.
+
 **Every certificate, with or without `label_2`, says how far it depends on its
 labels.** Warrant picks the lowest threshold whose bound clears your budget, so
 the certificate sits at the edge of it. Two label errors flatter it: a clean
