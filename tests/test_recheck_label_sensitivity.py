@@ -173,8 +173,20 @@ def test_a_broken_bound_carries_no_count(tmp_path, fast):
     assert result.bound_still_holds is False
     assert not result.label_sensitivity.computed
     assert "recipe" in result.label_sensitivity.reason
-    assert result.second_review.disputes is None
-    assert "errors_to_revoke" not in json.dumps(to_jsonable(result.to_payload()))
+    # 198 review (a): the observed disputes about counted false positives are a
+    # measurement, reported with nothing recomputed from them.
+    labels, scores, _ = items.as_arrays()
+    second = np.array([-1 if v is None else v for v in items.second_labels])
+    flagged_negative = (scores >= THRESHOLD) & (labels == 0)
+    disputes = result.second_review.disputes
+    assert disputes.flagged_negatives == int(flagged_negative.sum())
+    assert disputes.reviewed_flagged_negatives == int((flagged_negative & (second >= 0)).sum())
+    assert disputes.flagged_negatives_label_2_calls_positive == int((flagged_negative & (second == 1)).sum())
+    text = json.dumps(to_jsonable(result.to_payload()))
+    assert "errors_to_revoke" not in text
+    assert "lower_bound_if" not in text and "would_have_revoked" not in text
+    assert "The revocation stands" in text
+    assert "The revocation stands" in render_recheck(result)
 
 
 def test_a_file_with_no_negatives_carries_no_count():
@@ -225,3 +237,19 @@ def test_a_chained_recheck_carries_no_per_file_count(tmp_path, capsys):
     assert record["labels"]["second_review"]["disputes"]["computed"] is False
     assert "kappa" in record["labels"]["second_review"]
     assert "errors_to_revoke" not in json.dumps(record)
+
+
+def test_a_chained_result_that_kept_per_file_counts_is_refused(tmp_path, fast):
+    """198 review (c): structural, not dependent on apply_chain being the only path."""
+    from controlplane.intake.recheck import require_chain_replaced
+
+    result = recheck_items(fast, load_scored_items(_file(tmp_path, "a.csv", seed=11)),
+                           budget=0.05, threshold=THRESHOLD)
+    with pytest.raises(RuntimeError, match="per-file label-error counts"):
+        require_chain_replaced(result)
+    counts_gone = dataclasses.replace(result, label_sensitivity=dataclasses.replace(
+        result.label_sensitivity, computed=False))
+    with pytest.raises(RuntimeError, match="label_2 disputes"):
+        require_chain_replaced(counts_gone)
+    require_chain_replaced(dataclasses.replace(counts_gone, second_review=dataclasses.replace(
+        result.second_review, disputes=None)))

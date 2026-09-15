@@ -269,8 +269,18 @@ def _recheck_label_lines(result) -> list[str]:
     disputes = review.disputes
     if disputes is None:
         lines.append(f"     disputes: {review.disputes_reason}")
+    elif not hasattr(disputes, "lower_bound_if_disputes_are_errors"):
+        lines += [
+            f"     {disputes.flagged_negatives_label_2_calls_positive} of "
+            f"{disputes.reviewed_flagged_negatives} double-labelled false positives "
+            "called positive by label_2.",
+            "     The revocation stands; no bound is recomputed from those.",
+        ]
     else:
-        revokes = "would revoke" if disputes.revokes_if_disputes_are_errors else "would not revoke"
+        revokes = (
+            "would have revoked" if disputes.revokes_if_disputes_are_errors
+            else "would not have revoked"
+        )
         lines += [
             f"     {disputes.flagged_positives_disputed} of {disputes.reviewed_flagged_positives} "
             "double-labelled flagged positives called clean;",
@@ -280,7 +290,10 @@ def _recheck_label_lines(result) -> list[str]:
             f"{disputes.lower_bound_if_disputes_are_errors:.4f} and {revokes}",
         ]
         if disputes.lower_bound_at_upper_bounds is not None:
-            whole = "would revoke" if disputes.revokes_at_upper_bounds else "would not revoke"
+            whole = (
+                "would have revoked" if disputes.revokes_at_upper_bounds
+                else "would not have revoked"
+            )
             lines += [
                 "     whole file, if the double-labelled items were sampled at random:",
                 f"     at most {disputes.flagged_upper_bound} of {disputes.flagged_positives} flagged "

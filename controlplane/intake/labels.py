@@ -54,6 +54,7 @@ __all__ = [
     "label_sensitivity",
     "second_review",
     "single_label_groups",
+    "BrokenBoundDisputes",
     "RecheckDisputes",
     "RecheckSensitivity",
     "chained_sensitivity",
@@ -778,7 +779,7 @@ class RecheckDisputes:
                     "of that pool; Warrant cannot see how they were chosen"
                 ),
                 "lower_bound_if_all_are_errors": self.lower_bound_at_upper_bounds,
-                "would_revoke": self.revokes_at_upper_bounds,
+                "would_have_revoked": self.revokes_at_upper_bounds,
                 "meaning": (
                     "This file's lower bound if the disputes are at those bounds and "
                     "every one is a primary error: a sensitivity at upper confidence "
@@ -796,7 +797,7 @@ class RecheckDisputes:
             "lower_bound_if_every_dispute_is_a_primary_error": (
                 self.lower_bound_if_disputes_are_errors
             ),
-            "would_revoke_if_every_dispute_is_a_primary_error": (
+            "would_have_revoked_if_every_dispute_is_a_primary_error": (
                 self.revokes_if_disputes_are_errors
             ),
             "worst_case_meaning": (
@@ -804,6 +805,37 @@ class RecheckDisputes:
                 "a worst case over the pairs, not a bound on the truth."
             ),
             "whole_file": whole,
+        }
+
+
+@dataclasses.dataclass(frozen=True)
+class BrokenBoundDisputes:
+    """On a broken bound: the observed disputes that could have inflated ``k`` (198 review, a).
+
+    A flagged item labelled clean that is really positive is a false positive that
+    is not one. ``label_2``'s count of those is a measurement a customer contests a
+    revocation with. Nothing is recomputed from it: the verdict stands, and a
+    corrected bound would be a count of the relabellings that clear a revocation.
+    """
+
+    flagged_negatives: int
+    reviewed_flagged_negatives: int
+    flagged_negatives_label_2_calls_positive: int
+
+    def to_payload(self, alpha: float) -> dict[str, Any]:
+        return {
+            "kind": MetricKind.EXACT.value,
+            "flagged_negatives": self.flagged_negatives,
+            "reviewed_flagged_negatives": self.reviewed_flagged_negatives,
+            "flagged_negatives_label_2_calls_positive": (
+                self.flagged_negatives_label_2_calls_positive
+            ),
+            "verdict": (
+                "The revocation stands. These are the observed disagreements about "
+                "items counted as false positives; no bound is recomputed from them, "
+                "because a corrected bound would be a count of the relabellings that "
+                "clear a revocation (DECISIONS 198)."
+            ),
         }
 
 
@@ -836,8 +868,6 @@ def recheck_second_review(
     reason = ""
     if bound_holds is None:
         reason = "not computed: the file has no negatives (DECISIONS 198)"
-    elif bound_holds is False:
-        reason = "not computed: the bound has already broken (DECISIONS 198)"
     elif grouped:
         reason = (
             "not computed on a grouped file: label_2 is per item, and a dispute inside "
@@ -845,6 +875,19 @@ def recheck_second_review(
         )
     if reason:
         return SecondReview(**common, warnings=warnings, disputes_reason=reason)
+    if bound_holds is False:
+        second_full = np.array([-1 if value is None else value for value in second], dtype=int)
+        flagged_negative = (np.asarray(scores, dtype=float) >= threshold) & (np.asarray(labels) == 0)
+        return SecondReview(
+            **common, warnings=warnings,
+            disputes=BrokenBoundDisputes(
+                flagged_negatives=int(flagged_negative.sum()),
+                reviewed_flagged_negatives=int((flagged_negative & reviewed).sum()),
+                flagged_negatives_label_2_calls_positive=int(
+                    (flagged_negative & (second_full == 1)).sum()
+                ),
+            ),
+        )
     if k is None:
         raise ValueError("a tested recheck carries k")
 

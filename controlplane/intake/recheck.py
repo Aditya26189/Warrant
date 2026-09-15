@@ -688,6 +688,26 @@ def chain_units(items: ScoredItems, threshold: float) -> tuple[list[str], np.nda
     return [str(k) for k in keys], maxima >= threshold
 
 
+def require_chain_replaced(result: RecheckResult) -> None:
+    """Raise if a chained result still carries one file's label-error counts (198 review, c).
+
+    :func:`apply_chain` replaces them; this makes that structural, so a path that
+    builds a chained result some other way fails before a record is written
+    rather than publishing a per-file count that reads as the chain's.
+    """
+    sensitivity = result.label_sensitivity
+    if sensitivity is not None and sensitivity.computed:
+        raise RuntimeError(
+            "a chained recheck carries per-file label-error counts; apply_chain must "
+            "replace them (DECISIONS 198)"
+        )
+    if result.second_review is not None and result.second_review.disputes is not None:
+        raise RuntimeError(
+            "a chained recheck carries per-file label_2 disputes; apply_chain must "
+            "replace them (DECISIONS 198)"
+        )
+
+
 def apply_chain(result: RecheckResult, fed: Any) -> RecheckResult:
     """The verdict a recheck carries when it is one link of a chain (DECISIONS 193, 194).
 

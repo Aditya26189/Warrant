@@ -606,9 +606,10 @@ def _recheck(args: argparse.Namespace) -> int:
         except (ChainError, ValueError) as exc:
             print(f"warrant: {exc}", file=sys.stderr)
             return EXIT_BAD_INPUT
-        from .intake.recheck import apply_chain
+        from .intake.recheck import apply_chain, require_chain_replaced
 
         result = apply_chain(result, fed)
+        require_chain_replaced(result)
 
     payload = result.to_payload()
     payload["chain"] = fed.to_payload() if fed is not None else None
