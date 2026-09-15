@@ -553,6 +553,8 @@ def test_every_script_has_a_smoke_test() -> None:
         "31_chain_detection.py",
         # test_smoke_frontier_selection
         "30_frontier_selection.py",
+        # test_smoke_label_sensitivity
+        "32_label_sensitivity.py",
         # tests/test_test_inventory.py runs it on a throwaway repository: a
         # smoke run here would rewrite this repository's README and Makefile.
         "refresh_test_inventory.py",
@@ -1389,6 +1391,21 @@ def test_smoke_frontier_selection(tmp_path: Path) -> None:
     assert set(payload["criteria"]) == {"M1_material", "M2_bonferroni_alpha", "M3_sanity"}
     assert payload["registered_run"] is False
     assert "Not a measurement" in payload["what_these_are"]
+
+
+def test_smoke_label_sensitivity(tmp_path: Path) -> None:
+    """`32_label_sensitivity.py` certifies one budget on each set and applies 199's criteria."""
+    _run_bare(
+        "32_label_sensitivity.py",
+        "--config", str(PROJECT_ROOT / "config.yaml"),
+        "--budgets", "0.05",
+        "--out", str(tmp_path),
+    )
+    payload = json.loads((tmp_path / "label_sensitivity" / "triviaqa.json").read_text(encoding="utf-8"))
+    assert payload["design"]["registered_run"] is False
+    assert len(payload["sets"]) == 3
+    assert all(entry["lenient_label_mismatches"] == 0 for entry in payload["sets"])
+    assert set(payload["criteria"]) == {"C0", "P1", "P2", "reported"}
 
 
 def test_smoke_chain_detection(tmp_path: Path) -> None:
