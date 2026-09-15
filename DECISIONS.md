@@ -6872,6 +6872,9 @@ result with an empty expression list, and `str(output)` is `"undefined"`. So
     expressions = output.expressions()
 
 That keeps the deploy-time refusal on every platform and needs no subprocess.
+**Checked, not only argued:** that guard, run against the same module on WSL Ubuntu
+and on Windows, returns the defined entrypoint's value, reports the undefined one as
+no value without calling `expressions()`, and the process survives on both.
 `controlplane/policy/**` is read-only, so this stays **OPEN -- needs human review**;
 what would close it is an owner applying that guard, after which
 `tests/test_policy.py::test_an_entrypoint_the_module_does_not_define_fails_at_construction`
