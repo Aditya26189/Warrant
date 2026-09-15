@@ -35,7 +35,7 @@
 
 <img src="https://img.shields.io/badge/Tests-1752_collected-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1752 tests collected" />
 &nbsp;
-<img src="https://img.shields.io/badge/Claims-87_verified-2da44e?style=for-the-badge" alt="87 claims verified" />
+<img src="https://img.shields.io/badge/Claims-92_verified-2da44e?style=for-the-badge" alt="92 claims verified" />
 &nbsp;
 <img src="https://img.shields.io/badge/AUROC-0.8256-6366f1?style=for-the-badge" alt="AUROC 0.8256" />
 &nbsp;
@@ -346,6 +346,11 @@ here fails the build.**
 | ...by the chained recheck | 1.0000 | - | results/recheck_schedules/comparison.json | cells[rule=e_detector,cadence=weekly,scenario=S3].caught_in_window.value | python scripts/29_recheck_schedules.py |
 | Monthly chained rechecks, 628 negatives each, catch a 1.5x breach within three months, share of simulated years (DECISIONS 196) | 0.8325 | - | results/chain_detection/grid.json | cells[breach=0.075,cadence=monthly-6,scenario=S2,rule=e_detector].caught_in_window.value | python scripts/31_chain_detection.py |
 | ...weekly, a 1.5x breach from week 26, within 13 weeks | 0.9965 | - | results/chain_detection/grid.json | cells[breach=0.075,cadence=weekly-26,scenario=S2,rule=e_detector].caught_in_window.value | python scripts/31_chain_detection.py |
+| This project's measured TriviaQA certificates: the fewest flagged positives that, if really clean, take one below 0.80 confidence, over all certified rows (DECISIONS 199) | 2 | - | results/label_sensitivity/triviaqa.json | criteria.reported.flagged_clean_errors_to_fall_below_0_80_min | python scripts/32_label_sensitivity.py |
+| ...the most, over the same rows | 8 | - | results/label_sensitivity/triviaqa.json | criteria.reported.flagged_clean_errors_to_fall_below_0_80_max | python scripts/32_label_sensitivity.py |
+| ...certified rows in that range (3 probes x 20 budgets) | 60 | - | results/label_sensitivity/triviaqa.json | criteria.reported.certified_rows | python scripts/32_label_sensitivity.py |
+| ...the lowest confidence among them if every strict-vs-lenient matching dispute were a lenient labelling error | 0.8127 | - | results/label_sensitivity/triviaqa.json | criteria.reported.confidence_at_disputes_min | python scripts/32_label_sensitivity.py |
+| ...the highest | 0.9412 | - | results/label_sensitivity/triviaqa.json | criteria.reported.confidence_at_disputes_max | python scripts/32_label_sensitivity.py |
 | Tightest budget a single-sample judge can certify | 0.1045 | - | results/scorefree/scorefree.json | headline.single_sample_floor_median | python scripts/26_scorefree.py |
 | ...distinct operating points it offers | 1 | - | results/scorefree/scorefree.json | headline.operating_points_at_k1 | python scripts/26_scorefree.py |
 | Notches at k=50 | 51 | - | results/scorefree/scorefree.json | headline.notches_at_k50 | python scripts/26_scorefree.py |
