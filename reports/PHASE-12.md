@@ -640,8 +640,12 @@ roughly 37-minute run. A commit or a dirty tree during the run would have
 produced a record naming two commits, with nothing refusing. This run is
 unaffected: both commits are `1a3fd588` and the tree was clean. The gate now
 fails when the clone is not the commit it names, takes provenance at clone time,
-and refuses to write a record whose source changed. Commits after `1a3fd58` (200's
-fix and this section's revisions) are covered by their own tests, not by a gate.
+and refuses to write a record whose source changed. Review found the fix correct,
+and asked that the record say its provenance now means clone time, not write
+time (`provenance_taken`). The full suite at `b78091d`, which includes the fix, was
+green: 1,762 passed, 1 xfail (accenture-c4). The last code change after it,
+`18dfbae`, adds that one field and its assertion, covered by targeted tests only.
+No gate has run on the fix.
 
 **Defects in how this was run.**
 
@@ -669,6 +673,12 @@ fix and this section's revisions) are covered by their own tests, not by a gate.
   of its own. Author and reviewer both missed it. Nothing tests prose polarity, and this is the kind of
   error the codebase's `EXACT`/`ESTIMATED` and positive-class conventions exist to
   stop in code (`DECISIONS.md` 199 correction).
+- **A whole-file line-ending flip, again.** An inline script rewrote
+  `tests/test_clean_clone.py` with `Path.write_text`, which turned LF into CRLF on
+  Windows: a 524-line diff for a 4-line change. `CONTRIBUTING.md` forbids this, a
+  memory note written after the same mistake was already loaded, and review found
+  it anyway. It was amended before publication. A check of every file changed in
+  this range found no other flip.
 - **The clean-clone gate could have recorded two commits (200).** This was
   latent since the gate was written, and was found by the reviewing session while
   the author held an edit so as not to disturb a run. The gate existed to rule
