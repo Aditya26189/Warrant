@@ -471,3 +471,53 @@ with a reproduction, none by those criteria. A review loop also introduced and
 caught its own line-ending flip before it reached a branch.
 
 Head `86b0f9b`: full suite 0 failures, 1 expected xfail; 1,667 collected.
+
+### 8.10 The last two decisions of the sprint, and the gate (195, 196)
+
+**195 (accenture-c4, reviewed by accenture-8a).** `certify --budget B
+--from-frontier RECORD` certifies a budget picked off the frontier at the level the
+frontier held its rows to, so the pick 192 measured is paid for once. Review found
+the frontier record's own numbers were trusted: an edited `row_alpha`, a record cut
+to the one picked row, or an edited threshold each certified at the unadjusted
+level while the warrant claimed a frontier pick. Fixed by recomputing the whole
+frontier from the input and refusing any row that does not reproduce. The warrant
+now also says that its recall and precision were measured on the file the budget
+was picked from, and carry the pick's optimism; only the false-positive bound is
+adjusted. **The default `certify --budget` is unchanged and OPEN for the user.**
+
+**196 (accenture-8a, reviewed by accenture-c4).** A registered study of the chained
+recheck across three breach sizes, weekly rechecks with the breach starting at
+three points, and monthly rechecks (`results/chain_detection/grid.json`). **The
+false-revocation bound held in every setting** (at most 0.012 against a limit of
+0.0646). Monthly rechecks caught a breach within a quarter in only 0.8325 to
+0.8970 of simulated years. **One prediction failed as registered**, strictly and
+within noise at the ceiling. **Review found a confound the entry had missed**: each
+breach was rechecked at its own 0.80-power size, so the larger breaches were also
+rechecked with far fewer labels, and the monthly figures do not order detection by
+breach size at comparable effort. `docs/LIMITATIONS.md` 3.5, the README claim row
+and the entry say so; P3's stated mechanism is marked unsupported.
+
+**What the two reviews say about the sprint's method.** In both directions, the
+author's own acceptance criteria passed and the second reader found what they
+missed: a trusted input in 195, a confound in 196. That is the pattern of 193 as
+well. 193, 195 and 196 were each reviewed by the other session before they reached
+the integrated line, and 194 was itself the product of review. Its second-round
+fixes (A to C) went unreviewed until drafting this section exposed the gap; the
+review that followed found two bypasses that are limits of a local tool (a record
+rewritten with a recomputed digest verifies clean; a copied warrant can restart a
+chain), a check-then-write race, and a filename collision. The texts now say what
+the digests cannot prove, and the race is closed (194).
+
+**The gate.** `scripts/clean_clone_gate.py` passed at `9c1fc68` (accenture-c4,
+`results/clean_clone.json`, committed at `8df9e80`): a fresh clone of 519 tracked
+files (477 at the last gate, `f6aac79`); `make smoke`, `make test` (1,941.7 s in the
+clone) and `make verify` all ok; the claim table 87/87 (81/81 before, no existing
+row moved); frozen scores 25/25; the activations tier skipped for gitignored
+caches, as before. The gate could not delete its temporary clone (a Windows
+permission error on one git object, about 26 MB left in TEMP) and records that
+as a note, not a failure.
+
+**What the gate does not cover.** The two commits after it -- 194's A to C review
+section and its fixes (`287d366`, `ef8996d`) -- and this section. They were
+checked by the chain, verifier, config and acceptance tests and by the full suite
+at the head, not by a clean clone.
