@@ -41,6 +41,7 @@
 | Document | Answers |
 |:---|:---|
 | [RELEASE.md](RELEASE.md) | How do I register, evaluate and verify a scoped release study on my own scored holdout? |
+| [EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md) | What do I hand a validation function, where does each piece of evidence live in the records, and what does no record carry yet? |
 | 🗺️ [DIAGRAMS.md](DIAGRAMS.md) | What does the system look like? Eleven diagrams: the three objects, the pipeline, the warrant lifecycle, the controls, policy, composition, drift, verification, the Round 1 → Round 2 journey, and the repository end to end |
 | 🌱 [ONBOARDING.md](ONBOARDING.md) | I have one hour. What do I read, run, and look at, in what order? |
 | 🧭 [CODE_TOUR.md](CODE_TOUR.md) | What is in each package under `controlplane/`, and which file do I open for X? |
