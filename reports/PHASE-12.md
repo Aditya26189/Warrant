@@ -719,3 +719,68 @@ No gate has run on the fix.
   rules share.
 - **The gate's own fix (200) has not run a gate.** That would close with
   `scripts/clean_clone_gate.py` at a head that includes it.
+
+### 8.12 What an independent review found afterwards: four defects, and a coordination failure
+
+**The gate at `1a3fd58` predates this section.** It reported a clean clone, a
+green suite and 92 of 92 claims, and none of that is evidence against what
+follows. A passing suite says the tests that exist pass.
+
+**Four defects, found by an independent Codex review of this line and
+reproduced.** Two are serious, and both are in the chain work of 193 and 194:
+
+| Severity | Defect | Reproduced |
+|---|---|---|
+| P0 | A recheck whose overall status is REVOKED **by drift** can be continued. `continue_chain` checks only the chain state's `revoked_at_unit` and `ended`, never the record's status, so a later link on stable data returns VALID | yes, through the public CLI |
+| P0 | The serialized derived fields of a chain record -- `threshold`, `mean_statistic`, `ended` -- can be edited without rehashing and still verify. `_body()` hashes them, but `from_payload` rebuilds them from the core fields and never compares the serialized values | yes, all three independently |
+| P1 | Grouped agreement resamples individual pairs. 400 rows that are four repeated groups report the same kappa interval as 400 independent rows | yes: both give kappa 0.0, interval [-0.1001, 0.0924] |
+| P1 | A chain record with `alpha` of 0 or NaN raises `ZeroDivisionError` or produces NaN inside the grid reconstruction, before any digest comparison, so the verifier shows a traceback instead of a finding | yes |
+
+`warrant chain verify` reports **zero findings** on the first two histories. The
+verifier is the instrument a customer would use to detect exactly this, and it
+says the history is clean.
+
+**What the reproduction corrected in the method.** The first attempt at the drift
+case shifted scores upward, which raised the observed false-positive rate to
+0.28, revoked the chain's own detector at unit 28, and produced a refusal that
+had nothing to do with drift. It read as a PASS. Only a downward shift -- the
+distribution moves while firings fall, so the chain stays live and the bound
+holds -- isolates the defect. A reproduction that confirms the absence of a bug
+by accident is worse than none, and this one nearly did.
+
+**What this says about the tests.** 1,763 tests did not catch any of the four.
+The chain tests assert the digest round-trips and that a revoked *chain* refuses
+continuation; none asserts that a record revoked by the *other* failure mode
+refuses it, and none mutates a serialized field without rehashing. 197's
+agreement tests cover kappa on independent pairs and never a grouped file. The
+gap is not coverage in the usual sense: each test checks the path its author was
+thinking about.
+
+**The coordination failure, which is the reason these sat unread.** Codex posted
+findings to the shared board from post 13 onward. This session had been told to
+set Codex aside, and read nothing between posts 12 and 29; the other Claude
+session read nothing after post 4. Meanwhile both lines allocated DECISIONS
+198, 199 and 200 to different entries. A shared page is not coordination if
+nobody reads it.
+
+**How the collision was resolved, by the integrator:** no history is rewritten
+and no entry is renumbered. This line's 198-200 stay as they are; Codex's are
+preserved byte-for-byte in `docs/decisions/CODEX-PARALLEL.md` with their source
+commits and digests, and a later entry documents the mapping. All numbering is
+allocated by one owner until integration completes. That is stricter about
+append-only than the renumbering this session proposed.
+
+**Status at the time of writing.** The four defects are being fixed by Codex on
+`fix/chain-integrity` and `fix/grouped-agreement`, both based on `18dfbae`; this
+session holds every file involved and reviews read-only. `certify`, `recheck`
+without a chain, `plan`, the frontier and the release path are unaffected by all
+four. A merge rehearsal of this line with Codex's stricter input parser
+(`9f436d3`) is green apart from the stated test count, which the merge must
+refresh.
+
+**What this means for the claims in 8.11 and elsewhere.** The label-sensitivity
+results stand: they are arithmetic on counts and do not touch the chain. The
+chain's guarantee as stated in 187, 193 and 196 is unaffected as a statistical
+claim, but its *record integrity* -- that a kept set of records shows what
+happened -- does not hold until the two P0s are closed, and no pilot should run
+on a build that hands a validator an artefact with a known integrity defect.
