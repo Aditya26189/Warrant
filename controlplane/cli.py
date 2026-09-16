@@ -164,8 +164,10 @@ def build_parser() -> argparse.ArgumentParser:
     chain = recheck.add_mutually_exclusive_group()
     chain.add_argument(
         "--horizon-labels", type=int, default=None, metavar="N",
-        help="start a chain of rechecks that together can revoke falsely with "
-             "probability at most alpha over N clean negatives; declare N once, "
+        help="start a chain of rechecks whose sequential false-positive statistic "
+             "falsely revokes a detector keeping its promise with probability at most "
+             "alpha over N clean negatives; a revocation for a moved score "
+             "distribution is a separate check, outside that bound. Declare N once, "
              "e.g. the negatives a year of rechecks will label (DECISIONS 193)",
     )
     chain.add_argument(
@@ -175,7 +177,8 @@ def build_parser() -> argparse.ArgumentParser:
     recheck.add_argument(
         "--fork", action="store_true",
         help="continue from a record that is not the chain's latest, or start a new "
-             "chain while one exists; the fork is recorded in the chain (DECISIONS 194)",
+             "chain while one exists; the fork is recorded in the chain (DECISIONS 194). "
+             "It cannot reopen a warrant whose chain was revoked: re-certify instead",
     )
 
     plan = sub.add_parser(
