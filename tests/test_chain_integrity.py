@@ -98,12 +98,28 @@ def test_a_warrant_revoked_by_drift_is_not_continued_through_the_cli(tmp_path, c
 
     stable = _export(tmp_path / "stable.csv", n_neg=900, n_pos=300, shift=0.0, seed=12)
     link2 = tmp_path / "link2.json"
+    head = Path(str(warrant) + ".chain-head")
+    assert json.loads(head.read_text(encoding="utf-8"))["status"] == "REVOKED"
+    head_bytes = head.read_bytes()
+
+    # With the sidecar: the revoked head refuses, before the record is read.
     capsys.readouterr()
     code = main(["recheck", "-w", str(warrant), "-i", str(stable), "--since", str(link1),
                  "-q", "-o", str(link2)])
     err = capsys.readouterr().err
-    assert code == 2
-    assert not link2.exists()
+    assert code == 2 and not link2.exists()
+    assert head.read_bytes() == head_bytes
+    assert "REVOKED" in err and "re-certify" in err.lower()
+
+    # Without it: deleting the sidecar defeats that check (194), and the refusal
+    # must still come -- from the --since record's own status.
+    head.unlink()
+    capsys.readouterr()
+    code = main(["recheck", "-w", str(warrant), "-i", str(stable), "--since", str(link1),
+                 "-q", "-o", str(link2)])
+    err = capsys.readouterr().err
+    assert code == 2 and not link2.exists()
+    assert not head.exists()
     assert "REVOKED" in err and "score distribution" in err and "re-certify" in err
 
 
@@ -249,3 +265,122 @@ def test_the_cli_verifier_records_a_malformed_record_and_exits_zero(tmp_path, ca
         assert payload["clean"] is False
         assert [f["kind"] for f in payload["findings"]] == ["malformed"]
     assert "Traceback" not in capsys.readouterr().err
+
+
+# --------------------------------------------------------------------------- #
+# Second pass: a revoked warrant cannot be restarted or forked around
+# --------------------------------------------------------------------------- #
+
+def _drift_revoked_warrant(tmp_path: Path) -> tuple[Path, Path]:
+    """A certified warrant and one chained link REVOKED by drift, chain live."""
+    warrant = tmp_path / "w.json"
+    base = _export(tmp_path / "base.csv", n_neg=900, n_pos=300, shift=0.0, seed=11)
+    assert main(["certify", "-i", str(base), "-b", "0.05", "-q", "-o", str(warrant)]) == 0
+    shifted = _export(tmp_path / "shifted.csv", n_neg=1500, n_pos=400, shift=-1.2, seed=14)
+    link1 = tmp_path / "link1.json"
+    main(["recheck", "-w", str(warrant), "-i", str(shifted), "--horizon-labels", "100000",
+          "-q", "-o", str(link1)])
+    record = json.loads(link1.read_text(encoding="utf-8"))
+    assert record["status"] == "REVOKED" and record["chain"]["revoked_at_unit"] is None
+    return warrant, link1
+
+
+def test_a_revoked_warrant_cannot_be_restarted_with_fork(tmp_path, capsys):
+    """The bypass: a NEW chain with --fork, reproduced at 20e3347 as exit 0 and VALID."""
+    warrant, _ = _drift_revoked_warrant(tmp_path)
+    head = Path(str(warrant) + ".chain-head")
+    head_bytes = head.read_bytes()
+    stable = _export(tmp_path / "stable.csv", n_neg=900, n_pos=300, shift=0.0, seed=12)
+    restart = tmp_path / "restart.json"
+    capsys.readouterr()
+    code = main(["recheck", "-w", str(warrant), "-i", str(stable), "--horizon-labels", "100000",
+                 "--fork", "-q", "-o", str(restart)])
+    err = capsys.readouterr().err
+    assert code == 2 and not restart.exists()
+    assert head.read_bytes() == head_bytes
+    assert "with or without --fork" in err
+
+
+def test_a_fork_from_an_earlier_valid_link_after_a_revocation_is_refused(tmp_path, capsys):
+    """The chain revokes at link 2; branching from link 1, which was not revoked, must not reopen it."""
+    warrant = tmp_path / "w.json"
+    base = _export(tmp_path / "base.csv", n_neg=900, n_pos=300, shift=0.0, seed=11)
+    assert main(["certify", "-i", str(base), "-b", "0.05", "-q", "-o", str(warrant)]) == 0
+    stable = _export(tmp_path / "stable.csv", n_neg=900, n_pos=300, shift=0.0, seed=12)
+    link1 = tmp_path / "link1.json"
+    assert main(["recheck", "-w", str(warrant), "-i", str(stable), "--horizon-labels", "100000",
+                 "-q", "-o", str(link1)]) == 0
+    assert json.loads(link1.read_text(encoding="utf-8"))["status"] != "REVOKED"
+    shifted = _export(tmp_path / "shifted.csv", n_neg=1500, n_pos=400, shift=-1.2, seed=14)
+    link2 = tmp_path / "link2.json"
+    main(["recheck", "-w", str(warrant), "-i", str(shifted), "--since", str(link1),
+          "-q", "-o", str(link2)])
+    assert json.loads(link2.read_text(encoding="utf-8"))["status"] == "REVOKED"
+
+    head = Path(str(warrant) + ".chain-head")
+    head_bytes = head.read_bytes()
+    later = _export(tmp_path / "later.csv", n_neg=900, n_pos=300, shift=0.0, seed=13)
+    branch = tmp_path / "branch.json"
+    capsys.readouterr()
+    code = main(["recheck", "-w", str(warrant), "-i", str(later), "--since", str(link1),
+                 "--fork", "-q", "-o", str(branch)])
+    assert code == 2 and not branch.exists()
+    assert head.read_bytes() == head_bytes
+    assert "REVOKED" in capsys.readouterr().err
+
+
+def test_an_ordinary_chain_continues_verifies_clean_and_records_its_status(tmp_path):
+    """The path that must keep working: two unrevoked links, a clean verification."""
+    warrant = tmp_path / "w.json"
+    base = _export(tmp_path / "base.csv", n_neg=900, n_pos=300, shift=0.0, seed=11)
+    assert main(["certify", "-i", str(base), "-b", "0.05", "-q", "-o", str(warrant)]) == 0
+    link1, link2 = tmp_path / "link1.json", tmp_path / "link2.json"
+    first = _export(tmp_path / "first.csv", n_neg=900, n_pos=300, shift=0.0, seed=12)
+    second = _export(tmp_path / "second.csv", n_neg=900, n_pos=300, shift=0.0, seed=13)
+    assert main(["recheck", "-w", str(warrant), "-i", str(first), "--horizon-labels", "100000",
+                 "-q", "-o", str(link1)]) == 0
+    assert main(["recheck", "-w", str(warrant), "-i", str(second), "--since", str(link1),
+                 "-q", "-o", str(link2)]) == 0
+    records = {str(link1): json.loads(link1.read_text(encoding="utf-8")),
+               str(link2): json.loads(link2.read_text(encoding="utf-8"))}
+    assert all(r["status"] != "REVOKED" for r in records.values())
+    assert list(verify_chain_records(records).findings) == []
+    head = json.loads(Path(str(warrant) + ".chain-head").read_text(encoding="utf-8"))
+    assert head["status"] == records[str(link2)]["status"]
+    assert head["sequence"] == 2
+
+
+def test_a_legacy_sidecar_without_status_is_read_as_before(tmp_path):
+    """A sidecar written before the status was recorded is not a refusal."""
+    from controlplane.intake.chain import read_head_status, write_head
+
+    warrant = tmp_path / "w.json"
+    warrant.write_text("{}", encoding="utf-8")
+    write_head(warrant, "0" * 64, 1)
+    assert "status" not in json.loads(Path(str(warrant) + ".chain-head").read_text(encoding="utf-8"))
+    assert read_head_status(warrant) is None
+    state = start_chain(WARRANT, horizon_units=100, alpha=0.05, head="0" * 64, fork=True,
+                        head_status=read_head_status(warrant))
+    assert state.head_check == "forked"
+
+
+def test_a_legacy_record_without_head_check_still_verifies():
+    """Records written before 194 carry no head_check; they replay, not flag.
+
+    Built the way such a record was written: head_check and forked_from_head unset,
+    so the body omits them and the digest is computed without them. A chain started
+    today with no sidecar records "no_sidecar", which is not the legacy shape.
+    """
+    current = ChainState.from_payload(_chained()["chain"])
+    legacy_state = dataclasses.replace(current, head_check=None, forked_from_head=None)
+    chain = legacy_state.to_payload()
+    assert "head_check" not in chain and "forked_from_head" not in chain
+    assert ChainState.from_payload(chain).head_check is None
+    assert _findings({"r.json": {"status": "VALID", "chain": chain}}) == []
+
+
+def test_the_guarantee_names_the_statistic_and_excludes_drift():
+    guarantee = _chained()["chain"]["guarantee"]
+    assert "sequential false-positive statistic" in guarantee
+    assert "score distribution moved is a separate check" in guarantee
+    assert "any false revocation" not in guarantee

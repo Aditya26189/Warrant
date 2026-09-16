@@ -246,8 +246,10 @@ stated here.
 
 ### 3.5 The recheck chain catches a breach less reliably at a monthly cadence
 
-`warrant recheck --horizon-labels / --since` (`DECISIONS.md` 193, 194) bounds a
-sound detector's false revocation over its declared negatives, and that bound held
+`warrant recheck --horizon-labels / --since` (`DECISIONS.md` 193, 194) bounds the
+chance that the chain's sequential false-positive statistic falsely revokes a sound
+detector over its declared negatives. A revocation because the score distribution
+moved is a separate check, outside that bound. The statistic's bound held
 in every setting simulated: at most **0.012** of years across three breach sizes
 and four cadences, against a limit of 0.0646 (`DECISIONS.md` 196,
 `results/chain_detection/grid.json`).

@@ -582,7 +582,7 @@ def _recheck(args: argparse.Namespace) -> int:
     fed = None
     if args.horizon_labels is not None or args.since is not None:
         from .intake.chain import (
-            ChainError, continue_chain, feed, read_head, start_chain,
+            ChainError, continue_chain, feed, read_head, read_head_status, start_chain,
         )
         from .intake.recheck import chain_units
 
@@ -595,11 +595,13 @@ def _recheck(args: argparse.Namespace) -> int:
                 state = continue_chain(
                     json.loads(since_path.read_text(encoding="utf-8")), record, alpha=alpha,
                     head=read_head(record_path), fork=args.fork,
+                    head_status=read_head_status(record_path),
                 )
             else:
                 state = start_chain(
                     record, horizon_units=args.horizon_labels, alpha=alpha,
                     head=read_head(record_path), fork=args.fork,
+                    head_status=read_head_status(record_path),
                 )
             unit_ids, fired = chain_units(items, threshold)
             fed = feed(state, unit_ids, fired)
@@ -644,7 +646,8 @@ def _recheck(args: argparse.Namespace) -> int:
         from .intake.chain import canonical_sha256, write_head
 
         written = json.loads(out.read_text(encoding="utf-8"))
-        write_head(record_path, canonical_sha256(written), fed.state.sequence)
+        write_head(record_path, canonical_sha256(written), fed.state.sequence,
+                   status=written.get("status"))
     if not args.quiet:
         print(render_recheck(result, chain=fed))
     print(f"  record written to {out}")

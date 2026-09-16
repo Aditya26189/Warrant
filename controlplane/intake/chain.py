@@ -261,10 +261,13 @@ class ChainState:
             **body,
             "state_sha256": canonical_sha256(body),
             "guarantee": (
-                f"P(any false revocation in the first {self.horizon_units} units) <= "
-                f"{self.alpha:g} for any true false-positive rate at or below "
-                f"{self.p0:g} -- for this chain as kept. Starting a fresh chain after "
-                "an unfavourable record spends the guarantee; keep every record. "
+                f"P(this chain's sequential false-positive statistic revokes, within the "
+                f"first {self.horizon_units} units, a detector whose true false-positive "
+                f"rate is at or below {self.p0:g}) <= {self.alpha:g} -- for this chain as "
+                "kept. The bound covers that statistic only: a recheck REVOKED because the "
+                "score distribution moved is a separate check, outside it. Starting a "
+                "fresh chain after an unfavourable record spends the guarantee; keep "
+                "every record. "
                 "The chain-head sidecar makes an accidental fork declare itself; it "
                 "does not prevent a deliberate one. The digests here are checksums, "
                 "not signatures: anyone who can write these records can produce a "
@@ -352,14 +355,49 @@ def read_head(warrant_path: Any) -> Optional[str]:
         raise ChainError(f"{path.name} is not a chain-head sidecar ({exc})") from exc
 
 
-def write_head(warrant_path: Any, record_sha256: str, sequence: int) -> None:
-    """Point the sidecar at the record just written."""
+def read_head_status(warrant_path: Any) -> Optional[str]:
+    """The latest record's status as the sidecar recorded it, or ``None``.
+
+    ``None`` with no sidecar, and for a sidecar written before the status was
+    recorded -- read as before, not as a refusal.
+    """
+    path = head_path(warrant_path)
+    if not path.is_file():
+        return None
+    try:
+        status = json.loads(path.read_text(encoding="utf-8")).get("status")
+    except (ValueError, AttributeError) as exc:
+        raise ChainError(f"{path.name} is not a chain-head sidecar ({exc})") from exc
+    return status if isinstance(status, str) else None
+
+
+def _refuse_revoked_head(head_status: Optional[str]) -> None:
+    """A warrant whose chain's latest record REVOKED it takes no new or forked link.
+
+    ``--fork`` declares a branch; it does not reopen a revocation. Without this, a
+    new chain on the same warrant -- or a fork from a link before the revocation --
+    started cleanly and could return VALID (DECISIONS addendum 2026-09-16).
+    """
+    if head_status == "REVOKED":
+        raise ChainError(
+            "this warrant's chain REVOKED it at its latest record, so no new chain and "
+            "no fork may continue it, with or without --fork. Re-certify, and start a "
+            "new chain on the new warrant."
+        )
+
+
+def write_head(warrant_path: Any, record_sha256: str, sequence: int, *,
+               status: Optional[str] = None) -> None:
+    """Point the sidecar at the record just written, with that record's status."""
     note = (
-        "The digest of this warrant's latest chained recheck record. A recheck "
-        "--since any other record, or a new chain while this exists, is refused "
-        "without --fork. Deleting this file defeats that check (DECISIONS 194)."
+        "The digest and status of this warrant's latest chained recheck record. A "
+        "recheck --since any other record, or a new chain while this exists, is "
+        "refused without --fork; if the status is REVOKED, both are refused even "
+        "with --fork. Deleting this file defeats these checks (DECISIONS 194)."
     )
     payload = {"head_record_sha256": record_sha256, "sequence": sequence, "note": note}
+    if status is not None:
+        payload["status"] = status
     head_path(warrant_path).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
@@ -385,8 +423,10 @@ def _head_check(head: Optional[str], continuing_from: Optional[str], fork: bool)
 
 
 def start_chain(warrant_record: dict[str, Any], *, horizon_units: int, alpha: float,
-                head: Optional[str] = None, fork: bool = False) -> ChainState:
+                head: Optional[str] = None, fork: bool = False,
+                head_status: Optional[str] = None) -> ChainState:
     """A new chain for this warrant, with ``N`` declared now and frozen."""
+    _refuse_revoked_head(head_status)
     if horizon_units < 1:
         raise ChainError(f"--horizon-labels must be a positive number of units, got {horizon_units}")
     budget = warrant_record.get("budget_fpr")
@@ -405,9 +445,10 @@ def start_chain(warrant_record: dict[str, Any], *, horizon_units: int, alpha: fl
 
 def continue_chain(
     previous_record: dict[str, Any], warrant_record: dict[str, Any], *, alpha: float,
-    head: Optional[str] = None, fork: bool = False,
+    head: Optional[str] = None, fork: bool = False, head_status: Optional[str] = None,
 ) -> ChainState:
     """The next link, refused unless it continues this warrant's live chain."""
+    _refuse_revoked_head(head_status)
     block = previous_record.get("chain")
     if not block:
         raise ChainError(
@@ -502,8 +543,9 @@ def feed(state: ChainState, unit_ids: Sequence[str], fired: np.ndarray, *,
     Propagation: a Shiryaev-Roberts e-detector per bet on the monitor's grid,
     averaged; revocation at ``N / alpha``, where ``R_t + (N - t)`` is a
     nonnegative supermartingale under any rate at or below the budget, so
-    Ville's inequality bounds false revocation over the first ``N`` units by
-    alpha (DECISIONS 187, 193). Checked after every unit.
+    Ville's inequality bounds this statistic's false revocation over the first
+    ``N`` units by alpha (DECISIONS 187, 193). A revocation for a moved score
+    distribution is a separate check, outside that bound. Checked after every unit.
 
     Args:
         state: The chain before this recheck.

@@ -426,8 +426,9 @@ def render_recheck(result, chain=None) -> str:
             f"{state.threshold:,.0f} ({state.horizon_units:,} units / alpha "
             f"{state.alpha:g}).",
             f"     {state.units_consumed:,} of {state.horizon_units:,} units consumed.",
-            "     Over the whole chain, a detector keeping its promise is revoked",
-            f"     with probability at most {state.alpha:g} -- for the chain as kept.",
+            "     Over the whole chain, its statistic falsely revokes a detector",
+            f"     keeping its promise with probability at most {state.alpha:g} -- for the",
+            "     chain as kept. A drift revocation is a separate check, outside that bound.",
             "     Keep every record: a fresh chain started after a bad result",
             "     spends that guarantee.",
         ]
