@@ -39,6 +39,38 @@ alone cannot say which data, which system, which detector version, or until
 when. A handoff built from a release evaluation alone cannot say how far the
 result depends on the labels being right.
 
+### Who supplies and who retains each file
+
+| File | Supplied by | Retained by | Why it must be kept |
+|---|---|---|---|
+| The scored export (`id,label,score`, and optional `group`, `label_2`) | the customer | the customer, **unaltered** | every result is a function of these rows; nothing else can reproduce them |
+| Any extra columns in that export -- timestamps, model versions, reviewer names | the customer | the customer, in the same file | Warrant reads them and **keeps neither the names nor the values** in any record |
+| Release specification, development and holdout id lists | the customer | the customer | together they fix the criteria and the holdout before scoring |
+| Release contract (`release register --out`) | Warrant, from the customer's files | the customer, **before** evaluating | the evaluation binds to its digest; registration is not a trusted timestamp |
+| `context.json` (scorer identity and scope) | the customer, from the actual run | the customer | `evaluate` and `verify` refuse a mismatch with the contract |
+| Release evaluation (`*.evaluation.json`) | Warrant | the customer and the validation function | the record of the decision |
+| Certify warrant (`*.warrant.json`) | Warrant | the customer and the validation function | label-quality evidence, and the reference every recheck compares against |
+| Recheck records, and a chain's `*.chain-head` sidecar | Warrant | the customer, **every one** | a chain's guarantee holds for the chain as kept; a missing record is visible only if a kept one points at it |
+| The handoff sheet itself | the customer's validation function | the validation function | the statement that joins a release evaluation to a certify warrant for one file |
+
+Warrant stores nothing itself. No record leaves the machine it was written on
+unless someone copies it.
+
+### Digests describe rows, not file bytes
+
+A release evaluation's `data_sha256` is computed over the **sorted rows** --
+each row's hashed id, its label and its score. Two files with the same rows in
+a different order, or with extra columns added or removed, have the **same**
+digest. Two files that differ in one id, label or score have different digests.
+It therefore identifies the evidence, not a byte-for-byte file. A validator who
+needs the exact file retained should record its own file checksum beside the
+sheet; no record carries one.
+
+Every digest in every record is a checksum, not a signature. It shows that a
+retained copy is unchanged relative to another copy. It does not show who wrote
+either, and someone who controls every copy can rewrite and re-digest them
+consistently.
+
 ---
 
 ## 2. The handoff sheet, field by field
@@ -181,6 +213,54 @@ Under release protocol 2, an operating point that was **never evaluated has no
 evaluation record at all**. The absence of a record is not a refusal.
 
 ---
+
+## 5a. A walkthrough, from a clean checkout
+
+The two input files below are **synthetic**: `examples/` holds generated
+demonstration data (`examples/README.md`). Their figures describe the generator,
+not any detector, and none is quoted here. Each step says what outcome to expect
+and where in the record to find it.
+
+**A certificate.**
+
+```bash
+python warrant.py certify --input examples/certifies.csv --budget 0.05
+```
+
+Expect `status: VALID`. The threshold is at `certification.threshold` and the
+bound at `certification.fpr_upper_bound`. Recall and precision, each with an
+interval and `n`, are under `metrics`, and the label-error ladders under
+`labels.sensitivity`. The file's `captured_at` column appears nowhere in the
+record.
+
+**A refusal.**
+
+```bash
+python warrant.py certify --input examples/refuses.csv --budget 0.01
+```
+
+Expect `status: REFUSED`, and exit code 0 -- a refusal is a result, not an
+error. `reason` names the clean negatives the budget needs against those the
+file has. `labels.sensitivity` says it was not computed, and why.
+
+**Malformed input.** A label that is not 0 or 1, a duplicate id, or a `label_2`
+column blank on every row is rejected with exit code 2 and a message naming the
+row and the column. No record is written. That is an unreadable file, not a
+verdict on the detector.
+
+**Grouped input.** Add a `group` column naming each item's source.
+`certify` and `recheck` then work in groups, and reject groups of unequal size
+with exit code 2. `release` rejects grouped input outright; it supports
+independent items only.
+
+**Expiry.** Only a release contract carries one. `release verify` reports
+`STALE` once `expires_at` has passed. There is no quick way to show this
+without waiting, so no command is given. A certify warrant cannot expire; it
+carries no expiry (section 6).
+
+**A release.** Use the procedure in [RELEASE.md](RELEASE.md). It needs a
+specification, disjoint development and holdout id lists, and a context file,
+which are the customer's to prepare.
 
 ## 6. What no record carries today (OPEN)
 
