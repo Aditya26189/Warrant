@@ -11091,3 +11091,58 @@ wrong gate record costs the gate's meaning.
 - **Practical.** Provenance's dirty flag counts untracked files, so a gate run
   from a checkout holding untracked work now refuses to write. That is correct,
   and a reason to run gates from worktrees.
+
+### 194 defects found by independent review (Codex), fixed without a new number
+
+Codex's review of this line (`reports/CLAUDE-REVIEW-2026-09-15.md` on its branch)
+reproduced three defects in the chain that 193 and 194 shipped. All three were
+reproduced again here through the public CLI (`reports/PHASE-12.md` 8.12). No new
+DECISIONS number is taken: numbering is held by the integrator until the two
+lines merge, and each fix makes the code do what 193 and 194 already promise. It
+makes no new methodological choice.
+
+**1. A warrant REVOKED by drift could be continued (P0).** `continue_chain`
+refused only when the chain *state* had revoked (`revoked_at_unit`) or ended. A
+recheck revoked by the other failure mode -- the score distribution moved beyond
+its noise, with the bound holding and the chain live -- carries status REVOKED
+and no chain revocation, so the next `--since` link was accepted and returned
+VALID. `warrant chain verify` reported no finding on that history, for the same
+reason. 194 already says a drift revocation "is a different claim and stands";
+a claim that stands is not continued. *Fixed:* `continue_chain` refuses when the
+`--since` record's own status is REVOKED, whatever revoked it, naming
+re-certification as the way on. The verifier reports a link after any REVOKED
+record as `continued_after_end`, the finding that already covers a link after a
+chain revocation.
+
+**2. A chain record's derived fields could be edited without detection (P0).**
+`_body()` hashes `threshold`, `mean_statistic` and `ended`, but `from_payload`
+rebuilds the state from the core fields, recomputes those three, and compares the
+recomputed body's digest. The values written in the record were never read, so
+editing one -- `ended: true`, a `mean_statistic` of a billion -- changed nothing
+the check saw, and the original digest still matched. The failure is in
+comparing, not in what is hashed. *Fixed:* after the digest reproduces, each
+serialized derived field must equal its reconstruction exactly. The floats
+round-trip through JSON exactly, so equality is exact and there is no tolerance
+to hide an edit in. `ended` must be a JSON boolean.
+
+**3. Malformed values crashed instead of being refused (P1).** An `alpha` of 0
+divided by zero in the `threshold` property during the digest computation. A NaN
+reached `canonical_sha256`, whose encoder rejects NaN, outside the error handling.
+Both printed a traceback. *Fixed:* every field is type- and domain-checked before
+any arithmetic. A budget and alpha are finite reals strictly between 0 and 1 and
+not booleans; counts are non-negative integers and not booleans; the grid and
+statistics are finite. A failure raises `MalformedChainError`, a `ChainError`, so
+`recheck --since` exits 2 and `chain verify` records a new `malformed` finding
+rather than reusing `digest`. A malformed record is not evidence of an edit, and
+the two call for different questions to whoever wrote it.
+
+**Rejected: widening the digest to cover the whole record.** It would catch the
+derived-field edit too. But the digest is a checksum, not a signature (194 A-C):
+anyone who can edit a field can recompute it. It would also change the digest of
+every record already written, and orphan every chain on disk. Comparing derived
+fields to their reconstruction catches the same edit and leaves existing records
+valid.
+
+**What this does not change.** The chain's statistical guarantee (187, 193, 196)
+is untouched. So is the stated limit: someone who controls every copy can rewrite
+and re-digest a whole history consistently, and nothing local can stop that.
