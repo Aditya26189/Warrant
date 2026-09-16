@@ -10,6 +10,11 @@ checked.
 For the derivations, read [METHODS.md](METHODS.md). For what is missing, read
 [LIMITATIONS.md](LIMITATIONS.md) before quoting anything.
 
+**Contents:** [What this is](#what-this-is) · [The evidence](#the-evidence) ·
+[Running it on your own detector](#running-it-on-your-own-detector) ·
+[The uncomfortable questions](#the-uncomfortable-questions) · [Method](#method) ·
+[Scope and cost](#scope-and-cost) · [Working on it](#working-on-it)
+
 ---
 
 ## What this is
@@ -40,7 +45,9 @@ misreading a warrant has to survive.
 **Is this deployed anywhere?**
 
 No. No auth, no rate limiting, no HA, no deployment manifests, no serving layer,
-and adding one is out of scope. It is a measurement system with a demo.
+and adding one is out of scope. What exists is a measurement system, a demo, and
+a local command, `warrant`, that a validation team runs on its own scored file.
+**No customer has run it on production traffic.**
 
 ---
 
@@ -85,9 +92,88 @@ BCa because BCa's acceleration term is itself noisy at these sample sizes.
 
 ---
 
+## Running it on your own detector
+
+**What do I need?**
+
+A file of scored, labelled items: `id`, `label` (1 means the detector *should*
+fire) and `score` (higher means more likely class 1). No model, no GPU, no
+network. [INPUT.md](INPUT.md) is the whole contract, including the two optional
+columns, `group` and `label_2`.
+
+**My detector is good. Why was it refused?**
+
+Because the file cannot support the budget at 95% confidence, whatever the
+detector does. A false-positive bound needs a minimum number of clean negatives
+even if the detector never fires on one of them; below it, every threshold
+refuses. The refusal names both numbers. Supply more negatives or ask for a
+looser budget. [GLOSSARY.md](GLOSSARY.md), *clean negatives needed*.
+
+**Why does a refusal exit 0?**
+
+A refusal is a successful measurement with a negative result. Exiting non-zero
+would make every CI pipeline read *"this detector cannot be certified on this
+evidence"* as a broken tool. Pass `--require-warrant` if a script should fail on
+it. Exit `2` is reserved for input the command could not use.
+[TROUBLESHOOTING.md](TROUBLESHOOTING.md) lists every message.
+
+**Can I look at the frontier and then pick a budget?**
+
+Yes, but that is a selection, so certify the pick with `--from-frontier`. It
+holds the picked row to the stricter level the frontier used, so the promise
+survives the choice. A plain `certify` cannot know how you chose; when a frontier
+record for the same file sits beside it, it prints a notice asking.
+
+**A recheck came back VALID. Does the promise still hold?**
+
+Not necessarily. VALID means the new file does not **establish** a breach. Every
+recheck reports its *detection floor*, the smallest false-positive rate it could
+have caught; between the budget and that floor, a real breach also returns
+VALID. `warrant plan` sizes a recheck by the chance of catching a breach of a
+given size, not by a single sufficient count.
+
+**Why revoke on the lower bound, and not when the upper bound misses the budget?**
+
+Because certification picks the lowest threshold that certifies, the detector's
+true rate sits close to its budget. A recheck that revoked whenever it failed to
+re-prove the promise would revoke detectors that kept it. Revocation needs
+evidence of breach. The score distribution is checked separately, because "the
+bound broke" and "the traffic moved" call for different actions.
+
+**Why chain rechecks instead of running one a week?**
+
+Each independent recheck spends its own alpha, so a detector keeping its promise
+is eventually revoked by chance. A chain tests the whole horizon as one sequence
+and spends it once. Two limits travel with it: the guarantee covers the chain's
+sequential false-positive statistic, not a revocation because the distribution
+moved; and a monthly cadence misses breaches more often than a weekly one
+([LIMITATIONS.md](LIMITATIONS.md) §3.5).
+
+**Can someone edit a record and have it still verify?**
+
+A chained recheck record is sealed over every field, and `warrant chain verify`
+rechecks each seal. A release evaluation is sealed and recomputed by
+`warrant release verify`. **A certify warrant, a frontier record, an unchained
+recheck and a plan have no seal and no verifier.** And a seal is a checksum, not
+a signature: anyone who can write the records can recompute every seal
+consistently. It catches an edit, not a forger. [ARTIFACTS.md](ARTIFACTS.md),
+*records the customer CLI writes*.
+
+**What is the difference between `certify` and `release`?**
+
+`certify` finds the lowest threshold that meets a budget on the file it is
+given. `release` evaluates **one fixed** operating point against criteria and a
+holdout that were registered before any scoring, evaluates the holdout once, and
+expires. Their verdicts come from different protocols and are not
+interchangeable on the same counts. [RELEASE.md](RELEASE.md);
+[EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md) says what to hand a validation
+function.
+
+---
+
 ## The uncomfortable questions
 
-**Three of your own detectors are refused. Isn't that a bad result?**
+**Some of your own detectors are refused. Isn't that a bad result?**
 
 It is the result. The machinery that refuses a detector is the product; a system
 that never refuses anything has not demonstrated that it can. The refusals name
@@ -114,6 +200,17 @@ Correct, and it is stated rather than discovered. The selection-aware widening
 is computed and published as its own row; the claim table quotes the conditional
 interval because that is what the artifact's metrics block holds, and names the
 widening beside it. [LIMITATIONS.md](LIMITATIONS.md) §2.2.
+
+**Your certificates can be overturned by a handful of wrong labels.**
+
+Yes, and each certificate says how many, for each of the two label errors that
+flatter it. That is a property of certifying at the lowest threshold, which puts
+every certificate at the edge of its budget. The tolerance is set by the
+negatives, the budget and alpha, not by the detector, so a better detector does
+not buy robustness. How many labels in this project's own data are wrong is only
+partly known: a second labelling rule was compared, and a correct answer missing
+from the alias list is invisible to both rules. [LIMITATIONS.md](LIMITATIONS.md)
+§3.6.
 
 **Some of your PII recognizers were fitted on the set they are measured on.**
 
@@ -193,13 +290,16 @@ itself does not care what the detector is: the PII detectors it warrants are
 plain text matchers with no model access at all. Say which tier you mean before
 someone else says it for you.
 
-**Where do the cost and ROI numbers come from?**
+**Where do the cost and label-budget numbers come from?**
 
-Every cost, headcount or ROI figure in this repository is a **declared
-estimate** and says so. The price list was specified and never built. The one
-exception is the feasibility bound, which derives from measured rates and needs
-no cost model — it is an impossibility result about any selector, not a claim
-about ours.
+The label budgets are computed. `controlplane/economics/sizing.py` derives every
+one from the single `workload` block in `config.yaml`, and each figure names the
+inputs it was declared on. **The workload is declared, not observed**: no
+production traffic exists, so no budget has been spent against real labels.
+Money, headcount and ROI figures outside those modules are declared estimates
+and say so. The feasibility bound is different again: it derives from measured
+rates, needs no cost model, and is an impossibility result about any selector,
+not a claim about ours.
 
 **What is the feasibility bound, in one line?**
 
@@ -207,12 +307,14 @@ Given a measured base error rate, holding residual risk at a target requires
 abstaining on at least some fraction of traffic — for *any* selector, however
 good. It is why "just tighten the threshold" is not an available answer.
 
-**What would you build next?**
+**What is still missing?**
 
-The two specified-and-unbuilt phases, in order of what they unblock: the
-on-traffic warrant with stratified estimation and its price list, then the
-action gate. Both are described in [SPEC.md](SPEC.md) and their absence is
-declared in [LIMITATIONS.md](LIMITATIONS.md) §3.
+The on-traffic estimator, its price list and the action gate, once specified and
+unbuilt, are now built; their closure is recorded in
+[LIMITATIONS.md](LIMITATIONS.md) §3.1–3.2. What remains is in §3.3–3.6 and §4:
+drift is watched on one feature, there is no labelled agent-action trace set, a
+certify warrant has no verifier, and nothing has run on a customer's traffic.
+The phase reports in `reports/` say what each phase did **not** establish.
 
 ---
 
@@ -235,9 +337,10 @@ Not in a document. Every number is computed by code and traced to an artifact;
 if a number is wrong, the pipeline is wrong. Fix the pipeline, regenerate, and
 let `verify` confirm it.
 
-**Why is there no `run_all.py` when three documents mention one?**
+**Is there one script that runs everything?**
 
-Because it does not exist. The four `make` targets are the real entry points and
-`clean_clone_gate.py` is what exercises the clean-clone reproduction those
-documents describe. The drift is recorded in [RUNBOOK.md](RUNBOOK.md) rather
-than papered over.
+No. The four `make` targets are the entry points, `clean_clone_gate.py`
+exercises the clean-clone reproduction, and [RUNBOOK.md](RUNBOOK.md) gives the
+order of the numbered stages. Three binding documents once named a
+`scripts/run_all.py` that never existed; the drift is recorded in the runbook
+rather than papered over.
