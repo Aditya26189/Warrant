@@ -1305,7 +1305,7 @@ def read_json_artifact(path: str | os.PathLike) -> dict[str, Any]:
     if not p.is_file():
         raise FileNotFoundError(
             f"{p} not found. Stages read each other's output from disk; run the "
-            "earlier stage first (see scripts/run_all.py for the order)."
+            "earlier stage first (docs/RUNBOOK.md gives the order)."
         )
     with p.open("r", encoding="utf-8") as fh:
         return json.load(fh)
