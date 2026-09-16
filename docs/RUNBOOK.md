@@ -58,7 +58,7 @@ used: a malformed file, a missing record, or a chain that may not be continued.
 | `warrant recheck -w WARRANT -i NEW --horizon-labels N` | as above | `NEW.recheck-0001.json`, and `WARRANT.chain-head` | Start a chain: a year of rechecks tested as one sequence ([DECISIONS 193](../DECISIONS.md)) |
 | `warrant recheck -w WARRANT -i NEW --since RECORD` | the previous link too | `NEW.recheck-NNNN.json`, and moves the head | Continue a chain from its latest record |
 | `warrant plan -w WARRANT --negative-share S` | a warrant | `warrant-plan.json` | How many labels a recheck needs to catch a breach, and what each cadence costs |
-| `warrant chain verify RECORD...` | every kept chain record | `chain-verification.json` | What the set of records shows: forks, restarts, missing links, edited or malformed states |
+| `warrant chain verify RECORD...` | every kept chain record | `chain-verification.json` | What the set of records shows: an edited record (every chained record is sealed whole), a malformed value, forks, restarts, missing links, links after a revocation. Records written before sealing are listed as `unsealed`, not flagged |
 | `warrant release register / evaluate / verify` | a specification, holdout ids, scored holdout | a contract, then `CONTRACT.evaluation.json` | A pre-registered, expiring, single-use evaluation of a fixed operating point ([RELEASE.md](RELEASE.md)) |
 
 **Rules the CLI enforces, so you do not have to remember them.**
@@ -73,6 +73,9 @@ used: a malformed file, a missing record, or a chain that may not be continued.
   Re-certify and start again.
 - **A `label_2` column is measured, never obeyed.** A second reviewer's labels
   are reported beside the result and change no verdict ([INPUT.md](INPUT.md)).
+- **An edited record is not continued.** `--since` recomputes the previous
+  record's seal and chain-state digest and refuses one that does not reproduce.
+  A seal is a checksum, not a signature ([LIMITATIONS.md](LIMITATIONS.md) §3.7).
 
 ---
 
