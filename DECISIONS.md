@@ -11186,3 +11186,62 @@ every existing record keeps its digest.
 
 **Rejected: refusing every `--fork` after any record.** A declared fork is
 legitimate and recorded (194); only a revoked warrant must not be resumed.
+
+### Addendum 2026-09-17: the rest of the bug class -- the latest chain record was unprotected outside its chain state, so every chained record is now sealed
+
+- **Date:** 2026-09-17
+- **Status:** DECIDED. An unnumbered addendum; numbering is held by the integrator.
+- **Follows:** the two addenda above. It answers the observation that the
+  derived-field defect is a **class**: the verifier checked its own computation
+  against itself, never against what was presented, and nobody had enumerated
+  which stored fields were in that state.
+
+**Measured, not argued.** A schema-driven mutation audit built a real two-link
+chain through the public CLI. It mutated every leaf of every record, one at a
+time -- **3,210 mutations** -- and ran the verifier on each. At `d9fa4bf`:
+- every chain-state field is caught in both records;
+- every field of the first link is caught, because the second link's
+  `previous_record_sha256` covers the first link's whole record;
+- **197 edits survive, all in the latest record, all outside its chain state.**
+  The survivors are `status`, `reason`, the bounds under `now`, the drift verdict,
+  the whole `labels` block, `detection`, `prior_warrant`, `chain.this_recheck`
+  (including `revoked_here`), the guarantee text and the provenance block.
+
+Through the CLI, flipping the latest record's `status` still verifies clean. The
+latest record carries the current verdict, so it is the record most worth editing
+and the one left unprotected.
+
+**Decided: seal every chained record.**
+
+- **The seal.** `record_sha256` is the canonical digest of the whole written
+  document -- provenance included, the field itself excluded. It is computed over
+  the document as it will be read back (a JSON round-trip), not over in-memory
+  objects, so the verifier reproduces exactly what was hashed. This is the
+  pattern `release` already uses for `evidence_id`.
+- **`chain verify` recomputes every seal.** A mismatch is a `digest` finding
+  naming the record.
+- **`--since` refuses a record whose seal does not reproduce.** Without that, an
+  edited latest record -- status turned from REVOKED to VALID, sidecar deleted --
+  could still be continued.
+- **A record without a seal was written before this.** It is listed as
+  **unsealed**, with what that means, and is not reported as a finding. Valid
+  legacy records still replay clean, and nothing pretends their non-state fields
+  were checked.
+- **The test is the property, not a list.** A test walks every leaf of every
+  written link, mutates it, and asserts the verifier flags it. A field added later
+  is covered without anyone remembering to add it, which is how the rule "every
+  stored field is either checked on verify or not stored at all" is enforced
+  rather than hoped for.
+
+**Rejected: comparing more fields one by one.** That is the approach that left
+197 fields open, and the next field added would reopen it.
+
+**Rejected: protecting the latest record through the head sidecar.** The sidecar
+is an ordinary editable file that the verifier is not given, and it names one
+record per warrant.
+
+**Unchanged.** A seal is a checksum, not a signature: anyone who can write the
+records can recompute every seal and produce a consistent set, as 194 already
+states. A certify warrant and an unchained recheck have no verifier at all; this
+covers chains only, and that gap stays open (`docs/EVIDENCE-HANDOFF.md`, section
+6).
