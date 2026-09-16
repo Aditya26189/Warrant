@@ -9,7 +9,7 @@ misleading number through.
 Read the exception's own type first: each one exists so a caller can tell *"your
 input is wrong"* from *"the code is wrong"*.
 
-**Contents:** [Refusals are not errors](#first-a-refusal-is-not-an-error) · [Exceptions](#the-exceptions-and-what-each-one-is-defending) · [Control failures](#when-a-control-fails) · [Verification](#when-verify-fails) · [Environment](#environment-problems) · [Not a bug](#things-that-look-broken-and-are-not)
+**Contents:** [Refusals are not errors](#first-a-refusal-is-not-an-error) · [The `warrant` command](#the-warrant-command-every-message-and-what-to-do) · [Exceptions](#the-exceptions-and-what-each-one-is-defending) · [Control failures](#when-a-control-fails) · [Verification](#when-verify-fails) · [Environment](#environment-problems) · [Not a bug](#things-that-look-broken-and-are-not)
 
 ---
 
@@ -29,6 +29,92 @@ The refusal reason names **every** failed criterion, not the first one.
 
 ---
 
+## The `warrant` command: every message, and what to do
+
+Every message starts `warrant:` and the exit code says which kind it is. **`0` is
+a result** -- a warrant, a refusal, a revocation, or a verification with findings.
+**`2` is input the command could not use**: nothing was certified or recorded, and
+the fix is to the input, not to the detector. **`1` appears only when you passed
+`--require-warrant`, `--require-valid` or `--require-clean`** and did not get what
+you required.
+
+### Reading your file (exit 2)
+
+| The message says | It means | Do |
+|---|---|---|
+| `is missing required column(s)` | the file lacks `id`, `label` or `score` | Rename or add the columns; the message lists what it found |
+| `label is ..., which is not 0 or 1` | a label is a probability, a class name or blank | Labels are binary: `1` means the detector **should** fire. `1.0` is accepted; `0.7` is not rounded |
+| `score is ..., which is not a number`, or `A NaN or infinity cannot be ordered` | a score cannot be placed against a threshold | Fix the export. Rows are refused, never dropped |
+| `column 'id' is empty` (or `label`, `score`) | a required cell is blank | Blanks are not filled in for you |
+| `Ids must be unique` | two rows share an id | Two rows for one id make two claims about one item; the tool will not pick one |
+| `every label is 0` (or `1`) | one class only | A false-positive rate needs negatives and recall needs positives; supply both |
+| `'group' is present as a column but empty on this row` | a partly grouped file | Group every row, or drop the column |
+| `'label_2' is present as a column but blank on every row` | an export artefact, not a second review | Fill in the double-labelled items, or drop the column |
+| `has extension ...; this phase reads .csv and .jsonl only` | another format | Export CSV or JSONL |
+| `the 'group' column has unequal group sizes` | clusters of different sizes | A cluster-level bound would promise a tighter rate than the data supports. Equalise the groups, or drop the column and accept that items are treated as independent |
+| `budget must be a false-positive rate in (0, 1)` | `--budget` out of range | `0.05` means at most 5% of clean items flagged |
+
+### Certifying
+
+| You see | It means | Do |
+|---|---|---|
+| `WARRANT: REFUSED` and `clean negative units are needed` (exit 0) | **a result**: this file cannot support this budget at 95% confidence, however good the detector is | Supply more clean negatives, or ask for a looser budget. The message names both numbers. Nothing overrides it |
+| a VALID warrant with `below 90% at 1` in the label-error section | the certificate sits at the edge of its budget, and one mislabelled flagged item would move it | Read it before relying on the warrant; double-label the flagged positives with `label_2` ([INPUT.md](INPUT.md)) |
+| `notice: ... was run on this file. If you picked this budget from it` | a frontier record for the same file sits beside it | If you chose the budget by reading the frontier, certify with `--from-frontier` so the warrant holds at the frontier's level |
+| `was not produced from ...` or `does not reproduce from ...` with `--from-frontier` | the frontier record is for another file, or was edited or truncated | Rerun `--frontier` on this file |
+
+### Rechecking
+
+A recheck reports two separate things, the false-positive bound and the score
+distribution, and each has a different fix.
+
+| Status | It means | Do |
+|---|---|---|
+| `VALID` | nothing in this file establishes a breach | Read "What this file could have caught": below that rate a real breach also returns VALID. It is an absence of evidence, not evidence of absence |
+| `STALE`, measured rate above the budget | the rate is above the promise but its lower bound does not establish a breach | Recheck on more data before relying on the warrant |
+| `STALE`, empty bins | the new file has no data where the reference had mass | Check the file is complete. This is missing data, not a measured shift |
+| `STALE`, shifted distribution | the distribution moved beyond its noise but not decisively | Re-certify sooner than planned |
+| `REVOKED`, lower bound above the budget | the data **establishes** the rate exceeds the promise | Re-certify. The warrant is not true of this traffic |
+| `REVOKED`, distribution moved | the traffic is no longer the traffic the warrant describes | Re-certify on current traffic |
+| `UNVALIDATED` | the file had no negatives | Nothing was tested; this is not evidence the promise holds |
+
+### Continuing a chain (exit 2)
+
+| The message says | It means | Do |
+|---|---|---|
+| `this warrant's chain REVOKED it at its latest record ... with or without --fork` | the chain's latest record revoked the warrant | **Re-certify** and start a new chain on the new warrant. `--fork` cannot reopen a revocation |
+| `the --since record REVOKED this warrant` | the record you are continuing from revoked it | As above |
+| `the --since record's seal does not reproduce` | the record was edited after it was written | Continue from the unedited record. The seal is a checksum, not a signature |
+| `the chain state does not reproduce its digest`, or `reads ... but its state rebuilds` | the chain block was edited | As above |
+| `the chain's ... is ..., not a number` (or `outside`, `not an integer`, `not a finite number`) | a value in the chain block is malformed | The record was damaged or written by something else. Do not continue from it |
+| `a chain already exists for this warrant` | a head sidecar is present | Continue with `--since` on the latest record, or start another chain deliberately with `--fork`; the fork is recorded |
+| `the --since record is not the chain's latest record` | continuing from it would drop every later link | Use the latest record, or `--fork` deliberately |
+| `this chain had a head when its last record was written and none is present now` | the sidecar was deleted, or the warrant was moved or copied | Restore the sidecar, or `--fork` knowingly |
+| `unit(s) in this file were already consumed by this chain` | the same item ids were fed before | Each labelled item counts once. Ids must be stable and unique across all of a chain's files |
+| `this chain has consumed its N units` | the declared horizon is used up | Its guarantee does not extend further. Re-certify and start a new chain |
+| `already exists. A chained recheck never writes over a record` | the output name is taken | Choose another `--out`. Each link is evidence the next depends on |
+| `the chain runs at alpha=..., the warrant at ...`, or `belongs to a different warrant record` | the record is from another warrant or level | Continue a chain only with the warrant it was started on |
+
+### Verifying a chain
+
+`warrant chain verify` exits 0 **with findings**, because findings are a result.
+Use `--require-clean` to make any finding exit 1.
+
+| Finding | It means |
+|---|---|
+| `digest` | a record was edited after it was written: its seal, its chain-state digest or a derived field does not reproduce |
+| `malformed` | a record holds a value of the wrong type or outside its domain, or one no JSON record can carry |
+| `continued_after_end` | a link follows a record that revoked the warrant -- by the chain's statistic or by a moved distribution -- or that ended the chain |
+| `fork`, `restart` | two records continue one record, or two chains were started for one warrant. Two branches are two tests |
+| `missing_link` | a record continues one that is not in the set, or one that was edited |
+| `sequence`, `extension` | a link is misnumbered, or does not extend its predecessor |
+| `mixed_warrants`, `duplicate` | records from several warrants, or one record under several paths |
+
+**`unsealed` is not a finding.** Those records were written before records were
+sealed: their chain state was checked, their status, bounds and labels were not.
+
+---
+
 ## The exceptions, and what each one is defending
 
 | Exception | Raised when | What it is protecting |
@@ -42,6 +128,10 @@ The refusal reason names **every** failed criterion, not the first one.
 | `WarrantError` | a warrant would claim more than its evidence supports | A refusal with no reason, or a key missing its envelope |
 | `EvalSetError` | an eval set or its cache is inconsistent | A content hash that does not match, or a cache that is not the one the set names |
 | `LabelCategoryError` | a detector is pointed at a set whose labels mean something else | Recall against labels that mean something else is not recall — a PII detector measured against hallucination labels |
+| `InputError` | a customer's scored file does not meet the input contract | Its own type so that *"we cannot read your file"* is never confused with *"your detector was refused"* |
+| `ChainError` | a chained recheck cannot be started, continued or fed as asked | A revoked warrant resumed, an edited record continued, an undeclared fork, a unit counted twice |
+| `MalformedChainError` | a chain block's value is the wrong type, out of its domain, or not representable in JSON | Refused before any arithmetic, so a bad value never reaches a division or the digest |
+| `RecordError` | a file handed to `chain verify` is not a readable chained recheck record | Unreadable input exits 2 rather than reading as a clean verification |
 | `BundleError` | a policy bundle is malformed or internally inconsistent | A deploy error rather than a rule silently falling through to its default |
 | `WarrantResolutionError` | a well-formed bundle asks for a claim the matrix cannot back | **Never a warning.** The bundle does not load. This is the fail-closed path |
 | `LedgerError` | an append would break the ledger's guarantees | The hash chain |
