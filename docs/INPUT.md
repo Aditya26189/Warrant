@@ -136,9 +136,16 @@ and not computed when any group holds both.
 
 ## Optional: anything else
 
-Every other column is carried into the JSON record untouched and used in no
-computation. Timestamps, model versions, prompt hashes, reviewer names — keep
-them in the file.
+Every other column is read, and **not kept**: neither its name nor its values
+appear in any record Warrant writes, and none is used in a computation. This page
+used to say such columns were carried into the record untouched, and that was
+wrong -- `examples/certifies.csv` has a `captured_at` column that no warrant
+written from it contains.
+
+So timestamps, model versions, prompt hashes and reviewer names belong in **your
+own retained copy of the file**, not in the warrant. If the record must be tied
+to that copy, see [EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md): a `certify` warrant
+does not yet bind the rows it was issued on.
 
 ---
 
