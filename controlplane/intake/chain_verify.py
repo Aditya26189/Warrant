@@ -10,8 +10,10 @@ This reads every record handed to it and reports what the set shows:
 * **restart** -- two chains started for the same warrant;
 * **missing link** -- a record continuing one that is not in the set;
 * **sequence** -- a link numbered other than its predecessor plus one;
-* **digest** -- a chain state whose digest does not reproduce, or whose
-  serialized derived fields disagree with the state they rebuild from;
+* **digest** -- a chain state whose digest does not reproduce, whose serialized
+  derived fields disagree with the state they rebuild from, or a record whose
+  **seal** does not reproduce -- any field edited after it was written, including
+  the status, bounds and labels of the latest record;
 * **malformed** -- a chain block with a value of the wrong type or outside its
   domain, such as an ``alpha`` of 0; not evidence of an edit, and not arithmetic
   the verifier will attempt;
@@ -48,7 +50,7 @@ import json
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
-from .chain import ChainError, ChainState, MalformedChainError, record_sha256
+from .chain import ChainError, ChainState, MalformedChainError, record_sha256, seal_reproduces
 
 __all__ = [
     "ChainFinding",
@@ -79,6 +81,9 @@ class ChainVerification:
     records: tuple[str, ...]
     warrants: tuple[str, ...]
     findings: tuple[ChainFinding, ...]
+    #: Records written before sealing. Not findings; their fields outside the chain
+    #: state could not be checked, and the payload says so.
+    unsealed: tuple[str, ...] = ()
 
     @property
     def clean(self) -> bool:
@@ -91,6 +96,12 @@ class ChainVerification:
             "records": list(self.records),
             "warrant_sha256": list(self.warrants),
             "findings": [finding.to_payload() for finding in self.findings],
+            "unsealed": list(self.unsealed),
+            "unsealed_meaning": (
+                "Records written before chained records were sealed. Their chain state "
+                "was checked; their status, reason, bounds, drift, labels and provenance "
+                "were not, unless a later record in the set points at them."
+            ),
             "cannot_check": (
                 "The statistics are not recomputed: that needs the labelled files, "
                 "which records do not hold. A set pruned to one clean branch verifies "
@@ -149,7 +160,19 @@ def verify_chain_records(records: Mapping[str, Mapping[str, Any]]) -> ChainVerif
             ))
 
     states: dict[str, ChainState] = {}
+    unsealed: list[str] = []
     for digest, name in sorted(by_digest.items(), key=lambda item: item[1]):
+        sealed = seal_reproduces(records[name])
+        if sealed is None:
+            unsealed.append(name)
+        elif sealed is False:
+            findings.append(ChainFinding(
+                "digest", (name,),
+                "the record's seal does not reproduce: a field was edited after the "
+                "record was written -- its status, reason, bounds, drift, labels, "
+                "provenance or chain block. The seal is a checksum, not a signature. "
+                "Any link that continued this record also reports a missing link.",
+            ))
         try:
             states[name] = ChainState.from_payload(dict(records[name]["chain"]))
         except MalformedChainError as exc:
@@ -247,7 +270,8 @@ def verify_chain_records(records: Mapping[str, Mapping[str, Any]]) -> ChainVerif
                     + (f" (changed: {', '.join(changed)})" if changed else "")))
 
     return ChainVerification(
-        records=tuple(sorted(records)), warrants=tuple(warrants), findings=tuple(findings))
+        records=tuple(sorted(records)), warrants=tuple(warrants), findings=tuple(findings),
+        unsealed=tuple(sorted(unsealed)))
 
 
 def render_chain_verification(verification: ChainVerification) -> str:
@@ -263,6 +287,9 @@ def render_chain_verification(verification: ChainVerification) -> str:
         for finding in verification.findings:
             names = ", ".join(Path(r).name for r in finding.records)
             lines += ["", f"  [{finding.kind}] {names}", f"      {finding.detail}"]
+    if verification.unsealed:
+        lines += ["", f"  {len(verification.unsealed)} record(s) written before records were sealed:",
+                  "  their chain state was checked, their status, bounds and labels were not."]
     lines += ["", "  What this cannot check: the statistics themselves, which need the",
               "  labelled files; a record nobody kept; and a set rewritten with",
               "  recomputed digests, which verifies clean -- the digests are",

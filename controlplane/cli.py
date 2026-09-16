@@ -632,7 +632,10 @@ def _recheck(args: argparse.Namespace) -> int:
     try:
         # Exclusive create for a chained record: the refusal and the write are one
         # step, with no window between a check and a truncating open (194).
-        write_json_artifact(out, payload, config, exclusive=fed is not None)
+        from .intake.chain import seal_record
+
+        write_json_artifact(out, payload, config, exclusive=fed is not None,
+                            seal_with=seal_record if fed is not None else None)
     except FileExistsError:
         print(
             f"warrant: {out} already exists. A chained recheck never writes over a "

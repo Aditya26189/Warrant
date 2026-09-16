@@ -34,7 +34,7 @@ from dataclasses import fields, is_dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from types import UnionType
-from typing import Any, Optional, Union, get_args, get_origin, get_type_hints
+from typing import Any, Callable, Optional, Union, get_args, get_origin, get_type_hints
 
 import yaml
 
@@ -1257,6 +1257,7 @@ def write_json_artifact(
     config: Optional[Config] = None,
     *,
     exclusive: bool = False,
+    seal_with: Optional[Callable[[dict[str, Any]], dict[str, Any]]] = None,
 ) -> Path:
     """Write a results artifact with its provenance block attached.
 
@@ -1273,6 +1274,10 @@ def write_json_artifact(
             step. For records that must never replace an earlier one -- a
             chained recheck (``DECISIONS.md`` 194) -- where checking first and
             then opening leaves a window.
+        seal_with: Seals the finished document, provenance included, before it
+            is written -- for chained recheck records (addendum 2026-09-17). It
+            receives the document as it will be read back, a JSON round-trip, so
+            a verifier reading the file reproduces exactly what was sealed.
 
     Returns:
         The path written.
@@ -1280,6 +1285,8 @@ def write_json_artifact(
     out = Path(path)
     out.parent.mkdir(parents=True, exist_ok=True)
     document = {"provenance": provenance(config), **payload}
+    if seal_with is not None:
+        document = seal_with(json.loads(json.dumps(document, default=_json_default)))
     with out.open("x" if exclusive else "w", encoding="utf-8") as fh:
         json.dump(document, fh, indent=2, sort_keys=False, default=_json_default)
         fh.write("\n")

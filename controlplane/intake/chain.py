@@ -90,6 +90,35 @@ class MalformedChainError(ChainError):
     """
 
 
+#: The field a chained recheck record is sealed under (addendum 2026-09-17).
+SEAL_FIELD = "record_sha256"
+
+
+def seal_record(document: dict[str, Any]) -> dict[str, Any]:
+    """The document with ``record_sha256`` over everything else in it.
+
+    Covers the whole record -- status, reason, bounds, drift, labels, provenance,
+    the chain block -- not only the chain state. A schema audit found 197 fields of
+    the latest record that could be edited without the verifier noticing, because
+    only the chain state carried a digest and only a successor covered the rest.
+    A checksum, not a signature: rewriting a record and recomputing this passes.
+    """
+    body = {key: value for key, value in document.items() if key != SEAL_FIELD}
+    return {**body, SEAL_FIELD: record_sha256(body, "record being sealed")}
+
+
+def seal_reproduces(record: dict[str, Any]) -> Optional[bool]:
+    """``True`` if the record's seal reproduces, ``False`` if not, ``None`` if unsealed.
+
+    ``None`` is a record written before sealing existed. It is not a failure; it is
+    a record whose fields outside the chain state cannot be checked.
+    """
+    if SEAL_FIELD not in record:
+        return None
+    body = {key: value for key, value in record.items() if key != SEAL_FIELD}
+    return record.get(SEAL_FIELD) == record_sha256(body, "record")
+
+
 def record_sha256(record: Any, what: str) -> str:
     """:func:`canonical_sha256` of a whole record, or a :class:`MalformedChainError`.
 
@@ -456,6 +485,14 @@ def continue_chain(
             "--horizon-labels on a recheck, then continue it with --since."
         )
     state = ChainState.from_payload(block)
+    if seal_reproduces(previous_record) is False:
+        # Without this, an edited latest record -- a REVOKED status set to VALID,
+        # the sidecar deleted -- could be continued (addendum 2026-09-17).
+        raise ChainError(
+            "the --since record's seal does not reproduce: a field was edited after "
+            "the record was written, so it cannot be continued. The seal is a "
+            "checksum, not a signature."
+        )
     if state.warrant_sha256 != record_sha256(warrant_record, "warrant record"):
         raise ChainError(
             "the --since record's chain belongs to a different warrant record; a chain "
