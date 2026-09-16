@@ -10,7 +10,7 @@ The rule that shapes all of it: **logic lives in `controlplane/`.** `scripts/`,
 `demo/` and `notebooks/` call it and render. Logic that lives only in a script
 or a notebook is unreviewable.
 
-**Contents:** [Where do I go for…](#where-do-i-go-for) · [model](#controlplanemodel--the-records) · [validation](#controlplanevalidation--measuring-and-issuing) · [evalsets](#controlplaneevalsets--the-envelopes) · [detectors](#controlplanedetectors--the-things-being-measured) · [extract](#controlplaneextract--the-gpu-stage) · [matrix](#controlplanematrix--detector--envelope) · [drift](#controlplanedrift--when-a-warrant-stops-being-true) · [policy](#controlplanepolicy--reading-the-warrant) · [store](#controlplanestore--the-ledger) · [economics](#controlplaneeconomics--what-can-and-cannot-be-derived) · [report](#controlplanereport--rendering-and-proving) · [demo, gateway, config](#controlplanedemo-gateway-and-config)
+**Contents:** [Where do I go for…](#where-do-i-go-for) · [model](#controlplanemodel--the-records) · [validation](#controlplanevalidation--measuring-and-issuing) · [intake](#controlplaneintake--the-customer-path) · [release](#controlplanerelease--pre-registered-release-evidence) · [sampling](#controlplanesampling--the-on-traffic-estimate) · [gate](#controlplanegate--the-action-gate) · [external](#controlplaneexternal--other-peoples-detectors) · [evalsets](#controlplaneevalsets--the-envelopes) · [detectors](#controlplanedetectors--the-things-being-measured) · [extract](#controlplaneextract--the-gpu-stage) · [matrix](#controlplanematrix--detector--envelope) · [drift](#controlplanedrift--when-a-warrant-stops-being-true) · [policy](#controlplanepolicy--reading-the-warrant) · [store](#controlplanestore--the-ledger) · [economics](#controlplaneeconomics--what-can-and-cannot-be-derived) · [report](#controlplanereport--rendering-and-proving) · [demo, gateway, config](#controlplanedemo-gateway-and-config)
 
 ---
 
@@ -31,6 +31,18 @@ or a notebook is unreviewable.
 | understand drift bands | `drift/psi.py`, `drift/null_band.py` |
 | find what the demo shows | `demo/session.py`, `report/beats.py` |
 | find what checks the README | `report/claims.py` |
+| certify a customer's scored file, or refuse | `intake/certify.py` |
+| see exactly what a customer's file must contain | `intake/contract.py` |
+| recheck a warrant on new data | `intake/recheck.py` |
+| understand a chain of rechecks and what it guarantees | `intake/chain.py` |
+| audit a kept set of chain records | `intake/chain_verify.py` |
+| see how far a certificate depends on its labels | `intake/labels.py` |
+| see every budget's counts, or a pick off them | `intake/frontier.py`, `intake/selection.py` |
+| price a recheck, or a year of them | `economics/sizing.py`, `economics/schedules.py` |
+| run a pre-registered release evaluation | `release/` |
+| estimate recall on unreviewed traffic | `sampling/estimator.py` |
+| see what the action gate refuses | `gate/gate.py` |
+| find every command a customer can run | `cli.py` |
 
 ---
 
@@ -72,11 +84,54 @@ The largest package, and the one to read first.
 | `ablation.py` | The tier ladder: what each level of model access actually buys |
 | `evalsets.py` | Eval sets and the cached extraction `/validate` runs from |
 | `synthetic.py` | Synthetic sets and caches, for exercising the harness without a GPU |
-| `warrant_stats.py` | Statistics specific to warrants |
+| `warrant_stats.py` | The certification statistics every path shares: the Clopper-Pearson bound, the lowest certifying threshold, the negatives a budget needs, and the legacy `FPRMonitor`. **Read-only by contract** -- findings about it are recorded as open items, not edited in |
+| `fpr_sweep.py` | Sweeping the false-positive budget over frozen scores: is a low recall a ceiling, or a setting? |
+| `scorefree.py` | Certifying a detector that emits no score, and what having a score is worth |
+| `label_error.py` | This project's own measured certificates re-certified through the customer path, under label error (`DECISIONS.md` 199) |
 
 **Read `runner.py` once, top to bottom.** The order is the argument: fit on
 train, select on validation, run the controls, score test once, build metrics,
 then issue or refuse.
+
+---
+
+## `controlplane/intake` — the customer path
+
+Everything behind `warrant certify`, `recheck` and `chain verify`. It takes a
+customer's scored file rather than this project's eval sets, and **calls the same
+statistics the research path uses** -- a second implementation is how two
+answers to one question drift apart.
+
+| Module | Does |
+|---|---|
+| `contract.py` | Reads the scored file strictly: `id`, `label`, `score`, optional `group` and `label_2`. Nothing is coerced, filled or dropped, and a refusal for too little evidence is kept distinct from a file that cannot be read |
+| `certify.py` | Certifies a false-positive budget or refuses, through `validation/warrant_stats.py`. The record carries recall and precision with intervals, the score distribution a recheck compares against, and the label-error block |
+| `frontier.py` | Every budget at once, in exact counts, with no bootstrap |
+| `selection.py` | How wrong is the row a customer picks off the frontier? The measurement behind `--from-frontier` (`DECISIONS.md` 192, 195) |
+| `recheck.py` | Is the warrant still true on new data? The false-positive bound and the score distribution are tested and reported separately, and revocation turns on the lower bound, not on a failure to re-prove |
+| `chain.py` | A year of rechecks as one sequential test, carried in the recheck records. Also the chain-head sidecar, and every refusal to continue: a revoked warrant, an edited or malformed record, an undeclared fork |
+| `chain_verify.py` | What a kept set of chain records shows as a whole: forks, restarts, missing links, edited or malformed states, links after a revocation. **It cannot recompute the statistics**; those need the labelled files |
+| `labels.py` | How far a certificate or a recheck depends on its labels being right: the two exact error ladders, and a second reviewer's agreement and disputes (`DECISIONS.md` 197, 198) |
+| `render.py` | The terminal summary. Written so a refusal reads as a result rather than a malfunction |
+
+**Read `certify.py`, then `recheck.py`, then `chain.py`.** That is the order a
+customer meets them, and each one's docstring says what the previous one could
+not.
+
+---
+
+## `controlplane/release` — pre-registered release evidence
+
+A separate workflow from `certify`, and not interchangeable with it. A release
+freezes the identity, criteria and holdout **before** anything is scored,
+evaluates that holdout once, and expires. See [RELEASE.md](RELEASE.md).
+
+| Module | Does |
+|---|---|
+| `contract.py` | Freezes identity, selection and holdout membership, and binds them into the contract's digest before evaluation |
+| `evaluate.py` | Fixed-holdout inference with simultaneous intervals, a data digest over the rows, and verification that recomputes every field |
+| `render.py` | The terminal evidence, with its uncertainty and scope limits |
+| `cli.py` | Parsing and file IO for `warrant release`; no inference in the wrapper |
 
 ---
 
@@ -169,6 +224,50 @@ native exception through the FFI boundary rather than a Python error.
 
 ---
 
+## `controlplane/sampling` — the on-traffic estimate
+
+Recall on the traffic nobody reviewed has to be estimated, and an estimate costs
+labels. This package does that estimation and prices it.
+
+| Module | Does |
+|---|---|
+| `estimator.py` | Recall estimated on your traffic, stratified by flag, with an interval. Refuses a sampled stratum it cannot use |
+| `planning.py` | How many labels a recall claim costs, propagated through the derivative of recall with respect to the miss rate -- **not** sized as a prevalence, which understates the labels needed |
+| `allocation.py` | Where to spend the labels: proportional allocation in month one, Neyman allocation only once per-stratum rates exist |
+| `queue.py` | The label queue, **blinded**: no flag, score, stratum or ordering signal reaches a reviewer |
+| `agreement.py` | Cohen's kappa with its own interval, published beside the warrant it qualifies |
+
+---
+
+## `controlplane/gate` — the action gate
+
+What stops an agent's action, as distinct from what flags a response. **The
+first two rules consult no detector**, so a detector that fails cannot open them.
+
+| Module | Does |
+|---|---|
+| `gate.py` | Five rules, in order |
+| `registry.py` | The reversibility registry: what each tool can do, declared where the tool is defined |
+| `session.py` | The session Rule-of-Two: three sticky flags, and two of three is the limit |
+| `cost.py` | What the gate costs on legitimate work, counted rather than asserted |
+| `agent.py` | A four-tool banking agent, and the indirect injection it does **not** stop |
+
+---
+
+## `controlplane/external` — other people's detectors
+
+Certification run on detectors and datasets this project did not build, at their
+published revisions and splits.
+
+| Module | Does |
+|---|---|
+| `registry.py` | Third-party detectors and public datasets, declared rather than hardcoded |
+| `run.py` | One pairing: fetch, score, certify across the budget grid, emit |
+| `redact.py` | Certifying on the REDACT benchmark at its own locked split |
+| `matrix.py` | The external matrix: detectors down, budgets across, every cell reproducible |
+
+---
+
 ## `controlplane/store` — the ledger
 
 `ledger.py` is an append-only, hash-chained SQLite store of every issuance,
@@ -182,12 +281,15 @@ because the chain is only meaningful for the run that built it.
 
 | Module | Does |
 |---|---|
+| `sizing.py` | **The price list**: the negatives a recheck needs to catch a breach at a stated power, the labels to obtain them, and a year of each cadence. Derived from the single declared workload in `config.yaml` |
+| `schedules.py` | A year of rechecks compared as sequential change detection: how often each rule falsely revokes a detector keeping its promise, and how fast it catches a breach |
+| `detection_grid.py` | The chained recheck across breach sizes, cadences and change points |
 | `feasibility.py` | The abstention floor: what **no** detector can do, however good. An impossibility result, derived from measured rates, needing no cost model |
 | `review.py` | Review volume, and how many reviewed items a recall claim needs |
 
-The price list — the module every cost figure was supposed to come from — was
-specified and never built. That is why every cost, headcount and ROI figure in
-this repository is a declared estimate and says so.
+**Every cost figure derives from one declared workload.** It is declared, not
+measured on anyone's traffic, and each artifact labels its inputs by origin so a
+declared figure cannot pass as a measured one.
 
 ---
 
@@ -198,7 +300,15 @@ this repository is a declared estimate and says so.
 | `claims.py` | Parses the README claim table and checks every number against its artifact |
 | `results.py` | Renders `results/RESULTS.md`, with a hard refusal to print fixture numbers |
 | `reproduce.py` | Re-derives the frozen-set evaluation from cached activations and diffs it |
-| `clean_clone.py` | Clones the repository into a temporary directory and runs the gates inside it |
+| `clean_clone.py` | Clones the repository into a temporary directory and runs the gates inside it. Fails if the clone is not the commit it names, and refuses to write its record if the source changed while it ran |
+| `test_inventory.py` | Counts collected tests from a clean commit, without calling collection a passing run |
+| `invariants.py` | The nine invariants, each mapped to the test that enforces it |
+| `causal.py` | Causal claims: each mechanism named with the falsifier that would refute it |
+| `crosswalk.py` | The RBI's **draft** model-risk guidance, paragraph by paragraph: what a warrant provides, in part, or not at all |
+| `price_list.py` | Renders the price list and the agreement figure into `RESULTS.md` |
+| `spec_sections.py` | The `SPEC.md` sections `RESULTS.md` must carry |
+| `sweep.py` | Renders `SWEEP.md`, refusing fixture numbers as `results.py` does |
+| `regression.py` | Refuses to replace a rich artifact with a poorer one |
 | `beats.py` | Assembles the demo's beats from committed artifacts. Reads; decides nothing |
 | `plots.py` | Plots, each carrying the provenance of the numbers in it |
 
@@ -211,6 +321,11 @@ this repository is a declared estimate and says so.
   renders and holds no logic.
 - **`gateway/adapter.py`** is an OpenAI-format adapter that returns
   certificates — an adapter, not a gateway. Explicitly the lowest-value piece.
+- **`cli.py`** is the `warrant` command: `certify`, `recheck`, `plan`, `chain
+  verify`, and `release` via `release/cli.py`. It parses arguments, calls the
+  packages above and writes records, with one exit-code convention: `0` for any
+  result including a refusal, `1` when a `--require-*` flag was not met, `2` for
+  input that cannot be used.
 - **`config.py`** is the single source of every knob: typed dataclasses
   mirroring `config.yaml`, validation in `__post_init__` naming each invariant
   it enforces, SHA-256 config hashing, and `provenance()` — which shells out to
@@ -218,12 +333,18 @@ this repository is a declared estimate and says so.
 
 ---
 
-## Not built, and deliberately so
+## Specified, and not built
 
-`controlplane/sampling/` (stratified estimation) and `controlplane/gate/` (the
-action gate) are named in the contracts and do not exist. See
-[LIMITATIONS.md](LIMITATIONS.md) §3 — the absence is declared rather than
-discovered.
+An earlier version of this page said `controlplane/sampling/` and
+`controlplane/gate/` did not exist, and that the price list was never built. All
+three were built later (`DECISIONS.md` 146-150, 156) and are described above; the
+sentence had gone stale, which is the failure an orientation page exists to
+avoid.
+
+What is genuinely absent is declared in [LIMITATIONS.md](LIMITATIONS.md) §3: the
+Qwen3Guard and LLM-judge adapters, drift features beyond token length, embedding
+MMD, a matrix that fills its own unvalidated cells, and a scheduler behind a
+stale warrant's promised revalidation.
 
 ---
 
