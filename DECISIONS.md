@@ -11091,3 +11091,30 @@ wrong gate record costs the gate's meaning.
 - **Practical.** Provenance's dirty flag counts untracked files, so a gate run
   from a checkout holding untracked work now refuses to write. That is correct,
   and a reason to run gates from worktrees.
+
+
+## 201 - Withhold population agreement intervals for declared dependent groups (2026-09-16)
+
+Review reproduced an agreement interval from resampling individual pairs on a
+file that declared dependent groups. Repeating pairs inside a few groups must
+not manufacture independent evidence. Certification and recheck currently call
+the same pair bootstrap before their grouped-data guards.
+
+Pass the actual group IDs through both paths and validate their alignment with
+the double-labelled items. On grouped input retain the observed pair table and
+descriptive sample kappa, explicitly conditional on those observed pairs; do
+not present it as an estimated population claim. Withhold the unsupported
+confidence interval with null endpoints and a reason, and report reviewed pair
+count and the number of distinct groups represented among those pairs. Empty
+review coverage within a group does not add a reviewed independent unit.
+
+Ungrouped output and the existing paired bootstrap remain unchanged. Neither
+this display correction nor label_2 changes any certification/recheck verdict,
+threshold, FPR bound, dispute count or sensitivity ladder. The acceptance tests
+must cover strong within-group dependence, unequal reviewed group sizes, both
+CLI paths, missing or inconsistent group metadata, and ungrouped compatibility.
+
+A cluster bootstrap is deferred: withholding an unsupported interval is safer
+than introducing an estimator whose small-cluster behaviour has not been
+validated. The agreement interval is not a bound on label correctness even when
+its sampling assumptions hold; shared reviewer mistakes remain invisible.
