@@ -784,3 +784,48 @@ chain's guarantee as stated in 187, 193 and 196 is unaffected as a statistical
 claim, but its *record integrity* -- that a kept set of records shows what
 happened -- does not hold until the two P0s are closed, and no pilot should run
 on a build that hands a validator an artefact with a known integrity defect.
+
+### 8.13 After 8.12: the chain defects closed as a class, and what a documentation pass found
+
+**The status line of 8.12 is superseded.** Codex's claim on the four defects
+produced no commit for 22 hours, so this line took the repair over on
+`fix/chain-integrity-8a`, after posting the takeover; Codex acknowledged it and
+will review the commits independently. **That review has not happened yet**, and
+nothing here is merged or pushed.
+
+**The two P0s, and what the repair found beyond them.**
+
+| Pass | What was wrong | Closed by | Suite |
+|---|---|---|---|
+| 1 | Continuing a record REVOKED by drift; editing `threshold`, `mean_statistic` or `ended`; `alpha` of 0 or NaN crashing the verifier | `continue_chain` refuses any REVOKED record; derived fields compared on load; malformed values refused before arithmetic (`DECISIONS.md` addendum on 194) | `20e3347`: 1,797 passed, 1 xfail, 0 failed |
+| 2 | **A forked restart went around a drift revocation**: `--fork` on a revoked warrant returned exit 0 and a VALID record. The guarantee text also said alpha bounds "any false revocation" | the head sidecar records status and a revoked head refuses every continuation; the guarantee names the chain's statistic only (addendum 2026-09-16) | `d9fa4bf`: 1,803 passed, 1 xfail, 0 failed |
+| 3 | **The derived-field defect was a class.** A schema-driven audit mutated every leaf of a real two-link chain, 3,210 mutations; 197 edits to the latest record verified clean, including its `status` | every chained record sealed whole; `chain verify` and `--since` recompute the seal; a property test walks every leaf. After: 3,218 mutations, 0 survive (addendum 2026-09-17) | `5b13d22`: 1,812 passed, 1 xfail, 0 failed |
+
+**What the tests had missed, again.** Pass 1 was written against the four
+reported instances and passed. Passes 2 and 3 found more of the same defect by
+attacking the records from their schema rather than from the report. The lesson
+8.12 drew — each test checks the path its author was thinking about — held a
+second time, inside the fix for it.
+
+The P1 on grouped agreement remains Codex's, pre-registered and not merged.
+
+**A documentation pass, on `docs/professional-pass`, found these by reading.**
+None was caught by a failing test except the first.
+
+| Found | Where | Fixed |
+|---|---|---|
+| `docs/PILOT-PROTOCOL.md` cited a decision number Codex has pre-registered on its own branch and that does not exist on this line, so `test_decisions_integrity` failed on the branch that introduced it. The same sentence stated Codex's pending grouped-agreement change as current behaviour | this line's own pilot commit | `51c77ba` |
+| `drift/psi.py` says its smoothing epsilon is declared in config; it is a module constant | read-only `drift/` | recorded, LIMITATIONS §4.4 |
+| ARCHITECTURE and DIAGRAMS described drift as PSI **and MMD** over five features; only token length is computed and MMD is not built. DIAGRAMS drew warrant states the enum does not have and omitted STALE | orientation pages | `d0489d1`, `aeca3ee` |
+| FAQ and METHODS said the price list, kappa and the blinded queue were not built | orientation pages | `8789546`, `75db639` |
+| SETUP said Python 3.11+; the package and `smoke.py` declare 3.10, and CI tests 3.11 and 3.12 | SETUP | `8f80e56` |
+| The README's reading notes pointed at "the last five rows" for two different blocks, counted three refused detectors where four were measured, and claimed every interval was a bootstrap over questions | README | `0092210` |
+| `read_json_artifact` told a reader to see `scripts/run_all.py`, which never existed | `config.py` | `32ab29b` |
+| `chain.py`'s module docstring still stated the guarantee the 2026-09-16 addendum narrowed | `intake/chain.py` | `aca204c` |
+| CODE_TOUR described the gate's agent as "the indirect injection it does not stop"; the gate blocks it | CODE_TOUR | `aca204c` |
+
+**What this section does not establish.** No clean-clone gate has run on either
+branch. The chain fix has not been independently reviewed. The documentation pass
+checked each page against the code it describes and ran the tests that read
+documents; it did not re-derive any measured number, all of which still come from
+the claim table (92 of 92 reproduce at `0092210`).
