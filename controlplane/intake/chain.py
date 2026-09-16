@@ -8,10 +8,12 @@ over :class:`~controlplane.validation.warrant_stats.FPRMonitor`'s betting grid o
 one detector per bet -- and revokes when that mean reaches ``N / alpha``.
 
 **The guarantee, and its conditions.** For any true false-positive rate at or
-below the certified budget, the probability that the chain revokes at any point
-in its first ``N`` units is at most ``alpha``: ``R_t + (N - t)`` is a nonnegative
-supermartingale from ``N`` that dominates the statistic, so Ville's inequality
-applies (187). It holds for the chain **as kept** -- a user who discards an
+below the certified budget, the probability that the chain's sequential statistic
+revokes at any point in its first ``N`` units is at most ``alpha``: ``R_t + (N - t)``
+is a nonnegative supermartingale from ``N`` that dominates the statistic, so
+Ville's inequality applies (187). The bound covers that statistic only: a recheck
+REVOKED because the score distribution moved is a separate check, outside it
+(addendum 2026-09-16). It holds for the chain **as kept** -- a user who discards an
 unfavourable record and starts again has a new chain and a spent guarantee, and
 nothing on one machine can stop that. What the records do is make it visible:
 each carries the digest of the warrant and of the record before it.
@@ -37,7 +39,10 @@ visible to ``warrant chain verify`` only when both chains' records are kept.
 can produce a consistent set: a record edited and re-digested passes every check
 here, and one with ``head_check`` cleared cannot be told from a record written
 before 194. Tamper-evidence would need a key or an anchor outside the user's
-control, which a local tool does not have (194).
+control, which a local tool does not have (194). Since the addendum of 2026-09-17
+every chained record is also sealed whole (``record_sha256``), so an edit to any
+stored field is caught unless the editor recomputes the seal; a record written
+before then is reported as unsealed.
 """
 
 from __future__ import annotations

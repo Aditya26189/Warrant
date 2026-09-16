@@ -250,7 +250,7 @@ first two rules consult no detector**, so a detector that fails cannot open them
 | `registry.py` | The reversibility registry: what each tool can do, declared where the tool is defined |
 | `session.py` | The session Rule-of-Two: three sticky flags, and two of three is the limit |
 | `cost.py` | What the gate costs on legitimate work, counted rather than asserted |
-| `agent.py` | A four-tool banking agent, and the indirect injection it does **not** stop |
+| `agent.py` | A four-tool banking agent, and an indirect injection **no detector flags** that the gate blocks anyway |
 
 ---
 
