@@ -2,15 +2,17 @@
 
 <sub>[🏠 Project README](../README.md) · [📚 Documentation index](README.md) · [🗺️ Diagrams](DIAGRAMS.md) · [📖 Glossary](GLOSSARY.md)</sub>
 
-Eleven diagrams, in the order a reader needs them: what the system *is*, how
+Fifteen diagrams, in the order a reader needs them: what the system *is*, how
 a number gets made, what happens to it afterwards, how the repository proves any
-of it, and where every directory sits. Every diagram names the code it describes.
+of it, and where every directory sits; then the path a customer runs on their own
+detector, the chain of rechecks, release evidence and the action gate. Every
+diagram names the code it describes.
 
 These render natively on GitHub. Nothing here carries a measured number — the
 numbers live in [README.md](../README.md)'s claim table and in `results/`,
 which is where a reader should check them.
 
-**Contents:** [1 The three objects](#1-the-three-objects) · [2 The pipeline](#2-the-pipeline-stage-by-stage) · [3 Warrant lifecycle](#3-the-warrant-lifecycle) · [4 A validation run](#4-what-happens-inside-one-validation-run) · [5 The five controls](#5-the-five-controls) · [6 Policy](#6-policy-reads-the-warrant-not-the-score) · [7 Composition](#7-composing-two-detectors) · [8 Drift](#8-drift-and-the-revocation-ladder) · [9 Verification](#9-how-the-repository-proves-itself) · [10 The journey](#10-what-we-built-round-1-to-round-2) · [11 The repository](#11-the-repository-end-to-end)
+**Contents:** [1 The three objects](#1-the-three-objects) · [2 The pipeline](#2-the-pipeline-stage-by-stage) · [3 Warrant lifecycle](#3-the-warrant-lifecycle) · [4 A validation run](#4-what-happens-inside-one-validation-run) · [5 The five controls](#5-the-five-controls) · [6 Policy](#6-policy-reads-the-warrant-not-the-score) · [7 Composition](#7-composing-two-detectors) · [8 Drift](#8-drift-and-the-revocation-ladder) · [9 Verification](#9-how-the-repository-proves-itself) · [10 The journey](#10-what-we-built-round-1-to-round-2) · [11 The repository](#11-the-repository-end-to-end) · [12 The customer path](#12-the-customer-path-certify-and-recheck) · [13 The chain](#13-a-chain-of-rechecks) · [14 Release](#14-release-evidence) · [15 The action gate](#15-the-action-gate)
 
 ---
 
@@ -94,7 +96,7 @@ fresh clone with no GPU and no cache.
 
 ## 3. The warrant lifecycle
 
-Three states, three behaviours, and `UNVALIDATED` never collapses into either
+Five states, three behaviours, and `UNVALIDATED` never collapses into either
 of the others.
 
 ```mermaid
@@ -104,15 +106,20 @@ stateDiagram-v2
     UNVALIDATED --> VALID: validation run,<br/>all five controls pass,<br/>bounds clear the floor
     UNVALIDATED --> REFUSED: validation run,<br/>any control fails or<br/>a bound misses the floor
 
-    VALID --> EXPIRED: 24 hours
-    VALID --> REVOKED: drift past the<br/>envelope boundary
-    VALID --> INVALIDATED: model version changed
+    VALID --> STALE: moderate shift,<br/>interval widened
+    VALID --> REVOKED: significant shift,<br/>or model version changed
+    STALE --> REVOKED: significant shift
 
-    EXPIRED --> UNVALIDATED: re-measure
+    STALE --> UNVALIDATED: re-measure
     REVOKED --> UNVALIDATED: re-measure
-    INVALIDATED --> UNVALIDATED: re-measure
 
     REFUSED --> [*]: no override exists
+
+    note right of VALID
+        Expiry is not a state. A VALID warrant
+        past warrant_ttl_hours cannot be relied
+        upon, and is re-measured like any other.
+    end note
 
     note right of REFUSED
         There is no force, no admin bypass,
@@ -271,8 +278,9 @@ enumerated with their tests in [CASES.md](CASES.md) §2.
 
 ```mermaid
 flowchart TD
-    T["live traffic window"] --> F["envelope features<br/>token length, script mix,<br/>embedding centroid distance,<br/>reference perplexity, category mix"]
-    F --> M["PSI + MMD vs the warrant's<br/>stored reference bins<br/>drift/psi.py, drift/monitor.py"]
+    T["live traffic window"] --> F["input token length<br/>the one envelope feature computed"]
+    F --> M["PSI vs the warrant's<br/>stored reference bins<br/>drift/psi.py, drift/monitor.py"]
+    X["declared, not computed:<br/>script mix, embedding centroid,<br/>reference perplexity, category mix;<br/>MMD not built"] -.-x F
     M --> Q{"past the significant<br/>boundary?"}
     Q -->|no| K["warrant stands"]
     Q -->|yes| REV["REVOKE the warrant"]
@@ -288,7 +296,9 @@ flowchart TD
 PSI's 0.10 / 0.25 bands are credit-scoring rules of thumb quoted without their
 sample size, and they are not scale-free — the null grows as `(k−1)/n`. A
 threshold that fires on 30% of stable windows is not a monitor; it is noise with
-a dashboard. `DECISIONS.md` 070.
+a dashboard. `DECISIONS.md` 070. Only token length is watched, so a shift in
+language or topic at a constant length passes unseen (`DECISIONS.md` 172,
+[LIMITATIONS.md](LIMITATIONS.md) §3.4).
 
 The measured demonstration is one long-context shift across three probe
 aggregations with nothing retrained: last-token holds its warrant, mean-pool
@@ -397,17 +407,19 @@ flowchart TB
         I3["policies/<br/>customer_support<br/>internal_knowledge<br/>decision_support"]
     end
 
-    subgraph CODE["controlplane/ — 84 modules, all the logic"]
+    subgraph CODE["controlplane/ — all the logic"]
         M1["model/ · store/<br/>records and the hash-chained ledger"]
-        M2["extract/ · detectors/<br/>the GPU stage and the things measured"]
+        M2["extract/ · detectors/ · external/<br/>the GPU stage, the things measured,<br/>other people's detectors"]
         M3["evalsets/ · validation/<br/>envelopes, controls, issue_or_refuse"]
         M4["matrix/ · drift/<br/>warrant matrix, PSI, revocation ladder"]
-        M5["policy/ · economics/<br/>fail-closed resolution, feasibility bound"]
+        M5["policy/ · gate/<br/>fail-closed resolution, the action gate"]
+        M7["intake/ · release/ · cli.py<br/>the warrant command a customer runs"]
+        M8["sampling/ · economics/<br/>on-traffic estimate, the price list,<br/>feasibility bound"]
         M6["report/ · demo/ · gateway/<br/>rendering, the two panes, the adapter"]
     end
 
     subgraph THIN["THIN WRAPPERS — no logic"]
-        W1["scripts/<br/>00_extract … 17_presidio_coverage<br/>smoke.py · verify.py"]
+        W1["scripts/<br/>00_extract … 32_label_sensitivity<br/>smoke.py · verify.py · warrant.py"]
         W2["demo/<br/>run_demo.py · show_beats.py"]
         W3["notebooks/<br/>generated, never hand-edited"]
     end
@@ -452,6 +464,168 @@ project:
   number in this repository is checkable rather than asserted.
 - **Round 1 is history, not a dependency.** It is preserved whole because the
   question it could not answer is the reason Round 2 exists.
+
+---
+
+## 12. The customer path: certify and recheck
+
+What `warrant` does with a file a customer supplies. No model, no GPU, no network.
+The exit code is the interface a script sees, and **a refusal is a result**.
+
+```mermaid
+flowchart TD
+    F["scored file<br/>id · label · score<br/>optional group, label_2"] --> C{"meets the<br/>input contract?"}
+    C -->|no| E2["exit 2<br/>InputError names the row<br/>nothing certified, nothing written"]
+    C -->|yes| N{"enough clean<br/>negative units<br/>for this budget?"}
+    N -->|no| R["REFUSED, exit 0<br/>names what is needed<br/>and what the file has"]
+    N -->|yes| S["lowest threshold whose<br/>Clopper-Pearson upper bound<br/>clears the budget"]
+    S --> W["VALID warrant, exit 0<br/>threshold · bound · rates with intervals<br/>label-error ladders · label_2 measured<br/>score histogram, no values"]
+    FR["certify --frontier<br/>every budget, exact counts"] -.->|"pick a budget:<br/>--from-frontier"| S
+
+    W --> RC["recheck on a fresh file"]
+    RC --> B{"false-positive<br/>lower bound<br/>above budget?"}
+    B -->|yes| RV["REVOKED<br/>breach established"]
+    B -->|no| O{"observed rate<br/>above budget?"}
+    O -->|yes| ST["STALE<br/>not proof, not nothing"]
+    O -->|no| D{"score distribution<br/>beyond this file's<br/>own noise?"}
+    D -->|significant| RV2["REVOKED<br/>traffic moved"]
+    D -->|moderate, or<br/>empty bins| ST
+    D -->|no| V["VALID<br/>with its detection floor:<br/>an absence of evidence of breach"]
+
+    style R fill:#d1242f22,stroke:#d1242f
+    style RV fill:#d1242f22,stroke:#d1242f
+    style RV2 fill:#d1242f22,stroke:#d1242f
+    style E2 fill:#8b949e22,stroke:#8b949e
+    style W fill:#2da44e22,stroke:#2da44e
+```
+
+Two failures are kept apart on purpose: **the bound broke** and **the traffic
+moved** call for different actions. Revocation needs the lower bound above the
+budget, because certification put the true rate near the budget and a test that
+revoked on failing to re-prove the promise would revoke detectors that kept it.
+
+`controlplane/cli.py`, `controlplane/intake/` ·
+[INPUT.md](INPUT.md) · [TROUBLESHOOTING.md](TROUBLESHOOTING.md) ·
+[METHODS.md](METHODS.md) §12–15
+
+---
+
+## 13. A chain of rechecks
+
+Independent rechecks each spend alpha. A chain spends it once, over a horizon
+declared when it starts, and leaves a record at every step.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as analyst
+    participant W as warrant
+    participant H as warrant.chain-head
+    participant R as sealed records
+
+    U->>W: recheck --horizon-labels N, first file
+    W->>H: refuse if a head exists (unless --fork)
+    W->>W: feed each clean negative unit,<br/>in digest order, into the statistic
+    W->>R: write record 0001<br/>chain state digest + whole-record seal
+    W->>H: head = 0001, its status
+
+    U->>W: recheck --since 0001, next file
+    W->>R: seal and chain state of 0001 reproduce?
+    W->>H: 0001 is the head? head not REVOKED?
+    W->>W: refuse any unit id already consumed
+    W->>R: write record 0002
+    W->>H: head = 0002, its status
+
+    Note over W: the statistic reaching N / alpha revokes,<br/>and no --since, --fork or restart<br/>can continue a revoked warrant
+
+    U->>W: chain verify (all records)
+    W-->>U: findings: digest, malformed, fork,<br/>continued_after_end, missing_link …<br/>unsealed records listed, not flagged
+```
+
+Two limits travel with every chain. The alpha bound covers **the chain's
+sequential statistic only**; a revocation because the distribution moved is a
+separate check. And every digest and seal is a **checksum, not a signature**:
+anyone who can write the records can recompute them.
+
+`controlplane/intake/chain.py`, `chain_verify.py` · [METHODS.md](METHODS.md) §16 ·
+[LIMITATIONS.md](LIMITATIONS.md) §3.5, §3.7
+
+---
+
+## 14. Release evidence
+
+A separate workflow for one release decision: the question is frozen before the
+holdout is scored.
+
+```mermaid
+flowchart LR
+    subgraph REG["register"]
+        SP["release-spec.json<br/>identity · scope · positive label<br/>threshold · criteria · expiry"]
+        IDS["development.txt · holdout.txt<br/>nonempty, unique, disjoint"]
+    end
+    subgraph EV["evaluate once"]
+        CT["context.json<br/>matches registered identity"]
+        HS["holdout scores<br/>IID, not grouped"]
+        OUT["evaluation record, sealed<br/>five exact intervals at alpha/5<br/>VALID · REFUSED · UNVALIDATED"]
+    end
+    subgraph VF["verify"]
+        RE["recompute metrics and decision<br/>check digests and identity<br/>apply expiry: STALE"]
+    end
+
+    SP & IDS --> K["release contract"] --> OUT
+    CT & HS --> OUT
+    OUT --> RE
+    OUT -.->|"a second evaluation<br/>at that location"| X["refused"]
+
+    style X fill:#d1242f22,stroke:#d1242f
+    style OUT fill:#2da44e22,stroke:#2da44e
+```
+
+A release verdict and a `certify` verdict come from different interval families
+and are **not interchangeable** on the same counts. Neither is deployment
+approval.
+
+`controlplane/release/` · [RELEASE.md](RELEASE.md) ·
+[EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md)
+
+---
+
+## 15. The action gate
+
+What stops an agent's action, in rule order. The first two rules read no detector
+score, so an attacker who defeats every detector moves neither.
+
+```mermaid
+flowchart TD
+    A["agent requests a tool call"] --> REG{"tool in the<br/>reversibility registry?"}
+    REG -->|no| NO["refused<br/>never guessed"]
+    REG -->|yes| R1{"irreversible, and the<br/>warrant is not VALID?"}
+    R1 -->|yes| B1["BLOCK<br/>rule 1"]
+    R1 -->|no| R2{"irreversible, and this call<br/>would give the session all three:<br/>sensitive access · untrusted input ·<br/>state change"}
+    R2 -->|yes| B2["BLOCK<br/>rule 2, Rule-of-Two"]
+    R2 -->|no| R3{"irreversible, and<br/>severity at least medium?"}
+    R3 -->|yes| C3["CONFIRM<br/>rule 3"]
+    R3 -->|no| R4{"severity high, and<br/>confidence uncertain?"}
+    R4 -->|yes| E4["ESCALATE<br/>rule 4"]
+    R4 -->|no| AL["ALLOW<br/>names its rule"]
+
+    subgraph ND["read no detector"]
+        R1
+        R2
+    end
+
+    style B1 fill:#d1242f22,stroke:#d1242f
+    style B2 fill:#d1242f22,stroke:#d1242f
+    style ND fill:#2da44e11,stroke:#2da44e
+```
+
+Session flags are sticky and have no unsetter; reversibility is declared where the
+tool is defined and cannot be downgraded at runtime. This is **not** a robustness
+claim: it is the smaller claim that defeating the detectors does not move rules 1
+and 2, tested by removing every detector input.
+
+`controlplane/gate/` · [ARCHITECTURE.md](ARCHITECTURE.md), "The action gate" ·
+`results/gate/`
 
 ---
 
