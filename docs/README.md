@@ -90,6 +90,7 @@
 | 🖥️ [DEMO.md](DEMO.md) | The two-pane demo this build exists to produce |
 | 🗣️ [DEMO_SCRIPT.md](DEMO_SCRIPT.md) | The beat-by-beat script and what is on screen |
 | 💼 [PROPOSAL.md](PROPOSAL.md) | The business proposal |
+| 🧪 [PILOT-PROTOCOL.md](PILOT-PROTOCOL.md) | What a first pilot would test, for which buyer and which recurring decision, and what would end it. A plan; no pilot has run |
 | 🔖 [EXTERNAL_FIGURES.md](EXTERNAL_FIGURES.md) | The register that gates every figure about the world, and its provenance tiers |
 
 ---
