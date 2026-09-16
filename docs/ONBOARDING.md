@@ -5,6 +5,11 @@
 Written for someone who has just cloned this and has to be useful today. Read
 the parts in order; each one is sized to what it costs.
 
+**Contents:** [Minute 0](#minute-0--the-one-sentence) · [Make it run](#minutes-15--make-it-run) ·
+[See the shape](#minutes-515--see-the-shape) · [Read](#minutes-1530--read-the-two-documents-that-matter-most) ·
+[The code](#minutes-3045--the-code) · [Pick up a thread](#minutes-4560--pick-up-a-thread) ·
+[What will bite you](#the-things-that-will-bite-you) · [Ask the repository](#where-to-ask-the-repository-instead-of-a-person)
+
 ---
 
 ## Minute 0 — the one sentence
@@ -44,7 +49,18 @@ README names, then recomputes every metrics block from the frozen per-item
 scores. On a fresh clone the third tier reports SKIPPED, because the activation
 caches are gitignored — that is correct behaviour, not a failure.
 
-Details and the other two entry points: [SETUP.md](SETUP.md).
+Then see the tool a customer runs, on the two shipped examples:
+
+```bash
+python warrant.py certify --input examples/certifies.csv --budget 0.05
+python warrant.py certify --input examples/refuses.csv --budget 0.01
+```
+
+The first issues a warrant. The second **refuses and still exits 0**: the file
+has too few clean negatives for that budget, and the message names both numbers.
+A refusal is a result, not an error. [INPUT.md](INPUT.md) is the input contract.
+
+Details and the other entry points: [SETUP.md](SETUP.md).
 
 ---
 
@@ -79,8 +95,14 @@ measured claim.
 
 **[LIMITATIONS.md](LIMITATIONS.md).** Read before quoting anything. The items in
 §2 change how the claim table should be read; §3 lists what was specified and
-not built, and what was built since. Knowing these before a reviewer raises them is the
-difference between a defensible answer and a scramble.
+not built, what was built since, and what the customer path cannot see. Knowing
+these before a reviewer raises them is the difference between a defensible answer
+and a scramble.
+
+Then skim [ARCHITECTURE.md](ARCHITECTURE.md), *Three ways in*: the measurement
+pipeline, the customer path and release evidence share statistics and nothing
+else, and most confusion about this repository is confusion about which of the
+three a sentence is describing.
 
 ---
 
@@ -99,6 +121,16 @@ most weight, in reading order:
 Notice the pattern: the invariants are enforced at construction, not by
 convention. You cannot build an illegal record and fix it later.
 
+If your work is on the customer path instead, read these:
+
+| File | Why start here |
+|---|---|
+| `controlplane/cli.py` | Every `warrant` command, its flags and its exit codes. Refusal exits 0 by design; the docstring says why |
+| `controlplane/intake/contract.py` | What a customer's file must contain, and the `InputError` that keeps "we cannot read your file" apart from "your detector was refused" |
+| `controlplane/intake/certify.py` | The lowest certifying threshold, and the label-error figures every certificate carries |
+| `controlplane/intake/recheck.py` | The two checks a recheck keeps apart, and why it revokes only on the lower bound |
+| `controlplane/intake/chain.py` | A year of rechecks as one test; its module docstring states the guarantee and exactly what it does not cover |
+
 ---
 
 ## Minutes 45–60 — pick up a thread
@@ -114,12 +146,25 @@ Whichever fits what you were asked to do:
 - **Change a policy profile** → `policies/*/bundle.yaml`, then
   `07_policy.py`. Expect the bundle to refuse to load if you name an operating
   point nothing has warranted.
+- **Change what `warrant` prints or accepts** → `controlplane/intake/` and
+  `controlplane/cli.py`. `tests/test_acceptance.py` runs the README quickstart in
+  a fresh clone, so a renamed flag fails there; update
+  [TROUBLESHOOTING.md](TROUBLESHOOTING.md)'s message tables and
+  [INPUT.md](INPUT.md) in the same change.
+- **Add a record field** → the record's `to_payload`, then
+  [ARTIFACTS.md](ARTIFACTS.md) and [EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md). A
+  new field on a chained recheck record is covered by the seal and its property
+  test automatically.
+- **Run a new study** → register its criteria in `DECISIONS.md` **before** it runs,
+  as `scripts/29`–`32` did, then write it as a thin script over `controlplane/`.
+  A criterion changed after seeing output needs a new entry recording the
+  original.
 - **Understand a statistical choice** → [METHODS.md](METHODS.md), then the
   `DECISIONS.md` entry it cites.
 
 ---
 
-## The five things that will bite you
+## The things that will bite you
 
 1. **Never pipe a command whose exit status you need.** `cmd | tail` reports
    *tail's* status, so a failing test suite reads as green. Use
@@ -138,6 +183,15 @@ Whichever fits what you were asked to do:
    costs labels and always carries an interval.
    Conflating them converts a free exact claim into an unbacked estimate and
    nobody notices.
+6. **Never type a test count.** The counts in `README.md` and the `Makefile` are
+   written by `scripts/refresh_test_inventory.py` from a clean commit, and a test
+   fails if either disagrees with collection. A count is a claim that tests
+   exist, not that they pass.
+7. **`DECISIONS.md` is append-only.** Never edit or delete an entry; supersede it
+   with a new one. Its citations are checked across the repository.
+8. **Keep each file's line endings.** Some files are CRLF and most are LF. An
+   edit that normalises them produces a whole-file diff that hides the real
+   change.
 
 ---
 
@@ -149,5 +203,7 @@ Whichever fits what you were asked to do:
 | Is this case handled? | [CASES.md](CASES.md) — every case names its test and its artifact |
 | Where did this number come from? | The README claim table, then [ARTIFACTS.md](ARTIFACTS.md) |
 | What does this word mean here? | [GLOSSARY.md](GLOSSARY.md) |
-| What broke? | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
+| What broke? What does this `warrant` message mean? | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
+| What does this record field mean? | [ARTIFACTS.md](ARTIFACTS.md), then [EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md) |
+| What does this test defend? | [TESTING.md](TESTING.md) |
 | What is deliberately missing? | [LIMITATIONS.md](LIMITATIONS.md) §3 |
