@@ -21,11 +21,11 @@ cost.** That is a hypothesis. The code is a fact.
 | A local CLI certifies a detector from a customer's scored file, or refuses, and writes a JSON record | `docs/INPUT.md`, `controlplane/intake/` |
 | Certification needs at least 59 clean negative units for a 5% budget, 299 for 1% | `docs/INPUT.md`, `min_n_for` |
 | A refusal has no override path anywhere in the code | invariant 3, `CLAUDE.md` |
-| Every rate carries a 95% interval and names its `n` | invariant 4 |
-| A year of weekly rechecks can be run as one test, with false revocation bounded by alpha | `DECISIONS.md` 187, 193 |
+| Every rate on a `certify` record carries an interval and names its `n`. A release evaluation uses a different, simultaneous family of intervals, and the two verdicts are not interchangeable. On grouped files, agreement between reviewers is reported without an interval (Codex DECISIONS 201, pending) | invariant 4, `docs/RELEASE.md` |
+| A year of weekly rechecks can be run as one chained test, in which the chance that its **sequential false-positive statistic** falsely revokes a detector keeping its promise is bounded by alpha, under that statistic's assumptions. A revocation because the score distribution moved is a separate check, outside that bound | `DECISIONS.md` 187, 193, 194 |
 | Sizing a recheck to catch a 1.5x breach of a 5% budget at power 0.80 needs 628 clean negatives | `DECISIONS.md` 183 |
-| Every certificate states how many mislabelled items it tolerates; on this project's own certificates that is 2 to 8 | `DECISIONS.md` 199, claim table |
-| A machine-checked crosswalk to the RBI draft model-risk guidance: 20 paragraphs, 2 provided, 13 partial, 5 not provided | `docs/RBI-MRM-2026-CROSSWALK.md`, `DECISIONS.md` 189 |
+| A VALID certificate on an ungrouped file, or on a grouped file whose groups each carry one label, states how many mislabelled items it tolerates. Not every certificate reaches a finite figure: a ladder can say no number of errors in the pool falls below a level. On this project's own certificates, 2 to 8 flagged-clean errors take one below 0.80 | `DECISIONS.md` 197, 199, claim table |
+| A machine-checked crosswalk to the RBI's **draft** model-risk guidance: 20 paragraphs, 2 provided, 13 partial, 5 not provided. A crosswalk is a register of evidence types, not compliance approval, and not evidence that anyone will buy | `docs/RBI-MRM-2026-CROSSWALK.md`, `DECISIONS.md` 189 |
 | Nothing leaves the machine: no network calls, no telemetry | `docs/INPUT.md` |
 
 **Hypotheses** (none tested):
@@ -47,11 +47,25 @@ Every one of these can be false, and 2 and 3 are the ones most likely to be.
 
 **Proposed segment (hypothesis).** The independent model-validation or AI-risk
 function at a regulated financial institution in India, or the equivalent second
-line at a large enterprise elsewhere. Chosen because the draft RBI guidance
-requires validation and monitoring while setting no evidential standard for
-either, which is the gap the tool fills; because that function is
-organisationally separate from the team that ships the model, so a refusal costs
-it nothing politically; and because the crosswalk already exists.
+line at a large enterprise elsewhere. Chosen for three reasons, each weaker
+than it sounds:
+
+- **A regulatory gap, from a draft.** The Reserve Bank of India's *Guidance on
+  Regulatory Principles for Model Risk Management* is a **draft for public
+  comment**, not a binding requirement: released 2026-06-24, comments invited by
+  2026-07-24 ([press release](https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63006),
+  re-read 2026-09-16, still presented as a draft). The repository's crosswalk read
+  the draft text on 2026-09-14 and found it requires validation and monitoring
+  while setting no confidence level, sample size or evidential standard for either.
+  The draft text itself was not re-read on 2026-09-16, and whether a final text has
+  since been issued was not checked. A final text could differ.
+- **Organisational separation -- a hypothesis to test.** The validation function
+  is separate from the team that ships the model. That *may* make a refusal easier
+  for it to deliver. Separation does not establish its incentives, its standing to
+  delay a release, or its willingness to pay, and the pilot should find out rather
+  than assume.
+- **The crosswalk already exists.** That lowers the cost of a first conversation,
+  and says nothing about whether one will happen.
 
 **Not chosen, deliberately:** the application team shipping an LLM feature. They
 buy iteration speed, and a tool whose main output can be "no" competes with the
@@ -64,8 +78,10 @@ every release of the guarded system, and again on a fixed monitoring cadence.
 **What Warrant supplies to it:** a false-positive bound on the customer's own
 data at a declared budget, or a refusal naming what is missing; recall and
 precision at that operating point, with intervals; the label-error tolerance of
-the certificate; a sized recheck plan; and a chained recheck that spends one
-alpha across a year rather than one per week.
+the certificate where one is defined; a sized recheck plan; and a chained
+recheck whose sequential false-positive statistic spends one alpha across a year
+rather than one per week. A revocation for a moved score distribution is a
+separate check outside that bound.
 
 **What it does not supply:** the deployment decision itself, adversarial
 robustness, any claim about a model's truthfulness, and any authority. The
@@ -82,13 +98,29 @@ customer retains the decision.
   `score`. Optional `group` when items are not independent, and optional
   `label_2` for a second reviewer.
 - **The sampling unit is agreed before any export**: items, or groups when
-  several items come from one document, ticket or conversation. Getting this
-  wrong overstates the evidence by roughly the cluster size, and the tool refuses
-  unequal groups rather than certifying them.
-- **Representativeness is theirs to assert.** A warrant describes the file it was
-  issued on. If the file is last quarter's traffic and this quarter differs, the
-  bound describes last quarter. `recheck` is the instrument for that, not a
-  caveat.
+  several items come from one document, ticket or conversation. Items from one
+  source are not independent evidence. How far treating them as independent
+  overstates the evidence depends on how strongly items within a group agree and
+  on how the file was sampled, so no single factor says by how much.
+- **Each workflow's grouped-data contract is different**, and the pilot uses the
+  one it runs:
+  - `warrant certify` certifies at group level, and **rejects** a file whose
+    groups are not all the same size with an input error (exit 2) -- not a
+    REFUSED warrant;
+  - `warrant recheck` re-tests a grouped warrant in groups, and **rejects**
+    unequal negative group sizes the same way;
+  - `warrant release` **rejects grouped input** outright, as an input error
+    that tells the user not to erase the groups to obtain a result; its records
+    declare IID items.
+- **A summary of the file is not an inference about the population.** Counts on
+  the supplied file -- how many flagged, how many false positives -- are exact
+  statements about that file. A bound or interval becomes a statement about the
+  traffic only if the file was sampled from it in the way the method assumes, and
+  a file cannot show that it was: not that its items are independent, not that it
+  is representative, not that it covers the population the decision concerns.
+  That is the customer's to establish and the pilot's to record. If the file is
+  last quarter's traffic and this quarter differs, the bound describes last
+  quarter; `recheck` is the instrument for that, not a caveat.
 
 ---
 
@@ -101,10 +133,18 @@ input accepted sight unseen.
   the detector's output biases the estimate in the direction that flatters us
   (invariant 7).
 - **About 10% of both strata are double-labelled** by a second reviewer, supplied
-  as `label_2`. The record then carries Cohen's kappa with its interval and the
-  disputed items.
-- **Disagreements are adjudicated by a third reviewer** before the file is
-  final. Warrant does not adjudicate; it reports.
+  as `label_2`. On an ungrouped file the record then carries Cohen's kappa with
+  its interval and the disputed items. On a grouped file, agreement is reported
+  over the reviewed pairs without an interval, and disputes are not computed
+  (Codex DECISIONS 201, pending). `release` records carry no label-quality
+  evidence at all (`docs/EVIDENCE-HANDOFF.md`).
+- **Both blinded labels are preserved before anything is resolved.** The first
+  and second reviewers' labels are kept as given, and agreement between them is
+  computed on those. Disagreements are then adjudicated by a third reviewer.
+  If adjudicated labels replace the primary labels, the pre-adjudication
+  agreement is reported separately and alongside: agreement measured after
+  disagreements were resolved is not agreement between independent reviewers.
+  Warrant does not adjudicate; it reports.
 - **The label-error tolerance is read before anyone celebrates a warrant.** On
   this repository's own certificates, 2 to 8 mislabelled flagged items take a
   certificate from 95% to below 80% confidence (`DECISIONS.md` 199). A pilot
@@ -121,7 +161,10 @@ ours:
 1. The **false-positive budget** the decision actually needs, and why that
    number. Not "as low as possible": each halving roughly doubles the negatives
    required.
-2. The **confidence level** (default 95%).
+2. The **confidence level**, named with its protocol. `certify` defaults to 95%
+   on a one-sided false-positive bound; `release` uses the alpha registered in
+   its contract, divided across five intervals. The same observed counts can
+   clear one and not the other.
 3. The **minimum recall** below which the detector is not worth running, stated
    independently of the budget, because precision and recall travel together.
 4. What happens **on a refusal**: who is told, and whether the release proceeds.
@@ -171,6 +214,12 @@ The pilot measures three things this repository cannot: how long a blinded label
 actually takes, what share of items are ambiguous enough to need adjudication,
 and whether the resulting cost is one the customer will repeat.
 
+**Four outcomes, recorded separately and never merged into one score:**
+onboarding time (first export to first retained record), reviewer effort
+(measured minutes per blinded label, and the adjudication share), repeat use
+(whether it is run again unprompted), and willingness to pay (asked, not
+inferred). A strong result on one says nothing about the others.
+
 ---
 
 ## 8. What would count as success, and what would end it
@@ -202,7 +251,12 @@ request to demo it to another team.
 
 ## 9. What this pilot cannot establish
 
-- Willingness to pay a price. A free pilot measures interest, not budget.
+- Willingness to pay a price. A free pilot measures interest, not budget. That
+  question is prepared for the conversation, without a price, commitment or
+  customer invented in advance.
+- Anything from the synthetic rehearsal beyond software usability. A run of the
+  public CLI on generated files shows the commands work end to end; it says
+  nothing about a customer's labels, data or decisions.
 - Anything about a second segment, a second institution, or another regulator.
 - That the detector is good. Warrant measures evidence about a detector; a
   refusal or a low recall is a fact about their detector and their data.
