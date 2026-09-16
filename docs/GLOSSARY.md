@@ -300,6 +300,174 @@ part of what was measured.
 
 ---
 
+## The customer path: certify, recheck, chains
+
+### Budget
+
+The false-positive rate a customer asks to have bounded: `0.05` means *at most 5%
+of clean items flagged*. It is chosen before looking at the file. **Not** a target
+the detector is tuned to hit, and not the rate the detector achieves.
+
+### Clean negatives needed
+
+The smallest number of independent negative units that could certify a budget at
+all, even if the detector never fired on one of them: `log(alpha) / log(1 - budget)`.
+Below it every threshold refuses, **whatever the detector's quality**. The table is
+in [INPUT.md](INPUT.md).
+
+### Lowest certifying threshold
+
+`certify` picks the lowest threshold whose one-sided Clopper-Pearson upper bound
+on the false-positive rate clears the budget. That buys the most recall the
+promise allows, and it puts **every certificate at the edge of its own budget**:
+the next lower threshold would not certify. See *label-error tolerance*.
+
+### Frontier
+
+Every budget on a grid, in exact counts, at once (`certify --frontier`). **Reading
+it and then picking a budget is a selection**, which is why a pick is certified
+with `--from-frontier`.
+
+### Row alpha and family alpha
+
+The frontier holds all its rows together at the *family* level by holding each
+row to a stricter *row* level. A budget picked off the frontier is certified at
+the row level so the pick still holds; later rechecks, plans and chains run at
+the family level, since they select nothing ([DECISIONS 192, 195](../DECISIONS.md)).
+
+### Recheck
+
+A test of an earlier warrant on fresh data (`warrant recheck`). It reports the
+false-positive bound and the score distribution **separately**: "the bound broke"
+and "the traffic moved" call for different actions.
+
+### Asymmetric revocation
+
+A recheck revokes only when the one-sided **lower** bound on the false-positive
+rate exceeds the budget -- evidence the promise is broken. Failing to re-prove the
+promise is not revocation. Revoking on the upper bound would revoke detectors that
+kept their promise, because certification puts the true rate close to the budget.
+
+### Detection floor
+
+The smallest observed false-positive rate a recheck of this size could revoke on.
+Between the budget and the floor, a real breach returns VALID. **A VALID recheck is
+an absence of evidence of breach, not evidence the promise holds.**
+
+### Chain of rechecks
+
+A year of rechecks tested as **one** sequence rather than as many independent
+tests (`--horizon-labels`, then `--since`). Repeated independent rechecks each spend
+alpha, so a detector keeping its promise is eventually revoked by chance; a chain
+spends it once.
+
+### Horizon
+
+`N`, the clean negatives a chain may consume, declared when the chain starts. The
+chain's bound holds over those `N` units and does not extend past them.
+
+### Sequential false-positive statistic
+
+The chain's mixture e-detector, updated once per clean negative unit -- an item, or a
+group on a grouped file. The chain's
+guarantee is that **this statistic** falsely revokes a detector keeping its promise
+with probability at most alpha, over the horizon. **Wrong reading:** that every
+revocation of a chained recheck is bounded by alpha. A revocation because the score
+distribution moved is a separate check, with no such bound.
+
+### Chain head
+
+The sidecar file `<warrant>.chain-head`, naming the latest chained record's digest,
+sequence and status. It makes an accidental fork declare itself, and refuses any
+continuation of a warrant whose latest record revoked it. **It is an ordinary file**:
+deleting it defeats those checks, which is why each record's own checks exist too.
+
+### Fork, and restart
+
+A **fork** continues a record that is not the latest, or starts a second chain for
+one warrant (`--fork`). It is recorded, and `chain verify` reports it: two branches
+from one prefix are two tests. A **restart** is a second chain for one warrant.
+Neither may reopen a revoked warrant.
+
+### Seal
+
+`record_sha256`: the digest of a whole chained record -- status, bounds, drift,
+labels, provenance, chain block -- checked by `chain verify` and by `--since`. A
+record without one was written before records were sealed and is listed as
+**unsealed**, not flagged. **A seal is a checksum, not a signature**: anyone who can
+write the records can recompute every seal consistently.
+
+### Malformed
+
+A record value of the wrong type, outside its domain, or not representable in JSON
+-- an `alpha` of zero, a NaN. Refused before any arithmetic, and reported as its own
+finding, since it is not evidence that anyone edited the record.
+
+---
+
+## Labels
+
+### Label-error tolerance
+
+How many wrong labels of a given kind a certificate or recheck can absorb before
+its conclusion changes. Reported as an exact **ladder**: for a certificate, how many
+errors take its confidence below 90%, 80% and 50%; for a recheck, how many would
+have made it revoke. It is a function of the counts, not an estimate.
+
+### Flagged-clean error, and unflagged-positive error
+
+The two label errors that **flatter** a false-positive bound. A *flagged-clean*
+error is a flagged item labelled positive that is really clean: a false positive
+counted as a hit. An *unflagged-positive* error is an unflagged item labelled
+negative that is really positive: a clean negative that the truth does not have.
+The other two errors make the bound conservative and are never used to tighten it.
+
+### Tolerance and exposure
+
+**Tolerance** is how many errors a certificate absorbs. At a fixed alpha and with
+untied scores it depends on the negatives, the budget and alpha, and not on the
+detector. **Exposure** is how many errors a file is likely to contain, which depends
+on how many items could be wrong and how often labels are wrong. The two are
+different questions. **Wrong reading:** that a better detector makes a certificate
+more robust to label error; it does not change the tolerance.
+
+### Second reviewer (`label_2`)
+
+A second person's labels on some items, supplied as a column. They are **measured**
+beside the result -- agreement, disputed items -- and **never obeyed**: they change no
+verdict.
+
+### Cohen's kappa
+
+Agreement between two reviewers beyond what their label rates alone would produce,
+with its own interval. **Wrong reading:** kappa as the share of labels that are
+correct. Two reviewers who are both wrong, or who both saw the score, agree.
+
+### Dispute
+
+An item on which the two reviewers disagree, counted in the direction that would
+flatter the result. Every dispute figure counts disagreements against the primary
+label: **a worst case over the reviewed pairs, not a bound on the truth.**
+
+---
+
+## Release evidence and the handoff
+
+### Release evaluation
+
+A separate workflow from `certify` (`warrant release`): identity, criteria and
+holdout are frozen **before** scoring, the holdout is evaluated once, and the result
+expires. Its verdict is conditional on its own interval protocol, and is **not
+interchangeable** with a `certify` verdict on the same counts. See [RELEASE.md](RELEASE.md).
+
+### Evidence handoff
+
+What a validation function retains beside a release decision, built only from
+fields records already carry, with every absence stated. See
+[EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md).
+
+---
+
 ## Reproduction
 
 ### Provenance block
