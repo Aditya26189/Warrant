@@ -298,7 +298,10 @@ lenient-incorrect answers.
 On the customer path, an optional `label_2` column measures agreement beside the
 warrant and changes nothing in it (`docs/INPUT.md`). Recall and precision
 intervals are still silent about label error, and a chained recheck carries no
-sensitivity.
+sensitivity. **On a grouped file, kappa's interval resamples item pairs as though
+they were independent**, so it is too narrow when items in a group agree with
+each other; 400 rows made of four repeated groups report the same interval as 400
+independent rows. A fix is pre-registered by Codex and not merged on this line.
 
 ### 3.7 Most records the customer CLI writes can be edited without detection
 

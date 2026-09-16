@@ -109,6 +109,11 @@ A disagreement is not an error, and an agreement is not a correct label. Warrant
 cannot see whether your reviewers were blind to the score, or how you chose the
 items to double-label; the record says so.
 
+**On a grouped file** the disputed counts are not computed, and kappa's interval
+still resamples item pairs as though they were independent. When items in a group
+tend to agree with each other that interval is too narrow. A fix is
+pre-registered and not yet merged ([LIMITATIONS.md](LIMITATIONS.md) §3.6).
+
 A `label_2` column that is blank on every row is rejected: that is an export
 mistake, not a second review.
 
@@ -215,6 +220,25 @@ warrant certify --input your_scores.csv --budget 0.05
 | `--out`, `-o` | where to write the JSON record (default: beside the input) |
 | `--quiet`, `-q` | suppress the summary, print only the record path |
 | `--require-warrant` | exit non-zero on a refusal, for CI that wants that |
+| `--frontier` | instead of certifying one budget, show every budget on the standard grid in exact counts |
+| `--from-frontier RECORD` | certify a budget you picked from that frontier record, at the level the frontier held it to |
+
+### Choosing a budget
+
+Choose the budget **before** you look at the file if you can. If you want to see
+what each budget costs first, run `--frontier`: it certifies every budget on a
+grid and reports exact counts (flagged, caught, missed, false positives) with no
+rates to estimate. Reading it and then picking a budget is a selection, so each
+row is held to a stricter level, and a budget picked from it should be certified
+with `--from-frontier`:
+
+```bash
+python warrant.py certify --input your_scores.csv --frontier
+python warrant.py certify --input your_scores.csv --budget 0.05 --from-frontier your_scores.csv.frontier.json
+```
+
+A plain `--budget` run beside a frontier record for the same file prints a notice
+asking whether you picked the budget from it.
 
 **Nothing leaves your machine.** No network calls, no telemetry, no uploads. The
 file is read, the arithmetic is local, and the record is written next to it.
@@ -243,3 +267,17 @@ production traffic differs from the file — a different mix, a different period
 a different model version — the bound describes the file, not the traffic. That
 is a property of every measurement, and it is why the record names your input
 and its base rate.
+
+It also does not say:
+
+- **that your labels are right.** It is exact about the `label` column and blind
+  to its errors; the label-error ladders say how many errors it can take.
+- **that it will stay true.** Test it on fresh labelled traffic with
+  `warrant recheck`, or run a year of rechecks as one test with a chain. The
+  README's *Keeping it true* section has the commands, and
+  [METHODS.md](METHODS.md) §14–16 the reasoning.
+- **that nobody edited it.** A certify warrant carries no seal and no command
+  verifies it; keep your own copy ([LIMITATIONS.md](LIMITATIONS.md) §3.7).
+
+Every message the command can print, and what to do about it, is in
+[TROUBLESHOOTING.md](TROUBLESHOOTING.md).
