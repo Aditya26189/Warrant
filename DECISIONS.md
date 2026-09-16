@@ -11146,3 +11146,43 @@ valid.
 **What this does not change.** The chain's statistical guarantee (187, 193, 196)
 is untouched. So is the stated limit: someone who controls every copy can rewrite
 and re-digest a whole history consistently, and nothing local can stop that.
+
+### Addendum 2026-09-16: the chain-integrity fix, second pass -- a fork restart bypassed a revocation, and the guarantee was worded wider than the bound
+
+- **Date:** 2026-09-16
+- **Status:** DECIDED. An unnumbered addendum; numbering is held by the integrator.
+- **Follows:** the addendum above on the 194 defects, after Codex's
+  `docs/CLAUDE-WORK-INSTRUCTIONS.md` sections 3.1 and 3.4.
+
+**1. A revoked warrant could be restarted with `--fork`.** The first pass made
+`continue_chain` refuse a `--since` record whose status is REVOKED, and that
+holds, even with `--fork`. But a *new* chain on the same warrant --
+`warrant recheck --horizon-labels N --fork` -- succeeded and returned VALID.
+Reproduced through the public CLI at `20e3347`: link 1 REVOKED by drift, then a
+forked restart, exit 0 and a VALID record. The chain-head sidecar held only the
+latest record's digest and sequence, so a new chain could not see that the chain
+it was leaving had been revoked.
+
+*Decided:* the sidecar also records the latest record's status. `start_chain`
+and `continue_chain` refuse when that status is REVOKED, whatever `--fork` says,
+naming re-certification. **What this does not do:**
+- a sidecar written before this has no status and is read as before;
+- deleting the sidecar defeats the check, as 194 already states for forks, and
+  `chain verify` still reports the restart when both chains' records are kept;
+- a plain recheck that is not chained still runs against a revoked warrant.
+  Refusing it would change what a one-off recheck means; it is left as a
+  question for the integrator, not decided here.
+
+**2. The guarantee was worded wider than the bound.** The chain payload read
+`P(any false revocation in the first N units) <= alpha`, and the recheck render
+said a detector keeping its promise "is revoked with probability at most alpha".
+The bound is on the chain's **sequential false-positive statistic**. A recheck
+REVOKED because the score distribution moved beyond its noise is a separate
+check, with no alpha guarantee (DECISIONS 070, 172), and a chained recheck can be
+revoked that way. *Decided:* the payload, the render and `docs/LIMITATIONS.md`
+3.5 name the statistic, and say a drift revocation is outside the bound. Only the
+wording changes, not the method. `guarantee` sits outside the hashed body, so
+every existing record keeps its digest.
+
+**Rejected: refusing every `--fork` after any record.** A declared fork is
+legitimate and recorded (194); only a revoked warrant must not be resumed.
