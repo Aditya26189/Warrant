@@ -11,7 +11,7 @@ No values are quoted here. The claim table in [../README.md](../README.md) names
 the artifact **and the field** for every published number, and `make verify`
 resolves all of them.
 
-**Contents:** [Provenance](#every-artifact-carries-provenance) · [Validation](#validation-artifacts) · [Matrix and policy](#matrix-and-policy) · [Comparisons](#comparisons-and-transfers) · [Detectors](#detector-artifacts) · [Pilot](#the-banking-pilot) · [Frozen scores](#frozen-scores--the-evidence-a-clean-clone-checks) · [Eval sets](#evalsets) · [Not committed](#what-is-deliberately-not-committed)
+**Contents:** [Provenance](#every-artifact-carries-provenance) · [Validation](#validation-artifacts) · [Matrix and policy](#matrix-and-policy) · [Comparisons](#comparisons-and-transfers) · [Detectors](#detector-artifacts) · [Pilot](#the-banking-pilot) · [Frozen scores](#frozen-scores--the-evidence-a-clean-clone-checks) · [Studies on frozen evidence](#studies-on-frozen-evidence) · [Recheck and label-error studies](#recheck-and-label-error-studies) · [Audit records](#audit-records) · [Customer records](#records-the-customer-cli-writes) · [Eval sets](#evalsets) · [Not committed](#what-is-deliberately-not-committed)
 
 ---
 
@@ -135,6 +135,85 @@ no cache**.
 
 If you want to check this project's arithmetic yourself, this directory is where
 to start.
+
+---
+
+## Studies on frozen evidence
+
+Each writes under `results/`, reading the frozen scores, the declared workload
+or pinned public data. Several carry a `question` field stating what the study
+asks, and a `not_derived_here` block naming what it deliberately does not claim.
+**Where that block exists, read it before quoting a number from the file.**
+
+| Artifact | Written by | Fields that matter |
+|---|---|---|
+| `results/fpr_sweep/sweep.json`, `SWEEP.md` | `19_fpr_sweep.py` | `grid_spec` (the budgets), `sweeps[]` -- one per score set, each with `points[]` giving every budget's certified status, threshold, false positives, and recall and precision with intervals |
+| `results/fpr_sweep_oos/sweep.json` | `20_fpr_sweep_oos.py` | as above, plus `certifying_split_metrics` and `integrity`: thresholds certified on one split and scored on another, and the check that the two did not overlap |
+| `results/calibration_power/calibration_power.json` | `21_calibration_power.py` | `n_available`, `declared_tolerance`, `success_bar`, `budgets[]` -- the drift each sample size can detect -- and `expansion_not_done` |
+| `results/external/<pairing>/sweep.json`, `MATRIX.md` | `23_certify_external.py` | one directory per detector-and-dataset pairing: `pairing` (the detector's version, the dataset's revision and licence), `criterion`, `neutrality` (the terms every detector, including ours, was run on) and `sweeps`; `MATRIX.md` renders them together |
+| `results/causal_claims.json` | `24_causal_claims.py` | `claims[]`, each registered mechanism with its `evidence` and the falsifier it is checked against |
+| `results/on_traffic/on_traffic.json` | `25_on_traffic.py` | `declared` (the workload inputs, by origin), `price_list`, `coverage` of the estimator over simulated trials, `allocation`, `blinding`, `headline`, `not_derived_here` |
+| `results/scorefree/scorefree.json`, `SCOREFREE.md` | `26_scorefree.py` | `floors`, `crossovers`, `tunability` and `ranking` for a detector with no score, with `void_at_another_k` naming what changes if the sampling count changes |
+| `results/gate/gate.json`, `GATE.md` | `27_gate.py` | `registry`, `injection`, `no_detector_evidence` -- the decisions reproduced with every detector removed -- and `cost` on legitimate workflows |
+| `results/drift/revocation_trace.json` | `28_revocation_trace.py` | `stream`, `checkpoints`, the `revocation`, and `criteria` numbered 1-4 with each outcome |
+
+---
+
+## Recheck and label-error studies
+
+The four studies behind `recheck`, `plan` and the label-error figures share one
+shape, so one reading covers all four:
+
+| Field | Holds |
+|---|---|
+| `design` | the registered setting -- budget, alpha, sizes, cadences or score sets -- and the `decision` that registered it |
+| `what_these_are` | one sentence saying what kind of figure the file contains: **a simulated operating characteristic of a rule, or a re-certification of frozen scores, not a new measurement of any detector** |
+| `cells` or `sets` | every simulated or certified row, each figure with its Monte Carlo standard error where it is simulated |
+| `criteria` | each registered criterion **as registered**, and whether it held |
+
+| Artifact | Written by | Criteria keys | Decision |
+|---|---|---|---|
+| `results/recheck_schedules/comparison.json` | `29_recheck_schedules.py` | `validity`, `primary` | 187 |
+| `results/frontier_selection/selection.json` | `30_frontier_selection.py` | `M1_material`, `M2_bonferroni_alpha`, `M3_sanity`; also `crosscheck` and `registered_run` | 192 |
+| `results/chain_detection/grid.json` | `31_chain_detection.py` | `V`, `P1`, `P2`, `P3` | 196 |
+| `results/label_sensitivity/triviaqa.json` | `32_label_sensitivity.py` | `C0`, `P1`, `P2`, `reported`; also `design.registered_run` | 199 |
+
+**A failed criterion stays in the file as failed.** The claim table quotes these
+artifacts by field, and `DECISIONS.md` says what each criterion was, before and
+after it ran.
+
+---
+
+## Audit records
+
+| Artifact | Written by | Fields that matter |
+|---|---|---|
+| `results/clean_clone.json` | `clean_clone_gate.py` | `ok`, `commit` (the commit that was cloned and tested), `tracked_files`, `steps[]` (each gate with `ok`, `skipped` and its output tail), `notes`. Since `DECISIONS.md` 200 the provenance block describes the moment of cloning, and `provenance_taken` says so; a record written before that has no such field |
+| `results/test_inventory.json` | `refresh_test_inventory.py` | `n_collected`, `git_commit`, `dirty`, and `execution_status: not_measured_by_collection` -- a count of the tests that exist, **not** a claim that they pass |
+
+---
+
+## Records the customer CLI writes
+
+These are written beside the customer's own files, not under `results/`, and are
+the customer's to keep. [EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md) gives every
+field, record by record; this is the map.
+
+| Record | Written by | Top-level fields |
+|---|---|---|
+| `<file>.warrant.json` | `warrant certify` | `status`, `budget_fpr`, `alpha`, `reason`, `input`, `certification`, `metrics`, `score_distribution` (bin edges and probabilities, never values), `labels`, `selection`, `frontier_record_present` |
+| `<file>.frontier.json` | `warrant certify --frontier` | `input` (including `input_sha256`), `note`, `frontier[]` -- each row with `budget_fpr`, `certified`, `threshold`, `fpr_upper_bound`, `row_alpha`, `family_alpha` and `counts_exact` |
+| `<file>.recheck.json` | `warrant recheck` | `status`, `reason`, `prior_warrant`, `now`, `detection`, `drift`, `labels`; `chain` is null |
+| `<file>.recheck-NNNN.json` | `warrant recheck --horizon-labels` or `--since` | as above, with `chain` holding the chain state and its `state_sha256`, and **`record_sha256` sealing the whole record** |
+| `<warrant>.chain-head` | the same | `head_record_sha256`, `sequence`, and the latest record's `status` |
+| `chain-verification.json` | `warrant chain verify` | `clean`, `findings[]` (each with `kind`, `records`, `detail`), `unsealed`, `cannot_check` |
+| `warrant-plan.json` | `warrant plan` | `feasible`, `negatives_per_recheck`, `items_per_recheck`, `detection_floor`, `power_at_breach`, `false_revocation_per_recheck`, `sizes_by_power`, `cadences`, `declared_inputs`, `refusal_reason` |
+| a release contract, then `<contract>.evaluation.json` | `warrant release register`, then `evaluate` | see [RELEASE.md](RELEASE.md) |
+
+**Two of these are protected against editing, and the rest are not.** A chained
+recheck record is sealed and checked by `chain verify`; a release evaluation is
+sealed and recomputed by `release verify`. A certify warrant, a frontier record,
+an unchained recheck and a plan carry no seal and have no verifier.
 
 ---
 
