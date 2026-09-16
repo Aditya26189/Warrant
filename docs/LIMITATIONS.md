@@ -300,6 +300,26 @@ warrant and changes nothing in it (`docs/INPUT.md`). Recall and precision
 intervals are still silent about label error, and a chained recheck carries no
 sensitivity.
 
+### 3.7 Most records the customer CLI writes can be edited without detection
+
+A chained recheck record is sealed over every field, and `warrant chain verify`
+recomputes each seal (`DECISIONS.md` addendum 2026-09-17). A release evaluation is
+sealed and recomputed by `warrant release verify`. **Nothing else is.** A `certify`
+warrant, a frontier record, an unchained recheck and a `plan` record carry no seal,
+and no command verifies them. `recheck` reads the warrant it is given as written.
+
+Two limits apply even to the sealed records:
+
+- **A seal is a checksum, not a signature.** Anyone who can write the records can
+  recompute every seal consistently. It catches an edit made without recomputing,
+  not a forger.
+- **A chained record written before sealing is listed as `unsealed`**, not flagged.
+  Its chain state was checked; its status, bounds and labels were not.
+
+What would close it: a seal and a verifier for the certify warrant, which every
+later record depends on. A signature would need a key, and a key is custody this
+project does not hold.
+
 ---
 
 ## 4. Open items at submission
@@ -354,6 +374,19 @@ git fetch origin "refs/notes/*:refs/notes/*"
 Without that fetch a reader sees the withdrawn claim and not its correction.
 The paired comparison found the reduction cost **0.0110 AUROC [0.0026,
 0.0200]**, an interval excluding zero. `DECISIONS.md` 081.
+
+### 4.4 PSI's smoothing epsilon is not declared in config — **open**
+
+The `drift/psi.py` module docstring says the epsilon that floors an empty bin "is
+declared in config rather than buried". It is not: it is the module constant
+`DEFAULT_EPSILON`, `drift/null_band.py` repeats the same value as a keyword
+default, and `config.yaml` has no such key. Because the live computation and the
+null band use the same value, no PSI figure or band is inconsistent. What is wrong
+is the statement, and the knob a reviewer is told exists.
+
+`drift/` is a read-only zone, so this is recorded rather than fixed. What would
+close it: a `drift` config key read by both call sites, or a docstring that says
+the value is a constant.
 
 ---
 
