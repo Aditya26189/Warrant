@@ -10,7 +10,7 @@ Every script takes `--config config.yaml` unless noted. Every artifact it
 writes carries a `provenance` block — config hash, git commit, dirty flag,
 library versions, device, timestamp.
 
-**Contents:** [Entry points](#the-entry-points) · [The measurement chain](#the-measurement-chain) · [The banking pilot](#the-banking-pilot) · [Maintenance](#maintenance-scripts) · [Order of operations](#order-of-operations) · [Rules](#rules-that-apply-to-every-run) · [Contract drift](#contract-drift-found-during-this-documentation-pass--now-reconciled)
+**Contents:** [Entry points](#the-entry-points) · [The customer CLI](#the-customer-cli-warrant) · [The measurement chain](#the-measurement-chain) · [The banking pilot](#the-banking-pilot) · [Studies on frozen evidence](#studies-that-run-on-frozen-evidence) · [Recheck and label studies](#the-recheck-and-label-error-studies) · [Maintenance](#maintenance-scripts) · [Order of operations](#order-of-operations) · [Rules](#rules-that-apply-to-every-run) · [Contract drift](#contract-drift-found-during-this-documentation-pass--now-reconciled)
 
 ---
 
@@ -32,6 +32,47 @@ Four commands cover almost everything a reader needs.
 need a command's real exit status. `cmd | tail` reports *tail's* status, so a
 failing suite reads as green; `sh scripts/run.sh <cmd>` writes the output to a
 file, echoes `EXIT=<real status>`, and propagates it.
+
+---
+
+## The customer CLI (`warrant`)
+
+`warrant` is the command a customer runs on their own scored file. It is
+`python warrant.py`, or `warrant` after `pip install -e .`. It reads a CSV or
+JSONL of `id,label,score` (the contract is [INPUT.md](INPUT.md)), sends nothing
+over the network, and writes one JSON record per run.
+
+**Exit codes are the same for every subcommand.** `0` means a result was
+produced -- **including a refusal or a revocation**, because the tool working
+and the evidence being insufficient are not the same thing. `1` means you asked
+for a hard failure (`--require-warrant`, `--require-valid`, `--require-clean`)
+and the result was not what you required. `2` means the input could not be
+used: a malformed file, a missing record, or a chain that may not be continued.
+
+| Command | Reads | Writes by default | Answers |
+|---|---|---|---|
+| `warrant certify -i FILE -b BUDGET` | a scored file | `FILE.warrant.json` | What threshold certifies this false-positive budget on this file, and what does the detector do there? Or: why can it not? |
+| `warrant certify -i FILE --frontier` | a scored file | `FILE.frontier.json` | Every budget's exact counts at once, with no bootstrap |
+| `warrant certify -i FILE -b BUDGET --from-frontier FILE.frontier.json` | the file and its frontier record | `FILE.warrant.json` | Certify a budget picked off the frontier, at the frontier's adjusted level so the pick still holds ([DECISIONS 195](../DECISIONS.md)) |
+| `warrant recheck -w WARRANT -i NEW` | a warrant and a fresh file | `NEW.recheck.json` | Does the promise still hold on new data? The bound and the score distribution are reported separately |
+| `warrant recheck -w WARRANT -i NEW --horizon-labels N` | as above | `NEW.recheck-0001.json`, and `WARRANT.chain-head` | Start a chain: a year of rechecks tested as one sequence ([DECISIONS 193](../DECISIONS.md)) |
+| `warrant recheck -w WARRANT -i NEW --since RECORD` | the previous link too | `NEW.recheck-NNNN.json`, and moves the head | Continue a chain from its latest record |
+| `warrant plan -w WARRANT --negative-share S` | a warrant | `warrant-plan.json` | How many labels a recheck needs to catch a breach, and what each cadence costs |
+| `warrant chain verify RECORD...` | every kept chain record | `chain-verification.json` | What the set of records shows: forks, restarts, missing links, edited or malformed states |
+| `warrant release register / evaluate / verify` | a specification, holdout ids, scored holdout | a contract, then `CONTRACT.evaluation.json` | A pre-registered, expiring, single-use evaluation of a fixed operating point ([RELEASE.md](RELEASE.md)) |
+
+**Rules the CLI enforces, so you do not have to remember them.**
+
+- **Nothing overrides a refusal.** No flag, variable or option turns REFUSED into
+  VALID (invariant 3).
+- **A chained record is never overwritten.** Each link is created exclusively; if
+  the name exists, the command stops rather than replacing evidence.
+- **A revoked warrant is not continued.** Once a chain's latest record is REVOKED
+  -- by its own statistic or because the score distribution moved -- neither
+  `--since` nor a new `--horizon-labels`, with or without `--fork`, may go on.
+  Re-certify and start again.
+- **A `label_2` column is measured, never obeyed.** A second reviewer's labels
+  are reported beside the result and change no verdict ([INPUT.md](INPUT.md)).
 
 ---
 
@@ -180,6 +221,52 @@ it. A claim about a dependency is checkable by running the dependency.
 
 ---
 
+## Studies that run on frozen evidence
+
+None of these needs a GPU. Most read committed artifacts -- usually
+`results/scores/` -- or the declared workload, and write one directory under
+`results/`. The exceptions are named in the table: two need external data. Where a
+study tests a prediction, its `DECISIONS.md` entry records whether and when the
+prediction was registered.
+
+| Script | Writes | What it answers |
+|---|---|---|
+| `19_fpr_sweep.py` | `results/fpr_sweep/sweep.json`, `SWEEP.md` | Is a low recall a ceiling or a setting? Certifies every budget on a grid over the frozen scores. Flags `--start`, `--stop`, `--step` |
+| `20_fpr_sweep_oos.py` | `results/fpr_sweep_oos/sweep.json`, a validation-split score set | The same sweep with the threshold certified on validation and scored on test, so selection and measurement use different items |
+| `21_calibration_power.py` | `results/calibration_power/calibration_power.json`, `CALIBRATION_POWER.md` | What calibration drift can be detected at the sample sizes available, and what sample size a smaller drift needs |
+| `23_certify_external.py` | `results/external/<pairing>/sweep.json`, `results/external/MATRIX.md` | Third-party detectors on public datasets. **Needs network**: datasets and models are fetched at pinned revisions. Flags `--pairing`, `--all`, `--list`, `--matrix-only` |
+| `24_causal_claims.py` | `results/causal_claims.json` | Freezes the evidence each registered causal claim is checked against. **Needs the REDACT benchmark** cloned under `~/.cache/warrant/benchmarks`. Flag `--limit` |
+| `25_on_traffic.py` | `results/on_traffic/on_traffic.json` | The on-traffic warrant: the label price list for the declared workload, and simulated evidence that the estimator covers ([METHODS.md](METHODS.md)) |
+| `26_scorefree.py` | `results/scorefree/scorefree.json`, `SCOREFREE.md` | What certifying a detector that emits no score costs |
+| `27_gate.py` | `results/gate/gate.json`, `GATE.md` | What the action gate stops, what it costs, and which rules read no detector at all |
+| `28_revocation_trace.py` | `results/drift/revocation_trace.json`, `revocation.db` | Replays a real envelope shift against a real warrant and records the revocation. Needs the long-context caches. Flags `--n-normal`, `--n-shift` |
+
+---
+
+## The recheck and label-error studies
+
+The four studies behind `warrant recheck`, `warrant plan` and the label-error
+figures on every certificate. They simulate decision rules, or re-certify frozen
+scores; they measure no new detector.
+
+| Script | Writes | What it answers | Decision |
+|---|---|---|---|
+| `29_recheck_schedules.py` | `results/recheck_schedules/comparison.json` | Five revocation rules across a simulated year of rechecks: how often each falsely revokes a detector keeping its promise, and how fast each catches a breach | 187 |
+| `30_frontier_selection.py` | `results/frontier_selection/selection.json` | How wrong is a budget picked by reading the frontier, measured before deciding what `--from-frontier` does. Flags `--replicates`, `--crosscheck-replicates` | 192 |
+| `31_chain_detection.py` | `results/chain_detection/grid.json` | The chained recheck across breach sizes, cadences and change points. A non-registered `--years` requires `--out`, so a smoke run cannot overwrite the result | 196 |
+| `32_label_sensitivity.py` | `results/label_sensitivity/triviaqa.json` | This project's own certificates under label error, with the strict matching rule as a second labeller. A budget subset (`--budgets`) requires `--out` | 199 |
+
+**Read the decision before the number.** Each entry states its predictions and
+criteria as registered, reports each as held or failed, and says what its figures
+do not establish. The claim table carries the headline figures; the entries carry
+the conditions they hold under.
+
+`22_make_examples.py` regenerates `examples/certifies.csv` and
+`examples/refuses.csv` from a seeded generator. It is tested to reproduce the
+committed files byte for byte, because the examples are shipped evidence.
+
+---
+
 ## Maintenance scripts
 
 | Script | Does |
@@ -188,6 +275,7 @@ it. A claim about a dependency is checkable by running the dependency.
 | `build_notebooks.py` | Regenerates `notebooks/run_on_kaggle.ipynb`. **The script is the source of truth**; never hand-edit the notebook |
 | `clean_clone_gate.py` | Clones this repository into a temporary directory and runs the gates inside it, so "it works on my machine" cannot be the reason it passes |
 | `kaggle_run.py` | Pushes the extraction notebook to Kaggle as a batch kernel and collects the output. Flags `--yes`, `--accelerator`, `--timeout`, `--poll-seconds` |
+| `refresh_test_inventory.py` | Counts the collected tests from a **clean committed** checkout and writes the count into `README.md`, `Makefile` and `results/test_inventory.json`. Collection is not execution: the count says how many tests exist, not that they pass. Refuses a dirty tree, and updates nothing if the tree changed while it was collecting |
 | `run.sh` | Runs a command and reports its **real** exit status |
 
 ---
@@ -214,6 +302,14 @@ it. A claim about a dependency is checkable by running the dependency.
 `10_freeze_scores.py` runs last because it freezes what everything else
 produced. Run `verify.py` after it, and again on a clean clone before
 publishing anything.
+
+The studies in the two sections above run **after** `10_freeze_scores.py`, in
+any order. `20_fpr_sweep_oos.py` and `28_revocation_trace.py` need the
+activation caches on disk; `23_certify_external.py` needs network, and
+`24_causal_claims.py` the REDACT benchmark.
+`clean_clone_gate.py` is the last step before anything is shared: it clones the
+repository and runs smoke, the full suite and `verify` inside the clone. It refuses
+to write its record if the source changed while it ran.
 
 ---
 
