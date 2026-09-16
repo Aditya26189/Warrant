@@ -80,6 +80,101 @@ class ChainError(ValueError):
     """A chain cannot be started, continued or fed as asked. The CLI exits 2."""
 
 
+class MalformedChainError(ChainError):
+    """A chain block whose values are the wrong type or out of their domain.
+
+    Distinct from an edit the digest catches: an ``alpha`` of 0 or a NaN statistic
+    is not evidence that someone changed a record, and the verifier reports it as
+    ``malformed`` rather than ``digest``. Raised before any arithmetic, so a bad
+    value never reaches a division or the digest's encoder (194, defect 3).
+    """
+
+
+def record_sha256(record: Any, what: str) -> str:
+    """:func:`canonical_sha256` of a whole record, or a :class:`MalformedChainError`.
+
+    The digest's encoder refuses NaN and infinity, and a record can carry one
+    anywhere, not only in its chain block. Unguarded, that refusal surfaced as a
+    traceback before any validation ran (194, defect 3, found by the harness
+    after the first fix).
+    """
+    try:
+        return canonical_sha256(record)
+    except ValueError as exc:
+        raise MalformedChainError(
+            f"the {what} holds a value no JSON record can carry -- NaN or infinity ({exc})"
+        ) from exc
+
+
+def _real(block: dict[str, Any], key: str, *, low: float, high: float, closed: bool = False) -> float:
+    """A finite real in ``(low, high)`` (or ``[low, high]``), never a boolean."""
+    import math
+
+    value = block.get(key)
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise MalformedChainError(f"the chain's {key} is {value!r}, not a number")
+    if not math.isfinite(value):
+        raise MalformedChainError(f"the chain's {key} is {value!r}, not a finite number")
+    inside = low <= value <= high if closed else low < value < high
+    if not inside:
+        bounds = f"[{low:g}, {high:g}]" if closed else f"({low:g}, {high:g})"
+        raise MalformedChainError(f"the chain's {key} is {value!r}, outside {bounds}")
+    return float(value)
+
+
+def _count(block: dict[str, Any], key: str, *, minimum: int) -> int:
+    """A non-negative integer at least ``minimum``, never a boolean."""
+    value = block.get(key)
+    if isinstance(value, bool) or not isinstance(value, int):
+        raise MalformedChainError(f"the chain's {key} is {value!r}, not an integer")
+    if value < minimum:
+        raise MalformedChainError(f"the chain's {key} is {value}, below {minimum}")
+    return value
+
+
+def _validate_block(block: dict[str, Any]) -> None:
+    """Every field the state is rebuilt from: its type and its domain.
+
+    Raises :class:`MalformedChainError` naming the first field that fails.
+    """
+    import math
+
+    if not isinstance(block, dict):
+        raise MalformedChainError("the chain block is not an object")
+    for key in ("warrant_sha256",):
+        if not isinstance(block.get(key), str):
+            raise MalformedChainError(f"the chain's {key} is {block.get(key)!r}, not a digest")
+    _real(block, "p0", low=0.0, high=1.0)
+    _real(block, "alpha", low=0.0, high=1.0)
+    grid = block.get("grid")
+    if not isinstance(grid, dict):
+        raise MalformedChainError(f"the chain's grid is {grid!r}, not an object")
+    _real(grid, "lam_lo", low=0.0, high=math.inf)
+    _real(grid, "lam_hi", low=0.0, high=math.inf)
+    n_lam = _count(grid, "n_lam", minimum=1)
+    _count(block, "horizon_units", minimum=1)
+    units = _count(block, "units_consumed", minimum=0)
+    _count(block, "sequence", minimum=1)
+    statistics = block.get("statistics")
+    if not isinstance(statistics, list) or len(statistics) != n_lam:
+        raise MalformedChainError(
+            f"the chain's statistics are not a list of {n_lam} values, one per bet")
+    for index, value in enumerate(statistics):
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
+            raise MalformedChainError(f"the chain's statistic {index} is {value!r}, not a finite number")
+    digests = block.get("consumed_unit_digests")
+    if not isinstance(digests, list) or not all(isinstance(d, str) for d in digests):
+        raise MalformedChainError("the chain's consumed_unit_digests are not a list of digests")
+    previous = block.get("previous_record_sha256")
+    if previous is not None and not isinstance(previous, str):
+        raise MalformedChainError(f"the chain's previous_record_sha256 is {previous!r}, not a digest")
+    revoked = block.get("revoked_at_unit")
+    if revoked is not None:
+        if isinstance(revoked, bool) or not isinstance(revoked, int) or not 1 <= revoked <= units:
+            raise MalformedChainError(
+                f"the chain's revoked_at_unit is {revoked!r}, not a unit between 1 and {units}")
+
+
 def canonical_sha256(value: Any) -> str:
     """SHA-256 of one deterministic JSON encoding, so a digest names content."""
     encoded = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False,
@@ -187,7 +282,15 @@ class ChainState:
 
     @classmethod
     def from_payload(cls, block: dict[str, Any]) -> "ChainState":
-        """Rebuild a state, refusing one whose digest does not reproduce."""
+        """Rebuild a state, refusing one that is malformed or does not reproduce.
+
+        Three checks, in order. The values are validated before any arithmetic
+        (:class:`MalformedChainError`). The digest of the rebuilt body must match.
+        Then every serialized derived field must equal its reconstruction: the
+        digest is computed over the rebuilt body, so a derived field edited in the
+        record would otherwise never be read (194, defect 2).
+        """
+        _validate_block(block)
         try:
             state = cls(
                 warrant_sha256=block["warrant_sha256"], p0=float(block["p0"]),
@@ -216,6 +319,18 @@ class ChainState:
             )
         if len(state.statistics) != state.n_lam:
             raise ChainError("the chain's statistics do not match its betting grid")
+        for key in ("threshold", "mean_statistic", "ended"):
+            if key not in block:
+                raise ChainError(f"the chain record has no {key}, which it always carries")
+            written, rebuilt = block[key], getattr(state, key)
+            same_type = (type(written) is bool) if key == "ended" else not isinstance(written, bool)
+            if not same_type or written != rebuilt:
+                raise ChainError(
+                    f"the chain record's {key} reads {written!r} but its state rebuilds "
+                    f"{rebuilt!r}: the field was edited without its digest being "
+                    "recomputed, and a record whose fields disagree with its own state "
+                    "carries no guarantee (DECISIONS 194)"
+                )
         return state
 
 
@@ -300,13 +415,25 @@ def continue_chain(
             "--horizon-labels on a recheck, then continue it with --since."
         )
     state = ChainState.from_payload(block)
-    if state.warrant_sha256 != canonical_sha256(warrant_record):
+    if state.warrant_sha256 != record_sha256(warrant_record, "warrant record"):
         raise ChainError(
             "the --since record's chain belongs to a different warrant record; a chain "
             "cannot be moved between warrants"
         )
     if abs(state.alpha - alpha) > 1e-12:
         raise ChainError(f"the chain runs at alpha={state.alpha:g}, the warrant at {alpha:g}")
+    if previous_record.get("status") == "REVOKED":
+        # The chain state records only the chain's own revocation. A recheck
+        # revoked by drift, with the bound holding and the chain live, carries
+        # status REVOKED and no revoked_at_unit -- and was continued until 194's
+        # review found it. A claim that stands is not continued (194, defect 1).
+        raise ChainError(
+            "the --since record REVOKED this warrant"
+            + ("" if state.revoked_at_unit is not None else
+               ", on its score distribution rather than the chain's statistic")
+            + ". A revoked warrant is not continued: re-certify, and start a new "
+            "chain on the new warrant."
+        )
     lam_lo, lam_hi, n_lam, _ = _grid(state.p0, state.alpha)
     if (state.lam_lo, state.lam_hi, state.n_lam) != (lam_lo, lam_hi, n_lam):
         raise ChainError("the betting grid has changed since the chain started")
@@ -320,7 +447,7 @@ def continue_chain(
             f"this chain has consumed its {state.horizon_units} units; its guarantee "
             "does not extend past them. Re-certify and start a new chain."
         )
-    previous_sha = canonical_sha256(previous_record)
+    previous_sha = record_sha256(previous_record, "--since record")
     if head is None and state.head_check in ("matched", "forked"):
         # The last link was written under a head and there is none now: the
         # sidecar was deleted, or the warrant was moved or copied, which starts a

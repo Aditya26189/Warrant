@@ -10,11 +10,17 @@ This reads every record handed to it and reports what the set shows:
 * **restart** -- two chains started for the same warrant;
 * **missing link** -- a record continuing one that is not in the set;
 * **sequence** -- a link numbered other than its predecessor plus one;
-* **digest** -- a chain state whose digest does not reproduce;
+* **digest** -- a chain state whose digest does not reproduce, or whose
+  serialized derived fields disagree with the state they rebuild from;
+* **malformed** -- a chain block with a value of the wrong type or outside its
+  domain, such as an ``alpha`` of 0; not evidence of an edit, and not arithmetic
+  the verifier will attempt;
 * **extension** -- a link that does not extend its predecessor: a changed
   budget, alpha, grid or horizon, fewer units consumed, or a consumed-unit list
   that does not begin with its predecessor's;
-* **continued after end** -- a link after a record that revoked or ended;
+* **continued after end** -- a link after a record that revoked or ended,
+  including a record REVOKED on its score distribution while the chain itself
+  was still live (194, defect 1);
 * **mixed warrants** -- records from more than one warrant, each group still
   verified;
 * **duplicate** -- one record under several paths, verified once. Reported so
@@ -42,7 +48,7 @@ import json
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
-from .chain import ChainError, ChainState, canonical_sha256
+from .chain import ChainError, ChainState, MalformedChainError, record_sha256
 
 __all__ = [
     "ChainFinding",
@@ -122,7 +128,18 @@ def verify_chain_records(records: Mapping[str, Mapping[str, Any]]) -> ChainVerif
     # reported as duplicates, or two copies would read as a fork (found in review).
     paths_by_digest: dict[str, list[str]] = {}
     for name in sorted(records):
-        paths_by_digest.setdefault(canonical_sha256(records[name]), []).append(name)
+        try:
+            digest = record_sha256(records[name], "record")
+        except MalformedChainError as exc:
+            # Cannot be digested, so cannot be matched to a parent or a child. It
+            # is reported and left out of every check that follows (194, defect 3).
+            findings.append(ChainFinding(
+                "malformed", (name,),
+                f"{exc}. The record was not checked further. Any link that continued "
+                "it also reports a missing link.",
+            ))
+            continue
+        paths_by_digest.setdefault(digest, []).append(name)
     by_digest = {digest: paths[0] for digest, paths in paths_by_digest.items()}
     for digest, paths in sorted(paths_by_digest.items(), key=lambda item: item[1][0]):
         if len(paths) > 1:
@@ -135,6 +152,12 @@ def verify_chain_records(records: Mapping[str, Mapping[str, Any]]) -> ChainVerif
     for digest, name in sorted(by_digest.items(), key=lambda item: item[1]):
         try:
             states[name] = ChainState.from_payload(dict(records[name]["chain"]))
+        except MalformedChainError as exc:
+            findings.append(ChainFinding(
+                "malformed", (name,),
+                f"{exc}. The record was not checked further. Any link that continued "
+                "it also reports a missing link.",
+            ))
         except ChainError as exc:
             # An edit to a record changes its own digest too, so a link that
             # continued it points at a digest nothing in the set now has, and
@@ -201,11 +224,17 @@ def verify_chain_records(records: Mapping[str, Mapping[str, Any]]) -> ChainVerif
             if state.sequence != parent.sequence + 1:
                 findings.append(ChainFinding(
                     "sequence", pair, f"link {state.sequence} follows link {parent.sequence}"))
-            if parent.revoked_at_unit is not None or parent.ended:
+            parent_status = records[parent_name].get("status")
+            if parent.revoked_at_unit is not None or parent.ended or parent_status == "REVOKED":
+                if parent.revoked_at_unit is not None:
+                    what = "revoked the chain"
+                elif parent_status == "REVOKED":
+                    what = "REVOKED the warrant on its score distribution"
+                else:
+                    what = "ended the chain"
                 findings.append(ChainFinding(
                     "continued_after_end", pair,
-                    "the previous record " + ("revoked" if parent.revoked_at_unit is not None else "ended")
-                    + " the chain, and a link followed it"))
+                    f"the previous record {what}, and a link followed it"))
             fixed = ("p0", "alpha", "lam_lo", "lam_hi", "n_lam", "horizon_units")
             changed = [f for f in fixed if getattr(parent, f) != getattr(state, f)]
             prefix = tuple(state.consumed_unit_digests[: len(parent.consumed_unit_digests)])
