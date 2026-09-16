@@ -17,7 +17,7 @@ sh scripts/run.sh python -m pytest tests/ -q  # when you need the real exit stat
 the second time shortly after it was documented — which is why the wrapper
 exists rather than the rule.
 
-**Contents:** [The five kinds](#the-five-kinds-of-test-here) · [Suite by suite](#suite-by-suite) · [Tests that guard documents](#the-tests-that-guard-documents) · [Adding a test](#adding-a-test)
+**Contents:** [The five kinds](#the-five-kinds-of-test-here) · [Suite by suite](#suite-by-suite) · [The customer path](#the-customer-path) · [The chain of rechecks](#the-chain-of-rechecks) · [Release evidence](#release-evidence) · [Tests that guard documents](#the-tests-that-guard-documents) · [Adding a test](#adding-a-test)
 
 ---
 
@@ -39,6 +39,10 @@ exists rather than the rule.
    just fixed. The AST scan for `assert` statements in library code is one: the
    fix was eleven edits, but the test is what stops the twelfth. Fixing
    instances one at a time is how a class of defect survives.
+   `test_chain_record_seal.py` is another: after three edited chain fields were
+   fixed one by one, a schema audit found 197 more, so the test walks **every
+   field of real records**, mutates each alone, and requires the verifier to
+   notice. A field added later is covered without anyone adding it.
 5. **Document gates.** Tests that read the repository's own prose and fail when
    it drifts from the artifacts or from the register that governs it.
 
@@ -64,6 +68,10 @@ exists rather than the rule.
 | `test_warrant_stats.py` | Certification at issuance, and `FPRMonitor` -- whose anytime-valid claim `DECISIONS.md` 187 found is not established as implemented; the chained recheck (`test_recheck_chain.py`) is what carries a bound |
 | `test_paired.py` | The paired comparison and the ROC geometry — the fix for the confounded comparison that once shipped |
 | `test_scores.py` | Frozen scores, and the verification tier they make possible |
+| `test_fpr_sweep.py` | The budget sweep over frozen scores, and what it must not get wrong |
+| `test_lift_interval.py` | The lift interval's lower bound is conservative on every shipped artifact |
+| `test_scorefree.py` | Certifying a detector with no score, against the claims registered before the code |
+| `test_spec_refusal_criteria.py` | Every refusal the issuance path can produce traces to a criterion `SPEC.md` names |
 | `test_extraction.py` | Everything about extraction that can be checked without a GPU |
 | `test_dual_path.py` | The failure class that bit twice: two code paths computing the same thing, one drifting |
 
@@ -76,6 +84,8 @@ exists rather than the rule.
 | `test_resplit.py` | Re-splitting a frozen set, and the cache reuse that licenses |
 | `test_presidio.py` | The Presidio adapter, including that the finding is a statement about a pinned version |
 | `test_banking_pilot.py` | The pilot, its pre-registration, and its divergence guard |
+| `test_redact.py` | The REDACT adapter: labels taken from the benchmark's own gold, and each mapping decision |
+| `test_external.py` | Third-party detectors on public datasets: every pairing pinned and its licence stated, our own detector held to the same yardstick, and a single-class or misaligned pairing refused rather than scored |
 
 ### Matrix, drift, policy
 
@@ -87,15 +97,64 @@ exists rather than the rule.
 | `test_model_version.py` | Changed weights invalidate warrants measured on the old ones |
 | `test_policy.py` | The policy engine, including that an unresolvable bundle does not load |
 | `test_compose.py` | The four composition cases, written before the code |
+| `test_revocation_trace.py` | The revocation trace: pre-registered, replayed on real lengths, and reported honestly |
+
+### The customer path
+
+What `warrant certify` and `warrant recheck` must get right on a file nobody here
+has seen.
+
+| Suite | Defends |
+|---|---|
+| `test_intake.py` | The input contract, the refusal that exits 0, and both shipped examples reproducible from their generator |
+| `test_cli_records.py` | A `certify` record read back correctly by every command that takes one |
+| `test_frontier.py` | The frontier in quantities that need no interval |
+| `test_frontier_groups.py` | The frontier certifies what `certify` certifies, on grouped files too |
+| `test_certify_from_frontier.py` | A budget picked off the frontier is certified at the frontier's level, and a frontier record that was edited or truncated is refused |
+| `test_frontier_selection.py` | The frontier-selection study measures what it says it measures |
+| `test_recheck.py` | A recheck keeps the broken bound and the moved distribution apart, and revokes on the lower bound |
+| `test_recheck_groups.py` | A grouped warrant is rechecked in the unit it was certified in |
+| `test_recheck_power.py` | A recheck's sample size is a probability of catching a breach, not a single sufficient count |
+| `test_label_sensitivity.py` | A certificate's label-error ladders, and a `label_2` column that changes **no** verdict even when it contradicts every label |
+| `test_recheck_label_sensitivity.py` | How many label errors would have hidden a revocation, checked against the recheck's own bound |
+| `test_label_error_study.py` | The label-error study's criteria, applied as registered and as amended |
+
+### The chain of rechecks
+
+| Suite | Defends |
+|---|---|
+| `test_recheck_chain.py` | A year of rechecks as one sequential test |
+| `test_recheck_chain_review.py` | The review of the chain, as tests: forks, head checks, drift that the chain must not mask |
+| `test_chain_verify.py` | What `warrant chain verify` reports for each kind of finding |
+| `test_chain_integrity.py` | The defects an independent review reproduced: continuing after a drift revocation, a fork restart around one, edited derived fields, malformed values. The drift case runs through the CLI and **asserts its own precondition**, so a changed fixture cannot quietly test something else |
+| `test_chain_record_seal.py` | **Every stored field of a chained record is checked on verify.** A property test over every leaf of records the CLI wrote |
+| `test_recheck_schedules.py` | The study that chose the chain's rule, as registered |
+| `test_chain_detection.py` | The chain's detection grid is the study that was registered |
+
+### Release evidence
+
+These use synthetic fixtures only, never the frozen scores.
+
+| Suite | Defends |
+|---|---|
+| `test_release_contract.py` | Registration boundaries: identity, criteria and holdout frozen before evaluation |
+| `test_release_evaluate.py` | The statistics and the leakage checks, independently |
+| `test_release_cli.py` | The release workflow as a customer runs it |
 
 ### Economics and the demo
 
 | Suite | Defends |
 |---|---|
 | `test_economics.py` | The abstention floor and the review sizing |
+| `test_sizing.py` | The price list: recheck sizes, labels and cadence costs from one declared workload |
+| `test_sampling.py` | The on-traffic estimator, and the gates registered before it was written |
+| `test_sampling_assurance.py` | A recall plan's sample realises its margin with a declared probability, not merely on average |
+| `test_price_list_sections.py` | The price list and kappa reach `RESULTS.md`, or it says why they cannot |
+| `test_causal_claims.py` | Every mechanism a document asserts is checked against its falsifier, on every run |
 | `test_demo.py` | The demo runs a **real** validation, with real certificates and a real chain |
 | `test_demo_beats.py` | Each beat assembles from committed artifacts, **or says why it cannot** |
 | `test_gateway.py` | The adapter returns certificates on an unmodified OpenAI-format response |
+| `test_gate.py` | The action gate: its five rules, the two that consult no detector, the session Rule-of-Two, and what it costs on legitimate work |
 
 ### The repository itself
 
@@ -108,12 +167,20 @@ exists rather than the rule.
 | `test_config.py` | Config loading, hashing, layer resolution, provenance |
 | `test_clean_clone.py` | The clean-clone gate's reporting |
 | `test_fixture_guards.py` | A fixture number can never be read as a measurement |
+| `test_lint.py` | The CI lint step, run locally whenever ruff is installed |
+| `test_packaging.py` | What someone installing the package actually touches |
+| `test_test_inventory.py` | A test-count claim is taken from a clean commit, or not taken |
+| `test_matrix_regression.py` | A richer artifact cannot be replaced by a poorer one |
+| `test_invariants.py` | Every invariant in `CLAUDE.md` names the test that enforces it, and that test exists |
+| `test_decisions_integrity.py` | `DECISIONS.md` stays contiguous, and every citation of it in the repository resolves |
+| `test_reports.py` | Phase reports exist, are contiguous, and say the parts that are hard to say |
+| `test_spec_section_11.py` | `RESULTS.md` contains every item `SPEC.md` requires of it |
 
 ---
 
 ## The tests that guard documents
 
-Five suites read the prose and fail when it drifts. They exist because **reading
+These suites read the prose and fail when it drifts. They exist because **reading
 is not a control** — a register nobody checks is a register nobody consults.
 
 | Suite | Enforces |
@@ -123,6 +190,10 @@ is not a control** — a register nobody checks is a register nobody consults.
 | `test_docs_index.py` | `docs/README.md` cannot drift from `docs/` — every docs page is indexed and every relative link resolves |
 | `test_external_figures.py` | The external-figure register gates the proposal: figures marked dropped or unverified must not appear there, and the register may not claim a provenance tier nobody reached |
 | `test_fixture_guards.py` | Synthetic fixtures cannot be rendered as measurements |
+| `test_readme_prose_numbers.py` | Numbers in README **prose** track their artifacts, not only the numbers in the claim table |
+| `test_acceptance.py` | A stranger with a fresh clone follows the README quickstart to both a warrant and a refusal, the summary prints on a narrow ASCII terminal, and the no-network promise is stated where a buyer reads it |
+| `test_crosswalk.py` | The RBI crosswalk names code and tests that exist, and says where it stops |
+| `test_regulatory_attribution.py` | The repository says what the DPDP Rules it cites say, and no more |
 
 If you add a number to a document, one of these is what will tell you.
 
