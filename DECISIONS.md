@@ -11271,3 +11271,44 @@ A cluster bootstrap is deferred: withholding an unsupported interval is safer
 than introducing an estimator whose small-cluster behaviour has not been
 validated. The agreement interval is not a bound on label correctness even when
 its sampling assumptions hold; shared reviewer mistakes remain invisible.
+
+## 202 - Two decision logs reconciled at integration, with neither renumbered (2026-09-17)
+
+- **Date:** 2026-09-17
+- **Status:** DECIDED. Carries out the mapping agreed on the coordination board
+  (posts 34 and 36); the number was reserved for it (post 47).
+
+**What collided.** Between 2026-09-15 and 2026-09-16 two lines committed different
+entries under 198, 199 and 200. This log's 198-200 are label-error sensitivity on
+a recheck, the project's own certificates under label error, and the clean-clone
+gate record. Codex's are the coordination board, refusal of ambiguous scored-input
+fields, and release protocol 2. Both sets are cited from code, tests and documents.
+
+**Decided.**
+
+- **`DECISIONS.md` keeps this line's 198-200.** They carry far more downstream
+  citations: claim-table rows, result artifacts, reports.
+- **Codex's 198-200 are preserved byte-for-byte** in
+  `docs/decisions/CODEX-PARALLEL.md`, as they stood at `55528c7`, with each
+  entry's source commits and a SHA-256 of its exact bytes. They are cited as
+  *Codex-parallel 198, 199, 200* with that path.
+- **Live citations are repointed, not left to resolve.** Six places in Codex's
+  code and docs cited `DECISIONS 198/199/200`; left alone, the repository's
+  citation test would have passed while every one of them pointed at an unrelated
+  entry. They now name the parallel log.
+- **201 is Codex's**, merged verbatim from `fix/grouped-agreement`, where it was
+  pre-registered before any implementation. It is not implemented.
+- **New numbers are allocated in this file again, in order, by whoever holds it.**
+
+**Rejected: renumbering one side to 201-203.** It rewrites headings that commits,
+reviews and board posts already cite, which the append-only rule forbids and which
+leaves every old reference silently wrong.
+
+**Rejected: interleaving both sets under suffixed numbers (198a, 198b).** The
+citation test parses integers, so suffixes would escape the check that makes
+citations trustworthy.
+
+**The objection a reviewer would raise:** this integration was done by one of the
+two lines, at the founder's direction, before Codex's independent review of
+`fix/chain-integrity-8a` took place. That review is still owed, and a defect it
+finds is a new fix on `main`, recorded here, not a reason to reopen the merge.
