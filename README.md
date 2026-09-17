@@ -71,9 +71,6 @@ file: no GPU, no model, no network, three dependencies
 own measurements, every number in the [claim table](#-the-claim-table), on a
 laptop ([Reproduction](#-reproduction)).
 
-> [!NOTE]
-> Built by Team **Dominator** — Indian Institute of Technology Kharagpur
-
 <br/>
 
 <div align="center">
@@ -817,56 +814,6 @@ for. The ones most readers want first:
 | 📄 [SPEC.md](docs/SPEC.md) · 💼 [PROPOSAL.md](docs/PROPOSAL.md) | The technical specification; the business proposal |
 
 ---
-
-## 👥 Authors
-
-<div align="center">
-
-<table>
-  <tr>
-    <td align="center" width="33%">
-      <a href="https://github.com/Aditya26189">
-        <img src="https://github.com/Aditya26189.png" width="130px;" alt="Aditya Singh" style="border-radius:50%"/>
-      </a><br /><br />
-      <a href="https://github.com/Aditya26189"><b>Aditya Singh</b></a><br />
-      <sub>🔧 Mechanical Engineering, 2028</sub><br /><br />
-      <a href="https://github.com/Aditya26189">
-        <img src="https://img.shields.io/badge/GitHub-Aditya26189-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/>
-      </a>
-    </td>
-    <td align="center" width="33%">
-      <a href="https://github.com/kksahu444">
-        <img src="https://github.com/kksahu444.png" width="130px;" alt="Krishnakant Sahu" style="border-radius:50%"/>
-      </a><br /><br />
-      <a href="https://github.com/kksahu444"><b>Krishnakant Sahu</b></a><br />
-      <sub>💻 Computer Science & Engineering, 2027</sub><br /><br />
-      <a href="https://github.com/kksahu444">
-        <img src="https://img.shields.io/badge/GitHub-kksahu444-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/>
-      </a>
-    </td>
-    <td align="center" width="33%">
-      <a href="https://github.com/upendra512">
-        <img src="https://github.com/upendra512.png" width="130px;" alt="Upendra Singh" style="border-radius:50%"/>
-      </a><br /><br />
-      <a href="https://github.com/upendra512"><b>Upendra Singh</b></a><br />
-      <sub>🔧 Mechanical Engineering, 2028</sub><br /><br />
-      <a href="https://github.com/upendra512">
-        <img src="https://img.shields.io/badge/GitHub-upendra512-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/>
-      </a>
-    </td>
-  </tr>
-</table>
-
-<br/>
-
-<img src="https://img.shields.io/badge/Team-Dominator-6366f1?style=for-the-badge&labelColor=1a1b27" alt="Team Dominator"/>
-&nbsp;
-<img src="https://img.shields.io/badge/IIT-Kharagpur-d1242f?style=for-the-badge&labelColor=1a1b27" alt="IIT Kharagpur"/>
-
-
-</div>
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0d1117,50:161b22,100:0d1117&height=2" width="100%" />
 
 ## 📄 Licence
 
