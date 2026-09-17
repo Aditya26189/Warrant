@@ -141,8 +141,11 @@ and not computed when any group holds both.
 
 ## Optional: anything else
 
-Every other column is read, and **not kept**: neither its name nor its values
-appear in any record Warrant writes, and none is used in a computation. This page
+Every other column is read, checked, and **not kept**: neither its name nor its
+values appear in any record Warrant writes, and none is used in a computation.
+Checked means that a duplicate or blank column name, or a row with a missing or
+extra field, is refused rather than silently resolved, since otherwise one of two
+same-named columns would win without anyone choosing it. This page
 used to say such columns were carried into the record untouched, and that was
 wrong -- `examples/certifies.csv` has a `captured_at` column that no warrant
 written from it contains.
@@ -167,6 +170,10 @@ These are different, and the difference matters.
 | a score that is not a finite number | the row and the value |
 | an empty cell in a required column | the row and the column |
 | duplicate `id` values | the offending ids |
+| a duplicate column name, after surrounding spaces are removed, or a duplicate key within a JSON line | the file, or the line, and the field |
+| a blank column name in the CSV header | the file |
+| a CSV row with more or fewer fields than the header | the line, and both counts |
+| malformed CSV, such as an unclosed quote | the line |
 | only one class present | which class |
 | a `group` column with a blank cell | the row |
 | a `label_2` that is not 0, 1 or blank | the row and the value |

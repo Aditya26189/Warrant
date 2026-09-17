@@ -219,6 +219,9 @@ What `warrant certify` must do with a file nobody here has seen. The procedure i
 | a file that breaks the contract | exits 2 and says why; nothing is certified or written | `test_a_bad_file_exits_two_and_says_why` | — |
 | a non-finite score | refused, never dropped | `test_a_non_finite_score_is_refused_not_dropped` | — |
 | an empty cell | never filled in | `test_an_empty_cell_is_never_filled_in` | — |
+| duplicate column names | refused, never resolved by the last value | `test_duplicate_csv_headers_are_not_resolved_by_last_value` | — |
+| duplicate keys in a JSON line | refused, never resolved by the last value | `test_duplicate_jsonl_fields_are_not_resolved_by_last_value` | — |
+| a row with missing or extra fields | refused, neither filled nor dropped | `test_ragged_csv_rows_do_not_fill_or_discard_metadata` | — |
 | **too few clean negatives** | a refusal, not an error | `test_insufficient_evidence_is_a_refusal` | `examples/refuses.csv` |
 | the refusing example | refuses **and exits 0** | `test_the_refusing_example_refuses_and_exits_zero` | `examples/refuses.csv` |
 | the same data at a looser budget | certifies: the refusal was about evidence, not the detector | `test_the_refusing_example_certifies_at_a_looser_budget` | — |
@@ -296,6 +299,9 @@ What `warrant certify` must do with a file nobody here has seen. The procedure i
 | an altered or replaced contract | fails | `test_altered_contract_and_replacement_fail` | — |
 | the bounds | agree with an independent binomial tail inversion | `test_bounds_agree_with_independent_binomial_tail_inversion` | — |
 | failure and missing evidence | are distinguished | `test_decisions_distinguish_failure_from_missing_evidence` | — |
+| **protocol 2** | a study that does not clear is REFUSED, naming the reason: observed violation, inconclusive bound, missing denominator | `test_protocol_two_names_the_evidence_reason` | — |
+| a protocol-1 contract | replays with its original measurement protocol | `test_legacy_contract_keeps_its_original_measurement_protocol` | — |
+| certify clears, release does not, on one file | both outputs name their protocol, so the verdicts are not read as interchangeable | `test_release_and_single_fpr_certification_name_different_protocols` | — |
 | a rehashed fabrication, or expiry | caught on verify | `test_recompute_catches_rehashed_fabrication_and_expiry` | — |
 | changed scores with unchanged counts | detected | `test_changed_scores_are_detected_even_without_changed_counts` | — |
 | register, evaluate, verify from the CLI | work, and a second evaluation is not a replacement | `test_real_cli_register_evaluate_verify_and_no_replacement` | — |

@@ -71,7 +71,11 @@ def test_jsonl_is_read_the_same_way(tmp_path: Path) -> None:
 
 
 def test_passthrough_columns_are_carried_and_unused(tmp_path: Path) -> None:
-    """Extra columns survive into the record and touch no computation."""
+    """Extra columns are named on the parsed items and touch no computation.
+
+    No record keeps them; ``docs/INPUT.md`` says so, because it once said the
+    opposite.
+    """
     rows = ["id,label,score,captured_at,reviewer"]
     for i in range(60):
         rows.append(f"i{i},{i % 3 == 0 and 1 or 0},{0.5 + 0.001 * i},2026-01-01,alice")

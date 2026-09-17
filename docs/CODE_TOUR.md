@@ -43,6 +43,7 @@ or a notebook is unreviewable.
 | estimate recall on unreviewed traffic | `sampling/estimator.py` |
 | see what the action gate refuses | `gate/gate.py` |
 | find every command a customer can run | `cli.py` |
+| read or post to the board concurrent coding sessions share | `coordination/`, and `COORDINATION.md` at the root |
 
 ---
 
@@ -326,6 +327,10 @@ declared figure cannot pass as a measured one.
   packages above and writes records, with one exit-code convention: `0` for any
   result including a refusal, `1` when a `--require-*` flag was not met, `2` for
   input that cannot be used.
+- **`coordination/`** is development tooling, not product: a local, file-backed
+  board where concurrent coding sessions post status, messages and advisory path
+  claims (`python -m controlplane.coordination read`; `COORDINATION.md` at the
+  root). It opens no network connection, and a claim does not stop an edit.
 - **`config.py`** is the single source of every knob: typed dataclasses
   mirroring `config.yaml`, validation in `__post_init__` naming each invariant
   it enforces, SHA-256 config hashing, and `provenance()` — which shells out to

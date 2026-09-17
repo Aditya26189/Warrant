@@ -517,9 +517,14 @@ assumptions: IID items from the declared scope, a holdout unused for selection,
 one evaluation. Lift is measured recall over measured flag rate, with its interval
 propagated conservatively from the two bounds.
 
-**Decision.** `VALID` when every registered acceptance bound clears its limit;
-`REFUSED` when an observed rate violates a criterion; `UNVALIDATED` when a bound is
-inconclusive or a denominator is missing; `STALE` on verification after expiry.
+**Decision.** `VALID` when every registered acceptance bound clears its limit.
+Otherwise `REFUSED`, with the reason for each criterion: an observed violation, an
+inconclusive bound, or a missing denominator. A tested study that could not clear
+is a refusal, not "never tested". `STALE` on verification after expiry. This is
+release protocol 2 (Codex-parallel decision 200,
+[decisions/CODEX-PARALLEL.md](decisions/CODEX-PARALLEL.md)); a contract registered
+under protocol 1 replays with its original `UNVALIDATED` for an inconclusive bound
+or a missing denominator, labelled as the legacy protocol.
 These verdicts come from a different interval family than `certify` (one-sided,
 per budget, at `alpha`) and are **not interchangeable** on the same counts.
 

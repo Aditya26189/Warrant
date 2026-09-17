@@ -566,7 +566,7 @@ flowchart LR
     subgraph EV["evaluate once"]
         CT["context.json<br/>matches registered identity"]
         HS["holdout scores<br/>IID, not grouped"]
-        OUT["evaluation record, sealed<br/>five exact intervals at alpha/5<br/>VALID · REFUSED · UNVALIDATED"]
+        OUT["evaluation record, sealed<br/>five exact intervals at alpha/5<br/>VALID · REFUSED with a reason<br/>legacy protocol 1: UNVALIDATED"]
     end
     subgraph VF["verify"]
         RE["recompute metrics and decision<br/>check digests and identity<br/>apply expiry: STALE"]

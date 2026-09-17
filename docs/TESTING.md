@@ -107,6 +107,7 @@ has seen.
 | Suite | Defends |
 |---|---|
 | `test_intake.py` | The input contract, the refusal that exits 0, and both shipped examples reproducible from their generator |
+| `test_intake_ambiguity.py` | Duplicate columns, duplicate JSON keys, blank headers and ragged rows are refused, never resolved by whichever value came last |
 | `test_cli_records.py` | A `certify` record read back correctly by every command that takes one |
 | `test_frontier.py` | The frontier in quantities that need no interval |
 | `test_frontier_groups.py` | The frontier certifies what `certify` certifies, on grouped files too |
@@ -140,6 +141,7 @@ These use synthetic fixtures only, never the frozen scores.
 | `test_release_contract.py` | Registration boundaries: identity, criteria and holdout frozen before evaluation |
 | `test_release_evaluate.py` | The statistics and the leakage checks, independently |
 | `test_release_cli.py` | The release workflow as a customer runs it |
+| `test_release_render.py` | The terminal summary: a timestamp cannot inject terminal output |
 
 ### Economics and the demo
 
@@ -170,6 +172,7 @@ These use synthetic fixtures only, never the frozen scores.
 | `test_lint.py` | The CI lint step, run locally whenever ruff is installed |
 | `test_packaging.py` | What someone installing the package actually touches |
 | `test_test_inventory.py` | A test-count claim is taken from a clean commit, or not taken |
+| `test_coordination.py` | The coordination board: concurrent posts survive, sequence numbers stay unique, overlapping path claims are refused |
 | `test_matrix_regression.py` | A richer artifact cannot be replaced by a poorer one |
 | `test_invariants.py` | Every invariant in `CLAUDE.md` names the test that enforces it, and that test exists |
 | `test_decisions_integrity.py` | `DECISIONS.md` stays contiguous, and every citation of it in the repository resolves |

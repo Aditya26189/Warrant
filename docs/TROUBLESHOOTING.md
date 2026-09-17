@@ -47,6 +47,10 @@ you required.
 | `score is ..., which is not a number`, or `A NaN or infinity cannot be ordered` | a score cannot be placed against a threshold | Fix the export. Rows are refused, never dropped |
 | `column 'id' is empty` (or `label`, `score`) | a required cell is blank | Blanks are not filled in for you |
 | `Ids must be unique` | two rows share an id | Two rows for one id make two claims about one item; the tool will not pick one |
+| `duplicate CSV column(s) ... after whitespace normalization`, or `duplicate JSON field` | two columns, or two keys in one JSON line, share a name, so one value would silently win | Rename or remove one. `score` and ` score ` are the same column |
+| `every CSV header must name a non-blank column` | a header cell is blank, which could hide an extra field | Name the column, or remove it from every row |
+| `expected N CSV fields, found M` | a row has missing or extra fields | Fix the export: a field is neither filled in nor dropped |
+| `is not valid CSV` | the file cannot be parsed as CSV, for example an unclosed quote | Fix the quoting at the line named |
 | `every label is 0` (or `1`) | one class only | A false-positive rate needs negatives and recall needs positives; supply both |
 | `'group' is present as a column but empty on this row` | a partly grouped file | Group every row, or drop the column |
 | `'label_2' is present as a column but blank on every row` | an export artefact, not a second review | Fill in the double-labelled items, or drop the column |

@@ -24,9 +24,10 @@ probe can exist, and against a detector nobody here has ever seen.
 Optional ``group`` clusters items that are not independent — several items from
 one document, one customer, one template. Optional ``label_2`` is a second
 reviewer's label, blank on items that were not double-labelled; it is measured
-beside the certificate and never changes it (``DECISIONS.md`` 197). Everything
-else in the file is carried into the artifact untouched and never used in a
-computation.
+beside the certificate and never changes it (``DECISIONS.md`` 197). Every
+other column is read and checked -- a duplicate, blank or ragged column is
+refused rather than resolved -- and then **not kept**: its name is held on the
+parsed items, and no record and no computation uses it.
 
 **Nothing is coerced, filled or dropped.** A file that does not meet the
 contract fails with a message naming the column and what was expected. The one
@@ -279,7 +280,8 @@ def load_scored_items(path: str | Path, *, require_both_classes: bool = True) ->
         require_both_classes: Preserve legacy certification rejection by default.
             Release evaluation opts out to retain a study with a missing
             denominator. New release registrations report REFUSED; the legacy
-            protocol retains UNVALIDATED for replay (DECISIONS 185, 200).
+            protocol retains UNVALIDATED for replay (DECISIONS 185; Codex-parallel
+            decision 200, docs/decisions/CODEX-PARALLEL.md).
 
     Returns:
         The parsed :class:`ScoredItems`.
