@@ -205,3 +205,59 @@ def test_a_failed_cleanup_is_reported_rather_than_swallowed(tmp_path: Path) -> N
     assert not victim.exists()
 
     assert _remove_clone(tmp_path / "never-existed") == ""
+
+
+# ------------------------------------------------------ DECISIONS 200: one named state
+
+def _gate(commit: str = "a" * 40) -> GateResult:
+    return GateResult(ok=True, commit=commit, clone_path="x", tracked_files=1,
+                      steps=[_step("make smoke", True)])
+
+
+def test_the_clone_must_be_the_commit_the_record_names() -> None:
+    from controlplane.report.clean_clone import head_step
+
+    assert head_step("a" * 40, "a" * 40).ok
+    moved = head_step("a" * 40, "b" * 40)
+    assert not moved.ok and "does not name" in moved.detail
+    assert not head_step("", "").ok
+
+
+def test_the_record_is_written_only_for_one_clean_unchanged_state() -> None:
+    from controlplane.report.clean_clone import check_record
+
+    commit = "a" * 40
+    clean = {"git_commit": commit, "dirty": False}
+    assert check_record(_gate(commit), clean, clean) is None
+    assert "dirty when it was cloned" in check_record(_gate(commit), {**clean, "dirty": True}, clean)
+    assert "moved while the gate started" in check_record(
+        _gate(commit), {"git_commit": "c" * 40, "dirty": False}, clean)
+    assert "changed during the run" in check_record(
+        _gate(commit), clean, {"git_commit": "b" * 40, "dirty": False})
+    assert "changed during the run" in check_record(_gate(commit), clean, {**clean, "dirty": True})
+
+
+def test_the_script_refuses_to_write_when_the_source_moved(tmp_path, monkeypatch) -> None:
+    """Wired, not just defined: a commit during the run leaves no artifact and exits 1."""
+    import importlib.util
+    import sys
+
+    spec = importlib.util.spec_from_file_location(
+        "clean_clone_gate_script", PROJECT_ROOT / "scripts" / "clean_clone_gate.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    commit = "a" * 40
+    states = iter([{"git_commit": commit, "dirty": False}, {"git_commit": "b" * 40, "dirty": False}])
+    monkeypatch.setattr(module, "provenance", lambda config: next(states))
+    monkeypatch.setattr(module, "run_clean_clone_gate", lambda *a, **k: _gate(commit))
+    out = tmp_path / "clean_clone.json"
+    monkeypatch.setattr(sys, "argv", ["clean_clone_gate.py", "--out", str(out)])
+    assert module.main() == 1
+    assert not out.exists()
+
+    states = iter([{"git_commit": commit, "dirty": False}, {"git_commit": commit, "dirty": False}])
+    monkeypatch.setattr(module, "provenance", lambda config: next(states))
+    assert module.main() == 0
+    record = json.loads(out.read_text(encoding="utf-8"))
+    assert record["provenance"]["git_commit"] == commit
+    assert record["provenance_taken"] == "before cloning"

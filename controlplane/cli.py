@@ -107,7 +107,10 @@ def build_parser() -> argparse.ArgumentParser:
     )
     certify.add_argument(
         "--budget", "-b", type=float, default=None,
-        help="false-positive budget, e.g. 0.05 for 'at most 5%% of clean items flagged'",
+        help="false-positive budget, e.g. 0.05 for 'at most 5%% of clean items flagged'. "
+             "The 95%% level holds for a budget chosen before looking at this "
+             "file; a budget picked off --frontier is covered by the frontier's "
+             "own adjusted rows, not by this command (DECISIONS 192)",
     )
     certify.add_argument(
         "--out", "-o", default=None,
@@ -124,6 +127,11 @@ def build_parser() -> argparse.ArgumentParser:
     certify.add_argument(
         "--require-warrant", action="store_true",
         help="exit non-zero when the detector is REFUSED (default: refusal exits 0)",
+    )
+    certify.add_argument(
+        "--from-frontier", default=None, metavar="RECORD",
+        help="the .frontier.json you picked --budget from; certifies at that "
+             "frontier's row level so the pick still holds (DECISIONS 195)",
     )
 
     recheck = sub.add_parser(
@@ -152,6 +160,25 @@ def build_parser() -> argparse.ArgumentParser:
     recheck.add_argument(
         "--require-valid", action="store_true",
         help="exit non-zero when the warrant no longer holds (default: exits 0)",
+    )
+    chain = recheck.add_mutually_exclusive_group()
+    chain.add_argument(
+        "--horizon-labels", type=int, default=None, metavar="N",
+        help="start a chain of rechecks whose sequential false-positive statistic "
+             "falsely revokes a detector keeping its promise with probability at most "
+             "alpha over N clean negatives; a revocation for a moved score "
+             "distribution is a separate check, outside that bound. Declare N once, "
+             "e.g. the negatives a year of rechecks will label (DECISIONS 193)",
+    )
+    chain.add_argument(
+        "--since", default=None, metavar="RECORD",
+        help="continue the chain in this earlier .recheck.json; keep every record",
+    )
+    recheck.add_argument(
+        "--fork", action="store_true",
+        help="continue from a record that is not the chain's latest, or start a new "
+             "chain while one exists; the fork is recorded in the chain (DECISIONS 194). "
+             "It cannot reopen a warrant whose chain was revoked: re-certify instead",
     )
 
     plan = sub.add_parser(
@@ -208,7 +235,57 @@ def build_parser() -> argparse.ArgumentParser:
     plan.add_argument("--config", default=str(PROJECT_ROOT / "config.yaml"),
                       help=argparse.SUPPRESS)
     plan.add_argument("--quiet", "-q", action="store_true")
+    from .release.cli import add_parser
+
+    add_parser(sub)
+    chain = sub.add_parser(
+        "chain",
+        help="audit the records of a chain of rechecks",
+        description=(
+            "Reads the recheck records a chain produced and reports what they show: "
+            "forks, restarts, missing links, edited states and links that do not "
+            "extend their predecessor. It cannot recompute the statistics, which "
+            "need the labelled files (DECISIONS 194)."
+        ),
+    )
+    chain_sub = chain.add_subparsers(dest="chain_command", required=True)
+    verify = chain_sub.add_parser("verify", help="verify a set of chained recheck records")
+    verify.add_argument("records", nargs="+", help="every .recheck-NNNN.json you kept")
+    verify.add_argument("--out", "-o", default=None,
+                        help="write the JSON record here (default: chain-verification.json)")
+    verify.add_argument("--quiet", "-q", action="store_true")
+    verify.add_argument(
+        "--require-clean", action="store_true",
+        help="exit non-zero when anything is flagged (default: findings exit 0)",
+    )
     return parser
+
+
+def _chain(args: argparse.Namespace) -> int:
+    """``warrant chain verify``: findings are a result, so they exit 0 (DECISIONS 194)."""
+    from .config import load_config, write_json_artifact
+    from .intake.chain_verify import (
+        RecordError, load_records, render_chain_verification, verify_chain_records,
+    )
+
+    try:
+        records = load_records(args.records)
+    except RecordError as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+    verification = verify_chain_records(records)
+    out = Path(args.out) if args.out else Path("chain-verification.json")
+    write_json_artifact(out, verification.to_payload(), load_config(PROJECT_ROOT / "config.yaml"))
+    if not args.quiet:
+        print(render_chain_verification(verification))
+    print(f"  record written to {out}")
+    if args.require_clean and not verification.clean:
+        print(
+            f"warrant: {len(verification.findings)} finding(s) in the chain records",
+            file=sys.stderr,
+        )
+        return EXIT_ERROR
+    return EXIT_OK
 
 
 def _certify(args: argparse.Namespace) -> int:
@@ -230,6 +307,11 @@ def _certify(args: argparse.Namespace) -> int:
         return EXIT_BAD_INPUT
 
     if args.frontier:
+        if args.from_frontier:
+            print("warrant: --frontier and --from-frontier are two different steps; "
+                  "run the frontier, pick a budget, then certify it --from-frontier.",
+                  file=sys.stderr)
+            return EXIT_BAD_INPUT
         return _frontier(args, config, items)
     if args.budget is None:
         print(
@@ -239,18 +321,129 @@ def _certify(args: argparse.Namespace) -> int:
         )
         return EXIT_BAD_INPUT
 
+    import dataclasses
+    import json
+    import math
+
+    from .intake.certify import input_sha256
+
+    source = Path(args.input)
+    digest = input_sha256(items)
+    selection = None
+    notice = ""
+    if args.from_frontier:
+        # DECISIONS 195: certify a budget picked off a frontier at the level the
+        # frontier held that row to. Every refusal happens before anything is
+        # written.
+        from .intake.chain import canonical_sha256
+
+        record_path = Path(args.from_frontier)
+        try:
+            frontier_record = json.loads(record_path.read_text(encoding="utf-8"))
+            rows = frontier_record["frontier"]
+            grid = [float(row["budget_fpr"]) for row in rows]
+            row_alphas = {float(row["row_alpha"]) for row in rows}
+            family_alphas = {float(row["family_alpha"]) for row in rows}
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            print(f"warrant: {record_path} is not a frontier record with row levels ({exc})",
+                  file=sys.stderr)
+            return EXIT_BAD_INPUT
+        if frontier_record.get("input", {}).get("input_sha256") != digest:
+            print(f"warrant: {record_path.name} was not produced from {source.name} "
+                  "(its input_sha256 differs or is missing); a frontier certifies the "
+                  "file it read and no other. Rerun --frontier on this file.",
+                  file=sys.stderr)
+            return EXIT_BAD_INPUT
+        if not any(math.isclose(args.budget, b, rel_tol=0, abs_tol=1e-12) for b in grid):
+            print(f"warrant: --budget {args.budget} is not on {record_path.name}'s grid "
+                  f"{grid}; only a row the frontier certified can be picked off it.",
+                  file=sys.stderr)
+            return EXIT_BAD_INPUT
+        if len(row_alphas) != 1 or len(family_alphas) != 1:
+            print(f"warrant: {record_path.name} does not carry one row level", file=sys.stderr)
+            return EXIT_BAD_INPUT
+        # The digest binds the record to this file, not the record's numbers to
+        # anything: an edited row_alpha, or a record cut down to the picked row,
+        # would otherwise certify at the unadjusted level under a selection claim
+        # (195 review). Recompute -- no bootstrap, so it is cheap -- and require
+        # every row to reproduce. The levels used are the recomputed ones.
+        from .intake import frontier as compute_frontier
+
+        try:
+            recomputed = compute_frontier(config, items)
+        except ValueError as exc:
+            print(f"warrant: {exc}", file=sys.stderr)
+            return EXIT_BAD_INPUT
+        expected = [
+            (p.budget, p.certified, p.threshold, p.row_alpha, p.family_alpha)
+            for p in recomputed
+        ]
+        found = [
+            (float(row["budget_fpr"]), bool(row["certified"]), row.get("threshold"),
+             float(row["row_alpha"]), float(row["family_alpha"]))
+            for row in rows
+        ]
+        if found != expected:
+            print(
+                f"warrant: {record_path.name} does not reproduce from {source.name} "
+                "under this configuration -- its budgets, certified rows, thresholds "
+                "or levels differ from a frontier computed now. A record edited, "
+                "truncated or produced under another configuration cannot be picked "
+                "from; rerun --frontier.",
+                file=sys.stderr,
+            )
+            return EXIT_BAD_INPUT
+        selection = {
+            "from_frontier": canonical_sha256(frontier_record),
+            "grid": [p.budget for p in recomputed],
+            "row_alpha": recomputed[0].row_alpha,
+            "family_alpha": recomputed[0].family_alpha,
+            "metrics_note": (
+                "Only the false-positive bound is adjusted for the pick. Recall and "
+                "precision are measured on the file the budget was picked from, and "
+                "a pick made by reading the frontier's caught and missed columns "
+                "selects on them, so they carry that optimism (DECISIONS 195)."
+            ),
+        }
+
     try:
-        result = certify_items(config, items, budget=args.budget)
+        result = certify_items(
+            config, items, budget=args.budget,
+            alpha=selection["row_alpha"] if selection else None, selection=selection,
+        )
     except ValueError as exc:
         print(f"warrant: {exc}", file=sys.stderr)
         return EXIT_BAD_INPUT
 
-    source = Path(args.input)
+    if selection is None:
+        # The default is unchanged (195). A frontier record for this same file at
+        # its default path is a sign a budget may have been picked off it: say so
+        # and record it, change nothing else.
+        sibling = source.with_suffix(source.suffix + ".frontier.json")
+        try:
+            present = (
+                sibling.is_file()
+                and json.loads(sibling.read_text(encoding="utf-8"))
+                .get("input", {}).get("input_sha256") == digest
+            )
+        except (OSError, ValueError, AttributeError):
+            present = False
+        if present:
+            result = dataclasses.replace(result, frontier_record_present=True)
+            notice = (
+                f"  notice: {sibling.name} was run on this file. If you picked this "
+                "budget from it, certify with\n"
+                f"          --from-frontier {sibling.name} so the warrant holds at the "
+                "frontier's level (DECISIONS 195)."
+            )
+
     out = Path(args.out) if args.out else source.with_suffix(source.suffix + ".warrant.json")
     write_json_artifact(out, result.to_payload(), config)
 
     if not args.quiet:
         print(render_summary(result))
+    if notice:
+        print(notice)
     print(f"  record written to {out}")
 
     if args.require_warrant and result.status is not WarrantStatus.VALID:
@@ -269,8 +462,14 @@ def _frontier(args: argparse.Namespace, config, items) -> int:
     """Every budget's exact counts, so a person can choose one."""
     from .config import write_json_artifact
     from .intake import frontier, render_frontier
+    from .intake.certify import input_sha256
 
-    points = frontier(config, items)
+    try:
+        points = frontier(config, items)
+    except ValueError as exc:
+        # Unequal groups: the same input certify --budget refuses (DECISIONS 190).
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
     source = Path(args.input)
     out = (
         Path(args.out)
@@ -283,11 +482,17 @@ def _frontier(args: argparse.Namespace, config, items) -> int:
             "input": {
                 "source": items.source, "n": items.n,
                 "n_positive": items.n_positive, "n_negative": items.n_negative,
+                "grouped": items.groups is not None,
+                # The digest --from-frontier checks, on the release path's
+                # convention (DECISIONS 195).
+                "input_sha256": input_sha256(items),
             },
             "note": (
                 "Every field is exact -- a count of this file or a "
                 "Clopper-Pearson bound. Rates are estimated and are not here; "
-                "they come from `certify --budget`, with a 95% interval."
+                "they come from `certify --budget`, with a 95% interval. "
+                "Rows are certified at row_alpha, the family level split across "
+                "the grid, so all certified rows hold at once (DECISIONS 192)."
             ),
             "frontier": [p.to_payload() for p in points],
         },
@@ -347,18 +552,110 @@ def _recheck(args: argparse.Namespace) -> int:
         print(f"warrant: {exc}", file=sys.stderr)
         return EXIT_BAD_INPUT
 
+    # The promise and the test must be in one unit. A record certified on
+    # clusters rechecked per item, or the reverse, compares two different
+    # rates, and which one the user meant is not ours to guess (DECISIONS 188).
+    recorded_grouped = (record.get("input") or {}).get("grouped")
+    file_grouped = items.groups is not None
+    if recorded_grouped is not None and bool(recorded_grouped) != file_grouped:
+        certified_as = "clusters" if recorded_grouped else "independent items"
+        given_as = "clusters" if file_grouped else "independent items"
+        print(
+            f"warrant: {record_path.name} was certified on {certified_as}, and "
+            f"{Path(args.input).name} gives {given_as}. The promise and the recheck "
+            "would be about different rates. Recheck with the same grouping the "
+            "warrant was certified with.",
+            file=sys.stderr,
+        )
+        return EXIT_BAD_INPUT
+
     # The level the promise was certified at, not whatever config.yaml says
     # today; a record that predates carrying alpha falls back to the config.
-    result = recheck_items(
-        config, items, budget=budget, threshold=threshold, reference=reference,
-        alpha=record.get("alpha"),
-    )
+    try:
+        result = recheck_items(
+            config, items, budget=budget, threshold=threshold, reference=reference,
+            alpha=record.get("alpha"),
+        )
+    except ValueError as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+
+    # A chain of rechecks (DECISIONS 193). Everything that can refuse is
+    # checked before anything is written, so a refused link leaves no record.
+    fed = None
+    if args.horizon_labels is not None or args.since is not None:
+        from .intake.chain import (
+            ChainError, continue_chain, feed, read_head, read_head_status, start_chain,
+        )
+        from .intake.recheck import chain_units
+
+        alpha = record.get("alpha", 1.0 - config.validation.ci)
+        try:
+            if args.since is not None:
+                since_path = Path(args.since)
+                if not since_path.is_file():
+                    raise ChainError(f"no recheck record at {since_path}")
+                state = continue_chain(
+                    json.loads(since_path.read_text(encoding="utf-8")), record, alpha=alpha,
+                    head=read_head(record_path), fork=args.fork,
+                    head_status=read_head_status(record_path),
+                )
+            else:
+                state = start_chain(
+                    record, horizon_units=args.horizon_labels, alpha=alpha,
+                    head=read_head(record_path), fork=args.fork,
+                    head_status=read_head_status(record_path),
+                )
+            unit_ids, fired = chain_units(items, threshold)
+            fed = feed(state, unit_ids, fired)
+        except (ChainError, ValueError) as exc:
+            print(f"warrant: {exc}", file=sys.stderr)
+            return EXIT_BAD_INPUT
+        from .intake.recheck import apply_chain, require_chain_replaced
+
+        result = apply_chain(result, fed)
+        require_chain_replaced(result)
+
+    payload = result.to_payload()
+    payload["chain"] = fed.to_payload() if fed is not None else None
+
+    if fed is None and args.fork:
+        print("warrant: --fork only applies to a chained recheck (--since or "
+              "--horizon-labels).", file=sys.stderr)
+        return EXIT_BAD_INPUT
 
     source = Path(args.input)
-    out = Path(args.out) if args.out else source.with_suffix(source.suffix + ".recheck.json")
-    write_json_artifact(out, result.to_payload(), config)
+    if fed is None:
+        default = source.with_suffix(source.suffix + ".recheck.json")
+    else:
+        # A chained record is named by its link, so exporting to one filename
+        # every week cannot overwrite last week's link (DECISIONS 194, C).
+        default = source.with_suffix(source.suffix + f".recheck-{fed.state.sequence:04d}.json")
+    out = Path(args.out) if args.out else default
+    try:
+        # Exclusive create for a chained record: the refusal and the write are one
+        # step, with no window between a check and a truncating open (194).
+        from .intake.chain import seal_record
+
+        write_json_artifact(out, payload, config, exclusive=fed is not None,
+                            seal_with=seal_record if fed is not None else None)
+    except FileExistsError:
+        print(
+            f"warrant: {out} already exists. A chained recheck never writes over a "
+            "record: each link is evidence the next depends on. Choose another --out.",
+            file=sys.stderr,
+        )
+        return EXIT_BAD_INPUT
+    if fed is not None:
+        # The head moves to the record as written, provenance included, so the
+        # next --since is checked against exactly these bytes' content (194).
+        from .intake.chain import canonical_sha256, write_head
+
+        written = json.loads(out.read_text(encoding="utf-8"))
+        write_head(record_path, canonical_sha256(written), fed.state.sequence,
+                   status=written.get("status"))
     if not args.quiet:
-        print(render_recheck(result))
+        print(render_recheck(result, chain=fed))
     print(f"  record written to {out}")
 
     if args.require_valid and result.status is not WarrantStatus.VALID:
@@ -482,6 +779,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         return _recheck(args)
     if args.command == "plan":
         return _plan(args)
+    if args.command == "chain":
+        return _chain(args)
+    if args.command == "release":
+        from .release.cli import run
+
+        return run(args)
     raise AssertionError(f"unreachable: unhandled command {args.command!r}")
 
 

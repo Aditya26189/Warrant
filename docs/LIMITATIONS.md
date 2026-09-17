@@ -244,6 +244,85 @@ stated here.
 - **There is no labelled agent-action trace set.** The gate is measured on
   declared scenarios. `DECISIONS.md` 171.
 
+### 3.5 The recheck chain catches a breach less reliably at a monthly cadence
+
+`warrant recheck --horizon-labels / --since` (`DECISIONS.md` 193, 194) bounds the
+chance that the chain's sequential false-positive statistic falsely revokes a sound
+detector over its declared negatives. A revocation because the score distribution
+moved is a separate check, outside that bound. The statistic's bound held
+in every setting simulated: at most **0.012** of years across three breach sizes
+and four cadences, against a limit of 0.0646 (`DECISIONS.md` 196,
+`results/chain_detection/grid.json`).
+
+**Detection is not uniform.** Each breach size was rechecked at its own 0.80-power
+size -- 628, 191 and 59 negatives. At those sizes, weekly rechecks caught a breach
+within 13 weeks in at least 0.9900 of simulated years, and **monthly rechecks caught
+it within three months in only 0.8325 to 0.8970** -- a breach missed for a quarter
+in about one year in six to one in ten. **The miss rate depends on the labels per
+recheck as much as on the breach size**: the larger breaches were rechecked with
+far fewer labels, so these figures do not order detection by breach size at
+comparable effort (`DECISIONS.md` 196, review).
+
+What this does not cover: one budget (0.05), step changes, independent fresh
+samples, the recheck sizes `plan` quotes at power 0.80, and a fixed number of
+negatives in every recheck -- a real chain that exhausts its horizon early is not
+live through the last window. `plan` quotes no
+detection figure, and should not, for settings outside this grid.
+
+### 3.6 A warrant is exact about its labels and cannot see whether they are right
+
+Every certificate is a statement about the `label` column it was given. Since
+`DECISIONS.md` 197 each one says how far it depends on it, and on this project's
+own measured TriviaQA certificates that is not far. **Between 2 and 8 flagged
+positives that are really clean take a certificate from at least 0.95 to below
+0.80 confidence**, across 60 certified rows (3 probes x 20 budgets;
+`results/label_sensitivity/triviaqa.json`, `DECISIONS.md` 199). How many errors a
+certificate tolerates is set by its negatives, budget and alpha, not by the
+detector. A detector that flags more positives is exposed to more of the costly
+kind. The figure is for the certificate as issued, at its threshold, and counts
+one error kind at a time. It does not say that corrected labels could not be
+certified: they could be, at another threshold and another recall.
+
+**What was measured.** The labels are lenient alias matching. Strict exact match
+on the same responses disagrees on 41 of 600 test items (kappa 0.8640
+[0.8213, 0.9035]), every one a response lenient calls correct. Counting all of
+them as labelling errors leaves the lowest certificate at 0.8127.
+
+**What was not.** A correct answer whose wording is missing from the alias list
+is labelled incorrect by both rules, so no comparison of the two can see it. When
+flagged, it is exactly the costly error: at budget 0.20, 8 of `last_token`'s 179
+flagged positives would take its certificate below 0.80. How many exist is
+unknown. What would close it is a blind human audit of a sample of the flagged
+lenient-incorrect answers.
+
+On the customer path, an optional `label_2` column measures agreement beside the
+warrant and changes nothing in it (`docs/INPUT.md`). Recall and precision
+intervals are still silent about label error, and a chained recheck carries no
+sensitivity. **On a grouped file, kappa's interval resamples item pairs as though
+they were independent**, so it is too narrow when items in a group agree with
+each other; 400 rows made of four repeated groups report the same interval as 400
+independent rows. A fix is pre-registered by Codex and not merged on this line.
+
+### 3.7 Most records the customer CLI writes can be edited without detection
+
+A chained recheck record is sealed over every field, and `warrant chain verify`
+recomputes each seal (`DECISIONS.md` addendum 2026-09-17). A release evaluation is
+sealed and recomputed by `warrant release verify`. **Nothing else is.** A `certify`
+warrant, a frontier record, an unchained recheck and a `plan` record carry no seal,
+and no command verifies them. `recheck` reads the warrant it is given as written.
+
+Two limits apply even to the sealed records:
+
+- **A seal is a checksum, not a signature.** Anyone who can write the records can
+  recompute every seal consistently. It catches an edit made without recomputing,
+  not a forger.
+- **A chained record written before sealing is listed as `unsealed`**, not flagged.
+  Its chain state was checked; its status, bounds and labels were not.
+
+What would close it: a seal and a verifier for the certify warrant, which every
+later record depends on. A signature would need a key, and a key is custody this
+project does not hold.
+
 ---
 
 ## 4. Open items at submission
@@ -298,6 +377,19 @@ git fetch origin "refs/notes/*:refs/notes/*"
 Without that fetch a reader sees the withdrawn claim and not its correction.
 The paired comparison found the reduction cost **0.0110 AUROC [0.0026,
 0.0200]**, an interval excluding zero. `DECISIONS.md` 081.
+
+### 4.4 PSI's smoothing epsilon is not declared in config — **open**
+
+The `drift/psi.py` module docstring says the epsilon that floors an empty bin "is
+declared in config rather than buried". It is not: it is the module constant
+`DEFAULT_EPSILON`, `drift/null_band.py` repeats the same value as a keyword
+default, and `config.yaml` has no such key. Because the live computation and the
+null band use the same value, no PSI figure or band is inconsistent. What is wrong
+is the statement, and the knob a reviewer is told exists.
+
+`drift/` is a read-only zone, so this is recorded rather than fixed. What would
+close it: a `drift` config key read by both call sites, or a docstring that says
+the value is a constant.
 
 ---
 

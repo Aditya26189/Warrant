@@ -195,6 +195,8 @@ INVARIANTS: tuple[Invariant, ...] = (
 DERIVED_CLAIMS: tuple[tuple[str, str], ...] = (
     ("controlplane/economics/feasibility.py", "abstention_floor"),
     ("controlplane/economics/review.py", "recall_sample_size"),
+    ("controlplane/economics/detection_grid.py", "run_grid"),
+    ("controlplane/economics/schedules.py", "simulate"),
     ("controlplane/economics/sizing.py", "negatives_for_detection"),
     ("controlplane/economics/sizing.py", "smallest_detectable_at"),
     # DECISIONS 183: the power-based sizes that replaced 146's in the plan.
@@ -202,7 +204,13 @@ DERIVED_CLAIMS: tuple[tuple[str, str], ...] = (
     ("controlplane/economics/sizing.py", "negatives_for_power"),
     ("controlplane/economics/sizing.py", "false_revocation_in_year"),
     ("controlplane/economics/sizing.py", "monitoring_plan"),
+    ("controlplane/intake/certify.py", "certify_budget"),
+    # DECISIONS 192: the frontier-selection study.
+    ("controlplane/intake/selection.py", "joint_miscoverage"),
+    ("controlplane/intake/selection.py", "pick_rule_miscoverage"),
+    ("controlplane/intake/selection.py", "row_miscoverage"),
     ("controlplane/intake/certify.py", "certify_items"),
+    ("controlplane/intake/chain.py", "feed"),
     ("controlplane/intake/recheck.py", "smallest_detectable_breach"),
     ("controlplane/intake/recheck.py", "negatives_needed_to_detect"),
     ("controlplane/sampling/estimator.py", "estimate_on_traffic"),

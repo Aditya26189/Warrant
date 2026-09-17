@@ -1,8 +1,8 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-13T21:57:14+00:00",
-    "git_commit": "febe08c0949c54889dce83faa1abf0612a357a0f",
-    "git_branch": "main",
+    "timestamp_utc": "2026-09-14T18:46:43+00:00",
+    "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+    "git_branch": "fix/recall-assurance",
     "dirty": false,
     "dirty_paths": [],
     "dirty_excludes": "results",
@@ -24,7 +24,7 @@
       "cuda_available": false,
       "device_name": "cpu"
     },
-    "config_hash": "533fb74983fcd8af",
+    "config_hash": "2640a176a26a80a0",
     "seed": 1729,
     "config": {
       "seed": 1729,
@@ -115,7 +115,8 @@
         ],
         "null_control_min_repeats": 8,
         "null_control_max_repeats": 200,
-        "calibration_tolerance": 0.25
+        "calibration_tolerance": 0.25,
+        "recheck_power": 0.8
       },
       "drift": {
         "window_size": 200,
@@ -141,7 +142,8 @@
           0.05,
           0.02
         ],
-        "blind_queue": true
+        "blind_queue": true,
+        "margin_assurance": 0.8
       },
       "policy": {
         "engine": "opa",

@@ -51,6 +51,9 @@ _W = load_config(_PROJECT_ROOT / "config.yaml").workload
 _FLAG_RATE = _W.base_error_rate * _W.measured_tpr + (1 - _W.base_error_rate) * _W.measured_fpr
 
 
+#: sampling.margin_assurance, restated so a changed declaration fails loudly here.
+ASSURANCE = 0.80
+
 def _sensitivity():
     return recall_sensitivity(
         recall=_W.measured_tpr,
@@ -82,7 +85,7 @@ def test_sizing_derivative() -> None:
     # ceil() alone moves the ratio by 2%, which would make this gate a statement
     # about integer arithmetic rather than about the derivative.
     margin = 0.005
-    for_recall = labels_for_recall(
+    for_recall = labels_for_recall(assurance=ASSURANCE, 
         sensitivity=sensitivity, margin=margin, basis="normal"
     )
     for_prevalence = labels_for_prevalence(
@@ -136,7 +139,7 @@ def test_sizing_units() -> None:
     two differently-named functions rather than through one argument.
     """
     s = _sensitivity()
-    recall_plan = labels_for_recall(sensitivity=s, margin=0.05)
+    recall_plan = labels_for_recall(assurance=ASSURANCE, sensitivity=s, margin=0.05)
     prevalence_plan = labels_for_prevalence(
         prevalence=s.unflagged_prevalence, margin=0.05
     )
@@ -149,7 +152,7 @@ def test_sizing_units() -> None:
     # A plan also has to say which interval it was sized against.
     assert recall_plan.basis in ("exact", "normal")
     with pytest.raises(SizingError, match="basis"):
-        labels_for_recall(sensitivity=s, margin=0.05, basis="whatever")
+        labels_for_recall(assurance=ASSURANCE, sensitivity=s, margin=0.05, basis="whatever")
 
 
 def test_stratified_unbiased() -> None:
@@ -357,7 +360,7 @@ def test_a_plan_is_honoured_by_the_estimator() -> None:
     confirmed = int(round(s.confirmed_errors))
     pool = int(round(s.unflagged_pool))
     for margin in (0.05, 0.02, 0.01):
-        plan = labels_for_recall(sensitivity=s, margin=margin)
+        plan = labels_for_recall(assurance=ASSURANCE, sensitivity=s, margin=margin)
         assert plan.feasible
         errors = int(round(s.unflagged_prevalence * plan.labels))
         estimate = estimate_on_traffic(
@@ -384,7 +387,7 @@ def test_the_normal_approximation_does_not_deliver_its_margin() -> None:
     confirmed = int(round(s.confirmed_errors))
     pool = int(round(s.unflagged_pool))
     for margin in (0.05, 0.02, 0.01):
-        plan = labels_for_recall(sensitivity=s, margin=margin)
+        plan = labels_for_recall(assurance=ASSURANCE, sensitivity=s, margin=margin)
         assert plan.labels_exact is not None and plan.labels_exact > plan.labels_normal
         errors = int(round(s.unflagged_prevalence * plan.labels_normal))
         estimate = estimate_on_traffic(
@@ -407,7 +410,7 @@ def test_the_spec_worked_example_reproduces() -> None:
     """
     s = _sensitivity()
     for margin, spec_value in ((0.05, 847), (0.02, 5292)):
-        plan = labels_for_recall(sensitivity=s, margin=margin, basis="normal")
+        plan = labels_for_recall(assurance=ASSURANCE, sensitivity=s, margin=margin, basis="normal")
         assert plan.labels == pytest.approx(spec_value, rel=0.002)
 
 
@@ -599,7 +602,7 @@ def test_an_unreachable_margin_is_refused_not_rounded_up() -> None:
     margin, which is what makes the refusal worth having.
     """
     s = _sensitivity()
-    plan = labels_for_recall(sensitivity=s, margin=0.001)
+    plan = labels_for_recall(assurance=ASSURANCE, sensitivity=s, margin=0.001)
     assert not plan.feasible
     assert plan.labels_normal > 0
     assert "no sample" in plan.refusal_reason
@@ -613,7 +616,7 @@ def test_the_stable_threshold_holds_and_keeps_holding() -> None:
     the interval at ``(n, k)`` does not narrow with every sample added.
     """
     s = _sensitivity()
-    plan = labels_for_recall(sensitivity=s, margin=0.05)
+    plan = labels_for_recall(assurance=ASSURANCE, sensitivity=s, margin=0.05)
     flagged = int(round(s.flagged_pool))
     confirmed = int(round(s.confirmed_errors))
     pool = int(round(s.unflagged_pool))

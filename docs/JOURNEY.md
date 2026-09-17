@@ -10,6 +10,17 @@ and why.
 For the same story as pictures, [DIAGRAMS.md](DIAGRAMS.md) §10. For the phase
 gates as they were written in advance, [TASKS.md](TASKS.md).
 
+> **Two numberings, not one.** The *build phases* 0–12 are the order
+> [TASKS.md](TASKS.md) set before the submission. The *sprints* that followed also
+> run 0–12, and each closed with a report at `reports/PHASE-<N>.md`. A reference
+> to "Phase 6" means the action gate in the build plan and the sprint that built
+> it; this page always says which.
+
+**Contents:** [Round 1](#round-1--measuring-one-detector) · [The turn](#the-turn--from-a-detector-to-a-warrant) ·
+[Build phases](#phase-by-phase) · [Five things that changed what we believed](#the-five-things-that-changed-what-we-believed) ·
+[The reorganisation](#the-reorganisation) · [After the build: the sprints](#after-the-build--the-sprints) ·
+[What changed our mind after the build](#what-changed-our-mind-after-the-build) · [Where it stands](#where-it-stands)
+
 ---
 
 ## Round 1 — measuring one detector
@@ -81,11 +92,11 @@ gate composed after the number is visible is not a gate.
 | **2.5 — Demo runner** | Two panes and a stream player, ugly on purpose | A recorded stream plays and "prove it" runs a **real** validation. Grown every phase after, rather than built at the end |
 | **3 — Evaluation sets** | Hand-built Hinglish PII, hard negatives, long-context and canary sets, frozen and content-hashed | Every set registered and hashed; the PII sets **hand-written, not LLM-generated and called ground truth** |
 | **4 — The warrant matrix** | Every (detector × envelope) cell as VALID / REFUSED / UNVALIDATED, plus routing | The matrix renders with every cell populated and the three states behave differently |
-| **5 — Drift and revocation** | Envelope features, PSI, MMD, the revocation ladder, model-version invalidation | Fed a shifted distribution as live traffic, the system detects, revokes, **routes to a detector that still holds a warrant, adopts its bounds**, and writes a certificate — with no manual trigger |
-| **6 — On-traffic warrant** | **Specified, not built.** The stratified estimator and the computed price list | — |
+| **5 — Drift and revocation** | PSI on input token length, the revocation ladder, model-version invalidation. The other four declared envelope features and MMD were **not built** | Fed a shifted distribution as live traffic, the system detects, revokes, **routes to a detector that still holds a warrant, adopts its bounds**, and writes a certificate — with no manual trigger |
+| **6 — On-traffic warrant** | **Specified, not built during the build.** The stratified estimator and the computed price list | Built afterwards, in sprint 4 |
 | **7 — Policy engine** | Rego bundles as versioned data, load-time warrant resolution, three profiles | A bundle naming an unwarranted operating point **fails to load**, and three profiles give three actions at three points on one measured curve |
 | **8 — Detector adapters** | The probe adapter, the three Presidio configurations, our reference PII detector | Stock Presidio is **refused** a warrant, with its measured recall inside the refusal reason |
-| **9 — Action gate** | **Specified, not built.** Reversibility registry, session Rule-of-Two, the gate | — |
+| **9 — Action gate** | **Specified, not built during the build.** Reversibility registry, session Rule-of-Two, the gate | Built afterwards, in sprint 6 |
 | **10 — Demo harness** | The five beats, rendered from committed artifacts | The demo runs end to end twice without intervention, and the drift beat shows **routing**, not just an alarm |
 | **11 — Gateway adapter** | A LiteLLM-shaped adapter that returns certificates | Lowest value, first to be cut if pressed |
 | **12 — Submission** | The claim table, the verification tiers, the clean-clone gate, the documentation audit | Every number traces to an artifact; the history reads as an account to someone who was not here |
@@ -176,7 +187,93 @@ after. The full mapping is [PATHS.md](PATHS.md).
 
 ---
 
-## Where it ended
+## After the build — the sprints
+
+The submission ended the build, not the work. Each sprint asked one question,
+registered its criteria before it ran, and closed with a report that leads with
+the answer, favourable or not. The reports are the primary account; this is the
+index to them.
+
+| Sprint | The question | The answer, in short |
+|---|---|---|
+| [0](../reports/PHASE-0.md) | Is the probe's recall a ceiling, or a policy choice? | A policy choice: the false-positive budget was binding, not the probe |
+| [1](../reports/PHASE-1.md) | Can any of it be quoted yet? | Yes: certified on validation and scored on test, the conclusion stood |
+| [2](../reports/PHASE-2.md) | Can anyone else use it? | Yes: `warrant certify` on a customer's own file, reaching a warrant or a refusal in one command |
+| [3](../reports/PHASE-3.md) | Does it mean anything outside the repository? | Yes, on other people's detectors and public data, and our detector is not the best entry |
+| [4](../reports/PHASE-4.md) | Does the first clause, the on-traffic warrant, exist? | It did not, and the sizing quoted in its place had been in the wrong units. Built, and the sizing corrected |
+| [5](../reports/PHASE-5.md) | Can the method certify a detector that emits no score? | Not yet for a real one; what repeated sampling buys is now priced |
+| [6](../reports/PHASE-6.md) | Is there a control that survives a detector losing? | Yes, the action gate, but not as specified: the specified Rule-of-Two let the canonical injection through |
+| [7](../reports/PHASE-7.md) | Does the evidence reproduce, or only pass its own checks? | It reproduces from the committed caches |
+| [8](../reports/PHASE-8.md) | Does the outward-facing material claim what the evidence supports? | No, and it was wrong in both directions |
+| [9](../reports/PHASE-9.md) | Does the repository pass its own documentation audit? | It had never been run; it failed most lines, and the audit is now checkable |
+| [10](../reports/PHASE-10.md) | Does the specification describe what shipped? | No; each section walked and reconciled |
+| [11](../reports/PHASE-11.md) | Does it meet the definition of done? | Everything code can produce is produced; what remains no code closes |
+| [12](../reports/PHASE-12.md) | What in the customer path still promises more than its evidence? | Three things, each fixed or bounded; then the chain of rechecks, label error, and an independent review's findings |
+
+### What sprint 12 and its addenda added
+
+- **Rechecks as one test.** A year of rechecks is a change-detection problem, so
+  the rule was chosen by a pre-registered comparison, then carried in the records
+  as a chain (`DECISIONS.md` 187, 193, 196).
+- **An independent review of the chain** found a revocation that could be
+  continued past and fields that could be edited with verification still clean.
+  The fixes are 194 and two dated addenda, the last of which seals every record
+  and tests the whole class rather than the instances.
+- **A budget picked off the frontier** is certified at the level the frontier
+  held it to (192, 195).
+- **Label error.** Every certificate says how many wrong labels it can take, and
+  a second reviewer is measured beside it, never obeyed (197, 198, 199).
+- **Release evidence**, a separate pre-registered workflow for one release
+  decision, built in parallel (184–186).
+- **The clean-clone gate** records the one commit it tested (200).
+
+---
+
+## What changed our mind after the build
+
+The same pattern as the five above, at a larger scale: each time, a control
+existed wherever a number might be arithmetically wrong, and nowhere else.
+
+### 6. The error the project was built to prevent was in the project
+
+`CLAUDE.md`'s silent-failure list opens with *sizing a prevalence and calling it
+recall*. The repository's own label budget did exactly that, in the correct
+arithmetic and the wrong units, for four sprints (`DECISIONS.md` 147).
+
+**What changed:** sizing goes through the derivative of recall, in a module whose
+docstring leads with the defect, and a test forbids mixing scenarios.
+
+### 7. The rule as specified did not fire
+
+The specification's Rule-of-Two read the session **before** the call. In the
+canonical injection the dangerous call is the one that sets the third flag, so
+the rule allowed it (`DECISIONS.md` 156).
+
+**What changed:** the rule counts the call being made, and the defect is kept as a
+test so it cannot come back.
+
+### 8. A sample size is a probability, not a count
+
+A recheck sized so that an observed breach would revoke catches a true breach
+about half the time; the recall price, sized at its expected count, met its margin
+about half the time (`DECISIONS.md` 183, 191).
+
+**What changed:** every sample size the customer sees is quoted at a declared
+power or assurance.
+
+### 9. The verifier checked its own computation, not the record
+
+The chain verifier recomputed what it knew how to recompute and never compared
+it with what the record presented. Instances were fixed one at a time until a
+schema-driven audit showed the class was much larger than the instances.
+
+**What changed:** every chained record is sealed whole, and the test walks every
+field of real records, mutates each one alone, and requires the verifier to
+notice. A field added later is covered without anyone adding it.
+
+---
+
+## Where it stands
 
 - A validation harness whose five controls include one that must **fail** on a
   deliberately broken input to pass.
@@ -184,13 +281,18 @@ after. The full mapping is [PATHS.md](PATHS.md).
   `UNVALIDATED`, several are `REFUSED` — including detectors we chose to point
   the machinery at — and the rest carry bounds with intervals and an expiry.
 - A drift monitor with a simulated null and a revocation ladder that routes
-  rather than alarms.
-- A policy layer that fails closed on a missing warrant.
-- A claim table that a stranger can check on a laptop in three minutes, backed
-  by frozen per-item scores and a clean-clone gate.
-- Two phases specified and not built, said plainly in
-  [LIMITATIONS.md](LIMITATIONS.md), with every cost figure marked as the
-  declared estimate it is.
+  rather than alarms, on one feature.
+- A policy layer that fails closed on a missing warrant, and an action gate whose
+  first two rules read no detector.
+- An on-traffic estimator and a computed price list, over a declared workload.
+- A command a validation team runs on its own detector: certify or refuse,
+  recheck, chain, plan, and a separate release workflow.
+- A claim table that a stranger can check on a laptop in minutes, backed by
+  frozen per-item scores and a clean-clone gate.
+
+**What is still not established**, and no amount of code closes: no customer's
+traffic, no human labels, no pilot, and no evidence that anyone will pay.
+[LIMITATIONS.md](LIMITATIONS.md) and the last sprint report say so in full.
 
 The through-line from Round 1 to here is one habit: **the number is not the
 deliverable — the number plus what it is worth, plus what would make it stop

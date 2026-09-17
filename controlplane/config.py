@@ -34,7 +34,7 @@ from dataclasses import fields, is_dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from types import UnionType
-from typing import Any, Optional, Union, get_args, get_origin, get_type_hints
+from typing import Any, Callable, Optional, Union, get_args, get_origin, get_type_hints
 
 import yaml
 
@@ -438,6 +438,9 @@ class SamplingConfig:
     double_label_fraction: float
     recall_margin_tiers: tuple[float, ...]
     blind_queue: bool
+    #: Probability a recall plan realises its margin (DECISIONS 191). The default
+    #: mirrors config.yaml so fixture configs written before 191 still load.
+    margin_assurance: float = 0.80
 
     def __post_init__(self) -> None:
         allowed = {"proportional", "neyman"}
@@ -458,6 +461,12 @@ class SamplingConfig:
                 "sampling.expected_design_effect must be in (0, 1], got "
                 f"{self.expected_design_effect}. It is a variance ratio: 1.0 is no "
                 "gain, and a value above 1 would claim Neyman is worse than SRS."
+            )
+        if not 0.5 <= self.margin_assurance < 1.0:
+            raise ConfigError(
+                "sampling.margin_assurance must be in [0.5, 1) -- it is the probability "
+                "a recall plan realises its margin, and below 0.5 a plan misses its "
+                f"margin more often than it meets it. Got {self.margin_assurance}"
             )
         if self.score_bands < 2:
             raise ConfigError(
@@ -1246,6 +1255,9 @@ def write_json_artifact(
     path: str | os.PathLike,
     payload: dict[str, Any],
     config: Optional[Config] = None,
+    *,
+    exclusive: bool = False,
+    seal_with: Optional[Callable[[dict[str, Any]], dict[str, Any]]] = None,
 ) -> Path:
     """Write a results artifact with its provenance block attached.
 
@@ -1258,6 +1270,14 @@ def write_json_artifact(
         path: Destination JSON path.
         payload: The stage's own results.
         config: Config to stamp into the provenance block.
+        exclusive: Create the file or fail with :class:`FileExistsError`, in one
+            step. For records that must never replace an earlier one -- a
+            chained recheck (``DECISIONS.md`` 194) -- where checking first and
+            then opening leaves a window.
+        seal_with: Seals the finished document, provenance included, before it
+            is written -- for chained recheck records (addendum 2026-09-17). It
+            receives the document as it will be read back, a JSON round-trip, so
+            a verifier reading the file reproduces exactly what was sealed.
 
     Returns:
         The path written.
@@ -1265,7 +1285,9 @@ def write_json_artifact(
     out = Path(path)
     out.parent.mkdir(parents=True, exist_ok=True)
     document = {"provenance": provenance(config), **payload}
-    with out.open("w", encoding="utf-8") as fh:
+    if seal_with is not None:
+        document = seal_with(json.loads(json.dumps(document, default=_json_default)))
+    with out.open("x" if exclusive else "w", encoding="utf-8") as fh:
         json.dump(document, fh, indent=2, sort_keys=False, default=_json_default)
         fh.write("\n")
     logging.getLogger(__name__).info("wrote %s", out)
@@ -1283,7 +1305,7 @@ def read_json_artifact(path: str | os.PathLike) -> dict[str, Any]:
     if not p.is_file():
         raise FileNotFoundError(
             f"{p} not found. Stages read each other's output from disk; run the "
-            "earlier stage first (see scripts/run_all.py for the order)."
+            "earlier stage first (docs/RUNBOOK.md gives the order)."
         )
     with p.open("r", encoding="utf-8") as fh:
         return json.load(fh)

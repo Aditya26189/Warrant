@@ -22,22 +22,22 @@ At the declared workload `enterprise-3pct` (N=200,000, base error rate 0.03, imp
 
 | subject | margin | regime | labels | normal approx | superseded sizing | understated |
 |---|---|---|---|---|---|---|
-| declared workload point | ±0.05 | month one | **1,014** | 846 | 187 | 5.4× |
-| declared workload point | ±0.05 | steady state | **804** | 671 | 149 | 5.4× |
-| declared workload point | ±0.02 | month one | **5,566** | 5,286 | 1,168 | 4.8× |
-| declared workload point | ±0.02 | steady state | **4,413** | 4,192 | 926 | 4.8× |
-| customer_support @ P-customer-support | ±0.05 | month one | **1,808** | 1,645 | 262 | 6.9× |
-| customer_support @ P-customer-support | ±0.05 | steady state | **1,434** | 1,305 | 208 | 6.9× |
-| customer_support @ P-customer-support | ±0.02 | month one | **10,636** | 10,280 | 1,633 | 6.5× |
-| customer_support @ P-customer-support | ±0.02 | steady state | **8,434** | 8,151 | 1,295 | 6.5× |
-| decision_support @ P-decision-support | ±0.05 | month one | **4,049** | 3,839 | 299 | 13.6× |
-| decision_support @ P-decision-support | ±0.05 | steady state | **3,211** | 3,044 | 237 | 13.6× |
-| decision_support @ P-decision-support | ±0.02 | month one | **24,591** | 23,989 | 1,863 | 13.2× |
-| decision_support @ P-decision-support | ±0.02 | steady state | **19,499** | 19,021 | 1,478 | 13.2× |
-| internal_knowledge @ P-internal-knowledge | ±0.05 | month one | **3,582** | 3,379 | 355 | 10.1× |
-| internal_knowledge @ P-internal-knowledge | ±0.05 | steady state | **2,840** | 2,679 | 281 | 10.1× |
-| internal_knowledge @ P-internal-knowledge | ±0.02 | month one | **21,598** | 21,116 | 2,214 | 9.8× |
-| internal_knowledge @ P-internal-knowledge | ±0.02 | steady state | **17,125** | 16,743 | 1,756 | 9.8× |
+| declared workload point | ±0.05 | month one | **1,399** | 846 | 187 | 7.5× |
+| declared workload point | ±0.05 | steady state | **1,109** | 671 | 149 | 7.5× |
+| declared workload point | ±0.02 | month one | **6,518** | 5,286 | 1,168 | 5.6× |
+| declared workload point | ±0.02 | steady state | **5,168** | 4,192 | 926 | 5.6× |
+| customer_support @ P-customer-support | ±0.05 | month one | **2,283** | 1,645 | 262 | 8.7× |
+| customer_support @ P-customer-support | ±0.05 | steady state | **1,810** | 1,305 | 208 | 8.7× |
+| customer_support @ P-customer-support | ±0.02 | month one | **11,803** | 10,280 | 1,633 | 7.2× |
+| customer_support @ P-customer-support | ±0.02 | steady state | **9,359** | 8,151 | 1,295 | 7.2× |
+| decision_support @ P-decision-support | ±0.05 | month one | **4,068** | 3,839 | 299 | 13.6× |
+| decision_support @ P-decision-support | ±0.05 | steady state | **3,226** | 3,044 | 237 | 13.7× |
+| decision_support @ P-decision-support | ±0.02 | month one | **24,659** | 23,989 | 1,863 | 13.2× |
+| decision_support @ P-decision-support | ±0.02 | steady state | **19,553** | 19,021 | 1,478 | 13.2× |
+| internal_knowledge @ P-internal-knowledge | ±0.05 | month one | **4,101** | 3,379 | 355 | 11.6× |
+| internal_knowledge @ P-internal-knowledge | ±0.05 | steady state | **3,252** | 2,679 | 281 | 11.6× |
+| internal_knowledge @ P-internal-knowledge | ±0.02 | month one | **22,886** | 21,116 | 2,214 | 10.3× |
+| internal_knowledge @ P-internal-knowledge | ±0.02 | steady state | **18,147** | 16,743 | 1,756 | 10.3× |
 
 **labels** is the smallest sample from which the exact interval holds the margin and keeps holding it. **normal approx** is `SPEC.md` §6.2's closed form, which under-delivers (`DECISIONS.md` 149). **superseded sizing** is what `economics/review.py` returned before `DECISIONS.md` 147.
 

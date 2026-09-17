@@ -26,6 +26,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from controlplane.config import load_config, provenance, setup_logging  # noqa: E402
 from controlplane.report.clean_clone import (  # noqa: E402
+    check_record,
     render,
     run_clean_clone_gate,
     write_artifact,
@@ -61,6 +62,8 @@ def main() -> int:
 
     setup_logging()
     config = load_config(args.config)
+    # DECISIONS 200: the record describes the moment of the clone, not of writing.
+    before = provenance(config)
 
     result = run_clean_clone_gate(
         PROJECT_ROOT,
@@ -70,7 +73,11 @@ def main() -> int:
     )
     print(render(result))
 
-    write_artifact(result, Path(args.out), provenance(config))
+    refusal = check_record(result, before, provenance(config))
+    if refusal:
+        print(f"\nclean-clone gate: record NOT written -- {refusal}", file=sys.stderr)
+        return 1
+    write_artifact(result, Path(args.out), before)
     print(f"\nwrote {args.out}")
     return 0 if result.ok else 1
 

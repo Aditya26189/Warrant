@@ -2,6 +2,29 @@
 
 Companion to `CLAUDE.md`. Reference snippets are illustrative; preserve the semantics exactly.
 
+Customer extension (DECISIONS 184): `controlplane.release` registers identity,
+scope, label meaning, fixed criteria, expiry and disjoint development/holdout
+ID manifests locally. Content hashes permit checks against retained copies;
+they are not signatures or independently trusted timestamps. Existing research
+and customer certification commands retain their original contracts.
+
+Release evaluation requires exactly the registered holdout IDs, unchanged
+declared identity and an unexpired contract. Grouped data is rejected. FPR,
+recall, precision, flag rate and base rate share alpha equally across exact
+two-sided binomial intervals. Lift conservatively propagates recall/flag-rate
+bounds. VALID requires both registered confidence bounds to clear; an observed
+violation is REFUSED and an inconclusive bound is UNVALIDATED. Verification
+recomputes the measurement and reports STALE after expiry. These claims assume
+IID sampling and an untouched holdout; they do not extend across repeated studies.
+
+The additive CLI is `warrant release register|evaluate|verify`. Registration
+reads specification JSON and two ID lists. Evaluation reads identity JSON and
+the existing scored-file format, writing one companion `.evaluation.json` file
+without replacement. Verification recomputes against the retained inputs.
+`--require-valid` returns 1 for other current states; malformed input returns 2.
+Release alone opts into single-class intake so missing evidence can be recorded;
+legacy callers keep rejecting it. Synthetic human summaries suppress metrics.
+
 ---
 
 ## 1. Core data model

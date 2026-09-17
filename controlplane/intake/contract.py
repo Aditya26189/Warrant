@@ -22,8 +22,11 @@ probe can exist, and against a detector nobody here has ever seen.
 ===========  ==========================================================
 
 Optional ``group`` clusters items that are not independent — several items from
-one document, one customer, one template. Everything else in the file is carried
-into the artifact untouched and never used in a computation.
+one document, one customer, one template. Optional ``label_2`` is a second
+reviewer's label, blank on items that were not double-labelled; it is measured
+beside the certificate and never changes it (``DECISIONS.md`` 197). Everything
+else in the file is carried into the artifact untouched and never used in a
+computation.
 
 **Nothing is coerced, filled or dropped.** A file that does not meet the
 contract fails with a message naming the column and what was expected. The one
@@ -37,6 +40,7 @@ from __future__ import annotations
 import csv
 import dataclasses
 import json
+from collections import Counter
 from pathlib import Path
 from typing import Any, Optional, Sequence
 
@@ -45,6 +49,7 @@ import numpy as np
 __all__ = [
     "GROUP_COLUMN",
     "REQUIRED_COLUMNS",
+    "SECOND_LABEL_COLUMN",
     "InputError",
     "ScoredItems",
     "load_scored_items",
@@ -58,6 +63,11 @@ REQUIRED_COLUMNS = ("id", "label", "score")
 #: Optional. Its presence changes the unit of inference, so it is never guessed
 #: at from a column that merely looks like one.
 GROUP_COLUMN = "group"
+
+#: Optional. A second reviewer's label on some items, blank on the rest. Read so
+#: agreement can be published beside a warrant (``CLAUDE.md``: kappa next to every
+#: warrant); it changes no verdict (``DECISIONS.md`` 197).
+SECOND_LABEL_COLUMN = "label_2"
 
 
 class InputError(ValueError):
@@ -80,6 +90,9 @@ class ScoredItems:
     groups: Optional[tuple[str, ...]]
     passthrough_columns: tuple[str, ...]
     source: str
+    #: ``label_2`` per item, ``None`` where the item was not double-labelled; the
+    #: whole field is ``None`` when the file has no such column.
+    second_labels: Optional[tuple[Optional[int], ...]] = None
 
     @property
     def n(self) -> int:
@@ -175,7 +188,7 @@ def _require_columns(columns: Sequence[str], source: str) -> None:
         )
 
 
-def _parse_label(raw: Any, *, row: int, source: str) -> int:
+def _parse_label(raw: Any, *, row: int, source: str, column: str = "label") -> int:
     text = str(raw).strip()
     if text in {"0", "1"}:
         return int(text)
@@ -189,7 +202,7 @@ def _parse_label(raw: Any, *, row: int, source: str) -> int:
     if value in (0.0, 1.0):
         return int(value)
     raise InputError(
-        f"{source} row {row}: label is {raw!r}, which is not 0 or 1. Labels are "
+        f"{source} row {row}: {column} is {raw!r}, which is not 0 or 1. Labels are "
         "binary ground truth — 1 means the detector SHOULD fire on this item, 0 "
         "means it should not. A probability or a class name is not a label here."
     )
@@ -213,11 +226,14 @@ def _parse_score(raw: Any, *, row: int, source: str) -> float:
     return value
 
 
-def load_scored_items(path: str | Path) -> ScoredItems:
+def load_scored_items(path: str | Path, *, require_both_classes: bool = True) -> ScoredItems:
     """Read a customer's scored items, refusing anything that breaks the contract.
 
     Args:
         path: A ``.csv`` or ``.jsonl`` file.
+        require_both_classes: Preserve legacy certification rejection by default.
+            Release evaluation opts out to report a missing denominator as
+            UNVALIDATED instead of discarding the study (DECISIONS 185).
 
     Returns:
         The parsed :class:`ScoredItems`.
@@ -252,6 +268,8 @@ def load_scored_items(path: str | Path) -> ScoredItems:
     scores: list[float] = []
     groups: list[str] = []
     has_groups = GROUP_COLUMN in columns
+    second: list[Optional[int]] = []
+    has_second = SECOND_LABEL_COLUMN in columns
 
     for number, row in enumerate(rows, start=2 if suffix == ".csv" else 1):
         for column in REQUIRED_COLUMNS:
@@ -275,8 +293,23 @@ def load_scored_items(path: str | Path) -> ScoredItems:
                     "than treated as one group of singletons."
                 )
             groups.append(str(key).strip())
+        if has_second:
+            value = row.get(SECOND_LABEL_COLUMN)
+            # Blank means "not double-labelled", the one blank this contract
+            # accepts: a second review of every item is not what anyone runs.
+            second.append(
+                None if value is None or str(value).strip() == ""
+                else _parse_label(value, row=number, source=source, column=SECOND_LABEL_COLUMN)
+            )
 
-    duplicates = sorted({i for i in ids if ids.count(i) > 1})
+    if has_second and all(value is None for value in second):
+        raise InputError(
+            f"{source}: {SECOND_LABEL_COLUMN!r} is present as a column but blank on "
+            "every row. That is an export mistake, not a second review; fill in the "
+            "items that were double-labelled, or drop the column."
+        )
+
+    duplicates = sorted(i for i, count in Counter(ids).items() if count > 1)
     if duplicates:
         shown = duplicates[:5]
         raise InputError(
@@ -288,7 +321,7 @@ def load_scored_items(path: str | Path) -> ScoredItems:
         )
 
     distinct = set(labels)
-    if len(distinct) < 2:
+    if require_both_classes and len(distinct) < 2:
         only = distinct.pop() if distinct else None
         raise InputError(
             f"{source}: every label is {only}. A detector cannot be certified "
@@ -299,7 +332,7 @@ def load_scored_items(path: str | Path) -> ScoredItems:
 
     passthrough = tuple(
         name for name in columns
-        if name not in REQUIRED_COLUMNS and name != GROUP_COLUMN
+        if name not in REQUIRED_COLUMNS and name not in (GROUP_COLUMN, SECOND_LABEL_COLUMN)
     )
     return ScoredItems(
         ids=tuple(ids),
@@ -308,4 +341,5 @@ def load_scored_items(path: str | Path) -> ScoredItems:
         groups=tuple(groups) if has_groups else None,
         passthrough_columns=passthrough,
         source=source,
+        second_labels=tuple(second) if has_second else None,
     )

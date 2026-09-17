@@ -100,7 +100,7 @@ survives it.
 
 | case | expected behaviour | test | artifact |
 |---|---|---|---|
-| envelope violation detected | PSI/MMD past the significant boundary revokes | `test_the_significant_boundary_revokes` | `results/warrant_matrix.json` |
+| envelope violation detected | PSI past the significant boundary revokes (MMD is not built, `DECISIONS.md` 172) | `test_the_significant_boundary_revokes` | `results/warrant_matrix.json` |
 | a real distribution shift | revokes rather than degrading quietly | `test_a_real_shift_revokes` | `results/warrant_matrix.json` |
 | insufficient data | decides nothing | `test_insufficient_data_decides_nothing` | — |
 | insufficient data after a revocation | does not lift it | `test_insufficient_data_does_not_lift_a_revoked_warrant` | — |
@@ -208,3 +208,110 @@ pass and nothing here reports a number about the probe.
 | healthy spread + low AUROC is a result, not a retry | re-authoring there is tuning the set until the detector passes | `test_a_healthy_spread_with_a_low_auroc_is_a_result_not_a_retry` | — |
 | the band is checked before the spread | a saturated IQR on an off-regime set is not saturation | `test_the_band_is_checked_before_the_spread` | — |
 | the spread is checked before the AUROC | a low AUROC on off-distribution activations is not a probe finding | `test_the_spread_is_checked_before_the_auroc` | — |
+
+## 11. The customer path: certify
+
+What `warrant certify` must do with a file nobody here has seen. The procedure is
+[INPUT.md](INPUT.md); the derivations are [METHODS.md](METHODS.md) §12–13.
+
+| case | expected behaviour | test | artifact |
+|---|---|---|---|
+| a file that breaks the contract | exits 2 and says why; nothing is certified or written | `test_a_bad_file_exits_two_and_says_why` | — |
+| a non-finite score | refused, never dropped | `test_a_non_finite_score_is_refused_not_dropped` | — |
+| an empty cell | never filled in | `test_an_empty_cell_is_never_filled_in` | — |
+| **too few clean negatives** | a refusal, not an error | `test_insufficient_evidence_is_a_refusal` | `examples/refuses.csv` |
+| the refusing example | refuses **and exits 0** | `test_the_refusing_example_refuses_and_exits_zero` | `examples/refuses.csv` |
+| the same data at a looser budget | certifies: the refusal was about evidence, not the detector | `test_the_refusing_example_certifies_at_a_looser_budget` | — |
+| `--require-warrant` | changes only the exit code, and still says why | `test_require_warrant_flips_the_exit_code_and_still_says_why` | — |
+| a certified result | carries an interval on every rate | `test_a_certified_result_carries_intervals_on_every_rate` | — |
+| the certified bound | is respected on the negatives supplied | `test_the_bound_is_respected_on_the_supplied_negatives` | — |
+| **unequal groups** | refused, because a cluster-level bound would be anticonservative | `test_unequal_groups_are_refused_rather_than_certified_anticonservatively` | — |
+| groups | change the unit of inference | `test_groups_change_the_unit_of_inference` | — |
+| the frontier on a grouped file | every row matches what `certify` would do | `test_every_frontier_row_matches_certify` | — |
+| **a budget picked off the frontier** | certified at the frontier row's level, with its threshold | `test_the_picked_warrant_carries_the_frontier_rows_threshold` | `results/frontier_selection/selection.json` |
+| a pick at the wrong level | refused | `test_a_selection_at_the_wrong_level_is_refused` | — |
+| a plain certify beside a frontier record | unchanged, but prints a notice | `test_the_default_is_unchanged_but_notices_the_frontier` | — |
+
+## 12. Rechecking a warrant
+
+| case | expected behaviour | test | artifact |
+|---|---|---|---|
+| a stable world | keeps its warrant | `test_a_stable_world_keeps_its_warrant` | — |
+| **a broken bound** | revokes | `test_a_broken_bound_revokes` | — |
+| revocation turns on the lower bound | not on failing to re-prove the promise | `test_the_lower_bound_is_the_one_recheck_revokes_on` | — |
+| no negatives in the new file | UNVALIDATED, never VALID | `test_no_negatives_is_untestable_not_valid` | — |
+| **the dead zone** | every verdict states its detection floor | `test_the_dead_zone_is_stated_with_every_verdict` | — |
+| the two failures | the summary keeps a broken bound and a moved distribution apart | `test_the_summary_keeps_the_two_failures_apart` | — |
+| PSI | judged against this file's own noise | `test_psi_is_judged_against_this_files_own_noise` | — |
+| PSI driven by empty bins | does not revoke | `test_a_psi_driven_by_empty_bins_does_not_revoke` | — |
+| a small file | gets no drift verdict | `test_a_small_file_gets_no_drift_verdict` | — |
+| a grouped warrant | rechecked in clusters, not items | `test_the_recheck_counts_clusters_not_items` | — |
+| a grouped warrant rechecked without groups | refused | `test_a_grouped_warrant_rechecked_without_groups_is_refused` | — |
+| **a recheck size** | catches the breach it is sized for with the planned power, not half the time | `test_the_sizes_146_quoted_catch_their_breach_half_the_time` | — |
+| independent rechecks | revoke a sound detector more often the more there are | `test_more_rechecks_revoke_a_sound_detector_more_often` | `results/recheck_schedules/comparison.json` |
+
+## 13. A chain of rechecks
+
+| case | expected behaviour | test | artifact |
+|---|---|---|---|
+| the chain | is the rule the pre-registered study measured | `test_a1_the_chain_is_the_rule_the_study_measured` | `results/recheck_schedules/comparison.json` |
+| a sound detector | keeps the chain's guarantee | `test_a1_the_chain_keeps_its_guarantee_on_a_sound_detector` | `results/chain_detection/grid.json` |
+| permuting a file | changes nothing | `test_a2_permuting_a_file_changes_nothing` | — |
+| **a drift revocation** | is not hidden by a chain | `test_f1_a_drift_revocation_is_not_hidden_by_a_chain` | — |
+| **a warrant revoked by drift** | is not continued through the CLI | `test_a_warrant_revoked_by_drift_is_not_continued_through_the_cli` | — |
+| `--fork` after a revocation | cannot restart a revoked warrant | `test_a_revoked_warrant_cannot_be_restarted_with_fork` | — |
+| a fork from an earlier valid link after a revocation | refused | `test_a_fork_from_an_earlier_valid_link_after_a_revocation_is_refused` | — |
+| head, fork and restart | an undeclared fork is refused; a declared one is recorded | `test_f5_head_fork_and_restart` | — |
+| a fork | is flagged by verify whatever the head check said | `test_a_fork_is_flagged_whatever_head_check_says` | — |
+| a unit id already consumed | refused, and the refusal names the id rule | `test_f3_the_refusal_names_the_id_rule` | — |
+| a chained record | is never overwritten | `test_a_chained_record_is_created_exclusively` | — |
+| **any stored field edited** | verify flags it; a property test over every leaf of real records | `test_every_leaf_of_every_link_edited_alone_is_flagged` | — |
+| an edited `--since` record | is not continued, and the head is unchanged | `test_an_edited_since_record_is_not_continued` | — |
+| a malformed value, or NaN | a finding, not a traceback | `test_nan_anywhere_in_a_record_is_a_finding_not_a_traceback` | — |
+| a record written before sealing | listed as unsealed, not flagged | `test_an_unsealed_legacy_record_is_listed_not_flagged` | — |
+| the guarantee text | names the statistic and excludes drift | `test_the_guarantee_names_the_statistic_and_excludes_drift` | — |
+| `--require-clean` | turns a finding into exit 1 | `test_require_clean_turns_a_finding_into_exit_one` | — |
+
+## 14. Label error
+
+| case | expected behaviour | test | artifact |
+|---|---|---|---|
+| the confidence after correction | is the level at which the corrected bound equals the budget | `test_the_confidence_is_the_level_at_which_the_corrected_bound_equals_the_budget` | — |
+| adding errors | never raises the confidence | `test_the_confidence_never_rises_as_errors_are_added` | — |
+| a certificate | carries its sensitivity, and the disputes count what they say | `test_a_certificate_carries_its_sensitivity_and_the_disputes_count_what_they_say` | `results/label_sensitivity/triviaqa.json` |
+| **a refusal** | carries no count of relabellings, which would be a recipe | `test_a_refusal_carries_no_count_of_relabellings` | — |
+| **`label_2`** | changes no status, threshold, bound or metric | `test_label_2_changes_no_status_threshold_bound_or_metric` | — |
+| `label_2` on a recheck | changes no verdict | `test_label_2_changes_no_recheck_verdict` | — |
+| the whole-file dispute bound | covers every true count | `test_the_dispute_bound_covers_every_true_count` | — |
+| a grouped file with a mixed group | has no sensitivity | `test_a_grouped_file_with_a_mixed_group_has_no_sensitivity` | — |
+| a recheck whose bound holds | carries both counts of errors that would have revoked it | `test_a_recheck_whose_bound_holds_carries_both_counts` | — |
+| a chained recheck | carries no per-file count | `test_a_chained_recheck_carries_no_per_file_count` | — |
+
+## 15. Release evidence
+
+| case | expected behaviour | test | artifact |
+|---|---|---|---|
+| registration | freezes identity | `test_registration_roundtrip_freezes_identity` | — |
+| development and holdout ids | must be disjoint | `test_refuse_invalid_split` | — |
+| an altered or replaced contract | fails | `test_altered_contract_and_replacement_fail` | — |
+| the bounds | agree with an independent binomial tail inversion | `test_bounds_agree_with_independent_binomial_tail_inversion` | — |
+| failure and missing evidence | are distinguished | `test_decisions_distinguish_failure_from_missing_evidence` | — |
+| a rehashed fabrication, or expiry | caught on verify | `test_recompute_catches_rehashed_fabrication_and_expiry` | — |
+| changed scores with unchanged counts | detected | `test_changed_scores_are_detected_even_without_changed_counts` | — |
+| register, evaluate, verify from the CLI | work, and a second evaluation is not a replacement | `test_real_cli_register_evaluate_verify_and_no_replacement` | — |
+
+## 16. The action gate and the on-traffic estimate
+
+| case | expected behaviour | test | artifact |
+|---|---|---|---|
+| **no detector** | the gate's decisions are identical with every detector input removed | `test_gate_no_detector` | `results/gate/gate.json` |
+| an injection that passes every check | is blocked anyway | `test_an_injected_instruction_passes_every_check_and_is_blocked_anyway` | `results/gate/gate.json` |
+| the Rule-of-Two | counts the call being made, not only the history | `test_the_rule_is_prospective_not_historical` | — |
+| an unregistered tool | refused rather than guessed | `test_an_unregistered_tool_is_refused_rather_than_guessed` | — |
+| reversibility | cannot be downgraded at runtime | `test_reversibility_cannot_be_downgraded_at_runtime` | — |
+| session flags | sticky, with no unsetter | `test_session_flags_are_sticky_and_there_is_no_unsetter` | — |
+| **one declared workload** | no scenario mixing | `test_no_scenario_mixing` | `results/on_traffic/on_traffic.json` |
+| sizing | through the derivative of recall, in the right units | `test_sizing_units` | — |
+| yield and rate | precision exact, recall estimated | `test_precision_is_exact_and_recall_is_estimated` | — |
+| the review queue | blinded | `test_blinding` | — |
+| a label budget | realises its margin with the declared assurance | `test_c1_the_estimator_realises_the_margin_as_often_as_computed` | `results/on_traffic/on_traffic.json` |

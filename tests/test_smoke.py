@@ -547,6 +547,17 @@ def test_every_script_has_a_smoke_test() -> None:
         "26_scorefree.py",
         # test_smoke_gate
         "27_gate.py",
+        # test_smoke_recheck_schedules
+        "29_recheck_schedules.py",
+        # test_smoke_chain_detection
+        "31_chain_detection.py",
+        # test_smoke_frontier_selection
+        "30_frontier_selection.py",
+        # test_smoke_label_sensitivity
+        "32_label_sensitivity.py",
+        # tests/test_test_inventory.py runs it on a throwaway repository: a
+        # smoke run here would rewrite this repository's README and Makefile.
+        "refresh_test_inventory.py",
         # tests/test_intake.py::test_the_examples_are_reproducible_from_their_generator
         # runs it and asserts the committed examples come back byte-identical,
         # which is a stronger check than a smoke test: the examples are shipped
@@ -1333,3 +1344,78 @@ def test_smoke_gate(tmp_path: Path) -> None:
         "everything is not usable"
     )
     assert "EXACT" in cost["note"] and "estimated" in cost["note"].lower()
+
+
+def test_smoke_recheck_schedules(tmp_path: Path) -> None:
+    """`29_recheck_schedules.py` writes every cell and applies 187's criteria.
+
+    Scaled down to 20 simulated years, which is why `--out` is required: a
+    smoke-sized study must never land where the registered one lives.
+    """
+    _run_bare(
+        "29_recheck_schedules.py",
+        "--config", str(PROJECT_ROOT / "config.yaml"),
+        "--years", "20",
+        "--out", str(tmp_path),
+    )
+    payload = json.loads(
+        (tmp_path / "recheck_schedules" / "comparison.json").read_text(encoding="utf-8")
+    )
+    # 5 rules x 2 cadences x 4 scenarios.
+    assert len(payload["cells"]) == 40
+    assert set(payload["criteria"]["validity"]) == {
+        f"{rule}/{cadence}"
+        for rule in ("fixed", "split", "monitor", "monitor_uncapped", "e_detector")
+        for cadence in ("weekly", "monthly")
+    }
+    assert "not any detector" in payload["what_these_are"]
+
+
+def test_smoke_frontier_selection(tmp_path: Path) -> None:
+    """`30_frontier_selection.py` writes every cell and applies 192's criteria.
+
+    Scaled down, which is why `--out` is required: a smoke-sized study must
+    never land where the registered one lives.
+    """
+    _run_bare(
+        "30_frontier_selection.py",
+        "--config", str(PROJECT_ROOT / "config.yaml"),
+        "--replicates", "200",
+        "--crosscheck-replicates", "3",
+        "--out", str(tmp_path),
+    )
+    payload = json.loads(
+        (tmp_path / "frontier_selection" / "selection.json").read_text(encoding="utf-8")
+    )
+    assert [cell["n"] for cell in payload["cells"]] == [150, 300, 600, 1200, 5000]
+    assert set(payload["criteria"]) == {"M1_material", "M2_bonferroni_alpha", "M3_sanity"}
+    assert payload["registered_run"] is False
+    assert "Not a measurement" in payload["what_these_are"]
+
+
+def test_smoke_label_sensitivity(tmp_path: Path) -> None:
+    """`32_label_sensitivity.py` certifies one budget on each set and applies 199's criteria."""
+    _run_bare(
+        "32_label_sensitivity.py",
+        "--config", str(PROJECT_ROOT / "config.yaml"),
+        "--budgets", "0.05",
+        "--out", str(tmp_path),
+    )
+    payload = json.loads((tmp_path / "label_sensitivity" / "triviaqa.json").read_text(encoding="utf-8"))
+    assert payload["design"]["registered_run"] is False
+    assert len(payload["sets"]) == 3
+    assert all(entry["lenient_label_mismatches"] == 0 for entry in payload["sets"])
+    assert set(payload["criteria"]) == {"C0", "P1", "P2", "reported"}
+
+
+def test_smoke_chain_detection(tmp_path: Path) -> None:
+    """`31_chain_detection.py` writes the whole grid and 196's criteria at a smoke size."""
+    _run_bare(
+        "31_chain_detection.py",
+        "--config", str(PROJECT_ROOT / "config.yaml"),
+        "--years", "2",
+        "--out", str(tmp_path),
+    )
+    payload = json.loads((tmp_path / "chain_detection" / "grid.json").read_text(encoding="utf-8"))
+    assert len(payload["cells"]) == 3 * 4 * 4 * 5
+    assert set(payload["criteria"]) == {"V", "P1", "P2", "P3"}

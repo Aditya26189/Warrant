@@ -31,6 +31,105 @@ def _metric_line(label: str, metric: Optional[Metric], digits: int = 4) -> str:
     return f"  {label:<14} {metric.render(digits)}"
 
 
+def _pct(value: float) -> str:
+    return f"{value * 100:.1f}%"
+
+
+def _label_lines(result: CertificationResult) -> list[str]:
+    """How far the certificate depends on its labels (DECISIONS 197)."""
+    lines: list[str] = []
+    sensitivity = result.label_sensitivity
+    if sensitivity is not None and sensitivity.computed:
+        unit = sensitivity.unit
+        noun = "group" if unit == "groups" else "item"
+        lines += ["", f"  If the labels are wrong (counted in {unit}):"]
+        lines.append(
+            f"    as labelled, the budget clears at {_pct(sensitivity.confidence_as_labelled)} confidence"
+        )
+        for ladder, what, pool in (
+            (sensitivity.flagged_clean, f"a flagged positive {noun} that is really clean",
+             f"flagged positive {unit}"),
+            (sensitivity.unflagged_positive, f"an unflagged negative {noun} that is really positive",
+             f"unflagged negative {unit}"),
+        ):
+            lines.append(f"    {what}:")
+            if ladder.confidence_if_one is None:
+                lines.append("      none of those in this file")
+                continue
+            crossings = [
+                f"below {level * 100:.0f}% at {count}" if count is not None
+                else f"never below {level * 100:.0f}%"
+                for level, count in ladder.errors_below.items()
+            ]
+            lines.append(
+                f"      one costs "
+                f"{(sensitivity.confidence_as_labelled - ladder.confidence_if_one) * 100:.1f} "
+                f"points, to {_pct(ladder.confidence_if_one)} (bound {ladder.bound_if_one:.4f})"
+            )
+            lines.append(f"      {', '.join(crossings)} of the {ladder.limit} {pool}")
+        lines.append(
+            "    That is the confidence the budget still clears at, not a probability"
+        )
+        lines.append("    that the detector is within budget.")
+    review = result.second_review
+    if review is None:
+        lines += [
+            "",
+            "  No label_2 column: agreement between reviewers is not measured. This",
+            "  certificate is exact about these labels and silent about whether they",
+            "  are right.",
+        ]
+        return lines
+    agreement = review.agreement
+    lines += ["", "  Second reviewer (label_2), which changes nothing above:"]
+    if agreement.kappa is None:
+        lines.append(f"    kappa undefined over {review.n_pairs} pairs: {agreement.undefined_reason}")
+    else:
+        lines.append(
+            f"    kappa {agreement.kappa:.3f} [{agreement.ci_low:.3f}, {agreement.ci_high:.3f}] "
+            f"over {review.n_pairs} pairs ({review.pairs_by_label[0]} labelled 0, "
+            f"{review.pairs_by_label[1]} labelled 1)"
+        )
+    disputes = review.disputes
+    if disputes is not None:
+        lines.append(
+            f"    {disputes.flagged_positives_disputed} of {disputes.reviewed_flagged_positives} "
+            f"double-labelled flagged positives called clean"
+        )
+        lines.append(
+            f"    {disputes.unflagged_negatives_disputed} of {disputes.reviewed_unflagged_negatives} "
+            f"double-labelled unflagged negatives called positive"
+        )
+        lines.append(
+            f"    if every dispute is a primary error: "
+            f"{_pct(disputes.confidence_if_disputes_are_errors)} (a worst case, not the truth)"
+        )
+        if disputes.confidence_at_upper_bounds is not None:
+            level = (1 - review.alpha) * 100
+            joint = (1 - 2 * review.alpha) * 100
+            lines += [
+                "    whole file, if the double-labelled items were sampled at random:",
+                f"      at most {disputes.flagged_upper_bound} of {disputes.flagged_positives} flagged "
+                f"positives (n {disputes.reviewed_flagged_positives}) and "
+                f"{disputes.unflagged_upper_bound} of {disputes.unflagged_negatives} unflagged "
+                f"negatives (n {disputes.reviewed_unflagged_negatives}) disputed,",
+                f"      each at {level:.0f}%, both together at >= {joint:.0f}%",
+                f"      if all of those were errors: {_pct(disputes.confidence_at_upper_bounds)}",
+                "      (a sensitivity at those bounds, not a joint confidence)",
+            ]
+            if (disputes.reviewed_flagged_positives < disputes.flagged_positives
+                    or disputes.reviewed_unflagged_negatives < disputes.unflagged_negatives):
+                lines.append(
+                    "      the bounds are as wide as the double-labelled counts make them;"
+                )
+                lines.append("      double-labelling more of each pool narrows them")
+        else:
+            lines.append(f"    whole file: not computed -- {disputes.upper_bound_reason}")
+    for warning in review.warnings:
+        lines.append(f"    warning: {warning}")
+    return lines
+
+
 def render_summary(result: CertificationResult) -> str:
     """Render one certification for a terminal."""
     lines = [
@@ -51,6 +150,17 @@ def render_summary(result: CertificationResult) -> str:
         f"  base rate      {result.base_rate:.4f}",
         f"  budget         FPR <= {result.budget:.4f} at "
         f"{(1 - result.alpha) * 100:.0f}% confidence",
+    ]
+    if result.selection:
+        # DECISIONS 195: which level governs which test, where the reader looks.
+        selection = result.selection
+        lines += [
+            f"  picked from    a frontier of {len(selection['grid'])} budgets: this certificate "
+            f"is at alpha {selection['row_alpha']:.4g},",
+            f"                 so the pick holds; rechecks, plans and chains run at "
+            f"alpha {selection['family_alpha']:g}",
+        ]
+    lines += [
         "",
     ]
 
@@ -70,9 +180,8 @@ def render_summary(result: CertificationResult) -> str:
             "  This is the tool working. A detector that cannot be certified on",
             "  the evidence provided is a fact worth having before it ships, not",
             "  an error in the measurement.",
-            _RULE,
-            "",
         ]
+        lines += _label_lines(result) + [_RULE, ""]
         return "\n".join(lines)
 
     lines += [
@@ -100,6 +209,7 @@ def render_summary(result: CertificationResult) -> str:
         )
     if result.metrics_absent_reason:
         lines += ["", f"  note: {result.metrics_absent_reason}"]
+    lines += _label_lines(result)
 
     lines += [
         "",
@@ -111,7 +221,97 @@ def render_summary(result: CertificationResult) -> str:
     return "\n".join(lines)
 
 
-def render_recheck(result) -> str:
+def _recheck_label_lines(result) -> list[str]:
+    """How many wrong labels would have made this recheck revoke (DECISIONS 198)."""
+    lines: list[str] = []
+    sensitivity = result.label_sensitivity
+    if sensitivity is None:
+        return lines
+    lines += ["", "  If the labels are wrong:"]
+    if not sensitivity.computed:
+        lines.append(f"     {sensitivity.reason}.")
+    else:
+        unit = sensitivity.unit
+        lines.append(
+            f"     this file revokes at {sensitivity.revokes_at_count} false positives of "
+            f"{sensitivity.n} negative {unit}; it has {sensitivity.k}."
+            if sensitivity.revokes_at_count is not None else
+            f"     no count of false positives on {sensitivity.n} negative {unit} revokes."
+        )
+        for count, what, pool in (
+            (sensitivity.flagged_clean_to_revoke,
+             "flagged positives that are really clean", sensitivity.flagged_positives),
+            (sensitivity.unflagged_positive_to_revoke,
+             "unflagged negatives that are really positive", sensitivity.n - sensitivity.k),
+        ):
+            lines.append(
+                f"     it would have revoked with {count} {what} (of {pool})"
+                if count is not None else
+                f"     no number of {what} (of {pool}) would have revoked it"
+            )
+        lines += [
+            "     A recheck that does not revoke is still an absence of evidence of",
+            "     breach; these counts say how far this file is from showing one, not",
+            "     that none exists.",
+        ]
+    review = result.second_review
+    if review is None:
+        return lines
+    agreement = review.agreement
+    lines += ["", "  Second reviewer (label_2), which changes no verdict:"]
+    if agreement.kappa is None:
+        lines.append(f"     kappa undefined over {review.n_pairs} pairs: {agreement.undefined_reason}")
+    else:
+        lines.append(
+            f"     kappa {agreement.kappa:.3f} [{agreement.ci_low:.3f}, {agreement.ci_high:.3f}] "
+            f"over {review.n_pairs} pairs"
+        )
+    disputes = review.disputes
+    if disputes is None:
+        lines.append(f"     disputes: {review.disputes_reason}")
+    elif not hasattr(disputes, "lower_bound_if_disputes_are_errors"):
+        lines += [
+            f"     {disputes.flagged_negatives_label_2_calls_positive} of "
+            f"{disputes.reviewed_flagged_negatives} double-labelled false positives "
+            "called positive by label_2.",
+            "     The revocation stands; no bound is recomputed from those.",
+        ]
+    else:
+        revokes = (
+            "would have revoked" if disputes.revokes_if_disputes_are_errors
+            else "would not have revoked"
+        )
+        lines += [
+            f"     {disputes.flagged_positives_disputed} of {disputes.reviewed_flagged_positives} "
+            "double-labelled flagged positives called clean;",
+            f"     {disputes.unflagged_negatives_disputed} of {disputes.reviewed_unflagged_negatives} "
+            "double-labelled unflagged negatives called positive",
+            f"     if every dispute is a primary error, the lower bound is "
+            f"{disputes.lower_bound_if_disputes_are_errors:.4f} and {revokes}",
+        ]
+        if disputes.lower_bound_at_upper_bounds is not None:
+            whole = (
+                "would have revoked" if disputes.revokes_at_upper_bounds
+                else "would not have revoked"
+            )
+            lines += [
+                "     whole file, if the double-labelled items were sampled at random:",
+                f"     at most {disputes.flagged_upper_bound} of {disputes.flagged_positives} flagged "
+                f"positives and {disputes.unflagged_upper_bound} of {disputes.unflagged_negatives} "
+                f"unflagged negatives disputed",
+                f"     (each at {(1 - review.alpha) * 100:.0f}%, both together at >= "
+                f"{(1 - 2 * review.alpha) * 100:.0f}%);",
+                f"     lower bound {disputes.lower_bound_at_upper_bounds:.4f}, {whole} "
+                "(a sensitivity at those bounds, not a joint confidence)",
+            ]
+        else:
+            lines.append(f"     whole file: not computed -- {disputes.upper_bound_reason}")
+    for warning in review.warnings:
+        lines.append(f"     warning: {warning}")
+    return lines
+
+
+def render_recheck(result, chain=None) -> str:
     """Render a recheck for a terminal.
 
     The two failure modes are printed separately and never merged into one
@@ -129,7 +329,8 @@ def render_recheck(result) -> str:
         "",
         f"  warranted     FPR <= {result.budget:.4f} at threshold "
         f"{result.threshold:.6f}",
-        f"  new file      {result.n_now} items ({result.n_negative_now} negative)",
+        f"  new file      {result.n_now} items ({result.n_negative_now} negative"
+        + (" clusters, each counted once" if result.unit == "cluster" else "") + ")",
         "",
         "  1. Does the bound still hold?",
     ]
@@ -178,7 +379,7 @@ def render_recheck(result) -> str:
                 )
                 lines.append(
                     f"     To catch it with probability {chance} "
-                    f"you would need {needed} clean negatives; this file has "
+                    f"you would need {needed} clean negative {result.unit}s; this file has "
                     f"{result.n_negative_now}."
                 )
         else:
@@ -212,6 +413,30 @@ def render_recheck(result) -> str:
                 "     measured shift. The smoothing constant sets its size.",
             ]
 
+    lines += _recheck_label_lines(result)
+
+    if chain is not None:
+        state = chain.state
+        lines += [
+            "",
+            "  3. The chain of rechecks (DECISIONS 193)",
+            f"     link {state.sequence}: {chain.units_fed:,} of this file's "
+            f"{chain.units_in_file:,} clean-negative units fed.",
+            f"     statistic {state.mean_statistic:,.1f}; revokes at "
+            f"{state.threshold:,.0f} ({state.horizon_units:,} units / alpha "
+            f"{state.alpha:g}).",
+            f"     {state.units_consumed:,} of {state.horizon_units:,} units consumed.",
+            "     Over the whole chain, its statistic falsely revokes a detector",
+            f"     keeping its promise with probability at most {state.alpha:g} -- for the",
+            "     chain as kept. A drift revocation is a separate check, outside that bound.",
+            "     Keep every record: a fresh chain started after a bad result",
+            "     spends that guarantee.",
+        ]
+        if chain.units_not_consumed:
+            lines.append(
+                f"     {chain.units_not_consumed:,} unit(s) not consumed: past the "
+                "horizon, or after the chain revoked."
+            )
     lines += ["", f"  {result.reason}", ""]
     if result.status is WarrantStatus.REVOKED:
         lines += [
@@ -245,7 +470,11 @@ def render_frontier(points, *, n_positive: int, n_negative: int) -> str:
         if not p.certified:
             lines.append(
                 f"  {p.budget:<7.3f}  REFUSED - needs {p.min_negatives_required} "
-                f"clean negatives, this file has {n_negative}"
+                + (
+                    f"independent negative clusters, this file has {p.negative_units}"
+                    if p.grouped
+                    else f"clean negatives, this file has {n_negative}"
+                )
             )
             continue
         lines.append(
@@ -259,6 +488,19 @@ def render_frontier(points, *, n_positive: int, n_negative: int) -> str:
         "  Every column above is EXACT -- a count of this file, or a bound. None",
         "  is an estimate, so none carries an interval and none is missing one.",
         "",
+        *(
+            [
+                f"  Every certified row holds at {100 * (1 - points[0].family_alpha):.0f}% confidence AT ONCE:",
+                f"  each was certified at alpha {points[0].row_alpha:.4g}, the family level split",
+                f"  across {len(points)} budgets. So you may choose a row after reading them",
+                "  all, and the row you choose still holds. `certify --budget` does not",
+                "  make that adjustment: its level holds for a budget chosen BEFORE",
+                "  looking at this file.",
+                "",
+            ]
+            if points and points[0].row_alpha is not None
+            else []
+        ),
         "  Recall and precision are rates. They are estimated, they need a",
         "  bootstrap, and they come with a 95% interval:",
         "",
@@ -343,6 +585,25 @@ def render_plan(plan) -> str:
         "  rechecks revokes a detector sitting exactly at its budget. One",
         f"  recheck does so with probability {plan.false_revocation_per_recheck:.4f}; a year of",
         "  them compounds it. Assumes a fresh sample for every recheck.",
+        "",
+        "  CHAINED, the year is one test instead of many (DECISIONS 193):",
+        "",
+        *[
+            f"      {option.name:<13} warrant recheck --horizon-labels "
+            f"{option.chain_horizon_units}"  # no separator: the line is a command to copy
+            for option in plan.cadences
+            if option.chain_horizon_units is not None
+        ],
+        "",
+        "  A chain revokes a detector that kept its promise with probability at",
+        f"  most {plan.alpha:.3g} over that many negatives, at any cadence. How soon it",
+        "  catches a real breach depends on when the breach starts and was",
+        "  simulated for one setting only; no figure is quoted here for yours.",
+        "",
+        "  N counts clean negatives fed to the chain, not rechecks or weeks. The",
+        "  figures above assume every recheck brings the negatives sized here;",
+        "  a file with more ends the chain sooner, one with fewer later, and",
+        "  unit ids must be unique across every file of the chain.",
         "",
         "  No cadence is recommended, and that is not an omission. How often to",
         "  recheck depends on how fast your inputs move, which is the thing you",

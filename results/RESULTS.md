@@ -18,7 +18,7 @@
 
 Cells on synthetic envelopes show their status but not their numbers.
 
-**Statuses are as of 2026-09-14T08:40:55+00:00.** A warrant expires 24 hours after issue, so this matrix is a snapshot: rendered again from the same ledger after that, its VALID cells report STALE. That is the design, not a regression -- re-issuing means re-running the validations (`DECISIONS.md` 177).
+**Statuses are as of 2026-09-14T18:54:03+00:00.** A warrant expires 24 hours after issue, so this matrix is a snapshot: rendered again from the same ledger after that, its VALID cells report STALE. That is the design, not a regression -- re-issuing means re-running the validations (`DECISIONS.md` 177).
 
 | detector | triviaqa-600-synthetic | triviaqa-longctx-600-synthetic | hinglish-pii-200 | hinglish-pii-200-longctx | hard-negatives-200 | triviaqa-600 | triviaqa-longctx-600 |
 |---|---|---|---|---|---|---|---|
@@ -82,14 +82,14 @@ n      = z^2 q(1-q) / m_q^2
 
 | operating point | margin | month one | steady state | superseded |
 |---|---|---|---|---|
-| declared workload point | ±0.05 | **1,014** | 804 | 187 |
-| declared workload point | ±0.02 | **5,566** | 4,413 | 1,168 |
-| customer_support @ P-customer-support | ±0.05 | **1,808** | 1,434 | 262 |
-| customer_support @ P-customer-support | ±0.02 | **10,636** | 8,434 | 1,633 |
-| decision_support @ P-decision-support | ±0.05 | **4,049** | 3,211 | 299 |
-| decision_support @ P-decision-support | ±0.02 | **24,591** | 19,499 | 1,863 |
-| internal_knowledge @ P-internal-knowledge | ±0.05 | **3,582** | 2,840 | 355 |
-| internal_knowledge @ P-internal-knowledge | ±0.02 | **21,598** | 17,125 | 2,214 |
+| declared workload point | ±0.05 | **1,399** | 1,109 | 187 |
+| declared workload point | ±0.02 | **6,518** | 5,168 | 1,168 |
+| customer_support @ P-customer-support | ±0.05 | **2,283** | 1,810 | 262 |
+| customer_support @ P-customer-support | ±0.02 | **11,803** | 9,359 | 1,633 |
+| decision_support @ P-decision-support | ±0.05 | **4,068** | 3,226 | 299 |
+| decision_support @ P-decision-support | ±0.02 | **24,659** | 19,553 | 1,863 |
+| internal_knowledge @ P-internal-knowledge | ±0.05 | **4,101** | 3,252 | 355 |
+| internal_knowledge @ P-internal-knowledge | ±0.02 | **22,886** | 18,147 | 2,214 |
 
 **Month one costs more, and it is not a discount anyone can take early.** Neyman allocation needs the per-band prevalences the first month's labels are bought to discover, so month one runs proportional at full simple-random-sampling cost. **superseded** is what this repository quoted before `DECISIONS.md` 147, and it was low by 6x to 13x.
 
@@ -268,8 +268,8 @@ Everything else in this document measures a detector. **This is the part that as
 
 ## Provenance
 
-- config hash `533fb74983fcd8af`
-- git commit `71d24345b4cb940af55751301666a6c7de49351c`
+- config hash `2640a176a26a80a0`
+- git commit `05b2a52193f089943edfbbb4c547bf5b9625a3d8`
 - dirty tree: `False`
 - seed `1729`
-- generated `2026-09-14T08:40:55+00:00`
+- generated `2026-09-14T18:54:03+00:00`

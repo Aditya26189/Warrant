@@ -18,6 +18,7 @@ tests/test_acceptance.py
 tests/test_calibration.py
 tests/test_cases_matrix.py
 tests/test_categories.py
+tests/test_cli_records.py
 tests/test_config.py
 tests/test_docs_index.py
 tests/test_drift.py
@@ -32,7 +33,12 @@ tests/test_model.py
 tests/test_model_version.py
 tests/test_override.py
 tests/test_packaging.py
+tests/test_recheck_chain.py
+tests/test_recheck_groups.py
 tests/test_redact.py
+tests/test_release_cli.py
+tests/test_release_contract.py
+tests/test_release_evaluate.py
 tests/test_script_wiring.py
 tests/test_sizing.py
 tests/test_store.py

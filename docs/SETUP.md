@@ -2,11 +2,12 @@
 
 <sub>[🏠 Project README](../README.md) · [📚 Documentation index](README.md) · [🗺️ Diagrams](DIAGRAMS.md) · [📖 Glossary](GLOSSARY.md)</sub>
 
-Three environments, in order of how likely you are to need them: a laptop
-(everything except extraction), a GPU notebook (extraction), and an offline
-machine (both, with the downloads done in advance).
+If you only want to run `warrant` on your own detector, [section 0](#0-just-the-warrant-command)
+is all you need. Otherwise, three environments, in order of how likely you are to
+need them: a laptop (everything except extraction), a GPU notebook (extraction),
+and an offline machine (both, with the downloads done in advance).
 
-**Contents:** [Requirements](#requirements) · [Laptop](#1-laptop--the-normal-case) · [The four tiers](#the-four-reproduction-tiers) · [GPU](#2-gpu--the-extraction-stage) · [Offline](#3-offline-machine) · [Optional extras](#optional-extras) · [Verifying your install](#verifying-your-install)
+**Contents:** [Requirements](#requirements) · [Just the command](#0-just-the-warrant-command) · [Laptop](#1-laptop--the-normal-case) · [The four tiers](#the-four-reproduction-tiers) · [GPU](#2-gpu--the-extraction-stage) · [Offline](#3-offline-machine) · [Optional extras](#optional-extras) · [Verifying your install](#verifying-your-install)
 
 ---
 
@@ -14,7 +15,7 @@ machine (both, with the downloads done in advance).
 
 | | |
 |---|---|
-| Python | 3.11 or newer |
+| Python | 3.10 or newer is declared (`pyproject.toml`, and `smoke.py` checks it). **CI tests 3.11 and 3.12** for the customer path and 3.12 for the full suite, so 3.10 is declared and untested |
 | Everything except extraction | CPU only, no network after the clone |
 | Extraction | a 16 GB GPU; NF4 quantisation keeps a 7B model inside it |
 | Disk | the clone is small; activation caches are ~100 MB each and gitignored |
@@ -32,6 +33,34 @@ Three requirement files, and the differences matter:
   `warrant certify` and `warrant recheck` need, and nothing else. A person
   evaluating their own detector should not download a deep-learning stack to
   do binomial arithmetic, and a CI job proves they do not have to.
+
+---
+
+## 0. Just the `warrant` command
+
+For a validation team evaluating its own detector. No GPU, no model, no network
+after the install, and no deep-learning stack.
+
+```bash
+git clone <your fork or the upstream>
+cd warrant
+python -m venv .venv
+. .venv/Scripts/activate          # macOS/Linux: source .venv/bin/activate
+pip install -r requirements-customer.txt
+
+python warrant.py certify --input examples/certifies.csv --budget 0.05
+python warrant.py certify --input examples/refuses.csv --budget 0.01
+```
+
+The first issues a warrant; the second refuses and exits 0. `pip install .` (or
+`pip install -e .` to edit) installs the same three dependencies and puts
+`warrant` on your path, so `warrant certify ...` replaces `python warrant.py
+certify ...`. The CI `customer-path` job installs exactly
+`requirements-customer.txt` and runs the command and its tests, so an import that
+needs more fails there.
+
+Then: [INPUT.md](INPUT.md) for your own file, [RELEASE.md](RELEASE.md) for a
+release study, [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for any message it prints.
 
 ---
 
@@ -164,7 +193,7 @@ Seven checks. What each one being green actually tells you:
 
 | Check | Means |
 |---|---|
-| python version | you are on 3.11+ |
+| python version | you are on 3.10+, the declared floor (CI tests 3.11 and 3.12) |
 | package imports | `controlplane` and its model, policy and validation subpackages resolve |
 | config loads | `config.yaml` parses, its invariants hold, and it hashes |
 | provenance resolves | git metadata is reachable — the artifacts can record where they came from |

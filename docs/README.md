@@ -4,6 +4,7 @@
 
 **Every document in this repository, and which question it answers.**
 
+[![Using it](https://img.shields.io/badge/Using_it-3_guides-2da44e?style=flat-square)](#%EF%B8%8F-using-warrant-on-your-own-detector)
 [![Orientation](https://img.shields.io/badge/Orientation-11_pages-6366f1?style=flat-square)](#-orientation)
 [![Contracts](https://img.shields.io/badge/Contracts-5_binding-d1242f?style=flat-square)](#-contracts)
 [![Evidence](https://img.shields.io/badge/Evidence-append_only-22c55e?style=flat-square)](#-evidence-and-rationale)
@@ -21,17 +22,30 @@
 
 | You are… | Read, in this order |
 |:---|:---|
+| 🛡️ **Running it on your own detector** | [SETUP.md](SETUP.md) §0 → [INPUT.md](INPUT.md) → [../examples/README.md](../examples/README.md) → [TROUBLESHOOTING.md](TROUBLESHOOTING.md) → [FAQ.md](FAQ.md) |
+| 📋 **Preparing evidence for a validation function** | [RELEASE.md](RELEASE.md) → [EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md) → [LIMITATIONS.md](LIMITATIONS.md) §3.5–3.7 |
+| 🏦 **Assessing it for a regulated buyer** | [RBI-MRM-2026-CROSSWALK.md](RBI-MRM-2026-CROSSWALK.md) → [PILOT-PROTOCOL.md](PILOT-PROTOCOL.md) → [LIMITATIONS.md](LIMITATIONS.md) |
 | ⏱️ **Reviewing this in twenty minutes** | [../README.md](../README.md) claim table → [DIAGRAMS.md](DIAGRAMS.md) → [LIMITATIONS.md](LIMITATIONS.md) → [FAQ.md](FAQ.md) |
-| 🌱 **New to the codebase** | [ONBOARDING.md](ONBOARDING.md) → [DIAGRAMS.md](DIAGRAMS.md) → [CODE_TOUR.md](CODE_TOUR.md) → [ARCHITECTURE.md](ARCHITECTURE.md) |
-| ▶️ **Trying to run it** | [SETUP.md](SETUP.md) → [RUNBOOK.md](RUNBOOK.md) → [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
+| 🌱 **New to the codebase** | [ONBOARDING.md](ONBOARDING.md) → [ARCHITECTURE.md](ARCHITECTURE.md) → [DIAGRAMS.md](DIAGRAMS.md) → [CODE_TOUR.md](CODE_TOUR.md) |
+| ▶️ **Reproducing the measurements** | [SETUP.md](SETUP.md) → [RUNBOOK.md](RUNBOOK.md) → [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
 | 🔍 **Checking whether a number is real** | [../README.md](../README.md) claim table → [ARTIFACTS.md](ARTIFACTS.md) → [METHODS.md](METHODS.md) → `make verify` |
-| 🕵️ **Looking for the flaw** | [LIMITATIONS.md](LIMITATIONS.md) → [../DECISIONS.md](../DECISIONS.md) → [CASES.md](CASES.md) → [TESTING.md](TESTING.md) |
+| 🕵️ **Looking for the flaw** | [LIMITATIONS.md](LIMITATIONS.md) → [../DECISIONS.md](../DECISIONS.md) → [CASES.md](CASES.md) → [TESTING.md](TESTING.md) → `reports/` |
 | 🎤 **Presenting it** | [DIAGRAMS.md](DIAGRAMS.md) → [JOURNEY.md](JOURNEY.md) → [DEMO.md](DEMO.md) → [DEMO_SCRIPT.md](DEMO_SCRIPT.md) |
 | 🔬 **Asking whether this means anything outside the repo** | [EXTERNAL.md](EXTERNAL.md) → [REDACT.md](REDACT.md) → [../results/external/MATRIX.md](../results/external/MATRIX.md) |
-| 📥 **Bringing your own data** | [INPUT.md](INPUT.md) → [../examples/README.md](../examples/README.md) |
 | 💬 **Confused by a word** | [GLOSSARY.md](GLOSSARY.md) |
 
 ---
+
+## 🛡️ Using Warrant on your own detector
+
+> Procedures for the `warrant` command. They quote derived thresholds, such as the
+> clean negatives a budget needs, where a reader has to act on them.
+
+| Document | Answers |
+|:---|:---|
+| 📥 [INPUT.md](INPUT.md) | I have my own scores and labels. What file does Warrant want, what does it reject, when does it refuse, and what do `group` and `label_2` do? |
+| 📋 [RELEASE.md](RELEASE.md) | How do I register, evaluate once and verify a scoped release study on my own scored holdout? |
+| 🤝 [EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md) | What do I hand a validation function, where does each piece of evidence live in the records, and what does no record carry yet? |
 
 ## 🧩 Orientation
 
@@ -40,20 +54,25 @@
 
 | Document | Answers |
 |:---|:---|
-| 🗺️ [DIAGRAMS.md](DIAGRAMS.md) | What does the system look like? Eleven diagrams: the three objects, the pipeline, the warrant lifecycle, the controls, policy, composition, drift, verification, the Round 1 → Round 2 journey, and the repository end to end |
+| 🗺️ [DIAGRAMS.md](DIAGRAMS.md) | What does the system look like? Fifteen diagrams: the three objects, the pipeline, the warrant lifecycle, controls, policy, composition, drift, verification, the journey, the repository end to end, the customer path, a chain of rechecks, release evidence and the action gate |
 | 🌱 [ONBOARDING.md](ONBOARDING.md) | I have one hour. What do I read, run, and look at, in what order? |
-| 🧭 [CODE_TOUR.md](CODE_TOUR.md) | What is in each package under `controlplane/`, and which file do I open for X? |
-| 🧪 [REDACT.md](REDACT.md) | What happens when this certification is run over somebody else's benchmark, and why a rule-based detector has no operating point to tune? |
-| 🔬 [EXTERNAL.md](EXTERNAL.md) | Does this machinery mean anything on detectors we did not build, on data we did not construct? |
-| 📥 [INPUT.md](INPUT.md) | I have my own scores and labels. What file does Warrant want, what does it reject, and when does it refuse? |
-| ⚙️ [SETUP.md](SETUP.md) | How do I get this running — laptop, GPU notebook, offline machine? |
-| 📓 [RUNBOOK.md](RUNBOOK.md) | What does each script do, what does it read, what does it write, and when would I run it? |
-| 🚑 [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | It crashed, or it refused. What does this mean and what do I do? |
-| 📦 [ARTIFACTS.md](ARTIFACTS.md) | What is every file in `results/` and `evalsets/`, and what is inside it? |
+| ⚙️ [SETUP.md](SETUP.md) | How do I get this running — just the command, a laptop, a GPU notebook, an offline machine? |
+| 📓 [RUNBOOK.md](RUNBOOK.md) | What does each script and each `warrant` subcommand do, what does it read, what does it write, and when would I run it? |
+| 🚑 [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | It crashed, it refused, or `warrant` printed a message. What does it mean and what do I do? |
+| 📦 [ARTIFACTS.md](ARTIFACTS.md) | What is every file in `results/` and `evalsets/`, and every record the customer command writes? |
 | 🧪 [TESTING.md](TESTING.md) | What does the test suite defend, and which suite covers what? |
-| 📖 [GLOSSARY.md](GLOSSARY.md) | Warrant, envelope, operating point, estimand, null band, yield vs rate — defined once, precisely |
-| ❓ [FAQ.md](FAQ.md) | The questions a technical reviewer actually asks, each answered with the artifact that settles it |
-| 🧾 [JOURNEY.md](JOURNEY.md) | What did this project actually do, phase by phase, and what changed our mind? |
+| 🧭 [CODE_TOUR.md](CODE_TOUR.md) | What is in each package under `controlplane/`, and which file do I open for X? |
+| 📖 [GLOSSARY.md](GLOSSARY.md) | Warrant, envelope, estimand, null band, yield vs rate, recheck, chain, seal, label-error tolerance — defined once, with the wrong reading where one invites overclaiming |
+| ❓ [FAQ.md](FAQ.md) | The questions a reviewer or a validation team actually asks, each answered with the artifact or document that settles it |
+| 🧾 [JOURNEY.md](JOURNEY.md) | What did this project actually do, build phase by build phase and sprint by sprint, and what changed our mind? |
+
+## 🏗️ How it works
+
+| Document | Answers |
+|:---|:---|
+| 🏛️ [ARCHITECTURE.md](ARCHITECTURE.md) | What the system is, the three ways into it, and how the pieces fit, with the reason for each design choice |
+| 📊 [METHODS.md](METHODS.md) | Estimators, bootstraps, null bands, certification, recheck, the chain, label error and release: each with its derivation and what it assumes |
+| ✅ [CASES.md](CASES.md) | Every case, the test covering it, the artifact demonstrating it |
 
 ## 📐 Contracts
 
@@ -74,19 +93,22 @@
 | Document | Answers |
 |:---|:---|
 | 🧠 [../DECISIONS.md](../DECISIONS.md) | Append-only entries. *"Why did you do it that way?"* — including the reversals |
-| 📊 [METHODS.md](METHODS.md) | Estimators, bootstraps, null bands, and where each came from |
 | ⚠️ [LIMITATIONS.md](LIMITATIONS.md) | Scope, declared gaps, open items. **Read before quoting anything** |
-| ✅ [CASES.md](CASES.md) | Every case, the test covering it, the artifact demonstrating it |
+| 🔬 [EXTERNAL.md](EXTERNAL.md) | Does this machinery mean anything on detectors we did not build, on data we did not construct? |
+| 🧪 [REDACT.md](REDACT.md) | What happens when this certification is run over somebody else's benchmark, and why a rule-based detector has no operating point to tune? |
+| 🏦 [RBI-MRM-2026-CROSSWALK.md](RBI-MRM-2026-CROSSWALK.md) | Which paragraphs of the RBI's **draft** model-risk guidance can a warrant supply evidence for, which only in part, and which not at all? Generated; a register, not a compliance claim |
 | 🚚 [PATHS.md](PATHS.md) | What moved on 2026-08-29 and where it went |
 | 📈 [../results/RESULTS.md](../results/RESULTS.md) | The rendered results, with fixture numbers refused rather than printed |
+| 📑 `reports/PHASE-<N>.md` | One report per sprint, leading with the answer; [PHASE-12.md](../reports/PHASE-12.md) is the latest |
 
-## 🎥 Presentation
+## 🎥 Presentation and the business case
 
 | Document | Answers |
 |:---|:---|
 | 🖥️ [DEMO.md](DEMO.md) | The two-pane demo this build exists to produce |
 | 🗣️ [DEMO_SCRIPT.md](DEMO_SCRIPT.md) | The beat-by-beat script and what is on screen |
 | 💼 [PROPOSAL.md](PROPOSAL.md) | The business proposal |
+| 🧪 [PILOT-PROTOCOL.md](PILOT-PROTOCOL.md) | What a first pilot would test, for which buyer and which recurring decision, and what would end it. A plan; no pilot has run |
 | 🔖 [EXTERNAL_FIGURES.md](EXTERNAL_FIGURES.md) | The register that gates every figure about the world, and its provenance tiers |
 
 ---
@@ -121,6 +143,12 @@ one document that cannot be reconstructed later.
 Court awards, fines, standard clause numbers — see
 [EXTERNAL_FIGURES.md](EXTERNAL_FIGURES.md). A test enforces it against the
 proposal.
+
+**Which of these a test enforces:** every `docs/` page is indexed here and every
+relative link resolves (`test_docs_index.py`); every test and artifact
+[CASES.md](CASES.md) names exists (`test_cases_matrix.py`); every claim-table row
+reproduces (`test_claims.py`, `make verify`); every `DECISIONS.md` citation
+resolves (`test_decisions_integrity.py`).
 
 <div align="center">
 

@@ -6836,6 +6836,50 @@ anything. This stays OPEN until the cause is named and the promise in
 
 ---
 
+### The cause, named (2026-09-15, reproduced under WSL Ubuntu, regopy 1.5.2, Python 3.12.3)
+
+The step that aborts is not the query. Mirroring `engine.py` one call at a time in
+a child process, with the child's whole stderr kept:
+
+    set_input({"probe": True})                 ok
+    query("data.controlplane.nonexistent")     ok -- returns an Output whose string is "undefined"
+    output.expressions()                       ABORT
+
+    terminate called after throwing an instance of 'std::out_of_range'
+      what():  Index out of range
+    Fatal Python error: Aborted
+      File ".../regopy/output.py", line 132 in expressions
+
+`Output.expressions()` asks the native library for expression 0 of an output that
+has none; `rego-cpp` throws `std::out_of_range` across the FFI, nothing on the C++
+side catches it, and `std::terminate` sends SIGABRT. The control -- an entrypoint
+the module defines -- runs to completion.
+
+**Why Windows passes.** The same script on Windows, same regopy 1.5.2, turns the
+throw into `OSError [WinError -529697949] Windows Error 0xe06d7363` -- the MSVC C++
+exception code, which structured exception handling hands to `ctypes` as a Python
+error. `engine.py`'s `except Exception` catches that and raises the intended
+`BundleError`. On Linux there is no such translation, so the guard never runs.
+
+**The fix, exact, and still in read-only territory.** `regopy`'s `Output` already
+parses its results in Python at construction: for an undefined output it holds one
+result with an empty expression list, and `str(output)` is `"undefined"`. So
+`PolicyEngine._evaluate` can decide "produced no value" before the native call:
+
+    output = self._interpreter.query(self.bundle.entrypoint)
+    if str(output) == "undefined" or not output[0].expressions:
+        raise BundleError(...)          # the existing "produced no value" message
+    expressions = output.expressions()
+
+That keeps the deploy-time refusal on every platform and needs no subprocess.
+**Checked, not only argued:** that guard, run against the same module on WSL Ubuntu
+and on Windows, returns the defined entrypoint's value, reports the undefined one as
+no value without calling `expressions()`, and the process survives on both.
+`controlplane/policy/**` is read-only, so this stays **OPEN -- needs human review**;
+what would close it is an owner applying that guard, after which
+`tests/test_policy.py::test_an_entrypoint_the_module_does_not_define_fails_at_construction`
+passes on Linux and its xfail branch is no longer reached.
+
 ## 146 - The price list, and the sample size it had been quoting too low
 
 **Pre-registered before the code.** The third clause of this project's own
@@ -9305,3 +9349,1899 @@ not how to stop it. Changing the test so the year holds a guarantee is the
 deferred question above, pre-registered separately. And `sampling/planning.py` sizes the recall margin at the expected
 count, which has the same shape -- the realised margin misses its target
 about half the time -- and is not addressed here.
+
+## 184 -- Release evidence: freeze the question before evaluating it (2026-09-14)
+
+The user requested an additive, usable enterprise product with small commits.
+Extend the customer CLI with a local release-evidence workflow; preserve the
+research pipeline, existing commands and frozen results. No service, dashboard,
+new detector, paid compute or external publication is required for this slice.
+
+Register system and detector versions, scope, positive-label meaning, a fixed
+threshold, FPR ceiling, strictly positive recall floor, expiry, alpha, development
+IDs and a disjoint holdout-ID manifest before evaluation. Holdout evaluation
+must match that manifest exactly. Content hashes bind the specification and
+scored data; they do not authenticate the operator, timestamp or claimed model.
+Stable IDs cannot detect semantic duplicates or prove the holdout was unseen.
+Registration is local evidence of a declared procedure, not trusted notarisation.
+
+First implementation supports independent identically distributed items only.
+Reject grouped input rather than silently treat dependent rows as independent.
+Five binomial rates (FPR, recall, precision, flag rate, base rate) each receive
+an equal-tailed Clopper-Pearson interval at alpha/5. By the union bound their
+joint coverage is at least 1-alpha under the declared sampling assumptions.
+Lift is propagated as [recall.lower/flag.upper, recall.upper/flag.lower], with
+an undefined/unbounded result explicitly represented when a denominator is zero.
+No extra inferential claim is introduced by that deterministic propagation.
+References: NIST binomial intervals, https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm ;
+Bonferroni inequality, https://www.itl.nist.gov/div898/handbook/prc/section4/prc473.htm .
+
+VALID requires the FPR upper bound and recall lower bound to clear the registered
+limits. An observed violation is REFUSED; intervals crossing a limit or missing
+a required denominator are UNVALIDATED. Expired evidence is STALE when checked.
+No override. These are scoped detector measurements, not deployment approval,
+regulatory certification or a guarantee about future traffic. Coverage applies
+to one predeclared evaluation; repeated selection across contracts is excluded.
+
+Acceptance registered before implementation: reject overlapping/changed IDs,
+unsupported grouping, invalid/unknown specification fields, changed identity,
+expired contracts, altered evidence and output replacement; reproduce all
+metrics from the bound input; agree with an independent binomial-tail inversion;
+retain existing customer tests and dependency boundary. Synthetic test outputs
+are not product-performance evidence and human summaries must suppress them.
+
+OPEN audit findings in the preserved paths: `intake.recheck` discards groups
+before its row-level binomial test; `FPRMonitor.wealth` caps using the maximum
+component, although its stopping statistic is the average over components.
+The latter condition does not imply mixture wealth reached the boundary.
+`validation/warrant_stats.py` is designated read-only in CLAUDE.md; record and
+reproduce this defect without changing it in this slice. Neither runtime path
+is reused for the new release decision. The earlier power correction (183) is
+now committed at 2259065, with its checks recorded at 7ae68d3.
+
+## 185 -- Reuse intake without hiding a missing denominator (2026-09-14)
+
+Release evidence must record UNVALIDATED when a holdout lacks a class, while
+legacy certification deliberately treats that file as invalid input. Add an
+explicit `require_both_classes` keyword, default true, to the shared reader;
+only the release path opts out. No existing caller changes behaviour. Do not
+invent a fake second-class row or duplicate the parser to get a record written.
+
+The parser currently checks each ID with `ids.count`, scanning the entire list
+once per row. Replace this quadratic duplicate search with a single Counter
+pass, preserving the same sorted error output. This matters before putting the
+new workflow on larger customer exports. It is a complexity correction, not a
+measured throughput claim. Acceptance: unchanged legacy single-class rejection,
+explicit opt-in parsing, identical duplicate detection, and existing intake tests.
+
+## 186 - Repair audit integration without rewriting history (2026-09-14)
+
+The broad regression run caught two integration defects in this extension:
+new decision headings use a double ASCII hyphen the citation parser does not
+recognise, and adding tests invalidates the manually maintained test-count badge.
+Preserve append-only entries 184 and 185; extend the parser to recognise their
+heading format and test it. Do not rewrite old rationale to accommodate a regex.
+
+Generate the test inventory from successful pytest collection on a clean tree,
+record its source commit, then refresh the README/Makefile count from that
+artifact. Label the number collected, not passing: collection cannot prove
+execution passed. The existing comparison test remains in force. No scientific
+result changes. These repairs do not resolve the separate runtime-monitor or
+grouped-recheck findings recorded in 184.
+
+## 187 - A year of rechecks is a change-detection problem: four revocation rules compared on the same labels, pre-registered
+
+- **Date:** 2026-09-14
+- **Status:** PRE-REGISTERED (this entry); results appended after the run
+
+183 made `plan` state what a year of rechecks costs in false revocations: at the
+0.80-power size (628 negatives, budget 0.05, alpha 0.05), a detector exactly at
+its budget is revoked by one recheck with probability 0.0365, so by at least one
+of 52 weekly rechecks with probability about 0.86. Stating it is not fixing it.
+The shipped rule tests each recheck alone; the question a monitoring programme
+actually asks is **how soon a breach that starts mid-year is caught, at a
+bounded chance of revoking a detector that never breached**. That is sequential
+change detection, and it has standard answers.
+
+**Rules, all fed the same labelled negatives in the same order.** A year is `K`
+rechecks of `n` clean negatives each, `N = K x n` labels.
+
+| rule | revokes when | year guarantee |
+|---|---|---|
+| A. shipped | a recheck's one-sided CP lower bound at `alpha` exceeds the budget | none; `1 - (1 - f)^K` at the budget |
+| B. split | the same bound at `alpha / K` | P(any false revocation in the year) <= alpha (Bonferroni) |
+| C. monitor | `validation.warrant_stats.FPRMonitor` over every label, checked at each recheck | <= alpha for all time (Ville) |
+| D. e-detector | the mean over `FPRMonitor`'s betting grid of one Shiryaev-Roberts e-detector per bet, `R^lam_t = (R^lam_{t-1} + 1) * (1 + lam (x_t - p0))`, checked at each recheck, threshold `N / alpha` | <= alpha over the year: under any `p <= p0`, `V_t = R_t + (N - t)` is a nonnegative supermartingale from `V_0 = N` that dominates `R_t` for `t <= N`, so Ville's inequality bounds `P(max_{t<=N} R_t >= N/alpha)` by alpha (construction: Shin, Ramdas and Rinaldo, NEJSDS 2023) |
+
+**Corrected before any simulation ran.** The first text of this entry put the
+grid mean inside the step, `(R_{t-1} + 1) * mean_lam(1 + lam (x_t - p0))`. That
+is one fixed bet at the grid's mean, lam = 1.959, against a Kelly bet of 0.526
+for a 1.5x breach, and its expected log-growth at the breach is -0.0165 per
+label: it would almost never revoke, and D would lose for a reason unrelated to
+change detection. The mean of per-bet detectors is the construction intended,
+and each term, hence the mean, satisfies the Ville argument unchanged. Found by
+checking the growth rate before writing the simulation; no criterion moved.
+
+C is read-only and is called, not changed. D is new code outside the read-only
+zones. Checking only at recheck boundaries is a subset of stopping times, so C's
+and D's guarantees hold unchanged.
+
+**Found while implementing C, before any simulation ran -- a suspected defect in
+read-only `validation/warrant_stats.py`.** `FPRMonitor.wealth` returns `1/alpha`
+whenever the **largest single bet's** log-wealth exceeds `log(1/alpha) + 1`, the
+comment reading "nothing above 1/alpha changes the decision". The monitor's
+e-process is the **mean** over its 40 bets, and one bet at `e/alpha` (54.4 at
+alpha 0.05) puts that mean as low as 54.4 / 40 = 1.36. So `revoked` can be True
+while the mixture is far below `1/alpha`, and the whole-deployment bound does not
+follow from Ville's inequality as the docstring says; a union over the bets gives
+only `40 * alpha / e`. `tests/test_warrant_stats.py::test_the_null_does_not_revoke_at_every_published_point`
+reads `revoked` once, after 500 items, and allows 8 of 40, so it tests neither
+the cap nor "any time". **OPEN -- needs human review:** the file is read-only;
+what would close it is an owner changing the cap to act on the mixture (for
+example, return `1/alpha` only when the mean itself clears it) and a test of the
+running maximum under the null.
+
+Two consequences for this comparison, fixed now:
+
+- **C is run as implemented** -- `FPRMonitor`'s own `revoked`, reproduced from
+  counts and pinned equal to feeding the monitor item by item.
+- **C' is added**: the same grid and the same wealth with the cap removed, the
+  mixture Ville's inequality is actually about. C' is a reference for the cap's
+  effect and is not a candidate under P, because it is not the shipped code.
+
+**Added prediction:** under S0, C revokes in more years than C'.
+
+**Why D is in the comparison.** C's wealth decays while the rate sits below
+`p0`, so a breach arriving after months of good behaviour starts from a small
+wealth and waits. A Shiryaev-Roberts detector restarts implicitly at every
+label, which is what change detection needs and what a certificate-style e-process
+does not do.
+
+**Declared setting.** Budget 0.05, alpha 0.05, breach 0.075 (1.5x, `plan`'s
+default). Cadences weekly (`K = 52`) and monthly (`K = 12`). `n = 628` for every
+rule, so every rule spends the same labels; B is **not** re-sized, because the
+comparison is at equal cost. Seed 1729; 4,000 simulated years per scenario and
+cadence.
+
+**Scenarios, true false-positive rate over the year.**
+
+- **S0** at the budget all year -- the worst case over every rate promised.
+- **S1** at 0.0371 all year -- the measured certified rate in 143.
+- **S2** at the budget for the first half-year, then 0.075.
+- **S3** at 0.0371 for the first half-year, then 0.075.
+
+**Criteria, registered now.**
+
+- **V (validity).** Under S0, B, C and D each revoke in at most `alpha` + 3 MC SE
+  of years. A is reported, and 183 already predicts about 0.86 weekly.
+- **P (primary).** Among rules passing V, the one with the highest probability
+  of revoking within **13 weeks of the change** in S2 at the weekly cadence
+  (monthly: within 3 rechecks). Tie within 2 MC SE: the lower median delay.
+- **Floor.** If no V-passing rule catches the S2 breach within the window with
+  probability >= 0.50, the year guarantee is not affordable at this label budget:
+  A stays, its year column stays disclosed, and that is the headline.
+- **Secondary, no decision rides on them:** S1 and S3 false revocation and delay;
+  every rule's figures at the monthly cadence.
+
+**Predictions, written so they can be wrong.** C has the longest delay of the
+three valid rules in S2 and S3. D catches at least as often as B within the
+window. A catches soonest and fails V badly.
+
+**What the numbers are.** Simulated operating characteristics of four decision
+rules under known truth, exact up to Monte Carlo error. They describe the rules,
+not any detector, and are rendered as such, with the scenario beside every
+figure.
+
+**What follows.** The chosen rule becomes the stateful path: a recheck that
+carries the rule's state forward from the previous recheck record, and `plan`
+prices it. Implemented under its own entry, after these results.
+
+**Rejected: re-size B to 0.80 power at `alpha / K`.** That answers a different
+question (what a year-valid rule costs) and makes the comparison unequal in
+labels. It is reported as a price, not as a candidate.
+
+### 187 results -- the e-detector is chosen, and the shipped monitor is blind to the breach that matters
+
+- **Run:** `python scripts/29_recheck_schedules.py --config config.yaml` at `b8b0f00`,
+  clean tree, seed 1729, 4,000 simulated years per cell;
+  `results/recheck_schedules/comparison.json`. A first run at `74e38e5`, before
+  the branch was rebased, produced identical figures in every cell.
+- **Every figure below is a simulated operating characteristic of a rule under a
+  declared true false-positive rate, not a measurement of any detector.** Monte
+  Carlo SE is at most 0.008 on any share here.
+
+**Weekly, 52 rechecks of 628 negatives (32,656 labels a year).**
+
+| rule | S0: any false revocation in the year | S2: revoked before the change | S2: caught within 13 weeks | S3: caught within 13 weeks | S3 median delay (rechecks) |
+|---|---|---|---|---|---|
+| fixed (shipped `recheck`) | **0.8515** | 0.6210 | 0.3790 | 0.9940 | 0 |
+| split, alpha/52 | 0.0280 | 0.0140 | 0.9772 | 0.9892 | 1 |
+| monitor (`FPRMonitor` as shipped) | 0.0248 | 0.0160 | 0.9830 | **0.0005** | 20 |
+| monitor, cap removed (reference) | 0.0115 | 0.0060 | 0.9905 | 0.0000 | 20 |
+| **e-detector** | **0.0085** | 0.0035 | **0.9965** | **1.0000** | 2 |
+
+**Monthly, 12 rechecks of 628 negatives (7,536 labels a year).**
+
+| rule | S0 | S2 before change | S2 caught within 3 rechecks | S3 caught within 3 rechecks |
+|---|---|---|---|---|
+| fixed | **0.3598** | 0.2020 | 0.7905 | 0.9922 |
+| split, alpha/12 | 0.0348 | 0.0145 | 0.8323 | **0.8420** |
+| monitor | 0.0147 | 0.0112 | 0.4662 | 0.0025 |
+| monitor, cap removed | 0.0063 | 0.0053 | 0.3945 | 0.0013 |
+| e-detector | 0.0030 | 0.0013 | 0.8417 | 0.7877 |
+
+**Criteria.**
+
+- **V.** The shipped fixed rule fails, as 183 predicted: 0.8515 weekly and 0.3598
+  monthly against a limit of 0.0603. Split, monitor and e-detector pass at both
+  cadences.
+- **P.** Among passing candidates at the weekly cadence in S2, the e-detector
+  catches in 0.9965 of years against 0.9830 for the monitor and 0.9772 for the
+  split. The gap to the monitor is 0.0135, beyond 2 MC SE (0.0019), so no tie.
+  **Chosen: the e-detector.**
+- **Floor.** Met: 0.9965 >= 0.50.
+
+**Predictions, checked.**
+
+- *C has the longest delay of the valid rules in S2 and S3.* **Held**, and far
+  more strongly than written: median delay 5 in S2 against 2 and 1; in S3 the
+  monitor catches within a quarter in 0.0005 of years.
+- *D catches at least as often as B within the window.* **Held weekly** (S2
+  0.9965 v 0.9772; S3 1.0000 v 0.9892). **Failed at the monthly cadence in S3**:
+  0.7877 against the split's 0.8420, a gap of 0.0543, about 8 MC SE. With only
+  three rechecks in the window, a detector that accumulates evidence across
+  labels is slower to clear its year-wide threshold than one fresh test at
+  alpha/12.
+- *A catches soonest and fails V badly.* It fails V badly. It catches soonest in
+  S3 (median delay 0), but in S2 weekly 0.6210 of years were already revoked
+  before the breach began, so it "caught" only 0.3790.
+- *Under S0, C revokes in more years than C'.* **Held**: 0.0248 against 0.0115
+  weekly, 0.0147 against 0.0063 monthly. The cap roughly doubles false
+  revocation. It still sits under alpha here because the monitor is only read at
+  recheck boundaries; read after every label, as its docstring invites, the cap
+  has 628 times as many chances to fire. That case was not simulated.
+
+**The finding that matters most is S3, and it was not the question asked.**
+S3 is the realistic case: a certified detector sits below its budget
+(0.0371, 143's measured rate) and then degrades. `FPRMonitor` -- the research
+path's "anytime-valid revocation trigger" -- catches that degradation within a
+quarter in **2 of 4,000** simulated years weekly, because its wealth decays
+through every month of good behaviour and the breach has to climb out of the
+hole first. The e-detector catches it in every year. A monitor that guarantees
+few false alarms by being unable to fire after a good run is not a monitor; the
+guarantee in its docstring is true of the uncapped mixture and useless for the
+job it is named for. `validation/warrant_stats.py` is read-only: this is recorded
+beside 187's cap defect as **OPEN -- needs human review**, and what would close
+it is an owner replacing the runtime trigger with a change detector.
+
+**What these results do not establish.** Independent fresh samples per recheck;
+one budget, one breach size, one change point, one declared certified rate; a
+step change, not a drift. Checking only at recheck boundaries. No detector,
+labeller or traffic is involved.
+
+**What follows.** The e-detector becomes the stateful customer path: `recheck`
+carrying its statistic forward in the recheck record, and `plan` pricing it.
+Its own entry, before the code.
+
+## 188 - `recheck` threw away the groups `certify` certified on, so a grouped promise was re-tested in the wrong unit
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED
+
+Recorded OPEN in 184 (release evidence, "`intake.recheck` discards groups before
+its row-level binomial test") and in `reports/CLAIM-AUDIT-2026-09.md`. It is not
+in a read-only zone, so it is closed here rather than carried.
+
+`certify` on a file with a `group` column certifies at **cluster level**: the
+negatives are grouped, a cluster is a false positive if any member reaches the
+threshold, and the Clopper-Pearson bound is taken over clusters, refusing
+unequal cluster sizes because the cluster bound is then anticonservative
+(`validation.warrant_stats.certify_fpr`). `recheck_items` calls
+`items.as_arrays()` and drops the third element. The same file is re-tested
+item by item, and two things go wrong at once:
+
+1. **The quantity changes.** The promise is a cluster false-positive rate; the
+   recheck measures an item rate, which for equal clusters is at most the
+   cluster rate. A breach in cluster terms can read as no breach.
+2. **The sample size inflates.** Items that share a source are counted as
+   independent trials, so the lower bound is tighter than the evidence and a
+   recheck can revoke on correlated noise.
+
+The PSI drift check has the same blind spot: its null band is simulated for
+independent items, so a clustered file's null is wider than the band says.
+
+**Decision.**
+
+1. A grouped file is rechecked in certify's unit: negative clusters, a cluster
+   fires on its maximum, `n` is the number of negative clusters, and the
+   detection floor, the 1.5x sizing and 183's power are all computed at that
+   `n` -- quoting power at the item count would overstate what a grouped file
+   can catch.
+2. Unequal negative-cluster sizes are refused with exit 2 and certify's reason.
+3. **A grouping mismatch is refused.** A record certified grouped and a file
+   without groups, or the reverse, exits 2: the promise and the test would be in
+   different units, and neither choice of unit is the user's intent to guess.
+4. **Drift is not assessed on a grouped file**, and says why: the simulated
+   null assumes independent items. Not assessed, rather than assessed wrongly.
+5. The record states the unit (`"unit": "cluster"` or `"item"`).
+
+**Rejected: a design-effect correction on the item-level test.** It needs an
+intra-cluster correlation nobody has measured, and certify deliberately chose the
+exact cluster-level route to avoid one.
+
+**What this does not fix.** Dependence the file does not declare. A recheck on
+undeclared clusters is still an item-level test, exactly as certification is.
+
+## 189 - The RBI's draft model-risk guidance names this product's buyer, and a crosswalk has to say where it stops
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED (the crosswalk); OPEN -- needs human review (exception approval, below)
+
+**The source.** Reserve Bank of India, draft *Guidance on Regulatory Principles
+for Model Risk Management, 2026*, press release 24 June 2026, comments closed
+24 July 2026; read on rbi.org.in on 2026-09-14. **A draft**: no final text had
+been issued when this was written, and paragraph numbers may move.
+
+It matters here for three reasons, each a sentence of the draft rather than an
+inference from it:
+
+- **Scope includes this product's objects.** ¶9: "all models, including AI / ML
+  models, irrespective of whether such models are developed internally, sourced
+  from third-parties, or a combination thereof"; ¶54(2) names "generative AI
+  models". The US agencies' SR 26-2 excludes generative and agentic AI (recorded
+  in `reports/STRATEGY-2026-09.md` §3); this draft does not.
+- **Validation is the regulated entity's, not the vendor's.** ¶29: "all models,
+  including third-party models, are subject to independent validation by the RE";
+  ¶30: "prior to and after deployment of a model, following modification, on
+  internal or external triggers, and periodically".
+- **It sets no evidential standard.** Nothing in it says how much evidence a
+  validation needs, at what confidence, or what to do when the sample cannot
+  support the claim. That is the gap this product fills, and it is also why
+  nothing here is compliance: a crosswalk shows which paragraphs a warrant can
+  supply evidence for, not that supplying it satisfies the RBI.
+
+**How the quotes were read.** The draft's HTML page on rbi.org.in, through a
+fetch tool that returns the page as text; the PDF behind the press release
+returned a verification page instead. Every quote in the register is short and
+was copied from that text, but a quote used outside this repository should be
+checked against the PDF first.
+
+**This is not the demand evidence `STRATEGY-2026-09.md` §5 asked for.** A draft
+obligation to validate is not proof that anyone pays for interval-backed
+validation or for refusal; the twelve conversations are still the test. What it
+changes is whom to call first: model-validation functions at RBI-regulated
+entities, with the draft's paragraph numbers in hand.
+
+**Decision.** A machine-checked crosswalk,
+`controlplane/report/crosswalk.py`, rendered to `docs/RBI-MRM-2026-CROSSWALK.md`
+by `python -m controlplane.report.crosswalk`:
+
+1. One row per requirement: the paragraph, a short verbatim quote, and a
+   coverage of **PROVIDES**, **PARTIAL** or **NOT PROVIDED**.
+2. PROVIDES and PARTIAL rows name the code (`path::symbol`) and at least one
+   test that holds it; PARTIAL and NOT PROVIDED rows state the gap. A test fails
+   if a named symbol or test disappears, as `tests/test_invariants.py` does for
+   the invariants.
+3. The committed markdown must equal the renderer's output, so the page cannot
+   be edited by hand and drift from the table.
+4. It carries no measured number. It points at artifacts by path.
+5. It does not cite `FPRMonitor`'s deployment-wide false-revocation guarantee.
+   Its wealth is capped at `1/alpha` once one bet passes `e/alpha`: at
+   `p0 = 0.05`, two false positives in the first two labels revoke while the
+   mixture is 14.21 against a threshold of 20. The guarantee is not established
+   as implemented, in read-only `validation/warrant_stats.py`, and a test keeps
+   the page from leaning on it.
+
+**The row that is a product decision, not a mapping.** ¶34-37 contemplate
+"models approved with exceptions": an entity may deploy a model that did not
+pass validation, with documented approval, remediation timelines and enhanced
+monitoring. Invariant 3 says a refusal has no override. The two are compatible
+only if an exception is recorded **beside** a REFUSED warrant -- who approved,
+why, until when, under what monitoring -- and never flips it to VALID, and every
+certificate issued under it claims no bounds. **Nothing records such an
+exception today.** Building it touches read-only `policy/` resolution and the
+meaning of a refusal, which is the product's thesis. **OPEN -- needs human
+review**; what would close it is a founder decision on whether the product
+records exceptions at all, and the crosswalk marks ¶34-35 NOT PROVIDED until
+then.
+
+**¶60 is not that conflict.** ¶60(ii) requires "override, suspension, or
+deactivation mechanisms, including kill-switch arrangements" for AI models --
+overriding a model's *outputs*. `model/override.py` records a human override of
+an escalated item, and drift response suspends a profile. Neither overrides a
+warrant, and the crosswalk says so, because a reader who sees "no override" in
+invariant 3 beside ¶60 will assume a conflict.
+
+**Rejected: a compliance matrix with a tick per paragraph.** A tick asserts that
+a requirement is met. What the code can say is narrower: this function produces
+evidence of this kind, and this test holds it.
+
+**Rejected: SEBI's AI/ML consultation alongside.** Only the June 2025
+consultation paper was found, not a final circular; mapping to a consultation
+whose final form is unknown would claim more than is known.
+
+## 190 - `certify --frontier` certified on grouped files what `certify` refuses
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED
+
+`frontier` is the view a customer picks a budget from. It called
+`items.as_arrays()`, dropped the `group` column, and certified every budget at
+item level. `certify --budget` certifies a grouped file at cluster level and
+refuses one with unequal groups (107, 137). Found by reading `frontier.py` after
+188 fixed the same omission in `recheck`.
+
+**Measured on a synthetic grouped file** -- 150 groups of four, clustered
+scores, 110 negative clusters and 440 negative items (numbers of a constructed
+file, reported to show the disagreement, not a measurement of any detector):
+
+| budget | frontier | certify |
+|---|---|---|
+| 0.01 | certified, threshold 0.912 | REFUSED: 110 independent units, needs 299 |
+| 0.02 | certified, threshold 0.896 | REFUSED: 110 independent units, needs 149 |
+| 0.03 | certified, threshold 0.885 | VALID, threshold 0.912 |
+
+With one group made larger than the rest, `frontier` still certified and
+`certify` raised. **A budget read off the frontier as certified was one the
+product refuses to certify**, and at a budget both certify the frontier's
+threshold -- and so its caught and flagged counts -- described a lower
+operating point than the warrant `certify` then issues.
+
+**Decision.** One certification step, called by both. `certify_items`'s
+unequal-group check and its call to `certify_fpr` move into a single function in
+`intake/certify.py` that `frontier` calls per budget, so the two cannot
+disagree about a status, a threshold or a unit again. A test asserts they agree
+at every grid budget on an ungrouped file, a grouped file and a file whose
+groups make cluster certification refuse where item certification would not.
+The frontier renders its floor in independent negative units on a grouped file,
+and `certify --frontier` exits 2 on unequal groups instead of raising.
+
+**Rejected: reuse `recheck.negative_cluster_maxima` (188).** It checks only
+negative clusters, while `certify` checks every group through
+`ScoredItems.equal_group_sizes`. The frontier's contract is to agree with
+`certify`, so it calls what `certify` calls.
+
+## 191 - The recall price is sized at the expected count, so the margin it buys is a coin flip: assurance, pre-registered
+
+- **Date:** 2026-09-14
+- **Status:** PRE-REGISTERED (this entry); results appended after the run
+
+`sampling.planning.labels_for_recall(basis="exact")` returns the smallest stable
+`n` at which the Clopper-Pearson recall half-width reaches the target **when the
+unflagged sample holds exactly `round(q x n_eff)` errors**. That count is the
+expectation. The realised count is binomial, and the recall half-width grows
+with it, so a sample of the quoted size meets its margin about as often as the
+count lands at or below its mean. The headline price -- **1,014 labels for recall
+to +/-0.05, month one** (`results/on_traffic/on_traffic.json`) -- is that
+figure. It is 183's defect one module over: a sample size whose chance of
+delivering what it names is left implicit.
+
+**Corrected before any assurance was computed.** The paragraph above says the
+recall half-width "grows with" the realised count. It does not. Checked at the
+declared workload (q = 0.0261, TP = 849.6, N_u = 197,016) at n = 1,014, the
+half-width peaks at k = 2 and then **falls** as k rises: the prevalence interval
+widens roughly as sqrt(k), but |dR/dq| = TP N_u / (TP + q N_u)^2 falls roughly as
+1/k^2. So the margin is met when the count lands at or **above** its expectation,
+not below. The conclusion the criteria rest on -- about half -- is unchanged, and
+no criterion moves. The implementation takes the set of counts meeting the margin
+as `k >= k_min(n)` and checks that assumption against brute-force enumeration in
+its tests rather than trusting this paragraph a second time.
+
+This is a known failure of width-based sizing: Kupper and Hafner, "How
+appropriate are popular sample size formulas?", *The American Statistician*
+43(2), 1989, 101-105. The standard remedy is to size with **assurance**, the
+probability that the realised interval meets the target width.
+
+**Quantity.** Assurance at `n`: `sum_k P(Bin(n_eff, q) = k) * 1[half-width(k,
+n_eff) <= margin]`, the half-width being the recall interval the estimator
+reports, through `R = TP / (TP + q N_u)`. **Propagation:** exact binomial
+weights over every achievable count; no normal approximation.
+
+**Decision.**
+
+1. `labels_for_recall` gains `assurance`, and the exact basis returns the
+   smallest stable `n` from which assurance is at least the target, at `n` and
+   every `n` up to 12x it. The expected-count figure stays on the plan as
+   `labels_at_expected_count`, with its own assurance printed beside it.
+2. The target is a declared input, `sampling.margin_assurance` in
+   `config.yaml`, **0.80**, the same convention and the same caveat as
+   `validation.recheck_power` (183).
+3. `results/on_traffic/` is regenerated through `scripts/25_on_traffic.py`, and
+   every claim row that moves states its before and after.
+
+**Criteria, registered now.**
+
+- **C1, same estimator.** At the 0.80-assurance size for the month-one plan,
+  2,000 seeded samples pushed through `estimator.estimate_on_traffic` realise the
+  margin in a share within 3 Monte Carlo SE of the computed assurance.
+- **C2, the prediction.** The assurance of the current 1,014-label figure lies
+  in **[0.35, 0.65]**. Outside that band, the premise of this entry is wrong:
+  stop, and record why before changing anything.
+- **C3.** The 0.80-assurance size is larger than 1,014 and at most **2x** it. More
+  than 2x means the half-width is far more sensitive to the count than argued,
+  and the plan's structure has to be re-examined before it is published.
+
+**Scope of the exactness.** At month one (design effect 1, simple random
+sampling of the unflagged pool) the count is binomial and assurance is exact.
+The steady-state row sizes an *effective* `n = n / deff`, and a Neyman-allocated
+count is a sum of per-band binomials, not one binomial; its assurance is the same
+approximation the planner already makes for its margin, and is labelled
+approximate wherever it is printed. C1 is checked at month one only.
+
+**Rejected: size at the upper quantile of the count instead.** That is a normal
+shortcut to the same quantity, and every sizing in this repository has been
+moved off shortcuts for the sawtooth reason (146).
+
+**The objection.** *"Assurance is a second arbitrary number."* It is declared,
+like power, and the plan prints 0.5, 0.8 and 0.9 so the reader sees what it buys.
+The arbitrary number was already there; it was 0.5 and nobody said so.
+
+### 191 results -- C1, C2, C3 pass; the recall price rises from 1,014 to 1,399 labels
+
+- **Code:** `945f08b`, corrected at `ca5ceab` (below) and sped up at `1c13492`.
+  **Artifacts:** `results/on_traffic/`, `results/feasibility.json` at `05b2a52`
+  (built at `478b02a`); `results/RESULTS.md` through the chain at `478e674`, 3,075
+  metrics compared, 0 moved. `verify.py`: 81/81, 25/25, 3/3.
+- **Tests:** `tests/test_sampling_assurance.py` pins every figure below.
+
+| criterion | registered | result |
+|---|---|---|
+| C1, same estimator | 2,000 seeded samples at the 0.80-assurance size through `estimate_on_traffic` realise the margin within 3 MC SE of the computed assurance | **pass**: 0.8045 realised against 0.8004 computed, 0.46 SE. At the old 1,014: 0.4875 against 0.4882 |
+| C2, the prediction | the 1,014-label headline's assurance lies in [0.35, 0.65] | **pass**: **0.4882** |
+| C3 | the 0.80-assurance size exceeds 1,014 and is at most 2,028 | **pass**: **1,399** (1.38x) |
+
+**The published figures, before and after, month one unless stated.**
+
+| recall margin | sized at the expected count | its assurance | at 0.50 | **at 0.80** | at 0.90 |
+|---|---|---|---|---|---|
+| +/-0.05 | 1,014 | 0.4882 | 1,020 | **1,399** | 1,632 |
+| +/-0.02 | 5,566 | 0.4949 | 5,611 | **6,518** | 7,021 |
+| +/-0.01 | 21,671 | 0.4977 | 21,677 | **23,531** | 24,537 |
+
+Steady state at the measured design effect, +/-0.05: **804 -> 1,109**, under the
+effective-`n` approximation the entry scopes.
+
+**The profiles, month one** (`RESULTS.md`): `customer_support` 1,808 -> 2,283 and
+10,636 -> 11,803; `internal_knowledge` 3,582 -> 4,101 and 21,598 -> 22,886;
+`decision_support` 4,049 -> **4,068** and 24,591 -> **24,659**. Every plan's
+assurance at its size is 0.8001 to 0.8555, and every expected-count size's is
+0.4882 to 0.5571. `decision_support` barely moves because its expected count sits
+at the half-width's peak, where counts on both sides of it narrow the interval.
+
+**A defect found after the first artifact commit, by reading the output.** The
+first implementation (`945f08b`) assumed the counts meeting a margin are one high
+tail past sixteen errors, because at the declared workload the half-width falls
+with the count. It was checked against brute force there, and at flag rate 0.05
+only. The artifacts committed at `11d7d90` were built with it, and the
+re-rendered `RESULTS.md` showed `decision_support` at +/-0.02 needing **fewer**
+labels with 0.80 assurance (21,108) than at the expected count (24,591) -- which
+cannot happen. Brute force at that plan: assurance **0.0000**; the code returned
+1.0000.
+
+The half-width rises to **one peak**, near `k = n TP / (3 N_u)`, then falls:
+checked over every count at every shipped operating point, one sign change in
+the slope. At the declared workload the peak is at a few errors, far below the
+expected count, so one tail was right; at `decision_support` (TP 4,420, q 0.0148)
+the peak sits at the expected count. `ca5ceab` counts both tails; brute force
+now agrees to 4e-14 at all four shipped points, three margins and ten sizes, and
+`tests/test_sampling_assurance.py` pins the failing case. **Every declared-workload
+figure above is unchanged by the fix**; the profile rows moved, and the
+`11d7d90` versions of them were wrong. The commit stays in history.
+
+It was not caught by a test because the tests checked the property where it held.
+The reading that caught it was the one this repository keeps paying for: a
+number that moved in the impossible direction.
+
+**What it does not establish.** The declared `q` is still declared: assurance is
+over sampling noise at an assumed prevalence, not over being wrong about the
+prevalence, which is the larger risk in month one and is what the estimator's
+realised margin reports after the fact. The Neyman row is approximate.
+**0.80 is a convention**, printed beside 0.5 and 0.9, not a measurement of what
+anyone should buy.
+
+## 192 - The frontier invites choosing a budget on the file that certifies it: how wrong is the chosen row, measured before deciding
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED -- pre-registered at `c1463d7`, run at `dcb9a1a` (`eeb45f5`); M1 material, M2 adopted
+
+`warrant certify --frontier` certifies eight budgets (0.01 to 0.20) off one
+file's negatives, and `render_frontier` ends with *"The row to pick is the one
+whose 'missed' you can live with at a 'false+' you can afford."* The user then
+runs `certify --budget` on the same file. **That is selecting the operating
+point on the data that certifies it** -- `CLAUDE.md`'s "Selecting on test", on
+the customer path.
+
+Each row's claim, *true FPR at this threshold <= this budget*, holds with
+probability at least 95% on its own (`certify_fpr`'s docstring; measured 0.0238
+miscoverage). A row chosen by looking at all eight is wrong with probability at
+most `P(any certified row is wrong)`, which the union bound puts at up to 8x
+alpha. `certify_fpr` already Bonferroni-splits alpha across `n_profiles`
+certified off one set, for this reason; nothing does across frontier rows.
+
+**Why `certify_fpr`'s own no-correction argument does not cover this.** Its
+docstring argues that sweeping thresholds *within one budget* needs no
+multiplicity correction: the certifying set `{tau : ucb(k(tau)) <= b}` is an
+upper set, so the only way to err is for the bound to fail at the single fixed
+threshold where the true rate crosses `b` -- one coverage event, bounded by
+alpha. Across budgets each `b_j` has its own fixed crossing threshold, so there
+are eight such events at eight different points of the curve. They are
+positively dependent -- one empirical survival function drives all of them --
+but they are not one event, and a pick that depends on the data can land on
+whichever one occurred.
+
+**Quantity.** For a file of `n` independent negative units: per-row
+miscoverage, `P(FPR(tau_j) > b_j)`; joint miscoverage, `P(any certified row has
+FPR(tau_j) > b_j)`, which bounds every pick rule; and the miscoverage of the
+row a realistic pick rule selects.
+
+**Why most of this is exact for every detector.** Item-level certification
+depends only on the ranks of the negative scores. With continuous scores, the
+certified threshold at budget `b` sits just above the `(n - k*)`-th order
+statistic, where `k*` is the largest count whose one-sided CP upper bound on `n`
+is at most `b` -- an index fixed by `n` and `b` alone. So:
+
+- **the rows that certify, and the false positives shown at each, depend only
+  on `n`.** A pick made on those columns selects nothing about the negatives
+  and cannot inflate error;
+- **per-row miscoverage is an exact binomial tail**, `P(Bin(n, 1 - b) >= n - k*)`;
+- **joint miscoverage is exact up to Monte Carlo error from multinomial counts**
+  of `n` uniforms over the intervals cut at `1 - b_j`, whatever the detector.
+
+**Where selection can bite is the caught column.** A row whose threshold landed
+low catches more positives and looks better -- and is exactly the row whose FPR
+claim is wrong. That depends on the positives' score distribution, so the pick
+rule is simulated under stated shapes rather than for every detector.
+
+**Design.** `n` in {150, 300, 600, 1200, 5000} negatives; the shipped
+`DEFAULT_GRID`; alpha 0.05; 20,000 seeded replicates per cell.
+
+- Joint miscoverage: multinomial counts, detector-free.
+- Pick rule R1, *the tightest budget whose caught count reaches half the
+  positives* -- "the row whose 'missed' you can live with": binormal ROC with
+  separation `d'` in {1, 2}, positives equal to `n / 3`.
+- Cross-check: 2,000 replicates at `n = 300` certified by
+  `intake.certify.certify_budget` on actual files must agree with the exact
+  per-row tails within 3 SE -- the analytic shortcut and the shipped function
+  are held to one answer.
+
+Ties and clusters are out of scope and stated as such.
+
+**Criteria, registered now.**
+
+- **M1, material.** The frontier changes if **R1's miscoverage** exceeds
+  **0.10** -- twice nominal -- in any cell of the design. The joint level is the
+  worst case over every pick rule and is reported beside it, but it does not
+  decide on its own: a bound that no realistic choice approaches is not a reason
+  to tighten every customer's thresholds. At or below 0.10 everywhere, the
+  frontier does not change, and the measured levels are stated on its output
+  instead.
+- **M2, the change if material.** The frontier certifies at `alpha / 8`, so its
+  rows hold simultaneously at 95% by the union bound, and says so. `certify
+  --budget` is unchanged at alpha and its help states that the level holds for a
+  budget chosen before looking at the file. The cost is reported: at each `n`,
+  how many budgets move from certified to refused, and the change in threshold.
+- **M3, sanity.** Every per-row miscoverage is at most 0.05 plus 3 Monte Carlo
+  SE. If one is not, stop: `certify_fpr`'s single-row guarantee would be wrong
+  and nothing downstream stands.
+
+**Predicted before the run:** joint miscoverage between 0.05 and 0.20, rising
+with `n` as more rows certify; the union bound allows up to 0.40. R1 between
+nominal and the joint level, closer to nominal at `d' = 2`, where the caught
+column moves less between adjacent rows.
+
+**Rejected: telling users to split the file.** Correct, and it halves the
+negatives behind every claim on the files customers actually have. The
+Bonferroni frontier keeps all of them and pays in thresholds instead, and M2
+measures that cost.
+
+**Rejected: remove the pick-a-row sentence.** The frontier exists so a person
+can choose; hiding the invitation leaves the selection and loses the warning.
+
+### Results (2026-09-15, `results/frontier_selection/selection.json`)
+
+| n | rows certified | worst row | joint | R1 given pick, d'=1 | R1 given pick, d'=2 | rows under alpha/8 |
+|---|---|---|---|---|---|---|
+| 150 | 7 | 0.0493 | 0.1267 | **0.1064** (pick rate 0.435) | 0.0483 | 5 |
+| 300 | 8 | 0.0490 | 0.1547 | 0.0801 | 0.0387 | 7 |
+| 600 | 8 | 0.0475 | 0.1505 | 0.0720 | 0.0467 | 8 |
+| 1200 | 8 | 0.0488 | 0.1766 | 0.0544 | 0.0566 | 8 |
+| 5000 | 8 | 0.0494 | 0.1839 | 0.0519 | 0.0474 | 8 |
+
+Monte Carlo SE on the joint column is at most 0.0027 and on R1 at most 0.0033.
+
+- **M3 pass.** Every row is within its level alone; the cross-check through
+  `certify_budget` on 2,000 real files agrees with the exact tails on all eight
+  budgets (largest |z| 2.38).
+- **M1: material, narrowly.** R1 at `n = 150, d' = 1` is 0.1064 +/- 0.0033,
+  1.9 SE above the registered 0.10. Every other cell is below it. Joint
+  miscoverage landed inside the predicted 0.05-0.20.
+- **M2 adopted**, as registered. Its measured cost: two budgets (0.02, 0.03)
+  stop certifying at `n = 150` and one (0.01) at `n = 300`; from `n = 600` every
+  row still certifies, with thresholds tightened by at most 1.3 percentage
+  points of expected false-positive rate (at most 2.7 at `n = 150`).
+
+**How M1 was read, stated because it decides the verdict.** The entry says
+"R1's miscoverage". The code committed before the run (`dcb9a1a`) takes it
+conditional on R1 picking a row, and that is the quantity a customer holding a
+picked row has. **Unconditionally** -- counting files where R1 picks nothing as
+not wrong -- R1 is at most 0.0566 in every cell and M1 would not be material.
+The conditional reading was fixed in code before any registered number existed;
+it is recorded here so the verdict is not mistaken for a stronger one than it
+is.
+
+**Seen before the registered run:** a 2,000-replicate speed check at `n = 600`
+(joint 0.161, R1 given pick 0.063), after the criteria were committed. It is not
+part of the result.
+
+**What M2 does not fix.** Registered M2 leaves `certify --budget` at alpha and
+adds a warning. A customer who picks a row off the frontier and then runs
+`certify --budget` on the same file still receives a warrant at the unadjusted
+level. Certifying a picked budget at the frontier's level is a change to the
+warrant command, not to the frontier, and needs its own entry.
+
+## 193 - `warrant recheck --since`: a year of rechecks as one change detector, carried in the records
+
+- **Date:** 2026-09-14
+- **Status:** DECIDED (design); acceptance criteria registered below, before the code
+
+187 compared five revocation rules over a simulated year and its registered
+criteria chose the **Shiryaev-Roberts e-detector**: weekly, false revocation over
+a sound year 0.0085, a mid-year breach caught within 13 weeks in 0.9965 of years,
+and a breach after six good months caught in 1.0000 -- where the shipped
+per-recheck test revokes a sound detector in 0.8515 of years. The customer path
+still runs the per-recheck test, and `plan` prices it. This entry is the
+customer-facing change 187 said would follow.
+
+**Decision.**
+
+1. **A chain, opt-in.** `warrant recheck --warrant W --input F --horizon-labels N`
+   starts a chain; `--since previous.recheck.json` continues one. A recheck run
+   neither way behaves exactly as today, so nothing an existing user relies on
+   changes, and its record says it was not part of a chain.
+2. **What the chain decides.** The statistic is 187's: the mean over
+   `FPRMonitor`'s betting grid of one Shiryaev-Roberts detector per bet,
+   `R^lam_t = (R^lam_{t-1} + 1)(1 + lam (x_t - p0))`, with `p0` the certified
+   budget, fed one clean-negative unit at a time (a cluster when the warrant is
+   grouped, 188). It **revokes when the mean reaches `N / alpha`**, which bounds
+   the probability of any false revocation over the chain's first `N` units by
+   alpha, for any true rate at or below the budget (Ville on `R_t + N - t`, 187).
+   The per-recheck bound and the drift check are still computed and printed; in
+   a chain, the bound's REVOKED is reported as **evidence** and the chain's
+   verdict is what `status` carries.
+3. **`N` is declared once and frozen.** The first record stores it; every `--since`
+   record must carry the same `N`, the same warrant digest, and the same `alpha`
+   and grid, or the recheck exits 2. When the chain has consumed `N` units it
+   **ends**: the record says so and the next recheck refuses to continue it --
+   re-certify, and start a new chain. A threshold computed for a different `N`
+   would void the bound.
+4. **Order is not the user's to choose.** SR depends on the order units arrive.
+   Within a file, units are fed in the order of `sha256(warrant digest + unit id)`,
+   fixed before any label or score is read, so neither sorting a file nor
+   shuffling it changes the verdict.
+5. **The records are a hash chain.** Each record stores the SHA-256 of the
+   previous record's canonical JSON and of the warrant record. `--since` on a
+   record that does not match its warrant, or whose digest does not reproduce,
+   exits 2. **What this cannot stop, stated in the record:** a user who discards
+   an unfavourable record and starts a fresh chain. The guarantee holds for the
+   chain as kept; only retaining every record makes a restart visible.
+6. **A consumed unit is consumed.** A unit id seen earlier in the same chain is
+   refused (exit 2): re-feeding a label the detector already passed would buy
+   evidence twice. The chain stores unit-id digests, not ids.
+7. **`plan` states what a chain costs and promises, and nothing it cannot back.**
+   For each cadence it prints the chain's horizon `N` -- that cadence's labels per
+   year -- and that false revocation over those `N` units is at most alpha. It
+   quotes **no detection figure**: 187 simulated one setting, an installed CLI
+   has no `results/` to read it from, and a figure for any other inputs would be
+   an extrapolation.
+8. **Checked after every unit.** Within a file the chain revokes as soon as the
+   statistic reaches the threshold, not only at the file's end. Ville's bound is
+   on the maximum over every `t <= N`, so every stopping time is covered, and a
+   breach concentrated early in a file is caught there.
+
+**Acceptance criteria, registered before the code.**
+
+- **A1.** Fed 187's registered streams in the study's order, with fixed seeds,
+  the chain's statistic at every recheck boundary equals the study's e-detector
+  statistic, and its first revocation falls **at or before** the study's recheck
+  -- at, when checked only at boundaries as the study was; possibly before, with
+  8's per-unit check. The product path and the study's rule are one rule.
+- **A2.** Permuting rows within a file gives an identical statistic and verdict.
+  Splitting a file across two rechecks keeps the guarantee but **not** the
+  statistic -- the hash order is per file -- and the test says so rather than
+  asserting equality.
+- **A3.** Every refusal in 3, 5 and 6 exits 2 with nothing written.
+- **A4.** A recheck without `--since`/`--horizon-labels` produces a record
+  byte-identical, apart from a `chain: null` field, to today's.
+
+**Corrected before any code was written.** As first committed, A1 claimed the
+chain reproduces the study's first-revocation recheck *exactly* -- false once 8
+checks after every unit, since a statistic can cross and fall back within a
+recheck -- and A2 claimed splitting a file leaves the statistic unchanged, which
+the per-file hash order makes false. The objection below also said `plan` prints
+a monthly detection figure, which 7 forbids. All three are corrected above; no
+decision changed.
+
+**Rejected: make the chain the default.** It needs `N` declared up front and the
+records kept, and a default that silently depends on the user keeping files is a
+default that fails silently.
+
+**Rejected: the alpha split (B).** It passed 187's criteria and lost on the
+primary; it also needs `K` fixed in advance, which is the same declaration as `N`
+without the gain.
+
+**The objection.** *"The e-detector lost to the split at monthly cadence in S3."*
+It did, by 0.054 (187). The chain is chosen on the registered weekly criterion;
+7 keeps that figure out of `plan`, and the choice of rule is revisited if a
+customer's cadence makes the monthly case the one that matters.
+
+## 194 - A read-only review of 193 found a dropped drift revocation, three overclaims and an unguarded fork
+
+- **Date:** 2026-09-15
+- **Status:** DECIDED
+
+accenture-c4 reviewed 193 at `595dbc4`, reproducing everything through the CLI
+and committing nothing. It confirmed the guarantee holds under the composite null
+(`p <= p0` gives each factor mean at most one), that the mixture mean is uncapped,
+that the state digest survives three JSON round trips, and that order and reused
+ids behave as 193 says. It found five things, each with a reproduction.
+
+**F1, a defect: `apply_chain` drops a drift revocation.** `_verdict` decides bound
+first, so a file whose bound breaks *and* whose distribution has moved comes back
+REVOKED with `bound_still_holds=False` and the drift verdict hidden behind it.
+`apply_chain` then maps that to STALE, against its own docstring ("a drift
+revocation is a different claim and stands"). Repro: a 2,000-row file shifted by
++0.8 against a warrant certified on 1,200 rows is REVOKED alone (PSI 0.3695
+against a noise p95 of 0.0157), and STALE under `--horizon-labels 5`.
+**Decision:** the recheck result carries its drift verdict separately, computed
+by the same rule `_verdict` applies, and a chain keeps REVOKED whenever drift
+alone revokes.
+
+**F2: the chain's end and its unconsumed units vanish from two of three reasons.**
+**Decision:** every chained verdict states the chain's progress; when units in the
+file went unconsumed it says so and that the chain never saw them; when the chain
+has ended it says to re-certify.
+
+**F3, an overclaim: "a unit already consumed cannot be fed again" holds per id,
+not per item.** Two files numbering rows `row0..` collide at link two (exit 2),
+and the same labelled items under renamed ids are accepted. Nothing local can
+tell an item from its id. **Decision:** the module, the refusal message and the
+README say that unit ids must be unique and stable across every file of a chain,
+and that the check is on ids. 193 item 6 is read that way from here.
+
+**F4, an overclaim in `plan`: its horizon is the power-sized negatives times the
+cadence.** A real file carries a different number of negatives, so a chain can
+end months before the year does. **Decision:** `plan` says `N` counts clean
+negatives fed, not rechecks or weeks, and that a chain ends when they are
+consumed.
+
+**F5, a mitigation, not prevention: a fork from an older record.** `--since` on
+last month's record silently branches the chain and drops the evidence after it.
+**Decision:** a sidecar `<warrant>.chain-head` holds the digest of the chain's
+latest record. `--since` on any other record, or `--horizon-labels` while a head
+exists, exits 2 unless `--fork` is given, and a forked link records the head it
+left in its hashed state. Every chained record says which check applied
+(matched, forked, or no sidecar). **Deleting the sidecar defeats this**, and the
+record says so; it catches the likely accident and makes a deliberate fork
+declare itself.
+
+**Acceptance.** F1's repro revokes under a chain; F2's reasons carry the end and
+the unconsumed count; F3's refusal names the id rule; F4's plan says what `N`
+counts; F5: a non-head `--since` and a restart over a live head exit 2 with
+nothing written and the sidecar unchanged, `--fork` succeeds and records the head
+it left, and a missing sidecar is recorded as missing.
+
+**Rejected: prevent forks.** It needs a ledger outside the user's control, which
+a local CLI does not have; claiming prevention would be the overclaim 193 was
+written to avoid.
+
+### The same reviewer on 191 (`ca5ceab`, `1c13492`): correct, and two hardenings
+
+Brute force over every count, with no peak assumption, reproduced 1,399 and 6,518
+exactly and found both minimal (1,398 gives 0.799200; 6,517 gives 0.799614);
+119 sizes sampled across each 12x horizon never fell below 0.80; the single-peak
+shape held in 390 configurations far outside the shipped points (TP 20 to
+20,000, q 0.0005 to 0.4). `_certified`'s endpoint argument and `last_failure`'s
+chunking were checked and hold.
+
+**Decision, two hardenings, neither changing a published size:**
+
+1. `_certified` compares slopes strictly (`<`), so an exactly flat step on the
+   rising side -- practically impossible under Clopper-Pearson -- cannot certify.
+2. **Every size `labels_for_recall` quotes is checked at run time against brute
+   force**: assurance enumerated over every count at the quoted size, required
+   to meet the target and to agree with the fast computation within 1e-9, and at
+   the size below it, required to fall short. The fast path rests on a shape the
+   code does not otherwise check; `CLAUDE.md` asks for an assertion at every
+   boundary, and this is the boundary a published number crosses. It raises
+   rather than returning a size it cannot confirm. One pass over the counts at
+   each quoted size, not over the horizon.
+
+### F5 reviewed again at `92e1f22`: three ways past the head check
+
+The reviewer reproduced three bypasses through the CLI; a non-head `--since`
+without `--fork` still exits 2, as intended.
+
+- **A. A copied or moved warrant starts a fresh head.** The sidecar is keyed by
+  the warrant's path, so `-w w_copy.json --since r1.json` passes as "no sidecar",
+  and its next link reads "matched" with no fork recorded. **Decision:** a
+  `--since` record written under a sidecar (`head_check` matched or forked) with
+  no sidecar now exits 2 unless `--fork`: the chain had a head and does not now
+  -- deleted, moved or copied. Records from before 194 carry no `head_check` and
+  are unaffected.
+- **B. An edited sidecar reads "matched".** Not preventable locally.
+  **Decision:** (i) every chained record says that "matched" means it matched the
+  user-writable sidecar present at the time, not that the link is not a fork;
+  (ii) detection goes where it is possible -- over the records a user keeps.
+  `warrant chain verify <records...>` flags two records sharing a
+  `previous_record_sha256` (a fork, whatever `head_check` says), sequence gaps or
+  duplicates, a `state_sha256` that does not reproduce, a
+  `previous_record_sha256` matching no record given, more than one
+  `warrant_sha256`, links after a revoked or ended record, **two sequence-1
+  records for one warrant** (a restart, which 193 item 5 calls unpreventable and
+  which is detectable once both are kept), and **a link that does not extend its
+  previous record** (a different p0, alpha, grid or horizon; units consumed
+  decreasing; the consumed-digest list not extending the previous one, or its
+  length not equal to the units consumed) -- which catches a state spliced from
+  another chain with a valid digest. The statistics themselves cannot be
+  recomputed without the data, and the command says so. A declared `--fork` is
+  still reported, as a fork marked declared: two branches off one prefix are two
+  tests. Findings are grouped by warrant. **Exit codes follow the CLI's
+  convention**: 0 with the findings printed and recorded, 1 only with
+  `--require-clean` when anything is flagged, 2 for unreadable input or a file
+  that is not a chained recheck record. This is the counterpart to "keep every
+  record": the auditor gets a tool that uses them.
+- **C. Overwriting last week's record, the likeliest accident.** Exporting to one
+  filename each week makes `--since latest.csv.recheck.json` work every week
+  while each run destroys the record before it. **Decision:** a chained recheck
+  refuses to write over an existing file (exit 2, nothing written, sidecar
+  unchanged), and its default output name carries the link number,
+  `<input>.recheck-NNNN.json`.
+
+### A to C reviewed (accenture-c4, read-only, at `9c1fc68`): two bypasses, one race, one collision
+
+- **A-1, a bypass that is a limit, and three texts that overstated it.** `state_sha256`
+  is a digest of public fields -- a checksum, not a signature. Rewriting a record
+  with `head_check` cleared and the digest recomputed makes it indistinguishable
+  from a pre-194 record: with the sidecar deleted, `--since` on it passes without
+  `--fork`, and `chain verify` over a set that omits the original reports nothing.
+  **Decision:** no prevention -- tamper-evidence needs a key or an anchor outside the
+  user's control, which a local CLI does not have. The digest's refusal message, the
+  guarantee, `head_check_meaning` and the verifier's `cannot_check` now say that the
+  digest is a checksum, that anyone who can write the records can produce a
+  consistent set, and that a record without `head_check` cannot be told from a
+  pre-194 one.
+- **A-2, the accident A exists for, by another door.** A copied warrant with
+  `--horizon-labels` and no `--fork` starts a second chain silently. The reviewer
+  proposed a per-user registry of chain heads keyed by warrant digest.
+  **Rejected:** the CLI's contract is that what it relies on sits beside the files
+  it is handed, and a hidden per-machine registry makes a command's verdict depend
+  on state the user cannot see and that differs between machines. The limit is
+  stated instead: a restart from a copied warrant is visible to `chain verify` when
+  both starts are kept, and not otherwise.
+- **C-1, a race.** The no-overwrite check tested `exists()` and then opened the file
+  truncating. **Decision:** a chained record is written with exclusive create, so
+  the refusal and the write are one step.
+- **C-2, a collision.** Two warrants chained on one input file collide at
+  `<input>.recheck-0001.json` and the second exits 2 asking for `-o`; nothing is
+  overwritten. **Rejected:** putting a warrant digest in the default name to avoid
+  it, which would make every chained filename unpredictable to avoid a rare case
+  that already refuses clearly.
+
+## 195 - A budget picked off the frontier can now be certified at the level the frontier held it to
+
+- **Date:** 2026-09-15
+- **Status:** DECIDED (the opt-in path); OPEN -- needs human review (the default)
+
+192 made the frontier certify every row at `alpha / len(grid)`, so a row chosen
+after reading them all still holds. The command a customer runs next did not
+follow: `certify --budget B` on the same file certifies at alpha, and the
+warrant it issues -- the record `recheck`, `plan` and a chain are built on --
+carries the unadjusted level. `reports/PHASE-12.md` O-1.
+
+**Decision.**
+
+1. **`certify --budget B --from-frontier RECORD`** certifies at the frontier
+   record's `row_alpha`, through `intake.certify.certify_budget` -- the step the
+   frontier row used -- so the warrant's threshold equals that row's exactly.
+   Exit 2, nothing written, if RECORD was not produced from this input or `B` is
+   not on its grid.
+2. **The frontier record gains `input_sha256`.** It is the release path's
+   `data_sha256` convention (`release/evaluate.py`): the canonical digest of the
+   sorted `(sha256 of item id, label, score)` rows, so the two commands name one
+   file by one digest. A grouped file, which the release path refuses, appends
+   each row's group digest; on every file both commands accept, the digests are
+   equal, and a test holds that.
+3. **Which alpha governs which test, stated in the record.** The warrant records
+   `selection: {from_frontier, grid, row_alpha, family_alpha}`; the certificate
+   is at `row_alpha`, and the top-level `alpha` stays `family_alpha`. Selection
+   happened once, when the budget was picked off the grid, so the certificate
+   pays for it. A recheck, a plan and a chain test fresh labels where nothing was
+   selected, so they run at the family level.
+4. **The default is unchanged.** `certify --budget` without `--from-frontier`
+   still certifies at alpha. When a frontier record for the same input digest is
+   at the default sibling path, it prints a notice and records
+   `frontier_record_present: true`, so an auditor can see a pick may have
+   happened; no status changes. **Whether the default should adjust is a product
+   decision and is left OPEN for the user.**
+
+**Criteria.** The warrant's threshold equals the frontier row's at every
+certified budget, on an ungrouped and a grouped file; the refusals in 1 exit 2
+with nothing written; a recheck of a `--from-frontier` warrant runs at the
+family alpha; on an ungrouped file `input_sha256` equals the release path's
+`data_sha256`.
+
+**The objection.** *"A record carrying `alpha` 0.05 and `row_alpha` 0.00625
+reads as a warrant weaker than its certificate."* It is the other way round, and
+the record says so: the certificate's bound was computed at `row_alpha`, stricter
+than the family level, because the budget was chosen by looking; the family
+level is what every later test on new data is held to. Each field names the test
+it governs.
+
+**Rejected: make the adjustment the default now.** It silently changes the
+threshold every existing `certify --budget` user receives, and whether a budget
+was picked off a frontier is a fact about the user's process that a file cannot
+establish.
+
+**Rejected: infer the pick from a sibling frontier record and adjust.** A file
+beside the input proves the frontier was run, not that the budget was chosen
+from it; adjusting on that inference would certify differently depending on
+which files happen to sit in a directory.
+
+### Review of `6d377fb`: the frontier record was trusted, and the metrics carry the pick
+
+Found by accenture-8a reading the code.
+
+- **The frontier record's own numbers were taken as found.** `input_sha256`
+  binds a record to its file, not to what the record says about that file.
+  Editing every `row_alpha` to 0.05 made `--from-frontier` certify at the
+  unadjusted level while the warrant's `selection` claimed a frontier pick.
+  Checking `row_alpha == family_alpha / len(grid)` would not close it: deleting
+  every row but the picked one makes a one-budget "frontier" whose row level is
+  the family level. **Decision:** `--from-frontier` recomputes the frontier from
+  the input with the current configuration -- it costs no bootstrap -- and
+  refuses (exit 2, nothing written) unless the record's rows reproduce exactly:
+  the same budgets in order, and for each the same certified flag, threshold,
+  `row_alpha` and `family_alpha`. The levels the warrant uses are the recomputed
+  ones.
+- **Only the FPR bound pays for the pick.** The frontier invites choosing "the
+  row whose 'missed' you can live with", so the pick selects on recall too, and
+  the recall and precision `certify` then reports on the same file carry that
+  optimism. The warrant's `selection` block and its reason now say so: the
+  metrics are measured on the file the budget was picked from, and only the FPR
+  bound is adjusted. Adjusting them would need a held-out file, which is the
+  split 192 rejected for the frontier and remains the user's option.
+
+## 196 - The chain's detection outside the one setting 187 measured, pre-registered
+
+- **Date:** 2026-09-15
+- **Status:** PRE-REGISTERED (this entry); results appended after the run
+
+187 chose the chain's rule on one setting: budget 0.05, a breach at 1.5x, 628
+negatives a recheck, a change at mid-year. 193 put it on the customer path, and
+`plan` rightly quotes no detection figure for anything else (PHASE-12 O-10). A
+customer declares their own breach and cadence, and the breach can start early or
+late. Whether the chain's guarantee holds, and how its detection moves, across
+those is unmeasured.
+
+**Design, reusing 187's simulator unchanged** (`economics.schedules.simulate`,
+every rule on the same labels). Budget 0.05, alpha 0.05, certified rate 0.0371
+(143). For each breach -- **0.075, 0.10, 0.15** (1.5x, 2x, 3x) -- the negatives
+per recheck are 183's 0.80-power size, computed by `negatives_for_power`: **628, 191
+and 59** (a weekly chain of 32,656, 9,932 and 3,068 units). Cadences:
+**weekly with the change after 13, 26 and 39 rechecks** (window 13), and **monthly
+with the change after 6** (window 3). Each design runs 187's S0-S3. **2,000
+simulated years per cell, seed 1729.**
+
+**Criteria, registered now.**
+
+- **V (validity), must hold in every design.** The chain (`e_detector`) revokes in
+  at most alpha + 3 MC SE of years under S0 and under S1. A failure anywhere means
+  the guarantee in 193 is wrong for that setting, and it is reported as a defect
+  before anything else.
+- **Predictions, written to be falsifiable.**
+  - P1. At a fixed cadence and change point, the chain's catch-within-window
+    share under S2 does not fall as the breach grows.
+  - P2. Under S3 (after good behaviour) the chain catches at least as often as
+    under S2, less 2 MC SE, in every weekly design -- 187's finding that the chain
+    does not decay through good months, tested beyond one setting.
+  - P3. A breach starting at week 39 is caught within its 13-week window less
+    often than one starting at week 13, because a chain that is late in its
+    horizon has spent most of its threshold's slack. The opposite is not
+    implausible; that is why it is written down.
+- **What is reported, with no pass/fail:** every rule's false revocation, catch
+  share and median delay in every cell, as 187 did.
+
+**What follows from the result.** Nothing is added to `plan` or the README from
+this study: it is a simulation of one budget and three breach sizes, and a CLI
+cannot carry a table of simulated figures honestly. The results close O-10 as a
+measured limitation in `docs/LIMITATIONS.md`, stating where detection is and is
+not good, and any V failure reopens 193.
+
+**Rejected: budget 0.01.** Its 0.80-power sizes are five times larger and the
+per-label simulation is linear in them; it would cost hours for a setting whose
+shape the 0.05 grid already shows. Stated here so its absence is a choice, not an
+omission.
+
+### 196 results -- the guarantee holds everywhere measured; one prediction failed at the ceiling; monthly is the weak cadence
+
+- **Run:** `python scripts/31_chain_detection.py --config config.yaml` at `c300d27`,
+  clean tree, seed 1729, 2,000 simulated years per cell, 240 cells;
+  `results/chain_detection/grid.json`. Simulated operating characteristics of
+  rules under a known true false-positive rate, not detector measurements.
+
+**V passes in every design.** Under S0 and S1 the chain revokes in at most
+**0.012** of years, against a limit of 0.0646, across all three breaches and
+four cadences. 193's guarantee holds beyond the one setting 187 measured.
+
+**The chain against the shipped per-recheck test** (S0 false revocation; S2,
+breach caught within the window):
+
+| breach | cadence | per-recheck S0 | chain S0 | per-recheck S2 caught | chain S2 caught |
+|---|---|---|---|---|---|
+| 1.5x | weekly, change at 13 | 0.8470 | 0.0080 | 0.6240 | 0.9985 |
+| 1.5x | weekly, change at 39 | 0.8625 | 0.0060 | 0.2415 | 0.9900 |
+| 1.5x | monthly, change at 6 | 0.3475 | 0.0045 | 0.7815 | **0.8325** |
+| 2x | monthly, change at 6 | 0.3030 | 0.0040 | 0.8180 | **0.8720** |
+| 3x | weekly, change at 26 | 0.7515 | 0.0120 | 0.4795 | 0.9975 |
+| 3x | monthly, change at 6 | 0.2800 | 0.0040 | 0.8465 | **0.8970** |
+
+Every weekly cell catches in at least 0.9900 of years with a median delay of one
+or two rechecks. **The monthly cadence is the weak one**: three rechecks of
+window catch the breach in 0.8325 to 0.8970 of years. A customer rechecking
+monthly should be told that a breach is missed within a quarter in about one
+year in six (1.5x) to one in ten (3x).
+
+**Predictions.**
+
+- **P1 failed, as registered.** Catch shares did not rise monotonically with the
+  breach in two weekly cells: week 13, 2x to 3x, 1.0000 to 0.9990; week 26, 1.5x
+  to 2x, 0.9965 to 0.9955. Both falls are within one Monte Carlo standard error
+  of a ceiling, and the monthly cells rise as predicted (0.8325, 0.8720, 0.8970).
+  The prediction was written strictly and it is reported strictly: at the ceiling
+  the grid cannot resolve the ordering, which is what a strict monotonicity claim
+  near 1.0 should have anticipated.
+- **P2 held** in all nine weekly cells: after good months the chain catches at
+  least as often (S3 0.9995 to 1.0000 against S2 0.9900 to 1.0000). 187's
+  finding that the chain does not decay through good behaviour holds across the
+  grid.
+- **P3 held**, narrowly: a breach at week 39 is caught slightly less often than
+  at week 13 (0.9900 against 0.9985 at 1.5x). Under S3 the difference vanishes.
+
+**What follows.** O-10 is closed as a measured limitation in
+`docs/LIMITATIONS.md`; no `plan` or README figure is added, as registered.
+
+### 196 reviewed (accenture-c4, read-only, at `f936d9c`): sound, with one confound that changes how the monthly finding reads
+
+The reviewer re-derived the critical counts (42, 16, 7), matched the per-recheck
+rule's year shares to the exact `1 - (1 - f)^K` within 1.3 Monte Carlo SE in six
+designs, and confirmed V's limit, the chain horizon `K x n`, and that P1 is
+reported strictly as registered.
+
+**The confound.** Each breach was rechecked at its **own** 0.80-power size -- 628,
+191 and 59 negatives -- so a larger breach also meant up to ten times fewer
+labels per recheck, and per-recheck power was held near 0.80 by design. The
+monthly figures therefore do not order the chain's detection by breach size at
+comparable effort. The reviewer's check, **outside the registered grid and not in
+any artifact**, with the same simulator and seed: a 3x breach rechecked monthly at
+628 negatives is caught within the quarter in 0.9990 of years, against 0.8970 at
+its registered 59. The monthly weakness is real at 1.5x; at 3x it is a property of
+rechecking with 59 labels, not of rechecking monthly.
+
+**P1, read again.** With power per recheck held constant, P1 tested the chain at
+different unit counts as much as at different breach sizes; its strict failure at
+the ceiling is reported as registered, and says less about breach size than its
+wording suggests.
+
+**Also.** The simulator feeds exactly `n` negatives per recheck, so each chain ends
+exactly at year end; real files vary (194, F4), and a chain that exhausts its
+horizon early is not live through the last window.
+
+`docs/LIMITATIONS.md` 3.5 and the README claim row are corrected to say so.
+
+**P3's scenario, and what was seen before it was fixed.** The entry (`507a972`)
+names no scenario for P3; the code (`c300d27`) evaluates it on S2 and reports S3
+beside it, the default P1's explicit S2 and P2's use of S3 as the contrast both
+imply. Between those two commits the only simulations run were two-year smoke
+runs inside tests that assert the grid's structure, whose numbers were not read;
+the only figures computed were the recheck sizes, which are in the entry. The
+reading was fixed before any registered number existed, so P3 stands as
+registered. **Its stated mechanism does not**: a chain late in its horizon having
+spent its threshold's slack does not depend on the rate before the change, so it
+predicts the week-39 gap should survive under S3 -- and there it vanishes (1.0000
+at week 39 against 1.0000 at 13 for 1.5x). The prediction held on S2; the reason
+given for it is not supported.
+
+## 197 - A certificate's sensitivity to label error, on every warrant; a second reviewer's label, measured beside it
+
+- **Date:** 2026-09-15
+- **Status:** DECIDED
+
+**The gap.** `CLAUDE.md` requires kappa next to every warrant: *a +/-5pp recall
+interval is meaningless at inter-rater kappa = 0.5.* The research path publishes
+kappa (155). The customer path, `warrant certify`, reads one `label` column and
+treats it as truth, and nothing on the warrant says how far the certificate
+depends on it. Measured label error in widely used benchmark test sets averages
+3.3% across ten datasets (Northcutt, Athalye & Mueller, NeurIPS Datasets and
+Benchmarks 2021, arXiv:2103.14749). A customer's labels are unlikely to be
+cleaner.
+
+**Why it matters more here than it looks.** `certify` picks the *lowest*
+threshold whose Clopper-Pearson bound clears the budget, so the next lower cut
+fails, and the certificate sits at the edge by construction. The error that
+flatters it is a **clean item labelled positive and flagged**: one false positive
+is counted as a true positive. Its effect is exact arithmetic on the counts. With
+`k` false positives on `n` negative units at budget `B`, the bound clears `B` at
+level `alpha` iff `P(Bin(n, B) <= k) <= alpha`. So with `e` such items, the counts
+become `(k+e, n+e)`, and the certificate holds only at confidence
+
+    c(e) = 1 - P(Bin(n+e, B) <= k+e).
+
+`c(e)` is non-increasing in `e`: `Bin(n+e+1, B)` is `Bin(n+e, B)` plus one
+Bernoulli, which adds at most 1, so its CDF at `k+e+1` is at least the CDF of
+`Bin(n+e, B)` at `k+e`. At `B` = 0.05, `alpha` = 0.05, and `k` the largest count
+that certifies, c(0), c(1), c(3) and c(5) are:
+
+| `n` | `k` | c(0) | c(1) | c(3) | c(5) |
+|---|---|---|---|---|---|
+| 59 | 0 | 0.952 | 0.808 | 0.376 | 0.100 |
+| 200 | 4 | 0.974 | 0.939 | 0.800 | 0.577 |
+| 628 | 22 | 0.954 | 0.932 | 0.867 | 0.772 |
+| 5,000 | 224 | 0.953 | 0.946 | 0.931 | 0.912 |
+
+At the smallest file that can certify, three mislabelled flagged items leave a
+"95%" certificate at 38%.
+
+**Decided.**
+
+1. **Every VALID certificate on an ungrouped file carries its label-error
+   sensitivity**: c(1) and the bound after one such error; the smallest `e` at
+   which `c(e)` falls below 0.90, 0.80 and 0.50 (none, stated, if that needs more
+   errors than there are flagged positives). These are **EXACT**: functions of
+   the counts, with no sampling and no assumption about how the labels were made.
+   The direction is stated. A flagged negative that is really positive, or an
+   unflagged positive that is really clean, makes the bound conservative. That
+   is never used to tighten it.
+2. **An optional `label_2` column**: a second reviewer's label, blank on items
+   not double-labelled, 0 or 1 where given, parsed as `label` is. A column
+   present and blank on every row is refused as an export mistake. Reported:
+   - **kappa** over the double-labelled items, through
+     `sampling.agreement.cohens_kappa` (percentile bootstrap over pairs, with
+     `n_pairs` named), and the 2x2 table;
+   - the pairs in each primary stratum, and a warning when either stratum has
+     none (`CLAUDE.md`: double-label both strata);
+   - at the certified threshold, the **disputed counts** (EXACT). `d1` is flagged
+     positives the second reviewer calls clean. `d2` is unflagged negatives the
+     second reviewer calls positive, each of which removes one negative unit.
+     Also `c` with every dispute counted as a primary error:
+     `1 - P(Bin(n+d1-d2, B) <= k+d1)`;
+   - **an upper bound on flagged-positive disputes in the whole file**
+     (ESTIMATED). `m1` of the `F` flagged positives were double-labelled, and
+     `d1` of those were disputed. The bound is the exact hypergeometric
+     `D_up = max{D : P(X <= d1 | F, D, m1) >= alpha}`, at the certificate's
+     alpha, with `c` at `D_up`. `D_up = d1` when every flagged positive was
+     double-labelled. Not computed when none was; that absence is itself the
+     warning, because the flattering direction went unreviewed.
+3. **The verdict does not change.** `label` is what certifies. `label_2`
+   changes no status, threshold or bound, and a test holds it to that.
+4. **Not computed, with the reason on the record**: on REFUSED certificates, and
+   on grouped files. A count of relabellings that would turn a refusal into a
+   warrant is a recipe, and refusal has no override (invariant 3). Relabelling
+   one item changes its cluster's size, `certify` requires equal sizes, so no
+   corrected count is defined. Kappa is still reported on both.
+
+**What it assumes and cannot check.** A disagreement is not an error. Counting
+every dispute against the primary label is a worst case over the pairs, not a
+bound on the truth. Two reviewers who were both wrong, or both saw the score
+(invariant 7), agree and are counted clean. `D_up` assumes the double-labelled
+flagged positives are a random sample of the flagged positives. Warrant cannot
+see how they were chosen, and says so on the record.
+
+**Rejected.**
+
+- *A fragility index* (Walsh et al., J Clin Epidemiol 2014): the fewest
+  relabellings that overturn the verdict. At the lowest certifying threshold it
+  is 1 on every row above, since c(1) < 1 - alpha. A figure that is the same on
+  every certificate informs no one.
+- *Resolving disputed labels against the detector during certification.* A
+  customer who double-labels would then get a worse verdict than one who does
+  not, which pays people not to check their labels.
+- *Kappa alone.* It does not say how the certificate moves. Kappa 0.8 over 20
+  pairs with one disputed flagged positive costs a 59-negative certificate 14
+  points of confidence, and a 5,000-negative one under one.
+
+**Scope.** `certify` only. A `recheck` or chain file with `label_2` is read and
+the column is not used. Its sensitivity is `critical - k` flagged
+positives, a different quantity, and it is OPEN. What would close it: the same
+treatment on the recheck record, counted against the critical count.
+
+**The objection.** "A customer will read c(1) = 0.81 as the detector being 81%
+safe." The record names it the confidence at which the budget still clears if one
+flagged positive is really clean. It is not a probability that the detector is
+within budget, and the render says so in those words.
+
+### 197 review (accenture-c4, read-only, at `aa7b0af`) -- the second flattering error, and a composite on two scales
+
+The duality, the table, the hypergeometric bound, the render's "not a
+probability" wording and the withholding on refusals held. Four findings, all
+accepted; the fourth with a narrower premise.
+
+**F1 -- the per-certificate figure named one flattering error of two.** An
+**unflagged item labelled negative that is really positive** takes `(k, n)` to
+`(k, n-1)`: a clean negative that did not fire is removed, so the truth has fewer
+negatives than the file claims. The entry's direction text listed the two
+conservative errors and not this one, so it read as though the first were the
+only way labels flatter. Per error it is weak; at realistic noise it is not. At
+3.3% of the unflagged negatives (Northcutt et al.):
+
+| `n` | `k` | errors | c | errors to fall below 0.90 / 0.80 / 0.50 |
+|---|---|---|---|---|
+| 5,000 | 224 | 158 | 0.878 | 122 / 257 / 507 |
+| 628 | 22 | 20 | 0.934 | 46 / 93 / 175 |
+| 59 | 0 | 2 | 0.946 | 15 / 28 / 46 |
+
+On the large file, where one flagged error costs under a point, this is the
+error that realistic noise makes material. *Decided:* every certificate carries
+both ladders, exact, from the same formula: `c = 1 - P(Bin(n+a-b, B) <= k+a)`
+with `a` flagged clean errors and `b` unflagged positive ones. The direction text
+names both flattering errors and both conservative ones.
+
+**F2 -- the whole-file figure extrapolated one direction and counted the
+other.** `D_up` extrapolated flagged-positive disputes over every flagged
+positive, but `d2` entered only as counted among the pairs. The unflagged
+negatives are the large pool and are the least double-labelled, so the figure
+understated F1's error exactly where it matters. *Decided:* `d2` is extrapolated
+the same way. The exact hypergeometric upper bound over the `n-k` unflagged
+negatives comes from the double-labelled ones, at alpha. The two bounds hold
+jointly at `>= 1 - 2 alpha` by the union bound, and the record says so. The
+file-level figure is not computed when either pool has no double-labelled item,
+with the reason. A file with no flagged positive has a flagged bound of 0, not a
+missing one.
+
+**F3 -- a sensitivity evaluated at an upper confidence bound is not a joint
+confidence.** Two levels are in play: alpha on the dispute bounds, and `c` on the
+certificate. *Decided:* the record says `c` there is the certificate's confidence
+if the disputes are at their bounds and are all errors, and that it must not be
+composed with the bounds' level into one figure.
+
+**F4 -- grouped files.** The review argued that certifying grouped files already
+have single-label groups, so whole-group relabelling is well defined in cluster
+units. **The premise is not quite true.** A file whose every group holds one
+positive and one negative has negative clusters of size 1, all equal, and
+certifies. *Decided:* on a grouped file whose groups each carry one label,
+both ladders are reported in whole-group units. A positive group with any member
+at or above the threshold is a flagged positive group. `(k+1, n+1)` and `(k, n-1)`
+are then defined, because group sizes do not change. On a grouped file with any
+mixed group, the figure is not computed, with the reason. Disputes on grouped
+files stay uncomputed. `label_2` is per item, and a dispute inside a group is not
+a whole-group relabelling. Kappa is still reported.
+
+## 198 - A recheck says how many label errors would have hidden a revocation
+
+- **Date:** 2026-09-15
+- **Status:** DECIDED
+
+**Closes 197's OPEN scope.** 197 put label-error sensitivity on the certificate.
+A recheck reads the same `label` column and is flattered by the same two errors:
+
+- a flagged item labelled positive that is really clean, `(k, n) -> (k+1, n+1)`;
+- an unflagged item labelled negative that is really positive, `(k, n) -> (k, n-1)`.
+
+On a recheck each error hides evidence of a breach rather than inflating a
+certificate. The recheck revokes when the one-sided Clopper-Pearson **lower**
+bound clears the budget (143), so the question is a count: **how many errors of
+each kind would the truth need to hold for this file to have revoked?**
+
+**Why a count here, not 197's confidence.** A certificate always sits at the edge
+of its budget, because `certify` picks the lowest threshold that clears. A recheck
+does not. Its count sits wherever the fresh traffic put it, so its fragility
+varies from file to file, and the decision it guards is binary. At budget 0.05,
+alpha 0.05, exact:
+
+| negatives | revokes at `k` >= | `k` | flagged-clean errors to revoke | unflagged-positive errors to revoke |
+|---|---|---|---|---|
+| 628 | 42 | 23 (the certified true rate, 0.0371) | 20 | 311 |
+| 628 | 42 | 31 | 11 | 176 |
+| 628 | 42 | 41 | 1 | 3 |
+| 59 | 7 | 6 | 1 | 6 |
+
+**197 called this `critical - k`, which is wrong.** Each flagged-clean error adds a
+negative as well as a false positive, and the critical count moves with `n`: 42
+at 628 negatives, 43 at 648. At `k` = 23 it is 20 errors, not 19. A recheck at
+the certified rate would need many errors to have hidden a revocation. One a step below the critical count would need one. Both figures
+are the recheck's to report, and neither can be read off the verdict.
+
+**Decided.**
+
+1. **Every recheck whose bound holds** reports both counts. Each is the smallest
+   `a` in `1..F` with `lower(k+a, n+a) > B`, and the smallest `b` in `1..n-k`
+   with `lower(k, n-b) > B`, over flagged positive and unflagged negative units.
+   A count that is not reached is `None`, stated. These are **EXACT**: every
+   value is evaluated, and none is inferred by monotonicity. Units are the
+   recheck's own: items, or whole groups on a grouped file whose groups each
+   carry one label (197 review, F4).
+2. **`label_2` on a recheck** reports kappa and the pairs per class, as on
+   `certify`. At the warrant's threshold it reports the disputed counts `d1` and
+   `d2`, the lower bound with every dispute counted as an error, and whether that
+   lower bound revokes. When some of each pool was double-labelled, it also
+   reports the exact hypergeometric upper bound on disputes in each pool (jointly
+   `>= 1 - 2 alpha`), the lower bound at those bounds, and whether it revokes: a
+   sensitivity at bounds, not a joint confidence (197 review, F3). The verdict
+   does not change.
+3. **Not computed, with the reason on the record:**
+   - *when the bound has already broken.* The flattering errors only deepen a
+     breach, and the errors that would clear a revocation are the conservative
+     ones, which are never counted. Counting them would be a recipe (invariant 3).
+   - *on a file with no negatives*, where nothing is tested.
+   - *on a grouped file with a mixed group.*
+   - *on a chained recheck.* In a chain one file's bound is evidence, and the
+     chain's statistic decides (193, 194). What one error does to that statistic
+     depends on where the unit sits in the chain, and a per-file count would read
+     as the chain's. Kappa is still reported on all four.
+
+**Rejected: the revocation p-value after `e` errors,** 197's form. A recheck's
+reader asks whether it would have revoked, and a count answers that in the unit
+they label in. A p-value near 0.05 answers a question they did not ask.
+
+**The objection.** "Eleven errors to revoke means the detector is fine unless
+eleven labels are wrong." No: it means *this file* would have revoked with eleven
+such errors. A VALID recheck is an absence of evidence of breach (143), and the
+dead zone below the critical count is unchanged by this. The render says both.
+
+### 198 review (accenture-c4, read-only, at `1b5d8b2`) -- correct; three changes adopted
+
+Verified by brute force over `recheck._lower_bound_at`, independently of
+`labels.py`: the critical counts (42 at 628, 43 at 648, 7 at 59), every row of the
+table, and the correction of 197's `critical - k`. No defect. Three suggestions,
+all adopted:
+
+**(a) A broken bound withheld the observed disputes too, not just the counts.**
+The counts stay withheld: the errors that would clear a revocation are the
+conservative ones, and a count of them is a recipe. But the likeliest spurious
+revocation is **true positives labelled clean and flagged**, which inflate `k`,
+and `label_2`'s count of those is a measurement, not a recipe. It is what a
+customer contests a revocation with. *Decided:* on a broken bound, the record
+carries that observed count and its double-labelled denominator (EXACT, beside
+kappa). It carries no recomputed bound and no "would not have revoked", and it
+says the verdict stands.
+
+**(b)** The conditional reads "would have revoked", in the past tense.
+
+**(c) The chain replacement was path-dependent.** `apply_chain` is the only
+builder of a chained result today. *Decided:* `cli._recheck` raises before
+writing if a chained result still carries per-file counts or disputes, so a
+future path that skips `apply_chain` fails loudly.
+
+## 199 - The project's own measured certificates under label error, with its strict matching rule as a second labeller, pre-registered
+
+- **Date:** 2026-09-15
+- **Status:** PRE-REGISTERED (this entry); results appended after the run
+
+197 and 198 gave every customer certificate a label-error sensitivity. So far it
+has been computed on arithmetic and synthetic files, never on a measured
+warrant. This project has measured warrants, and labels made by a rule known to
+be ambiguous. The TriviaQA labels are **lenient alias matching** (052, 054). The
+same generations were also graded by **strict exact match**, and the two rules
+disagree on 6.75% of the 2,400 items (054). The strict label is recomputable from
+the frozen eval set's responses and aliases, with no GPU.
+
+**Seen before this entry was written, and nothing else:** on the 600-item test
+split behind `results/scores/validation-T1-*.json`, the recomputed lenient label
+reproduces every committed label (0 mismatches). Strict disagrees with lenient on
+**41** items, and **all 41 are lenient-correct, strict-incorrect**. No
+certificate, ladder or dispute count at a threshold has been computed on these
+files.
+
+**Design.**
+
+- **Score sets:** the three measured test-split sets `validation-T1-last_token`,
+  `-max_rolling_means` and `-mean_pool`: the same 600 questions, 277 positive and
+  323 negative.
+- **Budgets:** the D2 grid, 0.01 to 0.20 in steps of 0.01 (20 per set, 60 rows),
+  alpha 0.05, certified by `intake.certify_items`.
+- **Labels:** `label` is the committed lenient label. `label_2` is
+  `extract.triviaqa.is_exact_match` on the frozen response and aliases, on every
+  item, so every dispute count is exact and no bound is extrapolated.
+- **Reported per certified row:** threshold, `k`, `n`; `c(0)`; both ladders
+  (confidence after one error, and errors to fall below 0.90, 0.80 and 0.50);
+  kappa between the rules; `d1`, `d2`; and `c` with every dispute counted as a
+  lenient error.
+- **Run:** clean tree; results to `results/label_sensitivity/triviaqa.json`.
+
+**Registered checks and predictions.**
+
+- **C0, must hold or the run stops:** every row's certified status, threshold and
+  `k` reproduce `results/fpr_sweep/sweep.json`'s in-sample rows for the same set
+  and budget. A mismatch means the customer path and the research path certify
+  differently, and that is the finding.
+- **P1:** every certified row has `c(1)` for a flagged-clean error below 0.95.
+  It follows from the lowest-threshold rule except where ties or the grid leave
+  slack, which is what it tests.
+- **P2:** on at least one certified row, counting every strict-lenient dispute as
+  a lenient error takes `c` below 0.80. Uncertain. Every observed dispute is of
+  the second kind (lenient-correct, the item labelled negative), so its effect
+  runs through unflagged negatives removed from `n`. Per 197's review, that costs
+  little per error at this `n`, and 41 disputes spread over flagged and unflagged
+  items may not be enough.
+- **Reported with no pass or fail:** the minimum and maximum across certified
+  rows of `c` at the disputes, and of the flagged-clean errors to fall below
+  0.80. These go into one README claim row, whatever they are.
+
+**What the strict label is and is not.** It is not a better labeller. Strict EM
+marks correct paraphrases wrong, which 052 is the record of. Counting its
+disagreements as lenient errors asks what the certificates would say if the
+lenient rule's extra credit were all wrong. That is a bound on one identified
+ambiguity of this labelling rule, not an estimate of its label error. The 41
+disputes mix wrong answers that happen to contain an alias with correct answers
+phrased at length, and nothing here separates them. The other lenient error, a
+correct answer whose wording is missing from the alias list and so labelled
+wrong, is invisible to strict matching as well, and is not measured.
+
+**Rejected: the transfer (long-context) sets.** They are the same questions under
+an envelope shift, so their labels and disputes are identical to these. Their
+certificates would add rows without adding a label question.
+
+### 199 amendment, before the run -- C0 can check one set of three; c4's registration review
+
+**Found while wiring the script, before any certificate was computed.**
+`results/fpr_sweep/sweep.json` holds in-sample rows for `validation-T1-last_token`
+and `transfer-T1-last_token` only. Nothing in it covers `max_rolling_means` or
+`mean_pool`. C0 as registered read *"every row's certified status, threshold and
+`k` reproduce `results/fpr_sweep/sweep.json`'s in-sample rows for the same set and
+budget"*, which assumed all three sets were there.
+
+*Amended:* C0 applies to the 20 `validation-T1-last_token` rows, and must hold
+there or the run stops. The other two sets have no reference, and their rows
+record `reproduces_sweep: null`, not a pass. The sets and budgets are unchanged:
+dropping two sets would change the design to fit the check. Because the customer
+and research paths call the same `certify_fpr`, one set reproducing is evidence
+the paths agree, not proof for the other two.
+
+**accenture-c4 reviewed the registration at `f4a0cda`, before the run.** Nothing
+needs re-registering; three clarifications are recorded now so they cannot be
+fitted to the results:
+
+- **d1 is 0 by construction.** Every dispute is `label` 0 with `label_2` 1. An
+  unflagged one is 197's second flattering kind. A flagged one is the
+  conservative kind, which the formula ignores, so the flagged share of the 41
+  counts for nothing.
+- **P1's rationale was imprecise.** The lowest-threshold rule guarantees the next
+  lower cut fails at `(k+1, n)`, but `c(1)` is evaluated at `(k+1, n+1)`. Without
+  ties, P1 fails exactly when `kmax(n+1) = kmax(n) + 1`. At `n` = 323 no budget
+  on the grid does that (0 of 20, data-free arithmetic). So on this data P1 can
+  fail only through ties or threshold slack, which is what it tests.
+- **The README row is a range over `N` certified rows, with `N` stated.** Its two
+  ends are extremes selected from up to 60 rows, and neither is one
+  certificate's figure.
+
+### 199 results -- C0 and P1 hold; P2 fails; the sensitivity belongs to the evidence, not the detector
+
+- **Run:** `python scripts/32_label_sensitivity.py --config config.yaml` at `bb800be`,
+  clean tree; `results/label_sensitivity/triviaqa.json`, committed at `7a6e93c`.
+  All 60 rows (3 sets x 20 budgets) certified.
+- **C0 holds.** On the 20 `last_token` rows `sweep.json` covers, the customer path
+  reproduces every status, threshold and `k`. The other 40 rows are `null`, per
+  the amendment.
+- **P1 holds.** One flagged positive that is really clean takes every certificate
+  below 0.95; the highest is 0.94982. As the amendment says, P1 could fail at
+  `n` = 323 only through ties or threshold slack, and there are none: every set's
+  negative scores are untied.
+- **P2 fails as registered.** Every dispute counted as a lenient error (29 to 41
+  per row, all `label` 0 with `label_2` 1, so `d1` = 0) takes no certificate
+  below 0.80. The lowest is **0.8127** (`last_token`, budget 0.20), the highest
+  0.9412 (budget 0.01). The registration named this outcome as possible, because
+  the dispute kind at work costs little per error at this `n`; it is still a
+  failed prediction.
+- **Reported, as registered, as a range over the 60 certified rows:**
+  - flagged-clean errors to fall below 0.80, **2 to 8**;
+  - confidence at the disputes, **0.8127 to 0.9412**;
+  - kappa between the two rules, **0.8640 [0.8213, 0.9035]** over 600 pairs,
+    observed agreement 0.9317.
+- **Descriptive, not registered:**
+  - unflagged-positive errors to fall below 0.80 range from 32 to 163;
+  - 42 of the 60 rows fall below 0.90 at the disputes;
+  - at budget 0.01, `last_token` flags 3 positives and 2 of them being clean
+    takes its certificate below 0.80.
+
+**Not predicted: the sensitivity is identical across the three detectors.** At
+every budget the three sets certify with the same `k`, and so the same `c(0)` and
+the same two ladders. They differ only in how many positives they flag and how
+many disputes fall where. The reason is structural. On untied scores the lowest
+certifying threshold admits exactly the largest count that clears the budget at
+`n` = 323, and `k` equals that count on every row (checked). So a certificate's
+label-error sensitivity is a property of **how many negatives it was certified on
+and at what budget**, not of the detector. A customer cannot buy a less fragile
+certificate with a better detector at the same `n`; only more negatives, or
+another budget, change it. Stated as a consequence of the rule, it holds wherever
+scores are untied, and it does not need this data.
+
+**What it does not establish.** Strict EM is not a better labeller, so P2's failure
+says the strict/lenient ambiguity alone does not break these certificates. It
+does not say their labels are right. The label error strict cannot see, correct
+answers missing from the alias list, is unmeasured. A 0.20-budget certificate on
+this file needs only 32 such errors among its unflagged negatives to fall below
+0.80, about 12% of that pool. Nothing here says whether that many exist.
+
+### 199 review (accenture-c4, read-only, at `6320c80`) -- the generalisation was stated wider than its conditions
+
+C0, P1 and P2 are reported as registered. The claim rows read as a range
+(`rows_never_below_0_80` = 0, so 2 to 8 spans all 60 rows). The 32-of-271 line
+is exact: at budget 0.20, 31 unflagged-positive errors leave 0.805 and 32 leave
+0.797. **Two corrections to the results section, both to its text, not its
+numbers:**
+
+**(a) Missing conditions.** "It holds wherever scores are untied" also needs:
+- certify's lowest-certifying-threshold rule;
+- a fixed alpha. A `--from-frontier` warrant certifies at the frontier's
+  `row_alpha`, so at the same `n` it has a different largest certifying count and
+  different ladders;
+- on grouped files, untied scores over the negative *units'* maxima, not over
+  items.
+
+*Corrected statement:* wherever the lowest certifying threshold is taken at a
+fixed alpha and the negative units' scores are untied, `k` is the largest count
+certifying at `(n, B, alpha)`. So both ladders depend only on `n`, `B` and alpha.
+
+**(b) "A customer cannot buy a less fragile certificate with a better detector at
+the same `n`" is true of the ladders and wrong as a statement about fragility.**
+The ladders say how many errors a certificate tolerates. How many it is exposed
+to depends on the pools. Flagged-clean errors, the costly kind, can only come
+from flagged positives. At the same budget and `n`, a detector with higher recall
+flags more positives, so at a fixed label-error rate among positives it carries
+more expected costly errors, not fewer. This file shows the limit case: at budget
+0.01, `last_token` flags 3 positives and its ladder falls below 0.80 at 2.
+
+*Corrected statement:* a better detector cannot change how many errors a
+certificate at this `n`, budget and alpha tolerates. It changes how many flagged
+positives there are to be wrong, and one that flags more positives exposes the
+certificate to more of the costly kind. Only more negatives, another budget or
+another alpha change the tolerance. Labelling quality among the flagged positives
+changes the exposure.
+
+### 199 correction, found by rereading -- the last paragraph of the results put the unmeasured error in the wrong pool
+
+**Found while drafting the phase report, after the 199 review.** Neither the
+review nor any test covered prose polarity. The results section's closing
+paragraph reads: *"The label error strict cannot see, correct answers missing
+from the alias list, is unmeasured. A 0.20-budget certificate on this file needs
+only 32 such errors among its unflagged negatives to fall below 0.80, about 12%
+of that pool."* **The polarity is wrong.**
+
+A correct answer whose wording is missing from the alias list is labelled
+**incorrect**, which is class 1, a positive:
+- **flagged**, it is the costly flagged-clean error, `(k+1, n+1)`;
+- **unflagged**, it is conservative and never counted.
+
+The 32-of-271 figure belongs to the *opposite* error: an unflagged item labelled
+correct that is really incorrect. That is a wrong answer the lenient rule
+credits because it contains an alias, and the strict disputes are exactly the
+candidates for it.
+
+*Corrected.* At budget 0.20, the error both rules miss needs **8** flagged
+positives that are really correct answers to take a certificate below 0.80. That
+is 8 of 179 flagged positives (4.5%) for `last_token`, 8 of 153 for
+`max_rolling_means`, and 8 of 146 for `mean_pool`. The error the disputes bound
+needs 32 of the 271 unflagged negatives. There are 29 or 30 disputes there, and
+counting all of them as errors leaves 0.8127 to 0.8203.
+
+The correction makes the unmeasured error *more* material than the text said,
+not less. The review's arithmetic check on 32/271 was right; the sentence around
+it was wrong. The phase report carries this correction.
+
+## 200 - The clean-clone gate names what it tested: one commit, at clone time, and a record that refuses to disagree
+
+- **Date:** 2026-09-15
+- **Status:** DECIDED
+
+**Found by accenture-c4 while the gate ran at `1a3fd58`**, while a fix to the
+phase report waited so as not to disturb it. The gate passed, and its record's
+two commits agree only because nothing was committed during the run. Two races
+had nothing refusing them:
+
+1. **Between the source's HEAD and the clone.** `run_clean_clone_gate` reads
+   `git rev-parse HEAD` in the source, then clones it as a separate step. A commit
+   landing between the two means the clone tests one commit and the record names
+   another.
+2. **Between the run and the record.** `scripts/clean_clone_gate.py` calls
+   `provenance(config)` inside `write_artifact`, after a run of about 37 minutes
+   (2,165.6 s of tests at `1a3fd58`), while `result.commit` is the HEAD read at the
+   start. If the source commits, switches branch or goes dirty in between,
+   `results/clean_clone.json` carries `commit`, what was tested, beside
+   `provenance.git_commit`, what the tree was at write time. Its `dirty` flag
+   describes the wrong moment.
+
+That is the class of silent mismatch the gate exists to rule out.
+
+**Decided.**
+
+- **The clone's own HEAD must equal the recorded commit.** It is read inside the
+  clone right after cloning, and a mismatch is a failed step named
+  `clone matches source HEAD`. The gate fails, since it tested something it
+  cannot name.
+- **Provenance is captured before cloning.** The record describes the moment of
+  the test, not the moment of writing.
+- **At write time the record refuses to disagree.** `check_record` compares the
+  provenance from before cloning, the provenance at write time and
+  `result.commit`. If the source was dirty at clone time, or its commit or dirty
+  state changed during the run, it refuses: exit 1, and no artifact. The rendered
+  outcome still prints, so a 37-minute run is not silent, but nothing is written
+  that names a state nobody tested.
+
+**Rejected: write anyway with both provenance blocks.** A record with two commits
+asks its reader to work out which one passed, which is the ambiguity being
+removed. **Rejected: only capture provenance early.** That fixes the record's
+moment, and it still lets a source that changed mid-run publish a pass for a
+commit nobody can check out as it was.
+
+**The objection.** "Refusing to write loses a long run over an edit." The
+alternative is an artifact whose provenance is wrong. A rerun costs 37 minutes; a
+wrong gate record costs the gate's meaning.
+
+### 200 review (accenture-c4, read-only, at `b65220e`) -- correct; the record now says when its provenance was taken
+
+- **The fix holds.** `head_step` compares full SHAs, which closes the race between
+  `rev-parse` and `clone`. `check_record`'s three refusals cover the three ways a
+  record could pair an outcome with an untested tree, and none fires on the
+  ordinary path. An early failure from a stable source still writes a truthful
+  FAILED record.
+- **A consequence, now stated in the record.** `provenance.timestamp_utc` in
+  `results/clean_clone.json` now means *clone time*. Earlier records meant write
+  time, about 37 minutes later on a full gate. *Decided:* the record carries
+  `provenance_taken: "before cloning"`, so the two kinds cannot be compared
+  unawares. Records written before 200 have no such field.
+- **Practical.** Provenance's dirty flag counts untracked files, so a gate run
+  from a checkout holding untracked work now refuses to write. That is correct,
+  and a reason to run gates from worktrees.
+
+### 194 defects found by independent review (Codex), fixed without a new number
+
+Codex's review of this line (`reports/CLAUDE-REVIEW-2026-09-15.md` on its branch)
+reproduced three defects in the chain that 193 and 194 shipped. All three were
+reproduced again here through the public CLI (`reports/PHASE-12.md` 8.12). No new
+DECISIONS number is taken: numbering is held by the integrator until the two
+lines merge, and each fix makes the code do what 193 and 194 already promise. It
+makes no new methodological choice.
+
+**1. A warrant REVOKED by drift could be continued (P0).** `continue_chain`
+refused only when the chain *state* had revoked (`revoked_at_unit`) or ended. A
+recheck revoked by the other failure mode -- the score distribution moved beyond
+its noise, with the bound holding and the chain live -- carries status REVOKED
+and no chain revocation, so the next `--since` link was accepted and returned
+VALID. `warrant chain verify` reported no finding on that history, for the same
+reason. 194 already says a drift revocation "is a different claim and stands";
+a claim that stands is not continued. *Fixed:* `continue_chain` refuses when the
+`--since` record's own status is REVOKED, whatever revoked it, naming
+re-certification as the way on. The verifier reports a link after any REVOKED
+record as `continued_after_end`, the finding that already covers a link after a
+chain revocation.
+
+**2. A chain record's derived fields could be edited without detection (P0).**
+`_body()` hashes `threshold`, `mean_statistic` and `ended`, but `from_payload`
+rebuilds the state from the core fields, recomputes those three, and compares the
+recomputed body's digest. The values written in the record were never read, so
+editing one -- `ended: true`, a `mean_statistic` of a billion -- changed nothing
+the check saw, and the original digest still matched. The failure is in
+comparing, not in what is hashed. *Fixed:* after the digest reproduces, each
+serialized derived field must equal its reconstruction exactly. The floats
+round-trip through JSON exactly, so equality is exact and there is no tolerance
+to hide an edit in. `ended` must be a JSON boolean.
+
+**3. Malformed values crashed instead of being refused (P1).** An `alpha` of 0
+divided by zero in the `threshold` property during the digest computation. A NaN
+reached `canonical_sha256`, whose encoder rejects NaN, outside the error handling.
+Both printed a traceback. *Fixed:* every field is type- and domain-checked before
+any arithmetic. A budget and alpha are finite reals strictly between 0 and 1 and
+not booleans; counts are non-negative integers and not booleans; the grid and
+statistics are finite. A failure raises `MalformedChainError`, a `ChainError`, so
+`recheck --since` exits 2 and `chain verify` records a new `malformed` finding
+rather than reusing `digest`. A malformed record is not evidence of an edit, and
+the two call for different questions to whoever wrote it.
+
+**Rejected: widening the digest to cover the whole record.** It would catch the
+derived-field edit too. But the digest is a checksum, not a signature (194 A-C):
+anyone who can edit a field can recompute it. It would also change the digest of
+every record already written, and orphan every chain on disk. Comparing derived
+fields to their reconstruction catches the same edit and leaves existing records
+valid.
+
+**What this does not change.** The chain's statistical guarantee (187, 193, 196)
+is untouched. So is the stated limit: someone who controls every copy can rewrite
+and re-digest a whole history consistently, and nothing local can stop that.
+
+### Addendum 2026-09-16: the chain-integrity fix, second pass -- a fork restart bypassed a revocation, and the guarantee was worded wider than the bound
+
+- **Date:** 2026-09-16
+- **Status:** DECIDED. An unnumbered addendum; numbering is held by the integrator.
+- **Follows:** the addendum above on the 194 defects, after Codex's
+  `docs/CLAUDE-WORK-INSTRUCTIONS.md` sections 3.1 and 3.4.
+
+**1. A revoked warrant could be restarted with `--fork`.** The first pass made
+`continue_chain` refuse a `--since` record whose status is REVOKED, and that
+holds, even with `--fork`. But a *new* chain on the same warrant --
+`warrant recheck --horizon-labels N --fork` -- succeeded and returned VALID.
+Reproduced through the public CLI at `20e3347`: link 1 REVOKED by drift, then a
+forked restart, exit 0 and a VALID record. The chain-head sidecar held only the
+latest record's digest and sequence, so a new chain could not see that the chain
+it was leaving had been revoked.
+
+*Decided:* the sidecar also records the latest record's status. `start_chain`
+and `continue_chain` refuse when that status is REVOKED, whatever `--fork` says,
+naming re-certification. **What this does not do:**
+- a sidecar written before this has no status and is read as before;
+- deleting the sidecar defeats the check, as 194 already states for forks, and
+  `chain verify` still reports the restart when both chains' records are kept;
+- a plain recheck that is not chained still runs against a revoked warrant.
+  Refusing it would change what a one-off recheck means; it is left as a
+  question for the integrator, not decided here.
+
+**2. The guarantee was worded wider than the bound.** The chain payload read
+`P(any false revocation in the first N units) <= alpha`, and the recheck render
+said a detector keeping its promise "is revoked with probability at most alpha".
+The bound is on the chain's **sequential false-positive statistic**. A recheck
+REVOKED because the score distribution moved beyond its noise is a separate
+check, with no alpha guarantee (DECISIONS 070, 172), and a chained recheck can be
+revoked that way. *Decided:* the payload, the render and `docs/LIMITATIONS.md`
+3.5 name the statistic, and say a drift revocation is outside the bound. Only the
+wording changes, not the method. `guarantee` sits outside the hashed body, so
+every existing record keeps its digest.
+
+**Rejected: refusing every `--fork` after any record.** A declared fork is
+legitimate and recorded (194); only a revoked warrant must not be resumed.
+
+### Addendum 2026-09-17: the rest of the bug class -- the latest chain record was unprotected outside its chain state, so every chained record is now sealed
+
+- **Date:** 2026-09-17
+- **Status:** DECIDED. An unnumbered addendum; numbering is held by the integrator.
+- **Follows:** the two addenda above. It answers the observation that the
+  derived-field defect is a **class**: the verifier checked its own computation
+  against itself, never against what was presented, and nobody had enumerated
+  which stored fields were in that state.
+
+**Measured, not argued.** A schema-driven mutation audit built a real two-link
+chain through the public CLI. It mutated every leaf of every record, one at a
+time -- **3,210 mutations** -- and ran the verifier on each. At `d9fa4bf`:
+- every chain-state field is caught in both records;
+- every field of the first link is caught, because the second link's
+  `previous_record_sha256` covers the first link's whole record;
+- **197 edits survive, all in the latest record, all outside its chain state.**
+  The survivors are `status`, `reason`, the bounds under `now`, the drift verdict,
+  the whole `labels` block, `detection`, `prior_warrant`, `chain.this_recheck`
+  (including `revoked_here`), the guarantee text and the provenance block.
+
+Through the CLI, flipping the latest record's `status` still verifies clean. The
+latest record carries the current verdict, so it is the record most worth editing
+and the one left unprotected.
+
+**Decided: seal every chained record.**
+
+- **The seal.** `record_sha256` is the canonical digest of the whole written
+  document -- provenance included, the field itself excluded. It is computed over
+  the document as it will be read back (a JSON round-trip), not over in-memory
+  objects, so the verifier reproduces exactly what was hashed. This is the
+  pattern `release` already uses for `evidence_id`.
+- **`chain verify` recomputes every seal.** A mismatch is a `digest` finding
+  naming the record.
+- **`--since` refuses a record whose seal does not reproduce.** Without that, an
+  edited latest record -- status turned from REVOKED to VALID, sidecar deleted --
+  could still be continued.
+- **A record without a seal was written before this.** It is listed as
+  **unsealed**, with what that means, and is not reported as a finding. Valid
+  legacy records still replay clean, and nothing pretends their non-state fields
+  were checked.
+- **The test is the property, not a list.** A test walks every leaf of every
+  written link, mutates it, and asserts the verifier flags it. A field added later
+  is covered without anyone remembering to add it, which is how the rule "every
+  stored field is either checked on verify or not stored at all" is enforced
+  rather than hoped for.
+
+**Rejected: comparing more fields one by one.** That is the approach that left
+197 fields open, and the next field added would reopen it.
+
+**Rejected: protecting the latest record through the head sidecar.** The sidecar
+is an ordinary editable file that the verifier is not given, and it names one
+record per warrant.
+
+**Unchanged.** A seal is a checksum, not a signature: anyone who can write the
+records can recompute every seal and produce a consistent set, as 194 already
+states. A certify warrant and an unchained recheck have no verifier at all; this
+covers chains only, and that gap stays open (`docs/EVIDENCE-HANDOFF.md`, section
+6).

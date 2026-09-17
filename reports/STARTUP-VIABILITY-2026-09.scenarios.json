@@ -1,0 +1,77 @@
+{
+  "note": "Illustrative business assumptions, not Warrant measurements, market benchmarks, or forecasts. USD; calculated 2026-09-14.",
+  "clean_negatives": [
+    {
+      "budget": 0.05,
+      "n": 59
+    },
+    {
+      "budget": 0.01,
+      "n": 299
+    },
+    {
+      "budget": 0.001,
+      "n": 2995
+    },
+    {
+      "budget": 0.0001,
+      "n": 29956
+    }
+  ],
+  "rare_event": {
+    "rate": 0.001,
+    "probability_no_event_in_1000": 0.36769542477096373
+  },
+  "cloud_grounding": {
+    "interactions_per_month": 1000000,
+    "units_per_interaction": 10,
+    "usd_per_1000_units": 0.1,
+    "monthly_cost": 1000,
+    "max_saving_95pct": 950
+  },
+  "label_work": {
+    "items_per_month": 1000,
+    "minutes_per_item": 3,
+    "hourly_usd": 40,
+    "annual_hours": 600,
+    "annual_cost": 24000
+  },
+  "customer_roi": {
+    "baseline_items": 2000,
+    "new_items": 1000,
+    "months": 12,
+    "minutes": 3,
+    "hourly": 40,
+    "annual_fee": 30000,
+    "annual_label_savings": 24000,
+    "net_before_integration": -6000
+  },
+  "service_gross_margin": {
+    "acv": 60000,
+    "label_cost": 24000,
+    "onboarding_hours": 60,
+    "onboarding_rate": 75,
+    "support_hours": 24,
+    "support_rate": 100,
+    "infra": 1200,
+    "cogs": 32100,
+    "gross_margin": 0.46499999999999997
+  },
+  "venture_scale": [
+    {
+      "acv": 30000,
+      "customers_for_10m": 334,
+      "customers_for_100m": 3334
+    },
+    {
+      "acv": 60000,
+      "customers_for_10m": 167,
+      "customers_for_100m": 1667
+    },
+    {
+      "acv": 100000,
+      "customers_for_10m": 100,
+      "customers_for_100m": 1000
+    }
+  ]
+}

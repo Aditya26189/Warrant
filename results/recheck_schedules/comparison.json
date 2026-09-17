@@ -1,0 +1,1158 @@
+{
+  "provenance": {
+    "timestamp_utc": "2026-09-14T17:27:07+00:00",
+    "git_commit": "b8b0f00c38170bed8c4d7a42d5380c304e1eddd6",
+    "git_branch": "exp/recheck-schedules",
+    "dirty": false,
+    "dirty_paths": [],
+    "dirty_excludes": "results",
+    "python": "3.12.10",
+    "libraries": {
+      "torch": "2.9.1+cpu",
+      "transformers": "5.8.0",
+      "scikit-learn": "1.7.2",
+      "numpy": "2.2.6",
+      "scipy": "1.16.3",
+      "pandas": "2.3.3",
+      "statsmodels": "0.14.6",
+      "presidio-analyzer": "2.2.364",
+      "bitsandbytes": "0.49.2"
+    },
+    "device": {
+      "platform": "Windows-11-10.0.26200-SP0",
+      "processor": "AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD",
+      "cuda_available": false,
+      "device_name": "cpu"
+    },
+    "config_hash": "91a7d65c347e688c",
+    "seed": 1729,
+    "config": {
+      "seed": 1729,
+      "workload": {
+        "name": "enterprise-3pct",
+        "monthly_interactions": 200000,
+        "base_error_rate": 0.03,
+        "review_minutes_per_item": 3.0,
+        "reviewer_monthly_cost_inr": 85000.0,
+        "reviewer_productive_hours": 160.0,
+        "measured_tpr": 0.1416,
+        "measured_fpr": 0.011
+      },
+      "model": {
+        "name": "Qwen/Qwen2.5-7B-Instruct",
+        "quantization": "nf4",
+        "layer_fractions": [
+          0.29,
+          0.39,
+          0.5,
+          0.61,
+          0.71,
+          0.82,
+          0.93
+        ],
+        "prefill_chunk_tokens": 2048
+      },
+      "probe": {
+        "aggregations": [
+          "mean_pool",
+          "max_rolling_means",
+          "last_token"
+        ],
+        "rolling_window": 64,
+        "rolling_stride": 32,
+        "standardize": true,
+        "class_weight": "balanced",
+        "C_grid": [
+          0.0001,
+          0.001,
+          0.01,
+          0.1,
+          1.0
+        ],
+        "positive_class": "incorrect"
+      },
+      "evalsets": [
+        {
+          "id": "triviaqa-600",
+          "pad_tokens": null
+        },
+        {
+          "id": "triviaqa-longctx-600",
+          "pad_tokens": [
+            4000,
+            16000
+          ]
+        },
+        {
+          "id": "hinglish-pii-200",
+          "pad_tokens": null
+        },
+        {
+          "id": "hard-negatives-200",
+          "pad_tokens": null
+        },
+        {
+          "id": "canary-20",
+          "pad_tokens": null
+        }
+      ],
+      "validation": {
+        "bootstrap_samples": 1000,
+        "ci": 0.95,
+        "min_n_test": 200,
+        "min_auroc_lower_ci": 0.55,
+        "warrant_ttl_hours": 24,
+        "controls": [
+          "padding_fault",
+          "label_shuffle",
+          "null_feature",
+          "canary",
+          "determinism"
+        ],
+        "null_control_band": [
+          0.45,
+          0.55
+        ],
+        "null_control_min_repeats": 8,
+        "null_control_max_repeats": 200,
+        "calibration_tolerance": 0.25,
+        "recheck_power": 0.8
+      },
+      "drift": {
+        "window_size": 200,
+        "psi_stable": 0.1,
+        "psi_significant": 0.25,
+        "mmd_permutations": 500,
+        "features": [
+          "token_length",
+          "script_mix",
+          "embedding_centroid_distance",
+          "reference_perplexity",
+          "category_mix"
+        ],
+        "max_false_alarm_rate": 0.05
+      },
+      "sampling": {
+        "allocation_month_one": "proportional",
+        "allocation_thereafter": "neyman",
+        "expected_design_effect": 0.67,
+        "score_bands": 4,
+        "double_label_fraction": 0.1,
+        "recall_margin_tiers": [
+          0.05,
+          0.02
+        ],
+        "blind_queue": true
+      },
+      "policy": {
+        "engine": "opa",
+        "fail_closed_on_missing_warrant": true,
+        "weighted_error": {
+          "w_fpr_benign": 50.0,
+          "w_fnr": 5.0,
+          "w_fpr_hard_negative": 2.0
+        }
+      },
+      "profiles": {
+        "customer_support": {
+          "inline_budget_ms": 200,
+          "min_recall": 0.1,
+          "max_fpr_hard_negatives": 0.02,
+          "operating_point": "P-customer-support",
+          "target_flag_rate": 0.1,
+          "on_calibration_drift": "REFUSE",
+          "calibration_sensitivity": 0.25
+        },
+        "internal_knowledge": {
+          "inline_budget_ms": 500,
+          "min_recall": 0.25,
+          "max_fpr_hard_negatives": 0.05,
+          "operating_point": "P-internal-knowledge",
+          "target_flag_rate": 0.2,
+          "on_calibration_drift": "WIDEN_BUDGET",
+          "calibration_sensitivity": 0.25
+        },
+        "decision_support": {
+          "inline_budget_ms": 2000,
+          "min_recall": 0.5,
+          "max_fpr_hard_negatives": 0.1,
+          "operating_point": "P-decision-support",
+          "target_flag_rate": 0.5,
+          "on_calibration_drift": "IGNORE",
+          "calibration_sensitivity": 0.25
+        }
+      },
+      "detectors": {
+        "presidio_configs": [
+          "stock",
+          "enabled",
+          "enabled_plus_custom"
+        ],
+        "qwen3guard": "Qwen/Qwen3Guard-Gen-0.6B"
+      },
+      "store": {
+        "path": "results/controlplane.db",
+        "retention_days": 400,
+        "hash_chain": true
+      },
+      "paths": {
+        "results_dir": "results",
+        "evalsets_dir": "evalsets",
+        "policies_dir": "policies"
+      }
+    }
+  },
+  "design": {
+    "decision": "DECISIONS.md 187",
+    "budget": 0.05,
+    "alpha": 0.05,
+    "breach": 0.075,
+    "negatives_per_recheck": 628,
+    "years": 4000,
+    "certified_rate": 0.0371,
+    "cadences": [
+      {
+        "name": "weekly",
+        "rechecks": 52,
+        "change_after": 26,
+        "window": 13
+      },
+      {
+        "name": "monthly",
+        "rechecks": 12,
+        "change_after": 6,
+        "window": 3
+      }
+    ],
+    "seed": 1729
+  },
+  "what_these_are": "Simulated operating characteristics of revocation rules under a known true false-positive rate, exact up to Monte Carlo error. They describe the rules, not any detector.",
+  "cells": [
+    {
+      "rule": "fixed",
+      "cadence": "weekly",
+      "scenario": "S0",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.8515,
+        "mc_se": 0.005622449421737824
+      },
+      "revoked_before_change": {
+        "value": 0.8515,
+        "mc_se": 0.005622449421737824
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": 42
+    },
+    {
+      "rule": "split",
+      "cadence": "weekly",
+      "scenario": "S0",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.028,
+        "mc_se": 0.002608447814314099
+      },
+      "revoked_before_change": {
+        "value": 0.028,
+        "mc_se": 0.002608447814314099
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": 51
+    },
+    {
+      "rule": "monitor",
+      "cadence": "weekly",
+      "scenario": "S0",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.02475,
+        "mc_se": 0.002456493308559989
+      },
+      "revoked_before_change": {
+        "value": 0.02475,
+        "mc_se": 0.002456493308559989
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "monitor_uncapped",
+      "cadence": "weekly",
+      "scenario": "S0",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.0115,
+        "mc_se": 0.001685804703991539
+      },
+      "revoked_before_change": {
+        "value": 0.0115,
+        "mc_se": 0.001685804703991539
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "e_detector",
+      "cadence": "weekly",
+      "scenario": "S0",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.0085,
+        "mc_se": 0.0014515293658758682
+      },
+      "revoked_before_change": {
+        "value": 0.0085,
+        "mc_se": 0.0014515293658758682
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "fixed",
+      "cadence": "weekly",
+      "scenario": "S1",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.0105,
+        "mc_se": 0.001611656756260464
+      },
+      "revoked_before_change": {
+        "value": 0.0105,
+        "mc_se": 0.001611656756260464
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": 42
+    },
+    {
+      "rule": "split",
+      "cadence": "weekly",
+      "scenario": "S1",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": 51
+    },
+    {
+      "rule": "monitor",
+      "cadence": "weekly",
+      "scenario": "S1",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "monitor_uncapped",
+      "cadence": "weekly",
+      "scenario": "S1",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "e_detector",
+      "cadence": "weekly",
+      "scenario": "S1",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "fixed",
+      "cadence": "weekly",
+      "scenario": "S2",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 1.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.621,
+        "mc_se": 0.0076707072685639624
+      },
+      "caught_in_window": {
+        "value": 0.379,
+        "mc_se": 0.0076707072685639624
+      },
+      "median_delay_rechecks": null,
+      "critical_count": 42
+    },
+    {
+      "rule": "split",
+      "cadence": "weekly",
+      "scenario": "S2",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.99975,
+        "mc_se": 0.00024996874804661704
+      },
+      "revoked_before_change": {
+        "value": 0.014,
+        "mc_se": 0.001857686733547936
+      },
+      "caught_in_window": {
+        "value": 0.97725,
+        "mc_se": 0.002357564288625023
+      },
+      "median_delay_rechecks": 1.0,
+      "critical_count": 51
+    },
+    {
+      "rule": "monitor",
+      "cadence": "weekly",
+      "scenario": "S2",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 1.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.016,
+        "mc_se": 0.001983935482821959
+      },
+      "caught_in_window": {
+        "value": 0.983,
+        "mc_se": 0.0020439545004720637
+      },
+      "median_delay_rechecks": 5.0,
+      "critical_count": null
+    },
+    {
+      "rule": "monitor_uncapped",
+      "cadence": "weekly",
+      "scenario": "S2",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 1.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.006,
+        "mc_se": 0.001221065108829173
+      },
+      "caught_in_window": {
+        "value": 0.9905,
+        "mc_se": 0.0015337657904647595
+      },
+      "median_delay_rechecks": 6.0,
+      "critical_count": null
+    },
+    {
+      "rule": "e_detector",
+      "cadence": "weekly",
+      "scenario": "S2",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 1.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.0035,
+        "mc_se": 0.0009337759367214386
+      },
+      "caught_in_window": {
+        "value": 0.9965,
+        "mc_se": 0.0009337759367214316
+      },
+      "median_delay_rechecks": 2.0,
+      "critical_count": null
+    },
+    {
+      "rule": "fixed",
+      "cadence": "weekly",
+      "scenario": "S3",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 1.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.006,
+        "mc_se": 0.001221065108829173
+      },
+      "caught_in_window": {
+        "value": 0.994,
+        "mc_se": 0.0012210651088291734
+      },
+      "median_delay_rechecks": 0.0,
+      "critical_count": 42
+    },
+    {
+      "rule": "split",
+      "cadence": "weekly",
+      "scenario": "S3",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.99975,
+        "mc_se": 0.00024996874804661704
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": {
+        "value": 0.98925,
+        "mc_se": 0.0016305242638489036
+      },
+      "median_delay_rechecks": 1.0,
+      "critical_count": 51
+    },
+    {
+      "rule": "monitor",
+      "cadence": "weekly",
+      "scenario": "S3",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.978,
+        "mc_se": 0.0023192671256239555
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": {
+        "value": 0.0005,
+        "mc_se": 0.000353464991194319
+      },
+      "median_delay_rechecks": 20.0,
+      "critical_count": null
+    },
+    {
+      "rule": "monitor_uncapped",
+      "cadence": "weekly",
+      "scenario": "S3",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 0.95775,
+        "mc_se": 0.003180602832011567
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "median_delay_rechecks": 20.0,
+      "critical_count": null
+    },
+    {
+      "rule": "e_detector",
+      "cadence": "weekly",
+      "scenario": "S3",
+      "years": 4000,
+      "rechecks": 52,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 32656,
+      "revoked_in_year": {
+        "value": 1.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": {
+        "value": 1.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "median_delay_rechecks": 2.0,
+      "critical_count": null
+    },
+    {
+      "rule": "fixed",
+      "cadence": "monthly",
+      "scenario": "S0",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.35975,
+        "mc_se": 0.007588312353547394
+      },
+      "revoked_before_change": {
+        "value": 0.35975,
+        "mc_se": 0.007588312353547394
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": 42
+    },
+    {
+      "rule": "split",
+      "cadence": "monthly",
+      "scenario": "S0",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.03475,
+        "mc_se": 0.002895791666366902
+      },
+      "revoked_before_change": {
+        "value": 0.03475,
+        "mc_se": 0.002895791666366902
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": 48
+    },
+    {
+      "rule": "monitor",
+      "cadence": "monthly",
+      "scenario": "S0",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.01475,
+        "mc_se": 0.0019060717129740948
+      },
+      "revoked_before_change": {
+        "value": 0.01475,
+        "mc_se": 0.0019060717129740948
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "monitor_uncapped",
+      "cadence": "monthly",
+      "scenario": "S0",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.00625,
+        "mc_se": 0.0012460876273360554
+      },
+      "revoked_before_change": {
+        "value": 0.00625,
+        "mc_se": 0.0012460876273360554
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "e_detector",
+      "cadence": "monthly",
+      "scenario": "S0",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.003,
+        "mc_se": 0.000864725389936019
+      },
+      "revoked_before_change": {
+        "value": 0.003,
+        "mc_se": 0.000864725389936019
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "fixed",
+      "cadence": "monthly",
+      "scenario": "S1",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.00175,
+        "mc_se": 0.0006608588162383854
+      },
+      "revoked_before_change": {
+        "value": 0.00175,
+        "mc_se": 0.0006608588162383854
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": 42
+    },
+    {
+      "rule": "split",
+      "cadence": "monthly",
+      "scenario": "S1",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": 48
+    },
+    {
+      "rule": "monitor",
+      "cadence": "monthly",
+      "scenario": "S1",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "monitor_uncapped",
+      "cadence": "monthly",
+      "scenario": "S1",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "e_detector",
+      "cadence": "monthly",
+      "scenario": "S1",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": null,
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "fixed",
+      "cadence": "monthly",
+      "scenario": "S2",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 1.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.202,
+        "mc_se": 0.006348149336617721
+      },
+      "caught_in_window": {
+        "value": 0.7905,
+        "mc_se": 0.006434472589109383
+      },
+      "median_delay_rechecks": 0.0,
+      "critical_count": 42
+    },
+    {
+      "rule": "split",
+      "cadence": "monthly",
+      "scenario": "S2",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.97975,
+        "mc_se": 0.0022271022372131904
+      },
+      "revoked_before_change": {
+        "value": 0.0145,
+        "mc_se": 0.001890089283605407
+      },
+      "caught_in_window": {
+        "value": 0.83225,
+        "mc_se": 0.005907832459963637
+      },
+      "median_delay_rechecks": 1.0,
+      "critical_count": 48
+    },
+    {
+      "rule": "monitor",
+      "cadence": "monthly",
+      "scenario": "S2",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.973,
+        "mc_se": 0.002562762181709416
+      },
+      "revoked_before_change": {
+        "value": 0.01125,
+        "mc_se": 0.001667590889576937
+      },
+      "caught_in_window": {
+        "value": 0.46625,
+        "mc_se": 0.007887663429368674
+      },
+      "median_delay_rechecks": 3.0,
+      "critical_count": null
+    },
+    {
+      "rule": "monitor_uncapped",
+      "cadence": "monthly",
+      "scenario": "S2",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.95475,
+        "mc_se": 0.0032864280571769716
+      },
+      "revoked_before_change": {
+        "value": 0.00525,
+        "mc_se": 0.0011426326509425503
+      },
+      "caught_in_window": {
+        "value": 0.3945,
+        "mc_se": 0.0077277058367927025
+      },
+      "median_delay_rechecks": 3.0,
+      "critical_count": null
+    },
+    {
+      "rule": "e_detector",
+      "cadence": "monthly",
+      "scenario": "S2",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.99825,
+        "mc_se": 0.0006608588162383908
+      },
+      "revoked_before_change": {
+        "value": 0.00125,
+        "mc_se": 0.0005586674995021637
+      },
+      "caught_in_window": {
+        "value": 0.84175,
+        "mc_se": 0.0057707654929827126
+      },
+      "median_delay_rechecks": 1.0,
+      "critical_count": null
+    },
+    {
+      "rule": "fixed",
+      "cadence": "monthly",
+      "scenario": "S3",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 1.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "revoked_before_change": {
+        "value": 0.0015,
+        "mc_se": 0.0006119129840099816
+      },
+      "caught_in_window": {
+        "value": 0.99225,
+        "mc_se": 0.00138653682785565
+      },
+      "median_delay_rechecks": 0.0,
+      "critical_count": 42
+    },
+    {
+      "rule": "split",
+      "cadence": "monthly",
+      "scenario": "S3",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.97525,
+        "mc_se": 0.002456493308559991
+      },
+      "revoked_before_change": {
+        "value": 0.0005,
+        "mc_se": 0.000353464991194319
+      },
+      "caught_in_window": {
+        "value": 0.842,
+        "mc_se": 0.005767061643506163
+      },
+      "median_delay_rechecks": 1.0,
+      "critical_count": 48
+    },
+    {
+      "rule": "monitor",
+      "cadence": "monthly",
+      "scenario": "S3",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.3195,
+        "mc_se": 0.007372580111467084
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": {
+        "value": 0.0025,
+        "mc_se": 0.0007895805848676879
+      },
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "monitor_uncapped",
+      "cadence": "monthly",
+      "scenario": "S3",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.2385,
+        "mc_se": 0.006738281494565213
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": {
+        "value": 0.00125,
+        "mc_se": 0.0005586674995021637
+      },
+      "median_delay_rechecks": null,
+      "critical_count": null
+    },
+    {
+      "rule": "e_detector",
+      "cadence": "monthly",
+      "scenario": "S3",
+      "years": 4000,
+      "rechecks": 12,
+      "negatives_per_recheck": 628,
+      "labels_per_year": 7536,
+      "revoked_in_year": {
+        "value": 0.99775,
+        "mc_se": 0.0007491557748559332
+      },
+      "revoked_before_change": {
+        "value": 0.0,
+        "mc_se": 1.5811388300841896e-08
+      },
+      "caught_in_window": {
+        "value": 0.78775,
+        "mc_se": 0.006465290741722294
+      },
+      "median_delay_rechecks": 2.0,
+      "critical_count": null
+    }
+  ],
+  "criteria": {
+    "validity": {
+      "fixed/weekly": {
+        "revoked_in_year": 0.8515,
+        "limit": 0.060338036564067665,
+        "passes": false
+      },
+      "split/weekly": {
+        "revoked_in_year": 0.028,
+        "limit": 0.060338036564067665,
+        "passes": true
+      },
+      "monitor/weekly": {
+        "revoked_in_year": 0.02475,
+        "limit": 0.060338036564067665,
+        "passes": true
+      },
+      "monitor_uncapped/weekly": {
+        "revoked_in_year": 0.0115,
+        "limit": 0.060338036564067665,
+        "passes": true
+      },
+      "e_detector/weekly": {
+        "revoked_in_year": 0.0085,
+        "limit": 0.060338036564067665,
+        "passes": true
+      },
+      "fixed/monthly": {
+        "revoked_in_year": 0.35975,
+        "limit": 0.060338036564067665,
+        "passes": false
+      },
+      "split/monthly": {
+        "revoked_in_year": 0.03475,
+        "limit": 0.060338036564067665,
+        "passes": true
+      },
+      "monitor/monthly": {
+        "revoked_in_year": 0.01475,
+        "limit": 0.060338036564067665,
+        "passes": true
+      },
+      "monitor_uncapped/monthly": {
+        "revoked_in_year": 0.00625,
+        "limit": 0.060338036564067665,
+        "passes": true
+      },
+      "e_detector/monthly": {
+        "revoked_in_year": 0.003,
+        "limit": 0.060338036564067665,
+        "passes": true
+      }
+    },
+    "primary": {
+      "cadence": "weekly",
+      "scenario": "S2",
+      "eligible": [
+        "split",
+        "monitor",
+        "e_detector"
+      ],
+      "chosen": "e_detector",
+      "floor_met": true,
+      "note": "Chosen among rules passing validity, by the share of years whose first revocation lands within the window after the change; ties within 2 MC SE go to the lower median delay. No rule is chosen when the best catches under 0.50, and the shipped rule then stays."
+    }
+  }
+}

@@ -1,8 +1,8 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-13T21:58:40+00:00",
-    "git_commit": "febe08c0949c54889dce83faa1abf0612a357a0f",
-    "git_branch": "main",
+    "timestamp_utc": "2026-09-14T18:48:29+00:00",
+    "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+    "git_branch": "fix/recall-assurance",
     "dirty": false,
     "dirty_paths": [],
     "dirty_excludes": "results",
@@ -24,7 +24,7 @@
       "cuda_available": false,
       "device_name": "cpu"
     },
-    "config_hash": "533fb74983fcd8af",
+    "config_hash": "2640a176a26a80a0",
     "seed": 1729,
     "config": {
       "seed": 1729,
@@ -115,7 +115,8 @@
         ],
         "null_control_min_repeats": 8,
         "null_control_max_repeats": 200,
-        "calibration_tolerance": 0.25
+        "calibration_tolerance": 0.25,
+        "recheck_power": 0.8
       },
       "drift": {
         "window_size": 200,
@@ -141,7 +142,8 @@
           0.05,
           0.02
         ],
-        "blind_queue": true
+        "blind_queue": true,
+        "margin_assurance": 0.8
       },
       "policy": {
         "engine": "opa",
@@ -344,7 +346,7 @@
           "applicable": true
         }
       ],
-      "duration_seconds": 17.82088559999829
+      "duration_seconds": 19.129046000016388
     },
     "T1-max_rolling_means": {
       "access_tier": "T1_ACTIVATIONS",
@@ -479,7 +481,7 @@
           "applicable": true
         }
       ],
-      "duration_seconds": 16.774634600034915
+      "duration_seconds": 21.58734369999729
     },
     "T1-mean_pool": {
       "access_tier": "T1_ACTIVATIONS",
@@ -614,7 +616,7 @@
           "applicable": true
         }
       ],
-      "duration_seconds": 16.596786799957044
+      "duration_seconds": 21.779548400023486
     }
   }
 }

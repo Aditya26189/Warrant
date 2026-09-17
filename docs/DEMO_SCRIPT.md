@@ -130,9 +130,10 @@ python demo/show_beats.py --beat 5
 > refused.
 >
 > Two triggers. **Envelope drift** watches the input distribution move — no
-> labels, and no guarantee; it's a heuristic gate. **The revocation bound** is
-> anytime-valid over the whole deployment — that needs labelled negatives, and
-> it's built and tested but not wired to live traffic.
+> labels, and no guarantee; it's a heuristic gate. **Label-driven revocation**
+> needs labelled negatives: chain a year of rechecks and a detector that keeps
+> its promise is falsely revoked with probability at most alpha over the
+> negatives you declare -- for the chain as kept.
 
 ---
 

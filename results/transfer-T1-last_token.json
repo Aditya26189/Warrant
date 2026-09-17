@@ -1,8 +1,8 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-13T22:00:48+00:00",
-    "git_commit": "febe08c0949c54889dce83faa1abf0612a357a0f",
-    "git_branch": "main",
+    "timestamp_utc": "2026-09-14T18:51:03+00:00",
+    "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+    "git_branch": "fix/recall-assurance",
     "dirty": false,
     "dirty_paths": [],
     "dirty_excludes": "results",
@@ -24,7 +24,7 @@
       "cuda_available": false,
       "device_name": "cpu"
     },
-    "config_hash": "533fb74983fcd8af",
+    "config_hash": "2640a176a26a80a0",
     "seed": 1729,
     "config": {
       "seed": 1729,
@@ -115,7 +115,8 @@
         ],
         "null_control_min_repeats": 8,
         "null_control_max_repeats": 200,
-        "calibration_tolerance": 0.25
+        "calibration_tolerance": 0.25,
+        "recheck_power": 0.8
       },
       "drift": {
         "window_size": 200,
@@ -141,7 +142,8 @@
           0.05,
           0.02
         ],
-        "blind_queue": true
+        "blind_queue": true,
+        "margin_assurance": 0.8
       },
       "policy": {
         "engine": "opa",
@@ -202,16 +204,16 @@
     }
   },
   "source": {
-    "run_id": "run-307c833b4133",
+    "run_id": "run-5e341325ad50",
     "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
     "variant": "T1-last_token",
     "eval_set_id": "triviaqa-600",
     "envelope_id": "sha256:e77c64f908491ad1",
     "model_name": "Qwen/Qwen2.5-7B-Instruct",
     "data_source": "measured",
-    "started_at": "2026-09-13T22:00:23+00:00",
-    "completed_at": "2026-09-13T22:00:39+00:00",
-    "duration_seconds": 15.882917299983092,
+    "started_at": "2026-09-14T18:50:35+00:00",
+    "completed_at": "2026-09-14T18:50:53+00:00",
+    "duration_seconds": 17.57028879999416,
     "splits": {
       "train": 1200,
       "validation": 600,
@@ -369,7 +371,7 @@
       }
     ],
     "warrant": {
-      "warrant_id": "W-f4bddcaa365cb7d3",
+      "warrant_id": "W-449acef4fb6694db",
       "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
       "detector_version": "0.1.0",
       "operating_point": {
@@ -381,9 +383,9 @@
         "target_flag_rate": 0.05
       },
       "eval_set_id": "triviaqa-600",
-      "validation_run_id": "run-307c833b4133",
-      "issued_at": "2026-09-13T22:00:23+00:00",
-      "expires_at": "2026-09-14T22:00:23+00:00",
+      "validation_run_id": "run-5e341325ad50",
+      "issued_at": "2026-09-14T18:50:35+00:00",
+      "expires_at": "2026-09-15T18:50:35+00:00",
       "metrics": {
         "auroc": {
           "name": "auroc",
@@ -576,16 +578,16 @@
     "status_reason": null
   },
   "target": {
-    "run_id": "run-3bd689183de4",
+    "run_id": "run-236d58d07f6c",
     "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
     "variant": "T1-last_token",
     "eval_set_id": "triviaqa-longctx-600",
     "envelope_id": "sha256:c4733cda255e55d9",
     "model_name": "Qwen/Qwen2.5-7B-Instruct",
     "data_source": "measured",
-    "started_at": "2026-09-13T22:00:40+00:00",
-    "completed_at": "2026-09-13T22:00:48+00:00",
-    "duration_seconds": 7.952800199971534,
+    "started_at": "2026-09-14T18:50:53+00:00",
+    "completed_at": "2026-09-14T18:51:02+00:00",
+    "duration_seconds": 9.237336300022434,
     "splits": {
       "train": 0,
       "validation": 0,
@@ -743,7 +745,7 @@
       }
     ],
     "warrant": {
-      "warrant_id": "W-d617e4e30dfa19a3",
+      "warrant_id": "W-b8f2a257663f8e61",
       "detector_id": "probe-qwen2.5-7b-instruct-T1-last_token",
       "detector_version": "0.1.0",
       "operating_point": {
@@ -755,9 +757,9 @@
         "target_flag_rate": 0.05
       },
       "eval_set_id": "triviaqa-longctx-600",
-      "validation_run_id": "run-3bd689183de4",
-      "issued_at": "2026-09-13T22:00:40+00:00",
-      "expires_at": "2026-09-14T22:00:40+00:00",
+      "validation_run_id": "run-236d58d07f6c",
+      "issued_at": "2026-09-14T18:50:53+00:00",
+      "expires_at": "2026-09-15T18:50:53+00:00",
       "metrics": {
         "auroc": {
           "name": "auroc",

@@ -1,8 +1,8 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-13T21:57:35+00:00",
-    "git_commit": "febe08c0949c54889dce83faa1abf0612a357a0f",
-    "git_branch": "main",
+    "timestamp_utc": "2026-09-14T18:47:08+00:00",
+    "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+    "git_branch": "fix/recall-assurance",
     "dirty": false,
     "dirty_paths": [],
     "dirty_excludes": "results",
@@ -24,7 +24,7 @@
       "cuda_available": false,
       "device_name": "cpu"
     },
-    "config_hash": "533fb74983fcd8af",
+    "config_hash": "2640a176a26a80a0",
     "seed": 1729,
     "config": {
       "seed": 1729,
@@ -115,7 +115,8 @@
         ],
         "null_control_min_repeats": 8,
         "null_control_max_repeats": 200,
-        "calibration_tolerance": 0.25
+        "calibration_tolerance": 0.25,
+        "recheck_power": 0.8
       },
       "drift": {
         "window_size": 200,
@@ -141,7 +142,8 @@
           0.05,
           0.02
         ],
-        "blind_queue": true
+        "blind_queue": true,
+        "margin_assurance": 0.8
       },
       "policy": {
         "engine": "opa",
@@ -201,16 +203,16 @@
       }
     }
   },
-  "run_id": "run-ce51c1209fac",
+  "run_id": "run-bf9d4529d5cc",
   "detector_id": "pii-reference",
   "variant": "text",
   "eval_set_id": "hinglish-pii-200-longctx",
   "envelope_id": "sha256:1d3bf295e9c30341",
   "model_name": "none (stateless text detector)",
   "data_source": "measured",
-  "started_at": "2026-09-13T21:57:15+00:00",
-  "completed_at": "2026-09-13T21:57:35+00:00",
-  "duration_seconds": 19.216847500007134,
+  "started_at": "2026-09-14T18:46:45+00:00",
+  "completed_at": "2026-09-14T18:47:08+00:00",
+  "duration_seconds": 22.273293100006413,
   "splits": {
     "train": 0,
     "validation": 0,
@@ -362,7 +364,7 @@
     }
   ],
   "warrant": {
-    "warrant_id": "W-6f3ddc52985cfa51",
+    "warrant_id": "W-508819228a365617",
     "detector_id": "pii-reference",
     "detector_version": "0.1.0",
     "operating_point": {
@@ -374,9 +376,9 @@
       "target_flag_rate": null
     },
     "eval_set_id": "hinglish-pii-200-longctx",
-    "validation_run_id": "run-ce51c1209fac",
-    "issued_at": "2026-09-13T21:57:15+00:00",
-    "expires_at": "2026-09-14T21:57:15+00:00",
+    "validation_run_id": "run-bf9d4529d5cc",
+    "issued_at": "2026-09-14T18:46:45+00:00",
+    "expires_at": "2026-09-15T18:46:45+00:00",
     "metrics": {
       "auroc": {
         "name": "auroc",
