@@ -113,3 +113,8 @@ examples/*.warrant.json
 results/drift/*.db*
 # a measured demo run's stream, beside the fixture's demo_stream.json (DECISIONS 181)
 results/demo_stream_measured.json
+
+# Local agent communication is operational state, not scientific evidence.
+/.coordination/
+/SHARED_CONTEXT.md
+/SHARED_CONTEXT.md.*.tmp

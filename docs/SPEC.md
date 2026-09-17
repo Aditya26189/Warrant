@@ -13,7 +13,10 @@ declared identity and an unexpired contract. Grouped data is rejected. FPR,
 recall, precision, flag rate and base rate share alpha equally across exact
 two-sided binomial intervals. Lift conservatively propagates recall/flag-rate
 bounds. VALID requires both registered confidence bounds to clear; an observed
-violation is REFUSED and an inconclusive bound is UNVALIDATED. Verification
+violation, inconclusive bound or missing denominator is REFUSED in protocol 2.
+Protocol-1 registrations preserve their original UNVALIDATED semantics for
+replay (Codex-parallel decision 200, `docs/decisions/CODEX-PARALLEL.md`); new
+registrations bind protocol 2 into their identity. Verification
 recomputes the measurement and reports STALE after expiry. These claims assume
 IID sampling and an untouched holdout; they do not extend across repeated studies.
 

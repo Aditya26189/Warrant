@@ -30,6 +30,7 @@ warrant = "controlplane.cli:main"
 # ever sees it. DECISIONS 122, D1.
 packages = [
     "controlplane",
+    "controlplane.coordination",
     "controlplane.demo",
     "controlplane.detectors",
     "controlplane.drift",

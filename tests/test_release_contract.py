@@ -6,7 +6,7 @@ from datetime import datetime, timezone
 import pytest
 
 from controlplane.release.contract import (
-    ReleaseContract, ReleaseSpec, read_document, register, write_document,
+    ReleaseContract, ReleaseSpec, digest, read_document, register, write_document,
 )
 
 
@@ -30,6 +30,15 @@ def test_registration_roundtrip_freezes_identity(release_spec, release_now):
                     now=release_now) == contract
     assert register(replace(release_spec, threshold=0.6), ["train-1"],
                     ["holdout-1", "holdout-2"], now=release_now) != contract
+
+
+@pytest.mark.parametrize("version", [0, 3, True])
+def test_unknown_protocol_cannot_be_selected_even_with_a_new_digest(release_spec, release_now, version):
+    payload = register(release_spec, ["train-1"], ["holdout-1"], now=release_now).to_dict()
+    payload["schema_version"] = version
+    payload["contract_id"] = digest({key: value for key, value in payload.items() if key != "contract_id"})
+    with pytest.raises(ValueError, match="schema_version"):
+        ReleaseContract.from_dict(payload)
 
 
 @pytest.mark.parametrize("development,holdout", [

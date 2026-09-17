@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "kind": "warrant.release.evaluation",
+  "contract_id": "51a913801dfc76a92a7e61853974a1194d498cda0a899852fcdcb0110f42b6b2",
+  "evaluated_at": "2026-09-14T00:00:00+00:00",
+  "expires_at": "2030-01-01T00:00:00Z",
+  "identity": {
+    "system_id": "support",
+    "system_version": "v1",
+    "detector_id": "probe",
+    "detector_version": "v2",
+    "scope": "English QA",
+    "positive_label": "incorrect answer"
+  },
+  "data_origin": "synthetic",
+  "data_sha256": "500ecc3405549f95b2262673e1d54327d9fa27b18ba833a6fb754bd27047f4bc",
+  "status": "UNVALIDATED",
+  "counts": {
+    "n": 40,
+    "positive": 20,
+    "negative": 20,
+    "flagged": 20,
+    "tp": 20,
+    "fp": 0,
+    "tn": 20,
+    "fn": 0
+  },
+  "rates": {
+    "fpr": {
+      "kind": "ESTIMATED",
+      "value": 0.0,
+      "lower": 0.0,
+      "upper": 0.23272950098907447,
+      "n": 20,
+      "successes": 0,
+      "confidence": 0.99,
+      "method": "clopper_pearson_equal_tailed"
+    },
+    "recall": {
+      "kind": "ESTIMATED",
+      "value": 1.0,
+      "lower": 0.7672704990109255,
+      "upper": 1.0,
+      "n": 20,
+      "successes": 20,
+      "confidence": 0.99,
+      "method": "clopper_pearson_equal_tailed"
+    },
+    "precision": {
+      "kind": "ESTIMATED",
+      "value": 1.0,
+      "lower": 0.7672704990109255,
+      "upper": 1.0,
+      "n": 20,
+      "successes": 20,
+      "confidence": 0.99,
+      "method": "clopper_pearson_equal_tailed"
+    },
+    "flag_rate": {
+      "kind": "ESTIMATED",
+      "value": 0.5,
+      "lower": 0.2946133873497665,
+      "upper": 0.7053866126502334,
+      "n": 40,
+      "successes": 20,
+      "confidence": 0.99,
+      "method": "clopper_pearson_equal_tailed"
+    },
+    "base_rate": {
+      "kind": "ESTIMATED",
+      "value": 0.5,
+      "lower": 0.2946133873497665,
+      "upper": 0.7053866126502334,
+      "n": 40,
+      "successes": 20,
+      "confidence": 0.99,
+      "method": "clopper_pearson_equal_tailed"
+    }
+  },
+  "lift": {
+    "kind": "ESTIMATED",
+    "n": 40,
+    "value": 2.0,
+    "lower": 1.0877304519973605,
+    "upper": 3.394278885272769,
+    "confidence": 0.95,
+    "method": "simultaneous_recall_over_measured_flag_rate",
+    "undefined_when_population_flag_rate_is_zero": true
+  },
+  "checks": [
+    {
+      "metric": "fpr",
+      "limit": 0.05,
+      "direction": "at_most",
+      "status": "UNVALIDATED"
+    },
+    {
+      "metric": "recall",
+      "limit": 0.1,
+      "direction": "at_least",
+      "status": "VALID"
+    }
+  ],
+  "family_confidence": 0.95,
+  "specification_sha256": "af8c7bf623d43fae3d808cf80fc33ed49bed4b4aacb67dc8d898d823add3bf9f",
+  "assumptions": [
+    "IID items sampled from the declared scope; grouping is unsupported.",
+    "Stable question IDs, accurate labels, and no semantic leakage are caller responsibilities.",
+    "Threshold, detector and criteria were fixed without inspecting this holdout.",
+    "Coverage is for one predeclared evaluation, not repeated selection across contracts.",
+    "Versions and local times are declarations, not independently authenticated facts.",
+    "A scoped detector measurement is not deployment approval or regulatory certification."
+  ]
+}
