@@ -829,3 +829,106 @@ branch. The chain fix has not been independently reviewed. The documentation pas
 checked each page against the code it describes and ran the tests that read
 documents; it did not re-derive any measured number, all of which still come from
 the claim table (92 of 92 reproduce at `0092210`).
+
+---
+
+## 9. Close-out: both lines integrated on `main`, and the gate
+
+**The question: does one branch now hold all of this sprint's work, with the two
+decision logs reconciled and the documents describing the merged code, and does
+it pass the gate?**
+
+**Answer: yes.** `main` holds both lines and every branch, the logs are reconciled without renumbering either, and it passes the full suite and the clean-clone gate. Merged at the founder's direction on 2026-09-17, by this
+line, before Codex's independent review of the chain fix. That review is still
+owed. `main` and every branch were then pushed to GitHub at the founder's
+direction.
+
+### 9.1 What was merged, in order
+
+| Commit | What |
+|---|---|
+| `8432d28` | `docs/professional-pass` into `main`: the chain integrity fix, sprint 12's customer-path work (184-200 on this line and three dated addenda), the handoff and pilot documents, the documentation pass. `main` had only its own merge commit beyond it, so the tree is identical to that branch's |
+| `9a75e9c` | Codex's `feat/customer-evidence-integration` (also `feat/shared-context`): the coordination board, refusal of ambiguous scored-input fields, release protocol 2, Codex's review of this line |
+| `076f645` | Codex's `fix/grouped-agreement`: `DECISIONS.md` 201, pre-registered and not implemented |
+| `8303879` | `DECISIONS.md` 202: the reconciliation |
+| `956a9aa` | The documents brought to the merged code |
+| `049853b` | Test inventory 1,817 -> 1,867 collected. Pushed to GitHub with every branch |
+| `e03279d` | The README's Authors section and team note removed, at the founder's direction: the project was done by one person. Pushed |
+
+Every local branch is now contained in `main`. Two scratch worktrees hold
+superseded commits whose patches `git cherry` finds on `main` under other hashes.
+Codex's uncommitted edits in the main checkout were not touched and are not on
+`main`.
+
+### 9.2 The decision numbers
+
+Both lines had committed different entries as 198, 199 and 200. The mapping
+agreed on the board (posts 34 and 36) was carried out as agreed: `DECISIONS.md`
+keeps this line's 198-200; Codex's are preserved byte-for-byte in
+`docs/decisions/CODEX-PARALLEL.md`, each with its source commits and a SHA-256
+of its bytes; 201 is Codex's; 202 records the reconciliation and the two
+alternatives rejected.
+
+**The citation defect this could have caused, and nearly did.** Codex's code
+and documents cited its own 198-200 as `DECISIONS 198` and so on. After the
+merge those citations still *resolve*, to this line's unrelated entries, so
+`test_decisions_integrity` passes on every one of them. The first search found
+six and repointed them. A second, broader search found a seventh,
+`(DECISIONS 185, 200)` in `intake/contract.py`, which the first pattern missed
+because the number did not follow the word directly. All seven now name the
+parallel log. **No test can catch this class**: a citation that resolves to the
+wrong entry is indistinguishable from a right one to anything that checks
+existence.
+
+### 9.3 What the documents had to absorb
+
+- **Release protocol 2.** `docs/METHODS.md` §19 and `docs/DIAGRAMS.md` §14 said
+  an inconclusive release study is UNVALIDATED. Under protocol 2 it is REFUSED
+  with a named reason; UNVALIDATED survives only for protocol-1 replay.
+- **Strict input.** `docs/INPUT.md` and `docs/TROUBLESHOOTING.md` gained the four
+  new refusals (duplicate names, blank headers, ragged rows, malformed CSV), with
+  the messages the code prints.
+- **`intake/contract.py`'s module docstring** still said extra columns are
+  "carried into the artifact untouched", the claim `docs/INPUT.md` corrected in
+  section 12 of the review pack. No writer uses them. `tests/test_intake.py`'s
+  docstring made the same claim. Both corrected.
+- `CODE_TOUR`, `TESTING` and `CASES` gained the coordination package and the new
+  suites; every test `CASES` names exists.
+
+### 9.4 The gate
+
+| Check | At | Result |
+|---|---|---|
+| Full suite, in the integration worktree | `049853b` | **1,866 passed, 1 xfail, 0 failed** in 33 minutes; 1,867 collected, matching the refreshed inventory. The xfail is `DECISIONS.md` 179's strict one |
+| Clean-clone gate | `e03279d` | **PASSED.** A fresh clone of 543 tracked files matched source HEAD; smoke passed; the full suite passed inside the clone (exit 0, the same xfail); `verify` reproduced the claim table **92/92** and the frozen-score metrics **25/25**. The activation tier was skipped, as on every clone, because the caches are gitignored. Record: `results/clean_clone.json`, committed at `5f5e3c4` |
+| Between the two | | The only commit after `049853b` and before `e03279d` removes the README's Authors section; no test reads those lines |
+
+One note from the gate, not a failure: Windows denied deletion of a git object in
+the temporary clone, leaving about 26 MB in `%TEMP%`.
+
+### 9.5 What this does not establish
+
+- **No human has reviewed the merged line**, and Codex has not reviewed the chain
+  fix. A passing suite says that the tests which exist pass; sections 8.12 and
+  8.13 are the record of what the tests did not cover.
+- **One machine, one platform**: Windows, Python 3.12.10, CPU.
+- **CI on the pushed commits was not observed from here**: the GitHub CLI is not
+  installed on this machine.
+- Everything section 3 and `docs/LIMITATIONS.md` list is unchanged: no customer,
+  no production traffic, no human labels, no second model family.
+
+### 9.6 Open, and what would close it
+
+The full list, ordered, with owners, is `reports/NEXT-STEPS-2026-09-17.md`. The
+item that blocks everything else is a decision for the founder: whether the
+registered conversations run.
+
+### 9.7 Ledger
+
+```bash
+git checkout main                                    # gated at e03279d
+python -m pytest tests/ -o addopts="--strict-markers"
+python scripts/verify.py
+python scripts/clean_clone_gate.py
+git show 55528c7:DECISIONS.md                        # Codex's original 198-200
+```

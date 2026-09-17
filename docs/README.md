@@ -100,6 +100,7 @@
 | 🚚 [PATHS.md](PATHS.md) | What moved on 2026-08-29 and where it went |
 | 📈 [../results/RESULTS.md](../results/RESULTS.md) | The rendered results, with fixture numbers refused rather than printed |
 | 📑 `reports/PHASE-<N>.md` | One report per sprint, leading with the answer; [PHASE-12.md](../reports/PHASE-12.md) is the latest |
+| 🧭 [NEXT-STEPS-2026-09-17.md](../reports/NEXT-STEPS-2026-09-17.md) | What to do next, after sprint 12: the decisions only the founder can make, then the engineering, in order |
 
 ## 🎥 Presentation and the business case
 
