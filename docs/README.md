@@ -29,6 +29,8 @@
 | 🌱 **New to the codebase** | [ONBOARDING.md](ONBOARDING.md) → [ARCHITECTURE.md](ARCHITECTURE.md) → [DIAGRAMS.md](DIAGRAMS.md) → [CODE_TOUR.md](CODE_TOUR.md) |
 | ▶️ **Reproducing the measurements** | [SETUP.md](SETUP.md) → [RUNBOOK.md](RUNBOOK.md) → [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
 | 🔍 **Checking whether a number is real** | [../README.md](../README.md) claim table → [ARTIFACTS.md](ARTIFACTS.md) → [METHODS.md](METHODS.md) → `make verify` |
+| [Independent review, 23 September](../reports/PROJECT-REVIEW-2026-09-23.md) | Which current-main defects were independently reproduced, what passed, and what does the evidence support commercially? |
+| [Claude repair instructions, 23 September](../reports/CLAUDE-INSTRUCTIONS-2026-09-23.md) | What should Claude repair next, how should agents coordinate, and which checks close each finding? |
 | 🕵️ **Looking for the flaw** | [LIMITATIONS.md](LIMITATIONS.md) → [../DECISIONS.md](../DECISIONS.md) → [CASES.md](CASES.md) → [TESTING.md](TESTING.md) → `reports/` |
 | 🎤 **Presenting it** | [DIAGRAMS.md](DIAGRAMS.md) → [JOURNEY.md](JOURNEY.md) → [DEMO.md](DEMO.md) → [DEMO_SCRIPT.md](DEMO_SCRIPT.md) |
 | 🔬 **Asking whether this means anything outside the repo** | [EXTERNAL.md](EXTERNAL.md) → [REDACT.md](REDACT.md) → [../results/external/MATRIX.md](../results/external/MATRIX.md) |
