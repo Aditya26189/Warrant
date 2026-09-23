@@ -37,6 +37,11 @@ label diagnostics. With no --config, customer commands use distribution defaults
 working directory. An explicit --config never falls back; missing or malformed
 configuration exits as bad input. Research load_config() retains its existing
 path semantics. Building a wheel does not change configuration values or hashes.
+Git provenance is reported only when the executing config module is tracked by
+the candidate repository (DECISIONS 204). An installed package below a consumer
+checkout therefore reports unknown Git commit and dirty state; the consumer's
+revision is not the package's source identity. Retained build manifests can bind
+the wheel digest to its source commit separately.
 
 ## 1. Core data model
 

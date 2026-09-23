@@ -1095,17 +1095,34 @@ def repo_root() -> Path:
 
 
 def _git(*args: str) -> Optional[str]:
-    """Run a git command in the repo root, returning None if git is unavailable."""
+    """Report Git state only for tracked source, never a consumer's checkout.
+
+    A virtual environment may live below an unrelated .git directory. Its
+    commit does not describe the installed wheel (DECISIONS 204). Unknown Git
+    provenance stays unknown rather than acquiring that parent's identity.
+    """
+    root = repo_root()
     try:
-        out = subprocess.run(
-            ["git", *args],
-            cwd=repo_root(),
+        module_path = Path(__file__).resolve().relative_to(root.resolve()).as_posix()
+        tracked = subprocess.run(
+            ["git", "--literal-pathspecs", "ls-files", "--error-unmatch", "--", module_path],
+            cwd=root,
             capture_output=True,
             text=True,
             timeout=30,
             check=False,
         )
-    except (OSError, subprocess.SubprocessError):
+        if tracked.returncode != 0:
+            return None
+        out = subprocess.run(
+            ["git", *args],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            timeout=30,
+            check=False,
+        )
+    except (OSError, subprocess.SubprocessError, ValueError):
         return None
     if out.returncode != 0:
         return None

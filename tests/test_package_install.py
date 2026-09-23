@@ -63,6 +63,16 @@ def installed(tmp_path_factory) -> Installed:
     env = {**os.environ, "PYTHONIOENCODING": "utf-8", "PIP_NO_INDEX": "1",
            "PIP_DISABLE_PIP_VERSION_CHECK": "1"}
     env.pop("PYTHONPATH", None)
+    # A real consumer often installs a venv below their application's .git.
+    # The resulting records must not identify that unrelated commit as ours.
+    _successful(["git", "init", "--quiet", str(workspace)], workspace, env)
+    hooks = workspace / "empty-hooks"
+    hooks.mkdir()
+    _successful(["git", "-c", "user.name=Packaging fixture",
+                 "-c", "user.email=fixture@example.invalid",
+                 "-c", f"core.hooksPath={hooks}", "-c", "commit.gpgsign=false",
+                 "commit", "--allow-empty", "--quiet", "-m", "Unrelated consumer repository"],
+                workspace, env)
     direct = workspace / "direct"
     direct.mkdir()
     archives = workspace / "archives"
@@ -130,10 +140,11 @@ def test_imports_resolve_to_the_installed_distribution(installed, tmp_path):
     code = (
         "import sys; from pathlib import Path; sys.path.insert(0, sys.argv[1]); "
         "import controlplane, controlplane.sampling; "
-        "from controlplane.config import load_customer_config; "
+        "from controlplane.config import load_customer_config, provenance; "
         "assert Path(controlplane.__file__).is_relative_to(Path(sys.argv[1])); "
         "assert Path(controlplane.sampling.__file__).is_relative_to(Path(sys.argv[1])); "
-        "load_customer_config(); "
+        "p = provenance(load_customer_config()); "
+        "assert all(p[k] is None for k in ('git_commit','git_branch','dirty','dirty_paths')), p; "
         "assert not ({'torch','sklearn','transformers','spacy'} & set(sys.modules))"
     )
     _successful([sys.executable, "-I", "-c", code, str(installed.site)], tmp_path, installed.env)
@@ -148,6 +159,8 @@ def test_installed_certification_ignores_incidental_config(installed, tmp_path, 
     payload = _json(record)
     assert payload["status"] == "VALID"
     assert payload["input"]["n"] == 600
+    assert payload["provenance"]["git_commit"] is None
+    assert payload["provenance"]["dirty"] is None
     if second:
         assert payload["labels"]["second_review"]["n_pairs"] == 600
     else:
