@@ -11312,3 +11312,32 @@ citations trustworthy.
 two lines, at the founder's direction, before Codex's independent review of
 `fix/chain-integrity-8a` took place. That review is still owed, and a defect it
 finds is a new fix on `main`, recorded here, not a reason to reopen the merge.
+
+## 203 - Ship customer defaults with the installed package (2026-09-23)
+
+The independent review R1 reproduced an installed wheel without config.yaml
+or controlplane.sampling. Source-checkout tests and release-import checks did
+not exercise the customer commands that require them.
+
+Keep root config.yaml as the canonical configuration. A setuptools build
+command copies its exact bytes into the wheel as controlplane/default_config.yaml;
+the source distribution includes the configuration and build helper. No second
+hand-maintained configuration is introduced. The customer CLI loads this
+resource when --config is absent; a source/editable checkout uses its canonical
+root configuration. Explicit --config still loads exactly that path, and the
+research load_config() default keeps its existing current-directory semantics.
+A missing or malformed explicit config is a bad-input error, never a fallback.
+No estimator defaults, thresholds, methods or scientific results change.
+
+Include sampling in the existing package list. Verify the actual wheel and
+console entry point from an unrelated directory, covering certification and
+refusal, label_2, planning, recheck/chain verification, release workflow and
+explicit config handling. Test a wheel rebuilt from an sdist as well. The
+ordinary test harness may reuse its environment's dependencies; CI must also
+run the installed checks with only customer dependencies plus build/test tools,
+including advertised Python 3.10 support. Record final clean-source build
+provenance separately from development-test builds.
+
+Rejected: resolving site-packages/config.yaml or the customer's incidental
+working-directory config. Neither is a resource owned by the distribution.
+Rejected: committing a duplicate default YAML which can drift independently.
