@@ -11341,3 +11341,8 @@ provenance separately from development-test builds.
 Rejected: resolving site-packages/config.yaml or the customer's incidental
 working-directory config. Neither is a resource owned by the distribution.
 Rejected: committing a duplicate default YAML which can drift independently.
+
+Build inspection also found controlplane.external and controlplane.gate absent
+from the package list. Include those existing packages too, without adding
+runtime dependencies; wheel-content regression checks cover every source
+Python module so later packages cannot be silently omitted.

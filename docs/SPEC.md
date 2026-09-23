@@ -30,6 +30,14 @@ legacy callers keep rejecting it. Synthetic human summaries suppress metrics.
 
 ---
 
+Customer installation (DECISIONS 203): wheels include the canonical root
+configuration as an installed resource and include the sampling package used by
+label diagnostics. With no --config, customer commands use distribution defaults
+(source/editable checkouts use root config.yaml), independent of the caller's
+working directory. An explicit --config never falls back; missing or malformed
+configuration exits as bad input. Research load_config() retains its existing
+path semantics. Building a wheel does not change configuration values or hashes.
+
 ## 1. Core data model
 
 Frozen dataclasses. Build these first; everything else consumes them.

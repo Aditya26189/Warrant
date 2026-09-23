@@ -41,8 +41,6 @@ __all__ = ["build_parser", "main"]
 # needs them. `--help`, `--version` and a malformed argument now return in
 # roughly a tenth of that.
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-
 EXIT_OK = 0
 EXIT_ERROR = 1
 EXIT_BAD_INPUT = 2
@@ -117,7 +115,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="write the JSON record here (default: alongside the input, as <name>.warrant.json)",
     )
     certify.add_argument(
-        "--config", default=str(PROJECT_ROOT / "config.yaml"),
+        "--config", default=None,
         help=argparse.SUPPRESS,  # the estimator settings; customers never set this
     )
     certify.add_argument(
@@ -154,7 +152,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="the new .csv or .jsonl, same three columns",
     )
     recheck.add_argument("--out", "-o", default=None, help="write the JSON record here")
-    recheck.add_argument("--config", default=str(PROJECT_ROOT / "config.yaml"),
+    recheck.add_argument("--config", default=None,
                          help=argparse.SUPPRESS)
     recheck.add_argument("--quiet", "-q", action="store_true")
     recheck.add_argument(
@@ -232,7 +230,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     plan.add_argument("--currency", default="", help="label only, e.g. 'INR '")
     plan.add_argument("--out", "-o", default=None, help="write the JSON record here")
-    plan.add_argument("--config", default=str(PROJECT_ROOT / "config.yaml"),
+    plan.add_argument("--config", default=None,
                       help=argparse.SUPPRESS)
     plan.add_argument("--quiet", "-q", action="store_true")
     from .release.cli import add_parser
@@ -263,7 +261,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 def _chain(args: argparse.Namespace) -> int:
     """``warrant chain verify``: findings are a result, so they exit 0 (DECISIONS 194)."""
-    from .config import load_config, write_json_artifact
+    from .config import load_customer_config as load_config, write_json_artifact
     from .intake.chain_verify import (
         RecordError, load_records, render_chain_verification, verify_chain_records,
     )
@@ -275,7 +273,7 @@ def _chain(args: argparse.Namespace) -> int:
         return EXIT_BAD_INPUT
     verification = verify_chain_records(records)
     out = Path(args.out) if args.out else Path("chain-verification.json")
-    write_json_artifact(out, verification.to_payload(), load_config(PROJECT_ROOT / "config.yaml"))
+    write_json_artifact(out, verification.to_payload(), load_config())
     if not args.quiet:
         print(render_chain_verification(verification))
     print(f"  record written to {out}")
@@ -290,7 +288,7 @@ def _chain(args: argparse.Namespace) -> int:
 
 def _certify(args: argparse.Namespace) -> int:
     # Deferred on purpose; see the note at the top of this module.
-    from .config import load_config, write_json_artifact
+    from .config import load_customer_config as load_config, write_json_artifact
     from .intake import (
         InputError,
         certify_items,
@@ -510,7 +508,7 @@ def _recheck(args: argparse.Namespace) -> int:
     # Deferred on purpose; see the note at the top of this module.
     import json
 
-    from .config import load_config, write_json_artifact
+    from .config import load_customer_config as load_config, write_json_artifact
     from .intake import InputError, load_scored_items, recheck_items, render_recheck
     from .model import EnvelopeFeature, WarrantStatus
 
@@ -671,7 +669,7 @@ def _plan(args: argparse.Namespace) -> int:
     import json
     import math
 
-    from .config import load_config, write_json_artifact
+    from .config import load_customer_config as load_config, write_json_artifact
     from .economics.sizing import monitoring_plan
     from .intake import render_plan
 
@@ -773,19 +771,25 @@ def _plan(args: argparse.Namespace) -> int:
 def main(argv: Optional[Sequence[str]] = None) -> int:
     """Entry point. Returns a process exit code rather than raising."""
     args = build_parser().parse_args(argv)
-    if args.command == "certify":
-        return _certify(args)
-    if args.command == "recheck":
-        return _recheck(args)
-    if args.command == "plan":
-        return _plan(args)
-    if args.command == "chain":
-        return _chain(args)
-    if args.command == "release":
-        from .release.cli import run
+    from .config import ConfigError
 
-        return run(args)
-    raise AssertionError(f"unreachable: unhandled command {args.command!r}")
+    try:
+        if args.command == "certify":
+            return _certify(args)
+        if args.command == "recheck":
+            return _recheck(args)
+        if args.command == "plan":
+            return _plan(args)
+        if args.command == "chain":
+            return _chain(args)
+        if args.command == "release":
+            from .release.cli import run
+
+            return run(args)
+        raise AssertionError(f"unreachable: unhandled command {args.command!r}")
+    except ConfigError as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
 
 
 if __name__ == "__main__":

@@ -371,3 +371,49 @@ def test_numpy_scalars_survive_as_numbers(config: Config, tmp_path: Path) -> Non
 def test_missing_artifact_names_the_ordering(tmp_path: Path) -> None:
     with pytest.raises(FileNotFoundError, match="run the earlier stage first"):
         read_json_artifact(tmp_path / "absent.json")
+
+
+def test_customer_defaults_ignore_working_directory(tmp_path, monkeypatch, config):
+    """An incidental customer config cannot silently change the estimator."""
+    from controlplane.config import load_customer_config
+
+    (tmp_path / "config.yaml").write_bytes(b"not: the project configuration\n")
+    monkeypatch.chdir(tmp_path)
+    assert load_customer_config().config_hash == config.config_hash
+
+
+def test_customer_explicit_config_is_honored(tmp_path, raw_config):
+    from controlplane.config import load_customer_config
+
+    changed = copy.deepcopy(raw_config)
+    changed["seed"] += 1
+    path = tmp_path / "custom.yaml"
+    path.write_bytes(yaml.safe_dump(changed).encode("utf-8"))
+    assert load_customer_config(path).seed == changed["seed"]
+
+
+@pytest.mark.parametrize("contents", [b"broken: [", b"- wrong shape", b"\xff"])
+def test_customer_bad_config_is_not_a_fallback(tmp_path, contents):
+    from controlplane.config import load_customer_config
+
+    path = tmp_path / "broken.yaml"
+    path.write_bytes(contents)
+    with pytest.raises(ConfigError):
+        load_customer_config(path)
+
+
+def test_customer_missing_explicit_config_is_not_a_fallback(tmp_path):
+    from controlplane.config import load_customer_config
+
+    with pytest.raises(ConfigError, match="not found"):
+        load_customer_config(tmp_path / "absent.yaml")
+
+
+def test_missing_distribution_defaults_fail_loudly(tmp_path, monkeypatch):
+    import importlib.resources
+    import controlplane.config as module
+
+    monkeypatch.setattr(importlib.resources, "files", lambda package: tmp_path)
+    monkeypatch.setattr(module, "project_root", lambda: tmp_path)
+    with pytest.raises(ConfigError, match="reinstall warrant"):
+        module.load_customer_config()

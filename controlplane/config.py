@@ -42,6 +42,7 @@ __all__ = [
     "Config",
     "ConfigError",
     "load_config",
+    "load_customer_config",
     "provenance",
     "project_root",
     "read_json_artifact",
@@ -967,13 +968,48 @@ def load_config(
     config_path = Path(path)
     if not config_path.is_file():
         raise ConfigError(f"config file not found: {config_path}")
-    with config_path.open("r", encoding="utf-8") as fh:
-        raw = yaml.safe_load(fh)
+    try:
+        contents = config_path.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as exc:
+        raise ConfigError(f"cannot read config file {config_path}: {exc}") from exc
+    return _parse_config(contents, str(config_path), overrides)
+
+
+def _parse_config(
+    contents: str, source: str, overrides: Optional[dict[str, Any]] = None,
+) -> Config:
+    """Use the same validation and hashing for files and installed resources."""
+    try:
+        raw = yaml.safe_load(contents)
+    except yaml.YAMLError as exc:
+        raise ConfigError(f"{source}: malformed YAML: {exc}") from exc
     if not isinstance(raw, dict):
-        raise ConfigError(f"{config_path}: top level must be a mapping")
+        raise ConfigError(f"{source}: top level must be a mapping")
     if overrides:
         raw = _apply_overrides(raw, overrides)
     return _from_mapping(Config, raw)
+
+
+def load_customer_config(path: Optional[str | os.PathLike] = None) -> Config:
+    """Load explicit settings or distribution-owned defaults (DECISIONS 203).
+
+    An unrelated working-directory config must not silently alter a customer's
+    estimator. Wheels carry a build-time copy of the canonical config.yaml;
+    source/editable checkouts use that canonical file directly. The research
+    load_config() API retains its existing default-path behavior.
+    """
+    if path is not None:
+        return load_config(path)
+
+    from importlib.resources import files
+
+    resource = files("controlplane").joinpath("default_config.yaml")
+    if resource.is_file():
+        return _parse_config(resource.read_text(encoding="utf-8"), str(resource))
+    source_root = project_root()
+    if (source_root / "pyproject.toml").is_file():
+        return load_config(source_root / "config.yaml")
+    raise ConfigError("installed default configuration is missing; reinstall warrant")
 
 
 # --------------------------------------------------------------------------- #
