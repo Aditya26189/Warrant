@@ -11346,3 +11346,23 @@ Build inspection also found controlplane.external and controlplane.gate absent
 from the package list. Include those existing packages too, without adding
 runtime dependencies; wheel-content regression checks cover every source
 Python module so later packages cannot be silently omitted.
+
+## 204 - Installed code must not borrow the consumer repository's commit (2026-09-24)
+
+A wheel built from 7ea49f9, installed in a virtual environment under another
+checkout, reported that checkout's dfa43d7 revision and dirty state in its
+provenance. Walking upward to any .git entry identifies the consumer repository,
+not necessarily the source of the code that executed.
+
+Before reporting Git metadata, require the executing controlplane/config.py
+path to be tracked in the candidate repository. If it is not, or Git cannot
+establish that, retain the existing unknown representation: null git_commit,
+git_branch, dirty and dirty_paths. Never substitute false for unknown dirtiness.
+Source/worktree execution retains its current commit and dirty-file checks.
+The installed-wheel regression must run below an unrelated committed Git
+repository and assert that its revision is not borrowed.
+
+The separately retained build manifest binds the candidate wheel digest to its
+archived source revision. This fix does not authenticate packages or infer a
+source revision from a version string. No measured statistics, settings or
+status decisions change; provenance fields on affected installed records do.
