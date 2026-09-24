@@ -23,6 +23,8 @@ This reads every record handed to it and reports what the set shows:
 * **continued after end** -- a link after a record that revoked or ended,
   including a record REVOKED on its score distribution while the chain itself
   was still live (194, defect 1);
+* **revocation status** -- a record whose independent drift finding revoked
+  while its aggregate status did not (205). A seal can preserve a wrong decision;
 * **mixed warrants** -- records from more than one warrant, each group still
   verified;
 * **duplicate** -- one record under several paths, verified once. Reported so
@@ -50,7 +52,10 @@ import json
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
-from .chain import ChainError, ChainState, MalformedChainError, record_sha256, seal_reproduces
+from .chain import (
+    ChainError, ChainState, MalformedChainError, record_has_drift_revocation,
+    record_sha256, seal_reproduces,
+)
 
 __all__ = [
     "ChainFinding",
@@ -162,6 +167,13 @@ def verify_chain_records(records: Mapping[str, Mapping[str, Any]]) -> ChainVerif
     states: dict[str, ChainState] = {}
     unsealed: list[str] = []
     for digest, name in sorted(by_digest.items(), key=lambda item: item[1]):
+        if record_has_drift_revocation(records[name]) and records[name].get("status") != "REVOKED":
+            findings.append(ChainFinding(
+                "revocation_status", (name,),
+                "the drift finding REVOKED the warrant, but the aggregate status "
+                "does not say REVOKED. This record cannot support continued "
+                "reliance; its drift finding stands separately (DECISIONS 205).",
+            ))
         sealed = seal_reproduces(records[name])
         if sealed is None:
             unsealed.append(name)
@@ -248,10 +260,11 @@ def verify_chain_records(records: Mapping[str, Mapping[str, Any]]) -> ChainVerif
                 findings.append(ChainFinding(
                     "sequence", pair, f"link {state.sequence} follows link {parent.sequence}"))
             parent_status = records[parent_name].get("status")
-            if parent.revoked_at_unit is not None or parent.ended or parent_status == "REVOKED":
+            parent_revoked = parent_status == "REVOKED" or record_has_drift_revocation(records[parent_name])
+            if parent.revoked_at_unit is not None or parent.ended or parent_revoked:
                 if parent.revoked_at_unit is not None:
                     what = "revoked the chain"
-                elif parent_status == "REVOKED":
+                elif parent_revoked:
                     what = "REVOKED the warrant on its score distribution"
                 else:
                     what = "ended the chain"

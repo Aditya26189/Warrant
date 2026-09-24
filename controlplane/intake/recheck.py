@@ -564,7 +564,8 @@ def _verdict(
 
     A broken bound outranks a moved distribution: the first is the promise being
     measurably false today, the second is a reason to doubt that it will hold
-    tomorrow.
+    tomorrow. Either revocation outranks a weaker warning or absent FPR
+    evidence; an early STALE return must not hide drift revocation (205).
     """
     common = dict(
         budget=budget, threshold=threshold, n_now=items.n,
@@ -590,6 +591,20 @@ def _verdict(
             ),
             **common,
         )
+    drift = drift_verdict(
+        config, assessed=assessed, psi=psi, beyond_noise=beyond_noise, by_smoothing=by_smoothing
+    )
+    if drift == "REVOKED":
+        return RecheckResult(
+            status=WarrantStatus.REVOKED,
+            reason=(
+                f"the score distribution has moved "
+                f"(PSI {psi:.4f}, beyond both the {config.drift.psi_significant} "
+                f"band and this sample's own noise level of {null_p95:.4f}). The "
+                f"warrant describes traffic you no longer have."
+            ),
+            **common,
+        )
     if bound_holds is None:
         return RecheckResult(
             status=WarrantStatus.UNVALIDATED,
@@ -610,9 +625,6 @@ def _verdict(
             ),
             **common,
         )
-    drift = drift_verdict(
-        config, assessed=assessed, psi=psi, beyond_noise=beyond_noise, by_smoothing=by_smoothing
-    )
     if drift == "STALE" and by_smoothing:
         # The index is dominated by bins the live file left empty where the
         # reference had mass. That is a claim about missing data in a region,
@@ -628,17 +640,6 @@ def _verdict(
                 f"region the warrant was measured over -- not that the "
                 f"distribution shifted by that much. Widen the sample or check "
                 f"the file is complete before treating it as drift."
-            ),
-            **common,
-        )
-    if drift == "REVOKED":
-        return RecheckResult(
-            status=WarrantStatus.REVOKED,
-            reason=(
-                f"the bound still holds, but the score distribution has moved "
-                f"(PSI {psi:.4f}, beyond both the {config.drift.psi_significant} "
-                f"band and this sample's own noise level of {null_p95:.4f}). The "
-                f"warrant describes traffic you no longer have."
             ),
             **common,
         )
@@ -717,7 +718,8 @@ def apply_chain(result: RecheckResult, fed: Any) -> RecheckResult:
     is reported as evidence -- STALE -- not as a revocation. **A drift revocation
     is a different claim and stands**, whatever the bound did: it is read from
     the result's separate drift verdict, because the bound-first verdict hides it
-    when both fire (194, F1). Every reason says where the chain is, whether this
+    when both fire (194, F1) or an inconclusive FPR warning fires first (205).
+    Every reason says where the chain is, whether this
     file's units all reached it, and whether it has ended (194, F2).
     """
     from .labels import chained_sensitivity
@@ -762,20 +764,23 @@ def apply_chain(result: RecheckResult, fed: Any) -> RecheckResult:
                 f"{state.alpha:g}." + suffix
             ),
         )
+    if result.drift_verdict == "REVOKED":
+        bound_note = (
+            " This file's bound also breaks, which in a chain is evidence rather "
+            "than a revocation." if result.bound_still_holds is False else ""
+        )
+        return dataclasses.replace(
+            result,
+            status=WarrantStatus.REVOKED,
+            reason=(
+                f"the score distribution has moved (PSI {result.psi:.4f}, beyond "
+                f"both the significant band and this sample's noise level of "
+                f"{result.psi_null_p95:.4f}): the warrant describes traffic you no "
+                f"longer have. That is a separate claim from the chain's, and it "
+                f"stands." + bound_note + suffix
+            ),
+        )
     if result.bound_still_holds is False:
-        if result.drift_verdict == "REVOKED":
-            return dataclasses.replace(
-                result,
-                status=WarrantStatus.REVOKED,
-                reason=(
-                    f"the score distribution has moved (PSI {result.psi:.4f}, beyond "
-                    f"both the significant band and this sample's noise level of "
-                    f"{result.psi_null_p95:.4f}): the warrant describes traffic you no "
-                    f"longer have. That is a separate claim from the chain's, and it "
-                    f"stands. This file's bound also breaks, which in a chain is "
-                    f"evidence rather than a revocation." + suffix
-                ),
-            )
         return dataclasses.replace(
             result,
             status=WarrantStatus.STALE,

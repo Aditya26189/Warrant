@@ -50,7 +50,7 @@ from __future__ import annotations
 import dataclasses
 import hashlib
 import json
-from typing import Any, Optional, Sequence
+from typing import Any, Mapping, Optional, Sequence
 
 import numpy as np
 
@@ -65,6 +65,7 @@ __all__ = [
     "feed",
     "head_path",
     "read_head",
+    "record_has_drift_revocation",
     "start_chain",
     "unit_digest",
     "write_head",
@@ -477,6 +478,17 @@ def start_chain(warrant_record: dict[str, Any], *, horizon_units: int, alpha: fl
     )
 
 
+def record_has_drift_revocation(record: Mapping[str, Any]) -> bool:
+    """Read the independent drift finding, including old inconsistent records.
+
+    Decision 205: an aggregate STALE status once hid a drift REVOKED finding.
+    The retained finding still bars continuation. This does not recompute its
+    statistics or authenticate the record; sealing is checked separately.
+    """
+    drift = record.get("drift")
+    return isinstance(drift, Mapping) and drift.get("verdict") == "REVOKED"
+
+
 def continue_chain(
     previous_record: dict[str, Any], warrant_record: dict[str, Any], *, alpha: float,
     head: Optional[str] = None, fork: bool = False, head_status: Optional[str] = None,
@@ -505,11 +517,12 @@ def continue_chain(
         )
     if abs(state.alpha - alpha) > 1e-12:
         raise ChainError(f"the chain runs at alpha={state.alpha:g}, the warrant at {alpha:g}")
-    if previous_record.get("status") == "REVOKED":
+    if previous_record.get("status") == "REVOKED" or record_has_drift_revocation(previous_record):
         # The chain state records only the chain's own revocation. A recheck
         # revoked by drift, with the bound holding and the chain live, carries
         # status REVOKED and no revoked_at_unit -- and was continued until 194's
         # review found it. A claim that stands is not continued (194, defect 1).
+        # Old STALE records can hide that drift revocation; read it directly (205).
         raise ChainError(
             "the --since record REVOKED this warrant"
             + ("" if state.revoked_at_unit is not None else

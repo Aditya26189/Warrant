@@ -293,6 +293,20 @@ Computed at validation time, stored **inside the warrant**.
 | PSI > 0.25 | `REVOKED` | **Refuse to certify.** Consult the matrix for a valid warrant on the new envelope. Route or refuse |
 | Control failure | `REFUSED` | Out of service until human re-validation |
 
+Customer rechecks (DECISIONS 205) evaluate FPR evidence and score drift
+separately. A drift REVOKED finding takes precedence over an inconclusive FPR
+warning or missing FPR evidence. A standalone established FPR breach also
+revokes. In a chain, a single-file FPR breach alone becomes STALE until the
+sequential statistic revokes; an independent drift revocation still stands.
+These precedence rules do not alter the drift estimator or its assumptions.
+
+Continuation reads both the retained aggregate status and its drift finding.
+An old record with drift REVOKED cannot be continued even if it says STALE or
+VALID at the top level. Chain verification reports that inconsistency as
+`revocation_status` and reports any successor as `continued_after_end`. Old
+records are inspected, not rewritten; absent records and edited/recomputed
+checksums remain outside these checks.
+
 ### 5.4 Model-version invalidation
 
 A probe is pinned to a model version. On model change, every activation-tier warrant is invalidated until revalidation. State this as an operational cost; the mitigation is that T2 and T3 are model-agnostic and keep working through the gap.
