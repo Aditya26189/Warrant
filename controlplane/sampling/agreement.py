@@ -17,6 +17,11 @@ elsewhere. The interval is a percentile bootstrap over the paired items, which
 is the resampling unit: the pair is what was observed, and resampling labels
 independently would break the pairing that kappa is about.
 
+Declared groups change that contract (DECISIONS 201). Related pairs are not
+independent observations. Their sample kappa remains descriptive of the observed
+pairs, but its population interval is withheld until a grouped estimator has
+been validated. Repeating rows inside a group cannot supply that evidence.
+
 **Kappa is undefined, not 1.0, when both reviewers agree on everything and the
 category is constant.** With one category used, expected agreement is 1, so
 ``(p_o - p_e)/(1 - p_e)`` is ``0/0``. Returning 1.0 there reports perfect
@@ -42,7 +47,8 @@ class Agreement:
 
     Attributes:
         kappa: Cohen's kappa, or ``None`` when it is undefined.
-        ci_low: Lower percentile-bootstrap bound. ``None`` when kappa is.
+        ci_low: Lower percentile-bootstrap bound. ``None`` when kappa is
+            undefined or a population interval is withheld for grouped pairs.
         ci_high: Upper bound.
         n_pairs: Items labelled by both reviewers.
         observed_agreement: ``p_o``, the raw share the reviewers agreed on.
@@ -53,6 +59,9 @@ class Agreement:
         undefined_reason: Why kappa is ``None``, when it is.
         interpretation: A plain-language band, with the caveat that the bands
             are conventional rather than derived.
+        n_groups: Distinct groups represented among the reviewed pairs, or
+            ``None`` for the ungrouped paired bootstrap.
+        interval_reason: Why no population interval is computed for groups.
     """
 
     kappa: Optional[float]
@@ -63,9 +72,24 @@ class Agreement:
     expected_agreement: float
     undefined_reason: str = ""
     interpretation: str = ""
+    n_groups: Optional[int] = None
+    interval_reason: str = ""
 
     def render(self) -> str:
         """One block, with the raw agreement beside kappa so neither is read as the other."""
+        if self.n_groups is not None:
+            value = (
+                f"UNDEFINED: {self.undefined_reason}" if self.kappa is None
+                else f"{self.kappa:.4f}"
+            )
+            return (
+                f"Descriptive Cohen's kappa: {value}\n"
+                f"    {self.n_pairs} observed pairs across {self.n_groups} reviewed groups; "
+                "not a population estimate\n"
+                f"    population interval withheld: {self.interval_reason}\n"
+                f"    raw agreement {self.observed_agreement:.4f}, "
+                f"chance agreement {self.expected_agreement:.4f}"
+            )
         if self.kappa is None:
             return (
                 f"Cohen's kappa: UNDEFINED over {self.n_pairs} pairs\n"
@@ -121,13 +145,16 @@ def cohens_kappa(
     seed: int = 1729,
     resamples: int = 2000,
     ci: float = 0.95,
+    groups: Optional[Sequence[str]] = None,
 ) -> Agreement:
-    """Agreement between two reviewers on the same items, with an interval.
+    """Agreement on paired items; population intervals require ungrouped pairs.
 
     Quantity: Cohen's kappa on binary labels, where 1 means *incorrect* --
     ``config.yaml`` sets the positive class to ``incorrect`` and an inverted
     convention here would report agreement about a different question.
-    Propagation: percentile bootstrap resampling **pairs**, 95% by default.
+    Propagation: percentile bootstrap resampling **pairs**, 95% by default,
+    only for ungrouped input. With groups, report exact descriptive statistics
+    of the observed pairs and withhold population inference (DECISIONS 201).
 
     Args:
         first: Reviewer one's labels, 0 or 1.
@@ -135,13 +162,15 @@ def cohens_kappa(
         seed: Bootstrap seed, so the interval reproduces.
         resamples: Bootstrap resamples.
         ci: Coverage.
+        groups: Nonblank group IDs aligned with the reviewed pairs. When given,
+            within-group dependence invalidates the independent-pair bootstrap.
 
     Returns:
         The agreement, with kappa ``None`` where it is undefined.
 
     Raises:
         AgreementError: If the vectors differ in length, are empty, or contain
-            anything but 0 and 1.
+            anything but 0 and 1, or group IDs are missing or misaligned.
     """
     import numpy as np
 
@@ -150,7 +179,7 @@ def cohens_kappa(
             f"{len(first)} labels against {len(second)}. Kappa is computed over "
             "pairs, so the two reviewers must have labelled the same items."
         )
-    if not first:
+    if len(first) == 0:
         raise AgreementError(
             "no doubly-labelled items. Agreement cannot be reported, and a "
             "warrant published without it carries a sampling interval that is "
@@ -164,6 +193,20 @@ def cohens_kappa(
                 "where 1 is the positive class 'incorrect'."
             )
 
+    n_groups = None
+    interval_reason = ""
+    if groups is not None:
+        if len(groups) != len(first):
+            raise AgreementError("groups must have one ID per reviewed pair")
+        if any(not isinstance(group, str) or not group.strip() for group in groups):
+            raise AgreementError("groups must contain nonblank string IDs for every reviewed pair")
+        n_groups = len(set(groups))
+        interval_reason = (
+            "declared groups may contain dependent pairs; the independent-pair "
+            "bootstrap is unsupported and no grouped interval is implemented "
+            "(DECISIONS 201)"
+        )
+
     p_o, p_e, kappa = _kappa(first, second)
     if kappa is None:
         return Agreement(
@@ -173,11 +216,21 @@ def cohens_kappa(
             n_pairs=len(first),
             observed_agreement=p_o,
             expected_agreement=p_e,
+            n_groups=n_groups,
+            interval_reason=interval_reason,
             undefined_reason=(
                 "both reviewers used one category, so chance agreement is 1 and "
                 "kappa is 0/0. This is not perfect agreement -- it is a set of "
                 "items with no disagreement available to detect."
             ),
+        )
+
+    if n_groups is not None:
+        return Agreement(
+            kappa=kappa, ci_low=None, ci_high=None, n_pairs=len(first),
+            observed_agreement=p_o, expected_agreement=p_e,
+            interpretation="descriptive of the observed pairs only",
+            n_groups=n_groups, interval_reason=interval_reason,
         )
 
     rng = np.random.default_rng(seed)

@@ -375,6 +375,13 @@ Three of the four are free. The pitch line falls out:
 
 ### 6.5 Label quality
 
+`cohens_kappa` accepts group IDs aligned with the reviewed pairs (DECISIONS
+201). Declared grouped pairs retain their descriptive sample kappa, raw
+agreement and pair/group counts, with null population interval endpoints and
+an explicit reason. This is exact description of those observed pairs, not an
+estimate of population agreement or label correctness. Ungrouped input keeps
+the existing paired bootstrap.
+
 **Blinding.** Stratum A reviewers see items the system flagged; stratum B reviewers see items it didn't. If flag status, score, stratum or ordering is visible, the two strata get systematically different label distributions and the importance-weighted estimate is biased *in the direction that flatters us*. Interleave both strata into **one blinded queue with identical UI**. Nearly free, and it is the difference between a warrant and a self-report.
 
 **Noise.** Published work measures human agreement near 48% on contextual redaction (RedactionBench, arXiv:2606.18782: 47.7% consensus *with target labels* on contextual redactions, against 89.4% on mandatory ones — agreement with a gold label, not an inter-rater κ), and label noise materially degrades measured detector performance. A ±5pp interval is meaningless at κ = 0.5. **Double-label ~10% of both strata; publish Cohen's κ alongside every warrant.** At the ±5pp tier that is ~85 extra reviews.
