@@ -85,8 +85,11 @@ Windows Python 3.12 checks, not a remote CI or full-suite claim.
 
 No research test set was rescored and no frozen scientific output was
 regenerated. Inventory collection is reported as collection, not passing
-execution. The final collection refresh and documentation checks are recorded
-in a follow-up entry after their commands complete.
+execution. Final collection at clean source
+`62cb61af206f23795da485ccee4ee9efe20f1236` recorded 1933 tests, up from 1916 at
+the R5 checkpoint. The subsequent claim, inventory and README-prose check batch
+passed all 21 tests (exit 0). Full-suite execution and remote CI were not rerun
+for this branch.
 
 ## What this does not establish
 
