@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import sys
 import tarfile
+import time
 import zipfile
 from dataclasses import dataclass
 
@@ -305,3 +306,50 @@ def test_installed_release_register_evaluate_verify(installed, tmp_path):
     assert _json(tmp_path / "contract.evaluation.json")["status"] == "VALID"
     installed.run(tmp_path, "release", "verify", *args, "--require-valid")
     installed.run(tmp_path, "release", "evaluate", *args, expected=2)
+
+
+def test_installed_recheck_respects_another_process_publication_lease(installed, tmp_path):
+    """A wheel consumer must get the same serialization as a source checkout."""
+    scores = _scores(tmp_path)
+    warrant, output = tmp_path / "warrant.json", tmp_path / "scores.csv.recheck-0001.json"
+    installed.run(tmp_path, "certify", "-i", str(scores), "-b", ".05", "-o", str(warrant), "-q")
+    ready = tmp_path / "lease-ready"
+    worker = r"""
+import json, sys
+from pathlib import Path
+import controlplane.intake.chain_publication as publication
+assert Path(publication.__file__).is_relative_to(Path(sys.argv[1]))
+warrant, ready = map(Path, sys.argv[2:])
+with publication.chain_publication(warrant, json.loads(warrant.read_bytes())):
+    ready.write_bytes(b"locked")
+    sys.stdin.readline()
+"""
+    process = subprocess.Popen(
+        [sys.executable, "-c", worker, str(installed.site), str(warrant), str(ready)],
+        cwd=tmp_path, env=installed.env, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE, text=True, encoding="utf-8",
+        creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
+    )
+    arguments = ("recheck", "-w", str(warrant), "-i", str(scores),
+                 "--horizon-labels", "10000", "-q")
+    try:
+        deadline = time.monotonic() + 30
+        while not ready.exists() and process.poll() is None and time.monotonic() < deadline:
+            time.sleep(.02)
+        assert ready.exists(), "installed worker did not acquire its lease"
+        blocked = installed.run(tmp_path, *arguments, expected=2)
+        assert "busy" in blocked.stderr
+        assert not output.exists()
+        stdout, stderr = process.communicate("release\n", timeout=30)
+        assert process.returncode == 0, stdout + stderr
+    finally:
+        if process.poll() is None:
+            process.kill()
+            process.communicate(timeout=10)
+    installed.run(tmp_path, *arguments)
+    verification = tmp_path / "verified.json"
+    installed.run(tmp_path, "chain", "verify", str(output), "--require-clean",
+                  "-o", str(verification), "-q")
+    assert _json(verification)["clean"] is True
+    assert not Path(str(warrant) + ".chain-pending").exists()
+    assert Path(str(warrant) + ".chain-lock").is_file()
