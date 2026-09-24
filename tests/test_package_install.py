@@ -202,6 +202,40 @@ def test_installed_grouped_review_withholds_population_intervals(installed, tmp_
         assert "population interval withheld" in result.stdout
 
 
+def test_installed_drift_revocation_survives_an_inconclusive_fpr_warning(installed, tmp_path):
+    """Audit R3 through the installed executable, including follow-up refusal."""
+    from controlplane.intake import score_distribution
+    from controlplane.model import to_jsonable
+    import numpy as np
+
+    scores = np.repeat(np.arange(.05, 1, .1), [10] * 8 + [858, 62])
+    labels = np.ones(1000, dtype=int)
+    labels[:94], labels[-6:] = 0, 0
+    rows = ["id,label,score"] + [
+        f"audit{i},{label},{score}" for i, (label, score) in enumerate(zip(labels, scores, strict=True))
+    ]
+    source, warrant = tmp_path / "shifted.csv", tmp_path / "warrant.json"
+    source.write_bytes(("\n".join(rows) + "\n").encode())
+    warrant.write_bytes(json.dumps({
+        "status": "VALID", "budget_fpr": .05, "alpha": .05,
+        "input": {"grouped": False}, "certification": {"threshold": .94},
+        "score_distribution": to_jsonable(score_distribution(np.linspace(0, 1, 1000))),
+    }).encode())
+    first, later = tmp_path / "first.json", tmp_path / "later.json"
+    installed.run(tmp_path, "recheck", "-w", str(warrant), "-i", str(source),
+                  "--horizon-labels", "100000", "--require-valid", "-o", str(first), expected=1)
+    payload = _json(first)
+    assert payload["status"] == payload["drift"]["verdict"] == "REVOKED"
+    assert payload["now"]["bound_still_holds"] is True
+    assert payload["chain"]["revoked_at_unit"] is None
+    installed.run(tmp_path, "chain", "verify", str(first), "--require-clean", "-q",
+                  "-o", str(tmp_path / "verification.json"))
+    rejected = installed.run(tmp_path, "recheck", "-w", str(warrant), "-i", str(source),
+                             "--since", str(first), "--fork", "-o", str(later), expected=2)
+    assert "REVOKED" in rejected.stderr
+    assert not later.exists()
+
+
 def test_installed_explicit_config_is_used(installed, tmp_path):
     raw = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
     raw["seed"] += 1
