@@ -99,6 +99,20 @@ distribution, and each has a different fix.
 | `already exists. A chained recheck never writes over a record` | the output name is taken | Choose another `--out`. Each link is evidence the next depends on |
 | `the chain runs at alpha=..., the warrant at ...`, or `belongs to a different warrant record` | the record is from another warrant or level | Continue a chain only with the warrant it was started on |
 
+A chained write also uses `.chain-lock` and, while publication is pending,
+`.chain-pending` beside the canonical warrant path (DECISIONS 206):
+
+| Message | What to do |
+|---|---|
+| `chain publication is busy or its lock is unavailable` | Retry after the active writer exits. If it persists without a writer, check filesystem lock support and permissions. Do not delete the lock file to bypass it |
+| `recovered interrupted chain publication at ...` | The original result was recovered; this invocation exits 2 and creates no additional link. Inspect the named record, then continue with `--since` if eligible |
+| `conflicts with the pending record`, `head changed outside the pending publication`, or an invalid intent | Preserve the warrant, pending intent, head and records for investigation. Restore only a verified original copy; do not discard the journal or overwrite evidence to force progress |
+
+The lock file remains after successful commands; its presence does not mean a
+writer is active. Recovery requires the original output location and supporting
+local filesystem operations. These guarantees are not a distributed lock or a
+universal power-loss guarantee.
+
 ### Verifying a chain
 
 `warrant chain verify` exits 0 **with findings**, because findings are a result.

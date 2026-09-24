@@ -5,6 +5,9 @@ the founder's explicit handoff that Claude is inactive. The September 17
 integration is preserved; this work builds on the subsequent installed-package
 repair at `d981fdc`, not on the old dirty shared checkout.
 
+> Follow-up: local chain-publication repair R4 is recorded in
+> [PHASE-14.md](PHASE-14.md). The results below remain the Phase 13 checkpoint.
+
 ## Question and answer
 
 Can the two reproduced customer-path defects be repaired without replacing the

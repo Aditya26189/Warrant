@@ -423,7 +423,18 @@ recalculation of drift or an extension of the sequential guarantee.
 addendum of 2026-09-17 a seal over the whole record. Both are checksums, not
 signatures.
 
-`controlplane/intake/chain.py` (`feed`), `chain_verify.py`.
+**Local publication (DECISIONS 206).** The command holds one OS lock for the
+canonical warrant path while checking the parent, publishing the complete sealed
+record and advancing the head. A competing command exits with bad input and can
+retry after the writer exits. A retained pending intent lets the next invocation
+finish an interrupted write with exactly the original prepared evidence. That
+recovery exits explicitly before any further link; continue by naming the
+recovered record with `--since`. Conflicting retained data is preserved and
+refused. This repairs a local publication race, without changing the statistic
+or extending it to distributed writers. Keep the persistent lock name and every
+record; neither locking nor checksums defend against deliberate history removal.
+
+`controlplane/intake/chain.py` (`feed`), `chain_verify.py`, `chain_publication.py`.
 
 ## 17. Label error: exact ladders, and a second reviewer
 

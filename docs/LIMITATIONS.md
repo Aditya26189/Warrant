@@ -269,6 +269,19 @@ negatives in every recheck -- a real chain that exhausts its horizon early is no
 live through the last window. `plan` quotes no
 detection figure, and should not, for settings outside this grid.
 
+**Publication scope (DECISIONS 206).** Chained CLI invocations now serialize
+head validation and publication under a lock keyed by the canonical warrant path.
+A retained intent recovers the original sealed record after process interruption;
+conflicting data fails closed. This coordinates cooperating local processes on
+filesystems with the required lock, hard-link and atomic-replace semantics. It is
+not distributed consensus, protection against removing the sidecars, a lock
+shared by separately copied warrants, or proof of durability through power loss.
+A process killed while preparing a file can leave an unreferenced temporary file;
+that file is not an accepted chain link. Unsupported operations fail explicitly.
+The unchained recheck still does not consult a revoked chain head. Local process
+and installed-wheel test evidence, plus untested platforms, are recorded in
+[PHASE-14.md](../reports/PHASE-14.md).
+
 ### 3.6 A warrant is exact about its labels and cannot see whether they are right
 
 Every certificate is a statement about the `label` column it was given. Since
