@@ -11443,3 +11443,9 @@ Primary API references checked while designing this local protocol:
 [POSIX link](https://pubs.opengroup.org/onlinepubs/9799919799/functions/link.html).
 These specify primitives, not a validation of this application protocol; the
 failure-injection and concurrent-process tests provide that bounded evidence.
+
+206 reference-access note: the linked Open Group pages were not retrievable
+in this session. The no-replacement behavior was cross-checked against the
+[Linux link(2) manual](https://man7.org/linux/man-pages/man2/link.2.html)
+and is exercised directly by the filesystem tests. The Python references
+above were retrieved.

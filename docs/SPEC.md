@@ -43,6 +43,15 @@ checkout therefore reports unknown Git commit and dirty state; the consumer's
 revision is not the package's source identity. Retained build manifests can bind
 the wheel digest to its source commit separately.
 
+Artifact preparation (DECISIONS 206): `prepare_json_artifact` stamps provenance
+and optionally seals the JSON-normalized document once. The ordinary writer
+uses this same preparation; recoverable publication can retain that prepared
+record without changing its timestamp, configuration, seal or decision. Atomic
+local publication uses a complete same-directory temporary file and a hard link
+for new names, never replacement; mutable pointer replacement is a separate
+operation. Unsupported filesystem operations raise instead of falling back to
+a partial or replacing evidence write.
+
 ## 1. Core data model
 
 Frozen dataclasses. Build these first; everything else consumes them.

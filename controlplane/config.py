@@ -43,6 +43,7 @@ __all__ = [
     "ConfigError",
     "load_config",
     "load_customer_config",
+    "prepare_json_artifact",
     "provenance",
     "project_root",
     "read_json_artifact",
@@ -1304,6 +1305,24 @@ def _json_default(value: Any) -> Any:
     )
 
 
+def prepare_json_artifact(
+    payload: dict[str, Any],
+    config: Optional[Config] = None,
+    *,
+    seal_with: Optional[Callable[[dict[str, Any]], dict[str, Any]]] = None,
+) -> dict[str, Any]:
+    """Prepare provenance and an optional seal once, before publication starts.
+
+    Decision 206: interrupted chain publication must replay the original record,
+    not recompute its timestamp, provenance or decision. Sharing this preparation
+    with the ordinary writer keeps the serialized artifact contract unchanged.
+    """
+    document = {"provenance": provenance(config), **payload}
+    if seal_with is not None:
+        document = seal_with(json.loads(json.dumps(document, default=_json_default)))
+    return document
+
+
 def write_json_artifact(
     path: str | os.PathLike,
     payload: dict[str, Any],
@@ -1337,9 +1356,7 @@ def write_json_artifact(
     """
     out = Path(path)
     out.parent.mkdir(parents=True, exist_ok=True)
-    document = {"provenance": provenance(config), **payload}
-    if seal_with is not None:
-        document = seal_with(json.loads(json.dumps(document, default=_json_default)))
+    document = prepare_json_artifact(payload, config, seal_with=seal_with)
     with out.open("x" if exclusive else "w", encoding="utf-8") as fh:
         json.dump(document, fh, indent=2, sort_keys=False, default=_json_default)
         fh.write("\n")
