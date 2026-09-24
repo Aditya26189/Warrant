@@ -178,6 +178,30 @@ def test_installed_refusal_is_a_result_with_opt_in_failure(installed, tmp_path):
     installed.run(tmp_path, *args, "--require-warrant", expected=1)
 
 
+def test_installed_grouped_review_withholds_population_intervals(installed, tmp_path):
+    """The shipped wheel must preserve group metadata through both CLI paths."""
+    source = _scores(tmp_path, second=True)
+    lines = source.read_text(encoding="utf-8").splitlines()
+    grouped = [lines[0] + ",group"] + [
+        row + f",g{i // 2}" for i, row in enumerate(lines[1:])
+    ]
+    source.write_bytes(("\n".join(grouped) + "\n").encode())
+    warrant, recheck = tmp_path / "grouped-warrant.json", tmp_path / "grouped-recheck.json"
+    certified = installed.run(tmp_path, "certify", "-i", str(source), "-b", ".05", "-o", str(warrant))
+    checked = installed.run(tmp_path, "recheck", "-w", str(warrant), "-i", str(source), "-o", str(recheck))
+    for record, result in ((warrant, certified), (recheck, checked)):
+        review = _json(record)["labels"]["second_review"]
+        assert review["n_pairs"] == 600
+        assert review["kappa"]["n_groups"] == 300
+        assert review["kappa"]["kind"] == "EXACT"
+        assert review["kappa"]["ci_low"] is None and review["kappa"]["ci_high"] is None
+        assert review["kappa"]["interval_computed"] is False
+        assert "not a population estimate" in review["kappa"]["scope"]
+        assert review["disputes"]["computed"] is False
+        assert "300 reviewed groups" in result.stdout
+        assert "population interval withheld" in result.stdout
+
+
 def test_installed_explicit_config_is_used(installed, tmp_path):
     raw = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
     raw["seed"] += 1

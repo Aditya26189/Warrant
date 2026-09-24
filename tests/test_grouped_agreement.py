@@ -172,7 +172,11 @@ def test_grouped_intake_preserves_verdict_and_whole_group_sensitivity(config, tm
     review = result.second_review.to_payload()
     assert review["n_pairs"] == (5 if constant else 11)
     assert review["kappa"]["n_groups"] == (2 if constant else 4)
-    assert sum(review["table"].values()) == review["n_pairs"]
+    assert review["table"] == {
+        "label=0,label_2=0": 5, "label=0,label_2=1": 0,
+        "label=1,label_2=0": 0 if constant else 1,
+        "label=1,label_2=1": 0 if constant else 5,
+    }
     assert review["kappa"]["ci_low"] is None and review["kappa"]["ci_high"] is None
     assert review["kappa"]["interval_computed"] is False
     assert review["kappa"]["kind"] == "EXACT"

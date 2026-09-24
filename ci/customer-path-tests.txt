@@ -28,8 +28,10 @@ tests/test_dual_path.py
 tests/test_economics.py
 tests/test_external.py
 tests/test_external_figures.py
+tests/test_grouped_agreement.py
 tests/test_intake.py
 tests/test_intake_ambiguity.py
+tests/test_label_sensitivity.py
 tests/test_matrix.py
 tests/test_model.py
 tests/test_model_version.py
@@ -38,6 +40,7 @@ tests/test_package_install.py
 tests/test_packaging.py
 tests/test_recheck_chain.py
 tests/test_recheck_groups.py
+tests/test_recheck_label_sensitivity.py
 tests/test_redact.py
 tests/test_release_cli.py
 tests/test_release_contract.py
