@@ -272,8 +272,9 @@ labels (above, under `label_2`).
 
 Two rules the output always follows:
 
-- **No rate without an interval.** A point estimate on its own is not a
-  measurement, and none is printed.
+- **Population rates carry intervals.** Grouped reviewer agreement instead
+  describes the observed pairs only and explicitly withholds its unsupported
+  population interval; it is not presented as population evidence.
 - **Recall and precision travel together.** Neither is quotable alone, and lift
   is never shown without the flag rate it was computed at.
 

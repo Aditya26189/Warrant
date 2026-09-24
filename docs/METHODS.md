@@ -412,6 +412,13 @@ P( M_t >= N / alpha for some t <= N ) <= alpha
   quarter noticeably more often than weekly ones ([LIMITATIONS.md](LIMITATIONS.md)
   §3.5, `DECISIONS.md` 196).
 
+**Revocation precedence (DECISIONS 205).** A separate drift revocation stands
+regardless of whether the FPR result is a breach, an inconclusive warning, or
+untested. The aggregate status cannot hide it. Continuation also reads the drift
+finding on an old record whose aggregate status was inconsistent. Verification
+flags that inconsistency and any successor; this is a consistency check, not a
+recalculation of drift or an extension of the sequential guarantee.
+
 **Integrity.** Each record carries a digest of its chain state, and since the
 addendum of 2026-09-17 a seal over the whole record. Both are checksums, not
 signatures.
