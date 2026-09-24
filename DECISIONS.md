@@ -11366,3 +11366,32 @@ The separately retained build manifest binds the candidate wheel digest to its
 archived source revision. This fix does not authenticate packages or infer a
 source revision from a version string. No measured statistics, settings or
 status decisions change; provenance fields on affected installed records do.
+
+
+## 205 - A separate drift revocation cannot be hidden by an FPR warning (2026-09-24)
+
+Audit R3 reproduced an aggregate STALE result with drift REVOKED: the observed
+FPR exceeded the budget but its lower bound did not establish a breach. An early
+return suppressed the independent drift verdict, and a later stable chain link
+could continue that warrant. Decision 194 covered simultaneous established FPR
+and drift breaches, but missed this weaker-warning case.
+
+Apply revocation precedence before missing or inconclusive FPR evidence. A
+standalone established FPR breach still revokes; a drift REVOKED finding also
+revokes regardless of the FPR result. In a chain, only the sequential statistic
+can revoke for accumulated FPR evidence, while drift revocation stands as a
+separate decision outside that statistic's guarantee. Neither warning nor absent
+FPR evidence proves that the false-positive promise holds.
+
+For retained records, a drift block whose verdict is REVOKED bars continuation
+even if an older writer stored STALE or VALID at the top level. Verification
+reports the inconsistent aggregate status, and any successor after that drift
+revocation, without rewriting the old record. This checks internal consistency;
+it does not recompute the PSI or establish the record's authenticity.
+
+Acceptance: the audit's synthetic fixture (same reference/current sample size),
+all FPR evidence states paired with drift revocation, weaker non-revoking cases,
+new CLI chains, old sealed inconsistent parents and their successors. Preserve
+smoothing-only drift warnings, existing fork/head rules and scientific artifacts.
+No statistical formula, drift threshold, null calibration, seal policy or
+concurrency protocol changes here; audit R4, R6 and R8 remain separate work.
