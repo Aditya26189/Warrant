@@ -11395,3 +11395,51 @@ new CLI chains, old sealed inconsistent parents and their successors. Preserve
 smoothing-only drift warnings, existing fork/head rules and scientific artifacts.
 No statistical formula, drift threshold, null calibration, seal policy or
 concurrency protocol changes here; audit R4, R6 and R8 remain separate work.
+
+
+## 206 - Serialize local chain publication with recoverable intent (2026-09-24)
+
+Audit R4 ran two first-link commands concurrently: both read an empty head,
+accepted independent starts, wrote different sequence-one records and returned
+success. Exclusive output creation protects a filename, not the shared parent
+or head. The same race applies to two successors of one parent.
+
+On the customer CLI, hold one OS advisory lock for the canonical warrant path
+from head/parent validation through publication and head advancement. Contention
+fails promptly as bad input with a retry message; there is no silent wait,
+implicit fork or stale-lock deletion. The persistent lock file is never removed
+by normal operation; the OS releases the lock when its process exits.
+
+Before publication, atomically persist an intent containing the original sealed
+record, output destination, warrant identity and prior head. Publish a complete
+record with an atomic no-replacement operation, then atomically replace the
+head, then remove the intent. A later command under the same lock can finish
+that exact publication after interruption; it cannot recalculate a more favorable
+record. After recovery it exits with the recovered record's path, requiring an
+explicit continuation attempt. Conflicting output bytes, changed warrant/head,
+or malformed intent fail closed and preserve evidence. Existing outputs are
+never overwritten. Prepare provenance once before any temporary publication file
+is created, using the same serialization as other artifacts.
+
+The scope is cooperative processes on one supported local filesystem. Copies of
+a warrant, omitted records, deliberately deleted sidecars and rewritten hashes
+remain outside the guarantee. Network filesystem lock semantics, distributed
+consensus and universal sudden-power-loss durability are not claimed. Use
+stdlib nonblocking msvcrt byte locking on Windows and flock on POSIX; publish
+new names with hard links from fully written same-directory temporary files,
+and replace only mutable head pointers with os.replace. Unsupported filesystem
+operations fail closed, not by falling back to a racy write.
+
+Acceptance: synchronized real processes racing to start and continue a chain;
+exactly one un-forked successor; explicit forks still disclosed; a process
+exiting at each intent/record/head boundary; idempotent recovery; no replacement
+of preexisting records; changed or corrupt recovery inputs refused; actual
+installed CLI compatibility. No statistical method or frozen result changes.
+
+Primary API references checked while designing this local protocol:
+[Python msvcrt](https://docs.python.org/3/library/msvcrt.html),
+[Python fcntl](https://docs.python.org/3/library/fcntl.html),
+[Python filesystem APIs](https://docs.python.org/3.10/library/os.html),
+[POSIX link](https://pubs.opengroup.org/onlinepubs/9799919799/functions/link.html).
+These specify primitives, not a validation of this application protocol; the
+failure-injection and concurrent-process tests provide that bounded evidence.
