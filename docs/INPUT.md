@@ -92,8 +92,9 @@ It is **measured beside the warrant and changes nothing in it.** `label` is what
 certifies; the status, threshold, bound and every rate are identical with or
 without `label_2`, whatever it says. What you get is:
 
-- **kappa** between the two reviewers over the double-labelled items, with a 95%
-  interval and the number of pairs it rests on;
+- **kappa** between the two reviewers over the double-labelled items, with the
+  number of pairs it rests on; ungrouped files retain the paired-bootstrap
+  interval, while grouped files carry only descriptive agreement (below);
 - how many of those pairs sit in each class, and a warning if either class has
   none -- double-label both, or disagreement about that class goes unmeasured;
 - at the certified threshold, how many double-labelled **flagged positives** the
@@ -109,10 +110,19 @@ A disagreement is not an error, and an agreement is not a correct label. Warrant
 cannot see whether your reviewers were blind to the score, or how you chose the
 items to double-label; the record says so.
 
-**On a grouped file** the disputed counts are not computed, and kappa's interval
-still resamples item pairs as though they were independent. When items in a group
-tend to agree with each other that interval is too narrow. A fix is
-pre-registered and not yet merged ([LIMITATIONS.md](LIMITATIONS.md) §3.6).
+**On a grouped file** the record keeps the observed pair table, raw agreement
+and descriptive sample kappa. These describe the reviewed pairs, not population
+agreement or label correctness. Population interval endpoints are null,
+`interval_computed` is false, and `interval_reason` explains why: resampling
+related pairs as independent is unsupported (`DECISIONS.md` 201). The record
+names both `n_pairs` and kappa's `n_groups`, counting only groups containing a
+second review. A group with no second review adds no reviewed unit. Undefined
+kappa remains null with its own reason, separately from the withheld interval.
+
+Second-review disputed counts and their whole-file extrapolation remain
+uncomputed for grouped files. Primary-label sensitivity still counts whole-group
+relabellings where every group carries one label; that calculation is unchanged.
+See [LIMITATIONS.md](LIMITATIONS.md) section 3.6.
 
 A `label_2` column that is blank on every row is rejected: that is an export
 mistake, not a second review.

@@ -367,6 +367,7 @@ def recheck_items(
             labels, items.second_labels, scores,
             threshold=threshold, k=k_now, n=int(negatives.size), budget=budget,
             alpha=alpha, bound_holds=bound_holds, grouped=grouped,
+            groups=groups,
             seed=config.seed, resamples=config.validation.bootstrap_samples,
             ci=config.validation.ci,
         )

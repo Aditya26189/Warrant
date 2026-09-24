@@ -298,10 +298,19 @@ lenient-incorrect answers.
 On the customer path, an optional `label_2` column measures agreement beside the
 warrant and changes nothing in it (`docs/INPUT.md`). Recall and precision
 intervals are still silent about label error, and a chained recheck carries no
-sensitivity. **On a grouped file, kappa's interval resamples item pairs as though
-they were independent**, so it is too narrow when items in a group agree with
-each other; 400 rows made of four repeated groups report the same interval as 400
-independent rows. A fix is pre-registered by Codex and not merged on this line.
+sensitivity. **On grouped files, the population agreement interval is withheld**
+(`DECISIONS.md` 201): independent-pair resampling cannot account for dependence
+inside a group, and no validated grouped agreement interval is implemented.
+Observed pairs retain their descriptive kappa, raw agreement and contingency
+table, with reviewed-pair and reviewed-group counts. These are descriptions of
+that reviewed subset, not evidence of population agreement or label correctness.
+Group counts exclude groups with no second review. Null kappa when both
+reviewers use one category is distinct from a withheld confidence interval.
+Ungrouped paired-bootstrap intervals are unchanged. Neither pathway detects
+shared reviewer mistakes or establishes that review selection was representative.
+This repair does not change recall/precision intervals or claim to validate
+other grouped estimators; their separate audit findings remain open in
+`reports/PROJECT-REVIEW-2026-09-23.md`.
 
 ### 3.7 Most records the customer CLI writes can be edited without detection
 

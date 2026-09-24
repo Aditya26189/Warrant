@@ -380,7 +380,12 @@ Three of the four are free. The pitch line falls out:
 agreement and pair/group counts, with null population interval endpoints and
 an explicit reason. This is exact description of those observed pairs, not an
 estimate of population agreement or label correctness. Ungrouped input keeps
-the existing paired bootstrap.
+the existing paired bootstrap. Both customer paths pass actual group IDs aligned
+with all input rows, rejecting absent, inconsistent or blank group metadata.
+Their JSON marks grouped kappa as EXACT (description of observed pairs only),
+with `interval_computed: false`, `interval_reason` and `n_groups`; `n` remains
+the number of reviewed pairs. Grouped second-review disputes remain uncomputed.
+Verdicts, thresholds, FPR bounds and primary-label sensitivity are unchanged.
 
 **Blinding.** Stratum A reviewers see items the system flagged; stratum B reviewers see items it didn't. If flag status, score, stratum or ordering is visible, the two strata get systematically different label distributions and the importance-weighted estimate is biased *in the direction that flatters us*. Interleave both strata into **one blinded queue with identical UI**. Nearly free, and it is the difference between a warrant and a self-report.
 

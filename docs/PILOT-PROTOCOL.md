@@ -21,7 +21,7 @@ cost.** That is a hypothesis. The code is a fact.
 | A local CLI certifies a detector from a customer's scored file, or refuses, and writes a JSON record | `docs/INPUT.md`, `controlplane/intake/` |
 | Certification needs at least 59 clean negative units for a 5% budget, 299 for 1% | `docs/INPUT.md`, `min_n_for` |
 | A refusal has no override path anywhere in the code | invariant 3, `CLAUDE.md` |
-| Every rate on a `certify` record carries an interval and names its `n`. A release evaluation uses a different, simultaneous family of intervals, and the two verdicts are not interchangeable. On grouped files, the interval on agreement between reviewers does not yet account for grouping (a fix is pre-registered and not merged) | invariant 4, `docs/RELEASE.md` |
+| Every rate on a `certify` record carries an interval and names its `n`. A release evaluation uses a different, simultaneous family of intervals, and the two verdicts are not interchangeable. On grouped files, reviewer agreement describes the observed pairs only: its population interval is withheld, with a reason and reviewed-pair/group counts (DECISIONS 201) | invariant 4, `docs/RELEASE.md` |
 | A year of weekly rechecks can be run as one chained test, in which the chance that its **sequential false-positive statistic** falsely revokes a detector keeping its promise is bounded by alpha, under that statistic's assumptions. A revocation because the score distribution moved is a separate check, outside that bound | `DECISIONS.md` 187, 193, 194 |
 | Sizing a recheck to catch a 1.5x breach of a 5% budget at power 0.80 needs 628 clean negatives | `DECISIONS.md` 183 |
 | A VALID certificate on an ungrouped file, or on a grouped file whose groups each carry one label, states how many mislabelled items it tolerates. Not every certificate reaches a finite figure: a ladder can say no number of errors in the pool falls below a level. On this project's own certificates, 2 to 8 flagged-clean errors take one below 0.80 | `DECISIONS.md` 197, 199, claim table |
@@ -134,10 +134,12 @@ input accepted sight unseen.
   (invariant 7).
 - **About 10% of both strata are double-labelled** by a second reviewer, supplied
   as `label_2`. On an ungrouped file the record then carries Cohen's kappa with
-  its interval and the disputed items. On a grouped file, disputes are not
-  computed, and kappa's interval is still a bootstrap over item pairs, which
-  ignores that items in one group are correlated; a change to report grouped
-  agreement without an interval is pre-registered by Codex and not yet merged.
+  its interval and the disputed items. On a grouped file, disputes remain
+  uncomputed and kappa is descriptive of observed pairs only; its population
+  interval is withheld with a reason and the counts of reviewed pairs and groups.
+  Groups with no second review contribute no reviewed unit (DECISIONS 201).
+  Primary-label sensitivity in whole groups remains available when each group
+  carries one label. Agreement never establishes that either reviewer is right.
   `release` records carry no label-quality
   evidence at all (`docs/EVIDENCE-HANDOFF.md`).
 - **Both blinded labels are preserved before anything is resolved.** The first

@@ -311,6 +311,7 @@ def certify_items(
             labels, items.second_labels, scores,
             threshold=threshold, k=certification.k, n=certification.n_eff,
             budget=budget, alpha=alpha, certified=certified, grouped=grouped,
+            groups=groups,
             seed=config.seed, resamples=config.validation.bootstrap_samples,
             ci=config.validation.ci,
         )
