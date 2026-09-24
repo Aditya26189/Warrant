@@ -63,6 +63,7 @@ __all__ = [
     "canonical_sha256",
     "continue_chain",
     "feed",
+    "head_document",
     "head_path",
     "read_head",
     "record_has_drift_revocation",
@@ -421,9 +422,9 @@ def _refuse_revoked_head(head_status: Optional[str]) -> None:
         )
 
 
-def write_head(warrant_path: Any, record_sha256: str, sequence: int, *,
-               status: Optional[str] = None) -> None:
-    """Point the sidecar at the record just written, with that record's status."""
+def head_document(record_sha256: str, sequence: int, *,
+                  status: Optional[str] = None) -> dict[str, Any]:
+    """Use one head schema for ordinary writes and interrupted-publication recovery."""
     note = (
         "The digest and status of this warrant's latest chained recheck record. A "
         "recheck --since any other record, or a new chain while this exists, is "
@@ -433,7 +434,16 @@ def write_head(warrant_path: Any, record_sha256: str, sequence: int, *,
     payload = {"head_record_sha256": record_sha256, "sequence": sequence, "note": note}
     if status is not None:
         payload["status"] = status
-    head_path(warrant_path).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    return payload
+
+
+def write_head(warrant_path: Any, record_sha256: str, sequence: int, *,
+               status: Optional[str] = None) -> None:
+    """Atomically replace the mutable pointer; callers serialize the whole transaction."""
+    from ._atomic_files import write_json_atomic
+
+    write_json_atomic(head_path(warrant_path),
+                      head_document(record_sha256, sequence, status=status), replace=True)
 
 
 def _head_check(head: Optional[str], continuing_from: Optional[str], fork: bool) -> tuple[str, Optional[str]]:

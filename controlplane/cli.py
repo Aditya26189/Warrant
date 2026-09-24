@@ -578,80 +578,40 @@ def _recheck(args: argparse.Namespace) -> int:
         print(f"warrant: {exc}", file=sys.stderr)
         return EXIT_BAD_INPUT
 
-    # A chain of rechecks (DECISIONS 193). Everything that can refuse is
-    # checked before anything is written, so a refused link leaves no record.
+    # A chain's parent/head checks and publication share one OS lock (206).
+    # Ordinary rechecks retain their existing independent-file behavior.
     fed = None
+    source = Path(args.input)
     if args.horizon_labels is not None or args.since is not None:
-        from .intake.chain import (
-            ChainError, continue_chain, feed, read_head, read_head_status, start_chain,
-        )
-        from .intake.recheck import chain_units
+        from .intake.chain import ChainError
+        from .intake.chain_publication import publish_chained_recheck
 
-        alpha = record.get("alpha", 1.0 - config.validation.ci)
         try:
-            if args.since is not None:
-                since_path = Path(args.since)
-                if not since_path.is_file():
-                    raise ChainError(f"no recheck record at {since_path}")
-                state = continue_chain(
-                    json.loads(since_path.read_text(encoding="utf-8")), record, alpha=alpha,
-                    head=read_head(record_path), fork=args.fork,
-                    head_status=read_head_status(record_path),
-                )
-            else:
-                state = start_chain(
-                    record, horizon_units=args.horizon_labels, alpha=alpha,
-                    head=read_head(record_path), fork=args.fork,
-                    head_status=read_head_status(record_path),
-                )
-            unit_ids, fired = chain_units(items, threshold)
-            fed = feed(state, unit_ids, fired)
-        except (ChainError, ValueError) as exc:
+            result, fed, out = publish_chained_recheck(
+                config, items, record, record_path, result,
+                horizon_units=args.horizon_labels,
+                since=Path(args.since) if args.since is not None else None,
+                fork=args.fork, output=Path(args.out) if args.out else None,
+                input_path=source,
+            )
+        except FileExistsError as exc:
+            print(
+                f"warrant: {exc}. A chained recheck never writes over a record: "
+                "each link is evidence the next depends on. Choose another --out.",
+                file=sys.stderr,
+            )
+            return EXIT_BAD_INPUT
+        except (ChainError, ValueError, OSError) as exc:
             print(f"warrant: {exc}", file=sys.stderr)
             return EXIT_BAD_INPUT
-        from .intake.recheck import apply_chain, require_chain_replaced
-
-        result = apply_chain(result, fed)
-        require_chain_replaced(result)
-
-    payload = result.to_payload()
-    payload["chain"] = fed.to_payload() if fed is not None else None
-
-    if fed is None and args.fork:
-        print("warrant: --fork only applies to a chained recheck (--since or "
-              "--horizon-labels).", file=sys.stderr)
-        return EXIT_BAD_INPUT
-
-    source = Path(args.input)
-    if fed is None:
-        default = source.with_suffix(source.suffix + ".recheck.json")
     else:
-        # A chained record is named by its link, so exporting to one filename
-        # every week cannot overwrite last week's link (DECISIONS 194, C).
-        default = source.with_suffix(source.suffix + f".recheck-{fed.state.sequence:04d}.json")
-    out = Path(args.out) if args.out else default
-    try:
-        # Exclusive create for a chained record: the refusal and the write are one
-        # step, with no window between a check and a truncating open (194).
-        from .intake.chain import seal_record
-
-        write_json_artifact(out, payload, config, exclusive=fed is not None,
-                            seal_with=seal_record if fed is not None else None)
-    except FileExistsError:
-        print(
-            f"warrant: {out} already exists. A chained recheck never writes over a "
-            "record: each link is evidence the next depends on. Choose another --out.",
-            file=sys.stderr,
-        )
-        return EXIT_BAD_INPUT
-    if fed is not None:
-        # The head moves to the record as written, provenance included, so the
-        # next --since is checked against exactly these bytes' content (194).
-        from .intake.chain import canonical_sha256, write_head
-
-        written = json.loads(out.read_text(encoding="utf-8"))
-        write_head(record_path, canonical_sha256(written), fed.state.sequence,
-                   status=written.get("status"))
+        if args.fork:
+            print("warrant: --fork only applies to a chained recheck (--since or "
+                  "--horizon-labels).", file=sys.stderr)
+            return EXIT_BAD_INPUT
+        out = Path(args.out) if args.out else source.with_suffix(source.suffix + ".recheck.json")
+        payload = {**result.to_payload(), "chain": None}
+        write_json_artifact(out, payload, config)
     if not args.quiet:
         print(render_recheck(result, chain=fed))
     print(f"  record written to {out}")

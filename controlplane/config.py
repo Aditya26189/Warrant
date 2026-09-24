@@ -8,10 +8,10 @@ here rather than by discipline:
   frozen block and :mod:`controlplane.economics.sizing` takes it as its only source.
   There is no second place to read a flag rate or a base rate from, so two
   scenarios cannot be mixed into one table.
-* **Invariant 8 — every number in a document is computed by code.** Nothing is
-  written to ``results/`` except through :func:`write_json_artifact`, which
-  attaches the config hash, seed, git commit and dirty flag that make a number
-  traceable to the run that produced it.
+* **Invariant 8 — every number in a document is computed by code.** Artifact
+  preparation uses :func:`prepare_json_artifact`, shared by the ordinary writer
+  and recoverable chain publication. It attaches the config hash, seed, git
+  commit and dirty flag that make a number traceable to its originating run.
 
 The loader is strict on purpose. An unknown key is an error, not a warning: a
 mistyped knob that is silently dropped produces a run whose settings differ from
@@ -1333,10 +1333,9 @@ def write_json_artifact(
 ) -> Path:
     """Write a results artifact with its provenance block attached.
 
-    Every stage writes through here, so no artifact can exist without the config
-    hash, seed, git commit and dirty flag that produced it. That is
-    ``CLAUDE.md`` invariant 8 made structural: a number in a document is
-    traceable because there is no other way to have written it.
+    Uses the same preparation as recoverable chain publication to attach the
+    config hash, seed, git commit and dirty flag. This records the origin needed
+    for ``CLAUDE.md`` invariant 8 without refreshing provenance during recovery.
 
     Args:
         path: Destination JSON path.

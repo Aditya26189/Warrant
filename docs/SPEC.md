@@ -52,6 +52,20 @@ for new names, never replacement; mutable pointer replacement is a separate
 operation. Unsupported filesystem operations raise instead of falling back to
 a partial or replacing evidence write.
 
+Chained rechecks hold a nonblocking OS lock beside the canonical warrant path
+across head/parent validation, record publication and head advancement. A sealed
+pending intent retains the complete prepared record, original head snapshot and
+absolute output path. After interruption, the next chained invocation under that
+lock finishes only that retained publication. It then exits 2, naming the
+recovered path and requiring an explicit eligible --since for further work.
+Changed warrant/head data, malformed pending data or conflicting output bytes
+fail closed without replacing the evidence. Existing records and chain schemas
+remain readable; explicit forks keep their existing declarations and restrictions.
+The persistent .chain-lock name must not be deleted; .chain-pending is removed
+only after successful completion. These guarantees cover cooperating local
+processes on a filesystem supporting the required lock/link/replace operations,
+not distributed writers or universal power-loss durability (DECISIONS 206).
+
 ## 1. Core data model
 
 Frozen dataclasses. Build these first; everything else consumes them.
