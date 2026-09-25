@@ -539,7 +539,7 @@ sequenceDiagram
     Note over W: the statistic reaching N / alpha revokes,<br/>and no --since, --fork or restart<br/>can continue a revoked warrant
 
     U->>W: chain verify (all records)
-    W-->>U: findings: digest, malformed, fork,<br/>continued_after_end, missing_link …<br/>unsealed records listed, not flagged
+    W-->>U: findings: digest, malformed, fork,<br/>continued_after_end, missing_link …<br/>unsealed records: UNVERIFIED, not clean
 ```
 
 Two limits travel with every chain. The alpha bound covers **the chain's

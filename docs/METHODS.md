@@ -421,7 +421,10 @@ recalculation of drift or an extension of the sequential guarantee.
 
 **Integrity.** Each record carries a digest of its chain state, and since the
 addendum of 2026-09-17 a seal over the whole record. Both are checksums, not
-signatures.
+signatures. A missing record seal is unknown integrity, not proof of legacy age
+(DECISIONS 207). Verification retains structural inspection while requiring
+complete seals for `clean` and `--require-clean`. Continuation also requires a
+reproducing seal, even with `--fork`; missing metadata is never silently repaired.
 
 **Local publication (DECISIONS 206).** The command holds one OS lock for the
 canonical warrant path while checking the parent, publishing the complete sealed

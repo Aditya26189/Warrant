@@ -338,8 +338,11 @@ Two limits apply even to the sealed records:
 - **A seal is a checksum, not a signature.** Anyone who can write the records can
   recompute every seal consistently. It catches an edit made without recomputing,
   not a forger.
-- **A chained record written before sealing is listed as `unsealed`**, not flagged.
-  Its chain state was checked; its status, bounds and labels were not.
+- **A missing seal is unknown integrity**, not an established legacy creation
+  date. It can mean legacy data or a removed seal. Such a record remains
+  inspectable but cannot pass `clean` or `--require-clean`, and cannot be
+  continued, including with `--fork` (DECISIONS 207). Available structural checks
+  are reported separately; they do not recover full-record assurance.
 
 What would close it: a seal and a verifier for the certify warrant, which every
 later record depends on. A signature would need a key, and a key is custody this

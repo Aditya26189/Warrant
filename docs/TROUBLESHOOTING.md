@@ -116,7 +116,7 @@ universal power-loss guarantee.
 ### Verifying a chain
 
 `warrant chain verify` exits 0 **with findings**, because findings are a result.
-Use `--require-clean` to make any finding exit 1.
+Use `--require-clean` to make findings or any missing record seal exit 1.
 
 | Finding | It means |
 |---|---|
@@ -128,8 +128,20 @@ Use `--require-clean` to make any finding exit 1.
 | `sequence`, `extension` | a link is misnumbered, or does not extend its predecessor |
 | `mixed_warrants`, `duplicate` | records from several warrants, or one record under several paths |
 
-**`unsealed` is not a finding.** Those records were written before records were
-sealed: their chain state was checked, their status, bounds and labels were not.
+**`unsealed` means unknown integrity.** Absence cannot establish the record's
+age or distinguish legacy data from a removed seal. Available structural checks
+are still reported, but `clean` is false and `--require-clean` exits 1. Inspection
+without that flag still exits 0 with the explicit result. The separate
+`structurally_clean` field never substitutes for full record integrity.
+
+`integrity_status` is VERIFIED when the record/chain checksum checks reproduce,
+UNVERIFIED when seal evidence is missing, and FAILED when an integrity or
+malformed-data check fails. VERIFIED does not authenticate an author or recompute
+the statistics. Other structural findings still prevent `clean`.
+
+An unsealed `--since` record cannot be continued, even with `--fork`. Inspect it,
+recover a verified retained original if available, or re-certify and begin a
+new chain. Do not add a new seal and call that proof of the original evidence.
 
 ---
 

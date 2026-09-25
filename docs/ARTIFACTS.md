@@ -206,7 +206,7 @@ field, record by record; this is the map.
 | `<file>.recheck.json` | `warrant recheck` | `status`, `reason`, `prior_warrant`, `now`, `detection`, `drift`, `labels`; `chain` is null |
 | `<file>.recheck-NNNN.json` | `warrant recheck --horizon-labels` or `--since` | as above, with `chain` holding the chain state and its `state_sha256`, and **`record_sha256` sealing the whole record** |
 | `<warrant>.chain-head` | the same | `head_record_sha256`, `sequence`, and the latest record's `status` |
-| `chain-verification.json` | `warrant chain verify` | `clean`, `findings[]` (each with `kind`, `records`, `detail`), `unsealed`, `cannot_check` |
+| `chain-verification.json` | `warrant chain verify` | `clean`, `structurally_clean`, `integrity_status`, `integrity_meaning`, `findings[]` (each with `kind`, `records`, `detail`), `unsealed`, `cannot_check` |
 | `warrant-plan.json` | `warrant plan` | `feasible`, `negatives_per_recheck`, `items_per_recheck`, `detection_floor`, `power_at_breach`, `false_revocation_per_recheck`, `sizes_by_power`, `cadences`, `declared_inputs`, `refusal_reason` |
 | a release contract, then `<contract>.evaluation.json` | `warrant release register`, then `evaluate` | see [RELEASE.md](RELEASE.md) |
 

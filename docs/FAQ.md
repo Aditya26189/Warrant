@@ -152,7 +152,9 @@ moved; and a monthly cadence misses breaches more often than a weekly one
 **Can someone edit a record and have it still verify?**
 
 A chained recheck record is sealed over every field, and `warrant chain verify`
-rechecks each seal. A release evaluation is sealed and recomputed by
+rechecks each seal. Missing seals produce unknown integrity and cannot satisfy
+`--require-clean`; the record can still be inspected, but cannot be continued.
+A release evaluation is sealed and recomputed by
 `warrant release verify`. **A certify warrant, a frontier record, an unchained
 recheck and a plan have no seal and no verifier.** And a seal is a checksum, not
 a signature: anyone who can write the records can recompute every seal

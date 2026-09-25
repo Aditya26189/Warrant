@@ -4,6 +4,9 @@ Local repair checkpoint, 24 September 2026. Continuation of the founder's
 handoff, on `fix/chain-publication`, based on the completed Phase 13 checkpoint
 `290c5e0`. The shared checkout and earlier worktrees are preserved.
 
+> Follow-up: the missing-seal policy repair R6 is recorded in
+> [PHASE-15.md](PHASE-15.md). The results below remain the Phase 14 checkpoint.
+
 ## Question and answer
 
 Can two concurrent rechecks silently accept different successors of the same
