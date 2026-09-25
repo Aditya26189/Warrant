@@ -353,3 +353,44 @@ with publication.chain_publication(warrant, json.loads(warrant.read_bytes())):
     assert _json(verification)["clean"] is True
     assert not Path(str(warrant) + ".chain-pending").exists()
     assert Path(str(warrant) + ".chain-lock").is_file()
+
+
+def test_installed_clean_gate_rejects_a_removed_seal_without_changing_evidence(installed, tmp_path):
+    """A customer must not get clean assurance by dropping integrity metadata (207)."""
+    scores = _scores(tmp_path)
+    warrant, original = tmp_path / "warrant.json", tmp_path / "original.json"
+    installed.run(tmp_path, "certify", "-i", str(scores), "-b", ".05", "-o", str(warrant), "-q")
+    installed.run(tmp_path, "recheck", "-w", str(warrant), "-i", str(scores),
+                  "--horizon-labels", "10000", "-o", str(original), "-q")
+    verification = tmp_path / "verification.json"
+    installed.run(tmp_path, "chain", "verify", str(original), "--require-clean",
+                  "-o", str(verification), "-q")
+    assert _json(verification)["integrity_status"] == "VERIFIED"
+
+    stripped = tmp_path / "stripped.json"
+    record = _json(original)
+    del record["record_sha256"]
+    record["reason"] = "changed after seal removal"
+    stripped.write_bytes(json.dumps(record).encode())
+    before = stripped.read_bytes()
+    inspected = installed.run(tmp_path, "chain", "verify", str(stripped), "-o", str(verification))
+    assert "UNVERIFIED" in inspected.stdout and "written before" not in inspected.stdout
+    refused = installed.run(tmp_path, "chain", "verify", str(stripped), "--require-clean",
+                            "-o", str(verification), "-q", expected=1)
+    assert "unsealed" in refused.stderr
+    payload = _json(verification)
+    assert payload["clean"] is False and payload["structurally_clean"] is True
+    assert payload["integrity_status"] == "UNVERIFIED"
+    copied = tmp_path / "copied-warrant.json"
+    copied.write_bytes(warrant.read_bytes())
+    fresh = tmp_path / "fresh.csv"
+    fresh.write_bytes(scores.read_bytes().replace(b"\nq", b"\nfresh"))
+    output = tmp_path / "refused-next.json"
+    for extra in ((), ("--fork",)):
+        result = installed.run(tmp_path, "recheck", "-w", str(copied), "-i", str(fresh),
+                               "--since", str(stripped), "-o", str(output), "-q", *extra, expected=2)
+        assert "unsealed" in result.stderr
+        assert not output.exists()
+    assert stripped.read_bytes() == before
+    assert not Path(str(copied) + ".chain-head").exists()
+    assert not Path(str(copied) + ".chain-pending").exists()
