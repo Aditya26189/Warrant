@@ -149,3 +149,12 @@ The repair branch includes the prior packaging and Phase 13 fixes as ancestors.
 Local main remains at `cc1904e`; these repairs have not been merged or pushed.
 The old dirty shared checkout and other agents' historical worktrees remain
 intact. This is a local correctness checkpoint, not a completed release gate.
+
+
+Final inventory collection from clean source
+`56285147305aa1985785ed6e52d98f0b21c3bf62` recorded **1966 collected tests**, up
+from 1933. Commit `66aaef8` contains that generated inventory. The subsequent
+claims, inventory and README-prose batch passed all 21 tests (exit 0), with
+local XML at `.venv/chain-publication-claims.xml`. This collection count is not
+a claim that the entire suite executed. The final source worktree was clean
+at handoff; integration and remote CI remain open.
