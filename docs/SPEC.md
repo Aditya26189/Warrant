@@ -66,6 +66,15 @@ only after successful completion. These guarantees cover cooperating local
 processes on a filesystem supporting the required lock/link/replace operations,
 not distributed writers or universal power-loss durability (DECISIONS 206).
 
+Chain verification assurance (DECISIONS 207): `clean` requires nonempty input,
+reproducing record/chain checksums and no structural findings. Verification also
+reports `structurally_clean` and `integrity_status` (VERIFIED, UNVERIFIED, FAILED).
+An absent record seal is unknown integrity, not evidence of a legacy creation
+date. Read-only inspection remains available and exits 0 with the result;
+`--require-clean` exits 1 on missing seals as well as findings. Continuation
+requires a reproducing seal, without a --fork exception. No record is silently
+resealed. These checksums do not authenticate authors or recompute statistics.
+
 ## 1. Core data model
 
 Frozen dataclasses. Build these first; everything else consumes them.

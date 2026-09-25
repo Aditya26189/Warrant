@@ -37,7 +37,9 @@ so neither needs a check of its own. Records written before 194 carry no
 
 **Exit codes follow the CLI's convention** (194): findings are a result, so the
 command exits 0 with them printed and recorded; ``--require-clean`` exits 1
-when anything is flagged; unreadable input exits 2.
+when anything is flagged or any record is unsealed; unreadable input exits 2.
+An unsealed record remains inspectable, but is never called verified or clean
+and its age is not inferred (207).
 
 **What it cannot check.** The statistics themselves: recomputing them needs the
 labelled files, which records deliberately do not hold. A set a user has pruned
@@ -86,26 +88,51 @@ class ChainVerification:
     records: tuple[str, ...]
     warrants: tuple[str, ...]
     findings: tuple[ChainFinding, ...]
-    #: Records written before sealing. Not findings; their fields outside the chain
-    #: state could not be checked, and the payload says so.
+    #: Records with no seal. Absence does not establish their age or authenticity.
+    #: Their structure remains inspectable, but they cannot satisfy the clean gate.
     unsealed: tuple[str, ...] = ()
 
     @property
+    def structurally_clean(self) -> bool:
+        """Separate available structural checks from missing integrity evidence (207)."""
+        return bool(self.records) and not self.findings
+
+    @property
+    def integrity_status(self) -> str:
+        """Checksum assurance, without inferring a missing seal's origin or age."""
+        if any(f.kind in {"digest", "malformed"} for f in self.findings):
+            return "FAILED"
+        if not self.records or self.unsealed:
+            return "UNVERIFIED"
+        return "VERIFIED"
+
+    @property
     def clean(self) -> bool:
-        return not self.findings
+        """A missing seal must never silently lower the clean gate's assurance (207)."""
+        return self.structurally_clean and self.integrity_status == "VERIFIED"
 
     def to_payload(self) -> dict[str, Any]:
         return {
             "kind": "chain_verification",
             "clean": self.clean,
+            "structurally_clean": self.structurally_clean,
+            "integrity_status": self.integrity_status,
+            "integrity_meaning": (
+                "VERIFIED means record and chain checksums reproduce, not that the "
+                "author is authenticated or the statistics are recomputed. UNVERIFIED "
+                "means required seal evidence is missing; FAILED means an integrity "
+                "or malformed-data check failed. Clean also requires structural checks."
+            ),
             "records": list(self.records),
             "warrant_sha256": list(self.warrants),
             "findings": [finding.to_payload() for finding in self.findings],
             "unsealed": list(self.unsealed),
             "unsealed_meaning": (
-                "Records written before chained records were sealed. Their chain state "
-                "was checked; their status, reason, bounds, drift, labels and provenance "
-                "were not, unless a later record in the set points at them."
+                "Records without a seal; absence cannot establish their age or "
+                "distinguish legacy data from a removed seal. Available chain-state "
+                "checks were performed; their other fields were not verified by a "
+                "record seal. A retained successor's digest can bind a supplied copy, "
+                "but does not establish its origin or satisfy the sealed-history gate."
             ),
             "cannot_check": (
                 "The statistics are not recomputed: that needs the labelled files, "
@@ -136,7 +163,11 @@ def load_records(paths: Sequence[str | Path]) -> dict[str, dict[str, Any]]:
 
 
 def verify_chain_records(records: Mapping[str, Mapping[str, Any]]) -> ChainVerification:
-    """Every check in the module docstring, over the whole set."""
+    """Inspect the whole set; unsealed history is inspectable but not clean (207).
+
+    Missing seals are unknown integrity, never proof of legacy age. Findings keep
+    their existing structural meanings; ``clean`` additionally requires seals.
+    """
     findings: list[ChainFinding] = []
 
     # The same record under several paths -- a backup copy beside the original --
@@ -291,18 +322,23 @@ def render_chain_verification(verification: ChainVerification) -> str:
     """The verification for a terminal, ASCII only."""
     rule = "-" * 66
     lines = [rule, "  CHAIN VERIFICATION", rule, "",
-             f"  {len(verification.records)} record(s), {len(verification.warrants)} warrant(s)", ""]
+             f"  {len(verification.records)} record(s), {len(verification.warrants)} warrant(s)",
+             f"  Record integrity: {verification.integrity_status} (checksums, not signatures)", ""]
     if verification.clean:
         lines += ["  CLEAN -- nothing in these records shows a fork, a restart, a missing",
                   "  link, an edited state or a link that does not extend its predecessor."]
+    elif not verification.findings:
+        lines += ["  UNVERIFIED -- complete record-seal evidence is missing.",
+                  "  Available structural checks do not establish full record integrity."]
     else:
         lines.append(f"  {len(verification.findings)} FINDING(S)")
         for finding in verification.findings:
             names = ", ".join(Path(r).name for r in finding.records)
             lines += ["", f"  [{finding.kind}] {names}", f"      {finding.detail}"]
     if verification.unsealed:
-        lines += ["", f"  {len(verification.unsealed)} record(s) written before records were sealed:",
-                  "  their chain state was checked, their status, bounds and labels were not."]
+        lines += ["", f"  {len(verification.unsealed)} unsealed record(s); their age is unknown:",
+                  "  missing seals can be legacy data or removed seals. Other fields were",
+                  "  not verified by a record seal; structural inspection remains available."]
     lines += ["", "  What this cannot check: the statistics themselves, which need the",
               "  labelled files; a record nobody kept; and a set rewritten with",
               "  recomputed digests, which verifies clean -- the digests are",

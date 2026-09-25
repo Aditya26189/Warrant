@@ -310,7 +310,8 @@ def test_a_rewritten_record_passes_and_every_text_says_it_would() -> None:
     laundered = dc.replace(fed.state, head_check=None, forked_from_head=None).to_payload()
     assert "head_check" not in laundered
     assert ChainState.from_payload(laundered).head_check is None, "a re-digested edit is accepted"
-    report = verify_chain_records({"r1": {"chain": laundered}}).to_payload()
+    # Recompute the whole-record seal too: missing seals no longer pass (207).
+    report = verify_chain_records({"r1": chain.seal_record({"chain": laundered})}).to_payload()
     assert report["clean"] is True
     assert "checksums, not signatures" in report["cannot_check"]
     assert "checksums, not signatures" in honest["guarantee"]

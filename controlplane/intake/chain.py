@@ -41,8 +41,9 @@ here, and one with ``head_check`` cleared cannot be told from a record written
 before 194. Tamper-evidence would need a key or an anchor outside the user's
 control, which a local tool does not have (194). Since the addendum of 2026-09-17
 every chained record is also sealed whole (``record_sha256``), so an edit to any
-stored field is caught unless the editor recomputes the seal; a record written
-before then is reported as unsealed.
+stored field is caught unless the editor recomputes the seal. Missing seals
+are unknown integrity, not established legacy age; verification cannot call them
+clean and continuation refuses them (207).
 """
 
 from __future__ import annotations
@@ -117,8 +118,9 @@ def seal_record(document: dict[str, Any]) -> dict[str, Any]:
 def seal_reproduces(record: dict[str, Any]) -> Optional[bool]:
     """``True`` if the record's seal reproduces, ``False`` if not, ``None`` if unsealed.
 
-    ``None`` is a record written before sealing existed. It is not a failure; it is
-    a record whose fields outside the chain state cannot be checked.
+    ``None`` means unknown integrity, not an established legacy creation date.
+    A genuine legacy record and a stripped modern seal cannot be distinguished
+    from this absence. Decision 207 preserves inspection but bars continuation.
     """
     if SEAL_FIELD not in record:
         return None
@@ -512,7 +514,8 @@ def continue_chain(
             "--horizon-labels on a recheck, then continue it with --since."
         )
     state = ChainState.from_payload(block)
-    if seal_reproduces(previous_record) is False:
+    sealed = seal_reproduces(previous_record)
+    if sealed is False:
         # Without this, an edited latest record -- a REVOKED status set to VALID,
         # the sidecar deleted -- could be continued (addendum 2026-09-17).
         raise ChainError(
@@ -553,7 +556,15 @@ def continue_chain(
             f"this chain has consumed its {state.horizon_units} units; its guarantee "
             "does not extend past them. Re-certify and start a new chain."
         )
+    # Preserve malformed-JSON diagnostics before the missing-assurance refusal.
     previous_sha = record_sha256(previous_record, "--since record")
+    if sealed is None:
+        raise ChainError(
+            "the --since record is unsealed; its record integrity is unknown. "
+            "Inspect it with warrant chain verify, but do not continue it, even "
+            "with --fork. Recover a verified retained copy or re-certify and "
+            "start a new chain. A missing seal does not establish legacy age."
+        )
     if head is None and state.head_check in ("matched", "forked"):
         # The last link was written under a head and there is none now: the
         # sidecar was deleted, or the warrant was moved or copied, which starts a

@@ -24,6 +24,7 @@ from controlplane.intake.chain import (
     canonical_sha256,
     continue_chain,
     feed,
+    seal_record,
     start_chain,
 )
 from controlplane.intake.chain_verify import (
@@ -45,12 +46,12 @@ def _units(tag: str, n: int = 40, fired_every: int = 25):
 
 def _start(tag="a", *, warrant=WARRANT, horizon=1000, head=None, fork=False):
     state = start_chain(warrant, horizon_units=horizon, alpha=0.05, head=head, fork=fork)
-    return {"chain": feed(state, *_units(tag)).to_payload()}
+    return seal_record({"chain": feed(state, *_units(tag)).to_payload()})
 
 
 def _next(previous, tag, *, warrant=WARRANT, head=None, fork=False):
     state = continue_chain(previous, warrant, alpha=0.05, head=head, fork=fork)
-    return {"chain": feed(state, *_units(tag)).to_payload()}
+    return seal_record({"chain": feed(state, *_units(tag)).to_payload()})
 
 
 def _kinds(records: dict) -> list[str]:
@@ -60,7 +61,7 @@ def _kinds(records: dict) -> list[str]:
 def _restate(record, **changes):
     """A record whose chain state was rewritten and re-digested, as a splice would be."""
     state = dataclasses.replace(ChainState.from_payload(record["chain"]), **changes)
-    return {"chain": state.to_payload()}
+    return seal_record({"chain": state.to_payload()})
 
 
 # --------------------------------------------------------------------------- #
@@ -111,7 +112,8 @@ def test_an_edited_statistic_does_not_reproduce_its_digest() -> None:
     r1 = _start("a")
     r2 = _next(r1, "b")
     r2["chain"]["statistics"][0] += 1.0
-    assert _kinds({"r1": r1, "r2": r2}) == ["digest"]
+    # Both the full-record seal and the chain-state digest detect this edit.
+    assert _kinds({"r1": r1, "r2": r2}) == ["digest", "digest"]
 
 
 def test_a_spliced_state_with_a_valid_digest_fails_extension() -> None:
@@ -150,7 +152,7 @@ def test_records_from_two_warrants_are_flagged_and_each_group_still_verified() -
     assert kinds == ["mixed_warrants", "restart"]
 
 
-def test_a_record_from_before_194_is_unrecorded_not_a_finding() -> None:
+def test_absent_head_metadata_alone_is_not_a_finding_on_a_sealed_record() -> None:
     r1 = _start("a")
     old = _restate(_next(r1, "b"), head_check=None, forked_from_head=None)
     assert "head_check" not in old["chain"]

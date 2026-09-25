@@ -254,7 +254,7 @@ def build_parser() -> argparse.ArgumentParser:
     verify.add_argument("--quiet", "-q", action="store_true")
     verify.add_argument(
         "--require-clean", action="store_true",
-        help="exit non-zero when anything is flagged (default: findings exit 0)",
+        help="exit non-zero unless all records are sealed and all checks pass (default: inspection exits 0)",
     )
     return parser
 
@@ -279,7 +279,9 @@ def _chain(args: argparse.Namespace) -> int:
     print(f"  record written to {out}")
     if args.require_clean and not verification.clean:
         print(
-            f"warrant: {len(verification.findings)} finding(s) in the chain records",
+            f"warrant: chain is not clean: {len(verification.findings)} finding(s), "
+            f"{len(verification.unsealed)} unsealed record(s); "
+            f"integrity={verification.integrity_status}",
             file=sys.stderr,
         )
         return EXIT_ERROR

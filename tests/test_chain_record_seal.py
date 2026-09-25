@@ -167,8 +167,8 @@ def test_an_edited_since_record_is_not_continued(chain, tmp_path, capsys):
     assert "seal does not reproduce" in capsys.readouterr().err
 
 
-def test_an_unsealed_legacy_record_is_listed_not_flagged(chain):
-    """Written before sealing: its chain state is checked, and the payload says what was not."""
+def test_an_unsealed_record_is_inspectable_but_not_verified_or_dated(chain):
+    """No structural defect is inferred, but absent integrity cannot pass (207)."""
     legacy = copy.deepcopy(chain["records"][str(chain["link1"])])
     del legacy[SEAL_FIELD]
     assert seal_reproduces(legacy) is None
@@ -178,7 +178,9 @@ def test_an_unsealed_legacy_record_is_listed_not_flagged(chain):
     payload = result.to_payload()
     assert payload["unsealed"] == ["legacy.json"]
     assert "were not" in payload["unsealed_meaning"]
-    assert "written before records were sealed" in render_chain_verification(result)
+    assert "age is unknown" in render_chain_verification(result)
+    assert not result.clean and result.structurally_clean
+    assert payload["integrity_status"] == "UNVERIFIED"
 
 
 def test_the_seal_covers_provenance_as_written(chain):
