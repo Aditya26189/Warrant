@@ -11449,3 +11449,42 @@ in this session. The no-replacement behavior was cross-checked against the
 [Linux link(2) manual](https://man7.org/linux/man-pages/man2/link.2.html)
 and is exercised directly by the filesystem tests. The Python references
 above were retrieved.
+
+
+## 207 - Missing seals are unknown integrity, not verified legacy history (2026-09-25)
+
+Audit R6 removed record_sha256 from a modern chained record and changed fields
+outside its chain block. Verification listed it as unsealed but returned clean,
+so --require-clean succeeded without any checksum recomputation. Continuation
+could also admit it from a copied warrant. Missing metadata cannot establish the
+record's age or distinguish legacy data from a stripped seal.
+
+Require nonempty, fully sealed input as well as all existing checks for clean
+verification. Report integrity separately as VERIFIED, UNVERIFIED or FAILED:
+VERIFIED means reproducible record/chain checksums, never authenticated authors
+or recomputed statistics. Missing seals are UNVERIFIED; malformed or mismatching
+integrity data is FAILED. Keep the existing structural findings and add an
+explicit structurally_clean field so inspectable legacy structure is not lost.
+An absent seal is not itself proof that an edit occurred.
+
+The ordinary verify command remains read-only inspection of supplied legacy
+records and exits 0 with its explicit UNVERIFIED result. --require-clean exits 1
+when any seal is absent, even if structure has no findings. No compatibility flag
+turns unknown integrity into a clean result. Continuation requires a reproducing
+seal, with no --fork exception. Recover a verified retained copy or re-certify;
+do not silently reseal legacy evidence on the customer's behalf.
+
+This deliberately tightens two unsafe behaviors: unsealed inputs no longer
+satisfy the clean gate and cannot be continued. Their records and structural
+inspection remain available. Rewriting a record and recomputing every checksum
+remains outside the guarantee; deleting all evidence remains undetectable.
+Do not change the chain statistic, test data, protected code or record schema.
+Verification JSON gains the explicit assurance fields; existing seals are read
+unchanged.
+
+Acceptance: original strip-and-edit case must fail --require-clean; genuine
+unsealed inspection must report unknown age and no verified field assurance;
+sealed linear histories must still pass; malformed seals, mixed coverage, copied
+warrants, --fork and attempted continuation must fail without changing evidence;
+explicit resealing must remain documented as outside authentication. Run source
+and installed CLI checks plus surrounding history regressions.
