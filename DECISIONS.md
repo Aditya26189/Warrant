@@ -11536,3 +11536,49 @@ silently become a plausible one.
 horizon of `10**300` is representable and still absurd, and the domain checks that
 follow are what bound it. This entry is about not crashing, and about refusing
 without inventing a number.
+
+## 209 - PSI's noise band is simulated at the reference's own size, not at the new file's (2026-09-27)
+
+- **Date:** 2026-09-27
+- **Status:** DECIDED, written before the code.
+- **Closes:** R8 of `reports/PROJECT-REVIEW-2026-09-23.md`.
+
+**The defect.** `intake/recheck.py` called `simulate_null_psi(..., n=items.n,
+n_reference=items.n)`. The second argument is the size the reference bins were
+built from, and the new file's size was passed for it. The simulator in
+`drift/null_band.py` takes the two separately and resamples the reference at
+`n_reference`, precisely because the reference's own estimation error is part of
+the null: a reference built from a hundred items is noisy, and a band that
+assumes it was built from ten thousand is far too narrow.
+
+The review's counterexample: a 100-item reference against 10,000 current items
+gives PSI 0.169460. The code compared it against a null p95 of 0.003239 and
+returned STALE; the same simulator told the actual reference size returns
+0.186492, and the rule then returns STABLE. A drift warning either way is a
+statement about noise, and this one had the noise wrong by two orders of
+magnitude.
+
+**The fix needs no new field.** The reference distribution is built from *every*
+score in the certified file, so its size is the warrant's `input.n`, which every
+certify record already carries. `recheck_items` takes the size as an argument and
+the CLI reads it from the record it was given. Nothing is migrated and no old
+record is rewritten.
+
+**What a recheck now records.** The drift block names the reference size it
+calibrated against, so a reader can tell which number the band came from, and
+whether it came from the record or from the fallback below.
+
+**Legacy behaviour, stated rather than assumed.** A record that carries no
+`input.n` is from before this and cannot say how big its reference was. Drift is
+still assessed, the band is still simulated at the new file's size as it was
+before, and the record says the reference size was unknown and that the band
+assumed the two were equal. Refusing to assess drift at all would silently
+retire the check for every old warrant; reporting the same number with no note
+would keep the defect and hide it.
+
+**What this does not establish.** Passing the true reference size makes the
+simulated null the one the method describes; it does not establish that the
+plug-in simulation attains nominal coverage, and it does not address histogram
+edges chosen from the certified data. The existing empty-bin warning, where a
+smoothed bin dominates the index, is unchanged and still the first thing to read
+on a large PSI.
