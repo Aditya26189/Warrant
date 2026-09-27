@@ -127,6 +127,10 @@ class RecheckResult:
     psi: Optional[float] = None
     psi_null_p95: Optional[float] = None
     psi_beyond_noise: Optional[bool] = None
+    #: Items the reference bins were built from, which is what the null band is
+    #: simulated at. ``None`` when the warrant does not say, in which case the
+    #: band falls back to this file's size and the record says so (209).
+    psi_reference_n: Optional[int] = None
     drift_assessed: bool = False
     drift_not_assessed_reason: str = ""
     #: Live bins that were empty where the reference had mass, and were
@@ -183,14 +187,24 @@ class RecheckResult:
                 "not_assessed_reason": self.drift_not_assessed_reason,
                 "psi": self.psi,
                 "psi_null_p95": self.psi_null_p95,
+                "psi_reference_n": self.psi_reference_n,
+                "psi_reference_n_known": self.psi_reference_n is not None,
                 "beyond_noise": self.psi_beyond_noise,
                 "bins_smoothed": self.psi_bins_smoothed,
                 "driven_by_smoothing": self.psi_driven_by_smoothing,
                 "epsilon": self.psi_epsilon,
                 "note": (
                     "PSI is compared against a null simulated at this file's own "
-                    "sample size, not against the 0.10/0.25 folklore bands, which "
-                    "are not scale-free (DECISIONS 070)."
+                    "sample size and at the reference's, not against the 0.10/0.25 "
+                    "folklore bands, which are not scale-free (DECISIONS 070, 209)."
+                    + (
+                        ""
+                        if self.psi_reference_n is not None
+                        else " This warrant does not record how many items its "
+                        "reference was built from, so the band assumed it was as "
+                        "large as this file. A reference smaller than that has a "
+                        "wider null than the one used here."
+                    )
                 ),
             },
             "labels": {
@@ -217,6 +231,7 @@ def recheck_items(
     budget: float,
     threshold: float,
     reference: Optional[EnvelopeFeature] = None,
+    reference_n: Optional[int] = None,
     alpha: Optional[float] = None,
 ) -> RecheckResult:
     """Re-test a warrant's promise against fresh data.
@@ -229,6 +244,11 @@ def recheck_items(
         reference: The score distribution recorded at certification. Absent for
             warrants issued before records carried one; drift is then skipped
             and said to be skipped rather than silently reported as stable.
+        reference_n: Items that reference was built from, which the PSI null is
+            simulated at (``DECISIONS.md`` 209). The certify record's ``input.n``,
+            since the reference is built from every score in that file. ``None``
+            for a record that does not say: the band then falls back to this
+            file's size, as before, and the record discloses it.
         alpha: Certification level; defaults to ``1 - config.validation.ci``.
 
     Returns:
@@ -324,10 +344,14 @@ def recheck_items(
         smoothed = int(measured.bins_smoothed)
         by_smoothing = bool(measured.driven_by_smoothing)
         epsilon = float(measured.epsilon)
+        # The reference's own estimation error is part of the null, so the
+        # simulator is told how big the reference actually was. Passing this
+        # file's size for it made a noisy hundred-item reference look as precise
+        # as the new file (``DECISIONS.md`` 209).
         band = simulate_null_psi(
             reference.bin_probabilities,
             n=items.n,
-            n_reference=items.n,
+            n_reference=items.n if reference_n is None else int(reference_n),
             stable_band=config.drift.psi_stable,
         )
         null_p95 = float(band.p95)
@@ -338,7 +362,7 @@ def recheck_items(
         config, budget, threshold, items, achieved, upper, lower, floor, needed,
         bound_holds,
         psi, null_p95, beyond_noise, assessed, skip_reason,
-        smoothed, by_smoothing, epsilon,
+        smoothed, by_smoothing, epsilon, reference_n,
     )
 
     # --- how far does it depend on its labels? (DECISIONS 198) ----------
@@ -559,6 +583,7 @@ def _verdict(
     smoothed: int = 0,
     by_smoothing: bool = False,
     epsilon: Optional[float] = None,
+    reference_n: Optional[int] = None,
 ) -> RecheckResult:
     """Decide, worst finding first.
 
@@ -574,6 +599,7 @@ def _verdict(
         bound_still_holds=bound_holds, detectable_floor=floor,
         negatives_for_tighter_floor=needed,
         psi=psi, psi_null_p95=null_p95, psi_beyond_noise=beyond_noise,
+        psi_reference_n=reference_n,
         drift_assessed=assessed, drift_not_assessed_reason=skip_reason,
         psi_bins_smoothed=smoothed, psi_driven_by_smoothing=by_smoothing,
         psi_epsilon=epsilon,

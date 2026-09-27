@@ -574,6 +574,10 @@ def _recheck(args: argparse.Namespace) -> int:
     try:
         result = recheck_items(
             config, items, budget=budget, threshold=threshold, reference=reference,
+            # The reference is built from every score in the certified file, so
+            # its size is that record's input.n. The PSI null is simulated at it
+            # rather than at this file's size (DECISIONS 209).
+            reference_n=(record.get("input") or {}).get("n"),
             alpha=record.get("alpha"),
         )
     except ValueError as exc:
