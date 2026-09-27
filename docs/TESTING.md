@@ -6,6 +6,17 @@ The tests here are not coverage. Each suite exists because a specific failure
 either happened or would be invisible if it did — several of them were written
 after the thing they now catch had already shipped once.
 
+**Read test evidence by commit.** [The inventory](../results/test_inventory.json)
+records which tests were collected from a clean source commit; its
+`execution_status` explicitly says collection is not execution. Earlier
+[phase reports](../reports/) record their own targeted runs, and
+[the clean-clone record](../results/clean_clone.json) records a run on an earlier
+source commit. Neither establishes a full-suite pass for a later head. The
+[CI workflow](../.github/workflows/ci.yml) declares Linux customer/full-suite
+jobs and a Windows minimum-version wheel job; consult the run for the exact
+commit before stating that CI passed. The [product-state map](PRODUCT-STATE.md)
+separates those checks from deployment evidence.
+
 ```bash
 python -m pytest tests/ -q                    # the whole suite
 python -m pytest tests/test_validation.py -q  # one suite
