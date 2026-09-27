@@ -11488,3 +11488,51 @@ sealed linear histories must still pass; malformed seals, mixed coverage, copied
 warrants, --fork and attempted continuation must fail without changing evidence;
 explicit resealing must remain documented as outside authentication. Run source
 and installed CLI checks plus surrounding history regressions.
+
+## 208 - A number in a customer record is checked for representability before any arithmetic (2026-09-27)
+
+- **Date:** 2026-09-27
+- **Status:** DECIDED, written before the code.
+- **Closes:** R7 of `reports/PROJECT-REVIEW-2026-09-23.md`, in the two places it is
+  still open on `main` at `603e4e3`. Its third place, a `--since` file holding `[]`,
+  was closed by Codex before that merge and is not reopened here.
+
+**Reproduced through the public commands, on merged main.** `chain verify` on a
+record whose `chain.alpha` or `chain.horizon_units` is `10**1000` exits 1 with an
+`OverflowError` traceback. `release register` with `threshold` of `10**1000` does
+the same. Both arrive at `math.isfinite(value)`, which converts to double and
+raises before any bound check can refuse the value: the guard meant to reject the
+number is what crashes on it. `release/cli.py` catches `ValueError` and `OSError`,
+and `OverflowError` is neither.
+
+**The rule.** A number that reaches a record's validation is checked in this
+order: it is a real number and not a boolean; it is **representable as a finite
+double**; only then is it compared against its domain. A value failing any step
+is malformed input, reported the way that command reports malformed input -- a
+`malformed` finding from the verifier, which still exits 0 because findings are a
+result, and exit 2 from a command that was asked to consume the record. Never a
+traceback.
+
+**One primitive, two record families.** `controlplane/numeric.py` holds
+`finite_double`, which is the whole rule, and has no dependency beyond the
+standard library. `intake/chain.py` uses it in `_real` and `_count`; an integer
+count is bounded by representability too, because the chain's threshold is
+`horizon_units / alpha` and an unrepresentable count overflows there rather than
+at the guard. `release/contract.py` uses it for `threshold`, `max_fpr`,
+`min_recall` and `alpha`. Two copies of a numeric-domain rule drift; this is the
+defect class the seal work already met once.
+
+**Rejected: catching `OverflowError` at the CLI.** It turns the traceback into an
+exit code and leaves every library caller crashing on the same value, and it
+would make the crash a property of how the command was invoked rather than of
+the record. The catch is still added, as the outer net a public command needs,
+but it is not the repair.
+
+**Rejected: clamping an out-of-range number to the largest double.** That accepts
+a value the customer did not write, and an absurd `horizon_units` would then
+silently become a plausible one.
+
+**What this does not establish.** Representability is not plausibility: a chain
+horizon of `10**300` is representable and still absurd, and the domain checks that
+follow are what bound it. This entry is about not crashing, and about refusing
+without inventing a number.
