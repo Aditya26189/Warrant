@@ -145,14 +145,17 @@ def record_sha256(record: Any, what: str) -> str:
 
 
 def _real(block: dict[str, Any], key: str, *, low: float, high: float, closed: bool = False) -> float:
-    """A finite real in ``(low, high)`` (or ``[low, high]``), never a boolean."""
-    import math
+    """A finite real in ``(low, high)`` (or ``[low, high]``), never a boolean.
 
-    value = block.get(key)
-    if isinstance(value, bool) or not isinstance(value, (int, float)):
-        raise MalformedChainError(f"the chain's {key} is {value!r}, not a number")
-    if not math.isfinite(value):
-        raise MalformedChainError(f"the chain's {key} is {value!r}, not a finite number")
+    Representability is checked before the bounds, because the bound check
+    cannot run on a number that does not convert (``DECISIONS.md`` 208).
+    """
+    from ..numeric import NumericDomainError, finite_double
+
+    try:
+        value = finite_double(block.get(key), f"the chain's {key}")
+    except NumericDomainError as exc:
+        raise MalformedChainError(str(exc)) from None
     inside = low <= value <= high if closed else low < value < high
     if not inside:
         bounds = f"[{low:g}, {high:g}]" if closed else f"({low:g}, {high:g})"
@@ -162,9 +165,18 @@ def _real(block: dict[str, Any], key: str, *, low: float, high: float, closed: b
 
 def _count(block: dict[str, Any], key: str, *, minimum: int) -> int:
     """A non-negative integer at least ``minimum``, never a boolean."""
+    from ..numeric import NumericDomainError, finite_double
+
     value = block.get(key)
     if isinstance(value, bool) or not isinstance(value, int):
         raise MalformedChainError(f"the chain's {key} is {value!r}, not an integer")
+    # The count stays exact and the float is discarded: converting is how a count
+    # too large to take part in `horizon_units / alpha` is refused here, rather
+    # than overflowing inside that arithmetic (``DECISIONS.md`` 208).
+    try:
+        finite_double(value, f"the chain's {key}")
+    except NumericDomainError as exc:
+        raise MalformedChainError(str(exc)) from None
     if value < minimum:
         raise MalformedChainError(f"the chain's {key} is {value}, below {minimum}")
     return value

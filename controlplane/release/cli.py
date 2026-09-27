@@ -66,3 +66,10 @@ def run(args: argparse.Namespace) -> int:
     except (ValueError, OSError) as exc:
         print(f"warrant release: {exc}", file=sys.stderr)
         return 2
+    except ArithmeticError as exc:
+        # The outer net a public command needs, not the repair: a specification's
+        # numbers are refused in contract.py before they reach arithmetic
+        # (DECISIONS 208). Reaching here means one got past that, and a traceback
+        # would still be the wrong way to say so.
+        print(f"warrant release: unusable number in the input: {exc}", file=sys.stderr)
+        return 2
