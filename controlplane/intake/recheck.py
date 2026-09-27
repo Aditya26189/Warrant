@@ -44,6 +44,7 @@ from .contract import ScoredItems
 __all__ = [
     "RecheckResult",
     "negatives_needed_to_detect",
+    "apply_revoked_chain_head",
     "recheck_items",
     "score_distribution",
     "smallest_detectable_breach",
@@ -127,6 +128,10 @@ class RecheckResult:
     psi: Optional[float] = None
     psi_null_p95: Optional[float] = None
     psi_beyond_noise: Optional[bool] = None
+    #: Where this warrant's chain revoked it, when an unchained recheck found a
+    #: sidecar saying so: ``"record NNNN"`` (``DECISIONS.md`` 210). ``None`` when
+    #: there is no sidecar, or its latest record did not revoke.
+    chain_revoked_at: Optional[str] = None
     #: Items the reference bins were built from, which is what the null band is
     #: simulated at. ``None`` when the warrant does not say, in which case the
     #: band falls back to this file's size and the record says so (209).
@@ -155,7 +160,13 @@ class RecheckResult:
         return {
             "status": self.status.value,
             "reason": self.reason,
-            "prior_warrant": {"budget_fpr": self.budget, "threshold": self.threshold},
+            "prior_warrant": {
+                "budget_fpr": self.budget,
+                "threshold": self.threshold,
+                # Where the chain revoked it, so the record says so rather than
+                # leaving the reader to find the sidecar (DECISIONS 210).
+                "chain_revoked_at": self.chain_revoked_at,
+            },
             "detection": {
                 "smallest_detectable_rate": self.detectable_floor,
                 "negatives_here": self.n_negative_now,
@@ -734,6 +745,35 @@ def require_chain_replaced(result: RecheckResult) -> None:
             "a chained recheck carries per-file label_2 disputes; apply_chain must "
             "replace them (DECISIONS 198)"
         )
+
+
+def apply_revoked_chain_head(result: RecheckResult, revoked_at: str) -> RecheckResult:
+    """What an unchained recheck reports when the chain already revoked (210).
+
+    The measurement is kept in full -- the bound, the floor, the drift verdict,
+    the label evidence are why the command was run -- and the status becomes the
+    warrant's recorded lifecycle, because a ``VALID`` here would be read by
+    anything that reads a status field and does not read a note.
+
+    Args:
+        result: The verdict computed from this file alone.
+        revoked_at: How to name the revoking record, e.g. ``"record 0002"``.
+
+    Returns:
+        The same measurement, reported as REVOKED and saying where from.
+    """
+    return dataclasses.replace(
+        result,
+        status=WarrantStatus.REVOKED,
+        chain_revoked_at=revoked_at,
+        reason=(
+            f"this warrant's chain REVOKED it at {revoked_at}, so the warrant is "
+            f"not live and this file cannot restore it: re-certify. The "
+            f"measurement below is what this file says on its own, and it is "
+            f"reported in full -- the original verdict here was "
+            f"{result.status.value}: {result.reason}"
+        ),
+    )
 
 
 def apply_chain(result: RecheckResult, fed: Any) -> RecheckResult:

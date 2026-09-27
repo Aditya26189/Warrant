@@ -506,6 +506,20 @@ def _frontier(args: argparse.Namespace, config, items) -> int:
     return EXIT_OK
 
 
+def _revoking_record(record_path: Path) -> str:
+    """How to name the chain record that revoked a warrant (DECISIONS 210)."""
+    from .intake.chain import head_path
+
+    import json
+
+    try:
+        head = json.loads(head_path(record_path).read_text(encoding="utf-8"))
+        sequence = int(head["sequence"])
+    except (OSError, ValueError, KeyError, TypeError):
+        return "its latest chained record"
+    return f"record {sequence:04d}"
+
+
 def _recheck(args: argparse.Namespace) -> int:
     # Deferred on purpose; see the note at the top of this module.
     import json
@@ -588,6 +602,20 @@ def _recheck(args: argparse.Namespace) -> int:
     # Ordinary rechecks retain their existing independent-file behavior.
     fed = None
     source = Path(args.input)
+    if args.horizon_labels is None and args.since is None:
+        # Unchained, and the sidecar may already say the chain revoked this
+        # warrant. The measurement stands; the status is the lifecycle, so a
+        # caller reading `status` is not told the warrant is live (210).
+        from .intake.chain import ChainError, read_head_status
+        from .intake.recheck import apply_revoked_chain_head
+
+        try:
+            head_status = read_head_status(record_path)
+        except ChainError as exc:
+            print(f"warrant: {exc}", file=sys.stderr)
+            return EXIT_BAD_INPUT
+        if head_status == "REVOKED":
+            result = apply_revoked_chain_head(result, _revoking_record(record_path))
     if args.horizon_labels is not None or args.since is not None:
         from .intake.chain import ChainError
         from .intake.chain_publication import publish_chained_recheck
