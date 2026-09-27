@@ -271,6 +271,8 @@ What `warrant certify` must do with a file nobody here has seen. The procedure i
 | **any stored field edited** | verify flags it; a property test over every leaf of real records | `test_every_leaf_of_every_link_edited_alone_is_flagged` | — |
 | an edited `--since` record | is not continued, and the head is unchanged | `test_an_edited_since_record_is_not_continued` | — |
 | a malformed value, or NaN | a finding, not a traceback | `test_nan_anywhere_in_a_record_is_a_finding_not_a_traceback` | — |
+| **a number too large for any arithmetic** | a `malformed` finding and exit 0, not an `OverflowError` traceback | `test_an_oversized_number_in_a_chain_block_is_a_finding_not_a_traceback` | — |
+| continuing from such a record | refused with exit 2, and no record written | `test_a_chain_cannot_be_continued_from_a_record_with_an_unusable_number` | — |
 | a record with no seal | inspectable with unknown age, not clean or verified | `test_an_unsealed_record_is_inspectable_but_not_verified_or_dated` | — |
 | the guarantee text | names the statistic and excludes drift | `test_the_guarantee_names_the_statistic_and_excludes_drift` | — |
 | `--require-clean` | turns findings or missing seals into exit 1 | `test_require_clean_turns_a_finding_into_exit_one` | — |
@@ -295,6 +297,8 @@ What `warrant certify` must do with a file nobody here has seen. The procedure i
 | case | expected behaviour | test | artifact |
 |---|---|---|---|
 | registration | freezes identity | `test_registration_roundtrip_freezes_identity` | — |
+| **an oversized number in a specification** | an input error naming the field, not a traceback | `test_an_oversized_number_in_a_release_specification_is_an_input_error` | — |
+| an ordinary specification | still registers | `test_an_ordinary_specification_still_registers` | — |
 | development and holdout ids | must be disjoint | `test_refuse_invalid_split` | — |
 | an altered or replaced contract | fails | `test_altered_contract_and_replacement_fail` | — |
 | the bounds | agree with an independent binomial tail inversion | `test_bounds_agree_with_independent_binomial_tail_inversion` | — |

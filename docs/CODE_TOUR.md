@@ -44,6 +44,7 @@ or a notebook is unreviewable.
 | see what the action gate refuses | `gate/gate.py` |
 | find every command a customer can run | `cli.py` |
 | read or post to the board concurrent coding sessions share | `coordination/`, and `COORDINATION.md` at the root |
+| see what numbers a stored record may contain | `numeric.py` |
 
 ---
 
@@ -327,6 +328,12 @@ declared figure cannot pass as a measured one.
   packages above and writes records, with one exit-code convention: `0` for any
   result including a refusal, `1` when a `--require-*` flag was not met, `2` for
   input that cannot be used.
+- **`numeric.py`** is the numeric domain a stored record's values must fall in:
+  a real number and not a boolean, representable as a finite double, and only
+  then inside its own range. One primitive for both record families, because
+  `math.isfinite` converts before it answers and so raised on an oversized
+  integer -- the guard crashing on the value it existed to refuse
+  (`DECISIONS.md` 208).
 - **`coordination/`** is development tooling, not product: a local, file-backed
   board where concurrent coding sessions post status, messages and advisory path
   claims (`python -m controlplane.coordination read`; `COORDINATION.md` at the

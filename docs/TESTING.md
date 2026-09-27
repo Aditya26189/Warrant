@@ -108,6 +108,7 @@ has seen.
 |---|---|
 | `test_intake.py` | The input contract, the refusal that exits 0, and both shipped examples reproducible from their generator |
 | `test_intake_ambiguity.py` | Duplicate columns, duplicate JSON keys, blank headers and ragged rows are refused, never resolved by whichever value came last |
+| `test_malformed_numeric_inputs.py` | A number no arithmetic can use is refused rather than crashed on, in a chained record and in a release specification alike. The boundary is pinned at `2**1024 - 1`, the value a bit-length bound lets through |
 | `test_cli_records.py` | A `certify` record read back correctly by every command that takes one |
 | `test_frontier.py` | The frontier in quantities that need no interval |
 | `test_frontier_groups.py` | The frontier certifies what `certify` certifies, on grouped files too |
