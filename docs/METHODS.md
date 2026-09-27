@@ -336,8 +336,12 @@ example from the code: at 591 negatives and a 5% budget, the lower bound first
 clears at `k = 40`, an observed 6.8%.
 
 **The distribution.** PSI over ten bins of the warrant's stored score histogram,
-judged against a **null band simulated at this file's own sample size**
-(`DECISIONS.md` 070), not against the 0.10 / 0.25 folklore alone:
+judged against a **null band simulated at both sample sizes** -- this file's, and
+the one the reference was built from (`DECISIONS.md` 070, 209) -- not against the
+0.10 / 0.25 folklore alone. The reference's own estimation error is part of the
+null: a reference of a hundred items is noisy, and a band that assumed it was as
+large as the new file was far too narrow. The recheck record names the reference
+size it used, or says the warrant did not record one.
 
 | Condition | Status |
 |---|---|

@@ -246,6 +246,8 @@ What `warrant certify` must do with a file nobody here has seen. The procedure i
 | **the dead zone** | every verdict states its detection floor | `test_the_dead_zone_is_stated_with_every_verdict` | — |
 | the two failures | the summary keeps a broken bound and a moved distribution apart | `test_the_summary_keeps_the_two_failures_apart` | — |
 | PSI | judged against this file's own noise | `test_psi_is_judged_against_this_files_own_noise` | — |
+| **the null band** | is simulated at the reference's size, not the new file's, and the record names it | `test_a_recheck_calibrates_against_the_reference_size_it_is_given` | — |
+| a warrant that records no reference size | keeps the old band and says the band assumed one | `test_a_record_without_a_reference_size_says_the_band_assumed_one` | — |
 | PSI driven by empty bins | does not revoke | `test_a_psi_driven_by_empty_bins_does_not_revoke` | — |
 | a small file | gets no drift verdict | `test_a_small_file_gets_no_drift_verdict` | — |
 | a grouped warrant | rechecked in clusters, not items | `test_the_recheck_counts_clusters_not_items` | — |
