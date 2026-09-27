@@ -38,7 +38,7 @@
 
 <br/>
 
-<img src="https://img.shields.io/badge/Tests-1867_collected-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1867 tests collected" />
+<img src="https://img.shields.io/badge/Tests-1987_collected-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="1987 tests collected" />
 &nbsp;
 <img src="https://img.shields.io/badge/Claims-92_verified-2da44e?style=for-the-badge" alt="92 claims verified" />
 &nbsp;
@@ -295,7 +295,7 @@ you asked for it with a `--require-…` flag.
 | `warrant certify -i FILE -b BUDGET --from-frontier RECORD` | Certify a budget picked off the frontier, at the level the frontier held it to | `--require-warrant` and refused | [METHODS.md](docs/METHODS.md#13-the-frontier-and-the-cost-of-choosing-from-it) §13 |
 | `warrant recheck -w WARRANT -i FILE` | Does the warrant still hold on fresh data? The bound and the distribution, separately | `--require-valid` and not VALID | [METHODS.md](docs/METHODS.md#14-recheck-revoke-on-evidence-of-breach) §14 |
 | `warrant recheck … --horizon-labels N`, then `--since RECORD` | A year of rechecks as one sequential test | `--require-valid` and not VALID | [METHODS.md](docs/METHODS.md#16-the-chain-one-sequential-test-over-a-declared-horizon) §16 |
-| `warrant chain verify RECORD…` | Was any record edited, forked, or continued past a revocation? | `--require-clean` and a finding | [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) |
+| `warrant chain verify RECORD…` | Do retained record checksums and chain structure pass? | `--require-clean`: findings or missing seals fail | [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) |
 | `warrant plan -w WARRANT` | What does rechecking cost, and how often does each cadence revoke a sound detector by chance? | — | [METHODS.md](docs/METHODS.md#15-sizing-a-recheck-by-power-not-by-a-single-sufficient-count) §15 |
 | `warrant release register · evaluate · verify` | Evidence for one release decision, frozen before scoring, evaluated once, verified later | `evaluate` or `verify` with `--require-valid`, and not VALID | [RELEASE.md](docs/RELEASE.md) |
 
@@ -585,7 +585,7 @@ examples/              two scored files: one certifies, one refuses
 evalsets/ & results/   frozen content-hashed evaluation sets; every artifact behind the table above
 scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
-tests/                 1867 tests collected, including the ones that enforce this README
+tests/                 1987 tests collected, including the ones that enforce this README
 docs/                  guides, orientation, methods, limitations, the case matrix
 DECISIONS.md           the append-only decision log, with dated addenda
 reports/               one close-out report per sprint, leading with the answer
@@ -671,7 +671,7 @@ the action gate, are in [docs/DIAGRAMS.md](docs/DIAGRAMS.md); the prose version 
 | Target | Without `make` | Requires | Time | Proves |
 |:---|:---|:---|:---|:---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | The clone works and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 1867 tests collected |
+| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 1987 tests collected |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **Every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` (tier 3) | `python scripts/verify.py` | CPU + cached activations | ~4 min | The frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | Activations regenerate from the source model |

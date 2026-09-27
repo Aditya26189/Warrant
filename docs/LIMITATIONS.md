@@ -269,6 +269,19 @@ negatives in every recheck -- a real chain that exhausts its horizon early is no
 live through the last window. `plan` quotes no
 detection figure, and should not, for settings outside this grid.
 
+**Publication scope (DECISIONS 206).** Chained CLI invocations now serialize
+head validation and publication under a lock keyed by the canonical warrant path.
+A retained intent recovers the original sealed record after process interruption;
+conflicting data fails closed. This coordinates cooperating local processes on
+filesystems with the required lock, hard-link and atomic-replace semantics. It is
+not distributed consensus, protection against removing the sidecars, a lock
+shared by separately copied warrants, or proof of durability through power loss.
+A process killed while preparing a file can leave an unreferenced temporary file;
+that file is not an accepted chain link. Unsupported operations fail explicitly.
+The unchained recheck still does not consult a revoked chain head. Local process
+and installed-wheel test evidence, plus untested platforms, are recorded in
+[PHASE-14.md](../reports/PHASE-14.md).
+
 ### 3.6 A warrant is exact about its labels and cannot see whether they are right
 
 Every certificate is a statement about the `label` column it was given. Since
@@ -298,10 +311,19 @@ lenient-incorrect answers.
 On the customer path, an optional `label_2` column measures agreement beside the
 warrant and changes nothing in it (`docs/INPUT.md`). Recall and precision
 intervals are still silent about label error, and a chained recheck carries no
-sensitivity. **On a grouped file, kappa's interval resamples item pairs as though
-they were independent**, so it is too narrow when items in a group agree with
-each other; 400 rows made of four repeated groups report the same interval as 400
-independent rows. A fix is pre-registered by Codex and not merged on this line.
+sensitivity. **On grouped files, the population agreement interval is withheld**
+(`DECISIONS.md` 201): independent-pair resampling cannot account for dependence
+inside a group, and no validated grouped agreement interval is implemented.
+Observed pairs retain their descriptive kappa, raw agreement and contingency
+table, with reviewed-pair and reviewed-group counts. These are descriptions of
+that reviewed subset, not evidence of population agreement or label correctness.
+Group counts exclude groups with no second review. Null kappa when both
+reviewers use one category is distinct from a withheld confidence interval.
+Ungrouped paired-bootstrap intervals are unchanged. Neither pathway detects
+shared reviewer mistakes or establishes that review selection was representative.
+This repair does not change recall/precision intervals or claim to validate
+other grouped estimators; their separate audit findings remain open in
+`reports/PROJECT-REVIEW-2026-09-23.md`.
 
 ### 3.7 Most records the customer CLI writes can be edited without detection
 
@@ -316,8 +338,11 @@ Two limits apply even to the sealed records:
 - **A seal is a checksum, not a signature.** Anyone who can write the records can
   recompute every seal consistently. It catches an edit made without recomputing,
   not a forger.
-- **A chained record written before sealing is listed as `unsealed`**, not flagged.
-  Its chain state was checked; its status, bounds and labels were not.
+- **A missing seal is unknown integrity**, not an established legacy creation
+  date. It can mean legacy data or a removed seal. Such a record remains
+  inspectable but cannot pass `clean` or `--require-clean`, and cannot be
+  continued, including with `--fork` (DECISIONS 207). Available structural checks
+  are reported separately; they do not recover full-record assurance.
 
 What would close it: a seal and a verifier for the certify warrant, which every
 later record depends on. A signature would need a key, and a key is custody this

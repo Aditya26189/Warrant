@@ -30,6 +30,51 @@ legacy callers keep rejecting it. Synthetic human summaries suppress metrics.
 
 ---
 
+Customer installation (DECISIONS 203): wheels include the canonical root
+configuration as an installed resource and include the sampling package used by
+label diagnostics. With no --config, customer commands use distribution defaults
+(source/editable checkouts use root config.yaml), independent of the caller's
+working directory. An explicit --config never falls back; missing or malformed
+configuration exits as bad input. Research load_config() retains its existing
+path semantics. Building a wheel does not change configuration values or hashes.
+Git provenance is reported only when the executing config module is tracked by
+the candidate repository (DECISIONS 204). An installed package below a consumer
+checkout therefore reports unknown Git commit and dirty state; the consumer's
+revision is not the package's source identity. Retained build manifests can bind
+the wheel digest to its source commit separately.
+
+Artifact preparation (DECISIONS 206): `prepare_json_artifact` stamps provenance
+and optionally seals the JSON-normalized document once. The ordinary writer
+uses this same preparation; recoverable publication can retain that prepared
+record without changing its timestamp, configuration, seal or decision. Atomic
+local publication uses a complete same-directory temporary file and a hard link
+for new names, never replacement; mutable pointer replacement is a separate
+operation. Unsupported filesystem operations raise instead of falling back to
+a partial or replacing evidence write.
+
+Chained rechecks hold a nonblocking OS lock beside the canonical warrant path
+across head/parent validation, record publication and head advancement. A sealed
+pending intent retains the complete prepared record, original head snapshot and
+absolute output path. After interruption, the next chained invocation under that
+lock finishes only that retained publication. It then exits 2, naming the
+recovered path and requiring an explicit eligible --since for further work.
+Changed warrant/head data, malformed pending data or conflicting output bytes
+fail closed without replacing the evidence. Existing records and chain schemas
+remain readable; explicit forks keep their existing declarations and restrictions.
+The persistent .chain-lock name must not be deleted; .chain-pending is removed
+only after successful completion. These guarantees cover cooperating local
+processes on a filesystem supporting the required lock/link/replace operations,
+not distributed writers or universal power-loss durability (DECISIONS 206).
+
+Chain verification assurance (DECISIONS 207): `clean` requires nonempty input,
+reproducing record/chain checksums and no structural findings. Verification also
+reports `structurally_clean` and `integrity_status` (VERIFIED, UNVERIFIED, FAILED).
+An absent record seal is unknown integrity, not evidence of a legacy creation
+date. Read-only inspection remains available and exits 0 with the result;
+`--require-clean` exits 1 on missing seals as well as findings. Continuation
+requires a reproducing seal, without a --fork exception. No record is silently
+resealed. These checksums do not authenticate authors or recompute statistics.
+
 ## 1. Core data model
 
 Frozen dataclasses. Build these first; everything else consumes them.
@@ -280,6 +325,20 @@ Computed at validation time, stored **inside the warrant**.
 | PSI > 0.25 | `REVOKED` | **Refuse to certify.** Consult the matrix for a valid warrant on the new envelope. Route or refuse |
 | Control failure | `REFUSED` | Out of service until human re-validation |
 
+Customer rechecks (DECISIONS 205) evaluate FPR evidence and score drift
+separately. A drift REVOKED finding takes precedence over an inconclusive FPR
+warning or missing FPR evidence. A standalone established FPR breach also
+revokes. In a chain, a single-file FPR breach alone becomes STALE until the
+sequential statistic revokes; an independent drift revocation still stands.
+These precedence rules do not alter the drift estimator or its assumptions.
+
+Continuation reads both the retained aggregate status and its drift finding.
+An old record with drift REVOKED cannot be continued even if it says STALE or
+VALID at the top level. Chain verification reports that inconsistency as
+`revocation_status` and reports any successor as `continued_after_end`. Old
+records are inspected, not rewritten; absent records and edited/recomputed
+checksums remain outside these checks.
+
 ### 5.4 Model-version invalidation
 
 A probe is pinned to a model version. On model change, every activation-tier warrant is invalidated until revalidation. State this as an operational cost; the mitigation is that T2 and T3 are model-agnostic and keep working through the gap.
@@ -361,6 +420,18 @@ Three of the four are free. The pitch line falls out:
 > *"Three of the four numbers you need are free — you're already reviewing the flags, you're just throwing the labels away. Only recall costs money, because recall means estimating what you missed across two hundred thousand responses nobody looked at. Here's what each precision level costs. Pick one."*
 
 ### 6.5 Label quality
+
+`cohens_kappa` accepts group IDs aligned with the reviewed pairs (DECISIONS
+201). Declared grouped pairs retain their descriptive sample kappa, raw
+agreement and pair/group counts, with null population interval endpoints and
+an explicit reason. This is exact description of those observed pairs, not an
+estimate of population agreement or label correctness. Ungrouped input keeps
+the existing paired bootstrap. Both customer paths pass actual group IDs aligned
+with all input rows, rejecting absent, inconsistent or blank group metadata.
+Their JSON marks grouped kappa as EXACT (description of observed pairs only),
+with `interval_computed: false`, `interval_reason` and `n_groups`; `n` remains
+the number of reviewed pairs. Grouped second-review disputes remain uncomputed.
+Verdicts, thresholds, FPR bounds and primary-label sensitivity are unchanged.
 
 **Blinding.** Stratum A reviewers see items the system flagged; stratum B reviewers see items it didn't. If flag status, score, stratum or ordering is visible, the two strata get systematically different label distributions and the importance-weighted estimate is biased *in the direction that flatters us*. Interleave both strata into **one blinded queue with identical UI**. Nearly free, and it is the difference between a warrant and a self-report.
 

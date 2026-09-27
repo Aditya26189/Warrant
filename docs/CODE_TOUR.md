@@ -111,7 +111,7 @@ answers to one question drift apart.
 | `selection.py` | How wrong is the row a customer picks off the frontier? The measurement behind `--from-frontier` (`DECISIONS.md` 192, 195) |
 | `recheck.py` | Is the warrant still true on new data? The false-positive bound and the score distribution are tested and reported separately, and revocation turns on the lower bound, not on a failure to re-prove |
 | `chain.py` | A year of rechecks as one sequential test, carried in the recheck records. Also the chain-head sidecar, the whole-record seal (`record_sha256`), and every refusal to continue: a revoked warrant, an edited or malformed record, an undeclared fork |
-| `chain_verify.py` | What a kept set of chain records shows as a whole: edited records (by seal, chain-state digest and derived fields), malformed values, forks, restarts, missing links, links after a revocation; records written before sealing are listed as unsealed. **It cannot recompute the statistics**; those need the labelled files |
+| `chain_verify.py` | What a kept set of chain records shows as a whole: edited records (by seal, chain-state digest and derived fields), malformed values, forks, restarts, missing links, links after a revocation; missing seals are listed as unsealed with unknown age; they prevent clean assurance and continuation. **It cannot recompute the statistics**; those need the labelled files |
 | `labels.py` | How far a certificate or a recheck depends on its labels being right: the two exact error ladders, and a second reviewer's agreement and disputes (`DECISIONS.md` 197, 198) |
 | `render.py` | The terminal summary. Written so a refusal reads as a result rather than a malfunction |
 

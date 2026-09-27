@@ -1,5 +1,11 @@
 # What to do next
 
+> Follow-up, 24 September: this is the historical integration handoff. The
+> independent review and subsequent local repairs are recorded in
+> [PHASE-13.md](PHASE-13.md). That report distinguishes repaired behavior on the
+> current repair branch from what is still on main. The buyer-conversation gate
+> and its preregistered stopping rule below remain unchanged.
+
 **Dated 2026-09-17, at the close of sprint 12.** Written for the founder, and for
 whoever picks the work up. Everything below is either a decision only a person
 can make, or work that is already specified and has a named way to close it.

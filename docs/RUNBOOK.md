@@ -58,7 +58,7 @@ used: a malformed file, a missing record, or a chain that may not be continued.
 | `warrant recheck -w WARRANT -i NEW --horizon-labels N` | as above | `NEW.recheck-0001.json`, and `WARRANT.chain-head` | Start a chain: a year of rechecks tested as one sequence ([DECISIONS 193](../DECISIONS.md)) |
 | `warrant recheck -w WARRANT -i NEW --since RECORD` | the previous link too | `NEW.recheck-NNNN.json`, and moves the head | Continue a chain from its latest record |
 | `warrant plan -w WARRANT --negative-share S` | a warrant | `warrant-plan.json` | How many labels a recheck needs to catch a breach, and what each cadence costs |
-| `warrant chain verify RECORD...` | every kept chain record | `chain-verification.json` | What the set of records shows: an edited record (every chained record is sealed whole), a malformed value, forks, restarts, missing links, links after a revocation. Records written before sealing are listed as `unsealed`, not flagged |
+| `warrant chain verify RECORD...` | every kept chain record | `chain-verification.json` | What the set of records shows: an edited record (every chained record is sealed whole), a malformed value, forks, restarts, missing links, links after a revocation. Missing seals are reported as unknown integrity and prevent `clean` or `--require-clean`; structural inspection remains available |
 | `warrant release register / evaluate / verify` | a specification, holdout ids, scored holdout | a contract, then `CONTRACT.evaluation.json` | A pre-registered, expiring, single-use evaluation of a fixed operating point ([RELEASE.md](RELEASE.md)) |
 
 **Rules the CLI enforces, so you do not have to remember them.**

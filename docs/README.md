@@ -29,6 +29,13 @@
 | 🌱 **New to the codebase** | [ONBOARDING.md](ONBOARDING.md) → [ARCHITECTURE.md](ARCHITECTURE.md) → [DIAGRAMS.md](DIAGRAMS.md) → [CODE_TOUR.md](CODE_TOUR.md) |
 | ▶️ **Reproducing the measurements** | [SETUP.md](SETUP.md) → [RUNBOOK.md](RUNBOOK.md) → [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
 | 🔍 **Checking whether a number is real** | [../README.md](../README.md) claim table → [ARTIFACTS.md](ARTIFACTS.md) → [METHODS.md](METHODS.md) → `make verify` |
+| [Independent review, 23 September](../reports/PROJECT-REVIEW-2026-09-23.md) | Which current-main defects were independently reproduced, what passed, and what does the evidence support commercially? |
+| [Claude repair instructions, 23 September](../reports/CLAUDE-INSTRUCTIONS-2026-09-23.md) | What should Claude repair next, how should agents coordinate, and which checks close each finding? |
+| [Research-backed improvement plan, 23 September](../reports/IMPROVEMENT-PLAN-2026-09-23.md) | Which repairs, buyer tests and product improvements should come next, and what evidence would justify expansion? |
+| [Installed workflow repair, 24 September](../reports/PACKAGING-REPAIR-2026-09-24.md) | What packaging and installed-provenance defects were repaired, which checks passed, and which review findings remain open? |
+| [Chain integrity policy, Phase 15](../reports/PHASE-15.md) | What assurance is possible when seals are absent, what compatibility changed, and which checks passed? |
+| [Local chain publication, Phase 14](../reports/PHASE-14.md) | How are concurrent writers and interrupted chain writes handled, and what was verified? |
+| [Handoff continuation, Phase 13](../reports/PHASE-13.md) | Which grouped-review and revocation repairs followed the handoff, what was verified locally, and what remains open? |
 | 🕵️ **Looking for the flaw** | [LIMITATIONS.md](LIMITATIONS.md) → [../DECISIONS.md](../DECISIONS.md) → [CASES.md](CASES.md) → [TESTING.md](TESTING.md) → `reports/` |
 | 🎤 **Presenting it** | [DIAGRAMS.md](DIAGRAMS.md) → [JOURNEY.md](JOURNEY.md) → [DEMO.md](DEMO.md) → [DEMO_SCRIPT.md](DEMO_SCRIPT.md) |
 | 🔬 **Asking whether this means anything outside the repo** | [EXTERNAL.md](EXTERNAL.md) → [REDACT.md](REDACT.md) → [../results/external/MATRIX.md](../results/external/MATRIX.md) |

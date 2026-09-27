@@ -36,7 +36,9 @@ packages = [
     "controlplane.drift",
     "controlplane.economics",
     "controlplane.evalsets",
+    "controlplane.external",
     "controlplane.extract",
+    "controlplane.gate",
     "controlplane.gateway",
     "controlplane.intake",
     "controlplane.matrix",
@@ -44,9 +46,13 @@ packages = [
     "controlplane.policy",
     "controlplane.report",
     "controlplane.release",
+    "controlplane.sampling",
     "controlplane.store",
     "controlplane.validation",
 ]
+
+[tool.setuptools.cmdclass]
+build_py = "build_support.BuildPy"
 
 [tool.ruff]
 line-length = 88

@@ -389,6 +389,27 @@ class SecondReview:
 
     def to_payload(self) -> dict[str, Any]:
         agreement = self.agreement
+        kappa = {
+            "kind": MetricKind.ESTIMATED.value,
+            "value": agreement.kappa,
+            "ci_low": agreement.ci_low,
+            "ci_high": agreement.ci_high,
+            "n": agreement.n_pairs,
+            "estimator": "Cohen's kappa, percentile bootstrap over pairs",
+            "observed_agreement": agreement.observed_agreement,
+            "expected_agreement": agreement.expected_agreement,
+            "interpretation": agreement.interpretation,
+            "undefined_reason": agreement.undefined_reason,
+        }
+        if agreement.n_groups is not None:
+            kappa.update({
+                "kind": MetricKind.EXACT.value,
+                "estimator": "descriptive Cohen's kappa over the observed pairs",
+                "scope": "observed pairs only; not a population estimate or evidence of label correctness",
+                "n_groups": agreement.n_groups,
+                "interval_computed": False,
+                "interval_reason": agreement.interval_reason,
+            })
         return {
             "column": "label_2",
             "changes_the_verdict": False,
@@ -397,18 +418,7 @@ class SecondReview:
             "table": {
                 f"label={y},label_2={z}": count for (y, z), count in self.table.items()
             },
-            "kappa": {
-                "kind": MetricKind.ESTIMATED.value,
-                "value": agreement.kappa,
-                "ci_low": agreement.ci_low,
-                "ci_high": agreement.ci_high,
-                "n": agreement.n_pairs,
-                "estimator": "Cohen's kappa, percentile bootstrap over pairs",
-                "observed_agreement": agreement.observed_agreement,
-                "expected_agreement": agreement.expected_agreement,
-                "interpretation": agreement.interpretation,
-                "undefined_reason": agreement.undefined_reason,
-            },
+            "kappa": kappa,
             "warnings": list(self.warnings),
             "disputes": (
                 self.disputes.to_payload(self.alpha) if self.disputes is not None
@@ -438,6 +448,7 @@ def second_review(
     seed: int,
     resamples: int,
     ci: float,
+    groups: Optional[Sequence[str]] = None,
 ) -> SecondReview:
     """Kappa over the double-labelled items, and the disputes at the threshold.
 
@@ -445,11 +456,17 @@ def second_review(
     carry both; and, on a certified ungrouped file, the exact disputed counts in
     both flattering directions at ``threshold``, with the confidence ``c`` if each
     is a primary error. Propagation: kappa by percentile bootstrap over pairs
-    (:func:`controlplane.sampling.agreement.cohens_kappa`); ``c`` exactly, as in
+    (:func:`controlplane.sampling.agreement.cohens_kappa`) only for ungrouped
+    pairs. Actual group IDs must align with all items when ``grouped`` is true;
+    grouped kappa is descriptive with no population interval (DECISIONS 201).
+    ``c`` exactly, as in
     :func:`confidence_after`; each pool's whole-file dispute bound by
     :func:`disputes_upper_bound` at ``alpha``, the two jointly at ``>= 1 - 2 alpha``.
     """
-    agreement_part, warnings, reviewed = _agreement(labels, second, seed=seed, resamples=resamples, ci=ci)
+    agreement_part, warnings, reviewed = _agreement(
+        labels, second, grouped=grouped, groups=groups,
+        seed=seed, resamples=resamples, ci=ci,
+    )
     common = dict(**agreement_part, alpha=alpha)
     if not certified or grouped:
         return SecondReview(
@@ -492,6 +509,7 @@ def second_review(
 
 def _agreement(
     labels: np.ndarray, second: Sequence[Optional[int]], *, seed: int, resamples: int, ci: float,
+    grouped: bool, groups: Optional[Sequence[str]],
 ) -> tuple[dict[str, Any], tuple[str, ...], np.ndarray]:
     """Kappa, the 2x2 table and the per-class pair counts, shared by certify and recheck."""
     labels = np.asarray(labels)
@@ -500,10 +518,21 @@ def _agreement(
         raise ValueError("label_2 must have one entry per item")
     if not reviewed.any():
         raise ValueError("no item carries label_2")
+    if grouped != (groups is not None):
+        raise ValueError("grouped must agree with the presence of actual group IDs")
+    reviewed_groups = None
+    if groups is not None:
+        group_ids = np.asarray(groups, dtype=object)
+        if group_ids.shape != labels.shape:
+            raise ValueError("groups must have one ID per item, aligned with label_2")
+        if any(not isinstance(group, str) or not group.strip() for group in group_ids):
+            raise ValueError("groups must contain nonblank string IDs for every item")
+        reviewed_groups = group_ids[reviewed].tolist()
     first = labels[reviewed].astype(int)
     other = np.array([value for value in second if value is not None], dtype=int)
     agreement = cohens_kappa(
         first.tolist(), other.tolist(), seed=seed, resamples=resamples, ci=ci,
+        groups=reviewed_groups,
     )
     pairs_by_label = {y: int((first == y).sum()) for y in (0, 1)}
     table = {(y, z): int(((first == y) & (other == z)).sum()) for y in (0, 1) for z in (0, 1)}
@@ -854,6 +883,7 @@ def recheck_second_review(
     seed: int,
     resamples: int,
     ci: float,
+    groups: Optional[Sequence[str]] = None,
 ) -> SecondReview:
     """Kappa on a recheck file, and the disputes that could hide a breach (198).
 
@@ -862,8 +892,13 @@ def recheck_second_review(
     counted as errors, and whether it clears the budget. Propagation: exact
     Clopper-Pearson lower bound; each pool's dispute bound by
     :func:`disputes_upper_bound` at ``alpha``, jointly ``>= 1 - 2 alpha``.
+    Grouped kappa is descriptive only; actual group IDs must align with all
+    items, and no population agreement interval is computed (DECISIONS 201).
     """
-    agreement_part, warnings, reviewed = _agreement(labels, second, seed=seed, resamples=resamples, ci=ci)
+    agreement_part, warnings, reviewed = _agreement(
+        labels, second, grouped=grouped, groups=groups,
+        seed=seed, resamples=resamples, ci=ci,
+    )
     common = dict(**agreement_part, alpha=alpha)
     reason = ""
     if bound_holds is None:

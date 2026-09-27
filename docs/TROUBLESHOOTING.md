@@ -99,10 +99,24 @@ distribution, and each has a different fix.
 | `already exists. A chained recheck never writes over a record` | the output name is taken | Choose another `--out`. Each link is evidence the next depends on |
 | `the chain runs at alpha=..., the warrant at ...`, or `belongs to a different warrant record` | the record is from another warrant or level | Continue a chain only with the warrant it was started on |
 
+A chained write also uses `.chain-lock` and, while publication is pending,
+`.chain-pending` beside the canonical warrant path (DECISIONS 206):
+
+| Message | What to do |
+|---|---|
+| `chain publication is busy or its lock is unavailable` | Retry after the active writer exits. If it persists without a writer, check filesystem lock support and permissions. Do not delete the lock file to bypass it |
+| `recovered interrupted chain publication at ...` | The original result was recovered; this invocation exits 2 and creates no additional link. Inspect the named record, then continue with `--since` if eligible |
+| `conflicts with the pending record`, `head changed outside the pending publication`, or an invalid intent | Preserve the warrant, pending intent, head and records for investigation. Restore only a verified original copy; do not discard the journal or overwrite evidence to force progress |
+
+The lock file remains after successful commands; its presence does not mean a
+writer is active. Recovery requires the original output location and supporting
+local filesystem operations. These guarantees are not a distributed lock or a
+universal power-loss guarantee.
+
 ### Verifying a chain
 
 `warrant chain verify` exits 0 **with findings**, because findings are a result.
-Use `--require-clean` to make any finding exit 1.
+Use `--require-clean` to make findings or any missing record seal exit 1.
 
 | Finding | It means |
 |---|---|
@@ -114,8 +128,20 @@ Use `--require-clean` to make any finding exit 1.
 | `sequence`, `extension` | a link is misnumbered, or does not extend its predecessor |
 | `mixed_warrants`, `duplicate` | records from several warrants, or one record under several paths |
 
-**`unsealed` is not a finding.** Those records were written before records were
-sealed: their chain state was checked, their status, bounds and labels were not.
+**`unsealed` means unknown integrity.** Absence cannot establish the record's
+age or distinguish legacy data from a removed seal. Available structural checks
+are still reported, but `clean` is false and `--require-clean` exits 1. Inspection
+without that flag still exits 0 with the explicit result. The separate
+`structurally_clean` field never substitutes for full record integrity.
+
+`integrity_status` is VERIFIED when the record/chain checksum checks reproduce,
+UNVERIFIED when seal evidence is missing, and FAILED when an integrity or
+malformed-data check fails. VERIFIED does not authenticate an author or recompute
+the statistics. Other structural findings still prevent `clean`.
+
+An unsealed `--since` record cannot be continued, even with `--fork`. Inspect it,
+recover a verified retained original if available, or re-certify and begin a
+new chain. Do not add a new seal and call that proof of the original evidence.
 
 ---
 

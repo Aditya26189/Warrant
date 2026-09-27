@@ -393,9 +393,11 @@ Neither may reopen a revoked warrant.
 
 `record_sha256`: the digest of a whole chained record -- status, bounds, drift,
 labels, provenance, chain block -- checked by `chain verify` and by `--since`. A
-record without one was written before records were sealed and is listed as
-**unsealed**, not flagged. **A seal is a checksum, not a signature**: anyone who can
-write the records can recompute every seal consistently.
+record without one has **unknown integrity**: absence cannot establish its age
+or distinguish legacy data from a removed seal. It is listed as **unsealed** and
+can be inspected structurally, but cannot satisfy `clean`, `--require-clean` or
+continuation (DECISIONS 207). **A seal is a checksum, not a signature**: anyone
+who can write the records can recompute every seal consistently.
 
 ### Malformed
 

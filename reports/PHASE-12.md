@@ -932,3 +932,20 @@ python scripts/verify.py
 python scripts/clean_clone_gate.py
 git show 55528c7:DECISIONS.md                        # Codex's original 198-200
 ```
+
+
+## 10. Post-close-out review and repairs (24 September)
+
+The independent review outstanding at section 9 is now recorded in
+[PROJECT-REVIEW-2026-09-23.md](PROJECT-REVIEW-2026-09-23.md). It reproduced
+additional customer-installation, grouped-inference and chain-lifecycle defects;
+the old passing gate did not cover those cases. The findings do not establish
+that the earlier measurements changed.
+
+The installed-package/provenance repair is recorded in
+[PACKAGING-REPAIR-2026-09-24.md](PACKAGING-REPAIR-2026-09-24.md). Grouped review
+agreement (decision 201) and revocation precedence (decision 205) are implemented
+and tested on the subsequent local repair branch; see [PHASE-13.md](PHASE-13.md)
+for scope, exact validation and remaining defects. Historical evidence and this
+sprint's integration record are preserved. These later repairs have not yet
+been merged into main or pushed, and they do not resolve the commercial gate.

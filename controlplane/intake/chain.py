@@ -41,8 +41,9 @@ here, and one with ``head_check`` cleared cannot be told from a record written
 before 194. Tamper-evidence would need a key or an anchor outside the user's
 control, which a local tool does not have (194). Since the addendum of 2026-09-17
 every chained record is also sealed whole (``record_sha256``), so an edit to any
-stored field is caught unless the editor recomputes the seal; a record written
-before then is reported as unsealed.
+stored field is caught unless the editor recomputes the seal. Missing seals
+are unknown integrity, not established legacy age; verification cannot call them
+clean and continuation refuses them (207).
 """
 
 from __future__ import annotations
@@ -50,7 +51,7 @@ from __future__ import annotations
 import dataclasses
 import hashlib
 import json
-from typing import Any, Optional, Sequence
+from typing import Any, Mapping, Optional, Sequence
 
 import numpy as np
 
@@ -63,8 +64,10 @@ __all__ = [
     "canonical_sha256",
     "continue_chain",
     "feed",
+    "head_document",
     "head_path",
     "read_head",
+    "record_has_drift_revocation",
     "start_chain",
     "unit_digest",
     "write_head",
@@ -115,8 +118,9 @@ def seal_record(document: dict[str, Any]) -> dict[str, Any]:
 def seal_reproduces(record: dict[str, Any]) -> Optional[bool]:
     """``True`` if the record's seal reproduces, ``False`` if not, ``None`` if unsealed.
 
-    ``None`` is a record written before sealing existed. It is not a failure; it is
-    a record whose fields outside the chain state cannot be checked.
+    ``None`` means unknown integrity, not an established legacy creation date.
+    A genuine legacy record and a stripped modern seal cannot be distinguished
+    from this absence. Decision 207 preserves inspection but bars continuation.
     """
     if SEAL_FIELD not in record:
         return None
@@ -420,9 +424,9 @@ def _refuse_revoked_head(head_status: Optional[str]) -> None:
         )
 
 
-def write_head(warrant_path: Any, record_sha256: str, sequence: int, *,
-               status: Optional[str] = None) -> None:
-    """Point the sidecar at the record just written, with that record's status."""
+def head_document(record_sha256: str, sequence: int, *,
+                  status: Optional[str] = None) -> dict[str, Any]:
+    """Use one head schema for ordinary writes and interrupted-publication recovery."""
     note = (
         "The digest and status of this warrant's latest chained recheck record. A "
         "recheck --since any other record, or a new chain while this exists, is "
@@ -432,7 +436,16 @@ def write_head(warrant_path: Any, record_sha256: str, sequence: int, *,
     payload = {"head_record_sha256": record_sha256, "sequence": sequence, "note": note}
     if status is not None:
         payload["status"] = status
-    head_path(warrant_path).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    return payload
+
+
+def write_head(warrant_path: Any, record_sha256: str, sequence: int, *,
+               status: Optional[str] = None) -> None:
+    """Atomically replace the mutable pointer; callers serialize the whole transaction."""
+    from ._atomic_files import write_json_atomic
+
+    write_json_atomic(head_path(warrant_path),
+                      head_document(record_sha256, sequence, status=status), replace=True)
 
 
 def _head_check(head: Optional[str], continuing_from: Optional[str], fork: bool) -> tuple[str, Optional[str]]:
@@ -477,6 +490,17 @@ def start_chain(warrant_record: dict[str, Any], *, horizon_units: int, alpha: fl
     )
 
 
+def record_has_drift_revocation(record: Mapping[str, Any]) -> bool:
+    """Read the independent drift finding, including old inconsistent records.
+
+    Decision 205: an aggregate STALE status once hid a drift REVOKED finding.
+    The retained finding still bars continuation. This does not recompute its
+    statistics or authenticate the record; sealing is checked separately.
+    """
+    drift = record.get("drift")
+    return isinstance(drift, Mapping) and drift.get("verdict") == "REVOKED"
+
+
 def continue_chain(
     previous_record: dict[str, Any], warrant_record: dict[str, Any], *, alpha: float,
     head: Optional[str] = None, fork: bool = False, head_status: Optional[str] = None,
@@ -490,7 +514,8 @@ def continue_chain(
             "--horizon-labels on a recheck, then continue it with --since."
         )
     state = ChainState.from_payload(block)
-    if seal_reproduces(previous_record) is False:
+    sealed = seal_reproduces(previous_record)
+    if sealed is False:
         # Without this, an edited latest record -- a REVOKED status set to VALID,
         # the sidecar deleted -- could be continued (addendum 2026-09-17).
         raise ChainError(
@@ -505,11 +530,12 @@ def continue_chain(
         )
     if abs(state.alpha - alpha) > 1e-12:
         raise ChainError(f"the chain runs at alpha={state.alpha:g}, the warrant at {alpha:g}")
-    if previous_record.get("status") == "REVOKED":
+    if previous_record.get("status") == "REVOKED" or record_has_drift_revocation(previous_record):
         # The chain state records only the chain's own revocation. A recheck
         # revoked by drift, with the bound holding and the chain live, carries
         # status REVOKED and no revoked_at_unit -- and was continued until 194's
         # review found it. A claim that stands is not continued (194, defect 1).
+        # Old STALE records can hide that drift revocation; read it directly (205).
         raise ChainError(
             "the --since record REVOKED this warrant"
             + ("" if state.revoked_at_unit is not None else
@@ -530,7 +556,15 @@ def continue_chain(
             f"this chain has consumed its {state.horizon_units} units; its guarantee "
             "does not extend past them. Re-certify and start a new chain."
         )
+    # Preserve malformed-JSON diagnostics before the missing-assurance refusal.
     previous_sha = record_sha256(previous_record, "--since record")
+    if sealed is None:
+        raise ChainError(
+            "the --since record is unsealed; its record integrity is unknown. "
+            "Inspect it with warrant chain verify, but do not continue it, even "
+            "with --fork. Recover a verified retained copy or re-certify and "
+            "start a new chain. A missing seal does not establish legacy age."
+        )
     if head is None and state.head_check in ("matched", "forked"):
         # The last link was written under a head and there is none now: the
         # sidecar was deleted, or the warrant was moved or copied, which starts a

@@ -271,9 +271,9 @@ What `warrant certify` must do with a file nobody here has seen. The procedure i
 | **any stored field edited** | verify flags it; a property test over every leaf of real records | `test_every_leaf_of_every_link_edited_alone_is_flagged` | — |
 | an edited `--since` record | is not continued, and the head is unchanged | `test_an_edited_since_record_is_not_continued` | — |
 | a malformed value, or NaN | a finding, not a traceback | `test_nan_anywhere_in_a_record_is_a_finding_not_a_traceback` | — |
-| a record written before sealing | listed as unsealed, not flagged | `test_an_unsealed_legacy_record_is_listed_not_flagged` | — |
+| a record with no seal | inspectable with unknown age, not clean or verified | `test_an_unsealed_record_is_inspectable_but_not_verified_or_dated` | — |
 | the guarantee text | names the statistic and excludes drift | `test_the_guarantee_names_the_statistic_and_excludes_drift` | — |
-| `--require-clean` | turns a finding into exit 1 | `test_require_clean_turns_a_finding_into_exit_one` | — |
+| `--require-clean` | turns findings or missing seals into exit 1 | `test_require_clean_turns_a_finding_into_exit_one` | — |
 
 ## 14. Label error
 

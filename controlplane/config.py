@@ -8,10 +8,10 @@ here rather than by discipline:
   frozen block and :mod:`controlplane.economics.sizing` takes it as its only source.
   There is no second place to read a flag rate or a base rate from, so two
   scenarios cannot be mixed into one table.
-* **Invariant 8 — every number in a document is computed by code.** Nothing is
-  written to ``results/`` except through :func:`write_json_artifact`, which
-  attaches the config hash, seed, git commit and dirty flag that make a number
-  traceable to the run that produced it.
+* **Invariant 8 — every number in a document is computed by code.** Artifact
+  preparation uses :func:`prepare_json_artifact`, shared by the ordinary writer
+  and recoverable chain publication. It attaches the config hash, seed, git
+  commit and dirty flag that make a number traceable to its originating run.
 
 The loader is strict on purpose. An unknown key is an error, not a warning: a
 mistyped knob that is silently dropped produces a run whose settings differ from
@@ -42,6 +42,8 @@ __all__ = [
     "Config",
     "ConfigError",
     "load_config",
+    "load_customer_config",
+    "prepare_json_artifact",
     "provenance",
     "project_root",
     "read_json_artifact",
@@ -967,13 +969,48 @@ def load_config(
     config_path = Path(path)
     if not config_path.is_file():
         raise ConfigError(f"config file not found: {config_path}")
-    with config_path.open("r", encoding="utf-8") as fh:
-        raw = yaml.safe_load(fh)
+    try:
+        contents = config_path.read_text(encoding="utf-8")
+    except (OSError, UnicodeError) as exc:
+        raise ConfigError(f"cannot read config file {config_path}: {exc}") from exc
+    return _parse_config(contents, str(config_path), overrides)
+
+
+def _parse_config(
+    contents: str, source: str, overrides: Optional[dict[str, Any]] = None,
+) -> Config:
+    """Use the same validation and hashing for files and installed resources."""
+    try:
+        raw = yaml.safe_load(contents)
+    except yaml.YAMLError as exc:
+        raise ConfigError(f"{source}: malformed YAML: {exc}") from exc
     if not isinstance(raw, dict):
-        raise ConfigError(f"{config_path}: top level must be a mapping")
+        raise ConfigError(f"{source}: top level must be a mapping")
     if overrides:
         raw = _apply_overrides(raw, overrides)
     return _from_mapping(Config, raw)
+
+
+def load_customer_config(path: Optional[str | os.PathLike] = None) -> Config:
+    """Load explicit settings or distribution-owned defaults (DECISIONS 203).
+
+    An unrelated working-directory config must not silently alter a customer's
+    estimator. Wheels carry a build-time copy of the canonical config.yaml;
+    source/editable checkouts use that canonical file directly. The research
+    load_config() API retains its existing default-path behavior.
+    """
+    if path is not None:
+        return load_config(path)
+
+    from importlib.resources import files
+
+    resource = files("controlplane").joinpath("default_config.yaml")
+    if resource.is_file():
+        return _parse_config(resource.read_text(encoding="utf-8"), str(resource))
+    source_root = project_root()
+    if (source_root / "pyproject.toml").is_file():
+        return load_config(source_root / "config.yaml")
+    raise ConfigError("installed default configuration is missing; reinstall warrant")
 
 
 # --------------------------------------------------------------------------- #
@@ -1059,17 +1096,34 @@ def repo_root() -> Path:
 
 
 def _git(*args: str) -> Optional[str]:
-    """Run a git command in the repo root, returning None if git is unavailable."""
+    """Report Git state only for tracked source, never a consumer's checkout.
+
+    A virtual environment may live below an unrelated .git directory. Its
+    commit does not describe the installed wheel (DECISIONS 204). Unknown Git
+    provenance stays unknown rather than acquiring that parent's identity.
+    """
+    root = repo_root()
     try:
-        out = subprocess.run(
-            ["git", *args],
-            cwd=repo_root(),
+        module_path = Path(__file__).resolve().relative_to(root.resolve()).as_posix()
+        tracked = subprocess.run(
+            ["git", "--literal-pathspecs", "ls-files", "--error-unmatch", "--", module_path],
+            cwd=root,
             capture_output=True,
             text=True,
             timeout=30,
             check=False,
         )
-    except (OSError, subprocess.SubprocessError):
+        if tracked.returncode != 0:
+            return None
+        out = subprocess.run(
+            ["git", *args],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            timeout=30,
+            check=False,
+        )
+    except (OSError, subprocess.SubprocessError, ValueError):
         return None
     if out.returncode != 0:
         return None
@@ -1251,6 +1305,24 @@ def _json_default(value: Any) -> Any:
     )
 
 
+def prepare_json_artifact(
+    payload: dict[str, Any],
+    config: Optional[Config] = None,
+    *,
+    seal_with: Optional[Callable[[dict[str, Any]], dict[str, Any]]] = None,
+) -> dict[str, Any]:
+    """Prepare provenance and an optional seal once, before publication starts.
+
+    Decision 206: interrupted chain publication must replay the original record,
+    not recompute its timestamp, provenance or decision. Sharing this preparation
+    with the ordinary writer keeps the serialized artifact contract unchanged.
+    """
+    document = {"provenance": provenance(config), **payload}
+    if seal_with is not None:
+        document = seal_with(json.loads(json.dumps(document, default=_json_default)))
+    return document
+
+
 def write_json_artifact(
     path: str | os.PathLike,
     payload: dict[str, Any],
@@ -1261,10 +1333,9 @@ def write_json_artifact(
 ) -> Path:
     """Write a results artifact with its provenance block attached.
 
-    Every stage writes through here, so no artifact can exist without the config
-    hash, seed, git commit and dirty flag that produced it. That is
-    ``CLAUDE.md`` invariant 8 made structural: a number in a document is
-    traceable because there is no other way to have written it.
+    Uses the same preparation as recoverable chain publication to attach the
+    config hash, seed, git commit and dirty flag. This records the origin needed
+    for ``CLAUDE.md`` invariant 8 without refreshing provenance during recovery.
 
     Args:
         path: Destination JSON path.
@@ -1284,9 +1355,7 @@ def write_json_artifact(
     """
     out = Path(path)
     out.parent.mkdir(parents=True, exist_ok=True)
-    document = {"provenance": provenance(config), **payload}
-    if seal_with is not None:
-        document = seal_with(json.loads(json.dumps(document, default=_json_default)))
+    document = prepare_json_artifact(payload, config, seal_with=seal_with)
     with out.open("x" if exclusive else "w", encoding="utf-8") as fh:
         json.dump(document, fh, indent=2, sort_keys=False, default=_json_default)
         fh.write("\n")

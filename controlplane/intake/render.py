@@ -82,7 +82,9 @@ def _label_lines(result: CertificationResult) -> list[str]:
         return lines
     agreement = review.agreement
     lines += ["", "  Second reviewer (label_2), which changes nothing above:"]
-    if agreement.kappa is None:
+    if agreement.n_groups is not None:
+        lines.extend(f"    {line}" for line in agreement.render().splitlines())
+    elif agreement.kappa is None:
         lines.append(f"    kappa undefined over {review.n_pairs} pairs: {agreement.undefined_reason}")
     else:
         lines.append(
@@ -259,7 +261,9 @@ def _recheck_label_lines(result) -> list[str]:
         return lines
     agreement = review.agreement
     lines += ["", "  Second reviewer (label_2), which changes no verdict:"]
-    if agreement.kappa is None:
+    if agreement.n_groups is not None:
+        lines.extend(f"    {line}" for line in agreement.render().splitlines())
+    elif agreement.kappa is None:
         lines.append(f"     kappa undefined over {review.n_pairs} pairs: {agreement.undefined_reason}")
     else:
         lines.append(

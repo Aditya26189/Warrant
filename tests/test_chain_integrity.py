@@ -376,7 +376,9 @@ def test_a_legacy_record_without_head_check_still_verifies():
     chain = legacy_state.to_payload()
     assert "head_check" not in chain and "forked_from_head" not in chain
     assert ChainState.from_payload(chain).head_check is None
-    assert _findings({"r.json": {"status": "VALID", "chain": chain}}) == []
+    result = verify_chain_records({"r.json": {"status": "VALID", "chain": chain}})
+    assert not result.findings and result.structurally_clean
+    assert not result.clean and result.integrity_status == "UNVERIFIED"
 
 
 def test_the_guarantee_names_the_statistic_and_excludes_drift():

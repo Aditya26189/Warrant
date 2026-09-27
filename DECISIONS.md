@@ -11312,3 +11312,179 @@ citations trustworthy.
 two lines, at the founder's direction, before Codex's independent review of
 `fix/chain-integrity-8a` took place. That review is still owed, and a defect it
 finds is a new fix on `main`, recorded here, not a reason to reopen the merge.
+
+## 203 - Ship customer defaults with the installed package (2026-09-23)
+
+The independent review R1 reproduced an installed wheel without config.yaml
+or controlplane.sampling. Source-checkout tests and release-import checks did
+not exercise the customer commands that require them.
+
+Keep root config.yaml as the canonical configuration. A setuptools build
+command copies its exact bytes into the wheel as controlplane/default_config.yaml;
+the source distribution includes the configuration and build helper. No second
+hand-maintained configuration is introduced. The customer CLI loads this
+resource when --config is absent; a source/editable checkout uses its canonical
+root configuration. Explicit --config still loads exactly that path, and the
+research load_config() default keeps its existing current-directory semantics.
+A missing or malformed explicit config is a bad-input error, never a fallback.
+No estimator defaults, thresholds, methods or scientific results change.
+
+Include sampling in the existing package list. Verify the actual wheel and
+console entry point from an unrelated directory, covering certification and
+refusal, label_2, planning, recheck/chain verification, release workflow and
+explicit config handling. Test a wheel rebuilt from an sdist as well. The
+ordinary test harness may reuse its environment's dependencies; CI must also
+run the installed checks with only customer dependencies plus build/test tools,
+including advertised Python 3.10 support. Record final clean-source build
+provenance separately from development-test builds.
+
+Rejected: resolving site-packages/config.yaml or the customer's incidental
+working-directory config. Neither is a resource owned by the distribution.
+Rejected: committing a duplicate default YAML which can drift independently.
+
+Build inspection also found controlplane.external and controlplane.gate absent
+from the package list. Include those existing packages too, without adding
+runtime dependencies; wheel-content regression checks cover every source
+Python module so later packages cannot be silently omitted.
+
+## 204 - Installed code must not borrow the consumer repository's commit (2026-09-24)
+
+A wheel built from 7ea49f9, installed in a virtual environment under another
+checkout, reported that checkout's dfa43d7 revision and dirty state in its
+provenance. Walking upward to any .git entry identifies the consumer repository,
+not necessarily the source of the code that executed.
+
+Before reporting Git metadata, require the executing controlplane/config.py
+path to be tracked in the candidate repository. If it is not, or Git cannot
+establish that, retain the existing unknown representation: null git_commit,
+git_branch, dirty and dirty_paths. Never substitute false for unknown dirtiness.
+Source/worktree execution retains its current commit and dirty-file checks.
+The installed-wheel regression must run below an unrelated committed Git
+repository and assert that its revision is not borrowed.
+
+The separately retained build manifest binds the candidate wheel digest to its
+archived source revision. This fix does not authenticate packages or infer a
+source revision from a version string. No measured statistics, settings or
+status decisions change; provenance fields on affected installed records do.
+
+
+## 205 - A separate drift revocation cannot be hidden by an FPR warning (2026-09-24)
+
+Audit R3 reproduced an aggregate STALE result with drift REVOKED: the observed
+FPR exceeded the budget but its lower bound did not establish a breach. An early
+return suppressed the independent drift verdict, and a later stable chain link
+could continue that warrant. Decision 194 covered simultaneous established FPR
+and drift breaches, but missed this weaker-warning case.
+
+Apply revocation precedence before missing or inconclusive FPR evidence. A
+standalone established FPR breach still revokes; a drift REVOKED finding also
+revokes regardless of the FPR result. In a chain, only the sequential statistic
+can revoke for accumulated FPR evidence, while drift revocation stands as a
+separate decision outside that statistic's guarantee. Neither warning nor absent
+FPR evidence proves that the false-positive promise holds.
+
+For retained records, a drift block whose verdict is REVOKED bars continuation
+even if an older writer stored STALE or VALID at the top level. Verification
+reports the inconsistent aggregate status, and any successor after that drift
+revocation, without rewriting the old record. This checks internal consistency;
+it does not recompute the PSI or establish the record's authenticity.
+
+Acceptance: the audit's synthetic fixture (same reference/current sample size),
+all FPR evidence states paired with drift revocation, weaker non-revoking cases,
+new CLI chains, old sealed inconsistent parents and their successors. Preserve
+smoothing-only drift warnings, existing fork/head rules and scientific artifacts.
+No statistical formula, drift threshold, null calibration, seal policy or
+concurrency protocol changes here; audit R4, R6 and R8 remain separate work.
+
+
+## 206 - Serialize local chain publication with recoverable intent (2026-09-24)
+
+Audit R4 ran two first-link commands concurrently: both read an empty head,
+accepted independent starts, wrote different sequence-one records and returned
+success. Exclusive output creation protects a filename, not the shared parent
+or head. The same race applies to two successors of one parent.
+
+On the customer CLI, hold one OS advisory lock for the canonical warrant path
+from head/parent validation through publication and head advancement. Contention
+fails promptly as bad input with a retry message; there is no silent wait,
+implicit fork or stale-lock deletion. The persistent lock file is never removed
+by normal operation; the OS releases the lock when its process exits.
+
+Before publication, atomically persist an intent containing the original sealed
+record, output destination, warrant identity and prior head. Publish a complete
+record with an atomic no-replacement operation, then atomically replace the
+head, then remove the intent. A later command under the same lock can finish
+that exact publication after interruption; it cannot recalculate a more favorable
+record. After recovery it exits with the recovered record's path, requiring an
+explicit continuation attempt. Conflicting output bytes, changed warrant/head,
+or malformed intent fail closed and preserve evidence. Existing outputs are
+never overwritten. Prepare provenance once before any temporary publication file
+is created, using the same serialization as other artifacts.
+
+The scope is cooperative processes on one supported local filesystem. Copies of
+a warrant, omitted records, deliberately deleted sidecars and rewritten hashes
+remain outside the guarantee. Network filesystem lock semantics, distributed
+consensus and universal sudden-power-loss durability are not claimed. Use
+stdlib nonblocking msvcrt byte locking on Windows and flock on POSIX; publish
+new names with hard links from fully written same-directory temporary files,
+and replace only mutable head pointers with os.replace. Unsupported filesystem
+operations fail closed, not by falling back to a racy write.
+
+Acceptance: synchronized real processes racing to start and continue a chain;
+exactly one un-forked successor; explicit forks still disclosed; a process
+exiting at each intent/record/head boundary; idempotent recovery; no replacement
+of preexisting records; changed or corrupt recovery inputs refused; actual
+installed CLI compatibility. No statistical method or frozen result changes.
+
+Primary API references checked while designing this local protocol:
+[Python msvcrt](https://docs.python.org/3/library/msvcrt.html),
+[Python fcntl](https://docs.python.org/3/library/fcntl.html),
+[Python filesystem APIs](https://docs.python.org/3.10/library/os.html),
+[POSIX link](https://pubs.opengroup.org/onlinepubs/9799919799/functions/link.html).
+These specify primitives, not a validation of this application protocol; the
+failure-injection and concurrent-process tests provide that bounded evidence.
+
+206 reference-access note: the linked Open Group pages were not retrievable
+in this session. The no-replacement behavior was cross-checked against the
+[Linux link(2) manual](https://man7.org/linux/man-pages/man2/link.2.html)
+and is exercised directly by the filesystem tests. The Python references
+above were retrieved.
+
+
+## 207 - Missing seals are unknown integrity, not verified legacy history (2026-09-25)
+
+Audit R6 removed record_sha256 from a modern chained record and changed fields
+outside its chain block. Verification listed it as unsealed but returned clean,
+so --require-clean succeeded without any checksum recomputation. Continuation
+could also admit it from a copied warrant. Missing metadata cannot establish the
+record's age or distinguish legacy data from a stripped seal.
+
+Require nonempty, fully sealed input as well as all existing checks for clean
+verification. Report integrity separately as VERIFIED, UNVERIFIED or FAILED:
+VERIFIED means reproducible record/chain checksums, never authenticated authors
+or recomputed statistics. Missing seals are UNVERIFIED; malformed or mismatching
+integrity data is FAILED. Keep the existing structural findings and add an
+explicit structurally_clean field so inspectable legacy structure is not lost.
+An absent seal is not itself proof that an edit occurred.
+
+The ordinary verify command remains read-only inspection of supplied legacy
+records and exits 0 with its explicit UNVERIFIED result. --require-clean exits 1
+when any seal is absent, even if structure has no findings. No compatibility flag
+turns unknown integrity into a clean result. Continuation requires a reproducing
+seal, with no --fork exception. Recover a verified retained copy or re-certify;
+do not silently reseal legacy evidence on the customer's behalf.
+
+This deliberately tightens two unsafe behaviors: unsealed inputs no longer
+satisfy the clean gate and cannot be continued. Their records and structural
+inspection remain available. Rewriting a record and recomputing every checksum
+remains outside the guarantee; deleting all evidence remains undetectable.
+Do not change the chain statistic, test data, protected code or record schema.
+Verification JSON gains the explicit assurance fields; existing seals are read
+unchanged.
+
+Acceptance: original strip-and-edit case must fail --require-clean; genuine
+unsealed inspection must report unknown age and no verified field assurance;
+sealed linear histories must still pass; malformed seals, mixed coverage, copied
+warrants, --fork and attempted continuation must fail without changing evidence;
+explicit resealing must remain documented as outside authentication. Run source
+and installed CLI checks plus surrounding history regressions.
