@@ -33,11 +33,35 @@ Warrant writes two families of record. They answer different questions, and
 | Recomputes itself from the input | **yes**, `release verify` | chains only, `chain verify`, and without the statistics |
 
 **The rule.** For a release decision, hand over the **release evaluation** as the
-record of the decision, and attach the **certify warrant for the same scored
-file** for its label-quality evidence. A handoff built from a certify warrant
-alone cannot say which data, which system, which detector version, or until
-when. A handoff built from a release evaluation alone cannot say how far the
-result depends on the labels being right.
+record of the decision. A certify warrant on the same scored file may be attached
+for the part of its label evidence that does not depend on a threshold. A handoff
+built from a certify warrant alone cannot say which data, which system, which
+detector version, or until when. A handoff built from a release evaluation alone
+cannot say how far the result depends on the labels being right.
+
+> [!WARNING]
+> **A shared file is not a shared operating point.** `certify` **selects** the
+> lowest threshold that meets a budget; a release evaluates the **one threshold
+> registered before scoring**. On the same rows those are usually different
+> thresholds, flagging different items, under different interval protocols --
+> one-sided at alpha for certify, a simultaneous family at alpha/5 for release.
+>
+> So **only threshold-independent evidence transfers**: Cohen's kappa over the
+> double-labelled items, its interval, the reviewed-pair counts and the 2x2
+> table. Everything computed *at the certified threshold* -- the label-error
+> ladders, the disputed flagged positives and unflagged negatives, the
+> confidence after correction -- is evidence about **certify's** operating point
+> and says nothing about the release verdict. Do not attach it as though it did
+> (R9 of `reports/PROJECT-REVIEW-2026-09-23.md`).
+>
+> A worked case from that review: 96 negatives at 0.1, four at 0.9, twenty
+> positives at 0.85. At budget 0.05 certify selects a threshold above every
+> negative and flags **nothing**, so its ladder is about a cut that fires on no
+> row; a release threshold declared at 0.8 flags 24 rows on the same file.
+>
+> **What would make the ladder transferable** is computing it at the release's
+> own threshold under the release's protocol. No command does that today: see
+> section 6, item 8.
 
 ### Who supplies and who retains each file
 
@@ -127,9 +151,9 @@ carries it.
 
 | Evidence | Release evaluation | Certify warrant | Recheck |
 |---|---|---|---|
-| How many label errors the result tolerates | **ABSENT** | `labels.sensitivity`: two exact ladders (DECISIONS 197) | `labels.sensitivity`: errors to revoke (DECISIONS 198) |
-| Second-reviewer agreement | **ABSENT** | `labels.second_review.kappa`, with interval and `n`, when a `label_2` column was supplied | same, on the recheck file |
-| Disputed items | ABSENT | `labels.second_review.disputes` | same |
+| How many label errors the result tolerates | **ABSENT** | `labels.sensitivity`: two exact ladders (DECISIONS 197). **At certify's own selected threshold**, so it does not transfer to a release threshold | `labels.sensitivity`: errors to revoke (DECISIONS 198), at the warrant's threshold |
+| Second-reviewer agreement | **ABSENT** | `labels.second_review.kappa`, with interval and `n`, when a `label_2` column was supplied. **Threshold-independent**, so this is the part that can be attached to a release | same, on the recheck file |
+| Disputed items | ABSENT | `labels.second_review.disputes`, counted **at the certified threshold** | same |
 | Blind review | declared a caller responsibility in `assumptions` | not recorded | not recorded |
 
 ### 2.6 Time, expiry and reproduction
@@ -172,6 +196,15 @@ holdout file** the release evaluated, with a `label_2` column for the
 double-labelled items. Nothing binds the two records together. Record, in the
 handoff, that both were produced from one file, and the file's release
 `data_sha256`.
+
+**Attach the agreement, not the ladder.** Kappa, its interval, the reviewed-pair
+counts and the 2x2 table are computed over the double-labelled items and involve
+no threshold, so they describe the labels of that file whatever operating point
+is used. The sensitivity ladder and the disputed counts are computed at the
+threshold `certify` selected, which is not the threshold the release registered;
+attaching them as evidence for the release verdict overstates what was measured
+(R9). Name the certified threshold beside anything you do attach, so a reader can
+see which cut it belongs to.
 
 ---
 
@@ -282,6 +315,12 @@ filled by this page, and none may be filled by hand on a sheet.
    `release verify` does for a release.
 7. **No record carries an authenticated sign-off.** Digests are checksums, not
    signatures, throughout.
+8. **No command computes label-error sensitivity at a threshold you name.**
+   `certify` selects its own, so the ladder always belongs to certify's operating
+   point. Until a fixed-threshold mode exists, a release's own label sensitivity
+   cannot be produced at all, and the handoff must say so rather than borrowing
+   certify's (R9 of `reports/PROJECT-REVIEW-2026-09-23.md`).
 
-Closing 1 to 4 means adding fields to the certify and recheck records. That is
-a schema change with its own decision, not documentation.
+Closing 1 to 4 means adding fields to the certify and recheck records. Closing 8
+means a new argument and its own decision. Both are schema or interface changes,
+not documentation.
