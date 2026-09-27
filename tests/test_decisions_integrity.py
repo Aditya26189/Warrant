@@ -204,3 +204,157 @@ def test_every_open_entry_says_what_would_close_it() -> None:
         f"only {examined} entries were examined as OPEN. Either the log has "
         "fewer left -- lower this -- or the status rule stopped matching them."
     )
+
+
+# --------------------------------------------------------------------------- #
+# The preserved parallel log (DECISIONS 202)
+#
+# Two lines committed different entries as 198, 199 and 200. `DECISIONS.md`
+# keeps one set; the other is preserved byte-for-byte in a scoped archive and
+# cited as "Codex-parallel N". The review that followed the integration noted
+# that nothing checked that archive: a citation of `Codex-parallel 999` was
+# ignored, and `DECISIONS 198a` matched the numeric 198 while meaning something
+# else. Both are regression gaps rather than evidence of a corrupted archive --
+# the bytes were checked by hand at the merge, and these tests are what keeps
+# them checked.
+# --------------------------------------------------------------------------- #
+
+ARCHIVE = PROJECT_ROOT / "docs" / "decisions" / "CODEX-PARALLEL.md"
+
+#: A row of the archive's table: cited name, heading, commits, digest, bytes.
+_ARCHIVE_ROW = re.compile(
+    r"^\| Codex-parallel (\d+) \| `([^`]+)` \| ([^|]+) \| `([0-9a-f]{64})` \| (\d+) \|$",
+    re.M,
+)
+
+#: A citation of the archive, as the repointed code and documents write it.
+_PARALLEL_CITATION = re.compile(r"Codex-parallel (?:decision )?(\d{1,3})")
+
+#: "DECISIONS 152a": a numeric citation carrying a letter. The plain citation
+#: pattern reads the digits and drops the letter, so the form is only safe when
+#: the suffixed entry exists -- 152a does, and 198a does not.
+_SUFFIXED_CITATION = re.compile(r"DECISIONS(?:\.md)?\s*(?:entry\s*)?(\d{1,3})([A-Za-z])")
+
+#: The one file allowed an unresolvable suffixed citation: the review that
+#: reported this gap quotes `DECISIONS 198a` as its example of a citation that
+#: resolves to the wrong entry. Editing a review's evidence to satisfy the test
+#: it motivated would be the wrong repair.
+_SUFFIX_EXEMPT = ("reports/PROJECT-REVIEW-2026-09-23.md",)
+
+
+def _archive_text() -> str:
+    assert ARCHIVE.is_file(), (
+        f"{ARCHIVE.relative_to(PROJECT_ROOT)} is missing. DECISIONS 202 keeps the "
+        "parallel entries there; without it every Codex-parallel citation dangles."
+    )
+    return ARCHIVE.read_text(encoding="utf-8")
+
+
+def _archive_entries() -> dict[int, bytes]:
+    """Each preserved entry's exact bytes, split as the archive says it split them."""
+    raw = ARCHIVE.read_bytes().replace(b"\r\n", b"\n")
+    marker = b"\n---\n\n## "
+    body = raw[raw.index(marker) + len(b"\n---\n\n"):]
+    starts = [m.start() for m in re.finditer(rb"^## \d+ - ", body, re.M)]
+    bounds = starts + [len(body)]
+    entries = {}
+    for index, start in enumerate(starts):
+        chunk = body[start:bounds[index + 1]]
+        number = int(re.match(rb"## (\d+) - ", chunk).group(1))
+        entries[number] = chunk
+    return entries
+
+
+def test_every_archived_entry_still_hashes_to_its_recorded_digest() -> None:
+    """The archive is preserved bytes, so a digest is the only way to say so.
+
+    An edit inside the block would otherwise read exactly like the original.
+    """
+    import hashlib
+
+    rows = _ARCHIVE_ROW.findall(_archive_text())
+    assert len(rows) >= 3, f"parsed {len(rows)} archive rows; the table shape changed"
+    entries = _archive_entries()
+    wrong = []
+    for number, _heading, _commits, digest, size in rows:
+        body = entries.get(int(number))
+        if body is None:
+            wrong.append(f"{number}: the table lists it and the archive does not hold it")
+            continue
+        actual = hashlib.sha256(body).hexdigest()
+        if actual != digest or len(body) != int(size):
+            wrong.append(
+                f"{number}: recorded {digest[:12]}/{size} bytes, found "
+                f"{actual[:12]}/{len(body)} bytes"
+            )
+    assert not wrong, (
+        "the preserved parallel entries no longer match their recorded digests:\n  "
+        + "\n  ".join(wrong)
+        + "\n\nThese bytes are a copy of another line's log. Restore them from the "
+        "commit the archive names rather than re-hashing the edit."
+    )
+
+
+def test_every_archived_entry_has_a_row_and_a_heading() -> None:
+    """A preserved entry nobody can cite is a preserved entry nobody finds."""
+    rows = {int(number) for number, *_ in _ARCHIVE_ROW.findall(_archive_text())}
+    assert rows == set(_archive_entries()), (
+        f"the table lists {sorted(rows)} and the archive holds "
+        f"{sorted(_archive_entries())}"
+    )
+
+
+def test_every_codex_parallel_citation_resolves() -> None:
+    """The check the plain citation test cannot do: a different numbering."""
+    archived = set(_archive_entries())
+    broken: dict[str, set[int]] = {}
+    for path in _tracked_text_files():
+        # The archive holds the entries, and this module names a deliberately
+        # absent number in the comment explaining what it checks.
+        if path == ARCHIVE or path.name == "test_decisions_integrity.py":
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (UnicodeDecodeError, OSError):
+            continue
+        missing = {int(n) for n in _PARALLEL_CITATION.findall(text)} - archived
+        if missing:
+            broken[str(path.relative_to(PROJECT_ROOT)).replace("\\", "/")] = missing
+    assert not broken, (
+        "these cite a Codex-parallel entry the archive does not hold:\n  "
+        + "\n  ".join(f"{name}: {sorted(numbers)}" for name, numbers in sorted(broken.items()))
+    )
+
+
+def test_no_citation_hides_a_letter_after_its_number() -> None:
+    """``DECISIONS 198a`` reads as 198 and means something else, or nothing.
+
+    The entry headings do allow a letter -- ``152a`` records what ``152``
+    pre-registered -- so the suffix has to be cited in a form the resolver reads,
+    not stuck onto a number it will silently truncate.
+    """
+    real = {f"{number}{suffix}" for number, suffix in _entries() if suffix}
+    offenders: dict[str, list[str]] = {}
+    for path in _tracked_text_files():
+        if path.name == "test_decisions_integrity.py":
+            continue
+        name = str(path.relative_to(PROJECT_ROOT)).replace("\\", "/")
+        if name in _SUFFIX_EXEMPT:
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (UnicodeDecodeError, OSError):
+            continue
+        dangling = [
+            f"{number}{suffix}"
+            for number, suffix in _SUFFIXED_CITATION.findall(text)
+            if f"{number}{suffix}" not in real
+        ]
+        if dangling:
+            offenders[name] = dangling
+    assert not offenders, (
+        "a numeric citation with a letter attached resolves to the number alone, "
+        "and these letters name no entry:\n  "
+        + "\n  ".join(f"{name}: {found}" for name, found in sorted(offenders.items()))
+        + "\n\nCite the suffixed entry that exists, or the number without the letter."
+    )
