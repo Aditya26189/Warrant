@@ -31,6 +31,7 @@
 [Quickstart](#-quickstart--certify-your-own-detector) •
 [Commands](#-the-commands) •
 [Claim table](#-the-claim-table) •
+[Product state](docs/PRODUCT-STATE.md) •
 [Architecture](#how-it-fits-together) •
 [Reproduction](#-reproduction) •
 [Documents](#-documents) •
@@ -64,6 +65,13 @@ It issues no external certificate and it is not a gateway. It is the bench
 instrument a second line of defence points at a control it is being asked to
 rely on — bounded in time, revocable when the distribution moves, and willing to
 return nothing at all.
+
+**What is actually shipped:** an installable, local scored-file command and a
+reproducible research harness. The gate, policy, drift and on-traffic studies in
+this repository are demonstrations, not a deployed customer service. No customer
+traffic, pilot or revenue has been evidenced. Read the [product-state and evidence
+map](docs/PRODUCT-STATE.md) for the implemented surfaces, verification status and
+remaining enterprise gaps before treating the claims below as a deployment claim.
 
 **Two ways to use this repository.** Run `warrant` on your own detector's scored
 file: no GPU, no model, no network, three dependencies
