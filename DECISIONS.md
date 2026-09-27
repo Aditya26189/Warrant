@@ -11582,3 +11582,51 @@ plug-in simulation attains nominal coverage, and it does not address histogram
 edges chosen from the certified data. The existing empty-bin warning, where a
 smoothed bin dominates the index, is unchanged and still the first thing to read
 on a large PSI.
+
+## 210 - An unchained recheck of a revoked warrant reports the revocation, and measures anyway (2026-09-27)
+
+- **Date:** 2026-09-27
+- **Status:** DECIDED, written before the code.
+- **Closes:** the open item carried in `reports/NEXT-STEPS-2026-09-17.md` and named
+  again in `reports/CLAUDE-INSTRUCTIONS-2026-09-23.md`: *resolve the already-known
+  unchained-recheck behaviour after chain revocation*.
+
+**What happened before.** `warrant recheck` reads the chain-head sidecar only when
+`--horizon-labels` or `--since` is given. Without them it tests the new file
+against the warrant alone, so a warrant whose chain had already REVOKED it could
+return a fresh `VALID` on stable data. Nothing in that record mentioned the
+revocation. A script reading `status` would act on it, and a person reading it
+would have to know the chain existed to know better.
+
+**Decided: report the revocation as the status, and keep the measurement.** When
+an unchained recheck finds a chain-head sidecar whose latest record REVOKED the
+warrant:
+
+- the record's `status` is `REVOKED`, and its `reason` names the revoking record
+  and says this file cannot restore the warrant;
+- every measured field is still computed and written -- the bound, the detection
+  floor, the drift verdict, the label evidence -- because the numbers are the
+  reason someone ran the command;
+- `prior_warrant` carries `chain_revoked_at`, so the record says where the
+  revocation came from rather than leaving the reader to find the sidecar;
+- the exit code is 0, as for every other verdict; `--require-valid` exits 1,
+  which is what an automated caller asked for.
+
+**Absent knowledge stays absent.** With no sidecar -- a copied warrant, a deleted
+file, a chain that never existed -- nothing is known and nothing is claimed: the
+recheck behaves exactly as it does today. The sidecar is an ordinary file, so
+this is a disclosure when the evidence is present, not a guarantee that a
+revocation can never be hidden.
+
+**Rejected: leaving the status VALID and adding a note.** A status field exists to
+be read by something that will not read the note.
+
+**Rejected: refusing to run at all (exit 2).** It is the safest-looking option and
+the least useful one: the person is asking what the new data says, the answer is
+informative, and a tool that refuses to measure teaches people to bypass it.
+Refusal is reserved for input the command cannot use.
+
+**What this does not establish.** A REVOKED status here is a statement about the
+warrant's recorded lifecycle, not a new measurement of breach; the file's own
+bound may well hold, and the record shows both. Re-certifying is the way back,
+exactly as after a chained revocation.
