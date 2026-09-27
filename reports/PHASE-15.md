@@ -93,7 +93,7 @@ checks also passed. No full-suite execution claim follows from those checks.
 - There is still no supplied interview, design-partner, customer-label, paid-pilot
   or revenue evidence. Local correctness does not establish funding prospects.
 
-## Remaining work and commercial gate
+## Open items: remaining work and the commercial gate
 
 The next release needs integration of the accumulated repair branches and actual
 full-suite/remote CI execution. The original shared checkout and other worktrees

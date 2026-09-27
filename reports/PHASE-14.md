@@ -103,7 +103,7 @@ remain pending. No new release tag is asserted by this repair checkpoint.
   reference-size calibration R8, operating-point handoff R9 and legacy monitor
   bound R10 remain open. This repair does not quietly modify protected code.
 
-## What remains and how to close it
+## Open items: what remains and how to close it
 
 Review and integrate the accumulated installed-package, Phase 13 and Phase 14
 repairs after the integration gate passes. Remote Linux and Python-version jobs

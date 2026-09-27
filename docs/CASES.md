@@ -246,10 +246,14 @@ What `warrant certify` must do with a file nobody here has seen. The procedure i
 | **the dead zone** | every verdict states its detection floor | `test_the_dead_zone_is_stated_with_every_verdict` | — |
 | the two failures | the summary keeps a broken bound and a moved distribution apart | `test_the_summary_keeps_the_two_failures_apart` | — |
 | PSI | judged against this file's own noise | `test_psi_is_judged_against_this_files_own_noise` | — |
+| **the null band** | is simulated at the reference's size, not the new file's, and the record names it | `test_a_recheck_calibrates_against_the_reference_size_it_is_given` | — |
+| a warrant that records no reference size | keeps the old band and says the band assumed one | `test_a_record_without_a_reference_size_says_the_band_assumed_one` | — |
 | PSI driven by empty bins | does not revoke | `test_a_psi_driven_by_empty_bins_does_not_revoke` | — |
 | a small file | gets no drift verdict | `test_a_small_file_gets_no_drift_verdict` | — |
 | a grouped warrant | rechecked in clusters, not items | `test_the_recheck_counts_clusters_not_items` | — |
 | a grouped warrant rechecked without groups | refused | `test_a_grouped_warrant_rechecked_without_groups_is_refused` | — |
+| **an unchained recheck of a warrant its chain revoked** | REVOKED, naming the record, with the measurement kept | `test_an_unchained_recheck_reports_the_revocation_rather_than_valid` | — |
+| the same, with no sidecar | unchanged: nothing is known and nothing is claimed | `test_without_a_sidecar_nothing_is_known_and_nothing_is_claimed` | — |
 | **a recheck size** | catches the breach it is sized for with the planned power, not half the time | `test_the_sizes_146_quoted_catch_their_breach_half_the_time` | — |
 | independent rechecks | revoke a sound detector more often the more there are | `test_more_rechecks_revoke_a_sound_detector_more_often` | `results/recheck_schedules/comparison.json` |
 
@@ -271,6 +275,8 @@ What `warrant certify` must do with a file nobody here has seen. The procedure i
 | **any stored field edited** | verify flags it; a property test over every leaf of real records | `test_every_leaf_of_every_link_edited_alone_is_flagged` | — |
 | an edited `--since` record | is not continued, and the head is unchanged | `test_an_edited_since_record_is_not_continued` | — |
 | a malformed value, or NaN | a finding, not a traceback | `test_nan_anywhere_in_a_record_is_a_finding_not_a_traceback` | — |
+| **a number too large for any arithmetic** | a `malformed` finding and exit 0, not an `OverflowError` traceback | `test_an_oversized_number_in_a_chain_block_is_a_finding_not_a_traceback` | — |
+| continuing from such a record | refused with exit 2, and no record written | `test_a_chain_cannot_be_continued_from_a_record_with_an_unusable_number` | — |
 | a record with no seal | inspectable with unknown age, not clean or verified | `test_an_unsealed_record_is_inspectable_but_not_verified_or_dated` | — |
 | the guarantee text | names the statistic and excludes drift | `test_the_guarantee_names_the_statistic_and_excludes_drift` | — |
 | `--require-clean` | turns findings or missing seals into exit 1 | `test_require_clean_turns_a_finding_into_exit_one` | — |
@@ -295,6 +301,8 @@ What `warrant certify` must do with a file nobody here has seen. The procedure i
 | case | expected behaviour | test | artifact |
 |---|---|---|---|
 | registration | freezes identity | `test_registration_roundtrip_freezes_identity` | — |
+| **an oversized number in a specification** | an input error naming the field, not a traceback | `test_an_oversized_number_in_a_release_specification_is_an_input_error` | — |
+| an ordinary specification | still registers | `test_an_ordinary_specification_still_registers` | — |
 | development and holdout ids | must be disjoint | `test_refuse_invalid_split` | — |
 | an altered or replaced contract | fails | `test_altered_contract_and_replacement_fail` | — |
 | the bounds | agree with an independent binomial tail inversion | `test_bounds_agree_with_independent_binomial_tail_inversion` | — |

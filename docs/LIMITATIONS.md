@@ -278,7 +278,9 @@ not distributed consensus, protection against removing the sidecars, a lock
 shared by separately copied warrants, or proof of durability through power loss.
 A process killed while preparing a file can leave an unreferenced temporary file;
 that file is not an accepted chain link. Unsupported operations fail explicitly.
-The unchained recheck still does not consult a revoked chain head. Local process
+The unchained recheck now consults the chain-head sidecar and reports a recorded
+revocation as the status while keeping the measurement (`DECISIONS.md` 210); with
+no sidecar, nothing is known and nothing is claimed. Local process
 and installed-wheel test evidence, plus untested platforms, are recorded in
 [PHASE-14.md](../reports/PHASE-14.md).
 

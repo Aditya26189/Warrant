@@ -81,6 +81,7 @@ distribution, and each has a different fix.
 | `REVOKED`, lower bound above the budget | the data **establishes** the rate exceeds the promise | Re-certify. The warrant is not true of this traffic |
 | `REVOKED`, distribution moved | the traffic is no longer the traffic the warrant describes | Re-certify on current traffic |
 | `UNVALIDATED` | the file had no negatives | Nothing was tested; this is not evidence the promise holds |
+| `REVOKED`, and the reason names a chain record | this warrant's own chain revoked it earlier, and the sidecar beside the warrant still says so. The measurement from this file is reported in full below the reason, including the verdict it produced on its own | Re-certify. A later file cannot restore a revoked warrant, whatever it measures (`DECISIONS.md` 210) |
 
 ### Continuing a chain (exit 2)
 
@@ -91,6 +92,7 @@ distribution, and each has a different fix.
 | `the --since record's seal does not reproduce` | the record was edited after it was written | Continue from the unedited record. The seal is a checksum, not a signature |
 | `the chain state does not reproduce its digest`, or `reads ... but its state rebuilds` | the chain block was edited | As above |
 | `the chain's ... is ..., not a number` (or `outside`, `not an integer`, `not a finite number`) | a value in the chain block is malformed | The record was damaged or written by something else. Do not continue from it |
+| `the chain's ... is an integer of N digits, which is not representable as a finite number` | a number in the record is too large for any arithmetic to use. Valid JSON carries integers of any size; this one cannot be a threshold, a count or an alpha | The record was damaged or written by something else. `chain verify` reports it as `malformed` rather than crashing (`DECISIONS.md` 208) |
 | `a chain already exists for this warrant` | a head sidecar is present | Continue with `--since` on the latest record, or start another chain deliberately with `--fork`; the fork is recorded |
 | `the --since record is not the chain's latest record` | continuing from it would drop every later link | Use the latest record, or `--fork` deliberately |
 | `this chain had a head when its last record was written and none is present now` | the sidecar was deleted, or the warrant was moved or copied | Restore the sidecar, or `--fork` knowingly |
@@ -160,7 +162,7 @@ new chain. Do not add a new seal and call that proof of the original evidence.
 | `LabelCategoryError` | a detector is pointed at a set whose labels mean something else | Recall against labels that mean something else is not recall — a PII detector measured against hallucination labels |
 | `InputError` | a customer's scored file does not meet the input contract | Its own type so that *"we cannot read your file"* is never confused with *"your detector was refused"* |
 | `ChainError` | a chained recheck cannot be started, continued or fed as asked | A revoked warrant resumed, an edited record continued, an undeclared fork, a unit counted twice |
-| `MalformedChainError` | a chain block's value is the wrong type, out of its domain, or not representable in JSON | Refused before any arithmetic, so a bad value never reaches a division or the digest |
+| `MalformedChainError` | a chain block's value is the wrong type, out of its domain, or not representable as a finite number | Refused before any arithmetic, so a bad value never reaches a division or the digest (`DECISIONS.md` 208) |
 | `RecordError` | a file handed to `chain verify` is not a readable chained recheck record | Unreadable input exits 2 rather than reading as a clean verification |
 | `BundleError` | a policy bundle is malformed or internally inconsistent | A deploy error rather than a rule silently falling through to its default |
 | `WarrantResolutionError` | a well-formed bundle asks for a claim the matrix cannot back | **Never a warning.** The bundle does not load. This is the fail-closed path |

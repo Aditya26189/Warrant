@@ -11488,3 +11488,145 @@ sealed linear histories must still pass; malformed seals, mixed coverage, copied
 warrants, --fork and attempted continuation must fail without changing evidence;
 explicit resealing must remain documented as outside authentication. Run source
 and installed CLI checks plus surrounding history regressions.
+
+## 208 - A number in a customer record is checked for representability before any arithmetic (2026-09-27)
+
+- **Date:** 2026-09-27
+- **Status:** DECIDED, written before the code.
+- **Closes:** R7 of `reports/PROJECT-REVIEW-2026-09-23.md`, in the two places it is
+  still open on `main` at `603e4e3`. Its third place, a `--since` file holding `[]`,
+  was closed by Codex before that merge and is not reopened here.
+
+**Reproduced through the public commands, on merged main.** `chain verify` on a
+record whose `chain.alpha` or `chain.horizon_units` is `10**1000` exits 1 with an
+`OverflowError` traceback. `release register` with `threshold` of `10**1000` does
+the same. Both arrive at `math.isfinite(value)`, which converts to double and
+raises before any bound check can refuse the value: the guard meant to reject the
+number is what crashes on it. `release/cli.py` catches `ValueError` and `OSError`,
+and `OverflowError` is neither.
+
+**The rule.** A number that reaches a record's validation is checked in this
+order: it is a real number and not a boolean; it is **representable as a finite
+double**; only then is it compared against its domain. A value failing any step
+is malformed input, reported the way that command reports malformed input -- a
+`malformed` finding from the verifier, which still exits 0 because findings are a
+result, and exit 2 from a command that was asked to consume the record. Never a
+traceback.
+
+**One primitive, two record families.** `controlplane/numeric.py` holds
+`finite_double`, which is the whole rule, and has no dependency beyond the
+standard library. `intake/chain.py` uses it in `_real` and `_count`; an integer
+count is bounded by representability too, because the chain's threshold is
+`horizon_units / alpha` and an unrepresentable count overflows there rather than
+at the guard. `release/contract.py` uses it for `threshold`, `max_fpr`,
+`min_recall` and `alpha`. Two copies of a numeric-domain rule drift; this is the
+defect class the seal work already met once.
+
+**Rejected: catching `OverflowError` at the CLI.** It turns the traceback into an
+exit code and leaves every library caller crashing on the same value, and it
+would make the crash a property of how the command was invoked rather than of
+the record. The catch is still added, as the outer net a public command needs,
+but it is not the repair.
+
+**Rejected: clamping an out-of-range number to the largest double.** That accepts
+a value the customer did not write, and an absurd `horizon_units` would then
+silently become a plausible one.
+
+**What this does not establish.** Representability is not plausibility: a chain
+horizon of `10**300` is representable and still absurd, and the domain checks that
+follow are what bound it. This entry is about not crashing, and about refusing
+without inventing a number.
+
+## 209 - PSI's noise band is simulated at the reference's own size, not at the new file's (2026-09-27)
+
+- **Date:** 2026-09-27
+- **Status:** DECIDED, written before the code.
+- **Closes:** R8 of `reports/PROJECT-REVIEW-2026-09-23.md`.
+
+**The defect.** `intake/recheck.py` called `simulate_null_psi(..., n=items.n,
+n_reference=items.n)`. The second argument is the size the reference bins were
+built from, and the new file's size was passed for it. The simulator in
+`drift/null_band.py` takes the two separately and resamples the reference at
+`n_reference`, precisely because the reference's own estimation error is part of
+the null: a reference built from a hundred items is noisy, and a band that
+assumes it was built from ten thousand is far too narrow.
+
+The review's counterexample: a 100-item reference against 10,000 current items
+gives PSI 0.169460. The code compared it against a null p95 of 0.003239 and
+returned STALE; the same simulator told the actual reference size returns
+0.186492, and the rule then returns STABLE. A drift warning either way is a
+statement about noise, and this one had the noise wrong by two orders of
+magnitude.
+
+**The fix needs no new field.** The reference distribution is built from *every*
+score in the certified file, so its size is the warrant's `input.n`, which every
+certify record already carries. `recheck_items` takes the size as an argument and
+the CLI reads it from the record it was given. Nothing is migrated and no old
+record is rewritten.
+
+**What a recheck now records.** The drift block names the reference size it
+calibrated against, so a reader can tell which number the band came from, and
+whether it came from the record or from the fallback below.
+
+**Legacy behaviour, stated rather than assumed.** A record that carries no
+`input.n` is from before this and cannot say how big its reference was. Drift is
+still assessed, the band is still simulated at the new file's size as it was
+before, and the record says the reference size was unknown and that the band
+assumed the two were equal. Refusing to assess drift at all would silently
+retire the check for every old warrant; reporting the same number with no note
+would keep the defect and hide it.
+
+**What this does not establish.** Passing the true reference size makes the
+simulated null the one the method describes; it does not establish that the
+plug-in simulation attains nominal coverage, and it does not address histogram
+edges chosen from the certified data. The existing empty-bin warning, where a
+smoothed bin dominates the index, is unchanged and still the first thing to read
+on a large PSI.
+
+## 210 - An unchained recheck of a revoked warrant reports the revocation, and measures anyway (2026-09-27)
+
+- **Date:** 2026-09-27
+- **Status:** DECIDED, written before the code.
+- **Closes:** the open item carried in `reports/NEXT-STEPS-2026-09-17.md` and named
+  again in `reports/CLAUDE-INSTRUCTIONS-2026-09-23.md`: *resolve the already-known
+  unchained-recheck behaviour after chain revocation*.
+
+**What happened before.** `warrant recheck` reads the chain-head sidecar only when
+`--horizon-labels` or `--since` is given. Without them it tests the new file
+against the warrant alone, so a warrant whose chain had already REVOKED it could
+return a fresh `VALID` on stable data. Nothing in that record mentioned the
+revocation. A script reading `status` would act on it, and a person reading it
+would have to know the chain existed to know better.
+
+**Decided: report the revocation as the status, and keep the measurement.** When
+an unchained recheck finds a chain-head sidecar whose latest record REVOKED the
+warrant:
+
+- the record's `status` is `REVOKED`, and its `reason` names the revoking record
+  and says this file cannot restore the warrant;
+- every measured field is still computed and written -- the bound, the detection
+  floor, the drift verdict, the label evidence -- because the numbers are the
+  reason someone ran the command;
+- `prior_warrant` carries `chain_revoked_at`, so the record says where the
+  revocation came from rather than leaving the reader to find the sidecar;
+- the exit code is 0, as for every other verdict; `--require-valid` exits 1,
+  which is what an automated caller asked for.
+
+**Absent knowledge stays absent.** With no sidecar -- a copied warrant, a deleted
+file, a chain that never existed -- nothing is known and nothing is claimed: the
+recheck behaves exactly as it does today. The sidecar is an ordinary file, so
+this is a disclosure when the evidence is present, not a guarantee that a
+revocation can never be hidden.
+
+**Rejected: leaving the status VALID and adding a note.** A status field exists to
+be read by something that will not read the note.
+
+**Rejected: refusing to run at all (exit 2).** It is the safest-looking option and
+the least useful one: the person is asking what the new data says, the answer is
+informative, and a tool that refuses to measure teaches people to bypass it.
+Refusal is reserved for input the command cannot use.
+
+**What this does not establish.** A REVOKED status here is a statement about the
+warrant's recorded lifecycle, not a new measurement of breach; the file's own
+bound may well hold, and the record shows both. Re-certifying is the way back,
+exactly as after a chained revocation.

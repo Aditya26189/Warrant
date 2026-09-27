@@ -56,10 +56,10 @@ Ordered by how much a wrong result would cost. Each names what closes it.
    the interval can be too narrow. When it lands, update `docs/INPUT.md`
    (`label_2`), `docs/LIMITATIONS.md` §3.6 and `docs/PILOT-PROTOCOL.md` §1 and §4
    to the merged behaviour.
-3. **Decide what an unchained recheck does with a revoked chain.** An unchained
-   `warrant recheck` never reads the chain head, so a warrant its chain has revoked
-   can still receive a VALID recheck on a new file. Either refuse, or print a
-   notice naming the revoking record.
+3. ~~**Decide what an unchained recheck does with a revoked chain.**~~ **Done**
+   on 2026-09-27 (`DECISIONS.md` 210): the recheck reads the sidecar, reports the
+   revocation as the status while keeping every measured field, and names the
+   revoking record. With no sidecar it behaves as before.
 4. **Bind the certify warrant.** Four gaps in `docs/EVIDENCE-HANDOFF.md` §6: a
    warrant carries no digest of its rows, no expiry, no system or detector
    identity, and an unchained recheck does not name its warrant. With them,

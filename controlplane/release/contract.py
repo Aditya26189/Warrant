@@ -8,11 +8,12 @@ from __future__ import annotations
 
 import hashlib
 import json
-import math
 from dataclasses import asdict, dataclass, fields
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
+
+from ..numeric import finite_double
 
 
 def canonical_json(value: Any) -> bytes:
@@ -74,9 +75,10 @@ class ReleaseSpec:
             if not isinstance(value, str) or not value.strip() or value != value.strip():
                 raise ValueError(f"{key} must be a nonempty, trimmed string")
         for key in ("threshold", "max_fpr", "min_recall", "alpha"):
-            value = getattr(self, key)
-            if type(value) not in (int, float) or not math.isfinite(value):
-                raise ValueError(f"{key} must be a finite number, not a boolean")
+            # Representable before finite, and finite before the ranges below:
+            # `math.isfinite` converted first and raised on an oversized integer,
+            # which is valid JSON any specification can carry (DECISIONS 208).
+            finite_double(getattr(self, key), key)
         for key in ("max_fpr", "min_recall", "alpha"):
             if not 0 < getattr(self, key) < 1:
                 raise ValueError(f"{key} must be strictly between 0 and 1")
