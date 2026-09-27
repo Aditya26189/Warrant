@@ -252,6 +252,8 @@ What `warrant certify` must do with a file nobody here has seen. The procedure i
 | a small file | gets no drift verdict | `test_a_small_file_gets_no_drift_verdict` | — |
 | a grouped warrant | rechecked in clusters, not items | `test_the_recheck_counts_clusters_not_items` | — |
 | a grouped warrant rechecked without groups | refused | `test_a_grouped_warrant_rechecked_without_groups_is_refused` | — |
+| **an unchained recheck of a warrant its chain revoked** | REVOKED, naming the record, with the measurement kept | `test_an_unchained_recheck_reports_the_revocation_rather_than_valid` | — |
+| the same, with no sidecar | unchanged: nothing is known and nothing is claimed | `test_without_a_sidecar_nothing_is_known_and_nothing_is_claimed` | — |
 | **a recheck size** | catches the breach it is sized for with the planned power, not half the time | `test_the_sizes_146_quoted_catch_their_breach_half_the_time` | — |
 | independent rechecks | revoke a sound detector more often the more there are | `test_more_rechecks_revoke_a_sound_detector_more_often` | `results/recheck_schedules/comparison.json` |
 

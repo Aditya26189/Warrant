@@ -81,6 +81,7 @@ distribution, and each has a different fix.
 | `REVOKED`, lower bound above the budget | the data **establishes** the rate exceeds the promise | Re-certify. The warrant is not true of this traffic |
 | `REVOKED`, distribution moved | the traffic is no longer the traffic the warrant describes | Re-certify on current traffic |
 | `UNVALIDATED` | the file had no negatives | Nothing was tested; this is not evidence the promise holds |
+| `REVOKED`, and the reason names a chain record | this warrant's own chain revoked it earlier, and the sidecar beside the warrant still says so. The measurement from this file is reported in full below the reason, including the verdict it produced on its own | Re-certify. A later file cannot restore a revoked warrant, whatever it measures (`DECISIONS.md` 210) |
 
 ### Continuing a chain (exit 2)
 

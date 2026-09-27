@@ -110,7 +110,7 @@ for this branch.
 - A fresh unchained recheck can still ignore a revoked chain head. The coherent
   identity/lifecycle contract requested in the handoff remains separate work.
 
-## Next work and the commercial gate
+## Open items: next work and the commercial gate
 
 Engineering should continue with transactional chain publication and recovery,
 strict integrity policy, malformed-input handling, reference-size calibration
