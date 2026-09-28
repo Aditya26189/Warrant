@@ -158,7 +158,7 @@ These use synthetic fixtures only, never the frozen scores.
 |---|---|
 | `test_release_contract.py` | Registration boundaries: identity, criteria and holdout frozen before evaluation |
 | `test_release_evaluate.py` | The statistics and the leakage checks, independently |
-| `test_release_cli.py` | The release workflow as a customer runs it |
+| `test_release_cli.py` | The release workflow as a customer runs it, including label-audit replay, second-review binding and first-invalidating counts against full re-evaluation |
 | `test_release_render.py` | The terminal summary: a timestamp cannot inject terminal output |
 
 ### Economics and the demo

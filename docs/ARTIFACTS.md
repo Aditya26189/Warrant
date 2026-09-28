@@ -209,8 +209,10 @@ field, record by record; this is the map.
 | `chain-verification.json` | `warrant chain verify` | `clean`, `structurally_clean`, `integrity_status`, `integrity_meaning`, `findings[]` (each with `kind`, `records`, `detail`), `unsealed`, `cannot_check` |
 | `warrant-plan.json` | `warrant plan` | `feasible`, `negatives_per_recheck`, `items_per_recheck`, `detection_floor`, `power_at_breach`, `false_revocation_per_recheck`, `sizes_by_power`, `cadences`, `declared_inputs`, `refusal_reason` |
 | a release contract, then `<contract>.evaluation.json` | `warrant release register`, then `evaluate` | see [RELEASE.md](RELEASE.md) |
+| `<contract>.label-audit.json` | `warrant release label-audit` after evaluation | `contract_id`, `evaluated_evidence_id`, primary and effective-row digests, `release_status_at_audit`, `sensitivity`, `second_review`, source provenance and `audit_id`; see [RELEASE.md](RELEASE.md) |
 
-The chained recheck and release evaluation have whole-record seals. A certify
+The chained recheck, release evaluation and separate label audit have
+whole-record checksums. A certify
 warrant has no seal but `warrant verify` recomputes its material fields from the
 retained scored rows (and frontier for a selected budget). Frontier and plan
 records have no standalone verifier. A new ordinary recheck binds its ordered

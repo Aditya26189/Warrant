@@ -20,13 +20,21 @@ registrations bind protocol 2 into their identity. Verification
 recomputes the measurement and reports STALE after expiry. These claims assume
 IID sampling and an untouched holdout; they do not extend across repeated studies.
 
-The additive CLI is `warrant release register|evaluate|verify`. Registration
+The additive CLI is `warrant release register|evaluate|verify`, with a separate
+`label-audit|verify-label-audit` companion (DECISIONS 216). Registration
 reads specification JSON and two ID lists. Evaluation reads identity JSON and
 the existing scored-file format, writing one companion `.evaluation.json` file
 without replacement. Verification recomputes against the retained inputs.
 `--require-valid` returns 1 for other current states; malformed input returns 2.
 Release alone opts into single-class intake so missing evidence can be recorded;
 legacy callers keep rejecting it. Synthetic human summaries suppress metrics.
+The label audit first replays the complete evaluation, then counts how many
+primary-label corrections in either adverse direction separately would make a
+VALID fixed-threshold release fail its registered FPR or recall bound. It writes
+an immutable `.label-audit.json` companion, and its verifier recomputes it from
+retained rows, optional `label_2`, contract and evaluation. This does not alter
+the threshold, release status, interval family or expiry; disputes do not prove
+primary-label errors.
 
 ---
 

@@ -325,7 +325,7 @@ the listed `--require-…` flags.
 | `warrant recheck … --horizon-labels N`, then `--since RECORD` | A year of rechecks as one sequential test | `--require-valid` and not VALID | [METHODS.md](docs/METHODS.md#16-the-chain-one-sequential-test-over-a-declared-horizon) §16 |
 | `warrant chain verify RECORD…` | Do retained record checksums and chain structure pass? | `--require-clean`: findings or missing seals fail | [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) |
 | `warrant plan -w WARRANT` | What does rechecking cost, and how often does each cadence revoke a sound detector by chance? | — | [METHODS.md](docs/METHODS.md#15-sizing-a-recheck-by-power-not-by-a-single-sufficient-count) §15 |
-| `warrant release register · evaluate · verify` | Evidence for one release decision, frozen before scoring, evaluated once, verified later | `evaluate` or `verify` with `--require-valid`, and not VALID | [RELEASE.md](docs/RELEASE.md) |
+| `warrant release register · evaluate · verify · label-audit · verify-label-audit` | Evidence for one release decision, frozen before scoring, evaluated once, verified later; a separate audit describes fixed-threshold label fragility | `evaluate` or `verify` with `--require-valid`, and not VALID | [RELEASE.md](docs/RELEASE.md) |
 
 The whole path from a scored file to a revoked warrant, as a diagram:
 [docs/DIAGRAMS.md](docs/DIAGRAMS.md) §12–14.
@@ -343,7 +343,7 @@ The whole path from a scored file to a revoked warrant, as a diagram:
 | 🔬 **Not a general result** | Measured on 2,400 TriviaQA items and hand-built PII sets, one model family (Qwen2.5-7B-Instruct, NF4), no real production traffic. |
 | 🚧 **Priced, not yet paid for** | The price list and the action gate are built (`DECISIONS.md` 146-150, 156, 183, 191): `controlplane/economics/sizing.py` and `controlplane/sampling/` compute every label budget from the one `workload` block, and each figure names the inputs it was declared on. **No production traffic and no customer exist**, so none of those budgets has been spent against real labels, and any money, headcount or ROI figure outside those modules is a declared estimate. The closure of `DECISIONS.md` 096 and 099 is recorded in [docs/LIMITATIONS.md](docs/LIMITATIONS.md) §3.1-3.2. |
 | 🧠 **Not a claim about truthfulness** | The probe is a correlational classifier over activations. It does not measure what a model believes. |
-| 🔏 **Not tamper-proof** | Chained recheck records and release evaluations are sealed; nothing else is. Every seal is a checksum, not a signature: anyone who can write the records can recompute it. |
+| 🔏 **Not tamper-proof** | Chained recheck records, release evaluations and release label-audit companions carry checksums. A checksum is not a signature: anyone who can write the records can recompute it. |
 | 🏦 **Not a compliance certificate** | The RBI crosswalk is a register of evidence types against a **draft**, not compliance approval ([docs/RBI-MRM-2026-CROSSWALK.md](docs/RBI-MRM-2026-CROSSWALK.md)). |
 
 ---

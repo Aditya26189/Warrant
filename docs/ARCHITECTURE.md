@@ -79,7 +79,7 @@ The repository is used in three ways. They share the certification statistics in
 |---|---|---|---|
 | **Who runs it** | this project, to produce its own evidence | a validation team, on its own detector | a validation team, for one release decision |
 | **Reads** | a model's activations, frozen eval sets | one scored, labelled file | a registered contract, then a scored holdout |
-| **Entry point** | `scripts/00`–`32`, `make verify` | `warrant certify`, `recheck`, `plan`, `chain verify` | `warrant release register`, `evaluate`, `verify` |
+| **Entry point** | `scripts/00`–`32`, `make verify` | `warrant certify`, `recheck`, `plan`, `chain verify` | `warrant release register`, `evaluate`, `verify`, `label-audit`, `verify-label-audit` |
 | **Package** | `extract`, `validation`, `matrix`, `drift`, `policy` | `intake`, `economics` | `release` |
 | **Writes** | `results/`, the ledger | JSON records beside the customer's file | a contract and one evaluation record |
 | **GPU** | once, for extraction | never | never |
@@ -300,6 +300,9 @@ evaluate ──► one evaluation of one fixed threshold on the holdout; a secon
                 ▼
 verify   ──► recompute metrics and decision from the retained files, check
                         identity and digests, apply expiry
+label-audit ──► after evaluation, describe separate adverse label-error
+                counts at the same fixed threshold; bind optional label_2
+verify-label-audit ──► replay that companion from the retained files
 ```
 
 It differs from `certify` in three ways that matter to a reader: the threshold is

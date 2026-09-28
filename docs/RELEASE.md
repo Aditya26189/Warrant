@@ -130,7 +130,42 @@ Verification checks the contract and evidence digests, recomputes the metrics
 and decision, checks identity and applies current expiry. `--evidence` selects
 a saved record in another location. Reordering the rows is permitted; changing
 an ID, label or score changes the semantic data hash. Unused metadata columns
-are outside that hash and are not part of the inference.
+are outside that hash and are not part of the release inference. Optional
+`label_2` is outside this evaluation hash but enters the separate label audit.
+
+## Audit label sensitivity at the registered threshold
+
+After an evaluation, run the separate audit on the **same complete holdout**.
+You may add a `label_2` column with a second reviewer's judgments while leaving
+the primary `id,label,score` values unchanged. The original release evaluation
+does not change or adopt those judgments.
+
+```shell
+python warrant.py release label-audit --contract release-contract.json --context context.json --input holdout-scores.csv
+python warrant.py release verify-label-audit --contract release-contract.json --context context.json --input holdout-scores.csv
+```
+
+The first command verifies the retained evaluation from the complete scored
+input before writing `release-contract.label-audit.json` without replacement.
+Use `--evidence` if the evaluation has been moved; `verify-label-audit` also
+accepts `--audit` for a moved companion. The second command recomputes all
+material audit fields. Both reject a changed primary score or label, or a
+changed second-review value relative to the retained audit. The audit binds
+the ordered effective rows, so restoring the same rows in a different order
+requires restoring their original order for audit replay; the release
+evaluation's own semantic hash remains order independent.
+
+For a VALID release, the companion gives two separate counts: the first number
+of flagged positives that, if actually clean, would invalidate either bound;
+and the first number of unflagged negatives that, if actually positive, would
+do so. It uses the same exact FPR and recall intervals and `alpha / 5` per
+metric as the release evaluation. It shows each finite eligible pool and the
+corrected bounds after one error. `null` means no failure within that one
+pool. It does not compute combined errors. For a REFUSED or legacy UNVALIDATED
+release, sensitivity is deliberately not computed. Optional `label_2` counts
+observed disagreements in those two pools; it does not establish which label
+is right, whether reviewers were blind, or a population error rate. A stale
+release remains stale. The audit never changes VALID, REFUSED or expiry.
 
 Exit codes: a completed measurement or verification returns zero by default;
 `--require-valid` returns one for any current state other than VALID; malformed,
@@ -154,5 +189,5 @@ absence of evidence rather than selecting easier criteria.
 The preserved runtime paths have separate OPEN audit findings: legacy recheck
 uses row-level bounds after dropping grouping, and the legacy mixture monitor
 can report revocation before its actual mixture reaches the boundary. Neither
-path is used by `release evaluate` or `release verify`. See the
+path is used by `release evaluate`, `release verify` or the label audit. See the
 [claim audit](../reports/CLAIM-AUDIT-2026-09.md) before production reliance.

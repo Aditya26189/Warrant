@@ -365,6 +365,9 @@ def test_installed_release_register_evaluate_verify(installed, tmp_path):
     assert "SYNTHETIC FIXTURE" in result.stdout
     assert _json(tmp_path / "contract.evaluation.json")["status"] == "VALID"
     installed.run(tmp_path, "release", "verify", *args, "--require-valid")
+    installed.run(tmp_path, "release", "label-audit", *args)
+    assert _json(tmp_path / "contract.label-audit.json")["sensitivity"]["computed"] is True
+    installed.run(tmp_path, "release", "verify-label-audit", *args)
     installed.run(tmp_path, "release", "evaluate", *args, expected=2)
 
 

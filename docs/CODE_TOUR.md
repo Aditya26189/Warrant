@@ -136,6 +136,7 @@ evaluates that holdout once, and expires. See [RELEASE.md](RELEASE.md).
 |---|---|
 | `contract.py` | Freezes identity, selection and holdout membership, and binds them into the contract's digest before evaluation |
 | `evaluate.py` | Fixed-holdout inference with simultaneous intervals, a data digest over the rows, and verification that recomputes every field |
+| `labels.py` | Separate fixed-threshold label-error sensitivity and observed second-review disputes, bound to a replayed evaluation; its verifier recomputes the companion without changing the verdict |
 | `render.py` | The terminal evidence, with its uncertainty and scope limits |
 | `cli.py` | Parsing and file IO for `warrant release`; no inference in the wrapper |
 
