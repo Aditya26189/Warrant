@@ -24,7 +24,10 @@ from ..validation.metrics_builder import build_warrant_metrics
 from ..validation.warrant_stats import Certification, certify_fpr, min_n_for
 from .contract import ScoredItems
 
-__all__ = ["CertificationResult", "certify_budget", "certify_items", "input_sha256"]
+__all__ = [
+    "CertificationResult", "certify_budget", "certify_items", "evidence_sha256",
+    "input_sha256",
+]
 
 
 @dataclasses.dataclass(frozen=True)
@@ -48,6 +51,7 @@ class CertificationResult:
     base_rate: float
     grouped: bool
     min_units_required: int
+    evidence_sha256: str
     threshold: Optional[float] = None
     fpr_upper_bound: Optional[float] = None
     false_positives_at_threshold: Optional[int] = None
@@ -110,6 +114,7 @@ class CertificationResult:
                 "independent_negative_units": self.negative_units,
                 "grouped": self.grouped,
                 "base_rate": self.base_rate,
+                "evidence_sha256": self.evidence_sha256,
             },
             "certification": {
                 # The level this certificate's bound was computed at. Equal to
@@ -279,6 +284,7 @@ def certify_items(
         "base_rate": items.base_rate,
         "grouped": groups is not None,
         "min_units_required": floor,
+        "evidence_sha256": evidence_sha256(items),
         "score_distribution": distribution,
         "selection": selection,
     }
@@ -377,3 +383,35 @@ def input_sha256(items: ScoredItems) -> str:
             for i, y, s, g in zip(items.ids, labels, scores, groups, strict=True)
         )
     return digest(rows)
+
+
+def evidence_sha256(items: ScoredItems) -> str:
+    """Bind every scored-file field that can affect certification (211).
+
+    The existing frontier digest intentionally excludes ``label_2`` because
+    second review changes no frontier row. A certify record also reports second
+    review, so its own binding must include that column. Order, source path and
+    ignored passthrough columns cannot alter the estimator and are excluded.
+    """
+    from ..release.contract import digest
+
+    groups = items.groups or (None,) * items.n
+    second_labels = items.second_labels or (None,) * items.n
+    rows = [
+        {
+            "item_id_sha256": digest({"item_id": item_id}),
+            "label": int(label),
+            "score": float(score),
+            "group_sha256": digest({"group": group}) if group is not None else None,
+            "label_2": second_label,
+        }
+        for item_id, label, score, group, second_label in zip(
+            items.ids, items.labels, items.scores, groups, second_labels, strict=True
+        )
+    ]
+    rows.sort(key=lambda row: row["item_id_sha256"])
+    return digest({
+        "schema": "certify-effective-rows-v1",
+        "has_second_review": items.second_labels is not None,
+        "rows": rows,
+    })
