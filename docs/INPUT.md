@@ -257,6 +257,26 @@ python warrant.py certify --input your_scores.csv --budget 0.05 --from-frontier 
 A plain `--budget` run beside a frontier record for the same file prints a notice
 asking whether you picked the budget from it.
 
+### Verify a retained certificate
+
+Keep the scored export and certificate, then replay the material fields:
+
+```bash
+warrant verify --warrant your_scores.csv.warrant.json --input your_scores.csv
+```
+
+For a certificate issued with `--from-frontier`, also pass the retained
+`--frontier your_scores.csv.frontier.json`. `VERIFIED` exits 0. A changed row,
+changed material field, changed configuration, or missing required evidence
+reports `MISMATCH` or `UNVERIFIED` and exits 1; malformed input exits 2. Legacy
+certificates without `input.evidence_sha256` cannot be verified this way.
+
+The digest covers the **ordered effective rows**: ids, labels, scores, optional
+groups and second labels. Reordering rows changes the digest because the seeded
+bootstrap uses row positions. The input path and unused extra columns are not
+covered. Verification checks arithmetic and consistency against files you
+supply; it does not authenticate their author, creation time or custody.
+
 **Nothing leaves your machine.** No network calls, no telemetry, no uploads. The
 file is read, the arithmetic is local, and the record is written next to it.
 
@@ -294,8 +314,10 @@ It also does not say:
   `warrant recheck`, or run a year of rechecks as one test with a chain. The
   README's *Keeping it true* section has the commands, and
   [METHODS.md](METHODS.md) §14–16 the reasoning.
-- **that nobody edited it.** A certify warrant carries no seal and no command
-  verifies it; keep your own copy ([LIMITATIONS.md](LIMITATIONS.md) §3.7).
+- **that nobody edited it.** `warrant verify` recomputes the material fields
+  against retained rows, but the record has no authenticated seal. Someone who
+  controls both files can rewrite them consistently; keep your own custody
+  evidence ([LIMITATIONS.md](LIMITATIONS.md) §3.7).
 
 Every message the command can print, and what to do about it, is in
 [TROUBLESHOOTING.md](TROUBLESHOOTING.md).

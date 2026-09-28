@@ -215,7 +215,13 @@ Three columns — `id`, `label` (0/1, **1 = the detector should fire**), `score`
 
 ```bash
 python warrant.py certify --input your_scores.csv --budget 0.05
+python warrant.py verify --warrant your_scores.csv.warrant.json --input your_scores.csv
 ```
+
+`verify` replays the certificate from the retained scored rows and checks its
+effective-row digest. It cannot establish who wrote the file or record; keep
+your own custody trail. A certificate selected from a frontier also needs its
+retained frontier record passed with `--frontier`.
 
 Full contract in **[docs/INPUT.md](docs/INPUT.md)**; the two examples are
 explained in [examples/README.md](examples/README.md). `pip install -e .` gives
@@ -291,16 +297,18 @@ from cached activations and reports SKIPPED without them.
 
 ## 🧰 The commands
 
-Every subcommand, the question it answers, and how its exit code reads. **A
-result exits 0**, including a refusal, a revocation and a verification with
-findings; **2** means input the command could not use; **1** appears only when
-you asked for it with a `--require-…` flag.
+Every subcommand, the question it answers, and how its exit code reads. A
+certify refusal, recheck revocation and chain inspection with findings exit 0;
+the certify-record verifier exits 0 only for `VERIFIED` and 1 for `MISMATCH` or
+`UNVERIFIED`. Input a command cannot use exits 2. Other hard-failure modes use
+the listed `--require-…` flags.
 
 | Command | Answers | Exits 1 only when | Read |
 |:---|:---|:---|:---|
 | `warrant certify -i FILE -b BUDGET` | Can this file support this false-positive budget? The lowest threshold that can, or a refusal naming what is missing | `--require-warrant` and refused | [INPUT.md](docs/INPUT.md) |
 | `warrant certify -i FILE --frontier` | What does every budget on the grid cost, in exact counts? | — | [GLOSSARY.md](docs/GLOSSARY.md#frontier) |
 | `warrant certify -i FILE -b BUDGET --from-frontier RECORD` | Certify a budget picked off the frontier, at the level the frontier held it to | `--require-warrant` and refused | [METHODS.md](docs/METHODS.md#13-the-frontier-and-the-cost-of-choosing-from-it) §13 |
+| `warrant verify -w WARRANT -i FILE [--frontier RECORD]` | Do retained rows and the certificate's material fields recompute? | Mismatch or missing evidence | [INPUT.md](docs/INPUT.md) |
 | `warrant recheck -w WARRANT -i FILE` | Does the warrant still hold on fresh data? The bound and the distribution, separately | `--require-valid` and not VALID | [METHODS.md](docs/METHODS.md#14-recheck-revoke-on-evidence-of-breach) §14 |
 | `warrant recheck … --horizon-labels N`, then `--since RECORD` | A year of rechecks as one sequential test | `--require-valid` and not VALID | [METHODS.md](docs/METHODS.md#16-the-chain-one-sequential-test-over-a-declared-horizon) §16 |
 | `warrant chain verify RECORD…` | Do retained record checksums and chain structure pass? | `--require-clean`: findings or missing seals fail | [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) |

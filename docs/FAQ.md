@@ -155,8 +155,10 @@ A chained recheck record is sealed over every field, and `warrant chain verify`
 rechecks each seal. Missing seals produce unknown integrity and cannot satisfy
 `--require-clean`; the record can still be inspected, but cannot be continued.
 A release evaluation is sealed and recomputed by
-`warrant release verify`. **A certify warrant, a frontier record, an unchained
-recheck and a plan have no seal and no verifier.** And a seal is a checksum, not
+`warrant release verify`. A certify warrant has no seal, but `warrant verify`
+binds it to the retained effective rows and recomputes material fields. A
+frontier record, an unchained recheck and a plan have no standalone verifier.
+And a seal or row digest is a checksum, not
 a signature: anyone who can write the records can recompute every seal
 consistently. It catches an edit, not a forger. [ARTIFACTS.md](ARTIFACTS.md),
 *records the customer CLI writes*.
@@ -314,8 +316,8 @@ good. It is why "just tighten the threshold" is not an available answer.
 The on-traffic estimator, its price list and the action gate, once specified and
 unbuilt, are now built; their closure is recorded in
 [LIMITATIONS.md](LIMITATIONS.md) §3.1–3.2. What remains is in §3.3–3.6 and §4:
-drift is watched on one feature, there is no labelled agent-action trace set, a
-certify warrant has no verifier, and nothing has run on a customer's traffic.
+drift is watched on one feature, there is no labelled agent-action trace set,
+certify records have no authenticated custody, and nothing has run on a customer's traffic.
 The phase reports in `reports/` say what each phase did **not** establish.
 
 ---

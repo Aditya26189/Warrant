@@ -67,6 +67,17 @@ you required.
 | `notice: ... was run on this file. If you picked this budget from it` | a frontier record for the same file sits beside it | If you chose the budget by reading the frontier, certify with `--from-frontier` so the warrant holds at the frontier's level |
 | `was not produced from ...` or `does not reproduce from ...` with `--from-frontier` | the frontier record is for another file, or was edited or truncated | Rerun `--frontier` on this file |
 
+### Verifying a retained certificate
+
+`warrant verify --warrant RECORD --input FILE` reads without writing a record.
+For a selected budget, add `--frontier RECORD` with the retained frontier. Exit
+0 means `VERIFIED`; 1 means `MISMATCH` or `UNVERIFIED`; 2 means the supplied
+input or JSON could not be used. A legacy certificate missing
+`input.evidence_sha256` is `UNVERIFIED`; recertify it from the retained rows.
+If rows or material fields differ, check that you kept the original ordered
+export and ran under the same configuration. A matching replay does not prove
+who wrote the files.
+
 ### Rechecking
 
 A recheck reports two separate things, the false-positive bound and the score
