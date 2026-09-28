@@ -179,6 +179,23 @@ def test_installed_refusal_is_a_result_with_opt_in_failure(installed, tmp_path):
     installed.run(tmp_path, *args, "--require-warrant", expected=1)
 
 
+def test_installed_certify_record_replays_and_detects_an_edit(installed, tmp_path):
+    """The wheel, not just source imports, must carry the new verifier."""
+    scores = _scores(tmp_path)
+    record = tmp_path / "issued.json"
+    installed.run(tmp_path, "certify", "-i", str(scores), "-b", ".05",
+                  "-o", str(record), "-q")
+    good = installed.run(tmp_path, "verify", "-w", str(record), "-i", str(scores))
+    assert "VERIFIED" in good.stdout
+    edited = _json(record)
+    edited["certification"]["threshold"] = 0.0
+    changed = tmp_path / "edited.json"
+    changed.write_text(json.dumps(edited), encoding="utf-8")
+    bad = installed.run(tmp_path, "verify", "-w", str(changed), "-i", str(scores),
+                        expected=1)
+    assert "MISMATCH" in bad.stdout
+
+
 def test_installed_grouped_review_withholds_population_intervals(installed, tmp_path):
     """The shipped wheel must preserve group metadata through both CLI paths."""
     source = _scores(tmp_path, second=True)

@@ -132,6 +132,24 @@ def build_parser() -> argparse.ArgumentParser:
              "frontier's row level so the pick still holds (DECISIONS 195)",
     )
 
+    verify = sub.add_parser(
+        "verify",
+        help="recompute a certify record from its retained scored file",
+        description=(
+            "Check a certify record's effective-row digest and recompute its "
+            "certificate. This verifies arithmetic, not the author's identity, "
+            "timestamp or deployment. A frontier-selected record also needs "
+            "its retained --frontier file."
+        ),
+    )
+    verify.add_argument("--warrant", "-w", required=True,
+                        help="the .warrant.json record written by certify")
+    verify.add_argument("--input", "-i", required=True,
+                        help="the retained scored CSV or JSONL used by certify")
+    verify.add_argument("--frontier", default=None,
+                        help="the retained frontier record, required for a selected budget")
+    verify.add_argument("--config", default=None, help=argparse.SUPPRESS)
+
     recheck = sub.add_parser(
         "recheck",
         help="is a warrant issued earlier still true on new data?",
@@ -288,6 +306,28 @@ def _chain(args: argparse.Namespace) -> int:
     return EXIT_OK
 
 
+def _verify(args: argparse.Namespace) -> int:
+    """Replay a scored-file certificate without changing retained evidence."""
+    from .config import load_customer_config as load_config
+    from .intake import load_scored_items
+    from .intake.verify import load_evidence_record, verify_certification
+
+    try:
+        record = load_evidence_record(args.warrant)
+        items = load_scored_items(args.input)
+        frontier_record = (
+            load_evidence_record(args.frontier) if args.frontier else None
+        )
+        result = verify_certification(
+            record, items, load_config(args.config), frontier_record=frontier_record,
+        )
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+    print(f"{result.status}: {result.reason}")
+    return EXIT_OK if result.verified else EXIT_ERROR
+
+
 def _certify(args: argparse.Namespace) -> int:
     # Deferred on purpose; see the note at the top of this module.
     from .config import load_customer_config as load_config, write_json_artifact
@@ -336,6 +376,7 @@ def _certify(args: argparse.Namespace) -> int:
         # frontier held that row to. Every refusal happens before anything is
         # written.
         from .intake.chain import canonical_sha256
+        from .intake.verify import FRONTIER_METRICS_NOTE
 
         record_path = Path(args.from_frontier)
         try:
@@ -398,12 +439,7 @@ def _certify(args: argparse.Namespace) -> int:
             "grid": [p.budget for p in recomputed],
             "row_alpha": recomputed[0].row_alpha,
             "family_alpha": recomputed[0].family_alpha,
-            "metrics_note": (
-                "Only the false-positive bound is adjusted for the pick. Recall and "
-                "precision are measured on the file the budget was picked from, and "
-                "a pick made by reading the frontier's caught and missed columns "
-                "selects on them, so they carry that optimism (DECISIONS 195)."
-            ),
+            "metrics_note": FRONTIER_METRICS_NOTE,
         }
 
     try:
@@ -770,6 +806,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     try:
         if args.command == "certify":
             return _certify(args)
+        if args.command == "verify":
+            return _verify(args)
         if args.command == "recheck":
             return _recheck(args)
         if args.command == "plan":
