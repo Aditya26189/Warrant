@@ -165,6 +165,11 @@ def test_grouped_intake_preserves_verdict_and_whole_group_sensitivity(config, tm
     result_payload, base_payload = result.to_payload(), base.to_payload()
     result_payload.pop("labels")
     base_payload.pop("labels")
+    if path == "certify":
+        # Decision 211 binds label_2 even though it cannot change the verdict.
+        assert result_payload["input"]["evidence_sha256"] != base_payload["input"]["evidence_sha256"]
+        result_payload["input"].pop("evidence_sha256")
+        base_payload["input"].pop("evidence_sha256")
     assert result_payload == base_payload
     assert result.label_sensitivity == base.label_sensitivity
     assert result.label_sensitivity.computed
