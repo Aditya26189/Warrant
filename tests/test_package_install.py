@@ -331,6 +331,11 @@ def test_installed_plan_recheck_and_chain_verification(installed, tmp_path):
     chained = tmp_path / "chained.json"
     installed.run(tmp_path, "recheck", "-w", str(warrant), "-i", str(fresh),
                   "--horizon-labels", "10000", "-o", str(chained), "-q")
+    replayed = installed.run(
+        tmp_path, "verify-chain-recheck", "-w", str(warrant),
+        "--pair", str(chained), str(fresh),
+    )
+    assert "VERIFIED" in replayed.stdout
     verification = tmp_path / "verification.json"
     installed.run(tmp_path, "chain", "verify", str(chained), "--require-clean",
                   "-o", str(verification), "-q")

@@ -12,10 +12,10 @@ from ..release.contract import canonical_json
 from .certify import evidence_sha256
 from .chain import canonical_sha256
 from .contract import ScoredItems
-from .recheck import recheck_items
+from .recheck import RecheckResult, recheck_items
 from .verify import CertificationVerification, verify_certification
 
-__all__ = ["verify_recheck"]
+__all__ = ["replay_measurement_from_warrant", "verify_recheck"]
 
 
 def _mapping(value: Any, name: str) -> dict[str, Any]:
@@ -26,6 +26,41 @@ def _mapping(value: Any, name: str) -> dict[str, Any]:
 
 def _result(status: str, reason: str) -> CertificationVerification:
     return CertificationVerification(status=status, reason=reason)
+
+
+def replay_measurement_from_warrant(
+    warrant: dict[str, Any], items: ScoredItems, config: Config,
+) -> RecheckResult:
+    """Recompute the pre-chain measurement using the issuer's warrant fields.
+
+    Both ordinary and chained replay use this adapter so the threshold,
+    reference distribution, reference sample size and alpha are read exactly
+    as ``warrant recheck`` reads them, not reinterpreted by each verifier.
+    """
+    certification = _mapping(warrant.get("certification"), "warrant.certification")
+    threshold = certification.get("threshold")
+    budget = warrant.get("budget_fpr")
+    if threshold is None or budget is None:
+        raise ValueError("warrant has no certified threshold and budget")
+    recorded_input = _mapping(warrant.get("input"), "warrant.input")
+    distribution = warrant.get("score_distribution")
+    if distribution is not None:
+        distribution = _mapping(distribution, "warrant.score_distribution")
+    try:
+        reference = (
+            EnvelopeFeature(
+                name=distribution["name"],
+                bin_edges=tuple(distribution["bin_edges"]),
+                bin_probabilities=tuple(distribution["bin_probabilities"]),
+                mean=distribution["mean"], std=distribution["std"],
+            ) if distribution else None
+        )
+    except (KeyError, TypeError, ValueError) as exc:
+        raise ValueError(f"invalid warrant.score_distribution: {exc}") from exc
+    return recheck_items(
+        config, items, budget=budget, threshold=threshold, reference=reference,
+        reference_n=recorded_input.get("n"), alpha=warrant.get("alpha"),
+    )
 
 
 def verify_recheck(
@@ -83,32 +118,10 @@ def verify_recheck(
     if provenance["config_hash"] != config.config_hash:
         return _result("MISMATCH", "current configuration differs from the recheck")
 
-    certification = _mapping(warrant.get("certification"), "warrant.certification")
-    threshold = certification.get("threshold")
-    budget = warrant.get("budget_fpr")
-    if threshold is None or budget is None:
-        raise ValueError("warrant has no certified threshold and budget")
     recorded_input = _mapping(warrant.get("input"), "warrant.input")
     if recorded_input.get("grouped") is not None and bool(recorded_input["grouped"]) != (items.groups is not None):
         return _result("MISMATCH", "fresh-file grouping differs from the certificate")
-    distribution = warrant.get("score_distribution")
-    if distribution is not None:
-        distribution = _mapping(distribution, "warrant.score_distribution")
-    try:
-        reference = (
-            EnvelopeFeature(
-                name=distribution["name"],
-                bin_edges=tuple(distribution["bin_edges"]),
-                bin_probabilities=tuple(distribution["bin_probabilities"]),
-                mean=distribution["mean"], std=distribution["std"],
-            ) if distribution else None
-        )
-    except (KeyError, TypeError, ValueError) as exc:
-        raise ValueError(f"invalid warrant.score_distribution: {exc}") from exc
-    replay = recheck_items(
-        config, items, budget=budget, threshold=threshold, reference=reference,
-        reference_n=recorded_input.get("n"), alpha=warrant.get("alpha"),
-    )
+    replay = replay_measurement_from_warrant(warrant, items, config)
     expected = dataclasses.replace(
         replay, warrant_sha256=source_digest,
         certificate_verification=source_status, evidence_sha256=binding,

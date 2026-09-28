@@ -171,6 +171,29 @@ def build_parser() -> argparse.ArgumentParser:
                                 help="the retained frontier for a selected certificate")
     verify_recheck.add_argument("--config", default=None, help=argparse.SUPPRESS)
 
+    verify_chain_recheck = sub.add_parser(
+        "verify-chain-recheck",
+        help="replay a retained linear chain prefix from its scored batches",
+        description=(
+            "Present every link from sequence 1 through the target, each with "
+            "the fresh scored file it measured. Checks seals, links, rows and "
+            "statistics. This verifies only the presented prefix, not the "
+            "current head or any unpresented fork."
+        ),
+    )
+    verify_chain_recheck.add_argument("--warrant", "-w", required=True,
+                                      help="the exact retained certificate")
+    verify_chain_recheck.add_argument(
+        "--pair", nargs=2, action="append", required=True,
+        metavar=("RECORD", "FRESH"),
+        help="one chained record and its fresh scored file; repeat in sequence",
+    )
+    verify_chain_recheck.add_argument("--certificate-input", default=None,
+                                      help="original scored file if any link claims source VERIFIED")
+    verify_chain_recheck.add_argument("--certificate-frontier", default=None,
+                                      help="retained frontier for a selected certificate")
+    verify_chain_recheck.add_argument("--config", default=None, help=argparse.SUPPRESS)
+
     recheck = sub.add_parser(
         "recheck",
         help="is a warrant issued earlier still true on new data?",
@@ -374,6 +397,36 @@ def _verify_recheck(args: argparse.Namespace) -> int:
         result = verify_recheck(
             load_evidence_record(args.record), load_evidence_record(args.warrant),
             load_scored_items(args.input), load_config(args.config),
+            certificate_items=(load_scored_items(args.certificate_input)
+                               if args.certificate_input else None),
+            frontier_record=(load_evidence_record(args.certificate_frontier)
+                             if args.certificate_frontier else None),
+        )
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+    print(f"{result.status}: {result.reason}")
+    return EXIT_OK if result.verified else EXIT_ERROR
+
+
+def _verify_chain_recheck(args: argparse.Namespace) -> int:
+    """Replay a retained linear prefix without touching its publication head."""
+    from .config import load_customer_config as load_config
+    from .intake import load_scored_items
+    from .intake.verify import load_evidence_record
+    from .intake.verify_chain_recheck import verify_chained_rechecks
+
+    if args.certificate_frontier and not args.certificate_input:
+        print("warrant: --certificate-frontier needs --certificate-input.",
+              file=sys.stderr)
+        return EXIT_BAD_INPUT
+    try:
+        pairs = [
+            (record_path, load_evidence_record(record_path), load_scored_items(fresh_path))
+            for record_path, fresh_path in args.pair
+        ]
+        result = verify_chained_rechecks(
+            load_evidence_record(args.warrant), pairs, load_config(args.config),
             certificate_items=(load_scored_items(args.certificate_input)
                                if args.certificate_input else None),
             frontier_record=(load_evidence_record(args.certificate_frontier)
@@ -925,6 +978,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             return _verify(args)
         if args.command == "verify-recheck":
             return _verify_recheck(args)
+        if args.command == "verify-chain-recheck":
+            return _verify_chain_recheck(args)
         if args.command == "recheck":
             return _recheck(args)
         if args.command == "plan":
