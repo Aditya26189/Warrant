@@ -11642,3 +11642,14 @@ exactly as after a chained revocation.
 **Failure contract.** Verified arithmetic exits 0; a mismatched or legacy record exits 1 with the reason; unreadable or malformed input exits 2. Verification reads records and labelled files but never rewrites them or consults a scientific held-out test set. It checks the current configuration hash against the retained one rather than quietly recomputing under different settings. The record's provenance, timestamps, selected budget history, and physical scorer identity remain declarations: anyone controlling all copies can rewrite and recompute a coherent set. A digest is neither a signature nor proof of pre-registration.
 
 **Rejected.** Hashing raw file bytes would change on row order, line endings, and irrelevant passthrough fields while binding less directly to the values the estimator used. Treating an unbound older record as verified would manufacture integrity evidence. Comparing only the digest without recomputing the statistical fields would miss edits to a retained threshold, bound, or label result. Automatically trusting a selected frontier record by its saved digest alone would repeat the selection-bypass failure addressed in decision 195.
+
+## 212 - Certification replay binds row order as well as row values (2026-09-28)
+
+- **Date:** 2026-09-28
+- **Status:** DECIDED before the verifier implementation; supersedes decision 211's row-order-independent digest sentence only.
+
+**Finding.** The customer metrics builder uses a seeded bootstrap that draws array positions. The same effective rows in a different order are the same empirical sample, but the finite seeded resamples can produce different interval endpoints. A verifier accepting an order-independent digest and then requiring exact recomputation would call a harmless reorder a mismatch; accepting merely approximate endpoints would weaken its check on the retained result.
+
+**Decision.** `input.evidence_sha256` binds the ordered effective row sequence, including the optional second label and group. Ignored passthrough columns, line endings, encoding and file path remain excluded. The earlier frontier `input_sha256` is intentionally unchanged and remains order-independent because its exact counts and thresholds are order-independent. A copied file can verify at a new path; a reordered file must be re-certified or restored to the original order to reproduce the same seeded intervals. The verifier will compare every material field exactly, not widen a numeric tolerance to hide this issue.
+
+**Rejected.** Reordering all rows before certification would change existing customer-facing bootstrap outputs and potentially published artifacts, beyond this bounded evidence change. Storing an additional order-independent digest would offer portability but not replace the sequence binding needed for replay.
