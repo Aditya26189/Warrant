@@ -277,6 +277,22 @@ bootstrap uses row positions. The input path and unused extra columns are not
 covered. Verification checks arithmetic and consistency against files you
 supply; it does not authenticate their author, creation time or custody.
 
+To make a recheck perform this source check before measuring a new batch:
+
+```bash
+warrant recheck --warrant your_scores.csv.warrant.json --input next_batch.csv --certificate-input your_scores.csv
+```
+
+If the certificate was selected from a frontier, add
+`--certificate-frontier your_scores.csv.frontier.json`. A failed or missing
+source check exits 2 and writes no recheck. Without `--certificate-input`, the
+recheck still runs, but its `prior_warrant.certificate_verification` reads
+`NOT_CHECKED`. Every new CLI recheck also records
+`prior_warrant.warrant_sha256`, the canonical digest of the exact certificate
+it read. This links records, but does not authenticate them or bind the **new**
+batch's rows. `VERIFIED` describes replay of the **original certificate**, not
+independent verification of the recheck's statistics or traffic provenance.
+
 **Nothing leaves your machine.** No network calls, no telemetry, no uploads. The
 file is read, the arithmetic is local, and the record is written next to it.
 

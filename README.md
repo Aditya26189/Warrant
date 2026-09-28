@@ -247,6 +247,13 @@ python warrant.py recheck --warrant your_scores.csv.warrant.json --input next_ba
 python warrant.py plan --warrant your_scores.csv.warrant.json --negative-share 0.9
 ```
 
+When you retain the original scored export, add
+`--certificate-input your_scores.csv` to have `recheck` replay the certificate
+before it measures the new batch. For a budget selected from a frontier, pass
+`--certificate-frontier your_scores.csv.frontier.json`. A failed source check
+writes no recheck record. Every new recheck names the exact certificate digest
+and records `VERIFIED` or `NOT_CHECKED`; a digest is not a signature.
+
 Rechecked every week, a detector that kept its promise is eventually revoked by
 chance; `plan` prints how likely that is for each cadence. To make a year of
 rechecks **one** test instead, declare the horizon `plan` prints once and chain
@@ -310,6 +317,7 @@ the listed `--require-…` flags.
 | `warrant certify -i FILE -b BUDGET --from-frontier RECORD` | Certify a budget picked off the frontier, at the level the frontier held it to | `--require-warrant` and refused | [METHODS.md](docs/METHODS.md#13-the-frontier-and-the-cost-of-choosing-from-it) §13 |
 | `warrant verify -w WARRANT -i FILE [--frontier RECORD]` | Do retained rows and the certificate's material fields recompute? | Mismatch or missing evidence | [INPUT.md](docs/INPUT.md) |
 | `warrant recheck -w WARRANT -i FILE` | Does the warrant still hold on fresh data? The bound and the distribution, separately | `--require-valid` and not VALID | [METHODS.md](docs/METHODS.md#14-recheck-revoke-on-evidence-of-breach) §14 |
+| `warrant recheck … --certificate-input ORIGINAL [--certificate-frontier RECORD]` | Replay the certificate before measuring new data; record which source check ran | `--require-valid` and not VALID; bad source evidence exits 2 | [INPUT.md](docs/INPUT.md) |
 | `warrant recheck … --horizon-labels N`, then `--since RECORD` | A year of rechecks as one sequential test | `--require-valid` and not VALID | [METHODS.md](docs/METHODS.md#16-the-chain-one-sequential-test-over-a-declared-horizon) §16 |
 | `warrant chain verify RECORD…` | Do retained record checksums and chain structure pass? | `--require-clean`: findings or missing seals fail | [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) |
 | `warrant plan -w WARRANT` | What does rechecking cost, and how often does each cadence revoke a sound detector by chance? | — | [METHODS.md](docs/METHODS.md#15-sizing-a-recheck-by-power-not-by-a-single-sufficient-count) §15 |

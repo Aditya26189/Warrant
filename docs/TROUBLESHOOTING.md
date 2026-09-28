@@ -78,6 +78,14 @@ If rows or material fields differ, check that you kept the original ordered
 export and ran under the same configuration. A matching replay does not prove
 who wrote the files.
 
+When `warrant recheck` uses `--certificate-input`, it performs this check
+before writing a recheck. `certificate MISMATCH` or `certificate UNVERIFIED`
+exits 2 and leaves no record; preserve the original export or recertify from
+it. A frontier-selected certificate also requires `--certificate-frontier`.
+Without the source option, `prior_warrant.certificate_verification` is
+`NOT_CHECKED`, even though the recheck still names the certificate digest.
+Malformed nested record blocks also exit 2 rather than emitting a traceback.
+
 ### Rechecking
 
 A recheck reports two separate things, the false-positive bound and the score
