@@ -169,6 +169,16 @@ def build_parser() -> argparse.ArgumentParser:
         "--input", "-i", required=True,
         help="the new .csv or .jsonl, same three columns",
     )
+    recheck.add_argument(
+        "--certificate-input", metavar="FILE",
+        help="replay the original certificate against its retained scored export "
+             "before rechecking; a mismatch or missing evidence writes no record",
+    )
+    recheck.add_argument(
+        "--certificate-frontier", metavar="RECORD",
+        help="retained frontier record, required with --certificate-input when "
+             "the certificate selected its budget from a frontier",
+    )
     recheck.add_argument("--out", "-o", default=None, help="write the JSON record here")
     recheck.add_argument("--config", default=None,
                          help=argparse.SUPPRESS)
@@ -558,10 +568,12 @@ def _revoking_record(record_path: Path) -> str:
 
 def _recheck(args: argparse.Namespace) -> int:
     # Deferred on purpose; see the note at the top of this module.
-    import json
+    import dataclasses
 
     from .config import load_customer_config as load_config, write_json_artifact
     from .intake import InputError, load_scored_items, recheck_items, render_recheck
+    from .intake.chain import canonical_sha256
+    from .intake.verify import load_evidence_record, verify_certification
     from .model import EnvelopeFeature, WarrantStatus
 
     config = load_config(args.config)
@@ -569,7 +581,36 @@ def _recheck(args: argparse.Namespace) -> int:
     if not record_path.is_file():
         print(f"warrant: no warrant record at {record_path}", file=sys.stderr)
         return EXIT_BAD_INPUT
-    record = json.loads(record_path.read_text(encoding="utf-8"))
+    try:
+        record = load_evidence_record(record_path)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+
+    if args.certificate_frontier and not args.certificate_input:
+        print("warrant: --certificate-frontier needs --certificate-input.",
+              file=sys.stderr)
+        return EXIT_BAD_INPUT
+    certificate_verification = "NOT_CHECKED"
+    if args.certificate_input:
+        try:
+            original_items = load_scored_items(args.certificate_input)
+            frontier_record = (
+                load_evidence_record(args.certificate_frontier)
+                if args.certificate_frontier else None
+            )
+            verification = verify_certification(
+                record, original_items, config, frontier_record=frontier_record,
+            )
+        except (OSError, ValueError, TypeError) as exc:
+            print(f"warrant: certificate evidence cannot be used: {exc}",
+                  file=sys.stderr)
+            return EXIT_BAD_INPUT
+        if not verification.verified:
+            print(f"warrant: certificate {verification.status}: {verification.reason}",
+                  file=sys.stderr)
+            return EXIT_BAD_INPUT
+        certificate_verification = "VERIFIED"
 
     certification = record.get("certification") or {}
     threshold = certification.get("threshold")
@@ -633,6 +674,11 @@ def _recheck(args: argparse.Namespace) -> int:
     except ValueError as exc:
         print(f"warrant: {exc}", file=sys.stderr)
         return EXIT_BAD_INPUT
+
+    result = dataclasses.replace(
+        result, warrant_sha256=canonical_sha256(record),
+        certificate_verification=certificate_verification,
+    )
 
     # A chain's parent/head checks and publication share one OS lock (206).
     # Ordinary rechecks retain their existing independent-file behavior.

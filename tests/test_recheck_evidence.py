@@ -1,0 +1,140 @@
+"""A recheck identifies and can replay the exact certificate it consumed."""
+
+from __future__ import annotations
+
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+import pytest
+
+from controlplane.intake.chain import canonical_sha256
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def _run(*args: str) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        [sys.executable, str(ROOT / "warrant.py"), *args], cwd=ROOT,
+        capture_output=True, text=True, encoding="utf-8", timeout=120,
+    )
+
+
+@pytest.fixture(scope="module")
+def issued(tmp_path_factory: pytest.TempPathFactory) -> tuple[Path, Path]:
+    directory = tmp_path_factory.mktemp("recheck-evidence")
+    scores = directory / "scores.csv"
+    scores.write_bytes((ROOT / "examples" / "certifies.csv").read_bytes())
+    warrant = directory / "issued.json"
+    made = _run("certify", "-i", str(scores), "-b", ".05", "-o", str(warrant), "-q")
+    assert made.returncode == 0, made.stderr
+    return scores, warrant
+
+
+def test_ordinary_recheck_links_exact_warrant_without_claiming_replay(
+    issued: tuple[Path, Path], tmp_path: Path,
+) -> None:
+    scores, warrant = issued
+    out = tmp_path / "ordinary.json"
+    result = _run("recheck", "-w", str(warrant), "-i", str(scores), "-o", str(out), "-q")
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(out.read_text(encoding="utf-8"))
+    original = json.loads(warrant.read_text(encoding="utf-8"))
+    assert payload["prior_warrant"]["warrant_sha256"] == canonical_sha256(original)
+    assert payload["prior_warrant"]["certificate_verification"] == "NOT_CHECKED"
+
+
+def test_checked_recheck_rejects_an_edited_certificate_before_writing(
+    issued: tuple[Path, Path], tmp_path: Path,
+) -> None:
+    scores, warrant = issued
+    good = tmp_path / "checked.json"
+    checked = _run("recheck", "-w", str(warrant), "-i", str(scores),
+                   "--certificate-input", str(scores), "-o", str(good), "-q")
+    assert checked.returncode == 0, checked.stderr
+    payload = json.loads(good.read_text(encoding="utf-8"))
+    assert payload["prior_warrant"]["certificate_verification"] == "VERIFIED"
+
+    edited = json.loads(warrant.read_text(encoding="utf-8"))
+    edited["certification"]["threshold"] = 0.0
+    bad_warrant = tmp_path / "edited.json"
+    bad_warrant.write_text(json.dumps(edited), encoding="utf-8")
+    refused = tmp_path / "must-not-exist.json"
+    result = _run("recheck", "-w", str(bad_warrant), "-i", str(scores),
+                  "--certificate-input", str(scores), "-o", str(refused))
+    assert result.returncode == 2
+    assert "MISMATCH" in result.stderr
+    assert "Traceback" not in result.stderr
+    assert not refused.exists()
+
+    altered_scores = tmp_path / "altered-scores.csv"
+    lines = scores.read_text(encoding="utf-8").splitlines()
+    cells = lines[1].split(",")
+    cells[2] = str(float(cells[2]) + 0.01)
+    lines[1] = ",".join(cells)
+    altered_scores.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    changed_input = _run("recheck", "-w", str(warrant), "-i", str(scores),
+                         "--certificate-input", str(altered_scores), "-o", str(refused))
+    assert changed_input.returncode == 2
+    assert "MISMATCH" in changed_input.stderr
+    assert not refused.exists()
+
+
+def test_selected_certificate_requires_retained_frontier(
+    issued: tuple[Path, Path], tmp_path: Path,
+) -> None:
+    scores, _ = issued
+    frontier = tmp_path / "frontier.json"
+    assert _run("certify", "-i", str(scores), "--frontier", "-o", str(frontier), "-q").returncode == 0
+    warrant = tmp_path / "selected.json"
+    made = _run("certify", "-i", str(scores), "-b", ".05", "--from-frontier",
+                str(frontier), "-o", str(warrant), "-q")
+    assert made.returncode == 0, made.stderr
+    out = tmp_path / "selected-recheck.json"
+    missing = _run("recheck", "-w", str(warrant), "-i", str(scores),
+                   "--certificate-input", str(scores), "-o", str(out))
+    assert missing.returncode == 2
+    assert "UNVERIFIED" in missing.stderr
+    assert not out.exists()
+    good = _run("recheck", "-w", str(warrant), "-i", str(scores),
+                "--certificate-input", str(scores), "--certificate-frontier",
+                str(frontier), "-o", str(out), "-q")
+    assert good.returncode == 0, good.stderr
+    assert json.loads(out.read_text(encoding="utf-8"))["prior_warrant"]["certificate_verification"] == "VERIFIED"
+
+    alone = _run("recheck", "-w", str(warrant), "-i", str(scores),
+                 "--certificate-frontier", str(frontier), "-o", str(tmp_path / "alone.json"))
+    assert alone.returncode == 2
+    assert "needs --certificate-input" in alone.stderr
+    assert not (tmp_path / "alone.json").exists()
+
+
+@pytest.mark.parametrize("raw,reason", [
+    ('{"input": {}, "input": {}}', "duplicate JSON key"),
+    ('{"budget_fpr": NaN}', "non-finite JSON number"),
+])
+def test_ambiguous_certificate_is_bad_input(
+    issued: tuple[Path, Path], tmp_path: Path, raw: str, reason: str,
+) -> None:
+    scores, _ = issued
+    warrant = tmp_path / "ambiguous.json"
+    warrant.write_text(raw, encoding="utf-8")
+    out = tmp_path / "must-not-exist.json"
+    result = _run("recheck", "-w", str(warrant), "-i", str(scores), "-o", str(out))
+    assert result.returncode == 2
+    assert reason in result.stderr
+    assert "Traceback" not in result.stderr
+    assert not out.exists()
+
+
+def test_chained_recheck_repeats_its_existing_warrant_digest(
+    issued: tuple[Path, Path], tmp_path: Path,
+) -> None:
+    scores, warrant = issued
+    out = tmp_path / "chained.json"
+    result = _run("recheck", "-w", str(warrant), "-i", str(scores),
+                  "--horizon-labels", "10000", "-o", str(out), "-q")
+    assert result.returncode == 0, result.stderr
+    payload = json.loads(out.read_text(encoding="utf-8"))
+    assert payload["prior_warrant"]["warrant_sha256"] == payload["chain"]["warrant_sha256"]

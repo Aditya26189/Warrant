@@ -132,6 +132,12 @@ class RecheckResult:
     #: sidecar saying so: ``"record NNNN"`` (``DECISIONS.md`` 210). ``None`` when
     #: there is no sidecar, or its latest record did not revoke.
     chain_revoked_at: Optional[str] = None
+    #: Canonical digest of the exact retained certificate the CLI read (213).
+    #: Direct statistical callers have no source record and leave this absent.
+    warrant_sha256: Optional[str] = None
+    #: VERIFIED only after replay against retained certificate input; otherwise
+    #: NOT_CHECKED. This is arithmetic consistency, never authenticated custody.
+    certificate_verification: str = "NOT_CHECKED"
     #: Items the reference bins were built from, which is what the null band is
     #: simulated at. ``None`` when the warrant does not say, in which case the
     #: band falls back to this file's size and the record says so (209).
@@ -157,16 +163,20 @@ class RecheckResult:
         return self.status is WarrantStatus.VALID
 
     def to_payload(self) -> dict[str, Any]:
+        prior_warrant: dict[str, Any] = {
+            "budget_fpr": self.budget,
+            "threshold": self.threshold,
+            # Where the chain revoked it, so the record says so rather than
+            # leaving the reader to find the sidecar (DECISIONS 210).
+            "chain_revoked_at": self.chain_revoked_at,
+        }
+        if self.warrant_sha256 is not None:
+            prior_warrant["warrant_sha256"] = self.warrant_sha256
+            prior_warrant["certificate_verification"] = self.certificate_verification
         return {
             "status": self.status.value,
             "reason": self.reason,
-            "prior_warrant": {
-                "budget_fpr": self.budget,
-                "threshold": self.threshold,
-                # Where the chain revoked it, so the record says so rather than
-                # leaving the reader to find the sidecar (DECISIONS 210).
-                "chain_revoked_at": self.chain_revoked_at,
-            },
+            "prior_warrant": prior_warrant,
             "detection": {
                 "smallest_detectable_rate": self.detectable_floor,
                 "negatives_here": self.n_negative_now,

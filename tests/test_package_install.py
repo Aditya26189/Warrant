@@ -196,6 +196,33 @@ def test_installed_certify_record_replays_and_detects_an_edit(installed, tmp_pat
     assert "MISMATCH" in bad.stdout
 
 
+def test_installed_recheck_links_and_checks_its_certificate(installed, tmp_path):
+    """The minimal installed CLI must keep the source evidence guard usable."""
+    scores = _scores(tmp_path)
+    warrant = tmp_path / "issued.json"
+    installed.run(tmp_path, "certify", "-i", str(scores), "-b", ".05",
+                  "-o", str(warrant), "-q")
+    out = tmp_path / "recheck.json"
+    installed.run(tmp_path, "recheck", "-w", str(warrant), "-i", str(scores),
+                  "--certificate-input", str(scores), "-o", str(out), "-q")
+    from controlplane.intake.chain import canonical_sha256
+    prior = _json(out)["prior_warrant"]
+    assert prior["warrant_sha256"] == canonical_sha256(_json(warrant))
+    assert prior["certificate_verification"] == "VERIFIED"
+
+    changed = _json(warrant)
+    changed["certification"]["threshold"] = 0.0
+    edited = tmp_path / "edited-warrant.json"
+    edited.write_text(json.dumps(changed), encoding="utf-8")
+    refused = tmp_path / "refused-recheck.json"
+    result = installed.run(
+        tmp_path, "recheck", "-w", str(edited), "-i", str(scores),
+        "--certificate-input", str(scores), "-o", str(refused), expected=2,
+    )
+    assert "MISMATCH" in result.stderr
+    assert not refused.exists()
+
+
 def test_installed_grouped_review_withholds_population_intervals(installed, tmp_path):
     """The shipped wheel must preserve group metadata through both CLI paths."""
     source = _scores(tmp_path, second=True)
