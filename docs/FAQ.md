@@ -157,7 +157,9 @@ rechecks each seal. Missing seals produce unknown integrity and cannot satisfy
 A release evaluation is sealed and recomputed by
 `warrant release verify`. A certify warrant has no seal, but `warrant verify`
 binds it to the retained effective rows and recomputes material fields. A
-frontier record, an unchained recheck and a plan have no standalone verifier.
+frontier record and a plan have no standalone verifier. A new ordinary recheck
+binds its fresh effective rows and `warrant verify-recheck` recomputes its
+material fields; chained sequential decisions still need retained history.
 And a seal or row digest is a checksum, not
 a signature: anyone who can write the records can recompute every seal
 consistently. It catches an edit, not a forger. [ARTIFACTS.md](ARTIFACTS.md),

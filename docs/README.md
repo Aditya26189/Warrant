@@ -108,7 +108,7 @@
 | 🏦 [RBI-MRM-2026-CROSSWALK.md](RBI-MRM-2026-CROSSWALK.md) | Which paragraphs of the RBI's **draft** model-risk guidance can a warrant supply evidence for, which only in part, and which not at all? Generated; a register, not a compliance claim |
 | 🚚 [PATHS.md](PATHS.md) | What moved on 2026-08-29 and where it went |
 | 📈 [../results/RESULTS.md](../results/RESULTS.md) | The rendered results, with fixture numbers refused rather than printed |
-| 📑 `reports/PHASE-<N>.md` | One report per sprint, leading with the answer; [PHASE-12.md](../reports/PHASE-12.md) closes sprint 12; [PHASE-15.md](../reports/PHASE-15.md) records an earlier repair checkpoint; [PHASE-16.md](../reports/PHASE-16.md) audits the product state; [PHASE-17.md](../reports/PHASE-17.md) records certificate replay; [PHASE-18.md](../reports/PHASE-18.md) records recheck evidence linkage |
+| 📑 `reports/PHASE-<N>.md` | One report per sprint, leading with the answer; [PHASE-12.md](../reports/PHASE-12.md) closes sprint 12; [PHASE-15.md](../reports/PHASE-15.md) records an earlier repair checkpoint; [PHASE-16.md](../reports/PHASE-16.md) audits the product state; [PHASE-17.md](../reports/PHASE-17.md) records certificate replay; [PHASE-18.md](../reports/PHASE-18.md) records recheck evidence linkage; [PHASE-19.md](../reports/PHASE-19.md) records fresh-batch binding and ordinary replay |
 | 🧭 [NEXT-STEPS-2026-09-17.md](../reports/NEXT-STEPS-2026-09-17.md) | What to do next, after sprint 12: the decisions only the founder can make, then the engineering, in order |
 
 ## 🎥 Presentation and the business case

@@ -86,6 +86,16 @@ Without the source option, `prior_warrant.certificate_verification` is
 `NOT_CHECKED`, even though the recheck still names the certificate digest.
 Malformed nested record blocks also exit 2 rather than emitting a traceback.
 
+`warrant verify-recheck --record RECORD --warrant CERT --input FRESH` checks a
+new ordinary recheck against its retained fresh rows without writing anything.
+If the record says its source certificate was `VERIFIED`, also supply
+`--certificate-input ORIGINAL` and, for a selected certificate,
+`--certificate-frontier FRONTIER`. A changed fresh row or material statistic is
+`MISMATCH` (exit 1). A legacy record without `now.evidence_sha256`, a missing
+required original export, or a chained record is `UNVERIFIED` (exit 1).
+Malformed input exits 2. Keep the original ordered files if you need a later
+replay; the verifier cannot reconstruct them from the digest.
+
 ### Rechecking
 
 A recheck reports two separate things, the false-positive bound and the score

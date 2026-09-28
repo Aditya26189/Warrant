@@ -35,6 +35,7 @@ or a notebook is unreviewable.
 | replay a retained certificate against scored rows | `intake/verify.py` |
 | see exactly what a customer's file must contain | `intake/contract.py` |
 | recheck a warrant on new data | `intake/recheck.py` |
+| replay an ordinary recheck from retained fresh rows | `intake/verify_recheck.py` |
 | understand a chain of rechecks and what it guarantees | `intake/chain.py` |
 | audit a kept set of chain records | `intake/chain_verify.py` |
 | see how far a certificate depends on its labels | `intake/labels.py` |

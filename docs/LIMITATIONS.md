@@ -334,12 +334,15 @@ recomputes each seal (`DECISIONS.md` addendum 2026-09-17). A release evaluation 
 sealed and recomputed by `warrant release verify`. A `certify` warrant binds its
 ordered effective scored rows and `warrant verify` recomputes its material fields
 from retained evidence (DECISIONS 211-212). It has no whole-record seal or
-authenticated author. A frontier record, an unchained recheck and a `plan` record
-have no standalone verifier. Every new recheck names the exact certificate
+authenticated author. A frontier record and a `plan` record have no standalone
+verifier. Every new recheck names the exact certificate
 digest it read. With `--certificate-input`, `recheck` replays that certificate
 against retained original rows before writing; otherwise it records
-`NOT_CHECKED`. This does not bind or replay the fresh recheck rows, and neither
-path authenticates the certificate writer (DECISIONS 213).
+`NOT_CHECKED`. Every new CLI recheck binds its fresh ordered effective rows;
+`warrant verify-recheck` recomputes an ordinary recheck from retained files.
+It refuses to claim replay of a chained or previously chain-revoked record
+without its sequential history. Neither path authenticates the certificate
+writer, collection time or traffic origin (DECISIONS 213–214).
 
 Two limits apply even to the sealed records:
 

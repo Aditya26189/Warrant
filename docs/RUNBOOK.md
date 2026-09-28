@@ -43,7 +43,8 @@ JSONL of `id,label,score` (the contract is [INPUT.md](INPUT.md)), sends nothing
 over the network, and writes one JSON record per run.
 
 Most commands exit 0 when they produce a result, **including a refusal or a
-revocation**. The certify-record `warrant verify` command exits 0 for `VERIFIED`
+revocation**. The read-only `warrant verify` and `warrant verify-recheck`
+commands exit 0 for `VERIFIED`
 and 1 for `MISMATCH` or `UNVERIFIED`. Other hard failures use an explicit
 `--require-warrant`, `--require-valid` or `--require-clean` flag. Exit 2 means
 the input could not be used: a malformed file, missing record, or chain that
@@ -57,6 +58,7 @@ may not be continued.
 | `warrant verify -w FILE.warrant.json -i FILE [--frontier FILE.frontier.json]` | a retained certificate, its scored file, and a frontier if selected | nothing | Does the effective-row digest and every material certificate field recompute? It checks arithmetic, not authorship |
 | `warrant recheck -w WARRANT -i NEW` | a warrant and a fresh file | `NEW.recheck.json` | Does the promise still hold on new data? The bound and the score distribution are reported separately |
 | `warrant recheck -w WARRANT -i NEW --certificate-input ORIGINAL [--certificate-frontier RECORD]` | the warrant, fresh file and retained original evidence | `NEW.recheck.json` | Replays the original certificate before measuring the new file; a mismatch, unverified legacy record or missing selected frontier exits 2 with no output |
+| `warrant verify-recheck --record NEW.recheck.json -w WARRANT -i NEW [--certificate-input ORIGINAL --certificate-frontier RECORD]` | an ordinary recheck, exact certificate and retained fresh scored rows; original evidence if its source grade is VERIFIED | nothing | Checks the fresh-row digest and recomputes the ordinary measurement. Chained and legacy unbound records remain UNVERIFIED |
 | `warrant recheck -w WARRANT -i NEW --horizon-labels N` | as above | `NEW.recheck-0001.json`, and `WARRANT.chain-head` | Start a chain: a year of rechecks tested as one sequence ([DECISIONS 193](../DECISIONS.md)) |
 | `warrant recheck -w WARRANT -i NEW --since RECORD` | the previous link too | `NEW.recheck-NNNN.json`, and moves the head | Continue a chain from its latest record |
 | `warrant plan -w WARRANT --negative-share S` | a warrant | `warrant-plan.json` | How many labels a recheck needs to catch a breach, and what each cadence costs |

@@ -130,7 +130,7 @@ has seen.
 | `test_certify_verification.py` | Retained certificate replay detects row or material-field edits, requires a selected frontier, and distinguishes legacy unverified records |
 | `test_frontier_selection.py` | The frontier-selection study measures what it says it measures |
 | `test_recheck.py` | A recheck keeps the broken bound and the moved distribution apart, and revokes on the lower bound |
-| `test_recheck_evidence.py` | Every new CLI recheck names the exact certificate; optional replay refuses edited, missing or malformed source evidence before writing, including selected frontiers and chained records |
+| `test_recheck_evidence.py` | Every new CLI recheck names its exact certificate and binds fresh ordered effective rows; optional source replay refuses edited, missing or malformed evidence before writing; ordinary replay detects changed fresh rows and statistics while declining to call a chained record verified |
 | `test_recheck_groups.py` | A grouped warrant is rechecked in the unit it was certified in |
 | `test_recheck_power.py` | A recheck's sample size is a probability of catching a breach, not a single sufficient count |
 | `test_label_sensitivity.py` | A certificate's label-error ladders, and a `label_2` column that changes **no** verdict even when it contradicts every label |

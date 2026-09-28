@@ -289,9 +289,20 @@ source check exits 2 and writes no recheck. Without `--certificate-input`, the
 recheck still runs, but its `prior_warrant.certificate_verification` reads
 `NOT_CHECKED`. Every new CLI recheck also records
 `prior_warrant.warrant_sha256`, the canonical digest of the exact certificate
-it read. This links records, but does not authenticate them or bind the **new**
-batch's rows. `VERIFIED` describes replay of the **original certificate**, not
-independent verification of the recheck's statistics or traffic provenance.
+it read, and `now.evidence_sha256` over the **new** batch's ordered effective
+rows. To independently replay an ordinary recheck:
+
+```bash
+warrant verify-recheck --record next_batch.csv.recheck.json --warrant your_scores.csv.warrant.json --input next_batch.csv --certificate-input your_scores.csv
+```
+
+Omit `--certificate-input` only when the record says `NOT_CHECKED`; a record
+that claims source `VERIFIED` must replay the original certificate again. For
+a selected certificate, also pass `--certificate-frontier` with its retained
+frontier record. `VERIFIED` exits 0, `MISMATCH` or `UNVERIFIED` exits 1, and
+malformed evidence exits 2. Legacy rechecks without a fresh-row binding and
+chained rechecks return `UNVERIFIED`. This verifies arithmetic against the
+files supplied, not their author, collection time or traffic provenance.
 
 **Nothing leaves your machine.** No network calls, no telemetry, no uploads. The
 file is read, the arithmetic is local, and the record is written next to it.
