@@ -93,11 +93,16 @@ it is not a claim of NIST conformance.
 The [LangSmith evaluation documentation](https://docs.langchain.com/langsmith/evaluation-types)
 already describes offline datasets, reference answers, online evaluation and
 human review. **Inference:** a generic evaluation dashboard is not a credible
-unique wedge here. The narrower candidate is a defensible release decision:
+unique wedge here. [Braintrust's current CI/CD page](https://www.braintrust.dev/learn/ci-cd/v0)
+also advertises pull-request evaluations, threshold-based merge blocking and
+experiment comparisons. **Inference:** even a generic release gate is an
+incumbent feature. The narrower candidate is a *defensible* release decision:
 criteria registered before scoring, exact replay, visible uncertainty, and
-label fragility at the same operating point. That is a product hypothesis,
-not proof of a budget holder or a procurement path. This repo still lacks a
-customer-labelled deployment sample and any measured buyer willingness to pay.
+label fragility at the same operating point. No buyer has said that this
+distinction matters more than an incumbent's integrations. It remains a
+product hypothesis, not proof of a budget holder or procurement path. This
+repo still lacks a customer-labelled deployment sample and measured buyer
+willingness to pay.
 
 ## What this does not establish
 
