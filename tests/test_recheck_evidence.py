@@ -80,6 +80,16 @@ def test_checked_recheck_rejects_an_edited_certificate_before_writing(
     assert "MISMATCH" in changed_input.stderr
     assert not refused.exists()
 
+    legacy = json.loads(warrant.read_text(encoding="utf-8"))
+    del legacy["input"]["evidence_sha256"]
+    old_warrant = tmp_path / "legacy.json"
+    old_warrant.write_text(json.dumps(legacy), encoding="utf-8")
+    unverified = _run("recheck", "-w", str(old_warrant), "-i", str(scores),
+                      "--certificate-input", str(scores), "-o", str(refused))
+    assert unverified.returncode == 2
+    assert "UNVERIFIED" in unverified.stderr
+    assert not refused.exists()
+
 
 def test_selected_certificate_requires_retained_frontier(
     issued: tuple[Path, Path], tmp_path: Path,
@@ -134,10 +144,12 @@ def test_chained_recheck_repeats_its_existing_warrant_digest(
     scores, warrant = issued
     out = tmp_path / "chained.json"
     result = _run("recheck", "-w", str(warrant), "-i", str(scores),
-                  "--horizon-labels", "10000", "-o", str(out), "-q")
+                  "--certificate-input", str(scores), "--horizon-labels", "10000",
+                  "-o", str(out), "-q")
     assert result.returncode == 0, result.stderr
     payload = json.loads(out.read_text(encoding="utf-8"))
     assert payload["prior_warrant"]["warrant_sha256"] == payload["chain"]["warrant_sha256"]
+    assert payload["prior_warrant"]["certificate_verification"] == "VERIFIED"
 
 
 @pytest.mark.parametrize("field", ["certification", "input", "score_distribution"])
