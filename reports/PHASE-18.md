@@ -68,9 +68,14 @@ repair, the new suite together with neighboring CLI-record cases passed
 **16 tests**. Two final cases passed after adding explicit legacy refusal and
 guarded chained publication. The installed-wheel test exercised certificate
 issuance, guarded recheck and tampered-certificate refusal and passed **1
-test**. Ruff and Python compilation passed for the touched code. The final
-documentation, claim and inventory gates are recorded separately after a
-clean-source refresh. Test collection alone does not establish execution.
+test** again after the final parser repair. Ruff and Python compilation passed
+for the touched code. After a clean-source refresh, the generated inventory
+recorded **2,067 collected tests**, up from **2,055**; that is a collection
+count, not a full-suite execution result. The final documentation, claim,
+decision, report, packaging and inventory guard batch passed **212 tests**.
+`python scripts/verify.py --no-activations` reproduced **92/92** published
+claims and **25/25** frozen-score comparisons. The activation tier was
+explicitly SKIPPED.
 
 The tests use the repository's synthetic scored example and a wheel installed
 in an isolated customer environment. They check a changed certificate field,
