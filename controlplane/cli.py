@@ -150,6 +150,27 @@ def build_parser() -> argparse.ArgumentParser:
                         help="the retained frontier record, required for a selected budget")
     verify.add_argument("--config", default=None, help=argparse.SUPPRESS)
 
+    verify_recheck = sub.add_parser(
+        "verify-recheck",
+        help="replay an ordinary recheck against retained fresh scored rows",
+        description=(
+            "Check an ordinary recheck's fresh-row binding and recompute its "
+            "measurement. Chained records need retained chain history and are "
+            "not verified by this command."
+        ),
+    )
+    verify_recheck.add_argument("--record", required=True,
+                                help="the .recheck.json record to replay")
+    verify_recheck.add_argument("--warrant", "-w", required=True,
+                                help="the exact retained certificate")
+    verify_recheck.add_argument("--input", "-i", required=True,
+                                help="the retained fresh scored CSV or JSONL")
+    verify_recheck.add_argument("--certificate-input", default=None,
+                                help="the original scored file, required if the recheck says VERIFIED")
+    verify_recheck.add_argument("--certificate-frontier", default=None,
+                                help="the retained frontier for a selected certificate")
+    verify_recheck.add_argument("--config", default=None, help=argparse.SUPPRESS)
+
     recheck = sub.add_parser(
         "recheck",
         help="is a warrant issued earlier still true on new data?",
@@ -330,6 +351,33 @@ def _verify(args: argparse.Namespace) -> int:
         )
         result = verify_certification(
             record, items, load_config(args.config), frontier_record=frontier_record,
+        )
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+    print(f"{result.status}: {result.reason}")
+    return EXIT_OK if result.verified else EXIT_ERROR
+
+
+def _verify_recheck(args: argparse.Namespace) -> int:
+    """Replay fresh-file arithmetic without changing retained evidence."""
+    from .config import load_customer_config as load_config
+    from .intake import load_scored_items
+    from .intake.verify import load_evidence_record
+    from .intake.verify_recheck import verify_recheck
+
+    if args.certificate_frontier and not args.certificate_input:
+        print("warrant: --certificate-frontier needs --certificate-input.",
+              file=sys.stderr)
+        return EXIT_BAD_INPUT
+    try:
+        result = verify_recheck(
+            load_evidence_record(args.record), load_evidence_record(args.warrant),
+            load_scored_items(args.input), load_config(args.config),
+            certificate_items=(load_scored_items(args.certificate_input)
+                               if args.certificate_input else None),
+            frontier_record=(load_evidence_record(args.certificate_frontier)
+                             if args.certificate_frontier else None),
         )
     except (OSError, ValueError, TypeError) as exc:
         print(f"warrant: {exc}", file=sys.stderr)
@@ -572,6 +620,7 @@ def _recheck(args: argparse.Namespace) -> int:
 
     from .config import load_customer_config as load_config, write_json_artifact
     from .intake import InputError, load_scored_items, recheck_items, render_recheck
+    from .intake.certify import evidence_sha256
     from .intake.chain import canonical_sha256
     from .intake.verify import load_evidence_record, verify_certification
     from .model import EnvelopeFeature, WarrantStatus
@@ -697,6 +746,7 @@ def _recheck(args: argparse.Namespace) -> int:
     result = dataclasses.replace(
         result, warrant_sha256=canonical_sha256(record),
         certificate_verification=certificate_verification,
+        evidence_sha256=evidence_sha256(items),
     )
 
     # A chain's parent/head checks and publication share one OS lock (206).
@@ -873,6 +923,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             return _certify(args)
         if args.command == "verify":
             return _verify(args)
+        if args.command == "verify-recheck":
+            return _verify_recheck(args)
         if args.command == "recheck":
             return _recheck(args)
         if args.command == "plan":

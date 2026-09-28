@@ -10,6 +10,8 @@ from pathlib import Path
 import pytest
 
 from controlplane.intake.chain import canonical_sha256
+from controlplane.intake.certify import evidence_sha256
+from controlplane.intake.contract import load_scored_items
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -43,6 +45,98 @@ def test_ordinary_recheck_links_exact_warrant_without_claiming_replay(
     original = json.loads(warrant.read_text(encoding="utf-8"))
     assert payload["prior_warrant"]["warrant_sha256"] == canonical_sha256(original)
     assert payload["prior_warrant"]["certificate_verification"] == "NOT_CHECKED"
+    assert payload["now"]["evidence_sha256"] == evidence_sha256(load_scored_items(scores))
+
+    replay = _run("verify-recheck", "--record", str(out), "--warrant", str(warrant),
+                  "--input", str(scores))
+    assert replay.returncode == 0, replay.stderr
+    assert "VERIFIED" in replay.stdout and "NOT_CHECKED" in replay.stdout
+
+
+def test_recheck_replay_detects_changed_batch_and_statistic(
+    issued: tuple[Path, Path], tmp_path: Path,
+) -> None:
+    scores, warrant = issued
+    out = tmp_path / "ordinary.json"
+    assert _run("recheck", "-w", str(warrant), "-i", str(scores),
+                "-o", str(out), "-q").returncode == 0
+    changed = tmp_path / "changed.csv"
+    lines = scores.read_text(encoding="utf-8").splitlines()
+    row = lines[1].split(",")
+    row[2] = str(float(row[2]) + 0.01)
+    lines[1] = ",".join(row)
+    changed.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    mismatch = _run("verify-recheck", "--record", str(out), "-w", str(warrant),
+                    "-i", str(changed))
+    assert mismatch.returncode == 1 and "MISMATCH" in mismatch.stdout
+
+    payload = json.loads(out.read_text(encoding="utf-8"))
+    payload["now"]["achieved_fpr"] = 0.99
+    out.write_text(json.dumps(payload), encoding="utf-8")
+    mismatch = _run("verify-recheck", "--record", str(out), "-w", str(warrant),
+                    "-i", str(scores))
+    assert mismatch.returncode == 1 and "MISMATCH" in mismatch.stdout
+
+
+def test_checked_source_must_be_replayed_again(
+    issued: tuple[Path, Path], tmp_path: Path,
+) -> None:
+    scores, warrant = issued
+    out = tmp_path / "checked.json"
+    assert _run("recheck", "-w", str(warrant), "-i", str(scores),
+                "--certificate-input", str(scores), "-o", str(out), "-q").returncode == 0
+    missing = _run("verify-recheck", "--record", str(out), "-w", str(warrant),
+                   "-i", str(scores))
+    assert missing.returncode == 1 and "UNVERIFIED" in missing.stdout
+    replay = _run("verify-recheck", "--record", str(out), "-w", str(warrant),
+                  "-i", str(scores), "--certificate-input", str(scores))
+    assert replay.returncode == 0 and "VERIFIED" in replay.stdout
+
+    payload = json.loads(out.read_text(encoding="utf-8"))
+    del payload["now"]["evidence_sha256"]
+    out.write_text(json.dumps(payload), encoding="utf-8")
+    legacy = _run("verify-recheck", "--record", str(out), "-w", str(warrant),
+                  "-i", str(scores), "--certificate-input", str(scores))
+    assert legacy.returncode == 1 and "UNVERIFIED" in legacy.stdout
+
+
+def test_replay_rejects_changed_source_certificate_and_configuration(
+    issued: tuple[Path, Path], tmp_path: Path,
+) -> None:
+    scores, warrant = issued
+    out = tmp_path / "ordinary.json"
+    assert _run("recheck", "-w", str(warrant), "-i", str(scores),
+                "-o", str(out), "-q").returncode == 0
+    edited_warrant = json.loads(warrant.read_text(encoding="utf-8"))
+    edited_warrant["certification"]["threshold"] = 0.0
+    changed = tmp_path / "changed-warrant.json"
+    changed.write_text(json.dumps(edited_warrant), encoding="utf-8")
+    mismatch = _run("verify-recheck", "--record", str(out), "-w", str(changed),
+                    "-i", str(scores))
+    assert mismatch.returncode == 1 and "MISMATCH" in mismatch.stdout
+
+    edited_record = json.loads(out.read_text(encoding="utf-8"))
+    edited_record["provenance"]["config_hash"] = "0" * 64
+    out.write_text(json.dumps(edited_record), encoding="utf-8")
+    mismatch = _run("verify-recheck", "--record", str(out), "-w", str(warrant),
+                    "-i", str(scores))
+    assert mismatch.returncode == 1 and "MISMATCH" in mismatch.stdout
+
+
+def test_chained_recheck_digest_does_not_claim_sequential_replay(
+    issued: tuple[Path, Path], tmp_path: Path,
+) -> None:
+    scores, original_warrant = issued
+    warrant = tmp_path / "isolated-warrant.json"
+    warrant.write_bytes(original_warrant.read_bytes())
+    out = tmp_path / "chain.json"
+    assert _run("recheck", "-w", str(warrant), "-i", str(scores),
+                "--horizon-labels", "10000", "-o", str(out), "-q").returncode == 0
+    payload = json.loads(out.read_text(encoding="utf-8"))
+    assert payload["now"]["evidence_sha256"] == evidence_sha256(load_scored_items(scores))
+    result = _run("verify-recheck", "--record", str(out), "-w", str(warrant),
+                  "-i", str(scores))
+    assert result.returncode == 1 and "UNVERIFIED" in result.stdout
 
 
 def test_checked_recheck_rejects_an_edited_certificate_before_writing(
@@ -112,6 +206,13 @@ def test_selected_certificate_requires_retained_frontier(
                 str(frontier), "-o", str(out), "-q")
     assert good.returncode == 0, good.stderr
     assert json.loads(out.read_text(encoding="utf-8"))["prior_warrant"]["certificate_verification"] == "VERIFIED"
+    missing_replay = _run("verify-recheck", "--record", str(out), "-w", str(warrant),
+                          "-i", str(scores), "--certificate-input", str(scores))
+    assert missing_replay.returncode == 1 and "UNVERIFIED" in missing_replay.stdout
+    replay = _run("verify-recheck", "--record", str(out), "-w", str(warrant),
+                  "-i", str(scores), "--certificate-input", str(scores),
+                  "--certificate-frontier", str(frontier))
+    assert replay.returncode == 0 and "VERIFIED" in replay.stdout
 
     alone = _run("recheck", "-w", str(warrant), "-i", str(scores),
                  "--certificate-frontier", str(frontier), "-o", str(tmp_path / "alone.json"))

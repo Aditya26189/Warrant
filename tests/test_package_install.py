@@ -209,6 +209,17 @@ def test_installed_recheck_links_and_checks_its_certificate(installed, tmp_path)
     prior = _json(out)["prior_warrant"]
     assert prior["warrant_sha256"] == canonical_sha256(_json(warrant))
     assert prior["certificate_verification"] == "VERIFIED"
+    assert _json(out)["now"]["evidence_sha256"]
+    unverified = installed.run(
+        tmp_path, "verify-recheck", "--record", str(out), "-w", str(warrant),
+        "-i", str(scores), expected=1,
+    )
+    assert "UNVERIFIED" in unverified.stdout
+    replayed = installed.run(
+        tmp_path, "verify-recheck", "--record", str(out), "-w", str(warrant),
+        "-i", str(scores), "--certificate-input", str(scores),
+    )
+    assert "VERIFIED" in replayed.stdout
 
     changed = _json(warrant)
     changed["certification"]["threshold"] = 0.0
