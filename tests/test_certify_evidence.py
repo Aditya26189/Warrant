@@ -18,13 +18,15 @@ def _file(path: Path, rows: list[str], *, note: str = "first") -> Path:
     return path
 
 
-def test_effective_rows_are_bound_but_order_and_ignored_columns_are_not(
+def test_effective_sequence_is_bound_but_ignored_columns_are_not(
     tmp_path: Path,
 ) -> None:
     rows = ["a,0,0.1,g1,0", "b,1,0.9,g1,1", "c,0,0.2,g2,", "d,1,0.8,g2,0"]
     first = load_scored_items(_file(tmp_path / "first.csv", rows))
-    reordered = load_scored_items(_file(tmp_path / "reordered.csv", rows[::-1], note="other"))
-    assert evidence_sha256(first) == evidence_sha256(reordered)
+    copied = load_scored_items(_file(tmp_path / "copied.csv", rows, note="other"))
+    reordered = load_scored_items(_file(tmp_path / "reordered.csv", rows[::-1]))
+    assert evidence_sha256(first) == evidence_sha256(copied)
+    assert evidence_sha256(first) != evidence_sha256(reordered)
 
     for changed in (
         ["other,0,0.1,g1,0", *rows[1:]],

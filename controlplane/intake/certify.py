@@ -390,8 +390,9 @@ def evidence_sha256(items: ScoredItems) -> str:
 
     The existing frontier digest intentionally excludes ``label_2`` because
     second review changes no frontier row. A certify record also reports second
-    review, so its own binding must include that column. Order, source path and
-    ignored passthrough columns cannot alter the estimator and are excluded.
+    review, so its own binding must include that column. The seeded bootstrap
+    samples array positions, so row order affects finite interval endpoints and
+    is bound too (212). Source path and ignored passthrough columns are excluded.
     """
     from ..release.contract import digest
 
@@ -409,9 +410,8 @@ def evidence_sha256(items: ScoredItems) -> str:
             items.ids, items.labels, items.scores, groups, second_labels, strict=True
         )
     ]
-    rows.sort(key=lambda row: row["item_id_sha256"])
     return digest({
-        "schema": "certify-effective-rows-v1",
+        "schema": "certify-effective-sequence-v1",
         "has_second_review": items.second_labels is not None,
         "rows": rows,
     })
