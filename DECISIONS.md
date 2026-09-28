@@ -11630,3 +11630,15 @@ Refusal is reserved for input the command cannot use.
 warrant's recorded lifecycle, not a new measurement of breach; the file's own
 bound may well hold, and the record shows both. Re-certifying is the way back,
 exactly as after a chained revocation.
+
+## 211 - Bind scored-file certification to effective rows and verify by recomputation (2026-09-28)
+
+- **Date:** 2026-09-28
+- **Status:** DECIDED before implementation.
+- **Closes in part:** the certify-record data-binding and replay gaps in `docs/EVIDENCE-HANDOFF.md` section 6. It does not close identity, expiry, signatures, or fixed-threshold label sensitivity.
+
+**Decision.** Every new `certify` result, including REFUSED, carries an `input.evidence_sha256` digest over the effective `id`, `label`, `score`, optional `group`, and optional `label_2` values. The digest is canonical and independent of row order or the file path. Other columns are deliberately excluded because the product ignores them; the name "evidence" rather than "file" avoids claiming a byte-for-byte file hash. The existing frontier `input_sha256` remains unchanged so its prior selection contract does not move. A user can use `warrant verify --warrant RECORD --input FILE` to check the digest and recompute every material certificate field under the record's configuration. A frontier-selected record additionally needs its retained frontier file; the verifier checks the frontier digest and its complete recomputed grid before accepting the selection claim. A record missing the new binding is UNVERIFIED, not silently upgraded from its path and counts.
+
+**Failure contract.** Verified arithmetic exits 0; a mismatched or legacy record exits 1 with the reason; unreadable or malformed input exits 2. Verification reads records and labelled files but never rewrites them or consults a scientific held-out test set. It checks the current configuration hash against the retained one rather than quietly recomputing under different settings. The record's provenance, timestamps, selected budget history, and physical scorer identity remain declarations: anyone controlling all copies can rewrite and recompute a coherent set. A digest is neither a signature nor proof of pre-registration.
+
+**Rejected.** Hashing raw file bytes would change on row order, line endings, and irrelevant passthrough fields while binding less directly to the values the estimator used. Treating an unbound older record as verified would manufacture integrity evidence. Comparing only the digest without recomputing the statistical fields would miss edits to a retained threshold, bound, or label result. Automatically trusting a selected frontier record by its saved digest alone would repeat the selection-bypass failure addressed in decision 195.
