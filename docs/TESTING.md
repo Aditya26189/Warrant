@@ -126,6 +126,8 @@ has seen.
 | `test_frontier.py` | The frontier in quantities that need no interval |
 | `test_frontier_groups.py` | The frontier certifies what `certify` certifies, on grouped files too |
 | `test_certify_from_frontier.py` | A budget picked off the frontier is certified at the frontier's level, and a frontier record that was edited or truncated is refused |
+| `test_certify_evidence.py` | The certificate digest covers the ordered effective rows, including group and second label, while ignoring unused columns and file path |
+| `test_certify_verification.py` | Retained certificate replay detects row or material-field edits, requires a selected frontier, and distinguishes legacy unverified records |
 | `test_frontier_selection.py` | The frontier-selection study measures what it says it measures |
 | `test_recheck.py` | A recheck keeps the broken bound and the moved distribution apart, and revokes on the lower bound |
 | `test_recheck_groups.py` | A grouped warrant is rechecked in the unit it was certified in |

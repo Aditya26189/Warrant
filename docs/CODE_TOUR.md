@@ -32,6 +32,7 @@ or a notebook is unreviewable.
 | find what the demo shows | `demo/session.py`, `report/beats.py` |
 | find what checks the README | `report/claims.py` |
 | certify a customer's scored file, or refuse | `intake/certify.py` |
+| replay a retained certificate against scored rows | `intake/verify.py` |
 | see exactly what a customer's file must contain | `intake/contract.py` |
 | recheck a warrant on new data | `intake/recheck.py` |
 | understand a chain of rechecks and what it guarantees | `intake/chain.py` |
@@ -99,7 +100,7 @@ then issue or refuse.
 
 ## `controlplane/intake` — the customer path
 
-Everything behind `warrant certify`, `recheck` and `chain verify`. It takes a
+Everything behind `warrant certify`, `verify`, `recheck` and `chain verify`. It takes a
 customer's scored file rather than this project's eval sets, and **calls the same
 statistics the research path uses** -- a second implementation is how two
 answers to one question drift apart.
@@ -108,6 +109,7 @@ answers to one question drift apart.
 |---|---|
 | `contract.py` | Reads the scored file strictly: `id`, `label`, `score`, optional `group` and `label_2`. Nothing is coerced, filled or dropped, and a refusal for too little evidence is kept distinct from a file that cannot be read |
 | `certify.py` | Certifies a false-positive budget or refuses, through `validation/warrant_stats.py`. The record carries recall and precision with intervals, the score distribution a recheck compares against, and the label-error block |
+| `verify.py` | Replays material certificate fields and the ordered effective-row digest from retained evidence; a selected budget also needs its frontier record. It does not authenticate the record's author or timestamp |
 | `frontier.py` | Every budget at once, in exact counts, with no bootstrap |
 | `selection.py` | How wrong is the row a customer picks off the frontier? The measurement behind `--from-frontier` (`DECISIONS.md` 192, 195) |
 | `recheck.py` | Is the warrant still true on new data? The false-positive bound and the score distribution are tested and reported separately, and revocation turns on the lower bound, not on a failure to re-prove |

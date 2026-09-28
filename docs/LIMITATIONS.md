@@ -331,9 +331,12 @@ other grouped estimators; their separate audit findings remain open in
 
 A chained recheck record is sealed over every field, and `warrant chain verify`
 recomputes each seal (`DECISIONS.md` addendum 2026-09-17). A release evaluation is
-sealed and recomputed by `warrant release verify`. **Nothing else is.** A `certify`
-warrant, a frontier record, an unchained recheck and a `plan` record carry no seal,
-and no command verifies them. `recheck` reads the warrant it is given as written.
+sealed and recomputed by `warrant release verify`. A `certify` warrant binds its
+ordered effective scored rows and `warrant verify` recomputes its material fields
+from retained evidence (DECISIONS 211-212). It has no whole-record seal or
+authenticated author. A frontier record, an unchained recheck and a `plan` record
+have no standalone verifier. `recheck` reads the warrant it is given as written;
+verify a retained certificate separately before relying on it.
 
 Two limits apply even to the sealed records:
 
@@ -346,9 +349,9 @@ Two limits apply even to the sealed records:
   continued, including with `--fork` (DECISIONS 207). Available structural checks
   are reported separately; they do not recover full-record assurance.
 
-What would close it: a seal and a verifier for the certify warrant, which every
-later record depends on. A signature would need a key, and a key is custody this
-project does not hold.
+What remains: authenticated custody, detector and system identity, and a lifecycle
+for the certificate that later records depend on. A signature would need a key,
+and a key is custody this project does not hold.
 
 ---
 

@@ -201,7 +201,7 @@ field, record by record; this is the map.
 
 | Record | Written by | Top-level fields |
 |---|---|---|
-| `<file>.warrant.json` | `warrant certify` | `status`, `budget_fpr`, `alpha`, `reason`, `input`, `certification`, `metrics`, `score_distribution` (bin edges and probabilities, never values), `labels`, `selection`, `frontier_record_present` |
+| `<file>.warrant.json` | `warrant certify` | `status`, `budget_fpr`, `alpha`, `reason`, `input` (including the ordered effective-row `evidence_sha256`), `certification`, `metrics`, `score_distribution` (bin edges and probabilities, never values), `labels`, `selection`, `frontier_record_present` |
 | `<file>.frontier.json` | `warrant certify --frontier` | `input` (including `input_sha256`), `note`, `frontier[]` -- each row with `budget_fpr`, `certified`, `threshold`, `fpr_upper_bound`, `row_alpha`, `family_alpha` and `counts_exact` |
 | `<file>.recheck.json` | `warrant recheck` | `status`, `reason`, `prior_warrant` (including `chain_revoked_at`, the chain record that revoked this warrant, or null), `now`, `detection`, `drift`, `labels`; `chain` is null. `drift` names the reference size its null band was simulated at (`psi_reference_n`), or says the warrant recorded none (`psi_reference_n_known: false`), in which case the band assumed the reference was as large as this file (`DECISIONS.md` 209) |
 | `<file>.recheck-NNNN.json` | `warrant recheck --horizon-labels` or `--since` | as above, with `chain` holding the chain state and its `state_sha256`, and **`record_sha256` sealing the whole record** |
@@ -210,10 +210,11 @@ field, record by record; this is the map.
 | `warrant-plan.json` | `warrant plan` | `feasible`, `negatives_per_recheck`, `items_per_recheck`, `detection_floor`, `power_at_breach`, `false_revocation_per_recheck`, `sizes_by_power`, `cadences`, `declared_inputs`, `refusal_reason` |
 | a release contract, then `<contract>.evaluation.json` | `warrant release register`, then `evaluate` | see [RELEASE.md](RELEASE.md) |
 
-**Two of these are protected against editing, and the rest are not.** A chained
-recheck record is sealed and checked by `chain verify`; a release evaluation is
-sealed and recomputed by `release verify`. A certify warrant, a frontier record,
-an unchained recheck and a plan carry no seal and have no verifier.
+The chained recheck and release evaluation have whole-record seals. A certify
+warrant has no seal but `warrant verify` recomputes its material fields from the
+retained scored rows (and frontier for a selected budget). The frontier record,
+unchained recheck and plan have no standalone verifier. All these digests are
+checksums, not signatures; none authenticates a writer.
 
 ---
 
