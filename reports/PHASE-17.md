@@ -61,11 +61,14 @@ existing record parsing, and frontier selection passed **29 tests**. The
 installed wheel/sdist regression that certifies, verifies and detects an edit
 passed **1 test**. Ruff passed on the touched Python modules. These are local
 observations from this worktree, not a claim that all declared CI jobs passed.
-A documentation and claim guard batch passed **142 tests** and had one
-expected stale-count failure: the README and Makefile still named the earlier
-collected-test total after new cases were added. The clean-source inventory
-generator must update those files before that guard can pass. Collection is
-not execution.
+The first documentation and claim guard batch passed **142 tests** and found
+one stale-count failure: README and Makefile still named the earlier collected
+total after new cases were added. After a clean-source refresh, the expanded
+guard batch passed **147 tests** and the generated inventory recorded **2,055
+collected tests**, up from **2,045**. Collection is not execution. Separately,
+`python scripts/verify.py --no-activations` reproduced **92/92** README claims
+and **25/25** frozen-score comparisons. The activation tier was explicitly
+SKIPPED, not reported as a pass.
 
 The new tests exercise a moved but equivalent export, edited rows and a
 certificate field, legacy records, malformed duplicate-key JSON, refusal
