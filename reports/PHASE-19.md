@@ -99,11 +99,15 @@ reported FPR, missing original evidence when the record claimed source
 VERIFIED, a legacy missing digest, and refusal to claim a sequential replay
 from one chained record. The installed-package test exercises the same command
 through the wheel entry point. Adjacent certification, recheck and chain tests
-are the regression boundary. This ledger does not count a test collection as
-a passing execution. The installed-wheel source replay check passed; the
-documentation and claim guards were run, with a stale displayed collection
-count flagged for the inventory refresh. A full-suite or remote CI pass is not
-claimed.
+are the regression boundary. After correcting the A4 assertion, the selected
+neighboring certification, recheck and chain suites passed together. The
+installed-wheel source replay check passed. The report, documentation index,
+decision-integrity, claim and inventory guard batch passed after the generated
+inventory refresh. `scripts/verify.py --no-activations` reproduced **92/92**
+published claims and **25/25** frozen-score comparisons; the activation tier
+was explicitly **SKIPPED**. The clean-source generator recorded **2,074
+collected tests**, up from **2,067**. Collection is not execution, and a
+full-suite or remote CI pass is not claimed.
 
 ## What this does not establish
 
