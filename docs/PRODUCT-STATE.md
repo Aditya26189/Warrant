@@ -5,6 +5,7 @@ describes the checkout reviewed on 28 September 2026. The [claim table](../READM
 and [results](../results/RESULTS.md) hold measured research numbers; this page
 does not restate them. [The code tour](CODE_TOUR.md) explains each package,
 and [limitations](LIMITATIONS.md) carries the detailed statistical caveats.
+[The audit report](../reports/PHASE-16.md) records the checks performed for this page.
 
 **Current status: a usable local evaluation tool and a substantial research
 harness, not a deployed enterprise service or a validated startup.** A user can
