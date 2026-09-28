@@ -138,3 +138,19 @@ def test_chained_recheck_repeats_its_existing_warrant_digest(
     assert result.returncode == 0, result.stderr
     payload = json.loads(out.read_text(encoding="utf-8"))
     assert payload["prior_warrant"]["warrant_sha256"] == payload["chain"]["warrant_sha256"]
+
+
+@pytest.mark.parametrize("field", ["certification", "input", "score_distribution"])
+def test_wrong_shaped_warrant_blocks_are_bad_input_without_a_partial_record(
+    issued: tuple[Path, Path], tmp_path: Path, field: str,
+) -> None:
+    scores, warrant = issued
+    malformed = json.loads(warrant.read_text(encoding="utf-8"))
+    malformed[field] = ["not an object"]
+    bad_warrant = tmp_path / "wrong-shape.json"
+    bad_warrant.write_text(json.dumps(malformed), encoding="utf-8")
+    out = tmp_path / "must-not-exist.json"
+    result = _run("recheck", "-w", str(bad_warrant), "-i", str(scores), "-o", str(out))
+    assert result.returncode == 2
+    assert "Traceback" not in result.stderr
+    assert not out.exists()

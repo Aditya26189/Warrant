@@ -612,7 +612,12 @@ def _recheck(args: argparse.Namespace) -> int:
             return EXIT_BAD_INPUT
         certificate_verification = "VERIFIED"
 
-    certification = record.get("certification") or {}
+    certification = record.get("certification")
+    if certification is None:
+        certification = {}
+    if not isinstance(certification, dict):
+        print("warrant: certification must contain a JSON object.", file=sys.stderr)
+        return EXIT_BAD_INPUT
     threshold = certification.get("threshold")
     budget = record.get("budget_fpr")
     if threshold is None or budget is None:
@@ -625,17 +630,31 @@ def _recheck(args: argparse.Namespace) -> int:
         return EXIT_BAD_INPUT
 
     block = record.get("score_distribution")
-    reference = (
-        EnvelopeFeature(
-            name=block["name"],
-            bin_edges=tuple(block["bin_edges"]),
-            bin_probabilities=tuple(block["bin_probabilities"]),
-            mean=block["mean"],
-            std=block["std"],
+    if block is not None and not isinstance(block, dict):
+        print("warrant: score_distribution must contain a JSON object.", file=sys.stderr)
+        return EXIT_BAD_INPUT
+    try:
+        reference = (
+            EnvelopeFeature(
+                name=block["name"],
+                bin_edges=tuple(block["bin_edges"]),
+                bin_probabilities=tuple(block["bin_probabilities"]),
+                mean=block["mean"],
+                std=block["std"],
+            )
+            if block
+            else None
         )
-        if block
-        else None
-    )
+    except (KeyError, TypeError, ValueError) as exc:
+        print(f"warrant: invalid score_distribution: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+
+    recorded_input = record.get("input")
+    if recorded_input is None:
+        recorded_input = {}
+    if not isinstance(recorded_input, dict):
+        print("warrant: input must contain a JSON object.", file=sys.stderr)
+        return EXIT_BAD_INPUT
 
     try:
         items = load_scored_items(args.input)
@@ -646,7 +665,7 @@ def _recheck(args: argparse.Namespace) -> int:
     # The promise and the test must be in one unit. A record certified on
     # clusters rechecked per item, or the reverse, compares two different
     # rates, and which one the user meant is not ours to guess (DECISIONS 188).
-    recorded_grouped = (record.get("input") or {}).get("grouped")
+    recorded_grouped = recorded_input.get("grouped")
     file_grouped = items.groups is not None
     if recorded_grouped is not None and bool(recorded_grouped) != file_grouped:
         certified_as = "clusters" if recorded_grouped else "independent items"
@@ -668,7 +687,7 @@ def _recheck(args: argparse.Namespace) -> int:
             # The reference is built from every score in the certified file, so
             # its size is that record's input.n. The PSI null is simulated at it
             # rather than at this file's size (DECISIONS 209).
-            reference_n=(record.get("input") or {}).get("n"),
+            reference_n=recorded_input.get("n"),
             alpha=record.get("alpha"),
         )
     except ValueError as exc:
