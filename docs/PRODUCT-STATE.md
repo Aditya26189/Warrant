@@ -6,8 +6,8 @@ and [results](../results/RESULTS.md) hold measured research numbers; this page
 does not restate them. [The code tour](CODE_TOUR.md) explains each package,
 and [limitations](LIMITATIONS.md) carries the detailed statistical caveats.
 [The audit report](../reports/PHASE-16.md) records the original product-state
-review; [Phase 17](../reports/PHASE-17.md) records the later certificate binding
-and replay change.
+review; [Phase 17](../reports/PHASE-17.md) records certificate binding and
+replay, and [Phase 18](../reports/PHASE-18.md) records recheck evidence linkage.
 
 **Current status: a usable local evaluation tool and a substantial research
 harness, not a deployed enterprise service or a validated startup.** A user can
@@ -22,7 +22,7 @@ and commercial claims.
 | Surface | Implemented behavior | Entry point and evidence | Boundary |
 |---|---|---|---|
 | Scored-file certification | `certify` reads CSV or JSONL `id,label,score`, with optional `group` and `label_2`; selects a threshold against a declared false-positive budget, issues a record or explains refusal. `--frontier` and `--from-frontier` cover budget exploration and selection. `verify` replays a retained certificate against the effective scored-row sequence. | [Input contract](INPUT.md), [intake code](../controlplane/intake/), [CLI](../controlplane/cli.py), [verification tests](../tests/test_certify_verification.py) | The user supplies the scores, labels and their meaning. A certify record has an effective-row digest but no authenticated custody, detector/system identity or expiry. Grouped data has additional restrictions and open interval questions. |
-| Recheck and chain | `recheck` evaluates a retained warrant against a new labelled file. Chained rechecks record a declared horizon, links and revocations; `chain verify` checks retained records, seals and structure. Concurrent publication and interrupted-write recovery have source and installed tests. | [Recheck and chain code](../controlplane/intake/), [chain tests](../tests/test_chain_publication.py), [integrity policy](../tests/test_chain_integrity_policy.py), [runbook](RUNBOOK.md) | A checksum is not an authenticated signature. Chain verification cannot recompute statistics without the labelled inputs. Unsealed history has unknown integrity and cannot pass a clean gate or be continued. |
+| Recheck and chain | `recheck` evaluates a retained warrant against a new labelled file and names its exact certificate digest. With `--certificate-input`, it replays the original certificate before measuring; without it, source evidence reads `NOT_CHECKED`. Chained rechecks record a declared horizon, links and revocations; `chain verify` checks retained records, seals and structure. | [Recheck and chain code](../controlplane/intake/), [evidence tests](../tests/test_recheck_evidence.py), [chain tests](../tests/test_chain_publication.py), [runbook](RUNBOOK.md) | A checksum is not an authenticated signature. The new recheck file's rows and statistics cannot be replayed by a standalone verifier. Chain verification checks structure but cannot recompute statistics without the labelled inputs. |
 | Release evidence | `release register` freezes criteria and a disjoint holdout; `evaluate` scores that fixed holdout; `verify` recomputes retained evidence and checks expiry. This is a distinct workflow from `certify`. | [Release guide](RELEASE.md), [release code](../controlplane/release/), [handoff field map](EVIDENCE-HANDOFF.md), [installed-package tests](../tests/test_package_install.py) | A shared scored file does not imply a shared operating point. Registration is not a trusted timestamp or authenticated sign-off; release does not carry label-quality evidence. |
 | Planning | `plan` estimates review and recheck effort from a declared workload and statistical assumptions. | [Economics code](../controlplane/economics/), [sampling code](../controlplane/sampling/), [methods](METHODS.md) | The workload is declared, not observed at a customer. No savings or ROI has been measured in a deployment. |
 
@@ -52,7 +52,8 @@ enterprise control, even where the local command behaves correctly:
    [pilot protocol](PILOT-PROTOCOL.md) are plans, not completed research.
 2. **Record identity and custody.** Ordinary certify warrants bind the effective
    scored-row sequence and can be replayed, but do not authenticate the author,
-   software/detector identity or expiry. Recheck and plan records still have
+   software/detector identity or expiry. Rechecks identify the certificate they
+   read; they do not bind their own new scored rows. Plan records also have
    gaps. Every digest here is a checksum, not a signature.
    The exact field-by-field gap is in [EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md).
 3. **Statistical scope.** The independent review found open grouped

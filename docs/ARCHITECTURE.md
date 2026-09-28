@@ -377,7 +377,7 @@ beside the customer's input, and they differ in what can detect an edit:
 | chained recheck record | yes: sealed over every field, checked by `warrant chain verify` and by `--since` |
 | release evaluation | yes: sealed, and recomputed from the retained files by `warrant release verify` |
 | certify warrant | effective scored rows and material fields are replayed by `warrant verify`; no whole-record seal or authenticated custody |
-| frontier record, unchained recheck, plan | **no** standalone verifier |
+| frontier record, unchained recheck, plan | **no** standalone verifier; a recheck names its source certificate digest and may replay that certificate before issuance, but does not bind its own new rows |
 
 Every seal and digest here is a **checksum, not a signature**: anyone who can
 write the records can recompute them consistently

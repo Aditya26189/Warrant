@@ -335,8 +335,11 @@ sealed and recomputed by `warrant release verify`. A `certify` warrant binds its
 ordered effective scored rows and `warrant verify` recomputes its material fields
 from retained evidence (DECISIONS 211-212). It has no whole-record seal or
 authenticated author. A frontier record, an unchained recheck and a `plan` record
-have no standalone verifier. `recheck` reads the warrant it is given as written;
-verify a retained certificate separately before relying on it.
+have no standalone verifier. Every new recheck names the exact certificate
+digest it read. With `--certificate-input`, `recheck` replays that certificate
+against retained original rows before writing; otherwise it records
+`NOT_CHECKED`. This does not bind or replay the fresh recheck rows, and neither
+path authenticates the certificate writer (DECISIONS 213).
 
 Two limits apply even to the sealed records:
 
