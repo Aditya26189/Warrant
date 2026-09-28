@@ -53,12 +53,15 @@ def verify_chained_rechecks(
         records[name] = record
 
     structure = verify_chain_records(records)
-    if structure.unsealed:
-        return _result("UNVERIFIED", "a retained chain link has no whole-record seal")
     if structure.findings:
         kinds = {finding.kind for finding in structure.findings}
-        grade = "UNVERIFIED" if kinds <= {"missing_link", "sequence"} else "MISMATCH"
+        # A known integrity or extension failure outranks missing assurance in
+        # another link. Forks and restarts need a different evidence design (215).
+        incomplete = {"missing_link", "sequence", "fork", "restart"}
+        grade = "UNVERIFIED" if kinds <= incomplete else "MISMATCH"
         return _result(grade, "retained chain is not clean: " + ", ".join(sorted(kinds)))
+    if structure.unsealed:
+        return _result("UNVERIFIED", "a retained chain link has no whole-record seal")
 
     source_digest = canonical_sha256(warrant)
     recorded_input = _mapping(warrant.get("input"), "warrant.input")

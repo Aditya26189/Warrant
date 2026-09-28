@@ -153,3 +153,32 @@ def test_legacy_unbound_link_cannot_gain_a_verified_grade(
     result = _run("verify-chain-recheck", "-w", str(warrant),
                   "--pair", str(first), str(first_rows))
     assert result.returncode == 1 and "UNVERIFIED" in result.stdout
+
+
+def test_concrete_digest_failure_is_not_hidden_by_another_unsealed_link(
+    certificate: tuple[Path, Path], tmp_path: Path,
+) -> None:
+    warrant, first_rows, first, second_rows, second = _linear_prefix(tmp_path, certificate)
+    unsealed = json.loads(first.read_text(encoding="utf-8"))
+    unsealed.pop("record_sha256")
+    first.write_text(json.dumps(unsealed), encoding="utf-8")
+    damaged = json.loads(second.read_text(encoding="utf-8"))
+    damaged["now"]["achieved_fpr"] = 0.99
+    second.write_text(json.dumps(damaged), encoding="utf-8")
+    result = _replay(warrant, first_rows, first, second_rows, second)
+    assert result.returncode == 1 and "MISMATCH" in result.stdout
+
+
+def test_presented_fork_is_unverified_by_linear_prefix_replay(
+    certificate: tuple[Path, Path], tmp_path: Path,
+) -> None:
+    warrant, first_rows, first, second_rows, second = _linear_prefix(tmp_path, certificate)
+    branch = tmp_path / "branch.json"
+    made = _run("recheck", "-w", str(warrant), "-i", str(second_rows),
+                "--since", str(first), "--fork", "-o", str(branch), "-q")
+    assert made.returncode == 0, made.stderr
+    result = _run("verify-chain-recheck", "-w", str(warrant),
+                  "--pair", str(first), str(first_rows),
+                  "--pair", str(second), str(second_rows),
+                  "--pair", str(branch), str(second_rows))
+    assert result.returncode == 1 and "UNVERIFIED" in result.stdout
