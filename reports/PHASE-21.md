@@ -79,8 +79,10 @@ it is not a claim of NIST conformance.
   The neighboring release, contract, report, docs and decision tests passed.
   Ruff and whitespace checks passed. The new commands also passed from a built
   and installed wheel, not only a source checkout.
-- The clean-source inventory changed from 2,083 to **2,089 collected tests**
-  at feature commit `67d3663` and was committed separately at `a83352a`.
+- The first clean-source inventory changed from 2,083 to 2,089 collected tests
+  at feature commit `67d3663`. After this report and two inherited chain
+  regression cases were added, the successor inventory records **2,093
+  collected tests** from clean source `d908530` (inventory commit `dc6aa25`).
   Collection is not execution. `python scripts/verify.py --no-activations`
   reproduced **92/92** README claims and **25/25** frozen-score comparisons;
   the activation tier was **SKIPPED**. A full repository execution result for
@@ -109,7 +111,10 @@ Those remain barriers to relying on it as a production release authority.
 ## Open items
 
 The full repository suite on this branch and remote CI remain unobserved.
-Complete the inherited Phase 20 full-suite investigation before calling this
-branch release-ready. The separate business gate is still the buyer
+The first Phase 20 full run found three stale test expectations about the
+new `label_2` row digest; those suites passed after the tests were corrected.
+The repaired Phase 20 full run is still in progress. Complete that gate, and
+then execute this successor's full suite, before calling the line release-ready.
+The separate business gate is still the buyer
 conversations and their registered stopping rule; more local checks cannot
 substitute for them.
