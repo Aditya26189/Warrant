@@ -341,8 +341,11 @@ against retained original rows before writing; otherwise it records
 `NOT_CHECKED`. Every new CLI recheck binds its fresh ordered effective rows;
 `warrant verify-recheck` recomputes an ordinary recheck from retained files.
 It refuses to claim replay of a chained or previously chain-revoked record
-without its sequential history. Neither path authenticates the certificate
-writer, collection time or traffic origin (DECISIONS 213–214).
+without its sequential history. `warrant verify-chain-recheck` can replay a
+complete sealed linear prefix with every scored batch, but does not detect a
+later unpresented link or fork. It reports a fork or incomplete prefix as
+unverified rather than upgrading it. Neither path authenticates the
+certificate writer, collection time or traffic origin (DECISIONS 213–215).
 
 Two limits apply even to the sealed records:
 

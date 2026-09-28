@@ -378,6 +378,7 @@ beside the customer's input, and they differ in what can detect an edit:
 | release evaluation | yes: sealed, and recomputed from the retained files by `warrant release verify` |
 | certify warrant | effective scored rows and material fields are replayed by `warrant verify`; no whole-record seal or authenticated custody |
 | ordinary recheck | `warrant verify-recheck` binds ordered fresh effective rows and recomputes material fields from retained files; no authenticated custody |
+| sealed linear chain prefix | `warrant verify-chain-recheck` checks each retained record and matching scored batch from link 1, then recomputes the sequential statistic; no assurance about omitted branches or a later head |
 | frontier record, plan | **no** standalone verifier |
 
 Every seal and digest here is a **checksum, not a signature**: anyone who can

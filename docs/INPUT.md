@@ -301,8 +301,21 @@ that claims source `VERIFIED` must replay the original certificate again. For
 a selected certificate, also pass `--certificate-frontier` with its retained
 frontier record. `VERIFIED` exits 0, `MISMATCH` or `UNVERIFIED` exits 1, and
 malformed evidence exits 2. Legacy rechecks without a fresh-row binding and
-chained rechecks return `UNVERIFIED`. This verifies arithmetic against the
-files supplied, not their author, collection time or traffic provenance.
+chained rechecks return `UNVERIFIED` from this **ordinary** verifier. For a
+linear chain, retain every link from the start and its matching fresh file:
+
+```bash
+warrant verify-chain-recheck --warrant your_scores.csv.warrant.json --pair week01.csv.recheck-0001.json week01.csv --pair week02.csv.recheck-0002.json week02.csv
+```
+
+This command checks each seal and link, then replays each measurement and the
+sequential statistic. Supply `--certificate-input` and, if selected,
+`--certificate-frontier` when any link claims source `VERIFIED`. It reports
+`UNVERIFIED` for missing or unbound history, unsealed links or a fork whose
+head-check history is outside the supplied linear prefix. A successful result
+applies only **through the last presented link**; it does not prove this was
+the current head or the only branch. Neither replay authenticates the files'
+author, collection time or traffic provenance.
 
 **Nothing leaves your machine.** No network calls, no telemetry, no uploads. The
 file is read, the arithmetic is local, and the record is written next to it.

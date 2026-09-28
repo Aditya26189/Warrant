@@ -36,6 +36,7 @@ or a notebook is unreviewable.
 | see exactly what a customer's file must contain | `intake/contract.py` |
 | recheck a warrant on new data | `intake/recheck.py` |
 | replay an ordinary recheck from retained fresh rows | `intake/verify_recheck.py` |
+| replay a sealed linear chain prefix from every retained batch | `intake/verify_chain_recheck.py` |
 | understand a chain of rechecks and what it guarantees | `intake/chain.py` |
 | audit a kept set of chain records | `intake/chain_verify.py` |
 | see how far a certificate depends on its labels | `intake/labels.py` |
@@ -115,7 +116,7 @@ answers to one question drift apart.
 | `selection.py` | How wrong is the row a customer picks off the frontier? The measurement behind `--from-frontier` (`DECISIONS.md` 192, 195) |
 | `recheck.py` | Is the warrant still true on new data? The false-positive bound and the score distribution are tested and reported separately; the CLI also records the exact certificate digest and optional source-replay status before writing a recheck |
 | `chain.py` | A year of rechecks as one sequential test, carried in the recheck records. Also the chain-head sidecar, the whole-record seal (`record_sha256`), and every refusal to continue: a revoked warrant, an edited or malformed record, an undeclared fork |
-| `chain_verify.py` | What a kept set of chain records shows as a whole: edited records (by seal, chain-state digest and derived fields), malformed values, forks, restarts, missing links, links after a revocation; missing seals are listed as unsealed with unknown age; they prevent clean assurance and continuation. **It cannot recompute the statistics**; those need the labelled files |
+| `chain_verify.py` | What a kept set of chain records shows as a whole: edited records (by seal, chain-state digest and derived fields), malformed values, forks, restarts, missing links, links after a revocation; missing seals are listed as unsealed with unknown age; they prevent clean assurance and continuation. This structural audit does not receive labelled files; `verify_chain_recheck.py` replays a complete linear prefix when they are supplied |
 | `labels.py` | How far a certificate or a recheck depends on its labels being right: the two exact error ladders, and a second reviewer's agreement and disputes (`DECISIONS.md` 197, 198) |
 | `render.py` | The terminal summary. Written so a refusal reads as a result rather than a malfunction |
 

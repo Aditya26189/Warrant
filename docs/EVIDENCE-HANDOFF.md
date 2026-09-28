@@ -22,7 +22,7 @@ Warrant writes two families of record. They answer different questions, and
 
 | | Release evaluation | Certify warrant, recheck, chain |
 |---|---|---|
-| Command | `warrant release register / evaluate / verify` | `warrant certify`, `warrant verify`, `warrant recheck`, `warrant verify-recheck`, `warrant chain verify` |
+| Command | `warrant release register / evaluate / verify` | `warrant certify`, `warrant verify`, `warrant recheck`, `warrant verify-recheck`, `warrant verify-chain-recheck`, `warrant chain verify` |
 | Question it answers | Did this frozen operating point meet criteria registered before a holdout was scored? | What threshold certifies a budget on this file, and does it still hold on the next? |
 | Binds the scored data (digest) | **yes** | certify and new recheck records: **yes**, ordered effective rows |
 | Binds system and detector identity with versions | **yes** | **no** |
@@ -30,7 +30,7 @@ Warrant writes two families of record. They answer different questions, and
 | Criteria registered before scoring | **yes**, in the contract | no; the budget is an argument |
 | Carries label-quality evidence | **no** | **yes** (DECISIONS 197, 198) |
 | Supports grouped (clustered) data | **no**, IID only | **yes** |
-| Recomputes itself from the input | **yes**, `release verify` | certify: `warrant verify`; ordinary recheck: `warrant verify-recheck`; chains: structural checks only, without the statistics |
+| Recomputes itself from the input | **yes**, `release verify` | certify: `warrant verify`; ordinary recheck: `warrant verify-recheck`; retained linear chain prefix: `warrant verify-chain-recheck`; `warrant chain verify` checks structure only |
 
 **The rule.** For a release decision, hand over the **release evaluation** as the
 record of the decision. A certify warrant on the same scored file may be attached
@@ -174,7 +174,7 @@ carries it.
 | Expiry | `expires_at`; `verify` reports STALE once it has passed | **ABSENT** | **ABSENT** |
 | Software and repository state | `software` (source hashes, runtime) | `provenance.git_commit`, `provenance.dirty`, `provenance.libraries`, `provenance.config_hash` | same |
 | Integrity digest | `evidence_id`, over the whole sealed body | `input.evidence_sha256` covers the input rows, **not** the whole record | `prior_warrant.warrant_sha256` names the exact certificate; chained: `chain.state_sha256` over chain state; unchained: no whole-record seal |
-| Reproduce | `warrant release verify` recomputes every measurement field | `warrant verify` recomputes material fields from retained scored rows and configuration; a selected budget also needs its frontier record | `warrant verify-recheck` recomputes ordinary records from retained fresh rows, certificate and configuration; chains: `warrant chain verify` checks linkage and digests, not the statistics |
+| Reproduce | `warrant release verify` recomputes every measurement field | `warrant verify` recomputes material fields from retained scored rows and configuration; a selected budget also needs its frontier record | `warrant verify-recheck` recomputes ordinary records; `warrant verify-chain-recheck` recomputes a retained linear prefix from every batch; `warrant chain verify` checks linkage and digests without scored rows |
 
 ---
 
@@ -200,6 +200,7 @@ warrant recheck --warrant holdout-scores.csv.warrant.json --input next-batch.csv
 warrant verify-recheck --record next-batch.csv.recheck.json --warrant holdout-scores.csv.warrant.json --input next-batch.csv --certificate-input holdout-scores.csv
 warrant recheck --warrant holdout-scores.csv.warrant.json --input week01.csv --horizon-labels <N from plan>
 warrant recheck --warrant holdout-scores.csv.warrant.json --input week02.csv --since week01.csv.recheck-0001.json
+warrant verify-chain-recheck --warrant holdout-scores.csv.warrant.json --pair week01.csv.recheck-0001.json week01.csv --pair week02.csv.recheck-0002.json week02.csv
 warrant chain verify week01.csv.recheck-0001.json week02.csv.recheck-0002.json
 ```
 
@@ -219,7 +220,9 @@ forms bind the new batch's effective rows. `verify-recheck` replays an ordinary
 record from those rows, the exact certificate and configuration. A record that
 claims source `VERIFIED` needs the original scored export again, plus its
 frontier if selected. A chained record needs its retained sequential history;
-`verify-recheck` reports `UNVERIFIED` for it.
+`verify-recheck` reports `UNVERIFIED` for it. Supply every link and fresh file
+from sequence 1 to `verify-chain-recheck` to replay one linear prefix. A pass
+does not establish that no later link or other branch exists.
 
 **Attach the agreement, not the ladder.** Kappa, its interval, the reviewed-pair
 counts and the 2x2 table are computed over the double-labelled items and involve
@@ -353,7 +356,9 @@ change; open fields cannot be filled by hand on a sheet.
    `now.evidence_sha256` identifies ordered effective rows and
    `warrant verify-recheck` recomputes ordinary records (DECISIONS 214).
    Chained records carry the binding but are not sequentially replayed by that
-   command; chain verification remains structural.
+   command. `warrant verify-chain-recheck` replays a complete sealed linear
+   prefix from retained batches (DECISIONS 215); forks and missing history
+   remain unverified. `warrant chain verify` remains structural.
 
 Items 2–3, 5 and 7–8 remain open. Closing 8 requires a fixed-threshold mode and
 its own decision; this page cannot supply it by interpretation.

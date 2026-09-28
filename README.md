@@ -245,6 +245,7 @@ A warrant is a claim about the file it was issued on. On fresh labelled traffic,
 ```bash
 python warrant.py recheck --warrant your_scores.csv.warrant.json --input next_batch.csv
 python warrant.py verify-recheck --record next_batch.csv.recheck.json --warrant your_scores.csv.warrant.json --input next_batch.csv
+python warrant.py verify-chain-recheck --warrant your_scores.csv.warrant.json --pair week01.csv.recheck-0001.json week01.csv --pair week02.csv.recheck-0002.json week02.csv
 python warrant.py plan --warrant your_scores.csv.warrant.json --negative-share 0.9
 ```
 
@@ -319,6 +320,7 @@ the listed `--require-…` flags.
 | `warrant verify -w WARRANT -i FILE [--frontier RECORD]` | Do retained rows and the certificate's material fields recompute? | Mismatch or missing evidence | [INPUT.md](docs/INPUT.md) |
 | `warrant recheck -w WARRANT -i FILE` | Does the warrant still hold on fresh data? The bound and the distribution, separately | `--require-valid` and not VALID | [METHODS.md](docs/METHODS.md#14-recheck-revoke-on-evidence-of-breach) §14 |
 | `warrant verify-recheck --record RECORD -w WARRANT -i FILE` | Do an ordinary recheck's fresh rows and material statistics recompute? | Mismatch or missing evidence | [INPUT.md](docs/INPUT.md) |
+| `warrant verify-chain-recheck -w WARRANT --pair RECORD FILE ...` | Does a retained linear chain prefix recompute from every scored batch? | Mismatch or missing history | [INPUT.md](docs/INPUT.md) |
 | `warrant recheck … --certificate-input ORIGINAL [--certificate-frontier RECORD]` | Replay the certificate before measuring new data; record which source check ran | `--require-valid` and not VALID; bad source evidence exits 2 | [INPUT.md](docs/INPUT.md) |
 | `warrant recheck … --horizon-labels N`, then `--since RECORD` | A year of rechecks as one sequential test | `--require-valid` and not VALID | [METHODS.md](docs/METHODS.md#16-the-chain-one-sequential-test-over-a-declared-horizon) §16 |
 | `warrant chain verify RECORD…` | Do retained record checksums and chain structure pass? | `--require-clean`: findings or missing seals fail | [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) |

@@ -96,6 +96,14 @@ required original export, or a chained record is `UNVERIFIED` (exit 1).
 Malformed input exits 2. Keep the original ordered files if you need a later
 replay; the verifier cannot reconstruct them from the digest.
 
+For a chained record, use `warrant verify-chain-recheck -w CERT --pair LINK1
+FRESH1 --pair LINK2 FRESH2` and supply every link from sequence 1 through the
+target. Add the original certificate evidence if any link claims source
+`VERIFIED`. Missing links or a legacy unbound link are `UNVERIFIED`; a changed
+row, seal or recomputed statistic is `MISMATCH`. This checks the presented
+linear prefix only. A declared fork needs a broader retained-history audit;
+do not read a successful prefix replay as proof that no later record exists.
+
 ### Rechecking
 
 A recheck reports two separate things, the false-positive bound and the score

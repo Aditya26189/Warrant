@@ -212,13 +212,15 @@ field, record by record; this is the map.
 
 The chained recheck and release evaluation have whole-record seals. A certify
 warrant has no seal but `warrant verify` recomputes its material fields from the
-retained scored rows (and frontier for a selected budget). The frontier record,
-plan has no standalone verifier. A new ordinary recheck binds its ordered
+retained scored rows (and frontier for a selected budget). Frontier and plan
+records have no standalone verifier. A new ordinary recheck binds its ordered
 effective scored rows and `warrant verify-recheck` recomputes material fields
 from retained rows, certificate and configuration. Chained records carry the
-row digest, but `warrant chain verify` checks structure and seals rather than
-recomputing the sequential statistic. All these digests are checksums, not
-signatures; none authenticates a writer.
+row digest. `warrant verify-chain-recheck` can recompute a complete, sealed
+linear prefix when every link and its fresh scored file is retained. The
+separate `warrant chain verify` checks structure and seals without scored
+files; it does not recompute the statistic. All these digests are checksums,
+not signatures; none authenticates a writer or proves no branch was omitted.
 
 ---
 
