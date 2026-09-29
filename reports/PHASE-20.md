@@ -73,11 +73,31 @@ audit still considered the resulting prefix clean. Arithmetic replay then
 returned MISMATCH. A legacy link with its fresh-row binding removed and its
 seal recomputed remained UNVERIFIED. Ruff passed on the touched code.
 
-The neighboring chain, recheck and source-verification suites and the
-installed-wheel CLI check are the regression gates. They use synthetic
-scored files and do not observe a live customer detector. The final gate
-counts and the clean-source test inventory will be recorded after all
-changes are committed; collection is never called an execution pass.
+The first full repository run exposed three stale test expectations in
+`test_grouped_agreement.py` and `test_label_sensitivity.py`. They asserted that
+the *entire* certificate payload stayed equal when `label_2` changed. Decision
+211–212 intentionally binds `label_2` into `input.evidence_sha256`, so the
+digest must differ even though status, threshold, bounds and metrics do not.
+The tests now assert both properties separately. Their two affected suites
+passed after this correction; no certification calculation changed.
+
+A new red test then exposed a result-grade bug in the chain replay verifier:
+an unsealed link hid a definite digest failure in another link and produced
+UNVERIFIED. The verifier now reports MISMATCH for a concrete integrity
+failure, while a genuine presented fork remains UNVERIFIED because this
+command supports a linear prefix only. Both new regression cases and the
+neighboring chain, seal and recheck evidence suites passed. Ruff and
+whitespace checks passed on the repairs.
+
+The final clean-source inventory recorded **2,085 collected tests** from
+`ec22b48` (inventory commit `2159949`), up from 2,083. Collection was not
+called execution. The full repository suite on clean `2159949` then exited
+**0**, with **one expected xfail and no failures**; its output showed no
+skips. `python scripts/verify.py --no-activations` reproduced **92/92**
+README claims and **25/25** frozen-score comparisons. The activation tier
+was **SKIPPED**, and remote CI was not observed. The installed-wheel CLI
+check and neighboring suites used synthetic scored files; none observes a
+live customer detector.
 
 ## What this does not establish
 
