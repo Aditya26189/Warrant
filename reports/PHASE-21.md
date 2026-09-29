@@ -79,10 +79,17 @@ it is not a claim of NIST conformance.
   The neighboring release, contract, report, docs and decision tests passed.
   Ruff and whitespace checks passed. The new commands also passed from a built
   and installed wheel, not only a source checkout.
+- Source review caught that the companion used the effective-row digest in
+  `intake/certify.py` but its software manifest did not hash that module. A red
+  test reproduced the omission. The audit now includes that source in its
+  manifest, while an ordinary evaluation's manifest stays unchanged. Source
+  release tests and a rebuilt-wheel check passed after the correction.
 - The first clean-source inventory changed from 2,083 to 2,089 collected tests
   at feature commit `67d3663`. After this report and two inherited chain
   regression cases were added, the successor inventory records **2,093
-  collected tests** from clean source `d908530` (inventory commit `dc6aa25`).
+  collected tests**. Its final clean-source provenance is `b80ff30`
+  (inventory commit `eb098a9`) after the source-manifest repair and Phase 20
+  close-out report.
   Collection is not execution. `python scripts/verify.py --no-activations`
   reproduced **92/92** README claims and **25/25** frozen-score comparisons;
   the activation tier was **SKIPPED**. A full repository execution result for
@@ -118,8 +125,11 @@ Those remain barriers to relying on it as a production release authority.
 The full repository suite on this branch and remote CI remain unobserved.
 The first Phase 20 full run found three stale test expectations about the
 new `label_2` row digest; those suites passed after the tests were corrected.
-The repaired Phase 20 full run is still in progress. Complete that gate, and
-then execute this successor's full suite, before calling the line release-ready.
+The repaired Phase 20 full run exited 0 with one expected xfail and no
+failures; its claim and frozen-score gates passed separately. An early Phase
+21 full run was stopped when the missing audit source hash was found, before
+it could serve as a final gate. Execute this provenance-fixed successor's full
+suite before calling the line release-ready.
 The separate business gate is still the buyer
 conversations and their registered stopping rule; more local checks cannot
 substitute for them.
