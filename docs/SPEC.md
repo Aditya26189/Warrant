@@ -287,6 +287,13 @@ Cheap to build: Phase 2's ablation extracts all tiers in one pass; run it once p
 
 **The table above was a prediction, and one cell was wrong.** Measured on `triviaqa-longctx-600`, max-of-rolling-means is `REFUSED`, not `VALID (wider)`; last-token is the probe that holds. `hinglish-pii-200` is measured for the PII reference detector, and T2/T3 rows exist only on synthetic envelopes, which `RESULTS.md` masks. The shipped matrix is `results/warrant_matrix.md`. `DECISIONS.md` 170.
 
+The hard-negative `VALID` cells in that predicted table are not prospective
+assurance claims. The retained research artifacts used row-count intervals on
+four dependent framings per scenario; Phase 23 makes new grouped warrants use
+group-any inference and rejects legacy row bounds in routing and policy. Read
+the retained cells as historical method records, not certificates for customer
+traffic (DECISIONS 220).
+
 ### 3.2 Routing
 
 Drift fires → *"which detector holds a `VALID` warrant on the envelope I am actually in?"* → route there, adopt **that warrant's bounds**, and if the row is empty, refuse everything and fall back to the profile's most conservative action.
