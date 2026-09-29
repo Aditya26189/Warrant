@@ -93,9 +93,10 @@ a trusted timestamp or a defence against coherent local rewriting.
   frozen-score comparisons; activation re-derivation was **SKIPPED**.
 - The first full Phase 22 suite was stopped near its start after the
   certificate-replay compatibility gap was found in source review. The final
-  full suite on clean `2e9d625` is **running**, not yet a passing gate. Remote
-  CI is unobserved. An independent statistical review was requested from the
-  other coordinated session; no response has been observed yet.
+  full suite on clean `2e9d625` exited **0** with one expected xfail and no
+  reported failures. Remote CI is unobserved. An independent statistical
+  review was requested from the other coordinated session; no response has
+  been observed yet.
 
 ## What this does not establish
 
@@ -112,8 +113,8 @@ authenticated custody, or buyer demand.
 
 ## Open items
 
-Finish the final full-suite run and record its exit result. Obtain independent
-statistical review before describing this as final inferential assurance.
+Obtain independent statistical review before describing this as final
+inferential assurance.
 For the research artifact, design a versioned estimator migration and
 pre-register how new results and old claims coexist before any protected
 test-set rescore. Audit the remaining grouped metrics separately. For the
