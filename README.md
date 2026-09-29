@@ -497,11 +497,16 @@ refuses to print their numbers ([docs/LIMITATIONS.md](docs/LIMITATIONS.md) §2.4
 | ...its precision there | 0.6532 | [0.5114, 0.8100] | results/detectors.json | runs[detector_id=pii-reference,eval_set_id=hinglish-pii-200].metrics.precision.value | make verify |
 | `presidio-stock` reproduces out of sample | 0.1471 | [0.0714, 0.2341] | results/holdout/detectors.json | runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200b].metrics.recall.value | make verify |
 | ...its precision there | 0.5357 | [0.2812, 0.8621] | results/holdout/detectors.json | runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200b].metrics.precision.value | make verify |
-| `pii-reference` false-positive rate on benign traffic | 0.0000 | [0.0000, 0.0183] | results/validation-pii-reference-hard-negatives-200.json | metrics.flag_rate.value | make verify |
+| `pii-reference` historical row flag rate on a hand-built benign set | 0.0000 | [0.0000, 0.0183] | results/validation-pii-reference-hard-negatives-200.json | metrics.flag_rate.value | make verify |
 
 The Presidio finding is a statement about one pinned version, which is inside the
 refusal reason. The `enabled_plus_custom` recognizers were partly fitted on the
 set they are measured on ([docs/LIMITATIONS.md](docs/LIMITATIONS.md) §2.3).
+The final row's interval is retained historical row-count arithmetic across
+dependent framings. It is **not** an independent-unit confidence interval or
+evidence about customer traffic. [Phase 23](reports/PHASE-23.md) gives the
+prospective group-aware bound and explains why frozen-score verification
+replays the older number without validating its coverage.
 
 ### What no selector can do
 
