@@ -61,9 +61,10 @@ being right; retain its label-audit companion for that description.
 > negative and flags **nothing**, so its ladder is about a cut that fires on no
 > row; a release threshold declared at 0.8 flags 24 rows on the same file.
 >
-> **What would make the ladder transferable** is computing it at the release's
-> own threshold under the release's protocol. No command does that today: see
-> section 6, item 8.
+> `release label-audit` now computes a separate sensitivity at the release's
+> registered threshold under its own interval protocol, after replaying the
+> retained evaluation (section 6, item 8). It does not make `certify`'s ladder
+> transferable or establish which primary labels are true.
 
 ### Who supplies and who retains each file
 
