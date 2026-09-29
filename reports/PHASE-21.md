@@ -84,16 +84,23 @@ it is not a claim of NIST conformance.
   test reproduced the omission. The audit now includes that source in its
   manifest, while an ordinary evaluation's manifest stays unchanged. Source
   release tests and a rebuilt-wheel check passed after the correction.
+- A documentation cross-check found two stale descriptions: the handoff said no
+  release-threshold label audit existed, and the methods guide described
+  grouped reviewer intervals as if decision 201 had not landed. Both now match
+  the implemented paths (`d746e26`); focused documentation and invariant tests
+  passed before integration.
 - The first clean-source inventory changed from 2,083 to 2,089 collected tests
   at feature commit `67d3663`. After this report and two inherited chain
   regression cases were added, the successor inventory records **2,093
   collected tests**. Its final clean-source provenance is `b80ff30`
   (inventory commit `eb098a9`) after the source-manifest repair and Phase 20
   close-out report.
-  Collection is not execution. `python scripts/verify.py --no-activations`
-  reproduced **92/92** README claims and **25/25** frozen-score comparisons;
-  the activation tier was **SKIPPED**. A full repository execution result for
-  this branch has not yet been established.
+  Collection is not execution. The full `tests/` suite on clean feature source
+  `52a87eb` exited **0**, with one expected xfail and no failures. The later
+  `d746e26` change is documentation only; its affected documentation and
+  invariant checks passed separately. `python scripts/verify.py
+  --no-activations` reproduced **92/92** README claims and **25/25**
+  frozen-score comparisons; the activation tier was **SKIPPED**.
 
 ## Product and commercial interpretation
 
@@ -122,14 +129,15 @@ Those remain barriers to relying on it as a production release authority.
 
 ## Open items
 
-The full repository suite on this branch and remote CI remain unobserved.
+Remote CI remains unobserved.
 The first Phase 20 full run found three stale test expectations about the
 new `label_2` row digest; those suites passed after the tests were corrected.
 The repaired Phase 20 full run exited 0 with one expected xfail and no
 failures; its claim and frozen-score gates passed separately. An early Phase
 21 full run was stopped when the missing audit source hash was found, before
-it could serve as a final gate. Execute this provenance-fixed successor's full
-suite before calling the line release-ready.
+it could serve as a final gate. The provenance-fixed successor's full suite
+subsequently exited 0. This local gate does not establish customer deployment,
+representative labels or authenticated custody.
 The separate business gate is still the buyer
 conversations and their registered stopping rule; more local checks cannot
 substitute for them.
