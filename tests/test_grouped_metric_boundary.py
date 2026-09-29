@@ -13,7 +13,9 @@ from controlplane.intake.contract import ScoredItems
 from controlplane.intake.verify import verify_certification
 from controlplane.model import to_jsonable
 from controlplane.validation.metrics_builder import build_warrant_metrics
-from controlplane.validation.stats import estimated, precision_at, recall_at
+from controlplane.validation.stats import (
+    estimated, false_positive_rate_at, precision_at, recall_at,
+)
 
 
 def test_perfect_grouped_rates_do_not_gain_certainty_from_row_duplication(
@@ -95,6 +97,56 @@ def test_zero_successes_on_grouped_rates_remain_vacuous(config: Config) -> None:
         assert (metric.ci_low, metric.ci_high) == (0.0, 1.0)
 
 
+def test_copied_negative_rows_cannot_narrow_grouped_flag_and_fpr_bounds(
+    config: Config,
+) -> None:
+    """Four independent negative scenarios stay four trials after duplication."""
+    fast = dataclasses.replace(
+        config,
+        validation=dataclasses.replace(config.validation, bootstrap_samples=100),
+    )
+    for repeats in (1, 100):
+        labels = np.zeros(4 * repeats, dtype=int)
+        scores = np.full(4 * repeats, 0.1)
+        groups = np.repeat(np.arange(4), repeats).astype(object)
+        metrics = build_warrant_metrics(
+            fast, labels, scores, 0.5, groups=groups,
+            grouped_rate_boundary_abstention=True,
+        )
+        assert metrics.flag_rate.value == 0.0
+        assert (metrics.flag_rate.ci_low, metrics.flag_rate.ci_high) == (0.0, 1.0)
+        assert "4 groups" in metrics.flag_rate.estimator
+        assert len(metrics.extra) == 1
+        assert (metrics.extra[0].ci_low, metrics.extra[0].ci_high) == (0.0, 1.0)
+
+
+def test_grouped_flag_rate_keeps_noncollapsed_cluster_percentile(config: Config) -> None:
+    """The method changes only a collapsed resample, not an interior interval."""
+    fast = dataclasses.replace(
+        config,
+        validation=dataclasses.replace(config.validation, bootstrap_samples=100),
+    )
+    labels = np.tile(np.array([0, 1]), 40)
+    scores = np.repeat(np.tile(np.array([0.1, 0.9]), 20), 2)
+    groups = np.repeat(np.arange(40), 2).astype(object)
+    metrics = build_warrant_metrics(
+        fast, labels, scores, 0.5, groups=groups,
+        grouped_rate_boundary_abstention=True,
+    )
+    original = estimated(
+        "flag_rate", lambda y, s: float(np.mean(s >= 0.5)), labels, scores,
+        n_resamples=100, ci=fast.validation.ci, seed=fast.seed, groups=groups,
+    )
+    assert metrics.flag_rate == original
+    assert len(metrics.extra) == 1
+    original_fpr = estimated(
+        "fpr", lambda y, s: false_positive_rate_at(y, s, 0.5),
+        labels, scores, n_resamples=100, ci=fast.validation.ci,
+        seed=fast.seed, groups=groups,
+    )
+    assert metrics.extra[0] == original_fpr
+
+
 def test_noncollapsed_grouped_intervals_match_existing_percentile_method(
     config: Config,
 ) -> None:
@@ -137,6 +189,13 @@ def test_ungrouped_boundary_keeps_exact_binomial_interval(config: Config) -> Non
     for metric in (metrics.recall, metrics.precision):
         assert "Clopper-Pearson exact" in metric.estimator
         assert metric.ci_low > 0.0
+    assert "Clopper-Pearson exact" in metrics.extra[0].estimator
+    original_flag_rate = estimated(
+        "flag_rate", lambda y, s: float(np.mean(s >= 0.5)),
+        labels, scores, n_resamples=100, ci=fast.validation.ci,
+        seed=fast.seed, binomial_events=20, binomial_trials=80,
+    )
+    assert metrics.flag_rate == original_flag_rate
 
 
 def _grouped_items() -> ScoredItems:
@@ -169,15 +228,24 @@ def test_new_and_retained_grouped_certificates_replay_under_their_methods() -> N
     items = _grouped_items()
     current = certify_items(config, items, budget=0.05).to_payload()
     current["provenance"] = {"config_hash": config.config_hash}
-    assert current["metrics_protocol"] == "grouped_boundary_vacuous_v1"
+    assert current["metrics_protocol"] == "grouped_boundary_vacuous_v2"
     assert verify_certification(current, items, config).status == "VERIFIED"
+
+    retained_v1 = certify_items(
+        config, items, budget=0.05,
+        grouped_boundary_abstention=True,
+        grouped_rate_boundary_abstention=False,
+    ).to_payload()
+    retained_v1["metrics_protocol"] = "grouped_boundary_vacuous_v1"
+    retained_v1["provenance"] = {"config_hash": config.config_hash}
+    assert verify_certification(retained_v1, items, config).status == "VERIFIED"
 
     legacy = deepcopy(current)
     del legacy["metrics_protocol"]
     labels, scores, groups = items.as_arrays()
     old_metrics = build_warrant_metrics(
         config, labels, scores, current["certification"]["threshold"],
-        groups=groups,
+        groups=groups, grouped_rate_boundary_abstention=False,
     )
     for name in ("recall", "precision", "flag_rate", "lift"):
         legacy["metrics"][name] = to_jsonable(getattr(old_metrics, name))
@@ -192,3 +260,22 @@ def test_new_and_retained_grouped_certificates_replay_under_their_methods() -> N
     unknown = deepcopy(current)
     unknown["metrics_protocol"] = "unknown"
     assert verify_certification(unknown, items, config).status == "MISMATCH"
+
+
+def test_v1_certificate_replays_old_collapsed_flag_rate() -> None:
+    """v2 must not retroactively upgrade a retained v1 interval."""
+    config = load_customer_config()
+    original = _grouped_items()
+    items = dataclasses.replace(original, scores=tuple(0.1 for _ in original.scores))
+    v2 = certify_items(config, items, budget=0.05).to_payload()
+    v1 = certify_items(
+        config, items, budget=0.05, grouped_rate_boundary_abstention=False,
+    ).to_payload()
+    for record in (v1, v2):
+        record["provenance"] = {"config_hash": config.config_hash}
+        assert record["status"] == "VALID"
+        assert verify_certification(record, items, config).status == "VERIFIED"
+    assert v1["metrics_protocol"] == "grouped_boundary_vacuous_v1"
+    assert v2["metrics_protocol"] == "grouped_boundary_vacuous_v2"
+    assert v1["metrics"]["flag_rate"]["ci_high"] < 1.0
+    assert v2["metrics"]["flag_rate"]["ci_high"] == 1.0

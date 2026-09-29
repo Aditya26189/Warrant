@@ -330,16 +330,19 @@ Clopper-Pearson upper bound, and — when certified — recall, precision, flag 
 and lift, each with a 95% interval, and how far the certificate depends on its
 labels (above, under `label_2`).
 
-For grouped recall or precision, a bootstrap that collapses produces the
+For grouped recall, precision, flag rate or descriptive within-set FPR, a
+bootstrap that collapses produces the
 vacuous `[0, 1]` interval with an explanation and the distinct group count.
 It does not add confidence by counting repeated rows as independent trials
 (`DECISIONS.md` 217). The point estimate still describes the supplied file;
 the vacuous interval supplies no useful population precision.
 
 New records name this interval method with top-level
-`metrics_protocol: grouped_boundary_vacuous_v1` (DECISIONS 219). `warrant verify`
-replays that method. An older bound record without the field replays its
-historical arithmetic and, when grouped, reports a legacy-method caution.
+`metrics_protocol: grouped_boundary_vacuous_v2` (DECISIONS 221). `warrant verify`
+replays that method. Retained v1 records replay their earlier recall/precision
+method and original flag-rate/FPR method. An older bound record without the
+field replays its historical arithmetic and, when grouped, reports a
+legacy-method caution.
 VERIFIED means the retained fields recompute; it does not make an old grouped
 boundary interval statistically sound or authenticate the record's age.
 

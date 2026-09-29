@@ -40,15 +40,19 @@ and produces intervals that are too narrow. Every split in this project is by
 question, deduplicated on the normalised question string first, with zero
 overlap asserted between splits.
 
-New customer certificates report a collapsed grouped recall or precision
+New customer certificates report a collapsed grouped recall, precision, flag
+rate or descriptive within-set FPR
 percentile interval as the vacuous `[0, 1]` range with the distinct group count
-and a reason (`DECISIONS.md` 217-218). An exact binomial interval using item
+and a reason (`DECISIONS.md` 217-218, 221). An exact binomial interval using item
 counts would manufacture independent trials from repeated rows in those
 groups. Noncollapsed grouped customer intervals are unchanged. Historical
-research artifacts still replay their original method; its grouped boundary
+research artifacts and v1 customer certificates still replay their original
+methods; a historical grouped boundary
 interval is not a valid population-precision claim and needs a versioned
 migration. Finite-sample coverage of noncollapsed grouped intervals is not
 newly established by this customer repair.
+New grouped research run identities include `grouped_rate_vacuous_v1` so
+recomputed metrics cannot masquerade as the historical run.
 
 Percentile rather than BCa: BCa's acceleration term is estimated by jackknife,
 which at n=600 over groups is itself noisy, and the correction was smaller than

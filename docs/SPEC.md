@@ -221,7 +221,8 @@ POST /validate { detector_id, operating_point_id, eval_set_id }
 
 Under one minute from cached activations. Streams progress. **Displays the deliberately-broken padding case being rejected** — that is the moment in the demo.
 
-New customer `certify` records use independent groups for recall and precision
+New customer `certify` records use independent groups for recall, precision,
+flag rate and descriptive within-set FPR
 resampling. If a grouped percentile interval collapses, the record keeps the
 descriptive point estimate but shows a vacuous `[0, 1]` interval and an explicit
 reason; it does not switch to a row-count binomial interval (DECISIONS 217-218).
@@ -230,10 +231,15 @@ research artifacts are replayed under their original method until a separately
 versioned research migration; the old grouped boundary interval is not thereby
 validated. This is an abstention on useful customer uncertainty, not a new
 group-aware coverage result.
-New customer certificates declare `metrics_protocol: grouped_boundary_vacuous_v1`.
-A bound older certificate without that field replays its historical metric
-method with a grouped-interval caution (DECISIONS 219); replay verifies arithmetic,
-not the coverage of the legacy interval or the record's origin.
+New customer certificates declare `metrics_protocol: grouped_boundary_vacuous_v2`
+(DECISIONS 221). Retained v1 records replay the earlier recall/precision repair
+but their original flag-rate and descriptive FPR method. A bound older
+certificate without either marker replays its historical metric method with a
+grouped-interval caution (DECISIONS 219); replay verifies arithmetic, not the
+coverage of a legacy interval or the record's origin.
+Prospective grouped research run IDs include `grouped_rate_vacuous_v1`, so an
+estimator change cannot silently reuse a prior run identity. Frozen score
+artifacts retain their original identity and are replayed explicitly.
 
 Prospective hard-negative warrants with repeated question groups use
 `group_any_cp_v1` (DECISIONS 220). A negative group fires if any member fires;

@@ -243,6 +243,7 @@ def metrics_for_target(
         target.threshold,
         groups=np.asarray(score_set.question_ids),
         is_hard_negative_set=score_set.is_hard_negative_set,
+        grouped_rate_boundary_abstention=not legacy_grouped_hard_negative,
         legacy_grouped_hard_negative=legacy_grouped_hard_negative,
     )
 

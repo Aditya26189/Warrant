@@ -282,13 +282,13 @@ model, no GPU and no network. It is `controlplane/cli.py` over
 
 On a grouped file (a `group` column) the unit of inference is the group, groups
 must be equal in size, and a recheck re-tests in the same unit (188, 190).
-New `certify` records name `grouped_boundary_vacuous_v1` in `metrics_protocol`:
-if grouped recall or precision bootstrap resampling collapses, their interval
+New `certify` records name `grouped_boundary_vacuous_v2` in `metrics_protocol`:
+if grouped recall, precision, flag-rate or descriptive within-set FPR bootstrap
+resampling collapses, its interval
 is the uninformative `[0, 1]` range rather than a binomial interval that counts
-dependent rows. `warrant verify` replays that method; an older bound record
-without the field replays the historical calculation with a grouped-method
-caution (217-219). The certificate's separate FPR bound and threshold do not
-change.
+dependent rows. `warrant verify` replays v2, retained v1 and unmarked records
+under their respective calculations (217-219, 221). The certificate's separate
+FPR bound and threshold do not change.
 
 ---
 

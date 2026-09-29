@@ -23,9 +23,9 @@ of them wrong at some point:
 * **Independent proportions get an exact interval at the boundary.** Zero
   events in `n` independent trials collapses the bootstrap to zero width,
   which claims perfect certainty from a finite sample (``DECISIONS.md`` 035).
-  A new customer certificate instead treats a collapsed *grouped* recall or
-  precision interval as vacuous (``DECISIONS.md`` 217-218). The default retains
-  historical research-artifact replay until that estimator is versioned.
+  A new customer certificate instead treats collapsed *grouped* recall,
+  precision and descriptive rate intervals as vacuous (``DECISIONS.md``
+  217-218, 221). Historical replay explicitly requests the prior estimators.
 """
 
 from __future__ import annotations
@@ -164,6 +164,7 @@ def build_warrant_metrics(
     groups: Optional[np.ndarray] = None,
     is_hard_negative_set: bool = False,
     grouped_boundary_abstention: bool = False,
+    grouped_rate_boundary_abstention: bool = True,
     legacy_grouped_hard_negative: bool = False,
 ) -> WarrantMetrics:
     """Build every metric a warrant carries, from one scoring.
@@ -184,6 +185,9 @@ def build_warrant_metrics(
         grouped_boundary_abstention: Use vacuous grouped recall/precision bounds
             on bootstrap collapse for new customer certificates. The default
             preserves frozen research-artifact replay (DECISIONS 217-218).
+        grouped_rate_boundary_abstention: Withhold collapsed grouped flag-rate
+            and ordinary FPR intervals. Historical replay explicitly disables
+            this prospective method (DECISIONS 221).
         legacy_grouped_hard_negative: Replay the historical row-count upper
             bound from frozen scores only. New grouped hard-negative warrants
             must count independent negative groups (DECISIONS 220).
@@ -295,6 +299,14 @@ def build_warrant_metrics(
             within_set_fpr = _grouped_hard_negative_fpr(
                 labels, scores, threshold, groups, config,
             )
+        elif (
+            groups is not None and grouped_rate_boundary_abstention
+            and not is_hard_negative_set
+        ):
+            within_set_fpr = _grouped_rate(
+                "fpr", lambda y, s: false_positive_rate_at(y, s, threshold),
+                labels, scores, groups, config,
+            )
         else:
             within_set_fpr = estimated(
                 "fpr_hard_negatives" if is_hard_negative_set else "fpr",
@@ -324,10 +336,16 @@ def build_warrant_metrics(
         recall=ranking["recall"],
         precision=ranking["precision"],
         ranking_absent_reason=ranking_absent_reason,
-        flag_rate=estimated(
-            "flag_rate", lambda y, s: flag_rate_at(s, threshold), labels, scores,
-            n_resamples=boot, ci=ci, seed=seed, groups=groups,
-            binomial_events=n_flagged, binomial_trials=n_items,
+        flag_rate=(
+            _grouped_rate(
+                "flag_rate", lambda y, s: flag_rate_at(s, threshold),
+                labels, scores, groups, config,
+            )
+            if groups is not None and grouped_rate_boundary_abstention else estimated(
+                "flag_rate", lambda y, s: flag_rate_at(s, threshold), labels, scores,
+                n_resamples=boot, ci=ci, seed=seed, groups=groups,
+                binomial_events=n_flagged, binomial_trials=n_items,
+            )
         ),
         confirmed_errors=exact_count(
             "confirmed_errors",
