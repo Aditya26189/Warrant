@@ -20,15 +20,17 @@ of them wrong at some point:
   set under test *is* the hard-negative set. Otherwise the within-set FPR is
   reported as ``fpr``. Passed explicitly rather than inferred from a set's name,
   because names get changed.
-* **Proportions get an exact interval at the boundary.** Zero events in `n`
-  trials collapses the bootstrap to zero width, which claims perfect certainty
-  from a finite sample (``DECISIONS.md`` 035).
+* **Independent proportions get an exact interval at the boundary.** Zero
+  events in `n` independent trials collapses the bootstrap to zero width,
+  which claims perfect certainty from a finite sample (``DECISIONS.md`` 035).
+  A collapsed *grouped* recall or precision bootstrap has no such row-level
+  fallback; its interval is vacuous (``DECISIONS.md`` 217).
 """
 
 from __future__ import annotations
 
 import logging
-from typing import Optional
+from typing import Callable, Optional
 
 import numpy as np
 
@@ -36,6 +38,7 @@ from ..config import Config
 from ..model import Metric, MetricKind, WarrantMetrics
 from .stats import (
     auroc,
+    bootstrap_interval,
     estimated,
     exact_count,
     false_positive_rate_at,
@@ -47,6 +50,55 @@ from .stats import (
 __all__ = ["assert_metric_shape_compatible", "build_warrant_metrics"]
 
 _LOG = logging.getLogger(__name__)
+
+
+def _grouped_rate(
+    name: str,
+    statistic: Callable[[np.ndarray, np.ndarray], float],
+    labels: np.ndarray,
+    scores: np.ndarray,
+    groups: np.ndarray,
+    config: Config,
+) -> Metric:
+    """Withhold a collapsed cluster interval instead of using row-binomial trials.
+
+    Decision 217 leaves the point estimate descriptive and preserves the
+    existing cluster percentile method when it has width. The full [0, 1]
+    range conveys no population information when resampling collapses.
+    """
+    value = float(statistic(labels, scores))
+    low, high, n_effective = bootstrap_interval(
+        statistic, labels, scores,
+        n_resamples=config.validation.bootstrap_samples,
+        ci=config.validation.ci,
+        seed=config.seed,
+        groups=groups,
+    )
+    if low == high:
+        n_groups = int(np.unique(groups).size)
+        low, high = 0.0, 1.0
+        estimator = (
+            "vacuous [0, 1]: collapsed grouped bootstrap over "
+            f"{n_groups} groups; a row-level binomial fallback is unsupported"
+        )
+    else:
+        low, high = min(low, value), max(high, value)
+        estimator = (
+            f"bootstrap-percentile-{n_effective} over questions, "
+            f"seed={config.seed}"
+        )
+    return Metric(
+        name=name,
+        value=value,
+        kind=MetricKind.ESTIMATED,
+        n=int(labels.size),
+        ci_low=low,
+        ci_high=high,
+        ci_level=config.validation.ci,
+        unit="rate",
+        estimator=estimator,
+        convention="two_sided_95",
+    )
 
 
 def build_warrant_metrics(
@@ -108,11 +160,17 @@ def build_warrant_metrics(
                 "auroc", auroc, labels, scores,
                 n_resamples=boot, ci=ci, seed=seed, groups=groups, unit="ratio",
             ),
-            "recall": estimated(
-                "recall", lambda y, s: recall_at(y, s, threshold), labels, scores,
-                n_resamples=boot, ci=ci, seed=seed, groups=groups,
-                binomial_events=int(np.sum((scores >= threshold) & (labels == 1))),
-                binomial_trials=int(np.sum(labels == 1)),
+            "recall": (
+                _grouped_rate(
+                    "recall", lambda y, s: recall_at(y, s, threshold),
+                    labels, scores, groups, config,
+                )
+                if groups is not None else estimated(
+                    "recall", lambda y, s: recall_at(y, s, threshold), labels, scores,
+                    n_resamples=boot, ci=ci, seed=seed, groups=None,
+                    binomial_events=int(np.sum((scores >= threshold) & (labels == 1))),
+                    binomial_trials=int(np.sum(labels == 1)),
+                )
             ),
             # Precision is TP/(TP+FP). With NOTHING flagged the denominator
             # is zero, so the quantity is undefined -- and the bootstrap does
@@ -146,12 +204,18 @@ def build_warrant_metrics(
                     ),
                 )
                 if n_flagged == 0
-                else estimated(
-                    "precision", lambda y, s: precision_at(y, s, threshold),
-                    labels, scores,
-                    n_resamples=boot, ci=ci, seed=seed, groups=groups,
-                    binomial_events=int(np.sum((scores >= threshold) & (labels == 1))),
-                    binomial_trials=n_flagged,
+                else (
+                    _grouped_rate(
+                        "precision", lambda y, s: precision_at(y, s, threshold),
+                        labels, scores, groups, config,
+                    )
+                    if groups is not None else estimated(
+                        "precision", lambda y, s: precision_at(y, s, threshold),
+                        labels, scores,
+                        n_resamples=boot, ci=ci, seed=seed, groups=None,
+                        binomial_events=int(np.sum((scores >= threshold) & (labels == 1))),
+                        binomial_trials=n_flagged,
+                    )
                 )
             ),
         }

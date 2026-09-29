@@ -40,6 +40,13 @@ and produces intervals that are too narrow. Every split in this project is by
 question, deduplicated on the normalised question string first, with zero
 overlap asserted between splits.
 
+For grouped recall and precision, a collapsed percentile interval is reported
+as the vacuous `[0, 1]` range with the distinct group count and a reason
+(`DECISIONS.md` 217). An exact binomial interval using item counts would
+manufacture independent trials from repeated rows in those groups. The
+noncollapsed grouped percentile interval is unchanged; its finite-sample
+coverage is not newly established by this boundary repair.
+
 Percentile rather than BCa: BCa's acceleration term is estimated by jackknife,
 which at n=600 over groups is itself noisy, and the correction was smaller than
 its own uncertainty when checked.
@@ -281,7 +288,9 @@ this is 59 units for a 5% budget and 299 for 1% ([INPUT.md](INPUT.md)).
 fires. That bound dominates the item-level rate **only when groups are equal in
 size**; with unequal sizes one large all-firing group among many silent
 singletons makes it anticonservative, so unequal groups are refused. Metric
-intervals on a grouped file bootstrap over groups.
+intervals on a grouped file bootstrap over groups. A collapsed grouped recall
+or precision interval is vacuous as described in section 1; the certificate's
+separate FPR rule continues to count independent negative groups.
 
 **The consequence.** The next lower threshold does not certify, so every
 certificate sits at the edge of its budget and is sensitive to label error (§17).

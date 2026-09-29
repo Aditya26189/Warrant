@@ -330,6 +330,12 @@ Clopper-Pearson upper bound, and — when certified — recall, precision, flag 
 and lift, each with a 95% interval, and how far the certificate depends on its
 labels (above, under `label_2`).
 
+For grouped recall or precision, a bootstrap that collapses produces the
+vacuous `[0, 1]` interval with an explanation and the distinct group count.
+It does not add confidence by counting repeated rows as independent trials
+(`DECISIONS.md` 217). The point estimate still describes the supplied file;
+the vacuous interval supplies no useful population precision.
+
 Two rules the output always follows:
 
 - **Population rates carry intervals.** Grouped reviewer agreement instead

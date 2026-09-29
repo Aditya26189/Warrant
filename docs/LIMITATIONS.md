@@ -323,8 +323,11 @@ Group counts exclude groups with no second review. Null kappa when both
 reviewers use one category is distinct from a withheld confidence interval.
 Ungrouped paired-bootstrap intervals are unchanged. Neither pathway detects
 shared reviewer mistakes or establishes that review selection was representative.
-This repair does not change recall/precision intervals or claim to validate
-other grouped estimators; their separate audit findings remain open in
+A separate repair (DECISIONS 217) now makes a collapsed grouped recall or
+precision interval vacuous instead of falling back to item-count binomial
+inference. It preserves noncollapsed grouped percentile intervals without a
+new finite-sample coverage claim. Other grouped estimators, including the
+hard-negative FPR path, still need independent audit; see
 `reports/PROJECT-REVIEW-2026-09-23.md`.
 
 ### 3.7 Most records the customer CLI writes can be edited without detection

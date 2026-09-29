@@ -221,6 +221,13 @@ POST /validate { detector_id, operating_point_id, eval_set_id }
 
 Under one minute from cached activations. Streams progress. **Displays the deliberately-broken padding case being rejected** — that is the moment in the demo.
 
+For grouped recall and precision, resampling uses independent groups. If its
+percentile interval collapses, the record keeps the descriptive point estimate
+but shows a vacuous `[0, 1]` interval and an explicit reason; it never switches
+to a row-count binomial interval (DECISIONS 217). Ungrouped boundary intervals
+retain their exact-binomial fallback. This is an abstention on useful grouped
+uncertainty, not a new group-aware coverage result.
+
 ### 2.3 Refusal criteria
 
 Refuse if any control fails; or AUROC lower CI bound ≤ 0.55; or recall below the policy's declared minimum at the operating point; or FPR on the hard-negative set above the declared maximum; or `n_test` < 200.
