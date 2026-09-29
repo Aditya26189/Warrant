@@ -482,15 +482,20 @@ evaluated at every count up to a limit so no monotonicity is assumed
 **A second reviewer (`label_2`).** Measured beside the result, never used to change
 it:
 
-- **Cohen's kappa** over the double-labelled items, percentile bootstrap over
-  pairs. On a grouped file the pairs are still resampled independently, which
-  ignores correlation within a group; a fix is pre-registered and not merged.
-- **Disputes** at the certified threshold, in both flattering directions, and `c`
-  if each dispute were an error: a worst case over the reviewed pairs, not a
-  bound on the truth.
-- **A whole-file bound on disputes**, when only some items were double-labelled
-  and assuming they were drawn at random from their pool: with `d` disputed of `r`
-  reviewed in a pool of `M`,
+- **Cohen's kappa** over the double-labelled items. Ungrouped files use a
+  percentile bootstrap over pairs for the population interval. On a grouped
+  file only the observed pair table, raw agreement and descriptive kappa are
+  reported; the population interval is withheld because related pairs cannot
+  be resampled as independent (`DECISIONS.md` 201). The record names reviewed
+  pair and group counts.
+- **Disputes on an ungrouped file** at the certified threshold, in both
+  flattering directions, and `c` if each dispute were an error: a worst case
+  over the reviewed pairs, not a bound on the truth. Grouped-file dispute
+  sensitivity is withheld because `label_2` is per item while certification
+  uses whole groups.
+- **A whole-file bound on disputes for ungrouped files**, when only some items
+  were double-labelled and assuming they were drawn at random from their pool:
+  with `d` disputed of `r` reviewed in a pool of `M`,
 
   ```
   D_upper = max{ D : P( Hypergeom(M, D, r) <= d ) >= alpha }
