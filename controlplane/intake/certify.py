@@ -330,7 +330,8 @@ def certify_items(
         )
 
     metrics = build_warrant_metrics(
-        config, labels, scores, threshold, groups=groups
+        config, labels, scores, threshold, groups=groups,
+        grouped_boundary_abstention=True,
     )
     lift, ceiling, lift_absent = _lift_of(metrics)
     return CertificationResult(

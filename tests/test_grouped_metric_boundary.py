@@ -26,7 +26,10 @@ def test_perfect_grouped_rates_do_not_gain_certainty_from_row_duplication(
         labels = np.repeat(np.array([0] * 60 + [1] * 4), repeats)
         scores = np.where(labels == 1, 0.9, 0.1)
         groups = np.repeat(np.arange(64), repeats).astype(object)
-        metrics = build_warrant_metrics(fast, labels, scores, 0.5, groups=groups)
+        metrics = build_warrant_metrics(
+            fast, labels, scores, 0.5, groups=groups,
+            grouped_boundary_abstention=True,
+        )
         assert metrics.recall is not None and metrics.precision is not None
         observed.append((metrics.recall, metrics.precision))
 
@@ -58,6 +61,7 @@ def test_interior_collapse_with_mixed_unequal_groups_is_vacuous(config: Config) 
         metrics = build_warrant_metrics(
             fast, np.array(labels), np.array(scores), 0.5,
             groups=np.array(groups, dtype=object),
+            grouped_boundary_abstention=True,
         )
         assert metrics.recall is not None and metrics.precision is not None
         observed.append((metrics.recall, metrics.precision))
@@ -78,7 +82,10 @@ def test_zero_successes_on_grouped_rates_remain_vacuous(config: Config) -> None:
     labels = np.tile(np.array([1, 0]), 16)
     scores = np.tile(np.array([0.1, 0.9]), 16)
     groups = np.repeat(np.arange(16), 2).astype(object)
-    metrics = build_warrant_metrics(fast, labels, scores, 0.5, groups=groups)
+    metrics = build_warrant_metrics(
+        fast, labels, scores, 0.5, groups=groups,
+        grouped_boundary_abstention=True,
+    )
     assert metrics.recall is not None and metrics.precision is not None
     for metric in (metrics.recall, metrics.precision):
         assert metric.value == 0.0
@@ -97,7 +104,10 @@ def test_noncollapsed_grouped_intervals_match_existing_percentile_method(
     labels = np.tile(np.array([0, 1]), 40)
     scores = rng.random(labels.size)
     groups = np.repeat(np.arange(40), 2).astype(object)
-    metrics = build_warrant_metrics(fast, labels, scores, 0.5, groups=groups)
+    metrics = build_warrant_metrics(
+        fast, labels, scores, 0.5, groups=groups,
+        grouped_boundary_abstention=True,
+    )
     assert metrics.recall is not None and metrics.precision is not None
     for name, statistic, actual in (
         ("recall", lambda y, s: recall_at(y, s, 0.5), metrics.recall),

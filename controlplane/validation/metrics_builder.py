@@ -23,8 +23,9 @@ of them wrong at some point:
 * **Independent proportions get an exact interval at the boundary.** Zero
   events in `n` independent trials collapses the bootstrap to zero width,
   which claims perfect certainty from a finite sample (``DECISIONS.md`` 035).
-  A collapsed *grouped* recall or precision bootstrap has no such row-level
-  fallback; its interval is vacuous (``DECISIONS.md`` 217).
+  A new customer certificate instead treats a collapsed *grouped* recall or
+  precision interval as vacuous (``DECISIONS.md`` 217-218). The default retains
+  historical research-artifact replay until that estimator is versioned.
 """
 
 from __future__ import annotations
@@ -109,6 +110,7 @@ def build_warrant_metrics(
     *,
     groups: Optional[np.ndarray] = None,
     is_hard_negative_set: bool = False,
+    grouped_boundary_abstention: bool = False,
 ) -> WarrantMetrics:
     """Build every metric a warrant carries, from one scoring.
 
@@ -125,6 +127,9 @@ def build_warrant_metrics(
         is_hard_negative_set: Whether the set under test *is* the hard-negative
             set. Only then does its FPR populate ``fpr_hard_negatives`` and face
             a profile's declared maximum.
+        grouped_boundary_abstention: Use vacuous grouped recall/precision bounds
+            on bootstrap collapse for new customer certificates. The default
+            preserves frozen research-artifact replay (DECISIONS 217-218).
 
     Returns:
         A :class:`WarrantMetrics`. On a single-class set the ranking metrics are
@@ -165,9 +170,9 @@ def build_warrant_metrics(
                     "recall", lambda y, s: recall_at(y, s, threshold),
                     labels, scores, groups, config,
                 )
-                if groups is not None else estimated(
+                if groups is not None and grouped_boundary_abstention else estimated(
                     "recall", lambda y, s: recall_at(y, s, threshold), labels, scores,
-                    n_resamples=boot, ci=ci, seed=seed, groups=None,
+                    n_resamples=boot, ci=ci, seed=seed, groups=groups,
                     binomial_events=int(np.sum((scores >= threshold) & (labels == 1))),
                     binomial_trials=int(np.sum(labels == 1)),
                 )
@@ -209,10 +214,10 @@ def build_warrant_metrics(
                         "precision", lambda y, s: precision_at(y, s, threshold),
                         labels, scores, groups, config,
                     )
-                    if groups is not None else estimated(
+                    if groups is not None and grouped_boundary_abstention else estimated(
                         "precision", lambda y, s: precision_at(y, s, threshold),
                         labels, scores,
-                        n_resamples=boot, ci=ci, seed=seed, groups=None,
+                        n_resamples=boot, ci=ci, seed=seed, groups=groups,
                         binomial_events=int(np.sum((scores >= threshold) & (labels == 1))),
                         binomial_trials=n_flagged,
                     )

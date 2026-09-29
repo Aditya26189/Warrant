@@ -323,11 +323,14 @@ Group counts exclude groups with no second review. Null kappa when both
 reviewers use one category is distinct from a withheld confidence interval.
 Ungrouped paired-bootstrap intervals are unchanged. Neither pathway detects
 shared reviewer mistakes or establishes that review selection was representative.
-A separate repair (DECISIONS 217) now makes a collapsed grouped recall or
-precision interval vacuous instead of falling back to item-count binomial
-inference. It preserves noncollapsed grouped percentile intervals without a
-new finite-sample coverage claim. Other grouped estimators, including the
-hard-negative FPR path, still need independent audit; see
+A separate customer-certificate repair (DECISIONS 217-218) makes a collapsed
+grouped recall or precision interval vacuous instead of falling back to
+item-count binomial inference. Noncollapsed grouped intervals remain as before,
+without a new finite-sample coverage claim. Historical research artifacts
+retain the old method for exact replay: the mean-pool transfer artifact's
+grouped recall upper bound is method-dependent and should not be used as
+population evidence until a versioned migration. Other grouped estimators,
+including the hard-negative FPR path, still need independent audit; see
 `reports/PROJECT-REVIEW-2026-09-23.md`.
 
 ### 3.7 Most records the customer CLI writes can be edited without detection

@@ -221,12 +221,15 @@ POST /validate { detector_id, operating_point_id, eval_set_id }
 
 Under one minute from cached activations. Streams progress. **Displays the deliberately-broken padding case being rejected** — that is the moment in the demo.
 
-For grouped recall and precision, resampling uses independent groups. If its
-percentile interval collapses, the record keeps the descriptive point estimate
-but shows a vacuous `[0, 1]` interval and an explicit reason; it never switches
-to a row-count binomial interval (DECISIONS 217). Ungrouped boundary intervals
-retain their exact-binomial fallback. This is an abstention on useful grouped
-uncertainty, not a new group-aware coverage result.
+New customer `certify` records use independent groups for recall and precision
+resampling. If a grouped percentile interval collapses, the record keeps the
+descriptive point estimate but shows a vacuous `[0, 1]` interval and an explicit
+reason; it does not switch to a row-count binomial interval (DECISIONS 217-218).
+Ungrouped boundary intervals retain their exact-binomial fallback. Historical
+research artifacts are replayed under their original method until a separately
+versioned research migration; the old grouped boundary interval is not thereby
+validated. This is an abstention on useful customer uncertainty, not a new
+group-aware coverage result.
 
 ### 2.3 Refusal criteria
 
