@@ -20,15 +20,19 @@ of them wrong at some point:
   set under test *is* the hard-negative set. Otherwise the within-set FPR is
   reported as ``fpr``. Passed explicitly rather than inferred from a set's name,
   because names get changed.
-* **Proportions get an exact interval at the boundary.** Zero events in `n`
-  trials collapses the bootstrap to zero width, which claims perfect certainty
-  from a finite sample (``DECISIONS.md`` 035).
+* **Independent proportions get an exact interval at the boundary.** Zero
+  events in `n` independent trials collapses the bootstrap to zero width,
+  which claims perfect certainty from a finite sample (``DECISIONS.md`` 035).
+  A new customer certificate instead treats a collapsed *grouped* recall or
+  precision interval as vacuous (``DECISIONS.md`` 217-218). The default retains
+  historical research-artifact replay until that estimator is versioned.
 """
 
 from __future__ import annotations
 
+import dataclasses
 import logging
-from typing import Optional
+from typing import Callable, Optional
 
 import numpy as np
 
@@ -36,6 +40,7 @@ from ..config import Config
 from ..model import Metric, MetricKind, WarrantMetrics
 from .stats import (
     auroc,
+    bootstrap_interval,
     estimated,
     exact_count,
     false_positive_rate_at,
@@ -43,10 +48,111 @@ from .stats import (
     precision_at,
     recall_at,
 )
+from .metric_protocols import (
+    GROUPED_HARD_NEGATIVE_PROTOCOL,
+    INDEPENDENT_HARD_NEGATIVE_PROTOCOL,
+)
+from .warrant_stats import cp_upper
 
 __all__ = ["assert_metric_shape_compatible", "build_warrant_metrics"]
 
 _LOG = logging.getLogger(__name__)
+
+def _grouped_hard_negative_fpr(
+    labels: np.ndarray,
+    scores: np.ndarray,
+    threshold: float,
+    groups: np.ndarray,
+    config: Config,
+) -> Metric:
+    """Bound item FPR by group-any events only for equal-sized negative groups.
+
+    Decision 220: a copied framing is not an independent Bernoulli trial. For
+    equal group sizes, the observed group-any rate dominates the item rate;
+    unequal sizes cannot support that implication and therefore withhold it.
+    """
+    negative = labels == 0
+    negative_groups = np.asarray(groups)[negative]
+    _, inverse, sizes = np.unique(
+        negative_groups, return_inverse=True, return_counts=True,
+    )
+    value = float(false_positive_rate_at(labels, scores, threshold))
+    n_groups = int(sizes.size)
+    if np.unique(sizes).size != 1:
+        upper = 1.0
+        estimator = (
+            f"{GROUPED_HARD_NEGATIVE_PROTOCOL} withheld: unequal negative group "
+            f"sizes across {n_groups} groups and {int(negative.sum())} negative "
+            "rows; group-any rate need not dominate "
+            "the item false-positive rate"
+        )
+    else:
+        flagged = (scores[negative] >= threshold).astype(int)
+        group_events = np.bincount(inverse, weights=flagged) > 0
+        k = int(np.count_nonzero(group_events))
+        upper = max(cp_upper(k, n_groups, 1.0 - config.validation.ci), value)
+        estimator = (
+            f"{GROUPED_HARD_NEGATIVE_PROTOCOL} Clopper-Pearson ONE-SIDED upper "
+            f"bound ({k}/{n_groups} independent negative groups, "
+            f"{int(negative.sum())} negative rows total, "
+            f"{int(sizes[0])} per group; a group fires if any row "
+            "fires); equal group sizes make this an upper bound for item FPR"
+        )
+    return Metric(
+        name="fpr_hard_negatives", value=value, kind=MetricKind.ESTIMATED,
+        n=int(labels.size), ci_low=0.0, ci_high=upper,
+        ci_level=config.validation.ci, unit="rate", estimator=estimator,
+        convention="one_sided_95",
+    )
+
+
+def _grouped_rate(
+    name: str,
+    statistic: Callable[[np.ndarray, np.ndarray], float],
+    labels: np.ndarray,
+    scores: np.ndarray,
+    groups: np.ndarray,
+    config: Config,
+) -> Metric:
+    """Withhold a collapsed cluster interval instead of using row-binomial trials.
+
+    Decision 217 leaves the point estimate descriptive and preserves the
+    existing cluster percentile method when it has width. The full [0, 1]
+    range conveys no population information when resampling collapses.
+    """
+    value = float(statistic(labels, scores))
+    low, high, n_effective = bootstrap_interval(
+        statistic, labels, scores,
+        n_resamples=config.validation.bootstrap_samples,
+        ci=config.validation.ci,
+        seed=config.seed,
+        groups=groups,
+    )
+    if low == high:
+        n_groups = int(np.unique(groups).size)
+        low, high = 0.0, 1.0
+        estimator = (
+            "vacuous [0, 1]: collapsed grouped bootstrap over "
+            f"{n_groups} groups; a row-level binomial fallback is unsupported"
+        )
+    else:
+        low, high = min(low, value), max(high, value)
+        estimator = (
+            f"bootstrap-percentile-{n_effective} over questions, "
+            f"seed={config.seed}"
+        )
+    return Metric(
+        name=name,
+        value=value,
+        kind=MetricKind.ESTIMATED,
+        n=int(labels.size),
+        ci_low=low,
+        ci_high=high,
+        ci_level=config.validation.ci,
+        unit="rate",
+        estimator=estimator,
+        convention="two_sided_95",
+    )
 
 
 def build_warrant_metrics(
@@ -57,6 +163,8 @@ def build_warrant_metrics(
     *,
     groups: Optional[np.ndarray] = None,
     is_hard_negative_set: bool = False,
+    grouped_boundary_abstention: bool = False,
+    legacy_grouped_hard_negative: bool = False,
 ) -> WarrantMetrics:
     """Build every metric a warrant carries, from one scoring.
 
@@ -73,6 +181,12 @@ def build_warrant_metrics(
         is_hard_negative_set: Whether the set under test *is* the hard-negative
             set. Only then does its FPR populate ``fpr_hard_negatives`` and face
             a profile's declared maximum.
+        grouped_boundary_abstention: Use vacuous grouped recall/precision bounds
+            on bootstrap collapse for new customer certificates. The default
+            preserves frozen research-artifact replay (DECISIONS 217-218).
+        legacy_grouped_hard_negative: Replay the historical row-count upper
+            bound from frozen scores only. New grouped hard-negative warrants
+            must count independent negative groups (DECISIONS 220).
 
     Returns:
         A :class:`WarrantMetrics`. On a single-class set the ranking metrics are
@@ -108,11 +222,17 @@ def build_warrant_metrics(
                 "auroc", auroc, labels, scores,
                 n_resamples=boot, ci=ci, seed=seed, groups=groups, unit="ratio",
             ),
-            "recall": estimated(
-                "recall", lambda y, s: recall_at(y, s, threshold), labels, scores,
-                n_resamples=boot, ci=ci, seed=seed, groups=groups,
-                binomial_events=int(np.sum((scores >= threshold) & (labels == 1))),
-                binomial_trials=int(np.sum(labels == 1)),
+            "recall": (
+                _grouped_rate(
+                    "recall", lambda y, s: recall_at(y, s, threshold),
+                    labels, scores, groups, config,
+                )
+                if groups is not None and grouped_boundary_abstention else estimated(
+                    "recall", lambda y, s: recall_at(y, s, threshold), labels, scores,
+                    n_resamples=boot, ci=ci, seed=seed, groups=groups,
+                    binomial_events=int(np.sum((scores >= threshold) & (labels == 1))),
+                    binomial_trials=int(np.sum(labels == 1)),
+                )
             ),
             # Precision is TP/(TP+FP). With NOTHING flagged the denominator
             # is zero, so the quantity is undefined -- and the bootstrap does
@@ -146,12 +266,18 @@ def build_warrant_metrics(
                     ),
                 )
                 if n_flagged == 0
-                else estimated(
-                    "precision", lambda y, s: precision_at(y, s, threshold),
-                    labels, scores,
-                    n_resamples=boot, ci=ci, seed=seed, groups=groups,
-                    binomial_events=int(np.sum((scores >= threshold) & (labels == 1))),
-                    binomial_trials=n_flagged,
+                else (
+                    _grouped_rate(
+                        "precision", lambda y, s: precision_at(y, s, threshold),
+                        labels, scores, groups, config,
+                    )
+                    if groups is not None and grouped_boundary_abstention else estimated(
+                        "precision", lambda y, s: precision_at(y, s, threshold),
+                        labels, scores,
+                        n_resamples=boot, ci=ci, seed=seed, groups=groups,
+                        binomial_events=int(np.sum((scores >= threshold) & (labels == 1))),
+                        binomial_trials=n_flagged,
+                    )
                 )
             ),
         }
@@ -165,20 +291,33 @@ def build_warrant_metrics(
 
     within_set_fpr = None
     if (labels == 0).any():
-        within_set_fpr = estimated(
-            "fpr_hard_negatives" if is_hard_negative_set else "fpr",
-            lambda y, s: false_positive_rate_at(y, s, threshold),
-            labels, scores,
-            n_resamples=boot, ci=ci, seed=seed, groups=groups,
-            binomial_events=int(np.sum((scores >= threshold) & (labels == 0))),
-            binomial_trials=int(np.sum(labels == 0)),
-            # The hard-negative bound is WARRANT-FACING: routing.py compares
-            # its ci_high against the profile's declared maximum, so it is the
-            # object the warrant claims and must be one-sided (DECISIONS 113).
-            # The within-set `fpr` on a non-hard-negative envelope is
-            # descriptive and stays two-sided.
-            convention="one_sided_95" if is_hard_negative_set else "two_sided_95",
-        )
+        if is_hard_negative_set and groups is not None and not legacy_grouped_hard_negative:
+            within_set_fpr = _grouped_hard_negative_fpr(
+                labels, scores, threshold, groups, config,
+            )
+        else:
+            within_set_fpr = estimated(
+                "fpr_hard_negatives" if is_hard_negative_set else "fpr",
+                lambda y, s: false_positive_rate_at(y, s, threshold),
+                labels, scores,
+                n_resamples=boot, ci=ci, seed=seed, groups=groups,
+                binomial_events=int(np.sum((scores >= threshold) & (labels == 0))),
+                binomial_trials=int(np.sum(labels == 0)),
+                # The hard-negative bound is WARRANT-FACING: routing.py compares
+                # its ci_high against the profile's declared maximum, so it is the
+                # object the warrant claims and must be one-sided (DECISIONS 113).
+                # The within-set `fpr` on a non-hard-negative envelope is
+                # descriptive and stays two-sided.
+                convention="one_sided_95" if is_hard_negative_set else "two_sided_95",
+            )
+            if is_hard_negative_set and not legacy_grouped_hard_negative:
+                within_set_fpr = dataclasses.replace(
+                    within_set_fpr,
+                    estimator=(
+                        f"{INDEPENDENT_HARD_NEGATIVE_PROTOCOL} "
+                        f"{within_set_fpr.estimator}"
+                    ),
+                )
 
     return WarrantMetrics(
         auroc=ranking["auroc"],

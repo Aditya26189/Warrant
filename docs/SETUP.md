@@ -15,7 +15,7 @@ and an offline machine (both, with the downloads done in advance).
 
 | | |
 |---|---|
-| Python | 3.10 or newer is declared (`pyproject.toml`, and `smoke.py` checks it). **CI tests 3.11 and 3.12** for the customer path and 3.12 for the full suite, so 3.10 is declared and untested |
+| Python | 3.10 or newer is declared (`pyproject.toml`, and `smoke.py` checks it). CI is configured for Linux 3.11/3.12 customer jobs, a Windows 3.10 installed-wheel job, and a Linux 3.12 full suite. Configuration alone is not a pass; check the run for the commit you are using |
 | Everything except extraction | CPU only, no network after the clone |
 | Extraction | a 16 GB GPU; NF4 quantisation keeps a 7B model inside it |
 | Disk | the clone is small; activation caches are ~100 MB each and gitignored |
@@ -45,7 +45,7 @@ after the install, and no deep-learning stack.
 git clone <your fork or the upstream>
 cd warrant
 python -m venv .venv
-. .venv/Scripts/activate          # macOS/Linux: source .venv/bin/activate
+source .venv/bin/activate       # PowerShell: .venv\Scripts\Activate.ps1
 pip install -r requirements-customer.txt
 
 python warrant.py certify --input examples/certifies.csv --budget 0.05
@@ -74,7 +74,7 @@ cd warrant
 git fetch origin "refs/notes/*:refs/notes/*"
 
 python -m venv .venv
-. .venv/Scripts/activate          # PowerShell: .venv\Scripts\Activate.ps1
+source .venv/bin/activate       # PowerShell: .venv\Scripts\Activate.ps1
                                   # macOS/Linux: source .venv/bin/activate
 pip install -r requirements.lock.txt
 
@@ -193,7 +193,7 @@ Seven checks. What each one being green actually tells you:
 
 | Check | Means |
 |---|---|
-| python version | you are on 3.10+, the declared floor (CI tests 3.11 and 3.12) |
+| python version | you are on 3.10+, the declared floor (CI also declares an installed-wheel job on 3.10) |
 | package imports | `controlplane` and its model, policy and validation subpackages resolve |
 | config loads | `config.yaml` parses, its invariants hold, and it hashes |
 | provenance resolves | git metadata is reachable — the artifacts can record where they came from |

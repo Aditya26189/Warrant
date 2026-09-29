@@ -140,8 +140,9 @@ input accepted sight unseen.
   Groups with no second review contribute no reviewed unit (DECISIONS 201).
   Primary-label sensitivity in whole groups remains available when each group
   carries one label. Agreement never establishes that either reviewer is right.
-  `release` records carry no label-quality
-  evidence at all (`docs/EVIDENCE-HANDOFF.md`).
+  The separate `release label-audit` companion describes primary-label
+  sensitivity at the registered threshold and observed adverse disputes; it
+  does not establish which reviewer is right (`docs/EVIDENCE-HANDOFF.md`).
 - **Both blinded labels are preserved before anything is resolved.** The first
   and second reviewers' labels are kept as given, and agreement between them is
   computed on those. Disagreements are then adjudicated by a third reviewer.

@@ -79,7 +79,7 @@ The repository is used in three ways. They share the certification statistics in
 |---|---|---|---|
 | **Who runs it** | this project, to produce its own evidence | a validation team, on its own detector | a validation team, for one release decision |
 | **Reads** | a model's activations, frozen eval sets | one scored, labelled file | a registered contract, then a scored holdout |
-| **Entry point** | `scripts/00`–`32`, `make verify` | `warrant certify`, `recheck`, `plan`, `chain verify` | `warrant release register`, `evaluate`, `verify` |
+| **Entry point** | `scripts/00`–`32`, `make verify` | `warrant certify`, `recheck`, `plan`, `chain verify` | `warrant release register`, `evaluate`, `verify`, `label-audit`, `verify-label-audit` |
 | **Package** | `extract`, `validation`, `matrix`, `drift`, `policy` | `intake`, `economics` | `release` |
 | **Writes** | `results/`, the ledger | JSON records beside the customer's file | a contract and one evaluation record |
 | **GPU** | once, for extraction | never | never |
@@ -282,6 +282,13 @@ model, no GPU and no network. It is `controlplane/cli.py` over
 
 On a grouped file (a `group` column) the unit of inference is the group, groups
 must be equal in size, and a recheck re-tests in the same unit (188, 190).
+New `certify` records name `grouped_boundary_vacuous_v1` in `metrics_protocol`:
+if grouped recall or precision bootstrap resampling collapses, their interval
+is the uninformative `[0, 1]` range rather than a binomial interval that counts
+dependent rows. `warrant verify` replays that method; an older bound record
+without the field replays the historical calculation with a grouped-method
+caution (217-219). The certificate's separate FPR bound and threshold do not
+change.
 
 ---
 
@@ -300,6 +307,9 @@ evaluate ──► one evaluation of one fixed threshold on the holdout; a secon
                 ▼
 verify   ──► recompute metrics and decision from the retained files, check
                         identity and digests, apply expiry
+label-audit ──► after evaluation, describe separate adverse label-error
+                counts at the same fixed threshold; bind optional label_2
+verify-label-audit ──► replay that companion from the retained files
 ```
 
 It differs from `certify` in three ways that matter to a reader: the threshold is
@@ -376,7 +386,10 @@ beside the customer's input, and they differ in what can detect an edit:
 |---|---|
 | chained recheck record | yes: sealed over every field, checked by `warrant chain verify` and by `--since` |
 | release evaluation | yes: sealed, and recomputed from the retained files by `warrant release verify` |
-| certify warrant, frontier record, unchained recheck, plan | **no**: no seal and no verifier |
+| certify warrant | effective scored rows and material fields are replayed by `warrant verify`; no whole-record seal or authenticated custody |
+| ordinary recheck | `warrant verify-recheck` binds ordered fresh effective rows and recomputes material fields from retained files; no authenticated custody |
+| sealed linear chain prefix | `warrant verify-chain-recheck` checks each retained record and matching scored batch from link 1, then recomputes the sequential statistic; no assurance about omitted branches or a later head |
+| frontier record, plan | **no** standalone verifier |
 
 Every seal and digest here is a **checksum, not a signature**: anyone who can
 write the records can recompute them consistently

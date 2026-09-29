@@ -323,17 +323,48 @@ Group counts exclude groups with no second review. Null kappa when both
 reviewers use one category is distinct from a withheld confidence interval.
 Ungrouped paired-bootstrap intervals are unchanged. Neither pathway detects
 shared reviewer mistakes or establishes that review selection was representative.
-This repair does not change recall/precision intervals or claim to validate
-other grouped estimators; their separate audit findings remain open in
-`reports/PROJECT-REVIEW-2026-09-23.md`.
+A separate customer-certificate repair (DECISIONS 217-218) makes a collapsed
+grouped recall or precision interval vacuous instead of falling back to
+item-count binomial inference. Noncollapsed grouped intervals remain as before,
+without a new finite-sample coverage claim. Historical research artifacts
+retain the old method for exact replay: the mean-pool transfer artifact's
+grouped recall upper bound is method-dependent and should not be used as
+population evidence until a versioned migration. Other grouped estimators,
+still need independent audit. Decision 220 separately corrects prospective
+grouped hard-negative FPR bounds to count equal-sized negative groups, with a
+vacuous bound for unequal sizes. The retained hard-negative research artifacts
+still carry row-count bounds. Their historical arithmetic is reproducible but
+is not valid independent-unit evidence; a prior VALID status can therefore be
+too optimistic. New issuance and policy/routing checks refuse legacy or
+undeclared hard-negative FPR protocols rather than trusting that prior status.
+Neither the corrected bound nor the hand-built eval set proves
+customer-population coverage without a representative sampling design and
+independent statistical review.
+New certify records carry a metrics protocol marker (DECISIONS 219). The verifier
+replays an older bound record without that field under its original method and
+warns when it is grouped. Because neither the marker nor its absence is
+authenticated, a coherent locally rewritten legacy record can still replay;
+VERIFIED proves consistency with the supplied rows and declared method only.
 
 ### 3.7 Most records the customer CLI writes can be edited without detection
 
 A chained recheck record is sealed over every field, and `warrant chain verify`
 recomputes each seal (`DECISIONS.md` addendum 2026-09-17). A release evaluation is
-sealed and recomputed by `warrant release verify`. **Nothing else is.** A `certify`
-warrant, a frontier record, an unchained recheck and a `plan` record carry no seal,
-and no command verifies them. `recheck` reads the warrant it is given as written.
+sealed and recomputed by `warrant release verify`. A `certify` warrant binds its
+ordered effective scored rows and `warrant verify` recomputes its material fields
+from retained evidence (DECISIONS 211-212). It has no whole-record seal or
+authenticated author. A frontier record and a `plan` record have no standalone
+verifier. Every new recheck names the exact certificate
+digest it read. With `--certificate-input`, `recheck` replays that certificate
+against retained original rows before writing; otherwise it records
+`NOT_CHECKED`. Every new CLI recheck binds its fresh ordered effective rows;
+`warrant verify-recheck` recomputes an ordinary recheck from retained files.
+It refuses to claim replay of a chained or previously chain-revoked record
+without its sequential history. `warrant verify-chain-recheck` can replay a
+complete sealed linear prefix with every scored batch, but does not detect a
+later unpresented link or fork. It reports a fork or incomplete prefix as
+unverified rather than upgrading it. Neither path authenticates the
+certificate writer, collection time or traffic origin (DECISIONS 213–215).
 
 Two limits apply even to the sealed records:
 
@@ -346,9 +377,9 @@ Two limits apply even to the sealed records:
   continued, including with `--fork` (DECISIONS 207). Available structural checks
   are reported separately; they do not recover full-record assurance.
 
-What would close it: a seal and a verifier for the certify warrant, which every
-later record depends on. A signature would need a key, and a key is custody this
-project does not hold.
+What remains: authenticated custody, detector and system identity, and a lifecycle
+for the certificate that later records depend on. A signature would need a key,
+and a key is custody this project does not hold.
 
 ---
 

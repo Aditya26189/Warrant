@@ -40,6 +40,16 @@ and produces intervals that are too narrow. Every split in this project is by
 question, deduplicated on the normalised question string first, with zero
 overlap asserted between splits.
 
+New customer certificates report a collapsed grouped recall or precision
+percentile interval as the vacuous `[0, 1]` range with the distinct group count
+and a reason (`DECISIONS.md` 217-218). An exact binomial interval using item
+counts would manufacture independent trials from repeated rows in those
+groups. Noncollapsed grouped customer intervals are unchanged. Historical
+research artifacts still replay their original method; its grouped boundary
+interval is not a valid population-precision claim and needs a versioned
+migration. Finite-sample coverage of noncollapsed grouped intervals is not
+newly established by this customer repair.
+
 Percentile rather than BCa: BCa's acceleration term is estimated by jackknife,
 which at n=600 over groups is itself noisy, and the correction was smaller than
 its own uncertainty when checked.
@@ -197,9 +207,15 @@ refused or unresolved, and each says which.
 ## 9. Single-class envelopes
 
 `hard-negatives-200` is all negatives. AUROC, recall and precision are
-**undefined** on it, and the warrant claims an FPR only — with an exact
-binomial interval, since the bootstrap of a zero-variance statistic is
-degenerate. `pii-reference` measures FPR 0.0000 [0.0000, 0.0183] there.
+**undefined** on it, and the warrant claims an FPR only. Its several framings
+per scenario share a question group. A prospective warrant uses the one-sided
+`group_any_cp_v1` bound over negative groups: a scenario fires if any framing
+fires, and equal group sizes make its rate an upper bound on the item FPR.
+Unequal group sizes withhold the item-rate claim. The point estimate remains
+descriptive over items. Retained research artifacts used a row-count binomial
+bound; their exact replay does not validate that bound under grouping
+(`DECISIONS.md` 220). These hand-written scenarios also do not represent a
+random sample of customer traffic.
 
 The metric builder detects the single-class case and refuses to emit the
 undefined quantities rather than emitting a plausible-looking 0.5.
@@ -281,7 +297,10 @@ this is 59 units for a 5% budget and 299 for 1% ([INPUT.md](INPUT.md)).
 fires. That bound dominates the item-level rate **only when groups are equal in
 size**; with unequal sizes one large all-firing group among many silent
 singletons makes it anticonservative, so unequal groups are refused. Metric
-intervals on a grouped file bootstrap over groups.
+intervals on a grouped file bootstrap over groups. In a new customer
+certificate, a collapsed grouped recall or precision interval is vacuous as
+described in section 1; the certificate's separate FPR rule continues to
+count independent negative groups.
 
 **The consequence.** The next lower threshold does not certify, so every
 certificate sits at the edge of its budget and is sensitive to label error (§17).
@@ -482,15 +501,20 @@ evaluated at every count up to a limit so no monotonicity is assumed
 **A second reviewer (`label_2`).** Measured beside the result, never used to change
 it:
 
-- **Cohen's kappa** over the double-labelled items, percentile bootstrap over
-  pairs. On a grouped file the pairs are still resampled independently, which
-  ignores correlation within a group; a fix is pre-registered and not merged.
-- **Disputes** at the certified threshold, in both flattering directions, and `c`
-  if each dispute were an error: a worst case over the reviewed pairs, not a
-  bound on the truth.
-- **A whole-file bound on disputes**, when only some items were double-labelled
-  and assuming they were drawn at random from their pool: with `d` disputed of `r`
-  reviewed in a pool of `M`,
+- **Cohen's kappa** over the double-labelled items. Ungrouped files use a
+  percentile bootstrap over pairs for the population interval. On a grouped
+  file only the observed pair table, raw agreement and descriptive kappa are
+  reported; the population interval is withheld because related pairs cannot
+  be resampled as independent (`DECISIONS.md` 201). The record names reviewed
+  pair and group counts.
+- **Disputes on an ungrouped file** at the certified threshold, in both
+  flattering directions, and `c` if each dispute were an error: a worst case
+  over the reviewed pairs, not a bound on the truth. Grouped-file dispute
+  sensitivity is withheld because `label_2` is per item while certification
+  uses whole groups.
+- **A whole-file bound on disputes for ungrouped files**, when only some items
+  were double-labelled and assuming they were drawn at random from their pool:
+  with `d` disputed of `r` reviewed in a pool of `M`,
 
   ```
   D_upper = max{ D : P( Hypergeom(M, D, r) <= d ) >= alpha }

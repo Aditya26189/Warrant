@@ -257,6 +257,66 @@ python warrant.py certify --input your_scores.csv --budget 0.05 --from-frontier 
 A plain `--budget` run beside a frontier record for the same file prints a notice
 asking whether you picked the budget from it.
 
+### Verify a retained certificate
+
+Keep the scored export and certificate, then replay the material fields:
+
+```bash
+warrant verify --warrant your_scores.csv.warrant.json --input your_scores.csv
+```
+
+For a certificate issued with `--from-frontier`, also pass the retained
+`--frontier your_scores.csv.frontier.json`. `VERIFIED` exits 0. A changed row,
+changed material field, changed configuration, or missing required evidence
+reports `MISMATCH` or `UNVERIFIED` and exits 1; malformed input exits 2. Legacy
+certificates without `input.evidence_sha256` cannot be verified this way.
+
+The digest covers the **ordered effective rows**: ids, labels, scores, optional
+groups and second labels. Reordering rows changes the digest because the seeded
+bootstrap uses row positions. The input path and unused extra columns are not
+covered. Verification checks arithmetic and consistency against files you
+supply; it does not authenticate their author, creation time or custody.
+
+To make a recheck perform this source check before measuring a new batch:
+
+```bash
+warrant recheck --warrant your_scores.csv.warrant.json --input next_batch.csv --certificate-input your_scores.csv
+```
+
+If the certificate was selected from a frontier, add
+`--certificate-frontier your_scores.csv.frontier.json`. A failed or missing
+source check exits 2 and writes no recheck. Without `--certificate-input`, the
+recheck still runs, but its `prior_warrant.certificate_verification` reads
+`NOT_CHECKED`. Every new CLI recheck also records
+`prior_warrant.warrant_sha256`, the canonical digest of the exact certificate
+it read, and `now.evidence_sha256` over the **new** batch's ordered effective
+rows. To independently replay an ordinary recheck:
+
+```bash
+warrant verify-recheck --record next_batch.csv.recheck.json --warrant your_scores.csv.warrant.json --input next_batch.csv --certificate-input your_scores.csv
+```
+
+Omit `--certificate-input` only when the record says `NOT_CHECKED`; a record
+that claims source `VERIFIED` must replay the original certificate again. For
+a selected certificate, also pass `--certificate-frontier` with its retained
+frontier record. `VERIFIED` exits 0, `MISMATCH` or `UNVERIFIED` exits 1, and
+malformed evidence exits 2. Legacy rechecks without a fresh-row binding and
+chained rechecks return `UNVERIFIED` from this **ordinary** verifier. For a
+linear chain, retain every link from the start and its matching fresh file:
+
+```bash
+warrant verify-chain-recheck --warrant your_scores.csv.warrant.json --pair week01.csv.recheck-0001.json week01.csv --pair week02.csv.recheck-0002.json week02.csv
+```
+
+This command checks each seal and link, then replays each measurement and the
+sequential statistic. Supply `--certificate-input` and, if selected,
+`--certificate-frontier` when any link claims source `VERIFIED`. It reports
+`UNVERIFIED` for missing or unbound history, unsealed links or a fork whose
+head-check history is outside the supplied linear prefix. A successful result
+applies only **through the last presented link**; it does not prove this was
+the current head or the only branch. Neither replay authenticates the files'
+author, collection time or traffic provenance.
+
 **Nothing leaves your machine.** No network calls, no telemetry, no uploads. The
 file is read, the arithmetic is local, and the record is written next to it.
 
@@ -269,6 +329,19 @@ confidence level, your input's shape, the certified threshold and its
 Clopper-Pearson upper bound, and — when certified — recall, precision, flag rate
 and lift, each with a 95% interval, and how far the certificate depends on its
 labels (above, under `label_2`).
+
+For grouped recall or precision, a bootstrap that collapses produces the
+vacuous `[0, 1]` interval with an explanation and the distinct group count.
+It does not add confidence by counting repeated rows as independent trials
+(`DECISIONS.md` 217). The point estimate still describes the supplied file;
+the vacuous interval supplies no useful population precision.
+
+New records name this interval method with top-level
+`metrics_protocol: grouped_boundary_vacuous_v1` (DECISIONS 219). `warrant verify`
+replays that method. An older bound record without the field replays its
+historical arithmetic and, when grouped, reports a legacy-method caution.
+VERIFIED means the retained fields recompute; it does not make an old grouped
+boundary interval statistically sound or authenticate the record's age.
 
 Two rules the output always follows:
 
@@ -294,8 +367,10 @@ It also does not say:
   `warrant recheck`, or run a year of rechecks as one test with a chain. The
   README's *Keeping it true* section has the commands, and
   [METHODS.md](METHODS.md) §14–16 the reasoning.
-- **that nobody edited it.** A certify warrant carries no seal and no command
-  verifies it; keep your own copy ([LIMITATIONS.md](LIMITATIONS.md) §3.7).
+- **that nobody edited it.** `warrant verify` recomputes the material fields
+  against retained rows, but the record has no authenticated seal. Someone who
+  controls both files can rewrite them consistently; keep your own custody
+  evidence ([LIMITATIONS.md](LIMITATIONS.md) §3.7).
 
 Every message the command can print, and what to do about it, is in
 [TROUBLESHOOTING.md](TROUBLESHOOTING.md).

@@ -32,8 +32,11 @@ or a notebook is unreviewable.
 | find what the demo shows | `demo/session.py`, `report/beats.py` |
 | find what checks the README | `report/claims.py` |
 | certify a customer's scored file, or refuse | `intake/certify.py` |
+| replay a retained certificate against scored rows | `intake/verify.py` |
 | see exactly what a customer's file must contain | `intake/contract.py` |
 | recheck a warrant on new data | `intake/recheck.py` |
+| replay an ordinary recheck from retained fresh rows | `intake/verify_recheck.py` |
+| replay a sealed linear chain prefix from every retained batch | `intake/verify_chain_recheck.py` |
 | understand a chain of rechecks and what it guarantees | `intake/chain.py` |
 | audit a kept set of chain records | `intake/chain_verify.py` |
 | see how far a certificate depends on its labels | `intake/labels.py` |
@@ -99,7 +102,7 @@ then issue or refuse.
 
 ## `controlplane/intake` — the customer path
 
-Everything behind `warrant certify`, `recheck` and `chain verify`. It takes a
+Everything behind `warrant certify`, `verify`, `recheck` and `chain verify`. It takes a
 customer's scored file rather than this project's eval sets, and **calls the same
 statistics the research path uses** -- a second implementation is how two
 answers to one question drift apart.
@@ -108,11 +111,12 @@ answers to one question drift apart.
 |---|---|
 | `contract.py` | Reads the scored file strictly: `id`, `label`, `score`, optional `group` and `label_2`. Nothing is coerced, filled or dropped, and a refusal for too little evidence is kept distinct from a file that cannot be read |
 | `certify.py` | Certifies a false-positive budget or refuses, through `validation/warrant_stats.py`. The record carries recall and precision with intervals, the score distribution a recheck compares against, and the label-error block |
+| `verify.py` | Replays material certificate fields and the ordered effective-row digest from retained evidence; a selected budget also needs its frontier record. It does not authenticate the record's author or timestamp |
 | `frontier.py` | Every budget at once, in exact counts, with no bootstrap |
 | `selection.py` | How wrong is the row a customer picks off the frontier? The measurement behind `--from-frontier` (`DECISIONS.md` 192, 195) |
-| `recheck.py` | Is the warrant still true on new data? The false-positive bound and the score distribution are tested and reported separately, and revocation turns on the lower bound, not on a failure to re-prove |
+| `recheck.py` | Is the warrant still true on new data? The false-positive bound and the score distribution are tested and reported separately; the CLI also records the exact certificate digest and optional source-replay status before writing a recheck |
 | `chain.py` | A year of rechecks as one sequential test, carried in the recheck records. Also the chain-head sidecar, the whole-record seal (`record_sha256`), and every refusal to continue: a revoked warrant, an edited or malformed record, an undeclared fork |
-| `chain_verify.py` | What a kept set of chain records shows as a whole: edited records (by seal, chain-state digest and derived fields), malformed values, forks, restarts, missing links, links after a revocation; missing seals are listed as unsealed with unknown age; they prevent clean assurance and continuation. **It cannot recompute the statistics**; those need the labelled files |
+| `chain_verify.py` | What a kept set of chain records shows as a whole: edited records (by seal, chain-state digest and derived fields), malformed values, forks, restarts, missing links, links after a revocation; missing seals are listed as unsealed with unknown age; they prevent clean assurance and continuation. This structural audit does not receive labelled files; `verify_chain_recheck.py` replays a complete linear prefix when they are supplied |
 | `labels.py` | How far a certificate or a recheck depends on its labels being right: the two exact error ladders, and a second reviewer's agreement and disputes (`DECISIONS.md` 197, 198) |
 | `render.py` | The terminal summary. Written so a refusal reads as a result rather than a malfunction |
 
@@ -132,6 +136,7 @@ evaluates that holdout once, and expires. See [RELEASE.md](RELEASE.md).
 |---|---|
 | `contract.py` | Freezes identity, selection and holdout membership, and binds them into the contract's digest before evaluation |
 | `evaluate.py` | Fixed-holdout inference with simultaneous intervals, a data digest over the rows, and verification that recomputes every field |
+| `labels.py` | Separate fixed-threshold label-error sensitivity and observed second-review disputes, bound to a replayed evaluation; its verifier recomputes the companion without changing the verdict |
 | `render.py` | The terminal evidence, with its uncertainty and scope limits |
 | `cli.py` | Parsing and file IO for `warrant release`; no inference in the wrapper |
 

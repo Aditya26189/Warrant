@@ -4,6 +4,7 @@ import json
 import os
 import subprocess
 import sys
+import dataclasses
 from pathlib import Path
 
 import pytest
@@ -103,3 +104,92 @@ assert not ({'scipy', 'numpy', 'torch', 'sklearn'} & set(sys.modules))
     result = subprocess.run([sys.executable, "-c", code], cwd=ROOT,
                             capture_output=True, text=True, timeout=30)
     assert result.returncode == 0, result.stderr
+
+
+def test_label_audit_replays_fixed_holdout_and_binds_second_review(workflow):
+    assert run("evaluate", *arguments(workflow)).returncode == 0
+    evaluation = json.loads((workflow / "contract.evaluation.json").read_text(encoding="utf-8"))
+    assert "intake/certify.py" not in evaluation["software"]["source_files"]
+    scores = workflow / "scores.csv"
+    rows = scores.read_text(encoding="utf-8").splitlines()
+    with_second = ["id,label,score,label_2"]
+    for index, row in enumerate(rows[1:]):
+        second = "0" if index == 500 else ("1" if index == 0 else "")
+        with_second.append(f"{row},{second}")
+    scores.write_text("\n".join(with_second) + "\n", encoding="utf-8")
+    created = run("label-audit", *arguments(workflow))
+    assert created.returncode == 0, created.stderr
+    path = workflow / "contract.label-audit.json"
+    audit = json.loads(path.read_text(encoding="utf-8"))
+    assert audit["release_status_at_audit"] == "VALID"
+    assert "intake/certify.py" in audit["software"]["source_files"]
+    assert audit["sensitivity"]["computed"] is True
+    assert audit["second_review"]["flagged_positive_really_clean"] == {"reviewed": 1, "disputed": 1}
+    assert audit["second_review"]["unflagged_negative_really_positive"] == {"reviewed": 1, "disputed": 1}
+    assert run("verify-label-audit", *arguments(workflow)).returncode == 0
+    assert run("label-audit", *arguments(workflow)).returncode == 2
+    scores.write_text(scores.read_text(encoding="utf-8").replace("q500,1,0.9,0", "q500,1,0.9,1"),
+                      encoding="utf-8")
+    changed = run("verify-label-audit", *arguments(workflow))
+    assert changed.returncode == 2 and "does not reproduce" in changed.stderr
+
+
+def test_refused_release_has_no_label_error_recipe(workflow):
+    scores = workflow / "scores.csv"
+    scores.write_bytes(scores.read_bytes().replace(b",1,0.9", b",1,0.1"))
+    assert run("evaluate", *arguments(workflow)).returncode == 0
+    created = run("label-audit", *arguments(workflow))
+    assert created.returncode == 0, created.stderr
+    audit = json.loads((workflow / "contract.label-audit.json").read_text(encoding="utf-8"))
+    assert audit["sensitivity"]["computed"] is False
+    assert audit["second_review"] == {"available": False}
+
+
+def test_label_audit_requires_replayable_release_evidence(workflow):
+    missing = run("label-audit", *arguments(workflow))
+    assert missing.returncode == 2
+    assert not (workflow / "contract.label-audit.json").exists()
+    assert run("evaluate", *arguments(workflow)).returncode == 0
+    scores = workflow / "scores.csv"
+    scores.write_text(scores.read_text(encoding="utf-8").replace("q0,0,0.1", "q0,0,0.2"),
+                      encoding="utf-8")
+    changed = run("label-audit", *arguments(workflow))
+    assert changed.returncode == 2 and "does not reproduce" in changed.stderr
+
+
+def test_first_invalidating_label_counts_match_full_release_evaluation(workflow):
+    from controlplane.release.contract import ReleaseContract, read_document
+    from controlplane.release.evaluate import evaluate, identity_for
+
+    assert run("evaluate", *arguments(workflow)).returncode == 0
+    assert run("label-audit", *arguments(workflow)).returncode == 0
+    audit = read_document(workflow / "contract.label-audit.json")
+    contract = ReleaseContract.from_dict(read_document(workflow / "contract.json"))
+    items = load_scored_items(workflow / "scores.csv")
+    for kind, eligible in (
+        ("flagged_positive_really_clean", tuple(range(500, 600))),
+        ("unflagged_negative_really_positive", tuple(range(500))),
+    ):
+        first = audit["sensitivity"][kind]["first_invalidating_count"]
+        assert first is not None
+        for errors, expected in ((first - 1, "VALID"), (first, "REFUSED")):
+            labels = list(items.labels)
+            for index in eligible[:errors]:
+                labels[index] = 0 if kind == "flagged_positive_really_clean" else 1
+            changed = dataclasses.replace(items, labels=tuple(labels))
+            measured = evaluate(contract, changed, identity_for(contract))
+            assert measured["status"] == expected
+
+
+def test_rehashed_label_audit_cannot_forge_error_tolerance(workflow):
+    from controlplane.release.contract import digest
+
+    assert run("evaluate", *arguments(workflow)).returncode == 0
+    assert run("label-audit", *arguments(workflow)).returncode == 0
+    path = workflow / "contract.label-audit.json"
+    audit = json.loads(path.read_text(encoding="utf-8"))
+    audit["sensitivity"]["flagged_positive_really_clean"]["first_invalidating_count"] += 1
+    audit["audit_id"] = digest({key: value for key, value in audit.items() if key != "audit_id"})
+    path.write_text(json.dumps(audit), encoding="utf-8")
+    checked = run("verify-label-audit", *arguments(workflow))
+    assert checked.returncode == 2 and "does not reproduce" in checked.stderr

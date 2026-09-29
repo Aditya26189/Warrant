@@ -20,13 +20,21 @@ registrations bind protocol 2 into their identity. Verification
 recomputes the measurement and reports STALE after expiry. These claims assume
 IID sampling and an untouched holdout; they do not extend across repeated studies.
 
-The additive CLI is `warrant release register|evaluate|verify`. Registration
+The additive CLI is `warrant release register|evaluate|verify`, with a separate
+`label-audit|verify-label-audit` companion (DECISIONS 216). Registration
 reads specification JSON and two ID lists. Evaluation reads identity JSON and
 the existing scored-file format, writing one companion `.evaluation.json` file
 without replacement. Verification recomputes against the retained inputs.
 `--require-valid` returns 1 for other current states; malformed input returns 2.
 Release alone opts into single-class intake so missing evidence can be recorded;
 legacy callers keep rejecting it. Synthetic human summaries suppress metrics.
+The label audit first replays the complete evaluation, then counts how many
+primary-label corrections in either adverse direction separately would make a
+VALID fixed-threshold release fail its registered FPR or recall bound. It writes
+an immutable `.label-audit.json` companion, and its verifier recomputes it from
+retained rows, optional `label_2`, contract and evaluation. This does not alter
+the threshold, release status, interval family or expiry; disputes do not prove
+primary-label errors.
 
 ---
 
@@ -213,9 +221,37 @@ POST /validate { detector_id, operating_point_id, eval_set_id }
 
 Under one minute from cached activations. Streams progress. **Displays the deliberately-broken padding case being rejected** — that is the moment in the demo.
 
+New customer `certify` records use independent groups for recall and precision
+resampling. If a grouped percentile interval collapses, the record keeps the
+descriptive point estimate but shows a vacuous `[0, 1]` interval and an explicit
+reason; it does not switch to a row-count binomial interval (DECISIONS 217-218).
+Ungrouped boundary intervals retain their exact-binomial fallback. Historical
+research artifacts are replayed under their original method until a separately
+versioned research migration; the old grouped boundary interval is not thereby
+validated. This is an abstention on useful customer uncertainty, not a new
+group-aware coverage result.
+New customer certificates declare `metrics_protocol: grouped_boundary_vacuous_v1`.
+A bound older certificate without that field replays its historical metric
+method with a grouped-interval caution (DECISIONS 219); replay verifies arithmetic,
+not the coverage of the legacy interval or the record's origin.
+
+Prospective hard-negative warrants with repeated question groups use
+`group_any_cp_v1` (DECISIONS 220). A negative group fires if any member fires;
+the one-sided upper bound uses the number of independent negative groups and
+their firing count. This bounds item FPR only when negative groups are equal in
+size. Unequal sizes produce a vacuous upper bound and therefore refuse any
+declared FPR ceiling below one. The descriptive FPR remains the item rate, with
+both row count and group count named in the metric. Existing frozen scores
+replay their original row-count method only through an explicit legacy option;
+historical replay is not validation of that older interval.
+New issuance and policy/routing checks require a named independent-unit FPR
+protocol when they rely on this bound. Retained row-count records remain
+readable but cannot clear a declared hard-negative ceiling by legacy status
+alone; an ungrouped new bound declares `independent_item_cp_v1`.
+
 ### 2.3 Refusal criteria
 
-Refuse if any control fails; or AUROC lower CI bound ≤ 0.55; or recall below the policy's declared minimum at the operating point; or FPR on the hard-negative set above the declared maximum; or `n_test` < 200.
+Refuse if any control fails; or AUROC lower CI bound ≤ 0.55; or recall below the policy's declared minimum at the operating point; or FPR on the hard-negative set above the declared maximum; or hard-negative FPR lacks a named independent-unit protocol; or `n_test` < 200.
 
 Recall and hard-negative FPR are compared at the **interval bound**, not the point estimate — a profile declaring "at least 10% recall" is asking for a guarantee, and a point estimate of 0.11 whose lower bound is 0.06 does not supply one. `n_test` counts the **test split**, so an eval set is sized by that split rather than by its total; see `DECISIONS.md` 030.
 

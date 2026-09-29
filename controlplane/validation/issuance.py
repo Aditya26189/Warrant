@@ -43,6 +43,7 @@ from typing import Optional, Sequence
 
 from ..config import Config
 from .calibration import assess_calibration
+from .metric_protocols import has_supported_hard_negative_protocol
 from ..model import (
     AccessTier,
     ControlResult,
@@ -276,17 +277,25 @@ def issue_or_refuse(
                 )
             )
         else:
-            # Upper bound, by the same argument reversed: a declared maximum is
-            # a promise, and the promise has to hold at the pessimistic end.
-            upper = fpr.ci_high if fpr.ci_high is not None else fpr.value
-            if upper > max_fpr_hard_negatives:
+            if not has_supported_hard_negative_protocol(fpr):
                 reasons.append(
                     RefusalReason(
-                        criterion="fpr_hard_negatives_upper_ci",
-                        measured=f"{upper:.4f}",
-                        required=f"<= {max_fpr_hard_negatives}",
+                        criterion="fpr_hard_negatives_protocol",
+                        measured="legacy or undeclared independent-unit method",
+                        required="group_any_cp_v1 or independent_item_cp_v1",
                     )
                 )
+            else:
+                # A declared maximum is a promise, so compare its upper bound.
+                upper = fpr.ci_high if fpr.ci_high is not None else fpr.value
+                if upper > max_fpr_hard_negatives:
+                    reasons.append(
+                        RefusalReason(
+                            criterion="fpr_hard_negatives_upper_ci",
+                            measured=f"{upper:.4f}",
+                            required=f"<= {max_fpr_hard_negatives}",
+                        )
+                    )
 
     warrant_id = Warrant.compute_id(key, detector_version, validation_run_id)
     status = WarrantStatus.VALID if not reasons else WarrantStatus.REFUSED

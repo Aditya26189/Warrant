@@ -351,7 +351,9 @@ def reproduce_from_scores(root: Path, config=None) -> ReproductionReport:
                 diffs.append(diff)
                 continue
 
-            recomputed = to_jsonable(metrics_for_target(config, score_set, target))
+            recomputed = to_jsonable(metrics_for_target(
+                config, score_set, target, legacy_grouped_hard_negative=True,
+            ))
             for name in _METRIC_FIELDS:
                 was, now = committed.get(name), recomputed.get(name)
                 if (was is None) != (now is None):

@@ -187,6 +187,7 @@ def _comparable(result):
     payload = to_jsonable(result.to_payload())
     payload.pop("labels")
     payload["input"].pop("source")
+    payload["input"].pop("evidence_sha256")
     return payload
 
 
@@ -198,6 +199,8 @@ def test_label_2_changes_no_status_threshold_bound_or_metric(tmp_path, fast):
     contrary = dataclasses.replace(with_second, second_labels=tuple(1 - y for y in with_second.labels))
     results = [certify_items(fast, items, budget=0.05) for items in (with_second, without, contrary)]
     assert results[0].status is WarrantStatus.VALID
+    # The effective-row binding deliberately changes when second review does.
+    assert len({result.to_payload()["input"]["evidence_sha256"] for result in results}) == 3
     reference = _comparable(results[1])
     for result in (results[0], results[2]):
         assert _comparable(result) == reference

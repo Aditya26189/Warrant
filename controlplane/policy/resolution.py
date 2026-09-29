@@ -50,6 +50,7 @@ from ..model.enums import CalibrationStatus, WarrantStatus
 from ..model.serde import utc_now
 from ..model.warrant import Warrant
 from ..validation.calibration import n_to_detect_deviation
+from ..validation.metric_protocols import has_supported_hard_negative_protocol
 from .bundle import OnCalibrationDrift, PolicyBundle, WarrantRequirement
 from .errors import WarrantResolutionError
 
@@ -271,13 +272,20 @@ def _check_bounds(warrant: Warrant, requirement: WarrantRequirement) -> list[str
                 "max_fpr_hard_negatives: null and say so on the record."
             )
         else:
-            upper = fpr.ci_high if fpr.ci_high is not None else fpr.value
-            if upper > ceiling:
+            if not has_supported_hard_negative_protocol(fpr):
                 failures.append(
-                    f"{key}: the profile requires hard-negative FPR <= "
-                    f"{ceiling}; the warrant's upper bound is {upper:.4f} "
-                    f"(point estimate {fpr.value:.4f})."
+                    f"{key}: the hard-negative FPR bound uses a legacy or "
+                    "undeclared independent-unit method and cannot satisfy "
+                    f"the profile's ceiling of {ceiling}."
                 )
+            else:
+                upper = fpr.ci_high if fpr.ci_high is not None else fpr.value
+                if upper > ceiling:
+                    failures.append(
+                        f"{key}: the profile requires hard-negative FPR <= "
+                        f"{ceiling}; the warrant's upper bound is {upper:.4f} "
+                        f"(point estimate {fpr.value:.4f})."
+                    )
     return failures
 
 

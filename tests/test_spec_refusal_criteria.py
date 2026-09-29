@@ -33,6 +33,7 @@ CRITERIA = {
     "recall_undefined": "recall below the policy's declared minimum",
     "fpr_hard_negatives": "FPR on the hard-negative set above the declared maximum",
     "fpr_hard_negatives_upper_ci": "FPR on the hard-negative set above the declared maximum",
+    "fpr_hard_negatives_protocol": "hard-negative FPR lacks a named independent-unit protocol",
 }
 
 

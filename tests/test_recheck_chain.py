@@ -19,6 +19,7 @@ import pytest
 
 from controlplane.economics.schedules import Cadence, Scenario, StudyDesign, simulate
 from controlplane.intake import load_scored_items, recheck_items
+from controlplane.intake.certify import evidence_sha256
 from controlplane.intake.chain import (
     ChainError,
     canonical_sha256,
@@ -252,7 +253,7 @@ def test_a3_an_ended_or_revoked_chain_cannot_continue() -> None:
 
 
 # --------------------------------------------------------------------------- #
-# A4 -- an unchained recheck is unchanged
+# A4 -- the unchained statistical result is unchanged
 # --------------------------------------------------------------------------- #
 
 
@@ -263,7 +264,13 @@ def test_a4_an_unchained_recheck_is_todays_record_plus_chain_null(tmp_path, warr
     written = json.loads(out.read_text(encoding="utf-8"))
     written.pop("provenance")
     assert written.pop("chain") is None
-    direct = recheck_items(config, load_scored_items(data), budget=BUDGET, threshold=THRESHOLD,
+    items = load_scored_items(data)
+    assert written["now"].pop("evidence_sha256") == evidence_sha256(items)
+    assert written["prior_warrant"].pop("warrant_sha256") == canonical_sha256(
+        json.loads(warrant_file.read_text(encoding="utf-8"))
+    )
+    assert written["prior_warrant"].pop("certificate_verification") == "NOT_CHECKED"
+    direct = recheck_items(config, items, budget=BUDGET, threshold=THRESHOLD,
                            alpha=ALPHA).to_payload()
     assert json.loads(json.dumps(direct)) == written
 

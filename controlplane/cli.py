@@ -132,6 +132,68 @@ def build_parser() -> argparse.ArgumentParser:
              "frontier's row level so the pick still holds (DECISIONS 195)",
     )
 
+    verify = sub.add_parser(
+        "verify",
+        help="recompute a certify record from its retained scored file",
+        description=(
+            "Check a certify record's effective-row digest and recompute its "
+            "certificate. This verifies arithmetic, not the author's identity, "
+            "timestamp or deployment. A frontier-selected record also needs "
+            "its retained --frontier file."
+        ),
+    )
+    verify.add_argument("--warrant", "-w", required=True,
+                        help="the .warrant.json record written by certify")
+    verify.add_argument("--input", "-i", required=True,
+                        help="the retained scored CSV or JSONL used by certify")
+    verify.add_argument("--frontier", default=None,
+                        help="the retained frontier record, required for a selected budget")
+    verify.add_argument("--config", default=None, help=argparse.SUPPRESS)
+
+    verify_recheck = sub.add_parser(
+        "verify-recheck",
+        help="replay an ordinary recheck against retained fresh scored rows",
+        description=(
+            "Check an ordinary recheck's fresh-row binding and recompute its "
+            "measurement. Chained records need retained chain history and are "
+            "not verified by this command."
+        ),
+    )
+    verify_recheck.add_argument("--record", required=True,
+                                help="the .recheck.json record to replay")
+    verify_recheck.add_argument("--warrant", "-w", required=True,
+                                help="the exact retained certificate")
+    verify_recheck.add_argument("--input", "-i", required=True,
+                                help="the retained fresh scored CSV or JSONL")
+    verify_recheck.add_argument("--certificate-input", default=None,
+                                help="the original scored file, required if the recheck says VERIFIED")
+    verify_recheck.add_argument("--certificate-frontier", default=None,
+                                help="the retained frontier for a selected certificate")
+    verify_recheck.add_argument("--config", default=None, help=argparse.SUPPRESS)
+
+    verify_chain_recheck = sub.add_parser(
+        "verify-chain-recheck",
+        help="replay a retained linear chain prefix from its scored batches",
+        description=(
+            "Present every link from sequence 1 through the target, each with "
+            "the fresh scored file it measured. Checks seals, links, rows and "
+            "statistics. This verifies only the presented prefix, not the "
+            "current head or any unpresented fork."
+        ),
+    )
+    verify_chain_recheck.add_argument("--warrant", "-w", required=True,
+                                      help="the exact retained certificate")
+    verify_chain_recheck.add_argument(
+        "--pair", nargs=2, action="append", required=True,
+        metavar=("RECORD", "FRESH"),
+        help="one chained record and its fresh scored file; repeat in sequence",
+    )
+    verify_chain_recheck.add_argument("--certificate-input", default=None,
+                                      help="original scored file if any link claims source VERIFIED")
+    verify_chain_recheck.add_argument("--certificate-frontier", default=None,
+                                      help="retained frontier for a selected certificate")
+    verify_chain_recheck.add_argument("--config", default=None, help=argparse.SUPPRESS)
+
     recheck = sub.add_parser(
         "recheck",
         help="is a warrant issued earlier still true on new data?",
@@ -150,6 +212,16 @@ def build_parser() -> argparse.ArgumentParser:
     recheck.add_argument(
         "--input", "-i", required=True,
         help="the new .csv or .jsonl, same three columns",
+    )
+    recheck.add_argument(
+        "--certificate-input", metavar="FILE",
+        help="replay the original certificate against its retained scored export "
+             "before rechecking; a mismatch or missing evidence writes no record",
+    )
+    recheck.add_argument(
+        "--certificate-frontier", metavar="RECORD",
+        help="retained frontier record, required with --certificate-input when "
+             "the certificate selected its budget from a frontier",
     )
     recheck.add_argument("--out", "-o", default=None, help="write the JSON record here")
     recheck.add_argument("--config", default=None,
@@ -288,6 +360,85 @@ def _chain(args: argparse.Namespace) -> int:
     return EXIT_OK
 
 
+def _verify(args: argparse.Namespace) -> int:
+    """Replay a scored-file certificate without changing retained evidence."""
+    from .config import load_customer_config as load_config
+    from .intake import load_scored_items
+    from .intake.verify import load_evidence_record, verify_certification
+
+    try:
+        record = load_evidence_record(args.warrant)
+        items = load_scored_items(args.input)
+        frontier_record = (
+            load_evidence_record(args.frontier) if args.frontier else None
+        )
+        result = verify_certification(
+            record, items, load_config(args.config), frontier_record=frontier_record,
+        )
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+    print(f"{result.status}: {result.reason}")
+    return EXIT_OK if result.verified else EXIT_ERROR
+
+
+def _verify_recheck(args: argparse.Namespace) -> int:
+    """Replay fresh-file arithmetic without changing retained evidence."""
+    from .config import load_customer_config as load_config
+    from .intake import load_scored_items
+    from .intake.verify import load_evidence_record
+    from .intake.verify_recheck import verify_recheck
+
+    if args.certificate_frontier and not args.certificate_input:
+        print("warrant: --certificate-frontier needs --certificate-input.",
+              file=sys.stderr)
+        return EXIT_BAD_INPUT
+    try:
+        result = verify_recheck(
+            load_evidence_record(args.record), load_evidence_record(args.warrant),
+            load_scored_items(args.input), load_config(args.config),
+            certificate_items=(load_scored_items(args.certificate_input)
+                               if args.certificate_input else None),
+            frontier_record=(load_evidence_record(args.certificate_frontier)
+                             if args.certificate_frontier else None),
+        )
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+    print(f"{result.status}: {result.reason}")
+    return EXIT_OK if result.verified else EXIT_ERROR
+
+
+def _verify_chain_recheck(args: argparse.Namespace) -> int:
+    """Replay a retained linear prefix without touching its publication head."""
+    from .config import load_customer_config as load_config
+    from .intake import load_scored_items
+    from .intake.verify import load_evidence_record
+    from .intake.verify_chain_recheck import verify_chained_rechecks
+
+    if args.certificate_frontier and not args.certificate_input:
+        print("warrant: --certificate-frontier needs --certificate-input.",
+              file=sys.stderr)
+        return EXIT_BAD_INPUT
+    try:
+        pairs = [
+            (record_path, load_evidence_record(record_path), load_scored_items(fresh_path))
+            for record_path, fresh_path in args.pair
+        ]
+        result = verify_chained_rechecks(
+            load_evidence_record(args.warrant), pairs, load_config(args.config),
+            certificate_items=(load_scored_items(args.certificate_input)
+                               if args.certificate_input else None),
+            frontier_record=(load_evidence_record(args.certificate_frontier)
+                             if args.certificate_frontier else None),
+        )
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+    print(f"{result.status}: {result.reason}")
+    return EXIT_OK if result.verified else EXIT_ERROR
+
+
 def _certify(args: argparse.Namespace) -> int:
     # Deferred on purpose; see the note at the top of this module.
     from .config import load_customer_config as load_config, write_json_artifact
@@ -336,6 +487,7 @@ def _certify(args: argparse.Namespace) -> int:
         # frontier held that row to. Every refusal happens before anything is
         # written.
         from .intake.chain import canonical_sha256
+        from .intake.verify import FRONTIER_METRICS_NOTE
 
         record_path = Path(args.from_frontier)
         try:
@@ -398,12 +550,7 @@ def _certify(args: argparse.Namespace) -> int:
             "grid": [p.budget for p in recomputed],
             "row_alpha": recomputed[0].row_alpha,
             "family_alpha": recomputed[0].family_alpha,
-            "metrics_note": (
-                "Only the false-positive bound is adjusted for the pick. Recall and "
-                "precision are measured on the file the budget was picked from, and "
-                "a pick made by reading the frontier's caught and missed columns "
-                "selects on them, so they carry that optimism (DECISIONS 195)."
-            ),
+            "metrics_note": FRONTIER_METRICS_NOTE,
         }
 
     try:
@@ -522,10 +669,13 @@ def _revoking_record(record_path: Path) -> str:
 
 def _recheck(args: argparse.Namespace) -> int:
     # Deferred on purpose; see the note at the top of this module.
-    import json
+    import dataclasses
 
     from .config import load_customer_config as load_config, write_json_artifact
     from .intake import InputError, load_scored_items, recheck_items, render_recheck
+    from .intake.certify import evidence_sha256
+    from .intake.chain import canonical_sha256
+    from .intake.verify import load_evidence_record, verify_certification
     from .model import EnvelopeFeature, WarrantStatus
 
     config = load_config(args.config)
@@ -533,9 +683,43 @@ def _recheck(args: argparse.Namespace) -> int:
     if not record_path.is_file():
         print(f"warrant: no warrant record at {record_path}", file=sys.stderr)
         return EXIT_BAD_INPUT
-    record = json.loads(record_path.read_text(encoding="utf-8"))
+    try:
+        record = load_evidence_record(record_path)
+    except (OSError, ValueError, TypeError) as exc:
+        print(f"warrant: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
 
-    certification = record.get("certification") or {}
+    if args.certificate_frontier and not args.certificate_input:
+        print("warrant: --certificate-frontier needs --certificate-input.",
+              file=sys.stderr)
+        return EXIT_BAD_INPUT
+    certificate_verification = "NOT_CHECKED"
+    if args.certificate_input:
+        try:
+            original_items = load_scored_items(args.certificate_input)
+            frontier_record = (
+                load_evidence_record(args.certificate_frontier)
+                if args.certificate_frontier else None
+            )
+            verification = verify_certification(
+                record, original_items, config, frontier_record=frontier_record,
+            )
+        except (OSError, ValueError, TypeError) as exc:
+            print(f"warrant: certificate evidence cannot be used: {exc}",
+                  file=sys.stderr)
+            return EXIT_BAD_INPUT
+        if not verification.verified:
+            print(f"warrant: certificate {verification.status}: {verification.reason}",
+                  file=sys.stderr)
+            return EXIT_BAD_INPUT
+        certificate_verification = "VERIFIED"
+
+    certification = record.get("certification")
+    if certification is None:
+        certification = {}
+    if not isinstance(certification, dict):
+        print("warrant: certification must contain a JSON object.", file=sys.stderr)
+        return EXIT_BAD_INPUT
     threshold = certification.get("threshold")
     budget = record.get("budget_fpr")
     if threshold is None or budget is None:
@@ -548,17 +732,31 @@ def _recheck(args: argparse.Namespace) -> int:
         return EXIT_BAD_INPUT
 
     block = record.get("score_distribution")
-    reference = (
-        EnvelopeFeature(
-            name=block["name"],
-            bin_edges=tuple(block["bin_edges"]),
-            bin_probabilities=tuple(block["bin_probabilities"]),
-            mean=block["mean"],
-            std=block["std"],
+    if block is not None and not isinstance(block, dict):
+        print("warrant: score_distribution must contain a JSON object.", file=sys.stderr)
+        return EXIT_BAD_INPUT
+    try:
+        reference = (
+            EnvelopeFeature(
+                name=block["name"],
+                bin_edges=tuple(block["bin_edges"]),
+                bin_probabilities=tuple(block["bin_probabilities"]),
+                mean=block["mean"],
+                std=block["std"],
+            )
+            if block
+            else None
         )
-        if block
-        else None
-    )
+    except (KeyError, TypeError, ValueError) as exc:
+        print(f"warrant: invalid score_distribution: {exc}", file=sys.stderr)
+        return EXIT_BAD_INPUT
+
+    recorded_input = record.get("input")
+    if recorded_input is None:
+        recorded_input = {}
+    if not isinstance(recorded_input, dict):
+        print("warrant: input must contain a JSON object.", file=sys.stderr)
+        return EXIT_BAD_INPUT
 
     try:
         items = load_scored_items(args.input)
@@ -569,7 +767,7 @@ def _recheck(args: argparse.Namespace) -> int:
     # The promise and the test must be in one unit. A record certified on
     # clusters rechecked per item, or the reverse, compares two different
     # rates, and which one the user meant is not ours to guess (DECISIONS 188).
-    recorded_grouped = (record.get("input") or {}).get("grouped")
+    recorded_grouped = recorded_input.get("grouped")
     file_grouped = items.groups is not None
     if recorded_grouped is not None and bool(recorded_grouped) != file_grouped:
         certified_as = "clusters" if recorded_grouped else "independent items"
@@ -591,12 +789,18 @@ def _recheck(args: argparse.Namespace) -> int:
             # The reference is built from every score in the certified file, so
             # its size is that record's input.n. The PSI null is simulated at it
             # rather than at this file's size (DECISIONS 209).
-            reference_n=(record.get("input") or {}).get("n"),
+            reference_n=recorded_input.get("n"),
             alpha=record.get("alpha"),
         )
     except ValueError as exc:
         print(f"warrant: {exc}", file=sys.stderr)
         return EXIT_BAD_INPUT
+
+    result = dataclasses.replace(
+        result, warrant_sha256=canonical_sha256(record),
+        certificate_verification=certificate_verification,
+        evidence_sha256=evidence_sha256(items),
+    )
 
     # A chain's parent/head checks and publication share one OS lock (206).
     # Ordinary rechecks retain their existing independent-file behavior.
@@ -770,6 +974,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     try:
         if args.command == "certify":
             return _certify(args)
+        if args.command == "verify":
+            return _verify(args)
+        if args.command == "verify-recheck":
+            return _verify_recheck(args)
+        if args.command == "verify-chain-recheck":
+            return _verify_chain_recheck(args)
         if args.command == "recheck":
             return _recheck(args)
         if args.command == "plan":

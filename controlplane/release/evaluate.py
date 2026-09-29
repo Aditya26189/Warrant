@@ -59,16 +59,20 @@ def identity_for(contract: ReleaseContract) -> dict:
     return {key: getattr(contract.spec, key) for key in IDENTITY_FIELDS}
 
 
-def software_provenance() -> dict:
+def software_provenance(*, include_certify: bool = False) -> dict:
     """Record executed source and runtime, including an honest repository state.
 
     Wheels need no Git installation. Source hashes bind the implementation even
     there; repository metadata is present only when running inside this checkout.
     No customer paths, input rows or environment variables enter the record.
+    The separate label audit uses certify's effective-row digest, so its
+    manifest includes that module without changing earlier evaluation records.
     """
     package = Path(__file__).resolve().parents[1]
     paths = sorted((package / "release").glob("*.py"))
     paths.extend((package / "cli.py", package / "intake" / "contract.py"))
+    if include_certify:
+        paths.append(package / "intake" / "certify.py")
     sources = {str(p.relative_to(package)).replace("\\", "/"):
                hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
     root = package.parent

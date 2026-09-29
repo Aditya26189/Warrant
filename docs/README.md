@@ -5,7 +5,7 @@
 **Every document in this repository, and which question it answers.**
 
 [![Using it](https://img.shields.io/badge/Using_it-3_guides-2da44e?style=flat-square)](#%EF%B8%8F-using-warrant-on-your-own-detector)
-[![Orientation](https://img.shields.io/badge/Orientation-11_pages-6366f1?style=flat-square)](#-orientation)
+[![Orientation](https://img.shields.io/badge/Orientation-12_pages-6366f1?style=flat-square)](#-orientation)
 [![Contracts](https://img.shields.io/badge/Contracts-5_binding-d1242f?style=flat-square)](#-contracts)
 [![Evidence](https://img.shields.io/badge/Evidence-append_only-22c55e?style=flat-square)](#-evidence-and-rationale)
 [![No stale numbers](https://img.shields.io/badge/Orientation_pages-no_measured_numbers-8b949e?style=flat-square)](#the-rules-these-documents-follow)
@@ -22,6 +22,7 @@
 
 | You are… | Read, in this order |
 |:---|:---|
+| **Assessing what has actually shipped** | [PRODUCT-STATE.md](PRODUCT-STATE.md) -> [LIMITATIONS.md](LIMITATIONS.md) -> [TESTING.md](TESTING.md) |
 | 🛡️ **Running it on your own detector** | [SETUP.md](SETUP.md) §0 → [INPUT.md](INPUT.md) → [../examples/README.md](../examples/README.md) → [TROUBLESHOOTING.md](TROUBLESHOOTING.md) → [FAQ.md](FAQ.md) |
 | 📋 **Preparing evidence for a validation function** | [RELEASE.md](RELEASE.md) → [EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md) → [LIMITATIONS.md](LIMITATIONS.md) §3.5–3.7 |
 | 🏦 **Assessing it for a regulated buyer** | [RBI-MRM-2026-CROSSWALK.md](RBI-MRM-2026-CROSSWALK.md) → [PILOT-PROTOCOL.md](PILOT-PROTOCOL.md) → [LIMITATIONS.md](LIMITATIONS.md) |
@@ -61,6 +62,7 @@
 
 | Document | Answers |
 |:---|:---|
+| [PRODUCT-STATE.md](PRODUCT-STATE.md) | Which surfaces are implemented, what supports them, what is demonstrated only, and what blocks deployment? |
 | 🗺️ [DIAGRAMS.md](DIAGRAMS.md) | What does the system look like? Fifteen diagrams: the three objects, the pipeline, the warrant lifecycle, controls, policy, composition, drift, verification, the journey, the repository end to end, the customer path, a chain of rechecks, release evidence and the action gate |
 | 🌱 [ONBOARDING.md](ONBOARDING.md) | I have one hour. What do I read, run, and look at, in what order? |
 | ⚙️ [SETUP.md](SETUP.md) | How do I get this running — just the command, a laptop, a GPU notebook, an offline machine? |
@@ -106,7 +108,7 @@
 | 🏦 [RBI-MRM-2026-CROSSWALK.md](RBI-MRM-2026-CROSSWALK.md) | Which paragraphs of the RBI's **draft** model-risk guidance can a warrant supply evidence for, which only in part, and which not at all? Generated; a register, not a compliance claim |
 | 🚚 [PATHS.md](PATHS.md) | What moved on 2026-08-29 and where it went |
 | 📈 [../results/RESULTS.md](../results/RESULTS.md) | The rendered results, with fixture numbers refused rather than printed |
-| 📑 `reports/PHASE-<N>.md` | One report per sprint, leading with the answer; [PHASE-12.md](../reports/PHASE-12.md) is the latest |
+| 📑 `reports/PHASE-<N>.md` | One report per sprint, leading with the answer; [PHASE-12.md](../reports/PHASE-12.md) closes sprint 12; [PHASE-15.md](../reports/PHASE-15.md) records an earlier repair checkpoint; [PHASE-16.md](../reports/PHASE-16.md) audits the product state; [PHASE-17.md](../reports/PHASE-17.md) records certificate replay; [PHASE-18.md](../reports/PHASE-18.md) records recheck evidence linkage; [PHASE-19.md](../reports/PHASE-19.md) records fresh-batch binding and ordinary replay; [PHASE-20.md](../reports/PHASE-20.md) records linear chain-prefix replay; [PHASE-21.md](../reports/PHASE-21.md) records release label auditing; [PHASE-22.md](../reports/PHASE-22.md) records grouped-boundary evidence and historical replay; [PHASE-23.md](../reports/PHASE-23.md) audits grouped hard-negative FPR warrants |
 | 🧭 [NEXT-STEPS-2026-09-17.md](../reports/NEXT-STEPS-2026-09-17.md) | What to do next, after sprint 12: the decisions only the founder can make, then the engineering, in order |
 
 ## 🎥 Presentation and the business case

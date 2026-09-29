@@ -25,6 +25,17 @@ def add_parser(subparsers: argparse._SubParsersAction) -> None:
         command.add_argument("--require-valid", action="store_true", help="exit 1 unless current status is VALID")
         if name == "verify":
             command.add_argument("--evidence", help="saved evidence; default is beside the contract")
+    for name, help_text in (
+        ("label-audit", "record fixed-threshold label sensitivity for a retained evaluation"),
+        ("verify-label-audit", "replay a retained release label audit"),
+    ):
+        command = commands.add_parser(name, help=help_text)
+        command.add_argument("--contract", required=True, help="registered release contract JSON")
+        command.add_argument("--input", required=True, help="complete scored holdout, optionally with label_2")
+        command.add_argument("--context", required=True, help="scorer's identity and scope JSON")
+        command.add_argument("--evidence", help="saved release evaluation; default is beside the contract")
+        if name == "verify-label-audit":
+            command.add_argument("--audit", help="saved label audit; default is beside the contract")
 
 
 def run(args: argparse.Namespace) -> int:
@@ -34,6 +45,7 @@ def run(args: argparse.Namespace) -> int:
         ReleaseContract, ReleaseSpec, read_document, read_ids, register, write_document,
     )
     from .evaluate import evaluate, seal_evaluation, verify_evaluation
+    from .labels import label_audit, seal_label_audit, verify_label_audit
     from .render import render_evaluation
 
     try:
@@ -47,10 +59,27 @@ def run(args: argparse.Namespace) -> int:
         contract_path = Path(args.contract)
         contract = ReleaseContract.from_dict(read_document(contract_path))
         companion = contract_path.with_name(contract_path.stem + ".evaluation.json")
+        audit_companion = contract_path.with_name(contract_path.stem + ".label-audit.json")
         context = read_document(Path(args.context))
         if args.release_command == "evaluate" and companion.exists():
             raise ValueError(f"evidence already exists at {companion}; use release verify")
         items = load_scored_items(args.input, require_both_classes=False)
+        if args.release_command in ("label-audit", "verify-label-audit"):
+            evidence_path = Path(args.evidence) if args.evidence else companion
+            evaluation = read_document(evidence_path)
+            if args.release_command == "label-audit":
+                audit = seal_label_audit(label_audit(contract, evaluation, items, context))
+                write_document(audit_companion, audit)
+                print(f"Label audit recorded: {audit_companion}")
+                print(f"Release status at audit: {audit['release_status_at_audit']}")
+                print("Sensitivity is descriptive; the release verdict and expiry are unchanged.")
+            else:
+                audit_path = Path(args.audit) if args.audit else audit_companion
+                audit = read_document(audit_path)
+                current = verify_label_audit(audit, contract, evaluation, items, context)
+                print(f"Label audit reproduces: {audit_path}")
+                print(f"Current release status: {current}")
+            return 0
         if args.release_command == "evaluate":
             record = seal_evaluation(evaluate(contract, items, context))
             write_document(companion, record)

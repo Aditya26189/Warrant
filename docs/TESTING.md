@@ -6,6 +6,17 @@ The tests here are not coverage. Each suite exists because a specific failure
 either happened or would be invisible if it did — several of them were written
 after the thing they now catch had already shipped once.
 
+**Read test evidence by commit.** [The inventory](../results/test_inventory.json)
+records which tests were collected from a clean source commit; its
+`execution_status` explicitly says collection is not execution. Earlier
+[phase reports](../reports/) record their own targeted runs, and
+[the clean-clone record](../results/clean_clone.json) records a run on an earlier
+source commit. Neither establishes a full-suite pass for a later head. The
+[CI workflow](../.github/workflows/ci.yml) declares Linux customer/full-suite
+jobs and a Windows minimum-version wheel job; consult the run for the exact
+commit before stating that CI passed. The [product-state map](PRODUCT-STATE.md)
+separates those checks from deployment evidence.
+
 ```bash
 python -m pytest tests/ -q                    # the whole suite
 python -m pytest tests/test_validation.py -q  # one suite
@@ -115,8 +126,12 @@ has seen.
 | `test_frontier.py` | The frontier in quantities that need no interval |
 | `test_frontier_groups.py` | The frontier certifies what `certify` certifies, on grouped files too |
 | `test_certify_from_frontier.py` | A budget picked off the frontier is certified at the frontier's level, and a frontier record that was edited or truncated is refused |
+| `test_certify_evidence.py` | The certificate digest covers the ordered effective rows, including group and second label, while ignoring unused columns and file path |
+| `test_certify_verification.py` | Retained certificate replay detects row or material-field edits, requires a selected frontier, and distinguishes legacy unverified records |
 | `test_frontier_selection.py` | The frontier-selection study measures what it says it measures |
 | `test_recheck.py` | A recheck keeps the broken bound and the moved distribution apart, and revokes on the lower bound |
+| `test_recheck_evidence.py` | Every new CLI recheck names its exact certificate and binds fresh ordered effective rows; optional source replay refuses edited, missing or malformed evidence before writing; ordinary replay detects changed fresh rows and statistics while declining to call a chained record verified |
+| `test_chain_replay_evidence.py` | A retained linear prefix replays from every fresh batch; changed rows, a rehashed sequential statistic, incomplete or unsealed history and missing claimed source evidence cannot earn VERIFIED |
 | `test_recheck_groups.py` | A grouped warrant is rechecked in the unit it was certified in |
 | `test_recheck_power.py` | A recheck's sample size is a probability of catching a breach, not a single sufficient count |
 | `test_label_sensitivity.py` | A certificate's label-error ladders, and a `label_2` column that changes **no** verdict even when it contradicts every label |
@@ -143,7 +158,7 @@ These use synthetic fixtures only, never the frozen scores.
 |---|---|
 | `test_release_contract.py` | Registration boundaries: identity, criteria and holdout frozen before evaluation |
 | `test_release_evaluate.py` | The statistics and the leakage checks, independently |
-| `test_release_cli.py` | The release workflow as a customer runs it |
+| `test_release_cli.py` | The release workflow as a customer runs it, including label-audit replay, second-review binding and first-invalidating counts against full re-evaluation |
 | `test_release_render.py` | The terminal summary: a timestamp cannot inject terminal output |
 
 ### Economics and the demo

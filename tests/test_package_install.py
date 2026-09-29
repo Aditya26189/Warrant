@@ -179,6 +179,61 @@ def test_installed_refusal_is_a_result_with_opt_in_failure(installed, tmp_path):
     installed.run(tmp_path, *args, "--require-warrant", expected=1)
 
 
+def test_installed_certify_record_replays_and_detects_an_edit(installed, tmp_path):
+    """The wheel, not just source imports, must carry the new verifier."""
+    scores = _scores(tmp_path)
+    record = tmp_path / "issued.json"
+    installed.run(tmp_path, "certify", "-i", str(scores), "-b", ".05",
+                  "-o", str(record), "-q")
+    good = installed.run(tmp_path, "verify", "-w", str(record), "-i", str(scores))
+    assert "VERIFIED" in good.stdout
+    edited = _json(record)
+    edited["certification"]["threshold"] = 0.0
+    changed = tmp_path / "edited.json"
+    changed.write_text(json.dumps(edited), encoding="utf-8")
+    bad = installed.run(tmp_path, "verify", "-w", str(changed), "-i", str(scores),
+                        expected=1)
+    assert "MISMATCH" in bad.stdout
+
+
+def test_installed_recheck_links_and_checks_its_certificate(installed, tmp_path):
+    """The minimal installed CLI must keep the source evidence guard usable."""
+    scores = _scores(tmp_path)
+    warrant = tmp_path / "issued.json"
+    installed.run(tmp_path, "certify", "-i", str(scores), "-b", ".05",
+                  "-o", str(warrant), "-q")
+    out = tmp_path / "recheck.json"
+    installed.run(tmp_path, "recheck", "-w", str(warrant), "-i", str(scores),
+                  "--certificate-input", str(scores), "-o", str(out), "-q")
+    from controlplane.intake.chain import canonical_sha256
+    prior = _json(out)["prior_warrant"]
+    assert prior["warrant_sha256"] == canonical_sha256(_json(warrant))
+    assert prior["certificate_verification"] == "VERIFIED"
+    assert _json(out)["now"]["evidence_sha256"]
+    unverified = installed.run(
+        tmp_path, "verify-recheck", "--record", str(out), "-w", str(warrant),
+        "-i", str(scores), expected=1,
+    )
+    assert "UNVERIFIED" in unverified.stdout
+    replayed = installed.run(
+        tmp_path, "verify-recheck", "--record", str(out), "-w", str(warrant),
+        "-i", str(scores), "--certificate-input", str(scores),
+    )
+    assert "VERIFIED" in replayed.stdout
+
+    changed = _json(warrant)
+    changed["certification"]["threshold"] = 0.0
+    edited = tmp_path / "edited-warrant.json"
+    edited.write_text(json.dumps(changed), encoding="utf-8")
+    refused = tmp_path / "refused-recheck.json"
+    result = installed.run(
+        tmp_path, "recheck", "-w", str(edited), "-i", str(scores),
+        "--certificate-input", str(scores), "-o", str(refused), expected=2,
+    )
+    assert "MISMATCH" in result.stderr
+    assert not refused.exists()
+
+
 def test_installed_grouped_review_withholds_population_intervals(installed, tmp_path):
     """The shipped wheel must preserve group metadata through both CLI paths."""
     source = _scores(tmp_path, second=True)
@@ -276,6 +331,11 @@ def test_installed_plan_recheck_and_chain_verification(installed, tmp_path):
     chained = tmp_path / "chained.json"
     installed.run(tmp_path, "recheck", "-w", str(warrant), "-i", str(fresh),
                   "--horizon-labels", "10000", "-o", str(chained), "-q")
+    replayed = installed.run(
+        tmp_path, "verify-chain-recheck", "-w", str(warrant),
+        "--pair", str(chained), str(fresh),
+    )
+    assert "VERIFIED" in replayed.stdout
     verification = tmp_path / "verification.json"
     installed.run(tmp_path, "chain", "verify", str(chained), "--require-clean",
                   "-o", str(verification), "-q")
@@ -305,6 +365,11 @@ def test_installed_release_register_evaluate_verify(installed, tmp_path):
     assert "SYNTHETIC FIXTURE" in result.stdout
     assert _json(tmp_path / "contract.evaluation.json")["status"] == "VALID"
     installed.run(tmp_path, "release", "verify", *args, "--require-valid")
+    installed.run(tmp_path, "release", "label-audit", *args)
+    audit = _json(tmp_path / "contract.label-audit.json")
+    assert audit["sensitivity"]["computed"] is True
+    assert "intake/certify.py" in audit["software"]["source_files"]
+    installed.run(tmp_path, "release", "verify-label-audit", *args)
     installed.run(tmp_path, "release", "evaluate", *args, expected=2)
 
 

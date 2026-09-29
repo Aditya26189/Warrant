@@ -33,7 +33,7 @@ from controlplane.evalsets import (
 from controlplane.evalsets.hard_negatives import FRAMINGS, HARD_NEGATIVES
 from controlplane.evalsets.hinglish import NEAR_MISS_NEGATIVES, PII_SCENARIOS
 from controlplane.evalsets.identifiers import DISCLOSURE_FORMS, GENERATORS, aadhaar
-from controlplane.model import MetricError, WarrantStatus
+from controlplane.model import MetricError, WarrantKey, WarrantStatus, content_hash
 from controlplane.validation.evalsets import EvalSetError
 from controlplane.validation.stats import clopper_pearson
 from controlplane.validation.text_runner import validate_text_detector
@@ -292,7 +292,23 @@ def test_validate_runs_against_every_set(
             max_fpr_hard_negatives=0.02 if is_hard else None,
             is_hard_negative_set=is_hard,
         )
-        assert run.warrant.status is WarrantStatus.VALID, run.warrant.status_reason
+        if is_hard:
+            # Four framings per scenario leave only 50 independent negatives;
+            # even 0/50 cannot certify the former 0.02 row-count ceiling (220).
+            assert run.warrant.status is WarrantStatus.REFUSED
+            assert "fpr_hard_negatives_upper_ci" in run.warrant.status_reason
+            assert "group_any_cp_v1" in run.metrics.fpr_hard_negatives.estimator
+            legacy_identity = {
+                "key": WarrantKey(
+                    detector.detector_id, "P-declared", evalset.eval_set_id,
+                ).as_string(),
+                "envelope": evalset.envelope_id,
+                "threshold": float(detector.min_confidence),
+                "config": config.config_hash,
+            }
+            assert run.run_id != "run-" + content_hash(legacy_identity)[:12]
+        else:
+            assert run.warrant.status is WarrantStatus.VALID, run.warrant.status_reason
         assert run.warrant.envelope.envelope_id == evalset.envelope_id
         assert run.test_scored == 1
         assert len(run.controls) == 5

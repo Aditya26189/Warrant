@@ -22,22 +22,24 @@ Warrant writes two families of record. They answer different questions, and
 
 | | Release evaluation | Certify warrant, recheck, chain |
 |---|---|---|
-| Command | `warrant release register / evaluate / verify` | `warrant certify`, `warrant recheck`, `warrant chain verify` |
+| Command | `warrant release register / evaluate / verify / label-audit / verify-label-audit` | `warrant certify`, `warrant verify`, `warrant recheck`, `warrant verify-recheck`, `warrant verify-chain-recheck`, `warrant chain verify` |
 | Question it answers | Did this frozen operating point meet criteria registered before a holdout was scored? | What threshold certifies a budget on this file, and does it still hold on the next? |
-| Binds the scored data (digest) | **yes** | **no** |
+| Binds the scored data (digest) | **yes** | certify and new recheck records: **yes**, ordered effective rows |
 | Binds system and detector identity with versions | **yes** | **no** |
 | Carries an expiry | **yes** | **no** |
 | Criteria registered before scoring | **yes**, in the contract | no; the budget is an argument |
-| Carries label-quality evidence | **no** | **yes** (DECISIONS 197, 198) |
+| Carries label-quality evidence | Evaluation: **no**; separate fixed-threshold label-audit companion: **yes**, descriptive only (DECISIONS 216) | **yes** (DECISIONS 197, 198) |
 | Supports grouped (clustered) data | **no**, IID only | **yes** |
-| Recomputes itself from the input | **yes**, `release verify` | chains only, `chain verify`, and without the statistics |
+| Recomputes itself from the input | **yes**, `release verify` and `release verify-label-audit` for their respective records | certify: `warrant verify`; ordinary recheck: `warrant verify-recheck`; retained linear chain prefix: `warrant verify-chain-recheck`; `warrant chain verify` checks structure only |
 
 **The rule.** For a release decision, hand over the **release evaluation** as the
-record of the decision. A certify warrant on the same scored file may be attached
-for the part of its label evidence that does not depend on a threshold. A handoff
-built from a certify warrant alone cannot say which data, which system, which
-detector version, or until when. A handoff built from a release evaluation alone
-cannot say how far the result depends on the labels being right.
+record of the decision. Its separate label-audit companion describes sensitivity
+at that release's fixed threshold. A certify warrant on the same scored file may
+still be attached for threshold-independent reviewer agreement. A handoff
+built from a certify warrant alone can identify the effective rows, but cannot
+say which system, which detector version, or until when. A handoff built from a
+release evaluation alone cannot say how far the result depends on the labels
+being right; retain its label-audit companion for that description.
 
 > [!WARNING]
 > **A shared file is not a shared operating point.** `certify` **selects** the
@@ -59,9 +61,10 @@ cannot say how far the result depends on the labels being right.
 > negative and flags **nothing**, so its ladder is about a cut that fires on no
 > row; a release threshold declared at 0.8 flags 24 rows on the same file.
 >
-> **What would make the ladder transferable** is computing it at the release's
-> own threshold under the release's protocol. No command does that today: see
-> section 6, item 8.
+> `release label-audit` now computes a separate sensitivity at the release's
+> registered threshold under its own interval protocol, after replaying the
+> retained evaluation (section 6, item 8). It does not make `certify`'s ladder
+> transferable or establish which primary labels are true.
 
 ### Who supplies and who retains each file
 
@@ -90,6 +93,14 @@ It therefore identifies the evidence, not a byte-for-byte file. A validator who
 needs the exact file retained should record its own file checksum beside the
 sheet; no record carries one.
 
+A certify warrant's `input.evidence_sha256` covers the **ordered effective row
+sequence**: hashed id and group, label, score and optional second label.
+Changing the sequence changes the digest because the seeded bootstrap uses row
+positions. Moving the file, changing unused extra columns or changing file
+format without changing effective rows does not. The frontier record's older
+`input.input_sha256` identifies its rows without preserving order; both digests
+are checked when verifying a certificate selected from a frontier.
+
 Every digest in every record is a checksum, not a signature. It shows that a
 retained copy is unchanged relative to another copy. It does not show who wrote
 either, and someone who controls every copy can rewrite and re-digest them
@@ -112,13 +123,14 @@ carries it.
 | Scope | `identity.scope` | ABSENT | ABSENT |
 | What the positive label means | `identity.positive_label` | ABSENT in the record; the input contract fixes `label` = 1 as "the detector should fire" (`docs/INPUT.md`) | ABSENT |
 | Which contract | `contract_id` | not applicable | not applicable |
-| Which warrant was rechecked | not applicable | not applicable | chained: `chain.warrant_sha256`; **not chained: ABSENT** -- only `prior_warrant.budget_fpr` and `prior_warrant.threshold` |
+| Which warrant was rechecked | not applicable | not applicable | `prior_warrant.warrant_sha256` on every new CLI recheck; chained records also carry `chain.warrant_sha256` |
 
 ### 2.2 Data
 
 | Evidence | Release evaluation | Certify warrant | Recheck |
 |---|---|---|---|
-| Digest of the scored rows | `data_sha256`, over sorted (hashed id, label, score); row order and extra columns do not change it | **ABSENT** -- `input.source` is the file name only | **ABSENT** |
+| Digest of the scored rows | `data_sha256`, over sorted (hashed id, label, score); row order and extra columns do not change it | `input.evidence_sha256`, over ordered effective rows; `input.source` is a declared path only | `now.evidence_sha256` on new CLI records, over ordered effective rows; absent on legacy records |
+| Was the source certificate replayed? | not applicable | `warrant verify` can replay it from retained rows | `prior_warrant.certificate_verification`: `VERIFIED` with `--certificate-input`, otherwise `NOT_CHECKED`; this does not verify the new rows |
 | Where the data came from | `data_origin` | ABSENT | ABSENT |
 | Sampling assumption | `sampling_assumption` in the contract; `assumptions` in the evaluation | ABSENT | ABSENT |
 | Sampling unit | IID items only (`assumptions`) | `input.grouped`, `input.independent_units`, `input.independent_negative_units` | `now.unit` |
@@ -131,7 +143,7 @@ carries it.
 | The criteria | contract spec: `threshold`, `max_fpr`, `min_recall`, `alpha` | `budget_fpr`, `alpha`; no recall criterion | `prior_warrant.budget_fpr` |
 | Registered before scoring | yes: the contract is written before `evaluate`, and its digest is bound in | no | no |
 | Confidence | `family_confidence` | `alpha` (section 4, rule 1) | `alpha` from the warrant |
-| Method | protocol in `schema_version` (1 or 2); five two-sided Clopper-Pearson intervals at `alpha / 5` each | `certification.estimator`: one-sided Clopper-Pearson upper bound; `certification.alpha_governs` | revocation on the one-sided **lower** bound; `detection.note` |
+| Method | protocol in `schema_version` (1 or 2); five two-sided Clopper-Pearson intervals at `alpha / 5` each | `certification.estimator`: one-sided Clopper-Pearson upper bound; `certification.alpha_governs`; new `metrics_protocol` names the grouped descriptive-interval method (DECISIONS 219) | revocation on the one-sided **lower** bound; `detection.note` |
 | Threshold | contract spec `threshold` | `certification.threshold` | `prior_warrant.threshold` |
 | Picked off a frontier | not applicable | `selection` (DECISIONS 195); `frontier_record_present` | not applicable |
 
@@ -151,9 +163,9 @@ carries it.
 
 | Evidence | Release evaluation | Certify warrant | Recheck |
 |---|---|---|---|
-| How many label errors the result tolerates | **ABSENT** | `labels.sensitivity`: two exact ladders (DECISIONS 197). **At certify's own selected threshold**, so it does not transfer to a release threshold | `labels.sensitivity`: errors to revoke (DECISIONS 198), at the warrant's threshold |
+| How many label errors the result tolerates | Evaluation: **ABSENT**; separate `*.label-audit.json` `sensitivity` gives first invalidating counts in two separate directions at the registered threshold (DECISIONS 216) | `labels.sensitivity`: two exact ladders (DECISIONS 197). **At certify's own selected threshold**, so it does not transfer to a release threshold | `labels.sensitivity`: errors to revoke (DECISIONS 198), at the warrant's threshold |
 | Second-reviewer agreement | **ABSENT** | `labels.second_review.kappa`, with interval and `n`, when a `label_2` column was supplied. **Threshold-independent**, so this is the part that can be attached to a release | same, on the recheck file |
-| Disputed items | ABSENT | `labels.second_review.disputes`, counted **at the certified threshold** | same |
+| Disputed items | Separate label audit: `second_review` counts observed disputes in the two adverse pools **at the registered threshold**; no truth or population inference | `labels.second_review.disputes`, counted **at the certified threshold** | same |
 | Blind review | declared a caller responsibility in `assumptions` | not recorded | not recorded |
 
 ### 2.6 Time, expiry and reproduction
@@ -163,8 +175,8 @@ carries it.
 | When measured | `evaluated_at` | `provenance.timestamp_utc` | `provenance.timestamp_utc` |
 | Expiry | `expires_at`; `verify` reports STALE once it has passed | **ABSENT** | **ABSENT** |
 | Software and repository state | `software` (source hashes, runtime) | `provenance.git_commit`, `provenance.dirty`, `provenance.libraries`, `provenance.config_hash` | same |
-| Integrity digest | `evidence_id`, over the whole sealed body | ABSENT | chained: `chain.state_sha256`, over the chain state only; not chained: ABSENT |
-| Reproduce | `warrant release verify` recomputes every measurement field | re-run `warrant certify` on the same file; nothing checks that a retained warrant matches | chains: `warrant chain verify` checks linkage and digests, not the statistics |
+| Integrity digest | `evidence_id`, over the whole sealed body | `input.evidence_sha256` covers the input rows, **not** the whole record | `prior_warrant.warrant_sha256` names the exact certificate; chained: `chain.state_sha256` over chain state; unchained: no whole-record seal |
+| Reproduce | `warrant release verify` recomputes every measurement field | `warrant verify` recomputes material fields from retained scored rows and configuration; a selected budget also needs its frontier record | `warrant verify-recheck` recomputes ordinary records; `warrant verify-chain-recheck` recomputes a retained linear prefix from every batch; `warrant chain verify` checks linkage and digests without scored rows |
 
 ---
 
@@ -176,6 +188,8 @@ carries it.
 warrant release register --spec release-spec.json --development-ids dev.txt --holdout-ids holdout.txt --out release-contract.json
 warrant release evaluate --contract release-contract.json --context context.json --input holdout-scores.csv
 warrant release verify   --contract release-contract.json --context context.json --input holdout-scores.csv
+warrant release label-audit --contract release-contract.json --context context.json --input holdout-scores.csv
+warrant release verify-label-audit --contract release-contract.json --context context.json --input holdout-scores.csv
 ```
 
 `context.json` restates the identity fields from the scorer's actual run; each
@@ -185,26 +199,44 @@ must match the contract. The full procedure is in [RELEASE.md](RELEASE.md).
 
 ```bash
 warrant certify --input holdout-scores.csv --budget 0.05
-warrant recheck --warrant holdout-scores.csv.warrant.json --input next-batch.csv
+warrant verify --warrant holdout-scores.csv.warrant.json --input holdout-scores.csv
+warrant recheck --warrant holdout-scores.csv.warrant.json --input next-batch.csv --certificate-input holdout-scores.csv
+warrant verify-recheck --record next-batch.csv.recheck.json --warrant holdout-scores.csv.warrant.json --input next-batch.csv --certificate-input holdout-scores.csv
 warrant recheck --warrant holdout-scores.csv.warrant.json --input week01.csv --horizon-labels <N from plan>
 warrant recheck --warrant holdout-scores.csv.warrant.json --input week02.csv --since week01.csv.recheck-0001.json
+warrant verify-chain-recheck --warrant holdout-scores.csv.warrant.json --pair week01.csv.recheck-0001.json week01.csv --pair week02.csv.recheck-0002.json week02.csv
 warrant chain verify week01.csv.recheck-0001.json week02.csv.recheck-0002.json
 ```
 
-To attach label-quality evidence to a release, certify **the same scored
-holdout file** the release evaluated, with a `label_2` column for the
-double-labelled items. Nothing binds the two records together. Record, in the
-handoff, that both were produced from one file, and the file's release
-`data_sha256`.
+The release label audit binds the exact contract, evaluation and effective
+scored rows, including optional `label_2`. Retain and verify it beside the
+release evaluation. A separate certify warrant on the same holdout can add
+threshold-independent second-review agreement; no automatic join binds those
+two record families. Record that both came from one file if attaching both.
 
-**Attach the agreement, not the ladder.** Kappa, its interval, the reviewed-pair
+For a selected budget, retain and pass its frontier record to `warrant verify`
+with `--frontier`. A replay checks row and arithmetic consistency; it does not
+authenticate a record's author or certify the actual deployment identity.
+For the guarded recheck line above, pass the same frontier with
+`--certificate-frontier`. Omitting `--certificate-input` still measures the
+batch but records `NOT_CHECKED` source evidence instead of `VERIFIED`. Both
+forms bind the new batch's effective rows. `verify-recheck` replays an ordinary
+record from those rows, the exact certificate and configuration. A record that
+claims source `VERIFIED` needs the original scored export again, plus its
+frontier if selected. A chained record needs its retained sequential history;
+`verify-recheck` reports `UNVERIFIED` for it. Supply every link and fresh file
+from sequence 1 to `verify-chain-recheck` to replay one linear prefix. A pass
+does not establish that no later link or other branch exists.
+
+**Attach the agreement, not certify's ladder.** Kappa, its interval, the reviewed-pair
 counts and the 2x2 table are computed over the double-labelled items and involve
 no threshold, so they describe the labels of that file whatever operating point
 is used. The sensitivity ladder and the disputed counts are computed at the
 threshold `certify` selected, which is not the threshold the release registered;
 attaching them as evidence for the release verdict overstates what was measured
 (R9). Name the certified threshold beside anything you do attach, so a reader can
-see which cut it belongs to.
+see which cut it belongs to. The separate release label audit supplies its own
+fixed-threshold sensitivity; it does not transfer certify's ladder.
 
 ---
 
@@ -237,6 +269,7 @@ This page introduces none. For reference:
 | Record | Statuses | Where the meaning is defined |
 |---|---|---|
 | Certify warrant | VALID, REFUSED | `docs/INPUT.md` |
+| Certify verification | VERIFIED, MISMATCH, UNVERIFIED | `docs/INPUT.md` |
 | Recheck | VALID, STALE, REVOKED, UNVALIDATED (the file had no negatives) | `controlplane/intake/recheck.py` |
 | Release evaluation, protocol 2 | VALID, REFUSED, STALE (expired) | [RELEASE.md](RELEASE.md) |
 | Release evaluation, protocol 1 (legacy) | as above, with UNVALIDATED for inconclusive or missing evidence | [RELEASE.md](RELEASE.md) |
@@ -295,32 +328,43 @@ carries no expiry (section 6).
 specification, disjoint development and holdout id lists, and a context file,
 which are the customer's to prepare.
 
-## 6. What no record carries today (OPEN)
+## 6. Handoff gaps and closures
 
-Each is a gap between what a handoff needs and what the code writes. None is
-filled by this page, and none may be filled by hand on a sheet.
+This list tracks the gaps identified at handoff. Closed items cite the code
+change; open fields cannot be filled by hand on a sheet.
 
-1. **A certify warrant does not bind its data.** It names the file
-   (`input.source`) but carries no digest of the rows, so nothing shows a
-   retained warrant was issued on the file now presented. The function that
-   computes such a digest already exists and is used by the frontier record
-   (DECISIONS 195); it is not written into the warrant.
+1. **Closed: a certify warrant binds its effective rows.**
+   `input.evidence_sha256` and `warrant verify` cover the ordered effective
+   sequence (DECISIONS 211–212). This is a checksum, not authenticated custody.
 2. **A certify warrant and a recheck carry no expiry.**
 3. **A certify warrant and a recheck carry no system or detector identity.**
-4. **A recheck that is not chained does not name the warrant it rechecked.**
+4. **Closed for new CLI records: an unchained recheck names its warrant.**
+   `prior_warrant.warrant_sha256` uses the chain's canonical record digest;
+   `certificate_verification` states whether the original scored export was
+   supplied and replayed (DECISIONS 213). Neither field authenticates the
+   writer. The new file is separately bound by `now.evidence_sha256`.
 5. **A release evaluation carries no label-quality evidence**, and supports no
-   grouped data. Attaching a certify warrant covers the first, joined only by
-   the handoff's own statement that both came from one file.
-6. **Nothing checks that a retained certify warrant matches a re-run**, the way
-   `release verify` does for a release.
+   grouped data. A separate, replayable `*.label-audit.json` now describes
+   fixed-threshold primary-label sensitivity and observed disputes, but does
+   not change the release status or establish label truth (DECISIONS 216).
+6. **Closed: a retained certify warrant can be replayed.** `warrant verify`
+   recomputes its material fields from the retained rows and configuration.
+   Legacy records without the binding remain unverified (DECISIONS 211–212).
 7. **No record carries an authenticated sign-off.** Digests are checksums, not
    signatures, throughout.
-8. **No command computes label-error sensitivity at a threshold you name.**
-   `certify` selects its own, so the ladder always belongs to certify's operating
-   point. Until a fixed-threshold mode exists, a release's own label sensitivity
-   cannot be produced at all, and the handoff must say so rather than borrowing
-   certify's (R9 of `reports/PROJECT-REVIEW-2026-09-23.md`).
+8. **Closed for a registered release operating point only:** `release label-audit`
+   computes sensitivity at the fixed threshold from that contract after replaying
+   its complete evaluation. It is not an arbitrary-threshold certificate and
+   does not license borrowing `certify`'s selected-threshold ladder (R9 of
+   `reports/PROJECT-REVIEW-2026-09-23.md`).
 
-Closing 1 to 4 means adding fields to the certify and recheck records. Closing 8
-means a new argument and its own decision. Both are schema or interface changes,
-not documentation.
+9. **Closed for new ordinary records: the fresh recheck file is bound and replayable.**
+   `now.evidence_sha256` identifies ordered effective rows and
+   `warrant verify-recheck` recomputes ordinary records (DECISIONS 214).
+   Chained records carry the binding but are not sequentially replayed by that
+   command. `warrant verify-chain-recheck` replays a complete sealed linear
+   prefix from retained batches (DECISIONS 215); forks and missing history
+   remain unverified. `warrant chain verify` remains structural.
+
+Items 2–3 and 7 remain open. Item 5 is only partly closed: the separate audit
+does not establish reviewer correctness or add grouped release inference.

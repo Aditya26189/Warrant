@@ -31,6 +31,7 @@
 [Quickstart](#-quickstart--certify-your-own-detector) •
 [Commands](#-the-commands) •
 [Claim table](#-the-claim-table) •
+[Product state](docs/PRODUCT-STATE.md) •
 [Architecture](#how-it-fits-together) •
 [Reproduction](#-reproduction) •
 [Documents](#-documents) •
@@ -38,7 +39,7 @@
 
 <br/>
 
-<img src="https://img.shields.io/badge/Tests-2041_collected-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="2041 tests collected" />
+<img src="https://img.shields.io/badge/Tests-2112_collected-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="2112 tests collected" />
 &nbsp;
 <img src="https://img.shields.io/badge/Claims-92_verified-2da44e?style=for-the-badge" alt="92 claims verified" />
 &nbsp;
@@ -64,6 +65,13 @@ It issues no external certificate and it is not a gateway. It is the bench
 instrument a second line of defence points at a control it is being asked to
 rely on — bounded in time, revocable when the distribution moves, and willing to
 return nothing at all.
+
+**What is actually shipped:** an installable, local scored-file command and a
+reproducible research harness. The gate, policy, drift and on-traffic studies in
+this repository are demonstrations, not a deployed customer service. No customer
+traffic, pilot or revenue has been evidenced. Read the [product-state and evidence
+map](docs/PRODUCT-STATE.md) for the implemented surfaces, verification status and
+remaining enterprise gaps before treating the claims below as a deployment claim.
 
 **Two ways to use this repository.** Run `warrant` on your own detector's scored
 file: no GPU, no model, no network, three dependencies
@@ -207,7 +215,13 @@ Three columns — `id`, `label` (0/1, **1 = the detector should fire**), `score`
 
 ```bash
 python warrant.py certify --input your_scores.csv --budget 0.05
+python warrant.py verify --warrant your_scores.csv.warrant.json --input your_scores.csv
 ```
+
+`verify` replays the certificate from the retained scored rows and checks its
+effective-row digest. It cannot establish who wrote the file or record; keep
+your own custody trail. A certificate selected from a frontier also needs its
+retained frontier record passed with `--frontier`.
 
 Full contract in **[docs/INPUT.md](docs/INPUT.md)**; the two examples are
 explained in [examples/README.md](examples/README.md). `pip install -e .` gives
@@ -230,8 +244,17 @@ A warrant is a claim about the file it was issued on. On fresh labelled traffic,
 
 ```bash
 python warrant.py recheck --warrant your_scores.csv.warrant.json --input next_batch.csv
+python warrant.py verify-recheck --record next_batch.csv.recheck.json --warrant your_scores.csv.warrant.json --input next_batch.csv
+python warrant.py verify-chain-recheck --warrant your_scores.csv.warrant.json --pair week01.csv.recheck-0001.json week01.csv --pair week02.csv.recheck-0002.json week02.csv
 python warrant.py plan --warrant your_scores.csv.warrant.json --negative-share 0.9
 ```
+
+When you retain the original scored export, add
+`--certificate-input your_scores.csv` to have `recheck` replay the certificate
+before it measures the new batch. For a budget selected from a frontier, pass
+`--certificate-frontier your_scores.csv.frontier.json`. A failed source check
+writes no recheck record. Every new recheck names the exact certificate digest
+and records `VERIFIED` or `NOT_CHECKED`; a digest is not a signature.
 
 Rechecked every week, a detector that kept its promise is eventually revoked by
 chance; `plan` prints how likely that is for each cadence. To make a year of
@@ -283,21 +306,26 @@ from cached activations and reports SKIPPED without them.
 
 ## 🧰 The commands
 
-Every subcommand, the question it answers, and how its exit code reads. **A
-result exits 0**, including a refusal, a revocation and a verification with
-findings; **2** means input the command could not use; **1** appears only when
-you asked for it with a `--require-…` flag.
+Every subcommand, the question it answers, and how its exit code reads. A
+certify refusal, recheck revocation and chain inspection with findings exit 0;
+the certify-record verifier exits 0 only for `VERIFIED` and 1 for `MISMATCH` or
+`UNVERIFIED`. Input a command cannot use exits 2. Other hard-failure modes use
+the listed `--require-…` flags.
 
 | Command | Answers | Exits 1 only when | Read |
 |:---|:---|:---|:---|
 | `warrant certify -i FILE -b BUDGET` | Can this file support this false-positive budget? The lowest threshold that can, or a refusal naming what is missing | `--require-warrant` and refused | [INPUT.md](docs/INPUT.md) |
 | `warrant certify -i FILE --frontier` | What does every budget on the grid cost, in exact counts? | — | [GLOSSARY.md](docs/GLOSSARY.md#frontier) |
 | `warrant certify -i FILE -b BUDGET --from-frontier RECORD` | Certify a budget picked off the frontier, at the level the frontier held it to | `--require-warrant` and refused | [METHODS.md](docs/METHODS.md#13-the-frontier-and-the-cost-of-choosing-from-it) §13 |
+| `warrant verify -w WARRANT -i FILE [--frontier RECORD]` | Do retained rows and the certificate's material fields recompute? | Mismatch or missing evidence | [INPUT.md](docs/INPUT.md) |
 | `warrant recheck -w WARRANT -i FILE` | Does the warrant still hold on fresh data? The bound and the distribution, separately | `--require-valid` and not VALID | [METHODS.md](docs/METHODS.md#14-recheck-revoke-on-evidence-of-breach) §14 |
+| `warrant verify-recheck --record RECORD -w WARRANT -i FILE` | Do an ordinary recheck's fresh rows and material statistics recompute? | Mismatch or missing evidence | [INPUT.md](docs/INPUT.md) |
+| `warrant verify-chain-recheck -w WARRANT --pair RECORD FILE ...` | Does a retained linear chain prefix recompute from every scored batch? | Mismatch or missing history | [INPUT.md](docs/INPUT.md) |
+| `warrant recheck … --certificate-input ORIGINAL [--certificate-frontier RECORD]` | Replay the certificate before measuring new data; record which source check ran | `--require-valid` and not VALID; bad source evidence exits 2 | [INPUT.md](docs/INPUT.md) |
 | `warrant recheck … --horizon-labels N`, then `--since RECORD` | A year of rechecks as one sequential test | `--require-valid` and not VALID | [METHODS.md](docs/METHODS.md#16-the-chain-one-sequential-test-over-a-declared-horizon) §16 |
 | `warrant chain verify RECORD…` | Do retained record checksums and chain structure pass? | `--require-clean`: findings or missing seals fail | [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) |
 | `warrant plan -w WARRANT` | What does rechecking cost, and how often does each cadence revoke a sound detector by chance? | — | [METHODS.md](docs/METHODS.md#15-sizing-a-recheck-by-power-not-by-a-single-sufficient-count) §15 |
-| `warrant release register · evaluate · verify` | Evidence for one release decision, frozen before scoring, evaluated once, verified later | `evaluate` or `verify` with `--require-valid`, and not VALID | [RELEASE.md](docs/RELEASE.md) |
+| `warrant release register · evaluate · verify · label-audit · verify-label-audit` | Evidence for one release decision, frozen before scoring, evaluated once, verified later; a separate audit describes fixed-threshold label fragility | `evaluate` or `verify` with `--require-valid`, and not VALID | [RELEASE.md](docs/RELEASE.md) |
 
 The whole path from a scored file to a revoked warrant, as a diagram:
 [docs/DIAGRAMS.md](docs/DIAGRAMS.md) §12–14.
@@ -315,7 +343,7 @@ The whole path from a scored file to a revoked warrant, as a diagram:
 | 🔬 **Not a general result** | Measured on 2,400 TriviaQA items and hand-built PII sets, one model family (Qwen2.5-7B-Instruct, NF4), no real production traffic. |
 | 🚧 **Priced, not yet paid for** | The price list and the action gate are built (`DECISIONS.md` 146-150, 156, 183, 191): `controlplane/economics/sizing.py` and `controlplane/sampling/` compute every label budget from the one `workload` block, and each figure names the inputs it was declared on. **No production traffic and no customer exist**, so none of those budgets has been spent against real labels, and any money, headcount or ROI figure outside those modules is a declared estimate. The closure of `DECISIONS.md` 096 and 099 is recorded in [docs/LIMITATIONS.md](docs/LIMITATIONS.md) §3.1-3.2. |
 | 🧠 **Not a claim about truthfulness** | The probe is a correlational classifier over activations. It does not measure what a model believes. |
-| 🔏 **Not tamper-proof** | Chained recheck records and release evaluations are sealed; nothing else is. Every seal is a checksum, not a signature: anyone who can write the records can recompute it. |
+| 🔏 **Not tamper-proof** | Chained recheck records, release evaluations and release label-audit companions carry checksums. A checksum is not a signature: anyone who can write the records can recompute it. |
 | 🏦 **Not a compliance certificate** | The RBI crosswalk is a register of evidence types against a **draft**, not compliance approval ([docs/RBI-MRM-2026-CROSSWALK.md](docs/RBI-MRM-2026-CROSSWALK.md)). |
 
 ---
@@ -469,11 +497,16 @@ refuses to print their numbers ([docs/LIMITATIONS.md](docs/LIMITATIONS.md) §2.4
 | ...its precision there | 0.6532 | [0.5114, 0.8100] | results/detectors.json | runs[detector_id=pii-reference,eval_set_id=hinglish-pii-200].metrics.precision.value | make verify |
 | `presidio-stock` reproduces out of sample | 0.1471 | [0.0714, 0.2341] | results/holdout/detectors.json | runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200b].metrics.recall.value | make verify |
 | ...its precision there | 0.5357 | [0.2812, 0.8621] | results/holdout/detectors.json | runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200b].metrics.precision.value | make verify |
-| `pii-reference` false-positive rate on benign traffic | 0.0000 | [0.0000, 0.0183] | results/validation-pii-reference-hard-negatives-200.json | metrics.flag_rate.value | make verify |
+| `pii-reference` historical row flag rate on a hand-built benign set | 0.0000 | [0.0000, 0.0183] | results/validation-pii-reference-hard-negatives-200.json | metrics.flag_rate.value | make verify |
 
 The Presidio finding is a statement about one pinned version, which is inside the
 refusal reason. The `enabled_plus_custom` recognizers were partly fitted on the
 set they are measured on ([docs/LIMITATIONS.md](docs/LIMITATIONS.md) §2.3).
+The final row's interval is retained historical row-count arithmetic across
+dependent framings. It is **not** an independent-unit confidence interval or
+evidence about customer traffic. [Phase 23](reports/PHASE-23.md) gives the
+prospective group-aware bound and explains why frozen-score verification
+replays the older number without validating its coverage.
 
 ### What no selector can do
 
@@ -585,7 +618,7 @@ examples/              two scored files: one certifies, one refuses
 evalsets/ & results/   frozen content-hashed evaluation sets; every artifact behind the table above
 scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
-tests/                 2041 tests collected, including the ones that enforce this README
+tests/                 2112 tests collected, including the ones that enforce this README
 docs/                  guides, orientation, methods, limitations, the case matrix
 DECISIONS.md           the append-only decision log, with dated addenda
 reports/               one close-out report per sprint, leading with the answer
@@ -671,7 +704,7 @@ the action gate, are in [docs/DIAGRAMS.md](docs/DIAGRAMS.md); the prose version 
 | Target | Without `make` | Requires | Time | Proves |
 |:---|:---|:---|:---|:---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | The clone works and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 2041 tests collected |
+| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | 2112 tests collected |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **Every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` (tier 3) | `python scripts/verify.py` | CPU + cached activations | ~4 min | The frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | Activations regenerate from the source model |

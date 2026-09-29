@@ -46,6 +46,7 @@ from .controls import CANARY, DETERMINISM, LABEL_SHUFFLE, NULL_FEATURE, PADDING_
 from .controls import canary_control, determinism_control
 from .evalsets import EvalSet
 from .issuance import issue_or_refuse
+from .metric_protocols import GROUPED_HARD_NEGATIVE_PROTOCOL
 from .metrics_builder import build_warrant_metrics
 from .scores import Scoring
 from .runner import ValidationRun, build_envelope
@@ -207,14 +208,15 @@ def validate_text_detector(
 
     envelope = build_envelope_from_text(evalset)
     key = WarrantKey(detector.detector_id, operating_point_id, evalset.eval_set_id)
-    run_id = "run-" + content_hash(
-        {
-            "key": key.as_string(),
-            "envelope": evalset.envelope_id,
-            "threshold": float(threshold),
-            "config": config.config_hash,
-        }
-    )[:12]
+    run_identity = {
+        "key": key.as_string(),
+        "envelope": evalset.envelope_id,
+        "threshold": float(threshold),
+        "config": config.config_hash,
+    }
+    if is_hard_negative_set and groups is not None:
+        run_identity["metrics_protocol"] = GROUPED_HARD_NEGATIVE_PROTOCOL
+    run_id = "run-" + content_hash(run_identity)[:12]
 
     warrant = issue_or_refuse(
         config,

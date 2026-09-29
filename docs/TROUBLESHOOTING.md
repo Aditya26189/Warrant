@@ -67,6 +67,43 @@ you required.
 | `notice: ... was run on this file. If you picked this budget from it` | a frontier record for the same file sits beside it | If you chose the budget by reading the frontier, certify with `--from-frontier` so the warrant holds at the frontier's level |
 | `was not produced from ...` or `does not reproduce from ...` with `--from-frontier` | the frontier record is for another file, or was edited or truncated | Rerun `--frontier` on this file |
 
+### Verifying a retained certificate
+
+`warrant verify --warrant RECORD --input FILE` reads without writing a record.
+For a selected budget, add `--frontier RECORD` with the retained frontier. Exit
+0 means `VERIFIED`; 1 means `MISMATCH` or `UNVERIFIED`; 2 means the supplied
+input or JSON could not be used. A legacy certificate missing
+`input.evidence_sha256` is `UNVERIFIED`; recertify it from the retained rows.
+If rows or material fields differ, check that you kept the original ordered
+export and ran under the same configuration. A matching replay does not prove
+who wrote the files.
+
+When `warrant recheck` uses `--certificate-input`, it performs this check
+before writing a recheck. `certificate MISMATCH` or `certificate UNVERIFIED`
+exits 2 and leaves no record; preserve the original export or recertify from
+it. A frontier-selected certificate also requires `--certificate-frontier`.
+Without the source option, `prior_warrant.certificate_verification` is
+`NOT_CHECKED`, even though the recheck still names the certificate digest.
+Malformed nested record blocks also exit 2 rather than emitting a traceback.
+
+`warrant verify-recheck --record RECORD --warrant CERT --input FRESH` checks a
+new ordinary recheck against its retained fresh rows without writing anything.
+If the record says its source certificate was `VERIFIED`, also supply
+`--certificate-input ORIGINAL` and, for a selected certificate,
+`--certificate-frontier FRONTIER`. A changed fresh row or material statistic is
+`MISMATCH` (exit 1). A legacy record without `now.evidence_sha256`, a missing
+required original export, or a chained record is `UNVERIFIED` (exit 1).
+Malformed input exits 2. Keep the original ordered files if you need a later
+replay; the verifier cannot reconstruct them from the digest.
+
+For a chained record, use `warrant verify-chain-recheck -w CERT --pair LINK1
+FRESH1 --pair LINK2 FRESH2` and supply every link from sequence 1 through the
+target. Add the original certificate evidence if any link claims source
+`VERIFIED`. Missing links or a legacy unbound link are `UNVERIFIED`; a changed
+row, seal or recomputed statistic is `MISMATCH`. This checks the presented
+linear prefix only. A declared fork needs a broader retained-history audit;
+do not read a successful prefix replay as proof that no later record exists.
+
 ### Rechecking
 
 A recheck reports two separate things, the false-positive bound and the score
