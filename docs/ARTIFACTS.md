@@ -56,9 +56,14 @@ envelope, and the reference PII detector on the Hinglish, long-context and
 hard-negative envelopes.
 
 A single-class envelope — `hard-negatives-200` is all negatives — carries a
-false-positive rate with an exact binomial interval, and the metrics builder
-**refuses** to emit AUROC, recall or precision there rather than emitting a
-plausible-looking 0.5.
+false-positive rate but no AUROC, recall or precision; the metrics builder
+**refuses** to invent those ranking quantities. Its committed historical
+artifacts use an exact row-binomial FPR interval despite four dependent
+framings per scenario. They replay for provenance, not independent-unit
+assurance. A prospective grouped hard-negative warrant uses the Phase 23
+group-any one-sided bound on equal-sized negative groups, or withholds the
+per-row bound when group sizes differ. An ungrouped set retains the
+independent-item exact interval.
 
 ---
 
