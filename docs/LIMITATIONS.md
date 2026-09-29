@@ -332,6 +332,11 @@ grouped recall upper bound is method-dependent and should not be used as
 population evidence until a versioned migration. Other grouped estimators,
 including the hard-negative FPR path, still need independent audit; see
 `reports/PROJECT-REVIEW-2026-09-23.md`.
+New certify records carry a metrics protocol marker (DECISIONS 219). The verifier
+replays an older bound record without that field under its original method and
+warns when it is grouped. Because neither the marker nor its absence is
+authenticated, a coherent locally rewritten legacy record can still replay;
+VERIFIED proves consistency with the supplied rows and declared method only.
 
 ### 3.7 Most records the customer CLI writes can be edited without detection
 

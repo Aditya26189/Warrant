@@ -11,7 +11,9 @@ from typing import Any, Optional
 from ..config import Config
 from ..numeric import finite_double
 from ..release.contract import canonical_json
-from .certify import certify_items, evidence_sha256, input_sha256
+from .certify import (
+    GROUPED_BOUNDARY_PROTOCOL, certify_items, evidence_sha256, input_sha256,
+)
 from .chain import canonical_sha256
 from .contract import ScoredItems
 from .frontier import frontier
@@ -145,11 +147,17 @@ def verify_certification(
             return _result("MISMATCH", "selected frontier details differ from recomputation")
         alpha = first["row_alpha"]
 
+    metrics_protocol = record.get("metrics_protocol")
+    if metrics_protocol is not None and metrics_protocol != GROUPED_BOUNDARY_PROTOCOL:
+        return _result("MISMATCH", "unknown warrant metrics protocol")
     # The path is a declaration and need not be the path of a retained copy.
     # Replaying with the recorded path preserves the original explanatory text.
     replay_items = dataclasses.replace(items, source=source)
     expected = certify_items(config, replay_items, budget=budget, alpha=alpha,
-                             selection=expected_selection).to_payload()
+                             selection=expected_selection,
+                             grouped_boundary_abstention=(
+                                 metrics_protocol == GROUPED_BOUNDARY_PROTOCOL
+                             )).to_payload()
     for key, computed in expected.items():
         if key == "frontier_record_present":
             continue  # Whether a sibling file existed is not a statistic.
@@ -158,4 +166,7 @@ def verify_certification(
     extra = set(record) - set(expected) - {"provenance"}
     if extra:
         return _result("MISMATCH", f"unexpected warrant fields: {sorted(extra)}")
-    return _result("VERIFIED", "effective rows and material certificate fields recompute")
+    reason = "effective rows and material certificate fields recompute"
+    if metrics_protocol is None and recorded_input.get("grouped") is True:
+        reason += "; historical grouped metric method reproduced, not validated for boundary coverage"
+    return _result("VERIFIED", reason)

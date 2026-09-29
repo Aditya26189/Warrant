@@ -230,6 +230,10 @@ research artifacts are replayed under their original method until a separately
 versioned research migration; the old grouped boundary interval is not thereby
 validated. This is an abstention on useful customer uncertainty, not a new
 group-aware coverage result.
+New customer certificates declare `metrics_protocol: grouped_boundary_vacuous_v1`.
+A bound older certificate without that field replays its historical metric
+method with a grouped-interval caution (DECISIONS 219); replay verifies arithmetic,
+not the coverage of the legacy interval or the record's origin.
 
 ### 2.3 Refusal criteria
 

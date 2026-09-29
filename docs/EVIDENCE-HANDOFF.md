@@ -143,7 +143,7 @@ carries it.
 | The criteria | contract spec: `threshold`, `max_fpr`, `min_recall`, `alpha` | `budget_fpr`, `alpha`; no recall criterion | `prior_warrant.budget_fpr` |
 | Registered before scoring | yes: the contract is written before `evaluate`, and its digest is bound in | no | no |
 | Confidence | `family_confidence` | `alpha` (section 4, rule 1) | `alpha` from the warrant |
-| Method | protocol in `schema_version` (1 or 2); five two-sided Clopper-Pearson intervals at `alpha / 5` each | `certification.estimator`: one-sided Clopper-Pearson upper bound; `certification.alpha_governs` | revocation on the one-sided **lower** bound; `detection.note` |
+| Method | protocol in `schema_version` (1 or 2); five two-sided Clopper-Pearson intervals at `alpha / 5` each | `certification.estimator`: one-sided Clopper-Pearson upper bound; `certification.alpha_governs`; new `metrics_protocol` names the grouped descriptive-interval method (DECISIONS 219) | revocation on the one-sided **lower** bound; `detection.note` |
 | Threshold | contract spec `threshold` | `certification.threshold` | `prior_warrant.threshold` |
 | Picked off a frontier | not applicable | `selection` (DECISIONS 195); `frontier_record_present` | not applicable |
 

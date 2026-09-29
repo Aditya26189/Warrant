@@ -336,6 +336,13 @@ It does not add confidence by counting repeated rows as independent trials
 (`DECISIONS.md` 217). The point estimate still describes the supplied file;
 the vacuous interval supplies no useful population precision.
 
+New records name this interval method with top-level
+`metrics_protocol: grouped_boundary_vacuous_v1` (DECISIONS 219). `warrant verify`
+replays that method. An older bound record without the field replays its
+historical arithmetic and, when grouped, reports a legacy-method caution.
+VERIFIED means the retained fields recompute; it does not make an old grouped
+boundary interval statistically sound or authenticate the record's age.
+
 Two rules the output always follows:
 
 - **Population rates carry intervals.** Grouped reviewer agreement instead

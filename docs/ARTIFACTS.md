@@ -201,7 +201,7 @@ field, record by record; this is the map.
 
 | Record | Written by | Top-level fields |
 |---|---|---|
-| `<file>.warrant.json` | `warrant certify` | `status`, `budget_fpr`, `alpha`, `reason`, `input` (including the ordered effective-row `evidence_sha256`), `certification`, `metrics`, `score_distribution` (bin edges and probabilities, never values), `labels`, `selection`, `frontier_record_present` |
+| `<file>.warrant.json` | `warrant certify` | `status`, `budget_fpr`, `alpha`, `reason`, `input` (including the ordered effective-row `evidence_sha256`), `certification`, `metrics`, new `metrics_protocol` (absent on historical records), `score_distribution` (bin edges and probabilities, never values), `labels`, `selection`, `frontier_record_present` |
 | `<file>.frontier.json` | `warrant certify --frontier` | `input` (including `input_sha256`), `note`, `frontier[]` -- each row with `budget_fpr`, `certified`, `threshold`, `fpr_upper_bound`, `row_alpha`, `family_alpha` and `counts_exact` |
 | `<file>.recheck.json` | `warrant recheck` | `status`, `reason`, `prior_warrant` (including the exact `warrant_sha256`, `certificate_verification` of `VERIFIED` or `NOT_CHECKED`, and `chain_revoked_at`), `now` (including ordered effective-row `evidence_sha256`), `detection`, `drift`, `labels`; `chain` is null. The certificate check requires `--certificate-input`; `drift` names the reference size used for its null band (`DECISIONS.md` 209) |
 | `<file>.recheck-NNNN.json` | `warrant recheck --horizon-labels` or `--since` | as above, with `chain` holding the chain state and its `state_sha256`, and **`record_sha256` sealing the whole record** |

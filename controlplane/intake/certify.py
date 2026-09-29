@@ -2,9 +2,9 @@
 
 Calls the same :func:`~controlplane.validation.warrant_stats.certify_fpr` and
 :func:`~controlplane.validation.metrics_builder.build_warrant_metrics` the
-research pipeline calls. There is no simplified variant for the customer path:
-a second implementation is how the two drift, and the number a customer gets has
-to be the number this project defends.
+research pipeline calls. New customer records explicitly opt into a safe
+grouped-boundary metric protocol; the certificate names it so retained older
+records can replay their original descriptive intervals (DECISIONS 217-219).
 
 **Refusal is a result.** Too few independent negatives to bound the requested
 budget is not a failure of the tool — it is the tool working, and it carries the
@@ -29,6 +29,8 @@ __all__ = [
     "input_sha256",
 ]
 
+GROUPED_BOUNDARY_PROTOCOL = "grouped_boundary_vacuous_v1"
+
 
 @dataclasses.dataclass(frozen=True)
 class CertificationResult:
@@ -52,6 +54,7 @@ class CertificationResult:
     grouped: bool
     min_units_required: int
     evidence_sha256: str
+    metrics_protocol: Optional[str]
     threshold: Optional[float] = None
     fpr_upper_bound: Optional[float] = None
     false_positives_at_threshold: Optional[int] = None
@@ -96,7 +99,7 @@ class CertificationResult:
         return self.selection["family_alpha"] if self.selection else self.alpha
 
     def to_payload(self) -> dict[str, Any]:
-        return {
+        payload = {
             "status": self.status.value,
             "budget_fpr": self.budget,
             # Read by recheck, plan and a chain. Deliberately the family level
@@ -165,6 +168,9 @@ class CertificationResult:
                 "absent_reason": self.metrics_absent_reason,
             },
         }
+        if self.metrics_protocol is not None:
+            payload["metrics_protocol"] = self.metrics_protocol
+        return payload
 
 
 def _lift_of(metrics: WarrantMetrics) -> tuple[Optional[Metric], Optional[float], str]:
@@ -224,6 +230,7 @@ def certify_items(
     budget: float,
     alpha: Optional[float] = None,
     selection: Optional[dict[str, Any]] = None,
+    grouped_boundary_abstention: bool = True,
 ) -> CertificationResult:
     """Certify ``items``' detector at ``budget``, or refuse with the shortfall.
 
@@ -232,12 +239,12 @@ def certify_items(
     Propagation: one-sided Clopper-Pearson upper bound at ``alpha``, the
     same bound :func:`controlplane.validation.warrant_stats.certify_fpr`
     uses, so a customer's certificate and a published warrant mean the
-    same thing. Recall at the chosen threshold is reported with a
-    percentile bootstrap over items.
+    same thing. Recall at the chosen threshold uses a percentile bootstrap
+    over independent groups when declared, or over items otherwise.
 
     Args:
-        config: Supplies the bootstrap count, coverage and seed, so a customer's
-            intervals are the same object every published number here uses.
+        config: Supplies the bootstrap count, coverage and seed; the grouped
+            boundary protocol is recorded separately from historical research.
         items: The parsed input.
         budget: Target false-positive rate, in (0, 1).
         alpha: Certification level. Defaults to ``1 - config.validation.ci``.
@@ -245,6 +252,9 @@ def certify_items(
             digest, grid, ``row_alpha`` and ``family_alpha`` (``DECISIONS.md``
             195). ``alpha`` must then be its ``row_alpha``; the record keeps
             ``family_alpha`` for every later test on fresh labels.
+        grouped_boundary_abstention: New records use vacuous grouped recall and
+            precision bounds on bootstrap collapse. False is only for exact
+            replay of an older record without a metrics protocol (219).
 
     Returns:
         A :class:`CertificationResult`, VALID or REFUSED.
@@ -285,6 +295,9 @@ def certify_items(
         "grouped": groups is not None,
         "min_units_required": floor,
         "evidence_sha256": evidence_sha256(items),
+        "metrics_protocol": (
+            GROUPED_BOUNDARY_PROTOCOL if grouped_boundary_abstention else None
+        ),
         "score_distribution": distribution,
         "selection": selection,
     }
@@ -331,7 +344,7 @@ def certify_items(
 
     metrics = build_warrant_metrics(
         config, labels, scores, threshold, groups=groups,
-        grouped_boundary_abstention=True,
+        grouped_boundary_abstention=grouped_boundary_abstention,
     )
     lift, ceiling, lift_absent = _lift_of(metrics)
     return CertificationResult(

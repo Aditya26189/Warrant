@@ -3,12 +3,15 @@
 from __future__ import annotations
 
 import dataclasses
+from copy import deepcopy
 
 import numpy as np
 
 from controlplane.config import Config, load_customer_config
 from controlplane.intake import certify_items
 from controlplane.intake.contract import ScoredItems
+from controlplane.intake.verify import verify_certification
+from controlplane.model import to_jsonable
 from controlplane.validation.metrics_builder import build_warrant_metrics
 from controlplane.validation.stats import estimated, precision_at, recall_at
 
@@ -136,10 +139,10 @@ def test_ungrouped_boundary_keeps_exact_binomial_interval(config: Config) -> Non
         assert metric.ci_low > 0.0
 
 
-def test_customer_certificate_discloses_grouped_boundary_abstention() -> None:
-    """The customer record must expose the vacuous metric, not merely the helper."""
+def _grouped_items() -> ScoredItems:
+    """Four positive and sixty negative independent units for certificate tests."""
     labels = tuple([0] * 60 + [1] * 4)
-    items = ScoredItems(
+    return ScoredItems(
         ids=tuple(f"item-{index}" for index in range(64)),
         labels=labels,
         scores=tuple(0.1 if label == 0 else 0.9 for label in labels),
@@ -147,10 +150,45 @@ def test_customer_certificate_discloses_grouped_boundary_abstention() -> None:
         passthrough_columns=(),
         source="synthetic-grouped-boundary",
     )
-    record = certify_items(load_customer_config(), items, budget=0.05).to_payload()
+
+
+def test_customer_certificate_discloses_grouped_boundary_abstention() -> None:
+    """The customer record must expose the vacuous metric, not merely the helper."""
+    record = certify_items(load_customer_config(), _grouped_items(), budget=0.05).to_payload()
     assert record["status"] == "VALID"
     assert record["input"]["independent_negative_units"] == 60
     for name in ("recall", "precision"):
         metric = record["metrics"][name]
         assert (metric["ci_low"], metric["ci_high"]) == (0.0, 1.0)
         assert "collapsed grouped bootstrap" in metric["estimator"]
+
+
+def test_new_and_retained_grouped_certificates_replay_under_their_methods() -> None:
+    """A method upgrade cannot make a bound old record look tampered with."""
+    config = load_customer_config()
+    items = _grouped_items()
+    current = certify_items(config, items, budget=0.05).to_payload()
+    current["provenance"] = {"config_hash": config.config_hash}
+    assert current["metrics_protocol"] == "grouped_boundary_vacuous_v1"
+    assert verify_certification(current, items, config).status == "VERIFIED"
+
+    legacy = deepcopy(current)
+    del legacy["metrics_protocol"]
+    labels, scores, groups = items.as_arrays()
+    old_metrics = build_warrant_metrics(
+        config, labels, scores, current["certification"]["threshold"],
+        groups=groups,
+    )
+    for name in ("recall", "precision", "flag_rate", "lift"):
+        legacy["metrics"][name] = to_jsonable(getattr(old_metrics, name))
+    legacy["metrics"]["lift_ceiling"] = old_metrics.lift_ceiling
+    old_result = verify_certification(legacy, items, config)
+    assert old_result.status == "VERIFIED"
+    assert "historical" in old_result.reason
+
+    downgraded = deepcopy(current)
+    del downgraded["metrics_protocol"]
+    assert verify_certification(downgraded, items, config).status == "MISMATCH"
+    unknown = deepcopy(current)
+    unknown["metrics_protocol"] = "unknown"
+    assert verify_certification(unknown, items, config).status == "MISMATCH"
