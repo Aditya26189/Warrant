@@ -108,6 +108,8 @@ assert not ({'scipy', 'numpy', 'torch', 'sklearn'} & set(sys.modules))
 
 def test_label_audit_replays_fixed_holdout_and_binds_second_review(workflow):
     assert run("evaluate", *arguments(workflow)).returncode == 0
+    evaluation = json.loads((workflow / "contract.evaluation.json").read_text(encoding="utf-8"))
+    assert "intake/certify.py" not in evaluation["software"]["source_files"]
     scores = workflow / "scores.csv"
     rows = scores.read_text(encoding="utf-8").splitlines()
     with_second = ["id,label,score,label_2"]
@@ -120,6 +122,7 @@ def test_label_audit_replays_fixed_holdout_and_binds_second_review(workflow):
     path = workflow / "contract.label-audit.json"
     audit = json.loads(path.read_text(encoding="utf-8"))
     assert audit["release_status_at_audit"] == "VALID"
+    assert "intake/certify.py" in audit["software"]["source_files"]
     assert audit["sensitivity"]["computed"] is True
     assert audit["second_review"]["flagged_positive_really_clean"] == {"reviewed": 1, "disputed": 1}
     assert audit["second_review"]["unflagged_negative_really_positive"] == {"reviewed": 1, "disputed": 1}

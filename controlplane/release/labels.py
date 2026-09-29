@@ -133,7 +133,7 @@ def label_audit(contract: ReleaseContract, evaluation: dict[str, Any], items: Sc
 
 def seal_label_audit(body: dict[str, Any]) -> dict[str, Any]:
     """Add source provenance and a checksum, without claiming a signature."""
-    payload = {**body, "software": software_provenance()}
+    payload = {**body, "software": software_provenance(include_certify=True)}
     return {**payload, "audit_id": digest(payload)}
 
 

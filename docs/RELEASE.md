@@ -166,6 +166,8 @@ release, sensitivity is deliberately not computed. Optional `label_2` counts
 observed disagreements in those two pools; it does not establish which label
 is right, whether reviewers were blind, or a population error rate. A stale
 release remains stale. The audit never changes VALID, REFUSED or expiry.
+Its software manifest includes the effective-row digest implementation in
+`intake/certify.py`; the original evaluation's source manifest is unchanged.
 
 Exit codes: a completed measurement or verification returns zero by default;
 `--require-valid` returns one for any current state other than VALID; malformed,
