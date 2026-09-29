@@ -346,7 +346,8 @@ def test_single_class_envelope_skips_the_lift_criterion(config: Config) -> None:
         make_metrics(),
         auroc=None, recall=None, precision=None,
         fpr_hard_negatives=Metric("fpr_hard_negatives", 0.0, MetricKind.ESTIMATED,
-                                  200, 0.0, 0.018, 0.95, "rate", "Clopper-Pearson",
+                                  200, 0.0, 0.018, 0.95, "rate",
+                                  "independent_item_cp_v1 Clopper-Pearson",
             convention="two_sided_95",
         ),
     )

@@ -224,13 +224,17 @@ def load_score_set(path: Path) -> ScoreSet:
 
 
 def metrics_for_target(
-    config: Config, score_set: ScoreSet, target: ScoreTarget
+    config: Config,
+    score_set: ScoreSet,
+    target: ScoreTarget,
+    *,
+    legacy_grouped_hard_negative: bool = False,
 ) -> WarrantMetrics:
     """Recompute one metrics block from frozen scores.
 
     Calls the same builder every runner calls, with the config's bootstrap
-    count, coverage level and seed -- so a difference here is a difference in
-    the numbers, never a difference in how they were computed.
+    count, coverage level and seed. Historical replay is an explicit opt-in:
+    new use must not inherit a row-count bound on grouped hard negatives (220).
     """
     return build_warrant_metrics(
         config,
@@ -239,6 +243,7 @@ def metrics_for_target(
         target.threshold,
         groups=np.asarray(score_set.question_ids),
         is_hard_negative_set=score_set.is_hard_negative_set,
+        legacy_grouped_hard_negative=legacy_grouped_hard_negative,
     )
 
 

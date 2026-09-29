@@ -235,9 +235,23 @@ A bound older certificate without that field replays its historical metric
 method with a grouped-interval caution (DECISIONS 219); replay verifies arithmetic,
 not the coverage of the legacy interval or the record's origin.
 
+Prospective hard-negative warrants with repeated question groups use
+`group_any_cp_v1` (DECISIONS 220). A negative group fires if any member fires;
+the one-sided upper bound uses the number of independent negative groups and
+their firing count. This bounds item FPR only when negative groups are equal in
+size. Unequal sizes produce a vacuous upper bound and therefore refuse any
+declared FPR ceiling below one. The descriptive FPR remains the item rate, with
+both row count and group count named in the metric. Existing frozen scores
+replay their original row-count method only through an explicit legacy option;
+historical replay is not validation of that older interval.
+New issuance and policy/routing checks require a named independent-unit FPR
+protocol when they rely on this bound. Retained row-count records remain
+readable but cannot clear a declared hard-negative ceiling by legacy status
+alone; an ungrouped new bound declares `independent_item_cp_v1`.
+
 ### 2.3 Refusal criteria
 
-Refuse if any control fails; or AUROC lower CI bound ≤ 0.55; or recall below the policy's declared minimum at the operating point; or FPR on the hard-negative set above the declared maximum; or `n_test` < 200.
+Refuse if any control fails; or AUROC lower CI bound ≤ 0.55; or recall below the policy's declared minimum at the operating point; or FPR on the hard-negative set above the declared maximum; or hard-negative FPR lacks a named independent-unit protocol; or `n_test` < 200.
 
 Recall and hard-negative FPR are compared at the **interval bound**, not the point estimate — a profile declaring "at least 10% recall" is asking for a guarantee, and a point estimate of 0.11 whose lower bound is 0.06 does not supply one. `n_test` counts the **test split**, so an eval set is sized by that split rather than by its total; see `DECISIONS.md` 030.
 

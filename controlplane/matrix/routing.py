@@ -33,6 +33,7 @@ from typing import Callable, Optional, Sequence
 
 from ..config import Config, ProfileConfig
 from ..model import Action, Warrant, WarrantKey, WarrantMetrics, WarrantStatus
+from ..validation.metric_protocols import has_supported_hard_negative_protocol
 
 __all__ = ["Profile", "RoutingDecision", "route"]
 
@@ -110,6 +111,11 @@ class Profile:
             )
         fpr = metrics.fpr_hard_negatives
         if fpr is not None:
+            if not has_supported_hard_negative_protocol(fpr):
+                return False, (
+                    f"{self.name} cannot use a legacy or undeclared hard-negative "
+                    "FPR bound as independent-unit evidence"
+                )
             upper = fpr.ci_high if fpr.ci_high is not None else fpr.value
             if upper > self.max_fpr_hard_negatives:
                 return False, (

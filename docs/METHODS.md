@@ -207,9 +207,15 @@ refused or unresolved, and each says which.
 ## 9. Single-class envelopes
 
 `hard-negatives-200` is all negatives. AUROC, recall and precision are
-**undefined** on it, and the warrant claims an FPR only — with an exact
-binomial interval, since the bootstrap of a zero-variance statistic is
-degenerate. `pii-reference` measures FPR 0.0000 [0.0000, 0.0183] there.
+**undefined** on it, and the warrant claims an FPR only. Its several framings
+per scenario share a question group. A prospective warrant uses the one-sided
+`group_any_cp_v1` bound over negative groups: a scenario fires if any framing
+fires, and equal group sizes make its rate an upper bound on the item FPR.
+Unequal group sizes withhold the item-rate claim. The point estimate remains
+descriptive over items. Retained research artifacts used a row-count binomial
+bound; their exact replay does not validate that bound under grouping
+(`DECISIONS.md` 220). These hand-written scenarios also do not represent a
+random sample of customer traffic.
 
 The metric builder detects the single-class case and refuses to emit the
 undefined quantities rather than emitting a plausible-looking 0.5.

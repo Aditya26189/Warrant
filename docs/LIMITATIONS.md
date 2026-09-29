@@ -330,8 +330,16 @@ without a new finite-sample coverage claim. Historical research artifacts
 retain the old method for exact replay: the mean-pool transfer artifact's
 grouped recall upper bound is method-dependent and should not be used as
 population evidence until a versioned migration. Other grouped estimators,
-including the hard-negative FPR path, still need independent audit; see
-`reports/PROJECT-REVIEW-2026-09-23.md`.
+still need independent audit. Decision 220 separately corrects prospective
+grouped hard-negative FPR bounds to count equal-sized negative groups, with a
+vacuous bound for unequal sizes. The retained hard-negative research artifacts
+still carry row-count bounds. Their historical arithmetic is reproducible but
+is not valid independent-unit evidence; a prior VALID status can therefore be
+too optimistic. New issuance and policy/routing checks refuse legacy or
+undeclared hard-negative FPR protocols rather than trusting that prior status.
+Neither the corrected bound nor the hand-built eval set proves
+customer-population coverage without a representative sampling design and
+independent statistical review.
 New certify records carry a metrics protocol marker (DECISIONS 219). The verifier
 replays an older bound record without that field under its original method and
 warns when it is grouped. Because neither the marker nor its absence is
