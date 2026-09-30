@@ -11797,3 +11797,17 @@ exactly as after a chained revocation.
 **Validation and limits.** Add focused regression cases for empty or partial `OK`, an impossible count, and a nonempty activation `SKIPPED`, plus a normal positive/full comparison and `0/0` activation skip. Run the affected parser and report suites, then the clean-source claim and frozen-score verifier. This hardens a local summary consumer; it does not authenticate the summary, prove fresh dependencies, or establish remote CI.
 
 **Rejected.** Accepting `OK|0/0` as a vacuous mathematical equality would turn a check with no comparisons into a green gate. Hardcoding today's `92/92` or `25/25` totals would make legitimate future additions fail for an unrelated reason.
+
+## 224 - Preflight cheap clone-suite blockers before the full suite (2026-09-30)
+
+- **Date:** 2026-09-30
+- **Status:** DECIDED before implementation.
+- **Scope:** Execution order and reporting of the local tracked-file clean-clone gate. No research metric, protected score, or customer certificate changes.
+
+**Finding.** The Phase 25 clone of `d3544e5` spent about 45 minutes on the full suite before failing the deterministic `test_every_stated_test_count_is_the_real_one`: 2,117 tests collected while README and Makefile claimed 2,115. After preserving the red gate record in Git history, a second deterministic test, `test_the_committed_gate_artifact_is_readable_and_passed`, would have made a rerun fail while the current `results/clean_clone.json` was red. Both tests could be run before the expensive suite and neither scores the scientific test set. The interrupted second run produced no result artifact.
+
+**Decision.** In a full clean-clone gate, run those two existing node IDs after smoke and before the full suite. If either fails, record the preflight failure and an explicit skipped, unsuccessful `make test` step; still run the independent claim verifier and its tier parser. A preflight pass allows the full suite to run unchanged. The `--no-tests` mode continues to run smoke and verifier without either test step. Do not treat a skipped full suite as a pass, and do not edit the two tests merely to make a red gate green.
+
+**Validation and limits.** Unit-test the step selection with a fake command runner: failure must never invoke the full suite, success must invoke it, and the skipped step must fail the aggregate and render as SKIP. Run the affected clone-gate and report suites, plus the clean-source claim/frozen-score verifier. This is a local time-saving release check, not a substitute for the full suite, remote CI, fresh dependency resolution, or buyer evidence.
+
+**Rejected.** Running the full suite after a known deterministic preflight failure wastes scarce time and obscures the actionable defect. Failing to record the omitted suite would make an early exit look green. Updating counts or changing the live artifact test inside the gate would hide, rather than detect, the inconsistency.
