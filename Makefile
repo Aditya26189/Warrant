@@ -1,7 +1,7 @@
 # Warrant — the four reproduction tiers. Block E, E.4.
 #
 #   make smoke     CPU, no network, < 60s   the clone works and the package imports
-#   make test      CPU, ~10 min             2115 tests collected
+#   make test      CPU, ~10 min             2117 tests collected
 #   make verify    CPU (+cache for tier 3)  every claim reproduces and every metric recomputes
 #   make extract   GPU, ~1 h                activations regenerate from the source model
 #
