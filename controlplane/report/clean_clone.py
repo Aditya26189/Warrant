@@ -117,6 +117,41 @@ def _run(
     )
 
 
+def _run_suite_after_preflight(python: str, cwd: Path) -> list[StepResult]:
+    """Fail early on cheap clone blockers without reporting the full suite as run.
+
+    Decision 224: both assertions failed, or would deterministically fail, in
+    Phase 25's tracked-only clone. Run them before the expensive suite and keep
+    an explicit unsuccessful SKIP row if they refuse.
+    """
+    preflight = _run(
+        "make test preflight",
+        [
+            python, "-m", "pytest",
+            "tests/test_claims.py::test_every_stated_test_count_is_the_real_one",
+            "tests/test_clean_clone.py::test_the_committed_gate_artifact_is_readable_and_passed",
+            "-q",
+        ],
+        cwd=cwd,
+        timeout=900,
+    )
+    full_command = [python, "-m", "pytest", "tests/", "-q"]
+    if not preflight.ok:
+        return [
+            preflight,
+            StepResult(
+                name="make test",
+                command=full_command,
+                returncode=None,
+                duration_seconds=0.0,
+                ok=False,
+                skipped=True,
+                detail="not run because test preflight failed",
+            ),
+        ]
+    return [preflight, _run("make test", full_command, cwd=cwd, timeout=3600)]
+
+
 #: Human-readable label per tier key, for the report. The keys themselves come
 #: from verify's machine-readable contract, not from this table.
 _TIER_LABELS = {
@@ -402,16 +437,14 @@ def run_clean_clone_gate(
         )
         result.steps.append(notes)
 
-        steps: list[tuple[str, list[str], int]] = [
-            ("make smoke", [python, "scripts/smoke.py"], 600),
-        ]
+        result.steps.append(
+            _run("make smoke", [python, "scripts/smoke.py"], cwd=target, timeout=600)
+        )
         if run_tests:
-            steps.append(("make test", [python, "-m", "pytest", "tests/", "-q"], 3600))
-        steps.append(("make verify", [python, "scripts/verify.py"], 1800))
-
-        for name, command, timeout in steps:
-            step = _run(name, command, cwd=target, timeout=timeout)
-            result.steps.append(step)
+            result.steps.extend(_run_suite_after_preflight(python, target))
+        result.steps.append(
+            _run("make verify", [python, "scripts/verify.py"], cwd=target, timeout=1800)
+        )
 
         # verify runs three tiers and they do not stand or fall together. A
         # green exit code says "nothing drifted", not "everything was checked",

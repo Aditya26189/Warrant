@@ -15,6 +15,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
 from controlplane.report.clean_clone import (
     GateResult,
     StepResult,
@@ -46,6 +48,48 @@ def test_a_failed_step_fails_the_gate() -> None:
     result.ok = all(s.ok for s in result.steps)
     assert result.ok is False
     assert "FAILED" in render(result)
+
+
+def test_failed_clone_preflight_skips_the_expensive_suite(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Known count/artifact drift must fail before an unnecessary full run (224)."""
+    import controlplane.report.clean_clone as clone
+
+    calls: list[str] = []
+
+    def fake_run(name: str, command: list[str], cwd: Path, timeout: int) -> StepResult:
+        calls.append(name)
+        return _step(name, ok=False)
+
+    monkeypatch.setattr(clone, "_run", fake_run)
+    steps = clone._run_suite_after_preflight("python", Path("clone"))
+    assert calls == ["make test preflight"]
+    assert [step.name for step in steps] == ["make test preflight", "make test"]
+    assert steps[1].skipped and not steps[1].ok
+    result = GateResult(False, "abc123", "/tmp/clone", 267, steps)
+    assert "SKIP  make test" in render(result)
+
+
+def test_passing_clone_preflight_runs_the_full_suite(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Preflight is an early refusal, not a replacement for the full suite."""
+    import controlplane.report.clean_clone as clone
+
+    calls: list[tuple[str, list[str]]] = []
+
+    def fake_run(name: str, command: list[str], cwd: Path, timeout: int) -> StepResult:
+        calls.append((name, command))
+        return _step(name, ok=True)
+
+    monkeypatch.setattr(clone, "_run", fake_run)
+    steps = clone._run_suite_after_preflight("python", Path("clone"))
+    assert [name for name, _ in calls] == ["make test preflight", "make test"]
+    assert any("test_every_stated_test_count_is_the_real_one" in arg for arg in calls[0][1])
+    assert any("test_the_committed_gate_artifact_is_readable_and_passed" in arg for arg in calls[0][1])
+    assert calls[1][1] == ["python", "-m", "pytest", "tests/", "-q"]
+    assert all(step.ok and not step.skipped for step in steps)
 
 
 def test_a_skipped_step_is_rendered_as_skipped_not_as_a_pass() -> None:
