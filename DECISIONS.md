@@ -11769,3 +11769,17 @@ exactly as after a chained revocation.
 **Validation and limits.** First regress the four-group duplication counterexample, noncollapsed grouped agreement, ungrouped boundary, and exact v1/absent-marker replay. Verify new v2 certificates and clean-source frozen-score comparisons. The vacuous interval is an abstention, not a calibrated interval; cluster resampling and group independence require separate statistical and sampling review. The existing hard-negative group-any rule remains separate. This change cannot establish a customer-population rate from hand-built examples.
 
 **Rejected.** Reusing row-level Clopper-Pearson for a repeated group because it gives a narrower interval misstates independent evidence. Rewriting frozen intervals would erase the historical method. Applying the v2 calculation to retained v1 certificates would turn a method upgrade into an apparent integrity failure.
+
+## 222 - Fail closed on incomplete clean-clone verification summaries (2026-09-30)
+
+- **Date:** 2026-09-30
+- **Status:** DECIDED before implementation.
+- **Scope:** The local clean-clone gate's parsing of `scripts/verify.py` tier output. No scientific estimator or protected result is changed.
+
+**Finding.** `_verify_tiers` accepts any subset of the three expected `TIER|` lines. A missing tier is displayed as `SKIP` but constructed with `ok=True`, so the aggregate gate can say `PASSED` when a mandatory claim-table or frozen-score comparison never reported an outcome. Duplicate lines overwrite in a dictionary, allowing a later `OK` to hide an earlier `DRIFT`. An unknown future tier is ignored by the fixed three-row output. These are synthetic parser counterexamples, not evidence that the current verifier emitted a malformed summary. The default clean-clone command runs verification without `--claims-only` or `--no-activations`, so claim and frozen-score tiers are mandatory; activation re-extraction may explicitly report `SKIPPED` when ignored caches are absent.
+
+**Decision.** The gate must require exactly one well-formed status line for each expected tier and reject duplicate, unknown or malformed `TIER|` lines. It must fail if `claim_table` or `frozen_scores` is explicitly `SKIPPED`, or if any tier is `DRIFT`. An explicit activation `SKIPPED` is tolerated and reported as skipped, never as a pass for re-extraction. Missing expected tiers are failures with an explanation, not synthetic successful skips. Keep the existing machine-readable `verify.py` contract; change only the consumer and its focused tests.
+
+**Validation and limits.** Regress missing, duplicate, unknown, malformed and mandatory-skip summaries, plus the normal two-OK/one-SKIPPED case. Run the clean-clone unit tests and surrounding report tests. A full fresh-clone gate on an earlier source remains attributable only to that earlier commit; it does not become proof of this parser change. This local gate is still not remote CI, authenticated provenance or a fresh dependency install.
+
+**Rejected.** Continuing to label a missing mandatory line as an acceptable skip would make the gate green when it cannot tell whether the comparison ran. Treating the legitimate activation skip as a failure would make a cache-free clone fail for the wrong reason. Parsing human prose instead of the existing `TIER|` contract would reopen the historical truncation and wording failures.
