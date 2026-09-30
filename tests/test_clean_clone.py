@@ -22,6 +22,7 @@ from controlplane.report.clean_clone import (
     StepResult,
     render,
     write_artifact,
+    write_outcome_artifact,
 )
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -125,6 +126,49 @@ def test_the_artifact_records_every_step_and_its_provenance(tmp_path: Path) -> N
     assert payload["ok"] is True
     assert [s["name"] for s in payload["steps"]] == ["git clone", "make smoke"]
     assert payload["tracked_files"] == 267
+
+
+def test_failed_default_clone_keeps_green_record_and_separates_attempts(
+    tmp_path: Path,
+) -> None:
+    """A red gate must remain inspectable without poisoning its own rerun (225)."""
+    canonical = tmp_path / "results" / "clean_clone.json"
+    prior = GateResult(True, "prior123", "/tmp/prior", 267, [_step("make test", True)])
+    write_artifact(prior, canonical, {"git_commit": "prior123", "dirty": False})
+    original = canonical.read_bytes()
+    failed = GateResult(False, "failed456", "/tmp/failed", 267, [_step("make test", False)])
+
+    paths = [
+        write_outcome_artifact(
+            failed, canonical, canonical,
+            {"git_commit": "failed456", "dirty": False},
+        )
+        for _ in range(2)
+    ]
+    assert paths[0] != paths[1]
+    assert canonical.read_bytes() == original
+    for path in paths:
+        assert path.parent == canonical.parent / "clean_clone_failures"
+        assert path.name.startswith("clean_clone-failed456-")
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        assert payload["ok"] is False
+        assert payload["commit"] == "failed456"
+
+
+def test_success_replaces_canonical_and_custom_failure_uses_custom_path(
+    tmp_path: Path,
+) -> None:
+    """Explicit output remains caller-owned; success keeps the canonical path."""
+    canonical = tmp_path / "results" / "clean_clone.json"
+    custom = tmp_path / "failed-custom.json"
+    failed = GateResult(False, "bad123", "/tmp/bad", 267, [_step("make test", False)])
+    assert write_outcome_artifact(failed, custom, canonical, {}) == custom
+    assert json.loads(custom.read_text(encoding="utf-8"))["ok"] is False
+    assert not canonical.exists()
+
+    passed = GateResult(True, "good123", "/tmp/good", 267, [_step("make test", True)])
+    assert write_outcome_artifact(passed, canonical, canonical, {}) == canonical
+    assert json.loads(canonical.read_text(encoding="utf-8"))["ok"] is True
 
 
 def test_the_committed_gate_artifact_is_readable_and_passed() -> None:

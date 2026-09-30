@@ -26,6 +26,12 @@ was missed after two new test cases appeared. The clone gate now preflights
 the count assertion, but the generated inventory is still the source of the
 published collection count.
 
+The default clean-clone command updates `results/clean_clone.json` only after a
+passing gate. A failed run writes an individually named record under
+`results/clean_clone_failures/` and exits nonzero; inspect that record for its
+step output. This leaves the last passing record available to the preflight on
+the next attempt. An explicit `--out` path receives either outcome.
+
 ```bash
 python -m pytest tests/ -q                    # the whole suite
 python -m pytest tests/test_validation.py -q  # one suite

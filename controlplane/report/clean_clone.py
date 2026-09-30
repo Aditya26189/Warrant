@@ -40,7 +40,14 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Optional
 
-__all__ = ["GateResult", "StepResult", "run_clean_clone_gate", "render"]
+__all__ = [
+    "GateResult",
+    "StepResult",
+    "run_clean_clone_gate",
+    "render",
+    "write_artifact",
+    "write_outcome_artifact",
+]
 
 
 @dataclass
@@ -511,7 +518,12 @@ def render(result: GateResult) -> str:
 
 
 def write_artifact(
-    result: GateResult, path: Path, provenance: dict, *, provenance_taken: str = "before cloning",
+    result: GateResult,
+    path: Path,
+    provenance: dict,
+    *,
+    provenance_taken: str = "before cloning",
+    exclusive: bool = False,
 ) -> None:
     """Write the gate's outcome to ``results/`` with the usual provenance block.
 
@@ -521,6 +533,36 @@ def write_artifact(
     """
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = {"provenance": provenance, "provenance_taken": provenance_taken, **result.to_dict()}
-    path.write_text(
-        json.dumps(payload, indent=2, sort_keys=False) + "\n", encoding="utf-8"
+    content = json.dumps(payload, indent=2, sort_keys=False) + "\n"
+    if exclusive:
+        with path.open("x", encoding="utf-8") as handle:
+            handle.write(content)
+    else:
+        path.write_text(content, encoding="utf-8")
+
+
+def write_outcome_artifact(
+    result: GateResult,
+    requested_path: Path,
+    canonical_path: Path,
+    provenance: dict,
+) -> Path:
+    """Preserve the last passing default gate while recording every failed attempt.
+
+    Decision 225: a failed run at the default path cannot replace the passing
+    record, which the clean-clone preflight reads on its next run. An explicit
+    ``--out`` remains under the caller's control.
+    """
+    if result.ok or requested_path.resolve() != canonical_path.resolve():
+        write_artifact(result, requested_path, provenance)
+        return requested_path
+
+    if not result.commit:
+        raise ValueError("a failed clone gate must identify its source commit")
+    failure_path = (
+        canonical_path.parent
+        / "clean_clone_failures"
+        / f"clean_clone-{result.commit[:12]}-{time.time_ns()}.json"
     )
+    write_artifact(result, failure_path, provenance, exclusive=True)
+    return failure_path
