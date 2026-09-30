@@ -11769,3 +11769,59 @@ exactly as after a chained revocation.
 **Validation and limits.** First regress the four-group duplication counterexample, noncollapsed grouped agreement, ungrouped boundary, and exact v1/absent-marker replay. Verify new v2 certificates and clean-source frozen-score comparisons. The vacuous interval is an abstention, not a calibrated interval; cluster resampling and group independence require separate statistical and sampling review. The existing hard-negative group-any rule remains separate. This change cannot establish a customer-population rate from hand-built examples.
 
 **Rejected.** Reusing row-level Clopper-Pearson for a repeated group because it gives a narrower interval misstates independent evidence. Rewriting frozen intervals would erase the historical method. Applying the v2 calculation to retained v1 certificates would turn a method upgrade into an apparent integrity failure.
+
+## 222 - Fail closed on incomplete clean-clone verification summaries (2026-09-30)
+
+- **Date:** 2026-09-30
+- **Status:** DECIDED before implementation.
+- **Scope:** The local clean-clone gate's parsing of `scripts/verify.py` tier output. No scientific estimator or protected result is changed.
+
+**Finding.** `_verify_tiers` accepts any subset of the three expected `TIER|` lines. A missing tier is displayed as `SKIP` but constructed with `ok=True`, so the aggregate gate can say `PASSED` when a mandatory claim-table or frozen-score comparison never reported an outcome. Duplicate lines overwrite in a dictionary, allowing a later `OK` to hide an earlier `DRIFT`. An unknown future tier is ignored by the fixed three-row output. These are synthetic parser counterexamples, not evidence that the current verifier emitted a malformed summary. The default clean-clone command runs verification without `--claims-only` or `--no-activations`, so claim and frozen-score tiers are mandatory; activation re-extraction may explicitly report `SKIPPED` when ignored caches are absent.
+
+**Decision.** The gate must require exactly one well-formed status line for each expected tier and reject duplicate, unknown or malformed `TIER|` lines. It must fail if `claim_table` or `frozen_scores` is explicitly `SKIPPED`, or if any tier is `DRIFT`. An explicit activation `SKIPPED` is tolerated and reported as skipped, never as a pass for re-extraction. Missing expected tiers are failures with an explanation, not synthetic successful skips. Keep the existing machine-readable `verify.py` contract; change only the consumer and its focused tests.
+
+**Validation and limits.** Regress missing, duplicate, unknown, malformed and mandatory-skip summaries, plus the normal two-OK/one-SKIPPED case. Run the clean-clone unit tests and surrounding report tests. A full fresh-clone gate on an earlier source remains attributable only to that earlier commit; it does not become proof of this parser change. This local gate is still not remote CI, authenticated provenance or a fresh dependency install.
+
+**Rejected.** Continuing to label a missing mandatory line as an acceptable skip would make the gate green when it cannot tell whether the comparison ran. Treating the legitimate activation skip as a failure would make a cache-free clone fail for the wrong reason. Parsing human prose instead of the existing `TIER|` contract would reopen the historical truncation and wording failures.
+
+## 223 - Reject contradictory clone-tier status and count pairs (2026-09-30)
+
+- **Date:** 2026-09-30
+- **Status:** DECIDED before implementation.
+- **Scope:** The clean-clone gate's consumer of the existing `TIER|n|key|outcome|passed/total` summary. The verifier and protected scientific artifacts are unchanged.
+
+**Finding.** Decision 222 requires each expected line, but the parser still accepts `TIER|1|claim_table|OK|0/0`, `OK|1/2`, or an explicitly skipped activation tier carrying nonzero comparisons. Those strings are syntactically valid but do not establish the check claimed by their outcome. These are synthetic consumer counterexamples, not observations from a current `scripts/verify.py` run. The current verifier emits a count of completed comparisons and uses `0/0` for a skipped tier.
+
+**Decision.** Require `0 <= passed <= total` on every tier line. An `OK` must have a positive total and `passed == total`. A `SKIPPED` must have `0/0`; the separate Decision 222 rule still permits that outcome only for activations in the default clone gate. A `DRIFT` remains a failed tier regardless of its count because a verifier can fail for reasons beyond a partial comparison count. Contradictory status/count pairs are protocol failures in the gate, never successful rows. The gate does not pin the number of claims or score comparisons: those counts can change with the tracked source.
+
+**Validation and limits.** Add focused regression cases for empty or partial `OK`, an impossible count, and a nonempty activation `SKIPPED`, plus a normal positive/full comparison and `0/0` activation skip. Run the affected parser and report suites, then the clean-source claim and frozen-score verifier. This hardens a local summary consumer; it does not authenticate the summary, prove fresh dependencies, or establish remote CI.
+
+**Rejected.** Accepting `OK|0/0` as a vacuous mathematical equality would turn a check with no comparisons into a green gate. Hardcoding today's `92/92` or `25/25` totals would make legitimate future additions fail for an unrelated reason.
+
+## 224 - Preflight cheap clone-suite blockers before the full suite (2026-09-30)
+
+- **Date:** 2026-09-30
+- **Status:** DECIDED before implementation.
+- **Scope:** Execution order and reporting of the local tracked-file clean-clone gate. No research metric, protected score, or customer certificate changes.
+
+**Finding.** The Phase 25 clone of `d3544e5` spent about 45 minutes on the full suite before failing the deterministic `test_every_stated_test_count_is_the_real_one`: 2,117 tests collected while README and Makefile claimed 2,115. After preserving the red gate record in Git history, a second deterministic test, `test_the_committed_gate_artifact_is_readable_and_passed`, would have made a rerun fail while the current `results/clean_clone.json` was red. Both tests could be run before the expensive suite and neither scores the scientific test set. The interrupted second run produced no result artifact.
+
+**Decision.** In a full clean-clone gate, run those two existing node IDs after smoke and before the full suite. If either fails, record the preflight failure and an explicit skipped, unsuccessful `make test` step; still run the independent claim verifier and its tier parser. A preflight pass allows the full suite to run unchanged. The `--no-tests` mode continues to run smoke and verifier without either test step. Do not treat a skipped full suite as a pass, and do not edit the two tests merely to make a red gate green.
+
+**Validation and limits.** Unit-test the step selection with a fake command runner: failure must never invoke the full suite, success must invoke it, and the skipped step must fail the aggregate and render as SKIP. Run the affected clone-gate and report suites, plus the clean-source claim/frozen-score verifier. This is a local time-saving release check, not a substitute for the full suite, remote CI, fresh dependency resolution, or buyer evidence.
+
+**Rejected.** Running the full suite after a known deterministic preflight failure wastes scarce time and obscures the actionable defect. Failing to record the omitted suite would make an early exit look green. Updating counts or changing the live artifact test inside the gate would hide, rather than detect, the inconsistency.
+
+## 225 - Keep the canonical clone record green while preserving failed attempts (2026-09-30)
+
+- **Date:** 2026-09-30
+- **Status:** DECIDED before implementation.
+- **Scope:** Default output placement for the local clean-clone gate. The gate's checks, scientific scores and explicit custom-output behavior are unchanged.
+
+**Finding.** Phase 25 committed a failed `results/clean_clone.json` to retain the first tracked-only clone's 2,117-versus-2,115 test-count error. The suite also has a deliberate `test_the_committed_gate_artifact_is_readable_and_passed` assertion, so that red canonical file makes every subsequent full clone fail before it can replace the record. Restoring the prior generated green bytes at `3e08595` preserved the failed commit in history but was an operational workaround. Decision 224's preflight makes the conflict faster to find; it does not remove it.
+
+**Decision.** With the default `--out`, a passed gate writes `results/clean_clone.json`; a failed gate leaves that path untouched and writes a new, exclusively created JSON record under `results/clean_clone_failures/`, named with the tested commit and a write-time nonce. The normal `check_record` clean-source/unchanged-source refusal still runs before either write. The script prints the actual path and exits 1 on failure. An explicit `--out` remains the caller's chosen path for either outcome. Tests must show that two failed attempts never overwrite one another or the last passing canonical record, while a successful result still replaces the canonical record. Reports cite the exact failed file or Git commit and never treat the retained green canonical record as evidence for the failed source.
+
+**Validation and limits.** Test output placement and exclusive writes with synthetic GateResult records, then run the affected clone/report suites and a clean-source smoke and verifier. A local failed artifact is a transparent diagnostic, not a signed timestamp or proof that no other attempt occurred. This change cannot certify the scientific result, remote CI, or buyer demand.
+
+**Rejected.** Silently dropping failed outcomes loses the reason a release was refused. Overwriting the last green record with a red one creates the observed self-failing rerun loop. Automatically turning a failed record green would falsify the gate. Reinterpreting an explicit custom `--out` without warning would break its existing contract.

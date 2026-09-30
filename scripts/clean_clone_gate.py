@@ -9,7 +9,7 @@ nothing declares, a path that resolves only because of where the interpreter
 started.
 
 Usage:
-    python scripts/clean_clone_gate.py                  # full, ~10 min
+    python scripts/clean_clone_gate.py                  # full, duration varies
     python scripts/clean_clone_gate.py --no-tests       # ~2 min
     python scripts/clean_clone_gate.py --keep           # leave the clone behind
     python scripts/clean_clone_gate.py --python .venv/bin/python
@@ -29,7 +29,7 @@ from controlplane.report.clean_clone import (  # noqa: E402
     check_record,
     render,
     run_clean_clone_gate,
-    write_artifact,
+    write_outcome_artifact,
 )
 
 
@@ -39,7 +39,7 @@ def main() -> int:
     parser.add_argument(
         "--out",
         default=str(PROJECT_ROOT / "results" / "clean_clone.json"),
-        help="where the gate's outcome is recorded",
+        help="where the gate's outcome is recorded (default failures get separate records)",
     )
     parser.add_argument(
         "--no-tests",
@@ -77,8 +77,13 @@ def main() -> int:
     if refusal:
         print(f"\nclean-clone gate: record NOT written -- {refusal}", file=sys.stderr)
         return 1
-    write_artifact(result, Path(args.out), before)
-    print(f"\nwrote {args.out}")
+    written = write_outcome_artifact(
+        result,
+        Path(args.out),
+        PROJECT_ROOT / "results" / "clean_clone.json",
+        before,
+    )
+    print(f"\nwrote {written}")
     return 0 if result.ok else 1
 
 

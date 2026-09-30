@@ -15,11 +15,14 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
 from controlplane.report.clean_clone import (
     GateResult,
     StepResult,
     render,
     write_artifact,
+    write_outcome_artifact,
 )
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -46,6 +49,48 @@ def test_a_failed_step_fails_the_gate() -> None:
     result.ok = all(s.ok for s in result.steps)
     assert result.ok is False
     assert "FAILED" in render(result)
+
+
+def test_failed_clone_preflight_skips_the_expensive_suite(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Known count/artifact drift must fail before an unnecessary full run (224)."""
+    import controlplane.report.clean_clone as clone
+
+    calls: list[str] = []
+
+    def fake_run(name: str, command: list[str], cwd: Path, timeout: int) -> StepResult:
+        calls.append(name)
+        return _step(name, ok=False)
+
+    monkeypatch.setattr(clone, "_run", fake_run)
+    steps = clone._run_suite_after_preflight("python", Path("clone"))
+    assert calls == ["make test preflight"]
+    assert [step.name for step in steps] == ["make test preflight", "make test"]
+    assert steps[1].skipped and not steps[1].ok
+    result = GateResult(False, "abc123", "/tmp/clone", 267, steps)
+    assert "SKIP  make test" in render(result)
+
+
+def test_passing_clone_preflight_runs_the_full_suite(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Preflight is an early refusal, not a replacement for the full suite."""
+    import controlplane.report.clean_clone as clone
+
+    calls: list[tuple[str, list[str]]] = []
+
+    def fake_run(name: str, command: list[str], cwd: Path, timeout: int) -> StepResult:
+        calls.append((name, command))
+        return _step(name, ok=True)
+
+    monkeypatch.setattr(clone, "_run", fake_run)
+    steps = clone._run_suite_after_preflight("python", Path("clone"))
+    assert [name for name, _ in calls] == ["make test preflight", "make test"]
+    assert any("test_every_stated_test_count_is_the_real_one" in arg for arg in calls[0][1])
+    assert any("test_the_committed_gate_artifact_is_readable_and_passed" in arg for arg in calls[0][1])
+    assert calls[1][1] == ["python", "-m", "pytest", "tests/", "-q"]
+    assert all(step.ok and not step.skipped for step in steps)
 
 
 def test_a_skipped_step_is_rendered_as_skipped_not_as_a_pass() -> None:
@@ -81,6 +126,49 @@ def test_the_artifact_records_every_step_and_its_provenance(tmp_path: Path) -> N
     assert payload["ok"] is True
     assert [s["name"] for s in payload["steps"]] == ["git clone", "make smoke"]
     assert payload["tracked_files"] == 267
+
+
+def test_failed_default_clone_keeps_green_record_and_separates_attempts(
+    tmp_path: Path,
+) -> None:
+    """A red gate must remain inspectable without poisoning its own rerun (225)."""
+    canonical = tmp_path / "results" / "clean_clone.json"
+    prior = GateResult(True, "prior123", "/tmp/prior", 267, [_step("make test", True)])
+    write_artifact(prior, canonical, {"git_commit": "prior123", "dirty": False})
+    original = canonical.read_bytes()
+    failed = GateResult(False, "failed456", "/tmp/failed", 267, [_step("make test", False)])
+
+    paths = [
+        write_outcome_artifact(
+            failed, canonical, canonical,
+            {"git_commit": "failed456", "dirty": False},
+        )
+        for _ in range(2)
+    ]
+    assert paths[0] != paths[1]
+    assert canonical.read_bytes() == original
+    for path in paths:
+        assert path.parent == canonical.parent / "clean_clone_failures"
+        assert path.name.startswith("clean_clone-failed456-")
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        assert payload["ok"] is False
+        assert payload["commit"] == "failed456"
+
+
+def test_success_replaces_canonical_and_custom_failure_uses_custom_path(
+    tmp_path: Path,
+) -> None:
+    """Explicit output remains caller-owned; success keeps the canonical path."""
+    canonical = tmp_path / "results" / "clean_clone.json"
+    custom = tmp_path / "failed-custom.json"
+    failed = GateResult(False, "bad123", "/tmp/bad", 267, [_step("make test", False)])
+    assert write_outcome_artifact(failed, custom, canonical, {}) == custom
+    assert json.loads(custom.read_text(encoding="utf-8"))["ok"] is False
+    assert not canonical.exists()
+
+    passed = GateResult(True, "good123", "/tmp/good", 267, [_step("make test", True)])
+    assert write_outcome_artifact(passed, canonical, canonical, {}) == canonical
+    assert json.loads(canonical.read_text(encoding="utf-8"))["ok"] is True
 
 
 def test_the_committed_gate_artifact_is_readable_and_passed() -> None:
@@ -154,11 +242,81 @@ def test_a_tier_missing_from_the_summary_is_not_counted_as_a_pass() -> None:
 
     rows = {r.name: r for r in _verify_tiers("TIER|1|claim_table|OK|31/31")}
     assert not rows["verify: claim table vs artifacts"].skipped
-    assert rows["verify: metrics recomputed from frozen scores"].skipped
-    assert rows["verify: scores re-derived from activations"].skipped
-    assert "absence means unknown" in rows[
+    assert not rows["verify: metrics recomputed from frozen scores"].ok
+    assert not rows["verify: scores re-derived from activations"].ok
+    assert "missing" in rows[
         "verify: metrics recomputed from frozen scores"
     ].detail
+
+
+def test_duplicate_and_unknown_tier_lines_fail_the_gate() -> None:
+    """A later OK cannot overwrite a drift, nor hide a new verifier tier."""
+    from controlplane.report.clean_clone import _verify_tiers
+
+    normal = (
+        "TIER|1|claim_table|OK|31/31\n"
+        "TIER|2|frozen_scores|OK|24/24\n"
+        "TIER|3|activations|SKIPPED|0/0"
+    )
+    for summary in (
+        "TIER|1|claim_table|DRIFT|30/31\n" + normal,
+        normal + "\nTIER|1|claim_table|OK|31/31",
+        normal + "\nTIER|4|new_check|OK|1/1",
+        normal + "\nTIER|4|new_check|SUCCESS|1/1",
+        normal + "\nTIER|9|claim_table|OK|31/31",
+    ):
+        rows = _verify_tiers(summary)
+        assert not all(row.ok for row in rows)
+        assert any("protocol" in row.name for row in rows)
+
+
+def test_default_clone_gate_requires_claims_and_frozen_scores() -> None:
+    """Only activation re-extraction may be explicitly skipped in a fresh clone."""
+    from controlplane.report.clean_clone import _verify_tiers
+
+    for skipped_key in ("claim_table", "frozen_scores"):
+        lines = [
+            f"TIER|1|claim_table|{'SKIPPED' if skipped_key == 'claim_table' else 'OK'}|0/0",
+            f"TIER|2|frozen_scores|{'SKIPPED' if skipped_key == 'frozen_scores' else 'OK'}|0/0",
+            "TIER|3|activations|SKIPPED|0/0",
+        ]
+        rows = _verify_tiers("\n".join(lines))
+        assert not all(row.ok for row in rows)
+
+    normal = _verify_tiers(
+        "TIER|1|claim_table|OK|31/31\n"
+        "TIER|2|frozen_scores|OK|24/24\n"
+        "TIER|3|activations|SKIPPED|0/0"
+    )
+    assert all(row.ok for row in normal)
+
+
+def test_clone_gate_rejects_contradictory_tier_counts() -> None:
+    """An OK tier must represent positive, completed comparisons (223)."""
+    from controlplane.report.clean_clone import _verify_tiers
+
+    normal = (
+        "TIER|1|claim_table|OK|31/31\n"
+        "TIER|2|frozen_scores|OK|24/24\n"
+        "TIER|3|activations|SKIPPED|0/0"
+    )
+    for bad_line in (
+        "TIER|1|claim_table|OK|0/0",
+        "TIER|1|claim_table|OK|30/31",
+        "TIER|1|claim_table|OK|32/31",
+        "TIER|2|frozen_scores|OK|0/0",
+        "TIER|3|activations|SKIPPED|1/1",
+    ):
+        key = bad_line.split("|")[2]
+        summary = "\n".join(
+            bad_line if line.split("|")[2] == key else line
+            for line in normal.splitlines()
+        )
+        rows = _verify_tiers(summary)
+        assert not all(row.ok for row in rows), bad_line
+        assert any("protocol" in row.name for row in rows), bad_line
+
+    assert all(row.ok for row in _verify_tiers(normal))
 
 
 def test_a_drifted_tier_fails_the_gate() -> None:

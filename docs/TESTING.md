@@ -17,6 +17,21 @@ jobs and a Windows minimum-version wheel job; consult the run for the exact
 commit before stating that CI passed. The [product-state map](PRODUCT-STATE.md)
 separates those checks from deployment evidence.
 
+Adding a `reports/PHASE-*.md` file changes collection even when no Python test
+is edited: `test_reports.py` parametrizes two checks over the report files.
+After committing a new report, run `python scripts/refresh_test_inventory.py`
+from a clean source commit and commit its README, Makefile and inventory output
+before a full clone gate. Phase 25's first full clone failed because this step
+was missed after two new test cases appeared. The clone gate now preflights
+the count assertion, but the generated inventory is still the source of the
+published collection count.
+
+The default clean-clone command updates `results/clean_clone.json` only after a
+passing gate. A failed run writes an individually named record under
+`results/clean_clone_failures/` and exits nonzero; inspect that record for its
+step output. This leaves the last passing record available to the preflight on
+the next attempt. An explicit `--out` path receives either outcome.
+
 ```bash
 python -m pytest tests/ -q                    # the whole suite
 python -m pytest tests/test_validation.py -q  # one suite
@@ -185,7 +200,7 @@ These use synthetic fixtures only, never the frozen scores.
 | `test_smoke.py` | Every script actually runs |
 | `test_script_wiring.py` | Every call a script makes into `controlplane/` binds to a **real signature** — the largest suite, because a thin wrapper that calls a renamed function fails only when someone runs it |
 | `test_config.py` | Config loading, hashing, layer resolution, provenance |
-| `test_clean_clone.py` | The clean-clone gate's reporting |
+| `test_clean_clone.py` | The clean-clone gate requires one well-formed status per verify tier; missing, duplicate, unknown or contradictory status/count lines fail the gate, as does a skipped claim or frozen-score tier. Only an explicitly skipped activation re-extraction with `0/0` comparisons is tolerated and labelled SKIP. Before its full suite, a clone checks the test-count and live-gate-artifact assertions; a failed preflight records the full suite as an unsuccessful SKIP and still runs the independent verifier. |
 | `test_fixture_guards.py` | A fixture number can never be read as a measurement |
 | `test_lint.py` | The CI lint step, run locally whenever ruff is installed |
 | `test_packaging.py` | What someone installing the package actually touches |

@@ -40,7 +40,14 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Optional
 
-__all__ = ["GateResult", "StepResult", "run_clean_clone_gate", "render"]
+__all__ = [
+    "GateResult",
+    "StepResult",
+    "run_clean_clone_gate",
+    "render",
+    "write_artifact",
+    "write_outcome_artifact",
+]
 
 
 @dataclass
@@ -117,6 +124,41 @@ def _run(
     )
 
 
+def _run_suite_after_preflight(python: str, cwd: Path) -> list[StepResult]:
+    """Fail early on cheap clone blockers without reporting the full suite as run.
+
+    Decision 224: both assertions failed, or would deterministically fail, in
+    Phase 25's tracked-only clone. Run them before the expensive suite and keep
+    an explicit unsuccessful SKIP row if they refuse.
+    """
+    preflight = _run(
+        "make test preflight",
+        [
+            python, "-m", "pytest",
+            "tests/test_claims.py::test_every_stated_test_count_is_the_real_one",
+            "tests/test_clean_clone.py::test_the_committed_gate_artifact_is_readable_and_passed",
+            "-q",
+        ],
+        cwd=cwd,
+        timeout=900,
+    )
+    full_command = [python, "-m", "pytest", "tests/", "-q"]
+    if not preflight.ok:
+        return [
+            preflight,
+            StepResult(
+                name="make test",
+                command=full_command,
+                returncode=None,
+                duration_seconds=0.0,
+                ok=False,
+                skipped=True,
+                detail="not run because test preflight failed",
+            ),
+        ]
+    return [preflight, _run("make test", full_command, cwd=cwd, timeout=3600)]
+
+
 #: Human-readable label per tier key, for the report. The keys themselves come
 #: from verify's machine-readable contract, not from this table.
 _TIER_LABELS = {
@@ -146,29 +188,61 @@ def _verify_tiers(tail: str) -> list[StepResult]:
     Prose moves whenever the wording improves. ``TIER|n|key|outcome|passed/total``
     does not, and verify prints it last so truncation cannot reach it.
 
-    A tier absent from the summary is reported skipped, never passed: absence
-    means unknown, and unknown is not success. No tier lines at all is a
-    failure, not an empty pass -- that means verify did not emit its contract.
+    An explicitly skipped activation tier is tolerated because the cache is
+    absent from a fresh clone. Missing, duplicate, unknown or contradictory
+    tier lines are protocol failures; claim and frozen-score tiers may not be
+    skipped by the default verify command. No tier lines at all is a failure,
+    not an empty pass -- that means verify did not emit its contract.
     """
     seen: dict[str, StepResult] = {}
+    protocol_errors: list[str] = []
+    expected_numbers = {
+        key: str(number) for number, key in enumerate(_TIER_LABELS, start=1)
+    }
     for line in tail.splitlines():
-        match = _TIER_LINE.match(line.strip())
+        stripped = line.strip()
+        if not stripped.startswith("TIER|"):
+            continue
+        match = _TIER_LINE.match(stripped)
         if not match:
+            protocol_errors.append(f"malformed tier line: {stripped}")
             continue
         key = match.group("key")
+        if key not in expected_numbers:
+            protocol_errors.append(f"unknown tier: {key}")
+            continue
+        if match.group("number") != expected_numbers[key]:
+            protocol_errors.append(f"wrong tier number for {key}")
+            continue
+        if key in seen:
+            protocol_errors.append(f"duplicate tier: {key}")
+            continue
         outcome = match.group("outcome")
         passed, total = match.group("passed"), match.group("total")
+        passed_count, total_count = int(passed), int(total)
+        if (
+            passed_count > total_count
+            or (outcome == "OK" and (total_count == 0 or passed_count != total_count))
+            or (outcome == "SKIPPED" and (passed_count != 0 or total_count != 0))
+        ):
+            protocol_errors.append(
+                f"contradictory tier outcome/count for {key}: "
+                f"{outcome}|{passed}/{total}"
+            )
+            continue
         label = _TIER_LABELS.get(key, key)
+        acceptable_skip = key == "activations" and outcome == "SKIPPED"
         seen[key] = StepResult(
             name=f"verify: {label}",
             command=[],
             returncode=None,
             duration_seconds=0.0,
-            ok=outcome != "DRIFT",
+            ok=outcome == "OK" or acceptable_skip,
             skipped=outcome == "SKIPPED",
             detail=(
                 f"{passed}/{total} reproduced" if outcome == "OK"
-                else "did not run" if outcome == "SKIPPED"
+                else "did not run" if acceptable_skip
+                else "mandatory tier did not run" if outcome == "SKIPPED"
                 else f"DRIFT: only {passed}/{total} reproduced"
             ),
         )
@@ -186,7 +260,7 @@ def _verify_tiers(tail: str) -> list[StepResult]:
                     "verify emitted no TIER| lines. Either it is an older "
                     "version without the machine-readable summary, or its "
                     "output was lost. Which checks ran is unknown, and unknown "
-                    "is not a pass."
+                    "is not a pass. " + "; ".join(protocol_errors)
                 ),
             )
         ]
@@ -202,14 +276,20 @@ def _verify_tiers(tail: str) -> list[StepResult]:
                 command=[],
                 returncode=None,
                 duration_seconds=0.0,
-                ok=True,
-                skipped=True,
+                ok=False,
+                skipped=False,
                 detail=(
-                    "absent from verify's tier summary. Reported skipped rather "
-                    "than passed: absence means unknown."
+                    "missing from verify's tier summary; the gate cannot "
+                    "establish whether this check ran"
                 ),
             )
         )
+    if protocol_errors:
+        rows.append(StepResult(
+            name="verify: tier summary protocol",
+            command=[], returncode=None, duration_seconds=0.0,
+            ok=False, detail="; ".join(protocol_errors),
+        ))
     return rows
 
 
@@ -364,16 +444,14 @@ def run_clean_clone_gate(
         )
         result.steps.append(notes)
 
-        steps: list[tuple[str, list[str], int]] = [
-            ("make smoke", [python, "scripts/smoke.py"], 600),
-        ]
+        result.steps.append(
+            _run("make smoke", [python, "scripts/smoke.py"], cwd=target, timeout=600)
+        )
         if run_tests:
-            steps.append(("make test", [python, "-m", "pytest", "tests/", "-q"], 3600))
-        steps.append(("make verify", [python, "scripts/verify.py"], 1800))
-
-        for name, command, timeout in steps:
-            step = _run(name, command, cwd=target, timeout=timeout)
-            result.steps.append(step)
+            result.steps.extend(_run_suite_after_preflight(python, target))
+        result.steps.append(
+            _run("make verify", [python, "scripts/verify.py"], cwd=target, timeout=1800)
+        )
 
         # verify runs three tiers and they do not stand or fall together. A
         # green exit code says "nothing drifted", not "everything was checked",
@@ -440,7 +518,12 @@ def render(result: GateResult) -> str:
 
 
 def write_artifact(
-    result: GateResult, path: Path, provenance: dict, *, provenance_taken: str = "before cloning",
+    result: GateResult,
+    path: Path,
+    provenance: dict,
+    *,
+    provenance_taken: str = "before cloning",
+    exclusive: bool = False,
 ) -> None:
     """Write the gate's outcome to ``results/`` with the usual provenance block.
 
@@ -450,6 +533,36 @@ def write_artifact(
     """
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = {"provenance": provenance, "provenance_taken": provenance_taken, **result.to_dict()}
-    path.write_text(
-        json.dumps(payload, indent=2, sort_keys=False) + "\n", encoding="utf-8"
+    content = json.dumps(payload, indent=2, sort_keys=False) + "\n"
+    if exclusive:
+        with path.open("x", encoding="utf-8") as handle:
+            handle.write(content)
+    else:
+        path.write_text(content, encoding="utf-8")
+
+
+def write_outcome_artifact(
+    result: GateResult,
+    requested_path: Path,
+    canonical_path: Path,
+    provenance: dict,
+) -> Path:
+    """Preserve the last passing default gate while recording every failed attempt.
+
+    Decision 225: a failed run at the default path cannot replace the passing
+    record, which the clean-clone preflight reads on its next run. An explicit
+    ``--out`` remains under the caller's control.
+    """
+    if result.ok or requested_path.resolve() != canonical_path.resolve():
+        write_artifact(result, requested_path, provenance)
+        return requested_path
+
+    if not result.commit:
+        raise ValueError("a failed clone gate must identify its source commit")
+    failure_path = (
+        canonical_path.parent
+        / "clean_clone_failures"
+        / f"clean_clone-{result.commit[:12]}-{time.time_ns()}.json"
     )
+    write_artifact(result, failure_path, provenance, exclusive=True)
+    return failure_path
