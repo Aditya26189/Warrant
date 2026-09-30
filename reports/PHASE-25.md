@@ -51,9 +51,13 @@ would therefore have failed even after the count was fixed. We interrupted
 that redundant run before it wrote a second record. Commit `3e08595`
 restores the exact earlier generated green artifact bytes to the live path;
 the failed `d3544e5` record remains accessible at `4644c76`. The corrected
-run will replace the live artifact with its new measured result. The count
-assertion and live-artifact assertion both passed before restarting the
-expensive gate.
+gate passed from clean source `3e08595`; its measured record is committed at
+`0c929a7`. The count assertion and live-artifact assertion both passed before
+the full run. The record shows successful clone, smoke, full suite, verifier,
+and two available verifier tiers. Re-derivation from the ignored activation
+cache is explicitly skipped. Its full-suite step took 2,653 seconds on this
+Windows machine, which is a measurement of this run, not a runtime promise
+for another environment.
 
 ## Validation
 
@@ -64,8 +68,8 @@ expensive gate.
 | Inventory repair | Generated 2,117 from clean `4644c76`, committed at `c243a0c` |
 | Live artifact preparation | Failed record retained in Git history; prior generated green record restored at `3e08595` so its own test can run |
 | Two deterministic preflights | Count assertion and live-clone-artifact assertion both passed on corrected source |
-| Corrected fresh-clone gate | Running from clean `3e08595`; exit and artifact pending |
-| Provenance artifact | The runner writes `results/clean_clone.json` only if the source stays clean and unchanged during each gate |
+| Corrected fresh-clone gate | Passed on clean `3e08595`: clone and smoke, full suite, verifier 92/92 claims and 25/25 frozen-score comparisons; activation re-derivation skipped |
+| Provenance artifact | Passing result committed at `0c929a7`; the record names the clean source `3e08595` |
 | Dependency isolation and remote CI | Not established by this local gate |
 
 ## What this does not establish
@@ -78,8 +82,7 @@ whether this is a fundable enterprise company.
 
 ## Open items
 
-Capture the corrected gate's exit and inspect every step and tier. Continue
-with representative customer sampling and the previously registered buyer
+Continue with representative customer sampling and the previously registered buyer
 conversations; the clone gate does not answer those questions.
 
 ## Ledger
@@ -89,6 +92,7 @@ conversations; the clone gate does not answer those questions.
 | Failed integrated clean-clone record | `results/clean_clone.json` as committed at `4644c76` |
 | Generated inventory correction | `c243a0c`, source `4644c76` |
 | Live artifact restore before rerun | `3e08595`, byte-for-byte from the prior generated record |
+| Corrected passing gate record | `0c929a7`, generated from clean `3e08595` |
 | Gate implementation | `scripts/clean_clone_gate.py`, `controlplane/report/clean_clone.py` |
 | First integrated source tree | `integration/phase24` at `d3544e5` |
 
