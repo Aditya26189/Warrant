@@ -17,6 +17,15 @@ jobs and a Windows minimum-version wheel job; consult the run for the exact
 commit before stating that CI passed. The [product-state map](PRODUCT-STATE.md)
 separates those checks from deployment evidence.
 
+Adding a `reports/PHASE-*.md` file changes collection even when no Python test
+is edited: `test_reports.py` parametrizes two checks over the report files.
+After committing a new report, run `python scripts/refresh_test_inventory.py`
+from a clean source commit and commit its README, Makefile and inventory output
+before a full clone gate. Phase 25's first full clone failed because this step
+was missed after two new test cases appeared. The clone gate now preflights
+the count assertion, but the generated inventory is still the source of the
+published collection count.
+
 ```bash
 python -m pytest tests/ -q                    # the whole suite
 python -m pytest tests/test_validation.py -q  # one suite
