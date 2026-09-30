@@ -76,9 +76,12 @@ enterprise control, even where the local command behaves correctly:
    intervals (Phases 22 and 24). Grouped research hard-negative warrants use
    the separate Phase 23 group-any rule. Historical artifacts retain their old
    methods for replay, and noncollapsed cluster intervals lack a new coverage
-   study. The legacy mixture monitor's anytime false-revocation interpretation
-   remains unsupported (R10). See the [review](../reports/PROJECT-REVIEW-2026-09-23.md)
-   and [limitations](LIMITATIONS.md).
+   study. Decision 226 corrected the legacy mixture monitor's premature
+   revocation decision (R10), but its conditional-null and production sampling
+   assumptions have not been established. The Decision 187 schedule result is
+   still a replay of the defective historical rule, not a current-monitor
+   result. See the [review](../reports/PROJECT-REVIEW-2026-09-23.md),
+   [Phase 29 report](../reports/PHASE-29.md) and [limitations](LIMITATIONS.md).
 4. **Operations and integration.** No serving layer, authentication, access
    control, rate limits, tenant separation, high availability or deployment
    manifests exist. The gateway package is an adapter. Live scheduling, traffic

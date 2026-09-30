@@ -92,7 +92,7 @@ exists rather than the rule.
 | Suite | Defends |
 |---|---|
 | `test_validation.py` | The controls, refusal, leakage, polarity and determinism — the core of the harness |
-| `test_warrant_stats.py` | Certification at issuance, and `FPRMonitor` -- whose anytime-valid claim `DECISIONS.md` 187 found is not established as implemented; the chained recheck (`test_recheck_chain.py`) is what carries a bound |
+| `test_warrant_stats.py` | Certification at issuance and Decision 226's corrected `FPRMonitor` mixture, including the historical premature-revocation counterexample and state-resume refusal; the separate chained recheck has its own tests in `test_recheck_chain.py` |
 | `test_paired.py` | The paired comparison and the ROC geometry — the fix for the confounded comparison that once shipped |
 | `test_scores.py` | Frozen scores, and the verification tier they make possible |
 | `test_fpr_sweep.py` | The budget sweep over frozen scores, and what it must not get wrong |

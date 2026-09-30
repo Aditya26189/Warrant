@@ -89,7 +89,7 @@ The largest package, and the one to read first.
 | `ablation.py` | The tier ladder: what each level of model access actually buys |
 | `evalsets.py` | Eval sets and the cached extraction `/validate` runs from |
 | `synthetic.py` | Synthetic sets and caches, for exercising the harness without a GPU |
-| `warrant_stats.py` | The certification statistics every path shares: the Clopper-Pearson bound, the lowest certifying threshold, the negatives a budget needs, and the legacy `FPRMonitor`. **Read-only by contract** -- findings about it are recorded as open items, not edited in |
+| `warrant_stats.py` | Certification statistics and the legacy `FPRMonitor` export. Decision 226 repairs the monitor's mixture calculation; its conditional-null and sampling assumptions still need deployment evidence. Decision 187's capped simulation remains historical |
 | `fpr_sweep.py` | Sweeping the false-positive budget over frozen scores: is a low recall a ceiling, or a setting? |
 | `scorefree.py` | Certifying a detector that emits no score, and what having a score is worth |
 | `label_error.py` | This project's own measured certificates re-certified through the customer path, under label error (`DECISIONS.md` 199) |

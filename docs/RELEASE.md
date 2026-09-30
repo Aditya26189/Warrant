@@ -188,8 +188,11 @@ supported grouped-data estimator in this workflow. Small fixed-holdout files
 may be incapable of supporting a demanding bound. The workflow reports that
 absence of evidence rather than selecting easier criteria.
 
-The preserved runtime paths have separate OPEN audit findings: legacy recheck
-uses row-level bounds after dropping grouping, and the legacy mixture monitor
-can report revocation before its actual mixture reaches the boundary. Neither
-path is used by `release evaluate`, `release verify` or the label audit. See the
-[claim audit](../reports/CLAIM-AUDIT-2026-09.md) before production reliance.
+The preserved runtime paths have separate audit findings. Legacy recheck uses
+row-level bounds after dropping grouping. Decision 226 corrected the legacy
+mixture monitor's premature revocation decision, but no customer sampling
+process has established its conditional-null assumption. The Decision 187
+schedule artifact still measures the old capped rule. Neither path is used by
+`release evaluate`, `release verify` or the label audit. See the
+[claim audit](../reports/CLAIM-AUDIT-2026-09.md) and
+[Phase 29](../reports/PHASE-29.md) before production reliance.

@@ -112,6 +112,7 @@
 | [PHASE-26.md](../reports/PHASE-26.md) | Why the clean-clone verifier now rejects missing, duplicate and contradictory tier summaries, and what was tested |
 | [PHASE-27.md](../reports/PHASE-27.md) | Which known release blockers are preflighted before the full clone suite, and what remains untested |
 | [PHASE-28.md](../reports/PHASE-28.md) | How failed clone attempts are retained without replacing the last passing record |
+| [PHASE-29.md](../reports/PHASE-29.md) | Why the current monitor uses mixture wealth while the Decision 187 schedule remains historical |
 | [STRATEGY-2026-09.md](../reports/STRATEGY-2026-09.md) | The commercial stopping rule and dated primary-source regulatory corrections |
 | 🧭 [NEXT-STEPS-2026-09-17.md](../reports/NEXT-STEPS-2026-09-17.md) | What to do next, after sprint 12: the decisions only the founder can make, then the engineering, in order |
 
