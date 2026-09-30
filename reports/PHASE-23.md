@@ -71,16 +71,17 @@ independent information. The new test holds it fixed, counts one flagged
 framing as one affected group, makes unequal sizes vacuous, and checks that a
 bound between the old and new uppers changes issuance to REFUSED. Separate
 tests check explicit legacy replay and block unversioned bounds in issuance,
-routing and policy loading. The surrounding suite and clean-source gates are
-recorded below when complete.
+routing and policy loading. A separate grouped flag-rate/descriptive-FPR
+boundary gap was identified during review and preregistered as Decision 221
+for Phase 24; Phase 23 does not claim to repair that interval.
 
 | Gate | Result |
 |---|---|
 | Method decision | `DECISIONS.md` 220, committed before implementation |
-| Synthetic grouped regressions | Passed locally; final gate pending |
-| Surrounding validation/policy suites | Running |
-| Clean frozen-score verifier | Pending after commit |
-| Full repository suite | Pending |
+| Synthetic grouped regressions | Passed, including duplication, unequal-size refusal and historical replay |
+| Surrounding validation/policy suites | Passed after the final code correction |
+| Clean frozen-score verifier | 92/92 README claims, 25/25 frozen-score comparisons; activation tier skipped by `--no-activations` |
+| Full repository suite | Exited 0 from clean `83dbdd1`; one expected xfail, no test failures; runtime/deprecation warnings disclosed in test output |
 | Independent statistical review | Requested from the coordinated session; no response observed |
 | Remote CI and push | Unobserved |
 
@@ -96,13 +97,13 @@ revenue, so this correctness fix changes no commercial validation conclusion.
 
 ## Open items
 
-Finish the clean-source verifier and full suite, then record exact outcomes.
 Seek independent review of the equal-size dominance argument and the
 independence assumptions. Design representative customer sampling before
 claiming a customer-population FPR; the hand-built set is an adversarial
-regression set. Give historical research claims a versioned migration rather
-than rewriting protected artifacts. Obtain buyer interviews under the
-previously registered conversation gate.
+regression set. Complete Decision 221's separate grouped flag-rate interval
+repair. Give historical research claims a versioned migration rather than
+rewriting protected artifacts. Obtain buyer interviews under the previously
+registered conversation gate.
 
 ## Ledger
 
@@ -113,5 +114,6 @@ previously registered conversation gate.
 | Historical score and group IDs | `results/scores/text-presidio-enabled_plus_custom-hard-negatives-200.json` |
 | Historical issued status and row bound | `results/detectors.json` |
 | Group construction | `controlplane/evalsets/builders.py`, `build_hard_negatives` |
+| Public historical-set caveat | `881975f`, `821228e` |
 
 

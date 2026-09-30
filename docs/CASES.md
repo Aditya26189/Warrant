@@ -91,7 +91,7 @@ Measured on `hinglish-pii-200` (n = 200, base rate 0.51) with
 | the pin is the claim | a silent Presidio upgrade fails the suite instead of quietly invalidating a published refusal | `test_the_installed_presidio_is_the_one_the_claim_was_measured_on` | `requirements.txt` |
 | out of sample | every refusal reproduces on `hinglish-pii-200b`: 0.1471 / 0.3137 / 0.6471 / 0.8333 | `test_the_holdout_is_a_different_envelope_with_the_same_shape` | `results/holdout/detectors.json` |
 | the eval-set identifiers are not the confound | the finding is about recognisers, not about our synthetic identifiers | `test_the_fixture_identifiers_are_not_the_confound` | `evalsets/hinglish-pii-200.json` |
-| zero false positives on hard negatives | `pii-reference` FPR 0.0000 [0.0000, 0.0183] on a single-class benign set | `test_a_configuration_that_alarms_on_its_own_reference_is_refused` | `results/validation-pii-reference-hard-negatives-200.json` |
+| zero false positives on hard negatives | `pii-reference` flagged no rows on a hand-built single-class benign set; the retained row-based interval is not independent-unit population evidence ([Phase 23](../reports/PHASE-23.md)) | `test_fpr_on_hard_negatives_is_measured_with_an_interval` | `results/validation-pii-reference-hard-negatives-200.json` |
 
 ## 6. Drift, revocation, downgrade, refusal
 

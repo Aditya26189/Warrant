@@ -1,7 +1,7 @@
 # Product state and evidence map
 
 This page is the current entry point for assessing Warrant as software. It
-describes the checkout reviewed on 28 September 2026. The [claim table](../README.md)
+describes the local Phase 24 checkout reviewed on 30 September 2026. The [claim table](../README.md)
 and [results](../results/RESULTS.md) hold measured research numbers; this page
 does not restate them. [The code tour](CODE_TOUR.md) explains each package,
 and [limitations](LIMITATIONS.md) carries the detailed statistical caveats.
@@ -10,6 +10,10 @@ review; [Phase 17](../reports/PHASE-17.md) records certificate binding and
 replay, [Phase 18](../reports/PHASE-18.md) records recheck evidence linkage,
 and [Phase 19](../reports/PHASE-19.md) records fresh-batch binding and ordinary
 replay. [Phase 20](../reports/PHASE-20.md) records retained linear-chain replay.
+[Phase 21](../reports/PHASE-21.md) records release-label audit evidence;
+[Phase 22](../reports/PHASE-22.md) repairs grouped recall/precision boundaries;
+[Phase 23](../reports/PHASE-23.md) corrects hard-negative warrant inference;
+[Phase 24](../reports/PHASE-24.md) repairs grouped descriptive rate boundaries.
 
 **Current status: a usable local evaluation tool and a substantial research
 harness, not a deployed enterprise service or a validated startup.** A user can
@@ -55,22 +59,31 @@ enterprise control, even where the local command behaves correctly:
 2. **Record identity and custody.** Ordinary certify warrants bind the effective
    scored-row sequence and can be replayed, but do not authenticate the author,
    software/detector identity or expiry. Rechecks identify the certificate they
-   read; they do not bind their own new scored rows. Plan records also have
-   gaps. Every digest here is a checksum, not a signature.
+   read and bind their own fresh effective scored rows; `verify-recheck`
+   recomputes ordinary records, and `verify-chain-recheck` requires a retained
+   linear prefix. None authenticates an author or proves omitted records do
+   not exist. Plan records also have gaps. Every digest here is a checksum,
+   not a signature.
    The exact field-by-field gap is in [EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md).
-3. **Statistical scope.** The independent review found open grouped
-   recall/precision interval behavior (R2) and a legacy mixture monitor whose
-   anytime false-revocation interpretation is unsupported (R10). Do not apply
-   those paths as stronger assurances than their tests justify. See the
-   [review](../reports/PROJECT-REVIEW-2026-09-23.md) and [limitations](LIMITATIONS.md).
+3. **Statistical scope.** The independent review identified grouped
+   recall/precision boundary behavior (R2); prospective customer records now
+   abstain on collapsed grouped recall, precision and descriptive rate
+   intervals (Phases 22 and 24). Grouped research hard-negative warrants use
+   the separate Phase 23 group-any rule. Historical artifacts retain their old
+   methods for replay, and noncollapsed cluster intervals lack a new coverage
+   study. The legacy mixture monitor's anytime false-revocation interpretation
+   remains unsupported (R10). See the [review](../reports/PROJECT-REVIEW-2026-09-23.md)
+   and [limitations](LIMITATIONS.md).
 4. **Operations and integration.** No serving layer, authentication, access
    control, rate limits, tenant separation, high availability or deployment
    manifests exist. The gateway package is an adapter. Live scheduling, traffic
    ingestion and observability for a customer deployment have not been shown.
-5. **Current-head verification.** Earlier phase reports record targeted local
-   passes, and an older clean-clone gate has its own provenance. Review the
-   current branch's full test, claim, installed-package and remote CI results
-   before a release; do not substitute collection counts or older passes.
+5. **Current-head verification.** Phase 23 records a clean local full-suite
+   pass and frozen-score replay. Phase 24 records its clean verifier and the
+   full-suite status separately; an older clean-clone gate has different
+   provenance. Review the current branch's full test, claim,
+   installed-package and remote CI results before a release; do not substitute
+   collection counts or older passes.
 
 ## How to inspect the work
 
