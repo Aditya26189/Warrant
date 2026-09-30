@@ -203,6 +203,34 @@ def test_default_clone_gate_requires_claims_and_frozen_scores() -> None:
     assert all(row.ok for row in normal)
 
 
+def test_clone_gate_rejects_contradictory_tier_counts() -> None:
+    """An OK tier must represent positive, completed comparisons (223)."""
+    from controlplane.report.clean_clone import _verify_tiers
+
+    normal = (
+        "TIER|1|claim_table|OK|31/31\n"
+        "TIER|2|frozen_scores|OK|24/24\n"
+        "TIER|3|activations|SKIPPED|0/0"
+    )
+    for bad_line in (
+        "TIER|1|claim_table|OK|0/0",
+        "TIER|1|claim_table|OK|30/31",
+        "TIER|1|claim_table|OK|32/31",
+        "TIER|2|frozen_scores|OK|0/0",
+        "TIER|3|activations|SKIPPED|1/1",
+    ):
+        key = bad_line.split("|")[2]
+        summary = "\n".join(
+            bad_line if line.split("|")[2] == key else line
+            for line in normal.splitlines()
+        )
+        rows = _verify_tiers(summary)
+        assert not all(row.ok for row in rows), bad_line
+        assert any("protocol" in row.name for row in rows), bad_line
+
+    assert all(row.ok for row in _verify_tiers(normal))
+
+
 def test_a_drifted_tier_fails_the_gate() -> None:
     """SKIPPED is tolerable; DRIFT is not."""
     from controlplane.report.clean_clone import _verify_tiers

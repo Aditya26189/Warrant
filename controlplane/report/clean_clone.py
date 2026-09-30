@@ -147,10 +147,10 @@ def _verify_tiers(tail: str) -> list[StepResult]:
     does not, and verify prints it last so truncation cannot reach it.
 
     An explicitly skipped activation tier is tolerated because the cache is
-    absent from a fresh clone. Missing, duplicate or unknown tier lines are
-    protocol failures; claim and frozen-score tiers may not be skipped by the
-    default verify command. No tier lines at all is a failure, not an empty
-    pass -- that means verify did not emit its contract.
+    absent from a fresh clone. Missing, duplicate, unknown or contradictory
+    tier lines are protocol failures; claim and frozen-score tiers may not be
+    skipped by the default verify command. No tier lines at all is a failure,
+    not an empty pass -- that means verify did not emit its contract.
     """
     seen: dict[str, StepResult] = {}
     protocol_errors: list[str] = []
@@ -177,6 +177,17 @@ def _verify_tiers(tail: str) -> list[StepResult]:
             continue
         outcome = match.group("outcome")
         passed, total = match.group("passed"), match.group("total")
+        passed_count, total_count = int(passed), int(total)
+        if (
+            passed_count > total_count
+            or (outcome == "OK" and (total_count == 0 or passed_count != total_count))
+            or (outcome == "SKIPPED" and (passed_count != 0 or total_count != 0))
+        ):
+            protocol_errors.append(
+                f"contradictory tier outcome/count for {key}: "
+                f"{outcome}|{passed}/{total}"
+            )
+            continue
         label = _TIER_LABELS.get(key, key)
         acceptable_skip = key == "activations" and outcome == "SKIPPED"
         seen[key] = StepResult(

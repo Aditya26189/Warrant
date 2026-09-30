@@ -185,7 +185,7 @@ These use synthetic fixtures only, never the frozen scores.
 | `test_smoke.py` | Every script actually runs |
 | `test_script_wiring.py` | Every call a script makes into `controlplane/` binds to a **real signature** — the largest suite, because a thin wrapper that calls a renamed function fails only when someone runs it |
 | `test_config.py` | Config loading, hashing, layer resolution, provenance |
-| `test_clean_clone.py` | The clean-clone gate requires one well-formed status per verify tier; missing, duplicate or unknown lines fail the gate, as does a skipped claim or frozen-score tier. Only an explicitly skipped activation re-extraction is tolerated and labelled SKIP. |
+| `test_clean_clone.py` | The clean-clone gate requires one well-formed status per verify tier; missing, duplicate, unknown or contradictory status/count lines fail the gate, as does a skipped claim or frozen-score tier. Only an explicitly skipped activation re-extraction with `0/0` comparisons is tolerated and labelled SKIP. |
 | `test_fixture_guards.py` | A fixture number can never be read as a measurement |
 | `test_lint.py` | The CI lint step, run locally whenever ruff is installed |
 | `test_packaging.py` | What someone installing the package actually touches |
