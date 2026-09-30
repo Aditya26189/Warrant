@@ -9,7 +9,7 @@ nothing declares, a path that resolves only because of where the interpreter
 started.
 
 Usage:
-    python scripts/clean_clone_gate.py                  # full, ~10 min
+    python scripts/clean_clone_gate.py                  # full, duration varies
     python scripts/clean_clone_gate.py --no-tests       # ~2 min
     python scripts/clean_clone_gate.py --keep           # leave the clone behind
     python scripts/clean_clone_gate.py --python .venv/bin/python

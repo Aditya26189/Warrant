@@ -99,7 +99,7 @@ column and the plain column are exactly equivalent. Windows users without
 | Target | Plain command | Needs | Time | Proves |
 |---|---|---|---|---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | the clone came down intact and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | ~10 min | the suite is green |
+| `make test` | `python -m pytest tests/ -q` | CPU | Varies by machine | the suite is green |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` tier 3 | same, with caches present | CPU + caches | ~4 min | the frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | the activations regenerate from the source model |
