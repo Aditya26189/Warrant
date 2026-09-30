@@ -42,7 +42,7 @@ are operational bounds, not performance claims. In the actual corrected Phase
 | Affected clone/report tests | Passed after implementation at `1e6b2fa` |
 | Actual preflight node IDs | Both passed from clean Phase 27 head after the inventory commit |
 | Ruff and whitespace | Passed for changed Python and diff |
-| Test inventory | 2,122 collected from clean `1e6b2fa`, committed at `721e87d`; collection is not a passing-suite result |
+| Test inventory | 2,124 collected from clean `d5f2ff4`, committed at `a999f33`; the report itself adds two parametrized cases, and collection is not a passing-suite result |
 | Clean verifier | 92/92 README claims and 25/25 frozen-score comparisons; activation re-extraction explicitly skipped |
 | Full clone on Phase 27 and final integrated tree | Pending; the earlier Phase 25 full clone is a different source commit |
 | Remote CI | Unobserved |
@@ -72,5 +72,5 @@ local release hygiene cannot answer whether a buyer needs this certificate.
 | First failed full clone and generated count repair | `4644c76`, `c243a0c` on the Phase 25 branch |
 | Preflight rule | Decision 224, `77cb5ec` |
 | Execution path and regressions | `controlplane/report/clean_clone.py`, `tests/test_clean_clone.py`, `1e6b2fa` |
-| Generated collection inventory | `results/test_inventory.json`, `721e87d` |
+| Generated collection inventory | `results/test_inventory.json`, `721e87d` before this report and `a999f33` after its two cases |
 | Protected scientific scores | Unchanged |
