@@ -11783,3 +11783,17 @@ exactly as after a chained revocation.
 **Validation and limits.** Regress missing, duplicate, unknown, malformed and mandatory-skip summaries, plus the normal two-OK/one-SKIPPED case. Run the clean-clone unit tests and surrounding report tests. A full fresh-clone gate on an earlier source remains attributable only to that earlier commit; it does not become proof of this parser change. This local gate is still not remote CI, authenticated provenance or a fresh dependency install.
 
 **Rejected.** Continuing to label a missing mandatory line as an acceptable skip would make the gate green when it cannot tell whether the comparison ran. Treating the legitimate activation skip as a failure would make a cache-free clone fail for the wrong reason. Parsing human prose instead of the existing `TIER|` contract would reopen the historical truncation and wording failures.
+
+## 223 - Reject contradictory clone-tier status and count pairs (2026-09-30)
+
+- **Date:** 2026-09-30
+- **Status:** DECIDED before implementation.
+- **Scope:** The clean-clone gate's consumer of the existing `TIER|n|key|outcome|passed/total` summary. The verifier and protected scientific artifacts are unchanged.
+
+**Finding.** Decision 222 requires each expected line, but the parser still accepts `TIER|1|claim_table|OK|0/0`, `OK|1/2`, or an explicitly skipped activation tier carrying nonzero comparisons. Those strings are syntactically valid but do not establish the check claimed by their outcome. These are synthetic consumer counterexamples, not observations from a current `scripts/verify.py` run. The current verifier emits a count of completed comparisons and uses `0/0` for a skipped tier.
+
+**Decision.** Require `0 <= passed <= total` on every tier line. An `OK` must have a positive total and `passed == total`. A `SKIPPED` must have `0/0`; the separate Decision 222 rule still permits that outcome only for activations in the default clone gate. A `DRIFT` remains a failed tier regardless of its count because a verifier can fail for reasons beyond a partial comparison count. Contradictory status/count pairs are protocol failures in the gate, never successful rows. The gate does not pin the number of claims or score comparisons: those counts can change with the tracked source.
+
+**Validation and limits.** Add focused regression cases for empty or partial `OK`, an impossible count, and a nonempty activation `SKIPPED`, plus a normal positive/full comparison and `0/0` activation skip. Run the affected parser and report suites, then the clean-source claim and frozen-score verifier. This hardens a local summary consumer; it does not authenticate the summary, prove fresh dependencies, or establish remote CI.
+
+**Rejected.** Accepting `OK|0/0` as a vacuous mathematical equality would turn a check with no comparisons into a green gate. Hardcoding today's `92/92` or `25/25` totals would make legitimate future additions fail for an unrelated reason.
