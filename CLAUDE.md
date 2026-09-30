@@ -317,9 +317,14 @@ read. It is not a summary of the commit log; `git log` already exists.
 
 ## Read-only
 
-validation/warrant_stats.py, validation/stats.py, store/ledger.py,
+validation/stats.py, store/ledger.py,
 drift/**, policy/**, and existing files under results/.
 Read and call. Do not modify. Report suspected bugs as OPEN items.
+
+Decision 226 permits the focused `validation/warrant_stats.py` mixture repair:
+the founder directed continued correctness work, and the old cap made a
+different revocation decision from its stated mixture statistic. Frozen
+Decision 187 results remain historical rather than being silently regenerated.
 
 ## Out of scope by default
 

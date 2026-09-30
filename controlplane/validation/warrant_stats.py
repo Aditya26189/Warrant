@@ -144,18 +144,19 @@ def certify_fpr(
 # ----------------------------------------------------------------- runtime
 
 class FPRMonitor:
-    """Anytime-valid revocation trigger for H0: true FPR <= p0.
+    """Mixture revocation trigger for a conditional Bernoulli null.
 
     Feed one Bernoulli per LABELED TRUE-NEGATIVE item seen in production
-    (1 = the detector fired on it). Wealth is a non-negative supermartingale
-    under H0, so by Ville's inequality:
+    (1 = the detector fired on it). If each label has conditional firing
+    probability at most p0 given the past, a fixed mixture of these bets is a
+    nonnegative supermartingale. Ville's inequality then gives:
 
-        P(wealth ever reaches 1/alpha | FPR really is <= p0) <= alpha
+        P(mixture ever reaches 1/alpha under that conditional null) <= alpha
 
-    over the entire lifetime of the warrant. You may check it every request,
-    every hour, or never, and the guarantee is unchanged. No multiple-testing
-    correction. No fixed evaluation window. This is what makes continuous
-    renewal statistically legitimate rather than repeated peeking.
+    over the lifetime of this one continuously resumed monitor. Marginal FPR
+    alone does not establish the conditional null; the labels and their
+    sampling process must support it. The guarantee is mathematical under
+    these assumptions, not an empirical deployment-wide validation.
 
     lam_hi sets the smallest breach you want caught quickly: the Kelly-optimal
     bet against a true rate pi1 is lam* = (pi1 - p0) / (p0 * (1 - p0)).
@@ -167,6 +168,8 @@ class FPRMonitor:
                  lam_lo: float = 0.05, lam_hi: float = 10.0, n_lam: int = 40):
         if not 0.0 < p0 < 1.0:
             raise ValueError("p0 must be in (0, 1)")
+        if not 0.0 < alpha < 1.0:
+            raise ValueError("alpha must be in (0, 1)")
         self.p0, self.alpha = p0, alpha
         # HARD CONSTRAINT: 1 + lam*(x - p0) > 0 for x in {0,1} requires
         # lam < 1/p0. Exceeding it makes log1p() return NaN, NaN propagates
@@ -201,15 +204,20 @@ class FPRMonitor:
 
     @property
     def wealth(self) -> float:
-        m = self._logw.max()
-        cap = np.log(1.0 / self.alpha) + 1.0          # nothing above 1/alpha
-        if m > cap:                                    # changes the decision
+        log_mixture = self._log_mixture
+        if log_mixture >= np.log(1.0 / self.alpha):
             return 1.0 / self.alpha
-        return float(np.exp(m) * np.mean(np.exp(self._logw - m)))
+        return float(np.exp(log_mixture))
+
+    @property
+    def _log_mixture(self) -> float:
+        """Evaluate the fixed equal-weight mixture without overflow."""
+        m = float(self._logw.max())
+        return float(m + np.log(np.mean(np.exp(self._logw - m))))
 
     @property
     def revoked(self) -> bool:
-        return self.wealth >= 1.0 / self.alpha
+        return self._log_mixture >= np.log(1.0 / self.alpha)
 
     def state(self) -> dict:
         """Serialize into the warrant record. Resume by restoring _logw --
@@ -249,7 +257,14 @@ class FPRMonitor:
         logw = np.asarray(st["logw"], dtype=float)
         if logw.shape != m.lams.shape:
             raise ValueError("betting grid changed; cannot resume this monitor")
+        if not np.isfinite(logw).all():
+            raise ValueError("monitor state has non-finite betting wealth")
         m._logw, m.n, m.k = logw, st["n"], st["k"]
+        if st.get("revoked", False) and not m.revoked:
+            raise ValueError(
+                "legacy premature revocation: recorded state revoked before "
+                "the mixture crossed its boundary; manual disposition required"
+            )
         return m
 
 

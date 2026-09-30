@@ -1,9 +1,8 @@
 """A year of rechecks, compared as change detection (DECISIONS.md 187).
 
-The comparison is only worth its numbers if each simulated rule IS the rule it
-names. So most of this file pins the simulation to shipped code: the critical
-count to `recheck`'s own floor, the closed-form monitor to `FPRMonitor` fed one
-label at a time, and the e-detector to an explicit loop.
+The historical capped rule remains replayable after Decision 226 repaired the
+runtime monitor. The uncapped branch must now agree with the repaired monitor;
+the cap branch preserves Decision 187's recorded simulation.
 """
 
 from __future__ import annotations
@@ -58,37 +57,36 @@ def _streams(seed: int):
 
 
 @pytest.mark.parametrize("p0", [0.05, 0.02])
-def test_the_closed_form_monitor_is_fprmonitor(p0: float) -> None:
-    """Counts in, `revoked` out, equal to feeding the monitor label by label."""
+def test_the_uncapped_closed_form_monitor_is_current_fprmonitor(p0: float) -> None:
+    """The corrected runtime must agree with the explicit mixture formula."""
     for name, stream in _streams(7):
         monitor = FPRMonitor(p0=p0, alpha=ALPHA)
         for t, x in enumerate(stream, start=1):
             monitor.update(int(x))
-            if t > 30 and t % 25:  # every label early, where the cap bites
+            if t > 30 and t % 25:  # every label early, where the legacy cap diverges
                 continue
             k = int(stream[:t].sum())
-            ours = bool(monitor_revokes(np.array([t]), np.array([k]), p0, ALPHA)[0])
+            ours = bool(monitor_revokes(np.array([t]), np.array([k]), p0, ALPHA, capped=False)[0])
             assert ours == monitor.revoked, f"{name} p0={p0} t={t} k={k}"
-            mixture = float(np.mean(np.exp(monitor._logw)))
-            uncapped = bool(monitor_revokes(np.array([t]), np.array([k]), p0, ALPHA, capped=False)[0])
-            assert uncapped == (mixture >= 1.0 / ALPHA), f"{name} p0={p0} t={t}"
+            mixture_log = float(np.log(np.mean(np.exp(monitor._logw))))
+            assert ours == (mixture_log >= np.log(1.0 / ALPHA)), f"{name} p0={p0} t={t}"
 
 
 def test_the_cap_revokes_where_the_mixture_does_not() -> None:
-    """The suspected defect 187 records, shown to exist rather than argued.
+    """The historical Decision 187 cap must remain identifiable as defective.
 
     Two false positives in the first two labels at p0 = 0.05: the largest bet's
     wealth is 110 (above e/alpha = 54.4) while the mean over the grid is 14.2,
-    under 1/alpha = 20. The shipped monitor revokes; the e-process has not.
+    under 1/alpha = 20. The historical cap revokes; the repaired monitor does not.
     """
     p0 = 0.05
-    capped = monitor_revokes(np.array([2]), np.array([2]), p0, ALPHA)[0]
+    capped = monitor_revokes(np.array([2]), np.array([2]), p0, ALPHA, capped=True)[0]
     uncapped = monitor_revokes(np.array([2]), np.array([2]), p0, ALPHA, capped=False)[0]
     monitor = FPRMonitor(p0=p0, alpha=ALPHA)
     for _ in range(2):
         monitor.update(1)
     mixture = float(np.mean(np.exp(monitor._logw)))
-    assert monitor.revoked and capped
+    assert capped and not monitor.revoked
     assert not uncapped and mixture < 1.0 / ALPHA, (
         "the burst no longer separates the cap from the mixture; pick a stream that does"
     )

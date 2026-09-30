@@ -183,6 +183,32 @@ def test_p0_outside_the_unit_interval_is_refused() -> None:
             FPRMonitor(p0=bad)
 
 
+def test_monitor_uses_mixture_not_largest_bet_for_revocation() -> None:
+    """Decision 226: a component crossing cannot revoke a smaller mixture."""
+    monitor = FPRMonitor(p0=0.05, alpha=ALPHA)
+    monitor.update(1)
+    monitor.update(1)
+    independent_mixture = float(np.mean(np.exp(monitor._logw)))
+
+    assert independent_mixture == pytest.approx(14.20585, abs=1e-4)
+    assert independent_mixture < 1.0 / ALPHA
+    assert monitor.wealth == pytest.approx(independent_mixture)
+    assert not monitor.revoked
+
+
+def test_legacy_premature_revocation_cannot_be_silently_resumed() -> None:
+    """A historical state that already revoked cannot be made active on resume."""
+    monitor = FPRMonitor(p0=0.05, alpha=ALPHA)
+    monitor.update(1)
+    monitor.update(1)
+    legacy_state = monitor.state()
+    legacy_state["wealth"] = 1.0 / ALPHA
+    legacy_state["revoked"] = True
+
+    with pytest.raises(ValueError, match="legacy premature revocation"):
+        FPRMonitor.from_state(legacy_state)
+
+
 # --------------------------------------------------------------------------- #
 # Resuming a monitor -- the grid must travel with the wealth
 # --------------------------------------------------------------------------- #

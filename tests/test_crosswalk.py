@@ -113,9 +113,11 @@ def test_the_page_says_it_is_a_draft_and_not_compliance() -> None:
 
 
 def test_the_page_does_not_claim_an_anytime_valid_guarantee() -> None:
-    """FPRMonitor's cap breaks the guarantee its docstring states (verified at
-    p0=0.05: two false positives report wealth 20 against a mixture of 14.21).
-    Until that read-only defect is closed, no page here may lean on it."""
+    """The crosswalk cannot infer a deployment guarantee from a code repair.
+
+    Decision 226 fixes the monitor's component-cap error, but the customer
+    sampling process has not established its conditional-null assumption.
+    """
     page = render_crosswalk().lower()
     assert "anytime" not in page
     assert "fprmonitor" not in page
