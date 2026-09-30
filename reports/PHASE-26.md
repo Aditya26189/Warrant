@@ -43,6 +43,7 @@ cannot silently turn an unrun check green.
 | Claim and frozen-score verifier | 92/92 and 25/25 from clean `3093fd8`; activation tier explicitly skipped by `--no-activations` |
 | Fresh-clone smoke and verifier on Phase 26 | Passed from clean `3093fd8`: 586 tracked files, smoke, 92/92 claims, 25/25 frozen-score comparisons; activation tier SKIP; full suite deliberately omitted |
 | Full repository suite on Phase 26 | Pending |
+| Full suite on the later combined source | Passed in the root tracked-file clone of `94e48a7`, recorded at `7ebf024`; this does not retroactively test the standalone Phase 26 commit |
 | Phase 25 full clean-clone gate | First separate run on `d3544e5` failed on a stale test-count claim; corrected run passed on `3e08595` and is recorded at `0c929a7`. Neither run validates this later parser change |
 | Remote CI, independent statistical review | Unobserved |
 
@@ -66,9 +67,9 @@ enterprise case from the engineering record alone.
 ## Open items
 
 The Phase 26 code is integrated with the corrected Phase 25 clone evidence;
-run and record the full suite on that combined source. A separate environment
-install and remote CI run
-remain unobserved. Independent review of the grouped statistical methods and
+the combined source passed its full tracked-file gate at `94e48a7`. A separate
+environment install and remote CI run remain unobserved. Independent review of
+the grouped statistical methods and
 representative customer validation still matter more to a release or funding
 claim than another local parser regression.
 

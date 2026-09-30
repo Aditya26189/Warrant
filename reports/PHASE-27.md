@@ -44,7 +44,7 @@ are operational bounds, not performance claims. In the actual corrected Phase
 | Ruff and whitespace | Passed for changed Python and diff |
 | Test inventory | 2,124 collected from clean `d5f2ff4`, committed at `a999f33`; the report itself adds two parametrized cases, and collection is not a passing-suite result |
 | Clean verifier | 92/92 README claims and 25/25 frozen-score comparisons; activation re-extraction explicitly skipped |
-| Full clone on Phase 27 and final integrated tree | Pending; the earlier Phase 25 full clone is a different source commit |
+| Full clone on final integrated tree | Passed on clean root source `94e48a7`, recorded at `7ebf024`; the separate Phase 27 branch did not receive its own full run |
 | Remote CI | Unobserved |
 
 ## What this does not establish
@@ -52,16 +52,16 @@ are operational bounds, not performance claims. In the actual corrected Phase
 The preflight can catch these two known deterministic blockers earlier. It
 does not catch every possible full-suite failure, prove that a clean install
 resolves dependencies, authenticate the local result, or make a skipped suite
-equivalent to a passing one. The branch has not yet earned a full-clone pass;
-that outcome must be attached to the exact commit tested after integration.
+equivalent to a passing one. The combined source earned a full-clone pass at
+`94e48a7`; that result does not automatically cover later commits.
 Neither this gate nor the broader engineering record supplies customer data,
 buyer interviews, a paid pilot, or evidence that this is a fundable company.
 
 ## Open items
 
 The corrected Phase 25 full clone passed on its earlier source and the
-Phase 26 parser and this preflight have been integrated. Run the combined-tree
-checks and record their exact source commit. Observe remote CI separately if
+Phase 26 parser and this preflight have been integrated. The combined-tree
+gate is recorded at `7ebf024` for source `94e48a7`. Observe remote CI separately if
 the branch is pushed.
 Keep the customer-discovery stopping rule in `reports/STRATEGY-2026-09.md`:
 local release hygiene cannot answer whether a buyer needs this certificate.

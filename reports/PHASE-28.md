@@ -47,7 +47,8 @@ event.
 | Successful default placement | Synthetic regression confirms success writes the canonical path |
 | Explicit custom output | Synthetic regression confirms a failed result writes the requested custom path without creating a canonical record |
 | Corrected Phase 25 full tracked-file gate | Passed on earlier source `3e08595`, with its result committed at `0c929a7`; it does not exercise this later output-placement change |
-| Final combined-tree full gate and remote CI | Pending at the time of this report |
+| Final combined-tree full gate | Passed from clean root source `94e48a7`; record committed at `7ebf024`: 592 tracked files, smoke, preflight, full suite, 92/92 claims and 25/25 frozen-score comparisons. Activation re-derivation was SKIP |
+| Remote CI | Unobserved at the time of this report |
 
 The first focused pytest invocation used a nonexistent nested temporary
 directory and errored during fixture setup. Rerunning with the existing
@@ -59,8 +60,8 @@ first invocation. The test evidence is therefore the second command only.
 
 These regressions construct gate outcomes; they do not force a real full
 clone to fail just to exercise output placement. The passing Phase 25 clone
-belongs to an earlier commit. An integrated full gate must be run on the
-combined source before calling this line release-ready. A local clone uses
+belongs to an earlier commit; the later integrated source passed its own full
+tracked-file gate at `94e48a7`. A local clone uses
 the installed Python environment, so it does not establish a fresh install,
 remote CI, GPU activation re-extraction from ignored caches or deployment
 behavior. The failure directory is not append-only storage protected from a
@@ -70,11 +71,7 @@ fundable market.
 
 ## Open items
 
-Regenerate the test inventory after all integrated reports are committed,
-run the actual preflight and full tracked-file clone on the clean combined
-source, and attach the result to its exact commit. Inspect each verification
-tier separately and keep activation re-derivation marked skipped if the
-cache is absent. Observe the remote CI run only after a push, and do not
+Observe the remote CI run after a push, and do not
 represent local results as a remote pass. Continue the registered buyer
 conversations and apply the commercial stopping rule in
 `reports/STRATEGY-2026-09.md` before treating the product as validated.
@@ -87,4 +84,5 @@ conversations and apply the commercial stopping rule in
 | Implementation and synthetic regressions | `f06b080`, `controlplane/report/clean_clone.py`, `scripts/clean_clone_gate.py`, `tests/test_clean_clone.py` |
 | Earlier failed full clone | `4644c76`, source `d3544e5` |
 | Earlier corrected passing clone | `0c929a7`, source `3e08595` |
+| Integrated passing clone | `7ebf024`, source `94e48a7`; temporary clone cleanup left a Windows-locked Git object after all checks passed |
 | Protected scientific scores | Unchanged |

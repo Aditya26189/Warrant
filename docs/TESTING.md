@@ -10,8 +10,9 @@ after the thing they now catch had already shipped once.
 records which tests were collected from a clean source commit; its
 `execution_status` explicitly says collection is not execution. Earlier
 [phase reports](../reports/) record their own targeted runs, and
-[the clean-clone record](../results/clean_clone.json) records a run on an earlier
-source commit. Neither establishes a full-suite pass for a later head. The
+[the clean-clone record](../results/clean_clone.json) names the exact source
+commit whose full gate passed. Neither collection nor that gate establishes a
+full-suite pass for a later head. The
 [CI workflow](../.github/workflows/ci.yml) declares Linux customer/full-suite
 jobs and a Windows minimum-version wheel job; consult the run for the exact
 commit before stating that CI passed. The [product-state map](PRODUCT-STATE.md)
