@@ -56,7 +56,7 @@ performed or selected on in this phase.
 | Regressions | Four-group row duplication, noncollapsed parity, independent-item parity, and v1/v2/unmarked certificate replay passed in focused runs |
 | Affected intake, metrics, routing and report suites | Passed before the final code commit |
 | Clean frozen-score verifier | 92/92 README claims and 25/25 frozen-score comparisons; activation tier skipped by `--no-activations` |
-| Full repository suite | Running from a clean Phase 24 commit; final result pending |
+| Full repository suite | Exited 0 from clean `36a2544`; one expected xfail, no test failures; runtime/deprecation warnings disclosed in test output |
 | Test inventory | 2,115 collected from clean `91d1070`; collection is not a passing-suite claim |
 | Independent statistical review | Not observed |
 | Remote CI and push | Unobserved |
@@ -74,8 +74,8 @@ repair is worth keeping, but it cannot substitute for that test.
 
 ## Open items
 
-Capture the full-suite exit and update this gate table. Obtain independent
-statistical review of the clustered estimators and their sampling assumptions.
+Obtain independent statistical review of the clustered estimators and their
+sampling assumptions.
 Give historical research intervals a versioned migration rather than editing
 the protected results. Run the pre-registered buyer conversations before
 claiming an enterprise purchase case or seeking funding on that premise.
@@ -88,4 +88,5 @@ claiming an enterprise purchase case or seeking funding on that premise.
 | Estimator, protocol replay, run identity, regression and contracts | `91d1070` |
 | Generated inventory | `36a2544` |
 | Historical artifact replay | `controlplane/report/reproduce.py`; protected `results/scores/` unchanged |
+| Public caveats and product-state corrections | `881975f`, `821228e`, `2ed19aa`, `f1bb471`, `3a4d63a` |
 
