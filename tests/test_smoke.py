@@ -558,6 +558,8 @@ def test_every_script_has_a_smoke_test() -> None:
         "smoke.py",
         # test_smoke_verify_claims_only, test_verify_exits_non_zero_on_drift
         "verify.py",
+        # tests/test_inventory_smoke.py::test_smoke_inventory_collects_without_executing_tests
+        "refresh_test_inventory.py",
     }
     exempt = {
         # Needs a GPU; its wiring is checked by the notebook's own self-check

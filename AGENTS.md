@@ -1,5 +1,19 @@
 # AGENTS.md
 
+## Concurrent sessions: shared context
+
+The founder requested Codex and Claude to coordinate in this checkout.
+Read `SHARED_CONTEXT.md` and `COORDINATION.md` before editing. Run
+`python -m controlplane.coordination read` for the current posts and ownership.
+Post your actual status and claim intended paths before making changes; release
+claims when handing work over. Do not invent messages on another agent's behalf.
+The page is generated: use `python -m controlplane.coordination post --help`
+instead of hand-editing it. Inspect Git diffs and stage only your own changes.
+No branch switches, resets or stashes of another session's work in the shared
+checkout. Use a separate worktree if implementation scopes overlap.
+Operational coordination posts may be written while work is in progress;
+scientific artifact generators still require clean-source provenance.
+
 Persistent context for agents working in this repo. Read this fully before writing code. Read `SPEC.md` for the technical detail and `TASKS.md` for the build order.
 
 ---

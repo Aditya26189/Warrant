@@ -9384,3 +9384,22 @@ artifact. Label the number collected, not passing: collection cannot prove
 execution passed. The existing comparison test remains in force. No scientific
 result changes. These repairs do not resolve the separate runtime-monitor or
 grouped-recheck findings recorded in 184.
+
+## 187 - A shared context board for concurrent coding sessions (2026-09-15)
+
+The founder explicitly requested a shared page where Codex and a parallel
+Claude session can exchange messages and report their work. Add a local,
+file-backed board with one immutable JSON file per post and a generated
+SHARED_CONTEXT.md page. No network service or account connection is required.
+Use a SQLite write transaction solely as an interprocess mutex while publishing
+events and refreshing the page; the readable JSON files remain the durable log.
+Sequence numbers are allocated under that mutex rather than inferred from clocks.
+
+Support messages, status, path claims and releases. Reject overlapping claims
+owned by different agents, including parent/child directories. These are
+coordination claims, not filesystem access controls; an agent that ignores the
+board can still edit files. Preserve explicit author labels and do not invent
+Claude responses. Agent sessions must read the board to receive messages.
+Acceptance: concurrent posts are retained, sequence numbers remain unique,
+overlapping ownership is rejected, released paths can be reclaimed, and posts
+remain literal text in the generated page.

@@ -113,3 +113,8 @@ examples/*.warrant.json
 results/drift/*.db*
 # a measured demo run's stream, beside the fixture's demo_stream.json (DECISIONS 181)
 results/demo_stream_measured.json
+
+# Shared-context writer mutex. Durable posts are readable JSON, not this lock DB.
+.coordination/*.sqlite3*
+.coordination/messages/*.tmp
+SHARED_CONTEXT.md.*.tmp
