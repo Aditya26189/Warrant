@@ -11811,3 +11811,17 @@ exactly as after a chained revocation.
 **Validation and limits.** Unit-test the step selection with a fake command runner: failure must never invoke the full suite, success must invoke it, and the skipped step must fail the aggregate and render as SKIP. Run the affected clone-gate and report suites, plus the clean-source claim/frozen-score verifier. This is a local time-saving release check, not a substitute for the full suite, remote CI, fresh dependency resolution, or buyer evidence.
 
 **Rejected.** Running the full suite after a known deterministic preflight failure wastes scarce time and obscures the actionable defect. Failing to record the omitted suite would make an early exit look green. Updating counts or changing the live artifact test inside the gate would hide, rather than detect, the inconsistency.
+
+## 225 - Keep the canonical clone record green while preserving failed attempts (2026-09-30)
+
+- **Date:** 2026-09-30
+- **Status:** DECIDED before implementation.
+- **Scope:** Default output placement for the local clean-clone gate. The gate's checks, scientific scores and explicit custom-output behavior are unchanged.
+
+**Finding.** Phase 25 committed a failed `results/clean_clone.json` to retain the first tracked-only clone's 2,117-versus-2,115 test-count error. The suite also has a deliberate `test_the_committed_gate_artifact_is_readable_and_passed` assertion, so that red canonical file makes every subsequent full clone fail before it can replace the record. Restoring the prior generated green bytes at `3e08595` preserved the failed commit in history but was an operational workaround. Decision 224's preflight makes the conflict faster to find; it does not remove it.
+
+**Decision.** With the default `--out`, a passed gate writes `results/clean_clone.json`; a failed gate leaves that path untouched and writes a new, exclusively created JSON record under `results/clean_clone_failures/`, named with the tested commit and a write-time nonce. The normal `check_record` clean-source/unchanged-source refusal still runs before either write. The script prints the actual path and exits 1 on failure. An explicit `--out` remains the caller's chosen path for either outcome. Tests must show that two failed attempts never overwrite one another or the last passing canonical record, while a successful result still replaces the canonical record. Reports cite the exact failed file or Git commit and never treat the retained green canonical record as evidence for the failed source.
+
+**Validation and limits.** Test output placement and exclusive writes with synthetic GateResult records, then run the affected clone/report suites and a clean-source smoke and verifier. A local failed artifact is a transparent diagnostic, not a signed timestamp or proof that no other attempt occurred. This change cannot certify the scientific result, remote CI, or buyer demand.
+
+**Rejected.** Silently dropping failed outcomes loses the reason a release was refused. Overwriting the last green record with a red one creates the observed self-failing rerun loop. Automatically turning a failed record green would falsify the gate. Reinterpreting an explicit custom `--out` without warning would break its existing contract.
