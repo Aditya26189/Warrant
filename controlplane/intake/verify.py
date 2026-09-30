@@ -12,7 +12,8 @@ from ..config import Config
 from ..numeric import finite_double
 from ..release.contract import canonical_json
 from .certify import (
-    GROUPED_BOUNDARY_PROTOCOL, certify_items, evidence_sha256, input_sha256,
+    GROUPED_BOUNDARY_PROTOCOL, GROUPED_BOUNDARY_PROTOCOL_V1, certify_items,
+    evidence_sha256, input_sha256,
 )
 from .chain import canonical_sha256
 from .contract import ScoredItems
@@ -148,7 +149,9 @@ def verify_certification(
         alpha = first["row_alpha"]
 
     metrics_protocol = record.get("metrics_protocol")
-    if metrics_protocol is not None and metrics_protocol != GROUPED_BOUNDARY_PROTOCOL:
+    if metrics_protocol not in (
+        None, GROUPED_BOUNDARY_PROTOCOL_V1, GROUPED_BOUNDARY_PROTOCOL,
+    ):
         return _result("MISMATCH", "unknown warrant metrics protocol")
     # The path is a declaration and need not be the path of a retained copy.
     # Replaying with the recorded path preserves the original explanatory text.
@@ -156,6 +159,9 @@ def verify_certification(
     expected = certify_items(config, replay_items, budget=budget, alpha=alpha,
                              selection=expected_selection,
                              grouped_boundary_abstention=(
+                                 metrics_protocol is not None
+                             ),
+                             grouped_rate_boundary_abstention=(
                                  metrics_protocol == GROUPED_BOUNDARY_PROTOCOL
                              )).to_payload()
     for key, computed in expected.items():

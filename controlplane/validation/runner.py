@@ -46,7 +46,9 @@ from .controls import run_controls
 from .evalsets import TEST, TRAIN, VALIDATION, ExtractionCache, split_by_question
 from .evalsets import EvalSet
 from .issuance import issue_or_refuse
-from .metric_protocols import GROUPED_HARD_NEGATIVE_PROTOCOL
+from .metric_protocols import (
+    GROUPED_HARD_NEGATIVE_PROTOCOL, GROUPED_RATE_BOUNDARY_PROTOCOL,
+)
 from .metrics_builder import build_warrant_metrics
 from .scores import Scoring
 from .stats import flag_rate_at, threshold_for_flag_rate
@@ -401,6 +403,8 @@ def validate(
         "key": key.as_string(), "variant": variant,
         "envelope": evalset.envelope_id, "config": config.config_hash,
     }
+    if groups is not None:
+        run_identity["grouped_rate_protocol"] = GROUPED_RATE_BOUNDARY_PROTOCOL
     if is_hard_negative_set and groups is not None:
         run_identity["metrics_protocol"] = GROUPED_HARD_NEGATIVE_PROTOCOL
     run_id = f"run-{content_hash(run_identity)[:12]}"
@@ -576,6 +580,8 @@ def validate_transferred(
         "transferred_from": source.run_id,
         "config": config.config_hash,
     }
+    if groups is not None:
+        run_identity["grouped_rate_protocol"] = GROUPED_RATE_BOUNDARY_PROTOCOL
     if is_hard_negative_set and groups is not None:
         run_identity["metrics_protocol"] = GROUPED_HARD_NEGATIVE_PROTOCOL
     run_id = "run-" + content_hash(run_identity)[:12]

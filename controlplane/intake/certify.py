@@ -4,7 +4,7 @@ Calls the same :func:`~controlplane.validation.warrant_stats.certify_fpr` and
 :func:`~controlplane.validation.metrics_builder.build_warrant_metrics` the
 research pipeline calls. New customer records explicitly opt into a safe
 grouped-boundary metric protocol; the certificate names it so retained older
-records can replay their original descriptive intervals (DECISIONS 217-219).
+records can replay their original descriptive intervals (DECISIONS 217-219, 221).
 
 **Refusal is a result.** Too few independent negatives to bound the requested
 budget is not a failure of the tool — it is the tool working, and it carries the
@@ -29,7 +29,8 @@ __all__ = [
     "input_sha256",
 ]
 
-GROUPED_BOUNDARY_PROTOCOL = "grouped_boundary_vacuous_v1"
+GROUPED_BOUNDARY_PROTOCOL_V1 = "grouped_boundary_vacuous_v1"
+GROUPED_BOUNDARY_PROTOCOL = "grouped_boundary_vacuous_v2"
 
 
 @dataclasses.dataclass(frozen=True)
@@ -231,6 +232,7 @@ def certify_items(
     alpha: Optional[float] = None,
     selection: Optional[dict[str, Any]] = None,
     grouped_boundary_abstention: bool = True,
+    grouped_rate_boundary_abstention: Optional[bool] = None,
 ) -> CertificationResult:
     """Certify ``items``' detector at ``budget``, or refuse with the shortfall.
 
@@ -255,6 +257,9 @@ def certify_items(
         grouped_boundary_abstention: New records use vacuous grouped recall and
             precision bounds on bootstrap collapse. False is only for exact
             replay of an older record without a metrics protocol (219).
+        grouped_rate_boundary_abstention: New records also withhold collapsed
+            grouped flag-rate intervals; False with recall/precision abstention
+            replays v1. None follows grouped_boundary_abstention (221).
 
     Returns:
         A :class:`CertificationResult`, VALID or REFUSED.
@@ -268,6 +273,10 @@ def certify_items(
             f"budget must be a false-positive rate in (0, 1); got {budget}. "
             "0.05 means 'at most 5% of clean items may be flagged'."
         )
+    if grouped_rate_boundary_abstention is None:
+        grouped_rate_boundary_abstention = grouped_boundary_abstention
+    if grouped_rate_boundary_abstention and not grouped_boundary_abstention:
+        raise ValueError("grouped rate abstention requires grouped boundary abstention")
     alpha = (1.0 - config.validation.ci) if alpha is None else alpha
     if selection is not None and abs(selection["row_alpha"] - alpha) > 1e-15:
         raise ValueError(
@@ -296,7 +305,9 @@ def certify_items(
         "min_units_required": floor,
         "evidence_sha256": evidence_sha256(items),
         "metrics_protocol": (
-            GROUPED_BOUNDARY_PROTOCOL if grouped_boundary_abstention else None
+            GROUPED_BOUNDARY_PROTOCOL if grouped_rate_boundary_abstention
+            else GROUPED_BOUNDARY_PROTOCOL_V1 if grouped_boundary_abstention
+            else None
         ),
         "score_distribution": distribution,
         "selection": selection,
@@ -345,6 +356,7 @@ def certify_items(
     metrics = build_warrant_metrics(
         config, labels, scores, threshold, groups=groups,
         grouped_boundary_abstention=grouped_boundary_abstention,
+        grouped_rate_boundary_abstention=grouped_rate_boundary_abstention,
     )
     lift, ceiling, lift_absent = _lift_of(metrics)
     return CertificationResult(

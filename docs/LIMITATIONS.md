@@ -323,14 +323,15 @@ Group counts exclude groups with no second review. Null kappa when both
 reviewers use one category is distinct from a withheld confidence interval.
 Ungrouped paired-bootstrap intervals are unchanged. Neither pathway detects
 shared reviewer mistakes or establishes that review selection was representative.
-A separate customer-certificate repair (DECISIONS 217-218) makes a collapsed
-grouped recall or precision interval vacuous instead of falling back to
-item-count binomial inference. Noncollapsed grouped intervals remain as before,
-without a new finite-sample coverage claim. Historical research artifacts
-retain the old method for exact replay: the mean-pool transfer artifact's
-grouped recall upper bound is method-dependent and should not be used as
-population evidence until a versioned migration. Other grouped estimators,
-still need independent audit. Decision 220 separately corrects prospective
+A separate customer-certificate repair (DECISIONS 217-218, 221) makes collapsed
+grouped recall, precision, flag-rate and descriptive within-set FPR intervals
+vacuous instead of falling back to item-count binomial inference. Noncollapsed
+grouped intervals remain as before, without a new finite-sample coverage claim.
+Historical research artifacts and v1 customer certificates retain their old
+methods for exact replay: the mean-pool transfer artifact's grouped recall
+upper bound and retained grouped flag-rate bounds are method-dependent and
+should not be used as population evidence until a versioned migration. Other
+grouped estimators still need independent audit. Decision 220 separately corrects prospective
 grouped hard-negative FPR bounds to count equal-sized negative groups, with a
 vacuous bound for unequal sizes. The retained hard-negative research artifacts
 still carry row-count bounds. Their historical arithmetic is reproducible but
@@ -340,9 +341,9 @@ undeclared hard-negative FPR protocols rather than trusting that prior status.
 Neither the corrected bound nor the hand-built eval set proves
 customer-population coverage without a representative sampling design and
 independent statistical review.
-New certify records carry a metrics protocol marker (DECISIONS 219). The verifier
-replays an older bound record without that field under its original method and
-warns when it is grouped. Because neither the marker nor its absence is
+New certify records carry a v2 metrics protocol marker (DECISIONS 219, 221). The
+verifier replays v1 and unmarked bound records under their original methods,
+warning on grouped unmarked records. Because neither the marker nor its absence is
 authenticated, a coherent locally rewritten legacy record can still replay;
 VERIFIED proves consistency with the supplied rows and declared method only.
 
