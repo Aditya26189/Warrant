@@ -154,11 +154,53 @@ def test_a_tier_missing_from_the_summary_is_not_counted_as_a_pass() -> None:
 
     rows = {r.name: r for r in _verify_tiers("TIER|1|claim_table|OK|31/31")}
     assert not rows["verify: claim table vs artifacts"].skipped
-    assert rows["verify: metrics recomputed from frozen scores"].skipped
-    assert rows["verify: scores re-derived from activations"].skipped
-    assert "absence means unknown" in rows[
+    assert not rows["verify: metrics recomputed from frozen scores"].ok
+    assert not rows["verify: scores re-derived from activations"].ok
+    assert "missing" in rows[
         "verify: metrics recomputed from frozen scores"
     ].detail
+
+
+def test_duplicate_and_unknown_tier_lines_fail_the_gate() -> None:
+    """A later OK cannot overwrite a drift, nor hide a new verifier tier."""
+    from controlplane.report.clean_clone import _verify_tiers
+
+    normal = (
+        "TIER|1|claim_table|OK|31/31\n"
+        "TIER|2|frozen_scores|OK|24/24\n"
+        "TIER|3|activations|SKIPPED|0/0"
+    )
+    for summary in (
+        "TIER|1|claim_table|DRIFT|30/31\n" + normal,
+        normal + "\nTIER|1|claim_table|OK|31/31",
+        normal + "\nTIER|4|new_check|OK|1/1",
+        normal + "\nTIER|4|new_check|SUCCESS|1/1",
+        normal + "\nTIER|9|claim_table|OK|31/31",
+    ):
+        rows = _verify_tiers(summary)
+        assert not all(row.ok for row in rows)
+        assert any("protocol" in row.name for row in rows)
+
+
+def test_default_clone_gate_requires_claims_and_frozen_scores() -> None:
+    """Only activation re-extraction may be explicitly skipped in a fresh clone."""
+    from controlplane.report.clean_clone import _verify_tiers
+
+    for skipped_key in ("claim_table", "frozen_scores"):
+        lines = [
+            f"TIER|1|claim_table|{'SKIPPED' if skipped_key == 'claim_table' else 'OK'}|0/0",
+            f"TIER|2|frozen_scores|{'SKIPPED' if skipped_key == 'frozen_scores' else 'OK'}|0/0",
+            "TIER|3|activations|SKIPPED|0/0",
+        ]
+        rows = _verify_tiers("\n".join(lines))
+        assert not all(row.ok for row in rows)
+
+    normal = _verify_tiers(
+        "TIER|1|claim_table|OK|31/31\n"
+        "TIER|2|frozen_scores|OK|24/24\n"
+        "TIER|3|activations|SKIPPED|0/0"
+    )
+    assert all(row.ok for row in normal)
 
 
 def test_a_drifted_tier_fails_the_gate() -> None:

@@ -146,29 +146,50 @@ def _verify_tiers(tail: str) -> list[StepResult]:
     Prose moves whenever the wording improves. ``TIER|n|key|outcome|passed/total``
     does not, and verify prints it last so truncation cannot reach it.
 
-    A tier absent from the summary is reported skipped, never passed: absence
-    means unknown, and unknown is not success. No tier lines at all is a
-    failure, not an empty pass -- that means verify did not emit its contract.
+    An explicitly skipped activation tier is tolerated because the cache is
+    absent from a fresh clone. Missing, duplicate or unknown tier lines are
+    protocol failures; claim and frozen-score tiers may not be skipped by the
+    default verify command. No tier lines at all is a failure, not an empty
+    pass -- that means verify did not emit its contract.
     """
     seen: dict[str, StepResult] = {}
+    protocol_errors: list[str] = []
+    expected_numbers = {
+        key: str(number) for number, key in enumerate(_TIER_LABELS, start=1)
+    }
     for line in tail.splitlines():
-        match = _TIER_LINE.match(line.strip())
+        stripped = line.strip()
+        if not stripped.startswith("TIER|"):
+            continue
+        match = _TIER_LINE.match(stripped)
         if not match:
+            protocol_errors.append(f"malformed tier line: {stripped}")
             continue
         key = match.group("key")
+        if key not in expected_numbers:
+            protocol_errors.append(f"unknown tier: {key}")
+            continue
+        if match.group("number") != expected_numbers[key]:
+            protocol_errors.append(f"wrong tier number for {key}")
+            continue
+        if key in seen:
+            protocol_errors.append(f"duplicate tier: {key}")
+            continue
         outcome = match.group("outcome")
         passed, total = match.group("passed"), match.group("total")
         label = _TIER_LABELS.get(key, key)
+        acceptable_skip = key == "activations" and outcome == "SKIPPED"
         seen[key] = StepResult(
             name=f"verify: {label}",
             command=[],
             returncode=None,
             duration_seconds=0.0,
-            ok=outcome != "DRIFT",
+            ok=outcome == "OK" or acceptable_skip,
             skipped=outcome == "SKIPPED",
             detail=(
                 f"{passed}/{total} reproduced" if outcome == "OK"
-                else "did not run" if outcome == "SKIPPED"
+                else "did not run" if acceptable_skip
+                else "mandatory tier did not run" if outcome == "SKIPPED"
                 else f"DRIFT: only {passed}/{total} reproduced"
             ),
         )
@@ -186,7 +207,7 @@ def _verify_tiers(tail: str) -> list[StepResult]:
                     "verify emitted no TIER| lines. Either it is an older "
                     "version without the machine-readable summary, or its "
                     "output was lost. Which checks ran is unknown, and unknown "
-                    "is not a pass."
+                    "is not a pass. " + "; ".join(protocol_errors)
                 ),
             )
         ]
@@ -202,14 +223,20 @@ def _verify_tiers(tail: str) -> list[StepResult]:
                 command=[],
                 returncode=None,
                 duration_seconds=0.0,
-                ok=True,
-                skipped=True,
+                ok=False,
+                skipped=False,
                 detail=(
-                    "absent from verify's tier summary. Reported skipped rather "
-                    "than passed: absence means unknown."
+                    "missing from verify's tier summary; the gate cannot "
+                    "establish whether this check ran"
                 ),
             )
         )
+    if protocol_errors:
+        rows.append(StepResult(
+            name="verify: tier summary protocol",
+            command=[], returncode=None, duration_seconds=0.0,
+            ok=False, detail="; ".join(protocol_errors),
+        ))
     return rows
 
 
