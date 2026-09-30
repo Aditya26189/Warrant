@@ -2,6 +2,25 @@
 
 **Dated 2026-09-09. Revised 2026-09-09 after the central claim was falsified.**
 
+> **Primary-source check, 30 September 2026.** The regulatory dates below
+> were checked against the [enacted EU amendment](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32026R1744),
+> the [Federal Reserve's revised guidance](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.pdf)
+> and [OCC Bulletin 2026-13](https://www.occ.gov/news-issuances/bulletins/2026/bulletin-2026-13.html),
+> and the [Indian Gazette rules](https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf).
+> They support the timing and the US generative-AI exclusion stated here. The
+> US guidance also expressly says it creates no enforceable or prescriptive
+> standard. The EU amendment gives systems placed on the market before
+> 2 August 2026 until 2 December 2026 for Article 50(2) marking. The Indian
+> Gazette is dated 13 November 2025, but its electronic identifier and a
+> [17 November government release](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190655)
+> point to 14 November; a [3 December government reply](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2198217)
+> says 13 November. The Indian commencement text runs from publication in the
+> Gazette, so the day-level 2026 and 2027 dates should not be asserted as
+> settled from these conflicting official records. None of these sources
+> requires Warrant's detector-FPR certificate or demonstrates a buyer budget
+> for one. This check updates source quality and scope, not the untested
+> commercial conclusion.
+
 > ## Correction, and it is not a small one
 >
 > The first version of this document recommended building `dpdp-pii-bench`, a
@@ -127,8 +146,11 @@ These were verified against primary sources and stand.
 **EU AI Act.** Regulation (EU) 2026/1744 (Digital Omnibus on AI), in force 27
 July 2026, **deferred standalone high-risk obligations to 2 December 2027** and
 embedded-product high-risk to August 2028
-([Holland & Knight](https://www.hklaw.com/en/insights/publications/2026/04/us-companies-face-eu-ai-acts-possible-august-2026-compliance-deadline)).
-Article 50 transparency, GPAI obligations and Article 5 prohibitions apply now.
+([enacted regulation](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32026R1744)).
+Article 50 transparency and GPAI obligations apply now; most Article 5
+prohibitions do too, while newly added Article 5 points start 2 December 2026.
+For systems placed on the market before 2 August 2026, the amendment gives
+providers until 2 December 2026 to comply with Article 50(2) marking.
 
 **US banking.** [SR 26-2](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.htm) /
 [OCC Bulletin 2026-13](https://www.occ.gov/news-issuances/bulletins/2026/bulletin-2026-13.html),
@@ -137,9 +159,22 @@ novel and rapidly evolving. As such, they are not within the scope of this
 guidance."* It **does** apply to traditional statistical and non-generative,
 non-agentic AI. The agencies "plan to issue in the near future a request for
 information" covering AI.
+The [OCC bulletin](https://www.occ.gov/news-issuances/bulletins/2026/bulletin-2026-13.html)
+also says this guidance does not set enforceable standards or prescriptive
+requirements; its scope cannot be used as a mandatory procurement trigger.
 
-**India.** DPDP Rules notified 13 November 2025; Consent Manager provisions 13
-November 2026; 18-month transition ends **13 May 2027**.
+**India.** The [Gazette rules](https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf)
+date the notification 13 November 2025 and say Consent Manager rule 4 starts
+one year after Gazette publication; most remaining rules start eighteen months
+after it. The Gazette's electronic identifier carries 14 November, and the
+[17 November PIB release](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190655)
+says the rules were notified on that date. A later
+[official reply](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2198217)
+says 13 November. Accordingly **13 versus 14 November 2026 and 13 versus 14
+May 2027 remain a day-level publication-date ambiguity** in these primary
+records; do not sell a specific deadline without resolving it with the
+responsible authority. The substantive point below is unchanged: neither date
+creates a stated obligation to certify a detector's false-positive rate.
 
 ### The inferential gap I papered over
 
