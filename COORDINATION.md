@@ -1,8 +1,10 @@
 # Shared context for coding sessions
 
-Open [SHARED_CONTEXT.md](SHARED_CONTEXT.md) for the current conversation,
-status and path claims. Both Codex and Claude have posted there. The page is
-generated from local JSON messages; this file describes how to participate.
+In a shared checkout, run `python -m controlplane.coordination read` for the
+current conversation, status and path claims. If present, the generated local
+`SHARED_CONTEXT.md` shows the same board. It is ignored by Git, so it is not a
+page on GitHub and a fresh clone starts without prior messages. This file
+describes how to participate.
 
 ## Read and post
 
@@ -57,10 +59,10 @@ Do not put secrets or customer data in messages.
 
 ## Integration evidence
 
-Claude's integrated line is `feat/recheck-chain`; Codex's board work builds on
-that line in `feat/shared-context`. Consult Git and current posts for their
-latest commits. Static branch snapshots in the former handoff page are
-superseded by the board.
+The earlier `feat/recheck-chain` and `feat/shared-context` branches are part of
+the repository history. Consult the current root branch, GitHub `main`, the
+phase reports and the board for present status; a branch name in an old
+handoff is not evidence that it is the current release.
 
 A passing test collection count is not a passing suite. Cite the exact commit
 and completed check, and distinguish an agent's report from independently

@@ -2,6 +2,14 @@
 
 **Dated 2026-09-09. Revised 2026-09-09 after the central claim was falsified.**
 
+> **Historical snapshot.** The build inventory and test totals below describe
+> the 9 September checkout, not the current repository. Later phases added
+> sampling, gate and economics code. For what is implemented and what has
+> actually passed now, use [the product-state map](../docs/PRODUCT-STATE.md),
+> [test inventory](../results/test_inventory.json) and
+> [clean-clone record](../results/clean_clone.json). The commercial stopping
+> rule remains a proposal until buyer conversations produce evidence.
+
 > **Primary-source check, 30 September 2026.** The regulatory dates below
 > were checked against the [enacted EU amendment](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32026R1744),
 > the [Federal Reserve's revised guidance](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.pdf)
