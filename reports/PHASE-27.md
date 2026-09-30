@@ -59,9 +59,10 @@ buyer interviews, a paid pilot, or evidence that this is a fundable company.
 
 ## Open items
 
-Finish the corrected Phase 25 full clone, integrate the Phase 26 parser and
-this preflight with its report, then run the combined-tree checks and record
-their source commit. Observe remote CI separately if the branch is pushed.
+The corrected Phase 25 full clone passed on its earlier source and the
+Phase 26 parser and this preflight have been integrated. Run the combined-tree
+checks and record their exact source commit. Observe remote CI separately if
+the branch is pushed.
 Keep the customer-discovery stopping rule in `reports/STRATEGY-2026-09.md`:
 local release hygiene cannot answer whether a buyer needs this certificate.
 

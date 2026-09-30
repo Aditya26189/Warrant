@@ -109,6 +109,10 @@
 | 🚚 [PATHS.md](PATHS.md) | What moved on 2026-08-29 and where it went |
 | 📈 [../results/RESULTS.md](../results/RESULTS.md) | The rendered results, with fixture numbers refused rather than printed |
 | 📑 `reports/PHASE-<N>.md` | One report per sprint, leading with the answer; [PHASE-12.md](../reports/PHASE-12.md) closes sprint 12; [PHASE-15.md](../reports/PHASE-15.md) records an earlier repair checkpoint; [PHASE-16.md](../reports/PHASE-16.md) audits the product state; [PHASE-17.md](../reports/PHASE-17.md) records certificate replay; [PHASE-18.md](../reports/PHASE-18.md) records recheck evidence linkage; [PHASE-19.md](../reports/PHASE-19.md) records fresh-batch binding and ordinary replay; [PHASE-20.md](../reports/PHASE-20.md) records linear chain-prefix replay; [PHASE-21.md](../reports/PHASE-21.md) records release label auditing; [PHASE-22.md](../reports/PHASE-22.md) records grouped-boundary evidence and historical replay; [PHASE-23.md](../reports/PHASE-23.md) audits grouped hard-negative FPR warrants; [PHASE-24.md](../reports/PHASE-24.md) repairs collapsed grouped flag-rate and descriptive FPR intervals; [PHASE-25.md](../reports/PHASE-25.md) records the fresh-clone gate on the integrated line |
+| [PHASE-26.md](../reports/PHASE-26.md) | Why the clean-clone verifier now rejects missing, duplicate and contradictory tier summaries, and what was tested |
+| [PHASE-27.md](../reports/PHASE-27.md) | Which known release blockers are preflighted before the full clone suite, and what remains untested |
+| [PHASE-28.md](../reports/PHASE-28.md) | How failed clone attempts are retained without replacing the last passing record |
+| [STRATEGY-2026-09.md](../reports/STRATEGY-2026-09.md) | The commercial stopping rule and dated primary-source regulatory corrections |
 | 🧭 [NEXT-STEPS-2026-09-17.md](../reports/NEXT-STEPS-2026-09-17.md) | What to do next, after sprint 12: the decisions only the founder can make, then the engineering, in order |
 
 ## 🎥 Presentation and the business case

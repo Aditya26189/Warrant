@@ -1,7 +1,7 @@
 # Product state and evidence map
 
 This page is the current entry point for assessing Warrant as software. It
-describes the local Phase 24 checkout reviewed on 30 September 2026. The [claim table](../README.md)
+describes the isolated integration checkout reviewed on 30 September 2026. The [claim table](../README.md)
 and [results](../results/RESULTS.md) hold measured research numbers; this page
 does not restate them. [The code tour](CODE_TOUR.md) explains each package,
 and [limitations](LIMITATIONS.md) carries the detailed statistical caveats.
@@ -14,6 +14,11 @@ replay. [Phase 20](../reports/PHASE-20.md) records retained linear-chain replay.
 [Phase 22](../reports/PHASE-22.md) repairs grouped recall/precision boundaries;
 [Phase 23](../reports/PHASE-23.md) corrects hard-negative warrant inference;
 [Phase 24](../reports/PHASE-24.md) repairs grouped descriptive rate boundaries.
+[Phase 25](../reports/PHASE-25.md) records a corrected full tracked-file clone;
+[Phase 26](../reports/PHASE-26.md) makes its verifier-tier parser fail closed;
+[Phase 27](../reports/PHASE-27.md) preflights known full-suite blockers; and
+[Phase 28](../reports/PHASE-28.md) preserves failed attempts separately from
+the last passing clone record.
 
 **Current status: a usable local evaluation tool and a substantial research
 harness, not a deployed enterprise service or a validated startup.** A user can
@@ -45,7 +50,7 @@ for refusal and error behavior.
 |---|---|---|
 | Research pipeline | Question-time activation extraction, frozen evaluation sets and scores, probe training, statistical controls, model and text-detector adapters, validation, a detector-by-envelope matrix, report generation and claim verification. | [Results](../results/RESULTS.md) and the [claim table](../README.md) are reproducible claims about the named evaluation envelopes. They do not establish performance on another model, task or customer's traffic. Some matrix cells and detector tiers are fixtures, explicitly separated from measurements. |
 | Monitoring and policy demonstrations | Drift checks and revocation traces, a Rego policy path, an action-gate implementation, a LiteLLM adapter and simulated on-traffic sampling and cost studies. | [Architecture](ARCHITECTURE.md), [results](../results/), and [case matrix](CASES.md) document the exercises. These are not a running gateway, live traffic monitor, production policy service or robustness study. |
-| Evidence infrastructure | Committed frozen-score artifacts, source/config provenance, content-hashed evaluation sets, an append-only methodological decision log, claim checks and a clean-clone record. | [`scripts/verify.py`](../scripts/verify.py) can recompute published claims from retained artifacts. The [artifact guide](ARTIFACTS.md) distinguishes frozen scores, fixtures, declared scenarios and generated reports. The last committed clean-clone record predates the latest repairs; it is not a release gate for this head. |
+| Evidence infrastructure | Committed frozen-score artifacts, source/config provenance, content-hashed evaluation sets, an append-only methodological decision log, claim checks and clean-clone records. | [`scripts/verify.py`](../scripts/verify.py) can recompute published claims from retained artifacts. The [artifact guide](ARTIFACTS.md) distinguishes frozen scores, fixtures, declared scenarios and generated reports. The last passing full clean-clone record tested the earlier Phase 25 source; the later integrated head still requires its own full gate. |
 | Test infrastructure | Source, installed-wheel, document, claim and acceptance tests, with Linux and Windows CI jobs declared. | [Testing guide](TESTING.md) and [CI configuration](../.github/workflows/ci.yml) show what is exercised. The [test inventory](../results/test_inventory.json) records collection only; it is not proof that the full suite or remote CI passed at the current head. |
 
 ## Deployment and assurance gaps
@@ -78,10 +83,11 @@ enterprise control, even where the local command behaves correctly:
    control, rate limits, tenant separation, high availability or deployment
    manifests exist. The gateway package is an adapter. Live scheduling, traffic
    ingestion and observability for a customer deployment have not been shown.
-5. **Current-head verification.** Phase 23 records a clean local full-suite
-   pass and frozen-score replay. Phase 24 records its clean verifier and the
-   full-suite status separately; an older clean-clone gate has different
-   provenance. Review the current branch's full test, claim,
+5. **Current-head verification.** Phase 25 records a passing full suite in a
+   tracked-file clone on its named source. Phase 26 records smoke and verifier
+   tiers on a later source, with the full suite omitted. The combined source
+   after Phases 27 and 28 has not yet earned a full-clone pass. Review the
+   current branch's full test, claim,
    installed-package and remote CI results before a release; do not substitute
    collection counts or older passes.
 
