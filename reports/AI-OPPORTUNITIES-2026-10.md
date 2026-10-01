@@ -74,6 +74,19 @@ vendor-commissioned survey, not measured failure rates or a purchase commitment
 for Warrant. The useful signal is pressure to demonstrate outcomes and manage
 agent changes. [Announcement and methodology](https://www.dataiku.com/company/news/global-ai-confessions-report-cio-edition-2026)
 
+**A direct incumbent challenge.** On the same day Dataiku announced Agent
+Management, a separate product scheduled for general availability in October.
+Its stated scope already includes cross-platform agent inventory, business and
+technical performance, risk flags, a standing certification-status record and
+scheduled tests. Its announcement does not show the statistical contract or
+replay files for a review-trigger operating point, but absence from that press
+release is not evidence the product lacks them. This removes any defensible
+claim that cross-platform agent governance or certification tracking is an
+unoccupied niche. The only plausible wedge here is a small, locally replayable
+measurement handoff for a specific review decision; it requires a comparison
+with real incumbent output and a buyer who needs it.
+[Product announcement](https://www.dataiku.com/company/news/dataiku-agent-management-general-availability)
+
 **Current founder themes are broader than chat.** YC's Fall 2026 requests include
 multiplayer AI, easier deployment of small purpose-built software, physical-world
 operations/data, consumer experiences, eldercare and AI-native compliance.
@@ -124,6 +137,7 @@ creator access and evaluation of workflow quality.
 |---|---|---|
 | LangSmith | Documents offline benchmarking, regression tests, online evaluation and human-feedback workflows. [Documentation](https://docs.langchain.com/langsmith/evaluation-types) | Do not build another general evaluation runner or claim nobody connects traces to tests. |
 | Braintrust | Documents systematic evaluation and exposes annotation, exports, experiments and online scoring in its product navigation. [Documentation](https://www.braintrust.dev/docs/evaluate) | Consume exported evidence first. A vendor-specific adapter requires a documented schema and an actual sample. |
+| Dataiku Agent Management | Announced September 24 for October general availability: multi-platform inventory, performance, risk, certification status and scheduled tests. [Announcement](https://www.dataiku.com/company/news/dataiku-agent-management-general-availability) | Do not claim vendor-neutral governance or standing certification as novel. Compare a concrete review packet before arguing for an independent evidence handoff. |
 | Vigil | September 30 winning financial-call audit prototype supplies timestamped alerts and regulatory references. [Elastic account](https://www.elastic.co/blog/mumbai-forge-the-future-hackathon-2026) | Do not build another speech detector; ask whether its review team needs independent evidence for threshold, miss rate and change approval. Its competition win does not prove that need. |
 | AgentGuard | Gemini honorable mention describes a semantic firewall. [Project](https://devpost.com/software/agentguard-the-semantic-firewall-for-the-agentic-web) | Agent security is already crowded even at the hackathon layer. An award is not evidence of adversarial robustness. |
 | Warrant today | Local code and replay contracts, not a market source | Possible contribution: explicit operating-point evidence, refusal when unsupported, independence handling and local replay. Competitors' absence of these features has not been proved. |
