@@ -309,11 +309,14 @@ from cached activations and reports SKIPPED without them.
 Every subcommand, the question it answers, and how its exit code reads. A
 certify refusal, recheck revocation and chain inspection with findings exit 0;
 the certify-record verifier exits 0 only for `VERIFIED` and 1 for `MISMATCH` or
-`UNVERIFIED`. Input a command cannot use exits 2. Other hard-failure modes use
+`UNVERIFIED`. The prepared-export verifier exits 1 for changed retained bytes.
+Input a command cannot use exits 2. Other hard-failure modes use
 the listed `--require-…` flags.
 
 | Command | Answers | Exits 1 only when | Read |
 |:---|:---|:---|:---|
+| `warrant prepare -i EXPORT --mapping MAP -o DIR` | Can a declared export be normalized without guessing label, score or group meaning? Writes a new scored file and replay manifest, not a certificate | — | [INPUT.md](docs/INPUT.md#prepare-an-existing-scored-export) |
+| `warrant verify-prepared -i EXPORT --mapping MAP --prepared DIR` | Does the package still match the retained export and mapping? | Bytes differ | [INPUT.md](docs/INPUT.md#prepare-an-existing-scored-export) |
 | `warrant certify -i FILE -b BUDGET` | Can this file support this false-positive budget? The lowest threshold that can, or a refusal naming what is missing | `--require-warrant` and refused | [INPUT.md](docs/INPUT.md) |
 | `warrant certify -i FILE --frontier` | What does every budget on the grid cost, in exact counts? | — | [GLOSSARY.md](docs/GLOSSARY.md#frontier) |
 | `warrant certify -i FILE -b BUDGET --from-frontier RECORD` | Certify a budget picked off the frontier, at the level the frontier held it to | `--require-warrant` and refused | [METHODS.md](docs/METHODS.md#13-the-frontier-and-the-cost-of-choosing-from-it) §13 |
