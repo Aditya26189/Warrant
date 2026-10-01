@@ -1,7 +1,7 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-09-30T13:14:12+00:00",
-    "git_commit": "94e48a7f9acd7d56f01c353e2825424437ee5ff3",
+    "timestamp_utc": "2026-10-01T00:01:31+00:00",
+    "git_commit": "f2447b68635fb33ea3a5fa9578b38f7cc45bd5f1",
     "git_branch": "release/root-main",
     "dirty": false,
     "dirty_paths": [],
@@ -205,9 +205,9 @@
   },
   "provenance_taken": "before cloning",
   "ok": true,
-  "commit": "94e48a7f9acd7d56f01c353e2825424437ee5ff3",
-  "clone_path": "C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-r5oo_ipa\\controlplane",
-  "tracked_files": 592,
+  "commit": "f2447b68635fb33ea3a5fa9578b38f7cc45bd5f1",
+  "clone_path": "C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-x9thyejg\\controlplane",
+  "tracked_files": 593,
   "steps": [
     {
       "name": "git clone",
@@ -216,10 +216,10 @@
         "clone",
         "--quiet",
         "C:\\Users\\LawLight\\Desktop\\accenture",
-        "C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-r5oo_ipa\\controlplane"
+        "C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-x9thyejg\\controlplane"
       ],
       "returncode": 0,
-      "duration_seconds": 9.59,
+      "duration_seconds": 8.8,
       "ok": true,
       "skipped": false,
       "detail": "",
@@ -248,7 +248,7 @@
         "refs/notes/*:refs/notes/*"
       ],
       "returncode": 0,
-      "duration_seconds": 0.4,
+      "duration_seconds": 0.35,
       "ok": true,
       "skipped": false,
       "detail": "",
@@ -261,11 +261,11 @@
         "scripts/smoke.py"
       ],
       "returncode": 0,
-      "duration_seconds": 5.85,
+      "duration_seconds": 6.28,
       "ok": true,
       "skipped": false,
       "detail": "",
-      "tail": "Warrant smoke check\n============================================================\n  OK    python version: 3.12.10\n  OK    package imports: controlplane, and its model, policy and validation subpackages\n  OK    config loads: config hash 2640a176a26a80a0, seed 1729\n  OK    provenance resolves: commit 94e48a7f9acd, dirty=False\n  OK    artifacts readable: validation-T1-last_token.json -> AUROC 0.8256, VALID\n  OK    eval sets frozen: 4 frozen eval sets, content-hashed\n  OK    claim table parses: 92 claims, each naming an artifact and a field\n============================================================\nSMOKE OK: 7/7"
+      "tail": "Warrant smoke check\n============================================================\n  OK    python version: 3.12.10\n  OK    package imports: controlplane, and its model, policy and validation subpackages\n  OK    config loads: config hash 2640a176a26a80a0, seed 1729\n  OK    provenance resolves: commit f2447b68635f, dirty=False\n  OK    artifacts readable: validation-T1-last_token.json -> AUROC 0.8256, VALID\n  OK    eval sets frozen: 4 frozen eval sets, content-hashed\n  OK    claim table parses: 92 claims, each naming an artifact and a field\n============================================================\nSMOKE OK: 7/7"
     },
     {
       "name": "make test preflight",
@@ -278,7 +278,7 @@
         "-q"
       ],
       "returncode": 0,
-      "duration_seconds": 41.82,
+      "duration_seconds": 44.47,
       "ok": true,
       "skipped": false,
       "detail": "",
@@ -294,11 +294,11 @@
         "-q"
       ],
       "returncode": 0,
-      "duration_seconds": 2621.12,
+      "duration_seconds": 2712.68,
       "ok": true,
       "skipped": false,
       "detail": "",
-      "tail": "........................................................................ [ 64%]\n........................................................................ [ 67%]\n........................................................................ [ 70%]\n........................................................................ [ 74%]\n........................................................................ [ 77%]\n........................................................................ [ 80%]\n........................................................................ [ 84%]\n........x............................................................... [ 87%]\n........................................................................ [ 91%]\n........................................................................ [ 94%]\n........................................................................ [ 97%]\n..............................................                           [100%]\n============================== warnings summary ===============================\n<frozen importlib._bootstrap>:488\n  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute\n\n<frozen importlib._bootstrap>:488\n  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute\n\ntests/test_warrant_stats.py::test_a_non_finite_update_raises_rather_than_asserting\n  C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-r5oo_ipa\\controlplane\\controlplane\\validation\\warrant_stats.py:190: RuntimeWarning: divide by zero encountered in log1p\n    self._logw += np.log1p(self.lams * (x - self.p0))\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\nsys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute"
+      "tail": "........................................................................ [ 63%]\n........................................................................ [ 67%]\n........................................................................ [ 70%]\n........................................................................ [ 74%]\n........................................................................ [ 77%]\n........................................................................ [ 80%]\n........................................................................ [ 84%]\n..........x............................................................. [ 87%]\n........................................................................ [ 90%]\n........................................................................ [ 94%]\n........................................................................ [ 97%]\n..................................................                       [100%]\n============================== warnings summary ===============================\n<frozen importlib._bootstrap>:488\n  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute\n\n<frozen importlib._bootstrap>:488\n  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute\n\ntests/test_warrant_stats.py::test_a_non_finite_update_raises_rather_than_asserting\n  C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-x9thyejg\\controlplane\\controlplane\\validation\\warrant_stats.py:193: RuntimeWarning: divide by zero encountered in log1p\n    self._logw += np.log1p(self.lams * (x - self.p0))\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\nsys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute"
     },
     {
       "name": "make verify",
@@ -307,7 +307,7 @@
         "scripts/verify.py"
       ],
       "returncode": 0,
-      "duration_seconds": 59.52,
+      "duration_seconds": 63.04,
       "ok": true,
       "skipped": false,
       "detail": "",
@@ -345,8 +345,8 @@
     }
   ],
   "notes": [
-    "592 tracked files in the clone; no gitignored caches, databases or long-context eval sets came with it.",
+    "593 tracked files in the clone; no gitignored caches, databases or long-context eval sets came with it.",
     "verify tiers that ran in the clone: claim table vs artifacts, metrics recomputed from frozen scores. Skipped: scores re-derived from activations.",
-    "could not fully remove the clone at C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-r5oo_ipa: PermissionError: [WinError 5] Access is denied: 'C:\\\\Users\\\\LawLight\\\\AppData\\\\Local\\\\Temp\\\\controlplane-clean-clone-r5oo_ipa\\\\controlplane\\\\.git\\\\objects\\\\00\\\\0602612ca2b1425e0a67cdd2727ef97788f43c'. Not a gate failure -- the checks above all ran -- but it leaves ~26 MB behind, and earlier runs did so silently."
+    "could not fully remove the clone at C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-x9thyejg: PermissionError: [WinError 5] Access is denied: 'C:\\\\Users\\\\LawLight\\\\AppData\\\\Local\\\\Temp\\\\controlplane-clean-clone-x9thyejg\\\\controlplane\\\\.git\\\\objects\\\\04\\\\8996b5d2f045f59930334e626b92d336b0d043'. Not a gate failure -- the checks above all ran -- but it leaves ~26 MB behind, and earlier runs did so silently."
   ]
 }
