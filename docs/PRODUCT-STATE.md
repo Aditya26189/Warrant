@@ -18,7 +18,9 @@ replay. [Phase 20](../reports/PHASE-20.md) records retained linear-chain replay.
 [Phase 26](../reports/PHASE-26.md) makes its verifier-tier parser fail closed;
 [Phase 27](../reports/PHASE-27.md) preflights known full-suite blockers; and
 [Phase 28](../reports/PHASE-28.md) preserves failed attempts separately from
-the last passing clone record.
+the last passing clone record. [Phase 29](../reports/PHASE-29.md) corrects the
+legacy monitor's mixture stopping decision while retaining its historical
+schedule study.
 
 **Current status: a usable local evaluation tool and a substantial research
 harness, not a deployed enterprise service or a validated startup.** A user can
@@ -86,13 +88,13 @@ enterprise control, even where the local command behaves correctly:
    control, rate limits, tenant separation, high availability or deployment
    manifests exist. The gateway package is an adapter. Live scheduling, traffic
    ingestion and observability for a customer deployment have not been shown.
-5. **Current-head verification.** The combined source after Phases 27 and 28
-   passed a full tracked-file clone gate, recorded in
-   [the gate artifact](../results/clean_clone.json). The artifact commit and
-   later documentation commits are not themselves the tested source. Review the
-   current branch's full test, claim,
-   installed-package and remote CI results before a release; do not substitute
-   collection counts or older passes.
+5. **Current-head verification.** Phase 29 source commit `f2447b6` passed a
+   full tracked-file clone gate, recorded in
+   [the gate artifact](../results/clean_clone.json). The artifact and later
+   documentation commits are not themselves the tested source. The claim and
+   frozen-score tiers ran; activation re-extraction was explicitly skipped.
+   Review installed-package and remote CI results separately before a release;
+   do not substitute collection counts or older passes.
 
 ## How to inspect the work
 

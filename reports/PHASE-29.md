@@ -78,9 +78,16 @@ its owner to relabel the source without rewriting Decision 187's data.
 | Counterexample before repair | Three new targeted regressions failed on the old implementation, including wealth 20 versus independent mixture 14.205849555361022 |
 | Focused monitor and schedule suites | Passed after the fix; the historical capped rule remains separately tested |
 | Ruff on changed Python files | Passed |
-| Full clean-source suite and claim/frozen-score verifier | Pending at this report draft; cite the final gate artifact if completed |
+| Full tracked-file clone at `f2447b6` | Passed; 593 tracked files, smoke, preflight and full suite exited zero. The local gate ran 2,712.68 seconds for the full suite; [record](../results/clean_clone.json) committed at `0b50203` |
+| Claim and frozen-score verifier | 92/92 claim rows and 25/25 frozen-score comparisons reproduced in that clone |
 | Activation re-extraction | Not run; no model cache is claimed here |
 | Remote CI and customer sampling assumptions | Unobserved |
+
+The gate's activation tier was marked **SKIPPED**, not passed: ignored model
+caches were absent from the tracked-only clone. Its first cleanup attempt hit a
+Windows file lock after all checks finished. The exact named temporary clone
+was then verified under the system temp directory and removed. The artifact
+retains the original cleanup note so the record of the run is not rewritten.
 
 ## What this does not establish
 
@@ -101,8 +108,8 @@ paid pilot, or revenue was provided for this phase.
   before relying on the monitor's conditional-null guarantee.
 - Have the owner of `controlplane/economics/schedules.py` relabel its historical
   rule docstring, preserving its frozen numbers and Decision 187 provenance.
-- Observe remote CI and any full clean-source gate separately; neither is
-  inferred from focused tests.
+- Observe remote CI separately; the local full clean-source gate is recorded
+  above and does not imply a remote pass.
 
 ## Ledger
 
@@ -111,4 +118,5 @@ paid pilot, or revenue was provided for this phase.
 | Decision before code | `6e0eaa2`, Decision 226 |
 | Focused code and regression commit | `bfd77a8`; targeted pytest and Ruff passed |
 | Current-facing documentation | This report, README claim label, product state, code tour, release guide and testing guide |
+| Inventory and full clone | Inventory at `f2447b6`; passing gate artifact at `0b50203` |
 | Protected result status | Decision 187 artifact and frozen research scores unchanged |
