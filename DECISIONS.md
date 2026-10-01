@@ -11841,3 +11841,16 @@ exactly as after a chained revocation.
 **Validation.** Regress the two-positive decision, an independent log-mixture calculation, null and breach streams, and safe resumption. Run focused tests, full tests and the claim/frozen-score verifier from clean source before declaring a release gate. No protected research test set is rescored.
 
 **Rejected.** Treating a high *component* as a high *average* is mathematically invalid. Recomputing the Decision 187 artifact without a new registration would erase the evidence of the old behavior. Keeping the defective runtime merely to preserve a historical artifact would leave a known false decision in an exported class.
+
+## 227 - Prepare scored exports with explicit semantics (2026-10-01)
+
+- **Status:** DECIDED before implementation.
+- **Scope:** Additive local `prepare` and `verify-prepared` commands; existing estimators, frozen artifacts and certification/release semantics unchanged.
+
+**Decision.** Begin the founder's October research/build plan with a strict flat CSV/JSONL export adapter. Require a versioned mapping for ID, binary label tokens, score direction, and either a group column or an explicit independent-row declaration. Optional second labels use the same label mapping. Preserve row order and all mapped rows; never impute labels, deduplicate, split, tune or clip. Negate lower-is-positive scores rather than assuming a probability range. Reuse the existing strict intake contract after normalization, permitting single-class preparation because measurement commands decide whether that evidence suffices. Reject omission of a canonical group or second-label field present in the source; noncanonical metadata requires the user's correct mapping.
+
+**Evidence.** Publish a new local directory containing canonical scored CSV and a deterministic manifest binding source bytes, mapping bytes, normalized bytes and effective rows. Record excluded column names without copying their values. Replay requires the original export and mapping and compares the complete expected manifest and output. Publish the manifest last; an interrupted directory is incomplete and must not verify. Never replace a destination. No scientific run, confidence interval, score selection or new performance number is produced by preparation.
+
+**Limits.** These hashes prove consistency with retained inputs, not author identity, label truth, independent sampling, a trusted timestamp or absence of omitted source records. IDs and groups can contain sensitive data; normalization is not anonymization. No native vendor integration is claimed. A successful preparation is not a warrant. Grouped release evaluation remains unsupported. The October market hypothesis and weekly stopping rules are in reports/BUILD-PLAN-2026-10.md; no customer demand has been observed.
+
+**Validation.** Test CSV and JSONL, polarity, grouped and second-review preservation, malformed mappings, ambiguous input, duplicate IDs, partial groups, nonfinite scores, single-class input, changed source/mapping/output/manifest, missing completion marker, existing destinations and installed command invocation. Run affected intake/customer checks and clean-source claim replay. Reject guessing semantics from column names or treating normalization as statistical validation.
