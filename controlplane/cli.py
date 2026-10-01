@@ -308,6 +308,22 @@ def build_parser() -> argparse.ArgumentParser:
     from .release.cli import add_parser
 
     add_parser(sub)
+    prepare = sub.add_parser(
+        "prepare", help="map a flat scored export to a replayable local package",
+    )
+    prepare.add_argument("--input", "-i", required=True,
+                         help="original flat .csv, .jsonl or .ndjson export")
+    prepare.add_argument("--mapping", required=True,
+                         help="JSON mapping declaring labels, score direction and groups")
+    prepare.add_argument("--out", "-o", required=True,
+                         help="new package directory; existing destinations are refused")
+    prepared_verify = sub.add_parser(
+        "verify-prepared", help="replay a prepared package from its original inputs",
+    )
+    prepared_verify.add_argument("--input", "-i", required=True)
+    prepared_verify.add_argument("--mapping", required=True)
+    prepared_verify.add_argument("--prepared", required=True,
+                                 help="directory written by warrant prepare")
     chain = sub.add_parser(
         "chain",
         help="audit the records of a chain of rechecks",
@@ -972,6 +988,23 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     from .config import ConfigError
 
     try:
+        if args.command in ("prepare", "verify-prepared"):
+            from .intake.contract import InputError
+            from .intake.prepare import prepare_export, verify_prepared
+
+            try:
+                if args.command == "prepare":
+                    directory = prepare_export(args.input, args.mapping, args.out)
+                    print(f"PREPARED {directory}")
+                    return EXIT_OK
+                if verify_prepared(args.input, args.mapping, args.prepared):
+                    print("VERIFIED: prepared package matches retained inputs")
+                    return EXIT_OK
+                print("MISMATCH: prepared package differs from retained inputs")
+                return 1
+            except (InputError, OSError, ValueError) as exc:
+                print(f"warrant: {exc}", file=sys.stderr)
+                return EXIT_BAD_INPUT
         if args.command == "certify":
             return _certify(args)
         if args.command == "verify":
