@@ -76,6 +76,11 @@ mismatch. Hashes show local integrity against those retained inputs, not who
 created them. Preparation is not certification and cannot establish that labels
 are correct, rows independent or a sample representative.
 
+During preparation the parser makes a temporary local copy of the source under
+the operating system's temporary directory, then removes it on normal exit.
+Use a suitable local environment for sensitive exports; an interrupted process
+may leave temporary files that require cleanup.
+
 An existing downstream command reads `prepared-example/scored.csv` under its
 normal rules. Four synthetic rows will not support a useful certificate.
 Grouped `release` input is still unsupported; do not erase groups to force it
