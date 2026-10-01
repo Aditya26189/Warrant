@@ -128,6 +128,33 @@ def _json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def test_installed_preparation_replays_and_certifies(installed, tmp_path):
+    """Consumer path must work without importing the checkout or a model stack."""
+    existing = _scores(tmp_path)
+    original = tmp_path / "export.csv"
+    original.write_bytes(existing.read_bytes().replace(
+        b"id,label,score", b"item,outcome,risk", 1,
+    ))
+    mapping = tmp_path / "mapping.json"
+    mapping.write_text(json.dumps({
+        "schema_version": 1,
+        "columns": {"id": "item", "label": "outcome", "score": "risk"},
+        "positive_label": "1", "negative_label": "0",
+        "score_direction": "higher", "independent_rows": True,
+    }), encoding="utf-8")
+    package = tmp_path / "prepared"
+    installed.run(tmp_path, "prepare", "-i", str(original),
+                  "--mapping", str(mapping), "-o", str(package))
+    assert _json(package / "manifest.json")["counts"]["rows"] == 600
+    verified = installed.run(tmp_path, "verify-prepared", "-i", str(original),
+                             "--mapping", str(mapping), "--prepared", str(package))
+    assert "VERIFIED" in verified.stdout
+    warrant = tmp_path / "prepared.warrant.json"
+    installed.run(tmp_path, "certify", "-i", str(package / "scored.csv"),
+                  "-b", ".05", "-o", str(warrant), "-q")
+    assert _json(warrant)["status"] == "VALID"
+
+
 def test_wheels_include_canonical_defaults_and_all_python_packages(installed):
     required = {str(path.relative_to(ROOT)).replace("\\", "/")
                 for path in (ROOT / "controlplane").rglob("*.py")}
