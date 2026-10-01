@@ -46,6 +46,9 @@ No paid product trial, project deployment audit or customer interview was run.
 
 | Event and date evidence | Verified result | What to learn; what not to infer |
 |---|---|---|
+| Elastic Forge the Future, India; winner announcement September 30, 2026 | Vigil won; Eyewitness and MediAudit-X followed | Vigil reviews multilingual financial sales calls and points to the audio moment and rule behind a possible violation. This is a particularly current example of evidence-linked review. The event write-up does not establish measured detector recall, false-positive rate or deployment reliability. [Organizer result](https://www.elastic.co/blog/mumbai-forge-the-future-hackathon-2026) |
+| Vista North America and Global agentic hackathons; September 10 announcement | Avalara won North America; InvoiceCloud won the global event | Real workflows with deterministic rules, human checkpoints and records drew the enterprise judges. The article's savings and speed estimates are team projections, not independently measured benefits. [Organizer results](https://www.vistaequitypartners.com/news/vista-equity-partners-names-winners-of-2026-agentic-ai-hackathons/) |
+| OpenAI Build Week; August 25 winner announcement | Second Voice, veTriage, Echo Canvas, Sentinel and Mechanica are among category winners | Domain experts built narrow tools with user review, constrained model roles or source-linked outputs. A veterinary clinic pilot is reported by the organizer; broader performance and commercial success are not established. [Organizer results](https://developers.openai.com/blog/build-week-winners) |
 | Global Gemini 3 Hackathon; organizer update displayed as about five months old when checked | Globot grand prize; Aegis second; Netra third; AgentGuard an honorable mention | Operational workflows, accessibility and agent security attract judges. This is not a September winner announcement. [Organizer results](https://gemini3.devpost.com/updates/40729-the-moment-you-ve-been-waiting-so-patiently-for) |
 | Globot project submission | Describes a supply-chain crisis workflow combining route planning, risk analysis, document review and adversarial checks | Domain integration makes the demonstration concrete. Its speed, forecast and financial claims remain the team's claims; not independently reproduced here. [Submission](https://devpost.com/software/globot-341w9q) |
 | Claude Opus 4.8 Build Day, San Francisco, June 13; announcement June 17, 2026 | Tekton first, Sim Francisco second, Custom Universe third | Reconstruction with source-linked components, simulation and editable visual worlds are impressive artifact-centered interfaces. A verifier agent is not independent ground truth. [Organizer announcement](https://claude.com/blog/meet-the-winners-of-our-claude-opus-4-8-build-day-hackathon) |
@@ -86,6 +89,16 @@ customers. Warrant can measure a supplied review detector; it cannot infer
 overall agent reliability from that detector alone.
 [Engineering article](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
 
+**The newest competitions expose the likely first data contract.** Vigil's
+review event is an audio timestamp in a call; Warrant's statistical item would
+need to be a declared call, claim or grouped segment with a human label and a
+detector score. Those are different units. Treating timestamped segments as
+independent calls would exaggerate sample size. The September Vista winners
+likewise keep human sign-off for filings and sensitive actions. My inference is
+that the useful handoff is between a domain tool's alert and a human review
+decision, with explicit units and retained evidence. Neither award shows
+anyone would purchase a separate validation product.
+
 **Creators want manipulable outputs.** The competition sample includes visual
 reconstruction, scenes, film production and CAD. The inference is that an output
 people can inspect and change is often more compelling than another chat box.
@@ -99,6 +112,7 @@ creator access and evaluation of workflow quality.
 |---|---|---|
 | LangSmith | Documents offline benchmarking, regression tests, online evaluation and human-feedback workflows. [Documentation](https://docs.langchain.com/langsmith/evaluation-types) | Do not build another general evaluation runner or claim nobody connects traces to tests. |
 | Braintrust | Documents systematic evaluation and exposes annotation, exports, experiments and online scoring in its product navigation. [Documentation](https://www.braintrust.dev/docs/evaluate) | Consume exported evidence first. A vendor-specific adapter requires a documented schema and an actual sample. |
+| Vigil | September 30 winning financial-call audit prototype supplies timestamped alerts and regulatory references. [Elastic account](https://www.elastic.co/blog/mumbai-forge-the-future-hackathon-2026) | Do not build another speech detector; ask whether its review team needs independent evidence for threshold, miss rate and change approval. Its competition win does not prove that need. |
 | AgentGuard | Gemini honorable mention describes a semantic firewall. [Project](https://devpost.com/software/agentguard-the-semantic-firewall-for-the-agentic-web) | Agent security is already crowded even at the hackathon layer. An award is not evidence of adversarial robustness. |
 | Warrant today | Local code and replay contracts, not a market source | Possible contribution: explicit operating-point evidence, refusal when unsupported, independence handling and local replay. Competitors' absence of these features has not been proved. |
 
