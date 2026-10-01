@@ -50,6 +50,40 @@ explanation.
 
 ---
 
+## Prepare an existing scored export
+
+If the export uses different field names or label tokens, declare them in a
+versioned mapping before passing data to `certify`. The mapping names source
+columns for `id`, `label` and `score`, optional `group` and `label_2`, the
+positive and negative label tokens, score direction, and whether rows are
+independent when no group is present. For a lower-is-positive score, preparation
+negates it and records that declaration; it cannot verify the declaration is
+correct. A group column is required when rows share a sampling unit.
+
+```powershell
+warrant prepare --input examples/export_sample.csv --mapping examples/export_mapping.json --out prepared-example
+warrant verify-prepared --input examples/export_sample.csv --mapping examples/export_mapping.json --prepared prepared-example
+```
+
+The example is synthetic. `prepare` accepts flat CSV or JSONL/NDJSON and writes
+`scored.csv` plus `manifest.json` to a **new** directory. The scored file uses
+the three required columns above and retains mapped `group` and `label_2`.
+The manifest records hashes of the original source, mapping and scored file,
+an effective-row digest, counts and names of excluded columns. It does not
+include excluded column values. Keep the original export and mapping to run
+`verify-prepared`; it recomputes the whole transformation and refuses a
+mismatch. Hashes show local integrity against those retained inputs, not who
+created them. Preparation is not certification and cannot establish that labels
+are correct, rows independent or a sample representative.
+
+An existing downstream command reads `prepared-example/scored.csv` under its
+normal rules. Four synthetic rows will not support a useful certificate.
+Grouped `release` input is still unsupported; do not erase groups to force it
+through. See the [October discovery packet](../reports/DISCOVERY-2026-10.md)
+for the real-export questions to settle before a dry run.
+
+---
+
 ## Optional: `group`
 
 If your items are not independent — several turns from one conversation, several
@@ -72,8 +106,10 @@ turn_4,0,0.14,convo_B
 **Groups must be equal-sized.** The cluster-level bound only dominates the
 item-level one when they are; with unequal sizes it is *anticonservative* —
 it would promise a tighter false-positive rate than your data supports. Warrant
-raises rather than certifying, and tells you to either equalise the groups or
-drop the column and accept that items are treated as independent.
+raises rather than certifying. Supply an appropriate equal-sized grouped
+sample, or omit `group` only when the items actually satisfy the independent
+unit assumption. Dropping a real grouping solely to get a result overstates
+the evidence.
 
 ## Optional: `label_2`
 
@@ -151,8 +187,10 @@ and not computed when any group holds both.
 
 ## Optional: anything else
 
-Every other column is read, checked, and **not kept**: neither its name nor its
-values appear in any record Warrant writes, and none is used in a computation.
+For direct `certify`, every other column is read, checked, and **not kept**:
+neither its name nor its values appear in the warrant record, and none is used
+in a computation. The separate `prepare` manifest lists excluded column
+**names** for an auditable mapping; their values are not copied.
 Checked means that a duplicate or blank column name, or a row with a missing or
 extra field, is refused rather than silently resolved, since otherwise one of two
 same-named columns would win without anyone choosing it. This page
