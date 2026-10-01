@@ -48,6 +48,7 @@ No paid product trial, project deployment audit or customer interview was run.
 |---|---|---|
 | Elastic Forge the Future, India; winner announcement September 30, 2026 | Vigil won; Eyewitness and MediAudit-X followed | Vigil reviews multilingual financial sales calls and points to the audio moment and rule behind a possible violation. This is a particularly current example of evidence-linked review. The event write-up does not establish measured detector recall, false-positive rate or deployment reliability. [Organizer result](https://www.elastic.co/blog/mumbai-forge-the-future-hackathon-2026) |
 | Vista North America and Global agentic hackathons; September 10 announcement | Avalara won North America; InvoiceCloud won the global event | Real workflows with deterministic rules, human checkpoints and records drew the enterprise judges. The article's savings and speed estimates are team projections, not independently measured benefits. [Organizer results](https://www.vistaequitypartners.com/news/vista-equity-partners-names-winners-of-2026-agentic-ai-hackathons/) |
+| OpenAI WebMCP Challenge; submissions closed in September 2026, gallery checked October 1 | Organizer gallery marks Observatory, Bouquet Studio, JupyterLite WebMCP, Aisle, ArchMorph and other projects as winners | A genuinely new interface pattern is websites exposing typed actions to a human and agent in the same session. This is an experimental proposed standard; the gallery does not establish interoperability or uptake. [Organizer gallery](https://webmcp.devpost.com/project-gallery?page=1), [challenge description](https://openai.com/webmcp-challenge/) |
 | OpenAI Build Week; August 25 winner announcement | Second Voice, veTriage, Echo Canvas, Sentinel and Mechanica are among category winners | Domain experts built narrow tools with user review, constrained model roles or source-linked outputs. A veterinary clinic pilot is reported by the organizer; broader performance and commercial success are not established. [Organizer results](https://developers.openai.com/blog/build-week-winners) |
 | Global Gemini 3 Hackathon; organizer update displayed as about five months old when checked | Globot grand prize; Aegis second; Netra third; AgentGuard an honorable mention | Operational workflows, accessibility and agent security attract judges. This is not a September winner announcement. [Organizer results](https://gemini3.devpost.com/updates/40729-the-moment-you-ve-been-waiting-so-patiently-for) |
 | Globot project submission | Describes a supply-chain crisis workflow combining route planning, risk analysis, document review and adversarial checks | Domain integration makes the demonstration concrete. Its speed, forecast and financial claims remain the team's claims; not independently reproduced here. [Submission](https://devpost.com/software/globot-341w9q) |
@@ -80,6 +81,17 @@ This is investor interest, not validated demand. My inference: sharing control,
 handoffs and evidence becomes more valuable as agents perform longer tasks.
 Building all those categories would dilute a one-month effort.
 [Current requests](https://www.ycombinator.com/rfs)
+
+**An emerging web interface niche.** OpenAI's WebMCP challenge, with partners
+including Chrome, Shopify, Cloudflare, Vercel, Netlify and Render, asks sites
+to expose structured tools that an agent can use alongside a person. The
+organizer's current winners gallery shows collaborative maps, design canvases,
+shopping and notebook interfaces. My inference: agent-ready websites may
+become a useful way to let people supervise work in one surface. The standard
+is experimental and the founder still needs a concrete user workflow before
+adding a web layer to this local evidence tool.
+[Challenge](https://openai.com/webmcp-challenge/),
+[winner gallery](https://webmcp.devpost.com/project-gallery?page=1)
 
 **Evaluation is becoming ordinary engineering practice.** Anthropic's January
 engineering article describes evaluating multi-turn agents with environment
@@ -131,6 +143,7 @@ Qualitative founder judgment, not a numerical market score:
 |---|---|---|---|
 | Agent evaluation evidence handoff | Existing export workflows, outcome pressure, reusable local core | Unknown buyer budget; incumbents can add it | Build one small usable extension and test demand |
 | Multiplayer agent workspace | Explicit current investor interest; long tasks need shared control | Crowded platforms, auth and orchestration scope | Track; no new workspace product this month |
+| Agent-ready web tools | Experimental WebMCP challenge and shared human/agent winner interfaces | Standard maturity and the need for an actual site/workflow | Revisit only if a customer asks to review evidence inside an existing site |
 | Vertical document/bid agent | Concrete enterprise award examples | Domain access, document rights, ground truth | Alternative if discovery exposes a repeatable reachable workflow |
 | Voice/vision field assistant | Current wearable and physical-world demos | Hardware, field testing, safety and distribution | Outside current free-compute month |
 | Creative 3D/video workflow | Strong visual demo appeal | GPU costs, crowded tools, creator distribution | Do not pivot without creator access |
