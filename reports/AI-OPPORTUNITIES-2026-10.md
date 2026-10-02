@@ -95,6 +95,15 @@ handoffs and evidence becomes more valuable as agents perform longer tasks.
 Building all those categories would dilute a one-month effort.
 [Current requests](https://www.ycombinator.com/rfs)
 
+**Agent infrastructure is advancing rapidly.** OpenAI's official API changelog
+records the Agents API public beta on September 10 and computer use in that API
+on September 29. Its documentation describes durable sessions, a managed
+execution harness, environment choices, streamed progress and recovery. This
+does not establish reliability of a particular agent, but it makes generic
+long-running agent orchestration a weaker independent startup wedge for this
+repo. [Official OpenAI documentation](https://developers.openai.com/api/docs/guides/agents-api/overview),
+[API changelog](https://developers.openai.com/api/docs/changelog)
+
 **An emerging web interface niche.** OpenAI's WebMCP challenge, with partners
 including Chrome, Shopify, Cloudflare, Vercel, Netlify and Render, asks sites
 to expose structured tools that an agent can use alongside a person. The
