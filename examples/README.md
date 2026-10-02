@@ -1,12 +1,12 @@
-# Two examples: one certifies, one refuses
+# Synthetic examples: certify, refuse and prepare an export
 
-**These are synthetic demonstration files.** They were drawn by
-`scripts/22_make_examples.py` from a seeded generator. Their numbers describe
-that generator — not any detector, not any language model, and nothing in this
-project's claim table. They exist so you can see both outcomes in under a
-minute.
+**These are synthetic demonstration files.** `certifies.csv` and `refuses.csv`
+were drawn by `scripts/22_make_examples.py` from a seeded generator; the export
+fixture is a small hand-written format example. Their numbers describe neither
+a real detector nor a language model and are outside this project's claim
+table. The first two show certification and refusal in under a minute.
 
-Run them in this order. The second one is the more important.
+Run the first two in order. The refusal is the more important outcome.
 
 ---
 
@@ -62,6 +62,28 @@ stronger promise, and a stronger promise needs more evidence.**
 
 ---
 
+## 3. Prepare a differently named export
+
+`export_sample.csv` has an item identifier, text labels, a risk score, a
+conversation grouping, some second reviews and a deliberately excluded note.
+The mapping declares what each field means; Warrant does not guess polarity or
+silently turn conversation segments into independent evidence.
+
+```bash
+python warrant.py prepare --input examples/export_sample.csv --mapping examples/export_mapping.json --out prepared-example
+python warrant.py verify-prepared --input examples/export_sample.csv --mapping examples/export_mapping.json --prepared prepared-example
+```
+
+Inspect `prepared-example/scored.csv` and `manifest.json`. The scored file is a
+canonical input for existing commands, while the manifest binds the retained
+source, mapping and normalized bytes for local replay. This tiny fixture is a
+format demonstration, not evidence for certification. Keep the source and
+mapping; `verify-prepared` needs both. Pick another output directory if you
+repeat `prepare`, because it will not replace a package. See the
+[input contract](../docs/INPUT.md) for limits and sensitive-data handling.
+
+---
+
 ## Then try your own
 
 Three columns: `id`, `label` (0/1, where **1 means the detector should fire**),
@@ -72,12 +94,13 @@ Nothing leaves your machine.
 
 ---
 
-## Regenerating these files
+## Regenerating the certification examples
 
 ```bash
 python scripts/22_make_examples.py
 ```
 
-Seeded from `config.yaml`, so it reproduces the committed files exactly. The
+Seeded from `config.yaml`, so it reproduces `certifies.csv` and `refuses.csv`
+exactly. The separate export fixture and mapping are hand-written. The
 `.warrant.json` records these commands write are gitignored — they are outputs,
 and they carry the git state of whoever ran them.
