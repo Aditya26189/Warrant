@@ -165,7 +165,9 @@ def _run_suite_after_preflight(python: str, cwd: Path) -> list[StepResult]:
                 detail="not run because test preflight failed",
             ),
         ]
-    return [preflight, _run("make test", full_command, cwd=cwd, timeout=3600)]
+    # Decision 228: the full tracked-file suite exceeded the former one-hour
+    # deadline twice. Keep every test and a finite deadline, but allow two hours.
+    return [preflight, _run("make test", full_command, cwd=cwd, timeout=7200)]
 
 
 #: Human-readable label per tier key, for the report. The keys themselves come

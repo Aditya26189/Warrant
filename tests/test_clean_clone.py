@@ -98,18 +98,19 @@ def test_passing_clone_preflight_runs_the_full_suite(
     """Preflight is an early refusal, not a replacement for the full suite."""
     import controlplane.report.clean_clone as clone
 
-    calls: list[tuple[str, list[str]]] = []
+    calls: list[tuple[str, list[str], int]] = []
 
     def fake_run(name: str, command: list[str], cwd: Path, timeout: int) -> StepResult:
-        calls.append((name, command))
+        calls.append((name, command, timeout))
         return _step(name, ok=True)
 
     monkeypatch.setattr(clone, "_run", fake_run)
     steps = clone._run_suite_after_preflight("python", Path("clone"))
-    assert [name for name, _ in calls] == ["make test preflight", "make test"]
+    assert [name for name, _, _ in calls] == ["make test preflight", "make test"]
     assert any("test_every_stated_test_count_is_the_real_one" in arg for arg in calls[0][1])
     assert any("test_the_committed_gate_artifact_is_readable_and_passed" in arg for arg in calls[0][1])
     assert calls[1][1] == ["python", "-m", "pytest", "tests/", "-q"]
+    assert calls[1][2] == 7200
     assert all(step.ok and not step.skipped for step in steps)
 
 
