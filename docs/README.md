@@ -113,9 +113,11 @@
 | [PHASE-27.md](../reports/PHASE-27.md) | Which known release blockers are preflighted before the full clone suite, and what remains untested |
 | [PHASE-28.md](../reports/PHASE-28.md) | How failed clone attempts are retained without replacing the last passing record |
 | [PHASE-29.md](../reports/PHASE-29.md) | Why the current monitor uses mixture wealth while the Decision 187 schedule remains historical |
+| [PHASE-30.md](../reports/PHASE-30.md) | What October export preparation built and which clone checks remain unresolved |
 | [AI-OPPORTUNITIES-2026-10.md](../reports/AI-OPPORTUNITIES-2026-10.md) | Which current competition, founder and incumbent signals shaped the October hypothesis, and which claims remain unverified? |
 | [BUILD-PLAN-2026-10.md](../reports/BUILD-PLAN-2026-10.md) | What is the October day-by-day build and discovery schedule, with acceptance and stop gates? |
 | [DISCOVERY-2026-10.md](../reports/DISCOVERY-2026-10.md) | What should a reviewer and engineer show before a real export or recurring decision is claimed? Blank worksheet; no interviews recorded |
+| [MENTOR-BRIEF-2026-10-02.md](../reports/MENTOR-BRIEF-2026-10-02.md) | Shareable account of the research hypothesis, October progress, verification limits and month plan |
 | [STRATEGY-2026-09.md](../reports/STRATEGY-2026-09.md) | The commercial stopping rule and dated primary-source regulatory corrections |
 | 🧭 [NEXT-STEPS-2026-09-17.md](../reports/NEXT-STEPS-2026-09-17.md) | What to do next, after sprint 12: the decisions only the founder can make, then the engineering, in order |
 
