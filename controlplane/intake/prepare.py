@@ -126,6 +126,10 @@ def _build(source: Path, mapping: Path) -> tuple[bytes, bytes]:
                         score = float(value)
                     except ValueError as exc:
                         raise InputError(f"row {number}: score must be numeric") from exc
+                    except OverflowError as exc:
+                        raise InputError(
+                            f"row {number}: score must be a finite number"
+                        ) from exc
                     normalized[name] = -score if spec["score_direction"] == "lower" else score
                 else:
                     if type(value) not in (str, int):
