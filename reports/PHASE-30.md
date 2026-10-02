@@ -31,6 +31,12 @@ does not by itself attest to human ground truth or independent sampling.
 The [30-day plan](BUILD-PLAN-2026-10.md) and
 [discovery packet](DISCOVERY-2026-10.md) put observed workflow evidence ahead of
 further integration work.
+The [incumbent packet comparison](INCUMBENT-PACKET-COMPARISON-2026-10.md)
+documents existing export, reference-answer and human-review capabilities
+from primary vendor sources. It is desk research, not a trial or a customer
+packet. The [packet design review](PACKET-DESIGN-REVIEW-2026-10.md) finds that
+existing replay and the handoff map already cover much of a proposed bundle;
+an observed reviewer failure is needed before implementing one.
 
 Decision 227 preregistered the adapter's representation-only boundary before
 code. It changes no model, test split, estimator, threshold-selection rule,
@@ -67,6 +73,9 @@ The installed command is exercised outside the checkout against a synthetic
 existing rules. This shows package wiring and compatibility, not field
 performance. The four-row public example demonstrates the format and replay,
 not a certificate. Its extra note column is excluded from scored output.
+The [short synthetic demonstration](REPRODUCIBLE-DEMO-2026-10.md) records a
+successful preparation replay, separate VALID and REFUSED certifications,
+and a changed-source replay returning MISMATCH with exit code 1.
 
 ## Verification and evidence boundary
 
@@ -77,6 +86,7 @@ not a certificate. Its extra note column is excluded from scored output.
 | Ruff on changed Python | Passed |
 | Clean-source full suite at `239a10b` | Exit code 0. Inventory separately recorded 2,180 collected tests; collection is not a passing-test count. The quiet full-suite output showed one expected-failure marker and no failure. |
 | Clean-source smoke and claim replay at `239a10b` | Smoke 7/7; README claims 92/92; frozen-score comparisons 25/25; activation re-extraction SKIPPED |
+| Full tracked-file clean-clone gate at `87070b6` | PASSED: clone, smoke, preflight, full suite and verification; 92/92 claims and 25/25 frozen-score comparisons reproduced; activation re-extraction SKIPPED |
 
 The first full tracked-file clone of documentation head `1417c42` passed its
 clone, smoke and preflight steps, plus claim/frozen-score verification, but its
@@ -115,6 +125,16 @@ tiers passed. The generated
 was committed at `888fa09` before this correction. This report-contract
 failure is real even though it is not a product-code regression.
 
+After the explicit missing sections were committed at `87070b6`, the full
+tracked-file clone gate **PASSED** at that clean commit. The full test step
+exited zero in 2,816 seconds; smoke, preflight and verification also exited
+zero. The generated [pass record](../results/clean_clone.json) was committed
+at `cc46105`. The gate could not remove its temporary clone because of a
+Windows file permission error; its exact resolved path was verified under the
+OS temp directory and removed after the run. Research and report commits
+after `87070b6` are documentation changes and are not themselves the source
+named by this full gate.
+
 A tracked-only clone of `bcfd5a1` subsequently passed smoke and verification
 with full tests deliberately omitted. Its
 [separate check record](../results/clean_clone_phase30_no_tests.json) names
@@ -143,10 +163,11 @@ none is an observed result here. Do not write a vendor-specific adapter from a
 generic export claim or add a hosted service without such evidence. If the
 incumbent packet suffices, narrow or stop the product hypothesis.
 
-Technically, rerun the focused report contract and then the full clean-clone
-gate from a clean commit containing this correction. The later October plan
-requires one observed export, reviewer replay, repeat use, and a keep/pivot/stop
-decision; those cannot be substituted with more synthetic tests.
+Technically, the full clone gate has passed for the clean implementation
+commit. Integration still needs focused report/index checks and a release
+checkout smoke/claim replay after the documentation merge. The later October
+plan requires one observed export, reviewer replay, repeat use, and a
+keep/pivot/stop decision; those cannot be substituted with more synthetic tests.
 
 ## Ledger
 
@@ -165,4 +186,6 @@ decision; those cannot be substituted with more synthetic tests.
 | Tracked-only clone check | `bcfd5a1`; [no-tests artifact](../results/clean_clone_phase30_no_tests.json) |
 | Refreshed integrated test inventory | `53aeef5`: 2,180 -> 2,183 collected, not an execution result |
 | Preserved full-clone report-contract failure | `888fa09`; [failure artifact](../results/clean_clone_failures/clean_clone-95c4431e060f-1790916156138116200.json) |
+| Passing full clean-clone gate | `87070b6`; committed pass artifact `cc46105` in [clean_clone.json](../results/clean_clone.json) |
+| Incumbent comparison and synthetic demonstration | [Packet comparison](INCUMBENT-PACKET-COMPARISON-2026-10.md), [executed demo](REPRODUCIBLE-DEMO-2026-10.md), [conditional package review](PACKET-DESIGN-REVIEW-2026-10.md) |
 | Mentor-facing progress brief | [October 2 brief](MENTOR-BRIEF-2026-10-02.md) |
