@@ -1,9 +1,8 @@
 # Warrant: October research and build update for a mentor
 
-**As of 2 October 2026.** This is a status report on work in isolated October
-branches. The Phase 29 release checkout remains the prior integrated baseline;
-the October changes are being verified before integration. There is no customer
-pilot, production deployment or measured commercial demand yet.
+**As of 2 October 2026.** This reports the October research, implementation
+and verification against the prior Phase 29 release baseline. There is no
+customer pilot, production deployment or measured commercial demand yet.
 
 ## The decision in one paragraph
 
@@ -55,6 +54,9 @@ interest rather than purchase demand. The
 [research memo](AI-OPPORTUNITIES-2026-10.md) records methods, dates, sources
 and alternatives. It is a purposive worldwide scan, not a complete ranking of
 all competitions.
+The [incumbent packet comparison](INCUMBENT-PACKET-COMPARISON-2026-10.md)
+checks documented exports, reference answers and review workflows in more
+detail. It does not replace a hands-on comparison with a real customer packet.
 
 | Signal checked | Observation | Relevance to this decision |
 |---|---|---|
@@ -114,6 +116,11 @@ installed-wheel test that exercises `prepare`, `verify-prepared` and existing
 `certify` on a separate 600-row **synthetic** export, an updated
 [input guide](../docs/INPUT.md), and a
 [discovery worksheet](DISCOVERY-2026-10.md). None is a customer trial.
+An [executed synthetic demo](REPRODUCIBLE-DEMO-2026-10.md) shows a valid
+example, a deliberate refusal and a changed-source replay mismatch. The
+[packet design review](PACKET-DESIGN-REVIEW-2026-10.md) identifies the existing
+replay commands that a new bundle would otherwise duplicate and defers that
+feature until a reviewer exposes a concrete handoff gap.
 Decision 227 in [DECISIONS.md](../DECISIONS.md) preregistered the
 representation-only boundary before implementation.
 
@@ -139,16 +146,20 @@ omitted; its [record](../results/clean_clone_phase30_no_tests.json) must not be
 read as a full-suite pass. I fixed timeout reporting so a future timeout keeps
 pytest's last captured lines. A separate direct suite in a kept clone of
 `bcfd5a1` exposed the stale 2,180 count and was stopped after the deterministic
-failure; that run is not a pass. The corrected, two-hour full-clone gate is the
-remaining technical integration check. Later reporting and deadline changes
-passed focused tests but have not yet had a full-suite result at their exact
-head.
-The October branches have not yet been merged into the release checkout.
+failure; that run is not a pass. The corrected full clean-clone gate
+subsequently **passed** at clean source commit `87070b6`: clone, smoke,
+preflight, full suite and verifier all exited zero. Its
+[generated record](../results/clean_clone.json) reproduced 92/92 claims and
+25/25 frozen-score comparisons; activation re-extraction was skipped because
+the large caches are not tracked. The full test step took 2,816 seconds.
+The pass record is committed at `cc46105`; later research and report commits
+do not change the tested implementation. See the
+[Phase 30 report](PHASE-30.md) for the complete failure and repair history.
 
 There is no observed remote CI pass for this October head, no real export, no
 customer conversation, no design partner and no deployment. The implementation
-is usable local software subject to the remaining integration gate; it is not
-validated product-market fit.
+is usable local software with a passing clean-clone gate at the named source
+commit; it is not validated product-market fit.
 
 ## Thirty-day working plan and decision gates
 
@@ -160,14 +171,13 @@ participating people.
 
 | Window | Planned work | Gate or decision |
 |---|---|---|
-| Oct 1-7 | Complete export preparation, replay, installed-CLI demonstration, documentation and clean integration. | A reviewer can run the synthetic path from an installed package; malformed and tampered cases refuse. Full tracked-clone suite still needs a clear result. |
+| Oct 1-7 | Complete export preparation, replay, installed-CLI demonstration, documentation and clean integration. | The synthetic installed path and full tracked-clone gate passed at named commits. Human dry-run and release integration remain distinct checks. |
 | Oct 8-14 | Refresh competitor research; inspect an owner-approved, de-identified real export and an actual review packet; fix observed import friction; design a portable evidence package only if the present packet is missing something material. | Seek five real conversations, two usable exports and one named recurring review decision by Oct 14. These are targets, with **zero observed so far**. If unavailable, freeze speculative adapters and record the access gap. |
 | Oct 15-21 | Compare actual incumbent output, implement one requested integration if its schema and permissioned fixture exist, examine label disagreement and group leakage, try a second use and independent reviewer replay. | Continue only if a decision owner can explain how the retained evidence changes a repeated choice. A single positive reaction does not qualify. |
 | Oct 22-30 | Recheck incumbent alternatives, improve only observed ergonomics, run package/compatibility/claim verification, produce a valid/refusal/tamper demonstration and prepare a specific pilot proposal. | Decide keep, pivot or stop, with evidence of repeat use and a budget owner or a candid open-source research outcome. |
 
-The next immediate tasks are to finish the observable clone suite, reconcile
-the October research and build branches, generate a Phase 30 handoff with exact
-checks, and integrate only the reviewed files. The first external test then
+The next technical task is release integration with focused document checks
+and smoke/claim replay at the integrated head. The first external test then
 needs a team that owns a review threshold, can describe the sampling unit and
 label provenance, and can compare its existing packet with Warrant's output.
 No one has been contacted on the founder's behalf.
