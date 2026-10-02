@@ -155,6 +155,11 @@ the large caches are not tracked. The full test step took 2,816 seconds.
 The pass record is committed at `cc46105`; later research and report commits
 do not change the tested implementation. See the
 [Phase 30 report](PHASE-30.md) for the complete failure and repair history.
+Phase 30 then merged into the release checkout at `6004099`. Its direct
+Windows smoke check passed 7/7; verification reproduced 92/92 claims,
+25/25 frozen-score comparisons and, with the ignored local caches available,
+3/3 activation comparisons. The clean clone correctly reported that last
+tier as skipped because those caches were absent there.
 
 There is no observed remote CI pass for this October head, no real export, no
 customer conversation, no design partner and no deployment. The implementation
@@ -171,15 +176,16 @@ participating people.
 
 | Window | Planned work | Gate or decision |
 |---|---|---|
-| Oct 1-7 | Complete export preparation, replay, installed-CLI demonstration, documentation and clean integration. | The synthetic installed path and full tracked-clone gate passed at named commits. Human dry-run and release integration remain distinct checks. |
+| Oct 1-7 | Complete export preparation, replay, installed-CLI demonstration, documentation and clean integration. | The synthetic installed path, full tracked-clone gate and integrated release smoke/verification passed at named commits. A human dry run remains unobserved. |
 | Oct 8-14 | Refresh competitor research; inspect an owner-approved, de-identified real export and an actual review packet; fix observed import friction; design a portable evidence package only if the present packet is missing something material. | Seek five real conversations, two usable exports and one named recurring review decision by Oct 14. These are targets, with **zero observed so far**. If unavailable, freeze speculative adapters and record the access gap. |
 | Oct 15-21 | Compare actual incumbent output, implement one requested integration if its schema and permissioned fixture exist, examine label disagreement and group leakage, try a second use and independent reviewer replay. | Continue only if a decision owner can explain how the retained evidence changes a repeated choice. A single positive reaction does not qualify. |
 | Oct 22-30 | Recheck incumbent alternatives, improve only observed ergonomics, run package/compatibility/claim verification, produce a valid/refusal/tamper demonstration and prepare a specific pilot proposal. | Decide keep, pivot or stop, with evidence of repeat use and a budget owner or a candid open-source research outcome. |
 
-The next technical task is release integration with focused document checks
-and smoke/claim replay at the integrated head. The first external test then
-needs a team that owns a review threshold, can describe the sampling unit and
-label provenance, and can compare its existing packet with Warrant's output.
+The next substantive task is an external workflow test with a team that owns
+a review threshold, can describe the sampling unit and label provenance,
+and can compare its existing packet with Warrant's output. A permissioned,
+de-identified export and the current reviewer packet would make that test
+concrete. Without them, the plan freezes speculative adapters.
 No one has been contacted on the founder's behalf.
 
 ## What would change my mind
