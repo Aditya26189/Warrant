@@ -119,6 +119,7 @@
 | [BUILD-PLAN-2026-10.md](../reports/BUILD-PLAN-2026-10.md) | What is the October day-by-day build and discovery schedule, with acceptance and stop gates? |
 | [DISCOVERY-2026-10.md](../reports/DISCOVERY-2026-10.md) | What should a reviewer and engineer show before a real export or recurring decision is claimed? Blank worksheet; no interviews recorded |
 | [PACKET-DESIGN-REVIEW-2026-10.md](../reports/PACKET-DESIGN-REVIEW-2026-10.md) | Which handoff and replay capabilities already exist, and what observed failure would justify a new package command? |
+| [OFFLINE-HANDOFF-REVIEW-2026-10.md](../reports/OFFLINE-HANDOFF-REVIEW-2026-10.md) | Which files an offline reviewer needs, what the synthetic prepared package retains, and which compatibility checks remain unobserved? |
 | [REPRODUCIBLE-DEMO-2026-10.md](../reports/REPRODUCIBLE-DEMO-2026-10.md) | How can a reader reproduce the synthetic valid, refusal and tamper cases? |
 | [MENTOR-BRIEF-2026-10-02.md](../reports/MENTOR-BRIEF-2026-10-02.md) | Shareable account of the research hypothesis, October progress, verification limits and month plan |
 | [STRATEGY-2026-09.md](../reports/STRATEGY-2026-09.md) | The commercial stopping rule and dated primary-source regulatory corrections |
