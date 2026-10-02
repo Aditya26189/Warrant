@@ -177,6 +177,14 @@ at 28% without a failure; it is **not** a complete matrix pass. The later
 local commits have not been published, and the configured Linux 3.11/3.12 CI
 jobs have not been observed passing for them.
 
+A further input-boundary review found that a JSONL integer score too large
+for Python's finite float range escaped as an uncaught traceback. The
+row-specific refusal fix and regression are committed at `6f0cbcd` and
+integrated locally at `50c5fac`. The 51 preparation/packaging checks, the
+installed-wheel suite and Ruff passed. That later fix has **not** received a
+new full clean-clone gate; the earlier gate remains evidence for `87070b6`,
+not for this newer head.
+
 There is no observed remote CI pass for this October head, no real export, no
 customer conversation, no design partner and no deployment. The implementation
 is usable local software with a passing clean-clone gate at the named source
