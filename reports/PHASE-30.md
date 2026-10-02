@@ -87,6 +87,7 @@ and a changed-source replay returning MISMATCH with exit code 1.
 | Clean-source full suite at `239a10b` | Exit code 0. Inventory separately recorded 2,180 collected tests; collection is not a passing-test count. The quiet full-suite output showed one expected-failure marker and no failure. |
 | Clean-source smoke and claim replay at `239a10b` | Smoke 7/7; README claims 92/92; frozen-score comparisons 25/25; activation re-extraction SKIPPED |
 | Full tracked-file clean-clone gate at `87070b6` | PASSED: clone, smoke, preflight, full suite and verification; 92/92 claims and 25/25 frozen-score comparisons reproduced; activation re-extraction SKIPPED |
+| Integrated release checkout at `6004099` | Direct Windows Python targets: smoke 7/7, claims 92/92, frozen scores 25/25, cached-activation comparisons 3/3; all exited zero |
 
 The first full tracked-file clone of documentation head `1417c42` passed its
 clone, smoke and preflight steps, plus claim/frozen-score verification, but its
@@ -163,11 +164,14 @@ none is an observed result here. Do not write a vendor-specific adapter from a
 generic export claim or add a hosted service without such evidence. If the
 incumbent packet suffices, narrow or stop the product hypothesis.
 
-Technically, the full clone gate has passed for the clean implementation
-commit. Integration still needs focused report/index checks and a release
-checkout smoke/claim replay after the documentation merge. The later October
-plan requires one observed export, reviewer replay, repeat use, and a
-keep/pivot/stop decision; those cannot be substituted with more synthetic tests.
+Technically, the full clone gate passed for the clean implementation commit;
+focused report/index tests passed after the documentation merge; and the
+integrated release checkout passed smoke and all three locally available
+verifier tiers. The clone could not rerun activations without its ignored
+caches, whereas the release checkout had the caches and reproduced 3/3
+comparisons. The later October plan requires one observed export, reviewer
+replay, repeat use, and a keep/pivot/stop decision; those cannot be substituted
+with more synthetic tests.
 
 ## Ledger
 
@@ -187,5 +191,6 @@ keep/pivot/stop decision; those cannot be substituted with more synthetic tests.
 | Refreshed integrated test inventory | `53aeef5`: 2,180 -> 2,183 collected, not an execution result |
 | Preserved full-clone report-contract failure | `888fa09`; [failure artifact](../results/clean_clone_failures/clean_clone-95c4431e060f-1790916156138116200.json) |
 | Passing full clean-clone gate | `87070b6`; committed pass artifact `cc46105` in [clean_clone.json](../results/clean_clone.json) |
+| Local release integration and available replay | Merge `6004099`; direct Windows smoke 7/7 and verifier tiers 92/92, 25/25, 3/3 |
 | Incumbent comparison and synthetic demonstration | [Packet comparison](INCUMBENT-PACKET-COMPARISON-2026-10.md), [executed demo](REPRODUCIBLE-DEMO-2026-10.md), [conditional package review](PACKET-DESIGN-REVIEW-2026-10.md) |
 | Mentor-facing progress brief | [October 2 brief](MENTOR-BRIEF-2026-10-02.md) |
