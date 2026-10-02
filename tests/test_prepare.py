@@ -128,6 +128,18 @@ def test_json_ambiguity_rejected(tmp_path, content):
         prepare_export(source, mapping, tmp_path / "out")
 
 
+def test_huge_json_integer_score_is_refused_without_output(tmp_path, capsys):
+    source, mapping = inputs(tmp_path)
+    source.write_text(json.dumps({
+        "item": "a", "review": "good", "risk": 10 ** 400,
+    }), encoding="utf-8")
+    out = tmp_path / "out"
+    assert main(["prepare", "--input", str(source), "--mapping", str(mapping),
+                 "--out", str(out)]) == 2
+    assert "row 1" in capsys.readouterr().err
+    assert not out.exists()
+
+
 def test_grouped_mapping_requires_complete_groups(tmp_path):
     source, mapping = inputs(tmp_path, grouped=True)
     source.write_text('{"item":"a","review":"good","risk":0.1,'
