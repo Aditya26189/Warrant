@@ -13,6 +13,7 @@ where a gate goes wrong quietly: reporting a pass for a step that never ran.
 from __future__ import annotations
 
 import json
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -49,6 +50,25 @@ def test_a_failed_step_fails_the_gate() -> None:
     result.ok = all(s.ok for s in result.steps)
     assert result.ok is False
     assert "FAILED" in render(result)
+
+
+def test_timed_out_step_retains_captured_output(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path,
+) -> None:
+    """A timeout artifact should show the suite's last observed progress."""
+    import controlplane.report.clean_clone as clone
+
+    def fake_run(*args: object, **kwargs: object) -> None:
+        raise subprocess.TimeoutExpired(
+            ["python", "-m", "pytest"], 10,
+            output=b"test progress\nlast test", stderr=b"\ninterrupted",
+        )
+
+    monkeypatch.setattr(clone.subprocess, "run", fake_run)
+    step = clone._run("make test", ["python", "-m", "pytest"], tmp_path, 10)
+    assert not step.ok
+    assert step.detail == "timed out after 10s"
+    assert step.tail == "test progress\nlast test\ninterrupted"
 
 
 def test_failed_clone_preflight_skips_the_expensive_suite(
