@@ -106,18 +106,33 @@ then `scripts/refresh_test_inventory.py` regenerated the inventory and prose
 from clean `3abe09c`. The two preflight tests now pass. The corrected full
 clone gate remains the technical integration check.
 
+The full clone of clean `95c4431` completed within the two-hour bound. Its
+suite exited 1 after 2,744 seconds with one failure: this Phase 30 report
+lacked the explicit "does not establish" and "open items" sections required
+by `tests/test_reports.py`. Clone, smoke, preflight, and both available verifier
+tiers passed. The generated
+[failure record](../results/clean_clone_failures/clean_clone-95c4431e060f-1790916156138116200.json)
+was committed at `888fa09` before this correction. This report-contract
+failure is real even though it is not a product-code regression.
+
 A tracked-only clone of `bcfd5a1` subsequently passed smoke and verification
 with full tests deliberately omitted. Its
 [separate check record](../results/clean_clone_phase30_no_tests.json) names
 the exact clone and shows 92/92 claims, 25/25 frozen-score comparisons and
 activation re-extraction SKIPPED. This check is not a full clean-clone gate.
 
-The suite is evidence for the exact tested source and environment. No remote CI
-pass is inferred. No scientific test set was rescored and no protected result
-number moved. The example and installed test are synthetic; they do not test a
-customer's data contract, sampling procedure or decision.
+## What this does not establish
 
-## Commercial and technical next gate
+The clean-source suite at `239a10b` and clone checks at their named commits
+establish behavior only for those exact sources and environments. They do not
+establish remote CI, fresh dependency resolution, GPU activation re-extraction,
+or a passing full clone at a later source head. No scientific test set was
+rescored and no protected result number moved. The example and installed test
+are synthetic; they do not establish performance or usability on a customer's
+export, sampling procedure or review decision. A prepared checksum package
+does not authenticate an owner or prove that labels and groups are correct.
+
+## Open items
 
 The next useful input is one existing review packet and a permissioned scored
 export with declared unit, label provenance and score direction. Ask who makes
@@ -127,6 +142,11 @@ are five conversations, two usable exports and one named recurring decision;
 none is an observed result here. Do not write a vendor-specific adapter from a
 generic export claim or add a hosted service without such evidence. If the
 incumbent packet suffices, narrow or stop the product hypothesis.
+
+Technically, rerun the focused report contract and then the full clean-clone
+gate from a clean commit containing this correction. The later October plan
+requires one observed export, reviewer replay, repeat use, and a keep/pivot/stop
+decision; those cannot be substituted with more synthetic tests.
 
 ## Ledger
 
@@ -144,4 +164,5 @@ incumbent packet suffices, narrow or stop the product hypothesis.
 | Preregistered bounded timeout adjustment | Decision 228; `8a3c6e8` |
 | Tracked-only clone check | `bcfd5a1`; [no-tests artifact](../results/clean_clone_phase30_no_tests.json) |
 | Refreshed integrated test inventory | `53aeef5`: 2,180 -> 2,183 collected, not an execution result |
+| Preserved full-clone report-contract failure | `888fa09`; [failure artifact](../results/clean_clone_failures/clean_clone-95c4431e060f-1790916156138116200.json) |
 | Mentor-facing progress brief | [October 2 brief](MENTOR-BRIEF-2026-10-02.md) |
