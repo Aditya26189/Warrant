@@ -121,6 +121,11 @@ example, a deliberate refusal and a changed-source replay mismatch. The
 [packet design review](PACKET-DESIGN-REVIEW-2026-10.md) identifies the existing
 replay commands that a new bundle would otherwise duplicate and defers that
 feature until a reviewer exposes a concrete handoff gap.
+The [offline handoff review](OFFLINE-HANDOFF-REVIEW-2026-10.md) inspects the
+prepared synthetic files: excluded prompt-note values are absent, but IDs,
+labels and groups remain, and transformation replay still requires the
+original export plus mapping. This is a minimum-data boundary, not a claim
+that a real customer export can safely be transferred.
 Decision 227 in [DECISIONS.md](../DECISIONS.md) preregistered the
 representation-only boundary before implementation.
 
