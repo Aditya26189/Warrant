@@ -120,8 +120,9 @@ representation-only boundary before implementation.
 ## Verification status on 2 October
 
 The 40 focused preparation tests, installed-wheel handoff test, changed-Python
-lint and clean-source full suite passed. The test inventory records **2,180
-collected** at its committed snapshot; that is a collection count, not a claim
+lint and clean-source full suite passed for source commit `239a10b`. The test
+inventory records **2,180 collected** at that committed snapshot; that is a
+collection count, not a claim
 that 2,180 tests passed. Smoke was 7/7, the published claim table replayed
 92/92 claims, and 25/25 frozen-score comparisons matched. Re-extracting
 activations was **skipped** because the large cache is not tracked in Git.
@@ -134,7 +135,9 @@ tracked-only clone passed smoke and both verifier tiers with tests explicitly
 omitted; its [record](../results/clean_clone_phase30_no_tests.json) must not be
 read as a full-suite pass. I fixed timeout reporting so a future timeout keeps
 pytest's last captured lines. At the time of this report, the full suite is
-running directly in the kept tracked-only clone with observable progress.
+running directly in the kept tracked-only clone of `bcfd5a1` with observable
+progress. Later reporting and deadline changes passed focused tests but have
+not yet had a full-suite result at their exact head.
 The October branches have not yet been merged into the release checkout.
 
 There is no observed remote CI pass for this October head, no real export, no
