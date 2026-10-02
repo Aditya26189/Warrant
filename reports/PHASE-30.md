@@ -97,9 +97,14 @@ either clone result green.
 
 Decision 228, logged before its implementation, increased the unchanged full
 clone-suite command's finite deadline to two hours (`8a3c6e8`). The 21 focused
-clone-gate tests and lint passed. A full suite is running directly in the kept
-tracked-only clone to expose progress and its eventual exit code; that run
-cannot retroactively make either failed one-hour gate pass.
+clone-gate tests and lint passed. A direct full suite in the kept clone of
+`bcfd5a1` exposed stale test-count prose: collection was 2,183 after the new
+timeout regression and two document parametrizations, while README and Makefile
+still said 2,180. The count assertion failed and the run was stopped; it is
+not a pass. The exact preflight failure was reproduced on the merged branch,
+then `scripts/refresh_test_inventory.py` regenerated the inventory and prose
+from clean `3abe09c`. The two preflight tests now pass. The corrected full
+clone gate remains the technical integration check.
 
 A tracked-only clone of `bcfd5a1` subsequently passed smoke and verification
 with full tests deliberately omitted. Its
@@ -138,4 +143,5 @@ incumbent packet suffices, narrow or stop the product hypothesis.
 | Diagnostic fix and narrowed competitive read | `003f361`, `bcfd5a1` |
 | Preregistered bounded timeout adjustment | Decision 228; `8a3c6e8` |
 | Tracked-only clone check | `bcfd5a1`; [no-tests artifact](../results/clean_clone_phase30_no_tests.json) |
+| Refreshed integrated test inventory | `53aeef5`: 2,180 -> 2,183 collected, not an execution result |
 | Mentor-facing progress brief | [October 2 brief](MENTOR-BRIEF-2026-10-02.md) |

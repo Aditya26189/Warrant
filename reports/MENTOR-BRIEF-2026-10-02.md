@@ -123,7 +123,10 @@ The 40 focused preparation tests, installed-wheel handoff test, changed-Python
 lint and clean-source full suite passed for source commit `239a10b`. The test
 inventory records **2,180 collected** at that committed snapshot; that is a
 collection count, not a claim
-that 2,180 tests passed. Smoke was 7/7, the published claim table replayed
+that 2,180 tests passed. Integrating the timeout regression and two new
+documentation pages increased collection to **2,183** at `3abe09c`; the
+generated inventory and README were refreshed at `53aeef5`. The exact clone
+preflight now passes. Smoke was 7/7, the published claim table replayed
 92/92 claims, and 25/25 frozen-score comparisons matched. Re-extracting
 activations was **skipped** because the large cache is not tracked in Git.
 
@@ -134,10 +137,12 @@ available verifier checks passed, but the full gate did **not** pass. Both
 tracked-only clone passed smoke and both verifier tiers with tests explicitly
 omitted; its [record](../results/clean_clone_phase30_no_tests.json) must not be
 read as a full-suite pass. I fixed timeout reporting so a future timeout keeps
-pytest's last captured lines. At the time of this report, the full suite is
-running directly in the kept tracked-only clone of `bcfd5a1` with observable
-progress. Later reporting and deadline changes passed focused tests but have
-not yet had a full-suite result at their exact head.
+pytest's last captured lines. A separate direct suite in a kept clone of
+`bcfd5a1` exposed the stale 2,180 count and was stopped after the deterministic
+failure; that run is not a pass. The corrected, two-hour full-clone gate is the
+remaining technical integration check. Later reporting and deadline changes
+passed focused tests but have not yet had a full-suite result at their exact
+head.
 The October branches have not yet been merged into the release checkout.
 
 There is no observed remote CI pass for this October head, no real export, no
