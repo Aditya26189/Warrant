@@ -166,6 +166,17 @@ Windows smoke check passed 7/7; verification reproduced 92/92 claims,
 3/3 activation comparisons. The clean clone correctly reported that last
 tier as skipped because those caches were absent there.
 
+The Phase 30 release and tag were pushed to GitHub at `8556585`. A subsequent
+offline handoff audit merged **locally** at `cb5b6ca`. The export-preparation
+test file was then added to the lightweight customer CI list at `18f407a` and
+merged locally at `94b4447`. All 40 preparation cases passed in an isolated
+Python 3.12 environment containing only the declared customer dependencies
+and pytest; preparation plus packaging passed 50/50 from the clean integrated
+checkout. A broader local Windows run of the customer test list was stopped
+at 28% without a failure; it is **not** a complete matrix pass. The later
+local commits have not been published, and the configured Linux 3.11/3.12 CI
+jobs have not been observed passing for them.
+
 There is no observed remote CI pass for this October head, no real export, no
 customer conversation, no design partner and no deployment. The implementation
 is usable local software with a passing clean-clone gate at the named source
