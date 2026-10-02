@@ -11841,3 +11841,27 @@ exactly as after a chained revocation.
 **Validation.** Regress the two-positive decision, an independent log-mixture calculation, null and breach streams, and safe resumption. Run focused tests, full tests and the claim/frozen-score verifier from clean source before declaring a release gate. No protected research test set is rescored.
 
 **Rejected.** Treating a high *component* as a high *average* is mathematically invalid. Recomputing the Decision 187 artifact without a new registration would erase the evidence of the old behavior. Keeping the defective runtime merely to preserve a historical artifact would leave a known false decision in an exported class.
+
+## 227 - Prepare scored exports with explicit semantics (2026-10-01)
+
+- **Status:** DECIDED before implementation.
+- **Scope:** Additive local `prepare` and `verify-prepared` commands; existing estimators, frozen artifacts and certification/release semantics unchanged.
+
+**Decision.** Begin the founder's October research/build plan with a strict flat CSV/JSONL export adapter. Require a versioned mapping for ID, binary label tokens, score direction, and either a group column or an explicit independent-row declaration. Optional second labels use the same label mapping. Preserve row order and all mapped rows; never impute labels, deduplicate, split, tune or clip. Negate lower-is-positive scores rather than assuming a probability range. Reuse the existing strict intake contract after normalization, permitting single-class preparation because measurement commands decide whether that evidence suffices. Reject omission of a canonical group or second-label field present in the source; noncanonical metadata requires the user's correct mapping.
+
+**Evidence.** Publish a new local directory containing canonical scored CSV and a deterministic manifest binding source bytes, mapping bytes, normalized bytes and effective rows. Record excluded column names without copying their values. Replay requires the original export and mapping and compares the complete expected manifest and output. Publish the manifest last; an interrupted directory is incomplete and must not verify. Never replace a destination. No scientific run, confidence interval, score selection or new performance number is produced by preparation.
+
+**Limits.** These hashes prove consistency with retained inputs, not author identity, label truth, independent sampling, a trusted timestamp or absence of omitted source records. IDs and groups can contain sensitive data; normalization is not anonymization. No native vendor integration is claimed. A successful preparation is not a warrant. Grouped release evaluation remains unsupported. The October market hypothesis and weekly stopping rules are in reports/BUILD-PLAN-2026-10.md; no customer demand has been observed.
+
+**Validation.** Test CSV and JSONL, polarity, grouped and second-review preservation, malformed mappings, ambiguous input, duplicate IDs, partial groups, nonfinite scores, single-class input, changed source/mapping/output/manifest, missing completion marker, existing destinations and installed command invocation. Run affected intake/customer checks and clean-source claim replay. Reject guessing semantics from column names or treating normalization as statistical validation.
+
+## 228 - Give the full clean-clone suite a bounded two-hour deadline (2026-10-02)
+
+- **Status:** DECIDED before changing the deadline.
+- **Scope:** Local tracked-file clone gate execution time only; no test is omitted, no scientific result is rescored, and no statistical or customer certificate changes.
+
+**Finding.** The October preparation work passed its clean-source full suite. Two full tracked-file clone attempts independently passed cloning, smoke, preflight, and claim/frozen-score replay but hit the gate's fixed 3,600-second `make test` deadline. The first overlapped another full suite; the second crossed an overnight system interval and recorded an elapsed time longer than its nominal timeout. Both failures remain committed under `results/clean_clone_failures/`. Neither is a passing gate. A tracked-only clone without tests later passed smoke and verification, and its full suite is being run separately with visible progress to diagnose duration. The old timeout handler discarded partial pytest output; a focused fix now retains it.
+
+**Decision.** Allow 7,200 seconds for the *same* full pytest command inside the full clone gate. Keep preflight, smoke, verifier tiers, failure recording and their success criteria unchanged. A timeout at the new deadline remains a failed gate with captured tail, never a skip or pass. Keep `--no-tests` records explicitly separate from a full gate. This increases a local resource limit after observed timeouts; it does not make a slow test faster or establish that a full clone passed.
+
+**Validation and limit.** Regress the deadline and timeout-tail reporting in the clone-gate unit suite. Run the full tracked-file clone from committed source after the separate clone suite exits, and report its exact commit and result. If the two-hour limit is also exceeded, diagnose the last captured test progress before any further deadline change. Do not infer remote CI or activation re-extraction from a green local gate.

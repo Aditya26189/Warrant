@@ -39,7 +39,7 @@
 
 <br/>
 
-<img src="https://img.shields.io/badge/Tests-2138_collected-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="2138 tests collected" />
+<img src="https://img.shields.io/badge/Tests-2183_collected-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="2183 tests collected" />
 &nbsp;
 <img src="https://img.shields.io/badge/Claims-92_verified-2da44e?style=for-the-badge" alt="92 claims verified" />
 &nbsp;
@@ -309,11 +309,14 @@ from cached activations and reports SKIPPED without them.
 Every subcommand, the question it answers, and how its exit code reads. A
 certify refusal, recheck revocation and chain inspection with findings exit 0;
 the certify-record verifier exits 0 only for `VERIFIED` and 1 for `MISMATCH` or
-`UNVERIFIED`. Input a command cannot use exits 2. Other hard-failure modes use
+`UNVERIFIED`. The prepared-export verifier exits 1 for changed retained bytes.
+Input a command cannot use exits 2. Other hard-failure modes use
 the listed `--require-…` flags.
 
 | Command | Answers | Exits 1 only when | Read |
 |:---|:---|:---|:---|
+| `warrant prepare -i EXPORT --mapping MAP -o DIR` | Can a declared export be normalized without guessing label, score or group meaning? Writes a new scored file and replay manifest, not a certificate | — | [INPUT.md](docs/INPUT.md#prepare-an-existing-scored-export) |
+| `warrant verify-prepared -i EXPORT --mapping MAP --prepared DIR` | Does the package still match the retained export and mapping? | Bytes differ | [INPUT.md](docs/INPUT.md#prepare-an-existing-scored-export) |
 | `warrant certify -i FILE -b BUDGET` | Can this file support this false-positive budget? The lowest threshold that can, or a refusal naming what is missing | `--require-warrant` and refused | [INPUT.md](docs/INPUT.md) |
 | `warrant certify -i FILE --frontier` | What does every budget on the grid cost, in exact counts? | — | [GLOSSARY.md](docs/GLOSSARY.md#frontier) |
 | `warrant certify -i FILE -b BUDGET --from-frontier RECORD` | Certify a budget picked off the frontier, at the level the frontier held it to | `--require-warrant` and refused | [METHODS.md](docs/METHODS.md#13-the-frontier-and-the-cost-of-choosing-from-it) §13 |
@@ -618,7 +621,7 @@ examples/              two scored files: one certifies, one refuses
 evalsets/ & results/   frozen content-hashed evaluation sets; every artifact behind the table above
 scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
-tests/                 2138 tests collected, including the ones that enforce this README
+tests/                 2183 tests collected, including the ones that enforce this README
 docs/                  guides, orientation, methods, limitations, the case matrix
 DECISIONS.md           the append-only decision log, with dated addenda
 reports/               one close-out report per sprint, leading with the answer
@@ -704,7 +707,7 @@ the action gate, are in [docs/DIAGRAMS.md](docs/DIAGRAMS.md); the prose version 
 | Target | Without `make` | Requires | Time | Proves |
 |:---|:---|:---|:---|:---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | The clone works and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | Varies by machine | 2138 tests collected |
+| `make test` | `python -m pytest tests/ -q` | CPU | Varies by machine | 2183 tests collected |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **Every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` (tier 3) | `python scripts/verify.py` | CPU + cached activations | ~4 min | The frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | Activations regenerate from the source model |

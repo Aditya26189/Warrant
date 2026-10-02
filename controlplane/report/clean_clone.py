@@ -103,7 +103,15 @@ def _run(
             timeout=timeout,
             env=env or {**os.environ, "PYTHONIOENCODING": "utf-8"},
         )
-    except subprocess.TimeoutExpired:
+    except subprocess.TimeoutExpired as exc:
+        # A long suite can expire after substantial progress. Keep its last
+        # captured lines so the failure artifact identifies where it stopped.
+        def captured(value: bytes | str | None) -> str:
+            if isinstance(value, bytes):
+                return value.decode("utf-8", errors="replace")
+            return value or ""
+
+        combined = captured(exc.stdout) + captured(exc.stderr)
         return StepResult(
             name=name,
             command=command,
@@ -111,6 +119,7 @@ def _run(
             duration_seconds=time.time() - started,
             ok=False,
             detail=f"timed out after {timeout}s",
+            tail="\n".join(combined.strip().splitlines()[-25:]),
         )
     combined = (proc.stdout or "") + (proc.stderr or "")
     return StepResult(
@@ -156,7 +165,9 @@ def _run_suite_after_preflight(python: str, cwd: Path) -> list[StepResult]:
                 detail="not run because test preflight failed",
             ),
         ]
-    return [preflight, _run("make test", full_command, cwd=cwd, timeout=3600)]
+    # Decision 228: the full tracked-file suite exceeded the former one-hour
+    # deadline twice. Keep every test and a finite deadline, but allow two hours.
+    return [preflight, _run("make test", full_command, cwd=cwd, timeout=7200)]
 
 
 #: Human-readable label per tier key, for the report. The keys themselves come
