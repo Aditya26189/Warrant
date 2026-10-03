@@ -181,6 +181,21 @@ The recommendation survives only if people can supply an export, understand
 the result and use it for a recurring decision. A month of code without those
 observations is a failed commercial experiment, even if every test passes.
 
+## 3 October source check
+
+These additional primary-source checks sharpen the existing recommendation;
+none is customer evidence for Warrant.
+
+| Source and event date | What the source establishes | Decision impact |
+|---|---|---|
+| [SANS Find Evil! organizer results](https://www.sans.org/press/announcements/sans-names-the-five-winners-of-find-evil-2026), 27 August | SANS reports 90 practicing incident responders ran 1,775 evaluations against 123 finalist incident-response agent harnesses. Its named winners include harnesses that trace findings to commands, test adversarial constraints, and independently challenge a prior conclusion. Those performance details are organizer-reported, not reproduced here. | Inspectable, challengeable evidence is already a competition standard in at least one high-stakes domain. A replayable Warrant record should be demonstrated against a real review decision, not marketed as a novel generic agent harness. |
+| [Google Agent Platform evaluation announcement](https://developers.googleblog.com/agent-and-model-evaluations-in-gemini-enterprise-agent-platform-are-now-ga/), 31 July, and [AWS AgentCore release notes](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/release-notes.html), March | Google describes versioned metrics, retained experiment artifacts, reference-based evaluation, online sampling and drift alerts. AWS documents AgentCore Evaluations general availability with ground-truth references and custom evaluators. These are vendor capability claims; neither page is an independent audit of a customer packet. | A generic claim to reproducible agent evaluation, continuous monitoring, or reference-based scoring is too broad. Ask whether an actual incumbent packet lacks a *specific* protected label, sampling-unit, operating-point or replay field. |
+| [OneTrust CORIE announcement](https://www.onetrust.com/news/onetrust-introduces-corie-to-govern-ai-agents-at-machine-speed/), 29 September | OneTrust says CORIE enforces policy at tool calls and records the agent, request, purpose, outcome and governing policy. Availability and field performance were not tested here. | Runtime governance and decision logging are incumbent territory. This does not answer whether a separate local statistical review handoff is needed; do not build a policy gateway on this signal. |
+
+This targeted check did not establish a new October 1–3 winner. The
+recommendation and the October 14 evidence gate remain unchanged: test the
+actual packet and recurring decision before building another integration.
+
 ## Questions that can overturn the recommendation
 
 Can a team show its last actual release-review packet? Who collects the evidence,
