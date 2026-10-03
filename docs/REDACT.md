@@ -180,14 +180,18 @@ systems, not generative extractors.*
 
 ## 6. Two observations for the REDACT authors
 
-**`record_id` is not unique in the released locked split.** 1,000 records carry
-944 distinct ids; 55 collide. The colliding records are different documents
-rather than duplicates — one inspected pair shares a generation configuration and
-has a text similarity of 0.027 — so they appear to be independent items with a
-clashing identifier rather than a corpus problem. It surfaced because
-certification refuses a set with repeated ids, since repeats usually indicate
-clustered items and treating clusters as independent overstates the effective
-sample size.
+**`record_id` is not unique in the released locked split.** A 3 October audit of
+the retained public file (SHA-256
+`754f562ce9c3c5b7b663f1ba6127c38a31d93f5631d38364341cb727936234c6`)
+found 1,000 rows and 944 distinct ids: 54 ids occur twice and one occurs three
+times. Thus 55 ids repeat, with 56 rows beyond one per id. No repeated-id pair
+has identical text, but each repeated-id group shares its scenario seed, target
+pattern and axes. One previously inspected pair had text similarity 0.027.
+Different text is not a test of statistical independence. The adapter appends
+row position to keep ids unique and traceable; this repairs the identifier,
+not the sampling unit. The external intervals still assume records are
+independent, and no scenario-grouped coverage analysis has been run. Treat
+those figures as exploratory, not customer certification.
 
 **Six of 17 complete, full-length credit card numbers fail Luhn.** The generation
 contract specifies that identifiers satisfy real-world checksum specifications.

@@ -11865,3 +11865,14 @@ exactly as after a chained revocation.
 **Decision.** Allow 7,200 seconds for the *same* full pytest command inside the full clone gate. Keep preflight, smoke, verifier tiers, failure recording and their success criteria unchanged. A timeout at the new deadline remains a failed gate with captured tail, never a skip or pass. Keep `--no-tests` records explicitly separate from a full gate. This increases a local resource limit after observed timeouts; it does not make a slow test faster or establish that a full clone passed.
 
 **Validation and limit.** Regress the deadline and timeout-tail reporting in the clone-gate unit suite. Run the full tracked-file clone from committed source after the separate clone suite exits, and report its exact commit and result. If the two-hour limit is also exceeded, diagnose the last captured test progress before any further deadline change. Do not infer remote CI or activation re-extraction from a green local gate.
+
+## 229 - Treat REDACT repeated IDs as an unresolved sampling-unit question (2026-10-03)
+
+- **Status:** DECIDED before committing the interpretation correction.
+- **Scope:** The REDACT external research explanation and source docstring. Frozen labels, scores, thresholds and numeric artifacts are unchanged.
+
+**Finding.** In the retained public locked split with SHA-256 `754f562ce9c3c5b7b663f1ba6127c38a31d93f5631d38364341cb727936234c6`, 1,000 rows carry 944 distinct `record_id` values: 54 IDs occur twice and one three times. Thus 55 IDs repeat and there are 56 surplus row occurrences. No texts in a repeated-ID group are identical, but every such group shares scenario seed, target pattern and axes. The previous explanation inferred independent observations from different text and one low-similarity pair; that inference does not follow. The code appends row position to make item IDs unique, which repairs identity but does not determine the statistical sampling unit.
+
+**Decision.** Correct the outward-facing REDACT note and the adapter docstring to distinguish unique identifiers from independent evidence. Keep existing external measurements visibly historical and exploratory under their record-as-unit assumption. Do not silently regroup, rescore, replace or relabel the frozen artifacts in this correction. Before any scenario-grouped reanalysis, register the unit, handling of unequal groups, selection and uncertainty method, and exactly which artifacts will be rescored.
+
+**Validation and limit.** The multiplicities and shared metadata were checked against that retained public file without printing its text or changing it. Run focused REDACT and documentation tests and verify the diff. This audit neither proves that repeated rows are dependent nor validates record-level independence; it also does not measure how much any interval would move under grouping. It is not customer evidence.
