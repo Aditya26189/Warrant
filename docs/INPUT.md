@@ -76,6 +76,18 @@ mismatch. Hashes show local integrity against those retained inputs, not who
 created them. Preparation is not certification and cannot establish that labels
 are correct, rows independent or a sample representative.
 
+`certify` and `release` consume the canonical scored rows but do **not**
+automatically bind `manifest.json` or the source mapping into their records.
+Their own verification can reproduce a result from those rows without proving
+how the original export was mapped. If a reviewer needs that source-to-row
+claim, retain the original export, mapping and prepared directory and run
+`verify-prepared` separately. The mapping's `independent_rows` value is a
+caller declaration, not an independence test or downstream attestation.
+For this command, `VERIFIED` exits 0, a complete but changed package reports
+`MISMATCH` and exits 1, and missing or malformed evidence exits 2. These are
+preparation-replay outcomes; [release verification](RELEASE.md) has its own
+record and status contract.
+
 During preparation the parser makes a temporary local copy of the source under
 the operating system's temporary directory, then removes it on normal exit.
 Use a suitable local environment for sensitive exports; an interrupted process
