@@ -168,16 +168,14 @@ def _unique_id(row: dict, index: int) -> str:
     """A unique item id, preserving REDACT's own record_id for traceability.
 
     **`record_id` is not unique in the released locked split**: 1,000 records
-    carry 944 distinct ids, so 55 collide. The colliding records are different
-    documents rather than duplicates — one inspected pair shares a generation
-    configuration but has a text similarity of 0.027 — so they are independent
-    items with a clashing label, not a cluster.
+    carry 944 distinct ids. Fifty-four ids occur twice and one occurs three
+    times. Their texts differ, but repeated-id rows share generation metadata;
+    distinct text does not establish independent sampling.
 
-    That distinction decides how they may be certified. The sweep refuses a set
-    with repeated ids, on the reasoning that repeats usually mean clustered
-    items and certifying over them would overstate the effective sample size.
-    Here the repeats are an identifier collision, so the position disambiguates
-    and the original id is kept in view.
+    The sweep needs unique item ids, so position disambiguates the supplied id
+    while retaining it for traceability. That repairs identity only. The
+    external intervals still condition on a record-as-unit assumption; this
+    function does not prove it or turn one scenario into independent evidence.
     """
     return f"{row.get('record_id', index)}#{index}"
 
