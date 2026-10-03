@@ -190,6 +190,26 @@ customer conversation, no design partner and no deployment. The implementation
 is usable local software with a passing clean-clone gate at the named source
 commit; it is not validated product-market fit.
 
+### Verification update, 4 October 2026
+
+The [new full tracked-file clone record](../results/clean_clone.json) passed at
+clean source commit `1e081f6` (610 tracked files): smoke and preflight exited
+zero; the full test suite exited zero after 2,706.93 seconds; the verifier
+reproduced **92/92 claims** and **25/25 frozen-score comparisons**. Activation
+re-extraction was **skipped** because the large ignored cache is absent from a
+fresh clone. The generated pass was committed at `f8ca4f0`. The gate noted a
+Windows temporary-clone cleanup permission error after the checks; that clone
+was subsequently removed from the verified workspace temp path.
+
+Later local changes add this mentor request, primary-source incumbent research,
+and [Decision 229](../DECISIONS.md), which corrects an overstrong REDACT
+independence explanation without rescoring any frozen result. Focused REDACT,
+decision-log and documentation checks passed on those changes, but the full
+clone result is attributed to `1e081f6`, not to this later documentation head.
+The last verified remote main was the earlier Phase 30 commit `8556585`; a
+passing remote CI run on this local work has not been observed. No real workflow
+evidence has been supplied in this session, so the commercial gate remains open.
+
 ## Thirty-day working plan and decision gates
 
 The [day-by-day plan](BUILD-PLAN-2026-10.md) covers 1-30 October with
