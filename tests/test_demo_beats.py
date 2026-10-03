@@ -12,6 +12,7 @@ demonstrate only the middle clause.
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pytest
@@ -116,6 +117,26 @@ def test_the_matrix_beat_shows_unvalidated_as_the_modal_state() -> None:
         "UNVALIDATED is no longer the modal state; either the matrix grew "
         "coverage or the beat stopped reporting it honestly"
     )
+
+
+def test_matrix_beat_discloses_synthetic_and_historical_statuses() -> None:
+    """A frozen VALID count must not look like measured prospective evidence."""
+    matrix = json.loads((PROJECT_ROOT / "results" / "warrant_matrix.json").read_bytes())["matrix"]
+    populated = [
+        (envelope, cell)
+        for row in matrix["rows"]
+        for envelope, cell in row["cells"].items()
+        if cell["status"] != "UNVALIDATED"
+    ]
+    fixtures = sum(envelope.endswith("-synthetic") for envelope, _ in populated)
+    beat = next(b for b in BEATS if b.number == 5)
+    values = dict(beat.rows)
+    assert values["synthetic fixture cells"].startswith(
+        f"{fixtures} of {len(populated)} populated"
+    )
+    assert "not measured" in values["synthetic fixture cells"]
+    assert "historical" in (beat.note or "").lower()
+    assert "DECISIONS 220" in (beat.note or "")
 
 
 def test_every_beat_with_a_known_gap_states_it() -> None:

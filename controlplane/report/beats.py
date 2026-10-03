@@ -319,6 +319,17 @@ def _beat_revocation(root: Path) -> Beat:
         for state in ("VALID", "REFUSED", "UNVALIDATED", "REVOKED", "STALE"):
             if state in summary:
                 rows.append((f"cells {state}", f"{summary[state]} of {total}"))
+        populated = [
+            (envelope, cell)
+            for row in matrix["matrix"].get("rows", [])
+            for envelope, cell in row.get("cells", {}).items()
+            if cell.get("status") != "UNVALIDATED"
+        ]
+        fixtures = sum(envelope.endswith("-synthetic") for envelope, _ in populated)
+        rows.append((
+            "synthetic fixture cells",
+            f"{fixtures} of {len(populated)} populated; not measured detector evidence",
+        ))
         rows.append((
             "why UNVALIDATED dominates",
             "a warrant is keyed by (detector, operating point, eval set). Most "
@@ -380,7 +391,9 @@ def _beat_revocation(root: Path) -> Beat:
             "observable without labels. Label-driven revocation needs labelled "
             "negatives; the chain's false-revocation bound assumes independent "
             "units and is NOT validated under session correlation -- see "
-            "LIMITATIONS."
+            "LIMITATIONS. Matrix statuses are a historical frozen snapshot; "
+            "legacy grouped hard-negative VALID cells are not prospective "
+            "independent-unit evidence (DECISIONS 220)."
         ),
     )
 
