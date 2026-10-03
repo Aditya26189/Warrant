@@ -212,6 +212,31 @@ de-identified export and the current reviewer packet would make that test
 concrete. Without them, the plan freezes speculative adapters.
 No one has been contacted on the founder's behalf.
 
+## A concrete request for a mentor (3 October addendum)
+
+The most useful help now is introductions, subject to the founder choosing who
+to approach. Please suggest people who recently owned or independently reviewed
+an AI-support escalation threshold or a comparable financial-services AI release
+decision. The support team's quality/engineering owner and the independent
+validation reviewer are both useful conversations; the first buyer has not been
+chosen and neither role should be presented as validated.
+
+The immediate October 14 checkpoint seeks **five conversations**, **two
+permissioned, de-identified scored exports**, and **one named recurring review
+decision**. A first conversation needs only a walkthrough of the last actual
+release or threshold decision; it does not require an export. If an owner later
+permits a dry run, ask for the current reviewer packet as well as the export, so
+we can compare what the incumbent already proves. Keep all real data in an
+approved local environment. An introduction, favorable reaction, or request
+for a demo is not a pilot commitment.
+
+This is an interim discovery checkpoint, not a replacement for the older
+[30-day commercial test](STARTUP-VIABILITY-2026-09.md), which proposed 20
+interviews and stronger organization-level evidence. The founder should decide
+the buyer and any revision to that commercial gate before treating it as a
+success criterion. The [blank discovery worksheet](DISCOVERY-2026-10.md)
+records what was directly observed after each authorized conversation.
+
 ## What would change my mind
 
 I would narrow or stop the product hypothesis if a team cannot produce
