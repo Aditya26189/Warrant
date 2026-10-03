@@ -1,15 +1,12 @@
 # DEMO_SCRIPT.md — the five-minute video
 
-> **One rule.** Every number on screen is read from a committed artifact by a
-> command you run live. Nothing is a slide. If a command fails on camera, say
-> so — this is a project about not hiding the failure mode.
+> **One rule.** The numbered beats read committed artifacts. The live loop
+> generates an explicitly marked synthetic fixture. Neither is customer
+> evidence. If a command fails on camera, say so.
 
-**714 narration words.** At demo pace (150 wpm) that is **4:46** spoken, and
-the commands run underneath rather than after. At a slower 130 wpm it is 5:30 —
-so if you narrate deliberately, drop the "Point at the note" line in Beat 1 and
-the last sentence of Beat 4.
-
-Do not add sentences. If something must go in, take something out.
+**Five-minute target.** Rehearse the commands and narration together on the
+recording machine; no duration has been established from word count alone.
+The cut shows all nine artifact-backed beats and a synthetic live loop.
 
 ---
 
@@ -17,11 +14,11 @@ Do not add sentences. If something must go in, take something out.
 
 ```bash
 git status --porcelain          # empty
-make verify                     # VERIFIED, 3 tiers
+python scripts/verify.py --no-activations  # claims and frozen scores pass; activation tier SKIPPED
 python -m pytest tests/ -q      # green
 ```
 
-Terminal **110 columns**, large font. `DECISIONS.md` open in a second tab.
+Terminal wide enough for the live loop, large font. `DECISIONS.md` open in a second tab.
 Dry-run once.
 
 ---
@@ -33,44 +30,38 @@ Dry-run once.
 > Round 1 built a detector. Round 2 asks what happens when an enterprise runs
 > several AI use cases at once, each with a different risk signature.
 >
-> Our answer isn't a better detector. It's a **warrant** — a time-bounded,
-> evidence-backed statement about what a score is worth right now, on this
-> traffic.
+> Our answer isn't a better detector. It's a **warrant** — a bounded statement
+> about a detector on a declared set, or a refusal when the evidence cannot
+> support it. This is research and local evaluation, not production traffic.
 
 ```bash
-make verify
+python scripts/verify.py --no-activations
 ```
 
-> Thirty-one documented claims checked against their artifacts, twenty-four
-> metric blocks recomputed from frozen scores, three re-derived from raw
-> activations. If our documentation drifts from our data, this fails.
+> The claim table is checked against its artifacts; the frozen-score metrics
+> are recomputed. This portable run explicitly **skips** the activation tier.
+> The screen reports each count and status; a skipped tier is not a pass.
 
 ---
 
-## 0:30 – 1:15 — BEAT 1: it refuses its own flagship
+## 0:30 – 1:05 — BEAT 1: the refusal
 
 ```bash
 python demo/show_beats.py --beat 1
 ```
 
-> This is the part nobody demos.
->
 > Customer support declares a false-positive ceiling of 2%. Certifying that at
 > 95% confidence needs **149** clean held-out negatives — **203** across three
-> profiles with the multiplicity correction. We don't have them.
+> profiles with the multiplicity correction. This example lacks them.
 >
-> So the system **refuses to certify**, and prints the price of lifting the
-> refusal. That refusal has no override — no flag, no environment variable, no
-> admin bypass. If one existed, the product is theatre.
+> It **refuses** and prints the evidence needed to lift the refusal. There is
+> no override.
 
-**Point at the note:**
-
-> And it's uninflated — a clustering correction needs a measured correlation we
-> don't have, so we don't assume one.
+**Point at the note:** the counts are not inflated by an assumed correlation.
 
 ---
 
-## 1:15 – 2:00 — BEAT 2 + 3: one score, three actions
+## 1:05 – 1:40 — BEATS 2–3: policy actions and measured access
 
 ```bash
 python demo/show_beats.py --beat 2
@@ -89,14 +80,13 @@ python demo/show_beats.py --beat 2
 python demo/show_beats.py --beat 3
 ```
 
-> Enterprises consume models by API and can't inspect internals. So we measured
-> what survives as access degrades — activations, log-probabilities, text-only.
-> **Each tier gets its own warrant**, and one that can't clear the bar is
-> refused rather than shipped with an asterisk.
+> This retained tier panel shows **T1 activation variants only**. It does not
+> measure API-only access; T2 and T3 here are fixtures. We show the boundary
+> rather than calling the missing tiers a result.
 
 ---
 
-## 2:00 – 2:45 — BEAT 4: the overlap
+## 1:40 – 2:20 — BEAT 4: the overlap
 
 ```bash
 python demo/show_beats.py --beat 4
@@ -116,72 +106,79 @@ python demo/show_beats.py --beat 4
 
 ---
 
-## 2:45 – 3:25 — BEAT 5: drift, and the modal state
+## 2:20 – 3:05 — BEATS 5–6: drift and retained history
 
 ```bash
 python demo/show_beats.py --beat 5
 ```
 
-> Fifty-six cells. **Thirteen valid, four refused, thirty-nine unvalidated.**
+> This is a **historical research matrix**. The panel counts synthetic fixtures
+> among its populated cells; a historical VALID is not automatically a current
+> independent-unit certificate. **UNVALIDATED is the modal state** because most
+> detector, operating-point and eval-set combinations were never tested.
 >
-> That last one is what most systems hide. A warrant is keyed by detector,
-> operating point *and* eval set — most pairs were never tested here.
-> **Unvalidated is the modal state**, and it never collapses into valid or
-> refused.
->
-> Two triggers. **Envelope drift** watches the input distribution move — no
-> labels, and no guarantee; it's a heuristic gate. **Label-driven revocation**
-> needs labelled negatives: chain a year of rechecks and a detector that keeps
-> its promise is falsely revoked with probability at most alpha over the
-> negatives you declare -- for the chain as kept.
-
----
-
-## 3:25 – 4:00 — The live loop
+> Input-distribution drift can be observed without labels; its trigger is a
+> heuristic, not an error-rate guarantee. Label-driven chain revocation needs
+> independently sampled negatives and a declared horizon.
 
 ```bash
-python demo/run_demo.py --measured --events 4 --auto-prove
+python demo/show_beats.py --beat 6
 ```
 
-Needs the extraction caches in `results/`. Without them it refuses and names the
-path; `--fixture` runs the same loop on synthetic data and says so on screen.
-
-> Left, a conventional stack: a score. Right, the same request with a warrant —
-> recall and precision with intervals and their n, the envelope hash, an expiry,
-> and a certificate chained into a tamper-evident ledger.
->
-> Then it revalidates live and runs five negative controls. Label-shuffle is the
-> one I'd check: it proves the pipeline returns a null when there's no signal.
-> This run is a **synthetic fixture** and the banner says so.
+> Each retained decision names its evidence and hashes its predecessor. The
+> chain detects edits to retained history; a hash is not an authenticated
+> signature or proof that no later record was withheld.
 
 ---
 
-## 4:00 – 4:45 — What we got wrong
+## 3:05 – 3:45 — BEATS 7–9: effort, tunability and the gate
+
+```bash
+python demo/show_beats.py --beat 7
+python demo/show_beats.py --beat 8
+python demo/show_beats.py --beat 9
+```
+
+> The review-effort estimate uses one **declared workload**, not production
+> traffic. The score-free judge study is **simulated**; it certifies no real
+> extractor. The action-gate result is an exact count over declared scenarios,
+> not a claim of adversarial robustness. Those are the limits behind the
+> three-clause pitch.
+
+---
+
+## 3:45 – 4:35 — The synthetic live loop
+
+```bash
+python demo/run_demo.py --fixture --events 4 --auto-prove
+```
+
+This command runs on a clean checkout. `--measured` is a separate optional
+demonstration requiring ignored extraction caches and different narration.
+
+> The banner says **SYNTHETIC FIXTURE**. It exercises the warrant display,
+> recorded chain and five controls, including label shuffle. The displayed
+> metrics are harness checks on generated data, not measurements of a customer
+> workflow.
+
+---
+
+## 4:35 – 4:50 — What we got wrong
 
 **Switch to `DECISIONS.md`.**
 
-> Our pilot cleared its issuance bar at 0.5554 against 0.55 — by **0.0054**. So
-> we swept the bootstrap seed 400 times. The mean lower bound is **0.5478**,
-> below the bar. **The gate's expected verdict is fail.** We drew a pass at the
-> 66th percentile — and **didn't author** the 240-item set it would have
-> justified.
->
-> Seventeen entries like that, most of them flattering. The most recent was
-> yesterday: a budget in this demo came from a planning document instead of our
-> config, and put a number a third too large on the screen you just watched.
->
-> That's the failure this product exists to catch, happening to us, in the
-> medium a customer reads. So a plausible number answering the wrong question
-> isn't an assertion for us. It's a base rate.
+> A seed-sensitivity check once withdrew a flattering issuance result; an
+> imported planning budget once changed a demo number. Both are preserved in
+> `DECISIONS.md`. Plausible output is not enough without its exact source and
+> scope.
 
 ---
 
-## 4:45 – 5:00 — Close
+## 4:50 – 5:00 — Close
 
-> We tell you your error rate on your traffic. We tell you when it stops being
-> true. We tell you what it costs to keep it true.
->
-> And when we can't tell you, we refuse — and we print the price.
+> The goal is to measure a declared error rate, detect when its support changes,
+> and price the evidence needed to maintain it. When evidence is insufficient,
+> Warrant refuses. A customer pilot has not happened yet.
 
 ---
 
@@ -189,24 +186,19 @@ path; `--fixture` runs the same loop on synthetic data and says so on screen.
 
 **"Where's the feedback loop?"**
 
-> Deliberately not built, and the reason is the interesting part. The naive
-> version — retrain on reviewer overrides — makes the detector *worse*: you only
-> get labels for items the detector flagged, so you train on a biased sample and
-> the bias compounds each cycle. Doing it right needs inverse-propensity
-> weighting with the selection probability recorded per item. Our override
-> schema hard-fails without that field, so the data is being collected correctly
-> today. The estimator is specified, unbuilt, and in our open items.
+> Deliberately not built. Retraining only on reviewed flags creates selection
+> bias and can worsen a detector. The override schema requires a recorded
+> selection probability per item; the correction estimator remains unbuilt.
+> No production feedback labels are being collected here.
 
 **"22% recall is low."**
 
-> It is, and it's a choice. That's one point on a measured ROC — the same
-> detector runs at 74% recall for decision support. Customer support is
-> FPR-constrained: at tens of thousands of interactions a week the false-positive
-> rate is the binding cost, so we buy precision with recall. It clears its
-> declared floor of 10% on the interval's lower bound, not its point estimate.
-> And the local ROC slope differs 7.9× across the three profiles — which is
-> exactly why we warrant operating points individually rather than warranting a
-> detector.
+> Beat 2 shows one operating point near 22% recall for the declared
+> customer-support profile and another near 74% for decision support. Different
+> false-positive constraints lead to different trade-offs. On the retained
+> evaluation set, the support row's recall lower bound clears its declared 10%
+> floor; this is not customer traffic or a universal recall ceiling. A buyer
+> may require a higher floor.
 
 ---
 
@@ -214,10 +206,11 @@ path; `--fixture` runs the same loop on synthetic data and says so on screen.
 
 | beat | command |
 |---|---|
-| verification | `make verify` |
-| 1–6 | `python demo/show_beats.py --beat N` |
+| portable verification | `python scripts/verify.py --no-activations` |
+| 1–9 | `python demo/show_beats.py --beat N` |
 | all | `python demo/show_beats.py` |
-| live loop | `python demo/run_demo.py --measured --events 4 --auto-prove` (or `--fixture` without caches) |
+| video live loop | `python demo/run_demo.py --fixture --events 4 --auto-prove` |
+| optional measured loop | `python demo/run_demo.py --measured --events 4 --auto-prove` (requires ignored extraction caches; narrate measured provenance, not synthetic) |
 
 **If a command fails on camera:** say what failed, run
 `python demo/show_beats.py` (committed artifacts only), continue. A beat whose
