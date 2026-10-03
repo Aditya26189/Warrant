@@ -198,7 +198,7 @@ def _beat_profiles(root: Path) -> Beat:
 
 
 def _beat_tiers(root: Path) -> Beat:
-    """The access-tier ladder: what survives when you cannot see inside."""
+    """Show only access tiers actually present in the retained artifact."""
     payload = _load(root, "tier_ladder.json")
     if not payload:
         return Beat(
@@ -206,6 +206,7 @@ def _beat_tiers(root: Path) -> Beat:
             missing="results/tier_ladder.json absent",
         )
     rows = []
+    shown = sorted({rung.get("access_tier", "?") for rung in payload["rungs"].values()})
     for name, rung in payload["rungs"].items():
         auroc = rung.get("metrics", {}).get("auroc")
         rows.append((
@@ -214,14 +215,17 @@ def _beat_tiers(root: Path) -> Beat:
         ))
     return Beat(
         number=3,
-        title="The tier ladder -- what survives without model internals",
-        answers="enterprises consume a foundation model via API, limiting how "
-        "deeply a checker can inspect internals",
+        title=("Measured activation variants (T1)" if shown == ["T1_ACTIVATIONS"]
+               else "Measured access-tier evidence"),
+        answers="which access tiers have retained results, and which are absent",
         rows=tuple(rows),
         artifacts=("results/tier_ladder.json", "results/tier_ladder.png"),
         note=(
-            "Each tier is warranted SEPARATELY. A tier that cannot clear the "
-            "issuance bar is refused rather than reported with a caveat."
+            f"Access tiers shown: {', '.join(shown)}. Only listed tiers have "
+            "results in this artifact. "
+            + ("T2/T3 are fixture-only here; no API-only performance is "
+               "demonstrated." if shown == ["T1_ACTIVATIONS"] else
+               "Absent tiers have no measured conclusion here.")
         ),
     )
 

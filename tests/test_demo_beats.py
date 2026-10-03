@@ -105,6 +105,17 @@ def test_the_profile_beat_shows_one_score_and_three_actions() -> None:
     assert "one input, one score" in text
 
 
+def test_tier_beat_does_not_claim_unshown_api_tiers() -> None:
+    """The retained tier artifact currently measures activation variants only."""
+    payload = json.loads((PROJECT_ROOT / "results" / "tier_ladder.json").read_bytes())
+    shown = {rung["access_tier"] for rung in payload["rungs"].values()}
+    beat = next(b for b in BEATS if b.number == 3)
+    assert ", ".join(sorted(shown)) in (beat.note or "")
+    if shown == {"T1_ACTIVATIONS"}:
+        assert "API-only" in (beat.note or "")
+        assert "activation" in beat.title.lower()
+
+
 def test_the_matrix_beat_shows_unvalidated_as_the_modal_state() -> None:
     """Invariant 2. UNVALIDATED must never collapse into VALID or REFUSED, and
     a demo is exactly where the temptation to hide it lives."""
