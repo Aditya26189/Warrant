@@ -70,8 +70,10 @@ being right; retain its label-audit companion for that description.
 
 | File | Supplied by | Retained by | Why it must be kept |
 |---|---|---|---|
-| The scored export (`id,label,score`, and optional `group`, `label_2`) | the customer | the customer, **unaltered** | every result is a function of these rows; nothing else can reproduce them |
-| Any extra columns in that export -- timestamps, model versions, reviewer names | the customer | the customer, in the same file | Warrant reads them and **keeps neither the names nor the values** in any record |
+| Original source export and versioned mapping, if `prepare` was used | the customer | the customer, under its approved data controls | `verify-prepared` needs both to replay the source-to-row transformation |
+| Prepared `manifest.json`, if `prepare` was used | Warrant | the customer and reviewer | binds the source, mapping and canonical scored bytes for a separate preparation replay; it is not an authenticated origin |
+| The scored export (`id,label,score`, and optional `group`, `label_2`) | the customer directly, or `prepare` from its source | the customer, **unaltered** | every result is a function of these rows; nothing else can reproduce them |
+| Extra columns in an original source -- timestamps, model versions, reviewer names | the customer | the customer, in the original file | downstream records ignore them; `prepare` lists excluded column **names**, but not their values, in its manifest |
 | Release specification, development and holdout id lists | the customer | the customer | together they fix the criteria and the holdout before scoring |
 | Release contract (`release register --out`) | Warrant, from the customer's files | the customer, **before** evaluating | the evaluation binds to its digest; registration is not a trusted timestamp |
 | `context.json` (scorer identity and scope) | the customer, from the actual run | the customer | `evaluate` and `verify` refuse a mismatch with the contract |
@@ -80,8 +82,19 @@ being right; retain its label-audit companion for that description.
 | Recheck records, and a chain's `*.chain-head` sidecar | Warrant | the customer, **every one** | a chain's guarantee holds for the chain as kept; a missing record is visible only if a kept one points at it |
 | The handoff sheet itself | the customer's validation function | the validation function | the statement that joins a release evaluation to a certify warrant for one file |
 
-Warrant stores nothing itself. No record leaves the machine it was written on
-unless someone copies it.
+Warrant has no hosted copy. Its local outputs do not leave the machine unless
+someone copies them.
+
+When the scored file came from `prepare`, the scored-export row above means its
+canonical `scored.csv`. Neither a certify warrant nor a release evaluation
+automatically includes or binds the preparation manifest or mapping. Their
+verifiers replay the effective scored rows, **not** the source-to-row
+transformation. Keep all preparation inputs and run `verify-prepared` as a
+separate check before claiming that the original export produced those rows.
+A release specification can separately state the positive-label meaning, but
+that statement does not replay the mapping's original label tokens or score
+direction. `independent_rows` is the customer's declaration, not a verified
+sampling fact.
 
 ### Digests describe rows, not file bytes
 
