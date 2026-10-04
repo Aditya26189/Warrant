@@ -164,6 +164,27 @@ class RoutingDecision:
         """Whether a warrant backs this decision."""
         return self.warrant is not None
 
+    def to_payload(self) -> dict:
+        """Summarize the route without copying the warrant's claims.
+
+        The enclosing drift response owns ``claimed_bounds``. Copying a full
+        warrant here would create a second, potentially stale certificate;
+        this is the trace's established routing shape (DECISIONS.md 232).
+        """
+        return {
+            "envelope_id": self.envelope_id,
+            "profile": self.profile,
+            "routed_to": None if self.warrant is None else self.warrant.detector_id,
+            "action": self.action.value,
+            "suspended_profile": self.suspended_profile,
+            "reason": self.reason,
+            "considered": [
+                {"detector_id": detector, "verdict": verdict}
+                for detector, verdict in self.considered
+            ],
+            "enqueued_for_validation": [key.as_string() for key in self.enqueued_for_validation],
+        }
+
 
 def _rank(warrant: Warrant) -> tuple:
     """Order eligible warrants by **recall lower confidence bound**, descending.

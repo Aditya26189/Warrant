@@ -1,10 +1,8 @@
 """The revocation trace: pre-registered, replayed on real lengths, and honest.
 
-``DECISIONS.md`` 178 registered four criteria before the trace existed, and 179
-records the read-only defect building it exposed. These tests hold three things:
-the committed trace meets the criteria it was registered against, the replay
-cannot be run on a warrant whose numbers have lapsed, and the defect stays
-visible until someone fixes it.
+``DECISIONS.md`` 178 registered four criteria before the trace existed, and
+232 closes the routed-response serialization defect recorded in 179. These
+tests hold the trace, expiry refusal, and the serialized routing evidence.
 """
 
 from __future__ import annotations
@@ -21,7 +19,7 @@ from controlplane.drift import DriftVerdict
 from controlplane.drift.ladder import LadderTransition
 from controlplane.drift.response import DriftResponse
 from controlplane.matrix.routing import RoutingDecision
-from controlplane.model import Action, EnvelopeState, WarrantStatus, utc_now
+from controlplane.model import Action, EnvelopeState, WarrantKey, WarrantStatus, utc_now
 from controlplane.store import Ledger
 from controlplane.validation.synthetic import synthetic_cache, synthetic_evalset
 
@@ -131,15 +129,6 @@ def test_an_expired_warrant_is_refused_rather_than_traced(tmp_path: Path) -> Non
 # --------------------------------------------------------------------------- #
 
 
-@pytest.mark.xfail(
-    strict=True,
-    raises=AttributeError,
-    reason=(
-        "DECISIONS.md 179: DriftResponse.to_payload calls RoutingDecision.to_payload, "
-        "which does not exist. drift/ is read-only. When this passes, strict mode "
-        "fails it: remove the workaround in demo/revocation_trace.py and close 179."
-    ),
-)
 def test_a_routed_drift_response_serialises() -> None:
     warrant = make_warrant()
     verdict = DriftVerdict(
@@ -156,4 +145,36 @@ def test_a_routed_drift_response_serialises() -> None:
         envelope_id="triviaqa-longctx-600", profile="customer_support", warrant=None,
         action=Action.ESCALATE, claimed_bounds={}, reason="nothing qualifies",
     )
-    DriftResponse(transition=transition, routing=routing, claimed_bounds={}).to_payload()
+    response = DriftResponse(transition=transition, routing=routing, claimed_bounds={})
+    payload = response.to_payload()
+    assert payload["routing"] == {
+        "envelope_id": "triviaqa-longctx-600",
+        "profile": "customer_support",
+        "routed_to": None,
+        "action": "ESCALATE",
+        "suspended_profile": False,
+        "reason": "nothing qualifies",
+        "considered": [],
+        "enqueued_for_validation": [],
+    }
+    assert payload["can_certify"] is False
+    assert json.loads(json.dumps(payload)) == payload
+
+    key = WarrantKey("unmeasured", "point", "triviaqa-longctx-600")
+    routed = RoutingDecision(
+        envelope_id="triviaqa-longctx-600", profile="customer_support", warrant=warrant,
+        action=Action.ALLOW, claimed_bounds=warrant.claimed_bounds(), reason="warrant qualifies",
+        considered=((warrant.detector_id, "eligible"),), enqueued_for_validation=(key,),
+    )
+    selected = DriftResponse(
+        transition=transition, routing=routed, claimed_bounds=warrant.claimed_bounds(),
+    ).to_payload()
+    assert selected["routing"]["routed_to"] == warrant.detector_id
+    assert selected["routing"]["considered"] == [
+        {"detector_id": warrant.detector_id, "verdict": "eligible"},
+    ]
+    assert selected["routing"]["enqueued_for_validation"] == [key.as_string()]
+    assert "claimed_bounds" not in selected["routing"]
+    assert selected["claimed_bounds"] == warrant.claimed_bounds()
+    assert selected["can_certify"] is True
+    assert json.loads(json.dumps(selected)) == selected
