@@ -54,6 +54,12 @@ Python directly. The Unix command block remains available for Unix shells.
   `refuses.csv` reported REFUSED because it had 37 independent negative units
   and needed at least 299 at budget 0.01. These are the synthetic examples,
   not a customer sample.
+- On clean `2ac4feb`, `python -m pytest tests/ -q -p no:cacheprovider` exited
+  zero after 2,859.5 seconds. Its progress log has 2,193 passing markers,
+  zero failures, zero skips, and zero expected failures. The separately
+  generated inventory records 2,193 collected tests at `f935793`; collection
+  alone is not the execution result. Pytest emitted SWIG deprecation warnings
+  and an expected nonfinite-update runtime warning in `test_warrant_stats`.
 
 ## What this does not establish
 
@@ -88,3 +94,4 @@ consumer of routed response JSON should test its own schema expectations.
 | Windows Quickstart documentation | `6eab9f7`; `README.md` |
 | Clean source smoke and available verifier | `6fc2187`: 7/7, 92/92, 25/25; activations skipped |
 | Fresh PowerShell clone and examples | Local execution on 2026-10-04; 130.6 seconds, both certify commands exited zero |
+| Full clean-source suite | `2ac4feb`; exit 0, 2,193 passing markers, 2,859.5 seconds; OS-temp run log |
