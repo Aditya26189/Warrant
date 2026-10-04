@@ -311,7 +311,7 @@ def _act_on_revocation(
         decisions.append(
             {
                 "profile": name,
-                "response": _response_payload(response),
+                "response": response.to_payload(),
                 "certificate": to_jsonable(sealed),
             }
         )
@@ -322,38 +322,6 @@ def _act_on_revocation(
         "policy_hash": policy_hash,
         "decisions": decisions,
         "certificate_chain": {"ok": chain.ok, "n_records": chain.n_records, "head_hash": chain.head_hash},
-    }
-
-
-def _response_payload(response) -> dict[str, Any]:
-    """A drift response as JSON, without ``DriftResponse.to_payload``.
-
-    That method calls ``RoutingDecision.to_payload``, which does not exist, so it
-    raises on exactly the responses that matter -- the ones that were routed.
-    ``drift/response.py`` is read-only; the defect is ``DECISIONS.md`` 179 and
-    ``tests/test_revocation_trace.py`` pins it as a strict expected failure.
-    """
-    routing = response.routing
-    return {
-        "transition": response.transition.to_payload(),
-        "routing": None
-        if routing is None
-        else {
-            "envelope_id": routing.envelope_id,
-            "profile": routing.profile,
-            "routed_to": None if routing.warrant is None else routing.warrant.detector_id,
-            "action": routing.action.value,
-            "suspended_profile": routing.suspended_profile,
-            "reason": routing.reason,
-            "considered": [
-                {"detector_id": detector, "verdict": verdict}
-                for detector, verdict in routing.considered
-            ],
-            "enqueued_for_validation": [k.as_string() for k in routing.enqueued_for_validation],
-        },
-        "claimed_bounds": to_jsonable(response.claimed_bounds),
-        "can_certify": response.can_certify,
-        "acted_without_operator": response.acted_without_operator,
     }
 
 
