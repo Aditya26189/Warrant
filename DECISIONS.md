@@ -11898,3 +11898,15 @@ exactly as after a chained revocation.
 **Decision.** Mark absent and empty frozen-score directories as failed attempts, distinct from the optional activation-cache skip. Keep the report's `ran=False` truth, emit the existing `DRIFT` machine outcome with `0/0`, print the missing-evidence reason, and return nonzero. No synthetic comparison is counted as run. Preserve the activation-cache-absent skip.
 
 **Validation and limit.** Strengthen the existing missing-score test and add an empty-directory and CLI exit case, then run the affected suite, full clean-clone gate and claim replay. This checks missing evidence at the verifier boundary; it does not authenticate the committed files or prove production performance.
+
+
+## 232 - Close routed drift-response serialization without changing drift or the frozen trace (2026-10-04)
+
+- **Status:** DECIDED before the implementation. Supersedes the OPEN implementation status of 179; preserves its original account.
+- **Scope:** `matrix/routing.py`, the trace adapter, and the strict expected-failure test. No edit to read-only `drift/**` or existing `results/**`.
+
+**Finding.** A routed `DriftResponse.to_payload()` still raises because `RoutingDecision` has no `to_payload`. The trace manually writes that decision's fields as a workaround (179). This is an executable correctness defect even though the committed certificate is built from the response object rather than this payload.
+
+**Decision.** Add `RoutingDecision.to_payload()` in the writable matrix module, using the trace's existing routing shape: envelope, profile, routed detector ID or null, action, suspension, reason, considered detector/verdict pairs, and enqueued cell keys. Keep claimed bounds only on the enclosing `DriftResponse`, where the current payload already puts them, and omit the full warrant object so the routing summary cannot accidentally become a second certificate. Replace the trace's handwritten copy with the now-working response method. Do not regenerate or reinterpret the frozen revocation trace.
+
+**Validation.** Make 179's strict xfail an ordinary regression. Check both a conservative no-warrant route and a warranted route, including JSON encoding and the existing trace's payload shape. Run the focused drift/matrix/demo tests and static checks. The serialized routing summary is local evidence; it is not a new statistical claim or a production-traffic result.
