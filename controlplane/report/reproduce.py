@@ -121,15 +121,16 @@ class ReproductionReport:
     ran: bool
     reason: str
     diffs: list[VariantDiff] = field(default_factory=list)
+    failed: bool = False
 
     @property
     def ok(self) -> bool:
         """A skipped run is not a failure, and is never reported as a pass."""
-        return all(d.ok for d in self.diffs) if self.ran else True
+        return not self.failed and (all(d.ok for d in self.diffs) if self.ran else True)
 
     @property
     def status(self) -> str:
-        if not self.ran:
+        if not self.ran and not self.failed:
             return "SKIPPED"
         return "OK" if self.ok else "DRIFT"
 
@@ -212,6 +213,7 @@ def reproduce_frozen_set(
         if result.returncode != 0:
             return ReproductionReport(
                 ran=False,
+                failed=True,
                 reason=(
                     f"re-validation exited {result.returncode}. This is a "
                     f"failure, not a skip:\n{result.stderr[-2000:]}"
@@ -247,6 +249,8 @@ def render(report: ReproductionReport) -> str:
     said "from cached activations" for both tiers once the score tier existed,
     which described the weaker check as the stronger one.
     """
+    if report.failed:
+        return f"re-derivation FAILED\n  {report.reason}"
     if not report.ran:
         return f"re-derivation SKIPPED\n  {report.reason}"
     width = min(max((len(d.variant) for d in report.diffs), default=26), 62)
@@ -297,8 +301,8 @@ def reproduce_from_scores(root: Path, config=None) -> ReproductionReport:
 
     Returns:
         A report with one diff per (score set, target). ``ran=False`` only when
-        there are no score sets at all, which is a repository defect rather
-        than a missing optional input.
+        there are no score sets at all; that is a repository defect and a
+        failed verification, not a missing optional input.
     """
     import json
 
@@ -310,6 +314,7 @@ def reproduce_from_scores(root: Path, config=None) -> ReproductionReport:
     if not scores_dir.is_dir():
         return ReproductionReport(
             ran=False,
+            failed=True,
             reason=(
                 f"{scores_dir.relative_to(root)} does not exist. Frozen scores "
                 "are committed evidence, not an optional input -- regenerate "
@@ -320,7 +325,9 @@ def reproduce_from_scores(root: Path, config=None) -> ReproductionReport:
     files = sorted(scores_dir.glob("*.json"))
     if not files:
         return ReproductionReport(
-            ran=False, reason=f"no score sets in {scores_dir.relative_to(root)}"
+            ran=False,
+            failed=True,
+            reason=f"no score sets in {scores_dir.relative_to(root)}",
         )
 
     config = config or load_config(str(root / "config.yaml"))

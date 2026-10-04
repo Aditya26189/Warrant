@@ -99,7 +99,7 @@ def main() -> int:
     else:
         score_report = reproduce_from_scores(PROJECT_ROOT)
         print(render_reproduction(score_report))
-        scores_ok, scores_skipped = score_report.ok, not score_report.ran
+        scores_ok, scores_skipped = score_report.ok, score_report.status == "SKIPPED"
 
     print()
     print("=" * 78)
@@ -120,7 +120,10 @@ def main() -> int:
     else:
         act_report = reproduce_frozen_set(PROJECT_ROOT, eval_set=args.eval_set)
         print(render_reproduction(act_report))
-        activations_ok, activations_skipped = act_report.ok, not act_report.ran
+        activations_ok, activations_skipped = (
+            act_report.ok,
+            act_report.status == "SKIPPED",
+        )
 
     # --- machine-readable summary, always last -------------------------- #
     # One line per tier, emitted at the very end so a consumer reading only
@@ -155,9 +158,8 @@ def main() -> int:
         return 0
     print("FAILED", file=sys.stderr)
     print(
-        "A number does not reproduce. Either the pipeline changed and the "
-        "artifacts need regenerating, or a number was edited by hand. Never "
-        "edit the number to match.",
+        "Verification failed or a number does not reproduce. Inspect the tier "
+        "detail above before changing any artifact or published number.",
         file=sys.stderr,
     )
     return 1

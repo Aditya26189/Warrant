@@ -143,7 +143,18 @@ def test_an_absent_scores_directory_is_a_defect_not_a_skip(tmp_path: Path) -> No
     """
     report = reproduce_from_scores(tmp_path)
     assert report.ran is False
+    assert not report.ok
+    assert report.status == "DRIFT"
     assert "not an optional input" in report.reason or "does not exist" in report.reason
+
+
+def test_an_empty_scores_directory_is_a_defect_not_a_skip(tmp_path: Path) -> None:
+    (tmp_path / "results" / "scores").mkdir(parents=True)
+    report = reproduce_from_scores(tmp_path)
+    assert report.ran is False
+    assert not report.ok
+    assert report.status == "DRIFT"
+    assert "no score sets" in report.reason
 
 
 # --------------------------------------------------------------------------- #

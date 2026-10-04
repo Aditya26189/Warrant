@@ -5,17 +5,12 @@
 # matplotlib. Someone evaluating their own detector should not download two
 # gigabytes of deep-learning stack to do it.
 #
-# This is a claim, so CI proves it: the `customer-path` job installs exactly this
-# file and runs the CLI end to end plus the 23 test files in
-# ci/customer-path-tests.txt. If an import creeps into the customer path that is
-# not covered here, that job goes red.
+# CI checks this claim: the `customer-path` job installs exactly this file,
+# exercises the CLI, and runs the current list in ci/customer-path-tests.txt.
+# Consult the run for the tested commit before treating that job as passing.
 #
-# Verified 2026-09-11 in a clean venv holding only these three and pytest: the
-# CLI runs both examples and 564 tests pass, on numpy 2.5.3 and scipy 1.18.1 --
-# both well ahead of the versions pinned in requirements.lock.txt, which is the
-# point of the lower bounds here. The customer path is meant to keep working as
-# its dependencies move; the research path is pinned because its numbers are
-# statements about one build.
+# The customer path is meant to keep working as these dependencies move; the
+# research path is pinned because its numbers are statements about one build.
 numpy>=1.24
 scipy>=1.10
 PyYAML>=6.0

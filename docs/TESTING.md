@@ -198,6 +198,7 @@ These use synthetic fixtures only, never the frozen scores.
 |---|---|
 | `test_optimized_guards.py` | No `assert` survives in `controlplane/` — an AST scan over every module, plus the claim-table guard executed in a subprocess with `python -O` actually set. A guard the optimiser deletes is a guard that does not exist where it matters |
 | `test_reproduce_tolerance.py` | The reproduction comparison accepts last-ulp float noise and **nothing wider** — a difference at the published precision must still fail, and the tolerance constant itself is asserted to stay tight |
+| `test_reproduce_failure.py` | A present activation cache whose child replay fails and missing mandatory frozen scores cannot become a skipped tier or a green CLI exit; an absent optional cache remains an explicit skip |
 | `test_smoke.py` | Every script actually runs |
 | `test_script_wiring.py` | Every call a script makes into `controlplane/` binds to a **real signature** — the largest suite, because a thin wrapper that calls a renamed function fails only when someone runs it |
 | `test_config.py` | Config loading, hashing, layer resolution, provenance |
