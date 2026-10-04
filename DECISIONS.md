@@ -11876,3 +11876,14 @@ exactly as after a chained revocation.
 **Decision.** Correct the outward-facing REDACT note and the adapter docstring to distinguish unique identifiers from independent evidence. Keep existing external measurements visibly historical and exploratory under their record-as-unit assumption. Do not silently regroup, rescore, replace or relabel the frozen artifacts in this correction. Before any scenario-grouped reanalysis, register the unit, handling of unequal groups, selection and uncertainty method, and exactly which artifacts will be rescored.
 
 **Validation and limit.** The multiplicities and shared metadata were checked against that retained public file without printing its text or changing it. Run focused REDACT and documentation tests and verify the diff. This audit neither proves that repeated rows are dependent nor validates record-level independence; it also does not measure how much any interval would move under grouping. It is not customer evidence.
+
+## 230 - Failed activation replay cannot be a skipped verification tier (2026-10-04)
+
+- **Status:** DECIDED after a failing local reproduction and before the repair.
+- **Scope:** The verifier's outcome classification and CLI exit status; no frozen score, statistical estimator or published measurement changes.
+
+**Finding.** With the activation cache present, `scripts/02_validate.py` exited 1 because its scratch output could not be written. `ReproductionReport(ran=False)` then evaluated as `ok=True`, so `scripts/verify.py` printed both "This is a failure, not a skip" and `TIER|3|activations|SKIPPED|0/0`, ending with exit 0 and `VERIFIED`. Two regression cases failed before the repair: the reproduction report was green, and the CLI returned 0. With sufficient scratch access, the same cached activation tier reproduced 3/3 comparisons; the initial error was environmental, but the green failure classification was a code defect.
+
+**Decision.** Reserve `SKIPPED` for an absent cache or an explicit skip flag. Mark a child revalidation error as a failed attempt, render it as `FAILED`, emit the existing machine-readable `DRIFT` tier outcome, and exit nonzero. Preserve the existing tier protocol and clean-clone behavior where activation caches are absent. A failed attempt must not be described as a numerical mismatch; its child stderr remains visible.
+
+**Validation and limit.** Regress both the library outcome and CLI exit path with a cache-present child failure; run neighboring verifier/clone tests, the customer-only and full suites, and a clean-source replay. The successful local 3/3 cached replay does not prove that another machine has the cache, that re-extraction from a GPU would match, or that production data has been measured.
