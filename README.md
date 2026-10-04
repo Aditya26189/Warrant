@@ -187,7 +187,7 @@ here does not move those rules.
 ```bash
 git clone https://github.com/Aditya26189/Warrant.git
 cd Warrant
-python -m venv .venv && . .venv/bin/activate     # Windows: .venv\Scripts\activate
+python -m venv .venv && . .venv/bin/activate
 pip install -r requirements-customer.txt          # numpy, scipy, PyYAML -- nothing else
 
 # 1. a detector with enough evidence behind it
@@ -195,6 +195,19 @@ python warrant.py certify --input examples/certifies.csv --budget 0.05
 
 # 2. the same tool refusing -- this is the one that matters
 python warrant.py certify --input examples/refuses.csv --budget 0.01
+```
+
+On Windows PowerShell, invoke the new environment's Python directly; no
+activation script is needed. This also works in PowerShell 5.1, where `&&` is
+not a command separator:
+
+```powershell
+git clone https://github.com/Aditya26189/Warrant.git
+cd Warrant
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-customer.txt
+.\.venv\Scripts\python.exe warrant.py certify --input examples/certifies.csv --budget 0.05
+.\.venv\Scripts\python.exe warrant.py certify --input examples/refuses.csv --budget 0.01
 ```
 
 The first prints a threshold, a Clopper-Pearson bound on its false-positive
