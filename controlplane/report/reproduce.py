@@ -301,8 +301,8 @@ def reproduce_from_scores(root: Path, config=None) -> ReproductionReport:
 
     Returns:
         A report with one diff per (score set, target). ``ran=False`` only when
-        there are no score sets at all, which is a repository defect rather
-        than a missing optional input.
+        there are no score sets at all; that is a repository defect and a
+        failed verification, not a missing optional input.
     """
     import json
 
@@ -314,6 +314,7 @@ def reproduce_from_scores(root: Path, config=None) -> ReproductionReport:
     if not scores_dir.is_dir():
         return ReproductionReport(
             ran=False,
+            failed=True,
             reason=(
                 f"{scores_dir.relative_to(root)} does not exist. Frozen scores "
                 "are committed evidence, not an optional input -- regenerate "
@@ -324,7 +325,9 @@ def reproduce_from_scores(root: Path, config=None) -> ReproductionReport:
     files = sorted(scores_dir.glob("*.json"))
     if not files:
         return ReproductionReport(
-            ran=False, reason=f"no score sets in {scores_dir.relative_to(root)}"
+            ran=False,
+            failed=True,
+            reason=f"no score sets in {scores_dir.relative_to(root)}",
         )
 
     config = config or load_config(str(root / "config.yaml"))

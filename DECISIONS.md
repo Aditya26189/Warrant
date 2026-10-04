@@ -11887,3 +11887,14 @@ exactly as after a chained revocation.
 **Decision.** Reserve `SKIPPED` for an absent cache or an explicit skip flag. Mark a child revalidation error as a failed attempt, render it as `FAILED`, emit the existing machine-readable `DRIFT` tier outcome, and exit nonzero. Preserve the existing tier protocol and clean-clone behavior where activation caches are absent. A failed attempt must not be described as a numerical mismatch; its child stderr remains visible.
 
 **Validation and limit.** Regress both the library outcome and CLI exit path with a cache-present child failure; run neighboring verifier/clone tests, the customer-only and full suites, and a clean-source replay. The successful local 3/3 cached replay does not prove that another machine has the cache, that re-extraction from a GPU would match, or that production data has been measured.
+
+## 231 - Missing committed frozen scores fail verification (2026-10-04)
+
+- **Status:** DECIDED before implementation, after auditing the other `ran=False` paths.
+- **Scope:** Score-tier missing-evidence classification and CLI exit; no scores or published measurements change.
+
+**Finding.** `reproduce_from_scores` explicitly says an absent or empty `results/scores/` directory is a repository defect, because those files are committed evidence. Both paths returned `ReproductionReport(ran=False)`; its shared default made them `ok=True`, `SKIPPED`. Standalone `scripts/verify.py` would consequently exit 0 and print `VERIFIED` with its mandatory score tier unrun. The existing missing-directory test checked only `ran=False` and the diagnostic text, so it did not detect the false success. The clean-clone gate separately rejects a skipped score tier, but that does not repair the standalone verifier.
+
+**Decision.** Mark absent and empty frozen-score directories as failed attempts, distinct from the optional activation-cache skip. Keep the report's `ran=False` truth, emit the existing `DRIFT` machine outcome with `0/0`, print the missing-evidence reason, and return nonzero. No synthetic comparison is counted as run. Preserve the activation-cache-absent skip.
+
+**Validation and limit.** Strengthen the existing missing-score test and add an empty-directory and CLI exit case, then run the affected suite, full clean-clone gate and claim replay. This checks missing evidence at the verifier boundary; it does not authenticate the committed files or prove production performance.

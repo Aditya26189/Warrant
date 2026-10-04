@@ -73,3 +73,24 @@ def test_verify_cli_exits_nonzero_when_cached_revalidation_fails(
     output = capsys.readouterr()
     assert "TIER|3|activations|DRIFT|0/0" in output.out
     assert "VERIFIED" not in output.out
+
+
+def test_verify_cli_exits_nonzero_when_frozen_scores_are_missing(
+    tmp_path, monkeypatch, capsys
+) -> None:
+    report = reproduce.reproduce_from_scores(tmp_path)
+    spec = importlib.util.spec_from_file_location(
+        "verify_cli_missing_scores_test", ROOT / "scripts" / "verify.py"
+    )
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    monkeypatch.setattr(module, "check_claims", lambda *args: [SimpleNamespace(ok=True)])
+    monkeypatch.setattr(module, "render_claims", lambda *args: "1/1 claims reproduce")
+    monkeypatch.setattr(module, "reproduce_from_scores", lambda *args: report)
+    monkeypatch.setattr(sys, "argv", ["verify.py", "--no-activations"])
+
+    assert module.main() == 1
+    output = capsys.readouterr()
+    assert "TIER|2|frozen_scores|DRIFT|0/0" in output.out
+    assert "VERIFIED" not in output.out
