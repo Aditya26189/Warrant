@@ -4,6 +4,9 @@ Run from the repository root with the declared Python dependencies installed.
 The input files in `examples/` are synthetic. This demonstrates local
 representation, replay, a supported measurement and an explicit refusal; it
 does not measure a deployed detector or validate anyone's labels.
+This 2 October run prepared a four-row file and certified separate examples.
+The later [complete synthetic handoff](../examples/README.md#4-run-a-complete-synthetic-export-handoff)
+certifies the prepared output itself and replays both boundaries.
 
 ```powershell
 $demoDir = Join-Path $env:TEMP ("warrant-demo-" + [Guid]::NewGuid().ToString("N"))

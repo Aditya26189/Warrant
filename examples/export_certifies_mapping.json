@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "columns": {
+    "id": "item",
+    "label": "review",
+    "score": "risk"
+  },
+  "positive_label": "error",
+  "negative_label": "ok",
+  "score_direction": "higher",
+  "independent_rows": true
+}

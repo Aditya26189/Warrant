@@ -95,6 +95,12 @@ may leave temporary files that require cleanup.
 
 An existing downstream command reads `prepared-example/scored.csv` under its
 normal rules. Four synthetic rows will not support a useful certificate.
+For a complete public synthetic path that does certify its prepared output,
+use [the export handoff example](../examples/README.md#4-run-a-complete-synthetic-export-handoff).
+Run both `verify-prepared` and `warrant verify`: the former replays the source
+mapping, while the latter recomputes the certificate from effective scored
+rows. Neither establishes that the labels or independent-row declaration are
+correct.
 Grouped `release` input is still unsupported; do not erase groups to force it
 through. See the [October discovery packet](../reports/DISCOVERY-2026-10.md)
 for the real-export questions to settle before a dry run.
@@ -218,7 +224,9 @@ written from it contains.
 So timestamps, model versions, prompt hashes and reviewer names belong in **your
 own retained copy of the file**, not in the warrant. If the record must be tied
 to that copy, see [EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md): a `certify` warrant
-does not yet bind the rows it was issued on.
+binds its effective rows, but does not bind ignored source columns or the
+source-to-row mapping (DECISIONS 211-212). Retain and separately replay the
+prepared package when that mapping matters.
 
 ---
 
