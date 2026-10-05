@@ -80,3 +80,4 @@ or asserting demand from this synthetic workflow would not close that gate.
 | Public commands and corrected row-binding prose | `fa6cbe7`; `examples/README.md`, `docs/INPUT.md` |
 | Direct clean-source PowerShell handoff | `fa6cbe7`: PREPARED, VERIFIED, VALID, VERIFIED; 20 seconds, all exit 0 |
 | Documentation checks | 142 passed; link, report and README-prose tests |
+| Clean full-suite gate | `f00ceaa`; `python -m pytest tests/ -q -p no:cacheprovider --basetemp C:\Users\LawLight\AppData\Local\Temp\warrant-phase33-full-pytest -o addopts=--strict-markers`; 2,206 passed, 3 warnings, 0 failures, 3,115.84 seconds |
