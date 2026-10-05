@@ -14,8 +14,9 @@
 # A file belongs here only if it has been run in the minimal venv and passed.
 # Adding one on the strength of reading its imports is how this list goes stale
 # and CI starts lying.
-# test_prepare.py: verified in an isolated Python 3.12 venv with only
-# requirements-customer.txt and pytest on 2026-10-02; rerun after changes.
+# test_prepare.py and test_prepare_handoff_example.py: 50 tests passed together
+# in a fresh Python 3.12 venv with only requirements-customer.txt, pytest,
+# setuptools and wheel on 2026-10-05. Heavy research packages were absent.
 tests/test_acceptance.py
 tests/test_atomic_publication.py
 tests/test_calibration.py
@@ -47,6 +48,7 @@ tests/test_override.py
 tests/test_package_install.py
 tests/test_packaging.py
 tests/test_prepare.py
+tests/test_prepare_handoff_example.py
 tests/test_recheck.py
 tests/test_recheck_chain.py
 tests/test_recheck_chain_review.py
