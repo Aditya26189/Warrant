@@ -84,6 +84,39 @@ repeat `prepare`, because it will not replace a package. See the
 
 ---
 
+## 4. Run a complete synthetic export handoff
+
+`export_certifies.csv` is a row-for-row recoding of the seeded synthetic
+`certifies.csv`: `item`, `review` and `risk` replace `id`, `label` and `score`;
+`error` means class 1, `ok` means class 0. The mapping declares that the rows
+are independent. `captured_at` stays in the retained source but is excluded
+from the scored file. This is the **same synthetic evidence** as section 1,
+not a second detector or evaluation set.
+
+Run these commands from the repo root in PowerShell. The new directory in the
+OS temp folder keeps generated records out of the checkout:
+
+```powershell
+$handoff = Join-Path $env:TEMP ("warrant-handoff-" + [Guid]::NewGuid().ToString("N"))
+New-Item -ItemType Directory -Path $handoff | Out-Null
+$prepared = Join-Path $handoff "prepared"
+$warrant = Join-Path $handoff "prepared.warrant.json"
+
+python warrant.py prepare --input examples/export_certifies.csv --mapping examples/export_certifies_mapping.json --out $prepared
+python warrant.py verify-prepared --input examples/export_certifies.csv --mapping examples/export_certifies_mapping.json --prepared $prepared
+python warrant.py certify --input (Join-Path $prepared "scored.csv") --budget 0.05 --out $warrant
+python warrant.py verify --warrant $warrant --input (Join-Path $prepared "scored.csv")
+```
+
+The two `VERIFIED` results answer different questions. `verify-prepared`
+replays the source-to-scored-file mapping from the retained export and mapping.
+`verify` recomputes the certificate from the scored rows. The certificate
+binds those effective rows, but does not bind `captured_at` or prove the
+mapping, labels or independent-row declaration. Keep the source, mapping,
+prepared directory and certificate together for this handoff.
+
+---
+
 ## Then try your own
 
 Three columns: `id`, `label` (0/1, where **1 means the detector should fire**),
@@ -101,6 +134,8 @@ python scripts/22_make_examples.py
 ```
 
 Seeded from `config.yaml`, so it reproduces `certifies.csv` and `refuses.csv`
-exactly. The separate export fixture and mapping are hand-written. The
-`.warrant.json` records these commands write are gitignored — they are outputs,
+exactly. The four-row export fixture and mapping are hand-written.
+`export_certifies.csv` is a labelled recoding of the seeded `certifies.csv`;
+`tests/test_prepare_handoff_example.py` checks every row against that source.
+The generated `.warrant.json` records these commands write are gitignored — they are outputs,
 and they carry the git state of whoever ran them.
