@@ -88,10 +88,12 @@ For this command, `VERIFIED` exits 0, a complete but changed package reports
 preparation-replay outcomes; [release verification](RELEASE.md) has its own
 record and status contract.
 
-During preparation the parser makes a temporary local copy of the source under
-the operating system's temporary directory, then removes it on normal exit.
-Use a suitable local environment for sensitive exports; an interrupted process
-may leave temporary files that require cleanup.
+Preparation reads the source and mapping into process memory and validates the
+generated scored rows there. It writes the declared prepared package only; it
+does not make an intermediate plaintext copy under the operating system's
+temporary directory. The retained source and mapping can still be sensitive,
+and process memory can be exposed by swap or a crash dump. Use a suitable local
+environment for sensitive exports.
 
 An existing downstream command reads `prepared-example/scored.csv` under its
 normal rules. Four synthetic rows will not support a useful certificate.

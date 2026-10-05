@@ -3,6 +3,7 @@
 import json
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 import pytest
@@ -75,6 +76,34 @@ def test_csv_bom_quoted_values_and_determinism(tmp_path):
     assert load_scored_items(first / "scored.csv").ids == ("a,b", "c")
     for name in ("scored.csv", "manifest.json"):
         assert (first / name).read_bytes() == (second / name).read_bytes()
+
+
+@pytest.mark.parametrize("format", ["csv", "jsonl", "ndjson"])
+def test_preparation_never_writes_an_intermediate_plaintext_copy(
+    tmp_path, monkeypatch, format,
+):
+    source, mapping = inputs(tmp_path)
+    if format == "csv":
+        source = tmp_path / "export.csv"
+        source.write_bytes(
+            b"\xef\xbb\xbfitem,review,risk,prompt\r\n"
+            b"001,good,0.2,private text\r\n"
+            b"002,bad,0.9,private text\r\n"
+        )
+    elif format == "ndjson":
+        source = tmp_path / "export.ndjson"
+        source.write_bytes((tmp_path / "export.jsonl").read_bytes())
+
+    def refuse_temporary_copy(*args, **kwargs):
+        raise AssertionError("preparation wrote an intermediate plaintext copy")
+
+    monkeypatch.setattr(tempfile, "TemporaryDirectory", refuse_temporary_copy)
+    package = prepare_export(source, mapping, tmp_path / "prepared")
+    assert (package / "scored.csv").read_bytes() == (
+        b"id,label,score\n001,0,0.2\n002,1,0.9\n"
+    )
+    assert b"private text" not in (package / "manifest.json").read_bytes()
+    assert verify_prepared(source, mapping, package)
 
 
 @pytest.mark.parametrize("field,value", [
