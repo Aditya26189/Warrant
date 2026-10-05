@@ -82,20 +82,21 @@ sampling unit; otherwise declare independent rows explicitly. Preserve a second
 reviewer's label when present. Do not synthesize ground-truth labels from the
 same detector score. An owner should approve any movement of real data.
 
-Before using a real export, practice with the **synthetic** fixture:
+Before using a real export, run the [complete synthetic export handoff](../examples/README.md#4-run-a-complete-synthetic-export-handoff)
+from the repo root. It prepares a 400-row recoding of the existing seeded
+`certifies.csv` example, replays preparation, certifies the prepared rows and
+replays the certificate. This is the same synthetic evidence as the original
+certificate example, not a second evaluation set or a human dry run. Retain
+the source export, mapping, prepared package and certificate together; the
+two replay commands check different boundaries. The earlier four-row
+`export_sample.csv` remains a format example and is too small to establish a
+useful false-alarm bound.
 
-```powershell
-warrant prepare --input examples/export_sample.csv --mapping examples/export_mapping.json --out prepared-example
-warrant verify-prepared --input examples/export_sample.csv --mapping examples/export_mapping.json --prepared prepared-example
-```
-
-The output is `prepared-example/scored.csv` plus `manifest.json`. Treat the
-package as sensitive if source identifiers or groups are sensitive; excluded
-columns are listed by name but their values are not copied. The manifest binds
+Treat a real prepared package as sensitive if identifiers or groups are
+sensitive. Excluded column names are listed, but their values are not copied
+into the scored file; the source still contains them. The manifest binds
 bytes for local replay but is neither an authenticity signature nor a
 certificate. Run only on a new output path; preparation refuses to overwrite.
-The four-row synthetic file is far too small to establish a useful false-alarm
-bound, and `verify-prepared` says only that retained files match the inputs.
 
 For a permissioned real dry run, record these facts *before* certification:
 
