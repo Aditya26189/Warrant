@@ -46,6 +46,12 @@ continues to be a checksum record, not an authenticated signature.
   `python scripts/verify.py --no-activations` reproduced 92/92 claim-table
   entries and 25/25 frozen-score comparisons; the activation tier was
   explicitly skipped.
+- On clean source `ecef0b4`, the full suite with strict markers and a
+  dedicated OS-temp fixture directory passed 2,202/2,202 tests in 2,781.59
+  seconds (command wall clock 2,794.3 seconds). Pytest reported three
+  warnings: two SWIG deprecations and a nonfinite-update runtime warning.
+  The separate inventory from `bf344cc` counted 2,202 tests; that collection
+  was not used as a substitute for execution.
 
 ## What this does not establish
 
@@ -78,3 +84,4 @@ supplied or inferred during this phase.
 | Verifier source and test repair | `a34f22d`; `controlplane/intake/prepare.py`, `tests/test_prepare.py` |
 | Adjacent installed/CLI batch | 73 passed, 304.97 seconds; Ruff passed |
 | Clean-source smoke and available verifier | `a34f22d`: 7/7, 92/92, 25/25; activations skipped |
+| Full strict-marker source suite | `ecef0b4`: 2,202 passed, 3 warnings, exit 0 |
