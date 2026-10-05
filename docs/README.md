@@ -118,6 +118,7 @@
 | [PHASE-32.md](../reports/PHASE-32.md) | Why malformed prepared packages now produce input errors distinct from valid changed-package mismatches |
 | [PHASE-33.md](../reports/PHASE-33.md) | How the public synthetic export reaches a certificate with two separately replayed evidence boundaries |
 | [PHASE-34.md](../reports/PHASE-34.md) | Why the public handoff regression is now in the measured customer-only CI list |
+| [PHASE-35.md](../reports/PHASE-35.md) | Which public handoff commands passed in a tracked-file clean clone, and why the human gate is still open |
 | [AI-OPPORTUNITIES-2026-10.md](../reports/AI-OPPORTUNITIES-2026-10.md) | Which current competition, founder and incumbent signals shaped the October hypothesis, and which claims remain unverified? |
 | [INCUMBENT-PACKET-COMPARISON-2026-10.md](../reports/INCUMBENT-PACKET-COMPARISON-2026-10.md) | What evaluation exports and review workflows incumbents document, and what must be checked in a real packet? |
 | [BUILD-PLAN-2026-10.md](../reports/BUILD-PLAN-2026-10.md) | What is the October day-by-day build and discovery schedule, with acceptance and stop gates? |

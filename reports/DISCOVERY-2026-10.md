@@ -1,8 +1,10 @@
 # October discovery packet: review-trigger evidence handoff
 
-**Status: untested interview and dry-run worksheet, 1 October 2026.** No
-customer conversation, real export, product trial, budget commitment or pilot
-is recorded by this document. Use the [October plan](BUILD-PLAN-2026-10.md)
+**Status: no human interview or dry run, created 1 October 2026.** The
+synthetic commands were later replayed from a clean clone in
+[Phase 35](PHASE-35.md). No customer conversation, real export, product trial,
+budget commitment or pilot is recorded by this document. Use the
+[October plan](BUILD-PLAN-2026-10.md)
 for the decision gates and the [research memo](AI-OPPORTUNITIES-2026-10.md)
 for the source-backed rationale. Do not send this packet to anyone or collect
 their data without the appropriate owner's authorization.
