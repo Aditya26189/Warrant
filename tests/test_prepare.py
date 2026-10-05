@@ -1,6 +1,8 @@
 """Export boundaries that could otherwise silently change evaluation meaning."""
 
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -192,9 +194,70 @@ def test_cli_reports_prepared_verified_mismatch_and_bad_input(tmp_path, capsys):
                str(mapping), "--prepared", str(package)]
     assert main(command) == 0
     assert "VERIFIED" in capsys.readouterr().out
-    (package / "scored.csv").write_bytes(b"tampered")
+    scored = package / "scored.csv"
+    scored.write_bytes(scored.read_bytes().replace(b"0.2", b"0.3", 1))
     assert main(command) == 1
     assert "MISMATCH" in capsys.readouterr().out
     assert main(["prepare", "--input", str(source), "--mapping", str(mapping),
                  "--out", str(package)]) == 2
     assert "exists" in capsys.readouterr().err
+
+
+@pytest.mark.parametrize("member,content", [
+    ("manifest.json", b"not JSON"),
+    ("manifest.json", b"[]"),
+    ("manifest.json", b'{"schema_version": 1}'),
+    ("scored.csv", b"id,label,score\na,0,not-a-number\n"),
+])
+def test_malformed_package_is_bad_input_not_a_changed_package(
+    tmp_path, capsys, member, content,
+):
+    source, mapping = inputs(tmp_path)
+    package = prepare_export(source, mapping, tmp_path / "package")
+    (package / member).write_bytes(content)
+    with pytest.raises(InputError, match="prepared"):
+        verify_prepared(source, mapping, package)
+    command = ["verify-prepared", "--input", str(source), "--mapping",
+               str(mapping), "--prepared", str(package)]
+    assert main(command) == 2
+    output = capsys.readouterr()
+    assert "warrant:" in output.err and "prepared" in output.err
+    assert "MISMATCH" not in output.out
+
+
+def test_real_cli_rejects_corrupt_manifest_with_exit_two(tmp_path):
+    source, mapping = inputs(tmp_path)
+    package = prepare_export(source, mapping, tmp_path / "package")
+    (package / "manifest.json").write_bytes(b"{")
+    command = [sys.executable, str(Path(__file__).resolve().parents[1] / "warrant.py"),
+               "verify-prepared", "--input", str(source), "--mapping",
+               str(mapping), "--prepared", str(package)]
+    result = subprocess.run(command, capture_output=True, text=True, timeout=60)
+    assert result.returncode == 2
+    assert "prepared" in result.stderr
+    assert "MISMATCH" not in result.stdout
+
+
+def test_unsupported_manifest_version_is_bad_input(tmp_path):
+    source, mapping = inputs(tmp_path)
+    package = prepare_export(source, mapping, tmp_path / "package")
+    manifest = package / "manifest.json"
+    payload = json.loads(manifest.read_text(encoding="utf-8"))
+    payload["schema_version"] = 2
+    manifest.write_text(json.dumps(payload), encoding="utf-8")
+    with pytest.raises(InputError, match="unsupported schema"):
+        verify_prepared(source, mapping, package)
+
+
+def test_well_formed_changed_manifest_remains_mismatch(tmp_path, capsys):
+    source, mapping = inputs(tmp_path)
+    package = prepare_export(source, mapping, tmp_path / "package")
+    manifest = package / "manifest.json"
+    payload = json.loads(manifest.read_text(encoding="utf-8"))
+    payload["scope"] = "changed but still well-formed"
+    manifest.write_text(json.dumps(payload), encoding="utf-8")
+    assert not verify_prepared(source, mapping, package)
+    command = ["verify-prepared", "--input", str(source), "--mapping",
+               str(mapping), "--prepared", str(package)]
+    assert main(command) == 1
+    assert "MISMATCH" in capsys.readouterr().out

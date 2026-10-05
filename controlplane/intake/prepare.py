@@ -10,6 +10,7 @@ import csv
 import hashlib
 import io
 import json
+import re
 import tempfile
 from pathlib import Path
 from typing import Any
@@ -188,6 +189,47 @@ def prepare_export(source: str | Path, mapping: str | Path, out: str | Path) -> 
     return destination
 
 
+def _validate_prepared_manifest(raw: bytes, expected: bytes) -> None:
+    """Classify malformed package evidence before comparing valid changed bytes."""
+    try:
+        record = json.loads(raw.decode("utf-8"), object_pairs_hook=_unique_json_object)
+    except (UnicodeError, json.JSONDecodeError, InputError) as exc:
+        raise InputError("prepared manifest.json is not unique-key UTF-8 JSON") from exc
+    template = json.loads(expected)
+    if not isinstance(record, dict) or set(record) != set(template):
+        raise InputError("prepared manifest.json has missing or unexpected fields")
+    if (type(record["schema_version"]) is not int or record["schema_version"] != 1
+            or record["protocol"] != PROTOCOL or record["status"] != "PREPARED"):
+        raise InputError("prepared manifest.json has an unsupported schema or status")
+    if (record["source_format"] not in ("csv", "jsonl")
+            or any(type(record[key]) is not str for key in ("scope", "integrity"))):
+        raise InputError("prepared manifest.json has malformed metadata")
+    hashes = ("source_sha256", "mapping_sha256", "scored_sha256",
+              "effective_rows_sha256")
+    if any(type(record[key]) is not str
+           or re.fullmatch(r"[0-9a-f]{64}", record[key]) is None for key in hashes):
+        raise InputError("prepared manifest.json has malformed digests")
+    if (not isinstance(record["excluded_columns"], list)
+            or any(type(value) is not str for value in record["excluded_columns"])):
+        raise InputError("prepared manifest.json has malformed excluded columns")
+    counts = record["counts"]
+    if not isinstance(counts, dict) or set(counts) != set(template["counts"]):
+        raise InputError("prepared manifest.json has malformed counts")
+    if any(type(counts[key]) is not int or counts[key] < 0
+           for key in ("rows", "positive", "negative", "second_reviews")):
+        raise InputError("prepared manifest.json has malformed counts")
+    if counts["groups"] is not None and (
+        type(counts["groups"]) is not int or counts["groups"] < 0
+    ):
+        raise InputError("prepared manifest.json has malformed group count")
+    if not isinstance(record["mapping"], dict):
+        raise InputError("prepared manifest.json has malformed mapping")
+    try:
+        _mapping(_json_bytes(record["mapping"]))
+    except (InputError, ValueError, TypeError) as exc:
+        raise InputError("prepared manifest.json has malformed mapping") from exc
+
+
 def verify_prepared(source: str | Path, mapping: str | Path, prepared: str | Path) -> bool:
     """Replay exact package bytes; this does not authenticate the source owner.
 
@@ -203,5 +245,14 @@ def verify_prepared(source: str | Path, mapping: str | Path, prepared: str | Pat
         raise InputError("incomplete or unexpected package files; retain both outputs")
     if any(p.is_symlink() or not p.is_file() for p in members):
         raise InputError("package members must be regular files")
-    return ((directory / "scored.csv").read_bytes() == expected_scored
-            and (directory / "manifest.json").read_bytes() == expected_manifest)
+    scored_path = directory / "scored.csv"
+    scored = scored_path.read_bytes()
+    manifest = (directory / "manifest.json").read_bytes()
+    if scored != expected_scored:
+        try:
+            load_scored_items(scored_path, require_both_classes=False)
+        except (InputError, UnicodeError) as exc:
+            raise InputError("prepared scored.csv is malformed") from exc
+    if manifest != expected_manifest:
+        _validate_prepared_manifest(manifest, expected_manifest)
+    return scored == expected_scored and manifest == expected_manifest

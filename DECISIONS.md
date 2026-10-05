@@ -11910,3 +11910,14 @@ exactly as after a chained revocation.
 **Decision.** Add `RoutingDecision.to_payload()` in the writable matrix module, using the trace's existing routing shape: envelope, profile, routed detector ID or null, action, suspension, reason, considered detector/verdict pairs, and enqueued cell keys. Keep claimed bounds only on the enclosing `DriftResponse`, where the current payload already puts them, and omit the full warrant object so the routing summary cannot accidentally become a second certificate. Replace the trace's handwritten copy with the now-working response method. Do not regenerate or reinterpret the frozen revocation trace.
 
 **Validation.** Make 179's strict xfail an ordinary regression. Check both a conservative no-warrant route and a warranted route, including JSON encoding and the existing trace's payload shape. Run the focused drift/matrix/demo tests and static checks. The serialized routing summary is local evidence; it is not a new statistical claim or a production-traffic result.
+
+## 233 - Distinguish malformed prepared evidence from a valid changed package (2026-10-04)
+
+- **Status:** DECIDED before implementation, after inspecting `verify_prepared` and the documented CLI exit contract.
+- **Scope:** Prepared-package replay classification and CLI tests. No estimator, scored source, frozen result, or statistical claim changes.
+
+**Finding.** `docs/INPUT.md` says a complete changed package reports `MISMATCH` with exit 1 while missing or malformed evidence exits 2. A present but unreadable `manifest.json` or invalid `scored.csv` currently reaches the raw-byte comparison and returns `MISMATCH`/1. The existing tamper test writes `b"tampered"` as the scored file and expects 1, so it pins the contradictory behavior.
+
+**Decision.** Keep byte equality as the replay criterion. Before reporting a changed complete package, validate that its manifest is one well-formed version-1 prepared-record object with the required fields and that its scored file satisfies the ordinary canonical input contract (allowing a single class, which preparation permits). Missing or malformed package evidence is an input error (exit 2); well-formed changed source, mapping, scored rows or manifest values remain `MISMATCH` (exit 1). This validation does not authenticate a record or change the independent-rows declaration.
+
+**Validation and limit.** Replace the ambiguous tamper fixture with a valid changed scored value, then pin malformed JSON, malformed record shape, and malformed scored rows at the library and real CLI boundaries. Retain a valid changed-manifest mismatch case. Run focused intake, installed-customer-path and documentation tests, followed by a clean-source suite gate. The distinction is an interface guarantee, not a new certificate.
