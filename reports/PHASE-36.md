@@ -88,11 +88,12 @@ current CLI still trusts the caller's mapping and labels. The synthetic
 certificate result, source and manifest digest agreement, and passing tests
 do not establish a real customer's data quality or a useful review decision.
 
-The clean-source full test suite and scientific claim replay are the final
-phase gate; their exact results are recorded below after execution. The
-frozen GPU activation tier is separate and cannot be claimed from this
-CPU-only repair. No protected test set was rescored and no claim-table number
-was regenerated.
+The clean-source full suite at `122b913` passed 2,215 tests with three
+warnings and no failures in 3,072.48 seconds. Smoke passed 7/7. Claim replay
+passed 92/92 and frozen-score comparisons passed 25/25; the activation tier
+was explicitly skipped with `--no-activations`. The frozen GPU activation
+tier cannot be claimed from this CPU-only repair. No protected test set was
+rescored and no claim-table number was regenerated.
 
 ## Open items
 
@@ -116,3 +117,5 @@ methodological gate.
 | Refined parser and docs gate | 144 passed; Ruff passed |
 | Customer-only focused gate | 77 passed in 38.77 seconds, Python 3.12 |
 | Committed-example byte equivalence | Both scored and manifest SHA-256 pairs match the pre-repair checkout |
+| Clean full-suite gate | `122b913`; `python -m pytest tests/ -q -p no:cacheprovider --basetemp <os-temp> -o addopts=--strict-markers`; 2,215 passed, three warnings, exit 0 |
+| Clean smoke and available verifier | `122b913`; smoke 7/7, claim table 92/92, frozen scores 25/25; activations skipped |
