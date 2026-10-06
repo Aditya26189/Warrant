@@ -136,7 +136,7 @@ python warrant.py verify --warrant $refusedRecord --input (Join-Path $smallPrepa
 ```
 
 Certification reports `REFUSED`: the four rows are only two conversation
-groups, while the 5% budget requires at least 59 clean independent units.
+groups, while the 5% budget requires at least 59 clean negative units.
 Refusal exits 0, writes a record, and that record verifies. This does not
 mean the detector was found bad; the example lacks enough evidence.
 
