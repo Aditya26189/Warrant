@@ -64,3 +64,33 @@ If two independent teams identify the same missing evidence and can provide
 usable exports, implement the smallest adapter from one observed schema and
 measure repeat use. The October [build plan](BUILD-PLAN-2026-10.md) retains
 the time-boxed demand and pilot gates.
+
+## 6 October addendum: LangSmith and Dataiku overlap more than an export button
+
+The first table's LangSmith row describes experiments, rows and exports. Its
+[evaluation-types guide](https://docs.langchain.com/langsmith/evaluation-types)
+also documents programmable summary evaluators for experiment-level precision,
+recall and custom aggregate statistics. That means an incumbent customer may
+already compute the same basic classification rates inside its existing
+workflow. The [Engine v2 announcement](https://www.langchain.com/blog/langsmith-engine-v2-redteam)
+describes production-trace issue grouping, proactive red teaming and automated
+testing of proposed fixes, with some features in private beta. The
+[Custom Apps announcement](https://www.langchain.com/blog/langsmith-custom-apps)
+describes shared review interfaces on LangSmith data for Plus and Enterprise.
+These are company descriptions checked 6 October, not a hands-on trial or a
+matched performance comparison.
+
+Dataiku's [Agent Management product page](https://www.dataiku.com/product/agent-management)
+describes scheduled tests and exportable risk records, but still says it will
+be available in October 2026. The precise general-availability date and an
+example customer's exported packet remain unknown. Do not turn a scheduled
+launch into an observed installation.
+
+For a LangSmith or Dataiku user, the packet test must now compare against the
+**configured** incumbent workflow, not just its default UI: ask whether a
+custom evaluator already bounds the team's predeclared false-positive budget,
+whether the reviewer can reproduce it from retained labeled rows and selection
+history, and whether that evidence changes a recurring sign-off. If the answer
+is yes, the Warrant handoff has no demonstrated incremental value for that
+team. If those fields are missing from an observed packet, record which ones
+and why the reviewer needs them before building a native integration.
