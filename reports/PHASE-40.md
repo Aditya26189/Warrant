@@ -117,5 +117,7 @@ can update the market hypothesis only with new dated primary-source evidence.
 | Fault-injection regression | `69224e1`; `tests/test_prepare.py::test_interrupted_manifest_write_never_looks_prepared` |
 | Focused customer-only module | Python 3.12.10, 52 passed in 7.97 seconds |
 | Static checks | Ruff all checks passed; `git diff --check` exit 0 |
-| Clean documentation and inventory gate | Pending final clean commit and refresh |
-| Clean smoke and available verifier | Pending final clean commit |
+| Clean test inventory | `results/test_inventory.json` generated from clean `2f013e7`; 2,226 collected, execution not implied |
+| Clean preparation regression | `33aba3e`; 52 passed in 7.62 seconds |
+| Clean documentation and inventory gate | `33aba3e`; 157 passed, exit 0 |
+| Clean smoke and available verifier | `33aba3e`; smoke 7/7, claim table 92/92, frozen scores 25/25; activation tier skipped with `--no-activations` |
