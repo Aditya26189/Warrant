@@ -116,5 +116,6 @@ sanitized fixture and the repository's data-handling rules are satisfied.
 | Focused customer-only test and lint | Three passed in 72.11 seconds; Ruff exit 0 |
 | Adjacent documentation/intake regression | 101 passed in 36.51 seconds |
 | Earlier full-source baseline | Phase 36, `reports/PHASE-36.md`, 2,215 passed |
-| Clean documentation and inventory gate | Pending final clean commit and refresh |
-| Clean smoke and available frozen verifier | Pending final clean commit |
+| Clean test inventory | `results/test_inventory.json` generated from clean `31816c2`; 2,220 collected, execution not implied |
+| Clean documentation and inventory gate | `d41eeab`; 153 passed, exit 0 |
+| Clean smoke and available frozen verifier | `d41eeab`; smoke 7/7, claim table 92/92, frozen scores 25/25; activation tier skipped with `--no-activations` |
