@@ -40,6 +40,7 @@ from __future__ import annotations
 
 import csv
 import dataclasses
+import io
 import json
 from collections import Counter
 from pathlib import Path
@@ -147,24 +148,30 @@ class ScoredItems:
         )
 
 
-def _rows_from_csv(path: Path) -> tuple[list[dict[str, str]], list[str]]:
+def _rows_from_csv(
+    path: Path | bytes, *, source_name: str = "input.csv",
+) -> tuple[list[dict[str, str]], list[str]]:
     """Reject ambiguity before dictionary conversion can discard it.
 
     Codex-parallel decision 199, ``docs/decisions/CODEX-PARALLEL.md``.
     """
-    with path.open("r", encoding="utf-8-sig", newline="") as handle:
+    name = source_name if isinstance(path, bytes) else path.name
+    handle = (io.StringIO(path.decode("utf-8-sig"), newline="")
+              if isinstance(path, bytes)
+              else path.open("r", encoding="utf-8-sig", newline=""))
+    with handle:
         reader = csv.reader(handle, strict=True)
         try:
             header = next(reader, None)
             if header is None:
-                raise InputError(f"{path.name} is empty: no header row to read columns from")
+                raise InputError(f"{name} is empty: no header row to read columns from")
             columns = [name.strip() for name in header]
             if not columns or any(not name for name in columns):
-                raise InputError(f"{path.name}: every CSV header must name a non-blank column")
+                raise InputError(f"{name}: every CSV header must name a non-blank column")
             duplicates = sorted(name for name, count in Counter(columns).items() if count > 1)
             if duplicates:
                 raise InputError(
-                    f"{path.name}: duplicate CSV column(s) {duplicates} after whitespace "
+                    f"{name}: duplicate CSV column(s) {duplicates} after whitespace "
                     "normalization; each field must have exactly one value per row"
                 )
             rows: list[dict[str, str]] = []
@@ -173,14 +180,14 @@ def _rows_from_csv(path: Path) -> tuple[list[dict[str, str]], list[str]]:
                     continue
                 if len(values) != len(columns):
                     raise InputError(
-                        f"{path.name} row ending at line {reader.line_num}: "
+                        f"{name} row ending at line {reader.line_num}: "
                         f"expected {len(columns)} CSV fields, found {len(values)}; "
                         "missing or extra fields cannot be filled or dropped"
                     )
                 rows.append(dict(zip(columns, values, strict=True)))
         except csv.Error as exc:
             raise InputError(
-                f"{path.name} line {reader.line_num} is not valid CSV: {exc}"
+                f"{name} line {reader.line_num} is not valid CSV: {exc}"
             ) from exc
         return rows, columns
 
@@ -198,21 +205,25 @@ def _unique_json_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     return record
 
 
-def _rows_from_jsonl(path: Path) -> tuple[list[dict[str, Any]], list[str]]:
+def _rows_from_jsonl(
+    path: Path | bytes, *, source_name: str = "input.jsonl",
+) -> tuple[list[dict[str, Any]], list[str]]:
+    name = source_name if isinstance(path, bytes) else path.name
+    content = path.decode("utf-8") if isinstance(path, bytes) else path.read_text(encoding="utf-8")
     rows: list[dict[str, Any]] = []
     columns: list[str] = []
-    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+    for number, line in enumerate(content.splitlines(), 1):
         if not line.strip():
             continue
         try:
             record = json.loads(line, object_pairs_hook=_unique_json_object)
         except json.JSONDecodeError as exc:
-            raise InputError(f"{path.name} line {number} is not valid JSON: {exc}") from exc
+            raise InputError(f"{name} line {number} is not valid JSON: {exc}") from exc
         except InputError as exc:
-            raise InputError(f"{path.name} line {number}: {exc}") from exc
+            raise InputError(f"{name} line {number}: {exc}") from exc
         if not isinstance(record, dict):
             raise InputError(
-                f"{path.name} line {number} is a {type(record).__name__}, not an "
+                f"{name} line {number} is a {type(record).__name__}, not an "
                 "object. Each line must be one item, as a JSON object."
             )
         rows.append(record)
@@ -306,7 +317,34 @@ def load_scored_items(path: str | Path, *, require_both_classes: bool = True) ->
             "produce from a spreadsheet."
         )
 
-    source = file.name
+    return _scored_items_from_rows(
+        rows, columns, source=file.name, suffix=suffix,
+        require_both_classes=require_both_classes,
+    )
+
+
+def _load_scored_items_bytes(
+    raw: bytes, *, source: str = "scored.csv", require_both_classes: bool = True,
+) -> ScoredItems:
+    """Validate an already-read scored snapshot without a second disk copy."""
+    suffix = Path(source).suffix.lower()
+    if suffix == ".csv":
+        rows, columns = _rows_from_csv(raw, source_name=source)
+    elif suffix in {".jsonl", ".ndjson"}:
+        rows, columns = _rows_from_jsonl(raw, source_name=source)
+    else:
+        raise InputError(f"{source}: scored snapshot must be .csv or .jsonl")
+    return _scored_items_from_rows(
+        rows, columns, source=source, suffix=suffix,
+        require_both_classes=require_both_classes,
+    )
+
+
+def _scored_items_from_rows(
+    rows: list[dict[str, Any]], columns: list[str], *, source: str,
+    suffix: str, require_both_classes: bool,
+) -> ScoredItems:
+    """Apply the one scored-item contract to both file and byte snapshots."""
     _require_columns(columns, source)
     if not rows:
         raise InputError(f"{source} has a header but no rows.")

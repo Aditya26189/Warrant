@@ -11,13 +11,13 @@ import hashlib
 import io
 import json
 import re
-import tempfile
 from pathlib import Path
 from typing import Any
 
 from .certify import evidence_sha256
 from .contract import (
-    InputError, _rows_from_csv, _rows_from_jsonl, _unique_json_object,
+    InputError, _load_scored_items_bytes, _rows_from_csv, _rows_from_jsonl,
+    _unique_json_object,
     load_scored_items,
 )
 
@@ -94,53 +94,48 @@ def _build(source: Path, mapping: Path) -> tuple[bytes, bytes]:
     source_raw, mapping_raw = source.read_bytes(), mapping.read_bytes()
     spec = _mapping(mapping_raw)
     columns = spec["columns"]
-    with tempfile.TemporaryDirectory(prefix="warrant-prepare-") as temporary:
-        snapshot = Path(temporary) / ("input" + suffix)
-        snapshot.write_bytes(source_raw)
-        try:
-            rows, header = (_rows_from_csv(snapshot) if suffix == ".csv"
-                            else _rows_from_jsonl(snapshot))
-        except UnicodeError as exc:
-            raise InputError("input must be UTF-8") from exc
-        missing = set(columns.values()) - set(header)
-        if missing:
-            raise InputError(f"mapped columns absent from input: {sorted(missing)}")
-        for name in ("group", "label_2"):
-            if name in header and columns.get(name) != name:
-                raise InputError(f"source contains {name}; explicitly map that column")
-        names = [name for name in ("id", "label", "score", "group", "label_2")
-                 if name in columns]
-        stream = io.StringIO(newline="")
-        writer = csv.DictWriter(stream, fieldnames=names, lineterminator="\n")
-        writer.writeheader()
-        for number, row in enumerate(rows, 1):
-            normalized: dict[str, Any] = {}
-            for name in names:
-                value = row.get(columns[name])
-                if name in ("label", "label_2"):
-                    normalized[name] = _label(value, spec, optional=name == "label_2",
-                                              row=number)
-                elif name == "score":
-                    if type(value) not in (str, int, float):
-                        raise InputError(f"row {number}: score must be a finite number")
-                    try:
-                        score = float(value)
-                    except ValueError as exc:
-                        raise InputError(f"row {number}: score must be numeric") from exc
-                    except OverflowError as exc:
-                        raise InputError(
-                            f"row {number}: score must be a finite number"
-                        ) from exc
-                    normalized[name] = -score if spec["score_direction"] == "lower" else score
-                else:
-                    if type(value) not in (str, int):
-                        raise InputError(f"row {number}: {name} must be a string or integer")
-                    normalized[name] = str(value).strip()
-            writer.writerow(normalized)
-        scored = stream.getvalue().encode("utf-8")
-        canonical = Path(temporary) / "scored.csv"
-        canonical.write_bytes(scored)
-        items = load_scored_items(canonical, require_both_classes=False)
+    try:
+        rows, header = (_rows_from_csv(source_raw) if suffix == ".csv"
+                        else _rows_from_jsonl(source_raw, source_name="input" + suffix))
+    except UnicodeError as exc:
+        raise InputError("input must be UTF-8") from exc
+    missing = set(columns.values()) - set(header)
+    if missing:
+        raise InputError(f"mapped columns absent from input: {sorted(missing)}")
+    for name in ("group", "label_2"):
+        if name in header and columns.get(name) != name:
+            raise InputError(f"source contains {name}; explicitly map that column")
+    names = [name for name in ("id", "label", "score", "group", "label_2")
+             if name in columns]
+    stream = io.StringIO(newline="")
+    writer = csv.DictWriter(stream, fieldnames=names, lineterminator="\n")
+    writer.writeheader()
+    for number, row in enumerate(rows, 1):
+        normalized: dict[str, Any] = {}
+        for name in names:
+            value = row.get(columns[name])
+            if name in ("label", "label_2"):
+                normalized[name] = _label(value, spec, optional=name == "label_2",
+                                          row=number)
+            elif name == "score":
+                if type(value) not in (str, int, float):
+                    raise InputError(f"row {number}: score must be a finite number")
+                try:
+                    score = float(value)
+                except ValueError as exc:
+                    raise InputError(f"row {number}: score must be numeric") from exc
+                except OverflowError as exc:
+                    raise InputError(
+                        f"row {number}: score must be a finite number"
+                    ) from exc
+                normalized[name] = -score if spec["score_direction"] == "lower" else score
+            else:
+                if type(value) not in (str, int):
+                    raise InputError(f"row {number}: {name} must be a string or integer")
+                normalized[name] = str(value).strip()
+        writer.writerow(normalized)
+    scored = stream.getvalue().encode("utf-8")
+    items = _load_scored_items_bytes(scored, require_both_classes=False)
 
     manifest = {
         "schema_version": 1,
