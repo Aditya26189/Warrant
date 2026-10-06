@@ -119,5 +119,7 @@ should cite new dated evidence if it changes a build decision.
 | Entire installed-wheel module | Same venv; 19 passed in 293.20 seconds |
 | Local dependency and lint checks | `pip check`: no broken requirements; `ruff check tests/test_package_install.py`: all checks passed |
 | Declared Python floor and CI matrix | `pyproject.toml` `requires-python = ">=3.10"`; `.github/workflows/ci.yml` jobs described above |
-| Clean documentation and inventory gate | Pending final clean commit and inventory refresh |
-| Clean smoke and available verifier | Pending final clean commit |
+| Clean test inventory | `results/test_inventory.json` generated from clean `dd455f6`; 2,223 collected, execution not implied |
+| Clean installed-wheel regression | `7f5d3f4`; new case 1 passed, 18 deselected in 46.47 seconds |
+| Clean documentation and inventory gate | `7f5d3f4`; 155 passed, exit 0 |
+| Clean smoke and available verifier | `7f5d3f4`; smoke 7/7, claim table 92/92, frozen scores 25/25; activation tier skipped with `--no-activations` |
