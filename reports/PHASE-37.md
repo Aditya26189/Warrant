@@ -115,3 +115,5 @@ inferred trend from a prize gallery.
 | LangSmith shared review UI | [Official Custom Apps announcement](https://www.langchain.com/blog/langsmith-custom-apps), published 24 September |
 | Dataiku availability and scope | [Official product page](https://www.dataiku.com/product/agent-management), checked 6 October; GA day unknown |
 | Build decision | No generic UI or adapter from desk evidence; compare one configured incumbent packet and recurring reviewer decision first |
+| Clean documentation and inventory gate | `b128be3`; 176 passed, exit 0 |
+| Clean smoke and available verifier | `b128be3`; smoke 7/7, claims 92/92, frozen-score comparisons 25/25; activation tier skipped |
