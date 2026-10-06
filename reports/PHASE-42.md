@@ -121,5 +121,6 @@ human and demand gates remain explicitly open.
 | Baseline first-run and public commands | `reports/PHASE-35.md`, `reports/PHASE-41.md`; `examples/README.md` sections 4 and 5 |
 | Updated blank worksheet | `reports/DISCOVERY-2026-10.md`; no participant answers entered |
 | External trial or customer export | None observed; still an open gate |
-| Clean documentation and inventory gate | Pending final clean commit and refresh |
-| Clean smoke and available verifier | Pending final clean commit |
+| Clean test inventory | `results/test_inventory.json` generated from clean `3a8efa2`; 2,230 collected, execution not implied |
+| Clean documentation and inventory gate | `32a639a`; 161 passed, exit 0 |
+| Clean smoke and available verifier | `32a639a`; smoke 7/7, claim table 92/92, frozen scores 25/25; activation tier skipped with `--no-activations` |
