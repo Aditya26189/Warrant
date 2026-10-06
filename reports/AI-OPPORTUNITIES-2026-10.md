@@ -196,6 +196,28 @@ This targeted check did not establish a new October 1–3 winner. The
 recommendation and the October 14 evidence gate remain unchanged: test the
 actual packet and recurring decision before building another integration.
 
+## 6 October early incumbent check
+
+An early source check was run on 6 October while the local preparation and
+handoff phases were closing. It found no verified post-3 October competition
+winner to add from the targeted organizer searches; this is not a claim that
+no such winner exists. The material finding is stronger incumbent overlap,
+not a newly proven market niche.
+
+| Primary source and publication date | Verified overlap | Build decision |
+|---|---|---|
+| [LangSmith evaluation-types documentation](https://docs.langchain.com/langsmith/evaluation-types), checked 6 October | LangSmith documents summary evaluators that can compute experiment-level precision, recall and custom aggregate statistics, alongside offline and online evaluation. The page does not establish that a specific customer's packet includes Warrant's one-sided FPR certificate or retained local replay. | Do not describe aggregate classification metrics or online evaluation as a Warrant novelty. Ask for the team's actual export, custom evaluator and reviewer report. |
+| [LangSmith Engine v2 announcement](https://www.langchain.com/blog/langsmith-engine-v2-redteam), 24 September | LangChain says Engine scans production traces, groups issues, red-teams agents and tests proposed fixes before human review; some new features are private beta. Its usage figures are company-reported. | A generic agent issue queue, red-team loop or fix-verification service is incumbent scope. Keep Warrant's test to a declared review-trigger operating point and independently replayable evidence. |
+| [LangSmith Custom Apps announcement](https://www.langchain.com/blog/langsmith-custom-apps), 24 September | LangChain says Plus and Enterprise users can publish shared, focused review interfaces over LangSmith data. | A new dashboard would have no demonstrated advantage. The proposed reviewer handoff must be useful without one. |
+| [Dataiku Agent Management product page](https://www.dataiku.com/product/agent-management), checked 6 October | Dataiku describes cross-platform agent inventory, quality/risk monitoring, scheduled tests and exportable risk records; the page still says the product will be available in October. | Do not claim current general availability from a calendar month or compete on broad governance. Inspect an actual exported review record before claiming a missing statistical field. |
+
+This check narrows the defensible question: does an actual reviewer still need
+a small offline artifact that binds a predeclared review-trigger budget to
+specific labeled rows and can be recomputed outside the incumbent platform?
+The public docs above cannot answer that for a customer. The October 14
+conversation/export/decision gate remains the prerequisite for product scope;
+no adapter, hosted UI or new detector follows from this desk research.
+
 ## Questions that can overturn the recommendation
 
 Can a team show its last actual release-review packet? Who collects the evidence,
