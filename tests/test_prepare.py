@@ -213,6 +213,33 @@ def test_incomplete_extra_and_existing_destinations(tmp_path):
         verify_prepared(source, mapping, out)
 
 
+def test_interrupted_manifest_write_never_looks_prepared(tmp_path, monkeypatch):
+    """A partial completion marker cannot turn scored bytes into a package."""
+    source, mapping = inputs(tmp_path)
+    destination = tmp_path / "interrupted"
+    marker = destination / "manifest.json"
+    original_open = Path.open
+
+    def interrupt_marker(path, mode="r", *args, **kwargs):
+        handle = original_open(path, mode, *args, **kwargs)
+        if path == marker and mode == "xb":
+            with handle:
+                handle.write(b"{")
+            raise OSError("simulated interruption while writing completion marker")
+        return handle
+
+    monkeypatch.setattr(Path, "open", interrupt_marker)
+    with pytest.raises(OSError, match="simulated interruption"):
+        prepare_export(source, mapping, destination)
+    assert (destination / "scored.csv").is_file()
+    assert marker.read_bytes() == b"{"
+    with pytest.raises(InputError, match="prepared manifest.json"):
+        verify_prepared(source, mapping, destination)
+    with pytest.raises(FileExistsError):
+        prepare_export(source, mapping, destination)
+    assert marker.read_bytes() == b"{"
+
+
 def test_cli_reports_prepared_verified_mismatch_and_bad_input(tmp_path, capsys):
     source, mapping = inputs(tmp_path)
     package = tmp_path / "package"
