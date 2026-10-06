@@ -122,6 +122,7 @@
 | [PHASE-36.md](../reports/PHASE-36.md) | How preparation stopped writing intermediate plaintext files while retaining strict parsing and output bytes |
 | [PHASE-37.md](../reports/PHASE-37.md) | Why the October incumbent source check narrows the evidence-handoff hypothesis before more feature work |
 | [PHASE-38.md](../reports/PHASE-38.md) | How the public grouped export produces a replayable refusal and detects an altered source note |
+| [PHASE-39.md](../reports/PHASE-39.md) | How the built wheel exercises the grouped refusal handoff and what Python compatibility is still unobserved |
 | [AI-OPPORTUNITIES-2026-10.md](../reports/AI-OPPORTUNITIES-2026-10.md) | Which current competition, founder and incumbent signals shaped the October hypothesis, and which claims remain unverified? |
 | [INCUMBENT-PACKET-COMPARISON-2026-10.md](../reports/INCUMBENT-PACKET-COMPARISON-2026-10.md) | What evaluation exports and review workflows incumbents document, and what must be checked in a real packet? |
 | [BUILD-PLAN-2026-10.md](../reports/BUILD-PLAN-2026-10.md) | What is the October day-by-day build and discovery schedule, with acceptance and stop gates? |

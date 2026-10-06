@@ -155,6 +155,46 @@ def test_installed_preparation_replays_and_certifies(installed, tmp_path):
     assert _json(warrant)["status"] == "VALID"
 
 
+def test_installed_grouped_preparation_refuses_and_replays(installed, tmp_path):
+    """The built wheel must retain both replay boundaries for a refusal."""
+    source = tmp_path / "export.csv"
+    mapping = tmp_path / "mapping.json"
+    source.write_bytes((ROOT / "examples" / "export_sample.csv").read_bytes())
+    mapping.write_bytes((ROOT / "examples" / "export_mapping.json").read_bytes())
+    prepared = tmp_path / "prepared"
+    installed.run(tmp_path, "prepare", "--input", str(source),
+                  "--mapping", str(mapping), "--out", str(prepared))
+    checked = installed.run(tmp_path, "verify-prepared", "--input", str(source),
+                            "--mapping", str(mapping), "--prepared", str(prepared))
+    assert "VERIFIED" in checked.stdout
+
+    scored = prepared / "scored.csv"
+    record = tmp_path / "refused.json"
+    installed.run(tmp_path, "certify", "--input", str(scored),
+                  "--budget", ".05", "--out", str(record), "--quiet")
+    payload = _json(record)
+    assert payload["status"] == "REFUSED"
+    assert "only 2 independent units; need >= 59 clean units" in payload["reason"]
+    assert payload["input"]["evidence_sha256"] == _json(prepared / "manifest.json")[
+        "effective_rows_sha256"]
+    verified = installed.run(tmp_path, "verify", "--warrant", str(record),
+                             "--input", str(scored))
+    assert "VERIFIED" in verified.stdout
+
+    changed = tmp_path / "changed-export.csv"
+    changed.write_bytes(source.read_bytes().replace(
+        b"synthetic example only", b"changed example only", 1,
+    ))
+    assert changed.read_bytes() != source.read_bytes()
+    mismatched = installed.run(tmp_path, "verify-prepared", "--input", str(changed),
+                               "--mapping", str(mapping), "--prepared", str(prepared),
+                               expected=1)
+    assert "MISMATCH" in mismatched.stdout
+    still_verified = installed.run(tmp_path, "verify", "--warrant", str(record),
+                                   "--input", str(scored))
+    assert "VERIFIED" in still_verified.stdout
+
+
 def test_wheels_include_canonical_defaults_and_all_python_packages(installed):
     required = {str(path.relative_to(ROOT)).replace("\\", "/")
                 for path in (ROOT / "controlplane").rglob("*.py")}
