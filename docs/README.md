@@ -125,6 +125,7 @@
 | [PHASE-39.md](../reports/PHASE-39.md) | How the built wheel exercises the grouped refusal handoff and what Python compatibility is still unobserved |
 | [PHASE-40.md](../reports/PHASE-40.md) | How preparation classifies an interrupted manifest write and preserves the incomplete destination |
 | [PHASE-41.md](../reports/PHASE-41.md) | Which valid, refused and altered-source outcomes passed in a fresh tracked-file clone |
+| [PHASE-42.md](../reports/PHASE-42.md) | How the blank human first-run worksheet now covers valid, refused and altered-source outcomes |
 | [AI-OPPORTUNITIES-2026-10.md](../reports/AI-OPPORTUNITIES-2026-10.md) | Which current competition, founder and incumbent signals shaped the October hypothesis, and which claims remain unverified? |
 | [INCUMBENT-PACKET-COMPARISON-2026-10.md](../reports/INCUMBENT-PACKET-COMPARISON-2026-10.md) | What evaluation exports and review workflows incumbents document, and what must be checked in a real packet? |
 | [BUILD-PLAN-2026-10.md](../reports/BUILD-PLAN-2026-10.md) | What is the October day-by-day build and discovery schedule, with acceptance and stop gates? |

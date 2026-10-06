@@ -2,8 +2,9 @@
 
 **Status: no human interview or dry run, created 1 October 2026.** The
 synthetic commands were later replayed from a clean clone in
-[Phase 35](PHASE-35.md). No customer conversation, real export, product trial,
-budget commitment or pilot is recorded by this document. Use the
+[Phase 35](PHASE-35.md) and [Phase 41](PHASE-41.md). No customer conversation,
+real export, product trial, budget commitment or pilot is recorded by this
+document. Use the
 [October plan](BUILD-PLAN-2026-10.md)
 for the decision gates and the [research memo](AI-OPPORTUNITIES-2026-10.md)
 for the source-backed rationale. Do not send this packet to anyone or collect
@@ -91,8 +92,41 @@ replays the certificate. This is the same synthetic evidence as the original
 certificate example, not a second evaluation set or a human dry run. Retain
 the source export, mapping, prepared package and certificate together; the
 two replay commands check different boundaries. The earlier four-row
-`export_sample.csv` remains a format example and is too small to establish a
-useful false-alarm bound.
+`export_sample.csv` is too small to establish a useful false-alarm bound; the
+[grouped refusal and altered-source walkthrough](../examples/README.md#5-replay-a-refusal-and-detect-an-altered-source)
+uses that same format example to show what the CLI does with insufficient
+evidence and with changed retained source bytes.
+
+### Blank first-run observation, for someone other than the author
+
+Give the reviewer the repository, its setup instructions and the two linked
+synthetic walkthroughs above. Ask them to run both without live command
+coaching. Record the environment and exact point of any failure, including
+the command, exit code, output and elapsed time. Do not replace a failed run
+with the author's successful Phase 41 run. The synthetic files are practice
+inputs; completing them is not a customer export trial.
+
+After each outcome, ask the reviewer in their own words what can be concluded,
+what cannot, and which files another reviewer would need. For the altered
+source, ask why preparation replay and certificate replay give different
+statuses. Record their explanation before correcting it; a successful exit
+code alone does not establish that the evidence is understood.
+
+| First-run observation | Record after the unaided trial |
+|---|---|
+| Date, reviewer role, host OS and Python version | |
+| Setup steps and first command needing assistance | |
+| Valid handoff: exact status, exit codes and elapsed time | |
+| Grouped refusal: exact status, exit codes and elapsed time | |
+| Changed-source replay: both statuses and exit codes | |
+| Reviewer's explanation of what VALID and REFUSED permit | |
+| Reviewer's explanation of the two replay boundaries | |
+| Files they would retain or request from an analyst | |
+| Friction seen directly, with command/output and permitted words | |
+| What was observed vs coached, reported or inferred | |
+
+Leave the table blank until another person completes it. Do not record their
+name, customer records, prompts, scores or secrets in this repository.
 
 Treat a real prepared package as sensitive if identifiers or groups are
 sensitive. Excluded column names are listed, but their values are not copied
