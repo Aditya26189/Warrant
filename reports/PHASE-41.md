@@ -129,5 +129,6 @@ known commands and limits.
 | Valid public walkthrough | `examples/README.md` section 4; four exit-0 commands, PREPARED/VERIFIED/VALID/VERIFIED, 41.62 seconds |
 | Refusal and tamper walkthrough | `examples/README.md` section 5; initial four exit-0 commands, edit exit 0, preparation MISMATCH exit 1, certificate VERIFIED exit 0, 17.29 seconds |
 | Source or dependency change | None; source commands in a local clone, preexisting customer-only venv |
-| Clean documentation and inventory gate | Pending final clean commit and refresh |
-| Clean smoke and available verifier | Pending final clean commit |
+| Clean test inventory | `results/test_inventory.json` generated from clean `d30698f`; 2,228 collected, execution not implied |
+| Clean documentation and inventory gate | `4f1ca28`; 159 passed, exit 0 |
+| Clean smoke and available verifier | `4f1ca28`; smoke 7/7, claim table 92/92, frozen scores 25/25; activation tier skipped with `--no-activations` |
