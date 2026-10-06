@@ -117,6 +117,48 @@ prepared directory and certificate together for this handoff.
 
 ---
 
+## 5. Replay a refusal and detect an altered source
+
+The four-row grouped export from section 3 is too small to certify. Use it to
+exercise the same handoff with an honest `REFUSED` outcome. Run from the repo
+root in PowerShell; all generated files stay in a new OS-temp directory:
+
+```powershell
+$refusalDemo = Join-Path $env:TEMP ("warrant-refusal-" + [Guid]::NewGuid().ToString("N"))
+New-Item -ItemType Directory -Path $refusalDemo | Out-Null
+$smallPrepared = Join-Path $refusalDemo "prepared"
+$refusedRecord = Join-Path $refusalDemo "refused.warrant.json"
+
+python warrant.py prepare --input examples/export_sample.csv --mapping examples/export_mapping.json --out $smallPrepared
+python warrant.py verify-prepared --input examples/export_sample.csv --mapping examples/export_mapping.json --prepared $smallPrepared
+python warrant.py certify --input (Join-Path $smallPrepared "scored.csv") --budget 0.05 --out $refusedRecord
+python warrant.py verify --warrant $refusedRecord --input (Join-Path $smallPrepared "scored.csv")
+```
+
+Certification reports `REFUSED`: the four rows are only two conversation
+groups, while the 5% budget requires at least 59 clean negative units.
+Refusal exits 0, writes a record, and that record verifies. This does not
+mean the detector was found bad; the example lacks enough evidence.
+
+Now change one excluded source note while retaining the original prepared
+package and record. The changed source is still well-formed CSV:
+
+```powershell
+$changedSource = Join-Path $refusalDemo "changed-export.csv"
+Copy-Item -LiteralPath examples/export_sample.csv -Destination $changedSource
+python -c "import sys; from pathlib import Path; p=Path(sys.argv[1]); p.write_bytes(p.read_bytes().replace(b'synthetic example only', b'changed example only', 1))" $changedSource
+python warrant.py verify-prepared --input $changedSource --mapping examples/export_mapping.json --prepared $smallPrepared
+python warrant.py verify --warrant $refusedRecord --input (Join-Path $smallPrepared "scored.csv")
+```
+
+`verify-prepared` now reports `MISMATCH` and exits 1 because the retained
+source bytes changed. Certificate `verify` still reports `VERIFIED` and exits
+0 because its effective scored rows did not change. These are two different
+replay boundaries, not conflicting verdicts. Keep the untouched original
+source for an ordinary preparation replay.
+
+---
+
 ## Then try your own
 
 Three columns: `id`, `label` (0/1, where **1 means the detector should fire**),
