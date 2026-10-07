@@ -1,7 +1,8 @@
 # Product state and evidence map
 
 This page is the current entry point for assessing Warrant as software. It
-describes the root release checkout reviewed on 1 October 2026. The [claim table](../README.md)
+began with the 1 October 2026 root-release review and was updated after the
+7 October week-one gate. The [claim table](../README.md)
 and [results](../results/RESULTS.md) hold measured research numbers; this page
 does not restate them. [The code tour](CODE_TOUR.md) explains each package,
 and [limitations](LIMITATIONS.md) carries the detailed statistical caveats.
@@ -20,7 +21,10 @@ replay. [Phase 20](../reports/PHASE-20.md) records retained linear-chain replay.
 [Phase 28](../reports/PHASE-28.md) preserves failed attempts separately from
 the last passing clone record. [Phase 29](../reports/PHASE-29.md) corrects the
 legacy monitor's mixture stopping decision while retaining its historical
-schedule study.
+schedule study. [Phase 30](../reports/PHASE-30.md) through
+[Phase 42](../reports/PHASE-42.md) cover the October export-preparation and
+synthetic handoff work; [Phase 43](../reports/PHASE-43.md)
+records the latest integrated local full-suite gate and its human-trial limit.
 
 **Current status: a usable local evaluation tool and a substantial research
 harness, not a deployed enterprise service or a validated startup.** A user can
@@ -89,13 +93,18 @@ enterprise control, even where the local command behaves correctly:
    control, rate limits, tenant separation, high availability or deployment
    manifests exist. The gateway package is an adapter. Live scheduling, traffic
    ingestion and observability for a customer deployment have not been shown.
-5. **Current-head verification.** Phase 29 source commit `f2447b6` passed a
-   full tracked-file clone gate, recorded in
-   [the gate artifact](../results/clean_clone.json). The artifact and later
-   documentation commits are not themselves the tested source. The claim and
-   frozen-score tiers ran; activation re-extraction was explicitly skipped.
-   Review installed-package and remote CI results separately before a release;
-   do not substitute collection counts or older passes.
+5. **Current-head verification.** The most recent integrated local full suite
+   is [Phase 43's week-one gate](../reports/PHASE-43.md), run from a clean
+   source commit before its report and inventory were added. The subsequent
+   phase commits changed documentation and the generated collection count,
+   not product behavior; they are not themselves a new full-suite run. The
+   report records the executed tests, warning types, installed-wheel evidence
+   and the separate smoke, claim and frozen-score checks. Activation replay
+   was explicitly skipped in the available verifier. The older
+   [clean-clone artifact](../results/clean_clone.json) still names its own
+   earlier source commit. GitHub `main` and the phase tag were published, but
+   a CI run for that head was not observed. Do not substitute configured CI
+   jobs or collection counts for an executed pass.
 
 ## How to inspect the work
 
