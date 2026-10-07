@@ -119,6 +119,14 @@ warrant handoff create --input examples/export_certifies.csv --mapping examples/
 warrant handoff verify --packet reviewer-packet
 ```
 
+These exact public-example commands create `prepared-certifies/` and
+`reviewer-packet/` as **untracked directories in the checkout**. In a fresh
+clone they make `git status` dirty; do not stage or commit those outputs.
+For real data, run the installed `warrant` command from a customer-controlled
+working directory outside the source checkout and put `--out` under an
+approved private location. The packet contains the original export, including
+excluded columns. An output directory must be new and its parent must exist.
+
 For a certificate made with `--from-frontier`, also pass
 `--frontier` to `handoff create`. Creation first replays both existing checks,
 copies a fixed set of source, mapping, prepared and certificate files, replays
