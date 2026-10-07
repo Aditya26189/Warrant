@@ -324,6 +324,30 @@ def build_parser() -> argparse.ArgumentParser:
     prepared_verify.add_argument("--mapping", required=True)
     prepared_verify.add_argument("--prepared", required=True,
                                  help="directory written by warrant prepare")
+    handoff = sub.add_parser(
+        "handoff", help="copy and replay a prepared-export certify handoff",
+    )
+    handoff_sub = handoff.add_subparsers(dest="handoff_command", required=True)
+    handoff_create = handoff_sub.add_parser(
+        "create", help="publish a new local packet from already verified evidence",
+    )
+    handoff_create.add_argument("--input", "-i", required=True,
+                                help="original scored export, including excluded columns")
+    handoff_create.add_argument("--mapping", required=True)
+    handoff_create.add_argument("--prepared", required=True)
+    handoff_create.add_argument("--warrant", "-w", required=True)
+    handoff_create.add_argument("--frontier", default=None,
+                                help="required for a frontier-selected certificate")
+    handoff_create.add_argument("--out", "-o", required=True,
+                                help="new directory; existing destinations are refused")
+    handoff_create.add_argument(
+        "--include-sensitive-input", action="store_true",
+        help="explicitly allow copying the original source, including excluded columns",
+    )
+    handoff_verify = handoff_sub.add_parser(
+        "verify", help="check packet bytes and replay both existing verifiers",
+    )
+    handoff_verify.add_argument("--packet", required=True)
     chain = sub.add_parser(
         "chain",
         help="audit the records of a chain of rechecks",
@@ -1005,6 +1029,24 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             except (InputError, OSError, ValueError) as exc:
                 print(f"warrant: {exc}", file=sys.stderr)
                 return EXIT_BAD_INPUT
+        if args.command == "handoff":
+            from .intake.handoff import create_handoff, verify_handoff
+
+            try:
+                if args.handoff_command == "create":
+                    destination = create_handoff(
+                        args.input, args.mapping, args.prepared, args.warrant,
+                        args.out, frontier=args.frontier,
+                        include_sensitive_input=args.include_sensitive_input,
+                    )
+                    print(f"HANDOFF {destination}")
+                    return EXIT_OK
+                result = verify_handoff(args.packet)
+            except (OSError, ValueError, TypeError) as exc:
+                print(f"warrant: {exc}", file=sys.stderr)
+                return EXIT_BAD_INPUT
+            print(f"{result.status}: {result.reason}")
+            return EXIT_OK if result.verified else EXIT_ERROR
         if args.command == "certify":
             return _certify(args)
         if args.command == "verify":
