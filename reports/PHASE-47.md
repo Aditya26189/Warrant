@@ -90,9 +90,20 @@ incumbent packet.
 ## Evidence ledger and open items
 
 The source-identity, install, valid and negative command outputs are listed
-above. The documentation/report/inventory gate will be recorded after those
-files are committed from a clean report worktree. That gate tests link and
-report integrity, not the statistical result. The next useful observation is
+above. The documentation/report/inventory gate completed separately in the
+clean report worktree:
+
+| Check | Source | Observed result |
+| --- | --- | --- |
+| `python -m pytest tests/test_reports.py tests/test_docs_index.py -q -p no:cacheprovider --basetemp <workspace temp> -o addopts=--strict-markers` | Report and input-guide draft | 167 passed, zero failures. |
+| `python scripts/refresh_test_inventory.py` | Clean `be3da43` | 2,260 collected; collection is not execution. |
+| Decision, report, docs and inventory pytest modules, same flags | Clean inventory commit `b54db34` | 180 passed in 18.28 s. |
+| `python scripts/smoke.py` | Clean `b54db34` | 7/7 passed; provenance `dirty=False`. |
+| `python scripts/verify.py --no-activations` | Clean `b54db34` | Exit 0: claim table 92/92, frozen-score recomputation 25/25, activation tier explicitly skipped 0/0. |
+
+That gate tests source links and retained arithmetic, not customer utility.
+Editing this ledger adds no tests; its report/link checks are repeated before
+integration. The next useful observation is
 an unaided reviewer completing the blank worksheet in
 `reports/DISCOVERY-2026-10.md`. A real packet needs its owner's permission,
 retention rule, independently sourced labels, score direction, group unit and
