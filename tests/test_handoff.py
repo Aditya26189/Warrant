@@ -13,7 +13,7 @@ import pytest
 
 from controlplane.intake import handoff
 from controlplane.intake.contract import InputError
-from controlplane.intake.prepare import prepare_export
+from controlplane.intake.prepare import prepare_export, verify_prepared
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -230,6 +230,42 @@ def test_existing_destination_is_untouched(
     result = _create(refused_inputs, out)
     assert result.returncode == 2
     assert keep.read_text(encoding="utf-8") == "owned"
+
+
+@pytest.mark.parametrize("alias", [False, True])
+def test_nested_destination_preserves_prepared_evidence(
+    refused_inputs: dict[str, Path], tmp_path: Path, alias: bool,
+) -> None:
+    source = tmp_path / "source.csv"
+    source.write_bytes(refused_inputs["source"].read_bytes())
+    prepared = prepare_export(source, refused_inputs["mapping"], tmp_path / "prepared")
+    before = {name: (prepared / name).read_bytes()
+              for name in ("scored.csv", "manifest.json")}
+    out = prepared / ("../prepared/packet" if alias else "packet")
+    with pytest.raises(InputError, match="outside the prepared directory"):
+        handoff.create_handoff(
+            source, refused_inputs["mapping"], prepared, refused_inputs["warrant"],
+            out, include_sensitive_input=True,
+        )
+    assert not out.exists()
+    assert {member.name for member in prepared.iterdir()} == set(before)
+    assert {name: (prepared / name).read_bytes() for name in before} == before
+    assert verify_prepared(source, refused_inputs["mapping"], prepared)
+
+
+def test_nested_destination_cli_is_an_input_error_without_side_effects(
+    refused_inputs: dict[str, Path], tmp_path: Path,
+) -> None:
+    source = tmp_path / "source.csv"
+    source.write_bytes(refused_inputs["source"].read_bytes())
+    prepared = prepare_export(source, refused_inputs["mapping"], tmp_path / "prepared")
+    inputs = dict(refused_inputs, source=source, prepared=prepared)
+    out = prepared / "packet"
+    result = _create(inputs, out)
+    assert result.returncode == 2, result.stderr
+    assert "outside the prepared directory" in result.stderr
+    assert not out.exists()
+    assert verify_prepared(source, refused_inputs["mapping"], prepared)
 
 
 def test_source_change_during_copy_leaves_no_completion_marker(

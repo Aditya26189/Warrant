@@ -125,7 +125,9 @@ clone they make `git status` dirty; do not stage or commit those outputs.
 For real data, run the installed `warrant` command from a customer-controlled
 working directory outside the source checkout and put `--out` under an
 approved private location. The packet contains the original export, including
-excluded columns. An output directory must be new and its parent must exist.
+excluded columns. An output directory must be new, its parent must exist, and
+it cannot be inside the prepared input directory: that directory permits only
+`scored.csv` and `manifest.json` so it remains replayable after handoff.
 
 For a certificate made with `--from-frontier`, also pass
 `--frontier` to `handoff create`. Creation first replays both existing checks,
