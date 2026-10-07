@@ -85,6 +85,17 @@ being right; retain its label-audit companion for that description.
 Warrant has no hosted copy. Its local outputs do not leave the machine unless
 someone copies them.
 
+For the specific `prepare` then `certify` path, `warrant handoff create` can
+copy the original export, mapping, prepared directory, certificate and optional
+frontier into one local packet. It requires `--include-sensitive-input` because
+the original export's excluded columns are copied too. `handoff.json` names the
+fixed members, their roles and byte checksums; `warrant handoff verify` checks
+those bytes and runs both existing replays. A refused certificate remains a
+refusal even when the packet verifies. This command does not package release,
+recheck or chain records and does not authenticate the packet owner. See the
+[input guide](INPUT.md#transfer-a-prepared-certify-result-to-another-reviewer)
+for commands and exit meanings.
+
 When the scored file came from `prepare`, the scored-export row above means its
 canonical `scored.csv`. Neither a certify warrant nor a release evaluation
 automatically includes or binds the preparation manifest or mapping. Their

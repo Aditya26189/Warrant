@@ -128,6 +128,8 @@
 | [PHASE-42.md](../reports/PHASE-42.md) | How the blank human first-run worksheet now covers valid, refused and altered-source outcomes |
 | [PHASE-43.md](../reports/PHASE-43.md) | Which integrated week-one tests passed and why the unaided human gate remains open |
 | [PHASE-44.md](../reports/PHASE-44.md) | Why the current product-state page now points to the latest tested source and its limits |
+| [PHASE-45.md](../reports/PHASE-45.md) | How the opt-in certify handoff was built, replayed, tested and bounded |
+| [CLAIM-AUDIT-2026-10-07.md](../reports/CLAIM-AUDIT-2026-10-07.md) | Current claim-by-claim artifact, market-overlap and venture-gap audit |
 | [AI-OPPORTUNITIES-2026-10.md](../reports/AI-OPPORTUNITIES-2026-10.md) | Which current competition, founder and incumbent signals shaped the October hypothesis, and which claims remain unverified? |
 | [INCUMBENT-PACKET-COMPARISON-2026-10.md](../reports/INCUMBENT-PACKET-COMPARISON-2026-10.md) | What evaluation exports and review workflows incumbents document, and what must be checked in a real packet? |
 | [BUILD-PLAN-2026-10.md](../reports/BUILD-PLAN-2026-10.md) | What is the October day-by-day build and discovery schedule, with acceptance and stop gates? |
