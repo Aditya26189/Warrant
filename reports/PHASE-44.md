@@ -119,5 +119,6 @@ Do not infer CI from the presence of `.github/workflows/ci.yml`.
 | Full local integrated source baseline | `reports/PHASE-43.md`; clean `98ba529`, 2,230 passed, three pytest warnings |
 | Published prior checkpoint | `git ls-remote` verified GitHub `main` and `phase-43` at `0f77ff13288a50a06253fd98e0ed30950e0078ad` |
 | Human/real-export evidence | None observed; the worksheet and pilot remain plans |
-| Documentation and inventory gate | Pending clean report commit and refresh |
-| Phase 44 publication | Pending local merge and authorized push to `main` |
+| Clean test inventory | `results/test_inventory.json` generated from clean `00725a8`; 2,234 collected, execution not implied |
+| Documentation and inventory gate | `3434ce8`; 165 passed, exit 0; `git diff --check` exit 0 |
+| Source behavior gate | Phase 43's clean `98ba529` full suite and `8888ef7` smoke/claim replay; not repeated for this prose-only edit |
