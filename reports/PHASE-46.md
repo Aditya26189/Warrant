@@ -56,13 +56,21 @@ RBI source cited in the protocol was searched via the official RBI domain on
 protocol now records current status as unknown rather than elevating the
 old draft into a current obligation. No external legal requirement was added.
 
-The tests for this documentation-only phase are the report length and link
-checks, document index, generated inventory consistency, clean-source smoke,
-and README/frozen-score verification. Their exact completed command, commit
-and output belong in the final phase gate record; a collected test count is
-not an execution result. The Phase 45 full-suite limitation remains: its new
-feature passed focused and adjacent regression gates, while the most recent
-integrated full source suite in the repository is Phase 43's prior commit.
+The local gate completed as follows:
+
+| Command | Source | Observed result |
+| --- | --- | --- |
+| `python -m pytest tests/test_reports.py tests/test_docs_index.py tests/test_decisions_integrity.py -q -p no:cacheprovider --basetemp <workspace temp> -o addopts=--strict-markers` | Report and protocol draft | 174 passed, zero failures. |
+| `python scripts/refresh_test_inventory.py` | Clean `7048b96` | Recorded 2,258 collected tests, `dirty=false`; this is collection only. |
+| `python -m pytest tests/test_reports.py tests/test_docs_index.py tests/test_decisions_integrity.py tests/test_inventory_smoke.py tests/test_test_inventory.py -q -p no:cacheprovider --basetemp <workspace temp> -o addopts=--strict-markers` | Clean inventory commit `d9efdf4` | 178 passed in 15.30 s. |
+| `python scripts/smoke.py` | Clean `d9efdf4` | 7/7; provenance reported `dirty=False`. |
+| `python scripts/verify.py --no-activations` | Clean `d9efdf4` | Exit 0; claims 92/92, frozen-score comparisons 25/25, activations `SKIPPED|0/0`. |
+
+The Phase 45 full-suite limitation remains: its new feature passed focused
+and adjacent regression gates, while the most recent integrated full source
+suite in the repository is Phase 43's prior commit. Editing the present
+ledger adds no test cases, so the generated collection count is not refreshed
+again; the phase-report and link checks are repeated after this edit.
 
 ## What this does not establish
 
