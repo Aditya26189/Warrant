@@ -103,6 +103,38 @@ Run both `verify-prepared` and `warrant verify`: the former replays the source
 mapping, while the latter recomputes the certificate from effective scored
 rows. Neither establishes that the labels or independent-row declaration are
 correct.
+
+### Transfer a prepared certify result to another reviewer
+
+`handoff` collects those existing inputs and records into one **new local
+directory**. It supports only `prepare` followed by `certify`, including a
+refused certificate. It does not package `release`, rechecks or chains. The
+original export can contain excluded private columns, so creation requires
+an explicit copy opt-in:
+
+```powershell
+warrant prepare --input examples/export_certifies.csv --mapping examples/export_certifies_mapping.json --out prepared-certifies
+warrant certify --input prepared-certifies/scored.csv --budget 0.05 --out prepared-certifies.warrant.json
+warrant handoff create --input examples/export_certifies.csv --mapping examples/export_certifies_mapping.json --prepared prepared-certifies --warrant prepared-certifies.warrant.json --out reviewer-packet --include-sensitive-input
+warrant handoff verify --packet reviewer-packet
+```
+
+For a certificate made with `--from-frontier`, also pass
+`--frontier` to `handoff create`. Creation first replays both existing checks,
+copies a fixed set of source, mapping, prepared and certificate files, replays
+the copies, then writes `handoff.json` as the completion marker. The manifest
+lists each member's role and SHA-256 checksum. Verification refuses missing,
+extra, symlink or malformed members; a changed member is a `MISMATCH` with exit
+1, while incomplete or malformed evidence exits 2. A semantically unverified
+certificate also exits 1. An existing destination is never replaced, and a
+failed copy can leave an incomplete directory that will not verify.
+
+This is a portability aid, not an authenticated attestation or a privacy
+filter. The copied `source.*` retains all its original columns, and the packet
+must be handled under the same data controls as the source export. Checksums
+and replay do not establish who produced labels, whether rows are independent,
+whether the sample represents traffic, or when a criterion was selected. A
+refused certificate remains refused after successful packet verification.
 Grouped `release` input is still unsupported; do not erase groups to force it
 through. See the [October discovery packet](../reports/DISCOVERY-2026-10.md)
 for the real-export questions to settle before a dry run.
