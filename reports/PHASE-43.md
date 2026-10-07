@@ -66,10 +66,11 @@ were published. `git ls-remote` confirmed `main` and `phase-42` both at
 `98ba529d66c9f9c4d6719b39a8620d9c4dfc38e1`. The unauthenticated GitHub
 Actions API returned 404 for this repository, so a remote CI result for this
 commit was not observed. A successful push and configured workflow are not
-a CI pass. The Phase 43 push and remote-ref check belong in the final ledger.
+a CI pass. The Phase 43 push and remote-ref check occur after the local
+merge and are not claimed by this pre-merge report.
 
 The clean-source smoke, README claim replay and frozen-score recomputation
-are run after the report and test inventory are committed; their exact
+were run after the report and test inventory were committed; their exact
 outcomes are recorded below. The activation tier requires cached model
 activations or a GPU extraction, and is explicitly skipped when running the
 available CPU verifier with `--no-activations`.
@@ -128,6 +129,6 @@ status marked unknown until a run for the published commit can be inspected.
 | Installed wheel and interrupted marker | `reports/PHASE-39.md` and `reports/PHASE-40.md`; 19/19 and 52/52 focused modules |
 | Prior completed-phase publication | Remote `main` and `phase-42` verified at `98ba529`; tags 31-42 pushed |
 | Human dry run | None observed; `reports/DISCOVERY-2026-10.md` remains blank |
-| Clean documentation and inventory gate | Pending final report commit and refresh |
-| Clean smoke and available verifier | Pending final report commit |
-| Phase 43 remote publication | Pending final phase merge, tag and push |
+| Clean test inventory | `results/test_inventory.json` generated from clean `0f479e3`; 2,232 collected, execution not implied |
+| Clean documentation and inventory gate | `8888ef7`; 163 passed, exit 0 |
+| Clean smoke and available verifier | `8888ef7`; smoke 7/7, claim table 92/92, frozen scores 25/25; activation tier skipped with `--no-activations` |
