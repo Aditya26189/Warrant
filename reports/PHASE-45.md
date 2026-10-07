@@ -75,6 +75,11 @@ the retained evidence recomputes. It does not change the certificate verdict.
 | Adjacent preparation, public handoff, certification, frontier and CLI regression modules, same pytest flags | Clean source through `5f34030` before report/test edits | 110 passed, 0 failed, 306.38 s. The modules were `test_prepare`, `test_prepare_handoff_example`, `test_certify_verification`, `test_certify_from_frontier`, `test_frontier`, `test_frontier_groups`, `test_frontier_selection` and `test_cli_records`. |
 | `python scripts/verify.py` (exact `make verify` recipe on a Windows host without GNU make) | Clean `5f34030` | Exit 0. `TIER|1|claim_table|OK|92/92`; `TIER|2|frozen_scores|OK|25/25`; `TIER|3|activations|SKIPPED|0/0` because its ignored cache is absent. |
 | `python -m pytest tests/test_package_install.py::test_installed_handoff_replays_without_checkout -q -p no:cacheprovider --basetemp <workspace temp> -o addopts=--strict-markers` | Feature and installed-test source, with report draft uncommitted | 1 passed in 70.59 s. Offline direct wheel and rebuilt-sdist wheel were constructed; the installed console entry point ran outside the checkout, denied absent opt-in, verified a copied packet and rejected changed source bytes. |
+| Decision, docs, inventory and phase-report pytest modules, same flags | Clean inventory commit `01c8350` | 176 passed in 18.27 s, zero failures. |
+| `python scripts/smoke.py` | Clean `01c8350` | 7/7 passed; provenance reported `dirty=False`. |
+| `python scripts/verify.py --no-activations` | Clean `01c8350` | Exit 0; claim table 92/92, frozen scores 25/25, activation tier explicitly skipped 0/0. |
+| `python -m pytest --collect-only tests/ -q -o addopts=--strict-markers` | Clean `01c8350` | 2,256 collected in 26.74 s, with two SWIG import deprecation warnings and a shutdown deprecation warning. Collection is not test execution. |
+| `python -m ruff check controlplane/intake/handoff.py controlplane/cli.py tests/test_handoff.py tests/test_package_install.py` | Feature and installed-test source | `All checks passed!` |
 
 Initial sandboxed pytest attempts failed before test execution because
 pytest could not create/read its temporary directory on this Windows runner.
@@ -119,6 +124,6 @@ review effort or changes a recurring sign-off. The next engineering work
 should be led by that observation; `reports/BUILD-PLAN-2026-10.md` retains
 the demand stop gate. The stale draft preconditions in
 `docs/PILOT-PROTOCOL.md` section 10 should be reconciled with already-fixed
-chain defects before anyone treats it as a current checklist. The post-report
-documentation/inventory gates must be filled in the ledger before the branch
-is merged or pushed.
+chain defects before anyone treats it as a current checklist. The phase gate
+above is local; remote CI, an unaided reviewer and an owner-approved real
+packet remain open after the branch is merged or pushed.
