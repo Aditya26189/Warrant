@@ -1,7 +1,8 @@
 # A pilot protocol, for one buyer and one recurring decision
 
-**Status: a plan, not evidence.** No pilot has run. No customer conversation has
-happened. Nobody outside this repository has used the tool. Every figure below is
+**Status: a plan, not evidence; reviewed against the local product on 7 October
+2026.** No pilot has run. No customer conversation has happened. Nobody outside
+this repository has used the tool. Every figure below is
 either measured *on this repository's own data* and labelled as such, or a
 declared assumption. Nothing here is a market claim, and no line of it may be
 quoted as one.
@@ -26,7 +27,7 @@ cost.** That is a hypothesis. The code is a fact.
 | Sizing a recheck to catch a 1.5x breach of a 5% budget at power 0.80 needs 628 clean negatives | `DECISIONS.md` 183 |
 | A VALID certificate on an ungrouped file, or on a grouped file whose groups each carry one label, states how many mislabelled items it tolerates. Not every certificate reaches a finite figure: a ladder can say no number of errors in the pool falls below a level. On this project's own certificates, 2 to 8 flagged-clean errors take one below 0.80 | `DECISIONS.md` 197, 199, claim table |
 | A machine-checked crosswalk to the RBI's **draft** model-risk guidance: 20 paragraphs, 2 provided, 13 partial, 5 not provided. A crosswalk is a register of evidence types, not compliance approval, and not evidence that anyone will buy | `docs/RBI-MRM-2026-CROSSWALK.md`, `DECISIONS.md` 189 |
-| Nothing leaves the machine: no network calls, no telemetry | `docs/INPUT.md` |
+| The local CLI makes no network calls or telemetry; a user can still copy its sensitive files elsewhere | `docs/INPUT.md`, `docs/EVIDENCE-HANDOFF.md` |
 
 **Hypotheses** (none tested):
 
@@ -57,8 +58,9 @@ than it sounds:
   re-read 2026-09-16, still presented as a draft). The repository's crosswalk read
   the draft text on 2026-09-14 and found it requires validation and monitoring
   while setting no confidence level, sample size or evidential standard for either.
-  The draft text itself was not re-read on 2026-09-16, and whether a final text has
-  since been issued was not checked. A final text could differ.
+  The cited release establishes draft status at issuance, not current law.
+  Whether a final text has since been issued is **unknown here**; check the
+  current RBI source before making any regulatory claim in a conversation.
 - **Organisational separation -- a hypothesis to test.** The validation function
   is separate from the team that ships the model. That *may* make a refusal easier
   for it to deliver. Separation does not establish its incentives, its standing to
@@ -91,9 +93,14 @@ customer retains the decision.
 
 ## 3. Data, ownership and the sampling unit
 
-- **The customer's data never leaves their machine.** They run the CLI; we see
-  what they choose to show us. If a pilot requires us to see records, that is a
-  different arrangement and needs their legal sign-off, not ours.
+- **The CLI does not transmit the customer's data.** They run it locally; we
+  see only what they choose to show us. If a pilot requires us to see records,
+  that is a different arrangement and needs their legal sign-off, not ours.
+- **A certify handoff makes an explicit local copy.** `warrant handoff create`
+  requires `--include-sensitive-input` because the packet retains the original
+  export, including excluded columns. Sending that packet to another machine
+  or person is the customer's separate sharing decision under its data rules;
+  the CLI does not transmit it. The packet is not anonymized.
 - **They export three columns**: `id`, `label` (1 = the detector should fire),
   `score`. Optional `group` when items are not independent, and optional
   `label_2` for a second reviewer.
@@ -271,22 +278,45 @@ request to demo it to another team.
 
 ## 10. Before anyone is approached
 
-Preconditions, in order. None of them involves contacting a person, and the last
-is not an agent's to do:
+These are status checks before outreach, not a statement that a customer has
+accepted the tool. The first three concern the local build; the last needs a
+founder decision:
 
-1. **The open correctness defects are closed.** As of this draft, a chained
-   recheck can continue after a drift revocation, and an edited chain record can
-   pass its own digest check. Both are reproduced. A pilot must not run on a
-   build with a known integrity defect in the artefact it hands to a validator.
-2. **One rehearsed end-to-end journey exists**: a scored export, the criteria
-   sheet, the certification, a refusal example, a recheck, and the evidence
-   handoff - each reproducible from a clean clone.
-3. **The evidence handoff is written**: identity, scope, data hash, sampling
-   unit, criteria, method, counts, intervals, reasons, label-quality caveats,
-   expiry, and the command to reproduce it.
+1. **Known chain integrity defects: repaired on the current path, with limits.**
+   The older draft said a drift-revoked chain could continue and an edited
+   latest record could pass its digest check. The dated fixes in
+   `DECISIONS.md` 194's 16–17 September addenda reject continuation from a
+   revoked record, record status in the chain-head sidecar and seal the whole
+   new record. Decision 207 makes an unsealed record `UNVERIFIED`; Phase 20
+   adds statistical replay of a retained linear prefix. These are tested
+   local repairs, not signatures. A holder can delete a mutable sidecar or
+   rewrite and rehash every retained copy; no present verifier can prove an
+   omitted fork or later link does not exist. Before a pilot, run the current
+   chain tests and keep every input and record the chosen workflow needs.
+2. **Synthetic rehearsal: implemented; unaided human interpretation: open.**
+   The [clean-clone handoff](../reports/PHASE-41.md) exercised valid, refused
+   and changed-source preparation/certification paths. The
+   [certify packet](../reports/PHASE-45.md) can transfer those retained files
+   with explicit source-copy opt-in and replay them through an installed CLI.
+   Recheck and chain replay are separately tested in
+   [Phase 20](../reports/PHASE-20.md). This does not constitute one real
+   customer journey or an unaided reviewer trial. Record the first independent
+   person's exact commands, statuses and interpretation in the blank
+   [discovery worksheet](../reports/DISCOVERY-2026-10.md).
+3. **Choose the actual decision record and its missing fields.** The
+   [handoff map](EVIDENCE-HANDOFF.md) lists identity, scope, data binding,
+   sampling unit, criteria, method, counts, intervals, label caveats and
+   reproduction commands by workflow. A `certify` warrant does **not** carry
+   system/detector version or expiry; a `release` evaluation carries those but
+   uses a fixed registered threshold and a separate label-audit companion.
+   The Phase 45 packet supports certify only. Before a validation-team trial,
+   name which decision they make, which record answers it, and what their own
+   retained sheet must supply. Do not present the packet as release approval.
 4. **A named person decides who to approach.** Outreach, introductions and any
    commercial conversation are the founder's. No agent may contact anyone,
-   invent a contact, or imply a pilot exists.
+   invent a contact, or imply a pilot exists. A permissioned export, existing
+   reviewer packet, label source and retention rule are still needed to test
+   whether Warrant changes a recurring decision.
 
 ---
 
