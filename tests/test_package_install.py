@@ -128,6 +128,41 @@ def _json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def test_installed_handoff_replays_without_checkout(installed, tmp_path):
+    """The shipped console command transfers only explicit local evidence."""
+    source = tmp_path / "source.csv"
+    mapping = tmp_path / "mapping.json"
+    source.write_bytes((ROOT / "examples" / "export_certifies.csv").read_bytes())
+    mapping.write_bytes((ROOT / "examples" / "export_certifies_mapping.json").read_bytes())
+    prepared = tmp_path / "prepared"
+    warrant = tmp_path / "warrant.json"
+    packet = tmp_path / "packet"
+    installed.run(tmp_path, "prepare", "-i", str(source),
+                  "--mapping", str(mapping), "-o", str(prepared))
+    installed.run(tmp_path, "certify", "-i", str(prepared / "scored.csv"),
+                  "--budget", "0.05", "--out", str(warrant), "--quiet")
+    denied = installed.run(
+        tmp_path, "handoff", "create", "-i", str(source), "--mapping", str(mapping),
+        "--prepared", str(prepared), "--warrant", str(warrant), "-o", str(packet),
+        expected=2,
+    )
+    assert "--include-sensitive-input" in denied.stderr
+    assert not packet.exists()
+    installed.run(
+        tmp_path, "handoff", "create", "-i", str(source), "--mapping", str(mapping),
+        "--prepared", str(prepared), "--warrant", str(warrant), "-o", str(packet),
+        "--include-sensitive-input",
+    )
+    assert (packet / "source.csv").read_bytes() == source.read_bytes()
+    assert installed.run(tmp_path, "handoff", "verify", "--packet", str(packet)).stdout.startswith(
+        "VERIFIED:",
+    )
+    (packet / "source.csv").write_bytes(source.read_bytes() + b"\n")
+    assert "MISMATCH" in installed.run(
+        tmp_path, "handoff", "verify", "--packet", str(packet), expected=1,
+    ).stdout
+
+
 def test_installed_preparation_replays_and_certifies(installed, tmp_path):
     """Consumer path must work without importing the checkout or a model stack."""
     existing = _scores(tmp_path)
