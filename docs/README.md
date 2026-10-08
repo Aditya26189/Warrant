@@ -132,6 +132,7 @@
 | [PHASE-46.md](../reports/PHASE-46.md) | Which dated pilot preconditions were repaired and which human/customer gates remain open |
 | [PHASE-47.md](../reports/PHASE-47.md) | Which installed handoff commands worked in a clean clone and where their generated files landed |
 | [PHASE-48.md](../reports/PHASE-48.md) | Which full-suite failures exposed evidence-preservation defects, how they were repaired, and what the final gate established |
+| [PHASE-49.md](../reports/PHASE-49.md) | What official incumbent documentation says about review, labels, exports and evaluation, and which buyer comparison remains unobserved |
 | [CLAIM-AUDIT-2026-10-07.md](../reports/CLAIM-AUDIT-2026-10-07.md) | Current claim-by-claim artifact, market-overlap and venture-gap audit |
 | [AI-OPPORTUNITIES-2026-10.md](../reports/AI-OPPORTUNITIES-2026-10.md) | Which current competition, founder and incumbent signals shaped the October hypothesis, and which claims remain unverified? |
 | [INCUMBENT-PACKET-COMPARISON-2026-10.md](../reports/INCUMBENT-PACKET-COMPARISON-2026-10.md) | What evaluation exports and review workflows incumbents document, and what must be checked in a real packet? |

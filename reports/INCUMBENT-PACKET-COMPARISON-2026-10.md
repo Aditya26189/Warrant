@@ -94,3 +94,49 @@ history, and whether that evidence changes a recurring sign-off. If the answer
 is yes, the Warrant handoff has no demonstrated incremental value for that
 team. If those fields are missing from an observed packet, record which ones
 and why the reviewer needs them before building a native integration.
+
+## 8 October addendum: review operations are incumbent features too
+
+This is another documentation review, not a hands-on comparison or proof of a
+new market niche. The [MLflow review-queue guide](https://mlflow.org/docs/latest/genai/assessments/review-queues/)
+documents named queues, reviewer assignment, common questions, shared review
+status, and answers attached to traces. It calls the feature experimental and
+says it was added in MLflow 3.14.0. On a server without authentication,
+individual reviewer assignment is unavailable. Its
+[feedback model](https://mlflow.org/docs/latest/genai/concepts/feedback/)
+records human, judge and code sources and describes multiple annotators and
+revision history. Its
+[evaluation-dataset guide](https://mlflow.org/docs/latest/genai/datasets/)
+describes datasets from traces or manually supplied examples. Therefore a
+review queue, label-source field, collaborative annotation or trace-to-dataset
+path is not a defensible standalone Warrant differentiator. The docs do not
+establish how any particular buyer configured or exported those fields.
+
+[Braintrust's experiment guide](https://www.braintrust.dev/docs/evaluate/interpret-results)
+now explicitly documents assigned and unreviewed rows, scorer and dataset
+metadata, and CSV/JSON export with an all-fields option. Its API and CLI paths
+also let a team fetch or query experiment results. The
+[LangSmith evaluation-types guide](https://docs.langchain.com/langsmith/evaluation-types)
+documents custom offline summary evaluators that calculate experiment-level
+precision and recall. The
+[AgentCore evaluation-types guide](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/evaluations-types.html)
+documents batch evaluation with ground truth in session metadata and aggregate
+results. These are documented capabilities, not evidence that an incumbent
+does or does not implement Warrant's exact predeclared budget test or local
+replay packet for one customer. A capable team may be able to implement a
+similar test in its incumbent tool; that possibility remains UNKNOWN until a
+configured same-decision packet is inspected.
+
+The matched-packet request must now include the incumbent's *configured*
+review queue or equivalent, not only a default experiment screenshot. Ask for
+the reviewer assignment and completion record; the human versus judge label
+source and any revision or disagreement history; the exact export columns and
+row population; the score polarity and threshold-selection history; and the
+report the decision owner actually signed. Compare those retained inputs with
+Warrant's local replay of the **same** predeclared false-positive budget,
+recall/precision, sampling unit and refusal condition. Time both preparation
+and independent review, and record what changed the sign-off in the
+reviewer's words if sharing is permitted. If the incumbent already supplies
+the necessary bounded decision and replay, there is no observed wedge. If the
+owner cannot produce independent labels or a defensible sample, the Warrant
+packet cannot fix that missing evidence either.
