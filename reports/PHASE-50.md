@@ -80,14 +80,16 @@ files and a 2,871.55-second full-suite step to the current named source and
 1,747.14-second step. The two durations are not a throughput comparison:
 source, suite size and ambient machine load differ.
 
-After the artifact commit, verify its schema and retained passing status with
-the existing `test_clean_clone.py` module, and run report/link/claim tests
-after this report is indexed. Refresh the generated collection inventory only
-from a clean report commit; it must retain
-`execution_status=not_measured_by_collection`. Run smoke and the two available
-verifier tiers again on the final documentation commit. That follow-up gate
-does not repeat the expensive clean clone; it checks that the report and
-README remain internally consistent after the artifact is published.
+After the artifact commit, `tests/test_clean_clone.py` passed 21/21 and the
+draft report/link tests passed 173/173. The inventory was then generated from
+clean report commit `4cf0507`: 2,269 collected, with
+`execution_status=not_measured_by_collection`. On clean inventory commit
+`3526b23`, the combined artifact/report/link/claim subset passed 208/208,
+smoke passed 7/7 with `dirty=False`, and `python scripts/verify.py
+--no-activations` again reported 92/92 claims, 25/25 frozen-score comparisons
+and activation tier SKIPPED 0/0. This follow-up gate did not repeat the
+expensive clean clone; it checked that the published artifact, report and
+README remain internally consistent.
 
 ## What this does not establish; open items
 
