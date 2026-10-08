@@ -135,6 +135,7 @@ has seen.
 |---|---|
 | `test_intake.py` | The input contract, the refusal that exits 0, and both shipped examples reproducible from their generator |
 | `test_intake_ambiguity.py` | Duplicate columns, duplicate JSON keys, blank headers and ragged rows are refused, never resolved by whichever value came last |
+| `test_handoff.py` | Certify packet creation and replay under the customer dependencies: valid and refused results, changed or forged members, missing evidence, opt-in, destination boundaries and incomplete publication |
 | `test_malformed_numeric_inputs.py` | A number no arithmetic can use is refused rather than crashed on, in a chained record and in a release specification alike. The boundary is pinned at `2**1024 - 1`, the value a bit-length bound lets through |
 | `test_psi_reference_size.py` | The drift null is simulated at the reference's own size, and the record says which size it came from |
 | `test_recheck_after_chain_revocation.py` | An unchained recheck of a warrant its chain revoked reports the revocation instead of a fresh VALID, and still writes every measured field |

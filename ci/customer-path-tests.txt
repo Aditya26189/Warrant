@@ -17,6 +17,9 @@
 # test_prepare.py and test_prepare_handoff_example.py: 50 tests passed together
 # in a fresh Python 3.12 venv with only requirements-customer.txt, pytest,
 # setuptools and wheel on 2026-10-05. Heavy research packages were absent.
+# test_handoff.py: all 21 cases passed on 2026-10-08 in the isolated Python
+# 3.12.10 customer-only venv (NumPy, SciPy, PyYAML, pytest and build tools;
+# torch, transformers, datasets, spaCy, sklearn, matplotlib and Presidio absent).
 tests/test_acceptance.py
 tests/test_atomic_publication.py
 tests/test_calibration.py
@@ -38,6 +41,7 @@ tests/test_economics.py
 tests/test_external.py
 tests/test_external_figures.py
 tests/test_grouped_agreement.py
+tests/test_handoff.py
 tests/test_intake.py
 tests/test_intake_ambiguity.py
 tests/test_label_sensitivity.py
