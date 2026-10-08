@@ -150,9 +150,10 @@ def test_the_artifact_records_every_step_and_its_provenance(tmp_path: Path) -> N
 
 
 def test_failed_default_clone_keeps_green_record_and_separates_attempts(
-    tmp_path: Path,
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """A red gate must remain inspectable without poisoning its own rerun (225)."""
+    monkeypatch.setattr("controlplane.report.clean_clone.time.time_ns", lambda: 123456789)
     canonical = tmp_path / "results" / "clean_clone.json"
     prior = GateResult(True, "prior123", "/tmp/prior", 267, [_step("make test", True)])
     write_artifact(prior, canonical, {"git_commit": "prior123", "dirty": False})

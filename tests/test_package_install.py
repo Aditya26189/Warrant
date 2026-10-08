@@ -157,6 +157,16 @@ def test_installed_handoff_replays_without_checkout(installed, tmp_path):
     assert installed.run(tmp_path, "handoff", "verify", "--packet", str(packet)).stdout.startswith(
         "VERIFIED:",
     )
+    nested = prepared / "nested-packet"
+    refused_nested = installed.run(
+        tmp_path, "handoff", "create", "-i", str(source), "--mapping", str(mapping),
+        "--prepared", str(prepared), "--warrant", str(warrant), "-o", str(nested),
+        "--include-sensitive-input", expected=2,
+    )
+    assert "outside the prepared directory" in refused_nested.stderr
+    assert not nested.exists()
+    installed.run(tmp_path, "verify-prepared", "-i", str(source),
+                  "--mapping", str(mapping), "--prepared", str(prepared))
     (packet / "source.csv").write_bytes(source.read_bytes() + b"\n")
     assert "MISMATCH" in installed.run(
         tmp_path, "handoff", "verify", "--packet", str(packet), expected=1,

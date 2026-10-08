@@ -29,6 +29,7 @@ failure mode, one level up.
 from __future__ import annotations
 
 import json
+from itertools import count
 import os
 import re
 import shutil
@@ -570,10 +571,16 @@ def write_outcome_artifact(
 
     if not result.commit:
         raise ValueError("a failed clone gate must identify its source commit")
-    failure_path = (
-        canonical_path.parent
-        / "clean_clone_failures"
-        / f"clean_clone-{result.commit[:12]}-{time.time_ns()}.json"
-    )
-    write_artifact(result, failure_path, provenance, exclusive=True)
-    return failure_path
+    failure_dir = canonical_path.parent / "clean_clone_failures"
+    failure_dir.mkdir(parents=True, exist_ok=True)
+    stem = f"clean_clone-{result.commit[:12]}-{time.time_ns()}"
+    for retry in count():
+        suffix = f"-{retry}" if retry else ""
+        failure_path = failure_dir / f"{stem}{suffix}.json"
+        try:
+            write_artifact(result, failure_path, provenance, exclusive=True)
+        except FileExistsError:
+            if not failure_path.is_file():
+                raise
+        else:
+            return failure_path

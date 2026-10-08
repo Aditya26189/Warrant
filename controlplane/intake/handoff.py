@@ -202,6 +202,11 @@ def create_handoff(source: str | Path, mapping: str | Path, prepared: str | Path
         raise InputError(f"certificate {outcome.status}: {outcome.reason}")
 
     destination = Path(out)
+    prepared_root = prepared_path.resolve()
+    resolved_destination = destination.resolve()
+    if (resolved_destination == prepared_root
+            or prepared_root in resolved_destination.parents):
+        raise InputError("handoff destination must be outside the prepared directory")
     destination.mkdir()  # Exclusive reservation: never replace an existing packet.
     (destination / "prepared").mkdir()
     originals = {
