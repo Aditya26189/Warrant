@@ -16,6 +16,7 @@ import json
 import os
 import stat
 import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -95,25 +96,42 @@ def test_failed_clone_preflight_skips_the_expensive_suite(
 
 
 def test_passing_clone_preflight_runs_the_full_suite(
-    monkeypatch: pytest.MonkeyPatch,
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path,
 ) -> None:
-    """Preflight is an early refusal, not a replacement for the full suite."""
+    """The full suite keeps strict markers and retains its pass count (240)."""
     import controlplane.report.clean_clone as clone
 
     calls: list[tuple[str, list[str], int]] = []
+    real_run = clone._run
 
     def fake_run(name: str, command: list[str], cwd: Path, timeout: int) -> StepResult:
         calls.append((name, command, timeout))
         return _step(name, ok=True)
 
     monkeypatch.setattr(clone, "_run", fake_run)
-    steps = clone._run_suite_after_preflight("python", Path("clone"))
+    steps = clone._run_suite_after_preflight(sys.executable, tmp_path)
     assert [name for name, _, _ in calls] == ["make test preflight", "make test"]
     assert any("test_every_stated_test_count_is_the_real_one" in arg for arg in calls[0][1])
     assert any("test_the_committed_gate_artifact_is_readable_and_passed" in arg for arg in calls[0][1])
-    assert calls[1][1] == ["python", "-m", "pytest", "tests/", "-q"]
+    assert calls[1][1] == [
+        sys.executable, "-m", "pytest", "tests/", "-q",
+        "-o", "addopts=--strict-markers",
+    ]
     assert calls[1][2] == 7200
     assert all(step.ok and not step.skipped for step in steps)
+
+    (tmp_path / "pytest.ini").write_text(
+        "[pytest]\naddopts = -q --strict-markers\n", encoding="utf-8",
+    )
+    (tmp_path / "test_single.py").write_text(
+        "def test_one():\n    assert True\n", encoding="utf-8",
+    )
+    tiny_command = [
+        "test_single.py" if part == "tests/" else part for part in calls[1][1]
+    ]
+    measured = real_run("make test", tiny_command, tmp_path, timeout=30)
+    assert measured.ok
+    assert "1 passed" in measured.tail
 
 
 def test_a_skipped_step_is_rendered_as_skipped_not_as_a_pass() -> None:
