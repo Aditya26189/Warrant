@@ -33,6 +33,11 @@ passing gate. A failed run writes an individually named record under
 step output. This leaves the last passing record available to the preflight on
 the next attempt. An explicit `--out` path receives either outcome.
 
+The clean-clone full-suite command keeps strict markers and one quiet flag so
+its retained output tail includes pytest's numeric execution summary. The
+inventory is still collection only; inspect the tested commit and the `make
+test` step's return code and tail in the clone artifact for an executed result.
+
 ```bash
 python -m pytest tests/ -q                    # the whole suite
 python -m pytest tests/test_validation.py -q  # one suite

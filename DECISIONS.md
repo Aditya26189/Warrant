@@ -11990,3 +11990,14 @@ exactly as after a chained revocation.
 **Decision.** Keep the bounded retry and explicit failure note. On the final `shutil.rmtree` attempt, use its Python-3.10-compatible error callback to clear the write-protection bit only for a path that raised `PermissionError` on Windows, then retry the failed removal operation. Do not invoke a shell, change files outside the named temporary clone, suppress other errors, or claim success if the directory still exists. A persistent sharing violation remains a reported cleanup failure.
 
 **Validation and limit.** Add a Windows-only red-before read-only-file regression; keep the existing ordinary and absent-path cleanup tests. Test that a deliberately persistent permission error is still reported. Run the focused module, static checks and a clean-source full tracked-file clone gate; record the gate's actual cleanup result and verifier tiers. This is harness hygiene, not a customer or model performance improvement.
+
+## 240 - Retain the full-suite execution count in the clean-clone record (2026-10-08)
+
+- **Status:** DECIDED after a focused output comparison, before implementation.
+- **Scope:** Clean-clone pytest invocation and its reporting regression only. No change to test selection, strict-marker enforcement, statistical code, frozen results or customer commands.
+
+**Finding.** `pytest.ini` already supplies `-q --strict-markers`, while the clone gate adds `-q` to the full-suite command. On the same 23-case clean-clone test module, `python -m pytest ... -q` printed progress but no numeric pass summary; overriding addopts to `--strict-markers` with one explicit `-q` printed `23 passed in 3.80s`. The Phase 50 and 51 retained full-suite tails reached 100% and had return code zero, but contained no numeric execution count. Their collection inventories are not a substitute for an execution count.
+
+**Decision.** Keep the same `tests/` selection, one quiet flag, strict markers and two-hour timeout. Override only pytest's duplicate default quiet option for the gate's full-suite command with `-o addopts=--strict-markers`. Retain the actual command and output tail in the artifact. Do not infer passes from the collection inventory, and do not modify pytest's repository-wide defaults. If the final suite still lacks a summary, report that limitation rather than inventing a count.
+
+**Validation and limit.** Add a subprocess regression that runs a tiny passing pytest file under a `pytest.ini` with default `-q --strict-markers` and proves the gate command retains `1 passed` in its tail. Keep the existing preflight/full-suite selection tests. Then run the real clean tracked-file clone gate and report the exact retained count, exit status, verifier tiers and cleanup result. This improves QA evidence, not model validity, customer adoption or remote CI coverage.

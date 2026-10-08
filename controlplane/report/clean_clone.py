@@ -153,7 +153,13 @@ def _run_suite_after_preflight(python: str, cwd: Path) -> list[StepResult]:
         cwd=cwd,
         timeout=900,
     )
-    full_command = [python, "-m", "pytest", "tests/", "-q"]
+    # Decision 240: pytest.ini already supplies -q. Override that duplicate
+    # reporting flag, but preserve strict markers, so the retained tail names
+    # the number of tests that actually passed instead of only reaching 100%.
+    full_command = [
+        python, "-m", "pytest", "tests/", "-q",
+        "-o", "addopts=--strict-markers",
+    ]
     if not preflight.ok:
         return [
             preflight,
