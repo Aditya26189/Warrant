@@ -11979,3 +11979,14 @@ exactly as after a chained revocation.
 **Decision.** Keep exclusive publication and the current first-choice timestamped name. If and only if that candidate already exists, retry with a monotonically numbered suffix until a new file is exclusively created. Do not overwrite or replace the last passing canonical record or a previous failed attempt. Propagate unrelated filesystem errors. This is a local artifact-preservation correction, not a guarantee against a hostile writer or disk failure.
 
 **Validation.** Make the existing two-attempt test deterministic by holding `time.time_ns()` constant, demonstrate its red result before code, then require two distinct retained failure files and unchanged canonical bytes. Run the focused module and complete integrated suite on clean committed source; update the generated test inventory if collection changes. Record the failed run and final result separately.
+
+## 239 - Retry Windows read-only clone cleanup without hiding persistent failures (2026-10-08)
+
+- **Status:** DECIDED after the Phase 50 clean-clone gate and a controlled reproduction, before implementation.
+- **Scope:** `_remove_clone` cleanup of its own temporary tracked-file clone and a deterministic regression. No change to gate step verdicts, provenance, scientific artifacts or customer commands.
+
+**Finding.** The Phase 50 gate passed at `4020713` but its final note reported `PermissionError: [WinError 5]` on a `.git/objects` file, leaving about 26 MB in Windows Temp. That exact gate-created directory was verified under Temp and removed afterward with native PowerShell. A controlled read-only file under the ignored workspace `.venv` also made the current `_remove_clone` exhaust its retries, return `PermissionError` and leave the directory. The two controlled temporary directories were removed after the reproduction. These observations establish a reproducible read-only-file failure mode; they do not prove every `.git/objects` permission error has the same cause rather than a transient external lock.
+
+**Decision.** Keep the bounded retry and explicit failure note. On the final `shutil.rmtree` attempt, use its Python-3.10-compatible error callback to clear the write-protection bit only for a path that raised `PermissionError` on Windows, then retry the failed removal operation. Do not invoke a shell, change files outside the named temporary clone, suppress other errors, or claim success if the directory still exists. A persistent sharing violation remains a reported cleanup failure.
+
+**Validation and limit.** Add a Windows-only red-before read-only-file regression; keep the existing ordinary and absent-path cleanup tests. Test that a deliberately persistent permission error is still reported. Run the focused module, static checks and a clean-source full tracked-file clone gate; record the gate's actual cleanup result and verifier tiers. This is harness hygiene, not a customer or model performance improvement.
