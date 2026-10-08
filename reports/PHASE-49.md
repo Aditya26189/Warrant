@@ -79,7 +79,9 @@ plan's stopping rule; it is not an inference that no demand exists.
 | Can an incumbent export or query experiment results? | Official Braintrust experiment guide, linked above | CSV/JSON all-fields export and API/CLI access are documented. Completeness of a buyer's chosen packet is unknown. |
 | Can incumbents compute aggregate metrics or batch ground truth? | Official LangSmith and AgentCore guides, linked above | Summary evaluators and batch ground-truth evaluation are documented respectively. Their exact customer-selected statistical procedure is unknown. |
 | What was edited here? | `reports/INCUMBENT-PACKET-COMPARISON-2026-10.md` and this report | Added a dated source-backed addendum and a concrete matched-packet request. No runtime or scientific artifact changed. |
-| What technical gate applies? | `tests/test_reports.py`, `tests/test_docs_index.py`, `tests/test_claims.py`, `scripts/smoke.py`, `scripts/verify.py` | Run after the report/index are committed and the generated collection count is refreshed. Collection must not be reported as execution. |
+| Did the final documentation gate pass? | `python -m pytest tests/test_reports.py tests/test_docs_index.py tests/test_claims.py -q -p no:cacheprovider --basetemp <workspace temp> -o addopts=--strict-markers` on clean `b449637` | 185 passed, zero failed in 29.49 s. This is the affected documentation/claim subset, not a new full-suite run. |
+| Did repository smoke and claim replay pass? | `python scripts/smoke.py`; `python scripts/verify.py --no-activations` on clean `b449637` | Smoke 7/7; README claims 92/92; frozen-score comparisons 25/25; activations explicitly skipped 0/0. |
+| What did the generated inventory count? | `python scripts/refresh_test_inventory.py` on clean `535ff18` | 2,267 collected; `execution_status=not_measured_by_collection`. The last full-suite execution remains the Phase 48 gate at its named source commit. |
 
 ## What this does not establish; open items
 
