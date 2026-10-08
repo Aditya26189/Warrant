@@ -17,6 +17,9 @@ full-suite pass for a later head. The
 jobs and a Windows minimum-version wheel job; consult the run for the exact
 commit before stating that CI passed. The [product-state map](PRODUCT-STATE.md)
 separates those checks from deployment evidence.
+The [Phase 54 local check](../reports/PHASE-54.md) runs the declared Windows
+Python 3.10 file selection and the certify handoff module in an isolated
+customer-dependency environment; it is not a remote CI result.
 
 Adding a `reports/PHASE-*.md` file changes collection even when no Python test
 is edited: `test_reports.py` parametrizes two checks over the report files.
