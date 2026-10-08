@@ -27,6 +27,8 @@ synthetic handoff work; [Phase 43](../reports/PHASE-43.md)
 records the week-one integrated local full-suite gate and its human-trial limit.
 [Phase 48](../reports/PHASE-48.md) records a later complete local suite after
 the prepared-handoff and failed-gate artifact preservation repairs.
+[Phase 50](../reports/PHASE-50.md) records the subsequent tracked-file clone
+gate and its explicit activation-replay and Windows-cleanup limits.
 
 **Current status: a usable local evaluation tool and a substantial research
 harness, not a deployed enterprise service or a validated startup.** A user can
@@ -97,15 +99,16 @@ enterprise control, even where the local command behaves correctly:
    manifests exist. The gateway package is an adapter. Live scheduling, traffic
    ingestion and observability for a customer deployment have not been shown.
 5. **Current-head verification.** The most recent integrated local full suite
-   is [Phase 48's gate](../reports/PHASE-48.md), executed on a clean committed
-   source after two preservation repairs. That report records the executed
-   result, preceding failures, warning types, installed-wheel evidence and
-   separate smoke, claim and frozen-score checks. Activation replay was
-   explicitly skipped in the available verifier. The older
-   [clean-clone artifact](../results/clean_clone.json) still names its own
-   earlier source commit. A remote CI result for the Phase 48 head has not
-   been observed. Do not substitute configured CI jobs or collection counts
-   for an executed pass.
+   is [Phase 50's tracked-file clone gate](../reports/PHASE-50.md). Its
+   [machine-readable record](../results/clean_clone.json) names the exact
+   source commit it tested, and the report distinguishes its complete test
+   step from the collection inventory. [Phase 48](../reports/PHASE-48.md)
+   records the earlier worktree suite and the preservation repairs it tested.
+   Activation replay was explicitly skipped in the available verifier; the
+   clone also reported a Windows temporary-directory cleanup failure that was
+   handled manually after the run. A remote CI result for the final merge has
+   not been observed. Do not substitute configured CI jobs or collection
+   counts for an executed pass.
 
 ## How to inspect the work
 
