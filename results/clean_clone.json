@@ -1,8 +1,8 @@
 {
   "provenance": {
-    "timestamp_utc": "2026-10-04T01:40:51+00:00",
-    "git_commit": "c3353344e162a9d438c2cefb09428594ba07f90a",
-    "git_branch": "fix/verify-revalidation-fail-closed",
+    "timestamp_utc": "2026-10-08T04:06:06+00:00",
+    "git_commit": "40207136e669b3ac8eb46948b932492996be2516",
+    "git_branch": "gate/phase50-clean-clone",
     "dirty": false,
     "dirty_paths": [],
     "dirty_excludes": "results",
@@ -205,9 +205,9 @@
   },
   "provenance_taken": "before cloning",
   "ok": true,
-  "commit": "c3353344e162a9d438c2cefb09428594ba07f90a",
-  "clone_path": "C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-yq4ljje7\\controlplane",
-  "tracked_files": 611,
+  "commit": "40207136e669b3ac8eb46948b932492996be2516",
+  "clone_path": "C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-ivi7l8tq\\controlplane",
+  "tracked_files": 637,
   "steps": [
     {
       "name": "git clone",
@@ -215,11 +215,11 @@
         "git",
         "clone",
         "--quiet",
-        "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\verify-failclosed-worktree",
-        "C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-yq4ljje7\\controlplane"
+        "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\phase50-gate",
+        "C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-ivi7l8tq\\controlplane"
       ],
       "returncode": 0,
-      "duration_seconds": 11.85,
+      "duration_seconds": 10.06,
       "ok": true,
       "skipped": false,
       "detail": "",
@@ -248,11 +248,11 @@
         "refs/notes/*:refs/notes/*"
       ],
       "returncode": 0,
-      "duration_seconds": 0.38,
+      "duration_seconds": 0.37,
       "ok": true,
       "skipped": false,
       "detail": "",
-      "tail": "From C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\verify-failclosed-worktree\n * [new ref]         refs/notes/commits -> refs/notes/commits"
+      "tail": "From C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\phase50-gate\n * [new ref]         refs/notes/commits -> refs/notes/commits"
     },
     {
       "name": "make smoke",
@@ -261,11 +261,11 @@
         "scripts/smoke.py"
       ],
       "returncode": 0,
-      "duration_seconds": 6.38,
+      "duration_seconds": 5.11,
       "ok": true,
       "skipped": false,
       "detail": "",
-      "tail": "Warrant smoke check\n============================================================\n  OK    python version: 3.12.10\n  OK    package imports: controlplane, and its model, policy and validation subpackages\n  OK    config loads: config hash 2640a176a26a80a0, seed 1729\n  OK    provenance resolves: commit c3353344e162, dirty=False\n  OK    artifacts readable: validation-T1-last_token.json -> AUROC 0.8256, VALID\n  OK    eval sets frozen: 4 frozen eval sets, content-hashed\n  OK    claim table parses: 92 claims, each naming an artifact and a field\n============================================================\nSMOKE OK: 7/7"
+      "tail": "Warrant smoke check\n============================================================\n  OK    python version: 3.12.10\n  OK    package imports: controlplane, and its model, policy and validation subpackages\n  OK    config loads: config hash 2640a176a26a80a0, seed 1729\n  OK    provenance resolves: commit 40207136e669, dirty=False\n  OK    artifacts readable: validation-T1-last_token.json -> AUROC 0.8256, VALID\n  OK    eval sets frozen: 4 frozen eval sets, content-hashed\n  OK    claim table parses: 92 claims, each naming an artifact and a field\n============================================================\nSMOKE OK: 7/7"
     },
     {
       "name": "make test preflight",
@@ -278,7 +278,7 @@
         "-q"
       ],
       "returncode": 0,
-      "duration_seconds": 46.25,
+      "duration_seconds": 34.81,
       "ok": true,
       "skipped": false,
       "detail": "",
@@ -294,11 +294,11 @@
         "-q"
       ],
       "returncode": 0,
-      "duration_seconds": 2871.55,
+      "duration_seconds": 1747.14,
       "ok": true,
       "skipped": false,
       "detail": "",
-      "tail": "........................................................................ [ 65%]\n........................................................................ [ 69%]\n........................................................................ [ 72%]\n........................................................................ [ 75%]\n........................................................................ [ 78%]\n........................................................................ [ 82%]\n..............................................................x......... [ 85%]\n........................................................................ [ 88%]\n........................................................................ [ 92%]\n........................................................................ [ 95%]\n........................................................................ [ 98%]\n...............................                                          [100%]\n============================== warnings summary ===============================\n<frozen importlib._bootstrap>:488\n  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute\n\n<frozen importlib._bootstrap>:488\n  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute\n\ntests/test_warrant_stats.py::test_a_non_finite_update_raises_rather_than_asserting\n  C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-yq4ljje7\\controlplane\\controlplane\\validation\\warrant_stats.py:193: RuntimeWarning: divide by zero encountered in log1p\n    self._logw += np.log1p(self.lams * (x - self.p0))\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\nsys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute"
+      "tail": "........................................................................ [ 66%]\n........................................................................ [ 69%]\n........................................................................ [ 73%]\n........................................................................ [ 76%]\n........................................................................ [ 79%]\n........................................................................ [ 82%]\n........................................................................ [ 85%]\n........................................................................ [ 88%]\n........................................................................ [ 92%]\n........................................................................ [ 95%]\n........................................................................ [ 98%]\n...................................                                      [100%]\n============================== warnings summary ===============================\n<frozen importlib._bootstrap>:488\n  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute\n\n<frozen importlib._bootstrap>:488\n  <frozen importlib._bootstrap>:488: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute\n\ntests/test_warrant_stats.py::test_a_non_finite_update_raises_rather_than_asserting\n  C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-ivi7l8tq\\controlplane\\controlplane\\validation\\warrant_stats.py:193: RuntimeWarning: divide by zero encountered in log1p\n    self._logw += np.log1p(self.lams * (x - self.p0))\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\nsys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute"
     },
     {
       "name": "make verify",
@@ -307,7 +307,7 @@
         "scripts/verify.py"
       ],
       "returncode": 0,
-      "duration_seconds": 65.77,
+      "duration_seconds": 30.48,
       "ok": true,
       "skipped": false,
       "detail": "",
@@ -345,7 +345,8 @@
     }
   ],
   "notes": [
-    "611 tracked files in the clone; no gitignored caches, databases or long-context eval sets came with it.",
-    "verify tiers that ran in the clone: claim table vs artifacts, metrics recomputed from frozen scores. Skipped: scores re-derived from activations."
+    "637 tracked files in the clone; no gitignored caches, databases or long-context eval sets came with it.",
+    "verify tiers that ran in the clone: claim table vs artifacts, metrics recomputed from frozen scores. Skipped: scores re-derived from activations.",
+    "could not fully remove the clone at C:\\Users\\LawLight\\AppData\\Local\\Temp\\controlplane-clean-clone-ivi7l8tq: PermissionError: [WinError 5] Access is denied: 'C:\\\\Users\\\\LawLight\\\\AppData\\\\Local\\\\Temp\\\\controlplane-clean-clone-ivi7l8tq\\\\controlplane\\\\.git\\\\objects\\\\00\\\\725a8d59f22e06d24e9f493800ee391a849207'. Not a gate failure -- the checks above all ran -- but it leaves ~26 MB behind, and earlier runs did so silently."
   ]
 }
