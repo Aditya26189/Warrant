@@ -134,6 +134,7 @@
 | [PHASE-48.md](../reports/PHASE-48.md) | Which full-suite failures exposed evidence-preservation defects, how they were repaired, and what the final gate established |
 | [PHASE-49.md](../reports/PHASE-49.md) | What official incumbent documentation says about review, labels, exports and evaluation, and which buyer comparison remains unobserved |
 | [PHASE-50.md](../reports/PHASE-50.md) | What the full tracked-file clean-clone gate ran, what passed or skipped, and what Windows cleanup left behind |
+| [PHASE-51.md](../reports/PHASE-51.md) | How the Windows clone cleanup failure was reproduced and repaired, and what the later full gate established |
 | [CLAIM-AUDIT-2026-10-07.md](../reports/CLAIM-AUDIT-2026-10-07.md) | Current claim-by-claim artifact, market-overlap and venture-gap audit |
 | [AI-OPPORTUNITIES-2026-10.md](../reports/AI-OPPORTUNITIES-2026-10.md) | Which current competition, founder and incumbent signals shaped the October hypothesis, and which claims remain unverified? |
 | [INCUMBENT-PACKET-COMPARISON-2026-10.md](../reports/INCUMBENT-PACKET-COMPARISON-2026-10.md) | What evaluation exports and review workflows incumbents document, and what must be checked in a real packet? |

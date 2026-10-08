@@ -29,6 +29,10 @@ records the week-one integrated local full-suite gate and its human-trial limit.
 the prepared-handoff and failed-gate artifact preservation repairs.
 [Phase 50](../reports/PHASE-50.md) records the subsequent tracked-file clone
 gate and its explicit activation-replay and Windows-cleanup limits.
+[Phase 51](../reports/PHASE-51.md) records the Windows cleanup repair and a
+later passing tracked-file clone without a cleanup warning. The latest
+[clean-clone artifact](../results/clean_clone.json) names the exact source
+commit it tested; later publication commits are not silently included.
 
 **Current status: a usable local evaluation tool and a substantial research
 harness, not a deployed enterprise service or a validated startup.** A user can
