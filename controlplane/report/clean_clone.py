@@ -33,6 +33,7 @@ from itertools import count
 import os
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -310,12 +311,14 @@ def _remove_clone(path: Path, attempts: int = 3) -> str:
 
     ``shutil.rmtree(ignore_errors=True)`` silently leaves the tree behind when
     Windows still holds a handle on a file -- git's pack files, most often,
-    just after a subprocess exits. Two earlier gate runs each left 26 MB in the
-    temp directory and reported nothing.
+    just after a subprocess exits. Read-only Git objects can also block the
+    final deletion. Two earlier gate runs each left 26 MB in the temp directory
+    and reported nothing.
 
-    Retries briefly, then returns what went wrong so the caller can put it in
-    the report. A cleanup that reports success without completing is a small
-    version of exactly what this gate exists to catch.
+    Retries briefly, clears Windows write protection only after a permission
+    failure on the final attempt, then returns any remaining error so the
+    caller can report it. A cleanup that reports success without completing is
+    a small version of exactly what this gate exists to catch.
 
     Returns:
         An empty string on success, or a short description of the failure.
@@ -327,8 +330,17 @@ def _remove_clone(path: Path, attempts: int = 3) -> str:
             return ""
         last = f"still present after attempt {attempt + 1}"
         time.sleep(0.5)
+
+    def retry_readonly(func, name, error_info) -> None:
+        """Clear Windows write protection only after a permission failure."""
+        failure = error_info[1]
+        if os.name != "nt" or not isinstance(failure, PermissionError):
+            raise failure
+        os.chmod(name, os.stat(name).st_mode | stat.S_IWRITE)
+        func(name)
+
     try:
-        shutil.rmtree(path)
+        shutil.rmtree(path, onerror=retry_readonly)
     except OSError as exc:
         return f"{type(exc).__name__}: {exc}"
     return "" if not path.exists() else last
