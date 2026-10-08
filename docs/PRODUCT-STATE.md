@@ -33,6 +33,9 @@ gate and its explicit activation-replay and Windows-cleanup limits.
 later passing tracked-file clone without a cleanup warning. The latest
 [clean-clone artifact](../results/clean_clone.json) names the exact source
 commit it tested; later publication commits are not silently included.
+[Phase 53](../reports/PHASE-53.md) records the later full tracked-file gate
+whose retained pytest tail includes its actual executed pass count. Its
+activation re-derivation tier remained skipped.
 
 **Current status: a usable local evaluation tool and a substantial research
 harness, not a deployed enterprise service or a validated startup.** A user can
