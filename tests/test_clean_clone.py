@@ -13,6 +13,8 @@ where a gate goes wrong quietly: reporting a pass for a step that never ran.
 from __future__ import annotations
 
 import json
+import os
+import stat
 import subprocess
 from pathlib import Path
 
@@ -385,6 +387,43 @@ def test_a_failed_cleanup_is_reported_rather_than_swallowed(tmp_path: Path) -> N
     assert not victim.exists()
 
     assert _remove_clone(tmp_path / "never-existed") == ""
+
+
+@pytest.mark.skipif(os.name != "nt", reason="Windows read-only deletion semantics")
+def test_windows_read_only_clone_file_is_removed(tmp_path: Path) -> None:
+    """A read-only Git object must not strand the gate's temporary clone."""
+    from controlplane.report.clean_clone import _remove_clone
+
+    clone = tmp_path / "clone"
+    clone.mkdir()
+    obj = clone / "object"
+    obj.write_text("retained", encoding="utf-8")
+    os.chmod(obj, stat.S_IREAD)
+    try:
+        assert _remove_clone(clone, attempts=1) == ""
+        assert not clone.exists()
+    finally:
+        if obj.exists():
+            os.chmod(obj, stat.S_IWRITE | stat.S_IREAD)
+
+
+def test_persistent_clone_cleanup_error_remains_visible(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """An external lock must still be reported after the bounded retries."""
+    from controlplane.report import clean_clone
+
+    clone = tmp_path / "clone"
+    clone.mkdir()
+
+    def locked(_path: Path, *, ignore_errors: bool = False, onerror=None) -> None:
+        if not ignore_errors:
+            raise PermissionError("still locked")
+
+    monkeypatch.setattr(clean_clone.shutil, "rmtree", locked)
+    monkeypatch.setattr(clean_clone.time, "sleep", lambda _seconds: None)
+    assert "PermissionError: still locked" in clean_clone._remove_clone(clone)
+    assert clone.exists()
 
 
 # ------------------------------------------------------ DECISIONS 200: one named state
