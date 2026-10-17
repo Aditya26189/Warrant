@@ -5,6 +5,12 @@ candidate search snapshot retained, paper drawn, or pilot outcome extracted.**
 Prior-art work is in `PRIOR_ART_GAP.md`; remaining access uncertainty is explicit.
 The choices below need human approval before B1 in a new authorized turn.
 
+**Amendment status:** the user's 17 October decision is **AMEND — CONDITIONAL
+APPROVAL, NOT EXECUTION APPROVAL**. This revised draft implements the requested
+clarifications; the frame remains unapproved for execution. Neither the
+acceptable 3/10 and 2/10 feasibility heuristics nor completion of these edits
+authorizes retrieval for selection, sampling, extraction or another stage.
+
 ## Question, domain and bibliographic boundary
 
 Can explicit population-level benign-FPR assurance propositions be traced to
@@ -104,6 +110,14 @@ Known exposed works below remain outside the ten-paper denominator, with
 `known_prior_art_sentinel=true`, regardless of whether they would be eligible.
 Human must approve/amend the sentinel inventory before frame lock.
 
+Lock the named sentinel inventory before retrieval/screening. Newly encountered
+headline numbers in a screening abstract must be logged and ignored for the
+inclusion/exclusion decision; they do not automatically turn that paper into
+an excluded sentinel. Distinguish those incidental screening exposures from a
+recognized **earlier** project exposure. Log any correction to the prior-exposure
+inventory with its reason before selection. Never exclude a paper merely
+because its abstract reports an outcome.
+
 B1 must **save raw source responses before deterministic selection**: complete
 retrieved IDs/metadata, source/query/offset, response/error status, actual UTC
 retrieval time, bibliographic cutoff, source totals and caps. Preserve exact
@@ -114,9 +128,14 @@ The frozen snapshot defines the frame; a future re-query does not reproduce it
 by assumption. A local commit is not a trusted timestamp or preregistration.
 
 Before selection, check PDF availability through bibliographic links without
-reading outcome tables. **Keep inaccessible selected papers; no replacement**
-and no outcome-driven re-draw. Record `INACCESSIBLE` with attempted sources and
-timestamps; preserve them in the ten-paper denominator. If fewer than ten
+reading outcome tables. **PDF accessibility is not an eligibility criterion.**
+Keep every inaccessible candidate in the raw/screening records and retain
+otherwise eligible inaccessible works in the eligible-ID frame. Record
+`INACCESSIBLE`, attempted sources, timestamps and the bibliographic eligibility
+decision separately. **Keep inaccessible selected papers; no replacement**
+and no outcome-driven re-draw. Preserve them in the ten-paper denominator;
+never substitute the number of accessible or completely reported papers.
+If fewer than ten
 eligible unexposed works exist, stop as `FRAME_INSUFFICIENT`; do not pad it with
 sentinels. Access failures may make human verification infeasible and force STOP.
 
@@ -227,6 +246,19 @@ definition, comparator and selection protocol before binomial interpretation.
 Multiple claims/evaluation populations use separate source-linked rows, but a
 paper counts at most once toward each feasibility gate.
 
+Claim classification must preserve all six distinctions: **NONE** is an
+observed absence of a relevant claim; **DESCRIPTIVE** states an observed FPR;
+**OPERATING_TARGET** names a nominal threshold target; **ASSURANCE** explicitly
+asserts statistical/population confidence; **FORMAL_GUARANTEE** invokes a
+theorem-based guarantee; **AMBIGUOUS** records unclear wording. Where source
+access prevents establishing a claim type, keep it unknown (blank/null with
+`INACCESSIBLE`), not NONE. PDF-access status is separate from any claim that
+can be established from an accessible official version; abstract-only wording
+must remain provisional until its full context can be checked.
+Neither a title promising safety nor a nominal target silently becomes an
+ASSURANCE. Classify the proposition separately from whether its evidence
+supports it, and preserve uncertain classifications for human adjudication.
+
 A descriptive 0/111 is not an erroneous guarantee; U95>B does not prove FPR>B.
 CP applied after adaptive threshold selection is not automatically certification.
 Independent groups may be fewer than rows. A different valid theorem/estimator
@@ -239,6 +271,13 @@ with reconstructable relevant benign n **and observed k**, and at least **2 of
 10** with explicit ASSURANCE or FORMAL_GUARANTEE propositions. Otherwise
 `STOP_ASSURANCE_HEADLINE`. Two OPERATING_TARGET papers alone do not pass.
 These are proposed feasibility heuristics, not significance tests.
+
+Compute the two paper counts separately, each with the fixed denominator ten
+and each paper counted once. Only explicit **ASSURANCE** or **FORMAL_GUARANTEE**
+claims enter the assurance count; NONE, DESCRIPTIVE, OPERATING_TARGET and
+AMBIGUOUS never do. Unknown/inaccessible evidence cannot be counted as a
+verified assurance or reconstructable n/k pair. These counts describe this
+pilot's feasibility, not prevalence in the research literature.
 
 `GO_DESIGN_ONLY` to design a larger independently verified study requires ALL:
 the above counts; a question demonstrably distinct from prior art; at least one
@@ -253,6 +292,17 @@ numerator/denominator/wording inconsistency. A pattern needs a specified
 evaluation-design mechanism with corroborating source-backed examples.
 Descriptive zero events, U>B, missing denominators, unclear threshold protocol,
 or a different valid estimator are not anomalies. Use neutral language.
+
+Before labeling any substantive discrepancy, retain this source-specific
+review record: (1) the exact version and proposition locator with a short quote
+or precise paraphrase; (2) its estimand, population and decision/group unit;
+(3) the threshold-selection procedure and required assumptions; (4) the
+statistical method actually asserted; and (5) a reproducible contradiction
+under **that method's own assumptions**, or an explicit internal count/wording
+inconsistency. The human must check the source, interpretation and calculation.
+Missing intervals alone, an inconclusive upper CP bound, descriptive 0/111,
+or an unknown protocol cannot satisfy this record. If an assumption cannot be
+established, record the uncertainty rather than infer an erroneous assurance.
 
 Otherwise use `STOP_ASSURANCE_HEADLINE`, `CONDITIONAL_NEW_QUESTION`, or
 `AWAITING_HUMAN_VERIFICATION`. A target/reporting-quality pivot needs a newly
@@ -283,6 +333,11 @@ finding needs human source/method checking before any public use.
   append-only adjudication log. If human results were visible to Codex before
   its extraction commit, mark independence **COMPROMISED**. No human check means
   **AWAITING_HUMAN_VERIFICATION**, never PASS.
+
+Do not upload, link, paste or expose the human's completed sheet to any
+Codex-readable surface before the independently completed B2a extraction is
+committed. B1's six-paper human worksheet remains blank apart from ID/version
+metadata; no Codex numerical outcomes or claim labels accompany it.
 
 Stage A ends here. Approval of a draft is not a human extraction, completed
 pilot, prospective scientific result, runtime-fix approval or paper submission.
