@@ -10,6 +10,34 @@ Production source tested: `b7de189a62943b18d512b58df606621270b06c6b`.
 New tests: `tests/test_certify_stage_a.py`. All source references below refer
 to that production SHA; subsequent scoped commits change only docs/tests.
 
+## Review entry point after the AMEND decision
+
+**This is the completed native source audit**, first delivered in Stage A at
+`a7ecb5ae3016e2a58fc17912f5695c6c615ffbb2`. The user reports seeing an earlier
+blocked-audit document; its location/content has not been verified here.
+Review this exact path/commit; no earlier record was silently overwritten.
+The production source remains
+`b7de189a62943b18d512b58df606621270b06c6b`; the unchanged
+[regression tests](../../../tests/test_certify_stage_a.py) were introduced in
+`c0ca9c1968132f79347b45c0aed005ebe13be46c`. The audit and tests are available
+at these exact paths in the isolated worktree named in REPO_SNAPSHOT.md.
+
+The user's 17 October AMEND decision prioritizes this finding for independent
+investigation, but **does not authorize a production correction**. To reproduce
+from the worktree, run:
+
+```text
+python -m pytest tests/test_certify_stage_a.py -o addopts= -q -p no:cacheprovider
+```
+
+The specific counterexample is
+`test_returned_adaptive_upper_bound_currently_undercovers_with_ties` (line 200).
+It checks the native pivot/count branches and uses an independent Decimal
+binomial oracle. The amendment pass reran all 29 cases on clean delivery
+commit `a7ecb5a`: **29 passed in 3.24s, exit 0**; Ruff also exited 0. This is
+another agent execution, not the user's independent reproduction or a
+statistician's review. No test, estimator or historical certificate changed.
+
 ## Actual procedure and boundary
 
 | Issue | Source / actual semantics | Status |
@@ -123,6 +151,43 @@ possible selected population FPR here is 0, q1 or q2, all below B. This example
 therefore falsifies the general returned-U coverage interpretation while
 preserving the distinction from budget failure. It is a synthetic audit
 counterexample, not an empirical result about guardrail papers or traffic.
+
+### Exact witness preserved for independent investigation
+
+The complete three-point distribution is:
+
+| Score | Probability |
+| --- | ---: |
+| 0 | .95344 |
+| 1 | .017046 |
+| 2 | .029514 |
+
+These masses sum to one. If M1<=1, the pivot is 0 and returned U is U0 or
+U1, both below q1. If M1>=2 and M2=0, the pivot is 1, returned U is U0,
+and q2>U0. When M1>=2 and M2=1, the pivot is 1 but returned U1 covers q2;
+when M2>=2, the pivot is 2 and population FPR is zero. The two failure events
+are disjoint and exhaust noncoverage. Their exact finite-sample probability is
+calculated without Monte Carlo:
+
+```text
+python -c "from decimal import Decimal,getcontext; getcontext().prec=60; q1=Decimal('0.04656'); q2=Decimal('0.029514'); print(100*q2*(1-q1)**99+(1-q2)**100)"
+```
+
+The amendment pass independently executed this Decimal expression at clean
+`a7ecb5a`, with exit 0, reproducing
+`0.0763021151588606840623422782651608181692763432159496127634294`.
+The maximum selected population FPR is .04656, below B=.05; hence this
+particular distribution cannot falsify the requested-budget guarantee. It
+does falsify the stronger interpretation of the returned numerical U. The
+general fixed-budget guarantee still requires the assumptions and independent
+code/proof review described above.
+
+**Priority before any behavioral repair:** have an independent reviewer
+reproduce this exact witness from the cited source/tests, distinguish the two
+coverage propositions, and review every consumer of the returned bound,
+including frontier and retained-record replay. Then choose and approve a
+versioned correction/disclosure policy. The options below remain proposals;
+this amendment chooses no replacement estimator and rewrites no old record.
 
 ## Other limits and proposed patches (not implemented)
 
