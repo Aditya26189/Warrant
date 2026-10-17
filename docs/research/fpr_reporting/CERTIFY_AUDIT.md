@@ -14,7 +14,7 @@ to that production SHA; subsequent scoped commits change only docs/tests.
 
 | Issue | Source / actual semantics | Status |
 | --- | --- | --- |
-| Entry point | `pyproject.toml:28`, `controlplane/cli.py:482`; `_certify` loads scored input then calls `certify_items` at 597. No internal train/calibration split. | PASS (traced) |
+| Entry point | `pyproject.toml:25`, `controlplane/cli.py:482`; `_certify` loads scored input then calls `certify_items` at 597. No internal train/calibration split. | PASS (traced) |
 | Scores/labels | `intake/contract.py:10–22,246–283`: higher score means positive; label 1 means detector SHOULD fire, 0 means clean. Any finite score range. No model or label correctness check. | PASS contract; UNKNOWN truth |
 | Negative-only selection | `intake/certify.py:195–224` → `validation/warrant_stats.py:72–139`; positives do not choose the threshold. | PASS |
 | Comparator / equality | Native cuts are `nextafter(sort(unique(unit_max)), +inf)` at `warrant_stats.py:134`; counts and runtime metrics use `score >= threshold` (136, `certify.py:330,380`). For finite float64 scores this is strict `score > observed pivot`. A new score equal to the actual successor threshold fires; a score equal to the pivot does not. | PASS |
@@ -24,7 +24,7 @@ to that production SHA; subsequent scoped commits change only docs/tests.
 | Usefulness | Native `certify_items` returns VALID solely after FPR certification (`certify.py:345–384`). Recall/precision/lift are measured, with no native recall floor or usefulness veto. A no-fire threshold may issue. Historical research `issuance.py` is a different procedure. | NOT_APPLICABLE recall gate |
 | Groups | All observed group sizes must be equal (`certify.py:215–221`); negatives alone then form cluster maxima, whose sizes must also match (`warrant_stats.py:104–120`). A group fires if any negative member fires. Mixed-label groups can pass if both size conditions hold. | PASS input characterization; UNKNOWN population assumptions |
 | Duplicates | File intake rejects repeated IDs (`contract.py:398–406`), blank groups and malformed columns. Identical observations with distinct IDs are accepted; there is no semantic deduplication or independence test. | PASS explicit rejection; UNKNOWN independence |
-| Multiple budgets | Helper divides alpha by `max(1,n_profiles)` (`warrant_stats.py:101`); native CLI single budget passes no profile count. Frontier splits family alpha over its fixed grid (`intake/frontier.py:120–121`); `--from-frontier` replays full default grid and binds levels/digests (`cli.py:526–603`). | PASS scoped tests |
+| Multiple budgets | Helper divides alpha by `max(1,n_profiles)` (`warrant_stats.py:101`); native CLI single budget passes no profile count. Frontier splits family alpha over its fixed grid (`intake/frontier.py:126–130`); `--from-frontier` replays full default grid and binds levels/digests (`cli.py:526–603`). | PASS scoped tests |
 | Frontier output units | Certificate `false_positives_at_threshold` is group k when grouped (`certify.py:378`); frontier `counts_exact.false_positives` counts negative rows (`frontier.py:170`) although payload `unit` names negative clusters (86). Both counts are exact; combining row k with group n to reconstruct CP is invalid. | UNKNOWN clarity; documented distinction |
 | Labels | Primary label determines status/cut/U; `label_2`, disputes and sensitivity do not change those (`certify.py:325–343`). Agreement cannot prove truth. | PASS behavior; UNKNOWN label validity |
 
@@ -66,7 +66,7 @@ The named near-budget n=600/k=21 case is correctly rejected.
 This is established order-statistic/NP classification theory, not a new
 Warrant algorithm. [Tong, Feng and Li, *Science Advances* (2018)](https://doi.org/10.1126/sciadv.aao1659),
 [primary manuscript](https://arxiv.org/pdf/1608.03109), Proposition 1
-(PDF p.7), rank rule Eq.(2), and supplementary proof (pp.18–19), were inspected
+(PDF p.7), rank rule Eq.(2), and supplementary proof (PDF p.19), were inspected
 as SELECTED_SECTIONS. The journal identity is confirmed by its
 [bibliographic record](https://pubmed.ncbi.nlm.nih.gov/29423442/).
 The PMC full-text page was CAPTCHA-blocked; the arXiv PDF was accessible.
@@ -166,14 +166,14 @@ required before either behavior/reporting change; Stage A implements neither.
   clean snapshot commit `4efc31d`; no output artifacts written; `--ties` NOT_RUN.
 - New deterministic tests: `python -m pytest tests/test_certify_stage_a.py
   -o addopts= -q -p no:cacheprovider` — 29 passed, exit 0 (delegated execution).
-  Root rerun and existing-suite result are recorded in the closing addendum.
+  Root independently reran the same command: 29 passed in 3.84s, exit 0.
 - `python -m ruff check tests/test_certify_stage_a.py` — exit 0.
 - Initial ten-module pytest attempt (172 collected cases): exit 1; numerous
   fixture setup errors from sandbox WinError 5 on pytest's default temporary
   directory. A one-module maxfail diagnostic also exited 1. Explicit sandboxed
   basetemp still failed at temporary-directory access/session cleanup. Those
   runs are **not passing suites**. Approved escalated rerun uses a new dedicated
-  workspace basetemp with cache disabled; final result is appended below.
+  workspace basetemp with cache disabled; final result is recorded below.
 - Full repository suite, installed wheel, Python 3.10, GPU, model inference,
   frozen-artifact replay and Monte Carlo: NOT_RUN; not needed to characterize
   these source-level changes and not substitutes for statistical review.
@@ -181,3 +181,27 @@ required before either behavior/reporting change; Stage A implements neither.
 Tests characterize known defects with passing assertions about current
 behavior. Their pass status does **not** mark those findings PASS. No production
 statistical behavior, historical decision or frozen result was modified.
+
+### Closing check result
+
+`python -m pytest -q -p no:cacheprovider
+--basetemp=C:/Users/LawLight/Desktop/accenture/.venv/fpr-stage-a-tmp-20261017-02
+--tb=short tests/test_warrant_stats.py tests/test_intake.py
+tests/test_intake_ambiguity.py tests/test_frontier.py tests/test_frontier_groups.py
+tests/test_certify_from_frontier.py tests/test_certify_evidence.py
+tests/test_certify_verification.py tests/test_label_sensitivity.py
+tests/test_grouped_metric_boundary.py` — **PASS, exit 0, all 172 cases completed**.
+One expected fault-injection warning: divide by zero in monitor `log1p`.
+The doubled quiet setting suppresses its numerical summary; a separate
+`--collect-only -q -o addopts= -p no:cacheprovider` on those same ten modules
+confirmed 172 collected, exit 0. This collection check is supplementary to the
+completed execution, not a replacement. New tests were executed separately:
+**201 passing cases in total, no skips or xfails in these scoped runs**.
+
+The existing-suite process began during doc/test editing at source revision
+`4efc31d` and completed after `c0ca9c1`; the explicitly selected production
+modules and ten existing test files were unchanged throughout. The new module
+was rerun before `c0ca9c1` with only nonbehavioral additions present. These are
+development test runs, not scientific artifact-generation provenance. Empty
+cache directories left by sandbox failures were inspected, verified under this
+worktree, and removed; no user files or frozen assets were deleted.
