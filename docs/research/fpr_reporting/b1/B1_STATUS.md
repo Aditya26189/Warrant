@@ -118,3 +118,13 @@ local links, small-file limits, whitespace, and an empty diff over
 production/tests/frozen paths. Commit hashes are reported at delivery. No scientific generator,
 GPU run, full-suite rerun, remote issue, push, merge or publication is part of
 this blocked preflight.
+
+
+## Dated addendum: 17 October 2026, subsequent authorization
+
+The user authorized A01 to exclude both potentially distinct StepGuard
+identities prospectively. The historical identity remains unresolved, but that
+selection blocker is resolved under the explicit amendment. See
+[B1_RUN_STATUS.md](B1_RUN_STATUS.md) for the active original-plus-A01 protocol,
+actual retrieval records and the new OpenReview source-cap FRAME_BLOCKED result.
+The earlier preflight narrative above is retained as historical context.

@@ -1,0 +1,54 @@
+{
+  "B2a": "NOT_AUTHORIZED",
+  "B2b": "NOT_AUTHORIZED",
+  "FPR_001": "OPEN_UNCHANGED",
+  "amendment_commit": "2f20e43b7e2b9e5f694157b0f9babe45dcdd9042",
+  "amendment_sha256": "a74caf940b5f9c0aa2b73435483bb586480a46539fd869b65bd8bfde001b6efb",
+  "approved_frame_sha256": "74e109f800fb40f9d8fe5da61c62baf826b9980357bc87ae4f506fab64d9e6ef",
+  "canonical_metadata_union": "NOT_PRODUCED_INCOMPLETE_FRAME",
+  "created_utc": "2026-10-17T14:33:39.684161+00:00",
+  "deduplication": "NOT_RUN",
+  "eligibility_screening": "NOT_RUN",
+  "eligible_frame_freeze": "NOT_RUN",
+  "human_sheet": "NOT_PRODUCED_NO_SELECTION",
+  "inaccessible_paper_records": "NOT_RUN_NO_CANDIDATE_SCREENING_OR_PDF_ACCESS_ATTEMPTS",
+  "outcome_extraction": "NOT_RUN",
+  "partial_id_index_sha256": "afbbafaf49e959a23857e10728420c390eee66b394081084ca0115d405c7ef83",
+  "production_changes": false,
+  "protocol_lock_sha256": "7a3c73d465721fb2ea177c53bdc936e614ec5b504c6fb1fc0ef65ff7acc86f42",
+  "push_merge_publication": false,
+  "reason": "OPENREVIEW_TITLE_SOURCE_TOTAL_8798_EXCEEDS_PRESPECIFIED_500_CAP",
+  "required_decision": "New prospective retrieval-frame amendment or stop; do not silently change the query, caps, indexes or selection rules",
+  "retrieval_manifests": {
+    "retrieval-01/RETRIEVAL_MANIFEST.json": "5ec45040c7bbf0a7f5cf7152e01b072050d2283cd6e7e53b407723d793e695e7",
+    "retrieval-02/RETRIEVAL_MANIFEST.json": "ac84eada2f435e11e4e49f4c004e2cb0d4c7ff19b08cb285411ba13283f0f49d"
+  },
+  "sentinel_amendment": "COMMITTED_A01_BLOCKER_RESOLVED_WITHOUT_IDENTITY_MAPPING",
+  "sentinel_inventory_sha256": "dafd88a2eb9e904054dd4dd0eeb579e9e8acabae8bc7062d49ca0355855ed69f",
+  "six_human_assignments": "NOT_RUN",
+  "source_coverage": {
+    "acl": {
+      "bytes": 42574037,
+      "local_predicate_and_date_filter": "NOT_RUN",
+      "retrieval": "COMPLETE_RAW_LOSSLESS_CHUNKS"
+    },
+    "arxiv": {
+      "retrieval": "COMPLETE_RAW",
+      "returned_records": 395,
+      "screening": "NOT_RUN"
+    },
+    "openreview-abstract": {
+      "retrieval": "NOT_RUN_STOP_RULE"
+    },
+    "openreview-title": {
+      "approved_cap": 500,
+      "declared_source_total": 8798,
+      "http_status": 200,
+      "retrieval": "PARTIAL_STOPPED_ON_DECLARED_TOTAL",
+      "returned_records": 100
+    }
+  },
+  "stage": "B1",
+  "status": "FRAME_BLOCKED",
+  "ten_paper_selection": "NOT_RUN"
+}
