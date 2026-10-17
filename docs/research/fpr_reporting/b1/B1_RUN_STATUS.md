@@ -121,3 +121,11 @@ query/cap/index amendment, or stop the pilot. No other original rule was relaxed
 A later amendment must preserve this partial snapshot and explain the new
 retrieval mechanics before additional source queries or selection. No outcome
 results or completed human extraction sheet are needed to make that decision.
+
+
+## Dated addendum: subsequent A02 authorization
+
+The user approved arXiv plus ACL discovery only, with historical OpenReview
+data EXCLUDED_FROM_SELECTION_FRAME. See [B1_A02_STATUS.md](B1_A02_STATUS.md)
+for the new prospective lock, complete two-index metadata/crosswalk and current
+domain-adjudication stop. The original cap-failure narrative above is retained.
