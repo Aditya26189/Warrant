@@ -48,15 +48,67 @@
         "Sandbox HTTP metadata request failed with WinError 10061",
         "Approved unsandboxed read-only metadata request returned HTTP 403"
       ],
+      "alias_relationship": "POTENTIAL_ONLY_NOT_CONFIRMED_SAME_WORK",
       "candidate_forum_url": "https://openreview.net/forum?id=2i7xXuNixu",
-      "clarification_needed": "Full bibliographic identity or confirmation that the prior PDF and candidate forum identify the same work; no findings requested",
+      "clarification_needed": "Evidence mapping historical hash PDF to a canonical work, or explicit methodological amendment resolving how this unresolved prior exposure is handled; do not select under current frame",
       "exposure_id": "stepguard-prior-search-result",
+      "local_pdf_metadata_check": {
+        "author_band": "Anonymous ACL submission",
+        "copied_or_staged": false,
+        "date_interpretation": "Embedded PDF metadata only; not verified publication or canonical version date",
+        "hash_caution": "OpenReview URL hash scheme not verified; mismatch does not prove different works or versions",
+        "historical_url_hash_equals_local_sha1": false,
+        "identity_result": "Supports candidate title and anonymous submission; historical URL-to-work mapping remains unverified",
+        "inspection_scope": "File hashes, selected PDF metadata and first-page title band only; no abstract/results/tables inspected",
+        "path": "C:/Users/LawLight/Desktop/accenture/17070_StepGuard_Step_Level_Dat.pdf",
+        "pdf_creation_metadata": "D:20260526121255Z",
+        "pdf_modified_metadata": "D:20260526121255Z",
+        "recorded_utc": "2026-10-17T13:46:13.858354+00:00",
+        "sha1": "afac816b30b631830330264ea44d1cbb3c619ca9",
+        "sha256": "345659e1fdd5b405bf9f84c818db9ecf47b7b1726b9cd152c7a928161c52208b",
+        "size_bytes": 1204172,
+        "source": "User-added local PDF; read-only bibliographic check",
+        "title_band": "StepGuard: Step-Level Data Synthesis and Balance-Aware Reinforcement Learning for Guardrail"
+      },
+      "potential_alias_urls": [
+        "https://openreview.net/pdf/27bdc234a1ce9d4f972f85391e2e1d1e53681ff1.pdf",
+        "https://openreview.net/forum?id=2i7xXuNixu",
+        "https://openreview.net/pdf?id=2i7xXuNixu"
+      ],
       "prior_event_utc": "2026-10-17T07:57:30.799Z",
       "prior_source_url": "https://openreview.net/pdf/27bdc234a1ce9d4f972f85391e2e1d1e53681ff1.pdf",
       "status": "UNRESOLVED_IDENTITY_MAPPING",
-      "title_prefix": "StepGuard: Step-Level Data Synthesis and Balance-Aware Reinforcement"
+      "title_prefix": "StepGuard: Step-Level Data Synthesis and Balance-Aware Reinforcement",
+      "user_pasted_forum_metadata": {
+        "additional_prior_exposure": "User pasted abstract containing findings; no outcome values or claim classifications copied into inventory or pilot sheets",
+        "displayed_modified_date": "29 Sept 2026",
+        "displayed_submission_date": "26 May 2026",
+        "historical_pdf_identity_mapping": "NOT_ESTABLISHED_BY_PASTED_PAGE",
+        "named_authors": "NOT_SUPPLIED_IN_PASTED_PAGE",
+        "publication_or_acceptance_status": "NOT_ESTABLISHED_BY_PASTED_SUBMISSION_PAGE",
+        "recorded_utc": "2026-10-17T13:45:15.840249+00:00",
+        "source": "Subsequent user-pasted OpenReview page text; not independently retrieved by Codex",
+        "submission_number": "17070",
+        "title": "StepGuard: Step-Level Data Synthesis and Balance-Aware Reinforcement Learning for Guardrail",
+        "venue_label": "ACL ARR 2026 May Submission"
+      },
+      "user_reported_bibliography": {
+        "authors": "Anonymous; names not publicly verified",
+        "canonical_forum_url": "https://openreview.net/forum?id=2i7xXuNixu",
+        "canonical_pdf_url": "https://openreview.net/pdf?id=2i7xXuNixu",
+        "forum_id": "2i7xXuNixu",
+        "historical_pdf_identity_mapping": "User could not establish whether historical hash PDF is the same document",
+        "publication_or_acceptance_status": "UNCONFIRMED",
+        "recorded_utc": "2026-10-17T13:44:35.215431+00:00",
+        "source": "User clarification in current conversation; not independently verified by Codex",
+        "submission_venue": "ACL",
+        "title": "StepGuard: Step-Level Data Synthesis and Balance-Aware Reinforcement Learning for Guardrail",
+        "user_instruction": "Record URLs as potential aliases, identity unresolved; do not assert identity",
+        "user_reported_evidence": "Indexed PDF confirms title and anonymous ACL submission status"
+      }
     }
   ],
+  "updated_utc": "2026-10-17T13:46:13.858354+00:00",
   "work_exclusions": [
     {
       "already_identified_in_stage_a_frame": false,

@@ -54,11 +54,40 @@ metadata API request first hit the sandbox's connection refusal; an approved
 read-only retry returned **HTTP 403**. Those attempts do not verify that the
 old PDF and the candidate forum identify the same work/version family.
 
-The user has been asked for the full citation/canonical identity or confirmation
-of that link mapping. **Bibliographic information only is needed—no findings,
-FPR counts or completed human extraction sheet.** The inventory remains
-INCOMPLETE_DO_NOT_SELECT; no conservative guess is used to reserve a fresh draw.
+The user subsequently supplied the candidate citation: *StepGuard: Step-Level
+Data Synthesis and Balance-Aware Reinforcement Learning for Guardrail*, anonymous
+ACL submission, forum `2i7xXuNixu`; publication/acceptance status unconfirmed.
+This is user-reported bibliographic verification, not independent Codex
+verification. The user could not establish that the historical hash PDF is the
+same document and explicitly instructed that the URLs be recorded as potential
+aliases, with identity unresolved. The inventory now preserves both the
+historical URL and candidate forum/PDF routes without merging their identities.
+
+The inventory remains INCOMPLETE_DO_NOT_SELECT and B1 remains FRAME_BLOCKED.
 The approved rule explicitly requires a stop on unresolved exposure identity.
+Proceeding requires evidence resolving the historical identity or an explicit
+methodological amendment; the supplied citation does not waive the condition.
+The subsequent user-pasted forum page adds ACL ARR 2026 May submission 17070,
+displayed submission date 26 May 2026 and modification date 29 September 2026.
+These are attributed page metadata, not independently retrieved version history
+or acceptance evidence. The pasted abstract also contained findings; this is
+recorded as additional prior exposure without copying outcome values or claim
+classifications into the inventory or any pilot sheet. No completed human
+extraction sheet was supplied. The page does not establish the historical PDF
+mapping, so the unresolved identity and stop condition remain.
+
+A later user-added local PDF, `17070_StepGuard_Step_Level_Dat.pdf`, was inspected
+read-only for file hashes, selected PDF metadata and its first-page title band.
+The title band matches the supplied full title and says "Anonymous ACL
+submission". SHA-256:
+`345659e1fdd5b405bf9f84c818db9ecf47b7b1726b9cd152c7a928161c52208b`.
+Its SHA-1 does not equal the historical URL hash; the OpenReview URL hash scheme
+has not been verified, so this neither establishes the URL mapping nor proves
+different works/versions. Embedded PDF dates are not treated as publication or
+version evidence. No abstract, results or tables were inspected from the PDF;
+the source PDF was neither copied nor staged. Candidate bibliographic metadata
+is better supported, but the historical alias remains unresolved under the
+user's explicit instruction and the approved stop rule.
 
 ## Actions not run
 
