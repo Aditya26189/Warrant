@@ -150,7 +150,7 @@ def main() -> int:
     finally:
         manifest["finished_utc"] = now()
         raw = json.dumps(manifest, indent=2, sort_keys=True) + "\n"
-        (OUT / "RETRIEVAL_MANIFEST.json").write_text(raw, encoding="utf-8")
+        (OUT / "RETRIEVAL_MANIFEST.json").write_text(raw, encoding="utf-8", newline="\n")
     print(json.dumps({k: manifest[k] for k in ("status", "source_git_commit", "started_utc", "finished_utc")}))
     if code:
         print(manifest["blocker"])
