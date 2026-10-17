@@ -1,0 +1,1106 @@
+{
+  "created_utc": "2026-10-17T13:30:39.118602+00:00",
+  "history_artifact_hashes": {
+    "production_docs_SPEC_sha256": "489c8980e5be9822a11f3b312ad5871c9bed42064546cff5411e9a2b1ce63245",
+    "retained_publication_route_source_register_sha256": "456886fbcbaa5294051e707bfc71428bead73c8501ffe9d8294a06a97198680b"
+  },
+  "history_scope": "Available conversation; metadata-only review of relevant local session records dated 16-17 October; historical publication-route source register and repository specification. Not a claim to access every past chat. No private human extraction sheet accessed.",
+  "metadata_lookup_record": {
+    "metadata_only_output_to_agent": true,
+    "purpose": "Prior-exposure identity closure only, not pilot candidate retrieval",
+    "queries": [
+      "MAGE prompt injection guardrail paper arxiv",
+      "Indirect Prompt Injections: Are Firewalls All You Need, or Stronger Benchmarks?",
+      "Strengthening Polymorphic Prompt Assembling",
+      "StepGuard Step-Level Data Synthesis",
+      "Learning to Inject: Automated Prompt Injection via Reinforcement Learning",
+      "Deliberative Alignment Guan arxiv"
+    ],
+    "raw_candidate_search_snapshot": "NOT_CREATED_CANDIDATE_QUERIES_NOT_RUN",
+    "recorded_utc": "2026-10-17T13:33:13.441618+00:00",
+    "request_window_utc": [
+      "2026-10-17T13:20:03Z",
+      "2026-10-17T13:30:39.118602Z"
+    ],
+    "stepguard_metadata_api_status": "HTTP_403_AFTER_READ_ONLY_ESCALATION",
+    "stepguard_metadata_api_url": "https://api2.openreview.net/notes?id=2i7xXuNixu",
+    "timing_precision": "Window only; do not treat as per-request HTTP timestamps"
+  },
+  "nonpaper_or_context_exposures": [
+    {
+      "kind": "repository-search-result; do not infer a corresponding publication identity",
+      "title": "quadrat-ipi-eval",
+      "url": "https://github.com/mihail-gribov/quadrat-ipi-eval"
+    },
+    {
+      "kind": "watermarking context result; outside the proposed input-injection-classifier domain",
+      "title": "ChainMark: Model-Free LLM Watermarking with Closed-Form Calibration",
+      "url": "https://openreview.net/pdf/79be48b2adad58787435f62e76ed0574d9eb224f.pdf"
+    }
+  ],
+  "outcome_extraction_performed": false,
+  "source_git_commit": "f289901c9d4b778b408e4319a2519d6df04ee0c7",
+  "status": "INCOMPLETE_DO_NOT_SELECT",
+  "unresolved_exposures": [
+    {
+      "access_evidence": [
+        "Forum and both PDF endpoints returned browser-verification pages through web tools",
+        "Sandbox HTTP metadata request failed with WinError 10061",
+        "Approved unsandboxed read-only metadata request returned HTTP 403"
+      ],
+      "candidate_forum_url": "https://openreview.net/forum?id=2i7xXuNixu",
+      "clarification_needed": "Full bibliographic identity or confirmation that the prior PDF and candidate forum identify the same work; no findings requested",
+      "exposure_id": "stepguard-prior-search-result",
+      "prior_event_utc": "2026-10-17T07:57:30.799Z",
+      "prior_source_url": "https://openreview.net/pdf/27bdc234a1ce9d4f972f85391e2e1d1e53681ff1.pdf",
+      "status": "UNRESOLVED_IDENTITY_MAPPING",
+      "title_prefix": "StepGuard: Step-Level Data Synthesis and Balance-Aware Reinforcement"
+    }
+  ],
+  "work_exclusions": [
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:54:12.550Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/abs/0805.1569",
+          "title_metadata": "Order Statistics and Probabilistic Robust Control"
+        },
+        {
+          "event_utc": "2026-10-17T07:56:51.562Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://arxiv.org/abs/0805.1569",
+          "title_metadata": "Order Statistics and Probabilistic Robust Control"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/0805.1569"
+      ],
+      "title_or_context_label": "Historical S16: order statistics and robust control",
+      "work_id": "arxiv:0805.1569"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://arxiv.org/abs/0907.3740"
+      ],
+      "title_or_context_label": "Historical S19: empirical Bernstein bounds",
+      "work_id": "arxiv:0907.3740"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:54:12.550Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/abs/1608.03109",
+          "title_metadata": "Neyman-Pearson (NP) classification algorithms and NP receiver operating characteristics (NP-ROC)"
+        },
+        {
+          "event_utc": "2026-10-17T07:54:49.192Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/pdf/1608.03109",
+          "title_metadata": "NP-ROC-092117"
+        },
+        {
+          "event_utc": "2026-10-17T07:56:51.562Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://arxiv.org/abs/1608.03109",
+          "title_metadata": "Neyman-Pearson (NP) classification algorithms and NP receiver operating characteristics (NP-ROC)"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/1608.03109"
+      ],
+      "title_or_context_label": "Neyman-Pearson classification / NP-ROC",
+      "work_id": "arxiv:1608.03109"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://arxiv.org/abs/2110.06177"
+      ],
+      "title_or_context_label": "Historical source-register S1: risk tracking",
+      "work_id": "arxiv:2110.06177"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Additional Stage A search-result exposure recovered from session metadata; conservative sentinel, reading depth not inferred",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:07.883Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://arxiv.org/abs/2402.01822",
+          "title_metadata": "Building Guardrails for Large Language Models"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2402.01822"
+      ],
+      "title_or_context_label": "Building Guardrails for Large Language Models",
+      "work_id": "arxiv:2402.01822"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://arxiv.org/abs/2406.10490"
+      ],
+      "title_or_context_label": "Historical S9: active anytime-valid risk control",
+      "work_id": "arxiv:2406.10490"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Additional Stage A search-result exposure recovered from session metadata; conservative sentinel, reading depth not inferred",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:07.883Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://arxiv.org/abs/2406.12934",
+          "title_metadata": "Current state of LLM Risks and AI Guardrails"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2406.12934"
+      ],
+      "title_or_context_label": "Current state of LLM Risks and AI Guardrails",
+      "work_id": "arxiv:2406.12934"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T08:00:30.369Z",
+          "session_basename": "rollout-2026-10-17T13-19-27-01a148d6-519d-7133-a944-0623d62d1185.jsonl",
+          "source_url": "https://arxiv.org/abs/2407.02551",
+          "title_metadata": "[2407.02551] Breach By A Thousand Leaks: Unsafe Information Leakage in `Safe' AI Responses"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2407.02551"
+      ],
+      "title_or_context_label": "Breach By A Thousand Leaks",
+      "work_id": "arxiv:2407.02551"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://arxiv.org/abs/2408.05817"
+      ],
+      "title_or_context_label": "Historical S4: unknown finite-horizon detection",
+      "work_id": "arxiv:2408.05817"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:59:54.449Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/abs/2411.00640",
+          "title_metadata": "[2411.00640] Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2411.00640"
+      ],
+      "title_or_context_label": "Adding Error Bars to Evals",
+      "work_id": "arxiv:2411.00640"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Additional Stage A search-result exposure recovered from session metadata; conservative sentinel, reading depth not inferred",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:15.023Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://arxiv.org/abs/2411.12946",
+          "title_metadata": "A Flexible Large Language Models Guardrail Development Methodology Applied to Off-Topic Prompt Detection"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2411.12946"
+      ],
+      "title_or_context_label": "A Flexible Large Language Models Guardrail Development Methodology Applied to Off-Topic Prompt Detection",
+      "work_id": "arxiv:2411.12946"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Indirect exposure through the published-result reconstruction in Position Appendix A.5; primary identity matched in this preflight",
+      "source_urls": [
+        "https://arxiv.org/abs/2412.16339"
+      ],
+      "title_or_context_label": "Deliberative Alignment: Reasoning Enables Safer Language Models",
+      "work_id": "arxiv:2412.16339"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:58:37.109Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/abs/2503.01747",
+          "title_metadata": "Position: Don't Use the CLT in LLM Evals With Fewer Than a Few Hundred Datapoints"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:59.622Z",
+          "session_basename": "rollout-2026-10-17T13-19-27-01a148d6-519d-7133-a944-0623d62d1185.jsonl",
+          "source_url": "https://arxiv.org/abs/2503.01747",
+          "title_metadata": "Position: Don't Use the CLT in LLM Evals With Fewer Than a Few Hundred Datapoints"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2503.01747"
+      ],
+      "title_or_context_label": "Do not use the CLT in small LLM evals",
+      "work_id": "arxiv:2503.01747"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:48:44.149Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/abs/2503.02574",
+          "title_metadata": "[2503.02574] LLM-Safety Evaluations Lack Robustness"
+        },
+        {
+          "event_utc": "2026-10-17T07:48:44.149Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/pdf/2503.02574",
+          "title_metadata": "LLM-Safety Evaluations Lack Robustness"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:31.662Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/abs/2503.02574",
+          "title_metadata": "LLM-Safety Evaluations Lack Robustness"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2503.02574"
+      ],
+      "title_or_context_label": "LLM-Safety Evaluations Lack Robustness",
+      "work_id": "arxiv:2503.02574"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://arxiv.org/abs/2505.02299"
+      ],
+      "title_or_context_label": "Historical S12: ASAT",
+      "work_id": "arxiv:2505.02299"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Additional Stage A search-result exposure recovered from session metadata; conservative sentinel, reading depth not inferred",
+      "source_urls": [
+        "https://arxiv.org/abs/2506.05739"
+      ],
+      "title_or_context_label": "To Protect the LLM Agent Against the Prompt Injection Attack with Polymorphic Prompt",
+      "work_id": "arxiv:2506.05739"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Additional Stage A search-result exposure recovered from session metadata; conservative sentinel, reading depth not inferred",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:15.023Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://arxiv.org/abs/2506.10597",
+          "title_metadata": "SoK: Evaluating Jailbreak Guardrails for Large Language Models"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2506.10597"
+      ],
+      "title_or_context_label": "SoK: Evaluating Jailbreak Guardrails for Large Language Models",
+      "work_id": "arxiv:2506.10597"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://arxiv.org/abs/2506.16416"
+      ],
+      "title_or_context_label": "Historical S3: continuous risk violations",
+      "work_id": "arxiv:2506.16416"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A unresolved title now matched to primary bibliographic identity; MAGE full-title anchor recovered from prior session metadata",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T08:00:17.192Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://www.researchgate.net/publication/396291470_Indirect_Prompt_Injections_Are_Firewalls_All_You_Need_or_Stronger_Benchmarks",
+          "title_metadata": "(PDF) Indirect Prompt Injections: Are Firewalls All You Need, or Stronger Benchmarks?"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2510.05244",
+        "https://www.researchgate.net/publication/396291470_Indirect_Prompt_Injections_Are_Firewalls_All_You_Need_or_Stronger_Benchmarks"
+      ],
+      "title_or_context_label": "Indirect Prompt Injections: Are Firewalls All You Need, or Stronger Benchmarks?",
+      "work_id": "arxiv:2510.05244"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Findings encountered in repository docs/SPEC.md during Stage A; source labels preserved, no new outcome extraction",
+      "source_urls": [
+        "https://arxiv.org/abs/2510.09023"
+      ],
+      "title_or_context_label": "The Attacker Moves Second",
+      "work_id": "arxiv:2510.09023"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://arxiv.org/abs/2511.12803"
+      ],
+      "title_or_context_label": "Historical S5: finite-horizon latency",
+      "work_id": "arxiv:2511.12803"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Additional Stage A search-result exposure recovered from session metadata; conservative sentinel, reading depth not inferred",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:15.023Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://arxiv.org/abs/2511.22047",
+          "title_metadata": "Evaluating the Robustness of Large Language Model Safety Guardrails Against Adversarial Attacks"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2511.22047"
+      ],
+      "title_or_context_label": "Evaluating the Robustness of Large Language Model Safety Guardrails Against Adversarial Attacks",
+      "work_id": "arxiv:2511.22047"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://arxiv.org/abs/2602.02229"
+      ],
+      "title_or_context_label": "Historical S11: prediction-powered risk monitoring",
+      "work_id": "arxiv:2602.02229"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Additional Stage A search-result exposure recovered from session metadata; conservative sentinel, reading depth not inferred",
+      "source_urls": [
+        "https://arxiv.org/abs/2602.05746"
+      ],
+      "title_or_context_label": "Learning to Inject: Automated Prompt Injection via Reinforcement Learning",
+      "work_id": "arxiv:2602.05746"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T08:02:27.640Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/abs/2604.17125v3",
+          "title_metadata": "[2604.17125v3] Evaluating a Layered Prompt-Injection Defence for the Model Context Protocol: A Record-Level Audit of Decision Conventions, Corpus Provenance and Reproducibility"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:30.799Z",
+          "session_basename": "rollout-2026-10-17T13-19-45-01a148d6-9649-7621-b70d-2422b03acb47.jsonl",
+          "source_url": "https://arxiv.org/abs/2604.17125",
+          "title_metadata": "CASCADE: A Cascaded Hybrid Defense Architecture for Prompt Injection Detection in MCP-Based Systems"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:57.611Z",
+          "session_basename": "rollout-2026-10-17T13-19-45-01a148d6-9649-7621-b70d-2422b03acb47.jsonl",
+          "source_url": "https://arxiv.org/abs/2604.17125",
+          "title_metadata": "[2604.17125] Evaluating a Layered Prompt-Injection Defence for the Model Context Protocol: A Record-Level Audit of Decision Conventions, Corpus Provenance and Reproducibility"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2604.17125"
+      ],
+      "title_or_context_label": "CASCADE / Evaluating a Layered Prompt-Injection Defence",
+      "work_id": "arxiv:2604.17125"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A unresolved title now matched to primary bibliographic identity; MAGE full-title anchor recovered from prior session metadata",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T08:00:17.192Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://www.researchgate.net/publication/404482677_MAGE_Safeguarding_LLM_Agents_against_Long-Horizon_Threats_via_Shadow_Memory",
+          "title_metadata": "(PDF) MAGE: Safeguarding LLM Agents against Long-Horizon Threats via Shadow Memory"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2605.03228",
+        "https://www.researchgate.net/publication/404482677_MAGE_Safeguarding_LLM_Agents_against_Long-Horizon_Threats_via_Shadow_Memory"
+      ],
+      "title_or_context_label": "Safeguarding LLM Agents against Long-Horizon Threats via Shadow Memory",
+      "work_id": "arxiv:2605.03228"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:12.964Z",
+          "session_basename": "rollout-2026-10-17T13-19-27-01a148d6-519d-7133-a944-0623d62d1185.jsonl",
+          "source_url": "https://arxiv.org/abs/2605.06669",
+          "title_metadata": "[2605.06669] Evaluating Prompt Injection Defenses for Educational LLM Tutors: Security-Usability-Latency Trade-offs"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:22.326Z",
+          "session_basename": "rollout-2026-10-17T13-19-27-01a148d6-519d-7133-a944-0623d62d1185.jsonl",
+          "source_url": "https://arxiv.org/abs/2605.06669",
+          "title_metadata": "[2605.06669] Evaluating Prompt Injection Defenses for Educational LLM Tutors: Security-Usability-Latency Trade-offs"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2605.06669"
+      ],
+      "title_or_context_label": "Educational LLM tutors",
+      "work_id": "arxiv:2605.06669"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T08:02:27.640Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/abs/2605.16282v1",
+          "title_metadata": "[2605.16282v1] Taxonomy and Consistency Analysis of Safety Benchmarks for AI Agents"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:57.611Z",
+          "session_basename": "rollout-2026-10-17T13-19-45-01a148d6-9649-7621-b70d-2422b03acb47.jsonl",
+          "source_url": "https://arxiv.org/abs/2605.16282",
+          "title_metadata": "[2605.16282] Taxonomy and Consistency Analysis of Safety Benchmarks for AI Agents"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2605.16282"
+      ],
+      "title_or_context_label": "Taxonomy and Consistency Analysis of Safety Benchmarks for AI Agents",
+      "work_id": "arxiv:2605.16282"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:58:37.109Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/abs/2605.17986",
+          "title_metadata": "LivePI: More Realistic Benchmarking of Agents Against Indirect Prompt Injectio"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2605.17986"
+      ],
+      "title_or_context_label": "LivePI",
+      "work_id": "arxiv:2605.17986"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A unresolved title now matched to primary bibliographic identity; MAGE full-title anchor recovered from prior session metadata",
+      "source_urls": [
+        "https://arxiv.org/abs/2605.30534"
+      ],
+      "title_or_context_label": "Strengthening Polymorphic Prompt Assembling: Dynamic Separator Generation Against Emerging Prompt Injection Attacks",
+      "work_id": "arxiv:2605.30534"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "source_urls": [
+        "https://arxiv.org/abs/2605.31042"
+      ],
+      "title_or_context_label": "From Prompt Injection to Persistent Control",
+      "work_id": "arxiv:2605.31042"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Additional Stage A search-result exposure recovered from session metadata; conservative sentinel, reading depth not inferred",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:07.883Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://arxiv.org/abs/2605.31073",
+          "title_metadata": "ConsisGuard: Aligning Safety Deliberation with Policy Enforcement in LLM Guardrails"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2605.31073"
+      ],
+      "title_or_context_label": "ConsisGuard: Aligning Safety Deliberation with Policy Enforcement in LLM Guardrails",
+      "work_id": "arxiv:2605.31073"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://arxiv.org/abs/2606.07789"
+      ],
+      "title_or_context_label": "Historical S7: drift evaluation",
+      "work_id": "arxiv:2606.07789"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:58:37.109Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/abs/2606.09315",
+          "title_metadata": "Brain-Prompt Injection: A Route-Safety Audit for BCI-LLM Agents"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2606.09315"
+      ],
+      "title_or_context_label": "Brain-Prompt Injection",
+      "work_id": "arxiv:2606.09315"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:05.451Z",
+          "session_basename": "rollout-2026-10-17T13-19-27-01a148d6-519d-7133-a944-0623d62d1185.jsonl",
+          "source_url": "https://arxiv.org/abs/2606.15153",
+          "title_metadata": "False Sense of Safety in Selective Signal Classification: Auditing Bound Tightness and Exchangeability for Risk Control"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:12.964Z",
+          "session_basename": "rollout-2026-10-17T13-19-27-01a148d6-519d-7133-a944-0623d62d1185.jsonl",
+          "source_url": "https://arxiv.org/abs/2606.15153",
+          "title_metadata": "[2606.15153] False Sense of Safety in Selective Signal Classification: Auditing Bound Tightness and Exchangeability for Risk Control"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2606.15153"
+      ],
+      "title_or_context_label": "False Sense of Safety in Selective Signal Classification",
+      "work_id": "arxiv:2606.15153"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Findings encountered in repository docs/SPEC.md during Stage A; source labels preserved, no new outcome extraction",
+      "source_urls": [
+        "https://arxiv.org/abs/2606.18782"
+      ],
+      "title_or_context_label": "RedactionBench",
+      "work_id": "arxiv:2606.18782"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Findings encountered in repository docs/SPEC.md during Stage A; source labels preserved, no new outcome extraction",
+      "source_urls": [
+        "https://arxiv.org/abs/2606.19881"
+      ],
+      "title_or_context_label": "REDACT",
+      "work_id": "arxiv:2606.19881"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:05.451Z",
+          "session_basename": "rollout-2026-10-17T13-19-27-01a148d6-519d-7133-a944-0623d62d1185.jsonl",
+          "source_url": "https://arxiv.org/abs/2606.30219",
+          "title_metadata": "EvalSafetyGap: A Hybrid Survey and Conceptual Framework for LLM Evaluation-Safety Failures"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:12.964Z",
+          "session_basename": "rollout-2026-10-17T13-19-27-01a148d6-519d-7133-a944-0623d62d1185.jsonl",
+          "source_url": "https://arxiv.org/abs/2606.30219",
+          "title_metadata": "[2606.30219] EvalSafetyGap: A Hybrid Survey and Conceptual Framework for LLM Evaluation-Safety Failures"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2606.30219"
+      ],
+      "title_or_context_label": "EvalSafetyGap",
+      "work_id": "arxiv:2606.30219"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://arxiv.org/abs/2607.02510"
+      ],
+      "title_or_context_label": "Historical S18: online LLM safety monitoring",
+      "work_id": "arxiv:2607.02510"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:58:37.109Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/abs/2607.23999",
+          "title_metadata": "ContainmentBench: Trace-Based Evaluation of Post-Injection Containment in Tool-Using LLM Agents"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2607.23999"
+      ],
+      "title_or_context_label": "ContainmentBench",
+      "work_id": "arxiv:2607.23999"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://arxiv.org/abs/2607.28322"
+      ],
+      "title_or_context_label": "Historical S8: non-partitioned e-detectors",
+      "work_id": "arxiv:2607.28322"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:05.451Z",
+          "session_basename": "rollout-2026-10-17T13-19-27-01a148d6-519d-7133-a944-0623d62d1185.jsonl",
+          "source_url": "https://arxiv.org/abs/2608.21262",
+          "title_metadata": "The Exceedance Design Effect: Effective Sample Size for Thresholds under Clustering"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:12.964Z",
+          "session_basename": "rollout-2026-10-17T13-19-27-01a148d6-519d-7133-a944-0623d62d1185.jsonl",
+          "source_url": "https://arxiv.org/abs/2608.21262",
+          "title_metadata": "[2608.21262] The Exceedance Design Effect: Effective Sample Size for Thresholds under Clustering"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2608.21262"
+      ],
+      "title_or_context_label": "The Exceedance Design Effect",
+      "work_id": "arxiv:2608.21262"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "source_urls": [
+        "https://arxiv.org/abs/2609.14079"
+      ],
+      "title_or_context_label": "SkillSecurer",
+      "work_id": "arxiv:2609.14079"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:15.023Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://arxiv.org/abs/2609.22048",
+          "title_metadata": "Available Guardrails: Certifying Selective Prediction across ML Systems"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:21.823Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://arxiv.org/abs/2609.22048",
+          "title_metadata": "[2609.22048] Available Guardrails: Certifying Selective Prediction across ML Systems"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2609.22048"
+      ],
+      "title_or_context_label": "Available Guardrails",
+      "work_id": "arxiv:2609.22048"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:12.964Z",
+          "session_basename": "rollout-2026-10-17T13-19-27-01a148d6-519d-7133-a944-0623d62d1185.jsonl",
+          "source_url": "https://arxiv.org/abs/2609.33671",
+          "title_metadata": "[2609.33671] COGNIT-Guard: Calibrated Standalone Direct-Decision Guardrails with Heterogeneous CPU-NPU Confidence Cascading under Explicit Latency and False-Positive Constraints"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:22.326Z",
+          "session_basename": "rollout-2026-10-17T13-19-27-01a148d6-519d-7133-a944-0623d62d1185.jsonl",
+          "source_url": "https://arxiv.org/abs/2609.33671",
+          "title_metadata": "[2609.33671] COGNIT-Guard: Calibrated Standalone Direct-Decision Guardrails with Heterogeneous CPU-NPU Confidence Cascading under Explicit Latency and False-Positive Constraints"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2609.33671"
+      ],
+      "title_or_context_label": "COGNIT-Guard",
+      "work_id": "arxiv:2609.33671"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://arxiv.org/abs/2610.04575"
+      ],
+      "title_or_context_label": "Historical S17: operational validity of activation monitors",
+      "work_id": "arxiv:2610.04575"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T08:02:27.640Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://arxiv.org/abs/2610.14365v1",
+          "title_metadata": "[2610.14365v1] ConformalGuard: False-Positive-Controlled Action Gating for LM Classifiers"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:07.883Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://arxiv.org/abs/2610.14365",
+          "title_metadata": "ConformalGuard: False-Positive-Controlled Action Gating for LM Classifiers"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:15.023Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://arxiv.org/abs/2610.14365",
+          "title_metadata": "[2610.14365] ConformalGuard: False-Positive-Controlled Action Gating for LM Classifiers"
+        }
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2610.14365"
+      ],
+      "title_or_context_label": "ConformalGuard",
+      "work_id": "arxiv:2610.14365"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://link.springer.com/article/10.1007/s11009-018-9636-1"
+      ],
+      "title_or_context_label": "Historical S6: beyond average run length",
+      "work_id": "doi:10.1007/s11009-018-9636-1"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:59:54.449Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://www.techscience.com/cmc/v87n1/66084/html",
+          "title_metadata": "CMC | Free Full-Text | Prompt Injection Attacks on Large Language Models: A Survey of Attack Methods, Root Causes, and Defense Strategies"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:59.622Z",
+          "session_basename": "rollout-2026-10-17T13-19-27-01a148d6-519d-7133-a944-0623d62d1185.jsonl",
+          "source_url": "https://www.techscience.com/cmc/v87n1/66084/html",
+          "title_metadata": "CMC | Free Full-Text | Prompt Injection Attacks on Large Language Models: A Survey of Attack Methods, Root Causes, and Defense Strategies"
+        }
+      ],
+      "source_urls": [
+        "https://www.techscience.com/cmc/v87n1/66084/html"
+      ],
+      "title_or_context_label": "Geng et al. prompt-injection survey",
+      "work_id": "doi:10.32604/cmc.2025.074081"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:58:57.157Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://www.mdpi.com/2079-9292/15/16/3700",
+          "title_metadata": "Securing the Prompt Pipeline: A Systematic Review of Defense Mechanisms Against Prompt-Based Attacks in LLM Agents | MDPI"
+        },
+        {
+          "event_utc": "2026-10-17T07:59:49.532Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://www.mdpi.com/2079-9292/15/16/3700",
+          "title_metadata": "Securing the Prompt Pipeline: A Systematic Review of Defense Mechanisms Against Prompt-Based Attacks in LLM Agents | MDPI"
+        }
+      ],
+      "source_urls": [
+        "https://www.mdpi.com/2079-9292/15/16/3700"
+      ],
+      "title_or_context_label": "Securing the Prompt Pipeline",
+      "work_id": "doi:10.3390/electronics15163700"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:30.799Z",
+          "session_basename": "rollout-2026-10-17T13-19-45-01a148d6-9649-7621-b70d-2422b03acb47.jsonl",
+          "source_url": "https://research.pranaymahendrakar.com/p/near-zero-until-someone-tries",
+          "title_metadata": "Near-Zero Until Someone Tries: What a Prompt-Injection Defense Number Measures, Why Static and Adaptive Results Do Not Reconcile, and the Assumption the Out-of-Band Turn Has Not Yet Tested — Pranay Mahendrakar"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:57.611Z",
+          "session_basename": "rollout-2026-10-17T13-19-45-01a148d6-9649-7621-b70d-2422b03acb47.jsonl",
+          "source_url": "https://research.pranaymahendrakar.com/p/near-zero-until-someone-tries",
+          "title_metadata": "Near-Zero Until Someone Tries: What a Prompt-Injection Defense Number Measures, Why Static and Adaptive Results Do Not Reconcile, and the Assumption the Out-of-Band Turn Has Not Yet Tested — Pranay Mahendrakar"
+        }
+      ],
+      "source_urls": [
+        "https://research.pranaymahendrakar.com/p/near-zero-until-someone-tries"
+      ],
+      "title_or_context_label": "Near-Zero Until Someone Tries",
+      "work_id": "doi:10.5281/zenodo.22167308"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "source_urls": [
+        "https://www.medrxiv.org/content/10.64898/2026.06.04.26354950v2"
+      ],
+      "title_or_context_label": "Beyond Injection Detection: Positive-Security Prompt Firewall",
+      "work_id": "medrxiv:10.64898/2026.06.04.26354950"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://proceedings.neurips.cc/paper_files/paper/2024/hash/e9721921b799b6ea98d37f9e77f1a7fe-Abstract-Conference.html"
+      ],
+      "title_or_context_label": "Historical S13: harmful shifts without labels",
+      "work_id": "neurips:2024/e9721921b799b6ea98d37f9e77f1a7fe"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://proceedings.neurips.cc/paper_files/paper/2025/hash/746960ad49ddb47248970a0e1404230c-Abstract-Conference.html"
+      ],
+      "title_or_context_label": "Historical S14: risk monitoring during adaptation",
+      "work_id": "neurips:2025/746960ad49ddb47248970a0e1404230c"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "source_urls": [
+        "https://openreview.net/forum?id=4et1dh8D23"
+      ],
+      "title_or_context_label": "Staying on Task: Defending Against Prompt Injection via Task Consistency",
+      "work_id": "openreview:4et1dh8D23"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://proceedings.mlr.press/v267/csillag25a.html"
+      ],
+      "title_or_context_label": "Historical S10: Prediction-Powered E-Values",
+      "work_id": "pmlr:v267/csillag25a"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Additional Stage A search-result exposure recovered from session metadata; conservative sentinel, reading depth not inferred",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:07.883Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://proceedings.mlr.press/v267/xiang25a.html",
+          "title_metadata": "GuardAgent: Safeguard LLM Agents via Knowledge-Enabled Reasoning"
+        }
+      ],
+      "source_urls": [
+        "https://proceedings.mlr.press/v267/xiang25a.html"
+      ],
+      "title_or_context_label": "GuardAgent: Safeguard LLM Agents via Knowledge-Enabled Reasoning",
+      "work_id": "pmlr:v267/xiang25a"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:07.883Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://www.preprints.org/manuscript/202609.2642",
+          "title_metadata": "Regime-Adaptive Conformal Guardrails for Prompt Injection Attacks Under Distribution Shift[v1] | Preprints.org"
+        },
+        {
+          "event_utc": "2026-10-17T07:57:15.023Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://www.preprints.org/manuscript/202609.2642",
+          "title_metadata": "Regime-Adaptive Conformal Guardrails for Prompt Injection Attacks Under Distribution Shift[v1] | Preprints.org"
+        }
+      ],
+      "source_urls": [
+        "https://www.preprints.org/manuscript/202609.2642"
+      ],
+      "title_or_context_label": "Regime-Adaptive Conformal Guardrails",
+      "work_id": "preprints:202609.2642"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:08.755Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://www.mdpi.com/2076-3417/16/16/7974",
+          "title_metadata": "SecureMCP: Policy-Enforced Defense Against Prompt Injection in LLM-Generated SQL for AIoT Databases | MDPI"
+        }
+      ],
+      "source_urls": [
+        "https://www.mdpi.com/2076-3417/16/16/7974"
+      ],
+      "title_or_context_label": "SecureMCP",
+      "work_id": "publisher:mdpi/applsci/16/16/7974"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:08.755Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://www.mdpi.com/2079-9292/15/11/2242",
+          "title_metadata": "Detecting Prompt Injection Attacks in Generative AI Systems: A Hybrid SIEM and One-Class SVM Framework"
+        },
+        {
+          "event_utc": "2026-10-17T07:58:57.157Z",
+          "session_basename": "rollout-2026-10-17T13-26-51-01a148dd-1582-77c2-a3f8-fad4bde31c52.jsonl",
+          "source_url": "https://www.mdpi.com/2079-9292/15/11/2242",
+          "title_metadata": "Detecting Prompt Injection Attacks in Generative AI Systems: A Hybrid SIEM and One-Class SVM Framework"
+        }
+      ],
+      "source_urls": [
+        "https://www.mdpi.com/2079-9292/15/11/2242"
+      ],
+      "title_or_context_label": "Hybrid SIEM and One-Class SVM detector",
+      "work_id": "publisher:mdpi/electronics/15/11/2242"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:08.755Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://www.mdpi.com/2079-9292/15/16/3554",
+          "title_metadata": "A Privacy-Preserving Middleware Architecture for Detecting Prompt Injection and Sensitive Data Exposure in Large-Language-Model Interactions | MDPI"
+        }
+      ],
+      "source_urls": [
+        "https://www.mdpi.com/2079-9292/15/16/3554"
+      ],
+      "title_or_context_label": "Privacy-Preserving Middleware Architecture",
+      "work_id": "publisher:mdpi/electronics/15/16/3554"
+    },
+    {
+      "already_identified_in_stage_a_frame": true,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Stage A approved frame / prior-art ledger records exposure",
+      "prior_metadata_events": [
+        {
+          "event_utc": "2026-10-17T07:57:08.755Z",
+          "session_basename": "rollout-2026-10-17T13-18-07-01a148d5-1616-7d62-a3e1-b4d78db5b542.jsonl",
+          "source_url": "https://www.mdpi.com/1999-5903/18/7/376",
+          "title_metadata": "PromptSentinel-X: A Leakage-Aware and Context-Aware Framework for Prompt-Injection Detection in Large Language Model-Powered Web Agents | MDPI"
+        }
+      ],
+      "source_urls": [
+        "https://www.mdpi.com/1999-5903/18/7/376"
+      ],
+      "title_or_context_label": "PromptSentinel-X",
+      "work_id": "publisher:mdpi/futureinternet/18/7/376"
+    },
+    {
+      "already_identified_in_stage_a_frame": false,
+      "exclude_versions": "ALL",
+      "prior_exposure_basis": "Prior research source register; context-only precautionary exclusion, not a pilot eligibility or claim classification",
+      "source_urls": [
+        "https://nejsds.nestat.org/journal/NEJSDS/article/59/text"
+      ],
+      "title_or_context_label": "Historical S2: e-detectors",
+      "work_id": "publisher:nejsds/article/59"
+    }
+  ]
+}
