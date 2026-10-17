@@ -1,0 +1,59 @@
+{
+  "counts": {
+    "acl_date_unclear_retained": 0,
+    "acl_retained": 25,
+    "acl_total": 131708,
+    "arxiv_retained": 364,
+    "arxiv_total": 395
+  },
+  "domain_eligibility": "NOT_RUN",
+  "files": {
+    "acl_filter_ledger_01.csv": {
+      "bytes": 2252168,
+      "sha256": "100043164085f4082a991c389948d33dad2ae3944a66d38bd3bd8acd1c4966e8"
+    },
+    "acl_filter_ledger_02.csv": {
+      "bytes": 2301451,
+      "sha256": "c46cf005edf71fcf6e825a626bed5cfb30540c94e94e2878604af8d24bc6f2e9"
+    },
+    "acl_filter_ledger_03.csv": {
+      "bytes": 2497499,
+      "sha256": "91eae4dbc78d4301e17c6bc9e49d0404da6069bce99ab93249ccc24720f122dd"
+    },
+    "acl_filter_ledger_04.csv": {
+      "bytes": 2530545,
+      "sha256": "7036f25b69a37a20a1e892e416139e79ffa975eea1c6ec53dfad2c5f4c5453ba"
+    },
+    "acl_filter_ledger_05.csv": {
+      "bytes": 2526002,
+      "sha256": "ca4a8e1de4e31a8d38f374c7a86aaab64f4faece45d48ed0482d1d53b7bbcbd1"
+    },
+    "acl_filter_ledger_06.csv": {
+      "bytes": 2539391,
+      "sha256": "b54100ffc7ec4fc3cb761bbe3397d8ed003920325dc3b794b275946be2458a07"
+    },
+    "acl_filter_ledger_07.csv": {
+      "bytes": 1467366,
+      "sha256": "d82e6b740907018c83a73721829a8695258433d9d3b1ea5e35ff06107c07b554"
+    },
+    "arxiv_filter_ledger.jsonl": {
+      "bytes": 930042,
+      "sha256": "012b140312daa881be7c86959f70f47979f499951fe38887b651c89f9dc0f003"
+    },
+    "metadata_union.jsonl": {
+      "bytes": 911853,
+      "sha256": "dea23a8f9198e3ecefd71ab92c91b0680a7b0cfe97f59119880997cfba69b808"
+    }
+  },
+  "finished_utc": "2026-10-17T17:59:01.248177+00:00",
+  "openreview": "EXCLUDED_FROM_SELECTION_FRAME",
+  "outcome_extraction": "NOT_RUN",
+  "parser_lock_sha256": "4d51e07ba317c4e22c94e97b7d1e7db36ef2741c6f851110dc355ccfe77b5adc",
+  "protocol_lock_sha256": "a8b736803da62bd399644abcc1f2ffb0a767b983560f16629ce16cf5d84147c7",
+  "randomization": "NOT_RUN",
+  "source_git_commit": "d79be1ebd15333775b09623fd79e0d160c97a58a",
+  "source_refresh": false,
+  "source_tree_clean_at_start": true,
+  "started_utc": "2026-10-17T17:56:25.410135+00:00",
+  "status": "METADATA_PARSED_PENDING_DEDUP_AND_CAP"
+}
