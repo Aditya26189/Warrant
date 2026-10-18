@@ -1,0 +1,39 @@
+{
+  "B2_authorized": false,
+  "bibliographic_source": "https://arxiv.org/html/2409.19521v1",
+  "decision": "INCLUDE",
+  "event_id": "HUMAN_DOMAIN_004",
+  "human_decision_date_local": "2026-10-18",
+  "human_reported_submission_date": "2024-09-29",
+  "human_reviewed_version": "v1; cutoff-based selected version still pending",
+  "limitations": [
+    "English baseline is supported indirectly by translation methodology.",
+    "An explicit statement that every original evaluation item is English is not established."
+  ],
+  "method_rationale": "User reports binary classification of malicious versus benign input text, with separate goal-hijacking and prompt-leaking detection evaluations involving injected instructions beyond jailbreak detection. User reports attack/benign input dataset construction and translation of the original evaluation datasets into additional languages, supporting an original English baseline indirectly.",
+  "outcome_or_claim_classification_use": "NONE",
+  "prior_ledger_sha256": "95e7b1fd18fb7926fc21ecd1ac1e32ded8439234fd1f0b8550a83ba6115e1ee7",
+  "prior_records_preserved": true,
+  "reason": "HUMAN_METHOD_ADJUDICATION",
+  "recorded_utc": "2026-10-18T07:04:51.252021+00:00",
+  "remaining_requirements": [
+    "cutoff-based bibliographic version",
+    "prior-exposure exclusions",
+    "other locked eligibility requirements",
+    "PDF accessibility recording"
+  ],
+  "reported_method_locators": [
+    "Section 2.2",
+    "Section 3.3",
+    "Section 4.1",
+    "Section 5.1.3",
+    "Section 5.2.1",
+    "Section 5.4"
+  ],
+  "scope": "DOMAIN_ELIGIBILITY_ONLY",
+  "source": "User response to metadata request004 in current conversation",
+  "source_git_commit": "9ac910cceca119cf1b294f43a87b86a44118a627",
+  "title": "GenTel-Safe: A Unified Benchmark and Shielding Framework for Defending Against Prompt Injection Attacks",
+  "verification_state": "HUMAN_METHOD_ADJUDICATION_RECEIVED_NOT_INDEPENDENT_CODEX_SOURCE_REVIEW",
+  "work_id": "arxiv:2409.19521"
+}
