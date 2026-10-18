@@ -156,3 +156,11 @@ records first-pass coverage of all373 provisional records:5 domain INCLUDE,191 E
 all177 domain questions (including Palisade) and2 possible-duplicate identity questions.
 Prior records/approvals preserved; no selection/outcomes/B2. FRAME_BLOCKED pending batch
 adjudication and remaining version/access checks. Research-branch push remains authorized.
+
+## Partial human batch001, 18 October 2026
+
+[Current receipt/projection status](B1_BATCH_PARTIAL_001_STATUS.md): incoming response
+truncated duringQ003. D01 same-work,D02 distinct-work,Q001 Palisade domain INCLUDE
+recorded;Q002/Q003 remain UNCLEAR. New372-work projection:6INCLUDE191EXCLUDE175UNCLEAR.
+Q004--Q177 unreceived;176 original pending IDs include the shared-work Q004/Q165.
+No selection, outcomes or B2. FRAME_BLOCKED pending remainder of combined metadata reply.
