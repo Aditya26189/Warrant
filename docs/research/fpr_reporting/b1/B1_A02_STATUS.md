@@ -147,3 +147,12 @@ GenTel-Safe human domain judgment004 is recorded with the indirect English-basel
 qualification. Current [R5 report](B1_DOMAIN_RESUMPTION_R5.md): 4 domain INCLUDE,
 20 EXCLUDE, 1 UNCLEAR, 348 pending. FRAME_BLOCKED at Palisade language metadata
 review005. No draw, assignment, outcomes or B2; research-branch push remains authorized.
+
+## Batched metadata review, 18 October 2026
+
+User requested all questions together. [Current batch status](B1_BATCH_REVIEW_STATUS.md)
+records first-pass coverage of all373 provisional records:5 domain INCLUDE,191 EXCLUDE,
+177 UNCLEAR. [One packet](a02-screening-batch/BATCH_METADATA_REVIEW_REQUEST.md) contains
+all177 domain questions (including Palisade) and2 possible-duplicate identity questions.
+Prior records/approvals preserved; no selection/outcomes/B2. FRAME_BLOCKED pending batch
+adjudication and remaining version/access checks. Research-branch push remains authorized.
