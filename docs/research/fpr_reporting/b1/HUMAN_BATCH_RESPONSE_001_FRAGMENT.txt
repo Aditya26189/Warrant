@@ -1,0 +1,96 @@
+{
+  "duplicate_questions": [
+    {
+      "bibliographic_basis": "Shared NotInject benchmark and MOF method in captured abstracts; overlapping named authors, differing title/author lists. No identity mapping asserted.",
+      "bibliographic_evidence_url": "https://github.com/leolee99/PIGuard",
+      "decision": "SAME_WORK",
+      "identity_rationale": "The authors' official PIGuard implementation README states the model name changed from InjecGuard to PIGuard for licensing reasons; authors/NotInject/MOF overlap and ACL 2025 bibliographic record agree. Same research work, not byte-identical versions. Primary: https://github.com/leolee99/PIGuard ; https://arxiv.org/abs/2410.22770v3 ; https://aclanthology.org/2025.acl-long.1468/ .",
+      "question": "SAME_WORK / DISTINCT_WORKS / UNCLEAR, with primary bibliographic evidence and canonical/version links; no results needed.",
+      "review_id": "D01",
+      "state": "POTENTIAL_RENAMED_WORK_IDENTITY_UNRESOLVED",
+      "titles": [
+        "InjecGuard: Benchmarking and Mitigating Over-defense in Prompt Injection Guardrail Models",
+        "PIGuard: Prompt Injection Guardrail via Mitigating Overdefense for Free"
+      ],
+      "work_ids": [
+        "arxiv:2410.22770",
+        "doi:10.18653/v1/2025.acl-long.1468"
+      ]
+    },
+    {
+      "bibliographic_basis": "Overlapping author lists and closely related seven-client MCP/tool-poisoning assessments, but different titles/author lists. Both currently domain-excluded; identity still unasserted.",
+      "bibliographic_evidence_url": "https://arxiv.org/html/2603.22489v1",
+      "decision": "DISTINCT_WORKS",
+      "identity_rationale": "The broader MCP STRIDE/DREAD study (arXiv:2603.22489v1) explicitly references the earlier three-author technical report (arXiv:2603.21642v1) as Huang et al. (2026a) and differs in authors/scope. They are related but distinct works. Primary: https://arxiv.org/html/2603.22489v1 (References; citation in §5), https://arxiv.org/html/2603.21642v1 ; publisher https://www.mdpi.com/2624-800X/6/3/84 .",
+      "question": "SAME_WORK / DISTINCT_WORKS / UNCLEAR, with primary bibliographic evidence and canonical/version links; no results needed.",
+      "review_id": "D02",
+      "state": "POTENTIAL_RELATED_OR_DUPLICATE_WORK_IDENTITY_UNRESOLVED",
+      "titles": [
+        "Are AI-assisted Development Tools Immune to Prompt Injection?",
+        "Model Context Protocol Threat Modeling and Analyzing Vulnerabilities to Prompt Injection with Tool Poisoning"
+      ],
+      "work_ids": [
+        "arxiv:2603.21642",
+        "arxiv:2603.22489"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "captured_source_ids": [
+        "http://arxiv.org/abs/2410.21146v1"
+      ],
+      "decision": "INCLUDE",
+      "limitations": "Direct English-language selection stated; no claim of other-language coverage.",
+      "method_dataset_locator": "Section I dataset description (PDF p.2); Section II methodology (PDF p.3).",
+      "method_only_rationale": "The authors filter the prompt-injection dataset to retain only English prompts, then evaluate the layered binary input screen.",
+      "question_basis": "Abstract establishes layered prompt-injection input screening using rules, an ML classifier and a companion LLM before the target model. It does not establish the English-language evaluation setting.",
+      "required_evidence": [
+        "L"
+      ],
+      "review_id": "Q001",
+      "reviewed_version_url": "https://arxiv.org/pdf/2410.21146v1",
+      "source_links": [
+        "http://arxiv.org/abs/2410.21146v1"
+      ],
+      "title": "Palisade -- Prompt Injection Detection Framework",
+      "work_id": "arxiv:2410.21146"
+    },
+    {
+      "captured_source_ids": [
+        "http://arxiv.org/abs/2410.21337v2"
+      ],
+      "decision": "UNCLEAR",
+      "limitations": "NOT A COMPLETED METHOD REVIEW for this row. The source_links and captured_source_ids are discovery locators, not verified reviewed versions. Further source-level adjudication required.",
+      "method_dataset_locator": "Captured title/abstract only; required method/dataset evidence not independently established.",
+      "method_only_rationale": "The supplied screening question does not settle required L evidence; insufficient primary method/dataset support to include or exclude without guessing.",
+      "question_basis": "Binary prompt-injection classification is described; evaluation language is unstated.",
+      "required_evidence": [
+        "L"
+      ],
+      "review_id": "Q002",
+      "reviewed_version_url": null,
+      "source_links": [
+        "http://arxiv.org/abs/2410.21337v2"
+      ],
+      "title": "Fine-tuned Large Language Models (LLMs): Improved Prompt Injection Attacks Detection",
+      "work_id": "arxiv:2410.21337"
+    },
+    {
+      "captured_source_ids": [
+        "http://arxiv.org/abs/2410.22284v1"
+      ],
+      "decision": "UNCLEAR",
+      "limitations": "PARTIAL PRIMARY METHOD INSPECTION ONLY; the required evidence remains unresolved. This is not an exclusion and not a completed four-criterion eligibility decision.",
+      "method_dataset_locator": "§3.1 Dataset Construction, Table 1 sources; §3.2 binary embedding classifier.",
+      "method_only_rationale": "Methods establish prompt-level binary classification and named source datasets, but do not explicitly state evaluation language; English may be inferred from source names only and is not sufficiently established here.",
+      "question_basis": "Embedding-based malicious/benign input classification is described; evaluation language is unstated.",
+      "required_evidence": [
+        "L"
+      ],
+      "review_id": "Q003",
+      "reviewed_version_url": "https://arxiv.org/html/2410.22284v1",
+      "source_links": [
+        "http://arxiv.org/abs/2410.22284v1"
+      ],
+      "title": "Embedding-based classifiers can detect prompt injection attacks",
