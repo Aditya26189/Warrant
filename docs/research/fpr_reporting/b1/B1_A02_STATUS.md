@@ -116,3 +116,11 @@ change, frozen-artifact rewrite, push, merge or publication occurred.
 Required next input: human domain metadata adjudication for arxiv:2403.17710,
 then resume the remaining B1 eligibility work under the unchanged protocol.
 Stop remains in force before randomization and B2.
+
+
+## Dated addendum: 18 October 2026
+
+Human adjudication includes arxiv:2403.17710 for domain only. See
+[B1_DOMAIN_RESUMPTION_20261018.md](B1_DOMAIN_RESUMPTION_20261018.md) for the
+preserved decision, resumed screening and next domain metadata gate. The
+first-pass stop narrative above is retained as historical context.
