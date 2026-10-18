@@ -1,0 +1,31 @@
+{
+  "B2_authorized": false,
+  "bibliographic_source": "https://arxiv.org/html/2406.00799v6",
+  "decision": "INCLUDE",
+  "event_id": "HUMAN_DOMAIN_002",
+  "human_decision_date_local": "2026-10-18",
+  "human_reviewed_version": "v6; cutoff-based selected version still pending",
+  "method_rationale": "User reports English primary question-answering/external-text tasks from SQuAD and related datasets, with translated-instruction experiments supplementary. User reports last-input-token activation extraction before generation and a binary task-drift classifier based on those activations, without requiring generated answers. Both requested domain requirements are resolved.",
+  "outcome_or_claim_classification_use": "NONE",
+  "prior_ledger_sha256": "c9244d8096bba1e31053e8c4ea9f7884b23342b1343f59b09206c10ac8768df0",
+  "prior_records_preserved": true,
+  "reason": "HUMAN_METHOD_ADJUDICATION",
+  "recorded_utc": "2026-10-18T04:46:00.157611+00:00",
+  "remaining_requirements": [
+    "cutoff-based bibliographic version",
+    "prior-exposure exclusions",
+    "other locked eligibility requirements",
+    "PDF accessibility recording"
+  ],
+  "reported_method_locators": [
+    "Section III",
+    "Appendix D",
+    "Section IV-A",
+    "Section IV-C"
+  ],
+  "scope": "DOMAIN_ELIGIBILITY_ONLY",
+  "source": "User response to metadata request002 in current conversation",
+  "source_git_commit": "223d10a0a57ddedf08c1c135074f9a3f70bb3d6b",
+  "verification_state": "HUMAN_METHOD_ADJUDICATION_RECEIVED_NOT_INDEPENDENT_CODEX_SOURCE_REVIEW",
+  "work_id": "arxiv:2406.00799"
+}
