@@ -1,0 +1,30 @@
+[
+  {
+    "bibliographic_basis": "Shared NotInject benchmark and MOF method in captured abstracts; overlapping named authors, differing title/author lists. No identity mapping asserted.",
+    "question": "SAME_WORK / DISTINCT_WORKS / UNCLEAR, with primary bibliographic evidence and canonical/version links; no results needed.",
+    "review_id": "D01",
+    "state": "POTENTIAL_RENAMED_WORK_IDENTITY_UNRESOLVED",
+    "titles": [
+      "InjecGuard: Benchmarking and Mitigating Over-defense in Prompt Injection Guardrail Models",
+      "PIGuard: Prompt Injection Guardrail via Mitigating Overdefense for Free"
+    ],
+    "work_ids": [
+      "arxiv:2410.22770",
+      "doi:10.18653/v1/2025.acl-long.1468"
+    ]
+  },
+  {
+    "bibliographic_basis": "Overlapping author lists and closely related seven-client MCP/tool-poisoning assessments, but different titles/author lists. Both currently domain-excluded; identity still unasserted.",
+    "question": "SAME_WORK / DISTINCT_WORKS / UNCLEAR, with primary bibliographic evidence and canonical/version links; no results needed.",
+    "review_id": "D02",
+    "state": "POTENTIAL_RELATED_OR_DUPLICATE_WORK_IDENTITY_UNRESOLVED",
+    "titles": [
+      "Are AI-assisted Development Tools Immune to Prompt Injection?",
+      "Model Context Protocol Threat Modeling and Analyzing Vulnerabilities to Prompt Injection with Tool Poisoning"
+    ],
+    "work_ids": [
+      "arxiv:2603.21642",
+      "arxiv:2603.22489"
+    ]
+  }
+]
