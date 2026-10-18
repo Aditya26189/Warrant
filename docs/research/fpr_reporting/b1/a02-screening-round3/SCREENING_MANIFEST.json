@@ -1,0 +1,48 @@
+{
+  "B2": "NOT_AUTHORIZED",
+  "OpenReview_discovery": "EXCLUDED_FROM_SELECTION_FRAME",
+  "PDF_access_check": "NOT_RUN",
+  "cap_check": "PASS",
+  "claim_classification": "NOT_RUN",
+  "counts": {
+    "EXCLUDE": 17,
+    "INCLUDE": 2,
+    "NOT_SCREENED": 353,
+    "UNCLEAR": 1
+  },
+  "created_utc": "2026-10-18T04:47:08.678607+00:00",
+  "domain_inclusion_is_final_eligibility": false,
+  "eligible_frame_freeze": "NOT_RUN",
+  "files": {
+    "SCREENING_LEDGER.json": "9d9a89689be02b27d82f42bc733c34ae176eee089000524d8f003f4e5f8bf52a"
+  },
+  "first_blocking_work": "arxiv:2409.13331",
+  "human_six_assignment": "NOT_RUN",
+  "input_sha256": {
+    "DOMAIN_SCREENING_ADDENDA_R3.jsonl": "503bd071d0cba76bac92c5543404ff443d8353600248a49bef6d9dee8be62375",
+    "HUMAN_DOMAIN_ADJUDICATION_002.json": "974ed0b94e8a142067bd6d8a5db2ae30177b234a51f0180ef6ae4c2d161a78b4",
+    "PROTOCOL_LOCK_A02.json": "a8b736803da62bd399644abcc1f2ffb0a767b983560f16629ce16cf5d84147c7",
+    "a02-screening-round2/SCREENING_LEDGER.json": "c9244d8096bba1e31053e8c4ea9f7884b23342b1343f59b09206c10ac8768df0",
+    "a02-screening/SCREENING_EXPOSURE_LOG.json": "1ea6d0ad24a4daba7528cc905ed0af0f8aa697d1a2c29a892dc9a5d4e0d3610f"
+  },
+  "manual_domain_decisions": 15,
+  "mechanical_sentinel_exclusions": 5,
+  "new_abstract_exposure": "NONE_BEYOND_THE_ALREADY_LOGGED_FIRST20_METADATA_DISPLAY",
+  "outcome_extraction": "NOT_RUN",
+  "required_input": "Human method/metadata decision on English-text evaluation for arxiv2409.13331; no outcomes or claim labels",
+  "resolved_prior_blocker": {
+    "decision": "INCLUDE",
+    "event_id": "HUMAN_DOMAIN_002",
+    "scope": "DOMAIN_ONLY",
+    "work_id": "arxiv:2406.00799"
+  },
+  "screening_cap": 500,
+  "screening_order": "RESUME_SORTED_WORK_IDS_STOP_AT_NEXT_UNCLEAR",
+  "source_git_commit": "84500a74ae354ec349503b5ae9329edd4d863aa9",
+  "source_refresh": false,
+  "source_tree_clean_at_start": true,
+  "status": "FRAME_BLOCKED_AWAITING_HUMAN_METADATA_ADJUDICATION",
+  "ten_paper_selection": "NOT_RUN",
+  "unique_works": 373,
+  "version_selection": "NOT_RUN"
+}

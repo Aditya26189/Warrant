@@ -124,3 +124,11 @@ Human adjudication includes arxiv:2403.17710 for domain only. See
 [B1_DOMAIN_RESUMPTION_20261018.md](B1_DOMAIN_RESUMPTION_20261018.md) for the
 preserved decision, resumed screening and next domain metadata gate. The
 first-pass stop narrative above is retained as historical context.
+
+
+## Dated addendum: 18 October 2026, resumption R3
+
+Human adjudication002 includes arxiv:2406.00799 for domain only. See
+[B1_DOMAIN_RESUMPTION_R3.md](B1_DOMAIN_RESUMPTION_R3.md) for the new projection,
+three subsequent scope exclusions and English-setting metadata request003.
+Earlier stop records are retained as historical context.
