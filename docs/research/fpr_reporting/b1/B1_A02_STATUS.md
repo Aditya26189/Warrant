@@ -140,3 +140,10 @@ Current [R4 report](B1_DOMAIN_RESUMPTION_R4.md): 3 domain INCLUDE, 17 EXCLUDE,
 1 UNCLEAR, 352 pending. FRAME_BLOCKED at GenTel-Safe metadata review004.
 User now authorizes research-branch pushes; earlier no-push reports are historical.
 No draw, assignment, outcomes or B2.
+
+## Resumption R5, 18 October 2026
+
+GenTel-Safe human domain judgment004 is recorded with the indirect English-baseline
+qualification. Current [R5 report](B1_DOMAIN_RESUMPTION_R5.md): 4 domain INCLUDE,
+20 EXCLUDE, 1 UNCLEAR, 348 pending. FRAME_BLOCKED at Palisade language metadata
+review005. No draw, assignment, outcomes or B2; research-branch push remains authorized.
