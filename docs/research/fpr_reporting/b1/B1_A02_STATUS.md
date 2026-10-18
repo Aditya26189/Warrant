@@ -132,3 +132,11 @@ Human adjudication002 includes arxiv:2406.00799 for domain only. See
 [B1_DOMAIN_RESUMPTION_R3.md](B1_DOMAIN_RESUMPTION_R3.md) for the new projection,
 three subsequent scope exclusions and English-setting metadata request003.
 Earlier stop records are retained as historical context.
+
+## Resumption R4, 18 October 2026
+
+Human BERT domain judgment003 is recorded with its test-language limitation.
+Current [R4 report](B1_DOMAIN_RESUMPTION_R4.md): 3 domain INCLUDE, 17 EXCLUDE,
+1 UNCLEAR, 352 pending. FRAME_BLOCKED at GenTel-Safe metadata review004.
+User now authorizes research-branch pushes; earlier no-push reports are historical.
+No draw, assignment, outcomes or B2.
