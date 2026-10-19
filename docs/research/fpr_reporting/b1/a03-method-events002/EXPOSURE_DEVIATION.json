@@ -1,0 +1,49 @@
+{
+  "B2": "NOT_AUTHORIZED",
+  "action": "Stop new source review and all selection; preserve completed records; do not silently exclude exposed works or change the frame.",
+  "assurance_taxonomy_labeling": "NOT_RUN",
+  "cause": "The inspection barrier masked numeric strings and omitted tables in its committed HTML view, but PDF windows and ad-hoc method searches could include neighboring result prose. One table-location command also bypassed masking. The assistant did not enforce the outcome-blinding constraint reliably.",
+  "confirmed_examples": [
+    {
+      "exposure": "Unmasked general safety-classification table rows, outside the injection task; values not transcribed.",
+      "review_id": "Q041",
+      "source_locator": "Section5 table-location inspection"
+    },
+    {
+      "exposure": "Qualitative detector false-alarm findings and spelled quantities in nearby prose.",
+      "review_id": "Q028",
+      "source_locator": "Section5.2 broad paragraph search"
+    },
+    {
+      "exposure": "Qualitative false-alarm/miss findings and nearby statistical interpretation, despite masking numerical strings.",
+      "review_id": "Q112",
+      "source_locator": "Section5.1 first-paragraph method search"
+    },
+    {
+      "exposure": "Qualitative detection findings and statistical-claim language adjacent to a genuine isolated input-detector evaluation design.",
+      "review_id": "Q133",
+      "source_locator": "Section4.2 method-location search"
+    },
+    {
+      "exposure": "Qualitative detector false-alarm findings adjacent to a genuine pre-inference evaluation design.",
+      "review_id": "Q145",
+      "source_locator": "Section4.2 method-location search"
+    }
+  ],
+  "coverage_limit": "Examples are not an exhaustive exposure audit. Earlier broad views and ad-hoc source searches also included masked qualitative performance, methodological statistical language and spelled numeric expressions; see the preserved checkpoint exposure log.",
+  "historical_status_correction": "Historical outcome_extraction: NOT_RUN fields indicate no structured B2 extraction table was produced; they do not establish absence of incidental source exposure. The stronger interpretation is superseded here.",
+  "incidental_source_result_exposure": "OCCURRED",
+  "no_silent_exclusions": true,
+  "reason": "UNPLANNED_SOURCE_RESULT_EXPOSURE_REQUIRES_PROCESS_DECISION_BEFORE_SELECTION",
+  "recorded_utc": "2026-10-19T07:22:38.348263+00:00",
+  "six_paper_assignment": "NOT_RUN",
+  "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+  "status": "FRAME_BLOCKED",
+  "strict_outcome_blinding_claim": "NOT_SUPPORTED",
+  "structured_FPR_count_extraction": "NOT_RUN",
+  "ten_paper_draw": "NOT_RUN",
+  "unadopted_remediation_options": [
+    "Fresh independent outcome-blind reviewer resolves/validates eligibility while Codex performs mechanical checks/draw only after an explicit approved handoff.",
+    "Explicit prospective protocol deviation accepting disclosed assistant exposure, with independent method-eligibility verification and unchanged candidates/criteria/seeds; this has not been authorized."
+  ]
+}
