@@ -73,3 +73,32 @@ approved protocol or record independent eligibility decisions.
   This is not presented as the A04 fresh independent eligibility reviewer or an
   independent statistical review. Root will separately validate source hashes,
   version/member consistency, schemas and leakage before any fact is transferred.
+
+## Consolidated source-restriction release engineering
+
+- Resumed after an external usage-limit interruption on 20 October local time;
+  actual UTC operation dates remain 19 October where recorded by the host clock.
+  Three explicitly separate, fork-none restriction-check contexts partition the
+  worklist into 129, 124 and 119 works. They share filesystem access and do not
+  constitute the fresh independent eligibility reviewer. No delivery or fresh
+  eligibility adjudication has been observed.
+- Added immutable checker-revision validation, raw source/version/paragraph hash
+  replay, UTC checks, per-fact receipts, controlled outgoing schemas, a bounded
+  paraphrase display and a standalone consolidated transfer verifier. The original
+  partial supplement will be nested byte-identically; no historical output is
+  overwritten. PDF evidence additionally requires an exact body version, a separate
+  checker visual pass, and reproducible page-text/render hashes. Local render paths
+  are removed from transfers. PDF visual checking is evidence restriction, not
+  scientific eligibility review.
+- Initial template lint found three unresolved substitution placeholders; quoted
+  template markers corrected that engineering defect. The expanded PDF test first
+  rejected a structural page number under the prose digit filter. Page/section
+  digits are now permitted only in locators, while method prose retains its strict
+  content gate. The corrected 29-test semantic-release suite passes.
+- Initial real checker-01 replay rejected all 142 facts on locator binding: 141
+  section/hash mismatches and one apparent protected-container match at the wrong
+  index. The checker confirmed that all 184 source paragraphs bind correctly at
+  old index minus one, with no protected ancestor there. All three checkers used
+  one-based HTML ordinals. Append-only corrections now specify zero-based original
+  HTML paragraph ordinals. No facts from these failed locator records are released;
+  corrected records must pass the real source replay before freezing.
