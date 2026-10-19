@@ -1,0 +1,76 @@
+{
+  "A04_lock_entries_verified": 20,
+  "B2": "NOT_AUTHORIZED",
+  "D01_same_work": "PASS",
+  "D02_distinct_works": "PASS",
+  "all_372_ledger_ids_covered": true,
+  "all_389_members_unique": true,
+  "artifact_sha256": {
+    "A04_AUTHORIZATION_RECEIPT.json": "cdc3961cc80745b7a4a8f329220d117e7a15720191b0e4f60b7e173270be6937",
+    "A04_PROCESS_DECISION_SOURCE.txt": "5cdc6dfae7c422cf60e35fa410a7245b8e51421dc6fb797f9e0dc1949b55edb7",
+    "B1_A04_HANDOFF_STATUS.md": "a3c00296ffd83100e0b3119b318858b86838b4898d178750d40aaed83abd1e40",
+    "PROTOCOL_LOCK_A04.json": "00856fbdcc796ac4d04b52e67de46c79fdc8bb5b9d26115ef48d3c46c4cafbaf",
+    "a04-handoff/CUSTODIAN_RECEIPT.json": "2b6ce45346519427b706fa8529a3ec6036e968b3208d2cfc7c1741ae4092ed23",
+    "a04-handoff/FRESH_REVIEWER_INTAKE.zip": "48c903779bda205c2af6231da92cca8b70e6ba9755cfa175f526c107e23e7290",
+    "a04-handoff/restricted/BIBLIOGRAPHIC_CONSTRAINTS.json": "59ddc8eb8a634d3ddc2533f628b8e2618bce4908d3b94b30e2ad714c7b9721a5",
+    "a04-handoff/restricted/CANDIDATE_INVENTORY.json": "5134b8317d75ee70b43079487106c871cc91eb5b4dcbaccd8e5f893c170114d5",
+    "a04-handoff/restricted/ELIGIBILITY_REVIEW_BLANK.json": "5408ae1934765418a9132612d11c05923367b92ac315589f4cf78843c889a5b2",
+    "a04-handoff/restricted/ELIGIBILITY_RULES.md": "e589d7d21be4b44b398a586ae63b66aca120d41f9c345b25342df8ece1e845e3",
+    "a04-handoff/restricted/EVIDENCE_RECEIPT_BLANK.json": "200aa3d90846c63f504e569bd857ba7753ccf9e054198545885d5626e8b9e433",
+    "a04-handoff/restricted/MANIFEST.json": "15fcc9ad89d6213d48079960ee5005884a2157c021015b8a84c90a4a83052422",
+    "a04-handoff/restricted/READ_FIRST.md": "9759a1314eaf3bd3b94c38a6523d6dab60b6a3527a8ecc36b7ba405f26ca4f5a",
+    "a04-handoff/restricted/REVIEWER_INTAKE_BLANK.json": "8c7c4d010cb992448c482e708aa4fe2e010ffb0b484e364dc56db75bdaa6b3dd",
+    "a04-handoff/restricted/SENTINEL_IDENTIFIERS.json": "a4763e4bf3dddf2e1a6e925b57a8642914d0fe0aa4166ea23d393b8c3fd5e8f7",
+    "a04-handoff/restricted/verify_package.py": "50d2aad5660c0e40ae3b1774953d81ffa04ba95d877f4974b5681a2c82f3b0e3"
+  },
+  "checked_utc": "2026-10-19T12:30:40.749324+00:00",
+  "cr_at_eol_staged_whitespace_check": {
+    "command": "git -c core.whitespace=cr-at-eol diff --cached --check",
+    "result": "PASS"
+  },
+  "default_staged_whitespace_check": {
+    "file": "A04_PROCESS_DECISION_SOURCE.txt",
+    "lines": 54,
+    "reason": "Byte-identical raw user attachment; original CRLF preserved",
+    "result": "SOURCE_CRLF_WARNINGS"
+  },
+  "draw_executed": false,
+  "eligibility_adjudication_this_turn": false,
+  "existing_parser_tests": {
+    "command": "python docs/research/fpr_reporting/b1/check_a02_parser.py",
+    "final_exit_code": 0,
+    "passed": 9
+  },
+  "gate": "FRAME_BLOCKED",
+  "historical_A02_A03_locks": "PASS",
+  "historical_B1_files_unchanged": 122,
+  "independent_review": "NOT_STARTED",
+  "new_artifact_size_limit": "PASS",
+  "new_boundary_tests": {
+    "command": "python docs/research/fpr_reporting/b1/check_a04_handoff.py",
+    "execution": "SANDBOX_ESCALATED",
+    "explanation": "Windows sandbox denied access to Python temporary directories. Scoped escalated run passed; no auto-review rejection occurred.",
+    "final_exit_code": 0,
+    "passed": 11,
+    "prior_attempts": [
+      {
+        "errors": 22,
+        "location": "system temporary directory",
+        "result": "FAILED_ENVIRONMENT_PERMISSION_ERROR"
+      },
+      {
+        "errors": 22,
+        "location": "dedicated workspace temporary directory",
+        "result": "FAILED_ENVIRONMENT_PERMISSION_ERROR"
+      }
+    ]
+  },
+  "preparation_source_commit": "b295d9de0858955d399365e0d7a35613898e785e",
+  "production_tests": "NOT_RERUN_PRODUCTION_UNCHANGED",
+  "research_source_cache_revalidation": "NOT_RERUN_PRIOR_CHECKS_PRESERVED",
+  "reviewer_assignment": "UNASSIGNED",
+  "ruff": "PASS",
+  "standalone_package_verification": "PASS",
+  "zip_flat_allowlist_members": 10,
+  "zip_unpacked_bytes_identical": true
+}

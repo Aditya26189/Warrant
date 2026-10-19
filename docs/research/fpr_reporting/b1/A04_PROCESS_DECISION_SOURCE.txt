@@ -1,0 +1,55 @@
+## B1 process decision: Recommend Path 2 — Fresh independent reviewer
+
+I recommend selecting Path 2: the fresh-reviewer path. This is the more defensible choice for Warrant's research integrity because the original Codex reviewer encountered outcome-related information before eligibility adjudication was complete.
+
+The failure is not merely that the masking tool missed numerical results. Qualitative findings and statistical-claim language were also exposed, creating a plausible source of selection bias. Reproducible logs and independent verification cannot retrospectively establish that the original reviewer remained blinded.
+
+This is a process recommendation, not authorization of an amendment. The project remains `FRAME_BLOCKED` until you explicitly adopt a prospective process decision.
+
+### Required conditions
+
+1\. Use a genuinely fresh reviewer. The reviewer must not receive the contaminated source displays, previous assistant eligibility judgments, exposure details containing results, or the independent human outcome sheet. A new conversation with the same evidence already exposed is not sufficient by itself.
+
+2\. Independently review the affected work. The 41 completed assistant judgments require independent reassessment, and the remaining 115 unresolved questions require adjudication. The entire 372-work ledger must ultimately be reconciled, including previous exclusions and inclusions.
+
+3\. Preserve historical evidence. Retain all 42 events, Q007's correction, source receipts, hashes, failed initial checks, corrected checks and the exposure-deviation record. Do not overwrite them.
+
+4\. Resolve bibliographic issues. Preserve Q002's withdrawal/access history; resolve the Q026/Q153 study overlap; enforce D01 SAME_WORK and D02 DISTINCT_WORKS. No silent version substitution or outcome-driven exclusion.
+
+5\. Maintain the existing protocol. No replacement discovery, changed eligibility rules, new exclusions for exposed papers, altered seeds or replacement sampling.
+
+6\. Require another explicit gate review. Codex may perform provenance and mechanical validation, but the ten-paper draw must remain blocked until the independently reviewed eligibility frame is fully validated and cleared.
+
+### Proposed authorization wording
+
+This is the single instruction I would recommend sending only if you decide to approve Path 2.
+
+**Warrant B1 process decision — FRESH_REVIEWER_PATH**
+
+I select Path 2, the fresh independent eligibility-reviewer path, as a prospective process amendment to A03.
+
+Preserve the existing A03 exposure deviation and all historical adjudication events, corrections, source receipts, hashes and validation reports without modification.
+
+Transfer eligibility adjudication and independent verification to a fresh reviewer who has not seen the exposed result-bearing source displays or previous Codex domain judgments. Provide access only to the locked protocol, candidate inventory and appropriately restricted primary bibliographic/method/dataset evidence. Keep the independent human outcome sheet completely isolated.
+
+The fresh reviewer must independently reassess the 41 completed assistant domain judgments and adjudicate the 115 unresolved questions. Reconcile all decisions against the complete 372-work frame, including prior human decisions, canonical identities, cutoff-eligible versions, sentinels and access provenance.
+
+Preserve Q007's documented correction. Resolve Q002's withdrawn-version/access issue and Q026/Q153's reproduced-study overlap without changing the existing eligibility rules.
+
+Codex remains responsible for historical provenance, mechanical checks and eventual original seeded selection, but must not resume individual eligibility adjudication as the original exposed reviewer.
+
+Do not redraw, replace or expand the source frame; change the domain, cap, sentinels or seeds; or use outcome exposure to exclude papers.
+
+If independent review cannot be performed without further material exposure, stop and report the blocker.
+
+Record this authorization prospectively in a versioned, append-only research process amendment. Keep the original deviation permanently disclosed. Do not describe the original Codex review as fully outcome-blind.
+
+Do not run the ten-paper draw until the complete work-level eligibility frame has been independently reviewed, validated and explicitly approved at the B1 gate. No B2, production changes, frozen-artifact changes, merge or publication is authorized. Existing permission to push completed research-only commits remains subject to the established repository restrictions.
+
+Report the process amendment, evidence-integrity checks, unresolved blockers and current gate status. Stop at the B1 gate.
+
+One important qualification: even after a fresh review, the historical exposure must remain disclosed. A clean independent eligibility review can mitigate the risk of biased selection, but it does not erase the earlier deviation.
+
+Current status: `FRAME_BLOCKED` — no amendment adopted by this response, no sampling authorized.
+
+STOP_GATE_REACHED

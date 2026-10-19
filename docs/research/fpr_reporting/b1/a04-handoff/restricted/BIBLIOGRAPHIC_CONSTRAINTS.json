@@ -1,0 +1,30 @@
+{
+  "locked_identity_decisions": [
+    {
+      "identifiers": ["arxiv:2410.22770", "doi:10.18653/v1/2025.acl-long.1468"],
+      "decision": "SAME_WORK",
+      "bibliographic_note": "Author implementation documents a model-name change for licensing reasons. Same research work, not byte-identical versions.",
+      "primary_reference_locators": ["https://github.com/leolee99/PIGuard", "https://arxiv.org/abs/2410.22770v3", "https://aclanthology.org/2025.acl-long.1468/"]
+    },
+    {
+      "identifiers": ["arxiv:2603.21642", "arxiv:2603.22489"],
+      "decision": "DISTINCT_WORKS",
+      "bibliographic_note": "The later broader study cites the earlier technical report and differs in author list and scope.",
+      "primary_reference_locators": ["https://arxiv.org/html/2603.22489v1", "https://arxiv.org/html/2603.21642v1"]
+    }
+  ],
+  "open_bibliographic_issues": [
+    {
+      "identifiers": ["arxiv:2410.21337"],
+      "facts": "Captured latest v2 is withdrawn; its HTML/PDF endpoints returned 404. Original v1 was separately obtained for supplemental methods inspection only, without replacing v2 as the selected version.",
+      "required_review": "Preserve withdrawal/access history and resolve cutoff-eligible version provenance under the locked rules. No domain disposition is supplied."
+    },
+    {
+      "identifiers": ["arxiv:2508.04281", "arxiv:2610.04412"],
+      "facts": "Chapter 3 of the latter thesis states it is based on the former paper. Other chapters differ. Whole-document identity has not been established and no merge has been executed.",
+      "required_review": "Resolve reproduced-study/work-unit overlap under existing deduplication rules, preserving all source memberships. No domain disposition is supplied."
+    }
+  ],
+  "stepguard_identity": "Historical hash PDF and forum 2i7xXuNixu may be distinct; both are excluded by A01, without an identity mapping.",
+  "reference_access": "Reference URLs are bibliographic locators only; use controlled evidence intake rather than unrestricted result-bearing source displays."
+}
