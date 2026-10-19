@@ -164,3 +164,12 @@ truncated duringQ003. D01 same-work,D02 distinct-work,Q001 Palisade domain INCLU
 recorded;Q002/Q003 remain UNCLEAR. New372-work projection:6INCLUDE191EXCLUDE175UNCLEAR.
 Q004--Q177 unreceived;176 original pending IDs include the shared-work Q004/Q165.
 No selection, outcomes or B2. FRAME_BLOCKED pending remainder of combined metadata reply.
+
+## Complete-file partial review, 19 October 2026
+
+[Current file002 status](B1_BATCH_FILE_002_STATUS.md): all177 requested answer rows
+received in valid JSON; transport truncation resolved. Raw decisions19 INCLUDE,
+2 EXCLUDE,156 UNCLEAR (144 not method-reviewed,12partial). After aliases/repeats,
+17 new domain inclusions and2 exclusions:372works23INCLUDE193EXCLUDE156UNCLEAR.
+New [remaining combined queue](a02-human-batch002/REMAINING_METADATA_REVIEW.md)
+contains only unresolved IDs. FRAME_BLOCKED; no sampling, outcomes or B2.
