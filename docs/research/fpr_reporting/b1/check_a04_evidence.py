@@ -169,6 +169,26 @@ class EvidenceChecks(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "clean"):
                 e.clean_head()
 
+    def test_official_mirror_redirect_keeps_exact_version(self) -> None:
+        request = {"member_id": "M0001", "work_id": "arxiv:2501.00001",
+                   "urls": [self.url.replace("arxiv.org", "export.arxiv.org")]}
+        response = io.BytesIO(html("We use English data."))
+        response.url, response.status, response.headers = self.url, 200, {"Content-Type": "text/html"}
+        self.config.update(minimum_request_interval_seconds=0, max_attempts_per_url=1)
+        with patch.object(e.urllib.request, "urlopen", return_value=response):
+            result = e.acquisition(request, self.config, {}, "fixture")
+        self.assertTrue(result["source_available"])
+        self.assertEqual(result["body"]["version_state"], "EXACT_VERSION_SELF_LINK")
+
+    def test_redirect_to_another_version_not_accepted(self) -> None:
+        request = {"member_id": "M0001", "work_id": "arxiv:2501.00001", "urls": [self.url]}
+        response = io.BytesIO(html("We use English data."))
+        response.url, response.status, response.headers = self.url.replace("v1", "v2"), 200, {}
+        self.config.update(minimum_request_interval_seconds=0, max_attempts_per_url=1)
+        with patch.object(e.urllib.request, "urlopen", return_value=response):
+            result = e.acquisition(request, self.config, {}, "fixture")
+        self.assertFalse(result["source_available"])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

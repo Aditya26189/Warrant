@@ -265,7 +265,8 @@ def acquisition(request: dict, config: dict, legacy: dict, head: str) -> dict:
                 req = urllib.request.Request(url, headers={"User-Agent": "Warrant-B1-evidence-provision/1.0"})
                 with urllib.request.urlopen(req, timeout=config["timeout_seconds"]) as response:
                     final = response.url
-                    if not official_url(final, config) or final.rstrip("/") != url.rstrip("/"):
+                    if (not official_url(final, config)
+                            or urllib.parse.urlparse(final).path.rstrip("/") != urllib.parse.urlparse(url).path.rstrip("/")):
                         raise ValueError("UNAPPROVED_REDIRECT_OR_VERSION_CHANGE")
                     raw = response.read(config["max_body_bytes"] + 1)
                     attempt.update(status=response.status, final_url=final, content_type=response.headers.get("Content-Type"))
@@ -478,8 +479,10 @@ def main() -> None:
 
 
 def freeze(config: dict, head: str) -> None:
-    """Implemented after bounded parser/restriction validation; never sample."""
-    raise RuntimeError("Transfer release not implemented before boundary tests")
+    """Delegate transfer freezing after all source/restriction checks; never sample."""
+    from a04_freeze_evidence import freeze as freeze_supplement
+
+    freeze_supplement(config, head)
 
 
 if __name__ == "__main__":
