@@ -102,3 +102,12 @@ approved protocol or record independent eligibility decisions.
   one-based HTML ordinals. Append-only corrections now specify zero-based original
   HTML paragraph ordinals. No facts from these failed locator records are released;
   corrected records must pass the real source replay before freezing.
+- The combined acquisition, original handoff, finite-transfer and semantic-release
+  suites completed with 85 passing tests at `493aa9e`. Actual checker returns also
+  used explicitly recorded metadata variants: a performed/checked-by local pass,
+  literal-quotation-zero metadata, and explicit original-view/index-base locator
+  fields. Initial root ingestion withheld those records on schema differences.
+  A narrow adapter now validates these known metadata variants, keeps original
+  checker-record hash bindings and strips only internal metadata from the strict
+  transfer projection. It neither creates a check nor changes source statements.
+  The expanded 30-test semantic suite and lint pass after this compatibility fix.

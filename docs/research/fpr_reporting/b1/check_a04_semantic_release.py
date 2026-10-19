@@ -142,6 +142,21 @@ class SemanticReleaseChecks(unittest.TestCase):
         for stamp in (None, "2026-10-19T22:00:00", "2026-10-19T22:00:00+05:30"):
             self.assertTrue(self.codes({**self.fact, "checked_utc": stamp}))
 
+    def test_actual_checker_metadata_variants_are_narrowly_normalized(self) -> None:
+        fact = copy.deepcopy(self.fact)
+        fact["source_context_original_checked_utc"] = fact["checked_utc"]
+        fact["locator_checked_utc"] = fact["checked_utc"]
+        fact["literal_quotation_words"] = 0
+        fact["locator"].update(parser="html.parser", source_view="ORIGINAL_UNMODIFIED_RAW_BODY", index_base=0)
+        fact["locator"]["evidence_paragraphs"][0].update(index_base=0, global_p_ltx_p_index_zero_based=0)
+        self.assertEqual(self.codes(fact), [])
+        self.assertEqual(s.transfer_locator(fact["locator"]), self.fact["locator"])
+        fact["second_local_semantic_pass"] = {"performed": True, "checked_by": s.ACTORS["01"],
+            "checked_utc": fact["checked_utc"], "scope": "Local rereading of paraphrase against source context."}
+        self.assertEqual(self.codes(fact), [])
+        fact["locator"]["index_base"] = 1
+        self.assertTrue(self.codes(fact))
+
     def test_private_pdf_render_path_removed_from_transfer(self) -> None:
         locator = {"format": "PDF", "method_section_locator": "Section 3, page 4",
                    "evidence_pages": [{"page_number_1based": 4, "rendered_page_path": "/private/cache.png",

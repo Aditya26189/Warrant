@@ -118,8 +118,11 @@ def paragraph_index(raw_path: str, digest: str) -> dict:
 
 def validate_fact(fact: dict, record: dict, request: dict, body: dict) -> list[str]:
     """Require a real separate checker, exact version/body and reconstructable locators."""
-    if set(fact) != FACT_FIELDS:
+    optional = {"source_context_original_checked_utc", "locator_checked_utc", "literal_quotation_words"}
+    if not FACT_FIELDS.issubset(fact) or set(fact) - FACT_FIELDS - optional:
         return ["UNEXPECTED_SEMANTIC_FACT_FIELDS"]
+    if fact.get("literal_quotation_words", 0) != 0:
+        return ["SEMANTIC_LITERAL_QUOTATION_NOT_ALLOWED"]
     if (fact["member_id"] != request["member_id"] or fact["fact_kind"] not in KINDS
             or fact["restriction_checked_by"] != record["actor_id"]):
         return ["SEMANTIC_FACT_IDENTITY_MISMATCH"]
@@ -129,8 +132,9 @@ def validate_fact(fact: dict, record: dict, request: dict, body: dict) -> list[s
             or fact["version"].removeprefix("arxiv:") != request["captured_version_id"].removeprefix("arxiv:")):
         return ["SEMANTIC_FACT_SOURCE_VERSION_UNVERIFIED"]
     check = fact["second_local_semantic_pass"]
-    if (not isinstance(check, dict) or check.get("actor_id") != record["actor_id"]
-            or check.get("literal_quotation_words", 0) != 0 or not check.get("status")):
+    if (not isinstance(check, dict) or check.get("actor_id", check.get("checked_by")) != record["actor_id"]
+            or check.get("literal_quotation_words", 0) != 0
+            or not (check.get("status") or (check.get("performed") is True and check.get("scope")))):
         return ["SEMANTIC_RESTRICTION_PASS_UNATTESTED"]
     for stamp in (fact["checked_utc"], check.get("checked_utc")):
         try:
@@ -141,15 +145,24 @@ def validate_fact(fact: dict, record: dict, request: dict, body: dict) -> list[s
     locator = fact["locator"]
     if body["kind"] == "PDF":
         return validate_pdf_locator(locator, body) + leakage_codes(fact)
-    if not isinstance(locator, dict) or set(locator) != {"format", "evidence_paragraphs"} or locator["format"] != "HTML":
+    if not isinstance(locator, dict) or not {"format", "evidence_paragraphs"}.issubset(locator) or locator["format"] != "HTML":
         return ["SEMANTIC_LOCATOR_SCHEMA_UNSUPPORTED"]
+    allowed_metadata = {"parser": "html.parser", "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY",
+                        "index_base": 0, "ordinal_base": 0,
+                        "paragraph_text_hash_method": "BeautifulSoup p.get_text(' ',strip=True).encode('utf-8')"}
+    if any(key not in allowed_metadata or value != allowed_metadata[key]
+           for key, value in locator.items() if key not in {"format", "evidence_paragraphs"}):
+        return ["SEMANTIC_LOCATOR_METADATA_UNSUPPORTED"]
     if not locator["evidence_paragraphs"]:
         return ["SEMANTIC_LOCATOR_EMPTY"]
     paragraphs = paragraph_index(body["raw_path"], body["sha256"])
     for place in locator["evidence_paragraphs"]:
-        if set(place) != {"global_p_ltx_p_ordinal", "section_id", "paragraph_text_sha256"}:
+        needed = {"global_p_ltx_p_ordinal", "section_id", "paragraph_text_sha256"}
+        if not needed.issubset(place) or set(place) - needed - {"global_p_ltx_p_index_zero_based", "index_base"}:
             return ["SEMANTIC_PARAGRAPH_SCHEMA_UNSUPPORTED"]
         ordinal = place["global_p_ltx_p_ordinal"]
+        if place.get("index_base", 0) != 0 or place.get("global_p_ltx_p_index_zero_based", ordinal) != ordinal:
+            return ["SEMANTIC_PARAGRAPH_INDEX_CONVENTION_MISMATCH"]
         if type(ordinal) is not int or ordinal not in paragraphs:
             return ["SEMANTIC_PARAGRAPH_NOT_FOUND"]
         primary = paragraphs[ordinal]
@@ -192,7 +205,9 @@ def validate_pdf_locator(locator: dict, body: dict) -> list[str]:
 def transfer_locator(locator: dict) -> dict:
     """Keep source locators while withholding custodian-only render paths."""
     if locator["format"] == "HTML":
-        return locator
+        return {"format": "HTML", "evidence_paragraphs": [
+            {key: place[key] for key in ("global_p_ltx_p_ordinal", "section_id", "paragraph_text_sha256")}
+            for place in locator["evidence_paragraphs"]]}
     return {"format": "PDF", "method_section_locator": locator["method_section_locator"],
             "evidence_pages": [{key: value for key, value in page.items() if key != "rendered_page_path"}
                                for page in locator["evidence_pages"]]}
