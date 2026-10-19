@@ -47,3 +47,29 @@ approved protocol or record independent eligibility decisions.
   Literal quote display is capped uniformly at 25 words across versions of each
   work; this is not an eligibility or sampling limit. Source/evidence roles remain
   explicit, with no fabricated independent semantic-checking attestation.
+
+## Versioned restricted supplement and separate checker context
+
+- At clean `da22533`, the finite-language pass reconciled all 389 members and
+  released one literal procedural clause, while preserving all broader proposals
+  in quarantine. The partial supplement covers 372 works, with 370 having primary
+  bodies and 347 having exact captured-version body evidence. No final preferred
+  version, complete method packet, delivery or eligibility review is claimed.
+  The archive SHA-256 is
+  `066c27ae28ad941ea9ebf963f3fc5d854b2bcd39d1fb060a16b52b5cc4294c08`.
+  Standalone verification, flat 15-file allowlist, byte/hash correspondence and
+  all-null work/member decisions pass. This partial artifact remains preserved.
+- Both inaccessible members have official revision-history withdrawal markers;
+  same-revision official mirror attempts did not produce a body. One transient
+  mirror 429 was retried with bounded backoff and returned 404. No older version
+  was substituted. Structured histories and actual times are committed.
+- A separate semantic SOURCE-RESTRICTION CHECKER was started through the
+  collaboration API with `fork_turns=none`: `/root/a04_semantic_restriction`.
+  Its role is to check provider-generated method proposals against primary source
+  context and remove findings, not adjudicate eligibility. It received an explicit
+  input allowlist with no historical judgments or human sheets. It has attested
+  reconciliation of 372 works / 389 memberships and zero approved facts initially.
+  The context is separate, but filesystem access is shared and not OS-isolated.
+  This is not presented as the A04 fresh independent eligibility reviewer or an
+  independent statistical review. Root will separately validate source hashes,
+  version/member consistency, schemas and leakage before any fact is transferred.
