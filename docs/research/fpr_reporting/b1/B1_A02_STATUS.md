@@ -178,3 +178,8 @@ contains only unresolved IDs. FRAME_BLOCKED; no sampling, outcomes or B2.
 ## 19October2026: A03 assistant review checkpoint
 
 User authorized assistant-led method analysis under the separately committed A03. See [current review checkpoint](B1_A03_REVIEW_STATUS.md). Historical A02 records above are unchanged. Selection remains unexecuted.
+
+
+## Latest state:19October2026 FRAME_BLOCKED
+
+Unplanned source-result exposure prevents a strict outcome-blinding claim. See [current stop report](B1_A03_STOP_STATUS.md) and [concrete process decision request](B1_REVIEW_REQUEST_A03_DEVIATION.md). Current domain-only projection:40 INCLUDE,217 EXCLUDE,115 UNCLEAR over the same372 works; no draw/assignment or B2. Historical entries above are retained, not current authorization.

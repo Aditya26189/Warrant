@@ -1,0 +1,45 @@
+{
+  "checks": {
+    "FPR_001": "OPEN; byte-identical to e806450.",
+    "acl_bulk_reconstruction": {
+      "bytes": 42574037,
+      "result": "PASS",
+      "sha256": "83b1de6eb8e9af0abd7106886ba7e6decbded519ff6d1259bbb94c8286fa6b5d"
+    },
+    "human_file_002_sha256": "271d4347ac7561cd7840176a8ac17bd2f4c15a46a986b3382db32ba9b9c5c627",
+    "new_output_format": "LF and files below10MB PASS; historical first-checkpoint CRLF bytes retained unchanged.",
+    "offline_metadata_parser": "9 tests PASS; initial sandbox dependency PermissionError resolved by elevated read-only rerun.",
+    "original_frame_sha256": "74e109f800fb40f9d8fe5da61c62baf826b9980357bc87ae4f506fab64d9e6ef",
+    "primary_cached_source_view_error_hashes": "319 PASS",
+    "projection_manifest_sha256": "17de25f879749532da5ea79dbe96174bc891a7fe7b8e30b7ca38120f9c83e35f",
+    "projection_replay": "PASS:42 events,41 unique adjudicated works,372 unchanged work IDs,115 unresolved; prior finalized human decisions unchanged.",
+    "protocol_locks": {
+      "PROTOCOL_LOCK_A02.json": {
+        "bound_file_hashes_checked": 19,
+        "sha256": "a8b736803da62bd399644abcc1f2ffb0a767b983560f16629ce16cf5d84147c7"
+      },
+      "PROTOCOL_LOCK_A03.json": {
+        "bound_file_hashes_checked": 10,
+        "sha256": "0c11c681b6f08fdf3a1e34a26675f157be79e757ba6d9f55cd7f7cc85689f4f0"
+      }
+    },
+    "research_helper_ruff": "PASS for capture_method_sources.py and project_a03_review.py; initial B905 corrected before commit.",
+    "scope_since_e806450": "Only docs/research/fpr_reporting/b1 paths; production and frozen experiment outputs unchanged.",
+    "selection_scope": "No eligible frame, random draw, human assignment or populated human extraction sheet.",
+    "supplemental_cached_body_hashes": "21 PASS",
+    "v2_local_method_view_hashes": "155 PASS"
+  },
+  "corrected_verification_failures": [
+    "First checkpoint ad-hoc schema assertion failed because first3 events used the legacy schema; corrected check and normalized replay pass.",
+    "First checkpoint was committed despite CRLF whitespace warnings; historical snapshot preserved and new snapshots use LF.",
+    "Supplemental-receipt checker initially assumed sha256 rather than the older raw_sha256 spelling; corrected checker validated all21 raw bodies."
+  ],
+  "incidental_source_result_exposure": "OCCURRED; process review required, not concealed by passing integrity checks.",
+  "new_method_source_retrieval_after_stop": "NONE",
+  "production_tests_this_continuation": "NOT_RERUN_UNCHANGED_PRODUCTION",
+  "recorded_utc": "2026-10-19T07:30:16.472234+00:00",
+  "source_git_commit": "46f2f06bce698183c6d338c5b04f68cf339c91ab",
+  "status": "FRAME_BLOCKED",
+  "structured_B2_extraction": "NOT_RUN",
+  "verification_tree_state": "New projection/documentation outputs present; scientific projection began from clean committed46f2f06. Final clean-tree check follows the gate commit."
+}

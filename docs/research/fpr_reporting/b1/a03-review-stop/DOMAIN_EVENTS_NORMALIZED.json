@@ -1,0 +1,1142 @@
+[
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 1,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 1,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "INDIRECT_PRIMARY_CORPUS_PROVENANCE",
+    "limitations": "Mixed-source language proportions are not reported or isolated; do not assert every test item is English.",
+    "method_dataset_locators": [
+      "Section3.1 Dataset Construction and Table1 source list",
+      "Section3.2 binary classifier testing",
+      "Official SPML dataset card language metadata"
+    ],
+    "method_only_rationale": "Paper splits a mixture of prompt sources including SPML into training/test inputs and evaluates malicious/benign prompt classifiers. The creator SPML card identifies English; this supports an English-containing input evaluation indirectly.",
+    "recorded_utc": "2026-10-19T06:43:51.662742+00:00",
+    "review_id": "Q003",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q003",
+    "title": "Embedding-based classifiers can detect prompt injection attacks",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2410.22284"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 2,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 2,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "INDIRECT_PRIMARY_CORPUS_PROVENANCE",
+    "limitations": "English support is from primary corpus provenance. Do not transfer the separate content-safety English filter to the injection task or claim all other experiments are English.",
+    "method_dataset_locators": [
+      "Section3.2 Experiment Implementation",
+      "Section3.3 Prompt Injection Detection",
+      "Section6 final deployment discussion",
+      "Official SPML dataset card language metadata"
+    ],
+    "method_only_rationale": "Injection experiments use SPML prompt pairs; the LM head is removed and static hidden-state features train a classifier independently of target answer generation. The creator SPML card identifies English.",
+    "recorded_utc": "2026-10-19T06:43:51.662742+00:00",
+    "review_id": "Q005",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q005",
+    "title": "Lightweight Safety Classification Using Pruned Language Models",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2412.13435"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 3,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 3,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "NOT_NEEDED_AFTER_TIMING_EXCLUSION",
+    "limitations": "This is a domain exclusion, not an assessment of detector accuracy or safety.",
+    "method_dataset_locators": [
+      "Section4.1 Text Generation/Trigger Detection",
+      "Section4.2 Single-Forward Strategy final aggregation"
+    ],
+    "method_only_rationale": "Detection aggregates logit shifts over the target-generated sequence; the concurrent strategy still completes generation before its final trigger decision. This fails the locked pre-answer input-classifier requirement.",
+    "recorded_utc": "2026-10-19T06:43:51.662742+00:00",
+    "review_id": "Q007",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q007",
+    "title": "UniGuardian: A Unified Defense for Detecting Prompt Injection, Backdoor Attacks and Adversarial Attacks in Large Language Models",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2502.13141"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 4,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 4,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "Review covered detector mechanism and evaluation design, not outcome values.",
+    "method_dataset_locators": [
+      "Sections3.3,4.1-4.4"
+    ],
+    "method_only_rationale": "Injection Isolator removes conflicting tool messages, but the specified evaluations compare agent utility/attack-task completion and isolator ablations; no separate input-classification evaluation is established. This is the locked end-to-end defense-study exclusion.",
+    "recorded_utc": "2026-10-19T06:54:48.753024+00:00",
+    "review_id": "Q019",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q019",
+    "title": "DRIFT: Dynamic Rule-Based Defense with Injection Isolation for Securing LLM Agents",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2506.12104"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 5,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 5,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "Do not equate every adversarial retrieval suffix with injected instructions.",
+    "method_dataset_locators": [
+      "Sections3.2-3.4,4.1"
+    ],
+    "method_only_rationale": "Attack optimizes retrieval-query suffixes to promote an unrelated target passage under dense/sparse similarity, rather than injecting behavioral instructions in untrusted text. Detector-score checks concern those retrieval perturbations; this is retrieval corruption outside the input-instruction detector domain.",
+    "recorded_utc": "2026-10-19T06:54:48.829038+00:00",
+    "review_id": "Q022",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q022",
+    "title": "DeRAG: Black-box Adversarial Attacks on Multiple Retrieval-Augmented Generation Applications via Prompt Injection",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2507.15042"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 6,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 6,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after task/timing exclusion.",
+    "limitations": "The title mentions prompt injection; the implemented task and evaluated labels govern.",
+    "method_dataset_locators": [
+      "Sections5.1-5.3,6.1"
+    ],
+    "method_only_rationale": "Semantic fingerprints cluster complete query/answer interactions and the constructed evaluation labels PII leakage from RAG conversations. This is interaction-level information-leakage detection, not a qualifying pre-answer binary injected-input evaluation.",
+    "recorded_utc": "2026-10-19T06:54:48.904029+00:00",
+    "review_id": "Q024",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q024",
+    "title": "LeakSealer: A Semisupervised Defense for LLMs Against Prompt Injection and Leakage Attacks",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2508.00602"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 7,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 7,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after timing exclusion.",
+    "limitations": "Attribution after observed failure is not pre-answer classification.",
+    "method_dataset_locators": [
+      "SectionsIII-B,IV,V-A"
+    ],
+    "method_only_rationale": "Defender observes a malicious or incorrect generated output and traces its causal context. The target output is required for contextual attribution, violating the pre-answer input-detector rule.",
+    "recorded_utc": "2026-10-19T06:54:48.974729+00:00",
+    "review_id": "Q025",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q025",
+    "title": "AttnTrace: Contextual Attribution of Prompt Injection and Knowledge Corruption",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2508.03793"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 8,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 8,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "DIRECT_METHOD_EXAMPLES: attack construction uses English instruction-ignoring and English-alphabet obfuscation templates.",
+    "limitations": "English-containing constructed evaluation supported; not all samples or all scanner components asserted English/input-only.",
+    "method_dataset_locators": [
+      "SectionsII-A,II-C,II-D"
+    ],
+    "method_only_rationale": "Separate transformer/vector and auxiliary-LLM scanners classify attacker-controlled user prompts before downstream answering; response canaries are a separate component and are not the qualifying detector.",
+    "recorded_utc": "2026-10-19T06:54:49.049122+00:00",
+    "review_id": "Q020",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q020",
+    "title": "Enhancing Security in LLM Applications: A Performance Evaluation of Early Detection Systems",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2506.19109"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 9,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 9,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "INDIRECT_METHOD_CONTEXT: English public-policy questions/opinion examples and the actual English spaCy syntactic parser used on evaluated texts support English-containing evaluation.",
+    "limitations": "No assertion of all-English composition; the target consensus model and generative auxiliary detector are distinct.",
+    "method_dataset_locators": [
+      "Section4.1,4.3; AppendixF"
+    ],
+    "method_only_rationale": "Opinion/injection texts are independently assigned input-injection labels by an auxiliary policy detector and syntactic baseline before consensus generation; separate opinion/injection classification design is explicit.",
+    "recorded_utc": "2026-10-19T06:54:49.122112+00:00",
+    "review_id": "Q026",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q026",
+    "title": "Reasoning Enhances Robustness to Prompt Injection in LLM-Based Consensus",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2508.04281"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 10,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 10,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "DIRECT_CONSTRUCTION: synthetic evaluation documents contain specified English instruction-override/review-manipulation payloads; real-document search also uses English attack phrases.",
+    "limitations": "Hidden PDF/HTML text qualifies; this does not imply performance on every language or purely visual payload.",
+    "method_dataset_locators": [
+      "Sections4,5.1,5.3"
+    ],
+    "method_only_rationale": "Standalone document analyzer identifies hidden LLM instruction spans using text matching/classification plus OCR visibility comparison before document processing. Synthetic and real document evaluations separately assess its detection.",
+    "recorded_utc": "2026-10-19T06:54:49.193125+00:00",
+    "review_id": "Q028",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q028",
+    "title": "PhantomLint: Principled Detection of Hidden LLM Prompts in Structured Documents",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2508.17884"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 11,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 11,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "INDIRECT_METHOD_EXAMPLES: the constructed framework/separator/disruptor example and generation templates are English, within the described evaluation-generation pipeline.",
+    "limitations": "English-containing construction supported; no measured held-out language composition or all-English claim.",
+    "method_dataset_locators": [
+      "Sections2,2.1-2.3"
+    ],
+    "method_only_rationale": "Context-aware malicious and safe prompt construction supplies a separate input-guardrail evaluation using held-out application-context prompts.",
+    "recorded_utc": "2026-10-19T06:54:49.266734+00:00",
+    "review_id": "Q015",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q015",
+    "title": "CAPTURE: Context-Aware Prompt Injection Testing and Robustness Enhancement",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2505.12368"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 12,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 12,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "INDIRECT_PRIMARY_CORPUS: SPML creator card labels language en.",
+    "limitations": "English-containing source stratum supported indirectly; test-language proportions/English-only subset not established. English pretraining of the encoder is not the basis.",
+    "method_dataset_locators": [
+      "Sections3.2.1,3.2.3,4.1; SPML creator dataset card"
+    ],
+    "method_only_rationale": "Prompt-injection classifier evaluated on held-out mixed-source input text; SPML is explicitly one source of the mixture and the mixture is split for evaluation.",
+    "recorded_utc": "2026-10-19T06:54:49.337745+00:00",
+    "review_id": "Q016",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q016",
+    "title": "Sentinel: SOTA model to protect against prompt injections",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2506.05446"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 13,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 13,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Direct English experiments statement noted, but task exclusion governs.",
+    "limitations": "Jailbreaking terminology alone was not decisive; corpus identity and evaluated correlation task were.",
+    "method_dataset_locators": [
+      "SectionsIII-A1 and dataset bibliography; AppendixLimitations"
+    ],
+    "method_only_rationale": "The actual source corpus is Do Anything Now, a jailbreak/harmful-request corpus; evaluation correlates modified attack fingerprints. No separate injected-untrusted-input classification stratum is established.",
+    "recorded_utc": "2026-10-19T06:59:35.937609+00:00",
+    "review_id": "Q031",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q031",
+    "title": "BinaryShield: Cross-Service Threat Intelligence in LLM Services using Privacy-Preserving Fingerprints",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2509.05608"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 14,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 14,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "Do not treat all policy/OOD decisions as prompt-injection labels.",
+    "method_dataset_locators": [
+      "Sections3-4"
+    ],
+    "method_only_rationale": "Evaluation is policy extraction and composite enterprise ID/OOD compliance: PII, off-domain requests and prompt injection share OOD. No separate binary injected-input evaluation is identified in the described study design.",
+    "recorded_utc": "2026-10-19T06:59:36.022102+00:00",
+    "review_id": "Q035",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q035",
+    "title": "Policy-as-Prompt: Turning AI Governance Rules into Guardrails for AI Agents",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2509.23994"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 15,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 15,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "The paper labels AdvBench prompt injection; this does not establish the locked input-injection task.",
+    "method_dataset_locators": [
+      "Sections3.1-3.3"
+    ],
+    "method_only_rationale": "The designated prompt-injection experiment uses AdvBench harmful requests alongside deception and bias induction/mitigation; no separate evaluation of instructions injected into untrusted input is specified.",
+    "recorded_utc": "2026-10-19T06:59:36.097252+00:00",
+    "review_id": "Q037",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q037",
+    "title": "Unified Threat Detection and Mitigation Framework (UTDMF): Combating Prompt Injection, Deception, and Bias in Enterprise-Scale Transformers",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2510.04528"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 16,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 16,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "English safety evaluation is explicit but does not repair task mismatch.",
+    "limitations": "An inspection error exposed general safety-table values incidentally. They were not used or copied into this decision.",
+    "method_dataset_locators": [
+      "Section5 benchmark task/column identities; Section4 configurable safety thresholds"
+    ],
+    "method_only_rationale": "Evaluations are harmful-content prompt/response safety benchmarks (ToxicChat, OpenAIMod, Aegis, SimpleSafetyTests, WildGuard, SafeRLHF, BeaverTails, PolyGuard); no separate input-injection classification experiment is specified.",
+    "recorded_utc": "2026-10-19T06:59:36.169903+00:00",
+    "review_id": "Q041",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q041",
+    "title": "OpenGuardrails: A Configurable, Unified, and Scalable Guardrails Platform for Large Language Models",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2510.19169"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 17,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 17,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "DIRECT_ATTACK_CONSTRUCTION: source attack taxonomy and verbatim experimental review-manipulation prompts are in English.",
+    "limitations": "English-containing attacks supported; no claim that every document/item is entirely English.",
+    "method_dataset_locators": [
+      "Section3.1 attack construction; Section4.4 decoupled defense; AppendixA prompts"
+    ],
+    "method_only_rationale": "A standalone deterministic detector inspects untrusted submitted-paper text and removes identified injected instructions before a separate reviewer scores the paper. The detection experiment is distinct from score-inflation evaluation.",
+    "recorded_utc": "2026-10-19T06:59:36.242345+00:00",
+    "review_id": "Q044",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q044",
+    "title": "\"Give a Positive Review Only\": An Early Investigation Into In-Paper Prompt Injection Attacks and Defenses for AI Reviewers",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2511.01287"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 18,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 18,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "DIRECT_CONSTRUCTION: experiments use the stated English fixed-output goal-hijack instruction and English task templates.",
+    "limitations": "Auxiliary detector generation is distinct from using the target task response; not all defense variants are input detectors.",
+    "method_dataset_locators": [
+      "Section4 Methodology: goal hijacking and known-answer detection"
+    ],
+    "method_only_rationale": "Task templates contain an injected fixed-output instruction. Known-answer detection independently tests the untrusted prompt against a designated answer before protecting the original task; classifier evaluation is separately described.",
+    "recorded_utc": "2026-10-19T06:59:36.315070+00:00",
+    "review_id": "Q049",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q049",
+    "title": "Beyond the Benchmark: Innovative Defenses Against Prompt Injection Attacks",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2512.16307"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 19,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 19,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "Attacker-controlled descriptors are relevant surfaces, but the evaluated decision task is tool safety.",
+    "method_dataset_locators": [
+      "SectionIII-D Evaluation and verifier definition"
+    ],
+    "method_only_rationale": "Verifier judges safety of the selected candidate tool given a request and descriptor, and evaluation measures unsafe invocations, leakage and intent deviation. This is tool-use policy/safety validation, rather than separate binary detection of injected input instructions.",
+    "recorded_utc": "2026-10-19T06:59:36.386834+00:00",
+    "review_id": "Q047",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q047",
+    "title": "Semantic Attacks on Tool-Augmented LLMs: Securing the Model Context Protocol Against Descriptor-Level Manipulation",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2512.06556"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 20,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 20,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "Some patterns involve hidden instructions; this alone does not convert overall vulnerability scanning into the prespecified task.",
+    "method_dataset_locators": [
+      "Section3.3 vulnerability framework and severity mapping; validation methodology"
+    ],
+    "method_only_rationale": "Static analysis labels vulnerabilities/pattern severity across skill prose and scripts, including insecure dependencies and permissions. The described validation targets vulnerability findings and pattern severity, not a separate binary injected-text evaluation.",
+    "recorded_utc": "2026-10-19T06:59:36.458302+00:00",
+    "review_id": "Q051",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q051",
+    "title": "Agent Skills in the Wild: An Empirical Study of Security Vulnerabilities at Scale",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2601.10338"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 21,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 21,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "INDIRECT_PRIMARY_CORPUS: official deepset held-out preview contains English input examples.",
+    "limitations": "English-containing evaluation supported through source corpus; no all-English/test-proportion assertion.",
+    "method_dataset_locators": [
+      "Section13 Limitations and experimental task definition; deepset primary test-data preview"
+    ],
+    "method_only_rationale": "The evaluated task is explicitly binary prompt-injection classification on deepset; the backdoor study does not change the underlying input-classification task.",
+    "recorded_utc": "2026-10-19T06:59:36.550995+00:00",
+    "review_id": "Q099",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q099",
+    "title": "Token-Level Generalization in LoRA Adapter Backdoors: Attack Characterization and Behavioral Detection",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2605.30189"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 22,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 22,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "DIRECT: methods explicitly state evaluation prompts in Spanish and English and identify the English perturbation case.",
+    "limitations": "Mixed-language study; no inference of all-English coverage.",
+    "method_dataset_locators": [
+      "Sections3.1 and4 experimental design"
+    ],
+    "method_only_rationale": "Binary PromptGuard input-classification perturbations include a specified English instruction-override prompt, separately evaluated from downstream behavior.",
+    "recorded_utc": "2026-10-19T06:59:36.633993+00:00",
+    "review_id": "Q141",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q141",
+    "title": "Decoding Guardrails: XAI-Guided Perturbation Analysis of Prompt Injection Detection",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2609.24801"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 23,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 23,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "DIRECT: evaluated inputs explicitly restricted to single-turn English.",
+    "limitations": "No extrapolation to multi-turn or multilingual settings.",
+    "method_dataset_locators": [
+      "Section3.5 Scope Boundaries"
+    ],
+    "method_only_rationale": "Input filtering benchmark explicitly separates classifier evasion from downstream attack execution.",
+    "recorded_utc": "2026-10-19T06:59:36.706997+00:00",
+    "review_id": "Q163",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q163",
+    "title": "PIDS-Bench: Evaluating Prompt-Injection Detectors Under Over-Defense, Obfuscation, and Distribution Shift",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "doi:10.1109/access.2026.3728186"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 24,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 24,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "Cryptographic integrity and tool-boundary enforcement are not the locked input classifier task.",
+    "method_dataset_locators": [
+      "Sections6-7 implementation and threat-defense mappings"
+    ],
+    "method_only_rationale": "Evaluated protections verify signatures, authenticated context/history, policy algebra and replay freshness. The optional semantic validator scores intent/operation pairs; no separate malicious/benign injected-prompt classification study is established.",
+    "recorded_utc": "2026-10-19T07:02:25.531230+00:00",
+    "review_id": "Q058",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q058",
+    "title": "Protecting Context and Prompts: Deterministic Security for Non-Deterministic AI",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2602.10481"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 25,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 25,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after timing exclusion.",
+    "limitations": "Detection during inference does not establish detection before any target answer token.",
+    "method_dataset_locators": [
+      "Section4.6 Temporal Feature Aggregation"
+    ],
+    "method_only_rationale": "The prober aggregates attention-entropy sequences over the target-generated tokens. Its final descriptor depends on target generation, so it fails the pre-answer input-only requirement.",
+    "recorded_utc": "2026-10-19T07:02:25.615229+00:00",
+    "review_id": "Q062",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q062",
+    "title": "ICON: Indirect Prompt Injection Defense for Agents based on Inference-Time Correction",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2602.20708"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 26,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 26,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after task/timing exclusion.",
+    "limitations": "No independent input-detector experiment identified in the evaluation design.",
+    "method_dataset_locators": [
+      "Section6.1 Evaluation Metrics"
+    ],
+    "method_only_rationale": "Static/LLM detection reads the complete agent interaction trace, commands and final output to decide whether the attack succeeded. This is post-execution attack-success annotation.",
+    "recorded_utc": "2026-10-19T07:02:25.689234+00:00",
+    "review_id": "Q067",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q067",
+    "title": "Trojan's Whisper: Stealthy Manipulation of OpenClaw through Injected Bootstrapped Guidance",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2603.19974"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 27,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 27,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "Presence of a classifier baseline alone is insufficient when only end-to-end attack success is evaluated.",
+    "method_dataset_locators": [
+      "SectionsV-B andV-C2 defense evaluation design"
+    ],
+    "method_only_rationale": "Defense experiments measure downstream tool-task attack success under context defenses and input filters. No separate binary input-classification evaluation is specified.",
+    "recorded_utc": "2026-10-19T07:02:25.763232+00:00",
+    "review_id": "Q069",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q069",
+    "title": "Invisible Threats from Model Context Protocol: Generating Stealthy Injection Payload via Tree-based Adaptive Search",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2603.24203"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 28,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 28,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "Do not misread the cloud-security confusion matrices as prompt-injection classification labels.",
+    "method_dataset_locators": [
+      "Section4.1 AWS PromptShield and4.2 Azure CIAF"
+    ],
+    "method_only_rationale": "Binary labels in the case studies are malicious cloud activity/ransomware, with prompt injection perturbing those downstream security predictions. This is not binary injected-input detection.",
+    "recorded_utc": "2026-10-19T07:02:25.837203+00:00",
+    "review_id": "Q072",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q072",
+    "title": "Automating Cloud Security and Forensics Through a Secure-by-Design Generative AI Framework",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2604.03912"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 29,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-batch001/DOMAIN_DECISIONS.jsonl",
+      "line": 29,
+      "sha256": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "Information-flow tracking is a different binary task even though prompt injection motivates it.",
+    "method_dataset_locators": [
+      "Section5.1 andAppendixB.2 TaintBench semantics"
+    ],
+    "method_only_rationale": "Labels indicate source-to-sink provenance propagation/control influence across agent traces, rather than whether an input contains injected instructions.",
+    "recorded_utc": "2026-10-19T07:02:25.910312+00:00",
+    "review_id": "Q080",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q080",
+    "title": "Ghost in the Agent: Redefining Information Flow Tracking for LLM Agents",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2604.23374"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 30,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl",
+      "line": 1,
+      "sha256": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "The no-attack arm evaluates downstream exfiltration, not input-detector false alarms.",
+    "method_dataset_locators": [
+      "Sections2.1-2.5 experimental design"
+    ],
+    "method_only_rationale": "Conditions compare downstream exfiltration success and benign task completion in multi-session runs. The sanitizer is a pipeline component, but the specified experiment does not separately evaluate binary injected-input decisions.",
+    "recorded_utc": "2026-10-19T07:09:49.135817+00:00",
+    "review_id": "Q088",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q088",
+    "title": "Injection-Execution Dissociation: A Mechanistic Evaluation of Persistent Memory Attacks and Defenses in Stateful LLM Agents",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2605.08442"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 31,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl",
+      "line": 2,
+      "sha256": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "Refusal alignment is excluded by the approved frame.",
+    "method_dataset_locators": [
+      "Sections3.1,4,5.1"
+    ],
+    "method_only_rationale": "RAG-Pref retrieves contrasting preference/alignment data to elicit refusal of MCP exploits; the experimental decision is refusal/behavior of the responding model. No separate binary injected-input detector evaluation is identified.",
+    "recorded_utc": "2026-10-19T07:09:49.209824+00:00",
+    "review_id": "Q090",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q090",
+    "title": "Training-Free Refusal of MCP Exploits via Retrieval-Augmented Generation",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2605.11217"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 32,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl",
+      "line": 3,
+      "sha256": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac"
+    },
+    "language_evidence": "DIRECT_METHOD_EXAMPLES: the paired experimental email clauses and user delegations are English.",
+    "limitations": "English-containing paired construction supported; no general all-English literature claim.",
+    "method_dataset_locators": [
+      "Section3 paired email dataset and input-classifier comparison"
+    ],
+    "method_only_rationale": "PromptGuard classifiers are separately tested on authority-asserting versus neutral untrusted emails, independent of whether an agent follows the email.",
+    "recorded_utc": "2026-10-19T07:09:49.287826+00:00",
+    "review_id": "Q092",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q092",
+    "title": "AI Agents May Always Fall for Prompt Injections",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2605.17634"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 33,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl",
+      "line": 4,
+      "sha256": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac"
+    },
+    "language_evidence": "DIRECT: attack suite explicitly includes English alongside Kurdish, Arabic and code-switching.",
+    "limitations": "Mixed-language evaluation; do not treat compromise detection as pre-answer input detection.",
+    "method_dataset_locators": [
+      "Sections4.3 and5.4 input-level classifier experiment"
+    ],
+    "method_only_rationale": "Separate input-classifier comparison tests static untrusted attack/benign text. The proposed compromise tripwires do not supply the timing justification; the input baselines do.",
+    "recorded_utc": "2026-10-19T07:09:49.359828+00:00",
+    "review_id": "Q089",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q089",
+    "title": "AgentShield: Deception-based Compromise Detection for Tool-using LLM Agents",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2605.11026"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 34,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl",
+      "line": 5,
+      "sha256": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac"
+    },
+    "language_evidence": "Not needed after binary-task exclusion.",
+    "limitations": "Do not invent a binary regrouping of the four labels.",
+    "method_dataset_locators": [
+      "SectionsIV-A andIV-B dataset/training definitions"
+    ],
+    "method_only_rationale": "Implemented task is multiclass identification of clean, prefix, suffix and obfuscated synthetic text. A separate binary injected-input evaluation is not specified.",
+    "recorded_utc": "2026-10-19T07:09:49.438827+00:00",
+    "review_id": "Q094",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q094",
+    "title": "On the Geometric Limits of Transformer Defenses against Obfuscation Attacks: Latent Embedding Collapse & Performance Robustness Gap",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2605.19159"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 35,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl",
+      "line": 6,
+      "sha256": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "Prompt injection in motivation does not establish the qualifying empirical task.",
+    "method_dataset_locators": [
+      "Experiments / Experimental Setup / Datasets; Method / Auxiliary Model"
+    ],
+    "method_only_rationale": "The evaluated corpora are JailBreakBench, ToxicPrompts and AdvPromptGen, and training targets jailbreaking/toxic prompts. No distinct injected-untrusted-input evaluation is established.",
+    "recorded_utc": "2026-10-19T07:09:49.513797+00:00",
+    "review_id": "Q097",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q097",
+    "title": "Disentangling Adversarial Prompts: A Semantic-Graph Defense for Robust LLM Security",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2605.27823"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 36,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl",
+      "line": 7,
+      "sha256": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "Do not select merely because InjecGuard appears as a baseline.",
+    "method_dataset_locators": [
+      "Section5.1 Evaluation Metrics and ARGUS implementation"
+    ],
+    "method_only_rationale": "Evaluation measures downstream attack success, task utility/refusal and token cost under an execution audit. Input-classifier baselines are assessed as agent defenses, without separate injected-input classification evaluation.",
+    "recorded_utc": "2026-10-19T07:09:49.587827+00:00",
+    "review_id": "Q087",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q087",
+    "title": "ARGUS: Defending LLM Agents Against Context-Aware Prompt Injection",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2605.03378"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 37,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl",
+      "line": 8,
+      "sha256": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "The exclusion uses the empirical task definition, not comparative results.",
+    "method_dataset_locators": [
+      "Section5.1 Metrics andBaseline Defenses"
+    ],
+    "method_only_rationale": "Specified outcomes are benign task utility, downstream execution of injected task and utility under attack. Classifier baselines terminate the agent pipeline; no separate binary input evaluation is specified.",
+    "recorded_utc": "2026-10-19T07:09:49.660824+00:00",
+    "review_id": "Q082",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q082",
+    "title": "AgentVisor: Defending LLM Agents Against Prompt Injection via Semantic Virtualization",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2604.24118"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 38,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl",
+      "line": 9,
+      "sha256": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "No independent binary injected-input classification experiment established.",
+    "method_dataset_locators": [
+      "SectionVI-A Evaluation Metrics"
+    ],
+    "method_only_rationale": "Security outcome is whether the agent invokes any attacker tool, with task completion separately judged from execution. This is tool-execution/end-to-end defense evaluation.",
+    "recorded_utc": "2026-10-19T07:09:49.733826+00:00",
+    "review_id": "Q077",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q077",
+    "title": "SafeAgent: A Runtime Protection Architecture for Agentic Systems",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2604.17562"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "EXCLUDE",
+    "event_sequence": 39,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl",
+      "line": 10,
+      "sha256": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac"
+    },
+    "language_evidence": "Not needed after task exclusion.",
+    "limitations": "Blocked injection tasks are not automatically classifier decisions on injected text.",
+    "method_dataset_locators": [
+      "Sections4.1-4.2 Evaluation Strategy"
+    ],
+    "method_only_rationale": "AgentDojo security labels use deterministic downstream task-success scoring and owner-harm action categories. No standalone injected-input classifier task is established.",
+    "recorded_utc": "2026-10-19T07:09:49.808797+00:00",
+    "review_id": "Q078",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q078",
+    "title": "Owner-Harm: A Missing Threat Model for AI Agent Safety",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2604.18658"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 40,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl",
+      "line": 11,
+      "sha256": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac"
+    },
+    "language_evidence": "DIRECT_EVALUATION_EXAMPLE: TableII supplies English system/context/user text from the custom benchmark.",
+    "limitations": "English-containing benchmark supported through example; full language composition is unstated.",
+    "method_dataset_locators": [
+      "SectionIV-A benchmark construction; TableII example attack"
+    ],
+    "method_only_rationale": "Custom benchmark labels benign requests, direct overrides and indirect retrieved-document instructions; runtime middleware decides before forwarding requests.",
+    "recorded_utc": "2026-10-19T07:09:49.882794+00:00",
+    "review_id": "Q066",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q066",
+    "title": "Prompt Control-Flow Integrity: A Priority-Aware Runtime Defense Against Prompt Injection in LLM Systems",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2603.18433"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": null,
+    "decision": "INCLUDE",
+    "event_sequence": 41,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl",
+      "line": 12,
+      "sha256": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac"
+    },
+    "language_evidence": "DIRECT_EVALUATED_SOURCE_EXAMPLE: Table4 quotes English injected instructions found in the collected resume corpus.",
+    "limitations": "English-containing real-source examples supported; no all-English resume or language-specific aggregate assertion.",
+    "method_dataset_locators": [
+      "Sections3-4 detector/data design; Table4 instruction examples from detected resumes"
+    ],
+    "method_only_rationale": "Hybrid Cascade Detector validates hidden text as input instructions before any downstream screening outcome; empirical validation is independent of hiring decisions.",
+    "recorded_utc": "2026-10-19T07:09:49.958826+00:00",
+    "review_id": "Q098",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q098",
+    "title": "Measuring Real-World Prompt Injection Attacks in LLM-based Resume Screening",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2605.28999"
+  },
+  {
+    "adjudicator": "CODEX_METHOD_ADJUDICATION",
+    "correction_of": "a03-method-batch001/DOMAIN_DECISIONS.jsonl Q007 EXCLUDE",
+    "decision": "INCLUDE",
+    "event_sequence": 42,
+    "exposure_status": "INCIDENTAL_EXPOSURE_DISCLOSED_PROCESS_REVIEW_REQUIRED",
+    "historical_record": {
+      "file": "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl",
+      "line": 13,
+      "sha256": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac"
+    },
+    "language_evidence": "INDIRECT_PRIMARY_CORPUS: AppendixB.3 explicitly identifies deepset/prompt-injections and Section5 uses its test split; official held-out preview contains English inputs.",
+    "limitations": "The correction concerns whole-paper eligibility; it does not claim that UniGuardian itself is pre-answer. Corpus language proportions are not established.",
+    "method_dataset_locators": [
+      "Section5 Experimental Evaluation; AppendixB.3 datasets"
+    ],
+    "method_only_rationale": "Although UniGuardian itself depends on target-generated output, Section5 separately evaluates PromptGuard and input-perplexity detector baselines against poisoned/clean input labels. This qualifying secondary experiment was overlooked in the initial exclusion.",
+    "recorded_utc": "2026-10-19T07:09:49.068826+00:00",
+    "review_id": "Q007",
+    "scope": "DOMAIN_ONLY_NOT_ELIGIBLE_FRAME",
+    "source_git_commit": "6294097c25c45d5d35adfb363eda6377191afac0",
+    "source_receipt_file": "a03-method-batch001/SOURCE_PROVENANCE.json",
+    "source_receipt_review_id": "Q007",
+    "title": "UniGuardian: A Unified Defense for Detecting Prompt Injection, Backdoor Attacks and Adversarial Attacks in Large Language Models",
+    "version_eligibility": "NOT_RUN",
+    "work_id": "arxiv:2502.13141"
+  }
+]

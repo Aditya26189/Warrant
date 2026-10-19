@@ -1,0 +1,42 @@
+{
+  "B2": "NOT_AUTHORIZED",
+  "counts": {
+    "EXCLUDE": 217,
+    "INCLUDE": 40,
+    "UNCLEAR": 115
+  },
+  "created_utc": "2026-10-19T07:26:45.211447+00:00",
+  "current_works_to_screen": 372,
+  "eligible_version_freeze": "NOT_RUN",
+  "events": 42,
+  "files": {
+    "DOMAIN_EVENTS_NORMALIZED.json": "0dfee0f20d2461da630d1ba2105da2e65081aae29f4768f1183972bf9f714a30",
+    "PENDING_DOMAIN_QUESTIONS.json": "36dcadbccaa35b8c6d54ea6dd1baf263459bcabe3fedc0f8832e379bc95c423a",
+    "SCREENING_LEDGER.json": "458d695dfb4f003e49d8e63c1f8738cc72248f00920c94c7714d24a6e51841c7"
+  },
+  "human_six_assignment": "NOT_RUN",
+  "incidental_result_exposure": "OCCURRED",
+  "input_sha256": {
+    "PROTOCOL_LOCK_A03.json": "0c11c681b6f08fdf3a1e34a26675f157be79e757ba6d9f55cd7f7cc85689f4f0",
+    "a02-human-batch001/WORK_ID_CROSSWALK.json": "dff1e9164809fa30dee18660c0f934061864ad6b9950a74355f225abd84f159d",
+    "a02-human-batch002/PENDING_METADATA_ANSWERS_BLANK.json": "b4973c6c815e8b6ab6a4cd00130936388b171dc58ad979152b49a21cfbdac118",
+    "a02-human-batch002/SCREENING_LEDGER.json": "90d92ddf0c143f6f2c690dc0437111782358fa0b3e83f12552dd060d73dc2b10",
+    "a03-method-batch001/DOMAIN_DECISIONS.jsonl": "c1dbd09de68a1f0b3f1d62b06fb800ff16e18f8bbee4cb66f8f1f701d87f2ba4",
+    "a03-method-batch001/SOURCE_PROVENANCE.json": "0bf8451d7f340043367f9d721e5095d7491db1353c3b8dbad72165c415bc7487",
+    "a03-method-events002/DOMAIN_DECISION_EVENTS.jsonl": "c5dab1bd5ee91c537422da040be01f2ebe830dffc822c68e8ce6f7feb84576ac",
+    "a03-method-events002/EXPOSURE_DEVIATION.json": "ee110bb9427d4b29787fbe21fa615b7c8681e68b6607b0981b4fc141c1a13d02",
+    "a03-method-events002/REVIEW_OVERLAP_NOTE.json": "4efc473a306dc8242b25f3015b0c023d53b2cdd249c371535f06a0e7acae94d7",
+    "a03-method-events002/SUPPLEMENTAL_SOURCE_PROVENANCE.json": "9aaca13f7019533537ef87bdf90edf28748e3cdcdafcd03a03a31493daf4e589",
+    "project_a03_review.py": "80fbdcd4e89cd8fa141eef605948167910929a4c7bc4ae006a3b27b165b897fa"
+  },
+  "newly_adjudicated_works": 41,
+  "original_work_cap": 500,
+  "reason": "UNPLANNED_RESULT_EXPOSURE_REQUIRES_PROCESS_DECISION",
+  "scope": "DOMAIN_PROGRESS_ONLY_NOT_ELIGIBLE_FRAME",
+  "source_git_commit": "46f2f06bce698183c6d338c5b04f68cf339c91ab",
+  "source_tree_clean_at_start": true,
+  "status": "FRAME_BLOCKED",
+  "structured_FPR_extraction": "NOT_RUN",
+  "ten_paper_draw": "NOT_RUN",
+  "unresolved_domain_records": 115
+}
