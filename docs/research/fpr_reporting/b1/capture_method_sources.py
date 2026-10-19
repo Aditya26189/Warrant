@@ -22,7 +22,7 @@ from pypdf.errors import PdfReadError
 
 BASE = Path(__file__).resolve().parent
 CACHE = Path("C:/Users/LawLight/Desktop/accenture/.venv/fpr-b1-method-cache-20261019")
-GOOD = re.compile(r"method|dataset|data set|data collection|experimental setup|evaluation setup|task definition|problem (?:setup|formulation)|implementation|preprocess|limitation|benchmark construction", re.I)
+GOOD = re.compile(r"method|dataset|data set|data collection|experimental setup|evaluation setup|task definition|problem (?:setup|formulation)|implementation|preprocess|limitation|benchmark construction|framework|our approach|architecture|system design|threat model|overview", re.I)
 BAD = re.compile(r"results|ablation|performance|comparison|metrics|references|related work", re.I)
 
 
@@ -49,7 +49,7 @@ def html_view(raw: bytes) -> dict:
     headings = [h.get_text(" ", strip=True) for h in soup.find_all(re.compile("^h[1-6]$"))]
     paragraphs = []
     for i, p in enumerate(soup.select("p.ltx_p")):
-        if p.find_parent(["table", "figure"]):
+        if p.find_parent(["table", "figure"]) or p.find_parent(class_="ltx_abstract"):
             continue
         labels = []
         for section in p.find_parents("section"):
@@ -58,8 +58,8 @@ def html_view(raw: bytes) -> dict:
                 labels.append(h.get_text(" ", strip=True))
         closest = labels[0] if labels else "UNHEADED"
         text = p.get_text(" ", strip=True)
-        language_fact = bool(re.search(r"English|language(?:s| filtering)?", text, re.I))
-        if BAD.search(closest) or "abstract" in closest.casefold():
+        language_fact = bool(re.search(r"\bEnglish\b|\bmultilingual\b|\bcross.lingual\b|\blanguages\b|\blanguage (?:filtering|coverage|distribution|selection|setting)\b", text, re.I))
+        if (any(BAD.search(label) for label in labels) and not GOOD.search(closest)) or "abstract" in closest.casefold():
             continue
         if not GOOD.search(" / ".join(labels)) and not language_fact:
             continue
