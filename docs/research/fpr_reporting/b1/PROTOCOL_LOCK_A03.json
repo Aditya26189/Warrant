@@ -1,0 +1,32 @@
+{
+  "B2": "NOT_AUTHORIZED",
+  "amendment": "A03_ASSISTANT_METHOD_REVIEW",
+  "created_utc": "2026-10-19T06:33:58.780814+00:00",
+  "current_work_records": 372,
+  "discovery_indexes": [
+    "arxiv",
+    "acl_anthology"
+  ],
+  "domain_reviewer": "CODEX_METHOD_ADJUDICATION",
+  "files": {
+    "AMENDMENT_A01_SENTINEL_EXCLUSIONS.md": "a74caf940b5f9c0aa2b73435483bb586480a46539fd869b65bd8bfde001b6efb",
+    "AMENDMENT_A02_RETRIEVAL_SCOPE.md": "bfad507a51bf480127cfbc4da474d49d181ffbf73a1d21f0c004b0817ebd6e81",
+    "AMENDMENT_A03_ASSISTANT_METHOD_REVIEW.md": "64b586ef15f73af255e237aa75daae4ac97ef90f1e13d956db8972c106790a40",
+    "HUMAN_BATCH_RECEIPT_002.json": "60e209e4cfa97c99677da7f26cbb417e5f70b64651e16828b1401323996f2096",
+    "HUMAN_BATCH_RESPONSE_002.json": "271d4347ac7561cd7840176a8ac17bd2f4c15a46a986b3382db32ba9b9c5c627",
+    "PROTOCOL_LOCK_A02.json": "a8b736803da62bd399644abcc1f2ffb0a767b983560f16629ce16cf5d84147c7",
+    "SENTINEL_INVENTORY_AMENDED.json": "dafd88a2eb9e904054dd4dd0eeb579e9e8acabae8bc7062d49ca0355855ed69f",
+    "a02-human-batch001/WORK_ID_CROSSWALK.json": "dff1e9164809fa30dee18660c0f934061864ad6b9950a74355f225abd84f159d",
+    "a02-human-batch001/WORK_RECORDS.json": "dce32691f348356c587f3cbd4ea03637a0af59974b87ae24cf238e6d72cdf34c",
+    "a02-human-batch002/SCREENING_LEDGER.json": "90d92ddf0c143f6f2c690dc0437111782358fa0b3e83f12552dd060d73dc2b10"
+  },
+  "human_assignment_seed": 20261018,
+  "human_verification_not_fabricated": true,
+  "independent_human_outcome_extraction": "LATER_UNCHANGED_NOT_STARTED",
+  "sampling_seed": 20261017,
+  "scope": "B1_ONLY",
+  "source_git_commit": "6d3f437bb8806b7b79ba68515efed95ea107664d",
+  "source_refresh": false,
+  "source_tree_clean_at_start": true,
+  "unresolved_domain_records": 156
+}
