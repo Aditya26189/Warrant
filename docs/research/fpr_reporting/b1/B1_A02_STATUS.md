@@ -173,3 +173,8 @@ received in valid JSON; transport truncation resolved. Raw decisions19 INCLUDE,
 17 new domain inclusions and2 exclusions:372works23INCLUDE193EXCLUDE156UNCLEAR.
 New [remaining combined queue](a02-human-batch002/REMAINING_METADATA_REVIEW.md)
 contains only unresolved IDs. FRAME_BLOCKED; no sampling, outcomes or B2.
+
+
+## 19October2026: A03 assistant review checkpoint
+
+User authorized assistant-led method analysis under the separately committed A03. See [current review checkpoint](B1_A03_REVIEW_STATUS.md). Historical A02 records above are unchanged. Selection remains unexecuted.

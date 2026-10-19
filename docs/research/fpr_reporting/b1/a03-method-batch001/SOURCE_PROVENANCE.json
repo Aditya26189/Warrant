@@ -1,0 +1,4265 @@
+{
+  "full_text_storage": "LOCAL_IGNORED_CACHE_NOT_PUBLISHED",
+  "scope": "PRIMARY_METHOD_DOMAIN_ONLY",
+  "supplemental_primary_sources": [
+    {
+      "finished_utc": "2026-10-19T06:53:45.116948+00:00",
+      "purpose": "PRIMARY_CORPUS_LANGUAGE_PROVENANCE_ONLY",
+      "receipt_file": "AgentDojo-correct-README.provenance.json",
+      "sha256": "d8c6460ecce9bbf59ed300fbc74b4440188f74cd147a7611836270be49e7660e",
+      "started_utc": "2026-10-19T06:53:23.666543+00:00",
+      "status": 200,
+      "url": "https://raw.githubusercontent.com/ethz-spylab/agentdojo/main/README.md"
+    },
+    {
+      "finished_utc": "2026-10-19T06:47:59.671061+00:00",
+      "purpose": "Primary benchmark language provenance only; no sample-count or performance fields extracted",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\AgentDojo-README.body",
+      "receipt_file": "AgentDojo-README.provenance.json",
+      "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+      "started_utc": "2026-10-19T06:47:38.150757+00:00",
+      "status": 404,
+      "url": "https://raw.githubusercontent.com/eth-sri/agentdojo/main/README.md"
+    },
+    {
+      "content_type": "text/plain; charset=utf-8",
+      "finished_utc": "2026-10-19T06:42:45.922963+00:00",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\deepset-card.body",
+      "raw_sha256": "d90b4518dfe06154deeec938243d1ec9119bdfbfd2105aee9cf1567999764b94",
+      "receipt_file": "deepset-card.provenance.json",
+      "scope": "BIBLIOGRAPHIC_OR_DATASET_LANGUAGE_VERIFICATION_NO_NEW_CANDIDATES",
+      "started_utc": "2026-10-19T06:42:45.478192+00:00",
+      "status": 200,
+      "url": "https://huggingface.co/datasets/deepset/prompt-injections/raw/main/README.md"
+    },
+    {
+      "finished_utc": "2026-10-19T06:47:37.657283+00:00",
+      "purpose": "Primary benchmark language provenance only; no sample-count or performance fields extracted",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\deepset-test-language.body",
+      "receipt_file": "deepset-test-language.provenance.json",
+      "sha256": "75b4abca42892f6a53c077b8803ebf95a72a5d50e6903f66d34b9301f333f3e4",
+      "started_utc": "2026-10-19T06:47:36.891624+00:00",
+      "status": 200,
+      "url": "https://datasets-server.huggingface.co/first-rows?dataset=deepset/prompt-injections&config=default&split=test"
+    },
+    {
+      "content_type": "text/plain; charset=utf-8",
+      "finished_utc": "2026-10-19T06:42:46.763933+00:00",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\fka-card.body",
+      "raw_sha256": "5e8b91b0c80be0af464727e1aca8eabb1dc63a1545dc03f36b9f94ef4d96f145",
+      "receipt_file": "fka-card.provenance.json",
+      "scope": "BIBLIOGRAPHIC_OR_DATASET_LANGUAGE_VERIFICATION_NO_NEW_CANDIDATES",
+      "started_utc": "2026-10-19T06:42:45.923934+00:00",
+      "status": 200,
+      "url": "https://huggingface.co/datasets/fka/awesome-chatgpt-prompts/raw/main/README.md"
+    },
+    {
+      "finished_utc": "2026-10-19T06:57:07.810559+00:00",
+      "purpose": "PRIMARY_CORPUS_LANGUAGE_PROVENANCE_ONLY",
+      "receipt_file": "HotpotQA-card.provenance.json",
+      "sha256": "3cfab003a856275d3198b031c6b2ac46c63178fb462a4123705f652b71b22813",
+      "started_utc": "2026-10-19T06:57:07.390138+00:00",
+      "status": 200,
+      "url": "https://huggingface.co/datasets/hotpotqa/hotpot_qa/raw/main/README.md"
+    },
+    {
+      "finished_utc": "2026-10-19T06:57:07.388130+00:00",
+      "purpose": "PRIMARY_CORPUS_LANGUAGE_PROVENANCE_ONLY",
+      "receipt_file": "MSMARCO-card.provenance.json",
+      "sha256": "12d6f8d18909a166172b413ccf060856a2c7c4e063423171418a2c81d821b479",
+      "started_utc": "2026-10-19T06:57:06.879123+00:00",
+      "status": 200,
+      "url": "https://huggingface.co/datasets/microsoft/ms_marco/raw/main/README.md"
+    },
+    {
+      "content_type": "text/html; charset=utf-8",
+      "finished_utc": "2026-10-19T06:42:44.465924+00:00",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q002-abs.body",
+      "raw_sha256": "5000a74a49ad53aa016b78482c6382d5a7c943ebb6a31471a45a6d3c7815a5df",
+      "receipt_file": "Q002-abs.provenance.json",
+      "scope": "BIBLIOGRAPHIC_OR_DATASET_LANGUAGE_VERIFICATION_NO_NEW_CANDIDATES",
+      "started_utc": "2026-10-19T06:42:43.483922+00:00",
+      "status": 200,
+      "url": "https://arxiv.org/abs/2410.21337"
+    },
+    {
+      "finished_utc": "2026-10-19T06:43:56.274724+00:00",
+      "purpose": "Original manuscript method/domain verification only; latest v2 withdrawal metadata retained and not replaced for selection",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q002-original-v1.pdf",
+      "receipt_file": "Q002-original-v1.provenance.json",
+      "sha256": "1feee0c52647f9c5936399e6c8ad5c9d1fb7fe2c90ca5d82c68d77d016ef9064",
+      "started_utc": "2026-10-19T06:43:55.337370+00:00",
+      "status": 200,
+      "url": "https://arxiv.org/pdf/2410.21337v1"
+    },
+    {
+      "content_type": "text/html; charset=utf-8",
+      "finished_utc": "2026-10-19T06:42:44.927148+00:00",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q002-v2-abs.body",
+      "raw_sha256": "90936be3269df78269669c206ad9ba5a2ec088cb0887c2a1ff0d85d96cbe27a3",
+      "receipt_file": "Q002-v2-abs.provenance.json",
+      "scope": "BIBLIOGRAPHIC_OR_DATASET_LANGUAGE_VERIFICATION_NO_NEW_CANDIDATES",
+      "started_utc": "2026-10-19T06:42:44.511950+00:00",
+      "status": 200,
+      "url": "https://arxiv.org/abs/2410.21337v2"
+    },
+    {
+      "finished_utc": "2026-10-19T06:47:38.149785+00:00",
+      "purpose": "Primary benchmark language provenance only; no sample-count or performance fields extracted",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\safe-guard-card.body",
+      "receipt_file": "safe-guard-card.provenance.json",
+      "sha256": "fa44e3ab97a9aadd6564f4960445a9d7a01619ef60a5bbb0ec0d6a340c50cb4e",
+      "started_utc": "2026-10-19T06:47:37.659282+00:00",
+      "status": 200,
+      "url": "https://huggingface.co/datasets/xTRam1/safe-guard-prompt-injection/raw/main/README.md"
+    },
+    {
+      "finished_utc": "2026-10-19T06:53:23.664536+00:00",
+      "purpose": "PRIMARY_CORPUS_LANGUAGE_PROVENANCE_ONLY",
+      "receipt_file": "safe-guard-test-language.provenance.json",
+      "sha256": "91cae222427e1e96f7a4a174fe16b5c0385ebf85cfb0041cb62738b20103801f",
+      "started_utc": "2026-10-19T06:53:22.975804+00:00",
+      "status": 200,
+      "url": "https://datasets-server.huggingface.co/first-rows?dataset=xTRam1/safe-guard-prompt-injection&config=default&split=test"
+    },
+    {
+      "content_type": "text/plain; charset=utf-8",
+      "finished_utc": "2026-10-19T06:42:45.475199+00:00",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\SPML-card.body",
+      "raw_sha256": "8f583aa131c37be5e2a7f454bb63495bdba38c7011c75b8f8fca2151891e0327",
+      "receipt_file": "SPML-card.provenance.json",
+      "scope": "BIBLIOGRAPHIC_OR_DATASET_LANGUAGE_VERIFICATION_NO_NEW_CANDIDATES",
+      "started_utc": "2026-10-19T06:42:44.969316+00:00",
+      "status": 200,
+      "url": "https://huggingface.co/datasets/reshabhs/SPML_Chatbot_Prompt_Injection/raw/main/README.md"
+    }
+  ],
+  "work_sources": [
+    {
+      "attempts": [
+        {
+          "error": "HTTP Error 404: Not Found",
+          "error_body_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q002-1.error-body",
+          "error_body_sha256": "ba9a9f4035acde9e6e9ce1f55340e58210d906767ab64e1f84383b93f14785e6",
+          "error_type": "HTTPError",
+          "finished_utc": "2026-10-19T06:38:01.245883+00:00",
+          "started_utc": "2026-10-19T06:38:00.900881+00:00",
+          "status": 404,
+          "url": "https://arxiv.org/html/2410.21337v2"
+        },
+        {
+          "error": "HTTP Error 404: Not Found",
+          "error_body_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q002-2.error-body",
+          "error_body_sha256": "2840278bdb01636bcb75d9f9641792a924d38b64b7d9b30af4ae2ebc9bdf9344",
+          "error_type": "HTTPError",
+          "finished_utc": "2026-10-19T06:38:01.679881+00:00",
+          "started_utc": "2026-10-19T06:38:01.245883+00:00",
+          "status": 404,
+          "url": "https://arxiv.org/pdf/2410.21337v2"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q002",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2410.21337"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 115434,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2410.22284v1",
+          "finished_utc": "2026-10-19T06:38:01.463891+00:00",
+          "paragraphs": 12,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q003-1.html",
+          "sha256": "6b4bec27c9cc14b4c38104be738bf1f6f9ff83ecf26bdac448c7a4e7889b5300",
+          "started_utc": "2026-10-19T06:38:00.902888+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2410.22284v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q003-1.method-view.json",
+          "view_sha256": "57dfcf78385c982dbfbb399eb1ae756e0621dbc323a48c730386a8fdf681fff0"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q003",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2410.22284"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 166715,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2412.13435v1",
+          "finished_utc": "2026-10-19T06:38:02.156910+00:00",
+          "paragraphs": 24,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q005-1.html",
+          "sha256": "d5bd52277f1ee7acbbca30e48cd7e4d8f4207edfedc6aea7597a9de6e41e0b02",
+          "started_utc": "2026-10-19T06:38:00.903886+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2412.13435v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q005-1.method-view.json",
+          "view_sha256": "eb7c1fa2543cba88c3c61738b5238ba3929aebf7624ee8f6d4ee9e3d6b78803c"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q005",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2412.13435"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 588933,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2502.13141v2",
+          "finished_utc": "2026-10-19T06:38:02.816984+00:00",
+          "paragraphs": 31,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q007-1.html",
+          "sha256": "5fd6a6c1e351f18b62b62495c81fa62ee998d37867f9892b58781e67d852c770",
+          "started_utc": "2026-10-19T06:38:01.541891+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2502.13141v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q007-1.method-view.json",
+          "view_sha256": "d5371e1e047a070c386a20b1a824b2ac6ad6a3f818c99db8f5791a0876af5d4a"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q007",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2502.13141"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 235439,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2503.16248v3",
+          "finished_utc": "2026-10-19T06:38:41.949749+00:00",
+          "paragraphs": 11,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q008-1.html",
+          "sha256": "a45a8ee43a97266301273bad28f68d20f2be12015db01e5f542f1e72ccf95f52",
+          "started_utc": "2026-10-19T06:38:41.099358+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2503.16248v3",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q008-1.method-view.json",
+          "view_sha256": "274b486357124e92386367743d9ae8389a2ef09e8e921bed963b21e26cb7d48a"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q008",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2503.16248"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 210285,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2503.21464v1",
+          "finished_utc": "2026-10-19T06:38:42.343748+00:00",
+          "paragraphs": 29,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q009-1.html",
+          "sha256": "23f877cc66d7a70fab2e4a6dd11165d56d602789bdebe56ebc5abefaabdb0cd6",
+          "started_utc": "2026-10-19T06:38:41.102360+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2503.21464v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q009-1.method-view.json",
+          "view_sha256": "d00114ba950c6d1dccd1567cdae012bc02639878beeec4d1ba2a0fd223cdf2e9"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q009",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2503.21464"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 360655,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2504.09593v2",
+          "finished_utc": "2026-10-19T06:38:42.368755+00:00",
+          "paragraphs": 11,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q010-1.html",
+          "sha256": "898807fefad4ed2dbd76903bd834bb8eb6d81e0952816b2f84ac87114aa9b7d2",
+          "started_utc": "2026-10-19T06:38:41.205353+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2504.09593v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q010-1.method-view.json",
+          "view_sha256": "7336037c7afc9ff3dc9c14f72b164933ee0ea551f93a7fce9781b13b6d7ec743"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q010",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2504.09593"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 209119,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2504.11168v3",
+          "finished_utc": "2026-10-19T06:38:42.993746+00:00",
+          "paragraphs": 8,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q011-1.html",
+          "sha256": "38c9178a8e32abeefa4321918ab82f6a4273835b2373d54a7c82e2a3e9cfcfed",
+          "started_utc": "2026-10-19T06:38:42.359754+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2504.11168v3",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q011-1.method-view.json",
+          "view_sha256": "9c36220806a8b922e3bfd70b2301930fb557683448d5d8adfc7706c8173d03b4"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q011",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2504.11168"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 602298,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2504.19793v3",
+          "finished_utc": "2026-10-19T06:38:44.273474+00:00",
+          "paragraphs": 34,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q013-1.html",
+          "sha256": "a875763c56e10b8254686bd71650f441bd9be1911426d3221554699612f08895",
+          "started_utc": "2026-10-19T06:38:42.360752+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2504.19793v3",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q013-1.method-view.json",
+          "view_sha256": "01f28b81d23c608f3438ca06e2c7f853ac2ef86d5569c612b3174ae2bcb965dd"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q013",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2504.19793"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 509883,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2505.03574v1",
+          "finished_utc": "2026-10-19T06:38:43.498442+00:00",
+          "paragraphs": 55,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q014-1.html",
+          "sha256": "21e29ab1558e8f68df80b852a9712e8cef7a92edcb8c2b4e8bdba5cb9ba00d42",
+          "started_utc": "2026-10-19T06:38:42.375761+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2505.03574v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q014-1.method-view.json",
+          "view_sha256": "42a4ecb095d7eae5175cf895ea5365a930ac39a78f431d638785d7c47c8b6bc3"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q014",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2505.03574"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 185942,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2505.12368v2",
+          "finished_utc": "2026-10-19T06:38:44.340443+00:00",
+          "paragraphs": 8,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q015-1.html",
+          "sha256": "8920f0879123444be7ab3a5f58d7dc0cec25a81b096c5a3e1a9ac3935e70c71c",
+          "started_utc": "2026-10-19T06:38:43.397446+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2505.12368v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q015-1.method-view.json",
+          "view_sha256": "6629fd302824d2ccff3286414b2ccb3d499405ae6fc754ae97d039f91684ad98"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q015",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2505.12368"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 93856,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2506.05446v1",
+          "finished_utc": "2026-10-19T06:38:44.540447+00:00",
+          "paragraphs": 23,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q016-1.html",
+          "sha256": "6f945e9fac19841f012bef16ad5ce74e803162b45b1b477447789334913048c9",
+          "started_utc": "2026-10-19T06:38:43.989441+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2506.05446v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q016-1.method-view.json",
+          "view_sha256": "9c3624fe3fd3cf40a86d11c0aa97768892979e3cc2c5bf92e7e0741fcf7a2a3e"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q016",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2506.05446"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 154361,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2506.07948v1",
+          "finished_utc": "2026-10-19T06:38:45.440370+00:00",
+          "paragraphs": 7,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q018-1.html",
+          "sha256": "50364b45239d6dc1ddda140b3697e8c3e9e7b8eb1e3f185c99bd12c400b807e0",
+          "started_utc": "2026-10-19T06:38:44.326463+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2506.07948v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q018-1.method-view.json",
+          "view_sha256": "4eafa637f425ce9c2928cfcf3195ca6023e394069b87df8e518077600f5ef68c"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q018",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2506.07948"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 239647,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2506.12104v3",
+          "finished_utc": "2026-10-19T06:38:45.095397+00:00",
+          "paragraphs": 9,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q019-1.html",
+          "sha256": "9aa9e1d08863c85556357d25f554f50c23bbff5b09ac785496ec5c92e954d3b4",
+          "started_utc": "2026-10-19T06:38:44.346445+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2506.12104v3",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q019-1.method-view.json",
+          "view_sha256": "67452b3a76b8c0299a3233dbca210d0caef1a58ac3dee9f5afcfec0f696381bf"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q019",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2506.12104"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 258025,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2506.19109v1",
+          "finished_utc": "2026-10-19T06:38:45.417601+00:00",
+          "paragraphs": 45,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q020-1.html",
+          "sha256": "cb78c7e7b271df2e36509a77dda2e2c8f9598f3f1e09b3c93862d95bf4c985a5",
+          "started_utc": "2026-10-19T06:38:44.546454+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2506.19109v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q020-1.method-view.json",
+          "view_sha256": "cdad0a0b8d4c2c7e796c6944d86a415a835d45877a0ff9e80cc7070aa31b3ca7"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q020",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2506.19109"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 498627,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2507.15042v1",
+          "finished_utc": "2026-10-19T06:38:46.985811+00:00",
+          "paragraphs": 16,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q022-1.html",
+          "sha256": "666feebd1c7f77b53e0351582066305a049b6707010520a2d306469448d59ba5",
+          "started_utc": "2026-10-19T06:38:45.423601+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2507.15042v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q022-1.method-view.json",
+          "view_sha256": "cec72cbec17eff07ca811a6a62bd35c77cf4ec0d7e307df86a893703323556cc"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q022",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2507.15042"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 142565,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2507.15219v1",
+          "finished_utc": "2026-10-19T06:38:45.858807+00:00",
+          "paragraphs": 2,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q023-1.html",
+          "sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+          "started_utc": "2026-10-19T06:38:45.428596+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2507.15219v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q023-1.method-view.json",
+          "view_sha256": "e5f8ba2a7fad51c7446041acce3d99f38b6bbf58ba1551c856ef4c5735c250b2"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q023",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2507.15219"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 303535,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2508.00602v1",
+          "finished_utc": "2026-10-19T06:38:46.965815+00:00",
+          "paragraphs": 86,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q024-1.html",
+          "sha256": "f655e70fc376e2a308c2e36e9f13129a6a86d20784f29e887df919a2e869e09d",
+          "started_utc": "2026-10-19T06:38:45.448356+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2508.00602v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q024-1.method-view.json",
+          "view_sha256": "d81e17f41bc73c49bbb493565b3a1e0cc39195bdb161aa1f7585d51317688456"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q024",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2508.00602"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 542786,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2508.03793v3",
+          "finished_utc": "2026-10-19T06:38:47.816044+00:00",
+          "paragraphs": 43,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q025-1.html",
+          "sha256": "8b5d5ea3cd0cce453141fcd5f02dc12ef605e78d95e7f9940ffa6559faed5803",
+          "started_utc": "2026-10-19T06:38:45.863813+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2508.03793v3",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q025-1.method-view.json",
+          "view_sha256": "9183c5b1ad2c9f506d44b3c10ac6ae072dd5537e29de84a8d82749a5919f7b33"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q025",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2508.03793"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 598990,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2508.04281v5",
+          "finished_utc": "2026-10-19T06:38:48.521691+00:00",
+          "paragraphs": 47,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q026-1.html",
+          "sha256": "04ed30f3b6888fb453e3afebfa149be90b8cfbbf91d543ca0a215dbac7c1fffe",
+          "started_utc": "2026-10-19T06:38:46.971814+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2508.04281v5",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q026-1.method-view.json",
+          "view_sha256": "043acc20c15f2d93e89334c3e4910234c8b7a3415cf78f429a54ca105c3ad6c2"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q026",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2508.04281"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 147693,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2508.06418v1",
+          "finished_utc": "2026-10-19T06:38:47.989684+00:00",
+          "paragraphs": 28,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q027-1.html",
+          "sha256": "6c58cdd5f6fca1ea02ac364d026bf50d893980a73bcb90c4124dac868fa770f6",
+          "started_utc": "2026-10-19T06:38:46.991815+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2508.06418v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q027-1.method-view.json",
+          "view_sha256": "0ac23238631a5d4b17e600dcc243b79ddfcaaf63166cb374d9a739f0e4739544"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q027",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2508.06418"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 145520,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2508.17884v2",
+          "finished_utc": "2026-10-19T06:38:48.766687+00:00",
+          "paragraphs": 8,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q028-1.html",
+          "sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+          "started_utc": "2026-10-19T06:38:47.989684+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2508.17884v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q028-1.method-view.json",
+          "view_sha256": "36b161573a4036049309a8f3a97b507f5963e0b4335e9018fa148276ec0a29e3"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q028",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2508.17884"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 204593,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2509.00088v2",
+          "finished_utc": "2026-10-19T06:38:49.774691+00:00",
+          "paragraphs": 36,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q030-1.html",
+          "sha256": "605baca9618dad9c3969f1c9fa299f0de03d5f01ec2d0773b03193b3e03ebb2c",
+          "started_utc": "2026-10-19T06:38:48.447686+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2509.00088v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q030-1.method-view.json",
+          "view_sha256": "2f2812ebd827e2b70428b0440698fa8953b2fbbd3710e746c24de268334ca32d"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q030",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2509.00088"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 363436,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2509.05608v2",
+          "finished_utc": "2026-10-19T06:38:50.177755+00:00",
+          "paragraphs": 7,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q031-1.html",
+          "sha256": "8071b3f327171375940e8aa5fe2d4e3b18606e5d0c09f95089904924111fb625",
+          "started_utc": "2026-10-19T06:38:48.527685+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2509.05608v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q031-1.method-view.json",
+          "view_sha256": "43983645f06502bc6e1597ec431aa9ee4c6d6806bc38aca68f00b066070b9645"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q031",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2509.05608"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 335984,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2509.14956v1",
+          "finished_utc": "2026-10-19T06:38:50.177755+00:00",
+          "paragraphs": 24,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q032-1.html",
+          "sha256": "92422600722844eff8dd53c6080237ae4c9ebbd155a018ecf9b779a61b35c355",
+          "started_utc": "2026-10-19T06:38:48.772716+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2509.14956v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q032-1.method-view.json",
+          "view_sha256": "a303d70d19b32e538f52748b07c58e41d6defed094763c7eb13d3353a7e02486"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q032",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2509.14956"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 112267,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2509.18557v1",
+          "finished_utc": "2026-10-19T06:38:50.959749+00:00",
+          "paragraphs": 10,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q033-1.html",
+          "sha256": "b925288eb68efd57b5dce1864fc22eb363ec487660345bd1614f91c15b821ba2",
+          "started_utc": "2026-10-19T06:38:50.158763+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2509.18557v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q033-1.method-view.json",
+          "view_sha256": "833298ade919f6f44838489df309f17f52e48c61c05c1172924bc5f7a6087248"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q033",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2509.18557"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 182111,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2509.21367v1",
+          "finished_utc": "2026-10-19T06:38:51.166754+00:00",
+          "paragraphs": 49,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q034-1.html",
+          "sha256": "55c34d9d95674378a7f0c5b139758fb394209d511ddf39089873f3d79fc75186",
+          "started_utc": "2026-10-19T06:38:50.187755+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2509.21367v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q034-1.method-view.json",
+          "view_sha256": "c2dd1ebac573ab988b9498ee4ad3e2a10a25464ec748781bac3bbd6992b190f8"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q034",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2509.21367"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 185636,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2509.23994v2",
+          "finished_utc": "2026-10-19T06:38:51.163757+00:00",
+          "paragraphs": 3,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q035-1.html",
+          "sha256": "a02f967365951a56531f94054a2087dce3231137a72eb7e5d476d8a52354d101",
+          "started_utc": "2026-10-19T06:38:50.188755+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2509.23994v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q035-1.method-view.json",
+          "view_sha256": "9e0c6cba9074942d204f9895ef4c159443f359c0b9557265102e54fb538d2a2d"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q035",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2509.23994"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 279170,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2510.04528v1",
+          "finished_utc": "2026-10-19T06:38:52.414153+00:00",
+          "paragraphs": 23,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q037-1.html",
+          "sha256": "e27194dbf602b7d9839a0ac32203b4472f0318df7bdde5c943b8df9b05c36c47",
+          "started_utc": "2026-10-19T06:38:51.151754+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2510.04528v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q037-1.method-view.json",
+          "view_sha256": "98367275640259a9ed7c31e6fabaee6df39bfcd3a75614418c8d70fc78db3c0a"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q037",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2510.04528"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 217087,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2510.04885v1",
+          "finished_utc": "2026-10-19T06:38:52.191352+00:00",
+          "paragraphs": 3,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q038-1.html",
+          "sha256": "decc52894d58e06ea770a9d303455ef2f2df9c4d3abe49bbdd35b06db80f75cf",
+          "started_utc": "2026-10-19T06:38:51.172777+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2510.04885v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q038-1.method-view.json",
+          "view_sha256": "af7dbfe37ce383bacaa5377afb05599f5e3a8b76812e32f02d19eadb494358ba"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q038",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2510.04885"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 369712,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2510.13351v1",
+          "finished_utc": "2026-10-19T06:38:52.481141+00:00",
+          "paragraphs": 37,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q039-1.html",
+          "sha256": "6e54a860fe38c6531fe8ace56423a2dfd0b82fa95b5f48f4f7b4857367e6bd6e",
+          "started_utc": "2026-10-19T06:38:51.174761+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2510.13351v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q039-1.method-view.json",
+          "view_sha256": "f6f2ac296447fdfd2449d9f52c0b2a55439b7dd34f030d01347014601ae2dc6b"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q039",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2510.13351"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 205003,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2510.19169v2",
+          "finished_utc": "2026-10-19T06:38:53.552128+00:00",
+          "paragraphs": 10,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q041-1.html",
+          "sha256": "c5774885d35e784fc940558e68f95fea9694803384bfa77ec1200c69b1f00c49",
+          "started_utc": "2026-10-19T06:38:52.466127+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2510.19169v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q041-1.method-view.json",
+          "view_sha256": "ab06efba3f491b52b214dce8d0edf601c29779470849506d366f1058002552ef"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q041",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2510.19169"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 112386,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2510.19844v1",
+          "finished_utc": "2026-10-19T06:38:53.506133+00:00",
+          "paragraphs": 10,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q042-1.html",
+          "sha256": "31725bca43c09e7745fbad944acea3f2009da3c252327baeaf9e506957f807ac",
+          "started_utc": "2026-10-19T06:38:52.467128+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2510.19844v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q042-1.method-view.json",
+          "view_sha256": "68f7a4a1432012348b9e719fa02dcf21ca64746fb4cc18e49ced851e1d848b63"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q042",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2510.19844"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 361804,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2511.01287v2",
+          "finished_utc": "2026-10-19T06:38:53.821130+00:00",
+          "paragraphs": 11,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q044-1.html",
+          "sha256": "498257635872fc73c8b01ef2ac9404e41a5a16dd356a7eeb92f2d868d0b0be9a",
+          "started_utc": "2026-10-19T06:38:52.487146+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2511.01287v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q044-1.method-view.json",
+          "view_sha256": "f77ab6df8f0898586b8ebec75325b739e5d68111266092debecccb7555aae660"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q044",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2511.01287"
+    },
+    {
+      "attempts": [
+        {
+          "error": "HTTP Error 404: Not Found",
+          "error_body_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q045-1.error-body",
+          "error_body_sha256": "e0175eaf399760bd867b477d11ae96f64fb556814b55435d65e7ab72f458bf0d",
+          "error_type": "HTTPError",
+          "finished_utc": "2026-10-19T06:38:54.193128+00:00",
+          "started_utc": "2026-10-19T06:38:53.804134+00:00",
+          "status": 404,
+          "url": "https://arxiv.org/html/2511.12295v1"
+        },
+        {
+          "bytes": 668007,
+          "content_type": "application/pdf",
+          "final_url": "https://arxiv.org/pdf/2511.12295v1",
+          "finished_utc": "2026-10-19T06:38:55.966458+00:00",
+          "paragraphs": 34,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q045-2.pdf",
+          "sha256": "0e9fcc806fab085f2538f75ae7850e4889199151f00016860edecb1c828edd44",
+          "started_utc": "2026-10-19T06:38:54.193128+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/pdf/2511.12295v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q045-2.method-view.json",
+          "view_sha256": "f8a93d133eb15239951ac5a9c49bd2e97714122dab0061ea1427a6eab8f1b5be"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q045",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2511.12295"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 101360,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2511.15759v1",
+          "finished_utc": "2026-10-19T06:38:54.197121+00:00",
+          "paragraphs": 26,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q046-1.html",
+          "sha256": "b8f8d45ed563437ee3f782a9a4ee7875f3b4b7653c45ab85a2af35a73c54f89d",
+          "started_utc": "2026-10-19T06:38:53.806128+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2511.15759v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q046-1.method-view.json",
+          "view_sha256": "c12e5858eb12e951f712d10df33b913623e3fad45b2edd3c412f193ab16c91b2"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q046",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2511.15759"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 390592,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2512.06556v2",
+          "finished_utc": "2026-10-19T06:38:55.075353+00:00",
+          "paragraphs": 51,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q047-1.html",
+          "sha256": "1d6cb1c874a4aad30a1ebd0ca153957d6c8792d23ab655f41477d2e13bcbf0b8",
+          "started_utc": "2026-10-19T06:38:53.827132+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2512.06556v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q047-1.method-view.json",
+          "view_sha256": "84be29405ceacf9aa2aac0e4ada4e1676feb2b1ac1e665f43231b1f39e541f93"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q047",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2512.06556"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 124236,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2512.16307v1",
+          "finished_utc": "2026-10-19T06:38:55.104460+00:00",
+          "paragraphs": 25,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q049-1.html",
+          "sha256": "7a112cc5e4e477b6b38b87729fa7d8dea7cf721e10d88065427a28337fd3a43f",
+          "started_utc": "2026-10-19T06:38:54.203129+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2512.16307v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q049-1.method-view.json",
+          "view_sha256": "4f4753b57a6d426514d91db7afd3eba8266ab2cee6930acc7b8d7884d160ed51"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q049",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2512.16307"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 137135,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2512.23557v1",
+          "finished_utc": "2026-10-19T06:38:55.967479+00:00",
+          "paragraphs": 36,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q050-1.html",
+          "sha256": "b99f0007d91ae08b0247e2813d38683629eddecc6653339183cdacce5304ccec",
+          "started_utc": "2026-10-19T06:38:55.084376+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2512.23557v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q050-1.method-view.json",
+          "view_sha256": "f96a3cf6eabe5404fdf12b39811ded5a0bfca23c56b0616909278cf9edb72d1e"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q050",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2512.23557"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 808788,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2601.10338v1",
+          "finished_utc": "2026-10-19T06:38:57.563622+00:00",
+          "paragraphs": 119,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q051-1.html",
+          "sha256": "11f181f2cc00d98d53c072b578d00d91096eeeb29685f865ad12291c8ff76d55",
+          "started_utc": "2026-10-19T06:38:55.268461+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2601.10338v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q051-1.method-view.json",
+          "view_sha256": "296f307c51b46d5c9fe789585d91e0c97f49ca71d7ffeae41860e7745389b3f4"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q051",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2601.10338"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 198897,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2601.19051v1",
+          "finished_utc": "2026-10-19T06:38:57.427631+00:00",
+          "paragraphs": 27,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q053-1.html",
+          "sha256": "140e3a40cda672dd721ed83a9252711778551d30d9611e6532de2d68bdae1d5e",
+          "started_utc": "2026-10-19T06:38:55.975461+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2601.19051v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q053-1.method-view.json",
+          "view_sha256": "ff5a01d92171d5f0312a3c35bbe7156807b69b9a89628f3254ab3539b3810a3d"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q053",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2601.19051"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 212643,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2602.00750v2",
+          "finished_utc": "2026-10-19T06:38:57.586637+00:00",
+          "paragraphs": 5,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q054-1.html",
+          "sha256": "74708bcd4023856f6b711b6fb29f0864d2baf0b256bbdb08c0b5b385daafd6a6",
+          "started_utc": "2026-10-19T06:38:55.975461+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2602.00750v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q054-1.method-view.json",
+          "view_sha256": "642954c849293dbc81d6f4c1cc9ed91d880f7f4519627597e6354dc7a7720802"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q054",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2602.00750"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 543031,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2602.01795v1",
+          "finished_utc": "2026-10-19T06:38:59.437600+00:00",
+          "paragraphs": 109,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q055-1.html",
+          "sha256": "fac9997f4a46f3e8aff5a76ef775972d00bfa1f19dd6a286ee6f187eb3b61de4",
+          "started_utc": "2026-10-19T06:38:57.571635+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2602.01795v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q055-1.method-view.json",
+          "view_sha256": "1812fdf6f002fa36bef43befdf2c74b6a0db886ecdb7b331b4a7d0d77c9205a7"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q055",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2602.01795"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 264693,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2602.08062v1",
+          "finished_utc": "2026-10-19T06:38:58.614624+00:00",
+          "paragraphs": 63,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q057-1.html",
+          "sha256": "baf28db74993af08a2e2c47ac3f98c9feddea3469e659c0d743b0ce3b29976f2",
+          "started_utc": "2026-10-19T06:38:57.574635+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2602.08062v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q057-1.method-view.json",
+          "view_sha256": "62e5e3577f60443c405f3c7a529d012509bd32b12bab3d263f0840b96af8b5a9"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q057",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2602.08062"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 290845,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2602.10481v1",
+          "finished_utc": "2026-10-19T06:38:59.437600+00:00",
+          "paragraphs": 5,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q058-1.html",
+          "sha256": "4e2ba77c765dc4a878811c7370e70f8f2c8956b11158384b7e733d2361b096a6",
+          "started_utc": "2026-10-19T06:38:57.592628+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2602.10481v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q058-1.method-view.json",
+          "view_sha256": "0fb396b9a518ce17c731bb5b276c0adebc15dd3fccc76bafab33e2c7a8cad356"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q058",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2602.10481"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 135689,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2602.11247v2",
+          "finished_utc": "2026-10-19T06:39:00.910583+00:00",
+          "paragraphs": 10,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q059-1.html",
+          "sha256": "3095fe7b4803915721da5467a418fbf344fc64f34f315934f10e67e2cb79d2a0",
+          "started_utc": "2026-10-19T06:38:59.418582+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2602.11247v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q059-1.method-view.json",
+          "view_sha256": "11a311956dac61886e31e6313adb1676305947cd776091317c887b621e7077da"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q059",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2602.11247"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 686282,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2602.13597v2",
+          "finished_utc": "2026-10-19T06:39:01.192581+00:00",
+          "paragraphs": 14,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q060-1.html",
+          "sha256": "74ab1bdd614703e4053cee14ae145e320659d7e0c577fdbe0fb6f59733d7dc11",
+          "started_utc": "2026-10-19T06:38:59.446594+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2602.13597v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q060-1.method-view.json",
+          "view_sha256": "7ad133f8ef3e6bdfb9f243844dc41bf52909a224e34f9b3f2fe31a4af1565df8"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q060",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2602.13597"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 373305,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2602.14161v2",
+          "finished_utc": "2026-10-19T06:39:01.357787+00:00",
+          "paragraphs": 47,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q061-1.html",
+          "sha256": "0fa7d2e1f7cb44a4463de685f36e134b9bf0d9f3affb14cc4cf90d1bfada0ee5",
+          "started_utc": "2026-10-19T06:38:59.448594+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2602.14161v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q061-1.method-view.json",
+          "view_sha256": "7777a77f767f6dbbc2cee920b2042d7698496de323ae4692da3fc9c4d41450d2"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q061",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2602.14161"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 261468,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2602.20708v1",
+          "finished_utc": "2026-10-19T06:39:02.208824+00:00",
+          "paragraphs": 45,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q062-1.html",
+          "sha256": "4122e670ae6b0678f7e90761428137032c37b459df9a39029984fd4f7d0de0df",
+          "started_utc": "2026-10-19T06:39:01.331586+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2602.20708v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q062-1.method-view.json",
+          "view_sha256": "b67673d14c333edd0aa7152422e9be08ba8143383a58b08cb57228205178dfed"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q062",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2602.20708"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 69650,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2603.06588v1",
+          "finished_utc": "2026-10-19T06:39:02.007817+00:00",
+          "paragraphs": 2,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q063-1.html",
+          "sha256": "48d124e03a9ac718b7c7837e4684af271c49ac62032353cd42690769b7643f64",
+          "started_utc": "2026-10-19T06:39:01.338079+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2603.06588v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q063-1.method-view.json",
+          "view_sha256": "ec71b7e495ef0d950002d41f9582ee26ddf561f666b758bc764e6294cd8fbdc4"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q063",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2603.06588"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 233703,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2603.11853v1",
+          "finished_utc": "2026-10-19T06:39:03.381645+00:00",
+          "paragraphs": 37,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q064-1.html",
+          "sha256": "0e2ce58e7724682e968ec31245f3c4464e29d46457e6aa382192a1ec4fa3f8ad",
+          "started_utc": "2026-10-19T06:39:01.365568+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2603.11853v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q064-1.method-view.json",
+          "view_sha256": "920bf75ef233b0641c993edac4bc04d80cb493630a20af238af1b6d2341609fe"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q064",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2603.11853"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 113749,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2603.11875v2",
+          "finished_utc": "2026-10-19T06:39:02.523813+00:00",
+          "paragraphs": 22,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q065-1.html",
+          "sha256": "19c4e19473e3dba830b98ac237b8fd4a8f7ed6c622aa11cca8fa0163f840114d",
+          "started_utc": "2026-10-19T06:39:02.189821+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2603.11875v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q065-1.method-view.json",
+          "view_sha256": "322b636eb7d657fd1077db55badc8d4f74b289df40053d06704c9e6a7e59fd01"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q065",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2603.11875"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 123665,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2603.18433v1",
+          "finished_utc": "2026-10-19T06:39:03.365645+00:00",
+          "paragraphs": 27,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q066-1.html",
+          "sha256": "9aa5909becaaacdbef7b07974504fb8e92101c1f95ba677d37b2ab8c7d72c85f",
+          "started_utc": "2026-10-19T06:39:02.215821+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2603.18433v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q066-1.method-view.json",
+          "view_sha256": "2be9528197e85e0b3db38ccab9e83deee2e1b37b493a3bce81ceaa9e7ea171aa"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q066",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2603.18433"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 298612,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2603.19974v1",
+          "finished_utc": "2026-10-19T06:39:03.512618+00:00",
+          "paragraphs": 61,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q067-1.html",
+          "sha256": "2591ce4e6e690cd121c7806c33fea9401cc899c99443bd8c31fe081ba7f5363e",
+          "started_utc": "2026-10-19T06:39:02.530827+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2603.19974v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q067-1.method-view.json",
+          "view_sha256": "186cc7fe99e2d31602b15f914a9c52663b5b0267815c4e391b4eae1327eb2093"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q067",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2603.19974"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 179999,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2603.23791v1",
+          "finished_utc": "2026-10-19T06:39:04.357237+00:00",
+          "paragraphs": 28,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q068-1.html",
+          "sha256": "1bdb9a68504e87f5e9ab5a89ead400a7d94e3e14102e3396bc1ebd43cf3f9af2",
+          "started_utc": "2026-10-19T06:39:03.494620+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2603.23791v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q068-1.method-view.json",
+          "view_sha256": "a5b273131572aa83a331161227b8167e848d5805939c9f9e926c0637132b2985"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q068",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2603.23791"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 360298,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2603.24203v1",
+          "finished_utc": "2026-10-19T06:39:04.641251+00:00",
+          "paragraphs": 55,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q069-1.html",
+          "sha256": "0c22870b14b596a23f82a50f777ae5b720388de71446ec8b7258deb5aab3f6b1",
+          "started_utc": "2026-10-19T06:39:03.495617+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2603.24203v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q069-1.method-view.json",
+          "view_sha256": "9ba09892a1b27ed6b7fce7ed84e719e7d45434bd1748c9c1aa77330d8a4fd6ab"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q069",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2603.24203"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 441190,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.01194v2",
+          "finished_utc": "2026-10-19T06:39:05.951604+00:00",
+          "paragraphs": 22,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q070-1.html",
+          "sha256": "be66e429c5bad1daf0f1a016aad517fc479b72d58b4ceac0e652673081af6d70",
+          "started_utc": "2026-10-19T06:39:03.517623+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.01194v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q070-1.method-view.json",
+          "view_sha256": "4af0c74b4db07f27ad0173f5186556f7d8c70ba938e578b6f84be8c3b85f3087"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q070",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.01194"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 159355,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.03598v1",
+          "finished_utc": "2026-10-19T06:39:05.976602+00:00",
+          "paragraphs": 13,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q071-1.html",
+          "sha256": "38cbd94cd53a5dce3e21d3781f2fc720ba6e23dbb2c4702fa961445d6a862a04",
+          "started_utc": "2026-10-19T06:39:04.626249+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.03598v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q071-1.method-view.json",
+          "view_sha256": "b31b77b0041d00a51178500921b5d73df18addcd49a971f6e353b532636aefea"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q071",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.03598"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 142467,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.03912v1",
+          "finished_utc": "2026-10-19T06:39:05.950602+00:00",
+          "paragraphs": 13,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q072-1.html",
+          "sha256": "974b70c8817a94f55b86a7c6a1adedbc43ebf186482de593a0d0d7a1e8941ee6",
+          "started_utc": "2026-10-19T06:39:04.647240+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.03912v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q072-1.method-view.json",
+          "view_sha256": "f68f6bfcdc413388d8ec4ff0cc626152d8bd59607243d85a412195a7c85a173f"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q072",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.03912"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 372103,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.07536v1",
+          "finished_utc": "2026-10-19T06:39:07.161982+00:00",
+          "paragraphs": 35,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q073-1.html",
+          "sha256": "724971e9f1426fb930ee91f53988c84df29969cbfde206c4f787b2f3e90ad09d",
+          "started_utc": "2026-10-19T06:39:05.960602+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.07536v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q073-1.method-view.json",
+          "view_sha256": "ebdcaed5585eaf90397a3292d8e7b83ba436b57f25d1f9aca3791c103d793482"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q073",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.07536"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 255498,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.12284v1",
+          "finished_utc": "2026-10-19T06:39:07.491976+00:00",
+          "paragraphs": 23,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q074-1.html",
+          "sha256": "58837bf2067e9b3aca99631eb9ddc56aeb058b18d5ec0c84052e43670b9a96f4",
+          "started_utc": "2026-10-19T06:39:05.961603+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.12284v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q074-1.method-view.json",
+          "view_sha256": "0486bc9c27797bed010fc013070178859497585fdecf54cf0d0fa663c65cad09"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q074",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.12284"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 117202,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.15368v1",
+          "finished_utc": "2026-10-19T06:39:06.692979+00:00",
+          "paragraphs": 7,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q075-1.html",
+          "sha256": "ae15808e67640018766e2636d03c82a3876f9892878aa47c14811e85411a3ef8",
+          "started_utc": "2026-10-19T06:39:05.983599+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.15368v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q075-1.method-view.json",
+          "view_sha256": "ba1ad7e19eb8e1fe784a45d72834f7bc8a660b549ba7a1ad01f95910ebae7f71"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q075",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.15368"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 305633,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.16838v2",
+          "finished_utc": "2026-10-19T06:39:08.900583+00:00",
+          "paragraphs": 43,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q076-1.html",
+          "sha256": "f13afb24c0794de72f00db2914c724662074fbb95607d29fa5e334ddd886fe5a",
+          "started_utc": "2026-10-19T06:39:07.023993+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.16838v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q076-1.method-view.json",
+          "view_sha256": "1366c285a54fffe066cd65877fb0dd49a3446d06cb0453785dfcae10f1c7761c"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q076",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.16838"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 171589,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.17562v1",
+          "finished_utc": "2026-10-19T06:39:08.692612+00:00",
+          "paragraphs": 9,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q077-1.html",
+          "sha256": "d9277a1c68e8c2269be6be96302ffb0614904c3bf21be388d939761da0e75d05",
+          "started_utc": "2026-10-19T06:39:07.473977+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.17562v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q077-1.method-view.json",
+          "view_sha256": "90526c26b487d20707cc0e505231b67bf65a2487302e0172006b0e5d73df082d"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q077",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.17562"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 215749,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.18658v1",
+          "finished_utc": "2026-10-19T06:39:08.898585+00:00",
+          "paragraphs": 7,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q078-1.html",
+          "sha256": "4fa07d8963caa75c7e24b52685db89bb9d40a30730216f851c31d60363c5fb0c",
+          "started_utc": "2026-10-19T06:39:07.498978+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.18658v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q078-1.method-view.json",
+          "view_sha256": "be2652db66bca07eeed42e92a27695497c884cf3b4d30a9866a0104d50f29cf6"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q078",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.18658"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 206263,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.22888v1",
+          "finished_utc": "2026-10-19T06:39:09.673584+00:00",
+          "paragraphs": 15,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q079-1.html",
+          "sha256": "27610c5919e7141edb77a2aa4cc84121effd9dc6612f714d694ad9bd3afcddd7",
+          "started_utc": "2026-10-19T06:39:08.885585+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.22888v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q079-1.method-view.json",
+          "view_sha256": "b53038d9fa010e67f748d25eac57308ae51228bf3331ca6b3097679d0707f2a3"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q079",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.22888"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 492176,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.23374v1",
+          "finished_utc": "2026-10-19T06:39:10.216609+00:00",
+          "paragraphs": 17,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q080-1.html",
+          "sha256": "cb3f0d6796f3056b9983f7fb92ab0b705103bf12180d5229c1f33f1d32974d32",
+          "started_utc": "2026-10-19T06:39:08.905582+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.23374v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q080-1.method-view.json",
+          "view_sha256": "b8b1f2fe9b5face5bee516e46acb2ea0c810388d4509222c9f2a7f88a7825a86"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q080",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.23374"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 62270,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.24020v1",
+          "finished_utc": "2026-10-19T06:39:09.895616+00:00",
+          "paragraphs": 0,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q081-1.html",
+          "sha256": "26739bb403644d4e7739f8a346fe747779630f21f86958d08f97da9cbc2138dd",
+          "started_utc": "2026-10-19T06:39:08.909587+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.24020v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q081-1.method-view.json",
+          "view_sha256": "a7d4af45e06b8ae34b76bb3d48137c8855558f73effa06c174bd1491d1f62e51"
+        },
+        {
+          "bytes": 2683857,
+          "content_type": "application/pdf",
+          "final_url": "https://arxiv.org/pdf/2604.24020v1",
+          "finished_utc": "2026-10-19T06:39:12.607786+00:00",
+          "paragraphs": 1,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q081-2.pdf",
+          "sha256": "a66f34663e700ca86bcc18b2243a005bb30c06732c0074406e18acde7319cf89",
+          "started_utc": "2026-10-19T06:39:09.895616+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/pdf/2604.24020v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q081-2.method-view.json",
+          "view_sha256": "2bfe9f06ee4de042ba2ce81ca056b5e4c14e8a38c8905212316286edd617dc08"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q081",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.24020"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 252867,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.24118v1",
+          "finished_utc": "2026-10-19T06:39:11.246785+00:00",
+          "paragraphs": 29,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q082-1.html",
+          "sha256": "cc71985d726faef32940334a718cdf4988e08ee355b88a75ab9dfa44150fd7f0",
+          "started_utc": "2026-10-19T06:39:10.167586+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.24118v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q082-1.method-view.json",
+          "view_sha256": "0df3bb036241e3eba20c89660d9cdf1ce5d48a9e889660d1a41b615416468ca7"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q082",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.24118"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 833456,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.24542v1",
+          "finished_utc": "2026-10-19T06:39:12.047787+00:00",
+          "paragraphs": 32,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q083-1.html",
+          "sha256": "b5f04174e316431d90c2d87b7f2adfda0f3bda4c53d8b9b2088d32ee41fbd464",
+          "started_utc": "2026-10-19T06:39:10.223587+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.24542v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q083-1.method-view.json",
+          "view_sha256": "eb609493ff5730a00f994ab852eaf54b67eddc64190ae31d307b3d3806fc82d7"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q083",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.24542"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 574710,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.27202v1",
+          "finished_utc": "2026-10-19T06:39:13.692964+00:00",
+          "paragraphs": 23,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q084-1.html",
+          "sha256": "17255807b09892ba9925f9310c2b4d9fb118240bb64a4a7b320f2a9c65547bcc",
+          "started_utc": "2026-10-19T06:39:11.800784+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.27202v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q084-1.method-view.json",
+          "view_sha256": "06cadd9be834d662ca17d2c56a179ec5e3756a5877ca04db9de89a7486136ede"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q084",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.27202"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 396343,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.28129v1",
+          "finished_utc": "2026-10-19T06:39:13.176996+00:00",
+          "paragraphs": 66,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q085-1.html",
+          "sha256": "b6e6f14df7f5fa4139135b8a366f94481284503db6291091e0a0062dba911f0d",
+          "started_utc": "2026-10-19T06:39:12.054796+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.28129v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q085-1.method-view.json",
+          "view_sha256": "23b9859f956ce3bc80e30a0dc5c482412887da8254b767b02d9e45b5f1494233"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q085",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2604.28129"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 336699,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2605.03378v2",
+          "finished_utc": "2026-10-19T06:39:13.896985+00:00",
+          "paragraphs": 6,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q087-1.html",
+          "sha256": "371058c02f2fe90c0ee1ce5ece4966a312798f91190b8de887ee38349e957de3",
+          "started_utc": "2026-10-19T06:39:13.050986+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2605.03378v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q087-1.method-view.json",
+          "view_sha256": "ff9921b093c6f7afedee7391b033568d1c262d72fe9b2ef90686ed790992e6cf"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q087",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2605.03378"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 422553,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2605.08442v5",
+          "finished_utc": "2026-10-19T06:39:14.942970+00:00",
+          "paragraphs": 29,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q088-1.html",
+          "sha256": "4a32420e10f13eddcc26b12fb75afcbff710283c6d4249690ad84fc1c3bab51f",
+          "started_utc": "2026-10-19T06:39:13.545973+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2605.08442v5",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q088-1.method-view.json",
+          "view_sha256": "f5f33daae5282156f4d29a9453f2827d71c7d0e300bad72b321409b2056537cc"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q088",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2605.08442"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 277389,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2605.11026v1",
+          "finished_utc": "2026-10-19T06:39:15.463464+00:00",
+          "paragraphs": 28,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q089-1.html",
+          "sha256": "b8f96f5e7be4a6a312c1c0494891e95454edfd9bffe13b8309786d1bed98e577",
+          "started_utc": "2026-10-19T06:39:13.874971+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2605.11026v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q089-1.method-view.json",
+          "view_sha256": "62e497948a8132fdc00a52e945a17444481869a1bbe99fa62bfdaa18db604ff2"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q089",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2605.11026"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 286873,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2605.11217v2",
+          "finished_utc": "2026-10-19T06:39:15.351463+00:00",
+          "paragraphs": 3,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q090-1.html",
+          "sha256": "5c224442968dec22850fbbcc2de1ef5cf6edc6472faa34021884ed3b063df362",
+          "started_utc": "2026-10-19T06:39:13.902982+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2605.11217v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q090-1.method-view.json",
+          "view_sha256": "2ff12631168d4e20b6e48865c66ef5e2c5dea9bae439dcf2f83b266973afd4c6"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q090",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2605.11217"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 227827,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2605.17380v1",
+          "finished_utc": "2026-10-19T06:39:16.824460+00:00",
+          "paragraphs": 13,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q091-1.html",
+          "sha256": "4fa0a0c899d8829a564d80f33c7cfa1826c8537497ac1fa3631a75416b7a17b3",
+          "started_utc": "2026-10-19T06:39:15.435462+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2605.17380v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q091-1.method-view.json",
+          "view_sha256": "c3e5af3efcaa8044da0cbd39c06e94457d9d7a20821e8546ef8e971b452e75fb"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q091",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2605.17380"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 569962,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2605.17634v1",
+          "finished_utc": "2026-10-19T06:39:16.570469+00:00",
+          "paragraphs": 55,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q092-1.html",
+          "sha256": "7e84bcdf55c3ca9173a2f674f5276a9bc537b6e17776ff75bfcf0c002fa330a6",
+          "started_utc": "2026-10-19T06:39:15.442461+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2605.17634v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q092-1.method-view.json",
+          "view_sha256": "8e01903a14e1c27a83976a793d0575dca0b6d3dcb7d35fe5705d77a9fe440e76"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q092",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2605.17634"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 114500,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2605.19159v1",
+          "finished_utc": "2026-10-19T06:39:16.616456+00:00",
+          "paragraphs": 19,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q094-1.html",
+          "sha256": "216afbd71efb5b6535c974bf72b3a85ecaab4b4df2d4a15fc7e7d9c9fc84ca6d",
+          "started_utc": "2026-10-19T06:39:15.470460+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2605.19159v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q094-1.method-view.json",
+          "view_sha256": "3227132ff038b462ac7f2f1abcf36b9238e00686a9a61a06ae7b43d118ddd5dc"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q094",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2605.19159"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 429508,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2605.23196v1",
+          "finished_utc": "2026-10-19T06:39:17.880788+00:00",
+          "paragraphs": 50,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q095-1.html",
+          "sha256": "e39ca9ecdad375cfec8be374fc6daf461e7890ec938a08c1b1665d71b1a03da9",
+          "started_utc": "2026-10-19T06:39:16.810473+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2605.23196v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q095-1.method-view.json",
+          "view_sha256": "c5d6658adca9629c62d2e2b91200dfbf2fb4504e13b34883d855a21f8b75882e"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q095",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2605.23196"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 301423,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2605.27823v1",
+          "finished_utc": "2026-10-19T06:39:18.379789+00:00",
+          "paragraphs": 20,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q097-1.html",
+          "sha256": "31e7568b9da9b889f6105c2d244f53b0d1a1d667d81815909f46c1ea84047495",
+          "started_utc": "2026-10-19T06:39:16.810473+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2605.27823v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q097-1.method-view.json",
+          "view_sha256": "5c0006d3cb44313ad6f7d2c3b7faa09cfc1a249344dbf5341a99f53175e7b723"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q097",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2605.27823"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 238736,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2605.28999v1",
+          "finished_utc": "2026-10-19T06:39:18.358790+00:00",
+          "paragraphs": 25,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q098-1.html",
+          "sha256": "e432ccb3c260b5ccfea3e5da56452de52e27f404c3081ccf54a66628736d329c",
+          "started_utc": "2026-10-19T06:39:16.829455+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2605.28999v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q098-1.method-view.json",
+          "view_sha256": "ffaab0a83ca979385af21522661d0d5d2111c7aa7729c228a7bc14860270fb3c"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q098",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2605.28999"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 707749,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2605.30189v1",
+          "finished_utc": "2026-10-19T06:39:20.467848+00:00",
+          "paragraphs": 35,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q099-1.html",
+          "sha256": "ea763b66173b69546235d4c8c29c8bd1a7e804e3a7d87f853a221db6892306d6",
+          "started_utc": "2026-10-19T06:39:18.363815+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2605.30189v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q099-1.method-view.json",
+          "view_sha256": "1af546621de817d7e5623e11e7c196c180042be0165a4e30c3bf6951daa12f2b"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q099",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2605.30189"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 155458,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2605.30677v1",
+          "finished_utc": "2026-10-19T06:39:19.205785+00:00",
+          "paragraphs": 33,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q100-1.html",
+          "sha256": "00671166f5af50b612485796f030143dfc4f600c44a46d2c69fdd48881a432ad",
+          "started_utc": "2026-10-19T06:39:18.366791+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2605.30677v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q100-1.method-view.json",
+          "view_sha256": "4c0655d877e9a4a08ced93a5b8653870d47288f54ef3aa9e3b57b67e9c54a341"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q100",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2605.30677"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 301381,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.02240v3",
+          "finished_utc": "2026-10-19T06:39:19.884822+00:00",
+          "paragraphs": 17,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q102-1.html",
+          "sha256": "0d7d6c02d2b1c747cdfe2c61f4bec5c261c119ba42705ee1464ca93c16b97fc7",
+          "started_utc": "2026-10-19T06:39:18.385791+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.02240v3",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q102-1.method-view.json",
+          "view_sha256": "8da0fc4af521f599659405ae5ee4cfaea5b88cf4de5065ce05627cb8f61dddff"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q102",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.02240"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 260110,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.02959v1",
+          "finished_utc": "2026-10-19T06:39:21.581818+00:00",
+          "paragraphs": 41,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q103-1.html",
+          "sha256": "6fb8759d762bcd91d9574ad9b16780f3a9fa1f9e5b86de981daa0f2da5aace76",
+          "started_utc": "2026-10-19T06:39:20.076829+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.02959v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q103-1.method-view.json",
+          "view_sha256": "b743782960dccd1ce5afdca0365bbb9807425f95884ee63925247fad824c84d4"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q103",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.02959"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 168900,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.04141v1",
+          "finished_utc": "2026-10-19T06:39:21.748824+00:00",
+          "paragraphs": 23,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q104-1.html",
+          "sha256": "2882e3c5e0307515c39d0fab394d1005505fc73015a165844aa6406510dfc398",
+          "started_utc": "2026-10-19T06:39:20.449829+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.04141v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q104-1.method-view.json",
+          "view_sha256": "9f7ab29ada91cf5e66d53c3e500206bde590563cdea0ba5ff6085f87060b9814"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q104",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.04141"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 287163,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.04612v1",
+          "finished_utc": "2026-10-19T06:39:21.767822+00:00",
+          "paragraphs": 8,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q105-1.html",
+          "sha256": "0a25d912ec56b75186c86f29f7b4adfd708423433c5216b1ee6766273fda2b37",
+          "started_utc": "2026-10-19T06:39:20.475821+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.04612v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q105-1.method-view.json",
+          "view_sha256": "f5591af4915cd0fad82d3d6f5c7aea288f92a69d6c33f77d5b39d64a5e2fec8d"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q105",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.04612"
+    },
+    {
+      "attempts": [
+        {
+          "error": "HTTP Error 404: Not Found",
+          "error_body_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q106-1.error-body",
+          "error_body_sha256": "a782632d39d3991b961d7345920eb4e6eea02e608b50128596ebf8a93d958029",
+          "error_type": "HTTPError",
+          "finished_utc": "2026-10-19T06:39:22.364499+00:00",
+          "started_utc": "2026-10-19T06:39:21.756822+00:00",
+          "status": 404,
+          "url": "https://arxiv.org/html/2606.05566v1"
+        },
+        {
+          "bytes": 752843,
+          "content_type": "application/pdf",
+          "final_url": "https://arxiv.org/pdf/2606.05566v1",
+          "finished_utc": "2026-10-19T06:39:25.816137+00:00",
+          "paragraphs": 47,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q106-2.pdf",
+          "sha256": "1a8c2be99c8a923840e066a54ddf9a03438e05a566ccf1dea69d1f1868a4caac",
+          "started_utc": "2026-10-19T06:39:22.364499+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/pdf/2606.05566v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q106-2.method-view.json",
+          "view_sha256": "60552ac768dfbc844825c6f729b46af8ccf91155e9a83dd9fae8b1e1eb7d61ce"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q106",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.05566"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 427020,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.07131v3",
+          "finished_utc": "2026-10-19T06:39:22.665495+00:00",
+          "paragraphs": 49,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q107-1.html",
+          "sha256": "002dcaef70ca9e7e114e9cb3df0702ebb75d104f73c534e176dd42bb9c09cc9d",
+          "started_utc": "2026-10-19T06:39:21.758818+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.07131v3",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q107-1.method-view.json",
+          "view_sha256": "f2d8dd42f944995b32df2f9fa24433745f7dfb5a7bda279c57d599f0ed5dddd6"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q107",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.07131"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 200563,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.07992v1",
+          "finished_utc": "2026-10-19T06:39:22.754504+00:00",
+          "paragraphs": 23,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q108-1.html",
+          "sha256": "3290f3f34fdbdc9cdb57a048912423cd95dad69b4ab6e22666cccb8b664cda83",
+          "started_utc": "2026-10-19T06:39:21.773827+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.07992v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q108-1.method-view.json",
+          "view_sha256": "8d7c1cf802a5fe4b69bd7121ea088af21268067b3396a79fa89bc781f5ffded1"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q108",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.07992"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 242669,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.08403v1",
+          "finished_utc": "2026-10-19T06:39:25.468135+00:00",
+          "paragraphs": 8,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q109-1.html",
+          "sha256": "f04459f19826116280e5b4da6d57b653e3888cbdc095f925adf2bf4eb1e2797d",
+          "started_utc": "2026-10-19T06:39:22.739511+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.08403v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q109-1.method-view.json",
+          "view_sha256": "493c055ca9a339de86c9256df34202fd9b52dd2c15357993d42ec8e14bccae60"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q109",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.08403"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 356852,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.14154v1",
+          "finished_utc": "2026-10-19T06:39:24.615032+00:00",
+          "paragraphs": 31,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q110-1.html",
+          "sha256": "f666ef9a926f5b1b71907cabf22ec3ded2379d1cadec1957b681c96acedc7ab4",
+          "started_utc": "2026-10-19T06:39:22.759507+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.14154v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q110-1.method-view.json",
+          "view_sha256": "7d8d736ab2cd9c43a136219a625573bc89f17a281e8bb08a2637e04f36b141c6"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q110",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.14154"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 546227,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.14517v2",
+          "finished_utc": "2026-10-19T06:39:27.276848+00:00",
+          "paragraphs": 42,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q111-1.html",
+          "sha256": "ff98faf9f24c3067b33060436f2fcc5107af1b030115324a03887a8a203149a7",
+          "started_utc": "2026-10-19T06:39:25.483133+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.14517v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q111-1.method-view.json",
+          "view_sha256": "0a8d43e106d9dbd9ac7a92048770fb8a9283751662035d5e5b12cb4861cc1af6"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q111",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.14517"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 304800,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.15899v1",
+          "finished_utc": "2026-10-19T06:39:27.253862+00:00",
+          "paragraphs": 18,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q112-1.html",
+          "sha256": "ebebd6813d5e105a630ef3fefcdf598858080549835e399af946d4ea842822ea",
+          "started_utc": "2026-10-19T06:39:25.686144+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.15899v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q112-1.method-view.json",
+          "view_sha256": "64d055a3e6d33a3c26f26ac561ded7b009d17e3f62e9134ab99f54b093ad20ac"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q112",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.15899"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 188215,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.17467v3",
+          "finished_utc": "2026-10-19T06:39:26.520656+00:00",
+          "paragraphs": 15,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q113-1.html",
+          "sha256": "111c45fc9d95838b557d81ffc83f0b99c04da1947688aec349dcd2b670375220",
+          "started_utc": "2026-10-19T06:39:25.822138+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.17467v3",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q113-1.method-view.json",
+          "view_sha256": "23ca0787479486b2954bcf7f417c560036481352314f24379e03d08b9f5d8241"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q113",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.17467"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 292137,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.19660v2",
+          "finished_utc": "2026-10-19T06:39:28.457871+00:00",
+          "paragraphs": 24,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q115-1.html",
+          "sha256": "090a0d6bbc8dbf95b493fc670f9feb1565950ee76c02756d5923d1f5b5d94d04",
+          "started_utc": "2026-10-19T06:39:27.259859+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.19660v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q115-1.method-view.json",
+          "view_sha256": "c20eeb622888c154a2cb886a7c437649242397ba10373f03fd4236976d26f6fa"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q115",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.19660"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 177042,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.20746v1",
+          "finished_utc": "2026-10-19T06:39:28.123871+00:00",
+          "paragraphs": 49,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q116-1.html",
+          "sha256": "b7f10419e560eb0e610603bd95a71a1f9cc1a989b589266fccfa37244da584d5",
+          "started_utc": "2026-10-19T06:39:27.265858+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.20746v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q116-1.method-view.json",
+          "view_sha256": "d775f159845bb7b8e372df18bde6f84a80d0de0b3a9ecd3ffeecab8955de2245"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q116",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.20746"
+    },
+    {
+      "attempts": [
+        {
+          "error": "HTTP Error 404: Not Found",
+          "error_body_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q117-1.error-body",
+          "error_body_sha256": "38bfd3e64cbb30c5034f5ab31822bfb8650905b18807ef74f858085215ac849f",
+          "error_type": "HTTPError",
+          "finished_utc": "2026-10-19T06:39:27.407848+00:00",
+          "started_utc": "2026-10-19T06:39:27.282858+00:00",
+          "status": 404,
+          "url": "https://arxiv.org/html/2606.22659v1"
+        },
+        {
+          "bytes": 1127519,
+          "content_type": "application/pdf",
+          "final_url": "https://arxiv.org/pdf/2606.22659v1",
+          "finished_utc": "2026-10-19T06:39:30.669988+00:00",
+          "paragraphs": 42,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q117-2.pdf",
+          "sha256": "235c46e8a1a5a688f8bd2f862710576f7779f5c8012a0877fe6dda01509327fb",
+          "started_utc": "2026-10-19T06:39:27.408848+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/pdf/2606.22659v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q117-2.method-view.json",
+          "view_sha256": "09657e753cde8c0d32fe3f080c3c058ce9dfb5eb5ee6a8890e02c13a508b9c2e"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q117",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.22659"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 625245,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.22864v1",
+          "finished_utc": "2026-10-19T06:39:30.931289+00:00",
+          "paragraphs": 13,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q118-1.html",
+          "sha256": "9b49e1a0e0d37a763e68a538cc64fd5db5689718c5e799095d8a3632601a259f",
+          "started_utc": "2026-10-19T06:39:28.367861+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.22864v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q118-1.method-view.json",
+          "view_sha256": "f038efcbd4d33f92a1c49ded0f1537c5fd1c280adc8db43c307b32b54eeb1a2a"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q118",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.22864"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 203081,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2606.23416v1",
+          "finished_utc": "2026-10-19T06:39:30.718012+00:00",
+          "paragraphs": 12,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q119-1.html",
+          "sha256": "d2ff7b63f301926e35ff3d41e32efbf45b17da8e37d56dc573c982bb402053c1",
+          "started_utc": "2026-10-19T06:39:28.887982+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2606.23416v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q119-1.method-view.json",
+          "view_sha256": "1e9a06a40e4853008656a4ee8c8de763caab281ead76d31118cdae21813bf7d7"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q119",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2606.23416"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 513127,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2607.04222v1",
+          "finished_utc": "2026-10-19T06:39:33.547423+00:00",
+          "paragraphs": 43,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q120-1.html",
+          "sha256": "091259ae3c297bcd191fb71e9b3596091aa32a22fa01f36f86f4f16ce3b0bb60",
+          "started_utc": "2026-10-19T06:39:30.877986+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2607.04222v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q120-1.method-view.json",
+          "view_sha256": "eab0762916e066ee873e8c5f097954ae36cabfaaaf0dbe1d44e9016c6b3778cc"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q120",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2607.04222"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 513189,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2607.12624v1",
+          "finished_utc": "2026-10-19T06:39:32.208378+00:00",
+          "paragraphs": 16,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q121-1.html",
+          "sha256": "060fd638425abb51cdfdd4c0aa0f30c5bab3ba8bff5e09e593834cfd39cded9e",
+          "started_utc": "2026-10-19T06:39:30.880984+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2607.12624v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q121-1.method-view.json",
+          "view_sha256": "527fa78c4fa1b8ead9a42e331526811cbea9eb88bdef774915e1de48b24751af"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q121",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2607.12624"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 812780,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2607.13081v1",
+          "finished_utc": "2026-10-19T06:39:32.981379+00:00",
+          "paragraphs": 24,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q122-1.html",
+          "sha256": "185f0b2fb0f68461213429085cbcadd371908fd6dd35ea594a5cc55881b9dec2",
+          "started_utc": "2026-10-19T06:39:30.936179+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2607.13081v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q122-1.method-view.json",
+          "view_sha256": "ffdbba24fe46f0c0de645a85036362e887637b896bd624dc957647255501608e"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q122",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2607.13081"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 743265,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2607.16199v1",
+          "finished_utc": "2026-10-19T06:39:35.860926+00:00",
+          "paragraphs": 16,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q123-1.html",
+          "sha256": "569beeb46f82d60f46dcdd3be4d6f46073f4e1cbb90e10fac715110f5e3ce59a",
+          "started_utc": "2026-10-19T06:39:32.777348+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2607.16199v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q123-1.method-view.json",
+          "view_sha256": "f68bd543dfe382ba242d311b8505462093a7a4a0323514480878403ab59b1630"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q123",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2607.16199"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 499344,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2607.18622v2",
+          "finished_utc": "2026-10-19T06:39:34.973422+00:00",
+          "paragraphs": 10,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q124-1.html",
+          "sha256": "3caa7ca92a56395928f1322afbfa82199c4df0f28f3ce52ba8b94181381220e7",
+          "started_utc": "2026-10-19T06:39:33.482429+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2607.18622v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q124-1.method-view.json",
+          "view_sha256": "2a6c579a2f4187648455797c52ef26199cfb94c3e85209830e0d97d4eeda6377"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q124",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2607.18622"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 114512,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2607.19396v2",
+          "finished_utc": "2026-10-19T06:39:33.989426+00:00",
+          "paragraphs": 21,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q125-1.html",
+          "sha256": "03cfeb5212fefa04b5a9ca8fc584c2608044bceec75ad61f9d83a4344e426699",
+          "started_utc": "2026-10-19T06:39:33.552423+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2607.19396v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q125-1.method-view.json",
+          "view_sha256": "a842c925043562fba81504d274e8da5bd10350bd25cf969e262e45457d740d13"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q125",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2607.19396"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 264209,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2607.22545v1",
+          "finished_utc": "2026-10-19T06:39:35.841928+00:00",
+          "paragraphs": 24,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q126-1.html",
+          "sha256": "f2888ebeef6f760ab66fb6a0bab99854fea525a5362a82954f369202485f47e0",
+          "started_utc": "2026-10-19T06:39:34.001426+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2607.22545v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q126-1.method-view.json",
+          "view_sha256": "ef5eca95a61ff9e49c98c66cab4bf571a802537ca4af85f989ade06a06b7e6f2"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q126",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2607.22545"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 1174217,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2608.05430v1",
+          "finished_utc": "2026-10-19T06:39:39.020890+00:00",
+          "paragraphs": 3,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q127-1.html",
+          "sha256": "2ffe761fba033464730cf1e5101863f29236ec71bf61be37a01fca0d87ae8f28",
+          "started_utc": "2026-10-19T06:39:35.839924+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2608.05430v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q127-1.method-view.json",
+          "view_sha256": "35a974834dbfb5dd5f52aa154f1b1e030966477f62686b12e172e76886c907a7"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q127",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2608.05430"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 994681,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2608.08027v1",
+          "finished_utc": "2026-10-19T06:39:37.640934+00:00",
+          "paragraphs": 20,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q128-1.html",
+          "sha256": "cbfc83302b3300a315fc1d4f540903914e2ec350aeb26193172d34a57095ebae",
+          "started_utc": "2026-10-19T06:39:35.847930+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2608.08027v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q128-1.method-view.json",
+          "view_sha256": "625037b5bf4afeaa05140c9b11d2fd1f1fc5036dd0f6ffe938f007f8384fa203"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q128",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2608.08027"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 97902,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2608.08468v1",
+          "finished_utc": "2026-10-19T06:39:37.195932+00:00",
+          "paragraphs": 6,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q129-1.html",
+          "sha256": "a0fc1fa4758669cb4c17e31f02c002a1bb65002bd035376089313158067d0bc2",
+          "started_utc": "2026-10-19T06:39:35.867931+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2608.08468v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q129-1.method-view.json",
+          "view_sha256": "602498ac14392d514e23855adc02334b3e443e522bfdd5cd8d2df66ebccfb1e8"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q129",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2608.08468"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 769764,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2608.10260v1",
+          "finished_utc": "2026-10-19T06:39:40.452312+00:00",
+          "paragraphs": 56,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q130-1.html",
+          "sha256": "de5ce6c9b9548d3125ae743d291d9baed9cd0a6a3c8d160e5fb3d7b1f3fa1b63",
+          "started_utc": "2026-10-19T06:39:37.520935+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2608.10260v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q130-1.method-view.json",
+          "view_sha256": "a4d7ec5b8e8b5c0ed32bd67d650808d37b4c63521d32f35f06bf19de6a41711a"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q130",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2608.10260"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 383816,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2608.22248v1",
+          "finished_utc": "2026-10-19T06:39:40.449316+00:00",
+          "paragraphs": 37,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q131-1.html",
+          "sha256": "76c85f783d5d5619d5c5e11e0b27a0248e871b8e0e062477b0da670fec2cd95a",
+          "started_utc": "2026-10-19T06:39:38.236889+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2608.22248v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q131-1.method-view.json",
+          "view_sha256": "4f33eaf899ce30fb0d09c5cd978e3189ffc12699e5dbc5911c2b8f70298fa0d8"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q131",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2608.22248"
+    },
+    {
+      "attempts": [
+        {
+          "error": "HTTP Error 404: Not Found",
+          "error_body_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q132-1.error-body",
+          "error_body_sha256": "754b96eb9ed82b6ee553ca2d062874b6f618e13eeab9a4a9492cb1c46420baee",
+          "error_type": "HTTPError",
+          "finished_utc": "2026-10-19T06:39:40.433311+00:00",
+          "started_utc": "2026-10-19T06:39:39.879894+00:00",
+          "status": 404,
+          "url": "https://arxiv.org/html/2608.26423v2"
+        },
+        {
+          "bytes": 532125,
+          "content_type": "application/pdf",
+          "final_url": "https://arxiv.org/pdf/2608.26423v2",
+          "finished_utc": "2026-10-19T06:39:44.465186+00:00",
+          "paragraphs": 6,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q132-2.pdf",
+          "sha256": "c05437221b0af5045682fffa769b42dd4da39fe6d337a4f04e44f1fe41ea1522",
+          "started_utc": "2026-10-19T06:39:40.433311+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/pdf/2608.26423v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q132-2.method-view.json",
+          "view_sha256": "1104def83582c498c9405583ba6466dc97ae4c098adee2ab8cd6d6e8cf1c273a"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q132",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2608.26423"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 921306,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2608.27990v1",
+          "finished_utc": "2026-10-19T06:39:44.338187+00:00",
+          "paragraphs": 29,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q133-1.html",
+          "sha256": "38ff16de78c6eb56a082301079ac0c3286f5fb5f20ac4b3ff95ded38db7d9b15",
+          "started_utc": "2026-10-19T06:39:40.458331+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2608.27990v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q133-1.method-view.json",
+          "view_sha256": "0d55961c0c8fb113b41140b33d0842aff00392e2654236c3f46835d35015afcc"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q133",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2608.27990"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 576811,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2608.30441v2",
+          "finished_utc": "2026-10-19T06:39:43.131214+00:00",
+          "paragraphs": 65,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q134-1.html",
+          "sha256": "5e833642ed1dce806f4d386db9f13ab1eaa9e4beb8109ca743c4799a5b06fde9",
+          "started_utc": "2026-10-19T06:39:40.461319+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2608.30441v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q134-1.method-view.json",
+          "view_sha256": "3fd0d7e753fc5cced4a2de20f89f2fe4accb402b329d7dd598acd7d859e2e1e4"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q134",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2608.30441"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 506454,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.01046v1",
+          "finished_utc": "2026-10-19T06:39:45.458582+00:00",
+          "paragraphs": 52,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q135-1.html",
+          "sha256": "00931436b19a24b8f699c029e875062955b6801d0c9308c6ab8c972ce77fae38",
+          "started_utc": "2026-10-19T06:39:43.974205+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.01046v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q135-1.method-view.json",
+          "view_sha256": "a333f68c312a9eb79f71f2877c61a80e4d0c671f6b35a1b1f312b94e7d1f4f51"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q135",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2609.01046"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 193681,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.05074v1",
+          "finished_utc": "2026-10-19T06:39:45.970590+00:00",
+          "paragraphs": 27,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q136-1.html",
+          "sha256": "2232852a49341e7b34f96e5f59025eff09d7a9ac631a5990843e4919ab7f8afd",
+          "started_utc": "2026-10-19T06:39:44.446192+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.05074v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q136-1.method-view.json",
+          "view_sha256": "b3ab3be0aa46b7fb2f771d9b9de9abb741ada568d640cfbacaff462b2721ae05"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q136",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2609.05074"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 466310,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.10707v1",
+          "finished_utc": "2026-10-19T06:39:45.993581+00:00",
+          "paragraphs": 40,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q137-1.html",
+          "sha256": "a0b270490b50d49ac12c4ef0a59189e3f09c73a09373eec4d998710af95bc643",
+          "started_utc": "2026-10-19T06:39:44.472188+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.10707v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q137-1.method-view.json",
+          "view_sha256": "e554042fda6fbdf39338def9febf76ecf6c79d69ad07b78a00b33eeca61a3b22"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q137",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2609.10707"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 531012,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.15994v1",
+          "finished_utc": "2026-10-19T06:39:48.365015+00:00",
+          "paragraphs": 14,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q138-1.html",
+          "sha256": "75c0b1b44be14cf299223ff1a6e7d6969749ef40922294e381e4ebeaadff7b22",
+          "started_utc": "2026-10-19T06:39:45.975588+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.15994v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q138-1.method-view.json",
+          "view_sha256": "bea2c3a6915491b74d113d927bc587f8a4d207b7c15a6fd22720407e68405035"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q138",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2609.15994"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 257704,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.20188v1",
+          "finished_utc": "2026-10-19T06:39:47.417021+00:00",
+          "paragraphs": 21,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q139-1.html",
+          "sha256": "7e035ce723b5c6bb3463eeadf641292459e9c233aaa5feadad776733abf78115",
+          "started_utc": "2026-10-19T06:39:45.979586+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.20188v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q139-1.method-view.json",
+          "view_sha256": "43e563d784da5e413672edc042fe3c21035825632565d54dccfdba5c8b1a80ee"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q139",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2609.20188"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 554352,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.22510v1",
+          "finished_utc": "2026-10-19T06:39:47.283028+00:00",
+          "paragraphs": 9,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q140-1.html",
+          "sha256": "edaf3a1bdda718a5de19d66848e5b40e56c93fcff1861c553d8ac26a15a31ebb",
+          "started_utc": "2026-10-19T06:39:46.000590+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.22510v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q140-1.method-view.json",
+          "view_sha256": "08420160d62f5a16411b2b7dfbf2d59247d66ac3378dd05dbbe7abd41e56c6c9"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q140",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2609.22510"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 137967,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.24801v1",
+          "finished_utc": "2026-10-19T06:39:48.409010+00:00",
+          "paragraphs": 25,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q141-1.html",
+          "sha256": "d8e2fb8133d55836d8c21e7c3a442a853f728b6ebd33eae8651a51e9cd379f5c",
+          "started_utc": "2026-10-19T06:39:47.448019+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.24801v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q141-1.method-view.json",
+          "view_sha256": "580003fd3bcd6fe9d7ee6a88fdbd9d629e20cf1df096d046a079799b392a3a51"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q141",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2609.24801"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 1127924,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.29429v1",
+          "finished_utc": "2026-10-19T06:39:50.301005+00:00",
+          "paragraphs": 5,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q142-1.html",
+          "sha256": "e9052873c197b49c2861269a57f275f866c97a2e56ddc35b728e3683ab0b62fe",
+          "started_utc": "2026-10-19T06:39:48.081013+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.29429v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q142-1.method-view.json",
+          "view_sha256": "2846823d899dae344abc2d03a60da10e9fb365a98e02b85d4846ce2e4ce0b5a7"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q142",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2609.29429"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 167627,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.30657v1",
+          "finished_utc": "2026-10-19T06:39:49.720005+00:00",
+          "paragraphs": 9,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q143-1.html",
+          "sha256": "6d7ccd25e53f727f0311e81801dddfe86751d8b3d20cb25a15feb37dd36e7e09",
+          "started_utc": "2026-10-19T06:39:48.394013+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.30657v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q143-1.method-view.json",
+          "view_sha256": "c381503a3c49fb203b8d0c6af4dd3970eb576271480fbfe0688230907f177ac3"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q143",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2609.30657"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 486252,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.33401v3",
+          "finished_utc": "2026-10-19T06:39:50.853007+00:00",
+          "paragraphs": 11,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q144-1.html",
+          "sha256": "16c76937300bf0f6a3fd5eefb55265f633b50da90e50b34101bff9047b2e86d8",
+          "started_utc": "2026-10-19T06:39:48.414018+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.33401v3",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q144-1.method-view.json",
+          "view_sha256": "9874d331fff6b5b08baa486be1c47a37d35611166f823ddaa50f0fa7b85efac2"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q144",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2609.33401"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 182578,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.36817v1",
+          "finished_utc": "2026-10-19T06:39:51.095006+00:00",
+          "paragraphs": 4,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q145-1.html",
+          "sha256": "080b29605f66dd11f60e16c0cba8103285af293b10dfb7c3b9b4e1f334dbc070",
+          "started_utc": "2026-10-19T06:39:50.205017+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.36817v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q145-1.method-view.json",
+          "view_sha256": "1afe990da7715f0dee1284df71372b32e6501cde7214dbf9d55e1a248c9e8039"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q145",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2609.36817"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 223226,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.37737v1",
+          "finished_utc": "2026-10-19T06:39:52.146098+00:00",
+          "paragraphs": 14,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q146-1.html",
+          "sha256": "abeffbf6c081ea3bc75ebae5dd5d822954f73ff1c98567089a9044f0af66c258",
+          "started_utc": "2026-10-19T06:39:50.828008+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.37737v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q146-1.method-view.json",
+          "view_sha256": "1cabee380a6edd68abedd1427fe7125fc12db4a39133545434cdf3ec6fcb8e8a"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q146",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2609.37737"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 264261,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.39678v2",
+          "finished_utc": "2026-10-19T06:39:52.414097+00:00",
+          "paragraphs": 7,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q147-1.html",
+          "sha256": "75df89f8fe88be64b0abf32d5cc9272bdc34baef0c416f11a256730394c9c549",
+          "started_utc": "2026-10-19T06:39:50.860012+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.39678v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q147-1.method-view.json",
+          "view_sha256": "a47d813e5fc636e4226375c15720ecb53d8ccacb012210fb06133b29ef32415b"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q147",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2609.39678"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 524403,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2610.00430v2",
+          "finished_utc": "2026-10-19T06:39:53.410098+00:00",
+          "paragraphs": 46,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q148-1.html",
+          "sha256": "1333ac993ce5e7fe9c8d03cc7e51cd917e4fc029b740215957b42933963c3d35",
+          "started_utc": "2026-10-19T06:39:51.105010+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2610.00430v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q148-1.method-view.json",
+          "view_sha256": "fa8e440ad22702122cfe86d26162d82d8c69bebcb57f7caf5195b3b5128593d6"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q148",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2610.00430"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 283574,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2610.02413v1",
+          "finished_utc": "2026-10-19T06:39:53.630302+00:00",
+          "paragraphs": 4,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q149-1.html",
+          "sha256": "94023469383ddb50e4c454ec80d0899f670c3bc895e0c82f4874697b667ad9ad",
+          "started_utc": "2026-10-19T06:39:52.309103+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2610.02413v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q149-1.method-view.json",
+          "view_sha256": "277b4f46b7966cbe6a5fe4c9d828a2b231f64bbc40b0c191b79f010996106ef4"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q149",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2610.02413"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 334787,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2610.03434v1",
+          "finished_utc": "2026-10-19T06:39:54.523643+00:00",
+          "paragraphs": 17,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q150-1.html",
+          "sha256": "8c7547359d194a6f66be85e2ec634eae69d7438cc63cc6418c0811bf55aa653b",
+          "started_utc": "2026-10-19T06:39:53.125097+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2610.03434v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q150-1.method-view.json",
+          "view_sha256": "dc10f13f325ee3595e350824d997d29e4f1b5ff68aa27fb0b4e5c123ff49ef0e"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q150",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2610.03434"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 238990,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2610.03448v1",
+          "finished_utc": "2026-10-19T06:39:54.572642+00:00",
+          "paragraphs": 15,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q151-1.html",
+          "sha256": "b3b66742e0b28f19001995b93b6a0ef1819c9fdd431a7b09cd9c426af7c70589",
+          "started_utc": "2026-10-19T06:39:53.615303+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2610.03448v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q151-1.method-view.json",
+          "view_sha256": "205328795d863c9cdac6a4ffa87a6d804c6bf06779a0311b823217d32014220c"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q151",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2610.03448"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 282857,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2610.03470v1",
+          "finished_utc": "2026-10-19T06:39:55.102942+00:00",
+          "paragraphs": 21,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q152-1.html",
+          "sha256": "30bc1e926b2264bd987e324dc3de0600ce2381da0ea4ba4cfb9a3fde90068408",
+          "started_utc": "2026-10-19T06:39:53.636309+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2610.03470v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q152-1.method-view.json",
+          "view_sha256": "c450889c2421ed21ef3c5284c72205f088374a0395bc3d1b12de0de0cd27d010"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q152",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2610.03470"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 1450894,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2610.04412v1",
+          "finished_utc": "2026-10-19T06:39:58.056050+00:00",
+          "paragraphs": 136,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q153-1.html",
+          "sha256": "0966e3528c13cbc940b388aec1b7215f5b5fd89926faef47c4bd16ee0420cb30",
+          "started_utc": "2026-10-19T06:39:54.546644+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2610.04412v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q153-1.method-view.json",
+          "view_sha256": "4968143f740d5a4428cd2bfc0bfd21fa5e36429dedc233e03eeaf1d3ea0bdf78"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q153",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2610.04412"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 420530,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2610.04985v1",
+          "finished_utc": "2026-10-19T06:39:55.737944+00:00",
+          "paragraphs": 5,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q154-1.html",
+          "sha256": "18ab7b7bcdde110ebec19fcc82abf6d7462d5bc95672f8351f6ac29786980d8c",
+          "started_utc": "2026-10-19T06:39:54.582641+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2610.04985v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q154-1.method-view.json",
+          "view_sha256": "93d7160a0ab00f985ec1c4355d9f07d6aa72d1e6178c8acc06470c677cfff419"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q154",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2610.04985"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 281956,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2610.10742v1",
+          "finished_utc": "2026-10-19T06:39:57.144046+00:00",
+          "paragraphs": 14,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q156-1.html",
+          "sha256": "eb499c24be72bfcef5d0eede9ddfd8cfdbd3d2e23a9bc13ff63e44b9038d1b14",
+          "started_utc": "2026-10-19T06:39:55.109945+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2610.10742v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q156-1.method-view.json",
+          "view_sha256": "196c9c3538e2eb7fc57e73854f26d764f3332d93d0f7b578654474627e8789bf"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q156",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2610.10742"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 299641,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2610.12292v1",
+          "finished_utc": "2026-10-19T06:39:58.269947+00:00",
+          "paragraphs": 8,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q157-1.html",
+          "sha256": "e853fd8866d6ef09c02a5495c8dac81ec50c23aa8ae0130c2a280f2ef5dfddd4",
+          "started_utc": "2026-10-19T06:39:56.923051+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2610.12292v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q157-1.method-view.json",
+          "view_sha256": "3a4cdfb26f077a1940045fd286b05e3a7b0041d4244939eeea0e7a1fe80ba633"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q157",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2610.12292"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 399837,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2610.17457v1",
+          "finished_utc": "2026-10-19T06:39:59.870945+00:00",
+          "paragraphs": 15,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q158-1.html",
+          "sha256": "ec10e04f13c91b5929c0a88e0720c07c5bf8e257aea4249a3b1a56443075c896",
+          "started_utc": "2026-10-19T06:39:57.820048+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2610.17457v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q158-1.method-view.json",
+          "view_sha256": "a2c96dfda1874c2f1b930e2595bf380ecea7bc2d017f1c25f6d313ea95db6d10"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q158",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2610.17457"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 370526,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2610.18408v1",
+          "finished_utc": "2026-10-19T06:39:59.872940+00:00",
+          "paragraphs": 10,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q159-1.html",
+          "sha256": "c25568c82ee5fbab1f83c03556bb1f1fa1a167e88069c0c606bca1058c7f6082",
+          "started_utc": "2026-10-19T06:39:58.254953+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2610.18408v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q159-1.method-view.json",
+          "view_sha256": "bed67b5777f87dc62fcb859a4c8b9046ca55a1fc787561e3f8084ed852a18a72"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q159",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2610.18408"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 195432,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2610.19452v1",
+          "finished_utc": "2026-10-19T06:39:59.301939+00:00",
+          "paragraphs": 12,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q160-1.html",
+          "sha256": "5e7c4f5b5049acd8ee87fd731c8f5cb497392cf33df6e7475cd5e2342259e311",
+          "started_utc": "2026-10-19T06:39:58.276942+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2610.19452v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q160-1.method-view.json",
+          "view_sha256": "f45fddc42f964457e6756d42d6ec494aef472872ad9ed340e171026e4482ea9b"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q160",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2610.19452"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 102260,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2610.20907v1",
+          "finished_utc": "2026-10-19T06:40:00.415184+00:00",
+          "paragraphs": 5,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q161-1.html",
+          "sha256": "e95c1241d0e829101ed4876c14e9d242b47379641870d2752fdb38cb43b88c6c",
+          "started_utc": "2026-10-19T06:39:59.858954+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2610.20907v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q161-1.method-view.json",
+          "view_sha256": "e0ef7951124356e788e31e876c9fc13afb262f3154d5b0fb7938382d5f3d1862"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q161",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "arxiv:2610.20907"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 245834,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2406.14048v1",
+          "finished_utc": "2026-10-19T06:40:00.781477+00:00",
+          "paragraphs": 83,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q162-1.html",
+          "sha256": "115923afe46df246f173d62df4ccf912adb6cfecbe16de7d08b0e9507b1f27f1",
+          "started_utc": "2026-10-19T06:39:59.879940+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2406.14048v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q162-1.method-view.json",
+          "view_sha256": "752206ca262f88ca23b608d50e61074149deb7d1653438ff6fc7bccec1d77edb"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q162",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.1007/978-3-031-80853-1_30"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 508100,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2609.15017v1",
+          "finished_utc": "2026-10-19T06:40:01.276478+00:00",
+          "paragraphs": 40,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q163-1.html",
+          "sha256": "5cd65fa08c6b57e682dbcd364c360321b8367a10cebef8888f9ba7aab04a5b9b",
+          "started_utc": "2026-10-19T06:39:59.881961+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2609.15017v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q163-1.method-view.json",
+          "view_sha256": "71762a89da1d106df2d864cbdf1add8bc2371e3cab133fe98318d1d54a15dc60"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q163",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.1109/access.2026.3728186"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 852555,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2508.20863v3",
+          "finished_utc": "2026-10-19T06:40:03.154509+00:00",
+          "paragraphs": 41,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q164-1.html",
+          "sha256": "c7e8d94bcbc75aa5d29f58b48cae1f4ce08cd00bccd748825aa77d43374d8f94",
+          "started_utc": "2026-10-19T06:40:00.559477+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2508.20863v3",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q164-1.method-view.json",
+          "view_sha256": "6c2114afbce68a39e9e6f5465b39f3a044354172ba108d60fc6152cfac21b3d0"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q164",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.1145/3803804"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 338215,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2502.16580v5",
+          "finished_utc": "2026-10-19T06:40:03.149511+00:00",
+          "paragraphs": 23,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q166-1.html",
+          "sha256": "3c0628421ea8338fb05a77834a8d03bb144bed4066b458891db3c92e3827e896",
+          "started_utc": "2026-10-19T06:40:01.254480+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2502.16580v5",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q166-1.method-view.json",
+          "view_sha256": "3d261229384f392ed0184aeaaaa51f53fddf59038a025859145a26d4bc12958e"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q166",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.18653/v1/2025.acl-long.890"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 192665,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2505.06311v2",
+          "finished_utc": "2026-10-19T06:40:03.148509+00:00",
+          "paragraphs": 16,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q167-1.html",
+          "sha256": "f52bf8e65a63fbd08822c09ddcff77d023830523398be805d42f2efe0f1beb3b",
+          "started_utc": "2026-10-19T06:40:01.282480+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2505.06311v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q167-1.method-view.json",
+          "view_sha256": "9dfa315c7b3dd3f787e9049cb053c12b6dd4ddbf0fc4d66a290ed2e9507e1769"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q167",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.18653/v1/2025.findings-emnlp.1060"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 386522,
+          "content_type": "application/pdf",
+          "final_url": "https://aclanthology.org/2025.findings-emnlp.528.pdf",
+          "finished_utc": "2026-10-19T06:40:08.121739+00:00",
+          "paragraphs": 38,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q168-1.pdf",
+          "sha256": "5021d1dd4a00265f8a6e5517085f1a24f89ce762f22aa0f69abc47d4cd7cc214",
+          "started_utc": "2026-10-19T06:40:03.160512+00:00",
+          "status": 200,
+          "url": "https://aclanthology.org/2025.findings-emnlp.528.pdf",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q168-1.method-view.json",
+          "view_sha256": "44034eb70353f576ca50b2d1f9ab4cf8f5a5fa98f289d69e47605247cbedaf4e"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q168",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.18653/v1/2025.findings-emnlp.528"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 244730,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2411.00348v2",
+          "finished_utc": "2026-10-19T06:40:04.235511+00:00",
+          "paragraphs": 3,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q169-1.html",
+          "sha256": "d25c0b0b0b3d7648aac68b2dbd4e8d56f7dfefd9a31a901b44b6eed4c317ec23",
+          "started_utc": "2026-10-19T06:40:03.163511+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2411.00348v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q169-1.method-view.json",
+          "view_sha256": "32c4786b8bac3b8a74939034e71eea320e965c7ffdbda301689ec766e28d5af8"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q169",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.18653/v1/2025.findings-naacl.123"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 309847,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2507.23453v2",
+          "finished_utc": "2026-10-19T06:40:04.308506+00:00",
+          "paragraphs": 21,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q170-1.html",
+          "sha256": "97465e68781e8148ca7103e8883d2825d069e9e4b4fb0f5654f52498d2f3849b",
+          "started_utc": "2026-10-19T06:40:03.167513+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2507.23453v2",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q170-1.method-view.json",
+          "view_sha256": "9bde8ad8be5fd9f566d4cc9cc6fdd2ef10b9810b86e3c5070603a6d18cc794ca"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q170",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.18653/v1/2025.ijcnlp-long.33"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 168510,
+          "content_type": "application/pdf",
+          "final_url": "https://aclanthology.org/2026.acl-industry.58.pdf",
+          "finished_utc": "2026-10-19T06:40:07.997732+00:00",
+          "paragraphs": 8,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q172-1.pdf",
+          "sha256": "858b16716563a652eac125addf1a98e15d1950a324a3ddfbd1813c7ab0022295",
+          "started_utc": "2026-10-19T06:40:04.294512+00:00",
+          "status": 200,
+          "url": "https://aclanthology.org/2026.acl-industry.58.pdf",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q172-1.method-view.json",
+          "view_sha256": "cf71051b579ef36f39afe18a28d20fb55c966c30cc84533a5adabb5600f26967"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q172",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.18653/v1/2026.acl-industry.58"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 858013,
+          "content_type": "application/pdf",
+          "final_url": "https://aclanthology.org/2026.eacl-long.139.pdf",
+          "finished_utc": "2026-10-19T06:40:10.255809+00:00",
+          "paragraphs": 95,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q173-1.pdf",
+          "sha256": "b50a7efe9885af8ac0a5e8a08070e989735e0ed580d063e5a40ac11566035303",
+          "started_utc": "2026-10-19T06:40:04.314506+00:00",
+          "status": 200,
+          "url": "https://aclanthology.org/2026.eacl-long.139.pdf",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q173-1.method-view.json",
+          "view_sha256": "bdbf43f44bd91633d7c7f42a6ac3a533cfebfe97c4aaf24c622149e379ea8924"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q173",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.18653/v1/2026.eacl-long.139"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 329555,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2508.10991v4",
+          "finished_utc": "2026-10-19T06:40:10.258809+00:00",
+          "paragraphs": 14,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q174-1.html",
+          "sha256": "22fdf9bf79597e06626d007303b593abaa7911032a548636fcc6ef2ea728fbf4",
+          "started_utc": "2026-10-19T06:40:08.564765+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2508.10991v4",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q174-1.method-view.json",
+          "view_sha256": "b66fe331e0831cccfd7801c78926390f77f2eba06679c1218658ae2256d20699"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q174",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.18653/v1/2026.findings-acl.240"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 1023909,
+          "content_type": "application/pdf",
+          "final_url": "https://aclanthology.org/2026.findings-acl.738.pdf",
+          "finished_utc": "2026-10-19T06:40:12.939969+00:00",
+          "paragraphs": 30,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q175-1.pdf",
+          "sha256": "dad219a73732ac6274fb8992c6a02c89354cbc6c059c50da4530f1e4bf4b58c4",
+          "started_utc": "2026-10-19T06:40:08.580733+00:00",
+          "status": 200,
+          "url": "https://aclanthology.org/2026.findings-acl.738.pdf",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q175-1.method-view.json",
+          "view_sha256": "32892dcf859695dad7219a57d981b0d969abf94f15c5c9d0f5f707d2f746d264"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q175",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.18653/v1/2026.findings-acl.738"
+    },
+    {
+      "attempts": [
+        {
+          "error": "HTTP Error 404: Not Found",
+          "error_body_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q176-1.error-body",
+          "error_body_sha256": "5073e75eb1a8ad47bdb179fe493c965abec8365fd8dcb082c71541daa83bc8c7",
+          "error_type": "HTTPError",
+          "finished_utc": "2026-10-19T06:40:10.619811+00:00",
+          "started_utc": "2026-10-19T06:40:10.262814+00:00",
+          "status": 404,
+          "url": "https://arxiv.org/html/2604.18248v4"
+        },
+        {
+          "bytes": 605554,
+          "content_type": "application/pdf",
+          "final_url": "https://arxiv.org/pdf/2604.18248v4",
+          "finished_utc": "2026-10-19T06:40:15.704670+00:00",
+          "paragraphs": 47,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q176-2.pdf",
+          "sha256": "ac733a2f85238f05b07aabd71eb1d6260c0d2bad2e09d66157c0cf1e8d3afed3",
+          "started_utc": "2026-10-19T06:40:10.619811+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/pdf/2604.18248v4",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q176-2.method-view.json",
+          "view_sha256": "69aa6f7e606b6e5e1fc6ce3f4b5e5c39f067826e3922181d62d63e999e73414d"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q176",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.5281/zenodo.19644135"
+    },
+    {
+      "attempts": [
+        {
+          "bytes": 185337,
+          "content_type": "text/html; charset=utf-8",
+          "final_url": "https://arxiv.org/html/2604.05179v1",
+          "finished_utc": "2026-10-19T06:40:11.001832+00:00",
+          "paragraphs": 5,
+          "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q177-1.html",
+          "sha256": "48dc6d04bac3810fe001c11a0b156e3e3d3499996d95ab1dfc0e62edcca010bc",
+          "started_utc": "2026-10-19T06:40:10.267827+00:00",
+          "status": 200,
+          "url": "https://arxiv.org/html/2604.05179v1",
+          "view_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q177-1.method-view.json",
+          "view_sha256": "cae187f04990493baa59f1cd15dd722ee39bc885e5a1c770c962961c946756a2"
+        }
+      ],
+      "parser_versions": {
+        "beautifulsoup4": "4.12.3",
+        "pypdf": "6.9.2"
+      },
+      "review_id": "Q177",
+      "scope": "METHOD_DOMAIN_ONLY_NO_OUTCOME_EXTRACTION",
+      "source_git_commit": "ed78cb61a912f6e6650200abd3ff7e71fa007a6d",
+      "work_id": "doi:10.63317/5axtpujejwcx"
+    }
+  ]
+}
