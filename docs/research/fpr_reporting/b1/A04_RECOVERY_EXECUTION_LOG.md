@@ -24,3 +24,10 @@
 - Initial lint and unit discovery found a missing closing dictionary brace in
   the new source projection. Corrected it; all 13 recovery-intake checks and lint
   pass. No artifact or scientific result was generated from that failed code.
+- Clean `4c51111` authenticated the exact original intake/base/consolidated ZIPs
+  against their three unchanged hashes, checked every internal manifest entry,
+  and executed each original offline verifier unchanged with Python isolated
+  mode. All pass. The actual nested base bytes equal the authentic standalone
+  base. No synthetic archive or hash override was used. This is local archive
+  authentication; actual delivery, intake attestation and independent completion
+  remain unrecorded. The mandate attachment's digest is separately preserved.
