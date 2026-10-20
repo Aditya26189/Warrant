@@ -31,3 +31,12 @@
   base. No synthetic archive or hash override was used. This is local archive
   authentication; actual delivery, intake attestation and independent completion
   remain unrecorded. The mandate attachment's digest is separately preserved.
+- Clean `d4c1eb6` imported the four byte-exact originals, with reported counts
+  verified: 372 work IDs, 389 memberships, 367 UNCLEAR, five exclusions supported
+  by exact ALL-version sentinel identifiers, 367 work requests / 1,852 criterion
+  requests and all 549 semantic fact links. Source/locator/receipt commitments
+  reconcile. The append-only interpretation is PROVISIONAL_UNAUTHENTICATED and
+  mechanical dispositions, not completed independent scientific adjudication.
+  No historical screening decision comparison occurred. The missing separately
+  referenced file is not reconstructed as an original; a labeled custodian-only
+  index preserves the fields actually embedded in the supplied return.

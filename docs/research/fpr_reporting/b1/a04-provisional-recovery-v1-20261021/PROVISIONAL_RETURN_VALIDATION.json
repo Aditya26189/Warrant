@@ -1,0 +1,45 @@
+{
+  "B2_executed": false,
+  "authentic_transfer_recorded": false,
+  "completed_independent_eligibility_return": false,
+  "controlled_request_items": 1852,
+  "controlled_request_works": 367,
+  "decisions_reported": {
+    "EXCLUDE": 5,
+    "UNCLEAR": 367
+  },
+  "draw_executed": false,
+  "exact_all_version_sentinel_review_ids": [
+    "W0053",
+    "W0181",
+    "W0199",
+    "W0224",
+    "W0300"
+  ],
+  "fresh_intake_attested_locally": false,
+  "gate": "FRAME_BLOCKED",
+  "historical_judgment_comparison": "NOT_PERFORMED",
+  "imported_utc": "2026-10-20T23:02:33.235012+00:00",
+  "interpretation": "MECHANICAL_DISPOSITIONS_NOT_COMPLETED_INDEPENDENT_SCIENTIFIC_ELIGIBILITY_ADJUDICATION",
+  "mechanical_validation": "PASS",
+  "memberships": 389,
+  "original_file_sha256": {
+    "B1_CONSOLIDATED_REPORT.md": "0eb8bd72dab79594c1edf0490f408c5b4cd70f99a155e38f931e5c0945a214ad",
+    "B1_CONTROLLED_EVIDENCE_REQUESTS.json": "c331588b2896855d771d26129a21d5fdac0e92378852ceea4074208c96da1605",
+    "B1_ELIGIBILITY_REVIEW_PROVISIONAL.json": "3f28e3d099d75eb4b07bea8d74e5b8f52bbc23fd89622755513d8961439b671b",
+    "B1_VALIDATION_RESULTS.json": "a39c3177e4e6964ed2a7a20ee3e5285410f134cfca486d9ac6e84a99bba496cf"
+  },
+  "reported_all_rows_explicitly_adjudicated": true,
+  "reported_synthetic_content_check": "PASS_SYNTHETIC_BASE_ZIP_HASH_BYPASSED_ONLY",
+  "return_status": "PROVISIONAL_UNAUTHENTICATED",
+  "semantic_facts_linked": 549,
+  "separately_referenced_artifact": {
+    "available_at_source": false,
+    "basis": "All original provisional rows embed their evidence IDs, locators and limitations; no separate original artifact is fabricated.",
+    "core_validation_requires_it": false,
+    "filename": "B1_EVIDENCE_REFERENCES_AND_LIMITATIONS.json"
+  },
+  "source_git_commit": "d4c1eb67463028ca81fb8a7d6390e550a9486698",
+  "synthetic_or_overridden_checks_used_for_authentication": false,
+  "works": 372
+}
