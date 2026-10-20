@@ -141,3 +141,14 @@ approved protocol or record independent eligibility decisions.
   remains separate. The package is ready for review, while FRAME_BLOCKED persists
   because no authenticated independent eligibility return or actual delivery is
   recorded. No draw, assignment, B2 or frame approval has occurred.
+- At clean artifact commit `174e9f0`, a full 372-work source replay reproduced all
+  four consolidated derived JSON payloads byte-identically: facts, receipts,
+  coverage and restriction exceptions. Direct Git-blob/archive comparisons pass;
+  outgoing text has zero CRLF sequences. All 148 historical B1 checkpoint files,
+  four protocol locks, original intake and nested base archive remain unchanged.
+  Every available primary-body hash was rechecked (387). The final report and
+  verification summary distinguish transfer readiness from actual delivery and
+  independent adjudication. The first local ZIP-verification receipt compared
+  generated working payloads; committed-blob equality was checked separately at
+  `174e9f0` and is identified precisely in the consolidated verification summary.
+  No source or reviewer outcome evidence was added during final validation.
