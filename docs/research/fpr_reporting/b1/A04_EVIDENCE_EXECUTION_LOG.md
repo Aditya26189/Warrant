@@ -121,3 +121,11 @@ approved protocol or record independent eligibility decisions.
   source receipts: only explicit primary-context/visual checks count as method
   inspection. No work, fact or source record was changed. Dedicated regression
   checks enforce that a version/access check cannot inflate reviewed coverage.
+- Final combined A04 suites completed at `e9e10d0`: 88 tests pass; lint and syntax
+  checks pass for all 11 new research Python files. Exact logs/receipts are frozen
+  beside the completed checker snapshot. All 372 final record hashes and the
+  three frozen checker manifests reconcile. Explicit method-context receipts
+  establish 347 inspected memberships in 347 works. The 549 checked paraphrases
+  cover 320 works; none of these counts is an independent eligibility judgment.
+  The consolidated release still requires the clean-tree freeze and standalone
+  archive verification before it is ready to transfer.
