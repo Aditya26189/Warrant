@@ -129,3 +129,15 @@ approved protocol or record independent eligibility decisions.
   cover 320 works; none of these counts is an independent eligibility judgment.
   The consolidated release still requires the clean-tree freeze and standalone
   archive verification before it is ready to transfer.
+- Clean `a953373` generated the consolidated transfer: 549 accepted paraphrases
+  across 320 works; 347 actual method-context inspected memberships/works; all
+  372 works and 389 source memberships preserved. No final paraphrase was held by
+  the release gate. Original broader proposal texts remain quarantined. The ZIP is
+  444,516 bytes with SHA-256
+  `8158e43ee8ad8c55854aab59c526b979b7e5a89b23f804eb65b408b384621a71`.
+  Both standard-library offline verifiers pass after fresh extraction; ZIP CRC,
+  nine-file outer/fifteen-file nested allowlists, exact payload bytes and a
+  byte-identical deterministic ZIP rebuild pass. The unchanged original intake
+  remains separate. The package is ready for review, while FRAME_BLOCKED persists
+  because no authenticated independent eligibility return or actual delivery is
+  recorded. No draw, assignment, B2 or frame approval has occurred.
