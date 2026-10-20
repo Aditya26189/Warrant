@@ -152,3 +152,10 @@ approved protocol or record independent eligibility decisions.
   generated working payloads; committed-blob equality was checked separately at
   `174e9f0` and is identified precisely in the consolidated verification summary.
   No source or reviewer outcome evidence was added during final validation.
+- At clean `177b22f`, an additional bibliographic-only parser check examined the
+  first two PDF pages and PDF metadata of all 15 unconfirmed arXiv bodies using
+  PyMuPDF rather than the initial pypdf extraction. Zero additional exact captured
+  version identifiers were found. The receipt saves only identity-match flags and
+  body hashes, no method or finding prose. The remaining 25 unconfirmed bodies are
+  ACL publication PDFs; no arXiv revision identity is invented for them. No source
+  status, evidence packet, scientific rule or coverage count was changed.

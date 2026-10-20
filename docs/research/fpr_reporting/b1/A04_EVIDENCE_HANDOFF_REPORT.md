@@ -82,13 +82,15 @@ The original, A02, A03 and A04 protocol locks verify with hashes respectively:
 
 The unavailable captured revisions are arXiv:2410.21337v2 (Q002) and arXiv:2508.02961v2. Official histories record withdrawal markers; exact official HTML/PDF and same-revision mirror attempts did not obtain bodies. No earlier revision was substituted. Forty other memberships have body transport evidence without sufficient captured-version proof. Preferred-version selection remains independent work, not an automatic inference from successful access.
 
+A [secondary PDF parser follow-up](a04-semantic-evidence-v1-20261020/PDF_VERSION_PARSER_FOLLOWUP.json) checked all 15 version-unconfirmed arXiv PDFs using PyMuPDF instead of the initial pypdf parser. Neither their first two pages nor PDF metadata yielded the exact captured version identifier. Only identifier-match flags and raw-body hashes were saved. No method or finding text was saved or released; no version status was upgraded. The other 25 unconfirmed bodies are ACL publication PDFs, which do not supply an arXiv revision identifier; their admissible publication/version interpretation remains for independent review. The evidence archive and all coverage counts remain unchanged.
+
 D01 remains one InjecGuard/PIGuard work; D02 remains two distinct MCP works. Q026/Q153 whole-document identities and study-overlap questions remain for independent adjudication. Q007's historical judgment is withheld. StepGuard's potentially distinct identifiers remain conservatively excluded at their existing sentinel scope without an invented alias mapping.
 
 Remaining dependencies are actual transfer, fresh-reviewer attestation and an authentic frozen all-work eligibility return, plus any additional controlled source/version evidence that reviewer requires. Custodian reconciliation and historical comparison can occur only after that genuine return is frozen and committed. A complete reconciled frame then requires the user's explicit approval before any draw. Current evidence gaps are not silently converted to exclusions.
 
 ## Local commits and push
 
-Branch: `research/fpr-stage-a-20261017`. The following scoped commits are pushed to origin; final report/replay documentation follows in its own commit. The final response gives that documentation commit and remote-ref verification. The consolidated archive is frozen at `174e9f03cdd499d928c61b87a485013b5d660b5a`; its generation used clean `a9533738f1c3536c29246871e6456676d8acb0f3`.
+Branch: `research/fpr-stage-a-20261017`. The following scoped commits are pushed to origin; the final response gives the latest documentation commit and remote-ref verification. The consolidated archive is frozen at `174e9f03cdd499d928c61b87a485013b5d660b5a`; its generation used clean `a9533738f1c3536c29246871e6456676d8acb0f3`.
 
 | Commit | Logical milestone |
 |---|---|
@@ -102,6 +104,7 @@ Branch: `research/fpr-stage-a-20261017`. The following scoped commits are pushed
 | `e9e10d0429c91f4f20680878a129c24826da9aac` | fix(research): count only attested method-context checks |
 | `a9533738f1c3536c29246871e6456676d8acb0f3` | docs(research): freeze completed source-checker receipts |
 | `174e9f03cdd499d928c61b87a485013b5d660b5a` | docs(research): freeze consolidated restricted source evidence |
+| `177b22f4ff6f7fb9aebdf20063f22a8bb5d2d834` | docs(research): record verified A04 evidence handoff and limits |
 
 ## Minimal reviewer message
 
