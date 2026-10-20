@@ -187,6 +187,22 @@ class SemanticReleaseChecks(unittest.TestCase):
             loc["evidence_pages"][0]["page_number_1based"] = 2
             self.assertEqual(s.validate_pdf_locator(loc, body), ["SEMANTIC_PDF_PAGE_NOT_FOUND"])
 
+    def test_intake_or_version_check_is_not_method_context_review(self) -> None:
+        for key, field, good, blocked in [
+            ("01", "raw_context_semantically_checked", True, False),
+            ("02", "context_check_status", "PRIMARY_METHOD_CONTEXT_CHECKED", "NOT_CONTEXT_CHECKED_METHOD_RELEASE_BLOCKED_BY_VERSION"),
+            ("03", "raw_context_inspected", True, False),
+        ]:
+            record = {"actor_id": s.ACTORS[key], "checked_member_ids": ["M0001", "M0002"],
+                      "source_receipts": [{"member_id": "M0001", field: good}, {"member_id": "M0002", field: blocked}]}
+            self.assertEqual(s.context_checked_members(record), ["M0001"])
+
+    def test_unattested_or_duplicate_method_context_receipt_is_rejected(self) -> None:
+        record = {"actor_id": s.ACTORS["01"], "checked_member_ids": [],
+                  "source_receipts": [{"member_id": "M0001", "raw_context_semantically_checked": True}]}
+        with self.assertRaisesRegex(ValueError, "MEMBERSHIP_MISMATCH"):
+            s.context_checked_members(record)
+
 
 class OfflineTransferChecks(unittest.TestCase):
     """Exercise the verifier with rehashed mutations, not only broken file hashes."""

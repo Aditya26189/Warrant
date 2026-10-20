@@ -111,3 +111,13 @@ approved protocol or record independent eligibility decisions.
   checker-record hash bindings and strips only internal metadata from the strict
   transfer projection. It neither creates a check nor changes source statements.
   The expanded 30-test semantic suite and lint pass after this compatibility fix.
+- All three actual source-checker completion reports and final manifests were
+  received after resumptions. Checker 02 froze its manifest before its quota
+  interruption, then confirmed the unchanged freeze in a continuation attestation.
+  Checker 03 completed its remaining manifest/receipts after continuation. Root's
+  first complete audit passed all 549 facts with zero content/locator quarantines.
+  Its operational context count initially combined checker-01 intake/version
+  checks with method inspection. Before release, root reconciled the underlying
+  source receipts: only explicit primary-context/visual checks count as method
+  inspection. No work, fact or source record was changed. Dedicated regression
+  checks enforce that a version/access check cannot inflate reviewed coverage.

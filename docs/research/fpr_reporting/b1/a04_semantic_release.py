@@ -221,6 +221,27 @@ def verifier_bytes() -> bytes:
         b"'__SPELLED_COUNT_PATTERN__'", repr(SPELLED_COUNTS.pattern).encode())
 
 
+def context_checked_members(record: dict) -> list[str]:
+    """Distinguish source-intake/version checks from actual bounded method inspection."""
+    receipts = record["source_receipts"]
+    receipts = list(receipts.values()) if isinstance(receipts, dict) else receipts
+    checked = []
+    for item in receipts:
+        actor = record["actor_id"]
+        performed = (
+            actor == ACTORS["01"] and item.get("raw_context_semantically_checked") is True
+            or actor == ACTORS["02"] and item.get("context_check_status") in {
+                "PRIMARY_METHOD_CONTEXT_CHECKED", "PDF_METHOD_TEXT_AND_LAYOUT_CHECKED"}
+            or actor == ACTORS["03"] and item.get("raw_context_inspected") is True
+        )
+        if performed:
+            mid = item["member_id"]
+            if mid in checked or mid not in record["checked_member_ids"]:
+                raise ValueError("CHECKER_CONTEXT_RECEIPT_MEMBERSHIP_MISMATCH")
+            checked.append(mid)
+    return checked
+
+
 def collect(config: dict) -> tuple[dict, dict]:
     """Project all 372 assigned returns; rejected evidence never excludes a paper."""
     frozen = e.read(e.BASE / config["run_id"] / "EVIDENCE_REQUESTS.json")
@@ -239,6 +260,7 @@ def collect(config: dict) -> tuple[dict, dict]:
         if (len(row["checked_member_ids"]) != len(set(row["checked_member_ids"]))
                 or not set(row["checked_member_ids"]).issubset(set(work["member_ids"]))):
             raise ValueError("CHECKER_MEMBER_MISMATCH")
+        context_members = context_checked_members(row)
         digest = e.sha(path.read_bytes())
         released = []
         for fact in row["restricted_method_facts"]:
@@ -247,7 +269,7 @@ def collect(config: dict) -> tuple[dict, dict]:
                 raise ValueError("FACT_SOURCE_OUTSIDE_WORK")
             acquisition = e.read(cache / "acquisition" / f"{mid}.json")
             codes = validate_fact(fact, row, source_requests[mid], acquisition["body"])
-            if mid not in row["checked_member_ids"]:
+            if mid not in context_members:
                 codes.append("FACT_SOURCE_CONTEXT_NOT_ATTESTED")
             words = len(fact.get("method_fact", "").split())
             if word_totals.get(work["work_id"], 0) + words > 180:
@@ -284,7 +306,7 @@ def collect(config: dict) -> tuple[dict, dict]:
             released.append(eid)
         coverage.append({"work_id": work["work_id"], "review_id": work["review_id"],
                          "member_ids": work["member_ids"], "source_restriction_checker": row["actor_id"],
-                         "context_checked_member_ids": row["checked_member_ids"],
+                         "context_checked_member_ids": context_members,
                          "restricted_method_evidence_ids": released,
                          "additional_restriction_correction_needed": any(q["work_id"] == work["work_id"] for q in quarantine),
                          "remaining_eligibility_facts_require_review": True,
