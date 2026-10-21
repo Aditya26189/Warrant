@@ -57,3 +57,10 @@
   fields only. Titles/authors are committed as hashes; abstracts and paper findings
   are never released. Thirteen new source-provenance tests pass. Initial lint
   flagged an unused test import; removed it before the milestone commit.
+
+- Clean `ae48629` completed immutable source bindings for all 384 requested
+  memberships. 380 support method-source release; four retain unresolved
+  source identity/access and cannot supply new methods through this route.
+  These are source commitments, not eligibility or preferred-version decisions.
+  A diagnostic used a dictionary as a list and failed without changing files;
+  checker records support both explicit criterion maps and criterion lists.
