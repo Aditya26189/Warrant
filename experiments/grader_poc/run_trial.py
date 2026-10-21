@@ -9,6 +9,7 @@ import argparse
 import hashlib
 import json
 import os
+import platform
 from pathlib import Path
 import subprocess
 import sys
@@ -18,7 +19,13 @@ from datetime import datetime, timezone
 
 def git_output(root: Path, *args: str) -> str:
     """Read provenance from the named repository, never the caller's checkout."""
-    return subprocess.check_output(["git", "-C", str(root), *args], text=True).strip()
+    executable, directory = "git", str(root)
+    # Windows-created worktrees have an absolute C:/... gitdir pointer. Use
+    # Windows Git under WSL without rewriting metadata used by other sessions.
+    if sys.platform == "linux" and "microsoft" in platform.release().lower():
+        executable = "git.exe"
+        directory = subprocess.check_output(["wslpath", "-w", str(root)], text=True).strip()
+    return subprocess.check_output([executable, "-C", directory, *args], text=True).strip()
 
 
 def file_hashes(root: Path) -> dict[str, str]:
