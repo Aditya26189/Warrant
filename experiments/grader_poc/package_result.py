@@ -147,7 +147,7 @@ def package(work: Path) -> dict:
               "ASSEMBLER_COMMIT": summary["assembler_commit"],
               "DIAGNOSTIC_COMMIT": diagnostic["source_commit"],
               "CONFIG_HASH": summary["config_sha256"]}
-    report = (here / "REPORT_TEMPLATE.md").read_text()
+    report = (here / "REPORT_TEMPLATE.md").read_text(encoding="utf-8")
     for key, value in tokens.items():
         report = report.replace("{{" + key + "}}", value)
     if "{{" in report:
