@@ -1,5 +1,6 @@
 """Hash-only preservation audit of the recovery scope and historical artifacts."""
 from __future__ import annotations
+import argparse
 import json
 import subprocess
 from pathlib import Path
@@ -12,6 +13,9 @@ PREFIX = 'docs/research/fpr_reporting/b1/'
 
 def main() -> None:
     """Compare historical bytes without parsing historical research judgments."""
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--final', action='store_true')
+    args = parser.parse_args()
     head = e.clean_head()
     e.baseline(e.read(e.CONFIG))
     command = lambda *args: subprocess.run(['git', *args], capture_output=True, check=True).stdout
@@ -45,7 +49,8 @@ def main() -> None:
             'research_only_added_paths':len(delta),'protocol_lock_sha256':locks,
             'production_change':False,'frozen_artifacts_modified':False,'historical_decision_comparison':'NOT_PERFORMED',
             'selection_run':False,'b2_run':False,'independent_review_completed':False,'gate':'FRAME_BLOCKED'}
-    e.write_new(e.BASE/r.RUN/'RECOVERY_SCOPE_CHECK.json',result)
+    name = 'FINAL_RECOVERY_SCOPE_CHECK.json' if args.final else 'RECOVERY_SCOPE_CHECK.json'
+    e.write_new(e.BASE/r.RUN/name,result)
     print(json.dumps({k:v for k,v in result.items() if k!='historical_hashes'},sort_keys=True))
 
 
