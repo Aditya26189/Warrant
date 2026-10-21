@@ -106,6 +106,15 @@ class FactChecks(unittest.TestCase):
             with self.subTest(field=field):
                 self.assertTrue(r.validate_fact(fact, self.row, self.binding))
 
+    def test_optional_proof_mismatch_cannot_be_ignored(self) -> None:
+        self.fact['source_binding_receipt_sha256'] = '0' * 64
+        self.binding['member_id'] = 'M0001'
+        self.assertIn('OPTIONAL_SOURCE_PROOF_COMMITMENT_CHANGED', r.validate_optional_proofs(self.fact, self.binding))
+
+    def test_unsupported_extra_field_cannot_leak(self) -> None:
+        self.fact['performance_note'] = 'Superior results'
+        self.assertIn('UNEXPECTED_RECOVERY_FACT_FIELDS', r.validate_fact(self.fact, self.row, self.binding))
+
     def test_tables_abstracts_and_wrong_paragraph_hash_are_rejected(self) -> None:
         raw = b'<section id="S3"><table><p class="ltx_p">The method classifies inputs.</p></table></section>'
         self.path.write_bytes(raw)

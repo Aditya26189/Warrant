@@ -103,3 +103,12 @@
   No titles, abstracts, relation prose or new candidates are released. Four
   identity/leakage/date-semantics tests pass. This supplements the independent
   preferred-version review; it does not choose versions.
+
+- Known-DOI verification captured 37 distinct registration lookups: 33
+  Crossref records and four HTTP 404 receipts. A missing registration response
+  is an access/metadata limitation, not evidence of no publication. Registered
+  titles/authors remain hashed; creation and deposit dates are not substituted
+  for public release. Source proof extras from checker PDFs are now validated
+  against exact original receipt hashes; unsupported extra fields still fail.
+  Twelve release-boundary tests pass. Partial audits are diagnostic snapshots
+  during ongoing role work, not completed independent review or eligibility.

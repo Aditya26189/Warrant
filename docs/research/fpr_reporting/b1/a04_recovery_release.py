@@ -20,6 +20,7 @@ import a04_semantic_release as s
 
 METHOD_CRITERIA = {"input_injection_task", "binary_evaluation", "before_target_answer", "english_evaluation"}
 EXTRA_FACT_FIELDS = {"addresses_criteria", "experiment_scope", "source_binding_basis"}
+PROOF_FIELDS = {"source_binding_receipt_sha256", "source_binding_limitation_codes", "acquisition_receipt_sha256", "source_binding_receipt"}
 
 
 def utc(value: str) -> bool:
@@ -112,7 +113,7 @@ def html_locator(locator: dict, body: dict) -> list[str]:
 def validate_fact(fact: dict, record: dict, binding: dict) -> list[str]:
     """Use new source proof directly; never override an old acquisition state."""
     optional = {"source_context_original_checked_utc", "locator_checked_utc", "literal_quotation_words"}
-    if not (s.FACT_FIELDS | EXTRA_FACT_FIELDS).issubset(fact) or set(fact) - s.FACT_FIELDS - EXTRA_FACT_FIELDS - optional:
+    if not (s.FACT_FIELDS | EXTRA_FACT_FIELDS).issubset(fact) or set(fact) - s.FACT_FIELDS - EXTRA_FACT_FIELDS - optional - PROOF_FIELDS:
         return ["UNEXPECTED_RECOVERY_FACT_FIELDS"]
     if (not binding["method_release_supported"] or not binding.get("body")
             or fact["member_id"] != binding["member_id"] or fact["member_id"] not in record["context_checked_member_ids"]):
@@ -133,6 +134,9 @@ def validate_fact(fact: dict, record: dict, binding: dict) -> list[str]:
         return ["EXPERIMENT_SCOPE_REQUIRES_RESTRICTION_CHECK"]
     if not fact["source_binding_basis"]:
         return ["SOURCE_BINDING_BASIS_MISSING"]
+    proof_errors = validate_optional_proofs(fact, binding)
+    if proof_errors:
+        return proof_errors
     check = fact["second_local_semantic_pass"]
     if (not isinstance(check, dict) or check.get("actor_id", check.get("checked_by")) != record["actor_id"]
             or check.get("literal_quotation_words", 0) != 0 or fact.get("literal_quotation_words", 0) != 0
@@ -141,6 +145,26 @@ def validate_fact(fact: dict, record: dict, binding: dict) -> list[str]:
         return ["RECOVERY_SECOND_PASS_UNATTESTED"]
     geometry = pdf_locator(fact["locator"], body) if body["kind"] == "PDF" else html_locator(fact["locator"], body)
     return geometry + s.leakage_codes(fact)
+
+
+def validate_optional_proofs(fact: dict, binding: dict) -> list[str]:
+    """Accept only explicitly hash-checked optional receipt metadata."""
+    if not PROOF_FIELDS.intersection(fact):
+        return []
+    path = e.BASE / r.RUN / "SOURCE_BINDINGS.json"
+    original = next(x for x in e.read(path) if x["member_id"] == binding["member_id"])
+    if ("source_binding_receipt_sha256" in fact and fact["source_binding_receipt_sha256"] != e.sha(path.read_bytes())
+            or "acquisition_receipt_sha256" in fact and fact["acquisition_receipt_sha256"] != original["original_acquisition_receipt_sha256"]
+            or "source_binding_limitation_codes" in fact and fact["source_binding_limitation_codes"] != original["limitation_codes"]):
+        return ["OPTIONAL_SOURCE_PROOF_COMMITMENT_CHANGED"]
+    if "source_binding_receipt" in fact:
+        proof = fact["source_binding_receipt"]
+        fields = {"path", "sha256", "member_id", "body_exact_revision_self_identified", "protocol_preferred_version", "limitation_codes"}
+        if (not isinstance(proof, dict) or set(proof) != fields or Path(proof["path"]).resolve() != path.resolve()
+                or proof["sha256"] != e.sha(path.read_bytes()) or proof["member_id"] != original["member_id"]
+                or any(proof[k] != original[k] for k in fields - {"path", "sha256", "member_id"})):
+            return ["OPTIONAL_SOURCE_PROOF_COMMITMENT_CHANGED"]
+    return []
 
 
 def public_binding(row: dict) -> dict:
@@ -183,6 +207,8 @@ def effective_bindings() -> tuple[dict, list]:
                 or note["eligibility_decision"] is not None or note["protocol_preferred_version"] is not None
                 or note["body_exact_revision_self_identified"] is not False or not utc(note["checked_utc"])):
             raise ValueError("VISUAL_IDENTITY_RECEIPT_COMMITMENT_CHANGED")
+        if "CAPTURED_SOURCE_DATE_CUTOFF_UNRESOLVED" in row["limitation_codes"]:
+            raise ValueError("VISUAL_IDENTITY_CANNOT_REPAIR_UNKNOWN_DATE")
         locator = {"format": "PDF", "method_section_locator": "First page bibliography",
                    "evidence_pages": [{k: note[k] for k in ("page_number_1based", "rendered_page_sha256", "rendered_page_path", "page_text_sha256")}]}
         if pdf_locator(locator, row["body"]):
@@ -293,7 +319,8 @@ def collect(allow_partial: bool = False) -> tuple[dict, dict]:
             criterion_rows.append({"criterion": criterion, "bibliographic_evidence_ids": bibliography_ids,
                                    "source_binding_evidence_ids": ["R01-SOURCE-" + m for m in req["member_ids"]],
                                    "frozen_bibliographic_evidence_ids": ["BIB-" + m for m in req["member_ids"]],
-                                   "further_controlled_evidence_needed": True,
+                                   "further_controlled_evidence_needed": None,
+                                   "independent_bibliographic_judgment_required": True,
                                    "limitation_codes": ["PROTOCOL_PREFERRED_VERSION_AND_SENTINEL_SCOPE_REQUIRE_INDEPENDENT_REVIEW"]
                                        + (["CROSS_MEMBER_IDENTITY_REQUIRES_INDEPENDENT_REVIEW"] if criterion == "identity" else []),
                                    "criterion_satisfaction_decision": None})
