@@ -8,6 +8,10 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import io
+import subprocess
+import sys
+import zipfile
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -227,7 +231,57 @@ def effective_bindings() -> tuple[dict, list]:
                     "previous_source_binding_basis": row["source_binding_basis"],
                     "limitation_codes": [x for x in row["limitation_codes"] if x != "WORK_TITLE_IDENTITY_NOT_ESTABLISHED"]
                         + proof["limitation_codes"]})
+    path = r.CACHE / "checker-03/M0326.IDENTITY_NOTE.0001.json"
+    if path.exists():
+        note = e.read(path)
+        row = bindings["M0326"]
+        if (note["actor_id"] != s.ACTORS["03"] or note["member_id"] != row["member_id"]
+                or note["raw_source_sha256"] != row["body"]["sha256"] or note["source_url"] != row["body"]["url"]
+                or not note["visual_bibliographic_region_inspected"] or note["method_release_supported"]
+                or note["eligibility_decision"] is not None or not utc(note["checked_utc"])
+                or e.sha(sources.identity_text(note["controlled_frozen_title"]).encode()) != row["captured_title_identity_sha256"]):
+            raise ValueError("UNRESOLVED_IDENTITY_NOTE_COMMITMENT_CHANGED")
+        locator = {"format": "PDF", "method_section_locator": "First page bibliography",
+                   "evidence_pages": [{k: note[k] for k in ("page_number_1based", "rendered_page_sha256", "rendered_page_path", "page_text_sha256")}]}
+        if pdf_locator(locator, row["body"]):
+            raise ValueError("UNRESOLVED_IDENTITY_PAGE_PROOF_FAILED")
+        notes.append({"evidence_id": "R01-IDENTITY-M0326", "member_id": row["member_id"], "review_id": row["review_id"],
+                      "source_url": row["body"]["url"], "raw_source_sha256": row["body"]["sha256"],
+                      "actor_id": note["actor_id"], "checked_utc": note["checked_utc"], "locator": s.transfer_locator(locator),
+                      "frozen_title_identity_sha256": row["captured_title_identity_sha256"],
+                      "observed_title_identity_sha256": e.sha(sources.identity_text(note["primary_pdf_title"]).encode()),
+                      "author_names_visually_match": note["all_controlled_author_names_present_in_primary_header"],
+                      "source_checker_record_sha256": e.sha(path.read_bytes()), "method_release_supported": False,
+                      "eligibility_decision": None, "limitation_codes": ["TITLE_DISCREPANCY_REQUIRES_PRIMARY_IDENTITY_LINK", "NO_ALIAS_MAPPING_ASSERTED"]})
     return bindings, notes
+
+
+def crosslinks(bibliography: list, registration: list) -> list:
+    """Expose identifier links and exact sentinel collisions without new mappings."""
+    intake = r.original_archives()["FRESH_REVIEWER_INTAKE.zip"]
+    inventory = json.loads(intake["CANDIDATE_INVENTORY.json"])
+    sentinels = json.loads(intake["SENTINEL_IDENTIFIERS.json"])
+    members = {row["member_id"]: row for row in bibliography}
+    results = []
+    for work in inventory:
+        if not any(m["member_id"] in members for m in work["members"]):
+            continue
+        linked = [{"identifier": identifier, "evidence_id": members[m["member_id"]]["evidence_id"], "member_id": m["member_id"]}
+                  for m in work["members"] for identifier in members[m["member_id"]]["official_fields"]["linked_identifiers"]]
+        identifiers = set(work["identifiers"]) | {x["identifier"] for x in linked}
+        related = [{"registration_evidence_id": item["evidence_id"], **relation}
+                   for item in registration if set(item["member_ids"]) & {m["member_id"] for m in work["members"]}
+                   for relation in (item["registered_fields"] or {}).get("related_doi_identifiers", [])]
+        results.append({"review_id": work["review_id"], "work_id": work["work_id"],
+                        "member_ids": [m["member_id"] for m in work["members"]],
+                        "frozen_identifiers": work["identifiers"], "official_linked_identifiers": linked,
+                        "registered_relations_not_new_candidates": related,
+                        "exact_sentinel_identifier_collisions": [{"sentinel_work_id": x["work_id"], "exclude_versions": x["exclude_versions"]}
+                                                                 for x in sentinels if x["work_id"] in identifiers],
+                        "alias_mapping_decision": None, "selected_protocol_preferred_version": None,
+                        "limitation_codes": ["EXACT_IDENTIFIER_CHECK_ONLY_RENAMED_AND_VERSION_SCOPE_REQUIRE_REVIEW"],
+                        "eligibility_decision": None})
+    return results
 
 
 def collect(allow_partial: bool = False) -> tuple[dict, dict]:
@@ -240,6 +294,10 @@ def collect(allow_partial: bool = False) -> tuple[dict, dict]:
     bindings, identity_notes = effective_bindings()
     bibliographic_path = e.BASE / r.RUN / "OFFICIAL_BIBLIOGRAPHIC_EVIDENCE.json"
     bibliography = e.read(bibliographic_path) if bibliographic_path.exists() else []
+    registration_path = e.BASE / r.RUN / "REGISTERED_DOI_EVIDENCE_CUSTODIAN.json"
+    registration = e.read(registration_path) if registration_path.exists() else []
+    followup_path = e.BASE / r.RUN / "REGISTRATION_FOLLOWUP_CUSTODIAN.json"
+    followup = e.read(followup_path) if followup_path.exists() else []
     bib = {x["member_id"]: x for x in bibliography}
     facts, receipts, responses, quarantine, snapshots, missing = [], [], [], [], [], []
     used = set()
@@ -342,18 +400,169 @@ def collect(allow_partial: bool = False) -> tuple[dict, dict]:
                 "CONTROLLED_REQUEST_RESPONSES.json": responses,
                 "RECOVERY_SOURCE_BINDINGS.json": [public_binding(x) for x in bindings.values()],
                 "RECOVERY_IDENTITY_EVIDENCE.json": identity_notes,
-                "OFFICIAL_BIBLIOGRAPHIC_EVIDENCE.json": [public_bibliography(x) for x in bibliography]}
+                "OFFICIAL_BIBLIOGRAPHIC_EVIDENCE.json": [public_bibliography(x) for x in bibliography],
+                "REGISTERED_DOI_EVIDENCE.json": [{**x, "provenance": {k: v for k, v in x["provenance"].items() if k != "raw_path"}} for x in registration],
+                "REGISTRATION_FOLLOWUP_EVIDENCE.json": [{k: v for k, v in x.items() if k != "raw_path"} for x in followup],
+                "BIBLIOGRAPHIC_CROSSLINKS.json": crosslinks(bibliography, registration),
+                "SOURCE_GAP_REQUESTS.json": gaps}
     return payloads, audit
 
 
 def main() -> None:
     """Audit while roles run; freezing is a separate complete-role milestone."""
     parser = argparse.ArgumentParser()
-    parser.add_argument("phase", choices=["audit"])
+    parser.add_argument("phase", choices=["audit", "freeze"])
     parser.add_argument("--partial", action="store_true")
     args = parser.parse_args()
-    _, audit = collect(args.partial)
-    print(json.dumps({k: v for k, v in audit.items() if k != "checker_record_inputs"}, sort_keys=True))
+    if args.phase == "freeze":
+        if args.partial:
+            raise ValueError("PARTIAL_RELEASE_NOT_AUTHORIZED")
+        freeze(e.clean_head())
+    else:
+        _, audit = collect(args.partial)
+        print(json.dumps({k: v for k, v in audit.items() if k != "checker_record_inputs"}, sort_keys=True))
+
+
+def replay_bibliography() -> dict:
+    """Reparse exact captured bytes from a clean committed release tool."""
+    import a04_recovery_bibliography as registered
+    import a04_recovery_registration_followup as followup
+    requests, metadata = sources.inputs()
+    by_mid = {x["member_id"]: x for x in requests}
+    official = e.read(e.BASE / r.RUN / "OFFICIAL_BIBLIOGRAPHIC_EVIDENCE.json")
+    if len(official) != 384 or {x["member_id"] for x in official} != set(by_mid):
+        raise ValueError("BIBLIOGRAPHY_REPLAY_MEMBERSHIP_CHANGED")
+    for row in official:
+        if row["metadata_record_sha256"] != by_mid[row["member_id"]]["metadata_record_sha256"]:
+            raise ValueError("BIBLIOGRAPHY_REPLAY_METADATA_CHANGED")
+        successful = [x for x in row["provenance"]["attempts"] if x.get("raw_path")]
+        if len(successful) != 1:
+            raise ValueError("BIBLIOGRAPHY_REPLAY_EXPECTED_CAPTURE_MISSING")
+        raw = Path(successful[0]["raw_path"]).read_bytes()
+        if e.sha(raw) != row["provenance"]["raw_source_sha256"]:
+            raise ValueError("BIBLIOGRAPHY_REPLAY_RAW_HASH_CHANGED")
+        if sources.bibliographic_fields(raw, metadata[row["member_id"]]["source"]) != row["official_fields"]:
+            raise ValueError("BIBLIOGRAPHY_REPLAY_FIELDS_CHANGED")
+    registration = e.read(e.BASE / r.RUN / "REGISTERED_DOI_EVIDENCE_CUSTODIAN.json")
+    for row in registration:
+        if row["registered_fields"] is None:
+            continue
+        raw = Path(row["provenance"]["raw_path"]).read_bytes()
+        if (e.sha(raw) != row["provenance"]["raw_source_sha256"]
+                or registered.registered_fields(json.loads(raw)["message"], row["doi"]) != row["registered_fields"]):
+            raise ValueError("REGISTRATION_REPLAY_CHANGED")
+    followups = e.read(e.BASE / r.RUN / "REGISTRATION_FOLLOWUP_CUSTODIAN.json")
+    for row in followups:
+        if row["official_fields"] is None:
+            continue
+        raw = Path(row["raw_path"]).read_bytes()
+        fields = (followup.datacite_fields(json.loads(raw)["data"]["attributes"], row["doi"])
+                  if row["source_kind"] == "DATACITE" else sources.bibliographic_fields(raw, "acl"))
+        if e.sha(raw) != row["raw_source_sha256"] or fields != row["official_fields"]:
+            raise ValueError("REGISTRATION_FOLLOWUP_REPLAY_CHANGED")
+    return {"official_memberships_replayed": len(official), "registration_receipts": len(registration),
+            "registration_followups": len(followups), "capture_refreshed": False, "replay": "BYTE_IDENTICAL_FIELDS"}
+
+
+def zipped(files: dict[str, bytes]) -> bytes:
+    """Create a new, separately identified transport, never an original substitute."""
+    stream = io.BytesIO()
+    with zipfile.ZipFile(stream, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+        for name, raw in sorted(files.items()):
+            info = zipfile.ZipInfo(name, date_time=(2026, 10, 21, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            archive.writestr(info, raw)
+    return stream.getvalue()
+
+
+def write_raw_new(path: Path, raw: bytes) -> None:
+    """Commit exact binary bytes atomically inside the new recovery directory."""
+    if not path.resolve().is_relative_to((e.BASE / r.RUN).resolve()):
+        raise ValueError("RAW_TRANSFER_PATH_OUTSIDE_NEW_RECOVERY")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists():
+        if path.read_bytes() != raw:
+            raise FileExistsError(path)
+        return
+    partial = path.with_name(path.name + ".partial")
+    if partial.exists():
+        if partial.read_bytes() == raw:
+            partial.rename(path)
+            return
+        partial.rename(partial.with_name(partial.name + ".interrupted-" + e.sha(partial.read_bytes())[:16]))
+    with partial.open("xb") as stream:
+        stream.write(raw)
+    partial.rename(path)
+
+
+def freeze(head: str) -> None:
+    """Require actual finished restriction roles, then verify the entire handoff."""
+    root = e.BASE / r.RUN
+    e.baseline(e.read(e.CONFIG))
+    completion = e.read(root / "RECOVERY_CHECKER_COMPLETION.json")
+    if (set(completion["actors"]) != set(s.ACTORS.values())
+            or completion["actual_agent_completion_reports_received"] is not True
+            or completion["independent_eligibility_review_completed"] is not False):
+        raise ValueError("ACTUAL_RECOVERY_ROLE_COMPLETION_NOT_RECORDED")
+    for item in completion["manifest_inputs"]:
+        if e.sha(Path(item["path"]).read_bytes()) != item["sha256"]:
+            raise ValueError("ACTUAL_RECOVERY_ROLE_MANIFEST_CHANGED")
+    replay = replay_bibliography()
+    payloads, audit = collect()
+    if len(audit["checker_record_inputs"]) != 367 or audit["criteria_responses"] != 1852:
+        raise ValueError("RECOVERY_ROLE_COVERAGE_INCOMPLETE")
+    if {x["review_id"]: x["sha256"] for x in audit["checker_record_inputs"]} != completion["latest_record_sha256"]:
+        raise ValueError("RECOVERY_COMPLETION_SNAPSHOT_CHANGED")
+    for row in payloads["CONTROLLED_REQUEST_RESPONSES.json"]:
+        if any("PENDING" in code or "NOT_STARTED" in code for code in row["remaining_fact_codes"]):
+            raise ValueError("ROUTINE_SOURCE_TASK_STILL_PENDING:" + row["review_id"])
+    payloads["CHECKER_ROLE_RECEIPTS.json"] = [{"actor_id": actor,
+        "role": "SOURCE_RESTRICTION_CHECKER_NOT_ELIGIBILITY_REVIEWER", "shared_filesystem": True,
+        "os_isolation_claimed": False, "eligibility_review_claimed": False,
+        "context_history": "RESUMED_EXISTING_SEPARATE_SOURCE_RESTRICTION_CONTEXT_ORIGINALLY_FORKED_WITH_NONE",
+        "actual_completion_report_received": True} for actor in s.ACTORS.values()]
+    files = {name: e.encoded(value) for name, value in payloads.items()}
+    files["README.md"] = (e.BASE / "A04_RECOVERY_REVIEWER_README.md").read_bytes()
+    manifest = {"kind": "NEW_CONTROLLED_RECOVERY_EVIDENCE_NOT_ORIGINAL_ARCHIVE_SUBSTITUTE",
+                "source_git_commit": head, "prepared_utc": e.now(), "files": {n: e.sha(raw) for n, raw in files.items()},
+                "independent_eligibility_review_completed": False, "actual_delivery_recorded": False,
+                "gate": "FRAME_BLOCKED"}
+    files["MANIFEST.json"] = e.encoded(manifest)
+    inner = zipped(files)
+    outer = {name: (e.BASE / path).read_bytes() for name, (path, _, _) in r.ARCHIVES.items()}
+    # Authenticate exact originals before nesting them in a new transport.
+    r.original_archives()
+    outer["RECOVERY_CONTROLLED_EVIDENCE.zip"] = inner
+    outer["READ_FIRST_RECOVERY.md"] = files["README.md"]
+    outer["verify_recovery.py"] = (e.BASE / "verify_a04_recovery_transfer.py").read_bytes().replace(
+        b"'__OUTCOME_PATTERN__'", repr(e.OUTCOME.pattern).encode()).replace(
+        b"'__SPELLED_COUNT_PATTERN__'", repr(s.SPELLED_COUNTS.pattern).encode()).replace(
+        b"'__SAFE_LIMITATION__'", repr(s.SAFE_LIMITATION).encode())
+    outer["MANIFEST.json"] = e.encoded({"kind": "NEW_RECOVERY_TRANSPORT_WITH_UNCHANGED_ORIGINAL_ARCHIVES",
+        "files": {n: e.sha(raw) for n, raw in outer.items()}, "prepared_utc": e.now(), "source_git_commit": head,
+        "actual_delivery_recorded": False, "independent_eligibility_review_completed": False, "gate": "FRAME_BLOCKED"})
+    for name, raw in outer.items():
+        write_raw_new(root / "transfer" / name, raw)
+    process = subprocess.run([sys.executable, "-I", str((root / "transfer/verify_recovery.py").resolve())],
+                             capture_output=True, text=True, timeout=300)
+    if process.returncode:
+        # Preserve failed check evidence; the transport is not called reviewer-ready.
+        e.write_new(r.CACHE / ("failed-transfer-check-" + e.now().replace(":", "-") + ".json"),
+                    {"exit_code": process.returncode, "stdout": process.stdout, "stderr": process.stderr})
+        raise ValueError("FULL_TRANSFER_VERIFICATION_FAILED:" + process.stderr[-1500:])
+    for item in audit["checker_record_inputs"]:
+        if e.sha(Path(item["path"]).read_bytes()) != item["sha256"]:
+            raise ValueError("CHECKER_RECORD_CHANGED_DURING_FREEZE")
+    raw = zipped(outer)
+    write_raw_new(root / "REVIEWER_RECOVERY_TRANSFER.zip", raw)
+    for name, value in payloads.items():
+        e.write_new(root / "released" / name, value)
+    e.write_new(root / "RECOVERY_RELEASE_VALIDATION.json", {"source_git_commit": head,
+        "checked_utc": e.now(), "bibliography_replay": replay, "actual_full_transfer_verifier": json.loads(process.stdout),
+        "audit": audit, "transfer_sha256": e.sha(raw), "transfer_bytes": len(raw),
+        "actual_delivery_recorded": False, "independent_eligibility_review_completed": False, "gate": "FRAME_BLOCKED"})
+    print(json.dumps({"transfer_sha256": e.sha(raw), "transfer_bytes": len(raw),
+                      "new_method_facts": len(payloads["RECOVERY_METHOD_FACTS.json"]), "gate": "FRAME_BLOCKED"}))
 
 
 if __name__ == "__main__":

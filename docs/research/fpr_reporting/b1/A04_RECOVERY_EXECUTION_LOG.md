@@ -112,3 +112,24 @@
   against exact original receipt hashes; unsupported extra fields still fail.
   Twelve release-boundary tests pass. Partial audits are diagnostic snapshots
   during ongoing role work, not completed independent review or eligibility.
+
+- The third work period resumed after another genuine usage-limit pause.
+  Actual UTC timestamps continue across the client calendar boundary; the run
+  identifier retains its initial date. Checker02 has actually completed all 121
+  assigned contexts (116 HTML, five PDF), 42 new facts, 167 reused IDs, zero
+  pending records and explicit unresolved facts. Its final report, manifest and
+  validation/freeze hashes are preserved. Other role completion is not inferred.
+- Two exact Zenodo DOI gaps were resolved through official DataCite metadata;
+  two ACM DOI-page access failures remain recorded. No new work was discovered
+  or added. The original Crossref failures are preserved.
+- Added a new recovery transport verifier that binds the exact three original
+  ZIPs, runs all original unmodified verifiers and separately checks the new
+  method/bibliographic supplement. It rejects private paths, prior dispositions,
+  nonblank decisions, unbound references and incomplete request coverage.
+  Five transport-boundary checks pass; the actual-package test is explicitly
+  deferred until the completed-role package exists and must then run unskipped.
+  Removed an unused test import after lint flagged it.
+- Before transport generation, code review caught the JSON-only writer being
+  used for binary transport bytes. Added a separate immutable, path-bounded
+  binary writer and an exact-byte/overwrite/path-escape regression check.
+  Thirteen release tests pass. No archive was generated with the wrong writer.

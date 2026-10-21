@@ -55,6 +55,19 @@ class SupportChecks(unittest.TestCase):
         bib = {'provenance': {'attempts': [{'raw_path': 'private', 'raw_source_sha256': 'hash'}]}}
         self.assertNotIn('private', str(r.public_bibliography(bib)))
 
+    def test_binary_transport_is_exact_and_immutable(self) -> None:
+        with tempfile.TemporaryDirectory(dir=Path('.venv/a04-recovery-tests')) as temporary:
+            directory = Path(temporary)
+            with patch.object(r.e, 'BASE', directory), patch.object(r.r, 'RUN', 'new'):
+                path = directory / 'new/archive.zip'
+                r.write_raw_new(path, b'PK\x00\xff')
+                self.assertEqual(path.read_bytes(), b'PK\x00\xff')
+                r.write_raw_new(path, b'PK\x00\xff')
+                with self.assertRaises(FileExistsError):
+                    r.write_raw_new(path, b'changed')
+                with self.assertRaisesRegex(ValueError, 'OUTSIDE_NEW_RECOVERY'):
+                    r.write_raw_new(directory / 'old.zip', b'raw')
+
 
 class FactChecks(unittest.TestCase):
     def setUp(self) -> None:
