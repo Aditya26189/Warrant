@@ -243,9 +243,13 @@ def bibliographic_fields(raw: bytes, source: str) -> dict:
     return fields
 
 
-def bibliographic_one(request: dict, metadata: dict, head: str) -> dict:
+def bibliographic_one(request: dict, metadata: dict, head: str, retry_unavailable: bool = False) -> dict:
     """Resume one immutable official metadata response for an existing membership."""
     path = recovery.CACHE / "bibliographic" / f"{request['member_id']}.json"
+    prior_receipt = None
+    if path.exists() and retry_unavailable and not e.read(path)["provenance"]["raw_source_sha256"]:
+        prior_receipt = e.sha(path.read_bytes())
+        path = recovery.CACHE / "bibliographic-retry" / path.name
     if path.exists():
         row = e.read(path)
         if row["metadata_record_sha256"] != request["metadata_record_sha256"]:
@@ -263,19 +267,20 @@ def bibliographic_one(request: dict, metadata: dict, head: str) -> dict:
     row = {k: request[k] for k in ("member_id", "work_id", "review_id", "captured_version_id", "metadata_record_sha256")}
     row.update({"evidence_id": "R01-BIB-" + request["member_id"], "source_git_commit": head,
                 "provenance": provenance, "official_fields": fields,
+                "prior_unavailable_receipt_sha256": prior_receipt,
                 "selected_protocol_preferred_version": None, "eligibility_decision": None})
     e.write_new(path, row)
     return row
 
 
-def bibliography(head: str, limit: int | None = None) -> None:
+def bibliography(head: str, limit: int | None = None, retry_unavailable: bool = False) -> None:
     """Process all requested metadata memberships in a bounded resumable pool."""
     requests, metadata = inputs()
     if limit:
         requests = requests[:limit]
     rows = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-        futures = {pool.submit(bibliographic_one, req, metadata[req["member_id"]], head): req for req in requests}
+        futures = {pool.submit(bibliographic_one, req, metadata[req["member_id"]], head, retry_unavailable): req for req in requests}
         for n, future in enumerate(concurrent.futures.as_completed(futures), 1):
             row = future.result()
             rows.append(row)
@@ -290,13 +295,14 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("phase", choices=["bindings", "bibliography"])
     parser.add_argument("--limit", type=int)
+    parser.add_argument("--retry-unavailable", action="store_true")
     args = parser.parse_args()
     head = e.clean_head()
     e.baseline(e.read(e.CONFIG))
     if args.phase == "bindings":
         build_bindings(head)
     else:
-        bibliography(head, args.limit)
+        bibliography(head, args.limit, args.retry_unavailable)
 
 
 if __name__ == "__main__":

@@ -64,3 +64,11 @@
   These are source commitments, not eligibility or preferred-version decisions.
   A diagnostic used a dictionary as a list and failed without changing files;
   checker records support both explicit criterion maps and criterion lists.
+
+- The first three new official bibliography lookups failed under restricted
+  network access; their immutable attempt receipts are retained. A direct
+  elevated official-site diagnostic returned HTTP 200. Added a separately saved
+  retry receipt linked to the failed original instead of replacing it. A
+  mutation/resume test verifies original-byte preservation and success reuse.
+  The sandbox also denied temporary PDF test fixtures; rerunning the same checks
+  with the permitted override passed all 14 source tests and lint.

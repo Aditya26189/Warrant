@@ -100,6 +100,22 @@ class SourceBindingChecks(unittest.TestCase):
 
 
 class BibliographyChecks(unittest.TestCase):
+    def test_retry_preserves_failed_receipt_and_reuses_success(self) -> None:
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory(dir=Path('.venv/a04-recovery-tests')) as temporary:
+            root = Path(temporary)
+            req = {'member_id': 'M0001', 'work_id': 'fixture', 'review_id': 'W0001',
+                   'captured_version_id': None, 'metadata_record_sha256': 'f' * 64}
+            prior = root / 'bibliographic/M0001.json'
+            e.write_new(prior, {**req, 'provenance': {'raw_source_sha256': None, 'attempts': []}})
+            original = prior.read_bytes()
+            with patch.object(s.recovery, 'CACHE', root), patch.object(s, 'primary_get', return_value=(b'<html/>', {'raw_source_sha256': 'a' * 64, 'attempts': []})) as fetch:
+                row = s.bibliographic_one(req, {'url': 'https://aclanthology.org/fixture/', 'source': 'acl'}, 'head', True)
+                self.assertEqual(row['prior_unavailable_receipt_sha256'], e.sha(original))
+                self.assertEqual(prior.read_bytes(), original)
+                self.assertEqual(s.bibliographic_one(req, {'url': 'unused'}, 'head', True), row)
+                self.assertEqual(fetch.call_count, 1)
+
     def test_revision_dates_and_withdrawal_only(self) -> None:
         raw = b'<html><div class="submission-history">[v1] Mon, 28 Oct 2024 00:36:21 UTC (2139 KB) [v2] Thu, 7 Nov 2024 21:20:31 UTC (1 KB) (withdrawn)</div><p>We achieve 99% accuracy.</p></html>'
         row = s.bibliographic_fields(raw, "arxiv")
