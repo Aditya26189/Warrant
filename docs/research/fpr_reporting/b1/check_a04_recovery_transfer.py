@@ -1,6 +1,10 @@
 """Reject transport corruption and accidental disclosure before delivery."""
 import io
 import json
+import subprocess
+import sys
+import tempfile
+import types
 import unittest
 import zipfile
 from pathlib import Path
@@ -48,10 +52,39 @@ class ActualFrozenTransferChecks(unittest.TestCase):
         root=Path('docs/research/fpr_reporting/b1/a04-provisional-recovery-v1-20261021/transfer')
         if not root.exists():
             self.skipTest('Actual completed-role transfer not frozen yet; mandatory rerun after freeze')
-        result=v.verify(root)
+        process=subprocess.run([sys.executable,'-I',str((root/'verify_recovery.py').resolve())],capture_output=True,text=True,check=True)
+        result=json.loads(process.stdout)
         self.assertEqual(result['verification'],'PASS')
         self.assertEqual(result['independent_eligibility_decisions'],0)
         self.assertEqual(len(result['original_archive_verifiers']),3)
+
+    def test_rehashed_finding_is_rejected_by_actual_release_verifier(self):
+        root=Path('docs/research/fpr_reporting/b1/a04-provisional-recovery-v1-20261021/transfer')
+        if not root.exists():
+            self.skipTest('Actual completed-role transfer not frozen yet; mandatory rerun after freeze')
+        module=types.ModuleType('actual_recovery_verifier')
+        exec(compile((root/'verify_recovery.py').read_bytes(),'actual_recovery_verifier','exec'),module.__dict__)
+        with tempfile.TemporaryDirectory(dir=Path('.venv/a04-recovery-tests')) as temporary:
+            copied=Path(temporary)
+            for source in root.iterdir():
+                (copied/source.name).write_bytes(source.read_bytes())
+            files=module.archive((copied/'RECOVERY_CONTROLLED_EVIDENCE.zip').read_bytes())
+            facts=json.loads(files['RECOVERY_METHOD_FACTS.json'])
+            facts[0]['method_fact']='The detector achieves superior accuracy.'
+            files['RECOVERY_METHOD_FACTS.json']=module.canonical(facts)
+            manifest=json.loads(files['MANIFEST.json'])
+            manifest['files']['RECOVERY_METHOD_FACTS.json']=module.sha(files['RECOVERY_METHOD_FACTS.json'])
+            files['MANIFEST.json']=module.canonical(manifest)
+            stream=io.BytesIO()
+            with zipfile.ZipFile(stream,'w') as z:
+                for name,raw in files.items():
+                    z.writestr(name,raw)
+            (copied/'RECOVERY_CONTROLLED_EVIDENCE.zip').write_bytes(stream.getvalue())
+            outer=json.loads((copied/'MANIFEST.json').read_bytes())
+            outer['files']['RECOVERY_CONTROLLED_EVIDENCE.zip']=module.sha(stream.getvalue())
+            (copied/'MANIFEST.json').write_bytes(module.canonical(outer))
+            with self.assertRaisesRegex(ValueError,'METHOD_BOUNDARY'):
+                module.verify(copied,run_originals=False)
 
 
 if __name__=='__main__':

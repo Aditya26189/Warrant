@@ -133,3 +133,19 @@
   used for binary transport bytes. Added a separate immutable, path-bounded
   binary writer and an exact-byte/overwrite/path-escape regression check.
   Thirteen release tests pass. No archive was generated with the wrong writer.
+
+- Full scoped regression checkpoint: 140 tests, all passing with the one
+  actual-transfer test explicitly skipped before package creation. Both actual
+  transfer execution and a rehashed-findings rejection test must run after
+  freeze. Research-only commits through `e931c41` were pushed successfully.
+- Partial release replay caught optional PDF visual-proof fields and conservative
+  guard hits in routine limitations/one locator. Added exact render/view-receipt
+  checks and public structural locator projection; original checker bytes are
+  preserved. Checker02 re-inspected the flagged method boundary and appended
+  W0247 revision four plus manifests/validation/freeze .0002; unchanged page
+  hashes, 389 bound artifacts, zero mismatches. Checker01 is correcting its
+  neutral limitations before completing its own final freeze. No content gate
+  was weakened and no uncertain fact was treated as an exclusion.
+- Added a hash-only scope audit of the complete 73744c0 historical B1 tree;
+  it does not parse past judgments. A board CLI diagnostic used a nonexistent
+  status subcommand; corrected it to post/status, with no research-file effect.

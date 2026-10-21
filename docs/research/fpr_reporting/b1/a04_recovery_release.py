@@ -59,7 +59,7 @@ def codes(values: list) -> None:
         raise ValueError("UNSAFE_LIMITATION_CODE")
 
 
-def pdf_locator(locator: dict, body: dict) -> list[str]:
+def pdf_locator(locator: dict, body: dict, member_id: str | None = None, actor_id: str | None = None) -> list[str]:
     """Reproduce actual rendered method pages in approved ignored caches."""
     if (not isinstance(locator, dict) or set(locator) != {"format", "evidence_pages", "method_section_locator"}
             or locator["format"] != "PDF" or not locator["evidence_pages"]):
@@ -72,7 +72,9 @@ def pdf_locator(locator: dict, body: dict) -> list[str]:
     roots = [r.CACHE.resolve(), Path(e.read(e.CONFIG)["cache_root"]).resolve()]
     with fitz.open(stream=raw, filetype="pdf") as pdf:
         for place in locator["evidence_pages"]:
-            if set(place) != {"page_number_1based", "rendered_page_sha256", "rendered_page_path", "page_text_sha256"}:
+            required = {"page_number_1based", "rendered_page_sha256", "rendered_page_path", "page_text_sha256"}
+            optional = {"render_tool", "visual_review_receipt_sha256", "visual_checked_utc"}
+            if not required.issubset(place) or set(place) - required - optional:
                 return ["PDF_PAGE_SCHEMA_UNSUPPORTED"]
             n = place["page_number_1based"]
             if type(n) is not int or not 1 <= n <= len(pdf):
@@ -86,7 +88,42 @@ def pdf_locator(locator: dict, body: dict) -> list[str]:
             png = page.get_pixmap(matrix=fitz.Matrix(2, 2), alpha=False).tobytes("png")
             if e.sha(png) != place["rendered_page_sha256"] or image.read_bytes() != png:
                 return ["PDF_RENDER_HASH_CHANGED"]
+            if optional.intersection(place):
+                if not optional.issubset(place) or member_id is None or actor_id is None:
+                    return ["PDF_VISUAL_RECEIPT_SCHEMA_UNSUPPORTED"]
+                receipt_path = r.CACHE / "checker-01/pdf-renders" / f"{member_id}-p{number_for_receipt(n)}.view.0001.json"
+                render_path = receipt_path.with_name(f"{member_id}-p{number_for_receipt(n)}.render.json")
+                if not receipt_path.exists() or not render_path.exists():
+                    return ["PDF_VISUAL_RECEIPT_MISSING"]
+                receipt = e.read(receipt_path)
+                rendered = e.read(render_path)
+                if (e.sha(receipt_path.read_bytes()) != place["visual_review_receipt_sha256"]
+                        or receipt["actor_id"] != actor_id or receipt["member_id"] != member_id
+                        or receipt["page_number_1based"] != n or receipt["visual_review_completed"] is not True
+                        or receipt["checked_utc"] != place["visual_checked_utc"] or not utc(receipt["checked_utc"])
+                        or receipt["rendered_page_sha256"] != e.sha(png)
+                        or receipt["render_receipt_sha256"] != e.sha(render_path.read_bytes())
+                        or rendered["raw_source_sha256"] != body["sha256"] or rendered["member_id"] != member_id
+                        or rendered["actor_id"] != actor_id or rendered["page_number_1based"] != n
+                        or rendered["page_text_sha256"] != place["page_text_sha256"]
+                        or rendered["rendered_page_sha256"] != place["rendered_page_sha256"]
+                        or place["render_tool"] != "PyMuPDF fitz Page.get_pixmap with Matrix(2,2), csRGB, alpha=False"):
+                    return ["PDF_VISUAL_RECEIPT_COMMITMENT_CHANGED"]
     return []
+
+
+def number_for_receipt(number: int) -> str:
+    """Use the actual documented immutable page-receipt convention."""
+    return f"{number:03d}"
+
+
+def public_locator(locator: dict) -> dict:
+    """Withhold working render/view receipt metadata after validating its bytes."""
+    if locator["format"] == "HTML":
+        return s.transfer_locator(locator)
+    return {"format": "PDF", "method_section_locator": locator["method_section_locator"],
+            "evidence_pages": [{k: p[k] for k in ("page_number_1based", "page_text_sha256", "rendered_page_sha256")}
+                               for p in locator["evidence_pages"]]}
 
 
 def html_locator(locator: dict, body: dict) -> list[str]:
@@ -147,7 +184,8 @@ def validate_fact(fact: dict, record: dict, binding: dict) -> list[str]:
             or not (check.get("status") or check.get("performed") is True)
             or not utc(fact["checked_utc"]) or not utc(check.get("checked_utc"))):
         return ["RECOVERY_SECOND_PASS_UNATTESTED"]
-    geometry = pdf_locator(fact["locator"], body) if body["kind"] == "PDF" else html_locator(fact["locator"], body)
+    geometry = (pdf_locator(fact["locator"], body, fact["member_id"], record["actor_id"])
+                if body["kind"] == "PDF" else html_locator(fact["locator"], body))
     return geometry + s.leakage_codes(fact)
 
 
@@ -348,7 +386,7 @@ def collect(allow_partial: bool = False) -> tuple[dict, dict]:
             projected = {"evidence_id": eid, "review_id": rid, "work_id": req["work_id"],
                          **{k: fact[k] for k in ("member_id", "fact_kind", "method_fact", "source_url", "version",
                              "raw_source_sha256", "restriction_checked_by", "checked_utc", "limitation", "addresses_criteria", "experiment_scope")},
-                         "locator": s.transfer_locator(fact["locator"]),
+                         "locator": public_locator(fact["locator"]),
                          "source_binding_evidence_id": "R01-SOURCE-" + fact["member_id"],
                          "source_binding_basis": bindings[fact["member_id"]]["source_binding_basis"],
                          "source_checker_record_sha256": snapshot["sha256"], "eligibility_decision": None}

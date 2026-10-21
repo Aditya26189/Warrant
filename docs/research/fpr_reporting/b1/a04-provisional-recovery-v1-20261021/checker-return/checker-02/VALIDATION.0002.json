@@ -1,0 +1,56 @@
+{
+  "actor_id": "/root/a04_semantic_restriction_02",
+  "checked_utc": "2026-10-21T18:19:51.370933+00:00",
+  "checks": [
+    "All assigned requested works have actual context checked revisions",
+    "Current acquisition, processed, proposal and raw hashes replayed",
+    "Source binding hashes and captured versions matched",
+    "Every reused evidence identifier resolves within authorized released packets",
+    "HTML original unmodified soup zero-based paragraph, text hash and closest section replayed",
+    "Protected HTML ancestors excluded from released fact locators",
+    "PDF page text and exact rendered PNG bytes replayed",
+    "PDF fact evidence pages were actually visually inspected",
+    "Method prose restricted-token and numerical-value scan passed",
+    "Criterion support records treated as evidence availability only",
+    "All eligibility decisions remain null",
+    "Prior immutable records preserved",
+    "Prior full source replay preserved for unchanged work records",
+    "Targeted revised PDF locator, original source and exact page/text/render hashes rechecked",
+    "All current PDF section locators passed the conservative findings-term token scan"
+  ],
+  "counts": {
+    "checked_input_paths": 491,
+    "context_checked_work_count": 121,
+    "distinct_fact_render_paths": 11,
+    "html_context_work_count": 116,
+    "html_evidence_paragraphs_replayed": 59,
+    "latest_record_count": 121,
+    "new_fact_count": 42,
+    "pdf_context_work_count": 5,
+    "pdf_evidence_page_references_replayed": 13,
+    "pending_record_count": 0,
+    "records_with_remaining_fact_codes": 119,
+    "requested_work_count": 121,
+    "unique_reused_evidence_count": 167,
+    "validation_error_count": 0
+  },
+  "eligibility_decision": null,
+  "errors": [],
+  "limitation": "Mechanical replay supports record integrity; parent performs the separate release gate. Selected targeted context checks are not an exhaustive absence proof.",
+  "revision_validation": {
+    "latest_records_hash_checked": 121,
+    "method_prose_unchanged": true,
+    "neutral_locator_revised": true,
+    "targeted_pdf_context_rechecked_work": "W0247",
+    "targeted_pdf_evidence_pages_replayed": [
+      4,
+      8
+    ],
+    "unchanged_records_bound_to_prior_full_source_replay": 120,
+    "validation_error_count": 0
+  },
+  "supersedes": {
+    "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\VALIDATION.0001.json",
+    "sha256": "598c611c469eb78786eee016628a8b978112406e5c4fd8f4083a5559aaf7c4a7"
+  }
+}
