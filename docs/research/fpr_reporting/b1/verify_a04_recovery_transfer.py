@@ -27,6 +27,7 @@ INNER = {'RECOVERY_METHOD_FACTS.json', 'RECOVERY_EVIDENCE_RECEIPTS.json', 'CONTR
          'SOURCE_GAP_REQUESTS.json', 'CHECKER_ROLE_RECEIPTS.json', 'README.md'}
 METHOD_CRITERIA = {'input_injection_task', 'binary_evaluation', 'before_target_answer', 'english_evaluation'}
 ACTORS = {'/root/a04_semantic_restriction', '/root/a04_semantic_restriction_02', '/root/a04_semantic_restriction_03'}
+KINDS = {'INPUT_TASK', 'EVALUATION_UNIT', 'BINARY_PROCEDURE', 'PRE_TARGET_TIMING', 'ENGLISH_EVALUATION', 'DATASET_PROVENANCE', 'METHOD_BOUNDARY'}
 OUTCOME = re.compile('__OUTCOME_PATTERN__', re.I)
 SPELLED = re.compile('__SPELLED_COUNT_PATTERN__', re.I)
 SAFE_LIMITATION = '__SAFE_LIMITATION__'
@@ -141,12 +142,17 @@ def verify(root: Path, run_originals: bool = True) -> dict:
         raise ValueError('MEMBERSHIP_UNIVERSE_CHANGED')
     word_counts = {}
     for fact in facts:
-        if set(fact) != FACT_FIELDS or fact['restriction_checked_by'] not in ACTORS or fact['eligibility_decision'] is not None:
+        if (set(fact) != FACT_FIELDS or fact['restriction_checked_by'] not in ACTORS
+                or fact['eligibility_decision'] is not None or fact['fact_kind'] not in KINDS):
             raise ValueError('RECOVERY_FACT_FIELDS_OR_ACTOR')
         if fact['review_id'] not in work or fact['work_id'] != work[fact['review_id']]['work_id']:
             raise ValueError('RECOVERY_FACT_WORK_FOREIGN_KEY')
         binding = bindings[fact['member_id']]
-        if (not binding['method_release_supported'] or fact['raw_source_sha256'] != binding['body']['sha256']
+        expected_version = binding['captured_version_id'] or 'acl:' + binding['body']['url'].rsplit('/',1)[-1].removesuffix('.pdf') + ':publication'
+        if (fact['member_id'] not in {m['member_id'] for m in work[fact['review_id']]['members']}
+                or binding['review_id'] != fact['review_id'] or binding['work_id'] != fact['work_id']
+                or fact['version'].removeprefix('arxiv:') != expected_version.removeprefix('arxiv:')
+                or not binding['method_release_supported'] or fact['raw_source_sha256'] != binding['body']['sha256']
                 or fact['source_url'] != binding['body']['url'] or not public_locator(fact['locator'])
                 or fact['source_binding_evidence_id'] != binding['evidence_id']):
             raise ValueError('RECOVERY_FACT_SOURCE_BINDING')
@@ -188,6 +194,13 @@ def verify(root: Path, run_originals: bool = True) -> dict:
         criteria_count += len(criteria)
         if any(x['criterion_satisfaction_decision'] is not None for x in criteria):
             raise ValueError('CRITERION_DECISION_NOT_BLANK')
+        for criterion in criteria:
+            if criterion['criterion'] in METHOD_CRITERIA:
+                if (not set(criterion['reused_evidence_ids']).issubset(row['reused_evidence_ids'])
+                        or not set(criterion['new_evidence_ids']).issubset(row['new_evidence_ids'])
+                        or type(criterion['further_controlled_evidence_needed']) is not bool
+                        or any(criterion['criterion'] not in new[eid]['addresses_criteria'] for eid in criterion['new_evidence_ids'])):
+                    raise ValueError('CRITERION_EVIDENCE_LINK_NOT_ATTESTED')
     if criteria_count != 1852:
         raise ValueError('CRITERION_REQUEST_COUNT_CHANGED')
     if len(data['OFFICIAL_BIBLIOGRAPHIC_EVIDENCE.json']) != 384:

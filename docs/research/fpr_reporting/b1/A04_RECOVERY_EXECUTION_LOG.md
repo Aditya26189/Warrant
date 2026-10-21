@@ -149,3 +149,10 @@
 - Added a hash-only scope audit of the complete 73744c0 historical B1 tree;
   it does not parse past judgments. A board CLI diagnostic used a nonexistent
   status subcommand; corrected it to post/status, with no research-file effect.
+
+- Clean hash-only preservation audit at `43c0b73`: all 203 historical
+  B1 files are byte-identical, all four protocol locks match, and Git scope
+  consists solely of new research additions. No history judgment parsing,
+  production change, sampling or B2 occurred. The audit is preserved separately
+  from a later final scope receipt. Added work/member/version and explicit
+  per-criterion evidence-link checks to the standalone recovery verifier.

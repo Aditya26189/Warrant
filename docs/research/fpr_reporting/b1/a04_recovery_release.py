@@ -404,6 +404,9 @@ def collect(allow_partial: bool = False) -> tuple[dict, dict]:
             if (any(x not in reused for x in value["reused_evidence_ids"])
                     or any(x not in {f["fact_id"] for f in row["new_method_facts"]} for x in value["new_fact_ids"])):
                 raise ValueError("RECOVERY_CRITERION_REFERENCE_OUTSIDE_WORK:" + rid)
+            linked_facts = {f["fact_id"]: f for f in row["new_method_facts"]}
+            if any(criterion not in linked_facts[x]["addresses_criteria"] for x in value["new_fact_ids"]):
+                raise ValueError("RECOVERY_CRITERION_LINK_NOT_ATTESTED:" + rid)
             dropped = [x for x in value["new_fact_ids"] if x not in released]
             criterion_rows.append({"criterion": criterion, "reused_evidence_ids": value["reused_evidence_ids"],
                                    "new_evidence_ids": [released[x] for x in value["new_fact_ids"] if x in released],
