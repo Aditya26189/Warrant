@@ -40,3 +40,20 @@
   No historical screening decision comparison occurred. The missing separately
   referenced file is not reconstructed as an original; a labeled custodian-only
   index preserves the fields actually embedded in the supplied return.
+- Three prior separate source-restriction contexts were resumed for the neutral
+  request partitions (128/121/118 works), with no access to provisional decisions
+  or historical ledgers. Usage-limit interruptions occurred; after the user's
+  continuation, the same contexts resumed saved work. No checker completion is
+  claimed until its actual final records and validation arrive.
+- Added a separately versioned source-binding explanation: exact internal
+  revision evidence remains distinct from an official exact-version URL with a
+  matching captured work title/date, or a fixed Anthology publication identifier
+  with matching title/month. Missing internal stamps and absent saved redirect
+  fields remain explicit. No protocol-preferred version or eligibility is chosen.
+  Original acquisition receipts/statuses are not modified. A source lacking work
+  identity or cutoff support cannot release methods through this new check.
+- Added resumable official bibliographic verification for the same 384 requested
+  memberships (367 works), with bounded retries and allowlisted date/version/DOI
+  fields only. Titles/authors are committed as hashes; abstracts and paper findings
+  are never released. Thirteen new source-provenance tests pass. Initial lint
+  flagged an unused test import; removed it before the milestone commit.
