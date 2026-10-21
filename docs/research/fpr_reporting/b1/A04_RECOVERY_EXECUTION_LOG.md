@@ -96,3 +96,10 @@
   committed retrieval tool and frozen capture inputs were unchanged. A clean
   committed replay will recheck every captured response and release projection
   before freezing. No capture is silently refreshed.
+
+- Added exact known-DOI registration verification, limited to IDs already
+  linked in the frozen metadata or official captured records. Registration
+  creation/deposit/index dates remain distinct from public publication dates.
+  No titles, abstracts, relation prose or new candidates are released. Four
+  identity/leakage/date-semantics tests pass. This supplements the independent
+  preferred-version review; it does not choose versions.
