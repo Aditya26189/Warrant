@@ -72,3 +72,27 @@
   mutation/resume test verifies original-byte preservation and success reuse.
   The sandbox also denied temporary PDF test fixtures; rerunning the same checks
   with the permitted override passed all 14 source tests and lint.
+
+- Official bibliography capture completed for all 384 requested memberships:
+  384 successful official responses, including 359 arXiv revision histories and
+  25 Anthology records. Withdrawal flags and date precision are retained; no
+  abstracts, findings, author/title prose or selected preferred version are
+  released. Three initially denied receipts remain separate from successful
+  retries. Raw sources remain in the ignored provider cache.
+- Added a recovery release validator with ten passing adversarial tests. It
+  checks immutable checker revision chains, actual role identity, evidence
+  foreign keys, source/version proofs, original paragraph geometry and actual
+  RGB PDF page hashes. It accepts explicit support maps/lists as availability
+  records, never criterion-satisfaction or eligibility decisions. Uncertain
+  content is quarantined. Initial lint found an unused import; removed it.
+  A partial audit found absent role records, so partial mode now reports those
+  explicitly while complete mode still fails closed.
+- One additional visual bibliographic receipt resolves a title-extraction font
+  mapping issue for M0272; it is appended as new proof without rewriting original
+  source bindings. M0326 has a genuinely different PDF title and remains held.
+  The receipt does not establish a missing internal revision stamp or preferred
+  version. Role interruptions are retained as interruptions, not completions.
+- New validator development overlapped the source-capture work period; the
+  committed retrieval tool and frozen capture inputs were unchanged. A clean
+  committed replay will recheck every captured response and release projection
+  before freezing. No capture is silently refreshed.
