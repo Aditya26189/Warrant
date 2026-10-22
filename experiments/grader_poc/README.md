@@ -4,6 +4,8 @@ Read [the generated phase report](../../reports/PHASE-GRADER-P0-P1.md) and [obse
 
 The subsequent [runner hardening report](../../reports/PHASE-GRADER-HARDENING.md) records fixes prompted by a separate assistant review. Its evidence is archived under `hardening/`; the original `results/` packet is retained unchanged. The original report remains a historical account of its producing code.
 
+The [P2 validation report](../../reports/PHASE-GRADER-P2.md) records additional-task comparisons, the stronger maximum-repair study, negative results and actual Harbor cancellation checks. Read its scope limits before replay. The tested forced-cancellation policy left delegated Docker resources running; the disposable integration harness cleaned its own resources, but this does not fix the general runner. P2 remains experimental and provides no comparative superiority or certification claim. Its protocol, modules and preserved evidence live under `p2/`.
+
 ## Inspect without execution
 
 - `results/runs/`: all full Harbor invocations, outcomes, trial logs, CTRF records and collected candidate files. Host paths are redacted in these copies.
@@ -85,7 +87,7 @@ To rerun targeted failure validation under Linux/WSL, with fresh output paths:
 
 ```bash
 python -m unittest discover -s experiments/grader_poc -p 'test_*.py' -v
-python -m ruff check --no-cache experiments/grader_poc --exclude results --exclude hardening
+python -m ruff check --no-cache experiments/grader_poc --exclude results --exclude hardening --exclude evidence
 python -m experiments.grader_poc.validate_hardening \
   --runs "$WORK/runs" --cases "$WORK/cases" --out "$WORK/hardening-checks" \
   --tb-repo "$TB" --harbor-repo "$HB"

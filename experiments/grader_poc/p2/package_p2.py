@@ -90,7 +90,11 @@ def summarize(work: Path, here: Path) -> dict:
             "method_effort_equivalence_established": False,
             "math_batch002": "INVALID_COMPARISON: formatting control and eight mutants failed Python3.11 parsing",
             "full_math_task": "NOT_RUN: required GPU inference outside resource scope",
-            "direct_review": read(here / "direct_review.json")}
+            "direct_review": read(here / "direct_review.json"),
+            "validation": read(work / "grader-p2-validation/unit-summary.json"),
+            "math_invalid_batch_elapsed_seconds": read(work / "grader-p2-components/math-002/outcome.json")["elapsed_seconds"],
+            "math_corrected_batch_elapsed_seconds": math["elapsed_seconds"],
+            "effort": read(work / "grader-p2-validation/effort.json")}
 
 
 def archive(work: Path, tb: Path) -> dict:
@@ -155,9 +159,12 @@ def archive(work: Path, tb: Path) -> dict:
         copy(tb / "tasks/math-eval-grader" / name, "upstream/math-eval-grader/" + name)
     copy(original / "TERMINAL_BENCH_LICENSE.txt", "TERMINAL_BENCH_LICENSE.txt")
     summary["omitted_runtime_artifacts"] = omitted
+    summary["packaged_payloads_excluding_manifest"] = len(copies) + 1
     write_receipt(out / "summary.json", summary)
     write_receipt(out / "manifest.json", {"copies": copies, "omitted": omitted, "packaged_files": file_hashes(out),
                   "redaction": "Host-home and temporary-venv paths replaced by role placeholders; UTF8 BOM removed; raw hashes retained. __pycache__ excluded."})
+    from experiments.grader_poc.p2.report_p2 import render
+    render(summary, root / "reports/PHASE-GRADER-P2.md")
     return summary
 
 
