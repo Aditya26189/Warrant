@@ -2,6 +2,8 @@
 
 Read [the generated phase report](../../reports/PHASE-GRADER-P0-P1.md) and [observed summary](results/summary.json) first. This directory is an isolated experiment, outside Warrant's shipped CLI and certification pipeline. The report describes the result and its limits; this file describes replay.
 
+The subsequent [runner hardening report](../../reports/PHASE-GRADER-HARDENING.md) records fixes prompted by a separate assistant review. Its evidence is archived under `hardening/`; the original `results/` packet is retained unchanged. The original report remains a historical account of its producing code.
+
 ## Inspect without execution
 
 - `results/runs/`: all full Harbor invocations, outcomes, trial logs, CTRF records and collected candidate files. Host paths are redacted in these copies.
@@ -74,5 +76,21 @@ python -m experiments.grader_poc.diagnose \
 ```
 
 The diagnostic binds the exact collected app hashes to completed accepting full trials, executes candidate code only in constrained containers, and records every observation. The partial oracle can return `UNKNOWN`; runtime errors remain errors and cannot establish a semantic disagreement. A failing control makes the result inconclusive. Read `outcome.json` and `attempts.jsonl`, not only the process exit code.
+
+The hardened diagnostic creates an owned, labeled container before attaching to it, attempts removal in a `finally` path, and verifies absence. Failed cleanup invalidates the observation. Catchable interruption writes an attempt and final diagnostic receipt and stops the CLI with exit code 130. A supported checked trace with no disagreement yields `NO_COUNTEREXAMPLE_FOUND_IN_SCOPE`; this says nothing about untested inputs. `UNKNOWN` is a separate abstention.
+
+The full-trial runner writes atomic final receipts with explicit `TIMEOUT`, `INTERRUPTED`, or `INFRASTRUCTURE_ERROR` states. Partial results remain available but cannot promote an incomplete run to success. On POSIX it sends SIGINT to its owned process group, then escalates after a grace period. Cleanup of Docker resources delegated to Harbor is explicitly `UNVERIFIED` after cancellation; inspect that attempt before reusing the runner after a forced stop. Windows termination covers only the direct child. Host failure, SIGKILL, an unavailable Docker daemon and filesystem failure remain outside the cleanup/receipt guarantee.
+
+To rerun targeted failure validation under Linux/WSL, with fresh output paths:
+
+```bash
+python -m unittest discover -s experiments/grader_poc -p 'test_*.py' -v
+python -m ruff check --no-cache experiments/grader_poc --exclude results --exclude hardening
+python -m experiments.grader_poc.validate_hardening \
+  --runs "$WORK/runs" --cases "$WORK/cases" --out "$WORK/hardening-checks" \
+  --tb-repo "$TB" --harbor-repo "$HB"
+```
+
+The failure fixtures deliberately sleep and emit partial results; they are synthetic process tests, not new grader experiments. The real witness/control replay reuses the frozen example. `package_hardening.py` archives that verification and the supplied prior review, with raw and packaged hashes; it refuses to overwrite its archive.
 
 `package_result.py` is the one-time closing assembler for the original workspace layout. It is not needed to reproduce the software result and refuses to overwrite the committed packet. Its input layout and generated report template are preserved so the original evidence assembly is reviewable. No automatic publication or integration command exists in this experiment.
