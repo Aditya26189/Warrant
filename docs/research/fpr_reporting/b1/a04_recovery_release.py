@@ -582,9 +582,15 @@ def freeze(head: str) -> None:
     outer["MANIFEST.json"] = e.encoded({"kind": "NEW_RECOVERY_TRANSPORT_WITH_UNCHANGED_ORIGINAL_ARCHIVES",
         "files": {n: e.sha(raw) for n, raw in outer.items()}, "prepared_utc": e.now(), "source_git_commit": head,
         "actual_delivery_recorded": False, "independent_eligibility_review_completed": False, "gate": "FRAME_BLOCKED"})
+    staging = r.CACHE / "transport-builds" / e.sha(outer["MANIFEST.json"])
+    staging.mkdir(parents=True, exist_ok=True)
     for name, raw in outer.items():
-        write_raw_new(root / "transfer" / name, raw)
-    process = subprocess.run([sys.executable, "-I", str((root / "transfer/verify_recovery.py").resolve())],
+        path = staging / name
+        if path.exists() and path.read_bytes() != raw:
+            raise ValueError("TRANSPORT_BUILD_CONTENT_COLLISION")
+        if not path.exists():
+            path.write_bytes(raw)
+    process = subprocess.run([sys.executable, "-I", str((staging / "verify_recovery.py").resolve())],
                              capture_output=True, text=True, timeout=300)
     if process.returncode:
         # Preserve failed check evidence; the transport is not called reviewer-ready.
@@ -594,6 +600,8 @@ def freeze(head: str) -> None:
     for item in audit["checker_record_inputs"]:
         if e.sha(Path(item["path"]).read_bytes()) != item["sha256"]:
             raise ValueError("CHECKER_RECORD_CHANGED_DURING_FREEZE")
+    for name, raw in outer.items():
+        write_raw_new(root / "transfer" / name, raw)
     raw = zipped(outer)
     write_raw_new(root / "REVIEWER_RECOVERY_TRANSFER.zip", raw)
     for name, value in payloads.items():

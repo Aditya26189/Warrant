@@ -156,3 +156,13 @@
   production change, sampling or B2 occurred. The audit is preserved separately
   from a later final scope receipt. Added work/member/version and explicit
   per-criterion evidence-link checks to the standalone recovery verifier.
+
+- On client 22 October, resumed the remaining two source roles after an
+  additional genuine usage-limit interruption. Their actual source inspections
+  had finished, but final records/manifests were not inferred from that progress.
+  Bibliographic replay returned byte-identical parsed fields for all 384 official
+  records, 37 registration receipts and four followups, without refresh.
+- Transport builds now run the full verifier in a distinct ignored staging
+  directory first. Only a passing build is copied into the immutable reviewer
+  transfer. Failed build evidence is preserved separately, so a routine parser
+  repair cannot overwrite an earlier attempted transport.
