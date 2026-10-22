@@ -1,0 +1,38 @@
+{
+  "name": "docker-interruption",
+  "passed": true,
+  "synthetic_fixture": true,
+  "result": {
+    "observation": {
+      "status": "ERROR",
+      "reason": "INTERRUPTED"
+    },
+    "execution_status": "INTERRUPTED",
+    "exit_code": null,
+    "stdout": "",
+    "stderr": "",
+    "container": {
+      "container_name": "warrant-grader-57bc09d2f0634003846668da65d48ded",
+      "owner": "57bc09d2f0634003846668da65d48ded",
+      "status": "INTERRUPTED",
+      "stdout": "",
+      "stderr": "",
+      "exit_code": null,
+      "create_exit_code": 0,
+      "create_stdout": "969d268ca4f276851cbc6afbe4bbe729df9505aab14149f9211d74311827f0fa\n",
+      "create_stderr": "",
+      "container_id": "969d268ca4f276851cbc6afbe4bbe729df9505aab14149f9211d74311827f0fa",
+      "reason": "interrupted during diagnostic execution",
+      "cleanup": {
+        "status": "REMOVED",
+        "verified_absent": true,
+        "was_running": true,
+        "container_id": "969d268ca4f276851cbc6afbe4bbe729df9505aab14149f9211d74311827f0fa",
+        "exit_code": 0,
+        "stdout": "969d268ca4f276851cbc6afbe4bbe729df9505aab14149f9211d74311827f0fa\n",
+        "stderr": ""
+      }
+    },
+    "elapsed_seconds": 5.666944216005504
+  }
+}

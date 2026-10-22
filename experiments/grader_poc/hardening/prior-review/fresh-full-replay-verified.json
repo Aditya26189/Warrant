@@ -1,0 +1,114 @@
+{
+  "runs": [
+    {
+      "run": "equivalent-001",
+      "exit_code": 0,
+      "review_seconds": 78.92099999997299,
+      "status": "COMPLETED",
+      "reward": 1.0,
+      "matches_expected": true,
+      "task_unchanged": true,
+      "tests": 7,
+      "passed": 7,
+      "collected_candidate_matches_original_packet": true
+    },
+    {
+      "run": "equivalent-repaired-001",
+      "exit_code": 0,
+      "review_seconds": 67.48400000005495,
+      "status": "COMPLETED",
+      "reward": 1.0,
+      "matches_expected": true,
+      "task_unchanged": true,
+      "tests": 7,
+      "passed": 7,
+      "collected_candidate_matches_original_packet": true
+    },
+    {
+      "run": "omit-max-001",
+      "exit_code": 0,
+      "review_seconds": 80.23400000005495,
+      "status": "COMPLETED",
+      "reward": 1.0,
+      "matches_expected": true,
+      "task_unchanged": true,
+      "tests": 7,
+      "passed": 7,
+      "collected_candidate_matches_original_packet": true
+    },
+    {
+      "run": "omit-max-repaired-001",
+      "exit_code": 0,
+      "review_seconds": 80.64100000006147,
+      "status": "COMPLETED",
+      "reward": 0.0,
+      "matches_expected": true,
+      "task_unchanged": true,
+      "tests": 7,
+      "passed": 6,
+      "collected_candidate_matches_original_packet": true
+    },
+    {
+      "run": "omit-max-repeat-001",
+      "exit_code": 0,
+      "review_seconds": 59.34400000004098,
+      "status": "COMPLETED",
+      "reward": 1.0,
+      "matches_expected": true,
+      "task_unchanged": true,
+      "tests": 7,
+      "passed": 7,
+      "collected_candidate_matches_original_packet": true
+    },
+    {
+      "run": "original-001",
+      "exit_code": 0,
+      "review_seconds": 99.375,
+      "status": "COMPLETED",
+      "reward": 0.0,
+      "matches_expected": true,
+      "task_unchanged": true,
+      "tests": 7,
+      "passed": 2,
+      "collected_candidate_matches_original_packet": true
+    },
+    {
+      "run": "original-repaired-001",
+      "exit_code": 0,
+      "review_seconds": 62.18799999996554,
+      "status": "COMPLETED",
+      "reward": 0.0,
+      "matches_expected": true,
+      "task_unchanged": true,
+      "tests": 7,
+      "passed": 2,
+      "collected_candidate_matches_original_packet": true
+    },
+    {
+      "run": "reference-001",
+      "exit_code": 0,
+      "review_seconds": 100.17200000002049,
+      "status": "COMPLETED",
+      "reward": 1.0,
+      "matches_expected": true,
+      "task_unchanged": true,
+      "tests": 7,
+      "passed": 7,
+      "collected_candidate_matches_original_packet": true
+    },
+    {
+      "run": "reference-repaired-001",
+      "exit_code": 0,
+      "review_seconds": 80.78099999995902,
+      "status": "COMPLETED",
+      "reward": 1.0,
+      "matches_expected": true,
+      "task_unchanged": true,
+      "tests": 7,
+      "passed": 7,
+      "collected_candidate_matches_original_packet": true
+    }
+  ],
+  "branch_clean": true,
+  "reviewed_commit": "645ef95a790fb9c047153df5feca008050d180e3"
+}
