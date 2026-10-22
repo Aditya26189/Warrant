@@ -193,3 +193,13 @@
   both ran successfully; all seven transport tests pass with no skips. Actual
   delivery, original-intake freshness and independent scientific completion
   remain unrecorded. Final whole-suite/scope checks and push follow.
+
+- Final whole-scope execution at clean `502f494`: 143 tests passed with
+  zero skips/failures; lint passed for every added Python file, including the
+  actual generated verifier. Receipt export initially passed an absolute local
+  path to Git object lookup, which requires a repository-relative path. It
+  stopped after writing the normalized test log; no receipt or source artifact
+  was falsified. The attempted follow-on commit found the missing receipt, and
+  the final scope guard correctly refused the uncommitted output. Preserve the
+  valid test log first, then resume metadata export using the relative Git path.
+  No test failure or archive change occurred.
