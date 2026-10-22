@@ -203,3 +203,10 @@
   the final scope guard correctly refused the uncommitted output. Preserve the
   valid test log first, then resume metadata export using the relative Git path.
   No test failure or archive change occurred.
+
+- Corrected receipt export verified the exact committed ZIP bytes against
+  `d105eed48c37e6532776060b3aec4ab70ece3cad885d1555ce08d54c89cf5142`. Final scope at clean `97488fb` again proves all 203 historical
+  files and protocol locks unchanged, with new research additions only. Final
+  consolidated report/instructions are prepared; last step is their commit,
+  authorized research-branch push and remote-HEAD confirmation. Actual reviewer
+  delivery, scientific adjudication and B1 frame approval remain absent.
