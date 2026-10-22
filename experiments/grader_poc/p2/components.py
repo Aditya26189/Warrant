@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from fractions import Fraction
 import hashlib
 import itertools
+import io
 import json
 import os
 from pathlib import Path
@@ -15,6 +16,7 @@ import shutil
 import subprocess
 import tempfile
 import time
+import tokenize
 
 from experiments.grader_poc.container_lifecycle import run_owned
 from experiments.grader_poc.diagnose import validate_observation
@@ -40,16 +42,36 @@ def mutations(source: str, cap: int) -> list[tuple[str, str, dict]]:
                     sites.append((node.lineno, node.col_offset, "binop", type(node.op)))
     result = []
     for index, (line, col, kind, operator) in enumerate(sorted(sites)[:cap]):
-        mutant = copy.deepcopy(tree)
-        for node in ast.walk(mutant):
+        changed = None
+        for node in ast.walk(tree):
             if getattr(node, "lineno", None) == line and getattr(node, "col_offset", None) == col:
                 if kind == "compare" and isinstance(node, ast.Compare):
-                    node.ops = [swaps[operator]()]
+                    changed = (node.left, node.comparators[0])
                 elif kind == "binop" and isinstance(node, ast.BinOp):
-                    node.op = swaps[operator]()
-        # Preserve upstream canary despite AST reformatting; formatting-only
-        # control below separates unparse effects from operator changes.
-        text = source.splitlines()[0] + "\n" + ast.unparse(mutant) + "\n"
+                    changed = (node.left, node.right)
+        if changed is None:
+            raise ValueError("Missing mutation site")
+        spelling = {ast.Lt: "<", ast.LtE: "<=", ast.Gt: ">", ast.GtE: ">=",
+                    ast.Eq: "==", ast.NotEq: "!=", ast.Add: "+", ast.Sub: "-"}
+        lines = source.splitlines(keepends=True)
+        left, right = changed
+        # AST columns count UTF-8 bytes, tokenizer columns count characters.
+        def character_position(lineno: int, column: int) -> tuple[int, int]:
+            return lineno, len(lines[lineno - 1].encode()[:column].decode())
+        lower = character_position(left.end_lineno, left.end_col_offset)
+        upper = character_position(right.lineno, right.col_offset)
+        tokens = [t for t in tokenize.generate_tokens(io.StringIO(source).readline)
+                  if t.type == tokenize.OP and t.string == spelling[operator]
+                  and lower <= t.start and t.end <= upper]
+        if len(tokens) != 1:
+            raise ValueError("Ambiguous operator span")
+        token = tokens[0]
+        start = sum(map(len, lines[:token.start[0] - 1])) + token.start[1]
+        end = sum(map(len, lines[:token.end[0] - 1])) + token.end[1]
+        # Preserve unrelated syntax: 3.12 ast.unparse can emit f-strings that
+        # are invalid on the upstream verifier's Python 3.11 runtime.
+        text = source[:start] + spelling[swaps[operator]] + source[end:]
+        ast.parse(text, feature_version=(3, 11))
         result.append((f"mutation-{index + 1:02d}", text,
                        {"line": line, "column": col, "before": operator.__name__,
                         "after": swaps[operator].__name__, "kind": kind}))
@@ -100,7 +122,7 @@ def math_study(tb: Path, out: Path, config: dict, image: str) -> dict:
     cases = math_cases()
     write_receipt(out / "cases.json", {"cases": cases})
     candidates = [("reference", source, {"role": "reference"}),
-                  ("unparse-control", source.splitlines()[0] + "\n" + ast.unparse(ast.parse(source)) + "\n", {"role": "formatting control"}),
+                  ("token-roundtrip-control", tokenize.untokenize(list(tokenize.generate_tokens(io.StringIO(source).readline))), {"role": "token roundtrip control"}),
                   ("symmetric-control", source + "\n_original_scalar_equal = _scalar_equal\ndef _scalar_equal(a, b):\n    return _original_scalar_equal(b, a)\n", {"role": "symmetric equality control"}),
                   *mutations(source, config["mutation_cap_per_task"])]
     results = []

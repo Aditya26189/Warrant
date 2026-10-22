@@ -34,6 +34,17 @@ class ProtocolTests(unittest.TestCase):
     def test_irrelevant_functions_are_not_mutated(self) -> None:
         self.assertEqual(mutations('def other(x):\n    return x + 1\n', 8), [])
 
+    def test_mutation_preserves_python311_fstring_syntax(self) -> None:
+        source = '''# canary
+def _matched_braces(x):
+    return x + 1
+def unrelated(bound, op):
+    return f"({bound}{')' if op == '<' else ']'}"
+'''
+        variants = mutations(source, 1)
+        self.assertEqual(variants[0][1], source.replace("x + 1", "x - 1"))
+        ast.parse(variants[0][1], feature_version=(3, 11))
+
 
 if __name__ == "__main__":
     unittest.main()
