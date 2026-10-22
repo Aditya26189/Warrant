@@ -1,0 +1,26 @@
+[
+  {
+    "source": "/logs/artifacts",
+    "destination": "artifacts/logs/artifacts",
+    "type": "directory",
+    "status": "ok",
+    "service": null,
+    "exclude": []
+  },
+  {
+    "source": "/app/src/",
+    "destination": "artifacts/app/src",
+    "type": "directory",
+    "status": "ok",
+    "service": null,
+    "exclude": []
+  },
+  {
+    "source": "/tmp/kafka-snapshot.tgz",
+    "destination": "artifacts/tmp/kafka-snapshot.tgz",
+    "type": "file",
+    "status": "ok",
+    "service": "kafka",
+    "exclude": []
+  }
+]

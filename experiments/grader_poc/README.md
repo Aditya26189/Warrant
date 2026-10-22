@@ -20,6 +20,8 @@ Terminal-Bench-derived files retain upstream canary comments and are covered by 
 
 Use Linux or WSL with Python 3.12, Git, Docker Engine and Docker Compose. Windows can execute the diagnostic using Docker Desktop; full Harbor trials in the recorded run used WSL. Docker must have access to the task and output paths. Downloading packages/images requires internet; no paid API credentials, GPU or model are needed.
 
+The retained Harbor archive contains deeply nested paths. On Windows use a short checkout path or Git's per-command `-c core.longpaths=true` option for checkout, staging and verification. The archive preserves original run layouts rather than renaming evidence paths.
+
 Use a clean checkout of this experiment branch. The modules require clean Git provenance before scientific generation. Keep all generated tasks and run directories **outside** the source checkout. Do not write results over the retained packet; each run refuses an existing output directory. Scripts use only the Python standard library except for the separately installed Harbor runtime.
 
 Create sibling checkouts named `terminal-bench-poc` and `harbor-poc`, pinned to the commits in `config.json`. Public sources:

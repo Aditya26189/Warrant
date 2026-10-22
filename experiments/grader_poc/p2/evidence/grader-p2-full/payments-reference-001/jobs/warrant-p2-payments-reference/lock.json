@@ -1,0 +1,67 @@
+{
+    "schema_version": 3,
+    "created_at": "2026-10-22T18:27:48.957029Z",
+    "harbor": {
+        "version": "0.24.0",
+        "is_editable": false
+    },
+    "n_concurrent_trials": 1,
+    "retry": {
+        "max_retries": 0,
+        "exclude_exceptions": [
+            "AgentSafetyRefusalError",
+            "AgentAuthenticationError",
+            "VerifierTimeoutError",
+            "ApiUsageLimitError",
+            "ModelNotFoundError",
+            "UnsupportedModelParametersError",
+            "VerifierOutputParseError",
+            "RewardFileNotFoundError",
+            "RewardFileEmptyError",
+            "AgentTimeoutError"
+        ],
+        "wait_multiplier": 1.0,
+        "min_wait_sec": 1.0,
+        "max_wait_sec": 60.0
+    },
+    "trials": [
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "payments-pipeline-fix",
+                "version": "2.0.2",
+                "type": "local",
+                "digest": "sha256:6076fe996c4d59924a6bb7a1fdf209f9188ce73ec642d6bdb7a5b89ccca54d82",
+                "path": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/terminal-bench-poc/tasks/payments-pipeline-fix"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "oracle",
+                "skip_model_parsing": false,
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {},
+                "mcp_servers": []
+            },
+            "bridge_inputs": {},
+            "skills": [],
+            "environment": {
+                "type": "docker",
+                "force_build": false,
+                "delete": true,
+                "stream": false,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {},
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "separate"
+            }
+        }
+    ]
+}
