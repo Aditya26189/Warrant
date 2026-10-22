@@ -1,0 +1,70 @@
+{
+  "actual_transfer_tests_ran": true,
+  "changes_since_tested_checkpoint": [
+    "docs/research/fpr_reporting/b1/A04_RECOVERY_EXECUTION_LOG.md",
+    "docs/research/fpr_reporting/b1/a04-provisional-recovery-v1-20261021/RECOVERY_SCOPED_TESTS.log"
+  ],
+  "checked_utc": "2026-10-22T10:02:52.734163+00:00",
+  "checks": [
+    {
+      "command": [
+        "C:\\Users\\LawLight\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "docs/research/fpr_reporting/b1",
+        "-p",
+        "check_a04*.py"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-10-22T10:01:09.132066+00:00",
+      "log_sha256": "b95c5275d09b9a7c6557120e9ed3dd0663fd5d76b48a9ce763737564d5d32df5",
+      "source_git_commit": "502f494008d24d038f9f4e53657504a6c1a237f0",
+      "started_utc": "2026-10-22T10:00:45.790646+00:00"
+    },
+    {
+      "command": [
+        "C:\\Users\\LawLight\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "docs/research/fpr_reporting/b1/a04-provisional-recovery-v1-20261021/transfer/verify_recovery.py",
+        "docs/research/fpr_reporting/b1/a04_recovery_bibliography.py",
+        "docs/research/fpr_reporting/b1/a04_recovery_intake.py",
+        "docs/research/fpr_reporting/b1/a04_recovery_registration_followup.py",
+        "docs/research/fpr_reporting/b1/a04_recovery_release.py",
+        "docs/research/fpr_reporting/b1/a04_recovery_scope.py",
+        "docs/research/fpr_reporting/b1/a04_recovery_sources.py",
+        "docs/research/fpr_reporting/b1/check_a04_recovery_bibliography.py",
+        "docs/research/fpr_reporting/b1/check_a04_recovery_intake.py",
+        "docs/research/fpr_reporting/b1/check_a04_recovery_registration_followup.py",
+        "docs/research/fpr_reporting/b1/check_a04_recovery_release.py",
+        "docs/research/fpr_reporting/b1/check_a04_recovery_sources.py",
+        "docs/research/fpr_reporting/b1/check_a04_recovery_transfer.py",
+        "docs/research/fpr_reporting/b1/verify_a04_recovery_transfer.py"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-10-22T10:00:46.936257+00:00",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "source_git_commit": "502f494008d24d038f9f4e53657504a6c1a237f0",
+      "started_utc": "2026-10-22T10:00:46.564921+00:00"
+    }
+  ],
+  "gate": "FRAME_BLOCKED",
+  "git_transfer_blob_byte_identical": true,
+  "input_tree_clean": true,
+  "log_line_endings": "LF; original raw captured logs retained in ignored cache",
+  "normalized_log_sha256": "d6478152c4351233f2cf38cdf2aff19e2c82f844f30cb038340a32c6179a507c",
+  "original_verifiers_executed_unchanged": true,
+  "production_statistical_behavior_changed": false,
+  "rehashed_findings_rejection_test_passed": true,
+  "source_git_commit": "5e6418ef2200b43cffd0ea7fc5c48e7c05f0053b",
+  "test_count": 143,
+  "tested_code_and_archive_unchanged": true,
+  "tested_git_commit": "502f494008d24d038f9f4e53657504a6c1a237f0",
+  "tested_tree_clean_at_start": true,
+  "tests_failed": 0,
+  "tests_skipped": 0,
+  "transfer_sha256": "d105eed48c37e6532776060b3aec4ab70ece3cad885d1555ce08d54c89cf5142"
+}
