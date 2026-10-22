@@ -153,7 +153,7 @@ def html_locator(locator: dict, body: dict) -> list[str]:
 
 def validate_fact(fact: dict, record: dict, binding: dict) -> list[str]:
     """Use new source proof directly; never override an old acquisition state."""
-    optional = {"source_context_original_checked_utc", "locator_checked_utc", "literal_quotation_words"}
+    optional = {"source_context_original_checked_utc", "locator_checked_utc", "literal_quotation_words", "restriction_revision_checked_utc"}
     if not (s.FACT_FIELDS | EXTRA_FACT_FIELDS).issubset(fact) or set(fact) - s.FACT_FIELDS - EXTRA_FACT_FIELDS - optional - PROOF_FIELDS:
         return ["UNEXPECTED_RECOVERY_FACT_FIELDS"]
     if (not binding["method_release_supported"] or not binding.get("body")
@@ -175,13 +175,18 @@ def validate_fact(fact: dict, record: dict, binding: dict) -> list[str]:
         return ["EXPERIMENT_SCOPE_REQUIRES_RESTRICTION_CHECK"]
     if not fact["source_binding_basis"]:
         return ["SOURCE_BINDING_BASIS_MISSING"]
+    if any(k in fact and not utc(fact[k]) for k in ("source_context_original_checked_utc", "locator_checked_utc", "restriction_revision_checked_utc")):
+        return ["OPTIONAL_RESTRICTION_TIMESTAMP_INVALID"]
     proof_errors = validate_optional_proofs(fact, binding)
     if proof_errors:
         return proof_errors
     check = fact["second_local_semantic_pass"]
-    if (not isinstance(check, dict) or check.get("actor_id", check.get("checked_by")) != record["actor_id"]
+    allowed_statuses = {"CHECKED", "PASSED", "SOURCE_PARAPHRASE_RECHECKED_FOR_METHOD_ONLY_SCOPE_AND_LEAKAGE",
+                        "CHECKED_AGAINST_ORIGINAL_CONTEXT_AND_FOR_LEAKAGE", "CHECKED_AGAINST_RENDERED_METHOD_CONTEXT_AND_FOR_LEAKAGE"}
+    if (not isinstance(check, dict) or set(check) != {"actor_id", "checked_utc", "literal_quotation_words", "status"}
+            or check.get("actor_id") != record["actor_id"]
             or check.get("literal_quotation_words", 0) != 0 or fact.get("literal_quotation_words", 0) != 0
-            or not (check.get("status") or check.get("performed") is True)
+            or check.get("status") not in allowed_statuses
             or not utc(fact["checked_utc"]) or not utc(check.get("checked_utc"))):
         return ["RECOVERY_SECOND_PASS_UNATTESTED"]
     geometry = (pdf_locator(fact["locator"], body, fact["member_id"], record["actor_id"])
@@ -398,6 +403,7 @@ def collect(allow_partial: bool = False) -> tuple[dict, dict]:
                              "retrieved_utc": bindings[fact["member_id"]]["body"]["finished_utc"],
                              "restriction_checked_by": row["actor_id"], "restriction_checked_utc": fact["checked_utc"],
                              "second_local_semantic_pass": fact["second_local_semantic_pass"],
+                             "restriction_revision_checked_utc": fact.get("restriction_revision_checked_utc"),
                              "reviewer_received_utc": None})
         criterion_rows = []
         for criterion, value in sorted(support.items()):

@@ -128,6 +128,19 @@ class FactChecks(unittest.TestCase):
         self.fact['performance_note'] = 'Superior results'
         self.assertIn('UNEXPECTED_RECOVERY_FACT_FIELDS', r.validate_fact(self.fact, self.row, self.binding))
 
+    def test_restriction_revision_timestamp_requires_real_utc(self) -> None:
+        self.fact['restriction_revision_checked_utc'] = '2026-10-22T09:00:00Z'
+        self.assertEqual(r.validate_fact(self.fact, self.row, self.binding), [])
+        self.fact['restriction_revision_checked_utc'] = '2026-10-22T09:00:00+05:30'
+        self.assertIn('OPTIONAL_RESTRICTION_TIMESTAMP_INVALID', r.validate_fact(self.fact, self.row, self.binding))
+
+    def test_failed_second_pass_and_extra_context_prose_cannot_release(self) -> None:
+        self.fact['second_local_semantic_pass']['status'] = 'NOT_CHECKED'
+        self.assertIn('RECOVERY_SECOND_PASS_UNATTESTED', r.validate_fact(self.fact, self.row, self.binding))
+        self.fact['second_local_semantic_pass']['status'] = 'CHECKED'
+        self.fact['second_local_semantic_pass']['unrestricted_context'] = 'Superior accuracy'
+        self.assertIn('RECOVERY_SECOND_PASS_UNATTESTED', r.validate_fact(self.fact, self.row, self.binding))
+
     def test_tables_abstracts_and_wrong_paragraph_hash_are_rejected(self) -> None:
         raw = b'<section id="S3"><table><p class="ltx_p">The method classifies inputs.</p></table></section>'
         self.path.write_bytes(raw)

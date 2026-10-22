@@ -166,3 +166,18 @@
   directory first. Only a passing build is copied into the immutable reviewer
   transfer. Failed build evidence is preserved separately, so a routine parser
   repair cannot overwrite an earlier attempted transport.
+
+- All three genuine source-role completion reports have now arrived.
+  Checker01: 128 works, 132 accessible memberships plus two unavailable, 150
+  new facts / 140 reused IDs. Checker02: 121 works/memberships, 42 new facts /
+  167 reused IDs. Checker03: 118 works, 128 checked memberships plus one held
+  identity, 86 new facts / 211 reused IDs. Their actual final manifests and
+  validations will be preserved before release. Total requested coverage is
+  367 works / 384 memberships; 381 supported contexts and 278 new facts.
+- A complete release diagnostic rejected 50 checker01 records solely because
+  their appended neutral-scope revisions included a new UTC provenance field.
+  Added explicit UTC validation for that field and retained it in the public
+  evidence receipt; no content guard or source binding was relaxed. Tightened
+  second-pass schema/status checks so a failed or unperformed pass and extra
+  unrestricted text cannot be treated as an attested semantic check. Fifteen
+  release tests pass, including those rejection cases.
