@@ -106,7 +106,8 @@ def run_trial(args: argparse.Namespace) -> dict:
     dirty = git_output(source_root, "status", "--porcelain")
     if dirty:
         raise RuntimeError("Commit experimental source before recording a run: " + dirty)
-    config = json.loads(Path(__file__).with_name("config.json").read_text(encoding="utf-8"))
+    config_path = getattr(args, "config", None) or Path(__file__).with_name("config.json")
+    config = json.loads(config_path.read_text(encoding="utf-8"))
     for root, pin in ((args.tb_repo, config["terminal_bench_commit"]),
                       (args.harbor_repo, config["harbor_commit"])):
         if git_output(root, "rev-parse", "HEAD") != pin:
@@ -184,6 +185,7 @@ def main() -> int:
     parser.add_argument("--agent", choices=("nop", "oracle"), required=True)
     parser.add_argument("--expected-reward", type=int, choices=(0, 1), required=True)
     parser.add_argument("--timeout", type=int, default=1800)
+    parser.add_argument("--config", type=Path)
     result = run_trial(parser.parse_args())
     print(json.dumps({key: result.get(key) for key in
                       ("name", "status", "reward", "matches_expected", "elapsed_seconds")}, indent=2))
