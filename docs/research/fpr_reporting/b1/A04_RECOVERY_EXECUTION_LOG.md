@@ -181,3 +181,15 @@
   second-pass schema/status checks so a failed or unperformed pass and extra
   unrestricted text cannot be treated as an attested semantic check. Fifteen
   release tests pass, including those rejection cases.
+
+- Clean `b4ebc33` froze the complete recovery transfer after actual role
+  completion and byte-identical bibliographic replay. All 367 work / 1,852
+  criterion responses validate; 381 supported contexts, 278 new facts, zero
+  quarantined facts. The original 549 semantic facts remain in the unchanged
+  original archive. All three original unmodified verifiers exit zero.
+- The new wrapper is 1,229,861 bytes, SHA-256 `d105eed48c37e6532776060b3aec4ab70ece3cad885d1555ce08d54c89cf5142`.
+  It is a new container of the unchanged original archives, not a reconstructed
+  substitute. The full package execution and rehashed-findings rejection tests
+  both ran successfully; all seven transport tests pass with no skips. Actual
+  delivery, original-intake freshness and independent scientific completion
+  remain unrecorded. Final whole-suite/scope checks and push follow.
