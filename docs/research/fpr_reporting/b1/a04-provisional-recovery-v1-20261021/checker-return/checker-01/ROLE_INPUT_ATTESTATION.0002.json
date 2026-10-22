@@ -1,0 +1,44 @@
+{
+  "actor_id": "/root/a04_semantic_restriction",
+  "checked_utc": "2026-10-22T09:50:56.894375+00:00",
+  "role": "separate source-restriction recovery provider and checker",
+  "role_completion_state": "ASSIGNED_SOURCE_CHECKS_COMPLETED_WITH_SCIENTIFIC_GAPS_RETAINED",
+  "assignment": "Only the authoritative gap-request rows in W0001-W0124 plus W0341,W0348,W0352,W0354,W0356. W0053 is absent from this requested partition.",
+  "actual_context": "Continuation of the same delegated source-restriction context. The filesystem is shared. No OS isolation, fresh eligibility review, independent statistical review, or B1 approval is claimed.",
+  "completed_work_count": 128,
+  "assigned_membership_count": 134,
+  "accessible_memberships_context_checked": 132,
+  "body_unavailable_memberships": 2,
+  "routine_unattempted_context_count": 0,
+  "latest_pending_record_count": 0,
+  "reused_restricted_evidence_ids": 140,
+  "new_method_facts": 150,
+  "new_fact_literal_quotation_words": 0,
+  "method_criteria": [
+    "input_injection_task",
+    "binary_evaluation",
+    "before_target_answer",
+    "english_evaluation"
+  ],
+  "criterion_support_meaning": "Evidence availability and unresolved method details only; no criterion satisfaction or eligibility adjudication.",
+  "source_access": "Authorized current source receipts, exact hash-verified bodies, released restricted method facts, and root source-binding receipts. No alternative source revision was substituted.",
+  "source_layout_access": "Original unmodified HTML paragraph indexing was replayed. PDF method pages were actually rendered using PyMuPDF fitz Matrix(2,2), RGB, alpha=False and viewed; exact PNG, page-text, render-receipt and view-receipt hashes are retained.",
+  "protected_source_material": "Outcome prose could occur in primary bodies and was encountered only for removal. Tables, captions, abstract containers and other protected regions do not support new HTML facts.",
+  "limitations": [
+    "Bounded source-method passages and structural searches were inspected; selected PDF method pages were visually checked, not every page of every PDF.",
+    "Two exact-version primary bodies remain unavailable, with explicit source-held records and no method guesses.",
+    "English evidence is limited to the actual evaluated data, construction, or processing context specified by each fact.",
+    "Some sources document other decision units or response-dependent methods; their method boundaries remain explicit without work-level judgments.",
+    "New facts received a second local semantic pass by this same actor. The root release replay is separate.",
+    "No publication, eligibility decisions, sampling, B2 work, or changes to tracked documents were performed."
+  ],
+  "input_receipt": {
+    "filename": "INPUT_RECEIPTS.0001.json",
+    "sha256": "537e4473205b8ac0fb6fcb73cdb601e075c1389d06afa31b12cdf8d455bfed50"
+  },
+  "validation_receipt": {
+    "filename": "VALIDATION.0001.json",
+    "sha256": "b24782ca8b958f19653b9e6c7b1892f6b9cf05a9c38825686e0ba153ae5ba174"
+  },
+  "supersedes_role_receipt": "ROLE_INPUT_ATTESTATION.0001.json"
+}

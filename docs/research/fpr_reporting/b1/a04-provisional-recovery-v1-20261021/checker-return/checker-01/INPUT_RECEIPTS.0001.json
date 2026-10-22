@@ -1,0 +1,1017 @@
+{
+  "actor_id": "/root/a04_semantic_restriction",
+  "checked_utc": "2026-10-22T09:50:56.894375+00:00",
+  "input_artifacts": [
+    {
+      "name": "authoritative_gap_requests",
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\a04-provisional-recovery-v1-20261021\\SOURCE_GAP_REQUESTS.json",
+      "sha256": "43706bb2ac98bca7a2246932c3f95a5b8739d2fc3897cdca837a7d71b86efc12",
+      "use": "method-only request frame"
+    },
+    {
+      "name": "released_method_facts",
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\a04-semantic-evidence-v1-20261020\\restricted\\SEMANTIC_METHOD_FACTS.json",
+      "sha256": "606e583b5ec85f8ce4797ce93404f62ca45c1598af59468ca88ef2c2565d74aa",
+      "use": "restricted methods reused by ID"
+    },
+    {
+      "name": "released_evidence_receipts",
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\a04-semantic-evidence-v1-20261020\\restricted\\SEMANTIC_EVIDENCE_RECEIPTS.json",
+      "sha256": "027010372dd3636894e41e8a7a33d9518d7e5c008c9018941c8a04c5e0c8e740",
+      "use": "released source receipts"
+    },
+    {
+      "name": "method_rules",
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\a04-handoff\\restricted\\ELIGIBILITY_RULES.md",
+      "sha256": "e589d7d21be4b44b398a586ae63b66aca120d41f9c345b25342df8ece1e845e3",
+      "use": "requested method facts only; no eligibility decisions"
+    },
+    {
+      "name": "bibliographic_constraints",
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\a04-handoff\\restricted\\BIBLIOGRAPHIC_CONSTRAINTS.json",
+      "sha256": "59ddc8eb8a634d3ddc2533f628b8e2618bce4908d3b94b30e2ad714c7b9721a5",
+      "use": "input identity and constraints hash; bibliography adjudication belongs to root"
+    },
+    {
+      "name": "original_evidence_requests",
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\a04-evidence-v1-20261019\\EVIDENCE_REQUESTS.json",
+      "sha256": "3ff6a1bf1c9959a219ec80e89754acd0557123d4399bbd1a7edffca278925ae0",
+      "use": "frozen source memberships"
+    },
+    {
+      "name": "root_source_bindings",
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\a04-provisional-recovery-v1-20261021\\SOURCE_BINDINGS.json",
+      "sha256": "4b201dade378fbef5aa56eb881e111f95211a8c12080c9e16c672ec0434a69a7",
+      "use": "verbatim root source binding basis; no independent preferred-version adjudication"
+    },
+    {
+      "name": "official_bibliographic_evidence",
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\a04-provisional-recovery-v1-20261021\\OFFICIAL_BIBLIOGRAPHIC_EVIDENCE.json",
+      "sha256": "82017137c31b143ef9ef918dbb26858d8eadcc3104826eb6767235e52a13f7dd",
+      "use": "metadata artifact hash only in this role"
+    },
+    {
+      "name": "pdf_skill",
+      "path": "C:\\Users\\LawLight\\.codex\\plugins\\cache\\openai-primary-runtime\\pdf\\26.1015.12040\\skills\\pdf\\SKILL.md",
+      "sha256": "5e14b4b8f944dc5e678ee703dfacf583010431d64d5d829902c5b2541f736c89",
+      "use": "PDF skill used with authorized actual PyMuPDF render fallback"
+    }
+  ],
+  "source_acquisition_receipts": [
+    {
+      "review_id": "W0001",
+      "member_id": "M0018",
+      "acquisition_receipt_sha256": "25bec0f5510bdab6007bf3df0ce9bd8a214d9d7e28c69f747c468e5d2f568a72",
+      "raw_source_sha256": "c5295e7a79688ae13a16a39169c490e6ff7e6bab98f0096de943af226fb87074",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0002",
+      "member_id": "M0001",
+      "acquisition_receipt_sha256": "3d647164cf7a9a8470282717de4eeb50326223830e392919545eb66b5ef70b01",
+      "raw_source_sha256": "a82a166894395dfa0e19d6f74b9a4d7be4c9fb139f3627e5eb6a91576893e7eb",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0003",
+      "member_id": "M0026",
+      "acquisition_receipt_sha256": "da79877fafa240d07e7f876903f46896cd7aae4bfb1a3e62e457eec31e3ed497",
+      "raw_source_sha256": "5b4a79721736b0f6cd61bfeb0453ad18c69ad0a66d20440c3806b6d07cf21266",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0004",
+      "member_id": "M0027",
+      "acquisition_receipt_sha256": "8c6186823dc99c023d7ec703c15a533e3a1ea4ab478f82e245a3fcaccb6897d9",
+      "raw_source_sha256": "de589ac5c4be794331f3b1f6ed0ea5ff5f6c0af151546f1ed802015836315763",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0005",
+      "member_id": "M0028",
+      "acquisition_receipt_sha256": "efa28c2e83f82b613120de6b53f45c446b627835f2667c1da78fbdb8b2ee8ba9",
+      "raw_source_sha256": "49bb936be2d048bd5b0bbc76f3d17dd87e5d6abba70120bec2e64ced09c380d1",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0006",
+      "member_id": "M0029",
+      "acquisition_receipt_sha256": "24d2e093b03e2924b4f9c06b564b21506b0b96b331c4c37e1a769b75f493f591",
+      "raw_source_sha256": "aa7573586d756042b1ebbdaeb8ba862f604293613ccf176cd994056ef1370846",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0007",
+      "member_id": "M0030",
+      "acquisition_receipt_sha256": "359737afe50fa4e770ed2c5df96867e1fcac00050776be023c21c86f3f73117c",
+      "raw_source_sha256": "50b1ac341eacfa8274f14ca02eedbdffb748b9ac8440803d00df680ae6afe48e",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0008",
+      "member_id": "M0031",
+      "acquisition_receipt_sha256": "8aa57f150d882d6f16d3aa6eaf28bd72628117f06851193e994150dc3059df1e",
+      "raw_source_sha256": "e51ff1e336defe8f4f1f9ee7d4428a9a6d8d7e27ece0746fa33836f8514cbe59",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0009",
+      "member_id": "M0032",
+      "acquisition_receipt_sha256": "0688352a4211a1817997ef971b89bf1755d6bd77ad3f1b9073e60cd0faf88546",
+      "raw_source_sha256": "c13a82090ef62f3ad4ac8c1663518e6c72db159ba33b80137a3eb7332899f5f8",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0010",
+      "member_id": "M0033",
+      "acquisition_receipt_sha256": "c7dea50da8914b38be0365132babb76c74266cd80ca1422433798d6aae974f34",
+      "raw_source_sha256": "b84e7e1ad84634aa2c31198f9c5eb871e14f4817b0d10da6f7b6358060b6d93b",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0011",
+      "member_id": "M0034",
+      "acquisition_receipt_sha256": "c27183e0fdf78d442b60920de239018908d8b351e519d51f146207546d798f15",
+      "raw_source_sha256": "e2cc85b8a885d86e3a08cec54343912b9ef0c93e2e17f3493ac53637d1fdbd6a",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0012",
+      "member_id": "M0036",
+      "acquisition_receipt_sha256": "85552ecc81668a8d43ab211911f73dbb6b95aaaa4c0eb37d0be6040d16f3708b",
+      "raw_source_sha256": "8109461f9dab3b98879e704f821409a5618296942f0dc0e6d894b25639f36ab3",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0013",
+      "member_id": "M0037",
+      "acquisition_receipt_sha256": "3d23ce5b6c96a76993ac174b2e3fee3d74c2813a1fef00d97d01e157a28be70f",
+      "raw_source_sha256": "b74814a79ec8a00b41d91c2115425e05bb43c2c5349591f0f140f05bb7055bd2",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0014",
+      "member_id": "M0038",
+      "acquisition_receipt_sha256": "6b2d8dbe77f4bf3dc453e21f4165049be0e32e7b0b305273ebb0a6252a772972",
+      "raw_source_sha256": "765742bb74c6a7ee0b7ddbb8de9240175b4d807a566deaa1e12c0bbe4ea2e3b8",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0015",
+      "member_id": "M0040",
+      "acquisition_receipt_sha256": "0ee12ee132a31be49b131b97175b01455fb183a178a9f92d1d41b9809dbb5a90",
+      "raw_source_sha256": "d97a4d20992e5089274de1d1c61825c500dfdf6d993a1f650efbe1d465044010",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0016",
+      "member_id": "M0041",
+      "acquisition_receipt_sha256": "6bd824cfbadf47d838429157cb09b9d67d88087f270cade1d3d29a7aa3484234",
+      "raw_source_sha256": "a2206cd303c402fd347231a0ec58c357a7733f463ede242a863bb2c06960e772",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0017",
+      "member_id": "M0042",
+      "acquisition_receipt_sha256": "00ffc3c3380a95d5f2b10ad021c23e7aab69cac12465f678eb7eea2017b33ce9",
+      "raw_source_sha256": "77e3bb61ab82216caf990ddfe6bf5cf9d191ddf6da040a260aec2b1fc7c4c2a1",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0018",
+      "member_id": "M0043",
+      "acquisition_receipt_sha256": "995003d3f66bb6166f51c7deed80a9197ee4413996a5fdd0833810921ad801b2",
+      "raw_source_sha256": "319506d9955b7259c04ef21e244f25a50b6303ebb1329ac08c510e4844daed3b",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0019",
+      "member_id": "M0046",
+      "acquisition_receipt_sha256": "624503298737b10ca257fad1822856af7ea5954c059e5b599089dea7db9b50d3",
+      "raw_source_sha256": "710ad3c93859c3f451c17cfa98081eec61a3d04c1447ed53e61847f926eb9fa3",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0020",
+      "member_id": "M0047",
+      "acquisition_receipt_sha256": "3e778f7f2a1136d07a5d3d9292f5e91a3eb32974f69dea79eb71afc34cbcedc4",
+      "raw_source_sha256": "e08c3044b97a01261f5da76009543f3a912a9348a62702939fb16cf7105c9f97",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0021",
+      "member_id": "M0048",
+      "acquisition_receipt_sha256": "aaf3e51958c34989d26e18b0243d6bf98ec6300b3643b064cf402d7896e59271",
+      "raw_source_sha256": null,
+      "context_state": "SOURCE_HELD_BODY_UNAVAILABLE"
+    },
+    {
+      "review_id": "W0022",
+      "member_id": "M0049",
+      "acquisition_receipt_sha256": "0e4fa03e8083cd356c37781760e6e718a4c50849e907e65fb685b79c546da75f",
+      "raw_source_sha256": "6b4bec27c9cc14b4c38104be738bf1f6f9ff83ecf26bdac448c7a4e7889b5300",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0023",
+      "member_id": "M0052",
+      "acquisition_receipt_sha256": "6f7d73a246145f5372eb3bfe79fcdc1fd9058f4e848b2905ae84b0cb4728ca2b",
+      "raw_source_sha256": "445e244b0537f22a2c8aab90c5d7b5de3c783345bfbffe151251405eb666853e",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0024",
+      "member_id": "M0053",
+      "acquisition_receipt_sha256": "265d345f0d1d3db3c9112bf8979240a376601f505e62ebdd31525983963f22d4",
+      "raw_source_sha256": "406d7d1633e684880a5e7ff7d8166b19c4fa9b3c853048fe9df585dd1c9e8f7c",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0025",
+      "member_id": "M0054",
+      "acquisition_receipt_sha256": "ca60379a68155a25a5f4cf991840c4922f4ccebc2d201b8d4f4f41b79ac6385b",
+      "raw_source_sha256": "999880fb1acb2c95a7cb61b93a16c2556116c02ae6753eac34848f62d3b5f6ba",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0026",
+      "member_id": "M0055",
+      "acquisition_receipt_sha256": "9e84c698f415b9fb05c319f0864b9ea3e328c97c7468bba5ca3a8d37f9965ecd",
+      "raw_source_sha256": "d5bd52277f1ee7acbbca30e48cd7e4d8f4207edfedc6aea7597a9de6e41e0b02",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0027",
+      "member_id": "M0056",
+      "acquisition_receipt_sha256": "a832fabc431837757518dd4a9fc8440779bea7907d59b5cf13925b15372ed7db",
+      "raw_source_sha256": "31627075477e1ab3d671429d1563a15ffd6dd8e5f1efb513132a98243ddd8123",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0028",
+      "member_id": "M0057",
+      "acquisition_receipt_sha256": "e6a7e280cdeb8f4e94e804a9eb174d0160cb4762c638c8bfa751f030e5eb26dd",
+      "raw_source_sha256": "da179e45d3c648a91de0a2c04e19a4722003dc8aba096cf47b9c5924e013e8e3",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0029",
+      "member_id": "M0059",
+      "acquisition_receipt_sha256": "b164d22b90eec440e29e8332b5c723612f7917cf2e2208cc27d0b8a20a5df61b",
+      "raw_source_sha256": "fe8ff3bf4095323401ef37f4955ffcacf4ed28ff8de1451f2e28873f6444d250",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0030",
+      "member_id": "M0060",
+      "acquisition_receipt_sha256": "e3bf7b220ac010baf61c3f37289330a08d6bf487fd136b09a79d1b6a8a77e3a7",
+      "raw_source_sha256": "a09830ab3ff94b1a11ebcbd3920ac55f789f8a6c0099b3ac32b35d171e2f2995",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0031",
+      "member_id": "M0062",
+      "acquisition_receipt_sha256": "b7f60cbb05119ee19736cc6e3669b2f7afe7289b0f9c791839496dc03997e162",
+      "raw_source_sha256": "5fd6a6c1e351f18b62b62495c81fa62ee998d37867f9892b58781e67d852c770",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0032",
+      "member_id": "M0063",
+      "acquisition_receipt_sha256": "bd6e59429bbd0051b588f1a31413328ef92d8cfd452d26a430fe4df6eeea215d",
+      "raw_source_sha256": "6b438a3ebd49a127d615917903db1bb7d980b561b872fab35db083ddd262bad3",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0033",
+      "member_id": "M0065",
+      "acquisition_receipt_sha256": "0e6792f4f975b34f935de80acedea19c2a95d6fde690547cf8176b0467354de0",
+      "raw_source_sha256": "9ff4198fe53e1942d66a67f87d8d5134eac00ea428d48ee1aa9ae89c717aa700",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0034",
+      "member_id": "M0066",
+      "acquisition_receipt_sha256": "5203d973caa08e269298c1353aeb78e6fab341fb252891147e174e038dd06fdb",
+      "raw_source_sha256": "efb762160e25abd94bd855c8f0256367b49883abab61ad7bdaa476cef89be04b",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0035",
+      "member_id": "M0067",
+      "acquisition_receipt_sha256": "ae71614381d20a366cfb0b63cb434f21b13c465c86eca0c533d1aac10a3678f3",
+      "raw_source_sha256": "cdef6959f7755b4d82ed6eb25b4a4dfd957d43aeecf557d02276829aa51a0af9",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0036",
+      "member_id": "M0068",
+      "acquisition_receipt_sha256": "0b5164389c4eb3105cd92530358e875c32da162654998401f9fbcf79044ede82",
+      "raw_source_sha256": "a45a8ee43a97266301273bad28f68d20f2be12015db01e5f542f1e72ccf95f52",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0037",
+      "member_id": "M0069",
+      "acquisition_receipt_sha256": "3bebd46ab62f9e9bfc41739b44ef665e7c14bc7e36a1b5aa2bff53693e9f839d",
+      "raw_source_sha256": "23f877cc66d7a70fab2e4a6dd11165d56d602789bdebe56ebc5abefaabdb0cd6",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0038",
+      "member_id": "M0070",
+      "acquisition_receipt_sha256": "f316933011cd58ff63d1531fb3b12311139bdf631347147c3f456e2ebe5e4486",
+      "raw_source_sha256": "a516835435ab9375b6d64def96891ec3db10c4f4a45b92da95372c5758652ed2",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0039",
+      "member_id": "M0071",
+      "acquisition_receipt_sha256": "987aee5c9fc688c3612265a57632b0ec02103e10c9c0ff8cac1d8115b2da000a",
+      "raw_source_sha256": "898807fefad4ed2dbd76903bd834bb8eb6d81e0952816b2f84ac87114aa9b7d2",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0040",
+      "member_id": "M0008",
+      "acquisition_receipt_sha256": "12039b1ea211559b6eefc9aebad49b13b18273e98fd4ee32189e8f7bca8eaef1",
+      "raw_source_sha256": "054e85d16105c0550ac4191048347c710601e9471f7ca66888c8d985e1069d3a",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0040",
+      "member_id": "M0072",
+      "acquisition_receipt_sha256": "9383d631fc2cf4882083dca9cbee09819c9e1cbb5bdaf328cc04b7ea97608ab9",
+      "raw_source_sha256": "38c9178a8e32abeefa4321918ab82f6a4273835b2373d54a7c82e2a3e9cfcfed",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0041",
+      "member_id": "M0073",
+      "acquisition_receipt_sha256": "d23acafd5f686a648e69c7a3ea8c9964e41e3b7a9e5e760190bfa8c1d235f52d",
+      "raw_source_sha256": "35323980b10b2167427c874e2e5588ae0be240bf32adb56e4cebcaf83c26eb76",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0042",
+      "member_id": "M0074",
+      "acquisition_receipt_sha256": "5ca21c7b271bb78d45c507fc82875aa8e4ea602fa4c1f5df71618ce40946c9a1",
+      "raw_source_sha256": "8a987a8e30535e4c11d3ad8cd14f528e24e0e9905ba5cd1023f05241d2490002",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0043",
+      "member_id": "M0075",
+      "acquisition_receipt_sha256": "057276dc99abb5369e1baa527268b92b58ddb3668379de1322e708dcc52623c8",
+      "raw_source_sha256": "bea662bd0092e064edca0cfbb664799cc4c56fa33d9640999059dab077651f02",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0044",
+      "member_id": "M0076",
+      "acquisition_receipt_sha256": "23b963cfe283f9b43fa49ae41af7de6bbed33b6bd5e7bea5feb279a7e74f1695",
+      "raw_source_sha256": "a875763c56e10b8254686bd71650f441bd9be1911426d3221554699612f08895",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0045",
+      "member_id": "M0077",
+      "acquisition_receipt_sha256": "571c8d8d92ac9d3bc06f4faa0da9714a48b615afd9d7ae45727bbd440e80faee",
+      "raw_source_sha256": "21e29ab1558e8f68df80b852a9712e8cef7a92edcb8c2b4e8bdba5cb9ba00d42",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0046",
+      "member_id": "M0079",
+      "acquisition_receipt_sha256": "7542fa2ba5cad490bfdf58af8e6ccbe88537fed27f1dad62c321fdfc12dd6de2",
+      "raw_source_sha256": "ca6b31ea7b46218c80c7db60133dcbf3e539c78f43de49428f38fec54c547476",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0047",
+      "member_id": "M0080",
+      "acquisition_receipt_sha256": "2bc8b7ebe8f9495018acedca467f729bc74200699c79d34f1d4c78c3b19b3057",
+      "raw_source_sha256": "58b5e898383f6fc1198d35ea6bc3c80e3edbbf5915d71b5bf4ecbbafba854c40",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0048",
+      "member_id": "M0011",
+      "acquisition_receipt_sha256": "2535e1b0ae112548f9fcc3e0ccb8cdcfb8284a9fb2cf23bbb316a2428bbe4462",
+      "raw_source_sha256": "951f8700f75ac702b1b656394d31d626188b64c1816cd4f04c45a8cb2045bd30",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0048",
+      "member_id": "M0081",
+      "acquisition_receipt_sha256": "c716beae46b8ede9fd9787a6fada12678dbf5e0f9cfdd6bafd75f6a0e58d6489",
+      "raw_source_sha256": "8920f0879123444be7ab3a5f58d7dc0cec25a81b096c5a3e1a9ac3935e70c71c",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0049",
+      "member_id": "M0082",
+      "acquisition_receipt_sha256": "da42737608e07bb27c8ae95162c4de8b494dfae8c7d880cb24223e4b64ee1c18",
+      "raw_source_sha256": "8bd333639106aefd473e657fa77cd23e70c387d4f270036abbcf72b9cf9e658f",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0050",
+      "member_id": "M0083",
+      "acquisition_receipt_sha256": "473a3683421a8c0393b8030105fc282a164fa5164b7e07d4476158d7d89d58ee",
+      "raw_source_sha256": "c278d18cfa1f1ee2af1c4826438c0b5641d4042bee410710542aa0ab63c570af",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0051",
+      "member_id": "M0084",
+      "acquisition_receipt_sha256": "433a2a6bd6089553e1ba54943ef3d58bdb25fc72c0a0b6292a4336a208657f64",
+      "raw_source_sha256": "c021c42832b87dd4d1968c0ed55417100f1b9d4933f103c52fffbed164942ee7",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0052",
+      "member_id": "M0085",
+      "acquisition_receipt_sha256": "0fbde26636574e260d86d82ccea13dcab169c3ddef371ea42a1531703934dee0",
+      "raw_source_sha256": "6f945e9fac19841f012bef16ad5ce74e803162b45b1b477447789334913048c9",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0054",
+      "member_id": "M0087",
+      "acquisition_receipt_sha256": "f4459218c2ec6198bd6512fe3d74875ef786398ae0a7f6194a162d3e163be7f6",
+      "raw_source_sha256": "e3e92b321ea1c52ff1622034d1ed11aa15f5e4be3f09a54813004d1fdca58d32",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0055",
+      "member_id": "M0088",
+      "acquisition_receipt_sha256": "4706f56ff2f7f7e801134a7dd5f67e3333edc6725c05afa6e493d48c7ef1deba",
+      "raw_source_sha256": "50364b45239d6dc1ddda140b3697e8c3e9e7b8eb1e3f185c99bd12c400b807e0",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0056",
+      "member_id": "M0089",
+      "acquisition_receipt_sha256": "cb436669b0fde815f3def7023c85ae4d8cba3d985d63e1c5eb185707ee1e1320",
+      "raw_source_sha256": "9aa9e1d08863c85556357d25f554f50c23bbff5b09ac785496ec5c92e954d3b4",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0057",
+      "member_id": "M0090",
+      "acquisition_receipt_sha256": "22985edd693d76899b37641d8212a3f4fce9f6c7a695a5276c1a57d016b64908",
+      "raw_source_sha256": "cb78c7e7b271df2e36509a77dda2e2c8f9598f3f1e09b3c93862d95bf4c985a5",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0058",
+      "member_id": "M0091",
+      "acquisition_receipt_sha256": "b45549f8be1148d52ebdbcbec06a84edb9d15846106d17644301d14c478aff2a",
+      "raw_source_sha256": "134dc2e89c225a77bfa56aaf1de289e21adab6229af7ead8a98f105ca0f0de5a",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0059",
+      "member_id": "M0093",
+      "acquisition_receipt_sha256": "56d4784c0a4b3ab0f23e29339acfd119a07846406bfcc1cbb3919be7bfa9a7b1",
+      "raw_source_sha256": "d8865cd2e0e1b7df005e75cfee11b6511e2e7e79b0782eede90e8412b56cdc96",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0060",
+      "member_id": "M0094",
+      "acquisition_receipt_sha256": "36d905b33ec3113f687f8654cac9eb468f923a5bd6a7b4e7aa1af344f0386cc3",
+      "raw_source_sha256": "b26f87620749aee17aa9cc7a1917d7caf32e04252c34d6fc92d1d8f6303ee56e",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0061",
+      "member_id": "M0095",
+      "acquisition_receipt_sha256": "ad18b7cb59485bbc72d163649ca13e8f6ac85e43c4c614851a1321f23394d23e",
+      "raw_source_sha256": "666feebd1c7f77b53e0351582066305a049b6707010520a2d306469448d59ba5",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0062",
+      "member_id": "M0096",
+      "acquisition_receipt_sha256": "52193976ef368ea96f3124df6c3131d2be34edda985d61e96005a2cc6d9a02a1",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0063",
+      "member_id": "M0097",
+      "acquisition_receipt_sha256": "7b836e479e7190eb3ee7bd90648ece9a8df5ea67c5a2b9a206cb94f0b9818317",
+      "raw_source_sha256": "7b4c8225f0b44122562e3efe9b0a0141399c59cccea9c80d8cb997633d3a8279",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0064",
+      "member_id": "M0098",
+      "acquisition_receipt_sha256": "700215ba654277b1c47d4ef65996f8c3418223048a3d3546a2aefe0abc176498",
+      "raw_source_sha256": "4525e06a86695215c45777f0085afd238b1f6af7ca50cbc436f17239c19c970c",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0065",
+      "member_id": "M0101",
+      "acquisition_receipt_sha256": "a4f64d8f46fc1873a424128331b0506fb1216d42104b98d9b424d0e4ced4c79c",
+      "raw_source_sha256": "f655e70fc376e2a308c2e36e9f13129a6a86d20784f29e887df919a2e869e09d",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0066",
+      "member_id": "M0102",
+      "acquisition_receipt_sha256": "d39f6b6085e26b7b9e40d0fe35dba44bd0cbc2a09e1c3b87cc474a9c2d571ffd",
+      "raw_source_sha256": "523ffa38bc586acb9422891d1e33dc88b766da334ac2090d696a9201076202b0",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0067",
+      "member_id": "M0105",
+      "acquisition_receipt_sha256": "9bd18dd5e241c568fbb3e82a9ddb7a8d30098dbc914e360c96f43ab7882cbee8",
+      "raw_source_sha256": null,
+      "context_state": "SOURCE_HELD_BODY_UNAVAILABLE"
+    },
+    {
+      "review_id": "W0068",
+      "member_id": "M0106",
+      "acquisition_receipt_sha256": "8ebf7e1d9b0993e65f218097a97d2f680cd767737fb67313a125f3e15371b2ff",
+      "raw_source_sha256": "8b5d5ea3cd0cce453141fcd5f02dc12ef605e78d95e7f9940ffa6559faed5803",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0069",
+      "member_id": "M0107",
+      "acquisition_receipt_sha256": "675393456cae35d973ff0856e24ea6b4363a7cf50af4fccc9ed47d9a585695e4",
+      "raw_source_sha256": "04ed30f3b6888fb453e3afebfa149be90b8cfbbf91d543ca0a215dbac7c1fffe",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0070",
+      "member_id": "M0108",
+      "acquisition_receipt_sha256": "2ff1e2fcb3d4bdd8a46d07263df1238a7ec6e0af76a931010bcafd30c5d12b4c",
+      "raw_source_sha256": "6c58cdd5f6fca1ea02ac364d026bf50d893980a73bcb90c4124dac868fa770f6",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0071",
+      "member_id": "M0109",
+      "acquisition_receipt_sha256": "43e134e5f7b7dcec53b0f747710084fe0523e55c57d9989b2f9b3f77c88702c9",
+      "raw_source_sha256": "33b379518775626baaef0be16161b0cc5dd5e95c5c9d6cb798322ab02cdb6874",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0072",
+      "member_id": "M0110",
+      "acquisition_receipt_sha256": "8ba28394e5c4d6253335b9488c77ec1bb65ded20c3fbeb08b8dd2738488ccac9",
+      "raw_source_sha256": "773e7066af0db3dd89e20eeadd7e8cb48bc9f2022d54185793a1d1c02fd269b0",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0073",
+      "member_id": "M0113",
+      "acquisition_receipt_sha256": "2d806c2a0c75e1f743ffc330c6be87aa0eb568bbeca4a111d93a9967aa85a604",
+      "raw_source_sha256": "e42f5640b7346eacfbff4d63135106bc400fd553dc952ada1e310e36a7bb8537",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0074",
+      "member_id": "M0114",
+      "acquisition_receipt_sha256": "f6df377a7e555f396ec06017b8de126c4e7be71d3b4c2d8d86b762ca92384433",
+      "raw_source_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0075",
+      "member_id": "M0115",
+      "acquisition_receipt_sha256": "8099e1bcbe87cded378987bcc168ded73a716976f4c7c65be46f6b95db43a52d",
+      "raw_source_sha256": "90c0e4cbabc118ff0c13849683596d0d69862fca860b12630724106cd001dc03",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0076",
+      "member_id": "M0117",
+      "acquisition_receipt_sha256": "0db03ae3e212fbf9a0e8210a1adf81d830db463ce771abd2e448195cf0f6ea63",
+      "raw_source_sha256": "834d9ffc611c8e59de60d55e1df033870f3bf55ffa72c5435d5b1d9ace860105",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0077",
+      "member_id": "M0118",
+      "acquisition_receipt_sha256": "349809b069b02d7fe817ee2d67fa148f7cc6d5ed2985ccdba1aff8428e5c4a6b",
+      "raw_source_sha256": "605baca9618dad9c3969f1c9fa299f0de03d5f01ec2d0773b03193b3e03ebb2c",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0078",
+      "member_id": "M0119",
+      "acquisition_receipt_sha256": "38060645867c02c523df2286e5b0dce27bf7b4d0c6e939694d126f0eba159174",
+      "raw_source_sha256": "8071b3f327171375940e8aa5fe2d4e3b18606e5d0c09f95089904924111fb625",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0079",
+      "member_id": "M0120",
+      "acquisition_receipt_sha256": "f2ae221a35b7deb85314862ec770b523746e1b085fe702201f82395c5ce40678",
+      "raw_source_sha256": "362ab9975dd47a82debe33f825599cc77a030d83c0adaaa121677e70eca1b5fe",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0080",
+      "member_id": "M0121",
+      "acquisition_receipt_sha256": "71d5a1c9f866cc1ff4dafec41258b4c3afcb5a7275d2e8520679292de3b8ff94",
+      "raw_source_sha256": "c972c5620d2eadb40efd62bb692fc401351dad6cef66be6e6d6fdd4ae4a3cce5",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0081",
+      "member_id": "M0122",
+      "acquisition_receipt_sha256": "5486a460528eaa84785b8999abd7c9660c939154fb5201d324cee00d5af5ea9d",
+      "raw_source_sha256": "3ed2a5441cc90b6835e12718c36ce8a2bb7c1d4af0fb4b91b931d52268a06dc5",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0082",
+      "member_id": "M0123",
+      "acquisition_receipt_sha256": "daa5adb0bbc04205b72635d38f008561cd99e190589e96768f1799fee298fd14",
+      "raw_source_sha256": "9771ff0f05eb650652f20d2f88252ca548f0f1496d817d43fc8ff3ddd6449740",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0083",
+      "member_id": "M0124",
+      "acquisition_receipt_sha256": "6ea7c10068cd42f40f7690352c7747529eca841806f57e3f4e4fd7ec2e01c006",
+      "raw_source_sha256": "92422600722844eff8dd53c6080237ae4c9ebbd155a018ecf9b779a61b35c355",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0084",
+      "member_id": "M0125",
+      "acquisition_receipt_sha256": "1bb9553ac9d5baabf0bb26907c0398794eb81ce26c28958e7544f7f0d7dfc991",
+      "raw_source_sha256": "b925288eb68efd57b5dce1864fc22eb363ec487660345bd1614f91c15b821ba2",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0085",
+      "member_id": "M0126",
+      "acquisition_receipt_sha256": "16f2adaa512d6aa67dd1390ef1d077ee5989beb110807e3b78f4e7e4ab70fba5",
+      "raw_source_sha256": "55c34d9d95674378a7f0c5b139758fb394209d511ddf39089873f3d79fc75186",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0086",
+      "member_id": "M0127",
+      "acquisition_receipt_sha256": "355059f79229ffdcca45583560a921862dac82f3532c2e745e61a0cd5c013895",
+      "raw_source_sha256": "a02f967365951a56531f94054a2087dce3231137a72eb7e5d476d8a52354d101",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0087",
+      "member_id": "M0129",
+      "acquisition_receipt_sha256": "814006696238e6502758e37a6ec304d9fd312001bfd95a219212a049328bf662",
+      "raw_source_sha256": "7d7febad13ea20bdeb1759f4f7333cf79529c4a81b34078df784f5db9eac4f74",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0088",
+      "member_id": "M0130",
+      "acquisition_receipt_sha256": "99bbf574e43cfba2725534dc9f86ffe20d7de2c5620d4427fb9b2a6539e350f3",
+      "raw_source_sha256": "0de2e5328d1bed467c344c3068727950ac11c099988e5cf7de77429e1e9b0ccd",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0089",
+      "member_id": "M0131",
+      "acquisition_receipt_sha256": "6f0470cb22e6a383a6596e93ea3de3d39cb9592ec7e34c1cefb0d24df8e9b131",
+      "raw_source_sha256": "20d3f18d61f6f03e23642354866fd996db0633eee8fac27d3e602dd5137afd0d",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0090",
+      "member_id": "M0132",
+      "acquisition_receipt_sha256": "d92f481a64d892542887a2531c62c51ff9809810115dd973f9481b0dfa74a070",
+      "raw_source_sha256": "25c034e049e13c5312dafe398bf50c304b2a46fdd4a144e5883eac4bdc519575",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0091",
+      "member_id": "M0133",
+      "acquisition_receipt_sha256": "bbba313fa5fa8cffca0dbf8e42ac550bee5724c947905c589089afd8f108c61c",
+      "raw_source_sha256": "e27194dbf602b7d9839a0ac32203b4472f0318df7bdde5c943b8df9b05c36c47",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0092",
+      "member_id": "M0134",
+      "acquisition_receipt_sha256": "0197d5e36ac083ce98da752735942416a47d64dea66194cc02fc3855bd14ffa5",
+      "raw_source_sha256": "decc52894d58e06ea770a9d303455ef2f2df9c4d3abe49bbdd35b06db80f75cf",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0093",
+      "member_id": "M0135",
+      "acquisition_receipt_sha256": "86f236e92d8d05f78f08c2badda44bbab45231ae083d6a4b2d202778cc69f199",
+      "raw_source_sha256": "81fb05095165ef8276824d388eefa452bc49d7b6a1b605600bd7fdb610e9094d",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0094",
+      "member_id": "M0137",
+      "acquisition_receipt_sha256": "11bed1113bc2b37c0eb5ccc0e63433b9c686c3b8da929ec1d454072c004fb86d",
+      "raw_source_sha256": "6e54a860fe38c6531fe8ace56423a2dfd0b82fa95b5f48f4f7b4857367e6bd6e",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0095",
+      "member_id": "M0138",
+      "acquisition_receipt_sha256": "c22a7945b7a647a9aa7d3f589699d8c270ad51ee5d8e135e39cbe96dc6b8f308",
+      "raw_source_sha256": "e16e6e0e764acf4b399289bbe8f3af9faeec80279dcb0c235976db6873f11386",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0096",
+      "member_id": "M0139",
+      "acquisition_receipt_sha256": "27cde79a653ca14e9622eda281b75e9ccc0f3acb8eeac9eb1cf6319c8b084344",
+      "raw_source_sha256": "c5774885d35e784fc940558e68f95fea9694803384bfa77ec1200c69b1f00c49",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0097",
+      "member_id": "M0140",
+      "acquisition_receipt_sha256": "54d8a73e53ec7661a6c97a4b005e8f92987d7df4f78df06096d019de98c16f56",
+      "raw_source_sha256": "28bf1299c01556b7b52113c329fad983088b17dde9b182260ce62027081464a0",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0098",
+      "member_id": "M0141",
+      "acquisition_receipt_sha256": "b21dfff7caa50351e62fe1a938a540297d63b2ddf08d2accb073c49411cf35e8",
+      "raw_source_sha256": "31725bca43c09e7745fbad944acea3f2009da3c252327baeaf9e506957f807ac",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0099",
+      "member_id": "M0142",
+      "acquisition_receipt_sha256": "972df2bfcb76b4bfdb70847b5e7028ea75b0a6ca4339438b6cec83fa71e55617",
+      "raw_source_sha256": "7c2ea6badf64dc5a2750b84436c664229aa5f39ab1774a6829aa41305a615f0d",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0100",
+      "member_id": "M0143",
+      "acquisition_receipt_sha256": "698ed17f5fa30c1fa2342ec319153ac446728c63988ac995ebad8220172dcf40",
+      "raw_source_sha256": "7038e9c5d42d1f14a1184f1a085145b6a8f111c4fe70f20ae8dce503b6229cc0",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0101",
+      "member_id": "M0144",
+      "acquisition_receipt_sha256": "ecc38380c86fbc928c28f50402d79aa0cd52e1001c6d4fc0954f03768ec967a2",
+      "raw_source_sha256": "498257635872fc73c8b01ef2ac9404e41a5a16dd356a7eeb92f2d868d0b0be9a",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0102",
+      "member_id": "M0145",
+      "acquisition_receipt_sha256": "a31c388f5cc45102351af0943afcdcddd2b6ef2652791789591bb5750a2b4cd7",
+      "raw_source_sha256": "74691cee7b541cc70ea68c7f73031b6fb628996075ea0cb8fda27ed914cdf124",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0103",
+      "member_id": "M0146",
+      "acquisition_receipt_sha256": "41eb33b2e336bc30590ef35d3a32ffaccf71337cd38a37b17282dbf7066df037",
+      "raw_source_sha256": "954dde9322a914ba83f4511a75f1e928250253475fb94f1c2677e68505891016",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0104",
+      "member_id": "M0147",
+      "acquisition_receipt_sha256": "6bbc32ab9f5abbbe3d8392f5eb3a9d76090943c363447b838e6369ae999acc2d",
+      "raw_source_sha256": "9406fe751f2cf9720eac9adb1f8e2af9162b73e02f93b6a6874af396d37f8a20",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0105",
+      "member_id": "M0148",
+      "acquisition_receipt_sha256": "006f812f29be40c22a59af1b1c2ada0945cc13a14f433cb037febd111f31050f",
+      "raw_source_sha256": "42b407592cea653c201d45bda5c5c0bfaccae7754688e95cb23f3fc916d26480",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0106",
+      "member_id": "M0149",
+      "acquisition_receipt_sha256": "4986f0374618fb4ef304656206771124e39c851583fdba41fc3f27d3e2fd3c3a",
+      "raw_source_sha256": "cbe6e35b5b43a09e5d3668a48a95e53ac35cc7a2ed2ecca3e83e047eb272e367",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0107",
+      "member_id": "M0150",
+      "acquisition_receipt_sha256": "c94f663df4f2385c97430e377ce852b4a0b1eb23ae639efbdda6e90a6e7f8df5",
+      "raw_source_sha256": "0e9fcc806fab085f2538f75ae7850e4889199151f00016860edecb1c828edd44",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0108",
+      "member_id": "M0151",
+      "acquisition_receipt_sha256": "2df252513aee454c56eaa0b8992c5decd32c0cdd72b75fecb3f337a9f8c518d6",
+      "raw_source_sha256": "1931c35acc668294465951bbbbd40c23fec4a55f7867d55e54df8b489b5b5bd3",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0109",
+      "member_id": "M0152",
+      "acquisition_receipt_sha256": "86d44905504242b0cd56c0eea45bb2de8c3b3f81b3693c640511ee5ed5b2a48f",
+      "raw_source_sha256": "b8f8d45ed563437ee3f782a9a4ee7875f3b4b7653c45ab85a2af35a73c54f89d",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0110",
+      "member_id": "M0153",
+      "acquisition_receipt_sha256": "1a731379a77f5d5714b2716789254dc12df0b19ae1ac07c234924286d514243b",
+      "raw_source_sha256": "d5dc5c02cc51244faa54d595ced49e82107d06fb67d914587f20f29cdcd34acd",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0111",
+      "member_id": "M0154",
+      "acquisition_receipt_sha256": "e5182cdbd5cc589ec70d7249f955c369266017325e0eddb54ef7dc2787771d52",
+      "raw_source_sha256": "8b6bdd65a92e7994301fe1ae29e4dfe3d13be961d05397b79f6eb1e933fc9f32",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0112",
+      "member_id": "M0155",
+      "acquisition_receipt_sha256": "8845c9b387d6708a806d4303962f54f459ee71bea178be12cb3353d42ab57223",
+      "raw_source_sha256": "1d6cb1c874a4aad30a1ebd0ca153957d6c8792d23ab655f41477d2e13bcbf0b8",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0113",
+      "member_id": "M0156",
+      "acquisition_receipt_sha256": "c61ab4c56a29c20563301fa121e9c0b59a7c139248d97bee72cb18aee2ff7fdf",
+      "raw_source_sha256": "015fea2e0c4650adfdff9a8f4a17b33378bbfb20f6fd3f3ac1e3eef1af549404",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0114",
+      "member_id": "M0157",
+      "acquisition_receipt_sha256": "dbcda9efae8de912384895f4f576abd4e1303ff2eb83fff73b36bfdd0c6a03a1",
+      "raw_source_sha256": "724af630a130f168baad5d8cfc5b5178b289ea2a95b7c2c3308ad0dbfc78a101",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0115",
+      "member_id": "M0158",
+      "acquisition_receipt_sha256": "9d358f17db31aa3574d6980215d85376c1cee49c826037b8b56305fe76ea7217",
+      "raw_source_sha256": "1e417de48243277de2afab5663ee7bef5b8480e56ef078af75af4508b311e767",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0116",
+      "member_id": "M0159",
+      "acquisition_receipt_sha256": "6614f13f53fed8d24e3417cf15ed29ddd1c3bf2e01f2b8da45d334e66de55a4d",
+      "raw_source_sha256": "0cd2f34ab9270cc662dda61bdbc2233a9c903b6a50fa4b69977c34cb0c232170",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0117",
+      "member_id": "M0160",
+      "acquisition_receipt_sha256": "5fd78c2cc0eae935f188874a55ecad9d10bb4c0b6fb9ad47c45a4aa63a959677",
+      "raw_source_sha256": "267e1e6c5a7f4a4096b251768f015307da7d8305bbc3ef7189cd6d2ffc28ffb2",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0118",
+      "member_id": "M0161",
+      "acquisition_receipt_sha256": "1cd0923c4553162bf6fafd437600c388e032798c6a4a4040b34a3ca1962f59ad",
+      "raw_source_sha256": "7a112cc5e4e477b6b38b87729fa7d8dea7cf721e10d88065427a28337fd3a43f",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0119",
+      "member_id": "M0162",
+      "acquisition_receipt_sha256": "d485a4231c13f0b7419b85204fff9fab981f9ed7e9fae1f5ee92385a0ad23442",
+      "raw_source_sha256": "b99f0007d91ae08b0247e2813d38683629eddecc6653339183cdacce5304ccec",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0120",
+      "member_id": "M0163",
+      "acquisition_receipt_sha256": "9e49ab0c3a56ecef5f35e7c5c86c9a4f31fbf4c172f9447318b8d89937a7283c",
+      "raw_source_sha256": "acff49212c5704998fcc9a3e5f7561b7387927e3e4fd348b926a9dce1a424c28",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0121",
+      "member_id": "M0164",
+      "acquisition_receipt_sha256": "e5b6bc86b737c6b6bc513a79e3a27881d4a103bbfab5113b8a9f9204b565bf14",
+      "raw_source_sha256": "f112157a4fbb48d11a9a7175deb23018666eb4b1faa73323dbc11bb8c9b3cab1",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0122",
+      "member_id": "M0165",
+      "acquisition_receipt_sha256": "06381ed4bce99eac165859d801484a678c51d89997196a013deb603727875ce2",
+      "raw_source_sha256": "e0c9b313d1fb09cfe39fdc396215cd9c07ad10770acd9e7cb3b7f8cf77d3184b",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0123",
+      "member_id": "M0167",
+      "acquisition_receipt_sha256": "1f8681a19b5f24ae54b30a3d5ce4bca576cd0c55fa24b11f6f07d95d08643a5a",
+      "raw_source_sha256": "2a6a9834274ba887276fb7a6f5acee7657e0d7f08f1ed1a47a658f56f6880cf2",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0124",
+      "member_id": "M0168",
+      "acquisition_receipt_sha256": "67870e961cca75d2b8349916099625fef43cb4434b8e588bd858cfe489ba3a1f",
+      "raw_source_sha256": "11f181f2cc00d98d53c072b578d00d91096eeeb29685f865ad12291c8ff76d55",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0341",
+      "member_id": "M0044",
+      "acquisition_receipt_sha256": "33086e8ffa193a30bbdfb8519ce257457c1b5305de965b777a3fbeb9c2facf23",
+      "raw_source_sha256": "040af59214874aa2aaee33a2465ddfc0542bbe10c01810d978aefa945725cb70",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0348",
+      "member_id": "M0019",
+      "acquisition_receipt_sha256": "61bc28dc6364eb8d250a73995456eeeb47bf78001da22772f80efff7e8e74162",
+      "raw_source_sha256": "1f72fbe6f8930a8f4efe34b860e26cd0ff90d5c554d5872673e3e5fb7f44ff48",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0348",
+      "member_id": "M0061",
+      "acquisition_receipt_sha256": "20e43627ad8f55bb26b5e89c388bf4d522f5617a91e2e3aac6b3ae9bc4b1f42d",
+      "raw_source_sha256": "f6a3b813ce50a997a902265c519b01b1d1cb2032a29c8f61cce329a1f1e35dfd",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0352",
+      "member_id": "M0021",
+      "acquisition_receipt_sha256": "113e4df72fff3bd5f469d5fa51ebf5e623fb46877e9dc1eaaedb647eb6450327",
+      "raw_source_sha256": "121d61d9c3e1dbd2852c43abd04ae7a1784d9c9a798577029b9784e904922498",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0352",
+      "member_id": "M0078",
+      "acquisition_receipt_sha256": "ca2c41778c66224b8dada05f30afb1c9b87440c13afdd06590f78ce6591fbc57",
+      "raw_source_sha256": "f52bf8e65a63fbd08822c09ddcff77d023830523398be805d42f2efe0f1beb3b",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0354",
+      "member_id": "M0010",
+      "acquisition_receipt_sha256": "e138ae32ef1e5c584a11938560e66021dc3497541248d2f3baec05b05618c47e",
+      "raw_source_sha256": "16fb6ad1d2e146ce5fe68d79e04ed3a17ac5659277fe9a3d1e91e6631dcf8493",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0354",
+      "member_id": "M0051",
+      "acquisition_receipt_sha256": "44e062e82b66627e442fe01b3453fe3b002d71ecf23f595e75cc58f8b0d027e8",
+      "raw_source_sha256": "d25c0b0b0b3d7648aac68b2dbd4e8d56f7dfefd9a31a901b44b6eed4c317ec23",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0356",
+      "member_id": "M0013",
+      "acquisition_receipt_sha256": "eac1ddc5fed03aa4bfa776326c88ed06e4e9c351d94bcfe88e42e56e00045a9a",
+      "raw_source_sha256": "ffcc26d63671bc77421bb52f160ee3af7e9ef442d84487c095b51248b433ed55",
+      "context_state": "CONTEXT_CHECKED"
+    },
+    {
+      "review_id": "W0356",
+      "member_id": "M0099",
+      "acquisition_receipt_sha256": "da4ea1d8866b80481a9aeec6f2df16d7a000a422fa051bafbf38dfd88a866984",
+      "raw_source_sha256": "97465e68781e8148ca7103e8883d2825d069e9e4b4fb0f5654f52498d2f3849b",
+      "context_state": "CONTEXT_CHECKED"
+    }
+  ],
+  "guard_definitions": [
+    {
+      "name": "OUTCOME",
+      "pattern_sha256": "7f0f9f9d20be9cd3d64c36c345d394b3954cf6f03a29d2a296429a96224d85b4",
+      "scope": "only the authorized engineering guard definition"
+    },
+    {
+      "name": "SPELLED_COUNTS",
+      "pattern_sha256": "44d5dd0adebd8e39f85c68cb9683de70f48231ef45f8c8656ac21248df6f138f",
+      "scope": "only the authorized engineering guard definition"
+    }
+  ],
+  "input_limitations": [
+    "Raw source access was limited to the exact current receipt-named bodies after SHA256 verification.",
+    "Official bibliography and preferred-version adjudication remain outside this role.",
+    "Prior source-restriction context was retained; this is not a new outcome-unexposed eligibility reviewer."
+  ]
+}
