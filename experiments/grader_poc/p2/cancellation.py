@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import signal
 import subprocess
+import tempfile
 import threading
 import uuid
 
@@ -130,6 +131,9 @@ def main() -> None:
     for key in ("tb", "harbor", "harbor-bin", "out"):
         parser.add_argument("--" + key, type=Path, required=True)
     args = parser.parse_args()
+    for key in ("tb", "harbor", "harbor_bin", "out"):
+        setattr(args, key, getattr(args, key).resolve())
+    os.chdir(tempfile.gettempdir())
     root = Path(__file__).resolve().parents[3]
     if git_output(root, "status", "--porcelain"):
         raise RuntimeError("Commit source before integration checks")

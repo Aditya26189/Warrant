@@ -9,9 +9,11 @@ from fractions import Fraction
 import hashlib
 import itertools
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
+import tempfile
 import time
 
 from experiments.grader_poc.container_lifecycle import run_owned
@@ -221,6 +223,10 @@ def main() -> None:
     parser.add_argument("--mode", choices=("math", "session", "payments"), required=True)
     parser.add_argument("--math-image", default="warrant-p2-math-verifier:5a3f5da")
     args = parser.parse_args()
+    args.tb, args.out = args.tb.resolve(), args.out.resolve()
+    # WSL/Windows interop can invalidate an inherited /mnt/c cwd. All task
+    # paths are absolute before moving to a stable Linux working directory.
+    os.chdir(tempfile.gettempdir())
     root = Path(__file__).resolve().parents[3]
     if git_output(root, "status", "--porcelain"):
         raise RuntimeError("Commit source before experiment")
@@ -232,7 +238,7 @@ def main() -> None:
     start = time.monotonic()
     record = {"source_commit": git_output(root, "rev-parse", "HEAD"), "source_dirty": False,
               "started_at": datetime.now(timezone.utc).isoformat(), "config_sha256": hashlib.sha256(raw).hexdigest(),
-              "mode": args.mode, "population_rate_claim": False}
+              "mode": args.mode, "population_rate_claim": False, "status": "INCOMPLETE"}
     task = {"math": "math-eval-grader", "session": "session-window-debug", "payments": "payments-pipeline-fix"}[args.mode]
     record["task_hashes"] = file_hashes(args.tb / "tasks" / task)
     image_name = args.math_image if args.mode == "math" else BASE
@@ -246,6 +252,9 @@ def main() -> None:
     try:
         record["result"] = fn()
         record["status"] = "EXECUTED"
+    except (OSError, ValueError, RuntimeError, subprocess.SubprocessError) as exc:
+        record.update(status="ERROR", error={"type": type(exc).__name__, "message": str(exc)})
+        raise
     finally:
         record["elapsed_seconds"] = time.monotonic() - start
         write_receipt(args.out / "outcome.json", record)
