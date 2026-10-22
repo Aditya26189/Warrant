@@ -7,13 +7,15 @@ import copy
 from datetime import datetime, timezone
 import hashlib
 import json
+import math
 from pathlib import Path
 import subprocess
 import time
 from typing import Callable
 
 from experiments.grader_poc.oracle import expected_sessions
-from experiments.grader_poc.run_trial import file_hashes, git_output
+from experiments.grader_poc.container_lifecycle import run_owned
+from experiments.grader_poc.run_trial import file_hashes, git_output, write_receipt
 
 
 def reduce_trace(events: list[dict], violates: Callable[[list[dict]], bool]) -> list[dict]:
@@ -75,27 +77,48 @@ def accepted_artifact(run: Path, task: Path) -> tuple[Path, dict]:
 def observe(app: Path, events: list[dict], config: dict) -> dict:
     """Keep candidate execution out of the oracle process and host filesystem."""
     worker = Path(__file__).with_name("trace_worker.py").resolve()
-    command = ["docker", "run", "--rm", "--network", "none", "--read-only",
+    arguments = ["--network", "none", "--read-only", "--pull", "never",
                "--user", "65534:65534", "--cap-drop", "ALL", "--security-opt",
                "no-new-privileges", "--pids-limit", "64", "--memory", "256m",
                "--cpus", "1", "--mount", f"type=bind,source={app.resolve()},target=/candidate/app,readonly",
                "--mount", f"type=bind,source={worker},target=/worker.py,readonly",
                "-i", config["diagnostic_image"], "python", "-B", "/worker.py"]
     started = time.monotonic()
+    receipt = run_owned(arguments, json.dumps({"gap": config["initial_gap"], "events": events}),
+                        config["diagnostic_timeout_seconds"], config["diagnostic_cleanup_timeout_seconds"])
+    observation = {"status": "ERROR", "reason": receipt["status"]}
     try:
-        result = subprocess.run(command, input=json.dumps({"gap": config["initial_gap"], "events": events}),
-                                text=True, capture_output=True, check=False,
-                                timeout=config["diagnostic_timeout_seconds"])
-        observation = json.loads(result.stdout) if result.returncode == 0 else {
-            "status": "ERROR", "reason": "nonzero container exit"}
-        if not isinstance(observation, dict) or observation.get("status") not in ("OBSERVED", "ERROR"):
-            raise ValueError("Unexpected observer response")
-        return {"observation": observation, "exit_code": result.returncode,
-                "stdout": result.stdout, "stderr": result.stderr,
-                "elapsed_seconds": time.monotonic() - started}
-    except (subprocess.TimeoutExpired, ValueError) as exc:
-        return {"observation": {"status": "ERROR", "reason": str(exc)},
-                "elapsed_seconds": time.monotonic() - started}
+        if receipt["status"] == "COMPLETED":
+            if receipt["exit_code"] != 0:
+                raise ValueError("nonzero container exit")
+            observation = validate_observation(json.loads(receipt["stdout"]))
+        if not receipt["cleanup"]["verified_absent"]:
+            raise ValueError("owned container cleanup could not be verified")
+    except ValueError as exc:
+        observation = {"status": "ERROR", "reason": str(exc)}
+    return {"observation": observation, "execution_status": receipt["status"],
+            "exit_code": receipt["exit_code"], "stdout": receipt["stdout"], "stderr": receipt["stderr"],
+            "container": receipt, "elapsed_seconds": time.monotonic() - started}
+
+
+def validate_observation(value: object) -> dict:
+    """Malformed protocol output is an execution error, not a counterexample."""
+    if not isinstance(value, dict) or value.get("status") not in ("OBSERVED", "ERROR"):
+        raise ValueError("Unexpected observer response")
+    if value["status"] == "ERROR":
+        return value
+    if not isinstance(value.get("sessions"), list):
+        raise ValueError("Missing session list")
+    for session in value["sessions"]:
+        if not isinstance(session, dict) or set(session) != {"key", "start", "end", "aggregate"}:
+            raise ValueError("Invalid session fields")
+        aggregate = session["aggregate"]
+        if not isinstance(session["key"], str) or not isinstance(aggregate, dict) or set(aggregate) != {"sum", "count", "max"}:
+            raise ValueError("Invalid aggregate fields")
+        for number in [session["start"], session["end"], *aggregate.values()]:
+            if type(number) not in (int, float) or (isinstance(number, float) and not math.isfinite(number)):
+                raise ValueError("Invalid numeric observation")
+    return value
 
 
 def diagnose(runs: Path, cases: Path, out: Path) -> dict:
@@ -132,32 +155,44 @@ def diagnose(runs: Path, cases: Path, out: Path) -> dict:
         with (out / "attempts.jsonl").open("a", encoding="utf-8", newline="\n") as log:
             log.write(json.dumps(row) + "\n")
         print(json.dumps({"index": row["index"], "candidate": name, "purpose": purpose, "status": row["status"]}), flush=True)
+        if row.get("execution_status") == "INTERRUPTED":
+            raise KeyboardInterrupt
         return row
 
     def trace(pairs: list[list[int]]) -> list[dict]:
         return [{"key": "k", "source": "s1", "time": t, "value": v} for t, v in pairs]
 
-    initial = trace(config["initial_trace"])
-    first = check("mutant", initial, "initial")
-    if first["status"] != "DISAGREEMENT":
-        record["status"] = "NO_CONFIRMED_DISAGREEMENT"
-    else:
-        reduced = reduce_trace(initial, lambda events: check("mutant", events, "reduction")["status"] == "DISAGREEMENT")
-        record["initial"] = first
-        record["reduced"] = check("mutant", reduced, "reduced_fresh_confirmation")
-        deletions = [check("mutant", reduced[:i] + reduced[i + 1:], "final_single_deletion") for i in range(len(reduced))]
-        record["single_deletion_minimal"] = all(row["status"] == "AGREES" for row in deletions)
-        controls = [check(name, events, "control") for name in ("reference", "equivalent")
-                    for events in [initial, reduced] + [trace(pairs) for pairs in config["hand_checked_traces"]]]
-        record["controls_agree"] = all(row["status"] == "AGREES" for row in controls)
-        record["status"] = "CONFIRMED_SCOPED_DISAGREEMENT" if record["controls_agree"] and record["reduced"]["status"] == "DISAGREEMENT" else "INCONCLUSIVE"
-    record["candidate_bytes_unchanged"] = all(file_hashes(candidates[name]) == identities[name]["hashes"] for name in candidates)
-    if not record["candidate_bytes_unchanged"] or any(row["status"] == "ERROR" for row in attempts):
-        record["status"] = "INCONCLUSIVE"
-    record["attempt_count"] = len(attempts)
-    record["container_calls"] = sum("observation" in row for row in attempts)
-    record["container_elapsed_seconds"] = sum(row.get("elapsed_seconds", 0) for row in attempts)
-    (out / "outcome.json").write_bytes((json.dumps(record, indent=2) + "\n").encode())
+    record["status"] = "INCONCLUSIVE"
+    try:
+        initial = trace(config["initial_trace"])
+        first = check("mutant", initial, "initial")
+        if first["status"] != "DISAGREEMENT":
+            record["status"] = "UNKNOWN" if first["status"] == "UNKNOWN" else "NO_COUNTEREXAMPLE_FOUND_IN_SCOPE"
+        else:
+            reduced = reduce_trace(initial, lambda events: check("mutant", events, "reduction")["status"] == "DISAGREEMENT")
+            record["initial"] = first
+            record["reduced"] = check("mutant", reduced, "reduced_fresh_confirmation")
+            deletions = [check("mutant", reduced[:i] + reduced[i + 1:], "final_single_deletion") for i in range(len(reduced))]
+            record["single_deletion_minimal"] = all(row["status"] == "AGREES" for row in deletions)
+            controls = [check(name, events, "control") for name in ("reference", "equivalent")
+                        for events in [initial, reduced] + [trace(pairs) for pairs in config["hand_checked_traces"]]]
+            record["controls_agree"] = all(row["status"] == "AGREES" for row in controls)
+            record["status"] = "CONFIRMED_SCOPED_DISAGREEMENT" if record["controls_agree"] and record["reduced"]["status"] == "DISAGREEMENT" else "INCONCLUSIVE"
+    except KeyboardInterrupt:
+        record["status"] = "INTERRUPTED"
+    except (OSError, ValueError) as exc:
+        record.update(status="INCONCLUSIVE", error={"type": type(exc).__name__, "message": str(exc)})
+    finally:
+        try:
+            record["candidate_bytes_unchanged"] = all(file_hashes(candidates[name]) == identities[name]["hashes"] for name in candidates)
+        except OSError as exc:
+            record.update(candidate_bytes_unchanged=None, error={"type": type(exc).__name__, "message": str(exc)})
+        if record["status"] != "INTERRUPTED" and (not record["candidate_bytes_unchanged"] or any(row["status"] == "ERROR" for row in attempts)):
+            record["status"] = "INCONCLUSIVE"
+        record["attempt_count"] = len(attempts)
+        record["container_calls"] = sum("observation" in row for row in attempts)
+        record["container_elapsed_seconds"] = sum(row.get("elapsed_seconds", 0) for row in attempts)
+        write_receipt(out / "outcome.json", record)
     return record
 
 
@@ -168,4 +203,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     result = diagnose(args.runs, args.cases, args.out)
     print(json.dumps({key: result.get(key) for key in ("status", "attempt_count", "container_calls", "single_deletion_minimal", "controls_agree")}, indent=2))
-    raise SystemExit(0 if result["status"] == "CONFIRMED_SCOPED_DISAGREEMENT" else 1)
+    raise SystemExit(130 if result["status"] == "INTERRUPTED" else
+                     0 if result["status"] == "CONFIRMED_SCOPED_DISAGREEMENT" else 1)

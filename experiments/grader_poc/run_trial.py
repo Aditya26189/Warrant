@@ -10,6 +10,7 @@ import hashlib
 import json
 import os
 import platform
+import signal
 from pathlib import Path
 import subprocess
 import sys
@@ -34,13 +35,78 @@ def file_hashes(root: Path) -> dict[str, str]:
             for p in sorted(root.rglob("*")) if p.is_file() and "__pycache__" not in p.parts}
 
 
+def write_receipt(path: Path, record: dict) -> None:
+    """Replace one receipt atomically; never overwrite another attempt directory."""
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_bytes((json.dumps(record, indent=2) + "\n").encode("utf-8"))
+    temporary.replace(path)
+
+
+def cancel_process(process: subprocess.Popen, grace: float) -> dict:
+    """Give Harbor a chance to clean up; bound waiting on the owned process.
+
+    POSIX uses a newly created process group. Windows can only promise direct
+    child termination here. Delegated Docker resources are not certified absent
+    by this receipt; a forced stop can prevent Harbor's cleanup handlers.
+    """
+    record = {"forced": False, "delegated_resource_cleanup": "UNVERIFIED"}
+    try:
+        if process.poll() is None:
+            if os.name == "posix":
+                os.killpg(process.pid, signal.SIGINT)
+                record["signal"] = "SIGINT_PROCESS_GROUP"
+            else:
+                process.terminate()
+                record["signal"] = "TERMINATE_CHILD"
+        process.wait(timeout=grace)
+    except (subprocess.TimeoutExpired, KeyboardInterrupt):
+        record["forced"] = True
+        if os.name == "posix":
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+        else:
+            process.kill()
+        try:
+            process.wait(timeout=grace)
+        except (subprocess.TimeoutExpired, KeyboardInterrupt) as exc:
+            record["error"] = type(exc).__name__
+    except OSError as exc:
+        record["error"] = str(exc)
+    record["exit_code"] = process.poll()
+    return record
+
+
+def collect_trials(out: Path) -> tuple[list[dict], list[dict]]:
+    """Retain partial results and parse errors without turning them into rewards."""
+    def reject_constant(value: str) -> None:
+        raise ValueError("Nonfinite JSON constant: " + value)
+
+    trials, errors = [], []
+    for path in sorted((out / "jobs").rglob("result.json")):
+        relative = path.relative_to(out).as_posix()
+        try:
+            body = json.loads(path.read_text(encoding="utf-8"), parse_constant=reject_constant)
+            if not isinstance(body, dict):
+                raise ValueError("result must be an object")
+            if "trial_name" in body:
+                trials.append({"path": relative, "verifier_result": body.get("verifier_result"),
+                               "exception_info": body.get("exception_info"),
+                               "verifier_environment_mode": body.get("verifier_environment_mode"),
+                               "task_checksum": body.get("task_checksum")})
+        except (OSError, ValueError) as exc:
+            errors.append({"path": relative, "type": type(exc).__name__, "message": str(exc)})
+    return trials, errors
+
+
 def run_trial(args: argparse.Namespace) -> dict:
     """Refuse dirty experiment source; distinguish infrastructure from reward."""
     source_root = Path(__file__).resolve().parents[2]
     dirty = git_output(source_root, "status", "--porcelain")
     if dirty:
         raise RuntimeError("Commit experimental source before recording a run: " + dirty)
-    config = json.loads(Path(__file__).with_name("config.json").read_text())
+    config = json.loads(Path(__file__).with_name("config.json").read_text(encoding="utf-8"))
     for root, pin in ((args.tb_repo, config["terminal_bench_commit"]),
                       (args.harbor_repo, config["harbor_commit"])):
         if git_output(root, "rev-parse", "HEAD") != pin:
@@ -53,7 +119,7 @@ def run_trial(args: argparse.Namespace) -> dict:
                "-a", args.agent, "-n", "1", "-o", str(out / "jobs"),
                "--job-name", args.name]
     record = {
-        "schema_version": 1, "evidence_kind": "adaptive_stress_test",
+        "schema_version": 2, "evidence_kind": "adaptive_stress_test",
         "source_commit": git_output(source_root, "rev-parse", "HEAD"),
         "source_dirty": False, "config": config,
         "started_at": datetime.now(timezone.utc).isoformat(),
@@ -61,37 +127,51 @@ def run_trial(args: argparse.Namespace) -> dict:
         "task_hashes": file_hashes(args.task), "agent": args.agent,
         "name": args.name, "expected_reward": args.expected_reward,
         "population_rate_claim": False,
+        "timeout_seconds": args.timeout,
     }
-    (out / "invocation.json").write_text(json.dumps(record, indent=2) + "\n")
+    write_receipt(out / "invocation.json", record)
     env = os.environ.copy()
     env["HARBOR_TELEMETRY"] = "0"
     started = time.monotonic()
-    with (out / "command.log").open("w") as log:
-        result = subprocess.run(command, stdout=log, stderr=subprocess.STDOUT,
-                                env=env, timeout=args.timeout, check=False)
-    record["elapsed_seconds"] = time.monotonic() - started
-    record["exit_code"] = result.returncode
-    trials = []
-    for path in sorted((out / "jobs").rglob("result.json")):
-        body = json.loads(path.read_text())
-        if "trial_name" in body:
-            trials.append({"path": path.relative_to(out).as_posix(),
-                           "verifier_result": body.get("verifier_result"),
-                           "exception_info": body.get("exception_info"),
-                           "verifier_environment_mode": body.get("verifier_environment_mode"),
-                           "task_checksum": body.get("task_checksum")})
-    record["trials"] = trials
-    record["status"] = "ERROR"
-    if result.returncode == 0 and len(trials) == 1 and not trials[0]["exception_info"]:
-        rewards = (trials[0]["verifier_result"] or {}).get("rewards") or {}
-        if rewards.get("reward") in (0, 1):
-            record["reward"] = rewards["reward"]
-            record["status"] = "COMPLETED"
-            record["matches_expected"] = rewards["reward"] == args.expected_reward
-    record["task_unchanged"] = file_hashes(args.task) == record["task_hashes"]
-    if not record["task_unchanged"]:
-        record["status"] = "ERROR"
-    (out / "outcome.json").write_text(json.dumps(record, indent=2) + "\n")
+    record.update(status="INFRASTRUCTURE_ERROR", exit_code=None, matches_expected=None)
+    process = None
+    try:
+        with (out / "command.log").open("w", encoding="utf-8") as log:
+            process = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT,
+                                       env=env, start_new_session=os.name == "posix")
+            try:
+                record["exit_code"] = process.wait(timeout=args.timeout)
+                record["status"] = "EXECUTED"
+            except subprocess.TimeoutExpired as exc:
+                record.update(status="TIMEOUT", error={"type": type(exc).__name__, "message": str(exc)})
+            except KeyboardInterrupt:
+                record.update(status="INTERRUPTED", error={"type": "KeyboardInterrupt", "message": "Harbor invocation interrupted"})
+            finally:
+                if process.poll() is None:
+                    record["cancellation"] = cancel_process(process, config["process_cancel_grace_seconds"])
+                    record["exit_code"] = process.poll()
+    except OSError as exc:
+        record.update(status="INFRASTRUCTURE_ERROR", error={"type": type(exc).__name__, "message": str(exc)})
+    except KeyboardInterrupt:
+        record.update(status="INTERRUPTED", error={"type": "KeyboardInterrupt", "message": "Harbor invocation interrupted"})
+    finally:
+        record["elapsed_seconds"] = time.monotonic() - started
+        trials, errors = collect_trials(out)
+        record.update(trials=trials, result_errors=errors)
+        try:
+            record["task_unchanged"] = file_hashes(args.task) == record["task_hashes"]
+        except OSError as exc:
+            record["task_unchanged"] = None
+            errors.append({"type": type(exc).__name__, "message": str(exc)})
+        if record["status"] == "EXECUTED":
+            record["status"] = "INFRASTRUCTURE_ERROR"
+            if record["exit_code"] == 0 and len(trials) == 1 and not errors and not trials[0]["exception_info"]:
+                verifier = trials[0]["verifier_result"]
+                rewards = verifier.get("rewards") if isinstance(verifier, dict) else None
+                reward = rewards.get("reward") if isinstance(rewards, dict) else None
+                if type(reward) in (int, float) and reward in (0, 1) and record["task_unchanged"]:
+                    record.update(status="COMPLETED", reward=reward, matches_expected=reward == args.expected_reward)
+        write_receipt(out / "outcome.json", record)
     return record
 
 
@@ -107,6 +187,8 @@ def main() -> int:
     result = run_trial(parser.parse_args())
     print(json.dumps({key: result.get(key) for key in
                       ("name", "status", "reward", "matches_expected", "elapsed_seconds")}, indent=2))
+    if result["status"] == "INTERRUPTED":
+        return 130
     return 0 if result["status"] == "COMPLETED" and result["matches_expected"] else 1
 
 
