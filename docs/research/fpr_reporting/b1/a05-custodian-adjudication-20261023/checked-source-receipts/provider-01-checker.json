@@ -1,0 +1,384 @@
+{
+  "receipt_id": "CHECKER-A05-SRC01-W0352-0001",
+  "actor_id": "/root/a05_source_check",
+  "role": "SEPARATE_SOURCE_RESTRICTION_CHECKER_ONLY",
+  "created_utc": "2026-10-23T15:33:44.359068+00:00",
+  "status": "RESTRICTION_CHECK_COMPLETE_AWAITING_ROOT_RELEASE",
+  "append_only": true,
+  "write_mode": "exclusive_create",
+  "work_id": "W0352",
+  "member_id": "M0021",
+  "version": "acl:2025.findings-emnlp.1060:publication",
+  "provider_draft": {
+    "filename": "PROVIDER_DRAFT.0001.json",
+    "sha256": "9cb4afebf4135d9f838993647ca73e20f8ca7da18c8683eb39ef963e9da30efa"
+  },
+  "source_receipt": {
+    "filename": "SOURCE_RECEIPT.0001.json",
+    "sha256": "b2539e0cf2eaabdf203d0464c4bb4ea3f95a5f6c99e6ce962bb92476fe4307ec"
+  },
+  "paragraph_commitments": {
+    "filename": "SOURCE_PARAGRAPH_COMMITMENTS.0001.json",
+    "sha256": "3ce6f0efb1f7bcb3e9a00959b26b066f840153ce6edaccd45fc47a2345c16aa3"
+  },
+  "latest_provider_manifest": {
+    "filename": "MANIFEST.0002.json",
+    "sha256": "1b14c3115fcce3e6e01076abecd8a588c60ec6a145f91a05513de292f4548804"
+  },
+  "source": {
+    "source_url": "https://aclanthology.org/2025.findings-emnlp.1060.pdf",
+    "raw_source_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\121d61d9c3e1dbd2852c43abd04ae7a1784d9c9a798577029b9784e904922498",
+    "raw_source_sha256": "121d61d9c3e1dbd2852c43abd04ae7a1784d9c9a798577029b9784e904922498",
+    "raw_source_bytes_verified": true
+  },
+  "hash_convention": "File hashes use exact bytes. *_canonical_json hashes use UTF-8 JSON with sorted keys, compact separators and ensure_ascii=False. Text hashes use UTF-8.",
+  "input_artifacts_checked": [
+    {
+      "filename": "PROVIDER_DRAFT.0001.json",
+      "sha256": "9cb4afebf4135d9f838993647ca73e20f8ca7da18c8683eb39ef963e9da30efa"
+    },
+    {
+      "filename": "MANIFEST.0001.json",
+      "sha256": "b52a449f8e5267796226e6de1bf17f8e2eeb4791acfb46247bcee2aea7fbda43"
+    },
+    {
+      "filename": "MANIFEST.0002.json",
+      "sha256": "1b14c3115fcce3e6e01076abecd8a588c60ec6a145f91a05513de292f4548804"
+    },
+    {
+      "filename": "SOURCE_RECEIPT.0001.json",
+      "sha256": "b2539e0cf2eaabdf203d0464c4bb4ea3f95a5f6c99e6ce962bb92476fe4307ec"
+    },
+    {
+      "filename": "SOURCE_PARAGRAPH_COMMITMENTS.0001.json",
+      "sha256": "3ce6f0efb1f7bcb3e9a00959b26b066f840153ce6edaccd45fc47a2345c16aa3"
+    },
+    {
+      "filename": "PROVIDER_INTEGRITY.0001.json",
+      "sha256": "c4f52078522263ec925f3e24191dcc48094550a5672bb8b791cc598107b70919"
+    },
+    {
+      "filename": "ROLE_INTAKE.0001.json",
+      "sha256": "f2dbde5f2b2d28290973088614722448df1232328e305696e7fdf1e9430c81a5"
+    },
+    {
+      "filename": "M0021-p004.provider-view.0001.json",
+      "sha256": "638fd88a943f34fa602b4d2e291c979130558e6d4b1106351ee23d5e3c9cac4b"
+    },
+    {
+      "filename": "M0021-p004.render.0001.json",
+      "sha256": "5d0bb2ce29c2017f47a4b0525d87fd172125b2270ef57f6be34b1804be10f25e"
+    },
+    {
+      "filename": "M0021-p005.provider-view.0001.json",
+      "sha256": "b53ddb3276c0f3ce10895e785d33ff780124dedd50d9f8c6d486a25deff791b7"
+    },
+    {
+      "filename": "M0021-p005.render.0001.json",
+      "sha256": "55f2bab0d888f1d8555aa60808fe7a35bd6093e545780020861d8d5db96720f1"
+    },
+    {
+      "filename": "M0021-p008.provider-view.0001.json",
+      "sha256": "4a91a664b2d4ab5711f325f7348eb081ea47b1181bf73079c72adc8bf76de3af"
+    },
+    {
+      "filename": "M0021-p008.render.0001.json",
+      "sha256": "ad9798626b31361ae955740a905f8c540cc603aa53d72dd732a94a5d3975ae78"
+    },
+    {
+      "filename": "M0021-p013.provider-view.0001.json",
+      "sha256": "68df382c0f982d7772bb9145fd7588ae4ca4e6ab5d7df02e0db1ba130f5fccaa"
+    },
+    {
+      "filename": "M0021-p013.render.0001.json",
+      "sha256": "c37a3669df60a8710f6f335e755097b681376fcf4ad519a800daaf120ac1deda"
+    }
+  ],
+  "page_integrity": [
+    {
+      "page_number_1based": 4,
+      "page_text_sha256": "af4e82adade43e476b88c90338e4978d3c3a1dc52a61dbfd5939458cda31e56f",
+      "rendered_page_sha256": "a3658631ab5d2da38bf2c106724bd0d9c398df834e336323be5c36b7684eedad",
+      "raw_pdf_replay_matches": true,
+      "full_page_semantically_reviewed": false
+    },
+    {
+      "page_number_1based": 5,
+      "page_text_sha256": "76055875fad5ecb9d6fa40a3bf03bcf354582b21087defa4ee1d770c29bda46e",
+      "rendered_page_sha256": "07cad8662b3e32023815c43a9d986b122c257ec378d4ade614e2af28cc403314",
+      "raw_pdf_replay_matches": true,
+      "full_page_semantically_reviewed": false
+    },
+    {
+      "page_number_1based": 8,
+      "page_text_sha256": "9d2c9191d1c560d22033224599524c054ec4a4b60c068dd0aa9a43554ce17732",
+      "rendered_page_sha256": "ab47fdb3b5831932a505c2de5b734c0aa43e5021013c4bf6854dad31112d9286",
+      "raw_pdf_replay_matches": true,
+      "full_page_semantically_reviewed": false
+    },
+    {
+      "page_number_1based": 13,
+      "page_text_sha256": "7c0c1412aee0d8847f87090a47827ce320272a33cdbebd896c5179d4ad728894",
+      "rendered_page_sha256": "194268eef7c5bc748debfa63d493c414ea3f7f5035662bac77400a54a6a218ea",
+      "raw_pdf_replay_matches": true,
+      "full_page_semantically_reviewed": false
+    }
+  ],
+  "passage_integrity_and_visuals": [
+    {
+      "commitment_id": "A05-SRC01-W0352-PASSAGE-DATA-SOURCES",
+      "locator_sha256_canonical_json": "fb85da9021885de2492237cba756bd5b19c797e3e82cc300e49115c07eead832",
+      "page_number_1based": 4,
+      "structural_section_id": "4.1",
+      "block_text_sha256": "7bf306442748f00c8abab00b3654685f4cc5bdec93df506164e3cbbf58668c1a",
+      "normalized_block_text_sha256": "8151762a31de549395611c9025c000b921237a2809a1bafb9bb4c8e1748934eb",
+      "selected_method_spans": [
+        {
+          "normalized_start_zero_based": 0,
+          "normalized_end_exclusive": 223,
+          "selected_method_span_sha256": "df04a918e4c3936672b7178de2793a051904c2be710ad4e37f4f7fbea23525bc"
+        }
+      ],
+      "raw_source_replay_matches": true,
+      "checker_visual": {
+        "filename": "CHECKER-method-DATA-SOURCES.0001.png",
+        "sha256": "7713432fff3626487ae64fa62de314cae73230c5d94631f40e3c957c2fec9e68",
+        "visually_inspected": true,
+        "scope": "Only committed method glyph-line regions from the raw PDF; unselected image regions white."
+      }
+    },
+    {
+      "commitment_id": "A05-SRC01-W0352-PASSAGE-EVALUATED-LABELS",
+      "locator_sha256_canonical_json": "b640e8e2ad94d7af3eeb2373dd034ae13175db10eff03a02c750d7298a89fedd",
+      "page_number_1based": 5,
+      "structural_section_id": "4.3.2",
+      "block_text_sha256": "f401db217112d1a7465c93e95a32baee97d0527fa331c65ac3edf54b2e1924d8",
+      "normalized_block_text_sha256": "db19b06c4890505c5bc18488130d2cea9a86b30feae6a7df26a855a301c9d42c",
+      "selected_method_spans": [
+        {
+          "normalized_start_zero_based": 0,
+          "normalized_end_exclusive": 343,
+          "selected_method_span_sha256": "cde292961d0ab733bf83766686727cf6e7eb145f1d367b991c08a5d6c0582510"
+        }
+      ],
+      "raw_source_replay_matches": true,
+      "checker_visual": {
+        "filename": "CHECKER-method-EVALUATED-LABELS.0001.png",
+        "sha256": "572c050683a2be4cd5c5607aa25b1d203415870eebd8bb97610b60303819ed85",
+        "visually_inspected": true,
+        "scope": "Only committed method glyph-line regions from the raw PDF; unselected image regions white."
+      }
+    },
+    {
+      "commitment_id": "A05-SRC01-W0352-PASSAGE-INPUT-STATES",
+      "locator_sha256_canonical_json": "f240ba0c2449b720d39285b7cd1fc58a639872900f1baf53bb0b5298d79a5c80",
+      "page_number_1based": 4,
+      "structural_section_id": "3.2",
+      "block_text_sha256": "8a903fba8c373de287388e457f31bf66910829528603095c272823a76d126c04",
+      "normalized_block_text_sha256": "340a9017e55267d62ec5e5b08b70ccc6f4d43a97cd0176a4d4904eda127637f8",
+      "selected_method_spans": [
+        {
+          "normalized_start_zero_based": 0,
+          "normalized_end_exclusive": 333,
+          "selected_method_span_sha256": "c4f503411127f4d88e49f81e552eb6152b7142011a26b5982c33097ad653cdaf"
+        }
+      ],
+      "raw_source_replay_matches": true,
+      "checker_visual": {
+        "filename": "CHECKER-method-INPUT-STATES.0001.png",
+        "sha256": "55c97d954e93ce136ec7b4a9f4f925b82525658a862a19f5f2bcfc62f558bfd5",
+        "visually_inspected": true,
+        "scope": "Only committed method glyph-line regions from the raw PDF; unselected image regions white."
+      }
+    },
+    {
+      "commitment_id": "A05-SRC01-W0352-PASSAGE-GRADIENT-TARGET",
+      "locator_sha256_canonical_json": "a7f7620e60130263356f8e725d11ac9e1c510ef084c5f985a42cd0bff4d9dd07",
+      "page_number_1based": 4,
+      "structural_section_id": "3.3",
+      "block_text_sha256": "5ce95781e7abdabd17d6f8880d3e1a948d9d2da5e11d7119407b000c809d86fb",
+      "normalized_block_text_sha256": "93370266ca57d336086f3be159f9f50d82a309a1716ffca9bdd91b1934e06da3",
+      "selected_method_spans": [
+        {
+          "normalized_start_zero_based": 0,
+          "normalized_end_exclusive": 241,
+          "selected_method_span_sha256": "161add418728c9bc98db6dfefdde2cc8e64b66098909e97717895a5dce660a31"
+        }
+      ],
+      "raw_source_replay_matches": true,
+      "checker_visual": {
+        "filename": "CHECKER-method-GRADIENT-TARGET.0001.png",
+        "sha256": "800f15c60cd01809243d5cacb29623a6d6b8432c269f0cf2bb098e913b4f5eec",
+        "visually_inspected": true,
+        "scope": "Only committed method glyph-line regions from the raw PDF; unselected image regions white."
+      }
+    },
+    {
+      "commitment_id": "A05-SRC01-W0352-PASSAGE-FUSED-CLASSIFIER",
+      "locator_sha256_canonical_json": "dd4270a720da842f4cbca8f72aebf4824b1bcd8658a85408c82c0acda77d3e49",
+      "page_number_1based": 4,
+      "structural_section_id": "3.4",
+      "block_text_sha256": "1d2feac2589922cb970347cfb7cc95eb5cacdc22122e921dfab509c0b45fcd8a",
+      "normalized_block_text_sha256": "291d4dbe3016ce35d89a2d11cb5aef720a7abbfbabf8bbba71305bd7170c89d0",
+      "selected_method_spans": [
+        {
+          "normalized_start_zero_based": 399,
+          "normalized_end_exclusive": 453,
+          "selected_method_span_sha256": "fd7b67065d655fc81f7bc36c3910cec4f4286e61656c8fa9aae39fc921835635"
+        }
+      ],
+      "raw_source_replay_matches": true,
+      "checker_visual": {
+        "filename": "CHECKER-method-FUSED-CLASSIFIER.0001.png",
+        "sha256": "daf7bafa87a360cb93d2dd1523cef50c0fbf523e86fdbe6565efeeb75fc2152c",
+        "visually_inspected": true,
+        "scope": "Only committed method glyph-line regions from the raw PDF; unselected image regions white."
+      }
+    },
+    {
+      "commitment_id": "A05-SRC01-W0352-PASSAGE-EVALUATION-LANGUAGES",
+      "locator_sha256_canonical_json": "8c7727315d04daac2aa6150af04a9f38968e68e2a712d02094458da173183e7c",
+      "page_number_1based": 8,
+      "structural_section_id": "4.5.5",
+      "block_text_sha256": "c1fb0cd35e199617ee110cd3e5010f1ffb750aaec5c908342d018c186829f9c7",
+      "normalized_block_text_sha256": "7b101979d5abff52e7bc8b9be0da49e1ae3aae541aefb2337963cc714659c6b2",
+      "selected_method_spans": [
+        {
+          "normalized_start_zero_based": 0,
+          "normalized_end_exclusive": 518,
+          "selected_method_span_sha256": "bd17c30acdb85ab5cebe39f99c015b773e03fec0268b8869e4c2f675d341ae23"
+        }
+      ],
+      "raw_source_replay_matches": true,
+      "checker_visual": {
+        "filename": "CHECKER-method-EVALUATION-LANGUAGES.0001.png",
+        "sha256": "cbffd9508a2028c8e07cbe021bcaae06d14dda43cd47f006dfc976a5dccff1f3",
+        "visually_inspected": true,
+        "scope": "Only committed method glyph-line regions from the raw PDF; unselected image regions white."
+      }
+    },
+    {
+      "commitment_id": "A05-SRC01-W0352-PASSAGE-ORIGINAL-LANGUAGE",
+      "locator_sha256_canonical_json": "1e49cf1eb531205addcfbe127bd2c578814393533f4cd7903639f2d2d1caad63",
+      "page_number_1based": 13,
+      "structural_section_id": "A.1",
+      "block_text_sha256": "50f10910106143ecd0c2b8d62cf17fc3708e5e369fea22e0c95fd65408e2e766",
+      "normalized_block_text_sha256": "cca9b83dd85c3bfbcb22584018e692d92690fdd26049468d1812556c043c87f5",
+      "selected_method_spans": [
+        {
+          "normalized_start_zero_based": 0,
+          "normalized_end_exclusive": 45,
+          "selected_method_span_sha256": "617181a9bcd6b600e6694526e0da8213571dbf7932f958b9f43984c0d76e5284"
+        }
+      ],
+      "raw_source_replay_matches": true,
+      "checker_visual": {
+        "filename": "CHECKER-method-ORIGINAL-LANGUAGE.0001.png",
+        "sha256": "11ac266f5bcd5ac8516a52fe19cb58185f675741a091170365c37726d8112ee2",
+        "visually_inspected": true,
+        "scope": "Only committed method glyph-line regions from the raw PDF; unselected image regions white."
+      }
+    }
+  ],
+  "additional_method_context_checked": {
+    "commitment_id": "A05-SRC01-W0352-PASSAGE-FUSED-CLASSIFIER",
+    "page_number_1based": 4,
+    "structural_section_id": "3.4",
+    "normalized_start_zero_based": 0,
+    "normalized_end_exclusive": 453,
+    "selected_context_sha256": "241b4f02ec12605a4a7fa517c46a8551fdecda6df777a2d9e820aabf6418ceb3",
+    "scope": "Read same-section feature fusion context to verify the combination of hidden-state and gradient features; no additional fact is released."
+  },
+  "per_fact_checks": [
+    {
+      "fact_id": "A05-SRC01-W0352-F01",
+      "evidence_id": "A05-SRC01-W0352-F01",
+      "work_id": "W0352",
+      "member_id": "M0021",
+      "version": "acl:2025.findings-emnlp.1060:publication",
+      "restriction_decision": "APPROVE",
+      "draft_fact_sha256_canonical_json": "4b067b104acc1ba2919bdedbdb0a109ccabcde7741b018ff3fbf4e004706edb7",
+      "method_fact_sha256_utf8": "30e37f5186bbf5856583e8cb1ae9e2a3cf7f15fbb32e5a3f7bfb7353a8e23742",
+      "draft_locator_sha256_canonical_json": "d1364b374acf472499af68000a43d39cc1fa4ee195b262b2ceb01377891db7ab",
+      "raw_source_sha256": "121d61d9c3e1dbd2852c43abd04ae7a1784d9c9a798577029b9784e904922498",
+      "method_commitment_ids": [
+        "A05-SRC01-W0352-PASSAGE-DATA-SOURCES",
+        "A05-SRC01-W0352-PASSAGE-EVALUATED-LABELS"
+      ],
+      "restriction_rationale": "The method passages support the external-text inputs, inserted-instruction positive label and named data sources. The stated limitation keeps the labels separate from answer correctness.",
+      "release_scope": "Exact bounded method_fact plus its existing limitation and source/version caveats only. No eligibility decision is supplied.",
+      "limitation_preserved": "Labels concern hidden instructions in external text, rather than downstream answer correctness.",
+      "source_identity_caveat_preserved": "Selected ACL publication identity follows the recorded official publication URL and the supplied root title-matching source binding. This is not an arXiv in-body revision stamp or a new preferred-version adjudication.",
+      "reviewed_by": "/root/a05_source_check"
+    },
+    {
+      "fact_id": "A05-SRC01-W0352-F02",
+      "evidence_id": "A05-SRC01-W0352-F02",
+      "work_id": "W0352",
+      "member_id": "M0021",
+      "version": "acl:2025.findings-emnlp.1060:publication",
+      "restriction_decision": "APPROVE",
+      "draft_fact_sha256_canonical_json": "8069a83685bda7aaa77fba822e4ed42ee7792d777ba454a0ce2c3b050bde2f87",
+      "method_fact_sha256_utf8": "0cca6879c49b81d420006a6eee271bc127d6eb821720732ff3eb3dec1427b674",
+      "draft_locator_sha256_canonical_json": "22d8012aa69044a6fc5f3a03eeeb8c63a16524878186ae74e997b2e355a9e382",
+      "raw_source_sha256": "121d61d9c3e1dbd2852c43abd04ae7a1784d9c9a798577029b9784e904922498",
+      "method_commitment_ids": [
+        "A05-SRC01-W0352-PASSAGE-INPUT-STATES",
+        "A05-SRC01-W0352-PASSAGE-GRADIENT-TARGET",
+        "A05-SRC01-W0352-PASSAGE-FUSED-CLASSIFIER"
+      ],
+      "restriction_rationale": "The method passages and same-section fusion context support the input-token state features, preset-reply gradient features and MLP procedure. The draft does not present the preset reply as a generated-answer evaluation.",
+      "release_scope": "Exact bounded method_fact plus its existing limitation and source/version caveats only. No eligibility decision is supplied.",
+      "limitation_preserved": "The preset reply is used for gradient feature construction.",
+      "source_identity_caveat_preserved": "Selected ACL publication identity follows the recorded official publication URL and the supplied root title-matching source binding. This is not an arXiv in-body revision stamp or a new preferred-version adjudication.",
+      "reviewed_by": "/root/a05_source_check"
+    },
+    {
+      "fact_id": "A05-SRC01-W0352-F03",
+      "evidence_id": "A05-SRC01-W0352-F03",
+      "work_id": "W0352",
+      "member_id": "M0021",
+      "version": "acl:2025.findings-emnlp.1060:publication",
+      "restriction_decision": "APPROVE",
+      "draft_fact_sha256_canonical_json": "b4fdde585fc7345494bf621df6c171b23bfc866dcc070ef4b8656f1165991e8d",
+      "method_fact_sha256_utf8": "5ec874ae41c3059041ebf40b990516ddb432f293c8163d10bbcde23a7420a6fd",
+      "draft_locator_sha256_canonical_json": "8d9ee9cd595eaa4672d6db485620547f6c039caf1e55e0a263ec97058e6da772",
+      "raw_source_sha256": "121d61d9c3e1dbd2852c43abd04ae7a1784d9c9a798577029b9784e904922498",
+      "method_commitment_ids": [
+        "A05-SRC01-W0352-PASSAGE-EVALUATION-LANGUAGES",
+        "A05-SRC01-W0352-PASSAGE-ORIGINAL-LANGUAGE"
+      ],
+      "restriction_rationale": "The method passages support English original data and the separately described translated-test extension. The draft preserves that distinction without releasing translation-quality assurances.",
+      "release_scope": "Exact bounded method_fact plus its existing limitation and source/version caveats only. No eligibility decision is supplied.",
+      "limitation_preserved": "English concerns the original evaluation; translated extension tests remain separately identified.",
+      "source_identity_caveat_preserved": "Selected ACL publication identity follows the recorded official publication URL and the supplied root title-matching source binding. This is not an arXiv in-body revision stamp or a new preferred-version adjudication.",
+      "reviewed_by": "/root/a05_source_check"
+    }
+  ],
+  "eligibility_decision": null,
+  "review_classification": null,
+  "root_release_performed": false,
+  "provider_draft_modified": false,
+  "source_identity_limits": {
+    "basis": "OFFICIAL_ANTHOLOGY_PUBLICATION_ID_AND_WORK_TITLE_MATCH",
+    "binding_not_re_adjudicated_by_checker": true,
+    "body_exact_revision_self_identified": false,
+    "acquisition_body_version_state": "EXPLICIT_URL_ONLY_BODY_VERSION_UNCONFIRMED",
+    "source_binding_limitation_codes": [
+      "PROTOCOL_PREFERRED_VERSION_NOT_ADJUDICATED",
+      "PUBLICATION_ID_AND_FROZEN_MONTH_BASIS_NOT_ARXIV_REVISION_STAMP"
+    ],
+    "exact_version_support": "Selected ACL publication identity follows the recorded official publication URL and the supplied root title-matching source binding. This is not an arXiv in-body revision stamp or a new preferred-version adjudication.",
+    "preprint_equivalence_assumed": false,
+    "other_versions_checked": false
+  },
+  "restriction_limits": [
+    "A separate actor checked this draft; the filesystem remains shared. No OS isolation or shared-disk independence is claimed.",
+    "Only the named provider artifacts and their exact referenced raw ACL method pages were used as task evidence. The required PDF skill was read as procedural guidance.",
+    "No repository review judgments, prior returns or chats, human sheets, eligibility artifacts, acquisition receipt body or source-binding file body were inspected.",
+    "Full referenced-page text and renders were mechanically hashed; semantic and visual review was confined to cited method regions and same-section fusion context.",
+    "No outcomes, performance values, evaluation sample sizes, result tables, result captions or assurance claims are approved for release by this receipt.",
+    "This receipt checks source fidelity and release restrictions only. It makes no eligibility decision and does not adjudicate the protocol-preferred version.",
+    "Only root may release the exact APPROVE facts after applying the preserved source identity and version caveats."
+  ]
+}

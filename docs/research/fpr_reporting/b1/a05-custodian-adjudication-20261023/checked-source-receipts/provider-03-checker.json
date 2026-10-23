@@ -1,0 +1,256 @@
+{
+  "receipt_id": "CHECKER-A05-PROVIDER03-W0339-0002",
+  "actor_id": "/root/a05_source_check",
+  "role": "SEPARATE_SOURCE_RESTRICTION_AND_BIBLIOGRAPHIC_FIDELITY_CHECKER_ONLY",
+  "created_utc": "2026-10-23T15:45:58.569435+00:00",
+  "status": "CORRECTED_BOUNDED_METHOD_SUMMARY_APPROVED_AWAITING_ROOT_RELEASE",
+  "append_only": true,
+  "write_mode": "exclusive_create",
+  "work_id": "W0339",
+  "doi": "10.1109/ACCESS.2026.3728186",
+  "prior_checker_receipt": {
+    "relative_path": "CHECKER_A05.0001.json",
+    "sha256": "c545db298399bc13e8f45d6eaae857b99aa30edad592c095a8033301387e6bc5",
+    "prior_original_summary_hold_retained": true
+  },
+  "provider_manifest": {
+    "relative_path": "vor.provider-manifest.0003.json",
+    "sha256": "d960d0db87acc552a98d5b47effe778d2ccdc339c0d67420601b52c66cfed32d"
+  },
+  "correction_receipt": {
+    "relative_path": "vor.correction-receipt.0003.json",
+    "sha256": "99c73329cece37000cbc61ddfc797b53cf14ec12762823485b47364c01f9ef99"
+  },
+  "hash_convention": "File hashes use exact bytes. Canonical JSON uses UTF-8, ensure_ascii=False, sorted keys and compact separators. Text hashes use UTF-8.",
+  "corrected_summary_approval": {
+    "draft_id": "A05-PROVIDER03-W0339-METHOD-DATA-0003",
+    "draft_filename": "vor.method-data-provider-draft.0003.json",
+    "draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435",
+    "summary_sha256_utf8": "05f392be4390ecb6fefd1f9b4e0b7a394e6e213b7662688191d532c80d4e2d86",
+    "restriction_decision": "APPROVE",
+    "readable_draft_filename": "vor.provider-draft.0003.md",
+    "readable_draft_sha256": "89e46dc403de68f69f20890b5f183548b3b61392c90a8823aa7e01ed3f2a76a7",
+    "exact_semantic_change_verified": true,
+    "rationale": "The correction removes the previously held stronger successful-property assertion and leaves the supported paraphrase construction and label-inheritance statement. All other method prose and both language gaps are unchanged.",
+    "old_phrase_sha256_utf8": "45130a39c30c31fb69408a76ab74eafa32843586c9c768af58bd2e9fcc6ada6d",
+    "new_phrase_sha256_utf8": "8587baa795d499adc9888c5431f8dd7d457d20a629c5bc59a23a8295cb9b0f94",
+    "release_scope": "Exact corrected summary with existing gaps, unchanged metadata date limits and source/version caveats only."
+  },
+  "metadata_approval": {
+    "metadata_id": "A05-PROVIDER03-W0339-METADATA-0002",
+    "restriction_decision": "APPROVE",
+    "draft_filename": "vor.metadata-provider-draft.0002.json",
+    "draft_sha256": "e58923277d50e0d5aef056649c096eef9748aee1a20be779caa57720ff942ae1",
+    "approved_fields": [
+      "doi",
+      "pdf_identity.title",
+      "pdf_identity.authors",
+      "pdf_identity.doi_header",
+      "pdf_identity.header_dates",
+      "pdf_identity.exact_header",
+      "crossref_bibliographic_corroboration",
+      "date_interpretation_limits"
+    ],
+    "pdf_locator": "PDF page 1 header and title/author block only",
+    "pdf_header_locator_sha256_canonical_json": "3764ba99ca12f3546a299634e8abb89a508099f8f3de784f6c9c813ca4237a0d",
+    "pdf_header_text_utf8_sha256": "2e43371cf91d4cf037697e6889a6c5e17d509caf5c96a4ebf451ad40a51bef33",
+    "crossref_selected_fields_sha256_canonical_json": "c0eff2ba75d66e0e9b54410d0eb0f521239927e3d4f279a26c971526d8e3acc8",
+    "date_interpretation_limits_preserved": [
+      "Header dates are statements in the currently captured PDF. This receipt does not establish when these exact PDF bytes first became publicly available.",
+      "The acquisition receipt records capture on 2026-10-23 and HTTP Last-Modified on 2026-10-21; neither establishes historical first availability.",
+      "Crossref created, deposited, and indexed fields are record-processing metadata and are not equated with historical public availability of this exact version.",
+      "Crossref published date-parts has year precision only; day-level publication/current-version dates here come from the captured PDF header."
+    ],
+    "capture_finished_utc": "2026-10-23T10:32:02.043466+00:00",
+    "http_last_modified": "Wed, 21 Oct 2026 19:05:22 GMT",
+    "historical_first_availability_established": false
+  },
+  "per_fact_checks": [
+    {
+      "fact_id": "VOR-M01",
+      "fact_categories": [
+        "INPUT_UNIT",
+        "BINARY_DECISION",
+        "PRE_DOWNSTREAM_TIMING"
+      ],
+      "restriction_decision": "APPROVE",
+      "source_excerpt_utf8_sha256": "f13e144c63dd3387792f0c223552f653c32d75acaf139a168be402cc34e988f4",
+      "paragraph_locator_sha256_canonical_json": "9e8ec3264daf9f8e6c838b87ba9797de8bd21a6e074140cbb88059769d4a8e48",
+      "pdf_page": 4,
+      "heading_locator": "III.A SYSTEM MODEL",
+      "normalized_page_start_zero_based": 4774,
+      "normalized_page_end_exclusive": 5116,
+      "raw_source_replay_matches": true,
+      "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+      "source_draft": "vor.method-data-provider-draft.0003.json",
+      "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435"
+    },
+    {
+      "fact_id": "VOR-M02",
+      "fact_categories": [
+        "NO_DOWNSTREAM_OUTPUT"
+      ],
+      "restriction_decision": "APPROVE",
+      "source_excerpt_utf8_sha256": "46f4ac09523e4651f630d1cface60eef9028bf6acff5cc86a8d11f778b81bad5",
+      "paragraph_locator_sha256_canonical_json": "4556c9c8e9d10cc72481abaa976cefaf171b18726d2661ad5d98672391f42380",
+      "pdf_page": 4,
+      "heading_locator": "III.A SYSTEM MODEL",
+      "normalized_page_start_zero_based": 5217,
+      "normalized_page_end_exclusive": 5342,
+      "raw_source_replay_matches": true,
+      "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+      "source_draft": "vor.method-data-provider-draft.0003.json",
+      "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435"
+    },
+    {
+      "fact_id": "VOR-M03",
+      "fact_categories": [
+        "STATED_LANGUAGE_SCOPE"
+      ],
+      "restriction_decision": "APPROVE",
+      "source_excerpt_utf8_sha256": "75486c89f4c83b71512ae4eb7875d316541750f0c1ed155f8338c971be24e3d2",
+      "paragraph_locator_sha256_canonical_json": "cc5ab34c862af0fe5fae930a63ed8d4cff650da66f2d5a0d808e7b838ff537b6",
+      "pdf_page": 5,
+      "heading_locator": "III.E SCOPE BOUNDARIES",
+      "normalized_page_start_zero_based": 1736,
+      "normalized_page_end_exclusive": 1956,
+      "raw_source_replay_matches": true,
+      "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+      "source_draft": "vor.method-data-provider-draft.0003.json",
+      "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435",
+      "release_limit": "Stated language scope only; retain both existing row-level language gaps."
+    },
+    {
+      "fact_id": "VOR-M04",
+      "fact_categories": [
+        "HELD_OUT_APPLICATION"
+      ],
+      "restriction_decision": "APPROVE",
+      "source_excerpt_utf8_sha256": "6113d80a962705f853437ff2e35256e3322b5d39ecaa8f55c6ecb54062ec852e",
+      "paragraph_locator_sha256_canonical_json": "a458580d76a08b776e928b85605902369cc1dc114ab68248affdcc33c6fbf412",
+      "pdf_page": 6,
+      "heading_locator": "IV.C EVALUATION PROTOCOL AND THRESHOLDING",
+      "normalized_page_start_zero_based": 1940,
+      "normalized_page_end_exclusive": 2036,
+      "raw_source_replay_matches": true,
+      "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+      "source_draft": "vor.method-data-provider-draft.0003.json",
+      "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435"
+    },
+    {
+      "fact_id": "VOR-M05",
+      "fact_categories": [
+        "INJECTION_CONSTRUCTION"
+      ],
+      "restriction_decision": "APPROVE",
+      "source_excerpt_utf8_sha256": "9fc177cbee529d7aa2ea73e7b61ab9afba9364d0a2070f98a1bd655643a174bc",
+      "paragraph_locator_sha256_canonical_json": "77deecbcfc9aac2eac9cb93f12299cf73f2fb7c5343e3816eaacf2cd05a48212",
+      "pdf_page": 7,
+      "heading_locator": "V.B.1 INJECTION SOURCES",
+      "normalized_page_start_zero_based": 3139,
+      "normalized_page_end_exclusive": 3254,
+      "raw_source_replay_matches": true,
+      "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+      "source_draft": "vor.method-data-provider-draft.0003.json",
+      "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435"
+    },
+    {
+      "fact_id": "VOR-M06",
+      "fact_categories": [
+        "ORIGINAL_SOURCE_LABELS"
+      ],
+      "restriction_decision": "APPROVE",
+      "source_excerpt_utf8_sha256": "0e5b1bb3f7832da4dda5baafadb33de651002e6b3ac7b9337b7247c75f4fc6b7",
+      "paragraph_locator_sha256_canonical_json": "aab0ed056532190a69ac3a3446a22b37745b090d9fae23aa69a80ea7470eae17",
+      "pdf_page": 7,
+      "heading_locator": "V.B.1 INJECTION SOURCES",
+      "normalized_page_start_zero_based": 3895,
+      "normalized_page_end_exclusive": 3966,
+      "raw_source_replay_matches": true,
+      "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+      "source_draft": "vor.method-data-provider-draft.0003.json",
+      "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435"
+    },
+    {
+      "fact_id": "VOR-M07",
+      "fact_categories": [
+        "BENIGN_CONSTRUCTION"
+      ],
+      "restriction_decision": "APPROVE",
+      "source_excerpt_utf8_sha256": "526a82e458459085143a043ac568eb79b5e26408a4372ef0048eefe5c575d5aa",
+      "paragraph_locator_sha256_canonical_json": "db542f94aaa035e86b5f3f0a4901d1d4958fa762a7d5fb356dda28b095dc6e48",
+      "pdf_page": 7,
+      "heading_locator": "V.B.2 BENIGN SOURCES",
+      "normalized_page_start_zero_based": 3985,
+      "normalized_page_end_exclusive": 4244,
+      "raw_source_replay_matches": true,
+      "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+      "source_draft": "vor.method-data-provider-draft.0003.json",
+      "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435"
+    },
+    {
+      "fact_id": "VOR-M08",
+      "fact_categories": [
+        "BENIGN_PARAPHRASE_LABELS"
+      ],
+      "restriction_decision": "APPROVE",
+      "source_excerpt_utf8_sha256": "5bae9e2f75c46054d2969c85e714ab37523ff826761de7639e33d6b85fea4f8a",
+      "paragraph_locator_sha256_canonical_json": "b82cee92d2d24d457f7f425444516e1b1a9d01519a093a779572dd2c40adb0b2",
+      "pdf_page": 7,
+      "heading_locator": "V.B.2 BENIGN SOURCES",
+      "normalized_page_start_zero_based": 4405,
+      "normalized_page_end_exclusive": 4486,
+      "raw_source_replay_matches": true,
+      "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+      "source_draft": "vor.method-data-provider-draft.0003.json",
+      "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435",
+      "release_limit": "Paraphrase construction and seed-label inheritance only. The corrected summary stays within this boundary."
+    }
+  ],
+  "source_and_locator_binding": {
+    "authoritative_pdf_sha256": "0060b5d3d43694118bac2a248c9bd62dc2f380be4da165902b90ab891bd8b83e",
+    "metadata_draft_sha256": "e58923277d50e0d5aef056649c096eef9748aee1a20be779caa57720ff942ae1",
+    "source_receipt_filename": "vor.source-receipt.0002.json",
+    "source_receipt_sha256": "e98b00f53a7fe3c2ef00fae5707dc889b2331da9844f3a1fcbc9f0f37531ab62",
+    "paragraph_receipt_filename": "vor.paragraph-receipts.0002.json",
+    "paragraph_receipt_sha256": "10c8d7c05a8a20da65e1760e2aa39a75c9324497636b6bfafb0c34ba9f0b2686",
+    "page_receipt_filename": "vor.page-receipts.0002.json",
+    "page_receipt_sha256": "b4c2e32307b0ee09ec3bfdf7c018138ec1e03520a2d4c1cf3c5262994c2ffa8d",
+    "all_bounded_method_spans_replayed_again": true,
+    "prior_method_visual_checks_unchanged": true
+  },
+  "preserved_language_gaps": [
+    "Selected passages do not establish a row-level English-language audit or every evaluated item\u2019s language.",
+    "The stated language scope and construction description are source statements, not an independent corpus inspection."
+  ],
+  "access_limits": [
+    "This is a separate actor checking provider03, not a check of the actor\u2019s own provider work. The filesystem is shared; no OS isolation or shared-disk independence is claimed.",
+    "Task evidence was confined to the named provider03 drafts, manifests, source/page/paragraph/role receipts, their exact registered PDF, selected Crossref bibliographic fields and the referenced capture receipts. No other source versions were inspected.",
+    "The provider disclosed accidental adjoining finding/interpretive exposure. That disclosure is retained as an access limitation and no adjoining claim is approved or transferred into released prose.",
+    "The checker mechanically hashed full cited-page text and render bytes. Semantic and visual review covered header/method regions only.",
+    "No root review files, eligibility judgments, prior returns, prior chats or human sheets were inspected for this check.",
+    "No outcome finding, sample size, performance value, assurance claim, results caption or results table text is approved for release.",
+    "Captured-file header dates, capture time and HTTP Last-Modified do not establish historical first availability of these exact bytes. Crossref processing dates remain record metadata.",
+    "Stated English scope is not a row-level language audit or independent corpus inspection. Both existing English-evidence gaps must accompany release."
+  ],
+  "provider_drafts_modified": false,
+  "eligibility_decision": null,
+  "review_classification": null,
+  "root_release_performed": false,
+  "release_ready_ids": [
+    "A05-PROVIDER03-W0339-METADATA-0002",
+    "A05-PROVIDER03-W0339-METHOD-DATA-0003",
+    "VOR-M01",
+    "VOR-M02",
+    "VOR-M03",
+    "VOR-M04",
+    "VOR-M05",
+    "VOR-M06",
+    "VOR-M07",
+    "VOR-M08"
+  ],
+  "still_held_original_draft_ids": [
+    "A05-PROVIDER03-W0339-METHOD-DATA-0002"
+  ],
+  "root_only_adjudication": "Only root adjudicates eligibility and releases approved bounded facts with preserved caveats."
+}

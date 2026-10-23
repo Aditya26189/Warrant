@@ -1,0 +1,68 @@
+{
+  "status": "PROVIDER_DRAFT_NOT_RELEASED",
+  "actor_id": "/root/a05_vor_provider",
+  "created_utc": "2026-10-23T15:43:51.841350+00:00",
+  "work_id": "W0339",
+  "doi": "10.1109/ACCESS.2026.3728186",
+  "draft_id": "A05-PROVIDER03-W0339-METHOD-DATA-0003",
+  "summary": "PIDS-Bench evaluates stateless input-level prompt-injection detectors on single input strings labeled as injections or benign. A detector returns a binary decision or a score thresholded to binary. It acts before the input reaches the downstream language model and uses no downstream output. The selected threshold is fixed before application to held-out test and stress sets. Injection examples combine public prompt-injection datasets and template-derived attacks, with source labels accepted without relabeling. Benign inputs combine public corpora and generated benign templates; released benign rows are paraphrase variants that inherit seed labels. The stated evaluation scope is single-turn English-language inputs. The selected methods passages do not establish a row-level language audit or demonstrate that every evaluated item is English. This is a binary input-detection evaluation; downstream attack execution is outside the stated boundary.",
+  "summary_whitespace_word_count": 130,
+  "paragraph_source_map": [
+    {
+      "paragraph_id": "VOR-M01",
+      "fact_categories": [
+        "INPUT_UNIT",
+        "BINARY_DECISION",
+        "PRE_DOWNSTREAM_TIMING"
+      ]
+    },
+    {
+      "paragraph_id": "VOR-M02",
+      "fact_categories": [
+        "NO_DOWNSTREAM_OUTPUT"
+      ]
+    },
+    {
+      "paragraph_id": "VOR-M03",
+      "fact_categories": [
+        "STATED_LANGUAGE_SCOPE"
+      ]
+    },
+    {
+      "paragraph_id": "VOR-M04",
+      "fact_categories": [
+        "HELD_OUT_APPLICATION"
+      ]
+    },
+    {
+      "paragraph_id": "VOR-M05",
+      "fact_categories": [
+        "INJECTION_CONSTRUCTION"
+      ]
+    },
+    {
+      "paragraph_id": "VOR-M06",
+      "fact_categories": [
+        "ORIGINAL_SOURCE_LABELS"
+      ]
+    },
+    {
+      "paragraph_id": "VOR-M07",
+      "fact_categories": [
+        "BENIGN_CONSTRUCTION"
+      ]
+    },
+    {
+      "paragraph_id": "VOR-M08",
+      "fact_categories": [
+        "BENIGN_PARAPHRASE_LABELS"
+      ]
+    }
+  ],
+  "gaps": [
+    "Selected passages do not establish a row-level English-language audit or every evaluated item’s language.",
+    "The stated language scope and construction description are source statements, not an independent corpus inspection."
+  ],
+  "checker_requirement": "Separate source checker must assess this draft and release suitability; no provider restriction attestation is made.",
+  "supersedes_summary_only": "vor.method-data-provider-draft.0002.json"
+}

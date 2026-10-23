@@ -1,0 +1,315 @@
+{
+  "checker_id": "A05-SOURCE-RESTRICTION-CHECKER01-PROVIDER02-W0062-0001",
+  "actor_id": "/root/a04_semantic_restriction",
+  "role": "SEPARATE_SOURCE_RESTRICTION_CHECKER_ONLY",
+  "checked_utc": "2026-10-23T10:39:03.271351+00:00",
+  "status": "PER_FACT_SOURCE_RESTRICTION_CHECK_COMPLETE",
+  "provider_actor_id": "/root/a04_semantic_restriction_02",
+  "provider_directory": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-02",
+  "source_context_separation": "This actor did not author provider-02 draft. This is a continuing source-only context with prior W0062 method-source exposure and a shared filesystem; no OS isolation, fresh eligibility review, or independent statistical review is claimed.",
+  "manifest": {
+    "filename": "MANIFEST.0001.json",
+    "sha256": "0f509759891f063d3cb4c0904f719bfcb320ef60885559450c0cedc707ccb117"
+  },
+  "provider_draft": {
+    "filename": "PROVIDER_DRAFT_NOT_RELEASED.0001.json",
+    "sha256": "e478cb75d75e2b1bf09452f566e765ccf89f3ad94a385608366cbd73f8b3f13a"
+  },
+  "provider_source_receipt": {
+    "filename": "SOURCE_RECEIPT.0001.json",
+    "sha256": "15e01a3354b3f5b281a6614c17f7465f446828be15bd2a9387d3b1fd7ab32c01"
+  },
+  "provider_context_coverage": {
+    "filename": "CONTEXT_COVERAGE.0001.json",
+    "sha256": "78508a2ac5722f86966d0be3a2620e5efabf8c1e60b4547b9e11758e0e427f7a"
+  },
+  "current_acquisition_receipt": {
+    "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0096.json",
+    "sha256": "52193976ef368ea96f3124df6c3131d2be34edda985d61e96005a2cc6d9a02a1"
+  },
+  "raw_source_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q023-1.html",
+  "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+  "source_url": "https://arxiv.org/html/2507.15219v1",
+  "version": "arxiv:2507.15219v1",
+  "source_version_check": "Current body hash and original HTML self-links match the captured exact arXiv revision. No alternate revision was used.",
+  "parser": "html.parser",
+  "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY",
+  "index_base": 0,
+  "context_checked_paragraphs": [
+    12,
+    14,
+    15,
+    16,
+    17,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    33,
+    35,
+    38,
+    40
+  ],
+  "replayed_fact_locators": 14,
+  "mixed_paragraph_method_boundaries": [
+    {
+      "global_p_ltx_p_ordinal": 28,
+      "index_base": 0,
+      "paragraph_text_sha256": "10d565b5fcac6e7f1fafa7364ac38132b7d91ac8bece9503526181ad6c2b1d6b",
+      "method_only_start_zero_based": 19,
+      "method_only_end_exclusive": 501,
+      "method_only_substring_sha256": "72d552bbdd0bc05dbb18f6c50504a8238f26ab393dba0be103ec840393e70f2b",
+      "neutral_method_scope": "BASELINE_COMPARISON_METHOD_LIST",
+      "adjoining_commentary_approved": false
+    },
+    {
+      "global_p_ltx_p_ordinal": 33,
+      "index_base": 0,
+      "paragraph_text_sha256": "53e9bbeca31a60577bf41ed7a35ea8d82ca7b70a802786cf03a2a5e15025e983",
+      "method_only_start_zero_based": 224,
+      "method_only_end_exclusive": 270,
+      "method_only_substring_sha256": "5d8f53ab56552c0af88aa816b91804e26e90c7072882245836b98fb0164028a5",
+      "neutral_method_scope": "SHARED_PROMPTING_SETUP_CLAUSE",
+      "adjoining_commentary_approved": false
+    }
+  ],
+  "fact_checks": [
+    {
+      "fact_id": "A05-SRC02-W0062-F01",
+      "provider_fact_index_zero_based": 0,
+      "provider_fact_object_sha256": "fa19355aaef4adf3fac20a6b79948945cadd0087755348d50f952bbf6f916beb",
+      "decision": "APPROVE",
+      "restriction_scope": "Method text and its stated limitation only; no criterion satisfaction, eligibility or whole-paper conclusion.",
+      "checked_by": "/root/a04_semantic_restriction",
+      "checked_utc": "2026-10-23T10:39:03.264357+00:00",
+      "draft_sha256": "e478cb75d75e2b1bf09452f566e765ccf89f3ad94a385608366cbd73f8b3f13a",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "verified_method_locators": [
+        {
+          "global_p_ltx_p_ordinal": 25,
+          "paragraph_text_sha256": "e30185131ab0d92db647df17879de2525fdc495244ea877576ca7b6e2d47a23a",
+          "section_id": "S4.SS1",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        },
+        {
+          "global_p_ltx_p_ordinal": 26,
+          "paragraph_text_sha256": "032830e815792104d64e5b42fd5d2a812ddea533bafb77e1ab09009ab710beb1",
+          "section_id": "S4.SS1",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        },
+        {
+          "global_p_ltx_p_ordinal": 30,
+          "paragraph_text_sha256": "52717f9e1e28293dc57c290fe11f5c8de1eadbb3d58650391421f6bb8fd9ac88",
+          "section_id": "S4.SS1",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        },
+        {
+          "global_p_ltx_p_ordinal": 35,
+          "paragraph_text_sha256": "14bd5f0f953ef1bf7d64e3f1616920de9198817a792d9fc1d36888da6a1e305e",
+          "section_id": "S4.SS3",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        }
+      ],
+      "source_faithfulness_basis": "The source separately defines environment-state task checks and clean-versus-contaminated data classification checks within the AgentDojo evaluation.",
+      "retained_provider_limitation": "Detection and task checks share AgentDojo.",
+      "checker_scope_limitation": "The stated unit distinction is retained within the shared benchmark; no separate benchmark is inferred.",
+      "outcome_or_count_text_returned": false,
+      "literal_quotation_words": 0,
+      "eligibility_decision": null
+    },
+    {
+      "fact_id": "A05-SRC02-W0062-F02",
+      "provider_fact_index_zero_based": 1,
+      "provider_fact_object_sha256": "7606ccad35969c0a347f9517f0340ca5d9ba8c0d2243724939cbf78ea2bfc9ee",
+      "decision": "APPROVE",
+      "restriction_scope": "Method text and its stated limitation only; no criterion satisfaction, eligibility or whole-paper conclusion.",
+      "checked_by": "/root/a04_semantic_restriction",
+      "checked_utc": "2026-10-23T10:39:03.266356+00:00",
+      "draft_sha256": "e478cb75d75e2b1bf09452f566e765ccf89f3ad94a385608366cbd73f8b3f13a",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "verified_method_locators": [
+        {
+          "global_p_ltx_p_ordinal": 28,
+          "paragraph_text_sha256": "10d565b5fcac6e7f1fafa7364ac38132b7d91ac8bece9503526181ad6c2b1d6b",
+          "section_id": "S4.SS1",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        },
+        {
+          "global_p_ltx_p_ordinal": 29,
+          "paragraph_text_sha256": "2deec3dc6487f032a0df0d7a3cc19785958432c980e1a68d0bf3f6bbca278544",
+          "section_id": "S4.SS1",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        },
+        {
+          "global_p_ltx_p_ordinal": 30,
+          "paragraph_text_sha256": "52717f9e1e28293dc57c290fe11f5c8de1eadbb3d58650391421f6bb8fd9ac88",
+          "section_id": "S4.SS1",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        }
+      ],
+      "source_faithfulness_basis": "The method comparison names the listed baseline arms and separately enumerates PromptArmor guard-model variants.",
+      "retained_provider_limitation": "Shared setup; baseline-specific aggregation is unspecified.",
+      "checker_scope_limitation": "Approval covers the list of comparison arms; it does not establish that every arm is a binary input classifier or supply a baseline-specific aggregation rule.",
+      "outcome_or_count_text_returned": false,
+      "literal_quotation_words": 0,
+      "eligibility_decision": null
+    },
+    {
+      "fact_id": "A05-SRC02-W0062-F03",
+      "provider_fact_index_zero_based": 2,
+      "provider_fact_object_sha256": "0da3ca520d5849d92f17e1309503fd57e236680f68dd13ffee1b89ebb444edb3",
+      "decision": "APPROVE",
+      "restriction_scope": "Method text and its stated limitation only; no criterion satisfaction, eligibility or whole-paper conclusion.",
+      "checked_by": "/root/a04_semantic_restriction",
+      "checked_utc": "2026-10-23T10:39:03.268367+00:00",
+      "draft_sha256": "e478cb75d75e2b1bf09452f566e765ccf89f3ad94a385608366cbd73f8b3f13a",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "verified_method_locators": [
+        {
+          "global_p_ltx_p_ordinal": 33,
+          "paragraph_text_sha256": "53e9bbeca31a60577bf41ed7a35ea8d82ca7b70a802786cf03a2a5e15025e983",
+          "section_id": "S4.SS2",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        },
+        {
+          "global_p_ltx_p_ordinal": 35,
+          "paragraph_text_sha256": "14bd5f0f953ef1bf7d64e3f1616920de9198817a792d9fc1d36888da6a1e305e",
+          "section_id": "S4.SS3",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        }
+      ],
+      "source_faithfulness_basis": "The prompting subsection explicitly follows the earlier settings; the model-mode subsection also follows those settings and distinguishes detection checks from end-to-end task checks.",
+      "retained_provider_limitation": "Prompting setup includes mixed surrounding commentary.",
+      "checker_scope_limitation": "The shared setup refers to these named comparisons, without extending the statement to every experiment in the paper.",
+      "outcome_or_count_text_returned": false,
+      "literal_quotation_words": 0,
+      "eligibility_decision": null
+    },
+    {
+      "fact_id": "A05-SRC02-W0062-F04",
+      "provider_fact_index_zero_based": 3,
+      "provider_fact_object_sha256": "390b974e4e8cf9303d9c93d0b25e5889363f4f83c45906c77dbba56de215be63",
+      "decision": "APPROVE",
+      "restriction_scope": "Method text and its stated limitation only; no criterion satisfaction, eligibility or whole-paper conclusion.",
+      "checked_by": "/root/a04_semantic_restriction",
+      "checked_utc": "2026-10-23T10:39:03.269367+00:00",
+      "draft_sha256": "e478cb75d75e2b1bf09452f566e765ccf89f3ad94a385608366cbd73f8b3f13a",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "verified_method_locators": [
+        {
+          "global_p_ltx_p_ordinal": 38,
+          "paragraph_text_sha256": "9b42094710b551281d9fe2157c8b862199e8fb47fc705cc945be388026f5e7f3",
+          "section_id": "S4.SS4",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        },
+        {
+          "global_p_ltx_p_ordinal": 40,
+          "paragraph_text_sha256": "776a15940d0839d39d784e757d5f205bf577864d8d12689b723238671abfd91d",
+          "section_id": "S4.SS5",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        }
+      ],
+      "source_faithfulness_basis": "The committed passages specify a prefix-suffix memorization protocol and distinct adaptive template runs against unguarded and guarded agents.",
+      "retained_provider_limitation": "These are distinct experimental protocols.",
+      "checker_scope_limitation": "These protocols remain distinct from the direct detector-unit and agent-task checks.",
+      "outcome_or_count_text_returned": false,
+      "literal_quotation_words": 0,
+      "eligibility_decision": null
+    },
+    {
+      "fact_id": "A05-SRC02-W0062-F05",
+      "provider_fact_index_zero_based": 4,
+      "provider_fact_object_sha256": "7604b568e37008cd76ac02cca1a3db4db38611a83df1b2516364d753f51f2eb5",
+      "decision": "APPROVE",
+      "restriction_scope": "Method text and its stated limitation only; no criterion satisfaction, eligibility or whole-paper conclusion.",
+      "checked_by": "/root/a04_semantic_restriction",
+      "checked_utc": "2026-10-23T10:39:03.270367+00:00",
+      "draft_sha256": "e478cb75d75e2b1bf09452f566e765ccf89f3ad94a385608366cbd73f8b3f13a",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "verified_method_locators": [
+        {
+          "global_p_ltx_p_ordinal": 12,
+          "paragraph_text_sha256": "fb1d36768c7d104fc69673ce39c7d3d41dab12653481a8f1f6df665338e9d1e3",
+          "section_id": "S2",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        },
+        {
+          "global_p_ltx_p_ordinal": 15,
+          "paragraph_text_sha256": "02ee85f91253ebe2aa6818c948d2f1b8e4331e6ee5d28e602c271854017be04e",
+          "section_id": "S3.SS1",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        },
+        {
+          "global_p_ltx_p_ordinal": 17,
+          "paragraph_text_sha256": "e4f8274433731be1ef7c90d3eb521402f330d4c93bbd9f98a8560bd65283cb0c",
+          "section_id": "S3.SS1",
+          "index_base": 0,
+          "parser": "html.parser",
+          "source_view": "ORIGINAL_UNMODIFIED_RAW_BODY"
+        }
+      ],
+      "source_faithfulness_basis": "The method detects and extracts injected content, removes identified content, and passes sanitized data onward to the backend role.",
+      "retained_provider_limitation": "Guard and backend may share a model.",
+      "checker_scope_limitation": "This is the sanitation stage sequence; guard and backend roles may use the same underlying model.",
+      "outcome_or_count_text_returned": false,
+      "literal_quotation_words": 0,
+      "eligibility_decision": null
+    }
+  ],
+  "approved_fact_ids": [
+    "A05-SRC02-W0062-F01",
+    "A05-SRC02-W0062-F02",
+    "A05-SRC02-W0062-F03",
+    "A05-SRC02-W0062-F04",
+    "A05-SRC02-W0062-F05"
+  ],
+  "held_fact_ids": [],
+  "method_prose_word_count_including_provider_limitations": 131,
+  "literal_quotation_words": 0,
+  "remaining_source_limitations": [
+    "Detector-unit checks and agent-task checks use the shared AgentDojo setup.",
+    "The baseline list does not disaggregate every baseline detection or aggregation rule.",
+    "No English-evaluation fact is supplied by this draft; no whole-paper absence conclusion is made.",
+    "Bounded method clauses were approved from mixed paragraphs; surrounding source commentary is withheld."
+  ],
+  "eligibility_decision": null,
+  "release_boundary": "Per-fact source restriction only. This receipt does not perform eligibility adjudication, scientific approval, or publication, and does not self-certify provider-01."
+}
