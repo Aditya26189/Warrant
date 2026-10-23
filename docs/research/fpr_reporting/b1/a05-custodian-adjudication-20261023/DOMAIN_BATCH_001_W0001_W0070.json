@@ -1,0 +1,1331 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "b2_authorized": false,
+  "casebook_sha256": "3a5b05ea87bcd50014dbcf4b9f0c2fc65a9b7be192510a9100deb9519c531448",
+  "criteria_order": [
+    "input_injection_task",
+    "binary_evaluation",
+    "before_target_answer",
+    "english_evaluation"
+  ],
+  "reviewed_utc": "2026-10-23T15:26:01.193129+00:00",
+  "role": "REVIEWER_INFORMED_CUSTODIAN_NOT_FRESH_INDEPENDENT",
+  "rows": [
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0001-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0001",
+      "scientific_rationale": "Only target-response reward evaluation is established; this is not an input-classifier experiment. Other arms are not ruled out.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "acl:2025.llmsec-1.2"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0002-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0002",
+      "scientific_rationale": "Speech-act/discourse analysis of prior prompt patterns does not establish original binary detector evaluation. Whole-work absence is not established.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "acl:2026.nlpaics-1.17"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0003-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0003",
+      "scientific_rationale": "Impact evaluation consumes the attacked application response; no separate qualifying input evaluation is established.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2401.00991"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0004-F01",
+        "REC-REC-01-W0004-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0004",
+      "scientific_rationale": "Harmful-prompt pairs and sentiment labels concern different tasks; positive/negative sentiment is not injection presence.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2402.05723"
+    },
+    {
+      "considered_method_evidence_ids": [],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0005",
+      "scientific_rationale": "No released method passage; missing evidence is neither exclusion nor positive eligibility.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2402.11082"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0006-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0006",
+      "scientific_rationale": "Payload/output matching and verifier inspect target output; no independent pre-answer input baseline established.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2403.03792"
+    },
+    {
+      "considered_method_evidence_ids": [],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0007",
+      "scientific_rationale": "No released method passage; preserve uncertainty.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2403.08701"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0008-F01",
+        "REC-REC-01-W0008-F01",
+        "REC-REC-01-W0008-F02",
+        "REC-REC-01-W0008-F03"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "limitations": [],
+      "review_id": "W0008",
+      "scientific_rationale": "The defense experiment inspects injected candidate responses as untrusted judge inputs. Known-answer and perplexity procedures make detection decisions before the protected judge; the auxiliary secret repetition is detector output. Evaluated English formatting is explicit.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2403.17710"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0009-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0009",
+      "scientific_rationale": "Query/response guard conditions exist, but jailbreak success is judged on target response. No distinct injection-input binary evaluation or English setting is established.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2404.04392"
+    },
+    {
+      "considered_method_evidence_ids": [],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0010",
+      "scientific_rationale": "No released method evidence.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2405.12750"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0011-F01",
+        "SEM-01-W0011-F02",
+        "REC-REC-01-W0011-F01",
+        "REC-REC-01-W0011-F02",
+        "REC-REC-01-W0011-F03"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "limitations": [],
+      "review_id": "W0011",
+      "scientific_rationale": "Clean/injected third-party data blocks are binary probe units. Last-input activations precede generation. English task/trigger constructions are tied to evaluated variants; no English-only corpus claim.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2406.00799"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0012-F01",
+        "SEM-01-W0012-F02",
+        "REC-REC-01-W0012-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0012",
+      "scientific_rationale": "TestART's positive prompt injection reinserts unit-test code for repair; this is not evidence of malicious-input classification. Other experiments remain unestablished.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2408.03095"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0013-F01",
+        "REC-REC-01-W0013-F01",
+        "REC-REC-01-W0013-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "MET",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0013",
+      "scientific_rationale": "The documented robot detector reads generated control responses, while secure prompting is an instruction rather than a binary detector. Its English instruction supports language for that condition only.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2408.03515"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0014-F01",
+        "REC-REC-01-W0014-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0014",
+      "scientific_rationale": "Profile-embedded instructions defend against extraction through behavior redirection; no evaluated binary injection-input classifier is established.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2408.07291"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0015-F01",
+        "REC-REC-01-W0015-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "limitations": [],
+      "review_id": "W0015",
+      "scientific_rationale": "BERT embedding classifiers operate on normal/malicious input prompts, without protected-answer dependency. Evaluated corpus expressly includes English. Retained original holdout division does not establish an English-only test split or its composition.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2409.13331"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0016-F01",
+        "SEM-01-W0016-F02",
+        "SEM-01-W0016-F03",
+        "REC-REC-01-W0016-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0016",
+      "scientific_rationale": "Goal-hijacking/prompt-leakage constructions establish instruction-injection input scope. Training labels and a jailbreak evaluation do not alone establish the qualifying binary test and its English setting in this released version.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2409.19521"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0017-F01",
+        "SEM-01-W0017-F02",
+        "REC-REC-01-W0017-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0017",
+      "scientific_rationale": "Binary decisions concern unsafe content, and English input filtering is not itself an English injection-detection evaluation. No qualifying injection-label task established.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2410.02916"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0018-F01",
+        "REC-REC-01-W0018-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0018",
+      "scientific_rationale": "Known-answer/repetition loss thresholds are input-side detection procedures, but a qualifying binary evaluation design and English evaluated inputs remain unestablished.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2410.13236"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0019-F01",
+        "REC-REC-01-W0019-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0019",
+      "scientific_rationale": "Decoy responses inject instructions into the attacking agent. Crafting/delivering these decoys is not a separate binary input-detector evaluation.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2410.20911"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0020-F01",
+        "REC-REC-01-W0020-F02",
+        "REC-REC-01-W0020-F03"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "limitations": [],
+      "review_id": "W0020",
+      "scientific_rationale": "Binary injection-labeled English train/test prompts pass through screening/BERT/companion detector before the protected target. All four domain requirements are supported in the same version.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2410.21146"
+    },
+    {
+      "considered_method_evidence_ids": [],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0021",
+      "scientific_rationale": "Captured v2 is withdrawn and inaccessible; no method facts. Do not substitute v1 or treat access failure as proof of domain exclusion.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2410.21337"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0022-F01",
+        "SEM-01-W0022-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0022",
+      "scientific_rationale": "Benign/malicious prompt-injection embedding classifiers establish input-task and binary evaluation with no target-answer dependency. Evaluation language is not established by corpus names.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2410.22284"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0023-F01",
+        "REC-REC-01-W0023-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0023",
+      "scientific_rationale": "Text conditions an infrared/visible image-fusion pipeline; no injection-input detection experiment is established.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2411.09387"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0024-F01",
+        "REC-REC-01-W0024-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0024",
+      "scientific_rationale": "An evaluated input jailbreak classifier is binary and input-computable, but the released corpus evidence does not establish an instruction-injection task distinct from harmful/jailbreak classification. English unresolved.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2412.01547"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0025-F01",
+        "REC-REC-01-W0025-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0025",
+      "scientific_rationale": "Hijacking prompts and the implemented GPT-Eliezer-style detector establish an input-side detection condition. Binary clean/injected evaluation units and English setting need method evidence.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2412.10807"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0026-F01",
+        "SEM-01-W0026-F02",
+        "SEM-01-W0026-F03",
+        "REC-REC-01-W0026-F01",
+        "REC-REC-01-W0026-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0026",
+      "scientific_rationale": "The separate SPML system/user injection experiment and hidden-state classification architecture support binary input detection before generation. English first-turn construction belongs to a potentially different content component; do not transfer it to SPML without linkage.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2412.13435"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0027-F01",
+        "REC-REC-01-W0027-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0027",
+      "scientific_rationale": "Prompt-hole attack insertion and hardening evaluate prompt construction. They do not establish a separate binary input detector.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2501.12521"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0028-F01",
+        "REC-REC-01-W0028-F01",
+        "REC-REC-01-W0028-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0028",
+      "scientific_rationale": "PromptShield's detector train/evaluation splits, presence/absence labels and backend forwarding establish binary pre-target injection detection. Language of evaluated inputs is missing.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2501.15145"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0029-F01",
+        "SEM-01-W0029-F02",
+        "SEM-01-W0029-F03",
+        "REC-REC-01-W0029-F01",
+        "REC-REC-01-W0029-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0029",
+      "scientific_rationale": "The detector labels tool-data injections by comparing generated tool calls. English masking instructions are evaluated, but reliance on protected original-run calls fails the input-only timing arm; no qualifying pre-answer baseline established.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2502.05174"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0030-F01",
+        "REC-REC-01-W0030-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0030",
+      "scientific_rationale": "The dependency classifier needs generated output, and confidentiality/integrity dependency labels are not injection-presence labels. No qualifying secondary input evaluation established.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2502.08966"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0031-F01",
+        "SEM-01-W0031-F02",
+        "REC-REC-01-W0031-F01",
+        "REC-REC-01-W0031-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0031",
+      "scientific_rationale": "Clean/malicious decision depends on a base output and masked-prompt comparisons. This arm is response-dependent. English templates belong to other tasks and cannot establish the injection condition's language.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2502.13141"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0032-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0032",
+      "scientific_rationale": "HaluProbe uses response-derived hallucination features, a different task and timing. No qualifying secondary detector established.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2502.13490"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0033-F01",
+        "SEM-01-W0033-F02",
+        "REC-REC-01-W0033-F01",
+        "REC-REC-01-W0033-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0033",
+      "scientific_rationale": "A binary safe/jailbreak prompt-activation probe is pre-generation. Cybersecurity/harmful relabeling does not establish injection-presence semantics, and evaluation language remains unresolved.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2503.09066"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0034-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0034",
+      "scientific_rationale": "Guard/sanitizer and policy agents process the front-end generated response; no separate input classifier evaluation established.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2503.11517"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0035-F01",
+        "SEM-01-W0035-F02",
+        "REC-REC-01-W0035-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0035",
+      "scientific_rationale": "A separate detector question asks about instructions in candidate papers before the protected review is generated, using an English evaluated template. Its binary clean/injected evaluation design remains insufficiently specified.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2503.15772"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0036-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0036",
+      "scientific_rationale": "Corrupted memory/action-output instruction injections establish the threat domain; agent operation under these conditions does not establish binary input classification or detector timing/language.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2503.16248"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0037-F01",
+        "REC-REC-01-W0037-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0037",
+      "scientific_rationale": "The injection analysis attaches input-computable reasoning-step predictions to clean/adversarial prompts. A regression/step label is not yet an evaluated binary injection decision. English unresolved.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2503.21464"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0038-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0038",
+      "scientific_rationale": "Permission checks inspect already-generated API calls and authorize execution, not binary instruction-injection input detection.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2503.23250"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0039-F01",
+        "REC-REC-01-W0039-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0039",
+      "scientific_rationale": "Thresholded query-activation acceptance against legitimate anchors establishes binary input screening in the attack setting. Named QA corpora alone do not establish evaluated English language.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2504.09593"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0040-F01",
+        "SEM-01-W0040-F02",
+        "REC-REC-01-W0040-F01",
+        "REC-REC-01-W0040-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0040",
+      "scientific_rationale": "The ACL publication independently establishes an original binary Prompt Guard attack class and injection test condition. Input-only classification permits pre-target decisions. English remains unresolved; preprint perturbation details are not transferred to ACL.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2504.11168"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0041-F01",
+        "SEM-01-W0041-F02",
+        "REC-REC-01-W0041-F01",
+        "REC-REC-01-W0041-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "limitations": [],
+      "review_id": "W0041",
+      "scientific_rationale": "DataSentinel evaluates contaminated/clean target-data decisions from an auxiliary detector secret-repetition output. The protected backend answer is not required; the evaluated detector instruction is explicitly English.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2504.11358"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0042-F01",
+        "SEM-01-W0042-F02",
+        "REC-REC-01-W0042-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0042",
+      "scientific_rationale": "Tests compare corpora after generation to identify model/distribution changes. A system instruction modification does not turn this into input-injection classification.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2504.12335"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0043-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0043",
+      "scientific_rationale": "Adversarial user instructions target system-policy behavior, but generated-behavior tests do not establish a separate binary input classifier.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2504.19521"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0044-F01",
+        "REC-REC-01-W0044-F01",
+        "REC-REC-01-W0044-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "limitations": [],
+      "review_id": "W0044",
+      "scientific_rationale": "The known-answer defense labels candidate tool text injected/clean using a separate secret-repetition detector. It is input-computable before protected tool use; an English detector instruction is explicitly evaluated.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2504.19793"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0045-F01",
+        "SEM-01-W0045-F02",
+        "REC-REC-01-W0045-F01",
+        "REC-REC-01-W0045-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "limitations": [],
+      "review_id": "W0045",
+      "scientific_rationale": "Although AlignmentCheck examines assistant traces, the separately evaluated PromptGuard baseline classifies user/tool inputs for injection and uses an English dataset. That baseline qualifies without relying on protected output.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2505.03574"
+    },
+    {
+      "considered_method_evidence_ids": [],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0046",
+      "scientific_rationale": "No released method evidence.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2505.06643"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0047-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0047",
+      "scientific_rationale": "Fine-tuning on instruction/response safety data followed by Garak probes is not evidence of a separate binary prompt-injection input evaluation.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2505.09974"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0048-F01",
+        "REC-REC-01-W0048-F01",
+        "REC-REC-01-W0048-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "limitations": [],
+      "review_id": "W0048",
+      "scientific_rationale": "In the arXiv version, original domain detectors train and test on generated benign/malicious prompts; English email/system-disclosure constructions establish an evaluated English component. The selected ACL version has no same-version method facts here, so domain support must not silently transfer.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2505.12368"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0049-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0049",
+      "scientific_rationale": "Black-box RAG access alone establishes neither binary input classification nor evaluation details.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2505.15420"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0050-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0050",
+      "scientific_rationale": "Watermark verification on suspect text detects generation provenance, not instruction-injection presence.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2505.16934"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0051-F01",
+        "REC-REC-01-W0051-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0051",
+      "scientific_rationale": "A benign initial user and proposed output audit do not establish evaluated pre-answer injection-input classification.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2505.22852"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0052-F01",
+        "REC-REC-01-W0052-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0052",
+      "scientific_rationale": "Binary prompt classifier training explicitly mixes SPML injection examples with jailbreak/benign records. Input-side procedure is computable before target output. English and separate held-out injection evaluation linkage need clarification; training composition alone is limited.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2506.05446"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0053-F01",
+        "SEM-01-W0053-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0053",
+      "scientific_rationale": "Exact ALL-version sentinel exclusion takes precedence; no domain decision required for selection.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2506.05739"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0054-F01",
+        "REC-REC-01-W0054-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0054",
+      "scientific_rationale": "Positive/negative injection inputs feed a semantic/heuristic prediction module. This is an input-only binary detector; evaluated English language remains unestablished.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2506.06384"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0055-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0055",
+      "scientific_rationale": "Original manipulated prompt-injection inputs are submitted to input classifiers; detector decisions are binary and precede protected output. Corpus name does not establish English language.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2506.07948"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0056-F01",
+        "REC-REC-01-W0056-F01",
+        "REC-REC-01-W0056-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0056",
+      "scientific_rationale": "The isolator classifies conflicting instructions in tool messages before agent memory, distinct from generated-call validation. Its separate clean/injected binary evaluation and English setting remain unresolved.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2506.12104"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0057-F01",
+        "REC-REC-01-W0057-F01",
+        "REC-REC-01-W0057-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0057",
+      "scientific_rationale": "LLM Guard input scans are explicitly evaluated on malicious and benign prompts. Response-dependent Vigil/Rebuff variants do not invalidate that qualifying timing arm. English remains unestablished.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2506.19109"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0058-F01",
+        "SEM-01-W0058-F02",
+        "REC-REC-01-W0058-F01",
+        "REC-REC-01-W0058-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "limitations": [],
+      "review_id": "W0058",
+      "scientific_rationale": "Known-answer detection labels candidate data before forwarding to a distinct backend role. The evaluated secret-key repetition template is English; auxiliary detector generation is not the protected answer.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2507.05630"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0059-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0059",
+      "scientific_rationale": "Mutation and boundary-case construction across CIA concerns does not establish evaluated binary injection-input detection.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2507.06323"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0060-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0060",
+      "scientific_rationale": "Threat-vector/modality/propagation organization and discussion of defenses are not original detector evaluation evidence. Bounded scope does not prove absence elsewhere.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2507.13169"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0061-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0061",
+      "scientific_rationale": "Original clean/adversarial query evaluation uses input perplexity/BERT-CLS detector scores, supporting binary pre-answer input detection. English evaluation remains unestablished.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2507.15042"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0062-F01",
+        "SEM-01-W0062-F02",
+        "REC-REC-01-W0062-F01",
+        "REC-REC-01-W0062-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0062",
+      "scientific_rationale": "Guard checks and removal precede backend processing, with evaluated English instruction-override constructions. Existing facts do not yet link a clean/injected binary input evaluation rather than only guarded-agent task outcomes; targeted source check pending.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2507.15219"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "REC-REC-01-W0063-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0063",
+      "scientific_rationale": "NLP classifiers label generated agent responses in memory-entrenchment tests; protected-answer-free input evaluation is not established.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2507.15330"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0064-F01",
+        "REC-REC-01-W0064-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0064",
+      "scientific_rationale": "Refusal/relevance classifiers inspect generated vision-language responses; transformed text/image defense is not a qualifying binary input detector by itself.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2507.20704"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0065-F01",
+        "REC-REC-01-W0065-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0065",
+      "scientific_rationale": "LeakSealer uses query/context/answer tuples and content-moderation feedback labels. Those are not established pre-answer instruction-injection labels.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2508.00602"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0066-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0066",
+      "scientific_rationale": "Malicious tool publishing/repackaging establishes an instruction-injection threat surface but no binary detector evaluation or language evidence.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2508.02110"
+    },
+    {
+      "considered_method_evidence_ids": [],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0067",
+      "scientific_rationale": "Captured v2 is withdrawn/unavailable. Domain unestablished; retain access limitation without silent earlier-version substitution.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2508.02961"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0068-F01",
+        "REC-REC-01-W0068-F01"
+      ],
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0068",
+      "scientific_rationale": "The long-context input is adversarial, but attribution needs an existing model output and is not itself an evaluated pre-answer binary detector.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2508.03793"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0069-F01",
+        "SEM-01-W0069-F02",
+        "REC-REC-01-W0069-F01",
+        "REC-REC-01-W0069-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "limitations": [],
+      "review_id": "W0069",
+      "scientific_rationale": "Evaluated syntactic detector compares binary opinion/injection labels on English imperative text and is input-computable. Paper/thesis shared-study identity remains unresolved, so this is domain support rather than final inclusion.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2508.04281"
+    },
+    {
+      "considered_method_evidence_ids": [
+        "SEM-01-W0070-F01",
+        "REC-REC-01-W0070-F01",
+        "REC-REC-01-W0070-F02"
+      ],
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "limitations": [
+        "Bounded evidence cannot establish absence of uninspected qualifying secondary evaluations."
+      ],
+      "review_id": "W0070",
+      "scientific_rationale": "Incoming-query activation thresholding against authorized references establishes binary input detection at the last input token. Evaluated English language remains unresolved.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2508.06418"
+    }
+  ],
+  "sampling_authorized": false,
+  "source_git_commit": "d45b42376db3ecbf293a26d58a3323fdbed6109e"
+}
