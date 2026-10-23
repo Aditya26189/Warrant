@@ -1,0 +1,17 @@
+{
+    "job_name": "cleanup-interruption",
+    "jobs_dir": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-cancellation-001/interruption/run/jobs",
+    "n_concurrent_trials": 1,
+    "environment": {
+        "import_path": "experiments.grader_poc.harbor_environment:OwnedDockerEnvironment",
+        "kwargs": {
+            "warrant_owner": "f0697c7989df4fe5bd951511c2f3f427",
+            "warrant_ledger": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-cancellation-001/interruption/run/ownership"
+        }
+    },
+    "tasks": [
+        {
+            "path": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-cancellation-001/interruption/task"
+        }
+    ]
+}

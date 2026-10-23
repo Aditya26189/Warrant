@@ -1,0 +1,1 @@
+{"services": {"main": {"volumes": ["owned:/owned", "shared:/shared"], "networks": ["default", "shared"]}}, "networks": {"default": {"internal": true}, "shared": {"external": true, "name": "warrant-control-b46f1e4091bf44228dfea701dc461e8f"}}, "volumes": {"owned": {}, "shared": {"external": true, "name": "warrant-control-b46f1e4091bf44228dfea701dc461e8f"}}}

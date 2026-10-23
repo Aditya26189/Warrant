@@ -1,0 +1,17 @@
+{
+    "job_name": "cleanup-verifier-interruption",
+    "jobs_dir": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-cancellation-002/verifier-interruption/run/jobs",
+    "n_concurrent_trials": 1,
+    "environment": {
+        "import_path": "experiments.grader_poc.harbor_environment:OwnedDockerEnvironment",
+        "kwargs": {
+            "warrant_owner": "aeb81b98e8724718aa261a8eb89020c8",
+            "warrant_ledger": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-cancellation-002/verifier-interruption/run/ownership"
+        }
+    },
+    "tasks": [
+        {
+            "path": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-cancellation-002/verifier-interruption/task"
+        }
+    ]
+}

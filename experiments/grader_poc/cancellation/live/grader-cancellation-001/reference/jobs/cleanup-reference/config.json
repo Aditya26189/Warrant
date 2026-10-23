@@ -1,0 +1,17 @@
+{
+    "job_name": "cleanup-reference",
+    "jobs_dir": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-cancellation-001/reference/jobs",
+    "n_concurrent_trials": 1,
+    "environment": {
+        "import_path": "experiments.grader_poc.harbor_environment:OwnedDockerEnvironment",
+        "kwargs": {
+            "warrant_owner": "a58fcb21e3df43569067de37d8c10ebf",
+            "warrant_ledger": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-cancellation-001/reference/ownership"
+        }
+    },
+    "tasks": [
+        {
+            "path": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/terminal-bench-poc/tasks/session-window-debug"
+        }
+    ]
+}

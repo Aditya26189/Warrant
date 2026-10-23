@@ -1,0 +1,213 @@
+{
+  "source_commits": [
+    "2bff5f77bcd67d32189d504f75346986a129dce2",
+    "7f9b2cba8e47d188c52e84d5d97a4be8aa99f4b1"
+  ],
+  "unit_test_source_commit": "2bff5f77bcd67d32189d504f75346986a129dce2",
+  "archive_source_commit": "6f3c176b1c4e41faa508d6c5c0daf774f8fe2014",
+  "checks": [
+    {
+      "mode": "timeout",
+      "passed": true,
+      "active": true,
+      "status": "TIMEOUT",
+      "cleanup": "VERIFIED_ABSENT"
+    },
+    {
+      "mode": "interruption",
+      "passed": true,
+      "active": true,
+      "status": "INTERRUPTED",
+      "cleanup": "VERIFIED_ABSENT"
+    },
+    {
+      "mode": "verifier-interruption",
+      "passed": true,
+      "active": true,
+      "status": "INTERRUPTED",
+      "cleanup": "VERIFIED_ABSENT"
+    },
+    {
+      "mode": "reference",
+      "passed": true,
+      "status": "COMPLETED",
+      "cleanup": "VERIFIED_ABSENT"
+    }
+  ],
+  "unit_tests": 47,
+  "preserved_payloads": {
+    "results": 235,
+    "hardening": 57,
+    "p2/evidence": 527
+  },
+  "batches": [
+    {
+      "name": "grader-cancellation-001",
+      "result": {
+        "source_commit": "2bff5f77bcd67d32189d504f75346986a129dce2",
+        "source_dirty": false,
+        "started_at": "2026-10-23T10:27:23.206837+00:00",
+        "checks": [
+          {
+            "mode": "timeout",
+            "passed": true,
+            "active": true,
+            "status": "TIMEOUT",
+            "cleanup": "VERIFIED_ABSENT"
+          },
+          {
+            "mode": "interruption",
+            "passed": true,
+            "active": true,
+            "status": "INTERRUPTED",
+            "cleanup": "VERIFIED_ABSENT"
+          },
+          {
+            "mode": "verifier-interruption",
+            "passed": false,
+            "active": false,
+            "status": "INFRASTRUCTURE_ERROR",
+            "cleanup": "VERIFIED_ABSENT"
+          },
+          {
+            "mode": "reference",
+            "passed": true,
+            "status": "COMPLETED",
+            "cleanup": "VERIFIED_ABSENT"
+          }
+        ],
+        "control_owner": "b46f1e4091bf44228dfea701dc461e8f",
+        "status": "FAILED",
+        "control_removal": [
+          {
+            "kind": "container",
+            "id": "5f9242b1a5147e9e9da1dd002e42696b59dbca54a6b99a55e3c8e5b0579a840b",
+            "absent": true
+          },
+          {
+            "kind": "network",
+            "id": "5f49cc16087b57a2cf3d58d9bed92d2da0c23d54bd6af84a400c9c650bed3fe1",
+            "absent": true
+          },
+          {
+            "kind": "volume",
+            "id": "warrant-control-b46f1e4091bf44228dfea701dc461e8f",
+            "absent": true
+          }
+        ],
+        "finished_at": "2026-10-23T10:31:42.942075+00:00"
+      }
+    },
+    {
+      "name": "grader-cancellation-002",
+      "result": {
+        "source_commit": "7f9b2cba8e47d188c52e84d5d97a4be8aa99f4b1",
+        "source_dirty": false,
+        "started_at": "2026-10-23T10:34:20.923414+00:00",
+        "checks": [
+          {
+            "mode": "verifier-interruption",
+            "passed": true,
+            "active": true,
+            "status": "INTERRUPTED",
+            "cleanup": "VERIFIED_ABSENT"
+          }
+        ],
+        "control_owner": "c2f79c0649e748aebaf9fc87bdf4510e",
+        "status": "PASSED",
+        "control_removal": [
+          {
+            "kind": "container",
+            "id": "9caa0fe902f45babeefbbab128d80fd2953945c98fe796f5e04688669fc3bc39",
+            "absent": true
+          },
+          {
+            "kind": "network",
+            "id": "5b85c6bb5f975483ce5cc0b54bb0fed08d0214597c2c78e44de00af51ed74b15",
+            "absent": true
+          },
+          {
+            "kind": "volume",
+            "id": "warrant-control-c2f79c0649e748aebaf9fc87bdf4510e",
+            "absent": true
+          }
+        ],
+        "finished_at": "2026-10-23T10:35:25.625826+00:00"
+      }
+    }
+  ],
+  "independent_human_reproduction": false,
+  "trials": [
+    {
+      "name": "timeout",
+      "batch": "grader-cancellation-001",
+      "passed": true,
+      "source_commit": "2bff5f77bcd67d32189d504f75346986a129dce2",
+      "status": "TIMEOUT",
+      "reward": null,
+      "elapsed_seconds": 76.40709661299479,
+      "cleanup": "VERIFIED_ABSENT",
+      "cleanup_actions": 4,
+      "cleanup_action_errors": 0,
+      "environment_instances": 1,
+      "forced_process_stop": true
+    },
+    {
+      "name": "interruption",
+      "batch": "grader-cancellation-001",
+      "passed": true,
+      "source_commit": "2bff5f77bcd67d32189d504f75346986a129dce2",
+      "status": "INTERRUPTED",
+      "reward": null,
+      "elapsed_seconds": 33.54492005798966,
+      "cleanup": "VERIFIED_ABSENT",
+      "cleanup_actions": 4,
+      "cleanup_action_errors": 0,
+      "environment_instances": 1,
+      "forced_process_stop": true
+    },
+    {
+      "name": "verifier-interruption",
+      "batch": "grader-cancellation-001",
+      "passed": false,
+      "source_commit": "2bff5f77bcd67d32189d504f75346986a129dce2",
+      "status": "INFRASTRUCTURE_ERROR",
+      "reward": null,
+      "elapsed_seconds": 60.70288146499661,
+      "cleanup": "VERIFIED_ABSENT",
+      "cleanup_actions": 0,
+      "cleanup_action_errors": 0,
+      "environment_instances": 2,
+      "forced_process_stop": false
+    },
+    {
+      "name": "reference",
+      "batch": "grader-cancellation-001",
+      "passed": true,
+      "source_commit": "2bff5f77bcd67d32189d504f75346986a129dce2",
+      "status": "COMPLETED",
+      "reward": 1.0,
+      "elapsed_seconds": 70.72620092099532,
+      "cleanup": "VERIFIED_ABSENT",
+      "cleanup_actions": 0,
+      "cleanup_action_errors": 0,
+      "environment_instances": 2,
+      "forced_process_stop": false
+    },
+    {
+      "name": "verifier-interruption",
+      "batch": "grader-cancellation-002",
+      "passed": true,
+      "source_commit": "7f9b2cba8e47d188c52e84d5d97a4be8aa99f4b1",
+      "status": "INTERRUPTED",
+      "reward": null,
+      "elapsed_seconds": 62.324287752999226,
+      "cleanup": "VERIFIED_ABSENT",
+      "cleanup_actions": 4,
+      "cleanup_action_errors": 0,
+      "environment_instances": 2,
+      "forced_process_stop": true
+    }
+  ],
+  "packaged_payloads_excluding_manifest": 138
+}
