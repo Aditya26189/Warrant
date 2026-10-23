@@ -129,9 +129,19 @@ def assemble(source_head: str) -> dict[str, object]:
     """Compile separate original-review comparisons and new custodian proposal."""
     book = json.loads((HERE / "SOURCE_CASEBOOK.json").read_bytes())
     cases = book["cases"]
+    lock = json.loads((HERE / "PROTOCOL_LOCK_A05.json").read_bytes())
+    if any(a.sha((HERE.parent / path).read_bytes()) != digest for path, digest in lock["files"].items()):
+        raise ValueError("LOCKED_INPUT_CHANGED")
+    _, original_cases = a.inputs()
+    if a.encoded(original_cases) != a.encoded(cases):
+        raise ValueError("CASEBOOK_NOT_ORIGINAL_INPUT_PROJECTION")
     evidence = {x["evidence_id"]: x for c in cases for x in c["evidence"]}
     for path in sorted(HERE.glob("RELEASED_FACTS_*.json")):
-        for fact in json.loads(path.read_bytes())["facts"]:
+        release = json.loads(path.read_bytes())
+        if any(a.sha((HERE / "checked-source-receipts" / name).read_bytes()) != digest
+               for name, digest in release["source_files"].items()):
+            raise ValueError("RELEASE_SOURCE_RECEIPT_CHANGED")
+        for fact in release["facts"]:
             if fact["evidence_id"] in evidence:
                 raise ValueError("NEW_EVIDENCE_COLLISION")
             evidence[fact["evidence_id"]] = fact
@@ -152,9 +162,23 @@ def assemble(source_head: str) -> dict[str, object]:
     validate_domain_rows(cases, list(domain.values()), evidence)
     bindings = {r["review_id"]: r for r in json.loads((HERE / "POSITIVE_EXPERIMENT_BINDINGS.json").read_bytes())["rows"]}
     override_rows = json.loads((HERE / "BIBLIOGRAPHIC_OVERRIDES.json").read_bytes())["rows"]
+    for override in override_rows:
+        candidate = override["candidate"]
+        raw = (HERE / candidate["metadata_receipt"]).read_bytes()
+        metadata = json.loads(raw)
+        checker = json.loads((HERE / candidate["checker_receipt"]).read_bytes())
+        if (checker["metadata_approval"]["draft_sha256"] != a.sha(raw)
+                or metadata["draft_id"] not in candidate["evidence_ids"]):
+            raise ValueError("OVERRIDE_METADATA_NOT_CHECKED")
+        if (not checker["metadata_approval"]["historical_first_availability_established"]
+                and not candidate["unresolved_reasons"]):
+            raise ValueError("PUBLISHER_HISTORY_UNCERTAINTY_ERASED")
     overrides = {r["review_id"]: r["candidate"] for r in override_rows}
+    advisory_files = a.read_archive(HERE.parent / "a04-reviewer-returns-20261022/B1_SUBSTANTIVE_REVIEW.zip")
+    advisory = {r["review_id"]: r for r in json.loads(advisory_files["B1_ELIGIBILITY_REVIEW_372.json"])}
     out = []
     changes = []
+    advisory_changes = []
     requests = []
     for case in cases:
         rid = case["review_id"]
@@ -200,6 +224,12 @@ def assemble(source_head: str) -> dict[str, object]:
             "custodian_decision": decision, "custodian_criteria": row["criteria"],
             "custodian_selected_version": version, "rationale": row["scientific_rationale"],
             "original_b_unchanged": True})
+        advisory_changes.append({"review_id": rid, "original_a_decision": advisory[rid]["decision"],
+            "original_a_criteria": {k: advisory[rid][k] for k in CRITERIA},
+            "original_a_selected_version": advisory[rid]["selected_version_id"],
+            "custodian_decision": decision, "custodian_criteria": row["criteria"],
+            "custodian_selected_version": version, "rationale": row["scientific_rationale"],
+            "original_a_unchanged": True, "a_status": "ADVISORY_NOT_FRESH_INDEPENDENT"})
         if decision == "UNCLEAR":
             requests.append({"review_id": rid, "work_id": row["work_id"],
                 "selected_version_id": version, "specific_missing_components": unresolved,
@@ -216,6 +246,7 @@ def assemble(source_head: str) -> dict[str, object]:
         "unresolved_component_counts": dict(collections.Counter(k for r in requests for k in r["specific_missing_components"]))}
     return {"CUSTODIAN_FRAME_PROPOSAL.json": {"summary": summary, "rows": out},
             "REVIEWER_B_RECONCILIATION.json": {"rows": changes},
+            "REVIEWER_A_RECONCILIATION.json": {"rows": advisory_changes},
             "REMAINING_CONTROLLED_QUESTIONS.json": {"requests": requests},
             "PROPOSAL_VALIDATION.json": summary}
 

@@ -93,6 +93,24 @@ class ProposalTests(unittest.TestCase):
         self.assertEqual(9, len({x["evidence_id"] for x in facts}))
         self.assertTrue(all(x["provider_actor"] != x["checker_actor"] for x in facts))
 
+    def test_enough_pointwise_cases_does_not_unlock_partial_frame_draw(self) -> None:
+        outputs = c.assemble("READ_ONLY_TEST_NO_ARTIFACT")
+        summary = outputs["PROPOSAL_VALIDATION.json"]
+        self.assertGreaterEqual(summary["counts"]["POINTWISE_SUPPORTED_PENDING_FRAME"], 10)
+        self.assertGreater(summary["counts"]["UNCLEAR"], 0)
+        self.assertEqual("FRAME_BLOCKED", summary["status"])
+        self.assertFalse(summary["sampling_authorized"])
+        self.assertFalse(summary["b2_authorized"])
+        proposal = outputs["CUSTODIAN_FRAME_PROPOSAL.json"]["rows"]
+        self.assertEqual({x["review_id"] for x in self.cases}, {x["review_id"] for x in proposal})
+        for row in proposal:
+            if row["decision"] == "EXCLUDE":
+                self.assertTrue(row["sentinel_exact_matches"] or row["whole_work_exclusion_ground"])
+        by_id = {x["review_id"]: x for x in proposal}
+        self.assertEqual("UNCLEAR", by_id["W0069"]["decision"])
+        self.assertEqual("UNCLEAR", by_id["W0339"]["decision"])
+        self.assertEqual("UNCLEAR", by_id["W0048"]["decision"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,398 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "b2_authorized": false,
+  "not_an_eligible_frame": "All-positive domain criteria are necessary but not sufficient. Preferred-version, body, identity, sentinel and complete-frame gates remain.",
+  "reviewed_utc": "2026-10-23T19:23:06.333401+00:00",
+  "role": "REVIEWER_INFORMED_CUSTODIAN_NOT_FRESH_INDEPENDENT",
+  "rows": [
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "REC-REC-01-W0008-F01",
+          "REC-REC-01-W0008-F02"
+        ],
+        "binary_evaluation": [
+          "REC-REC-01-W0008-F01",
+          "REC-REC-01-W0008-F02"
+        ],
+        "english_evaluation": [
+          "REC-REC-01-W0008-F03"
+        ],
+        "input_injection_task": [
+          "SEM-01-W0008-F01",
+          "REC-REC-01-W0008-F01"
+        ]
+      },
+      "experiment_and_inference_rationale": "The candidate responses are untrusted inputs to the protected judge. Perplexity/auxiliary known-answer decisions inspect that input; auxiliary detector output is not the protected judge response. English evaluated templates are explicit.",
+      "review_id": "W0008"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "REC-REC-01-W0011-F02"
+        ],
+        "binary_evaluation": [
+          "REC-REC-01-W0011-F01"
+        ],
+        "english_evaluation": [
+          "REC-REC-01-W0011-F03"
+        ],
+        "input_injection_task": [
+          "SEM-01-W0011-F01",
+          "REC-REC-01-W0011-F01"
+        ]
+      },
+      "experiment_and_inference_rationale": "The same clean/injected data-block probe experiment supplies all criteria, including explicit pre-generation activations and English evaluated trigger constructions.",
+      "review_id": "W0011"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "REC-REC-01-W0015-F01"
+        ],
+        "binary_evaluation": [
+          "REC-REC-01-W0015-F01"
+        ],
+        "english_evaluation": [
+          "REC-REC-01-W0015-F02"
+        ],
+        "input_injection_task": [
+          "REC-REC-01-W0015-F01"
+        ]
+      },
+      "experiment_and_inference_rationale": "Embedding classifiers need only input prompt records, so timing follows from input-only computation. Mixed-language corpus contains an English component; held-out language composition and an English-only split are not claimed.",
+      "review_id": "W0015"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "REC-REC-01-W0020-F02"
+        ],
+        "binary_evaluation": [
+          "REC-REC-01-W0020-F01"
+        ],
+        "english_evaluation": [
+          "REC-REC-01-W0020-F03"
+        ],
+        "input_injection_task": [
+          "REC-REC-01-W0020-F01",
+          "REC-REC-01-W0020-F02"
+        ]
+      },
+      "experiment_and_inference_rationale": "Original binary injection labels, English train/test curation and pre-target pipeline are all explicit in v1.",
+      "review_id": "W0020"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "REC-REC-01-W0041-F01"
+        ],
+        "binary_evaluation": [
+          "SEM-01-W0041-F02",
+          "REC-REC-01-W0041-F01"
+        ],
+        "english_evaluation": [
+          "REC-REC-01-W0041-F02"
+        ],
+        "input_injection_task": [
+          "SEM-01-W0041-F01",
+          "REC-REC-01-W0041-F01"
+        ]
+      },
+      "experiment_and_inference_rationale": "Clean/contaminated target-data decisions use a dedicated auxiliary detector secret check, not protected backend output. The actual detector instruction is evaluated in English.",
+      "review_id": "W0041"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "REC-REC-01-W0044-F01"
+        ],
+        "binary_evaluation": [
+          "REC-REC-01-W0044-F01"
+        ],
+        "english_evaluation": [
+          "REC-REC-01-W0044-F02"
+        ],
+        "input_injection_task": [
+          "SEM-01-W0044-F01",
+          "REC-REC-01-W0044-F01"
+        ]
+      },
+      "experiment_and_inference_rationale": "Tool-description attack content is checked by a separate known-answer input detector with explicit injected/clean decisions. Its English secret-repetition instruction precedes any protected tool-use answer.",
+      "review_id": "W0044"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "SEM-01-W0058-F02",
+          "REC-REC-01-W0058-F01"
+        ],
+        "binary_evaluation": [
+          "SEM-01-W0058-F01",
+          "REC-REC-01-W0058-F01"
+        ],
+        "english_evaluation": [
+          "REC-REC-01-W0058-F02"
+        ],
+        "input_injection_task": [
+          "SEM-01-W0058-F01",
+          "SEM-01-W0058-F02"
+        ]
+      },
+      "experiment_and_inference_rationale": "The dedicated detector labels data before forwarding to the distinct backend role; English evaluated detector construction is explicit.",
+      "review_id": "W0058"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "SEM-01-W0062-F02",
+          "A05-SRC02-W0062-F05"
+        ],
+        "binary_evaluation": [
+          "A05-SRC02-W0062-F01"
+        ],
+        "english_evaluation": [
+          "REC-REC-01-W0062-F02"
+        ],
+        "input_injection_task": [
+          "SEM-01-W0062-F01",
+          "A05-SRC02-W0062-F01"
+        ]
+      },
+      "experiment_and_inference_rationale": "Exact v1 separately checks clean/contaminated tool-input classification within the shared AgentDojo evaluation; this is distinct from environment-state agent-task checks. Original English attack constructions and pre-backend guard roles are supported in the same revision.",
+      "review_id": "W0062"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "REC-REC-01-W0069-F01"
+        ],
+        "binary_evaluation": [
+          "REC-REC-01-W0069-F01"
+        ],
+        "english_evaluation": [
+          "REC-REC-01-W0069-F02"
+        ],
+        "input_injection_task": [
+          "REC-REC-01-W0069-F01"
+        ]
+      },
+      "experiment_and_inference_rationale": "Original syntactic binary injection/opinion comparison runs on supplied English texts without protected consensus output. Identity/study overlap with thesis remains a separate hold.",
+      "review_id": "W0069"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "REC-REC-01-W0074-F01"
+        ],
+        "binary_evaluation": [
+          "REC-REC-01-W0074-F01",
+          "REC-REC-01-W0074-F02"
+        ],
+        "english_evaluation": [
+          "REC-REC-01-W0074-F02"
+        ],
+        "input_injection_task": [
+          "REC-REC-01-W0074-F01",
+          "REC-REC-01-W0074-F02"
+        ]
+      },
+      "experiment_and_inference_rationale": "Original synthetic-document experiment checks hidden instructions using extraction/OCR and phrase/optional detector flags. The detector's presence flag supplies the binary document decision and needs no protected LLM output. English injection constructions are explicitly evaluated.",
+      "review_id": "W0074"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "SEM-01-W0095-F02",
+          "REC-REC-01-W0095-F01"
+        ],
+        "binary_evaluation": [
+          "SEM-01-W0095-F01",
+          "SEM-01-W0095-F04"
+        ],
+        "english_evaluation": [
+          "REC-REC-01-W0095-F02"
+        ],
+        "input_injection_task": [
+          "SEM-01-W0095-F01",
+          "SEM-01-W0095-F03"
+        ]
+      },
+      "experiment_and_inference_rationale": "The original contaminated-prompt residual classifier operates on final-input state, with any-segment binary aggregation. English instruction insertions are linked to long-context evaluation rather than inferred from corpus names.",
+      "review_id": "W0095"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "SEM-01-W0097-F02",
+          "REC-REC-01-W0097-F01"
+        ],
+        "binary_evaluation": [
+          "SEM-01-W0097-F02",
+          "REC-REC-01-W0097-F01"
+        ],
+        "english_evaluation": [
+          "REC-REC-01-W0097-F02"
+        ],
+        "input_injection_task": [
+          "SEM-01-W0097-F01",
+          "SEM-01-W0097-F02",
+          "REC-REC-01-W0097-F01"
+        ]
+      },
+      "experiment_and_inference_rationale": "Input detector baselines are separately evaluated from sanitization. Thresholded safe/unsafe input scores and auxiliary known-answer output precede the protected answer; held-out attack construction includes English overrides.",
+      "review_id": "W0097"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "REC-REC02-W0125-R0003-F01"
+        ],
+        "binary_evaluation": [
+          "SEM-02-SC02-W0125-R0004-F02",
+          "REC-REC02-W0125-R0003-F01"
+        ],
+        "english_evaluation": [
+          "SEM-02-SC02-W0125-R0004-F03"
+        ],
+        "input_injection_task": [
+          "SEM-02-SC02-W0125-R0004-F01",
+          "SEM-02-SC02-W0125-R0004-F02"
+        ]
+      },
+      "experiment_and_inference_rationale": "The original clean/injected email-prompt embedding drift experiment has explicit English filtering; encoded input pairs and flagging need no protected response. Availability of an aligned clean contrast is not a claim of deployability.",
+      "review_id": "W0125"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "SEM-02-SC02-W0200-R0003-F02"
+        ],
+        "binary_evaluation": [
+          "SEM-02-SC02-W0200-R0003-F01"
+        ],
+        "english_evaluation": [
+          "SEM-02-SC02-W0200-R0003-F03"
+        ],
+        "input_injection_task": [
+          "SEM-02-SC02-W0200-R0003-F01"
+        ]
+      },
+      "experiment_and_inference_rationale": "Original indirect-injection sequence classification explicitly precedes victim consumption and includes an English component of a multilingual benchmark.",
+      "review_id": "W0200"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "SEM-02-SC02-W0202-R0003-F02"
+        ],
+        "binary_evaluation": [
+          "SEM-02-SC02-W0202-R0003-F02"
+        ],
+        "english_evaluation": [
+          "REC-REC02-W0202-R0003-F01"
+        ],
+        "input_injection_task": [
+          "SEM-02-SC02-W0202-R0003-F02"
+        ]
+      },
+      "experiment_and_inference_rationale": "Separate original input-text injection classifier comparisons qualify even though the main system monitors generated calls. Input classifiers need no protected output, and the actual cross-lingual set explicitly includes English.",
+      "review_id": "W0202"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "SEM-02-SC02-W0208-R0003-F02"
+        ],
+        "binary_evaluation": [
+          "SEM-02-SC02-W0208-R0003-F01"
+        ],
+        "english_evaluation": [
+          "SEM-02-SC02-W0208-R0003-F03"
+        ],
+        "input_injection_task": [
+          "SEM-02-SC02-W0208-R0003-F01"
+        ]
+      },
+      "experiment_and_inference_rationale": "Frozen-guard final-input features classify direct/indirect injection versus benign context before any guard verdict; no protected answer can be required. The source expressly limits evaluation to English. Offline input-only classification satisfies timing without demonstrating downstream deployment.",
+      "review_id": "W0208"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "SEM-03-SC03-W0309-F01"
+        ],
+        "binary_evaluation": [
+          "SEM-03-SC03-W0309-F01"
+        ],
+        "english_evaluation": [
+          "SEM-03-SC03-W0309-F02"
+        ],
+        "input_injection_task": [
+          "SEM-03-SC03-W0309-F01"
+        ]
+      },
+      "experiment_and_inference_rationale": "The studied benign/injection prompt guard is a binary natural-language input classifier, with windowing independent of a protected answer. The actual study uses English and Spanish, without implying all samples are English.",
+      "review_id": "W0309"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "SEM-03-SC03-W0327-F02"
+        ],
+        "binary_evaluation": [
+          "SEM-03-SC03-W0327-F03"
+        ],
+        "english_evaluation": [
+          "SEM-03-SC03-W0327-F04"
+        ],
+        "input_injection_task": [
+          "SEM-03-SC03-W0327-F01",
+          "SEM-03-SC03-W0327-F03"
+        ]
+      },
+      "experiment_and_inference_rationale": "The original English rendered RAG-input benchmark has explicit benign/injection labels and a before-generation detector under external-content control.",
+      "review_id": "W0327"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-SRC03-W0339-M01"
+        ],
+        "binary_evaluation": [
+          "A05-SRC03-W0339-M01"
+        ],
+        "english_evaluation": [
+          "A05-SRC03-W0339-M01"
+        ],
+        "input_injection_task": [
+          "A05-SRC03-W0339-M01"
+        ]
+      },
+      "experiment_and_inference_rationale": "Current publisher VOR methods expressly define binary input detection, pre-downstream/no-output timing and stated English single-turn evaluation. This establishes domain in those current bytes only; historical cutoff-version authentication remains a separate unresolved requirement.",
+      "review_id": "W0339"
+    },
+    {
+      "criterion_evidence_ids": {
+        "before_target_answer": [
+          "REC-REC-01-W0352-F03",
+          "A05-SRC01-W0352-F02"
+        ],
+        "binary_evaluation": [
+          "A05-SRC01-W0352-F01",
+          "A05-SRC01-W0352-F02"
+        ],
+        "english_evaluation": [
+          "A05-SRC01-W0352-F03"
+        ],
+        "input_injection_task": [
+          "A05-SRC01-W0352-F01"
+        ]
+      },
+      "experiment_and_inference_rationale": "All criteria are supported by the preferred ACL publication. Final-input/preset-reply features and explicit BIPIA pre-target screening do not require the protected answer; English original evaluation is distinct from translated extensions.",
+      "review_id": "W0352"
+    }
+  ],
+  "sampling_authorized": false,
+  "source_git_commit": "13aab5f1824cc1293e55252b1a972ca3cce535cc"
+}
