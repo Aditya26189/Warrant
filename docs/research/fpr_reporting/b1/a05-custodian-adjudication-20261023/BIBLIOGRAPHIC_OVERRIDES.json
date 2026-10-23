@@ -1,0 +1,37 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "b2_authorized": false,
+  "reviewed_utc": "2026-10-23T19:21:47.982602+00:00",
+  "role": "REVIEWER_INFORMED_CUSTODIAN_NOT_FRESH_INDEPENDENT",
+  "rows": [
+    {
+      "candidate": {
+        "checker_receipt": "checked-source-receipts/provider-03-checker.json",
+        "date_basis": "Publisher header declarations in current captured PDF; no exact historical-byte authentication or Crossref-deposit availability inference.",
+        "date_interval": [
+          "2026-09-03",
+          "2026-09-03"
+        ],
+        "evidence_ids": [
+          "A05-PROVIDER03-W0339-METADATA-0002"
+        ],
+        "first_public_date_interval": [
+          "2026-08-28",
+          "2026-08-28"
+        ],
+        "member_id": "M0354",
+        "metadata_receipt": "checked-source-receipts/provider-03-metadata.json",
+        "priority": 3,
+        "source_body_supported": true,
+        "unresolved_reasons": [
+          "PUBLISHER_HEADER_DATES_ONLY_EXACT_CUTOFF_VOR_BYTES_UNAUTHENTICATED_POSTCUTOFF_LAST_MODIFIED"
+        ],
+        "version": "doi:10.1109/access.2026.3728186:vor:declared-2026-09-03",
+        "withdrawn": false
+      },
+      "review_id": "W0339"
+    }
+  ],
+  "sampling_authorized": false,
+  "source_git_commit": "8811486b5da74f6a1cbffdcb4562060d042a1566"
+}
