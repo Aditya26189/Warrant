@@ -98,7 +98,7 @@ class ProtocolTests(unittest.TestCase):
 
 
 class TrialReceiptTests(unittest.TestCase):
-    def fixture(self, mode, reward=1, mutate=False):
+    def fixture(self, mode, reward=1, mutate=False, cleanup_ok=True):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         root = Path(temporary.name)
@@ -135,12 +135,16 @@ class TrialReceiptTests(unittest.TestCase):
 
         def cancel(proc, grace):
             proc.returncode = -2
-            return {"forced": False, "delegated_resource_cleanup": "UNVERIFIED"}
+            return {"forced": False, "delegated_resource_cleanup": "UNVERIFIED", "producer_stopped": True}
 
         process.wait.side_effect = wait
         with patch.object(run_trial, "git_output", side_effect=git), patch.object(run_trial.subprocess, "Popen",
                 side_effect=OSError("launch failed") if mode == "launch" else None, return_value=process), patch.object(
-                run_trial, "cancel_process", side_effect=cancel):
+                run_trial, "cancel_process", side_effect=cancel), patch.object(run_trial, "HarborResources") as scope:
+            scope.return_value.owner = "test-owner"
+            scope.return_value.policy = {}
+            scope.return_value.prepare.return_value = []
+            scope.return_value.cleanup.return_value = {"verified_absent": cleanup_ok, "status": "VERIFIED_ABSENT" if cleanup_ok else "ERROR"}
             result = run_trial.run_trial(args)
         recorded = json.loads((args.out / "outcome.json").read_text())
         self.assertEqual(result, recorded)
@@ -185,6 +189,16 @@ class TrialReceiptTests(unittest.TestCase):
         result = self.fixture("normal", mutate=True)
         self.assertFalse(result["task_unchanged"])
         self.assertEqual(result["status"], "INFRASTRUCTURE_ERROR")
+
+    def test_cleanup_failure_blocks_otherwise_completed_trial(self):
+        result = self.fixture("normal", cleanup_ok=False)
+        self.assertEqual(result["status"], "INFRASTRUCTURE_ERROR")
+        self.assertNotIn("reward", result)
+
+    def test_timeout_keeps_failure_status_even_when_cleanup_fails(self):
+        result = self.fixture("timeout", cleanup_ok=False)
+        self.assertEqual(result["status"], "TIMEOUT")
+        self.assertEqual(result["cancellation"]["delegated_resource_cleanup"], "ERROR")
 
 
 class DiagnosticGateTests(unittest.TestCase):

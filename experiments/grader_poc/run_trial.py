@@ -17,6 +17,8 @@ import sys
 import time
 from datetime import datetime, timezone
 
+from experiments.grader_poc.harbor_resources import HarborResources, defer_interrupt
+
 
 def git_output(root: Path, *args: str) -> str:
     """Read provenance from the named repository, never the caller's checkout."""
@@ -26,7 +28,7 @@ def git_output(root: Path, *args: str) -> str:
     if sys.platform == "linux" and "microsoft" in platform.release().lower():
         executable = "git.exe"
         directory = subprocess.check_output(["wslpath", "-w", str(root)], text=True).strip()
-    return subprocess.check_output([executable, "-C", directory, *args], text=True).strip()
+    return subprocess.check_output([executable, "-c", "core.longpaths=true", "-C", directory, *args], text=True).strip()
 
 
 def file_hashes(root: Path) -> dict[str, str]:
@@ -45,9 +47,8 @@ def write_receipt(path: Path, record: dict) -> None:
 def cancel_process(process: subprocess.Popen, grace: float) -> dict:
     """Give Harbor a chance to clean up; bound waiting on the owned process.
 
-    POSIX uses a newly created process group. Windows can only promise direct
-    child termination here. Delegated Docker resources are not certified absent
-    by this receipt; a forced stop can prevent Harbor's cleanup handlers.
+    POSIX uses a newly created process group, including descendant Compose
+    clients that can outlive Harbor. Docker cleanup follows separately.
     """
     record = {"forced": False, "delegated_resource_cleanup": "UNVERIFIED"}
     try:
@@ -74,7 +75,17 @@ def cancel_process(process: subprocess.Popen, grace: float) -> dict:
             record["error"] = type(exc).__name__
     except OSError as exc:
         record["error"] = str(exc)
+    if os.name == "posix":
+        try:
+            # Parent exit alone does not imply its Compose children stopped.
+            os.killpg(process.pid, signal.SIGKILL)
+            record["remaining_group_signalled"] = True
+        except ProcessLookupError:
+            record["remaining_group_signalled"] = False
+        except OSError as exc:
+            record["error"] = str(exc)
     record["exit_code"] = process.poll()
+    record["producer_stopped"] = record["exit_code"] is not None and "error" not in record and os.name == "posix"
     return record
 
 
@@ -120,7 +131,7 @@ def run_trial(args: argparse.Namespace) -> dict:
                "-a", args.agent, "-n", "1", "-o", str(out / "jobs"),
                "--job-name", args.name]
     record = {
-        "schema_version": 2, "evidence_kind": "adaptive_stress_test",
+        "schema_version": 3, "evidence_kind": "adaptive_stress_test",
         "source_commit": git_output(source_root, "rev-parse", "HEAD"),
         "source_dirty": False, "config": config,
         "started_at": datetime.now(timezone.utc).isoformat(),
@@ -133,11 +144,18 @@ def run_trial(args: argparse.Namespace) -> dict:
     write_receipt(out / "invocation.json", record)
     env = os.environ.copy()
     env["HARBOR_TELEMETRY"] = "0"
+    env["PYTHONPATH"] = str(source_root) + os.pathsep + env.get("PYTHONPATH", "")
     started = time.monotonic()
     record.update(status="INFRASTRUCTURE_ERROR", exit_code=None, matches_expected=None)
     process = None
+    resources = None
     try:
         with (out / "command.log").open("w", encoding="utf-8") as log:
+            resources = HarborResources(out)
+            record["ownership"] = {"owner": resources.owner, "policy": resources.policy,
+                                   "ledger": "ownership", "environment_adapter": "OwnedDockerEnvironment"}
+            command.extend(resources.prepare())
+            write_receipt(out / "invocation.json", record)
             process = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT,
                                        env=env, start_new_session=os.name == "posix")
             try:
@@ -148,14 +166,26 @@ def run_trial(args: argparse.Namespace) -> dict:
             except KeyboardInterrupt:
                 record.update(status="INTERRUPTED", error={"type": "KeyboardInterrupt", "message": "Harbor invocation interrupted"})
             finally:
-                if process.poll() is None:
-                    record["cancellation"] = cancel_process(process, config["process_cancel_grace_seconds"])
-                    record["exit_code"] = process.poll()
-    except OSError as exc:
+                if process.poll() is None or record["status"] in ("TIMEOUT", "INTERRUPTED"):
+                    with defer_interrupt():
+                        record["cancellation"] = cancel_process(process, config["process_cancel_grace_seconds"])
+                        record["exit_code"] = process.poll()
+    except (OSError, ValueError, subprocess.SubprocessError) as exc:
         record.update(status="INFRASTRUCTURE_ERROR", error={"type": type(exc).__name__, "message": str(exc)})
     except KeyboardInterrupt:
         record.update(status="INTERRUPTED", error={"type": "KeyboardInterrupt", "message": "Harbor invocation interrupted"})
     finally:
+        if resources is not None:
+            with defer_interrupt():
+                if process is not None and process.poll() is None:
+                    record["cancellation"] = cancel_process(process, config["process_cancel_grace_seconds"])
+                    record["exit_code"] = process.poll()
+                stopped = process is None or process.poll() is not None
+                if "cancellation" in record:
+                    stopped = record["cancellation"].get("producer_stopped", False)
+                record["resource_cleanup"] = resources.cleanup(stopped)
+                if "cancellation" in record:
+                    record["cancellation"]["delegated_resource_cleanup"] = record["resource_cleanup"]["status"]
         record["elapsed_seconds"] = time.monotonic() - started
         trials, errors = collect_trials(out)
         record.update(trials=trials, result_errors=errors)
@@ -170,7 +200,8 @@ def run_trial(args: argparse.Namespace) -> dict:
                 verifier = trials[0]["verifier_result"]
                 rewards = verifier.get("rewards") if isinstance(verifier, dict) else None
                 reward = rewards.get("reward") if isinstance(rewards, dict) else None
-                if type(reward) in (int, float) and reward in (0, 1) and record["task_unchanged"]:
+                if (type(reward) in (int, float) and reward in (0, 1) and record["task_unchanged"]
+                        and record.get("resource_cleanup", {}).get("verified_absent")):
                     record.update(status="COMPLETED", reward=reward, matches_expected=reward == args.expected_reward)
         write_receipt(out / "outcome.json", record)
     return record
