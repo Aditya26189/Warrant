@@ -200,6 +200,12 @@ def package(work: Path) -> dict:
     wsl = "/mnt/" + posix[0].lower() + posix[2:] if ":" in posix else posix
     replacements = sorted({home, home.replace("\\", "\\\\"), posix, wsl}, key=len, reverse=True)
     copies, omitted = [], []
+
+    def redact(body: str) -> str:
+        for prefix in replacements:
+            body = body.replace(prefix, "${HOST_HOME}")
+        return re.sub(r"/tmp/warrant-grader-poc-[0-9]+-venv", "${HARBOR_VENV}", body)
+
     for folder in ("grader-payments-e2e-full", "grader-payments-e2e-cases", "grader-payments-e2e-cases-002",
                    "grader-payments-e2e-validation", "grader-payments-e2e-validation-002"):
         for source in sorted((work / folder).rglob("*")):
@@ -216,9 +222,7 @@ def package(work: Path) -> dict:
             except UnicodeDecodeError:
                 omitted.append({**row, "reason": "Binary runtime file retained locally"})
                 continue
-            for prefix in replacements:
-                body = body.replace(prefix, "${HOST_HOME}")
-            body = re.sub(r"/tmp/warrant-grader-poc-[0-9]+-venv", "${HARBOR_VENV}", body)
+            body = redact(body)
             target = out / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(body.encode())
@@ -226,6 +230,7 @@ def package(work: Path) -> dict:
     license_bytes = (here / "results/TERMINAL_BENCH_LICENSE.txt").read_bytes()
     (out / "TERMINAL_BENCH_LICENSE.txt").write_bytes(license_bytes)
     summary["omitted_runtime_artifacts"] = omitted
+    summary = json.loads(redact(json.dumps(summary)))
     write_receipt(out / "summary.json", summary)
     write_receipt(out / "manifest.json", {"copies": copies, "omitted": omitted, "packaged_files": file_hashes(out),
                   "redaction": "Host home and temporary venv replaced; UTF8 BOM removed. Raw hashes retained; __pycache__ excluded."})
