@@ -1,7 +1,9 @@
 """Check that the negative assertion cannot pass without real progress evidence."""
 import unittest
+from types import SimpleNamespace
+from unittest.mock import Mock
 
-from experiments.grader_poc.payments_e2e.boundary_check import classify, make_plan
+from experiments.grader_poc.payments_e2e.boundary_check import classify, make_plan, running_worker_status
 
 
 class BoundaryTests(unittest.TestCase):
@@ -40,6 +42,23 @@ class BoundaryTests(unittest.TestCase):
 
     def test_negative_callbacks_allowed(self):
         self.assertEqual(classify(self.plan, self.callbacks)["status"], "NO_FALSE_POSITIVE_IN_OBSERVATION_WINDOW")
+
+    def test_intentionally_stopped_extra_slot_does_not_invalidate_single_worker(self):
+        def supervisor(command, *names):
+            if not names:
+                raise RuntimeError("supervisor exits 3 when extra is STOPPED")
+            return SimpleNamespace(stdout="\n".join(name + " RUNNING pid 1" for name in names))
+        upstream = SimpleNamespace(PRIMARY_WORKER="primary", EXTRA_WORKER="extra", supervisorctl=Mock(side_effect=supervisor))
+        self.assertIn("primary RUNNING", running_worker_status(upstream, "single"))
+        upstream.supervisorctl.assert_called_with("status", "primary")
+        self.assertIn("extra RUNNING", running_worker_status(upstream, "overlap"))
+        upstream.supervisorctl.assert_called_with("status", "primary", "extra")
+
+    def test_required_worker_not_running_is_rejected(self):
+        upstream = SimpleNamespace(PRIMARY_WORKER="primary", EXTRA_WORKER="extra",
+                                   supervisorctl=lambda *args: SimpleNamespace(stdout="primary STOPPED"))
+        with self.assertRaises(AssertionError):
+            running_worker_status(upstream, "single")
 
 
 if __name__ == "__main__":
