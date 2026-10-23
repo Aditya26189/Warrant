@@ -37,7 +37,8 @@ def fixture(task: Path, base: str, controls: dict, separate: bool) -> None:
                "networks": {"default": {"internal": True}, "shared": {"external": True, "name": controls["network"]}},
                "volumes": {"owned": {}, "shared": {"external": True, "name": controls["volume"]}}}
     for directory in ("environment", "tests") if separate else ("environment",):
-        (task / directory / "Dockerfile").write_bytes(f"FROM {base}\nWORKDIR /app\n".encode())
+        install_tests = "COPY . /tests/\n" if directory == "tests" else ""
+        (task / directory / "Dockerfile").write_bytes(f"FROM {base}\nWORKDIR /app\n{install_tests}".encode())
         (task / directory / "docker-compose.yaml").write_bytes(json.dumps(compose).encode())
     agent = "echo agent-finished" if separate else "touch /tmp/warrant-active\nsleep 300"
     verifier = "touch /tmp/warrant-verifier-active\nsleep 300" if separate else "echo 1 > /logs/verifier/reward.txt"
@@ -109,6 +110,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     for key in ("tb", "harbor", "harbor-bin", "out"):
         parser.add_argument("--" + key, type=Path, required=True)
+    parser.add_argument("--modes", nargs="+", choices=("timeout", "interruption", "verifier-interruption", "reference"),
+                        default=["timeout", "interruption", "verifier-interruption", "reference"])
     args = parser.parse_args()
     for key in ("tb", "harbor", "harbor_bin", "out"):
         setattr(args, key, getattr(args, key).resolve())
@@ -132,17 +135,18 @@ def main() -> None:
         docker("run", "--detach", "--name", controls["container"], "--label", f"{CONTROL_LABEL}={token}",
                "--network", controls["network"], "--volume", controls["volume"] + ":/control", base, "sleep", "900")
         created.append("container")
-        for mode in ("timeout", "interruption", "verifier-interruption"):
+        for mode in [item for item in args.modes if item != "reference"]:
             row = cancellation_check(args, mode, base, controls)
             record["checks"].append({"mode": mode, "passed": row["passed"], "active": row["active_observed"],
                                       "status": row["run"]["status"], "cleanup": row["run"]["resource_cleanup"]["status"]})
             write_receipt(args.out / "outcome.json", record)
             print(json.dumps(record["checks"][-1]), flush=True)
-        reference = run_trial(argparse.Namespace(task=args.tb / "tasks/session-window-debug", out=args.out / "reference",
-            tb_repo=args.tb, harbor_repo=args.harbor, harbor_bin=args.harbor_bin, name="cleanup-reference",
-            agent="oracle", expected_reward=1, timeout=600))
-        record["checks"].append({"mode": "reference", "passed": reference["status"] == "COMPLETED" and reference["reward"] == 1,
-                                  "status": reference["status"], "cleanup": reference["resource_cleanup"]["status"]})
+        if "reference" in args.modes:
+            reference = run_trial(argparse.Namespace(task=args.tb / "tasks/session-window-debug", out=args.out / "reference",
+                tb_repo=args.tb, harbor_repo=args.harbor, harbor_bin=args.harbor_bin, name="cleanup-reference",
+                agent="oracle", expected_reward=1, timeout=600))
+            record["checks"].append({"mode": "reference", "passed": reference["status"] == "COMPLETED" and reference["reward"] == 1,
+                                      "status": reference["status"], "cleanup": reference["resource_cleanup"]["status"]})
         record["status"] = "PASSED" if all(row["passed"] for row in record["checks"]) else "FAILED"
     finally:
         record["control_removal"] = []
@@ -167,6 +171,7 @@ def main() -> None:
         record["finished_at"] = datetime.now(timezone.utc).isoformat()
         write_receipt(args.out / "outcome.json", record)
     print(json.dumps({"status": record["status"], "checks": len(record["checks"])}), flush=True)
+    raise SystemExit(0 if record["status"] == "PASSED" else 1)
 
 
 if __name__ == "__main__":
