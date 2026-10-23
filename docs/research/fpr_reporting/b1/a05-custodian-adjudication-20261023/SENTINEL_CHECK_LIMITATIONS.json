@@ -1,0 +1,22 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "alias_or_eligibility_changes_from_partial": false,
+  "b2_authorized": false,
+  "checker_did_not_attest_provider_quota": true,
+  "coverage_counts": {
+    "HOLD_CAPTURE_UNAVAILABLE": 59,
+    "HOLD_NO_REFERENCED_CAPTURE": 1,
+    "VERIFIED_BOUNDED_IDENTITY_FIELDS": 5
+  },
+  "locked_identifiers": 65,
+  "observed_utc": "2026-10-23T19:29:36.892857+00:00",
+  "provider_service_stop_observed_by_root": "Source provider tool returned: Agent errored: You have hit your usage limit. No time-zone-specific reset time inferred.",
+  "sampling_authorized": false,
+  "scope": "Separately checked safe partial projection of actual existing captures; not a completed provider return, new retrieval or whole-frame alias clearance.",
+  "source_files": {
+    "CHECKER_A05.0001.json": "6da9703382ac4759e8a11c1b2848edd9972bafacfdceb2859dfc4cfe8d42d3ab",
+    "SAFE_SENTINEL_BIBLIOGRAPHY_PARTIAL.0001.json": "26f344bd8e150b3f5fabf595191e5ea03fc8d787d334b82817e7354f3203a7e1"
+  },
+  "source_git_commit": "030055527e0e62ae4db5bb14f5799e180c711753",
+  "transport_failures_reported_in_original_receipts": "ProxyError / WinError 10061; empty failed bodies are not evidence of absence."
+}

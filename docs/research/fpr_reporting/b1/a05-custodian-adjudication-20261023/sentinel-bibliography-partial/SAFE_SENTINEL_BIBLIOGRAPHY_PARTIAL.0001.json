@@ -1,0 +1,762 @@
+{
+  "artifact_id": "SAFE-SENTINEL-BIBLIOGRAPHY-PARTIAL-A05-0001",
+  "status": "PARTIAL_RESTRICTED_PROJECTION_FROM_EXISTING_CAPTURES",
+  "actor_id": "/root/a05_source_check",
+  "role": "PEER_SOURCE_CHECKER_AND_RESTRICTED_PROJECTOR",
+  "created_utc": "2026-10-23T19:27:11.895063+00:00",
+  "provider_completed_return": false,
+  "new_retrieval_performed": false,
+  "records": [
+    {
+      "locked_identity": "arxiv:2506.05739",
+      "title": "To Protect the LLM Agent Against the Prompt Injection Attack with Polymorphic Prompt",
+      "authors": [
+        "Zhilong Wang",
+        "Neha Nagaraja",
+        "Lan Zhang",
+        "Hayretdin Bahsi",
+        "Pawan Patil",
+        "Peng Liu"
+      ],
+      "identifiers": {
+        "atom_id": "http://arxiv.org/abs/2506.05739v1",
+        "arxiv_id": "2506.05739",
+        "version_id": "2506.05739v1"
+      },
+      "source_supported_aliases": [
+        {
+          "type": "exact_atom_id_url",
+          "value": "http://arxiv.org/abs/2506.05739v1"
+        },
+        {
+          "type": "syntactic_unversioned_arxiv_identifier",
+          "value": "arxiv:2506.05739",
+          "basis": "Version suffix removed from the exact Atom id URL; no cross-work identity inference."
+        }
+      ],
+      "source": {
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\retrieval-01\\01-arxiv-0.body",
+        "sha256": "132369de6181ce9e47b22cb68da573dcf6242aa75d8374c6f13004dc27a02be6",
+        "feed_updated_timestamp": "2026-10-17T14:28:35Z",
+        "entry_published_timestamp": "2025-06-06T04:50:57Z",
+        "entry_updated_timestamp": "2025-06-06T04:50:57Z",
+        "capture_timestamp": null,
+        "capture_timestamp_limit": "No acquisition timestamp for this original raw body was supplied in the inspected partial files; Atom timestamps are source metadata, not a substitute."
+      },
+      "locator": {
+        "format": "ATOM_XML",
+        "namespaces": {
+          "a": "http://www.w3.org/2005/Atom",
+          "x": "http://arxiv.org/schemas/atom"
+        },
+        "entry_number_one_based": 71,
+        "entry_index_zero_based": 70,
+        "entry_atom_id": "http://arxiv.org/abs/2506.05739v1",
+        "fields": [
+          "atom:id",
+          "atom:title",
+          "atom:author/atom:name"
+        ],
+        "xpath_entry": "/atom:feed/atom:entry[71]",
+        "normalization": "title and author names: whitespace collapsed; identifiers retained from atom:id, with version suffix parsed explicitly"
+      },
+      "rule_exclude_versions": "ALL",
+      "scope": "Literal bibliographic identity fields only. Title wording is not evidence of any finding or claim."
+    },
+    {
+      "locked_identity": "arxiv:2605.06669",
+      "title": "Evaluating Prompt Injection Defenses for Educational LLM Tutors: Security-Usability-Latency Trade-offs",
+      "authors": [
+        "Alexandre Cristov\u00e3o Maiorano"
+      ],
+      "identifiers": {
+        "atom_id": "http://arxiv.org/abs/2605.06669v2",
+        "arxiv_id": "2605.06669",
+        "version_id": "2605.06669v2"
+      },
+      "source_supported_aliases": [
+        {
+          "type": "exact_atom_id_url",
+          "value": "http://arxiv.org/abs/2605.06669v2"
+        },
+        {
+          "type": "syntactic_unversioned_arxiv_identifier",
+          "value": "arxiv:2605.06669",
+          "basis": "Version suffix removed from the exact Atom id URL; no cross-work identity inference."
+        }
+      ],
+      "source": {
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\retrieval-01\\03-arxiv-200.body",
+        "sha256": "02f9e1ce347080a2d419b617233f6cd7052b14277162969d4b5e2c0776842dc5",
+        "feed_updated_timestamp": "2026-10-17T14:28:43Z",
+        "entry_published_timestamp": "2026-03-29T18:52:01Z",
+        "entry_updated_timestamp": "2026-05-21T15:20:18Z",
+        "capture_timestamp": null,
+        "capture_timestamp_limit": "No acquisition timestamp for this original raw body was supplied in the inspected partial files; Atom timestamps are source metadata, not a substitute."
+      },
+      "locator": {
+        "format": "ATOM_XML",
+        "namespaces": {
+          "a": "http://www.w3.org/2005/Atom",
+          "x": "http://arxiv.org/schemas/atom"
+        },
+        "entry_number_one_based": 10,
+        "entry_index_zero_based": 9,
+        "entry_atom_id": "http://arxiv.org/abs/2605.06669v2",
+        "fields": [
+          "atom:id",
+          "atom:title",
+          "atom:author/atom:name"
+        ],
+        "xpath_entry": "/atom:feed/atom:entry[10]",
+        "normalization": "title and author names: whitespace collapsed; identifiers retained from atom:id, with version suffix parsed explicitly"
+      },
+      "rule_exclude_versions": "ALL",
+      "scope": "Literal bibliographic identity fields only. Title wording is not evidence of any finding or claim."
+    },
+    {
+      "locked_identity": "arxiv:2604.17125",
+      "title": "Evaluating a Layered Prompt-Injection Defence for the Model Context Protocol: A Record-Level Audit of Decision Conventions, Corpus Provenance and Reproducibility",
+      "authors": [
+        "\u0130pek Abas\u0131kele\u015f Turgut",
+        "Edip G\u00fcm\u00fc\u015f"
+      ],
+      "identifiers": {
+        "atom_id": "http://arxiv.org/abs/2604.17125v3",
+        "arxiv_id": "2604.17125",
+        "version_id": "2604.17125v3"
+      },
+      "source_supported_aliases": [
+        {
+          "type": "exact_atom_id_url",
+          "value": "http://arxiv.org/abs/2604.17125v3"
+        },
+        {
+          "type": "syntactic_unversioned_arxiv_identifier",
+          "value": "arxiv:2604.17125",
+          "basis": "Version suffix removed from the exact Atom id URL; no cross-work identity inference."
+        }
+      ],
+      "source": {
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\retrieval-01\\03-arxiv-200.body",
+        "sha256": "02f9e1ce347080a2d419b617233f6cd7052b14277162969d4b5e2c0776842dc5",
+        "feed_updated_timestamp": "2026-10-17T14:28:43Z",
+        "entry_published_timestamp": "2026-04-18T19:53:09Z",
+        "entry_updated_timestamp": "2026-10-02T12:19:01Z",
+        "capture_timestamp": null,
+        "capture_timestamp_limit": "No acquisition timestamp for this original raw body was supplied in the inspected partial files; Atom timestamps are source metadata, not a substitute."
+      },
+      "locator": {
+        "format": "ATOM_XML",
+        "namespaces": {
+          "a": "http://www.w3.org/2005/Atom",
+          "x": "http://arxiv.org/schemas/atom"
+        },
+        "entry_number_one_based": 29,
+        "entry_index_zero_based": 28,
+        "entry_atom_id": "http://arxiv.org/abs/2604.17125v3",
+        "fields": [
+          "atom:id",
+          "atom:title",
+          "atom:author/atom:name"
+        ],
+        "xpath_entry": "/atom:feed/atom:entry[29]",
+        "normalization": "title and author names: whitespace collapsed; identifiers retained from atom:id, with version suffix parsed explicitly"
+      },
+      "rule_exclude_versions": "ALL",
+      "scope": "Literal bibliographic identity fields only. Title wording is not evidence of any finding or claim."
+    },
+    {
+      "locked_identity": "arxiv:2605.31042",
+      "title": "From Prompt Injection to Persistent Control: Defending Agentic Harness Against Trojan Backdoors",
+      "authors": [
+        "Jiejun Tan",
+        "Zhicheng Dou",
+        "Xinyu Yang",
+        "Yuyang Hu",
+        "Yiruo Cheng",
+        "Xiaoxi Li",
+        "Ji-Rong Wen"
+      ],
+      "identifiers": {
+        "atom_id": "http://arxiv.org/abs/2605.31042v1",
+        "arxiv_id": "2605.31042",
+        "version_id": "2605.31042v1"
+      },
+      "source_supported_aliases": [
+        {
+          "type": "exact_atom_id_url",
+          "value": "http://arxiv.org/abs/2605.31042v1"
+        },
+        {
+          "type": "syntactic_unversioned_arxiv_identifier",
+          "value": "arxiv:2605.31042",
+          "basis": "Version suffix removed from the exact Atom id URL; no cross-work identity inference."
+        }
+      ],
+      "source": {
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\retrieval-01\\03-arxiv-200.body",
+        "sha256": "02f9e1ce347080a2d419b617233f6cd7052b14277162969d4b5e2c0776842dc5",
+        "feed_updated_timestamp": "2026-10-17T14:28:43Z",
+        "entry_published_timestamp": "2026-05-29T09:19:07Z",
+        "entry_updated_timestamp": "2026-05-29T09:19:07Z",
+        "capture_timestamp": null,
+        "capture_timestamp_limit": "No acquisition timestamp for this original raw body was supplied in the inspected partial files; Atom timestamps are source metadata, not a substitute."
+      },
+      "locator": {
+        "format": "ATOM_XML",
+        "namespaces": {
+          "a": "http://www.w3.org/2005/Atom",
+          "x": "http://arxiv.org/schemas/atom"
+        },
+        "entry_number_one_based": 75,
+        "entry_index_zero_based": 74,
+        "entry_atom_id": "http://arxiv.org/abs/2605.31042v1",
+        "fields": [
+          "atom:id",
+          "atom:title",
+          "atom:author/atom:name"
+        ],
+        "xpath_entry": "/atom:feed/atom:entry[75]",
+        "normalization": "title and author names: whitespace collapsed; identifiers retained from atom:id, with version suffix parsed explicitly"
+      },
+      "rule_exclude_versions": "ALL",
+      "scope": "Literal bibliographic identity fields only. Title wording is not evidence of any finding or claim."
+    },
+    {
+      "locked_identity": "arxiv:2609.14079",
+      "title": "SkillSecurer: Detecting and Patching Prompt-Injection Vulnerabilities in AI Agent Skills",
+      "authors": [
+        "Donato Mecca",
+        "Alberto Verna",
+        "Youness Bouchari",
+        "Nikhil Jha",
+        "Marco Mellia"
+      ],
+      "identifiers": {
+        "atom_id": "http://arxiv.org/abs/2609.14079v1",
+        "arxiv_id": "2609.14079",
+        "version_id": "2609.14079v1"
+      },
+      "source_supported_aliases": [
+        {
+          "type": "exact_atom_id_url",
+          "value": "http://arxiv.org/abs/2609.14079v1"
+        },
+        {
+          "type": "syntactic_unversioned_arxiv_identifier",
+          "value": "arxiv:2609.14079",
+          "basis": "Version suffix removed from the exact Atom id URL; no cross-work identity inference."
+        }
+      ],
+      "source": {
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\retrieval-01\\04-arxiv-300.body",
+        "sha256": "2bd01175c18b0ee25a2788b485e3755978eea29bab1333fb1fb56bd74cb543cb",
+        "feed_updated_timestamp": "2026-10-17T14:28:47Z",
+        "entry_published_timestamp": "2026-09-12T17:52:06Z",
+        "entry_updated_timestamp": "2026-09-12T17:52:06Z",
+        "capture_timestamp": null,
+        "capture_timestamp_limit": "No acquisition timestamp for this original raw body was supplied in the inspected partial files; Atom timestamps are source metadata, not a substitute."
+      },
+      "locator": {
+        "format": "ATOM_XML",
+        "namespaces": {
+          "a": "http://www.w3.org/2005/Atom",
+          "x": "http://arxiv.org/schemas/atom"
+        },
+        "entry_number_one_based": 59,
+        "entry_index_zero_based": 58,
+        "entry_atom_id": "http://arxiv.org/abs/2609.14079v1",
+        "fields": [
+          "atom:id",
+          "atom:title",
+          "atom:author/atom:name"
+        ],
+        "xpath_entry": "/atom:feed/atom:entry[59]",
+        "normalization": "title and author names: whitespace collapsed; identifiers retained from atom:id, with version suffix parsed explicitly"
+      },
+      "rule_exclude_versions": "ALL",
+      "scope": "Literal bibliographic identity fields only. Title wording is not evidence of any finding or claim."
+    }
+  ],
+  "coverage": [
+    {
+      "locked_identity": "arxiv:0805.1569",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:0907.3740",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:1608.03109",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2110.06177",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2402.01822",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2406.10490",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2406.12934",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2407.02551",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2408.05817",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2411.00640",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2411.12946",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2412.16339",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2503.01747",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2503.02574",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2505.02299",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2506.05739",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "VERIFIED_BOUNDED_IDENTITY_FIELDS",
+      "capture_request_name": null,
+      "gap": null
+    },
+    {
+      "locked_identity": "arxiv:2506.10597",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2506.16416",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2510.05244",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2510.09023",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2511.12803",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2511.22047",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2602.02229",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2602.05746",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2604.17125",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "VERIFIED_BOUNDED_IDENTITY_FIELDS",
+      "capture_request_name": null,
+      "gap": null
+    },
+    {
+      "locked_identity": "arxiv:2605.03228",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2605.06669",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "VERIFIED_BOUNDED_IDENTITY_FIELDS",
+      "capture_request_name": null,
+      "gap": null
+    },
+    {
+      "locked_identity": "arxiv:2605.16282",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2605.17986",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2605.30534",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2605.31042",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "VERIFIED_BOUNDED_IDENTITY_FIELDS",
+      "capture_request_name": null,
+      "gap": null
+    },
+    {
+      "locked_identity": "arxiv:2605.31073",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2606.07789",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2606.09315",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2606.15153",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2606.18782",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2606.19881",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2606.30219",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2607.02510",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2607.23999",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2607.28322",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2608.21262",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2609.14079",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "VERIFIED_BOUNDED_IDENTITY_FIELDS",
+      "capture_request_name": null,
+      "gap": null
+    },
+    {
+      "locked_identity": "arxiv:2609.22048",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2609.33671",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2610.04575",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2610.14365",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "doi:10.1007/s11009-018-9636-1",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "doi-10-1007-s11009-018-9636-1",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "doi:10.32604/cmc.2025.074081",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "doi-10-32604-cmc-2025-074081",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "doi:10.3390/electronics15163700",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "doi-10-3390-electronics15163700",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "doi:10.5281/zenodo.22167308",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "doi-10-5281-zenodo-22167308",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "medrxiv:10.64898/2026.06.04.26354950",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "medrxiv-10-64898-2026-06-04-26354950",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "neurips:2024/e9721921b799b6ea98d37f9e77f1a7fe",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "neurips-2024-e9721921b799b6ea98d37f9e77f1a7fe",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "neurips:2025/746960ad49ddb47248970a0e1404230c",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "neurips-2025-746960ad49ddb47248970a0e1404230c",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "openreview-historical-pdf:27bdc234a1ce9d4f972f85391e2e1d1e53681ff1",
+      "exclude_versions": "ALL_KNOWN_MATCHES",
+      "bibliographic_coverage": "HOLD_NO_REFERENCED_CAPTURE",
+      "capture_request_name": null,
+      "gap": "No raw metadata capture for this locked identity was supplied in the inspected partial artifacts."
+    },
+    {
+      "locked_identity": "openreview:2i7xXuNixu",
+      "exclude_versions": "ALL_KNOWN_MATCHES",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "openreview-2i7xXuNixu",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "openreview:4et1dh8D23",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "openreview-4et1dh8D23",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "pmlr:v267/csillag25a",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "pmlr-v267-csillag25a",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "pmlr:v267/xiang25a",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "pmlr-v267-xiang25a",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "preprints:202609.2642",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "preprints-202609-2642",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "publisher:mdpi/applsci/16/16/7974",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "publisher-mdpi-applsci-16-16-7974",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "publisher:mdpi/electronics/15/11/2242",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "publisher-mdpi-electronics-15-11-2242",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "publisher:mdpi/electronics/15/16/3554",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "publisher-mdpi-electronics-15-16-3554",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "publisher:mdpi/futureinternet/18/7/376",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "publisher-mdpi-futureinternet-18-7-376",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "publisher:nejsds/article/59",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "publisher-nejsds-article-59",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    }
+  ],
+  "locked_a01_matching_rule": {
+    "source_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\AMENDMENT_A01_SENTINEL_EXCLUSIONS.md",
+    "source_sha256": "a74caf940b5f9c0aa2b73435483bb586480a46539fd869b65bd8bfde001b6efb",
+    "literal_title": "StepGuard: Step-Level Data Synthesis and Balance-Aware Reinforcement Learning for Guardrail",
+    "literal_title_prefix": "StepGuard: Step-Level Data Synthesis and Balance-Aware Reinforcement",
+    "historical_pdf_identity": "openreview-historical-pdf:27bdc234a1ce9d4f972f85391e2e1d1e53681ff1",
+    "forum_identity": "openreview:2i7xXuNixu",
+    "relationship": "UNRESOLVED_POTENTIALLY_DISTINCT_NO_ALIAS_ASSERTED",
+    "scope": "Preserved locked matching rule only; not a newly verified bibliographic record."
+  },
+  "limits": [
+    "Peer checking and restricted projection of actual partial captures only; no completed provider return or fresh provider attestation is claimed.",
+    "No network request, retry, proxy repair, service-limit workaround or new candidate search was performed by this checker.",
+    "The parent reported that the original provider stopped at a service usage limit before final drafting. The inspected partial artifacts do not contain the exact service-limit message or quota, so no exact service limit is invented. Their recorded transport failures are preserved separately.",
+    "No abstracts, results, findings, evaluation labels, sample/performance values, assurance claims or body claim prose were inspected or projected. Literal bibliographic titles remain identity metadata only.",
+    "The original locked identifiers and version scopes are rules. They are not evidence that a failed capture supplied any bibliographic field.",
+    "The locked A01 historical-PDF and forum identities remain potentially distinct. No alias or canonical mapping between them is asserted. The title/prefix rule is retained solely as an existing matching rule.",
+    "No whole-frame alias clearance, absence inference from a title nonmatch, eligibility decision or scientific classification is supplied.",
+    "Only syntactic arXiv aliases directly supported by the selected Atom id values are released. No other work mapping is made.",
+    "All original raw files and partial provider files are preserved unchanged; the filesystem is shared and no OS isolation is claimed."
+  ],
+  "eligibility_decision": null,
+  "whole_frame_alias_clearance": null
+}
