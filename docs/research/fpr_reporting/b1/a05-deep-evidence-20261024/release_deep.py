@@ -26,6 +26,8 @@ def field(packet: dict, path: str) -> object:
     """Resolve only declared method fields; never evaluate a supplied expression."""
     if path in {"method_summary", "english_evaluation_support", "coverage"}:
         return packet[path]
+    if path == "source_receipts.locators":
+        return packet["source_receipts"]["locators"]
     match = re.fullmatch(r"arm_inventory\[(\d+)\]", path)
     if match:
         return packet["arm_inventory"][int(match[1])]
