@@ -1,0 +1,497 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0019",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:49:36.660815+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0019.provider.0001.json",
+  "provider_packet_sha256": "f7ff77ebeac2b33dc7ad01ebfc28d35702e3296c1dd971e20075555b06d9ebfa",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2410.20911v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\710ad3c93859c3f451c17cfa98081eec61a3d04c1447ed53e61847f926eb9fa3",
+    "raw_sha256": "710ad3c93859c3f451c17cfa98081eec61a3d04c1447ed53e61847f926eb9fa3",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0046.json",
+    "acquisition_receipt_sha256": "624503298737b10ca257fad1822856af7ea5954c059e5b599089dea7db9b50d3",
+    "captured_version_id": "arxiv:2410.20911v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        39,
+        70
+      ],
+      [
+        80,
+        92
+      ],
+      [
+        118,
+        124
+      ],
+      [
+        147,
+        153
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_INVENTORY_ONLY",
+    "semantic_rationale": "Actually read architecture/decoys/triggers, passive tarpit, setup win definitions and appendix variant descriptions. Some trigger/template-only and agent implementation contexts remain unverified; no complete-work absence.",
+    "visual_check": null,
+    "locator_sha256": "03cabbb710b6d60cc10cfdc5c894c6833b4dd947c88e3ca89ca9e753259fd6fa",
+    "locators": [
+      {
+        "index": 39,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "IV Mantis : Overview and Architecture",
+        "text_sha256": "4f300870d04d3494e0c0b41711508afe076416d011d74f4aa84fd39059d7ed06"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S4.p2.1",
+        "section_id": "S4",
+        "heading": "IV Mantis : Overview and Architecture",
+        "text_sha256": "a2096fd31d388dca1e6a85f7806f1fb9818259666f5c84b7362341882c90d64f"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S4.p3.1",
+        "section_id": "S4",
+        "heading": "IV Mantis : Overview and Architecture",
+        "text_sha256": "6d15a5a60d0e0ff945886d10551cfdebf666a0894b0e977947413dfd941d1572"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S4.p4.1",
+        "section_id": "S4",
+        "heading": "IV Mantis : Overview and Architecture",
+        "text_sha256": "b5b27be28bbf36ce1539f81f2a8028128c7808afb091bac5b0443ad0b234d40a"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S4.p6.1",
+        "section_id": "S4",
+        "heading": "IV Mantis : Overview and Architecture",
+        "text_sha256": "f0995c7772b2b9c32f95c1fb6d81646d44fec9fd9f308a572255a1364e6a1d1e"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S4.SS0.SSS0.Px1.p1.1",
+        "section_id": "S4.SS0.SSS0.Px1",
+        "heading": "System Overview",
+        "text_sha256": "6e6495c6b3ed3c5ac068833747c590dddf0efb9fcb349009a79d1c1e2412e4fd"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S4.I1.i1.p1.1",
+        "section_id": "S4.SS0.SSS0.Px1",
+        "heading": "System Overview",
+        "text_sha256": "c75e9284d430024404ea84dbe7146dc35ece0a14ac1904bab5bdcc121ed8f25c"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S4.I1.i2.p1.1",
+        "section_id": "S4.SS0.SSS0.Px1",
+        "heading": "System Overview",
+        "text_sha256": "402eca8e98bc6f7ee3e5e109e4517580846efacb9960f980e235ce05c5e3f226"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S4.SS0.SSS0.Px1.p2.1",
+        "section_id": "S4.SS0.SSS0.Px1",
+        "heading": "System Overview",
+        "text_sha256": "1e578a8e2b8a0c7f1b13130d227d65b465f0e07169cc4ecb14c53fcc29ed1276"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "IV-A Sabotage Objectives",
+        "text_sha256": "57f032ba012af93a021f192a9ae5b1ea98329593bb2fe6b0f881e4c9ec8d69d1"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S4.SS1.SSS0.Px1.p1.1",
+        "section_id": "S4.SS1.SSS0.Px1",
+        "heading": "Active Defense ( agent-counterstrike )",
+        "text_sha256": "674995064e212b69a97c7c19d5ba34860f02a5f3cf6ed64cf5b9501e54af46f2"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S4.SS1.SSS0.Px2.p1.1",
+        "section_id": "S4.SS1.SSS0.Px2",
+        "heading": "Passive Defense ( agent-tarpit )",
+        "text_sha256": "6f59862edfd92d956583c84c1f4fe933c25a61ce0e4d4518ee7efcfca5c1ba95"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S5.p1.1.1.1",
+        "section_id": "S5",
+        "heading": "V Decoys: Fake Services that Attract Agents",
+        "text_sha256": "788f9d5b295424c2742d42ec3118a1b96588027b2b1ae8105df39bff09531a6b"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S5.p1.1.2.1",
+        "section_id": "S5",
+        "heading": "V Decoys: Fake Services that Attract Agents",
+        "text_sha256": "6fcd44f0bea10d9c3b374a0e9d8f33d0ed9af3f48f0662f675197e3190f0cdbf"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S5.p2.1",
+        "section_id": "S5",
+        "heading": "V Decoys: Fake Services that Attract Agents",
+        "text_sha256": "c706a6571db448482ab02d851447b1cf5fe12469be5d27211a09ebb18ad58563"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S5.p3.1",
+        "section_id": "S5",
+        "heading": "V Decoys: Fake Services that Attract Agents",
+        "text_sha256": "aae823b3935d993d386bafdcc2c50b1307bb5a2ae6747696d67f2f272e93c545"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S5.SS1.p1.1",
+        "section_id": "S5.SS1",
+        "heading": "V-A Decoy Instantiations",
+        "text_sha256": "17e874022d96b8490c5b40fa4af02d9a6bdc77017b1ab98f2f17a843a91cb7fd"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S5.SS1.SSS0.Px1.p1.1",
+        "section_id": "S5.SS1.SSS0.Px1",
+        "heading": "FTP Decoy Service",
+        "text_sha256": "a19fbd2ff5f8eeaf38b36c558e20d3ed432769820345a4de1aa8f612aac5b571"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "S5.SS1.SSS0.Px2.p1.1",
+        "section_id": "S5.SS1.SSS0.Px2",
+        "heading": "Web-app Decoy Service",
+        "text_sha256": "82ac85ea6c8c546e74238fde8d6295a1d999f173331dc100b3a9fc55348a5a9a"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "S5.SS1.SSS0.Px2.p2.1",
+        "section_id": "S5.SS1.SSS0.Px2",
+        "heading": "Web-app Decoy Service",
+        "text_sha256": "45c0763e96fb29db1540f95fcebb8a11d88d29394764d7c64351a69ed54e153f"
+      },
+      {
+        "index": 59,
+        "paragraph_id": "S5.SS1.SSS0.Px2.p3.1",
+        "section_id": "S5.SS1.SSS0.Px2",
+        "heading": "Web-app Decoy Service",
+        "text_sha256": "1c7db21e5bf84a3cdc1d196b5c6b34ede3ea1728144a97cfe105d45d6514a795"
+      },
+      {
+        "index": 60,
+        "paragraph_id": "S5.SS1.SSS0.Px2.p4.1",
+        "section_id": "S5.SS1.SSS0.Px2",
+        "heading": "Web-app Decoy Service",
+        "text_sha256": "97d78e509fa0c041885bf7704df437e423da8d1b0e618641e76a5f50170664a5"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "S5.SS2.p1.1",
+        "section_id": "S5.SS2",
+        "heading": "V-B Hiding Payloads from Regular Users",
+        "text_sha256": "ed140382774b9175ff55a3e166ab9c1ffc98f99f0e0489254f04a3b170593e04"
+      },
+      {
+        "index": 62,
+        "paragraph_id": "S5.SS2.p2.1",
+        "section_id": "S5.SS2",
+        "heading": "V-B Hiding Payloads from Regular Users",
+        "text_sha256": "2363dd710f1898a5a735f3dccfcfc8e4ba957bac2e2f5d0910f20371384d7bd0"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "S5.SS2.p3.1",
+        "section_id": "S5.SS2",
+        "heading": "V-B Hiding Payloads from Regular Users",
+        "text_sha256": "3b82543db88c15ea9385237dc8459f89256e591a1e2ddec7aba3e9246109c1bc"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "S5.SS3.p1.1",
+        "section_id": "S5.SS3",
+        "heading": "V-C Decoy Banner Manipulation",
+        "text_sha256": "718cbb9859fd032720277c3a908dc89ea489fc91679d9e622e53e459ee814bd3"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S5.SS3.p2.1",
+        "section_id": "S5.SS3",
+        "heading": "V-C Decoy Banner Manipulation",
+        "text_sha256": "26a0be4bbe1d9030e9f4e08b05884d6ed0bc9ed9a8a15f1fe79fe17bebb0c295"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "S6.p1.1",
+        "section_id": "S6",
+        "heading": "VI Injection Manager",
+        "text_sha256": "7e1ef20df71699caceff7eea8a4eac0922f1d35b43016dd08a6c2a670c6ac741"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S6.SS1.p1.1",
+        "section_id": "S6.SS1",
+        "heading": "VI-A Execution Triggers",
+        "text_sha256": "315c9226ece9efa1d1c4f021deaab00dea293df5209668a60f11c0bfc6d76af9"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S6.SS1.p1.2.1",
+        "section_id": "S6.SS1",
+        "heading": "VI-A Execution Triggers",
+        "text_sha256": "d03502c43d74a30b936740a9517dc4ea2b2ad7168caa0a774cefe793ce0b33e7"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S6.SS1.p2.1",
+        "section_id": "S6.SS1",
+        "heading": "VI-A Execution Triggers",
+        "text_sha256": "a5f59b1d695a684e3a1fcb8dcd54102b6d349dbc3ff794b6c0b217d189fc5ec4"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S6.SS1.p3.1",
+        "section_id": "S6.SS1",
+        "heading": "VI-A Execution Triggers",
+        "text_sha256": "5ba7e96fde439b56bbf7b74804d147f7989c0b92a44a45af68372b773a81b115"
+      },
+      {
+        "index": 80,
+        "paragraph_id": "S6.SS2.SSS0.Px1.p1.1",
+        "section_id": "S6.SS2.SSS0.Px1",
+        "heading": "Example of agent-counterstrike",
+        "text_sha256": "d96af363eccb6743ecb9dd36967a9ac68e17bf0d18c228e860732aa710c8f67c"
+      },
+      {
+        "index": 81,
+        "paragraph_id": "S6.SS3.p1.1",
+        "section_id": "S6.SS3",
+        "heading": "VI-C Passive Defenses (agent-tarpit)",
+        "text_sha256": "1afaf47899e8443337a583c6a26e144079706162fd95bf5bad70d885461f11a8"
+      },
+      {
+        "index": 82,
+        "paragraph_id": "S6.SS3.p2.1",
+        "section_id": "S6.SS3",
+        "heading": "VI-C Passive Defenses (agent-tarpit)",
+        "text_sha256": "1aab819105b4a9155ba56fe7069a4f0dafd73addbd6269ad5f562397bbda5fd8"
+      },
+      {
+        "index": 83,
+        "paragraph_id": "S6.SS3.p3.1",
+        "section_id": "S6.SS3",
+        "heading": "VI-C Passive Defenses (agent-tarpit)",
+        "text_sha256": "f9a50a603f71e6cba780175d2acec79005479f56fedb8ca3cf01ab1c72da152a"
+      },
+      {
+        "index": 84,
+        "paragraph_id": "S6.SS3.SSS0.Px1.p1.1",
+        "section_id": "S6.SS3.SSS0.Px1",
+        "heading": "Driving the Attacker Into the Tarpit",
+        "text_sha256": "bb575b2b29d0d9ddf648f3ef0fb2306517f4114bcce897ff954c29c3dc342282"
+      },
+      {
+        "index": 85,
+        "paragraph_id": "S6.SS3.SSS0.Px1.p3.1",
+        "section_id": "S6.SS3.SSS0.Px1",
+        "heading": "Driving the Attacker Into the Tarpit",
+        "text_sha256": "4427a742fcd4c9d2e4ab8b801729dc621c46ed8fd204d7104039ea02b7531252"
+      },
+      {
+        "index": 86,
+        "paragraph_id": "S6.SS3.SSS0.Px2.p1.1",
+        "section_id": "S6.SS3.SSS0.Px2",
+        "heading": "Filesystem-based Tarpit",
+        "text_sha256": "9d0927afdb8cd7b8cdcb774eab2aa5ab50c72324c623e6e1ed4edacf8c690d5f"
+      },
+      {
+        "index": 87,
+        "paragraph_id": "S6.SS3.SSS0.Px2.p2.1",
+        "section_id": "S6.SS3.SSS0.Px2",
+        "heading": "Filesystem-based Tarpit",
+        "text_sha256": "a35e33139a78e366f64da261e2ee14576fa44ccb517a06be2bbc746729a3a3e4"
+      },
+      {
+        "index": 88,
+        "paragraph_id": "S6.SS3.SSS0.Px2.p3.1",
+        "section_id": "S6.SS3.SSS0.Px2",
+        "heading": "Filesystem-based Tarpit",
+        "text_sha256": "6c3394a2e1f66db43b4d1b436b393ce4d3b8e552c78670f42646db94626fd20b"
+      },
+      {
+        "index": 89,
+        "paragraph_id": "S6.SS3.SSS0.Px2.p4.1",
+        "section_id": "S6.SS3.SSS0.Px2",
+        "heading": "Filesystem-based Tarpit",
+        "text_sha256": "6a63a4d4e67c9cbb7d548032f7527f3974ca97cf886c4e7b9db2904a53d4775d"
+      },
+      {
+        "index": 90,
+        "paragraph_id": "S6.SS3.SSS0.Px3.p1.1",
+        "section_id": "S6.SS3.SSS0.Px3",
+        "heading": "Example of agent-tarpit",
+        "text_sha256": "0537f086285a69e187c7d814124c81594297e27c30982dfe92702f9da3b909b8"
+      },
+      {
+        "index": 91,
+        "paragraph_id": "S6.SS3.SSS0.Px4.p1.1",
+        "section_id": "S6.SS3.SSS0.Px4",
+        "heading": "Maximizing Attacker’s Resource Consumption",
+        "text_sha256": "d9513c7b959528dfeeac7da56a436d0107db2c1fe476631870017176ce62ecba"
+      },
+      {
+        "index": 92,
+        "paragraph_id": "S6.SS3.SSS0.Px4.p2.1",
+        "section_id": "S6.SS3.SSS0.Px4",
+        "heading": "Maximizing Attacker’s Resource Consumption",
+        "text_sha256": "17d92637587d3c8cc483532854cf4dfbde693a7cf7ae7b90593772e80cb5da8f"
+      },
+      {
+        "index": 118,
+        "paragraph_id": "S7.I2.i1.p1.1",
+        "section_id": "S7.SS3.SSS0.Px1",
+        "heading": "Defender’s Setup",
+        "text_sha256": "48fe5e64164344fc51112c8cd563dc82a432887419cd3070b6540db9d0152ba2"
+      },
+      {
+        "index": 119,
+        "paragraph_id": "S7.I2.i2.p1.1",
+        "section_id": "S7.SS3.SSS0.Px1",
+        "heading": "Defender’s Setup",
+        "text_sha256": "3406f5fe89b91135e63ec6f37047480f24a53155766da24b8e08d7ff5dd34327"
+      },
+      {
+        "index": 120,
+        "paragraph_id": "S7.I2.i3.p1.1",
+        "section_id": "S7.SS3.SSS0.Px1",
+        "heading": "Defender’s Setup",
+        "text_sha256": "409c942dfd3f9839a6c26cd9e9c82bf8606491ef3df0fe92842a848eec2f0b5e"
+      },
+      {
+        "index": 121,
+        "paragraph_id": "S7.SS3.SSS0.Px1.p3.1",
+        "section_id": "S7.SS3.SSS0.Px1",
+        "heading": "Defender’s Setup",
+        "text_sha256": "095d2679003814396f1830eb5d719ad2ceba9506209351420fe0df5216ed14aa"
+      },
+      {
+        "index": 122,
+        "paragraph_id": "S7.SS3.SSS0.Px2.p1.1",
+        "section_id": "S7.SS3.SSS0.Px2",
+        "heading": "Attacker Setup",
+        "text_sha256": "72db4b90e34399b4e3b13e18d2ec8f83a9e0afb44e67d3d43a06079ffdb188d8"
+      },
+      {
+        "index": 123,
+        "paragraph_id": "S7.SS3.SSS0.Px3.p1.1",
+        "section_id": "S7.SS3.SSS0.Px3",
+        "heading": "Win Conditions",
+        "text_sha256": "7abb44360a31e7484e3bac94bfb36d75cde717cb28bc54063572e04ce301f457"
+      },
+      {
+        "index": 124,
+        "paragraph_id": "S8.p1.1",
+        "section_id": "S8",
+        "heading": "VIII Evaluation of Mantis Effectiveness",
+        "text_sha256": "762e8521a473feaa7deb410071d81eee4d2fb480b7efabb6db56c55765342641"
+      },
+      {
+        "index": 147,
+        "paragraph_id": "A1.p1.1",
+        "section_id": "A1",
+        "heading": "Appendix A Testing on more complex CTFs",
+        "text_sha256": "1ed3a6b9fe3504c17a1a657aec4c7385c7905ceac3a1fc8efc2d8c565e746df7"
+      },
+      {
+        "index": 148,
+        "paragraph_id": "A1.p2.1",
+        "section_id": "A1",
+        "heading": "Appendix A Testing on more complex CTFs",
+        "text_sha256": "390727ac0b304ac4d73c1126142a2b34cda0913b42b56c3d63c1a334f32d90f7"
+      },
+      {
+        "index": 149,
+        "paragraph_id": "A1.p3.1",
+        "section_id": "A1",
+        "heading": "Appendix A Testing on more complex CTFs",
+        "text_sha256": "1f14d857260dadb26b155e34880189a74564aa81577acf6be44eca40c83b5d03"
+      },
+      {
+        "index": 150,
+        "paragraph_id": "A1.p4.1",
+        "section_id": "A1",
+        "heading": "Appendix A Testing on more complex CTFs",
+        "text_sha256": "317363cb7dadf6d72a3c01253e8689be05e683e0339b7f288630fa19a1841fc5"
+      },
+      {
+        "index": 151,
+        "paragraph_id": "A2.p1.1",
+        "section_id": "A2",
+        "heading": "Appendix B Additional Results",
+        "text_sha256": "474e6e3ce51c14f84434926ed77c75ad4ca1f698f12e4fd14ee804c9920b2a96"
+      },
+      {
+        "index": 152,
+        "paragraph_id": "A2.SS1.p1.1",
+        "section_id": "A2.SS1",
+        "heading": "B-A Evaluation on additional LLMs",
+        "text_sha256": "3546409b901dc8776d5866119131a224c3a614f691f72675d7d8d2396d189a10"
+      },
+      {
+        "index": 153,
+        "paragraph_id": "A2.SS2.p1.1",
+        "section_id": "A2.SS2",
+        "heading": "B-B Additional combination of Decoys and Sabotage objective",
+        "text_sha256": "aea8694d073f440eb5c25b5af607ae16a8563a13e66767623e229e2ca7f002d2"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main architecture explicitly delivers prompt-injection payloads following vulnerable decoy activation, with active counterstrike or filesystem tarpit objectives.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "FTP anonymous-login and web SQL-exploitation events activate the payload; setup varies decoy/objective/agent/backend/CTF and includes no-defense condition. Objective verification consumes agent/service actions. The no-prompt-classifier clause describes these instantiated protocol mechanisms only, not absence of any classifier anywhere in the paper.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Execution-trigger construction and quoted English examples support descriptive English components; no English prompt-label detection dataset established by these contexts.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly retains material method/arm omissions. The approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

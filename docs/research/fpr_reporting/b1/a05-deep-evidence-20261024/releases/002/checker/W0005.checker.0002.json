@@ -1,0 +1,654 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0005",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T12:04:37.362164+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0005.provider.0001.json",
+  "provider_packet_sha256": "76f8fd82be0e591a809b5116c5eb00c111ebd4683e464fc1651854bab7af35a9",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2402.11082v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\49bb936be2d048bd5b0bbc76f3d17dd87e5d6abba70120bec2e64ced09c380d1",
+    "raw_sha256": "49bb936be2d048bd5b0bbc76f3d17dd87e5d6abba70120bec2e64ced09c380d1",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0028.json",
+    "acquisition_receipt_sha256": "efa28c2e83f82b613120de6b53f45c446b627835f2667c1da78fbdb8b2ee8ba9",
+    "captured_version_id": "arxiv:2402.11082v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        1,
+        82
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "VERIFIED_SUBSTANTIVE_CONCEPTUAL_PAPER_SCOPE",
+    "semantic_rationale": "All substantive paragraphs of the conceptual framework, background, discussion, future work and conclusion actually read; Section 3 expressly defines a conceptual hierarchy. No original empirical procedure introduced in those complete substantive sections.",
+    "visual_check": null,
+    "locator_sha256": "4e22387c6bf80cb9f789a2cb5860dbc615625d488b003fbe993fe4f656140f4c",
+    "locators": [
+      {
+        "index": 1,
+        "paragraph_id": "abstract1.1",
+        "section_id": null,
+        "heading": "The AI Security Pyramid of Pain",
+        "text_sha256": "99f24f8a89ee44bcee108caaaa8c55e7f053894710e9d69d7f25b0e78c61c0a6"
+      },
+      {
+        "index": 2,
+        "paragraph_id": "abstract1.2",
+        "section_id": null,
+        "heading": "The AI Security Pyramid of Pain",
+        "text_sha256": "14aa094f084618605ec1a1cf39046de32d6d9c7e6a153e87fdf844c7f3ab30e6"
+      },
+      {
+        "index": 3,
+        "paragraph_id": "abstract1.3",
+        "section_id": null,
+        "heading": "The AI Security Pyramid of Pain",
+        "text_sha256": "24ebf04b3f72fa2197fbd76f48ffe7375d9e226283adabcacef3aabfa4a9dae8"
+      },
+      {
+        "index": 4,
+        "paragraph_id": "S1.p1.1",
+        "section_id": "S1",
+        "heading": "1 INTRODUCTION",
+        "text_sha256": "b22292c25847176b8e306e0b9920630b53328ea4693d2b6f834696aca14c9e95"
+      },
+      {
+        "index": 5,
+        "paragraph_id": "S1.p2.1",
+        "section_id": "S1",
+        "heading": "1 INTRODUCTION",
+        "text_sha256": "4c9b1781058e1a2e0aeaef956bc9a53fe59e926cdeac902ac005ef71c8b29ff9"
+      },
+      {
+        "index": 6,
+        "paragraph_id": "S1.p3.1",
+        "section_id": "S1",
+        "heading": "1 INTRODUCTION",
+        "text_sha256": "44003ffe896627015698380cac2de037f5c89ec6bf7f67c04a152b287c283cb7"
+      },
+      {
+        "index": 7,
+        "paragraph_id": "S1.p4.1",
+        "section_id": "S1",
+        "heading": "1 INTRODUCTION",
+        "text_sha256": "bdc86d4b0902073cde9727cb20c63fefbad9685e8c97c99fc2f0919c55042d3e"
+      },
+      {
+        "index": 8,
+        "paragraph_id": "S1.p5.1",
+        "section_id": "S1",
+        "heading": "1 INTRODUCTION",
+        "text_sha256": "c68c3ae05b916827af45ef046a9fc9cce8687ed798a52bb05cc182586848914f"
+      },
+      {
+        "index": 9,
+        "paragraph_id": "S1.p6.1",
+        "section_id": "S1",
+        "heading": "1 INTRODUCTION",
+        "text_sha256": "879cfd03e5dd763c585e23836b893626ecbaceb08f94ab6199c3d1af84324022"
+      },
+      {
+        "index": 10,
+        "paragraph_id": "S2.p1.1",
+        "section_id": "S2",
+        "heading": "2 BACKGROUND",
+        "text_sha256": "fc0e04933136ce06c499a95f432ec21b76754d61046062a0fa6b39d9cd4c9a9f"
+      },
+      {
+        "index": 11,
+        "paragraph_id": "S2.SS1.p1.1",
+        "section_id": "S2.SS1",
+        "heading": "2.1 Evolution of AI Security Concerns",
+        "text_sha256": "76ab992924b4f34bc605e17f9ce1d99b3c80521f5f6e8c94482eae93a1a5e600"
+      },
+      {
+        "index": 12,
+        "paragraph_id": "S2.SS2.p1.1",
+        "section_id": "S2.SS2",
+        "heading": "2.2 Adversarial Attacks and Defenses",
+        "text_sha256": "6a40a8eff89aa489f2192fc8c6725da9eedc4faedf8ee96aa0c1c1b22d48e712"
+      },
+      {
+        "index": 13,
+        "paragraph_id": "S2.SS3.p1.1",
+        "section_id": "S2.SS3",
+        "heading": "2.3 AI in Cybersecurity Applications",
+        "text_sha256": "ecd3ca367b290a3bdd95bbecf2432b7777806e3b8aeadba70a426d9cb5d7ea50"
+      },
+      {
+        "index": 14,
+        "paragraph_id": "S2.SS4.p1.1",
+        "section_id": "S2.SS4",
+        "heading": "2.4 The Need for a Structured Security Framework",
+        "text_sha256": "f67f7c6a7f93483d99600b7cd89407b016701f265f7e2fd5ce3a6b90e9faaedb"
+      },
+      {
+        "index": 15,
+        "paragraph_id": "S2.SS5.p1.1",
+        "section_id": "S2.SS5",
+        "heading": "2.5 Emerging Trends in AI Security",
+        "text_sha256": "53d02cf12c14e6ef1a803207209c14ea98a2c9bf1fd45d961801aa60b483e59d"
+      },
+      {
+        "index": 16,
+        "paragraph_id": "S2.SS6.p1.1",
+        "section_id": "S2.SS6",
+        "heading": "2.6 Challenges in AI Security",
+        "text_sha256": "5b8fa597a174fc7f63d66cc42238f083c4ad079611b4d08f72769a5e0c3f3ac9"
+      },
+      {
+        "index": 17,
+        "paragraph_id": "S2.SS6.p2.1",
+        "section_id": "S2.SS6",
+        "heading": "2.6 Challenges in AI Security",
+        "text_sha256": "42647958662c9658922733de447a7d8c6e87c0d1a91c020ef2348e092da5b1a8"
+      },
+      {
+        "index": 18,
+        "paragraph_id": "S2.SS6.p3.1",
+        "section_id": "S2.SS6",
+        "heading": "2.6 Challenges in AI Security",
+        "text_sha256": "8f2fb973a91fdecea94ff0553bd0dc3ac9497adc3a5dfdb0f8f15010655c97b1"
+      },
+      {
+        "index": 19,
+        "paragraph_id": "S2.SS6.p4.1",
+        "section_id": "S2.SS6",
+        "heading": "2.6 Challenges in AI Security",
+        "text_sha256": "a3ebc13516367c58d652cd3f1034ae82850c4e9d6281969b39e6cf1a3ad6b8d5"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S2.SS6.p5.1",
+        "section_id": "S2.SS6",
+        "heading": "2.6 Challenges in AI Security",
+        "text_sha256": "5b4be327308d74b274812c466a9abf56e12f3b799f116bd11443064687a97c61"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S3.p1.1",
+        "section_id": "S3",
+        "heading": "3 AI SECURITY PYRAMID OF PAIN",
+        "text_sha256": "4a333184e26f07d5183f0dcd030679f6547e38a143af347411df45a8a7c39893"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S3.p2.1",
+        "section_id": "S3",
+        "heading": "3 AI SECURITY PYRAMID OF PAIN",
+        "text_sha256": "244f0f981d1481f581aee31b3ec93c3d83e3f0d63e8733630d95f8f87cf29100"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Data Integrity",
+        "text_sha256": "b397a0febea787f673885f2f9388c01b646322e130a3aeb22f5aa1bbc20e7e12"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S3.SS1.p2.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Data Integrity",
+        "text_sha256": "32fb82d233216560ff3d5d60aae9959bc5c5707fec186c90a40d4f5616210190"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.I1.i1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Data Integrity",
+        "text_sha256": "4f77b7f4255dacb1c992f9177bffa29a3fd9e52f3ca63ec6edac7508e2e09ae6"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.I1.i2.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Data Integrity",
+        "text_sha256": "407daf00e853d0182eccaf2f013bda02c8843a75a83ea4b1e8ef94b3c504bee2"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.I1.i3.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Data Integrity",
+        "text_sha256": "d59b1291f8e67b0406847ac23fc18f2f4f8c0eed0a379ce53f4efe2f43201909"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.I1.i4.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Data Integrity",
+        "text_sha256": "1043e07cd80946826430c55474bd86e939bfc2d70b92f3b2b9518999207172f3"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.I1.i5.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Data Integrity",
+        "text_sha256": "49124e5be6839ae20c26b5590e10d2aa13acd33c313b7de5bae3b3f05ed3d3ea"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS1.p4.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Data Integrity",
+        "text_sha256": "8b29b97f0ca689cf2a3b1eb67147e600dbf9361d7d5f9c0e273298b562551061"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 AI System Performance",
+        "text_sha256": "854f2c6f3325f700e36dc90c70bb386d0f2e87827b8180e8b685341ab30e4e9e"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S3.SS2.p2.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 AI System Performance",
+        "text_sha256": "fbd05025e8da42839234c31a1b0885a4d81789ccc3e413ac2165b6c1c012d4bb"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S3.I2.i1.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 AI System Performance",
+        "text_sha256": "44e0c92e0b4eec53b5f2397707d5f91c6e5abbf84957def93893bf1bd3d7da96"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S3.I2.i2.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 AI System Performance",
+        "text_sha256": "059e8b8c223982e55bff1159ffbc48d30ad3834060b7ea40ad6e709585c4def3"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S3.I2.i3.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 AI System Performance",
+        "text_sha256": "50d18688d0d56d1b34112f954a34246b79836ecc3bb2e69e29848ecbb9e92d30"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S3.I2.i4.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 AI System Performance",
+        "text_sha256": "e5f7fa270df49b2571be93ed5d08e52044e44de863758be6b248753c0f62db9d"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S3.SS2.p4.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 AI System Performance",
+        "text_sha256": "087e1edc2680c1eab9587df24371df152fc7de333e2469cfa64a03bc3f9e14cf"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Adversarial Tools",
+        "text_sha256": "c2f4e9e237af144042d0d18e3057c3ac5a2337551fd3f6ba068ec5caf571541d"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S3.SS3.p2.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Adversarial Tools",
+        "text_sha256": "2be5a926d5dda0d8ae46566d47135d1ab4832294570d4641d9c252703ca50fb9"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S3.I3.i1.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Adversarial Tools",
+        "text_sha256": "f787127222e8a6971e2a3adb955c45518b24bc92285454250a512f4036b27c6c"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S3.I3.i2.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Adversarial Tools",
+        "text_sha256": "f1639fa40ef062183240c8f5dfe83e8b33e43983c3e70bb0cca5d8cbdd1b76cd"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S3.I3.i3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Adversarial Tools",
+        "text_sha256": "ef9e2f51975cbdc23e3e2a44383fa842b29df47f248aa31eb0ee147f0d188bc8"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S3.I3.i4.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Adversarial Tools",
+        "text_sha256": "44506e9ae121219aa5893968d2a5a513d76da929a17d6cd857ce30d4ef8b0aa8"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S3.SS3.p4.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Adversarial Tools",
+        "text_sha256": "ad715f74dd4ff786336be714c3316606d9963623bc7cbc1d3b6ccde21c664f65"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S3.SS4.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Adversarial Input Detection",
+        "text_sha256": "a9da6f1e2b0d115c84bc0764eb2aaae7aa2d6315975e671108d483e74ae2f339"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S3.SS4.p2.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Adversarial Input Detection",
+        "text_sha256": "8debd644a6b6e52bf8b53e10c757e5d388cb439d6d37604bcf62f9ad5ad82bfb"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S3.I4.i1.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Adversarial Input Detection",
+        "text_sha256": "58a8df2f90486f5bf433ead8ea8d76de0ec391961c0ba83ddf4ead341624eeb7"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S3.I4.i2.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Adversarial Input Detection",
+        "text_sha256": "e7019eceb323c6b439d7111d2a9a239ea702f9c69f794efc8435fd031e84fcb3"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S3.I4.i3.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Adversarial Input Detection",
+        "text_sha256": "5f4b7ec496b01595320a103840cdf228f5ce693a6713b2e3267372bd66dc88d3"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S3.I4.i4.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Adversarial Input Detection",
+        "text_sha256": "8eb789db83a4251af8f8f00d91b044834d6a5935cc02de781f6a7ee3523d306b"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S3.I4.i5.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Adversarial Input Detection",
+        "text_sha256": "c6f01794d983a69e319b47bd6a652b93fec511bdac24490cdeaa532892083753"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S3.SS4.p4.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Adversarial Input Detection",
+        "text_sha256": "05ad7aa0bd999599a929f1c039e410468495e8612b1f1f77e35a32d8864db55a"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S3.SS5.p1.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Data Provenance",
+        "text_sha256": "465ee03625b99de0d01940e985d02b68a5914a80d6358993fa38540e7db23098"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S3.SS5.p2.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Data Provenance",
+        "text_sha256": "bf3f5498b7f8a91234be2da507ab4a3a703af8c54d859d33e710e6187adc0cb8"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S3.I5.i1.p1.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Data Provenance",
+        "text_sha256": "cc8f12f21fd6e3267a11eaad81e9fa8b537598c02d36be14d297ad34298b684b"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S3.I5.i2.p1.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Data Provenance",
+        "text_sha256": "1bc8944e1d1681cf7e4de77f19bb28690c707dc611032daaf327c127c298c42b"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "S3.I5.i3.p1.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Data Provenance",
+        "text_sha256": "2d1d459b7b7e7b77c50537a08c41b78e36783f071963ae1c7b154928e7c0bb10"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "S3.I5.i4.p1.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Data Provenance",
+        "text_sha256": "cf13394ff7eb72c186e0952596eb5d577980a8f68cf57154f566f5686b9d8df6"
+      },
+      {
+        "index": 59,
+        "paragraph_id": "S3.I5.i5.p1.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Data Provenance",
+        "text_sha256": "f48ca6a8593283fd42ef0c91d1024614eadc0daacd08d29b25fffa8d51d0a024"
+      },
+      {
+        "index": 60,
+        "paragraph_id": "S3.SS5.p4.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Data Provenance",
+        "text_sha256": "36ac8415dfbbd09163a570e4c2de0b430f690c429270be0b5f306d1a20a2508d"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "S3.SS6.p1.1",
+        "section_id": "S3.SS6",
+        "heading": "3.6 Tactics, Techniques, and Procedures (TTPs)",
+        "text_sha256": "653efa71c92aaefd98ec9911c960946a5d31186088c2f28a76fe60b2d01a99fd"
+      },
+      {
+        "index": 62,
+        "paragraph_id": "S3.SS6.p2.1",
+        "section_id": "S3.SS6",
+        "heading": "3.6 Tactics, Techniques, and Procedures (TTPs)",
+        "text_sha256": "c2ee0f71e74f4ccbc83b920357e2b5a55bdf2914b9e186620eff9c14947fcc33"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "S3.I6.i1.p1.1",
+        "section_id": "S3.SS6",
+        "heading": "3.6 Tactics, Techniques, and Procedures (TTPs)",
+        "text_sha256": "a8c0da7ba838678c1fe6c5e06708948b0677e82c8efb24054bea3cacb0d0921f"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "S3.I6.i2.p1.1",
+        "section_id": "S3.SS6",
+        "heading": "3.6 Tactics, Techniques, and Procedures (TTPs)",
+        "text_sha256": "36689c292703194eaa847a2a679cfd6b9910afc516fec62689f59b349a67aab9"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S3.I6.i3.p1.1",
+        "section_id": "S3.SS6",
+        "heading": "3.6 Tactics, Techniques, and Procedures (TTPs)",
+        "text_sha256": "9cd86d0cc082100c3abb599afce23bf02a542efe6e33603e8bf2aab3f10c9f51"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "S3.I6.i4.p1.1",
+        "section_id": "S3.SS6",
+        "heading": "3.6 Tactics, Techniques, and Procedures (TTPs)",
+        "text_sha256": "3c2ca7fa0d5041cb0a4a99f4f6e6523bb150e479828c40a44230b2744348e13b"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S3.I6.i5.p1.1",
+        "section_id": "S3.SS6",
+        "heading": "3.6 Tactics, Techniques, and Procedures (TTPs)",
+        "text_sha256": "fe409ca75149f7c5891d93c7a2eea664c42d51970b21eb969e4d60d32c5890b8"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S3.I6.i6.p1.1",
+        "section_id": "S3.SS6",
+        "heading": "3.6 Tactics, Techniques, and Procedures (TTPs)",
+        "text_sha256": "7c20e2e1a8e75e9d8e56089709d8a7d977e5a416963f5ad78259dc454b9d2480"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S3.SS6.p4.1",
+        "section_id": "S3.SS6",
+        "heading": "3.6 Tactics, Techniques, and Procedures (TTPs)",
+        "text_sha256": "e04c14620c1580c77c248e1e9e6a3d38cf94239da798e870c98faec3deed8f5f"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Discussion",
+        "text_sha256": "249a235434d68743490ac018672c78928516c30efe940386dc5ccfb6abd252dc"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S4.SS1.p2.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Discussion",
+        "text_sha256": "a1730e15ec06bb5c46ea41a8d16265d638d19325bc8fde563ffcc59eaa7f8b17"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "S4.I1.i1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Discussion",
+        "text_sha256": "f26124e9b153eeac1d3151ca8881824fe87e8b018e7c5ff1f81893a82df919ca"
+      },
+      {
+        "index": 73,
+        "paragraph_id": "S4.I1.i2.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Discussion",
+        "text_sha256": "aa2cb262961a0421cb131794f4acc788e9d4bebe5708f30178c125e6d61ac946"
+      },
+      {
+        "index": 74,
+        "paragraph_id": "S4.SS1.p3.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Discussion",
+        "text_sha256": "65fcc014f645aae05d5438bcc2fed70d195e41833cbeb4124f5b87a6f51dbb94"
+      },
+      {
+        "index": 75,
+        "paragraph_id": "S4.I2.i1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Discussion",
+        "text_sha256": "d92fce401b6d8a633be2af109026597ed30357a1d93c348fa9bb3c182bace986"
+      },
+      {
+        "index": 76,
+        "paragraph_id": "S4.I2.i2.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Discussion",
+        "text_sha256": "9dd6da32f1573eb6080498019c7dc0f361f75f7fe7a19168e254f140da5737b5"
+      },
+      {
+        "index": 77,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Future Work",
+        "text_sha256": "a8654a50d35b17db59bb431a10925d4316e63f0f152012ad81f6accc8931dcdf"
+      },
+      {
+        "index": 78,
+        "paragraph_id": "S4.I3.i1.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Future Work",
+        "text_sha256": "3fb6b1dbed42e1b8340fb1650263caec612c669fe20ed70035e38bfc0cf5eab5"
+      },
+      {
+        "index": 79,
+        "paragraph_id": "S4.I3.i2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Future Work",
+        "text_sha256": "f79dadd7acc63c774fe57b885d23d72a8b7d77d674dc378696beee14efe8b005"
+      },
+      {
+        "index": 80,
+        "paragraph_id": "S4.I3.i3.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Future Work",
+        "text_sha256": "7437a4bd4fa75536621bf1be63c969107eabcf82066563301e1a31bea7b33bf6"
+      },
+      {
+        "index": 81,
+        "paragraph_id": "S4.I3.i4.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Future Work",
+        "text_sha256": "7aee9104936a3856d1d2541889890e03755ddae2b8f0730e825756e005caccab"
+      },
+      {
+        "index": 82,
+        "paragraph_id": "S5.p1.1",
+        "section_id": "S5",
+        "heading": "5 CONCLUSION",
+        "text_sha256": "49b8df9a31a24259113e77b5281b6cb70ef35108d1c230141309dbb475bde7b7"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Section 3 explicitly calls this a conceptual framework and describes the listed hierarchy.",
+      "restriction_rationale": "Bounded method/data fact; no reported performance, qualitative outcome, sample count or assurance claim."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Adversarial input detection is a conceptual layer discussed through anomaly detection, input validation and pattern approaches, not presented as an original evaluated implementation in Section 3.",
+      "restriction_rationale": "Bounded method/data fact; no reported performance, qualitative outcome, sample count or assurance claim."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "No English empirical construction is specified within the inspected conceptual framework sections; this is bounded to those sections.",
+      "restriction_rationale": "Bounded method/data fact; no reported performance, qualitative outcome, sample count or assurance claim."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All substantive paragraphs of the conceptual framework, background, discussion, future work and conclusion actually read; Section 3 expressly defines a conceptual hierarchy. No original empirical procedure introduced in those complete substantive sections.",
+      "restriction_rationale": "Coverage only; no performance, sample counts or eligibility state."
+    },
+    {
+      "field_path": "coverage.inspected_units",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mechanical source-locator hashes independently reproduce. Semantic inspection coverage is exclusively the actual_context_check spans, not automatic approval of the full provider-declared scope.",
+      "restriction_rationale": "Hash-only locator metadata; no raw method/results text or outcomes."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  },
+  "previous_checker_receipt_sha256": "393b55ddeddc541c6cd6474928b701fa9f0a092440e352b19d9823c8fa0c0d08",
+  "append_only_addendum": "Explicit coverage-field decision added; prior per-fact checks preserved except stated supersession."
+}

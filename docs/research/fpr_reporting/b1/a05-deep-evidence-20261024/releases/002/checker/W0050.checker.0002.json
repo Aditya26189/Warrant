@@ -1,0 +1,361 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0050",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T12:04:38.616882+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0050.provider.0002.json",
+  "provider_packet_sha256": "b9a3a5684913027b98878acd2d5a9421092a1a0a0ae93736a8d5eadbec75c323",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2505.16934v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\c278d18cfa1f1ee2af1c4826438c0b5641d4042bee410710542aa0ab63c570af",
+    "raw_sha256": "c278d18cfa1f1ee2af1c4826438c0b5641d4042bee410710542aa0ab63c570af",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0083.json",
+    "acquisition_receipt_sha256": "473a3683421a8c0393b8030105fc282a164fa5164b7e07d4476158d7d89d58ee",
+    "captured_version_id": "arxiv:2505.16934v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        18,
+        24
+      ],
+      [
+        38,
+        43
+      ],
+      [
+        48,
+        60
+      ],
+      [
+        114,
+        117
+      ],
+      [
+        123,
+        127
+      ],
+      [
+        133,
+        134
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_INVENTORY_ONLY",
+    "semantic_rationale": "Corrected .0002 drops completeness assertion. Main definitions/setup, Appendix C implementation and D adaptive/variant descriptions read; Appendix A full instructions/Appendix B theory not inspected. No assurance statement transferred.",
+    "locator_sha256": "a6e0e6004e64d74ebad09053f396b323c6b411a10733b432df0d8bc12de6d484",
+    "locators": [
+      {
+        "n": 18,
+        "kind": "heading",
+        "id": "S3",
+        "section": "3 In-Context Watermarks",
+        "sha256": "0e0849913acd404c5c334c19fa628cbb14ee426464dcc1bf7f09c6ab187c6f6d"
+      },
+      {
+        "n": 19,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "section": "3.1 Problem Formulation",
+        "sha256": "8d309b961bf98f33ccaf2bf7181a3d88c962ac80aac41cbf00d05b0ceb11a00a"
+      },
+      {
+        "n": 20,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "section": "3.1 Problem Formulation",
+        "sha256": "ce7e809fa7bdfcda0a8513c72d9c8159ba9c5ed9b6cea98eff59fea9b6e06f97"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.1",
+        "section": "3.1 Problem Formulation",
+        "sha256": "55d6909d287633f18e6d78925bbf2aa97330ded82046c08b515be70943384041"
+      },
+      {
+        "n": 22,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.2",
+        "section": "3.1 Problem Formulation",
+        "sha256": "30eeb1df41e0b4adf2cbdd19dd58f9be48a2ba3a9e6efc7c2bea0f95aaeada0b"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S3.SS1.p3.1",
+        "section": "3.1 Problem Formulation",
+        "sha256": "c524207da9643c5fe7881fc2ffc8d7a5c512a791762ffac033c15aad5720d9f2"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S3.SS1.p3.2",
+        "section": "3.1 Problem Formulation",
+        "sha256": "5263ed448596870bc67052e4338e9a4b55a592cb3c2368f63b8309e47b142dad"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS1.p3.1",
+        "section": "4.2.1 Unicode ICW",
+        "sha256": "dc70c66193beceef15df67c0c67988c530d30358bd6d4acea6c60a6cd5dc8910"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS1.p4.1",
+        "section": "4.2.1 Unicode ICW",
+        "sha256": "c46b2cf644ac15bee1c1cd516d579e69d5dc6f29de9004ac440f042d86b3cdc6"
+      },
+      {
+        "n": 40,
+        "kind": "heading",
+        "id": "S4.SS2.SSS2",
+        "section": "4.2.2 Initials ICW",
+        "sha256": "14be5f525308f3b89049238785b6b218304c742cfde57a2217f425adb1b58c80"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS2.p1.1",
+        "section": "4.2.2 Initials ICW",
+        "sha256": "b3d181dae59f561d4e1175107f6c70ea3e98996e006d7c820c1a4a2319eb8ff9"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS2.p2",
+        "section": "4.2.2 Initials ICW",
+        "sha256": "0d0a97ab5680fddc42456e2c8eac4921c06ca1456f2a94c59860b57c116d53e5"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS2.p3.1",
+        "section": "4.2.2 Initials ICW",
+        "sha256": "fe68588acbeb823d69ddaf12de29ff8a5bee23c4fbba398597cb3963c2f9fccc"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS3.p3.1",
+        "section": "4.2.3 Lexical ICW",
+        "sha256": "4094975df8b4739a892bf0c793c19eb829097659130f3ddc52f4183e48b22605"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS3.p4.1",
+        "section": "4.2.3 Lexical ICW",
+        "sha256": "a21d09abe1a08ae005a311debd94f5ba3260a9f80062fc68ea5658a93c57010b"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS3.p5.1",
+        "section": "4.2.3 Lexical ICW",
+        "sha256": "793ce10c29df070cd9cb44aa2d86ad39ce1479c8d01b4dae47a015b3654dbab3"
+      },
+      {
+        "n": 51,
+        "kind": "heading",
+        "id": "S4.SS2.SSS4",
+        "section": "4.2.4 Acrostics ICW",
+        "sha256": "5653f1f3e9901a8d2fb1bd42e82f37ca9a2c279d337e561afb298b6b320feba9"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS4.p1.1",
+        "section": "4.2.4 Acrostics ICW",
+        "sha256": "ff5423a89bfe0f7b751fe3a73b6516203933afa9f7b11dab11431fbbfb3bde82"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS4.p2",
+        "section": "4.2.4 Acrostics ICW",
+        "sha256": "d3c000134d0d6bd3fba37712344afc9c469e79bcad9153642ba228de57cfdcd0"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS4.p3.1",
+        "section": "4.2.4 Acrostics ICW",
+        "sha256": "b0cda5f6ec4464b22a4d1f5bdb34e1f8c3ae65ba66065991c3e07611854072c1"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS4.p4.1",
+        "section": "4.2.4 Acrostics ICW",
+        "sha256": "52200af86e9d09a0a459986c16808502a9fbd6497e284cd79de699dc8ae76586"
+      },
+      {
+        "n": 56,
+        "kind": "heading",
+        "id": "S5",
+        "section": "5 Experiments",
+        "sha256": "b04dd6925cb197150212cde98dfc3178a5368f679920c1e6d8509fbbcccf6258"
+      },
+      {
+        "n": 57,
+        "kind": "heading",
+        "id": "S5.SS1",
+        "section": "5.1 Experiment Settings",
+        "sha256": "fe87da9608c5e3063fd15b6581e765bbb18b9cbe69ddeb75371974a62f668227"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S5.SS1.p1.1",
+        "section": "5.1 Experiment Settings",
+        "sha256": "bc72486cb9ff031f4a70711ecb721a2b11409b4f90ac1e70def8604eb96cdbef"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "S5.SS1.p2.1",
+        "section": "5.1 Experiment Settings",
+        "sha256": "27a821f3dd6763ff63c25fe689ebf98e70d6bacd67e18c5e97fbc3d4ef64c969"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "S5.SS1.p3.1",
+        "section": "5.1 Experiment Settings",
+        "sha256": "be2f4755f21860d44ea45c5333f7eb64c595312ef5db54f201c157126c8b2db8"
+      },
+      {
+        "n": 114,
+        "kind": "paragraph",
+        "id": "A3.I1.i1.p1.1",
+        "section": "Appendix C Experiment Settings",
+        "sha256": "6e505d83f122e7dbe95bdba0d0b8a6792365e0244574449a363770d1f23b358a"
+      },
+      {
+        "n": 115,
+        "kind": "paragraph",
+        "id": "A3.I1.i2.p1.1",
+        "section": "Appendix C Experiment Settings",
+        "sha256": "cd4c8ed1ddf7d09d606af85ccfc4d39477cd450248f829b3cfd91e021e73d327"
+      },
+      {
+        "n": 116,
+        "kind": "paragraph",
+        "id": "A3.I1.i3.p1.1",
+        "section": "Appendix C Experiment Settings",
+        "sha256": "e69da29adad8deb97ad6aa9f1fc3183f4cc207f3312e92d8264dfbc457dcff34"
+      },
+      {
+        "n": 117,
+        "kind": "paragraph",
+        "id": "A3.p2.1",
+        "section": "Appendix C Experiment Settings",
+        "sha256": "897bb8357bf4b41880cd2ef4ac2111114bab6bae96c77165f0c95ee0b41b4756"
+      },
+      {
+        "n": 123,
+        "kind": "paragraph",
+        "id": "A4.SS1.p4.1",
+        "section": "D.1 Extra Main Results",
+        "sha256": "c3ce35f9e75730d10ec477acb3708510284db087c502159f96cf6b81cc9e6596"
+      },
+      {
+        "n": 124,
+        "kind": "heading",
+        "id": "A4.SS2",
+        "section": "D.2 Potential Attacks",
+        "sha256": "768d0f6887775ccacf28e0083c56f77f5c00fa17327123f43480acb644b61a29"
+      },
+      {
+        "n": 125,
+        "kind": "paragraph",
+        "id": "A4.SS2.p1.1",
+        "section": "D.2 Potential Attacks",
+        "sha256": "d89c086b4ba861d0e087aac9c1e75e7cacc92f6d9271da22bd1e303a4faa6801"
+      },
+      {
+        "n": 126,
+        "kind": "paragraph",
+        "id": "A4.SS2.p2.1",
+        "section": "D.2 Potential Attacks",
+        "sha256": "f3fa5d23247c34e9db6675be711a6d385f49a2e7958d71c94036b619743ae397"
+      },
+      {
+        "n": 127,
+        "kind": "paragraph",
+        "id": "A4.SS2.p3",
+        "section": "D.2 Potential Attacks",
+        "sha256": "f61c9efa5ad791af183be949f814752f2c71f2f3be5c42758cf0f40149fc8449"
+      },
+      {
+        "n": 133,
+        "kind": "paragraph",
+        "id": "A4.SS3.p3.1",
+        "section": "D.3 Discussion of More ICW strategies",
+        "sha256": "ede9b5923a002d93365cc4ee0b44b69161b2f0914b9e6f416c039a7173cec31c"
+      },
+      {
+        "n": 134,
+        "kind": "paragraph",
+        "id": "A4.SS3.p4.1",
+        "section": "D.3 Discussion of More ICW strategies",
+        "sha256": "a19e7987daac29cb0b18884cea741dd0c18f46c9b3d7d35251a41fd1282c9eaa"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Generation embeds watermarks through system prompt or paper input; suspect generated text is thresholded. English-letter/English-vocabulary method explicit in Appendix C.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Unicode/initial/lexical/acrostic detector definitions and token/letter variants operate on generated text; original-task response required.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Baseline paragraph names PostMark/YCZ+23/GPTZero; adaptive detection/removal judges and paraphrases suspect output, not the incoming protected task.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions/partial inventory. Supported local method facts do not become proof of whole-work absence. Actual checker spans below are narrower where stated.",
+      "restriction_rationale": "Coverage only; no performance, sample counts or eligibility state."
+    },
+    {
+      "field_path": "source_receipts.locators",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mechanical source-locator hashes independently reproduce. Semantic inspection coverage is exclusively the actual_context_check spans, not automatic approval of the full provider-declared scope.",
+      "restriction_rationale": "Hash-only locator metadata; no raw method/results text or outcomes."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  },
+  "previous_checker_receipt_sha256": "d8281b1a92fe72ca68ff3ec524d0e2cca7506ad4766f16e903197a52085cabdd",
+  "append_only_addendum": "Explicit coverage-field decision added; prior per-fact checks preserved except stated supersession."
+}
