@@ -85,8 +85,9 @@ def capture(request: dict, run: str, head: str) -> dict:
         for node in soup.select("meta[name],meta[property]"):
             key = str(node.get("name", node.get("property", ""))).casefold()
             if key in FIELDS:
+                attribute = "name" if node.has_attr("name") else "property"
                 fields.append({"field": key, "value": str(node.get("content", "")),
-                               "locator": "meta[" + ("name" if node.has_attr("name") else "property") + "='" + key + "']"})
+                               "locator": "meta[" + attribute + "='" + str(node[attribute]) + "']"})
     result = {**request, "actor": "ROOT_BIBLIOGRAPHIC_CAPTURE_PROVIDER_ONLY", "source_git_commit": head,
         "started_utc": started, "finished_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
         "http_status": response.status_code if response is not None else None,
