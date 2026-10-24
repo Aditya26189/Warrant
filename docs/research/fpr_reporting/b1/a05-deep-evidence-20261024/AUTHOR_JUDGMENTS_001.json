@@ -1,0 +1,445 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "changes": [
+    {
+      "before_row_sha256": "c218740de7b6081925358174d5e6a64f50500cbd5ba78ff5651ee229f899b07a",
+      "criteria": {
+        "before_target_answer": "NOT_MET",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0001-ee40393106b9-F01",
+        "A05-DEEP-W0001-ee40393106b9-F02",
+        "A05-DEEP-W0001-ee40393106b9-F03",
+        "A05-DEEP-W0001-ee40393106b9-F04",
+        "A05-DEEP-W0001-ee40393106b9-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0001",
+      "scientific_rationale": "The checked complete original-method/comparator/ablation inventory consists of adversarial prompt search and Garak detection of generated target responses. Its binary response scoring is not a separate input-classification evaluation and depends on the protected answer. This supports a whole-work timing/unit exclusion; no language decision is needed.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "acl:2025.llmsec-1.2"
+    },
+    {
+      "before_row_sha256": "b6fa71036e10d3f1077778a7d4ca077a129fed37390115b8faed3108b5990bf8",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": "EXPLICIT_NONEMPIRICAL_DESIGN",
+      "new_evidence_ids": [
+        "A05-DEEP-W0002-ea0190732185-F01",
+        "A05-DEEP-W0002-ea0190732185-F02",
+        "A05-DEEP-W0002-ea0190732185-F03",
+        "A05-DEEP-W0002-ea0190732185-F04",
+        "A05-DEEP-W0002-ea0190732185-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0002",
+      "scientific_rationale": "The primary methodology expressly defines qualitative discourse analysis and disclaims quantitative evaluation and predictive modeling. The checked discussion and mitigation scope proposes implications rather than an evaluated detector. Illustrative English attack text is not an empirical input-classifier evaluation. Exclusion follows the explicit study design, not a missing excerpt or missing performance number.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "acl:2026.nlpaics-1.17"
+    },
+    {
+      "before_row_sha256": "f7d0542d0d6eb298bef8e4599e50e09614db822db4762d3e10cfb37537764c9c",
+      "criteria": {
+        "before_target_answer": "NOT_MET",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0003-3522047b1985-F01",
+        "A05-DEEP-W0003-3522047b1985-F02",
+        "A05-DEEP-W0003-3522047b1985-F03",
+        "A05-DEEP-W0003-3522047b1985-F04",
+        "A05-DEEP-W0003-3522047b1985-F05",
+        "A05-DEEP-W0003-3522047b1985-F06"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0003",
+      "scientific_rationale": "The checked complete framework, relevance-screening, comparator and implementation inventory rates generated target-response impact or successful compromise. These decisions require target responses; the prospective testbed is not an evaluated input detector. This establishes the whole-work timing/unit exclusion without needing evaluated-language composition.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "arxiv:2401.00991"
+    },
+    {
+      "before_row_sha256": "1518255f2a3a06919fa9023611392062fcfc2e1eb1e38af34a62980353ee7631",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": "COMPLETE_NONEMPIRICAL_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0005-de107850d20b-F01",
+        "A05-DEEP-W0005-de107850d20b-F02",
+        "A05-DEEP-W0005-de107850d20b-F03",
+        "A05-DEEP-W0005-de107850d20b-F04",
+        "A05-DEEP-W0005-de107850d20b-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0005",
+      "scientific_rationale": "All substantive conceptual-framework, background, discussion, future-work and conclusion scope was checked. Input detection is a proposed layer, not an original evaluated procedure. This is a conceptual security framework and fails the original empirical input-classifier requirement.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "arxiv:2402.11082"
+    },
+    {
+      "before_row_sha256": "0816bbce9516c09dd4c9529718f18047811b9a4ebb2b913ba68b908d2c7926ea",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0048-107137e26120-F01",
+        "A05-DEEP-W0048-107137e26120-F02",
+        "A05-DEEP-W0048-107137e26120-F03",
+        "A05-DEEP-W0048-107137e26120-F04",
+        "A05-DEEP-W0048-107137e26120-F05"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0048-107137e26120-F02"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0048-107137e26120-F02"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0048-107137e26120-F01"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0048-107137e26120-F01",
+          "A05-DEEP-W0048-107137e26120-F02"
+        ]
+      },
+      "review_id": "W0048",
+      "scientific_rationale": "The selected ACL publication itself now supports the original CaptureGuard domain experiment: generated benign/malicious input construction and an input-only thresholded DeBERTa classifier. Its English examples and generation/judgment templates are explicitly linked to the constructed evaluation. This establishes an English component, not all-items language composition. Reused external comparisons are not the basis for originality; no arXiv-to-ACL method transfer is used.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2505.12368"
+    },
+    {
+      "before_row_sha256": "7be1d2bc1b7dc1d8d738a9f8649d8f87047375c5b2cd478e919eea28fd4c47f8",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0054-539eb7e02691-F01",
+        "A05-DEEP-W0054-539eb7e02691-F02",
+        "A05-DEEP-W0054-539eb7e02691-F03",
+        "A05-DEEP-W0054-539eb7e02691-F04",
+        "A05-DEEP-W0054-539eb7e02691-F05"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0054-539eb7e02691-F02"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0054-539eb7e02691-F02"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0054-539eb7e02691-F01"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0054-539eb7e02691-F01",
+          "A05-DEEP-W0054-539eb7e02691-F02"
+        ]
+      },
+      "review_id": "W0054",
+      "scientific_rationale": "The selected preprint methods directly connect prompt-injection/benign input classification to explicitly English external evaluation datasets. Input-only feature fusion and SoftMax classification do not depend on the protected answer. The separate end-to-end defended-generation arm is not the qualifying experiment. This resolves evaluated English from source data construction rather than encoder or dataset-name familiarity.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2506.06384"
+    },
+    {
+      "before_row_sha256": "76d46d5288507c3673fe4468d6722eafc15a4a90b8f72bd640febfc48930c8af",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0055-2c5b261796e4-F01",
+        "A05-DEEP-W0055-2c5b261796e4-F02",
+        "A05-DEEP-W0055-2c5b261796e4-F03",
+        "A05-DEEP-W0055-2c5b261796e4-F04",
+        "A05-DEEP-W0055-2c5b261796e4-F05"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0055-2c5b261796e4-F02"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0055-2c5b261796e4-F02"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0055-2c5b261796e4-F01"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0055-2c5b261796e4-F01",
+          "A05-DEEP-W0055-2c5b261796e4-F02"
+        ]
+      },
+      "review_id": "W0055",
+      "scientific_rationale": "The selected preprint evaluates original and TokenBreak-perturbed prompt-injection inputs using binary input classifiers; their scoring requires no protected target answer. Method-linked English attack examples support an English evaluation component. This does not claim every Mosscap item is English or a separate English-only split. Separate spam/toxicity and generated-response demonstrations are not the qualifying arm.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2506.07948"
+    }
+  ],
+  "created_utc": "2026-10-24T16:50:06.154780+00:00",
+  "not_fresh_independent": true,
+  "release_sha256": "983d5cfbe451feacf1e9c9aad9ceb1ccae9522beb0716a67fa0b006c7755fe4c",
+  "reviewed_unchanged": [
+    {
+      "before_row_sha256": "d0565a0b242755bf7cce5072571ce5d5bd3ea76969d61c86fdef61528c7eebac",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0004-a702ad5a076f-F01",
+        "A05-DEEP-W0004-a702ad5a076f-F02",
+        "A05-DEEP-W0004-a702ad5a076f-F03",
+        "A05-DEEP-W0004-a702ad5a076f-F04",
+        "A05-DEEP-W0004-a702ad5a076f-F05",
+        "A05-DEEP-W0004-a702ad5a076f-F06",
+        "A05-DEEP-W0004-a702ad5a076f-F07"
+      ],
+      "rationale": "Known arms score sentiment/refusal, generated-answer-dependent logits and math capability; complete secondary/appendix scope still needed.",
+      "review_id": "W0004"
+    },
+    {
+      "before_row_sha256": "b263ac01ef6c6616cfe6014414aab98f09d788e190ca1f985ce27b9edd8ad89b",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0006-de68cd1f1968-F01",
+        "A05-DEEP-W0006-de68cd1f1968-F02",
+        "A05-DEEP-W0006-de68cd1f1968-F03",
+        "A05-DEEP-W0006-de68cd1f1968-F04",
+        "A05-DEEP-W0006-de68cd1f1968-F05"
+      ],
+      "rationale": "Retrieval-survival testing precedes an answer but is not yet established as a separately evaluated binary injection input classifier; complete secondary scope needed.",
+      "review_id": "W0006"
+    },
+    {
+      "before_row_sha256": "772dbc8e3659f190b1c6423db30b1efcb441caeb3ef20e6520cc8524f62ef450",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0007-ed4eb8cca088-F01",
+        "A05-DEEP-W0007-ed4eb8cca088-F02",
+        "A05-DEEP-W0007-ed4eb8cca088-F03",
+        "A05-DEEP-W0007-ed4eb8cca088-F04",
+        "A05-DEEP-W0007-ed4eb8cca088-F05",
+        "A05-DEEP-W0007-ed4eb8cca088-F06"
+      ],
+      "rationale": "Review contains original demonstrations, so survey title alone cannot exclude. Need complete empirical/secondary scope beyond generated dialogue/code.",
+      "review_id": "W0007"
+    },
+    {
+      "before_row_sha256": "e483cfd658836393b72829d00a52f9459f470ecc91031cdd2bc1b70a490a8830",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0009-4a7a5658689e-F01",
+        "A05-DEEP-W0009-4a7a5658689e-F02",
+        "A05-DEEP-W0009-4a7a5658689e-F03",
+        "A05-DEEP-W0009-4a7a5658689e-F04",
+        "A05-DEEP-W0009-4a7a5658689e-F05",
+        "A05-DEEP-W0009-4a7a5658689e-F06",
+        "A05-DEEP-W0009-4a7a5658689e-F07"
+      ],
+      "rationale": "Input guardrail is distinct from output guardrail, but harmful-content/jailbreak screening alone and its separate binary injection evaluation remain unresolved.",
+      "review_id": "W0009"
+    },
+    {
+      "before_row_sha256": "a47a59ec037eab1926f62b9a2338a865be0e8e9192b20b295705230419c67bf0",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0010-7545b5ca486b-F01",
+        "A05-DEEP-W0010-7545b5ca486b-F02",
+        "A05-DEEP-W0010-7545b5ca486b-F03",
+        "A05-DEEP-W0010-7545b5ca486b-F04",
+        "A05-DEEP-W0010-7545b5ca486b-F05"
+      ],
+      "rationale": "Inspected review recommendations do not establish original empirical methods; obtain complete declared research scope.",
+      "review_id": "W0010"
+    },
+    {
+      "before_row_sha256": "fb39d97773247a666ccab7dee741839eafe21d4bd314c991e9d6d2e44c798dae",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0012-a2517382fc4e-F01",
+        "A05-DEEP-W0012-a2517382fc4e-F02",
+        "A05-DEEP-W0012-a2517382fc4e-F03",
+        "A05-DEEP-W0012-a2517382fc4e-F04",
+        "A05-DEEP-W0012-a2517382fc4e-F05",
+        "A05-DEEP-W0012-a2517382fc4e-F06"
+      ],
+      "rationale": "Inspected arms evaluate Java unit-test generation/repair, not malicious injection input detection; complete experimental/appendix scope still needed.",
+      "review_id": "W0012"
+    },
+    {
+      "before_row_sha256": "dd518cff6c1085673f12c85a2f1776f7ddb6ab4de02b076df945fd55dba7d867",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0013-b95a0a17a511-F01",
+        "A05-DEEP-W0013-b95a0a17a511-F02",
+        "A05-DEEP-W0013-b95a0a17a511-F03",
+        "A05-DEEP-W0013-b95a0a17a511-F04",
+        "A05-DEEP-W0013-b95a0a17a511-F05",
+        "A05-DEEP-W0013-b95a0a17a511-F06"
+      ],
+      "rationale": "Robot attack indicators depend on protected target reasoning/control output. Need scope evidence for any separate frontend input classifier.",
+      "review_id": "W0013"
+    },
+    {
+      "before_row_sha256": "775eadeadda81c856d612d7b36a7095df165c63a5d8e53fcd7003209a4f21be7",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0014-49615b462d37-F01",
+        "A05-DEEP-W0014-49615b462d37-F02",
+        "A05-DEEP-W0014-49615b462d37-F03",
+        "A05-DEEP-W0014-49615b462d37-F04",
+        "A05-DEEP-W0014-49615b462d37-F05",
+        "A05-DEEP-W0014-49615b462d37-F06"
+      ],
+      "rationale": "Inspected classifiers extract personal-information fields; defenses disrupt extraction. Need complete scope before a whole-work PII/unit exclusion.",
+      "review_id": "W0014"
+    },
+    {
+      "before_row_sha256": "b4d2cef5de39c2667f73321f8ad837517349c95f0ff6d10a63a90711ae0cc86e",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0042-5989c36dcf1a-F01",
+        "A05-DEEP-W0042-5989c36dcf1a-F02",
+        "A05-DEEP-W0042-5989c36dcf1a-F03",
+        "A05-DEEP-W0042-5989c36dcf1a-F04",
+        "A05-DEEP-W0042-5989c36dcf1a-F05"
+      ],
+      "rationale": "Inspected binary tests compare generated-output corpora for model change; complete method/secondary scope needed for whole-work exclusion.",
+      "review_id": "W0042"
+    },
+    {
+      "before_row_sha256": "4723a2ce802295de2df1641757111498bcb2f61d4c2d84036e218d3e4cfaf1a4",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0043-08b686295662-F01",
+        "A05-DEEP-W0043-08b686295662-F02",
+        "A05-DEEP-W0043-08b686295662-F03",
+        "A05-DEEP-W0043-08b686295662-F04",
+        "A05-DEEP-W0043-08b686295662-F05"
+      ],
+      "rationale": "Inspected policy-adherence arms use generated target responses; need complete baseline/appendix scope.",
+      "review_id": "W0043"
+    },
+    {
+      "before_row_sha256": "5ef5439b76173fb3441dc5c29a3ccba9ac02e205a296c58c37f033860f0eee46",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0045-4141affb29c7-F01",
+        "A05-DEEP-W0045-4141affb29c7-F02",
+        "A05-DEEP-W0045-4141affb29c7-F03",
+        "A05-DEEP-W0045-4141affb29c7-F04",
+        "A05-DEEP-W0045-4141affb29c7-F05",
+        "A05-DEEP-W0045-4141affb29c7-F06"
+      ],
+      "rationale": "Separate message scorer is pre-answer, but method evidence must link a binary input-injection evaluation and its English setting rather than only trace utility/direct harmful jailbreak evaluation.",
+      "review_id": "W0045"
+    },
+    {
+      "before_row_sha256": "e318d08d7dfa3c7f2b038f122d67bec3baf45c32132bd23e6f61602d40cf5918",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0046-155f67984b39-F01",
+        "A05-DEEP-W0046-155f67984b39-F02",
+        "A05-DEEP-W0046-155f67984b39-F03",
+        "A05-DEEP-W0046-155f67984b39-F04",
+        "A05-DEEP-W0046-155f67984b39-F05",
+        "A05-DEEP-W0046-155f67984b39-F06"
+      ],
+      "rationale": "Known arms score reasoning overflow/harmful generated responses; suggested input prevention is not yet an established evaluated binary classifier. Need complete scope.",
+      "review_id": "W0046"
+    },
+    {
+      "before_row_sha256": "2db39057b185b95b67a023ff6c06458206ee5c34b9ef015a52a0b9377bf46676",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0047-2b7da9872ae5-F01",
+        "A05-DEEP-W0047-2b7da9872ae5-F02",
+        "A05-DEEP-W0047-2b7da9872ae5-F03",
+        "A05-DEEP-W0047-2b7da9872ae5-F04"
+      ],
+      "rationale": "Inspected garak safety evaluations score target outputs; secondary experiment completeness remains unresolved.",
+      "review_id": "W0047"
+    },
+    {
+      "before_row_sha256": "e55d94369ce4fdd6ce31df8af3baa200f285f6ebfd9d2c1ebf923fbd4fb1fe3b",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0049-ec69981352de-F01",
+        "A05-DEEP-W0049-ec69981352de-F02",
+        "A05-DEEP-W0049-ec69981352de-F03",
+        "A05-DEEP-W0049-ec69981352de-F04",
+        "A05-DEEP-W0049-ec69981352de-F05",
+        "A05-DEEP-W0049-ec69981352de-F06"
+      ],
+      "rationale": "Pre-retrieval Boolean query guards exist, but methods have not established a separate binary injection-input evaluation rather than end-to-end extraction success.",
+      "review_id": "W0049"
+    },
+    {
+      "before_row_sha256": "887518ddd9d9baca71f86ea9cf943a976e219599df10109cf09191ae5f22469d",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0050-0d20d7ddcca9-F01",
+        "A05-DEEP-W0050-0d20d7ddcca9-F02",
+        "A05-DEEP-W0050-0d20d7ddcca9-F03",
+        "A05-DEEP-W0050-0d20d7ddcca9-F04",
+        "A05-DEEP-W0050-0d20d7ddcca9-F05"
+      ],
+      "rationale": "Inspected watermark detectors score generated texts. Need full secondary/appendix method scope to exclude an input detector.",
+      "review_id": "W0050"
+    },
+    {
+      "before_row_sha256": "fe1b2fe61550e9d3644ffadb0f67ecf8bc30884a23fb9d8797cf1a5c72d3def3",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0051-07dd67902fe5-F01",
+        "A05-DEEP-W0051-07dd67902fe5-F02",
+        "A05-DEEP-W0051-07dd67902fe5-F03",
+        "A05-DEEP-W0051-07dd67902fe5-F04",
+        "A05-DEEP-W0051-07dd67902fe5-F05"
+      ],
+      "rationale": "Proposed initial input gateway and unspecified internal tests do not establish an original reproducible binary injection experiment. Missing detail alone is not exclusion.",
+      "review_id": "W0051"
+    },
+    {
+      "before_row_sha256": "156c71acaa9cc1df036580c1c9eec0fceed63dc956a133755e9f8369ddb0c9c2",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0052-dbaef8a0901f-F01",
+        "A05-DEEP-W0052-dbaef8a0901f-F02",
+        "A05-DEEP-W0052-dbaef8a0901f-F03",
+        "A05-DEEP-W0052-dbaef8a0901f-F04"
+      ],
+      "rationale": "Input-only binary scoring is supported; exact method-linked injected-instruction evaluation and English test construction remain unresolved.",
+      "review_id": "W0052"
+    }
+  ],
+  "schema": "A05_DEEP_CUSTODIAN_JUDGMENTS_v1",
+  "scope": "No outcomes/counts/claim classes; no sampling or B2. Source-role checks are not independent final eligibility review.",
+  "source_git_commit": "97c088d347a3a31d42d238f8541cb3067c2fb2da",
+  "version_corrections": [
+    {
+      "action": "RETAIN_DECLARED_PUBLISHER_EDITION_REMOVE_ADDED_BYTE_TIMESTAMP_REQUIREMENT",
+      "before_row_sha256": "724a698660987606cec28fe672156abc931e8d921d9958abe2a35fa8e7b1c10c",
+      "evidence_ids": [
+        "A05-PROVIDER03-W0339-METADATA-0002",
+        "A05-SRC03-W0339-M01"
+      ],
+      "rationale": "Separately checked publisher metadata identifies the exact VOR body, publication on2026-08-28 and current edition on2026-09-03, both before cutoff. The later HTTP Last-Modified value is retained as a transport limitation; it does not establish a later scholarly edition. The locked rule did not require historical cryptographic authentication of exact bytes. This corrects an added compiler condition without changing dates or transferring methods between versions.",
+      "retained_limitations": [
+        "Exact historical PDF bytes are not independently timestamp-authenticated.",
+        "Captured2026-10-23; HTTP Last-Modified2026-10-21; publisher header dates are declared primary bibliographic evidence.",
+        "No claim that transport metadata proves content unchanged; any actual contradictory scholarly revision remains material."
+      ],
+      "review_id": "W0339",
+      "rule_document": "VERSION_RULE_APPLICATION.md",
+      "rule_document_sha256": "0684b4d28db3d5243b4e3a9b3a148f62dd01edda5216ce0169511383b8c2bd66",
+      "selected_version_id": "doi:10.1109/access.2026.3728186:vor:declared-2026-09-03",
+      "work_id": "doi:10.1109/access.2026.3728186"
+    }
+  ]
+}
