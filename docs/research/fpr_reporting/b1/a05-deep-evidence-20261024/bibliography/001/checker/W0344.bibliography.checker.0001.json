@@ -1,0 +1,31 @@
+{
+  "schema": "A05_BIBLIOGRAPHIC_SOURCE_CHECK_v1",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:52:30.799071+00:00",
+  "review_id": "W0344",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_supplement": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\PUBLISHER_SOURCES_SUPPLEMENT.0001.json",
+  "provider_supplement_sha256": "aa0b098e2a502c755180e4210a6297ca863a14237ad8b7267ecc1704d2df4d92",
+  "sources": [
+    {
+      "supplement_record_index": 8,
+      "receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0344.json",
+      "receipt_sha256": "3425b72a918da5e08fe9327d7268856a75a9e7cf9a7b5e0d1e879cb647a02b80",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\93cb73c18dbc9fae651f13532760f5725112a1e3f5adb4072d4378403f246ae8",
+      "raw_sha256": "93cb73c18dbc9fae651f13532760f5725112a1e3f5adb4072d4378403f246ae8",
+      "transport_status": 403,
+      "requested_url": "https://doi.org/10.1145/3786335.3813127"
+    }
+  ],
+  "per_fact": [
+    {
+      "field_path": "records[8].status",
+      "decision": "APPROVE",
+      "value": 403,
+      "semantic_fidelity": "Recorded HTTP transport status verified against exact acquisition receipt. A transport error or intermediate response supplies no work content, no VOR attestation, and no publication nonexistence proof.",
+      "restriction_rationale": "Transport only; no eligibility inference."
+    }
+  ],
+  "scope": "Only actual primary source metatags, JSON bibliographic fields and title/publication PDF header inspected; scientific bodies not inspected under this metadata-only task.",
+  "exposure": "Shared filesystem/operational-board aggregate prior status exposure in ROLE.0001.json; no freshness/OS isolation claim. Only safe metadata/header fields output in this check."
+}

@@ -1,0 +1,141 @@
+{
+  "schema": "A05_BIBLIOGRAPHIC_SOURCE_CHECK_v1",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:52:31.588097+00:00",
+  "review_id": "W0368",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_supplement": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\PUBLISHER_SOURCES_SUPPLEMENT.0001.json",
+  "provider_supplement_sha256": "aa0b098e2a502c755180e4210a6297ca863a14237ad8b7267ecc1704d2df4d92",
+  "sources": [
+    {
+      "supplement_record_index": 12,
+      "receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0368.json",
+      "receipt_sha256": "dbad18cc2a745ed61b2da1bc402e0ec86556d52c70abc1a84f2f9688d6cc525f",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\9512fa7431785e102ebb015ef1c498ad7c1c2649fa81c87625d390bb0e31d714",
+      "raw_sha256": "9512fa7431785e102ebb015ef1c498ad7c1c2649fa81c87625d390bb0e31d714",
+      "transport_status": 200,
+      "requested_url": "https://doi.org/10.5281/zenodo.19644135"
+    },
+    {
+      "supplement_record_index": 17,
+      "receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0368.json",
+      "receipt_sha256": "d95395d51e472531e60bbbacb23402be091acf2336aea523d80be13ccd757bdc",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\19b9022375360ed482eb3756774d54a6fc0cb81879499dbd1141e2965fa04d78",
+      "raw_sha256": "19b9022375360ed482eb3756774d54a6fc0cb81879499dbd1141e2965fa04d78",
+      "transport_status": 200,
+      "requested_url": "https://zenodo.org/records/19644135/files/cross-domain-techniques-research-paper.pdf",
+      "header_locator": {
+        "page_1_based": 1,
+        "selection": "page extraction prefix before first Abstract; bounded header only",
+        "text_sha256": "875e60302510c191ef1c777e53e3f9912768ce727f79383c0b0734ee41b5aa0e"
+      },
+      "header_check": "Title and author identity checked against captured publisher/record metadata; header not used to infer study results.",
+      "zenodo_file_checksum_verified": true
+    },
+    {
+      "supplement_record_index": 20,
+      "receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\zenodo-api01-W0368.json",
+      "receipt_sha256": "28baec3e43b817da063f6fa013c66f725bf6977c6e1162605dd1895c359e6250",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\53e14532335a501b0956a9acaa8642b573a6c3adc8b214d6c2a89c7423feb9d9",
+      "raw_sha256": "53e14532335a501b0956a9acaa8642b573a6c3adc8b214d6c2a89c7423feb9d9",
+      "transport_status": 200,
+      "requested_url": "https://zenodo.org/api/records/19644135"
+    }
+  ],
+  "per_fact": [
+    {
+      "field_path": "records[12].metadata_fields[0]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_title']",
+      "value_sha256": "28cd4ccb386df9046f19d9815dbd08399511c8756a1cb85e18de136dd8d8dbce",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[12].metadata_fields[1]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_author']",
+      "value_sha256": "d3ebf246996deffbee966eaccebc9d2708303d9de2c84ddd954c6ef6fd4cff76",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[12].metadata_fields[2]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_doi']",
+      "value_sha256": "570b666902a5133bd80edcef7a0b730fed9ddd010f3406032801c93e1e1e02b8",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[12].metadata_fields[3]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_pdf_url']",
+      "value_sha256": "221422f4819d27a73623db18717a1703aefa6a31784f798a826da8c2347ac68b",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "receipt.bibliographic_fields.doi",
+      "decision": "APPROVE",
+      "source_locator": "JSON $.metadata.doi",
+      "value": "10.5281/zenodo.19644135",
+      "value_sha256": "7faae1c92202b563bca50b89f3eb4ad9a9115e59959c1e598a2829ca8fa87083",
+      "semantic_fidelity": "Exact API bibliographic field independently matches captured raw JSON. Resource subtype is preprint; version string is record-declared, not a journal VOR attestation.",
+      "restriction_rationale": "Safe bibliographic subset only; no JSON description or scientific outcome parsed/displayed."
+    },
+    {
+      "field_path": "receipt.bibliographic_fields.publication_date",
+      "decision": "APPROVE",
+      "source_locator": "JSON $.metadata.publication_date",
+      "value": "2026-04-18",
+      "value_sha256": "6f237c58c76c7629ba051c47a5a59579fcbb7ccea17e8abccdde6d130ef37c34",
+      "semantic_fidelity": "Exact API bibliographic field independently matches captured raw JSON. Resource subtype is preprint; version string is record-declared, not a journal VOR attestation.",
+      "restriction_rationale": "Safe bibliographic subset only; no JSON description or scientific outcome parsed/displayed."
+    },
+    {
+      "field_path": "receipt.bibliographic_fields.version",
+      "decision": "APPROVE",
+      "source_locator": "JSON $.metadata.version",
+      "value": "1.0.0",
+      "value_sha256": "39fe4a40977d0585fd5704359e3685b0ada5cf5ee061e5d97385601d120cd0ec",
+      "semantic_fidelity": "Exact API bibliographic field independently matches captured raw JSON. Resource subtype is preprint; version string is record-declared, not a journal VOR attestation.",
+      "restriction_rationale": "Safe bibliographic subset only; no JSON description or scientific outcome parsed/displayed."
+    },
+    {
+      "field_path": "receipt.bibliographic_fields.resource_type",
+      "decision": "APPROVE",
+      "source_locator": "JSON $.metadata.resource_type",
+      "value": {
+        "subtype": "preprint",
+        "title": "Preprint",
+        "type": "publication"
+      },
+      "value_sha256": "816a5e3cee60b4970ed9fac2e9aa168753e00c17ea29d80389055fbf73763733",
+      "semantic_fidelity": "Exact API bibliographic field independently matches captured raw JSON. Resource subtype is preprint; version string is record-declared, not a journal VOR attestation.",
+      "restriction_rationale": "Safe bibliographic subset only; no JSON description or scientific outcome parsed/displayed."
+    },
+    {
+      "field_path": "receipt.bibliographic_fields.related_identifiers",
+      "decision": "APPROVE",
+      "source_locator": "JSON $.metadata.related_identifiers",
+      "value": [
+        {
+          "identifier": "https://github.com/mthamil107/prompt-shield",
+          "relation": "isSupplementedBy",
+          "resource_type": "software",
+          "scheme": "url"
+        }
+      ],
+      "value_sha256": "af73d4ccb9d785cdfd797c3472bf72042606ff0bd49bda035247b1966e4956b4",
+      "semantic_fidelity": "Exact API bibliographic field independently matches captured raw JSON. Resource subtype is preprint; version string is record-declared, not a journal VOR attestation.",
+      "restriction_rationale": "Safe bibliographic subset only; no JSON description or scientific outcome parsed/displayed."
+    }
+  ],
+  "scope": "Only actual primary source metatags, JSON bibliographic fields and title/publication PDF header inspected; scientific bodies not inspected under this metadata-only task.",
+  "exposure": "Shared filesystem/operational-board aggregate prior status exposure in ROLE.0001.json; no freshness/OS isolation claim. Only safe metadata/header fields output in this check."
+}

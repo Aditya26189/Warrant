@@ -1,0 +1,75 @@
+{
+  "schema": "A05_BIBLIOGRAPHIC_CHECKPOINT_v1",
+  "created_utc": "2026-10-24T16:52:35.017091+00:00",
+  "actor": "codex-a05-deep-checker-20261024",
+  "source_supplement_sha256": "aa0b098e2a502c755180e4210a6297ca863a14237ad8b7267ecc1704d2df4d92",
+  "files": [
+    {
+      "path": "metadata/W0336.bibliography.checker.0001.json",
+      "sha256": "d821294ce7fb2dfbbd394a29d0e6aa493bed50f6b54a680938481ffe794c5d4d"
+    },
+    {
+      "path": "metadata/W0337.bibliography.checker.0001.json",
+      "sha256": "bae758074a3ae09f7a9639b2fd16685a90f6aa92dc5cf2dbe0c510af0d1a1476"
+    },
+    {
+      "path": "metadata/W0338.bibliography.checker.0001.json",
+      "sha256": "186fcea7d33c284a39c4e1a4e1fba34d7e3e8f0ea3de31ae280a03cd8d219c3f"
+    },
+    {
+      "path": "metadata/W0339.bibliography.checker.0001.json",
+      "sha256": "a2ac0f66fde3548820c3c53e562637206d21b15af38f193ad682282d350742e6"
+    },
+    {
+      "path": "metadata/W0340.bibliography.checker.0001.json",
+      "sha256": "5207cee621ef599a1b436b665217ec632ea2d7f6017a1d5a94c27697d10dbaef"
+    },
+    {
+      "path": "metadata/W0341.bibliography.checker.0001.json",
+      "sha256": "13afd6ab27527a4896724d5ea80a16454da31ec0acca30606b0ae69bde6dd8f0"
+    },
+    {
+      "path": "metadata/W0342.bibliography.checker.0001.json",
+      "sha256": "28f084826208415d64716bfa89b330a14179a76f51f454660044a021cc50fd87"
+    },
+    {
+      "path": "metadata/W0343.bibliography.checker.0001.json",
+      "sha256": "6a8f74cb49c773a1ac70a87fad314bef341666d1018651f5efdb29ddd580f7db"
+    },
+    {
+      "path": "metadata/W0344.bibliography.checker.0001.json",
+      "sha256": "bdb6da6fe3dea73c5c2ef4832a554c41a53b16cce3126d422ec8bf4786bb61ec"
+    },
+    {
+      "path": "metadata/W0345.bibliography.checker.0001.json",
+      "sha256": "ce9a17ccf94fb5e8195d15a3f5634e67bb5a1062cd6c3894a0cd43fc694364d4"
+    },
+    {
+      "path": "metadata/W0346.bibliography.checker.0001.json",
+      "sha256": "dac3fe15d4016f7e459b36378eaacf79fb72dea070781611dd307fda7c9d2cdc"
+    },
+    {
+      "path": "metadata/W0367.bibliography.checker.0001.json",
+      "sha256": "f379261f0fa48475971a0c32785ad0a9a34868d8c8a00624add6cab2099578a4"
+    },
+    {
+      "path": "metadata/W0368.bibliography.checker.0001.json",
+      "sha256": "e379b9968757a80cf3de452d5aa80dc1844f3b6ac551dd1eb3da8f4fac2d4062"
+    },
+    {
+      "path": "metadata/W0371.bibliography.checker.0001.json",
+      "sha256": "14a3ea67bbba2d3c43d0036078e46587d73d73acbd39eec5fcbc3c7b9461995d"
+    },
+    {
+      "path": "metadata/W0372.bibliography.checker.0001.json",
+      "sha256": "949a78836936182c7ffc6de7bef2c8b4b8463190ac8b497529b4481958ac96fe"
+    }
+  ],
+  "status": "CHECK_ONLY_NOT_FINAL_RELEASE",
+  "limitations": [
+    "DOI transport statuses are not VOR/content attestation.",
+    "Zenodo record explicitly declares preprint.",
+    "W0371/W0372 dc.title locator case corrections pending; corresponding citation_title fields independently resolve.",
+    "Publication/online/transport date fields retain distinct source semantics."
+  ]
+}
