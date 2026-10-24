@@ -46,6 +46,22 @@ def known_requests() -> list[dict]:
     return result
 
 
+def known_fulltexts() -> list[dict]:
+    """Follow explicit publisher PDF metadata for the same already known work."""
+    result = []
+    for path in sorted(CACHE.glob("attempt01-*.json")):
+        record = json.loads(path.read_bytes())
+        urls = [f["value"] for f in record["metadata_fields"] if f["field"] == "citation_pdf_url"]
+        if len(set(urls)) > 1:
+            raise ValueError("AMBIGUOUS_PUBLISHER_PDF_LINK")
+        if urls:
+            result.append({"review_id": record["review_id"], "work_id": record["work_id"],
+                "url": urls[0], "prior_metadata_receipt": str(path),
+                "prior_metadata_receipt_sha256": sha(path.read_bytes()),
+                "source_identity_status": "KNOWN_WORK_LINK_REQUIRES_BODY_IDENTITY_CHECK"})
+    return result
+
+
 def capture(request: dict, run: str, head: str) -> dict:
     """Save raw before parsing; return bibliographic allowlist fields only."""
     started = dt.datetime.now(dt.timezone.utc).isoformat()
@@ -92,6 +108,7 @@ def main() -> None:
     """Run one explicitly named metadata-only known-work verification attempt."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--run", required=True)
+    parser.add_argument("--follow-pdfs", action="store_true")
     args = parser.parse_args()
     if not args.run.replace("-", "").isalnum():
         raise ValueError("UNSAFE_RUN_NAME")
@@ -101,7 +118,7 @@ def main() -> None:
     CACHE.mkdir(parents=True, exist_ok=True)
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
         futures = []
-        for request in known_requests():
+        for request in (known_fulltexts() if args.follow_pdfs else known_requests()):
             futures.append(pool.submit(capture, request, args.run, head))
             time.sleep(0.5)
         for future in futures:
