@@ -62,6 +62,27 @@ class ScientificBoundaryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "UNSUPPORTED_VERSION_CORRECTION"):
             c.apply_version(self.row, correction)
 
+    def test_repository_type_cannot_be_assumed_from_doi(self) -> None:
+        row = {"review_id": "W0368", "work_id": "doi:10.5281/zenodo.19644135",
+               "selected_version_id": "arxiv:2604.18248v4", "bibliography": {
+                   "selected": {"date_interval": ["2026-07-30", "2026-07-30"]},
+                   "version_issues": ["KNOWN_PUBLISHER_VOR_AVAILABILITY_OR_EXACT_VERSION_UNRESOLVED"]}}
+        fields = {"resource_type": {"subtype": "journal-article"}, "doi": "10.5281/zenodo.19644135",
+                  "version": "1.0.0", "publication_date": "2026-04-18"}
+        evidence = {key: {"field": key, "value": value, "review_id": "W0368"} for key, value in fields.items()}
+        correction = {"before_row_sha256": r.sha(r.encoded(row)), "action": "RECLASSIFY_REPOSITORY_DOI_AS_PREPRINT",
+                      "selected_version_id": row["selected_version_id"], "evidence_ids": list(fields),
+                      "rule_document": "VERSION_RULE_APPLICATION.md",
+                      "rule_document_sha256": r.sha((c.HERE / "VERSION_RULE_APPLICATION.md").read_bytes()),
+                      "retained_limitations": ["Primary repository declared dates."], "rationale": "Source type and chronology."}
+        with self.assertRaisesRegex(ValueError, "PRIMARY_TYPE_OR_CHRONOLOGY"):
+            c.apply_version(copy.deepcopy(row), correction, evidence)
+        evidence["resource_type"]["value"]["subtype"] = "preprint"
+        c.apply_version(row, correction, evidence)
+        self.assertEqual(row["selected_version_id"], "arxiv:2604.18248v4")
+        self.assertEqual(row["bibliography"]["first_public_date_interval"], ["2026-04-18"] * 2)
+        self.assertEqual(row["bibliography"]["status"], "MET")
+
 
 if __name__ == "__main__":
     unittest.main()

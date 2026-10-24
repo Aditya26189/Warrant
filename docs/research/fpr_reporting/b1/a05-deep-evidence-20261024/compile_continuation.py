@@ -6,6 +6,7 @@ import collections
 import copy
 import importlib.util
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -56,6 +57,41 @@ def load_evidence() -> dict:
                         or r.field(json.loads(provider_raw), fact["field_path"]) != fact["value"]):
                     raise ValueError("VALUE_NOT_EXACT_APPROVED_PROVIDER_FIELD")
             evidence[eid] = fact
+    for release_path in sorted(HERE.glob("bibliography/*/FACTS.json")):
+        release = json.loads(release_path.read_bytes())
+        root = release_path.parent
+        if any(r.sha((root / name).read_bytes()) != digest for name, digest in release["source_files"].items()):
+            raise ValueError("BIBLIOGRAPHY_RECEIPT_CHANGED")
+        for fact in release["facts"]:
+            check_raw = (root / fact["checker_receipt"]).read_bytes()
+            check = json.loads(check_raw)
+            n = int(fact["evidence_id"].rsplit("-F", 1)[1]) - 1
+            approval = check["per_fact"][n]
+            source_raw = (root / fact["source_receipt"]).read_bytes()
+            source = json.loads(source_raw)
+            if (r.sha(check_raw) != fact["checker_receipt_sha256"] or approval["decision"] != "APPROVE"
+                    or fact["provider_actor"] == fact["checker_actor"] or check["actor"] != fact["checker_actor"]
+                    or source["review_id"] != fact["review_id"]):
+                raise ValueError("BIBLIOGRAPHY_NOT_APPROVED")
+            binding = [x for x in check["sources"] if Path(x["receipt"]).name == Path(fact["source_receipt"]).name]
+            if len(binding) != 1 or binding[0]["receipt_sha256"] != r.sha(source_raw):
+                raise ValueError("BIBLIOGRAPHY_PROVIDER_CHANGED")
+            match = re.fullmatch(r"records\[\d+\]\.metadata_fields\[(\d+)\]", approval["field_path"])
+            if match:
+                item = source["metadata_fields"][int(match[1])]
+                value = item["value"]
+                digest = r.sha(value.encode())
+                if item["field"] != fact["field"] or item["locator"] != fact["source_locator"]:
+                    raise ValueError("BIBLIOGRAPHY_FIELD_CHANGED")
+            else:
+                field = approval["field_path"].removeprefix("receipt.bibliographic_fields.")
+                value = source["bibliographic_fields"][field]
+                digest = r.sha(json.dumps(value, sort_keys=True).encode())
+            if value != fact["value"] or digest != approval["value_sha256"]:
+                raise ValueError("BIBLIOGRAPHY_VALUE_CHANGED")
+            if fact["evidence_id"] in evidence and evidence[fact["evidence_id"]] != fact:
+                raise ValueError("BIBLIOGRAPHY_EVIDENCE_COLLISION")
+            evidence[fact["evidence_id"]] = fact
     return evidence
 
 
@@ -105,10 +141,37 @@ def apply_domain(row: dict, change: dict, evidence: dict) -> None:
                 "deep_exclusion_basis": change["exclusion_basis"]})
 
 
-def apply_version(row: dict, correction: dict) -> None:
+def apply_version(row: dict, correction: dict, evidence: dict | None = None) -> None:
     """Remove only the disclosed, extra timestamp condition; retain its evidence."""
     if r.sha(r.encoded(row)) != correction["before_row_sha256"]:
         raise ValueError("VERSION_PRIOR_CHANGED")
+    if correction["action"] == "RECLASSIFY_REPOSITORY_DOI_AS_PREPRINT":
+        if row["review_id"] != "W0368" or correction["selected_version_id"] != row["selected_version_id"] or evidence is None:
+            raise ValueError("UNSUPPORTED_REPOSITORY_CORRECTION")
+        if r.sha((HERE / correction["rule_document"]).read_bytes()) != correction["rule_document_sha256"]:
+            raise ValueError("VERSION_REASONING_CHANGED")
+        validate_refs(correction["evidence_ids"], row["review_id"], evidence)
+        facts = {evidence[eid]["field"]: evidence[eid]["value"] for eid in correction["evidence_ids"]}
+        if (facts.get("resource_type", {}).get("subtype") != "preprint"
+                or "doi:" + facts.get("doi", "") != row["work_id"]
+                or facts.get("version") != "1.0.0" or facts.get("publication_date") != "2026-04-18"
+                or row["selected_version_id"] != "arxiv:2604.18248v4"
+                or row["bibliography"]["selected"]["date_interval"] != ["2026-07-30", "2026-07-30"]):
+            raise ValueError("REPOSITORY_PRIMARY_TYPE_OR_CHRONOLOGY_CHANGED")
+        bib = row["bibliography"]
+        expected = "KNOWN_PUBLISHER_VOR_AVAILABILITY_OR_EXACT_VERSION_UNRESOLVED"
+        if bib["version_issues"] != [expected]:
+            raise ValueError("DIFFERENT_REPOSITORY_VERSION_PROBLEM")
+        bib["superseded_version_issues"] = bib["version_issues"]
+        bib["version_issues"] = []
+        bib["status"] = "MET"
+        bib["first_public_date_interval"] = [facts["publication_date"]] * 2
+        bib["first_public_evidence_ids"] = [eid for eid in correction["evidence_ids"]
+                                           if evidence[eid]["field"] == "publication_date"]
+        bib["repository_preprint_metadata_evidence_ids"] = correction["evidence_ids"]
+        bib["retained_limitations"] = correction["retained_limitations"]
+        row["version_correction_rationale"] = correction["rationale"]
+        return
     if (row["review_id"] != "W0339" or correction["action"] !=
             "RETAIN_DECLARED_PUBLISHER_EDITION_REMOVE_ADDED_BYTE_TIMESTAMP_REQUIREMENT"
             or correction["selected_version_id"] != row["selected_version_id"]):
@@ -180,7 +243,7 @@ def assemble(head: str) -> dict[str, object]:
             apply_domain(rows[rid], change, evidence)
             touched.add(rid)
         for correction in judgments["version_corrections"]:
-            apply_version(rows[correction["review_id"]], correction)
+            apply_version(rows[correction["review_id"]], correction, evidence)
             touched.add(correction["review_id"])
         for note in judgments["reviewed_unchanged"]:
             row = rows[note["review_id"]]
