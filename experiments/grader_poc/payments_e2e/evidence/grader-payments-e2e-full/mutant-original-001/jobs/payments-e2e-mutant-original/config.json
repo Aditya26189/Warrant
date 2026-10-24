@@ -1,0 +1,17 @@
+{
+    "job_name": "payments-e2e-mutant-original",
+    "jobs_dir": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-payments-e2e-full/mutant-original-001/jobs",
+    "n_concurrent_trials": 1,
+    "environment": {
+        "import_path": "experiments.grader_poc.harbor_environment:OwnedDockerEnvironment",
+        "kwargs": {
+            "warrant_owner": "b68f284a546942ccb9c7a8cfa85df727",
+            "warrant_ledger": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-payments-e2e-full/mutant-original-001/ownership"
+        }
+    },
+    "tasks": [
+        {
+            "path": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-payments-e2e-cases-002/mutant-original"
+        }
+    ]
+}

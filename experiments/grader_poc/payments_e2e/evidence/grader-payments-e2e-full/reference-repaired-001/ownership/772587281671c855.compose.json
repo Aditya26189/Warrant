@@ -1,0 +1,50 @@
+{
+  "services": {
+    "customer": {
+      "labels": {
+        "warrant.grader.owner": "4aa8722adfc645dbb9f6c6d81d4f5636"
+      },
+      "image": "warrant-4aa8722adfc645dbb9f6c6d81d4f5636-772587281671-service-0",
+      "build": {
+        "labels": {
+          "warrant.grader.owner": "4aa8722adfc645dbb9f6c6d81d4f5636"
+        }
+      }
+    },
+    "kafka": {
+      "labels": {
+        "warrant.grader.owner": "4aa8722adfc645dbb9f6c6d81d4f5636"
+      }
+    },
+    "main": {
+      "labels": {
+        "warrant.grader.owner": "4aa8722adfc645dbb9f6c6d81d4f5636"
+      },
+      "image": "warrant-4aa8722adfc645dbb9f6c6d81d4f5636-772587281671-service-2",
+      "build": {
+        "labels": {
+          "warrant.grader.owner": "4aa8722adfc645dbb9f6c6d81d4f5636"
+        }
+      }
+    },
+    "seeder": {
+      "labels": {
+        "warrant.grader.owner": "4aa8722adfc645dbb9f6c6d81d4f5636"
+      },
+      "image": "warrant-4aa8722adfc645dbb9f6c6d81d4f5636-772587281671-service-3",
+      "build": {
+        "labels": {
+          "warrant.grader.owner": "4aa8722adfc645dbb9f6c6d81d4f5636"
+        }
+      }
+    }
+  },
+  "networks": {
+    "default": {
+      "name": "warrant-4aa8722adfc645dbb9f6c6d81d4f5636-772587281671-networks-0",
+      "labels": {
+        "warrant.grader.owner": "4aa8722adfc645dbb9f6c6d81d4f5636"
+      }
+    }
+  }
+}

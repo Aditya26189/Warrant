@@ -1,0 +1,123 @@
+{
+    "id": "c7b4bdfd-2f53-4e50-9cff-933304f7501b",
+    "task_name": "terminal-bench/payments-pipeline-fix",
+    "trial_name": "equivalent-repaired__KNuJYp7",
+    "trial_uri": "file://${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-payments-e2e-full/equivalent-repaired-001/jobs/payments-e2e-equivalent-repaired/equivalent-repaired__KNuJYp7",
+    "task_id": {
+        "path": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-payments-e2e-cases-002/equivalent-repaired"
+    },
+    "source": null,
+    "task_checksum": "c71ddc864d7248c624e56c9b488146d8f80c805327d67c30e7c16dc53078d543",
+    "config": {
+        "task": {
+            "path": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-payments-e2e-cases-002/equivalent-repaired",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "equivalent-repaired__KNuJYp7",
+        "trials_dir": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-payments-e2e-full/equivalent-repaired-001/jobs/payments-e2e-equivalent-repaired",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "oracle",
+            "import_path": null,
+            "model_name": null,
+            "model_base_url": null,
+            "model_api_key_name": null,
+            "model_api_format": null,
+            "skip_model_parsing": false,
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {},
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": null,
+            "import_path": "experiments.grader_poc.harbor_environment:OwnedDockerEnvironment",
+            "force_build": false,
+            "delete": true,
+            "stream": false,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {
+                "warrant_owner": "ed3842bb88a24e109f5fa8814cc49754",
+                "warrant_ledger": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-payments-e2e-full/equivalent-repaired-001/ownership"
+            },
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": "bc47050e-6264-4ce9-a104-5dc22f0cd1c9",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "oracle",
+        "version": "1.0.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "model_usage": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "verifier_environment_mode": "separate",
+    "exception_info": null,
+    "started_at": "2026-10-23T19:34:53.906580Z",
+    "finished_at": "2026-10-23T19:40:04.601527Z",
+    "environment_setup": {
+        "started_at": "2026-10-23T19:34:54.480464Z",
+        "finished_at": "2026-10-23T19:35:50.241700Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-10-23T19:35:50.241773Z",
+        "finished_at": "2026-10-23T19:35:50.241949Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-10-23T19:35:50.242083Z",
+        "finished_at": "2026-10-23T19:36:17.067973Z"
+    },
+    "verifier": {
+        "started_at": "2026-10-23T19:37:11.511069Z",
+        "finished_at": "2026-10-23T19:40:04.601364Z"
+    },
+    "step_results": null
+}

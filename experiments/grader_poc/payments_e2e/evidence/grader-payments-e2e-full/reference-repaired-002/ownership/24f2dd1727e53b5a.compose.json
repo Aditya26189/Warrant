@@ -1,0 +1,23 @@
+{
+  "services": {
+    "main": {
+      "labels": {
+        "warrant.grader.owner": "547921c1d98f4ebd8f2bdcfe65a4ea69"
+      },
+      "image": "warrant-547921c1d98f4ebd8f2bdcfe65a4ea69-24f2dd1727e5-service-0",
+      "build": {
+        "labels": {
+          "warrant.grader.owner": "547921c1d98f4ebd8f2bdcfe65a4ea69"
+        }
+      }
+    }
+  },
+  "networks": {
+    "default": {
+      "name": "warrant-547921c1d98f4ebd8f2bdcfe65a4ea69-24f2dd1727e5-networks-0",
+      "labels": {
+        "warrant.grader.owner": "547921c1d98f4ebd8f2bdcfe65a4ea69"
+      }
+    }
+  }
+}

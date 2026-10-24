@@ -1,0 +1,70 @@
+{
+    "schema_version": 3,
+    "created_at": "2026-10-23T15:36:56.223195Z",
+    "harbor": {
+        "version": "0.24.0",
+        "is_editable": false
+    },
+    "n_concurrent_trials": 1,
+    "retry": {
+        "max_retries": 0,
+        "exclude_exceptions": [
+            "AgentAuthenticationError",
+            "RewardFileNotFoundError",
+            "ModelNotFoundError",
+            "RewardFileEmptyError",
+            "UnsupportedModelParametersError",
+            "VerifierTimeoutError",
+            "AgentTimeoutError",
+            "ApiUsageLimitError",
+            "VerifierOutputParseError",
+            "AgentSafetyRefusalError"
+        ],
+        "wait_multiplier": 1.0,
+        "min_wait_sec": 1.0,
+        "max_wait_sec": 60.0
+    },
+    "trials": [
+        {
+            "schema_version": 2,
+            "task": {
+                "name": "reference-repaired",
+                "version": "2.0.2",
+                "type": "local",
+                "digest": "sha256:19a00e28aa622bb7ad2644b78639ee0e4e900a851a20083416d6dbebecce98fa",
+                "path": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-payments-e2e-cases/reference-repaired"
+            },
+            "install_only": false,
+            "timeout_multiplier": 1.0,
+            "agent": {
+                "name": "oracle",
+                "skip_model_parsing": false,
+                "skills": [],
+                "resume_trajectory": false,
+                "extra_allowed_hosts": [],
+                "kwargs": {},
+                "mcp_servers": []
+            },
+            "bridge_inputs": {},
+            "skills": [],
+            "environment": {
+                "import_path": "experiments.grader_poc.harbor_environment:OwnedDockerEnvironment",
+                "force_build": false,
+                "delete": true,
+                "stream": false,
+                "cpu_enforcement_policy": "auto",
+                "memory_enforcement_policy": "auto",
+                "extra_docker_compose": [],
+                "kwargs": {
+                    "warrant_owner": "4aa8722adfc645dbb9f6c6d81d4f5636",
+                    "warrant_ledger": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-payments-e2e-full/reference-repaired-001/ownership"
+                },
+                "extra_allowed_hosts": []
+            },
+            "verifier": {
+                "disable": false,
+                "environment_mode": "separate"
+            }
+        }
+    ]
+}
