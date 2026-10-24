@@ -1,0 +1,263 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0010",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T12:04:37.442310+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0010.provider.0001.json",
+  "provider_packet_sha256": "e4156c0f4fc7ac3e40961f06b8091106b196f43254e8f7f9143168e295d4c4fa",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2405.12750v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\b84e7e1ad84634aa2c31198f9c5eb871e14f4817b0d10da6f7b6358060b6d93b",
+    "raw_sha256": "b84e7e1ad84634aa2c31198f9c5eb871e14f4817b0d10da6f7b6358060b6d93b",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0033.json",
+    "acquisition_receipt_sha256": "c7dea50da8914b38be0365132babb76c74266cd80ca1422433798d6aae974f34",
+    "captured_version_id": "arxiv:2405.12750v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        174,
+        185
+      ],
+      [
+        198,
+        201
+      ],
+      [
+        230,
+        238
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_INVENTORY_ONLY",
+    "semantic_rationale": "Relevant prompt-injection mitigation section and dataset/monitoring review passages actually read. Many model/application/table contexts remain uninspected; no whole-work absence conclusion.",
+    "visual_check": null,
+    "locator_sha256": "25bf7073cd03ced893b418fe0063d4cdc58135967f2d8cb2a9659b7ccc800be0",
+    "locators": [
+      {
+        "index": 174,
+        "paragraph_id": "S7.SS1.p1.1",
+        "section_id": "S7.SS1",
+        "heading": "VII-A Cyber Security Dataset Lifecycle",
+        "text_sha256": "d8e91dc418d838763ba0fb26c0fb9f862115cfa0d7871f301351187717210c6f"
+      },
+      {
+        "index": 175,
+        "paragraph_id": "S7.SS1.SSS1.p1.1",
+        "section_id": "S7.SS1.SSS1",
+        "heading": "VII-A 1 Define Objectives",
+        "text_sha256": "7c503e8825c86b8acde315a01b398a682bc2fc4f003ad5bcb9ee034008aa9e50"
+      },
+      {
+        "index": 176,
+        "paragraph_id": "S7.SS1.SSS2.p1.1",
+        "section_id": "S7.SS1.SSS2",
+        "heading": "VII-A 2 Scope and Content Gathering",
+        "text_sha256": "75c9e2607851c3818c432d53ae82486984106313c8211de3a90803d60e7f7c22"
+      },
+      {
+        "index": 177,
+        "paragraph_id": "S7.SS1.SSS3.p1.1",
+        "section_id": "S7.SS1.SSS3",
+        "heading": "VII-A 3 Data Cleaning and Preprocessing",
+        "text_sha256": "6560049672fcdd94aba0eb046a954640b075209974bf7d9a1866bfb58a945ad3"
+      },
+      {
+        "index": 178,
+        "paragraph_id": "S7.SS1.SSS4.p1.1",
+        "section_id": "S7.SS1.SSS4",
+        "heading": "VII-A 4 Annotation and Labeling",
+        "text_sha256": "bf49a06b58c2371016fe44fd1b453642a1a892656266529818fe8d8feea89961"
+      },
+      {
+        "index": 179,
+        "paragraph_id": "S7.SS2.p1.1",
+        "section_id": "S7.SS2",
+        "heading": "VII-B Software Cyber Security datasets",
+        "text_sha256": "85bda4ac5281957a331c7802f1d9a2c3f063f502f15bec9ca88a852dcca70b5a"
+      },
+      {
+        "index": 180,
+        "paragraph_id": "S7.SS2.SSS1.p1.1",
+        "section_id": "S7.SS2.SSS1",
+        "heading": "VII-B 1 Sate IV - Juliet dataset",
+        "text_sha256": "d8f2f376e029f3cf806fd2347d070dd2639615f62919ff706d94fd5ce7b3577f"
+      },
+      {
+        "index": 181,
+        "paragraph_id": "S7.SS2.SSS2.p1.1",
+        "section_id": "S7.SS2.SSS2",
+        "heading": "VII-B 2 Draper dataset",
+        "text_sha256": "381306292ca348086d11d4411129026bdc0fac08ceea7412e02733a907fe991d"
+      },
+      {
+        "index": 182,
+        "paragraph_id": "S7.SS2.SSS3.p1.1",
+        "section_id": "S7.SS2.SSS3",
+        "heading": "VII-B 3 Reveal dataset",
+        "text_sha256": "369d52772ed1732c7a04c82464944ed0694922d37dc89ddc1786da409361e84d"
+      },
+      {
+        "index": 183,
+        "paragraph_id": "S7.SS2.SSS4.p1.1",
+        "section_id": "S7.SS2.SSS4",
+        "heading": "VII-B 4 Devign dataset",
+        "text_sha256": "097e527bd15be827b312b3b5eb403ec609ec3de5821a95aab3598ffaa60c3b02"
+      },
+      {
+        "index": 184,
+        "paragraph_id": "S7.SS2.SSS5.p1.1",
+        "section_id": "S7.SS2.SSS5",
+        "heading": "VII-B 5 VUDENC",
+        "text_sha256": "1b0db2649d174c14174496f048364eb3f915caa30ed9f63c5da70349388b2645"
+      },
+      {
+        "index": 185,
+        "paragraph_id": "S7.SS2.SSS6.p1.1",
+        "section_id": "S7.SS2.SSS6",
+        "heading": "VII-B 6 BigVul dataset",
+        "text_sha256": "8a82ce1603798d6a0eaa2eb23694d0d2ace8bcf1addd6034e90c570b7a7c4cde"
+      },
+      {
+        "index": 198,
+        "paragraph_id": "S8.SS1.p1.1",
+        "section_id": "S8.SS1",
+        "heading": "VIII-A Prompt Injection",
+        "text_sha256": "f35c3c980a8b6e121d0cad4a429011f04050c3235b1b54ae74394760f57f5ca9"
+      },
+      {
+        "index": 199,
+        "paragraph_id": "S8.SS1.SSS1.p1.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "VIII-A 1 Nature of Prompt Injection Attacks",
+        "text_sha256": "26387fbacb6215a91294c67239a130656efaee8ba509e9fe8bbf9060e53aa7b8"
+      },
+      {
+        "index": 200,
+        "paragraph_id": "S8.SS1.SSS2.p1.1",
+        "section_id": "S8.SS1.SSS2",
+        "heading": "VIII-A 2 Mitigation Strategies",
+        "text_sha256": "2295c1852db2afe78b5e5bea9c5fe1e8847be624c22f999357ab6f48ba13de9d"
+      },
+      {
+        "index": 201,
+        "paragraph_id": "S8.SS1.SSS3.p1.1",
+        "section_id": "S8.SS1.SSS3",
+        "heading": "VIII-A 3 Potential Attack Scenarios",
+        "text_sha256": "c8c1c96732a42c5fe346459db3de47bdb1a3ff3290fb367302f1cb2fe269ab5d"
+      },
+      {
+        "index": 230,
+        "paragraph_id": "S8.SS8.SSS1.p1.1",
+        "section_id": "S8.SS8.SSS1",
+        "heading": "VIII-H 1 Nature of DoS attack",
+        "text_sha256": "58e689fe21d7def6b82f8d74a6547b187ded0e7666cab871b1931442ab73c14f"
+      },
+      {
+        "index": 231,
+        "paragraph_id": "S8.SS8.SSS2.p1.1",
+        "section_id": "S8.SS8.SSS2",
+        "heading": "VIII-H 2 Potential Attack Scenarios",
+        "text_sha256": "85ac183d59858e70a4da274f482260bdf9362c353781e1207c7e10e14d2115c8"
+      },
+      {
+        "index": 232,
+        "paragraph_id": "S8.I27.i1.p1.1",
+        "section_id": "S8.SS8.SSS2",
+        "heading": "VIII-H 2 Potential Attack Scenarios",
+        "text_sha256": "49354afcaad824fa3ab1051d9ad26312351079858df05efcc34a1711f651d2da"
+      },
+      {
+        "index": 233,
+        "paragraph_id": "S8.I27.i2.p1.1",
+        "section_id": "S8.SS8.SSS2",
+        "heading": "VIII-H 2 Potential Attack Scenarios",
+        "text_sha256": "74c0102d6fc6fe98df0f7066d352c799f56f78117f3f28e23a08e3fa9ddf1a88"
+      },
+      {
+        "index": 234,
+        "paragraph_id": "S8.I27.i3.p1.1",
+        "section_id": "S8.SS8.SSS2",
+        "heading": "VIII-H 2 Potential Attack Scenarios",
+        "text_sha256": "7e47f943dac3f5510c8f3293bdb3f865b74491ae9a5837c7d295c95dc8bf5463"
+      },
+      {
+        "index": 235,
+        "paragraph_id": "S8.SS8.SSS3.p1.1",
+        "section_id": "S8.SS8.SSS3",
+        "heading": "VIII-H 3 Prevention Strategies",
+        "text_sha256": "26b11101decd63c79a4b2b7725f7fbc4091b7cf80239c6d756105eac0b15c367"
+      },
+      {
+        "index": 236,
+        "paragraph_id": "S8.I28.i1.p1.1",
+        "section_id": "S8.SS8.SSS3",
+        "heading": "VIII-H 3 Prevention Strategies",
+        "text_sha256": "f7484cd42e803b0d9ac6d5e1872653c1e2b0d192302fe9e6d7335e6fee21681e"
+      },
+      {
+        "index": 237,
+        "paragraph_id": "S8.I28.i2.p1.1",
+        "section_id": "S8.SS8.SSS3",
+        "heading": "VIII-H 3 Prevention Strategies",
+        "text_sha256": "5b09d17d31482d95468afb65de9184130aa3ca5382d17da023dca5cc6db268b2"
+      },
+      {
+        "index": 238,
+        "paragraph_id": "S8.I28.i3.p1.1",
+        "section_id": "S8.SS8.SSS3",
+        "heading": "VIII-H 3 Prevention Strategies",
+        "text_sha256": "f0d534da2a95e42009d67c8ceec5b7b4706e236274a9203455e6b4b5422dc52f"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Title, detailed section structure and inspected sections are a review of cybersecurity models, dataset construction and vulnerabilities/mitigations.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Section VIII-A synthesizes operational restriction, consent and trust-boundary recommendations; VIII-H synthesizes monitoring recommendations. No original input detector is established by these particular review passages.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Inspected reviewed dataset/mitigation passages do not establish an original evaluated English detection construction; this is scoped evidence insufficiency, not whole-work absence.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions/partial inventory. Supported local method facts do not become proof of whole-work absence. Actual checker spans below are narrower where stated.",
+      "restriction_rationale": "Coverage only; no performance, sample counts or eligibility state."
+    },
+    {
+      "field_path": "coverage.inspected_units",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mechanical source-locator hashes independently reproduce. Semantic inspection coverage is exclusively the actual_context_check spans, not automatic approval of the full provider-declared scope.",
+      "restriction_rationale": "Hash-only locator metadata; no raw method/results text or outcomes."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  },
+  "previous_checker_receipt_sha256": "92eda75fef4ad39255baf2ecbb1a88dbc1674ee87a1411e29c25f42c34437576",
+  "append_only_addendum": "Explicit coverage-field decision added; prior per-fact checks preserved except stated supersession."
+}

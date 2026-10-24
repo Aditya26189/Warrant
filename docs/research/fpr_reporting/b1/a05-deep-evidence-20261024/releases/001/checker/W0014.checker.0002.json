@@ -1,0 +1,493 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0014",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T12:04:37.454064+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0014.provider.0001.json",
+  "provider_packet_sha256": "2e44bd3d866bd2eadd42cbc44e8dfd90ddb8c16353335c4194838bc9cf80a61f",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2408.07291v4",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\765742bb74c6a7ee0b7ddbb8de9240175b4d807a566deaa1e12c0bbe4ea2e3b8",
+    "raw_sha256": "765742bb74c6a7ee0b7ddbb8de9240175b4d807a566deaa1e12c0bbe4ea2e3b8",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0038.json",
+    "acquisition_receipt_sha256": "6b2d8dbe77f4bf3dc453e21f4165049be0e32e7b0b305273ebb0a6252a772972",
+    "captured_version_id": "arxiv:2408.07291v4",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        24,
+        42
+      ],
+      [
+        43,
+        57
+      ],
+      [
+        65,
+        87
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_INVENTORY_ONLY",
+    "semantic_rationale": "Actually inspected extraction framework, profile datasets, comparator definitions/labels and main defense construction. Later bypass variants and appendix table/figure bodies unresolved; no complete original-method inventory.",
+    "visual_check": null,
+    "locator_sha256": "4da1ddd4a981ba5498a3cc3b398cc79194595791e833a75b1e8428022413d012",
+    "locators": [
+      {
+        "index": 24,
+        "paragraph_id": "S2.SS2.p1.1",
+        "section_id": "S2.SS2",
+        "heading": "2.2 Large Language Models (LLMs)",
+        "text_sha256": "63cfe8938b8051fd6f67951dff37f36c688e987adcff5a9d54672cc2aa1bb943"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S2.SS3.p1.1",
+        "section_id": "S2.SS3",
+        "heading": "2.3 Misuse of LLMs",
+        "text_sha256": "50403f763259a35d5cfef35aa026a8fd82ac7731c536076c38f88c541739c9c2"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.p1.1",
+        "section_id": "S3",
+        "heading": "3 Threat Model",
+        "text_sha256": "0462f313e48c41b1ea44b176cf9d7a0bd0e9f29ca83ba9e0a8418ecbb419303f"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.p2.1",
+        "section_id": "S3",
+        "heading": "3 Threat Model",
+        "text_sha256": "1db9fbeaaa498fe3f4bf883eb7e9025cb35e276b4ed3ea5a6ff639140d922de5"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "4 Formulating an Attack Framework",
+        "text_sha256": "fb0f604442939a819f247b01ede58d8c1f068d11f20add7283801cdd39ad107f"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Defining LLM-based PIE",
+        "text_sha256": "2c2fc1727b8648beac24444eee07b88f23be80dfbbb9c1a11badd9f765a3c283"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S4.SS1.p2.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Defining LLM-based PIE",
+        "text_sha256": "d6978f3291dd49760007b6bc93780024fe38bca270c60786a163443fd39612dd"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S4.SS1.p3.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Defining LLM-based PIE",
+        "text_sha256": "da1765179f5dfc2b0867bdb48b47607773fd5251d3893f5690a915ef66f6159a"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S4.SS1.p4.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Defining LLM-based PIE",
+        "text_sha256": "44b314da2a4e7da6f718b4f8e0f76851427ad6d3e6788751945e7c3e2e0957a8"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Prompt Design",
+        "text_sha256": "0d6de6362afa4f4268b2cf044b5620b003737acf3d273c6bcced9c899a2972e1"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S4.SS2.p2.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Prompt Design",
+        "text_sha256": "670197a81ae610db715fbcd6cef6ae5c9e219b24a72f363ea07ee4efe5ffadad"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S4.SS2.p3.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Prompt Design",
+        "text_sha256": "2c195eda07705bf330a0f1399edce25e92c5759a7a193f21d85ea95d7396213e"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S4.SS2.p4.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Prompt Design",
+        "text_sha256": "3b623d53383166c54119c8b8af69ab7fd361f976861087d867f7c67eb3631139"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S4.SS3.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Personal Profile Processing",
+        "text_sha256": "1ff499db03a819627e893d6473026d7693158a74d4dadce1eee2ecd894dbe3ad"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S4.SS3.p2.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Personal Profile Processing",
+        "text_sha256": "7763525eb22587e9bb37a79c7958a1ad6c0bffbfc292f3fcecd3b4d4c6e26336"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S4.SS3.p3.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Personal Profile Processing",
+        "text_sha256": "5374332dc724a60989d3604d13e378b84e4bb4339fef978dcd34101c18863fe4"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S5.p1.1",
+        "section_id": "S5",
+        "heading": "5 Datasets",
+        "text_sha256": "ffb60e15c4c82e66497524cfec2b2e3dfc40c36796bb184a332031fed17ffe27"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S5.SS1.p1.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Synthetic Dataset",
+        "text_sha256": "8309b341c8742ebbbb45e3b09a3201441b67df889f00967ca87d801a9a2298de"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S5.SS1.p2.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Synthetic Dataset",
+        "text_sha256": "03d3d747b56a32033cc2d56d1d46ecbe2ffb0247e846333c85320d71e2c3cfaf"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S5.SS2.p1.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2 Real-world Datasets",
+        "text_sha256": "009388735e63ec515dc5303912c4ef03252d4113ac5584bae4c1eb1876175e12"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S5.SS2.p2.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2 Real-world Datasets",
+        "text_sha256": "76f568a559a62328d58d60be6ac025358606ac1a8006b339d4a0b73a00877966"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S5.SS2.p3.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2 Real-world Datasets",
+        "text_sha256": "00002c94f8b7ef469d1e947e4b5523eb9e6de3cd1163b81d477793d9784857e3"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S5.SS2.p4.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2 Real-world Datasets",
+        "text_sha256": "e4a31c6c1912ada36baecdc7caf562d7138bfa2aa4f230a592b966a8cd0e8d54"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S5.SS2.p5.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2 Real-world Datasets",
+        "text_sha256": "16e35982a62d64c3682aff8bdc70b769a1899a99eb81c8de6b15410314e57c9d"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S5.SS2.p6.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2 Real-world Datasets",
+        "text_sha256": "c7727fffe8608aa0e2de10b0449629efc0830254fe9b85c20df5a378591450e4"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S6.SS1.SSS1.p1.1",
+        "section_id": "S6.SS1.SSS1",
+        "heading": "6.1.1 LLMs and Datasets",
+        "text_sha256": "18852a4c80cdb9f9e3b612f7007b85bd293d2cc8f0b22c162d402d6ec9bb94bb"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S6.SS1.SSS1.p2.1",
+        "section_id": "S6.SS1.SSS1",
+        "heading": "6.1.1 LLMs and Datasets",
+        "text_sha256": "6f462efe91bfd3c7aa36f13ff8a6846f7696dc6ee82fe3c97dafc9c2d24f27b1"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S6.SS1.SSS2.p1.1",
+        "section_id": "S6.SS1.SSS2",
+        "heading": "6.1.2 Attack Settings",
+        "text_sha256": "2dc1a1bc17fc01e7d19f3cd24020439aec6f87157eb6fcb52e2d195067ca057f"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S6.SS1.SSS2.p2.1",
+        "section_id": "S6.SS1.SSS2",
+        "heading": "6.1.2 Attack Settings",
+        "text_sha256": "b39a05b92b42851814165c5f788e493fcfe759f819930a855eafa2b375ac4834"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S6.SS1.SSS2.p3.1",
+        "section_id": "S6.SS1.SSS2",
+        "heading": "6.1.2 Attack Settings",
+        "text_sha256": "42e9a4f231a8d94f2c5f99b64c3b338daf6efae5cb23dfd147f8fc03f54c1984"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S6.SS1.SSS3.p1.1",
+        "section_id": "S6.SS1.SSS3",
+        "heading": "6.1.3 Compared Baselines",
+        "text_sha256": "cffcebe69c704cda5699f26cad725cba8972e17d06b48d2e9a2cb7b84bf00b4e"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S6.SS1.SSS4.p1.1",
+        "section_id": "S6.SS1.SSS4",
+        "heading": "6.1.4 Evaluation Metrics",
+        "text_sha256": "96539e11457adac6eaecf502ec86f3f0d842e7ba2728f14c2a165fe608ca088a"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S6.SS1.SSS4.p2.1",
+        "section_id": "S6.SS1.SSS4",
+        "heading": "6.1.4 Evaluation Metrics",
+        "text_sha256": "8164160342351a8a22955f0a5ed53403a4c63d95644e38ae86b9a0db5c53617e"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "S6.SS1.SSS4.p3.1",
+        "section_id": "S6.SS1.SSS4",
+        "heading": "6.1.4 Evaluation Metrics",
+        "text_sha256": "2841e00b61df82b30d012ca5710c64af39ae45f44d12f228f758e8ef5a9876fb"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S6.SS2.p3.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Attack Results",
+        "text_sha256": "346c258acc7238e4dccfdca49bca7c8f7dc7ac2a103785569555c6259e4b39c6"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "S6.SS2.p4.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Attack Results",
+        "text_sha256": "b948d750a89c17a0f269eef450c84506c28248fda73d5ddb669622f97b33c81c"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S6.SS2.p5.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Attack Results",
+        "text_sha256": "8f0be2f7cf845faae7c3e445c2e1d91e8b090727bdde85c5e3daa9c93c476b22"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S6.SS2.p6.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Attack Results",
+        "text_sha256": "d7d73667207dce6a484b51b6e0516fc62e8f8223acd5499a0869b584f68429f4"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S6.SS2.p7.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Attack Results",
+        "text_sha256": "a0f726f684e69e8b7db85ed40f70d5b647d20ece84b849f984490f0b08fbd64e"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S7.p1.1",
+        "section_id": "S7",
+        "heading": "7 Defenses",
+        "text_sha256": "0a8875fac28a8bd8c5e0bac702f11d110a8b9dab1d185c1b3d77a24627cd39b8"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S7.SS1.p1.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 Defenderâ€™s Goals",
+        "text_sha256": "32794159abfcc116feb25219cc6490cbd3c94a78ce9e48fd74e8898c3fa802ee"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "S7.SS1.p2.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 Defenderâ€™s Goals",
+        "text_sha256": "0a461126066838e8ad9e4fcebbed13c366b69bb9652549e43260ae4c25a36587"
+      },
+      {
+        "index": 73,
+        "paragraph_id": "S7.SS1.p3.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 Defenderâ€™s Goals",
+        "text_sha256": "b6ffa36fcde32d04d0cd18ee423de45a289abf08902610347095c3a3ffb083bf"
+      },
+      {
+        "index": 74,
+        "paragraph_id": "S7.SS1.p4.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 Defenderâ€™s Goals",
+        "text_sha256": "9734d204afc2f09e6530bef52ca87e0e08fd210658ea6738d7737fd3ee3aa723"
+      },
+      {
+        "index": 75,
+        "paragraph_id": "S7.SS2.p1.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Existing Defenses",
+        "text_sha256": "a0c5603b9ae73fc79f977920a833cde34770c425ab58e0de80f76a5383ca0a36"
+      },
+      {
+        "index": 76,
+        "paragraph_id": "S7.SS2.p2.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Existing Defenses",
+        "text_sha256": "70c906b04d18d37e218d9e15b208b7a7a0d654a29d6b09ce8d301e46eed76798"
+      },
+      {
+        "index": 77,
+        "paragraph_id": "S7.SS2.p3.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Existing Defenses",
+        "text_sha256": "28fe77f17e743f60aa402f9dfc8b927e907a473d48e04f35cb4531925e304009"
+      },
+      {
+        "index": 78,
+        "paragraph_id": "S7.SS2.p4.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Existing Defenses",
+        "text_sha256": "db41ce01a027432f1d57d14cbd2bc1398caea78b682445a3bb9d72679121425f"
+      },
+      {
+        "index": 79,
+        "paragraph_id": "S7.SS2.p5.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Existing Defenses",
+        "text_sha256": "9c0af4f8ef36d4656eb378139a940682437b58ce0ae922cb090c4f4fc2ccfa9e"
+      },
+      {
+        "index": 80,
+        "paragraph_id": "S7.SS2.p6.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Existing Defenses",
+        "text_sha256": "a3dfdc4b764cc51cfa22df6cce83318028ecf1b257b54fcef5735e3e0798eb27"
+      },
+      {
+        "index": 81,
+        "paragraph_id": "S7.SS3.p1.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Prompt Injection as a Defense",
+        "text_sha256": "e46b3365891fecb00f2e5d57e1029e5a9fdea648ced7a3e5223f70c6af9e5ada"
+      },
+      {
+        "index": 82,
+        "paragraph_id": "S7.SS3.p2.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Prompt Injection as a Defense",
+        "text_sha256": "9dd82629bb77c388b71e797024049079b8404a2c6e4d24e2f998592390a24ec6"
+      },
+      {
+        "index": 83,
+        "paragraph_id": "S7.SS3.p3.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Prompt Injection as a Defense",
+        "text_sha256": "b8d106b7253c258b21c413247b4366afb9a55e5de9319c91b193d1cd5d77bf9b"
+      },
+      {
+        "index": 84,
+        "paragraph_id": "S7.SS3.p4.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Prompt Injection as a Defense",
+        "text_sha256": "00f7d0e66061ef9e3df60b778144d501dbd45558c1908973285258e4d628402c"
+      },
+      {
+        "index": 85,
+        "paragraph_id": "S7.SS3.p5.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Prompt Injection as a Defense",
+        "text_sha256": "652281e15267431476750c2f7a4ff08bed62c0ceecb36ac1a72f372f61b93814"
+      },
+      {
+        "index": 86,
+        "paragraph_id": "S7.SS3.p6.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Prompt Injection as a Defense",
+        "text_sha256": "82ea6fa38328a378b1dbc95da028e732368763d60dc8e324bf45005e8dbd27ce"
+      },
+      {
+        "index": 87,
+        "paragraph_id": "S7.SS3.p7.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Prompt Injection as a Defense",
+        "text_sha256": "ba41cb582fd7c03a01c415c274a1e2276e07c497dc2d03cba2b373cacddf165b"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main framework explicitly varies profile processing/prompt design/formats and evaluates extraction versus field ground truth under profile countermeasures.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Named regex/keyword/spaCy/BERT/mlscraper comparators and LLM prompt/preprocessing variants are in the setup; LLM arms produce extracted values, not injection labels.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Sections 7.2?7.3 describe obfuscation, hyperlink/image and embedded context-ignoring/injected field data; assessment requires downstream extraction values.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Synthetic HTML/public profile construction and English examples explicit, while dataset language composition remains unestablished in inspected setup.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions/partial inventory. Supported local method facts do not become proof of whole-work absence. Actual checker spans below are narrower where stated.",
+      "restriction_rationale": "Coverage only; no performance, sample counts or eligibility state."
+    },
+    {
+      "field_path": "coverage.inspected_units",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mechanical source-locator hashes independently reproduce. Semantic inspection coverage is exclusively the actual_context_check spans, not automatic approval of the full provider-declared scope.",
+      "restriction_rationale": "Hash-only locator metadata; no raw method/results text or outcomes."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  },
+  "previous_checker_receipt_sha256": "9403a8b49c7cfd0fa6085d309df3424df957dc7f874da73475540f43dd73a5a2",
+  "append_only_addendum": "Explicit coverage-field decision added; prior per-fact checks preserved except stated supersession."
+}
