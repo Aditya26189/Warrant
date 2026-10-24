@@ -47,6 +47,9 @@ def checked_fields(check: dict, packet: dict, packet_raw: bytes) -> list[dict]:
     if packet["review_id"] != check["review_id"]:
         raise ValueError("FOREIGN_WORK")
     mechanical = check["mechanical_check"]
+    if mechanical.get("raw_body_available") is False and mechanical.get("acquisition_hash_verified"):
+        # An authenticated access gap must not become a scientific method fact.
+        return []
     if (not mechanical.get("raw_hash_verified") or not mechanical.get("acquisition_hash_verified")
             or mechanical.get("provider_locator_mismatches")):
         raise ValueError("SOURCE_BINDING_NOT_VERIFIED")
@@ -81,6 +84,7 @@ def build(checkpoint_path: Path) -> tuple[dict, dict[str, bytes]]:
     pins = {r["path"]: r["sha256"] for r in checkpoint["files"]}
     files = {"CHECKER_CHECKPOINT.json": checkpoint_raw}
     facts = []
+    access_only = []
     for rid, relative in sorted(checkpoint["latest_receipts"].items()):
         raw = (checkpoint_path.parent / relative).read_bytes()
         if sha(raw) != pins[relative]:
@@ -98,6 +102,10 @@ def build(checkpoint_path: Path) -> tuple[dict, dict[str, bytes]]:
         released = checked_fields(check, packet, packet_raw)
         receipt_name = "checker/" + Path(relative).name
         files[receipt_name] = raw
+        if not released:
+            access_only.append({"review_id": rid, "checker_receipt": receipt_name,
+                                "checker_receipt_sha256": sha(raw), "source_identity": check["source_identity"],
+                                "status": "ACCESS_RECORD_ONLY_NO_METHOD_EVIDENCE"})
         for n, item in enumerate(released, 1):
             facts.append({"evidence_id": "A05-DEEP-" + rid + "-" + sha(raw)[:12] + "-F" + str(n).zfill(2),
                           "review_id": rid, "work_id": request["work_id"],
@@ -109,7 +117,7 @@ def build(checkpoint_path: Path) -> tuple[dict, dict[str, bytes]]:
                           "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY", **item})
     return {"schema": "A05_DEEP_CHECKED_METHOD_RELEASE_v1",
             "request_sha256": sha(requests_raw), "checkpoint_sha256": sha(checkpoint_raw),
-            "released_by": "EXPOSED_CUSTODIAN_ROOT", "facts": facts,
+            "released_by": "EXPOSED_CUSTODIAN_ROOT", "facts": facts, "access_only_records": access_only,
             "source_files": {name: sha(raw) for name, raw in files.items()},
             "limits": ["Only individually approved fields are released. Held fields and unapproved coverage are not evidence.",
                        "Requested version is retained; source identity/binding limits must be assessed separately.",

@@ -65,6 +65,11 @@ class ReleaseBoundaryTests(unittest.TestCase):
             with self.subTest(path=path), self.assertRaises(ValueError):
                 r.field(self.packet, path)
 
+    def test_verified_access_gap_releases_no_method_facts(self) -> None:
+        check = copy.deepcopy(self.check)
+        check["mechanical_check"] = {"raw_body_available": False, "acquisition_hash_verified": True}
+        self.assertEqual(r.checked_fields(check, self.packet, self.raw), [])
+
 
 if __name__ == "__main__":
     unittest.main()
