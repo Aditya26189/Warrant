@@ -43,6 +43,10 @@ def build(index_path: Path) -> tuple[dict, dict[str, bytes]]:
         for n, check in enumerate(checker["per_fact"], 1):
             if check["decision"] != "APPROVE":
                 continue
+            if re.fullmatch(r"records\[\d+\]\.status", check["field_path"]):
+                # Exact transport attempts remain in provider/checker receipts.
+                # A status code is not a bibliographic edition/type assertion.
+                continue
             match = re.fullmatch(r"records\[(\d+)\]\.metadata_fields\[(\d+)\]", check["field_path"])
             if match:
                 record = supplement["records"][int(match[1])]
