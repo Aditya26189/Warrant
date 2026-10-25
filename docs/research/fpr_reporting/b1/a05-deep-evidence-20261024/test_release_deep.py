@@ -61,7 +61,8 @@ class ReleaseBoundaryTests(unittest.TestCase):
     def test_paths_are_restricted(self) -> None:
         self.assertEqual(r.field(self.packet, "arm_inventory[0]"), {"unit": "prompt"})
         self.assertEqual(r.field(self.packet, "coverage.scope_completeness"), "PARTIAL")
-        for path in ["provider_actor", "__class__", "arm_inventory[-1]", "coverage.__class__()"]:
+        for path in ["provider_actor", "__class__", "arm_inventory[-1]", "coverage.__class__()",
+                     "architecture_clarification.outcomes", "additional_primary_method_images[-1]"]:
             with self.subTest(path=path), self.assertRaises(ValueError):
                 r.field(self.packet, path)
 

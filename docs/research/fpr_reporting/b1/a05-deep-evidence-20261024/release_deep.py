@@ -28,6 +28,11 @@ def field(packet: dict, path: str) -> object:
         return packet[path]
     if path in {"source_receipts.locators", "source_receipts.additional_table_locators"}:
         return packet["source_receipts"][path.rsplit(".", 1)[1]]
+    if path in {"architecture_clarification.verdict_context", "architecture_clarification.call_boundary_limit"}:
+        return packet["architecture_clarification"][path.rsplit(".", 1)[1]]
+    match = re.fullmatch(r"additional_primary_method_images\[(\d+)\]", path)
+    if match:
+        return packet["additional_primary_method_images"][int(match[1])]
     match = re.fullmatch(r"arm_inventory\[(\d+)\]", path)
     if match:
         return packet["arm_inventory"][int(match[1])]
