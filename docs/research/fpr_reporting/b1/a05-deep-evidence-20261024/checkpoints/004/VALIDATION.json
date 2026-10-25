@@ -1,0 +1,106 @@
+{
+  "all_domain_criteria_met": 24,
+  "b2_authorized": false,
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "decisions": {
+    "EXCLUDE": 22,
+    "POINTWISE_SUPPORTED_PENDING_FRAME": 23,
+    "UNCLEAR": 327
+  },
+  "inventory_preserved": true,
+  "memberships": 389,
+  "memberships_preserved": true,
+  "new_scientific_judgment_files": [
+    {
+      "file": "AUTHOR_JUDGMENTS_001.json",
+      "reviewed_works": [
+        "W0001",
+        "W0002",
+        "W0003",
+        "W0004",
+        "W0005",
+        "W0006",
+        "W0007",
+        "W0009",
+        "W0010",
+        "W0012",
+        "W0013",
+        "W0014",
+        "W0042",
+        "W0043",
+        "W0045",
+        "W0046",
+        "W0047",
+        "W0048",
+        "W0049",
+        "W0050",
+        "W0051",
+        "W0052",
+        "W0054",
+        "W0055",
+        "W0339"
+      ],
+      "sha256": "fb1500b6b3dd13a0c06b1cbde8eb23491a9869e7bf56183eb86428c7be2ff73c"
+    },
+    {
+      "file": "AUTHOR_JUDGMENTS_002.json",
+      "reviewed_works": [
+        "W0016",
+        "W0017",
+        "W0018",
+        "W0019",
+        "W0022",
+        "W0056",
+        "W0057",
+        "W0059",
+        "W0060",
+        "W0061",
+        "W0063",
+        "W0368"
+      ],
+      "sha256": "34b7a05de8e5ab4ab51dcf13bd69ec6b65cff6263cd36cbb177e8da3bee4c823"
+    },
+    {
+      "file": "AUTHOR_JUDGMENTS_003.json",
+      "reviewed_works": [
+        "W0004",
+        "W0006",
+        "W0007",
+        "W0009",
+        "W0012",
+        "W0014",
+        "W0042",
+        "W0043",
+        "W0046",
+        "W0047",
+        "W0050",
+        "W0051"
+      ],
+      "sha256": "c5bf292cca3311488451e6e9ed2521e6c3564f79e2b07a3bd2f60ba96e40a68f"
+    },
+    {
+      "file": "AUTHOR_JUDGMENTS_004.json",
+      "reviewed_works": [
+        "W0023",
+        "W0024",
+        "W0025",
+        "W0026",
+        "W0027",
+        "W0028",
+        "W0064",
+        "W0065",
+        "W0066",
+        "W0068",
+        "W0069"
+      ],
+      "sha256": "a675b3fce5187c215a77a117764e99f0890ef03ab84040355ae2ba6118c20b0c"
+    }
+  ],
+  "no_sampling": true,
+  "positive_exact_version_refs_checked": true,
+  "role": "REVIEWER_INFORMED_EXPOSED_CUSTODIAN_NOT_FRESH_FINAL_REVIEW",
+  "sentinel_matches_preserved": true,
+  "source_git_commit": "da15ed62075c35f44ed99eda41a6e84b6d13d30a",
+  "status": "FRAME_BLOCKED",
+  "works": 372
+}
