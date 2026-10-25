@@ -1,0 +1,53 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0021",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:49:36.849885+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0021.provider.0001.json",
+  "provider_packet_sha256": "b79e6b530b6c57d396b61dd22b7422c4491b9564a6a856767e4113d767e3d0a9",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2410.21337v2",
+  "source_identity": [
+    {
+      "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0048.json",
+      "acquisition_receipt_sha256": "aaf3e51958c34989d26e18b0243d6bf98ec6300b3643b064cf402d7896e59271",
+      "captured_version_id": "arxiv:2410.21337v2",
+      "body_absent": true
+    }
+  ],
+  "mechanical_check": {
+    "acquisition_hash_verified": true,
+    "raw_body_available": false
+  },
+  "actual_context_check": {
+    "coverage_disposition": "EXACT_BODY_GAP",
+    "inspected_ranges": [],
+    "semantic_rationale": "All neutral source references for requested version have null body; no source content or alternative-version inference."
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Neutral exact-version source references have no captured body.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Exact source absent; language unresolved.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly retains material method/arm omissions. The approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "checker_exposure": "Neutral source transport fields only for this work; prior operational exposure in ROLE."
+  }
+}

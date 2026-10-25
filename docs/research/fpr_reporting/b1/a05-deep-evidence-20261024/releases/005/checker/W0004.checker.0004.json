@@ -1,0 +1,430 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0004",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:02:29.197609+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0004.provider.0003.json",
+  "provider_packet_sha256": "3b19840854cc20213e6bb98d58dc58a1e25802b499fda18e928eff0c5db591a1",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2402.05723v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\de589ac5c4be794331f3b1f6ed0ea5ff5f6c0af151546f1ed802015836315763",
+    "raw_sha256": "de589ac5c4be794331f3b1f6ed0ea5ff5f6c0af151546f1ed802015836315763",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0027.json",
+    "acquisition_receipt_sha256": "8c6186823dc99c023d7ec703c15a533e3a1ea4ab478f82e245a3fcaccb6897d9",
+    "captured_version_id": "arxiv:2402.05723v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        16,
+        37
+      ],
+      [
+        49,
+        74
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "VERIFIED_DECLARED_METHOD_INVENTORY_LANGUAGE_COMPONENTS_ONLY",
+    "semantic_rationale": "Added actual full template-node reading completes previous nonparagraph gap, while harmful illustrative outputs and ordinary result figures need not be analyzed. Main task definitions and all named appendix conditions checked.",
+    "visual_check": null,
+    "locator_sha256": "305c7ef577cf2fb7c6e0372487b2eda4b267d3385b70fe15cb887307bc390849",
+    "locators": [
+      {
+        "index": 16,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Task 1: Sentiment Classification",
+        "text_sha256": "57f6a1f0591f98e60b3e242a18c62042869236f3a3722ab390adcb61cbcdc447"
+      },
+      {
+        "index": 17,
+        "paragraph_id": "S3.SS1.p2.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Task 1: Sentiment Classification",
+        "text_sha256": "0ae6738127cff99c9c4e8fa37ffd119c708e02f7b86afc67cfe6ffc128a2b400"
+      },
+      {
+        "index": 18,
+        "paragraph_id": "S3.SS1.p3.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Task 1: Sentiment Classification",
+        "text_sha256": "b363d2ed5702482d6abc37d9afe175ea33a0953f3d33ddd68ae0482b0a04e069"
+      },
+      {
+        "index": 19,
+        "paragraph_id": "S3.SS1.p4.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Task 1: Sentiment Classification",
+        "text_sha256": "131e5a1b149815e16675794a7f18f867cb1edc67cc42523f249a244ea3ce87dc"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Task 2: Link Hallucination",
+        "text_sha256": "c1ff291c5e859355924474e1b2bf63b40e7e54ca99f89523d36af7e7ef7ab728"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S3.SS2.p2.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Task 2: Link Hallucination",
+        "text_sha256": "d8f46fb5611b19dbacb9afa720e85008bc105963c976cfe717ece95af7b0e2fb"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S3.SS2.p3.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Task 2: Link Hallucination",
+        "text_sha256": "e79818a78150c4fd560228dba2c329ae4885376593320949300492150dda57c9"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S3.SS2.p4.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Task 2: Link Hallucination",
+        "text_sha256": "87b1a47b683aed95fb6c29707015358eff8a1248390e538e2b83f17e0af0056f"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S3.SS2.p5.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Task 2: Link Hallucination",
+        "text_sha256": "0339be05ea68113dd76dfd2f99edb6b789397a7bc0e7f24a9c2b0fa58eaac032"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.SS2.p6.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Task 2: Link Hallucination",
+        "text_sha256": "9be56921f6380a2a90ca9d2f39d875f96f85a865dfb1614f525e7edcf5e707f2"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Number of in-context learning examples",
+        "text_sha256": "e286328785a8a6064c0d76585f010ff7bec71d2b966e1559a6a2e7c4f12e0e90"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS3.p2.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Number of in-context learning examples",
+        "text_sha256": "8fc57f62e53e375e413299337ef34084faadfef6af088f9fa9a104e253bb47bd"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.F1.3",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Number of in-context learning examples",
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S4.F2.3",
+        "section_id": "S4",
+        "heading": "4 Safety",
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "4 Safety",
+        "text_sha256": "4aea7f0d31722abbb86dedbfec92cfa724535c5a2282fc01f4d579d7dee4dc65"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Dataset",
+        "text_sha256": "b1c7572b0200173fce97eaa3e347b280fd0a3de2b10a5fc2db31b3f2d139f0b3"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Models",
+        "text_sha256": "4d1f65d862af194209d7e4fd916b7af0960d19ac95264659bd16201d0b17ed8a"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S4.SS3.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Attack prompt",
+        "text_sha256": "f62d72955180b58cf0680c0563d5f89970a6280b7d3b7bd7d8352e6b9bb1767c"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S4.SS4.p1.1",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Results",
+        "text_sha256": "f52ac8f812347e80f6f0385bd0163488b72b46a24c61bedd03a664116d959eea"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S4.SS4.p2.1",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Results",
+        "text_sha256": "592c8cf4dee35d40e1a076f5eb30f41e05b0a97f7cb31519db925277b067887d"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S4.SS5.p1.1",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Limitations",
+        "text_sha256": "d13fe4094c8f56ae17903379b8d927cff43054dde4c8afdd747abe384888a92e"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S4.SS6.p1.1",
+        "section_id": "S4.SS6",
+        "heading": "4.6 Semantic Analysis",
+        "text_sha256": "854322fe0f20bc96e210ac202effe20dcf6d2b9d67185e3fc5f9146cad985beb"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "A1.SS1.SSS1.p1.1",
+        "section_id": "A1.SS1.SSS1",
+        "heading": "A.1.1 Correct Predictions",
+        "text_sha256": "d8de071072bd755e5db1867920fe8d3afe1248c797938d1f11e84b4a65bf887f"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "A1.SS2.p1.1",
+        "section_id": "A1.SS2",
+        "heading": "A.2 Training with in-context examples",
+        "text_sha256": "fb19b84403daff2b1c39bea2b52b6ca306a100608d96a9f004f143ea0a3345ea"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "A1.SS2.p2.1",
+        "section_id": "A1.SS2",
+        "heading": "A.2 Training with in-context examples",
+        "text_sha256": "0dc421dc52a2442633ec24143fa9a241d18b6f606766d0a9f7b1f999b439c8fa"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "A1.SS2.p3.1",
+        "section_id": "A1.SS2",
+        "heading": "A.2 Training with in-context examples",
+        "text_sha256": "97cb5c971ecbc8b2da5f560b66db96aaa5c3fe1aa18b7afa7003e29b5c55b550"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "A1.SS3.SSS1.p1.1",
+        "section_id": "A1.SS3.SSS1",
+        "heading": "A.3.1 Template",
+        "text_sha256": "7c411506c97b87ddbfdc1b482713875f7d6aeb83162156d58d9c46bfe7f97cf4"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "A1.SS3.SSS2.p1.1",
+        "section_id": "A1.SS3.SSS2",
+        "heading": "A.3.2 Keywords",
+        "text_sha256": "61ca121bebe2656e5a82c883bfb61b8b7c9cb02d9d0fe334c0f666060988f7c0"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "A1.SS3.SSS3.p1.1",
+        "section_id": "A1.SS3.SSS3",
+        "heading": "A.3.3 Examples",
+        "text_sha256": "e46b143eab9ec530bd03df450bb38b7086112103419b66776b09006d81ef68e4"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "A1.SS3.SSS3.p2.1",
+        "section_id": "A1.SS3.SSS3",
+        "heading": "A.3.3 Examples",
+        "text_sha256": "924b600b38dcfbdf60e7f5a71c67e9913639a1861d52dd6752238b0da1bd3135"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "A1.SS3.SSS3.p3.1",
+        "section_id": "A1.SS3.SSS3",
+        "heading": "A.3.3 Examples",
+        "text_sha256": "4f416732c0ab3743a30f68456ddacf82aa850c143d6eb8711434262158800239"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "A1.SS4.p1.1",
+        "section_id": "A1.SS4",
+        "heading": "A.4 Safety task",
+        "text_sha256": "4f3c143471fe21f85370bd3179e519bfcd4dc02077d2937a72dbb3ce82d7085a"
+      },
+      {
+        "index": 59,
+        "paragraph_id": "A1.SS4.SSS1.p1.1",
+        "section_id": "A1.SS4.SSS1",
+        "heading": "A.4.1 Keywords",
+        "text_sha256": "d0ab39c44957147ee313b5f39ca3d4604b9473656932c6e2ade92cd5b8e7018d"
+      },
+      {
+        "index": 60,
+        "paragraph_id": "A1.SS4.SSS2.p1.1",
+        "section_id": "A1.SS4.SSS2",
+        "heading": "A.4.2 Log Probability",
+        "text_sha256": "96a302709bc8bb8b144b5b051c74d753404370b366b2ad2e58ffd8fb9738749c"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "A1.SS4.SSS2.p2.1",
+        "section_id": "A1.SS4.SSS2",
+        "heading": "A.4.2 Log Probability",
+        "text_sha256": "1b54ed30444ced71911b3ae4befc81406cef23b9031491e5972231c74740989b"
+      },
+      {
+        "index": 62,
+        "paragraph_id": "A1.SS4.SSS2.p3.1",
+        "section_id": "A1.SS4.SSS2",
+        "heading": "A.4.2 Log Probability",
+        "text_sha256": "0d609d7e677c7298ce0866a173c91f0483bea9c2b051f8c5b14f48e6281a8655"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "A1.SS4.SSS3.p1.1",
+        "section_id": "A1.SS4.SSS3",
+        "heading": "A.4.3 Semantic analysis",
+        "text_sha256": "c15ddd19aa93b95a710cdc60f3a772e143b4f5c8f557143aab7b0b7340589a02"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "A1.SS4.SSS3.p2.1",
+        "section_id": "A1.SS4.SSS3",
+        "heading": "A.4.3 Semantic analysis",
+        "text_sha256": "4f3c593359326133389433c13614139d80e6ae8f992f5911778fd93b623a9f3c"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "A1.SS4.SSS3.p3.1",
+        "section_id": "A1.SS4.SSS3",
+        "heading": "A.4.3 Semantic analysis",
+        "text_sha256": "f8f033347537851ef422660aedc9d5ef8bb1bd170edbac292b73c7bd0dbb416b"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "A1.SS4.SSS3.p4.1",
+        "section_id": "A1.SS4.SSS3",
+        "heading": "A.4.3 Semantic analysis",
+        "text_sha256": "026cac60c228a0e0437cfe5215ad7b9e3602c03411db506ac8e795e400876e01"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "A1.SS4.SSS3.p5.1",
+        "section_id": "A1.SS4.SSS3",
+        "heading": "A.4.3 Semantic analysis",
+        "text_sha256": "b70ef655270bd90dbbf761e0b6f558138a89cdee4b80551ccfed8b47b97e55f1"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "A1.SS4.SSS3.p6.1",
+        "section_id": "A1.SS4.SSS3",
+        "heading": "A.4.3 Semantic analysis",
+        "text_sha256": "b8c2dec72d61f3930de9a21095906e17b7dd76d5a7e4e34506532be39afe67e8"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "A1.SS4.SSS4.p1.1",
+        "section_id": "A1.SS4.SSS4",
+        "heading": "A.4.4 Templates",
+        "text_sha256": "c9c1d3df05761f4f164f10455bc98ece17667391e21a77c586a44396c0943cbb"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "A1.SS4.SSS4.p2.1",
+        "section_id": "A1.SS4.SSS4",
+        "heading": "A.4.4 Templates",
+        "text_sha256": "9751d706f2bdfc9a3ef22018cb9edcb6a7182d7adf63fd6b844811313076d770"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "A1.SS4.SSS4.p6.1",
+        "section_id": "A1.SS4.SSS4",
+        "heading": "A.4.4 Templates",
+        "text_sha256": "69405ccccd7e4e6fffaf0016c710c57fdc18cbdb3ab7db10caff46b1961e9b64"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "A1.SS4.SSS4.p10.1",
+        "section_id": "A1.SS4.SSS4",
+        "heading": "A.4.4 Templates",
+        "text_sha256": "f1998564f8030e17a27d63b23ef092b9c10d721a99a8571b1838d106c2f96acf"
+      },
+      {
+        "index": 73,
+        "paragraph_id": "A1.SS4.SSS4.p14.1",
+        "section_id": "A1.SS4.SSS4",
+        "heading": "A.4.4 Templates",
+        "text_sha256": "2e53507792e3e30ceca65c9f7a7d7e43bc5cd882589bc9311b85c2ffef0f037e"
+      },
+      {
+        "index": 74,
+        "paragraph_id": "A1.SS4.SSS4.p17.1",
+        "section_id": "A1.SS4.SSS4",
+        "heading": "A.4.4 Templates",
+        "text_sha256": "a36ba88df52fab22db2a23fa7f2ccac69641bb9f7343c76e1fee839df8b1b153"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual sentiment/link/harmful-demonstration tasks and Appendix A ICL-refusal/math-capability controls verified.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main SST2/link/AdvBench no-demo, ICL/in-chat and demonstration variants supported by main setup and actual full Appendix templates.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Appendix A.2 explicitly trains with ICL demonstrations and evaluates original sentiment/unrelated GSM8K task responses.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual A.4.2 start keyword selection consults generated outputs, while semantic similarity alone uses query/demonstration embeddings; these are not conflated.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual A.2.1/A.3.1/A.4.4 templates read outside paragraphs and contain English instructions; language component support only.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All material named original method/arm families in the main and method-bearing appendix scope now actually checked. Unprinted identities/exact image wording remain explicit source-reporting limits rather than invented evidence.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "coverage.additional_structural_receipts",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All added exact-source HTML-node and text hashes independently reproduce. Structural verification is distinct from the actual semantic ranges/sections described in this receipt.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

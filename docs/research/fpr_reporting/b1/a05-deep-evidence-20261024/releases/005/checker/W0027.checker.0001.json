@@ -1,0 +1,368 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0027",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:12:18.560816+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0027.provider.0001.json",
+  "provider_packet_sha256": "97f773b123aafe23886e7c805cf3e190cf5623af4c2591b6bc3cd6e3ba259873",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2501.12521v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\31627075477e1ab3d671429d1563a15ffd6dd8e5f1efb513132a98243ddd8123",
+    "raw_sha256": "31627075477e1ab3d671429d1563a15ffd6dd8e5f1efb513132a98243ddd8123",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0056.json",
+    "acquisition_receipt_sha256": "a832fabc431837757518dd4a9fc8440779bea7907d59b5cf13925b15372ed7db",
+    "captured_version_id": "arxiv:2501.12521v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        24,
+        57
+      ],
+      [
+        63,
+        68
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Main method24-54 specifies canonicalization, hole patching and distinct bias, injection-vulnerability and task-optimization workflows. False correctly preserves incomplete benchmark/comparator details and figure-only prompts. The listed workflows are approved as positive local facts; they do not establish a complete inventory or global detector absence.",
+    "visual_check": null,
+    "locator_sha256": "6f5803b5ba5f88f6294db0dbf4b2591d7f69bf11a70e8890a972af6b80e2f0b8",
+    "locators": [
+      {
+        "index": 24,
+        "paragraph_id": "S3.SS1.SSS1.p1.1",
+        "section_id": "S3.SS1.SSS1",
+        "heading": "3.1.1. Dataset Selection",
+        "text_sha256": "1a3f4dfc43ec5b1f5fc6e16dc21bfcceac11e78a0adccef414cc62cc9de1e7c7"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.SS1.SSS1.p2.1",
+        "section_id": "S3.SS1.SSS1",
+        "heading": "3.1.1. Dataset Selection",
+        "text_sha256": "5ad15b408e9415e3da37b9708b801dfa0ebe78c1131520104d4e10dfc7634e1f"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.SS1.SSS2.p1.1",
+        "section_id": "S3.SS1.SSS2",
+        "heading": "3.1.2. Dataset cleaning",
+        "text_sha256": "fd9949fa4d9eff0d238dc3e1860ef6049458fc318a54e92a930c7927faaf3cee"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS1.SSS3.Px1.p1.1",
+        "section_id": "S3.SS1.SSS3.Px1",
+        "heading": "Prompt Canonicalization",
+        "text_sha256": "81304b6845240dc4a8761c0202979194f6892f26e3ffd3525078ecb060c5c346"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.SS1.SSS3.Px2.p1.1",
+        "section_id": "S3.SS1.SSS3.Px2",
+        "heading": "Prompt Patching",
+        "text_sha256": "ff7a9721394a84e7279fd605220e36b11c443267f4ca34c697bfbbca9ff72c3b"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS1.SSS3.Px2.p2.1",
+        "section_id": "S3.SS1.SSS3.Px2",
+        "heading": "Prompt Patching",
+        "text_sha256": "af7497c448839ad892ee96fd89d6e2153fbee920e0977f88dd4144ec93f53daf"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS1.SSS3.Px2.p4.1",
+        "section_id": "S3.SS1.SSS3.Px2",
+        "heading": "Prompt Patching",
+        "text_sha256": "a22959e7fdcb9467b43b77b7cd0512c46104fa3b00c9fb2b1929446dcccd894f"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S3.SS1.SSS3.Px3.p1.1",
+        "section_id": "S3.SS1.SSS3.Px3",
+        "heading": "Optimization Dataset Synthesis",
+        "text_sha256": "d61ec9cfe13a43a48bb39ba5ed990746030abf76a426b1dae391c26aec02e105"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S3.SS1.SSS4.p1.1",
+        "section_id": "S3.SS1.SSS4",
+        "heading": "3.1.4. Dataset Sampling",
+        "text_sha256": "7cf93df30fe301f09642f6dfc0a9bda9bde81e22c09f5cdaea138bfdd853c9e6"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S3.SS1.SSS4.p2.1",
+        "section_id": "S3.SS1.SSS4",
+        "heading": "3.1.4. Dataset Sampling",
+        "text_sha256": "cdb70cd61d746d7551ff2565530fda9f7785b4547b03c2d45286e40ed65a0480"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S3.SS1.SSS4.Px1.p1.1",
+        "section_id": "S3.SS1.SSS4.Px1",
+        "heading": "Optimization Dataset",
+        "text_sha256": "df2b0b98e9c41f933c3c9d38ec8f6a85b130ce7d1c7ef325626fe240d6a49344"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S3.SS1.SSS4.Px1.p2.1",
+        "section_id": "S3.SS1.SSS4.Px1",
+        "heading": "Optimization Dataset",
+        "text_sha256": "0d7bf5298ed4be9e0a237428407c33889e5463ab049f4a2d1da97b120a3b54b5"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S3.SS2.SSS1.p1.1",
+        "section_id": "S3.SS2.SSS1",
+        "heading": "3.2.1. Bias Detection",
+        "text_sha256": "bdc7d572c67f3daa4576f9c3211f489f8b1c0cc0212bd9defde702924919c4ab"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S3.SS2.SSS1.p2.1",
+        "section_id": "S3.SS2.SSS1",
+        "heading": "3.2.1. Bias Detection",
+        "text_sha256": "2e0b49e81c90a7e80b60467c027c98f3246a977bcc628341b5547ba3027ea391"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S3.SS2.SSS1.p3.1",
+        "section_id": "S3.SS2.SSS1",
+        "heading": "3.2.1. Bias Detection",
+        "text_sha256": "3e2a46b8177e7abd418967b984f18416559be7368282ff391e1a198c9be1916a"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S3.SS2.SSS2.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2. Bias Remediation",
+        "text_sha256": "200dcd7869c85e5153f9850eb76dc36b155fec867c9fbc402ebbf646df3da995"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S3.SS2.SSS2.p2.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2. Bias Remediation",
+        "text_sha256": "44d794f6070bb8dfcba61e70983ebf53ef4b584ac217203850fb0f6aa819cc45"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S3.SS3.SSS1.p1.1",
+        "section_id": "S3.SS3.SSS1",
+        "heading": "3.3.1. Vulnerability Detection",
+        "text_sha256": "22a894bf1f094b41c562828633b99bc2d2932a1a6be79e6c9c45c2fc40c4eb86"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S3.SS3.SSS1.p2.1",
+        "section_id": "S3.SS3.SSS1",
+        "heading": "3.3.1. Vulnerability Detection",
+        "text_sha256": "ecbadfd8a608726421cb746e080c55284e2df3b280cbcf1e4a7fe5205ba48c58"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S3.SS3.SSS2.p1.1",
+        "section_id": "S3.SS3.SSS2",
+        "heading": "3.3.2. Vulnerability Remediation",
+        "text_sha256": "48273da1fbfc9078ecac8621197da7636309ef1b46209022ba38f2d16962a063"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S3.SS4.SSS1.p1.1",
+        "section_id": "S3.SS4.SSS1",
+        "heading": "3.4.1. Sub-optimality Detection",
+        "text_sha256": "45a75302f6cbfe95cef8a2573a19838c7fbe6ce20817421cc44ea52910e47324"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S3.SS4.SSS2.p1.1",
+        "section_id": "S3.SS4.SSS2",
+        "heading": "3.4.2. Optimization Process",
+        "text_sha256": "958b0c6cdc9847c442acba5040f589fa883eda1fb61a5a35016269287332f995"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S3.SS4.SSS2.Px1.p1.1",
+        "section_id": "S3.SS4.SSS2.Px1",
+        "heading": "Seed Dev Prompts Generation",
+        "text_sha256": "1f8bb03ce14b85499c8ff6f581e3be73a1a2ab3aa9fd29422d1ea2039c9ed1f5"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S3.SS4.SSS2.Px2.p1.1",
+        "section_id": "S3.SS4.SSS2.Px2",
+        "heading": "Optimization",
+        "text_sha256": "ae82508366e908a994fa32e6e3fcce3176ff7fe9a2b527623cc78f1525efec97"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S3.SS4.SSS2.Px2.p3.1",
+        "section_id": "S3.SS4.SSS2.Px2",
+        "heading": "Optimization",
+        "text_sha256": "70a549775bb3c902d732039971cb8a8240364df022c8053f4507ca80b619f300"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S3.SS4.SSS2.Px3.p1.1",
+        "section_id": "S3.SS4.SSS2.Px3",
+        "heading": "Evaluation",
+        "text_sha256": "74f5ac1e187e8b3d31b35fa251bde24da8e59f5779866b8f1700864316512894"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S3.SS4.SSS2.Px3.p2.1",
+        "section_id": "S3.SS4.SSS2.Px3",
+        "heading": "Evaluation",
+        "text_sha256": "f56e20dd752674e566dcec3bf6321146f13bc6688ad42fbed4489d7acbeaf8f0"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S3.SS4.SSS2.Px3.p2.2",
+        "section_id": "S3.SS4.SSS2.Px3",
+        "heading": "Evaluation",
+        "text_sha256": "d6ed0ea8c37d7e3c2bd95b605c7b597fb044d132083af0bdcdda04f7d2793b5b"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S3.SS4.SSS2.Px3.p2.3",
+        "section_id": "S3.SS4.SSS2.Px3",
+        "heading": "Evaluation",
+        "text_sha256": "82a2bb08d16841e8f19a2029f9ee5068b53833fa86922bed08b0bbb12b302db7"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S3.SS4.SSS2.Px3.p2.4",
+        "section_id": "S3.SS4.SSS2.Px3",
+        "heading": "Evaluation",
+        "text_sha256": "2adea6a40b477639b7314be3ece8fa49a60c9793262592d71751167e93afb850"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S3.SS4.SSS2.Px3.p2.5",
+        "section_id": "S3.SS4.SSS2.Px3",
+        "heading": "Evaluation",
+        "text_sha256": "2719ca20e9d74292cc1d1aee8a7fdec8346b8dc5779f729c70d45ae5000a75b2"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "4. Empirical Evaluation",
+        "text_sha256": "dadebf52c27382dc1649394fe4e338391b0524f4bb78b0b185c732ad78b95fa5"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S4.p2.1",
+        "section_id": "S4",
+        "heading": "4. Empirical Evaluation",
+        "text_sha256": "42cf9d8fd6d4d9b2f564fa1717eb6aa1986c322e1f6ff7fd6173cf5728080b2d"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "S4.SS1.SSS1.p1.1",
+        "section_id": "S4.SS1.SSS1",
+        "heading": "4.1.1. Bias Detection Benchmarking",
+        "text_sha256": "409ddaf1e9bb82c3890b558ca0e287026fdd985b904365298e1585003917ea32"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "S4.SS2.SSS1.p1.1",
+        "section_id": "S4.SS2.SSS1",
+        "heading": "4.2.1. Injection Vulnerability Prevalence",
+        "text_sha256": "9bae98a97976b4d4619c7edba80b938bc77ce7e8e5b487f4a79f848b5eba08dc"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "S4.SS2.SSS2.p1.1",
+        "section_id": "S4.SS2.SSS2",
+        "heading": "4.2.2. Injection Vulnerability Remediation",
+        "text_sha256": "26db1a3159dd542fe709cd16c7d066c26ae5c9ef46207f2431798cbef24e0e89"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S4.SS2.SSS2.p2.1",
+        "section_id": "S4.SS2.SSS2",
+        "heading": "4.2.2. Injection Vulnerability Remediation",
+        "text_sha256": "8c9bb3e3da1595336fef638045be0bc9a064a34b03fe77e333d2777665a3eb15"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "S4.SS3.SSS1.p1.1",
+        "section_id": "S4.SS3.SSS1",
+        "heading": "4.3.1. Optimizing open ended Q&A style prompts",
+        "text_sha256": "f74bfec5f3877de262ebd70ab9428b02e44c8e0c4e4fa7b9bb8f3f007d1f9a00"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S4.SS3.SSS2.p1.1",
+        "section_id": "S4.SS3.SSS2",
+        "heading": "4.3.2. Comparison with PromptWizard",
+        "text_sha256": "5572f8f3f13c7645d4d9969dabe123c7ca97c50b7ed259d5784bf6379ea100f4"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S4.SS3.SSS3.p1.1",
+        "section_id": "S4.SS3.SSS3",
+        "heading": "4.3.3. Grounded task prompts optimization",
+        "text_sha256": "6111d2e7f4252a0e25dda79bef47c8f7b980351cf7cbda6ec70fe60e181b6c66"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main method24-54 specifies canonicalization, hole patching and distinct bias, injection-vulnerability and task-optimization workflows.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Bias method36-40 defines zero/one/multishot JSON judgments and rewrite loops on the developer prompt itself; protected task answers are not the input to that judgment.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Vulnerability method41-43 injects a known attack into a prompt hole, obtains the target response and scans for an expected string. This requires generated protected task output.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Optimization45-54 and comparison67-68 evaluate generated task outputs with reference metrics or judges, including the PromptWizard comparison.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Paragraph26 expressly describes removal of purported non-English prompts via character filtering;34 explicitly selects English QA prompts. This verifies the reported construction rule, without equating ASCII filtering with proof that every retained evaluated item is English.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves incomplete benchmark/comparator details and figure-only prompts. The listed workflows are approved as positive local facts; they do not establish a complete inventory or global detector absence.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

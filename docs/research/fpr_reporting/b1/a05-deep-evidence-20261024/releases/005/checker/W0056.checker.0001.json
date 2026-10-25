@@ -1,0 +1,310 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0056",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:49:37.379171+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0056.provider.0001.json",
+  "provider_packet_sha256": "81ffbb671c835372d346c4c187d91d7dd207781882fa855a1f65063059b841d2",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2506.12104v3",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q019-1.html",
+    "raw_sha256": "9aa9e1d08863c85556357d25f554f50c23bbff5b09ac785496ec5c92e954d3b4",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0089.json",
+    "acquisition_receipt_sha256": "cb436669b0fde815f3def7023c85ae4d8cba3d985d63e1c5eb185707ee1e1320",
+    "captured_version_id": "arxiv:2506.12104v3",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        26,
+        41
+      ],
+      [
+        46,
+        52
+      ],
+      [
+        70,
+        73
+      ],
+      [
+        98,
+        102
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_INVENTORY_ONLY",
+    "semantic_rationale": "Main planning/validation/isolation, benchmark/comparator and component-ablation/appendix open-task methods actually read. Full Appendix C prompt figures and operating threshold unresolved; no broad English assertion.",
+    "locator_sha256": "7c8f6219ca77239ead824503493c8fbc81bf6e3bbf5ccd09d84f9492917dcff7",
+    "locators": [
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.1",
+        "section": "3.1 Secure Planner",
+        "sha256": "168fc3f04dfbb19dabe99a0dcc927e87006fe23fe1a8158e81f09d938124cd76"
+      },
+      {
+        "n": 27,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "section": "3.2 Dynamic Validator",
+        "sha256": "b306a784c04effc235a0b140ed8fc19ff5d634fbfdabef98f898225c4ac11db8"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.1",
+        "section": "3.2 Dynamic Validator",
+        "sha256": "f249a761c1fa53dd7d2be1ca81da28571d5867efc8e5ef83da72472428d5eeb1"
+      },
+      {
+        "n": 29,
+        "kind": "heading",
+        "id": "S3.SS2.SSS0.Px1",
+        "section": "Alignment Validation.",
+        "sha256": "0649b824b9e1e0143071c3ea27c83555a56b994b220451f8e652541325a29222"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px1.p1.1",
+        "section": "Alignment Validation.",
+        "sha256": "a78bf167eda6231011e3098a0ade64c0cccb3d2261774ff0825e3bcbb6c53319"
+      },
+      {
+        "n": 31,
+        "kind": "heading",
+        "id": "S3.SS2.SSS0.Px2",
+        "section": "Dynamic Constraint Policy.",
+        "sha256": "7f1be462ec65866fcba53b8b3479b5ea33e0fe02a2d4bf6b6527ebd5ba4db2ea"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px2.p1.1",
+        "section": "Dynamic Constraint Policy.",
+        "sha256": "0b0294c87cae6c48af316e81641fe5d1eda64dd473369067ca1afe6907add9c6"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px2.p2.1",
+        "section": "Dynamic Constraint Policy.",
+        "sha256": "b73556a371baa565ab8e456391823ff17a641183fbd4ef58a64a3f1370d2f7c9"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px2.p3.1",
+        "section": "Dynamic Constraint Policy.",
+        "sha256": "0df51e38efd21a352992dd2ec7f5dae6f190a32222486f9be7483ef564080d36"
+      },
+      {
+        "n": 35,
+        "kind": "heading",
+        "id": "S3.SS3",
+        "section": "3.3 Injection Isolator",
+        "sha256": "2da6bb10686993f97d74b279e1087e1b6dfca5296708e25603148194bea5a4cc"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S3.SS3.p1.1",
+        "section": "3.3 Injection Isolator",
+        "sha256": "caf0dcacace3b5f83761454670faf53ef5a81bf94997525d7a9689f9c4b45697"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S3.SS3.p2.1",
+        "section": "3.3 Injection Isolator",
+        "sha256": "0e96219899dacc48485a28fcff277fdfdcb636c236ac669dc28b08f6fd9303a7"
+      },
+      {
+        "n": 38,
+        "kind": "heading",
+        "id": "S3.SS4",
+        "section": "3.4 Security Policies in LLM Agents",
+        "sha256": "178202f0d482f023ebab27d8f0516df7a7e4976adca20f661d629b5d99f9140a"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S3.SS4.p1.1",
+        "section": "3.4 Security Policies in LLM Agents",
+        "sha256": "aacb932bc54cb80a107c34b2510106621715a1ee009912de13641ea3ce12240b"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S3.SS4.p2.1",
+        "section": "3.4 Security Policies in LLM Agents",
+        "sha256": "deb0235091c95b2cabcfef2601f7f422f004ca7063b9c01b1c0a76de363cd700"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S3.SS4.p3.1",
+        "section": "3.4 Security Policies in LLM Agents",
+        "sha256": "cf3c021518fc262206ec00c98015aedaa6a33d8098877e05827590b48660bdf9"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px1.p1.1",
+        "section": "Benchmarks.",
+        "sha256": "a226d7a169effb7de3a59831ee190a7500816b0a9f70b9b3a0c8f63cd47de630"
+      },
+      {
+        "n": 47,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px2",
+        "section": "Metrics.",
+        "sha256": "58b5a4252b9a6f7aae5be1f8eb375a9128bdab9da25f5f802faa2c3e2ff24212"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px2.p1.1",
+        "section": "Metrics.",
+        "sha256": "4cd5f1fbc09ceae86f42459d5f6ccfeb3fa96152eb14dc37cf369bcce493b31c"
+      },
+      {
+        "n": 49,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px3",
+        "section": "Baselines.",
+        "sha256": "811c300adb9a6febedfa00dfe87b1831cc2fe5cc863f88168ea836b4d60a912d"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px3.p1.1",
+        "section": "Baselines.",
+        "sha256": "d1c1687ec0481eba5925424fb23d163b951b06cfbe32b8e62ff2c32540a83997"
+      },
+      {
+        "n": 51,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px4",
+        "section": "Implementation Details.",
+        "sha256": "fa1022bb85a94dc1dde092537f40130c2278827ab26e85ccf3b77854d0dbc261"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px4.p1.1",
+        "section": "Implementation Details.",
+        "sha256": "f13b123fb7f4f1cfa5abeae5a12dba58fa9cec64b5309f26799fba731cdf73e5"
+      },
+      {
+        "n": 70,
+        "kind": "paragraph",
+        "id": "S4.SS4.p1.1",
+        "section": "4.4 Ablation Studies",
+        "sha256": "95527377ea948d6fd67e953047ce25aec930848580a8294aa39b0f7cde52e7e8"
+      },
+      {
+        "n": 71,
+        "kind": "paragraph",
+        "id": "S4.SS4.p2.1",
+        "section": "4.4 Ablation Studies",
+        "sha256": "61efdc41f79f70a2666e3040b21f51b369e2e8790389e239e6d4dec7a8319c38"
+      },
+      {
+        "n": 72,
+        "kind": "paragraph",
+        "id": "S4.SS4.p3.1",
+        "section": "4.4 Ablation Studies",
+        "sha256": "b27cb147edd16f76b2c57660e9eccf57160b0e9a8485cde4886cb807598309ab"
+      },
+      {
+        "n": 73,
+        "kind": "paragraph",
+        "id": "S4.SS4.p4.1",
+        "section": "4.4 Ablation Studies",
+        "sha256": "f9a8207928aed05bbb7f6af587ea6b65902febb9b77062dd9290acff4dac05fa"
+      },
+      {
+        "n": 98,
+        "kind": "paragraph",
+        "id": "A1.SS1.p1.1",
+        "section": "A.1 Dynamic Mechanism Performance on Open-ended Task",
+        "sha256": "7dae10bd2030594d6a85cdb695e3b4188c928768445f8fc7c89b5b2a6775da95"
+      },
+      {
+        "n": 99,
+        "kind": "paragraph",
+        "id": "A1.SS1.p2.1",
+        "section": "A.1 Dynamic Mechanism Performance on Open-ended Task",
+        "sha256": "77e380c479130ee62806a8839be4a417fdd2f8b0c3e7549852f8635f92b5bb65"
+      },
+      {
+        "n": 100,
+        "kind": "paragraph",
+        "id": "A1.SS1.p3.1",
+        "section": "A.1 Dynamic Mechanism Performance on Open-ended Task",
+        "sha256": "b8476dd0f1b5fa519e52efb1fe736e10f7b2d102e4259044352e56702f688678"
+      },
+      {
+        "n": 101,
+        "kind": "heading",
+        "id": "A1.SS2",
+        "section": "A.2 Further Analysis of DRIFT and Progent",
+        "sha256": "197ed2069e626ea017ceeef0e184293b49878a8a2166599821fdaf4655801d7d"
+      },
+      {
+        "n": 102,
+        "kind": "paragraph",
+        "id": "A1.SS2.p1.1",
+        "section": "A.2 Further Analysis of DRIFT and Progent",
+        "sha256": "de2374aef0e69f2ea1397b9dfa12d4e92cee11839e6ecc1b34bc096c76dcc0f1"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main DRIFT architecture separates planning/data controls, dynamic function validation and returned-tool-message injection isolation; benchmarks named in setup.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Isolator judges tool-message conflict with original user intent before memory insertion; ProtectAI transformers_pi_detector named baseline. No final protected answer needed by input checks.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main named comparator list and ablation prose support declared system/prompt/tool controls and ReAct/native component variants, with trace/task assessment.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly retains material method/arm omissions. The approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}
