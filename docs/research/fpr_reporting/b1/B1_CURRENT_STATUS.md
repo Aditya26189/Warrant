@@ -1,19 +1,27 @@
 # Current Warrant B1 status
 
-24 October 2026: **FRAME_BLOCKED / no draw / B2 not authorized**.
+25 October 2026: **FRAME_BLOCKED / no draw / B2 not authorized**.
 
 The user adopted A05, allowing disclosed, reviewer-informed custodian scientific
 adjudication. The previous requirement for an independently authored final frame
 is prospectively superseded. B's original recorded independent intake remains
 accepted; another freshness/transfer setup is not required.
 
-The current deliverable is the
-[A05 custodian report](a05-custodian-adjudication-20261023/CUSTODIAN_REPORT.md),
-[frozen proposal](a05-custodian-adjudication-20261023/CUSTODIAN_FRAME_PROPOSAL.json)
-and [remaining source questions](a05-custodian-adjudication-20261023/REMAINING_CONTROLLED_QUESTIONS.json).
+The current deliverable is the deeper continuation's
+[generated report](a05-deep-evidence-20261024/checkpoints/003/REPORT.md),
+[full proposal](a05-deep-evidence-20261024/checkpoints/003/FRAME_PROPOSAL.json)
+and [remaining source questions](a05-deep-evidence-20261024/checkpoints/003/REMAINING_QUESTIONS.json).
 It is an evidence-based proposal with unresolved requirements, not a valid
 complete sampling frame. Its checks are in
-[PROPOSAL_VALIDATION.json](a05-custodian-adjudication-20261023/PROPOSAL_VALIDATION.json).
+[VALIDATION.json](a05-deep-evidence-20261024/checkpoints/003/VALIDATION.json).
+
+The continuation adds separately checked main/appendix method inventories and
+exact-edition language evidence. It also corrects the treatment of publisher
+edition dates versus HTTP transport timestamps, repository DOIs versus publisher
+editions, and task inferences from generic adversarial/jailbreak labels. See the
+[prospective version-rule application](a05-deep-evidence-20261024/VERSION_RULE_APPLICATION.md)
+and the attributed before-hash judgment records in that folder. Unchecked source
+drafts are not scientific decisions or released evidence.
 
 All earlier status documents, original review ZIPs, locks and research artifacts
 remain historical records. No papers have been selected under A05. Complete the
