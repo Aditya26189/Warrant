@@ -1,0 +1,930 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0006",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:02:29.786347+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0006.provider.0002.json",
+  "provider_packet_sha256": "167cf32622f6acfd8f25d8675df4f6fbe2af4acbce8eedfc6153d6f954748c67",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2403.03792v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\aa7573586d756042b1ebbdaeb8ba862f604293613ccf176cd994056ef1370846",
+    "raw_sha256": "aa7573586d756042b1ebbdaeb8ba862f604293613ccf176cd994056ef1370846",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0029.json",
+    "acquisition_receipt_sha256": "24d2e093b03e2924b4f9c06b564b21506b0b96b331c4c37e1a769b75f493f591",
+    "captured_version_id": "arxiv:2403.03792v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        41,
+        98
+      ],
+      [
+        103,
+        105
+      ],
+      [
+        108,
+        108
+      ],
+      [
+        112,
+        115
+      ],
+      [
+        136,
+        140
+      ],
+      [
+        143,
+        189
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "VERIFIED_DECLARED_METHOD_FAMILIES_WITH_SOURCE_IDENTITY_LIMIT",
+    "semantic_rationale": "Targeted core/formal/optimization and pattern/deployed/transfer appendix reading completes original method-family inventory. Source reports a handcrafted pool but does not print every individual identity; that source limit remains explicit, no named baseline is invented.",
+    "visual_check": null,
+    "locator_sha256": "3d9f447fbf7e00151f7549a07409590dd42e28f84c207f2c9a5b2f451275dbf4",
+    "locators": [
+      {
+        "index": 41,
+        "paragraph_id": "S3.p1.1",
+        "section_id": "S3",
+        "heading": "3. Threat model",
+        "text_sha256": "f4d58e4a9134c5a0c779bf5b7da679f6f732045fbb7005777450e8a65aba03d9"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S3.p2.1",
+        "section_id": "S3",
+        "heading": "3. Threat model",
+        "text_sha256": "129f0c4738621d046519c9bc8f6309e1f3014cdb1c3f851205ff8f661dc9c2eb"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S3.p3.1",
+        "section_id": "S3",
+        "heading": "3. Threat model",
+        "text_sha256": "4db4b1ca6aa4dba725bb89f5d2578a01f7187a7fe1611a79675f36fe9856babf"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "4. Neural Exec",
+        "text_sha256": "916b93d4103430822fab8b32f27c74ca4bf65c5914c69460bc5df3250a25da02"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S4.p2.1",
+        "section_id": "S4",
+        "heading": "4. Neural Exec",
+        "text_sha256": "742e7ef0ffaa3d76a979f9affceddfe6d2ff59c0aa4637362608bbfe41239435"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1. Definition & Functionality",
+        "text_sha256": "d464275a8adf716c822d44b641b0999696311b817388b038b46cdc74dbdc6a8e"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S4.SS1.p3.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1. Definition & Functionality",
+        "text_sha256": "21387d347a40c72319f108c0691d1aa9ca2ec61cf14c7f7c6e24e6b5253951f3"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S4.SS1.SSS0.Px1.p1.1",
+        "section_id": "S4.SS1.SSS0.Px1",
+        "heading": "Functionality:",
+        "text_sha256": "031c6ea733ed06735146d81dd5dc3b860c7047e27009517283d5b40b82dfc3c4"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S4.SS1.SSS0.Px1.p1.2",
+        "section_id": "S4.SS1.SSS0.Px1",
+        "heading": "Functionality:",
+        "text_sha256": "e07fa523cb1a8d59f4a839906950d3d1ae7cacfa2ca52f68ece109da52e32246"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S4.SS1.SSS0.Px1.p2.1",
+        "section_id": "S4.SS1.SSS0.Px1",
+        "heading": "Functionality:",
+        "text_sha256": "912851f7fa3ba8689dfc8d57364b07b637daf69c42dc53f2afdcca7851c1e33b"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S4.SS1.SSS0.Px1.p3.1",
+        "section_id": "S4.SS1.SSS0.Px1",
+        "heading": "Functionality:",
+        "text_sha256": "4698b3fdda8407e492671ca115bc026556cd3b5de6515684ad97cac9baf3d5a5"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S4.SS1.SSS0.Px2.p1.1",
+        "section_id": "S4.SS1.SSS0.Px2",
+        "heading": "Additional Properties",
+        "text_sha256": "7a16d41613b68a9a43322c1a055c2e7dadfc9b158cfaa2a297116fb9ab5dd699"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S4.SS1.SSS0.Px2.p2.1",
+        "section_id": "S4.SS1.SSS0.Px2",
+        "heading": "Additional Properties",
+        "text_sha256": "56d42045c325e5a38aad6a923a18ed1dfdccfbee700481f77f34fdd84672bfcf"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2. Robustness to RAG-pipelines",
+        "text_sha256": "e61228c7d12b36bb46e9097b63d7c8a23b07e1a90806d0835a45992889512d94"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S4.SS2.p2.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2. Robustness to RAG-pipelines",
+        "text_sha256": "327db1459042c78d61c321a8b7dd936e3e279e1b1e8679ace7939b22c8d77352"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S4.SS2.SSS1.p1.1",
+        "section_id": "S4.SS2.SSS1",
+        "heading": "4.2.1. Inlining",
+        "text_sha256": "df15bae167b5ccd27b16e683d725c920e6bab57249df5e28b35328b317548491"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "S4.SS2.SSS2.p1.1",
+        "section_id": "S4.SS2.SSS2",
+        "heading": "4.2.2. Inline Invariant Composition (IIC)",
+        "text_sha256": "c1f8ef24d55076ea8819e2c37f0acc5107a79a665f8ec4a8b151e703e2bb4db2"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "S4.SS2.SSS2.Px1.p1.1",
+        "section_id": "S4.SS2.SSS2.Px1",
+        "heading": "The Guide-text",
+        "text_sha256": "cd02a443741ed337deffdb658b0f79e68ea1cb842dd674180d6db23e13a471c3"
+      },
+      {
+        "index": 59,
+        "paragraph_id": "S4.SS2.SSS2.Px1.p2.1",
+        "section_id": "S4.SS2.SSS2.Px1",
+        "heading": "The Guide-text",
+        "text_sha256": "c9600ac4ab5ba79e6633fc1658f2860ecffb64c83ef145fff558a62d06346b7e"
+      },
+      {
+        "index": 60,
+        "paragraph_id": "S4.SS2.SSS2.Px1.p3.1",
+        "section_id": "S4.SS2.SSS2.Px1",
+        "heading": "The Guide-text",
+        "text_sha256": "336daa74d58f3082736f2da023ec3b97599c3f52daef2f482412b584bc2636fa"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "S4.SS2.SSS2.Px1.p4.1",
+        "section_id": "S4.SS2.SSS2.Px1",
+        "heading": "The Guide-text",
+        "text_sha256": "56cde5dd78abcdee54cab63608aa3369dc2d66ca1ce49e35d043b4a441bd5544"
+      },
+      {
+        "index": 62,
+        "paragraph_id": "S4.SS2.SSS2.Px1.p4.2",
+        "section_id": "S4.SS2.SSS2.Px1",
+        "heading": "The Guide-text",
+        "text_sha256": "9091055842351ca183fb066437057c9462c051e664b6e819ddc781071f74d561"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "S4.SS2.SSS3.p1.1",
+        "section_id": "S4.SS2.SSS3",
+        "heading": "4.2.3. Semantic-Oblivious Injection (SOI)",
+        "text_sha256": "46222c63510b8d11797528bcf30d6cb6dbbcb8d494dd22154ed6e3da573de16c"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "S4.SS2.SSS3.p1.2",
+        "section_id": "S4.SS2.SSS3",
+        "heading": "4.2.3. Semantic-Oblivious Injection (SOI)",
+        "text_sha256": "eb106ddf848fde237948f1a60fcf7cb0c80cb66a179e96f676820e69c089d0ab"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S4.SS2.SSS3.p2.1",
+        "section_id": "S4.SS2.SSS3",
+        "heading": "4.2.3. Semantic-Oblivious Injection (SOI)",
+        "text_sha256": "526093a451a50aebf7ff0e99f3aff3a135e48947ca233f134c202747103a7b1d"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "S4.SS3.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Generating Neural Execs",
+        "text_sha256": "f51c3ce99b11a56e867e8a3f4683f8ec177af8e35051b8efc908f01cb17f2fae"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S4.SS3.SSS1.p1.1",
+        "section_id": "S4.SS3.SSS1",
+        "heading": "4.3.1. Objective function:",
+        "text_sha256": "008e8fed1108f456ed662a6bc56a612da194ee505f563cc717661390df57ca5c"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S4.SS3.SSS1.p1.2",
+        "section_id": "S4.SS3.SSS1",
+        "heading": "4.3.1. Objective function:",
+        "text_sha256": "4824af2a28d334153c559aed6321dfbffb9b60727af809782850c97245c70402"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S4.SS3.SSS1.p2.1",
+        "section_id": "S4.SS3.SSS1",
+        "heading": "4.3.1. Objective function:",
+        "text_sha256": "50ed61d7c210feecf4a78f4876eaafdfeb14ac418de14217338f33bb7a02341e"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S4.SS3.SSS1.Px1.p1.1",
+        "section_id": "S4.SS3.SSS1.Px1",
+        "heading": "Loss function",
+        "text_sha256": "e2021ae2813985b3256ab5cfe40dfbf776078e3cc16f39562b5466cfba875a46"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S4.SS3.SSS2.p1.1",
+        "section_id": "S4.SS3.SSS2",
+        "heading": "4.3.2. Optimization technique:",
+        "text_sha256": "c494a0ea4036dd4a4be4b311a1c9e2b2b38817892589b5f74ed13c65b88eca22"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "S4.SS3.SSS2.p2.1",
+        "section_id": "S4.SS3.SSS2",
+        "heading": "4.3.2. Optimization technique:",
+        "text_sha256": "ebe60227939b33580d9e91ef70f6ed651cc627f59e8e6a7cf3713484e66f3518"
+      },
+      {
+        "index": 73,
+        "paragraph_id": "S4.SS3.SSS2.Px1.p1.1",
+        "section_id": "S4.SS3.SSS2.Px1",
+        "heading": "(1) Gradient computation",
+        "text_sha256": "0402592e05df5e33159522b619e16a7580853bd937f5ab1070b17c934f6854fd"
+      },
+      {
+        "index": 74,
+        "paragraph_id": "S4.SS3.SSS2.Px1.p2.1",
+        "section_id": "S4.SS3.SSS2.Px1",
+        "heading": "(1) Gradient computation",
+        "text_sha256": "d5c1f472db36e78d6130584098221a26b54a158626538658d38afbb23397d82c"
+      },
+      {
+        "index": 75,
+        "paragraph_id": "S4.SS3.SSS2.Px1.p3.1",
+        "section_id": "S4.SS3.SSS2.Px1",
+        "heading": "(1) Gradient computation",
+        "text_sha256": "32ae9cbfeca9a7e5068eac26d5d60f16240daccc1ba2375868b68f428b706a26"
+      },
+      {
+        "index": 76,
+        "paragraph_id": "S4.SS3.SSS2.Px2.p1.1",
+        "section_id": "S4.SS3.SSS2.Px2",
+        "heading": "(2) Candidate selection",
+        "text_sha256": "03cae28d3a6c35cdfe0c402ed312120d0fe1c8c43f42c82ca5149397e840a1cb"
+      },
+      {
+        "index": 77,
+        "paragraph_id": "S4.SS3.SSS2.Px3.p1.1",
+        "section_id": "S4.SS3.SSS2.Px3",
+        "heading": "(3) Candidate evaluation and solution update",
+        "text_sha256": "5177509b56883813cb29945b997de711065a336a9e393a0ddb51fa0f8b4449da"
+      },
+      {
+        "index": 78,
+        "paragraph_id": "S4.SS3.SSS2.Px3.p2.1",
+        "section_id": "S4.SS3.SSS2.Px3",
+        "heading": "(3) Candidate evaluation and solution update",
+        "text_sha256": "a238a8e602a443fa6304a86d04293bfe5c4aac48cf7574a4b81e8a566e6a1abb"
+      },
+      {
+        "index": 79,
+        "paragraph_id": "S4.SS3.SSS2.Px4.p1.1",
+        "section_id": "S4.SS3.SSS2.Px4",
+        "heading": "Promoting Semantic-Oblivious Injection (SOI)",
+        "text_sha256": "f56340137dd4c681d660038d8b74085205c843ebc88f72558d111fc2c442e1c9"
+      },
+      {
+        "index": 80,
+        "paragraph_id": "S4.SS3.SSS2.Px4.p1.2",
+        "section_id": "S4.SS3.SSS2.Px4",
+        "heading": "Promoting Semantic-Oblivious Injection (SOI)",
+        "text_sha256": "50488d30966a12316eb795d034db74b90365a4efce6120fc22a336d5dabdc9a2"
+      },
+      {
+        "index": 81,
+        "paragraph_id": "S4.SS3.SSS2.Px4.p2.1",
+        "section_id": "S4.SS3.SSS2.Px4",
+        "heading": "Promoting Semantic-Oblivious Injection (SOI)",
+        "text_sha256": "26c718acef572b07be85fd91f9cbe13ea55f64d680675a56ac6fc8a62582639e"
+      },
+      {
+        "index": 82,
+        "paragraph_id": "S4.SS3.SSS2.Px5.p1.1",
+        "section_id": "S4.SS3.SSS2.Px5",
+        "heading": "Optimization constraints",
+        "text_sha256": "65db15867194588918283105dd8037cbfaae4926dd8f779eabc9d466276ec0fe"
+      },
+      {
+        "index": 83,
+        "paragraph_id": "S4.SS3.SSS2.Px5.p2.1",
+        "section_id": "S4.SS3.SSS2.Px5",
+        "heading": "Optimization constraints",
+        "text_sha256": "1d6dd0332a19794eaff8af664ccce376aff0c6c0a366eae8b26b349659da8713"
+      },
+      {
+        "index": 84,
+        "paragraph_id": "S4.SS3.SSS2.Px6.p1.1",
+        "section_id": "S4.SS3.SSS2.Px6",
+        "heading": "Initial Solution",
+        "text_sha256": "b037064738c85d977f8ae66dfece1be3fc38d39293330211dfa4ff55e058bcbe"
+      },
+      {
+        "index": 85,
+        "paragraph_id": "S4.SS3.SSS2.Px6.p2.1",
+        "section_id": "S4.SS3.SSS2.Px6",
+        "heading": "Initial Solution",
+        "text_sha256": "edbc5dc9f759b50b7fd97a52c9470c565360d7c2121aaaafad4c2da0bb07dbba"
+      },
+      {
+        "index": 86,
+        "paragraph_id": "S4.SS3.SSS3.p1.1",
+        "section_id": "S4.SS3.SSS3",
+        "heading": "4.3.3. Data Universes",
+        "text_sha256": "f603d931f3797cfc526ebd16cd77bec53d7533d73310813fc087566f15a0566a"
+      },
+      {
+        "index": 87,
+        "paragraph_id": "S4.SS3.SSS3.Px1.p1.1",
+        "section_id": "S4.SS3.SSS3.Px1",
+        "heading": "Input Prompt space",
+        "text_sha256": "f94a9e53ac2f838ea1854999bd5b27de471ba82df3cfe9f7c029e5cfde6dfccd"
+      },
+      {
+        "index": 88,
+        "paragraph_id": "S4.SS3.SSS3.Px2.p1.1",
+        "section_id": "S4.SS3.SSS3.Px2",
+        "heading": "Payload space",
+        "text_sha256": "744f4726f59dee9897f2aff158c2aa85b6d96231cd6f11aa161b7d618b314260"
+      },
+      {
+        "index": 89,
+        "paragraph_id": "S5.p1.1",
+        "section_id": "S5",
+        "heading": "5. Evaluation & Results",
+        "text_sha256": "77e70fcf9d42f97c13a5f839d5f5c05622c761331ed209e077fb89a3f8438c7b"
+      },
+      {
+        "index": 90,
+        "paragraph_id": "S5.SS1.p1.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1. Setup",
+        "text_sha256": "f74198a3be2b098d552372134d4d54b8ef418869e4717e17da2b64acd794d552"
+      },
+      {
+        "index": 91,
+        "paragraph_id": "S5.SS1.p2.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1. Setup",
+        "text_sha256": "98c5e808bd2c0c54123692b21a61996a0861139158aba94d66e05a6b2585381e"
+      },
+      {
+        "index": 92,
+        "paragraph_id": "S5.SS1.p3.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1. Setup",
+        "text_sha256": "3220420ec10ba7a47c706de1000b9cc067bbd54f256d3a515ab84f41560926b5"
+      },
+      {
+        "index": 93,
+        "paragraph_id": "S5.SS1.p4.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1. Setup",
+        "text_sha256": "a277dc21182008989788e669b2a819a1131e1eae4625076910244a470718bf55"
+      },
+      {
+        "index": 94,
+        "paragraph_id": "S5.SS1.SSS1.p1.1",
+        "section_id": "S5.SS1.SSS1",
+        "heading": "5.1.1. Evaluation metrics:",
+        "text_sha256": "e45b87af9d6dc098071b6b4f0569e7657e70381b150cb5c957e3ea7ab232e5ab"
+      },
+      {
+        "index": 95,
+        "paragraph_id": "S5.SS1.SSS1.Px1.p1.1",
+        "section_id": "S5.SS1.SSS1.Px1",
+        "heading": "Execution (Top-1) Accuracy ( ExeAcc ):",
+        "text_sha256": "f29a43896215130e148e71c5c998a0ab17a8224ad4ef6204e66485b0d87da9d0"
+      },
+      {
+        "index": 96,
+        "paragraph_id": "S5.SS1.SSS1.Px1.p2.1",
+        "section_id": "S5.SS1.SSS1.Px1",
+        "heading": "Execution (Top-1) Accuracy ( ExeAcc ):",
+        "text_sha256": "1a3830997e334b01cbda07408d5095ae6393ffec8548ff9b8b187226d2640c5d"
+      },
+      {
+        "index": 97,
+        "paragraph_id": "S5.SS1.SSS1.Px1.p2.2",
+        "section_id": "S5.SS1.SSS1.Px1",
+        "heading": "Execution (Top-1) Accuracy ( ExeAcc ):",
+        "text_sha256": "89ca30ba496ad9d940ee473c0aa9c019bec8a7483d09dec53e6c7606f5d7be67"
+      },
+      {
+        "index": 98,
+        "paragraph_id": "S5.SS1.SSS1.Px1.p3.1",
+        "section_id": "S5.SS1.SSS1.Px1",
+        "heading": "Execution (Top-1) Accuracy ( ExeAcc ):",
+        "text_sha256": "479a4eb0a43b0d62c31d1f0fd8dab992947220d0077b9c709ed496e7c2926b50"
+      },
+      {
+        "index": 103,
+        "paragraph_id": "S5.SS2.p1.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2. Prior-free Neural Execs",
+        "text_sha256": "fc2232c2da744b97bfed49d6f854b6f836cc9b031052bd08e301fb1d082f4385"
+      },
+      {
+        "index": 104,
+        "paragraph_id": "S5.SS2.p2.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2. Prior-free Neural Execs",
+        "text_sha256": "443fe7f3e8913fbc995327a0d7ab714aa95c96c896016421a15be7bd34d20567"
+      },
+      {
+        "index": 105,
+        "paragraph_id": "S5.SS2.p3.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2. Prior-free Neural Execs",
+        "text_sha256": "1b80ba34936144ca678a1bae5012a040d9f86b867acf669a541fac899cd7ee65"
+      },
+      {
+        "index": 108,
+        "paragraph_id": "S5.SS3.p1.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3. Bootstrapping Neural Exec from handcrafted",
+        "text_sha256": "4a747c3303fd3a9423aef0846c9fcd8f67a4d9b39e34012d6f7e7a8c78fca9b2"
+      },
+      {
+        "index": 112,
+        "paragraph_id": "S5.SS4.p1.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4. Robustness against RAG-based pipelines",
+        "text_sha256": "421092f629870546d4dc6fe6c9bedaa5f90cdd647ff59837bc0e490c3969f616"
+      },
+      {
+        "index": 113,
+        "paragraph_id": "S5.SS4.SSS0.Px1.p1.1",
+        "section_id": "S5.SS4.SSS0.Px1",
+        "heading": "Results:",
+        "text_sha256": "694b59120bd1c8a533414f30a74c8cc181a1a3f6452a6ef87210face5abb6f94"
+      },
+      {
+        "index": 114,
+        "paragraph_id": "S5.SS4.SSS0.Px1.p2.1",
+        "section_id": "S5.SS4.SSS0.Px1",
+        "heading": "Results:",
+        "text_sha256": "2894f804323508fee950c7cf460d3c4979967454743229dd04cf8c60e070826c"
+      },
+      {
+        "index": 115,
+        "paragraph_id": "S6.p1.1",
+        "section_id": "S6",
+        "heading": "6. Insights from Neural Execs",
+        "text_sha256": "148ebff8380d72ab94e4a296407a09641f46aa111a571f123a52cc1861747ec5"
+      },
+      {
+        "index": 136,
+        "paragraph_id": "S6.F10.sf2.3",
+        "section_id": "S6.SS2.SSS3",
+        "heading": "6.2.3. Exploiting the Discovered Patterns",
+        "text_sha256": "772598cd6da5fda9b4eef48f92efdcf38696ba7e26cb45f8e692e0debfebf499"
+      },
+      {
+        "index": 137,
+        "paragraph_id": "S6.SS2.SSS3.p1.1",
+        "section_id": "S6.SS2.SSS3",
+        "heading": "6.2.3. Exploiting the Discovered Patterns",
+        "text_sha256": "7fac14128a8cf366afc72e51bc5b3693d75a53fad7b8477878cb17eb98011b93"
+      },
+      {
+        "index": 138,
+        "paragraph_id": "S6.SS2.SSS3.p2.1",
+        "section_id": "S6.SS2.SSS3",
+        "heading": "6.2.3. Exploiting the Discovered Patterns",
+        "text_sha256": "381c2e04a8b06f886b9d49535ab531442b666449db1608c9e40eca52ca81acdf"
+      },
+      {
+        "index": 139,
+        "paragraph_id": "S6.SS2.SSS3.p3.1",
+        "section_id": "S6.SS2.SSS3",
+        "heading": "6.2.3. Exploiting the Discovered Patterns",
+        "text_sha256": "e06e327900f6bea8f671b99e29cbccf5c8db5c55ffcb887db3a3ee100c480a2d"
+      },
+      {
+        "index": 140,
+        "paragraph_id": "S6.SS2.SSS3.p4.1",
+        "section_id": "S6.SS2.SSS3",
+        "heading": "6.2.3. Exploiting the Discovered Patterns",
+        "text_sha256": "a4a5ffbc263e4d93910caf7b73d8d36e30e97cf865696f3268df98fd05500054"
+      },
+      {
+        "index": 143,
+        "paragraph_id": "S1.F12.3",
+        "section_id": "S1a",
+        "heading": "A. Input Prompt Generation for Optimization",
+        "text_sha256": "3d8a00487dbf1b07b14e54f9680dbd474672ebb7311ad7c85f424856bb00a4f9"
+      },
+      {
+        "index": 144,
+        "paragraph_id": "S1a.p1.1",
+        "section_id": "S1a",
+        "heading": "A. Input Prompt Generation for Optimization",
+        "text_sha256": "c7a0846942b12c3a271d2a690b0e6f2448470ba17aa6b8679701e08829360407"
+      },
+      {
+        "index": 145,
+        "paragraph_id": "S1.SS0.SSS0.Px1.p1.1",
+        "section_id": "S1.SS0.SSS0.Px1",
+        "heading": "Prompt class",
+        "text_sha256": "dcc101c33eaf477d78d5978e4a20f7c7b2de672f432a04eaf669d4b17e556bad"
+      },
+      {
+        "index": 146,
+        "paragraph_id": "S1.SS0.SSS0.Px1.p2.1",
+        "section_id": "S1.SS0.SSS0.Px1",
+        "heading": "Prompt class",
+        "text_sha256": "8a3dbe8c27b46c9ab2880655afd1c8545585f4c608771c2d7b785105a363ec8e"
+      },
+      {
+        "index": 147,
+        "paragraph_id": "S1.SS0.SSS0.Px1.p3.1",
+        "section_id": "S1.SS0.SSS0.Px1",
+        "heading": "Prompt class",
+        "text_sha256": "e073948db9da05cf6bcdcb27efd63556781fe45bfe14e3f74dc702f944ff8f56"
+      },
+      {
+        "index": 148,
+        "paragraph_id": "S1.SS0.SSS0.Px1.p4.1",
+        "section_id": "S1.SS0.SSS0.Px1",
+        "heading": "Prompt class",
+        "text_sha256": "b621df95ed1a46a46cd2af352bb48a0694ccc591935ff4ac9b799a7ad12fb7cb"
+      },
+      {
+        "index": 149,
+        "paragraph_id": "S1.SS0.SSS0.Px2.p1.1",
+        "section_id": "S1.SS0.SSS0.Px2",
+        "heading": "Tasks",
+        "text_sha256": "60e1dbe38a486de8f8d0ba3157386015795cda1637dc96d86da122042db0512a"
+      },
+      {
+        "index": 150,
+        "paragraph_id": "S1.SS0.SSS0.Px3.p1.1",
+        "section_id": "S1.SS0.SSS0.Px3",
+        "heading": "System (meta) prompt",
+        "text_sha256": "48a23031a5a62298ff1fee43f2dc1f3fca78dae2148aeeb0dc1a1354035057d4"
+      },
+      {
+        "index": 151,
+        "paragraph_id": "S1.SS0.SSS0.Px4.p1.1",
+        "section_id": "S1.SS0.SSS0.Px4",
+        "heading": "Guide-text and Honest inputs",
+        "text_sha256": "348d1d9ddcb791a5175b0e8d998bf3d8164a6c668725387767c5ea7e48bd69c5"
+      },
+      {
+        "index": 152,
+        "paragraph_id": "S1.SS0.SSS0.Px4.p2.1",
+        "section_id": "S1.SS0.SSS0.Px4",
+        "heading": "Guide-text and Honest inputs",
+        "text_sha256": "ebc32c89eb0cc57beb06436192a38436ef107652955ee3b88911b95fd16e4fa2"
+      },
+      {
+        "index": 153,
+        "paragraph_id": "S1.SS0.SSS0.Px4.p3.1",
+        "section_id": "S1.SS0.SSS0.Px4",
+        "heading": "Guide-text and Honest inputs",
+        "text_sha256": "90c7b54c0b90ea8c43da28d3215860753c02a8d6c31584da4a49f57e2b45a34a"
+      },
+      {
+        "index": 154,
+        "paragraph_id": "S2.F14.3",
+        "section_id": "S2a",
+        "heading": "B. Setup: Robustness against RAG-based pipelines",
+        "text_sha256": "a97cfc83a08bea360f994dee6e3b58478414631c47362b478883dca9d0357491"
+      },
+      {
+        "index": 155,
+        "paragraph_id": "S2.F14.4",
+        "section_id": "S2a",
+        "heading": "B. Setup: Robustness against RAG-based pipelines",
+        "text_sha256": "7f20f218c216978c6b5c3b9c590e3893d2c11240be4b68cb6fc08b18781cd734"
+      },
+      {
+        "index": 156,
+        "paragraph_id": "S2a.p1.1",
+        "section_id": "S2a",
+        "heading": "B. Setup: Robustness against RAG-based pipelines",
+        "text_sha256": "5413ee015806a2e6605dfdc7c783ef53b4649f4b533de27693c6f36af4ed900c"
+      },
+      {
+        "index": 157,
+        "paragraph_id": "S2.SS0.SSS0.Px1.p1.1",
+        "section_id": "S2.SS0.SSS0.Px1",
+        "heading": "Procedure :",
+        "text_sha256": "8e00bd3a7878f72317d76c17eb8a7c3f6ba8d085d37ca83a174ed9cfbaa47567"
+      },
+      {
+        "index": 158,
+        "paragraph_id": "S2.SS0.SSS0.Px1.p2.1",
+        "section_id": "S2.SS0.SSS0.Px1",
+        "heading": "Procedure :",
+        "text_sha256": "8d1c149b521c7abeede26472445abd09252e9648be230fcc673dde13f32ca121"
+      },
+      {
+        "index": 159,
+        "paragraph_id": "S2.SS0.SSS0.Px1.p3.1",
+        "section_id": "S2.SS0.SSS0.Px1",
+        "heading": "Procedure :",
+        "text_sha256": "805b44ab2a6d88bff489ae2edde05423c38a72311a7c9c6a813c4ddb83fcdf16"
+      },
+      {
+        "index": 160,
+        "paragraph_id": "S2.F15.sf1.3",
+        "section_id": "S2.SS0.SSS0.Px1",
+        "heading": "Procedure :",
+        "text_sha256": "721e67083e9bb55090a77782ae16f34044aff4c4b8d8a5a2e5d7233325a195ac"
+      },
+      {
+        "index": 161,
+        "paragraph_id": "S2.F15.sf2.3",
+        "section_id": "S2.SS0.SSS0.Px1",
+        "heading": "Procedure :",
+        "text_sha256": "fa264c60e552527318798ef390b3b9e741a908edec76052183ad379a35c63ae1"
+      },
+      {
+        "index": 162,
+        "paragraph_id": "S2.F15.sf3.3",
+        "section_id": "S2.SS0.SSS0.Px1",
+        "heading": "Procedure :",
+        "text_sha256": "7d9eb65475005b23e40b3b71f63e2926def273eb7c9b2a717ef4338f34e437c7"
+      },
+      {
+        "index": 163,
+        "paragraph_id": "S2.F15.sf4.3",
+        "section_id": "S2.SS0.SSS0.Px1",
+        "heading": "Procedure :",
+        "text_sha256": "f7f11bc6d24486ba7c4aee984e9f24fec7e2ac9abb2a7fcd6498ceba449fd612"
+      },
+      {
+        "index": 164,
+        "paragraph_id": "S2.F15.sf5.3",
+        "section_id": "S2.SS0.SSS0.Px1",
+        "heading": "Procedure :",
+        "text_sha256": "37bbc0b2063ee2a16738dc3c84448046c47c1782e9856bda699027a9c94e63d1"
+      },
+      {
+        "index": 165,
+        "paragraph_id": "S3a.p1.1",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "b2a0e85fa82a3e2ae6a4b71286a25ec39bbdfbc6f8c5b6ecd9bbb122699a85b3"
+      },
+      {
+        "index": 166,
+        "paragraph_id": "S3a.p2.1",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "dc6ac5f70e4579e9413a1419715f686ad9183429d754b4a3b162250b402c3d28"
+      },
+      {
+        "index": 167,
+        "paragraph_id": "S3a.p3.1",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "bbf0fd65945dbe4455b65a2a3bd4962e31a06309b6914122f83f23e1f644200a"
+      },
+      {
+        "index": 168,
+        "paragraph_id": "S3a.p4.1",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "0e913dff6cffc820978fff6601271d95a4ad41891cf82666fc8dfea2a9502591"
+      },
+      {
+        "index": 169,
+        "paragraph_id": "S3a.p5.1",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "d7dd0167b60e5507c87067311d4755e44ab1fb72ee9b53ba9da5f24e7b3069ba"
+      },
+      {
+        "index": 170,
+        "paragraph_id": "S3a.p6.1",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "9b605dbe30ff92fd2c065b2a4e88e7c429ceaee804f2cdd0a952728c9438cf8d"
+      },
+      {
+        "index": 171,
+        "paragraph_id": "S3a.p7.1",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "b40594dea7e3d53c8f9b01b1e533123b2af4948d2d060fd996b65f0ac0518792"
+      },
+      {
+        "index": 172,
+        "paragraph_id": "S3a.p8.1",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "af5dd55d099183a16d385e847f2dc241d3776988983f75d86ce5ddd3d2d876fb"
+      },
+      {
+        "index": 173,
+        "paragraph_id": "S3a.p9.1",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "16b93dbea84d10901c7305d57cf4afd4129c891227f42c78f11ab9f98f469877"
+      },
+      {
+        "index": 174,
+        "paragraph_id": "S3a.p10.1",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "6069f54becea4cc5ac95f672f603d3b893fbea2296ef73e2c37782398e0b41df"
+      },
+      {
+        "index": 175,
+        "paragraph_id": "S3a.p11.1",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "a92c07bd64975df83491943f05c25f3ef406a91f15e72b529a8f07fe3b2a5d27"
+      },
+      {
+        "index": 176,
+        "paragraph_id": "S3.F17.3",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "10fdd02868cbbfdc91b5344c34376b9384566efba169910cb926efc4859b4182"
+      },
+      {
+        "index": 177,
+        "paragraph_id": "S3.F18.3",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "ca336363a5ac7692304d47d029f531ff6c26f1fb11f15fe20a09e5064dfd2062"
+      },
+      {
+        "index": 178,
+        "paragraph_id": "S3.F18.5",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "13e4df076ec3c620220221a6c63d89c7277a1c3c295fd87c522e63cb8777113c"
+      },
+      {
+        "index": 179,
+        "paragraph_id": "S3.F18.7",
+        "section_id": "S3a",
+        "heading": "C. Example of attacks against a deployed LLM-Integrated application",
+        "text_sha256": "411e8d8cee2c56c3f16fa339913359471bdcb1ed281f9a6248673983a70b4321"
+      },
+      {
+        "index": 180,
+        "paragraph_id": "S4a.p1.1",
+        "section_id": "S4a",
+        "heading": "D. Implementation fuzzy matching",
+        "text_sha256": "765ae2be512488e86cb746c405d3f12e0d1a0e5ff164a69b377c15b33b855af2"
+      },
+      {
+        "index": 181,
+        "paragraph_id": "S4a.p2.1",
+        "section_id": "S4a",
+        "heading": "D. Implementation fuzzy matching",
+        "text_sha256": "1abfe7e61caa3cbd423b20c692a1ff673befa2fc199e48d05cb27e83e2b2fac0"
+      },
+      {
+        "index": 182,
+        "paragraph_id": "S4a.p3.1",
+        "section_id": "S4a",
+        "heading": "D. Implementation fuzzy matching",
+        "text_sha256": "9f2ddf7a740e9c53fdbb032d2330f5e7744dd44d89b5b7a5d6afaa50a7a248e7"
+      },
+      {
+        "index": 183,
+        "paragraph_id": "S4.F19.3",
+        "section_id": "S4a",
+        "heading": "D. Implementation fuzzy matching",
+        "text_sha256": "43af9816f6cf442a5759a43ab1f4cb88205a6009847c3b8d227f2c4712a1d955"
+      },
+      {
+        "index": 184,
+        "paragraph_id": "S5a.p1.1",
+        "section_id": "S5a",
+        "heading": "E. On the Transferability of Neural Execs",
+        "text_sha256": "3a254c2706b69e2813a2621d101709d1867dad3ad6485a072fa3987229cb77fe"
+      },
+      {
+        "index": 185,
+        "paragraph_id": "S5a.p2.1",
+        "section_id": "S5a",
+        "heading": "E. On the Transferability of Neural Execs",
+        "text_sha256": "b3006a24a7393a73deecfa590b2a0cef75740cca198ad0e63db0b25b8ed1b4ef"
+      },
+      {
+        "index": 186,
+        "paragraph_id": "S5a.p3.1",
+        "section_id": "S5a",
+        "heading": "E. On the Transferability of Neural Execs",
+        "text_sha256": "590789931b3851d5cc8d6a78e46b7a54813b0b5a5490fb7a736fb49e6cc8ea21"
+      },
+      {
+        "index": 187,
+        "paragraph_id": "S5a.p4.1",
+        "section_id": "S5a",
+        "heading": "E. On the Transferability of Neural Execs",
+        "text_sha256": "79d035c6e18d78515b81b1cd9483db1101a15b0bcea1f1704499cb714baad86e"
+      },
+      {
+        "index": 188,
+        "paragraph_id": "S5.SS1a.p1.1",
+        "section_id": "S5.SS1a",
+        "heading": "E.1. Transferability to fine-tuned models",
+        "text_sha256": "b6a2ed6267ad807dd759b5ec0c531142314dc742b370c5d3377ab5a388771b61"
+      },
+      {
+        "index": 189,
+        "paragraph_id": "S5.SS1.SSS0.Px1.p1.1",
+        "section_id": "S5.SS1.SSS0.Px1",
+        "heading": "Setup:",
+        "text_sha256": "7d2433af3981a3781ea31cc322d0437b6e1d4d09a038c9e70602d9ed43102c65"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Complete core format/optimization contexts confirm prefix+suffix trigger, teacher-forced target likelihood, gradient substitutions, guide-text insertion and optional embedding term.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main/Appendix definitions and pattern-derived/tagged/transfer/fine-tune contexts actually read; execution is judged by verifier on generated target reply. SOI is an objective/property sought, never asserted as achieved here.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "RAG survival explicitly stops at retrieval; Appendix C HuggingChat demonstration runs full application and observes reply/task override. These dependencies remain separate.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual English SQuAD guide/query and Appendix prompt templates checked; code and translation tasks explicit, no all-English inference.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All material named original method/arm families in the main and method-bearing appendix scope now actually checked. Unprinted identities/exact image wording remain explicit source-reporting limits rather than invented evidence.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "coverage.additional_structural_receipts",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All added exact-source HTML-node and text hashes independently reproduce. Structural verification is distinct from the actual semantic ranges/sections described in this receipt.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

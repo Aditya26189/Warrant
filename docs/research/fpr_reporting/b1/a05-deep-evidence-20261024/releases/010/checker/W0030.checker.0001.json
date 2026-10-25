@@ -1,0 +1,837 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0030",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T13:04:41.858256+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0030.provider.0001.json",
+  "provider_packet_sha256": "d3f1f228d6f2f6bf7812da8b5bcb5fdef0174bd9a6bfe1bb7a1794fd49975f2a",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2502.08966v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\a09830ab3ff94b1a11ebcbd3920ac55f789f8a6c0099b3ac32b35d171e2f2995",
+    "raw_sha256": "a09830ab3ff94b1a11ebcbd3920ac55f789f8a6c0099b3ac32b35d171e2f2995",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0060.json",
+    "acquisition_receipt_sha256": "e3bf7b220ac010baf61c3f37289330a08d6bf487fd136b09a79d1b6a8a77e3a7",
+    "captured_version_id": "arxiv:2502.08966v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        60,
+        136
+      ],
+      [
+        143,
+        172
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Main85-115 defines region-level confidentiality/integrity dependency analysis, label propagation, redaction and tool-call policy checks. End-to-end setups120-134 and143-159 specify injection and privacy-leakage evaluations. False preserves remaining whole-paper/appendix implementation context. Positive declared evaluation and dependency-label facts are independently checked; missing settings/examples do not imply an unaccounted new task, and no global classifier absence is inferred.",
+    "visual_check": null,
+    "locator_sha256": "4100e60c101e2eb7ddfe8b32e5a887c650d2ea9f0ec15dedb23f9cf03a3b79c3",
+    "locators": [
+      {
+        "index": 60,
+        "paragraph_id": "S4.p8.1",
+        "section_id": "S4",
+        "heading": "4 Tool-based Agent Systems",
+        "text_sha256": "697718cb455c241d4f1156f46de47d8efa41e741d45a426cbfa3740113b78d58"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "S4.p9.1",
+        "section_id": "S4",
+        "heading": "4 Tool-based Agent Systems",
+        "text_sha256": "a30b1d74090731bf6cb563f8d9c7ad3235a4362acdbd3db1f9da8891f804863b"
+      },
+      {
+        "index": 62,
+        "paragraph_id": "S4.p10.1",
+        "section_id": "S4",
+        "heading": "4 Tool-based Agent Systems",
+        "text_sha256": "c8f5dcf3d16ab4c6f67e6aaf099b8a93ba42c6844db2f3353a489ab92fe57406"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "S4.p11.1",
+        "section_id": "S4",
+        "heading": "4 Tool-based Agent Systems",
+        "text_sha256": "74fe66d003b6532a828927244b83608a87d6b008221912a5fee5dd0b9025aebe"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "S5.p1.1",
+        "section_id": "S5",
+        "heading": "5 Attack Model for Prompt Injection",
+        "text_sha256": "34aeb781cea1d825be1abceb9f32e567d2707ad02f2c3bc71c317c66ea16d6f9"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S5.p2.1",
+        "section_id": "S5",
+        "heading": "5 Attack Model for Prompt Injection",
+        "text_sha256": "863f032c235e61b7dc88ff285dddd770a7bd8b105b48142eeae92e0d00aab8bb"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "S5.p3.1",
+        "section_id": "S5",
+        "heading": "5 Attack Model for Prompt Injection",
+        "text_sha256": "1ad2aaeedde0eb6f348ba4b81e74fc3ba25baf02fbfa881acb5083462cf975b0"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S6.SS1.p1.1",
+        "section_id": "S6.SS1",
+        "heading": "6.1 Objectives",
+        "text_sha256": "1bab67889f33a8bd3f7aec8acbd68810181024d4e012cfc52fcb4112b33a5001"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S6.I1.i1.p1.1",
+        "section_id": "S6.SS1",
+        "heading": "6.1 Objectives",
+        "text_sha256": "87bcb79fbad2013c76da7c55fdf198834bb7847919789cff7ebb4314467898ff"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S6.I1.i2.p1.1",
+        "section_id": "S6.SS1",
+        "heading": "6.1 Objectives",
+        "text_sha256": "2a22f6bf2828053eb0b435f78f6162207ef4bb097ec360c108942c98d78c78b4"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S6.SS1.p1.2",
+        "section_id": "S6.SS1",
+        "heading": "6.1 Objectives",
+        "text_sha256": "dc13cff381217cbbe803ae0a34b1d9200347277e67a5c9082af85ee1836b8aa4"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S6.I2.i1.p1.1",
+        "section_id": "S6.SS1",
+        "heading": "6.1 Objectives",
+        "text_sha256": "d994453b1defdcf652f0dec8f6c3bccb4d6b67bc2c5670d6c3d02969dbfe9b84"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "S6.I2.i2.p1.1",
+        "section_id": "S6.SS1",
+        "heading": "6.1 Objectives",
+        "text_sha256": "a494ab56a9d8c91233c98cce124ade8ad43ba0869c115784dbca44ed9b1a6aa0"
+      },
+      {
+        "index": 73,
+        "paragraph_id": "S6.SS2.p1.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Assumptions",
+        "text_sha256": "f68a0f86dd73de6e31939f34a84ddee019294864b079d460abc59c3ab9992005"
+      },
+      {
+        "index": 74,
+        "paragraph_id": "S6.SS2.p2.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Assumptions",
+        "text_sha256": "496e8e57f96d01d25d7c9dbd757880d2b1a1d0329266a2b72099e37e770d6555"
+      },
+      {
+        "index": 75,
+        "paragraph_id": "S6.I3.i1.p1.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Assumptions",
+        "text_sha256": "2bc6711174ffc1b9d90b27c9b6574af42286c70b0897b6b2fc4d7304cad96918"
+      },
+      {
+        "index": 76,
+        "paragraph_id": "S6.I3.i2.p1.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Assumptions",
+        "text_sha256": "c79be8e35c7647e2b9c5311b1aff7fe0893654b6d1bd23588658499c6919dfbd"
+      },
+      {
+        "index": 77,
+        "paragraph_id": "S6.I3.i3.p1.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Assumptions",
+        "text_sha256": "49043fd27991f962be3843c0c5f391ac5d0f0e12f71db15f5c10c4bad32ad725"
+      },
+      {
+        "index": 78,
+        "paragraph_id": "S6.SS2.p2.2",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Assumptions",
+        "text_sha256": "75c2ddbc0d4c7ad6eb413222b0206af25820c74caf1bdabb4fb2530d67a0a038"
+      },
+      {
+        "index": 79,
+        "paragraph_id": "S6.SS2.p3.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Assumptions",
+        "text_sha256": "535c6738da9f884dfabbd91d30b5474d47eff59c1742d7f4092b209439fb59e1"
+      },
+      {
+        "index": 80,
+        "paragraph_id": "S6.SS2.p4.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Assumptions",
+        "text_sha256": "6d6e0e359a2ff656a93bbe23f7d192e77173adb7624b7eeec63e7d93fe178d0c"
+      },
+      {
+        "index": 81,
+        "paragraph_id": "S6.SS2.p5.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Assumptions",
+        "text_sha256": "d9ae10e9926249aefe876306e183aa69e3ed5551e1e252a2f653cbf2aff041b6"
+      },
+      {
+        "index": 82,
+        "paragraph_id": "S6.SS2.p5.2",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Assumptions",
+        "text_sha256": "8e87c8ebedb17817aab66bcbadbd19e1cea5d59eeeab702523cfbc28697164d8"
+      },
+      {
+        "index": 83,
+        "paragraph_id": "S6.SS2.p6.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Assumptions",
+        "text_sha256": "8b1b8267b365cbf30c8e8a7a69096b4e85f0d233aec0aa73615f3e908746a2f4"
+      },
+      {
+        "index": 84,
+        "paragraph_id": "S6.SS2.p7.1",
+        "section_id": "S6.SS2",
+        "heading": "6.2 Assumptions",
+        "text_sha256": "c46b51f588fef6afaecabd381882f260691364582c966ee1dde3250d5c6861be"
+      },
+      {
+        "index": 85,
+        "paragraph_id": "S7.p1.1",
+        "section_id": "S7",
+        "heading": "7 Approach",
+        "text_sha256": "7a94fa7c96ab57fb8a5f3b6dab2dfe2be24944e51a4982718798d5e4cf8c6d15"
+      },
+      {
+        "index": 86,
+        "paragraph_id": "S7.SS1.p1.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 LM-Judge Approach",
+        "text_sha256": "ca68a4ce50db5e15b3bf289b324539954b8e4fa8e6265fd3a6231060219d1a9d"
+      },
+      {
+        "index": 87,
+        "paragraph_id": "S7.SS2.p1.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Attention-Based Approach",
+        "text_sha256": "5b31306ac18018c03a590cf49c42a0fa602a2e60e6029df4ff8e06ece05e975c"
+      },
+      {
+        "index": 88,
+        "paragraph_id": "S7.SS2.p2.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Attention-Based Approach",
+        "text_sha256": "7ff448e3c7bfb6dbe18cf3cbba4bb5128fad573ae0246f5d2ad02ec6e4b336bc"
+      },
+      {
+        "index": 89,
+        "paragraph_id": "S7.I1.i1.p1.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Attention-Based Approach",
+        "text_sha256": "bda26cc0462ec063064c9a6b9f0da8cb671cf94ea6fae637634ababaec630709"
+      },
+      {
+        "index": 90,
+        "paragraph_id": "S7.I1.i2.p1.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Attention-Based Approach",
+        "text_sha256": "d40f393c63f69cd49a6dde692d785d68da5fa8dc0c36fcadcd9674a9adf600ec"
+      },
+      {
+        "index": 91,
+        "paragraph_id": "S7.SS2.p3.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Attention-Based Approach",
+        "text_sha256": "a061e77e3ab3fa828acadeeda61863380c17df044aed3e324c15440fa270481a"
+      },
+      {
+        "index": 92,
+        "paragraph_id": "S7.SS2.p4.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Attention-Based Approach",
+        "text_sha256": "d307c64e7b63e229855b62986c15818f3cb0c58f503497ecaa1b731be89929e7"
+      },
+      {
+        "index": 93,
+        "paragraph_id": "S7.SS2.p5.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Attention-Based Approach",
+        "text_sha256": "713a1d68d6a6929c593fd0b7a1a527a8bed4436ad816302c5aaae12c200b4afc"
+      },
+      {
+        "index": 94,
+        "paragraph_id": "S7.I2.i1.p1.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Attention-Based Approach",
+        "text_sha256": "5b3537520fcb727dd752da3e897e6652016e7716448a70e2beedb082d08a5164"
+      },
+      {
+        "index": 95,
+        "paragraph_id": "S7.I2.i2.p1.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Attention-Based Approach",
+        "text_sha256": "c5020b81d512945a33d20fcc10d952053113e798bd47ed890281b655e5879187"
+      },
+      {
+        "index": 96,
+        "paragraph_id": "S7.SS2.p6.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Attention-Based Approach",
+        "text_sha256": "a891265739d05dbb31af4b4b0536fabf4f67d61196e62e4b28471176d23ec410"
+      },
+      {
+        "index": 97,
+        "paragraph_id": "S7.SS2.p7.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Attention-Based Approach",
+        "text_sha256": "141cac223f676e288cc878efb8139c384c6a0bce07230189b0afbc9e33b0f24b"
+      },
+      {
+        "index": 98,
+        "paragraph_id": "S7.SS3.p1.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "87a4450c0f20f1536ee64355c729f156575072a75ee6f9b74af7840881a910cc"
+      },
+      {
+        "index": 99,
+        "paragraph_id": "S7.SS3.p2.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "1783e37f18d007549ed37f41b8d5492cf254cdbabb94cb5b8c90e6684298dcee"
+      },
+      {
+        "index": 100,
+        "paragraph_id": "S7.SS3.p4.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "c72364bc71772e45d4db475ffae4be0af7afc851191acea6e05cf023ed94769b"
+      },
+      {
+        "index": 101,
+        "paragraph_id": "S7.SS3.p5.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "7d45dfaf8de51fff3057fe857a51f3729b9d15d75d4e3d4f5d68ee32f719abb4"
+      },
+      {
+        "index": 102,
+        "paragraph_id": "S7.SS3.p6.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "faebe9249598601a42a3b2740b8e54fd5fb21c7b75401cd8870925f1f4a3d27d"
+      },
+      {
+        "index": 103,
+        "paragraph_id": "S7.SS3.p7.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "eb5e36061e72d7d4804e840afb4c10cb9eea1a5136f4da5ea39ba1208e48ce3c"
+      },
+      {
+        "index": 104,
+        "paragraph_id": "S7.SS3.p8.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "b133a9824768ddbf9934cedceefefa780c628a69743bb29bcaa25f2e08aec3fc"
+      },
+      {
+        "index": 105,
+        "paragraph_id": "S7.SS3.p9.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "9c539c2da1ed2eeaa7cd1e355add484c9a77b4fa5290d7a1c95d83fd5571d115"
+      },
+      {
+        "index": 106,
+        "paragraph_id": "S7.SS3.p10.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "890d58f12c2fa99519b326d1006113bc4c52adbe21dbfffde2c4594f682dd9b0"
+      },
+      {
+        "index": 107,
+        "paragraph_id": "S7.SS3.p12.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "46fc29a9713e611295d5e816627f2c0966ca117d69d03a777d5db0f2ca0a69d0"
+      },
+      {
+        "index": 108,
+        "paragraph_id": "S7.SS3.p13.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "13293ff3ac9c705c0d1f329912fc50ab8698d705e7a85dfc627a75688e0ee9ab"
+      },
+      {
+        "index": 109,
+        "paragraph_id": "S7.SS3.p14.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "eca19e79a2ae2fb78966cc624e0b8baae16f34a087242635cf5ef82fd4463a84"
+      },
+      {
+        "index": 110,
+        "paragraph_id": "S7.SS3.p15.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "28e672d288749bed208b3cbb1b311cb74b821c3083c9ab530da7f2a1748e26ec"
+      },
+      {
+        "index": 111,
+        "paragraph_id": "S7.SS3.p16.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "a682cf7534081cc1f0bd5b29f782ff58c50cdb63efa61006d3dd86001a2941ba"
+      },
+      {
+        "index": 112,
+        "paragraph_id": "S7.SS3.p17.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "e56ffa29af667aeecca061a6a96322f90343d97ab24027c444888f2a4a5d77ce"
+      },
+      {
+        "index": 113,
+        "paragraph_id": "S7.SS3.p18.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "45fdaf584c2459ccb0e5884af388d20e2793d33a4d4849b739c29520414b942d"
+      },
+      {
+        "index": 114,
+        "paragraph_id": "S7.SS3.p19.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "477c71d048b5cbac7bac25f9ec85cd5dce34e7f486a8e677b711e510f8c0cec7"
+      },
+      {
+        "index": 115,
+        "paragraph_id": "S7.SS3.p20.1",
+        "section_id": "S7.SS3",
+        "heading": "7.3 Robust TBAS",
+        "text_sha256": "ced65053da3a8afde323f8beab0ba4adb108bdef202d35b4264b770cfc9b2eed"
+      },
+      {
+        "index": 116,
+        "paragraph_id": "S8.p1.1",
+        "section_id": "S8",
+        "heading": "8 Evaluation",
+        "text_sha256": "af64ba0dc93d95f3658f7098722a39ca8f4f347599ee538fae94a5dde29ac75e"
+      },
+      {
+        "index": 117,
+        "paragraph_id": "S8.I1.ix1.p1.1",
+        "section_id": "S8",
+        "heading": "8 Evaluation",
+        "text_sha256": "879add64d1cf063e8d719c167ee22d677631c5126672ef8fb82efa6a73e454b0"
+      },
+      {
+        "index": 118,
+        "paragraph_id": "S8.I1.ix2.p1.1",
+        "section_id": "S8",
+        "heading": "8 Evaluation",
+        "text_sha256": "efc545ce9c147d55decb5df52bd8a76682948325664cf37efef9005e181362ad"
+      },
+      {
+        "index": 119,
+        "paragraph_id": "S8.I1.ix3.p1.1",
+        "section_id": "S8",
+        "heading": "8 Evaluation",
+        "text_sha256": "56e8d43a350ac0d9bb34f3f77fe333aa6aae408e24bee7014853cdd7a5813180"
+      },
+      {
+        "index": 120,
+        "paragraph_id": "S8.SS1.SSS1.p1.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "2ff74bc8e42b55a9559e8fedc59443cb72166a0e92b8850e0f81f955ff334bf8"
+      },
+      {
+        "index": 121,
+        "paragraph_id": "S8.SS1.SSS1.p2.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "56ef65c19a3f8d83f4f565c7ba768c0430b852f0f3ffd063f4d0e39b2775290c"
+      },
+      {
+        "index": 122,
+        "paragraph_id": "S8.I2.i1.p1.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "6c7f7cc6fc82b6abf0c16bb6faaa9d1ee8f97e1c9575cbe8f3ec315cb2f826e1"
+      },
+      {
+        "index": 123,
+        "paragraph_id": "S8.I2.i2.p1.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "bd8f21ce3463bbfbb08c93c422649873ecd52feb6add890fde54b23479cce15e"
+      },
+      {
+        "index": 124,
+        "paragraph_id": "S8.SS1.SSS1.p3.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "8404fd0a53a366aa94e6d71d2f923298f29b2aef1647f4dd755a8853a9044aa5"
+      },
+      {
+        "index": 125,
+        "paragraph_id": "S8.SS1.SSS1.p4.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "9572f38ab5c46edc67ac92e862cb0c70725aa2f5bfdf51a2278ddd9d1a0a2b43"
+      },
+      {
+        "index": 126,
+        "paragraph_id": "S8.I3.i1.p1.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "00a456bc8fe15b1816d0b0043c5b94e54497b9e10662404e103856f37c2cfcc1"
+      },
+      {
+        "index": 127,
+        "paragraph_id": "S8.I3.i2.p1.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "be727f717d9697df39d0ac3d4efefa3278b377399ae262ac55fa1a86dbda57b1"
+      },
+      {
+        "index": 128,
+        "paragraph_id": "S8.I3.i3.p1.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "c57966007f53149bf8fe7e74c6e716380ae03d655c92c10d77cda49513a083de"
+      },
+      {
+        "index": 129,
+        "paragraph_id": "S8.SS1.SSS1.p4.2",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "2e061877b17bbbf72065bfe00c8fdab21efa9f7c115f95ee63087e550ebeb48e"
+      },
+      {
+        "index": 130,
+        "paragraph_id": "S8.SS1.SSS1.p5.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "a15330cc07430b6b89fb5aa4ee20b5c76dc4620fcfcefa4a0daa38dd8d053e8c"
+      },
+      {
+        "index": 131,
+        "paragraph_id": "S8.I4.i1.p1.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "2e80bd3b3b043da0d1f85efe6a6daf824bee28b239b33495c74cc3d7b1b2c2f9"
+      },
+      {
+        "index": 132,
+        "paragraph_id": "S8.I4.i2.p1.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "3822866aa58dd4faf2d99ecba8ace6d73050d582ee49f22731c4a96ec485caf4"
+      },
+      {
+        "index": 133,
+        "paragraph_id": "S8.SS1.SSS1.p6.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "4f1eaf6ed5be911c7fab3040065d362cf4ae51e19b69125d0fcfd81a3836fe4e"
+      },
+      {
+        "index": 134,
+        "paragraph_id": "S8.SS1.SSS1.p7.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "8.1.1 Setup",
+        "text_sha256": "8328d90a2d9d4317b2b4f3870917bfaa143296aefa8395f07889e296ed24a278"
+      },
+      {
+        "index": 135,
+        "paragraph_id": "S8.SS1.SSS2.p1.1",
+        "section_id": "S8.SS1.SSS2",
+        "heading": "8.1.2 Results and Analysis",
+        "text_sha256": "36374ae9fbf7fbb2b86cfc1e49710ac823eab50f107d86598181daea04f707da"
+      },
+      {
+        "index": 136,
+        "paragraph_id": "S8.SS1.SSS2.p2.1",
+        "section_id": "S8.SS1.SSS2",
+        "heading": "8.1.2 Results and Analysis",
+        "text_sha256": "f55b1d4672ea11a590abcc25ce4bf23f7e0d7035bef99ab084e118861a24891d"
+      },
+      {
+        "index": 143,
+        "paragraph_id": "S8.SS2.p1.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "983930149cf4e696619a1bc34caf76bdc209f457b9732d6681a6d2cc718aeb2b"
+      },
+      {
+        "index": 144,
+        "paragraph_id": "S8.SS2.p2.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "492b21c068a6185e951ff27881d06bbc5b35644cd089a856c0674116eb9526f2"
+      },
+      {
+        "index": 145,
+        "paragraph_id": "S8.SS2.p3.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "4a8ad9da68cee2c28c1b8f07e5d8048fa0c63392489ec2b89e15336b5da70571"
+      },
+      {
+        "index": 146,
+        "paragraph_id": "S8.SS2.p4.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "bbe6a277fa3118b7417bc2471d4c0462a6bbb9afbec4429ab220303773b1cb79"
+      },
+      {
+        "index": 147,
+        "paragraph_id": "S8.SS2.p5.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "efadeedf721f4537a35397ec42fa29e07caa6c93ba323f073b51307c5b5399f8"
+      },
+      {
+        "index": 148,
+        "paragraph_id": "S8.SS2.p6.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "fbe131b7d033de8a7c2b310821ccca7fab3c9b015174d25633c642216dff7912"
+      },
+      {
+        "index": 149,
+        "paragraph_id": "S8.I5.i1.p1.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "9a5c5d6fdb09c66820fa3b8588887e374cb786adb3f94630be7066055bd9206a"
+      },
+      {
+        "index": 150,
+        "paragraph_id": "S8.I5.i2.p1.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "49742989bb006b7ef562702c2c726aa0c578bc165e9cc994cb074ad4de13606f"
+      },
+      {
+        "index": 151,
+        "paragraph_id": "S8.SS2.p7.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "d2cbb42308720e9087c40e9aa295084ffcbe29bc9be9259dcb285a69553a6314"
+      },
+      {
+        "index": 152,
+        "paragraph_id": "S8.I6.i1.p1.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "3609b8f962a972f24ab6d2c27533b6e30d8724b03db53aba9bdf4c9c28dce4bf"
+      },
+      {
+        "index": 153,
+        "paragraph_id": "S8.I6.i2.p1.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "ba1c55b4ca66d229e9e60f60e6f12385471b56de0c72b77cfef23325d4134a98"
+      },
+      {
+        "index": 154,
+        "paragraph_id": "S8.I6.i3.p1.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "974ab9e2efe8cf53ca44fc442703d65d93408989e8f0f2b34120dedfd67e155c"
+      },
+      {
+        "index": 155,
+        "paragraph_id": "S8.SS2.p8.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "f64332780b10cafbf569522387486c8ac33f8816d5092f30575dfac888ac0ee0"
+      },
+      {
+        "index": 156,
+        "paragraph_id": "S8.I7.i1.p1.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "fefa31fcb7f1760740dcee141b1ffc8e35c199c87cf8970e3eded375e6ec0a13"
+      },
+      {
+        "index": 157,
+        "paragraph_id": "S8.I7.i2.p1.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "da98fc345c723ac586843d68a9c1fb22baf7fe05c184cc367dd4dc7470468324"
+      },
+      {
+        "index": 158,
+        "paragraph_id": "S8.I7.i3.p1.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "dc1a73b72944fb4c8004c799ca1479ba3297f5a0679666dd9b738d88bb100bd8"
+      },
+      {
+        "index": 159,
+        "paragraph_id": "S8.I7.i4.p1.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "170d2d137e1be57c6910d077a22ad1164d81212e130ea6a8c8ab644a84a3be36"
+      },
+      {
+        "index": 160,
+        "paragraph_id": "S8.SS2.p9.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "0f58b7549458c2011adcf062e8e80ab443888bf827d286fd421ccb2583069c37"
+      },
+      {
+        "index": 161,
+        "paragraph_id": "S8.SS2.p10.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "70156e3be646699af6836760b4074a75f2257fb471612947147fafb03eb71043"
+      },
+      {
+        "index": 162,
+        "paragraph_id": "S8.SS2.p11.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "d98b7557d85273b334862b700e27eeb3c847a0b30e857fe7c248c3c20b2a97c0"
+      },
+      {
+        "index": 163,
+        "paragraph_id": "S8.SS2.p12.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "4d6d88594270494dc2e539d43c7fcc1847da4c00f428a70c9f45657977e05d7a"
+      },
+      {
+        "index": 164,
+        "paragraph_id": "S8.SS2.p13.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "fece0dbbe4ff02e11c0ac71d42c2d96671542dff9197eafeac45e17092f5bdd3"
+      },
+      {
+        "index": 165,
+        "paragraph_id": "S8.SS2.p14.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "655831ed789a08ccff90f208a77a888c4f3b261c2287f48bd918c635e1ac02bb"
+      },
+      {
+        "index": 166,
+        "paragraph_id": "S8.SS2.p15.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 End-to-End Evaluation: Privacy Leakage",
+        "text_sha256": "caafaa4503f864bd2b74fd41b464b959e9efd57428200a9c884d3f3d449b0d47"
+      },
+      {
+        "index": 167,
+        "paragraph_id": "S8.SS3.SSS1.p1.1",
+        "section_id": "S8.SS3.SSS1",
+        "heading": "8.3.1 Taint Tracking Accuracy",
+        "text_sha256": "95cbd231b2cb845df7c2e2ad55f722745ec1df3f7d91e1747f435bcfc12599a6"
+      },
+      {
+        "index": 168,
+        "paragraph_id": "S8.SS3.SSS1.p2.1",
+        "section_id": "S8.SS3.SSS1",
+        "heading": "8.3.1 Taint Tracking Accuracy",
+        "text_sha256": "50c2728a2b115e12d1968f371267520ab85e061c6ff47a9dd7459e71737e7c8b"
+      },
+      {
+        "index": 169,
+        "paragraph_id": "S8.SS3.SSS1.p3.1",
+        "section_id": "S8.SS3.SSS1",
+        "heading": "8.3.1 Taint Tracking Accuracy",
+        "text_sha256": "b773c6bdc99707be2ebed1f85fc399e3a421d25524ba6ad0d93374dd93278fb9"
+      },
+      {
+        "index": 170,
+        "paragraph_id": "S8.SS3.SSS1.p4.1",
+        "section_id": "S8.SS3.SSS1",
+        "heading": "8.3.1 Taint Tracking Accuracy",
+        "text_sha256": "8bcf7911c6996900749fcbc3efdbf470ac082e5206b2d9ae8df7043d57575771"
+      },
+      {
+        "index": 171,
+        "paragraph_id": "S8.SS3.SSS2.p1.1",
+        "section_id": "S8.SS3.SSS2",
+        "heading": "8.3.2 Dependency Screener Comparisons",
+        "text_sha256": "644f5be25604b1839b733b83768e8c0ce40df53e89047b28bc54ef99122c86e7"
+      },
+      {
+        "index": 172,
+        "paragraph_id": "S8.SS3.SSS3.p1.1",
+        "section_id": "S8.SS3.SSS3",
+        "heading": "8.3.3 Runtime Overhead",
+        "text_sha256": "e5dc2c65404f696c9236284fb684ea779f3ef120ef2729dd7ca5238aa52718a9"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main85-115 defines region-level confidentiality/integrity dependency analysis, label propagation, redaction and tool-call policy checks. End-to-end setups120-134 and143-159 specify injection and privacy-leakage evaluations.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual LM-Judge86 and runtime103-109/172 tag full-context regions and run the judge before each new agent message. No current original-task completion is explicitly needed for that judge, while prior conversation state may be present. Its label is region relevance/dependency for a next action, not prompt-injection presence.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual attention method89-97 maps input/output text and regions to binary dependency variables using attention features and LSTM; runtime172 explicitly requires preliminary protected message generation followed by masked final generation.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main126-129 and156-159 verifies Tool Filter, naive tainting, redact-all, confirmation extremes and human oracle. Their units are tool calls/trajectories and information-flow or confirmation labels. Method129 clearly distinguishes externally compared defenses omitted from this paper's own listed results.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Named AgentDojo and synthesized shopping/finance/flight task suites do not by themselves specify complete evaluated English construction.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False preserves remaining whole-paper/appendix implementation context. Positive declared evaluation and dependency-label facts are independently checked; missing settings/examples do not imply an unaccounted new task, and no global classifier absence is inferred.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

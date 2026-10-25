@@ -1,0 +1,306 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0070",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T13:03:26.620159+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0070.provider.0001.json",
+  "provider_packet_sha256": "f273edd23e5264ba635e9bad2d4bede1e11d80c0e83f90b2bb547485874f9e65",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2508.06418v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q027-1.html",
+    "raw_sha256": "6c58cdd5f6fca1ea02ac364d026bf50d893980a73bcb90c4124dac868fa770f6",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0108.json",
+    "acquisition_receipt_sha256": "2ff1e2fcb3d4bdd8a46d07263df1238a7ec6e0af76a931010bcafd30c5d12b4c",
+    "captured_version_id": "arxiv:2508.06418v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        46,
+        79
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Main49 and54-62 defines input activation drift from legitimate-query anchors. Main67-79 links this to MCP tool-description/retrieved-content modification and the stated datasets/attack conditions. False correctly preserves uninspected benchmark/comparator and ablation context. The verified input-representation procedure is a positive local fact and not a whole-work inventory or full-language assertion.",
+    "locator_sha256": "69fe49699ff2871c7a0ea544455d0bc4e294151ebc9a6d92ce87be9ef928293b",
+    "locators": [
+      {
+        "n": 46,
+        "kind": "heading",
+        "id": "Sx5",
+        "section": "Our Methodology",
+        "sha256": "efbe9bb2c28a2336ce5d7a0598f7cf522e82b087c6107b3b2e5a3dd84a7230ee"
+      },
+      {
+        "n": 47,
+        "kind": "heading",
+        "id": "Sx5.SSx1",
+        "section": "Overview",
+        "sha256": "d4b1ea5708dd532930a85188b45aff6f0a3ed458500c7577e0127a538eb0d100"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "Sx5.SSx1.p1.1",
+        "section": "Overview",
+        "sha256": "f92873446127d73343c265edec14e6cbbfcd47d50373cba8475cd027e4e08965"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "Sx5.SSx1.p2.1",
+        "section": "Overview",
+        "sha256": "5ffd3cd218fde3bb76a1454254cd192c62ece04705f724c262c3e46d405d1235"
+      },
+      {
+        "n": 50,
+        "kind": "heading",
+        "id": "Sx5.SSx2",
+        "section": "Latent Representation",
+        "sha256": "e5b61e1313f1a894b5d5de7d3b97ad9dec0e1903cadbd744b8de00f786de9d96"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "Sx5.SSx2.p1.1",
+        "section": "Latent Representation",
+        "sha256": "6a348ac5817b28d73f8b6388411f20a009664f573e92513a1f25a59a40afd027"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "Sx5.SSx2.p2.1",
+        "section": "Latent Representation",
+        "sha256": "55e6abbe78ef9e99eaeefb8b571265a5d70197df897f39d98c7bceb892e70bf5"
+      },
+      {
+        "n": 53,
+        "kind": "heading",
+        "id": "Sx5.SSx3",
+        "section": "SecMCP Agent Design",
+        "sha256": "f26d2b3dacb832479d8f7ab9aecb28a0483b839e4fdc4bffabc70758b304a9ba"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "Sx5.SSx3.p1.1",
+        "section": "SecMCP Agent Design",
+        "sha256": "3851b0f74dc61bf140048ce8ac468fb7ab2967b6d9872ad36d1d70ef5214cdf1"
+      },
+      {
+        "n": 55,
+        "kind": "heading",
+        "id": "Sx5.SSx3.SSSx1",
+        "section": "Activation Collection",
+        "sha256": "ed02b39f785ae6de796339f6ea8ae584a5c3b1668c77f57f405626857ff69022"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "Sx5.SSx3.SSSx1.p1.1",
+        "section": "Activation Collection",
+        "sha256": "313da0e36d6b2c94034b8cf1ec2c484c9b8494ead1cf4eedafa0d128c6c3ec5e"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "Sx5.SSx3.SSSx1.p2.1",
+        "section": "Activation Collection",
+        "sha256": "d9dc492f5edadf237b4f1071dbda33dfe273894cfe0a2edf79f6bdead405ffd7"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "Sx5.SSx3.SSSx1.p2.2",
+        "section": "Activation Collection",
+        "sha256": "9a1d44675ee15e5f95ed10774f51afbea6f58bb14f705dfe3cb98534ff36529a"
+      },
+      {
+        "n": 59,
+        "kind": "heading",
+        "id": "Sx5.SSx3.SSSx2",
+        "section": "Risk Matching",
+        "sha256": "d2ec7d163f3c8c6b09e64703f7ed7dc8a73922ac001fcf8146ca5927f6f5e105"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "Sx5.SSx3.SSSx2.p1.1",
+        "section": "Risk Matching",
+        "sha256": "155d3a08ca444b55128837893462684846e1658e5de50917d750004d4de97124"
+      },
+      {
+        "n": 61,
+        "kind": "paragraph",
+        "id": "Sx5.SSx3.SSSx2.p2.1",
+        "section": "Risk Matching",
+        "sha256": "66c5fe0c46c958b3b63337ffb62079191577beee37f96e92566f56460f791cda"
+      },
+      {
+        "n": 62,
+        "kind": "paragraph",
+        "id": "Sx5.SSx3.SSSx2.p2.2",
+        "section": "Risk Matching",
+        "sha256": "1504da16d6dced85fa2330eb1e48ca4a6a51cb209cb2d4f61d060b667d69e578"
+      },
+      {
+        "n": 63,
+        "kind": "heading",
+        "id": "Sx6",
+        "section": "Experiment",
+        "sha256": "72bf6e495cc8a5b59d1f64e1f03b3fe6449599adb1e7e1d0b84fe1914376941d"
+      },
+      {
+        "n": 64,
+        "kind": "heading",
+        "id": "Sx6.SSx1",
+        "section": "Setups",
+        "sha256": "51fcfca5fa0f6703cd1e07542fbe5fad99a5c39ac5b43fd56e1ed99e9304c5c3"
+      },
+      {
+        "n": 65,
+        "kind": "paragraph",
+        "id": "Sx6.SSx1.p1.1",
+        "section": "Setups",
+        "sha256": "53a80a75a10fb2653fb34d394a3384ac652e8d8d545100fc8dfd50ded2747cec"
+      },
+      {
+        "n": 66,
+        "kind": "heading",
+        "id": "Sx6.SSx1.SSSx1",
+        "section": "MCP Setups",
+        "sha256": "fcedbec883a3bf4a2dae975078d2454714a3dd675953d1732dfdc4e2aaee416e"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "Sx6.I2.i1.p1.1",
+        "section": "MCP Setups",
+        "sha256": "11ae57f1e0d616277482b3e8d6cfa19df368c10311ae242584aa94fadbc7fb05"
+      },
+      {
+        "n": 68,
+        "kind": "paragraph",
+        "id": "Sx6.I2.i2.p1.1",
+        "section": "MCP Setups",
+        "sha256": "a6815508bd693fbc1b3d3e16e818269d623404f540b202230d55b5ae907323de"
+      },
+      {
+        "n": 69,
+        "kind": "heading",
+        "id": "Sx6.SSx1.SSSx2",
+        "section": "Datasets",
+        "sha256": "e9faf7b714ee2400c1f4dfe08050a49f670d4e1d1e5e958efb1468e4fe38da24"
+      },
+      {
+        "n": 70,
+        "kind": "paragraph",
+        "id": "Sx6.SSx1.SSSx2.p1.1",
+        "section": "Datasets",
+        "sha256": "3740e63adaab4b633cadd4bf8766e8dff933a50812039f63fb84f6e3f425675b"
+      },
+      {
+        "n": 71,
+        "kind": "heading",
+        "id": "Sx6.SSx1.SSSx3",
+        "section": "Attack Method",
+        "sha256": "9f536d02d93f9569c0c8112976eb9cf3dd52c7535e6d8052597d46edddebb6db"
+      },
+      {
+        "n": 72,
+        "kind": "paragraph",
+        "id": "Sx6.SSx1.SSSx3.p1.1",
+        "section": "Attack Method",
+        "sha256": "a9b6b804b5ca4e0bb53f67aef904132bb37cf22abfbcec38bc28871ed72845cd"
+      },
+      {
+        "n": 73,
+        "kind": "paragraph",
+        "id": "Sx6.I3.i1.p1.1",
+        "section": "Attack Method",
+        "sha256": "8a3721cd71cf9fb24fad74bfa373985f2a91f14e4748854e1a420e5a77bc662b"
+      },
+      {
+        "n": 74,
+        "kind": "paragraph",
+        "id": "Sx6.I3.i2.p1.1",
+        "section": "Attack Method",
+        "sha256": "9d9a99c207baa66fcd7d4bc7c4ca45d621713fa5af71a61e409694a766739c62"
+      },
+      {
+        "n": 75,
+        "kind": "paragraph",
+        "id": "Sx6.I3.i3.p1.1",
+        "section": "Attack Method",
+        "sha256": "43b1d6f8c78eb9bcf807c20574b0ca32ee28bebe041dbbb272b7b6b5950b1ac1"
+      },
+      {
+        "n": 76,
+        "kind": "heading",
+        "id": "Sx6.SSx1.SSSx4",
+        "section": "Evaluation Metric",
+        "sha256": "7d5f33348c1adb1f0c93ade261edc53ea9725a48e22b78e633cae63c6ebf8e04"
+      },
+      {
+        "n": 77,
+        "kind": "paragraph",
+        "id": "Sx6.SSx1.SSSx4.p1.1",
+        "section": "Evaluation Metric",
+        "sha256": "c1f17a12b6b2680a6485c1d958c924a1d248f96b8ed7adda420d34d66bd85f2c"
+      },
+      {
+        "n": 78,
+        "kind": "heading",
+        "id": "Sx6.SSx1.SSSx5",
+        "section": "Hyper-parameters",
+        "sha256": "4402cf7ddb53a7e0b930eae4d6eaf5b33b63ab35980474f03322659acd2b5648"
+      },
+      {
+        "n": 79,
+        "kind": "paragraph",
+        "id": "Sx6.SSx1.SSSx5.p1.1",
+        "section": "Hyper-parameters",
+        "sha256": "1684122f63c0173723cda2e9683c48192d93e61eace4ef28aa35beb53c0d0fd6"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main49 and54-62 defines input activation drift from legitimate-query anchors. Main67-79 links this to MCP tool-description/retrieved-content modification and the stated datasets/attack conditions.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual56 explicitly extracts last input-token activations across layers;60-62 defines embedding/anchor distances, threshold and implemented decision-tree categories. Main68 and73-77 supplies adversarial/legitimate context and binary drift assessment. The representation procedure does not consume a generated protected task answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves uninspected benchmark/comparator and ablation context. The verified input-representation procedure is a positive local fact and not a whole-work inventory or full-language assertion.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}
