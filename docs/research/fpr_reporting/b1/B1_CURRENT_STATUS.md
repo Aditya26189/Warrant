@@ -8,12 +8,12 @@ is prospectively superseded. B's original recorded independent intake remains
 accepted; another freshness/transfer setup is not required.
 
 The current deliverable is the deeper continuation's
-[generated report](a05-deep-evidence-20261024/checkpoints/003/REPORT.md),
-[full proposal](a05-deep-evidence-20261024/checkpoints/003/FRAME_PROPOSAL.json)
-and [remaining source questions](a05-deep-evidence-20261024/checkpoints/003/REMAINING_QUESTIONS.json).
+[generated report](a05-deep-evidence-20261024/checkpoints/005/REPORT.md),
+[full proposal](a05-deep-evidence-20261024/checkpoints/005/FRAME_PROPOSAL.json)
+and [remaining source questions](a05-deep-evidence-20261024/checkpoints/005/REMAINING_QUESTIONS.json).
 It is an evidence-based proposal with unresolved requirements, not a valid
 complete sampling frame. Its checks are in
-[VALIDATION.json](a05-deep-evidence-20261024/checkpoints/003/VALIDATION.json).
+[VALIDATION.json](a05-deep-evidence-20261024/checkpoints/005/VALIDATION.json).
 
 The continuation adds separately checked main/appendix method inventories and
 exact-edition language evidence. It also corrects the treatment of publisher
@@ -28,3 +28,9 @@ remain historical records. No papers have been selected under A05. Complete the
 remaining controlled evidence adjudication and obtain explicit frame approval
 before the prespecified draw. No new permission is needed for the already
 authorized A05 evidence work; selection and B2 are separate gates.
+
+Checkpoint 005 supports 26 works pointwise, excludes 22 and retains 324 UNCLEAR.
+All 372 works and 389 memberships remain. Source providers/checker have reported
+a service usage limit; unfinished drafts are retained without release or decisions.
+Whole-document relationship facts and further checked task inventories are
+preserved for the next adjudication pass. No draw or B2 has begun.
