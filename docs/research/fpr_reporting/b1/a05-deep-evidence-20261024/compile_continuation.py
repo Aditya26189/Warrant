@@ -63,7 +63,8 @@ def load_evidence() -> dict:
                     raise ValueError("FACT_NOT_SEPARATELY_APPROVED")
                 provider_raw = Path(checker["provider_packet"]).read_bytes()
                 if (r.sha(provider_raw) != fact["provider_packet_sha256"]
-                        or r.field(json.loads(provider_raw), fact["field_path"]) != fact["value"]):
+                        or r.field(json.loads(provider_raw), fact["field_path"]) != fact["value"]
+                        or fact.get("clarification_scope") != json.loads(provider_raw).get("clarification_scope")):
                     raise ValueError("VALUE_NOT_EXACT_APPROVED_PROVIDER_FIELD")
             evidence[eid] = fact
     for release_path in sorted(HERE.glob("bibliography/*/FACTS.json")):
@@ -135,7 +136,8 @@ def apply_domain(row: dict, change: dict, evidence: dict) -> None:
         scope = change["exclusion_basis"]
         if scope in {"COMPLETE_EVALUATED_ARM_SCOPE", "COMPLETE_NONEMPIRICAL_SCOPE"}:
             if not any(evidence[eid].get("field_path") == "coverage.scope_completeness"
-                       and evidence[eid]["value"] is True for eid in change["new_evidence_ids"]):
+                       and evidence[eid]["value"] is True and not evidence[eid].get("clarification_scope")
+                       for eid in change["new_evidence_ids"]):
                 raise ValueError("EXCLUSION_FROM_PARTIAL_SCOPE")
         elif scope == "EXPLICIT_WHOLE_STUDY_TASK_SCOPE":
             if criteria["input_injection_task"] != "NOT_MET" or not any(

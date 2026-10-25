@@ -24,8 +24,12 @@ def sha(raw: bytes) -> str:
 
 def field(packet: dict, path: str) -> object:
     """Resolve only declared method fields; never evaluate a supplied expression."""
-    if path in {"method_summary", "english_evaluation_support", "study_scope_statement", "coverage"}:
+    if path in {"method_summary", "english_evaluation_support", "study_scope_statement", "coverage",
+                "clarification_scope", "input_unit_and_dependency"}:
         return packet[path]
+    match = re.fullmatch(r"bounded_method_data_facts\[(\d+)\]", path)
+    if match:
+        return packet["bounded_method_data_facts"][int(match[1])]
     if path in {"source_receipts.locators", "source_receipts.additional_table_locators"}:
         return packet["source_receipts"][path.rsplit(".", 1)[1]]
     if path in {"architecture_clarification.verdict_context", "architecture_clarification.call_boundary_limit"}:
@@ -138,7 +142,8 @@ def build(checkpoint_path: Path, requests_path: Path | None = None) -> tuple[dic
                           "checker_receipt": receipt_name, "checker_receipt_sha256": sha(raw),
                           "coverage_disposition": check["actual_context_check"].get("coverage_disposition", "BIBLIOGRAPHIC_SCOPE_ONLY"),
                           "release_status": ("CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY" if item["field_path"].startswith("bibliographic_scope_facts.")
-                                             else "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY"), **item})
+                                             else "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY"),
+                          **({"clarification_scope": packet["clarification_scope"]} if "clarification_scope" in packet else {}), **item})
     return {"schema": "A05_DEEP_CHECKED_METHOD_RELEASE_v1",
             "request_sha256": sha(requests_raw), "checkpoint_sha256": sha(checkpoint_raw),
             "released_by": "EXPOSED_CUSTODIAN_ROOT", "facts": facts, "access_only_records": access_only,

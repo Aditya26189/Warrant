@@ -34,6 +34,11 @@ class ScientificBoundaryTests(unittest.TestCase):
         c.apply_domain(self.row, self.change, self.evidence)
         self.assertEqual(self.row["criteria"]["before_target_answer"], "NOT_MET")
 
+    def test_complete_task_clarification_is_not_complete_whole_work(self) -> None:
+        self.evidence["scope"].update(value=True, clarification_scope="TASK_LABEL_CONSTRUCTION_ONLY")
+        with self.assertRaisesRegex(ValueError, "PARTIAL_SCOPE"):
+            c.apply_domain(self.row, self.change, self.evidence)
+
     def test_explicit_task_scope_requires_a_checked_whole_study_statement(self) -> None:
         self.change["exclusion_basis"] = "EXPLICIT_WHOLE_STUDY_TASK_SCOPE"
         self.change["criteria"]["input_injection_task"] = "NOT_MET"
