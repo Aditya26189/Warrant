@@ -1,0 +1,191 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "bibliography_release_sha256": "a7cd2384cb87b2e892f0295f3110716cf5ad06369ec2bb6772bea238cc8935ca",
+  "changes": [
+    {
+      "before_row_sha256": "31fb3af933281ad502ae9cd938cca32735a54036e4f3141c056363b9fcbec133",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0016-4766fe930115-F01",
+        "A05-DEEP-W0016-4766fe930115-F02",
+        "A05-DEEP-W0016-4766fe930115-F03",
+        "A05-DEEP-W0016-4766fe930115-F04"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0016",
+      "scientific_rationale": "The selected version now has checked original GenTel-Shield and comparator binary input-classification methods that do not depend on a protected target answer. The previously supported goal-hijacking/prompt-leakage task scope remains. Translation destinations alone do not establish the evaluated English baseline, so language remains unresolved pending actual linked construction.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2409.19521"
+    },
+    {
+      "before_row_sha256": "aa24426dd6dbce84283c14704d8f8ee4f17b67230600be81be3b9f0e1cb368fb",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0018-3d510fdb0128-F01",
+        "A05-DEEP-W0018-3d510fdb0128-F02",
+        "A05-DEEP-W0018-3d510fdb0128-F03",
+        "A05-DEEP-W0018-3d510fdb0128-F04",
+        "A05-DEEP-W0018-3d510fdb0128-F05",
+        "A05-DEEP-W0018-3d510fdb0128-F06"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0018",
+      "scientific_rationale": "Checked repetition-distance and known-answer-logit thresholds establish binary input procedures evaluated before an original-task answer. However, the new arm inventory labels the task jailbreak versus benign. My prior input-task MET inferred injected-instruction detection too broadly from auxiliary probes; a separate instruction-injection evaluation still needs method support. This is a correction of an unsupported custodian assumption, not an exclusion. English template/task-component evidence is retained without claiming full evaluated-language composition.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2410.13236"
+    },
+    {
+      "before_row_sha256": "a901c2f962faacbe564ff426af27a4183b173f8754e228cb77ff836082041d0b",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0061-c82cef99c652-F01",
+        "A05-DEEP-W0061-c82cef99c652-F02",
+        "A05-DEEP-W0061-c82cef99c652-F03",
+        "A05-DEEP-W0061-c82cef99c652-F04"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0061",
+      "scientific_rationale": "Checked methods distinguish original/adversarial retrieval queries with input detectors, but optimize retrieval-ranking perturbations using token suffix search. Clean/adversarial labels alone do not establish detection of injected instructions. My previous input-task MET made that unsupported inference. Binary procedure and input-only timing remain supported; injection semantics and evaluated English remain unresolved.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2507.15042"
+    }
+  ],
+  "created_utc": "2026-10-25T02:02:20.502352+00:00",
+  "not_fresh_independent": true,
+  "release_sha256": "7995fbee43f1d3ff0a0e629621edf4ca8f2601bf4ea87af610e4d32bcd09a706",
+  "reviewed_unchanged": [
+    {
+      "before_row_sha256": "cdc833192818af387868659f65d2b9d0439b1e6b6d92aef986fe54c9aa291114",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0017-c1dd97c46119-F01",
+        "A05-DEEP-W0017-c1dd97c46119-F02",
+        "A05-DEEP-W0017-c1dd97c46119-F03",
+        "A05-DEEP-W0017-c1dd97c46119-F04"
+      ],
+      "rationale": "Unsafe-content flags on safe requests with injected templates do not alone establish an injection-label evaluation; exact guardrail task and comparator scope need verification.",
+      "review_id": "W0017"
+    },
+    {
+      "before_row_sha256": "7b9ead0854871d9614c81012105ee71e570c01fe0e847450857a38e93c3e4ffd",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0019-fcd6817ba248-F01",
+        "A05-DEEP-W0019-fcd6817ba248-F02",
+        "A05-DEEP-W0019-fcd6817ba248-F03",
+        "A05-DEEP-W0019-fcd6817ba248-F04"
+      ],
+      "rationale": "Decoy activation and sabotage-objective checks are agent-service interaction methods. Whole-work secondary-input-evaluation scope remains partial.",
+      "review_id": "W0019"
+    },
+    {
+      "before_row_sha256": "45513fefd66e37d78488617418b84f32e59ff43a3686ab6e4a77670ef69f3630",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0022-72234b558cae-F01",
+        "A05-DEEP-W0022-72234b558cae-F02",
+        "A05-DEEP-W0022-72234b558cae-F03",
+        "A05-DEEP-W0022-72234b558cae-F04",
+        "A05-DEEP-W0022-72234b558cae-F05",
+        "A05-DEEP-W0022-72234b558cae-F06"
+      ],
+      "rationale": "Complete classifier inventory confirms original prompt-input binary evaluation. Exact evaluated English source construction remains unresolved; do not infer from named corpora.",
+      "review_id": "W0022"
+    },
+    {
+      "before_row_sha256": "1ea360eb57addf84bed00f8f119c3611f362a663d2902e391376307c1ae33d43",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0056-9fc1a638e362-F01",
+        "A05-DEEP-W0056-9fc1a638e362-F02",
+        "A05-DEEP-W0056-9fc1a638e362-F03",
+        "A05-DEEP-W0056-9fc1a638e362-F04"
+      ],
+      "rationale": "An input-side isolator and ProtectAI baseline are present, but separate binary input evaluation and actual English construction remain unestablished.",
+      "review_id": "W0056"
+    },
+    {
+      "before_row_sha256": "ce3731a4839c7abd9b55bb7651c21067ba3ee4a3b6bdb2505b5466e90b708e4a",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0057-0df7bc297502-F01",
+        "A05-DEEP-W0057-0df7bc297502-F02",
+        "A05-DEEP-W0057-0df7bc297502-F03",
+        "A05-DEEP-W0057-0df7bc297502-F04"
+      ],
+      "rationale": "Original pre-answer input-scanner evaluation is supported. English-alphabet substitutions alone do not establish the language of the evaluated prompt corpus.",
+      "review_id": "W0057"
+    },
+    {
+      "before_row_sha256": "b82ad924503fdf8d9075672fa595584ee7e56bd92e3da21fbfa217a92c622568",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0059-e1a50d3fa05a-F01",
+        "A05-DEEP-W0059-e1a50d3fa05a-F02",
+        "A05-DEEP-W0059-e1a50d3fa05a-F03",
+        "A05-DEEP-W0059-e1a50d3fa05a-F04"
+      ],
+      "rationale": "Known architecture comparison uses generated outputs/actions; need complete declared method/baseline/appendix scope before whole-work exclusion.",
+      "review_id": "W0059"
+    },
+    {
+      "before_row_sha256": "84c0601c7ea54b47d6d352e22d0f05e6b3c9b8466464c145a2b5b9353a76d981",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0060-6970912df411-F01",
+        "A05-DEEP-W0060-6970912df411-F02",
+        "A05-DEEP-W0060-6970912df411-F03"
+      ],
+      "rationale": "Inspected defense procedures are attributed to prior work. Need complete substantive review/proposal scope to establish absence of an original detector experiment.",
+      "review_id": "W0060"
+    },
+    {
+      "before_row_sha256": "5891d72ffccc317c0b6bdd456186b508298caba119f8c45942b8c887b88f59c8",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0063-136256d40df0-F01",
+        "A05-DEEP-W0063-136256d40df0-F02",
+        "A05-DEEP-W0063-136256d40df0-F03"
+      ],
+      "rationale": "Known runtime/response controls use telemetry or generated target output. Need complete empirical scope to resolve any separate input-classification arm.",
+      "review_id": "W0063"
+    }
+  ],
+  "schema": "A05_DEEP_CUSTODIAN_JUDGMENTS_v1",
+  "scope": "Scientific method/version corrections only; no findings/counts/assurance or sampling/B2. The exact W0021v2 access gap is preserved separately in release002 and is not an exclusion.",
+  "source_git_commit": "59373d4bbc7ba00ba911a88a6115c085d129239d",
+  "version_corrections": [
+    {
+      "action": "RECLASSIFY_REPOSITORY_DOI_AS_PREPRINT",
+      "before_row_sha256": "5dd7bbbc3c04ea177b6cbb5cbc48926caf4a17c02bd295222e4202126d18148f",
+      "evidence_ids": [
+        "A05-BIB-DEEP-W0368-e379b9968757-F05",
+        "A05-BIB-DEEP-W0368-e379b9968757-F06",
+        "A05-BIB-DEEP-W0368-e379b9968757-F07",
+        "A05-BIB-DEEP-W0368-e379b9968757-F08"
+      ],
+      "rationale": "The separately checked official Zenodo API explicitly identifies repository version1.0.0 as a preprint, dated2026-04-18. Its DOI therefore does not create a publisher-VOR preference. The already documented arXivv4 dated2026-07-30 remains the latest documented preprint. Earliest documented public release is corrected from2026-04-20 to the repository-declared2026-04-18. No method evidence transfers from the repository file to arXivv4.",
+      "retained_limitations": [
+        "Publication type/date/version are official repository declarations, not a journal acceptance or VOR attestation.",
+        "Selected methods remain bound to arXivv4; repository PDF identity does not prove byte-equivalence.",
+        "Known DOI is preserved; no assertion of exhaustive publisher discovery or historical byte authentication."
+      ],
+      "review_id": "W0368",
+      "rule_document": "VERSION_RULE_APPLICATION.md",
+      "rule_document_sha256": "0684b4d28db3d5243b4e3a9b3a148f62dd01edda5216ce0169511383b8c2bd66",
+      "selected_version_id": "arxiv:2604.18248v4",
+      "work_id": "doi:10.5281/zenodo.19644135"
+    }
+  ]
+}
