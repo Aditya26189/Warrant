@@ -1,0 +1,311 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0061",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:49:40.636478+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0061.provider.0001.json",
+  "provider_packet_sha256": "bfd87f6ef282060d41b5b5455a00f264ed6d942ece216baa89b4ce884c5efcd7",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2507.15042v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q022-1.html",
+    "raw_sha256": "666feebd1c7f77b53e0351582066305a049b6707010520a2d306469448d59ba5",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0095.json",
+    "acquisition_receipt_sha256": "ad18b7cb59485bbc72d163649ca13e8f6ac85e43c4c614851a1321f23394d23e",
+    "captured_version_id": "arxiv:2507.15042v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        41,
+        43
+      ],
+      [
+        55,
+        70
+      ],
+      [
+        83,
+        84
+      ],
+      [
+        88,
+        89
+      ],
+      [
+        92,
+        95
+      ],
+      [
+        118,
+        121
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_INVENTORY_ONLY",
+    "semantic_rationale": "Actual DE variant/success rules, additional prefix/suffix context, detector/readability and downstream method inspected. Appendix F detector configuration/language construction unresolved; not a complete model/threshold audit.",
+    "locator_sha256": "c083866a6eb4eea0649c616879e617f0df065481d906c92ef7690a8f45198ede",
+    "locators": [
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S3.SS3.p1.1",
+        "section": "3.3. Differential Evolution for Suffix Optimization",
+        "sha256": "aad8786ac5bf6a97177879cb657704f3c4a413ec0dcf3cfe8a8f648f3ccdaefb"
+      },
+      {
+        "n": 42,
+        "kind": "heading",
+        "id": "S3.SS3.SSS1",
+        "section": "3.3.1. Encoding and Initialization",
+        "sha256": "5a8dda92db03ed93fa19802078aa217930118d406507ab077be4e434d6bffaeb"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS1.p1.1",
+        "section": "3.3.1. Encoding and Initialization",
+        "sha256": "a26dc784e6c0e584f49f70e8469f07dcae167ef58f749768382c2c547421ccbd"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p4.1",
+        "section": "3.3.3. Crossover and Selection",
+        "sha256": "8bafbcc6763f6aae37291455549c977cd27d0c7b607a1f4ef3222edc0c4e5413"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p4.2",
+        "section": "3.3.3. Crossover and Selection",
+        "sha256": "818d5ca1a04762b170c21258f04292f66b128f20d21d75ed408877393d7ca266"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p5.1",
+        "section": "3.3.3. Crossover and Selection",
+        "sha256": "e24a4bf5c6aac1f05228dc6190c8e654a2ca9ddd1ad0539c68447b732d113e6d"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p6.1",
+        "section": "3.3.3. Crossover and Selection",
+        "sha256": "411b699b5690e38f25a4056b633526b84083008d51765e2cdb4dd0c769a04687"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p6.2",
+        "section": "3.3.3. Crossover and Selection",
+        "sha256": "753c77e104981926ae0a4e369aef265e41e59b91a7fe1725b62f87a87c71c414"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p6.3",
+        "section": "3.3.3. Crossover and Selection",
+        "sha256": "08a2bc213770dd9e9ddf31bae243b63f35991c423f76033c02b956da8b0f418c"
+      },
+      {
+        "n": 61,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p6.4",
+        "section": "3.3.3. Crossover and Selection",
+        "sha256": "361919aa70eb91164d2b318499e2aa1e5d3741a82c2950a1d7f438e387f7b768"
+      },
+      {
+        "n": 62,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p6.5",
+        "section": "3.3.3. Crossover and Selection",
+        "sha256": "9329faf9c159facbc3b7fce3d5e4b6b8fb920376d898048be75d655a922e1019"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p7.1",
+        "section": "3.3.3. Crossover and Selection",
+        "sha256": "84d9dbe2ca041811b9567742f460f76a0ebd242babc9031361dca39d2b8bdcaa"
+      },
+      {
+        "n": 64,
+        "kind": "paragraph",
+        "id": "S3.I1.i1.p1.1",
+        "section": "3.3.3. Crossover and Selection",
+        "sha256": "85f22d08e13cef9f97cbce8a6fd2038db295ec9cb7dd2f5408b98168830c394c"
+      },
+      {
+        "n": 65,
+        "kind": "paragraph",
+        "id": "S3.I1.i2.p1.1",
+        "section": "3.3.3. Crossover and Selection",
+        "sha256": "ab44ab5c29beabcac8e01be383a377e9cb4322b56d8b6cb106e62577b6b5cabb"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p8.1",
+        "section": "3.3.3. Crossover and Selection",
+        "sha256": "a6c37169b8275622798a2cbbbab3e6b868ed519a0e8119985477320b73100b29"
+      },
+      {
+        "n": 67,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4. Evaluation",
+        "sha256": "cb4f6a5bd61e245168ca9a54ae0241d32f48e01878ab4b2899ef48d3bcda40e4"
+      },
+      {
+        "n": 68,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1. Dataset and Setting",
+        "sha256": "9992c4a6b1085041f300e3f0d4285b8127db8e2e2509c306bb874067d0ffc80f"
+      },
+      {
+        "n": 69,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1. Dataset and Setting",
+        "sha256": "6ed15f4b317fba1da97183ab91ba98fa23e38bd0ef5618650234ca81878e6dd8"
+      },
+      {
+        "n": 70,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "section": "4.1. Dataset and Setting",
+        "sha256": "8c40a6506c199295c24ea3169bb3eac98d3b906b10b3e5364fde6400d6519b6b"
+      },
+      {
+        "n": 83,
+        "kind": "heading",
+        "id": "S4.SS3.SSS3",
+        "section": "4.3.3. Prefix and Suffix mutual Attacks",
+        "sha256": "0f291e6272c271c82c25ee20f5b6c9bea8caca5d35d8f98b6969233f4ecb8fa8"
+      },
+      {
+        "n": 84,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS3.p1.1",
+        "section": "4.3.3. Prefix and Suffix mutual Attacks",
+        "sha256": "677d3edc2b2a4a13ae4885d2d6da9b2b7970497b5cbeb99377b8bfec93b2af72"
+      },
+      {
+        "n": 88,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS1.p1.1",
+        "section": "4.4.1. Evasion Performance against a BERT-Based Detector",
+        "sha256": "86af5da7cd0243efd95b5f37e04644156ba7966edc4570c3372ca98e788c362e"
+      },
+      {
+        "n": 89,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS1.p2.1",
+        "section": "4.4.1. Evasion Performance against a BERT-Based Detector",
+        "sha256": "21317e564d2279024a3157d4be56deaaac7a4cd06b2ce8fb8d1eb32875212cf5"
+      },
+      {
+        "n": 92,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS2.p1.1",
+        "section": "4.4.2. Human Reading Availability Strategy",
+        "sha256": "04ecdd71912e1c8c853693fa53ca0de1a9fc947df95b4dfe7148f8be7c9166be"
+      },
+      {
+        "n": 93,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS2.p2.1",
+        "section": "4.4.2. Human Reading Availability Strategy",
+        "sha256": "f67bfb9a03d605be062c182a2b28802bcf472e0764b2c0a875e7937882a62123"
+      },
+      {
+        "n": 94,
+        "kind": "heading",
+        "id": "S4.SS5",
+        "section": "4.5. Downstream Answer Quality Degradation Evaluation",
+        "sha256": "8c2c85c136635be616f0c9c7441cf10f553eff7e93745118fecb0603ce54e81e"
+      },
+      {
+        "n": 95,
+        "kind": "paragraph",
+        "id": "S4.SS5.p1.1",
+        "section": "4.5. Downstream Answer Quality Degradation Evaluation",
+        "sha256": "93205dc7cba78582ac581547095c99cf2dc78fdcdc622ba12933803c35176925"
+      },
+      {
+        "n": 118,
+        "kind": "heading",
+        "id": "A7",
+        "section": "Appendix G Pooling Time on MLM Strategy",
+        "sha256": "a6e4844a0c8061e9c36bb3b56bb39af2aeeb6631b9dfac8047f2eeadc7da0856"
+      },
+      {
+        "n": 119,
+        "kind": "paragraph",
+        "id": "A7.p1.1",
+        "section": "Appendix G Pooling Time on MLM Strategy",
+        "sha256": "82a5def87562f16ac26a7741095d5bae89382d583ad9d6b8f1d08822f27cab8f"
+      },
+      {
+        "n": 120,
+        "kind": "heading",
+        "id": "A8",
+        "section": "Appendix H Additional Readability Analysis",
+        "sha256": "b3ccf76b62c6cd7847d09ed1090cfd8c73ec476fe4c6715a81316786b1849bfc"
+      },
+      {
+        "n": 121,
+        "kind": "paragraph",
+        "id": "A8.p1.1",
+        "section": "Appendix H Additional Readability Analysis",
+        "sha256": "4c0cd4544d5a44dc10b366f475c4acfeebf04f6082eeee1c1f59cba7f6912f5c"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main method explicitly uses discrete differential evolution for retrieval suffix ranking; readability candidate pool and downstream-generation experiment separate.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "DE optimization/stopping and additional prefix/suffix experiment (Section 4.3.3) actually inspected; retrieval objective uses ranks/embeddings, downstream quality branch generates answers.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Detector evaluation consumes adversarial and original query strings, with BERT-CLS scores, RoBERTa attack detection and perplexity analysis. Protected chatbot answer not needed for these stated input analyses.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly retains material method/arm omissions. The approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

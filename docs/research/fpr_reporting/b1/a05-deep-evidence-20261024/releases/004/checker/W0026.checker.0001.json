@@ -1,0 +1,313 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0026",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:12:18.302267+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0026.provider.0001.json",
+  "provider_packet_sha256": "e6f423f2513f134f8ae49e3704f433f7ad2a3aea502a4ecdd4ab295b3abb01be",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2412.13435v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q005-1.html",
+    "raw_sha256": "d5bd52277f1ee7acbbca30e48cd7e4d8f4207edfedc6aea7597a9de6e41e0b02",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0055.json",
+    "acquisition_receipt_sha256": "9e84c698f415b9fb05c319f0864b9ea3e328c97c7468bba5ca3a8d37f9965ecd",
+    "captured_version_id": "arxiv:2412.13435v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        29,
+        59
+      ],
+      [
+        70,
+        71
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "Experiment implementation41-43 explicitly removes the LM head, captures intermediate-layer representations and trains scikit-learn RidgeClassifier with regularization. True is verified for main classification-family inventory29-59 and the actual Appendix cross-validation/concatenation definitions70-71. No further appendix method family appears in this source heading inventory.",
+    "visual_check": null,
+    "locator_sha256": "88e66457a62195efe086d07ec06683baba771c23a34cd5e839a636f5ae466199",
+    "locators": [
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Overview",
+        "text_sha256": "4680edb6af42760fbeddc72989983b0eb121d6894059b82800ef0bfe51eca8f1"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS1.p2.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Overview",
+        "text_sha256": "63cf054a4ee4768ff8b2e42148bd1b6e109a59dadeb6b50e29c0d3ba075070f9"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S3.SS1.p3.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Overview",
+        "text_sha256": "115f2170f8cd6f49b58c825b703cbadc86510b990982217556bd5a268c7eedbf"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S3.I1.i1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Overview",
+        "text_sha256": "8f1dd7d87e88ebf9332d8ca940a68e2b9cb2f65044d7661f008e42b46c7c81fb"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S3.I1.i2.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Overview",
+        "text_sha256": "ef4ddcd76bd43644a47a6ed38ab15adf8799e06967fe0cdee14f04ec47f2aa4a"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S3.I1.i3.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Overview",
+        "text_sha256": "222b7f5e2545d30d16f68ba2fec7cb4a157a42f7fd2413dcaed66a73c9e469ad"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S3.SS1.p4.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Overview",
+        "text_sha256": "74d957304b0df1cd09305867fc8b3b9ecd1df559cf4f0b3dd61dc79e54d22b59"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S3.SS1.p5.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Overview",
+        "text_sha256": "aaf3a24a4803e6e2acb47de7b64a7621b82b6978acb4ced1511cf52f3fa4e573"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S3.I2.i1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Overview",
+        "text_sha256": "2348afb2e99e71bb5464ad39479bfa8aa06b8bbde2eefb8d2bdaf71a5850be6d"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S3.I2.i2.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Overview",
+        "text_sha256": "0d4f0c95258101188230c1d590c63ba0d13d256627249b3bf2a1fa562525696e"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S3.SS1.p7.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Overview",
+        "text_sha256": "80caea33585d4b537adcc85ca56fc732403ac81eae7fd4169022f3160d01cbb9"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S3.SS1.p8.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Overview",
+        "text_sha256": "05de4f25b3a9fbb552e66600a4b5fc421ab54575ff930fa5f9c01c243bf9cbc9"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Experiment Implementation",
+        "text_sha256": "006bc1faa8e49aa76dce501f7bdc88f70cd92fc0f76bd267df28bdcbb133cb19"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S3.SS2.p2.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Experiment Implementation",
+        "text_sha256": "e8e2eccf8f1a8c257fd939d9817c3581e946745c82cc0379f2ec14f9383d5568"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S3.SS2.p3.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Experiment Implementation",
+        "text_sha256": "57f7a6b5aa4696cd0a2e5acb013d538779401c0e3f5da4f1cbce0ace54f12677"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Datasets",
+        "text_sha256": "7c5ab39380b358fd479fe19facfdd8c53fd0640a7eaf3d66056c41e068c9558d"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S3.SS3.p2.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Datasets",
+        "text_sha256": "5db6b14e0b63b6a7f880c157a66262cc248e96207e058dc82b682cd319c1db31"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S3.SS3.p3.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Datasets",
+        "text_sha256": "2624e55ce49c3daae8ca77787745b84f5b1f014bea6d1782ce34eaa33af90f54"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S3.SS3.p4.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Datasets",
+        "text_sha256": "24fbb285cf07573627583b98a1d6be2ad157010bff36997cc2daa7648571f75f"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S3.SS3.p5.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Datasets",
+        "text_sha256": "a7acac49a507514e8a25cba7ab0f20692b5b433b0d13acf28f9296fc338ed925"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Results Summary",
+        "text_sha256": "2a5b316b72a60256d5f6ba3dbacea43df2fa90736fc2ad7008ae4257911d9a4d"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S4.SS1.p2.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Results Summary",
+        "text_sha256": "4205fbf02dda764df7cc489342f09ea04ba03b688a0d2706f477227efcbdabd7"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S4.SS1.p3.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Results Summary",
+        "text_sha256": "04d47bf3a212655467dcde01c1277ed976f5c4bd90e39beab4e52337c6e2d914"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S4.SS1.p4.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Results Summary",
+        "text_sha256": "4f003ad8da11710e72efd7b0a5797320fbe035302b3a5647d22761e459bbf184"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S4.SS1.p5.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Results Summary",
+        "text_sha256": "cfdb98105b47ec9f07d324a3e3ab477d1fc0f98de68386911184334fce523c3f"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Content Safety Results",
+        "text_sha256": "0d9bdf4f129f3d49b5b354aeeffbb7848e09e9da06bbb3f78e9719ff73ef2bc9"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S4.SS2.p2.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Content Safety Results",
+        "text_sha256": "77a1b2b4d016690366975a7f63fbb5ab039dad96ca004a4deb0727a7a7abbd99"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S4.SS2.p3.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Content Safety Results",
+        "text_sha256": "3875221df234edc7988c46df739fcb2ef51db9884187cd64630930ee86292e4f"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "S4.SS3.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Prompt Injection Results",
+        "text_sha256": "075eda25275ff6147985f851f27d5d970b8d33e9520cc61b8900a3f2446dd404"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "S4.SS3.p2.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Prompt Injection Results",
+        "text_sha256": "3404b90ec298aa071c522403187495df5c11c104daa78b21d743403c72235ccb"
+      },
+      {
+        "index": 59,
+        "paragraph_id": "S4.SS3.p3.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Prompt Injection Results",
+        "text_sha256": "9a03921d6633a68274b497bbcc211475de917e62a5cb7fd50efafd17878f38f7"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S7.SS1.p1.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 Cross-Validation Results",
+        "text_sha256": "290a0840d97bff57b763e92bdb3851da05778b919a8f5bcf9850dfbc9e204124"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S7.SS2.p1.1",
+        "section_id": "S7.SS2",
+        "heading": "7.2 Layer Concatenation",
+        "text_sha256": "861e0c91036b0ce537fc673aa2702a5195ed19bcfb8474fdcc6fd8b233794731"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Experiment implementation41-43 explicitly removes the LM head, captures intermediate-layer representations and trains scikit-learn RidgeClassifier with regularization.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Overview29-38 and dataset44-48 verify Qwen, Llama Guard, ProtectAI and GPT-4o comparisons on content-safety and system/user-context injection labels. These are classifications of prompt representations, not assessments of a protected task answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Training-size variation is specified in40 and43; Appendix70-71 explicitly defines cross-validation and concatenation of preceding-layer features.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Paragraph46 explicitly filters LMSYS safe first-turn messages to English. SPML system/user injection pairs are separately introduced in47-48 without an evaluated-language declaration; the English evidence is scoped accordingly.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True is verified for main classification-family inventory29-59 and the actual Appendix cross-validation/concatenation definitions70-71. No further appendix method family appears in this source heading inventory.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

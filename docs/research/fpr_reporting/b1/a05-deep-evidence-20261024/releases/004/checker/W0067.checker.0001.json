@@ -1,0 +1,58 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0067",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:12:21.128027+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0067.provider.0001.json",
+  "provider_packet_sha256": "0a56632ab4dffb2a7ea778fb88e1f2c5b21dbe6c815fc1098287db9aa8f2a612",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2508.02961v2",
+  "source_identity": [
+    {
+      "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0105.json",
+      "acquisition_receipt_sha256": "9bd18dd5e241c568fbb3e82a9ddb7a8d30098dbc914e360c96f43ab7882cbee8",
+      "captured_version_id": "arxiv:2508.02961v2",
+      "body_absent": true
+    }
+  ],
+  "mechanical_check": {
+    "acquisition_hash_verified": true,
+    "raw_body_available": false
+  },
+  "actual_context_check": {
+    "coverage_disposition": "EXACT_BODY_GAP",
+    "inspected_ranges": [],
+    "semantic_rationale": "Neutral exact-version request has no captured body; no earlier or alternate version substituted."
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "The neutral supplied acquisition mapping has a null body for the exact requested version; method and data questions remain unresolved.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly leaves all preferred-paper methods, baseline and language questions open.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "source_error",
+      "decision": "APPROVE",
+      "semantic_fidelity": "EXACT_PREFERRED_BODY_MISSING matches the neutral source mapping.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Neutral source-transport fields only for this work; prior operational exposure in ROLE.0001.json."
+  }
+}

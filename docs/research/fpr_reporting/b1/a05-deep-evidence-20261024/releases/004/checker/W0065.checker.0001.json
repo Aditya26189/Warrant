@@ -1,0 +1,737 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0065",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:12:19.737270+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0065.provider.0002.json",
+  "provider_packet_sha256": "29c3d3832659839a868598191db482a0b05d3626cd204cdcc5705f0248a503ab",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2508.00602v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q024-1.html",
+    "raw_sha256": "f655e70fc376e2a308c2e36e9f13129a6a86d20784f29e887df919a2e869e09d",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0101.json",
+    "acquisition_receipt_sha256": "a4f64d8f46fc1873a424128331b0506fb1216d42104b98d9b424d0e4ced4c79c",
+    "captured_version_id": "arxiv:2508.00602v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        23,
+        57
+      ],
+      [
+        69,
+        77
+      ],
+      [
+        90,
+        92
+      ],
+      [
+        98,
+        143
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Method35-40 and setup43-48 distinguish conversation/query-answer embedding analysis from moderation sentence input and synthetic-document RAG interactions. Only the listed method families and inspected source context are approved; retained omissions remain open.",
+    "locator_sha256": "dbe574cd6df018d67c00f74b0c5f490f56c1470e68883d1ec795b72d6dafc967",
+    "locators": [
+      {
+        "n": 23,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Threat Model and PII Leakage Formalization",
+        "sha256": "33e977b3577b2fcc255777b1170ad7f987272e330fc0748ecca34c1724f3282e"
+      },
+      {
+        "n": 24,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Attacker and Defender Models",
+        "sha256": "806be24b11504b9cc8fcad45a29cade2426f582c0776af06de71e63476cc4a1f"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1 Attacker and Defender Models",
+        "sha256": "4d1c79e9a0e63f3335e1f2f71d81123c29c469a1b0f913aa6f91090e7721bc4d"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "section": "4.1 Attacker and Defender Models",
+        "sha256": "8c687d6357e68e7b6df0122bc34b1d28e37a5793c1b56fc87aadba3ae4f59bbb"
+      },
+      {
+        "n": 27,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 Formalizing PII Leakage",
+        "sha256": "05fa64d7433a712938b94efe741c9c4f5fd466315b3bad0a34980173c727b827"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "section": "4.2 Formalizing PII Leakage",
+        "sha256": "0b1143fbebb549b0055dafb9536242a20ca9d977790d689391030d05d69ecdc2"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.2",
+        "section": "4.2 Formalizing PII Leakage",
+        "sha256": "8f2d994e7cb3317101975221697444bd88174f974dd1cce87ceae6142cf33634"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "section": "4.2 Formalizing PII Leakage",
+        "sha256": "901cc7a4bb5f21e7d016e749b0849bc3723914c960ddc5c21dce8c19300535b3"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S4.SS2.p3.1",
+        "section": "4.2 Formalizing PII Leakage",
+        "sha256": "5fc14df3e5d8819238edf13cf4b5b43e59ea2778b6839a17c101ef69baa75e70"
+      },
+      {
+        "n": 32,
+        "kind": "heading",
+        "id": "S5",
+        "section": "5 Proposed Methodology",
+        "sha256": "c448dd4ecc5735e1793323062bb479261f4869331ea296ab40222f9848bcf39d"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S5.p1.1",
+        "section": "5 Proposed Methodology",
+        "sha256": "2ad9b29f8bd6e2d349fd022b4804c095ad32feff85499d3260fe17ead5c5b89f"
+      },
+      {
+        "n": 34,
+        "kind": "heading",
+        "id": "S5.SS1",
+        "section": "5.1 The Framework",
+        "sha256": "af16633118b042eaf14fff8ed082761be9fd2896038f212a487e4db97ce61941"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S5.SS1.p1.1",
+        "section": "5.1 The Framework",
+        "sha256": "83f7e59172f2a1a8b36a63c07ae8c28db238890668d7840a33598a5b4ca51fa7"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S5.SS1.p2.1",
+        "section": "5.1 The Framework",
+        "sha256": "7c7ed48a30084cc282e60309d370f73c8646940e01fc7c92fb7522ed7afe01ea"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S5.SS1.p3.1",
+        "section": "5.1 The Framework",
+        "sha256": "c863f5c2679522e21b3646012f615667ef61db2b0c97bb45037f5052bbd049ac"
+      },
+      {
+        "n": 38,
+        "kind": "heading",
+        "id": "S5.SS2",
+        "section": "5.2 Static Setting",
+        "sha256": "aab4770714fa0f9be0712f37475882af150b2d1b4cfdb165354e00ecfb5f9db9"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S5.SS2.p1.1",
+        "section": "5.2 Static Setting",
+        "sha256": "b9b3ec34e0f0b80f5e6d97d10e2c88f2047a0f40e86fa4077ad33460a57e6c00"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S5.SS2.p2.1",
+        "section": "5.2 Static Setting",
+        "sha256": "8ed8a79ac5d0286a4b7fb0d83b5c3fc071a6253a66054ee6b517e5888dda057c"
+      },
+      {
+        "n": 41,
+        "kind": "heading",
+        "id": "S6",
+        "section": "6 Experimental Evaluation",
+        "sha256": "93e136bef029ac084e0475ef5564a5356ce2ff15e0533a77deeed2605917c66f"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S6.p1.1",
+        "section": "6 Experimental Evaluation",
+        "sha256": "552fee75e95a5eeef7094042c57794ec8ec52adeb38e82533e5432c9b7e8d38b"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S6.p2.1",
+        "section": "6 Experimental Evaluation",
+        "sha256": "30a310263ada7f93f6e95459c542eb82d7db7dd14c72d45865e1f168b1d52336"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S6.p3.1",
+        "section": "6 Experimental Evaluation",
+        "sha256": "6b667f85457427856951500600736da644a5b839eddfd7106f5bf4628b1777a5"
+      },
+      {
+        "n": 45,
+        "kind": "heading",
+        "id": "S6.SS1",
+        "section": "6.1 The PII Dataset",
+        "sha256": "165263293616bb2f7155a13284767701c7dfe804203e02e1a168220280d04230"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S6.SS1.p1.1",
+        "section": "6.1 The PII Dataset",
+        "sha256": "1331e5959e8415b91f47ef94d57109060ae1eabb5679d2d598b047d512e92b9a"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S6.SS1.p2.1",
+        "section": "6.1 The PII Dataset",
+        "sha256": "0a65686312d040725f55dd47f97e4144a55a011eaa310347b44e96fcd835150e"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S6.SS1.p3.1",
+        "section": "6.1 The PII Dataset",
+        "sha256": "8b321277bb61a99d5a667ed96f2eaa1cafb8d2da43fb4084dc2e02c5effa2466"
+      },
+      {
+        "n": 49,
+        "kind": "heading",
+        "id": "S6.SS2",
+        "section": "6.2 Evaluation in the Static Setting",
+        "sha256": "38c2b8f635ef6068d134f5e436c44889f335a20c96750597cea23b7196ad47e8"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S6.SS2.p1.1",
+        "section": "6.2 Evaluation in the Static Setting",
+        "sha256": "57a891f9e6e866b0a9533fbbb1c0320ef7323c8055a1005f2551e88b97f71db3"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S6.SS2.p2.1",
+        "section": "6.2 Evaluation in the Static Setting",
+        "sha256": "c9902eddfb13a7e5480d256956e3a2c572050de20c918e433170e388f8dc739c"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S6.SS2.p2.2",
+        "section": "6.2 Evaluation in the Static Setting",
+        "sha256": "da813190476d1357293f6cf289695ed19e919a7e8eabc7ee0616c648c7fa0524"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S6.SS2.p3.1",
+        "section": "6.2 Evaluation in the Static Setting",
+        "sha256": "d4611b4dc0f8b8b953677b36f7b730883fccd56c230b3ebb8502abd57d811d6c"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S6.SS2.p4.1",
+        "section": "6.2 Evaluation in the Static Setting",
+        "sha256": "f655081fa7c0b08fa834387c454f3e144f53e3c832fc59d082963915ff58a4bd"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S6.SS2.p5.1",
+        "section": "6.2 Evaluation in the Static Setting",
+        "sha256": "4161ba5e7fe09cacb3db89a37a560b8fbb7540c81dac4e1df9525742a977b128"
+      },
+      {
+        "n": 56,
+        "kind": "heading",
+        "id": "S6.SS3",
+        "section": "6.3 Evaluation in the Dynamic Setting",
+        "sha256": "4a65d73b4adc8bcee8bfff41b4edc5f7c349d9ec63b7ff01b225aeb7bc00fe39"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S6.SS3.p1.1",
+        "section": "6.3 Evaluation in the Dynamic Setting",
+        "sha256": "013e5b570eb50e547536b8745b6587313a221bee73d05aefe0176a838be8a4df"
+      },
+      {
+        "n": 69,
+        "kind": "heading",
+        "id": "A2",
+        "section": "Appendix B Approach Details",
+        "sha256": "e93d6a3c4c29832242adbbdfcfcb694332425d9360b5f43ffb8e6f7306040074"
+      },
+      {
+        "n": 70,
+        "kind": "paragraph",
+        "id": "A2.p1.1",
+        "section": "Appendix B Approach Details",
+        "sha256": "e2d0033e6ac5525830e66efc2028b34f99baddc741c09762c8e588535dca3e42"
+      },
+      {
+        "n": 71,
+        "kind": "paragraph",
+        "id": "A2.p2.1",
+        "section": "Appendix B Approach Details",
+        "sha256": "7de655fc93b4b28389c2e166c5c46d8bdb69cc834c4c1da356f8d7815d64b482"
+      },
+      {
+        "n": 72,
+        "kind": "paragraph",
+        "id": "A2.p3.1",
+        "section": "Appendix B Approach Details",
+        "sha256": "f9e15112a452061963d1af180e098d9bb06227bea2ddab232c6b816c13ad389b"
+      },
+      {
+        "n": 73,
+        "kind": "heading",
+        "id": "A3",
+        "section": "Appendix C Insights on the PII Dataset",
+        "sha256": "07205b7b72e926a84801d85c62e8ac99c6fada86487f1e6ea9f90b1eb6cd4ad7"
+      },
+      {
+        "n": 74,
+        "kind": "paragraph",
+        "id": "A3.p1.1",
+        "section": "Appendix C Insights on the PII Dataset",
+        "sha256": "d4ca5fd8a1d40dbe5def8a44f79870e618e6554340fcb3f9fd6d7abec858638c"
+      },
+      {
+        "n": 75,
+        "kind": "heading",
+        "id": "A3.SS1",
+        "section": "C.1 Document Generation",
+        "sha256": "136e7cdea89599b2c55ed2c98d40d943b708589b99c49f73d3c9740149143873"
+      },
+      {
+        "n": 76,
+        "kind": "paragraph",
+        "id": "A3.SS1.p1.1",
+        "section": "C.1 Document Generation",
+        "sha256": "f7b5a36a8163353a0f6e041ebccb004388aad1fe1906517ce43c339a5097e19c"
+      },
+      {
+        "n": 77,
+        "kind": "paragraph",
+        "id": "A3.SS1.p2.1",
+        "section": "C.1 Document Generation",
+        "sha256": "12af523f56f1b50aec2ad4f292e8a521ad404b1ddc52b35f525b85c47957e34c"
+      },
+      {
+        "n": 90,
+        "kind": "heading",
+        "id": "A3.SS2",
+        "section": "C.2 Producing User Interactions",
+        "sha256": "52a914f9691cc2a02051a723febc28cdef248e17f3b84439b07411d3c0c7a33a"
+      },
+      {
+        "n": 91,
+        "kind": "paragraph",
+        "id": "A3.SS2.p1.1",
+        "section": "C.2 Producing User Interactions",
+        "sha256": "d03c0255136450a2cccbf5565b9a360902a0b9ab1f62e87dfcc0b0a085ba83ca"
+      },
+      {
+        "n": 92,
+        "kind": "paragraph",
+        "id": "A3.SS2.p2.1",
+        "section": "C.2 Producing User Interactions",
+        "sha256": "a72155a9c83f8b39f1cbd9882ff34ec17e6f6e1a962f46d7ab445fc2a60d68d6"
+      },
+      {
+        "n": 98,
+        "kind": "heading",
+        "id": "A4.SS1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "d36be9f3badd10e299e58d2e045ae8ea0d17118bd2f9274c5e69e0b4cb8ac236"
+      },
+      {
+        "n": 99,
+        "kind": "paragraph",
+        "id": "A4.SS1.p1.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "c0671807ece10c51826d9a6771610f873fcc5dc447a268e29aa436dfed8ae6b1"
+      },
+      {
+        "n": 100,
+        "kind": "paragraph",
+        "id": "A4.SS1.p2.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "c7d7352f18c50617f8945794ab87a9c1d2e56d3183d6bdd1518aa82a0096fa18"
+      },
+      {
+        "n": 101,
+        "kind": "paragraph",
+        "id": "A4.SS1.p3.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "f5f455730e63d6403afa5dd034dc236a3a7b0adb69c0dbb36261ed5f3fc4499b"
+      },
+      {
+        "n": 102,
+        "kind": "paragraph",
+        "id": "A4.SS1.p4.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "7e323b33bd618d480af83213ab33fda83d8980492778c3ddb79e93f5d5e65854"
+      },
+      {
+        "n": 103,
+        "kind": "paragraph",
+        "id": "A4.SS1.p5.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "09a1c69a0190d0d6d84f6a65d935fd0cf7699f5c447113dfe32f5e8384177d46"
+      },
+      {
+        "n": 104,
+        "kind": "paragraph",
+        "id": "A4.SS1.p6.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "10bb4c64acadedd02e4fb9136af271b20036207ad8fa925524e9eb38de326a61"
+      },
+      {
+        "n": 105,
+        "kind": "paragraph",
+        "id": "A4.SS1.p7.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "d873599e3b94fee63346c8021699755ef414532d5fa8365bc0ad2ca6d3552daf"
+      },
+      {
+        "n": 106,
+        "kind": "paragraph",
+        "id": "A4.SS1.p8.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "4145eb4add3c7d090ef7244cd42bd2181f7042aba188b53df94b7ab348e142c3"
+      },
+      {
+        "n": 107,
+        "kind": "paragraph",
+        "id": "A4.SS1.p9.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "b6132da4be5833866144e9522a274161c0bc8aa0c1bd64fb6e1e9ab305005c46"
+      },
+      {
+        "n": 108,
+        "kind": "paragraph",
+        "id": "A4.SS1.p10.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "abfbf1d6bda27338703ae8f5bc78278d8ed80ae76169b7b184efbc0cb74d363e"
+      },
+      {
+        "n": 109,
+        "kind": "paragraph",
+        "id": "A4.SS1.p11.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "3c03f4330a0d9a0b3a8b517ea88346dfb8184a2fcdeee79e852239697401a767"
+      },
+      {
+        "n": 110,
+        "kind": "paragraph",
+        "id": "A4.SS1.p12.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "4c7294fa0048ae3e9253b5403f85973eb712358f30ae4a7a54880f30496e2cce"
+      },
+      {
+        "n": 111,
+        "kind": "paragraph",
+        "id": "A4.SS1.p13.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "15b27fbc126f14ed468994f38129a0c3baa7be711c26c027aeee9dbec940a2c4"
+      },
+      {
+        "n": 112,
+        "kind": "paragraph",
+        "id": "A4.SS1.p14.1",
+        "section": "D.1 OpenAI Dataset Judging Prompt",
+        "sha256": "60cb363985b43d95014e711da1f95452089af12760e25ac401a5612bccd2787a"
+      },
+      {
+        "n": 113,
+        "kind": "heading",
+        "id": "A4.SS2",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "2c06e19278a4b1aea848892f4e663041aef536649163ddc6bf612f14bb2bad9e"
+      },
+      {
+        "n": 114,
+        "kind": "paragraph",
+        "id": "A4.SS2.p1.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "642cc0c2e6eee07db4e25bc4e2bb3a13bf9a62b8ae95152db12a46563d88492b"
+      },
+      {
+        "n": 115,
+        "kind": "paragraph",
+        "id": "A4.SS2.p2.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "717106dd8d698a4c637c1199372b9aa8ef47868d192880e66396d371802c1641"
+      },
+      {
+        "n": 116,
+        "kind": "paragraph",
+        "id": "A4.SS2.p3.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "6899a2b885a6404e77949073388b0ef14505aba132a3a88ec67aab46f1661d4b"
+      },
+      {
+        "n": 117,
+        "kind": "paragraph",
+        "id": "A4.SS2.p4.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "f8b6c3afb2f9ea5e1f73e0695a546e80c57da08362c6f469badb5896313ce89c"
+      },
+      {
+        "n": 118,
+        "kind": "paragraph",
+        "id": "A4.SS2.p5.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "e6ab233a2030aaf1bd6f1adaa35b33247c6a88444885f8915eaa18010ba769d1"
+      },
+      {
+        "n": 119,
+        "kind": "paragraph",
+        "id": "A4.SS2.p6.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "4145eb4add3c7d090ef7244cd42bd2181f7042aba188b53df94b7ab348e142c3"
+      },
+      {
+        "n": 120,
+        "kind": "paragraph",
+        "id": "A4.SS2.p7.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "49ec9e12e566d343dec9279ef62d25dedcad76fbc243fd18640cb6ddd7eb0860"
+      },
+      {
+        "n": 121,
+        "kind": "paragraph",
+        "id": "A4.SS2.p8.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "16d86c78329da5407d0def15331f7984a7f8aa3c8055b72f25e676e6c134c864"
+      },
+      {
+        "n": 122,
+        "kind": "paragraph",
+        "id": "A4.SS2.p9.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "166252cb3446a5f056c13768873795786d6b551473b200fd5f593be1479aefd1"
+      },
+      {
+        "n": 123,
+        "kind": "paragraph",
+        "id": "A4.SS2.p10.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "a47bf77ff6d65c4555ddf041459135ffdb8f92769932d0e9e308f31d2c534c3d"
+      },
+      {
+        "n": 124,
+        "kind": "paragraph",
+        "id": "A4.SS2.p11.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "2952d01e151d6e2292b13790b1d81272d0f6d9e326c5975153f627e9c401ec39"
+      },
+      {
+        "n": 125,
+        "kind": "paragraph",
+        "id": "A4.SS2.p12.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "97c0107a30ec79595bdb09d19ee757fa5ff34d9fbe351e911306f235e8ff96f5"
+      },
+      {
+        "n": 126,
+        "kind": "paragraph",
+        "id": "A4.SS2.p13.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "15b27fbc126f14ed468994f38129a0c3baa7be711c26c027aeee9dbec940a2c4"
+      },
+      {
+        "n": 127,
+        "kind": "paragraph",
+        "id": "A4.SS2.p14.1",
+        "section": "D.2 ToxicChat Dataset Judging Prompt",
+        "sha256": "60cb363985b43d95014e711da1f95452089af12760e25ac401a5612bccd2787a"
+      },
+      {
+        "n": 128,
+        "kind": "heading",
+        "id": "A4.SS3",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "829e590204a823bab4bf1ac9af8364042a00fdb877055a82bb22d90d4658f0bc"
+      },
+      {
+        "n": 129,
+        "kind": "paragraph",
+        "id": "A4.SS3.p1.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "48416dee4915a59e307c1ba752ddf7df1041804055cacd40164c1fd29dba8c39"
+      },
+      {
+        "n": 130,
+        "kind": "paragraph",
+        "id": "A4.SS3.p2.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "717106dd8d698a4c637c1199372b9aa8ef47868d192880e66396d371802c1641"
+      },
+      {
+        "n": 131,
+        "kind": "paragraph",
+        "id": "A4.SS3.p3.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "c481d1479f82cc3b027f3aa2e2602988629a1e26f3d17635dfed71df21f5e100"
+      },
+      {
+        "n": 132,
+        "kind": "paragraph",
+        "id": "A4.SS3.p4.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "b21cdfd6f311a792c7cbd8ee9a76168f46ca83bc04f22b36c5d660daac290f34"
+      },
+      {
+        "n": 133,
+        "kind": "paragraph",
+        "id": "A4.SS3.p5.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "c8889fd81b601a2fa50a1679eba1e52b7df7a4b88e8e882cc5a0897c4094146a"
+      },
+      {
+        "n": 134,
+        "kind": "paragraph",
+        "id": "A4.SS3.p6.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "f6fe4f0c2f6eac942255c1d88f631eea58eee7a2b0dd6efe761aaea96746b393"
+      },
+      {
+        "n": 135,
+        "kind": "paragraph",
+        "id": "A4.SS3.p7.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "ac994f5c3abec220b25206dd0c89b02ba20611a591d388008ff2749ea4906959"
+      },
+      {
+        "n": 136,
+        "kind": "paragraph",
+        "id": "A4.SS3.p8.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "f4a0e649b188aa36b8d0852ef10299ea5139d64329264fdc02f3dfce94346575"
+      },
+      {
+        "n": 137,
+        "kind": "paragraph",
+        "id": "A4.SS3.p9.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "a47bf77ff6d65c4555ddf041459135ffdb8f92769932d0e9e308f31d2c534c3d"
+      },
+      {
+        "n": 138,
+        "kind": "paragraph",
+        "id": "A4.SS3.p10.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "05d994cfac4c405f2b363e216054d727742adf658dda4dfbfce9d62c3844a857"
+      },
+      {
+        "n": 139,
+        "kind": "paragraph",
+        "id": "A4.SS3.p11.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "cea48d05e99173ed7bb32a42acba7e854f7431bc01fab3316654c8cfc8e7b456"
+      },
+      {
+        "n": 140,
+        "kind": "paragraph",
+        "id": "A4.SS3.p12.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "15b27fbc126f14ed468994f38129a0c3baa7be711c26c027aeee9dbec940a2c4"
+      },
+      {
+        "n": 141,
+        "kind": "paragraph",
+        "id": "A4.SS3.p13.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "d7f0c6750ed0d333d678edc41917ef809996dba134d31fa21e7c9f9c88c9f7bf"
+      },
+      {
+        "n": 142,
+        "kind": "paragraph",
+        "id": "A4.SS3.p14.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "373bd2f01c99a4a6a062f247285434ad7ceb39210225f7b8eec39a6eb2a5c8ae"
+      },
+      {
+        "n": 143,
+        "kind": "paragraph",
+        "id": "A4.SS3.p15.1",
+        "section": "D.3 PII Dataset Judging Prompt",
+        "sha256": "3615ea7efb1646114fda91bfad103845c01bb541a5debebeadfd59d40edd8426"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Method35-40 and setup43-48 distinguish conversation/query-answer embedding analysis from moderation sentence input and synthetic-document RAG interactions.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Appendix70-72 verifies Stella embeddings, PCA/UMAP, HDBSCAN representatives, propagated labels and nested-CV SVM/RF/XGBoost/k-NN candidates. Dynamic and static conversation/PII modes consume answers; the sentence-only moderation mode does not.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Model setup43 and actual judge templates99-106,114-119,129-132 distinguish single-sentence safety classification from conversation and context-aware PII answer classification. PII labeling92 accounts for information newly revealed beyond the query.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions. Approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

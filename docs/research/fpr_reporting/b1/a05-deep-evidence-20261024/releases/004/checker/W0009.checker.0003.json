@@ -1,0 +1,311 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0009",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:02:30.319724+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0009.provider.0002.json",
+  "provider_packet_sha256": "2ff54b8432c520fa1f4629ef9ac6b4005a9dfa9c5c8e5ed2fa71b2112d5b86d1",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2404.04392v3",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\c13a82090ef62f3ad4ac8c1663518e6c72db159ba33b80137a3eb7332899f5f8",
+    "raw_sha256": "c13a82090ef62f3ad4ac8c1663518e6c72db159ba33b80137a3eb7332899f5f8",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0032.json",
+    "acquisition_receipt_sha256": "0688352a4211a1817997ef971b89bf1755d6bd77ad3f1b9073e60cd0faf88546",
+    "captured_version_id": "arxiv:2404.04392v3",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        15,
+        31
+      ],
+      [
+        48,
+        61
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "VERIFIED_BODY_METHOD_INVENTORY_INTERNAL_RULE_UNDISCLOSED",
+    "semantic_rationale": "Actual main/appendix method and platform context read. Exact private service internals cannot be completed from this source and remain unknown, while declared evaluated arm inventory is complete.",
+    "visual_check": null,
+    "locator_sha256": "2e8777946f5ea8df6d059fc1c0b1d22b37fb57dacda56428d456ae9375c18d0c",
+    "locators": [
+      {
+        "index": 15,
+        "paragraph_id": "S2.SS4.p1.1",
+        "section_id": "S2.SS4",
+        "heading": "2.4 Guardrails",
+        "text_sha256": "4d70e613a327860b6ae4dd106467e0ad6046e80a645fb81ee62e9bf4275309a4"
+      },
+      {
+        "index": 16,
+        "paragraph_id": "S2.SS4.p2.1",
+        "section_id": "S2.SS4",
+        "heading": "2.4 Guardrails",
+        "text_sha256": "5ea29ef2117280bd151a4385119db30c35af314d6524f3a71ffa4f47b81beff6"
+      },
+      {
+        "index": 17,
+        "paragraph_id": "S3.p1.1",
+        "section_id": "S3",
+        "heading": "3 Our Approach",
+        "text_sha256": "9e98be238c7f5a7da6ee43a20217ad963ab3de446f54c362bc787d3fb72671c1"
+      },
+      {
+        "index": 18,
+        "paragraph_id": "S3.p2.1",
+        "section_id": "S3",
+        "heading": "3 Our Approach",
+        "text_sha256": "75c3578630e285ee8173c8ba12a7515e47384adab6c7c449f2d3e7870a24e1ee"
+      },
+      {
+        "index": 19,
+        "paragraph_id": "S3.I1.i1.p1.1",
+        "section_id": "S3",
+        "heading": "3 Our Approach",
+        "text_sha256": "b3f3307cbfab7d93f21145ec25aa6bdd2c27739cd4a594336a449fd264b503b4"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S3.I1.i2.p1.1",
+        "section_id": "S3",
+        "heading": "3 Our Approach",
+        "text_sha256": "8f56a4b30fc0171524baa9b87592a9813dc66c07fc9e43f86576aef1aeecdd09"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S3.I1.i3.p1.1",
+        "section_id": "S3",
+        "heading": "3 Our Approach",
+        "text_sha256": "72d5d151e4fa1f0841ca43a1e30146df0a84d60607d719c456d08f34c1e6b2e1"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S3.I1.i4.p1.1",
+        "section_id": "S3",
+        "heading": "3 Our Approach",
+        "text_sha256": "69eaa016f9907063ef3c46f4a85d13a420846332fc847446b9743c63046062bc"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Experimental Flow",
+        "text_sha256": "6599970a7ba3cfe84d9e3b1290a365f0a468e0ac9d14f3fa095113764039adff"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S3.SS1.p2.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Experimental Flow",
+        "text_sha256": "ae0f74ccda5509d1273d94c3cc9a2e978ff5f8799fe7f3e82ee54bc877dfd01a"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.SS1.p3.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Experimental Flow",
+        "text_sha256": "36eea7c831838587f656e83ead404dd5c2edad6303d9c7cff2262d0f073d21a5"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.SS1.p5.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Experimental Flow",
+        "text_sha256": "f02dd45361888d6095b2d8848551aa2d3073ced58affb54faa26e1acc180c285"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "4 Experiments & Results",
+        "text_sha256": "b30ab66aba2769e80e7be76cd677b09b7dd237603cea4fb33e3faa245c583479"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Analyzing Effects of Fine-tuning",
+        "text_sha256": "5b03e0369db7f688c86792fe10701356f4fdd43f93c2d960f0a6d39dda24f35b"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Analyzing Effects of Quantization",
+        "text_sha256": "05fd07bbdae8d0ad23a77590937053719d40ad6d611bba0319ec8037ed2ecac1"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S4.SS3.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Analyzing Effects of Guardrails",
+        "text_sha256": "d3cda92127859deab0ad1b9dbc92fbe040b35904af591d178548e7ca4ceeb103"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S4.SS3.p2.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Analyzing Effects of Guardrails",
+        "text_sha256": "5e7f8957f449da7b93758210298c8552313e5011c44d57dd51426b1ca8a8bf8d"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "A1.SS1.p1.1",
+        "section_id": "A1.SS1",
+        "heading": "A.1 Experiment Utils",
+        "text_sha256": "3a9e611b6bd66369b4e52d92cf4038535240634ac44aca52386ee8fc259e2691"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "A1.SS2.p1.1",
+        "section_id": "A1.SS2",
+        "heading": "A.2 Cloud-based Platforms",
+        "text_sha256": "7ee65ebe0706e8c0e925aeaee55fba895346c29bdbb4d795284172ea00b6157e"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "A1.I1.i1.p1.1",
+        "section_id": "A1.SS2",
+        "heading": "A.2 Cloud-based Platforms",
+        "text_sha256": "f83a3327e4549141c8de5ffe755cacb3276ed463a318ba5b9caa7980b7d29d7d"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "A1.I1.i2.p1.1",
+        "section_id": "A1.SS2",
+        "heading": "A.2 Cloud-based Platforms",
+        "text_sha256": "de8156898a74840d3f43d5297f257e9369409519878a296733e95420290cab07"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "A1.SS3.p1.1",
+        "section_id": "A1.SS3",
+        "heading": "A.3 Local High-Performance System",
+        "text_sha256": "d9ecb83865a12ce096e4573512ee2301630311cb900e6099cb13f2ee03ce82c0"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "A1.I2.i1.p1.1",
+        "section_id": "A1.SS3",
+        "heading": "A.3 Local High-Performance System",
+        "text_sha256": "1a569cd860fdf5be942765fe916fe067c8646093158df92bcd643d544f20f1f7"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "A1.I2.i2.p1.1",
+        "section_id": "A1.SS3",
+        "heading": "A.3 Local High-Performance System",
+        "text_sha256": "a01f7568996eb7b943d27ace3aac732ea3973130c6c0f256cddbd5df017398e4"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "A1.I2.i3.p1.1",
+        "section_id": "A1.SS3",
+        "heading": "A.3 Local High-Performance System",
+        "text_sha256": "61deab10f5cef245907cd68729f4964a8b2b5e0539c7c019f2f5690363aacd62"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "A1.SS4.p1.1",
+        "section_id": "A1.SS4",
+        "heading": "A.4 Quantization Experiments",
+        "text_sha256": "b74cfe09ef5a54b560fdf2327c306097134542d1322802ea2fa5612bab846b6a"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "A1.I3.i1.p1.1",
+        "section_id": "A1.SS4",
+        "heading": "A.4 Quantization Experiments",
+        "text_sha256": "34bb56758cf8565ca326915aba23d8258d23efd2bfaefdeb87b77f66eb6f5874"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "A1.I3.i2.p1.1",
+        "section_id": "A1.SS4",
+        "heading": "A.4 Quantization Experiments",
+        "text_sha256": "aaf8af1072470f16aeabd4a2442120504e9cadaab20032b4fe889c0f6d2750a0"
+      },
+      {
+        "index": 59,
+        "paragraph_id": "A1.I3.i3.p1.1",
+        "section_id": "A1.SS4",
+        "heading": "A.4 Quantization Experiments",
+        "text_sha256": "2299abe6b0675c6f5ae3aa84830fe4574381a221621319bfce7c075e8f5f4d52"
+      },
+      {
+        "index": 60,
+        "paragraph_id": "A1.SS4.p3.1",
+        "section_id": "A1.SS4",
+        "heading": "A.4 Quantization Experiments",
+        "text_sha256": "83836c00f1aa09ef45c24263328b779ecdf0849fd38544673863616e247d9be9"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "A1.SS5.p1.1",
+        "section_id": "A1.SS5",
+        "heading": "A.5 Examples of Successful Attack Prompts",
+        "text_sha256": "fd3d55ea513a05404f33b4896bf3f8b1540c5e0509253401100a2ad89575fcb8"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main TAP loop and target configuration comparisons explicit; named Enkrypt endpoints in appendix.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main setup covers foundation/fine-tuned, quantization and guardrail conditions, with evaluator receiving prompt plus target response.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Query-stage screening occurs before protected model response. Actual source does not disclose internal model/threshold/rule; no external service behavior substituted.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Response guardrail explicitly screens target reply; internal rule remains undisclosed.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual Appendix A.5 English attack-goal text read; supports components only, no complete language composition.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All material named original method/arm families in the main and method-bearing appendix scope now actually checked. Unprinted identities/exact image wording remain explicit source-reporting limits rather than invented evidence.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "coverage.additional_structural_receipts",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All added exact-source HTML-node and text hashes independently reproduce. Structural verification is distinct from the actual semantic ranges/sections described in this receipt.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}
