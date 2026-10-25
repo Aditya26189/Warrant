@@ -74,6 +74,70 @@ class ScientificBoundaryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "POSITIVE_PROOF_MISSING"):
             c.apply_domain(self.row, change, self.evidence)
 
+    def test_bibliographic_scope_cannot_be_promoted_to_domain_evidence(self) -> None:
+        self.evidence["scope"]["release_status"] = "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY"
+        with self.assertRaisesRegex(ValueError, "BIBLIOGRAPHY_IS_NOT_DOMAIN_PROOF"):
+            c.apply_domain(self.row, self.change, self.evidence)
+
+    def identity_fixture(self) -> tuple[dict, dict, dict]:
+        """Two separate documents with source-bound chapter reuse, not domain proof."""
+        rows, pins, evidence = {}, {}, {}
+        for rid, work, version in [("W0069", "arxiv:2508.04281", "arxiv:2508.04281v5"),
+                                   ("W0325", "arxiv:2610.04412", "arxiv:2610.04412v1")]:
+            rows[rid] = {"review_id": rid, "work_id": work, "selected_version_id": version,
+                         "identity_issues": ["REPRODUCED_STUDY_UNIT_UNRESOLVED"],
+                         "criteria": {k: "UNCLEAR" for k in c.CRITERIA}}
+            refs = []
+            for field in ["title", "author", "whole_document_scope", "edition", "source_declared_relationship", "document_type"]:
+                eid = rid + field
+                refs.append(eid)
+                evidence[eid] = {"review_id": rid, "version": version,
+                                 "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+                                 "field_path": "bibliographic_scope_facts." + field}
+            pins[rid] = {"before_row_sha256": r.sha(r.encoded(rows[rid])), "evidence_ids": refs}
+        correction = {"action": "KEEP_DISTINCT_WORKS_SHARED_STUDY", "works": pins,
+                      "referenced_paper_version": "UNSPECIFIED_IN_THESIS",
+                      "rule_document": "WORK_UNIT_RULE_APPLICATION.md",
+                      "rule_document_sha256": r.sha((c.HERE / "WORK_UNIT_RULE_APPLICATION.md").read_bytes()),
+                      "rationale": "Different whole scopes, explicit chapter reuse.",
+                      "limitations": ["Not independent replication; no edition equivalence."]}
+        return rows, correction, evidence
+
+    def test_identity_keeps_both_documents_without_domain_transfer(self) -> None:
+        rows, correction, evidence = self.identity_fixture()
+        before = copy.deepcopy(rows)
+        self.assertEqual(c.apply_identity(rows, correction, evidence), set(before))
+        for rid in rows:
+            self.assertEqual(rows[rid]["criteria"], before[rid]["criteria"])
+            self.assertEqual(rows[rid]["selected_version_id"], before[rid]["selected_version_id"])
+            self.assertEqual(rows[rid]["identity_issues"], [])
+            self.assertFalse(rows[rid]["shared_study_relationship"]["method_evidence_transferred"])
+
+    def test_second_member_mismatch_cannot_partially_clear_identity(self) -> None:
+        rows, correction, evidence = self.identity_fixture()
+        rows["W0325"]["selected_version_id"] = "arxiv:2610.04412v2"
+        before = copy.deepcopy(rows)
+        with self.assertRaisesRegex(ValueError, "IDENTITY_PRIOR_CHANGED"):
+            c.apply_identity(rows, correction, evidence)
+        self.assertEqual(rows, before)
+
+    def test_identity_cannot_clear_another_issue_or_invent_paper_version(self) -> None:
+        rows, correction, evidence = self.identity_fixture()
+        correction["referenced_paper_version"] = "v5"
+        with self.assertRaisesRegex(ValueError, "UNSUPPORTED_IDENTITY"):
+            c.apply_identity(rows, correction, evidence)
+        correction["referenced_paper_version"] = "UNSPECIFIED_IN_THESIS"
+        rows["W0069"]["identity_issues"].append("UNRELATED_SENTINEL_IDENTITY")
+        correction["works"]["W0069"]["before_row_sha256"] = r.sha(r.encoded(rows["W0069"]))
+        with self.assertRaisesRegex(ValueError, "DIFFERENT_IDENTITY_PROBLEM"):
+            c.apply_identity(rows, correction, evidence)
+
+    def test_identity_requires_both_checked_whole_document_scopes(self) -> None:
+        rows, correction, evidence = self.identity_fixture()
+        correction["works"]["W0325"]["evidence_ids"].remove("W0325whole_document_scope")
+        with self.assertRaisesRegex(ValueError, "IDENTITY_SCOPE_PROOF_INCOMPLETE"):
+            c.apply_identity(rows, correction, evidence)
+
     def test_transport_policy_cannot_change_other_works(self) -> None:
         correction = {"before_row_sha256": r.sha(r.encoded(self.row)),
                       "action": "RETAIN_DECLARED_PUBLISHER_EDITION_REMOVE_ADDED_BYTE_TIMESTAMP_REQUIREMENT",

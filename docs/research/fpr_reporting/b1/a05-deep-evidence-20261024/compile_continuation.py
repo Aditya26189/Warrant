@@ -125,6 +125,9 @@ def apply_domain(row: dict, change: dict, evidence: dict) -> None:
         raise ValueError("BAD_CRITERIA")
     rid = row["review_id"]
     validate_refs(change["new_evidence_ids"], rid, evidence, row["selected_version_id"])
+    if any(evidence[eid].get("release_status") == "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY"
+           for eid in change["new_evidence_ids"]):
+        raise ValueError("BIBLIOGRAPHY_IS_NOT_DOMAIN_PROOF")
     ground = change["whole_work_exclusion_ground"]
     if ground:
         if "NOT_MET" not in criteria.values():
@@ -147,6 +150,9 @@ def apply_domain(row: dict, change: dict, evidence: dict) -> None:
             raise ValueError("POSITIVE_PROOF_MISSING")
         for refs in proof.values():
             validate_refs(refs, rid, evidence, row["selected_version_id"])
+            if any(evidence[eid].get("release_status") == "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY"
+                   for eid in refs):
+                raise ValueError("BIBLIOGRAPHY_IS_NOT_DOMAIN_PROOF")
         row["positive_experiment_binding"] = {"review_id": rid, "criterion_evidence_ids": proof,
             "experiment_and_inference_rationale": change["scientific_rationale"]}
     row.update({"criteria": criteria, "whole_work_exclusion_ground": ground,
@@ -211,6 +217,52 @@ def apply_version(row: dict, correction: dict, evidence: dict | None = None) -> 
     row["version_correction_rationale"] = correction["rationale"]
 
 
+def apply_identity(rows: dict, correction: dict, evidence: dict) -> set[str]:
+    """Record distinct whole documents with reuse, without transferring methods."""
+    expected = {"W0069": ("arxiv:2508.04281", "arxiv:2508.04281v5"),
+                "W0325": ("arxiv:2610.04412", "arxiv:2610.04412v1")}
+    if (correction["action"] != "KEEP_DISTINCT_WORKS_SHARED_STUDY"
+            or set(correction["works"]) != set(expected)
+            or correction["referenced_paper_version"] != "UNSPECIFIED_IN_THESIS"
+            or not correction["rationale"] or not correction["limitations"]):
+        raise ValueError("UNSUPPORTED_IDENTITY_CORRECTION")
+    name = correction["rule_document"]
+    if (name != "WORK_UNIT_RULE_APPLICATION.md"
+            or r.sha((HERE / name).read_bytes()) != correction["rule_document_sha256"]):
+        raise ValueError("IDENTITY_RULE_CHANGED")
+    # Validate the entire pair before mutating either member.
+    for rid, (work, version) in expected.items():
+        row, pin = rows[rid], correction["works"][rid]
+        if (row["work_id"] != work or row["selected_version_id"] != version
+                or r.sha(r.encoded(row)) != pin["before_row_sha256"]):
+            raise ValueError("IDENTITY_PRIOR_CHANGED")
+        if row["identity_issues"] != ["REPRODUCED_STUDY_UNIT_UNRESOLVED"]:
+            raise ValueError("DIFFERENT_IDENTITY_PROBLEM")
+        validate_refs(pin["evidence_ids"], rid, evidence, version)
+        fields = set()
+        for eid in pin["evidence_ids"]:
+            fact = evidence[eid]
+            if fact.get("release_status") != "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY":
+                raise ValueError("IDENTITY_REQUIRES_CHECKED_BIBLIOGRAPHIC_SCOPE")
+            fields.add(fact["field_path"].removeprefix("bibliographic_scope_facts."))
+        if (not {"title", "whole_document_scope", "edition", "source_declared_relationship"} <= fields
+                or not fields.intersection({"author", "authors"})
+                or (rid == "W0325" and "document_type" not in fields)):
+            raise ValueError("IDENTITY_SCOPE_PROOF_INCOMPLETE")
+    for rid in expected:
+        row = rows[rid]
+        row["superseded_identity_issues"] = row["identity_issues"]
+        row["identity_issues"] = []
+        row["shared_study_relationship"] = {
+            "other_review_id": next(x for x in expected if x != rid),
+            "relation": "THESIS_CHAPTER_BASED_ON_PAPER_DISTINCT_WHOLE_DOCUMENTS",
+            "referenced_paper_version": correction["referenced_paper_version"],
+            "evidence_by_work": {k: v["evidence_ids"] for k, v in correction["works"].items()},
+            "rationale": correction["rationale"], "limitations": correction["limitations"],
+            "method_evidence_transferred": False, "independent_replication": False}
+    return set(expected)
+
+
 def recompute(row: dict) -> None:
     """Preserve unresolved facts while applying the already locked pointwise gate."""
     bib = row["bibliography"]
@@ -265,6 +317,10 @@ def assemble(head: str) -> dict[str, object]:
         for correction in judgments["version_corrections"]:
             apply_version(rows[correction["review_id"]], correction, evidence)
             touched.add(correction["review_id"])
+        for correction in judgments.get("identity_corrections", []):
+            if touched.intersection(correction["works"]):
+                raise ValueError("OVERLAPPING_IDENTITY_CORRECTION")
+            touched.update(apply_identity(rows, correction, evidence))
         for note in judgments["reviewed_unchanged"]:
             row = rows[note["review_id"]]
             if r.sha(r.encoded(row)) != note["before_row_sha256"]:
