@@ -1,0 +1,77 @@
+{
+  "created_utc": "2026-10-25T12:09:45.662539+00:00",
+  "requests": [
+    {
+      "identifiers": [
+        "arxiv:2508.04281"
+      ],
+      "questions": [
+        "Verify whole-document bibliographic identity, exact edition dates, title/authorship and declared chapter/contribution scope from primary header/contents/bibliographic or explicit reuse notes.",
+        "Record any direct source-declared chapter/paper reuse or version relationship between arxiv:2508.04281 and arxiv:2610.04412, preserving distinctions between shared research and whole-document identity. Do not decide scientific eligibility, sampling units or canonical merges.",
+        "Use known captured primary sources first; no discovery additions, findings, performance/sample/false-positive counts, assurance classifications or historical reviewer decisions. Return bounded source-linked bibliography/scope facts for separate actual checking."
+      ],
+      "requested_preferred_version": "arxiv:2508.04281v5",
+      "review_id": "W0069",
+      "sources": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0107.json",
+          "acquisition_receipt_sha256": "675393456cae35d973ff0856e24ea6b4363a7cf50af4fccc9ed47d9a585695e4",
+          "body": {
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2508.04281v5",
+            "finished_utc": "2026-10-19T06:38:48.521691+00:00",
+            "kind": "HTML",
+            "mode": "VERIFIED_LEGACY_RAW_BODY",
+            "original_receipt_sha256": "7472a58bcea11b700a8e7044164a9dc557bc1e4919214ea2ff97ebb5980a5c3f",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q026-1.html",
+            "sha256": "04ed30f3b6888fb453e3afebfa149be90b8cfbbf91d543ca0a215dbac7c1fffe",
+            "started_utc": "2026-10-19T06:38:46.971814+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2508.04281v5",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2508.04281v5",
+          "member_id": "M0107"
+        }
+      ],
+      "work_id": "arxiv:2508.04281"
+    },
+    {
+      "identifiers": [
+        "arxiv:2610.04412"
+      ],
+      "questions": [
+        "Verify whole-document bibliographic identity, exact edition dates, title/authorship and declared chapter/contribution scope from primary header/contents/bibliographic or explicit reuse notes.",
+        "Record any direct source-declared chapter/paper reuse or version relationship between arxiv:2508.04281 and arxiv:2610.04412, preserving distinctions between shared research and whole-document identity. Do not decide scientific eligibility, sampling units or canonical merges.",
+        "Use known captured primary sources first; no discovery additions, findings, performance/sample/false-positive counts, assurance classifications or historical reviewer decisions. Return bounded source-linked bibliography/scope facts for separate actual checking."
+      ],
+      "requested_preferred_version": "arxiv:2610.04412v1",
+      "review_id": "W0325",
+      "sources": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0379.json",
+          "acquisition_receipt_sha256": "b6a8f9536325906bae0f89ef67f8ba432057bad71ab61f81785bc7157c65b2da",
+          "body": {
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2610.04412v1",
+            "finished_utc": "2026-10-19T06:39:58.056050+00:00",
+            "kind": "HTML",
+            "mode": "VERIFIED_LEGACY_RAW_BODY",
+            "original_receipt_sha256": "ee3bc728ca65b1d4c9c330b185e33578bfb7ace0316a1a0a2b7732f7ebe63d5a",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q153-1.html",
+            "sha256": "0966e3528c13cbc940b388aec1b7215f5b5fd89926faef47c4bd16ee0420cb30",
+            "started_utc": "2026-10-19T06:39:54.546644+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2610.04412v1",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2610.04412v1",
+          "member_id": "M0379"
+        }
+      ],
+      "work_id": "arxiv:2610.04412"
+    }
+  ],
+  "scope": "Known frozen works only; bibliographic scope and source-declared reuse verification, no new candidates or eligibility decisions.",
+  "source_git_commit": "77c3906eea80bbe5a47b42808749d6f7c53c9f55"
+}
