@@ -1,0 +1,326 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "additional_release_sha256": [
+    "8880b7a55089bda4338c04d10552d3cba02e44cc42bf3cc77d1c5be986c1b1fa",
+    "41cfffbefe3c7db1c79988966348460dcf4096b27afac8e33557fc3a479343a6"
+  ],
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "changes": [
+    {
+      "before_row_sha256": "e8828df680d4fea90968a5930cf9344747d9cbc23a52df6bdd288fb0744655f4",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0009-27ed53d72dc1-F01",
+        "A05-DEEP-W0009-27ed53d72dc1-F02",
+        "A05-DEEP-W0009-27ed53d72dc1-F03",
+        "A05-DEEP-W0009-27ed53d72dc1-F04",
+        "A05-DEEP-W0009-27ed53d72dc1-F05",
+        "A05-DEEP-W0009-27ed53d72dc1-F06"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0009",
+      "scientific_rationale": "The complete TAP inventory varies fine-tuning, quantization and guardrail settings on harmful-request jailbreaks, judged from target replies. Enkrypt also screens input queries before downstream generation, but its assessed target here is harmful content within that end-to-end pipeline, not a separately evaluated injected-instruction-presence task. The exclusion follows the evaluated task and complete inventory; neither the undisclosed endpoint internals nor missing language composition is the exclusion ground.",
+      "whole_work_exclusion_ground": "NO_SEPARATE_QUALIFYING_INJECTION_INPUT_EVALUATION",
+      "work_id": "arxiv:2404.04392"
+    },
+    {
+      "before_row_sha256": "02ebfb306e68a367e1ad4a6df222a8a48810a442409bc253b4b74bda1afe6ea6",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0010-e0f44798e0e0-F01",
+        "A05-DEEP-W0010-e0f44798e0e0-F02",
+        "A05-DEEP-W0010-e0f44798e0e0-F03",
+        "A05-DEEP-W0010-e0f44798e0e0-F04",
+        "A05-DEEP-W0010-e0f44798e0e0-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0010",
+      "scientific_rationale": "This work is not excluded merely because it contains a review: the checked inventory includes original hardware-code bug/CWE judgments and cybersecurity question answering. Those evaluated units are code defects and correct question answers, including a yes/no code-defect arm. They are not untrusted-text injected-instruction detection. Considering both original families and the reviewed material resolves the task-scope requirement without performance evidence.",
+      "whole_work_exclusion_ground": "NO_SEPARATE_QUALIFYING_INJECTION_INPUT_EVALUATION",
+      "work_id": "arxiv:2405.12750"
+    },
+    {
+      "before_row_sha256": "7dfc85a2099296724ba28cf9227651d8b8ab1a7de6f0860ed695efde3ae965c5",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0017-80bb9167b3c6-F01",
+        "A05-DEEP-W0017-80bb9167b3c6-F02",
+        "A05-DEEP-W0017-80bb9167b3c6-F03",
+        "A05-DEEP-W0017-80bb9167b3c6-F04",
+        "A05-DEEP-W0017-80bb9167b3c6-F05",
+        "A05-DEEP-W0017-80bb9167b3c6-F06",
+        "A05-DEEP-W0017-80bb9167b3c6-F07"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0017",
+      "scientific_rationale": "The complete attack, mitigation, transfer, poisoned-fine-tuning and AnythingLLM case-study inventory targets safeguards returning unsafe-content flags or aligned models refusing safe requests. An altered client template is an attack construction, but the ground-truth target in these experiments remains unsafe content/refusal rather than injected-instruction presence. Some guards act before application answers; that timing does not make their content-safety evaluation a separate injection-input task. Apply the locked harmful-content/jailbreak-alone exclusion.",
+      "whole_work_exclusion_ground": "NO_SEPARATE_QUALIFYING_INJECTION_INPUT_EVALUATION",
+      "work_id": "arxiv:2410.02916"
+    },
+    {
+      "before_row_sha256": "1b2cf3fa204e098f7219d0b01a317f6c25150c7d406c607efa5dcaf124b16ae0",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "EXPLICIT_WHOLE_STUDY_TASK_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0023-cdb8a010ea77-F01",
+        "A05-DEEP-W0023-cdb8a010ea77-F02",
+        "A05-DEEP-W0023-cdb8a010ea77-F03",
+        "A05-DEEP-W0023-cdb8a010ea77-F04",
+        "A05-DEEP-W0023-cdb8a010ea77-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0023",
+      "scientific_rationale": "The affirmative whole-study task statement and original evaluation inventory specify infrared-visible image fusion and downstream object detection, semantic segmentation and salient-object segmentation. LLaMA task-instruction features condition vision processing; they are not an evaluated injected-instruction detector. Uninspected supplementary parameter settings remain within the explicitly declared vision-task families. This is a task-scope exclusion, not an inference from missing statistical reporting or an assertion that every parameter example was read.",
+      "whole_work_exclusion_ground": "NO_SEPARATE_QUALIFYING_INJECTION_INPUT_EVALUATION",
+      "work_id": "arxiv:2411.09387"
+    },
+    {
+      "before_row_sha256": "d756b0bb837192af1bea38a1529592e9ed7d8c18472ae9bde1f1209d899e518b",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0046-d93b39697810-F01",
+        "A05-DEEP-W0046-d93b39697810-F02",
+        "A05-DEEP-W0046-d93b39697810-F03",
+        "A05-DEEP-W0046-d93b39697810-F04",
+        "A05-DEEP-W0046-d93b39697810-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0046",
+      "scientific_rationale": "The complete material family inventory evaluates RTO interruption/token-emission and harmful-output jailbreak behavior using generated target reasoning/final answers. The suggested defenses inspect emitted special tokens or change system instructions; they are not a separately evaluated binary classifier of clean/injected input. Named appendix image-example families are identified by the checked main text; exact image wording is not claimed inspected. Binary input-evaluation failure is established by this method scope, not by outcome values.",
+      "whole_work_exclusion_ground": "NO_SEPARATE_QUALIFYING_INJECTION_INPUT_EVALUATION",
+      "work_id": "arxiv:2505.06643"
+    },
+    {
+      "before_row_sha256": "017564af1979c30bfa132a16df468088349b489a94e3a65b0e68db1b590d5b67",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "EXPLICIT_WHOLE_STUDY_TASK_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0065-f982493be4d8-F01",
+        "A05-DEEP-W0065-f982493be4d8-F02",
+        "A05-DEEP-W0065-f982493be4d8-F03",
+        "A05-DEEP-W0065-f982493be4d8-F04",
+        "A05-DEEP-W0065-f982493be4d8-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0065",
+      "scientific_rationale": "The affirmative whole-study scope enumerates moderation sentences, ToxicChat conversations and synthetic-document PII RAG interactions. Static/dynamic clustering-classifier and prompted-judge variants operate on those same task families. Sentence-only content safety can run before a protected answer, while conversation/PII modes require replies. None of these declared evaluations separately labels injected-instruction presence. Remaining within-family examples do not create an unspecified new task. Exclude on task scope, not a blanket assertion that every arm requires an answer.",
+      "whole_work_exclusion_ground": "NO_SEPARATE_QUALIFYING_INJECTION_INPUT_EVALUATION",
+      "work_id": "arxiv:2508.00602"
+    },
+    {
+      "before_row_sha256": "33deeb339a3b2943f40bcbaed316de3fc203f5904ab40a2361453ee8267c0fd0",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0028-cc6444ac1feb-F01",
+        "A05-DEEP-W0028-cc6444ac1feb-F02",
+        "A05-DEEP-W0028-cc6444ac1feb-F03",
+        "A05-DEEP-W0028-cc6444ac1feb-F04",
+        "A05-DEEP-W0028-cc6444ac1feb-F05",
+        "A05-DEEP-W0028-cc6444ac1feb-F06"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0028-cc6444ac1feb-F02",
+          "A05-DEEP-W0028-cc6444ac1feb-F04"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0028-cc6444ac1feb-F02",
+          "A05-DEEP-W0028-cc6444ac1feb-F04"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0028-cc6444ac1feb-F04",
+          "A05-DEEP-W0028-cc6444ac1feb-F05"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0028-cc6444ac1feb-F01",
+          "A05-DEEP-W0028-cc6444ac1feb-F02",
+          "A05-DEEP-W0028-cc6444ac1feb-F04"
+        ]
+      },
+      "review_id": "W0028",
+      "scientific_rationale": "The updated exact-edition inventory explicitly separates Appendix C.1 protected-answer attack-effectiveness from C.2 detector-targeted binary evasion. Only the latter and the original input-classifier evaluation support the qualifying input task. C.2 queries derive from the expressly English training source and include English added commands. This strengthens the earlier positive binding without borrowing protected-answer outcomes or asserting every main held-out item is English.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2501.15145"
+    },
+    {
+      "before_row_sha256": "21a00536ccaff19dd6ab3091448a769d4469ffddc0d7b68b29440e107f8624b4",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0074-22691f389c14-F01",
+        "A05-DEEP-W0074-22691f389c14-F02",
+        "A05-DEEP-W0074-22691f389c14-F03",
+        "A05-DEEP-W0074-22691f389c14-F04",
+        "A05-DEEP-W0074-22691f389c14-F05"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0074-22691f389c14-F02",
+          "A05-DEEP-W0074-22691f389c14-F03"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0074-22691f389c14-F02",
+          "A05-DEEP-W0074-22691f389c14-F03"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0074-22691f389c14-F04"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0074-22691f389c14-F01",
+          "A05-DEEP-W0074-22691f389c14-F02",
+          "A05-DEEP-W0074-22691f389c14-F03"
+        ]
+      },
+      "review_id": "W0074",
+      "scientific_rationale": "The original synthetic and real-document PhantomLint evaluations explicitly use the default MiniLM phrase-analysis plus rendered/OCR consistency pipeline. Hidden-prompt presence is the document-level event; a reported span must overlap the hidden prompt. It needs no protected LLM answer. Setup and synthetic construction explicitly connect the default English phrase list and actual English inserted prompts to those trials. This supports the existing positive decision using the evaluated default rather than assuming an optional LLMGuard configuration was tested. It does not assert a standalone Boolean API, exhaustive real-document negatives or complete natural-document language composition.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2508.17884"
+    },
+    {
+      "before_row_sha256": "8aecb64ebbf6821ed1c74029ff6803734d2cf790b757d3912a4272e0d69d5759",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0013-e61f2a58529e-F01",
+        "A05-DEEP-W0013-e61f2a58529e-F02",
+        "A05-DEEP-W0013-e61f2a58529e-F03",
+        "A05-DEEP-W0013-e61f2a58529e-F04",
+        "A05-DEEP-W0013-e61f2a58529e-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0013",
+      "scientific_rationale": "The checked selected-edition inventory establishes an evaluated malicious/benign operator-instruction flag and explicit goal-hijacking attacks, with English templates/examples. Timing remains UNCLEAR: the flag follows generated modality perception/reasoning in the robot-agent reply, and command-safety validation separately uses a generated command. The checked text does not establish an already completed current movement command as input to the attack decision, nor conclusively resolve whether the flag is computed before the protected target answer under the locked rule. Preserve that distinction and obtain only the missing architecture/order evidence; do not infer a timing exclusion from prior-command feedback.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2408.03515"
+    }
+  ],
+  "created_utc": "2026-10-25T18:20:02.708434+00:00",
+  "identity_corrections": [
+    {
+      "action": "KEEP_DISTINCT_WORKS_SHARED_STUDY",
+      "limitations": [
+        "Shared underlying research is not independent replication or independent evidence.",
+        "The thesis names no paper version; do not infer equivalence to paper v5.",
+        "Do not transfer the paper method/English evidence into the thesis or vice versa.",
+        "W0325 retains its own unresolved English requirement; no thesis inclusion is implied.",
+        "No added chapter candidates, changed denominator, related-work redraw, sampling or B2 authorization.",
+        "Official landing metadata was separately checked but original HTTP response bytes are unavailable; no historical byte authentication is claimed."
+      ],
+      "rationale": "The exact-version paper has a collective-deliberation/injection-robustness scope and four authors. The thesis has a distinct broader title, dissertation authorship and three research chapters plus policy discussion. Its Chapter 3 explicitly names the paper and arXiv ID as its basis, while other chapters identify separate work. These establish chapter-level reuse between distinct whole documents, rather than whole-document version identity. Preserve both frozen rows/memberships and selected editions; clear only the reproduced-study unit hold under the prospectively recorded work-unit interpretation.",
+      "referenced_paper_version": "UNSPECIFIED_IN_THESIS",
+      "rule_document": "WORK_UNIT_RULE_APPLICATION.md",
+      "rule_document_sha256": "fa1b2b055aa194eb76a365fda7434de361da481e77ad6d7a4fd316b5e9dc4567",
+      "works": {
+        "W0069": {
+          "before_row_sha256": "c894725983db9a71601b3ac9dc9212dcd16a6ba8d22afb7ed08b7ceb162a91ff",
+          "evidence_ids": [
+            "A05-DEEP-W0069-af858122eb7c-F01",
+            "A05-DEEP-W0069-af858122eb7c-F02",
+            "A05-DEEP-W0069-af858122eb7c-F03",
+            "A05-DEEP-W0069-af858122eb7c-F04",
+            "A05-DEEP-W0069-af858122eb7c-F05"
+          ]
+        },
+        "W0325": {
+          "before_row_sha256": "60726696e4dbe622f9dfb51d03bcaab5bd6bc0724dc1d5c500fc873c849b48a2",
+          "evidence_ids": [
+            "A05-DEEP-W0325-2f431e1a77e6-F01",
+            "A05-DEEP-W0325-2f431e1a77e6-F02",
+            "A05-DEEP-W0325-2f431e1a77e6-F03",
+            "A05-DEEP-W0325-2f431e1a77e6-F04",
+            "A05-DEEP-W0325-2f431e1a77e6-F05",
+            "A05-DEEP-W0325-2f431e1a77e6-F06"
+          ]
+        }
+      }
+    }
+  ],
+  "interpretation_documents": {
+    "STUDY_SCOPE_RULE_APPLICATION.md": "68d74751c2b184506fee284fb20e5054eb1ed6c0cb9f281d7eb3428d56e0658f",
+    "TASK_BOUNDARY_APPLICATION.md": "7caafdd7a0798b81707292907263315f4a824f659c7dca551e5c5e72da6cb034",
+    "WORK_UNIT_RULE_APPLICATION.md": "fa1b2b055aa194eb76a365fda7434de361da481e77ad6d7a4fd316b5e9dc4567"
+  },
+  "not_fresh_independent": true,
+  "release_sha256": "bfaf55a0f171d7718ef7c39c23f6d30838c43e84960bbe766ab92ef0a64df1f0",
+  "reviewed_unchanged": [
+    {
+      "before_row_sha256": "2a5fab1439c75374d21e344190337dfc58a266a3ea22ade75fe193b47e416591",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0018-50cd268e1e9a-F01",
+        "A05-DEEP-W0018-50cd268e1e9a-F02",
+        "A05-DEEP-W0018-50cd268e1e9a-F03",
+        "A05-DEEP-W0018-50cd268e1e9a-F04",
+        "A05-DEEP-W0018-50cd268e1e9a-F05",
+        "A05-DEEP-W0018-50cd268e1e9a-F06"
+      ],
+      "rationale": "Complete material-family coverage confirms auxiliary repetition/known-answer probes that can precede the original-task answer. Its described labels are harmful/attacked-versus-benign and clean/adversarial conditions. Those summaries do not conclusively resolve whether a separate evaluated injected-instruction task exists under the locked harmful-content/jailbreak boundary. Retain task UNCLEAR, rather than equating auxiliary generation with a timing failure or converting a generic jailbreak label into injection-presence proof. A controlled task/data-construction clarification is needed; no numerical outcomes are requested.",
+      "review_id": "W0018"
+    },
+    {
+      "before_row_sha256": "f992bf1f7b878549b2769e0d0c1a7727bd8567dff1e10440a091bc3ae344be4d",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0024-f3c3b83dc046-F01",
+        "A05-DEEP-W0024-f3c3b83dc046-F02",
+        "A05-DEEP-W0024-f3c3b83dc046-F03",
+        "A05-DEEP-W0024-f3c3b83dc046-F04",
+        "A05-DEEP-W0024-f3c3b83dc046-F05"
+      ],
+      "rationale": "The complete classifier-family inventory includes jailbreak classifiers and injection-named comparators, with public jailbreak/content corpora. Its bounded facts do not settle whether the actual original labeled evaluation includes a separate injected-instruction task. Neither comparator names nor corpus names establish that distinction. Retain task/language UNCLEAR pending controlled label/task-construction evidence; no outcome-based decision is made.",
+      "review_id": "W0024"
+    }
+  ],
+  "schema": "A05_DEEP_EXPOSED_CUSTODIAN_JUDGMENTS",
+  "scope": "B1_ONLY_NO_OUTCOMES_NO_DRAW_NO_B2",
+  "source_git_commit": "bed59418a0b4aa4276c6c7fe73012fd6e31a77b7",
+  "version_corrections": []
+}
