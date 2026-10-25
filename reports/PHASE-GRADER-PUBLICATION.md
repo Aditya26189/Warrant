@@ -37,3 +37,9 @@ Full Harbor trials are retained historical evidence, not rerun by this documenta
 ## Publication boundary after approval review
 
 Automatic approval review rejected publishing the full experimental branch because the user's explicit GitHub request covers the README, not the additional code/evidence/report payload. The rejected compound command did not run. This gate report and the experiment remain local. A separate branch based on remote main will publish only the README, preserve main's existing collection count, and label the latest experimental results as local. The earlier validation ledger remains a record of the local experimental tree, not validation of a published experimental package. No experimental branch or evidence packet is exported by that narrower push.
+
+## Verified README-only publication
+
+GitHub main was updated with a non-force push to `27d2d97016e0b0610c3a73c27dae869b636012a4`. Its entire diff from the previous remote main is **README.md only**. The published README identifies the new grader track and recorded payments result as local experimental work; it does not link to unavailable evidence and retains the existing published test inventory. The separately validated README source was `6629d51`; all 88 documentation, claim and numerical-prose tests passed. The merge tree matched that source exactly. A fresh remote lookup/fetch confirmed main's hash and README bytes. Remote GitHub Actions status was not checked.
+
+The full experimental history remains on the local `experiment/grader-poc-20261021` branch. This worktree was returned to that branch after verification. The published README-only branch does not contain the experiment, its evidence, the collection integration fix, or this local report. The separate production checkout and other agents' work were preserved.
