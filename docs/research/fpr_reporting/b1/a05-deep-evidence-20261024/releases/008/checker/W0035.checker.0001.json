@@ -1,0 +1,435 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0035",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T13:07:02.267445+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0035.provider.0001.json",
+  "provider_packet_sha256": "d932869f378b71ddede2ba58c9f9358f222e9d41bd96ddc09126a5eabd8e6f80",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2503.15772v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\cdef6959f7755b4d82ed6eb25b4a4dfd957d43aeecf557d02276829aa51a0af9",
+    "raw_sha256": "cdef6959f7755b4d82ed6eb25b4a4dfd957d43aeecf557d02276829aa51a0af9",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0067.json",
+    "acquisition_receipt_sha256": "ae71614381d20a366cfb0b63cb434f21b13c465c86eca0c533d1aac10a3678f3",
+    "captured_version_id": "arxiv:2503.15772v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        19,
+        42
+      ],
+      [
+        48,
+        50
+      ],
+      [
+        58,
+        79
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actual main26-38 defines hidden manuscript instructions and review-marker tests, and58-61 links generated-review experiments to the named watermark/injection families. False correctly retains uninspected Appendix B implementation and Appendix C rating-inflation methods. The positive secondary input-paper detector is independently supported; no complete arm inventory or global absence is inferred.",
+    "visual_check": null,
+    "locator_sha256": "1098d9a8404cab5d9bb1c953d684ccdd0b18a8a93faca96920347092f1bfeb75",
+    "locators": [
+      {
+        "index": 19,
+        "paragraph_id": "S2.SS1.SSS1.p3.1",
+        "section_id": "S2.SS1.SSS1",
+        "heading": "2.1.1 Choice of watermark",
+        "text_sha256": "11b618f29143b0b2977a4113a40bd8994d9bbbc43a9ae83c7fa84dd0b5f41adf"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S2.SS1.SSS2.p1.1",
+        "section_id": "S2.SS1.SSS2",
+        "heading": "2.1.2 Statistical testability",
+        "text_sha256": "528ab0ac53e93ad2f0e85c0b9a037598e763ed35659086916f62c730ee49e6a0"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S2.SS1.SSS2.p2.1",
+        "section_id": "S2.SS1.SSS2",
+        "heading": "2.1.2 Statistical testability",
+        "text_sha256": "149695b39533905d63a6bdd05fbc961b9b257525a4ab737d5652147f8d6268ff"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S2.SS1.SSS2.p3.1",
+        "section_id": "S2.SS1.SSS2",
+        "heading": "2.1.2 Statistical testability",
+        "text_sha256": "f7c3f083d8654113c4125afbfe184c7870f6c80cf901b982621dd08a1202c028"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S2.SS1.SSS2.p4.1",
+        "section_id": "S2.SS1.SSS2",
+        "heading": "2.1.2 Statistical testability",
+        "text_sha256": "99e1ed9403edbdf31a68fc568db0e25a9dbca41e16a3f60a1cccd291e36d19a0"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S2.SS1.SSS2.p5.1",
+        "section_id": "S2.SS1.SSS2",
+        "heading": "2.1.2 Statistical testability",
+        "text_sha256": "63d09c79eb7f36b85398d27ac21a6dfc01fa80afe89c86f2bb7af8bbaf790513"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S2.SS1.SSS2.p6.1",
+        "section_id": "S2.SS1.SSS2",
+        "heading": "2.1.2 Statistical testability",
+        "text_sha256": "18cf99fe5459c13671d707222d6fab3ba8f33dbe0a2d1735abd2be827e3d3c4b"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S2.SS1.SSS3.p1.1",
+        "section_id": "S2.SS1.SSS3",
+        "heading": "2.1.3 Watermarks employed",
+        "text_sha256": "8871e6bfbd2cc82fa300b06d186133597f64a553b824716fba9c568cb6ef5ee0"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S2.SS1.SSS3.Px1.p1.1",
+        "section_id": "S2.SS1.SSS3.Px1",
+        "heading": "Random start",
+        "text_sha256": "3503c41b65a3285cd3f9afb8fc54642f4d89d41a2ed04d591ab36aa6ce5fc5a7"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S2.SS1.SSS3.Px2.p1.1",
+        "section_id": "S2.SS1.SSS3.Px2",
+        "heading": "Random technical term",
+        "text_sha256": "f61fa55fd9743be9128b281976505127b2a7eb133d929df5e27a7587fd3d9256"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S2.SS1.SSS3.Px3.p1.1",
+        "section_id": "S2.SS1.SSS3.Px3",
+        "heading": "Random citation",
+        "text_sha256": "a72db50a816e25d9150abb36c36ffb51af38b80afd47a56814970ce18204ddcd"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S2.SS2.p1.1",
+        "section_id": "S2.SS2",
+        "heading": "2.2 Indirect prompt injection",
+        "text_sha256": "46f4d9a0e262dd61168a8747ace414b0cddd186253940b28e77ce8e3002805d4"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S2.SS2.SSS0.Px1.p1.1",
+        "section_id": "S2.SS2.SSS0.Px1",
+        "heading": "Simple PDF manipulation",
+        "text_sha256": "9b2ce043c0df3cbc8cf000942315369eb3514ba74f1196397c77173ae3c0a830"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S2.SS2.SSS0.Px2.p1.1",
+        "section_id": "S2.SS2.SSS0.Px2",
+        "heading": "Font embedding",
+        "text_sha256": "e1972756ea472d5b3c058a7e9454961ecebce453b6831f44b50232befcecddd3"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S2.SS2.SSS0.Px3.p1.1",
+        "section_id": "S2.SS2.SSS0.Px3",
+        "heading": "Different language",
+        "text_sha256": "40d6951ea29ceea1cbff3fbeb020bc8656dc22b5ef8ea631c84533fb6ee91efc"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S2.SS2.SSS0.Px4.p1.1",
+        "section_id": "S2.SS2.SSS0.Px4",
+        "heading": "Cryptic prompt injection",
+        "text_sha256": "a31dafe19dd91c567d5f43f3138819cf29907ef5138e104abcce8db44ac9b162"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S2.SS2.SSS0.Px4.p2.1",
+        "section_id": "S2.SS2.SSS0.Px4",
+        "heading": "Cryptic prompt injection",
+        "text_sha256": "61f80ca2a24550a7e1dafca0903e48a9fe212ab8aa02e39c38a7d692973d05aa"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S2.SS3.p1.1",
+        "section_id": "S2.SS3",
+        "heading": "2.3 Statistical Detection",
+        "text_sha256": "4a0f741b4c0940f886b993bd816e7265ad12487f87e4d70be3981406e076c027"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S2.SS3.p2.1",
+        "section_id": "S2.SS3",
+        "heading": "2.3 Statistical Detection",
+        "text_sha256": "88ae06b3310050844f2917eb90ab7bcaa7c44b318f4fe6f1609d6c8fedd081a4"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S2.SS3.SSS0.Px1.p1.1",
+        "section_id": "S2.SS3.SSS0.Px1",
+        "heading": "FPR control for a single review.",
+        "text_sha256": "cb53e7fdbef5361172336a9685716d543eb1e5f33ad6bca8bdbc106bdab02d8d"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S2.SS3.SSS0.Px2.p1.1",
+        "section_id": "S2.SS3.SSS0.Px2",
+        "heading": "FWER control for multiple reviews.",
+        "text_sha256": "1782cd345da286fb0d74991d789b5fbe8177a18b21e38b6eb0dadf048592af9d"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S2.SS3.SSS0.Px2.p2.1",
+        "section_id": "S2.SS3.SSS0.Px2",
+        "heading": "FWER control for multiple reviews.",
+        "text_sha256": "67ff0cd1dd32717162b86ee9ddc5658b2c26cbc94e30faf449fd695efe4d1993"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S2.SS3.SSS0.Px2.p3.1",
+        "section_id": "S2.SS3.SSS0.Px2",
+        "heading": "FWER control for multiple reviews.",
+        "text_sha256": "eb463072b6d62da1c55a9956ff0befe7c3e8e9396776a6ada91454fc64fbdbc5"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S2.SS3.SSS0.Px2.p4.1",
+        "section_id": "S2.SS3.SSS0.Px2",
+        "heading": "FWER control for multiple reviews.",
+        "text_sha256": "a249d6064bb9ec77e2d4a780ac89dc05cb244095f2f24e060786c047111416e2"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S2.SS3.SSS0.Px4.p2.1",
+        "section_id": "S2.SS3.SSS0.Px4",
+        "heading": "Statistical power.",
+        "text_sha256": "d6c290447804d75981bbf47faaf08aec7ca9f41c7d0dd6c24c5a156036b22331"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S2.SS3.SSS0.Px4.p3.1",
+        "section_id": "S2.SS3.SSS0.Px4",
+        "heading": "Statistical power.",
+        "text_sha256": "2a07e36470198289115b18c4d147cf455d915e93c799dd754188608f9e493bee"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S2.SS3.SSS0.Px4.p4.1",
+        "section_id": "S2.SS3.SSS0.Px4",
+        "heading": "Statistical power.",
+        "text_sha256": "2716377bf761632c30194cbef30c5efde9f03275bad9a89119f31739d65dab47"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "S3.p1.1",
+        "section_id": "S3",
+        "heading": "3 Experimental evaluation",
+        "text_sha256": "22e10446059540acaa1aefe8fce2b9d8aae2a635a00ef2b06d5f85c5930166f2"
+      },
+      {
+        "index": 59,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Evaluating the efficacy of watermarking & prompt injection",
+        "text_sha256": "e2c070a48ca7dbfd51d84f96fa58b6468e3bc2d619b78eb0fd1bc88cf5f8fdf7"
+      },
+      {
+        "index": 60,
+        "paragraph_id": "S3.SS1.p2.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Evaluating the efficacy of watermarking & prompt injection",
+        "text_sha256": "14b90c13b510ff2df43e167ce9a44be6039f9d66be3a1156627356874a53452f"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "S3.SS1.p3.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Evaluating the efficacy of watermarking & prompt injection",
+        "text_sha256": "fe2c37c6d49121429d0d992b890c93300d7a00fe3135c0b18d501d72381045b3"
+      },
+      {
+        "index": 62,
+        "paragraph_id": "S3.SS1.p4.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Evaluating the efficacy of watermarking & prompt injection",
+        "text_sha256": "32df23a7caae8f9e2daeaff835517623ddffa37b107835c334b572c4a7ba9b67"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Evaluating resilience against reviewer defenses",
+        "text_sha256": "ce1d855191cdb36911e9173a598ac22374fb660025bf8c2f73e87903f54801a8"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "S3.SS2.SSS1.p1.1",
+        "section_id": "S3.SS2.SSS1",
+        "heading": "3.2.1 Defense strategy 1: paraphrasing",
+        "text_sha256": "79fe6f1774a0f2d3e5ac9befab4a1866f6c9928b93b04efbc9ca364db4a03185"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S3.SS2.SSS1.p2.1",
+        "section_id": "S3.SS2.SSS1",
+        "heading": "3.2.1 Defense strategy 1: paraphrasing",
+        "text_sha256": "c6595ee4faa5ebf3cd110779237f2cc3d309bec520334aede75d6d6fec422296"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "S3.SS2.SSS2.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2 Defense strategy 2: identifying watermarks",
+        "text_sha256": "12b33eb5cfe49689adf941225e6efa37e405faa55f3b13ce34bf30653e1a3a90"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S3.SS2.SSS2.p2.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2 Defense strategy 2: identifying watermarks",
+        "text_sha256": "61300146092e7866ab40cdf9c404146824c72c131f10e52af51098bbf38f978c"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S3.SS2.SSS3.p1.1",
+        "section_id": "S3.SS2.SSS3",
+        "heading": "3.2.3 Defense strategy 3: crop out end of paper",
+        "text_sha256": "c09d6b451f3620495363927320c2baf309c252cab2ffad78f12891788c8ae034"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Cryptic prompt injection",
+        "text_sha256": "6f32231756b42b06bdaa1d287d9d038411bbe17a84d2809ed6d05e5f064f9d92"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S3.SS3.p2.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Cryptic prompt injection",
+        "text_sha256": "66a0bf4fd037bdcb621628e5704ab59f5797a803c4d115f73beeb73191361cb2"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S3.I1.i1.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Cryptic prompt injection",
+        "text_sha256": "eadc6a89824a70d8bab64972d277ca6fc67e9602433d9d93942c57a84858d70e"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "S3.I1.i2.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Cryptic prompt injection",
+        "text_sha256": "f474e00d28dc46ee7bbb7f7c09dd30c8f534420ad1cae2003df6067d3849ed49"
+      },
+      {
+        "index": 73,
+        "paragraph_id": "S3.SS3.p4.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Cryptic prompt injection",
+        "text_sha256": "76c1bc655dfbff523b04e86afb66b367277ae00276269b67ba279b7de2f0b2af"
+      },
+      {
+        "index": 74,
+        "paragraph_id": "S3.SS3.p5.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Cryptic prompt injection",
+        "text_sha256": "ef211522bde27dfc22fc9a4f576c6c9c59cb64419641a414f87129d5414f331c"
+      },
+      {
+        "index": 75,
+        "paragraph_id": "S3.SS4.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Grant proposals",
+        "text_sha256": "8c4558d9b09edc0aea6dc05712d02b53f9813eddd86d85f2065b4899d7a7966a"
+      },
+      {
+        "index": 76,
+        "paragraph_id": "S3.SS5.p1.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Control condition",
+        "text_sha256": "ccf83d6fce6ed43ce00856d93b41490ab70624d6a639d5802169eb51f3a545c9"
+      },
+      {
+        "index": 77,
+        "paragraph_id": "S3.SS5.p2.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Control condition",
+        "text_sha256": "789c2984e403504826e49af9809e0719f6fd3b4c632b7dd0156834a34fa6eca9"
+      },
+      {
+        "index": 78,
+        "paragraph_id": "S3.SS5.p3.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Control condition",
+        "text_sha256": "2b22007a2c35e4424e5a393a1d143c31e3585060e3d13145cf61b38b426d9ace"
+      },
+      {
+        "index": 79,
+        "paragraph_id": "S3.SS5.p4.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Control condition",
+        "text_sha256": "7fadf9ef97c84bfc30379ad9280de375db4c08c79f73af13b83c85855c8895d5"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual main26-38 defines hidden manuscript instructions and review-marker tests, and58-61 links generated-review experiments to the named watermark/injection families.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main26-35 defines random-start/technical-term/citation watermarks and white-text/font/French/GCG injection families;36-42 and48-50 describes marker-based single/multiple-review procedures. Review text is the assessment object; no statistical assurance or outcome is approved.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual66-67 explicitly asks GPT-4o to identify hidden watermark/instruction content in an injected paper before subsequently requesting a review. The detector consumes the paper plus the question and does not require the original protected review answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main64/68/75-79 verifies paraphrasing, relocated injection, grant-review and historical-review control families. These assess generated or existing review text; generated/historical review assessment is distinct from input-paper detection.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual66 prints the English evaluated detector question;33 explicitly describes a French injection condition. These support those instruction components, without establishing full paper/review language composition.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly retains uninspected Appendix B implementation and Appendix C rating-inflation methods. The positive secondary input-paper detector is independently supported; no complete arm inventory or global absence is inferred.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

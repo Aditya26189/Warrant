@@ -1,0 +1,305 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0057",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:49:37.863521+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0057.provider.0001.json",
+  "provider_packet_sha256": "5dd56670f94519f32cf800b2a2b4957e2b41abdf0c98d7dfecf03a9c7aeb2fbe",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2506.19109v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q020-1.html",
+    "raw_sha256": "cb78c7e7b271df2e36509a77dda2e2c8f9598f3f1e09b3c93862d95bf4c985a5",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0090.json",
+    "acquisition_receipt_sha256": "22985edd693d76899b37641d8212a3f4fce9f6c7a695a5276c1a57d016b64908",
+    "captured_version_id": "arxiv:2506.19109v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        24,
+        56
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_INVENTORY_ONLY",
+    "semantic_rationale": "Actual corpus construction and all listed scanner-family definitions/experimental scoring descriptions read. Later policy refinements/figure templates not all inspected; combined policy details limited to declared defaults.",
+    "locator_sha256": "76737a4e92e5917e9eb7edcd7893f8f5484010b98a98bfb7a11186b7becb7de7",
+    "locators": [
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S2.SS1.p6.1",
+        "section": "II-A Prompt leak techniques",
+        "sha256": "01b14af2e319cd93f1fac15ceb957d803d88235f11fecce97d00e2a52fbd28ce"
+      },
+      {
+        "n": 25,
+        "kind": "heading",
+        "id": "S2.SS2",
+        "section": "II-B Target application",
+        "sha256": "2329540df7c91d3e81fa6d4e2f816f8cc5286c1f39b1e7ec4bf5a02b05d4fcb0"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S2.SS2.p1.1",
+        "section": "II-B Target application",
+        "sha256": "34889f5a5f620b510bb566dee2c2f9782d4da63c65e8f6e2bec00b6b703718a9"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S2.SS2.p2.1",
+        "section": "II-B Target application",
+        "sha256": "32f457401577c597ee9c4b4093aebad724ad86985ecf68f119e1dfbd5686ecb2"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S2.SS2.p3.1",
+        "section": "II-B Target application",
+        "sha256": "cd418cb83c60d6317f850404c11be22c6f240fd9dadcd98f2de08b4c546e0285"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S2.SS2.p4.1",
+        "section": "II-B Target application",
+        "sha256": "4dad8072b5faaa77ee74d63fb80b3d1164875581816f09bdf49b181792e4bf41"
+      },
+      {
+        "n": 30,
+        "kind": "heading",
+        "id": "S2.SS3",
+        "section": "II-C Attack dataset construction",
+        "sha256": "f71e0c827c686df9d1e8359629d1d999e68cdb6fbed5cb53418f53828209e53b"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S2.SS3.p1.1",
+        "section": "II-C Attack dataset construction",
+        "sha256": "953d4bba2b53054974892486c5c431b8607cab93fb105e55de3746a152315a7d"
+      },
+      {
+        "n": 32,
+        "kind": "heading",
+        "id": "S2.SS4",
+        "section": "II-D Evaluated detections and Experiments",
+        "sha256": "4a63fd67dddb6e99fffb42532fea06b38a13fd1842d70e04fcb4df94da00fa0e"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S2.SS4.p1.1",
+        "section": "II-D Evaluated detections and Experiments",
+        "sha256": "21d26a22fb9727495ab6c01c8a505d90dc451979c550ee735ab2baa5cb6b497e"
+      },
+      {
+        "n": 34,
+        "kind": "heading",
+        "id": "S2.SS4.SSS1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "2917742bfabe44b4cf5ead08c60210010bf2d725318c1aad54d7bf32079cd003"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p1.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "a4b0378f0f215f08aaf6cf0c5ee3d84ce8bde61b3665b75b221ae328990e3c3d"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p2.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "b73cf9021a303838e7742badc156576dde61d41cf978e0f83f7cf5983ef0c8b9"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p3.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "45465fdd99bc5121704b6d4bbc1be58bb57382a431824091c4325578c12e00c4"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p4.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "bf36302a4e2f35d60f02604d9f5796b380d3a2f8cb05c05b7514112858c2411e"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p5.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "593ed11f1f8c071ab1703ae60f250b13021ec055e52d9d9561f056b7a352e86d"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p6.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "aa168931b3ba22f4588cbb610105756dce48618dbe8467046c50e06584dd1602"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p7.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "cf041971e4aa9e42a6cb71887a5d00e8b91cfdb9c355b70f97d4f8b93603ca76"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p8.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "833789a608fb0b66e0caff51126d523eaa467999588be4501c1b5c71ba21bf57"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p9.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "ab3bddb5befb2997e463a8f082f13c2ebae5ae384e7cc9521914f37a0defe31d"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p10.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "59386e886b435d5cbfdd87369ea899426c61dcbbfb0424d4db8b8dbb548d3956"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p11.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "130b833ce20b63208b8c4b46b64e38aceddbd9034fcdbf18607f73ad86d609b7"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p12.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "4da666539a9cd48200c41cc641ce2c6af1580b6f78572ea1b42d576896624267"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p13.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "eeccfae679a03bf4207825d1dfc8a61af99d89bd12bd9138cc402b95ad547aa4"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p14.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "03f0b57b8ce99e1511f872e9bef00b7fdc91126d27dd41a50d66eaabfcc2c80e"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS1.p15.1",
+        "section": "II-D 1 Descriptions of detection functions",
+        "sha256": "4dbd6b8888f43fc395e026e5eb7a1146e945687acdf7fc00eac4d70c2364885d"
+      },
+      {
+        "n": 50,
+        "kind": "heading",
+        "id": "S2.SS4.SSS2",
+        "section": "II-D 2 Conducted experiments and analyzes",
+        "sha256": "3c9df9346ae7c4f341d63789c2c8d6a72dfd92dd734fbd9d15b1ecbe7e1f99ba"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS2.p1.1",
+        "section": "II-D 2 Conducted experiments and analyzes",
+        "sha256": "179093770f95d9676882dc4d4530b7df790097cd7867f29371878da3934877e7"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS2.p2.1",
+        "section": "II-D 2 Conducted experiments and analyzes",
+        "sha256": "815162fd5f06e88d8501ecbdb2328aa6b0af61ad2fc9296239cbb745aab3f5fb"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS2.p3.1",
+        "section": "II-D 2 Conducted experiments and analyzes",
+        "sha256": "0fd570429750dd3b35fedc50e866cce4ebdf47aa62074e43dc9ce56510acd7d3"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS2.p4.1",
+        "section": "II-D 2 Conducted experiments and analyzes",
+        "sha256": "f2fdd63208ac7f9e04a6e8ac5ab543e63f1e7891df57d9b55b274a61f6f9e5bd"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS2.p5.1",
+        "section": "II-D 2 Conducted experiments and analyzes",
+        "sha256": "2ea880d863a8d5edf0c09e5b90db3498c718f68cdea74ad79b88b626977f8bd0"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S2.SS4.SSS2.p6.1",
+        "section": "II-D 2 Conducted experiments and analyzes",
+        "sha256": "c46538222cd9d208186fc48bf28deac6ca58b65d2de68e210de92af6b34af08b"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Dataset construction explicitly tests attack candidates for target system-prompt leakage and retains working cases, adding legitimate prompts. English-alphabet leet scheme explicit; not full language composition.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main scanner descriptions explicitly distinguish input-only transformer/Yara/vector/heuristic/secondary LLM safety-score scanners and full/sentence preprocessing. Original protected response not required for scoring; attack corpus filtering used target success.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Prompt-response embedding similarity and canary checks explicitly consume protected output; aggregation policies distinct from input-only constituent scanners.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly retains material method/arm omissions. The approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

@@ -1,0 +1,459 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0029",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T13:03:26.282703+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0029.provider.0001.json",
+  "provider_packet_sha256": "20dfa9cad86990ece38ef0f9474451d02742b23ae0bc10e240449c020461aafe",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2502.05174v4",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\fe8ff3bf4095323401ef37f4955ffcacf4ed28ff8de1451f2e28873f6444d250",
+    "raw_sha256": "fe8ff3bf4095323401ef37f4955ffcacf4ed28ff8de1451f2e28873f6444d250",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0059.json",
+    "acquisition_receipt_sha256": "b164d22b90eec440e29e8332b5c723612f7917cf2e2208cc27d0b8a20a5df61b",
+    "captured_version_id": "arxiv:2502.05174v4",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        18,
+        43
+      ],
+      [
+        149,
+        175
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "MELON main18-23 compares generated tool calls in original and masked task-neutral agent runs using a cache and embedding similarity. Original-run action generation is distinct from pre-action input detector baselines. False preserves remaining appendix task-neutral/few-shot/tool-transformation detail and incomplete full sensitivity context. Named positive input-detector facts are independently supported; no whole-work absence inferred.",
+    "visual_check": null,
+    "locator_sha256": "3cfa68ca4c450b82250b9eedd17120dfefb3305c8c4166f89d243982f2d867b3",
+    "locators": [
+      {
+        "index": 18,
+        "paragraph_id": "S3.SS2.p5.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Technical Overview",
+        "text_sha256": "c59354ef286114cd0373d824f0bd2c1b8a742f2ea71e9eeb3f1d992cf6716972"
+      },
+      {
+        "index": 19,
+        "paragraph_id": "S3.SS2.p6.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Technical Overview",
+        "text_sha256": "b9f6d4956e4c717335b218744e44b1c277fa08c8b77c51b98e14fa24e68f650b"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Technical Details",
+        "text_sha256": "b6f8a203bedbba9aaa1fa916c359214b3d20544db6d4d109c2d71ca48deb5f51"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S3.SS3.p2.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Technical Details",
+        "text_sha256": "1e9e4248a275944cd37bc43e9c0ee4ad65c5ff5c91735cd362e19e7efa6a08a0"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S3.SS3.p3.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Technical Details",
+        "text_sha256": "13cbc9938b2340c747ed1f6ba17410909fc1eb28c7623174bbca2770db5f6d7a"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S3.SS3.SSS1.p1.1",
+        "section_id": "S3.SS3.SSS1",
+        "heading": "3.3.1 Implementation and Overhead Analysis",
+        "text_sha256": "e3ddd1997c703d398aff92472d663b86e051f07dc2e77d145c1c1766d69567a4"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S3.SS3.SSS1.p2.1",
+        "section_id": "S3.SS3.SSS1",
+        "heading": "3.3.1 Implementation and Overhead Analysis",
+        "text_sha256": "f810104bd8b79f1c120c3b24770bbf527e20db43a1d85509dd4fd282fdaaa71a"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.SS4.SSS1.p1.1",
+        "section_id": "S3.SS4.SSS1",
+        "heading": "3.4.1 Ensemble Detector",
+        "text_sha256": "60a7ae0f864373d980ae4798413a18c30acce331f2b906ef7cb30840c7e9c99a"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.SS4.SSS1.p2.1",
+        "section_id": "S3.SS4.SSS1",
+        "heading": "3.4.1 Ensemble Detector",
+        "text_sha256": "0ac771d8cdd31f589ab55a5493c6ed51c2cf1a772daef326d716c5e1083c3c51"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS4.SSS2.p1.1",
+        "section_id": "S3.SS4.SSS2",
+        "heading": "3.4.2 Error Bounds",
+        "text_sha256": "10b30c42d35cff55eacf11573b1d00b1530fb8a7cd9a01c28da8b92c6aecc049"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.SS4.SSS2.p1.2",
+        "section_id": "S3.SS4.SSS2",
+        "heading": "3.4.2 Error Bounds",
+        "text_sha256": "7633ff9079ceb548526679a99aca53b7ce5aff5a4ad6d16940d42f16a2a3e2d5"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS4.SSS2.p2.1",
+        "section_id": "S3.SS4.SSS2",
+        "heading": "3.4.2 Error Bounds",
+        "text_sha256": "fc2c39c7aa2897ef19ccdd12c80fc22c68631b88bb8886bf85dd29a9e2cd67e0"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS4.SSS2.p3.1",
+        "section_id": "S3.SS4.SSS2",
+        "heading": "3.4.2 Error Bounds",
+        "text_sha256": "955356f65268541791a566ca3ef674d680a2b16f8f926b0be1ff90227f7359ba"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Experiment Setup",
+        "text_sha256": "336e68959018f2f39afdae00f5365980f25e468f0bdbbfc6f1dca0e8abe10714"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S4.SS1.p2.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Experiment Setup",
+        "text_sha256": "f88b854cbb09996880257fadbfe3421167dd8acf751f54f9dad874de8c07ef83"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S4.SS1.p3.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Experiment Setup",
+        "text_sha256": "548f1f6f4c8b9a71b5ff2bbdda9f8b962897189d05e4abd4f2ec3904344bdf0e"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S4.SS1.p4.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Experiment Setup",
+        "text_sha256": "2d4e988e636a3c6081c831ab537cbef8e08a75eabd51d4f5810187ea06a704c3"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Experiment Results",
+        "text_sha256": "2294b84a165511496fead5b6342eda4cf7624c6287d6335f1fc0af68a39b1fcf"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S4.SS2.p2.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Experiment Results",
+        "text_sha256": "934573d6880a73604ba037ec5f7afcdc34fae3adea55949aaeee71d415c7f89d"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S4.SS2.p3.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Experiment Results",
+        "text_sha256": "91974fef83d861c03ca4e72a2596d7659f58f701fb45a8383691be03180b9e9e"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S4.SS2.p4.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Experiment Results",
+        "text_sha256": "f635f2684ee43a8507fc9f161d222db5bc828c8f344cce6505f88074f4213a4c"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S4.SS2.p5.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Experiment Results",
+        "text_sha256": "3f505ced406f8e5bd90338171b7a06c649fe637d7a8c9558f853f2a336b8c5d8"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S4.SS3.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Ablation Study and Sensitivity Test",
+        "text_sha256": "9f54f9144ac9bf09c32b6b43a1ae3944d98afae175ef2b05f3d0e4c3abcaa886"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S4.SS3.p2.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Ablation Study and Sensitivity Test",
+        "text_sha256": "88207cbff81f8d86c39c2315e2016a145ada9bb785a3f2ffda269353c31c0774"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S4.SS3.p3.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Ablation Study and Sensitivity Test",
+        "text_sha256": "7d22596150498200e6a5e61f39860102f4fe9ae14c344e0cc1c119c79111ea13"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S4.SS3.p4.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Ablation Study and Sensitivity Test",
+        "text_sha256": "7b52df2666d61fa21cc63359a64ed0b8c579bf7dff697eaca67f91e721870afb"
+      },
+      {
+        "index": 149,
+        "paragraph_id": "A3.SS2.SSS1.p1.1",
+        "section_id": "A3.SS2.SSS1",
+        "heading": "C.2.1 DeBERTa Detector",
+        "text_sha256": "41ba8131386b6e40f74ded08b87e93f819e4014ee2187cbfa637731d8e1853f7"
+      },
+      {
+        "index": 150,
+        "paragraph_id": "A3.SS2.SSS2.p1.1",
+        "section_id": "A3.SS2.SSS2",
+        "heading": "C.2.2 LLM Detector",
+        "text_sha256": "fb107174ad285741ba417fc94add38c17f02e8e89ad27cc950dd9f71d49e12a7"
+      },
+      {
+        "index": 151,
+        "paragraph_id": "A3.SS2.SSS3.p1.1",
+        "section_id": "A3.SS2.SSS3",
+        "heading": "C.2.3 Delimiting",
+        "text_sha256": "faaf8a47b4017014e002321536aa3114502cb367fe3a8afa2869e5fa91067dab"
+      },
+      {
+        "index": 152,
+        "paragraph_id": "A3.SS2.SSS3.p2.1",
+        "section_id": "A3.SS2.SSS3",
+        "heading": "C.2.3 Delimiting",
+        "text_sha256": "4be261c018f23deac37f17f24abb5f42c4f32044fa3116d7b618446fb03ca09e"
+      },
+      {
+        "index": 153,
+        "paragraph_id": "A3.SS2.SSS3.p2.2",
+        "section_id": "A3.SS2.SSS3",
+        "heading": "C.2.3 Delimiting",
+        "text_sha256": "f535e2c57ca6487fade58cf42142beeba66fbac08a7e4c2a0f4ea4a578c8391d"
+      },
+      {
+        "index": 154,
+        "paragraph_id": "A3.SS2.SSS3.p2.3",
+        "section_id": "A3.SS2.SSS3",
+        "heading": "C.2.3 Delimiting",
+        "text_sha256": "ce5452151e703b3be0de4d9fe913d08d63c560ae6f79d2656398d7648a83503b"
+      },
+      {
+        "index": 155,
+        "paragraph_id": "A3.SS2.SSS3.p2.4",
+        "section_id": "A3.SS2.SSS3",
+        "heading": "C.2.3 Delimiting",
+        "text_sha256": "15db962653030cfe91e85551198249af23710b1465937bb5086bc46e723baf93"
+      },
+      {
+        "index": 156,
+        "paragraph_id": "A3.SS2.SSS3.p2.5",
+        "section_id": "A3.SS2.SSS3",
+        "heading": "C.2.3 Delimiting",
+        "text_sha256": "18bc034613b83558d0054912aabec1c1d7af0b0513c1e3f05d0ac0cc30bbc7d6"
+      },
+      {
+        "index": 157,
+        "paragraph_id": "A3.SS2.SSS3.p2.6",
+        "section_id": "A3.SS2.SSS3",
+        "heading": "C.2.3 Delimiting",
+        "text_sha256": "ce5452151e703b3be0de4d9fe913d08d63c560ae6f79d2656398d7648a83503b"
+      },
+      {
+        "index": 158,
+        "paragraph_id": "A3.SS2.SSS3.p2.7",
+        "section_id": "A3.SS2.SSS3",
+        "heading": "C.2.3 Delimiting",
+        "text_sha256": "425b81014b3361264dcdd0f63210644e04a5fd19533a612fb387baed5e0c07d9"
+      },
+      {
+        "index": 159,
+        "paragraph_id": "A3.SS2.SSS3.p2.8",
+        "section_id": "A3.SS2.SSS3",
+        "heading": "C.2.3 Delimiting",
+        "text_sha256": "2bc92cfeabaab3bd02e21c4b903f08322e0670dac94ef787b9bca4070de6e714"
+      },
+      {
+        "index": 160,
+        "paragraph_id": "A3.SS2.SSS3.p2.9",
+        "section_id": "A3.SS2.SSS3",
+        "heading": "C.2.3 Delimiting",
+        "text_sha256": "beb78764b53ceecc2574d3f9959f622aad09d91d46757ca5762a1e885628bcfa"
+      },
+      {
+        "index": 161,
+        "paragraph_id": "A3.SS2.SSS3.p2.10",
+        "section_id": "A3.SS2.SSS3",
+        "heading": "C.2.3 Delimiting",
+        "text_sha256": "ce5452151e703b3be0de4d9fe913d08d63c560ae6f79d2656398d7648a83503b"
+      },
+      {
+        "index": 162,
+        "paragraph_id": "A3.SS2.SSS3.p2.11",
+        "section_id": "A3.SS2.SSS3",
+        "heading": "C.2.3 Delimiting",
+        "text_sha256": "0f02c6bad08d9ff1858d26cf1af766e336d71e34c2e74e8c7d417b3550cbfc44"
+      },
+      {
+        "index": 163,
+        "paragraph_id": "A3.SS2.SSS4.p1.1",
+        "section_id": "A3.SS2.SSS4",
+        "heading": "C.2.4 Repeat Prompts",
+        "text_sha256": "a6dc93c06c25bea235b5ee2bc5b93858aafc5c3225a7764cf5e59fb019cd2fe9"
+      },
+      {
+        "index": 164,
+        "paragraph_id": "A3.SS2.SSS4.p2.1",
+        "section_id": "A3.SS2.SSS4",
+        "heading": "C.2.4 Repeat Prompts",
+        "text_sha256": "e26b621b25e126c19a5382e0b0ce14bf3d135f8f7308ffddabb4bf28c61a8b72"
+      },
+      {
+        "index": 165,
+        "paragraph_id": "A3.SS2.SSS4.p2.2",
+        "section_id": "A3.SS2.SSS4",
+        "heading": "C.2.4 Repeat Prompts",
+        "text_sha256": "1460e1d3ed8ed5c69c909c38e11df46cf53f0a6451311c897e276d20e812331e"
+      },
+      {
+        "index": 166,
+        "paragraph_id": "A3.SS2.SSS4.p2.3",
+        "section_id": "A3.SS2.SSS4",
+        "heading": "C.2.4 Repeat Prompts",
+        "text_sha256": "e353ca524b479842b33a0177273b9d1ece43940edfdc55271478b1e6fa574995"
+      },
+      {
+        "index": 167,
+        "paragraph_id": "A3.SS2.SSS4.p2.4",
+        "section_id": "A3.SS2.SSS4",
+        "heading": "C.2.4 Repeat Prompts",
+        "text_sha256": "895361ffbf88d5a8c40d47f8dd3d03df2042ca9360d08738bcbb4faa39495404"
+      },
+      {
+        "index": 168,
+        "paragraph_id": "A3.SS2.SSS4.p2.5",
+        "section_id": "A3.SS2.SSS4",
+        "heading": "C.2.4 Repeat Prompts",
+        "text_sha256": "ef973af62d89aa5ec59dacb215d59cae8cc7c60cab3401cb47180505987c363d"
+      },
+      {
+        "index": 169,
+        "paragraph_id": "A3.SS2.SSS4.p2.6",
+        "section_id": "A3.SS2.SSS4",
+        "heading": "C.2.4 Repeat Prompts",
+        "text_sha256": "895361ffbf88d5a8c40d47f8dd3d03df2042ca9360d08738bcbb4faa39495404"
+      },
+      {
+        "index": 170,
+        "paragraph_id": "A3.SS2.SSS4.p2.7",
+        "section_id": "A3.SS2.SSS4",
+        "heading": "C.2.4 Repeat Prompts",
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "index": 171,
+        "paragraph_id": "A3.SS2.SSS4.p2.8",
+        "section_id": "A3.SS2.SSS4",
+        "heading": "C.2.4 Repeat Prompts",
+        "text_sha256": "e26b621b25e126c19a5382e0b0ce14bf3d135f8f7308ffddabb4bf28c61a8b72"
+      },
+      {
+        "index": 172,
+        "paragraph_id": "A3.SS2.SSS4.p2.9",
+        "section_id": "A3.SS2.SSS4",
+        "heading": "C.2.4 Repeat Prompts",
+        "text_sha256": "1460e1d3ed8ed5c69c909c38e11df46cf53f0a6451311c897e276d20e812331e"
+      },
+      {
+        "index": 173,
+        "paragraph_id": "A3.SS2.SSS5.p1.1",
+        "section_id": "A3.SS2.SSS5",
+        "heading": "C.2.5 Tool Filter",
+        "text_sha256": "b9876c9e23f939173f67c0a9c7966a4757ed5409be70d4ad41b0bc30df2c4597"
+      },
+      {
+        "index": 174,
+        "paragraph_id": "A4.SS1.p1.1",
+        "section_id": "A4.SS1",
+        "heading": "D.1 AgentDojo ( Debenedetti et al., 2024 )",
+        "text_sha256": "6b5302b03f1e00c8840526ef9baee4d221a3e929ab171dbdff3a26a5872a0cd0"
+      },
+      {
+        "index": 175,
+        "paragraph_id": "A4.SS2.p1.1",
+        "section_id": "A4.SS2",
+        "heading": "D.2 VWA-Adv ( Wu et al., 2024a )",
+        "text_sha256": "549b8d6a034bcd3dc4294e75a1de3c268d0b5c5b78fa02858aa5282518720f97"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "MELON main18-23 compares generated tool calls in original and masked task-neutral agent runs using a cache and embedding similarity. Original-run action generation is distinct from pre-action input detector baselines.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main18-23 and41-43 verifies MELON/MELON-Aug and cache/full-action/masking/threshold variants. Primary detection compares a generated protected agent tool call with auxiliary masked-run tool calls; it is not a pre-answer input-only score.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main33 and36 explicitly places DeBERTa/GPT-4o analysis on tool output before the agent generates an action. Actual Appendix149-150 supplies the ProtectAI classifier and yes/no injection detector prompt. No original agent answer is needed by those comparator detectors.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main33-34 and Appendix151-173 verifies delimiting, repeated original user prompt and tool-whitelist baselines. Their downstream task-completion/attack behavior is assessed through agent trajectories.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main23 prints the task-neutral English instruction; actual Appendix150 prints the evaluated English detector template. These verify instruction components only, not full AgentDojo item-language composition.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False preserves remaining appendix task-neutral/few-shot/tool-transformation detail and incomplete full sensitivity context. Named positive input-detector facts are independently supported; no whole-work absence inferred.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

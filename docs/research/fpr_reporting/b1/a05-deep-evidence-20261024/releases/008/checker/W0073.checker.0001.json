@@ -1,0 +1,270 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0073",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T13:03:27.129034+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0073.provider.0001.json",
+  "provider_packet_sha256": "52a789359131437466226924cbd0fd145e2170cf7d0ae93e7d3969c6d8e28a2c",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2508.17155v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\e42f5640b7346eacfbff4d63135106bc400fd553dc952ada1e310e36a7bb8537",
+    "raw_sha256": "e42f5640b7346eacfbff4d63135106bc400fd553dc952ada1e310e36a7bb8537",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0113.json",
+    "acquisition_receipt_sha256": "2d806c2a0c75e1f743ffc330c6be87aa0eb568bbeca4a111d93a9967aa85a604",
+    "captured_version_id": "arxiv:2508.17155v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        10,
+        37
+      ]
+    ],
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "Main12-16 defines temporal check/use risks and explicitly removes prompt-injection tasks when constructing the benchmark. Main18-30 and actual Appendix33-34 defines the declared rewrite, SIM and tool-fusion families. True is verified for all declared material main and Appendix A/B families after complete10-37 reads. Appendix B illustrates the same fused-call procedure, not an unaccounted classifier family. Actual benchmark construction15 explicitly excludes injection tasks; English rewrite/classification templates33-34 support components only, not full source-corpus language.",
+    "locator_sha256": "b11e999eb59b772d38f3658d42d62b0d3ec9a4dabcdf0f6fd22a91f2cb2e075e",
+    "locators": [
+      {
+        "n": 10,
+        "kind": "heading",
+        "id": "S3",
+        "section": "3 Methodology",
+        "sha256": "cc061b940bbc05a6a0967e9b4cf2288de8f416316f0a1442e03d806ffc056cbe"
+      },
+      {
+        "n": 11,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "section": "3.1 Definition of TOCTOU in LLM-Enabled Agents",
+        "sha256": "1e9ebd2eb02bdb71ae42621c2b4ef7cb95707a43de61f928e70ee8de2d34e21a"
+      },
+      {
+        "n": 12,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "section": "3.1 Definition of TOCTOU in LLM-Enabled Agents",
+        "sha256": "3267bc7347097972e4cf43e72d5d6a11d1c581fee3501a27ba856cc997408fb8"
+      },
+      {
+        "n": 13,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "section": "3.2 TOCTOU-Bench: Dataset for Evaluating TOCTOU Vulnerability",
+        "sha256": "e0a4ac3186a2e5eeca769ff04bc33e41c7f53a1a33528faa1e45daa602065f61"
+      },
+      {
+        "n": 14,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.1",
+        "section": "3.2 TOCTOU-Bench: Dataset for Evaluating TOCTOU Vulnerability",
+        "sha256": "2e9ea13d3ba3aa82f7257a29cc89ef014b8078c76e3443c7608b4012d2919e63"
+      },
+      {
+        "n": 15,
+        "kind": "paragraph",
+        "id": "S3.SS2.p2.1",
+        "section": "3.2 TOCTOU-Bench: Dataset for Evaluating TOCTOU Vulnerability",
+        "sha256": "f500e8cb3b147f2c28a7dce7abd0630673808143fe4f2db7303d0833677ee004"
+      },
+      {
+        "n": 16,
+        "kind": "paragraph",
+        "id": "S3.SS2.p3.1",
+        "section": "3.2 TOCTOU-Bench: Dataset for Evaluating TOCTOU Vulnerability",
+        "sha256": "37869f442a1b96f922e0b0e3bae8b8ce39a33fd0ba9581a58e63d82b7771b2fd"
+      },
+      {
+        "n": 17,
+        "kind": "heading",
+        "id": "S3.SS3",
+        "section": "3.3 Detecting and Mitigating TOCTOU in LLM-Enabled Agents",
+        "sha256": "603f8feea4e82f68094c36b38e1e1fcc54223dc66b198f21b2d4f25f3d9a2f25"
+      },
+      {
+        "n": 18,
+        "kind": "paragraph",
+        "id": "S3.SS3.p1.1",
+        "section": "3.3 Detecting and Mitigating TOCTOU in LLM-Enabled Agents",
+        "sha256": "75738912d76d4c7fd98b8df7489514753e81c2a7cc8b0d2cbc4f11fabaabba62"
+      },
+      {
+        "n": 19,
+        "kind": "paragraph",
+        "id": "S3.SS3.p2.1",
+        "section": "3.3 Detecting and Mitigating TOCTOU in LLM-Enabled Agents",
+        "sha256": "65024de7dc392fdb570cf43d8854d7926d5e1f2f5f1c305fd2eead210ba5667f"
+      },
+      {
+        "n": 20,
+        "kind": "paragraph",
+        "id": "S3.SS3.p3.1",
+        "section": "3.3 Detecting and Mitigating TOCTOU in LLM-Enabled Agents",
+        "sha256": "86e59c63b2891f8ef6fa132af3d36a21c238bbc543b93135d6e31c5bb46043cf"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S3.SS3.p4.1",
+        "section": "3.3 Detecting and Mitigating TOCTOU in LLM-Enabled Agents",
+        "sha256": "22a2fdb892aa2226fa598fb390819017ff768f60ac05ea51631d2ddac1a92a53"
+      },
+      {
+        "n": 22,
+        "kind": "paragraph",
+        "id": "S3.SS3.p5.1",
+        "section": "3.3 Detecting and Mitigating TOCTOU in LLM-Enabled Agents",
+        "sha256": "6be8916148bf6e03ca1d191b4f12c4cb810115ed6a103771103f8bbc95c0dd1e"
+      },
+      {
+        "n": 23,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Evaluation",
+        "sha256": "cc4f57d26bda2f5e14a1b83e7d1124ee1df046895ca3f0870d6717b84dfbb32b"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "section": "4 Evaluation",
+        "sha256": "012f35d6b0f93109fe7f45cc67aa47bbd00afe490763c3cacd357eab148ed28d"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S4.p2.1",
+        "section": "4 Evaluation",
+        "sha256": "59d6512116a8e77e27e5a69626f784e8eba3a87f6092ff12ff820ee9de093781"
+      },
+      {
+        "n": 26,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Effectiveness of Our Countermeasures",
+        "sha256": "11f4718a08d3a753cbd27dc535a8c75437ee407d1d371f01a6814d2ceed414d9"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1 Effectiveness of Our Countermeasures",
+        "sha256": "54d60f9d4aa96b494185113e389b5ba53ef0c0b4c38e1317789f8bd1858a5523"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "section": "4.1 Effectiveness of Our Countermeasures",
+        "sha256": "2c8238bb08382aec684835c46b3fdfcec6178c17015f797c32a4ce9b4b94c79f"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S4.SS1.p3.1",
+        "section": "4.1 Effectiveness of Our Countermeasures",
+        "sha256": "def95ad26a5d6c7fca5fb9991887ce76ec66906cd4557b2c95e18101d59ab1ae"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S4.SS1.p4.1",
+        "section": "4.1 Effectiveness of Our Countermeasures",
+        "sha256": "4314667a58038cd2e33720dc484eaf2c5b445c0a00904e5fbe80084116c259d4"
+      },
+      {
+        "n": 31,
+        "kind": "heading",
+        "id": "bib",
+        "section": "References",
+        "sha256": "69824d3b0e70ca6aaa0da1613b65fd914c442bf1f7ad1bb22bcdfbdfe1a05e39"
+      },
+      {
+        "n": 32,
+        "kind": "heading",
+        "id": "A1",
+        "section": "Appendix A System Prompts Used in Our Countermeasures",
+        "sha256": "0d1135cb1258882b63c3955f4df19ca5d73c5305ca7d5ec8c612574e17f880dd"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "A1.p1",
+        "section": "Appendix A System Prompts Used in Our Countermeasures",
+        "sha256": "0bf14a2bd7d10da6c9ec43225e14a1e2fac718001e272424a44a8245b1af8a2b"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "A1.p2",
+        "section": "Appendix A System Prompts Used in Our Countermeasures",
+        "sha256": "6d2791a7cac092109e777205d8d56314b4dd8925f41d7d55595cfde040a84aef"
+      },
+      {
+        "n": 35,
+        "kind": "heading",
+        "id": "A2",
+        "section": "Appendix B Tool Fuser Examples",
+        "sha256": "537da956d2a955a5959e116f71d10648b52fd0ff99b6998348585879604f1ade"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "A2.p1",
+        "section": "Appendix B Tool Fuser Examples",
+        "sha256": "068a7514dc1b82ae86058d5ef9bc07ae8de6a43311bf2e93903564f2b60ed43d"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "A2.p2",
+        "section": "Appendix B Tool Fuser Examples",
+        "sha256": "69334ea01cc74cad1e8153f151858d0e34f8d23b59179d477ef5fcbf0fc177ec"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main12-16 defines temporal check/use risks and explicitly removes prompt-injection tasks when constructing the benchmark. Main18-30 and actual Appendix33-34 defines the declared rewrite, SIM and tool-fusion families.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual19 and33 defines rewriting user query plus tools. Evaluation27 compares generated plans and hand-labeled trajectories; the rewrite operation itself does not need an original task answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual20-22 and34 defines description-based ordered tool-pair labels, FSA compilation/runtime checking, and atomic fused calls. Pair classification can use tool definitions/order without task response; runtime operates on generated calls. Combined evaluation24 and30 covers all named families.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True is verified for all declared material main and Appendix A/B families after complete10-37 reads. Appendix B illustrates the same fused-call procedure, not an unaccounted classifier family. Actual benchmark construction15 explicitly excludes injection tasks; English rewrite/classification templates33-34 support components only, not full source-corpus language.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

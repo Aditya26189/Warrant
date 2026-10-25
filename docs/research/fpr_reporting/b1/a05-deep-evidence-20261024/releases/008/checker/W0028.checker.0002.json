@@ -1,0 +1,665 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0028",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T12:13:16.815408+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0028.provider.0002.json",
+  "provider_packet_sha256": "53b73d63f78eae5d2e2071a920b42a492c8f4af2d7c55a087fbf4c5016370994",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2501.15145v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\da179e45d3c648a91de0a2c04e19a4722003dc8aba096cf47b9c5924e013e8e3",
+    "raw_sha256": "da179e45d3c648a91de0a2c04e19a4722003dc8aba096cf47b9c5924e013e8e3",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0057.json",
+    "acquisition_receipt_sha256": "e6a7e280cdeb8f4e94e804a9eb174d0160cb4762c638c8bfa751f030e5eb26dd",
+    "captured_version_id": "arxiv:2501.15145v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        21,
+        103
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "Actual main methods26-53 define benchmark construction, binary request classifiers and calibrated score decisions. Appendix C.1 and C.2 specify two distinct evaluated trial types. True is verified for all declared material main and Appendix A/B/C families after full21-103 reads, including model/size/composition variations and separate task-output versus detector-evasion trials. English detector-targeted construction remains distinct from unknown main-evaluation language composition.",
+    "visual_check": null,
+    "locator_sha256": "06dc60bfd7ae01212e298242eb5109af14d2cb49774e22a39aed443c250e0b8f",
+    "locators": [
+      {
+        "index": 21,
+        "paragraph_id": "S2.I2.i1.p1.1",
+        "section_id": "S2.SS4",
+        "heading": "2.4. A taxonomy for LLM requests",
+        "text_sha256": "843b6d7a2593e3acb3b3bb94f71cb128a38047bf854c651e56f33bfddd4d056e"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S2.I2.i2.p1.1",
+        "section_id": "S2.SS4",
+        "heading": "2.4. A taxonomy for LLM requests",
+        "text_sha256": "1ef4f655db319d2348e6b0467a33fe533124792654a38c0e21724568f1bf3e9b"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S2.SS4.p3.1",
+        "section_id": "S2.SS4",
+        "heading": "2.4. A taxonomy for LLM requests",
+        "text_sha256": "43e152f2420ffb69e0ac8b00282f27677d0f4206df9ad15afaa8911a10ac0aff"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S2.SS4.p4.1",
+        "section_id": "S2.SS4",
+        "heading": "2.4. A taxonomy for LLM requests",
+        "text_sha256": "7e622dda0a9b01cd5a4068d442f309db0686ddff97ac7d31a02dd708315fba77"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.p1.1",
+        "section_id": "S3",
+        "heading": "3. Design Framework",
+        "text_sha256": "3464e8875355e1fac6622b652ec779af865c77dcec39eec2bba29e1ae45bac0a"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1. PromptShield benchmark",
+        "text_sha256": "c15af8698f68a1ba682bef303afc85c3371fe1b9b08d2be9bf692f2dcdb8187d"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS1.SSS1.p1.1",
+        "section_id": "S3.SS1.SSS1",
+        "heading": "3.1.1. Benign data",
+        "text_sha256": "3fc7ccc65dc8bbee68324da66a1c76c3d2a66b143477ffb814f3d9c33fc20134"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.SS1.SSS1.Px1.p1.1",
+        "section_id": "S3.SS1.SSS1.Px1",
+        "heading": "Conversational data",
+        "text_sha256": "4cba70b04c66722c5227115505d7f612fa4777e46035a2e17fecbf626eed0f51"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS1.SSS1.Px2.p1.1",
+        "section_id": "S3.SS1.SSS1.Px2",
+        "heading": "Application-structured data",
+        "text_sha256": "fb1866897676d08e76c030ce23228cdd684b0b169152a6fce71c996b2982cb9a"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS1.SSS1.Px2.p2.1",
+        "section_id": "S3.SS1.SSS1.Px2",
+        "heading": "Application-structured data",
+        "text_sha256": "53a22854dbdf31aec5ea0154bbb3447e6d94cc6db80516761e1c93390fd0125c"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S3.SS1.SSS2.p1.1",
+        "section_id": "S3.SS1.SSS2",
+        "heading": "3.1.2. Injection data",
+        "text_sha256": "e3ab38e5e77aadc6933087b4dedcf1fedd1224756bfc3d4839f215c66ab81fa2"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S3.SS1.SSS2.Px1.p1.1",
+        "section_id": "S3.SS1.SSS2.Px1",
+        "heading": "Injection generation methods",
+        "text_sha256": "3c1e589ae683e17acc35f95fe1bc45be33259118e0323048427e87dc62a124ac"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S3.SS1.SSS2.Px1.p3.1",
+        "section_id": "S3.SS1.SSS2.Px1",
+        "heading": "Injection generation methods",
+        "text_sha256": "e54e5040ed0fd057500296a3a6587f44c986c9398ffa188df07d07080cb62077"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S3.SS1.SSS2.Px1.p5.1",
+        "section_id": "S3.SS1.SSS2.Px1",
+        "heading": "Injection generation methods",
+        "text_sha256": "0a8ca748a22259672088ea85295b95224daf93f46fecb107d99ce737ef15afc6"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S3.SS1.SSS2.Px1.p6.1",
+        "section_id": "S3.SS1.SSS2.Px1",
+        "heading": "Injection generation methods",
+        "text_sha256": "4907c3decf8489e2ce3d8ce5cbf9289f14199d7b543b721bba6c972ab1be7ea1"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S3.SS1.SSS2.Px1.p8.1",
+        "section_id": "S3.SS1.SSS2.Px1",
+        "heading": "Injection generation methods",
+        "text_sha256": "e55d8f3512f202be9c32fe18b96de90ab007310b3941debfd3597737d8500f69"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S3.SS1.SSS2.Px1.p10.1",
+        "section_id": "S3.SS1.SSS2.Px1",
+        "heading": "Injection generation methods",
+        "text_sha256": "67fd357ae52ff2339d8cba130771650e004c173f1b224156b701d9bb2eba75f0"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S3.SS1.SSS2.Px2.p1.1",
+        "section_id": "S3.SS1.SSS2.Px2",
+        "heading": "Naturally occurring injections",
+        "text_sha256": "5aea658a21b2a465a1687f6e555fee82bdd8457fb6642aedcd0b18ef050c6a9d"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S3.SS1.SSS3.p1.1",
+        "section_id": "S3.SS1.SSS3",
+        "heading": "3.1.3. Training/evaluation split.",
+        "text_sha256": "5a53ee556e8acf3fb73b83a35654961bdc70623b27dd40c7eba10e1550265ab0"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S3.SS1.SSS3.p2.1",
+        "section_id": "S3.SS1.SSS3",
+        "heading": "3.1.3. Training/evaluation split.",
+        "text_sha256": "5c6288cf1064a10d9a30a1f1e3adf286caf1eec31d2e1701ce1b5cea765c9cb0"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S3.SS1.SSS3.p3.1",
+        "section_id": "S3.SS1.SSS3",
+        "heading": "3.1.3. Training/evaluation split.",
+        "text_sha256": "cd4395b84cad78db677e69f70e8771840b5bcbbe2595a3d81d65121f002b2c70"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2. PromptShield detector design",
+        "text_sha256": "923ae4fe20e226a860909d1843c1731556e56a617c1f47511d95748a2729a91b"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S3.SS2.SSS1.p1.1",
+        "section_id": "S3.SS2.SSS1",
+        "heading": "3.2.1. Detector specifications",
+        "text_sha256": "e23795d76c505b59f1233f67eb12b2f9fa9621e3ff9a3e64cbb2aae5909dc3cc"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S3.SS2.SSS1.Px1.p1.1",
+        "section_id": "S3.SS2.SSS1.Px1",
+        "heading": "Training data",
+        "text_sha256": "4fb80812f94ae88ccb1582cbcd7867fa4124fc88dccba54926ec0f5c7527fc8f"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S3.SS2.SSS1.Px1.p2.1",
+        "section_id": "S3.SS2.SSS1.Px1",
+        "heading": "Training data",
+        "text_sha256": "0393586da10d3c1ecb4e7f82b8e71377e5cc04a4a30da8229fcf98cd25e85f83"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S3.SS2.SSS1.Px2.p1.1",
+        "section_id": "S3.SS2.SSS1.Px2",
+        "heading": "Base model selection",
+        "text_sha256": "c524e65d26ebcdda52c8b43dd8599131ade7e750f7f1c4985767a13ac4b0a10f"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S3.SS2.SSS2.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2. Deployment scheme",
+        "text_sha256": "23b19a66957328a18fa8c5ce903c10d0a630a2fb897e6893d93d457dac2504c1"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S3.SS2.SSS2.p2.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2. Deployment scheme",
+        "text_sha256": "b9598eec35df579162a09bfec6a522dd0d4474e7bdea87d2aa126c2649a980b2"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S3.SS2.SSS2.p3.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2. Deployment scheme",
+        "text_sha256": "978ed662a1d8d73f7bc99fc2cf718ef53f91a3657b07fe9c0abd78a0b59cc0ac"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "4. Experimental Settings",
+        "text_sha256": "97f309f669b52eaaef1a42b6bf4d4530c80ae320edcfb71289cdcab670db483e"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S4.SS0.SSS0.Px1.p1.1",
+        "section_id": "S4.SS0.SSS0.Px1",
+        "heading": "Training methods",
+        "text_sha256": "bc26a9a43f96d43fa165adbec3ee3e859da0bd919225fd5010429f1833d646ec"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S4.SS0.SSS0.Px1.p2.1",
+        "section_id": "S4.SS0.SSS0.Px1",
+        "heading": "Training methods",
+        "text_sha256": "b07cfb4a1ccfe3db30ac57003f7d54d0173003ccd95c016778c215290cb1ba26"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S4.SS0.SSS0.Px2.p1.1",
+        "section_id": "S4.SS0.SSS0.Px2",
+        "heading": "Evaluation data",
+        "text_sha256": "e84bd5745cf1021de546bf1ed01c700555fcbbdaf76528284319a67fd79583e8"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S4.SS0.SSS0.Px3.p1.1",
+        "section_id": "S4.SS0.SSS0.Px3",
+        "heading": "Performance metrics",
+        "text_sha256": "e60fdf386fcfc40ddd48eef2a1beea8e664acc79fe3a0801fd1abc2189d8353d"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S5.p1.1",
+        "section_id": "S5",
+        "heading": "5. Results",
+        "text_sha256": "ba3a0ecfac637b5e904dc7c87f26a5d457c0c9e5c3145ee22a77e5719564dcd3"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S5.SS1.p1.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1. Shortcomings of existing detectors",
+        "text_sha256": "64637f32449d812e1bf1a8fb8b7e0a09205feaf805f410d8f86bf2d20a496adf"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "S5.SS1.p2.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1. Shortcomings of existing detectors",
+        "text_sha256": "689f66dc0ab0d276f5ef76c69c785c7cff39192aeccf0dceb3eca0469d592eee"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "S5.SS1.p3.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1. Shortcomings of existing detectors",
+        "text_sha256": "cc13e5967e7049518023d9b78a7e3d3ee67849067ecf5bca975a75dedf531fe5"
+      },
+      {
+        "index": 59,
+        "paragraph_id": "S5.T4.2",
+        "section_id": "S5.SS2",
+        "heading": "5.2. PromptShield detector performance",
+        "text_sha256": "1b739b336c2912b4ff280025f6ae48e0cf0c0a1a707930f2c914c24c78e015b7"
+      },
+      {
+        "index": 60,
+        "paragraph_id": "S5.I1.ix1.p1.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2. PromptShield detector performance",
+        "text_sha256": "f1bb2419364b66c0b963c4e12a85d204c6ef6d0186359a7a75078d342f14d07a"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "S5.SS2.p1.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2. PromptShield detector performance",
+        "text_sha256": "a2e431628170af87bde2cd30cbbcdce9c1dc3e3226c8dd06d498816552997929"
+      },
+      {
+        "index": 62,
+        "paragraph_id": "S5.I2.i1.p1.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2. PromptShield detector performance",
+        "text_sha256": "0f762a06092e5a4c0fb5cd30b01ac645b48ae1546dfeaf3c622efb1a4494fddd"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "S5.I2.i2.p1.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2. PromptShield detector performance",
+        "text_sha256": "9c383f1d27819078652bca29601767bfd66cd6ee3e43350bdf02169130ab29f4"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "S5.SS2.p3.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2. PromptShield detector performance",
+        "text_sha256": "a09789a92200a1fb833ea2fe7eb6ced38ab385bc8f5cee77ada0dfc57a3b8a3d"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S5.SS2.p4.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2. PromptShield detector performance",
+        "text_sha256": "3f469bb69e8e7977d02aeaf78e7fdd82e626dc77a0a1422f79c8b0de613648f0"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "S5.T5.2",
+        "section_id": "S5.SS3",
+        "heading": "5.3. Impact of architecture size on PromptShield",
+        "text_sha256": "1b739b336c2912b4ff280025f6ae48e0cf0c0a1a707930f2c914c24c78e015b7"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S5.I3.ix1.p1.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3. Impact of architecture size on PromptShield",
+        "text_sha256": "f1bb2419364b66c0b963c4e12a85d204c6ef6d0186359a7a75078d342f14d07a"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S5.SS3.p1.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3. Impact of architecture size on PromptShield",
+        "text_sha256": "6bea30bcc3cc7416e2242c0ed196a856dc05d615eb085ba26cdadb25f1fbddef"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S5.SS3.SSS0.Px1.p1.1",
+        "section_id": "S5.SS3.SSS0.Px1",
+        "heading": "General observations.",
+        "text_sha256": "2971c32da973736c24055a55e6ad81138068419d46f1612bb063b4994f706a94"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S5.SS3.SSS0.Px1.p2.1",
+        "section_id": "S5.SS3.SSS0.Px1",
+        "heading": "General observations.",
+        "text_sha256": "a8fe170c177ab689bf67a128bdac8e99fd92e78f036db83dbcd957279b643470"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S5.SS3.SSS0.Px2.p1.1",
+        "section_id": "S5.SS3.SSS0.Px2",
+        "heading": "Comparison of FLAN-T5 and Llama architectures.",
+        "text_sha256": "b69dc5e3af5c410a17aef776735dfd11c5e5d3239cf4510f72b35ee8b410d31b"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "S5.SS3.SSS0.Px3.p1.1",
+        "section_id": "S5.SS3.SSS0.Px3",
+        "heading": "Fine-tuning DeBERTa",
+        "text_sha256": "0dd287c33bcc83c7a7cf8b444be47d4df744cec01b9e1b4dd3a8e29893923c5e"
+      },
+      {
+        "index": 73,
+        "paragraph_id": "S5.SS4.p1.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4. Impact of training set size on PromptShield",
+        "text_sha256": "364371085e0fa62ac3f0b181e278fc6d27e5d604d26aa1e56772c8cca4964ad3"
+      },
+      {
+        "index": 74,
+        "paragraph_id": "S5.I4.i1.p1.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4. Impact of training set size on PromptShield",
+        "text_sha256": "f01d5601f96e010c2bd22bca6a2f444b67b94b6fa28fe1a1d5a683a951536ce8"
+      },
+      {
+        "index": 75,
+        "paragraph_id": "S5.I4.i2.p1.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4. Impact of training set size on PromptShield",
+        "text_sha256": "773bdbcad2cdd90f621acb0e44d470b30ebddac5ccbc9937bfe715ea007ca688"
+      },
+      {
+        "index": 76,
+        "paragraph_id": "S5.SS4.p2.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4. Impact of training set size on PromptShield",
+        "text_sha256": "452ad4a5e9fc2f1169d5432f1f2a20853cc5fa542dd369a55062d024cd790521"
+      },
+      {
+        "index": 77,
+        "paragraph_id": "S5.SS5.SSS1.p1.1",
+        "section_id": "S5.SS5.SSS1",
+        "heading": "5.5.1. Generalization study setup",
+        "text_sha256": "7426e49a175a64dce1d750b7b1e2a23e13910c19e6e79d3428a06e3efb39c446"
+      },
+      {
+        "index": 78,
+        "paragraph_id": "S5.I5.i1.p1.1",
+        "section_id": "S5.SS5.SSS1",
+        "heading": "5.5.1. Generalization study setup",
+        "text_sha256": "4aa473d3a491eff1dcefd4f5091d2209aa7b62d50d0b843a8862c1cdeb02d650"
+      },
+      {
+        "index": 79,
+        "paragraph_id": "S5.I5.i2.p1.1",
+        "section_id": "S5.SS5.SSS1",
+        "heading": "5.5.1. Generalization study setup",
+        "text_sha256": "0a1353dc674bcaab8dc42cb1b2b5b6a805bc442d8db3e9688e4937d1e58bf2fb"
+      },
+      {
+        "index": 80,
+        "paragraph_id": "S5.I5.i3.p1.1",
+        "section_id": "S5.SS5.SSS1",
+        "heading": "5.5.1. Generalization study setup",
+        "text_sha256": "ae255ee0c43d352def9add863b0a00b71ac22025f97262a8423d1c8c0c768e97"
+      },
+      {
+        "index": 81,
+        "paragraph_id": "S5.SS5.SSS1.p3.1",
+        "section_id": "S5.SS5.SSS1",
+        "heading": "5.5.1. Generalization study setup",
+        "text_sha256": "e3d8c00bf165f563e2f71f6fa9cd02f04e30fa2553bf5b0c5d981bc7311c1d20"
+      },
+      {
+        "index": 82,
+        "paragraph_id": "S5.SS5.SSS1.p4.1",
+        "section_id": "S5.SS5.SSS1",
+        "heading": "5.5.1. Generalization study setup",
+        "text_sha256": "5372003e89340e9f137d7140340bcf62fc65996b1cda957a7c74dfed82976c8d"
+      },
+      {
+        "index": 83,
+        "paragraph_id": "S5.SS5.SSS2.p1.1",
+        "section_id": "S5.SS5.SSS2",
+        "heading": "5.5.2. Results interpretation",
+        "text_sha256": "7d79f03e4f15934e2da94b543fe6a44164354b99ae6deaf831e222120e3d42a8"
+      },
+      {
+        "index": 84,
+        "paragraph_id": "S5.I6.i1.p1.1",
+        "section_id": "S5.SS5.SSS2",
+        "heading": "5.5.2. Results interpretation",
+        "text_sha256": "f32a0b0638ebbc955384d04a4d96ef89a89fa13e69d8f7945008aeb4a7982b90"
+      },
+      {
+        "index": 85,
+        "paragraph_id": "S5.I6.i2.p1.1",
+        "section_id": "S5.SS5.SSS2",
+        "heading": "5.5.2. Results interpretation",
+        "text_sha256": "f6082bb07a6d009290f138a65f2c41bacbe14a2dd20d7a9520303be95f5919c4"
+      },
+      {
+        "index": 86,
+        "paragraph_id": "S5.SS5.SSS2.p3.1",
+        "section_id": "S5.SS5.SSS2",
+        "heading": "5.5.2. Results interpretation",
+        "text_sha256": "cd269876aa8881e852b028eeeab8330f42230930edd6146118d4c9ac4fb6f498"
+      },
+      {
+        "index": 87,
+        "paragraph_id": "S6.p1.1",
+        "section_id": "S6",
+        "heading": "6. Related Work",
+        "text_sha256": "aac34c0d569375b52d49aae5405e208784d535b12d64df222b197e699573f754"
+      },
+      {
+        "index": 88,
+        "paragraph_id": "S6.p2.1",
+        "section_id": "S6",
+        "heading": "6. Related Work",
+        "text_sha256": "5f40b300ddddea817fc186a673d382ef2cd1736dab9253eab7e25e138b8d62fc"
+      },
+      {
+        "index": 89,
+        "paragraph_id": "S7.p1.1",
+        "section_id": "S7",
+        "heading": "7. Limitations",
+        "text_sha256": "cf59a1164accad6c6340285b5481473abb515a38c99bbf08c60e7d0e0ac7dc34"
+      },
+      {
+        "index": 90,
+        "paragraph_id": "S8.p1.1",
+        "section_id": "S8",
+        "heading": "8. Conclusions",
+        "text_sha256": "0ab413ddb6f5be34cd78ce61b379197bd22292316b63d5cb4f9db58f72455f75"
+      },
+      {
+        "index": 91,
+        "paragraph_id": "A1.SS1.p1.1",
+        "section_id": "A1.SS1",
+        "heading": "A.1. LMSYS filtering",
+        "text_sha256": "95450f09a40c29483dab92a4b3a47207994f02a3f4bf6e5235b4854a89536af4"
+      },
+      {
+        "index": 92,
+        "paragraph_id": "A1.SS2.p1.1",
+        "section_id": "A1.SS2",
+        "heading": "A.2. Injection link phrases",
+        "text_sha256": "4d243a5e99ca437ec88713be7e50b3b61c72b064947d8fbee282dedeb311e66c"
+      },
+      {
+        "index": 93,
+        "paragraph_id": "A1.SS3.p1.1",
+        "section_id": "A1.SS3",
+        "heading": "A.3. Validation split selection",
+        "text_sha256": "9e01de1a0a72118eccb0d5ba98b41706f7b3e23250200d12b4e03fc21ac8c78a"
+      },
+      {
+        "index": 94,
+        "paragraph_id": "A2.SS1.p1.1",
+        "section_id": "A2.SS1",
+        "heading": "B.1. System prompt for fine-tuning",
+        "text_sha256": "930f82a0b545e8dc68f5d93d7245c8f631feaff5b531f59ebb95f1736cb9ffc1"
+      },
+      {
+        "index": 95,
+        "paragraph_id": "A2.SS1.p3.1",
+        "section_id": "A2.SS1",
+        "heading": "B.1. System prompt for fine-tuning",
+        "text_sha256": "cf03694010c67d9fa9bcabcc63492d64aa2c88beb33dcc80727ea9a2ce44aab8"
+      },
+      {
+        "index": 96,
+        "paragraph_id": "A2.SS2.p1.1",
+        "section_id": "A2.SS2",
+        "heading": "B.2. Further details on PromptGuard",
+        "text_sha256": "abd5eafadb64c02b58fed46365a8cab000619262dce5c96a9a7e8a86fa056d64"
+      },
+      {
+        "index": 97,
+        "paragraph_id": "A3.p1.1",
+        "section_id": "A3",
+        "heading": "Appendix C Effectiveness of curated prompt injections",
+        "text_sha256": "d963057698948d0a15ad987812211d7b6c2cec349dff0a5efa945fafa331a53b"
+      },
+      {
+        "index": 98,
+        "paragraph_id": "A3.SS1.p1.1",
+        "section_id": "A3.SS1",
+        "heading": "C.1. Robustness of existing models",
+        "text_sha256": "2430e4046bca4b30dc3431d2b3a6aefd9fc636f7ea591af2ba1b8b6014b06ab7"
+      },
+      {
+        "index": 99,
+        "paragraph_id": "A3.SS1.p2.1",
+        "section_id": "A3.SS1",
+        "heading": "C.1. Robustness of existing models",
+        "text_sha256": "04648c7387da89bc508565e0c6b9f79f7a06d8c7c96dca9d06bf40c5800e1931"
+      },
+      {
+        "index": 100,
+        "paragraph_id": "A3.SS2.p1.1",
+        "section_id": "A3.SS2",
+        "heading": "C.2. Injection attacks against our detector",
+        "text_sha256": "06f5065ca2cd407053574b383f1433487bb0143145978bd27fe75abce04538bb"
+      },
+      {
+        "index": 101,
+        "paragraph_id": "A3.I1.i1.p1.1",
+        "section_id": "A3.SS2",
+        "heading": "C.2. Injection attacks against our detector",
+        "text_sha256": "d9827070b7368c6c3abc01205adc02fa153e51e59525dcabb590ab1bff3e6baa"
+      },
+      {
+        "index": 102,
+        "paragraph_id": "A3.I1.i2.p1.1",
+        "section_id": "A3.SS2",
+        "heading": "C.2. Injection attacks against our detector",
+        "text_sha256": "309f3febbf26457b75b926e90a88b588013a2cf2ce1faefb35381fb2e8530bf4"
+      },
+      {
+        "index": 103,
+        "paragraph_id": "A3.SS2.p1.2",
+        "section_id": "A3.SS2",
+        "heading": "C.2. Injection attacks against our detector",
+        "text_sha256": "da89aabf85364118aaf9935d78f85baaf33f08b9642cb79e09225bc84960b549"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual main methods26-53 define benchmark construction, binary request classifiers and calibrated score decisions. Appendix C.1 and C.2 specify two distinct evaluated trial types.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main46,52,68-82,87 and96 supports all stated architecture/size/composition and comparator families, input units and label mapping without a protected application answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Appendix98 explicitly checks generated application task output for the injected keyword. This C.1 arm requires the protected target answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Appendix100-103 instead tests queries with added instructions against the detector and checks its benign output. Its detector reply is auxiliary to any original application task answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Paragraph44 directly states English training datapoints. C.2 paragraph100 explicitly derives detector-targeted evaluation queries from that split;101-102 gives the added English instructions and103 the detector-output rule. Thus the English linkage is to an actual detector-targeted evaluation construction, separately from C.1 application-output trials. This does not establish the language mixture of the main out-of-distribution benchmark.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True is verified for all declared material main and Appendix A/B/C families after full21-103 reads, including model/size/composition variations and separate task-output versus detector-evasion trials. English detector-targeted construction remains distinct from unknown main-evaluation language composition.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}
