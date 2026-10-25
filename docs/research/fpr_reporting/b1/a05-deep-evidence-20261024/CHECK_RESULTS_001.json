@@ -1,0 +1,101 @@
+{
+  "checks": [
+    {
+      "command": [
+        "C:\\Users\\LawLight\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "docs\\research\\fpr_reporting\\b1\\a05-deep-evidence-20261024",
+        "-p",
+        "test_*.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-10-25T02:11:40.784327+00:00",
+      "output": "----------------------------------------------------------------------\r\nRan 14 tests in 0.006s\r\n\r\nOK\r\n",
+      "output_sha256": "d4875e6dc8077ea2117d5887b116301cae754fde81c71f14d7c18fbca5962dee",
+      "started_utc": "2026-10-25T02:11:39.736160+00:00"
+    },
+    {
+      "command": [
+        "C:\\Users\\LawLight\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "docs\\research\\fpr_reporting\\b1\\a05-custodian-adjudication-20261023",
+        "-p",
+        "test_*.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-10-25T02:11:43.548052+00:00",
+      "output": "----------------------------------------------------------------------\r\nRan 13 tests in 1.644s\r\n\r\nOK\r\n",
+      "output_sha256": "0456dd91896ca345c5d7f16a54ab8047679e6545b37006d5edc30b3915310ad7",
+      "started_utc": "2026-10-25T02:11:40.784327+00:00"
+    },
+    {
+      "command": [
+        "C:\\Users\\LawLight\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "docs\\research\\fpr_reporting\\b1\\a04-custodian-repair-20261023",
+        "-p",
+        "test_*.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-10-25T02:11:43.874549+00:00",
+      "output": "----------------------------------------------------------------------\r\nRan 10 tests in 0.003s\r\n\r\nOK\r\n",
+      "output_sha256": "ebe6ee0103f8620bf75980df11f16fdec0ca19e7cfcba5ebecaaedd8072bfa17",
+      "started_utc": "2026-10-25T02:11:43.548052+00:00"
+    },
+    {
+      "command": [
+        "C:\\Users\\LawLight\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "docs\\research\\fpr_reporting\\b1\\a04-reviewer-returns-20261022",
+        "-p",
+        "test_*.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "finished_utc": "2026-10-25T02:11:44.266459+00:00",
+      "output": "----------------------------------------------------------------------\r\nRan 8 tests in 0.005s\r\n\r\nOK\r\n",
+      "output_sha256": "81ab88b80128ddf12d3a37b981e01b2c266ad0a64957fed008e4a7ee40b47a63",
+      "started_utc": "2026-10-25T02:11:43.875547+00:00"
+    },
+    {
+      "command": [
+        "C:\\Users\\LawLight\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "docs\\research\\fpr_reporting\\b1\\a05-deep-evidence-20261024"
+      ],
+      "exit_code": 0,
+      "output": "All checks passed!\n",
+      "output_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": "",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "scope": "Scoped research correctness/integrity tests; no production statistical changes, outcome extraction or test-set scientific scoring.",
+  "source_git_commit": "54cd5c8737eb3ca7eea15610574cc328a11005d0"
+}
