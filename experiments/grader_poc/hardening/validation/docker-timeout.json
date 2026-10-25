@@ -1,0 +1,38 @@
+{
+  "name": "docker-timeout",
+  "passed": true,
+  "synthetic_fixture": true,
+  "result": {
+    "observation": {
+      "status": "ERROR",
+      "reason": "TIMEOUT"
+    },
+    "execution_status": "TIMEOUT",
+    "exit_code": null,
+    "stdout": "",
+    "stderr": "",
+    "container": {
+      "container_name": "warrant-grader-855fc90087964cffbb9739be08158061",
+      "owner": "855fc90087964cffbb9739be08158061",
+      "status": "TIMEOUT",
+      "stdout": "",
+      "stderr": "",
+      "exit_code": null,
+      "create_exit_code": 0,
+      "create_stdout": "28e5acbe41a46f0bce22eefda20b87bf051463a99752a3312c200dd2c2a6d903\n",
+      "create_stderr": "",
+      "container_id": "28e5acbe41a46f0bce22eefda20b87bf051463a99752a3312c200dd2c2a6d903",
+      "reason": "Command '['docker', 'start', '--attach', '--interactive', 'warrant-grader-855fc90087964cffbb9739be08158061']' timed out after 2 seconds",
+      "cleanup": {
+        "status": "REMOVED",
+        "verified_absent": true,
+        "was_running": true,
+        "container_id": "28e5acbe41a46f0bce22eefda20b87bf051463a99752a3312c200dd2c2a6d903",
+        "exit_code": 0,
+        "stdout": "28e5acbe41a46f0bce22eefda20b87bf051463a99752a3312c200dd2c2a6d903\n",
+        "stderr": ""
+      }
+    },
+    "elapsed_seconds": 5.3363829309964785
+  }
+}

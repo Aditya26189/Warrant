@@ -1,0 +1,8 @@
+{
+  "controlled_sandbox_lifecycle_test": true,
+  "same_client_timeout_pattern_as": "experiments/grader_poc/diagnose.py:86",
+  "container_name": "warrant-grader-review-timeout-32e7e12b2b",
+  "client_timed_out": true,
+  "container_running_after_client_timeout": true,
+  "own_test_container_removed": true
+}

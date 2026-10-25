@@ -32,7 +32,7 @@
 [Commands](#-the-commands) •
 [Claim table](#-the-claim-table) •
 [Product state](docs/PRODUCT-STATE.md) •
-[Current research](#current-research-local-grader-audit-track) •
+[Grader audit experiment](#experimental-track-auditing-evaluation-graders) •
 [Architecture](#how-it-fits-together) •
 [Reproduction](#-reproduction) •
 [Documents](#-documents) •
@@ -40,7 +40,7 @@
 
 <br/>
 
-<img src="https://img.shields.io/badge/Tests-2279_collected-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="2279 tests collected" />
+<img src="https://img.shields.io/badge/Tests-2287_collected-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="2287 tests collected" />
 &nbsp;
 <img src="https://img.shields.io/badge/Claims-92_verified-2da44e?style=for-the-badge" alt="92 claims verified" />
 &nbsp;
@@ -74,40 +74,33 @@ traffic, pilot or revenue has been evidenced. Read the [product-state and eviden
 map](docs/PRODUCT-STATE.md) for the implemented surfaces, verification status and
 remaining enterprise gaps before treating the claims below as a deployment claim.
 
-**Two ways to use this repository.** Run `warrant` on your own detector's scored
+**Start with the local tool or its evidence.** Run `warrant` on your own detector's scored
 file: no GPU, no model, no network, three dependencies
 ([Quickstart](#-quickstart--certify-your-own-detector)). Or check this project's
 own measurements, every number in the [claim table](#-the-claim-table), on a
 laptop ([Reproduction](#-reproduction)).
 
-## Current research: local grader-audit track
+## Experimental track: auditing evaluation graders
 
-**Status as of 25 October 2026: local experimental work; the code and evidence
-packets have not been published in this GitHub checkout.** The installed
-`warrant` command and the reproduction instructions below cover the existing
-scored-file certification workflow.
+An optional research track asks whether a grader can accept an incorrect
+implementation, and whether a targeted repair rejects it while retaining correct
+controls. It records the grader and candidate hashes, property scope, executable
+counterexample, repair controls, abstentions and failed attempts. This is evidence
+about a source of evaluation labels; it does not itself establish a statistical
+warrant or label correctness outside the tested scope.
 
-The new track asks whether a grader can accept an incorrect implementation and
-whether a targeted repair rejects it while retaining correct controls. Its
-intended output is an audit record containing the grader and candidate hashes,
-property scope, executable counterexample, expected and observed behavior,
-repair controls, abstentions and failed attempts. This would strengthen evidence
-about a source of evaluation labels; statistical certification remains a
-separate step.
+The latest [payments experiment](reports/PHASE-GRADER-PAYMENTS-E2E.md) reproduces
+an accepted faulty worker through real Kafka and HTTP in a local synthetic stack.
+The appended boundary checks reject that worker while accepting the supplied
+reference and equivalent implementation. The report retains an invalid harness
+attempt and limits the result to the tested conditions and observation window.
 
-The locally recorded payments experiment reproduces an accepted faulty worker
-through real Kafka and HTTP in a synthetic stack. Appended boundary checks
-reject that worker while accepting the supplied reference and equivalent
-implementation. The local record retains an invalid harness attempt and limits
-the result to the tested conditions and observation window. These results cannot
-yet be replayed from `main` alone.
-
-The work has **not demonstrated an advantage over manual assertion review or
-ordinary mutation testing**. Independent replication, broader correct-implementation
-coverage, held-out properties and measured investigation effort remain open.
-It is a research direction, with no established production integration or customer
-demand. The claim table below describes the existing published research, not this
-unpublished experimental track.
+**Status: experimental, outside the shipped `warrant` CLI.** The
+[broader comparison](reports/PHASE-GRADER-P2.md) has not demonstrated an advantage
+over manual assertion review or ordinary mutation testing. Independent replication,
+broader correct-implementation coverage and customer demand remain open. Read the
+[experiment guide and replay instructions](experiments/grader_poc/README.md) for
+the evidence packets, runner cleanup checks, dependency requirements and limits.
 
 <br/>
 
@@ -664,7 +657,7 @@ examples/              two scored files: one certifies, one refuses
 evalsets/ & results/   frozen content-hashed evaluation sets; every artifact behind the table above
 scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
-tests/                 2279 tests collected, including the ones that enforce this README
+tests/                 2287 tests collected, including the ones that enforce this README
 docs/                  guides, orientation, methods, limitations, the case matrix
 DECISIONS.md           the append-only decision log, with dated addenda
 reports/               one close-out report per sprint, leading with the answer
@@ -750,7 +743,7 @@ the action gate, are in [docs/DIAGRAMS.md](docs/DIAGRAMS.md); the prose version 
 | Target | Without `make` | Requires | Time | Proves |
 |:---|:---|:---|:---|:---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | The clone works and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | Varies by machine | 2279 tests collected |
+| `make test` | `python -m pytest tests/ -q` | CPU | Varies by machine | 2287 tests collected |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **Every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` (tier 3) | `python scripts/verify.py` | CPU + cached activations | ~4 min | The frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | Activations regenerate from the source model |
@@ -875,6 +868,7 @@ for. The ones most readers want first:
 
 | Document | What it answers |
 |:---|:---|
+| 🔬 [Grader audit experiment](experiments/grader_poc/README.md) | Current experimental status, evidence, negative comparisons and replay instructions |
 | 📥 [INPUT.md](docs/INPUT.md) · [RELEASE.md](docs/RELEASE.md) | The input contract for your own file; a pre-registered release study, step by step |
 | 🤝 [EVIDENCE-HANDOFF.md](docs/EVIDENCE-HANDOFF.md) | What to hand a validation function, field by field, and what no record carries yet |
 | 📐 [DIAGRAMS.md](docs/DIAGRAMS.md) | The system in fifteen diagrams — objects, pipeline, warrant lifecycle, controls, policy, drift, verification, the customer path, the chain, release, the gate |

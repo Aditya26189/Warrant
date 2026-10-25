@@ -1,0 +1,47 @@
+Traceback (most recent call last):
+  File "${HARBOR_VENV}/lib/python3.12/site-packages/harbor/trial/trial.py", line 507, in run
+    await self._run()
+  File "${HARBOR_VENV}/lib/python3.12/site-packages/harbor/trial/single_step.py", line 40, in _run
+    await self._run_agent()
+  File "${HARBOR_VENV}/lib/python3.12/site-packages/harbor/trial/single_step.py", line 76, in _run_agent
+    await self._run_agent_phase(
+  File "${HARBOR_VENV}/lib/python3.12/site-packages/harbor/trial/trial.py", line 667, in _run_agent_phase
+    await asyncio.wait_for(
+  File "/usr/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "${HARBOR_VENV}/lib/python3.12/site-packages/harbor/agents/oracle.py", line 137, in run
+    result = await environment.exec(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "${HARBOR_VENV}/lib/python3.12/site-packages/harbor/environments/docker/docker.py", line 1363, in exec
+    return await self._compose_exec(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "${HARBOR_VENV}/lib/python3.12/site-packages/harbor/environments/docker/docker.py", line 1440, in _compose_exec
+    return await self._run_docker_compose_command(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/warrant-grader-poc/experiments/grader_poc/harbor_environment.py", line 51, in _run_docker_compose_command
+    return await super()._run_docker_compose_command(command, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "${HARBOR_VENV}/lib/python3.12/site-packages/harbor/environments/docker/docker.py", line 758, in _run_docker_compose_command
+    result = await self._collect_buffered_output(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "${HARBOR_VENV}/lib/python3.12/site-packages/harbor/environments/docker/docker.py", line 784, in _collect_buffered_output
+    stdout_bytes, stderr_bytes = await asyncio.wait_for(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/subprocess.py", line 201, in communicate
+    stdin, stdout, stderr = await tasks.gather(stdin, stdout, stderr)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/subprocess.py", line 181, in _read_stream
+    output = await stream.read()
+             ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/streams.py", line 706, in read
+    block = await self.read(self._limit)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/streams.py", line 713, in read
+    await self._wait_for_data('read')
+  File "/usr/lib/python3.12/asyncio/streams.py", line 545, in _wait_for_data
+    await self._waiter
+asyncio.exceptions.CancelledError

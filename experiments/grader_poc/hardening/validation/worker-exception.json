@@ -1,0 +1,38 @@
+{
+  "name": "worker-exception",
+  "passed": true,
+  "synthetic_fixture": true,
+  "result": {
+    "observation": {
+      "status": "ERROR",
+      "type": "RuntimeError",
+      "message": "controlled application failure"
+    },
+    "execution_status": "COMPLETED",
+    "exit_code": 0,
+    "stdout": "{\"status\": \"ERROR\", \"type\": \"RuntimeError\", \"message\": \"controlled application failure\"}\n",
+    "stderr": "",
+    "container": {
+      "container_name": "warrant-grader-8cd03220cd0242178ad0b8a1edae0557",
+      "owner": "8cd03220cd0242178ad0b8a1edae0557",
+      "status": "COMPLETED",
+      "stdout": "{\"status\": \"ERROR\", \"type\": \"RuntimeError\", \"message\": \"controlled application failure\"}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "create_exit_code": 0,
+      "create_stdout": "4c357c18191ae1711a95052c31b2ee746e3f50fb55c6462ffd05c77831a3c087\n",
+      "create_stderr": "",
+      "container_id": "4c357c18191ae1711a95052c31b2ee746e3f50fb55c6462ffd05c77831a3c087",
+      "cleanup": {
+        "status": "REMOVED",
+        "verified_absent": true,
+        "was_running": false,
+        "container_id": "4c357c18191ae1711a95052c31b2ee746e3f50fb55c6462ffd05c77831a3c087",
+        "exit_code": 0,
+        "stdout": "4c357c18191ae1711a95052c31b2ee746e3f50fb55c6462ffd05c77831a3c087\n",
+        "stderr": ""
+      }
+    },
+    "elapsed_seconds": 1.561568103992613
+  }
+}

@@ -1,0 +1,52 @@
+test_tampered_task_or_app_is_rejected (experiments.grader_poc.test_execution.ArtifactBindingTests.test_tampered_task_or_app_is_rejected) ... ok
+test_creation_failure_still_checks_for_owned_resources (experiments.grader_poc.test_execution.ContainerTests.test_creation_failure_still_checks_for_owned_resources) ... ok
+test_daemon_error_is_not_container_absence (experiments.grader_poc.test_execution.ContainerTests.test_daemon_error_is_not_container_absence) ... ok
+test_foreign_container_is_never_removed (experiments.grader_poc.test_execution.ContainerTests.test_foreign_container_is_never_removed) ... ok
+test_removal_requires_verified_absence (experiments.grader_poc.test_execution.ContainerTests.test_removal_requires_verified_absence) ... ok
+test_timeout_and_interruption_always_attempt_owned_cleanup (experiments.grader_poc.test_execution.ContainerTests.test_timeout_and_interruption_always_attempt_owned_cleanup) ... ok
+test_agreement_is_not_an_abstention (experiments.grader_poc.test_execution.DiagnosticGateTests.test_agreement_is_not_an_abstention) ... ok
+test_failed_control_prevents_confirmation (experiments.grader_poc.test_execution.DiagnosticGateTests.test_failed_control_prevents_confirmation) ... ok
+test_interrupt_retains_attempt_and_stops (experiments.grader_poc.test_execution.DiagnosticGateTests.test_interrupt_retains_attempt_and_stops) ... ok
+test_unknown_abstains_without_executing_candidate (experiments.grader_poc.test_execution.DiagnosticGateTests.test_unknown_abstains_without_executing_candidate) ... ok
+test_cleanup_failure_invalidates_otherwise_valid_observation (experiments.grader_poc.test_execution.ProtocolTests.test_cleanup_failure_invalidates_otherwise_valid_observation) ... ok
+test_malformed_observations_cannot_be_counterexamples (experiments.grader_poc.test_execution.ProtocolTests.test_malformed_observations_cannot_be_counterexamples) ... ok
+test_nonzero_worker_exit_is_error (experiments.grader_poc.test_execution.ProtocolTests.test_nonzero_worker_exit_is_error) ... ok
+test_worker_converts_ordinary_application_errors (experiments.grader_poc.test_execution.ProtocolTests.test_worker_converts_ordinary_application_errors) ... ok
+test_worker_does_not_swallow_interrupt (experiments.grader_poc.test_execution.ProtocolTests.test_worker_does_not_swallow_interrupt) ... ok
+test_cleanup_failure_blocks_otherwise_completed_trial (experiments.grader_poc.test_execution.TrialReceiptTests.test_cleanup_failure_blocks_otherwise_completed_trial) ... ok
+test_interrupt_writes_receipt (experiments.grader_poc.test_execution.TrialReceiptTests.test_interrupt_writes_receipt) ... ok
+test_launch_failure_writes_receipt (experiments.grader_poc.test_execution.TrialReceiptTests.test_launch_failure_writes_receipt) ... ok
+test_missing_malformed_or_nonzero_results_cannot_complete (experiments.grader_poc.test_execution.TrialReceiptTests.test_missing_malformed_or_nonzero_results_cannot_complete) ... ok
+test_ordinary_binary_result_still_completes (experiments.grader_poc.test_execution.TrialReceiptTests.test_ordinary_binary_result_still_completes) ... ok
+test_reward_must_be_binary_number_not_boolean (experiments.grader_poc.test_execution.TrialReceiptTests.test_reward_must_be_binary_number_not_boolean) ... ok
+test_task_drift_blocks_completion (experiments.grader_poc.test_execution.TrialReceiptTests.test_task_drift_blocks_completion) ... ok
+test_timeout_keeps_failure_status_even_when_cleanup_fails (experiments.grader_poc.test_execution.TrialReceiptTests.test_timeout_keeps_failure_status_even_when_cleanup_fails) ... ok
+test_timeout_preserves_partial_reward_without_promoting_it (experiments.grader_poc.test_execution.TrialReceiptTests.test_timeout_preserves_partial_reward_without_promoting_it) ... ok
+test_arrival_permutations_preserve_expected_final_aggregate (experiments.grader_poc.test_oracle.OracleTests.test_arrival_permutations_preserve_expected_final_aggregate) ... ok
+test_bridge_connects_two_components (experiments.grader_poc.test_oracle.OracleTests.test_bridge_connects_two_components) ... ok
+test_exact_boundary_is_unknown (experiments.grader_poc.test_oracle.OracleTests.test_exact_boundary_is_unknown) ... ok
+test_invalid_and_unsupported_inputs_abstain (experiments.grader_poc.test_oracle.OracleTests.test_invalid_and_unsupported_inputs_abstain) ... ok
+test_without_bridge_remains_separate (experiments.grader_poc.test_oracle.OracleTests.test_without_bridge_remains_separate) ... ok
+test_preserves_unknown_boundaries_and_input (experiments.grader_poc.test_reducer.ReducerTests.test_preserves_unknown_boundaries_and_input) ... ok
+test_scalar_reduction_can_enable_later_deletion (experiments.grader_poc.test_reducer.ReducerTests.test_scalar_reduction_can_enable_later_deletion) ... ok
+test_irrelevant_functions_are_not_mutated (experiments.grader_poc.p2.test_p2.ProtocolTests.test_irrelevant_functions_are_not_mutated) ... ok
+test_mutation_preserves_python311_fstring_syntax (experiments.grader_poc.p2.test_p2.ProtocolTests.test_mutation_preserves_python311_fstring_syntax) ... ok
+test_mutations_are_single_site_and_bounded (experiments.grader_poc.p2.test_p2.ProtocolTests.test_mutations_are_single_site_and_bounded) ... ok
+test_rational_labels_come_from_operands (experiments.grader_poc.p2.test_p2.ProtocolTests.test_rational_labels_come_from_operands) ... ok
+test_built_images_isolated_and_shared_resources_untouched (experiments.grader_poc.test_harbor_resources.OverlayTests.test_built_images_isolated_and_shared_resources_untouched) ... ok
+test_invalid_identity_refused (experiments.grader_poc.test_harbor_resources.OverlayTests.test_invalid_identity_refused) ... ok
+test_unsupported_topology_refused (experiments.grader_poc.test_harbor_resources.OverlayTests.test_unsupported_topology_refused) ... ok
+test_changed_ownership_never_removed (experiments.grader_poc.test_harbor_resources.OwnershipTests.test_changed_ownership_never_removed) ... ok
+test_daemon_failure_retained_as_error (experiments.grader_poc.test_harbor_resources.OwnershipTests.test_daemon_failure_retained_as_error) ... ok
+test_existing_identity_refuses_launch_and_cleanup (experiments.grader_poc.test_harbor_resources.OwnershipTests.test_existing_identity_refuses_launch_and_cleanup) ... ok
+test_live_producer_refuses_removal (experiments.grader_poc.test_harbor_resources.OwnershipTests.test_live_producer_refuses_removal) ... ok
+test_removal_failure_remains_recorded_after_eventual_absence (experiments.grader_poc.test_harbor_resources.OwnershipTests.test_removal_failure_remains_recorded_after_eventual_absence) ... ok
+test_removal_rechecks_ids_and_requires_repeated_absence (experiments.grader_poc.test_harbor_resources.OwnershipTests.test_removal_rechecks_ids_and_requires_repeated_absence) ... ok
+test_successful_rm_without_absence_remains_failure (experiments.grader_poc.test_harbor_resources.OwnershipTests.test_successful_rm_without_absence_remains_failure) ... ok
+test_failed_group_termination_not_declared_stopped (experiments.grader_poc.test_harbor_resources.ProcessGroupTests.test_failed_group_termination_not_declared_stopped) ... ok
+test_parent_exit_does_not_leave_child_group_alive (experiments.grader_poc.test_harbor_resources.ProcessGroupTests.test_parent_exit_does_not_leave_child_group_alive) ... ok
+
+----------------------------------------------------------------------
+Ran 47 tests in 1.551s
+
+OK

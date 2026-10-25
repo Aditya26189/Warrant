@@ -1,0 +1,34 @@
+{
+  "candidate": "unparse-control",
+  "mutation": {
+    "role": "formatting control"
+  },
+  "sha256": "f8b2e35c87eb9fd4f34412db9ce3156764a25bb2f8b46e2dc88703209d76bfb4",
+  "container": {
+    "container_name": "warrant-grader-22d7b6c88229402081b82706d3227eda",
+    "owner": "22d7b6c88229402081b82706d3227eda",
+    "status": "COMPLETED",
+    "stdout": "{\"status\": \"ERROR\", \"type\": \"AssertionError\", \"message\": \"/app/grader.py failed to import/run: otstrap_external>\\\", line 936, in exec_module\\n  File \\\"<frozen importlib._bootstrap_external>\\\", line 1074, in get_code\\n  File \\\"<frozen importlib._bootstrap_external>\\\", line 1004, in source_to_code\\n  File \\\"<frozen importlib._bootstrap>\\\", line 241, in _call_with_frames_removed\\n  File \\\"/app/grader.py\\\", line 149\\n    return f'(-\\\\\\\\infty, {bound}{(')' if op == '<' else ']')}' if var_left else f'{('(' if op == '<' else '[')}{bound}, \\\\\\\\infty)'\\n                                  ^\\nSyntaxError: unmatched ')'\\n\"}\n",
+    "stderr": "",
+    "exit_code": 0,
+    "create_exit_code": 0,
+    "create_stdout": "df7033ca91342f266eed695259d429556b390f80115a693a98cc373c25947210\n",
+    "create_stderr": "",
+    "container_id": "df7033ca91342f266eed695259d429556b390f80115a693a98cc373c25947210",
+    "cleanup": {
+      "status": "REMOVED",
+      "verified_absent": true,
+      "was_running": false,
+      "container_id": "df7033ca91342f266eed695259d429556b390f80115a693a98cc373c25947210",
+      "exit_code": 0,
+      "stdout": "df7033ca91342f266eed695259d429556b390f80115a693a98cc373c25947210\n",
+      "stderr": ""
+    }
+  },
+  "observation": {
+    "status": "ERROR",
+    "type": "AssertionError",
+    "message": "/app/grader.py failed to import/run: otstrap_external>\", line 936, in exec_module\n  File \"<frozen importlib._bootstrap_external>\", line 1074, in get_code\n  File \"<frozen importlib._bootstrap_external>\", line 1004, in source_to_code\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"/app/grader.py\", line 149\n    return f'(-\\\\infty, {bound}{(')' if op == '<' else ']')}' if var_left else f'{('(' if op == '<' else '[')}{bound}, \\\\infty)'\n                                  ^\nSyntaxError: unmatched ')'\n"
+  },
+  "elapsed_seconds": 11.114132944989251
+}

@@ -1,0 +1,31 @@
+{
+  "services": {
+    "main": {
+      "labels": {
+        "warrant.grader.owner": "8c016889566e4000b4ff61c8478d7003"
+      },
+      "image": "warrant-8c016889566e4000b4ff61c8478d7003-16eae8b97a00-service-0",
+      "build": {
+        "labels": {
+          "warrant.grader.owner": "8c016889566e4000b4ff61c8478d7003"
+        }
+      }
+    }
+  },
+  "networks": {
+    "default": {
+      "name": "warrant-8c016889566e4000b4ff61c8478d7003-16eae8b97a00-networks-0",
+      "labels": {
+        "warrant.grader.owner": "8c016889566e4000b4ff61c8478d7003"
+      }
+    }
+  },
+  "volumes": {
+    "owned": {
+      "name": "warrant-8c016889566e4000b4ff61c8478d7003-16eae8b97a00-volumes-0",
+      "labels": {
+        "warrant.grader.owner": "8c016889566e4000b4ff61c8478d7003"
+      }
+    }
+  }
+}

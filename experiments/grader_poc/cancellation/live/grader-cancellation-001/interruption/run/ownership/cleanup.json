@@ -1,0 +1,161 @@
+{
+  "owner": "f0697c7989df4fe5bd951511c2f3f427",
+  "label": "warrant.grader.owner",
+  "policy": {
+    "schema_version": 1,
+    "command_timeout_seconds": 15,
+    "cleanup_timeout_seconds": 120,
+    "max_passes": 4,
+    "settle_seconds": 1,
+    "required_empty_passes": 2,
+    "max_resources_per_kind": 256
+  },
+  "status": "VERIFIED_ABSENT",
+  "verified_absent": true,
+  "passes": [
+    {
+      "at": "2026-10-23T10:29:20.643598+00:00",
+      "owned": {
+        "container": [
+          {
+            "id": "d37c4d016fd3acd2686154f873237a7d692d99cf3ad24c2755bdde88e115de5c",
+            "labels": {
+              "com.docker.compose.config-hash": "0fd319723c774d587c211eb0af45a9721929666cf2698e8cda5615a1fbee2e30",
+              "com.docker.compose.container-number": "1",
+              "com.docker.compose.depends_on": "",
+              "com.docker.compose.image": "sha256:1d524a0e469891de7fe6680e873ee33f5391be37507d28f5d9c054589c682e49",
+              "com.docker.compose.oneoff": "False",
+              "com.docker.compose.project": "task__ny6upqe__env",
+              "com.docker.compose.project.config_files": "/tmp/tmph4pqf8lp/task__NY6upQE__env-docker-compose-resources.json,${HARBOR_VENV}/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-build.yaml,${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-cancellation-001/interruption/task/environment/docker-compose.yaml,${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-cancellation-001/interruption/run/ownership/fd00556b0103a9da.compose.json,/tmp/tmp5d_wibog/docker-compose-environment.json,/tmp/tmp6pogc1mo/docker-compose-mounts.json",
+              "com.docker.compose.project.working_dir": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-cancellation-001/interruption/task/environment",
+              "com.docker.compose.service": "main",
+              "com.docker.compose.version": "2.30.3",
+              "desktop.docker.io/wsl-distro": "Ubuntu",
+              "warrant.grader.owner": "f0697c7989df4fe5bd951511c2f3f427"
+            },
+            "name": "/task__ny6upqe__env-main-1",
+            "running": true,
+            "mounts": [
+              {
+                "Type": "volume",
+                "Name": "warrant-f0697c7989df4fe5bd951511c2f3f427-fd00556b0103-volumes-0",
+                "Source": "/var/lib/docker/volumes/warrant-f0697c7989df4fe5bd951511c2f3f427-fd00556b0103-volumes-0/_data",
+                "Destination": "/owned",
+                "Driver": "local",
+                "Mode": "z",
+                "RW": true,
+                "Propagation": ""
+              },
+              {
+                "Type": "volume",
+                "Name": "warrant-control-b46f1e4091bf44228dfea701dc461e8f",
+                "Source": "/var/lib/docker/volumes/warrant-control-b46f1e4091bf44228dfea701dc461e8f/_data",
+                "Destination": "/shared",
+                "Driver": "local",
+                "Mode": "z",
+                "RW": true,
+                "Propagation": ""
+              }
+            ]
+          }
+        ],
+        "network": [
+          {
+            "id": "2f80cb0ab437da8728f1793031d9c9bdca88d7344cedf1c46e4784eba1fb7303",
+            "labels": {
+              "com.docker.compose.network": "default",
+              "com.docker.compose.project": "task__ny6upqe__env",
+              "com.docker.compose.version": "2.30.3",
+              "warrant.grader.owner": "f0697c7989df4fe5bd951511c2f3f427"
+            },
+            "name": "warrant-f0697c7989df4fe5bd951511c2f3f427-fd00556b0103-networks-0",
+            "running": null,
+            "mounts": []
+          }
+        ],
+        "volume": [
+          {
+            "id": "warrant-f0697c7989df4fe5bd951511c2f3f427-fd00556b0103-volumes-0",
+            "labels": {
+              "com.docker.compose.project": "task__ny6upqe__env",
+              "com.docker.compose.version": "2.30.3",
+              "com.docker.compose.volume": "owned",
+              "warrant.grader.owner": "f0697c7989df4fe5bd951511c2f3f427"
+            },
+            "name": "warrant-f0697c7989df4fe5bd951511c2f3f427-fd00556b0103-volumes-0",
+            "running": null,
+            "mounts": []
+          }
+        ],
+        "image": [
+          {
+            "id": "sha256:1d524a0e469891de7fe6680e873ee33f5391be37507d28f5d9c054589c682e49",
+            "labels": {
+              "com.docker.compose.project": "task__ny6upqe__env",
+              "com.docker.compose.service": "main",
+              "com.docker.compose.version": "2.30.3",
+              "warrant.grader.owner": "f0697c7989df4fe5bd951511c2f3f427"
+            },
+            "name": null,
+            "running": null,
+            "mounts": []
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-23T10:29:23.945311+00:00",
+      "owned": {
+        "container": [],
+        "network": [],
+        "volume": [],
+        "image": []
+      }
+    },
+    {
+      "at": "2026-10-23T10:29:25.215994+00:00",
+      "owned": {
+        "container": [],
+        "network": [],
+        "volume": [],
+        "image": []
+      }
+    }
+  ],
+  "actions": [
+    {
+      "kind": "container",
+      "id": "d37c4d016fd3acd2686154f873237a7d692d99cf3ad24c2755bdde88e115de5c",
+      "status": "REMOVAL_REQUESTED",
+      "output": "d37c4d016fd3acd2686154f873237a7d692d99cf3ad24c2755bdde88e115de5c"
+    },
+    {
+      "kind": "network",
+      "id": "2f80cb0ab437da8728f1793031d9c9bdca88d7344cedf1c46e4784eba1fb7303",
+      "status": "REMOVAL_REQUESTED",
+      "output": "2f80cb0ab437da8728f1793031d9c9bdca88d7344cedf1c46e4784eba1fb7303"
+    },
+    {
+      "kind": "volume",
+      "id": "warrant-f0697c7989df4fe5bd951511c2f3f427-fd00556b0103-volumes-0",
+      "status": "REMOVAL_REQUESTED",
+      "output": "warrant-f0697c7989df4fe5bd951511c2f3f427-fd00556b0103-volumes-0"
+    },
+    {
+      "kind": "image",
+      "id": "sha256:1d524a0e469891de7fe6680e873ee33f5391be37507d28f5d9c054589c682e49",
+      "status": "REMOVAL_REQUESTED",
+      "output": "Untagged: warrant-f0697c7989df4fe5bd951511c2f3f427-fd00556b0103-service-0:latest\nDeleted: sha256:1d524a0e469891de7fe6680e873ee33f5391be37507d28f5d9c054589c682e49"
+    }
+  ],
+  "before": {
+    "at": "2026-10-23T10:28:52.236861+00:00",
+    "owned": {
+      "container": [],
+      "network": [],
+      "volume": [],
+      "image": []
+    }
+  },
+  "producer_stopped": true
+}

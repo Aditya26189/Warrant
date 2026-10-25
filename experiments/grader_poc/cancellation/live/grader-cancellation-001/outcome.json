@@ -1,0 +1,54 @@
+{
+  "source_commit": "2bff5f77bcd67d32189d504f75346986a129dce2",
+  "source_dirty": false,
+  "started_at": "2026-10-23T10:27:23.206837+00:00",
+  "checks": [
+    {
+      "mode": "timeout",
+      "passed": true,
+      "active": true,
+      "status": "TIMEOUT",
+      "cleanup": "VERIFIED_ABSENT"
+    },
+    {
+      "mode": "interruption",
+      "passed": true,
+      "active": true,
+      "status": "INTERRUPTED",
+      "cleanup": "VERIFIED_ABSENT"
+    },
+    {
+      "mode": "verifier-interruption",
+      "passed": false,
+      "active": false,
+      "status": "INFRASTRUCTURE_ERROR",
+      "cleanup": "VERIFIED_ABSENT"
+    },
+    {
+      "mode": "reference",
+      "passed": true,
+      "status": "COMPLETED",
+      "cleanup": "VERIFIED_ABSENT"
+    }
+  ],
+  "control_owner": "b46f1e4091bf44228dfea701dc461e8f",
+  "status": "FAILED",
+  "control_removal": [
+    {
+      "kind": "container",
+      "id": "5f9242b1a5147e9e9da1dd002e42696b59dbca54a6b99a55e3c8e5b0579a840b",
+      "absent": true
+    },
+    {
+      "kind": "network",
+      "id": "5f49cc16087b57a2cf3d58d9bed92d2da0c23d54bd6af84a400c9c650bed3fe1",
+      "absent": true
+    },
+    {
+      "kind": "volume",
+      "id": "warrant-control-b46f1e4091bf44228dfea701dc461e8f",
+      "absent": true
+    }
+  ],
+  "finished_at": "2026-10-23T10:31:42.942075+00:00"
+}

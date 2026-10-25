@@ -1,0 +1,29 @@
+Tip: There are many benchmarks available in Harbor's registry.
+Run `harbor datasets list` to see all available datasets.
+
+  1/1 Mean: 0.000 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0:01:37 0:00:00
+adhoc • nop
+┏━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━┓
+┃ Trials ┃ Exceptions ┃  Mean ┃
+┡━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━┩
+│      1 │          0 │ 0.000 │
+└────────┴────────────┴───────┘
+
+┏━━━━━━━━┳━━━━━━━┓
+┃ Reward ┃ Count ┃
+┡━━━━━━━━╇━━━━━━━┩
+│ 0.0    │     1 │
+└────────┴───────┘
+
+Job Info
+Total runtime: 1m 32s
+Results written to 
+${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-res
+earch/work/grader-poc-runs/original-001/jobs/original-001/result.json
+Inspect results by running `harbor view 
+${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-res
+earch/work/grader-poc-runs/original-001/jobs`
+Share results by running `harbor upload 
+${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-res
+earch/work/grader-poc-runs/original-001/jobs/original-001`
+

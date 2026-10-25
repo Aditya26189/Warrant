@@ -1,0 +1,120 @@
+{
+    "id": "ba81ba73-010b-43c1-932c-5f19fb038d56",
+    "task_name": "terminal-bench/payments-pipeline-fix",
+    "trial_name": "nonpositive-mutant__txukito",
+    "trial_uri": "file://${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-p2-full/payments-nonpositive-mutant-repeat-001/jobs/warrant-p2-payments-nonpositive-mutant-repeat/nonpositive-mutant__txukito",
+    "task_id": {
+        "path": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-p2-payment-cases/nonpositive-mutant"
+    },
+    "source": null,
+    "task_checksum": "97c0f1e3bc585c9edd6db56630b511f66b75213b3f779714f07b52d2b112eb3f",
+    "config": {
+        "task": {
+            "path": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-p2-payment-cases/nonpositive-mutant",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "nonpositive-mutant__txukito",
+        "trials_dir": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-p2-full/payments-nonpositive-mutant-repeat-001/jobs/warrant-p2-payments-nonpositive-mutant-repeat",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "oracle",
+            "import_path": null,
+            "model_name": null,
+            "model_base_url": null,
+            "model_api_key_name": null,
+            "model_api_format": null,
+            "skip_model_parsing": false,
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {},
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "stream": false,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": "676a177c-fbac-4c06-83dd-13355be01ce9",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "oracle",
+        "version": "1.0.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "model_usage": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "verifier_environment_mode": "separate",
+    "exception_info": null,
+    "started_at": "2026-10-22T23:16:30.828106Z",
+    "finished_at": "2026-10-22T23:21:25.419252Z",
+    "environment_setup": {
+        "started_at": "2026-10-22T23:16:31.386657Z",
+        "finished_at": "2026-10-22T23:17:27.953648Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-10-22T23:17:27.953733Z",
+        "finished_at": "2026-10-22T23:17:27.953828Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-10-22T23:17:27.953966Z",
+        "finished_at": "2026-10-22T23:17:56.102346Z"
+    },
+    "verifier": {
+        "started_at": "2026-10-22T23:18:53.641904Z",
+        "finished_at": "2026-10-22T23:21:25.418926Z"
+    },
+    "step_results": null
+}

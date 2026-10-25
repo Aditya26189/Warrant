@@ -1,0 +1,796 @@
+{
+  "cases": [
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{-7}",
+      "gold": "-7",
+      "expected": true,
+      "derivation": {
+        "numerator": -7,
+        "denominator": 1,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{-7}",
+      "gold": "-6",
+      "expected": false,
+      "derivation": {
+        "numerator": -7,
+        "denominator": 1,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{-14}{2}}",
+      "gold": "-7",
+      "expected": true,
+      "derivation": {
+        "numerator": -7,
+        "denominator": 1,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{-14}{2}}",
+      "gold": "-6",
+      "expected": false,
+      "derivation": {
+        "numerator": -7,
+        "denominator": 1,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{-7/2}",
+      "gold": "-7/2",
+      "expected": true,
+      "derivation": {
+        "numerator": -7,
+        "denominator": 2,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{-7/2}",
+      "gold": "-5/2",
+      "expected": false,
+      "derivation": {
+        "numerator": -7,
+        "denominator": 2,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{-14}{4}}",
+      "gold": "-7/2",
+      "expected": true,
+      "derivation": {
+        "numerator": -7,
+        "denominator": 2,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{-14}{4}}",
+      "gold": "-5/2",
+      "expected": false,
+      "derivation": {
+        "numerator": -7,
+        "denominator": 2,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{-7/3}",
+      "gold": "-7/3",
+      "expected": true,
+      "derivation": {
+        "numerator": -7,
+        "denominator": 3,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{-7/3}",
+      "gold": "-4/3",
+      "expected": false,
+      "derivation": {
+        "numerator": -7,
+        "denominator": 3,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{-14}{6}}",
+      "gold": "-7/3",
+      "expected": true,
+      "derivation": {
+        "numerator": -7,
+        "denominator": 3,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{-14}{6}}",
+      "gold": "-4/3",
+      "expected": false,
+      "derivation": {
+        "numerator": -7,
+        "denominator": 3,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{-2}",
+      "gold": "-2",
+      "expected": true,
+      "derivation": {
+        "numerator": -2,
+        "denominator": 1,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{-2}",
+      "gold": "-1",
+      "expected": false,
+      "derivation": {
+        "numerator": -2,
+        "denominator": 1,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{-4}{2}}",
+      "gold": "-2",
+      "expected": true,
+      "derivation": {
+        "numerator": -2,
+        "denominator": 1,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{-4}{2}}",
+      "gold": "-1",
+      "expected": false,
+      "derivation": {
+        "numerator": -2,
+        "denominator": 1,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{-1}",
+      "gold": "-1",
+      "expected": true,
+      "derivation": {
+        "numerator": -2,
+        "denominator": 2,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{-1}",
+      "gold": "0",
+      "expected": false,
+      "derivation": {
+        "numerator": -2,
+        "denominator": 2,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{-4}{4}}",
+      "gold": "-1",
+      "expected": true,
+      "derivation": {
+        "numerator": -2,
+        "denominator": 2,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{-4}{4}}",
+      "gold": "0",
+      "expected": false,
+      "derivation": {
+        "numerator": -2,
+        "denominator": 2,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{-2/3}",
+      "gold": "-2/3",
+      "expected": true,
+      "derivation": {
+        "numerator": -2,
+        "denominator": 3,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{-2/3}",
+      "gold": "1/3",
+      "expected": false,
+      "derivation": {
+        "numerator": -2,
+        "denominator": 3,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{-4}{6}}",
+      "gold": "-2/3",
+      "expected": true,
+      "derivation": {
+        "numerator": -2,
+        "denominator": 3,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{-4}{6}}",
+      "gold": "1/3",
+      "expected": false,
+      "derivation": {
+        "numerator": -2,
+        "denominator": 3,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{0}",
+      "gold": "0",
+      "expected": true,
+      "derivation": {
+        "numerator": 0,
+        "denominator": 1,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{0}",
+      "gold": "1",
+      "expected": false,
+      "derivation": {
+        "numerator": 0,
+        "denominator": 1,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{0}{2}}",
+      "gold": "0",
+      "expected": true,
+      "derivation": {
+        "numerator": 0,
+        "denominator": 1,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{0}{2}}",
+      "gold": "1",
+      "expected": false,
+      "derivation": {
+        "numerator": 0,
+        "denominator": 1,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{0}",
+      "gold": "0",
+      "expected": true,
+      "derivation": {
+        "numerator": 0,
+        "denominator": 2,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{0}",
+      "gold": "1",
+      "expected": false,
+      "derivation": {
+        "numerator": 0,
+        "denominator": 2,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{0}{4}}",
+      "gold": "0",
+      "expected": true,
+      "derivation": {
+        "numerator": 0,
+        "denominator": 2,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{0}{4}}",
+      "gold": "1",
+      "expected": false,
+      "derivation": {
+        "numerator": 0,
+        "denominator": 2,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{0}",
+      "gold": "0",
+      "expected": true,
+      "derivation": {
+        "numerator": 0,
+        "denominator": 3,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{0}",
+      "gold": "1",
+      "expected": false,
+      "derivation": {
+        "numerator": 0,
+        "denominator": 3,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{0}{6}}",
+      "gold": "0",
+      "expected": true,
+      "derivation": {
+        "numerator": 0,
+        "denominator": 3,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{0}{6}}",
+      "gold": "1",
+      "expected": false,
+      "derivation": {
+        "numerator": 0,
+        "denominator": 3,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{1}",
+      "gold": "1",
+      "expected": true,
+      "derivation": {
+        "numerator": 1,
+        "denominator": 1,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{1}",
+      "gold": "2",
+      "expected": false,
+      "derivation": {
+        "numerator": 1,
+        "denominator": 1,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{2}{2}}",
+      "gold": "1",
+      "expected": true,
+      "derivation": {
+        "numerator": 1,
+        "denominator": 1,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{2}{2}}",
+      "gold": "2",
+      "expected": false,
+      "derivation": {
+        "numerator": 1,
+        "denominator": 1,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{1/2}",
+      "gold": "1/2",
+      "expected": true,
+      "derivation": {
+        "numerator": 1,
+        "denominator": 2,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{1/2}",
+      "gold": "3/2",
+      "expected": false,
+      "derivation": {
+        "numerator": 1,
+        "denominator": 2,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{2}{4}}",
+      "gold": "1/2",
+      "expected": true,
+      "derivation": {
+        "numerator": 1,
+        "denominator": 2,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{2}{4}}",
+      "gold": "3/2",
+      "expected": false,
+      "derivation": {
+        "numerator": 1,
+        "denominator": 2,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{1/3}",
+      "gold": "1/3",
+      "expected": true,
+      "derivation": {
+        "numerator": 1,
+        "denominator": 3,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{1/3}",
+      "gold": "4/3",
+      "expected": false,
+      "derivation": {
+        "numerator": 1,
+        "denominator": 3,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{2}{6}}",
+      "gold": "1/3",
+      "expected": true,
+      "derivation": {
+        "numerator": 1,
+        "denominator": 3,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{2}{6}}",
+      "gold": "4/3",
+      "expected": false,
+      "derivation": {
+        "numerator": 1,
+        "denominator": 3,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{3}",
+      "gold": "3",
+      "expected": true,
+      "derivation": {
+        "numerator": 3,
+        "denominator": 1,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{3}",
+      "gold": "4",
+      "expected": false,
+      "derivation": {
+        "numerator": 3,
+        "denominator": 1,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{6}{2}}",
+      "gold": "3",
+      "expected": true,
+      "derivation": {
+        "numerator": 3,
+        "denominator": 1,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{6}{2}}",
+      "gold": "4",
+      "expected": false,
+      "derivation": {
+        "numerator": 3,
+        "denominator": 1,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{3/2}",
+      "gold": "3/2",
+      "expected": true,
+      "derivation": {
+        "numerator": 3,
+        "denominator": 2,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{3/2}",
+      "gold": "5/2",
+      "expected": false,
+      "derivation": {
+        "numerator": 3,
+        "denominator": 2,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{6}{4}}",
+      "gold": "3/2",
+      "expected": true,
+      "derivation": {
+        "numerator": 3,
+        "denominator": 2,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{6}{4}}",
+      "gold": "5/2",
+      "expected": false,
+      "derivation": {
+        "numerator": 3,
+        "denominator": 2,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{1}",
+      "gold": "1",
+      "expected": true,
+      "derivation": {
+        "numerator": 3,
+        "denominator": 3,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{1}",
+      "gold": "2",
+      "expected": false,
+      "derivation": {
+        "numerator": 3,
+        "denominator": 3,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{6}{6}}",
+      "gold": "1",
+      "expected": true,
+      "derivation": {
+        "numerator": 3,
+        "denominator": 3,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{6}{6}}",
+      "gold": "2",
+      "expected": false,
+      "derivation": {
+        "numerator": 3,
+        "denominator": 3,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{11}",
+      "gold": "11",
+      "expected": true,
+      "derivation": {
+        "numerator": 11,
+        "denominator": 1,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{11}",
+      "gold": "12",
+      "expected": false,
+      "derivation": {
+        "numerator": 11,
+        "denominator": 1,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{22}{2}}",
+      "gold": "11",
+      "expected": true,
+      "derivation": {
+        "numerator": 11,
+        "denominator": 1,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{22}{2}}",
+      "gold": "12",
+      "expected": false,
+      "derivation": {
+        "numerator": 11,
+        "denominator": 1,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{11/2}",
+      "gold": "11/2",
+      "expected": true,
+      "derivation": {
+        "numerator": 11,
+        "denominator": 2,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{11/2}",
+      "gold": "13/2",
+      "expected": false,
+      "derivation": {
+        "numerator": 11,
+        "denominator": 2,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{22}{4}}",
+      "gold": "11/2",
+      "expected": true,
+      "derivation": {
+        "numerator": 11,
+        "denominator": 2,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{22}{4}}",
+      "gold": "13/2",
+      "expected": false,
+      "derivation": {
+        "numerator": 11,
+        "denominator": 2,
+        "offset": 1
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{11/3}",
+      "gold": "11/3",
+      "expected": true,
+      "derivation": {
+        "numerator": 11,
+        "denominator": 3,
+        "offset": 0
+      }
+    },
+    {
+      "split": "discovery",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{11/3}",
+      "gold": "14/3",
+      "expected": false,
+      "derivation": {
+        "numerator": 11,
+        "denominator": 3,
+        "offset": 1
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{22}{6}}",
+      "gold": "11/3",
+      "expected": true,
+      "derivation": {
+        "numerator": 11,
+        "denominator": 3,
+        "offset": 0
+      }
+    },
+    {
+      "split": "held_out",
+      "model_output": "Reasoning. \\boxed{999} Final: \\boxed{\\frac{22}{6}}",
+      "gold": "14/3",
+      "expected": false,
+      "derivation": {
+        "numerator": 11,
+        "denominator": 3,
+        "offset": 1
+      }
+    }
+  ]
+}

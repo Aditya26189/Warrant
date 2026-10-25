@@ -1,0 +1,15 @@
+{
+    "task": {
+        "path": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-payments-e2e-cases/reference-repaired"
+    },
+    "trial_name": "reference-repaired__ecgf2zb",
+    "trials_dir": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-payments-e2e-full/reference-repaired-001/jobs/payments-e2e-reference-repaired",
+    "environment": {
+        "import_path": "experiments.grader_poc.harbor_environment:OwnedDockerEnvironment",
+        "kwargs": {
+            "warrant_owner": "4aa8722adfc645dbb9f6c6d81d4f5636",
+            "warrant_ledger": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-payments-e2e-full/reference-repaired-001/ownership"
+        }
+    },
+    "job_id": "43029414-1b3e-4b16-858b-5f2b2f3668fd"
+}

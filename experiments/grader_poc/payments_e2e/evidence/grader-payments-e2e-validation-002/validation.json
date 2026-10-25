@@ -1,0 +1,41 @@
+{
+  "source_commit": "643d71d388d2799aa9ab2400d6793ecd9dc86afd",
+  "source_dirty": false,
+  "checks": [
+    {
+      "command": [
+        "${HOST_HOME}\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "experiments.grader_poc.payments_e2e.test_boundary",
+        "-v"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "${HOST_HOME}\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "--no-cache",
+        "experiments/grader_poc/payments_e2e"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "core.longpaths=true",
+        "-C",
+        "${HOST_HOME}\\Documents\\Codex\\2026-10-16\\task-you-are-my-independent-research\\work\\terminal-bench-poc",
+        "apply",
+        "--check",
+        "--directory=tasks/payments-pipeline-fix",
+        "${HOST_HOME}\\Documents\\Codex\\2026-10-16\\task-you-are-my-independent-research\\work\\grader-payments-e2e-cases-002\\reference-repaired.patch"
+      ],
+      "returncode": 0
+    }
+  ]
+}

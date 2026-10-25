@@ -1,0 +1,38 @@
+test_tampered_task_or_app_is_rejected (test_execution.ArtifactBindingTests.test_tampered_task_or_app_is_rejected) ... ok
+test_creation_failure_still_checks_for_owned_resources (test_execution.ContainerTests.test_creation_failure_still_checks_for_owned_resources) ... ok
+test_daemon_error_is_not_container_absence (test_execution.ContainerTests.test_daemon_error_is_not_container_absence) ... ok
+test_foreign_container_is_never_removed (test_execution.ContainerTests.test_foreign_container_is_never_removed) ... ok
+test_removal_requires_verified_absence (test_execution.ContainerTests.test_removal_requires_verified_absence) ... ok
+test_timeout_and_interruption_always_attempt_owned_cleanup (test_execution.ContainerTests.test_timeout_and_interruption_always_attempt_owned_cleanup) ... ok
+test_agreement_is_not_an_abstention (test_execution.DiagnosticGateTests.test_agreement_is_not_an_abstention) ... ok
+test_failed_control_prevents_confirmation (test_execution.DiagnosticGateTests.test_failed_control_prevents_confirmation) ... ok
+test_interrupt_retains_attempt_and_stops (test_execution.DiagnosticGateTests.test_interrupt_retains_attempt_and_stops) ... ok
+test_unknown_abstains_without_executing_candidate (test_execution.DiagnosticGateTests.test_unknown_abstains_without_executing_candidate) ... ok
+test_cleanup_failure_invalidates_otherwise_valid_observation (test_execution.ProtocolTests.test_cleanup_failure_invalidates_otherwise_valid_observation) ... ok
+test_malformed_observations_cannot_be_counterexamples (test_execution.ProtocolTests.test_malformed_observations_cannot_be_counterexamples) ... ok
+test_nonzero_worker_exit_is_error (test_execution.ProtocolTests.test_nonzero_worker_exit_is_error) ... ok
+test_worker_converts_ordinary_application_errors (test_execution.ProtocolTests.test_worker_converts_ordinary_application_errors) ... ok
+test_worker_does_not_swallow_interrupt (test_execution.ProtocolTests.test_worker_does_not_swallow_interrupt) ... ok
+test_interrupt_writes_receipt (test_execution.TrialReceiptTests.test_interrupt_writes_receipt) ... ok
+test_launch_failure_writes_receipt (test_execution.TrialReceiptTests.test_launch_failure_writes_receipt) ... ok
+test_missing_malformed_or_nonzero_results_cannot_complete (test_execution.TrialReceiptTests.test_missing_malformed_or_nonzero_results_cannot_complete) ... ok
+test_ordinary_binary_result_still_completes (test_execution.TrialReceiptTests.test_ordinary_binary_result_still_completes) ... ok
+test_reward_must_be_binary_number_not_boolean (test_execution.TrialReceiptTests.test_reward_must_be_binary_number_not_boolean) ... ok
+test_task_drift_blocks_completion (test_execution.TrialReceiptTests.test_task_drift_blocks_completion) ... ok
+test_timeout_preserves_partial_reward_without_promoting_it (test_execution.TrialReceiptTests.test_timeout_preserves_partial_reward_without_promoting_it) ... ok
+test_arrival_permutations_preserve_expected_final_aggregate (test_oracle.OracleTests.test_arrival_permutations_preserve_expected_final_aggregate) ... ok
+test_bridge_connects_two_components (test_oracle.OracleTests.test_bridge_connects_two_components) ... ok
+test_exact_boundary_is_unknown (test_oracle.OracleTests.test_exact_boundary_is_unknown) ... ok
+test_invalid_and_unsupported_inputs_abstain (test_oracle.OracleTests.test_invalid_and_unsupported_inputs_abstain) ... ok
+test_without_bridge_remains_separate (test_oracle.OracleTests.test_without_bridge_remains_separate) ... ok
+test_preserves_unknown_boundaries_and_input (test_reducer.ReducerTests.test_preserves_unknown_boundaries_and_input) ... ok
+test_scalar_reduction_can_enable_later_deletion (test_reducer.ReducerTests.test_scalar_reduction_can_enable_later_deletion) ... ok
+test_irrelevant_functions_are_not_mutated (experiments.grader_poc.p2.test_p2.ProtocolTests.test_irrelevant_functions_are_not_mutated) ... ok
+test_mutation_preserves_python311_fstring_syntax (experiments.grader_poc.p2.test_p2.ProtocolTests.test_mutation_preserves_python311_fstring_syntax) ... ok
+test_mutations_are_single_site_and_bounded (experiments.grader_poc.p2.test_p2.ProtocolTests.test_mutations_are_single_site_and_bounded) ... ok
+test_rational_labels_come_from_operands (experiments.grader_poc.p2.test_p2.ProtocolTests.test_rational_labels_come_from_operands) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 1.426s
+
+OK

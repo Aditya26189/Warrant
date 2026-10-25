@@ -1,0 +1,830 @@
+{
+  "copies": [
+    {
+      "path": "live/grader-cancellation-001/interruption/outcome.json",
+      "raw_sha256": "14394189e70e3a978268918ba721ac569902a83af8358aa4d7a212677de82b9c",
+      "packaged_sha256": "eb55c39f947a3b8005d9f79337b456abffb28744ab6b3601b9e62b373045cdb7"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/command.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/invocation.json",
+      "raw_sha256": "cc56f24ea13e97b33f4143fc23c7e5001994fc74a0b56508df65cbef49b255de",
+      "packaged_sha256": "f65ebd80ff75c7cd77e00df3b2beb6d4a53058c7da92ad3b961ed93457cc0597"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/config.json",
+      "raw_sha256": "0cd1e58e0382b6f60794788ac993af02fa186e588b8384c9d6da7fac41c58ded",
+      "packaged_sha256": "369c5771dd4aa0fb057e7af60f7c5e3290fbba394559d856cc615c82432b1748"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/job.log",
+      "raw_sha256": "548dd8ff7446bb3daac5e7f4c21735b81446df74a2120c1919b9ddd442a0168f",
+      "packaged_sha256": "548dd8ff7446bb3daac5e7f4c21735b81446df74a2120c1919b9ddd442a0168f"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/lock.json",
+      "raw_sha256": "f73e3a67ba4ffa41d0166f8df87532b4c7f0d36c12caa8dd24759d5f3a6e70dc",
+      "packaged_sha256": "21dd52bd04183488802060d7a50aea0cbc32614d0852e7f85ba1798ea57e1e64"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/result.json",
+      "raw_sha256": "1d71c45ef14c7c69fe32b96714dbb70778201b1fa2c9faa8764d82f62a203be0",
+      "packaged_sha256": "1d71c45ef14c7c69fe32b96714dbb70778201b1fa2c9faa8764d82f62a203be0"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/task__NY6upQE/agent/oracle.txt",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/task__NY6upQE/artifacts/manifest.json",
+      "raw_sha256": "a2d6f66d545a09b9110b4ed84222030b77da51bde34a61ce9b0ca18e4d51586f",
+      "packaged_sha256": "a2d6f66d545a09b9110b4ed84222030b77da51bde34a61ce9b0ca18e4d51586f"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/task__NY6upQE/config.json",
+      "raw_sha256": "e21451ecd8493f2f625d4e572fbbc637a02655a3be2c3cfee4e4b1dbaaf81c53",
+      "packaged_sha256": "dd4f3055f1d35c5f22297e890acf10830c76763919dee7f01ba8492fd8cfe226"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/task__NY6upQE/exception.txt",
+      "raw_sha256": "e90f375b68b81077957a162995fd6605a66483903ca31f0967012b54aa316372",
+      "packaged_sha256": "d277ae1bbff57f9ffe0aa5a800acb0f40fd93544d03cb4ae849eb437388e71cc"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/task__NY6upQE/lock.json",
+      "raw_sha256": "c1604365d368bf3412b569e3b68f75a3dce7b4dbe66f792e91694426c6abb536",
+      "packaged_sha256": "fececcac1507e3958b42775f72d65f2388de980e6d0ea29b4e8c56712b82dc89"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/task__NY6upQE/trial.log",
+      "raw_sha256": "af51dc0503a37cc8315d60dd1e6be8dbab3d39003e05ed63645fe67548534dd5",
+      "packaged_sha256": "af51dc0503a37cc8315d60dd1e6be8dbab3d39003e05ed63645fe67548534dd5"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/outcome.json",
+      "raw_sha256": "aba65bba8c3416c823cbbf922ace9f5cbe0dafe8ca9498e7d16a3b97a95d2989",
+      "packaged_sha256": "28ec6b31ed279dae50130aad03b7b572794a390e711a781c84e9bd73b57a530b"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/ownership/cleanup.json",
+      "raw_sha256": "f6392fd3a31992e86805435744c6d9d5f31d99e55b78258ed434059554188118",
+      "packaged_sha256": "70ae97c8f5afab470df1098d864385c5ad31823ff37c9fa83ccba99ae71244d7"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/ownership/fd00556b0103a9da.compose.json",
+      "raw_sha256": "a80cebdb2aa0624684ba2ba073dbdd08794ff07124926cd3e30a78e37046f6a9",
+      "packaged_sha256": "a80cebdb2aa0624684ba2ba073dbdd08794ff07124926cd3e30a78e37046f6a9"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/run/ownership/fd00556b0103a9da.instance.json",
+      "raw_sha256": "21ad80ef730b7d12ada6944446d8a89d1d62f9c5ee76a53bc8044ce05066241d",
+      "packaged_sha256": "ffade81a869e7169d792b3c66c1fdd83610a61c47f82c17a4c88b2df730c6abe"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/task/environment/docker-compose.yaml",
+      "raw_sha256": "46e9859dd845ff269996a25ac54f8ee9c9b6378e7eba82468e21eeb068783908",
+      "packaged_sha256": "46e9859dd845ff269996a25ac54f8ee9c9b6378e7eba82468e21eeb068783908"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/task/environment/Dockerfile",
+      "raw_sha256": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb",
+      "packaged_sha256": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/task/instruction.md",
+      "raw_sha256": "8b6b9a557dafc55fc5102ae362a8622aaedaa1a7dc2120a0e9b371c5f10084bf",
+      "packaged_sha256": "8b6b9a557dafc55fc5102ae362a8622aaedaa1a7dc2120a0e9b371c5f10084bf"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/task/solution/solve.sh",
+      "raw_sha256": "7d467f25f27f1f1d11e3437ff9073d48fe7b8fe42e3e8a62676196dcc74e5607",
+      "packaged_sha256": "7d467f25f27f1f1d11e3437ff9073d48fe7b8fe42e3e8a62676196dcc74e5607"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/task/task.toml",
+      "raw_sha256": "f93179d7aafc248a8791a58dbdeeaea979c145fb8efc4831bea0c7c7a9c7e64a",
+      "packaged_sha256": "f93179d7aafc248a8791a58dbdeeaea979c145fb8efc4831bea0c7c7a9c7e64a"
+    },
+    {
+      "path": "live/grader-cancellation-001/interruption/task/tests/test.sh",
+      "raw_sha256": "dd9bbfcb853b9c1a7d71840fcfa2cc6f5530d9d156791d055a55f8183a2f76d6",
+      "packaged_sha256": "dd9bbfcb853b9c1a7d71840fcfa2cc6f5530d9d156791d055a55f8183a2f76d6"
+    },
+    {
+      "path": "live/grader-cancellation-001/invocation.json",
+      "raw_sha256": "a13aad6900c6438b895fcb0a6bc92a6c00c720e7b3bca2c1466da4ae826a0e16",
+      "packaged_sha256": "a13aad6900c6438b895fcb0a6bc92a6c00c720e7b3bca2c1466da4ae826a0e16"
+    },
+    {
+      "path": "live/grader-cancellation-001/outcome.json",
+      "raw_sha256": "9df0d3a6a77d88376d00d003d9b194764f2bb9abc029c08d6f3650b9551917ef",
+      "packaged_sha256": "9df0d3a6a77d88376d00d003d9b194764f2bb9abc029c08d6f3650b9551917ef"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/command.log",
+      "raw_sha256": "c9acb46f1d17b26445cac28b9f3208e47d5b94cded4f42659dd254c575edd143",
+      "packaged_sha256": "d739a27bea9e5c3adb9a342955a3b36da7fa59deef7d997db60aa5e8ca9e4e14"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/invocation.json",
+      "raw_sha256": "50432157fe2368a1b881e9b338a00cb7880916e4d32b0fe0fd19e5e1f5a5255c",
+      "packaged_sha256": "14f5b6e0ea4441ce2f0a8f0eb86afed41ec129a76f66f11c99342dea27f528fe"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/config.json",
+      "raw_sha256": "5f3d72c76c64b009684d6264752f655c0d5d093bc214a6bd55518624f293719f",
+      "packaged_sha256": "cfce1f54e4140eff7bfa2ef523dc63baba43cd5952dbff2349e2af7c8e12f451"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/job.log",
+      "raw_sha256": "d5b1ef35ab73e911bf42558213febe10097e2fb3951b7104d4165540577d3c00",
+      "packaged_sha256": "d5b1ef35ab73e911bf42558213febe10097e2fb3951b7104d4165540577d3c00"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/lock.json",
+      "raw_sha256": "998d63e1ec04189d66d2687b81eddf28f3f9c5ae6b7a6f5d2f9b0bb333e34a84",
+      "packaged_sha256": "a614a9c861be9073e605ae39e7b6cef2404929b247f80d7896ed5722cc355226"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/result.json",
+      "raw_sha256": "fc46700e0c13a76e4c1c5993f6cc4f4fde4be230a64d8a8ebaf189ec7aabf1fa",
+      "packaged_sha256": "fc46700e0c13a76e4c1c5993f6cc4f4fde4be230a64d8a8ebaf189ec7aabf1fa"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/agent/oracle.txt",
+      "raw_sha256": "e8dffa503c8b3cfb8f17ce686ddd314cbf7b9fac4a7e2f162c5dee4ff54a5599",
+      "packaged_sha256": "e8dffa503c8b3cfb8f17ce686ddd314cbf7b9fac4a7e2f162c5dee4ff54a5599"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/__init__.py",
+      "raw_sha256": "63b800abbf1b909111eb7bd75d9c117c981a068f28156699752ad5f896521e0f",
+      "packaged_sha256": "63b800abbf1b909111eb7bd75d9c117c981a068f28156699752ad5f896521e0f"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/DESIGN.md",
+      "raw_sha256": "b6568e4d497b4cc80abb21f4dc079c28402869d799117c39ff41a1999dff0b2a",
+      "packaged_sha256": "b6568e4d497b4cc80abb21f4dc079c28402869d799117c39ff41a1999dff0b2a"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/emitter.py",
+      "raw_sha256": "d47c4b1220de623dd1df798e9a4a47c498096ea45a795f08a5e8d8ac94dcc644",
+      "packaged_sha256": "d47c4b1220de623dd1df798e9a4a47c498096ea45a795f08a5e8d8ac94dcc644"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/events.py",
+      "raw_sha256": "6dbeeed948e4516198d681a160b05181f8ff601e165104548c221695d5fbb991",
+      "packaged_sha256": "6dbeeed948e4516198d681a160b05181f8ff601e165104548c221695d5fbb991"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/gc.py",
+      "raw_sha256": "659f74439ddbd0d14264f17b444ab053cb62ad7036edcb4b3bccd8c178626e97",
+      "packaged_sha256": "659f74439ddbd0d14264f17b444ab053cb62ad7036edcb4b3bccd8c178626e97"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/merger.py",
+      "raw_sha256": "c4031c998e7ce91800d4c4445ec63e03466edbe5eb0da04d738875317cb42e55",
+      "packaged_sha256": "c4031c998e7ce91800d4c4445ec63e03466edbe5eb0da04d738875317cb42e55"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/sessions.py",
+      "raw_sha256": "731e769ad72fc142877bf28c48f1f500f50d465db3266991474668b76592259b",
+      "packaged_sha256": "731e769ad72fc142877bf28c48f1f500f50d465db3266991474668b76592259b"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/types.py",
+      "raw_sha256": "650194a651a37c4be79a544b7ecd79b7b319109e2f17b8dc375eb38252542392",
+      "packaged_sha256": "650194a651a37c4be79a544b7ecd79b7b319109e2f17b8dc375eb38252542392"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/manifest.json",
+      "raw_sha256": "183e39f27960417ac70603e22e5ece1725d4e47ccdf10554675a81cb6c066d6e",
+      "packaged_sha256": "183e39f27960417ac70603e22e5ece1725d4e47ccdf10554675a81cb6c066d6e"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/config.json",
+      "raw_sha256": "fb106416322db5f1ef88cb5f26293eb26662e60089c652c2554d685844072eb9",
+      "packaged_sha256": "6507a0752b68344d09ff2c5f609e50c3d0517036a15f5f3aeb34c08f4eb57d7c"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/lock.json",
+      "raw_sha256": "aa13588a8e776ac3a8ddb688ed52bb02044d4bd029ab4bd6ffd402c17aa4c147",
+      "packaged_sha256": "8200a490dd76d18644fca12ba46c5d29e62dc0f864d553c63950e3f381c0bb38"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/result.json",
+      "raw_sha256": "8993f762b7137c5f7e25725c9e8ea310fbd85a3b022d06c2a383f9669027982b",
+      "packaged_sha256": "85fb464361bbc5045608c4aacf8a88ef6f04c65506e00b765779d0c3495fa57d"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/trial.log",
+      "raw_sha256": "74fbc1b6ffa47d400e8dff5dd7533ce0da4369db953ad05761cd23648d636f01",
+      "packaged_sha256": "74fbc1b6ffa47d400e8dff5dd7533ce0da4369db953ad05761cd23648d636f01"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/verifier/ctrf.json",
+      "raw_sha256": "7c679274578ed241c964ada9c6b05b1696ab4bd072fe37cd52804a09b21aad4f",
+      "packaged_sha256": "7c679274578ed241c964ada9c6b05b1696ab4bd072fe37cd52804a09b21aad4f"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/verifier/reward.txt",
+      "raw_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "packaged_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/verifier/test-stdout.txt",
+      "raw_sha256": "0e1b4ff232062e30acaf1cd35a68e9ed3dcac204e183dbaa83a1cf118fd2e4a5",
+      "packaged_sha256": "0e1b4ff232062e30acaf1cd35a68e9ed3dcac204e183dbaa83a1cf118fd2e4a5"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/outcome.json",
+      "raw_sha256": "c9ef9db8c6f8ff7aa7cf74fe4e6f451da25f4204d1ff80ce76fe3e52cde2e1d3",
+      "packaged_sha256": "011b740523af3e0c32d3bfbe4909e04a93c8b6718bd921e8385509ea7b4237a8"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/ownership/76b17020a2e3ec35.compose.json",
+      "raw_sha256": "bc49dcbb121e26ee3ad4869f6cb5bc67bfda8744b617bf783ea0e68b936ddc64",
+      "packaged_sha256": "bc49dcbb121e26ee3ad4869f6cb5bc67bfda8744b617bf783ea0e68b936ddc64"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/ownership/76b17020a2e3ec35.instance.json",
+      "raw_sha256": "c79a3222d16bf9f8900edf302ea23a31049f15dd77e2a2ced131909cd1d0d36c",
+      "packaged_sha256": "ae73bac131c6ac2b6fb5039b227e64145af0db3bc2d93e6176a00912aea591bd"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/ownership/7ec69690e6080d6a.compose.json",
+      "raw_sha256": "cfa291dd97eed408e105374ca56cc05eaad06b6fe208ac7b10aa6dc4bcba703c",
+      "packaged_sha256": "cfa291dd97eed408e105374ca56cc05eaad06b6fe208ac7b10aa6dc4bcba703c"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/ownership/7ec69690e6080d6a.instance.json",
+      "raw_sha256": "d7014ef932ed8d62f875b5d64592d827fb5d2d84c2dc66cfb0f391dcc13693b9",
+      "packaged_sha256": "b5dc6f1e582dbc10669ab028e648b4f95b139701602eef75f4b933300687a3f0"
+    },
+    {
+      "path": "live/grader-cancellation-001/reference/ownership/cleanup.json",
+      "raw_sha256": "f38351cc51b73f443f291214f8604de349f93a99dfa1f5639d4e82e2c90a11e9",
+      "packaged_sha256": "f38351cc51b73f443f291214f8604de349f93a99dfa1f5639d4e82e2c90a11e9"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/outcome.json",
+      "raw_sha256": "1f28050ff9aacf983c08ce52e985196685a1ae1b371e622ad3dd09c365f9b896",
+      "packaged_sha256": "ccb87efa44e482578cbd8c6768e8b08ec51f8a05566f532bd5edd07f35b64c9e"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/command.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/invocation.json",
+      "raw_sha256": "baf52304bdafc7a64aac50c546e247e1e1cca17a5fec4af0fcf34270cca7fbcc",
+      "packaged_sha256": "fe1113197129fd1d0529ae7bcc217d35da51b82c8403d91b9206d2942ca2faa5"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/config.json",
+      "raw_sha256": "5cad8dde0a5e605117038415323f2100909372e3781b4be162e8bba160ed8a82",
+      "packaged_sha256": "b5c85b3939eddf61b09a2b1893a10e402adb5b6127bf08cf740938a4cd12fca3"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/job.log",
+      "raw_sha256": "5e6d15b7305b5c101c23479c9534020b9e101a18cf42a6244bf42ba43d253ac2",
+      "packaged_sha256": "5e6d15b7305b5c101c23479c9534020b9e101a18cf42a6244bf42ba43d253ac2"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/lock.json",
+      "raw_sha256": "6704bcc09f72911d8809c79e6156550c4e1599a9bd6a51234bf2a5c6994ebf0b",
+      "packaged_sha256": "b8fb872c11328200f02527bd9e7f297df060a04709f03d9cceff87e3a16b5b57"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/result.json",
+      "raw_sha256": "a94fa10aa39dac7e54ee8c8a52f30fddc120a50aab9de30472b57781e0ff448e",
+      "packaged_sha256": "a94fa10aa39dac7e54ee8c8a52f30fddc120a50aab9de30472b57781e0ff448e"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/task__bZyuoTa/agent/oracle.txt",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/task__bZyuoTa/artifacts/manifest.json",
+      "raw_sha256": "a2d6f66d545a09b9110b4ed84222030b77da51bde34a61ce9b0ca18e4d51586f",
+      "packaged_sha256": "a2d6f66d545a09b9110b4ed84222030b77da51bde34a61ce9b0ca18e4d51586f"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/task__bZyuoTa/config.json",
+      "raw_sha256": "19b1507b29a4d4a61323456829c7aed5a91f5a445e2d965150ba09989d7fe1ff",
+      "packaged_sha256": "eaf790c659d4055ce91218bbcd85f6183c681971e1ba1c875a5e6e63bdd98a2d"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/task__bZyuoTa/exception.txt",
+      "raw_sha256": "e90f375b68b81077957a162995fd6605a66483903ca31f0967012b54aa316372",
+      "packaged_sha256": "d277ae1bbff57f9ffe0aa5a800acb0f40fd93544d03cb4ae849eb437388e71cc"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/task__bZyuoTa/lock.json",
+      "raw_sha256": "28da6a3fa413ffdfba36cb6867a02ed58541f21607d09dc168c58c4b5d8ef425",
+      "packaged_sha256": "f6ad6543b522c3c054b2040dfe7130d5344275ad71b8710c280ef129b12dfe59"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/task__bZyuoTa/trial.log",
+      "raw_sha256": "df31977b67116796c98d34973ec6a706e8caf8327d3d6e929881de988dade1e2",
+      "packaged_sha256": "df31977b67116796c98d34973ec6a706e8caf8327d3d6e929881de988dade1e2"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/outcome.json",
+      "raw_sha256": "fc41e01d178c1af2f95d15490e82bd4bae701aa7bbbfd6d11ad7aec0ec787166",
+      "packaged_sha256": "444c2c722cae3a231af4e50fca468b5890f5da6dccd982e44ae6460312477dff"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/ownership/16eae8b97a005b8f.compose.json",
+      "raw_sha256": "f257733764fb6a8ed6f56b0aa0327538ebc4f6cb10f6ae473fdf4af0c64ef85b",
+      "packaged_sha256": "f257733764fb6a8ed6f56b0aa0327538ebc4f6cb10f6ae473fdf4af0c64ef85b"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/ownership/16eae8b97a005b8f.instance.json",
+      "raw_sha256": "fda585d29aea296df0b9342885723225c956ad7806e60777dddde74eb0853d43",
+      "packaged_sha256": "646e728d07bb4cd29fadad8c54b2e7a506f0be0268477aaa12824df59a2cb1cf"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/run/ownership/cleanup.json",
+      "raw_sha256": "a7d3ff837b762eed037e786c369b745197b1ff1c456d5436de87886de290cc33",
+      "packaged_sha256": "f75dd38f05c0a1642c4486986d48a345e7865682873e52e6f7a5e79e5cb8418c"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/task/environment/docker-compose.yaml",
+      "raw_sha256": "46e9859dd845ff269996a25ac54f8ee9c9b6378e7eba82468e21eeb068783908",
+      "packaged_sha256": "46e9859dd845ff269996a25ac54f8ee9c9b6378e7eba82468e21eeb068783908"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/task/environment/Dockerfile",
+      "raw_sha256": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb",
+      "packaged_sha256": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/task/instruction.md",
+      "raw_sha256": "8b6b9a557dafc55fc5102ae362a8622aaedaa1a7dc2120a0e9b371c5f10084bf",
+      "packaged_sha256": "8b6b9a557dafc55fc5102ae362a8622aaedaa1a7dc2120a0e9b371c5f10084bf"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/task/solution/solve.sh",
+      "raw_sha256": "7d467f25f27f1f1d11e3437ff9073d48fe7b8fe42e3e8a62676196dcc74e5607",
+      "packaged_sha256": "7d467f25f27f1f1d11e3437ff9073d48fe7b8fe42e3e8a62676196dcc74e5607"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/task/task.toml",
+      "raw_sha256": "f93179d7aafc248a8791a58dbdeeaea979c145fb8efc4831bea0c7c7a9c7e64a",
+      "packaged_sha256": "f93179d7aafc248a8791a58dbdeeaea979c145fb8efc4831bea0c7c7a9c7e64a"
+    },
+    {
+      "path": "live/grader-cancellation-001/timeout/task/tests/test.sh",
+      "raw_sha256": "dd9bbfcb853b9c1a7d71840fcfa2cc6f5530d9d156791d055a55f8183a2f76d6",
+      "packaged_sha256": "dd9bbfcb853b9c1a7d71840fcfa2cc6f5530d9d156791d055a55f8183a2f76d6"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/outcome.json",
+      "raw_sha256": "18c6e13ad083bdf6375134cc5c47a58b7c34aea63b44af92dcf9720a08c9da59",
+      "packaged_sha256": "69183aa46784899d6456d9b96599ffa486a97902bffd7f926ad18eec8e931187"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/command.log",
+      "raw_sha256": "1a871debba0ebea5ae1a4a0159d88ca910979e2ab4c3cdbc879077aed6c2cac7",
+      "packaged_sha256": "1e508646b04e2c08e674a6a260b4e6379487df575a1eeba1a5af437e34f0ce09"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/invocation.json",
+      "raw_sha256": "500ee497732cffaaf410da7b0ebdcb5d0e3d58b33da6fee9e7cd07454c2b37d4",
+      "packaged_sha256": "088c7b4ed46ff9143c1e0def494568d7b04b5bf0a992023b4df4852920470777"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/config.json",
+      "raw_sha256": "11431021a41a4c36396637872f1d08e0c431348a83f7f1e0ebd7b4668ec0663f",
+      "packaged_sha256": "38a7dcd7fed1e1e0170091efe46e7a062b13f8c7255685f7a61f099b76f39281"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/job.log",
+      "raw_sha256": "6a9ab1b125c28d34281770a8a8a75f524707349fb4ab66589a5c40dc0bcbc4b9",
+      "packaged_sha256": "68e9c68315eae70176d63681f085320d85ee2909a3da2a498f2bb3b3605fb4dd"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/lock.json",
+      "raw_sha256": "a437b07e43e3383ec8f57573b397a27612b0d5aeeb3a8ee6b790114835044102",
+      "packaged_sha256": "7d6177e21a25ec5c48f8e19ab40771fcf7825b7af220ddfc256dec0418e7c17d"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/result.json",
+      "raw_sha256": "14b6c7a97007a913cdbfd285ff64ffccd82ef370eeffbde47c3991ae68ce0e22",
+      "packaged_sha256": "14b6c7a97007a913cdbfd285ff64ffccd82ef370eeffbde47c3991ae68ce0e22"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/agent/oracle.txt",
+      "raw_sha256": "07d57c4521ec335566a609eee828edf74a520b150d48dd608e702f226163ba61",
+      "packaged_sha256": "07d57c4521ec335566a609eee828edf74a520b150d48dd608e702f226163ba61"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/artifacts/manifest.json",
+      "raw_sha256": "a2d6f66d545a09b9110b4ed84222030b77da51bde34a61ce9b0ca18e4d51586f",
+      "packaged_sha256": "a2d6f66d545a09b9110b4ed84222030b77da51bde34a61ce9b0ca18e4d51586f"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/config.json",
+      "raw_sha256": "ea66968de34b3f73ee8254ae826c2f8cd49cd72431c950fd5c981a9bb58494b6",
+      "packaged_sha256": "59c1cc852e97054eae7370840a042224f84fa97163005767062b885b223baf91"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/exception.txt",
+      "raw_sha256": "4d902e1d3fea623dfae65b893e964a89c3db4ca1d931f3b87915df7946ae4352",
+      "packaged_sha256": "6a3b04a5aefa882e2b2cab96a38b31600da43eddd671cca8891fe00a12d1df4a"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/lock.json",
+      "raw_sha256": "c3fb9edeb33d649ba7d2ff7e2c403e50cf859bf355472c4ea44c561583edfc49",
+      "packaged_sha256": "e37c9f27e2fc6d258c59007c7a9c5a02c37f43be7c5699afeb0af1c581fb31f0"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/result.json",
+      "raw_sha256": "e07555281c81c14dbf6665dc7069933bcfa5e0c953135c52e20918c29628fe4c",
+      "packaged_sha256": "a241bf7a6ca781921fd088155b0669f2193e7f55f73c4f01d83ad29af75c64ba"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/trial.log",
+      "raw_sha256": "d5a4353362040a7111e7323a7f34c2fd20293ceff60a3df307df01a0f62ce1a2",
+      "packaged_sha256": "c5dd697874c98dcee726c809f92310eba8f7210aab80ef5192d42b691f4334ab"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/verifier/test-stdout.txt",
+      "raw_sha256": "7d4a7c37dce884d484a1f3cbf74af3e51a24e5cff446920c88a414747d191da2",
+      "packaged_sha256": "7d4a7c37dce884d484a1f3cbf74af3e51a24e5cff446920c88a414747d191da2"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/outcome.json",
+      "raw_sha256": "f8ab7138c65a99ae7b0af15883cf9337ad1367769e35bcf32320e0bb47e25a8f",
+      "packaged_sha256": "ffebf7c77abf4735bf6d246f1200a3eaccc3bbcd8942d9304cad8fcfa2bec4a9"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/ownership/363452a2d39f36f6.compose.json",
+      "raw_sha256": "c2b5b4f2b24fde82829e68ec36df1521e2852bee3d70db54e621a798b0daa25e",
+      "packaged_sha256": "c2b5b4f2b24fde82829e68ec36df1521e2852bee3d70db54e621a798b0daa25e"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/ownership/363452a2d39f36f6.instance.json",
+      "raw_sha256": "d13ece9cb752aa16e92ae389a462fe03b9fbf28e3e8daf896e32aeb012131c8b",
+      "packaged_sha256": "03014e49ed3d5e368325780852c997940ec5517144128d72ec7791b870f9aff7"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/ownership/cleanup.json",
+      "raw_sha256": "d0960655ce1a3aaa39fa5dda5b2f7edb4e26014a832fa5cb9dd2d777d733663e",
+      "packaged_sha256": "d0960655ce1a3aaa39fa5dda5b2f7edb4e26014a832fa5cb9dd2d777d733663e"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/ownership/fa1f67e4828fd13a.compose.json",
+      "raw_sha256": "485f1ec78403d19d41e1110edd131b7ba4a39ecd30b5bcc707c4cf1120e496cc",
+      "packaged_sha256": "485f1ec78403d19d41e1110edd131b7ba4a39ecd30b5bcc707c4cf1120e496cc"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/run/ownership/fa1f67e4828fd13a.instance.json",
+      "raw_sha256": "6b828c023a89bc6664d82028643b9434493995cd0bdcee08fcf100812f0c9dc4",
+      "packaged_sha256": "5543bea4631eb9c5f9c8bee05c2920b64f48c67d487377a30e34009498673f11"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/task/environment/docker-compose.yaml",
+      "raw_sha256": "46e9859dd845ff269996a25ac54f8ee9c9b6378e7eba82468e21eeb068783908",
+      "packaged_sha256": "46e9859dd845ff269996a25ac54f8ee9c9b6378e7eba82468e21eeb068783908"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/task/environment/Dockerfile",
+      "raw_sha256": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb",
+      "packaged_sha256": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/task/instruction.md",
+      "raw_sha256": "8b6b9a557dafc55fc5102ae362a8622aaedaa1a7dc2120a0e9b371c5f10084bf",
+      "packaged_sha256": "8b6b9a557dafc55fc5102ae362a8622aaedaa1a7dc2120a0e9b371c5f10084bf"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/task/solution/solve.sh",
+      "raw_sha256": "5cf8f6f65d56f95550e1745550cb51a6286b1df813ccdedd676fc6567fa6c53c",
+      "packaged_sha256": "5cf8f6f65d56f95550e1745550cb51a6286b1df813ccdedd676fc6567fa6c53c"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/task/task.toml",
+      "raw_sha256": "bf05cd904a3fa7a46dc6eb4272c47589af08f35f5fc3e63c1a177d76e72d032b",
+      "packaged_sha256": "bf05cd904a3fa7a46dc6eb4272c47589af08f35f5fc3e63c1a177d76e72d032b"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/task/tests/docker-compose.yaml",
+      "raw_sha256": "46e9859dd845ff269996a25ac54f8ee9c9b6378e7eba82468e21eeb068783908",
+      "packaged_sha256": "46e9859dd845ff269996a25ac54f8ee9c9b6378e7eba82468e21eeb068783908"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/task/tests/Dockerfile",
+      "raw_sha256": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb",
+      "packaged_sha256": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb"
+    },
+    {
+      "path": "live/grader-cancellation-001/verifier-interruption/task/tests/test.sh",
+      "raw_sha256": "5cf11a421cd425ec6f61d1476b2f621d96b38efc4c3abbea0d16e07e982f0908",
+      "packaged_sha256": "5cf11a421cd425ec6f61d1476b2f621d96b38efc4c3abbea0d16e07e982f0908"
+    },
+    {
+      "path": "live/grader-cancellation-002/invocation.json",
+      "raw_sha256": "2d9ebfade02c698422239878978a6b5083cf4be37769f355a054081bc1074d0d",
+      "packaged_sha256": "2d9ebfade02c698422239878978a6b5083cf4be37769f355a054081bc1074d0d"
+    },
+    {
+      "path": "live/grader-cancellation-002/outcome.json",
+      "raw_sha256": "df2ed649f67160eba108313f304fe4ed29ab23805b56e8ecd781d6ff9cd6c6f8",
+      "packaged_sha256": "df2ed649f67160eba108313f304fe4ed29ab23805b56e8ecd781d6ff9cd6c6f8"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/outcome.json",
+      "raw_sha256": "0bda72f39972284caf9eda71d427ba8658b85eb01c4b1b002f9b2fd513a1840e",
+      "packaged_sha256": "1bbc1fe7c6e41a059da012993ec20ffa420be35142f881b92106b09b8f767562"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/command.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/invocation.json",
+      "raw_sha256": "b047bf7e89c6c2480d2170046a119395b37625dc34fac0625ef5d21203c583f5",
+      "packaged_sha256": "187e7391f12f44329b7459b9838bba89fdef6f6ce913feca986009e1573c0565"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/config.json",
+      "raw_sha256": "628bf324240226f42e4a9043798ac5b0245b65fb6690be56d302142bba05557b",
+      "packaged_sha256": "62f9f00ff0d71e431bd6abb2967028d2068f768219a3ebc2f8c33c7e2942c063"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/job.log",
+      "raw_sha256": "7ee315cbe26629658020aa8b383deb51a755d4a4938c4137456d56b2f641a798",
+      "packaged_sha256": "7ee315cbe26629658020aa8b383deb51a755d4a4938c4137456d56b2f641a798"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/lock.json",
+      "raw_sha256": "ab99fd31b4613f41c619745957308fb306d70c971ddcdee3d30c8d21810ece26",
+      "packaged_sha256": "118c07319a85fcc48936a078b3fb74143acdda6f4ad154ae076b735d8898edf9"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/result.json",
+      "raw_sha256": "75f13a505715eacf7a16f123c0e9bb5b2434d8b125e7622cfb5a48a8796658af",
+      "packaged_sha256": "75f13a505715eacf7a16f123c0e9bb5b2434d8b125e7622cfb5a48a8796658af"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__ggirwUC/agent/oracle.txt",
+      "raw_sha256": "07d57c4521ec335566a609eee828edf74a520b150d48dd608e702f226163ba61",
+      "packaged_sha256": "07d57c4521ec335566a609eee828edf74a520b150d48dd608e702f226163ba61"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__ggirwUC/artifacts/manifest.json",
+      "raw_sha256": "a2d6f66d545a09b9110b4ed84222030b77da51bde34a61ce9b0ca18e4d51586f",
+      "packaged_sha256": "a2d6f66d545a09b9110b4ed84222030b77da51bde34a61ce9b0ca18e4d51586f"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__ggirwUC/config.json",
+      "raw_sha256": "e9663710ed41dc83083f20f64e95ef96d772f5d982bc6b1e3f85ad43481ac2ae",
+      "packaged_sha256": "b879d0fd6fc2703150461c861a36e5e1b5461d209c20ffdcc95d2d1ada0cf9d7"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__ggirwUC/lock.json",
+      "raw_sha256": "cd43e5405cbb11ecf0676fca5503f71773c73bbc887faa7993ba73466cf9ab0f",
+      "packaged_sha256": "91cc1d18b22b7a4bd2a88c3d83f6857c8c5899aa970be793efaa0e7e6aa4c024"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__ggirwUC/trial.log",
+      "raw_sha256": "9d3160d932ac6b9671de7a94dd9076763ade798f9c79ce8b5c1fbe06ffe66fc0",
+      "packaged_sha256": "9d3160d932ac6b9671de7a94dd9076763ade798f9c79ce8b5c1fbe06ffe66fc0"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/outcome.json",
+      "raw_sha256": "11d9e8208671cdfc0a48f90082b8543cad5ed0f17bd73bf32f56c4f97df5113c",
+      "packaged_sha256": "5f64f33f8ff409e96b7ae13646e705831322edf4160a968d393b9ddfbe52bc6e"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/ownership/7f69804bf74c5a8f.compose.json",
+      "raw_sha256": "ad41d601021858881b53d80ac5e4c8635471c0f562f9112fb4d8e3538a734930",
+      "packaged_sha256": "ad41d601021858881b53d80ac5e4c8635471c0f562f9112fb4d8e3538a734930"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/ownership/7f69804bf74c5a8f.instance.json",
+      "raw_sha256": "ac729599a17f8b89e27418d5c10f278f2d3fe97f4d2c7f190114809875df5419",
+      "packaged_sha256": "c3502d831c2bd914aa907b4b7d175d5ef11d5887874e383ca806b57b8bce91aa"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/ownership/cleanup.json",
+      "raw_sha256": "b76f0da4117bbc17d4c612faa000d39c2cd10eb42237ab06972c21e85aab32bc",
+      "packaged_sha256": "51c2d5dc5355abc1b801d33e2431c6ac336924200b08966adc9eb22d4196cb92"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/ownership/ee139b8b6a97a55d.compose.json",
+      "raw_sha256": "c9adc3378f531ba2a4a8e64e491beb329bf4a7ab846e71378b2ec94cabb48652",
+      "packaged_sha256": "c9adc3378f531ba2a4a8e64e491beb329bf4a7ab846e71378b2ec94cabb48652"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/run/ownership/ee139b8b6a97a55d.instance.json",
+      "raw_sha256": "68ae19b8f98e0d5fc680cdc51ebd6f5c1f9a189790af1ee8d748b8accbe45e1b",
+      "packaged_sha256": "698e7e9283d2f50b7e8b2fa9295f851fb52e02bc7e5757442ab98b0e28bcdf24"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/task/environment/docker-compose.yaml",
+      "raw_sha256": "5a4d2c3227fd0df1dcf8d52773155832b6271514f1317a13d743192898c6978a",
+      "packaged_sha256": "5a4d2c3227fd0df1dcf8d52773155832b6271514f1317a13d743192898c6978a"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/task/environment/Dockerfile",
+      "raw_sha256": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb",
+      "packaged_sha256": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/task/instruction.md",
+      "raw_sha256": "8b6b9a557dafc55fc5102ae362a8622aaedaa1a7dc2120a0e9b371c5f10084bf",
+      "packaged_sha256": "8b6b9a557dafc55fc5102ae362a8622aaedaa1a7dc2120a0e9b371c5f10084bf"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/task/solution/solve.sh",
+      "raw_sha256": "5cf8f6f65d56f95550e1745550cb51a6286b1df813ccdedd676fc6567fa6c53c",
+      "packaged_sha256": "5cf8f6f65d56f95550e1745550cb51a6286b1df813ccdedd676fc6567fa6c53c"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/task/task.toml",
+      "raw_sha256": "bf05cd904a3fa7a46dc6eb4272c47589af08f35f5fc3e63c1a177d76e72d032b",
+      "packaged_sha256": "bf05cd904a3fa7a46dc6eb4272c47589af08f35f5fc3e63c1a177d76e72d032b"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/task/tests/docker-compose.yaml",
+      "raw_sha256": "5a4d2c3227fd0df1dcf8d52773155832b6271514f1317a13d743192898c6978a",
+      "packaged_sha256": "5a4d2c3227fd0df1dcf8d52773155832b6271514f1317a13d743192898c6978a"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/task/tests/Dockerfile",
+      "raw_sha256": "adfe9e07519ae298d6a193df6c64059ab0c54ddb9d327b141a4e789460eda81f",
+      "packaged_sha256": "adfe9e07519ae298d6a193df6c64059ab0c54ddb9d327b141a4e789460eda81f"
+    },
+    {
+      "path": "live/grader-cancellation-002/verifier-interruption/task/tests/test.sh",
+      "raw_sha256": "5cf11a421cd425ec6f61d1476b2f621d96b38efc4c3abbea0d16e07e982f0908",
+      "packaged_sha256": "5cf11a421cd425ec6f61d1476b2f621d96b38efc4c3abbea0d16e07e982f0908"
+    },
+    {
+      "path": "unit-tests.txt",
+      "raw_sha256": "aa0d6d6599b1f2d92ea2aa0dc54658a119859f74e44c16f98936e5fd60557eab",
+      "packaged_sha256": "aa0d6d6599b1f2d92ea2aa0dc54658a119859f74e44c16f98936e5fd60557eab"
+    },
+    {
+      "path": "supplied-p2-review.md",
+      "raw_sha256": "a8f52c0181367a569f991b2c904e57401c08fb2afd9ad31b47c310daaf1e9ad2",
+      "packaged_sha256": "a8f52c0181367a569f991b2c904e57401c08fb2afd9ad31b47c310daaf1e9ad2"
+    },
+    {
+      "path": "TERMINAL_BENCH_LICENSE.txt",
+      "raw_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "packaged_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    }
+  ],
+  "packaged_files": {
+    "live/grader-cancellation-001/interruption/outcome.json": "eb55c39f947a3b8005d9f79337b456abffb28744ab6b3601b9e62b373045cdb7",
+    "live/grader-cancellation-001/interruption/run/command.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "live/grader-cancellation-001/interruption/run/invocation.json": "f65ebd80ff75c7cd77e00df3b2beb6d4a53058c7da92ad3b961ed93457cc0597",
+    "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/config.json": "369c5771dd4aa0fb057e7af60f7c5e3290fbba394559d856cc615c82432b1748",
+    "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/job.log": "548dd8ff7446bb3daac5e7f4c21735b81446df74a2120c1919b9ddd442a0168f",
+    "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/lock.json": "21dd52bd04183488802060d7a50aea0cbc32614d0852e7f85ba1798ea57e1e64",
+    "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/result.json": "1d71c45ef14c7c69fe32b96714dbb70778201b1fa2c9faa8764d82f62a203be0",
+    "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/task__NY6upQE/agent/oracle.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/task__NY6upQE/artifacts/manifest.json": "a2d6f66d545a09b9110b4ed84222030b77da51bde34a61ce9b0ca18e4d51586f",
+    "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/task__NY6upQE/config.json": "dd4f3055f1d35c5f22297e890acf10830c76763919dee7f01ba8492fd8cfe226",
+    "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/task__NY6upQE/exception.txt": "d277ae1bbff57f9ffe0aa5a800acb0f40fd93544d03cb4ae849eb437388e71cc",
+    "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/task__NY6upQE/lock.json": "fececcac1507e3958b42775f72d65f2388de980e6d0ea29b4e8c56712b82dc89",
+    "live/grader-cancellation-001/interruption/run/jobs/cleanup-interruption/task__NY6upQE/trial.log": "af51dc0503a37cc8315d60dd1e6be8dbab3d39003e05ed63645fe67548534dd5",
+    "live/grader-cancellation-001/interruption/run/outcome.json": "28ec6b31ed279dae50130aad03b7b572794a390e711a781c84e9bd73b57a530b",
+    "live/grader-cancellation-001/interruption/run/ownership/cleanup.json": "70ae97c8f5afab470df1098d864385c5ad31823ff37c9fa83ccba99ae71244d7",
+    "live/grader-cancellation-001/interruption/run/ownership/fd00556b0103a9da.compose.json": "a80cebdb2aa0624684ba2ba073dbdd08794ff07124926cd3e30a78e37046f6a9",
+    "live/grader-cancellation-001/interruption/run/ownership/fd00556b0103a9da.instance.json": "ffade81a869e7169d792b3c66c1fdd83610a61c47f82c17a4c88b2df730c6abe",
+    "live/grader-cancellation-001/interruption/task/environment/docker-compose.yaml": "46e9859dd845ff269996a25ac54f8ee9c9b6378e7eba82468e21eeb068783908",
+    "live/grader-cancellation-001/interruption/task/environment/Dockerfile": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb",
+    "live/grader-cancellation-001/interruption/task/instruction.md": "8b6b9a557dafc55fc5102ae362a8622aaedaa1a7dc2120a0e9b371c5f10084bf",
+    "live/grader-cancellation-001/interruption/task/solution/solve.sh": "7d467f25f27f1f1d11e3437ff9073d48fe7b8fe42e3e8a62676196dcc74e5607",
+    "live/grader-cancellation-001/interruption/task/task.toml": "f93179d7aafc248a8791a58dbdeeaea979c145fb8efc4831bea0c7c7a9c7e64a",
+    "live/grader-cancellation-001/interruption/task/tests/test.sh": "dd9bbfcb853b9c1a7d71840fcfa2cc6f5530d9d156791d055a55f8183a2f76d6",
+    "live/grader-cancellation-001/invocation.json": "a13aad6900c6438b895fcb0a6bc92a6c00c720e7b3bca2c1466da4ae826a0e16",
+    "live/grader-cancellation-001/outcome.json": "9df0d3a6a77d88376d00d003d9b194764f2bb9abc029c08d6f3650b9551917ef",
+    "live/grader-cancellation-001/reference/command.log": "d739a27bea9e5c3adb9a342955a3b36da7fa59deef7d997db60aa5e8ca9e4e14",
+    "live/grader-cancellation-001/reference/invocation.json": "14f5b6e0ea4441ce2f0a8f0eb86afed41ec129a76f66f11c99342dea27f528fe",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/config.json": "cfce1f54e4140eff7bfa2ef523dc63baba43cd5952dbff2349e2af7c8e12f451",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/job.log": "d5b1ef35ab73e911bf42558213febe10097e2fb3951b7104d4165540577d3c00",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/lock.json": "a614a9c861be9073e605ae39e7b6cef2404929b247f80d7896ed5722cc355226",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/result.json": "fc46700e0c13a76e4c1c5993f6cc4f4fde4be230a64d8a8ebaf189ec7aabf1fa",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/agent/oracle.txt": "e8dffa503c8b3cfb8f17ce686ddd314cbf7b9fac4a7e2f162c5dee4ff54a5599",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/__init__.py": "63b800abbf1b909111eb7bd75d9c117c981a068f28156699752ad5f896521e0f",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/DESIGN.md": "b6568e4d497b4cc80abb21f4dc079c28402869d799117c39ff41a1999dff0b2a",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/emitter.py": "d47c4b1220de623dd1df798e9a4a47c498096ea45a795f08a5e8d8ac94dcc644",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/events.py": "6dbeeed948e4516198d681a160b05181f8ff601e165104548c221695d5fbb991",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/gc.py": "659f74439ddbd0d14264f17b444ab053cb62ad7036edcb4b3bccd8c178626e97",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/merger.py": "c4031c998e7ce91800d4c4445ec63e03466edbe5eb0da04d738875317cb42e55",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/sessions.py": "731e769ad72fc142877bf28c48f1f500f50d465db3266991474668b76592259b",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/app/app/types.py": "650194a651a37c4be79a544b7ecd79b7b319109e2f17b8dc375eb38252542392",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/artifacts/manifest.json": "183e39f27960417ac70603e22e5ece1725d4e47ccdf10554675a81cb6c066d6e",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/config.json": "6507a0752b68344d09ff2c5f609e50c3d0517036a15f5f3aeb34c08f4eb57d7c",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/lock.json": "8200a490dd76d18644fca12ba46c5d29e62dc0f864d553c63950e3f381c0bb38",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/result.json": "85fb464361bbc5045608c4aacf8a88ef6f04c65506e00b765779d0c3495fa57d",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/trial.log": "74fbc1b6ffa47d400e8dff5dd7533ce0da4369db953ad05761cd23648d636f01",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/verifier/ctrf.json": "7c679274578ed241c964ada9c6b05b1696ab4bd072fe37cd52804a09b21aad4f",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/verifier/reward.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "live/grader-cancellation-001/reference/jobs/cleanup-reference/session-window-debug__Mu6AozU/verifier/test-stdout.txt": "0e1b4ff232062e30acaf1cd35a68e9ed3dcac204e183dbaa83a1cf118fd2e4a5",
+    "live/grader-cancellation-001/reference/outcome.json": "011b740523af3e0c32d3bfbe4909e04a93c8b6718bd921e8385509ea7b4237a8",
+    "live/grader-cancellation-001/reference/ownership/76b17020a2e3ec35.compose.json": "bc49dcbb121e26ee3ad4869f6cb5bc67bfda8744b617bf783ea0e68b936ddc64",
+    "live/grader-cancellation-001/reference/ownership/76b17020a2e3ec35.instance.json": "ae73bac131c6ac2b6fb5039b227e64145af0db3bc2d93e6176a00912aea591bd",
+    "live/grader-cancellation-001/reference/ownership/7ec69690e6080d6a.compose.json": "cfa291dd97eed408e105374ca56cc05eaad06b6fe208ac7b10aa6dc4bcba703c",
+    "live/grader-cancellation-001/reference/ownership/7ec69690e6080d6a.instance.json": "b5dc6f1e582dbc10669ab028e648b4f95b139701602eef75f4b933300687a3f0",
+    "live/grader-cancellation-001/reference/ownership/cleanup.json": "f38351cc51b73f443f291214f8604de349f93a99dfa1f5639d4e82e2c90a11e9",
+    "live/grader-cancellation-001/timeout/outcome.json": "ccb87efa44e482578cbd8c6768e8b08ec51f8a05566f532bd5edd07f35b64c9e",
+    "live/grader-cancellation-001/timeout/run/command.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "live/grader-cancellation-001/timeout/run/invocation.json": "fe1113197129fd1d0529ae7bcc217d35da51b82c8403d91b9206d2942ca2faa5",
+    "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/config.json": "b5c85b3939eddf61b09a2b1893a10e402adb5b6127bf08cf740938a4cd12fca3",
+    "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/job.log": "5e6d15b7305b5c101c23479c9534020b9e101a18cf42a6244bf42ba43d253ac2",
+    "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/lock.json": "b8fb872c11328200f02527bd9e7f297df060a04709f03d9cceff87e3a16b5b57",
+    "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/result.json": "a94fa10aa39dac7e54ee8c8a52f30fddc120a50aab9de30472b57781e0ff448e",
+    "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/task__bZyuoTa/agent/oracle.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/task__bZyuoTa/artifacts/manifest.json": "a2d6f66d545a09b9110b4ed84222030b77da51bde34a61ce9b0ca18e4d51586f",
+    "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/task__bZyuoTa/config.json": "eaf790c659d4055ce91218bbcd85f6183c681971e1ba1c875a5e6e63bdd98a2d",
+    "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/task__bZyuoTa/exception.txt": "d277ae1bbff57f9ffe0aa5a800acb0f40fd93544d03cb4ae849eb437388e71cc",
+    "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/task__bZyuoTa/lock.json": "f6ad6543b522c3c054b2040dfe7130d5344275ad71b8710c280ef129b12dfe59",
+    "live/grader-cancellation-001/timeout/run/jobs/cleanup-timeout/task__bZyuoTa/trial.log": "df31977b67116796c98d34973ec6a706e8caf8327d3d6e929881de988dade1e2",
+    "live/grader-cancellation-001/timeout/run/outcome.json": "444c2c722cae3a231af4e50fca468b5890f5da6dccd982e44ae6460312477dff",
+    "live/grader-cancellation-001/timeout/run/ownership/16eae8b97a005b8f.compose.json": "f257733764fb6a8ed6f56b0aa0327538ebc4f6cb10f6ae473fdf4af0c64ef85b",
+    "live/grader-cancellation-001/timeout/run/ownership/16eae8b97a005b8f.instance.json": "646e728d07bb4cd29fadad8c54b2e7a506f0be0268477aaa12824df59a2cb1cf",
+    "live/grader-cancellation-001/timeout/run/ownership/cleanup.json": "f75dd38f05c0a1642c4486986d48a345e7865682873e52e6f7a5e79e5cb8418c",
+    "live/grader-cancellation-001/timeout/task/environment/docker-compose.yaml": "46e9859dd845ff269996a25ac54f8ee9c9b6378e7eba82468e21eeb068783908",
+    "live/grader-cancellation-001/timeout/task/environment/Dockerfile": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb",
+    "live/grader-cancellation-001/timeout/task/instruction.md": "8b6b9a557dafc55fc5102ae362a8622aaedaa1a7dc2120a0e9b371c5f10084bf",
+    "live/grader-cancellation-001/timeout/task/solution/solve.sh": "7d467f25f27f1f1d11e3437ff9073d48fe7b8fe42e3e8a62676196dcc74e5607",
+    "live/grader-cancellation-001/timeout/task/task.toml": "f93179d7aafc248a8791a58dbdeeaea979c145fb8efc4831bea0c7c7a9c7e64a",
+    "live/grader-cancellation-001/timeout/task/tests/test.sh": "dd9bbfcb853b9c1a7d71840fcfa2cc6f5530d9d156791d055a55f8183a2f76d6",
+    "live/grader-cancellation-001/verifier-interruption/outcome.json": "69183aa46784899d6456d9b96599ffa486a97902bffd7f926ad18eec8e931187",
+    "live/grader-cancellation-001/verifier-interruption/run/command.log": "1e508646b04e2c08e674a6a260b4e6379487df575a1eeba1a5af437e34f0ce09",
+    "live/grader-cancellation-001/verifier-interruption/run/invocation.json": "088c7b4ed46ff9143c1e0def494568d7b04b5bf0a992023b4df4852920470777",
+    "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/config.json": "38a7dcd7fed1e1e0170091efe46e7a062b13f8c7255685f7a61f099b76f39281",
+    "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/job.log": "68e9c68315eae70176d63681f085320d85ee2909a3da2a498f2bb3b3605fb4dd",
+    "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/lock.json": "7d6177e21a25ec5c48f8e19ab40771fcf7825b7af220ddfc256dec0418e7c17d",
+    "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/result.json": "14b6c7a97007a913cdbfd285ff64ffccd82ef370eeffbde47c3991ae68ce0e22",
+    "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/agent/oracle.txt": "07d57c4521ec335566a609eee828edf74a520b150d48dd608e702f226163ba61",
+    "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/artifacts/manifest.json": "a2d6f66d545a09b9110b4ed84222030b77da51bde34a61ce9b0ca18e4d51586f",
+    "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/config.json": "59c1cc852e97054eae7370840a042224f84fa97163005767062b885b223baf91",
+    "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/exception.txt": "6a3b04a5aefa882e2b2cab96a38b31600da43eddd671cca8891fe00a12d1df4a",
+    "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/lock.json": "e37c9f27e2fc6d258c59007c7a9c5a02c37f43be7c5699afeb0af1c581fb31f0",
+    "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/result.json": "a241bf7a6ca781921fd088155b0669f2193e7f55f73c4f01d83ad29af75c64ba",
+    "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/trial.log": "c5dd697874c98dcee726c809f92310eba8f7210aab80ef5192d42b691f4334ab",
+    "live/grader-cancellation-001/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__F3nBUBw/verifier/test-stdout.txt": "7d4a7c37dce884d484a1f3cbf74af3e51a24e5cff446920c88a414747d191da2",
+    "live/grader-cancellation-001/verifier-interruption/run/outcome.json": "ffebf7c77abf4735bf6d246f1200a3eaccc3bbcd8942d9304cad8fcfa2bec4a9",
+    "live/grader-cancellation-001/verifier-interruption/run/ownership/363452a2d39f36f6.compose.json": "c2b5b4f2b24fde82829e68ec36df1521e2852bee3d70db54e621a798b0daa25e",
+    "live/grader-cancellation-001/verifier-interruption/run/ownership/363452a2d39f36f6.instance.json": "03014e49ed3d5e368325780852c997940ec5517144128d72ec7791b870f9aff7",
+    "live/grader-cancellation-001/verifier-interruption/run/ownership/cleanup.json": "d0960655ce1a3aaa39fa5dda5b2f7edb4e26014a832fa5cb9dd2d777d733663e",
+    "live/grader-cancellation-001/verifier-interruption/run/ownership/fa1f67e4828fd13a.compose.json": "485f1ec78403d19d41e1110edd131b7ba4a39ecd30b5bcc707c4cf1120e496cc",
+    "live/grader-cancellation-001/verifier-interruption/run/ownership/fa1f67e4828fd13a.instance.json": "5543bea4631eb9c5f9c8bee05c2920b64f48c67d487377a30e34009498673f11",
+    "live/grader-cancellation-001/verifier-interruption/task/environment/docker-compose.yaml": "46e9859dd845ff269996a25ac54f8ee9c9b6378e7eba82468e21eeb068783908",
+    "live/grader-cancellation-001/verifier-interruption/task/environment/Dockerfile": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb",
+    "live/grader-cancellation-001/verifier-interruption/task/instruction.md": "8b6b9a557dafc55fc5102ae362a8622aaedaa1a7dc2120a0e9b371c5f10084bf",
+    "live/grader-cancellation-001/verifier-interruption/task/solution/solve.sh": "5cf8f6f65d56f95550e1745550cb51a6286b1df813ccdedd676fc6567fa6c53c",
+    "live/grader-cancellation-001/verifier-interruption/task/task.toml": "bf05cd904a3fa7a46dc6eb4272c47589af08f35f5fc3e63c1a177d76e72d032b",
+    "live/grader-cancellation-001/verifier-interruption/task/tests/docker-compose.yaml": "46e9859dd845ff269996a25ac54f8ee9c9b6378e7eba82468e21eeb068783908",
+    "live/grader-cancellation-001/verifier-interruption/task/tests/Dockerfile": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb",
+    "live/grader-cancellation-001/verifier-interruption/task/tests/test.sh": "5cf11a421cd425ec6f61d1476b2f621d96b38efc4c3abbea0d16e07e982f0908",
+    "live/grader-cancellation-002/invocation.json": "2d9ebfade02c698422239878978a6b5083cf4be37769f355a054081bc1074d0d",
+    "live/grader-cancellation-002/outcome.json": "df2ed649f67160eba108313f304fe4ed29ab23805b56e8ecd781d6ff9cd6c6f8",
+    "live/grader-cancellation-002/verifier-interruption/outcome.json": "1bbc1fe7c6e41a059da012993ec20ffa420be35142f881b92106b09b8f767562",
+    "live/grader-cancellation-002/verifier-interruption/run/command.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "live/grader-cancellation-002/verifier-interruption/run/invocation.json": "187e7391f12f44329b7459b9838bba89fdef6f6ce913feca986009e1573c0565",
+    "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/config.json": "62f9f00ff0d71e431bd6abb2967028d2068f768219a3ebc2f8c33c7e2942c063",
+    "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/job.log": "7ee315cbe26629658020aa8b383deb51a755d4a4938c4137456d56b2f641a798",
+    "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/lock.json": "118c07319a85fcc48936a078b3fb74143acdda6f4ad154ae076b735d8898edf9",
+    "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/result.json": "75f13a505715eacf7a16f123c0e9bb5b2434d8b125e7622cfb5a48a8796658af",
+    "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__ggirwUC/agent/oracle.txt": "07d57c4521ec335566a609eee828edf74a520b150d48dd608e702f226163ba61",
+    "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__ggirwUC/artifacts/manifest.json": "a2d6f66d545a09b9110b4ed84222030b77da51bde34a61ce9b0ca18e4d51586f",
+    "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__ggirwUC/config.json": "b879d0fd6fc2703150461c861a36e5e1b5461d209c20ffdcc95d2d1ada0cf9d7",
+    "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__ggirwUC/lock.json": "91cc1d18b22b7a4bd2a88c3d83f6857c8c5899aa970be793efaa0e7e6aa4c024",
+    "live/grader-cancellation-002/verifier-interruption/run/jobs/cleanup-verifier-interruption/task__ggirwUC/trial.log": "9d3160d932ac6b9671de7a94dd9076763ade798f9c79ce8b5c1fbe06ffe66fc0",
+    "live/grader-cancellation-002/verifier-interruption/run/outcome.json": "5f64f33f8ff409e96b7ae13646e705831322edf4160a968d393b9ddfbe52bc6e",
+    "live/grader-cancellation-002/verifier-interruption/run/ownership/7f69804bf74c5a8f.compose.json": "ad41d601021858881b53d80ac5e4c8635471c0f562f9112fb4d8e3538a734930",
+    "live/grader-cancellation-002/verifier-interruption/run/ownership/7f69804bf74c5a8f.instance.json": "c3502d831c2bd914aa907b4b7d175d5ef11d5887874e383ca806b57b8bce91aa",
+    "live/grader-cancellation-002/verifier-interruption/run/ownership/cleanup.json": "51c2d5dc5355abc1b801d33e2431c6ac336924200b08966adc9eb22d4196cb92",
+    "live/grader-cancellation-002/verifier-interruption/run/ownership/ee139b8b6a97a55d.compose.json": "c9adc3378f531ba2a4a8e64e491beb329bf4a7ab846e71378b2ec94cabb48652",
+    "live/grader-cancellation-002/verifier-interruption/run/ownership/ee139b8b6a97a55d.instance.json": "698e7e9283d2f50b7e8b2fa9295f851fb52e02bc7e5757442ab98b0e28bcdf24",
+    "live/grader-cancellation-002/verifier-interruption/task/environment/docker-compose.yaml": "5a4d2c3227fd0df1dcf8d52773155832b6271514f1317a13d743192898c6978a",
+    "live/grader-cancellation-002/verifier-interruption/task/environment/Dockerfile": "6c1e1e9d67467b17787bd827b4765c64db30a38b716849158ed2fa475e241bcb",
+    "live/grader-cancellation-002/verifier-interruption/task/instruction.md": "8b6b9a557dafc55fc5102ae362a8622aaedaa1a7dc2120a0e9b371c5f10084bf",
+    "live/grader-cancellation-002/verifier-interruption/task/solution/solve.sh": "5cf8f6f65d56f95550e1745550cb51a6286b1df813ccdedd676fc6567fa6c53c",
+    "live/grader-cancellation-002/verifier-interruption/task/task.toml": "bf05cd904a3fa7a46dc6eb4272c47589af08f35f5fc3e63c1a177d76e72d032b",
+    "live/grader-cancellation-002/verifier-interruption/task/tests/docker-compose.yaml": "5a4d2c3227fd0df1dcf8d52773155832b6271514f1317a13d743192898c6978a",
+    "live/grader-cancellation-002/verifier-interruption/task/tests/Dockerfile": "adfe9e07519ae298d6a193df6c64059ab0c54ddb9d327b141a4e789460eda81f",
+    "live/grader-cancellation-002/verifier-interruption/task/tests/test.sh": "5cf11a421cd425ec6f61d1476b2f621d96b38efc4c3abbea0d16e07e982f0908",
+    "summary.json": "7fd6684212ce96adf84614ed2ebe9e37f977947e74580e5064e1d0dcbadcf11d",
+    "supplied-p2-review.md": "a8f52c0181367a569f991b2c904e57401c08fb2afd9ad31b47c310daaf1e9ad2",
+    "TERMINAL_BENCH_LICENSE.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "unit-tests.txt": "aa0d6d6599b1f2d92ea2aa0dc54658a119859f74e44c16f98936e5fd60557eab"
+  },
+  "redaction": "Host home and temporary Harbor virtualenv replaced; UTF8 BOM removed; raw hashes retained; __pycache__ excluded."
+}

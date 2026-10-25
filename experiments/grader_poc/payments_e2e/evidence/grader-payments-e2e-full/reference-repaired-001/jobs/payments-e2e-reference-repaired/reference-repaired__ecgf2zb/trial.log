@@ -1,0 +1,8 @@
+Skipping image OS validation for hb__9ebee411425d3c66fd3c8c9e81405383: docker inspect returned 1
+Collecting main service artifacts
+Stopping main service before sidecar evidence collection
+Main service stopped
+Collecting sidecar artifacts from services: ['kafka']
+Running collect hook in service 'kafka': 'rm -f /tmp/kafka-snapshot.tgz /tmp/kafka-snapshot.tgz.tmp && sync && { tar czf /tmp/kafka-snapshot.tgz.tmp -C /tmp/kafka-logs . ; rc=$?; [ $rc -le 1 ]; } && mv /tmp/kafka-snapshot.tgz.tmp /tmp/kafka-snapshot.tgz'
+Collect hook in service 'kafka' completed
+Skipping image OS validation for hb__83829c7226b8709461751ba8088a0967: docker inspect returned 1

@@ -1,0 +1,39 @@
+{
+  "source_commit": "0fae1d31de956e31e8e2249751365e7e9188f6f8",
+  "host_python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "harbor_version": "0.24.0",
+  "math_image": {
+    "Id": "sha256:b0b2a9e606b02714b04f1d0b947a6825b164c0becd46096c8d33945a74443c75",
+    "RepoDigests": [],
+    "Architecture": "amd64",
+    "Os": "linux"
+  },
+  "math_environment": {
+    "container_name": "warrant-grader-80052581fb684beca2a553cf0147126f",
+    "owner": "80052581fb684beca2a553cf0147126f",
+    "status": "COMPLETED",
+    "stdout": "{\"python\": \"3.11.16 (main, Sep 19 2026, 01:05:51) [GCC 12.2.0]\", \"packages\": {\"sympy\": \"1.13.2\", \"antlr4-python3-runtime\": \"4.11.0\", \"pytest\": \"9.1.1\", \"pytest-json-ctrf\": \"0.5.2\"}}\n",
+    "stderr": "",
+    "exit_code": 0,
+    "create_exit_code": 0,
+    "create_stdout": "54842b76cbdd539cfb5bd0af5fdb06652afa38c3afbe17b6d24428ef625252d8\n",
+    "create_stderr": "",
+    "container_id": "54842b76cbdd539cfb5bd0af5fdb06652afa38c3afbe17b6d24428ef625252d8",
+    "cleanup": {
+      "status": "REMOVED",
+      "verified_absent": true,
+      "was_running": false,
+      "container_id": "54842b76cbdd539cfb5bd0af5fdb06652afa38c3afbe17b6d24428ef625252d8",
+      "exit_code": 0,
+      "stdout": "54842b76cbdd539cfb5bd0af5fdb06652afa38c3afbe17b6d24428ef625252d8\n",
+      "stderr": ""
+    }
+  },
+  "docker_info": {
+    "ServerVersion": "27.3.1",
+    "NCPU": 12,
+    "MemTotal": 7978795008,
+    "OSType": "linux",
+    "Architecture": "x86_64"
+  }
+}

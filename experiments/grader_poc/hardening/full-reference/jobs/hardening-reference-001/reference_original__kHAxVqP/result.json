@@ -1,0 +1,120 @@
+{
+    "id": "2daba7ed-1991-49f5-8979-a17bb1cc44ea",
+    "task_name": "terminal-bench/session-window-debug",
+    "trial_name": "reference_original__kHAxVqP",
+    "trial_uri": "file://${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-hardening-full-reference-001/jobs/hardening-reference-001/reference_original__kHAxVqP",
+    "task_id": {
+        "path": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-poc-cases/reference_original"
+    },
+    "source": null,
+    "task_checksum": "ebaa7d5067b53159c6cfc3507f19f0704f0668ded9fa19b3259188ad51bb2f05",
+    "config": {
+        "task": {
+            "path": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-poc-cases/reference_original",
+            "git_url": null,
+            "git_commit_id": null,
+            "name": null,
+            "ref": null,
+            "overwrite": false,
+            "download_dir": null,
+            "source": null
+        },
+        "trial_name": "reference_original__kHAxVqP",
+        "trials_dir": "${HOST_HOME}/Documents/Codex/2026-10-16/task-you-are-my-independent-research/work/grader-hardening-full-reference-001/jobs/hardening-reference-001",
+        "install_only": false,
+        "timeout_multiplier": 1.0,
+        "agent_timeout_multiplier": null,
+        "verifier_timeout_multiplier": null,
+        "agent_setup_timeout_multiplier": null,
+        "environment_build_timeout_multiplier": null,
+        "agent": {
+            "name": "oracle",
+            "import_path": null,
+            "model_name": null,
+            "model_base_url": null,
+            "model_api_key_name": null,
+            "model_api_format": null,
+            "skip_model_parsing": false,
+            "n_concurrent": null,
+            "concurrency_group": null,
+            "skills": [],
+            "override_timeout_sec": null,
+            "override_setup_timeout_sec": null,
+            "max_timeout_sec": null,
+            "resume_trajectory": false,
+            "load_trajectory": null,
+            "extra_allowed_hosts": [],
+            "kwargs": {},
+            "mcp_servers": []
+        },
+        "user_agent": null,
+        "environment": {
+            "type": "docker",
+            "import_path": null,
+            "force_build": false,
+            "delete": true,
+            "stream": false,
+            "cpu_enforcement_policy": "auto",
+            "memory_enforcement_policy": "auto",
+            "override_cpus": null,
+            "override_memory_mb": null,
+            "override_storage_mb": null,
+            "override_gpus": null,
+            "override_tpu": null,
+            "mounts": null,
+            "extra_docker_compose": [],
+            "kwargs": {},
+            "extra_allowed_hosts": []
+        },
+        "verifier": {
+            "override_timeout_sec": null,
+            "max_timeout_sec": null,
+            "disable": false
+        },
+        "artifacts": [],
+        "extra_instruction_paths": [],
+        "extra_instructions": [],
+        "job_id": "945603b6-5d3d-4083-88d0-e31f91d92025",
+        "source_trial": null
+    },
+    "agent_info": {
+        "name": "oracle",
+        "version": "1.0.0",
+        "model_info": null
+    },
+    "agent_result": {
+        "n_input_tokens": null,
+        "n_cache_tokens": null,
+        "n_output_tokens": null,
+        "cost_usd": null,
+        "model_usage": null,
+        "rollout_details": null,
+        "metadata": null
+    },
+    "verifier_result": {
+        "rewards": {
+            "reward": 1.0
+        }
+    },
+    "verifier_environment_mode": "separate",
+    "exception_info": null,
+    "started_at": "2026-10-22T10:53:06.567376Z",
+    "finished_at": "2026-10-22T10:53:53.885685Z",
+    "environment_setup": {
+        "started_at": "2026-10-22T10:53:07.832254Z",
+        "finished_at": "2026-10-22T10:53:17.018647Z"
+    },
+    "agent_setup": {
+        "started_at": "2026-10-22T10:53:17.018833Z",
+        "finished_at": "2026-10-22T10:53:17.018989Z"
+    },
+    "agent_execution": {
+        "started_at": "2026-10-22T10:53:17.019289Z",
+        "finished_at": "2026-10-22T10:53:19.360630Z"
+    },
+    "verifier": {
+        "started_at": "2026-10-22T10:53:31.039237Z",
+        "finished_at": "2026-10-22T10:53:53.885663Z"
+    },
+    "step_results": null
+}

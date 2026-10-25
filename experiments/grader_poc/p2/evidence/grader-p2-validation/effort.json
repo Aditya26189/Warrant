@@ -1,0 +1,34 @@
+{
+  "measurement": "Observed assistant/tool work segments, including waits; not active labor or human effort",
+  "windows": [
+    {
+      "start_utc": "2026-10-22T18:01:49+00:00",
+      "last_observed_utc": "2026-10-22T18:29:14+00:00"
+    },
+    {
+      "start_utc": "2026-10-22T23:01:24+00:00",
+      "last_observed_utc": "2026-10-22T23:19:54+00:00"
+    }
+  ],
+  "unobserved_interval": {
+    "start_utc": "2026-10-22T18:29:14+00:00",
+    "end_utc": "2026-10-22T23:01:24+00:00",
+    "classification": "Not attributed to active investigation; background trial durations recorded separately"
+  },
+  "direct_review_elapsed_seconds": 83,
+  "per_method_active_construction_seconds": null,
+  "per_method_human_investigation_seconds": null,
+  "comparison_limit": "Construction interleaved across adapters, infrastructure and cancellation; equal investigation effort not established. No productivity speedup claim.",
+  "actual_runtime_costs": "Use every full-trial/component receipt, including failed batches. Do not sum overlapping durations as wall-clock labor.",
+  "paid_api_or_cloud_compute_inr": 0,
+  "new_gpu_use": false,
+  "hardware": "Existing local Docker/WSL host; own disk/network/electricity not priced",
+  "failed_attempts": [
+    "math-001 inherited cwd failure",
+    "session-001 inherited cwd failure",
+    "payments-001 partial component then cwd failure",
+    "cancellation-001 cwd failure before trial",
+    "math-002 Python3.12 unparse incompatible with verifier Python3.11"
+  ],
+  "full_trials_overlapped": "Payment reference overlapped some math/component/maximum work; relative speed inference not valid."
+}

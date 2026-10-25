@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "seed": 20261022,
+  "started_at": "2026-10-22T18:01:49+00:00",
+  "terminal_bench_commit": "5a3f5dadcfa704f1741127ba64131d0b6217472b",
+  "harbor_commit": "6c9d3d6609854375005a7b5c8f1906371d64c6ff",
+  "tasks": {
+    "distributed-dedup": {
+      "selection": "initial",
+      "scope": [
+        "exact Jaccard >= threshold",
+        "minimum docId representative",
+        "empty documents singleton",
+        "short document shingles"
+      ],
+      "held_out_property": "transitive connected components",
+      "full_reference_timeout_seconds": 900
+    },
+    "math-eval-grader": {
+      "selection": "initial",
+      "full_task_status": "INFEASIBLE_GPU_REQUIREMENT",
+      "scope": [
+        "final boxed scalar extraction",
+        "exact integer and rational equality",
+        "unequal scalar rejection"
+      ],
+      "held_out_property": "equivalent rational representations and nested braces",
+      "component_only": true
+    },
+    "payments-pipeline-fix": {
+      "selection": "supplemental before tests",
+      "scope": [
+        "correct overdraft callback",
+        "no missing or duplicate callback",
+        "callback within 5s on respawn"
+      ],
+      "held_out_property": "rolling worker overlap",
+      "full_reference_timeout_seconds": 900
+    }
+  },
+  "direct_review_cap_seconds_per_task": 900,
+  "mutation_construction_cap_seconds_per_task": 900,
+  "mutation_cap_per_task": 8,
+  "execution_cap_seconds_per_task_per_method": 1800,
+  "diagnostic_oracle_construction_cap_seconds_per_task": 2700,
+  "comparison": "shared prospectively bounded candidate pool; direct-review predictions frozen before execution; ordinary mutation reveals survivors, independent-property diagnostics try to distinguish wrong from equivalent survivors",
+  "human_effort_measured": false,
+  "blinded": false,
+  "population_rate_claim": false,
+  "api_budget_inr": 0,
+  "maximum_repair": {
+    "times": [
+      [
+        0,
+        20,
+        10
+      ],
+      [
+        5,
+        35,
+        22
+      ],
+      [
+        8,
+        35,
+        22
+      ],
+      [
+        5,
+        8,
+        35,
+        38,
+        22
+      ]
+    ],
+    "value_alphabet": [
+      1,
+      2,
+      7
+    ],
+    "gap": 15,
+    "held_out_values": [
+      3,
+      11,
+      29
+    ]
+  },
+  "cancellation": {
+    "modes": [
+      "timeout",
+      "interruption"
+    ],
+    "own_marker": "warrant-p2",
+    "sleep_seconds": 300,
+    "timeout_seconds": 60
+  },
+  "no_further_task_substitution": true,
+  "process_cancel_grace_seconds": 10
+}

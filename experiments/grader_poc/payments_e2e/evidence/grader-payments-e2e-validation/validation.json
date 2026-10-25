@@ -1,0 +1,27 @@
+{
+  "source_commit": "f067fdcc6d6ff0890d02420e4830e1c336f8001d",
+  "source_dirty": false,
+  "checks": [
+    {
+      "command": [
+        "${HOST_HOME}\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "experiments.grader_poc.payments_e2e.test_boundary",
+        "-v"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        "${HOST_HOME}\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "--no-cache",
+        "experiments/grader_poc/payments_e2e"
+      ],
+      "returncode": 0
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "owner": "4aa8722adfc645dbb9f6c6d81d4f5636",
+  "label": "warrant.grader.owner",
+  "policy": {
+    "schema_version": 1,
+    "command_timeout_seconds": 15,
+    "cleanup_timeout_seconds": 120,
+    "max_passes": 4,
+    "settle_seconds": 1,
+    "required_empty_passes": 2,
+    "max_resources_per_kind": 256
+  },
+  "status": "VERIFIED_ABSENT",
+  "verified_absent": true,
+  "passes": [
+    {
+      "at": "2026-10-23T15:45:17.953165+00:00",
+      "owned": {
+        "container": [],
+        "network": [],
+        "volume": [],
+        "image": []
+      }
+    },
+    {
+      "at": "2026-10-23T15:45:19.285395+00:00",
+      "owned": {
+        "container": [],
+        "network": [],
+        "volume": [],
+        "image": []
+      }
+    }
+  ],
+  "actions": [],
+  "before": {
+    "at": "2026-10-23T15:36:41.817137+00:00",
+    "owned": {
+      "container": [],
+      "network": [],
+      "volume": [],
+      "image": []
+    }
+  },
+  "producer_stopped": true
+}

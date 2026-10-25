@@ -44,10 +44,36 @@ REQUIRED_SECTIONS = (
 
 
 def _phase_reports() -> list[Path]:
+    # The numbered release series has a continuity/section contract. Named
+    # experimental reports keep their historical headings and are checked
+    # separately; their introduction must not abort all pytest collection.
     return sorted(
-        REPORTS.glob("PHASE-*.md"),
+        (p for p in REPORTS.glob("PHASE-*.md")
+         if re.fullmatch(r"PHASE-\d+\.md", p.name)),
         key=lambda p: int(re.search(r"PHASE-(\d+)", p.name).group(1)),
     )
+
+
+def _grader_reports() -> list[Path]:
+    return sorted(REPORTS.glob("PHASE-GRADER-*.md"))
+
+
+def test_every_phase_report_belongs_to_a_checked_series() -> None:
+    checked = set(_phase_reports()) | set(_grader_reports())
+    assert set(REPORTS.glob("PHASE-*.md")) == checked, (
+        "Unrecognized phase-report names must not silently escape checks"
+    )
+
+
+def test_numbered_discovery_accepts_named_grader_reports(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A named experiment must not crash collection or join numeric continuity."""
+    for name in ("PHASE-10.md", "PHASE-2.md", "PHASE-0.md", "PHASE-GRADER-POC.md"):
+        (tmp_path / name).touch()
+    monkeypatch.setattr(f"{__name__}.REPORTS", tmp_path)
+    assert [p.name for p in _phase_reports()] == ["PHASE-0.md", "PHASE-2.md", "PHASE-10.md"]
+    assert [p.name for p in _grader_reports()] == ["PHASE-GRADER-POC.md"]
 
 
 def test_the_reports_directory_exists_and_holds_phase_reports() -> None:
@@ -57,7 +83,7 @@ def test_the_reports_directory_exists_and_holds_phase_reports() -> None:
     assert reports, "no reports/PHASE-N.md files at all"
 
 
-@pytest.mark.parametrize("report", _phase_reports(), ids=lambda p: p.name)
+@pytest.mark.parametrize("report", [*_phase_reports(), *_grader_reports()], ids=lambda p: p.name)
 def test_a_phase_report_is_not_a_stub(report: Path) -> None:
     """The check that would have caught `49156b9` on the day it landed."""
     size = report.stat().st_size

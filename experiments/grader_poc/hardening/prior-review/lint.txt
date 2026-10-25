@@ -1,0 +1,12 @@
+BLE001 Do not catch blind exception: `Exception`
+  --> experiments\grader_poc\trace_worker.py:38:12
+   |
+36 |     try:
+37 |         result = observe(json.load(sys.stdin))
+38 |     except Exception as exc:
+   |            ^^^^^^^^^
+39 |         result = {"status": "ERROR", "type": type(exc).__name__, "message": str(exc)}
+40 |     print(json.dumps(result))
+   |
+
+Found 1 error.
