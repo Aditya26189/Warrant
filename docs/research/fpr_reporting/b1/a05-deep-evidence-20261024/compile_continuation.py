@@ -235,6 +235,9 @@ def assemble(head: str) -> dict[str, object]:
         release_pins = {r.sha(p.read_bytes()) for p in HERE.glob("releases/*/FACTS.json")}
         if judgments["release_sha256"] not in release_pins:
             raise ValueError("AUTHOR_RELEASE_CHANGED")
+        if judgments.get("bibliography_release_sha256") and judgments["bibliography_release_sha256"] not in {
+                r.sha(p.read_bytes()) for p in HERE.glob("bibliography/*/FACTS.json")}:
+            raise ValueError("AUTHOR_BIBLIOGRAPHY_RELEASE_CHANGED")
         touched = set()
         for change in judgments["changes"]:
             rid = change["review_id"]
@@ -285,6 +288,9 @@ def assemble(head: str) -> dict[str, object]:
               "Exact-edition English construction can establish an English component without asserting every item is English.\n\n"
               "W0339 retains its checked publisher edition and transport caveat. The added requirement to authenticate historical PDF bytes "
               "is removed under VERSION_RULE_APPLICATION.md; no dates or source checks are rewritten.\n\n"
+              "The W0368 repository DOI is explicitly a preprint, so it receives no publisher-edition preference. "
+              "Its earlier repository-declared publication date is retained separately from the selected later arXiv revision. "
+              "Prior task assumptions for W0018 and W0061 were narrowed: binary jailbreak/adversarial-query labels alone do not establish injected-instruction detection.\n\n"
               "These are exposed-custodian judgments informed by preserved reviewer returns, not a fresh independent final review. "
               "Unresolved works are not exclusions. No literature prevalence, performance, assurance or publication-readiness claim follows. "
               "No draw, human assignment or B2 is authorized. Original packages and prior proposals remain unchanged.\n")
