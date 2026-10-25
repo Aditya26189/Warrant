@@ -1,0 +1,107 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "additional_release_sha256": [
+    "bfaf55a0f171d7718ef7c39c23f6d30838c43e84960bbe766ab92ef0a64df1f0"
+  ],
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "changes": [
+    {
+      "before_row_sha256": "5322c4616351c1e4c5205daf3d4919f6cad1055dcb318b4023644380cc394350",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0325-c702388ea86d-F01",
+        "A05-DEEP-W0325-c702388ea86d-F02",
+        "A05-DEEP-W0325-c702388ea86d-F03",
+        "A05-DEEP-W0325-c702388ea86d-F04",
+        "A05-DEEP-W0325-c702388ea86d-F05"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0325-c702388ea86d-F05"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0325-c702388ea86d-F03",
+          "A05-DEEP-W0325-c702388ea86d-F05"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0325-c702388ea86d-F01",
+          "A05-DEEP-W0325-c702388ea86d-F02",
+          "A05-DEEP-W0325-c702388ea86d-F04"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0325-c702388ea86d-F01",
+          "A05-DEEP-W0325-c702388ea86d-F03"
+        ]
+      },
+      "review_id": "W0325",
+      "scientific_rationale": "The selected thesis itself links crafted rhetorical injections to opinion-text overwrite evaluation and its Appendix Test/Alignment template rows. Those actual imperative templates are English and are linked to the individual-text syntactic/guard injection decisions that require no protected consensus answer. This establishes an evaluated English template component using the thesis own method and appendix evidence, not its reuse citation or transferred paper facts. Filled policy slots, original-opinion corpus language and wholly English records are not all established. Preserve the separately resolved whole-document/shared-study relationship; it is not independent replication.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2610.04412"
+    },
+    {
+      "before_row_sha256": "937133c5500cc46bff30a1b24689c888d30d4ae8fff7fe92f2633f43441f43e9",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0018-50cd268e1e9a-F01",
+        "A05-DEEP-W0018-50cd268e1e9a-F02",
+        "A05-DEEP-W0018-50cd268e1e9a-F03",
+        "A05-DEEP-W0018-50cd268e1e9a-F04",
+        "A05-DEEP-W0018-50cd268e1e9a-F05",
+        "A05-DEEP-W0018-50cd268e1e9a-F06",
+        "A05-DEEP-W0018-f9a87ac1d90e-F01",
+        "A05-DEEP-W0018-f9a87ac1d90e-F02",
+        "A05-DEEP-W0018-f9a87ac1d90e-F03",
+        "A05-DEEP-W0018-f9a87ac1d90e-F04",
+        "A05-DEEP-W0018-f9a87ac1d90e-F05",
+        "A05-DEEP-W0018-f9a87ac1d90e-F06",
+        "A05-DEEP-W0018-f9a87ac1d90e-F07",
+        "A05-DEEP-W0018-f9a87ac1d90e-F08"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0018",
+      "scientific_rationale": "The original complete evaluated-family inventory and the targeted construction clarification together establish a jailbreak-defense study on unsafe requests modified by suffixes/templates, with TriviaQA ordinary-task control. Repeater/Interjection compare auxiliary task failure under harmful/benign and attacked conditions; Reversal and combined-defense arms assess refusal/jailbreak completion. The evaluated source task does not establish a separate injected-instruction-presence experiment distinct from these unsafe-request jailbreak conditions. Apply the prespecified jailbreak-alone boundary, rather than including from the SPIN name, auxiliary known-answer capability or attacker-added text alone. This is not a timing exclusion: the auxiliary probes can precede the original-task answer. No new clean-pairing or source-language requirement is imposed. Whole-work coverage comes from the earlier full family inventory; the targeted clarification completeness flag alone is not treated as whole-work coverage.",
+      "whole_work_exclusion_ground": "JAILBREAK_ONLY_TASK_WITHOUT_SEPARATE_INJECTION_INPUT_EVALUATION",
+      "work_id": "arxiv:2410.13236"
+    }
+  ],
+  "created_utc": "2026-10-25T18:33:28.043443+00:00",
+  "interpretation_documents": {
+    "TASK_BOUNDARY_APPLICATION.md": "7caafdd7a0798b81707292907263315f4a824f659c7dca551e5c5e72da6cb034",
+    "WORK_UNIT_RULE_APPLICATION.md": "fa1b2b055aa194eb76a365fda7434de361da481e77ad6d7a4fd316b5e9dc4567"
+  },
+  "not_fresh_independent": true,
+  "release_sha256": "181f9258ae068e4b69d1fe0edf8bd02b970fd13e40ecde9c8eb9a0c5a544fcc0",
+  "reviewed_unchanged": [
+    {
+      "before_row_sha256": "e74b7056ccb77da1ab6582a29b80d24990cb9199fd2264f26a70611ef1cdaaaa",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0024-019d08408eb8-F01",
+        "A05-DEEP-W0024-019d08408eb8-F02",
+        "A05-DEEP-W0024-019d08408eb8-F03",
+        "A05-DEEP-W0024-019d08408eb8-F04",
+        "A05-DEEP-W0024-019d08408eb8-F05",
+        "A05-DEEP-W0024-019d08408eb8-F06",
+        "A05-DEEP-W0024-019d08408eb8-F07",
+        "A05-DEEP-W0024-019d08408eb8-F08"
+      ],
+      "rationale": "The targeted source construction confirms aggregate jailbreak/non-jailbreak labels, but ToxicChat supplied labels are not identified and are not uniformly harmful-content labels. Public-model comparisons reuse those datasets with partly inherited label semantics. This does not conclusively settle whether a separate qualifying injected-instruction label is present. Retain task and language UNCLEAR; do not invent a source-dataset label field or infer exclusion from an absent explicit document boundary. Clarification-scope completeness is not whole-work completeness.",
+      "review_id": "W0024"
+    }
+  ],
+  "schema": "A05_DEEP_EXPOSED_CUSTODIAN_JUDGMENTS",
+  "scope": "B1_ONLY_NO_OUTCOMES_NO_DRAW_NO_B2",
+  "source_git_commit": "d48c1c9886b1805639db39860b8744a742153f72",
+  "version_corrections": []
+}
