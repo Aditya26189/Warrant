@@ -32,6 +32,7 @@
 [Commands](#-the-commands) •
 [Claim table](#-the-claim-table) •
 [Product state](docs/PRODUCT-STATE.md) •
+[Grader audit experiment](#experimental-track-auditing-evaluation-graders) •
 [Architecture](#how-it-fits-together) •
 [Reproduction](#-reproduction) •
 [Documents](#-documents) •
@@ -73,11 +74,33 @@ traffic, pilot or revenue has been evidenced. Read the [product-state and eviden
 map](docs/PRODUCT-STATE.md) for the implemented surfaces, verification status and
 remaining enterprise gaps before treating the claims below as a deployment claim.
 
-**Two ways to use this repository.** Run `warrant` on your own detector's scored
+**Start with the local tool or its evidence.** Run `warrant` on your own detector's scored
 file: no GPU, no model, no network, three dependencies
 ([Quickstart](#-quickstart--certify-your-own-detector)). Or check this project's
 own measurements, every number in the [claim table](#-the-claim-table), on a
 laptop ([Reproduction](#-reproduction)).
+
+## Experimental track: auditing evaluation graders
+
+An optional research track asks whether a grader can accept an incorrect
+implementation, and whether a targeted repair rejects it while retaining correct
+controls. It records the grader and candidate hashes, property scope, executable
+counterexample, repair controls, abstentions and failed attempts. This is evidence
+about a source of evaluation labels; it does not itself establish a statistical
+warrant or label correctness outside the tested scope.
+
+The latest [payments experiment](reports/PHASE-GRADER-PAYMENTS-E2E.md) reproduces
+an accepted faulty worker through real Kafka and HTTP in a local synthetic stack.
+The appended boundary checks reject that worker while accepting the supplied
+reference and equivalent implementation. The report retains an invalid harness
+attempt and limits the result to the tested conditions and observation window.
+
+**Status: experimental, outside the shipped `warrant` CLI.** The
+[broader comparison](reports/PHASE-GRADER-P2.md) has not demonstrated an advantage
+over manual assertion review or ordinary mutation testing. Independent replication,
+broader correct-implementation coverage and customer demand remain open. Read the
+[experiment guide and replay instructions](experiments/grader_poc/README.md) for
+the evidence packets, runner cleanup checks, dependency requirements and limits.
 
 <br/>
 
@@ -845,6 +868,7 @@ for. The ones most readers want first:
 
 | Document | What it answers |
 |:---|:---|
+| 🔬 [Grader audit experiment](experiments/grader_poc/README.md) | Current experimental status, evidence, negative comparisons and replay instructions |
 | 📥 [INPUT.md](docs/INPUT.md) · [RELEASE.md](docs/RELEASE.md) | The input contract for your own file; a pre-registered release study, step by step |
 | 🤝 [EVIDENCE-HANDOFF.md](docs/EVIDENCE-HANDOFF.md) | What to hand a validation function, field by field, and what no record carries yet |
 | 📐 [DIAGRAMS.md](docs/DIAGRAMS.md) | The system in fifteen diagrams — objects, pipeline, warrant lifecycle, controls, policy, drift, verification, the customer path, the chain, release, the gate |

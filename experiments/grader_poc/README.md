@@ -1,12 +1,36 @@
 # Bounded grader experiment
 
-Read [the generated phase report](../../reports/PHASE-GRADER-P0-P1.md) and [observed summary](results/summary.json) first. This directory is an isolated experiment, outside Warrant's shipped CLI and certification pipeline. The report describes the result and its limits; this file describes replay.
+Start with the latest [payments end-to-end report](../../reports/PHASE-GRADER-PAYMENTS-E2E.md) and [machine-readable summary](payments_e2e/evidence/summary.json). This directory is an isolated experiment, outside Warrant's shipped CLI and certification pipeline. The report describes the result and its limits; this file describes the evidence and replay.
+
+The original [session-window phase report](../../reports/PHASE-GRADER-P0-P1.md) and [observed summary](results/summary.json) remain the historical starting point.
 
 The subsequent [runner hardening report](../../reports/PHASE-GRADER-HARDENING.md) records fixes prompted by a separate assistant review. Its evidence is archived under `hardening/`; the original `results/` packet is retained unchanged. The original report remains a historical account of its producing code.
 
 The [P2 validation report](../../reports/PHASE-GRADER-P2.md) records additional-task comparisons, the stronger maximum-repair study, negative results and actual Harbor cancellation checks. Read its scope limits before replay. Its tested forced-cancellation policy left delegated Docker resources running. The subsequent [cancellation correction](../../reports/PHASE-GRADER-CANCELLATION.md) records the scoped runner fix and its validation separately, under `cancellation/`. P2 remains unchanged, experimental and without a comparative superiority or certification claim. Its protocol, modules and preserved evidence live under `p2/`.
 
+## Current result and limits
+
+The latest payments extension tests the known zero-balance omission through real
+Kafka and HTTP in a synthetic local stack. The original grader accepts the faulty
+worker; the appended boundary checks reject it while accepting the supplied
+reference and equivalent implementation. The invalid first reference attempt is
+retained and explained in the report. Single-worker and overlapping-running-worker
+checks do not establish arbitrary concurrency correctness or absence of delayed
+callbacks beyond the observation window.
+
+This is a reproducible regression for a known coverage gap, not evidence of a
+better discovery method. P2 includes a negative incremental result for the math
+task and an inconclusive distributed task. Independent investigators, held-out
+properties, diverse correct implementations and matched investigation effort are
+still needed to claim an advantage over assertion review or mutation testing.
+There is no demonstrated customer demand or production integration.
+
 ## Inspect without execution
+
+- [Payments report](../../reports/PHASE-GRADER-PAYMENTS-E2E.md), [summary](payments_e2e/evidence/summary.json) and [manifest](payments_e2e/evidence/manifest.json): real-stack observations, controls, failed attempt, source bindings, omitted runtime snapshots and raw/packaged hashes.
+- [Grader-only payments patch](payments_e2e/evidence/grader-payments-e2e-cases-002/reference-repaired.patch): appended tests and helper, without a worker mutation; reviewable locally, not submitted upstream.
+- [P2 report](../../reports/PHASE-GRADER-P2.md) and [cancellation correction](../../reports/PHASE-GRADER-CANCELLATION.md): broader comparisons, negative results, cleanup evidence and scope limits.
+
 
 - `results/runs/`: all full Harbor invocations, outcomes, trial logs, CTRF records and collected candidate files. Host paths are redacted in these copies.
 - `results/diagnostic/`: independent-oracle result and append-only observation journal, including all reduction attempts.
@@ -22,7 +46,7 @@ Use Linux or WSL with Python 3.12, Git, Docker Engine and Docker Compose. Window
 
 The retained Harbor archive contains deeply nested paths. On Windows use a short checkout path or Git's per-command `-c core.longpaths=true` option for checkout, staging and verification. The archive preserves original run layouts rather than renaming evidence paths.
 
-Use a clean checkout of this experiment branch. The modules require clean Git provenance before scientific generation. Keep all generated tasks and run directories **outside** the source checkout. Do not write results over the retained packet; each run refuses an existing output directory. Scripts use only the Python standard library except for the separately installed Harbor runtime.
+Use a clean checkout of this repository. The modules require clean Git provenance before scientific generation. Keep all generated tasks and run directories **outside** the source checkout. Do not write results over the retained packet; each run refuses an existing output directory. Scripts use only the Python standard library except for the separately installed Harbor runtime.
 
 Create sibling checkouts named `terminal-bench-poc` and `harbor-poc`, pinned to the commits in `config.json`. Public sources:
 
@@ -33,7 +57,7 @@ Install `results/environment/harbor-dependencies.txt` in a dedicated virtualenv,
 
 The upstream Dockerfiles pin the base image and direct pytest packages. Their apt dependencies and all build tools are not snapshot-pinned; reproducing behavior does not imply a bit-identical image. The report states which image and dependency records were actually retained.
 
-## Execute the comparison
+## Replay the original session-window comparison
 
 From the experiment checkout, set paths for your machine. These examples are Bash:
 
@@ -91,6 +115,7 @@ To rerun targeted failure validation under Linux/WSL, with fresh output paths:
 
 ```bash
 python -m unittest discover -s experiments/grader_poc -p 'test_*.py' -v
+python -m unittest experiments.grader_poc.payments_e2e.test_boundary -v
 python -m ruff check --no-cache experiments/grader_poc --exclude results --exclude hardening --exclude evidence --exclude cancellation
 python -m experiments.grader_poc.validate_hardening \
   --runs "$WORK/runs" --cases "$WORK/cases" --out "$WORK/hardening-checks" \
@@ -100,5 +125,40 @@ python -m experiments.grader_poc.validate_hardening \
 The failure fixtures deliberately sleep and emit partial results; they are synthetic process tests, not new grader experiments. The real witness/control replay reuses the frozen example. `package_hardening.py` archives that verification and the supplied prior review, with raw and packaged hashes; it refuses to overwrite its archive.
 
 For the current actual-Harbor cancellation validation, run `python -m experiments.grader_poc.validate_cancellation --tb "$TB" --harbor "$HB" --harbor-bin "$HARBOR_BIN" --out "$WORK/cancellation-checks"`. It creates disposable tasks plus foreign-resource preservation controls and exercises agent timeout, agent interruption, separate-verifier interruption and a normal reference. See the correction report for the preserved invalid fixture attempt, exact outcomes and limitations. The earlier failure-validation command above remains a historical synthetic check, not the actual-Harbor gate.
+
+## Replay the payments boundary checks
+
+Use the same pinned upstream checkouts and Harbor environment above. Set `REPO`
+to this clean repository's absolute path, and `WORK`, `TB`, `HB` and `HARBOR_BIN`
+to absolute paths. Choose a new `WORK` directory outside the source checkout.
+Under Linux/WSL, run from a stable working directory such as `/tmp`:
+
+```bash
+export PYTHONPATH="$REPO${PYTHONPATH:+:$PYTHONPATH}"
+cd /tmp
+python -m experiments.grader_poc.payments_e2e.prepare \
+  --tb "$TB" --out "$WORK/payments-cases"
+
+for row in reference-repaired:1 mutant-original:1 mutant-repaired:0 equivalent-repaired:1; do
+  case_name="${row%:*}"
+  reward="${row#*:}"
+  python -m experiments.grader_poc.run_trial \
+    --task "$WORK/payments-cases/$case_name" \
+    --out "$WORK/payments-runs/$case_name-001" --name "$case_name-001" \
+    --tb-repo "$TB" --harbor-repo "$HB" --harbor-bin "$HARBOR_BIN" \
+    --agent oracle --timeout 900 --expected-reward "$reward" || exit "$?"
+done
+```
+
+These expected rewards come from the fixed matrix in the generated report. A
+completed run must also have the expected candidate bytes, test results and
+verified cleanup. Inspect each `outcome.json` and the retained boundary receipts;
+a timeout or harness failure cannot establish a semantic defect. The shared
+runner config contains legacy session-window descriptors; explicit task paths,
+task hashes and candidate bindings identify these payments trials.
+
+The payments packager is a historical closing assembler for the recorded directory
+layout, including the invalid first attempt. A fresh replay should retain its own
+receipts rather than overwrite or claim to recreate that historical packet.
 
 `package_result.py` is the one-time closing assembler for the original workspace layout. It is not needed to reproduce the software result and refuses to overwrite the committed packet. Its input layout and generated report template are preserved so the original evidence assembly is reviewable. No automatic publication or integration command exists in this experiment.
