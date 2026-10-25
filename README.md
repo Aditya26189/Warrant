@@ -32,6 +32,7 @@
 [Commands](#-the-commands) •
 [Claim table](#-the-claim-table) •
 [Product state](docs/PRODUCT-STATE.md) •
+[Current research](#current-research-local-grader-audit-track) •
 [Architecture](#how-it-fits-together) •
 [Reproduction](#-reproduction) •
 [Documents](#-documents) •
@@ -78,6 +79,35 @@ file: no GPU, no model, no network, three dependencies
 ([Quickstart](#-quickstart--certify-your-own-detector)). Or check this project's
 own measurements, every number in the [claim table](#-the-claim-table), on a
 laptop ([Reproduction](#-reproduction)).
+
+## Current research: local grader-audit track
+
+**Status as of 25 October 2026: local experimental work; the code and evidence
+packets have not been published in this GitHub checkout.** The installed
+`warrant` command and the reproduction instructions below cover the existing
+scored-file certification workflow.
+
+The new track asks whether a grader can accept an incorrect implementation and
+whether a targeted repair rejects it while retaining correct controls. Its
+intended output is an audit record containing the grader and candidate hashes,
+property scope, executable counterexample, expected and observed behavior,
+repair controls, abstentions and failed attempts. This would strengthen evidence
+about a source of evaluation labels; statistical certification remains a
+separate step.
+
+The locally recorded payments experiment reproduces an accepted faulty worker
+through real Kafka and HTTP in a synthetic stack. Appended boundary checks
+reject that worker while accepting the supplied reference and equivalent
+implementation. The local record retains an invalid harness attempt and limits
+the result to the tested conditions and observation window. These results cannot
+yet be replayed from `main` alone.
+
+The work has **not demonstrated an advantage over manual assertion review or
+ordinary mutation testing**. Independent replication, broader correct-implementation
+coverage, held-out properties and measured investigation effort remain open.
+It is a research direction, with no established production integration or customer
+demand. The claim table below describes the existing published research, not this
+unpublished experimental track.
 
 <br/>
 
