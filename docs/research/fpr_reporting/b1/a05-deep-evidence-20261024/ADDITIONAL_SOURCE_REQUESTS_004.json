@@ -1,0 +1,175 @@
+{
+  "baseline_commit": "8766b823d2ad7ff25bc1f1af2cff3577a5fcd87c",
+  "created_utc": "2026-10-25T18:28:41.967403+00:00",
+  "requests": [
+    {
+      "identifiers": [
+        "doi:10.1007/978-3-031-80853-1_30"
+      ],
+      "questions": [
+        "Inspect known captured publisher landing metadata and PDF bibliographic header/copyright/history/edition notices only. Verify exact title/authors, document type, publisher/DOI and declared publication/revision dates; distinguish online versus issue dates and HTTP transport timestamps.",
+        "Return bounded bibliographic_scope_facts and exact primary locators/hashes. Record whether the document identifies a publisher edition, accepted manuscript, preprint or corrigendum; do not infer VOR solely from DOI existence. A content-capture identifier is not a final preferred-version selection.",
+        "Record source-declared arXiv/repository links if present without inventing identity or byte/edition equivalence. No findings, abstract results, outcomes, sample/false-positive counts, assurance/eligibility decisions, discovery additions or refresh. Do not yet transfer scientific method facts from the earlier arXiv source."
+      ],
+      "requested_preferred_version": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+      "review_id": "W0336",
+      "source_identifier_limit": "Content-addressed captured publisher PDF, not a claimed scholarly edition date or prior selection.",
+      "sources": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0336.json",
+          "acquisition_receipt_sha256": "de2053bcdb59e080e29d6c066baa524588ea5c1d2ccbd45a58fc349d0f380c6c",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\5d630bca4e61b845dda25af91c11fcbb74ef74d5a1ab73b471ecbfec646df137",
+            "sha256": "5d630bca4e61b845dda25af91c11fcbb74ef74d5a1ab73b471ecbfec646df137",
+            "status": 200,
+            "url": "https://doi.org/10.1007/978-3-031-80853-1_30",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0336.json",
+          "acquisition_receipt_sha256": "67b821992a6ec3b1ecdec26a4f86603d239f969a673101b293102d6bfc39b637",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+            "sha256": "ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+            "status": 200,
+            "url": "https://link.springer.com/content/pdf/10.1007/978-3-031-80853-1_30.pdf",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727"
+        }
+      ],
+      "work_id": "doi:10.1007/978-3-031-80853-1_30"
+    },
+    {
+      "identifiers": [
+        "doi:10.1007/s44443-026-01200-9"
+      ],
+      "questions": [
+        "Inspect known captured publisher landing metadata and PDF bibliographic header/copyright/history/edition notices only. Verify exact title/authors, document type, publisher/DOI and declared publication/revision dates; distinguish online versus issue dates and HTTP transport timestamps.",
+        "Return bounded bibliographic_scope_facts and exact primary locators/hashes. Record whether the document identifies a publisher edition, accepted manuscript, preprint or corrigendum; do not infer VOR solely from DOI existence. A content-capture identifier is not a final preferred-version selection.",
+        "Record source-declared arXiv/repository links if present without inventing identity or byte/edition equivalence. No findings, abstract results, outcomes, sample/false-positive counts, assurance/eligibility decisions, discovery additions or refresh. Do not yet transfer scientific method facts from the earlier arXiv source."
+      ],
+      "requested_preferred_version": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+      "review_id": "W0337",
+      "source_identifier_limit": "Content-addressed captured publisher PDF, not a claimed scholarly edition date or prior selection.",
+      "sources": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0337.json",
+          "acquisition_receipt_sha256": "adb99240eab7fbfc17cec1050acfb62a942ffa63627f565be5b270002a5ff5e3",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+            "sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+            "status": 200,
+            "url": "https://doi.org/10.1007/s44443-026-01200-9",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0337.json",
+          "acquisition_receipt_sha256": "b08848bf33a3847240029d884e19ff74b0a75bed900ac4a55728bf3fb590b339",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+            "sha256": "767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+            "status": 200,
+            "url": "https://link.springer.com/content/pdf/10.1007/s44443-026-01200-9.pdf",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+        }
+      ],
+      "work_id": "doi:10.1007/s44443-026-01200-9"
+    },
+    {
+      "identifiers": [
+        "doi:10.63336/eureka.46"
+      ],
+      "questions": [
+        "Inspect known captured publisher landing metadata and PDF bibliographic header/copyright/history/edition notices only. Verify exact title/authors, document type, publisher/DOI and declared publication/revision dates; distinguish online versus issue dates and HTTP transport timestamps.",
+        "Return bounded bibliographic_scope_facts and exact primary locators/hashes. Record whether the document identifies a publisher edition, accepted manuscript, preprint or corrigendum; do not infer VOR solely from DOI existence. A content-capture identifier is not a final preferred-version selection.",
+        "Record source-declared arXiv/repository links if present without inventing identity or byte/edition equivalence. No findings, abstract results, outcomes, sample/false-positive counts, assurance/eligibility decisions, discovery additions or refresh. Do not yet transfer scientific method facts from the earlier arXiv source."
+      ],
+      "requested_preferred_version": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+      "review_id": "W0371",
+      "source_identifier_limit": "Content-addressed captured publisher PDF, not a claimed scholarly edition date or prior selection.",
+      "sources": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0371.json",
+          "acquisition_receipt_sha256": "c9c2da2e7b10693b0668aab1ada1e9ac7897db8c02df53298e17cb902349e565",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+            "sha256": "4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+            "status": 200,
+            "url": "https://doi.org/10.63336/eureka.46",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0371.json",
+          "acquisition_receipt_sha256": "b0a3a771598c1c11b2db8b4f651d96e648770a0a180c10c9f1be3ebfe7c24f14",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+            "sha256": "3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+            "status": 200,
+            "url": "https://scinexor.com/Eureka/article/id/46/download/pdf/",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88"
+        }
+      ],
+      "work_id": "doi:10.63336/eureka.46"
+    },
+    {
+      "identifiers": [
+        "doi:10.63336/eureka.47"
+      ],
+      "questions": [
+        "Inspect known captured publisher landing metadata and PDF bibliographic header/copyright/history/edition notices only. Verify exact title/authors, document type, publisher/DOI and declared publication/revision dates; distinguish online versus issue dates and HTTP transport timestamps.",
+        "Return bounded bibliographic_scope_facts and exact primary locators/hashes. Record whether the document identifies a publisher edition, accepted manuscript, preprint or corrigendum; do not infer VOR solely from DOI existence. A content-capture identifier is not a final preferred-version selection.",
+        "Record source-declared arXiv/repository links if present without inventing identity or byte/edition equivalence. No findings, abstract results, outcomes, sample/false-positive counts, assurance/eligibility decisions, discovery additions or refresh. Do not yet transfer scientific method facts from the earlier arXiv source."
+      ],
+      "requested_preferred_version": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+      "review_id": "W0372",
+      "source_identifier_limit": "Content-addressed captured publisher PDF, not a claimed scholarly edition date or prior selection.",
+      "sources": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0372.json",
+          "acquisition_receipt_sha256": "25e0f730b7e221a23456d96286a8afff6551fd2dfb6915f10f4add8604505f37",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\37ccc654aa391eab48882e7862b1fdfa5a8ad7cf4c475e5659f2591632a74e88",
+            "sha256": "37ccc654aa391eab48882e7862b1fdfa5a8ad7cf4c475e5659f2591632a74e88",
+            "status": 200,
+            "url": "https://doi.org/10.63336/eureka.47",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0372.json",
+          "acquisition_receipt_sha256": "cbec709e3a93ef612d82e2d60255db3528578dd5d3d82616951a0572bac46458",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+            "sha256": "0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+            "status": 200,
+            "url": "https://scinexor.com/Eureka/article/id/47/download/pdf/",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628"
+        }
+      ],
+      "work_id": "doi:10.63336/eureka.47"
+    }
+  ],
+  "scope": "Known-work publisher-edition bibliographic verification only; all source bytes were previously captured, no refresh. Separate actual checker required before use."
+}
