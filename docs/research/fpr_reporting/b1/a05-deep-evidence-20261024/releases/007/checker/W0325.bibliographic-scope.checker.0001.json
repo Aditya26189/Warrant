@@ -1,0 +1,180 @@
+{
+  "schema": "A05_RESTRICTED_BIBLIOGRAPHIC_SCOPE_CHECK_v1",
+  "review_id": "W0325",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T12:20:41.760096+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_MERGE_SAMPLING_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\additional-002\\W0325.bibliographic-scope.0002.json",
+  "provider_packet_sha256": "b6f837095c123af1fd471f5440c1c85d0c964155e846634ad30a09b5236b00fb",
+  "request_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\ADDITIONAL_SOURCE_REQUESTS_002.json",
+  "request_sha256": "d6fa90dc94f8a21b231c1c20a23c41378a73e3772fb3c703b6cf05700c7b4548",
+  "requested_preferred_version": "arxiv:2610.04412v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q153-1.html",
+    "raw_sha256": "0966e3528c13cbc940b388aec1b7215f5b5fd89926faef47c4bd16ee0420cb30",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0379.json",
+    "acquisition_receipt_sha256": "b6a8f9536325906bae0f89ef67f8ba432057bad71ab61f81785bc7157c65b2da",
+    "captured_version_id": "arxiv:2610.04412v1"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "scope": "Cached bibliographic front matter, introduction scope and exact chapter reuse notes; main paper methods already independently checked. No historical scientific judgments accessed.",
+    "locator_sha256": "31a4318440f09295fa8c1d007316e7b1133f367254322412333bd894ae32f3a9",
+    "locators": [
+      {
+        "html_id": "id1",
+        "normalized_text_sha256": "64662ea75cce9720b0b5c0c9c573ebe56854549cb9b4f439e0cfaaace4f66743",
+        "scope": "bibliographic/front-matter paragraph",
+        "normalized_hash_verified": true
+      },
+      {
+        "html_id": "Chx3.p7.1",
+        "normalized_text_sha256": "8fbd958ff0717c5f6aef52426b7f8c57453bbb038990dbd14dc86e42529d425f",
+        "scope": "bibliographic/front-matter paragraph",
+        "normalized_hash_verified": true
+      },
+      {
+        "html_id": "Chx3.p8.1",
+        "normalized_text_sha256": "266d8fabaac2920843f84f57d20d8ecd840a503af98a50d361fedaee054d2611",
+        "scope": "bibliographic/front-matter paragraph",
+        "normalized_hash_verified": true
+      },
+      {
+        "html_id": "Chx3.p9.1",
+        "normalized_text_sha256": "acedb338f9a35f202ed1bfca7b1cf64ddb5e5e756f18b31d32842aaa5d5a56ff",
+        "scope": "bibliographic/front-matter paragraph",
+        "normalized_hash_verified": true
+      },
+      {
+        "html_id": "Chx3.p10.1",
+        "normalized_text_sha256": "c674ed415c6e3819f283023a7d82a0208ee6099c975a4e87c7192e65d6076b76",
+        "scope": "bibliographic/front-matter paragraph",
+        "normalized_hash_verified": true
+      },
+      {
+        "html_id": "Ch1.p3",
+        "normalized_text_sha256": "a68eb170aeb185fadf87cd53ced84628dbd91f0edaf37c07cc89a3eb5e98c752",
+        "scope": "bibliographic/front-matter paragraph",
+        "normalized_hash_verified": true
+      },
+      {
+        "html_id": "Ch2.p3",
+        "normalized_text_sha256": "326933f68cb56d82d42ee8388f587a690c96338c0f64f52197ce74be268e919c",
+        "scope": "bibliographic/front-matter paragraph",
+        "normalized_hash_verified": true
+      },
+      {
+        "html_id": "Ch3.p3",
+        "normalized_text_sha256": "a39b70f77d08e1c95b92459a30c82508f298f8c2c3b357f816290360f1a0fe68",
+        "scope": "bibliographic/front-matter paragraph",
+        "normalized_hash_verified": true
+      },
+      {
+        "selector": "head/title",
+        "normalized_text_sha256": "f9e36016ddbb93c08453e48703c7d295993051356bcd52e8e03af05287f01b40",
+        "normalized_hash_verified": true
+      }
+    ],
+    "additional_actual_chapter_heading_locators": [
+      {
+        "html_id": "Ch1",
+        "scope": "direct chapter heading only",
+        "normalized_text_sha256": "2ca5280295efca90d9956a88f5219ff55b66d18fd2c6013b6307c44a86fa310c"
+      },
+      {
+        "html_id": "Ch2",
+        "scope": "direct chapter heading only",
+        "normalized_text_sha256": "ff2883de661330e5fc56331dd77abea184328bedc31d837b30e020f079da0a80"
+      },
+      {
+        "html_id": "Ch3",
+        "scope": "direct chapter heading only",
+        "normalized_text_sha256": "b6de94da2f77f6a954a23f28c0ef8219c7d12bf144668a9df5bb581d0dcd01ca"
+      },
+      {
+        "html_id": "Ch4",
+        "scope": "direct chapter heading only",
+        "normalized_text_sha256": "b00f74dd253eeea71d79295e6ee986c410ee3ae2991d8a76581a4bd7fe0c615c"
+      }
+    ],
+    "cross_source_reuse_pointer": {
+      "raw_sha256": "0966e3528c13cbc940b388aec1b7215f5b5fd89926faef47c4bd16ee0420cb30",
+      "html_id": "Ch3.p3",
+      "normalized_text_sha256": "a39b70f77d08e1c95b92459a30c82508f298f8c2c3b357f816290360f1a0fe68",
+      "version_limit": "Paper identifier only; no specific paper version is named."
+    }
+  },
+  "independent_primary_web_metadata": {
+    "url": "https://arxiv.org/abs/2610.04412v1",
+    "access_mode": "Independently opened exact official arXiv landing page via web tool; parsed metadata only",
+    "original_http_bytes_available": false,
+    "safe_metadata_projection": {
+      "url": "https://arxiv.org/abs/2610.04412v1",
+      "title": "Large Language Models and Augmented Democracy",
+      "authors": [
+        "Jairo Gudiño-Rosero"
+      ],
+      "submission_history": {
+        "v1": "2026-10-03 10:02:14 UTC"
+      }
+    },
+    "safe_metadata_projection_sha256": "202fa666c2947d6c37535034808642b8cc0939a862d436f0b93811511329cf69",
+    "not_an_http_raw_hash": true,
+    "limitation": "No claim of captured raw landing bytes or historical availability of the exact cached full-text bytes."
+  },
+  "per_fact": [
+    {
+      "field_path": "bibliographic_scope_facts.title",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Exact cached head/title and independently opened official v1 landing metadata agree.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bibliographic_scope_facts.author",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual cached title-page id1 includes the longer author name with ñ; official v1 landing metadata uses the shorter form. The corrected provider field accurately distinguishes them.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bibliographic_scope_facts.document_type",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual cached title-page id1 directly specifies Ph.D., Applied Mathematics and the named Toulouse doctoral school.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bibliographic_scope_facts.edition",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Official v1 submission history independently verifies the exact timestamp; cached title page independently states Toulouse and year. Original landing HTTP bytes are unavailable, and no historical exact-byte-availability claim is inferred.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bibliographic_scope_facts.whole_document_scope",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual introduction Chx3.p7-p10 defines the three complementary research perspectives; independently read Ch1/Ch2/Ch3 chapter headings and Ch4 heading affirm the chapter subjects and policy-discussion scope.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bibliographic_scope_facts.source_declared_relationship",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actually read Ch1.p3, Ch2.p3 and Ch3.p3 reuse notes in exact thesis v1. They identify distinct source works and explicitly name the consensus preprint without a paper version. Claimed review/workshop status is approved only as what that frozen source declares, not independently verified current venue status or a merge decision.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "sample_counts_transferred": false,
+    "assurance_transferred": false,
+    "eligibility_or_canonical_merge_transferred": false,
+    "provider_incidental_exposure": [
+      "Cached title/front matter, chapter headings, introduction scope paragraphs and direct chapter reuse notes inspected. Adjacent abstract/results material appeared in an overbroad initial HTML tool output; no outcomes transferred.",
+      "Exact arXiv submission timestamps came from parsed official landing pages; their original response bytes were not acquired.",
+      "Shared filesystem and operational board access as previously disclosed; no historical scientific reviewer files or human sheet inspected.",
+      "No eligibility, sampling-unit or canonical-merge decision made."
+    ],
+    "checker_exposure": "Cached introduction scope and official landing metadata inspection incidentally displayed adjacent abstract outcome prose. Such outcomes are withheld; only bounded bibliography, source-declared chapter scope and reuse fields are approved. Shared filesystem; no freshness or OS isolation claim."
+  }
+}
