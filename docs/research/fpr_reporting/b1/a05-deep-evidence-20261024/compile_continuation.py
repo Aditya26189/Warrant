@@ -301,6 +301,8 @@ def assemble(head: str) -> dict[str, object]:
         release_pins = {r.sha(p.read_bytes()) for p in HERE.glob("releases/*/FACTS.json")}
         if judgments["release_sha256"] not in release_pins:
             raise ValueError("AUTHOR_RELEASE_CHANGED")
+        if set(judgments.get("additional_release_sha256", [])) - release_pins:
+            raise ValueError("AUTHOR_ADDITIONAL_RELEASE_CHANGED")
         if judgments.get("bibliography_release_sha256") and judgments["bibliography_release_sha256"] not in {
                 r.sha(p.read_bytes()) for p in HERE.glob("bibliography/*/FACTS.json")}:
             raise ValueError("AUTHOR_BIBLIOGRAPHY_RELEASE_CHANGED")
