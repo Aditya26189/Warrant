@@ -23,7 +23,9 @@ better discovery method. P2 includes a negative incremental result for the math
 task and an inconclusive distributed task. Independent investigators, held-out
 properties, diverse correct implementations and matched investigation effort are
 still needed to claim an advantage over assertion review or mutation testing.
-There is no demonstrated customer demand or production integration.
+There is no demonstrated customer demand or production integration. See the
+[publication report](../../reports/PHASE-GRADER-PUBLICATION.md) for the documentation
+gate, collection repair and verification scope.
 
 ## Inspect without execution
 
@@ -115,7 +117,7 @@ To rerun targeted failure validation under Linux/WSL, with fresh output paths:
 
 ```bash
 python -m unittest discover -s experiments/grader_poc -p 'test_*.py' -v
-python -m unittest experiments.grader_poc.payments_e2e.test_boundary -v
+python -m unittest experiments.grader_poc.p2.test_p2 experiments.grader_poc.payments_e2e.test_boundary -v
 python -m ruff check --no-cache experiments/grader_poc --exclude results --exclude hardening --exclude evidence --exclude cancellation
 python -m experiments.grader_poc.validate_hardening \
   --runs "$WORK/runs" --cases "$WORK/cases" --out "$WORK/hardening-checks" \
