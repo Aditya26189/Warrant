@@ -1,0 +1,33 @@
+{
+  "schema": "A05_SOURCE_CHECKER_ADDITIONAL_CHECKPOINT_v1",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T18:30:22.935845+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_FINAL_RELEASE",
+  "request_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\ADDITIONAL_SOURCE_REQUESTS_003.json",
+  "request_sha256": "d059c8d0421291b5e9a06d1b553b3720de4d84671a519b3a5be1c3b88bfb3499",
+  "unique_checked_works": 3,
+  "files": [
+    {
+      "path": "additional-003/checked/W0018.checker.0001.json",
+      "sha256": "f9a87ac1d90e95a0f48c2fd72fcca118c489639c8fa8841d856a30dc90e95609"
+    },
+    {
+      "path": "additional-003/checked/W0024.checker.0001.json",
+      "sha256": "019d08408eb8d09f9265b1951432b02d3f7722d4435c64b3fc7cadf3b0863d05"
+    },
+    {
+      "path": "additional-003/checked/W0325.checker.0001.json",
+      "sha256": "c702388ea86d28e008a1a3473eee935ec13fb5c4cc53447c1c89646eb22a2d83"
+    }
+  ],
+  "latest_receipts": {
+    "W0018": "additional-003/checked/W0018.checker.0001.json",
+    "W0024": "additional-003/checked/W0024.checker.0001.json",
+    "W0325": "additional-003/checked/W0325.checker.0001.json"
+  },
+  "limitations": [
+    "Task-label clarification completeness is bounded by the explicit clarification scope, not item-level dataset provenance.",
+    "Thesis English evidence concerns its own evaluated-construction templates; filled slots and whole-record language remain unresolved.",
+    "No outcomes, sample counts, assurance, eligibility or final release decisions transferred."
+  ]
+}
