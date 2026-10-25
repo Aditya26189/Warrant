@@ -34,7 +34,7 @@ def field(packet: dict, path: str) -> object:
     match = re.fullmatch(r"coverage\.([a-z_]+)", path)
     if match:
         return packet["coverage"][match[1]]
-    match = re.fullmatch(r"bibliographic_scope_facts\.(title|authors|whole_document_scope|edition|source_declared_relationship)", path)
+    match = re.fullmatch(r"bibliographic_scope_facts\.(title|author|authors|whole_document_scope|edition|source_declared_relationship)", path)
     if match:
         return packet["bibliographic_scope_facts"][match[1]]
     raise ValueError("UNRELEASEABLE_FIELD:" + path)
