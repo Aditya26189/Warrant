@@ -24,7 +24,7 @@ def sha(raw: bytes) -> str:
 
 def field(packet: dict, path: str) -> object:
     """Resolve only declared method fields; never evaluate a supplied expression."""
-    if path in {"method_summary", "english_evaluation_support", "coverage"}:
+    if path in {"method_summary", "english_evaluation_support", "study_scope_statement", "coverage"}:
         return packet[path]
     if path in {"source_receipts.locators", "source_receipts.additional_table_locators"}:
         return packet["source_receipts"][path.rsplit(".", 1)[1]]

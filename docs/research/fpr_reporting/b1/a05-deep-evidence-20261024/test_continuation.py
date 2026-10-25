@@ -34,10 +34,29 @@ class ScientificBoundaryTests(unittest.TestCase):
         c.apply_domain(self.row, self.change, self.evidence)
         self.assertEqual(self.row["criteria"]["before_target_answer"], "NOT_MET")
 
+    def test_explicit_task_scope_requires_a_checked_whole_study_statement(self) -> None:
+        self.change["exclusion_basis"] = "EXPLICIT_WHOLE_STUDY_TASK_SCOPE"
+        self.change["criteria"]["input_injection_task"] = "NOT_MET"
+        with self.assertRaisesRegex(ValueError, "NO_AFFIRMATIVE_WHOLE_STUDY"):
+            c.apply_domain(self.row, self.change, self.evidence)
+        self.evidence["scope"].update({"field_path": "study_scope_statement", "value": "Original evaluation concerns vision-task image pairs."})
+        c.apply_domain(self.row, self.change, self.evidence)
+        self.assertEqual(self.row["criteria"]["input_injection_task"], "NOT_MET")
+
     def test_before_hash_prevents_silent_rewrite(self) -> None:
         self.row["criteria"]["binary_evaluation"] = "MET"
         with self.assertRaisesRegex(ValueError, "PRIOR_ROW_CHANGED"):
             c.apply_domain(self.row, self.change, self.evidence)
+
+    def test_approved_field_cannot_be_relabelled_as_another_edition(self) -> None:
+        fact = {"review_id": "W0001", "version": "arxiv:0000.00001v2"}
+        check = {"review_id": "W0001", "requested_preferred_version": "arxiv:0000.00001v1", "request_sha256": "request"}
+        with self.assertRaisesRegex(ValueError, "WORK_VERSION_OR_REQUEST_CHANGED"):
+            c.validate_fact_receipt(fact, check, "request")
+        check["requested_preferred_version"] = fact["version"]
+        c.validate_fact_receipt(fact, check, "request")
+        with self.assertRaisesRegex(ValueError, "WORK_VERSION_OR_REQUEST_CHANGED"):
+            c.validate_fact_receipt(fact, check, "different-request")
 
     def test_foreign_and_older_version_proofs_rejected(self) -> None:
         for key, value, message in [("review_id", "W0002", "FOREIGN"),

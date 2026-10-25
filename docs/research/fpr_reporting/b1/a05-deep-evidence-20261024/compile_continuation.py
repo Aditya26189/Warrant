@@ -23,6 +23,14 @@ CRITERIA = set(prior.CRITERIA)
 BASELINE = "e073ce2cb94c240e5570a51446a4d0a36fda51e5"
 
 
+def validate_fact_receipt(fact: dict, checker: dict, release_request_sha256: str) -> None:
+    """Prevent relabeling an approved field as another work or edition."""
+    if (checker["review_id"] != fact["review_id"]
+            or checker["requested_preferred_version"] != fact["version"]
+            or checker["request_sha256"] != release_request_sha256):
+        raise ValueError("FACT_CHECKER_WORK_VERSION_OR_REQUEST_CHANGED")
+
+
 def load_evidence() -> dict:
     """Verify source/checker payloads before using any new scientific assertion."""
     book = json.loads((OLD / "SOURCE_CASEBOOK.json").read_bytes())
@@ -44,6 +52,7 @@ def load_evidence() -> dict:
                     raise ValueError("RELEASED_VALUE_CHANGED")
                 checker_raw = (root / fact["checker_receipt"]).read_bytes()
                 checker = json.loads(checker_raw)
+                validate_fact_receipt(fact, checker, release["request_sha256"])
                 if r.sha(checker_raw) != fact["checker_receipt_sha256"]:
                     raise ValueError("FACT_CHECKER_CHANGED")
                 checks = [x for x in checker["per_fact"] if x["field_path"] == fact["field_path"]]
@@ -125,6 +134,11 @@ def apply_domain(row: dict, change: dict, evidence: dict) -> None:
             if not any(evidence[eid].get("field_path") == "coverage.scope_completeness"
                        and evidence[eid]["value"] is True for eid in change["new_evidence_ids"]):
                 raise ValueError("EXCLUSION_FROM_PARTIAL_SCOPE")
+        elif scope == "EXPLICIT_WHOLE_STUDY_TASK_SCOPE":
+            if criteria["input_injection_task"] != "NOT_MET" or not any(
+                    evidence[eid].get("field_path") == "study_scope_statement" and evidence[eid].get("value")
+                    for eid in change["new_evidence_ids"]):
+                raise ValueError("NO_AFFIRMATIVE_WHOLE_STUDY_TASK_PROOF")
         elif scope != "EXPLICIT_NONEMPIRICAL_DESIGN":
             raise ValueError("UNKNOWN_EXCLUSION_BASIS")
     proof = change["positive_criterion_evidence_ids"]
@@ -238,6 +252,9 @@ def assemble(head: str) -> dict[str, object]:
         if judgments.get("bibliography_release_sha256") and judgments["bibliography_release_sha256"] not in {
                 r.sha(p.read_bytes()) for p in HERE.glob("bibliography/*/FACTS.json")}:
             raise ValueError("AUTHOR_BIBLIOGRAPHY_RELEASE_CHANGED")
+        for name, digest in judgments.get("interpretation_documents", {}).items():
+            if Path(name).name != name or r.sha((HERE / name).read_bytes()) != digest:
+                raise ValueError("AUTHOR_INTERPRETATION_DOCUMENT_CHANGED")
         touched = set()
         for change in judgments["changes"]:
             rid = change["review_id"]
