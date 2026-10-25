@@ -72,11 +72,11 @@ def checked_fields(check: dict, packet: dict, packet_raw: bytes) -> list[dict]:
     return result
 
 
-def build(checkpoint_path: Path) -> tuple[dict, dict[str, bytes]]:
+def build(checkpoint_path: Path, requests_path: Path | None = None) -> tuple[dict, dict[str, bytes]]:
     """Freeze a sealed checker checkpoint without reading unapproved method values."""
     checkpoint_raw = checkpoint_path.read_bytes()
     checkpoint = json.loads(checkpoint_raw)
-    requests_raw = (HERE / "SOURCE_REQUESTS.json").read_bytes()
+    requests_raw = (requests_path or HERE / "SOURCE_REQUESTS.json").read_bytes()
     requests = json.loads(requests_raw)
     if isinstance(requests, dict):
         requests = requests["requests"]
@@ -129,6 +129,7 @@ def main() -> None:
     """Create one append-only release from a clean committed generator."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--checkpoint", type=Path, required=True)
+    parser.add_argument("--requests", type=Path)
     parser.add_argument("--run", required=True)
     args = parser.parse_args()
     if not re.fullmatch(r"\d{3}", args.run):
@@ -136,7 +137,7 @@ def main() -> None:
     if subprocess.check_output(["git", "status", "--porcelain"], cwd=HERE, text=True).strip():
         raise ValueError("DIRTY_TREE")
     head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=HERE, text=True).strip()
-    release, files = build(args.checkpoint)
+    release, files = build(args.checkpoint, args.requests)
     release["source_git_commit"] = head
     destination = HERE / "releases" / args.run
     destination.mkdir(parents=True, exist_ok=False)
