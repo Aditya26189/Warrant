@@ -70,6 +70,13 @@ class ReleaseBoundaryTests(unittest.TestCase):
         check["mechanical_check"] = {"raw_body_available": False, "acquisition_hash_verified": True}
         self.assertEqual(r.checked_fields(check, self.packet, self.raw), [])
 
+    def test_access_gap_still_requires_explicit_restriction_pass(self) -> None:
+        check = copy.deepcopy(self.check)
+        check["mechanical_check"] = {"raw_body_available": False, "acquisition_hash_verified": True}
+        check["restriction_check"]["outcomes_transferred"] = True
+        with self.assertRaisesRegex(ValueError, "RESTRICTION_FAILURE"):
+            r.checked_fields(check, self.packet, self.raw)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -34,6 +34,9 @@ def field(packet: dict, path: str) -> object:
     match = re.fullmatch(r"coverage\.([a-z_]+)", path)
     if match:
         return packet["coverage"][match[1]]
+    match = re.fullmatch(r"bibliographic_scope_facts\.(title|authors|whole_document_scope|edition|source_declared_relationship)", path)
+    if match:
+        return packet["bibliographic_scope_facts"][match[1]]
     raise ValueError("UNRELEASEABLE_FIELD:" + path)
 
 
@@ -47,20 +50,24 @@ def checked_fields(check: dict, packet: dict, packet_raw: bytes) -> list[dict]:
     if packet["review_id"] != check["review_id"]:
         raise ValueError("FOREIGN_WORK")
     mechanical = check["mechanical_check"]
+    restriction = check["restriction_check"]
+    eligibility = restriction.get("eligibility_judgments_transferred", restriction.get("eligibility_or_canonical_merge_transferred"))
+    if restriction.get("outcomes_transferred") is not False or eligibility is not False:
+        raise ValueError("RESTRICTION_FAILURE")
     if mechanical.get("raw_body_available") is False and mechanical.get("acquisition_hash_verified"):
         # An authenticated access gap must not become a scientific method fact.
         return []
     if (not mechanical.get("raw_hash_verified") or not mechanical.get("acquisition_hash_verified")
             or mechanical.get("provider_locator_mismatches")):
         raise ValueError("SOURCE_BINDING_NOT_VERIFIED")
-    if check["restriction_check"]["outcomes_transferred"] or check["restriction_check"]["eligibility_judgments_transferred"]:
-        raise ValueError("RESTRICTION_FAILURE")
     result = []
     seen = set()
     for row in check["per_fact"]:
         if row["decision"] != "APPROVE":
             continue
         path = row["field_path"]
+        if path in {"request_provenance", "exact_version_validation"}:
+            continue  # Retained in the exact checker receipt, not method prose.
         if path in seen:
             raise ValueError("DUPLICATE_APPROVAL")
         seen.add(path)
@@ -85,7 +92,18 @@ def build(checkpoint_path: Path, requests_path: Path | None = None) -> tuple[dic
     files = {"CHECKER_CHECKPOINT.json": checkpoint_raw}
     facts = []
     access_only = []
-    for rid, relative in sorted(checkpoint["latest_receipts"].items()):
+    latest = checkpoint.get("latest_receipts")
+    if latest is None:
+        latest = {}
+        for relative, pin in pins.items():
+            raw = (checkpoint_path.parent / relative).read_bytes()
+            if sha(raw) != pin:
+                raise ValueError("CHECKPOINT_FILE_CHANGED")
+            rid = json.loads(raw)["review_id"]
+            if rid in latest:
+                raise ValueError("AMBIGUOUS_LATEST_CHECKER_RECEIPT")
+            latest[rid] = relative
+    for rid, relative in sorted(latest.items()):
         raw = (checkpoint_path.parent / relative).read_bytes()
         if sha(raw) != pins[relative]:
             raise ValueError("CHECKPOINT_FILE_CHANGED")
@@ -113,8 +131,9 @@ def build(checkpoint_path: Path, requests_path: Path | None = None) -> tuple[dic
                           "source_identity": check["source_identity"],
                           "provider_packet_sha256": sha(packet_raw),
                           "checker_receipt": receipt_name, "checker_receipt_sha256": sha(raw),
-                          "coverage_disposition": check["actual_context_check"]["coverage_disposition"],
-                          "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY", **item})
+                          "coverage_disposition": check["actual_context_check"].get("coverage_disposition", "BIBLIOGRAPHIC_SCOPE_ONLY"),
+                          "release_status": ("CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY" if item["field_path"].startswith("bibliographic_scope_facts.")
+                                             else "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY"), **item})
     return {"schema": "A05_DEEP_CHECKED_METHOD_RELEASE_v1",
             "request_sha256": sha(requests_raw), "checkpoint_sha256": sha(checkpoint_raw),
             "released_by": "EXPOSED_CUSTODIAN_ROOT", "facts": facts, "access_only_records": access_only,
