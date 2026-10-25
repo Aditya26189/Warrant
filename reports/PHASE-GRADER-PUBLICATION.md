@@ -22,8 +22,18 @@ The documentation run then passed 87 tests but failed its count assertion. A sep
 
 [Decision G017](../experiments/grader_poc/DECISIONS.md) records the bounded repair before implementation. Numbered report discovery now explicitly identifies the numbered series, retaining its existing continuity and required-section checks. Named grader reports receive the existing non-stub check. An additional namespace check rejects unrecognized phase filenames, and a regression covers numerical sorting in the presence of a named report. Historical reports and scientific payloads remain unchanged. The existing inventory generator is the authority for updating README/Makefile counts after clean successful collection; collection is distinct from execution.
 
+## Final local publication gate
+
+The clean inventory source was `4b4cab88ef253523c3aef1cefa7556a6921cc4b2`. The existing generator successfully collected **2,287 tests**, updating the previous 2,279 claim: six named-report non-stub cases and two discovery checks were added. The [generated inventory](../results/test_inventory.json) records its source, command and collection hash. No core test was deleted, and the grader unit modules remain separate from this core collection.
+
+On clean `39af2b885f13`, the combined documentation, claim, numerical-prose and report checks executed **208 tests, all passing**. The exact command was `python -m pytest -q -o addopts=--strict-markers tests/test_docs_index.py tests/test_claims.py tests/test_readme_prose_numbers.py tests/test_reports.py`. Smoke again passed **7/7** and reported `dirty=False`. The experiment guide includes the explicit P2 unit module as well as the payments module. A final link/scope check resolved **177 relative links**, confirmed the publication's declared file scope, and found the historical evidence packets unchanged. Subsequent edits to this closing report record these results; they do not claim that the earlier test command ran against its own future report commit.
+
 ## What this does not establish; open items
 
 These publication checks do not establish production integration, customer demand, methodological novelty, independent human replication, or an advantage over manual assertion review and mutation testing. Those limits and the negative P2 comparison remain linked from the README. No upstream benchmark patch has been submitted. Core certification, statistical code and parallel B1 work are outside this phase.
 
 Full Harbor trials are retained historical evidence, not rerun by this documentation gate. Activation-cache reproduction is skipped, and the prior full-suite record names its own source commit. GitHub Actions must be inspected for the exact eventual main commit; a workflow file, a local focused pass or a test collection count does not establish remote CI success. Publication uses an ordinary non-force main update, preserving any newer remote history rather than replacing it.
+
+## Publication boundary after approval review
+
+Automatic approval review rejected publishing the full experimental branch because the user's explicit GitHub request covers the README, not the additional code/evidence/report payload. The rejected compound command did not run. This gate report and the experiment remain local. A separate branch based on remote main will publish only the README, preserve main's existing collection count, and label the latest experimental results as local. The earlier validation ledger remains a record of the local experimental tree, not validation of a published experimental package. No experimental branch or evidence packet is exported by that narrower push.

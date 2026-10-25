@@ -116,3 +116,8 @@ The user explicitly requests that the README be brought up to date and pushed to
 ## G017 - 2026-10-25: repair report discovery before main publication
 
 Publication checks exposed an integration failure: tests/test_reports.py assumes every PHASE-*.md name has a numeric suffix. Preserved PHASE-GRADER reports crash collection; the partial count2167 is not a replacement for the existing2279 inventory. Keep the numbered-series continuity and section contracts unchanged, explicitly classify named grader reports, and include those reports in the non-stub check. Add a discovery regression covering both namespaces and fail on unrecognized phase names rather than silently skipping them. Commit source and the publication report, regenerate the collection inventory with the existing clean-source script, then rerun affected checks. This extends G016 only to tests/test_reports.py and generated README/Makefile/test_inventory counts; no scientific artifact or core runtime change.
+
+
+## G018 - 2026-10-25: retain experiment locally; publish only the authorized README
+
+Automatic approval review rejected the attempted whole-branch main publication: the user's request clearly authorizes a README update, but not export of the additional experimental code, evidence and reports. No command in that rejected call executed. Preserve the validated experimental branch and closing report locally. Prepare a separate branch from remote main containing only a README change; keep its original main test inventory and identify the newer results as local, without links to unpublished files. Push only that documentation history through a normal non-force update. Do not publish the experimental branch or use another route to bypass the rejection.
