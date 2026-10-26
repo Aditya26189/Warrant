@@ -1,0 +1,13 @@
+{
+  "kind": "assistant_record_of_observed_setup_events_not_a_human_timesheet",
+  "recorded_session_start_utc": "2026-10-26T08:52:50+00:00",
+  "human_active_minutes": null,
+  "events": [
+    {"event": "Repository discovery", "detail": "Inherited root SPEC/TASKS/CONTRIBUTING paths were absent; applicable current documents were read under docs/."},
+    {"event": "Candidate-family rejection", "detail": "HumanEval b9453e8 README explicitly marks the repository deprecated/unmaintained. Retained as historical context; selected full EvalPlus data instead."},
+    {"event": "Initial WSL access", "status": "SANDBOX_ACCESS_DENIED", "detail": "Retried through the permission mechanism; no benchmark execution occurred."},
+    {"event": "Dependencies", "detail": "Existing Harbor environment lacked numpy/psutil. Created isolated temporary WSL venv with numpy2.2.6 and psutil7.0.0. No core package changes."},
+    {"event": "First calibration launch", "source_revision": "ecebcc3", "status": "PREFLIGHT_ERROR", "detail": "Linux git could not resolve the Windows C:/ gitdir pointer. Exit1 before output-directory creation or candidate execution. G021 reuses the existing WSL-aware git helper. Original exception was CalledProcessError for git status with exit128."},
+    {"event": "Second calibration launch", "source_revision": "7a7b68d47dbfdc08b6c314224b2723c1a836e359", "raw_directory": "grader-feasibility-run-002", "detail": "Full controller and per-worker receipts retained; no candidate or oracle changes between attempts."}
+  ]
+}
