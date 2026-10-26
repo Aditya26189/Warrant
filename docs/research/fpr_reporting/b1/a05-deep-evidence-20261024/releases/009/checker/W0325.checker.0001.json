@@ -1,0 +1,132 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0325",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T18:30:22.911925+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\additional-003\\W0325.language.0001.json",
+  "provider_packet_sha256": "fcc9a46e35444b56c9e66af9d8e720d46b85e89e81430f3559e5d416473e3f31",
+  "request_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\ADDITIONAL_SOURCE_REQUESTS_003.json",
+  "request_sha256": "d059c8d0421291b5e9a06d1b553b3720de4d84671a519b3a5be1c3b88bfb3499",
+  "requested_preferred_version": "arxiv:2610.04412v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q153-1.html",
+    "raw_sha256": "0966e3528c13cbc940b388aec1b7215f5b5fd89926faef47c4bd16ee0420cb30",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0379.json",
+    "acquisition_receipt_sha256": "b6a8f9536325906bae0f89ef67f8ba432057bad71ab61f81785bc7157c65b2da",
+    "captured_version_id": "arxiv:2610.04412v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "coverage_disposition": "BOUNDED_ADDITIONAL_CLARIFICATION_CHECKED",
+    "inspected_ranges": null,
+    "locators": [
+      {
+        "html_id": "Ch3.S3.I1.i4.p1.1",
+        "normalized_text_sha256": "caa7dbe3da56e86b792bdac00546ce752ff65d589e744514fa8a83a00167ffc5"
+      },
+      {
+        "html_id": "Ch3.S4.SS1.p1.1",
+        "normalized_text_sha256": "559b814b3266b1497ac569ec9eea9c9765bcae0b72488796407734cb981fec64"
+      },
+      {
+        "html_id": "Ch3.S4.SS1.p2.1",
+        "normalized_text_sha256": "dae58144029ae1ed61a0fa74d59aabad2365208a27f836279d4fac73d12819a9"
+      },
+      {
+        "html_id": "Ch3.S4.SS2.p2.1",
+        "normalized_text_sha256": "0b6eaa546fb2ac1095fe54e6a297502070c35a724f2888bb4e55b0c3f437f224"
+      },
+      {
+        "html_id": "Ch3.S4.SS3.p2.1",
+        "normalized_text_sha256": "5d312baae2d3149f61d18cc88e0ddcf676a2577a22d4c8698930e2e9cf21bebc"
+      },
+      {
+        "html_id": "Ch3.S4.SS3.p3.1",
+        "normalized_text_sha256": "c3bfbad932a2b7875fb8e50e2bee332eac21299cb7277ce5f8e78bfc57cebe55"
+      },
+      {
+        "html_id": "A3.T3.4.1",
+        "normalized_text_sha256": "bba76d4a5f2705e355740ffcd2a2c9003e809e0f7f9dba81af1890a381ece38d"
+      },
+      {
+        "html_id": "A3.T3.4.2",
+        "normalized_text_sha256": "822672d3b565084db09873acfb4b03689ef4de117637e693084b563a44ad79d4"
+      },
+      {
+        "html_id": "A3.T3.4.6",
+        "normalized_text_sha256": "f0ea42679d6a7f79e0e8bb9bba95b939deef58487680e8a3c14de1d5ef7e89b8"
+      },
+      {
+        "html_id": "A3.S6.SSx1.p2.1",
+        "normalized_text_sha256": "3b5400be2f2449548d6d44a7b0924cbdd3256c46ccab15f8341859c184a25d83"
+      },
+      {
+        "html_id": "A3.S6.SSx1.p4.1",
+        "normalized_text_sha256": "1efe91c1bd1deb3984e8f42d91229bc3634821997701c10fd39c840a1708e47a"
+      },
+      {
+        "html_id": "A3.S6.SSx2.p2.1",
+        "normalized_text_sha256": "18eadb1a51605144a8b74df4ff6d7c5b39f66f892a49a385411f3d69210a81e1"
+      },
+      {
+        "html_id": "A3.S6.SSx3.p2.1",
+        "normalized_text_sha256": "95e28458965796567c092feefa3427307dfd32b017e67ac1ac6fa777dd2c780d"
+      },
+      {
+        "html_id": "A3.S6.SSx3.p3",
+        "normalized_text_sha256": "8a7f3fc6165181dbd4289f1c640109d08310b8a1a80836921769848dbf2d3740"
+      }
+    ],
+    "locator_sha256": "2ec4c28bc3194613ecedfc28c95b2b37880f0f6560e6195f694d5afd03a24136",
+    "structural_receipts": [],
+    "semantic_rationale": "Independently read exact thesis construction paragraphs, template rows and individual detector procedures, including full SafeGuard prompt. English linkage is self-contained to the captured thesis and bounded to template-level evaluated construction."
+  },
+  "per_fact": [
+    {
+      "field_path": "bounded_method_data_facts[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual thesis Ch3.S3.I1.i4 explicitly links its crafted rhetorical variants to Appendix C.1; Ch3.S4.SS2.p2 describes copies with an opinion overwritten by sampled injection text. No cited-paper fact is imported.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bounded_method_data_facts[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual original thesis table A3.T3 rows .4.2 and .4.6 contain English imperative templates and explicit Test/Alignment labels, retaining policy insertion slots. This is template text, not proof of the filled slot language or every sampled record.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bounded_method_data_facts[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual Ch3.S4.SS3.p3 explicitly feeds individual opinion/injection training texts to GPT-OSS-SafeGuard. Appendix A3.S6 separately defines syntactic imperative rules, Qwen3Guard Jailbreak-category labeling and individual-text SafeGuard JSON violation decisions.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bounded_method_data_facts[3]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "The source itself supplies the construction-to-Appendix-template-to-individual-detector chain. Its English template component supports bounded evaluated construction, without certifying all opinion texts, substituted policy slots or complete evaluated records as English.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "input_unit_and_dependency",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual Appendix A3.S6.SSx1.p4, SSx2.p2 and SSx3.p2 plus prompt .p3 classify opinion/injection text individually. No protected consensus answer is an input to these decisions.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Adjacent source outcome/count prose was visible while inspecting methods; no such values or findings transferred.",
+      "Shared filesystem and operational-board access as previously disclosed; no scientific reviewer/human outcome files inspected."
+    ],
+    "checker_exposure": "Actual method/data context displayed adjacent source outcome and sample prose; all withheld. Shared filesystem; no freshness or OS-isolation claim. Operational exposure remains disclosed in ROLE.0001.json."
+  }
+}

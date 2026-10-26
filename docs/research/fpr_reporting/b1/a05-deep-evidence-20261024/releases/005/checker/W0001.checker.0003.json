@@ -1,0 +1,832 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0001",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T12:04:37.331024+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0001.provider.0002.json",
+  "provider_packet_sha256": "478b458b48f8c92cafad57d29223c6e307a882b1de0bf7d77a798b0e14ee4744",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "acl:2025.llmsec-1.2:publication",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\c5295e7a79688ae13a16a39169c490e6ff7e6bab98f0096de943af226fb87074",
+    "raw_sha256": "c5295e7a79688ae13a16a39169c490e6ff7e6bab98f0096de943af226fb87074",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0018.json",
+    "acquisition_receipt_sha256": "25bec0f5510bdab6007bf3df0ce9bd8a214d9d7e28c69f747c468e5d2f568a72",
+    "captured_version_id": null,
+    "version_state": "EXPLICIT_URL_ONLY_BODY_VERSION_UNCONFIRMED"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        3,
+        8
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "VERIFIED_DECLARED_METHOD_INVENTORY_LANGUAGE_UNRESOLVED",
+    "semantic_rationale": "Append-only correction resolves initial English HOLD; prior check remains preserved. Source method contexts unchanged; no complete-language assertion.",
+    "visual_check": {
+      "renderer": "PyMuPDF; Poppler absent",
+      "page_1_based": 6,
+      "purpose": "Confirm two-column ordering, reward equation context and absence of displayed generator template on method/setup page"
+    },
+    "locator_sha256": "ad77a148d60710bd7e9c1981dd362051789511921e08c41a2244f4bff005ccdf",
+    "locators": [
+      {
+        "page": 3,
+        "block": 0,
+        "bbox": [
+          70.85653686523438,
+          71.72454071044922,
+          290.9429626464844,
+          139.07037353515625
+        ],
+        "block_text_sha256": "1d0fcdd8119925ff6474bdc0e5c7a9985d04f66ff02309340ac72ab7c5d8044b"
+      },
+      {
+        "page": 3,
+        "block": 1,
+        "bbox": [
+          83.87618255615234,
+          150.3727569580078,
+          290.94854736328125,
+          245.210693359375
+        ],
+        "block_text_sha256": "eba052be5fcfc43ee57b522cb98e547a0fa6c29ddf0c0c641759887013d99f5e"
+      },
+      {
+        "page": 3,
+        "block": 2,
+        "bbox": [
+          83.87618255615234,
+          256.90679931640625,
+          290.9515075683594,
+          378.4513244628906
+        ],
+        "block_text_sha256": "1b1002ee6a8bb067feef5bebd911f1255f663b1b1cdeeb779d1ce10d8878e2d0"
+      },
+      {
+        "page": 3,
+        "block": 3,
+        "bbox": [
+          83.87618255615234,
+          390.1464538574219,
+          289.1376647949219,
+          498.1423034667969
+        ],
+        "block_text_sha256": "94eba0c79e0f6b67a7a885e9ab356db01d981668452dc1242a171a8d23c275d1"
+      },
+      {
+        "page": 3,
+        "block": 4,
+        "bbox": [
+          83.87618255615234,
+          509.83746337890625,
+          290.9512023925781,
+          563.6336059570312
+        ],
+        "block_text_sha256": "b756f5900aba3738c8cc6293f56845cd99bf140806a806ae5aff0900a346db7f"
+      },
+      {
+        "page": 3,
+        "block": 5,
+        "bbox": [
+          83.87618255615234,
+          575.3286743164062,
+          290.9513854980469,
+          696.8732299804688
+        ],
+        "block_text_sha256": "0d80247a22288a269fde29f1a7948ffb247e03108d4bb4cd22e54b78ac2b1923"
+      },
+      {
+        "page": 3,
+        "block": 6,
+        "bbox": [
+          70.85653686523438,
+          708.5693359375,
+          290.951904296875,
+          775.9141845703125
+        ],
+        "block_text_sha256": "241b0c5cad3f92baa1bb7c8ca8421c66b9825c43abc56d6579fdb3afb6462460"
+      },
+      {
+        "page": 3,
+        "block": 7,
+        "bbox": [
+          306.144287109375,
+          71.33179473876953,
+          526.234375,
+          166.16973876953125
+        ],
+        "block_text_sha256": "59da56dd0a0918a0c04c93e9c104871e58e6b9a673b1a8af913c1203ea5a08e5"
+      },
+      {
+        "page": 3,
+        "block": 8,
+        "bbox": [
+          306.144287109375,
+          180.14297485351562,
+          395.2388916015625,
+          195.6974639892578
+        ],
+        "block_text_sha256": "eef5aa539bb023d49a35fca80c1b52e7bac4265b8eab81e25eb4a6e3864f45dc"
+      },
+      {
+        "page": 3,
+        "block": 9,
+        "bbox": [
+          305.7842712402344,
+          205.852294921875,
+          526.3307495117188,
+          775.9141845703125
+        ],
+        "block_text_sha256": "60e5a08462af539383df12939459e0e0c5a68fcfd3149986a1962f9143bbcf8d"
+      },
+      {
+        "page": 3,
+        "block": 10,
+        "bbox": [
+          296.04400634765625,
+          781.2319946289062,
+          301.4985656738281,
+          794.37744140625
+        ],
+        "block_text_sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+      },
+      {
+        "page": 4,
+        "block": 0,
+        "bbox": [
+          70.49652099609375,
+          71.72454071044922,
+          291.0453186035156,
+          709.535888671875
+        ],
+        "block_text_sha256": "2c5dd132d195fc20c348f11e6af7966ab0f51ec1e3514c60869af5808a7149ae"
+      },
+      {
+        "page": 4,
+        "block": 1,
+        "bbox": [
+          70.85653686523438,
+          723.5091552734375,
+          179.23583984375,
+          739.0635986328125
+        ],
+        "block_text_sha256": "0c4e5908e11829bffa32cedc284121faca4f69184bbb1d0c0074c1c8e166d081"
+      },
+      {
+        "page": 4,
+        "block": 2,
+        "bbox": [
+          70.85653686523438,
+          749.2183837890625,
+          290.94293212890625,
+          775.9141845703125
+        ],
+        "block_text_sha256": "20cfeec680bbdf4dc7ec6ff706672595cf614b1a291015838784883a21e1efbb"
+      },
+      {
+        "page": 4,
+        "block": 3,
+        "bbox": [
+          305.7512512207031,
+          71.72454071044922,
+          526.33203125,
+          504.9166259765625
+        ],
+        "block_text_sha256": "a603de5604039aefc419a94fb034fd77d71682c7f7fb5afcc25bdbb85a16b49d"
+      },
+      {
+        "page": 4,
+        "block": 4,
+        "bbox": [
+          306.144287109375,
+          514.263916015625,
+          524.7019653320312,
+          542.007080078125
+        ],
+        "block_text_sha256": "cbec3e7b8df8731ba6469b8867a6083ec6e4b7c21dc5eddcd43a42538af26a34"
+      },
+      {
+        "page": 4,
+        "block": 5,
+        "bbox": [
+          305.7512512207031,
+          545.9702758789062,
+          526.3306884765625,
+          775.9141845703125
+        ],
+        "block_text_sha256": "eea5d401cc3b12440f123bdf8a44e193fdaa9e4dfd0e3373f9e6b2f5602bd242"
+      },
+      {
+        "page": 4,
+        "block": 6,
+        "bbox": [
+          293.3169860839844,
+          781.2319946289062,
+          304.2261047363281,
+          794.37744140625
+        ],
+        "block_text_sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5"
+      },
+      {
+        "page": 5,
+        "block": 1,
+        "bbox": [
+          70.85653686523438,
+          375.51129150390625,
+          525.6707763671875,
+          411.42901611328125
+        ],
+        "block_text_sha256": "e0a7a9d8b0b0d3914b29625dc788c734d4d8ff74c78b250dca4a3192f860993f"
+      },
+      {
+        "page": 5,
+        "block": 2,
+        "bbox": [
+          70.46351623535156,
+          449.607666015625,
+          207.19395446777344,
+          463.8011169433594
+        ],
+        "block_text_sha256": "65a23a53f3e3f3f28a873be6dc6fc67b4465c4eaf97c08387a92afeb8ac0532a"
+      },
+      {
+        "page": 5,
+        "block": 3,
+        "bbox": [
+          70.85653686523438,
+          466.04248046875,
+          290.8554992675781,
+          537.4873657226562
+        ],
+        "block_text_sha256": "7fc08421a12c681a4358faabb0c28486694230473d4bc5a5e092d39dcdf84dcf"
+      },
+      {
+        "page": 5,
+        "block": 4,
+        "bbox": [
+          70.85652160644531,
+          546.0703125,
+          289.451904296875,
+          753.4622192382812
+        ],
+        "block_text_sha256": "15a60891a4877cf475c3c9ec4a524de180cb7cad9eae4161e6810adc6045db41"
+      },
+      {
+        "page": 5,
+        "block": 5,
+        "bbox": [
+          305.8062744140625,
+          433.0215759277344,
+          526.3318481445312,
+          581.6664428710938
+        ],
+        "block_text_sha256": "a8770c852f979d9f33ecb7d1bbc32663bbe4286e3feb6e5f27b890225b8d84ad"
+      },
+      {
+        "page": 5,
+        "block": 6,
+        "bbox": [
+          306.144287109375,
+          593.9058837890625,
+          517.23486328125,
+          621.6490478515625
+        ],
+        "block_text_sha256": "9a73c42a8889588952e1831925b772db2e691a922ba3a1aebbcc9da26370c31c"
+      },
+      {
+        "page": 5,
+        "block": 7,
+        "bbox": [
+          305.87127685546875,
+          627.269287109375,
+          526.2384643554688,
+          775.9141845703125
+        ],
+        "block_text_sha256": "a7f32d23825e1848eb085d964f46693120ff8275379fbf9347fd6c3c53ea8ab3"
+      },
+      {
+        "page": 5,
+        "block": 8,
+        "bbox": [
+          293.3169860839844,
+          781.2319946289062,
+          304.2261047363281,
+          794.37744140625
+        ],
+        "block_text_sha256": "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8"
+      },
+      {
+        "page": 6,
+        "block": 0,
+        "bbox": [
+          70.85653686523438,
+          71.72454071044922,
+          290.9518127441406,
+          193.27008056640625
+        ],
+        "block_text_sha256": "cacdeb9593ae300fef9d981126f1d9fbe0442ae4433885ba924d027363daa690"
+      },
+      {
+        "page": 6,
+        "block": 1,
+        "bbox": [
+          70.85653686523438,
+          202.00428771972656,
+          222.2606201171875,
+          216.19772338867188
+        ],
+        "block_text_sha256": "33371fc1d0a2b5d8bc30ecabc97a343414d86ba5057667c6d43fd4f554ed1930"
+      },
+      {
+        "page": 6,
+        "block": 2,
+        "bbox": [
+          70.46351623535156,
+          219.87396240234375,
+          290.9487609863281,
+          531.1179809570312
+        ],
+        "block_text_sha256": "8a9465f9a5bbca62f2c3b372ae32d86504250b9ba15bcd2b49e850d15d023d4b"
+      },
+      {
+        "page": 6,
+        "block": 3,
+        "bbox": [
+          70.85653686523438,
+          539.8521728515625,
+          193.6118927001953,
+          554.045654296875
+        ],
+        "block_text_sha256": "194fd41e4337018584f3ab9cc2d37b45090abfc0e68cfde7489436c23599de7c"
+      },
+      {
+        "page": 6,
+        "block": 4,
+        "bbox": [
+          70.46351623535156,
+          557.3291015625,
+          291.04449462890625,
+          706.36669921875
+        ],
+        "block_text_sha256": "dcc46dbd81882e68a859d6fbd475a0631e18ff1d1228b44b7ba08722073aeac5"
+      },
+      {
+        "page": 6,
+        "block": 5,
+        "bbox": [
+          133.06964111328125,
+          726.0516967773438,
+          168.87107849121094,
+          744.9799194335938
+        ],
+        "block_text_sha256": "5fb7821ee48ba309122e4b7456f9434a475b58a9e4c30bd8058ba5f0f9e68572"
+      },
+      {
+        "page": 6,
+        "block": 6,
+        "bbox": [
+          173.09164428710938,
+          709.1201171875,
+          225.7279052734375,
+          736.8671875
+        ],
+        "block_text_sha256": "563e1bcdb14207ef9ad3bdfe8c103585030c1c15cfa6653945c67d612f909e8b"
+      },
+      {
+        "page": 6,
+        "block": 7,
+        "bbox": [
+          190.3155059814453,
+          724.4261474609375,
+          289.866455078125,
+          752.4633178710938
+        ],
+        "block_text_sha256": "b9bb3ff8a2ceabc1e524e01aced2d4a8aa800dbbb96329d1f28000ce53dc1b4d"
+      },
+      {
+        "page": 6,
+        "block": 8,
+        "bbox": [
+          70.85653686523438,
+          749.2183837890625,
+          289.1326599121094,
+          775.9141845703125
+        ],
+        "block_text_sha256": "1655d5ec57a44158d8f1ad203aa86d0a71fc522bee4d7504bb8cc4deaab84fdc"
+      },
+      {
+        "page": 6,
+        "block": 9,
+        "bbox": [
+          306.144287109375,
+          71.72454071044922,
+          524.4279174804688,
+          98.42034912109375
+        ],
+        "block_text_sha256": "ac473e90d50f2a42815163324c40c4e0cd140dcfdf86e693829fc6b2c0b5c31b"
+      },
+      {
+        "page": 6,
+        "block": 10,
+        "bbox": [
+          306.144287109375,
+          109.7974624633789,
+          452.4952392578125,
+          125.3519515991211
+        ],
+        "block_text_sha256": "7e3500710db3a5de164de4769f0036a6ad5f2133cd1d036dadfa3e2e9224ba51"
+      },
+      {
+        "page": 6,
+        "block": 11,
+        "bbox": [
+          305.7512512207031,
+          133.649658203125,
+          526.2382202148438,
+          255.19415283203125
+        ],
+        "block_text_sha256": "24a75cd66d90b5dc1b230ecfd071d274766146e801916dcc5aa21a42a891b714"
+      },
+      {
+        "page": 6,
+        "block": 12,
+        "bbox": [
+          306.144287109375,
+          266.19549560546875,
+          423.7283630371094,
+          280.3889465332031
+        ],
+        "block_text_sha256": "942fe355accab165efdcd9b0b8e51b67cf50a0bdc677e43375ada882645d60dc"
+      },
+      {
+        "page": 6,
+        "block": 13,
+        "bbox": [
+          305.6312561035156,
+          285.29925537109375,
+          526.2371215820312,
+          685.8709716796875
+        ],
+        "block_text_sha256": "708b650122ab86b3d55a0d821bc4910829d314c8a137cf34e81f1694fc796eab"
+      },
+      {
+        "page": 6,
+        "block": 14,
+        "bbox": [
+          306.144287109375,
+          689.4646606445312,
+          419.9754333496094,
+          703.6581420898438
+        ],
+        "block_text_sha256": "5f6bc96cd878ad4fdbe4960ea3ed7e74927f448db76a70ae69e48bd469eccf7d"
+      },
+      {
+        "page": 6,
+        "block": 15,
+        "bbox": [
+          305.8062744140625,
+          708.5693359375,
+          526.2384033203125,
+          775.9141845703125
+        ],
+        "block_text_sha256": "d4179ec75b5442303c6890cf62d6e95c796a425a811bc980776d90786e287716"
+      },
+      {
+        "page": 6,
+        "block": 16,
+        "bbox": [
+          293.3169860839844,
+          781.2319946289062,
+          304.2261047363281,
+          794.37744140625
+        ],
+        "block_text_sha256": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918"
+      },
+      {
+        "page": 7,
+        "block": 0,
+        "bbox": [
+          237.671875,
+          70.00900268554688,
+          357.2987365722656,
+          82.01453399658203
+        ],
+        "block_text_sha256": "8424834f4adc2a1b3e5ce5cd65cd05cd2958f12fbb08b7ad94661bb04aade501"
+      },
+      {
+        "page": 7,
+        "block": 1,
+        "bbox": [
+          70.85653686523438,
+          95.0569839477539,
+          505.9476623535156,
+          116.68531799316406
+        ],
+        "block_text_sha256": "c6aefe609ecba418fd2531b6376b056117a6423510bd0cf75a87b7fbf2e4c200"
+      },
+      {
+        "page": 7,
+        "block": 2,
+        "bbox": [
+          70.85653686523438,
+          120.78305053710938,
+          489.994140625,
+          171.44107055664062
+        ],
+        "block_text_sha256": "e183e72c304b5e464e0b262b4eb65be433a6a78262b93b210f176e4dc18d06a9"
+      },
+      {
+        "page": 7,
+        "block": 3,
+        "bbox": [
+          70.85653686523438,
+          195.46673583984375,
+          290.9453430175781,
+          330.56195068359375
+        ],
+        "block_text_sha256": "2dea948dd2a7011db010813ac68a450a2a4b643c34be90ccc91d1d035032f985"
+      },
+      {
+        "page": 7,
+        "block": 4,
+        "bbox": [
+          144.33419799804688,
+          341.3152160644531,
+          213.96401977539062,
+          359.94342041015625
+        ],
+        "block_text_sha256": "8d906fbb51532e3c95f2f782b30ff6aaf895920cc257104f3be019f6afd62fa1"
+      },
+      {
+        "page": 7,
+        "block": 5,
+        "bbox": [
+          186.16128540039062,
+          346.7972717285156,
+          289.866455078125,
+          368.2469482421875
+        ],
+        "block_text_sha256": "deeba6708fb3594749db1023e7436e3a2f16fbb1e40a8a55cec406d7baf1a19b"
+      },
+      {
+        "page": 7,
+        "block": 6,
+        "bbox": [
+          70.46351623535156,
+          370.6884765625,
+          289.1302490234375,
+          399.0303649902344
+        ],
+        "block_text_sha256": "eeb0d92e3fec8ffdab9452afcd56dd9cffdf23995915df00cc421a0516eb0e04"
+      },
+      {
+        "page": 7,
+        "block": 7,
+        "bbox": [
+          70.85652923583984,
+          406.1515197753906,
+          275.4342041015625,
+          420.344970703125
+        ],
+        "block_text_sha256": "8a36e7ed8512a9638b0d277043812bcbe1382e9ef6d53d389fbfb7dbad882087"
+      },
+      {
+        "page": 7,
+        "block": 8,
+        "bbox": [
+          70.85653686523438,
+          424.0211486816406,
+          291.0479431152344,
+          775.9141845703125
+        ],
+        "block_text_sha256": "6c7ce2c4cb353d2bbe7d2c733ef4dc7a23cd086876e6b329f9fd75b134a8c207"
+      },
+      {
+        "page": 7,
+        "block": 10,
+        "bbox": [
+          306.144287109375,
+          356.7893371582031,
+          526.0720825195312,
+          404.66265869140625
+        ],
+        "block_text_sha256": "8de5e6c50b6a1b7a0655c3749f60262baa1ab5ed02084de109125ff625da711b"
+      },
+      {
+        "page": 7,
+        "block": 11,
+        "bbox": [
+          306.144287109375,
+          433.7996520996094,
+          526.23486328125,
+          595.9942016601562
+        ],
+        "block_text_sha256": "d6fc913be98a80826c6abcd98aefa813ba4bb32f9f93363f4066de8a0aa3819b"
+      },
+      {
+        "page": 7,
+        "block": 12,
+        "bbox": [
+          305.3262634277344,
+          599.7772216796875,
+          526.3287353515625,
+          775.9141845703125
+        ],
+        "block_text_sha256": "9e5fdda4ad2fff76920163758d13c837c44e9bd01c6e071ab15dd61c227e4296"
+      },
+      {
+        "page": 7,
+        "block": 13,
+        "bbox": [
+          293.3169860839844,
+          781.2319946289062,
+          304.2261047363281,
+          794.37744140625
+        ],
+        "block_text_sha256": "3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278"
+      },
+      {
+        "page": 8,
+        "block": 0,
+        "bbox": [
+          70.54752349853516,
+          70.00900268554688,
+          524.4190673828125,
+          93.97016143798828
+        ],
+        "block_text_sha256": "2f295b007ae15fc8f67828b1f63ad8cf34304224172fc40c2e618e19e0822f78"
+      },
+      {
+        "page": 8,
+        "block": 1,
+        "bbox": [
+          70.85653686523438,
+          107.0125503540039,
+          477.03857421875,
+          128.6419219970703
+        ],
+        "block_text_sha256": "27ed9af4aa4fbe5a60cefb2e4bc688edb4f907685c9983e72b6b8a7ecc63f774"
+      },
+      {
+        "page": 8,
+        "block": 2,
+        "bbox": [
+          70.85653686523438,
+          132.73861694335938,
+          525.9146118164062,
+          233.21218872070312
+        ],
+        "block_text_sha256": "ed37567cae4ccd009c81e32895caff460d183cd9b71fb4f207fc608689b2c45d"
+      },
+      {
+        "page": 8,
+        "block": 3,
+        "bbox": [
+          70.49752807617188,
+          247.55191040039062,
+          524.4190673828125,
+          271.51300048828125
+        ],
+        "block_text_sha256": "31905bc4d2f28408fa8dfae728f960a9c10bf8f9136f163c4df7ba659e0e6f42"
+      },
+      {
+        "page": 8,
+        "block": 4,
+        "bbox": [
+          70.85653686523438,
+          284.5554504394531,
+          498.93402099609375,
+          296.2213439941406
+        ],
+        "block_text_sha256": "d063f7983c7e0b01394df14167ab526fe33ba010d8e7d2305f11b817cf7f3cff"
+      },
+      {
+        "page": 8,
+        "block": 5,
+        "bbox": [
+          70.85653686523438,
+          300.3190612792969,
+          414.2525939941406,
+          350.9770812988281
+        ],
+        "block_text_sha256": "29cfc7c1cda32d9646348ccf9e13cf8e18872d66c8bf021a4abdefd699bce697"
+      },
+      {
+        "page": 8,
+        "block": 7,
+        "bbox": [
+          70.85653686523438,
+          515.8272705078125,
+          290.7869567871094,
+          575.6552124023438
+        ],
+        "block_text_sha256": "66f716ca92f0fc53bf71b22b443bc7f2aa56dd2b09f64ebebd575a3a06af8bc6"
+      },
+      {
+        "page": 8,
+        "block": 9,
+        "bbox": [
+          70.85653686523438,
+          731.1309814453125,
+          289.1372375488281,
+          767.0477905273438
+        ],
+        "block_text_sha256": "4a1cf03d0f1cfd74a2673e514d1bc9140f4db9c1ec7f3dc5381c1b7bff99b503"
+      },
+      {
+        "page": 8,
+        "block": 10,
+        "bbox": [
+          305.7512512207031,
+          375.002685546875,
+          526.3353271484375,
+          673.321044921875
+        ],
+        "block_text_sha256": "a7b6f28d225fd5b0a6f8cf8ab7afe86aca43b3b8f69d311622af054e3e31a109"
+      },
+      {
+        "page": 8,
+        "block": 11,
+        "bbox": [
+          306.144287109375,
+          684.709228515625,
+          381.2147521972656,
+          700.263671875
+        ],
+        "block_text_sha256": "863d7c9dfaf05e14a31a02dd64634e39151ae65895013479c1ce2942dca62916"
+      },
+      {
+        "page": 8,
+        "block": 12,
+        "bbox": [
+          305.6312561035156,
+          708.1765747070312,
+          526.2349243164062,
+          775.9141845703125
+        ],
+        "block_text_sha256": "ca9ef0282113dc56736314216f9f89c2fcafaf882dda809182752d63cd0339c6"
+      },
+      {
+        "page": 8,
+        "block": 13,
+        "bbox": [
+          293.3169860839844,
+          781.2319946289062,
+          304.2261047363281,
+          794.37744140625
+        ],
+        "block_text_sha256": "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Unchanged source-supported MCTS/CoT/DPO method and response-scoring summary.",
+      "restriction_rationale": "Bounded method/data fact; no reported values, outcomes, sample counts or assurance claims."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Unchanged declared component-removal and Garak inventory supported by actual inspected methods/setup/ablation labels.",
+      "restriction_rationale": "Bounded method/data fact; no reported values, outcomes, sample counts or assurance claims."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Corrected .0002 now states unresolved evaluation language and does not infer English composition from technique labels.",
+      "restriction_rationale": "Bounded method/data fact; no reported values, outcomes, sample counts or assurance claims."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Declared original-method/setup inventory verified in the inspected main method, comparator and ablation contexts; this does not certify evaluation language.",
+      "restriction_rationale": "Coverage only; no performance, sample counts or eligibility state."
+    },
+    {
+      "field_path": "coverage.inspected_units",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mechanical source-locator hashes independently reproduce. Semantic inspection coverage is exclusively the actual_context_check spans, not automatic approval of the full provider-declared scope.",
+      "restriction_rationale": "Hash-only locator metadata; no raw method/results text or outcomes."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  },
+  "previous_checker_receipt_sha256": "ff10aed56e5e775b78584fde378bb21a991191fc3ea1e8f81059b2431a701989",
+  "append_only_addendum": "Explicit coverage-field decision added; prior per-fact checks preserved except stated supersession."
+}

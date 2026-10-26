@@ -1,0 +1,42 @@
+{
+  "git_packaging_reason": "Each committed file must remain below 10 MB; no scientific protocol/search/metadata changes",
+  "gzip_transport_validation": "PASS",
+  "historical_run_manifest": "SEMANTICALLY_UNCHANGED_FRAME_BLOCKED_AT_STORAGE_GUARD",
+  "manifest_serialization": "LF normalized before first commit; all fields unchanged; source HTTP bodies untouched",
+  "operation": "LOSSLESS_STORAGE_ONLY_NO_NEW_RETRIEVAL_OR_SCREENING",
+  "original_bytes": 42574037,
+  "original_file": "05-acl-bulk.body",
+  "original_raw_file": "RETAINED_UNCHANGED_LOCALLY_IGNORED_BY_GIT",
+  "original_sha256": "83b1de6eb8e9af0abd7106886ba7e6decbded519ff6d1259bbb94c8286fa6b5d",
+  "parts_in_concatenation_order": [
+    {
+      "bytes": 9000000,
+      "file": "05-acl-bulk.body.part01",
+      "sha256": "f837992b79888498768047c2dca97faa495f5b6b4296607a165e0406ecdca94e"
+    },
+    {
+      "bytes": 9000000,
+      "file": "05-acl-bulk.body.part02",
+      "sha256": "05e3d56449be3e3f67ed98f2467eed4756afd45bf0f02cf8560c25fd8eac950e"
+    },
+    {
+      "bytes": 9000000,
+      "file": "05-acl-bulk.body.part03",
+      "sha256": "a6fb0ad9f1878233b99ebb910798816c9025ef1a12712e70807747ce229e19d0"
+    },
+    {
+      "bytes": 9000000,
+      "file": "05-acl-bulk.body.part04",
+      "sha256": "88e365d0c10d8d88157567772fa71de137ef0959ade11aa79537416a91cb53f3"
+    },
+    {
+      "bytes": 6574037,
+      "file": "05-acl-bulk.body.part05",
+      "sha256": "051ba99d0ae150aa69cd424aa56351ff1215f2390a44636f75d8edc2c7fc70b2"
+    }
+  ],
+  "reassembly_verification": "BYTE_IDENTICAL_PASS",
+  "reconstruction": "Concatenate part files in the listed order; verify original_sha256 before use",
+  "recorded_utc": "2026-10-17T14:30:12.661556+00:00",
+  "selection_or_outcome_extraction": "NOT_RUN"
+}

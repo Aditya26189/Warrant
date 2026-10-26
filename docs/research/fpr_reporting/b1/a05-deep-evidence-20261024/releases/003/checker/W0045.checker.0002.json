@@ -1,0 +1,583 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0045",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T12:04:37.466725+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0045.provider.0001.json",
+  "provider_packet_sha256": "7f04b8469f7cd988c1dc5e607653bd0983fc938423ced2f36110595750f59420",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2505.03574v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q014-1.html",
+    "raw_sha256": "21e29ab1558e8f68df80b852a9712e8cef7a92edcb8c2b4e8bdba5cb9ba00d42",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0077.json",
+    "acquisition_receipt_sha256": "571c8d8d92ac9d3bc06f4faa0da9714a48b615afd9d7ae45727bbd440e80faee",
+    "captured_version_id": "arxiv:2505.03574v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        54,
+        77
+      ],
+      [
+        84,
+        89
+      ],
+      [
+        105,
+        134
+      ],
+      [
+        141,
+        149
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_COMPARATOR_INVENTORY",
+    "semantic_rationale": "Actually read main classifier/setup/trace/code methods and Appendix A.2/B.1/C.1. Figure-only comparator roster and full C.6 prompt remain unverified; no full-work absence or complete baseline claim.",
+    "locator_sha256": "899fb016cf3b29b40de70b2a5b64c0bce189192864e47d2e06e3eee3372da827",
+    "locators": [
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "section": "4.1 PromptGuard 2",
+        "sha256": "aa65266d7f214caa8d33b46ba14cedf02766daf9bf7270e3049d13e8f59ba957"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S4.SS1.p3.1",
+        "section": "4.1 PromptGuard 2",
+        "sha256": "c3fa6cc2cd5d0f645a42c6cb884ffef86bbe1584a024c67ba1869afed488c607"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S4.SS1.p4.1",
+        "section": "4.1 PromptGuard 2",
+        "sha256": "00908d6e90b7b4dd252991082518cb3b5f5cba6e20c222b1a9639c9c70dcd91f"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S4.SS1.p5.1",
+        "section": "4.1 PromptGuard 2",
+        "sha256": "abb006797b0ebf598db539bb1e0e6b049fe2fda79e637f086f854a7b4fa9f3a1"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S4.SS1.p6.1",
+        "section": "4.1 PromptGuard 2",
+        "sha256": "0eb1db373af720e053eba232b348991bdca9493c6a5ed6d517d7b21899c393bf"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "S4.I2.i1.p1.1",
+        "section": "4.1 PromptGuard 2",
+        "sha256": "8dd6489ca81c396d530de4df5272f4b84217f26877eab71dc239047941d83860"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "S4.I2.i2.p1.1",
+        "section": "4.1 PromptGuard 2",
+        "sha256": "4c7f2d56b4e22882dd31037eabc70b18aa3a7644cb38a2081d04efbaa8524376"
+      },
+      {
+        "n": 61,
+        "kind": "paragraph",
+        "id": "S4.SS1.p7",
+        "section": "4.1 PromptGuard 2",
+        "sha256": "c85e2a8f699d6d639fee83755cf436fc607cb374f2c978c88475051498b06aa3"
+      },
+      {
+        "n": 62,
+        "kind": "paragraph",
+        "id": "S4.SS1.p8.1",
+        "section": "4.1 PromptGuard 2",
+        "sha256": "549f767e8fa332fb7aacbc6ecd836f147a630c74a73528b4644c25a4cdeb74fa"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "S4.SS1.p9.1",
+        "section": "4.1 PromptGuard 2",
+        "sha256": "7f15fc2175255abc8449999339bd6e0c1bd0396b94208508c066eef6cd657316"
+      },
+      {
+        "n": 64,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 AlignmentCheck",
+        "sha256": "77c173f774e2647dff67e3d9a34a485af2c856733f7c612a372a66cf71b79740"
+      },
+      {
+        "n": 65,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "section": "4.2 AlignmentCheck",
+        "sha256": "eaf98bafcea094d3efb24780511ae7eaffde19e3eb0e52c05b2e2284b6a00aee"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "section": "4.2 AlignmentCheck",
+        "sha256": "267d4af2da8d1ac8200d5ff85655bc6b5a383991508d199d77fd79a7215fd577"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "S4.SS2.p3.1",
+        "section": "4.2 AlignmentCheck",
+        "sha256": "52cfb6fea4ea849adca204edc13dfae9d71495dff9626b510ad30b902bdb3719"
+      },
+      {
+        "n": 68,
+        "kind": "paragraph",
+        "id": "S4.SS2.p4.1",
+        "section": "4.2 AlignmentCheck",
+        "sha256": "fd32e1656bf23594a7f7a748750d13d74ccbf300411fe6309763daa8b9029671"
+      },
+      {
+        "n": 69,
+        "kind": "paragraph",
+        "id": "S4.SS2.p5.1",
+        "section": "4.2 AlignmentCheck",
+        "sha256": "e7893312225415a257fe5571f9fc6339ad01a64fe369469d3f6c3cfa81537654"
+      },
+      {
+        "n": 70,
+        "kind": "paragraph",
+        "id": "S4.SS2.p6.1",
+        "section": "4.2 AlignmentCheck",
+        "sha256": "f920db6840cc708339b861dece19b5ce945c71fd15b8863711dc840bd9a1f6ea"
+      },
+      {
+        "n": 71,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "section": "4.3 Evaluating Combined Prompt Injection Defenses with PromptGuard and AlignmentCheck",
+        "sha256": "2f447fb73272c18083daec2282ec3ef86dcb0fecd8d4750848b2179e153020fa"
+      },
+      {
+        "n": 72,
+        "kind": "heading",
+        "id": "S4.SS3.SSS1",
+        "section": "4.3.1 Experimental Setup",
+        "sha256": "2bf3824cd6ace48466ec37eb721a9f72aebfb98ba04a5f205a67b172c814dcab"
+      },
+      {
+        "n": 73,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS1.p1.1",
+        "section": "4.3.1 Experimental Setup",
+        "sha256": "0132ed78fa231d4e63b8c1b02e01481b1d6cbbf01245741fb4600a81027a6e87"
+      },
+      {
+        "n": 74,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS1.p2.1",
+        "section": "4.3.1 Experimental Setup",
+        "sha256": "48d60751922bb24361cee511d231dd082d41cc3ae8cca1210be5fe9f4fd74be2"
+      },
+      {
+        "n": 75,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS1.p3.1",
+        "section": "4.3.1 Experimental Setup",
+        "sha256": "47a6cbc1a76b7f71425f2e6d964dede8abf2ac8ad66669d7813a1dd4ce69a30d"
+      },
+      {
+        "n": 76,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS1.p4.1",
+        "section": "4.3.1 Experimental Setup",
+        "sha256": "7d0686cda8318e3276b2de4c1790222cd811ad54c15ec51f4f55703afbecbec6"
+      },
+      {
+        "n": 77,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS1.p5.1",
+        "section": "4.3.1 Experimental Setup",
+        "sha256": "09fc30f8a9d51968492aa810dd039ad84f21fdcefd4498f5739d4c8dd58be50b"
+      },
+      {
+        "n": 84,
+        "kind": "heading",
+        "id": "S4.SS4",
+        "section": "4.4 CodeShield",
+        "sha256": "9ffdadbcfb7da17613648dba18e3649097fb45d2fa1f6ccdafede90d843feccc"
+      },
+      {
+        "n": 85,
+        "kind": "paragraph",
+        "id": "S4.SS4.p1.1",
+        "section": "4.4 CodeShield",
+        "sha256": "d1619e5ea50317e6a6fb6bc027c719210689cb839053ad6a70ae30c6b69ebddf"
+      },
+      {
+        "n": 86,
+        "kind": "paragraph",
+        "id": "S4.SS4.p2.1",
+        "section": "4.4 CodeShield",
+        "sha256": "6d4f288cdb8fb979b41d6efa91385aff04ad6bf98f9b731f7ba120bd57943485"
+      },
+      {
+        "n": 87,
+        "kind": "paragraph",
+        "id": "S4.SS4.p3.1",
+        "section": "4.4 CodeShield",
+        "sha256": "a2e16739d57a806e7fc96bea9740f6a0bdef2759ef3a0335ecc99439860c660d"
+      },
+      {
+        "n": 88,
+        "kind": "paragraph",
+        "id": "S4.SS4.p4.1",
+        "section": "4.4 CodeShield",
+        "sha256": "4ac3cacc92d0ce273e480d1581d7de70a614c4a9b7e7dcec7af8f537275b4f42"
+      },
+      {
+        "n": 89,
+        "kind": "paragraph",
+        "id": "S4.SS4.p5.1",
+        "section": "4.4 CodeShield",
+        "sha256": "bf3837b21a07623328955b226adb14031dbc763df5eff7d0458ad3accc4e17df"
+      },
+      {
+        "n": 105,
+        "kind": "heading",
+        "id": "S1a",
+        "section": "A Prompt Injection Evaluation Dataset",
+        "sha256": "218f504f17b301c982b4806fd1ca03e469f9b5c15eeb7b399e7a82cec66a90f1"
+      },
+      {
+        "n": 106,
+        "kind": "heading",
+        "id": "S1.SS1",
+        "section": "A.1 Tool-use agentic prompt injection benchmark",
+        "sha256": "b86e6ed4e5169059ff8cfa88d19ebec98039b578671f69f868bcaaba0860131d"
+      },
+      {
+        "n": 107,
+        "kind": "paragraph",
+        "id": "S1.SS1.p1.1",
+        "section": "A.1 Tool-use agentic prompt injection benchmark",
+        "sha256": "0383d880cea4cd0a7a1d4acabc10432092fe605a2f7afb0f38e141e2abe7a64f"
+      },
+      {
+        "n": 108,
+        "kind": "paragraph",
+        "id": "S1.SS1.p2.1",
+        "section": "A.1 Tool-use agentic prompt injection benchmark",
+        "sha256": "97854569a8691d857ac2d2609945945f8cc40911a8938650a3cd89680530a3ba"
+      },
+      {
+        "n": 109,
+        "kind": "paragraph",
+        "id": "S1.SS1.p3.1",
+        "section": "A.1 Tool-use agentic prompt injection benchmark",
+        "sha256": "1b6d39c1f238363f4825b84bd7aa530309020b4c69e25268276b0544e84fc453"
+      },
+      {
+        "n": 110,
+        "kind": "paragraph",
+        "id": "S1.SS1.p4.1",
+        "section": "A.1 Tool-use agentic prompt injection benchmark",
+        "sha256": "4d0cc8f4147d8760ced23cde06ce80944601c2a43f623bcfb97ef8dda87acf18"
+      },
+      {
+        "n": 111,
+        "kind": "paragraph",
+        "id": "S1.SS1.p5.1",
+        "section": "A.1 Tool-use agentic prompt injection benchmark",
+        "sha256": "459d21b7b631c6a8363fc400bb7e71e8e134e0f566a44cce353844bc892ecaf8"
+      },
+      {
+        "n": 112,
+        "kind": "heading",
+        "id": "S1.SS2",
+        "section": "A.2 Direct Jailbreak Evaluation Dataset",
+        "sha256": "092ac51cbf64a40fa25280d5660ecc852d12791a76fc2690eb8aea39df8ce5ec"
+      },
+      {
+        "n": 113,
+        "kind": "paragraph",
+        "id": "S1.SS2.p1.1",
+        "section": "A.2 Direct Jailbreak Evaluation Dataset",
+        "sha256": "6e41acc04ca981b92d4a6986766e0af03b23d0fb960c76a89235f80586210a7b"
+      },
+      {
+        "n": 114,
+        "kind": "paragraph",
+        "id": "S1.SS2.p2.1",
+        "section": "A.2 Direct Jailbreak Evaluation Dataset",
+        "sha256": "255241b45a22029a4e7438829d4ea8331b7a944a885da1f3dd118714619b3fdc"
+      },
+      {
+        "n": 115,
+        "kind": "paragraph",
+        "id": "S1.SS2.p3.1",
+        "section": "A.2 Direct Jailbreak Evaluation Dataset",
+        "sha256": "ace926c1e2400cbf04614bfe580c356577ba199bf5eed35f4e7af2e08319d5ba"
+      },
+      {
+        "n": 116,
+        "kind": "paragraph",
+        "id": "S1.SS2.p4.1",
+        "section": "A.2 Direct Jailbreak Evaluation Dataset",
+        "sha256": "1f1c2ad2a28f156f5c36825ced9e20c69d725daf06ff9e6bac120fbeda813090"
+      },
+      {
+        "n": 117,
+        "kind": "paragraph",
+        "id": "S1.I1.i1a.p1.1",
+        "section": "A.2 Direct Jailbreak Evaluation Dataset",
+        "sha256": "08c8444ddaa21ade026106cd866f4ba35975fbb288a2ef31ce5188636cdd6915"
+      },
+      {
+        "n": 118,
+        "kind": "paragraph",
+        "id": "S1.I1.i2a.p1.1",
+        "section": "A.2 Direct Jailbreak Evaluation Dataset",
+        "sha256": "d0c842afc44b34365d509c046e2c950ea5aa7e53da667599a46bbd0e6ae885c3"
+      },
+      {
+        "n": 119,
+        "kind": "heading",
+        "id": "S2a",
+        "section": "B PromptGuard 2",
+        "sha256": "9fef4cc871f8eb4381c2fb739a6c5cf3fd88d51bf5b6fc389c8a6ac56c9e5efa"
+      },
+      {
+        "n": 120,
+        "kind": "heading",
+        "id": "S2.SS1a",
+        "section": "B.1 Development Methodology",
+        "sha256": "38dd76c9ec111aecd7ff782bf23c690f66ea7e245413f0fa4d09be42bed9a8da"
+      },
+      {
+        "n": 121,
+        "kind": "paragraph",
+        "id": "S2.SS1a.p1.1",
+        "section": "B.1 Development Methodology",
+        "sha256": "1c4a139aa8415e9250ee41557807788f61dba7e15762043121df7fa65afa56d4"
+      },
+      {
+        "n": 122,
+        "kind": "paragraph",
+        "id": "S2.SS1a.p2.1",
+        "section": "B.1 Development Methodology",
+        "sha256": "fc013c646777ab09f55228f80583de7d99f806852fc99702e4826d800a423402"
+      },
+      {
+        "n": 123,
+        "kind": "paragraph",
+        "id": "S2.SS1a.p3.1",
+        "section": "B.1 Development Methodology",
+        "sha256": "e9fd92ff9f48d6dd2ae245a13a640edcc99c982895a10a5cf055a80a8bc057a0"
+      },
+      {
+        "n": 124,
+        "kind": "paragraph",
+        "id": "S2.I1.i1.p1.1",
+        "section": "B.1 Development Methodology",
+        "sha256": "9dbf1a8c6b371052c4f63a40d36cdfb73afe4a02ba5fccb918e02e7c2bb88c89"
+      },
+      {
+        "n": 125,
+        "kind": "paragraph",
+        "id": "S2.I1.i2.p1.1",
+        "section": "B.1 Development Methodology",
+        "sha256": "c56c4c5b50edd92107b7df1f2ebb88fe3e6becc868705585c7299b1f14cc3575"
+      },
+      {
+        "n": 126,
+        "kind": "paragraph",
+        "id": "S2.I1.i3.p1.1",
+        "section": "B.1 Development Methodology",
+        "sha256": "e0424b148f24915bd35556dc6a6cf74c0b1ee277f146274474fb82cdd405cb94"
+      },
+      {
+        "n": 127,
+        "kind": "paragraph",
+        "id": "S2.SS1a.p5.1",
+        "section": "B.1 Development Methodology",
+        "sha256": "a7a21f2b6da60308e342c1645904bf752abf7986eb85674e09710ebe263966de"
+      },
+      {
+        "n": 128,
+        "kind": "paragraph",
+        "id": "S2.SS1a.p6.1",
+        "section": "B.1 Development Methodology",
+        "sha256": "0a93a3aecb0cf2a29fd2cd3d3b39812681c6b28f6db8c01d2d17a2a9b02530e2"
+      },
+      {
+        "n": 129,
+        "kind": "paragraph",
+        "id": "S2.I2.i1.p1.1",
+        "section": "B.1 Development Methodology",
+        "sha256": "f8a745313320c0536084b292506edbbe9b686457674ac32da093fc3dff2b60d6"
+      },
+      {
+        "n": 130,
+        "kind": "paragraph",
+        "id": "S2.I2.i2.p1.1",
+        "section": "B.1 Development Methodology",
+        "sha256": "66589d0496cc5e9d42433b1aec9e8cd491fa579e13a6c6ac8e37534a4af19d52"
+      },
+      {
+        "n": 131,
+        "kind": "paragraph",
+        "id": "S2.SS1a.p7.1",
+        "section": "B.1 Development Methodology",
+        "sha256": "fed18c4e70ae0da06a95317efa12356d9bb6b875d52864d845ab252177192397"
+      },
+      {
+        "n": 132,
+        "kind": "paragraph",
+        "id": "S2.SS1a.p8.1",
+        "section": "B.1 Development Methodology",
+        "sha256": "366da2d6b05c70151ba6afd1a9bcf50ef5aa1e3beadb26c1ff43d54383f63f96"
+      },
+      {
+        "n": 133,
+        "kind": "heading",
+        "id": "S2.SS2a",
+        "section": "B.2 Evaluating PromptGuard in an Agentic Environment",
+        "sha256": "5198e5a208ea1848d60e1c466c5a3cb3e7dc6bbcfaf023a2ae8743d93fc63dcc"
+      },
+      {
+        "n": 134,
+        "kind": "paragraph",
+        "id": "S2.SS2a.p1.1",
+        "section": "B.2 Evaluating PromptGuard in an Agentic Environment",
+        "sha256": "3cda931f99198fe6443ebf4bd05a82e0f7dbbc2fb8e1256ca122e4d4767f0a36"
+      },
+      {
+        "n": 141,
+        "kind": "paragraph",
+        "id": "S3.SS1a.p1.1",
+        "section": "C.1 Implementation Methodology",
+        "sha256": "120b491ca6dffb0e3c9371bcaef63b140925d4a7f8dda259e1fd8c1a9452911a"
+      },
+      {
+        "n": 142,
+        "kind": "heading",
+        "id": "S3.SS1.SSS1",
+        "section": "C.1.1 AlignmentCheck Input Structure",
+        "sha256": "6dcda47d177a1cc16da927efefe8de30a7f9bdfd387f0d25560b3f12426e6c30"
+      },
+      {
+        "n": 143,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p1.1",
+        "section": "C.1.1 AlignmentCheck Input Structure",
+        "sha256": "68f63c2f26a020fef95ffe7ffb2911946c1ba0b8e30ccdee40d3d70a4f5c6970"
+      },
+      {
+        "n": 144,
+        "kind": "paragraph",
+        "id": "S3.I1.i1a.p1.1",
+        "section": "C.1.1 AlignmentCheck Input Structure",
+        "sha256": "72b1551939f823bb52924e30d37e8a3109ac97266074ff0c6c540b28815a416b"
+      },
+      {
+        "n": 145,
+        "kind": "paragraph",
+        "id": "S3.I1.i2a.p1.1",
+        "section": "C.1.1 AlignmentCheck Input Structure",
+        "sha256": "9b8613926e66f1d8d24d36d248c05d3413b39e4cda9cdf0e4b335f342ef84667"
+      },
+      {
+        "n": 146,
+        "kind": "paragraph",
+        "id": "S3.I1.i3.p1.1",
+        "section": "C.1.1 AlignmentCheck Input Structure",
+        "sha256": "bbd51171d63d73a53042b74992682727f08ef759983e899b981aec8a5ccf63da"
+      },
+      {
+        "n": 147,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p1.2",
+        "section": "C.1.1 AlignmentCheck Input Structure",
+        "sha256": "715519e2c729bf50d74f1c9e550adf4b56a0baec6e8888b8c5d64e3d5eea9699"
+      },
+      {
+        "n": 148,
+        "kind": "heading",
+        "id": "S3.SS1.SSS2",
+        "section": "C.1.2 Prompt and Generalization",
+        "sha256": "612d42a1bb988626b10809168e6ff7d371070af9325e5fc44b2c85c09ed6891c"
+      },
+      {
+        "n": 149,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS2.p1.1",
+        "section": "C.1.2 Prompt and Generalization",
+        "sha256": "81a278d617843fe071cd4253e6a1225428073b96466f159a06bd31b362f83db9"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main and Appendix A/B/C distinguish input-message classifier, assistant-trace alignment and generated-code scanner; English direct adversarial subset explicitly stated in Appendix A.2.",
+      "restriction_rationale": "Bounded method/data fact; no reported performance, qualitative outcome, sample count or assurance claim."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Named PromptGuard variants are input classifiers with thresholded scores; direct scoring does not require original-task protected answers. Generic public comparator identities remain incomplete; no complete roster approval.",
+      "restriction_rationale": "Bounded method/data fact; no reported performance, qualitative outcome, sample count or assurance claim."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "AlignmentCheck explicitly consumes user goal, assistant trace and selected action. Combined trace flag uses either scanner; unguarded baseline stated.",
+      "restriction_rationale": "Bounded method/data fact; no reported performance, qualitative outcome, sample count or assurance claim."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "CodeShield uses rule/static analysis of generated code; its quoted efficacy is prior-work evaluation, which is not transferred.",
+      "restriction_rationale": "Bounded method/data fact; no reported performance, qualitative outcome, sample count or assurance claim."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions/partial inventory. Supported local method facts do not become proof of whole-work absence. Actual checker spans below are narrower where stated.",
+      "restriction_rationale": "Coverage only; no performance, sample counts or eligibility state."
+    },
+    {
+      "field_path": "source_receipts.locators",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mechanical source-locator hashes independently reproduce. Semantic inspection coverage is exclusively the actual_context_check spans, not automatic approval of the full provider-declared scope.",
+      "restriction_rationale": "Hash-only locator metadata; no raw method/results text or outcomes."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  },
+  "previous_checker_receipt_sha256": "c5a5e1d5bad45a84f313a179547d01e297250d507b07d8de8aaf62e1e8db5ac5",
+  "append_only_addendum": "Explicit coverage-field decision added; prior per-fact checks preserved except stated supersession."
+}

@@ -1,0 +1,1001 @@
+{
+  "access_only_records": [],
+  "checkpoint_sha256": "6266e5a1eab55c416bd7ec9b70ba37a05881fdde94077b06fed3938d4e91f113",
+  "facts": [
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0336.checker.0001.json",
+      "checker_receipt_sha256": "9aed0990da85a1e6f8606724f94ec2e13ab9de148e9c14277f1451e3bedfdea5",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0336-9aed0990da85-F01",
+      "field_path": "bibliographic_scope_facts.title",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5c2264a6c10021e7f8d1864c150d27a6ce9eee6dc505529ad7bedb724a2a8cdd",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0336",
+      "semantic_check": "Actual captured landing citation title and visually inspected PDF title header agree after ordinary whitespace normalization.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0336.json",
+          "acquisition_receipt_sha256": "de2053bcdb59e080e29d6c066baa524588ea5c1d2ccbd45a58fc349d0f380c6c",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\5d630bca4e61b845dda25af91c11fcbb74ef74d5a1ab73b471ecbfec646df137",
+            "sha256": "5d630bca4e61b845dda25af91c11fcbb74ef74d5a1ab73b471ecbfec646df137",
+            "status": 200,
+            "url": "https://doi.org/10.1007/978-3-031-80853-1_30",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0336.json",
+          "acquisition_receipt_sha256": "67b821992a6ec3b1ecdec26a4f86603d239f969a673101b293102d6bfc39b637",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+            "sha256": "ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+            "status": 200,
+            "url": "https://link.springer.com/content/pdf/10.1007/978-3-031-80853-1_30.pdf",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727"
+        }
+      ],
+      "value": "Prompt Injection Attacks in Defended Systems",
+      "value_sha256": "45fbb7d9f3f3d36802ca6f63b368d8573da7d596fb631a9ee2f68f049558318e",
+      "version": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+      "work_id": "doi:10.1007/978-3-031-80853-1_30"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0336.checker.0001.json",
+      "checker_receipt_sha256": "9aed0990da85a1e6f8606724f94ec2e13ab9de148e9c14277f1451e3bedfdea5",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0336-9aed0990da85-F02",
+      "field_path": "bibliographic_scope_facts.authors",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5c2264a6c10021e7f8d1864c150d27a6ce9eee6dc505529ad7bedb724a2a8cdd",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0336",
+      "semantic_check": "Actual landing author sequence and PDF header author lines were independently read; affiliations and corresponding-author marks are not part of the normalized names.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0336.json",
+          "acquisition_receipt_sha256": "de2053bcdb59e080e29d6c066baa524588ea5c1d2ccbd45a58fc349d0f380c6c",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\5d630bca4e61b845dda25af91c11fcbb74ef74d5a1ab73b471ecbfec646df137",
+            "sha256": "5d630bca4e61b845dda25af91c11fcbb74ef74d5a1ab73b471ecbfec646df137",
+            "status": 200,
+            "url": "https://doi.org/10.1007/978-3-031-80853-1_30",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0336.json",
+          "acquisition_receipt_sha256": "67b821992a6ec3b1ecdec26a4f86603d239f969a673101b293102d6bfc39b637",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+            "sha256": "ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+            "status": 200,
+            "url": "https://link.springer.com/content/pdf/10.1007/978-3-031-80853-1_30.pdf",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727"
+        }
+      ],
+      "value": [
+        "Daniil Khomsky",
+        "Narek Maloyan",
+        "Bulat Nutfullin"
+      ],
+      "value_sha256": "fe8e51e25d159d45b69418dfe5cbf16b8f64fcc5f6abba68a22431c662a17e3a",
+      "version": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+      "work_id": "doi:10.1007/978-3-031-80853-1_30"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0336.checker.0001.json",
+      "checker_receipt_sha256": "9aed0990da85a1e6f8606724f94ec2e13ab9de148e9c14277f1451e3bedfdea5",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0336-9aed0990da85-F03",
+      "field_path": "bibliographic_scope_facts.document_type",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5c2264a6c10021e7f8d1864c150d27a6ce9eee6dc505529ad7bedb724a2a8cdd",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0336",
+      "semantic_check": "Actual PDF page-one exclusive-license footer gives DCCN proceedings, LNCS volume, chapter pagination and DOI; captured landing identifies Conference paper and Springer, Cham.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0336.json",
+          "acquisition_receipt_sha256": "de2053bcdb59e080e29d6c066baa524588ea5c1d2ccbd45a58fc349d0f380c6c",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\5d630bca4e61b845dda25af91c11fcbb74ef74d5a1ab73b471ecbfec646df137",
+            "sha256": "5d630bca4e61b845dda25af91c11fcbb74ef74d5a1ab73b471ecbfec646df137",
+            "status": 200,
+            "url": "https://doi.org/10.1007/978-3-031-80853-1_30",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0336.json",
+          "acquisition_receipt_sha256": "67b821992a6ec3b1ecdec26a4f86603d239f969a673101b293102d6bfc39b637",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+            "sha256": "ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+            "status": 200,
+            "url": "https://link.springer.com/content/pdf/10.1007/978-3-031-80853-1_30.pdf",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727"
+        }
+      ],
+      "value": "Publisher-formatted conference proceedings chapter, DCCN 2024, LNCS 15460, pages404-416, Springer, Cham.",
+      "value_sha256": "c41ad216803eab25257ab5452602ebdb85cbfe3436a761aa3e129c3764c04573",
+      "version": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+      "work_id": "doi:10.1007/978-3-031-80853-1_30"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0336.checker.0001.json",
+      "checker_receipt_sha256": "9aed0990da85a1e6f8606724f94ec2e13ab9de148e9c14277f1451e3bedfdea5",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0336-9aed0990da85-F04",
+      "field_path": "bibliographic_scope_facts.declared_dates",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5c2264a6c10021e7f8d1864c150d27a6ce9eee6dc505529ad7bedb724a2a8cdd",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0336",
+      "semantic_check": "Captured landing First Online and Published fields both declare the stated February date; PDF footer supplies the copyright year. These are declared bibliographic dates rather than capture or PDF creation timestamps.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0336.json",
+          "acquisition_receipt_sha256": "de2053bcdb59e080e29d6c066baa524588ea5c1d2ccbd45a58fc349d0f380c6c",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\5d630bca4e61b845dda25af91c11fcbb74ef74d5a1ab73b471ecbfec646df137",
+            "sha256": "5d630bca4e61b845dda25af91c11fcbb74ef74d5a1ab73b471ecbfec646df137",
+            "status": 200,
+            "url": "https://doi.org/10.1007/978-3-031-80853-1_30",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0336.json",
+          "acquisition_receipt_sha256": "67b821992a6ec3b1ecdec26a4f86603d239f969a673101b293102d6bfc39b637",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+            "sha256": "ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+            "status": 200,
+            "url": "https://link.springer.com/content/pdf/10.1007/978-3-031-80853-1_30.pdf",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727"
+        }
+      ],
+      "value": {
+        "copyright_year": "2025",
+        "first_online": "2025-02-16",
+        "published": "2025-02-16"
+      },
+      "value_sha256": "bdeca08f40665a779233fed66dee809a3173256acf4a71b618100bb01ea2afa0",
+      "version": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+      "work_id": "doi:10.1007/978-3-031-80853-1_30"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0336.checker.0001.json",
+      "checker_receipt_sha256": "9aed0990da85a1e6f8606724f94ec2e13ab9de148e9c14277f1451e3bedfdea5",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0336-9aed0990da85-F05",
+      "field_path": "bibliographic_scope_facts.edition_statement",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5c2264a6c10021e7f8d1864c150d27a6ce9eee6dc505529ad7bedb724a2a8cdd",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0336",
+      "semantic_check": "Actual publisher formatting, DOI and license footer are checked. The inspected fields do not expressly label a version of record; no broader edition equivalence or final preferred-source decision is inferred.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0336.json",
+          "acquisition_receipt_sha256": "de2053bcdb59e080e29d6c066baa524588ea5c1d2ccbd45a58fc349d0f380c6c",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\5d630bca4e61b845dda25af91c11fcbb74ef74d5a1ab73b471ecbfec646df137",
+            "sha256": "5d630bca4e61b845dda25af91c11fcbb74ef74d5a1ab73b471ecbfec646df137",
+            "status": 200,
+            "url": "https://doi.org/10.1007/978-3-031-80853-1_30",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0336.json",
+          "acquisition_receipt_sha256": "67b821992a6ec3b1ecdec26a4f86603d239f969a673101b293102d6bfc39b637",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+            "sha256": "ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+            "status": 200,
+            "url": "https://link.springer.com/content/pdf/10.1007/978-3-031-80853-1_30.pdf",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727"
+        }
+      ],
+      "value": "PDF has publisher chapter pagination, DOI and exclusive-license copyright footer. Inspected metadata does not explicitly name a version of record; no scholarly-edition equivalence inferred from DOI alone.",
+      "value_sha256": "65f4495f93e3d332220e30f2957a7f7a65a4762bb13cb64e085e8f7f728f331c",
+      "version": "doi:10.1007/978-3-031-80853-1_30:publisher-capture:sha256-ee98a0a911d3abeb1f0f662da80453596cb55458b513f72c16702e140b263727",
+      "work_id": "doi:10.1007/978-3-031-80853-1_30"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0337.checker.0001.json",
+      "checker_receipt_sha256": "dc26d63dff90c0bcce4fd92139c93d2525a62c6f51727b0a470888de6be44a4a",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0337-dc26d63dff90-F01",
+      "field_path": "bibliographic_scope_facts.title",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5f49a062fcd08ba07f80bd1fb407e3f55e010a508519eb8fdcbae233e94f76c6",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0337",
+      "semantic_check": "Actual captured landing citation title and visually inspected PDF title header agree after ordinary whitespace normalization.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0337.json",
+          "acquisition_receipt_sha256": "adb99240eab7fbfc17cec1050acfb62a942ffa63627f565be5b270002a5ff5e3",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+            "sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+            "status": 200,
+            "url": "https://doi.org/10.1007/s44443-026-01200-9",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0337.json",
+          "acquisition_receipt_sha256": "b08848bf33a3847240029d884e19ff74b0a75bed900ac4a55728bf3fb590b339",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+            "sha256": "767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+            "status": 200,
+            "url": "https://link.springer.com/content/pdf/10.1007/s44443-026-01200-9.pdf",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+        }
+      ],
+      "value": "Data security in large language models: risks, defense, and directions",
+      "value_sha256": "d463d036ab6a311513e18196cc695cfbad93a2d18b5eb6fb545688900becc461",
+      "version": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+      "work_id": "doi:10.1007/s44443-026-01200-9"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0337.checker.0001.json",
+      "checker_receipt_sha256": "dc26d63dff90c0bcce4fd92139c93d2525a62c6f51727b0a470888de6be44a4a",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0337-dc26d63dff90-F02",
+      "field_path": "bibliographic_scope_facts.authors",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5f49a062fcd08ba07f80bd1fb407e3f55e010a508519eb8fdcbae233e94f76c6",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0337",
+      "semantic_check": "Actual landing author sequence and PDF header author lines were independently read; affiliations and corresponding-author marks are not part of the normalized names.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0337.json",
+          "acquisition_receipt_sha256": "adb99240eab7fbfc17cec1050acfb62a942ffa63627f565be5b270002a5ff5e3",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+            "sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+            "status": 200,
+            "url": "https://doi.org/10.1007/s44443-026-01200-9",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0337.json",
+          "acquisition_receipt_sha256": "b08848bf33a3847240029d884e19ff74b0a75bed900ac4a55728bf3fb590b339",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+            "sha256": "767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+            "status": 200,
+            "url": "https://link.springer.com/content/pdf/10.1007/s44443-026-01200-9.pdf",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+        }
+      ],
+      "value": [
+        "Kang Chen",
+        "Xiuze Zhou",
+        "Yuanhui Yu",
+        "Yuanguo Lin",
+        "Hefeng Chen",
+        "Congyu Cai",
+        "Li Shen"
+      ],
+      "value_sha256": "a55f0e78e0dee4c41cb4d59f82a1d1aac3d427419709dc363cb5ad2689f90bea",
+      "version": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+      "work_id": "doi:10.1007/s44443-026-01200-9"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0337.checker.0001.json",
+      "checker_receipt_sha256": "dc26d63dff90c0bcce4fd92139c93d2525a62c6f51727b0a470888de6be44a4a",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0337-dc26d63dff90-F03",
+      "field_path": "bibliographic_scope_facts.document_type",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5f49a062fcd08ba07f80bd1fb407e3f55e010a508519eb8fdcbae233e94f76c6",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0337",
+      "semantic_check": "Actual PDF header says REVIEW and names journal, volume and article; landing citation metadata supplies issue and publisher. Review is a source document-type label only.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0337.json",
+          "acquisition_receipt_sha256": "adb99240eab7fbfc17cec1050acfb62a942ffa63627f565be5b270002a5ff5e3",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+            "sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+            "status": 200,
+            "url": "https://doi.org/10.1007/s44443-026-01200-9",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0337.json",
+          "acquisition_receipt_sha256": "b08848bf33a3847240029d884e19ff74b0a75bed900ac4a55728bf3fb590b339",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+            "sha256": "767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+            "status": 200,
+            "url": "https://link.springer.com/content/pdf/10.1007/s44443-026-01200-9.pdf",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+        }
+      ],
+      "value": "Review; Journal of King Saud University Computer and Information Sciences, volume38, issue7, article768; Springer.",
+      "value_sha256": "195e9d2b7742d3706b991453a6bc02d15d58598da8b9a46d7d8e10d1ca724494",
+      "version": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+      "work_id": "doi:10.1007/s44443-026-01200-9"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0337.checker.0001.json",
+      "checker_receipt_sha256": "dc26d63dff90c0bcce4fd92139c93d2525a62c6f51727b0a470888de6be44a4a",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0337-dc26d63dff90-F04",
+      "field_path": "bibliographic_scope_facts.declared_dates",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5f49a062fcd08ba07f80bd1fb407e3f55e010a508519eb8fdcbae233e94f76c6",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0337",
+      "semantic_check": "Actual PDF header gives received/accepted dates, and landing history separately labels Published and Version of record in August. Citation publication metadata specifies the September issue month; those date types remain distinct.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0337.json",
+          "acquisition_receipt_sha256": "adb99240eab7fbfc17cec1050acfb62a942ffa63627f565be5b270002a5ff5e3",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+            "sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+            "status": 200,
+            "url": "https://doi.org/10.1007/s44443-026-01200-9",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0337.json",
+          "acquisition_receipt_sha256": "b08848bf33a3847240029d884e19ff74b0a75bed900ac4a55728bf3fb590b339",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+            "sha256": "767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+            "status": 200,
+            "url": "https://link.springer.com/content/pdf/10.1007/s44443-026-01200-9.pdf",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+        }
+      ],
+      "value": {
+        "accepted": "2026-08-02",
+        "citation_issue_month": "2026-09",
+        "published": "2026-08-25",
+        "received": "2026-03-08",
+        "version_of_record": "2026-08-25"
+      },
+      "value_sha256": "7f3719d00745b8a5cf074f05fda05d8aa6e6bfba1c17e2cb66776d878a7a33c2",
+      "version": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+      "work_id": "doi:10.1007/s44443-026-01200-9"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0337.checker.0001.json",
+      "checker_receipt_sha256": "dc26d63dff90c0bcce4fd92139c93d2525a62c6f51727b0a470888de6be44a4a",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0337-dc26d63dff90-F05",
+      "field_path": "bibliographic_scope_facts.edition_statement",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5f49a062fcd08ba07f80bd1fb407e3f55e010a508519eb8fdcbae233e94f76c6",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0337",
+      "semantic_check": "The captured landing bibliographic history literally labels Version of record, supporting the bounded edition statement. This is not inferred from DOI existence or a PDF transport timestamp.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0337.json",
+          "acquisition_receipt_sha256": "adb99240eab7fbfc17cec1050acfb62a942ffa63627f565be5b270002a5ff5e3",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+            "sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+            "status": 200,
+            "url": "https://doi.org/10.1007/s44443-026-01200-9",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0337.json",
+          "acquisition_receipt_sha256": "b08848bf33a3847240029d884e19ff74b0a75bed900ac4a55728bf3fb590b339",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+            "sha256": "767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+            "status": 200,
+            "url": "https://link.springer.com/content/pdf/10.1007/s44443-026-01200-9.pdf",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+        }
+      ],
+      "value": "Landing bibliographic history explicitly labels version of record dated25August2026; PDF header separately identifies REVIEW and received/accepted history. Issue-month metadata is September2026.",
+      "value_sha256": "26e2a49c80df40b46758ba5ddb9a1a6d3df65f6f366edd6d6263e5c42f792c07",
+      "version": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+      "work_id": "doi:10.1007/s44443-026-01200-9"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0371.checker.0001.json",
+      "checker_receipt_sha256": "7b4cbca0a0fb1cf51fe0b8875553ed0b5aa6c2923b7867d8c02a6f2362e6f045",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0371-7b4cbca0a0fb-F01",
+      "field_path": "bibliographic_scope_facts.title",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "f52c4d1e49b5fe15d49c80812827f847072262bfd15736df3db780fb1c989330",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0371",
+      "semantic_check": "Actual captured landing citation title and visually inspected PDF title header agree after ordinary whitespace normalization.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0371.json",
+          "acquisition_receipt_sha256": "c9c2da2e7b10693b0668aab1ada1e9ac7897db8c02df53298e17cb902349e565",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+            "sha256": "4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+            "status": 200,
+            "url": "https://doi.org/10.63336/eureka.46",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0371.json",
+          "acquisition_receipt_sha256": "b0a3a771598c1c11b2db8b4f651d96e648770a0a180c10c9f1be3ebfe7c24f14",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+            "sha256": "3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+            "status": 200,
+            "url": "https://scinexor.com/Eureka/article/id/46/download/pdf/",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88"
+        }
+      ],
+      "value": "Securing Large Language Models: Addressing Bias, Misinformation, and Prompt Attacks",
+      "value_sha256": "30a346133ad7ad93366a852b5521a00763ce64db7354d49ddcb50c460fbf376d",
+      "version": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+      "work_id": "doi:10.63336/eureka.46"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0371.checker.0001.json",
+      "checker_receipt_sha256": "7b4cbca0a0fb1cf51fe0b8875553ed0b5aa6c2923b7867d8c02a6f2362e6f045",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0371-7b4cbca0a0fb-F02",
+      "field_path": "bibliographic_scope_facts.authors",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "f52c4d1e49b5fe15d49c80812827f847072262bfd15736df3db780fb1c989330",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0371",
+      "semantic_check": "Actual landing author sequence and PDF header author lines were independently read; affiliations and corresponding-author marks are not part of the normalized names.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0371.json",
+          "acquisition_receipt_sha256": "c9c2da2e7b10693b0668aab1ada1e9ac7897db8c02df53298e17cb902349e565",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+            "sha256": "4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+            "status": 200,
+            "url": "https://doi.org/10.63336/eureka.46",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0371.json",
+          "acquisition_receipt_sha256": "b0a3a771598c1c11b2db8b4f651d96e648770a0a180c10c9f1be3ebfe7c24f14",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+            "sha256": "3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+            "status": 200,
+            "url": "https://scinexor.com/Eureka/article/id/46/download/pdf/",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88"
+        }
+      ],
+      "value": [
+        "Benji Peng",
+        "Hanxuan Chen",
+        "Keyu Chen",
+        "Ming Li",
+        "Pohsun Feng",
+        "Ziqian Bi",
+        "Junyu Liu",
+        "Xinyuan Song",
+        "Qian Niu",
+        "Riyang Bao",
+        "Jiacheng Shi"
+      ],
+      "value_sha256": "b9bc2fda34c442a1eebc8e56b01eb92224d60a4b81dff15443e1d69043481dd3",
+      "version": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+      "work_id": "doi:10.63336/eureka.46"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0371.checker.0001.json",
+      "checker_receipt_sha256": "7b4cbca0a0fb1cf51fe0b8875553ed0b5aa6c2923b7867d8c02a6f2362e6f045",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0371-7b4cbca0a0fb-F03",
+      "field_path": "bibliographic_scope_facts.document_type",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "f52c4d1e49b5fe15d49c80812827f847072262bfd15736df3db780fb1c989330",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0371",
+      "semantic_check": "Actual PDF journal header supplies Eureka year, volume, issue and pagination; captured landing metadata names ScineXor. Publisher-formatted journal-article description is supported by these observed fields.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0371.json",
+          "acquisition_receipt_sha256": "c9c2da2e7b10693b0668aab1ada1e9ac7897db8c02df53298e17cb902349e565",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+            "sha256": "4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+            "status": 200,
+            "url": "https://doi.org/10.63336/eureka.46",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0371.json",
+          "acquisition_receipt_sha256": "b0a3a771598c1c11b2db8b4f651d96e648770a0a180c10c9f1be3ebfe7c24f14",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+            "sha256": "3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+            "status": 200,
+            "url": "https://scinexor.com/Eureka/article/id/46/download/pdf/",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88"
+        }
+      ],
+      "value": "Publisher-formatted journal article; Eureka (2026),1(2):9-39; ScineXor.",
+      "value_sha256": "c8f2ae0e57e233a1a53948298432d61309b606d278e3b43da11bc712f33602a7",
+      "version": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+      "work_id": "doi:10.63336/eureka.46"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0371.checker.0001.json",
+      "checker_receipt_sha256": "7b4cbca0a0fb1cf51fe0b8875553ed0b5aa6c2923b7867d8c02a6f2362e6f045",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0371-7b4cbca0a0fb-F04",
+      "field_path": "bibliographic_scope_facts.declared_dates",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "f52c4d1e49b5fe15d49c80812827f847072262bfd15736df3db780fb1c989330",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0371",
+      "semantic_check": "Actual PDF first-page submitted/accepted/published history was independently read and visually checked; publication metadata agrees. No HTTP or PDF file timestamp is substituted for publication history.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0371.json",
+          "acquisition_receipt_sha256": "c9c2da2e7b10693b0668aab1ada1e9ac7897db8c02df53298e17cb902349e565",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+            "sha256": "4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+            "status": 200,
+            "url": "https://doi.org/10.63336/eureka.46",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0371.json",
+          "acquisition_receipt_sha256": "b0a3a771598c1c11b2db8b4f651d96e648770a0a180c10c9f1be3ebfe7c24f14",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+            "sha256": "3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+            "status": 200,
+            "url": "https://scinexor.com/Eureka/article/id/46/download/pdf/",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88"
+        }
+      ],
+      "value": {
+        "accepted": "2026-03-25",
+        "published": "2026-05-30",
+        "submitted": "2026-03-05"
+      },
+      "value_sha256": "5b708e2cff0098bebec3b7ee88d699260bef772710cb8c57e3f3786cc721c0a9",
+      "version": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+      "work_id": "doi:10.63336/eureka.46"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0371.checker.0001.json",
+      "checker_receipt_sha256": "7b4cbca0a0fb1cf51fe0b8875553ed0b5aa6c2923b7867d8c02a6f2362e6f045",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0371-7b4cbca0a0fb-F05",
+      "field_path": "bibliographic_scope_facts.edition_statement",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "f52c4d1e49b5fe15d49c80812827f847072262bfd15736df3db780fb1c989330",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0371",
+      "semantic_check": "The observed journal header/history and landing metadata support the bounded statement. No explicit scholarly-edition label is established by the inspected fields; later notices and article body were not reviewed for this request.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0371.json",
+          "acquisition_receipt_sha256": "c9c2da2e7b10693b0668aab1ada1e9ac7897db8c02df53298e17cb902349e565",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+            "sha256": "4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+            "status": 200,
+            "url": "https://doi.org/10.63336/eureka.46",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0371.json",
+          "acquisition_receipt_sha256": "b0a3a771598c1c11b2db8b4f651d96e648770a0a180c10c9f1be3ebfe7c24f14",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+            "sha256": "3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+            "status": 200,
+            "url": "https://scinexor.com/Eureka/article/id/46/download/pdf/",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88"
+        }
+      ],
+      "value": "PDF journal header and submitted/accepted/published notice match landing citation metadata. No explicit version-of-record/accepted-manuscript/corrigendum label is supplied by the inspected header fields.",
+      "value_sha256": "921282b3c2c82545d553fef06eb709565a60243e67f2ef7d6f9b76c529149b2f",
+      "version": "doi:10.63336/eureka.46:publisher-capture:sha256-3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+      "work_id": "doi:10.63336/eureka.46"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0372.checker.0001.json",
+      "checker_receipt_sha256": "0724c0bf090f8285e5afbe1d170aa1795bb583450b185cefdd0442b3d3b10965",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0372-0724c0bf090f-F01",
+      "field_path": "bibliographic_scope_facts.title",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5cd947dc51a016fc0058b3474d76a219976ca275561f1d94288cc799c0f12cbb",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0372",
+      "semantic_check": "Actual captured landing citation title and visually inspected PDF title header agree after ordinary whitespace normalization.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0372.json",
+          "acquisition_receipt_sha256": "25e0f730b7e221a23456d96286a8afff6551fd2dfb6915f10f4add8604505f37",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\37ccc654aa391eab48882e7862b1fdfa5a8ad7cf4c475e5659f2591632a74e88",
+            "sha256": "37ccc654aa391eab48882e7862b1fdfa5a8ad7cf4c475e5659f2591632a74e88",
+            "status": 200,
+            "url": "https://doi.org/10.63336/eureka.47",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0372.json",
+          "acquisition_receipt_sha256": "cbec709e3a93ef612d82e2d60255db3528578dd5d3d82616951a0572bac46458",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+            "sha256": "0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+            "status": 200,
+            "url": "https://scinexor.com/Eureka/article/id/47/download/pdf/",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628"
+        }
+      ],
+      "value": "Jailbreaking and Mitigation of Vulnerabilities in Large Language Models",
+      "value_sha256": "d47ae7fffab3aeebb35f7bfe82de73d5b0ac930e035e910ed9503826a742e31a",
+      "version": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+      "work_id": "doi:10.63336/eureka.47"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0372.checker.0001.json",
+      "checker_receipt_sha256": "0724c0bf090f8285e5afbe1d170aa1795bb583450b185cefdd0442b3d3b10965",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0372-0724c0bf090f-F02",
+      "field_path": "bibliographic_scope_facts.authors",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5cd947dc51a016fc0058b3474d76a219976ca275561f1d94288cc799c0f12cbb",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0372",
+      "semantic_check": "Actual landing author sequence and PDF header author lines were independently read; affiliations and corresponding-author marks are not part of the normalized names.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0372.json",
+          "acquisition_receipt_sha256": "25e0f730b7e221a23456d96286a8afff6551fd2dfb6915f10f4add8604505f37",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\37ccc654aa391eab48882e7862b1fdfa5a8ad7cf4c475e5659f2591632a74e88",
+            "sha256": "37ccc654aa391eab48882e7862b1fdfa5a8ad7cf4c475e5659f2591632a74e88",
+            "status": 200,
+            "url": "https://doi.org/10.63336/eureka.47",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0372.json",
+          "acquisition_receipt_sha256": "cbec709e3a93ef612d82e2d60255db3528578dd5d3d82616951a0572bac46458",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+            "sha256": "0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+            "status": 200,
+            "url": "https://scinexor.com/Eureka/article/id/47/download/pdf/",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628"
+        }
+      ],
+      "value": [
+        "Benji Peng",
+        "Hanxuan Chen",
+        "Keyu Chen",
+        "Qian Niu",
+        "Ziqian Bi",
+        "Ming Liu",
+        "Pohsun Feng",
+        "Tianyang Wang",
+        "Lawrence K.Q. Yan",
+        "Yizhu Wen",
+        "Yichao Zhang",
+        "Caitlyn Heqi Yin",
+        "Xinyuan Song",
+        "Riyang Bao",
+        "Jiacheng Shi"
+      ],
+      "value_sha256": "03d73fdc89a7af693464264b2d2f674ef3a9de973f53ed4b0b1959b2a0503685",
+      "version": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+      "work_id": "doi:10.63336/eureka.47"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0372.checker.0001.json",
+      "checker_receipt_sha256": "0724c0bf090f8285e5afbe1d170aa1795bb583450b185cefdd0442b3d3b10965",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0372-0724c0bf090f-F03",
+      "field_path": "bibliographic_scope_facts.document_type",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5cd947dc51a016fc0058b3474d76a219976ca275561f1d94288cc799c0f12cbb",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0372",
+      "semantic_check": "Actual PDF journal header supplies Eureka year, volume, issue and pagination; captured landing metadata names ScineXor. Publisher-formatted journal-article description is supported by these observed fields.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0372.json",
+          "acquisition_receipt_sha256": "25e0f730b7e221a23456d96286a8afff6551fd2dfb6915f10f4add8604505f37",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\37ccc654aa391eab48882e7862b1fdfa5a8ad7cf4c475e5659f2591632a74e88",
+            "sha256": "37ccc654aa391eab48882e7862b1fdfa5a8ad7cf4c475e5659f2591632a74e88",
+            "status": 200,
+            "url": "https://doi.org/10.63336/eureka.47",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0372.json",
+          "acquisition_receipt_sha256": "cbec709e3a93ef612d82e2d60255db3528578dd5d3d82616951a0572bac46458",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+            "sha256": "0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+            "status": 200,
+            "url": "https://scinexor.com/Eureka/article/id/47/download/pdf/",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628"
+        }
+      ],
+      "value": "Publisher-formatted journal article; Eureka (2026),1(1):26-62; ScineXor.",
+      "value_sha256": "1c9031bb603a8ef5d8ebed170e8a3bc02e35fa7a9d72999f73ca7e6b860e6d21",
+      "version": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+      "work_id": "doi:10.63336/eureka.47"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0372.checker.0001.json",
+      "checker_receipt_sha256": "0724c0bf090f8285e5afbe1d170aa1795bb583450b185cefdd0442b3d3b10965",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0372-0724c0bf090f-F04",
+      "field_path": "bibliographic_scope_facts.declared_dates",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5cd947dc51a016fc0058b3474d76a219976ca275561f1d94288cc799c0f12cbb",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0372",
+      "semantic_check": "Actual PDF first-page submitted/accepted/published history was independently read and visually checked; publication metadata agrees. No HTTP or PDF file timestamp is substituted for publication history.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0372.json",
+          "acquisition_receipt_sha256": "25e0f730b7e221a23456d96286a8afff6551fd2dfb6915f10f4add8604505f37",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\37ccc654aa391eab48882e7862b1fdfa5a8ad7cf4c475e5659f2591632a74e88",
+            "sha256": "37ccc654aa391eab48882e7862b1fdfa5a8ad7cf4c475e5659f2591632a74e88",
+            "status": 200,
+            "url": "https://doi.org/10.63336/eureka.47",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0372.json",
+          "acquisition_receipt_sha256": "cbec709e3a93ef612d82e2d60255db3528578dd5d3d82616951a0572bac46458",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+            "sha256": "0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+            "status": 200,
+            "url": "https://scinexor.com/Eureka/article/id/47/download/pdf/",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628"
+        }
+      ],
+      "value": {
+        "accepted": "2026-03-25",
+        "published": "2026-03-31",
+        "submitted": "2026-03-05"
+      },
+      "value_sha256": "9b0a6865e3840a9998b44d742a562bfb342863856055bf2ccb90ac6836083f6d",
+      "version": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+      "work_id": "doi:10.63336/eureka.47"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0372.checker.0001.json",
+      "checker_receipt_sha256": "0724c0bf090f8285e5afbe1d170aa1795bb583450b185cefdd0442b3d3b10965",
+      "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+      "evidence_id": "A05-DEEP-W0372-0724c0bf090f-F05",
+      "field_path": "bibliographic_scope_facts.edition_statement",
+      "provider_actor": "codex-a05-deep-provider-b-20261024",
+      "provider_packet_sha256": "5cd947dc51a016fc0058b3474d76a219976ca275561f1d94288cc799c0f12cbb",
+      "release_status": "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0372",
+      "semantic_check": "The observed journal header/history and landing metadata support the bounded statement. No explicit scholarly-edition label is established by the inspected fields; later notices and article body were not reviewed for this request.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0372.json",
+          "acquisition_receipt_sha256": "25e0f730b7e221a23456d96286a8afff6551fd2dfb6915f10f4add8604505f37",
+          "body": {
+            "kind": "HTML",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\37ccc654aa391eab48882e7862b1fdfa5a8ad7cf4c475e5659f2591632a74e88",
+            "sha256": "37ccc654aa391eab48882e7862b1fdfa5a8ad7cf4c475e5659f2591632a74e88",
+            "status": 200,
+            "url": "https://doi.org/10.63336/eureka.47",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0372.json",
+          "acquisition_receipt_sha256": "cbec709e3a93ef612d82e2d60255db3528578dd5d3d82616951a0572bac46458",
+          "body": {
+            "kind": "PDF",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+            "sha256": "0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+            "status": 200,
+            "url": "https://scinexor.com/Eureka/article/id/47/download/pdf/",
+            "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+          },
+          "captured_version_id": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628"
+        }
+      ],
+      "value": "PDF journal header and submitted/accepted/published notice match landing citation metadata. No explicit version-of-record/accepted-manuscript/corrigendum label is supplied by the inspected header fields.",
+      "value_sha256": "921282b3c2c82545d553fef06eb709565a60243e67f2ef7d6f9b76c529149b2f",
+      "version": "doi:10.63336/eureka.47:publisher-capture:sha256-0635dcf470f6f1836955286bd9f64e001b817c5711b0dc8651c30de25ca73628",
+      "work_id": "doi:10.63336/eureka.47"
+    }
+  ],
+  "limits": [
+    "Only individually approved fields are released. Held fields and unapproved coverage are not evidence.",
+    "Requested version is retained; source identity/binding limits must be assessed separately.",
+    "Actual source-role separation on shared filesystem; no fresh independent final eligibility review.",
+    "No outcomes, sample/false-positive counts, assurance classes, draw, assignment or B2."
+  ],
+  "released_by": "EXPOSED_CUSTODIAN_ROOT",
+  "request_sha256": "f47c662aca1ecc25cddcd0fbffc75bb2dd82d75bbfd1a9562e30be229dd8acba",
+  "schema": "A05_DEEP_CHECKED_METHOD_RELEASE_v1",
+  "source_files": {
+    "CHECKER_CHECKPOINT.json": "6266e5a1eab55c416bd7ec9b70ba37a05881fdde94077b06fed3938d4e91f113",
+    "checker/W0336.checker.0001.json": "9aed0990da85a1e6f8606724f94ec2e13ab9de148e9c14277f1451e3bedfdea5",
+    "checker/W0337.checker.0001.json": "dc26d63dff90c0bcce4fd92139c93d2525a62c6f51727b0a470888de6be44a4a",
+    "checker/W0371.checker.0001.json": "7b4cbca0a0fb1cf51fe0b8875553ed0b5aa6c2923b7867d8c02a6f2362e6f045",
+    "checker/W0372.checker.0001.json": "0724c0bf090f8285e5afbe1d170aa1795bb583450b185cefdd0442b3d3b10965"
+  },
+  "source_git_commit": "782123d6ea0da80b17edfe74f22264abcffb7de2"
+}

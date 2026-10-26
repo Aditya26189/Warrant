@@ -1,0 +1,612 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0075",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T18:22:07.760031+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0075.provider.0001.json",
+  "provider_packet_sha256": "fcf605860508ebd5ca706a3ebe6ade2a264509e677d2cd8d5de4fb45294852c2",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2508.19461v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\90c0e4cbabc118ff0c13849683596d0d69862fca860b12630724106cd001dc03",
+    "raw_sha256": "90c0e4cbabc118ff0c13849683596d0d69862fca860b12630724106cd001dc03",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0115.json",
+    "acquisition_receipt_sha256": "8099e1bcbe87cded378987bcc168ded73a716976f4c7c65be46f6b95db43a52d",
+    "captured_version_id": "arxiv:2508.19461v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        28,
+        67
+      ],
+      [
+        79,
+        91
+      ],
+      [
+        120,
+        124
+      ],
+      [
+        187,
+        212
+      ],
+      [
+        233,
+        235
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actual main methods28-67 and setup79-91 specify paired benign main/harmful side tasks, agent and monitor awareness, trajectory hijacking, deceptive explanations and visible/hidden reasoning. Monitors assess generated actions and reasoning rather than the original user request alone. False correctly preserves uninspected Appendix A/B variants and remaining human-interface details. The human-escalation family named in the packet is independently confirmed by additional setup120-124 and instructions235, but exact prompts and corpus-wide evaluated language remain unverified. No whole-work absence follows.",
+    "locator_sha256": "f24d8d67e0eb0512e982ac63464c7abedc637c3fec9160898516773610475664",
+    "locators": [
+      {
+        "n": 28,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "sha256": "a4dd6a887b8a4b00d837df0b01798b06e05da4649c113fd7964aae76d77e59bd"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "sha256": "7f69492e5684a721a0a5e07179bbc100940debf9bc0ef6738a0fb1a5012a8dc2"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.1",
+        "sha256": "4b819de0f2e3027fb1783cde3276f958b567e89e87076b93f0deb1c03c0979ff"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S3.SS1.p3.1",
+        "sha256": "fccf75066e885f4316d2bbf8b791026e741f9ad7d7b4ea312d1e269580f65a92"
+      },
+      {
+        "n": 32,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "sha256": "9ee0aae83f510019fd1314912957cfdec90f061560844dbe0fa890294f45d797"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.1",
+        "sha256": "a176a7c5dd1c7e40b4a09ebb68ebf3f4c31a43d73a99563ce845c97b28f1ee26"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S3.SS2.p2.1",
+        "sha256": "e5ef31d4a96aff3626ab8fee2f3b27cd73f3dcf4cd2ca7c7dacbce9413b7aec3"
+      },
+      {
+        "n": 35,
+        "kind": "heading",
+        "id": "S3.SS2.SSS0.Px1",
+        "sha256": "c3cf87cc3384e23b1fae6607d3bbf9b987f2b9760a5936465698e60311cd199c"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px1.p1.1",
+        "sha256": "2497d32db2ee7700f07f8e34b498663cbebab203d3e1d1a7664efbf7a6d4766a"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S3.I1.i1.p1.1",
+        "sha256": "37766109ebee160baac823e2893e1dbbe93c722c49fd111e9b2dcbe00977610a"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S3.I1.i2.p1.1",
+        "sha256": "afedabf0653a4bdd5e23a2073dc38503286bcd7b67755179eb85e692f394052a"
+      },
+      {
+        "n": 39,
+        "kind": "heading",
+        "id": "S3.SS2.SSS0.Px2",
+        "sha256": "3377c0761b61c162c1ac4e40ae3c5edd96615b76202979b6a043319369e7a341"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px2.p1.1",
+        "sha256": "ef73a7045f33e2ca50f3013eefc7f92602df67bc81d923732a7f8f0b08e8edbd"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S3.I2.i1.p1.1",
+        "sha256": "7ba4e4116d9c7b56e7778823381b57d64ebcf0c2ebad945cedb3137b2172e622"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S3.I2.i2.p1.1",
+        "sha256": "6a0e480b0dd138e9882318dc4f7347ef7409623ae296a127aa516af4f7f08c8c"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S3.I2.i3.p1.1",
+        "sha256": "0420c0ccec3cd2ba4463a9ea0b5dc26b338a13ad720ccee303cab391d93c8347"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px2.p3.1",
+        "sha256": "9ddbef76d726c20e4bae6acb1133b4cb84cc775fc7f694f9375391a2256e7f98"
+      },
+      {
+        "n": 45,
+        "kind": "heading",
+        "id": "S3.SS3",
+        "sha256": "5c42c543f54ff23cb10299e33f36b6d14cdaa052fe3de1658bc48b8e0c257c23"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S3.SS3.p1.1",
+        "sha256": "ad398eb4de024f5a60e58cf5ea8f354665ce5905d11f41540f19a7c8ace04256"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S3.I3.i1.p1.1",
+        "sha256": "0c9edf1501d43b565d7c1cf1770e8b729eec4cb4d0e0bcc54f407e3bda37fb9c"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S3.I3.i2.p1.1",
+        "sha256": "c85fc738a69ba3e150ae67e6eeeef268bf98850a0751d4d7be6145a495b776a9"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S3.I3.i3.p1.1",
+        "sha256": "ee1a1b53c8b3abc5b7e7ff512a2912be40066fe389b18b80a513c5e2ca21ba97"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S3.I3.i4.p1.1",
+        "sha256": "aff6c1ac65e834412e8bfe70ac4e3c1a5da4e7901db223378b46c3ce02d90dd3"
+      },
+      {
+        "n": 51,
+        "kind": "heading",
+        "id": "S3.SS3.SSS0.Px1",
+        "sha256": "912ec13249fd954e70f56740a89832e4a2c058a904d7fa317311d1d665734c8a"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS0.Px1.p1.1",
+        "sha256": "5b851e8c90c914f9af513467fe6103c1936b6ed4b9298d1cbb81f6832a06b637"
+      },
+      {
+        "n": 53,
+        "kind": "heading",
+        "id": "S3.SS4",
+        "sha256": "ccdb52d3fabd4ad58288c8896cca465b6112f6cbf8fca0b54509c45daf930934"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S3.SS4.p1.1",
+        "sha256": "1e6b47f63fd5ae5569cb52b9f4e282f0bb639a657f27f4b6e8ff6e0fb69b7308"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S3.I4.i1.p1.1",
+        "sha256": "94de6fa2308ddd4174ec9be3fbb4d716a9c0d1968954087a370c064c891fe3b1"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S3.I4.i2.p1.1",
+        "sha256": "e7e0b565d5708243bd861e9d103388fdc4d994ce474acca5cc395516bf02c7ae"
+      },
+      {
+        "n": 57,
+        "kind": "heading",
+        "id": "S3.SS5",
+        "sha256": "91f789005fc6d4388cd95642bd79376b3c5a63db3c9e451a4e8c62c3a54718c5"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S3.SS5.p1.1",
+        "sha256": "c42c9fd474c2d8f1ea2fb175ca10fad93090b7a512a9ecd8a24526fb191bff40"
+      },
+      {
+        "n": 59,
+        "kind": "heading",
+        "id": "S3.SS5.SSS0.Px1",
+        "sha256": "98e27e079bb0cd9a1632ea67e0f619b4ab23fdf78ef23068c9b0041f6c9a99bb"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "S3.SS5.SSS0.Px1.p1.1",
+        "sha256": "4eadb0dc8f029750aa6b5a534cc2adfa1bab0f19027b3a7e62590493763d9cee"
+      },
+      {
+        "n": 61,
+        "kind": "heading",
+        "id": "S3.SS5.SSS0.Px2",
+        "sha256": "5981197406adea5bfd68cc9af5ce86c7bdd51f6f4255fd80d28d1eb4ca221469"
+      },
+      {
+        "n": 62,
+        "kind": "paragraph",
+        "id": "S3.SS5.SSS0.Px2.p1.1",
+        "sha256": "8a3477a96c110c477dac4b03f10a5e68e7ee73ff35491a4fe49d9f54359b1b8f"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "S3.SS5.SSS0.Px2.p2.1",
+        "sha256": "c2adaa215aa467fbbe58a457dacc97480ed5bf7f065b16b6f9be897e706d7c71"
+      },
+      {
+        "n": 64,
+        "kind": "heading",
+        "id": "S3.SS5.SSS0.Px3",
+        "sha256": "080c6af48a0d3e54aaf72f0f1463e513005ed6afccd3c2e8a8fb87cd5aa5552e"
+      },
+      {
+        "n": 65,
+        "kind": "paragraph",
+        "id": "S3.SS5.SSS0.Px3.p1.1",
+        "sha256": "670c965382373c4b0e510982f8350eb408f8a1e5384bfb58728e2c3c98296f7a"
+      },
+      {
+        "n": 66,
+        "kind": "heading",
+        "id": "S3.SS5.SSS0.Px4",
+        "sha256": "5f38fbf0d02a3de259881a714594f176927a155e587330364f1a905bc56b76ca"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "S3.SS5.SSS0.Px4.p1.1",
+        "sha256": "4213b3dc6316f6ac3f756eea76ef22d54401d6690aebfb3c8ab7e7b4c5874c05"
+      },
+      {
+        "n": 79,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "sha256": "7e4dd78c498a76cf77a49d637086c6cad4718ec82660c56a502c8a34d2b34b55"
+      },
+      {
+        "n": 80,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px1",
+        "sha256": "e3cceb400ca6a2c2b685194c8dca196e7c719893704d63b9d3339401fde84f31"
+      },
+      {
+        "n": 81,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px1.p1.1",
+        "sha256": "680e396d4f6e2bdd971195542487881f6ee8af7a1a05da9770722d12b1e95351"
+      },
+      {
+        "n": 82,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px1.p2",
+        "sha256": "320bf2a541c47df4b2755e41ba69456ed53bb50b4a59be6e885e7e15afbf144f"
+      },
+      {
+        "n": 83,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px1.p3.1",
+        "sha256": "c3c318a9a8846f49d761ac49111d9ccda8efe6d46870255d649f32e2e9a6b8bb"
+      },
+      {
+        "n": 84,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px2",
+        "sha256": "1187f6eab2baa6fc1e8684d08ade904d53837d8da04f121c15dcb6169e441983"
+      },
+      {
+        "n": 85,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px2.p1.1",
+        "sha256": "1e78e9c26d16a56dbea34ca9d8a401f01275885e7691832f97e05b254afc7af1"
+      },
+      {
+        "n": 86,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px3",
+        "sha256": "c84b18d4b5ac2c208b99bd5dcc580f19d424084ec567c7907dc5da989f4e3547"
+      },
+      {
+        "n": 87,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px3.p1.1",
+        "sha256": "24415b146a33a393553868975c61e162f55f2f3849ee55b5e0c7d7da419d686c"
+      },
+      {
+        "n": 88,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px4",
+        "sha256": "6363574f5ebe57a65e345bdda42904cbcf271b51d7bedb0d5cc56195266bfe14"
+      },
+      {
+        "n": 89,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px4.p1.1",
+        "sha256": "ca7535d45b8ab1cd075f6b0643bded84611df54a85c1c54f524edea00ea662ad"
+      },
+      {
+        "n": 90,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px5",
+        "sha256": "1920154dfb43c4e2bfd68fe28372cda6f65dd513d0f08cef30d4051c7ae65bd7"
+      },
+      {
+        "n": 91,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px5.p1.1",
+        "sha256": "00097f76e5d63ae479467b0c8546470525ae7842049c5b89ff17f6b652662271"
+      },
+      {
+        "n": 120,
+        "kind": "paragraph",
+        "id": "S4.SS5.p1.1",
+        "sha256": "178df02f272ef01cc4a6f3afd4b850d8f8d327b86088b629d012ca047c834d33"
+      },
+      {
+        "n": 121,
+        "kind": "heading",
+        "id": "S4.SS5.SSS0.Px1",
+        "sha256": "b1e6dbc181ac270aeb8bda0282ac34e4fac03bd718258d6490244255aac47414"
+      },
+      {
+        "n": 122,
+        "kind": "paragraph",
+        "id": "S4.SS5.SSS0.Px1.p1.1",
+        "sha256": "d85733f197651d5fea552b81d6415ad8962be1125ff95aa7853a6f79c301c4a1"
+      },
+      {
+        "n": 123,
+        "kind": "heading",
+        "id": "S4.SS5.SSS0.Px2",
+        "sha256": "017d4ff6fee1d61246f6aeab4fb1ae55a4c233d82cb854334094b975ac70bfde"
+      },
+      {
+        "n": 124,
+        "kind": "paragraph",
+        "id": "S4.SS5.SSS0.Px2.p1.1",
+        "sha256": "5ca56fc3e7ee769a4bdb3126a863a09d6782d8cd76e29a7595b9aed6de9b41c8"
+      },
+      {
+        "n": 187,
+        "kind": "heading",
+        "id": "A3",
+        "sha256": "2cd1550cd37f14b76ac6ead357e59b91c65ffbdc28613d0d25b1ecb409f217ca"
+      },
+      {
+        "n": 188,
+        "kind": "heading",
+        "id": "A3.SS1",
+        "sha256": "12e9f906f53af53893fe98a873cc51eb59a14c4abd808fcc9586ed1ef388c4d6"
+      },
+      {
+        "n": 189,
+        "kind": "paragraph",
+        "id": "A3.SS1.p1.1",
+        "sha256": "5a178f23d661f48b3896a5b5fbc4d8cbe8195d0e8822e32ee89bd92431902fef"
+      },
+      {
+        "n": 190,
+        "kind": "paragraph",
+        "id": "A3.SS1.p2",
+        "sha256": "3e9a70bb9ac79580ef8b044ff0cb22520c725f4ca02f1c5666076f4912b4baa3"
+      },
+      {
+        "n": 191,
+        "kind": "heading",
+        "id": "A3.SS2",
+        "sha256": "1c41524fab0c046f72105ca89004c5149918a9aefce98b9791b974a735c914a7"
+      },
+      {
+        "n": 192,
+        "kind": "paragraph",
+        "id": "A3.SS2.p1.1",
+        "sha256": "393820ebf0c1cfd34d14f9a025df6971863919cad80fdf7ddda3fb376ff4ebd8"
+      },
+      {
+        "n": 193,
+        "kind": "paragraph",
+        "id": "A3.SS2.p2",
+        "sha256": "b2b4cfc0f2c45f2a95aaa78d85b35bad381b497fbcff189355af70dc1955f6a2"
+      },
+      {
+        "n": 194,
+        "kind": "heading",
+        "id": "A3.SS3",
+        "sha256": "447f3d7608e8e1a2255a64750314dfe6ac49f5a5d5e86672190b4fac56e178f0"
+      },
+      {
+        "n": 195,
+        "kind": "paragraph",
+        "id": "A3.SS3.p1.1",
+        "sha256": "41c3d486b6d2ae837562f1321cb3fe4eef254d5699289ff411da8720fa55287b"
+      },
+      {
+        "n": 196,
+        "kind": "paragraph",
+        "id": "A3.SS3.p2",
+        "sha256": "87b78315d21e1489a36a125b9e2dbec41a9e19e4c5cbdc2a3295dda6b25b48e5"
+      },
+      {
+        "n": 197,
+        "kind": "heading",
+        "id": "A3.SS4",
+        "sha256": "0f7c0c8f767c8e454039a27bc3464db8715909dc9a755d0087c585661cac9f1c"
+      },
+      {
+        "n": 198,
+        "kind": "paragraph",
+        "id": "A3.SS4.p1.1",
+        "sha256": "10d3a8435f5113ce71e1770051bccad999c3ea85badaeb19b1b1c75fe161ca73"
+      },
+      {
+        "n": 199,
+        "kind": "paragraph",
+        "id": "A3.SS4.p2",
+        "sha256": "4e44aaa53207c77ac4d02a8815e69564308a19b01363c9b304d23f3736dffb22"
+      },
+      {
+        "n": 200,
+        "kind": "paragraph",
+        "id": "A3.SS4.p3.1",
+        "sha256": "4bc9278885950c24d82d0165458042d4454574660c8e9a5c66d0fd16289be494"
+      },
+      {
+        "n": 201,
+        "kind": "paragraph",
+        "id": "A3.SS4.p4",
+        "sha256": "631fbbd260a6f021504ed5609d9a5a9aa377429aa33d65038331649411b0dc4a"
+      },
+      {
+        "n": 202,
+        "kind": "heading",
+        "id": "A3.SS5",
+        "sha256": "bfd1c91cfa5fbe9f261a111c63440c42b0f6194b7fe270469444bfb78db023d9"
+      },
+      {
+        "n": 203,
+        "kind": "paragraph",
+        "id": "A3.SS5.p1.1",
+        "sha256": "54f583c97248443cb5c914c64a47030b112efeb246c2554f8970a840b3043458"
+      },
+      {
+        "n": 204,
+        "kind": "paragraph",
+        "id": "A3.SS5.p2",
+        "sha256": "02e34edf187a16ca399db7258a8594defd811e6a673d0cf85897301e5dd59ca9"
+      },
+      {
+        "n": 205,
+        "kind": "heading",
+        "id": "A4",
+        "sha256": "ce57e3b3b8172cc90e8111c9db16dcd0e815973e32111c3a16cfaba62a1254c7"
+      },
+      {
+        "n": 206,
+        "kind": "paragraph",
+        "id": "A4.p1.1",
+        "sha256": "012a9eeb92450e3e79dcd943237fbede0fb1cf9fa728bbfd38e1ad35a1675251"
+      },
+      {
+        "n": 207,
+        "kind": "heading",
+        "id": "A4.SS1",
+        "sha256": "a12a164e4b94640eabce4497eaf5ce006ad31500113d2222c8c2838e07330b59"
+      },
+      {
+        "n": 208,
+        "kind": "paragraph",
+        "id": "A4.SS1.p1.1",
+        "sha256": "2e3281345457e13ebbf997e1e30bc1f0181e47a93979f9678be4cf7240dab897"
+      },
+      {
+        "n": 209,
+        "kind": "paragraph",
+        "id": "A4.SS1.p2.1",
+        "sha256": "2400aeda99bc6a011f800b90bdf7888bad406fc89a066985fa6c007300469737"
+      },
+      {
+        "n": 210,
+        "kind": "heading",
+        "id": "A4.SS2",
+        "sha256": "4fe357e3c09e23b9b67c56687f5eae62ec8216f7dbc644abdb4164fea1587f80"
+      },
+      {
+        "n": 211,
+        "kind": "paragraph",
+        "id": "A4.SS2.p1.1",
+        "sha256": "a2eee37549c65d3e58df3725ee01d38458d059ec6d9c0dd4afc35f121e322feb"
+      },
+      {
+        "n": 212,
+        "kind": "paragraph",
+        "id": "A4.SS2.p2",
+        "sha256": "8bec740f2e5587d2b51b62fd3fee4a9e53ca237d6e40c07cd91fe9c6b61c0180"
+      },
+      {
+        "n": 233,
+        "kind": "paragraph",
+        "id": "A8.p1.1",
+        "sha256": "ac96d2e25c2a20815f61e78bdc3309818b6dc9c5e07be83fd6760a1b18c9010a"
+      },
+      {
+        "n": 234,
+        "kind": "heading",
+        "id": "A8.SS1",
+        "sha256": "1beb7ab83c6c225abab259c8e94b93f9cbc10c6652f8d7fdd136a2abc8ba043d"
+      },
+      {
+        "n": 235,
+        "kind": "paragraph",
+        "id": "A8.SS1.p1",
+        "sha256": "96b7381d644448b367e9b2f93c3df1d11ef74716da0f27e3144908d51353da93"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual main methods28-67 and setup79-91 specify paired benign main/harmful side tasks, agent and monitor awareness, trajectory hijacking, deceptive explanations and visible/hidden reasoning. Monitors assess generated actions and reasoning rather than the original user request alone.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "The full-trajectory, hierarchical, sequential and hybrid monitor families are specified in60/62/65/67 and actual prompts190-204. Ground-truth unit55 is whether actions attempt the harmful side task. Additional human-escalation setup120/122/124 and instructions235 independently verify interrogation of the monitor, optional trajectory inspection and feedback-driven score update. These all consume generated trajectory or monitor material; a completed final task answer is not the sole required unit.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Appendix211-212 explicitly generates the harmful side objective from the user query and an existing agent trajectory. This is construction using a prior trajectory, distinct from monitor inference.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves uninspected Appendix A/B variants and remaining human-interface details. The human-escalation family named in the packet is independently confirmed by additional setup120-124 and instructions235, but exact prompts and corpus-wide evaluated language remain unverified. No whole-work absence follows.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

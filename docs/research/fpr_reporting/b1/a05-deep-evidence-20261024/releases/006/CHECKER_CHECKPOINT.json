@@ -1,0 +1,22 @@
+{
+  "schema": "A05_SOURCE_CHECKER_ADDITIONAL_CHECKPOINT_v1",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T12:15:33.172808+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_FINAL_RELEASE",
+  "request_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\ADDITIONAL_SOURCE_REQUESTS_001.json",
+  "request_sha256": "da9d2ad6bc12937fbd85eec284c96ccfb01660fe90ed9aed12a66ffa3902f061",
+  "unique_checked_works": 1,
+  "files": [
+    {
+      "path": "additional-001/checked/W0074.checker.0001.json",
+      "sha256": "22691f389c14fabb94afcdfe11579310ffa1bdad61525c915da489aaa935d5ae"
+    }
+  ],
+  "latest_receipts": {
+    "W0074": "additional-001/checked/W0074.checker.0001.json"
+  },
+  "limitations": [
+    "No outcomes, sample counts, assurance or eligibility judgment transferred.",
+    "Null captured-version metadata preserved; exact body self-links independently verified."
+  ]
+}

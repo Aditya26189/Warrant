@@ -1,0 +1,318 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0052",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T12:04:38.624559+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0052.provider.0002.json",
+  "provider_packet_sha256": "e22386de8d94ce4213686e32d7a7cb4e2d63b368b982d7f0afb4b838f057591c",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2506.05446v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q016-1.html",
+    "raw_sha256": "6f945e9fac19841f012bef16ad5ce74e803162b45b1b477447789334913048c9",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0085.json",
+    "acquisition_receipt_sha256": "0fbde26636574e260d86d82ccea13dcab169c3ddef371ea42a1531703934dee0",
+    "captured_version_id": "arxiv:2506.05446v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        12,
+        40
+      ],
+      [
+        65,
+        69
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Corrected .0002 completeness false. Architecture/data source/label/split/training/baseline and Appendix prose read; appendix code/benchmark headers and operating threshold remain unverified. No English input-composition inference.",
+    "locator_sha256": "bded7883594a409aadb41040c62a52dfa7a10f589f5cbfcd5a3cf8f7a93de25a",
+    "locators": [
+      {
+        "n": 12,
+        "kind": "heading",
+        "id": "S3",
+        "section": "3 The Sentinel Detection Model",
+        "sha256": "4350d4dd17a44de8d85350a9bc04f87b2184701eccca45584899fbe516eea448"
+      },
+      {
+        "n": 13,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "section": "3.1 Model Architecture: Leveraging ModernBERT",
+        "sha256": "84fe3048c3b45572323db2f37ce9afa7459ce01b497e893fca96a9c5ef407a88"
+      },
+      {
+        "n": 14,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "section": "3.1 Model Architecture: Leveraging ModernBERT",
+        "sha256": "9269e9f23b477e00ce898bb0385d2186196076b1c05e305a02327208cf9a6648"
+      },
+      {
+        "n": 15,
+        "kind": "paragraph",
+        "id": "S3.I1.i1.p1.1",
+        "section": "3.1 Model Architecture: Leveraging ModernBERT",
+        "sha256": "9de818b7ca67c1fb402eaeb81e98b30fedbfd219318fdceec9bc6a09d1f7c464"
+      },
+      {
+        "n": 16,
+        "kind": "paragraph",
+        "id": "S3.I1.i2.p1.1",
+        "section": "3.1 Model Architecture: Leveraging ModernBERT",
+        "sha256": "6fffd603d1c58c7614454fd08a2c5ee094cada72a95b7448fa92f2a5cca7d392"
+      },
+      {
+        "n": 17,
+        "kind": "paragraph",
+        "id": "S3.I1.i3.p1.1",
+        "section": "3.1 Model Architecture: Leveraging ModernBERT",
+        "sha256": "ecf72e59e98f8c09a5dbbb0c0b2ea1a9988487a76891c917c1979b59c85bdbdc"
+      },
+      {
+        "n": 18,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "section": "3.2 Dataset Curation and Preparation",
+        "sha256": "a04062f2c0d8f3389baf6163d8f4440dc3c87fe84a0bf76ec424435bd57ddfda"
+      },
+      {
+        "n": 19,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.1",
+        "section": "3.2 Dataset Curation and Preparation",
+        "sha256": "a0ef46cc1b9638ce69d2d41cdf4028aab7cc32ee02357c01ffca7833e0e86e71"
+      },
+      {
+        "n": 20,
+        "kind": "heading",
+        "id": "S3.SS2.SSS1",
+        "section": "3.2.1 Open-Source Datasets",
+        "sha256": "e2d3da577d3305cc4cf71aa2db6431bfe82a7378b09d49c70cdb9260814c53c8"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS1.p1.1",
+        "section": "3.2.1 Open-Source Datasets",
+        "sha256": "209ce72eefa9f5b80f13991ca5fd881a301ac8f46c1025e2853ca3bbb8abaebc"
+      },
+      {
+        "n": 22,
+        "kind": "paragraph",
+        "id": "S3.I2.i1.p1.1",
+        "section": "3.2.1 Open-Source Datasets",
+        "sha256": "0f3b394421c0def270ed67c8174fc4f6e0073c7ad6774a54d7ff4937c9084374"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S3.I2.i2.p1.1",
+        "section": "3.2.1 Open-Source Datasets",
+        "sha256": "bb2577206e9a6e3bb1651818bbcc14d9ff1aaf25018ee929fbc9e3734861487d"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S3.I2.i3.p1.1",
+        "section": "3.2.1 Open-Source Datasets",
+        "sha256": "eddf4e723af2caf4fed4de1dd2d618c1fae53b8f69917fee5a57cb35a4f37423"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S3.I2.i4.p1.1",
+        "section": "3.2.1 Open-Source Datasets",
+        "sha256": "9f631cebc1f0cf09e665a9dfe8659259d90ffb2b9cbbb707761983f26f0ddfc9"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S3.I2.i5.p1.1",
+        "section": "3.2.1 Open-Source Datasets",
+        "sha256": "3398b890c792b47ef9aa3778341d4d8e5c64c70a6b8a6f75185d0772f20d3559"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S3.I2.i6.p1.1",
+        "section": "3.2.1 Open-Source Datasets",
+        "sha256": "6fc6c445f3c733e9d2093ed7e339b735db338d6dea13ad692b53857e9a82e0ea"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S3.I2.i7.p1.1",
+        "section": "3.2.1 Open-Source Datasets",
+        "sha256": "55ebef78c58a9e3217f5cbe45ca9c7325a4da4816f9015ccf0bfdb9081a0c02e"
+      },
+      {
+        "n": 29,
+        "kind": "heading",
+        "id": "S3.SS2.SSS2",
+        "section": "3.2.2 Private Datasets",
+        "sha256": "af313cab0d038a1ffd3411882d473720208cd89fde42ffa32fba50fa39f32304"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS2.p1.1",
+        "section": "3.2.2 Private Datasets",
+        "sha256": "35264b1f7944119ea4fab08eb86ff0a952c99d2aaaa325d19a81fa33781899ac"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S3.I3.i1.p1.1",
+        "section": "3.2.2 Private Datasets",
+        "sha256": "c6d6ffe88196fde80590cde00423ec254bf70fef88e6284eb0563b92cf748aea"
+      },
+      {
+        "n": 32,
+        "kind": "heading",
+        "id": "S3.SS2.SSS3",
+        "section": "3.2.3 Final Dataset Composition and Splitting",
+        "sha256": "de368675666308a9a8766b6c476c97b9829e508c990b0aac6c264f5376b97fe2"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS3.p1.1",
+        "section": "3.2.3 Final Dataset Composition and Splitting",
+        "sha256": "3eb0ffecabb0de884ead217bf2f9f67cf44be22d67eebdfcee3ee1a0fb5ea03a"
+      },
+      {
+        "n": 34,
+        "kind": "heading",
+        "id": "S3.SS3",
+        "section": "3.3 Training",
+        "sha256": "89aa175833397507f567238c63e64f07a16ea50191fdbce5c404de8766693e54"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S3.SS3.p1.1",
+        "section": "3.3 Training",
+        "sha256": "4592959234b5839723200b4afee5bb8a582847157f1c950f04ced8b66e896fbf"
+      },
+      {
+        "n": 36,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Experimental Setup",
+        "sha256": "ece34411811a0a732567bb7b7282ef860079309888b2109c3291c6938d3e3caf"
+      },
+      {
+        "n": 37,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Test Dataset",
+        "sha256": "b15c646101bc50d57faedf7c56cb0c32240550638befa7641bb73c17a4c552a6"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1 Test Dataset",
+        "sha256": "1afd22218a88043817aa19b7a2fbd560ec7bcc84fc42582fad51542c29a19567"
+      },
+      {
+        "n": 39,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 Baseline Model",
+        "sha256": "cf9b0affce0b95fbd779e67d83d4c4667ac24d75a277c851c74ea06fa527f989"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "section": "4.2 Baseline Model",
+        "sha256": "a0892b561488fa5822e49a7b52f649a1a832ab3a29a6ddf4e851109278f81558"
+      },
+      {
+        "n": 65,
+        "kind": "heading",
+        "id": "A1",
+        "section": "Appendix A How to Get Started with the Model",
+        "sha256": "7d76f58be58198e5ea79a4875ce16db37b477900eb3ab11576c597db045f9e86"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "A1.p1.1",
+        "section": "Appendix A How to Get Started with the Model",
+        "sha256": "d7b0e11eb847b0c8ee1c9270bab00889c1972a246f2cdd77fd218f5c42ee7e9c"
+      },
+      {
+        "n": 67,
+        "kind": "heading",
+        "id": "A1.SS1",
+        "section": "A.1 Code Example",
+        "sha256": "7121d49cbdb7e2e4e9bb698795ad2582899f8983eca51394a408bbe47b8b7dd3"
+      },
+      {
+        "n": 68,
+        "kind": "heading",
+        "id": "A1.SS2",
+        "section": "A.2 Example Output",
+        "sha256": "12f0ff851a72e7f246af844f36eee4f744b3dd7905157f1bc56ceda6c8377cbd"
+      },
+      {
+        "n": 69,
+        "kind": "paragraph",
+        "id": "A1.SS2.p1.1",
+        "section": "A.2 Example Output",
+        "sha256": "37b2857850c0c26f323ec11451cdc2ade706c2ce09e35690eb33deb854b125ae"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main Sections 3?4 explicitly fine-tune ModernBERT binary classifier on curated public/private prompts. English/code pretraining is correctly separated from evaluation language.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Sections 3.3/4.2 name Sentinel and ProtectAI baseline; input prompt labels benign/jailbreak, not target-answer label.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions/partial inventory. Supported local method facts do not become proof of whole-work absence. Actual checker spans below are narrower where stated.",
+      "restriction_rationale": "Coverage only; no performance, sample counts or eligibility state."
+    },
+    {
+      "field_path": "source_receipts.locators",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mechanical source-locator hashes independently reproduce. Semantic inspection coverage is exclusively the actual_context_check spans, not automatic approval of the full provider-declared scope.",
+      "restriction_rationale": "Hash-only locator metadata; no raw method/results text or outcomes."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  },
+  "previous_checker_receipt_sha256": "313f019087db5ce54e8235f414d2a6bab17eb1f94bee6f79f0dbda25af9f534c",
+  "append_only_addendum": "Explicit coverage-field decision added; prior per-fact checks preserved except stated supersession."
+}

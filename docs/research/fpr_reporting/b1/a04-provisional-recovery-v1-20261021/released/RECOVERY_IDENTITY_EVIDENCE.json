@@ -1,0 +1,66 @@
+[
+  {
+    "actor_id": "/root/a04_semantic_restriction_02",
+    "authors_visually_match_controlled_metadata": true,
+    "body_exact_revision_self_identified": false,
+    "captured_version_id": "arxiv:2605.30667v1",
+    "checked_utc": "2026-10-21T12:23:05.341997+00:00",
+    "eligibility_decision": null,
+    "evidence_id": "R01-IDENTITY-M0272",
+    "frozen_title_identity_sha256": "c424a35b7094034a94e44967b57c8d85836a0272fea32175a87cf9f9c7570679",
+    "limitation_codes": [
+      "PDF_FONT_MAPPING_CORRUPTS_EXTRACTED_TITLE",
+      "IN_BODY_REVISION_IDENTIFIER_NOT_FOUND",
+      "PROTOCOL_PREFERRED_VERSION_NOT_ADJUDICATED"
+    ],
+    "locator": {
+      "evidence_pages": [
+        {
+          "page_number_1based": 1,
+          "page_text_sha256": "e2e0d6f90d18d368e251c0757fe407549d5b5bbffba1c4060c9d10e457033320",
+          "rendered_page_sha256": "c083a29df83afda5b22f25a76c7b5e69ede8b54865ed759b7e925dd746444130"
+        }
+      ],
+      "format": "PDF",
+      "method_section_locator": "First page bibliography"
+    },
+    "member_id": "M0272",
+    "observed_title_identity_sha256": "c424a35b7094034a94e44967b57c8d85836a0272fea32175a87cf9f9c7570679",
+    "raw_source_sha256": "1358a6c3bc395e225af3deddbebd114900d83da3578130b2f973a1d618e8e794",
+    "review_id": "W0221",
+    "source_binding_basis": "RECORDED_OFFICIAL_EXACT_VERSION_URL_AND_VISUALLY_VERIFIED_WORK_TITLE_AND_AUTHORS_MATCH",
+    "source_binding_sha256": "4b201dade378fbef5aa56eb881e111f95211a8c12080c9e16c672ec0434a69a7",
+    "source_checker_record_sha256": "8b1ade314f3ebb4d305fcd7764c9fc25a1a19365a7db97333f2afb7fca9c8f24",
+    "title_identity_match": true
+  },
+  {
+    "actor_id": "/root/a04_semantic_restriction_03",
+    "author_names_visually_match": true,
+    "checked_utc": "2026-10-21T12:24:24.856783+00:00",
+    "eligibility_decision": null,
+    "evidence_id": "R01-IDENTITY-M0326",
+    "frozen_title_identity_sha256": "c99f9fde70ad07727e6826fd9e4e922b608dbc2549a3a8a5bc8913c94ad019a7",
+    "limitation_codes": [
+      "TITLE_DISCREPANCY_REQUIRES_PRIMARY_IDENTITY_LINK",
+      "NO_ALIAS_MAPPING_ASSERTED"
+    ],
+    "locator": {
+      "evidence_pages": [
+        {
+          "page_number_1based": 1,
+          "page_text_sha256": "ccec430a3861226e0d5cef9932eccd04af8b3620a35744311fa4a7a4fe9bf236",
+          "rendered_page_sha256": "6ece6143041a2c697501a4874018c860a9e701161e949d01112c7c74c358e6bd"
+        }
+      ],
+      "format": "PDF",
+      "method_section_locator": "First page bibliography"
+    },
+    "member_id": "M0326",
+    "method_release_supported": false,
+    "observed_title_identity_sha256": "72b96a42d33e11918aab089de3cadc1f6bbb52c16f8a0a6448b1ca1a463d9097",
+    "raw_source_sha256": "4ded1b24b29cc006cf101f3723099e4fa5dbd70e8e682c346812a92026c7943a",
+    "review_id": "W0274",
+    "source_checker_record_sha256": "5ff5eb9f728dd7f31dc3110285b5306605cdaa974f521816b1adc86071466f88",
+    "source_url": "https://arxiv.org/pdf/2608.07167v2"
+  }
+]

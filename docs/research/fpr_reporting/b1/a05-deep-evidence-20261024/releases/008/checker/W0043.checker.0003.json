@@ -1,0 +1,469 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0043",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:55:38.120478+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0043.provider.0002.json",
+  "provider_packet_sha256": "6132b1384c5001e0135766352769746d2330c54942913e32e9cf46f5c27ec838",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2504.19521v4",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\bea662bd0092e064edca0cfbb664799cc4c56fa33d9640999059dab077651f02",
+    "raw_sha256": "bea662bd0092e064edca0cfbb664799cc4c56fa33d9640999059dab077651f02",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0075.json",
+    "acquisition_receipt_sha256": "057276dc99abb5369e1baa527268b92b58ddb3668379de1322e708dcc52623c8",
+    "captured_version_id": "arxiv:2504.19521v4",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        23,
+        46
+      ],
+      [
+        53,
+        83
+      ]
+    ],
+    "coverage_disposition": "VERIFIED_DECLARED_METHOD_INVENTORY_LANGUAGE_UNRESOLVED",
+    "semantic_rationale": "Targeted full method-bearing main/Appendix A plus Appendix B axis headers checked. Appendix B outcome values need no analysis; language support remains printed English construction only.",
+    "locator_sha256": "16ffe6072948bef069cf0ae0a1c80906731650264ed4a7a2410e93a5145e1770",
+    "locators": [
+      {
+        "n": 23,
+        "kind": "heading",
+        "id": "S3",
+        "section": "III Methodology",
+        "sha256": "89c752d0fba27d05478b16012137a4ce0291bb16f52fc537fe5e59c7130e13b5"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S3.p1.1",
+        "section": "III Methodology",
+        "sha256": "167cc8ed28de581f929f640edf0a912185024c1c4a7733f96f90705d9484cada"
+      },
+      {
+        "n": 25,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "cbf1c722f5c2fd5b71cca42cd27ed43d3244130dbbd5b2a31fa79921e95f3380"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "23e731e760f1867716840889924c6214f0fda7bb57f0969c80b0160842a4a763"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.1",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "02e6d3770ae15fd17d5c8b75fcbb62fa63b0b61ecb403d906fedd1543ab78933"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S3.SS1.p3.1",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "7d46a38a27454054b122c586026bdd5a9caf417296313b07eca022dbaf8ed332"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S3.SS1.p4",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "79b0739a651d75a0182a468ce1d793bae2066a346d58c9d81f3114527216050a"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S3.SS1.p5.1",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "748f9215730b84106d839310b971c78e3a3eef3ee18d52f2a35643088c4324c2"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S3.SS1.p6.1",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "06d10cce603d08f65c32fa043c93bcad225b6a02cce052326cad2921eb5c2a04"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S3.SS1.p7.1",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "3407af82a2b16db417fcb19c399c8b8b4f05f5463c0f2cc9e47371f633c4d8cf"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S3.SS1.p8",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "35e7b137adc347e0646c40fa8b06d40605104732fead8f2d5beba0d62e576b25"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S3.SS1.p9.1",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "6f67a63a1c6cfa01cbeab39e587bd02c169c3d7927397ec275c72588193403fd"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S3.SS1.p10.1",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "13aa86e00eed5e8cda2cf9e75fb8c554bd2a08c5a55f921fec0e84edf282b2f7"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S3.SS1.p11",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "dfc7b8e8b43af5fe343d6b4fdf77919d49408bfb1b1ebc634a8bfcdc0e200922"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S3.SS1.p12.1",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "2983ae60c4b9c068d912302a83e5c268e2da749982d7027947f4170662100965"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S3.SS1.p13.1",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "486d2312f8446553bd0545f73a958b81a465616ade5273ab2d222cc762f06e24"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S3.SS1.p14.1",
+        "section": "III-A VeganRibs Dataset",
+        "sha256": "9ca64670f7ed910a5d6bcbb4b8b27ac64314077a6f7a206ec25493b04b67bfa7"
+      },
+      {
+        "n": 40,
+        "kind": "heading",
+        "id": "S4",
+        "section": "IV Evaluation",
+        "sha256": "288e13038b3a20214e2c49da3532cb7f73728a5cf718ccf410b89eca2621052e"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "section": "IV Evaluation",
+        "sha256": "223020b1950f9e7d732d69cd1672bfe37f5520a4a8ceec78a2e2794669b1f3e8"
+      },
+      {
+        "n": 42,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "IV-A Security Steerability Analysis",
+        "sha256": "14828d6a23ce91c7fca76c61e4c83ebd0c41224ac8d6d1fa5190cee9cf032f55"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "IV-A Security Steerability Analysis",
+        "sha256": "1e181f11b09188ac2f03971ae89a9733485edef74468c7c6fc3cc8158c095afd"
+      },
+      {
+        "n": 44,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "IV-B Combined Security Assessment",
+        "sha256": "155f271fbbaebb3edd007d9ef0cb8bf745f68b8b730995abe79667b69e7d8823"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "section": "IV-B Combined Security Assessment",
+        "sha256": "15382b011c9eb2ac84431677ce3e325c05df5323c08271b58d13d2f06461beb6"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "section": "IV-B Combined Security Assessment",
+        "sha256": "28ca047886476759726c383737613f614a6158b0aae3770574a72dd64668a38d"
+      },
+      {
+        "n": 53,
+        "kind": "heading",
+        "id": "A0.SS1",
+        "section": "-A Complexity level examples",
+        "sha256": "668dd4319d823035fa0fb6913c4d3ad79aea6f2ff755da2caa40d4b18c7334ad"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "A0.SS1.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "908cb26fc7b487a1152f36e436fdbae00c44f202f95761000b5236521ff43fad"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "A0.SS1.p2.1",
+        "section": "-A Complexity level examples",
+        "sha256": "1c7b61880cb0808dbca1ff0e643f6b3642606cc92cbe268655ee57b9b2ffafac"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "A0.SS1.p3.1",
+        "section": "-A Complexity level examples",
+        "sha256": "b3ec2c423144207f06e77bb42dd3a96e3809617c56617d4618f7c61878cc58b8"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "A0.SS1.p4.1",
+        "section": "-A Complexity level examples",
+        "sha256": "39a64775324f5117165977b69d48f31fea4a724a67134ff3e53bd7af20d08998"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "A0.SS1.p5.1",
+        "section": "-A Complexity level examples",
+        "sha256": "26b7c5b0b9e49fb00b72ee68279e3eb5c573cd18c148e80a2ac1550c6ddddaad"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "A0.I1.i1.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "d2cfde8d2144438005334e595605059bfcb53148faca309ac2af3d46e2680ab4"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "A0.I1.i1.I1.i1.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "0326218c810f2ff8fcc1e7511a5231a4a2c77eb2fb6b479bf8159826b39a5661"
+      },
+      {
+        "n": 61,
+        "kind": "paragraph",
+        "id": "A0.I1.i1.I1.i2.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "dc8629855a1414ddf82545fe0fbb1fe8d0f491007afd324e3881c4ca1d5ea5f1"
+      },
+      {
+        "n": 62,
+        "kind": "paragraph",
+        "id": "A0.I1.i1.I1.i3.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "876aeb90a0e5a600908899b9e7c2b8c673a236e68db42c6f95109ae0bcbb10b3"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "A0.I1.i1.I1.i4.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "dfc81690a842c100bc53a270b6221dbdc52dfc56494678f9c410a78a4eed4b62"
+      },
+      {
+        "n": 64,
+        "kind": "paragraph",
+        "id": "A0.I1.i2.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "e0a8dc03d6860a936c68793d3534f0a65f1a1d2db3d918c62594715b883c3322"
+      },
+      {
+        "n": 65,
+        "kind": "paragraph",
+        "id": "A0.I1.i2.I1.i1.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "91f8f36fd1d9533a7dda249dbe1e923811bf4033b397aa5f09cb3925bfc42257"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "A0.I1.i2.I1.i2.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "0e0d7fedf67b7d4e78b3aafda14bc9e01254768f36f748f77e4b794ccbfdac7b"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "A0.I1.i3.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "e3af26f4e5b5661fc7f1c4f75c06bad9db941af5139e9eeefc619c9822eaf8fc"
+      },
+      {
+        "n": 68,
+        "kind": "paragraph",
+        "id": "A0.I1.i3.I1.i1.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "45fa25ee445b2dd9cbe7944e3797769d50b4cabdf83a01838902f1ac91eb2dbf"
+      },
+      {
+        "n": 69,
+        "kind": "paragraph",
+        "id": "A0.I1.i3.I1.i2.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "93622e17071186c6c06f7fe4caafb46c0a3a8113c51b0c6c6bc9b9f3a4634f8f"
+      },
+      {
+        "n": 70,
+        "kind": "paragraph",
+        "id": "A0.I1.i4.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "99fe31ec5481ce6e2947f373911b315731f9ac7fca7a9d41e4625f05d872ccc3"
+      },
+      {
+        "n": 71,
+        "kind": "paragraph",
+        "id": "A0.I1.i4.I1.i1.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "f5a03ffb0d22fae1cf7671bb7a68a1e6d9f38e2a1d3856d1f649d2fb09a8a979"
+      },
+      {
+        "n": 72,
+        "kind": "paragraph",
+        "id": "A0.I1.i4.I1.i2.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "a1171349344367dc20d816e2d344cfb8c0b86749a4486e81fee1a59d94424f98"
+      },
+      {
+        "n": 73,
+        "kind": "paragraph",
+        "id": "A0.I1.i4.I1.i3.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "e9e429b5f220f750130bb9f34338c8f738600ecf0a681db923bbb5abc5f8cc13"
+      },
+      {
+        "n": 74,
+        "kind": "paragraph",
+        "id": "A0.SS1.p6.1",
+        "section": "-A Complexity level examples",
+        "sha256": "347a265d468a2c10e4a220dc091821b9c62084f8d754dcf5fc3c9f02bc2020c5"
+      },
+      {
+        "n": 75,
+        "kind": "paragraph",
+        "id": "A0.I2.i1.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "2b6779a6f9196c1b8e6c853a68d4c9e904eac48ffd8d3e887b28929258183d2d"
+      },
+      {
+        "n": 76,
+        "kind": "paragraph",
+        "id": "A0.I2.i2.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "4769800a76e3b41dab61696412d9bad8aacbc492218f27ab7a5b32880a66e4be"
+      },
+      {
+        "n": 77,
+        "kind": "paragraph",
+        "id": "A0.I2.i3.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "00ddaf0d09ef744ded472b721a47144568fa534b6fda60331e251efd7feb8761"
+      },
+      {
+        "n": 78,
+        "kind": "paragraph",
+        "id": "A0.I2.i3.I2.i1.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "1047cb077412f174011889c5b53b59c4606dae1516ad62661c847557414678ee"
+      },
+      {
+        "n": 79,
+        "kind": "paragraph",
+        "id": "A0.I2.i3.I2.i2.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "a5aacfc225d661e42db88f1229b9398512cf82cb462d52f770bf0414bee9af22"
+      },
+      {
+        "n": 80,
+        "kind": "paragraph",
+        "id": "A0.I2.i3.I2.i3.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "171be07f08f4f0d13737d9c9f604534c1aaebb9d325c6283c76478e6c6a95227"
+      },
+      {
+        "n": 81,
+        "kind": "paragraph",
+        "id": "A0.I2.i4.p1.1",
+        "section": "-A Complexity level examples",
+        "sha256": "9f992716b511b14c8fcca340a0950834d313f56513d4a9f962207bbfbc4b9232"
+      },
+      {
+        "n": 82,
+        "kind": "heading",
+        "id": "A0.SS2",
+        "section": "-B VeganRibs additional results",
+        "sha256": "672b6ee77603dba823828d52799bd68891c357a50790d03c0f3a299724450168"
+      },
+      {
+        "n": 83,
+        "kind": "paragraph",
+        "id": "A0.SS2.p1.1",
+        "section": "-B VeganRibs additional results",
+        "sha256": "f3683e9500f2ebbcb60af015500c668654c3742761335e041be60cd018934604"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main tuple/boost construction, full Appendix A policy example, method booster table and Appendix B grouping axes checked. Appendix B retains same policy-adherence task with complexity/type/technique stratifications.",
+      "restriction_rationale": "Bounded method/scope fact; no source performance, sample counts, qualitative outcomes, assurance or captions transferred."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Base/boosted request and complexity variants evaluated by response policy compliance through judge prompt; generated response required.",
+      "restriction_rationale": "Bounded method/scope fact; no source performance, sample counts, qualitative outcomes, assurance or captions transferred."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Original JailbreakV-28k attack comparison supported; no input-only detector procedure asserted.",
+      "restriction_rationale": "Bounded method/scope fact; no source performance, sample counts, qualitative outcomes, assurance or captions transferred."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All material declared method/setup/arm families now actually checked in main and method-bearing appendix scope. Withheld outcome values/derivations are not needed to establish named methods.",
+      "restriction_rationale": "Bounded method/scope fact; no source performance, sample counts, qualitative outcomes, assurance or captions transferred."
+    },
+    {
+      "field_path": "source_receipts.additional_table_locators",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Method-booster wrapper hash independently reproduces and full technique labels checked; no counts or outcome-table/caption prose released.",
+      "restriction_rationale": "Bounded method/scope fact; no source performance, sample counts, qualitative outcomes, assurance or captions transferred."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

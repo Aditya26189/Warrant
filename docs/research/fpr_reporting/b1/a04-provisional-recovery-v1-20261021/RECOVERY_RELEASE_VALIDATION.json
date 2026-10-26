@@ -1,0 +1,2630 @@
+{
+  "actual_delivery_recorded": false,
+  "actual_full_transfer_verifier": {
+    "actual_delivery_attested_by_this_check": false,
+    "criterion_responses": 1852,
+    "gate": "FRAME_BLOCKED",
+    "independent_eligibility_decisions": 0,
+    "new_method_facts": 278,
+    "original_archive_verifiers": [
+      {
+        "archive": "FRESH_REVIEWER_INTAKE.zip",
+        "exit_code": 0,
+        "verifier": "verify_package.py"
+      },
+      {
+        "archive": "RESTRICTED_EVIDENCE_SUPPLEMENT.zip",
+        "exit_code": 0,
+        "verifier": "verify_evidence.py"
+      },
+      {
+        "archive": "CONSOLIDATED_RESTRICTED_EVIDENCE.zip",
+        "exit_code": 0,
+        "verifier": "verify_semantic.py"
+      }
+    ],
+    "original_semantic_facts": 549,
+    "requested_memberships": 384,
+    "requested_works": 367,
+    "verification": "PASS"
+  },
+  "audit": {
+    "actual_delivery_recorded": false,
+    "actual_role_records": 367,
+    "checker_record_inputs": [
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0001.0004.json",
+        "record_revision": 4,
+        "review_id": "W0001",
+        "sha256": "5abdf91b1fa359b8f3ee8ef166622ebf80922eba0d9fc99bca28fb49baac31e8"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0002.0004.json",
+        "record_revision": 4,
+        "review_id": "W0002",
+        "sha256": "9c678739dad8b9e42da4db295d71968804b9fd0438d6858b84cc4c55d9eaabaa"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0003.0004.json",
+        "record_revision": 4,
+        "review_id": "W0003",
+        "sha256": "f1158baeb7eee786637d04bf50cc25e4671eecfddf6b367ec8ef0d1b93cda01a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0004.0004.json",
+        "record_revision": 4,
+        "review_id": "W0004",
+        "sha256": "2ea42b36ec83c254ee5d26fa2aad377f4bef6b896d34e302bf520d67081209d8"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0005.0004.json",
+        "record_revision": 4,
+        "review_id": "W0005",
+        "sha256": "eba1b5150320140fbd0b2273422c4810fb94b38ea17a20c4185793f198b5630a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0006.0004.json",
+        "record_revision": 4,
+        "review_id": "W0006",
+        "sha256": "984da291042cac65290a072b84a384e57fba387b169605d9c1a5a0a2095ff2d3"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0007.0004.json",
+        "record_revision": 4,
+        "review_id": "W0007",
+        "sha256": "808aa3008ae64e7032d084aae7a493f5301c17576221af008300d06c48923b7b"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0008.0004.json",
+        "record_revision": 4,
+        "review_id": "W0008",
+        "sha256": "9f80fabe612bc3a6f02b878af79eadbfe968a3936c7fee937ae0247b939ea6d0"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0009.0004.json",
+        "record_revision": 4,
+        "review_id": "W0009",
+        "sha256": "0ff6fc31f58f784f8a149b05209ea94484b7cf2fd18b4d6854bc2686b8a2c6a8"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0010.0004.json",
+        "record_revision": 4,
+        "review_id": "W0010",
+        "sha256": "680bb312fdd46c4fd3491f1622deba4addc4de23d59e08feff6c9f1a607c4dc2"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0011.0004.json",
+        "record_revision": 4,
+        "review_id": "W0011",
+        "sha256": "93cda7abf4bfb07ffa70c03abb99187dfc7a5a796bbcee85783c4a076c718fc3"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0012.0004.json",
+        "record_revision": 4,
+        "review_id": "W0012",
+        "sha256": "4e65afbd5ad38c41901ec7a24c52757d6409bc6ce3a354b10ff10e35e99dea10"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0013.0004.json",
+        "record_revision": 4,
+        "review_id": "W0013",
+        "sha256": "c0a64a3cb455c47ff1db525528c97f58ee1ec95dd6f1143b0d9c64fe6ab876e0"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0014.0004.json",
+        "record_revision": 4,
+        "review_id": "W0014",
+        "sha256": "c71144cb112bfdc302f71959659fd0ac61d31228045879ecfff87e3e271789fe"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0015.0004.json",
+        "record_revision": 4,
+        "review_id": "W0015",
+        "sha256": "4b408ea4fe74570a90a606ba824359f07de57353db70cc4522cf2e6206152e8f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0016.0004.json",
+        "record_revision": 4,
+        "review_id": "W0016",
+        "sha256": "8e1d1f1fcc699800f89c4bc29bab6f528419188c849eaf5899e1844626cd4ff0"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0017.0004.json",
+        "record_revision": 4,
+        "review_id": "W0017",
+        "sha256": "b6b91ff05d906dbb88a742180f91ea885f7c8edb0892532f04a4a8cb1e000967"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0018.0004.json",
+        "record_revision": 4,
+        "review_id": "W0018",
+        "sha256": "dc9cc1553108ea46ac9660c2853e8d47ed7f905646d0e43f777d60824689cc03"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0019.0004.json",
+        "record_revision": 4,
+        "review_id": "W0019",
+        "sha256": "4cdabe92e5d870fe87b9d715dfa0a4cb19bfd03db886651521e0c62e75b7aed8"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0020.0004.json",
+        "record_revision": 4,
+        "review_id": "W0020",
+        "sha256": "5fce4b872c73b9315c3d6d78b2a7a7bd0e3bf3956adbaf9cb4c8c375a9747e2e"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0021.0004.json",
+        "record_revision": 4,
+        "review_id": "W0021",
+        "sha256": "b6203928c24fd9e048d3b955671da0a773166d77ecbf5a109f08f46749316716"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0022.0004.json",
+        "record_revision": 4,
+        "review_id": "W0022",
+        "sha256": "5a89d7202cc4b20ee8b685d44716f7909e1cc3d6d1ffb730b45e9ded15ba47cc"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0023.0004.json",
+        "record_revision": 4,
+        "review_id": "W0023",
+        "sha256": "d71e9e8e7263f69539d8cc31f9a8c368b4edbca0d3bc4ec88b55942ba606d7cb"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0024.0004.json",
+        "record_revision": 4,
+        "review_id": "W0024",
+        "sha256": "c7e2ba3ff962c55cb1bafc9003f1ba6586a8f97221954f80f62740872cdd7410"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0025.0004.json",
+        "record_revision": 4,
+        "review_id": "W0025",
+        "sha256": "4ddf339375af75a92cfe69f13cdd76e657e209282f943dfb1c6b330afd8e54f3"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0026.0004.json",
+        "record_revision": 4,
+        "review_id": "W0026",
+        "sha256": "a7e15154a32503e1e8aca8e1322a1c10b5f062f7075f69a30ac056ae15f05674"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0027.0004.json",
+        "record_revision": 4,
+        "review_id": "W0027",
+        "sha256": "b6c038819781b143208a87f8865e5fe3ede4621828db46c0b0acf42fefeb2533"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0028.0004.json",
+        "record_revision": 4,
+        "review_id": "W0028",
+        "sha256": "62396f5e126fc500d34d3eeafc390e3ee6728135f3c28ef4f0799bc1613e596d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0029.0004.json",
+        "record_revision": 4,
+        "review_id": "W0029",
+        "sha256": "cbac0ccfc05515c198d021723d20d20fde7eaa7eeedc78f88ea0f8703a5f9fc1"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0030.0004.json",
+        "record_revision": 4,
+        "review_id": "W0030",
+        "sha256": "8a5377b143df4f783eabeea45d42e8eee3dd834d81087aaef26cd8a25b2e2416"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0031.0004.json",
+        "record_revision": 4,
+        "review_id": "W0031",
+        "sha256": "75b09c6a8a249bc14810d725f4549ec83cca4ba09910b4307bf401b5c758d24c"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0032.0004.json",
+        "record_revision": 4,
+        "review_id": "W0032",
+        "sha256": "fd7a5e90974de271cc7dc554f7c10a8507a31e670cf197b07f1a96a241ebf0c6"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0033.0004.json",
+        "record_revision": 4,
+        "review_id": "W0033",
+        "sha256": "da2165f45fcb7098bcf900233eba7a7b2f5f4b4c5727d2353d3ede56c96e239a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0034.0004.json",
+        "record_revision": 4,
+        "review_id": "W0034",
+        "sha256": "428b24e8e85434183df813d7b070cd44a49e100b93d6da4d3a4588d3b08ea276"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0035.0004.json",
+        "record_revision": 4,
+        "review_id": "W0035",
+        "sha256": "5becbdbb91132049c6287b9e484d64dcf2ae17f7be3f10668e01ebfd347cd425"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0036.0004.json",
+        "record_revision": 4,
+        "review_id": "W0036",
+        "sha256": "13b6a201749241818d1e14c9f2eeeecdeb98fcb2ed5969c41bffa20e82604572"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0037.0004.json",
+        "record_revision": 4,
+        "review_id": "W0037",
+        "sha256": "74f238f662a3c031bc1e0fdcb7597a45365a5c0de326185db4549a76f6c2c10a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0038.0004.json",
+        "record_revision": 4,
+        "review_id": "W0038",
+        "sha256": "acd060a65b39f31714585a38ac833674d1939460f72f560adb7e19cc651d2196"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0039.0004.json",
+        "record_revision": 4,
+        "review_id": "W0039",
+        "sha256": "a5acb864e7382ececcd388bc7e03892aa58708e9dfb06b65d61a9c02f41102bf"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0040.0005.json",
+        "record_revision": 5,
+        "review_id": "W0040",
+        "sha256": "8f7edb4e55dc442e1976c328598a36fb8fb657cb4728f1d1468bf09896639f34"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0041.0004.json",
+        "record_revision": 4,
+        "review_id": "W0041",
+        "sha256": "f6830969480fe7793e8b968128dee1ebf9cf397f8ad33545ccd931a487cf4ea9"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0042.0004.json",
+        "record_revision": 4,
+        "review_id": "W0042",
+        "sha256": "283bb9cbae1aacbb55f2e8d03e44ae11b3abceb2b6669b80f59193d1f652c938"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0043.0004.json",
+        "record_revision": 4,
+        "review_id": "W0043",
+        "sha256": "12eb06983a2b89293dcc2826ed4e1d7de16dadfa6c688f2782b7c006196914ff"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0044.0004.json",
+        "record_revision": 4,
+        "review_id": "W0044",
+        "sha256": "d2915bedcf503d73ab558a943cdcc8c1f72c1f9241301e7632118e8e87a1cc78"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0045.0004.json",
+        "record_revision": 4,
+        "review_id": "W0045",
+        "sha256": "35c769ff3835a98696c884a77a2e1b0e787db19c5a957508ae117490972c9443"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0046.0004.json",
+        "record_revision": 4,
+        "review_id": "W0046",
+        "sha256": "d5ae94a5f884a3cf382f3dea478e22525b4e00ac2e980bf1848353b77f1e489a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0047.0004.json",
+        "record_revision": 4,
+        "review_id": "W0047",
+        "sha256": "93a5f232c1afb2bf85dde6839bf689eb095b79438941cb86c11409720cf9f8d1"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0048.0005.json",
+        "record_revision": 5,
+        "review_id": "W0048",
+        "sha256": "c956caedb33b7a24158c01e6035f7cf82fef18103b48e329573df0489a0ef0a0"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0049.0004.json",
+        "record_revision": 4,
+        "review_id": "W0049",
+        "sha256": "3a0462f763a75d2d72a24c15575c9cf36d23e75727e719f76952ce692b66fb09"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0050.0004.json",
+        "record_revision": 4,
+        "review_id": "W0050",
+        "sha256": "ef2ced6710ece0b7bb8669daaae3279ed955742f2cdb522c412c0a4bbf058ecf"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0051.0004.json",
+        "record_revision": 4,
+        "review_id": "W0051",
+        "sha256": "ea1ee21ba4f8975a3882cca96f7ea7b6c73d75dedd7f046a4783bf349c72567a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0052.0004.json",
+        "record_revision": 4,
+        "review_id": "W0052",
+        "sha256": "2d2ef5973a4d8c4ea8da24b1db24974da550fbf3a7924d57bb77ffda6a808d3b"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0054.0004.json",
+        "record_revision": 4,
+        "review_id": "W0054",
+        "sha256": "8d49410a2ed01b26db2f709611b7216be55af8bf67d4c3b904cf7517c88fad11"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0055.0004.json",
+        "record_revision": 4,
+        "review_id": "W0055",
+        "sha256": "496dc3d3ad9197ea75a98490b1fd7ccf848453e63fd6f6aeec99aeaf3534cc9f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0056.0004.json",
+        "record_revision": 4,
+        "review_id": "W0056",
+        "sha256": "b4f8e8323777a740345a7a76b45a6546aa1d527c9842a9db4e08dcb330bba1fd"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0057.0004.json",
+        "record_revision": 4,
+        "review_id": "W0057",
+        "sha256": "473823ce1cfc779dfb7296f131c54112fc2c430cfaa7fbe7a4e9c1aeafd13fed"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0058.0004.json",
+        "record_revision": 4,
+        "review_id": "W0058",
+        "sha256": "1d5108b1bac71d6c581d022cac3e8c3b8810b5adf70af420d980c885cd35c7bd"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0059.0004.json",
+        "record_revision": 4,
+        "review_id": "W0059",
+        "sha256": "1d8f5beda5d70f144b04ef2875ec2c54268da1230a3a02104befe421cf902efa"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0060.0004.json",
+        "record_revision": 4,
+        "review_id": "W0060",
+        "sha256": "97736899a57ca92c5c1e20ece41a2521d9138301dcc8d9db6d39f700aa447be9"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0061.0004.json",
+        "record_revision": 4,
+        "review_id": "W0061",
+        "sha256": "cc47d640ad63f83c41e34856d344a6e0950e78a9437ad7ba5041507b33c91f16"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0062.0004.json",
+        "record_revision": 4,
+        "review_id": "W0062",
+        "sha256": "7b0f68e1a7c8d733deb644cf4ed6842526c541793c48689ecbec86503ea38991"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0063.0004.json",
+        "record_revision": 4,
+        "review_id": "W0063",
+        "sha256": "4d60ae279eacba670fb039799014f749dcfe193e2674d69b5626bbe50e229953"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0064.0004.json",
+        "record_revision": 4,
+        "review_id": "W0064",
+        "sha256": "a7c7aaa20b69bd5d2fb4b4832fa50aa54c35694ea229d1fc111ac019c5907127"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0065.0004.json",
+        "record_revision": 4,
+        "review_id": "W0065",
+        "sha256": "65a4092ee2ce52c127d3274c51254b61459c471d72640c930aa19943c8a32168"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0066.0004.json",
+        "record_revision": 4,
+        "review_id": "W0066",
+        "sha256": "9421c9014d165070e7dff27748ea093d74ec70150364c5b989c2b9dbe53d2f49"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0067.0004.json",
+        "record_revision": 4,
+        "review_id": "W0067",
+        "sha256": "78a33d4eacc9095b664c534e8a634288c30396df0d9dd32e9d98471dd60cf48b"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0068.0004.json",
+        "record_revision": 4,
+        "review_id": "W0068",
+        "sha256": "e73f7d57cfbecb0dc9d5cf17449ffe9f21bdc1aec126960ec7cc62fc10f8514d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0069.0004.json",
+        "record_revision": 4,
+        "review_id": "W0069",
+        "sha256": "571fcfb3786771bca5993b097fb404171634a232bf5c5293efaa32d55decb9af"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0070.0004.json",
+        "record_revision": 4,
+        "review_id": "W0070",
+        "sha256": "533331337b2268cce17bdc1a3ddca60413ff24a8f0964353e11a0f880b85d93a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0071.0004.json",
+        "record_revision": 4,
+        "review_id": "W0071",
+        "sha256": "0a00f3bee22218bf02f59613c62dcafc4cb9bd849a2acde7494e3c4d4323e303"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0072.0004.json",
+        "record_revision": 4,
+        "review_id": "W0072",
+        "sha256": "18d10f6c995439577ef5e647a113db54f74b275da33d00ae3a1048ccb86197d5"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0073.0004.json",
+        "record_revision": 4,
+        "review_id": "W0073",
+        "sha256": "95ec27bc796d83855267d9d8ea49c8211a2e78ecd24daa668681708733557477"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0074.0004.json",
+        "record_revision": 4,
+        "review_id": "W0074",
+        "sha256": "797db792f8b35c9a078a54066675f16a2cb32306d80a8a222879ceedf54ea089"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0075.0004.json",
+        "record_revision": 4,
+        "review_id": "W0075",
+        "sha256": "b5a892de035ef0de1f69f3644fb2024071aa99c11a22f7a1c83d04eca33f27b1"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0076.0004.json",
+        "record_revision": 4,
+        "review_id": "W0076",
+        "sha256": "a1688c55f5d77e37311e976e4b360123b2a040962107cb8675abe602d65bad31"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0077.0004.json",
+        "record_revision": 4,
+        "review_id": "W0077",
+        "sha256": "fa231c79303e00309269e3515dfeaef7638b2fe4feac99e921ad0f52d6e8f7ec"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0078.0004.json",
+        "record_revision": 4,
+        "review_id": "W0078",
+        "sha256": "45446258069d23443a9a35ca69a703bc744bb21a5ebf8361b61e5195e7e1db16"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0079.0004.json",
+        "record_revision": 4,
+        "review_id": "W0079",
+        "sha256": "29db2e644d05b81e8cf1c4aca616cb985981965301b02fa80c5d874fc184d9c4"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0080.0004.json",
+        "record_revision": 4,
+        "review_id": "W0080",
+        "sha256": "35cb16d9ac2485a946fdff782031676d359cc667c38482f157108998150ec668"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0081.0004.json",
+        "record_revision": 4,
+        "review_id": "W0081",
+        "sha256": "8a724bdb4cfa9fac72fbbcf5e730cfdd27a637f628b0e58761e7d38947c5b6de"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0082.0004.json",
+        "record_revision": 4,
+        "review_id": "W0082",
+        "sha256": "1ffe264d6197bb3c9ebfae28dc475cf0be693e8f9dff1ec1760674174f3f8f2c"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0083.0004.json",
+        "record_revision": 4,
+        "review_id": "W0083",
+        "sha256": "b5c80b1e6dd0afe054632ae6a8112da43451a9a36a0c0ac9d81df55b522c2fed"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0084.0004.json",
+        "record_revision": 4,
+        "review_id": "W0084",
+        "sha256": "5c9e41a29023c34ac000217efe702c41c61159acac55657f7f1b813f14bfa1d9"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0085.0004.json",
+        "record_revision": 4,
+        "review_id": "W0085",
+        "sha256": "e3cf63556d9d26eab16eaf026361c4ba3669df94eff7f362207f8bdc42ebc503"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0086.0004.json",
+        "record_revision": 4,
+        "review_id": "W0086",
+        "sha256": "73e3fe348727e483db12f13afa4620da1baed48fe0466e782bf67b21ec173332"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0087.0004.json",
+        "record_revision": 4,
+        "review_id": "W0087",
+        "sha256": "d2767e85da38960ab78ef961701c3b9069a9104a328bdce27222900e55d04493"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0088.0004.json",
+        "record_revision": 4,
+        "review_id": "W0088",
+        "sha256": "f82518745841daabf10fbf6b66c7795f390b31f5b192cc7054c57cb5fc7de34c"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0089.0004.json",
+        "record_revision": 4,
+        "review_id": "W0089",
+        "sha256": "fcc84d38f54e364c8d6bc66e6578137f034802a5302defe6e176845b7e9a901c"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0090.0004.json",
+        "record_revision": 4,
+        "review_id": "W0090",
+        "sha256": "17d741b714f006b0f519c55d7097b7c798a3c0f313820d509462607b24bda1c2"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0091.0004.json",
+        "record_revision": 4,
+        "review_id": "W0091",
+        "sha256": "485a01015ced2982d890fdd0ed9b4992e8e5161c855edd7e512b8a72114f0235"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0092.0004.json",
+        "record_revision": 4,
+        "review_id": "W0092",
+        "sha256": "9ba3cdd40e95be9d786ead911e176d14f60a5cdc2c0b5aad47cb1f04c52c181a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0093.0004.json",
+        "record_revision": 4,
+        "review_id": "W0093",
+        "sha256": "7e8f592878553017dd438defd1b8885cfd197eb0ecb9f7e1c808c848b9f9dd5a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0094.0004.json",
+        "record_revision": 4,
+        "review_id": "W0094",
+        "sha256": "3011c50ff6782dddac853549cd0b4ab9fee52fc2768c90b4bf09249c20773031"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0095.0004.json",
+        "record_revision": 4,
+        "review_id": "W0095",
+        "sha256": "31a62b74ae018fd70e3f9654195866dab6b629da32684378c6067c687a465032"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0096.0004.json",
+        "record_revision": 4,
+        "review_id": "W0096",
+        "sha256": "16511b28b1691dc4ef7a4b881382815d9319a581c0dde6075b5c6c66515e6c9b"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0097.0004.json",
+        "record_revision": 4,
+        "review_id": "W0097",
+        "sha256": "48895629cfe3a8b0966520e6ad2d95ebc3c45655b9636564a204cd1b30c72585"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0098.0004.json",
+        "record_revision": 4,
+        "review_id": "W0098",
+        "sha256": "f9571d21664050136231f7e10719e820fb10dc52a6f8cb87fe4d397669e78d06"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0099.0004.json",
+        "record_revision": 4,
+        "review_id": "W0099",
+        "sha256": "27609de75b329c409f154a5aff7013f9405b1f70ae79f82dfecaa171ed73c641"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0100.0004.json",
+        "record_revision": 4,
+        "review_id": "W0100",
+        "sha256": "ed58e7169a2d3eef585da8d866a45dad7bc09b51923d26253b7ace1b6ddcdb9e"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0101.0004.json",
+        "record_revision": 4,
+        "review_id": "W0101",
+        "sha256": "518bb4b4a16a596f4dac06b8e32cb59fbfc30cf38f05904565e4f7530e1d1626"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0102.0004.json",
+        "record_revision": 4,
+        "review_id": "W0102",
+        "sha256": "78aaa50a57671a0b5fc72454c787ddf2d52591b54fcbaccf24aa343be3e5fd34"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0103.0004.json",
+        "record_revision": 4,
+        "review_id": "W0103",
+        "sha256": "4554b3782629bfde8f9e7aced53624c4c43dfd23dca749f068287c145a99632e"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0104.0004.json",
+        "record_revision": 4,
+        "review_id": "W0104",
+        "sha256": "26594b7e5a75bb607deb1f43717d9097c893bfff19fe184e42a1867310066932"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0105.0004.json",
+        "record_revision": 4,
+        "review_id": "W0105",
+        "sha256": "ebbff6226bf46da06e1cbd25074cefa70e5a21d21a93fe5ae939f9bf4a7c6ae1"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0106.0004.json",
+        "record_revision": 4,
+        "review_id": "W0106",
+        "sha256": "43a065f2bc928b193d0116d251daf4dd09d1eed8c0020095203bd1dc5339cabe"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0107.0004.json",
+        "record_revision": 4,
+        "review_id": "W0107",
+        "sha256": "80fffc2f699cef2fffd601abd5353b4f84bba0cb515a3d2edb23ea20795771c5"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0108.0004.json",
+        "record_revision": 4,
+        "review_id": "W0108",
+        "sha256": "3f08a5a647eb0c6394a2e3fdce124664469291ca9cfe17b4d16b3371a15a8b2e"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0109.0004.json",
+        "record_revision": 4,
+        "review_id": "W0109",
+        "sha256": "764fc4f93fdf17bb07289ea90c6fbd2f3c16aec522d607f8fac34336819b5fc9"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0110.0004.json",
+        "record_revision": 4,
+        "review_id": "W0110",
+        "sha256": "87e7943822ee490c98a2c41177daafe81fcaa1ef84cf7bc4bfcb831f3e13f305"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0111.0004.json",
+        "record_revision": 4,
+        "review_id": "W0111",
+        "sha256": "6a0c768c8f6f60f786a5facba17d1867ab71fd50fd153c24d1929ac240e8c65c"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0112.0004.json",
+        "record_revision": 4,
+        "review_id": "W0112",
+        "sha256": "d4b42a7298ef455b14f93c7ed0cb317f6584d9fd147589549c15e17737bca3cd"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0113.0004.json",
+        "record_revision": 4,
+        "review_id": "W0113",
+        "sha256": "03bf316c1ae9237be4f21f9860aa1fb6276b9bd0f40c3cfb7fc8fe6732c7478c"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0114.0004.json",
+        "record_revision": 4,
+        "review_id": "W0114",
+        "sha256": "85e04d4a9ad8850bd17be960ab5796b71df4c29ef2b6e05ce0ff8af50f236613"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0115.0004.json",
+        "record_revision": 4,
+        "review_id": "W0115",
+        "sha256": "8c3f5fb8666653036675ecfc9f2b1fe212dbdcc200097b5adefdbeb90870f53f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0116.0004.json",
+        "record_revision": 4,
+        "review_id": "W0116",
+        "sha256": "36ce5df3cc19b3b368180fcd49a79a9c8d16a6b2e8aa7d916e9a272830eef102"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0117.0004.json",
+        "record_revision": 4,
+        "review_id": "W0117",
+        "sha256": "05acb91fbc8b2c6bd31f6e4cbc455fbfc2ba56db836a98244b5adb71a5dcffaa"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0118.0004.json",
+        "record_revision": 4,
+        "review_id": "W0118",
+        "sha256": "733e97eec32883fd8c42c58341968691b1b70bb16bc679bde708f1eb01730b10"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0119.0004.json",
+        "record_revision": 4,
+        "review_id": "W0119",
+        "sha256": "308ca8baa6eda72408905fd0d101b58c409cabe868c2fdbcfb23acf82e72d2dd"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0120.0004.json",
+        "record_revision": 4,
+        "review_id": "W0120",
+        "sha256": "1c770ee3a2da308475b9719c41a83543c6a2eb2329d83f6719b5420a845e3f42"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0121.0004.json",
+        "record_revision": 4,
+        "review_id": "W0121",
+        "sha256": "db8118ab0cf3df8d22c443c6f6814687c2180338030cf6f63046410fe7203e11"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0122.0004.json",
+        "record_revision": 4,
+        "review_id": "W0122",
+        "sha256": "3bedb24c9384b5b474abceb1c564481b1fc97047d9c36d7b70b613da10f2bc5f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0123.0004.json",
+        "record_revision": 4,
+        "review_id": "W0123",
+        "sha256": "6a9fd71c34100b9d8d3174181ed62c70733cb1107238e2a130af75b82616edf6"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0124.0004.json",
+        "record_revision": 4,
+        "review_id": "W0124",
+        "sha256": "34256289d71a199e06aeeef9b3f359b0a7b78a9e68003f74cb30380bc9df489b"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0125.0003.json",
+        "record_revision": 3,
+        "review_id": "W0125",
+        "sha256": "bd3a0771f4759a8ae91eb15e1e8c9c7f5daf9aca0326252ebc9de2374154122a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0126.0003.json",
+        "record_revision": 3,
+        "review_id": "W0126",
+        "sha256": "1180df3ee18e237e6a9f9270112bb450d698b74f117b61c20cac8b95f82c8634"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0127.0003.json",
+        "record_revision": 3,
+        "review_id": "W0127",
+        "sha256": "79e1cffb0d2dfef419724a9c8e6ddc5a277519b5e969f79e81a6e14acb0ca79e"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0128.0003.json",
+        "record_revision": 3,
+        "review_id": "W0128",
+        "sha256": "c8724f77d98add775f7ce23cbb6b4f92e88e2904fadb0ca107f7706dd3f209aa"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0129.0003.json",
+        "record_revision": 3,
+        "review_id": "W0129",
+        "sha256": "8755114313e04c124cf9aaef00f0d2e5fc769ef97603d38047568ae738498a69"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0130.0003.json",
+        "record_revision": 3,
+        "review_id": "W0130",
+        "sha256": "839919341e3158e83b2aece50cb10384177707d660d31f43b13c7b493672d077"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0131.0003.json",
+        "record_revision": 3,
+        "review_id": "W0131",
+        "sha256": "9b44d7fd729c927b1166e161d68e062503b409f69c2117642ff2871a1f7156c8"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0132.0003.json",
+        "record_revision": 3,
+        "review_id": "W0132",
+        "sha256": "1d00791cd5dab1224d746c7cc638530db1a38630b7e68acc31c4fac9f7e75214"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0133.0003.json",
+        "record_revision": 3,
+        "review_id": "W0133",
+        "sha256": "88a1be975396e6a53553eaf12ee7564b5098ec3a2553f56194d54bec9851be7b"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0134.0003.json",
+        "record_revision": 3,
+        "review_id": "W0134",
+        "sha256": "9f4e4a86342e373564adcc0a0d8acad1d57c30b8a7b4f7024f7bc38501b49570"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0135.0003.json",
+        "record_revision": 3,
+        "review_id": "W0135",
+        "sha256": "c83fd884de8f6c11012b12d8c1f02e4e9af4a2af694ab8c1a47429b3d7212bc7"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0136.0003.json",
+        "record_revision": 3,
+        "review_id": "W0136",
+        "sha256": "389e4e69842065d8ce04c91d3dbf21815894324773914810c237f082424a915a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0137.0003.json",
+        "record_revision": 3,
+        "review_id": "W0137",
+        "sha256": "324d52759bf77c409cd3d5b8c3a44acde9a80ecea835dc0eb683f37c8810fc57"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0138.0003.json",
+        "record_revision": 3,
+        "review_id": "W0138",
+        "sha256": "56eedabdbac8765f9d6f4e3ddce5b6da7a07651fcff2aaf6ddd61eba809cec06"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0139.0003.json",
+        "record_revision": 3,
+        "review_id": "W0139",
+        "sha256": "23a6179edabb519b360f89d0afa4351d1cf7a029e68ed0559520771a94aefd6c"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0140.0003.json",
+        "record_revision": 3,
+        "review_id": "W0140",
+        "sha256": "9a97bb51ebc103fcfbf4529ae6bd1ac234c30dd6b10a0d42cb474ab267e00fd6"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0141.0003.json",
+        "record_revision": 3,
+        "review_id": "W0141",
+        "sha256": "84a3e0df9aa8afe7950e673d36a0b55efb538b2b72fbded4513ba4f1f4102e1f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0142.0003.json",
+        "record_revision": 3,
+        "review_id": "W0142",
+        "sha256": "d1f6e666663fc70cbfc2355344653703c304a69b4557f6e5d1459b093aa3bd1d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0143.0003.json",
+        "record_revision": 3,
+        "review_id": "W0143",
+        "sha256": "313de1139bcb1ceb8f9cbf6a2883f792635bcdf9781f7ea9fe9efd587cba4e6f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0144.0003.json",
+        "record_revision": 3,
+        "review_id": "W0144",
+        "sha256": "6a4be4ffdb06b22b7879ca30d724a6546df380cb4b5c2beb456fbe6fe965285f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0145.0003.json",
+        "record_revision": 3,
+        "review_id": "W0145",
+        "sha256": "253f1a25945792e19aae209f0597799d46b8639c8ce20a740f1907fcf4a05dcc"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0146.0003.json",
+        "record_revision": 3,
+        "review_id": "W0146",
+        "sha256": "140d96d98bbcbee6f613b76d3f2d1fa3d9c1c07a42aff023887ee5a9327ac83b"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0147.0003.json",
+        "record_revision": 3,
+        "review_id": "W0147",
+        "sha256": "7e9cda18bf7b2f556b09f9eb9839a39a76f3b286344974180eb7d6e834fd1024"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0148.0003.json",
+        "record_revision": 3,
+        "review_id": "W0148",
+        "sha256": "62e4a6b02b9f862745b50aa17faeb49e1a5d5e3203c20e9e9427062f19a9b3c9"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0149.0003.json",
+        "record_revision": 3,
+        "review_id": "W0149",
+        "sha256": "6e1b3e31fb13829bbc649a70afd34d5c39ce89ec7eb360e17d9c8c5958328293"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0150.0003.json",
+        "record_revision": 3,
+        "review_id": "W0150",
+        "sha256": "a1fbb1cf59055fb5188efb6aa4a2ed4de68fd3ea4577f0431e82c2479aa2825a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0151.0003.json",
+        "record_revision": 3,
+        "review_id": "W0151",
+        "sha256": "a88e153042913c86a39dcd182dd99df2f1698e873dabd731a054bd02e3180631"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0152.0003.json",
+        "record_revision": 3,
+        "review_id": "W0152",
+        "sha256": "fc109716f7184c4da3b6b211ee7a7f950d8442f44e33e609f1e383394d516806"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0153.0003.json",
+        "record_revision": 3,
+        "review_id": "W0153",
+        "sha256": "cd45f2cf4d8e92933455686c992438eaf29801c4b0b3ad30d645e7914bbf669e"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0154.0003.json",
+        "record_revision": 3,
+        "review_id": "W0154",
+        "sha256": "317103b22c6381ccfe7d4a1e94bad7f693e5c2f5c3ce63b219b411082e9984ad"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0155.0003.json",
+        "record_revision": 3,
+        "review_id": "W0155",
+        "sha256": "92eda91fa9672e15de4fea97761d323a983bd197c854f2152bf6f71e1295335f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0156.0003.json",
+        "record_revision": 3,
+        "review_id": "W0156",
+        "sha256": "fad4e8d7e8cdad7092e35d053b85573e73a576b7405a8c846add7f1b41095a16"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0157.0003.json",
+        "record_revision": 3,
+        "review_id": "W0157",
+        "sha256": "258e573e0103b8d10eba84dbf0f40ac433220f15f75d80325b73be9a16d5a13d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0158.0003.json",
+        "record_revision": 3,
+        "review_id": "W0158",
+        "sha256": "183aa144794948d1db51ffb7ce923f5d0ad9b75d867aa7042e92e02b55c3a6e4"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0159.0003.json",
+        "record_revision": 3,
+        "review_id": "W0159",
+        "sha256": "cb0dce85406500f854d6f8c196a3feeac53f7421cf6359976296613800ddfbc4"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0160.0003.json",
+        "record_revision": 3,
+        "review_id": "W0160",
+        "sha256": "43824259124168e990a10fbdc6ea9ad10d19f84596bca6c42e6577bee1f8188a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0161.0003.json",
+        "record_revision": 3,
+        "review_id": "W0161",
+        "sha256": "9ba2925393e9a8e23550371057f1b0a2e74a2e5993d4f023d46029545700c619"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0162.0003.json",
+        "record_revision": 3,
+        "review_id": "W0162",
+        "sha256": "9a3c89cb24536db4d21901ab37a03ec0b0f1c825f0a72371824b655cb22acb49"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0163.0003.json",
+        "record_revision": 3,
+        "review_id": "W0163",
+        "sha256": "2d94a17dc7068021e2f714fb4a2897c27035a10bd886ee4ddbe592c7f37aa49f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0164.0003.json",
+        "record_revision": 3,
+        "review_id": "W0164",
+        "sha256": "a6ddcd3e8cdd7b65fc464199dc8e5a946689b954ec66e06e13912a86fdb36f3f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0165.0003.json",
+        "record_revision": 3,
+        "review_id": "W0165",
+        "sha256": "31c3cf8d32be4b4e7c79b4071d4d9370b1cac85d1633e19d88ff7e408ecc77d3"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0166.0003.json",
+        "record_revision": 3,
+        "review_id": "W0166",
+        "sha256": "b21b9d42f05812db081824b4f8929ca2265f20f4192a86c8187bb578a1a62dfc"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0167.0003.json",
+        "record_revision": 3,
+        "review_id": "W0167",
+        "sha256": "50a0492ccec4740969809340422ad23ea1c7c53b550cbdcb409dfc6e77a105d9"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0168.0003.json",
+        "record_revision": 3,
+        "review_id": "W0168",
+        "sha256": "c57070b0f3b7e185ccf6ca8bf8510940cf0cc59e3a86b3679245199accca8fb1"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0169.0003.json",
+        "record_revision": 3,
+        "review_id": "W0169",
+        "sha256": "21e4ba3150ddf75a47c5bfbef6705752e195f9593491d46604b8951d1daf08cf"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0170.0003.json",
+        "record_revision": 3,
+        "review_id": "W0170",
+        "sha256": "42aea7eaf162e8faf05da4008026d97b03accd14d9c6bf1c03e1a3cd18dd4967"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0171.0003.json",
+        "record_revision": 3,
+        "review_id": "W0171",
+        "sha256": "be016e2dc45fd5c3b5c7875cfc9933f332ca233bd9791a5ac9208b7783efb6f5"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0172.0003.json",
+        "record_revision": 3,
+        "review_id": "W0172",
+        "sha256": "148f66258e81e1d8acdd8b81601678dbacfa7112b31b4d1d8bea820fa5dc9fb5"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0173.0003.json",
+        "record_revision": 3,
+        "review_id": "W0173",
+        "sha256": "ed03b12181a7d991ed658e7bb6e03dd9d61d754f07366cc732d0b1af2b509989"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0174.0003.json",
+        "record_revision": 3,
+        "review_id": "W0174",
+        "sha256": "fbbb51fd9f167713708d0575b5370dd6aa4f4f249fcd015bcf03d9b68e213634"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0175.0003.json",
+        "record_revision": 3,
+        "review_id": "W0175",
+        "sha256": "6482f8a6905694c141cb9776ec9f24dae17e44da19d4c5267738899c56e15605"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0176.0003.json",
+        "record_revision": 3,
+        "review_id": "W0176",
+        "sha256": "3609a30855f65486adb68454823f28beb5b612eb153854cf8139b7fc9f1d3c84"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0177.0003.json",
+        "record_revision": 3,
+        "review_id": "W0177",
+        "sha256": "b83f4d2c9e52b78e15e1227656af2216cf00408637bf0e4febd84dfa236da856"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0178.0003.json",
+        "record_revision": 3,
+        "review_id": "W0178",
+        "sha256": "f6a3c21b0bebf659e1412c791ab02a2a472f576bcd7151ff0eaf4d26bd0ce0d8"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0179.0003.json",
+        "record_revision": 3,
+        "review_id": "W0179",
+        "sha256": "ecf092cca6ef7b083f785e9b5f5a2b981bc6994727f34e28cd92497ce684c0c9"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0180.0003.json",
+        "record_revision": 3,
+        "review_id": "W0180",
+        "sha256": "63741463f0c37ffaacd808452b8554c62e16eaaa79f85e9269bbdf6e1eb6e875"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0182.0003.json",
+        "record_revision": 3,
+        "review_id": "W0182",
+        "sha256": "2d1e045c0bf890cfa09dbb3beb4a9d949c875838f227e0a4a5dff060215ce4aa"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0183.0003.json",
+        "record_revision": 3,
+        "review_id": "W0183",
+        "sha256": "729d09952c7d4a65a84c0ac3c3534b38749f580a4bf048de840c199425b7998f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0184.0003.json",
+        "record_revision": 3,
+        "review_id": "W0184",
+        "sha256": "cb7e53e9240ea71ea789edf5033bf088c2f128aa1eb509b90eb66a02583dde2b"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0185.0003.json",
+        "record_revision": 3,
+        "review_id": "W0185",
+        "sha256": "1342123d56b1a741e5975799d84fb18d8e26b05729676354218ed76aa69acfbd"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0186.0003.json",
+        "record_revision": 3,
+        "review_id": "W0186",
+        "sha256": "d876de7639cc1397c413bb2ecdb78f6903889c0e57a18a33f1822b660cad094f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0187.0003.json",
+        "record_revision": 3,
+        "review_id": "W0187",
+        "sha256": "c90b25002a356d92a715643fc390c10ce8c32ea85c7507d118c694c1f629f472"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0188.0003.json",
+        "record_revision": 3,
+        "review_id": "W0188",
+        "sha256": "aa682ad8943efaf5a6d867ca8c569d5cb7f6466f690372c5ed5d9d8538d98bbf"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0189.0003.json",
+        "record_revision": 3,
+        "review_id": "W0189",
+        "sha256": "f5775d73d207c7bd3ecbb0c9776e426dcce032481e48f5f7bfb7122c8900c3f9"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0190.0003.json",
+        "record_revision": 3,
+        "review_id": "W0190",
+        "sha256": "02c04da2b7c00cb5e02157d13ea2e4f2a4eb434ffefb1b29ef4da80f08d51a78"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0191.0003.json",
+        "record_revision": 3,
+        "review_id": "W0191",
+        "sha256": "c2dfbc09216dd22735e096af094de788487c4768006906d1d4f6ed090e45e633"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0192.0003.json",
+        "record_revision": 3,
+        "review_id": "W0192",
+        "sha256": "0b7feffd608c8824e3afe8f676dd488820abd9c49728154f24908c87a41c8be3"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0193.0003.json",
+        "record_revision": 3,
+        "review_id": "W0193",
+        "sha256": "f7a8c70d58c531396ecb43e6e3e7a2f29f3ff27d2f2d6a10bd003f33247d18f3"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0194.0003.json",
+        "record_revision": 3,
+        "review_id": "W0194",
+        "sha256": "d745ee7ccf316425de6557968cc191fffb1eb3a70421ab15cb9d2e2eb17d0b57"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0195.0003.json",
+        "record_revision": 3,
+        "review_id": "W0195",
+        "sha256": "3b8119ab50a4b97df85bbc65daf4bc22f8f1b5cea09f261fe0619a67bd1f6e6a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0196.0003.json",
+        "record_revision": 3,
+        "review_id": "W0196",
+        "sha256": "1ae6f9eeb4dcb289098a08a80f488abf6c77cc87343ce46358fba6b176ef3d2c"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0197.0003.json",
+        "record_revision": 3,
+        "review_id": "W0197",
+        "sha256": "b6285ba9c3d5b64c8bca016c118c69ec2ff096e7fef09f5d1fad3f08267691b7"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0198.0003.json",
+        "record_revision": 3,
+        "review_id": "W0198",
+        "sha256": "00f2593eb3e77623ce5ed81ef229d3094633eff2779101bb34908a8f7c64d616"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0200.0003.json",
+        "record_revision": 3,
+        "review_id": "W0200",
+        "sha256": "d145e1e3949e42a7ef441de64e6e55f4bbcb9d5284d4f17b100298027a167e5a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0201.0003.json",
+        "record_revision": 3,
+        "review_id": "W0201",
+        "sha256": "f511e55e5ab3e8f58fb5b73ba2af1ff50717b5353cb81f44a4310194c5af48c7"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0202.0003.json",
+        "record_revision": 3,
+        "review_id": "W0202",
+        "sha256": "b059d2c0b0ec662727703fa3784e1ef9d7d374abde7f001e7eb5d275829d3fd9"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0203.0003.json",
+        "record_revision": 3,
+        "review_id": "W0203",
+        "sha256": "49947446ba4bbccb2633da94350a44ebb9094682de9e1c5e705b8e0e4a333487"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0204.0003.json",
+        "record_revision": 3,
+        "review_id": "W0204",
+        "sha256": "87e7d0c79676eaa6c533ee22a5f4c827cfc9fc363e53243dcbd5248da3e666cf"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0205.0003.json",
+        "record_revision": 3,
+        "review_id": "W0205",
+        "sha256": "5083bce8fa10ddf9a641a827459c22150064c86ca876600aab7fc1c151f95204"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0206.0003.json",
+        "record_revision": 3,
+        "review_id": "W0206",
+        "sha256": "2f27409debc20224096737d14a3823997ed7039f17a1ace7bf0c157adb351336"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0207.0003.json",
+        "record_revision": 3,
+        "review_id": "W0207",
+        "sha256": "0e09349dd2e926e348d3c2fd6c37e438cd37ac91511fd57e77d5bb7c06c2d48c"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0208.0003.json",
+        "record_revision": 3,
+        "review_id": "W0208",
+        "sha256": "c0a086237c0662eac55146d9be20977787d12ad48d5bb4d88109fa6d686f7897"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0209.0003.json",
+        "record_revision": 3,
+        "review_id": "W0209",
+        "sha256": "c61230e3d1782a00f311cea86fa8e3e93c0c08aceb07acb746061164fd46731f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0210.0003.json",
+        "record_revision": 3,
+        "review_id": "W0210",
+        "sha256": "7ffdbdfaa50f963f42610362883051a321d5112b9bc53d571c74ca2f744fd068"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0211.0003.json",
+        "record_revision": 3,
+        "review_id": "W0211",
+        "sha256": "d38406b638f47035791f35843f60334bd31fc1853ad8a0245033c4d66f0f86db"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0212.0003.json",
+        "record_revision": 3,
+        "review_id": "W0212",
+        "sha256": "e2c7fd5d4b64994b94ed5e06d6bb944f07f6892188c91a9851e7030cd110e03e"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0213.0003.json",
+        "record_revision": 3,
+        "review_id": "W0213",
+        "sha256": "633edb1025fb73b4244c3b83627dea1de06579b2ade13bb71d7e84f80319acbb"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0214.0003.json",
+        "record_revision": 3,
+        "review_id": "W0214",
+        "sha256": "6ef39a08ebcf045fb119c9af64106901b4cca871c1d97b772aa7aac5615c74d1"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0215.0003.json",
+        "record_revision": 3,
+        "review_id": "W0215",
+        "sha256": "65736f8fb93498313a27d19a2bc25b48ff44b55406d0ff7b8fa68c383a2b4f1d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0216.0003.json",
+        "record_revision": 3,
+        "review_id": "W0216",
+        "sha256": "91ef00dfeb7d879e7f068b959e8c7ba4715bf36ef0f9793ecd6829d1c7c0c029"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0217.0003.json",
+        "record_revision": 3,
+        "review_id": "W0217",
+        "sha256": "315ce0f29447afc99498c1c9c87976edd130f6a933f6ae8a477ceba7638033b9"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0218.0003.json",
+        "record_revision": 3,
+        "review_id": "W0218",
+        "sha256": "802ece9c7884be29303046da76501c540e5c2aa1c5fb460b9b875dd430765b1c"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0219.0003.json",
+        "record_revision": 3,
+        "review_id": "W0219",
+        "sha256": "0f54c5d80647d2166b58d325fdd827bbc99214e37d890c79b5bdb069987aeb02"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0220.0003.json",
+        "record_revision": 3,
+        "review_id": "W0220",
+        "sha256": "61d1d6b2251be6cbb585f0790238f6c7b4fe55fedd9ef168918011d55120f9e3"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0221.0003.json",
+        "record_revision": 3,
+        "review_id": "W0221",
+        "sha256": "b65b03dec05903e9cc3ce639fe77672b8361268d78538379fbbea0d2e5953d8f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0222.0003.json",
+        "record_revision": 3,
+        "review_id": "W0222",
+        "sha256": "d6c32e91a53a66383e5e762f2fdc9257a2b50dd0ab19c6456e2712d545acf393"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0223.0003.json",
+        "record_revision": 3,
+        "review_id": "W0223",
+        "sha256": "639c28c9dd1dc8d3c829416e11d5fc42231a118a6e62d8538238f3a843577883"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0225.0003.json",
+        "record_revision": 3,
+        "review_id": "W0225",
+        "sha256": "1f2471df1796a531ac92427c6822caa268b72df0bc1d4e78df9332a7d954a861"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0226.0003.json",
+        "record_revision": 3,
+        "review_id": "W0226",
+        "sha256": "5bbdb3d941f32d1cf6c4856c3a8d84dc5dfdf9c4d7110e9154a9950324accabb"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0227.0003.json",
+        "record_revision": 3,
+        "review_id": "W0227",
+        "sha256": "c8da3525e76e418a8325cda41e9a3b31f88f72dc8748ea748c9c7fec149c73a8"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0228.0003.json",
+        "record_revision": 3,
+        "review_id": "W0228",
+        "sha256": "1f6a4ae6e368fdbb3eb9e79d6b016b4d6cdecf6af8f11e3948f6242e03caa4a0"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0229.0003.json",
+        "record_revision": 3,
+        "review_id": "W0229",
+        "sha256": "c109755b310ca3869853ee22d16e416c4a0cbd65dd2b506ecaa30f48e86bdedf"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0230.0003.json",
+        "record_revision": 3,
+        "review_id": "W0230",
+        "sha256": "03d2190fef85a48b1bca51517a7afdfc26563a20b358ac3a2291f18125421bc7"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0231.0003.json",
+        "record_revision": 3,
+        "review_id": "W0231",
+        "sha256": "a67af7db46e988d9c4a38cee594cd3af67b64dfe65228c1254c84c90cb195d43"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0232.0003.json",
+        "record_revision": 3,
+        "review_id": "W0232",
+        "sha256": "b81ea1132183c3699fad577caf59cd54a2ebebbe07f0bed1d7932864d5e18ce3"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0233.0003.json",
+        "record_revision": 3,
+        "review_id": "W0233",
+        "sha256": "707e423ea172f95d82ccedbb1470a8782a9f4dee98b065bba4c764e741b02d9b"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0234.0003.json",
+        "record_revision": 3,
+        "review_id": "W0234",
+        "sha256": "3737da12339cd162a630032e6de642cb24c25d963e0b19a83b162f51b5fb96b0"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0235.0003.json",
+        "record_revision": 3,
+        "review_id": "W0235",
+        "sha256": "9f495245dd73e38ccfba49e01bb2af084ab090882a3ec82ef1212236d820d0dc"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0236.0003.json",
+        "record_revision": 3,
+        "review_id": "W0236",
+        "sha256": "2465fe47ab1e895a6fee9297461ea664daab3a90ab3359338a536ce1c561379a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0237.0003.json",
+        "record_revision": 3,
+        "review_id": "W0237",
+        "sha256": "460aeffaa6d86e145096bd424f312d7f1778c2f6ebad229a298168c3c4041ab7"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0238.0003.json",
+        "record_revision": 3,
+        "review_id": "W0238",
+        "sha256": "8f097a3edd0e9980a801460ee246416f4de3db427fc21b30c63436f0d51aa9a0"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0239.0003.json",
+        "record_revision": 3,
+        "review_id": "W0239",
+        "sha256": "7a9f71b02b154d37df284ed2d903b09c62c83acf3ac5ceb75967b1aaa31d0311"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0240.0003.json",
+        "record_revision": 3,
+        "review_id": "W0240",
+        "sha256": "a38bfe1139e93049994af3c7964a0eb98442fb844ea0bf7e09f9d4930bf1e365"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0241.0003.json",
+        "record_revision": 3,
+        "review_id": "W0241",
+        "sha256": "b80b0a7647e678a7133d66f7a447991c7f66c4733422e26cef11ec5a65448fb4"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0242.0003.json",
+        "record_revision": 3,
+        "review_id": "W0242",
+        "sha256": "a3d5a46c67880a229d1e7716a6f404d9bdf309fc8b6ae6db24e08d353001edc7"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0243.0003.json",
+        "record_revision": 3,
+        "review_id": "W0243",
+        "sha256": "2522e95774e5cc3921999f453e805b86f2d73d2f38dd019df1ff3841a6910a62"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0244.0003.json",
+        "record_revision": 3,
+        "review_id": "W0244",
+        "sha256": "1eb8a617b9f09ab530cd3b43217dc961fc8c709c811e6029d119e39d48c28226"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0245.0003.json",
+        "record_revision": 3,
+        "review_id": "W0245",
+        "sha256": "41445f00da414c52f69b097ae1d5b4d5b3ef15088d6bb3295dda8862f7c9f031"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0246.0003.json",
+        "record_revision": 3,
+        "review_id": "W0246",
+        "sha256": "b0addd5fbbfdd32dc0f9f6e22e2329aa07324af44273b43302a173e0a9fad1cf"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0247.0004.json",
+        "record_revision": 4,
+        "review_id": "W0247",
+        "sha256": "ee80c5ce9db272447cb7687cb5f3fea41876dd4e8157b32b04a8ff68b491bb63"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_02",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0248.0003.json",
+        "record_revision": 3,
+        "review_id": "W0248",
+        "sha256": "d8f582df88c775ea2a0646e1779806c5ddd36bee703933aa66168d7e85cd99b6"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0249.0002.json",
+        "record_revision": 2,
+        "review_id": "W0249",
+        "sha256": "6db83b81865a23d86e598caef2fc2277b887dd7c1f31886eeb1ff491bbb529c5"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0250.0002.json",
+        "record_revision": 2,
+        "review_id": "W0250",
+        "sha256": "9a21722f040236e12d180b477381880029174a5972151393593e5337e25af0de"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0251.0001.json",
+        "record_revision": 1,
+        "review_id": "W0251",
+        "sha256": "38099cd69e0506b7b639609d6a8e792c08dbb3f1cb6f0c3400ad883be7daa96f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0252.0001.json",
+        "record_revision": 1,
+        "review_id": "W0252",
+        "sha256": "6c46f018b6a7293e2bb8a8ec39956cd7489e74c1d472a293e456d63621396078"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0253.0001.json",
+        "record_revision": 1,
+        "review_id": "W0253",
+        "sha256": "f0383363a3ef80c527a82e5bc9fb020afcc8491196d9b87e1aec643fea8c21a3"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0254.0001.json",
+        "record_revision": 1,
+        "review_id": "W0254",
+        "sha256": "55b80b4d948a58fa00e56c86f0902710b09675d28bff67b01772ce76a3ae23e4"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0255.0002.json",
+        "record_revision": 2,
+        "review_id": "W0255",
+        "sha256": "96c8fdea501e394eab36a257c79fc93b229384123ba9aa63924ed8bd8cf375a8"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0256.0002.json",
+        "record_revision": 2,
+        "review_id": "W0256",
+        "sha256": "b66623af8b7566e35bceac9680fc3655fbb8e386b5e5cc7e58797d24e97d9778"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0257.0002.json",
+        "record_revision": 2,
+        "review_id": "W0257",
+        "sha256": "664bd94827c420665a5c9a18636356dfaf3f45ab40ea945f6fbbcae47bfa5852"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0258.0002.json",
+        "record_revision": 2,
+        "review_id": "W0258",
+        "sha256": "5ce78d894d8e1773a1e41a52f076fd05d4e860c462626bc6d1a4a0d1489f2183"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0259.0001.json",
+        "record_revision": 1,
+        "review_id": "W0259",
+        "sha256": "069f0c4404f8e19cb27c215d07368875c3dd91fc61b726c1f732d22b51e40884"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0260.0002.json",
+        "record_revision": 2,
+        "review_id": "W0260",
+        "sha256": "80bfbe3275b1a270230a4a5019492513101669c77caf0b8c3633294f60f9914f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0261.0002.json",
+        "record_revision": 2,
+        "review_id": "W0261",
+        "sha256": "5a91bb2a4dd49df311b69b0a23574c6de853dcc1a778df75243cb39676489467"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0262.0002.json",
+        "record_revision": 2,
+        "review_id": "W0262",
+        "sha256": "9f9671206e86cbb70b45834b7a46152266455bbba92bcdc0957ef5bb22c8afb5"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0263.0002.json",
+        "record_revision": 2,
+        "review_id": "W0263",
+        "sha256": "43d7a29cbcb205475c1b109ecfb0d16e78153c7a8d2e7dfc153d885ac42ac93a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0264.0002.json",
+        "record_revision": 2,
+        "review_id": "W0264",
+        "sha256": "a0d11126d575f49be8282590e603e6dc96e0c7c804ad0196bc148c45b6a47646"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0265.0002.json",
+        "record_revision": 2,
+        "review_id": "W0265",
+        "sha256": "bcd7848ec132a9ce92c1ef3f3167fe2b96e5fa4473c66dfec46158630a40dc8f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0266.0002.json",
+        "record_revision": 2,
+        "review_id": "W0266",
+        "sha256": "ee23c795ab3308c981ad30f168693f88249f461e0ffcebfdde85562bdde86c8c"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0267.0001.json",
+        "record_revision": 1,
+        "review_id": "W0267",
+        "sha256": "0ca1e797dd83bc50c4ac2331c5267345fb76d951e548b8a4618761ff525ed02d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0268.0002.json",
+        "record_revision": 2,
+        "review_id": "W0268",
+        "sha256": "bdaaad7db159cecafaae8e18c0fdadeaca94e5a1c24cb68d59fca80bf61f0ea2"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0269.0002.json",
+        "record_revision": 2,
+        "review_id": "W0269",
+        "sha256": "40c0a5f4af1a6e6d58db8dece93ef2350136890d4522be27ca091acba582309d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0270.0002.json",
+        "record_revision": 2,
+        "review_id": "W0270",
+        "sha256": "a011e014b5a83ed22a9eebc78a421e809d1d433b03792b2dbf4a49eff76ad78d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0271.0002.json",
+        "record_revision": 2,
+        "review_id": "W0271",
+        "sha256": "ccddf0a2086254d92fd45f6bf0c1f4a37b206a74c9efbef7ed7e7bf18f2424aa"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0272.0002.json",
+        "record_revision": 2,
+        "review_id": "W0272",
+        "sha256": "2cb51e828c0fbcccb8ff3ab5ef6ec15288baa677e2ccfdd55f388696cfc86277"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0273.0002.json",
+        "record_revision": 2,
+        "review_id": "W0273",
+        "sha256": "cab59165246d0dcf4370f687d2fec252cfd7bc45de6bbff9b9d1e0b9d3899fce"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0274.0001.json",
+        "record_revision": 1,
+        "review_id": "W0274",
+        "sha256": "73e5358cd824fba1a1bcc703b1dad8ca17f0aab75ebeddcc4a4e569ca9050a06"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0275.0002.json",
+        "record_revision": 2,
+        "review_id": "W0275",
+        "sha256": "6aacbb840913203134874e71aaee307aee021d82120765a52f34e03721fbda1b"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0276.0002.json",
+        "record_revision": 2,
+        "review_id": "W0276",
+        "sha256": "5660dbfb83e4dc972d5d959e4552d23fd5cf693c541c6d3483c6bdbb3aa54579"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0277.0002.json",
+        "record_revision": 2,
+        "review_id": "W0277",
+        "sha256": "462f8b5dcbe36b80c6e4dab4f306ff62696f1c0fdfa02b648fd49e77131685d1"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0278.0001.json",
+        "record_revision": 1,
+        "review_id": "W0278",
+        "sha256": "06ebb6395bd2114fdb837754174e48aaa25051d4b233d46496799ab830e2297e"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0279.0002.json",
+        "record_revision": 2,
+        "review_id": "W0279",
+        "sha256": "07d266546fa78720dbea189e052a6130e4fba5370d7b9acdfae287d9353fc446"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0280.0002.json",
+        "record_revision": 2,
+        "review_id": "W0280",
+        "sha256": "c19ea88350f9db7e61be7d259887ef25a94b8a56718a22b6fef7090dab8f8f8a"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0281.0001.json",
+        "record_revision": 1,
+        "review_id": "W0281",
+        "sha256": "d50597a90d26cef5efb51e3d5bcbecf9606d2da6f1d725ee3555895f2ec2d77b"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0282.0001.json",
+        "record_revision": 1,
+        "review_id": "W0282",
+        "sha256": "d4f92789cb98686513fd926020c96b416503866847b2fa5b3a2d7a9132d1413f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0283.0002.json",
+        "record_revision": 2,
+        "review_id": "W0283",
+        "sha256": "9c193f6cb6c860c7701cd42d778ab24420490e8911b01c09380091a56838fb48"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0284.0001.json",
+        "record_revision": 1,
+        "review_id": "W0284",
+        "sha256": "fdb3b26e0b5b1cc2ef726d68723355e2652296b0654295773c9f9318063d9960"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0285.0002.json",
+        "record_revision": 2,
+        "review_id": "W0285",
+        "sha256": "0b64fd7ac56bb31559cc326d34de173b5084dc82132c881d3177cff3bc463672"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0286.0002.json",
+        "record_revision": 2,
+        "review_id": "W0286",
+        "sha256": "f9c9565148b2030331d579c7d70ec1cc5bd1eee91b8f3cf39d14a4629a315c62"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0287.0001.json",
+        "record_revision": 1,
+        "review_id": "W0287",
+        "sha256": "7ab7356cadfd3570389edaa172e700436390d5cf42602360833f11621895c384"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0288.0002.json",
+        "record_revision": 2,
+        "review_id": "W0288",
+        "sha256": "003beae691e00d764aee508d6e7bc72d66edb864d8de4a7375ff69f8eabaf4da"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0289.0001.json",
+        "record_revision": 1,
+        "review_id": "W0289",
+        "sha256": "441aa861a86b4cd9b86e9b8fe868f8ad0711075642f59148d265727c2cc445ff"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0290.0002.json",
+        "record_revision": 2,
+        "review_id": "W0290",
+        "sha256": "5ac12aadc02307a648daed2a40c9775981800ae17151911fb4fab9f18b298b27"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0291.0001.json",
+        "record_revision": 1,
+        "review_id": "W0291",
+        "sha256": "1870a783303486815d03fc2edfc8e18c519af91b8c721326e64e41a2dd38df19"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0292.0001.json",
+        "record_revision": 1,
+        "review_id": "W0292",
+        "sha256": "53756e7879942bc41f5eb5aa7aaba867ff146a0685fd61f511e6295a1ef8df07"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0293.0001.json",
+        "record_revision": 1,
+        "review_id": "W0293",
+        "sha256": "587a6c5093da9a80908d05148685f42956ab7ceb3f46f0d8f0069b46abd20187"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0294.0002.json",
+        "record_revision": 2,
+        "review_id": "W0294",
+        "sha256": "c76de7095f0e504e53b48b0efc797625d054bb5443604f72e57f1f22e3e30232"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0295.0002.json",
+        "record_revision": 2,
+        "review_id": "W0295",
+        "sha256": "9315703193e4d26ea570c2956b976d58e42c96cb18eda3106fe9e40d435ac657"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0296.0001.json",
+        "record_revision": 1,
+        "review_id": "W0296",
+        "sha256": "2cdff5dd9ae1cb36115b69a1a16d4b08318f371fba532aa3004cfc108b15dcdf"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0297.0002.json",
+        "record_revision": 2,
+        "review_id": "W0297",
+        "sha256": "6b79d9ce2101888d3ad8d08cb7928933c26c1b8e05c66f7e896cd1d8031e2482"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0298.0002.json",
+        "record_revision": 2,
+        "review_id": "W0298",
+        "sha256": "957d247627820f2697b42a477fc970769269cc1c6b7ee9f268c3c24f859ea4bc"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0299.0001.json",
+        "record_revision": 1,
+        "review_id": "W0299",
+        "sha256": "97171617b4b313b16c548bbe2ceb0fca255a1420aa37909d42b5e76f9974c5ba"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0301.0001.json",
+        "record_revision": 1,
+        "review_id": "W0301",
+        "sha256": "214c238f87ab2173c8a74e2fdffbe95d556a5f4ec6134342cd4c8403324f7fb0"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0302.0002.json",
+        "record_revision": 2,
+        "review_id": "W0302",
+        "sha256": "856f6688c18f8efb582dd44260d402cb498fc9b74f878b0be1b69e6a58014c04"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0303.0002.json",
+        "record_revision": 2,
+        "review_id": "W0303",
+        "sha256": "7eb271f19e861da0f47080833cb9a07297c7ffa4810c4f1dc19902fe26dbfbfb"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0304.0002.json",
+        "record_revision": 2,
+        "review_id": "W0304",
+        "sha256": "e0b5e9c6125364cb7ca92484013ad660b1d026bdc07b5c77baaa2dfc53719c1c"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0305.0002.json",
+        "record_revision": 2,
+        "review_id": "W0305",
+        "sha256": "c16c92360558e117dce667ee2c057c478a707cacf964162c2e4ea380ae2cb4e9"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0306.0001.json",
+        "record_revision": 1,
+        "review_id": "W0306",
+        "sha256": "779567c0dda9fdbab5f8d4e3fa16c1b4145102315817242db97f2a3b6724a4d3"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0307.0001.json",
+        "record_revision": 1,
+        "review_id": "W0307",
+        "sha256": "21dd57324eb327edd5bee49f0cceae27b184bfcf24761016d5388e30524b5998"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0308.0001.json",
+        "record_revision": 1,
+        "review_id": "W0308",
+        "sha256": "c4176184e1d32f1effd55b6ea42600c84ae00c68488090e3a8754981c7debc8d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0309.0001.json",
+        "record_revision": 1,
+        "review_id": "W0309",
+        "sha256": "6c5e96dc171fafc5692764c2e341285ba614bda43e11005a664f4fdee9a36066"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0310.0001.json",
+        "record_revision": 1,
+        "review_id": "W0310",
+        "sha256": "34f2e330abb5d8002bef54a653b60e5007b010adf3c7ef06229dc99926617b11"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0311.0001.json",
+        "record_revision": 1,
+        "review_id": "W0311",
+        "sha256": "caa201e3ee251b256cd60bd63ab8c3ade5f6f26020b858d3c580d9759bccbf4d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0312.0001.json",
+        "record_revision": 1,
+        "review_id": "W0312",
+        "sha256": "962dba8974b1b1ea182e61f4e8cd2d378fa189bfbc2e2506ebacc44875dffeb1"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0313.0001.json",
+        "record_revision": 1,
+        "review_id": "W0313",
+        "sha256": "4a392cc37023952fcb471f556b08a8ad248a13ccdb6caa7e670573c757bc1dfb"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0314.0001.json",
+        "record_revision": 1,
+        "review_id": "W0314",
+        "sha256": "cdb5a21d82c24fbca9a7342e95abbfb54762c03104cc5e4d9d1506894e1ed9f0"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0315.0001.json",
+        "record_revision": 1,
+        "review_id": "W0315",
+        "sha256": "2ee7302f84f50988fcfebbecfef36944752e879a985ce03768eefc6075ba5e6d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0316.0001.json",
+        "record_revision": 1,
+        "review_id": "W0316",
+        "sha256": "ba8bd87a758182bb12941548c5757fef9492da2bf241728fe430cf415b50eeb2"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0317.0001.json",
+        "record_revision": 1,
+        "review_id": "W0317",
+        "sha256": "0f57c19f85b87962a86d34070c92c60acc9721b2aebe7be647ffc2456c323751"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0318.0001.json",
+        "record_revision": 1,
+        "review_id": "W0318",
+        "sha256": "f18f8abc123fa54fce2ccd012ea6a1a3f65d02fbc2a49c40787094de7289e4de"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0319.0001.json",
+        "record_revision": 1,
+        "review_id": "W0319",
+        "sha256": "b061bf804dc39a44f23a4c78684277e1b8ccc35cab12e426bfa8b1162c859d3d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0320.0001.json",
+        "record_revision": 1,
+        "review_id": "W0320",
+        "sha256": "fb6d4bbe814c7ba065e50f80f71077595b55a694196c01cfee08868363ebeaab"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0321.0001.json",
+        "record_revision": 1,
+        "review_id": "W0321",
+        "sha256": "8bb6a5c70b76149b9a73bd56f33f398618e2287f37e0739a1f52b52abc151a7d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0322.0001.json",
+        "record_revision": 1,
+        "review_id": "W0322",
+        "sha256": "7cf546d726ee88ddb4374fdcba9ed917aac5d9376289bab11609aebba52b045b"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0323.0001.json",
+        "record_revision": 1,
+        "review_id": "W0323",
+        "sha256": "a7e53b30092094dd6af3028d4bd93e12c8f9d6590611968c234604c37d871e31"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0324.0001.json",
+        "record_revision": 1,
+        "review_id": "W0324",
+        "sha256": "20118ec090c4dcf823274b9b1b1dd21df2aa3b944f949f325021314a827310cc"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0325.0001.json",
+        "record_revision": 1,
+        "review_id": "W0325",
+        "sha256": "a9590a357873643792895fa0a527557df64a6a426f1f7f8273d8d6c5c2f71be7"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0326.0001.json",
+        "record_revision": 1,
+        "review_id": "W0326",
+        "sha256": "5c7be56394892112bc8673fda2c6ea9d9b7e70a5f6c010c07c0847b69cefc6e3"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0327.0001.json",
+        "record_revision": 1,
+        "review_id": "W0327",
+        "sha256": "529e5a6ea851064046f65604d6e27f881daa28f91f9e3542c4c818bffed62613"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0328.0001.json",
+        "record_revision": 1,
+        "review_id": "W0328",
+        "sha256": "91579a06b489ab3ce0ff24558997b85f3fcdebbac43768b236c3405a761e2d1e"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0329.0001.json",
+        "record_revision": 1,
+        "review_id": "W0329",
+        "sha256": "7c433405c6252ee93f40195abdad74fb95192fa56d5f7c8b00daf866f8e23728"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0330.0001.json",
+        "record_revision": 1,
+        "review_id": "W0330",
+        "sha256": "927eda3990b1532debcf06be22415d709074bfc70293a24ea32ebd28602df5b1"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0331.0001.json",
+        "record_revision": 1,
+        "review_id": "W0331",
+        "sha256": "629360a6d0f2eb0f4b40f42270642b011ced334fd212d4d099876261da282282"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0332.0001.json",
+        "record_revision": 1,
+        "review_id": "W0332",
+        "sha256": "23bf607a3bd45e5d79f24b98285cf79efd1918e5db259b7a295c194b555dbc6e"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0333.0001.json",
+        "record_revision": 1,
+        "review_id": "W0333",
+        "sha256": "6bd8d8eebca7fc5f1cec3842b17cbdfc90fae0c8c35aeee6514da7377f63f957"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0334.0001.json",
+        "record_revision": 1,
+        "review_id": "W0334",
+        "sha256": "86a7c2644b3e44ceeafe8db3f2cb9ed392f9b4612c954eb6633212334ae5197d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0335.0001.json",
+        "record_revision": 1,
+        "review_id": "W0335",
+        "sha256": "0c013271c0a8048172e5e8508ec79980bbb209d9157c68575618eabcb31c20a4"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0336.0001.json",
+        "record_revision": 1,
+        "review_id": "W0336",
+        "sha256": "70138615203cafaf4f01f21a7890acb0303677c6d193b474311459b62672ce0b"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0337.0001.json",
+        "record_revision": 1,
+        "review_id": "W0337",
+        "sha256": "022d8174f923802dea583da81c8edf7c1f5470270f5ea64d44978a6ac5b79e86"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0338.0001.json",
+        "record_revision": 1,
+        "review_id": "W0338",
+        "sha256": "23b0447cb4dd3d56b3b86a93651c79a18fea83a399ee68af3fa185be6f73cf40"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0339.0001.json",
+        "record_revision": 1,
+        "review_id": "W0339",
+        "sha256": "b89149183f3278acd12ad06480bf03020b760d0d64c00e765d225b8e0ebdd550"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0340.0001.json",
+        "record_revision": 1,
+        "review_id": "W0340",
+        "sha256": "185152ccf8432a5380f570bd3e22fd4664518aa24c5e6cbfc6a12b75db16f61d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0341.0004.json",
+        "record_revision": 4,
+        "review_id": "W0341",
+        "sha256": "b46d47e9ec74cb9b8c7696c4efc0a1f2a6252cff62b55826249c6a1287bca3a0"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0342.0001.json",
+        "record_revision": 1,
+        "review_id": "W0342",
+        "sha256": "deebd6acc162b5168b72e213988b6ef68477b4a546621af51d36346c3204cddd"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0343.0001.json",
+        "record_revision": 1,
+        "review_id": "W0343",
+        "sha256": "801e5045b5b992e5bbe9f3dd0787e077d8fd7319c5a77e7cd5da9a0b5c42768f"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0344.0001.json",
+        "record_revision": 1,
+        "review_id": "W0344",
+        "sha256": "cb76c28bfe27b7ee05ba0c7b6f92c0d1704dd4eca4309e608a330d1657248fe0"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0345.0001.json",
+        "record_revision": 1,
+        "review_id": "W0345",
+        "sha256": "645078a9823204a6ebb54fdfd171767524719e76fc90b426e2025718ee57db4d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0346.0001.json",
+        "record_revision": 1,
+        "review_id": "W0346",
+        "sha256": "d3c9fe2067fa9bbf68eaceec9263f158b81089c2aac1fea2d0acfff8c048b4e8"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0347.0002.json",
+        "record_revision": 2,
+        "review_id": "W0347",
+        "sha256": "e9a4d411eea32dd23cc4e86b167e2487991eeef5651accb64efb1c72a0bc8da4"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0348.0005.json",
+        "record_revision": 5,
+        "review_id": "W0348",
+        "sha256": "8a77aeeb19cd74d9b71e36a57df98a02bf8fefc6c5cb6e3add582c9d04da063e"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0349.0002.json",
+        "record_revision": 2,
+        "review_id": "W0349",
+        "sha256": "a0e428000c38d274458f81a68e014de7f0c9e2ef8a995ac2d33851201306abd9"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0350.0002.json",
+        "record_revision": 2,
+        "review_id": "W0350",
+        "sha256": "841aed9f3f1cbcc15e6e8558e9b94f385ae707236512165ed8adf100b55e19df"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0351.0002.json",
+        "record_revision": 2,
+        "review_id": "W0351",
+        "sha256": "744edbef2cbf06ac3e445f9f3ff0a1f606465b6f3747f62a6336bc4b0c19d0e1"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0352.0005.json",
+        "record_revision": 5,
+        "review_id": "W0352",
+        "sha256": "eb99478cf54c68aa18d0f23794e8f6b8443688df41c446a4cebdc775d3c1b721"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0353.0001.json",
+        "record_revision": 1,
+        "review_id": "W0353",
+        "sha256": "54df03bcacea68bcd064bf52b843228163ffd0d06864972acb2cf7fee48cfda1"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0354.0005.json",
+        "record_revision": 5,
+        "review_id": "W0354",
+        "sha256": "8148f8e38569e5220ab04f704039b8d01e0eb8a219470af48bea9fcaaa646e54"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0355.0002.json",
+        "record_revision": 2,
+        "review_id": "W0355",
+        "sha256": "05b85250cfe284cb47da3d75b2fb0f68a9e3052c27eb459a504a684c32ddc7ce"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01\\W0356.0005.json",
+        "record_revision": 5,
+        "review_id": "W0356",
+        "sha256": "18d1d68c878b535a0785a2b0a8bc3569126325e31ef1b63ff1c8c00a770fbebc"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0357.0001.json",
+        "record_revision": 1,
+        "review_id": "W0357",
+        "sha256": "ab72c9fee0c4f6cb559b965d836da896b400c579d5979a577c6874c975992339"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0358.0001.json",
+        "record_revision": 1,
+        "review_id": "W0358",
+        "sha256": "d0d5256335394a676b07de25be5a5cf062fa4d75adf17cabcf069a247f0f4579"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0359.0001.json",
+        "record_revision": 1,
+        "review_id": "W0359",
+        "sha256": "c9a4251e39cde47861c0e49b39186f0a5310928ab9921c8d63f6729fd8e859ff"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0360.0002.json",
+        "record_revision": 2,
+        "review_id": "W0360",
+        "sha256": "42acdd12730cd0a0ce39204156a8eb46a436c7c756c01057e0138a9fa8d99bcd"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0361.0002.json",
+        "record_revision": 2,
+        "review_id": "W0361",
+        "sha256": "1cac6d004ad31be066e5f2597508104423dd5154711082e46a7b289dfcad5263"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0362.0002.json",
+        "record_revision": 2,
+        "review_id": "W0362",
+        "sha256": "9a0f8cf017db41dbdb6d252638423410320b28090a7b16056f216aa40ce1a7ce"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0363.0001.json",
+        "record_revision": 1,
+        "review_id": "W0363",
+        "sha256": "21d48be7efff97a76439e2d0211db3eaa3e897b00d8cc4a0bd6416f9295b55cb"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0364.0002.json",
+        "record_revision": 2,
+        "review_id": "W0364",
+        "sha256": "866ba297632c759d063f663ea8d7285931f5e1c323cad346a1b0105db7fe1131"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0365.0002.json",
+        "record_revision": 2,
+        "review_id": "W0365",
+        "sha256": "7f15b882749e289b697ea051c4961fa9d9bc0b724f3a7955cc3c041c424bad58"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0366.0001.json",
+        "record_revision": 1,
+        "review_id": "W0366",
+        "sha256": "5848ae5fd9a24509c4f26cbf6dfbdc7a934e1847e609378332fe65bcdb15f871"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0367.0001.json",
+        "record_revision": 1,
+        "review_id": "W0367",
+        "sha256": "11772fa3f6be09783ba59afe5b75bc3ce32fe3dfb04b46278056851238995a6d"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0368.0001.json",
+        "record_revision": 1,
+        "review_id": "W0368",
+        "sha256": "90c314c3bf0adc8df4261099d9545e35fbf47b8b867a802c2038a0db8879add3"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0369.0001.json",
+        "record_revision": 1,
+        "review_id": "W0369",
+        "sha256": "6f8aefa732c9f55ce8b42e727b30ef14dcad38df3116c3b76d11b5eec7390d6e"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0370.0002.json",
+        "record_revision": 2,
+        "review_id": "W0370",
+        "sha256": "95baa340d3c775cb402ea02903ca347693bb4e5def82859ab117308d35144f43"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0371.0001.json",
+        "record_revision": 1,
+        "review_id": "W0371",
+        "sha256": "92c5aa225d26063a0a83ff2826c0feace24927ced4be7504541c633aba2d53b9"
+      },
+      {
+        "actor_id": "/root/a04_semantic_restriction_03",
+        "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0372.0001.json",
+        "record_revision": 1,
+        "review_id": "W0372",
+        "sha256": "869a663d38c2f4ed97b65ec7ee4a278369940fc6e65a87f046d31df5de027e9d"
+      }
+    ],
+    "context_checked_memberships": 381,
+    "criteria_responses": 1852,
+    "gate": "FRAME_BLOCKED",
+    "independent_eligibility_decisions": 0,
+    "missing_role_records": [],
+    "official_bibliographic_memberships": 384,
+    "quarantine_count": 0,
+    "quarantined_facts": [],
+    "released_new_method_facts": 278,
+    "requested_memberships": 384,
+    "requested_works": 367
+  },
+  "bibliography_replay": {
+    "capture_refreshed": false,
+    "official_memberships_replayed": 384,
+    "registration_followups": 4,
+    "registration_receipts": 37,
+    "replay": "BYTE_IDENTICAL_FIELDS"
+  },
+  "checked_utc": "2026-10-22T09:58:14.512131+00:00",
+  "gate": "FRAME_BLOCKED",
+  "independent_eligibility_review_completed": false,
+  "source_git_commit": "b4ebc334466c0f0afb28299c35c144adf116e948",
+  "transfer_bytes": 1229861,
+  "transfer_sha256": "d105eed48c37e6532776060b3aec4ab70ece3cad885d1555ce08d54c89cf5142"
+}

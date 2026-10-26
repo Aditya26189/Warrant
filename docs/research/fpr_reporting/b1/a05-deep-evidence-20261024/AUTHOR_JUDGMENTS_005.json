@@ -1,0 +1,128 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "changes": [
+    {
+      "before_row_sha256": "fe1ef66350a014f966f6b063a996079c23ede1dc23ce0dbba91ec3884dcbcdce",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0016-d45ff486b672-F01",
+        "A05-DEEP-W0016-d45ff486b672-F02",
+        "A05-DEEP-W0016-d45ff486b672-F03",
+        "A05-DEEP-W0016-d45ff486b672-F04"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0016-d45ff486b672-F01",
+          "A05-DEEP-W0016-d45ff486b672-F02"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0016-d45ff486b672-F01",
+          "A05-DEEP-W0016-d45ff486b672-F02"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0016-d45ff486b672-F03"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0016-d45ff486b672-F01",
+          "A05-DEEP-W0016-d45ff486b672-F02"
+        ]
+      },
+      "review_id": "W0016",
+      "scientific_rationale": "The selected GenTel-Shield edition has a separately evaluated input classifier, including goal-hijacking and prompt-leaking detection rather than harmful-content classification alone. The checked benchmark-construction template and its test-case construction linkage support an English component. This corroborates the preserved human domain adjudication. It does not establish every original test item is English or an English-only reported subset. Input classification requires no protected target answer.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2409.19521"
+    },
+    {
+      "before_row_sha256": "7d62259285ca50a712160be1561205140ec6a99ab2af212f66a84437d2c4c54c",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0022-f4f306c83b98-F01",
+        "A05-DEEP-W0022-f4f306c83b98-F02",
+        "A05-DEEP-W0022-f4f306c83b98-F03",
+        "A05-DEEP-W0022-f4f306c83b98-F04",
+        "A05-DEEP-W0022-f4f306c83b98-F05",
+        "A05-DEEP-W0022-f4f306c83b98-F06"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0022-f4f306c83b98-F01",
+          "A05-DEEP-W0022-f4f306c83b98-F02"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0022-f4f306c83b98-F01",
+          "A05-DEEP-W0022-f4f306c83b98-F02"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0022-f4f306c83b98-F05"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0022-f4f306c83b98-F01",
+          "A05-DEEP-W0022-f4f306c83b98-F02"
+        ]
+      },
+      "review_id": "W0022",
+      "scientific_rationale": "The selected edition separately evaluates embedding classifiers and pretrained injection detectors on benign/malicious input prompts. Its construction table links SPML into the stratified dataset, and the separately checked official pre-paper SPML card explicitly declares English. Under the locked English-text domain rule and prior human mixed-language precedent this supports a qualifying English-source evaluation component. Exact source-specific held-out membership and the complete merged test language composition remain unstated; neither is asserted. Classifiers operate on input embeddings/text before a protected answer.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2410.22284"
+    },
+    {
+      "before_row_sha256": "fa8644301c18ad4036feb70d4c32216c75b4f9543925f33551fbec3070be66a5",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0026-8ec851444816-F01",
+        "A05-DEEP-W0026-8ec851444816-F02",
+        "A05-DEEP-W0026-8ec851444816-F03",
+        "A05-DEEP-W0026-8ec851444816-F04",
+        "A05-DEEP-W0026-8ec851444816-F05"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0026-8ec851444816-F01",
+          "A05-DEEP-W0026-8ec851444816-F02"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0026-8ec851444816-F01",
+          "A05-DEEP-W0026-8ec851444816-F02"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0026-8ec851444816-F04"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0026-8ec851444816-F01",
+          "A05-DEEP-W0026-8ec851444816-F02"
+        ]
+      },
+      "review_id": "W0026",
+      "scientific_rationale": "The selected LEC edition separately evaluates prompt-injection classification using SPML system/user input pairs; content-safety evaluation is a distinct arm. The checked method paragraph links SPML to that evaluation and the official pre-paper SPML card declares English. This supports an English-source evaluation component, without transferring the separate LMSYS English-only filter to SPML or claiming exact sampled-pair IDs or dataset revision. Linear hidden-state and comparator judgments do not require the protected application answer.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2412.13435"
+    }
+  ],
+  "created_utc": "2026-10-25T18:07:19.521484+00:00",
+  "not_fresh_independent": true,
+  "release_sha256": "bfaf55a0f171d7718ef7c39c23f6d30838c43e84960bbe766ab92ef0a64df1f0",
+  "reviewed_unchanged": [],
+  "schema": "A05_DEEP_CUSTODIAN_JUDGMENTS_v1",
+  "scope": "Method/eligibility-only current exposed-custodian judgments; exact W0067 access gap retained separately, no earlier-version substitution. No outcomes/counts/assurance labels, sampling, assignment or B2.",
+  "source_git_commit": "f3324f77617a64ac17e5145b4f1527162ac4257c",
+  "version_corrections": []
+}

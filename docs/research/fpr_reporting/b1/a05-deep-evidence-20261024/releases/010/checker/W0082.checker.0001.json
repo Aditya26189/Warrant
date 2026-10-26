@@ -1,0 +1,278 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0082",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T18:27:59.788157+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0082.provider.0001.json",
+  "provider_packet_sha256": "14dc987912f83ff5ea3d2043a057af941e71d5a0736cad76ebace7b72dcf5db7",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2509.14285v4",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\9771ff0f05eb650652f20d2f88252ca548f0f1496d817d43fc8ff3ddd6449740",
+    "raw_sha256": "9771ff0f05eb650652f20d2f88252ca548f0f1496d817d43fc8ff3ddd6449740",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0123.json",
+    "acquisition_receipt_sha256": "daa5adb0bbc04205b72635d38f008561cd99e190589e96768f1799fee298fd14",
+    "captured_version_id": "arxiv:2509.14285v4",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        22,
+        55
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actual24-34 defines manually categorized HPI attack prompts and expected failure modes. Main36-55 distinguishes input taxonomy filtering/coordinator routing from downstream generated-response guarding in ChatGLM and Llama2 QA configurations. False retains uninspected agent-policy TableIII, benign-construction details and evaluated language. Input/output intervention distinctions are directly verified without asserting a complete inventory or a fully specified benign evaluation corpus.",
+    "locator_sha256": "3db82bc76b3e1e1f5c8d2f04c0e35031f0d63e4cac97bf971ca4b08959254360",
+    "locators": [
+      {
+        "n": 22,
+        "kind": "heading",
+        "id": "S3",
+        "sha256": "89c752d0fba27d05478b16012137a4ce0291bb16f52fc537fe5e59c7130e13b5"
+      },
+      {
+        "n": 23,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "sha256": "80ca0f17fae74891d8e2a9041cc38c7ca7b6c1bf948c4583f3a5715b65394b22"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "sha256": "edadd5a0f49883b52daa9a4d215c0ba8bcbdbc3427099e8b684d4d9c78f04905"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.1",
+        "sha256": "946a648b796136a6ade348895aed8c39a3cf3032210096136c47118a60f71859"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S3.I1.i1.p1.1",
+        "sha256": "20a9b0e03974c5095118c2a87971419c90c6636f2e4d42138b483a2e83237c67"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S3.I1.i2.p1.1",
+        "sha256": "d918a8e09547ee658ed619ed665fcf3437a5fec9d13c1d5b230288e9c3364ab0"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S3.I1.i3.p1.1",
+        "sha256": "0ba286bd939d44ec838397f8c44b9cc93625956d27fbddd7fd6946e471eab95d"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S3.I1.i4.p1.1",
+        "sha256": "ff21234ea128aec1c3bcfa807b6553cea09796e748edf5cfd339b90bd81af095"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S3.I1.i5.p1.1",
+        "sha256": "50f453698788f85b5abd0db61ac4630cdff915e686303e318b7243f0fb3cb9bf"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S3.I1.i6.p1.1",
+        "sha256": "08e15405dd97b3f84b7349248bf9bbf9671d87b4730e2d73e123ed7b47c8ae59"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S3.I1.i7.p1.1",
+        "sha256": "a88c41ea638da3aa93fa891114c3ef546c2be1e593a7ad94e15f857a96cf516b"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S3.I1.i8.p1.1",
+        "sha256": "333af13fd6029b411379857fb75a15b4fa17ba9d7e13ab9c9b9e258258e0e82f"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S3.SS1.p4.1",
+        "sha256": "6c0a17689f3f373553cc7ea3cd3105c81406706eec0e2950fbcfcea65b1dc2f9"
+      },
+      {
+        "n": 35,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "sha256": "a1d9b6cd04abd9c011b3c364132ac55615f28f301234819deaa8917f19bd9801"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.1",
+        "sha256": "c2903a07ffd8d2ae51e7621544f1e721c220c4abd7c76d3056ca18ecfda7f7ca"
+      },
+      {
+        "n": 37,
+        "kind": "heading",
+        "id": "S3.SS2.SSS1",
+        "sha256": "d7fa98e6b8c051bce173780707e3f10a572749e979aec4bab9f0f12d066087a3"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS1.p1.1",
+        "sha256": "b573b64c1f831308674fcfb41548fd7f35c84a8cb9205d7adeae5c62c4339e94"
+      },
+      {
+        "n": 39,
+        "kind": "heading",
+        "id": "S3.SS2.SSS2",
+        "sha256": "d7551530d60608d8c559206919a5c4d7389e1d5f232ed1cc68e1e09765260d67"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS2.p1.1",
+        "sha256": "dd80e5bebc339ba32b70b67b16172da2347c5d3af5ce6a29cd2411a3357ea531"
+      },
+      {
+        "n": 41,
+        "kind": "heading",
+        "id": "S3.SS3",
+        "sha256": "460d260c68bae5789fdd987e2d866b9074dc9f058a78d05ff3b2308537e62483"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S3.SS3.p1.1",
+        "sha256": "63d3128bc870052094d05a22ffdd8121dc2d2c89b9c942de2a69af4f70a6cef9"
+      },
+      {
+        "n": 43,
+        "kind": "heading",
+        "id": "S3.SS4",
+        "sha256": "3ffc0ed9dac64ae21b84f5a154185fb530282732002187c12a744b2446242b35"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S3.SS4.p1.1",
+        "sha256": "41bb8e386b0bb42788d631b15b55deb32f7a12f1dcc74bf5ea82c295738dded0"
+      },
+      {
+        "n": 45,
+        "kind": "heading",
+        "id": "S4",
+        "sha256": "7a89cde92e2f8df5a878aeb46ffb272af74e6d3d6b5aaf36d46ad77109f6e9af"
+      },
+      {
+        "n": 46,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "sha256": "948721c0bc9c827be5db552e81e1346f79d94d91a106db7bcb3e8f5e7ca51389"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "sha256": "2434b33150fd1f4477b92fe821ef99ccfc2de2d5f63635e614b38e88c35eb267"
+      },
+      {
+        "n": 48,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "sha256": "fda437921c30bd760cc9f38ddf028f543cab6ba1f5a9cc8d08ece4cf0c3fb026"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "sha256": "1a52fb082eada4e59922980095e17685f44a11479e7880d0a1c15f74f5928eab"
+      },
+      {
+        "n": 50,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "sha256": "1c6f7ba95c112e09c614a95acfba649d5f2c2fb6e4249e8af0919eea83fb7ea6"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "sha256": "0d6908b4abfee8b70c3a94bf00a4733580e21129a0fcaeb4ed8d53e326266ae1"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S4.I1.i1.p1.1",
+        "sha256": "8db2a35da96046be81215605f03dd6689996d31a242f438c9213fa0300832743"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S4.I1.i2.p1.1",
+        "sha256": "e4b65615c87a09c318b89b8ac4499d9a610055835d781f60bf23c20d677cfdca"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S4.I1.i3.p1.1",
+        "sha256": "364ce5a1de78d60b0368c755d1ab95cce4455834b2e228a457a1e4a59bb02a19"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S4.SS3.p3.1",
+        "sha256": "5b7ccf4618c6a086bb9025af3dfedef51861ecae5f175f7e9027f30e6883e69f"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual24-34 defines manually categorized HPI attack prompts and expected failure modes. Main36-55 distinguishes input taxonomy filtering/coordinator routing from downstream generated-response guarding in ChatGLM and Llama2 QA configurations.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual36/40/44/52/54 defines pattern filtering and coordinator malicious/benign input routing before domain-model invocation. Actual51 separately assesses the resulting model behavior against attack failure modes; it is not the same unit as an input decision.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual38/42/49/53 defines undefended direct forwarding and chain-of-agents screening of the generated domain answer. That Guard consumes protected task output.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False retains uninspected agent-policy TableIII, benign-construction details and evaluated language. Input/output intervention distinctions are directly verified without asserting a complete inventory or a fully specified benign evaluation corpus.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

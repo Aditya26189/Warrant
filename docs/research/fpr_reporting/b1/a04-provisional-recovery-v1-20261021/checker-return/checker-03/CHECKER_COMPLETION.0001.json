@@ -1,0 +1,41 @@
+{
+  "actor_id": "/root/a04_semantic_restriction_03",
+  "role": "Separate source-restriction provider/checker",
+  "completed_utc": "2026-10-22T09:53:08.954690+00:00",
+  "status": "COMPLETED_SOURCE_ONLY_ASSIGNMENT",
+  "final_manifest": {
+    "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\FINAL_MANIFEST.0001.json",
+    "sha256": "6135033b2727fdb114ed7183cfdc0a9929bd94495a14ebdfa72e961ef707f85c"
+  },
+  "role_input_attestation": {
+    "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\ROLE_INPUT_ATTESTATION.0002.json",
+    "sha256": "395c79bd955cac5d6aec87244f8790116455a830dc144bdc959f1753006139bc"
+  },
+  "final_validation": {
+    "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\FINAL_VALIDATION.0001.json",
+    "sha256": "6b74b481c33d403ef0e714919ce7a7e24608ebb625a1436e8905be57a5235b37"
+  },
+  "local_semantic_pass": {
+    "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\LOCAL_SEMANTIC_PASS.0001.json",
+    "sha256": "e7f4321f12d207f3d48ff1aa2c59495b70911634f6aa995178c0413283582ca8"
+  },
+  "coverage": {
+    "work_count": 118,
+    "member_count": 129,
+    "method_context_checked_member_count": 128,
+    "html_member_count": 105,
+    "supported_pdf_member_count": 23,
+    "held_identity_member_ids": [
+      "M0326"
+    ],
+    "new_method_fact_count": 86,
+    "reused_evidence_count": 211,
+    "pdf_method_context_page_views": 41
+  },
+  "held_identity_member_ids": [
+    "M0326"
+  ],
+  "eligibility_decision": null,
+  "scope_note": "All requested work records and feasible primary method contexts completed. Retained evidence gaps and identity limits are not eligibility judgments.",
+  "shared_filesystem_limitation": "Same resumed actor with shared filesystem; not an independent eligibility reviewer or OS-isolated fresh reviewer."
+}

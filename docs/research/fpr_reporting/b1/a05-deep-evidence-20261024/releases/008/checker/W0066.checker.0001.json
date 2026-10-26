@@ -1,0 +1,410 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0066",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:12:21.072838+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0066.provider.0001.json",
+  "provider_packet_sha256": "0893905246d91c56688d3ae783ae796b7f49a26f66e7f002486897b5854ba084",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2508.02110v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\523ffa38bc586acb9422891d1e33dc88b766da334ac2090d696a9201076202b0",
+    "raw_sha256": "523ffa38bc586acb9422891d1e33dc88b766da334ac2090d696a9201076202b0",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0102.json",
+    "acquisition_receipt_sha256": "d39f6b6085e26b7b9e40d0fe35dba44bd0cbc2a09e1c3b87cc474a9c2d571ffd",
+    "captured_version_id": "arxiv:2508.02110v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        16,
+        63
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Method18-53 specifies malicious tool metadata optimization using agent tool-invocation feedback; setup57-59 distinguishes targeted/untargeted settings and nondisclosable synthetic profile fields. Only the listed method families and inspected source context are approved; retained omissions remain open.",
+    "locator_sha256": "e7ca2e8166de2b8656b64da86120fb6c056280df137c64b8b3cd6a26cc0c4e63",
+    "locators": [
+      {
+        "n": 16,
+        "kind": "heading",
+        "id": "S3",
+        "section": "3 Method",
+        "sha256": "800157aa516b354192b8a9b19600a9e1d6e5696bbc18397a6460f7e671a655e6"
+      },
+      {
+        "n": 17,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "section": "3.1 Preliminaries and Settings",
+        "sha256": "75e8b809e8e1981392226689016c27f37b64c2ce0f118abef234309ca30b7cd0"
+      },
+      {
+        "n": 18,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "section": "3.1 Preliminaries and Settings",
+        "sha256": "e234b8d5cec82d35afc8055d168d277d536f32c674ec815416f5abe4c0dd38f8"
+      },
+      {
+        "n": 19,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "section": "3.2 Threat Model",
+        "sha256": "8dae3d37bd358625b06d326c43b6e2e0ddcf6262fba976481ad95733929e37de"
+      },
+      {
+        "n": 20,
+        "kind": "heading",
+        "id": "S3.SS2.SSS0.Px1",
+        "section": "Assumptions for the Attacker",
+        "sha256": "12b05fcc79ead60c6f419c81d632501346032f289edcfed7b55927ad6c76676e"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px1.p1.1",
+        "section": "Assumptions for the Attacker",
+        "sha256": "d3bc5df55cbeedcda45dc39523d350dd3b07bdf022f8239652e6c2c7b42f2df6"
+      },
+      {
+        "n": 22,
+        "kind": "heading",
+        "id": "S3.SS2.SSS0.Px2",
+        "section": "Objectives of the Attacker",
+        "sha256": "237bd0c9941efab770aa4f958fd8890aa2f35111d0870770a7be235dbce9809a"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px2.p1.1",
+        "section": "Objectives of the Attacker",
+        "sha256": "3860dc2dd2daee8d1901bad6daef3af3c6297a41530d243531068e7bb1390bd5"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px2.p1.2",
+        "section": "Objectives of the Attacker",
+        "sha256": "27c0f8ceed1b1a98c0f1e6829dce8bd7033cf575bda6aa8ce6ca9697484e7d86"
+      },
+      {
+        "n": 25,
+        "kind": "heading",
+        "id": "S3.SS3",
+        "section": "3.3 Attractive Metadata Attack",
+        "sha256": "75ef5466fa23d41b5db9e0201b10da15c0c5534b6a40b0b41b41f9c95c26c485"
+      },
+      {
+        "n": 26,
+        "kind": "heading",
+        "id": "S3.SS3.SSS1",
+        "section": "3.3.1 Overview",
+        "sha256": "9513b984660b073e027d727cbead3e94dadf8750a85a2834f4e69fd89b521165"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS1.p1.1",
+        "section": "3.3.1 Overview",
+        "sha256": "d561caa0b77662368a9e06aa61e9a13f30e6d949095ed25971dc275195ae1672"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS1.p2.1",
+        "section": "3.3.1 Overview",
+        "sha256": "01f538245238fb81482c71b16d13f788045fc26e09a1c50d34339916c9810e4b"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS1.p2.2",
+        "section": "3.3.1 Overview",
+        "sha256": "e8aa0197114ece3ef79545180e79baacf98e24f8980785ee29a4aa6c922420c5"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS1.p2.3",
+        "section": "3.3.1 Overview",
+        "sha256": "163f5f34c9a0853f87cfcfb18dbb052a7b4f827d9f244ef38d4b58e24c2368ff"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS1.p3.1",
+        "section": "3.3.1 Overview",
+        "sha256": "7b319ffd25a680659d4379a6bd3ad35ad1af2ed80472fe01567e7c48b2a9fb6a"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS1.p4.1",
+        "section": "3.3.1 Overview",
+        "sha256": "cca8ca7ca8df220f17e96dd1a805aa86c1ad9cf87b219ec66fb7052c302e9481"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS1.p4.2",
+        "section": "3.3.1 Overview",
+        "sha256": "4c930388d2740b9c21ea06124d7c257c17064d7f654bb8dbc0e5ce8388d16a2d"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS1.p4.3",
+        "section": "3.3.1 Overview",
+        "sha256": "30b03dfe5939a2041faa40de5cbfce7f367c91cbc030e2b60dd6707bfbd52352"
+      },
+      {
+        "n": 35,
+        "kind": "heading",
+        "id": "S3.SS3.SSS2",
+        "section": "3.3.2 Constrained Optimization Problem",
+        "sha256": "e09608165f13a1f23f630a8d6fb85a410c9e55981c4c4c23758f18667ca79790"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS2.p1.1",
+        "section": "3.3.2 Constrained Optimization Problem",
+        "sha256": "3674c8472479e3ab65481190b7e8894c47718c154e14d88b790249604d6a937d"
+      },
+      {
+        "n": 37,
+        "kind": "heading",
+        "id": "S3.SS3.SSS2.Px1",
+        "section": "Generation Traceability",
+        "sha256": "3d43204e0e2b53fdfafff662cfed1e5b567f510a14d33fa3e9cefa963affaa7c"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS2.Px1.p1.1",
+        "section": "Generation Traceability",
+        "sha256": "62fb12aa23707c2183b4b8e143703b9b51de9111252067c8c9f6b5f9456d23e2"
+      },
+      {
+        "n": 39,
+        "kind": "heading",
+        "id": "S3.SS3.SSS2.Px2",
+        "section": "Weighted Value Evaluation",
+        "sha256": "3b8f104617d38cbe45b780c0aee42d0d4ff4a2b845436d499339a17336ff23b5"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS2.Px2.p1.1",
+        "section": "Weighted Value Evaluation",
+        "sha256": "c64a561ef64c503962b4651ac446dc7d7c3903eddb9df3e33af84d1cc58ad015"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS2.Px2.p1.2",
+        "section": "Weighted Value Evaluation",
+        "sha256": "b0170f0330a3f0d86d24cd1dd582f663f65f44f9f26a11a9dc0ed6bddb442f54"
+      },
+      {
+        "n": 42,
+        "kind": "heading",
+        "id": "S3.SS3.SSS2.Px3",
+        "section": "Batch Generation",
+        "sha256": "2607979373fe86256ced33ca237195d7c6e99d3a1ddb390ede1dd7101b39371f"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS2.Px3.p1.1",
+        "section": "Batch Generation",
+        "sha256": "1947996ab5212a31156a46e7d01c6e782296e23adc6a29e255058be52658b7ff"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS2.Px3.p1.2",
+        "section": "Batch Generation",
+        "sha256": "7741c4a5a632b9e28354e0a1c21f1e85c2f34d3a7e3dfb3a1e3e0784b2e4c480"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS2.Px3.p2.1",
+        "section": "Batch Generation",
+        "sha256": "a6c65a8b9d9049c9505c78fc012d02d7a8e6f39e1dfb4ba0aee4801aa8e00544"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS2.Px3.p2.2",
+        "section": "Batch Generation",
+        "sha256": "4352db3a1527a6a99f9f5e4ebd652c85d915e710793654b71d527a4dbebcd9d1"
+      },
+      {
+        "n": 47,
+        "kind": "heading",
+        "id": "S3.SS3.SSS3",
+        "section": "3.3.3 Optimization Algorithm",
+        "sha256": "63405d3fea6f1f16bee63f95dcd034a8799ba6ac97b9b9add44898f364aadc93"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p1.1",
+        "section": "3.3.3 Optimization Algorithm",
+        "sha256": "e045beb8d8e9b86614c2a38ad64a22ee623553f2d4a7ce3cfab1299047a2335c"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p2.1",
+        "section": "3.3.3 Optimization Algorithm",
+        "sha256": "8920f68309563ce50208cc5bc28cdcd84188c46d7218f5a45c554e532923aa3f"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p3.1",
+        "section": "3.3.3 Optimization Algorithm",
+        "sha256": "3ec6e40c8d57839a2399a39fc31e4b3a5661486a0853df69894fe3ce18279a0f"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p4.1",
+        "section": "3.3.3 Optimization Algorithm",
+        "sha256": "9d4589134a5de0b9ed481d67d8896b1501837a5adc2d51dda3d9a49177ccd141"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p5.1",
+        "section": "3.3.3 Optimization Algorithm",
+        "sha256": "254ed2cb6eee5843c663c9e77c57bd7a999c340f584f506c6ca0cf5510bc57ff"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p6.1",
+        "section": "3.3.3 Optimization Algorithm",
+        "sha256": "db02fe32c142dddf6d7b429d99ad34c9f9159887d9d8d3d387fbe2ebcb68ef8b"
+      },
+      {
+        "n": 54,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Experiments",
+        "sha256": "816080d0d670406671a69c0c2aff33a78930ac53fa902ee05fcafd4561ab7915"
+      },
+      {
+        "n": 55,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Experimental Setup",
+        "sha256": "e7035c1d874ea0598662ccd394ff6457391dcbb5e434124f506219b5ff307d2f"
+      },
+      {
+        "n": 56,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px1",
+        "section": "Agent Setup",
+        "sha256": "8d7f77ae2098d853f62d21f1587ca7505a4a65862900236b9db601a484a9e4bb"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px1.p1.1",
+        "section": "Agent Setup",
+        "sha256": "643a3509612499d421ea4f74122ca7640c1ba25a632a431a98e65062946ca10a"
+      },
+      {
+        "n": 58,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px2",
+        "section": "Attack Settings",
+        "sha256": "b07ba3ff92c4a428e809861f7ea4a350af236dc1b0947585ee00bc62bc4b6319"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px2.p1.1",
+        "section": "Attack Settings",
+        "sha256": "e84bda524caa2b9af92724943b2e90b0ccac23df29034a16bb8d96600bfa923c"
+      },
+      {
+        "n": 60,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px3",
+        "section": "Baselines and Defenses",
+        "sha256": "faacc7c80f64fbe20440fded1b992e33c9c44e3e831346e39187e882c48083ba"
+      },
+      {
+        "n": 61,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px3.p1.1",
+        "section": "Baselines and Defenses",
+        "sha256": "d9241282893248ac1cb9f12238b90e88ddf4b9ec9463ae508ee35433a779ddad"
+      },
+      {
+        "n": 62,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px4",
+        "section": "Metrics",
+        "sha256": "a58da793c7250f1b3b8f8710efd7c7ee7e1a2dac4208f355dad42458a421e4ec"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px4.p1.1",
+        "section": "Metrics",
+        "sha256": "46602130b493af99b1575d0dea4af0347fdb83582001c2a3f2bc0c92c4a847c0"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Method18-53 specifies malicious tool metadata optimization using agent tool-invocation feedback; setup57-59 distinguishes targeted/untargeted settings and nondisclosable synthetic profile fields.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main method27-53 and metrics63 verify metadata candidate generation, invocation-feedback optimization, application trajectories and generated responses/actions as assessment objects; setup61 names Injection Attack and Prompt Attack comparators.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Setup61 explicitly defines query rewriting and system-prompt guardrails. Rewriting itself is an auxiliary input operation; defense evaluation assesses subsequent agent behavior.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions. Approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

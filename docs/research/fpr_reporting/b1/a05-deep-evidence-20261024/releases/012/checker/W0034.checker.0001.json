@@ -1,0 +1,358 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0034",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-26T05:41:33.970065+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0034.provider.0001.json",
+  "provider_packet_sha256": "9e9473b53d3cb9e3f561dfaa3722abf591f5052e337696f30e3c09a6e41c9808",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2503.11517v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\efb762160e25abd94bd855c8f0256367b49883abab61ad7bdaa476cef89be04b",
+    "raw_sha256": "efb762160e25abd94bd855c8f0256367b49883abab61ad7bdaa476cef89be04b",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0066.json",
+    "acquisition_receipt_sha256": "5203d973caa08e269298c1353aeb78e6fab341fb252891147e174e038dd06fdb",
+    "captured_version_id": "arxiv:2503.11517v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        41,
+        75
+      ],
+      [
+        83,
+        94
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actual42-59 specifies an OVON-message pipeline beginning with a Llama2 response, followed by Llama3.1 sanitizer, policy review and KPI evaluation. The intervention and assessment objects are generated stage outputs plus metadata, rather than original-input labels alone. False retains uninspected system-prompt bodies and broader comparative source context. Local generated-response dependencies are directly checked; no global absence or exhaustive language statement follows.",
+    "visual_check": null,
+    "locator_sha256": "48801eb5a4e7908a74e9cd86f0e733666360c60d4b56eed2de3b4368e4a1185e",
+    "locators": [
+      {
+        "index": 41,
+        "paragraph_id": "S2.SS2.p1.2",
+        "section_id": "S2.SS2",
+        "text_sha256": "f407d8c187cd7c9980bb7a795d53532d4a38f7ecee0ea98133d603e8e6cc1fb6"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S2.SS3.p1.1",
+        "section_id": "S2.SS3",
+        "text_sha256": "211c9fbbb7f1fe02d2e4921a57e386bc2e006ada2531d785c1cb159dd9bc4181"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S2.SS4.p1.1",
+        "section_id": "S2.SS4",
+        "text_sha256": "2c52a5e1056bd8fd1f25ed546b088795be3106a991206414c8057709cf71b722"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S2.SS4.p2.1",
+        "section_id": "S2.SS4",
+        "text_sha256": "27c40d01b1a91d419634456909fc91fcfc0619882881967fc3c8ff10874f42e0"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S2.I5.i1.p1.1",
+        "section_id": "S2.SS4",
+        "text_sha256": "4144771603a05a3c07cfa4dd059568982251917c1469ad6801fc1409403d31bd"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S2.I5.i2.p1.1",
+        "section_id": "S2.SS4",
+        "text_sha256": "a6a2e26a33175a0a8205156632aff267cdfef44cd3ec4a7361cb11c21d62096f"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S2.I5.i3.p1.1",
+        "section_id": "S2.SS4",
+        "text_sha256": "899f68abc3332e3f4ffc02ff800df99424346f7f1e4a2fcb77f5aa40368b9e5b"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S2.I5.i4.p1.1",
+        "section_id": "S2.SS4",
+        "text_sha256": "48615d07736bdca2f57726831cc72dadd289812ae9b3dc36acdb9929a6e4c2a0"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S2.I5.i5.p1.1",
+        "section_id": "S2.SS4",
+        "text_sha256": "3c544b6b7825f07a358901113532f09643eb5d8344ea36d114ca4b090c8b183a"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S2.I5.i6.p1.1",
+        "section_id": "S2.SS4",
+        "text_sha256": "265ed77f837a62b7a6eaf3e50df3c4a08a1ddb8dce0c942e0039d00a309a87f4"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S2.SS4.p2.2",
+        "section_id": "S2.SS4",
+        "text_sha256": "d085a66f1314f9a929eeab37409ce64a108fbf36cca2e70f2030a773b6f3c32f"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S3.p1.1",
+        "section_id": "S3",
+        "text_sha256": "5932165267374968f6304a8efe0b0d96aab82d8b8456a9f20363aab096f3a516"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S3.p2.1",
+        "section_id": "S3",
+        "text_sha256": "374602507b62dbef824022ce429a5b41a318cb3e92782a992f99dc75dd6e4d77"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "text_sha256": "b1949825d4c109556d996e64d5118f73de3860e1c27febcbf0ee2c4d28e151b4"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "c827ddc39b24c29aabad47ea3cf73072a5838ecfca9b2f7fc4f8c0d1ecacd9cd"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S3.SS2.SSS0.Px1.p1.2",
+        "section_id": "S3.SS2.SSS0.Px1",
+        "text_sha256": "5f94cea2c4ca3cb9e53859a8437f23bb244fd9eb45f625a203fa7c7b00c4eecc"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "S3.SS2.SSS0.Px2.p1.2",
+        "section_id": "S3.SS2.SSS0.Px2",
+        "text_sha256": "73bcf038c3f61825a9e395bb94b9e8594270b7e2d90a56117c46cfd1a2ef4768"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "S3.SS2.SSS0.Px3.p1.2",
+        "section_id": "S3.SS2.SSS0.Px3",
+        "text_sha256": "b0c87d4b0b24c98337deb9e45315637d3552ae5eabf356c2484d5017ee2a0ddc"
+      },
+      {
+        "index": 59,
+        "paragraph_id": "S3.SS2.SSS0.Px4.p1.2",
+        "section_id": "S3.SS2.SSS0.Px4",
+        "text_sha256": "684157f58d2f3a2d0fb0ffb695f5108dbfb48b118a02195734e36f96b2efecb9"
+      },
+      {
+        "index": 60,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "text_sha256": "af7b65831e621cf5431ed38c05eac0b620a8fa8926f9d8fb5dce0ad9be7adc83"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "S4.I1.i1.p1.1",
+        "section_id": "S4",
+        "text_sha256": "34680945f01c66166460caa89bfbceaef23f2dd0c28ebb47711ae8c977c1da4a"
+      },
+      {
+        "index": 62,
+        "paragraph_id": "S4.I1.i2.p1.1",
+        "section_id": "S4",
+        "text_sha256": "21fd0afd5f4e9eead28406b047f1589273fcdb2c595796c57faf8f0878abb8c0"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "S4.I1.i3.p1.1",
+        "section_id": "S4",
+        "text_sha256": "8cdf1bbffc11d4c34abc5260844c4d6dc5c54ddc6cef891ed89f3c8f1fb62712"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "S4.p1.2",
+        "section_id": "S4",
+        "text_sha256": "f0cde1c117fcd7e6d1067bc641fdda66f1277f28307f8eed8e5617682d2ed767"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S4.I2.i1.p1.1",
+        "section_id": "S4",
+        "text_sha256": "9de8652a9387c574eb8bcee846ad5290981f2324eb1dd9a3d9c708572425c665"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "S4.I2.i2.p1.1",
+        "section_id": "S4",
+        "text_sha256": "6b4928ed90f58c24d042c5762d0ed514f1555e03b1d9595525ab7b71d463a4f2"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S4.I2.i3.p1.1",
+        "section_id": "S4",
+        "text_sha256": "17685554b7aedd2307e42d9059b174e3c83a61a40ad823383500f166a4511927"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S4.I2.i4.p1.1",
+        "section_id": "S4",
+        "text_sha256": "5a835f66f05b148c52151bdf2d1f0ceabe99b6922152b0645ff95447ef6bfda8"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S4.p1.3",
+        "section_id": "S4",
+        "text_sha256": "95398f13bece9c254348bc062f23f05c6ee9610c6a79e550d808cea7420fb3b9"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S4.I3.i1.p1.1",
+        "section_id": "S4",
+        "text_sha256": "bdd2f2878a76562608f9a52f01f7911df326b5e93bd3b0154f83fbca6c36f866"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S4.I3.i2.p1.1",
+        "section_id": "S4",
+        "text_sha256": "fa62e0c1a7e7a2827182864f447cd2d8aedfdc3de3124dcb12fb2c8df95e445b"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "S4.I3.i3.p1.1",
+        "section_id": "S4",
+        "text_sha256": "5f80d7dd836cd0229dbb5a7a51bc10719d90d97fb913e2573c9a3e5e9a3c215c"
+      },
+      {
+        "index": 73,
+        "paragraph_id": "S4.I3.i4.p1.1",
+        "section_id": "S4",
+        "text_sha256": "eeaaec3cd0a835ac9e8c88e4b0c8ed7a93536cd351ac47908d690af6337431b1"
+      },
+      {
+        "index": 74,
+        "paragraph_id": "S4.p1.4",
+        "section_id": "S4",
+        "text_sha256": "5d28fc72a94d9fca03a3f22e8c9ad73cf309521df8c4f1586bcde3e6500f8509"
+      },
+      {
+        "index": 75,
+        "paragraph_id": "S4.p1.5",
+        "section_id": "S4",
+        "text_sha256": "90c9866b4afd208de857824cf9659d8e876ee36b81f2850937f9e2d055f552c4"
+      },
+      {
+        "index": 83,
+        "paragraph_id": "S6.p1.1",
+        "section_id": "S6",
+        "text_sha256": "c35874e2345a7c715020ac1e9f5cd843b9b4fc9c25b306b2a7a0f691199f88d9"
+      },
+      {
+        "index": 84,
+        "paragraph_id": "S6.p1.2.1",
+        "section_id": "S6",
+        "text_sha256": "eb2fc56d6c1641b3976ccb255fd83117ca8754d890a088a5fa3d15bfcc3bd39c"
+      },
+      {
+        "index": 85,
+        "paragraph_id": "S6.p1.3",
+        "section_id": "S6",
+        "text_sha256": "21e5dc7729351944d7bf379f6601f11dbc993e65f356f9b3ab349c57144c454c"
+      },
+      {
+        "index": 86,
+        "paragraph_id": "S6.SSx1.p1.1.1",
+        "section_id": "S6.SSx1",
+        "text_sha256": "082dae2f5c2791e60ace76fe73f4a9a7784222470e8fcc48b94746002d226e1d"
+      },
+      {
+        "index": 87,
+        "paragraph_id": "S6.SSx2.p1.1.1",
+        "section_id": "S6.SSx2",
+        "text_sha256": "65fc2aad60d9d1a9b01124d079800d7897b3e41af458477cee97e3d40e86879a"
+      },
+      {
+        "index": 88,
+        "paragraph_id": "S6.SSx3.p1.1.1",
+        "section_id": "S6.SSx3",
+        "text_sha256": "d18d827c1fe73c9046029921bd1d408c94db88072755d35e13d4fb3b3d49da1e"
+      },
+      {
+        "index": 89,
+        "paragraph_id": "S6.I1.i1.p1.1",
+        "section_id": "S6.SSx3",
+        "text_sha256": "4882b01af0ad0aec5762b1e2cff3f206d391d1ab972b0714a8a3adefeb1e63fc"
+      },
+      {
+        "index": 90,
+        "paragraph_id": "S6.I1.i2.p1.1",
+        "section_id": "S6.SSx3",
+        "text_sha256": "beaae49888d00916cef521894509b832970a26f442dec5dacd36cf7aab9128d4"
+      },
+      {
+        "index": 91,
+        "paragraph_id": "S6.I1.i3.p1.1",
+        "section_id": "S6.SSx3",
+        "text_sha256": "f103b9a42a141e3ec26bc80ebcba5ab945099a03635fe340f38e4df591cc38c3"
+      },
+      {
+        "index": 92,
+        "paragraph_id": "S6.I1.i4.p1.1",
+        "section_id": "S6.SSx3",
+        "text_sha256": "c349dd45f0292ad800c929c5361a8191a516577acfda24ba49e6b2de01bffdb8"
+      },
+      {
+        "index": 93,
+        "paragraph_id": "S6.SSx3.p1.1.2",
+        "section_id": "S6.SSx3",
+        "text_sha256": "995d47636e80a8e512a105ad5a080e2965b1b630a2f0fac5b70c74d9d4bb9d1c"
+      },
+      {
+        "index": 94,
+        "paragraph_id": "S6.SSx3.p1.2",
+        "section_id": "S6.SSx3",
+        "text_sha256": "4cb46a242604bd4d83fa81d730ed823597de45324403202cda590c27ca5d6a27"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual42-59 specifies an OVON-message pipeline beginning with a Llama2 response, followed by Llama3.1 sanitizer, policy review and KPI evaluation. The intervention and assessment objects are generated stage outputs plus metadata, rather than original-input labels alone.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual42/53-59 specifies the front-end generator and subsequent sanitizer, policy enforcer and evaluator. Actual65-73 defines response-level injection-marker, policy-deviation, sanitization and compliance assessments. All downstream stages consume generated front-end/stage responses. Future extensions and optional perplexity74 are not promoted into executed comparator arms.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual83-84 explicitly identifies an English Prompt8 input used in the illustrated experiment. Generated stage-response English alone would not establish input language; this example supports only a local evaluated-input component and not full prompt-set composition.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False retains uninspected system-prompt bodies and broader comparative source context. Local generated-response dependencies are directly checked; no global absence or exhaustive language statement follows.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

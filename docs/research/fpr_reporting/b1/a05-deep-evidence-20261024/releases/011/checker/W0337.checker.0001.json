@@ -1,0 +1,277 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0337",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-26T05:43:16.542096+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "request_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\ADDITIONAL_SOURCE_REQUESTS_004.json",
+  "request_sha256": "f47c662aca1ecc25cddcd0fbffc75bb2dd82d75bbfd1a9562e30be229dd8acba",
+  "requested_capture_identity": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\additional-004\\W0337.publisher-header.0001.json",
+  "provider_packet_sha256": "5f49a062fcd08ba07f80bd1fb407e3f55e010a508519eb8fdcbae233e94f76c6",
+  "source_identity": [
+    {
+      "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0337.json",
+      "acquisition_receipt_sha256": "adb99240eab7fbfc17cec1050acfb62a942ffa63627f565be5b270002a5ff5e3",
+      "body": {
+        "kind": "HTML",
+        "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "status": 200,
+        "url": "https://doi.org/10.1007/s44443-026-01200-9",
+        "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+      },
+      "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+    },
+    {
+      "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0337.json",
+      "acquisition_receipt_sha256": "b08848bf33a3847240029d884e19ff74b0a75bed900ac4a55728bf3fb590b339",
+      "body": {
+        "kind": "PDF",
+        "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+        "sha256": "767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+        "status": 200,
+        "url": "https://link.springer.com/content/pdf/10.1007/s44443-026-01200-9.pdf",
+        "version_state": "OFFICIAL_PUBLISHER_CAPTURE_EDITION_TO_VERIFY"
+      },
+      "captured_version_id": "doi:10.1007/s44443-026-01200-9:publisher-capture:sha256-767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2"
+    }
+  ],
+  "mechanical_check": {
+    "raw_hashes_verified": true,
+    "acquisition_hashes_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "coverage_disposition": "BIBLIOGRAPHIC_HEADER_ONLY",
+    "semantic_rationale": "Actual landing allowlisted citation/history fields and selected PDF first-page bibliographic blocks checked. Cropped PDF title/header images independently viewed. W0336 copyright footer text also read; abstracts and scientific body not substantively inspected in this request.",
+    "locators": [
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"dc.type\"]",
+        "content_sha256": "b2ca3c3390a43d8dd740f0ef6b7c25cc13322d82fb2d90a077a04f19f783239e"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_journal_title\"]",
+        "content_sha256": "c65dc4138132b666f548f4b5bebaacfdc2812ef9fa1c112936d11aa6545a6b63"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_publisher\"]",
+        "content_sha256": "e80b39f853835964d2d6025c167ffc5ab34e4364e6abd18114e2ef91b36e5573"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_title\"]",
+        "content_sha256": "b8d03e84b5db6a6367c15db10dc7d3231b1c1ae0512e3df98509fde1c20599ed"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_volume\"]",
+        "content_sha256": "aea92132c4cbeb263e6ac2bf6c183b5d81737f179f21efdc5863739672f0f470"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_issue\"]",
+        "content_sha256": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_publication_date\"]",
+        "content_sha256": "0d9841aaf0823a022c93a487a88fe5d3432ece3d7ce7f2c52a433b313d8b29ca"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_article_type\"]",
+        "content_sha256": "aff0766a5290e117b8433c351bae7b7b23bed682b2369bd822d88a647cc58512"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_doi\"]",
+        "content_sha256": "992e5f6aeba6fbf4f1e492323e90516b3879c0cc2be428435a486e34fb0d679b"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_author\"]",
+        "content_sha256": "5fa0e251f8a486f4454c0aa03f4e02969c45495fa192e66af67b421a71d0f5ea"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_author\"]",
+        "content_sha256": "257b4b18cdc7768986fdd923c98262b974119f1cb31a11c5570dd92635bbf5d5"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_author\"]",
+        "content_sha256": "bc24ce8df24581889dcd38ca7c32b52fa533669469c10d1c549e3dfe4adb9cf4"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_author\"]",
+        "content_sha256": "88c742c581b20e3fa61e1dff858db1058ae85a6e9e92cb598fb0b6f7a81efff7"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_author\"]",
+        "content_sha256": "0c779abef4d0ade4899673d1d89b87bfc90b74f21950e16ad509d0c2098e4b3f"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_author\"]",
+        "content_sha256": "adfa54de9532af3f9ca39b8f146ac883bce3555994749cc40a471ad96a773756"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": "meta[name=\"citation_author\"]",
+        "content_sha256": "0246d73f4851cd78bbb46dbcbfcce5ec2a729b6d43ae3ac7d1a60d4f79a9bb06"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": ".c-bibliographic-information__list-item",
+        "normalized_text_sha256": "40c1db17fe62372c03924b7d677e51f6a01e154aca39e1694a8df7ef9b34dc52"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": ".c-bibliographic-information__list-item",
+        "normalized_text_sha256": "b52827f7b5882517a74c128f6a59bdc7bcc393201e32a76704f35d2fe4e94bf1"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": ".c-bibliographic-information__list-item",
+        "normalized_text_sha256": "27a2abafe66b83c527bd0cb479490b415460a1cc5dfe87b70c0836cd5819b472"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": ".c-bibliographic-information__list-item",
+        "normalized_text_sha256": "e1af715e372a92e71e310db55b917b03f496623665c8c18434b32296c0388dc5"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": ".c-bibliographic-information__list-item",
+        "normalized_text_sha256": "534673afc3ad636065fc38816ca81fe48e054e62b4ddf2fa9537a486a34c5031"
+      },
+      {
+        "source_sha256": "26be98d6ce7e164579dd5e930ea20854aefa9a913d60b4299db31c6e4dadd477",
+        "selector": ".c-article-identifiers__item time",
+        "datetime": "2026-08-25",
+        "normalized_parent_sha256": "148ec194aba8b4cf331bff8d906235e4e36e09e200e2a7648a02d4ea1fec94da"
+      },
+      {
+        "source_sha256": "767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+        "page_1_based": 1,
+        "block": 0,
+        "bbox": [
+          51.0359992980957,
+          33.10611343383789,
+          356.6786804199219,
+          52.98605728149414
+        ],
+        "normalized_text_sha256": "5a0e3ba032e73cb47d54509c3b51dc6f4a4498b02410f9281e9161cf2d94c5ef"
+      },
+      {
+        "source_sha256": "767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+        "page_1_based": 1,
+        "block": 1,
+        "bbox": [
+          56.43600082397461,
+          65.70641326904297,
+          93.88702392578125,
+          75.17091369628906
+        ],
+        "normalized_text_sha256": "182e499256bea391f0891e85aa5d782074934150b986e530eb4a4170f073312e"
+      },
+      {
+        "source_sha256": "767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+        "page_1_based": 1,
+        "block": 2,
+        "bbox": [
+          51.0359992980957,
+          106.56547546386719,
+          490.6950988769531,
+          122.50577545166016
+        ],
+        "normalized_text_sha256": "b8d03e84b5db6a6367c15db10dc7d3231b1c1ae0512e3df98509fde1c20599ed"
+      },
+      {
+        "source_sha256": "767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+        "page_1_based": 1,
+        "block": 3,
+        "bbox": [
+          51.0359992980957,
+          137.12794494628906,
+          486.39239501953125,
+          150.70852661132812
+        ],
+        "normalized_text_sha256": "2305e6c0de7bba514f48a626f74f6e00d87688c0d877c9878462e7de31ef0b47"
+      },
+      {
+        "source_sha256": "767d292de3179851ad219d1f854aa239ba11005461b27ee853819a73e3e833f2",
+        "page_1_based": 1,
+        "block": 4,
+        "bbox": [
+          51.0359992980957,
+          170.66213989257812,
+          214.39773559570312,
+          189.09317016601562
+        ],
+        "normalized_text_sha256": "9052b55d0e3dc27aa136d287a5147e758638dff322eb8954772afac836b8f148"
+      }
+    ],
+    "locator_sha256": "93c21dad7a26d750311009be99ed4bad29edccaf3e56779e2dd845e5ed769a2d",
+    "visual_header": {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\checker\\private-method-images\\W0337.additional004.header.png",
+      "sha256": "71a0ec1f39cce1a1a6110e6544046685231852875542e9276fae0c93f6222075",
+      "crop_scope": "First-page header ending before Abstract block; independently viewed."
+    }
+  },
+  "per_fact": [
+    {
+      "field_path": "bibliographic_scope_facts.title",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual captured landing citation title and visually inspected PDF title header agree after ordinary whitespace normalization.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bibliographic_scope_facts.authors",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual landing author sequence and PDF header author lines were independently read; affiliations and corresponding-author marks are not part of the normalized names.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "requested_capture_identity",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Matches the neutral content-addressed publisher capture. This identifies captured bytes and does not select a preferred scholarly edition.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bibliographic_scope_facts.document_type",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual PDF header says REVIEW and names journal, volume and article; landing citation metadata supplies issue and publisher. Review is a source document-type label only.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bibliographic_scope_facts.declared_dates",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual PDF header gives received/accepted dates, and landing history separately labels Published and Version of record in August. Citation publication metadata specifies the September issue month; those date types remain distinct.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bibliographic_scope_facts.edition_statement",
+      "decision": "APPROVE",
+      "semantic_fidelity": "The captured landing bibliographic history literally labels Version of record, supporting the bounded edition statement. This is not inferred from DOI existence or a PDF transport timestamp.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "scientific_methods_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "provider_access_limitations": [
+      "Capture identifier addresses these bytes; it is not preferred scholarly-edition selection. No earlier arXiv scientific facts transferred.",
+      "PDF creation/modification and HTTP transport timestamps are not publication dates.",
+      "Shared filesystem; no isolation/fresh independence claim. Draft requires separate checker."
+    ],
+    "checker_exposure": "This request inspected bibliographic metadata and safe PDF header/footer fields only. Prior scientific-context and operational exposure remains disclosed in existing receipts; shared filesystem, no freshness or OS-isolation claim."
+  }
+}

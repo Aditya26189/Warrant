@@ -1,0 +1,401 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0051",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T12:04:38.621567+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0051.provider.0002.json",
+  "provider_packet_sha256": "2545304d745fb1890334ed6ac93a6d65a6cc6f35bd26d0b79afd3f931d9b78b9",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2505.22852v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\c021c42832b87dd4d1968c0ed55417100f1b9d4933f103c52fffbed164942ee7",
+    "raw_sha256": "c021c42832b87dd4d1968c0ed55417100f1b9d4933f103c52fffbed164942ee7",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0084.json",
+    "acquisition_receipt_sha256": "433a2a6bd6089553e1ba54943ef3d58bdb25fc72c0a0b6292a4336a208657f64",
+    "captured_version_id": "arxiv:2505.22852v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        10,
+        27
+      ],
+      [
+        42,
+        68
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Corrected .0002 completeness false. Gateway/output/provenance policy and selected side-channel/caching descriptions actually read. Whole-work empirical absence not approved; internal-test protocol remains unresolved in inspected mentions.",
+    "locator_sha256": "fdb7c9aea34bf4539d553caf216670452653963888d8d6868515cbb8e7575300",
+    "locators": [
+      {
+        "n": 10,
+        "kind": "paragraph",
+        "id": "S2.SS1.p1.1",
+        "section": "2.1 Initial Prompt Trust",
+        "sha256": "2ad63cebbe94c788c52db560d9644c3cdf0a50e74e9d95d163b1c5aea93066eb"
+      },
+      {
+        "n": 11,
+        "kind": "paragraph",
+        "id": "S2.SS1.p2.1",
+        "section": "2.1 Initial Prompt Trust",
+        "sha256": "0ae3592279e95c4606b1449f0e1f7ac10fc03051293ad7534f8040bab7c5e2d6"
+      },
+      {
+        "n": 12,
+        "kind": "heading",
+        "id": "S2.SS2",
+        "section": "2.2 Output-Side Manipulation",
+        "sha256": "576351d3190d92faf0acc69a86f64afb81ceefdfa3037a6c4f30edbd96e42258"
+      },
+      {
+        "n": 13,
+        "kind": "paragraph",
+        "id": "S2.SS2.p1.1",
+        "section": "2.2 Output-Side Manipulation",
+        "sha256": "f1b79d3ee34763f74140969f57606df25742393a7c296841c4ba126acb39b444"
+      },
+      {
+        "n": 14,
+        "kind": "paragraph",
+        "id": "S2.SS2.p2.1",
+        "section": "2.2 Output-Side Manipulation",
+        "sha256": "161779e93bcf7739ba66bf6ddc22030f2aba4e1fe376213ad05f44c0ee9d6b85"
+      },
+      {
+        "n": 15,
+        "kind": "paragraph",
+        "id": "S2.SS2.p3.1",
+        "section": "2.2 Output-Side Manipulation",
+        "sha256": "230e4dea5c33c4258cab9486565fcbe33c1d21457ae0daa4912879a997cacfa3"
+      },
+      {
+        "n": 16,
+        "kind": "paragraph",
+        "id": "S2.SS2.p4.1",
+        "section": "2.2 Output-Side Manipulation",
+        "sha256": "055e1fa4f6943452ee66db12a5cd53b1551ad4459ac996d55b4e13acbd7608a3"
+      },
+      {
+        "n": 17,
+        "kind": "heading",
+        "id": "S2.SS3",
+        "section": "2.3 Provenance of User Uploads",
+        "sha256": "4d44e7faaa9ea44662e64cccff5e39e22211355f30674ed3e3538833351da0b5"
+      },
+      {
+        "n": 18,
+        "kind": "paragraph",
+        "id": "S2.SS3.p1.1",
+        "section": "2.3 Provenance of User Uploads",
+        "sha256": "7a6d499403c97184ccd4703c596204550a63d2d7efbf0e2d884337ec3d7ef752"
+      },
+      {
+        "n": 19,
+        "kind": "paragraph",
+        "id": "S2.SS3.p2.1",
+        "section": "2.3 Provenance of User Uploads",
+        "sha256": "e35f2eb67ecbb93ce62eff441c82ab8bf9d701d46e851ffd3bdde2973c9b6693"
+      },
+      {
+        "n": 20,
+        "kind": "paragraph",
+        "id": "S2.SS3.p3.1",
+        "section": "2.3 Provenance of User Uploads",
+        "sha256": "235d52383f2ab64c7ccbe6f6ec334df8223a48b6ea61e23ecfce1a5f1e993673"
+      },
+      {
+        "n": 21,
+        "kind": "heading",
+        "id": "S3",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "1030c615ca9dd72deb8d4b5056600917bd6ca038925ad23fc6d783361a2edcc4"
+      },
+      {
+        "n": 22,
+        "kind": "paragraph",
+        "id": "S3.p1.1",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "aa9e4effb78676ba3e5cd6edccaf620a558ab85080043803a233068573f6252d"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S3.p2.1",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "a31b06529006e122c20be81c156d009a9aafd9b9b74b5d7bcd6628e9ea0d5792"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S3.I1.i1.p1.1",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "b9254182c9d4e23de1bd41c336aa666b1409e1e8b40c036cda35fcd8d6a5a511"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S3.I1.i2.p1.1",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "e8f538323311bebaee1f047c2aafb0ac339372b13c02123a0989c6d96394d959"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S3.I1.i3.p1.1",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "a7e7f0af4248973de4abb85b0d2a532ae85f4dcbd4b044ca50ac2c436e3eef0e"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S3.p4.1",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "7bb110f08dc039bfad45d5194397a3f44509c90724384b7ac1ffc531e34ed3d4"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S4.I1.i1.p1.1",
+        "section": "Mitigations.",
+        "sha256": "a3f249c7b6efabeb8e84da7b9b3ec42a2c9dae73ac531576d12ee2fae001b13a"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S4.I1.i2.p1.1",
+        "section": "Mitigations.",
+        "sha256": "662bc81decfcfe4fb0eacbdb42f086053bca95482a9472490d15a6d13d45b509"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S4.I1.i3.p1.1",
+        "section": "Mitigations.",
+        "sha256": "6dcaa3430beec744ee0fa3de1aaa9f9378319658fa80c5b7911d00efd16a339c"
+      },
+      {
+        "n": 45,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 Exception-Based Information Leak",
+        "sha256": "2a8f75272e53dba98bac27ab0d2d186a8bc95e844c001a0c6260a78fd062fd24"
+      },
+      {
+        "n": 46,
+        "kind": "heading",
+        "id": "S4.SS2.SSS0.Px1",
+        "section": "Threat.",
+        "sha256": "c35f4f926fac382d4e71ed7f4379546859192cd389dfcd2d792538339feaf05c"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS0.Px1.p1.1",
+        "section": "Threat.",
+        "sha256": "ad8e0b7bfba0c554677030988fea5eaf97fb8ae864cb3f10adb0c1f09ceb834c"
+      },
+      {
+        "n": 48,
+        "kind": "heading",
+        "id": "S4.SS2.SSS0.Px2",
+        "section": "Mitigations.",
+        "sha256": "9132b8b53fe0b473490f23d8b357f122160b93f25a2fc2b39721191260dbc67e"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S4.I2.i1.p1.1",
+        "section": "Mitigations.",
+        "sha256": "dbc675db305434779d2502c1bc0815d72ee05a2f45824a7c3554988a38dccc31"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S4.I2.i2.p1.1",
+        "section": "Mitigations.",
+        "sha256": "b3f4e299623961cbfdcedb6608eddeb74f41466dbac97cc91c9b39acafe9cf6b"
+      },
+      {
+        "n": 51,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "section": "4.3 Timing Channels",
+        "sha256": "b87c83040570d492c16f27e6f71aa6ee279bcf8d05e0a54b6c3241cff75846e3"
+      },
+      {
+        "n": 52,
+        "kind": "heading",
+        "id": "S4.SS3.SSS0.Px1",
+        "section": "Threat.",
+        "sha256": "c35f4f926fac382d4e71ed7f4379546859192cd389dfcd2d792538339feaf05c"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS0.Px1.p1.1",
+        "section": "Threat.",
+        "sha256": "3491c3f73fec6e0476729063eae97e5b6e08d43ba6a51cf2f8e6550bf8e2eb5e"
+      },
+      {
+        "n": 54,
+        "kind": "heading",
+        "id": "S4.SS3.SSS0.Px2",
+        "section": "Mitigations.",
+        "sha256": "9132b8b53fe0b473490f23d8b357f122160b93f25a2fc2b39721191260dbc67e"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S4.I3.i1.p1.1",
+        "section": "Mitigations.",
+        "sha256": "fe37a414c229da60521792a14b3c476725a62510fc9a62ee6b3e7f8abc6facd5"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S4.I3.i2.p1.1",
+        "section": "Mitigations.",
+        "sha256": "535d957d03676dc157ab2f43e5e9a317eb36c401e068f56cbd4ad70a69243df9"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S4.I3.i3.p1.1",
+        "section": "Mitigations.",
+        "sha256": "e8b7beeb97b883c746ce509220ab6a9df5d8e8d3d74f72f59b417bcb29cc284a"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS0.Px2.p2.1",
+        "section": "Mitigations.",
+        "sha256": "851923c02ab49efc0babf258c10bc55569148e77bb8d9e96c87219fc9da40b14"
+      },
+      {
+        "n": 59,
+        "kind": "heading",
+        "id": "S5",
+        "section": "5 Architectural Limitations",
+        "sha256": "56c6d3238efae272198ace14cd3e019147c5315d2a0bea5a2a5428b3a51349a2"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "S5.p1.1",
+        "section": "5 Architectural Limitations",
+        "sha256": "b144bd7fc0b37558d62a5c422db7abe9b3e162155b9d1821ba87f21653a4f1b2"
+      },
+      {
+        "n": 61,
+        "kind": "heading",
+        "id": "S5.SS1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "416c2e341bf85baa49baace06662bf8dd134c922b9ce085b98adec0eea45807c"
+      },
+      {
+        "n": 62,
+        "kind": "paragraph",
+        "id": "S5.SS1.p1.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "c01334a694cc64f424bcb5c0d72c8d19592c94e7538ce9d2d93ee9b630e35903"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "S5.SS1.p2.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "cb30daf960aeb6d4e229767d746ef3937bffa6056ff59038d6ad79f042a0ef70"
+      },
+      {
+        "n": 64,
+        "kind": "paragraph",
+        "id": "S5.SS1.p3.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "c62b6a1b858498e34e00c0f3cd19b74769ce3030743eb29ab634714265a46b4b"
+      },
+      {
+        "n": 65,
+        "kind": "paragraph",
+        "id": "S5.I1.i1.p1.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "50aaccccb2d1be8e3ec89ca7c487612faee2e7148292bd8b3c90d68ad0856327"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "S5.I1.i2.p1.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "388d2d886520ff4023a198813fe29fd37727e332e9661bb3668337d56e743a74"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "S5.I1.i3.p1.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "529af79c46cdc40faa99ba75704deacab692bf8d321b06a30e3885810ed96fdc"
+      },
+      {
+        "n": 68,
+        "kind": "paragraph",
+        "id": "S5.SS1.p5.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "6a94fb8ba544458cdcae437a82f21ca9ecbe404bd62db137d179bbd7102d0707"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Corrected summary bounds missing setup to the inspected internal-test mentions; paper proposals explicitly distinguished from controlled evaluated detector.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Initial prompt gateway is explicitly a proposal with URL/override/entropy/perplexity checks; no original-task answer needed by stated input checks.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Output audit requires generated response; provenance policy, side-channel and caching/parser controls refer to data/actions/plans, not a text-only injection classifier.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions/partial inventory. Supported local method facts do not become proof of whole-work absence. Actual checker spans below are narrower where stated.",
+      "restriction_rationale": "Coverage only; no performance, sample counts or eligibility state."
+    },
+    {
+      "field_path": "source_receipts.locators",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mechanical source-locator hashes independently reproduce. Semantic inspection coverage is exclusively the actual_context_check spans, not automatic approval of the full provider-declared scope.",
+      "restriction_rationale": "Hash-only locator metadata; no raw method/results text or outcomes."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  },
+  "previous_checker_receipt_sha256": "82650980b000757a5226f7bc595d1cfdbfafd6eb336f840e32183702435372f9",
+  "append_only_addendum": "Explicit coverage-field decision added; prior per-fact checks preserved except stated supersession."
+}

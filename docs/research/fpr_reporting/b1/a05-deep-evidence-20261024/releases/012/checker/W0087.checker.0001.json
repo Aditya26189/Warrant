@@ -1,0 +1,632 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0087",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-26T05:45:52.453916+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0087.provider.0002.json",
+  "provider_packet_sha256": "fe313daa8680edd08c50e6f8cf306ce31d6d00d7b969cb9e3bb6712acfb98370",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2509.25926v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\7d7febad13ea20bdeb1759f4f7333cf79529c4a81b34078df784f5db9eac4f74",
+    "raw_sha256": "7d7febad13ea20bdeb1759f4f7333cf79529c4a81b34078df784f5db9eac4f74",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0129.json",
+    "acquisition_receipt_sha256": "814006696238e6502758e37a6ec304d9fd312001bfd95a219212a049328bf662",
+    "captured_version_id": "arxiv:2509.25926v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        19,
+        27
+      ],
+      [
+        87,
+        107
+      ],
+      [
+        126,
+        187
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actual19-27 defines typed quarantined-to-privileged handoffs, and actual87-107 describes original shopping, calendar and bug-fixing task evaluations under defended versus undefended execution. False correctly retains uninspected detailed case workflows and Appendix B payload bodies. The declared original task families and typed handoff mechanism are positive checked facts, without global absence or inferred evaluated-language composition.",
+    "visual_check": null,
+    "locator_sha256": "f3d3a16139040a3599935f89f0c52e09b6ddfb57f25b578d0f56e425ac3da28b",
+    "locators": [
+      {
+        "index": 19,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "ecf8c4cec27963529a3494af3c7a43099089479bdca182ed43c4b6e8e7d2d258"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S3.SS2.p2.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "94e6fec5fe0347851a36b61ae9742f2f707c94796fb524ccc8843795a2ff448a"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S3.I1.i1.p1.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "8bd08266e322c6ee6cd7ffb9cbc4df29ad105b0fae06d86995d25c273e20e444"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S3.I1.i2.p1.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "eac678485147db90e3904971f4b4b4d4eb1c4612a4804116d1bd811a3141c82f"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S3.I1.i3.p1.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "8cda6c445f38f348ee8a6c26b361a31d8056f97da07eb9db92187c9001f31bb1"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S3.I1.i4.p1.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "422bd493d23e34534e25d93781714241b2558911fd5ac527bd7a145fb1967f52"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.SS2.p4.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "ab1227a838e5105187d013b24e8c4661790e48e2e5ddab60c1aa0ec571f622b6"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.SS2.p5.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "db6f8eef16a03b33e2b1b75cb0fc0f8096965c05346800fb70f64915f9694637"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS2.p6.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "ee749e2f794edd13d10b72913e7a739dd7986cbf59d6c3079ccae78035544664"
+      },
+      {
+        "index": 87,
+        "paragraph_id": "S5.p1.1",
+        "section_id": "S5",
+        "text_sha256": "fea8b9231ffd17f2d8af2f88370dc50c59761b58f65d684065ab390ebc0fade6"
+      },
+      {
+        "index": 88,
+        "paragraph_id": "S5.SS1.SSS1.p1.1",
+        "section_id": "S5.SS1.SSS1",
+        "text_sha256": "8b630f0d5d090e31e67338914b99ca579a2f6170aa399bb0be9fb09d748e1945"
+      },
+      {
+        "index": 89,
+        "paragraph_id": "S5.SS1.SSS1.p2.1",
+        "section_id": "S5.SS1.SSS1",
+        "text_sha256": "c56dcd54addad433a701fa1891f247ed8fa97f5e912b076e9c1b88eff6c980dc"
+      },
+      {
+        "index": 90,
+        "paragraph_id": "S5.SS1.SSS1.p3.1",
+        "section_id": "S5.SS1.SSS1",
+        "text_sha256": "a6ce44330d1e5870ac04154b99497dbb7aebb5701fa022432fcf345fe06d4f8b"
+      },
+      {
+        "index": 91,
+        "paragraph_id": "S5.SS1.SSS2.p1.1",
+        "section_id": "S5.SS1.SSS2",
+        "text_sha256": "e7f244c957eab5b70a931a19e6d1798d8d375c7551570d1c2eb5461b3ca3085a"
+      },
+      {
+        "index": 92,
+        "paragraph_id": "S5.SS1.SSS3.p1.1",
+        "section_id": "S5.SS1.SSS3",
+        "text_sha256": "664aa51919965aa4f1055ca26c3d3d335795e5245af3b5511c53dd76ecb5dab3"
+      },
+      {
+        "index": 93,
+        "paragraph_id": "S5.I1.i1.p1.1",
+        "section_id": "S5.SS1.SSS3",
+        "text_sha256": "26293f72debdd0d4d4d664b1cf361bd90542b037d514ea7476433b7c706cc953"
+      },
+      {
+        "index": 94,
+        "paragraph_id": "S5.I1.i2.p1.1",
+        "section_id": "S5.SS1.SSS3",
+        "text_sha256": "271f47bf4147062fd8a78f057df4751102ac13beaa2f82481c025cdb924ae060"
+      },
+      {
+        "index": 95,
+        "paragraph_id": "S5.SS2.SSS1.p1.1",
+        "section_id": "S5.SS2.SSS1",
+        "text_sha256": "f5381228cb7376c9b154fe5a7ac34523985caee0f857228098c90fc8fcd27deb"
+      },
+      {
+        "index": 96,
+        "paragraph_id": "S5.SS2.SSS1.p2.1",
+        "section_id": "S5.SS2.SSS1",
+        "text_sha256": "c8a68627c94804ac980fbf94bc2db19f1dcef393ac34e504fd6575c186b91e42"
+      },
+      {
+        "index": 97,
+        "paragraph_id": "S5.SS2.SSS2.p1.1",
+        "section_id": "S5.SS2.SSS2",
+        "text_sha256": "e50da1b9ce83085cafbb727dd3360db0646abff607194279d44a1443e70dedd5"
+      },
+      {
+        "index": 98,
+        "paragraph_id": "S5.SS2.SSS3.p1.1",
+        "section_id": "S5.SS2.SSS3",
+        "text_sha256": "db1096c223554cc26099ed2e9e3276868d82847976078d16efd5cdecc319605d"
+      },
+      {
+        "index": 99,
+        "paragraph_id": "S5.I2.i1.p1.1",
+        "section_id": "S5.SS2.SSS3",
+        "text_sha256": "dc5c34fb83062c88db4fd06d4d26d8ae01befa447c5937609d19b3a2bc856974"
+      },
+      {
+        "index": 100,
+        "paragraph_id": "S5.I2.i2.p1.1",
+        "section_id": "S5.SS2.SSS3",
+        "text_sha256": "cbc9ec311f828057e579cf5024314ed75a07b6384b7b3ce1f9ae56ec5d672842"
+      },
+      {
+        "index": 101,
+        "paragraph_id": "S5.SS3.SSS1.p1.1",
+        "section_id": "S5.SS3.SSS1",
+        "text_sha256": "3bd4a07c36c6cda57efa8bdb9b91adc82b9ae2e175008ce65c1b9b0b2c3af3a2"
+      },
+      {
+        "index": 102,
+        "paragraph_id": "S5.SS3.SSS1.p2.1",
+        "section_id": "S5.SS3.SSS1",
+        "text_sha256": "25bd2e35d5e37dd64bed2eea62d75da38e6d2696aa85f9a718117090bf73726f"
+      },
+      {
+        "index": 103,
+        "paragraph_id": "S5.SS3.SSS1.p3.1",
+        "section_id": "S5.SS3.SSS1",
+        "text_sha256": "ad92805f5d9fc77a889d3b535b17f470a31312a97853d2ec820282d508300102"
+      },
+      {
+        "index": 104,
+        "paragraph_id": "S5.SS3.SSS2.p1.1",
+        "section_id": "S5.SS3.SSS2",
+        "text_sha256": "82da75c52f46b70e2b464252645896202f9bd0015df622b94cb0f4d206e7c3dd"
+      },
+      {
+        "index": 105,
+        "paragraph_id": "S5.SS3.SSS3.p1.1",
+        "section_id": "S5.SS3.SSS3",
+        "text_sha256": "0278ad10569d33fbe0eb662240110f013b9c5a2a4e5cf54fe87ba77131c58503"
+      },
+      {
+        "index": 106,
+        "paragraph_id": "S5.I3.i1.p1.1",
+        "section_id": "S5.SS3.SSS3",
+        "text_sha256": "99697f73895dd577929fb226c6851012636e5809f83d45df2fff9192ed095621"
+      },
+      {
+        "index": 107,
+        "paragraph_id": "S5.I3.i2.p1.1",
+        "section_id": "S5.SS3.SSS3",
+        "text_sha256": "3a38c6783fc82941a8575fb48f9544b9e058bc4270711bb482482dc78c22eadf"
+      },
+      {
+        "index": 126,
+        "paragraph_id": "A1.SS1.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "57daf2dcf1d7bbe141f8990fe5f69ce4be0bdf56f2e070b98ba12b6fec2146dd"
+      },
+      {
+        "index": 127,
+        "paragraph_id": "A1.I1.i1.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "08d1774d7d2fd67d777b407dc561718f24a76963e71b1a7b266469b269429b5a"
+      },
+      {
+        "index": 128,
+        "paragraph_id": "A1.I1.i2.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "f59b7f91a22e1b3b267026233ae1e0caf5532ed651d06091a79bd9cdaacec4c0"
+      },
+      {
+        "index": 129,
+        "paragraph_id": "A1.I1.i3.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "2371dbb5a03bf2d9e5d492913f25fafcd0f31de68f47d99b565a5b385524ad8c"
+      },
+      {
+        "index": 130,
+        "paragraph_id": "A1.I1.i4.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "3d3ab4167bd92bb464f8c6cdafb186ec9ea07fd30e5caafeffa0e5679fab683a"
+      },
+      {
+        "index": 131,
+        "paragraph_id": "A1.I1.i5.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "a816e3ee35bb345bba6d5fdf006f251028cb4f822bcca85c8093eaef904bdc08"
+      },
+      {
+        "index": 132,
+        "paragraph_id": "A1.I1.i6.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "d9b7c4b7b5a900737e8fa902d26fba1e98babe9c612d464e989d9be01b71212c"
+      },
+      {
+        "index": 133,
+        "paragraph_id": "A1.I1.i7.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "97cae4aa20dc9a49abc35c81481039bdb05682713521f9e332dd962d06c916c2"
+      },
+      {
+        "index": 134,
+        "paragraph_id": "A1.I1.i8.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "9cec9415a4ae9680cf64b2c645e6eea17da9a635025aaa2cf462f228f92bfe07"
+      },
+      {
+        "index": 135,
+        "paragraph_id": "A1.I1.i9.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "83b91aff0d284b39de9549862254d016c181874796bb9198721b1cef2230ec6a"
+      },
+      {
+        "index": 136,
+        "paragraph_id": "A1.I1.i10.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "2555684197cb7715536b14521505a5a059fed5efd65c49f287aef8d6156fac19"
+      },
+      {
+        "index": 137,
+        "paragraph_id": "A1.I1.i11.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "272e27733134945f69d1a3b608564c01802eb1ee8519b12f9dc5bd507c5789e9"
+      },
+      {
+        "index": 138,
+        "paragraph_id": "A1.I1.i12.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "eec5368a848e0756f97216cf72f7d6f0f470e173cdec04f1f77388be38cae8a1"
+      },
+      {
+        "index": 139,
+        "paragraph_id": "A1.I1.i13.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "52307b3b069d5ccf88735f7d95fa88025378cb8829c1028b2570fd095da9c0c0"
+      },
+      {
+        "index": 140,
+        "paragraph_id": "A1.I1.i14.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "557bdd3772a5b1c720a8afb7a3e4e7f8c4d74f85df4a2b740aad5f9b353d11f6"
+      },
+      {
+        "index": 141,
+        "paragraph_id": "A1.I1.i15.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "25afdee8fd2afc592fd1300a136e10ea88449282d0ae34e6630a8292e2df6daf"
+      },
+      {
+        "index": 142,
+        "paragraph_id": "A1.I1.i16.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "410597f2897b301959ed000df8b2d4139c2fa0699d6f31a96e0d4f2af3f92c87"
+      },
+      {
+        "index": 143,
+        "paragraph_id": "A1.I1.i17.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "4f6c0efa1a0f9935d690952daeb37c167e7732678bd34eca7503833ca53893ea"
+      },
+      {
+        "index": 144,
+        "paragraph_id": "A1.I1.i18.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "70c445786c5eb8f9c833d0c7f152c62cf3966ab71118157c3f41ecc4f6982803"
+      },
+      {
+        "index": 145,
+        "paragraph_id": "A1.I1.i19.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "2001d32d700f49c4cf376b8725fbb3aad25fd7860c549e15d6a7525d3b9ab9e5"
+      },
+      {
+        "index": 146,
+        "paragraph_id": "A1.I1.i20.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "7faa297fbbdcbca1346d98134da1b172ad92590dbd18e68be8cb5ac58096ce69"
+      },
+      {
+        "index": 147,
+        "paragraph_id": "A1.I1.i21.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "0ef5f8f04972352c8a683cfb9fb35378c43f264b2945b5f0f4e29b086d2cfa75"
+      },
+      {
+        "index": 148,
+        "paragraph_id": "A1.I1.i22.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "c294999fb561160bbadd701b39f920e73a63d67b25ae028fe8b4e00cefcc201a"
+      },
+      {
+        "index": 149,
+        "paragraph_id": "A1.I1.i23.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "f7dd1e960243168e6d03950386139f3620f3451d6e4ff0a79d7564e10db83e16"
+      },
+      {
+        "index": 150,
+        "paragraph_id": "A1.I1.i24.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "30d1f2c27b94f0c5e06079d5c9986c98d776e955bd0b98e00d9f73dccc2a34e8"
+      },
+      {
+        "index": 151,
+        "paragraph_id": "A1.I1.i25.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "a53e03d545fc170619efd1d8132ced869bafa4e5a031a801691e5ab0996d57b7"
+      },
+      {
+        "index": 152,
+        "paragraph_id": "A1.I1.i26.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "3065f08aa5fe5896b28aa50546d123a9f9a17d9ebd16e0576c3185f085e1d156"
+      },
+      {
+        "index": 153,
+        "paragraph_id": "A1.I1.i27.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "b7384c1bd625e70f4964bb67e820695bb0818c059d3744190e86656f22ccb17f"
+      },
+      {
+        "index": 154,
+        "paragraph_id": "A1.I1.i28.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "5c6af2b450ca6447defc0e0125af60b322272e19587e9287a95ecdd077679324"
+      },
+      {
+        "index": 155,
+        "paragraph_id": "A1.I1.i29.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "29597eac203bb66c811c30ce772f2f8b491050031ab5335291fa5ea099263c68"
+      },
+      {
+        "index": 156,
+        "paragraph_id": "A1.I1.i30.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "ee886b96061c84bf718dfe811b6ba06775781e55ab9d6bab3c6b81c3bfdfed1e"
+      },
+      {
+        "index": 157,
+        "paragraph_id": "A1.I1.i31.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "02671dc2f4846aca15931119cc6bc3b05fa6c610bf31840bfddccb8e3ec29ff2"
+      },
+      {
+        "index": 158,
+        "paragraph_id": "A1.I1.i32.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "3c7f1e87baa4b9cb91a6f7d9d3ab258aa0ac095e80456500af17dc605acf3b1c"
+      },
+      {
+        "index": 159,
+        "paragraph_id": "A1.I1.i33.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "f0453bf7dc2507bee224d24426c8100210c830e78b768c19cc362833dfb84529"
+      },
+      {
+        "index": 160,
+        "paragraph_id": "A1.I1.i34.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "48ad4674fdd44473005aef7de77ec26c417881e374c3e3469cb0c549d57b9ab0"
+      },
+      {
+        "index": 161,
+        "paragraph_id": "A1.I1.i35.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "20319392cd2e7e4b76f1e54e95488bb75ed87d7adcdc8d16c2fc0370c7805d2f"
+      },
+      {
+        "index": 162,
+        "paragraph_id": "A1.I1.i36.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "41609fc9bd868727ae429b398197bc125c65bebb87c8168f01652a37eac5da00"
+      },
+      {
+        "index": 163,
+        "paragraph_id": "A1.I1.i37.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "d289c6218bef0439dcc12b22943ace928faa815a44f166e9343a8396437f4714"
+      },
+      {
+        "index": 164,
+        "paragraph_id": "A1.I1.i38.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "d8729e40cb420c633b77b989e3bc2346beeec58babecf719ff74e9969d1889d0"
+      },
+      {
+        "index": 165,
+        "paragraph_id": "A1.I1.i39.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "5e321ff4334f7662e7b64c04784eb523249c86df470751e9e34ce3df5c2fc4f7"
+      },
+      {
+        "index": 166,
+        "paragraph_id": "A1.I1.i40.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "4623e2c100e9a62154727da98b3d9b2b9c716d49f335deb3453b6e079d70870e"
+      },
+      {
+        "index": 167,
+        "paragraph_id": "A1.I1.i41.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "5f379a36b277fde12cf378a9ebe91959807364c2b4b30ad255aff2894a4ed3ba"
+      },
+      {
+        "index": 168,
+        "paragraph_id": "A1.I1.i42.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "8c97b5e8a41a42cf55e0e8f4b3a0763300162b8aee9a3c9402494756bbc13376"
+      },
+      {
+        "index": 169,
+        "paragraph_id": "A1.I1.i43.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "63ea0a67c16279385d7c85fe48eeda66ce5826c553432ae20dde3b0e697eac23"
+      },
+      {
+        "index": 170,
+        "paragraph_id": "A1.I1.i44.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "3618c0f458c74509dfcbe55b5cc2966fc55f3d0e2bd1fb597660938f853f7c27"
+      },
+      {
+        "index": 171,
+        "paragraph_id": "A1.I1.i45.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "5e6c4d4cbe59a6f5ca8a6d9ae2f7dade5fbf5d60d82684953fc59745248908d7"
+      },
+      {
+        "index": 172,
+        "paragraph_id": "A1.I1.i46.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "71d4596a8dabc6c890b24ceabe25627cc3682c94d54fb941deacac6016cf48a3"
+      },
+      {
+        "index": 173,
+        "paragraph_id": "A1.I1.i47.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "a4cb80315f01d238e795cda08e453f2dedc4432e358a5ec55d6cf214bfe53888"
+      },
+      {
+        "index": 174,
+        "paragraph_id": "A1.I1.i48.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "c87d6fcd8abb4fb3c4833716325a50fde212c9e0fc8994208fe8399678386e2e"
+      },
+      {
+        "index": 175,
+        "paragraph_id": "A1.I1.i49.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "e474a338716c2c2ae45e760eabb0970ab21b1153010fa9d30363aba8cc50b99c"
+      },
+      {
+        "index": 176,
+        "paragraph_id": "A1.I1.i50.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "0c5c355d02c7f9a0e722d9b877299bf118ab8ab3b918a97abf971b264feccaf9"
+      },
+      {
+        "index": 177,
+        "paragraph_id": "A1.I1.i51.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "4a33f582c24624716b25ff5297d29fcb29a5fde81f30734dd31e53483fdf272b"
+      },
+      {
+        "index": 178,
+        "paragraph_id": "A1.I1.i52.p1.1",
+        "section_id": "A1.SS1",
+        "text_sha256": "2d320a5f0b5b9ef18c0dbd289607e926a118330b84068340ae0d078a67575e8c"
+      },
+      {
+        "index": 179,
+        "paragraph_id": "A1.SS2.p1.1",
+        "section_id": "A1.SS2",
+        "text_sha256": "b8339546fa757e232eb9fc990f782823ccb56705b609280d87d2a28ba8d80f3e"
+      },
+      {
+        "index": 180,
+        "paragraph_id": "A1.I2.i1.p1.1",
+        "section_id": "A1.SS2",
+        "text_sha256": "df93a741e972c9bb5676fe396bb3419800bb04205304f86428b228e045658e5c"
+      },
+      {
+        "index": 181,
+        "paragraph_id": "A1.I2.i2.p1.1",
+        "section_id": "A1.SS2",
+        "text_sha256": "219a9f25a11475232b5fd7758a41ed87e8afb46db4b047a79fcf144689bffb37"
+      },
+      {
+        "index": 182,
+        "paragraph_id": "A1.I2.i3.p1.1",
+        "section_id": "A1.SS2",
+        "text_sha256": "4a6d160b06e28857c37177fa8ecc67010b1c25c97aa64944c95760aaeab8fbdc"
+      },
+      {
+        "index": 183,
+        "paragraph_id": "A1.I2.i4.p1.1",
+        "section_id": "A1.SS2",
+        "text_sha256": "5c9ab87a4a082d887205b30f75d1f63b0dd091f490e2faa86af1a75806ed6528"
+      },
+      {
+        "index": 184,
+        "paragraph_id": "A1.I2.i5.p1.1",
+        "section_id": "A1.SS2",
+        "text_sha256": "d662166167f39294d93132ff63f14da429e3c8997ccec65a36ab49f033537abb"
+      },
+      {
+        "index": 185,
+        "paragraph_id": "A1.I2.i6.p1.1",
+        "section_id": "A1.SS2",
+        "text_sha256": "9a5aa814185cd8d2c4bdd9dd2d3e5ccbea72aef370146643193c206851158998"
+      },
+      {
+        "index": 186,
+        "paragraph_id": "A1.I2.i7.p1.1",
+        "section_id": "A1.SS2",
+        "text_sha256": "10124147f18168947ba00a41c1ac7104b5aa9363625e55a452c335bd7eafdc6f"
+      },
+      {
+        "index": 187,
+        "paragraph_id": "A1.I2.i8.p1.1",
+        "section_id": "A1.SS2",
+        "text_sha256": "b83dc10b07bf7e0a1d9277120a1132c414efc979bbb65b974b8321078aa21472"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual19-27 defines typed quarantined-to-privileged handoffs, and actual87-107 describes original shopping, calendar and bug-fixing task evaluations under defended versus undefended execution.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual19-27 constrains generated handoffs to numeric, Boolean or trusted finite-choice fields. Actual88-107 separately defines purchase/selection behavior, private calendar-information exposure and unrelated file creation in generated task execution. The corrected dependency is bounded to these generated handoffs/actions and does not assert whole-work classifier absence.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual Appendix126-187 contains English bug-category and region-role enum values. Those trusted handoff labels are not proof that the original instruction, review, email or bug-report evaluation corpus is wholly English.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly retains uninspected detailed case workflows and Appendix B payload bodies. The declared original task families and typed handoff mechanism are positive checked facts, without global absence or inferred evaluated-language composition.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

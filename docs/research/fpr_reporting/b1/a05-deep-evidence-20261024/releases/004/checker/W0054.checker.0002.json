@@ -1,0 +1,338 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0054",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T12:04:38.628560+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0054.provider.0001.json",
+  "provider_packet_sha256": "43616a10c4efe7709f0bd565990a41b95bae6159b2d2527bd7185292f451bdea",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2506.06384v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\e3e92b321ea1c52ff1622034d1ed11aa15f5e4be3f09a54813004d1fdca58d32",
+    "raw_sha256": "e3e92b321ea1c52ff1622034d1ed11aa15f5e4be3f09a54813004d1fdca58d32",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0087.json",
+    "acquisition_receipt_sha256": "f4459218c2ec6198bd6512fe3d74875ef786398ae0a7f6194a162d3e163be7f6",
+    "captured_version_id": "arxiv:2506.06384v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        12,
+        38
+      ],
+      [
+        39,
+        47
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_INVENTORY_ONLY",
+    "semantic_rationale": "Main model/data/setup actually read. Appendix rule tables and detailed ablation descriptions remain uninspected; no complete baseline roster.",
+    "locator_sha256": "44da48a15894fee7dda2dedd3ffcf690d5842c76afe8540a12c6a469e805c1dd",
+    "locators": [
+      {
+        "n": 12,
+        "kind": "heading",
+        "id": "S3",
+        "section": "3 Method",
+        "sha256": "800157aa516b354192b8a9b19600a9e1d6e5696bbc18397a6460f7e671a655e6"
+      },
+      {
+        "n": 13,
+        "kind": "paragraph",
+        "id": "S3.p1.1",
+        "section": "3 Method",
+        "sha256": "cf7b2858100e763edc0462f4fe3bacb48b50018c11011f6690b5b4791d1788da"
+      },
+      {
+        "n": 14,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "section": "3.1 DeBERTa Feature Extraction",
+        "sha256": "76cde83fc278d799900f4e5dcd0e8e6bf784f88ba6b1b0578ea48c85d3a1f0d2"
+      },
+      {
+        "n": 15,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "section": "3.1 DeBERTa Feature Extraction",
+        "sha256": "537b92584efe90d29c2524962e91b69a537e7567d2ba0e9901a962c889ce63c4"
+      },
+      {
+        "n": 16,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "section": "3.2 Heuristic Feature Engineering",
+        "sha256": "8cf4f59166d5f3ba9efa7c4f65829f6eb1330f3d7be5df52c1e51030d6cf44be"
+      },
+      {
+        "n": 17,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.1",
+        "section": "3.2 Heuristic Feature Engineering",
+        "sha256": "ecfab9abf230c197bcde25ea87f08299657e458321d8bda55a56ee13bae6d2b3"
+      },
+      {
+        "n": 18,
+        "kind": "heading",
+        "id": "S3.SS2.SSSx1",
+        "section": "Synonym Matching",
+        "sha256": "ec72b3da55c63b0a5c762b85c0da0014fdf22594914064e704feeb64e7d5a281"
+      },
+      {
+        "n": 19,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSSx1.p1.1",
+        "section": "Synonym Matching",
+        "sha256": "9024d0b215729d36fa1c662f4eabfd956bb7da5855ea03ecdfb62660008e1dc5"
+      },
+      {
+        "n": 20,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSSx1.p2.1",
+        "section": "Synonym Matching",
+        "sha256": "780b15105d9c1fa4ea9f5a9a3e53c5636d3f6bd70ccdbe92d09234ce1b31dd41"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSSx1.p3.1",
+        "section": "Synonym Matching",
+        "sha256": "a6f613ab0b02749a704b9765b5e9b6882992ddb079fccf353b04bccdf8b86cc0"
+      },
+      {
+        "n": 22,
+        "kind": "heading",
+        "id": "S3.SS2.SSSx2",
+        "section": "Pattern Matching",
+        "sha256": "2e6849a1917a4e94bf458bb26f897dcfd6626cd8466daf9e28c20fa33da1f9b0"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSSx2.p1.1",
+        "section": "Pattern Matching",
+        "sha256": "9a8c51b1a270128bf645be8bdff4252f32a7b245bdafaa475caad6fdca56070f"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSSx2.p2.1",
+        "section": "Pattern Matching",
+        "sha256": "d6b32bfdd8198f6bc068aba2ce89e7fee127adb828e3182d70f67ef0047d77e4"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSSx2.p3.1",
+        "section": "Pattern Matching",
+        "sha256": "74bcc1e182a09a07a1ec42ac83f3592f5e1a1d53aded4e5094c6e9e9e7074673"
+      },
+      {
+        "n": 26,
+        "kind": "heading",
+        "id": "S3.SS3",
+        "section": "3.3 Prediction Output",
+        "sha256": "dbe6190c57315f9c4fbcdb0a0440784d874df00b9185b8b417d7314e05a91420"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S3.SS3.p1.1",
+        "section": "3.3 Prediction Output",
+        "sha256": "c820bf2d2cd3b8ccc5ddb6a70c8dfbb7a887f88f42eaeed20289de922e4cff39"
+      },
+      {
+        "n": 28,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Experiments",
+        "sha256": "816080d0d670406671a69c0c2aff33a78930ac53fa902ee05fcafd4561ab7915"
+      },
+      {
+        "n": 29,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Datasets",
+        "sha256": "a0b06613c67d42ba1397bbbe06b40b6e055e5ce0f82d631e6e6a0a7938acf24a"
+      },
+      {
+        "n": 30,
+        "kind": "heading",
+        "id": "S4.SS1.SSSx1",
+        "section": "Model Training and Evaluation Datasets",
+        "sha256": "32753ce708e24bc95a108e340c4eb61f0d2757e7c0216e223006285844506de0"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSSx1.p1.1",
+        "section": "Model Training and Evaluation Datasets",
+        "sha256": "2f6b2536dd4f08d6eb0cf6bb2e53679d5ec151cdeaf706dc73010389e46ad1dd"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSSx1.p2.1",
+        "section": "Model Training and Evaluation Datasets",
+        "sha256": "747ae3588a904fad9ddfdd0dd17214bc41004c892c3b7969e89d89ee86dee996"
+      },
+      {
+        "n": 33,
+        "kind": "heading",
+        "id": "S4.SS1.SSSx2",
+        "section": "Defense Effectiveness Evaluation Dataset",
+        "sha256": "e6017958b62a25fd6abbc9ec3feef03e40dcd620f62faa05d7c1763eab311fe5"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSSx2.p1.1",
+        "section": "Defense Effectiveness Evaluation Dataset",
+        "sha256": "2497d1536ad5c7947a7d6fd2e614f2672044fcee598c554353c35a3799244e8b"
+      },
+      {
+        "n": 35,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 Experiment Settings",
+        "sha256": "e0eff4ec228d5b9e56bea20a769d7eab8a428a210db8bbf6529f9695e920fb55"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "section": "4.2 Experiment Settings",
+        "sha256": "55752b5ee09e37aa59c4810de57e37eb5cd429cfca85c381fec4d4de6c67ad74"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "section": "4.2 Experiment Settings",
+        "sha256": "70daf900a3579a2d66f9c1dc36c33e27d7538a420a98c03a0d4252e0d183fb3f"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S4.SS2.p3.1",
+        "section": "4.2 Experiment Settings",
+        "sha256": "d48cafc678ec95960905dffe1a868383b4906126fe62067cec315b64aad2cf4e"
+      },
+      {
+        "n": 39,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "section": "4.3 Results and Analysis",
+        "sha256": "33caeec0ce33aebdcd2e0776e1b21cdebcee0193ffd3fb9e979a55b45ee9466d"
+      },
+      {
+        "n": 40,
+        "kind": "heading",
+        "id": "S4.SS3.SSSx1",
+        "section": "Model Performance Comparison Experiments",
+        "sha256": "6888aa952bdac1c5003f67f5ff2ffda4613b90f033c589dd5f47e2767ec41999"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSSx1.p1.1",
+        "section": "Model Performance Comparison Experiments",
+        "sha256": "c77bf37f22f894a6ee4712eafc6926fb7539ebc8b2d1975f93c6c4c9ccccbceb"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSSx1.p2.1",
+        "section": "Model Performance Comparison Experiments",
+        "sha256": "c7a0efd62c24f697c6db63f3db12cb6c7217e0e320de4d753e3e5a9bc1cd03b2"
+      },
+      {
+        "n": 43,
+        "kind": "heading",
+        "id": "S4.SS3.SSSx2",
+        "section": "The Ablation Experiments on Model Modules",
+        "sha256": "a106ff80f70c6d159e0f9496b960ea35bcb4797093b2128ec240e0bcdffa8d55"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSSx2.p1.1",
+        "section": "The Ablation Experiments on Model Modules",
+        "sha256": "f88b3641863bb305c387cab8de50bc31324dc17e213441fbcd7010dfbc5e6926"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSSx2.p2.1",
+        "section": "The Ablation Experiments on Model Modules",
+        "sha256": "051920a7eb17a0286ba4874b225ac91e6f2d4a9948c9c1f5c4a63b87464fa7fc"
+      },
+      {
+        "n": 46,
+        "kind": "heading",
+        "id": "S4.SS3.SSSx3",
+        "section": "Actual Defense Effectiveness Evaluation Experiments",
+        "sha256": "8481f2af89fc9e375ac7d033a128e8b6357badb9d69b66092d452a740349177f"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSSx3.p1.1",
+        "section": "Actual Defense Effectiveness Evaluation Experiments",
+        "sha256": "f3e0387b903223569cfbdb60460fcf3d5ce1e7088ab01321f714fa3b253c9cc4"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main method explicitly averages DeBERTa and fuses synonym/structure heuristics; external English evaluation sources are expressly described in Section 4.1.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main method/setup plus additionally read Section 4.3 ablation construction confirm DeBERTa, synonym and pattern feature configurations and named prompt-classifier comparators; all declared combined subparts verified within still-partial scope.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Section 4.2 names Self-Reminder/Self-Defense for defended target-generation comparison; response-based attack-success assessment distinct from standalone classifier scoring.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions/partial inventory. Supported local method facts do not become proof of whole-work absence. Actual checker spans below are narrower where stated.",
+      "restriction_rationale": "Coverage only; no performance, sample counts or eligibility state."
+    },
+    {
+      "field_path": "source_receipts.locators",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mechanical source-locator hashes independently reproduce. Semantic inspection coverage is exclusively the actual_context_check spans, not automatic approval of the full provider-declared scope.",
+      "restriction_rationale": "Hash-only locator metadata; no raw method/results text or outcomes."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  },
+  "previous_checker_receipt_sha256": "c5b68d004d88adc4d08bac06353d303d10c23dc9fceb8d5a9002223c62461f44",
+  "append_only_addendum": "Explicit coverage-field decision added; prior per-fact checks preserved except stated supersession."
+}

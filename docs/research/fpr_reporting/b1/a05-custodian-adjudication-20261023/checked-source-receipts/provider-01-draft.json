@@ -1,0 +1,371 @@
+{
+  "draft_id": "A05-SRC01-W0352-ACL-0001",
+  "request_scope": "Targeted ACL-publication method facts for evaluated input labels/unit, binary input procedure, and actual English evaluation setting.",
+  "actor_id": "/root/a04_semantic_restriction",
+  "role": "SOURCE_PROVIDER_ONLY",
+  "status": "PROVIDER_DRAFT_NOT_RELEASED",
+  "created_utc": "2026-10-23T10:27:02.751769+00:00",
+  "work_id": "W0352",
+  "member_ids": [
+    "M0021"
+  ],
+  "version": "acl:2025.findings-emnlp.1060:publication",
+  "new_method_facts": [
+    {
+      "evidence_id": "A05-SRC01-W0352-F01",
+      "fact_id": "A05-SRC01-W0352-F01",
+      "work_id": "W0352",
+      "member_id": "M0021",
+      "fact_kind": "EVALUATION_UNIT",
+      "method_fact": "Negative detector inputs are external text; positive inputs insert instructions into that text. External-data sources are Wikipedia and News Articles, and instruction sources are LaMini-instruction and BIPIA.",
+      "source_url": "https://aclanthology.org/2025.findings-emnlp.1060.pdf",
+      "version": "acl:2025.findings-emnlp.1060:publication",
+      "raw_source_sha256": "121d61d9c3e1dbd2852c43abd04ae7a1784d9c9a798577029b9784e904922498",
+      "locator": {
+        "format": "PDF",
+        "evidence_pages": [
+          {
+            "page_number_1based": 4,
+            "page_text_sha256": "af4e82adade43e476b88c90338e4978d3c3a1dc52a61dbfd5939458cda31e56f",
+            "rendered_page_sha256": "a3658631ab5d2da38bf2c106724bd0d9c398df834e336323be5c36b7684eedad",
+            "rendered_page_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-01\\M0021-p004-rgb2x.png",
+            "render_tool": "PyMuPDF fitz Page.get_pixmap Matrix(2,2), csRGB, alpha=False",
+            "provider_visual_receipt": {
+              "filename": "M0021-p004.provider-view.0001.json",
+              "sha256": "638fd88a943f34fa602b4d2e291c979130558e6d4b1106351ee23d5e3c9cac4b"
+            }
+          },
+          {
+            "page_number_1based": 5,
+            "page_text_sha256": "76055875fad5ecb9d6fa40a3bf03bcf354582b21087defa4ee1d770c29bda46e",
+            "rendered_page_sha256": "07cad8662b3e32023815c43a9d986b122c257ec378d4ade614e2af28cc403314",
+            "rendered_page_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-01\\M0021-p005-rgb2x.png",
+            "render_tool": "PyMuPDF fitz Page.get_pixmap Matrix(2,2), csRGB, alpha=False",
+            "provider_visual_receipt": {
+              "filename": "M0021-p005.provider-view.0001.json",
+              "sha256": "b53ddb3276c0f3ce10895e785d33ff780124dedd50d9f8c6d486a25deff791b7"
+            }
+          }
+        ],
+        "method_commitment_ids": [
+          "A05-SRC01-W0352-PASSAGE-DATA-SOURCES",
+          "A05-SRC01-W0352-PASSAGE-EVALUATED-LABELS"
+        ],
+        "paragraph_commitments": [
+          {
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-DATA-SOURCES",
+            "page_number_1based": 4,
+            "structural_section_id": "4.1",
+            "block_index_zero_based": 10,
+            "block_bbox_points": [
+              306.144287109375,
+              695.0186767578125,
+              526.230712890625,
+              775.9141845703125
+            ],
+            "block_text_sha256": "7bf306442748f00c8abab00b3654685f4cc5bdec93df506164e3cbbf58668c1a",
+            "normalized_block_text_sha256": "8151762a31de549395611c9025c000b921237a2809a1bafb9bb4c8e1748934eb",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "selected_method_spans": [
+              {
+                "normalized_start_zero_based": 0,
+                "normalized_end_exclusive": 223,
+                "selected_method_span_sha256": "df04a918e4c3936672b7178de2793a051904c2be710ad4e37f4f7fbea23525bc"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned."
+          },
+          {
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-EVALUATED-LABELS",
+            "page_number_1based": 5,
+            "structural_section_id": "4.3.2",
+            "block_index_zero_based": 7,
+            "block_bbox_points": [
+              305.8062744140625,
+              166.5743408203125,
+              526.3361206054688,
+              423.6175842285156
+            ],
+            "block_text_sha256": "f401db217112d1a7465c93e95a32baee97d0527fa331c65ac3edf54b2e1924d8",
+            "normalized_block_text_sha256": "db19b06c4890505c5bc18488130d2cea9a86b30feae6a7df26a855a301c9d42c",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "selected_method_spans": [
+              {
+                "normalized_start_zero_based": 0,
+                "normalized_end_exclusive": 343,
+                "selected_method_span_sha256": "cde292961d0ab733bf83766686727cf6e7eb145f1d367b991c08a5d6c0582510"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned."
+          }
+        ]
+      },
+      "provided_by": "/root/a04_semantic_restriction",
+      "provided_utc": "2026-10-23T10:27:02.732566+00:00",
+      "status": "PROVIDER_DRAFT_NOT_RELEASED",
+      "addresses_criteria": [
+        "input_injection_task",
+        "binary_evaluation"
+      ],
+      "limitation": "Labels concern hidden instructions in external text, rather than downstream answer correctness.",
+      "source_binding_basis": "OFFICIAL_ANTHOLOGY_PUBLICATION_ID_AND_WORK_TITLE_MATCH",
+      "source_receipt": {
+        "filename": "SOURCE_RECEIPT.0001.json",
+        "sha256": "b2539e0cf2eaabdf203d0464c4bb4ea3f95a5f6c99e6ce962bb92476fe4307ec"
+      },
+      "literal_quotation_words": 0,
+      "separate_restriction_check": {
+        "status": "REQUIRED_NOT_PERFORMED_BY_PROVIDER",
+        "actor_id": null
+      }
+    },
+    {
+      "evidence_id": "A05-SRC01-W0352-F02",
+      "fact_id": "A05-SRC01-W0352-F02",
+      "work_id": "W0352",
+      "member_id": "M0021",
+      "fact_kind": "BINARY_PROCEDURE",
+      "method_fact": "InstructDetector fuses final-input-token hidden states with gradients computed using a preset affirmative reply, then applies an MLP classifier to distinguish normal external text from text containing hidden instructions.",
+      "source_url": "https://aclanthology.org/2025.findings-emnlp.1060.pdf",
+      "version": "acl:2025.findings-emnlp.1060:publication",
+      "raw_source_sha256": "121d61d9c3e1dbd2852c43abd04ae7a1784d9c9a798577029b9784e904922498",
+      "locator": {
+        "format": "PDF",
+        "evidence_pages": [
+          {
+            "page_number_1based": 4,
+            "page_text_sha256": "af4e82adade43e476b88c90338e4978d3c3a1dc52a61dbfd5939458cda31e56f",
+            "rendered_page_sha256": "a3658631ab5d2da38bf2c106724bd0d9c398df834e336323be5c36b7684eedad",
+            "rendered_page_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-01\\M0021-p004-rgb2x.png",
+            "render_tool": "PyMuPDF fitz Page.get_pixmap Matrix(2,2), csRGB, alpha=False",
+            "provider_visual_receipt": {
+              "filename": "M0021-p004.provider-view.0001.json",
+              "sha256": "638fd88a943f34fa602b4d2e291c979130558e6d4b1106351ee23d5e3c9cac4b"
+            }
+          }
+        ],
+        "method_commitment_ids": [
+          "A05-SRC01-W0352-PASSAGE-INPUT-STATES",
+          "A05-SRC01-W0352-PASSAGE-GRADIENT-TARGET",
+          "A05-SRC01-W0352-PASSAGE-FUSED-CLASSIFIER"
+        ],
+        "paragraph_commitments": [
+          {
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-INPUT-STATES",
+            "page_number_1based": 4,
+            "structural_section_id": "3.2",
+            "block_index_zero_based": 2,
+            "block_bbox_points": [
+              70.51852416992188,
+              335.82073974609375,
+              290.9429626464844,
+              538.6653442382812
+            ],
+            "block_text_sha256": "8a903fba8c373de287388e457f31bf66910829528603095c272823a76d126c04",
+            "normalized_block_text_sha256": "340a9017e55267d62ec5e5b08b70ccc6f4d43a97cd0176a4d4904eda127637f8",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "selected_method_spans": [
+              {
+                "normalized_start_zero_based": 0,
+                "normalized_end_exclusive": 333,
+                "selected_method_span_sha256": "c4f503411127f4d88e49f81e552eb6152b7142011a26b5982c33097ad653cdaf"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned."
+          },
+          {
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-GRADIENT-TARGET",
+            "page_number_1based": 4,
+            "structural_section_id": "3.3",
+            "block_index_zero_based": 4,
+            "block_bbox_points": [
+              70.46351623535156,
+              573.0706176757812,
+              290.9434509277344,
+              775.9141845703125
+            ],
+            "block_text_sha256": "5ce95781e7abdabd17d6f8880d3e1a948d9d2da5e11d7119407b000c809d86fb",
+            "normalized_block_text_sha256": "93370266ca57d336086f3be159f9f50d82a309a1716ffca9bdd91b1934e06da3",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "selected_method_spans": [
+              {
+                "normalized_start_zero_based": 0,
+                "normalized_end_exclusive": 241,
+                "selected_method_span_sha256": "161add418728c9bc98db6dfefdde2cc8e64b66098909e97717895a5dce660a31"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned."
+          },
+          {
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-FUSED-CLASSIFIER",
+            "page_number_1based": 4,
+            "structural_section_id": "3.4",
+            "block_index_zero_based": 7,
+            "block_bbox_points": [
+              306.144287109375,
+              466.4352722167969,
+              526.2334594726562,
+              642.1804809570312
+            ],
+            "block_text_sha256": "1d2feac2589922cb970347cfb7cc95eb5cacdc22122e921dfab509c0b45fcd8a",
+            "normalized_block_text_sha256": "291d4dbe3016ce35d89a2d11cb5aef720a7abbfbabf8bbba71305bd7170c89d0",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "selected_method_spans": [
+              {
+                "normalized_start_zero_based": 399,
+                "normalized_end_exclusive": 453,
+                "selected_method_span_sha256": "fd7b67065d655fc81f7bc36c3910cec4f4286e61656c8fa9aae39fc921835635"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned."
+          }
+        ]
+      },
+      "provided_by": "/root/a04_semantic_restriction",
+      "provided_utc": "2026-10-23T10:27:02.732566+00:00",
+      "status": "PROVIDER_DRAFT_NOT_RELEASED",
+      "addresses_criteria": [
+        "input_injection_task",
+        "binary_evaluation"
+      ],
+      "limitation": "The preset reply is used for gradient feature construction.",
+      "source_binding_basis": "OFFICIAL_ANTHOLOGY_PUBLICATION_ID_AND_WORK_TITLE_MATCH",
+      "source_receipt": {
+        "filename": "SOURCE_RECEIPT.0001.json",
+        "sha256": "b2539e0cf2eaabdf203d0464c4bb4ea3f95a5f6c99e6ce962bb92476fe4307ec"
+      },
+      "literal_quotation_words": 0,
+      "separate_restriction_check": {
+        "status": "REQUIRED_NOT_PERFORMED_BY_PROVIDER",
+        "actor_id": null
+      }
+    },
+    {
+      "evidence_id": "A05-SRC01-W0352-F03",
+      "fact_id": "A05-SRC01-W0352-F03",
+      "work_id": "W0352",
+      "member_id": "M0021",
+      "fact_kind": "ENGLISH_EVALUATION",
+      "method_fact": "The original evaluated datasets are English. The multilingual extension translates the original English test set into Chinese and Thai, then uses back-translation to compare with the English originals.",
+      "source_url": "https://aclanthology.org/2025.findings-emnlp.1060.pdf",
+      "version": "acl:2025.findings-emnlp.1060:publication",
+      "raw_source_sha256": "121d61d9c3e1dbd2852c43abd04ae7a1784d9c9a798577029b9784e904922498",
+      "locator": {
+        "format": "PDF",
+        "evidence_pages": [
+          {
+            "page_number_1based": 8,
+            "page_text_sha256": "9d2c9191d1c560d22033224599524c054ec4a4b60c068dd0aa9a43554ce17732",
+            "rendered_page_sha256": "ab47fdb3b5831932a505c2de5b734c0aa43e5021013c4bf6854dad31112d9286",
+            "rendered_page_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-01\\M0021-p008-rgb2x.png",
+            "render_tool": "PyMuPDF fitz Page.get_pixmap Matrix(2,2), csRGB, alpha=False",
+            "provider_visual_receipt": {
+              "filename": "M0021-p008.provider-view.0001.json",
+              "sha256": "4a91a664b2d4ab5711f325f7348eb081ea47b1181bf73079c72adc8bf76de3af"
+            }
+          },
+          {
+            "page_number_1based": 13,
+            "page_text_sha256": "7c0c1412aee0d8847f87090a47827ce320272a33cdbebd896c5179d4ad728894",
+            "rendered_page_sha256": "194268eef7c5bc748debfa63d493c414ea3f7f5035662bac77400a54a6a218ea",
+            "rendered_page_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-01\\M0021-p013-rgb2x.png",
+            "render_tool": "PyMuPDF fitz Page.get_pixmap Matrix(2,2), csRGB, alpha=False",
+            "provider_visual_receipt": {
+              "filename": "M0021-p013.provider-view.0001.json",
+              "sha256": "68df382c0f982d7772bb9145fd7588ae4ca4e6ab5d7df02e0db1ba130f5fccaa"
+            }
+          }
+        ],
+        "method_commitment_ids": [
+          "A05-SRC01-W0352-PASSAGE-EVALUATION-LANGUAGES",
+          "A05-SRC01-W0352-PASSAGE-ORIGINAL-LANGUAGE"
+        ],
+        "paragraph_commitments": [
+          {
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-EVALUATION-LANGUAGES",
+            "page_number_1based": 8,
+            "structural_section_id": "4.5.5",
+            "block_index_zero_based": 7,
+            "block_bbox_points": [
+              305.6312561035156,
+              308.1123046875,
+              526.3306884765625,
+              552.0440063476562
+            ],
+            "block_text_sha256": "c1fb0cd35e199617ee110cd3e5010f1ffb750aaec5c908342d018c186829f9c7",
+            "normalized_block_text_sha256": "7b101979d5abff52e7bc8b9be0da49e1ae3aae541aefb2337963cc714659c6b2",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "selected_method_spans": [
+              {
+                "normalized_start_zero_based": 0,
+                "normalized_end_exclusive": 518,
+                "selected_method_span_sha256": "bd17c30acdb85ab5cebe39f99c015b773e03fec0268b8869e4c2f675d341ae23"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned."
+          },
+          {
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-ORIGINAL-LANGUAGE",
+            "page_number_1based": 13,
+            "structural_section_id": "A.1",
+            "block_index_zero_based": 8,
+            "block_bbox_points": [
+              70.46351623535156,
+              617.8047485351562,
+              290.9428405761719,
+              698.7002563476562
+            ],
+            "block_text_sha256": "50f10910106143ecd0c2b8d62cf17fc3708e5e369fea22e0c95fd65408e2e766",
+            "normalized_block_text_sha256": "cca9b83dd85c3bfbcb22584018e692d92690fdd26049468d1812556c043c87f5",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "selected_method_spans": [
+              {
+                "normalized_start_zero_based": 0,
+                "normalized_end_exclusive": 45,
+                "selected_method_span_sha256": "617181a9bcd6b600e6694526e0da8213571dbf7932f958b9f43984c0d76e5284"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned."
+          }
+        ]
+      },
+      "provided_by": "/root/a04_semantic_restriction",
+      "provided_utc": "2026-10-23T10:27:02.734081+00:00",
+      "status": "PROVIDER_DRAFT_NOT_RELEASED",
+      "addresses_criteria": [
+        "english_evaluation"
+      ],
+      "limitation": "English concerns the original evaluation; translated extension tests remain separately identified.",
+      "source_binding_basis": "OFFICIAL_ANTHOLOGY_PUBLICATION_ID_AND_WORK_TITLE_MATCH",
+      "source_receipt": {
+        "filename": "SOURCE_RECEIPT.0001.json",
+        "sha256": "b2539e0cf2eaabdf203d0464c4bb4ea3f95a5f6c99e6ce962bb92476fe4307ec"
+      },
+      "literal_quotation_words": 0,
+      "separate_restriction_check": {
+        "status": "REQUIRED_NOT_PERFORMED_BY_PROVIDER",
+        "actor_id": null
+      }
+    }
+  ],
+  "method_prose_word_count": 83,
+  "method_and_limitation_word_count": 115,
+  "literal_quotation_words": 0,
+  "source_receipt": {
+    "filename": "SOURCE_RECEIPT.0001.json",
+    "sha256": "b2539e0cf2eaabdf203d0464c4bb4ea3f95a5f6c99e6ce962bb92476fe4307ec"
+  },
+  "paragraph_commitment_receipt": {
+    "filename": "SOURCE_PARAGRAPH_COMMITMENTS.0001.json",
+    "sha256": "3ce6f0efb1f7bcb3e9a00959b26b066f840153ce6edaccd45fc47a2345c16aa3"
+  },
+  "eligibility_decision": null,
+  "independent_restriction_check_performed": false,
+  "limitations": [
+    "Shared filesystem and continuing source-provider context; no OS isolation or fresh-review claim.",
+    "Only the selected captured ACL PDF was used for these method facts; no preprint-to-publication equivalence was assumed.",
+    "Original English evaluation and translated extension tests are distinguished.",
+    "Exact publication identity uses the existing official-URL and title-match binding; the original acquisition internal-version limitation remains disclosed.",
+    "Draft awaits a separate restriction checker and has not been released."
+  ]
+}

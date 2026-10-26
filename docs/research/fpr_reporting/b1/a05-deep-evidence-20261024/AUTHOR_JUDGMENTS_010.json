@@ -1,0 +1,109 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "changes": [],
+  "created_utc": "2026-10-26T05:48:56.529212+00:00",
+  "interpretation_documents": {
+    "PUBLISHER_EDITION_APPLICATION.md": "5338bfc3ce54f7927e13a6574d1d9b6c3fe5e58bba46894882fd66cc15c9073a"
+  },
+  "not_fresh_independent": true,
+  "release_sha256": "6dca5f447ab7316cf418d34ec62ed1e271eacef028c903dbd38265dd8df9d3ef",
+  "reviewed_unchanged": [],
+  "schema": "A05_DEEP_EXPOSED_CUSTODIAN_JUDGMENTS",
+  "scope": "B1_ONLY_NO_OUTCOMES_NO_DRAW_NO_B2",
+  "source_git_commit": "1d144f61a7184a472ff048fbdcf97997b10dfab8",
+  "version_corrections": [
+    {
+      "action": "SELECT_CHECKED_PUBLISHER_EDITION",
+      "before_row_sha256": "8dcc67ae750f6b2d4a8d3faa0ee02b20d989025286768f38708794038c1b534b",
+      "evidence_ids": [
+        "A05-DEEP-W0336-9aed0990da85-F01",
+        "A05-DEEP-W0336-9aed0990da85-F02",
+        "A05-DEEP-W0336-9aed0990da85-F03",
+        "A05-DEEP-W0336-9aed0990da85-F04",
+        "A05-DEEP-W0336-9aed0990da85-F05"
+      ],
+      "previous_selected_version_id": "arxiv:2406.14048v1",
+      "rationale": "The official publisher landing and PDF bibliographic fields match this known work. The publisher-issued formatted chapter/journal imprint, pagination/copyright or publication history supports a published publisher-edition inference dated 2025-02-16; the inspected header does not literally designate a version of record. Apply the locked publisher priority over the retained preprint selection, independently of a later preprint revision. Preserve the first-public date and every frozen membership. Reset scientific criteria until this exact publisher edition is checked; no arXiv method/language evidence transfers.",
+      "retained_limitations": [
+        "Actual retrieved bytes are content-addressed; declared scholarly publication date is not HTTP transport or PDF creation/modification time.",
+        "No independent historical-byte authentication or unobserved revision absence is claimed.",
+        "Publisher method/data evidence remains pending; bibliographic selection alone cannot include the work.",
+        "Original preprint selection, method support, first-public date and memberships remain preserved."
+      ],
+      "review_id": "W0336",
+      "rule_document": "PUBLISHER_EDITION_APPLICATION.md",
+      "rule_document_sha256": "5338bfc3ce54f7927e13a6574d1d9b6c3fe5e58bba46894882fd66cc15c9073a",
+      "selected_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher:declared-2025-02-16"
+    },
+    {
+      "action": "SELECT_CHECKED_PUBLISHER_EDITION",
+      "before_row_sha256": "e06db63cbc4c5cdfae5e1522519d091027de9b5a30e527ca98ed65247f86ec72",
+      "evidence_ids": [
+        "A05-DEEP-W0337-dc26d63dff90-F01",
+        "A05-DEEP-W0337-dc26d63dff90-F02",
+        "A05-DEEP-W0337-dc26d63dff90-F03",
+        "A05-DEEP-W0337-dc26d63dff90-F04",
+        "A05-DEEP-W0337-dc26d63dff90-F05"
+      ],
+      "previous_selected_version_id": "arxiv:2508.02312v2",
+      "rationale": "The official publisher landing and PDF bibliographic fields match this known work. The landing history explicitly identifies the version of record on 2026-08-25. Its September issue month is separate. Apply the locked publisher priority over the retained preprint selection, independently of a later preprint revision. Preserve the first-public date and every frozen membership. Reset scientific criteria until this exact publisher edition is checked; no arXiv method/language evidence transfers.",
+      "retained_limitations": [
+        "Actual retrieved bytes are content-addressed; declared scholarly publication date is not HTTP transport or PDF creation/modification time.",
+        "No independent historical-byte authentication or unobserved revision absence is claimed.",
+        "Publisher method/data evidence remains pending; bibliographic selection alone cannot include the work.",
+        "Original preprint selection, method support, first-public date and memberships remain preserved."
+      ],
+      "review_id": "W0337",
+      "rule_document": "PUBLISHER_EDITION_APPLICATION.md",
+      "rule_document_sha256": "5338bfc3ce54f7927e13a6574d1d9b6c3fe5e58bba46894882fd66cc15c9073a",
+      "selected_version_id": "doi:10.1007/s44443-026-01200-9:publisher:declared-2026-08-25"
+    },
+    {
+      "action": "SELECT_CHECKED_PUBLISHER_EDITION",
+      "before_row_sha256": "dad2e6b1332f3ac73944d99b12e6988c47eb43de43d0feeba0ad6195be59a004",
+      "evidence_ids": [
+        "A05-DEEP-W0371-7b4cbca0a0fb-F01",
+        "A05-DEEP-W0371-7b4cbca0a0fb-F02",
+        "A05-DEEP-W0371-7b4cbca0a0fb-F03",
+        "A05-DEEP-W0371-7b4cbca0a0fb-F04",
+        "A05-DEEP-W0371-7b4cbca0a0fb-F05"
+      ],
+      "previous_selected_version_id": "arxiv:2409.08087v3",
+      "rationale": "The official publisher landing and PDF bibliographic fields match this known work. The publisher-issued formatted chapter/journal imprint, pagination/copyright or publication history supports a published publisher-edition inference dated 2026-05-30; the inspected header does not literally designate a version of record. Apply the locked publisher priority over the retained preprint selection, independently of a later preprint revision. Preserve the first-public date and every frozen membership. Reset scientific criteria until this exact publisher edition is checked; no arXiv method/language evidence transfers.",
+      "retained_limitations": [
+        "Actual retrieved bytes are content-addressed; declared scholarly publication date is not HTTP transport or PDF creation/modification time.",
+        "No independent historical-byte authentication or unobserved revision absence is claimed.",
+        "Publisher method/data evidence remains pending; bibliographic selection alone cannot include the work.",
+        "Original preprint selection, method support, first-public date and memberships remain preserved."
+      ],
+      "review_id": "W0371",
+      "rule_document": "PUBLISHER_EDITION_APPLICATION.md",
+      "rule_document_sha256": "5338bfc3ce54f7927e13a6574d1d9b6c3fe5e58bba46894882fd66cc15c9073a",
+      "selected_version_id": "doi:10.63336/eureka.46:publisher:declared-2026-05-30"
+    },
+    {
+      "action": "SELECT_CHECKED_PUBLISHER_EDITION",
+      "before_row_sha256": "0759dc1542d37fadd780e6d8ee594535f03b46603278739eb66693ed2734ec47",
+      "evidence_ids": [
+        "A05-DEEP-W0372-0724c0bf090f-F01",
+        "A05-DEEP-W0372-0724c0bf090f-F02",
+        "A05-DEEP-W0372-0724c0bf090f-F03",
+        "A05-DEEP-W0372-0724c0bf090f-F04",
+        "A05-DEEP-W0372-0724c0bf090f-F05"
+      ],
+      "previous_selected_version_id": "arxiv:2410.15236v4",
+      "rationale": "The official publisher landing and PDF bibliographic fields match this known work. The publisher-issued formatted chapter/journal imprint, pagination/copyright or publication history supports a published publisher-edition inference dated 2026-03-31; the inspected header does not literally designate a version of record. Apply the locked publisher priority over the retained preprint selection, independently of a later preprint revision. Preserve the first-public date and every frozen membership. Reset scientific criteria until this exact publisher edition is checked; no arXiv method/language evidence transfers.",
+      "retained_limitations": [
+        "Actual retrieved bytes are content-addressed; declared scholarly publication date is not HTTP transport or PDF creation/modification time.",
+        "No independent historical-byte authentication or unobserved revision absence is claimed.",
+        "Publisher method/data evidence remains pending; bibliographic selection alone cannot include the work.",
+        "Original preprint selection, method support, first-public date and memberships remain preserved."
+      ],
+      "review_id": "W0372",
+      "rule_document": "PUBLISHER_EDITION_APPLICATION.md",
+      "rule_document_sha256": "5338bfc3ce54f7927e13a6574d1d9b6c3fe5e58bba46894882fd66cc15c9073a",
+      "selected_version_id": "doi:10.63336/eureka.47:publisher:declared-2026-03-31"
+    }
+  ]
+}

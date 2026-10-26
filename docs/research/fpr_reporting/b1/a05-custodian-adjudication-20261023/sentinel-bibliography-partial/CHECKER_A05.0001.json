@@ -1,0 +1,1125 @@
+{
+  "receipt_id": "CHECKER-A05-SENTINEL-BIBLIOGRAPHY-PARTIAL-0001",
+  "actor_id": "/root/a05_source_check",
+  "role": "PEER_SOURCE_RESTRICTION_AND_BIBLIOGRAPHIC_FIDELITY_CHECKER_ONLY",
+  "created_utc": "2026-10-23T19:27:11.895063+00:00",
+  "status": "PARTIAL_APPROVED_FIELDS_WITH_EXPLICIT_SOURCE_HOLDS",
+  "append_only": true,
+  "write_mode": "exclusive_create",
+  "provider_completed_return": false,
+  "new_retrieval_performed": false,
+  "input_artifacts": [
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\acquisition-receipts.0001.json",
+      "sha256": "f593c17cdcdfc69f7348439decf2ea3b091b104065df4694b12db4e9d5c54490"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\capture-plan.0001.json",
+      "sha256": "6eaf0869dd3c0adfa5c812685985f8c3e4ead3f6b9b5cc0d0650a249aef453a6"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-bibliographic-fields.0001.json",
+      "sha256": "0f0609cff1b6d44803b83590155c36fc4520ab1e95e7b053c71a498821871a1f"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\a04-handoff\\restricted\\SENTINEL_IDENTIFIERS.json",
+      "sha256": "a4763e4bf3dddf2e1a6e925b57a8642914d0fe0aa4166ea23d393b8c3fd5e8f7"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\AMENDMENT_A01_SENTINEL_EXCLUSIONS.md",
+      "sha256": "a74caf940b5f9c0aa2b73435483bb586480a46539fd869b65bd8bfde001b6efb"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\retrieval-01\\01-arxiv-0.body",
+      "sha256": "132369de6181ce9e47b22cb68da573dcf6242aa75d8374c6f13004dc27a02be6"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\retrieval-01\\02-arxiv-100.body",
+      "sha256": "77cf858b62fd864a791797f6faf081233aceac2526b26ccb3d7cb9852469ed3f"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\retrieval-01\\03-arxiv-200.body",
+      "sha256": "02f9e1ce347080a2d419b617233f6cd7052b14277162969d4b5e2c0776842dc5"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\retrieval-01\\04-arxiv-300.body",
+      "sha256": "2bd01175c18b0ee25a2788b485e3755978eea29bab1333fb1fb56bd74cb543cb"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\missing-arxiv-locked-ids-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\doi-10-1007-s11009-018-9636-1-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\doi-10-32604-cmc-2025-074081-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\doi-10-3390-electronics15163700-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\doi-10-5281-zenodo-22167308-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\medrxiv-10-64898-2026-06-04-26354950-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\neurips-2024-e9721921b799b6ea98d37f9e77f1a7fe-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\neurips-2025-746960ad49ddb47248970a0e1404230c-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\openreview-2i7xXuNixu-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\openreview-4et1dh8D23-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\pmlr-v267-csillag25a-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\pmlr-v267-xiang25a-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\preprints-202609-2642-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\publisher-mdpi-applsci-16-16-7974-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\publisher-mdpi-electronics-15-11-2242-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\publisher-mdpi-electronics-15-16-3554-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\publisher-mdpi-futureinternet-18-7-376-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\publisher-nejsds-article-59-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "per_source_checks": [
+    {
+      "source_kind": "ORIGINAL_ARXIV_METADATA_CAPTURE",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\retrieval-01\\01-arxiv-0.body",
+      "raw_sha256": "132369de6181ce9e47b22cb68da573dcf6242aa75d8374c6f13004dc27a02be6",
+      "raw_hash_verified": true,
+      "restriction_decision": "APPROVE",
+      "approved_record_identities": [
+        "arxiv:2506.05739"
+      ],
+      "feed_updated_timestamp": "2026-10-17T14:28:35Z",
+      "capture_timestamp": null,
+      "limit": "Approval covers named entries and selected identity fields only."
+    },
+    {
+      "source_kind": "ORIGINAL_ARXIV_METADATA_CAPTURE",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\retrieval-01\\02-arxiv-100.body",
+      "raw_sha256": "77cf858b62fd864a791797f6faf081233aceac2526b26ccb3d7cb9852469ed3f",
+      "raw_hash_verified": true,
+      "restriction_decision": "HOLD",
+      "approved_record_identities": [],
+      "feed_updated_timestamp": "2026-10-17T14:28:39Z",
+      "capture_timestamp": null,
+      "limit": "No bounded provider record from this feed was supplied or projected; no absence inference is made."
+    },
+    {
+      "source_kind": "ORIGINAL_ARXIV_METADATA_CAPTURE",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\retrieval-01\\03-arxiv-200.body",
+      "raw_sha256": "02f9e1ce347080a2d419b617233f6cd7052b14277162969d4b5e2c0776842dc5",
+      "raw_hash_verified": true,
+      "restriction_decision": "APPROVE",
+      "approved_record_identities": [
+        "arxiv:2605.06669",
+        "arxiv:2604.17125",
+        "arxiv:2605.31042"
+      ],
+      "feed_updated_timestamp": "2026-10-17T14:28:43Z",
+      "capture_timestamp": null,
+      "limit": "Approval covers named entries and selected identity fields only."
+    },
+    {
+      "source_kind": "ORIGINAL_ARXIV_METADATA_CAPTURE",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\retrieval-01\\04-arxiv-300.body",
+      "raw_sha256": "2bd01175c18b0ee25a2788b485e3755978eea29bab1333fb1fb56bd74cb543cb",
+      "raw_hash_verified": true,
+      "restriction_decision": "APPROVE",
+      "approved_record_identities": [
+        "arxiv:2609.14079"
+      ],
+      "feed_updated_timestamp": "2026-10-17T14:28:47Z",
+      "capture_timestamp": null,
+      "limit": "Approval covers named entries and selected identity fields only."
+    },
+    {
+      "request_name": "missing-arxiv-locked-ids",
+      "source_kind": "TARGETED_ARXIV_ATOM",
+      "locked_identities": [
+        "arxiv:0805.1569",
+        "arxiv:0907.3740",
+        "arxiv:1608.03109",
+        "arxiv:2110.06177",
+        "arxiv:2402.01822",
+        "arxiv:2406.10490",
+        "arxiv:2406.12934",
+        "arxiv:2407.02551",
+        "arxiv:2408.05817",
+        "arxiv:2411.00640",
+        "arxiv:2411.12946",
+        "arxiv:2412.16339",
+        "arxiv:2503.01747",
+        "arxiv:2503.02574",
+        "arxiv:2505.02299",
+        "arxiv:2506.10597",
+        "arxiv:2506.16416",
+        "arxiv:2510.05244",
+        "arxiv:2510.09023",
+        "arxiv:2511.12803",
+        "arxiv:2511.22047",
+        "arxiv:2602.02229",
+        "arxiv:2602.05746",
+        "arxiv:2605.03228",
+        "arxiv:2605.16282",
+        "arxiv:2605.17986",
+        "arxiv:2605.30534",
+        "arxiv:2605.31073",
+        "arxiv:2606.07789",
+        "arxiv:2606.09315",
+        "arxiv:2606.15153",
+        "arxiv:2606.18782",
+        "arxiv:2606.19881",
+        "arxiv:2606.30219",
+        "arxiv:2607.02510",
+        "arxiv:2607.23999",
+        "arxiv:2607.28322",
+        "arxiv:2608.21262",
+        "arxiv:2609.22048",
+        "arxiv:2609.33671",
+        "arxiv:2610.04575",
+        "arxiv:2610.14365"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\missing-arxiv-locked-ids-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:26.970815+00:00",
+      "finished_utc": "2026-10-23T15:47:29.034139+00:00",
+      "requested_url": "https://export.arxiv.org/api/query?id_list=0805.1569%2C0907.3740%2C1608.03109%2C2110.06177%2C2402.01822%2C2406.10490%2C2406.12934%2C2407.02551%2C2408.05817%2C2411.00640%2C2411.12946%2C2412.16339%2C2503.01747%2C2503.02574%2C2505.02299%2C2506.10597%2C2506.16416%2C2510.05244%2C2510.09023%2C2511.12803%2C2511.22047%2C2602.02229%2C2602.05746%2C2605.03228%2C2605.16282%2C2605.17986%2C2605.30534%2C2605.31073%2C2606.07789%2C2606.09315%2C2606.15153%2C2606.18782%2C2606.19881%2C2606.30219%2C2607.02510%2C2607.23999%2C2607.28322%2C2608.21262%2C2609.22048%2C2609.33671%2C2610.04575%2C2610.14365&max_results=42",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='export.arxiv.org', port=443): Max retries exceeded with url: /api/query?id_list=0805.1569%2C0907.3740%2C1608.03109%2C2110.06177%2C2402.01822%2C2406.10490%2C2406.12934%2C2407.02551%2C2408.05817%2C2411.00640%2C2411.12946%2C2412.16339%2C2503.01747%2C2503.02574%2C2505.02299%2C2506.10597%2C2506.16416%2C2510.05244%2C2510.09023%2C2511.12803%2C2511.22047%2C2602.02229%2C2602.05746%2C2605.03228%2C2605.16282%2C2605.17986%2C2605.30534%2C2605.31073%2C2606.07789%2C2606.09315%2C2606.15153%2C2606.18782%2C2606.19881%2C2606.30219%2C2607.02510%2C2607.23999%2C2607.28322%2C2608.21262%2C2609.22048%2C2609.33671%2C2610.04575%2C2610.14365&max_results=42 (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EDABFF50>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "doi-10-1007-s11009-018-9636-1",
+      "source_kind": "TARGETED_CROSSREF_METADATA",
+      "locked_identities": [
+        "doi:10.1007/s11009-018-9636-1"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\doi-10-1007-s11009-018-9636-1-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:26.972841+00:00",
+      "finished_utc": "2026-10-23T15:47:29.030134+00:00",
+      "requested_url": "https://api.crossref.org/works/10.1007%2Fs11009-018-9636-1",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='api.crossref.org', port=443): Max retries exceeded with url: /works/10.1007%2Fs11009-018-9636-1 (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EDABFC20>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "doi-10-32604-cmc-2025-074081",
+      "source_kind": "TARGETED_CROSSREF_METADATA",
+      "locked_identities": [
+        "doi:10.32604/cmc.2025.074081"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\doi-10-32604-cmc-2025-074081-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:26.972841+00:00",
+      "finished_utc": "2026-10-23T15:47:29.032140+00:00",
+      "requested_url": "https://api.crossref.org/works/10.32604%2Fcmc.2025.074081",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='api.crossref.org', port=443): Max retries exceeded with url: /works/10.32604%2Fcmc.2025.074081 (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EDABFE00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "doi-10-3390-electronics15163700",
+      "source_kind": "TARGETED_CROSSREF_METADATA",
+      "locked_identities": [
+        "doi:10.3390/electronics15163700"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\doi-10-3390-electronics15163700-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:29.030134+00:00",
+      "finished_utc": "2026-10-23T15:47:31.055804+00:00",
+      "requested_url": "https://api.crossref.org/works/10.3390%2Felectronics15163700",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='api.crossref.org', port=443): Max retries exceeded with url: /works/10.3390%2Felectronics15163700 (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EE2D4DD0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "doi-10-5281-zenodo-22167308",
+      "source_kind": "TARGETED_CANONICAL_HTML_METADATA",
+      "locked_identities": [
+        "doi:10.5281/zenodo.22167308"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\doi-10-5281-zenodo-22167308-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:29.032140+00:00",
+      "finished_utc": "2026-10-23T15:47:31.058812+00:00",
+      "requested_url": "https://research.pranaymahendrakar.com/p/near-zero-until-someone-tries",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='research.pranaymahendrakar.com', port=443): Max retries exceeded with url: /p/near-zero-until-someone-tries (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EE2D4F80>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "medrxiv-10-64898-2026-06-04-26354950",
+      "source_kind": "TARGETED_CANONICAL_HTML_METADATA",
+      "locked_identities": [
+        "medrxiv:10.64898/2026.06.04.26354950"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\medrxiv-10-64898-2026-06-04-26354950-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:29.034139+00:00",
+      "finished_utc": "2026-10-23T15:47:31.071995+00:00",
+      "requested_url": "https://www.medrxiv.org/content/10.64898/2026.06.04.26354950v2",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='www.medrxiv.org', port=443): Max retries exceeded with url: /content/10.64898/2026.06.04.26354950v2 (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224ED976EA0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "neurips-2024-e9721921b799b6ea98d37f9e77f1a7fe",
+      "source_kind": "TARGETED_CANONICAL_HTML_METADATA",
+      "locked_identities": [
+        "neurips:2024/e9721921b799b6ea98d37f9e77f1a7fe"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\neurips-2024-e9721921b799b6ea98d37f9e77f1a7fe-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:31.055804+00:00",
+      "finished_utc": "2026-10-23T15:47:33.104588+00:00",
+      "requested_url": "https://proceedings.neurips.cc/paper_files/paper/2024/hash/e9721921b799b6ea98d37f9e77f1a7fe-Abstract-Conference.html",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='proceedings.neurips.cc', port=443): Max retries exceeded with url: /paper_files/paper/2024/hash/e9721921b799b6ea98d37f9e77f1a7fe-Abstract-Conference.html (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EDABCAD0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "neurips-2025-746960ad49ddb47248970a0e1404230c",
+      "source_kind": "TARGETED_CANONICAL_HTML_METADATA",
+      "locked_identities": [
+        "neurips:2025/746960ad49ddb47248970a0e1404230c"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\neurips-2025-746960ad49ddb47248970a0e1404230c-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:31.058812+00:00",
+      "finished_utc": "2026-10-23T15:47:33.107591+00:00",
+      "requested_url": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/746960ad49ddb47248970a0e1404230c-Abstract-Conference.html",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='proceedings.neurips.cc', port=443): Max retries exceeded with url: /paper_files/paper/2025/hash/746960ad49ddb47248970a0e1404230c-Abstract-Conference.html (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EDABFE30>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "openreview-2i7xXuNixu",
+      "source_kind": "TARGETED_OPENREVIEW_METADATA",
+      "locked_identities": [
+        "openreview:2i7xXuNixu"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\openreview-2i7xXuNixu-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:31.072996+00:00",
+      "finished_utc": "2026-10-23T15:47:33.107591+00:00",
+      "requested_url": "https://api2.openreview.net/notes?id=2i7xXuNixu",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='api2.openreview.net', port=443): Max retries exceeded with url: /notes?id=2i7xXuNixu (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EE2D5B80>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "openreview-4et1dh8D23",
+      "source_kind": "TARGETED_OPENREVIEW_METADATA",
+      "locked_identities": [
+        "openreview:4et1dh8D23"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\openreview-4et1dh8D23-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:33.104588+00:00",
+      "finished_utc": "2026-10-23T15:47:35.136783+00:00",
+      "requested_url": "https://api2.openreview.net/notes?id=4et1dh8D23",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='api2.openreview.net', port=443): Max retries exceeded with url: /notes?id=4et1dh8D23 (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EE2D6B10>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "pmlr-v267-csillag25a",
+      "source_kind": "TARGETED_CANONICAL_HTML_METADATA",
+      "locked_identities": [
+        "pmlr:v267/csillag25a"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\pmlr-v267-csillag25a-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:33.107591+00:00",
+      "finished_utc": "2026-10-23T15:47:35.139789+00:00",
+      "requested_url": "https://proceedings.mlr.press/v267/csillag25a.html",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='proceedings.mlr.press', port=443): Max retries exceeded with url: /v267/csillag25a.html (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EDABF320>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "pmlr-v267-xiang25a",
+      "source_kind": "TARGETED_CANONICAL_HTML_METADATA",
+      "locked_identities": [
+        "pmlr:v267/xiang25a"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\pmlr-v267-xiang25a-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:33.107591+00:00",
+      "finished_utc": "2026-10-23T15:47:35.137792+00:00",
+      "requested_url": "https://proceedings.mlr.press/v267/xiang25a.html",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='proceedings.mlr.press', port=443): Max retries exceeded with url: /v267/xiang25a.html (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EDABE2A0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "preprints-202609-2642",
+      "source_kind": "TARGETED_CANONICAL_HTML_METADATA",
+      "locked_identities": [
+        "preprints:202609.2642"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\preprints-202609-2642-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:35.136783+00:00",
+      "finished_utc": "2026-10-23T15:47:37.183122+00:00",
+      "requested_url": "https://www.preprints.org/manuscript/202609.2642",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='www.preprints.org', port=443): Max retries exceeded with url: /manuscript/202609.2642 (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EE2D4A40>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "publisher-mdpi-applsci-16-16-7974",
+      "source_kind": "TARGETED_CANONICAL_HTML_METADATA",
+      "locked_identities": [
+        "publisher:mdpi/applsci/16/16/7974"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\publisher-mdpi-applsci-16-16-7974-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:35.137792+00:00",
+      "finished_utc": "2026-10-23T15:47:37.179873+00:00",
+      "requested_url": "https://www.mdpi.com/2076-3417/16/16/7974",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='www.mdpi.com', port=443): Max retries exceeded with url: /2076-3417/16/16/7974 (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EE2D5B50>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "publisher-mdpi-electronics-15-11-2242",
+      "source_kind": "TARGETED_CANONICAL_HTML_METADATA",
+      "locked_identities": [
+        "publisher:mdpi/electronics/15/11/2242"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\publisher-mdpi-electronics-15-11-2242-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:35.139789+00:00",
+      "finished_utc": "2026-10-23T15:47:37.184513+00:00",
+      "requested_url": "https://www.mdpi.com/2079-9292/15/11/2242",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='www.mdpi.com', port=443): Max retries exceeded with url: /2079-9292/15/11/2242 (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EE2D4FE0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "publisher-mdpi-electronics-15-16-3554",
+      "source_kind": "TARGETED_CANONICAL_HTML_METADATA",
+      "locked_identities": [
+        "publisher:mdpi/electronics/15/16/3554"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\publisher-mdpi-electronics-15-16-3554-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:37.179873+00:00",
+      "finished_utc": "2026-10-23T15:47:39.237863+00:00",
+      "requested_url": "https://www.mdpi.com/2079-9292/15/16/3554",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='www.mdpi.com', port=443): Max retries exceeded with url: /2079-9292/15/16/3554 (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EE2D4440>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "publisher-mdpi-futureinternet-18-7-376",
+      "source_kind": "TARGETED_CANONICAL_HTML_METADATA",
+      "locked_identities": [
+        "publisher:mdpi/futureinternet/18/7/376"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\publisher-mdpi-futureinternet-18-7-376-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:37.183122+00:00",
+      "finished_utc": "2026-10-23T15:47:39.237863+00:00",
+      "requested_url": "https://www.mdpi.com/1999-5903/18/7/376",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='www.mdpi.com', port=443): Max retries exceeded with url: /1999-5903/18/7/376 (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EDABF1D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    },
+    {
+      "request_name": "publisher-nejsds-article-59",
+      "source_kind": "TARGETED_CANONICAL_HTML_METADATA",
+      "locked_identities": [
+        "publisher:nejsds/article/59"
+      ],
+      "restriction_decision": "HOLD",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-sentinels\\private-raw\\publisher-nejsds-article-59-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.raw",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_hash_verified": true,
+      "started_utc": "2026-10-23T15:47:37.184513+00:00",
+      "finished_utc": "2026-10-23T15:47:39.236436+00:00",
+      "requested_url": "https://nejsds.nestat.org/journal/NEJSDS/article/59/text",
+      "response_url": null,
+      "http_status": null,
+      "error_as_recorded": "ProxyError: HTTPSConnectionPool(host='nejsds.nestat.org', port=443): Max retries exceeded with url: /journal/NEJSDS/article/59/text (Caused by ProxyError('Unable to connect to proxy', NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x00000224EDABE090>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')))",
+      "reason": "Empty captured body after failed transport; no title, author, identifier crosslink or alias is source-verified by this attempt."
+    }
+  ],
+  "per_record_checks": [
+    {
+      "locked_identity": "arxiv:2506.05739",
+      "restriction_decision": "APPROVE",
+      "provider_record_sha256_canonical_json": "6fc53a7ec350eb256b7e3153aefc43970936effa7a7ae3ecec579a650e5984f0",
+      "safe_record_sha256_canonical_json": "569613196e2b7d7d700493268870b789f6fdd32c4287cc1e3515b23b7c9183f1",
+      "raw_source_sha256": "132369de6181ce9e47b22cb68da573dcf6242aa75d8374c6f13004dc27a02be6",
+      "locator_sha256_canonical_json": "54fbbaf5f08019970a1342f7a7db1e7d5f83a34f9ba8f5be1dad8693340ace0e",
+      "source_fields_match": true,
+      "approved_fields": [
+        "title",
+        "authors",
+        "identifiers",
+        "source_supported_aliases"
+      ],
+      "not_released_fields": [
+        "arxiv:doi",
+        "arxiv:journal_ref"
+      ],
+      "limit": "Optional DOI/journal fields are empty in the selected entry; this does not establish absence elsewhere."
+    },
+    {
+      "locked_identity": "arxiv:2605.06669",
+      "restriction_decision": "APPROVE",
+      "provider_record_sha256_canonical_json": "78d827bd254ad364ec23ace451b17a05dab97051c4750f95c9bd9059fc444905",
+      "safe_record_sha256_canonical_json": "ef122bf2f3a010138e96e3e7fa54aadfb908b7c3582b4da79a3259c2430c3782",
+      "raw_source_sha256": "02f9e1ce347080a2d419b617233f6cd7052b14277162969d4b5e2c0776842dc5",
+      "locator_sha256_canonical_json": "f72bed5c981594527e6a77f6a9048d3e120c87157e7ed70cc7ec8c93d3902620",
+      "source_fields_match": true,
+      "approved_fields": [
+        "title",
+        "authors",
+        "identifiers",
+        "source_supported_aliases"
+      ],
+      "not_released_fields": [
+        "arxiv:doi",
+        "arxiv:journal_ref"
+      ],
+      "limit": "Optional DOI/journal fields are empty in the selected entry; this does not establish absence elsewhere."
+    },
+    {
+      "locked_identity": "arxiv:2604.17125",
+      "restriction_decision": "APPROVE",
+      "provider_record_sha256_canonical_json": "2f6f6fb7dc8b6b7b8fa0023d16a4506ec95bed7c3493951031eff0d7eef1a255",
+      "safe_record_sha256_canonical_json": "b5132172a0d8a58fdf774f94694de13c916e721daf93c8297b21a8b989a61229",
+      "raw_source_sha256": "02f9e1ce347080a2d419b617233f6cd7052b14277162969d4b5e2c0776842dc5",
+      "locator_sha256_canonical_json": "438fbbb18c66ddb9054a877b7095f312c71fba64f0b48f816047604f146e2038",
+      "source_fields_match": true,
+      "approved_fields": [
+        "title",
+        "authors",
+        "identifiers",
+        "source_supported_aliases"
+      ],
+      "not_released_fields": [
+        "arxiv:doi",
+        "arxiv:journal_ref"
+      ],
+      "limit": "Optional DOI/journal fields are empty in the selected entry; this does not establish absence elsewhere."
+    },
+    {
+      "locked_identity": "arxiv:2605.31042",
+      "restriction_decision": "APPROVE",
+      "provider_record_sha256_canonical_json": "d644b607698baa27f34136140bc59a64b0e7a281a2cbdb2620c18e3bd34b92d8",
+      "safe_record_sha256_canonical_json": "d401408da62aba02c2bfdf93c5bc999550c33e1e4e35f6a59ee98fcbb87f9846",
+      "raw_source_sha256": "02f9e1ce347080a2d419b617233f6cd7052b14277162969d4b5e2c0776842dc5",
+      "locator_sha256_canonical_json": "427197b80f248d1a00f8c8f51550359a656dd47acb00bc463ba022aee749b3a6",
+      "source_fields_match": true,
+      "approved_fields": [
+        "title",
+        "authors",
+        "identifiers",
+        "source_supported_aliases"
+      ],
+      "not_released_fields": [
+        "arxiv:doi",
+        "arxiv:journal_ref"
+      ],
+      "limit": "Optional DOI/journal fields are empty in the selected entry; this does not establish absence elsewhere."
+    },
+    {
+      "locked_identity": "arxiv:2609.14079",
+      "restriction_decision": "APPROVE",
+      "provider_record_sha256_canonical_json": "8196b992f8efb8231323de5b776033d90b5c2b292dfd820749ddfd1ba44a0887",
+      "safe_record_sha256_canonical_json": "060f5a692717fcbd2ce9a2d1dc721971f206e7b71bbae0718f66cc19830ca303",
+      "raw_source_sha256": "2bd01175c18b0ee25a2788b485e3755978eea29bab1333fb1fb56bd74cb543cb",
+      "locator_sha256_canonical_json": "45515f67a61d07cdc8d472dbc3011d887fc8f87a7bf270816652673adfddec5c",
+      "source_fields_match": true,
+      "approved_fields": [
+        "title",
+        "authors",
+        "identifiers",
+        "source_supported_aliases"
+      ],
+      "not_released_fields": [
+        "arxiv:doi",
+        "arxiv:journal_ref"
+      ],
+      "limit": "Optional DOI/journal fields are empty in the selected entry; this does not establish absence elsewhere."
+    }
+  ],
+  "coverage": [
+    {
+      "locked_identity": "arxiv:0805.1569",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:0907.3740",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:1608.03109",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2110.06177",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2402.01822",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2406.10490",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2406.12934",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2407.02551",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2408.05817",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2411.00640",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2411.12946",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2412.16339",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2503.01747",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2503.02574",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2505.02299",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2506.05739",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "VERIFIED_BOUNDED_IDENTITY_FIELDS",
+      "capture_request_name": null,
+      "gap": null
+    },
+    {
+      "locked_identity": "arxiv:2506.10597",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2506.16416",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2510.05244",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2510.09023",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2511.12803",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2511.22047",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2602.02229",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2602.05746",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2604.17125",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "VERIFIED_BOUNDED_IDENTITY_FIELDS",
+      "capture_request_name": null,
+      "gap": null
+    },
+    {
+      "locked_identity": "arxiv:2605.03228",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2605.06669",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "VERIFIED_BOUNDED_IDENTITY_FIELDS",
+      "capture_request_name": null,
+      "gap": null
+    },
+    {
+      "locked_identity": "arxiv:2605.16282",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2605.17986",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2605.30534",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2605.31042",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "VERIFIED_BOUNDED_IDENTITY_FIELDS",
+      "capture_request_name": null,
+      "gap": null
+    },
+    {
+      "locked_identity": "arxiv:2605.31073",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2606.07789",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2606.09315",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2606.15153",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2606.18782",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2606.19881",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2606.30219",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2607.02510",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2607.23999",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2607.28322",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2608.21262",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2609.14079",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "VERIFIED_BOUNDED_IDENTITY_FIELDS",
+      "capture_request_name": null,
+      "gap": null
+    },
+    {
+      "locked_identity": "arxiv:2609.22048",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2609.33671",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2610.04575",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "arxiv:2610.14365",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "missing-arxiv-locked-ids",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "doi:10.1007/s11009-018-9636-1",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "doi-10-1007-s11009-018-9636-1",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "doi:10.32604/cmc.2025.074081",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "doi-10-32604-cmc-2025-074081",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "doi:10.3390/electronics15163700",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "doi-10-3390-electronics15163700",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "doi:10.5281/zenodo.22167308",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "doi-10-5281-zenodo-22167308",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "medrxiv:10.64898/2026.06.04.26354950",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "medrxiv-10-64898-2026-06-04-26354950",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "neurips:2024/e9721921b799b6ea98d37f9e77f1a7fe",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "neurips-2024-e9721921b799b6ea98d37f9e77f1a7fe",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "neurips:2025/746960ad49ddb47248970a0e1404230c",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "neurips-2025-746960ad49ddb47248970a0e1404230c",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "openreview-historical-pdf:27bdc234a1ce9d4f972f85391e2e1d1e53681ff1",
+      "exclude_versions": "ALL_KNOWN_MATCHES",
+      "bibliographic_coverage": "HOLD_NO_REFERENCED_CAPTURE",
+      "capture_request_name": null,
+      "gap": "No raw metadata capture for this locked identity was supplied in the inspected partial artifacts."
+    },
+    {
+      "locked_identity": "openreview:2i7xXuNixu",
+      "exclude_versions": "ALL_KNOWN_MATCHES",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "openreview-2i7xXuNixu",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "openreview:4et1dh8D23",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "openreview-4et1dh8D23",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "pmlr:v267/csillag25a",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "pmlr-v267-csillag25a",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "pmlr:v267/xiang25a",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "pmlr-v267-xiang25a",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "preprints:202609.2642",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "preprints-202609-2642",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "publisher:mdpi/applsci/16/16/7974",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "publisher-mdpi-applsci-16-16-7974",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "publisher:mdpi/electronics/15/11/2242",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "publisher-mdpi-electronics-15-11-2242",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "publisher:mdpi/electronics/15/16/3554",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "publisher-mdpi-electronics-15-16-3554",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "publisher:mdpi/futureinternet/18/7/376",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "publisher-mdpi-futureinternet-18-7-376",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    },
+    {
+      "locked_identity": "publisher:nejsds/article/59",
+      "exclude_versions": "ALL",
+      "bibliographic_coverage": "HOLD_CAPTURE_UNAVAILABLE",
+      "capture_request_name": "publisher-nejsds-article-59",
+      "gap": "The targeted receipt points to an empty body after a proxy failure."
+    }
+  ],
+  "safe_projection": {
+    "filename": "SAFE_SENTINEL_BIBLIOGRAPHY_PARTIAL.0001.json",
+    "sha256": "26f344bd8e150b3f5fabf595191e5ea03fc8d787d334b82817e7354f3203a7e1",
+    "artifact_id": "SAFE-SENTINEL-BIBLIOGRAPHY-PARTIAL-A05-0001"
+  },
+  "hash_convention": "File hashes use exact bytes. Canonical JSON hashes use UTF-8, ensure_ascii=False, sorted keys and compact separators. Atom locator indices are explicitly one-based and zero-based.",
+  "rules_read_scope": "Original sentinel work_id and exclude_versions fields; locked A01 identifiers/title/prefix and nonmapping rule. Frozen label prose was not read or used.",
+  "access_notes": [
+    "The XML feeds were mechanically parsed. Only Atom identifiers needed to resolve the supplied entries and the selected entries\u2019 permitted bibliographic fields and timestamps were inspected.",
+    "The first attempt to print the private bibliographic JSON encountered a local cp1252 UnicodeEncodeError. It was re-read with ASCII-escaped output; no network operation or source mutation occurred."
+  ],
+  "limits": [
+    "Peer checking and restricted projection of actual partial captures only; no completed provider return or fresh provider attestation is claimed.",
+    "No network request, retry, proxy repair, service-limit workaround or new candidate search was performed by this checker.",
+    "The parent reported that the original provider stopped at a service usage limit before final drafting. The inspected partial artifacts do not contain the exact service-limit message or quota, so no exact service limit is invented. Their recorded transport failures are preserved separately.",
+    "No abstracts, results, findings, evaluation labels, sample/performance values, assurance claims or body claim prose were inspected or projected. Literal bibliographic titles remain identity metadata only.",
+    "The original locked identifiers and version scopes are rules. They are not evidence that a failed capture supplied any bibliographic field.",
+    "The locked A01 historical-PDF and forum identities remain potentially distinct. No alias or canonical mapping between them is asserted. The title/prefix rule is retained solely as an existing matching rule.",
+    "No whole-frame alias clearance, absence inference from a title nonmatch, eligibility decision or scientific classification is supplied.",
+    "Only syntactic arXiv aliases directly supported by the selected Atom id values are released. No other work mapping is made.",
+    "All original raw files and partial provider files are preserved unchanged; the filesystem is shared and no OS isolation is claimed."
+  ],
+  "original_inputs_after_write_unchanged": true,
+  "root_release_or_eligibility_performed": false,
+  "eligibility_decision": null,
+  "whole_frame_alias_clearance": null
+}

@@ -1,0 +1,331 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0042",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T12:04:37.458055+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0042.provider.0002.json",
+  "provider_packet_sha256": "278eaa6a4923d34b338c82aacf304fdb21f438edd09bb09bec8403d9694cdb29",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2504.12335v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\8a987a8e30535e4c11d3ad8cd14f528e24e0e9905ba5cd1023f05241d2490002",
+    "raw_sha256": "8a987a8e30535e4c11d3ad8cd14f528e24e0e9905ba5cd1023f05241d2490002",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0074.json",
+    "acquisition_receipt_sha256": "5ca21c7b271bb78d45c507fc82875aa8e4ea602fa4c1f5df71618ce40946c9a1",
+    "captured_version_id": "arxiv:2504.12335v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        33,
+        55
+      ],
+      [
+        97,
+        108
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_INVENTORY_ONLY",
+    "semantic_rationale": "Actual ??2.3?3 method and baseline/mixture/injection procedures read. Tables and discussion not fully inventoried; no complete-work negative statement approved.",
+    "locator_sha256": "6380e184f5da19a57ea45648940f994cfa0bd6a8c13459397344895f4c04ca70",
+    "locators": [
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S2.SS3.p1.1",
+        "section": "2.3 Hypothesis Testing",
+        "sha256": "5b7fd19ffda95c0c55a5a0929af8bf676b8e1804f4c266c5260ed6f6d7ce4c00"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S2.SS3.p2.1",
+        "section": "2.3 Hypothesis Testing",
+        "sha256": "780cbdf0831c001f93343a77fe6927d97cfdeff0a3459d5ed75aa0d867c84b8d"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S2.SS3.p3.1",
+        "section": "2.3 Hypothesis Testing",
+        "sha256": "580960526eb1d17cdf0187e0cc23574224289fdbd5839b9499b5965abb31b2a9"
+      },
+      {
+        "n": 36,
+        "kind": "heading",
+        "id": "S2.SS4",
+        "section": "2.4 Bonferroni Correction",
+        "sha256": "20323345ed1497adc293fff93ccc4d1fab338f3a98181e8e42c6431c24dbe873"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S2.SS4.p1.1",
+        "section": "2.4 Bonferroni Correction",
+        "sha256": "a328264c9458281e13cc5a66c712d68f01036c7b5ce48bed624bde03153f3be6"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S2.SS4.p2.1",
+        "section": "2.4 Bonferroni Correction",
+        "sha256": "ca1ffb150679ecc155c775826c419227591a2c95e12c27f7570396a88e6e0f68"
+      },
+      {
+        "n": 39,
+        "kind": "heading",
+        "id": "S2.SS5",
+        "section": "2.5 Fisherâ€™s Method",
+        "sha256": "f1048d42128894d561deb48a2b28f326a2a546d7b01f7ca360980784a747caf6"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S2.SS5.p1.1",
+        "section": "2.5 Fisherâ€™s Method",
+        "sha256": "dbe8cb84eb453c5038e503ec349b6ca0cd875187e9f1d4f9b195f73fbacb9cb2"
+      },
+      {
+        "n": 41,
+        "kind": "heading",
+        "id": "S3",
+        "section": "3 Methodology",
+        "sha256": "cc061b940bbc05a6a0967e9b4cf2288de8f416316f0a1442e03d806ffc056cbe"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S3.p1.1",
+        "section": "3 Methodology",
+        "sha256": "0df3182a9ce77a7c29365c65a80f412c6040a929bcc91342943d6fb23d37cdb2"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S3.p2.1",
+        "section": "3 Methodology",
+        "sha256": "19c8553fe9efab37416597d0dac9af8b357e8da5aeb68ae30b172415e4c5c525"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S3.p3.1",
+        "section": "3 Methodology",
+        "sha256": "1f3460409f37fc7cb34f0606993f1b468bef4aa14316df8013c845f4d7d90e3d"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S3.p4.1",
+        "section": "3 Methodology",
+        "sha256": "bb87d668e1e6a6f6aac5a91d98537339a2006173b31e1504bb23e6c68f6a9fa6"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S3.p5.1",
+        "section": "3 Methodology",
+        "sha256": "af0cbc32c822fb9de1a17831cb72ea6bd1bbbbd0cae5b9df5a12ed7f10683419"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S3.p6.1",
+        "section": "3 Methodology",
+        "sha256": "3522d5b527f28f6ffa24a028249db46c9ee4ccb80f1276543de66640140c0f93"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S3.p7.1",
+        "section": "3 Methodology",
+        "sha256": "53577823f5ce678fdb2933c91232edfb6c97b9e963e39bcdd7f9e2c1c5bf0b42"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S3.p8.1",
+        "section": "3 Methodology",
+        "sha256": "878a8dce3d16656add9fe12c17228a634467fa9a90057ce3ad2a7361f01ccf8c"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S3.p9.1",
+        "section": "3 Methodology",
+        "sha256": "04a5da2558f762bb60dc6bf5101a7ac54400736268bdf0087bdc9619dc4453ce"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S3.p10.1",
+        "section": "3 Methodology",
+        "sha256": "cf3a9b40763fd6db1da08cb7c1c2811e5305f0a89196e416d835405a0590cfe7"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S3.p11.1",
+        "section": "3 Methodology",
+        "sha256": "6ce455434c69782f4678eda7413f7c56dcc4b77bfd01d703c672c80d4b9a8d2e"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S3.p11.3",
+        "section": "3 Methodology",
+        "sha256": "21d8e3ae57a2dc838cce46cd62a8dc1131f8e0a46270e23fad47c75fd4591cd0"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S3.p12.1",
+        "section": "3 Methodology",
+        "sha256": "d367ddde4c0515cf6503f462bd42e93b1c337dbeb5cb20bcd09ba9b288a87a48"
+      },
+      {
+        "n": 55,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Results",
+        "sha256": "d266f1b8d767f72d50a051902bde4d108e843534f33f986c667b541682c5b401"
+      },
+      {
+        "n": 97,
+        "kind": "heading",
+        "id": "S6",
+        "section": "6 Related Work",
+        "sha256": "e8f45bdbe833f5ecefd375f823d3ed8a3140d63208a15c57b54012cd3a37e386"
+      },
+      {
+        "n": 98,
+        "kind": "paragraph",
+        "id": "S6.p1.1",
+        "section": "6 Related Work",
+        "sha256": "b124ba607d1c97bd3d39f038d8f13282887c902d5fbbce8c6a56983fe95daae5"
+      },
+      {
+        "n": 99,
+        "kind": "paragraph",
+        "id": "S6.p2.1",
+        "section": "6 Related Work",
+        "sha256": "7273a45df5a99c08f48f1fe07acf0acd1dd5979778ef7786bd4b35bcc046d8fa"
+      },
+      {
+        "n": 100,
+        "kind": "paragraph",
+        "id": "S6.p3.1",
+        "section": "6 Related Work",
+        "sha256": "7cc1440616b80f243a018c39cfb870e6b4c44b8e81c74af8a094bf5cd3d6d804"
+      },
+      {
+        "n": 101,
+        "kind": "heading",
+        "id": "S7",
+        "section": "7 Threats to Validity",
+        "sha256": "b08fc265c12e5c2deeea43e41e1ad8639f72884fb0b9740a82f85ca11e0ea70b"
+      },
+      {
+        "n": 102,
+        "kind": "paragraph",
+        "id": "S7.p1.1",
+        "section": "7 Threats to Validity",
+        "sha256": "34e00596aa14e268a4f2362bec61c576c9fdcc98c91ed3c14cf3f28ea230c3ff"
+      },
+      {
+        "n": 103,
+        "kind": "paragraph",
+        "id": "S7.p2.1",
+        "section": "7 Threats to Validity",
+        "sha256": "dffed2d07c670e781fbb20eb4adaf8b4061227aeb19f1237eb0c207a1a3e3827"
+      },
+      {
+        "n": 104,
+        "kind": "heading",
+        "id": "S8",
+        "section": "8 Conclusion and Future Work",
+        "sha256": "cd421762d42cbe66bc0147f166c434d2ba73e64eec19aeadbc1544c3001f73c9"
+      },
+      {
+        "n": 105,
+        "kind": "paragraph",
+        "id": "S8.p1.1",
+        "section": "8 Conclusion and Future Work",
+        "sha256": "f15e4e93600862040c38ecb60744ca5a6b51e04d87d2c0fc6e7f7471528098fd"
+      },
+      {
+        "n": 106,
+        "kind": "paragraph",
+        "id": "S8.p2.1",
+        "section": "8 Conclusion and Future Work",
+        "sha256": "dea510d8eb89b14208aee9f17a5e2efa626e2f3ca67ab7163e2e007324f656d8"
+      },
+      {
+        "n": 107,
+        "kind": "paragraph",
+        "id": "S8.p3.1",
+        "section": "8 Conclusion and Future Work",
+        "sha256": "36c6fb2dfbd244ff3df84e28018105e0f0b0955962b525c54150a11d38b3c539"
+      },
+      {
+        "n": 108,
+        "kind": "paragraph",
+        "id": "S8.p4.1",
+        "section": "8 Conclusion and Future Work",
+        "sha256": "ab85829d20f56accf47b295adc95ea04085e5bc6029dfd642d2c99bb5a4abb31"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Corrected .0002 drops unsupported English-corpus assertion; generated-corpus pair decision unit is explicit in methodology.",
+      "restriction_rationale": "Bounded method/data fact; no reported performance, qualitative outcome, sample count or assurance claim."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Methodology explicitly computes corpus mean GPT-2 perplexity, including mixed corpora.",
+      "restriction_rationale": "Bounded method/data fact; no reported performance, qualitative outcome, sample count or assurance claim."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "K-S, Bonferroni/Fisher aggregation and UMAP feature/embedding procedures consume generated-text distributions. No individual incoming-prompt classification is inferred.",
+      "restriction_rationale": "Bounded method/data fact; no reported performance, qualitative outcome, sample count or assurance claim."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions/partial inventory. Supported local method facts do not become proof of whole-work absence. Actual checker spans below are narrower where stated.",
+      "restriction_rationale": "Coverage only; no performance, sample counts or eligibility state."
+    },
+    {
+      "field_path": "source_receipts.locators",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mechanical source-locator hashes independently reproduce. Semantic inspection coverage is exclusively the actual_context_check spans, not automatic approval of the full provider-declared scope.",
+      "restriction_rationale": "Hash-only locator metadata; no raw method/results text or outcomes."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  },
+  "previous_checker_receipt_sha256": "3b9e57888ee4d823e14e6d9518cd7e39e285f32a1408dfdf83b2c41d8bbbe145",
+  "append_only_addendum": "Explicit coverage-field decision added; prior per-fact checks preserved except stated supersession."
+}

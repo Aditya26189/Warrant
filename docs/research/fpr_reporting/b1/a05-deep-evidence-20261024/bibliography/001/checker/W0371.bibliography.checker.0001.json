@@ -1,0 +1,201 @@
+{
+  "schema": "A05_BIBLIOGRAPHIC_SOURCE_CHECK_v1",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:52:33.849550+00:00",
+  "review_id": "W0371",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_supplement": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\PUBLISHER_SOURCES_SUPPLEMENT.0001.json",
+  "provider_supplement_sha256": "aa0b098e2a502c755180e4210a6297ca863a14237ad8b7267ecc1704d2df4d92",
+  "sources": [
+    {
+      "supplement_record_index": 13,
+      "receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\attempt01-W0371.json",
+      "receipt_sha256": "c9c2da2e7b10693b0668aab1ada1e9ac7897db8c02df53298e17cb902349e565",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+      "raw_sha256": "4d73eb2278b6943b19a9e916f028eabe396bbf25cc1a13390aec1bcf10ff874b",
+      "transport_status": 200,
+      "requested_url": "https://doi.org/10.63336/eureka.46"
+    },
+    {
+      "supplement_record_index": 18,
+      "receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\pdf01-W0371.json",
+      "receipt_sha256": "b0a3a771598c1c11b2db8b4f651d96e648770a0a180c10c9f1be3ebfe7c24f14",
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\publisher-metadata\\private-raw\\3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+      "raw_sha256": "3434367d6b2d41a66934304cc9d89430c1e411fa7df546a6e0622dae1721fc88",
+      "transport_status": 200,
+      "requested_url": "https://scinexor.com/Eureka/article/id/46/download/pdf/",
+      "header_locator": {
+        "page_1_based": 1,
+        "selection": "page extraction prefix before first Abstract; bounded header only",
+        "text_sha256": "f700c40a13d83a62a1c6612b436611791a466b0480992540a440c8ef1beba9fc"
+      },
+      "header_check": "Title and author identity checked against captured publisher/record metadata; header not used to infer study results."
+    }
+  ],
+  "per_fact": [
+    {
+      "field_path": "records[13].metadata_fields[0]",
+      "decision": "HOLD",
+      "source_locator": "meta[name='dc.title']",
+      "value_sha256": "849e05c73a47c1065ea7a33f3e835144f768ffde9d16871e952765b47704175c",
+      "semantic_fidelity": "Value is supported by differently cased actual meta name, but exact declared locator does not resolve. Append-only provider correction required.",
+      "correct_actual_locator": "meta[name='DC.Title']",
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[1]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_publisher']",
+      "value_sha256": "9de420de5c57071b6fc513054456110ca3e37100b3cf02bbc31210d3b4219cc5",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[2]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_journal_title']",
+      "value_sha256": "42b2cbc7017842d37d77fd5bd2854f399569336f90b3ba72fd557cf3e09d62ea",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[3]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_author']",
+      "value_sha256": "585bf756c86cfab3c28dda5cccd6e7bba478bae87546f1459ad5f0d8462fd8df",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[4]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_author']",
+      "value_sha256": "0c466a34b39a99f2475a58726662fa6f20c8e2339f5be075f554d5802312a47c",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[5]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_author']",
+      "value_sha256": "9ccf2953187556f9b3a1ba24bb2a761927f346ee57dcf045a3c79fa9cdf9be2e",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[6]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_author']",
+      "value_sha256": "0f2a7f83613e84d8ed51a628d32f4491ddf5c4c41382a74c6b53c2914cba6bfe",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[7]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_author']",
+      "value_sha256": "35c265562b4a5e823adc4776c2775592aada9315ab6b5451a49b4ddcd9b369d1",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[8]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_author']",
+      "value_sha256": "e4cad528aa4d4a9773b12b2250835a74cbb3af836d50c587d2ceb8bf37f5e346",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[9]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_author']",
+      "value_sha256": "13826fff80631e34d102a92e8f3f872693a13237bd3e0a4fc15b7684567ebbf3",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[10]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_author']",
+      "value_sha256": "40c4c8cbc724351b7c9bcd75378db8296b7a2313431abf3a666b353e7bc5a28a",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[11]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_author']",
+      "value_sha256": "fe21705d08823db446f4811abcb9e12ba536b35bc12ba8b669c011776713d922",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[12]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_author']",
+      "value_sha256": "b34aa6974462c01cbcd8b3065e9e44298632e8701f35709055f297bfa7aef130",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[13]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_author']",
+      "value_sha256": "2b2a9f8a17b25efc0b3bc615bb45381e14f979fc45aa2a52f79673b33499cc57",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[14]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_title']",
+      "value_sha256": "849e05c73a47c1065ea7a33f3e835144f768ffde9d16871e952765b47704175c",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[15]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_publication_date']",
+      "value_sha256": "263923f689a5281211f4167be855e1cfffbfb8f9b5edb56ec4ff1ab27777775a",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[16]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_doi']",
+      "value_sha256": "9c139f277c2e97b2199b5381054c2c52e80d805fd0a5934a953b4f913885dbe3",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    },
+    {
+      "field_path": "records[13].metadata_fields[17]",
+      "decision": "APPROVE",
+      "source_locator": "meta[name='citation_pdf_url']",
+      "value_sha256": "9a60a0ed8f67726f7e9a31a20add35260f40c25c06cd50667a42bb6638aeae65",
+      "semantic_fidelity": "Literal bibliographic metadata value independently matches actual captured source tag. Date is approved with its literal source field semantics only, never automatically first-publication/HTTP acquisition equivalence.",
+      "correct_actual_locator": null,
+      "restriction_rationale": "Bibliography only; no abstract/description/outcomes."
+    }
+  ],
+  "scope": "Only actual primary source metatags, JSON bibliographic fields and title/publication PDF header inspected; scientific bodies not inspected under this metadata-only task.",
+  "exposure": "Shared filesystem/operational-board aggregate prior status exposure in ROLE.0001.json; no freshness/OS isolation claim. Only safe metadata/header fields output in this check."
+}

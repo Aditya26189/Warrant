@@ -1,0 +1,23 @@
+{
+  "schema": "A05_SOURCE_CHECKER_ADDITIONAL_CHECKPOINT_v1",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T12:20:41.782109+00:00",
+  "status": "BIBLIOGRAPHIC_SCOPE_CHECK_ONLY_NOT_FINAL_RELEASE",
+  "request_sha256": "d6fa90dc94f8a21b231c1c20a23c41378a73e3772fb3c703b6cf05700c7b4548",
+  "unique_checked_works": 2,
+  "files": [
+    {
+      "path": "additional-002/checked/W0069.bibliographic-scope.checker.0001.json",
+      "sha256": "af858122eb7c2816366cdd261b910c538e4961cb89603892c233daff71742749"
+    },
+    {
+      "path": "additional-002/checked/W0325.bibliographic-scope.checker.0001.json",
+      "sha256": "2f431e1a77e6f40d969f8cb17ac6a3fcc2b0a94cbdcfd5722b5ef628d4e88c06"
+    }
+  ],
+  "limitations": [
+    "Chapter-level source-declared reuse does not establish specific paper-version identity, whole-document identity or a canonical merge.",
+    "Official metadata timestamps were independently verified via parsed primary pages; original response bytes are unavailable.",
+    "No outcomes, sample counts, assurance, eligibility or sampling decisions transferred."
+  ]
+}

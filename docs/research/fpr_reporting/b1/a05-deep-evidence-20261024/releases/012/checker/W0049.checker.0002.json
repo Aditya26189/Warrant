@@ -1,0 +1,374 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0049",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T12:04:37.485730+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0049.provider.0001.json",
+  "provider_packet_sha256": "536b0ac8f52a588b3460ead4bc42f1bab9e831a06dbca1a156db813a5c3ba825",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2505.15420v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\8bd333639106aefd473e657fa77cd23e70c387d4f270036abbcf72b9cf9e658f",
+    "raw_sha256": "8bd333639106aefd473e657fa77cd23e70c387d4f270036abbcf72b9cf9e658f",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0082.json",
+    "acquisition_receipt_sha256": "da42737608e07bb27c8ae95162c4de8b494dfae8c7d880cb24223e4b64ee1c18",
+    "captured_version_id": "arxiv:2505.15420v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        18,
+        24
+      ],
+      [
+        27,
+        35
+      ],
+      [
+        41,
+        43
+      ],
+      [
+        121,
+        130
+      ],
+      [
+        133,
+        138
+      ],
+      [
+        65,
+        67
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_INVENTORY_ONLY",
+    "semantic_rationale": "Actual attack/setup and Appendix C input/output/DP-defense descriptions read. Intent implementation/keyword list and later appendix setups remain uninspected. Approval of arm[2] limited to explicitly supported prompt/DP/output portions; candidate replacement not a complete procedure.",
+    "locator_sha256": "534b5081b2ad92c2067f5318a0c9dddd4dbc32158924197c9fe2b8dd7674bcad",
+    "locators": [
+      {
+        "n": 18,
+        "kind": "heading",
+        "id": "S3",
+        "section": "3 Methodology",
+        "sha256": "cc061b940bbc05a6a0967e9b4cf2288de8f416316f0a1442e03d806ffc056cbe"
+      },
+      {
+        "n": 19,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "section": "3.1 Overview",
+        "sha256": "ed67b4f9e3be54965e9e1d2b8e5fda9809e5ed5970e25fb75cef5a6e7a3f6997"
+      },
+      {
+        "n": 20,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "section": "3.1 Overview",
+        "sha256": "0b463f8ad80324ee68cd21b30adce3b244e852ad885ef6fe4e7bcf01ac7a738b"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.1",
+        "section": "3.1 Overview",
+        "sha256": "becc9404e56971b9c4971d5bc4707682c418b3c18b96d19fd491155dd6106165"
+      },
+      {
+        "n": 22,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "section": "3.2 Anchor Concepts Database",
+        "sha256": "4b5a768d2c8687c0233464e38e02eeed136ca3ce59ce0d99c57b05c7cb980af2"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.1",
+        "section": "3.2 Anchor Concepts Database",
+        "sha256": "be750df2ee5b5c549f85a5d833ba504270ce13e4fbaf311e278011375780f66e"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.2",
+        "section": "3.2 Anchor Concepts Database",
+        "sha256": "85dda9b1b36fa00295d28b7529b643f0c46412b0573c555f23f3c3deb8e7c4e2"
+      },
+      {
+        "n": 27,
+        "kind": "heading",
+        "id": "S3.SS3",
+        "section": "3.3 Experience Reflection Sampling",
+        "sha256": "2e9c37decda26f88cab7dd808058bb0ef910f8615b19720c5062bad13e93249b"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S3.SS3.p1.1",
+        "section": "3.3 Experience Reflection Sampling",
+        "sha256": "d0146a797c440f06b8abd18bed4cde75d49b601db03dde49e95e45e57e32561c"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S3.SS3.p2.1",
+        "section": "3.3 Experience Reflection Sampling",
+        "sha256": "81502ccdd4b0697c7a97ce756c86df1f3285f2b69c826515428991cc0afff176"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S3.SS3.p3.1",
+        "section": "3.3 Experience Reflection Sampling",
+        "sha256": "81de5a1b14f255978288e0c8cce5416b12495343152c28024317381e005d5e7d"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S3.SS3.p3.2",
+        "section": "3.3 Experience Reflection Sampling",
+        "sha256": "08e829ae5675f5f4dc07f851348a39cc88647394b0da68d84de9ac7967562129"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S3.SS3.p3.3",
+        "section": "3.3 Experience Reflection Sampling",
+        "sha256": "87db04e7384135ab01b6d30b8d61695042888a6001c97a9daa7e1c7822186232"
+      },
+      {
+        "n": 33,
+        "kind": "heading",
+        "id": "S3.SS4",
+        "section": "3.4 Trust Region Directed Mutation",
+        "sha256": "22bc1fdad85b794aff71bc21417f38f6c911cdda921b3904dccfd2edcdb4a97e"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S3.SS4.p1.1",
+        "section": "3.4 Trust Region Directed Mutation",
+        "sha256": "517253170311c1a35628c2ccd750df632204f82ed04d12dc4854cb53ee606c57"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S3.SS4.p2.1",
+        "section": "3.4 Trust Region Directed Mutation",
+        "sha256": "6159e57d3adbb0d9c7e5b8c59106307bedf025e2269fa414f08f5d5ede1c4077"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1 Setups",
+        "sha256": "ddc0506da04cf9ea8815f94d3b8f0ab63cdd6b411276050465b9f7aa45644669"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "section": "4.1 Setups",
+        "sha256": "ade4e18d245ca961663d4fc1ed27ebd03504826e07214d60c12fc58d109db37d"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S4.SS1.p3.1",
+        "section": "4.1 Setups",
+        "sha256": "55bf9f1b1398ec3e7f07f29f31fa8811aff56d6fa1c8f6d378701e6d00bf848c"
+      },
+      {
+        "n": 121,
+        "kind": "heading",
+        "id": "A3",
+        "section": "Appendix C Defender Setups",
+        "sha256": "827f8692c39c8c5ebc6e97fabcca14490b266f0ce7ed06ebe1f85045f68318bd"
+      },
+      {
+        "n": 122,
+        "kind": "heading",
+        "id": "A3.SS1",
+        "section": "C.1 Defense setting",
+        "sha256": "c04b0a4b64f2fe7b77134920afd8691fb05aafccbb9571be2d69495426d9f485"
+      },
+      {
+        "n": 123,
+        "kind": "paragraph",
+        "id": "A3.SS1.p1.1",
+        "section": "C.1 Defense setting",
+        "sha256": "166fbd22e8b3500ba501fc5b4eff885b92bda8749532ea9515a1ddf2c6a97342"
+      },
+      {
+        "n": 124,
+        "kind": "paragraph",
+        "id": "A3.SS1.p2.1",
+        "section": "C.1 Defense setting",
+        "sha256": "528730e8e135faaae7720bb4e5b03478f4428841469c35b7bb152ecaf12defeb"
+      },
+      {
+        "n": 125,
+        "kind": "paragraph",
+        "id": "A3.SS1.p2.2",
+        "section": "C.1 Defense setting",
+        "sha256": "637d21b75c7e856e885e53e46ad1a8bdaaac3514ba1169b1b91657c5b9e3c8c8"
+      },
+      {
+        "n": 126,
+        "kind": "paragraph",
+        "id": "A3.SS1.p2.3",
+        "section": "C.1 Defense setting",
+        "sha256": "e189d10f335a0abd05a007c1578909bbcdeeacc2344238689fadc7a521ad235e"
+      },
+      {
+        "n": 127,
+        "kind": "paragraph",
+        "id": "A3.SS1.p3.1",
+        "section": "C.1 Defense setting",
+        "sha256": "4920ed58cf360df7356e0a1f6d372fdcd60d6b9aadf402bb528a13d44c7d9df5"
+      },
+      {
+        "n": 128,
+        "kind": "paragraph",
+        "id": "A3.SS1.p3.2",
+        "section": "C.1 Defense setting",
+        "sha256": "ac3a19257fab1856604050e35f0890364a1bc4f15ef47b8d9aa003d5dfc1c2c0"
+      },
+      {
+        "n": 129,
+        "kind": "heading",
+        "id": "A3.SS2",
+        "section": "C.2 DP-retrieval as Defense",
+        "sha256": "5ca06efaaf9b8cc44a677221625b943f0ec0158f49a1221219884fceae9e2f06"
+      },
+      {
+        "n": 130,
+        "kind": "paragraph",
+        "id": "A3.SS2.p1.1",
+        "section": "C.2 DP-retrieval as Defense",
+        "sha256": "dc867997b31f4e3e898a0f28da2b78de0a9313d9adceec13dda9b8aaa435c9d1"
+      },
+      {
+        "n": 133,
+        "kind": "paragraph",
+        "id": "A4.p2.1",
+        "section": "Appendix D Details of Topic Probing Method",
+        "sha256": "7c94e916363ffe171b7c04420511d0ec1521fa3cc90fbb7912d04a626b4f4848"
+      },
+      {
+        "n": 134,
+        "kind": "paragraph",
+        "id": "A4.p3.1",
+        "section": "Appendix D Details of Topic Probing Method",
+        "sha256": "62dc1472f5fbc9bbc563aa08215fd422ee6bd4e8b04bd9d87d03d4a62433582c"
+      },
+      {
+        "n": 135,
+        "kind": "paragraph",
+        "id": "A4.p4.1",
+        "section": "Appendix D Details of Topic Probing Method",
+        "sha256": "7978f01886665cbf1e19cf1fcb2aaf0726b64c5cbe8626783b986df3f1561702"
+      },
+      {
+        "n": 136,
+        "kind": "paragraph",
+        "id": "A4.p4.2",
+        "section": "Appendix D Details of Topic Probing Method",
+        "sha256": "9da7e3cb7fb0e5cfd8497eb241f70771ec014f879bbd1ac0069b0326b3eb3eea"
+      },
+      {
+        "n": 137,
+        "kind": "paragraph",
+        "id": "A4.p5.1",
+        "section": "Appendix D Details of Topic Probing Method",
+        "sha256": "0efa0b151e7758b78cfc7df50ea066e2e150c3429ac3fa3dade380680a4192ac"
+      },
+      {
+        "n": 138,
+        "kind": "paragraph",
+        "id": "A4.I1.i1.p1.1",
+        "section": "Appendix D Details of Topic Probing Method",
+        "sha256": "a53966c6a7cbcfe7deb0f5b19de7972e869f471bc34124b9649eb95f85be3c2f"
+      },
+      {
+        "n": 65,
+        "kind": "heading",
+        "id": "S4.SS7",
+        "section": "4.7 Adaptive Defense",
+        "sha256": "773544f7c313f39b7b8f25f5d78e881ee1e50865fe324a4948e2426294fba4d1"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "S4.SS7.p1.1",
+        "section": "4.7 Adaptive Defense",
+        "sha256": "1850cb28f5e94583c6b35dab2d60e1fabbdccd33d211148bbfc0347d3c0de451"
+      },
+      {
+        "n": 67,
+        "kind": "heading",
+        "id": "S4.SS8",
+        "section": "4.8 Ablation Studies",
+        "sha256": "a5294f801875a8b28cea7fd534185c1f643fec3acfc78eca07f32ea5ab1de4c0"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "IKEA query-response/anchor-concept method and English corpus assertion explicitly stated in setup; secondary defenses separated by pipeline stage.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main method, baselines and Appendix D topic-probing consume target RAG responses. No detector timing inference from attack generation.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Appendix C.1 expressly defines Boolean intent/keyword functions on incoming query before retrieval/generation; implementation unspecified.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Prompt restriction and DP retrieval precede output; ROUGE-L output filter consumes answer. Additional actual Section 4.7 context confirms unrelated-document candidate replacement after retrieval, before generation. Every declared combined subpart now verified.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions/partial inventory. Supported local method facts do not become proof of whole-work absence. Actual checker spans below are narrower where stated.",
+      "restriction_rationale": "Coverage only; no performance, sample counts or eligibility state."
+    },
+    {
+      "field_path": "source_receipts.locators",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mechanical source-locator hashes independently reproduce. Semantic inspection coverage is exclusively the actual_context_check spans, not automatic approval of the full provider-declared scope.",
+      "restriction_rationale": "Hash-only locator metadata; no raw method/results text or outcomes."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  },
+  "previous_checker_receipt_sha256": "04ba444a064b458b58a823f00a24057e679a53e71622343537841addac5e18d7",
+  "append_only_addendum": "Explicit coverage-field decision added; prior per-fact checks preserved except stated supersession."
+}

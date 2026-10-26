@@ -1,0 +1,4550 @@
+{
+  "actor_id": "/root/a04_semantic_restriction_02",
+  "assignment": "ASSIGNMENT02",
+  "b1_approval_given": false,
+  "checked_utc": "2026-10-21T18:19:51.370933+00:00",
+  "completion_status": "ASSIGNED_SOURCE_RESTRICTION_CHECKS_COMPLETE_WITH_RECORDED_UNRESOLVED_FACTS",
+  "counts": {
+    "checked_input_paths": 491,
+    "context_checked_work_count": 121,
+    "distinct_fact_render_paths": 11,
+    "html_context_work_count": 116,
+    "html_evidence_paragraphs_replayed": 59,
+    "latest_record_count": 121,
+    "new_fact_count": 42,
+    "pdf_context_work_count": 5,
+    "pdf_evidence_page_references_replayed": 13,
+    "pending_record_count": 0,
+    "records_with_remaining_fact_codes": 119,
+    "requested_work_count": 121,
+    "unique_reused_evidence_count": 167,
+    "validation_error_count": 0
+  },
+  "eligibility_decision": null,
+  "eligibility_review_performed": false,
+  "input_request_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\a04-provisional-recovery-v1-20261021\\SOURCE_GAP_REQUESTS.json",
+  "input_request_sha256": "43706bb2ac98bca7a2246932c3f95a5b8739d2fc3897cdca837a7d71b86efc12",
+  "limitations": [
+    "Selected targeted context checks do not establish whole-work absence",
+    "Recorded method and language unknowns remain unresolved",
+    "Missing in-body PDF stamps are not replaced by a claim of internal proof",
+    "Preferred-version adjudication and eligibility are outside this role",
+    "Shared filesystem; no OS isolation asserted",
+    "Parent performs separate mechanical release validation and B1 gate work"
+  ],
+  "records": [
+    {
+      "context_checked_member_ids": [
+        "M0169"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0125.0001.json",
+          "sha256": "3420f70308bb1926fc1fad56f377e6dd50bc60ffbf5ba6cd821d1aaaed598d18"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0125.0002.json",
+          "sha256": "0adaa31d45ce1d22a51ee847617c777b727c432d20c41ca8b3c7dba07e390abb"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0125.0003.json",
+          "sha256": "bd3a0771f4759a8ae91eb15e1e8c9c7f5daf9aca0326252ebc9de2374154122a"
+        }
+      ],
+      "member_ids": [
+        "M0169"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0125.0003.json",
+      "record_revision": 3,
+      "record_sha256": "bd3a0771f4759a8ae91eb15e1e8c9c7f5daf9aca0326252ebc9de2374154122a",
+      "remaining_fact_codes": [
+        "DISTINCT_TARGET_CHRONOLOGY_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0125",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 3,
+      "review_id": "W0125",
+      "supersedes": "W0125.0002.json",
+      "work_id": "arxiv:2601.12359"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0170"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0126.0001.json",
+          "sha256": "45dab3f87e92cf6c0163b47d7eee534b84c822a4d47da517423d58d9ffed27c4"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0126.0002.json",
+          "sha256": "115753c9b4bddb490a116ad63e25a4b2e93d3d2d4cce42208a6042a3771350ba"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0126.0003.json",
+          "sha256": "1180df3ee18e237e6a9f9270112bb450d698b74f117b61c20cac8b95f82c8634"
+        }
+      ],
+      "member_ids": [
+        "M0170"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0126.0003.json",
+      "record_revision": 3,
+      "record_sha256": "1180df3ee18e237e6a9f9270112bb450d698b74f117b61c20cac8b95f82c8634",
+      "remaining_fact_codes": [
+        "BASELINE_CHRONOLOGY_NOT_EXPLICIT",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "INJECTION_CLASSIFIER_PROTOCOL_NOT_ESTABLISHED"
+      ],
+      "request_id": "B1-REQ-W0126",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0126",
+      "supersedes": "W0126.0002.json",
+      "work_id": "arxiv:2601.12449"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0171"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0127.0001.json",
+          "sha256": "b3a2c31a6b98827a2d0be8b7d760346c015609142ffeefb9c64c5adfb9d2d840"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0127.0002.json",
+          "sha256": "3f53b58d42aff014fe36a020014088a8435f37a6630cfb4c9f39a30cd035b8c2"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0127.0003.json",
+          "sha256": "79e1cffb0d2dfef419724a9c8e6ddc5a277519b5e969f79e81a6e14acb0ca79e"
+        }
+      ],
+      "member_ids": [
+        "M0171"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0127.0003.json",
+      "record_revision": 3,
+      "record_sha256": "79e1cffb0d2dfef419724a9c8e6ddc5a277519b5e969f79e81a6e14acb0ca79e",
+      "remaining_fact_codes": [
+        "DECLARED_REVIEW_DESIGN_REUSED_CONTEXT"
+      ],
+      "request_id": "B1-REQ-W0127",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0127",
+      "supersedes": "W0127.0002.json",
+      "work_id": "arxiv:2601.17548"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0172"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0128.0001.json",
+          "sha256": "dad5cfb7d68c8b6c250dce8a35d383fe3c97c17ea78b058b70ba1f4a29d0cf52"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0128.0002.json",
+          "sha256": "03730f5d5074ca56716a475f04658c1b3dca000562ab7fb29ffadf3978681996"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0128.0003.json",
+          "sha256": "c8724f77d98add775f7ce23cbb6b4f92e88e2904fadb0ca107f7706dd3f209aa"
+        }
+      ],
+      "member_ids": [
+        "M0172"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0128.0003.json",
+      "record_revision": 3,
+      "record_sha256": "c8724f77d98add775f7ce23cbb6b4f92e88e2904fadb0ca107f7706dd3f209aa",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATION_VERSUS_DETECTION_BOUNDARY_ONLY"
+      ],
+      "request_id": "B1-REQ-W0128",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0128",
+      "supersedes": "W0128.0002.json",
+      "work_id": "arxiv:2601.19051"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0173"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0129.0001.json",
+          "sha256": "17372938df8789d8cdda7e4d73794c507dc86c4c90a7d90ddc779f32020e970c"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0129.0002.json",
+          "sha256": "88ee9e95b160a3695b5cd2ee56ac23751d37050250247167b51389b233e82528"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0129.0003.json",
+          "sha256": "8755114313e04c124cf9aaef00f0d2e5fc769ef97603d38047568ae738498a69"
+        }
+      ],
+      "member_ids": [
+        "M0173"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0129.0003.json",
+      "record_revision": 3,
+      "record_sha256": "8755114313e04c124cf9aaef00f0d2e5fc769ef97603d38047568ae738498a69",
+      "remaining_fact_codes": [
+        "ACTION_DEPENDENT_SCOPE",
+        "EPISODE_ACTION_SCOPE_ONLY",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0129",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0129",
+      "supersedes": "W0129.0002.json",
+      "work_id": "arxiv:2601.21083"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0174"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0130.0001.json",
+          "sha256": "bee2dbfc08592899a2563600c90b115e2396aa9b7e6459d075c4979cb88b6edc"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0130.0002.json",
+          "sha256": "0445bea4b7623b16e6d2bab9a294bcd45de3a6033b5f6d8f33769c16070af0e6"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0130.0003.json",
+          "sha256": "839919341e3158e83b2aece50cb10384177707d660d31f43b13c7b493672d077"
+        }
+      ],
+      "member_ids": [
+        "M0174"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0130.0003.json",
+      "record_revision": 3,
+      "record_sha256": "839919341e3158e83b2aece50cb10384177707d660d31f43b13c7b493672d077",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "PROBE_TOKEN_POSITION_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0130",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0130",
+      "supersedes": "W0130.0002.json",
+      "work_id": "arxiv:2602.00750"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0175"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0131.0001.json",
+          "sha256": "3200bf4dabb62b7dee44cd32546e474fa14d1358dd926e8c7eaeeb0065208531"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0131.0002.json",
+          "sha256": "ae17f8be81988185ccb811906cf03fe1dd469d4a833c39a0ea9220376c91239b"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0131.0003.json",
+          "sha256": "9b44d7fd729c927b1166e161d68e062503b409f69c2117642ff2871a1f7156c8"
+        }
+      ],
+      "member_ids": [
+        "M0175"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0131.0003.json",
+      "record_revision": 3,
+      "record_sha256": "9b44d7fd729c927b1166e161d68e062503b409f69c2117642ff2871a1f7156c8",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0131",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0131",
+      "supersedes": "W0131.0002.json",
+      "work_id": "arxiv:2602.01795"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0176"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0132.0001.json",
+          "sha256": "a5ab900ece3451fd6c0042474ac2c6c36c2c8c9796d136b2c39a4050c74f7a41"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0132.0002.json",
+          "sha256": "ffdea6738ade7587a0c7bc551f1fd24b82d28d189aec54b9da8e21e73201627f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0132.0003.json",
+          "sha256": "1d00791cd5dab1224d746c7cc638530db1a38630b7e68acc31c4fac9f7e75214"
+        }
+      ],
+      "member_ids": [
+        "M0176"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0132.0003.json",
+      "record_revision": 3,
+      "record_sha256": "1d00791cd5dab1224d746c7cc638530db1a38630b7e68acc31c4fac9f7e75214",
+      "remaining_fact_codes": [
+        "DISTINCT_TARGET_CHRONOLOGY_NOT_EXPLICIT",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0132",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0132",
+      "supersedes": "W0132.0002.json",
+      "work_id": "arxiv:2602.03792"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0177"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0133.0001.json",
+          "sha256": "19624916fcd2938d8c7de3b672e4bddafe8170f04e8e8caf5461fa4c9bd5bd84"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0133.0002.json",
+          "sha256": "adf211594b902e8eca1551518684124f72311dc767bab5dd1b315f8bd2fc83c8"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0133.0003.json",
+          "sha256": "88a1be975396e6a53553eaf12ee7564b5098ec3a2553f56194d54bec9851be7b"
+        }
+      ],
+      "member_ids": [
+        "M0177"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0133.0003.json",
+      "record_revision": 3,
+      "record_sha256": "88a1be975396e6a53553eaf12ee7564b5098ec3a2553f56194d54bec9851be7b",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "SCANNER_EVALUATION_CHRONOLOGY_NOT_ESTABLISHED",
+        "TEMPLATE_ATTACK_EPISODE_PROTOCOL_ONLY"
+      ],
+      "request_id": "B1-REQ-W0133",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0133",
+      "supersedes": "W0133.0002.json",
+      "work_id": "arxiv:2602.04653"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0178"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0134.0001.json",
+          "sha256": "f463cda1b1a26b669063ea12f4663a8782f4f2f10985492dbdffdd358022fadd"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0134.0002.json",
+          "sha256": "5353c6c34cf31bc3a70bf27897961ae2d2fe39fadda56ba79b8a9ece1382de0b"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0134.0003.json",
+          "sha256": "9f4e4a86342e373564adcc0a0d8acad1d57c30b8a7b4f7024f7bc38501b49570"
+        }
+      ],
+      "member_ids": [
+        "M0178"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0134.0003.json",
+      "record_revision": 3,
+      "record_sha256": "9f4e4a86342e373564adcc0a0d8acad1d57c30b8a7b4f7024f7bc38501b49570",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "PHISHING_LABEL_SCOPE",
+        "TARGET_RESPONSE_USED"
+      ],
+      "request_id": "B1-REQ-W0134",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0134",
+      "supersedes": "W0134.0002.json",
+      "work_id": "arxiv:2602.05484"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0179"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0135.0001.json",
+          "sha256": "b4cc530c789dd487d6a88c05182936d83a3baa7b28a69a3b50008435915919b2"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0135.0002.json",
+          "sha256": "61d08e17b58b5b17489ff85f2c40fec8b948fd998f2fb8a9f382852ddeff13f9"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0135.0003.json",
+          "sha256": "c83fd884de8f6c11012b12d8c1f02e4e9af4a2af694ab8c1a47429b3d7212bc7"
+        }
+      ],
+      "member_ids": [
+        "M0179"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0135.0003.json",
+      "record_revision": 3,
+      "record_sha256": "c83fd884de8f6c11012b12d8c1f02e4e9af4a2af694ab8c1a47429b3d7212bc7",
+      "remaining_fact_codes": [
+        "BASELINE_CLASSIFICATION_PROTOCOL_NOT_EXPLICIT",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "PROPOSED_AGENT_ACTION_DEPENDENCE"
+      ],
+      "request_id": "B1-REQ-W0135",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0135",
+      "supersedes": "W0135.0002.json",
+      "work_id": "arxiv:2602.07918"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0180"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0136.0001.json",
+          "sha256": "65662a2e5f78febe585aeb8ce50a32af2420ca882d540d63a8e5e737ae34841f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0136.0002.json",
+          "sha256": "a6c35965e08f40c4e5fe7a515a8bddce34e96b5dc17dae19033746b5bdb0c128"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0136.0003.json",
+          "sha256": "389e4e69842065d8ce04c91d3dbf21815894324773914810c237f082424a915a"
+        }
+      ],
+      "member_ids": [
+        "M0180"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0136.0003.json",
+      "record_revision": 3,
+      "record_sha256": "389e4e69842065d8ce04c91d3dbf21815894324773914810c237f082424a915a",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "MIXED_TASK_POOL_BOUNDARY"
+      ],
+      "request_id": "B1-REQ-W0136",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0136",
+      "supersedes": "W0136.0002.json",
+      "work_id": "arxiv:2602.08062"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0181"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0137.0001.json",
+          "sha256": "11c322f571c2b4e65e5a7962b59966c6a017c75a124797d77df07a96f177cd3a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0137.0002.json",
+          "sha256": "eefa12554114624b35c9c3bea2a7fa42ee662792ad89a00e9d4c882b208b172d"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0137.0003.json",
+          "sha256": "324d52759bf77c409cd3d5b8c3a44acde9a80ecea835dc0eb683f37c8810fc57"
+        }
+      ],
+      "member_ids": [
+        "M0181"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0137.0003.json",
+      "record_revision": 3,
+      "record_sha256": "324d52759bf77c409cd3d5b8c3a44acde9a80ecea835dc0eb683f37c8810fc57",
+      "remaining_fact_codes": [
+        "ACTION_ALIGNMENT_LABEL_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_ACTION_REQUIRED"
+      ],
+      "request_id": "B1-REQ-W0137",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0137",
+      "supersedes": "W0137.0002.json",
+      "work_id": "arxiv:2602.08995"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0182"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0138.0001.json",
+          "sha256": "3c0b143f17bb67b502e06fab8329ca9d6595542b18f4add3d53939fbe032d9fd"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0138.0002.json",
+          "sha256": "5715caff6bdeea78db7a20746a979af7cca3b9ca5117238d253829bc146ccd3a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0138.0003.json",
+          "sha256": "56eedabdbac8765f9d6f4e3ddce5b6da7a07651fcff2aaf6ddd61eba809cec06"
+        }
+      ],
+      "member_ids": [
+        "M0182"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0138.0003.json",
+      "record_revision": 3,
+      "record_sha256": "56eedabdbac8765f9d6f4e3ddce5b6da7a07651fcff2aaf6ddd61eba809cec06",
+      "remaining_fact_codes": [
+        "ACTION_POLICY_CATEGORIES",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_ACTION_REQUIRED"
+      ],
+      "request_id": "B1-REQ-W0138",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0138",
+      "supersedes": "W0138.0002.json",
+      "work_id": "arxiv:2602.09433"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0183"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0139.0001.json",
+          "sha256": "4d87619c5f42d03a6e00d05ac6c5fe51a0b59d241147ff52c7a7c6e35c04974e"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0139.0002.json",
+          "sha256": "3eae1fb47f4e976f14ed9dd028b9ca6e677b260911efe705a7b7e99d6b3f9cf5"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0139.0003.json",
+          "sha256": "23a6179edabb519b360f89d0afa4351d1cf7a029e68ed0559520771a94aefd6c"
+        }
+      ],
+      "member_ids": [
+        "M0183"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0139.0003.json",
+      "record_revision": 3,
+      "record_sha256": "23a6179edabb519b360f89d0afa4351d1cf7a029e68ed0559520771a94aefd6c",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "POLICY_BOUNDARY_ONLY",
+        "PROMPT_CLASSIFICATION_PROTOCOL_NOT_ESTABLISHED"
+      ],
+      "request_id": "B1-REQ-W0139",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0139",
+      "supersedes": "W0139.0002.json",
+      "work_id": "arxiv:2602.10481"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0184"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0140.0001.json",
+          "sha256": "1de7856699eb71b2743ae62cb3e0d3663fe31ab6ad8d3e7cf52728a0d65c3836"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0140.0002.json",
+          "sha256": "9043aa62773a2a425df5c43433c7d6663784df780161b654392bf10712dc468f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0140.0003.json",
+          "sha256": "9a97bb51ebc103fcfbf4529ae6bd1ac234c30dd6b10a0d42cb474ab267e00fd6"
+        }
+      ],
+      "member_ids": [
+        "M0184"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0140.0003.json",
+      "record_revision": 3,
+      "record_sha256": "9a97bb51ebc103fcfbf4529ae6bd1ac234c30dd6b10a0d42cb474ab267e00fd6",
+      "remaining_fact_codes": [
+        "CONVERSATION_ATTACK_POOL_BOUNDARY",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0140",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0140",
+      "supersedes": "W0140.0002.json",
+      "work_id": "arxiv:2602.11247"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0185"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0141.0001.json",
+          "sha256": "bb1181fc4d8347df3130499300bdee73b09f8d7e67e9ed130b67ec3752ac3af6"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0141.0002.json",
+          "sha256": "b9a0a49dabab40932d100f24cbba4a8360ca7542a5fdf127d9742932b39fdeb8"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0141.0003.json",
+          "sha256": "84a3e0df9aa8afe7950e673d36a0b55efb538b2b72fbded4513ba4f1f4102e1f"
+        }
+      ],
+      "member_ids": [
+        "M0185"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0141.0003.json",
+      "record_revision": 3,
+      "record_sha256": "84a3e0df9aa8afe7950e673d36a0b55efb538b2b72fbded4513ba4f1f4102e1f",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0141",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0141",
+      "supersedes": "W0141.0002.json",
+      "work_id": "arxiv:2602.13597"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0186"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0142.0001.json",
+          "sha256": "2bba8d0745e0707b804f2807fcbe9f79540ceec9d54a7f1e9472fb753704c819"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0142.0002.json",
+          "sha256": "b305616eb9ae604d5e1e4fc81772c6f8e0a9205ad5c8ba1db5da846adadc87fa"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0142.0003.json",
+          "sha256": "d1f6e666663fc70cbfc2355344653703c304a69b4557f6e5d1459b093aa3bd1d"
+        }
+      ],
+      "member_ids": [
+        "M0186"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0142.0003.json",
+      "record_revision": 3,
+      "record_sha256": "d1f6e666663fc70cbfc2355344653703c304a69b4557f6e5d1459b093aa3bd1d",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0142",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0142",
+      "supersedes": "W0142.0002.json",
+      "work_id": "arxiv:2602.14161"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0187"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0143.0001.json",
+          "sha256": "8504b8ed95ef04800a0f0463e6adc187dcb72e908b84d278352a17b79923118a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0143.0002.json",
+          "sha256": "731eda47f34ea990733ccdc21de18537d4a39a3fa13ea08c24312e70a7d844f7"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0143.0003.json",
+          "sha256": "313de1139bcb1ceb8f9cbf6a2883f792635bcdf9781f7ea9fe9efd587cba4e6f"
+        }
+      ],
+      "member_ids": [
+        "M0187"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0143.0003.json",
+      "record_revision": 3,
+      "record_sha256": "313de1139bcb1ceb8f9cbf6a2883f792635bcdf9781f7ea9fe9efd587cba4e6f",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "RECRUITMENT_BEHAVIOR_SCOPE",
+        "SEPARATE_DETECTOR_CHRONOLOGY_NOT_ESTABLISHED"
+      ],
+      "request_id": "B1-REQ-W0143",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0143",
+      "supersedes": "W0143.0002.json",
+      "work_id": "arxiv:2602.18514"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0189"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0144.0001.json",
+          "sha256": "b68185aed3ca62f67c8edfe7b01244bbc7d18b1fba777629bb44cd0a82a3a6a1"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0144.0002.json",
+          "sha256": "6b51a2aabdc8be2e8ac8bc717c68e0922de1034194755d970e3baab7fbed4f2f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0144.0003.json",
+          "sha256": "6a4be4ffdb06b22b7879ca30d724a6546df380cb4b5c2beb456fbe6fe965285f"
+        }
+      ],
+      "member_ids": [
+        "M0189"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0144.0003.json",
+      "record_revision": 3,
+      "record_sha256": "6a4be4ffdb06b22b7879ca30d724a6546df380cb4b5c2beb456fbe6fe965285f",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "METHOD_NODES_OUTSIDE_REQUIRED_PARAGRAPH_SCHEMA"
+      ],
+      "request_id": "B1-REQ-W0144",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0144",
+      "supersedes": "W0144.0002.json",
+      "work_id": "arxiv:2602.20064"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0190"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0145.0001.json",
+          "sha256": "8d1c3e14560b5b89b711691739f4860ddfb92021115106302e17809728cb38cb"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0145.0002.json",
+          "sha256": "214c09bcb40f283923c50162efdc7f9b1cc614effce8429615c7b6faa8306a7d"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0145.0003.json",
+          "sha256": "253f1a25945792e19aae209f0597799d46b8639c8ce20a740f1907fcf4a05dcc"
+        }
+      ],
+      "member_ids": [
+        "M0190"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0145.0003.json",
+      "record_revision": 3,
+      "record_sha256": "253f1a25945792e19aae209f0597799d46b8639c8ce20a740f1907fcf4a05dcc",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_TOKEN_FEATURES_REQUIRED",
+        "GENERATION_MONITOR_PROTOCOL_BOUNDARY"
+      ],
+      "request_id": "B1-REQ-W0145",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0145",
+      "supersedes": "W0145.0002.json",
+      "work_id": "arxiv:2602.20708"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0191"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0146.0001.json",
+          "sha256": "892a582cde3b2425154f57e39a81ec204f8eadf55f4397d8c261aa3bb3578287"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0146.0002.json",
+          "sha256": "6d9f8b24ead932857a9cc45d1dc6226f6a152631d461809af684e87f1330308c"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0146.0003.json",
+          "sha256": "140d96d98bbcbee6f613b76d3f2d1fa3d9c1c07a42aff023887ee5a9327ac83b"
+        }
+      ],
+      "member_ids": [
+        "M0191"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0146.0003.json",
+      "record_revision": 3,
+      "record_sha256": "140d96d98bbcbee6f613b76d3f2d1fa3d9c1c07a42aff023887ee5a9327ac83b",
+      "remaining_fact_codes": [
+        "AGENT_EXECUTION_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "SEPARATE_DETECTOR_CHRONOLOGY_NOT_ESTABLISHED"
+      ],
+      "request_id": "B1-REQ-W0146",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0146",
+      "supersedes": "W0146.0002.json",
+      "work_id": "arxiv:2602.22450"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0192"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0147.0001.json",
+          "sha256": "0cdf73e72e3d49b07a8e88e982848752e842ec973ecfc6d177b425a4b6d4d3b8"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0147.0002.json",
+          "sha256": "f3fec6c238e1321b7ef179dec740564096c905a8ff0527d2e63482f19dacfd44"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0147.0003.json",
+          "sha256": "7e9cda18bf7b2f556b09f9eb9839a39a76f3b286344974180eb7d6e834fd1024"
+        }
+      ],
+      "member_ids": [
+        "M0192"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0147.0003.json",
+      "record_revision": 3,
+      "record_sha256": "7e9cda18bf7b2f556b09f9eb9839a39a76f3b286344974180eb7d6e834fd1024",
+      "remaining_fact_codes": [
+        "CANDIDATE_ACTION_DEPENDENCE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0147",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0147",
+      "supersedes": "W0147.0002.json",
+      "work_id": "arxiv:2602.22724"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0193"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0148.0001.json",
+          "sha256": "9c9b4f79e6bd09e9fba37e8f10f3b11e81b195f59ff2714b8f6dced064517357"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0148.0002.json",
+          "sha256": "29d40f65adccc34bb2ed3ec441edd4c3a020b1408ffbba9b160e38fa693d05ff"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0148.0003.json",
+          "sha256": "62e4a6b02b9f862745b50aa17faeb49e1a5d5e3203c20e9e9427062f19a9b3c9"
+        }
+      ],
+      "member_ids": [
+        "M0193"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0148.0003.json",
+      "record_revision": 3,
+      "record_sha256": "62e4a6b02b9f862745b50aa17faeb49e1a5d5e3203c20e9e9427062f19a9b3c9",
+      "remaining_fact_codes": [
+        "ENGINEERING_PATTERN_DESIGN_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "SOURCE_CODE_CASE_STUDY_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0148",
+      "restriction_state": "PDF_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0148",
+      "supersedes": "W0148.0002.json",
+      "work_id": "arxiv:2603.00472"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0195"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0149.0001.json",
+          "sha256": "42cd88700024e38103f611b2ea36c603e058e463f71249a4de293d3ebba42f8a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0149.0002.json",
+          "sha256": "1745c6cd050b65cf0edbfeb33f04b35e62ff9316cf6d024da01c2d055cdd442e"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0149.0003.json",
+          "sha256": "6e1b3e31fb13829bbc649a70afd34d5c39ce89ec7eb360e17d9c8c5958328293"
+        }
+      ],
+      "member_ids": [
+        "M0195"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0149.0003.json",
+      "record_revision": 3,
+      "record_sha256": "6e1b3e31fb13829bbc649a70afd34d5c39ce89ec7eb360e17d9c8c5958328293",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0149",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0149",
+      "supersedes": "W0149.0002.json",
+      "work_id": "arxiv:2603.01574"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0196"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0150.0001.json",
+          "sha256": "04b93ab5497ca6378055a3ffcbdb38e889501a50490cc46da46a7e68c92e1367"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0150.0002.json",
+          "sha256": "c271eeecd3a901dc20d242540af02fa9809447789f8e84e133657bd3b2a5c90d"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0150.0003.json",
+          "sha256": "a1fbb1cf59055fb5188efb6aa4a2ed4de68fd3ea4577f0431e82c2479aa2825a"
+        }
+      ],
+      "member_ids": [
+        "M0196"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0150.0003.json",
+      "record_revision": 3,
+      "record_sha256": "a1fbb1cf59055fb5188efb6aa4a2ed4de68fd3ea4577f0431e82c2479aa2825a",
+      "remaining_fact_codes": [
+        "DETECTOR_EVALUATION_CHRONOLOGY_NOT_ESTABLISHED",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "HOOK_DEMONSTRATION_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0150",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0150",
+      "supersedes": "W0150.0002.json",
+      "work_id": "arxiv:2603.06588"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0197"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0151.0001.json",
+          "sha256": "ee0065630ef918f1e675e1baa926b01c08fc3372598d3ebd3d23792a498ac4d4"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0151.0002.json",
+          "sha256": "d8e7b3590585608db5d04c2dabac56f6463cf3f42e37880b896ff8b05ce7a89b"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0151.0003.json",
+          "sha256": "a88e153042913c86a39dcd182dd99df2f1698e873dabd731a054bd02e3180631"
+        }
+      ],
+      "member_ids": [
+        "M0197"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0151.0003.json",
+      "record_revision": 3,
+      "record_sha256": "a88e153042913c86a39dcd182dd99df2f1698e873dabd731a054bd02e3180631",
+      "remaining_fact_codes": [
+        "GENERATED_ACTION_REQUIRED",
+        "TASK_TOOL_CALL_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0151",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0151",
+      "supersedes": "W0151.0002.json",
+      "work_id": "arxiv:2603.07191"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0198"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0152.0001.json",
+          "sha256": "6fdf0e41937dbd719375472f11c56e4988b9dc031b55f2bc6614e1cff58e4159"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0152.0002.json",
+          "sha256": "b48db9c740a03072a235e8677a5e1f5b49f7b6523819412f579f8fbf2dd99da7"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0152.0003.json",
+          "sha256": "fc109716f7184c4da3b6b211ee7a7f950d8442f44e33e609f1e383394d516806"
+        }
+      ],
+      "member_ids": [
+        "M0198"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0152.0003.json",
+      "record_revision": 3,
+      "record_sha256": "fc109716f7184c4da3b6b211ee7a7f950d8442f44e33e609f1e383394d516806",
+      "remaining_fact_codes": [
+        "AUDIO_LANGUAGE_NOT_EXPLICIT",
+        "DISTINCT_TARGET_CHRONOLOGY_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0152",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0152",
+      "supersedes": "W0152.0002.json",
+      "work_id": "arxiv:2603.07708"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0199"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0153.0001.json",
+          "sha256": "dcc6e4ef08cd4389c9eaed3434e68cc713d1c1d124e5caa304f47642f7fc559b"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0153.0002.json",
+          "sha256": "efa03c13900a39cc9e6ecebbf48705b6a4a2fc47aff9e788bd308dbcfd60a744"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0153.0003.json",
+          "sha256": "cd45f2cf4d8e92933455686c992438eaf29801c4b0b3ad30d645e7914bbf669e"
+        }
+      ],
+      "member_ids": [
+        "M0199"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0153.0003.json",
+      "record_revision": 3,
+      "record_sha256": "cd45f2cf4d8e92933455686c992438eaf29801c4b0b3ad30d645e7914bbf669e",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "INSIGHTS_EXTRACTION_AND_PRIVACY_AUDIT_SCOPE",
+        "METHOD_NODES_OUTSIDE_REQUIRED_PARAGRAPH_SCHEMA"
+      ],
+      "request_id": "B1-REQ-W0153",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0153",
+      "supersedes": "W0153.0002.json",
+      "work_id": "arxiv:2603.09781"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0200"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0154.0001.json",
+          "sha256": "b1fc1d0b1fc9f9b95d9ff8a8d48e5c8ae0d3d02adae608c19142f5347e6b9724"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0154.0002.json",
+          "sha256": "b18e951d7bcbdb36849a536c940c365ed3e61c200af6bb88163e2c3b6825624d"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0154.0003.json",
+          "sha256": "317103b22c6381ccfe7d4a1e94bad7f693e5c2f5c3ce63b219b411082e9984ad"
+        }
+      ],
+      "member_ids": [
+        "M0200"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0154.0003.json",
+      "record_revision": 3,
+      "record_sha256": "317103b22c6381ccfe7d4a1e94bad7f693e5c2f5c3ce63b219b411082e9984ad",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "LIFECYCLE_HOOK_SCOPE_NOT_PREANSWER_SPECIFIED",
+        "MULTICATEGORY_SCANNER_PROTOCOL"
+      ],
+      "request_id": "B1-REQ-W0154",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0154",
+      "supersedes": "W0154.0002.json",
+      "work_id": "arxiv:2603.11853"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0201"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0155.0001.json",
+          "sha256": "aeffe5908cdf837f8a9a9f7d5dd7a0274677f8193ef882dec732fa5f155dc83f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0155.0002.json",
+          "sha256": "1494b1eb8a3b706bd977482819872ad6eb1f08282f50dfe1f04135fe08c99b0c"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0155.0003.json",
+          "sha256": "92eda91fa9672e15de4fea97761d323a983bd197c854f2152bf6f71e1295335f"
+        }
+      ],
+      "member_ids": [
+        "M0201"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0155.0003.json",
+      "record_revision": 3,
+      "record_sha256": "92eda91fa9672e15de4fea97761d323a983bd197c854f2152bf6f71e1295335f",
+      "remaining_fact_codes": [
+        "LANGUAGE_CELLS_WITHOUT_ENGLISH_EVALUATION_LINK"
+      ],
+      "request_id": "B1-REQ-W0155",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0155",
+      "supersedes": "W0155.0002.json",
+      "work_id": "arxiv:2603.11875"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0202"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0156.0001.json",
+          "sha256": "895ba49266752e486153c863f26fb228177bd567f781fc8294e340a06d85ec16"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0156.0002.json",
+          "sha256": "8fb1b687240458622f9b30a4ad1fa51e3aba6ae9bf48eaa5f7c36d28ef995bcb"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0156.0003.json",
+          "sha256": "fad4e8d7e8cdad7092e35d053b85573e73a576b7405a8c846add7f1b41095a16"
+        }
+      ],
+      "member_ids": [
+        "M0202"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0156.0003.json",
+      "record_revision": 3,
+      "record_sha256": "fad4e8d7e8cdad7092e35d053b85573e73a576b7405a8c846add7f1b41095a16",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0156",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0156",
+      "supersedes": "W0156.0002.json",
+      "work_id": "arxiv:2603.18433"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0203"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0157.0001.json",
+          "sha256": "0574c26c453770124649e01a26e4b1a87689f4a066e3c9731ffcfbb5306ce463"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0157.0002.json",
+          "sha256": "0e2fe0e44bb72a6c432d5dad08cd8bcf82e99a81c36d2d7cfa67815c4842ddc2"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0157.0003.json",
+          "sha256": "258e573e0103b8d10eba84dbf0f40ac433220f15f75d80325b73be9a16d5a13d"
+        }
+      ],
+      "member_ids": [
+        "M0203"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0157.0003.json",
+      "record_revision": 3,
+      "record_sha256": "258e573e0103b8d10eba84dbf0f40ac433220f15f75d80325b73be9a16d5a13d",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "MIXED_SCANNER_AND_SKILL_LABEL_SCOPE",
+        "PREINSTALLATION_PURPOSE_WITHOUT_TARGET_CHRONOLOGY"
+      ],
+      "request_id": "B1-REQ-W0157",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0157",
+      "supersedes": "W0157.0002.json",
+      "work_id": "arxiv:2603.19974"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0204"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0158.0001.json",
+          "sha256": "38dce25724d17cf42f4b9f9e0f844510aace7b068f445355b0f57424b56e3baa"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0158.0002.json",
+          "sha256": "d344183d724d4cecd757890d97f4258a15342fe27a767346cd79e462be9b4bf8"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0158.0003.json",
+          "sha256": "183aa144794948d1db51ffb7ce923f5d0ad9b75d867aa7042e92e02b55c3a6e4"
+        }
+      ],
+      "member_ids": [
+        "M0204"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0158.0003.json",
+      "record_revision": 3,
+      "record_sha256": "183aa144794948d1db51ffb7ce923f5d0ad9b75d867aa7042e92e02b55c3a6e4",
+      "remaining_fact_codes": [
+        "DISCOURSE_AND_INTERVIEW_METHOD_SCOPE",
+        "ENGLISH_DISCOURSE_CORPUS_ONLY"
+      ],
+      "request_id": "B1-REQ-W0158",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0158",
+      "supersedes": "W0158.0002.json",
+      "work_id": "arxiv:2603.20214"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0205"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0159.0001.json",
+          "sha256": "2ad8e58c7d8d9737634bfb92330e323ee63468b05cd5ad14793410718867b786"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0159.0002.json",
+          "sha256": "5133999a07bc0ed8bf523493412123c711c8629032ba047d375ba1de348b4824"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0159.0003.json",
+          "sha256": "cb0dce85406500f854d6f8c196a3feeac53f7421cf6359976296613800ddfbc4"
+        }
+      ],
+      "member_ids": [
+        "M0205"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0159.0003.json",
+      "record_revision": 3,
+      "record_sha256": "cb0dce85406500f854d6f8c196a3feeac53f7421cf6359976296613800ddfbc4",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_INTERPRETATION_REQUIRED",
+        "WORD_MEANING_LABEL_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0159",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0159",
+      "supersedes": "W0159.0002.json",
+      "work_id": "arxiv:2603.20381"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0206"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0160.0001.json",
+          "sha256": "b0bdebee955f51f80474b31e4bc4d1787595ec7f78c83154c58efac5a9023c6c"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0160.0002.json",
+          "sha256": "85cc83fe0b40ba2ddfa5d486d9078a0f14ce74587680fd5819fa8276dce539fc"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0160.0003.json",
+          "sha256": "43824259124168e990a10fbdc6ea9ad10d19f84596bca6c42e6577bee1f8188a"
+        }
+      ],
+      "member_ids": [
+        "M0206"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0160.0003.json",
+      "record_revision": 3,
+      "record_sha256": "43824259124168e990a10fbdc6ea9ad10d19f84596bca6c42e6577bee1f8188a",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "INTERACTION_TRAJECTORY_REQUIRED",
+        "TEAM_BEHAVIOR_SUPERVISION_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0160",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0160",
+      "supersedes": "W0160.0002.json",
+      "work_id": "arxiv:2603.20976"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0207"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0161.0001.json",
+          "sha256": "b18852c461998f526b5c3db34848bf9cd9aba502d389971010323ec31abfd785"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0161.0002.json",
+          "sha256": "b00c16f67eb035061d8d79c26119416b5be6082fb2c0151f3a056ca8aca55350"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0161.0003.json",
+          "sha256": "9ba2925393e9a8e23550371057f1b0a2e74a2e5993d4f023d46029545700c619"
+        }
+      ],
+      "member_ids": [
+        "M0207"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0161.0003.json",
+      "record_revision": 3,
+      "record_sha256": "9ba2925393e9a8e23550371057f1b0a2e74a2e5993d4f023d46029545700c619",
+      "remaining_fact_codes": [
+        "CLIENT_BEHAVIOR_EVALUATION_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "SEPARATE_DETECTOR_CHRONOLOGY_NOT_ESTABLISHED"
+      ],
+      "request_id": "B1-REQ-W0161",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0161",
+      "supersedes": "W0161.0002.json",
+      "work_id": "arxiv:2603.21642"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0208"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0162.0001.json",
+          "sha256": "e8fd77001bfd88ccc6c9b6cb0cdcf65367acac7d863153f9dc5eabf24583ce8c"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0162.0002.json",
+          "sha256": "e3fb01d8421dd3d1cbcb254db2f9ff751ea103a68365333ae4ff17da74910435"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0162.0003.json",
+          "sha256": "9a3c89cb24536db4d21901ab37a03ec0b0f1c825f0a72371824b655cb22acb49"
+        }
+      ],
+      "member_ids": [
+        "M0208"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0162.0003.json",
+      "record_revision": 3,
+      "record_sha256": "9a3c89cb24536db4d21901ab37a03ec0b0f1c825f0a72371824b655cb22acb49",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "RESPONSE_SAFETY_LABEL_SCOPE",
+        "TARGET_RESPONSE_USED"
+      ],
+      "request_id": "B1-REQ-W0162",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0162",
+      "supersedes": "W0162.0002.json",
+      "work_id": "arxiv:2603.21975"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0209"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0163.0001.json",
+          "sha256": "e6516408a95d8ae3807babcdf6863ed6ad721bdde3dce93e9daf2f4ddc7ecc3a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0163.0002.json",
+          "sha256": "34580d4cf8851d6647ad9a1daad2f6986d2f27356509c00e4bb4662140c11d58"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0163.0003.json",
+          "sha256": "2d94a17dc7068021e2f714fb4a2897c27035a10bd886ee4ddbe592c7f37aa49f"
+        }
+      ],
+      "member_ids": [
+        "M0209"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0163.0003.json",
+      "record_revision": 3,
+      "record_sha256": "2d94a17dc7068021e2f714fb4a2897c27035a10bd886ee4ddbe592c7f37aa49f",
+      "remaining_fact_codes": [
+        "CLIENT_SECURITY_EXERCISE_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "SEPARATE_DETECTOR_CHRONOLOGY_NOT_ESTABLISHED"
+      ],
+      "request_id": "B1-REQ-W0163",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0163",
+      "supersedes": "W0163.0002.json",
+      "work_id": "arxiv:2603.22489"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0210"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0164.0001.json",
+          "sha256": "d017295094e4841d6951f6bd851437841023f702aa2127e9c8f830f2cfb7188f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0164.0002.json",
+          "sha256": "e884faf389a8ab15176327590082a2bc080ef53023a6be51ce715b7b4817f587"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0164.0003.json",
+          "sha256": "a6ddcd3e8cdd7b65fc464199dc8e5a946689b954ec66e06e13912a86fdb36f3f"
+        }
+      ],
+      "member_ids": [
+        "M0210"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0164.0003.json",
+      "record_revision": 3,
+      "record_sha256": "a6ddcd3e8cdd7b65fc464199dc8e5a946689b954ec66e06e13912a86fdb36f3f",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "LITERATURE_TAXONOMY_SCOPE",
+        "ORIGINAL_DETECTOR_CHRONOLOGY_NOT_ESTABLISHED"
+      ],
+      "request_id": "B1-REQ-W0164",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0164",
+      "supersedes": "W0164.0002.json",
+      "work_id": "arxiv:2603.22928"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0211"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0165.0001.json",
+          "sha256": "33f247c385c2f00ccdae3c512deafbc7f4d1308f2ec3cb09bf4a3a9a2de0c116"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0165.0002.json",
+          "sha256": "a8968621472dd6f313a827dd506e0705dec9375fa1fb7fabf71d97a56247f2b6"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0165.0003.json",
+          "sha256": "31c3cf8d32be4b4e7c79b4071d4d9370b1cac85d1633e19d88ff7e408ecc77d3"
+        }
+      ],
+      "member_ids": [
+        "M0211"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0165.0003.json",
+      "record_revision": 3,
+      "record_sha256": "31c3cf8d32be4b4e7c79b4071d4d9370b1cac85d1633e19d88ff7e408ecc77d3",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "LAYERED_SCREEN_AND_ACTION_POLICY_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0165",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0165",
+      "supersedes": "W0165.0002.json",
+      "work_id": "arxiv:2603.23791"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0212"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0166.0001.json",
+          "sha256": "a0a5eb9c5ab43e95d5b07e9f542fe0f6843deda1fa36d91bda8046faa4627ebb"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0166.0002.json",
+          "sha256": "7ed84a0a6d8ec15a28586f8fe8a696b02e97da5f74b9e28666ee627eecaecf52"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0166.0003.json",
+          "sha256": "b21b9d42f05812db081824b4f8929ca2265f20f4192a86c8187bb578a1a62dfc"
+        }
+      ],
+      "member_ids": [
+        "M0212"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0166.0003.json",
+      "record_revision": 3,
+      "record_sha256": "b21b9d42f05812db081824b4f8929ca2265f20f4192a86c8187bb578a1a62dfc",
+      "remaining_fact_codes": [
+        "CLASSIFIER_CHRONOLOGY_NOT_ESTABLISHED",
+        "CLASSIFIER_COMPARISON_METHOD_DETAIL_QUARANTINED",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0166",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0166",
+      "supersedes": "W0166.0002.json",
+      "work_id": "arxiv:2603.24203"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0213"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0167.0001.json",
+          "sha256": "628918339a42d856b6867bc9f72886793fd47f206bd695f7e2bdbcb77108ac24"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0167.0002.json",
+          "sha256": "72eddc2502a8fab3a515c2e95a87ac51e50898df7a354b4b70c6e2d3822acb18"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0167.0003.json",
+          "sha256": "50a0492ccec4740969809340422ad23ea1c7c53b550cbdcb409dfc6e77a105d9"
+        }
+      ],
+      "member_ids": [
+        "M0213"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0167.0003.json",
+      "record_revision": 3,
+      "record_sha256": "50a0492ccec4740969809340422ad23ea1c7c53b550cbdcb409dfc6e77a105d9",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "INJECTION_DETECTOR_CHRONOLOGY_NOT_ESTABLISHED",
+        "POLICY_AND_SCRIPT_LABEL_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0167",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0167",
+      "supersedes": "W0167.0002.json",
+      "work_id": "arxiv:2603.28807"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0214"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0168.0001.json",
+          "sha256": "9e20a02589fe3fb08261c4400d4f12374707898acbd8802c09668cca7be4d91f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0168.0002.json",
+          "sha256": "acd77c563536ec8f5b564078b5e8a006d8eb793c0d97b31af86cdb3b97c95dde"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0168.0003.json",
+          "sha256": "c57070b0f3b7e185ccf6ca8bf8510940cf0cc59e3a86b3679245199accca8fb1"
+        }
+      ],
+      "member_ids": [
+        "M0214"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0168.0003.json",
+      "record_revision": 3,
+      "record_sha256": "c57070b0f3b7e185ccf6ca8bf8510940cf0cc59e3a86b3679245199accca8fb1",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_ACTION_OR_FINAL_ANSWER_REQUIRED"
+      ],
+      "request_id": "B1-REQ-W0168",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0168",
+      "supersedes": "W0168.0002.json",
+      "work_id": "arxiv:2604.01194"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0216"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0169.0001.json",
+          "sha256": "8c05834eb917863e923a789c53a69ac26c9400b8f3550b984405e817c734717e"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0169.0002.json",
+          "sha256": "de436bdd8d0ddea86c7d677ce17492c6ae9ff3077eece68c91887cf0cd8e76d7"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0169.0003.json",
+          "sha256": "21e4ba3150ddf75a47c5bfbef6705752e195f9593491d46604b8951d1daf08cf"
+        }
+      ],
+      "member_ids": [
+        "M0216"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0169.0003.json",
+      "record_revision": 3,
+      "record_sha256": "21e4ba3150ddf75a47c5bfbef6705752e195f9593491d46604b8951d1daf08cf",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0169",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0169",
+      "supersedes": "W0169.0002.json",
+      "work_id": "arxiv:2604.03598"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0217"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0170.0001.json",
+          "sha256": "fd395407dffc8ddbabfc6bfd3c7569791fe91da84381754a5028d54ef74cbad5"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0170.0002.json",
+          "sha256": "1ad3401c9cac1701e8b84cf1f6bf714f0e3cfd272bb28244a579561d9ed60007"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0170.0003.json",
+          "sha256": "42aea7eaf162e8faf05da4008026d97b03accd14d9c6bf1c03e1a3cd18dd4967"
+        }
+      ],
+      "member_ids": [
+        "M0217"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0170.0003.json",
+      "record_revision": 3,
+      "record_sha256": "42aea7eaf162e8faf05da4008026d97b03accd14d9c6bf1c03e1a3cd18dd4967",
+      "remaining_fact_codes": [
+        "CLOUD_ACTIVITY_LABEL_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "SEPARATE_INJECTION_DETECTOR_CHRONOLOGY_NOT_ESTABLISHED"
+      ],
+      "request_id": "B1-REQ-W0170",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0170",
+      "supersedes": "W0170.0002.json",
+      "work_id": "arxiv:2604.03912"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0218"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0171.0001.json",
+          "sha256": "cfce416dbe038ff5e6492153d2a56edda11071b90cb70760f481c4c0776f2e40"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0171.0002.json",
+          "sha256": "a5ea1bdb2be42ca91d0e630dcef9f3822007fc2f3613cfb3c1289bf5b3c086be"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0171.0003.json",
+          "sha256": "be016e2dc45fd5c3b5c7875cfc9933f332ca233bd9791a5ac9208b7783efb6f5"
+        }
+      ],
+      "member_ids": [
+        "M0218"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0171.0003.json",
+      "record_revision": 3,
+      "record_sha256": "be016e2dc45fd5c3b5c7875cfc9933f332ca233bd9791a5ac9208b7783efb6f5",
+      "remaining_fact_codes": [
+        "NETWORK_EXECUTION_TRACE_SCOPE",
+        "NETWORK_TRACE_LANGUAGE_NOT_ESTABLISHED",
+        "POST_TOOL_EXECUTION_OBSERVATIONS"
+      ],
+      "request_id": "B1-REQ-W0171",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0171",
+      "supersedes": "W0171.0002.json",
+      "work_id": "arxiv:2604.04426"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0219"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0172.0001.json",
+          "sha256": "8d5ccaaa82a2e836d94e1e536a381aa2451d3394cbb06a1df699c700075326d0"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0172.0002.json",
+          "sha256": "2b6203e981fe12c964f989061d236ae52ae982a6e5423aec31aac0d1776ab93e"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0172.0003.json",
+          "sha256": "148f66258e81e1d8acdd8b81601678dbacfa7112b31b4d1d8bea820fa5dc9fb5"
+        }
+      ],
+      "member_ids": [
+        "M0219"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0172.0003.json",
+      "record_revision": 3,
+      "record_sha256": "148f66258e81e1d8acdd8b81601678dbacfa7112b31b4d1d8bea820fa5dc9fb5",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_CODE_REQUIRED",
+        "GENERATED_WORKFLOW_VALIDATION_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0172",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0172",
+      "supersedes": "W0172.0002.json",
+      "work_id": "arxiv:2604.05150"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0221"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0173.0001.json",
+          "sha256": "f68f7e573cd893bb831bda19e7dabb167508146dda7542516df643333a760910"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0173.0002.json",
+          "sha256": "4ce2cea7baa55f2186128f6ce6e7e2eb595f2c74928cd140120f43b4453c6b79"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0173.0003.json",
+          "sha256": "ed03b12181a7d991ed658e7bb6e03dd9d61d754f07366cc732d0b1af2b509989"
+        }
+      ],
+      "member_ids": [
+        "M0221"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0173.0003.json",
+      "record_revision": 3,
+      "record_sha256": "ed03b12181a7d991ed658e7bb6e03dd9d61d754f07366cc732d0b1af2b509989",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_ACTION_REQUIRED",
+        "TRACE_SAFETY_TAXONOMY_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0173",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0173",
+      "supersedes": "W0173.0002.json",
+      "work_id": "arxiv:2604.07223"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0222"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0174.0001.json",
+          "sha256": "3af9fa35f72c2a64774db721b8671139e534be4ff5819495c68b43e773b6bc72"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0174.0002.json",
+          "sha256": "4b8a8876ad7ba39f371d0ef1efa5c4ba2a6eb1688e04752dd56bd70e4d2c88f2"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0174.0003.json",
+          "sha256": "fbbb51fd9f167713708d0575b5370dd6aa4f4f249fcd015bcf03d9b68e213634"
+        }
+      ],
+      "member_ids": [
+        "M0222"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0174.0003.json",
+      "record_revision": 3,
+      "record_sha256": "fbbb51fd9f167713708d0575b5370dd6aa4f4f249fcd015bcf03d9b68e213634",
+      "remaining_fact_codes": [
+        "DESCRIPTION_GENERATION_PROTOCOL_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "INJECTION_DETECTOR_EVALUATION_CHRONOLOGY_NOT_ESTABLISHED"
+      ],
+      "request_id": "B1-REQ-W0174",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0174",
+      "supersedes": "W0174.0002.json",
+      "work_id": "arxiv:2604.07536"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0223"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0175.0001.json",
+          "sha256": "5de520b1b914800f6cc21534087bb105267b0491e4455553670cf80a0a41b523"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0175.0002.json",
+          "sha256": "92ee4c9b6e1511a58026963c473a038ea4fdc1152408c57c2a2493e636f28255"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0175.0003.json",
+          "sha256": "6482f8a6905694c141cb9776ec9f24dae17e44da19d4c5267738899c56e15605"
+        }
+      ],
+      "member_ids": [
+        "M0223"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0175.0003.json",
+      "record_revision": 3,
+      "record_sha256": "6482f8a6905694c141cb9776ec9f24dae17e44da19d4c5267738899c56e15605",
+      "remaining_fact_codes": [
+        "DISCOURSE_TOPIC_METHOD_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0175",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0175",
+      "supersedes": "W0175.0002.json",
+      "work_id": "arxiv:2604.08352"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0224"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0176.0001.json",
+          "sha256": "c1907cfc59f6f9eaa01ed85dd9b1bfaad4fab02b7f0a8b381872d399d78dcec2"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0176.0002.json",
+          "sha256": "76ee1723a0a2a4aeb3cbe909cd24189b8af10e0e068d35f411b80dc699359e99"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0176.0003.json",
+          "sha256": "3609a30855f65486adb68454823f28beb5b612eb153854cf8139b7fc9f1d3c84"
+        }
+      ],
+      "member_ids": [
+        "M0224"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0176.0003.json",
+      "record_revision": 3,
+      "record_sha256": "3609a30855f65486adb68454823f28beb5b612eb153854cf8139b7fc9f1d3c84",
+      "remaining_fact_codes": [
+        "ATTACK_ACTIVATION_CLASSIFIER_SCOPE",
+        "ATTACK_TRIGGER_LABEL_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0176",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0176",
+      "supersedes": "W0176.0002.json",
+      "work_id": "arxiv:2604.09378"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0225"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0177.0001.json",
+          "sha256": "bcf418c6cf0a71d397aacdae3ed67482b4e4cea55e3e121809e79b49f9e33a10"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0177.0002.json",
+          "sha256": "c6db3a934a4a9d1d9a6a7aa982d8fb3766cc7180988646748e1e3a302a530bf1"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0177.0003.json",
+          "sha256": "b83f4d2c9e52b78e15e1227656af2216cf00408637bf0e4febd84dfa236da856"
+        }
+      ],
+      "member_ids": [
+        "M0225"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0177.0003.json",
+      "record_revision": 3,
+      "record_sha256": "b83f4d2c9e52b78e15e1227656af2216cf00408637bf0e4febd84dfa236da856",
+      "remaining_fact_codes": [
+        "COMPLETED_TRACES_REQUIRED",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "REPOSITORY_TRACE_AUDIT_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0177",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0177",
+      "supersedes": "W0177.0002.json",
+      "work_id": "arxiv:2604.11806"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0226"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0178.0001.json",
+          "sha256": "f08d1e3bbdc1f70272ec6e89b2a42ea4148a010824964c74ac6b3a3bc95c2ed5"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0178.0002.json",
+          "sha256": "d471b33f401c06d9f3f0908b129024c7583dd84b6d3e61f5dd57341234cb22ba"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0178.0003.json",
+          "sha256": "f6a3c21b0bebf659e1412c791ab02a2a472f576bcd7151ff0eaf4d26bd0ce0d8"
+        }
+      ],
+      "member_ids": [
+        "M0226"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0178.0003.json",
+      "record_revision": 3,
+      "record_sha256": "f6a3c21b0bebf659e1412c791ab02a2a472f576bcd7151ff0eaf4d26bd0ce0d8",
+      "remaining_fact_codes": [
+        "PARALLEL_AGENT_REASONING_BOUNDARY",
+        "TEMPLATE_LANGUAGE_IN_PROTECTED_QUOTATION"
+      ],
+      "request_id": "B1-REQ-W0178",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0178",
+      "supersedes": "W0178.0002.json",
+      "work_id": "arxiv:2604.12284"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0227"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0179.0001.json",
+          "sha256": "e7a315926206ef12d9db5742ce75f5a61a38fff0b40b4d9d8ab13acf68b295dc"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0179.0002.json",
+          "sha256": "6d70cf3424ef0433c6e5a010a266b3a1036690d05843fa96d6cc860f58fbfac2"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0179.0003.json",
+          "sha256": "ecf092cca6ef7b083f785e9b5f5a2b981bc6994727f34e28cd92497ce684c0c9"
+        }
+      ],
+      "member_ids": [
+        "M0227"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0179.0003.json",
+      "record_revision": 3,
+      "record_sha256": "ecf092cca6ef7b083f785e9b5f5a2b981bc6994727f34e28cd92497ce684c0c9",
+      "remaining_fact_codes": [
+        "COMPLETE_INPUT_CLASSIFICATION_PROTOCOL_NOT_EXPLICIT",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0179",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0179",
+      "supersedes": "W0179.0002.json",
+      "work_id": "arxiv:2604.15368"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0228"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0180.0001.json",
+          "sha256": "6e6634f57faccfda2f852f34e7faa8ecd9e0bbdd3d8fb82c8cd1f451185cfc28"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0180.0002.json",
+          "sha256": "8713061cd96cda4f91b1f12fb5b1d3d03889aa2eb8743cafc32d6f8dace5995f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0180.0003.json",
+          "sha256": "63741463f0c37ffaacd808452b8554c62e16eaaa79f85e9269bbdf6e1eb6e875"
+        }
+      ],
+      "member_ids": [
+        "M0228"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0180.0003.json",
+      "record_revision": 3,
+      "record_sha256": "63741463f0c37ffaacd808452b8554c62e16eaaa79f85e9269bbdf6e1eb6e875",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "SEPARATE_DETECTOR_CHRONOLOGY_NOT_ESTABLISHED",
+        "SOFTWARE_TEST_SURFACE_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0180",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0180",
+      "supersedes": "W0180.0002.json",
+      "work_id": "arxiv:2604.16838"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0231"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0182.0001.json",
+          "sha256": "c8aff76df5888d5c8d0ad4e7ae6168e65cae48ab9d7cc30cd839bce45a8e7367"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0182.0002.json",
+          "sha256": "34887f06d35e73068fccd3ef4d6cbec2ac07db63edf8f2c68dd878bdbdcbb85d"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0182.0003.json",
+          "sha256": "2d1e045c0bf890cfa09dbb3beb4a9d949c875838f227e0a4a5dff060215ce4aa"
+        }
+      ],
+      "member_ids": [
+        "M0231"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0182.0003.json",
+      "record_revision": 3,
+      "record_sha256": "2d1e045c0bf890cfa09dbb3beb4a9d949c875838f227e0a4a5dff060215ce4aa",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "STEP_EXECUTION_WITHOUT_TARGET_ANSWER_CHRONOLOGY",
+        "UNSAFE_CONTENT_BASELINE_LABEL_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0182",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0182",
+      "supersedes": "W0182.0002.json",
+      "work_id": "arxiv:2604.17562"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0233"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0183.0001.json",
+          "sha256": "bed360044ddacb31c3ae8f2ef30e7a9b29d7e26ab5caee32a8ec2f115950ce4c"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0183.0002.json",
+          "sha256": "232a2ced65f3611629d20274676342b7d352a571fb6bcbd824dca93f333f0082"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0183.0003.json",
+          "sha256": "729d09952c7d4a65a84c0ac3c3534b38749f580a4bf048de840c199425b7998f"
+        }
+      ],
+      "member_ids": [
+        "M0233"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0183.0003.json",
+      "record_revision": 3,
+      "record_sha256": "729d09952c7d4a65a84c0ac3c3534b38749f580a4bf048de840c199425b7998f",
+      "remaining_fact_codes": [
+        "DISTINCT_TARGET_CHRONOLOGY_NOT_EXPLICIT",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "OWNER_HARM_CLASSIFICATION_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0183",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0183",
+      "supersedes": "W0183.0002.json",
+      "work_id": "arxiv:2604.18658"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0234"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0184.0001.json",
+          "sha256": "b8243ecb8787bdf5976fbd6d837f8acf5543859fb743fc96d77938f314a62d53"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0184.0002.json",
+          "sha256": "14d71c683c229b19aff1264b0543abd7be4f0c90ed055fbed636afc8a72c2a0b"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0184.0003.json",
+          "sha256": "cb7e53e9240ea71ea789edf5033bf088c2f128aa1eb509b90eb66a02583dde2b"
+        }
+      ],
+      "member_ids": [
+        "M0234"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0184.0003.json",
+      "record_revision": 3,
+      "record_sha256": "cb7e53e9240ea71ea789edf5033bf088c2f128aa1eb509b90eb66a02583dde2b",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "PREEXECUTION_BOUNDARY_WITHOUT_TARGET_ANSWER_CHRONOLOGY"
+      ],
+      "request_id": "B1-REQ-W0184",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0184",
+      "supersedes": "W0184.0002.json",
+      "work_id": "arxiv:2604.22888"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0235"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0185.0001.json",
+          "sha256": "cecaec4194ad13f306106429596db3fc7b1ddfb58ba87cacdf8d31a5108765bd"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0185.0002.json",
+          "sha256": "cbca3107258d463caedf2731c351c101e041e676631be9a41bffdaad8be2942f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0185.0003.json",
+          "sha256": "1342123d56b1a741e5975799d84fb18d8e26b05729676354218ed76aa69acfbd"
+        }
+      ],
+      "member_ids": [
+        "M0235"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0185.0003.json",
+      "record_revision": 3,
+      "record_sha256": "1342123d56b1a741e5975799d84fb18d8e26b05729676354218ed76aa69acfbd",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "EXECUTION_LOG_AND_REASONING_REQUIRED",
+        "SOURCE_TO_SINK_PROPAGATION_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0185",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0185",
+      "supersedes": "W0185.0002.json",
+      "work_id": "arxiv:2604.23374"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0236"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0186.0001.json",
+          "sha256": "226b692bb10999a1fb80d1b195b9e3557d2303403634b403dc82633abb6ca05e"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0186.0002.json",
+          "sha256": "7f1dbe2736026565af9003def07910c6af135bcbbd8944c164b2636002c9f481"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0186.0003.json",
+          "sha256": "d876de7639cc1397c413bb2ecdb78f6903889c0e57a18a33f1822b660cad094f"
+        }
+      ],
+      "member_ids": [
+        "M0236"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0186.0003.json",
+      "record_revision": 3,
+      "record_sha256": "d876de7639cc1397c413bb2ecdb78f6903889c0e57a18a33f1822b660cad094f",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "SECURITY_AWARENESS_SESSION_SCOPE",
+        "SESSION_EVALUATION_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0186",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0186",
+      "supersedes": "W0186.0002.json",
+      "work_id": "arxiv:2604.24020"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0237"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0187.0001.json",
+          "sha256": "9d1237ab63448c66f6afd72a9853f77cad75aab12db400767b6c84fa2d6ff8ad"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0187.0002.json",
+          "sha256": "ffeafd58e117f757ce21d6a8560a61c6c579d64cb197d57cc0b5b786aa4c91d1"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0187.0003.json",
+          "sha256": "c90b25002a356d92a715643fc390c10ce8c32ea85c7507d118c694c1f629f472"
+        }
+      ],
+      "member_ids": [
+        "M0237"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0187.0003.json",
+      "record_revision": 3,
+      "record_sha256": "c90b25002a356d92a715643fc390c10ce8c32ea85c7507d118c694c1f629f472",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_ACTION_REQUIRED"
+      ],
+      "request_id": "B1-REQ-W0187",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0187",
+      "supersedes": "W0187.0002.json",
+      "work_id": "arxiv:2604.24118"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0238"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0188.0001.json",
+          "sha256": "0abba9ebf96f3e84dcc33f29fd630d353fa5f1d6a06b1a9e58a652a98a9fa27f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0188.0002.json",
+          "sha256": "ea79a22474aa878c6a60c19255480c53e1b95e663afd8afa9bd5b9b235b1a890"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0188.0003.json",
+          "sha256": "aa682ad8943efaf5a6d867ca8c569d5cb7f6466f690372c5ed5d9d8538d98bbf"
+        }
+      ],
+      "member_ids": [
+        "M0238"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0188.0003.json",
+      "record_revision": 3,
+      "record_sha256": "aa682ad8943efaf5a6d867ca8c569d5cb7f6466f690372c5ed5d9d8538d98bbf",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0188",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0188",
+      "supersedes": "W0188.0002.json",
+      "work_id": "arxiv:2604.24542"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0239"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0189.0001.json",
+          "sha256": "f150b3c3d8363616071dc0a8b5fec72641046991cac852c5b87e491449093420"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0189.0002.json",
+          "sha256": "32a83c2e3d78de61f034703bb47f1fb81001b4f172a3685910a66fd17a099c00"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0189.0003.json",
+          "sha256": "f5775d73d207c7bd3ecbb0c9776e426dcce032481e48f5f7bfb7122c8900c3f9"
+        }
+      ],
+      "member_ids": [
+        "M0239"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0189.0003.json",
+      "record_revision": 3,
+      "record_sha256": "f5775d73d207c7bd3ecbb0c9776e426dcce032481e48f5f7bfb7122c8900c3f9",
+      "remaining_fact_codes": [
+        "OCR_ENCODER_DOES_NOT_ESTABLISH_EVALUATION_LANGUAGE"
+      ],
+      "request_id": "B1-REQ-W0189",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0189",
+      "supersedes": "W0189.0002.json",
+      "work_id": "arxiv:2604.25562"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0240"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0190.0001.json",
+          "sha256": "b55ee6f8771a724ef38f33553d3a99abffa1030114388c7198c105886ee33080"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0190.0002.json",
+          "sha256": "c6e1ce29fb14cacda2badc5d4db912f50729d8d72b9fb675d96851376188a94a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0190.0003.json",
+          "sha256": "02c04da2b7c00cb5e02157d13ea2e4f2a4eb434ffefb1b29ef4da80f08d51a78"
+        }
+      ],
+      "member_ids": [
+        "M0240"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0190.0003.json",
+      "record_revision": 3,
+      "record_sha256": "02c04da2b7c00cb5e02157d13ea2e4f2a4eb434ffefb1b29ef4da80f08d51a78",
+      "remaining_fact_codes": [
+        "DOCUMENT_CONFORMANCE_LABEL_SCOPE",
+        "ENGLISH_DOCUMENT_CONFORMANCE_DATASET_ONLY",
+        "SEPARATE_INJECTION_DETECTOR_CHRONOLOGY_NOT_ESTABLISHED"
+      ],
+      "request_id": "B1-REQ-W0190",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0190",
+      "supersedes": "W0190.0002.json",
+      "work_id": "arxiv:2604.26986"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0241"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0191.0001.json",
+          "sha256": "060376af152f7bf7696b32d5d0095bc58342a3d97832b8972a6f15aeba3d0283"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0191.0002.json",
+          "sha256": "b1eb438fe7207bc35740f49a2c4d77c275423ad588e62168dc3c328f8a67c18a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0191.0003.json",
+          "sha256": "c2dfbc09216dd22735e096af094de788487c4768006906d1d4f6ed090e45e633"
+        }
+      ],
+      "member_ids": [
+        "M0241"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0191.0003.json",
+      "record_revision": 3,
+      "record_sha256": "c2dfbc09216dd22735e096af094de788487c4768006906d1d4f6ed090e45e633",
+      "remaining_fact_codes": [
+        "CORPUS_VALIDATION_WITHOUT_TARGET_CHRONOLOGY",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "HELDOUT_DETECTOR_EVALUATION_NOT_ESTABLISHED",
+        "VALIDATED_WEB_CORPUS_CONSTRUCTION_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0191",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0191",
+      "supersedes": "W0191.0002.json",
+      "work_id": "arxiv:2604.27202"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0242"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0192.0001.json",
+          "sha256": "1b69804756558c505364cb41e5be61c945f272c6cd0530756ac057d748cf2b02"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0192.0002.json",
+          "sha256": "c3d74432508c26003f86c87edb5722d1a03ed394b810863cb911a323edf7b69c"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0192.0003.json",
+          "sha256": "0b7feffd608c8824e3afe8f676dd488820abd9c49728154f24908c87a41c8be3"
+        }
+      ],
+      "member_ids": [
+        "M0242"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0192.0003.json",
+      "record_revision": 3,
+      "record_sha256": "0b7feffd608c8824e3afe8f676dd488820abd9c49728154f24908c87a41c8be3",
+      "remaining_fact_codes": [
+        "CONVERSATION_MODERATION_LABEL_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0192",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0192",
+      "supersedes": "W0192.0002.json",
+      "work_id": "arxiv:2604.28129"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0243"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0193.0001.json",
+          "sha256": "cd166b884099425b3ff17992304fca498928443215280e2500ed67a717a2dd8c"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0193.0002.json",
+          "sha256": "a19c3b5052221f58d72db63bb92b1351538a9c0d55e0ca59fc49ffed8060ca5b"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0193.0003.json",
+          "sha256": "f7a8c70d58c531396ecb43e6e3e7a2f29f3ff27d2f2d6a10bd003f33247d18f3"
+        }
+      ],
+      "member_ids": [
+        "M0243"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0193.0003.json",
+      "record_revision": 3,
+      "record_sha256": "f7a8c70d58c531396ecb43e6e3e7a2f29f3ff27d2f2d6a10bd003f33247d18f3",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0193",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0193",
+      "supersedes": "W0193.0002.json",
+      "work_id": "arxiv:2605.00460"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0244"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0194.0001.json",
+          "sha256": "c334aac59c4f5cd5498578dd9b767d2b5c707e3e30f0f2b8b4ece06c60221b10"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0194.0002.json",
+          "sha256": "67ae09fa3325f321e9fcceb51db1ceab0c48566002e4b71416edca4998cf45aa"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0194.0003.json",
+          "sha256": "d745ee7ccf316425de6557968cc191fffb1eb3a70421ab15cb9d2e2eb17d0b57"
+        }
+      ],
+      "member_ids": [
+        "M0244"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0194.0003.json",
+      "record_revision": 3,
+      "record_sha256": "d745ee7ccf316425de6557968cc191fffb1eb3a70421ab15cb9d2e2eb17d0b57",
+      "remaining_fact_codes": [
+        "ACTION_TIMING_WITHOUT_TARGET_ANSWER_CHRONOLOGY",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "UNSAFE_EXECUTION_LABEL_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0194",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0194",
+      "supersedes": "W0194.0002.json",
+      "work_id": "arxiv:2605.01143"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0245"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0195.0001.json",
+          "sha256": "72291e2e74346577237f0e2e356141fac24df61e37c1c6820d86c55d81cdeaaf"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0195.0002.json",
+          "sha256": "de7ac8dfc8c275e660a499c192dbfc719fafa2c937b69e324893a0f8d8127527"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0195.0003.json",
+          "sha256": "3b8119ab50a4b97df85bbc65daf4bc22f8f1b5cea09f261fe0619a67bd1f6e6a"
+        }
+      ],
+      "member_ids": [
+        "M0245"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0195.0003.json",
+      "record_revision": 3,
+      "record_sha256": "3b8119ab50a4b97df85bbc65daf4bc22f8f1b5cea09f261fe0619a67bd1f6e6a",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_REPLY_TARGET_PHRASE_SCOPE",
+        "TARGET_RESPONSE_USED"
+      ],
+      "request_id": "B1-REQ-W0195",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0195",
+      "supersedes": "W0195.0002.json",
+      "work_id": "arxiv:2605.01449"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0246"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0196.0001.json",
+          "sha256": "5a2f5508b9e2ae84132f2845bbfdee8ec24ab33ceb6bbb4b48692f3d5529f429"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0196.0002.json",
+          "sha256": "279a1801a6db16239746f9d9b5f8e1f4d2a258b0e80ac750f65bee5db274d927"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0196.0003.json",
+          "sha256": "1ae6f9eeb4dcb289098a08a80f488abf6c77cc87343ce46358fba6b176ef3d2c"
+        }
+      ],
+      "member_ids": [
+        "M0246"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0196.0003.json",
+      "record_revision": 3,
+      "record_sha256": "1ae6f9eeb4dcb289098a08a80f488abf6c77cc87343ce46358fba6b176ef3d2c",
+      "remaining_fact_codes": [
+        "ACTION_AUDIT_AND_PREEXECUTION_BASELINE_BOUNDARY",
+        "BASELINE_BINARY_PROTOCOL_NOT_EXPLICIT",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0196",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0196",
+      "supersedes": "W0196.0002.json",
+      "work_id": "arxiv:2605.03378"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0247"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0197.0001.json",
+          "sha256": "05219dc0e62f922775c0fd5481cab3b23f678825ff86fdaf41ba7c85778a5c43"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0197.0002.json",
+          "sha256": "6d0ebc573186a2aafe608d8d7291e8a6d7a488fb3105f51df00dd08db04608b1"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0197.0003.json",
+          "sha256": "b6285ba9c3d5b64c8bca016c118c69ec2ff096e7fef09f5d1fad3f08267691b7"
+        }
+      ],
+      "member_ids": [
+        "M0247"
+      ],
+      "new_fact_count": 3,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0197.0003.json",
+      "record_revision": 3,
+      "record_sha256": "b6285ba9c3d5b64c8bca016c118c69ec2ff096e7fef09f5d1fad3f08267691b7",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "ROLE_AUTHORIZATION_LABEL_SCOPE",
+        "TARGET_SQL_ALREADY_GENERATED"
+      ],
+      "request_id": "B1-REQ-W0197",
+      "restriction_state": "PDF_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 0,
+      "review_id": "W0197",
+      "supersedes": "W0197.0002.json",
+      "work_id": "arxiv:2605.05260"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0248"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0198.0001.json",
+          "sha256": "7ffed016369d12e766a43aae8e5cfea2d686e2d08a6d4182a7a7592a11528296"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0198.0002.json",
+          "sha256": "f9b79b686c3cad6cdd2e3d9c8ccc407cee265b04eeab4b7bd75485c39d703261"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0198.0003.json",
+          "sha256": "00f2593eb3e77623ce5ed81ef229d3094633eff2779101bb34908a8f7c64d616"
+        }
+      ],
+      "member_ids": [
+        "M0248"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0198.0003.json",
+      "record_revision": 3,
+      "record_sha256": "00f2593eb3e77623ce5ed81ef229d3094633eff2779101bb34908a8f7c64d616",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "HOST_OPERATION_POLICY_SCOPE",
+        "HOST_OPERATION_REQUEST_REQUIRED"
+      ],
+      "request_id": "B1-REQ-W0198",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0198",
+      "supersedes": "W0198.0002.json",
+      "work_id": "arxiv:2605.06393"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0250"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0200.0001.json",
+          "sha256": "b78f544c17fa40c5332b38dd07011b21e90c0000a4337e815a8572d4686780f8"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0200.0002.json",
+          "sha256": "dfec9e0fee44a7008415db58429fa14c778bee520f20f2449c54e37c886931e9"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0200.0003.json",
+          "sha256": "d145e1e3949e42a7ef441de64e6e55f4bbcb9d5284d4f17b100298027a167e5a"
+        }
+      ],
+      "member_ids": [
+        "M0250"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0200.0003.json",
+      "record_revision": 3,
+      "record_sha256": "d145e1e3949e42a7ef441de64e6e55f4bbcb9d5284d4f17b100298027a167e5a",
+      "remaining_fact_codes": [],
+      "request_id": "B1-REQ-W0200",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 3,
+      "review_id": "W0200",
+      "supersedes": "W0200.0002.json",
+      "work_id": "arxiv:2605.07269"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0251"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0201.0001.json",
+          "sha256": "b19979bcbc006a47269292534a8d1387c183d8b8f2fe283a5ca242f9d9dd7caa"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0201.0002.json",
+          "sha256": "d3eaad986284789331c43ba099fe125af535963d975bb144800c928e7ac8a358"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0201.0003.json",
+          "sha256": "f511e55e5ab3e8f58fb5b73ba2af1ff50717b5353cb81f44a4310194c5af48c7"
+        }
+      ],
+      "member_ids": [
+        "M0251"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0201.0003.json",
+      "record_revision": 3,
+      "record_sha256": "f511e55e5ab3e8f58fb5b73ba2af1ff50717b5353cb81f44a4310194c5af48c7",
+      "remaining_fact_codes": [
+        "ENGLISH_PERSONA_INSTRUCTION_NOT_EVALUATION_LANGUAGE_PROOF"
+      ],
+      "request_id": "B1-REQ-W0201",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 3,
+      "review_id": "W0201",
+      "supersedes": "W0201.0002.json",
+      "work_id": "arxiv:2605.08442"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0253"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0202.0001.json",
+          "sha256": "964425654759139161ab04817cc4df868f5a3d9eb4650483a4f0086b31658f1d"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0202.0002.json",
+          "sha256": "25952432fede9013e8ad58525c6db499ed2314039fcca63f2be96a8a9d76b9db"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0202.0003.json",
+          "sha256": "b059d2c0b0ec662727703fa3784e1ef9d7d374abde7f001e7eb5d275829d3fd9"
+        }
+      ],
+      "member_ids": [
+        "M0253"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0202.0003.json",
+      "record_revision": 3,
+      "record_sha256": "b059d2c0b0ec662727703fa3784e1ef9d7d374abde7f001e7eb5d275829d3fd9",
+      "remaining_fact_codes": [
+        "BASELINE_TARGET_CHRONOLOGY_NOT_EXPLICIT",
+        "COMPLETE_BASELINE_LABEL_PROTOCOL_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0202",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0202",
+      "supersedes": "W0202.0002.json",
+      "work_id": "arxiv:2605.11026"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0254"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0203.0001.json",
+          "sha256": "6a93e662eb5c4ee7b031bda3478887275435aaadd68576a956e5cc8166a7ec05"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0203.0002.json",
+          "sha256": "9426b0fd3df3cd680cc208300b2677742e7fe42780cf21208d1595820a58e0f2"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0203.0003.json",
+          "sha256": "49947446ba4bbccb2633da94350a44ebb9094682de9e1c5e705b8e0e4a333487"
+        }
+      ],
+      "member_ids": [
+        "M0254"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0203.0003.json",
+      "record_revision": 3,
+      "record_sha256": "49947446ba4bbccb2633da94350a44ebb9094682de9e1c5e705b8e0e4a333487",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_REFUSAL_SCOPE",
+        "TARGET_GENERATION_REQUIRED"
+      ],
+      "request_id": "B1-REQ-W0203",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0203",
+      "supersedes": "W0203.0002.json",
+      "work_id": "arxiv:2605.11217"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0255"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0204.0001.json",
+          "sha256": "2e0352e3e94eca036ca92b22f4be2cdace2bfdbdb99899938c3019f4ae743d9a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0204.0002.json",
+          "sha256": "e3a57662d8abd9f3a09395c5d7adb58c9adcc2d9f0109108bb8767332879fe5b"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0204.0003.json",
+          "sha256": "87e7d0c79676eaa6c533ee22a5f4c827cfc9fc363e53243dcbd5248da3e666cf"
+        }
+      ],
+      "member_ids": [
+        "M0255"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0204.0003.json",
+      "record_revision": 3,
+      "record_sha256": "87e7d0c79676eaa6c533ee22a5f4c827cfc9fc363e53243dcbd5248da3e666cf",
+      "remaining_fact_codes": [
+        "BENIGN_INPUT_FUZZING_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "EXECUTION_TRACES_REQUIRED"
+      ],
+      "request_id": "B1-REQ-W0204",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0204",
+      "supersedes": "W0204.0002.json",
+      "work_id": "arxiv:2605.13044"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0256"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0205.0001.json",
+          "sha256": "22bfc6353f1c12946315fd1b5c417dd42008d6990fd756afcf6f02314cd93afd"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0205.0002.json",
+          "sha256": "c9af3ea25f54707faa17bc6685c1bbab5a9f4667dd2531ea3360506b6c5d294e"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0205.0003.json",
+          "sha256": "5083bce8fa10ddf9a641a827459c22150064c86ca876600aab7fc1c151f95204"
+        }
+      ],
+      "member_ids": [
+        "M0256"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0205.0003.json",
+      "record_revision": 3,
+      "record_sha256": "5083bce8fa10ddf9a641a827459c22150064c86ca876600aab7fc1c151f95204",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "EVENT_AND_BASELINE_PROTOCOL_BOUNDARY",
+        "EVENT_TRIAGE_AND_BASELINE_CHRONOLOGY_NOT_ESTABLISHED"
+      ],
+      "request_id": "B1-REQ-W0205",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0205",
+      "supersedes": "W0205.0002.json",
+      "work_id": "arxiv:2605.17380"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0257"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0206.0001.json",
+          "sha256": "d6f69653271270368f57f22eafe96c0c07c559f698e8f58371be577a058d3f6a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0206.0002.json",
+          "sha256": "44a0d97a2d18531e312484fe5c4d1fa1ee27c7a79c766d756ad391fe9f06fddf"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0206.0003.json",
+          "sha256": "2f27409debc20224096737d14a3823997ed7039f17a1ace7bf0c157adb351336"
+        }
+      ],
+      "member_ids": [
+        "M0257"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0206.0003.json",
+      "record_revision": 3,
+      "record_sha256": "2f27409debc20224096737d14a3823997ed7039f17a1ace7bf0c157adb351336",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "STANDALONE_EMAIL_CLASSIFIER_WITHOUT_TARGET_CHRONOLOGY"
+      ],
+      "request_id": "B1-REQ-W0206",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0206",
+      "supersedes": "W0206.0002.json",
+      "work_id": "arxiv:2605.17634"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0258"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0207.0001.json",
+          "sha256": "2503a2aeddad6719da09f53172533205868187bcc2f3cfc0e7ff6cf6a645446a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0207.0002.json",
+          "sha256": "f4505b494ec22ce6178119934c2cd2925e87c51d444bea6971d7d237745a6f45"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0207.0003.json",
+          "sha256": "0e09349dd2e926e348d3c2fd6c37e438cd37ac91511fd57e77d5bb7c06c2d48c"
+        }
+      ],
+      "member_ids": [
+        "M0258"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0207.0003.json",
+      "record_revision": 3,
+      "record_sha256": "0e09349dd2e926e348d3c2fd6c37e438cd37ac91511fd57e77d5bb7c06c2d48c",
+      "remaining_fact_codes": [
+        "DISCLOSURE_LABEL_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "MEMORY_CONTAMINATION_RISK_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0207",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0207",
+      "supersedes": "W0207.0002.json",
+      "work_id": "arxiv:2605.17830"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0259"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0208.0001.json",
+          "sha256": "ebf294048ea1fb53e8296d90764c1a728b6670afbc3c09448cf4f5affcd885c3"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0208.0002.json",
+          "sha256": "ef32b5f4fb90c4607b151bcf438780c96935daad871602f4c50c8bd41af417df"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0208.0003.json",
+          "sha256": "c0a086237c0662eac55146d9be20977787d12ad48d5bb4d88109fa6d686f7897"
+        }
+      ],
+      "member_ids": [
+        "M0259"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0208.0003.json",
+      "record_revision": 3,
+      "record_sha256": "c0a086237c0662eac55146d9be20977787d12ad48d5bb4d88109fa6d686f7897",
+      "remaining_fact_codes": [],
+      "request_id": "B1-REQ-W0208",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 3,
+      "review_id": "W0208",
+      "supersedes": "W0208.0002.json",
+      "work_id": "arxiv:2605.18918"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0260"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0209.0001.json",
+          "sha256": "aa95cef7cdd861137ed0fe72f435a31a70d83a9c764d62ec18882b7491a9e398"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0209.0002.json",
+          "sha256": "405ea5acd755f59821ad76fb1ee395fbcebb43050d318b056165222620bf16f4"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0209.0003.json",
+          "sha256": "c61230e3d1782a00f311cea86fa8e3e93c0c08aceb07acb746061164fd46731f"
+        }
+      ],
+      "member_ids": [
+        "M0260"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0209.0003.json",
+      "record_revision": 3,
+      "record_sha256": "c61230e3d1782a00f311cea86fa8e3e93c0c08aceb07acb746061164fd46731f",
+      "remaining_fact_codes": [
+        "DISTINCT_TARGET_CHRONOLOGY_NOT_EXPLICIT",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "MULTICATEGORY_REPRESENTATION_PROTOCOL"
+      ],
+      "request_id": "B1-REQ-W0209",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0209",
+      "supersedes": "W0209.0002.json",
+      "work_id": "arxiv:2605.19159"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0261"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0210.0001.json",
+          "sha256": "165d8ba16b90b82e323fc293b14ff0d0749d5d3a999cdb473d209d5a342c6dc9"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0210.0002.json",
+          "sha256": "4ff5c19f575bb16275d618d1dc2e47675e95c3511e5f63c4613a8d5a0014e40f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0210.0003.json",
+          "sha256": "7ffdbdfaa50f963f42610362883051a321d5112b9bc53d571c74ca2f744fd068"
+        }
+      ],
+      "member_ids": [
+        "M0261"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0210.0003.json",
+      "record_revision": 3,
+      "record_sha256": "7ffdbdfaa50f963f42610362883051a321d5112b9bc53d571c74ca2f744fd068",
+      "remaining_fact_codes": [
+        "CREDENTIAL_PROTOCOL_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "EXTERNAL_MONITOR_ASSUMED"
+      ],
+      "request_id": "B1-REQ-W0210",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0210",
+      "supersedes": "W0210.0002.json",
+      "work_id": "arxiv:2605.20704"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0262"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0211.0001.json",
+          "sha256": "d0cc8abe2a09b6c8e766d72d370b7ac96755f8aed035f3a5ba146c096ec47339"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0211.0002.json",
+          "sha256": "b1381b4554b57085ae26d0887dc224d59ff00a45b720113b4c5a9918afe85907"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0211.0003.json",
+          "sha256": "d38406b638f47035791f35843f60334bd31fc1853ad8a0245033c4d66f0f86db"
+        }
+      ],
+      "member_ids": [
+        "M0262"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0211.0003.json",
+      "record_revision": 3,
+      "record_sha256": "d38406b638f47035791f35843f60334bd31fc1853ad8a0245033c4d66f0f86db",
+      "remaining_fact_codes": [
+        "DATASET_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0211",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 3,
+      "review_id": "W0211",
+      "supersedes": "W0211.0002.json",
+      "work_id": "arxiv:2605.23196"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0263"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0212.0001.json",
+          "sha256": "cb73378f0e713005023a12e78555455d015aff1f817132620a9912674c2637b4"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0212.0002.json",
+          "sha256": "8a2c0b3e31ba755c15c4e31b98dd0b9fd2c56a0d566f06ee0ad6c619b33b526a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0212.0003.json",
+          "sha256": "e2c7fd5d4b64994b94ed5e06d6bb944f07f6892188c91a9851e7030cd110e03e"
+        }
+      ],
+      "member_ids": [
+        "M0263"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0212.0003.json",
+      "record_revision": 3,
+      "record_sha256": "e2c7fd5d4b64994b94ed5e06d6bb944f07f6892188c91a9851e7030cd110e03e",
+      "remaining_fact_codes": [
+        "AUDIO_DEEPFAKE_SCOPE",
+        "AUDIO_LANGUAGE_NOT_EXPLICIT",
+        "INTERNAL_PROMPT_TUNING_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0212",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0212",
+      "supersedes": "W0212.0002.json",
+      "work_id": "arxiv:2605.23201"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0264"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0213.0001.json",
+          "sha256": "42b233bfdc717ad783a591101120bc98d32eddc72f41dd91f7856bf65346f18a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0213.0002.json",
+          "sha256": "4df4aeabace28fa0f0ebcc7cbb8b7be8fd3365e7b0b0ce2fa1afd2112f3d7073"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0213.0003.json",
+          "sha256": "633edb1025fb73b4244c3b83627dea1de06579b2ade13bb71d7e84f80319acbb"
+        }
+      ],
+      "member_ids": [
+        "M0264"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0213.0003.json",
+      "record_revision": 3,
+      "record_sha256": "633edb1025fb73b4244c3b83627dea1de06579b2ade13bb71d7e84f80319acbb",
+      "remaining_fact_codes": [
+        "ANALYST_OUTPUT_CLASSIFICATION_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "SECURITY_EVENT_LABEL_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0213",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0213",
+      "supersedes": "W0213.0002.json",
+      "work_id": "arxiv:2605.24421"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0265"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0214.0001.json",
+          "sha256": "58e705964d2be3ba11ee42da68d067115b4c44040788e354e6613dbbb20281a6"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0214.0002.json",
+          "sha256": "aff93e0a2ea4892032d1eebda5fa9a80346c4119fb330f654f27cf1b00528a27"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0214.0003.json",
+          "sha256": "6ef39a08ebcf045fb119c9af64106901b4cca871c1d97b772aa7aac5615c74d1"
+        }
+      ],
+      "member_ids": [
+        "M0265"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0214.0003.json",
+      "record_revision": 3,
+      "record_sha256": "6ef39a08ebcf045fb119c9af64106901b4cca871c1d97b772aa7aac5615c74d1",
+      "remaining_fact_codes": [
+        "AGENT_REASONING_AND_ACTION_GRAPH_REQUIRED",
+        "BASELINE_BINARY_PROTOCOL_NOT_EXPLICIT",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0214",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0214",
+      "supersedes": "W0214.0002.json",
+      "work_id": "arxiv:2605.26497"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0266"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0215.0001.json",
+          "sha256": "35d37009c60832437e84bc7eff3e54b19abf1f989c9131b6fff6e58968d37d31"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0215.0002.json",
+          "sha256": "03d578af76bf3a73019dfc480cf9f3d828be4d97907611b9e867714bcd655e67"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0215.0003.json",
+          "sha256": "65736f8fb93498313a27d19a2bc25b48ff44b55406d0ff7b8fa68c383a2b4f1d"
+        }
+      ],
+      "member_ids": [
+        "M0266"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0215.0003.json",
+      "record_revision": 3,
+      "record_sha256": "65736f8fb93498313a27d19a2bc25b48ff44b55406d0ff7b8fa68c383a2b4f1d",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "STANDALONE_DETECTOR_WITHOUT_TARGET_CHRONOLOGY"
+      ],
+      "request_id": "B1-REQ-W0215",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0215",
+      "supersedes": "W0215.0002.json",
+      "work_id": "arxiv:2605.26595"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0267"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0216.0001.json",
+          "sha256": "529f6ef9220bb5e0f6fa912fba51f9c32e6ae78d2818d83c4d56cdeb0c8f6ebb"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0216.0002.json",
+          "sha256": "39f98c84bda891728b9f0b3788ab4c827f066e3a0adde58c83f3fc9b6c9b186e"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0216.0003.json",
+          "sha256": "91ef00dfeb7d879e7f068b959e8c7ba4715bf36ef0f9793ecd6829d1c7c0c029"
+        }
+      ],
+      "member_ids": [
+        "M0267"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0216.0003.json",
+      "record_revision": 3,
+      "record_sha256": "91ef00dfeb7d879e7f068b959e8c7ba4715bf36ef0f9793ecd6829d1c7c0c029",
+      "remaining_fact_codes": [
+        "DISTINCT_TARGET_CHRONOLOGY_NOT_EXPLICIT",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0216",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0216",
+      "supersedes": "W0216.0002.json",
+      "work_id": "arxiv:2605.26999"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0268"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0217.0001.json",
+          "sha256": "065800bb3d2f7d7f218e527827c60fa9b4bcedfb9d845e21cd9666f8d2d4c954"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0217.0002.json",
+          "sha256": "cf89dfaa55792978b6b07835a6257ed4fd1749ea5a58707821091454a777c20d"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0217.0003.json",
+          "sha256": "315ce0f29447afc99498c1c9c87976edd130f6a933f6ae8a477ceba7638033b9"
+        }
+      ],
+      "member_ids": [
+        "M0268"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0217.0003.json",
+      "record_revision": 3,
+      "record_sha256": "315ce0f29447afc99498c1c9c87976edd130f6a933f6ae8a477ceba7638033b9",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "JAILBREAK_AND_TOXIC_PROMPT_POOL_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0217",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0217",
+      "supersedes": "W0217.0002.json",
+      "work_id": "arxiv:2605.27823"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0269"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0218.0001.json",
+          "sha256": "6bb406f78bfd44ecf89284a93f9e630602541c7addf8de01cb1f5426dec52384"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0218.0002.json",
+          "sha256": "2902e3adbfdebf3fa873388d4eab223faa9e4b73f28631e73b91b42139663f14"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0218.0003.json",
+          "sha256": "802ece9c7884be29303046da76501c540e5c2aa1c5fb460b9b875dd430765b1c"
+        }
+      ],
+      "member_ids": [
+        "M0269"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0218.0003.json",
+      "record_revision": 3,
+      "record_sha256": "802ece9c7884be29303046da76501c540e5c2aa1c5fb460b9b875dd430765b1c",
+      "remaining_fact_codes": [
+        "PRODUCT_RANKING_ATTACK_SCOPE",
+        "STANDALONE_GUARD_WITHOUT_TARGET_CHRONOLOGY",
+        "US_LOCALE_INDIRECT_LANGUAGE_EVIDENCE_ONLY"
+      ],
+      "request_id": "B1-REQ-W0218",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0218",
+      "supersedes": "W0218.0002.json",
+      "work_id": "arxiv:2605.28017"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0270"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0219.0001.json",
+          "sha256": "d38a3dd71043d93cfd1ad0a81f53a720c557b40021199f1b1104e0ceb7633511"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0219.0002.json",
+          "sha256": "1510ac0fbec6d952f80cb7e2e461c946088ec2940da178e283dcf82f3c30bfa8"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0219.0003.json",
+          "sha256": "0f54c5d80647d2166b58d325fdd827bbc99214e37d890c79b5bdb069987aeb02"
+        }
+      ],
+      "member_ids": [
+        "M0270"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0219.0003.json",
+      "record_revision": 3,
+      "record_sha256": "0f54c5d80647d2166b58d325fdd827bbc99214e37d890c79b5bdb069987aeb02",
+      "remaining_fact_codes": [
+        "RESUME_DETECTION_WITHOUT_DISTINCT_TARGET_CHRONOLOGY",
+        "RESUME_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0219",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0219",
+      "supersedes": "W0219.0002.json",
+      "work_id": "arxiv:2605.28999"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0271"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0220.0001.json",
+          "sha256": "af17bd0f13d73456e76e3976ac98d40fffb21d2145faab220e977c01a0da5946"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0220.0002.json",
+          "sha256": "e97a2e10dbb32fe9488bdd9bc268ec26304625876943525dfc8bb71c70585bde"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0220.0003.json",
+          "sha256": "61d1d6b2251be6cbb585f0790238f6c7b4fe55fedd9ef168918011d55120f9e3"
+        }
+      ],
+      "member_ids": [
+        "M0271"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0220.0003.json",
+      "record_revision": 3,
+      "record_sha256": "61d1d6b2251be6cbb585f0790238f6c7b4fe55fedd9ef168918011d55120f9e3",
+      "remaining_fact_codes": [
+        "AUXILIARY_LABEL_GENERATION_WITHOUT_DISTINCT_TARGET_CHRONOLOGY",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0220",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0220",
+      "supersedes": "W0220.0002.json",
+      "work_id": "arxiv:2605.30189"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0272"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0221.0001.json",
+          "sha256": "a4ca6a34f37ffe8335fa9764b51c4e8aee1a933526c3155ec59da4584d89601c"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0221.0002.json",
+          "sha256": "5a9400b9582c1032aaaee07ec0c61cabd80dda9594d56b4b6518e5e54626b6b9"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0221.0003.json",
+          "sha256": "b65b03dec05903e9cc3ce639fe77672b8361268d78538379fbbea0d2e5953d8f"
+        }
+      ],
+      "member_ids": [
+        "M0272"
+      ],
+      "new_fact_count": 2,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0221.0003.json",
+      "record_revision": 3,
+      "record_sha256": "b65b03dec05903e9cc3ce639fe77672b8361268d78538379fbbea0d2e5953d8f",
+      "remaining_fact_codes": [
+        "ATTACK_CONSTRUCTION_SCOPE",
+        "ATTACK_GENERATION_RESPONSE_DEPENDENCE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "RESPONSE_CONDITIONED_ATTACK_SEARCH_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0221",
+      "restriction_state": "PDF_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 0,
+      "review_id": "W0221",
+      "supersedes": "W0221.0002.json",
+      "work_id": "arxiv:2605.30667"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0273"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0222.0001.json",
+          "sha256": "92e09b375db4103ed70f6a3ff53abfe035dd9899ab3a207ca85ba861fa7402dc"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0222.0002.json",
+          "sha256": "35316d17f3dca8f0ff847d340b02337ea2512f6b3d400169b2314ef28a587f8e"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0222.0003.json",
+          "sha256": "d6c32e91a53a66383e5e762f2fdc9257a2b50dd0ab19c6456e2712d545acf393"
+        }
+      ],
+      "member_ids": [
+        "M0273"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0222.0003.json",
+      "record_revision": 3,
+      "record_sha256": "d6c32e91a53a66383e5e762f2fdc9257a2b50dd0ab19c6456e2712d545acf393",
+      "remaining_fact_codes": [
+        "PROGRAM_AND_STRING_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0222",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 3,
+      "review_id": "W0222",
+      "supersedes": "W0222.0002.json",
+      "work_id": "arxiv:2605.30677"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0274"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0223.0001.json",
+          "sha256": "e1b61b5e139f44a98e7e1b2b6fd5d7fd697e5beeaaa4d9752bfa8b78913bd0e5"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0223.0002.json",
+          "sha256": "56e311017c698de1fa7f202bf523ed05fa4bd0f68453edd170bbb7a8375b3506"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0223.0003.json",
+          "sha256": "639c28c9dd1dc8d3c829416e11d5fc42231a118a6e62d8538238f3a843577883"
+        }
+      ],
+      "member_ids": [
+        "M0274"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0223.0003.json",
+      "record_revision": 3,
+      "record_sha256": "639c28c9dd1dc8d3c829416e11d5fc42231a118a6e62d8538238f3a843577883",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0223",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0223",
+      "supersedes": "W0223.0002.json",
+      "work_id": "arxiv:2605.30837"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0276"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0225.0001.json",
+          "sha256": "b0db316ef69c773befaf5e9386c7976a77adc297ee4fbb595a50fc027f0262dc"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0225.0002.json",
+          "sha256": "fb6b0992a707734c924e6c7ac43e95d94c8b38c3319d32a8315dc7cdcab38f12"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0225.0003.json",
+          "sha256": "1f2471df1796a531ac92427c6822caa268b72df0bc1d4e78df9332a7d954a861"
+        }
+      ],
+      "member_ids": [
+        "M0276"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0225.0003.json",
+      "record_revision": 3,
+      "record_sha256": "1f2471df1796a531ac92427c6822caa268b72df0bc1d4e78df9332a7d954a861",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "INLINE_TOOL_RESPONSE_GUARD_WITHOUT_METHOD_CHRONOLOGY"
+      ],
+      "request_id": "B1-REQ-W0225",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0225",
+      "supersedes": "W0225.0002.json",
+      "work_id": "arxiv:2606.02240"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0277"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0226.0001.json",
+          "sha256": "2a5c8e2e152567a264c222aabeb27a7e6ed9c3bbc690684a66f133f4c5f78f15"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0226.0002.json",
+          "sha256": "a22a0f8857eb7fb63327195289a207a712e761b60e7ce10cf9dfeaf6fa936d38"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0226.0003.json",
+          "sha256": "5bbdb3d941f32d1cf6c4856c3a8d84dc5dfdf9c4d7110e9154a9950324accabb"
+        }
+      ],
+      "member_ids": [
+        "M0277"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0226.0003.json",
+      "record_revision": 3,
+      "record_sha256": "5bbdb3d941f32d1cf6c4856c3a8d84dc5dfdf9c4d7110e9154a9950324accabb",
+      "remaining_fact_codes": [
+        "BLACK_BOX_DETECTOR_WITHOUT_TARGET_CHRONOLOGY",
+        "PUBLIC_MULTILINGUAL_SOURCES_WITHOUT_ENGLISH_LINK"
+      ],
+      "request_id": "B1-REQ-W0226",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0226",
+      "supersedes": "W0226.0002.json",
+      "work_id": "arxiv:2606.02959"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0278"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0227.0001.json",
+          "sha256": "6c9a03df2d59b40e9c4385229344f1779033701fd0459abcbb896e84ed97ab4a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0227.0002.json",
+          "sha256": "22c259b42dd29a981524da7205bb6f9110c36e51010162b7630168b2e0fb7999"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0227.0003.json",
+          "sha256": "c8da3525e76e418a8325cda41e9a3b31f88f72dc8748ea748c9c7fec149c73a8"
+        }
+      ],
+      "member_ids": [
+        "M0278"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0227.0003.json",
+      "record_revision": 3,
+      "record_sha256": "c8da3525e76e418a8325cda41e9a3b31f88f72dc8748ea748c9c7fec149c73a8",
+      "remaining_fact_codes": [
+        "CREDENTIAL_ACCESS_LABEL_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0227",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0227",
+      "supersedes": "W0227.0002.json",
+      "work_id": "arxiv:2606.04141"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0279"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0228.0001.json",
+          "sha256": "3c37e32d4a7154267909a44a3b1a76c77ed2237215a7bb65d71c3f9946d714cd"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0228.0002.json",
+          "sha256": "f680e88ed2bc326cdaa0d7fe934b8f5a34617540d3d784f0701894ab1b6e7ace"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0228.0003.json",
+          "sha256": "1f6a4ae6e368fdbb3eb9e79d6b016b4d6cdecf6af8f11e3948f6242e03caa4a0"
+        }
+      ],
+      "member_ids": [
+        "M0279"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0228.0003.json",
+      "record_revision": 3,
+      "record_sha256": "1f6a4ae6e368fdbb3eb9e79d6b016b4d6cdecf6af8f11e3948f6242e03caa4a0",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "INPUT_CLASSIFICATION_WITHOUT_DISTINCT_TARGET_CHRONOLOGY"
+      ],
+      "request_id": "B1-REQ-W0228",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0228",
+      "supersedes": "W0228.0002.json",
+      "work_id": "arxiv:2606.04612"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0280"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0229.0001.json",
+          "sha256": "d0f1a97dd3f3018066564a71f120470ad930c60754aef47a179365b0afe4fd6f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0229.0002.json",
+          "sha256": "604914e30af1ae146c7c34adcba56c700bb4d6c76f9b40046439eeace41621fb"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0229.0003.json",
+          "sha256": "c109755b310ca3869853ee22d16e416c4a0cbd65dd2b506ecaa30f48e86bdedf"
+        }
+      ],
+      "member_ids": [
+        "M0280"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0229.0003.json",
+      "record_revision": 3,
+      "record_sha256": "c109755b310ca3869853ee22d16e416c4a0cbd65dd2b506ecaa30f48e86bdedf",
+      "remaining_fact_codes": [
+        "MIXED_TASK_DATA_DESCRIPTION_REQUIRES_SEPARABLE_CONTEXT",
+        "MULTILINGUAL_TOKENIZER_NOT_LANGUAGE_EVIDENCE",
+        "REQUEST_PATH_WITHOUT_DISTINCT_TARGET_CHRONOLOGY"
+      ],
+      "request_id": "B1-REQ-W0229",
+      "restriction_state": "PDF_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 0,
+      "review_id": "W0229",
+      "supersedes": "W0229.0002.json",
+      "work_id": "arxiv:2606.05566"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0281"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0230.0001.json",
+          "sha256": "d2e74613ce689ddbbe1f900b98bf74268daa8d2ef5488bcaa9a63cf12aaf41b7"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0230.0002.json",
+          "sha256": "db5f0c92d93678b7ffbedecf7d2828d413e5cb7ae381661b290487eac0a82798"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0230.0003.json",
+          "sha256": "03d2190fef85a48b1bca51517a7afdfc26563a20b358ac3a2291f18125421bc7"
+        }
+      ],
+      "member_ids": [
+        "M0281"
+      ],
+      "new_fact_count": 1,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0230.0003.json",
+      "record_revision": 3,
+      "record_sha256": "03d2190fef85a48b1bca51517a7afdfc26563a20b358ac3a2291f18125421bc7",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "SKILL_SCAN_WITHOUT_DISTINCT_TARGET_CHRONOLOGY"
+      ],
+      "request_id": "B1-REQ-W0230",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0230",
+      "supersedes": "W0230.0002.json",
+      "work_id": "arxiv:2606.07131"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0282"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0231.0001.json",
+          "sha256": "b3a7cbdda8f1a0f3224e72c373ba3eda8851128d4080ed58a49910705ae3572f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0231.0002.json",
+          "sha256": "5e627c8c70ba1a4e6fb8432d4aeab21501588cc905ef3bce8c161bc2cfb7ab19"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0231.0003.json",
+          "sha256": "a67af7db46e988d9c4a38cee594cd3af67b64dfe65228c1254c84c90cb195d43"
+        }
+      ],
+      "member_ids": [
+        "M0282"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0231.0003.json",
+      "record_revision": 3,
+      "record_sha256": "a67af7db46e988d9c4a38cee594cd3af67b64dfe65228c1254c84c90cb195d43",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "REVIEW_INFRASTRUCTURE_EVALUATION_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0231",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0231",
+      "supersedes": "W0231.0002.json",
+      "work_id": "arxiv:2606.07683"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0283"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0232.0001.json",
+          "sha256": "4107d6da9b3cc2693ef853f3de1751dc2627469a6c866bf0de0097b85e1ffc77"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0232.0002.json",
+          "sha256": "a8e3769f570c37f87e3f71049795e6a5c187fe868a6a50e5a6f1db6b23e2de08"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0232.0003.json",
+          "sha256": "b81ea1132183c3699fad577caf59cd54a2ebebbe07f0bed1d7932864d5e18ce3"
+        }
+      ],
+      "member_ids": [
+        "M0283"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0232.0003.json",
+      "record_revision": 3,
+      "record_sha256": "b81ea1132183c3699fad577caf59cd54a2ebebbe07f0bed1d7932864d5e18ce3",
+      "remaining_fact_codes": [
+        "AGENT_ACTION_OR_RESPONSE_JUDGMENT_REQUIRED",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "TOOL_ERROR_ATTACK_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0232",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0232",
+      "supersedes": "W0232.0002.json",
+      "work_id": "arxiv:2606.07992"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0284"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0233.0001.json",
+          "sha256": "c57c05025b10b7f287e2512a013e31db00211d14950cd57656599221edfc52f8"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0233.0002.json",
+          "sha256": "0c9e20efde19df220858bdaf3ab7d85149a5b430ffac3023c4f821765af9a930"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0233.0003.json",
+          "sha256": "707e423ea172f95d82ccedbb1470a8782a9f4dee98b065bba4c764e741b02d9b"
+        }
+      ],
+      "member_ids": [
+        "M0284"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0233.0003.json",
+      "record_revision": 3,
+      "record_sha256": "707e423ea172f95d82ccedbb1470a8782a9f4dee98b065bba4c764e741b02d9b",
+      "remaining_fact_codes": [
+        "RECONSTRUCTED_REPORT_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0233",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0233",
+      "supersedes": "W0233.0002.json",
+      "work_id": "arxiv:2606.08403"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0285"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0234.0001.json",
+          "sha256": "470af809649e05a58187ac94ea09963e26af0447647c280228411dcd0feeae20"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0234.0002.json",
+          "sha256": "2394b78414513ef254fb6c9eedd505b7e379629503a2e8de9f39c1fa28b87bb0"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0234.0003.json",
+          "sha256": "3737da12339cd162a630032e6de642cb24c25d963e0b19a83b162f51b5fb96b0"
+        }
+      ],
+      "member_ids": [
+        "M0285"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0234.0003.json",
+      "record_revision": 3,
+      "record_sha256": "3737da12339cd162a630032e6de642cb24c25d963e0b19a83b162f51b5fb96b0",
+      "remaining_fact_codes": [
+        "CANDIDATE_CONTEXT_CONTROL_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_CANDIDATE_RESPONSES_REQUIRED"
+      ],
+      "request_id": "B1-REQ-W0234",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0234",
+      "supersedes": "W0234.0002.json",
+      "work_id": "arxiv:2606.10322"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0286"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0235.0001.json",
+          "sha256": "3119e17ae28aaddb2ff7d998578eed7954676730c58ee358724b23b0ef0f39bf"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0235.0002.json",
+          "sha256": "80ae82dc9d2348b2cad9b73c1695d66b0641bf4ce87e2ca1c0e9675a535694c3"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0235.0003.json",
+          "sha256": "9f495245dd73e38ccfba49e01bb2af084ab090882a3ec82ef1212236d820d0dc"
+        }
+      ],
+      "member_ids": [
+        "M0286"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0235.0003.json",
+      "record_revision": 3,
+      "record_sha256": "9f495245dd73e38ccfba49e01bb2af084ab090882a3ec82ef1212236d820d0dc",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "MULTICATEGORY_SKILL_PACKAGE_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0235",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0235",
+      "supersedes": "W0235.0002.json",
+      "work_id": "arxiv:2606.14154"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0287"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0236.0001.json",
+          "sha256": "9600672acbe0f5ec97156b9fdade7adfc6319c2f15f9b3d1cdfdd358d3358e6f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0236.0002.json",
+          "sha256": "064c959d1246a96c35c5387f298fd0123a8d1ddbeb2b17fa9cab4b7378bbd7d3"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0236.0003.json",
+          "sha256": "2465fe47ab1e895a6fee9297461ea664daab3a90ab3359338a536ce1c561379a"
+        }
+      ],
+      "member_ids": [
+        "M0287"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0236.0003.json",
+      "record_revision": 3,
+      "record_sha256": "2465fe47ab1e895a6fee9297461ea664daab3a90ab3359338a536ce1c561379a",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_ACTION_REQUIRED",
+        "PROPOSED_ACTION_VERDICT_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0236",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0236",
+      "supersedes": "W0236.0002.json",
+      "work_id": "arxiv:2606.14517"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0288"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0237.0001.json",
+          "sha256": "9e178b4a3a53d488c99dfacac760933d92f6cdea54387236c00c7fb72d89c034"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0237.0002.json",
+          "sha256": "4496ced038b3667d01b86841931cbba08187ea2a0421e055d01e4c727564e511"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0237.0003.json",
+          "sha256": "460aeffaa6d86e145096bd424f312d7f1778c2f6ebad229a298168c3c4041ab7"
+        }
+      ],
+      "member_ids": [
+        "M0288"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0237.0003.json",
+      "record_revision": 3,
+      "record_sha256": "460aeffaa6d86e145096bd424f312d7f1778c2f6ebad229a298168c3c4041ab7",
+      "remaining_fact_codes": [
+        "ACCESS_AUTHORIZATION_LABEL_SCOPE",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0237",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0237",
+      "supersedes": "W0237.0002.json",
+      "work_id": "arxiv:2606.15609"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0289"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0238.0001.json",
+          "sha256": "e9da0741c55d904eb919aa49645089a29f12d97b950bc9b20dda8dc3d6b59ce6"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0238.0002.json",
+          "sha256": "78e3fd488865a73ef85f317392e24fa02893504131623e0e744022a1197bc4ec"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0238.0003.json",
+          "sha256": "8f097a3edd0e9980a801460ee246416f4de3db427fc21b30c63436f0d51aa9a0"
+        }
+      ],
+      "member_ids": [
+        "M0289"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0238.0003.json",
+      "record_revision": 3,
+      "record_sha256": "8f097a3edd0e9980a801460ee246416f4de3db427fc21b30c63436f0d51aa9a0",
+      "remaining_fact_codes": [
+        "ARTIFACT_REVIEW_WITHOUT_DISTINCT_TARGET_CHRONOLOGY",
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "MULTICATEGORY_SKILL_ARTIFACT_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0238",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0238",
+      "supersedes": "W0238.0002.json",
+      "work_id": "arxiv:2606.15899"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0290"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0239.0001.json",
+          "sha256": "fffbdc8d7f4abf47875796ca73adc17519d5f299f84f5225e7b1931809e3e644"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0239.0002.json",
+          "sha256": "97ca9fbf5b58bf65662dda8151a1a8bbbc5b23a797c9da0ad489f6a876f97739"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0239.0003.json",
+          "sha256": "7a9f71b02b154d37df284ed2d903b09c62c83acf3ac5ceb75967b1aaa31d0311"
+        }
+      ],
+      "member_ids": [
+        "M0290"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0239.0003.json",
+      "record_revision": 3,
+      "record_sha256": "7a9f71b02b154d37df284ed2d903b09c62c83acf3ac5ceb75967b1aaa31d0311",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "INPUT_GUARD_METHOD_ADJOINS_PROTECTED_FINDINGS",
+        "SAFETY_CLASSIFIER_AND_INPUT_GUARD_METHOD_ADJOINS_FINDINGS"
+      ],
+      "request_id": "B1-REQ-W0239",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0239",
+      "supersedes": "W0239.0002.json",
+      "work_id": "arxiv:2606.16242"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0291"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0240.0001.json",
+          "sha256": "282684c0272ef4c1d5a003d62886c44a56cd6bfa1004b27d2e571a581ed3c46f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0240.0002.json",
+          "sha256": "47edc83f8f4b97b93575e3c51a77f378df18440f033ba01820b037e25567ce4f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0240.0003.json",
+          "sha256": "a38bfe1139e93049994af3c7964a0eb98442fb844ea0bf7e09f9d4930bf1e365"
+        }
+      ],
+      "member_ids": [
+        "M0291"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0240.0003.json",
+      "record_revision": 3,
+      "record_sha256": "a38bfe1139e93049994af3c7964a0eb98442fb844ea0bf7e09f9d4930bf1e365",
+      "remaining_fact_codes": [
+        "DIRECTIVENESS_AND_SAFETY_TAXONOMY_SCOPE",
+        "DOCUMENT_SOURCE_WITHOUT_EXPLICIT_LANGUAGE_LINK",
+        "SANITIZATION_WITHOUT_DISTINCT_TARGET_CHRONOLOGY"
+      ],
+      "request_id": "B1-REQ-W0240",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0240",
+      "supersedes": "W0240.0002.json",
+      "work_id": "arxiv:2606.17467"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0292"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0241.0001.json",
+          "sha256": "87d68050776e666732935ee25d7be93aa91669249c440556c016793a9bb5cf54"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0241.0002.json",
+          "sha256": "f03c8cb1fb2ed419194fa4115030f0b3476992cca57378155498e1de04e9ba4e"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0241.0003.json",
+          "sha256": "b80b0a7647e678a7133d66f7a447991c7f66c4733422e26cef11ec5a65448fb4"
+        }
+      ],
+      "member_ids": [
+        "M0292"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0241.0003.json",
+      "record_revision": 3,
+      "record_sha256": "b80b0a7647e678a7133d66f7a447991c7f66c4733422e26cef11ec5a65448fb4",
+      "remaining_fact_codes": [
+        "CODE_AND_COMMENT_LANGUAGE_NOT_EXPLICIT",
+        "CODE_CONTEXT_ATTACK_FAMILY_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0241",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 2,
+      "review_id": "W0241",
+      "supersedes": "W0241.0002.json",
+      "work_id": "arxiv:2606.19235"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0293"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0242.0001.json",
+          "sha256": "cd701aff1f1ad4db6788e4fc94ebfedaed5cb70ea2997ec797df0c439785765a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0242.0002.json",
+          "sha256": "5bf3b2cf2d63e909acbf69cceca5a2ccb16ef5327bfbec3f0aa3a145e768c3a0"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0242.0003.json",
+          "sha256": "a3d5a46c67880a229d1e7716a6f404d9bdf309fc8b6ae6db24e08d353001edc7"
+        }
+      ],
+      "member_ids": [
+        "M0293"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0242.0003.json",
+      "record_revision": 3,
+      "record_sha256": "a3d5a46c67880a229d1e7716a6f404d9bdf309fc8b6ae6db24e08d353001edc7",
+      "remaining_fact_codes": [
+        "ENCODER_NAME_WITHOUT_EVALUATION_LANGUAGE_PROOF"
+      ],
+      "request_id": "B1-REQ-W0242",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 3,
+      "review_id": "W0242",
+      "supersedes": "W0242.0002.json",
+      "work_id": "arxiv:2606.19660"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0294"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0243.0001.json",
+          "sha256": "50cefaff4e8073c56ceee84bff1ca4d3a3c6920810c2db8510b86497d0cccd07"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0243.0002.json",
+          "sha256": "f39637f7bc623a46b58748c9f060fb7ab0083301304517d81ac3addf38e4846a"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0243.0003.json",
+          "sha256": "2522e95774e5cc3921999f453e805b86f2d73d2f38dd019df1ff3841a6910a62"
+        }
+      ],
+      "member_ids": [
+        "M0294"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0243.0003.json",
+      "record_revision": 3,
+      "record_sha256": "2522e95774e5cc3921999f453e805b86f2d73d2f38dd019df1ff3841a6910a62",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "PROMPT_RESPONSE_SAFETY_LABEL_SCOPE",
+        "TARGET_RESPONSE_USED"
+      ],
+      "request_id": "B1-REQ-W0243",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0243",
+      "supersedes": "W0243.0002.json",
+      "work_id": "arxiv:2606.20470"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0295"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0244.0001.json",
+          "sha256": "ffbdd38f4a0166eba75627b82da817103d87d4da079b73ad10633162f8f2812f"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0244.0002.json",
+          "sha256": "3e1a35b3df0fbe32cbf033059a060348fbbc4edbf9749c05e7808ef80cf753e9"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0244.0003.json",
+          "sha256": "1eb8a617b9f09ab530cd3b43217dc961fc8c709c811e6029d119e39d48c28226"
+        }
+      ],
+      "member_ids": [
+        "M0295"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0244.0003.json",
+      "record_revision": 3,
+      "record_sha256": "1eb8a617b9f09ab530cd3b43217dc961fc8c709c811e6029d119e39d48c28226",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_ACTION_JUDGMENT_REQUIRED",
+        "VISUAL_ACTION_ATTACK_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0244",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0244",
+      "supersedes": "W0244.0002.json",
+      "work_id": "arxiv:2606.20717"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0296"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0245.0001.json",
+          "sha256": "6697bcb8f09625bbdaa7a38e117ce6b6f812b1977593707b79ea3f8a911aa76b"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0245.0002.json",
+          "sha256": "aee8f76e5f8461f90d8fb6941a7dad153fb8d885df99218d2b6efd8d79ef8230"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0245.0003.json",
+          "sha256": "41445f00da414c52f69b097ae1d5b4d5b3ef15088d6bb3295dda8862f7c9f031"
+        }
+      ],
+      "member_ids": [
+        "M0296"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0245.0003.json",
+      "record_revision": 3,
+      "record_sha256": "41445f00da414c52f69b097ae1d5b4d5b3ef15088d6bb3295dda8862f7c9f031",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "EXECUTED_TOOL_EVENTS_INCLUDED",
+        "TYPED_EVENT_TRAJECTORY_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0245",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0245",
+      "supersedes": "W0245.0002.json",
+      "work_id": "arxiv:2606.20746"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0297"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0246.0001.json",
+          "sha256": "39b2be89631930dd3cb27ac2744122f0ab22d6b92e9d7b82aa12820004646355"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0246.0002.json",
+          "sha256": "f501827ea5758f37b352138013818e2d1067d54d78b7c256d1b000ca684f952d"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0246.0003.json",
+          "sha256": "b0addd5fbbfdd32dc0f9f6e22e2329aa07324af44273b43302a173e0a9fad1cf"
+        }
+      ],
+      "member_ids": [
+        "M0297"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0246.0003.json",
+      "record_revision": 3,
+      "record_sha256": "b0addd5fbbfdd32dc0f9f6e22e2329aa07324af44273b43302a173e0a9fad1cf",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT",
+        "GENERATED_ACTION_REQUIRED",
+        "TOOL_ACTION_VALIDATION_SCOPE"
+      ],
+      "request_id": "B1-REQ-W0246",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0246",
+      "supersedes": "W0246.0002.json",
+      "work_id": "arxiv:2606.20922"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0298"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0247.0001.json",
+          "sha256": "a0f49d4b6d3dc3c60a9160829fcc54499f1a92b38514a2e9d625cca6beeabb1c"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0247.0002.json",
+          "sha256": "c7ff204a19f54bf55fd03746f4eaf6303e5fa6f1d87315f121c36949b5c861d3"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0247.0003.json",
+          "sha256": "6b782d349dde72aeaf463907c84f038a2b1c83353bac31df22e9f08ba46f83c5"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0247.0004.json",
+          "sha256": "ee80c5ce9db272447cb7687cb5f3fea41876dd4e8157b32b04a8ff68b491bb63"
+        }
+      ],
+      "member_ids": [
+        "M0298"
+      ],
+      "new_fact_count": 3,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0247.0004.json",
+      "record_revision": 4,
+      "record_sha256": "ee80c5ce9db272447cb7687cb5f3fea41876dd4e8157b32b04a8ff68b491bb63",
+      "remaining_fact_codes": [
+        "EVALUATION_LANGUAGE_NOT_EXPLICIT"
+      ],
+      "request_id": "B1-REQ-W0247",
+      "restriction_state": "PDF_CONTEXT_CHECKED_FACTS_APPROVED",
+      "reused_evidence_count": 0,
+      "review_id": "W0247",
+      "supersedes": "W0247.0003.json",
+      "work_id": "arxiv:2606.22659"
+    },
+    {
+      "context_checked_member_ids": [
+        "M0299"
+      ],
+      "immutable_history": [
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0248.0001.json",
+          "sha256": "9e5b019c3525cb026389eef201dc245dfd970d423624670fd97f88fa024cf2ca"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0248.0002.json",
+          "sha256": "2f8e568a39392825bd88749c0d0038b380ddcca221e308e864dfe392191b784e"
+        },
+        {
+          "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0248.0003.json",
+          "sha256": "d8f582df88c775ea2a0646e1779806c5ddd36bee703933aa66168d7e85cd99b6"
+        }
+      ],
+      "member_ids": [
+        "M0299"
+      ],
+      "new_fact_count": 0,
+      "record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0248.0003.json",
+      "record_revision": 3,
+      "record_sha256": "d8f582df88c775ea2a0646e1779806c5ddd36bee703933aa66168d7e85cd99b6",
+      "remaining_fact_codes": [
+        "IMAGE_AND_QUESTION_LANGUAGE_NOT_EXPLICIT",
+        "IMAGE_CLASSIFIER_WITHOUT_DISTINCT_TARGET_CHRONOLOGY"
+      ],
+      "request_id": "B1-REQ-W0248",
+      "restriction_state": "TARGETED_CONTEXT_CHECKED_REUSED_OR_UNRESOLVED",
+      "reused_evidence_count": 1,
+      "review_id": "W0248",
+      "supersedes": "W0248.0002.json",
+      "work_id": "arxiv:2606.22779"
+    }
+  ],
+  "rendered_artifacts": [
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0148.method-page-0005.png",
+      "sha256": "a067086465335ded25de4fd863858f4c7494523833e46751990dfc9b9a923de9"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0197.method-page-0005.png",
+      "sha256": "af0cddafaabcf3129d2b06f03f9c21dd7c50c8b33b4fe8715fe68d211d060f55"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0197.method-page-0009.png",
+      "sha256": "667ab94d3dc53b45ac749b225f86320971de6656003d178dfc1efaa63c90193f"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0197.method-page-0010.png",
+      "sha256": "444d74dc64134cf5dacadc6738153087fa476d0c14d2c1bfdf1776268a7b9590"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0221.bibliographic-page-0001.png",
+      "sha256": "c083a29df83afda5b22f25a76c7b5e69ede8b54865ed759b7e925dd746444130"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0221.method-page-0002.png",
+      "sha256": "016b5dfd1d367ed26620b0ed56938601852d998fd55fc33fe49e91493a205919"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0221.method-page-0003.png",
+      "sha256": "538f1cc67b13abeef15f080046a402967555a83bf777b45d8337cf6a37a5395b"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0221.method-page-0005.png",
+      "sha256": "95515039c16ec57f88a2fc49d27e004680e5fa69425e361b3bcf9a4990fbc6cd"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0229.method-page-0006.png",
+      "sha256": "6ad8222ae303c5c89b74a87ca54263e61779216330a5d4de3b7014f4e82c0a5e"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0229.method-page-0007.png",
+      "sha256": "37f990e6a7b06931391e6b7a3b81c436e34b6159fcd275810304986f9d12eb91"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0247.method-page-0004.png",
+      "sha256": "353b19241db0495dee8eeb54e9154d6b3ee0306cd984cfc7f149b64bf02c5c02"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0247.method-page-0005.png",
+      "sha256": "99fba2d024f37e6efe784fa509fe9128b8f372024152a768270791cf6a94460d"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0247.method-page-0008.png",
+      "sha256": "c13af9261308f5581c07b43c88353e6919defc85d7a0d7c4c6b24b5e1571ea53"
+    }
+  ],
+  "role": "SOURCE_RESTRICTION_PROVIDER_CHECKER",
+  "sampling_performed": false,
+  "source_bindings_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-stage-a-20261017\\docs\\research\\fpr_reporting\\b1\\a04-provisional-recovery-v1-20261021\\SOURCE_BINDINGS.json",
+  "source_bindings_sha256": "4b201dade378fbef5aa56eb881e111f95211a8c12080c9e16c672ec0434a69a7",
+  "supersedes": {
+    "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\MANIFEST.0001.json",
+    "sha256": "dd859651a5f5ba514925664187a9ac46196381a9543484473c2078274b016a54"
+  },
+  "supporting_artifacts": [
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\INTAKE_ATTESTATION.0001.json",
+      "sha256": "15b53995e339f4ad0891fb4bdbddf8159b292b6135c490620cde6c30b2ae7509"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\SOURCE_BINDING_INTAKE.0001.json",
+      "sha256": "23fabbcbed3cb76b9ef9f7fa9644e65018420ec29e621553645e44df9c558311"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\W0221.IDENTITY_CHECK.0001.json",
+      "sha256": "8b1ade314f3ebb4d305fcd7764c9fc25a1a19365a7db97333f2afb7fca9c8f24"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\FINAL_REVISION_RECEIPT.0001.json",
+      "sha256": "49d80247f74add6a5703f04bfcaadb235950c5b3ee772f1c0e1c2d9039d048fc"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\ACTUAL_CHECKED_INPUTS.0001.json",
+      "sha256": "3ed17591323ff1ab9ec06fd84a67d4c9759564a10f04583cdb703875c2ea4151"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\VALIDATION.0001.json",
+      "sha256": "598c611c469eb78786eee016628a8b978112406e5c4fd8f4083a5559aaf7c4a7"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\FINAL_ROLE_ATTESTATION.0001.json",
+      "sha256": "1c7d8e85cf8d902bb1a9ac6967607bb54304d6c5435c8dff8c2116ffacbd3d57"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\MANIFEST.0001.json",
+      "sha256": "dd859651a5f5ba514925664187a9ac46196381a9543484473c2078274b016a54"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\FREEZE_VERIFICATION.0001.json",
+      "sha256": "fd407c7b60804166442256ac01667d1246b9804265642c60a421c124c8247577"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\LOCATOR_CORRECTION_RECEIPT.0002.json",
+      "sha256": "9ade8566ae59b47165d8414b44ad12f11e59bf124551d104f27fe0499febfb33"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\VALIDATION.0002.json",
+      "sha256": "1aefea471d67cc396ba8e8a1012fae048e174c1a08c4970a6ebe442f99d2a428"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-02\\FINAL_ROLE_ATTESTATION.0002.json",
+      "sha256": "33cb0c4acce5536d4038be9d5d58c3481771a6149cff4c7f854430bc9998540b"
+    }
+  ]
+}

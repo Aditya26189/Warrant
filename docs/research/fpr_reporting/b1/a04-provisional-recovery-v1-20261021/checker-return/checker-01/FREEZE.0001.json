@@ -1,0 +1,25 @@
+{
+  "actor_id": "/root/a04_semantic_restriction",
+  "frozen_utc": "2026-10-22T09:50:57.057287+00:00",
+  "freeze_id": "A04-RECOVERY-CHECKER-01-FREEZE-0001",
+  "manifest": {
+    "filename": "FINAL_MANIFEST.0001.json",
+    "sha256": "52f6c8698793e2f159b324d55d7cce6be084016be073cbffa96764a07dca3a48"
+  },
+  "validation": {
+    "filename": "VALIDATION.0001.json",
+    "sha256": "b24782ca8b958f19653b9e6c7b1892f6b9cf05a9c38825686e0ba153ae5ba174"
+  },
+  "role_receipt": {
+    "filename": "ROLE_INPUT_ATTESTATION.0002.json",
+    "sha256": "bd7a52203a700c060d8b53dd37d775a5e74f402bc3815aba156254cab7915e43"
+  },
+  "input_receipt": {
+    "filename": "INPUT_RECEIPTS.0001.json",
+    "sha256": "537e4473205b8ac0fb6fcb73cdb601e075c1389d06afa31b12cdf8d455bfed50"
+  },
+  "latest_record_count": 128,
+  "latest_record_set_sha256": "20ca7b6d0561c6f1021fc1526e1180e0ff2c10b1090d657acddbbe9c186a3682",
+  "eligibility_decision": null,
+  "limitation": "The freeze binds immutable local source records and receipts; it is not publication or eligibility approval."
+}

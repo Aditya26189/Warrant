@@ -1,0 +1,310 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0059",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:49:38.929155+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0059.provider.0001.json",
+  "provider_packet_sha256": "7cfafebe095a1b54b6eaecda370a7e7f19f8b312ae3842a6fbb82215541b926f",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2507.06323v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\d8865cd2e0e1b7df005e75cfee11b6511e2e7e79b0782eede90e8412b56cdc96",
+    "raw_sha256": "d8865cd2e0e1b7df005e75cfee11b6511e2e7e79b0782eede90e8412b56cdc96",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0093.json",
+    "acquisition_receipt_sha256": "56d4784c0a4b3ab0f23e29339acfd119a07846406bfcc1cbb3919be7bfa9a7b1",
+    "captured_version_id": "arxiv:2507.06323v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        108,
+        122
+      ],
+      [
+        142,
+        151
+      ],
+      [
+        188,
+        188
+      ],
+      [
+        243,
+        248
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_INVENTORY_ONLY",
+    "semantic_rationale": "Actually read generation/evaluation architecture/setup/control contexts, baseline comparison and Appendix banking example. Earlier formal taxonomy and defense recommendations unverified; no whole-work input-detector absence.",
+    "locator_sha256": "b81c8043ee89b5981f5eaa481c1efb8d0bbf51cf89f419a902362d74c616cf49",
+    "locators": [
+      {
+        "n": 108,
+        "kind": "heading",
+        "id": "S3.SS3",
+        "section": "3.3 Test Scenario Generation and Evaluation",
+        "sha256": "008441d07d801027f36c6ae8bd83b2bb864667c2e92fac4801bc7c291c7228f1"
+      },
+      {
+        "n": 109,
+        "kind": "paragraph",
+        "id": "S3.SS3.p1.1",
+        "section": "3.3 Test Scenario Generation and Evaluation",
+        "sha256": "f707db8a9d80aca191a234e9aa50f305cb15b0eff0252cbfb73494705f59b06b"
+      },
+      {
+        "n": 110,
+        "kind": "heading",
+        "id": "S3.SS3.SSS1",
+        "section": "3.3.1 CIA Triad-Centric Testing",
+        "sha256": "446e0751f6530b1d231d6098d438314870b0b75aa343e4bae3521fc23c3d03c4"
+      },
+      {
+        "n": 111,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS1.p1.1",
+        "section": "3.3.1 CIA Triad-Centric Testing",
+        "sha256": "05a59360450af82f31aae3585dff276eb66cd6ac247a1c9db1745d792b8ca30e"
+      },
+      {
+        "n": 112,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS1.p2.1",
+        "section": "3.3.1 CIA Triad-Centric Testing",
+        "sha256": "be35b56f07937bc6eb74a49fde5f7443a13ea2a86f1041b75adeeed720b3703a"
+      },
+      {
+        "n": 113,
+        "kind": "heading",
+        "id": "S3.SS3.SSS2",
+        "section": "3.3.2 LLM-Driven Adversarial Testing",
+        "sha256": "9cc7249c609b23c0191c798c760e4840ab5b96a538c8fc939c39873d59b29360"
+      },
+      {
+        "n": 114,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS2.p1.1",
+        "section": "3.3.2 LLM-Driven Adversarial Testing",
+        "sha256": "f1a198f78cb94edab3fcec8e10e5605896a3998ff93badd3a7ec5f7d74bbe79d"
+      },
+      {
+        "n": 115,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS2.p2.1",
+        "section": "3.3.2 LLM-Driven Adversarial Testing",
+        "sha256": "231037d92fc7b1ff92760dc580f91ea453445292fe5a6444aa5ca18945d8e1e7"
+      },
+      {
+        "n": 116,
+        "kind": "heading",
+        "id": "S3.SS3.SSS3",
+        "section": "3.3.3 Evaluation Framework",
+        "sha256": "228fb016b0ae038db5a8d6915daaf4b0196b4f6a7fcc43c7c3b0ef729f562bbe"
+      },
+      {
+        "n": 117,
+        "kind": "paragraph",
+        "id": "S3.SS3.SSS3.p1.1",
+        "section": "3.3.3 Evaluation Framework",
+        "sha256": "f0902b8bff38c934ff7de92add75476b1039ae4708338178b7968c4d233fbd6f"
+      },
+      {
+        "n": 118,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Implementation",
+        "sha256": "466b38d4371194f2b71a0d520d3ab5c6808c0e9df41242704d30e6d0d8a212c4"
+      },
+      {
+        "n": 119,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "section": "4 Implementation",
+        "sha256": "00b156a4837add8100737fae0a9c223330c32a0be618a882af572e2cd83de4d8"
+      },
+      {
+        "n": 120,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Architecture Selection and Experimental Design",
+        "sha256": "cf58f1a8e0b0b475f83159d2e95c5558a92090cc611926e365dea2b04ef64462"
+      },
+      {
+        "n": 121,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1 Architecture Selection and Experimental Design",
+        "sha256": "17981ee4a4eda11912d15cd7b450d6e029401de6efecb6da83413dd11a1813cc"
+      },
+      {
+        "n": 122,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "section": "4.1 Architecture Selection and Experimental Design",
+        "sha256": "e5800f4d3309c361df0b86680f43b4b08716095cd7ac21f737fa6b5967b4d773"
+      },
+      {
+        "n": 142,
+        "kind": "paragraph",
+        "id": "S5.SS1.p1.1",
+        "section": "5.1 Systematic Test Case Generation",
+        "sha256": "1a9e74805e7b541d9cbd3f477b2ef0c57fb9f7b154dd87df28d953177ed9b4be"
+      },
+      {
+        "n": 143,
+        "kind": "paragraph",
+        "id": "S5.SS1.p2.1",
+        "section": "5.1 Systematic Test Case Generation",
+        "sha256": "2483e01acbad2a0129468a01bc0d919d213216bcc716dd9f68ab2bdb601c8e67"
+      },
+      {
+        "n": 144,
+        "kind": "heading",
+        "id": "S5.SS2",
+        "section": "5.2 Attack Complexity Distribution",
+        "sha256": "052dba0f2ce33b684788532d5225b60cd089b9f95c32af3cb774506b50c88c80"
+      },
+      {
+        "n": 145,
+        "kind": "paragraph",
+        "id": "S5.SS2.p1.1",
+        "section": "5.2 Attack Complexity Distribution",
+        "sha256": "7032a91720ca8437b1541b97e820a9c2a7abeafc2f2a25bf9aa2aca7f3f3ca3d"
+      },
+      {
+        "n": 146,
+        "kind": "heading",
+        "id": "S5.SS3",
+        "section": "5.3 Testing Environment Standardization",
+        "sha256": "f5396c8665f2c17dcc9c31dd89cbfa5619d188fb861697af2e2cfa96590aacfd"
+      },
+      {
+        "n": 147,
+        "kind": "paragraph",
+        "id": "S5.SS3.p1.1",
+        "section": "5.3 Testing Environment Standardization",
+        "sha256": "ab0a29fbd1fba0b939cc0030a6185f82ef0fd9ebe67afbbd24bf4313173486f9"
+      },
+      {
+        "n": 148,
+        "kind": "paragraph",
+        "id": "S5.SS3.p2.1",
+        "section": "5.3 Testing Environment Standardization",
+        "sha256": "155ff5d1da6d06a48d20d13c2debe570de330326161801e5c3a7e39f394a313c"
+      },
+      {
+        "n": 149,
+        "kind": "heading",
+        "id": "S5.SS4",
+        "section": "5.4 Experimental Validation Measures",
+        "sha256": "bb3e397ba18d2c2b355f60233ba71a57181f9a7afc02d5f7fa5f30eb85eec569"
+      },
+      {
+        "n": 150,
+        "kind": "paragraph",
+        "id": "S5.SS4.p1.1",
+        "section": "5.4 Experimental Validation Measures",
+        "sha256": "0771a0131ba6d643b2fa3d97b9946cb7aba7604935dcc8329619812bee74b768"
+      },
+      {
+        "n": 151,
+        "kind": "paragraph",
+        "id": "S5.SS4.p2.1",
+        "section": "5.4 Experimental Validation Measures",
+        "sha256": "8a9e114b637ed19a7d7c2919825ef6edd11ae0ea3a29589f15263113d093a320"
+      },
+      {
+        "n": 188,
+        "kind": "paragraph",
+        "id": "S6.SS3.p1.1",
+        "section": "6.3 Baseline Comparison with Established Security Frameworks",
+        "sha256": "72d1d3bf1344671a12bf2eb33ab0edbfaf90ada9329a181c76f3769c0774cf72"
+      },
+      {
+        "n": 243,
+        "kind": "heading",
+        "id": "A1",
+        "section": "Appendix A Attack Surface Analysis of Banking Transaction Agent",
+        "sha256": "c3beed519fcd355156f692b02c8782438c85a350d9b4523260fe1e48fa50e7e9"
+      },
+      {
+        "n": 244,
+        "kind": "paragraph",
+        "id": "A1.p1.1",
+        "section": "Appendix A Attack Surface Analysis of Banking Transaction Agent",
+        "sha256": "dc8eaaf03b3614a24e533df4ed9fa7585132da0b6015d1f57cb992822ad4d8d2"
+      },
+      {
+        "n": 245,
+        "kind": "heading",
+        "id": "A1.SS1",
+        "section": "A.1 System Specification",
+        "sha256": "185f9796ba1a3ed37a35853b6ac51284a5ca618d798f2d310a0ea1e7197c7e19"
+      },
+      {
+        "n": 246,
+        "kind": "paragraph",
+        "id": "A1.SS1.p1.1",
+        "section": "A.1 System Specification",
+        "sha256": "42fd7b271ac4500949b292f6643e4c4605aef107950b98e84123452f7e7d50f7"
+      },
+      {
+        "n": 247,
+        "kind": "paragraph",
+        "id": "A1.SS1.p2",
+        "section": "A.1 System Specification",
+        "sha256": "d9619602e94ef1cebdba746b2f288d87e6899a4fd34c3973851102d9f203a2db"
+      },
+      {
+        "n": 248,
+        "kind": "paragraph",
+        "id": "A1.SS1.p3",
+        "section": "A.1 System Specification",
+        "sha256": "5c7265622a3358f6999fc8c4530075ffff3caa6ac50866a0aaea157887312dcd"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Architecture/setup and scenario construction support matched Function Calling/MCP tests with simple/composed/chained attack categories. English banking system example inspected; full language composition unresolved.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Named architectures, matching deployments, DeepSeek-R1 judge and vulnerable/secured controls explicit; generated output/action assessment required.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Contextual comparison names AgentDojo/InjecAgent/ASB. This passage does not establish a new incoming-prompt scoring implementation.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly retains material method/arm omissions. The approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

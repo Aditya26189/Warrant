@@ -1,0 +1,182 @@
+{
+  "access_only_records": [],
+  "checkpoint_sha256": "c89c78111c53a3c1d7694e2b6955c76ef5c85c14e3c322def6250d71b854f0e5",
+  "facts": [
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0074.checker.0001.json",
+      "checker_receipt_sha256": "22691f389c14fabb94afcdfe11579310ffa1bdad61525c915da489aaa935d5ae",
+      "coverage_disposition": "DECLARED_MATERIAL_METHOD_TASK_FAMILIES_VERIFIED",
+      "evidence_id": "A05-DEEP-W0074-22691f389c14-F01",
+      "field_path": "method_summary",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "8008e0e00fc7eb7a76b140ae34e763fa8fa8607439f3ddc5a23dd2a4c77a4ad0",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0074",
+      "semantic_check": "Main implementation57 explicitly specifies default MiniLM phrase matching and alternative LLMGuard. Setup61 explicitly selects default configuration/default bad phrases for the experiments; synthetic63-64 and real-document68-71 trials therefore have direct procedure linkage.",
+      "source_identity": {
+        "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0114.json",
+        "acquisition_receipt_sha256": "f6df377a7e555f396ec06017b8de126c4e7be71d3b4c2d8d86b762ca92384433",
+        "captured_version_id": null,
+        "independent_raw_self_links": [
+          "/abs/2508.17884v2",
+          "/pdf/2508.17884v2"
+        ],
+        "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q028-1.html",
+        "raw_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "version_state": "EXACT_VERSION_SELF_LINK"
+      },
+      "value": "PhantomLint applies its default MiniLM phrase analysis plus OCR consistency procedure in the original synthetic and real-document evaluations.",
+      "value_sha256": "fd5aba6ac662ab21d7a0c5d4ce6bfa4ac7a49e9852af355ebbfa64181cb398cc",
+      "version": "arxiv:2508.17884v2",
+      "work_id": "arxiv:2508.17884"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0074.checker.0001.json",
+      "checker_receipt_sha256": "22691f389c14fabb94afcdfe11579310ffa1bdad61525c915da489aaa935d5ae",
+      "coverage_disposition": "DECLARED_MATERIAL_METHOD_TASK_FAMILIES_VERIFIED",
+      "evidence_id": "A05-DEEP-W0074-22691f389c14-F02",
+      "field_path": "arm_inventory[0]",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "8008e0e00fc7eb7a76b140ae34e763fa8fa8607439f3ddc5a23dd2a4c77a4ad0",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0074",
+      "semantic_check": "Design45-53 and actual Algorithms1/2 define phrase-span analysis, rendered-region OCR and overlap with text absent from OCR. Implementation55-59 specifies PDF/HTML processing, MiniLM and OCR. Synthetic63-64 tests hidden-prompt hiding strategies. The detector consumes documents/text spans, with no protected LLM task answer.",
+      "source_identity": {
+        "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0114.json",
+        "acquisition_receipt_sha256": "f6df377a7e555f396ec06017b8de126c4e7be71d3b4c2d8d86b762ca92384433",
+        "captured_version_id": null,
+        "independent_raw_self_links": [
+          "/abs/2508.17884v2",
+          "/pdf/2508.17884v2"
+        ],
+        "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q028-1.html",
+        "raw_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "version_state": "EXACT_VERSION_SELF_LINK"
+      },
+      "value": {
+        "decision_procedure": "Match phrase spans; crop/render/OCR; intersect suspicious spans with text absent from OCR",
+        "label_target": "hidden LLM-prompt presence",
+        "name": "Default PhantomLint synthetic hiding-strategy trials",
+        "protected_target_answer_dependency": "No protected target answer required",
+        "unit": "PDF/HTML document and text-block spans"
+      },
+      "value_sha256": "79efe34513540ff1766c7135c4f04bc8a93f712c04e839419241b998038ebea0",
+      "version": "arxiv:2508.17884v2",
+      "work_id": "arxiv:2508.17884"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0074.checker.0001.json",
+      "checker_receipt_sha256": "22691f389c14fabb94afcdfe11579310ffa1bdad61525c915da489aaa935d5ae",
+      "coverage_disposition": "DECLARED_MATERIAL_METHOD_TASK_FAMILIES_VERIFIED",
+      "evidence_id": "A05-DEEP-W0074-22691f389c14-F03",
+      "field_path": "arm_inventory[1]",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "8008e0e00fc7eb7a76b140ae34e763fa8fa8607439f3ddc5a23dd2a4c77a4ad0",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0074",
+      "semantic_check": "Accepted-paper audit setup65, real-document collection and human visible/hidden labels68-70, and runtime evaluation72 verify these distinct evaluation families under setup61 default configuration. Paragraph71 defines document detection as a reported region overlapping the hidden prompt; this is a presence event, not proof that Algorithm2 exposes a standalone Boolean API or that the accepted-paper audit supplies exhaustively labeled negatives.",
+      "source_identity": {
+        "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0114.json",
+        "acquisition_receipt_sha256": "f6df377a7e555f396ec06017b8de126c4e7be71d3b4c2d8d86b762ca92384433",
+        "captured_version_id": null,
+        "independent_raw_self_links": [
+          "/abs/2508.17884v2",
+          "/pdf/2508.17884v2"
+        ],
+        "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q028-1.html",
+        "raw_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "version_state": "EXACT_VERSION_SELF_LINK"
+      },
+      "value": {
+        "decision_procedure": "Same default pipeline; human visibility labels and inspection; document detection means reported region overlaps hidden prompt",
+        "label_target": "hidden prompt versus visible prompt/no flagged hidden span",
+        "name": "Accepted-paper audit; collected real-document positives/negatives; runtime evaluation",
+        "protected_target_answer_dependency": "No protected answer required",
+        "unit": "document"
+      },
+      "value_sha256": "976bc32ab8ddf389aa8137c20aa2d612aede492dddc80bfb856c4864c65433c3",
+      "version": "arxiv:2508.17884v2",
+      "work_id": "arxiv:2508.17884"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0074.checker.0001.json",
+      "checker_receipt_sha256": "22691f389c14fabb94afcdfe11579310ffa1bdad61525c915da489aaa935d5ae",
+      "coverage_disposition": "DECLARED_MATERIAL_METHOD_TASK_FAMILIES_VERIFIED",
+      "evidence_id": "A05-DEEP-W0074-22691f389c14-F04",
+      "field_path": "english_evaluation_support",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "8008e0e00fc7eb7a76b140ae34e763fa8fa8607439f3ddc5a23dd2a4c77a4ad0",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0074",
+      "semantic_check": "Setup61 selects the default bad-phrase list, whose actual English phrases are printed in62. Synthetic construction64 explicitly inserts English example prompt phrases into synthetic PDF/HTML documents. This directly supports English construction in those evaluated document trials; full natural-document language composition is not inferred.",
+      "source_identity": {
+        "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0114.json",
+        "acquisition_receipt_sha256": "f6df377a7e555f396ec06017b8de126c4e7be71d3b4c2d8d86b762ca92384433",
+        "captured_version_id": null,
+        "independent_raw_self_links": [
+          "/abs/2508.17884v2",
+          "/pdf/2508.17884v2"
+        ],
+        "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q028-1.html",
+        "raw_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "version_state": "EXACT_VERSION_SELF_LINK"
+      },
+      "value": "Setup paragraph 61 selects the default bad-phrase list; paragraphs 62/64 print actual English phrases used in synthetic hidden-prompt construction.",
+      "value_sha256": "0423753f29bb6c4beed68141195ee990d6e0b4fe9b82c3bfe0143c83e18e584e",
+      "version": "arxiv:2508.17884v2",
+      "work_id": "arxiv:2508.17884"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0074.checker.0001.json",
+      "checker_receipt_sha256": "22691f389c14fabb94afcdfe11579310ffa1bdad61525c915da489aaa935d5ae",
+      "coverage_disposition": "DECLARED_MATERIAL_METHOD_TASK_FAMILIES_VERIFIED",
+      "evidence_id": "A05-DEEP-W0074-22691f389c14-F05",
+      "field_path": "coverage.scope_completeness",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "8008e0e00fc7eb7a76b140ae34e763fa8fa8607439f3ddc5a23dd2a4c77a4ad0",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0074",
+      "semantic_check": "True is verified for declared material main design/implementation and all evaluation-family methods after actual40-65 and68-72 plus full algorithm reads. There is no appendix. Optional Analyze implementation and evaluated default are distinguished; unseen result plots/captions are not needed to establish the task/family scope.",
+      "source_identity": {
+        "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0114.json",
+        "acquisition_receipt_sha256": "f6df377a7e555f396ec06017b8de126c4e7be71d3b4c2d8d86b762ca92384433",
+        "captured_version_id": null,
+        "independent_raw_self_links": [
+          "/abs/2508.17884v2",
+          "/pdf/2508.17884v2"
+        ],
+        "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q028-1.html",
+        "raw_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "version_state": "EXACT_VERSION_SELF_LINK"
+      },
+      "value": true,
+      "value_sha256": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74",
+      "version": "arxiv:2508.17884v2",
+      "work_id": "arxiv:2508.17884"
+    }
+  ],
+  "limits": [
+    "Only individually approved fields are released. Held fields and unapproved coverage are not evidence.",
+    "Requested version is retained; source identity/binding limits must be assessed separately.",
+    "Actual source-role separation on shared filesystem; no fresh independent final eligibility review.",
+    "No outcomes, sample/false-positive counts, assurance classes, draw, assignment or B2."
+  ],
+  "released_by": "EXPOSED_CUSTODIAN_ROOT",
+  "request_sha256": "da9d2ad6bc12937fbd85eec284c96ccfb01660fe90ed9aed12a66ffa3902f061",
+  "schema": "A05_DEEP_CHECKED_METHOD_RELEASE_v1",
+  "source_files": {
+    "CHECKER_CHECKPOINT.json": "c89c78111c53a3c1d7694e2b6955c76ef5c85c14e3c322def6250d71b854f0e5",
+    "checker/W0074.checker.0001.json": "22691f389c14fabb94afcdfe11579310ffa1bdad61525c915da489aaa935d5ae"
+  },
+  "source_git_commit": "eccbbe49a360384dd4daed30c32d210b3d76cdc1"
+}

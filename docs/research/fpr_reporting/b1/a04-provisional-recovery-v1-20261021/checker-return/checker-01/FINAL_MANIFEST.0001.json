@@ -1,0 +1,3151 @@
+{
+  "manifest_id": "A04-RECOVERY-CHECKER-01-FINAL-0001",
+  "actor_id": "/root/a04_semantic_restriction",
+  "checked_utc": "2026-10-22T09:50:56.894375+00:00",
+  "completion_state": "ASSIGNED_SOURCE_RESTRICTION_WORK_COMPLETE_WITH_UNRESOLVED_EVIDENCE_CODES",
+  "output_directory": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-01",
+  "authoritative_input_request_sha256": "43706bb2ac98bca7a2246932c3f95a5b8739d2fc3897cdca837a7d71b86efc12",
+  "assigned_work_count": 128,
+  "assigned_member_count": 134,
+  "context_checked_membership_count": 132,
+  "source_held_membership_count": 2,
+  "routine_unattempted_context_count": 0,
+  "pending_latest_record_count": 0,
+  "reused_method_fact_count": 140,
+  "new_method_fact_count": 150,
+  "new_fact_formats": {
+    "PDF": 15,
+    "HTML": 135
+  },
+  "works_with_new_method_facts": 107,
+  "work_restriction_states": {
+    "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES": 126,
+    "ASSIGNED_SOURCE_CONTEXT_ATTEMPT_COMPLETED_BODY_UNAVAILABLE": 2
+  },
+  "source_held_memberships": [
+    {
+      "review_id": "W0021",
+      "member_id": "M0048",
+      "source_binding_basis": "SOURCE_UNAVAILABLE",
+      "limitation_codes": [
+        "PROTOCOL_PREFERRED_VERSION_NOT_ADJUDICATED",
+        "PRIMARY_BODY_UNAVAILABLE"
+      ]
+    },
+    {
+      "review_id": "W0067",
+      "member_id": "M0105",
+      "source_binding_basis": "SOURCE_UNAVAILABLE",
+      "limitation_codes": [
+        "PROTOCOL_PREFERRED_VERSION_NOT_ADJUDICATED",
+        "PRIMARY_BODY_UNAVAILABLE"
+      ]
+    }
+  ],
+  "visually_checked_unique_pdf_pages": 22,
+  "literal_quotation_words": 0,
+  "eligibility_decision": null,
+  "latest_records": [
+    {
+      "review_id": "W0001",
+      "work_id": "acl:2025.llmsec-1.2",
+      "filename": "W0001.0004.json",
+      "sha256": "5abdf91b1fa359b8f3ee8ef166622ebf80922eba0d9fc99bca28fb49baac31e8",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:28:00.083908+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.564668+00:00",
+      "member_ids": [
+        "M0018"
+      ],
+      "context_checked_member_ids": [
+        "M0018"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0002",
+      "work_id": "acl:2026.nlpaics-1.17",
+      "filename": "W0002.0004.json",
+      "sha256": "9c678739dad8b9e42da4db295d71968804b9fd0438d6858b84cc4c55d9eaabaa",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:28:00.172753+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.587786+00:00",
+      "member_ids": [
+        "M0001"
+      ],
+      "context_checked_member_ids": [
+        "M0001"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0003",
+      "work_id": "arxiv:2401.00991",
+      "filename": "W0003.0004.json",
+      "sha256": "f1158baeb7eee786637d04bf50cc25e4671eecfddf6b367ec8ef0d1b93cda01a",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:28:00.250555+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.606843+00:00",
+      "member_ids": [
+        "M0026"
+      ],
+      "context_checked_member_ids": [
+        "M0026"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0004",
+      "work_id": "arxiv:2402.05723",
+      "filename": "W0004.0004.json",
+      "sha256": "2ea42b36ec83c254ee5d26fa2aad377f4bef6b896d34e302bf520d67081209d8",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:02:28.539286+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.628853+00:00",
+      "member_ids": [
+        "M0027"
+      ],
+      "context_checked_member_ids": [
+        "M0027"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "EXPERIMENT_BOUNDARY_FACTS_ONLY",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0005",
+      "work_id": "arxiv:2402.11082",
+      "filename": "W0005.0004.json",
+      "sha256": "eba1b5150320140fbd0b2273422c4810fb94b38ea17a20c4185793f198b5630a",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:02:28.767583+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.650877+00:00",
+      "member_ids": [
+        "M0028"
+      ],
+      "context_checked_member_ids": [
+        "M0028"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "PRIMARY_DETECTOR_EXPERIMENT_CONTEXT_NOT_ESTABLISHED"
+      ]
+    },
+    {
+      "review_id": "W0006",
+      "work_id": "arxiv:2403.03792",
+      "filename": "W0006.0004.json",
+      "sha256": "984da291042cac65290a072b84a384e57fba387b169605d9c1a5a0a2095ff2d3",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:02:28.919384+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.669628+00:00",
+      "member_ids": [
+        "M0029"
+      ],
+      "context_checked_member_ids": [
+        "M0029"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "EXPERIMENT_BOUNDARY_FACTS_ONLY",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0007",
+      "work_id": "arxiv:2403.08701",
+      "filename": "W0007.0004.json",
+      "sha256": "808aa3008ae64e7032d084aae7a493f5301c17576221af008300d06c48923b7b",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:02:29.476269+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.690378+00:00",
+      "member_ids": [
+        "M0030"
+      ],
+      "context_checked_member_ids": [
+        "M0030"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "PRIMARY_DETECTOR_EXPERIMENT_CONTEXT_NOT_ESTABLISHED"
+      ]
+    },
+    {
+      "review_id": "W0008",
+      "work_id": "arxiv:2403.17710",
+      "filename": "W0008.0004.json",
+      "sha256": "9f80fabe612bc3a6f02b878af79eadbfe968a3936c7fee937ae0247b939ea6d0",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:02:29.766933+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.709056+00:00",
+      "member_ids": [
+        "M0031"
+      ],
+      "context_checked_member_ids": [
+        "M0031"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 3,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0009",
+      "work_id": "arxiv:2404.04392",
+      "filename": "W0009.0004.json",
+      "sha256": "0ff6fc31f58f784f8a149b05209ea94484b7cf2fd18b4d6854bc2686b8a2c6a8",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:02:30.424167+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.731721+00:00",
+      "member_ids": [
+        "M0032"
+      ],
+      "context_checked_member_ids": [
+        "M0032"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "EXPERIMENT_BOUNDARY_FACTS_ONLY",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0010",
+      "work_id": "arxiv:2405.12750",
+      "filename": "W0010.0004.json",
+      "sha256": "680bb312fdd46c4fd3491f1622deba4addc4de23d59e08feff6c9f1a607c4dc2",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:02:30.609140+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.750718+00:00",
+      "member_ids": [
+        "M0033"
+      ],
+      "context_checked_member_ids": [
+        "M0033"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "PRIMARY_DETECTOR_EXPERIMENT_CONTEXT_NOT_ESTABLISHED"
+      ]
+    },
+    {
+      "review_id": "W0011",
+      "work_id": "arxiv:2406.00799",
+      "filename": "W0011.0004.json",
+      "sha256": "93cda7abf4bfb07ffa70c03abb99187dfc7a5a796bbcee85783c4a076c718fc3",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:02:32.231965+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.773671+00:00",
+      "member_ids": [
+        "M0034"
+      ],
+      "context_checked_member_ids": [
+        "M0034"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 3,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0012",
+      "work_id": "arxiv:2408.03095",
+      "filename": "W0012.0004.json",
+      "sha256": "4e65afbd5ad38c41901ec7a24c52757d6409bc6ce3a354b10ff10e35e99dea10",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:06:19.759654+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.794278+00:00",
+      "member_ids": [
+        "M0036"
+      ],
+      "context_checked_member_ids": [
+        "M0036"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "EXPERIMENT_BOUNDARY_FACTS_ONLY",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0013",
+      "work_id": "arxiv:2408.03515",
+      "filename": "W0013.0004.json",
+      "sha256": "c0a64a3cb455c47ff1db525528c97f58ee1ec95dd6f1143b0d9c64fe6ab876e0",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:06:20.098542+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.813285+00:00",
+      "member_ids": [
+        "M0037"
+      ],
+      "context_checked_member_ids": [
+        "M0037"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "EXPERIMENT_BOUNDARY_FACTS_ONLY",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0014",
+      "work_id": "arxiv:2408.07291",
+      "filename": "W0014.0004.json",
+      "sha256": "c71144cb112bfdc302f71959659fd0ac61d31228045879ecfff87e3e271789fe",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:06:20.276301+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.833275+00:00",
+      "member_ids": [
+        "M0038"
+      ],
+      "context_checked_member_ids": [
+        "M0038"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "EXPERIMENT_BOUNDARY_FACTS_ONLY",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0015",
+      "work_id": "arxiv:2409.13331",
+      "filename": "W0015.0004.json",
+      "sha256": "4b408ea4fe74570a90a606ba824359f07de57353db70cc4522cf2e6206152e8f",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:28:00.367374+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.850819+00:00",
+      "member_ids": [
+        "M0040"
+      ],
+      "context_checked_member_ids": [
+        "M0040"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0016",
+      "work_id": "arxiv:2409.19521",
+      "filename": "W0016.0004.json",
+      "sha256": "8e1d1f1fcc699800f89c4bc29bab6f528419188c849eaf5899e1844626cd4ff0",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:06:20.986036+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.870198+00:00",
+      "member_ids": [
+        "M0041"
+      ],
+      "context_checked_member_ids": [
+        "M0041"
+      ],
+      "reused_evidence_count": 3,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "PRE_TARGET_RUNTIME_CHRONOLOGY_UNSPECIFIED"
+      ]
+    },
+    {
+      "review_id": "W0017",
+      "work_id": "arxiv:2410.02916",
+      "filename": "W0017.0004.json",
+      "sha256": "b6b91ff05d906dbb88a742180f91ea885f7c8edb0892532f04a4a8cb1e000967",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:06:21.170195+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.890740+00:00",
+      "member_ids": [
+        "M0042"
+      ],
+      "context_checked_member_ids": [
+        "M0042"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "EXPERIMENT_BOUNDARY_FACTS_ONLY",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0018",
+      "work_id": "arxiv:2410.13236",
+      "filename": "W0018.0004.json",
+      "sha256": "dc9cc1553108ea46ac9660c2853e8d47ed7f905646d0e43f777d60824689cc03",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:06:21.742129+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.915321+00:00",
+      "member_ids": [
+        "M0043"
+      ],
+      "context_checked_member_ids": [
+        "M0043"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "PRE_TARGET_RUNTIME_CHRONOLOGY_UNSPECIFIED"
+      ]
+    },
+    {
+      "review_id": "W0019",
+      "work_id": "arxiv:2410.20911",
+      "filename": "W0019.0004.json",
+      "sha256": "4cdabe92e5d870fe87b9d715dfa0a4cb19bfd03db886651521e0c62e75b7aed8",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:06:21.886356+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.938089+00:00",
+      "member_ids": [
+        "M0046"
+      ],
+      "context_checked_member_ids": [
+        "M0046"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "EXPERIMENT_BOUNDARY_FACTS_ONLY",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0020",
+      "work_id": "arxiv:2410.21146",
+      "filename": "W0020.0004.json",
+      "sha256": "5fce4b872c73b9315c3d6d78b2a7a7bd0e3bf3956adbaf9cb4c8c375a9747e2e",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:26:22.336644+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.958085+00:00",
+      "member_ids": [
+        "M0047"
+      ],
+      "context_checked_member_ids": [
+        "M0047"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 3,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": []
+    },
+    {
+      "review_id": "W0021",
+      "work_id": "arxiv:2410.21337",
+      "filename": "W0021.0004.json",
+      "sha256": "b6203928c24fd9e048d3b955671da0a773166d77ecbf5a109f08f46749316716",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:26:22.790486+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.978081+00:00",
+      "member_ids": [
+        "M0048"
+      ],
+      "context_checked_member_ids": [],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_ATTEMPT_COMPLETED_BODY_UNAVAILABLE",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "PRIMARY_BODY_UNAVAILABLE",
+        "ROOT_BOUND_PRIMARY_BODY_UNAVAILABLE",
+        "SOURCE_CONTEXT_HELD_BODY_UNAVAILABLE",
+        "SOURCE_HELD_NO_VERSION_SUBSTITUTION"
+      ]
+    },
+    {
+      "review_id": "W0022",
+      "work_id": "arxiv:2410.22284",
+      "filename": "W0022.0004.json",
+      "sha256": "5a89d7202cc4b20ee8b685d44716f7909e1cc3d6d1ffb730b45e9ded15ba47cc",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:06:22.359305+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:40.997074+00:00",
+      "member_ids": [
+        "M0049"
+      ],
+      "context_checked_member_ids": [
+        "M0049"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "PRE_TARGET_RUNTIME_CHRONOLOGY_UNSPECIFIED"
+      ]
+    },
+    {
+      "review_id": "W0023",
+      "work_id": "arxiv:2411.09387",
+      "filename": "W0023.0004.json",
+      "sha256": "d71e9e8e7263f69539d8cc31f9a8c368b4edbca0d3bc4ec88b55942ba606d7cb",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:11:49.524899+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.019081+00:00",
+      "member_ids": [
+        "M0052"
+      ],
+      "context_checked_member_ids": [
+        "M0052"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0024",
+      "work_id": "arxiv:2412.01547",
+      "filename": "W0024.0004.json",
+      "sha256": "c7e2ba3ff962c55cb1bafc9003f1ba6586a8f97221954f80f62740872cdd7410",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:11:49.821825+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.038077+00:00",
+      "member_ids": [
+        "M0053"
+      ],
+      "context_checked_member_ids": [
+        "M0053"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0025",
+      "work_id": "arxiv:2412.10807",
+      "filename": "W0025.0004.json",
+      "sha256": "4ddf339375af75a92cfe69f13cdd76e657e209282f943dfb1c6b330afd8e54f3",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:11:49.964394+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.060084+00:00",
+      "member_ids": [
+        "M0054"
+      ],
+      "context_checked_member_ids": [
+        "M0054"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0026",
+      "work_id": "arxiv:2412.13435",
+      "filename": "W0026.0004.json",
+      "sha256": "a7e15154a32503e1e8aca8e1322a1c10b5f062f7075f69a30ac056ae15f05674",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:11:50.362527+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.079185+00:00",
+      "member_ids": [
+        "M0055"
+      ],
+      "context_checked_member_ids": [
+        "M0055"
+      ],
+      "reused_evidence_count": 3,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0027",
+      "work_id": "arxiv:2501.12521",
+      "filename": "W0027.0004.json",
+      "sha256": "b6c038819781b143208a87f8865e5fe3ede4621828db46c0b0acf42fefeb2533",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:11:50.590322+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.103202+00:00",
+      "member_ids": [
+        "M0056"
+      ],
+      "context_checked_member_ids": [
+        "M0056"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0028",
+      "work_id": "arxiv:2501.15145",
+      "filename": "W0028.0004.json",
+      "sha256": "62396f5e126fc500d34d3eeafc390e3ee6728135f3c28ef4f0799bc1613e596d",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:11:50.845615+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.124243+00:00",
+      "member_ids": [
+        "M0057"
+      ],
+      "context_checked_member_ids": [
+        "M0057"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0029",
+      "work_id": "arxiv:2502.05174",
+      "filename": "W0029.0004.json",
+      "sha256": "cbac0ccfc05515c198d021723d20d20fde7eaa7eeedc78f88ea0f8703a5f9fc1",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:11:51.106328+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.144392+00:00",
+      "member_ids": [
+        "M0059"
+      ],
+      "context_checked_member_ids": [
+        "M0059"
+      ],
+      "reused_evidence_count": 3,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0030",
+      "work_id": "arxiv:2502.08966",
+      "filename": "W0030.0004.json",
+      "sha256": "8a5377b143df4f783eabeea45d42e8eee3dd834d81087aaef26cd8a25b2e2416",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:11:51.482828+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.172892+00:00",
+      "member_ids": [
+        "M0060"
+      ],
+      "context_checked_member_ids": [
+        "M0060"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0031",
+      "work_id": "arxiv:2502.13141",
+      "filename": "W0031.0004.json",
+      "sha256": "75b09c6a8a249bc14810d725f4549ec83cca4ba09910b4307bf401b5c758d24c",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:11:51.887229+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.221613+00:00",
+      "member_ids": [
+        "M0062"
+      ],
+      "context_checked_member_ids": [
+        "M0062"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0032",
+      "work_id": "arxiv:2502.13490",
+      "filename": "W0032.0004.json",
+      "sha256": "fd7a5e90974de271cc7dc554f7c10a8507a31e670cf197b07f1a96a241ebf0c6",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T07:11:52.573897+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.242744+00:00",
+      "member_ids": [
+        "M0063"
+      ],
+      "context_checked_member_ids": [
+        "M0063"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0033",
+      "work_id": "arxiv:2503.09066",
+      "filename": "W0033.0004.json",
+      "sha256": "da2165f45fcb7098bcf900233eba7a7b2f5f4b4c5727d2353d3ede56c96e239a",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:32:38.317943+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.259052+00:00",
+      "member_ids": [
+        "M0065"
+      ],
+      "context_checked_member_ids": [
+        "M0065"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0034",
+      "work_id": "arxiv:2503.11517",
+      "filename": "W0034.0004.json",
+      "sha256": "428b24e8e85434183df813d7b070cd44a49e100b93d6da4d3a4588d3b08ea276",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:32:38.413333+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.277624+00:00",
+      "member_ids": [
+        "M0066"
+      ],
+      "context_checked_member_ids": [
+        "M0066"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0035",
+      "work_id": "arxiv:2503.15772",
+      "filename": "W0035.0004.json",
+      "sha256": "5becbdbb91132049c6287b9e484d64dcf2ae17f7be3f10668e01ebfd347cd425",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:32:38.725133+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.296711+00:00",
+      "member_ids": [
+        "M0067"
+      ],
+      "context_checked_member_ids": [
+        "M0067"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0036",
+      "work_id": "arxiv:2503.16248",
+      "filename": "W0036.0004.json",
+      "sha256": "13b6a201749241818d1e14c9f2eeeecdeb98fcb2ed5969c41bffa20e82604572",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:32:39.177962+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.319217+00:00",
+      "member_ids": [
+        "M0068"
+      ],
+      "context_checked_member_ids": [
+        "M0068"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0037",
+      "work_id": "arxiv:2503.21464",
+      "filename": "W0037.0004.json",
+      "sha256": "74f238f662a3c031bc1e0fdcb7597a45365a5c0de326185db4549a76f6c2c10a",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:32:39.377526+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.338771+00:00",
+      "member_ids": [
+        "M0069"
+      ],
+      "context_checked_member_ids": [
+        "M0069"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0038",
+      "work_id": "arxiv:2503.23250",
+      "filename": "W0038.0004.json",
+      "sha256": "acd060a65b39f31714585a38ac833674d1939460f72f560adb7e19cc651d2196",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:32:39.555425+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.358021+00:00",
+      "member_ids": [
+        "M0070"
+      ],
+      "context_checked_member_ids": [
+        "M0070"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0039",
+      "work_id": "arxiv:2504.09593",
+      "filename": "W0039.0004.json",
+      "sha256": "a5acb864e7382ececcd388bc7e03892aa58708e9dfb06b65d61a9c02f41102bf",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:32:39.618716+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.375044+00:00",
+      "member_ids": [
+        "M0071"
+      ],
+      "context_checked_member_ids": [
+        "M0071"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0040",
+      "work_id": "arxiv:2504.11168",
+      "filename": "W0040.0005.json",
+      "sha256": "8f7edb4e55dc442e1976c328598a36fb8fb657cb4728f1d1468bf09896639f34",
+      "record_revision": 5,
+      "checked_utc": "2026-10-21T18:26:54.729192+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.393141+00:00",
+      "member_ids": [
+        "M0008",
+        "M0072"
+      ],
+      "context_checked_member_ids": [
+        "M0008",
+        "M0072"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0041",
+      "work_id": "arxiv:2504.11358",
+      "filename": "W0041.0004.json",
+      "sha256": "f6830969480fe7793e8b968128dee1ebf9cf397f8ad33545ccd931a487cf4ea9",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:32:40.295211+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.411946+00:00",
+      "member_ids": [
+        "M0073"
+      ],
+      "context_checked_member_ids": [
+        "M0073"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0042",
+      "work_id": "arxiv:2504.12335",
+      "filename": "W0042.0004.json",
+      "sha256": "283bb9cbae1aacbb55f2e8d03e44ae11b3abceb2b6669b80f59193d1f652c938",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:32:41.375528+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.435575+00:00",
+      "member_ids": [
+        "M0074"
+      ],
+      "context_checked_member_ids": [
+        "M0074"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0043",
+      "work_id": "arxiv:2504.19521",
+      "filename": "W0043.0004.json",
+      "sha256": "12eb06983a2b89293dcc2826ed4e1d7de16dadfa6c688f2782b7c006196914ff",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:32:41.630532+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.454587+00:00",
+      "member_ids": [
+        "M0075"
+      ],
+      "context_checked_member_ids": [
+        "M0075"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0044",
+      "work_id": "arxiv:2504.19793",
+      "filename": "W0044.0004.json",
+      "sha256": "d2915bedcf503d73ab558a943cdcc8c1f72c1f9241301e7632118e8e87a1cc78",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T12:32:41.749346+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.472590+00:00",
+      "member_ids": [
+        "M0076"
+      ],
+      "context_checked_member_ids": [
+        "M0076"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0045",
+      "work_id": "arxiv:2505.03574",
+      "filename": "W0045.0004.json",
+      "sha256": "35c769ff3835a98696c884a77a2e1b0e787db19c5a957508ae117490972c9443",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:06:30.789539+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.493543+00:00",
+      "member_ids": [
+        "M0077"
+      ],
+      "context_checked_member_ids": [
+        "M0077"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0046",
+      "work_id": "arxiv:2505.06643",
+      "filename": "W0046.0004.json",
+      "sha256": "d5ae94a5f884a3cf382f3dea478e22525b4e00ac2e980bf1848353b77f1e489a",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:06:32.144206+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.518296+00:00",
+      "member_ids": [
+        "M0079"
+      ],
+      "context_checked_member_ids": [
+        "M0079"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_DETECTOR_BINARY_PROTOCOL_NOT_ESTABLISHED_IN_CHECKED_METHODS",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "SPECIAL_TOKEN_REASONING_INTERVENTION_CONTEXT_CHECKED"
+      ]
+    },
+    {
+      "review_id": "W0047",
+      "work_id": "arxiv:2505.09974",
+      "filename": "W0047.0004.json",
+      "sha256": "93a5f232c1afb2bf85dde6839bf689eb095b79438941cb86c11409720cf9f8d1",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:06:32.761574+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.540560+00:00",
+      "member_ids": [
+        "M0080"
+      ],
+      "context_checked_member_ids": [
+        "M0080"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "SEPARATE_INPUT_DETECTOR_PROTOCOL_NOT_ESTABLISHED"
+      ]
+    },
+    {
+      "review_id": "W0048",
+      "work_id": "arxiv:2505.12368",
+      "filename": "W0048.0005.json",
+      "sha256": "c956caedb33b7a24158c01e6035f7cf82fef18103b48e329573df0489a0ef0a0",
+      "record_revision": 5,
+      "checked_utc": "2026-10-21T18:26:55.039824+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.562560+00:00",
+      "member_ids": [
+        "M0011",
+        "M0081"
+      ],
+      "context_checked_member_ids": [
+        "M0011",
+        "M0081"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0049",
+      "work_id": "arxiv:2505.15420",
+      "filename": "W0049.0004.json",
+      "sha256": "3a0462f763a75d2d72a24c15575c9cf36d23e75727e719f76952ce692b66fb09",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:06:33.972425+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.586556+00:00",
+      "member_ids": [
+        "M0082"
+      ],
+      "context_checked_member_ids": [
+        "M0082"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BLACK_BOX_QUERY_RESPONSE_EXTRACTION_METHODS_CHECKED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_DETECTOR_BINARY_PROTOCOL_NOT_ESTABLISHED_IN_CHECKED_METHODS",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0050",
+      "work_id": "arxiv:2505.16934",
+      "filename": "W0050.0004.json",
+      "sha256": "ef2ced6710ece0b7bb8669daaae3279ed955742f2cdb522c412c0a4bbf058ecf",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:06:35.422718+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.610555+00:00",
+      "member_ids": [
+        "M0083"
+      ],
+      "context_checked_member_ids": [
+        "M0083"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "GENERATED_TEXT_WATERMARK_METHODS_CHECKED",
+        "INPUT_INJECTION_LABEL_PROTOCOL_NOT_ESTABLISHED_IN_CHECKED_METHODS",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0051",
+      "work_id": "arxiv:2505.22852",
+      "filename": "W0051.0004.json",
+      "sha256": "ea1ee21ba4f8975a3882cca96f7ea7b6c73d75dedd7f046a4783bf349c72567a",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:06:36.771805+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.633558+00:00",
+      "member_ids": [
+        "M0084"
+      ],
+      "context_checked_member_ids": [
+        "M0084"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "RECOMMENDATION_SCOPE_NOT_IMPLEMENTED_INPUT_DETECTOR_EXPERIMENT"
+      ]
+    },
+    {
+      "review_id": "W0052",
+      "work_id": "arxiv:2506.05446",
+      "filename": "W0052.0004.json",
+      "sha256": "2d2ef5973a4d8c4ea8da24b1db24974da550fbf3a7924d57bb77ffda6a808d3b",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:06:37.129482+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.660567+00:00",
+      "member_ids": [
+        "M0085"
+      ],
+      "context_checked_member_ids": [
+        "M0085"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0054",
+      "work_id": "arxiv:2506.06384",
+      "filename": "W0054.0004.json",
+      "sha256": "8d49410a2ed01b26db2f709611b7216be55af8bf67d4c3b904cf7517c88fad11",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:06:37.545441+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.690070+00:00",
+      "member_ids": [
+        "M0087"
+      ],
+      "context_checked_member_ids": [
+        "M0087"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0055",
+      "work_id": "arxiv:2506.07948",
+      "filename": "W0055.0004.json",
+      "sha256": "496dc3d3ad9197ea75a98490b1fd7ccf848453e63fd6f6aeec99aeaf3534cc9f",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:06:38.064290+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.719450+00:00",
+      "member_ids": [
+        "M0088"
+      ],
+      "context_checked_member_ids": [
+        "M0088"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0056",
+      "work_id": "arxiv:2506.12104",
+      "filename": "W0056.0004.json",
+      "sha256": "b4f8e8323777a740345a7a76b45a6546aa1d527c9842a9db4e08dcb330bba1fd",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:06:39.116329+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.748705+00:00",
+      "member_ids": [
+        "M0089"
+      ],
+      "context_checked_member_ids": [
+        "M0089"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0057",
+      "work_id": "arxiv:2506.19109",
+      "filename": "W0057.0004.json",
+      "sha256": "473823ce1cfc779dfb7296f131c54112fc2c430cfaa7fbe7a4e9c1aeafd13fed",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:06:39.811803+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.780700+00:00",
+      "member_ids": [
+        "M0090"
+      ],
+      "context_checked_member_ids": [
+        "M0090"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0058",
+      "work_id": "arxiv:2507.05630",
+      "filename": "W0058.0004.json",
+      "sha256": "1d5108b1bac71d6c581d022cac3e8c3b8810b5adf70af420d980c885cd35c7bd",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:15.248030+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.812698+00:00",
+      "member_ids": [
+        "M0091"
+      ],
+      "context_checked_member_ids": [
+        "M0091"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0059",
+      "work_id": "arxiv:2507.06323",
+      "filename": "W0059.0004.json",
+      "sha256": "1d8f5beda5d70f144b04ef2875ec2c54268da1230a3a02104befe421cf902efa",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:15.920981+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.837695+00:00",
+      "member_ids": [
+        "M0093"
+      ],
+      "context_checked_member_ids": [
+        "M0093"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "AGENT_ATTACK_SCENARIO_METHOD_STRUCTURE_CHECKED",
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_DETECTOR_BINARY_PROTOCOL_NOT_ESTABLISHED_IN_CHECKED_METHODS",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0060",
+      "work_id": "arxiv:2507.13169",
+      "filename": "W0060.0004.json",
+      "sha256": "97736899a57ca92c5c1e20ece41a2521d9138301dcc8d9db6d39f700aa447be9",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:16.583847+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.864696+00:00",
+      "member_ids": [
+        "M0094"
+      ],
+      "context_checked_member_ids": [
+        "M0094"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ORIGINAL_BINARY_INPUT_EXPERIMENT_NOT_ESTABLISHED"
+      ]
+    },
+    {
+      "review_id": "W0061",
+      "work_id": "arxiv:2507.15042",
+      "filename": "W0061.0004.json",
+      "sha256": "cc47d640ad63f83c41e34856d344a6e0950e78a9437ad7ba5041507b33c91f16",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:16.761594+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.890250+00:00",
+      "member_ids": [
+        "M0095"
+      ],
+      "context_checked_member_ids": [
+        "M0095"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0062",
+      "work_id": "arxiv:2507.15219",
+      "filename": "W0062.0004.json",
+      "sha256": "7b0f68e1a7c8d733deb644cf4ed6842526c541793c48689ecbec86503ea38991",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:17.648995+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.916919+00:00",
+      "member_ids": [
+        "M0096"
+      ],
+      "context_checked_member_ids": [
+        "M0096"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0063",
+      "work_id": "arxiv:2507.15330",
+      "filename": "W0063.0004.json",
+      "sha256": "4d60ae279eacba670fb039799014f749dcfe193e2674d69b5626bbe50e229953",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:18.084585+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.943876+00:00",
+      "member_ids": [
+        "M0097"
+      ],
+      "context_checked_member_ids": [
+        "M0097"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "GENERATED_RESPONSE_EVALUATION_UNIT",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0064",
+      "work_id": "arxiv:2507.20704",
+      "filename": "W0064.0004.json",
+      "sha256": "a7c7aaa20b69bd5d2fb4b4832fa50aa54c35694ea229d1fc111ac019c5907127",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:18.287865+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:41.972874+00:00",
+      "member_ids": [
+        "M0098"
+      ],
+      "context_checked_member_ids": [
+        "M0098"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "RESPONSE_DEPENDENT_CLASSIFICATION_CONTEXT"
+      ]
+    },
+    {
+      "review_id": "W0065",
+      "work_id": "arxiv:2508.00602",
+      "filename": "W0065.0004.json",
+      "sha256": "65a4092ee2ce52c127d3274c51254b61459c471d72640c930aa19943c8a32168",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:18.526756+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.001871+00:00",
+      "member_ids": [
+        "M0101"
+      ],
+      "context_checked_member_ids": [
+        "M0101"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "QUERY_ANSWER_EMBEDDING_AND_CONTENT_MODERATION_BOUNDARY"
+      ]
+    },
+    {
+      "review_id": "W0066",
+      "work_id": "arxiv:2508.02110",
+      "filename": "W0066.0004.json",
+      "sha256": "9421c9014d165070e7dff27748ea093d74ec70150364c5b989c2b9dbe53d2f49",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:19.055798+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.025870+00:00",
+      "member_ids": [
+        "M0102"
+      ],
+      "context_checked_member_ids": [
+        "M0102"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_DETECTOR_BINARY_PROTOCOL_NOT_ESTABLISHED_IN_CHECKED_METHODS",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "MALICIOUS_TOOL_OPTIMIZATION_AND_ATTACK_BASELINES_CHECKED"
+      ]
+    },
+    {
+      "review_id": "W0067",
+      "work_id": "arxiv:2508.02961",
+      "filename": "W0067.0004.json",
+      "sha256": "78a33d4eacc9095b664c534e8a634288c30396df0d9dd32e9d98471dd60cf48b",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:26:22.817475+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.051879+00:00",
+      "member_ids": [
+        "M0105"
+      ],
+      "context_checked_member_ids": [],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_ATTEMPT_COMPLETED_BODY_UNAVAILABLE",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "PRIMARY_BODY_UNAVAILABLE",
+        "ROOT_BOUND_PRIMARY_BODY_UNAVAILABLE",
+        "SOURCE_CONTEXT_HELD_BODY_UNAVAILABLE",
+        "SOURCE_HELD_NO_VERSION_SUBSTITUTION"
+      ]
+    },
+    {
+      "review_id": "W0068",
+      "work_id": "arxiv:2508.03793",
+      "filename": "W0068.0004.json",
+      "sha256": "e73f7d57cfbecb0dc9d5cf17449ffe9f21bdc1aec126960ec7cc62fc10f8514d",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:20.189318+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.071892+00:00",
+      "member_ids": [
+        "M0106"
+      ],
+      "context_checked_member_ids": [
+        "M0106"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "OUTPUT_CONDITIONED_ATTRIBUTION_METHOD"
+      ]
+    },
+    {
+      "review_id": "W0069",
+      "work_id": "arxiv:2508.04281",
+      "filename": "W0069.0004.json",
+      "sha256": "571fcfb3786771bca5993b097fb404171634a232bf5c5293efaa32d55decb9af",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:21.148016+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.101120+00:00",
+      "member_ids": [
+        "M0107"
+      ],
+      "context_checked_member_ids": [
+        "M0107"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0070",
+      "work_id": "arxiv:2508.06418",
+      "filename": "W0070.0004.json",
+      "sha256": "533331337b2268cce17bdc1a3ddca60413ff24a8f0964353e11a0f880b85d93a",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:22.871663+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.125999+00:00",
+      "member_ids": [
+        "M0108"
+      ],
+      "context_checked_member_ids": [
+        "M0108"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0071",
+      "work_id": "arxiv:2508.08127",
+      "filename": "W0071.0004.json",
+      "sha256": "0a00f3bee22218bf02f59613c62dcafc4cb9bd849a2acde7494e3c4d4323e303",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:23.214352+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.155957+00:00",
+      "member_ids": [
+        "M0109"
+      ],
+      "context_checked_member_ids": [
+        "M0109"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "AGENT_NODE_RESPONSE_FEATURE_UNIT",
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0072",
+      "work_id": "arxiv:2508.09288",
+      "filename": "W0072.0004.json",
+      "sha256": "18d10f6c995439577ef5e647a113db54f74b275da33d00ae3a1048ccb86197d5",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:24.068165+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.182075+00:00",
+      "member_ids": [
+        "M0110"
+      ],
+      "context_checked_member_ids": [
+        "M0110"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "TOKEN_INFLUENCE_AUTHORIZATION_UNIT"
+      ]
+    },
+    {
+      "review_id": "W0073",
+      "work_id": "arxiv:2508.17155",
+      "filename": "W0073.0004.json",
+      "sha256": "95ec27bc796d83855267d9d8ea49c8211a2e78ecd24daa668681708733557477",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:24.432711+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.206283+00:00",
+      "member_ids": [
+        "M0113"
+      ],
+      "context_checked_member_ids": [
+        "M0113"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "TOCTOU_TOOL_SEQUENCE_LABELS"
+      ]
+    },
+    {
+      "review_id": "W0074",
+      "work_id": "arxiv:2508.17884",
+      "filename": "W0074.0004.json",
+      "sha256": "797db792f8b35c9a078a54066675f16a2cb32306d80a8a222879ceedf54ea089",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:24.964854+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.228303+00:00",
+      "member_ids": [
+        "M0114"
+      ],
+      "context_checked_member_ids": [
+        "M0114"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0075",
+      "work_id": "arxiv:2508.19461",
+      "filename": "W0075.0004.json",
+      "sha256": "b5a892de035ef0de1f69f3644fb2024071aa99c11a22f7a1c83d04eca33f27b1",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:25.181329+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.251300+00:00",
+      "member_ids": [
+        "M0115"
+      ],
+      "context_checked_member_ids": [
+        "M0115"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "COMPLETE_AGENT_TRAJECTORY_MONITOR_METHODS_AND_APPENDICES_CHECKED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_ONLY_DETECTOR_CONTEXT_NOT_ESTABLISHED"
+      ]
+    },
+    {
+      "review_id": "W0076",
+      "work_id": "arxiv:2508.20890",
+      "filename": "W0076.0004.json",
+      "sha256": "a1688c55f5d77e37311e976e4b360123b2a040962107cb8675abe602d65bad31",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:27.350808+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.272315+00:00",
+      "member_ids": [
+        "M0117"
+      ],
+      "context_checked_member_ids": [
+        "M0117"
+      ],
+      "reused_evidence_count": 3,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "EVALUATED_INPUT_LANGUAGE_NOT_ESTABLISHED_BY_MODEL_NAMES_OR_PAPER_PROSE",
+        "REUSED_DETECTOR_PROCEDURE_CONTEXT_RECHECKED"
+      ]
+    },
+    {
+      "review_id": "W0077",
+      "work_id": "arxiv:2509.00088",
+      "filename": "W0077.0004.json",
+      "sha256": "fa231c79303e00309269e3515dfeaef7638b2fe4feac99e921ad0f52d6e8f7ec",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:27.819799+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.294497+00:00",
+      "member_ids": [
+        "M0118"
+      ],
+      "context_checked_member_ids": [
+        "M0118"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "TASK_GRADING_OBJECTIVE_BOUNDARY"
+      ]
+    },
+    {
+      "review_id": "W0078",
+      "work_id": "arxiv:2509.05608",
+      "filename": "W0078.0004.json",
+      "sha256": "45446258069d23443a9a35ca69a703bc744bb21a5ebf8361b61e5195e7e1db16",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:28.151690+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.318179+00:00",
+      "member_ids": [
+        "M0119"
+      ],
+      "context_checked_member_ids": [
+        "M0119"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "UPSTREAM_FLAGGING_AND_FINGERPRINT_MATCH_BOUNDARY"
+      ]
+    },
+    {
+      "review_id": "W0079",
+      "work_id": "arxiv:2509.05755",
+      "filename": "W0079.0004.json",
+      "sha256": "29db2e644d05b81e8cf1c4aca616cb985981965301b02fa80c5d874fc184d9c4",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:28.939654+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.339833+00:00",
+      "member_ids": [
+        "M0120"
+      ],
+      "context_checked_member_ids": [
+        "M0120"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0080",
+      "work_id": "arxiv:2509.10540",
+      "filename": "W0080.0004.json",
+      "sha256": "35cb16d9ac2485a946fdff782031676d359cc667c38482f157108998150ec668",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:12:29.534281+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.363846+00:00",
+      "member_ids": [
+        "M0121"
+      ],
+      "context_checked_member_ids": [
+        "M0121"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "DEPLOYED_CLASSIFIER_CASE_STUDY_PROTOCOL_LIMIT",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0081",
+      "work_id": "arxiv:2509.11431",
+      "filename": "W0081.0004.json",
+      "sha256": "8a724bdb4cfa9fac72fbbcf5e730cfdd27a637f628b0e58761e7d38947c5b6de",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:26:22.531220+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.385844+00:00",
+      "member_ids": [
+        "M0122"
+      ],
+      "context_checked_member_ids": [
+        "M0122"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ROLE_PERMISSION_AUTHORIZATION_UNIT"
+      ]
+    },
+    {
+      "review_id": "W0082",
+      "work_id": "arxiv:2509.14285",
+      "filename": "W0082.0004.json",
+      "sha256": "1ffe264d6197bb3c9ebfae28dc475cf0be693e8f9dff1ec1760674174f3f8f2c",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:29.216952+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.408837+00:00",
+      "member_ids": [
+        "M0123"
+      ],
+      "context_checked_member_ids": [
+        "M0123"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0083",
+      "work_id": "arxiv:2509.14956",
+      "filename": "W0083.0004.json",
+      "sha256": "b5c80b1e6dd0afe054632ae6a8112da43451a9a36a0c0ac9d81df55b522c2fed",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:29.342588+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.426834+00:00",
+      "member_ids": [
+        "M0124"
+      ],
+      "context_checked_member_ids": [
+        "M0124"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "ARCHITECTURAL_PROPOSAL_SCOPE",
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0084",
+      "work_id": "arxiv:2509.18557",
+      "filename": "W0084.0004.json",
+      "sha256": "5c9e41a29023c34ac000217efe702c41c61159acac55657f7f1b813f14bfa1d9",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:29.570236+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.447841+00:00",
+      "member_ids": [
+        "M0125"
+      ],
+      "context_checked_member_ids": [
+        "M0125"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0085",
+      "work_id": "arxiv:2509.21367",
+      "filename": "W0085.0004.json",
+      "sha256": "e3cf63556d9d26eab16eaf026361c4ba3669df94eff7f362207f8bdc42ebc503",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:29.714360+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.464842+00:00",
+      "member_ids": [
+        "M0126"
+      ],
+      "context_checked_member_ids": [
+        "M0126"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INTENT_RELEVANCE_DECISION_BOUNDARY"
+      ]
+    },
+    {
+      "review_id": "W0086",
+      "work_id": "arxiv:2509.23994",
+      "filename": "W0086.0004.json",
+      "sha256": "73e3fe348727e483db12f13afa4620da1baed48fe0466e782bf67b21ec173332",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:29.848745+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.487383+00:00",
+      "member_ids": [
+        "M0127"
+      ],
+      "context_checked_member_ids": [
+        "M0127"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "POLICY_GENERATION_AND_TARGET_MODEL_TESTING_BOUNDARY"
+      ]
+    },
+    {
+      "review_id": "W0087",
+      "work_id": "arxiv:2509.25926",
+      "filename": "W0087.0004.json",
+      "sha256": "d2767e85da38960ab78ef961701c3b9069a9104a328bdce27222900e55d04493",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:29.999986+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.512128+00:00",
+      "member_ids": [
+        "M0129"
+      ],
+      "context_checked_member_ids": [
+        "M0129"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ROLE_SEPARATION_MECHANISM_BOUNDARY"
+      ]
+    },
+    {
+      "review_id": "W0088",
+      "work_id": "arxiv:2510.01354",
+      "filename": "W0088.0004.json",
+      "sha256": "f82518745841daabf10fbf6b66c7795f390b31f5b192cc7054c57cb5fc7de34c",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:30.220579+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.531293+00:00",
+      "member_ids": [
+        "M0130"
+      ],
+      "context_checked_member_ids": [
+        "M0130"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0089",
+      "work_id": "arxiv:2510.01586",
+      "filename": "W0089.0004.json",
+      "sha256": "fcc84d38f54e364c8d6bc66e6578137f034802a5302defe6e176845b7e9a901c",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:30.423385+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.556976+00:00",
+      "member_ids": [
+        "M0131"
+      ],
+      "context_checked_member_ids": [
+        "M0131"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0090",
+      "work_id": "arxiv:2510.04257",
+      "filename": "W0090.0004.json",
+      "sha256": "17d741b714f006b0f519c55d7097b7c798a3c0f313820d509462607b24bda1c2",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:30.609791+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.577986+00:00",
+      "member_ids": [
+        "M0132"
+      ],
+      "context_checked_member_ids": [
+        "M0132"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "MULTIMODAL_WEB_AGENT_ATTACK_METHODS_AND_DEFENSE_CONTEXT_CHECKED",
+        "TEXT_ONLY_BINARY_INPUT_DETECTOR_PROTOCOL_NOT_ESTABLISHED"
+      ]
+    },
+    {
+      "review_id": "W0091",
+      "work_id": "arxiv:2510.04528",
+      "filename": "W0091.0004.json",
+      "sha256": "485a01015ced2982d890fdd0ed9b4992e8e5161c855edd7e512b8a72114f0235",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:31.022908+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.598535+00:00",
+      "member_ids": [
+        "M0133"
+      ],
+      "context_checked_member_ids": [
+        "M0133"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "MULTI_THREAT_MAPPING_AND_EVALUATION_CONTEXT_UNRESOLVED"
+      ]
+    },
+    {
+      "review_id": "W0092",
+      "work_id": "arxiv:2510.04885",
+      "filename": "W0092.0004.json",
+      "sha256": "9ba3cdd40e95be9d786ead911e176d14f60a5cdc2c0b5aad47cb1f04c52c181a",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:31.242010+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.620205+00:00",
+      "member_ids": [
+        "M0134"
+      ],
+      "context_checked_member_ids": [
+        "M0134"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "COMPLETE_INPUT_BINARY_OPERATING_RULE_UNRESOLVED",
+        "DETECTOR_PASSAGES_INSEPARABLE_FROM_FINDINGS_FOR_ADDITIONAL_RELEASE",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ORIGINAL_ATTACK_TRAINING_DATA_AND_DETECTOR_COMPARISON_CONTEXT_CHECKED"
+      ]
+    },
+    {
+      "review_id": "W0093",
+      "work_id": "arxiv:2510.08829",
+      "filename": "W0093.0004.json",
+      "sha256": "7e8f592878553017dd438defd1b8885cfd197eb0ecb9f7e1c808c848b9f9dd5a",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:31.452200+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.643205+00:00",
+      "member_ids": [
+        "M0135"
+      ],
+      "context_checked_member_ids": [
+        "M0135"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0094",
+      "work_id": "arxiv:2510.13351",
+      "filename": "W0094.0004.json",
+      "sha256": "3011c50ff6782dddac853549cd0b4ab9fee52fc2768c90b4bf09249c20773031",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:31.881197+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.672218+00:00",
+      "member_ids": [
+        "M0137"
+      ],
+      "context_checked_member_ids": [
+        "M0137"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "MULTICATEGORY_SAFETY_LABEL_AND_MODALITY_BOUNDARY"
+      ]
+    },
+    {
+      "review_id": "W0095",
+      "work_id": "arxiv:2510.14005",
+      "filename": "W0095.0004.json",
+      "sha256": "31a62b74ae018fd70e3f9654195866dab6b629da32684378c6067c687a465032",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:14:32.357108+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.697777+00:00",
+      "member_ids": [
+        "M0138"
+      ],
+      "context_checked_member_ids": [
+        "M0138"
+      ],
+      "reused_evidence_count": 4,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0096",
+      "work_id": "arxiv:2510.19169",
+      "filename": "W0096.0004.json",
+      "sha256": "16511b28b1691dc4ef7a4b881382815d9319a581c0dde6075b5c6c66515e6c9b",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:12.929207+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.728161+00:00",
+      "member_ids": [
+        "M0139"
+      ],
+      "context_checked_member_ids": [
+        "M0139"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "POLICY_DEFINED_SAFETY_LABEL_BOUNDARY"
+      ]
+    },
+    {
+      "review_id": "W0097",
+      "work_id": "arxiv:2510.19207",
+      "filename": "W0097.0004.json",
+      "sha256": "48895629cfe3a8b0966520e6ad2d95ebc3c45655b9636564a204cd1b30c72585",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:13.148802+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.758205+00:00",
+      "member_ids": [
+        "M0140"
+      ],
+      "context_checked_member_ids": [
+        "M0140"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0098",
+      "work_id": "arxiv:2510.19844",
+      "filename": "W0098.0004.json",
+      "sha256": "f9571d21664050136231f7e10719e820fb10dc52a6f8cb87fe4d397669e78d06",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:13.550626+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.785259+00:00",
+      "member_ids": [
+        "M0141"
+      ],
+      "context_checked_member_ids": [
+        "M0141"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0099",
+      "work_id": "arxiv:2510.22628",
+      "filename": "W0099.0004.json",
+      "sha256": "27609de75b329c409f154a5aff7013f9405b1f70ae79f82dfecaa171ed73c641",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:13.660994+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.811605+00:00",
+      "member_ids": [
+        "M0142"
+      ],
+      "context_checked_member_ids": [
+        "M0142"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0100",
+      "work_id": "arxiv:2510.22963",
+      "filename": "W0100.0004.json",
+      "sha256": "ed58e7169a2d3eef585da8d866a45dad7bc09b51923d26253b7ace1b6ddcdb9e",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:13.931932+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.838634+00:00",
+      "member_ids": [
+        "M0143"
+      ],
+      "context_checked_member_ids": [
+        "M0143"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "COMPRESSOR_ATTACK_METHODS_AND_EVALUATION_CONTEXT_CHECKED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_DETECTOR_BINARY_PROTOCOL_NOT_ESTABLISHED_IN_CHECKED_METHODS",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0101",
+      "work_id": "arxiv:2511.01287",
+      "filename": "W0101.0004.json",
+      "sha256": "518bb4b4a16a596f4dac06b8e32cb59fbfc30cf38f05904565e4f7530e1d1626",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:14.586480+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.860742+00:00",
+      "member_ids": [
+        "M0144"
+      ],
+      "context_checked_member_ids": [
+        "M0144"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0102",
+      "work_id": "arxiv:2511.03247",
+      "filename": "W0102.0004.json",
+      "sha256": "78aaa50a57671a0b5fc72454c787ddf2d52591b54fcbaccf24aa343be3e5fd34",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:15.031562+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.887271+00:00",
+      "member_ids": [
+        "M0145"
+      ],
+      "context_checked_member_ids": [
+        "M0145"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "TARGET_RESPONSE_HARMFULNESS_SCORING_UNIT"
+      ]
+    },
+    {
+      "review_id": "W0103",
+      "work_id": "arxiv:2511.04508",
+      "filename": "W0103.0004.json",
+      "sha256": "4554b3782629bfde8f9e7aced53624c4c43dfd23dca749f068287c145a99632e",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:26:22.622214+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.913795+00:00",
+      "member_ids": [
+        "M0146"
+      ],
+      "context_checked_member_ids": [
+        "M0146"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "REVIEWED_NETWORK_PACKET_CLASSIFICATION_BOUNDARY"
+      ]
+    },
+    {
+      "review_id": "W0104",
+      "work_id": "arxiv:2511.05867",
+      "filename": "W0104.0004.json",
+      "sha256": "26594b7e5a75bb607deb1f43717d9097c893bfff19fe184e42a1867310066932",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:15.133877+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.939376+00:00",
+      "member_ids": [
+        "M0147"
+      ],
+      "context_checked_member_ids": [
+        "M0147"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "LOG_AND_CHAT_HISTORY_RISK_LABEL_BOUNDARY"
+      ]
+    },
+    {
+      "review_id": "W0105",
+      "work_id": "arxiv:2511.05919",
+      "filename": "W0105.0004.json",
+      "sha256": "ebbff6226bf46da06e1cbd25074cefa70e5a21d21a93fe5ae939f9bf4a7c6ae1",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:17.550621+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.966372+00:00",
+      "member_ids": [
+        "M0148"
+      ],
+      "context_checked_member_ids": [
+        "M0148"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_DETECTOR_BINARY_PROTOCOL_NOT_ESTABLISHED_IN_CHECKED_METHODS",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "QUERY_PATH_ATTACK_AND_CLOSED_BOOK_QA_METHODS_CHECKED"
+      ]
+    },
+    {
+      "review_id": "W0106",
+      "work_id": "arxiv:2511.06212",
+      "filename": "W0106.0004.json",
+      "sha256": "43a065f2bc928b193d0116d251daf4dd09d1eed8c0020095203bd1dc5339cabe",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:18.055848+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:42.994377+00:00",
+      "member_ids": [
+        "M0149"
+      ],
+      "context_checked_member_ids": [
+        "M0149"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "NETWORK_TRAFFIC_AND_GENERATED_ADVICE_UNITS"
+      ]
+    },
+    {
+      "review_id": "W0107",
+      "work_id": "arxiv:2511.12295",
+      "filename": "W0107.0004.json",
+      "sha256": "80fffc2f699cef2fffd601abd5353b4f84bba0cb515a3d2edb23ea20795771c5",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:26:22.672236+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.021380+00:00",
+      "member_ids": [
+        "M0150"
+      ],
+      "context_checked_member_ids": [
+        "M0150"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0108",
+      "work_id": "arxiv:2511.15203",
+      "filename": "W0108.0004.json",
+      "sha256": "3f08a5a647eb0c6394a2e3fdce124664469291ca9cfe17b4d16b3371a15a8b2e",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:18.226524+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.053373+00:00",
+      "member_ids": [
+        "M0151"
+      ],
+      "context_checked_member_ids": [
+        "M0151"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "AGENT_AUDITING_UNIT_AND_TIMING_QUALIFICATION",
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0109",
+      "work_id": "arxiv:2511.15759",
+      "filename": "W0109.0004.json",
+      "sha256": "764fc4f93fdf17bb07289ea90c6fbd2f3c16aec522d607f8fac34336819b5fc9",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:19.148144+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.089925+00:00",
+      "member_ids": [
+        "M0152"
+      ],
+      "context_checked_member_ids": [
+        "M0152"
+      ],
+      "reused_evidence_count": 3,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0110",
+      "work_id": "arxiv:2511.21752",
+      "filename": "W0110.0004.json",
+      "sha256": "87e7943822ee490c98a2c41177daafe81fcaa1ef84cf7bc4bfcb831f3e13f305",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:19.318318+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.138674+00:00",
+      "member_ids": [
+        "M0153"
+      ],
+      "context_checked_member_ids": [
+        "M0153"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0111",
+      "work_id": "arxiv:2512.05745",
+      "filename": "W0111.0004.json",
+      "sha256": "6a0c768c8f6f60f786a5facba17d1867ab71fd50fd153c24d1929ac240e8c65c",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:17:19.474983+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.173268+00:00",
+      "member_ids": [
+        "M0154"
+      ],
+      "context_checked_member_ids": [
+        "M0154"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0112",
+      "work_id": "arxiv:2512.06556",
+      "filename": "W0112.0004.json",
+      "sha256": "d4b42a7298ef455b14f93c7ed0cb317f6584d9fd147589549c15e17737bca3cd",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:39.612122+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.203031+00:00",
+      "member_ids": [
+        "M0155"
+      ],
+      "context_checked_member_ids": [
+        "M0155"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_DETECTOR_BINARY_PROTOCOL_NOT_ESTABLISHED_IN_CHECKED_METHODS",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "TOOL_DESCRIPTOR_SELECTION_AND_REASONING_EVALUATION_CHECKED"
+      ]
+    },
+    {
+      "review_id": "W0113",
+      "work_id": "arxiv:2512.08417",
+      "filename": "W0113.0004.json",
+      "sha256": "03bf316c1ae9237be4f21f9860aa1fb6276b9bd0f40c3cfb7fc8fe6732c7478c",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:39.939996+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.229036+00:00",
+      "member_ids": [
+        "M0156"
+      ],
+      "context_checked_member_ids": [
+        "M0156"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0114",
+      "work_id": "arxiv:2512.10104",
+      "filename": "W0114.0004.json",
+      "sha256": "85e04d4a9ad8850bd17be960ab5796b71df4c29ef2b6e05ce0ff8af50f236613",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:40.650003+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.260027+00:00",
+      "member_ids": [
+        "M0157"
+      ],
+      "context_checked_member_ids": [
+        "M0157"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "PHISHING_LABEL_AND_DOWNSTREAM_RESPONSE_BOUNDARY"
+      ]
+    },
+    {
+      "review_id": "W0115",
+      "work_id": "arxiv:2512.12583",
+      "filename": "W0115.0004.json",
+      "sha256": "8c3f5fb8666653036675ecfc9f2b1fe212dbdcc200097b5adefdbeb90870f53f",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:40.808978+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.289085+00:00",
+      "member_ids": [
+        "M0158"
+      ],
+      "context_checked_member_ids": [
+        "M0158"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0116",
+      "work_id": "arxiv:2512.12921",
+      "filename": "W0116.0004.json",
+      "sha256": "36ce5df3cc19b3b368180fcd49a79a9c8d16a6b2e8aa7d916e9a272830eef102",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:40.923830+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.320952+00:00",
+      "member_ids": [
+        "M0159"
+      ],
+      "context_checked_member_ids": [
+        "M0159"
+      ],
+      "reused_evidence_count": 0,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "THREAT_TAXONOMY_METHOD_SCOPE"
+      ]
+    },
+    {
+      "review_id": "W0117",
+      "work_id": "arxiv:2512.15081",
+      "filename": "W0117.0004.json",
+      "sha256": "05acb91fbc8b2c6bd31f6e4cbc455fbfc2ba56db836a98244b5adb71a5dcffaa",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:41.201041+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.351016+00:00",
+      "member_ids": [
+        "M0160"
+      ],
+      "context_checked_member_ids": [
+        "M0160"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "ACCESS_ENTITY_AND_OUTPUT_POLICY_UNITS",
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0118",
+      "work_id": "arxiv:2512.16307",
+      "filename": "W0118.0004.json",
+      "sha256": "733e97eec32883fd8c42c58341968691b1b70bb16bc679bde708f1eb01730b10",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:41.383789+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.385878+00:00",
+      "member_ids": [
+        "M0161"
+      ],
+      "context_checked_member_ids": [
+        "M0161"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "DISTINCT_TARGET_SEQUENCE_AND_EVALUATED_INPUT_LANGUAGE_UNRESOLVED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "KNOWN_ANSWER_AND_ITERATIVE_DEFENSE_PROMPT_METHODS_RECHECKED"
+      ]
+    },
+    {
+      "review_id": "W0119",
+      "work_id": "arxiv:2512.23557",
+      "filename": "W0119.0004.json",
+      "sha256": "308ca8baa6eda72408905fd0d101b58c409cabe868c2fdbcfb23acf82e72d2dd",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:41.485191+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.415886+00:00",
+      "member_ids": [
+        "M0162"
+      ],
+      "context_checked_member_ids": [
+        "M0162"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "PROPOSED_SANITIZATION_AND_OUTPUT_VALIDATION_SEQUENCE"
+      ]
+    },
+    {
+      "review_id": "W0120",
+      "work_id": "arxiv:2601.04795",
+      "filename": "W0120.0004.json",
+      "sha256": "1c770ee3a2da308475b9719c41a83543c6a2eb2329d83f6719b5420a845e3f42",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:41.612380+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.448885+00:00",
+      "member_ids": [
+        "M0163"
+      ],
+      "context_checked_member_ids": [
+        "M0163"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0121",
+      "work_id": "arxiv:2601.06884",
+      "filename": "W0121.0004.json",
+      "sha256": "db8118ab0cf3df8d22c443c6f6814687c2180338030cf6f63046410fe7203e11",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:42.224968+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.481185+00:00",
+      "member_ids": [
+        "M0164"
+      ],
+      "context_checked_member_ids": [
+        "M0164"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_TRANSFORMATION_AND_REVIEW_SCORE_UNIT"
+      ]
+    },
+    {
+      "review_id": "W0122",
+      "work_id": "arxiv:2601.07835",
+      "filename": "W0122.0004.json",
+      "sha256": "3bedb24c9384b5b474abceb1c564481b1fc97047d9c36d7b70b613da10f2bc5f",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:42.477011+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.518205+00:00",
+      "member_ids": [
+        "M0165"
+      ],
+      "context_checked_member_ids": [
+        "M0165"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "SECURITY_WORKFLOW_CONSTITUTION_AND_RESPONSE_DATA_METHODS_CHECKED",
+        "SEPARATE_BINARY_INPUT_INJECTION_PROTOCOL_NOT_ESTABLISHED"
+      ]
+    },
+    {
+      "review_id": "W0123",
+      "work_id": "arxiv:2601.10173",
+      "filename": "W0123.0004.json",
+      "sha256": "6a9fd71c34100b9d8d3174181ed62c70733cb1107238e2a130af75b82616edf6",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:42.727215+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.545570+00:00",
+      "member_ids": [
+        "M0167"
+      ],
+      "context_checked_member_ids": [
+        "M0167"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "REASONING_TRAJECTORY_PREFERENCE_UNIT"
+      ]
+    },
+    {
+      "review_id": "W0124",
+      "work_id": "arxiv:2601.10338",
+      "filename": "W0124.0004.json",
+      "sha256": "34256289d71a199e06aeeef9b3f359b0a7b78a9e68003f74cb30380bc9df489b",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:42.902985+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.573565+00:00",
+      "member_ids": [
+        "M0168"
+      ],
+      "context_checked_member_ids": [
+        "M0168"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 3,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0341",
+      "work_id": "doi:10.1145/3733799.3762963",
+      "filename": "W0341.0004.json",
+      "sha256": "b46d47e9ec74cb9b8c7696c4efc0a1f2a6252cff62b55826249c6a1287bca3a0",
+      "record_revision": 4,
+      "checked_utc": "2026-10-21T18:19:44.357763+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.602573+00:00",
+      "member_ids": [
+        "M0044"
+      ],
+      "context_checked_member_ids": [
+        "M0044"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 0,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "ALIGNMENT_POISONING_AND_TASK_RESPONSE_METHODS_RECHECKED",
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "DISCUSSION_OF_DETECTORS_NOT_ORIGINAL_INPUT_DETECTOR_PROTOCOL",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0348",
+      "work_id": "doi:10.18653/v1/2025.acl-long.359",
+      "filename": "W0348.0005.json",
+      "sha256": "8a77aeeb19cd74d9b71e36a57df98a02bf8fefc6c5cb6e3add582c9d04da063e",
+      "record_revision": 5,
+      "checked_utc": "2026-10-21T18:26:55.197652+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.627566+00:00",
+      "member_ids": [
+        "M0019",
+        "M0061"
+      ],
+      "context_checked_member_ids": [
+        "M0019",
+        "M0061"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 1,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0352",
+      "work_id": "doi:10.18653/v1/2025.findings-emnlp.1060",
+      "filename": "W0352.0005.json",
+      "sha256": "eb99478cf54c68aa18d0f23794e8f6b8443688df41c446a4cebdc775d3c1b721",
+      "record_revision": 5,
+      "checked_utc": "2026-10-21T18:26:55.780279+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.655054+00:00",
+      "member_ids": [
+        "M0021",
+        "M0078"
+      ],
+      "context_checked_member_ids": [
+        "M0021",
+        "M0078"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 3,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": []
+    },
+    {
+      "review_id": "W0354",
+      "work_id": "doi:10.18653/v1/2025.findings-naacl.123",
+      "filename": "W0354.0005.json",
+      "sha256": "8148f8e38569e5220ab04f704039b8d01e0eb8a219470af48bea9fcaaa646e54",
+      "record_revision": 5,
+      "checked_utc": "2026-10-21T18:26:55.996795+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.685084+00:00",
+      "member_ids": [
+        "M0010",
+        "M0051"
+      ],
+      "context_checked_member_ids": [
+        "M0010",
+        "M0051"
+      ],
+      "reused_evidence_count": 2,
+      "new_method_fact_count": 3,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "ENGLISH_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    },
+    {
+      "review_id": "W0356",
+      "work_id": "doi:10.18653/v1/2025.ijcnlp-long.33",
+      "filename": "W0356.0005.json",
+      "sha256": "18d1d68c878b535a0785a2b0a8bc3569126325e31ef1b63ff1c8c00a770fbebc",
+      "record_revision": 5,
+      "checked_utc": "2026-10-21T18:26:56.286901+00:00",
+      "revision_checked_utc": "2026-10-22T09:48:43.715863+00:00",
+      "member_ids": [
+        "M0013",
+        "M0099"
+      ],
+      "context_checked_member_ids": [
+        "M0013",
+        "M0099"
+      ],
+      "reused_evidence_count": 1,
+      "new_method_fact_count": 2,
+      "restriction_state": "ASSIGNED_SOURCE_CONTEXT_CHECKS_COMPLETED_WITH_UNRESOLVED_METHOD_CODES",
+      "remaining_fact_codes": [
+        "BEFORE_TARGET_ANSWER_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "BINARY_EVALUATION_CONTROLLED_EVIDENCE_REMAINS_REQUIRED",
+        "INPUT_INJECTION_TASK_CONTROLLED_EVIDENCE_REMAINS_REQUIRED"
+      ]
+    }
+  ],
+  "input_receipt": {
+    "filename": "INPUT_RECEIPTS.0001.json",
+    "sha256": "537e4473205b8ac0fb6fcb73cdb601e075c1389d06afa31b12cdf8d455bfed50"
+  },
+  "role_receipt": {
+    "filename": "ROLE_INPUT_ATTESTATION.0002.json",
+    "sha256": "bd7a52203a700c060d8b53dd37d775a5e74f402bc3815aba156254cab7915e43"
+  },
+  "validation_receipt": {
+    "filename": "VALIDATION.0001.json",
+    "sha256": "b24782ca8b958f19653b9e6c7b1892f6b9cf05a9c38825686e0ba153ae5ba174"
+  },
+  "correction_receipts": [
+    {
+      "filename": "CORRECTION_RECEIPT.0001.json",
+      "sha256": "44259da6760eb69db52fcb78009d0177662403c893258b917b3765ba1cd3598b"
+    },
+    {
+      "filename": "CONTEXT_COMPLETION_RECEIPT.0001.json",
+      "sha256": "4c8391ff0d5eadd8a6bd930ffca90dbe8674064eec2546fbbd5ae4af9cb004e8"
+    }
+  ],
+  "limitations": [
+    "Bounded source-method passages and structural searches were inspected; selected PDF method pages were visually checked, not every page of every PDF.",
+    "Two exact-version primary bodies remain unavailable, with explicit source-held records and no method guesses.",
+    "English evidence is limited to the actual evaluated data, construction, or processing context specified by each fact.",
+    "Some sources document other decision units or response-dependent methods; their method boundaries remain explicit without work-level judgments.",
+    "New facts received a second local semantic pass by this same actor. The root release replay is separate.",
+    "No publication, eligibility decisions, sampling, B2 work, or changes to tracked documents were performed."
+  ],
+  "release_boundary": "Source-restriction completion only. Root packaging/release replay and any separate eligibility review are distinct activities."
+}

@@ -1,0 +1,969 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0048",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T12:04:37.480726+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0048.provider.0001.json",
+  "provider_packet_sha256": "0b6cd42ebc5f60922d4100a608a574140e065107b21c11facbbd66e2e37bdae4",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "acl:2025.llmsec-1.13:publication",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\951f8700f75ac702b1b656394d31d626188b64c1816cd4f04c45a8cb2045bd30",
+    "raw_sha256": "951f8700f75ac702b1b656394d31d626188b64c1816cd4f04c45a8cb2045bd30",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0011.json",
+    "acquisition_receipt_sha256": "2535e1b0ae112548f9fcc3e0ccb8cdcfb8284a9fb2cf23bbb316a2428bbe4462",
+    "captured_version_id": null,
+    "version_state": "EXPLICIT_URL_ONLY_BODY_VERSION_UNCONFIRMED"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        14,
+        25
+      ],
+      [
+        29,
+        42
+      ],
+      [
+        51,
+        55
+      ],
+      [
+        97,
+        106
+      ],
+      [
+        135,
+        160
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actually read generation architecture, safe/malicious construction, model/setup and relevant appendix judgment/training templates. Complete experiment-arm accounting not certified; source baseline reuse is explicit, no version transfer.",
+    "locator_sha256": "890325ba4f45f8423292523a17315ddce19fa3cf8d74efa616a3282082962ec2",
+    "locators": [
+      {
+        "n": 14,
+        "kind": "pdf_block",
+        "page_1_based": 2,
+        "block": 1,
+        "bbox": [
+          70.46351623535156,
+          359.87994384765625,
+          291.0453186035156,
+          698.2233276367188
+        ],
+        "sha256": "288a839f9f840877341af9de3c665ed0738d717be4707530866fcb01510d4675"
+      },
+      {
+        "n": 15,
+        "kind": "pdf_block",
+        "page_1_based": 2,
+        "block": 2,
+        "bbox": [
+          70.85653686523438,
+          713.889892578125,
+          267.21923828125,
+          728.0833740234375
+        ],
+        "sha256": "0e3c02c932e7635ac72105ebdee04c7f0c83c61a69bfe6ac1b52d8b1621c274f"
+      },
+      {
+        "n": 16,
+        "kind": "pdf_block",
+        "page_1_based": 2,
+        "block": 3,
+        "bbox": [
+          70.46351623535156,
+          735.668701171875,
+          291.0469665527344,
+          775.9141845703125
+        ],
+        "sha256": "b6d7bcd685b609af63e1ba765b8700419af3284ab3cfe0451768d625e7fd5d4d"
+      },
+      {
+        "n": 17,
+        "kind": "pdf_block",
+        "page_1_based": 2,
+        "block": 4,
+        "bbox": [
+          305.7512512207031,
+          359.87994384765625,
+          526.2306518554688,
+          522.0745239257812
+        ],
+        "sha256": "a4173fd4d418fb415045241e518eb4779fb4edf045357e72bfaf89ae1f1d1477"
+      },
+      {
+        "n": 18,
+        "kind": "pdf_block",
+        "page_1_based": 2,
+        "block": 5,
+        "bbox": [
+          306.144287109375,
+          537.7410888671875,
+          469.8870544433594,
+          551.9345703125
+        ],
+        "sha256": "49bd7ad260774b8e7acfb9882cfbbd821e052c39b116d8c5662a3af0da39f66e"
+      },
+      {
+        "n": 19,
+        "kind": "pdf_block",
+        "page_1_based": 2,
+        "block": 6,
+        "bbox": [
+          305.7512512207031,
+          559.5198974609375,
+          526.3308715820312,
+          775.9141845703125
+        ],
+        "sha256": "e8a10382e004001a7fd26c063b1354543d9e398b64996a74756c8fbb74a5c4c3"
+      },
+      {
+        "n": 20,
+        "kind": "pdf_block",
+        "page_1_based": 2,
+        "block": 7,
+        "bbox": [
+          290.5899963378906,
+          781.2319946289062,
+          306.95367431640625,
+          794.37744140625
+        ],
+        "sha256": "8cd2510271575d8430c05368315a87b9c4784c7389a47496080c1e615a2a00b6"
+      },
+      {
+        "n": 21,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 0,
+        "bbox": [
+          76.8348388671875,
+          78.52619171142578,
+          260.3459777832031,
+          92.71964263916016
+        ],
+        "sha256": "4898237b760f83b27a007682e9ad266ec97d850409112708f1653a87892a3757"
+      },
+      {
+        "n": 22,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 1,
+        "bbox": [
+          76.8348388671875,
+          104.72118377685547,
+          307.6053161621094,
+          117.74729919433594
+        ],
+        "sha256": "d1b6e220e493220a528c9d0484c9eb89f3ad46aefef04b1b256088ae836dc693"
+      },
+      {
+        "n": 23,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 2,
+        "bbox": [
+          177.37086486816406,
+          123.34915161132812,
+          387.1772155761719,
+          134.15420532226562
+        ],
+        "sha256": "f3f490e2e2839dcb007be1b7014f0457382ad336ee8d8c682fd58c4dcae939c9"
+      },
+      {
+        "n": 24,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 3,
+        "bbox": [
+          177.37086486816406,
+          140.18301391601562,
+          412.4008483886719,
+          150.98806762695312
+        ],
+        "sha256": "b00022da6c284f8894a1614d6f94e54a771c904c85224cadec629749408cab67"
+      },
+      {
+        "n": 25,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 4,
+        "bbox": [
+          76.8348388671875,
+          164.19024658203125,
+          415.41326904296875,
+          177.2163543701172
+        ],
+        "sha256": "2db89cd88763794c4c2546fd2511927f4a560616932d81f2f0a29dacc2c2e8b6"
+      },
+      {
+        "n": 29,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 8,
+        "bbox": [
+          76.83482360839844,
+          249.46044921875,
+          441.0410461425781,
+          262.486572265625
+        ],
+        "sha256": "47ece198cc2ee79dab1943d138c7c399b157c7abdc0bf799c977932dd6d5c5ab"
+      },
+      {
+        "n": 30,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 9,
+        "bbox": [
+          177.370849609375,
+          268.0894470214844,
+          484.3600158691406,
+          278.8945007324219
+        ],
+        "sha256": "4370550edc56085fa3ddf425fdf12a5c52bcf6f8344f6d44eed7025ab47a8666"
+      },
+      {
+        "n": 31,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 10,
+        "bbox": [
+          70.85653686523438,
+          293.2688903808594,
+          412.71209716796875,
+          304.9347839355469
+        ],
+        "sha256": "9dc4c356339a60510b670eba07c52f75031cc6049c262d3e869ab58078fbf12a"
+      },
+      {
+        "n": 32,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 11,
+        "bbox": [
+          148.71743774414062,
+          316.8524475097656,
+          446.2554016113281,
+          328.85797119140625
+        ],
+        "sha256": "f92313d30ca6640d84266715becb4c950ace870049a9ab70a8cedf01ed330056"
+      },
+      {
+        "n": 33,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 12,
+        "bbox": [
+          70.46351623535156,
+          350.4505310058594,
+          290.9482727050781,
+          411.65435791015625
+        ],
+        "sha256": "4e006d2a724c98d703a7a48bf2c424a201ec81040614ae11e92ef25022a9240b"
+      },
+      {
+        "n": 34,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 13,
+        "bbox": [
+          70.51852416992188,
+          404.6502380371094,
+          291.04595947265625,
+          499.0954284667969
+        ],
+        "sha256": "d3d6a5f7ba39380711b8b0e0ed8a4087879a3ef366d12991b42af836f1575533"
+      },
+      {
+        "n": 35,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 14,
+        "bbox": [
+          70.85653686523438,
+          529.3687744140625,
+          209.13629150390625,
+          543.562255859375
+        ],
+        "sha256": "9e129d95f706800e27e4466831a3344679b118268d03686088198a1e940d5e23"
+      },
+      {
+        "n": 36,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 15,
+        "bbox": [
+          70.46351623535156,
+          559.5199584960938,
+          291.0452880859375,
+          775.9142456054688
+        ],
+        "sha256": "c638246356bfcd9bdd95f9508f3775f27bfcd32b67ba7c2646540a016d288e52"
+      },
+      {
+        "n": 37,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 16,
+        "bbox": [
+          306.144287109375,
+          350.0577697753906,
+          400.1963195800781,
+          364.251220703125
+        ],
+        "sha256": "3e268a40392b3a019fd862ec3ac521e6a2090e7baec4ed09e7133d358cf83087"
+      },
+      {
+        "n": 38,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 17,
+        "bbox": [
+          305.6312561035156,
+          370.0165100097656,
+          526.3320922851562,
+          532.2110595703125
+        ],
+        "sha256": "436c44fb5863b3a7bf2056ed71995a4a14701863525460da211a155cd74b1151"
+      },
+      {
+        "n": 39,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 18,
+        "bbox": [
+          306.144287109375,
+          545.0782470703125,
+          491.05267333984375,
+          574.5814208984375
+        ],
+        "sha256": "cec0a491b61ff8f851547cd4b5395d2fbde7525ab801a94a88dc9921a8cbac99"
+      },
+      {
+        "n": 40,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 19,
+        "bbox": [
+          305.6312561035156,
+          583.9451904296875,
+          526.2385864257812,
+          732.590087890625
+        ],
+        "sha256": "d87869687d11bc86a854494fbac06138efa9e3820942d67b4213784883f91988"
+      },
+      {
+        "n": 41,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 20,
+        "bbox": [
+          305.7222595214844,
+          743.5899047851562,
+          524.4259033203125,
+          775.3683471679688
+        ],
+        "sha256": "1e72b9aa6d2c9be50ac48bb99a91ed517858910943b7943574174dbfedefc4ee"
+      },
+      {
+        "n": 42,
+        "kind": "pdf_block",
+        "page_1_based": 3,
+        "block": 21,
+        "bbox": [
+          290.5899963378906,
+          781.2319946289062,
+          306.95367431640625,
+          794.37744140625
+        ],
+        "sha256": "01d54579da446ae1e75cda808cd188438834fa6249b151269db0f9123c9ddc61"
+      },
+      {
+        "n": 51,
+        "kind": "pdf_block",
+        "page_1_based": 4,
+        "block": 8,
+        "bbox": [
+          70.46351623535156,
+          370.3290710449219,
+          290.9507141113281,
+          712.2340087890625
+        ],
+        "sha256": "a7edad63e480113ba58c40535d474ebfe461883f134baeb7653e60226b7f736a"
+      },
+      {
+        "n": 52,
+        "kind": "pdf_block",
+        "page_1_based": 4,
+        "block": 9,
+        "bbox": [
+          70.85653686523438,
+          723.663818359375,
+          290.62799072265625,
+          775.3682861328125
+        ],
+        "sha256": "6c92b0fc950c5efeb27c1baa22c2b848f2501abdf77ac509cf7ea4c8247e631a"
+      },
+      {
+        "n": 53,
+        "kind": "pdf_block",
+        "page_1_based": 4,
+        "block": 10,
+        "bbox": [
+          305.3262634277344,
+          371.5725402832031,
+          526.2383422851562,
+          574.4171142578125
+        ],
+        "sha256": "0dc6f2c342edbdb6dd571967cb963bd6fe23d5240dff209cbd03fe358b68ceb3"
+      },
+      {
+        "n": 54,
+        "kind": "pdf_block",
+        "page_1_based": 4,
+        "block": 11,
+        "bbox": [
+          305.8062744140625,
+          586.2274780273438,
+          526.3319702148438,
+          775.9141845703125
+        ],
+        "sha256": "a1f5da68a5b8e0ef0b92bb24da30c481ae5c8a942854d742e84603cf457127e3"
+      },
+      {
+        "n": 55,
+        "kind": "pdf_block",
+        "page_1_based": 4,
+        "block": 12,
+        "bbox": [
+          290.5899963378906,
+          781.2319946289062,
+          306.95367431640625,
+          794.37744140625
+        ],
+        "sha256": "3068430da9e4b7a674184035643d9e19af3dc7483e31cc03b35f75268401df77"
+      },
+      {
+        "n": 97,
+        "kind": "pdf_block",
+        "page_1_based": 7,
+        "block": 0,
+        "bbox": [
+          70.85653686523438,
+          70.3274917602539,
+          140.97731018066406,
+          85.8819808959961
+        ],
+        "sha256": "20615d2185d04545199364aabca54bdadc0e5b3e636fc9ba02640e260637c58d"
+      },
+      {
+        "n": 98,
+        "kind": "pdf_block",
+        "page_1_based": 7,
+        "block": 1,
+        "bbox": [
+          70.85653686523438,
+          92.24585723876953,
+          187.81886291503906,
+          106.4393081665039
+        ],
+        "sha256": "a8c09a420ec3ca684d517e37974c976fa83c70cadc9150a3788032236c085d82"
+      },
+      {
+        "n": 99,
+        "kind": "pdf_block",
+        "page_1_based": 7,
+        "block": 2,
+        "bbox": [
+          93.00564575195312,
+          123.1093521118164,
+          460.6285095214844,
+          134.7752227783203
+        ],
+        "sha256": "a1f83a3811704685c8aef5915303016bebb693e87cd09becf1307e9ef6901c14"
+      },
+      {
+        "n": 100,
+        "kind": "pdf_block",
+        "page_1_based": 7,
+        "block": 3,
+        "bbox": [
+          93.00564575195312,
+          138.87191772460938,
+          434.3870849609375,
+          149.67697143554688
+        ],
+        "sha256": "d43beb83c6efe82d2390463aa43803d2aefd46f895086f6f6ff22ee7a8592163"
+      },
+      {
+        "n": 101,
+        "kind": "pdf_block",
+        "page_1_based": 7,
+        "block": 4,
+        "bbox": [
+          93.00565338134766,
+          154.29074096679688,
+          461.5387268066406,
+          171.16635131835938
+        ],
+        "sha256": "3a59bad386c71205f01fd2a590cbf277587dc4f6f65ad03f369fbfe869256e8e"
+      },
+      {
+        "n": 102,
+        "kind": "pdf_block",
+        "page_1_based": 7,
+        "block": 5,
+        "bbox": [
+          93.00565338134766,
+          169.70852661132812,
+          461.5387268066406,
+          186.58413696289062
+        ],
+        "sha256": "988e26805ee941c39596b3abb1beeb19f5877c760fde73372ff072dcd0ae01e5"
+      },
+      {
+        "n": 103,
+        "kind": "pdf_block",
+        "page_1_based": 7,
+        "block": 6,
+        "bbox": [
+          93.00565338134766,
+          185.12625122070312,
+          461.5386657714844,
+          211.96536254882812
+        ],
+        "sha256": "f0b102da1c6482f69fcbc6d89d1596107c9ef7e79ddfc11cb54851b2d17923a5"
+      },
+      {
+        "n": 104,
+        "kind": "pdf_block",
+        "page_1_based": 7,
+        "block": 7,
+        "bbox": [
+          93.00562286376953,
+          210.50753784179688,
+          461.5386657714844,
+          221.31259155273438
+        ],
+        "sha256": "1eb70ded3253e9f7c8f4422331d4805046f179933c0b8307f13bf1775036eef8"
+      },
+      {
+        "n": 105,
+        "kind": "pdf_block",
+        "page_1_based": 7,
+        "block": 8,
+        "bbox": [
+          222.31410217285156,
+          233.65921020507812,
+          372.65728759765625,
+          245.6647491455078
+        ],
+        "sha256": "9c2b6651cbf7c82f59d5936bdcea57a720506b78c362bf65cb04a6412f0442d1"
+      },
+      {
+        "n": 106,
+        "kind": "pdf_block",
+        "page_1_based": 7,
+        "block": 9,
+        "bbox": [
+          290.5899963378906,
+          781.2319946289062,
+          306.95367431640625,
+          794.37744140625
+        ],
+        "sha256": "bfa7634640c53da7cb5e9c39031128c4e583399f936896f27f999f1d58d7b37e"
+      },
+      {
+        "n": 135,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 0,
+        "bbox": [
+          75.76078033447266,
+          108.63764190673828,
+          161.94114685058594,
+          134.67616271972656
+        ],
+        "sha256": "eb473a6b317434d9e8f87cd36fd6b4a259f316e4f29b8fe7d5f4cb38f59fefc1"
+      },
+      {
+        "n": 136,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 1,
+        "bbox": [
+          75.76078033447266,
+          138.77383422851562,
+          348.1048278808594,
+          159.54244995117188
+        ],
+        "sha256": "52c14a1ff79ecfe547b1d8dff717045fd7d6662ac1a0c16078c951b64ee4b0c8"
+      },
+      {
+        "n": 137,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 2,
+        "bbox": [
+          75.06775665283203,
+          176.54367065429688,
+          506.2296142578125,
+          207.31568908691406
+        ],
+        "sha256": "f8b5e488d4a5c2de2584cc2d005d0aa562dc66d1fa6c1912b10f7aa5c002a343"
+      },
+      {
+        "n": 138,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 3,
+        "bbox": [
+          75.76078796386719,
+          222.36801147460938,
+          202.33680725097656,
+          237.92250061035156
+        ],
+        "sha256": "f567c5f845b316152c449d323dc599474dc6f5a9e36e6fe62559176e47fde8c1"
+      },
+      {
+        "n": 139,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 4,
+        "bbox": [
+          87.71638488769531,
+          236.31674194335938,
+          308.3113098144531,
+          251.87123107910156
+        ],
+        "sha256": "01447e40975eb130cf7eaafc7860ed5c27d1742d012eaa5fb8f55081a1b8e422"
+      },
+      {
+        "n": 140,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 5,
+        "bbox": [
+          100.37001037597656,
+          256.7407531738281,
+          519.5208129882812,
+          347.29766845703125
+        ],
+        "sha256": "07bbb662141329c661c7cf609187090c94155c159ef37363725b738e1d59a8c0"
+      },
+      {
+        "n": 141,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 6,
+        "bbox": [
+          75.76078796386719,
+          355.3766784667969,
+          201.6792449951172,
+          370.9311828613281
+        ],
+        "sha256": "0df3570b3cd55fc7429723a0efd110b5329338e377d3996239cba01e1e38ae9e"
+      },
+      {
+        "n": 142,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 7,
+        "bbox": [
+          87.71638488769531,
+          369.3243408203125,
+          413.3067626953125,
+          384.87884521484375
+        ],
+        "sha256": "58843d2559a502c44b74143cda73b7b3ded19671b41fd6a82b53b7c0dfa1344b"
+      },
+      {
+        "n": 143,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 8,
+        "bbox": [
+          100.37001037597656,
+          389.7493896484375,
+          521.505126953125,
+          586.6329345703125
+        ],
+        "sha256": "2a4f8d806f06f29aa835f9a8c650989cfd3a08ff05d5bee1c5a91b8fffbccd90"
+      },
+      {
+        "n": 144,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 9,
+        "bbox": [
+          75.76078033447266,
+          603.4580688476562,
+          519.52294921875,
+          632.9612426757812
+        ],
+        "sha256": "3c937f099cd78b2e44786b9760b7e5d7155c1d5313645b7d7c4a6a311b1001a6"
+      },
+      {
+        "n": 145,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 10,
+        "bbox": [
+          75.76078033447266,
+          641.8160400390625,
+          277.6702880859375,
+          657.3704833984375
+        ],
+        "sha256": "9a19424a459a412044149f762184e8b293e3c2df72be5d541eb181d9db86a930"
+      },
+      {
+        "n": 146,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 11,
+        "bbox": [
+          100.37001037597656,
+          663.6674194335938,
+          521.6148681640625,
+          709.9567260742188
+        ],
+        "sha256": "4ce53ec6bba760631b52f37d9e1aaf01e42e29ef398b2e266cc3025638341739"
+      },
+      {
+        "n": 147,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 12,
+        "bbox": [
+          170.87452697753906,
+          722.219482421875,
+          424.4054260253906,
+          734.2250366210938
+        ],
+        "sha256": "3b8170f14510507f267b1cf22f3bfe8d6631304b3450bba878d5a403178653b5"
+      },
+      {
+        "n": 148,
+        "kind": "pdf_block",
+        "page_1_based": 10,
+        "block": 13,
+        "bbox": [
+          290.5899963378906,
+          781.2319946289062,
+          306.95367431640625,
+          794.37744140625
+        ],
+        "sha256": "61a229bae1e90331edd986b6bbbe617f7035de88a5bf7c018c3add6c762a6e8d"
+      },
+      {
+        "n": 149,
+        "kind": "pdf_block",
+        "page_1_based": 11,
+        "block": 0,
+        "bbox": [
+          75.76078033447266,
+          70.80072784423828,
+          179.87486267089844,
+          96.83937072753906
+        ],
+        "sha256": "eb473a6b317434d9e8f87cd36fd6b4a259f316e4f29b8fe7d5f4cb38f59fefc1"
+      },
+      {
+        "n": 150,
+        "kind": "pdf_block",
+        "page_1_based": 11,
+        "block": 1,
+        "bbox": [
+          75.76078033447266,
+          100.93704223632812,
+          408.8014831542969,
+          111.74209594726562
+        ],
+        "sha256": "e2508dcc4e52ddc0992f45755f92daf29e60ba56c4114a3f389574f80cd96807"
+      },
+      {
+        "n": 151,
+        "kind": "pdf_block",
+        "page_1_based": 11,
+        "block": 2,
+        "bbox": [
+          75.06775665283203,
+          127.6973648071289,
+          519.5237426757812,
+          214.39503479003906
+        ],
+        "sha256": "85715b4ce9421990d8541b30a3fca727c0bc6b0497df0009188512dab9fa7e9f"
+      },
+      {
+        "n": 152,
+        "kind": "pdf_block",
+        "page_1_based": 11,
+        "block": 3,
+        "bbox": [
+          75.33075714111328,
+          219.48385620117188,
+          519.521728515625,
+          290.1148376464844
+        ],
+        "sha256": "8c383a4ca5611dd4e16831ef3ba9c05c557d74fbd63089d1d007b5523bd857dd"
+      },
+      {
+        "n": 153,
+        "kind": "pdf_block",
+        "page_1_based": 11,
+        "block": 4,
+        "bbox": [
+          75.76078796386719,
+          295.2046813964844,
+          245.17398071289062,
+          310.7591857910156
+        ],
+        "sha256": "5fe7b46e08d1a7424dc01d0951c8428e27fe0c5da0aa5a5d49ec05992ef26bbc"
+      },
+      {
+        "n": 154,
+        "kind": "pdf_block",
+        "page_1_based": 11,
+        "block": 5,
+        "bbox": [
+          75.3907699584961,
+          315.1306457519531,
+          519.5189208984375,
+          344.63385009765625
+        ],
+        "sha256": "0c2f93a70c42a2b6f4ff2f03035161183bf6a14692d1a5d2e9fcfe6b72b2cc24"
+      },
+      {
+        "n": 155,
+        "kind": "pdf_block",
+        "page_1_based": 11,
+        "block": 6,
+        "bbox": [
+          96.54582214355469,
+          356.17926025390625,
+          498.73602294921875,
+          368.1847839355469
+        ],
+        "sha256": "a471f9f52bcc769caf3b17c7efd4edc431938e0a675f38d755046a03a02b0e56"
+      },
+      {
+        "n": 156,
+        "kind": "pdf_block",
+        "page_1_based": 11,
+        "block": 7,
+        "bbox": [
+          290.5899963378906,
+          781.2319946289062,
+          306.95367431640625,
+          794.37744140625
+        ],
+        "sha256": "2811745d7b8d8874f6e653d176cefdd19e05e920ce389b9b7e83e5b2dfa546c7"
+      },
+      {
+        "n": 157,
+        "kind": "pdf_block",
+        "page_1_based": 12,
+        "block": 0,
+        "bbox": [
+          70.85653686523438,
+          71.33179473876953,
+          319.18182373046875,
+          85.5252456665039
+        ],
+        "sha256": "848fab100cdf17365174446db4daf7f2c714bf57c0926e27a867b56f824cc180"
+      },
+      {
+        "n": 158,
+        "kind": "pdf_block",
+        "page_1_based": 12,
+        "block": 1,
+        "bbox": [
+          198.34190368652344,
+          102.84040069580078,
+          369.93963623046875,
+          117.03385162353516
+        ],
+        "sha256": "a48c489fd3a1a68b9430f5ab1f88d3cfd415fbcfb0090dc8af19f11cd4c9e3f3"
+      },
+      {
+        "n": 159,
+        "kind": "pdf_block",
+        "page_1_based": 12,
+        "block": 2,
+        "bbox": [
+          198.34190368652344,
+          122.26103973388672,
+          396.9410095214844,
+          169.9142303466797
+        ],
+        "sha256": "bde496a0dff1c7ed480f84ec2f3dcb1d650307c0f3a3dfc3cd2e850b48a5483b"
+      },
+      {
+        "n": 160,
+        "kind": "pdf_block",
+        "page_1_based": 12,
+        "block": 3,
+        "bbox": [
+          198.34188842773438,
+          162.91015625,
+          370.1360778808594,
+          216.706298828125
+        ],
+        "sha256": "f2c0b76e3a183a1a865a900218eec92f848002e3529d9685015167f5871ad738"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Section 2 defines framework/separator/disruptor malicious and safe generation; English source examples and generation/judgment template content actually read. No all-items English inference.",
+      "restriction_rationale": "Bounded method/data fact; no reported performance, qualitative outcome, sample count or assurance claim."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Section 2.4 and Appendix A.3 specify domain-specific DeBERTa training and classifier threshold; input score does not use protected target response.",
+      "restriction_rationale": "Bounded method/data fact; no reported performance, qualitative outcome, sample count or assurance claim."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Named specialized and prompted LLM comparators are explicitly evaluated in ?3; Figure 5 YES/NO template judges input prompt before protected chatbot. External baseline comparisons are partly reused from InjecGuard, not new evaluation by this work.",
+      "restriction_rationale": "Bounded method/data fact; no reported performance, qualitative outcome, sample count or assurance claim."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions/partial inventory. Supported local method facts do not become proof of whole-work absence. Actual checker spans below are narrower where stated.",
+      "restriction_rationale": "Coverage only; no performance, sample counts or eligibility state."
+    },
+    {
+      "field_path": "source_receipts.locators",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mechanical source-locator hashes independently reproduce. Semantic inspection coverage is exclusively the actual_context_check spans, not automatic approval of the full provider-declared scope.",
+      "restriction_rationale": "Hash-only locator metadata; no raw method/results text or outcomes."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  },
+  "previous_checker_receipt_sha256": "ae3d23638d8f1fc1390d8451fef24a2ec5e4ac64f8c43961f0ed8f65ddd269f1",
+  "append_only_addendum": "Explicit coverage-field decision added; prior per-fact checks preserved except stated supersession."
+}

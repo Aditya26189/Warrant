@@ -1,0 +1,448 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0076",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T18:22:08.754815+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0076.provider.0002.json",
+  "provider_packet_sha256": "09fd29d401c65a3536b7dd15072f62f1385b5969f30797025675509957cfa15b",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2508.20890v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\834d9ffc611c8e59de60d55e1df033870f3bf55ffa72c5435d5b1d9ace860105",
+    "raw_sha256": "834d9ffc611c8e59de60d55e1df033870f3bf55ffa72c5435d5b1d9ace860105",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0117.json",
+    "acquisition_receipt_sha256": "0db03ae3e212fbf9a0e8210a1adf81d830db463ce771abd2e448195cf0f6ea63",
+    "captured_version_id": "arxiv:2508.20890v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        31,
+        60
+      ],
+      [
+        70,
+        82
+      ],
+      [
+        87,
+        103
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Main method49-54 specifies LLM-generated system/user task summaries, relatedness judgments and any-unrelated-task injection detection. Source53/79/82 explicitly states that the protected application output is not used; separate stored-memory target-generation experiments occur in81. False correctly preserves exact Table2 prompt bodies, remaining ablation/comparator protocols and complete evaluated-language composition. The new stored-memory family is now explicit and independently source-checked, but no complete whole-work inventory or all-English inference is released.",
+    "locator_sha256": "8b6dcba9e12b5bcc343462256eedca16fa3a0875c5cb13850facd34fd84d88e1",
+    "locators": [
+      {
+        "n": 31,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "sha256": "0297aeb06e0d40f972c4798769d521d53b7ccab5fa7660e7d272df39ae81b5a7"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "sha256": "7558a442df70091aac48d2a00178954d00cb9079e1510961d7bcb34392de6f50"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "sha256": "37759b143855dad1773a71f37766e1a2a9b5c64474e9bd5d6441a6a8dc742161"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S4.SS2.p3.1",
+        "sha256": "2f1307bb450704ed4494f31773bddcd0a9c6427beaeec357cd86abea3cd665b9"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S4.SS2.p4.1",
+        "sha256": "2b2adf30ebef5f4a36bcd1985849f5697e4ccd4d1e868e00f4498ed1ffeccb66"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S4.SS2.p5.1",
+        "sha256": "4ae64842a1093c378e3ffe95005c0a12b300bf47ad2b5f66055430db0ef46bbc"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S4.SS2.p6.1",
+        "sha256": "2e855dcaf90010ee83d2577c85069c526409882539c7ef5ca77ea8fc383cfe99"
+      },
+      {
+        "n": 38,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "sha256": "dc6e5d49b00424f4a631292f9bf53d7849269a47e412821b3c9d13364dddae01"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "sha256": "1cf2b6c494cd2b675a4d3becc8624bf864df75edc38db83e8d558197b123cd74"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S4.SS3.p2.1",
+        "sha256": "b16e0b29310d9a78a378296d18e47d65248704b8d7dbcfaea92f64a1f62ef0d8"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S4.SS3.p3.1",
+        "sha256": "0fb83af0055c5002d337f26f1af39790e44041411afecd8a4f2a818aa65cd49f"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S4.SS3.p4.1",
+        "sha256": "9af66f79e7972edd4f59a11aabf68a6aff5b92093d50e34c8eb2ec494bee758c"
+      },
+      {
+        "n": 43,
+        "kind": "heading",
+        "id": "S5",
+        "sha256": "0c8a7630e7a7c17c9575a40c4bc9902ba95b722bb88774dc87f16a947ba603d7"
+      },
+      {
+        "n": 44,
+        "kind": "heading",
+        "id": "S5.SS1",
+        "sha256": "d13563b85eceb2eb4b29664f168cdef40aef856607878a155685e6c15f40efb8"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S5.SS1.p1.1",
+        "sha256": "0cb0ae07e2bc0368925a16b0a484612134046130fa1f1a76a8edee61f82cbdd4"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S5.SS1.p2.1",
+        "sha256": "bb4bc4da14ddb56fa4e2826d5e0fe457dfb84c37dd5867a035d0e407997fbd17"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S5.SS1.p3.1",
+        "sha256": "b1a1b52b34c19b1cde7b9000ff23b1a2919deed7b0d00835d952d90b6290bb8a"
+      },
+      {
+        "n": 48,
+        "kind": "heading",
+        "id": "S5.SS2",
+        "sha256": "714e5d59cef804451f03d5f7491e69c8f9ea425574c7003d16adf7ac67492346"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S5.SS2.p1.1",
+        "sha256": "e2644aeeae2dc2c278f849f03fddc1f88eaf2139d26c4d9c6f3fcfba9ad9a063"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S5.SS2.p2.1",
+        "sha256": "543469830d833a61607a09d850467475c3facd5b629b0f68f0702985f7c9c5ec"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S5.SS2.p3.1",
+        "sha256": "a7e13438cfaf2a5a37618e3686f9ba4644da6e12ff33e6e47a3bc60f911193ff"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S5.SS2.p4.1",
+        "sha256": "7ba9bffe2dab8b6a2e60fb3af9d62b7300a4be988f8978981e27a34f0cf89a62"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S5.SS2.p5.1",
+        "sha256": "fc6ac7014b4a7bcb461308b4988dcd5307c5632223f083eb81d936c252b3668c"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S5.SS2.p6.1",
+        "sha256": "c740ca6193890e2391a292cf5d6352a2c4ab1a8c49cb7017b076770ab9032268"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S5.SS2.p7.1",
+        "sha256": "8db44e08b628e76aa29aebbbe63f4616206d624c511523d347b937b9c5fc40a7"
+      },
+      {
+        "n": 56,
+        "kind": "heading",
+        "id": "S6",
+        "sha256": "38178427550b6ae78ae5abcd135de2ebbfc22e2b96fb4947a4413fb488b740bd"
+      },
+      {
+        "n": 57,
+        "kind": "heading",
+        "id": "S6.SS1",
+        "sha256": "92af7b9473e413b6076a87f99be23373cb39645d515c3ff7cc27a14ce31705c8"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S6.SS1.p1.1",
+        "sha256": "67010aa591a96323c9580a659ceef05a3e3a81ec97ac3ad2d3e1bee46d3886ab"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "S6.SS1.p2.1",
+        "sha256": "d784077b4149f865f64f286012c7b8c8e89cad4adb5689f2c6434447531ddb69"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "S6.SS1.p3.1",
+        "sha256": "d912040a6b930f1fea1dcbeeac26fb8a71281c510d48700ff47b2a2ea718f833"
+      },
+      {
+        "n": 70,
+        "kind": "heading",
+        "id": "S6.SS3",
+        "sha256": "ff4c636f20b4398ce073153489f3b7a54798caf607b58fbaab9b2615a589e23c"
+      },
+      {
+        "n": 71,
+        "kind": "paragraph",
+        "id": "S6.SS3.p1.1",
+        "sha256": "6cd46592cffbfa5a9d9c5e9c93ace2614765f31dd5cec9b6655e8f5cdd965981"
+      },
+      {
+        "n": 72,
+        "kind": "paragraph",
+        "id": "S6.SS3.p2.1",
+        "sha256": "f72aa28d25e2ec9fea4f642d4a472c8ad0ee64cf6d32755fcba406ad5d17661a"
+      },
+      {
+        "n": 73,
+        "kind": "paragraph",
+        "id": "S6.SS3.p3.1",
+        "sha256": "f8889dc8151aabf1099100643861b3fadb15ab2e2f65085ed4a7ea333e2d910e"
+      },
+      {
+        "n": 74,
+        "kind": "paragraph",
+        "id": "S6.SS3.p4.1",
+        "sha256": "18956d526cbdb8aa4269c540502ea72536f1250493fd835927672dadcaba87f4"
+      },
+      {
+        "n": 75,
+        "kind": "paragraph",
+        "id": "S6.SS3.p5.1",
+        "sha256": "fb1088467f9cf4d167894b0dbb327a09fa1a4c4aa3e738b19714858a540d10de"
+      },
+      {
+        "n": 76,
+        "kind": "heading",
+        "id": "S7",
+        "sha256": "5b59d1ca395c7657e53931c08b20a288a38942bc1a1ee2e4c6b242cdf895c6a3"
+      },
+      {
+        "n": 77,
+        "kind": "paragraph",
+        "id": "S7.p1.1",
+        "sha256": "7f93efe3851325aef491f9cdba05f853edd13ff751e0ae6bd2c349271f15fdea"
+      },
+      {
+        "n": 78,
+        "kind": "paragraph",
+        "id": "S7.p2.1",
+        "sha256": "4ed835428fd40f7bc76731ee15b4e431fa1c371a60ec6ebae80df8261dc8e122"
+      },
+      {
+        "n": 79,
+        "kind": "paragraph",
+        "id": "S7.p3.1",
+        "sha256": "bac3dd405f5926ac955d3c4f10d13b02ee91c96b0105222d66bfb9764d4d5ba9"
+      },
+      {
+        "n": 80,
+        "kind": "paragraph",
+        "id": "S7.p4.1",
+        "sha256": "536345ab49eca30fc849c32a8750e784034126c1309475daabe66ad8f1ff6935"
+      },
+      {
+        "n": 81,
+        "kind": "paragraph",
+        "id": "S7.p5.1",
+        "sha256": "b1792a5ecce99e6c17ad8b07069a6236dfcf57d88e1ffc9f8a83c2ae5678f583"
+      },
+      {
+        "n": 82,
+        "kind": "paragraph",
+        "id": "S7.p6.1",
+        "sha256": "59795afd3a3ea9a8c3af7c21cb46a4171b2730da2c39d7771eeb1f152279fa38"
+      },
+      {
+        "n": 87,
+        "kind": "heading",
+        "id": "A1.SS1",
+        "sha256": "d6ba68d5d826bfedac90884493923aa9aa905dbadcd6d3d60f32babd317e904c"
+      },
+      {
+        "n": 88,
+        "kind": "paragraph",
+        "id": "A1.SS1.p1.1",
+        "sha256": "13df32b8f2fb992c46629b0998efbb594fcf0596881996f2ce40b9a09b83cbce"
+      },
+      {
+        "n": 89,
+        "kind": "paragraph",
+        "id": "A1.I1.i1.p1.1",
+        "sha256": "87e250fc317b9f6be7d1ecaeba62139f2bd4c404a9c6659c0d77251527979e60"
+      },
+      {
+        "n": 90,
+        "kind": "paragraph",
+        "id": "A1.I1.i2.p1.1",
+        "sha256": "2fad6cf8108adaf77f992197826732bb853345ff960545275c2495a7700b8df0"
+      },
+      {
+        "n": 91,
+        "kind": "paragraph",
+        "id": "A1.I1.i3.p1.1",
+        "sha256": "6c2563b85d40cf86839d244f3f566bdb25c38d82ee47654ae3f0643a73aadc34"
+      },
+      {
+        "n": 92,
+        "kind": "paragraph",
+        "id": "A1.SS1.p2.1",
+        "sha256": "4ac800d20609696f8db66d331c69fa081f05d167dcbcbe335d04b91e0cda1615"
+      },
+      {
+        "n": 93,
+        "kind": "paragraph",
+        "id": "A1.SS1.p3.1",
+        "sha256": "0f281bc6dcdbe9e423bdb7ec711767a9d6f8374e2be1a638850efac70ed405ec"
+      },
+      {
+        "n": 94,
+        "kind": "heading",
+        "id": "A1.SS2",
+        "sha256": "0c2c993b194e6562fcb9a743e700848556863acb1d486309ceebe0b90ce9c087"
+      },
+      {
+        "n": 95,
+        "kind": "paragraph",
+        "id": "A1.SS2.p1.1",
+        "sha256": "bae2a7c9aec8a17da653adaad2c7313a8d935e6a8589ec40dd2c961141c61bae"
+      },
+      {
+        "n": 96,
+        "kind": "paragraph",
+        "id": "A1.SS2.p2.1",
+        "sha256": "0767503151508868c4a4fd95403eacc88d5efb47b64b3b1ae8a924ab6952d3a6"
+      },
+      {
+        "n": 97,
+        "kind": "paragraph",
+        "id": "A1.SS2.p3.1",
+        "sha256": "b9754f4f55f2e11702f57325a7cc4d7437e253a9b7571820e5d094ec687fe588"
+      },
+      {
+        "n": 98,
+        "kind": "paragraph",
+        "id": "A1.SS2.p4.1",
+        "sha256": "ff788763400f6515c1354f1addefc04abc5578dcb5defe503a0876b5913233fa"
+      },
+      {
+        "n": 99,
+        "kind": "heading",
+        "id": "A1.SS3",
+        "sha256": "b63bf233f015068b4483771e0a229ea69dcd1e050c727dc6e8c728b89e698165"
+      },
+      {
+        "n": 100,
+        "kind": "paragraph",
+        "id": "A1.SS3.p1.1",
+        "sha256": "d775dc13debc2cb794e215c81265337cb92e8524ea81b3cf67e5825a98ee3336"
+      },
+      {
+        "n": 101,
+        "kind": "paragraph",
+        "id": "A1.SS3.p2.1",
+        "sha256": "0b4aa532751368c7b04a17ded4d382b2606cc9da4c0071d5566263ce7f8720e3"
+      },
+      {
+        "n": 102,
+        "kind": "paragraph",
+        "id": "A1.SS3.p3.1",
+        "sha256": "473f1a3ee6377ecb314959a7fadab7eb45b7b9d461b519fcb33083e39e696321"
+      },
+      {
+        "n": 103,
+        "kind": "paragraph",
+        "id": "A1.SS3.p4.1",
+        "sha256": "068ec5bba88747ca91a7cf87e5a2c5ae637e2e0f6ccef2be1ac79500b62955ab"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main method49-54 specifies LLM-generated system/user task summaries, relatedness judgments and any-unrelated-task injection detection. Source53/79/82 explicitly states that the protected application output is not used; separate stored-memory target-generation experiments occur in81.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Input task summarization/relatedness and component or reasoning variants are supported by49-58 and79/82. The evaluated classification unit is the system-plus-user input and detector decision; generated auxiliary summaries are not protected application answers.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main39/59 and Appendix88-96 name the prompt strategies, trained defenses, released classifiers and classical comparators. The packet correctly leaves the individual comparator dependencies unresolved rather than importing them from model names.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual81 describes ChatGPT/Gemini persistent-memory experiments, the remember/keep-in-mind/do-not-forget variants, visible-history clearing and later target query. This is an additional target-generation family separate from PromptSleuth input detection. Only procedure and dependency are approved; adjacent outcomes withheld.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves exact Table2 prompt bodies, remaining ablation/comparator protocols and complete evaluated-language composition. The new stored-memory family is now explicit and independently source-checked, but no complete whole-work inventory or all-English inference is released.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

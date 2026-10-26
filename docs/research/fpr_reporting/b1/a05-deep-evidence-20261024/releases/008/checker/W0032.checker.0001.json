@@ -1,0 +1,527 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0032",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T13:06:17.152149+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0032.provider.0001.json",
+  "provider_packet_sha256": "f4d39dfaaa8216df67bb16be8f09b64da07abd409a760dd9fe95fb0b6164abc5",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2502.13490v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\6b438a3ebd49a127d615917903db1bb7d980b561b872fab35db083ddd262bad3",
+    "raw_sha256": "6b438a3ebd49a127d615917903db1bb7d980b561b872fab35db083ddd262bad3",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0063.json",
+    "acquisition_receipt_sha256": "bd6e59429bbd0051b588f1a31413328ef92d8cfd452d26a430fe4df6eeea215d",
+    "captured_version_id": "arxiv:2502.13490v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        25,
+        48
+      ],
+      [
+        67,
+        99
+      ],
+      [
+        101,
+        106
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Main26-43 defines extraction and selection of internal states associated with generated response tokens;73 and95-99 defines factual/hallucinated output comparisons and detection tasks. False retains middle feature-definition and appendix judge-context omissions. The positive source-declared hallucinated/factual response scope is verified independently; uninspected details are not converted into whole-work absence claims.",
+    "visual_check": null,
+    "locator_sha256": "643e97b550a61c6e01f9209c9b46fbd4add47307bd029211ba325e2c201ae51b",
+    "locators": [
+      {
+        "index": 25,
+        "paragraph_id": "S2.SS2.p6.1",
+        "section_id": "S2.SS2",
+        "heading": "2.2 LLM Inference Process",
+        "text_sha256": "68e2100b9083a8173ae8c688b6254d53fa551f9f34bf4e0930251ccd8dfec2bf"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.p1.1",
+        "section_id": "S3",
+        "heading": "3 Proposed Scheme: HaluProbe",
+        "text_sha256": "5674c5e7d07f209e1c0652b7a29d589da9958f00c26ac4145e17b97ca20e2fb2"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Internal State Extraction",
+        "text_sha256": "30eabb7b34f4b74253b389365a30f3cae8e32ccf13d7d0bfd7e418443bc084a2"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.SS1.p2.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Internal State Extraction",
+        "text_sha256": "6b174967c7339fc9514a69424b5b552ecff48dab72cdeb8f7bb208517ec99f4d"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS1.p2.2",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Internal State Extraction",
+        "text_sha256": "62210688ee135ecc3b92f9b2ef9aab26d2b2be90504114c819d06771b5be6c2a"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS1.p3.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Internal State Extraction",
+        "text_sha256": "f08061e469cbce53e6c443c3e79849ef6be9f85418ac3146083769f227f29966"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S3.SS1.p3.2",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Internal State Extraction",
+        "text_sha256": "c0a799a36823d586958dadb2d5aa6cbd446be4bb9173cfb7e977ed4e66186802"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S3.SS1.p4.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Internal State Extraction",
+        "text_sha256": "baef19a6fe734f42f3f6d065b13a6ce160097946b6281248b335c9ea48569d47"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S3.SS1.p4.2",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Internal State Extraction",
+        "text_sha256": "e292cae3b7bfb9b6cb96538924c3275aae9c9cdcbe615098d76f6af95e2d9ab8"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Token Selection",
+        "text_sha256": "ea5da1380525dd8cf1dd1df1cbbf25f1c450e2a6980eddb3310a974697911390"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S3.SS2.p2.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Token Selection",
+        "text_sha256": "0186b2790944c33851b16dadeb4fd46b82a9e44a3f484019d16a86b6d890f65f"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S3.SS2.p4.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Token Selection",
+        "text_sha256": "508f13c2f1a87f61ea5ec1efeb277f27a82ae6a58bf1d6256c65904290e083af"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S3.SS2.p5.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Token Selection",
+        "text_sha256": "31e8ef2d3a1e35bb5606d8bbb6c908e39ce3154d52403ece076189e764e34022"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S3.SS2.p7.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Token Selection",
+        "text_sha256": "32be430627b43fdf5b4be48499cd9c2d432cd678c44acc4062ee4cebe7455f7a"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S3.SS2.p7.2",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Token Selection",
+        "text_sha256": "a473e6ff7c1d242b8338d4a294ab515d02f904665402b0f7444a967ac0ca9134"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S3.SS2.p8.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Token Selection",
+        "text_sha256": "39926fea3aa13d3a620ad4c4ed33d9557b6772d4fd4a195a257bb9a46240e881"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S3.SS2.p8.2",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Token Selection",
+        "text_sha256": "90e9bc3b3f5979420fa3bd07f7840ad2d82af4c0fc2613559b09bc7c9cb1e721"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S3.SS2.p9.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Token Selection",
+        "text_sha256": "4992bca524ea43cb0fe6b5ed65b7f6640dff2dd0851b94d9e5c632f97b7464a0"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S3.SS2.p9.2",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Token Selection",
+        "text_sha256": "dfb0f28fa25434d881577110c502870a5ac8b300b744c5176ed9355a25fad3e4"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S3.SS2.p10.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Token Selection",
+        "text_sha256": "79b8d844111420885be3dc1cca9d3f425fabfda0588187fb522cc63ed1624574"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Feature Extraction",
+        "text_sha256": "d9f3cde97bcc11720cc6399adf3dbbc2b63cba296b4cdf8c7315b8efa2b9a706"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S3.SS3.p2.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Feature Extraction",
+        "text_sha256": "073bc6f2fce520461a01c13f1d06a9463db4481140eaf5da2ed7a8c50a8f0d08"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S3.SS3.p2.2",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Feature Extraction",
+        "text_sha256": "d02f5f282f4683b7e18bccaf124b10605505cc873e852d5de7feca43464116e0"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S3.SS3.p3.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Feature Extraction",
+        "text_sha256": "f7f61eaae6e90d585d938047e0d4d9e5692eff54101d98080047c0a75b185a5a"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S3.SS3.p10.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Feature Extraction",
+        "text_sha256": "60d2febe32a7b411474d480839b518273c529a6059276d4530644ffafe6a7908"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S3.SS3.p10.2",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Feature Extraction",
+        "text_sha256": "ff49c386958c1f0ed0436971aac0245c13b4896f3c8013032d0fafea66bd607a"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S3.SS3.p11.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Feature Extraction",
+        "text_sha256": "dbc83ec1dacd037b608bce0bcb7a15901518b9c4d5436abb12c18847a7ee61b5"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S3.SS3.p11.2",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Feature Extraction",
+        "text_sha256": "dba3412de4cee14a56b4c123ce25b97c6a4796ce0cdae26ad8828b25716907b5"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "4 Understanding Internal State",
+        "text_sha256": "018b2408857df208d8fa4074d219cf21930e7dd14887bfcf0cb057576abfd1a0"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "S4.F3.3",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "5fb2a8b8caaacecc03d33f5f18af8bb29893183ed1d5b25bc2f2b503cd1477bc"
+      },
+      {
+        "index": 73,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "c102fd07199faf046541be8245aafed91189daa0bc2db4a30532c2918410b6fc"
+      },
+      {
+        "index": 74,
+        "paragraph_id": "S4.SS1.p2.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "435431ec2f3305ba06e0311c0968dda94c3eada57d4ce2569c18992f454d0e6d"
+      },
+      {
+        "index": 75,
+        "paragraph_id": "S4.SS1.p3.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "fa206b083f979c6068c693d7cb07473b08bc7693f3d87ae82599ca071c0f3471"
+      },
+      {
+        "index": 76,
+        "paragraph_id": "S4.SS1.p4.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "34f8bb6110301145cecff6a4985af5cb943938463237cded66a05746aad2e47b"
+      },
+      {
+        "index": 77,
+        "paragraph_id": "S4.SS1.p5.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "03c81fe602a109faa20eb7464967b43b76c2717c2ee24d765df7e029c95326f0"
+      },
+      {
+        "index": 78,
+        "paragraph_id": "S4.SS1.p6.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "de0b7a13725d8ed58ea05a7d61d29d137693916ab0f433bda108467231602ed8"
+      },
+      {
+        "index": 79,
+        "paragraph_id": "S4.SS1.p7.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "0af4feacc380783d3ca192bc62842e487b662ba71e25dc3c2e3c2b3854b99b2f"
+      },
+      {
+        "index": 80,
+        "paragraph_id": "S4.F4.3",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "5890456b4dc95401289c98c7470b8b07fa1f0a95ed042531de70282cf316df43"
+      },
+      {
+        "index": 81,
+        "paragraph_id": "S4.SS1.p8.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "023fbc890f765051b87c8253a5279761bc82f76a5cb22582fb13706a8a50b267"
+      },
+      {
+        "index": 82,
+        "paragraph_id": "S4.SS1.p9.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "55a5dc05a96dfdf540247043409f042feea3ba026f3400f6aba2edd5bf1039c5"
+      },
+      {
+        "index": 83,
+        "paragraph_id": "S4.SS1.p10.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "8f44f3d06ffe446c220d80753a0741f90da946c21706a4f8181308e487cc618e"
+      },
+      {
+        "index": 84,
+        "paragraph_id": "S4.SS1.p11.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "263d61da6cfedcd05ca61bb73eb610ea8de1fe69b683747f2ddcb3b5fef86358"
+      },
+      {
+        "index": 85,
+        "paragraph_id": "S4.SS1.p12.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Understanding through Lens of Inference",
+        "text_sha256": "b635ac1e6b1f7b8ba18b73d3461388b96eac3c5d40aa710186a3f5f4dd5353f7"
+      },
+      {
+        "index": 86,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Impact of RAG during Inference",
+        "text_sha256": "dc0123d63445f7d89d6ec48f37700d452fcf0ead6e2fac06db0b2860e4800053"
+      },
+      {
+        "index": 87,
+        "paragraph_id": "S4.SS2.p2.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Impact of RAG during Inference",
+        "text_sha256": "95bad28331c74b8f30ad238a1223ecd5d30b29b57c7727809298c857026fc3fe"
+      },
+      {
+        "index": 88,
+        "paragraph_id": "S4.SS2.p3.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Impact of RAG during Inference",
+        "text_sha256": "1d02049423f6b5bded697d1ed8f81778ac13628a1aefb315cc068df441fb9264"
+      },
+      {
+        "index": 89,
+        "paragraph_id": "S4.SS2.p4.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Impact of RAG during Inference",
+        "text_sha256": "fddba56bc3b519fa9f62a7407694ee5e353c477ed8ccd7484fe449d4cd202d84"
+      },
+      {
+        "index": 90,
+        "paragraph_id": "S4.SS2.p5.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Impact of RAG during Inference",
+        "text_sha256": "162b8b3453567e117c6a8bed5013800c42b8cd0bde3905dbf5eae4aee46ebe0c"
+      },
+      {
+        "index": 91,
+        "paragraph_id": "S4.SS2.p6.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Impact of RAG during Inference",
+        "text_sha256": "3d6da143700d02c71e1a49779cb4d09d1a542a0098234c349cc310d4020e7866"
+      },
+      {
+        "index": 92,
+        "paragraph_id": "S4.SS2.p7.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Impact of RAG during Inference",
+        "text_sha256": "0ab493dd2dec1dc05d027b96b01f8a6c507e73556499f44f775ba5902e8f479b"
+      },
+      {
+        "index": 93,
+        "paragraph_id": "S4.SS2.p8.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Impact of RAG during Inference",
+        "text_sha256": "7b2e1412911ad13f3afcad31a090d88513b1db1b06a2153d398345e927ca89ca"
+      },
+      {
+        "index": 94,
+        "paragraph_id": "S4.SS2.p9.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Impact of RAG during Inference",
+        "text_sha256": "2184319215d24df0b2a311a8e24feca474960678cfc713bf96b1c90aba862f37"
+      },
+      {
+        "index": 95,
+        "paragraph_id": "S5.SS1.p1.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Datasets",
+        "text_sha256": "d524233188f9d6d427a0d3d02feed26a8e7da6ebf0dfaab6857c8311efa0d57b"
+      },
+      {
+        "index": 96,
+        "paragraph_id": "S5.SS1.p2.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Datasets",
+        "text_sha256": "4999241c52b53a41da02274d70bf764f32515e9a2c9c3169db999115a6acc923"
+      },
+      {
+        "index": 97,
+        "paragraph_id": "S5.SS1.p3.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Datasets",
+        "text_sha256": "609120fdf5d38b927826b113138f5721a4fdd295aa4984e211c6dec38cb100d5"
+      },
+      {
+        "index": 98,
+        "paragraph_id": "S5.SS1.p4.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Datasets",
+        "text_sha256": "d53007b9e1efa2b13c7ef2f79c0448ebc8a36d53b431591b3aaa26047de94138"
+      },
+      {
+        "index": 99,
+        "paragraph_id": "S5.SS2.p1.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2 Ablation Study on Different Features",
+        "text_sha256": "b9dbd8e0513981ee40e5c134cf6a64804cf8433add9b686531ea8fe60f03fff9"
+      },
+      {
+        "index": 101,
+        "paragraph_id": "S5.SS3.p1.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3 Comparison between Different Token Selection Strategies",
+        "text_sha256": "35697fd4f71c89bb298e35c29966253fbc452c7ebd90a9c2b2c77676b02c6e6a"
+      },
+      {
+        "index": 102,
+        "paragraph_id": "S5.SS3.p2.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3 Comparison between Different Token Selection Strategies",
+        "text_sha256": "bf3174975c42070fc9eef675f7ca0876744044faf926e6277ff99e14edc20ed2"
+      },
+      {
+        "index": 103,
+        "paragraph_id": "S5.SS4.p1.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4 Transferbility Study",
+        "text_sha256": "4af4ddc7d144a91acd6fc1a537ddf7637e81d87f2396f60887135d9949b322c9"
+      },
+      {
+        "index": 104,
+        "paragraph_id": "S5.SS4.p2.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4 Transferbility Study",
+        "text_sha256": "be5d5596d5fda5e34107e021e0d4fe7f7b5132cbcbb23298deb430e1d7e44630"
+      },
+      {
+        "index": 105,
+        "paragraph_id": "S5.SS4.p3.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4 Transferbility Study",
+        "text_sha256": "14602ff65a1e225f5764a57448f13bb9c2abde22f5e58e3a8d18c6fbf31e15bc"
+      },
+      {
+        "index": 106,
+        "paragraph_id": "S5.SS5.p1.1",
+        "section_id": "S5.SS5",
+        "heading": "5.5 System Overhead",
+        "text_sha256": "185aa019ead833892a7313297e0293d2170ec31efbdf5aa1dbf2d8641b7b680d"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main26-43 defines extraction and selection of internal states associated with generated response tokens;73 and95-99 defines factual/hallucinated output comparisons and detection tasks.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual35-43 defines all/first/last/per-token/window selection over response tokens;99/101/103 defines feature-group, token-selection and transfer comparisons. These are response-hallucination labels and generation-state features, not input injection labels. Specific detection-classifier implementation is not established by the inspected text and remains unresolved.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main86 explicitly constructs answer-based retrieval context and compares internal states with/without RAG during answer inference. Generated response states are the study object; no output-quality finding is transferred.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main95-98 names CNNDM, Natural Questions and HaluEval; dataset names and English exposition are not treated as an evaluated-language declaration.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False retains middle feature-definition and appendix judge-context omissions. The positive source-declared hallucinated/factual response scope is verified independently; uninspected details are not converted into whole-work absence claims.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

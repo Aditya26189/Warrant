@@ -1,0 +1,341 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0064",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:12:19.058946+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0064.provider.0001.json",
+  "provider_packet_sha256": "2968e44f125d3e9c9268c3312b4df61edaffb9f9db53c0680c3cb4551c43a319",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2507.20704v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\4525e06a86695215c45777f0085afd238b1f6af7ca50cbc436f17239c19c970c",
+    "raw_sha256": "4525e06a86695215c45777f0085afd238b1f6af7ca50cbc436f17239c19c970c",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0098.json",
+    "acquisition_receipt_sha256": "700215ba654277b1c47d4ef65996f8c3418223048a3d3546a2aefe0abc176498",
+    "captured_version_id": "arxiv:2507.20704v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        16,
+        54
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Method18-23 explicitly transforms textual salient concepts into typographic images with placeholders and evaluates multimodal versus original text-only target inputs. Only the listed method families and inspected source context are approved; retained omissions remain open.",
+    "locator_sha256": "2ede87feb450c94ea750fcb09ab8e9a51af29ba815486cddea860a711c7394d4",
+    "locators": [
+      {
+        "n": 16,
+        "kind": "heading",
+        "id": "S3",
+        "section": "3 Methodology",
+        "sha256": "cc061b940bbc05a6a0967e9b4cf2288de8f416316f0a1442e03d806ffc056cbe"
+      },
+      {
+        "n": 17,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "section": "3.1 Approach",
+        "sha256": "7093c6007c814c815c683759dbb1d2d4bad8963850ee492664934cbed7a5172a"
+      },
+      {
+        "n": 18,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "section": "3.1 Approach",
+        "sha256": "850a2ef432c9fbab4f80ce61616a2e72b438233877e5fe557f004bab29447ae3"
+      },
+      {
+        "n": 19,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.1",
+        "section": "3.1 Approach",
+        "sha256": "25eaf43b69e3584e46e822396ea431ffedecceb0f4c0fd903b129c1a5e1d3f78"
+      },
+      {
+        "n": 20,
+        "kind": "paragraph",
+        "id": "S3.I1.i1.p1.1",
+        "section": "3.1 Approach",
+        "sha256": "70c13d9037f98a8baf0390ced8e7c33f99439ae67bdff878d8e48b83581706a2"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S3.I1.i2.p1.1",
+        "section": "3.1 Approach",
+        "sha256": "29c39b803bcb4cf222a7747ad4ed607b5ae9a75b8c2b4b209f8a98f353fcb717"
+      },
+      {
+        "n": 22,
+        "kind": "paragraph",
+        "id": "S3.I1.i3.p1.1",
+        "section": "3.1 Approach",
+        "sha256": "28e11b944522e6628aaeca284e94e277f2a6b737bf8c936f67919c184066c079"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S3.I1.i4.p1.1",
+        "section": "3.1 Approach",
+        "sha256": "334b1d9dd358b7232602dc92d48bfadf1904bf97583403e76638f6dffcb8610c"
+      },
+      {
+        "n": 24,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "section": "3.2 Classifier Details and Evaluation Metrics",
+        "sha256": "48db7d5fcf43d54986beb34a8559a384fe21e272e51f3322d1c6371fb74e1d12"
+      },
+      {
+        "n": 25,
+        "kind": "heading",
+        "id": "S3.SS2.SSS0.Px1",
+        "section": "Relevance Score",
+        "sha256": "c738ac4d28947bfce78f9a7e48a9876d76243d80ce983861d9c605ec6a626267"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px1.p1.1",
+        "section": "Relevance Score",
+        "sha256": "c1f9e7c6a2ddecfa019674310c51897b288030be1ac9894ec889a5a18cc09205"
+      },
+      {
+        "n": 27,
+        "kind": "heading",
+        "id": "S3.SS2.SSS0.Px2",
+        "section": "Safety Refusal Classification",
+        "sha256": "82d2c729fd674c24569f0213f66a7d520f96710e35b54aceb64fe4817b8d1228"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px2.p1.1",
+        "section": "Safety Refusal Classification",
+        "sha256": "0df55a09175b1cc615940398c8dc94272f05e6e6fe2072cc77ef752778abc8df"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S3.I2.i1.p1.1",
+        "section": "Safety Refusal Classification",
+        "sha256": "350a196d0a2eb8f433c8ff426190147951666874e46ad87b2de35ec22b6720b3"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S3.I2.i2.p1.1",
+        "section": "Safety Refusal Classification",
+        "sha256": "4cf17ae1d64923640ae7783ae57be6e546ec9b2b251f167724c1366b15efbb17"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S3.I2.i3.p1.1",
+        "section": "Safety Refusal Classification",
+        "sha256": "bf6b253bcd5f857f2b0357bd0e5b8f621814fd9997bfd844908c41f8db67897d"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px2.p3.1",
+        "section": "Safety Refusal Classification",
+        "sha256": "171c90c5e1f8b9df6da15717b0772b54c60e640d7752d3e32a4a350a8c9fb8b9"
+      },
+      {
+        "n": 33,
+        "kind": "heading",
+        "id": "S3.SS2.SSS0.Px3",
+        "section": "Understanding Score",
+        "sha256": "74311a106b81f124a8cf28a6a21cbe7fda820c36dcc257ba4c0803f633c47d0e"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px3.p1.1",
+        "section": "Understanding Score",
+        "sha256": "074c35618308d2071047c973c0c3b156a7e129efaf09fbc6f122cfe0afbf448c"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px3.p2",
+        "section": "Understanding Score",
+        "sha256": "25dd1fd71302c618d7a4f43128ff51c063be6737453599bbc1e7bee7bd5b11eb"
+      },
+      {
+        "n": 36,
+        "kind": "heading",
+        "id": "S3.SS2.SSS0.Px4",
+        "section": "Human Alignment Validation",
+        "sha256": "a98fe7273b074a94438b4d85a840cc8f3febfa4b2ad2cb077ca09d876ebf5dd5"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px4.p1.1",
+        "section": "Human Alignment Validation",
+        "sha256": "8f34fb87def0560b99003b2df907b322444776328172ee717ffaf55a2641a1b2"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS0.Px4.p2.1",
+        "section": "Human Alignment Validation",
+        "sha256": "941987d3ffc42ea6ed0f890e641783c4b9f0b8dad23e02655486bd9f42fb4825"
+      },
+      {
+        "n": 39,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Experiments and Results",
+        "sha256": "cf9cc19282e413093dfefb4ebf0baa02afc20b41e060fd8a37badfaff5a5137b"
+      },
+      {
+        "n": 40,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Setup",
+        "sha256": "1538f9bb8d8354c408bb7250651b429f7045e46f6a8db5f7939ec9e1a9fbf328"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1 Setup",
+        "sha256": "c789395602f9b9083b8176c710f66abd61eb691a745da4b7fd96d4080bedf4fa"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "section": "4.1 Setup",
+        "sha256": "76c1432b24aee779ec778730378c7320010a7e713c228361c3a7e8de062d6a4d"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S4.I1.i1.p1.1",
+        "section": "4.1 Setup",
+        "sha256": "1f5d127cd8c5f34b6f2ce55986d75dbc96d9c5611e34ab6440e8e1466054eea5"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S4.I1.i2.p1.1",
+        "section": "4.1 Setup",
+        "sha256": "452b44905a819cc71679f52073b00a427e04d39de05222711d49d90c2c467f36"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S4.I1.i3.p1.1",
+        "section": "4.1 Setup",
+        "sha256": "b265c6727f3a097ab17dcd1b215c7e0abddcc8b840aa764f4230d63f9fe2c5af"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S4.I1.i4.p1.1",
+        "section": "4.1 Setup",
+        "sha256": "0c6d9a66ae52538067c26a5ce9035b68c7d94fb1ca917c51f42231828e4a7dce"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S4.I1.i5.p1.1",
+        "section": "4.1 Setup",
+        "sha256": "bd72b1c5341d1d860dd00c3865f97f770a2bc05fdf66cc51268c963f4ddcfb3e"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S4.SS1.p4.1",
+        "section": "4.1 Setup",
+        "sha256": "770d7eeef782ce808868fb7990dadc7814f48c426521adf620f4d59ac155bb69"
+      },
+      {
+        "n": 49,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 Evaluation Metrics",
+        "sha256": "150991d3a4b6637a2320e1de6acae868a60535bd42d2dbe044da614a9df7ac8f"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "section": "4.2 Evaluation Metrics",
+        "sha256": "26b6db12db878bfd8e53fafed54610701c0c6fa555c1676fd8c2721aee6e7b7c"
+      },
+      {
+        "n": 51,
+        "kind": "heading",
+        "id": "S4.SS2.SSS1",
+        "section": "4.2.1 Understanding Rate",
+        "sha256": "6055b519e268ef89d98b8046c10ea209c649161fe01a7c295f824b8e8bb0132e"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS1.p1.1",
+        "section": "4.2.1 Understanding Rate",
+        "sha256": "57aaa39e6165b2b1ef9474b7f9c21f41dae3a3b213f4138d8dfc10e81df01f4e"
+      },
+      {
+        "n": 53,
+        "kind": "heading",
+        "id": "S4.SS2.SSS2",
+        "section": "4.2.2 Unsafe Response Rate",
+        "sha256": "caad55484cfa0ced54efb44136c38ea3139a2db7fe1d7beff04d140a4d9070bd"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS2.p1.1",
+        "section": "4.2.2 Unsafe Response Rate",
+        "sha256": "b02ce0f3281ec01b56e293e0f6bfc7501a1a3417a9ba0e3f74cb18bd9ba579f2"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Method18-23 explicitly transforms textual salient concepts into typographic images with placeholders and evaluates multimodal versus original text-only target inputs.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Blocks26-35 specify response-relevance/refusal/understanding labels;37-38 distinguishes human transformation validation from response-classifier validation. Setup41-50 verifies LLaVA/VILA families and cyber/medical/toxicity/benign datasets. Target-response labels require the generated response; concept extraction is preprocessing.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions. Approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

@@ -1,0 +1,391 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0016",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T12:06:46.634006+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0016.provider.0002.json",
+  "provider_packet_sha256": "599800972f3254cb6ae4fec470426b6a2211d5c5ec8f93857c4634b06ebf02b8",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2409.19521v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\a2206cd303c402fd347231a0ec58c357a7733f463ede242a863bb2c06960e772",
+    "raw_sha256": "a2206cd303c402fd347231a0ec58c357a7733f463ede242a863bb2c06960e772",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0041.json",
+    "acquisition_receipt_sha256": "6bd824cfbadf47d838429157cb09b9d67d88087f270cade1d3d29a7aa3484234",
+    "captured_version_id": "arxiv:2409.19521v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        18,
+        49
+      ],
+      [
+        61,
+        73
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "Main detector training and benchmark-construction methods distinguish multilingual-E5 fine-tuning on input text from application/risk/template benchmark construction. True remains verified for all declared main/appendix classifier, length and translation families from the prior actual source check; the new whole-section construction read adds English component evidence. Structural hashes are independently verified in STRUCTURAL_CHECKS.0002.json.",
+    "visual_check": null,
+    "locator_sha256": "6db3c05386ea48094a592fd3d5d8f8b87b46679ebfdc5e2aa16933513bf3ec65",
+    "locators": [
+      {
+        "index": 18,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Benchmark Design",
+        "text_sha256": "6e20da2f870c597accba285e50844efd6ed1e5f65a617fe7bc9f1dea53cfa82d"
+      },
+      {
+        "index": 19,
+        "paragraph_id": "S3.SS2.SSS1.p1.1",
+        "section_id": "S3.SS2.SSS1",
+        "heading": "3.2.1 LLM Application Scenarios",
+        "text_sha256": "e2314d5f5e857c672871baef3d1fb7a87d556a5e7803214e34ba37ef8eaf1af5"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S3.SS2.SSS2.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2 Security Risk Scenarios",
+        "text_sha256": "e09312dcb34abed1620463808b4a5c264141eaef8be7aa32094d6a2d37b7eb09"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S3.I1.i1.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2 Security Risk Scenarios",
+        "text_sha256": "395ca1123d916bba55c6ae2ba458d4e8117878b861c1b5b6fde5cff3c391f1aa"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S3.I1.i2.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2 Security Risk Scenarios",
+        "text_sha256": "7c37cf553af7de2c564bca5c8077a547a0766b166a22af74c1eab53f4e4cc980"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S3.I1.i3.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2 Security Risk Scenarios",
+        "text_sha256": "bff4926093abf7faa320d6150c75a27ebfb594c5f09883fc31b97653c0337c0d"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S3.I1.i4.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2 Security Risk Scenarios",
+        "text_sha256": "556010e5c13b79f9f4fb9d282e93b8f6da508035fd1407f215bbd50a5402d34e"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.I1.i5.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2 Security Risk Scenarios",
+        "text_sha256": "565c0f19e83c9519efc9e1bf7b48e8e3cd1694b214192600b64c9b3c7c6b42ce"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.I1.i6.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "heading": "3.2.2 Security Risk Scenarios",
+        "text_sha256": "5e639e920f590fe4e88c84fff32308802928cddd64352e6bd701883e54158587"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS2.SSS3.p1.1",
+        "section_id": "S3.SS2.SSS3",
+        "heading": "3.2.3 Senarios Integration",
+        "text_sha256": "faeecc79ed5aab8e5ac461401133656d56f6c9f83f4beed8e36a226f7e17c65f"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.SS2.SSS3.p2.1",
+        "section_id": "S3.SS2.SSS3",
+        "heading": "3.2.3 Senarios Integration",
+        "text_sha256": "4282964d2b43f54874f05e821924a786deb316a73d2cc78083313cfb941d9c92"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Benchmark Building",
+        "text_sha256": "6afda66149dbb71d5ba219608ae998b7f76d1688a3cef4693849b69dc0fab15d"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS3.p2.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Benchmark Building",
+        "text_sha256": "f821248990a0845e50c7e9c36f4c0851a9d1a1053d06e9ef3dae6fed9768b86f"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "4 GenTel-Shield",
+        "text_sha256": "fcdf18423203e9605830b0e6ef2af2f13515f6022f9666ac9cd3a3210f8505c0"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Overview",
+        "text_sha256": "c4945db8899187a0132bb864c496e7abf5943439dc274817dc725285a50c2b24"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Training Data Preparation",
+        "text_sha256": "5f6e09d2bacbef82ec8e15bcf85fc394c020968e9d8a036a469ecbf5c931db0e"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S4.SS2.SSS1.p1.1",
+        "section_id": "S4.SS2.SSS1",
+        "heading": "4.2.1 Data Collection",
+        "text_sha256": "b8427f0245b111038d237e0ee29502637eea8f968611b3a840d61100c8882b7d"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S4.SS2.SSS2.p1.1",
+        "section_id": "S4.SS2.SSS2",
+        "heading": "4.2.2 Data Augmentation",
+        "text_sha256": "e7c89f246717dcbcb4a9cc846630a3c0bdad3f1070c15f384a307adbab76a508"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S4.SS3.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Model Training Details",
+        "text_sha256": "e573c428e674c6f7a8b6137dc0cf757e3f319b728ad01f9e777b3094492aeb7c"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S5.SS1.SSS1.p1.1",
+        "section_id": "S5.SS1.SSS1",
+        "heading": "5.1.1 Safeguarding Baselines",
+        "text_sha256": "4291bc14fcf84dda61635a8776612fe81efad5f8b947cb9b365dac39b50d97fc"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S5.SS1.SSS1.p2.1",
+        "section_id": "S5.SS1.SSS1",
+        "heading": "5.1.1 Safeguarding Baselines",
+        "text_sha256": "d40d60efc8e748c96eeac72a122d95f9d66daf96ced39e023d8db3918680c0f8"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S5.SS1.SSS1.p3.1",
+        "section_id": "S5.SS1.SSS1",
+        "heading": "5.1.1 Safeguarding Baselines",
+        "text_sha256": "1e7de47670c6cda5d3d7fbdf0e6e571f08f862fe21da2b0dbac461178fa0244c"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S5.SS1.SSS1.p4.1",
+        "section_id": "S5.SS1.SSS1",
+        "heading": "5.1.1 Safeguarding Baselines",
+        "text_sha256": "aabf3f80376b9d363adfc175bd382e8a8166de0f1442078aef4740aadd22e66a"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S5.SS1.SSS1.p5.1",
+        "section_id": "S5.SS1.SSS1",
+        "heading": "5.1.1 Safeguarding Baselines",
+        "text_sha256": "95a99be9a88c7bb8145ba3441a6bcf2b42551dad66ce0c7b00dfa1ec6251066d"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S5.SS1.SSS1.p6.1",
+        "section_id": "S5.SS1.SSS1",
+        "heading": "5.1.1 Safeguarding Baselines",
+        "text_sha256": "4ecb935d953cbd1d7d1e7ac2bfee3f8b41c3726510672210fbe8f19d3ffb4c69"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S5.SS1.SSS1.p7.1",
+        "section_id": "S5.SS1.SSS1",
+        "heading": "5.1.1 Safeguarding Baselines",
+        "text_sha256": "93b1ae2696e662dbaa640bbf984812570424937593fe63fe6506e6ab1fd2aa7f"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S5.SS1.SSS1.p8.1",
+        "section_id": "S5.SS1.SSS1",
+        "heading": "5.1.1 Safeguarding Baselines",
+        "text_sha256": "356893ab3c1a5d301eed2765b1637c727b35c626733b59ad71abb0c487005d58"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S5.SS1.SSS2.p1.1",
+        "section_id": "S5.SS1.SSS2",
+        "heading": "5.1.2 Metrics",
+        "text_sha256": "8ffbca6e85325f56eb270fef048267ec8cf75c250d077ea1e3b4041b36492c71"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S5.SS1.SSS3.p1.1",
+        "section_id": "S5.SS1.SSS3",
+        "heading": "5.1.3 Dataset",
+        "text_sha256": "ba5eec267132fdc7042aeaeee106c9726f756cc04a4a6454a55d0b768806d9bb"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S5.SS1.SSS3.p2.1",
+        "section_id": "S5.SS1.SSS3",
+        "heading": "5.1.3 Dataset",
+        "text_sha256": "15f580fd7cb51f9d67d2429e6e3c6c16ee0f130572cba06b11602f639e49bff2"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S5.SS1.SSS3.p3.1",
+        "section_id": "S5.SS1.SSS3",
+        "heading": "5.1.3 Dataset",
+        "text_sha256": "cf38eab7b52478629983b04a1bbd1d0523559683ad29a95ce48716b3bf85341a"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S5.SS1.SSS3.p4.1",
+        "section_id": "S5.SS1.SSS3",
+        "heading": "5.1.3 Dataset",
+        "text_sha256": "544e892812cd3c719c5bd9b52a5821a28cfedacc86e4b91f488a350449ab4c69"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "S5.SS2.SSS2.p5.1",
+        "section_id": "S5.SS2.SSS2",
+        "heading": "5.2.2 Separate Performance on Attack Samples",
+        "text_sha256": "9c5d98d65e463a04fde8cb9fb026121845888716995d6845b6fb014d23532d8a"
+      },
+      {
+        "index": 62,
+        "paragraph_id": "S5.SS2.SSS2.p6.1",
+        "section_id": "S5.SS2.SSS2",
+        "heading": "5.2.2 Separate Performance on Attack Samples",
+        "text_sha256": "9936b7aea7dd172ad1a573b0ed951b8e0d0c30f6cd89146b0873a2815d4fe6d1"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "S5.SS2.SSS2.p7.1",
+        "section_id": "S5.SS2.SSS2",
+        "heading": "5.2.2 Separate Performance on Attack Samples",
+        "text_sha256": "3c8975d8a840fe2e8ed9a8556c3ed8349ee96d6bb93b0d63737ac94d82c2b543"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "S5.SS2.SSS2.p8.1",
+        "section_id": "S5.SS2.SSS2",
+        "heading": "5.2.2 Separate Performance on Attack Samples",
+        "text_sha256": "a669963ad60ef98cd6e90c7b17c10e187589d45d8ca49f47ee9d853bf424a0f8"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S5.SS3.p1.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3 Comparison Results on Different Datasets",
+        "text_sha256": "cc2b804de35d9d9fa7ef94ebc9f9919a8a84831fbe0a3bd2c64e9208ed9d7f33"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "S5.SS3.p2.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3 Comparison Results on Different Datasets",
+        "text_sha256": "926ab874e7f25bc3045f3ad9ccc3ab1d4ef6cd2e90602cf88a8222d336736a27"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S5.SS3.p3.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3 Comparison Results on Different Datasets",
+        "text_sha256": "71d46d8adb0853c6385c0e8da45cc1e6622b5d51750a212bbf10cfe99b8cd8a1"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S5.SS4.p1.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4 Comparison Results on Different Language",
+        "text_sha256": "cbb11b9c51f4b856b9626a222c2151229a8bf5163b8b775b308c4645b35f5690"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S5.SS4.p2.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4 Comparison Results on Different Language",
+        "text_sha256": "28a52cbe277817941356e3c1ab4741f2ee96a6c1200a32acfbac28a8ac441689"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S5.SS4.p3.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4 Comparison Results on Different Language",
+        "text_sha256": "887bafaa953ba66b77643e3d81ec1886ff96db85572320e383f381a0bdff371d"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S5.SS4.p4.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4 Comparison Results on Different Language",
+        "text_sha256": "8afc9a860a65cf02605ea82ae6acd784a9c8064f583473304397884501bddeeb"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "S5.SS5.p1.1",
+        "section_id": "S5.SS5",
+        "heading": "5.5 Comparison Experiment with Different Input Token Lengths",
+        "text_sha256": "a59a0b1eff611949d55c3b425ec1687210eb3f3d5cbb402412f49db9ec32ffde"
+      },
+      {
+        "index": 73,
+        "paragraph_id": "S5.SS5.p2.1",
+        "section_id": "S5.SS5",
+        "heading": "5.5 Comparison Experiment with Different Input Token Lengths",
+        "text_sha256": "846cfae3ec578d3eacfa47f8ee2517000e1d9bd72b05401e9b3fa57bd3c83f2d"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main detector training and benchmark-construction methods distinguish multilingual-E5 fine-tuning on input text from application/risk/template benchmark construction.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "The original method/setup/comparator source checks verify all named detector/service families and translated/length variants on malicious/benign input labels, without requiring an original protected application answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actually read the complete S3.SS2.SSS3 non-paragraph English Developer-Mode and risk-question construction example, plus S3.SS3 paragraph29 linking templates with test samples. This is direct English benchmark-construction evidence; full evaluated-language composition is not inferred.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True remains verified for all declared main/appendix classifier, length and translation families from the prior actual source check; the new whole-section construction read adds English component evidence. Structural hashes are independently verified in STRUCTURAL_CHECKS.0002.json.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

@@ -1,0 +1,428 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0080",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T18:27:58.456369+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0080.provider.0001.json",
+  "provider_packet_sha256": "9cc34eea316fceabb1eb9dda7c886d11ce1c660c57eb3abb533bd2792c5aa724",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2509.10540v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\c972c5620d2eadb40efd62bb692fc401351dad6cef66be6e6d6fdd4ae4a3cce5",
+    "raw_sha256": "c972c5620d2eadb40efd62bb692fc401351dad6cef66be6e6d6fdd4ae4a3cce5",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0121.json",
+    "acquisition_receipt_sha256": "71d5a1c9f866cc1ff4dafec41258b4c3afcb5a7275d2e8520679292de3b8ff94",
+    "captured_version_id": "arxiv:2509.10540v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        28,
+        86
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actual29/40 attributes the analyzed EchoLeak chain to the published Aim Labs exploit. Main35-50 describes inbound-email classification, generated-reference content and browser fetching;53 introduces discussed defensive engineering measures rather than an independently specified classifier trial. False retains incomplete whole-source attribution and remaining defensive subsection details. The checked discussion is bounded to source-reported analysis and recommendations; no whole-work absence inference or assurance is released.",
+    "locator_sha256": "77aedfcdf83e536ffe56e4d5a43497bc2ead766a4d4217ceeac495839f9d7dd2",
+    "locators": [
+      {
+        "n": 28,
+        "kind": "heading",
+        "id": "Sx4",
+        "sha256": "afc7597ff002542621c602c60c874ed2fe66659c9b467af40040a2605c13b8e6"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "Sx4.p1.1",
+        "sha256": "685d1639847d6de585996b0ef9a6ab24d85b8bc8b3c69af943c78bc35bfdd752"
+      },
+      {
+        "n": 30,
+        "kind": "heading",
+        "id": "Sx4.SSx1",
+        "sha256": "44b682127c525a499be3560316e022cf5ee5d9bb3e9bf9d28df4f29c3a31f256"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "Sx4.SSx1.p1.1",
+        "sha256": "9536fa259ee147610abb7c3122c6567e60233600af317a7c2aea559109251ae2"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "Sx4.I2.i1.p1.1",
+        "sha256": "a08fc495f5a36965f211e9801cc661042810c412fc7c9711acbeb947fca099be"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "Sx4.I2.i2.p1.1",
+        "sha256": "abd41b9d6f65ff566cb5e4deb8801220551cbf16d29a590d92ed0341dc30d9d1"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "Sx4.I2.i3.p1.1",
+        "sha256": "912882a37bd2a62afd7d97fc3263d800ac22d419bbf78800def1a1b35e72a9b8"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "Sx4.I2.i4.p1.1",
+        "sha256": "e0ad80016cf76811b4d3b5818803cce06b8e7d259fef994e0d39c4bf1114fa5f"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "Sx4.SSx1.p3.1",
+        "sha256": "dacaabd21222e06460dc3efb351ea5bfd3583082b6fd66f02787eadf90298c5c"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "Sx4.SSx1.p4.1",
+        "sha256": "c84f5062a4f88c1e46b2cb4c01e17c499978b5b4574286c8062a9586a04d4e15"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "Sx4.SSx1.p5.1",
+        "sha256": "e55e7b5b8cd16d5c8a2ee20318890f39b68e480a872420a5618fdce287b6ba74"
+      },
+      {
+        "n": 39,
+        "kind": "heading",
+        "id": "Sx4.SSx2",
+        "sha256": "d5d47cf4d963079fddc711c8ab40a866e34000f407992cd99b468695c52efd9d"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "Sx4.SSx2.p1.1",
+        "sha256": "53e86e61a3867c7035524923e8aec1f5bdf21c5e45d2ffe2ffeea92cdc7a12a9"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "Sx4.SSx2.p2.1",
+        "sha256": "d166ec883c6f6b4eed97090006ca10e2fd7296ae8ae183f8fbd0066aefe915eb"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "Sx4.SSx2.p3.1",
+        "sha256": "3b0a39550ccec2da5cacaaa2fd5214d68075766acda13c4eb0c1de4c77062432"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "Sx4.SSx2.p4",
+        "sha256": "665d9e1c830829a94af381f6eadb2903a05996e4839ed6b08ea07673fc468383"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "Sx4.SSx2.p5.1",
+        "sha256": "2bd786944a33315efd51daff231171ff7ac50376211c3e07ea3641bcc123b7c1"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "Sx4.SSx2.p6.1",
+        "sha256": "be9c8a0e83d34db5913354a7cc9ef41afc0d648387993ee61423f9ee21d435bd"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "Sx4.SSx2.p7",
+        "sha256": "33889f99fe8d6bf638b46229c5d5aeebb609550ec7129ad151e2bfd41962153c"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "Sx4.SSx2.p8.1",
+        "sha256": "4ba4473e72df8c4684bb4e44bfd47061b06ccd6d83d21240ab5b7bca34d7fec7"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "Sx4.SSx2.p9.1",
+        "sha256": "b54a5fc10dcecf09d341a1df114a5f238597b9d50f6bf23d54150beb521510ec"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "Sx4.SSx2.p10",
+        "sha256": "331c9bc18d732f9ea7d651e0b3c59afd7668f18d01fb54cae34ed0be06c684c6"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "Sx4.SSx2.p11.1",
+        "sha256": "9c8a986bcfee13b0a38b93fb675f0c3571f8f97a77333644cc639a0910f4c7b7"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "Sx4.SSx2.p12.1",
+        "sha256": "99aea711f2f09e9d34f40dce02c9fc8fd500c1df959271363dfe922f099f8226"
+      },
+      {
+        "n": 52,
+        "kind": "heading",
+        "id": "Sx5",
+        "sha256": "8bace08e593d8ea09d20a6dfcfbdf775f9f1ceca538e169ffcc54c1c7512f84e"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "Sx5.p1.1",
+        "sha256": "5aacfb61e127d10aae55af23014c67833efe57db2bf001971cbad44dd435ee89"
+      },
+      {
+        "n": 54,
+        "kind": "heading",
+        "id": "Sx5.SSx1",
+        "sha256": "f0817be294469ddc2fb623bb2fc05e688aa25ee84b8f39a6ec476424d3623b68"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "Sx5.SSx1.p1.1",
+        "sha256": "9bd3182758c03ec566444b78fbb7b093db35885f9ff0aa87fe32ecd5c0cec5ef"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "Sx5.SSx1.p2",
+        "sha256": "3a0d8b4eace4ef6bd1c3fb8a1415ed4cea6b9cd3835845b9813e0b5d78cbf56f"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "Sx5.SSx1.p3.1",
+        "sha256": "dcf45b47d31f0e3999b99b346acc8d7642e90080bd54bc5ac827ed6c20472262"
+      },
+      {
+        "n": 58,
+        "kind": "heading",
+        "id": "Sx5.SSx2",
+        "sha256": "3a78c3b4786192314e93fa7c9c4bb93b2908fe07a34f92b0416006538c69135b"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "Sx5.SSx2.p1.1",
+        "sha256": "178dc4de1c9cfe881fab7ae4dadfee5df9ab3ca229790ffb0a536260e5bf51bc"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "Sx5.I3.i1.p1.1",
+        "sha256": "4811dafd82a67f35755c4ec69ddd56b7f77ba447877905de6e4679f0e8a68e5a"
+      },
+      {
+        "n": 61,
+        "kind": "paragraph",
+        "id": "Sx5.I3.i2.p1.1",
+        "sha256": "dfdb52ed83ab625ff52881826ecffb8f56daadc9b6b0c6a5eafc811386bea141"
+      },
+      {
+        "n": 62,
+        "kind": "heading",
+        "id": "Sx5.SSx3",
+        "sha256": "b6e9c0692d83d1994604e8b0e3bb6ac3ee29bed01ab80b646c33583707d09b79"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "Sx5.SSx3.p1.1",
+        "sha256": "577cdecac21abedb2df4ffae5617bf15d583cdb28ae479deb3780f74bdde4202"
+      },
+      {
+        "n": 64,
+        "kind": "paragraph",
+        "id": "Sx5.I4.i1.p1.1",
+        "sha256": "dfedde13c72e5f77c7f8163f0adeb8924fb8b1df37ff52e3498ed2381a137f95"
+      },
+      {
+        "n": 65,
+        "kind": "paragraph",
+        "id": "Sx5.I4.i2.p1.1",
+        "sha256": "bbfdc8a16e3b63bf54c8827db4a01e795c3df8be60b2e52358e38436d6eb25a5"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "Sx5.I4.i3.p1.1",
+        "sha256": "179f82bc1dd0f75409278ea9f20f4e91d1f85a6c031405ef33b8d1c9c9c096e8"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "Sx5.SSx3.p3.1",
+        "sha256": "7e184e8a4307f77e5c0f3854b86a8f9813eadbf3bbcd23170e49befcda88074f"
+      },
+      {
+        "n": 68,
+        "kind": "heading",
+        "id": "Sx5.SSx4",
+        "sha256": "23b401ba8eed441a7707c96cc25dd9cad4e835f1f3db2b4eaab13676f62cd441"
+      },
+      {
+        "n": 69,
+        "kind": "paragraph",
+        "id": "Sx5.SSx4.p1.1",
+        "sha256": "d40fa0a142c54edd35b71f2fd5fcaa178c7977499a1f801aebf558e2ac99e25d"
+      },
+      {
+        "n": 70,
+        "kind": "paragraph",
+        "id": "Sx5.I5.i1.p1.1",
+        "sha256": "119504fedf757db9ce8fe317a542ee2904814c9c9c6cbed619a3f4c21c774e41"
+      },
+      {
+        "n": 71,
+        "kind": "paragraph",
+        "id": "Sx5.I5.i2.p1.1",
+        "sha256": "5d7be9c39f594e1ab467feaf32b9f9f67e23295f50fdf795a894b70091f0f7e7"
+      },
+      {
+        "n": 72,
+        "kind": "paragraph",
+        "id": "Sx5.I5.i3.p1.1",
+        "sha256": "1c4177d15953296fef6c622c75fa36a5b5fe2ae1bdc8e6bf94fbaef7dd16f6fd"
+      },
+      {
+        "n": 73,
+        "kind": "paragraph",
+        "id": "Sx5.I5.i4.p1.1",
+        "sha256": "f74b3ac367be2088bdd705d82ff1704660b42be0906405da79369108e7897217"
+      },
+      {
+        "n": 74,
+        "kind": "paragraph",
+        "id": "Sx5.I5.i5.p1.1",
+        "sha256": "c326177ea69e062ba03934c619d139405203058ddee99a1aaca26763d44e8579"
+      },
+      {
+        "n": 75,
+        "kind": "paragraph",
+        "id": "Sx5.I5.i6.p1.1",
+        "sha256": "da010cc2799b017c37ef8885b6cb95725ab6249b44097ba62bd658fa2012e2e0"
+      },
+      {
+        "n": 76,
+        "kind": "heading",
+        "id": "Sx5.SSx5",
+        "sha256": "3aa7aaf5b1c95fa21d8b5dcfda6c751b312cc2b583416f5fbbf962b7a21080a5"
+      },
+      {
+        "n": 77,
+        "kind": "paragraph",
+        "id": "Sx5.SSx5.p1.1",
+        "sha256": "1ca7f26730829b14fdb0d4395b309c2c0226a6bd858db604d6d172dcfc750c38"
+      },
+      {
+        "n": 78,
+        "kind": "paragraph",
+        "id": "Sx5.I6.i1.p1.1",
+        "sha256": "9438e75ce0d2e111aff90fb8f7acd299313174fd9e6b47977219047c5fc2d300"
+      },
+      {
+        "n": 79,
+        "kind": "paragraph",
+        "id": "Sx5.I6.i2.p1.1",
+        "sha256": "0e0b5290437f1280f8ffd5fbb39e8b454aa17632285c0d424771a703f95acb5c"
+      },
+      {
+        "n": 80,
+        "kind": "paragraph",
+        "id": "Sx5.I6.i3.p1.1",
+        "sha256": "b129e2a35638ff2619f9af12485ab4a92d9adb23c314770c718b017e4d02967b"
+      },
+      {
+        "n": 81,
+        "kind": "paragraph",
+        "id": "Sx5.I6.i4.p1.1",
+        "sha256": "92c614e3d7c1cf03421457b708cb3791fd5769d7b11c1b57200c569a7fe24221"
+      },
+      {
+        "n": 82,
+        "kind": "paragraph",
+        "id": "Sx5.I6.i5.p1.1",
+        "sha256": "19d3e457adc4abd921d59aea7f843ba682640b886ad6c5ba7cb8031d000f0d71"
+      },
+      {
+        "n": 83,
+        "kind": "paragraph",
+        "id": "Sx5.I6.i6.p1.1",
+        "sha256": "14e2f0334f3024bb8c5c43ed09e29a9a4141a7cb6d33fd9e0d96e5a2057e2695"
+      },
+      {
+        "n": 84,
+        "kind": "paragraph",
+        "id": "Sx5.I6.i7.p1.1",
+        "sha256": "3e3ae47a39b948ce09282ce9fd8ecb861199518278b23891a604c9405636bf99"
+      },
+      {
+        "n": 85,
+        "kind": "heading",
+        "id": "Sx5.SSx6",
+        "sha256": "4fe5d450e5afdf068307865e9cbd66dafefdc1b9a1784b94d3273db482fbeaea"
+      },
+      {
+        "n": 86,
+        "kind": "paragraph",
+        "id": "Sx5.SSx6.p1.1",
+        "sha256": "c3a75c53b7cb612e75dcffca866928081097397ff44af91d5eaa6ecc0bc8e27f"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual29/40 attributes the analyzed EchoLeak chain to the published Aim Labs exploit. Main35-50 describes inbound-email classification, generated-reference content and browser fetching;53 introduces discussed defensive engineering measures rather than an independently specified classifier trial.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual35 and41 specifies XPIA as an inbound-content classifier;42-50 separately describes generated links/images and subsequent request/CSP handling. These are analyzed stages of a reported exploit chain, not newly established classifier performance experiments.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual53-86 specifies proposed source tagging, input-pattern and URL filtering, provenance/access restrictions, output checking, network/CSP restrictions and training/runtime recommendations. Intervention inputs differ by stage; suggested output/request controls consume generated material, whereas input filtering precedes it.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False retains incomplete whole-source attribution and remaining defensive subsection details. The checked discussion is bounded to source-reported analysis and recommendations; no whole-work absence inference or assurance is released.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

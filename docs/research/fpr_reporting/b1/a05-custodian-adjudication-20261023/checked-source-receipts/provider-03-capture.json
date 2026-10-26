@@ -1,0 +1,26 @@
+{
+  "receipt_id": "A05-SRC03-W0339-REGISTERED-VOR-LINK-RECEIPT",
+  "actor_id": "/root/a04_semantic_restriction_03",
+  "capture_mode": "DIRECT_HTTP_RESPONSE_BYTES_SAVED_BEFORE_PARSING",
+  "source_url": "http://xplorestaging.ieee.org/ielx8/6287639/11323511/11670335.pdf?arnumber=11670335",
+  "final_url": "https://xplorestaging.ieee.org/ielx8/6287639/11323511/11670335.pdf?arnumber=11670335",
+  "started_utc": "2026-10-23T10:31:52.191375+00:00",
+  "finished_utc": "2026-10-23T10:32:02.043466+00:00",
+  "http_status": 200,
+  "redirects": [
+    {
+      "url": "http://xplorestaging.ieee.org/ielx8/6287639/11323511/11670335.pdf?arnumber=11670335",
+      "status": 301,
+      "location": "https://xplorestaging.ieee.org/ielx8/6287639/11323511/11670335.pdf?arnumber=11670335"
+    }
+  ],
+  "headers": {
+    "Content-Type": "application/pdf",
+    "Date": "Fri, 23 Oct 2026 10:31:53 GMT",
+    "Last-Modified": "Wed, 21 Oct 2026 19:05:22 GMT"
+  },
+  "error": null,
+  "raw_source_sha256": "0060b5d3d43694118bac2a248c9bd62dc2f380be4da165902b90ab891bd8b83e",
+  "private_raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-03\\private-raw\\registered-vor-link-0060b5d3d43694118bac2a248c9bd62dc2f380be4da165902b90ab891bd8b83e.raw",
+  "status": "PROVIDER_DRAFT_NOT_RELEASED"
+}

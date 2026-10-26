@@ -1,0 +1,663 @@
+{
+  "facts": [
+    {
+      "checker_actor": "/root/a05_source_check",
+      "checker_receipt_sha256": "0df893356b9b744092e63683d7384eac3d6c81fdd6a6cabae54e3fa66268744d",
+      "eligibility_decision": null,
+      "evidence_id": "A05-SRC01-W0352-F01",
+      "limitation": "Labels concern hidden instructions in external text, rather than downstream answer correctness.",
+      "locator": {
+        "evidence_pages": [
+          {
+            "page_number_1based": 4,
+            "page_text_sha256": "af4e82adade43e476b88c90338e4978d3c3a1dc52a61dbfd5939458cda31e56f",
+            "provider_visual_receipt": {
+              "filename": "M0021-p004.provider-view.0001.json",
+              "sha256": "638fd88a943f34fa602b4d2e291c979130558e6d4b1106351ee23d5e3c9cac4b"
+            },
+            "render_tool": "PyMuPDF fitz Page.get_pixmap Matrix(2,2), csRGB, alpha=False",
+            "rendered_page_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-01\\M0021-p004-rgb2x.png",
+            "rendered_page_sha256": "a3658631ab5d2da38bf2c106724bd0d9c398df834e336323be5c36b7684eedad"
+          },
+          {
+            "page_number_1based": 5,
+            "page_text_sha256": "76055875fad5ecb9d6fa40a3bf03bcf354582b21087defa4ee1d770c29bda46e",
+            "provider_visual_receipt": {
+              "filename": "M0021-p005.provider-view.0001.json",
+              "sha256": "b53ddb3276c0f3ce10895e785d33ff780124dedd50d9f8c6d486a25deff791b7"
+            },
+            "render_tool": "PyMuPDF fitz Page.get_pixmap Matrix(2,2), csRGB, alpha=False",
+            "rendered_page_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-01\\M0021-p005-rgb2x.png",
+            "rendered_page_sha256": "07cad8662b3e32023815c43a9d986b122c257ec378d4ade614e2af28cc403314"
+          }
+        ],
+        "format": "PDF",
+        "method_commitment_ids": [
+          "A05-SRC01-W0352-PASSAGE-DATA-SOURCES",
+          "A05-SRC01-W0352-PASSAGE-EVALUATED-LABELS"
+        ],
+        "paragraph_commitments": [
+          {
+            "block_bbox_points": [
+              306.144287109375,
+              695.0186767578125,
+              526.230712890625,
+              775.9141845703125
+            ],
+            "block_index_zero_based": 10,
+            "block_text_sha256": "7bf306442748f00c8abab00b3654685f4cc5bdec93df506164e3cbbf58668c1a",
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-DATA-SOURCES",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "normalized_block_text_sha256": "8151762a31de549395611c9025c000b921237a2809a1bafb9bb4c8e1748934eb",
+            "page_number_1based": 4,
+            "selected_method_spans": [
+              {
+                "normalized_end_exclusive": 223,
+                "normalized_start_zero_based": 0,
+                "selected_method_span_sha256": "df04a918e4c3936672b7178de2793a051904c2be710ad4e37f4f7fbea23525bc"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned.",
+            "structural_section_id": "4.1"
+          },
+          {
+            "block_bbox_points": [
+              305.8062744140625,
+              166.5743408203125,
+              526.3361206054688,
+              423.6175842285156
+            ],
+            "block_index_zero_based": 7,
+            "block_text_sha256": "f401db217112d1a7465c93e95a32baee97d0527fa331c65ac3edf54b2e1924d8",
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-EVALUATED-LABELS",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "normalized_block_text_sha256": "db19b06c4890505c5bc18488130d2cea9a86b30feae6a7df26a855a301c9d42c",
+            "page_number_1based": 5,
+            "selected_method_spans": [
+              {
+                "normalized_end_exclusive": 343,
+                "normalized_start_zero_based": 0,
+                "selected_method_span_sha256": "cde292961d0ab733bf83766686727cf6e7eb145f1d367b991c08a5d6c0582510"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned.",
+            "structural_section_id": "4.3.2"
+          }
+        ]
+      },
+      "member_id": "M0021",
+      "method_fact": "Negative detector inputs are external text; positive inputs insert instructions into that text. External-data sources are Wikipedia and News Articles, and instruction sources are LaMini-instruction and BIPIA.",
+      "original_draft_sha256": "9cb4afebf4135d9f838993647ca73e20f8ca7da18c8683eb39ef963e9da30efa",
+      "provider_actor": "/root/a04_semantic_restriction",
+      "raw_source_sha256": "121d61d9c3e1dbd2852c43abd04ae7a1784d9c9a798577029b9784e904922498",
+      "release_status": "SEPARATELY_CHECKED_RESTRICTED_METHOD_ONLY",
+      "review_id": "W0352",
+      "source_url": "https://aclanthology.org/2025.findings-emnlp.1060.pdf",
+      "version": "acl:2025.findings-emnlp.1060:publication",
+      "work_id": "doi:10.18653/v1/2025.findings-emnlp.1060"
+    },
+    {
+      "checker_actor": "/root/a05_source_check",
+      "checker_receipt_sha256": "0df893356b9b744092e63683d7384eac3d6c81fdd6a6cabae54e3fa66268744d",
+      "eligibility_decision": null,
+      "evidence_id": "A05-SRC01-W0352-F02",
+      "limitation": "The preset reply is used for gradient feature construction.",
+      "locator": {
+        "evidence_pages": [
+          {
+            "page_number_1based": 4,
+            "page_text_sha256": "af4e82adade43e476b88c90338e4978d3c3a1dc52a61dbfd5939458cda31e56f",
+            "provider_visual_receipt": {
+              "filename": "M0021-p004.provider-view.0001.json",
+              "sha256": "638fd88a943f34fa602b4d2e291c979130558e6d4b1106351ee23d5e3c9cac4b"
+            },
+            "render_tool": "PyMuPDF fitz Page.get_pixmap Matrix(2,2), csRGB, alpha=False",
+            "rendered_page_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-01\\M0021-p004-rgb2x.png",
+            "rendered_page_sha256": "a3658631ab5d2da38bf2c106724bd0d9c398df834e336323be5c36b7684eedad"
+          }
+        ],
+        "format": "PDF",
+        "method_commitment_ids": [
+          "A05-SRC01-W0352-PASSAGE-INPUT-STATES",
+          "A05-SRC01-W0352-PASSAGE-GRADIENT-TARGET",
+          "A05-SRC01-W0352-PASSAGE-FUSED-CLASSIFIER"
+        ],
+        "paragraph_commitments": [
+          {
+            "block_bbox_points": [
+              70.51852416992188,
+              335.82073974609375,
+              290.9429626464844,
+              538.6653442382812
+            ],
+            "block_index_zero_based": 2,
+            "block_text_sha256": "8a903fba8c373de287388e457f31bf66910829528603095c272823a76d126c04",
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-INPUT-STATES",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "normalized_block_text_sha256": "340a9017e55267d62ec5e5b08b70ccc6f4d43a97cd0176a4d4904eda127637f8",
+            "page_number_1based": 4,
+            "selected_method_spans": [
+              {
+                "normalized_end_exclusive": 333,
+                "normalized_start_zero_based": 0,
+                "selected_method_span_sha256": "c4f503411127f4d88e49f81e552eb6152b7142011a26b5982c33097ad653cdaf"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned.",
+            "structural_section_id": "3.2"
+          },
+          {
+            "block_bbox_points": [
+              70.46351623535156,
+              573.0706176757812,
+              290.9434509277344,
+              775.9141845703125
+            ],
+            "block_index_zero_based": 4,
+            "block_text_sha256": "5ce95781e7abdabd17d6f8880d3e1a948d9d2da5e11d7119407b000c809d86fb",
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-GRADIENT-TARGET",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "normalized_block_text_sha256": "93370266ca57d336086f3be159f9f50d82a309a1716ffca9bdd91b1934e06da3",
+            "page_number_1based": 4,
+            "selected_method_spans": [
+              {
+                "normalized_end_exclusive": 241,
+                "normalized_start_zero_based": 0,
+                "selected_method_span_sha256": "161add418728c9bc98db6dfefdde2cc8e64b66098909e97717895a5dce660a31"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned.",
+            "structural_section_id": "3.3"
+          },
+          {
+            "block_bbox_points": [
+              306.144287109375,
+              466.4352722167969,
+              526.2334594726562,
+              642.1804809570312
+            ],
+            "block_index_zero_based": 7,
+            "block_text_sha256": "1d2feac2589922cb970347cfb7cc95eb5cacdc22122e921dfab509c0b45fcd8a",
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-FUSED-CLASSIFIER",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "normalized_block_text_sha256": "291d4dbe3016ce35d89a2d11cb5aef720a7abbfbabf8bbba71305bd7170c89d0",
+            "page_number_1based": 4,
+            "selected_method_spans": [
+              {
+                "normalized_end_exclusive": 453,
+                "normalized_start_zero_based": 399,
+                "selected_method_span_sha256": "fd7b67065d655fc81f7bc36c3910cec4f4286e61656c8fa9aae39fc921835635"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned.",
+            "structural_section_id": "3.4"
+          }
+        ]
+      },
+      "member_id": "M0021",
+      "method_fact": "InstructDetector fuses final-input-token hidden states with gradients computed using a preset affirmative reply, then applies an MLP classifier to distinguish normal external text from text containing hidden instructions.",
+      "original_draft_sha256": "9cb4afebf4135d9f838993647ca73e20f8ca7da18c8683eb39ef963e9da30efa",
+      "provider_actor": "/root/a04_semantic_restriction",
+      "raw_source_sha256": "121d61d9c3e1dbd2852c43abd04ae7a1784d9c9a798577029b9784e904922498",
+      "release_status": "SEPARATELY_CHECKED_RESTRICTED_METHOD_ONLY",
+      "review_id": "W0352",
+      "source_url": "https://aclanthology.org/2025.findings-emnlp.1060.pdf",
+      "version": "acl:2025.findings-emnlp.1060:publication",
+      "work_id": "doi:10.18653/v1/2025.findings-emnlp.1060"
+    },
+    {
+      "checker_actor": "/root/a05_source_check",
+      "checker_receipt_sha256": "0df893356b9b744092e63683d7384eac3d6c81fdd6a6cabae54e3fa66268744d",
+      "eligibility_decision": null,
+      "evidence_id": "A05-SRC01-W0352-F03",
+      "limitation": "English concerns the original evaluation; translated extension tests remain separately identified.",
+      "locator": {
+        "evidence_pages": [
+          {
+            "page_number_1based": 8,
+            "page_text_sha256": "9d2c9191d1c560d22033224599524c054ec4a4b60c068dd0aa9a43554ce17732",
+            "provider_visual_receipt": {
+              "filename": "M0021-p008.provider-view.0001.json",
+              "sha256": "4a91a664b2d4ab5711f325f7348eb081ea47b1181bf73079c72adc8bf76de3af"
+            },
+            "render_tool": "PyMuPDF fitz Page.get_pixmap Matrix(2,2), csRGB, alpha=False",
+            "rendered_page_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-01\\M0021-p008-rgb2x.png",
+            "rendered_page_sha256": "ab47fdb3b5831932a505c2de5b734c0aa43e5021013c4bf6854dad31112d9286"
+          },
+          {
+            "page_number_1based": 13,
+            "page_text_sha256": "7c0c1412aee0d8847f87090a47827ce320272a33cdbebd896c5179d4ad728894",
+            "provider_visual_receipt": {
+              "filename": "M0021-p013.provider-view.0001.json",
+              "sha256": "68df382c0f982d7772bb9145fd7588ae4ca4e6ab5d7df02e0db1ba130f5fccaa"
+            },
+            "render_tool": "PyMuPDF fitz Page.get_pixmap Matrix(2,2), csRGB, alpha=False",
+            "rendered_page_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-source-20261023\\provider-01\\M0021-p013-rgb2x.png",
+            "rendered_page_sha256": "194268eef7c5bc748debfa63d493c414ea3f7f5035662bac77400a54a6a218ea"
+          }
+        ],
+        "format": "PDF",
+        "method_commitment_ids": [
+          "A05-SRC01-W0352-PASSAGE-EVALUATION-LANGUAGES",
+          "A05-SRC01-W0352-PASSAGE-ORIGINAL-LANGUAGE"
+        ],
+        "paragraph_commitments": [
+          {
+            "block_bbox_points": [
+              305.6312561035156,
+              308.1123046875,
+              526.3306884765625,
+              552.0440063476562
+            ],
+            "block_index_zero_based": 7,
+            "block_text_sha256": "c1fb0cd35e199617ee110cd3e5010f1ffb750aaec5c908342d018c186829f9c7",
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-EVALUATION-LANGUAGES",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "normalized_block_text_sha256": "7b101979d5abff52e7bc8b9be0da49e1ae3aae541aefb2337963cc714659c6b2",
+            "page_number_1based": 8,
+            "selected_method_spans": [
+              {
+                "normalized_end_exclusive": 518,
+                "normalized_start_zero_based": 0,
+                "selected_method_span_sha256": "bd17c30acdb85ab5cebe39f99c015b773e03fec0268b8869e4c2f675d341ae23"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned.",
+            "structural_section_id": "4.5.5"
+          },
+          {
+            "block_bbox_points": [
+              70.46351623535156,
+              617.8047485351562,
+              290.9428405761719,
+              698.7002563476562
+            ],
+            "block_index_zero_based": 8,
+            "block_text_sha256": "50f10910106143ecd0c2b8d62cf17fc3708e5e369fea22e0c95fd65408e2e766",
+            "commitment_id": "A05-SRC01-W0352-PASSAGE-ORIGINAL-LANGUAGE",
+            "normalization": "Join alphabetic words split by a hyphen and line break; collapse whitespace; strip edges.",
+            "normalized_block_text_sha256": "cca9b83dd85c3bfbcb22584018e692d92690fdd26049468d1812556c043c87f5",
+            "page_number_1based": 13,
+            "selected_method_spans": [
+              {
+                "normalized_end_exclusive": 45,
+                "normalized_start_zero_based": 0,
+                "selected_method_span_sha256": "617181a9bcd6b600e6694526e0da8213571dbf7932f958b9f43984c0d76e5284"
+              }
+            ],
+            "selection_scope": "Only selected body-method spans support the draft; other block text and adjoining material are not returned.",
+            "structural_section_id": "A.1"
+          }
+        ]
+      },
+      "member_id": "M0021",
+      "method_fact": "The original evaluated datasets are English. The multilingual extension translates the original English test set into Chinese and Thai, then uses back-translation to compare with the English originals.",
+      "original_draft_sha256": "9cb4afebf4135d9f838993647ca73e20f8ca7da18c8683eb39ef963e9da30efa",
+      "provider_actor": "/root/a04_semantic_restriction",
+      "raw_source_sha256": "121d61d9c3e1dbd2852c43abd04ae7a1784d9c9a798577029b9784e904922498",
+      "release_status": "SEPARATELY_CHECKED_RESTRICTED_METHOD_ONLY",
+      "review_id": "W0352",
+      "source_url": "https://aclanthology.org/2025.findings-emnlp.1060.pdf",
+      "version": "acl:2025.findings-emnlp.1060:publication",
+      "work_id": "doi:10.18653/v1/2025.findings-emnlp.1060"
+    },
+    {
+      "checker_actor": "/root/a04_semantic_restriction",
+      "checker_receipt_sha256": "027c6e3d2a47974c9121632ec2a8867ea98bcdf9adfb8f57db3a5f725565a062",
+      "eligibility_decision": null,
+      "evidence_id": "A05-SRC02-W0062-F01",
+      "limitation": "Detection and task checks share AgentDojo.",
+      "locator": {
+        "evidence_paragraphs": [
+          {
+            "global_p_ltx_p_ordinal": 25,
+            "paragraph_text_sha256": "e30185131ab0d92db647df17879de2525fdc495244ea877576ca7b6e2d47a23a",
+            "section_id": "S4.SS1"
+          },
+          {
+            "global_p_ltx_p_ordinal": 26,
+            "paragraph_text_sha256": "032830e815792104d64e5b42fd5d2a812ddea533bafb77e1ab09009ab710beb1",
+            "section_id": "S4.SS1"
+          },
+          {
+            "global_p_ltx_p_ordinal": 30,
+            "paragraph_text_sha256": "52717f9e1e28293dc57c290fe11f5c8de1eadbb3d58650391421f6bb8fd9ac88",
+            "section_id": "S4.SS1"
+          },
+          {
+            "global_p_ltx_p_ordinal": 35,
+            "paragraph_text_sha256": "14bd5f0f953ef1bf7d64e3f1616920de9198817a792d9fc1d36888da6a1e305e",
+            "section_id": "S4.SS3"
+          }
+        ],
+        "format": "HTML"
+      },
+      "member_id": "M0096",
+      "method_fact": "AgentDojo cases pair user and injected attacker tasks, checked against environment-state criteria. Detection separately assesses clean tool-returned data classified as contaminated and contaminated data classified as clean.",
+      "original_draft_sha256": "e478cb75d75e2b1bf09452f566e765ccf89f3ad94a385608366cbd73f8b3f13a",
+      "provider_actor": "/root/a04_semantic_restriction_02",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "release_status": "SEPARATELY_CHECKED_RESTRICTED_METHOD_ONLY",
+      "review_id": "W0062",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "work_id": "arxiv:2507.15219"
+    },
+    {
+      "checker_actor": "/root/a04_semantic_restriction",
+      "checker_receipt_sha256": "027c6e3d2a47974c9121632ec2a8867ea98bcdf9adfb8f57db3a5f725565a062",
+      "eligibility_decision": null,
+      "evidence_id": "A05-SRC02-W0062-F02",
+      "limitation": "Shared setup; baseline-specific aggregation is unspecified.",
+      "locator": {
+        "evidence_paragraphs": [
+          {
+            "global_p_ltx_p_ordinal": 28,
+            "paragraph_text_sha256": "10d565b5fcac6e7f1fafa7364ac38132b7d91ac8bece9503526181ad6c2b1d6b",
+            "section_id": "S4.SS1"
+          },
+          {
+            "global_p_ltx_p_ordinal": 29,
+            "paragraph_text_sha256": "2deec3dc6487f032a0df0d7a3cc19785958432c980e1a68d0bf3f6bbca278544",
+            "section_id": "S4.SS1"
+          },
+          {
+            "global_p_ltx_p_ordinal": 30,
+            "paragraph_text_sha256": "52717f9e1e28293dc57c290fe11f5c8de1eadbb3d58650391421f6bb8fd9ac88",
+            "section_id": "S4.SS1"
+          }
+        ],
+        "format": "HTML"
+      },
+      "member_id": "M0096",
+      "method_fact": "The comparison includes DeBERTa and DataSentinel detectors, MELON, Delimiting, Repeat Prompt and Tool Filter, alongside PromptArmor guard-model variants.",
+      "original_draft_sha256": "e478cb75d75e2b1bf09452f566e765ccf89f3ad94a385608366cbd73f8b3f13a",
+      "provider_actor": "/root/a04_semantic_restriction_02",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "release_status": "SEPARATELY_CHECKED_RESTRICTED_METHOD_ONLY",
+      "review_id": "W0062",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "work_id": "arxiv:2507.15219"
+    },
+    {
+      "checker_actor": "/root/a04_semantic_restriction",
+      "checker_receipt_sha256": "027c6e3d2a47974c9121632ec2a8867ea98bcdf9adfb8f57db3a5f725565a062",
+      "eligibility_decision": null,
+      "evidence_id": "A05-SRC02-W0062-F03",
+      "limitation": "Prompting setup includes mixed surrounding commentary.",
+      "locator": {
+        "evidence_paragraphs": [
+          {
+            "global_p_ltx_p_ordinal": 33,
+            "paragraph_text_sha256": "53e9bbeca31a60577bf41ed7a35ea8d82ca7b70a802786cf03a2a5e15025e983",
+            "section_id": "S4.SS2"
+          },
+          {
+            "global_p_ltx_p_ordinal": 35,
+            "paragraph_text_sha256": "14bd5f0f953ef1bf7d64e3f1616920de9198817a792d9fc1d36888da6a1e305e",
+            "section_id": "S4.SS3"
+          }
+        ],
+        "format": "HTML"
+      },
+      "member_id": "M0096",
+      "method_fact": "Prompting strategies, reasoning modes and model variants use the same setup, distinguishing detector decisions from agent-task checks.",
+      "original_draft_sha256": "e478cb75d75e2b1bf09452f566e765ccf89f3ad94a385608366cbd73f8b3f13a",
+      "provider_actor": "/root/a04_semantic_restriction_02",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "release_status": "SEPARATELY_CHECKED_RESTRICTED_METHOD_ONLY",
+      "review_id": "W0062",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "work_id": "arxiv:2507.15219"
+    },
+    {
+      "checker_actor": "/root/a04_semantic_restriction",
+      "checker_receipt_sha256": "027c6e3d2a47974c9121632ec2a8867ea98bcdf9adfb8f57db3a5f725565a062",
+      "eligibility_decision": null,
+      "evidence_id": "A05-SRC02-W0062-F04",
+      "limitation": "These are distinct experimental protocols.",
+      "locator": {
+        "evidence_paragraphs": [
+          {
+            "global_p_ltx_p_ordinal": 38,
+            "paragraph_text_sha256": "9b42094710b551281d9fe2157c8b862199e8fb47fc705cc945be388026f5e7f3",
+            "section_id": "S4.SS4"
+          },
+          {
+            "global_p_ltx_p_ordinal": 40,
+            "paragraph_text_sha256": "776a15940d0839d39d784e757d5f205bf577864d8d12689b723238671abfd91d",
+            "section_id": "S4.SS5"
+          }
+        ],
+        "format": "HTML"
+      },
+      "member_id": "M0096",
+      "method_fact": "A memorization probe compares prefix-conditioned completion with a withheld suffix. Adaptive experiments optimize templates against unguarded or guarded agents, then evaluate detection and task behavior.",
+      "original_draft_sha256": "e478cb75d75e2b1bf09452f566e765ccf89f3ad94a385608366cbd73f8b3f13a",
+      "provider_actor": "/root/a04_semantic_restriction_02",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "release_status": "SEPARATELY_CHECKED_RESTRICTED_METHOD_ONLY",
+      "review_id": "W0062",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "work_id": "arxiv:2507.15219"
+    },
+    {
+      "checker_actor": "/root/a04_semantic_restriction",
+      "checker_receipt_sha256": "027c6e3d2a47974c9121632ec2a8867ea98bcdf9adfb8f57db3a5f725565a062",
+      "eligibility_decision": null,
+      "evidence_id": "A05-SRC02-W0062-F05",
+      "limitation": "Guard and backend may share a model.",
+      "locator": {
+        "evidence_paragraphs": [
+          {
+            "global_p_ltx_p_ordinal": 12,
+            "paragraph_text_sha256": "fb1d36768c7d104fc69673ce39c7d3d41dab12653481a8f1f6df665338e9d1e3",
+            "section_id": "S2"
+          },
+          {
+            "global_p_ltx_p_ordinal": 15,
+            "paragraph_text_sha256": "02ee85f91253ebe2aa6818c948d2f1b8e4331e6ee5d28e602c271854017be04e",
+            "section_id": "S3.SS1"
+          },
+          {
+            "global_p_ltx_p_ordinal": 17,
+            "paragraph_text_sha256": "e4f8274433731be1ef7c90d3eb521402f330d4c93bbd9f98a8560bd65283cb0c",
+            "section_id": "S3.SS1"
+          }
+        ],
+        "format": "HTML"
+      },
+      "member_id": "M0096",
+      "method_fact": "PromptArmor identifies injected spans for removal before the backend agent consumes sanitized tool content.",
+      "original_draft_sha256": "e478cb75d75e2b1bf09452f566e765ccf89f3ad94a385608366cbd73f8b3f13a",
+      "provider_actor": "/root/a04_semantic_restriction_02",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "release_status": "SEPARATELY_CHECKED_RESTRICTED_METHOD_ONLY",
+      "review_id": "W0062",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "work_id": "arxiv:2507.15219"
+    },
+    {
+      "checker_actor": "/root/a05_source_check",
+      "checker_receipt_sha256": "db97a4fc7a46e7ec05ec92cc44ce35853a334ffd100e6beb41214a9e579b5966",
+      "eligibility_decision": null,
+      "evidence_id": "A05-SRC03-W0339-M01",
+      "limitation": [
+        "Selected passages do not establish a row-level English-language audit or every evaluated item\u2019s language.",
+        "The stated language scope and construction description are source statements, not an independent corpus inspection."
+      ],
+      "locator": {
+        "checked_method_spans": [
+          {
+            "fact_categories": [
+              "INPUT_UNIT",
+              "BINARY_DECISION",
+              "PRE_DOWNSTREAM_TIMING"
+            ],
+            "fact_id": "VOR-M01",
+            "heading_locator": "III.A SYSTEM MODEL",
+            "normalized_page_end_exclusive": 5116,
+            "normalized_page_start_zero_based": 4774,
+            "paragraph_locator_sha256_canonical_json": "9e8ec3264daf9f8e6c838b87ba9797de8bd21a6e074140cbb88059769d4a8e48",
+            "pdf_page": 4,
+            "raw_source_replay_matches": true,
+            "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+            "restriction_decision": "APPROVE",
+            "source_draft": "vor.method-data-provider-draft.0003.json",
+            "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435",
+            "source_excerpt_utf8_sha256": "f13e144c63dd3387792f0c223552f653c32d75acaf139a168be402cc34e988f4"
+          },
+          {
+            "fact_categories": [
+              "NO_DOWNSTREAM_OUTPUT"
+            ],
+            "fact_id": "VOR-M02",
+            "heading_locator": "III.A SYSTEM MODEL",
+            "normalized_page_end_exclusive": 5342,
+            "normalized_page_start_zero_based": 5217,
+            "paragraph_locator_sha256_canonical_json": "4556c9c8e9d10cc72481abaa976cefaf171b18726d2661ad5d98672391f42380",
+            "pdf_page": 4,
+            "raw_source_replay_matches": true,
+            "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+            "restriction_decision": "APPROVE",
+            "source_draft": "vor.method-data-provider-draft.0003.json",
+            "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435",
+            "source_excerpt_utf8_sha256": "46f4ac09523e4651f630d1cface60eef9028bf6acff5cc86a8d11f778b81bad5"
+          },
+          {
+            "fact_categories": [
+              "STATED_LANGUAGE_SCOPE"
+            ],
+            "fact_id": "VOR-M03",
+            "heading_locator": "III.E SCOPE BOUNDARIES",
+            "normalized_page_end_exclusive": 1956,
+            "normalized_page_start_zero_based": 1736,
+            "paragraph_locator_sha256_canonical_json": "cc5ab34c862af0fe5fae930a63ed8d4cff650da66f2d5a0d808e7b838ff537b6",
+            "pdf_page": 5,
+            "raw_source_replay_matches": true,
+            "release_limit": "Stated language scope only; retain both existing row-level language gaps.",
+            "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+            "restriction_decision": "APPROVE",
+            "source_draft": "vor.method-data-provider-draft.0003.json",
+            "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435",
+            "source_excerpt_utf8_sha256": "75486c89f4c83b71512ae4eb7875d316541750f0c1ed155f8338c971be24e3d2"
+          },
+          {
+            "fact_categories": [
+              "HELD_OUT_APPLICATION"
+            ],
+            "fact_id": "VOR-M04",
+            "heading_locator": "IV.C EVALUATION PROTOCOL AND THRESHOLDING",
+            "normalized_page_end_exclusive": 2036,
+            "normalized_page_start_zero_based": 1940,
+            "paragraph_locator_sha256_canonical_json": "a458580d76a08b776e928b85605902369cc1dc114ab68248affdcc33c6fbf412",
+            "pdf_page": 6,
+            "raw_source_replay_matches": true,
+            "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+            "restriction_decision": "APPROVE",
+            "source_draft": "vor.method-data-provider-draft.0003.json",
+            "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435",
+            "source_excerpt_utf8_sha256": "6113d80a962705f853437ff2e35256e3322b5d39ecaa8f55c6ecb54062ec852e"
+          },
+          {
+            "fact_categories": [
+              "INJECTION_CONSTRUCTION"
+            ],
+            "fact_id": "VOR-M05",
+            "heading_locator": "V.B.1 INJECTION SOURCES",
+            "normalized_page_end_exclusive": 3254,
+            "normalized_page_start_zero_based": 3139,
+            "paragraph_locator_sha256_canonical_json": "77deecbcfc9aac2eac9cb93f12299cf73f2fb7c5343e3816eaacf2cd05a48212",
+            "pdf_page": 7,
+            "raw_source_replay_matches": true,
+            "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+            "restriction_decision": "APPROVE",
+            "source_draft": "vor.method-data-provider-draft.0003.json",
+            "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435",
+            "source_excerpt_utf8_sha256": "9fc177cbee529d7aa2ea73e7b61ab9afba9364d0a2070f98a1bd655643a174bc"
+          },
+          {
+            "fact_categories": [
+              "ORIGINAL_SOURCE_LABELS"
+            ],
+            "fact_id": "VOR-M06",
+            "heading_locator": "V.B.1 INJECTION SOURCES",
+            "normalized_page_end_exclusive": 3966,
+            "normalized_page_start_zero_based": 3895,
+            "paragraph_locator_sha256_canonical_json": "aab0ed056532190a69ac3a3446a22b37745b090d9fae23aa69a80ea7470eae17",
+            "pdf_page": 7,
+            "raw_source_replay_matches": true,
+            "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+            "restriction_decision": "APPROVE",
+            "source_draft": "vor.method-data-provider-draft.0003.json",
+            "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435",
+            "source_excerpt_utf8_sha256": "0e5b1bb3f7832da4dda5baafadb33de651002e6b3ac7b9337b7247c75f4fc6b7"
+          },
+          {
+            "fact_categories": [
+              "BENIGN_CONSTRUCTION"
+            ],
+            "fact_id": "VOR-M07",
+            "heading_locator": "V.B.2 BENIGN SOURCES",
+            "normalized_page_end_exclusive": 4244,
+            "normalized_page_start_zero_based": 3985,
+            "paragraph_locator_sha256_canonical_json": "db542f94aaa035e86b5f3f0a4901d1d4958fa762a7d5fb356dda28b095dc6e48",
+            "pdf_page": 7,
+            "raw_source_replay_matches": true,
+            "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+            "restriction_decision": "APPROVE",
+            "source_draft": "vor.method-data-provider-draft.0003.json",
+            "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435",
+            "source_excerpt_utf8_sha256": "526a82e458459085143a043ac568eb79b5e26408a4372ef0048eefe5c575d5aa"
+          },
+          {
+            "fact_categories": [
+              "BENIGN_PARAPHRASE_LABELS"
+            ],
+            "fact_id": "VOR-M08",
+            "heading_locator": "V.B.2 BENIGN SOURCES",
+            "normalized_page_end_exclusive": 4486,
+            "normalized_page_start_zero_based": 4405,
+            "paragraph_locator_sha256_canonical_json": "b82cee92d2d24d457f7f425444516e1b1a9d01519a093a779572dd2c40adb0b2",
+            "pdf_page": 7,
+            "raw_source_replay_matches": true,
+            "release_limit": "Paraphrase construction and seed-label inheritance only. The corrected summary stays within this boundary.",
+            "release_scope": "Bounded method fact identified by these categories only; source corpus counts, adjoining prose and any stronger assurance are excluded.",
+            "restriction_decision": "APPROVE",
+            "source_draft": "vor.method-data-provider-draft.0003.json",
+            "source_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435",
+            "source_excerpt_utf8_sha256": "5bae9e2f75c46054d2969c85e714ab37523ff826761de7639e33d6b85fea4f8a"
+          }
+        ],
+        "format": "PDF"
+      },
+      "member_id": "M0354",
+      "method_fact": "PIDS-Bench evaluates stateless input-level prompt-injection detectors on single input strings labeled as injections or benign. A detector returns a binary decision or a score thresholded to binary. It acts before the input reaches the downstream language model and uses no downstream output. The selected threshold is fixed before application to held-out test and stress sets. Injection examples combine public prompt-injection datasets and template-derived attacks, with source labels accepted without relabeling. Benign inputs combine public corpora and generated benign templates; released benign rows are paraphrase variants that inherit seed labels. The stated evaluation scope is single-turn English-language inputs. The selected methods passages do not establish a row-level language audit or demonstrate that every evaluated item is English. This is a binary input-detection evaluation; downstream attack execution is outside the stated boundary.",
+      "original_draft_sha256": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435",
+      "provider_actor": "/root/a05_vor_provider",
+      "raw_source_sha256": "0060b5d3d43694118bac2a248c9bd62dc2f380be4da165902b90ab891bd8b83e",
+      "release_status": "SEPARATELY_CHECKED_RESTRICTED_METHOD_ONLY",
+      "review_id": "W0339",
+      "source_url": "https://xplorestaging.ieee.org/ielx8/6287639/11323511/11670335.pdf?arnumber=11670335",
+      "version": "doi:10.1109/access.2026.3728186:vor:declared-2026-09-03",
+      "work_id": "doi:10.1109/access.2026.3728186"
+    }
+  ],
+  "released_by": "EXPOSED_CUSTODIAN_ROOT",
+  "scope": "No outcomes, counts, assurance classifications or eligibility decisions. Shared-filesystem source-role separation, not OS isolation or independent final review.",
+  "source_files": {
+    "provider-01-checker.json": "0df893356b9b744092e63683d7384eac3d6c81fdd6a6cabae54e3fa66268744d",
+    "provider-01-draft.json": "9cb4afebf4135d9f838993647ca73e20f8ca7da18c8683eb39ef963e9da30efa",
+    "provider-02-checker.json": "027c6e3d2a47974c9121632ec2a8867ea98bcdf9adfb8f57db3a5f725565a062",
+    "provider-02-draft.json": "e478cb75d75e2b1bf09452f566e765ccf89f3ad94a385608366cbd73f8b3f13a",
+    "provider-03-capture.json": "c5454c8b9e8b7a6f89980f1f2dc3e79f5b75d755fb7e93a1faf487dd974530e6",
+    "provider-03-checker.json": "db97a4fc7a46e7ec05ec92cc44ce35853a334ffd100e6beb41214a9e579b5966",
+    "provider-03-draft.json": "397b9510a04e407e2fb6c6c6a625c2886ee544a4f5e8dfc3ae031b65da144435",
+    "provider-03-metadata.json": "e58923277d50e0d5aef056649c096eef9748aee1a20be779caa57720ff942ae1"
+  },
+  "source_git_commit": "fd7e09083f58321869fb7e8cbee24bfed49fe838"
+}

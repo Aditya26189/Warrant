@@ -1,0 +1,39 @@
+{
+  "schema": "A05_SOURCE_CHECKER_ADDITIONAL_CHECKPOINT_v1",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-26T05:43:17.503966+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_FINAL_RELEASE",
+  "request_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\ADDITIONAL_SOURCE_REQUESTS_004.json",
+  "request_sha256": "f47c662aca1ecc25cddcd0fbffc75bb2dd82d75bbfd1a9562e30be229dd8acba",
+  "unique_checked_works": 4,
+  "files": [
+    {
+      "path": "additional-004/checked/W0336.checker.0001.json",
+      "sha256": "9aed0990da85a1e6f8606724f94ec2e13ab9de148e9c14277f1451e3bedfdea5"
+    },
+    {
+      "path": "additional-004/checked/W0337.checker.0001.json",
+      "sha256": "dc26d63dff90c0bcce4fd92139c93d2525a62c6f51727b0a470888de6be44a4a"
+    },
+    {
+      "path": "additional-004/checked/W0371.checker.0001.json",
+      "sha256": "7b4cbca0a0fb1cf51fe0b8875553ed0b5aa6c2923b7867d8c02a6f2362e6f045"
+    },
+    {
+      "path": "additional-004/checked/W0372.checker.0001.json",
+      "sha256": "0724c0bf090f8285e5afbe1d170aa1795bb583450b185cefdd0442b3d3b10965"
+    }
+  ],
+  "latest_receipts": {
+    "W0336": "additional-004/checked/W0336.checker.0001.json",
+    "W0337": "additional-004/checked/W0337.checker.0001.json",
+    "W0371": "additional-004/checked/W0371.checker.0001.json",
+    "W0372": "additional-004/checked/W0372.checker.0001.json"
+  },
+  "limitations": [
+    "Capture identifiers are not preferred scholarly-edition selections.",
+    "W0337 explicit landing version-of-record date remains distinct from issue month.",
+    "Other edition-label statements are bounded to actually inspected headers/metadata; scientific bodies and later notices unreviewed.",
+    "No earlier arXiv methods, outcomes, assurance or eligibility judgments transferred."
+  ]
+}

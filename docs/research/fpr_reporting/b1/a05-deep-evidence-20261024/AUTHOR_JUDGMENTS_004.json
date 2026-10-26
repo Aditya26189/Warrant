@@ -1,0 +1,181 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "changes": [
+    {
+      "before_row_sha256": "3be1817fb44a3f45deacc5d9251c28c805c905467d5fbb7f4118af78eb6efdfb",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0028-15f38573b5c9-F01",
+        "A05-DEEP-W0028-15f38573b5c9-F02",
+        "A05-DEEP-W0028-15f38573b5c9-F03",
+        "A05-DEEP-W0028-15f38573b5c9-F04",
+        "A05-DEEP-W0028-15f38573b5c9-F05"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0028-15f38573b5c9-F02",
+          "A05-DEEP-W0028-15f38573b5c9-F03"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0028-15f38573b5c9-F02",
+          "A05-DEEP-W0028-15f38573b5c9-F03"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0028-15f38573b5c9-F04",
+          "A05-DEEP-W0028-15f38573b5c9-F03"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0028-15f38573b5c9-F01",
+          "A05-DEEP-W0028-15f38573b5c9-F02"
+        ]
+      },
+      "review_id": "W0028",
+      "scientific_rationale": "The selected version evaluates an original binary injection input classifier and separate detector-targeted injection trials. The checked Appendix C.2 procedure derives detector queries from the English training source and appends English commands; its outcome unit is the detector verdict, distinct from C.1 target-answer task-override testing. That explicit construction establishes an English evaluation component without assuming all held-out evaluation sources are English. No target answer is needed for the qualifying detector arm.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2501.15145"
+    },
+    {
+      "before_row_sha256": "faad3075d533d7fae06c2bb93237c4c670d62fe35dbe8cff90221c5dcc901c72",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0068-6a1d261e3e73-F01",
+        "A05-DEEP-W0068-6a1d261e3e73-F02",
+        "A05-DEEP-W0068-6a1d261e3e73-F03",
+        "A05-DEEP-W0068-6a1d261e3e73-F04",
+        "A05-DEEP-W0068-6a1d261e3e73-F05",
+        "A05-DEEP-W0068-6a1d261e3e73-F06"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0068",
+      "scientific_rationale": "The deeper complete method-family inventory identifies standalone DataSentinel/AttentionTracker input decisions on full or chunked injected/clean context, with thresholded focus scores, distinct from output-conditioned attribution and attribution-preprocessed detector variants. These original standalone input baselines establish binary injection classification before a protected target answer. Evaluated English construction remains unresolved, so no positive whole-domain decision is made.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2508.03793"
+    }
+  ],
+  "created_utc": "2026-10-25T12:06:28.129530+00:00",
+  "not_fresh_independent": true,
+  "release_sha256": "85fbe83566be0738e6afe8911eaf93edf297cc32ea14d7968d86557f0c0e4254",
+  "reviewed_unchanged": [
+    {
+      "before_row_sha256": "42ea2ffbe83a581e09acbf45215803741727977addc99c392b609e2ab6c05180",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0023-19d005ca67dd-F01",
+        "A05-DEEP-W0023-19d005ca67dd-F02",
+        "A05-DEEP-W0023-19d005ca67dd-F03",
+        "A05-DEEP-W0023-19d005ca67dd-F04"
+      ],
+      "rationale": "Declared evaluated families are image fusion/vision; supplementary parameter analysis remains uninspected. Obtain bounded study-task/family scope rather than infer an unknown injection detector or require outcome values.",
+      "review_id": "W0023"
+    },
+    {
+      "before_row_sha256": "a012ccdae4dd6f81ea72c9aa535e448d9d675f33c9d10f8771ce0d075d0877b5",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0024-f3c3b83dc046-F01",
+        "A05-DEEP-W0024-f3c3b83dc046-F02",
+        "A05-DEEP-W0024-f3c3b83dc046-F03",
+        "A05-DEEP-W0024-f3c3b83dc046-F04",
+        "A05-DEEP-W0024-f3c3b83dc046-F05"
+      ],
+      "rationale": "Complete binary input-classifier roster includes jailbreak/injection-named baselines, but exact injected-instruction evaluation semantics and evaluated English construction remain unresolved.",
+      "review_id": "W0024"
+    },
+    {
+      "before_row_sha256": "583df006c87f972726b54c89a37a0d15300cb99fce8465a27d919d0a664fe575",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0025-84c1b0c36522-F01",
+        "A05-DEEP-W0025-84c1b0c36522-F02",
+        "A05-DEEP-W0025-84c1b0c36522-F03",
+        "A05-DEEP-W0025-84c1b0c36522-F04",
+        "A05-DEEP-W0025-84c1b0c36522-F05",
+        "A05-DEEP-W0025-84c1b0c36522-F06"
+      ],
+      "rationale": "Query-side dictionary, SQL-operation and prompted detector components are identified; original standalone binary injection evaluation, relevant label scope and evaluated English need source support.",
+      "review_id": "W0025"
+    },
+    {
+      "before_row_sha256": "c1e783bc44870728d01107a2026b96de42cb35c9594c88ba7cbd92bf396c0dda",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0026-bc9c10a27375-F01",
+        "A05-DEEP-W0026-bc9c10a27375-F02",
+        "A05-DEEP-W0026-bc9c10a27375-F03",
+        "A05-DEEP-W0026-bc9c10a27375-F04",
+        "A05-DEEP-W0026-bc9c10a27375-F05"
+      ],
+      "rationale": "Complete main/appendix input-classification methods confirm the separate SPML injection experiment. English LMSYS content filtering is a different arm; exact evaluated SPML corpus-language provenance must be linked independently.",
+      "review_id": "W0026"
+    },
+    {
+      "before_row_sha256": "bfdecee4de0f5bfb5ab3a8b19880be467886ab4eb6d619001586fc75ed940463",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0027-cec6c6dfa87f-F01",
+        "A05-DEEP-W0027-cec6c6dfa87f-F02",
+        "A05-DEEP-W0027-cec6c6dfa87f-F03",
+        "A05-DEEP-W0027-cec6c6dfa87f-F04",
+        "A05-DEEP-W0027-cec6c6dfa87f-F05",
+        "A05-DEEP-W0027-cec6c6dfa87f-F06"
+      ],
+      "rationale": "Bias detection is input-side, injection vulnerability testing is target-response-dependent and task optimization evaluates generated answers. Complete secondary/task family scope still needed.",
+      "review_id": "W0027"
+    },
+    {
+      "before_row_sha256": "035b5a156e7698326b605ca97e625a0eff0e98d4feeccdadb4a6f732beca4783",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0064-ab61b2c422a1-F01",
+        "A05-DEEP-W0064-ab61b2c422a1-F02",
+        "A05-DEEP-W0064-ab61b2c422a1-F03"
+      ],
+      "rationale": "Original response relevance/refusal and multimodal task checks require target outputs; retain uncertainty until material original main/appendix task scope is established.",
+      "review_id": "W0064"
+    },
+    {
+      "before_row_sha256": "8d7e011102b06a1df601310d5dc3f7953956e0e21a9bccd161e53604d15663e9",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0065-8b63df51e4c6-F01",
+        "A05-DEEP-W0065-8b63df51e4c6-F02",
+        "A05-DEEP-W0065-8b63df51e4c6-F03",
+        "A05-DEEP-W0065-8b63df51e4c6-F04"
+      ],
+      "rationale": "Source tasks span sentence safety, conversation moderation and RAG PII exposure. Classifier names/settings need not decide eligibility if an affirmative whole-study task scope can be established, but incomplete scoped evidence is not an exclusion.",
+      "review_id": "W0065"
+    },
+    {
+      "before_row_sha256": "0fb160d7e0c614012c1591bcd3e8b525c8e606e9f866cc77f2b76104468d184d",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0066-05a195177d2b-F01",
+        "A05-DEEP-W0066-05a195177d2b-F02",
+        "A05-DEEP-W0066-05a195177d2b-F03",
+        "A05-DEEP-W0066-05a195177d2b-F04"
+      ],
+      "rationale": "Tool-metadata optimization and query rewrite/prompt refusal methods evaluate agent tool selection/actions. Need complete original task/baseline scope before whole-work exclusion.",
+      "review_id": "W0066"
+    },
+    {
+      "before_row_sha256": "9814f0badb3a971d9e675e5134cc513356481ea3c8b1f62badb5b678873d9f0b",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0069-458fe5f8925e-F01",
+        "A05-DEEP-W0069-458fe5f8925e-F02",
+        "A05-DEEP-W0069-458fe5f8925e-F03",
+        "A05-DEEP-W0069-458fe5f8925e-F04"
+      ],
+      "rationale": "The paper itself retains exact-version input-classifier and English-construction support. Whole-document versus shared thesis-chapter identity is still separately unresolved; do not merge or clear it by inference.",
+      "review_id": "W0069"
+    }
+  ],
+  "schema": "A05_DEEP_CUSTODIAN_JUDGMENTS_v1",
+  "scope": "Method/eligibility-only current exposed-custodian judgments; exact W0067 access gap retained separately, no earlier-version substitution. No outcomes/counts/assurance labels, sampling, assignment or B2.",
+  "source_git_commit": "5666efed405cb5577916338bbf1dacf72671ef48",
+  "version_corrections": []
+}

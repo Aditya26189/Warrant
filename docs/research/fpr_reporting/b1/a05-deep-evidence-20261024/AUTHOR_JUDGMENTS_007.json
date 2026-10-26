@@ -1,0 +1,242 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "changes": [
+    {
+      "before_row_sha256": "f942f1d40484a06cf42e76207181cedb375320347007ce8933190edf185b79a0",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0029-55f2edb610e9-F01",
+        "A05-DEEP-W0029-55f2edb610e9-F02",
+        "A05-DEEP-W0029-55f2edb610e9-F03",
+        "A05-DEEP-W0029-55f2edb610e9-F04",
+        "A05-DEEP-W0029-55f2edb610e9-F05",
+        "A05-DEEP-W0029-55f2edb610e9-F06"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0029-55f2edb610e9-F03"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0029-55f2edb610e9-F03"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0029-55f2edb610e9-F05",
+          "A05-DEEP-W0029-55f2edb610e9-F03"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0029-55f2edb610e9-F03"
+        ]
+      },
+      "review_id": "W0029",
+      "scientific_rationale": "MELON itself requires protected agent-generated tool calls, so it does not establish input-only timing. The new exact-edition inventory separately establishes original ProtectAI/GPT-4o input-detector comparators on retrieved text, labeling injected-instruction presence before protected agent generation. The checked English detector prompts support an English instruction component in that qualifying detector evaluation, independently of the MELON masking prompt. Full AgentDojo/tool-content language composition remains unresolved and is not asserted. A positive qualifying comparator does not require declaring the unfinished remaining appendix inventory complete.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2502.05174"
+    },
+    {
+      "before_row_sha256": "861d2e5e5bf104a7aba2f21a03d221dfa37bdb6d7234caf5e8c8fb116ce0b0b5",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0035-69cf452af0c1-F01",
+        "A05-DEEP-W0035-69cf452af0c1-F02",
+        "A05-DEEP-W0035-69cf452af0c1-F03",
+        "A05-DEEP-W0035-69cf452af0c1-F04",
+        "A05-DEEP-W0035-69cf452af0c1-F05",
+        "A05-DEEP-W0035-69cf452af0c1-F06"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0035-69cf452af0c1-F03"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0035-69cf452af0c1-F03"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0035-69cf452af0c1-F05",
+          "A05-DEEP-W0035-69cf452af0c1-F03"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0035-69cf452af0c1-F03"
+        ]
+      },
+      "review_id": "W0035",
+      "scientific_rationale": "The exact-edition secondary defense explicitly asks GPT-4o to identify hidden watermark/instruction content in an injected paper before subsequently requesting a review. Its detection target is input-side instruction/watermark presence, distinct from the principal watermark tests that inspect generated or historical review text. The actual evaluated detector question is English, supporting an English instruction component without claiming all papers/reviews or the separate French injection condition are English. This input-presence evaluation supports the binary domain criterion; availability of reconstructable benign-class/FPR evidence remains a later question and was not used for inclusion.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2503.15772"
+    },
+    {
+      "before_row_sha256": "b0a83f21c793f8baec37e6f2043d2e0b0b8fc1cb8e41a7e9e5e48c7d80635f1c",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0073-6ba6116d2c14-F01",
+        "A05-DEEP-W0073-6ba6116d2c14-F02",
+        "A05-DEEP-W0073-6ba6116d2c14-F03",
+        "A05-DEEP-W0073-6ba6116d2c14-F04"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0073",
+      "scientific_rationale": "The complete main/Appendix A/B method inventory defines stale-state check/use tool sequences and expressly excludes prompt-injection tasks. Prompt rewriting, tool-pair classification/FSA compilation and fused-call/runtime monitoring concern TOCTOU dependencies, not injected-instruction presence. Tool descriptions can be classified before agent calls, but that does not change their task target. This explicit complete task scope supports exclusion; no outcome/reporting criterion is used.",
+      "whole_work_exclusion_ground": "TOCTOU_TOOL_DEPENDENCY_TASK_NOT_INJECTION_INPUT_DETECTION",
+      "work_id": "arxiv:2508.17155"
+    },
+    {
+      "before_row_sha256": "7ab537af507009e46647f2788c5479c6edafa2966bdbbaac4f5d6bcc04ebe422",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0031-45e30467c8a2-F01",
+        "A05-DEEP-W0031-45e30467c8a2-F02",
+        "A05-DEEP-W0031-45e30467c8a2-F03",
+        "A05-DEEP-W0031-45e30467c8a2-F04",
+        "A05-DEEP-W0031-45e30467c8a2-F05",
+        "A05-DEEP-W0031-45e30467c8a2-F06",
+        "A05-DEEP-W0031-45e30467c8a2-F07"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0031",
+      "scientific_rationale": "UniGuardian itself uses a base-generation prefix/logits, while some guard comparators receive prompt plus generated answer. The original PromptGuard/ONION input-text baselines are separately evaluated without that protected answer, resolving the existential timing requirement. Evaluated English data construction remains unresolved: shown task templates and corpus names do not establish the required language linkage for the qualifying baseline arm. Retain UNCLEAR and partial scope; do not exclude from the main method timing alone.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2502.13141"
+    }
+  ],
+  "created_utc": "2026-10-25T18:25:47.066825+00:00",
+  "not_fresh_independent": true,
+  "release_sha256": "59a1fb0c9d186c7bd633c5e67eca9840899e52859a9fab1a5967980eb931cab5",
+  "reviewed_unchanged": [
+    {
+      "before_row_sha256": "56c5a6e84552b08414de2369bd38e1c93cdf0a01afca54a7c67aae4c00fc2776",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0030-7d97ed1cf2da-F01",
+        "A05-DEEP-W0030-7d97ed1cf2da-F02",
+        "A05-DEEP-W0030-7d97ed1cf2da-F03",
+        "A05-DEEP-W0030-7d97ed1cf2da-F04",
+        "A05-DEEP-W0030-7d97ed1cf2da-F05",
+        "A05-DEEP-W0030-7d97ed1cf2da-F06"
+      ],
+      "rationale": "Context-region relevance and generated-output dependency screeners support distinct information-flow arms. The incomplete inventory does not establish a separate binary injected-instruction-presence evaluation. Retain task/binary/timing/language uncertainties; no exclusion from incompleteness.",
+      "review_id": "W0030"
+    },
+    {
+      "before_row_sha256": "a2fb6b0b2363de96639d8a9528ae5268c915b2346fc90b6db0e7ae5d52f1fa44",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0032-b7af16608c64-F01",
+        "A05-DEEP-W0032-b7af16608c64-F02",
+        "A05-DEEP-W0032-b7af16608c64-F03",
+        "A05-DEEP-W0032-b7af16608c64-F04",
+        "A05-DEEP-W0032-b7af16608c64-F05"
+      ],
+      "rationale": "The inspected families concern hallucination/factuality of generated answers, but appendix baseline scope remains incomplete. Retain unresolved status rather than infer whole-work absence of a qualifying secondary input detector.",
+      "review_id": "W0032"
+    },
+    {
+      "before_row_sha256": "915acfee47edbea50135985034250bd27f02d580bd188dc0caaabd28fa8da4a1",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0033-3181ab946aff-F01",
+        "A05-DEEP-W0033-3181ab946aff-F02",
+        "A05-DEEP-W0033-3181ab946aff-F03",
+        "A05-DEEP-W0033-3181ab946aff-F04",
+        "A05-DEEP-W0033-3181ab946aff-F05",
+        "A05-DEEP-W0033-3181ab946aff-F06"
+      ],
+      "rationale": "Prompt-time SVM inference precedes generation, while training labels derive from judged jailbreak success. Those labels are not automatically injected-instruction presence. Task semantics and evaluated English linkage remain unresolved; answer-derived training labels alone do not make inference post-answer.",
+      "review_id": "W0033"
+    },
+    {
+      "before_row_sha256": "baf51a8dec29b12ba1adf7f5daa89760cb8067d806143b5fd3972ab3bac3598f",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0070-15ccf7eb89ff-F01",
+        "A05-DEEP-W0070-15ccf7eb89ff-F02",
+        "A05-DEEP-W0070-15ccf7eb89ff-F03"
+      ],
+      "rationale": "The selected-edition input-token activation/anchor procedure and injection construction support existing task, binary and timing judgments. A named QA corpus alone does not establish evaluated English construction. Retain language UNCLEAR and partial scope.",
+      "review_id": "W0070"
+    },
+    {
+      "before_row_sha256": "458c4732501f06f44bc89cd7c301c7b6549e4498b2de47f015f84239b1992290",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0071-bb550cbf84ea-F01",
+        "A05-DEEP-W0071-bb550cbf84ea-F02",
+        "A05-DEEP-W0071-bb550cbf84ea-F03",
+        "A05-DEEP-W0071-bb550cbf84ea-F04"
+      ],
+      "rationale": "The inspected graph-anomaly and attacker variants use generated agent replies; complete appendix/baseline scope is not established. Retain unresolved whole-work status instead of excluding from only these response-dependent arms.",
+      "review_id": "W0071"
+    },
+    {
+      "before_row_sha256": "882245c198e5e7f03ece72391fd6b68446b9bc36fa4c0bc9cb958f8dad02db4d",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0072-8347ffc926c2-F01",
+        "A05-DEEP-W0072-8347ffc926c2-F02",
+        "A05-DEEP-W0072-8347ffc926c2-F03",
+        "A05-DEEP-W0072-8347ffc926c2-F04"
+      ],
+      "rationale": "CIV evaluates generation/execution behavior, while named input-defense comparators have unestablished per-arm configurations. Retain binary and language questions; do not infer a detector implementation or evaluated task from comparator names.",
+      "review_id": "W0072"
+    },
+    {
+      "before_row_sha256": "2907d72485964813bfcf8133803837c00ad06234df462c995642d4f28d91b5eb",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0075-a4718e538460-F01",
+        "A05-DEEP-W0075-a4718e538460-F02",
+        "A05-DEEP-W0075-a4718e538460-F03",
+        "A05-DEEP-W0075-a4718e538460-F04"
+      ],
+      "rationale": "The inspected monitor and human-escalation procedures consume generated trajectories/chunks. Remaining appendix method families are not fully inventoried. Retain UNCLEAR; no complete-work timing exclusion or missing-evidence exclusion.",
+      "review_id": "W0075"
+    },
+    {
+      "before_row_sha256": "fc717889ebf13c5407af3140411607aa60be4e10f37c05026cc863fce10bb9f9",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0076-09544bee7e1e-F01",
+        "A05-DEEP-W0076-09544bee7e1e-F02",
+        "A05-DEEP-W0076-09544bee7e1e-F03",
+        "A05-DEEP-W0076-09544bee7e1e-F04",
+        "A05-DEEP-W0076-09544bee7e1e-F05"
+      ],
+      "rationale": "PromptSleuth has a qualifying input classification procedure before backend forwarding, distinct from its now checked persistent-memory target-generation case. Its summary mentions English construction examples, but the approved detailed fields do not yet bind actual evaluated English inputs precisely enough to clear the language question. Retain that specific uncertainty; auxiliary detector summaries are not protected target answers.",
+      "review_id": "W0076"
+    },
+    {
+      "before_row_sha256": "2599ff9fdcf7a1f23cd5d3aa451b7aef947f4e1978945ca795a4186c5566f0b0",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0013-ba16b4192c4c-F01",
+        "A05-DEEP-W0013-ba16b4192c4c-F02",
+        "A05-DEEP-W0013-ba16b4192c4c-F03",
+        "A05-DEEP-W0013-ba16b4192c4c-F04",
+        "A05-DEEP-W0013-ba16b4192c4c-F05",
+        "A05-DEEP-W0013-ba16b4192c4c-F06",
+        "A05-DEEP-W0013-ba16b4192c4c-F07",
+        "A05-DEEP-W0013-ba16b4192c4c-F08"
+      ],
+      "rationale": "The separately viewed Figure 3 and checked architecture clarification show one LLM stage, downstream safety validation and prior-command feedback. Generated modality perception/reasoning precedes the attack flag, but exact API completion boundaries and current-command token ordering are unspecified. This does not establish an already completed movement command as detector input. Preserve timing UNCLEAR without imposing a universal API-trace requirement or inventing a separate downstream model.",
+      "review_id": "W0013"
+    }
+  ],
+  "schema": "A05_DEEP_EXPOSED_CUSTODIAN_JUDGMENTS",
+  "scope": "B1_ONLY_NO_OUTCOMES_NO_DRAW_NO_B2",
+  "source_git_commit": "192e1897a7a18412651791d6f57e0bef5e53ae32",
+  "version_corrections": []
+}

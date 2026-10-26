@@ -1,0 +1,303 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0055",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T12:04:39.062271+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0055.provider.0001.json",
+  "provider_packet_sha256": "50e2306eff7292ad78eb8e5ab08d1ab9350f15e54330ea71f956e7f8f9904f49",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2506.07948v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q018-1.html",
+    "raw_sha256": "50364b45239d6dc1ddda140b3697e8c3e9e7b8eb1e3f185c99bd12c400b807e0",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0088.json",
+    "acquisition_receipt_sha256": "4706f56ff2f7f7e801134a7dd5f67e3333edc6725c05afa6e493d48c7ef1deba",
+    "captured_version_id": "arxiv:2506.07948v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        14,
+        30
+      ],
+      [
+        89,
+        102
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_INVENTORY_ONLY",
+    "semantic_rationale": "Actual attack/data/task/unit and tokenizer-translation method read; exact model checkpoint tables and full other-task datasets unresolved. Generic classifier family inventory not a complete per-checkpoint inventory.",
+    "locator_sha256": "b03146ce81f35e6a0cc60df6556b5e172cedaad73c11355c74d45579876d019c",
+    "locators": [
+      {
+        "n": 14,
+        "kind": "heading",
+        "id": "S3",
+        "section": "3 Methodology: Attack Technique",
+        "sha256": "f2287744eb37263353d737ef6d696914edc0a0c28c8c9b649add988d525ad2eb"
+      },
+      {
+        "n": 15,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "section": "3.1 Automating TokenBreak",
+        "sha256": "afbdb30705feb4309517fac8ff1fa212d2b0037d554acfc6c95700bcaabaa2a3"
+      },
+      {
+        "n": 16,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "section": "3.1 Automating TokenBreak",
+        "sha256": "8e5c1fd4c904e1381c9b820e1b505c7aac40bc88ea624246a1dcb158a3ee7184"
+      },
+      {
+        "n": 17,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Experimental Results: Attack Technique",
+        "sha256": "d5e1d695f7ff5c55c8b79039cf1a22e3b95f66b014d1896b8c0f15b5ff6caefb"
+      },
+      {
+        "n": 18,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Model and Data Selection",
+        "sha256": "cc5ae4078c71a670970e2924296c1568481f00185d35331d44309e9009a9028f"
+      },
+      {
+        "n": 19,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1 Model and Data Selection",
+        "sha256": "af29bc391605f822ed0cfa017709b4f666469871ee7c86bb563ef227b7074778"
+      },
+      {
+        "n": 20,
+        "kind": "paragraph",
+        "id": "S4.I1.i1.p1.1",
+        "section": "4.1 Model and Data Selection",
+        "sha256": "d3a3ca8c15cdc3625c1c54648969abe9038cfb8313a73eb41c6f87399ee2351e"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S4.I1.i2.p1.1",
+        "section": "4.1 Model and Data Selection",
+        "sha256": "1f8ee0923dcaa8460beacc91ba559068e2f7dfd9c50e446d85f7a282677331dc"
+      },
+      {
+        "n": 22,
+        "kind": "paragraph",
+        "id": "S4.I1.i3.p1.1",
+        "section": "4.1 Model and Data Selection",
+        "sha256": "768fac90c7f6f55bfa2bda3e6136eb746d9bd8f56f9293c0d9c585c5cee7b7cb"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S4.SS1.p3.1",
+        "section": "4.1 Model and Data Selection",
+        "sha256": "4ecf06b623d25f02e104a5f4ca5b1859ff602f095cb59c574fca050cbd7d23b7"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S4.SS1.p4.1",
+        "section": "4.1 Model and Data Selection",
+        "sha256": "db51bea2d80b34bda39f55f5464fed87006cbafab4edc225452163d181775c91"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S4.SS1.p5.1",
+        "section": "4.1 Model and Data Selection",
+        "sha256": "ca7abb158838b05ca0f2feff20881a2ba0b15eb625eae6c39d402512336b9b8f"
+      },
+      {
+        "n": 26,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 Prompt Injection Detection Model Results",
+        "sha256": "1e9e70b3fe418726f192f7b1ccc91d809d23670b8505cfa9dec4c931f8f3bd4c"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "section": "4.2 Prompt Injection Detection Model Results",
+        "sha256": "f02ff9051214ec30e757f39a938c48ae577a9b543c6bc56326272d9eae180f84"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "section": "4.2 Prompt Injection Detection Model Results",
+        "sha256": "3d2034bd6f54103315adf70fd7d1eb70d894d82eafbee7067c03512b43c5adfa"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S4.SS2.p3.1",
+        "section": "4.2 Prompt Injection Detection Model Results",
+        "sha256": "fcaa5a3a03a14940267991c832ecaba5ee1188dd8fbdd7dd9fa290aa193d6da8"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S4.SS2.p4.1",
+        "section": "4.2 Prompt Injection Detection Model Results",
+        "sha256": "6ae5c09e48117f99ebdb16b51386ef28ab85ce81fa648c9d8fd5f7fa7058fed2"
+      },
+      {
+        "n": 89,
+        "kind": "heading",
+        "id": "S5",
+        "section": "5 Methodology: Defense Technique",
+        "sha256": "a80e698720e636cd08dde40de348dba7b9ceba0b5c641a68bd5e8f9e35a25192"
+      },
+      {
+        "n": 90,
+        "kind": "paragraph",
+        "id": "S5.p1.1",
+        "section": "5 Methodology: Defense Technique",
+        "sha256": "62d4dbdadc2719672c4db0d88b39a0b295480178f0dbec76d82a21b8d6910f56"
+      },
+      {
+        "n": 91,
+        "kind": "paragraph",
+        "id": "S5.p2.1",
+        "section": "5 Methodology: Defense Technique",
+        "sha256": "6b23c9df1b89bd0bc5dd6c714851c9c1f3cf63adfdb629fd5f0ef361c4543108"
+      },
+      {
+        "n": 92,
+        "kind": "paragraph",
+        "id": "S5.p3",
+        "section": "5 Methodology: Defense Technique",
+        "sha256": "30974cc6f3b247bf93d51ba5b5265fb673e0721f85acd3a8f737f6d7a95f3612"
+      },
+      {
+        "n": 93,
+        "kind": "heading",
+        "id": "S6",
+        "section": "6 Experimental Results: Defense Techniques",
+        "sha256": "cc7e9811858738dff4f7727f9b7de8e1a50319dc09d9ab4594090fc5164f103d"
+      },
+      {
+        "n": 94,
+        "kind": "heading",
+        "id": "S6.SS1",
+        "section": "6.1 Model and Data Selection",
+        "sha256": "a7ad57cfb3fe45466470b68b77bc8e33c3bd1053a76956b2165992aadb88c113"
+      },
+      {
+        "n": 95,
+        "kind": "paragraph",
+        "id": "S6.SS1.p1.1",
+        "section": "6.1 Model and Data Selection",
+        "sha256": "71fdcedcd2b7c442cca98a563ecde2275faeb10b33bfb5afd931e2e48f9d2485"
+      },
+      {
+        "n": 96,
+        "kind": "heading",
+        "id": "S6.SS2",
+        "section": "6.2 Tokenizer Translation Defense",
+        "sha256": "9f0299ea2739c4a5e12c1dcebea73222214f4d54b4467e710c46d474b8409242"
+      },
+      {
+        "n": 97,
+        "kind": "paragraph",
+        "id": "S6.SS2.p1.1",
+        "section": "6.2 Tokenizer Translation Defense",
+        "sha256": "a5ff9ecdbd8cb0d3a659c6c5d70d5b8a5993fc5458c1ac70efee1978553e326b"
+      },
+      {
+        "n": 98,
+        "kind": "paragraph",
+        "id": "S6.SS2.p2.1",
+        "section": "6.2 Tokenizer Translation Defense",
+        "sha256": "ab30f132cca2db4bc3a6e48ec3a71a9cd2eedec04d5ecb1027460a36b259c1da"
+      },
+      {
+        "n": 99,
+        "kind": "paragraph",
+        "id": "S6.I1.i1.p1.1",
+        "section": "6.2 Tokenizer Translation Defense",
+        "sha256": "27186216031f90db4d8376a107d1dfd2b55fba5a38765dbd6ae33b9895767a08"
+      },
+      {
+        "n": 100,
+        "kind": "paragraph",
+        "id": "S6.I1.i2.p1.1",
+        "section": "6.2 Tokenizer Translation Defense",
+        "sha256": "f972f68451f3ed8a087cf8e0066216dfd69ff2dc2c6e32957e4444f98edf4b0d"
+      },
+      {
+        "n": 101,
+        "kind": "paragraph",
+        "id": "S6.SS2.p4.1",
+        "section": "6.2 Tokenizer Translation Defense",
+        "sha256": "24e8cd5d30d457a92fc9ccf30249f6e0569b7b046268dba2fcf7a3d81c59bc96"
+      },
+      {
+        "n": 102,
+        "kind": "paragraph",
+        "id": "S6.SS2.p5.1",
+        "section": "6.2 Tokenizer Translation Defense",
+        "sha256": "2c73cc6ba22db9b702814b95fc2190417bc09de0680ac3d30266fcab37a1448d"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Method prepends character at high-impact words, and setup uses task-specific binary classifiers. English prompt example supports component only; Qwen target-generation demonstration distinct.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Section 4.1 expressly includes binary prompt-injection/spam/toxicity classifiers across tokenizer families; these scores do not require target chatbot answer.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Section 5/6 describes unigram pretokenization mapped into target tokenizer and reuses classified texts; no target-response dependency.",
+      "restriction_rationale": "Bounded method/data fact only; source findings, captions, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions/partial inventory. Supported local method facts do not become proof of whole-work absence. Actual checker spans below are narrower where stated.",
+      "restriction_rationale": "Coverage only; no performance, sample counts or eligibility state."
+    },
+    {
+      "field_path": "source_receipts.locators",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mechanical source-locator hashes independently reproduce. Semantic inspection coverage is exclusively the actual_context_check spans, not automatic approval of the full provider-declared scope.",
+      "restriction_rationale": "Hash-only locator metadata; no raw method/results text or outcomes."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  },
+  "previous_checker_receipt_sha256": "4b7761aa056bdf2227434b2af847158066bb4a7ec29bf5d113d90a558cf60ca8",
+  "append_only_addendum": "Explicit coverage-field decision added; prior per-fact checks preserved except stated supersession."
+}

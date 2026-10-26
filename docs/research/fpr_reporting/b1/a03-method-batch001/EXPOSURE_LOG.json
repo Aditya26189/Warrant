@@ -1,0 +1,52 @@
+{
+  "B2": "NOT_AUTHORIZED",
+  "FPR_outcome_extraction": "NOT_RUN",
+  "claim_classification": "NOT_RUN",
+  "corrective_actions": [
+    "Committed narrower view filter at6ee4e74 before regenerated v2 method displays.",
+    "For later table inspection, display column names only; never data rows.",
+    "Method-only decisions remain separate from future outcome extraction."
+  ],
+  "known_incidents": [
+    {
+      "description": "Masked method windows or broad paragraph searches included qualitative result descriptions, spelled numerical/count expressions, or nearby evaluation prose. No outcome values were transcribed into eligibility decisions.",
+      "works": [
+        "Q003",
+        "Q005",
+        "Q007",
+        "Q008",
+        "Q013",
+        "Q014",
+        "Q019",
+        "Q020",
+        "Q028",
+        "Q030",
+        "Q038",
+        "Q044",
+        "Q050",
+        "Q058",
+        "Q059",
+        "Q061",
+        "Q065",
+        "Q066",
+        "Q069",
+        "Q072",
+        "Q075",
+        "Q099",
+        "Q117",
+        "Q144",
+        "Q175",
+        "Q176"
+      ]
+    },
+    {
+      "description": "An ad-hoc dataset-location command inadvertently printed unmasked general safety-classification table rows. The task decision was made from the benchmark identities and evaluation task, not those values. The exposure is disclosed; values are not copied into the research artifacts.",
+      "work": "Q041"
+    }
+  ],
+  "limitations": "The initial views and some method-search displays were imperfect exposure barriers. This is a disclosure, not a claim of perfect blinding or full-paper independent review.",
+  "masking": "Numeric strings masked in method views; tables omitted by the committed HTML view helper. Early broad views and ad-hoc inspection sometimes included masked qualitative result statements. These were not used for decisions.",
+  "recorded_utc": "2026-10-19T07:03:24.607213+00:00",
+  "scope": "B1_METHOD_REVIEW_INCIDENTAL_EXPOSURE",
+  "source_git_commit": "6ee4e749de6a5cfdda726ec3098a7a6110b777fa"
+}

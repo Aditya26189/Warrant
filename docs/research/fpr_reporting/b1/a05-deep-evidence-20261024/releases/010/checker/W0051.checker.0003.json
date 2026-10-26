@@ -1,0 +1,781 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0051",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:55:39.867190+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0051.provider.0003.json",
+  "provider_packet_sha256": "143f1118c9396fd8473e81be0a09710916cfebf678ab6cf57270a2cfa61fdedb",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2505.22852v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\c021c42832b87dd4d1968c0ed55417100f1b9d4933f103c52fffbed164942ee7",
+    "raw_sha256": "c021c42832b87dd4d1968c0ed55417100f1b9d4933f103c52fffbed164942ee7",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0084.json",
+    "acquisition_receipt_sha256": "433a2a6bd6089553e1ba54943ef3d58bdb25fc72c0a0b6292a4336a208657f64",
+    "captured_version_id": "arxiv:2505.22852v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        2,
+        102
+      ]
+    ],
+    "coverage_disposition": "VERIFIED_COMPLETE_SUBSTANTIVE_PROPOSAL_SCOPE",
+    "semantic_rationale": "Actual complete substantive main text read through future work; no appendix. Source-kind proposal scope directly supported by Introduction and explicit recommend/propose language throughout. Internal-test snippets remain design-level unspecified, no empirical values or assurance claims released.",
+    "locator_sha256": "2022340c04b842119fef509d104e1b496522ff386a2d5bf8e97137a881a98c9d",
+    "locators": [
+      {
+        "n": 2,
+        "kind": "heading",
+        "id": "S1",
+        "section": "1 Introduction",
+        "sha256": "c9234967b670c32478644b4236ec8fd2f351225696cacbcd0fad1f1838b95170"
+      },
+      {
+        "n": 3,
+        "kind": "paragraph",
+        "id": "S1.p1.1",
+        "section": "1 Introduction",
+        "sha256": "394b81566b95e70795e6a5f81f231c68e78199321d5080360357095bf14d9d2e"
+      },
+      {
+        "n": 4,
+        "kind": "paragraph",
+        "id": "S1.p2.1",
+        "section": "1 Introduction",
+        "sha256": "34f6bb681ada52190bb4752b12c2d2eba8fd0cea54ecafe771104f78c2212218"
+      },
+      {
+        "n": 5,
+        "kind": "paragraph",
+        "id": "S1.p3.1",
+        "section": "1 Introduction",
+        "sha256": "e77b591ca7d3516cf99a27ef2dc744c2a4519466f14a48a930cd50ea1d9db825"
+      },
+      {
+        "n": 6,
+        "kind": "paragraph",
+        "id": "S1.p4.1",
+        "section": "1 Introduction",
+        "sha256": "b7d510129dea27642e06b2c52b8d974472cca3ff63bc74612d8b0eb5bacfa4f3"
+      },
+      {
+        "n": 7,
+        "kind": "heading",
+        "id": "S2",
+        "section": "2 Opportunities for Strengthening CaMeL’s Threat Model",
+        "sha256": "dc3bd62b199513c10f1b63e3ffdc5e0a465737a8067ce0583b3ae6250e52f05a"
+      },
+      {
+        "n": 8,
+        "kind": "paragraph",
+        "id": "S2.p1.1",
+        "section": "2 Opportunities for Strengthening CaMeL’s Threat Model",
+        "sha256": "620270f4b2cc9c457be61484ae604337a5622a7058cdb2fabd0d967b04d75824"
+      },
+      {
+        "n": 9,
+        "kind": "heading",
+        "id": "S2.SS1",
+        "section": "2.1 Initial Prompt Trust",
+        "sha256": "e33ca2b1bb6152f7ffd112fd5f0e77ced92e4200d6cced1a0c9403c5ba1132b6"
+      },
+      {
+        "n": 10,
+        "kind": "paragraph",
+        "id": "S2.SS1.p1.1",
+        "section": "2.1 Initial Prompt Trust",
+        "sha256": "2ad63cebbe94c788c52db560d9644c3cdf0a50e74e9d95d163b1c5aea93066eb"
+      },
+      {
+        "n": 11,
+        "kind": "paragraph",
+        "id": "S2.SS1.p2.1",
+        "section": "2.1 Initial Prompt Trust",
+        "sha256": "0ae3592279e95c4606b1449f0e1f7ac10fc03051293ad7534f8040bab7c5e2d6"
+      },
+      {
+        "n": 12,
+        "kind": "heading",
+        "id": "S2.SS2",
+        "section": "2.2 Output-Side Manipulation",
+        "sha256": "576351d3190d92faf0acc69a86f64afb81ceefdfa3037a6c4f30edbd96e42258"
+      },
+      {
+        "n": 13,
+        "kind": "paragraph",
+        "id": "S2.SS2.p1.1",
+        "section": "2.2 Output-Side Manipulation",
+        "sha256": "f1b79d3ee34763f74140969f57606df25742393a7c296841c4ba126acb39b444"
+      },
+      {
+        "n": 14,
+        "kind": "paragraph",
+        "id": "S2.SS2.p2.1",
+        "section": "2.2 Output-Side Manipulation",
+        "sha256": "161779e93bcf7739ba66bf6ddc22030f2aba4e1fe376213ad05f44c0ee9d6b85"
+      },
+      {
+        "n": 15,
+        "kind": "paragraph",
+        "id": "S2.SS2.p3.1",
+        "section": "2.2 Output-Side Manipulation",
+        "sha256": "230e4dea5c33c4258cab9486565fcbe33c1d21457ae0daa4912879a997cacfa3"
+      },
+      {
+        "n": 16,
+        "kind": "paragraph",
+        "id": "S2.SS2.p4.1",
+        "section": "2.2 Output-Side Manipulation",
+        "sha256": "055e1fa4f6943452ee66db12a5cd53b1551ad4459ac996d55b4e13acbd7608a3"
+      },
+      {
+        "n": 17,
+        "kind": "heading",
+        "id": "S2.SS3",
+        "section": "2.3 Provenance of User Uploads",
+        "sha256": "4d44e7faaa9ea44662e64cccff5e39e22211355f30674ed3e3538833351da0b5"
+      },
+      {
+        "n": 18,
+        "kind": "paragraph",
+        "id": "S2.SS3.p1.1",
+        "section": "2.3 Provenance of User Uploads",
+        "sha256": "7a6d499403c97184ccd4703c596204550a63d2d7efbf0e2d884337ec3d7ef752"
+      },
+      {
+        "n": 19,
+        "kind": "paragraph",
+        "id": "S2.SS3.p2.1",
+        "section": "2.3 Provenance of User Uploads",
+        "sha256": "e35f2eb67ecbb93ce62eff441c82ab8bf9d701d46e851ffd3bdde2973c9b6693"
+      },
+      {
+        "n": 20,
+        "kind": "paragraph",
+        "id": "S2.SS3.p3.1",
+        "section": "2.3 Provenance of User Uploads",
+        "sha256": "235d52383f2ab64c7ccbe6f6ec334df8223a48b6ea61e23ecfce1a5f1e993673"
+      },
+      {
+        "n": 21,
+        "kind": "heading",
+        "id": "S3",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "1030c615ca9dd72deb8d4b5056600917bd6ca038925ad23fc6d783361a2edcc4"
+      },
+      {
+        "n": 22,
+        "kind": "paragraph",
+        "id": "S3.p1.1",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "aa9e4effb78676ba3e5cd6edccaf620a558ab85080043803a233068573f6252d"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S3.p2.1",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "a31b06529006e122c20be81c156d009a9aafd9b9b74b5d7bcd6628e9ea0d5792"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S3.I1.i1.p1.1",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "b9254182c9d4e23de1bd41c336aa666b1409e1e8b40c036cda35fcd8d6a5a511"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S3.I1.i2.p1.1",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "e8f538323311bebaee1f047c2aafb0ac339372b13c02123a0989c6d96394d959"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S3.I1.i3.p1.1",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "a7e7f0af4248973de4abb85b0d2a532ae85f4dcbd4b044ca50ac2c436e3eef0e"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S3.p4.1",
+        "section": "3 Balancing Security Guarantees with Practical Utility",
+        "sha256": "7bb110f08dc039bfad45d5194397a3f44509c90724384b7ac1ffc531e34ed3d4"
+      },
+      {
+        "n": 28,
+        "kind": "heading",
+        "id": "S3.SS0.SSS0.Px1",
+        "section": "Reducing Prompt Fatigue.",
+        "sha256": "acac1b714cc4f3d0f9644e4f7f70272b4aecd5f7e700e6950de454c0573f6b75"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S3.SS0.SSS0.Px1.p1.1",
+        "section": "Reducing Prompt Fatigue.",
+        "sha256": "384de784ff1e594ef77febcfc312e0a41facb93ee11c2fddee5f4993af2b85ae"
+      },
+      {
+        "n": 30,
+        "kind": "heading",
+        "id": "S3.SS0.SSS0.Px2",
+        "section": "From Empirical Checks to Formal Guarantees.",
+        "sha256": "df6c01ef986221f1f4dd9cafcd2b72cf5ef5c563fa3986cd4d5dc1ae49370a55"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S3.SS0.SSS0.Px2.p1.1",
+        "section": "From Empirical Checks to Formal Guarantees.",
+        "sha256": "965b24c66eb98e4aa97b1099310a984046a523fe2a9811641acbc1461f362d3a"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S3.SS0.SSS0.Px2.p2.1",
+        "section": "From Empirical Checks to Formal Guarantees.",
+        "sha256": "fb547e3386aff52cc767e0a2d04f3435f7f95767b57bc57d962fcb5738146886"
+      },
+      {
+        "n": 33,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Side-Channel Considerations and Mitigations",
+        "sha256": "2e4da3fa4becf23f79a3e66d0ec6790d070a2e28b2810bf1016dda405a880641"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "section": "4 Side-Channel Considerations and Mitigations",
+        "sha256": "7d19581541c4694cb4af50f588f4d4205984494ccd1353e4c0b88c200c43fc77"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S4.p2.1",
+        "section": "4 Side-Channel Considerations and Mitigations",
+        "sha256": "81c914832aad944bed6c92e16ef2b1c1f14aff09c62da7e71de2c1016bbae95f"
+      },
+      {
+        "n": 36,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Loop-Counting Attack",
+        "sha256": "215dda593f30bc0ac878d9e2721466965140f9df5e883c3a15e21ad3d053324a"
+      },
+      {
+        "n": 37,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px1",
+        "section": "Threat.",
+        "sha256": "c35f4f926fac382d4e71ed7f4379546859192cd389dfcd2d792538339feaf05c"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px1.p1.1",
+        "section": "Threat.",
+        "sha256": "9d3cf575af86291ef90bd5d947bec27572fa8a40cfc0e2adf1048ff2f6c0c93d"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px1.p2.1",
+        "section": "Threat.",
+        "sha256": "fba54a8ee4924cbb90ab5348ca79fdd321aa946f89eb2bc56fabb7063b0756f5"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px1.p3.1",
+        "section": "Threat.",
+        "sha256": "bb681a87e1b53d88cea7814ffa07c79aea1648b61ec6b3a5c0f48ae5c41a7ed1"
+      },
+      {
+        "n": 41,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px2",
+        "section": "Mitigations.",
+        "sha256": "9132b8b53fe0b473490f23d8b357f122160b93f25a2fc2b39721191260dbc67e"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S4.I1.i1.p1.1",
+        "section": "Mitigations.",
+        "sha256": "a3f249c7b6efabeb8e84da7b9b3ec42a2c9dae73ac531576d12ee2fae001b13a"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S4.I1.i2.p1.1",
+        "section": "Mitigations.",
+        "sha256": "662bc81decfcfe4fb0eacbdb42f086053bca95482a9472490d15a6d13d45b509"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S4.I1.i3.p1.1",
+        "section": "Mitigations.",
+        "sha256": "6dcaa3430beec744ee0fa3de1aaa9f9378319658fa80c5b7911d00efd16a339c"
+      },
+      {
+        "n": 45,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 Exception-Based Information Leak",
+        "sha256": "2a8f75272e53dba98bac27ab0d2d186a8bc95e844c001a0c6260a78fd062fd24"
+      },
+      {
+        "n": 46,
+        "kind": "heading",
+        "id": "S4.SS2.SSS0.Px1",
+        "section": "Threat.",
+        "sha256": "c35f4f926fac382d4e71ed7f4379546859192cd389dfcd2d792538339feaf05c"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS0.Px1.p1.1",
+        "section": "Threat.",
+        "sha256": "ad8e0b7bfba0c554677030988fea5eaf97fb8ae864cb3f10adb0c1f09ceb834c"
+      },
+      {
+        "n": 48,
+        "kind": "heading",
+        "id": "S4.SS2.SSS0.Px2",
+        "section": "Mitigations.",
+        "sha256": "9132b8b53fe0b473490f23d8b357f122160b93f25a2fc2b39721191260dbc67e"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S4.I2.i1.p1.1",
+        "section": "Mitigations.",
+        "sha256": "dbc675db305434779d2502c1bc0815d72ee05a2f45824a7c3554988a38dccc31"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S4.I2.i2.p1.1",
+        "section": "Mitigations.",
+        "sha256": "b3f4e299623961cbfdcedb6608eddeb74f41466dbac97cc91c9b39acafe9cf6b"
+      },
+      {
+        "n": 51,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "section": "4.3 Timing Channels",
+        "sha256": "b87c83040570d492c16f27e6f71aa6ee279bcf8d05e0a54b6c3241cff75846e3"
+      },
+      {
+        "n": 52,
+        "kind": "heading",
+        "id": "S4.SS3.SSS0.Px1",
+        "section": "Threat.",
+        "sha256": "c35f4f926fac382d4e71ed7f4379546859192cd389dfcd2d792538339feaf05c"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS0.Px1.p1.1",
+        "section": "Threat.",
+        "sha256": "3491c3f73fec6e0476729063eae97e5b6e08d43ba6a51cf2f8e6550bf8e2eb5e"
+      },
+      {
+        "n": 54,
+        "kind": "heading",
+        "id": "S4.SS3.SSS0.Px2",
+        "section": "Mitigations.",
+        "sha256": "9132b8b53fe0b473490f23d8b357f122160b93f25a2fc2b39721191260dbc67e"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S4.I3.i1.p1.1",
+        "section": "Mitigations.",
+        "sha256": "fe37a414c229da60521792a14b3c476725a62510fc9a62ee6b3e7f8abc6facd5"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S4.I3.i2.p1.1",
+        "section": "Mitigations.",
+        "sha256": "535d957d03676dc157ab2f43e5e9a317eb36c401e068f56cbd4ad70a69243df9"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S4.I3.i3.p1.1",
+        "section": "Mitigations.",
+        "sha256": "e8b7beeb97b883c746ce509220ab6a9df5d8e8d3d74f72f59b417bcb29cc284a"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS0.Px2.p2.1",
+        "section": "Mitigations.",
+        "sha256": "851923c02ab49efc0babf258c10bc55569148e77bb8d9e96c87219fc9da40b14"
+      },
+      {
+        "n": 59,
+        "kind": "heading",
+        "id": "S5",
+        "section": "5 Architectural Limitations",
+        "sha256": "56c6d3238efae272198ace14cd3e019147c5315d2a0bea5a2a5428b3a51349a2"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "S5.p1.1",
+        "section": "5 Architectural Limitations",
+        "sha256": "b144bd7fc0b37558d62a5c422db7abe9b3e162155b9d1821ba87f21653a4f1b2"
+      },
+      {
+        "n": 61,
+        "kind": "heading",
+        "id": "S5.SS1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "416c2e341bf85baa49baace06662bf8dd134c922b9ce085b98adec0eea45807c"
+      },
+      {
+        "n": 62,
+        "kind": "paragraph",
+        "id": "S5.SS1.p1.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "c01334a694cc64f424bcb5c0d72c8d19592c94e7538ce9d2d93ee9b630e35903"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "S5.SS1.p2.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "cb30daf960aeb6d4e229767d746ef3937bffa6056ff59038d6ad79f042a0ef70"
+      },
+      {
+        "n": 64,
+        "kind": "paragraph",
+        "id": "S5.SS1.p3.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "c62b6a1b858498e34e00c0f3cd19b74769ce3030743eb29ab634714265a46b4b"
+      },
+      {
+        "n": 65,
+        "kind": "paragraph",
+        "id": "S5.I1.i1.p1.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "50aaccccb2d1be8e3ec89ca7c487612faee2e7148292bd8b3c90d68ad0856327"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "S5.I1.i2.p1.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "388d2d886520ff4023a198813fe29fd37727e332e9661bb3668337d56e743a74"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "S5.I1.i3.p1.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "529af79c46cdc40faa99ba75704deacab692bf8d321b06a30e3885810ed96fdc"
+      },
+      {
+        "n": 68,
+        "kind": "paragraph",
+        "id": "S5.SS1.p5.1",
+        "section": "5.1 Performance Overhead of Dual LLMs",
+        "sha256": "6a94fb8ba544458cdcae437a82f21ca9ecbe404bd62db137d179bbd7102d0707"
+      },
+      {
+        "n": 69,
+        "kind": "heading",
+        "id": "S5.SS2",
+        "section": "5.2 Policy Maintenance at Scale",
+        "sha256": "b04475483c390c0e301a9700c0ecebfb338cf121655f17635a004f0c797c8a64"
+      },
+      {
+        "n": 70,
+        "kind": "paragraph",
+        "id": "S5.SS2.p1.1",
+        "section": "5.2 Policy Maintenance at Scale",
+        "sha256": "4411756f9e0cd74485c158f711bac87d27e69e3cbf84f4e3edb3e444b2df6d23"
+      },
+      {
+        "n": 71,
+        "kind": "paragraph",
+        "id": "S5.SS2.p2.1",
+        "section": "5.2 Policy Maintenance at Scale",
+        "sha256": "5a2bb6abacb3b9f78e3cc2090c8bc86686fff99cd88d23ee5cfee7af17c1bedb"
+      },
+      {
+        "n": 72,
+        "kind": "paragraph",
+        "id": "S5.I2.i1.p1.1",
+        "section": "5.2 Policy Maintenance at Scale",
+        "sha256": "e19186711a6406c55f49cc740382bdf1dcabdec820351366b7f109a382a598d5"
+      },
+      {
+        "n": 73,
+        "kind": "paragraph",
+        "id": "S5.I2.i2.p1.1",
+        "section": "5.2 Policy Maintenance at Scale",
+        "sha256": "ab859186c9988fa9cea52a853c9ad2b6436a32676801e8e196bbf311d4bfec7c"
+      },
+      {
+        "n": 74,
+        "kind": "paragraph",
+        "id": "S5.I2.i3.p1.1",
+        "section": "5.2 Policy Maintenance at Scale",
+        "sha256": "9b3329e9ba766aa661d37ea29d63e92a8395b6f9a017621adb3a8b58ac3ff3b9"
+      },
+      {
+        "n": 75,
+        "kind": "paragraph",
+        "id": "S5.SS2.p4.1",
+        "section": "5.2 Policy Maintenance at Scale",
+        "sha256": "998e0ddecefdd2b3a62f0c3485d13dc3aa403cef83ab971b6a8027cca46ac332"
+      },
+      {
+        "n": 76,
+        "kind": "heading",
+        "id": "S5.SS3",
+        "section": "5.3 Interpreter Language Constraints",
+        "sha256": "4565c02b40eaeddb36b7d5daa5f28f3e33c0360e001d8c431ad2a296b8f50c90"
+      },
+      {
+        "n": 77,
+        "kind": "paragraph",
+        "id": "S5.SS3.p1.1",
+        "section": "5.3 Interpreter Language Constraints",
+        "sha256": "1c5b979e4786492bcb49b21373c4bc38fc8eac229e9cc9506619328ab640e264"
+      },
+      {
+        "n": 78,
+        "kind": "paragraph",
+        "id": "S5.SS3.p2.1",
+        "section": "5.3 Interpreter Language Constraints",
+        "sha256": "b845adb7174cb5ed5cec7b34e7dbba170483e86da296270d46e30cd3f541c29f"
+      },
+      {
+        "n": 79,
+        "kind": "paragraph",
+        "id": "S5.I3.i1.p1.1",
+        "section": "5.3 Interpreter Language Constraints",
+        "sha256": "71152c0627ee548f5cd6063b430f30ed7e8582bdb1b2159f3d72a9f26da9b30a"
+      },
+      {
+        "n": 80,
+        "kind": "paragraph",
+        "id": "S5.I3.i2.p1.1",
+        "section": "5.3 Interpreter Language Constraints",
+        "sha256": "9af11f7dea49b08e8d4c6406521724b34621de36f3a51ac7961cd8cea97baa10"
+      },
+      {
+        "n": 81,
+        "kind": "paragraph",
+        "id": "S5.I3.i3.p1.1",
+        "section": "5.3 Interpreter Language Constraints",
+        "sha256": "93859d528ed4c0e47ed780078d45a5febe19799d392934ca80286806a31c5ae6"
+      },
+      {
+        "n": 82,
+        "kind": "paragraph",
+        "id": "S5.SS3.p4.1",
+        "section": "5.3 Interpreter Language Constraints",
+        "sha256": "2682f6456c5a183c345591bf0b9646f1f6c42ad484e3fc7e3023b89317279872"
+      },
+      {
+        "n": 83,
+        "kind": "heading",
+        "id": "S6",
+        "section": "6 Comparison with Other Defenses",
+        "sha256": "a58f9f85f30af85c4f7a54f3950347cbb5a09e139c9e7033c4a45d29e016f6b0"
+      },
+      {
+        "n": 84,
+        "kind": "paragraph",
+        "id": "S6.p1.1",
+        "section": "6 Comparison with Other Defenses",
+        "sha256": "ff491d5787c191715bce92ab742d193fd1bf6043a2ff77eb98f18165c00e18d6"
+      },
+      {
+        "n": 85,
+        "kind": "heading",
+        "id": "S6.SS0.SSS0.Px1",
+        "section": "Model-level robustness.",
+        "sha256": "5922214fb56977f25e21aa3e56d343d26b7ab2a20cb0c19109c36045c9a0d462"
+      },
+      {
+        "n": 86,
+        "kind": "paragraph",
+        "id": "S6.SS0.SSS0.Px1.p1.1",
+        "section": "Model-level robustness.",
+        "sha256": "da657b11386150c203286a8de5daf4a072c6a97302f42a5902718073d4d6fa3a"
+      },
+      {
+        "n": 87,
+        "kind": "paragraph",
+        "id": "S6.SS0.SSS0.Px1.p2.1",
+        "section": "Model-level robustness.",
+        "sha256": "8f57a85b9b1a71006855a95c0317599079071e8268a34c77524caf979107fbc7"
+      },
+      {
+        "n": 88,
+        "kind": "heading",
+        "id": "S6.SS0.SSS0.Px2",
+        "section": "System-level sandboxing.",
+        "sha256": "bccbb03b8b2055326c8f10a064e842ae5a530bba487f58d71dba2704f1661cad"
+      },
+      {
+        "n": 89,
+        "kind": "paragraph",
+        "id": "S6.SS0.SSS0.Px2.p1.1",
+        "section": "System-level sandboxing.",
+        "sha256": "19a9483391b40598979effe4bb7b5a6d479b1b65c355f0ef20797cdac628670a"
+      },
+      {
+        "n": 90,
+        "kind": "paragraph",
+        "id": "S6.SS0.SSS0.Px2.p2.1",
+        "section": "System-level sandboxing.",
+        "sha256": "090021ab3efe0a2d5498e7b58c4005cd2a8865a19cb7908d782ca668e77cf4b3"
+      },
+      {
+        "n": 91,
+        "kind": "heading",
+        "id": "S6.SS0.SSS0.Px3",
+        "section": "Static filtering and input sanitization.",
+        "sha256": "5a841c79150818e13f793170391de19ea9bcd75dbc4a99c839ad09677f9acc74"
+      },
+      {
+        "n": 92,
+        "kind": "paragraph",
+        "id": "S6.SS0.SSS0.Px3.p1.1",
+        "section": "Static filtering and input sanitization.",
+        "sha256": "595c1fbebaaf85c43e1f0e1a1b99d7971cf57d70c2fea084350bf851cefa101c"
+      },
+      {
+        "n": 93,
+        "kind": "paragraph",
+        "id": "S6.SS0.SSS0.Px3.p2.1",
+        "section": "Static filtering and input sanitization.",
+        "sha256": "f252496c88fc6806766f68869d6912d0d59b6ecc378abe72e68c99f04dc64a7a"
+      },
+      {
+        "n": 94,
+        "kind": "paragraph",
+        "id": "S6.SS0.SSS0.Px3.p3.1",
+        "section": "Static filtering and input sanitization.",
+        "sha256": "9bf85e86b25d4b5262046022c7306062f21564926237c581c4500ce3c55d9d97"
+      },
+      {
+        "n": 95,
+        "kind": "heading",
+        "id": "S7",
+        "section": "7 Conclusion",
+        "sha256": "a5e6fd6a5ad77cd6b11dc679ee3543c1e09b2af85fb19c2a5af082e629a61ecd"
+      },
+      {
+        "n": 96,
+        "kind": "paragraph",
+        "id": "S7.p1.1",
+        "section": "7 Conclusion",
+        "sha256": "d90ec5b0c6f0db104a82a335ce1aa5523d8cbc840a57c2ef9433a5897afed184"
+      },
+      {
+        "n": 97,
+        "kind": "heading",
+        "id": "S8",
+        "section": "8 Directions for Future Work",
+        "sha256": "a32ccf5d7b5f839ef3b5e02341d00d63daecce77bf87348307e2d1577f1c8a12"
+      },
+      {
+        "n": 98,
+        "kind": "paragraph",
+        "id": "S8.p1.1",
+        "section": "8 Directions for Future Work",
+        "sha256": "1ac06f761a53bbfb55ea8a56c43138c1cb145c1d84b2540906c4c5328e279906"
+      },
+      {
+        "n": 99,
+        "kind": "paragraph",
+        "id": "S8.I1.i1.p1.1",
+        "section": "8 Directions for Future Work",
+        "sha256": "f7e7cbc40f84c81f9d9fdba56fb27b6383da4af293aa33e6f9dce23b14c64305"
+      },
+      {
+        "n": 100,
+        "kind": "paragraph",
+        "id": "S8.I1.i2.p1.1",
+        "section": "8 Directions for Future Work",
+        "sha256": "bfb6b80f9f3704a1362ae0ced7b2bf89e68c0072611d676d98c90eddf3919c60"
+      },
+      {
+        "n": 101,
+        "kind": "paragraph",
+        "id": "S8.I1.i3.p1.1",
+        "section": "8 Directions for Future Work",
+        "sha256": "70002fe19438032f8fdc6d00ea99f482ce2803281e8a6e2c64eb77671bd0ec26"
+      },
+      {
+        "n": 102,
+        "kind": "paragraph",
+        "id": "S8.I1.i4.p1.1",
+        "section": "8 Directions for Future Work",
+        "sha256": "7e7d14698e32a23f969cd1cd72edd1e8e5008f43b12729f6357045bea2138280"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Complete substantive main source inspected: original contributions are proposed gateway/audit/provenance/risk/side-channel/execution controls. The two internal-test mentions do not supply dataset/label procedure in their contexts.",
+      "restriction_rationale": "Bounded method/scope fact; no source performance, sample counts, qualitative outcomes, assurance or captions transferred."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Gateway proposal checks initial text via reputation/override/entropy/perplexity, without a protected answer; internal latency mention does not turn this into a specified accuracy experiment.",
+      "restriction_rationale": "Bounded method/scope fact; no source performance, sample counts, qualitative outcomes, assurance or captions transferred."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All named proposal families checked in full main source, with response-audit dependence and plan/data/action distinctions preserved. Prior defense comparisons are attributed, not treated as original evaluated detectors.",
+      "restriction_rationale": "Bounded method/scope fact; no source performance, sample counts, qualitative outcomes, assurance or captions transferred."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All material declared method/setup/arm families now actually checked in main and method-bearing appendix scope. Withheld outcome values/derivations are not needed to establish named methods.",
+      "restriction_rationale": "Bounded method/scope fact; no source performance, sample counts, qualitative outcomes, assurance or captions transferred."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

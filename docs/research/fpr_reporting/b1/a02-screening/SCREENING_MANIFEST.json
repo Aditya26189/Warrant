@@ -1,0 +1,44 @@
+{
+  "B2": "NOT_AUTHORIZED",
+  "OpenReview_discovery": "EXCLUDED_FROM_SELECTION_FRAME",
+  "PDF_access_check": "NOT_RUN",
+  "cap_check": "PASS",
+  "claim_classification": "NOT_RUN",
+  "counts": {
+    "EXCLUDE": 12,
+    "NOT_SCREENED": 360,
+    "UNCLEAR": 1
+  },
+  "created_utc": "2026-10-17T18:07:00.371163+00:00",
+  "eligible_frame_freeze": "NOT_RUN",
+  "files": {
+    "SCREENING_EXPOSURE_LOG.json": "1ea6d0ad24a4daba7528cc905ed0af0f8aa697d1a2c29a892dc9a5d4e0d3610f",
+    "SCREENING_LEDGER.json": "d76389d30b4a10eead010ea3f92b44eb1e4cf4b631e784ccef737689cf6e2efb"
+  },
+  "first_blocking_work": "arxiv:2403.17710",
+  "human_extraction_sheet": "NOT_PRODUCED_NO_ASSIGNMENTS",
+  "human_six_assignment": "NOT_RUN",
+  "input_sha256": {
+    "PROTOCOL_LOCK_A02.json": "a8b736803da62bd399644abcc1f2ffb0a767b983560f16629ce16cf5d84147c7",
+    "SENTINEL_INVENTORY_AMENDED.json": "dafd88a2eb9e904054dd4dd0eeb579e9e8acabae8bc7062d49ca0355855ed69f",
+    "a02-dedup/work_records.json": "d911dcc233c9a27c03521009b145ca56e52381f427c94fc39828e98b63b45b21",
+    "a02-metadata/metadata_union.jsonl": "dea23a8f9198e3ecefd71ab92c91b0680a7b0cfe97f59119880997cfba69b808"
+  },
+  "known_sentinel_work": "Excluded mechanically from approved inventory as independent work; no domain judgments after blocker",
+  "manual_domain_decisions": 8,
+  "manual_domain_exclusions": 7,
+  "manual_domain_screening_order": "SORTED_CANONICAL_WORK_ID_STOP_AFTER_FIRST_UNCLEAR",
+  "mechanical_sentinel_exclusions": 5,
+  "numeric_display": "GENERIC_ALL_NUMERALS_REDACTED_NOT_OUTCOME_TARGETED",
+  "outcome_extraction": "NOT_RUN",
+  "screening_cap": 500,
+  "sentinel_matching": "EXPLICIT_IDENTIFIERS_OR_EXACT_LOCKED_TITLES_PLUS_A01_STEPGUARD_PREFIX",
+  "source_git_commit": "1389cb673123d92356a9f3f69a5ce4264ad6fc11",
+  "source_refresh": false,
+  "source_tree_clean_at_start": true,
+  "status": "FRAME_BLOCKED_AWAITING_HUMAN_METADATA_ADJUDICATION",
+  "ten_paper_selection": "NOT_RUN",
+  "unique_works": 373,
+  "updated_utc": "2026-10-17T18:07:49.069126+00:00",
+  "version_selection": "NOT_RUN"
+}

@@ -1,0 +1,475 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0017",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:49:36.043900+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0017.provider.0001.json",
+  "provider_packet_sha256": "bb4303dc8c9dad4e95458194c28bbce57f08a39a2f403b94c13b873523502e0e",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2410.02916v3",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\77e3bb61ab82216caf990ddfe6bf5cf9d191ddf6da040a260aec2b1fc7c4c2a1",
+    "raw_sha256": "77e3bb61ab82216caf990ddfe6bf5cf9d191ddf6da040a260aec2b1fc7c4c2a1",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0042.json",
+    "acquisition_receipt_sha256": "00ffc3c3380a95d5f2b10ad021c23e7aab69cac12465f678eb7eea2017b33ce9",
+    "captured_version_id": "arxiv:2410.02916v3",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        25,
+        58
+      ],
+      [
+        79,
+        101
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_INVENTORY_ONLY",
+    "semantic_rationale": "Actual main algorithm/setup and appendix design text read. Algorithm-only details and exact Appendix C figure component roster remain unverified; no full inventory inference.",
+    "visual_check": null,
+    "locator_sha256": "60a2b3ad361071c3921f126311a007224f1c63ec567e69a5ca4a2c65c9465b94",
+    "locators": [
+      {
+        "index": 25,
+        "paragraph_id": "S3.I1.i3.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Threat Model",
+        "text_sha256": "6ad0975ab975497bcdf65037614cb0cbc19b8fd4c0fad3a68305abf898a072eb"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.I1.i4.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Threat Model",
+        "text_sha256": "a4f29e6dbc28bee8aeab72eab6674c66fe91eefc0d3556f92e92ecafa068b4d3"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Attack Goals",
+        "text_sha256": "ff252b53bb3ccde40eb5ed0454ba892c9553b4d0bb13f92a11eb97285190ab4e"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.SS2.p2.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Attack Goals",
+        "text_sha256": "4a134f5e8a865a83c727ecd3c83fc44a7b56a4b497e271c024bb7420e9e3403b"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Real-world Scenarios",
+        "text_sha256": "59b13a54f1f52d95af8400dde1d1c716b2caa6638007a001871dd58d174f1fc5"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.I2.i1.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Real-world Scenarios",
+        "text_sha256": "dc030f335ce3062eba51ea04f038153255d78a620a601ee1e3ef841e70650a1e"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S3.I2.i2.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Real-world Scenarios",
+        "text_sha256": "aaeb11e648fb1cd4f13e37e043cf35927ec956c4e3a50ce719b1981baf6f5c5c"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S3.I2.i3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Real-world Scenarios",
+        "text_sha256": "5f6fc73a7b52fec3d061f30728d8b7d3c6bb6b3bf87581f6ef86e163e35646eb"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S3.I2.i4.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Real-world Scenarios",
+        "text_sha256": "da003c75cf20a43ca8cd5b0d47dec6da48eb4d57cdc0db27686e03b1b8969a0f"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "4 Attacks",
+        "text_sha256": "16058b6dbea57f84cf7d09f72c377d09572537be3ef562571365dcaa205b9750"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Prompt Injection Attacks",
+        "text_sha256": "2ddf28b8d5e4a24364bc0bb4b595aed369bffa6296698a36852cd98550a7f92c"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S4.SS1.p2.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Prompt Injection Attacks",
+        "text_sha256": "b8b8d34dc30fbf306adbd0984e5819dbc52b25aef49f9d98f57b8b208136f366"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S4.SS1.p3.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Prompt Injection Attacks",
+        "text_sha256": "0ffda0f552b0504b72b34720643632c45cf52ef2fb1e1be2f98ff30446804bfb"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S4.SS1.p4.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Prompt Injection Attacks",
+        "text_sha256": "a6d7a4265815d83f9f8a17f7b038122ba8226e4db48ac487d423d4c306627ca5"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S4.SS1.p5.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Prompt Injection Attacks",
+        "text_sha256": "0082bc080abdb5c55931e6a953896c0e6b44b4f8c1861b0cc11cb460777a486b"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S4.SS1.p6.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Prompt Injection Attacks",
+        "text_sha256": "6ebb052786b225f81ec8d3e7f5adc0a57e0df8c0cbd40dc456f4475fb9b95be3"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S4.SS1.p7.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Prompt Injection Attacks",
+        "text_sha256": "436ec55fdfa1df21d71b13d1b7d89a8da4e49d81dc36559aea05c849efa63820"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S4.I1.i1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Prompt Injection Attacks",
+        "text_sha256": "1f4208384ed3ef6e4304d594740be36ca71b8106ad1a83555c63b552a459bddc"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S4.I1.i2.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Prompt Injection Attacks",
+        "text_sha256": "bb085232f05317c94dc9d169f1b5f7f3e0ab08ec1e644598ea2eac164e2d3981"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S4.SS1.p9.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Prompt Injection Attacks",
+        "text_sha256": "6af0ca61f713c37e749cddf42bb81b3f25e65ca8de555582d5e3d07b0c7f9e7e"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S4.SS1.p10.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Prompt Injection Attacks",
+        "text_sha256": "e601f026fe0613bfd6a696d1d3e5e6e8115e6ffb70853057d6821912ef7a2d82"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Poisoned Fine-tuning Attacks",
+        "text_sha256": "790b43fb01b9d84ce0236c6f37b19a94e317beb376ec45ab724aa4ed7c790238"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S4.SS2.p2.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Poisoned Fine-tuning Attacks",
+        "text_sha256": "6c7dde611d2cf47943609e188afac7ba83ea3157b556f5e5363584d6c179430e"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S4.SS2.p2.3",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Poisoned Fine-tuning Attacks",
+        "text_sha256": "1d81a459190c6bace7b5e0acd5f0d86e189c6379ddad486bc02e16694f069bd9"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S4.SS2.p3.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Poisoned Fine-tuning Attacks",
+        "text_sha256": "c3f7c52b45c09702b54c8cfd94889e6913804f6bef9ace17b9768ebccbe34f39"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S5.p1.1",
+        "section_id": "S5",
+        "heading": "5 Evaluation",
+        "text_sha256": "c9fc32a2e2fd5b7ec8aba6531bbcc81408088af09d7b50a74b245b696029f273"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S5.SS1.p1.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Experiment Setup",
+        "text_sha256": "a0b92bab6bc65c595b5f9ca3311d237b23678fb13a5bc5b3320479b5849f91da"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S5.SS1.p2.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Experiment Setup",
+        "text_sha256": "710ff76881a14dde77fbcba923d3c0ca5866e4fa842975437baf51b00fd2bbfa"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S5.SS1.p3.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Experiment Setup",
+        "text_sha256": "bb61de47f900a83c656f03fde6b8105a4d634bb884ba5aa1c87578cd940c203a"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S5.SS1.p4.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Experiment Setup",
+        "text_sha256": "1f3059120089d08c970861671799edd5cd83bc26c97d5888f66e338f5dd35077"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S5.I1.i1.p1.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Experiment Setup",
+        "text_sha256": "cf537118089e00ffb6285e2fa4c99f0678cecd7d569eeda36f510941094c67f1"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S5.I1.i2.p1.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Experiment Setup",
+        "text_sha256": "e504adbc38cb38abb4be337e8aff7998fe15363e6d3e28f50fb7ebb063b386f3"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "S5.I1.i3.p1.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Experiment Setup",
+        "text_sha256": "56e0d93b3f857ba67b3e20400674a6de28c482cf48f17aae8fdaab78ea3b752c"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "S5.SS1.p5.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 Experiment Setup",
+        "text_sha256": "e709086dca1c061e93bde37f4e9af022ccf6610f334a85633d5a14ec23e7dc23"
+      },
+      {
+        "index": 79,
+        "paragraph_id": "A1.p2.1",
+        "section_id": "A1",
+        "heading": "Appendix A Details of Real-World Attack Scenarios",
+        "text_sha256": "481a1821ca04fd27dea391ab33f781a609ee093bab5273e3480c94a74cc85604"
+      },
+      {
+        "index": 80,
+        "paragraph_id": "A1.p3.1",
+        "section_id": "A1",
+        "heading": "Appendix A Details of Real-World Attack Scenarios",
+        "text_sha256": "30cdf236b3018d6510c1278808d457dee0a9aba9cb45cdc9576981a9284eff50"
+      },
+      {
+        "index": 81,
+        "paragraph_id": "A1.p4.1",
+        "section_id": "A1",
+        "heading": "Appendix A Details of Real-World Attack Scenarios",
+        "text_sha256": "92aaaf7d062e883c6c7c19dcfa81d20c0b81e268a34c1bd4c82f11bc274e650b"
+      },
+      {
+        "index": 82,
+        "paragraph_id": "A1.p5.1",
+        "section_id": "A1",
+        "heading": "Appendix A Details of Real-World Attack Scenarios",
+        "text_sha256": "0721c5d2189051a6c67f9a3d5e954dc2b31abbae7e4781ec9ca9a6cf6985eac5"
+      },
+      {
+        "index": 83,
+        "paragraph_id": "A2.SS1.p1.1",
+        "section_id": "A2.SS1",
+        "heading": "B.1 White-box Prompt Injection Attack",
+        "text_sha256": "2a07d20c9679c996d97df164d38e7439d403d2ee8155050426f57fbe1ebfc679"
+      },
+      {
+        "index": 84,
+        "paragraph_id": "A2.SS1.SSS1.p1.1",
+        "section_id": "A2.SS1.SSS1",
+        "heading": "B.1.1 Stealth-oriented Optimization",
+        "text_sha256": "9cdd814b7dc6ace33fcd9f19794f259c4644b662c18923eaef994726cf7022fe"
+      },
+      {
+        "index": 85,
+        "paragraph_id": "A2.SS1.SSS1.p2.1",
+        "section_id": "A2.SS1.SSS1",
+        "heading": "B.1.1 Stealth-oriented Optimization",
+        "text_sha256": "bb7027c75671150469d97a7a6ccda7d3e306b547a9c89d39a3c6ab3ec8eb55b1"
+      },
+      {
+        "index": 86,
+        "paragraph_id": "A2.SS1.SSS1.p3.1",
+        "section_id": "A2.SS1.SSS1",
+        "heading": "B.1.1 Stealth-oriented Optimization",
+        "text_sha256": "a052d787651597f60c4284b7f97efd46cea01df24d2b48e07e454b88d422abac"
+      },
+      {
+        "index": 87,
+        "paragraph_id": "A2.SS1.SSS1.p4.1",
+        "section_id": "A2.SS1.SSS1",
+        "heading": "B.1.1 Stealth-oriented Optimization",
+        "text_sha256": "aae539a17ff22cd8eb4274244966b3810c3c3bb1eda49f1d9ea38ab91bfda8c2"
+      },
+      {
+        "index": 88,
+        "paragraph_id": "A2.SS1.SSS1.p5.1",
+        "section_id": "A2.SS1.SSS1",
+        "heading": "B.1.1 Stealth-oriented Optimization",
+        "text_sha256": "cbd52b4e81a06bd7c81e18dcba96d24d40058e80d9bbc83a56671ed7a7e2f304"
+      },
+      {
+        "index": 89,
+        "paragraph_id": "A2.SS1.SSS2.p1.1",
+        "section_id": "A2.SS1.SSS2",
+        "heading": "B.1.2 Multi-dimension Universality",
+        "text_sha256": "61266884007077e78c15ad65d30bd9db29ac14b930488504f79fe7f7264fe29d"
+      },
+      {
+        "index": 90,
+        "paragraph_id": "A2.SS1.SSS2.p2.1",
+        "section_id": "A2.SS1.SSS2",
+        "heading": "B.1.2 Multi-dimension Universality",
+        "text_sha256": "fa0fcdd867db57012e6fc71a05706298c690d43abcb10fd956384e1cdb09b2ca"
+      },
+      {
+        "index": 91,
+        "paragraph_id": "A2.SS1.SSS2.p3.1",
+        "section_id": "A2.SS1.SSS2",
+        "heading": "B.1.2 Multi-dimension Universality",
+        "text_sha256": "bbc05c4dd893e357e64a8b6e59f058b311203ea669a3246a2957743742044a98"
+      },
+      {
+        "index": 92,
+        "paragraph_id": "A2.SS1.SSS3.p1.1",
+        "section_id": "A2.SS1.SSS3",
+        "heading": "B.1.3 Implementation details",
+        "text_sha256": "34a503965a96435551b241e7ee399e09bfb40b609e883f21acdbedf4defa1831"
+      },
+      {
+        "index": 93,
+        "paragraph_id": "A2.SS2.SSS1.p1.1",
+        "section_id": "A2.SS2.SSS1",
+        "heading": "B.2.1 Algorithm Details",
+        "text_sha256": "32027870fb67139cdc2c5b36c69c236654e1c5d0cdd83c7071f1a8fa84a07413"
+      },
+      {
+        "index": 94,
+        "paragraph_id": "A2.I1.i1.p1.1",
+        "section_id": "A2.SS2.SSS1",
+        "heading": "B.2.1 Algorithm Details",
+        "text_sha256": "366ec6b50e1f2577147e30b05287af5909fc7a5e394a6ae6bb98a109c6f08117"
+      },
+      {
+        "index": 95,
+        "paragraph_id": "A2.I1.i2.p1.1",
+        "section_id": "A2.SS2.SSS1",
+        "heading": "B.2.1 Algorithm Details",
+        "text_sha256": "5b19ed6c85748f3b156848cf5e30ea1c3f094d4814d84b07942113362afac6c4"
+      },
+      {
+        "index": 96,
+        "paragraph_id": "A2.SS2.SSS2.p1.1",
+        "section_id": "A2.SS2.SSS2",
+        "heading": "B.2.2 Implementation Details",
+        "text_sha256": "ad4b51af46edf7dc8ebc77e3b0d6412c9854d0267d8864bd5cea60c4ce4f704f"
+      },
+      {
+        "index": 97,
+        "paragraph_id": "A3.p1.1",
+        "section_id": "A3",
+        "heading": "Appendix C Ablation Study",
+        "text_sha256": "d43fd6060bee90fbfd08874fd71f555f948d895369d0bd8e613b3e50d7398dc8"
+      },
+      {
+        "index": 98,
+        "paragraph_id": "A4.p1.1",
+        "section_id": "A4",
+        "heading": "Appendix D Case Study of Prompt Injection Attacks",
+        "text_sha256": "9676482e8bd76fe4c235367faf170e532470db1ffa9bed19540b1b011735f930"
+      },
+      {
+        "index": 99,
+        "paragraph_id": "A4.p2.1",
+        "section_id": "A4",
+        "heading": "Appendix D Case Study of Prompt Injection Attacks",
+        "text_sha256": "64e778b448c6930522e5716e1568575070eccc0142006bc61ee32abd22f24e88"
+      },
+      {
+        "index": 100,
+        "paragraph_id": "A5.p1.1",
+        "section_id": "A5",
+        "heading": "Appendix E Examples of Adversarial Prompt Optimization",
+        "text_sha256": "774db31a1a927718ffd8c474b7339c20d2190aee50ca2b8dc979672e280bce61"
+      },
+      {
+        "index": 101,
+        "paragraph_id": "A5.p2.1",
+        "section_id": "A5",
+        "heading": "Appendix E Examples of Adversarial Prompt Optimization",
+        "text_sha256": "a0b1b907532f38e55d27adaa3feb82e186dda572235006dad0aae3685153eeda"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main threat/attack design distinguishes unsafe flags on originally safe tasks from refusal after poisoned fine-tuning; trigger/no-trigger construction explicit.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "White-box token/GCG and black-box word mutation, stealth variants, GCG comparator and poisoned/backdoor training supported by main and Appendix B/C method descriptions. Standalone safeguards emit safety labels without original-task application answer; aligned-model denial involves generation.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Section 5.1 explicitly says moderate token filter permits English words, and names Alpaca/HumanEval/AGIEval safe tasks. This does not establish full evaluated prompt language composition.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly retains material method/arm omissions. The approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

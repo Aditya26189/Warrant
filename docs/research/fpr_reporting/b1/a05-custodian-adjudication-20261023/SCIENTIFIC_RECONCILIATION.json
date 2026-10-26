@@ -1,0 +1,168 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "b2_authorized": false,
+  "corrections": [
+    {
+      "after_fields": {
+        "considered_method_evidence_ids": [
+          "SEM-01-W0062-F01",
+          "SEM-01-W0062-F02",
+          "REC-REC-01-W0062-F01",
+          "REC-REC-01-W0062-F02",
+          "A05-SRC02-W0062-F01",
+          "A05-SRC02-W0062-F02",
+          "A05-SRC02-W0062-F03",
+          "A05-SRC02-W0062-F04",
+          "A05-SRC02-W0062-F05"
+        ],
+        "criteria": {
+          "before_target_answer": "MET",
+          "binary_evaluation": "MET",
+          "english_evaluation": "MET",
+          "input_injection_task": "MET"
+        },
+        "limitations": [
+          "Shared AgentDojo setup; no separate independent benchmark or unspecified baseline aggregation is invented."
+        ],
+        "scientific_rationale": "Exact captured v1 method checks separately assess clean tool-returned inputs classified contaminated and contaminated inputs classified clean, within shared AgentDojo tasks. This establishes original binary input evaluation in addition to agent-task checks. The guard/removal sequence precedes the backend, and prior same-version facts establish evaluated English attack constructions. Baseline aggregation details and shared benchmark setting remain limitations."
+      },
+      "before_sha256": "f62933ecb22267b6f28ab63dc6f68c7ac09e770a367d1eb1726e289032f10288",
+      "reason": "New separately checked original evaluation-unit evidence resolves the binary-evaluation gap; no outcomes were used.",
+      "review_id": "W0062"
+    },
+    {
+      "after_fields": {
+        "considered_method_evidence_ids": [
+          "SEM-01-W0352-F01",
+          "SEM-01-W0352-F02",
+          "REC-REC-01-W0352-F01",
+          "REC-REC-01-W0352-F02",
+          "REC-REC-01-W0352-F03",
+          "A05-SRC01-W0352-F01",
+          "A05-SRC01-W0352-F02",
+          "A05-SRC01-W0352-F03"
+        ],
+        "limitations": [
+          "ACL publication identity is the official URL/title binding; an internal revision stamp was not found."
+        ],
+        "scientific_rationale": "The preferred ACL publication itself constructs normal external-text and hidden-instruction positive detector inputs, uses final-input/preset-reply features for binary classification, and explicitly identifies original English evaluation plus translated extensions. Its own BIPIA screening precedes protected target tests. No preprint-to-ACL equivalence is assumed."
+      },
+      "before_sha256": "dbfe29770198316d3277393963ef65d11f82d2bc0719e5db6cf2fd21f4e7e0ee",
+      "reason": "Exact ACL methods/language close the cross-version gap in B's original acceptance.",
+      "review_id": "W0352"
+    },
+    {
+      "after_fields": {
+        "considered_method_evidence_ids": [
+          "SEM-03-SC03-W0339-F01",
+          "SEM-03-SC03-W0339-F02",
+          "SEM-03-SC03-W0339-F03",
+          "SEM-03-SC03-W0339-F04",
+          "A05-SRC03-W0339-M01"
+        ],
+        "limitations": [
+          "Stated English evaluation scope is not a row-level language audit.",
+          "Current publisher PDF header is not independent proof that these exact bytes were public by cutoff; captured Last-Modified is after cutoff."
+        ],
+        "scientific_rationale": "The separately checked publisher PDF directly states a single-string binary detector before downstream use, no downstream output, held-out application and a single-turn English evaluation scope. This supports domain for the current publisher source independently of arXiv. Header publication/current-version dates predate the cutoff, but the captured file was modified after cutoff; the exact historical preferred VOR remains unresolved."
+      },
+      "before_sha256": "376d7f4dbdafd5a3efb8936c38836870a23ab6b4d4f7f8154ebce5b22d5dd5b2",
+      "reason": "New publisher methods do not authenticate cutoff-time availability; preserve the version hold.",
+      "review_id": "W0339"
+    },
+    {
+      "after_fields": {
+        "criteria": {
+          "before_target_answer": "MET",
+          "binary_evaluation": "MET",
+          "english_evaluation": "UNCLEAR",
+          "input_injection_task": "UNCLEAR"
+        },
+        "limitations": [
+          "Exact original injection-label/binary evaluation linkage requires additional method evidence; no whole-work absence is inferred."
+        ],
+        "scientific_rationale": "Thresholded query-activation acceptance against legitimate anchors establishes binary input screening in the attack setting. Named QA corpora alone do not establish evaluated English language. Critical pass: Anchor-based query acceptance alone does not establish injection-presence rather than unauthorized-access semantics."
+      },
+      "before_sha256": "6529d5963a06036b22188a667b05abeb9af32fe3c3f9a42410315a0d4fca5ea6",
+      "reason": "Anchor-based query acceptance alone does not establish injection-presence rather than unauthorized-access semantics.",
+      "review_id": "W0039"
+    },
+    {
+      "after_fields": {
+        "criteria": {
+          "before_target_answer": "MET",
+          "binary_evaluation": "UNCLEAR",
+          "english_evaluation": "MET",
+          "input_injection_task": "MET"
+        },
+        "limitations": [
+          "Exact original injection-label/binary evaluation linkage requires additional method evidence; no whole-work absence is inferred."
+        ],
+        "scientific_rationale": "Although AlignmentCheck examines assistant traces, the separately evaluated PromptGuard baseline classifies user/tool inputs for injection and uses an English dataset. That baseline qualifies without relying on protected output. Critical pass: PromptGuard naming and general classification do not establish the exact binary reduction/evaluation convention in this source; do not infer it from familiarity with the model."
+      },
+      "before_sha256": "374b4b1e5ce53d13b17f8b2d6fd0b43f4055980eb654713579b8677a14f5501c",
+      "reason": "PromptGuard naming and general classification do not establish the exact binary reduction/evaluation convention in this source; do not infer it from familiarity with the model.",
+      "review_id": "W0045"
+    },
+    {
+      "after_fields": {
+        "criteria": {
+          "before_target_answer": "MET",
+          "binary_evaluation": "UNCLEAR",
+          "english_evaluation": "UNCLEAR",
+          "input_injection_task": "MET"
+        },
+        "limitations": [
+          "Exact original injection-label/binary evaluation linkage requires additional method evidence; no whole-work absence is inferred."
+        ],
+        "scientific_rationale": "Binary prompt classifier training explicitly mixes SPML injection examples with jailbreak/benign records. Input-side procedure is computable before target output. English and separate held-out injection evaluation linkage need clarification; training composition alone is limited. Critical pass: Injection examples in training do not by themselves establish a separate qualifying held-out injection classification evaluation."
+      },
+      "before_sha256": "9b8d924740ce70b3f45a852afd3c4b96e011bcc8c0301a8732a564a3a70fb2ac",
+      "reason": "Injection examples in training do not by themselves establish a separate qualifying held-out injection classification evaluation.",
+      "review_id": "W0052"
+    },
+    {
+      "after_fields": {
+        "criteria": {
+          "before_target_answer": "UNCLEAR",
+          "binary_evaluation": "NOT_MET",
+          "english_evaluation": "UNCLEAR",
+          "input_injection_task": "UNCLEAR"
+        }
+      },
+      "before_sha256": "5250735db3bb483cc9f93776cc08a3d86def47fd2cd9c3fd0e0e5ae7d9c9c59e",
+      "reason": "Whole-work nonempirical ground establishes no original binary detector evaluation; do not mislabel unassessed language/timing as NOT_MET.",
+      "review_id": "W0127"
+    },
+    {
+      "after_fields": {
+        "criteria": {
+          "before_target_answer": "UNCLEAR",
+          "binary_evaluation": "NOT_MET",
+          "english_evaluation": "UNCLEAR",
+          "input_injection_task": "UNCLEAR"
+        }
+      },
+      "before_sha256": "94cc51c4fa5f3029b04b8b7256f55acda87f53e2c9d008f8eba9bbc2e7ca5553",
+      "reason": "Whole-work nonempirical ground establishes no original binary detector evaluation; do not mislabel unassessed language/timing as NOT_MET.",
+      "review_id": "W0164"
+    },
+    {
+      "after_fields": {
+        "criteria": {
+          "before_target_answer": "UNCLEAR",
+          "binary_evaluation": "NOT_MET",
+          "english_evaluation": "UNCLEAR",
+          "input_injection_task": "UNCLEAR"
+        }
+      },
+      "before_sha256": "75164e9599726593bd1764333747ed96b2f5587bbe54c5c9a2abdd8eaa0a57d6",
+      "reason": "Whole-work nonempirical ground establishes no original binary detector evaluation; do not mislabel unassessed language/timing as NOT_MET.",
+      "review_id": "W0369"
+    }
+  ],
+  "reviewed_utc": "2026-10-23T19:21:47.982602+00:00",
+  "role": "REVIEWER_INFORMED_CUSTODIAN_NOT_FRESH_INDEPENDENT",
+  "sampling_authorized": false,
+  "source_git_commit": "8811486b5da74f6a1cbffdcb4562060d042a1566"
+}

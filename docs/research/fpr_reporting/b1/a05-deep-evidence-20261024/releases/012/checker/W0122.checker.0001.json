@@ -1,0 +1,528 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0122",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-26T05:48:47.452704+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0122.provider.0001.json",
+  "provider_packet_sha256": "fa03819c77a44b47ecdae2b3051a096aa505dbabdb9fae13a9192afa449b17e5",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2601.07835v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\e0c9b313d1fb09cfe39fdc396215cd9c07ad10770acd9e7cb3b7f8cf77d3184b",
+    "raw_sha256": "e0c9b313d1fb09cfe39fdc396215cd9c07ad10770acd9e7cb3b7f8cf77d3184b",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0165.json",
+    "acquisition_receipt_sha256": "06381ed4bce99eac165859d801484a678c51d89997196a013deb603727875ce2",
+    "captured_version_id": "arxiv:2601.07835v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        67,
+        95
+      ],
+      [
+        108,
+        153
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actual69-95 defines security constitutional response/principle checks and red-team adaptation;109-133 defines unsafe-response unlearning, artifact/injection construction and critique/preference training. Main137-147 distinguishes response-task evaluation from an input-perplexity baseline. False retains uninspected attack taxonomy, full objective/ablation details and unspecified filter implementation/language. Local positive method facts remain bounded to the actual paragraphs read; no complete detector absence or universal task-label equivalence follows.",
+    "locator_sha256": "7ba8217531da3b1a9d8afdc2e330c972e037ac7c6daf9a3555a9fb70d48ef1ce",
+    "locators": [
+      {
+        "n": 67,
+        "kind": "heading",
+        "id": "S4",
+        "sha256": "2cf13e4d941f0968ca0a37e404e3cc2445c5eaf24716edbb19e4c82b8012218a"
+      },
+      {
+        "n": 68,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "sha256": "1f75c7fa4c438e2848d70c2dcd7901dc19729e45a0d219036e9384b3318c2b01"
+      },
+      {
+        "n": 69,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "sha256": "af2c08a1bd0c89a70eae5111b096e9fcd258ff83014ec2b5d1fdf99f7753241e"
+      },
+      {
+        "n": 70,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "sha256": "661c97fde4a9dc500ba16fee5e42b1ab258ef8c490ed426e56b8271c1d1b265b"
+      },
+      {
+        "n": 71,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "sha256": "0545638a5511fdb0a8f1ff76007b45e18e8d9905e92acd1f2c08a4cb3c6b063a"
+      },
+      {
+        "n": 72,
+        "kind": "heading",
+        "id": "S4.SS2.SSS1",
+        "sha256": "08c801624ac88ac612b57dfb55fe20f197d1a637d3e96c2ad888074f95f13785"
+      },
+      {
+        "n": 73,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS1.p1.1",
+        "sha256": "3eb2fafc0f28320930d81f1faa19ba1f0200b1dcc37451ad6448a89987d08ddb"
+      },
+      {
+        "n": 74,
+        "kind": "paragraph",
+        "id": "S4.I1.i1.p1.1",
+        "sha256": "d4cd007f296adea3f23b654b3d5415e84e8c712f06d4ca0c677f37f25f914f82"
+      },
+      {
+        "n": 75,
+        "kind": "paragraph",
+        "id": "S4.I1.i2.p1.1",
+        "sha256": "9e3d05e03618d46df8d6774f9499c1174140eda39521c3bceb6ea370495b0e39"
+      },
+      {
+        "n": 76,
+        "kind": "paragraph",
+        "id": "S4.I1.i3.p1.1",
+        "sha256": "b810b2a9833118029c044cec3f866c0fc7e674bc91fd14e3046fe5f589f8a8c5"
+      },
+      {
+        "n": 77,
+        "kind": "paragraph",
+        "id": "S4.I1.i4.p1.1",
+        "sha256": "a760d50e4676e1c94449323c2164f9bec96df5f836f81719670c8a308338a71b"
+      },
+      {
+        "n": 78,
+        "kind": "paragraph",
+        "id": "S4.I1.i5.p1.1",
+        "sha256": "b64a914a6b20d00a29e9cce65993b82c2b9eb4f7b9aa5d74fd1b78b48321502e"
+      },
+      {
+        "n": 79,
+        "kind": "heading",
+        "id": "S4.SS2.SSS2",
+        "sha256": "bd6fb394f4767faa339cc45e2088c1246973c71619ea8a67f9c255db54f1e32d"
+      },
+      {
+        "n": 80,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS2.p1.1",
+        "sha256": "051f25d1d1779baa38a0ec9363e7e2e0eedf0878a96954aff04c4c42a6218fca"
+      },
+      {
+        "n": 81,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS2.p2",
+        "sha256": "e0c30aefe8b034fb3d49d42a640a8215e73d032e3a4a998ed27434afe056d0fd"
+      },
+      {
+        "n": 82,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS2.p3.1",
+        "sha256": "e01fa1906b8134e6f320b1332f63a3bc8472dd8c64e1c8a74a7e12333b24a052"
+      },
+      {
+        "n": 83,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS2.p4",
+        "sha256": "7e440ae3978c61d91e455ba3df6d7a73eaab96254618db3daff0557b304b9722"
+      },
+      {
+        "n": 84,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS2.p5.1",
+        "sha256": "b21b8350ea2ec2ac8e7084e0add279e238e6d235c0a687f2f32593ddf6ae5ee4"
+      },
+      {
+        "n": 85,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "sha256": "3a2bea0ed6cab64cb9a716ddc45a670db82b004e7703bff1fa57ccc3dab595fb"
+      },
+      {
+        "n": 86,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "sha256": "ac7ec1ddc87faa13f2ccdeb557ed91b0be2091e475ae8067cf2e1ddf4f437e01"
+      },
+      {
+        "n": 87,
+        "kind": "heading",
+        "id": "S4.SS3.SSS1",
+        "sha256": "0b328b71fcf6a45a65be97efbc1f22f13d4e5bc14a17798fe6326a075ff59031"
+      },
+      {
+        "n": 88,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS1.p1.1",
+        "sha256": "4ce88c409a286874d5c3a88acc6d0423b85fe97d9d90f4a0568d448457f3f23f"
+      },
+      {
+        "n": 89,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS1.p2",
+        "sha256": "d40a7c7ea35ab6af77865da051c920ca9e8429c6c29d1c3b0ef7e199132c5aaf"
+      },
+      {
+        "n": 90,
+        "kind": "heading",
+        "id": "S4.SS3.SSS2",
+        "sha256": "075d105395b62eae16a8e653731ef3f61ac28cf68c7d1d52704ac2c29e6a0fae"
+      },
+      {
+        "n": 91,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS2.p1.1",
+        "sha256": "60ff451dad2b73259a579338b320596405368cfaa4b19885d306109fcd85a4c5"
+      },
+      {
+        "n": 92,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS2.p2",
+        "sha256": "c51923ccbe0505293b8f9e420b28d548900b2336ca8b1803bb7475bd1408a361"
+      },
+      {
+        "n": 93,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS2.p3.1",
+        "sha256": "ec332f088fef242d1a46ddd5f54b1e6147ff4df876da68254d20176a12c17750"
+      },
+      {
+        "n": 94,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS2.p4",
+        "sha256": "8e3ee7968e3657aa4cd3f2cb0b636812f7e4a9135cefd28d155e379541b64bb3"
+      },
+      {
+        "n": 95,
+        "kind": "paragraph",
+        "id": "S4.SS3.SSS2.p5.1",
+        "sha256": "beb288c98fb9f7220b4c132bd7936ad454486fa5439e66adcb7f4eb1d43ca9df"
+      },
+      {
+        "n": 108,
+        "kind": "heading",
+        "id": "S4.SS4.SSS3",
+        "sha256": "11c82983e28d563ec2d7e2479b59952f00da53b12d3ca2eb06c25353bd292006"
+      },
+      {
+        "n": 109,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS3.p1.1",
+        "sha256": "88370ecd48b66b0fde4c6b14be2e085efb05c66ba57f7c49ba1de48b7ee0a8ae"
+      },
+      {
+        "n": 110,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS3.p2",
+        "sha256": "c7f2123f10bfc1f974cd66926b5496af1ee93d824992d9e516a0546df21db603"
+      },
+      {
+        "n": 111,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS3.p3.1",
+        "sha256": "033a79ad1e6d603735b41f4235b2739637952656d27330270a16991f885f3082"
+      },
+      {
+        "n": 112,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS3.p4",
+        "sha256": "669c248653fa40862db494b3631c4448872bcc86c6d06d691ab29231bd6139e3"
+      },
+      {
+        "n": 113,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS3.p5.1",
+        "sha256": "1ce54f3e17c5009040b2a5092945e47d988bdef9f53d9e651c5accb84d8f20ab"
+      },
+      {
+        "n": 114,
+        "kind": "heading",
+        "id": "S5",
+        "sha256": "d60e4624abbffdd222b27de17621ee208e53474fd894c4dbb3a491a74e566deb"
+      },
+      {
+        "n": 115,
+        "kind": "heading",
+        "id": "S5.SS1",
+        "sha256": "65bcea263b2a8c8951e964a8abf20046810d5f660a173b56ac2593b1cada9e4c"
+      },
+      {
+        "n": 116,
+        "kind": "heading",
+        "id": "S5.SS1.SSS1",
+        "sha256": "f2688405e4dbe11a9d9441382789ecdc3828437c513e7ca6083eea6e342c9ddc"
+      },
+      {
+        "n": 117,
+        "kind": "paragraph",
+        "id": "S5.SS1.SSS1.p1.1",
+        "sha256": "0e6610ff439999d915b2a404441d161fc58f86e4dbd3731250f7f164ed6429a5"
+      },
+      {
+        "n": 118,
+        "kind": "heading",
+        "id": "S5.SS1.SSS2",
+        "sha256": "ab17b9b93fe586b375d5189817918dc019ed97c668c3b24a6bfae2039b964b9d"
+      },
+      {
+        "n": 119,
+        "kind": "paragraph",
+        "id": "S5.SS1.SSS2.p1.1",
+        "sha256": "b0080e6171eab587e348cae2c446b07b3ca9d08d9c62c5b9230a17762a9af445"
+      },
+      {
+        "n": 120,
+        "kind": "paragraph",
+        "id": "S5.SS1.SSS2.p2.1",
+        "sha256": "435b9fa8a1104dcb75bead4338386d3f168416822cefa63b7e649645284fa65a"
+      },
+      {
+        "n": 121,
+        "kind": "heading",
+        "id": "S5.SS1.SSS3",
+        "sha256": "2dd56872ec1d8aaf2df26c2a68d575c34bfd19e704d1caf994474866acb5fd94"
+      },
+      {
+        "n": 122,
+        "kind": "paragraph",
+        "id": "S5.SS1.SSS3.p1.1",
+        "sha256": "829ee903cbd890defa83a6469064273c004fecbdb3acfafcc3219e90bc1fe5d0"
+      },
+      {
+        "n": 123,
+        "kind": "paragraph",
+        "id": "S5.I1.i1.p1.1",
+        "sha256": "0bb3aecb31407a30f9c55fcec0fab70c602c9f46bce33624bc5705d0c30794fa"
+      },
+      {
+        "n": 124,
+        "kind": "paragraph",
+        "id": "S5.I1.i2.p1.1",
+        "sha256": "784fa9a1464143376e1dd76bc8605a9d8bd0578d9eab6f42e7b1750db129cc97"
+      },
+      {
+        "n": 125,
+        "kind": "paragraph",
+        "id": "S5.I1.i3.p1.1",
+        "sha256": "792d70e17e082fdf8a73656577a335b92abe75dc32bfd3d45de270797e56d499"
+      },
+      {
+        "n": 126,
+        "kind": "paragraph",
+        "id": "S5.I1.i4.p1.1",
+        "sha256": "dd542f9dd6af220e211872ccb79d0ea470b3f94603931f95b1ab0ed8f5f910b6"
+      },
+      {
+        "n": 127,
+        "kind": "paragraph",
+        "id": "S5.I1.i5.p1.1",
+        "sha256": "56b32ee3853eb6e89011382392881cdfd66bbae7280b6f9cc4ed9506ee0ca1dd"
+      },
+      {
+        "n": 128,
+        "kind": "heading",
+        "id": "S5.SS2",
+        "sha256": "bfb7d94fe165eb56ac5fce0a9b6cf05687bd616b333fd0e463209bb1a2333c46"
+      },
+      {
+        "n": 129,
+        "kind": "paragraph",
+        "id": "S5.SS2.p1.1",
+        "sha256": "405c96ae5107a18178356cfc4e37cf0f13957f7d0ce134cbb935e7705c24604d"
+      },
+      {
+        "n": 130,
+        "kind": "paragraph",
+        "id": "S5.SS2.p2.1",
+        "sha256": "5dd783f1adb2f237ad1f3dd0eecedee6d2f1c9bb536504f9b6340b1146f0db2e"
+      },
+      {
+        "n": 131,
+        "kind": "paragraph",
+        "id": "S5.SS2.p3.1",
+        "sha256": "6151acca983109a16e5d2c8578d28e890bc9ac71b3fea62485858ee609aea1f2"
+      },
+      {
+        "n": 132,
+        "kind": "paragraph",
+        "id": "S5.SS2.p4.1",
+        "sha256": "bdd05232408be94aee20a98859a686fd53f4ca662f8258d37daac30c9cf6c78e"
+      },
+      {
+        "n": 133,
+        "kind": "paragraph",
+        "id": "S5.SS2.p5.1",
+        "sha256": "1d2c324509ae1e187812c5ca50eacc35238f655f142d656ceabf5b5dfa698e10"
+      },
+      {
+        "n": 134,
+        "kind": "heading",
+        "id": "S5.SS3",
+        "sha256": "bddd4dc476ff9387675232cde4aca7793aaf53ce92369c1deeef3799568fc2f1"
+      },
+      {
+        "n": 135,
+        "kind": "heading",
+        "id": "S5.SS3.SSS1",
+        "sha256": "fbdcaf0436b38d9404bd5c044849058750b0f42e4da4cfee8a17b9c474e0ad60"
+      },
+      {
+        "n": 136,
+        "kind": "paragraph",
+        "id": "S5.SS3.SSS1.p1.1",
+        "sha256": "bca34d2eee8540e42b74a9a1fe993aa4152d496f02b548cd4e045d8c95d08931"
+      },
+      {
+        "n": 137,
+        "kind": "paragraph",
+        "id": "S5.SS3.SSS1.p2.1",
+        "sha256": "5200628b24f4e66da219730da19b112451c3039b9aa34647683dc64b9fd35eb7"
+      },
+      {
+        "n": 138,
+        "kind": "paragraph",
+        "id": "S5.SS3.SSS1.p3.1",
+        "sha256": "b537e18c7d85cbacba4e4468c49bacec585c4b6f67f29e97f24947e787a98592"
+      },
+      {
+        "n": 139,
+        "kind": "paragraph",
+        "id": "S5.SS3.SSS1.p4.1",
+        "sha256": "11b091ff1e05134e329aaf61c6414747d0c2f42a69f08cbd1ed17f456a4b0b5d"
+      },
+      {
+        "n": 140,
+        "kind": "paragraph",
+        "id": "S5.SS3.SSS1.p5.1",
+        "sha256": "e9e34791692ea568e3047d7c044f76ffa1741137759aad7e623acb2b1d913414"
+      },
+      {
+        "n": 141,
+        "kind": "heading",
+        "id": "S5.SS3.SSS2",
+        "sha256": "50165ca0e40e7a56727bb036c6f44f8c3b1961fb32c1cf6c05a4e8fe0fec5eb8"
+      },
+      {
+        "n": 142,
+        "kind": "paragraph",
+        "id": "S5.SS3.SSS2.p1.1",
+        "sha256": "3709094d6cde3e2c2243e257aa49ef4b8318cd1388ecec53bd627ad12367ce31"
+      },
+      {
+        "n": 143,
+        "kind": "paragraph",
+        "id": "S5.I2.i1.p1.1",
+        "sha256": "2a47b702f1383eafe9943bf435426dc61e2966b27ecc413db3158712aa6ab68e"
+      },
+      {
+        "n": 144,
+        "kind": "paragraph",
+        "id": "S5.I2.i2.p1.1",
+        "sha256": "2fe0785d5f09c0a20cac93893925dd13adc25c67c770a6b32608b33b8f8d81c3"
+      },
+      {
+        "n": 145,
+        "kind": "paragraph",
+        "id": "S5.I2.i3.p1.1",
+        "sha256": "2377396acc83c9d9833f70eb4b88f6d5d2dac348a43d207df54136676be1f4c7"
+      },
+      {
+        "n": 146,
+        "kind": "paragraph",
+        "id": "S5.I2.i4.p1.1",
+        "sha256": "47afd4d21d087031bf22994d2850771c6415958b1313adf6a2a86beb198bc7c8"
+      },
+      {
+        "n": 147,
+        "kind": "paragraph",
+        "id": "S5.I2.i5.p1.1",
+        "sha256": "9d657e696321113333cfdb69fcb95805d9698e3a12ab39b4f124bbce0b8c4243"
+      },
+      {
+        "n": 148,
+        "kind": "heading",
+        "id": "S5.SS3.SSS3",
+        "sha256": "e72d93ba54268173f6989ab7279c58b5e7774320157b1701240a17d7217e6fbf"
+      },
+      {
+        "n": 149,
+        "kind": "paragraph",
+        "id": "S5.SS3.SSS3.p1.1",
+        "sha256": "63aa6f7cebffdf1e9f569750c4339fc0f21ca6e71279226dca284e16bc5f05b3"
+      },
+      {
+        "n": 150,
+        "kind": "paragraph",
+        "id": "S5.I3.i1.p1.1",
+        "sha256": "faf4c0782074c9bce9b7133a367840bbfaefd33351a88b65268559bf2ddfff0b"
+      },
+      {
+        "n": 151,
+        "kind": "paragraph",
+        "id": "S5.I3.i2.p1.1",
+        "sha256": "c150abf2e8fcec5035ba9d3927638682d811b0566ea18174e95514f957a66764"
+      },
+      {
+        "n": 152,
+        "kind": "paragraph",
+        "id": "S5.I3.i3.p1.1",
+        "sha256": "1e3a0cf63f9a8c245f7565819c83afad9c840e712011c90fd1b7972d9dc2902e"
+      },
+      {
+        "n": 153,
+        "kind": "paragraph",
+        "id": "S5.I3.i4.p1.1",
+        "sha256": "b45da984b18b8110c28f0e1d0535514cccbf546bb0116ab5be998dc6761de010"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual69-95 defines security constitutional response/principle checks and red-team adaptation;109-133 defines unsafe-response unlearning, artifact/injection construction and critique/preference training. Main137-147 distinguishes response-task evaluation from an input-perplexity baseline.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual74-83 specifies constitutional response constraints and candidate-response embedding comparison;109-133 specifies training and adaptation stages. Actual117-119/137-140 defines clean/injected security artifacts and response behavior, with log/phishing/malware task evaluations. These require generated responses or training pairs, rather than merely an input maliciousness verdict.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual145 names Input Filtering as perplexity-based adversarial detection. Only the stated input-filter unit/dependency is verified; threshold, underlying model and detailed baseline implementation remain unresolved.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False retains uninspected attack taxonomy, full objective/ablation details and unspecified filter implementation/language. Local positive method facts remain bounded to the actual paragraphs read; no complete detector absence or universal task-label equivalence follows.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

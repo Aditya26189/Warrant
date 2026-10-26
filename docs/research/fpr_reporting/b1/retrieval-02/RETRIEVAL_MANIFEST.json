@@ -1,0 +1,46 @@
+{
+  "acl_raw_bytes_preserved": 42574037,
+  "arxiv_records_preserved": 395,
+  "bibliographic_cutoff": "2026-10-17T00:00:00Z",
+  "blocker": "SOURCE_CAP_BLOCKED: openreview-title total 8798 exceeds 500",
+  "blocker_type": "RuntimeError",
+  "capture_script_sha256": "3a2f16a68bdcb08079d0a843dde2e12a18261f780473c86e4df5e1342189cb07",
+  "continuation_reason": "LOCAL_STORAGE_PACKAGING_RESOLVED_NO_PROTOCOL_CHANGE",
+  "continuation_script_sha256": "15dc04c4dd2ebe1032a6653404dff1346e3d7e25ed49b1054af8fbaf7597d234",
+  "finished_utc": "2026-10-17T14:32:30.943631+00:00",
+  "outcome_extraction": "NOT_RUN",
+  "per_query_cap": 500,
+  "prior_manifest_sha256": "5ec45040c7bbf0a7f5cf7152e01b072050d2283cd6e7e53b407723d793e695e7",
+  "prior_queries_repeated": false,
+  "protocol_lock_sha256": "7a3c73d465721fb2ea177c53bdc936e614ec5b504c6fb1fc0ef65ff7acc86f42",
+  "python": "3.12.10",
+  "requests": [
+    {
+      "body_bytes": 288882,
+      "body_file": "01-openreview-title-0.body",
+      "body_sha256": "9d0599858f02c1ee58eaaa62d95a774ad6e76e3bf001e2f16fb1ea558b391599",
+      "finished_utc": "2026-10-17T14:32:30.935634+00:00",
+      "http_status": 200,
+      "offset": 0,
+      "requested_url": "https://api2.openreview.net/notes/search?term=prompt%20injection&type=terms&content=title&source=forum&limit=100&offset=0",
+      "response_headers": {
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 17 Oct 2026 14:32:28 GMT",
+        "etag": "W/\"46872-p3xQDDF09Lx1yzTBspmO3v5xVX0\""
+      },
+      "response_url": "https://api2.openreview.net/notes/search?term=prompt%20injection&type=terms&content=title&source=forum&limit=100&offset=0",
+      "returned_records": 100,
+      "source": "openreview-title",
+      "source_total": 8798,
+      "started_utc": "2026-10-17T14:32:29.539812+00:00"
+    }
+  ],
+  "screening": "NOT_RUN",
+  "selection": "NOT_RUN",
+  "source_git_commit": "1462499a5ae0987610bf10ec1583bc0514b96158",
+  "source_tree_clean_at_start": true,
+  "started_utc": "2026-10-17T14:32:29.477803+00:00",
+  "status": "FRAME_BLOCKED",
+  "storage_manifest_sha256": "7d710368f1327a18ba1208f85676277e9737e39aef02b5f9799ec0189871169b",
+  "unique_screening_cap": 500
+}

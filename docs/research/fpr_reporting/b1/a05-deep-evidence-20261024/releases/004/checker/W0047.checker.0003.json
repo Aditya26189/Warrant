@@ -1,0 +1,632 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0047",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:55:38.542605+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0047.provider.0002.json",
+  "provider_packet_sha256": "f5db20efe7638456662af9e163544ac7f99ed2a411ad3495bbfe616066690447",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2505.09974v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\58b5e898383f6fc1198d35ea6bc3c80e3edbbf5915d71b5bf4ecbbafba854c40",
+    "raw_sha256": "58b5e898383f6fc1198d35ea6bc3c80e3edbbf5915d71b5bf4ecbbafba854c40",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0080.json",
+    "acquisition_receipt_sha256": "2bc8b7ebe8f9495018acedca467f729bc74200699c79d34f1d4c78c3b19b3057",
+    "captured_version_id": "arxiv:2505.09974v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        28,
+        58
+      ],
+      [
+        102,
+        150
+      ]
+    ],
+    "coverage_disposition": "VERIFIED_BODY_METHOD_INVENTORY_LANGUAGE_UNRESOLVED",
+    "semantic_rationale": "Actual Appendix A category definitions, B software/hardware/SFT settings, C probe roster and D link checked in addition to main methods. Linked external examples body is not used or treated as inspected; no new method family is introduced by that link alone.",
+    "locator_sha256": "274a17ce3c900b59192535c0d4b8b3e4f74afd647da6684a5c26a80ccbd0f608",
+    "locators": [
+      {
+        "n": 28,
+        "kind": "heading",
+        "id": "S3",
+        "section": "3 Threat Model",
+        "sha256": "4eca7daba58173b8912f5ae136bf30af61491852e7c4230c06958aaba8ff58b5"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S3.p1.1",
+        "section": "3 Threat Model",
+        "sha256": "9aa8f8f5400ff6e755a8b26a8496c425a7eef3aa177cf48980a3d7767e494e94"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S3.p2.1",
+        "section": "3 Threat Model",
+        "sha256": "b24392cc7ff87e9c0b90081ecb0292fc9cc8adb0e7a4872eb4f18c9bca0b1e22"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S3.p3.1",
+        "section": "3 Threat Model",
+        "sha256": "e4b22eb0730126361a5976c4433d0f25283b20cb5f4321c66a8f0783a247d457"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S3.p4.1",
+        "section": "3 Threat Model",
+        "sha256": "c8838e6d6e1dc17559594781fd7c372997783c2a8a464c884d868f35799c5354"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S3.p5.1",
+        "section": "3 Threat Model",
+        "sha256": "d2d29d6b8195996c627a31cef919a31950751ea0358c2b6a0d1e27dd6716fea7"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S3.p6.1",
+        "section": "3 Threat Model",
+        "sha256": "3d6c9b8bf8de4a9d9b1c827b4dfd3b87bf754a9f1fe6e4109797e85c23c09a87"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S3.I1.i1.p1.1",
+        "section": "3 Threat Model",
+        "sha256": "23fd4a03c61755fa21f0e06cd47a367a2880e3bb2fb1e47c658723997bd7a4ad"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S3.I1.i2.p1.1",
+        "section": "3 Threat Model",
+        "sha256": "d45de1e625b69871a10229ff49ca32566683814270e6829e6633b1774877ec16"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S3.p8.1",
+        "section": "3 Threat Model",
+        "sha256": "b72f50dde770edd742081fb4c690a7ccfb398aa53df4ce860845b1b4ec3337bf"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S3.p9.1",
+        "section": "3 Threat Model",
+        "sha256": "873a083b9362e6c12e3b3adb3fbdf9559b79a3391f46202e8ce614b7059fe964"
+      },
+      {
+        "n": 39,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Methodology",
+        "sha256": "0ef108ffa7d717549624a93979c729b7b346113926aa7a69078c6f758eb2f1c2"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "section": "4 Methodology",
+        "sha256": "4403ec759522a36aa02a94a1244589516202cb4057a29010c640b6cb77d34b5f"
+      },
+      {
+        "n": 41,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Model Selection and Fine-tuning",
+        "sha256": "0e727fcc9f6e5b3631c7ed32e458f86c9625e721d20d2885575508748d607fd2"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1 Model Selection and Fine-tuning",
+        "sha256": "5a1df50ac8dfda48311af5e0e713ca42b85c8a2260627ba09673a02727df6064"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "section": "4.1 Model Selection and Fine-tuning",
+        "sha256": "9d37b4c73b41d2f84df8f6420da19797cf06d98a0f268d90db3a56fd201fa601"
+      },
+      {
+        "n": 44,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 Safety Analysis",
+        "sha256": "16defb65d568f2056f3597a31673ac661a96b1b20fa37134e14ccd2795ca2239"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "section": "4.2 Safety Analysis",
+        "sha256": "7b3ef3d866b891ba4a513262442b7407a55850dfad2ea0e9f3dbf9ca843bfa81"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "section": "4.2 Safety Analysis",
+        "sha256": "b533e63df5c2d01086b7f2bc989fc1bdb240b7692c7db40d91eff35f3e9385d9"
+      },
+      {
+        "n": 47,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "section": "4.3 Safety Alignment",
+        "sha256": "c2a0dcc9b7e1617a799d626a09ba82f27934a5a8c9798f3291ec5dba5e991341"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "section": "4.3 Safety Alignment",
+        "sha256": "74535e7efa2085de9cc70d6f5c22fba4815231ae7b45c41833adff324fd30487"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S4.SS3.p2.1",
+        "section": "4.3 Safety Alignment",
+        "sha256": "730dbc15f705a23022bd5c0f52a5c8e1e697360f90b99713dceefd44a2f2eec1"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S4.I1.i1.p1.1",
+        "section": "4.3 Safety Alignment",
+        "sha256": "5b3b5187587bf3998db2676c052db81ac2ae407187406880400495e742d14094"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S4.I1.i2.p1.1",
+        "section": "4.3 Safety Alignment",
+        "sha256": "4218502e7c3bb9bbaf60af9d412f41fd1832a650f25263d14d23a6306602d184"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S4.I1.i3.p1.1",
+        "section": "4.3 Safety Alignment",
+        "sha256": "8f4eaa6451d7c46fddb136d0b44c1efb5b39d77229b7772146f3a58e416f6adc"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S4.SS3.p3.1",
+        "section": "4.3 Safety Alignment",
+        "sha256": "227e578314c3c16edec2eed8ac9500d3a9edff3537383e68e9858865894bcf5e"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S4.SS3.p4.1",
+        "section": "4.3 Safety Alignment",
+        "sha256": "885b2c6327dc5fb9eac9bc586d43acf9eeec894d56b7c3a310001cbe1b06c4d6"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S4.SS3.p5.1",
+        "section": "4.3 Safety Alignment",
+        "sha256": "17e6df25e577bf32a197c53d3839d1e0ed47332606945c622e94c998edbad4b1"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S4.SS3.p6.1",
+        "section": "4.3 Safety Alignment",
+        "sha256": "e97545ba6444ae4721e52f48982d05525c9fbcfbfb77cbcea0bf5bdcfd2e1f4c"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S4.SS3.p7.1",
+        "section": "4.3 Safety Alignment",
+        "sha256": "5559badc94b67800b7e164a55da98edb5c524e6ea6c30fddc818fcb36808ae76"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S4.SS3.p8.1",
+        "section": "4.3 Safety Alignment",
+        "sha256": "2377eb7aa8b22ab14447e17a4caabc69a75376a209bdc8c8f5b079bbb0778f78"
+      },
+      {
+        "n": 102,
+        "kind": "heading",
+        "id": "Pt0.A1",
+        "section": "Appendix 0.A OWASP Top 10 for LLM Applications",
+        "sha256": "8894a3499bb603222e45d4869c4051926dec5104dc812f32caec46b1524110f9"
+      },
+      {
+        "n": 103,
+        "kind": "paragraph",
+        "id": "Pt0.A1.p1.1",
+        "section": "Appendix 0.A OWASP Top 10 for LLM Applications",
+        "sha256": "3ca5518355da646ed1f1050b65c8dc8e1f21d93a3e6b7dea71a8e297a6f55e3f"
+      },
+      {
+        "n": 104,
+        "kind": "paragraph",
+        "id": "Pt0.A1.I1.i1.p1.1",
+        "section": "Appendix 0.A OWASP Top 10 for LLM Applications",
+        "sha256": "3c9d7db2098a4be0b180eb67363580d9e50a09cb1adec83efbc556af61723a8a"
+      },
+      {
+        "n": 105,
+        "kind": "paragraph",
+        "id": "Pt0.A1.I1.i2.p1.1",
+        "section": "Appendix 0.A OWASP Top 10 for LLM Applications",
+        "sha256": "e20bf186bae99f365db8b601b39649b8f736396f4c2ceed064f777f403347510"
+      },
+      {
+        "n": 106,
+        "kind": "paragraph",
+        "id": "Pt0.A1.I1.i3.p1.1",
+        "section": "Appendix 0.A OWASP Top 10 for LLM Applications",
+        "sha256": "6f7edfabf8aaa71f93c607ab1d61087a8a8babe4b7810168ab05deb229761629"
+      },
+      {
+        "n": 107,
+        "kind": "paragraph",
+        "id": "Pt0.A1.I1.i4.p1.1",
+        "section": "Appendix 0.A OWASP Top 10 for LLM Applications",
+        "sha256": "c1b442be42bc6bab68cb5e31f4041510be31cefe700e2d1143673a66948467e4"
+      },
+      {
+        "n": 108,
+        "kind": "paragraph",
+        "id": "Pt0.A1.I1.i5.p1.1",
+        "section": "Appendix 0.A OWASP Top 10 for LLM Applications",
+        "sha256": "38adaa46b470e1012ac92df0abf0acbaf7e795a4ad1636e2361847a2572228cd"
+      },
+      {
+        "n": 109,
+        "kind": "paragraph",
+        "id": "Pt0.A1.I1.i6.p1.1",
+        "section": "Appendix 0.A OWASP Top 10 for LLM Applications",
+        "sha256": "4e486374b243dccaadbc4b89e33277a143d8936c9b24988ca001c3205fde89cc"
+      },
+      {
+        "n": 110,
+        "kind": "paragraph",
+        "id": "Pt0.A1.I1.i7.p1.1",
+        "section": "Appendix 0.A OWASP Top 10 for LLM Applications",
+        "sha256": "80146f6afa5db726497053e26684dc1ad91e9403a028a14824875286e733112a"
+      },
+      {
+        "n": 111,
+        "kind": "paragraph",
+        "id": "Pt0.A1.I1.i8.p1.1",
+        "section": "Appendix 0.A OWASP Top 10 for LLM Applications",
+        "sha256": "a0f046941a6a0e9a03cab718290b0f1cd3c23c9bfe75eef7c93e09c5a1bc431c"
+      },
+      {
+        "n": 112,
+        "kind": "paragraph",
+        "id": "Pt0.A1.I1.i9.p1.1",
+        "section": "Appendix 0.A OWASP Top 10 for LLM Applications",
+        "sha256": "0451518a163634fdac6b0450098175df7548b4ad359ebd0b982e1f2e96787336"
+      },
+      {
+        "n": 113,
+        "kind": "paragraph",
+        "id": "Pt0.A1.I1.i10.p1.1",
+        "section": "Appendix 0.A OWASP Top 10 for LLM Applications",
+        "sha256": "6e524bab743dbcb0cdf839c5aa78b5055ce154862c325d6da523333eee14b379"
+      },
+      {
+        "n": 114,
+        "kind": "heading",
+        "id": "Pt0.A2",
+        "section": "Appendix 0.B Technical Setup and Implementation Details",
+        "sha256": "8d0da563e6c270764e9fd18e38c697fc7a7da8a0ea00074b9b5171066a3f6129"
+      },
+      {
+        "n": 115,
+        "kind": "heading",
+        "id": "Pt0.A2.SS1",
+        "section": "0.B.1 Hardware and Software Environment",
+        "sha256": "bdc31deb986da48340de64f5e511dae1b8054078fe6066447e6b9e9542c590bc"
+      },
+      {
+        "n": 116,
+        "kind": "paragraph",
+        "id": "Pt0.A2.SS1.p1.1",
+        "section": "0.B.1 Hardware and Software Environment",
+        "sha256": "2b478b8f332a9ef18ad8c74931ce45081d05f2148f20fdee60cc4dcb0ccd46cb"
+      },
+      {
+        "n": 117,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I1.i1.p1.1",
+        "section": "0.B.1 Hardware and Software Environment",
+        "sha256": "feb68cfdcb1de0e2d4ba5cc90aff9a35dc8017c1f757c6865d4e9bd3c1ce081d"
+      },
+      {
+        "n": 118,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I1.i2.p1.1",
+        "section": "0.B.1 Hardware and Software Environment",
+        "sha256": "6343a46d1521a4d456bbe29b3ed84db61e3868887188c54f9519c579cd7cb6ea"
+      },
+      {
+        "n": 119,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I1.i3.p1.1",
+        "section": "0.B.1 Hardware and Software Environment",
+        "sha256": "abc037483e6117dd52624ae14e76f30e45a32ca1eab5f78ffa3c9455511e0ed0"
+      },
+      {
+        "n": 120,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I1.i4.p1.1",
+        "section": "0.B.1 Hardware and Software Environment",
+        "sha256": "f2bac0428f576698c86def85248913cb75af0ef9750e112d85ca24f5844d3e0d"
+      },
+      {
+        "n": 121,
+        "kind": "heading",
+        "id": "Pt0.A2.SS2",
+        "section": "0.B.2 Model Selection Rationale",
+        "sha256": "7c528464d5fdc53061f782f9efcf61b45373a84f9556afd01c1407dca4dd1978"
+      },
+      {
+        "n": 122,
+        "kind": "paragraph",
+        "id": "Pt0.A2.SS2.p1.1",
+        "section": "0.B.2 Model Selection Rationale",
+        "sha256": "1c59d58d7f0f7ddcff22e8d1df23b1e8dde46fb3fb7cc2473ca43486e31da668"
+      },
+      {
+        "n": 123,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I2.i1.p1.1",
+        "section": "0.B.2 Model Selection Rationale",
+        "sha256": "de785617b0ca564ead9844c61dd2709fc8e2169cd61e151374b2c3663e604279"
+      },
+      {
+        "n": 124,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I2.i2.p1.1",
+        "section": "0.B.2 Model Selection Rationale",
+        "sha256": "d9625383247a66dd727e81727cc2706accac9919366f05b7ff1a5206a70d0bdc"
+      },
+      {
+        "n": 125,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I2.i3.p1.1",
+        "section": "0.B.2 Model Selection Rationale",
+        "sha256": "3d5a659c15d2ddaaa9d25b44bb22cd48b2b4f4f30e007f949a3c6ac4e2a8beb6"
+      },
+      {
+        "n": 126,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I2.i4.p1.1",
+        "section": "0.B.2 Model Selection Rationale",
+        "sha256": "c56d75a34035f25c6ffb1ee248e6e2a78c203a3774d9dc137ad557a29374a6ba"
+      },
+      {
+        "n": 127,
+        "kind": "paragraph",
+        "id": "Pt0.A2.SS2.p2.1",
+        "section": "0.B.2 Model Selection Rationale",
+        "sha256": "32d36d35622862956bd6ef0326fdd53a51a4e3b6f3da25f005b1feca52c9f22e"
+      },
+      {
+        "n": 128,
+        "kind": "heading",
+        "id": "Pt0.A2.SS3",
+        "section": "0.B.3 Fine-tuning Hyperparameters and Training Details",
+        "sha256": "981ff739de1683324dbf8fd51bd435825b712d2fc7f8932366ac159e7dd8bc0f"
+      },
+      {
+        "n": 129,
+        "kind": "paragraph",
+        "id": "Pt0.A2.SS3.p1.1",
+        "section": "0.B.3 Fine-tuning Hyperparameters and Training Details",
+        "sha256": "281bd80d5808edf0b98f119f7ad89934e12e15ca1e9b11a3c56d8ea730c08dca"
+      },
+      {
+        "n": 130,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I3.i1.p1.1",
+        "section": "0.B.3 Fine-tuning Hyperparameters and Training Details",
+        "sha256": "5cc960a4a22098338588d1c039e2fc70d821b340e2f4ebec7ee4edf5fe343aa9"
+      },
+      {
+        "n": 131,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I3.i2.p1.1",
+        "section": "0.B.3 Fine-tuning Hyperparameters and Training Details",
+        "sha256": "e43efe4383819717f66860259b2e8d0a9974a9f38773c9b02d0be72c6e0af9bb"
+      },
+      {
+        "n": 132,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I3.i3.p1.1",
+        "section": "0.B.3 Fine-tuning Hyperparameters and Training Details",
+        "sha256": "23244ab777f39b8d0d411ae6f7ac4a2fb43a8205113103e9084d1124ebb553bd"
+      },
+      {
+        "n": 133,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I3.i4.p1.1",
+        "section": "0.B.3 Fine-tuning Hyperparameters and Training Details",
+        "sha256": "de972be8e4fa0c22dc96bebbcdd0c8c084bd3e95122da6d0f14009ae9733d5c6"
+      },
+      {
+        "n": 134,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I3.i5.p1.1",
+        "section": "0.B.3 Fine-tuning Hyperparameters and Training Details",
+        "sha256": "3da1e8142ab5aa0522e8d4d4c97121930baceebc927e4ce51302f5b9e30c21ab"
+      },
+      {
+        "n": 135,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I3.i6.p1.1",
+        "section": "0.B.3 Fine-tuning Hyperparameters and Training Details",
+        "sha256": "8569bf37e819f264b6dd24eb360e701595647964c66e7640b9366799bf319c24"
+      },
+      {
+        "n": 136,
+        "kind": "paragraph",
+        "id": "Pt0.A2.I3.i7.p1.1",
+        "section": "0.B.3 Fine-tuning Hyperparameters and Training Details",
+        "sha256": "7dc481847997793bd4518a7c8d06a24ebfd8d8465645b335f28b8d5253fe1e17"
+      },
+      {
+        "n": 137,
+        "kind": "paragraph",
+        "id": "Pt0.A2.SS3.p3.1",
+        "section": "0.B.3 Fine-tuning Hyperparameters and Training Details",
+        "sha256": "a65114ddd4de725097f2ef746d54249c87f8d4d98ff633d60637600675bfac73"
+      },
+      {
+        "n": 138,
+        "kind": "heading",
+        "id": "Pt0.A3",
+        "section": "Appendix 0.C Safety Evaluation Framework Specifications",
+        "sha256": "981356d4d3e84d993441b391581a79574658e4df2916902f2f49ad94fb022e10"
+      },
+      {
+        "n": 139,
+        "kind": "heading",
+        "id": "Pt0.A3.SS1",
+        "section": "0.C.1 garak Probe Specifications",
+        "sha256": "fffa83891fa454efa2433c32fb83c3560aaafbb44854d5e083293a962d09e7ad"
+      },
+      {
+        "n": 140,
+        "kind": "paragraph",
+        "id": "Pt0.A3.SS1.p1.1",
+        "section": "0.C.1 garak Probe Specifications",
+        "sha256": "5694ca6ebbf394dfcd3ff659d77303384be55fc833958abaef396a26c84e3383"
+      },
+      {
+        "n": 141,
+        "kind": "paragraph",
+        "id": "Pt0.A3.I1.i1.p1.1",
+        "section": "0.C.1 garak Probe Specifications",
+        "sha256": "2f42e858abbb4141de77f3deed7aa44223278a6e88a7cab158ad2df6c7d3f00b"
+      },
+      {
+        "n": 142,
+        "kind": "paragraph",
+        "id": "Pt0.A3.I1.i2.p1.1",
+        "section": "0.C.1 garak Probe Specifications",
+        "sha256": "d9a1a6c9b07189b19d338d800c0daeab8ca3f66ab7eb8720ce92d4101970cfff"
+      },
+      {
+        "n": 143,
+        "kind": "paragraph",
+        "id": "Pt0.A3.I1.i3.p1.1",
+        "section": "0.C.1 garak Probe Specifications",
+        "sha256": "3391d647557fa3e6f2d6acddf83c2c0bf952c15c6fb309fafce81d637d9a3a79"
+      },
+      {
+        "n": 144,
+        "kind": "paragraph",
+        "id": "Pt0.A3.I1.i4.p1.1",
+        "section": "0.C.1 garak Probe Specifications",
+        "sha256": "5c5c005bb6c3fa41c61cba55354203037dd63d15041f93296f7796d4c6b901fc"
+      },
+      {
+        "n": 145,
+        "kind": "paragraph",
+        "id": "Pt0.A3.I1.i5.p1.1",
+        "section": "0.C.1 garak Probe Specifications",
+        "sha256": "47389d53abc90b2afab175af9c4724781091209e810070b8df30edd780933bf1"
+      },
+      {
+        "n": 146,
+        "kind": "paragraph",
+        "id": "Pt0.A3.I1.i6.p1.1",
+        "section": "0.C.1 garak Probe Specifications",
+        "sha256": "38c7c74b68715927ba569985bd523fe0401137e39fc4de5c1a466c54c8a09a95"
+      },
+      {
+        "n": 147,
+        "kind": "paragraph",
+        "id": "Pt0.A3.I1.i7.p1.1",
+        "section": "0.C.1 garak Probe Specifications",
+        "sha256": "a11da54b0fb0567b048d62167578ac84758316e0c54cf9fd680a27c9a14ebd44"
+      },
+      {
+        "n": 148,
+        "kind": "paragraph",
+        "id": "Pt0.A3.SS1.p3.1",
+        "section": "0.C.1 garak Probe Specifications",
+        "sha256": "60969f41a7710286cab2cef820cf153f108c68571c5f6efa92fcc6511304fa88"
+      },
+      {
+        "n": 149,
+        "kind": "heading",
+        "id": "Pt0.A4",
+        "section": "Appendix 0.D Example Prompts",
+        "sha256": "42e258de242349526a4ba176a3b8ea37707e75d170ed1a05f77747ef30e261c4"
+      },
+      {
+        "n": 150,
+        "kind": "paragraph",
+        "id": "Pt0.A4.p1.1",
+        "section": "Appendix 0.D Example Prompts",
+        "sha256": "393947f686b570220efb4fdf84a5f5b2ede7cadebd47e828047d433dac7cd112"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Complete main experiment design and Appendices A?D support base/original-data/safety-regulated fine-tunes, OWASP category descriptions, SFT implementation, probe-family inventory and external examples link.",
+      "restriction_rationale": "Bounded method/scope fact; no source performance, sample counts, qualitative outcomes, assurance or captions transferred."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All stated model-condition and garak probe families checked; category-specific failure aggregation consumes target output. Appendix C note of unsupported garak categories retained in source context; not all OWASP categories presumed evaluated.",
+      "restriction_rationale": "Bounded method/scope fact; no source performance, sample counts, qualitative outcomes, assurance or captions transferred."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All material declared method/setup/arm families now actually checked in main and method-bearing appendix scope. Withheld outcome values/derivations are not needed to establish named methods.",
+      "restriction_rationale": "Bounded method/scope fact; no source performance, sample counts, qualitative outcomes, assurance or captions transferred."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

@@ -1,0 +1,529 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0012",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:02:30.870633+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0012.provider.0002.json",
+  "provider_packet_sha256": "a45bded987bb133bd14fcce40005f2123136475c940c029a2657fd0692eccc87",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2408.03095v6",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\8109461f9dab3b98879e704f821409a5618296942f0dc0e6d894b25639f36ab3",
+    "raw_sha256": "8109461f9dab3b98879e704f821409a5618296942f0dc0e6d894b25639f36ab3",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0036.json",
+    "acquisition_receipt_sha256": "85552ecc81668a8d43ab211911f73dbb6b95aaaa4c0eb37d0be6040d16f3708b",
+    "captured_version_id": "arxiv:2408.03095v6",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        13,
+        59
+      ],
+      [
+        61,
+        76
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "VERIFIED_DECLARED_METHOD_INVENTORY_EXACT_IMAGE_WORDING_UNAVAILABLE",
+    "semantic_rationale": "Actual complete preprocessing, method, comparator and ablation contexts read. Exact figure wording is image-only in supplied HTML; main prose specifies all named original method conditions without requiring those image strings.",
+    "visual_check": null,
+    "locator_sha256": "12ba70b92676664bd6ac18147b95ba8980edbbf4a3d39fa42b2b98ad1ecb645e",
+    "locators": [
+      {
+        "index": 13,
+        "paragraph_id": "S2.SS2.p2.1",
+        "section_id": "S2.SS2",
+        "heading": "2.2. Motivation",
+        "text_sha256": "aaa4f5970a3fadda07ea35022efd44585500bcdcef599680b054cd582a0b2144"
+      },
+      {
+        "index": 14,
+        "paragraph_id": "S3.p1.1",
+        "section_id": "S3",
+        "heading": "3. Approach",
+        "text_sha256": "a5bd32953d3724b1d42ac2f52745234bff2330470cd54f367f4b22e4a0787291"
+      },
+      {
+        "index": 15,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1. Pre-processing",
+        "text_sha256": "774acb1f16b84af82e88a6af181cc9b4806d716eeb00035648495be29c3ce373"
+      },
+      {
+        "index": 16,
+        "paragraph_id": "S3.SS1.p3.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1. Pre-processing",
+        "text_sha256": "4a1b8ac0bb8d1b32d5d25d719c1f397aefeca5fe649b21e9dbe8786c3245a702"
+      },
+      {
+        "index": 17,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2. Initial Generation",
+        "text_sha256": "70b26f8c6b9124a29a3293ef3c7f0aeeebbdbf2e14c395aa4eea1769f79a23be"
+      },
+      {
+        "index": 18,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3. Synergy",
+        "text_sha256": "d5c329296a342cd62538830ddfeeb0c880c7f0d7dac5350fd6f6bb38e91b09a8"
+      },
+      {
+        "index": 19,
+        "paragraph_id": "S3.SS3.SSS1.p1.1",
+        "section_id": "S3.SS3.SSS1",
+        "heading": "3.3.1. Repair Strategy",
+        "text_sha256": "f2602d903a166471b62dfbfe02a1c06cfd4b4f5d46b73f2777c30cf5392a774c"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S3.SS3.SSS1.p2.1",
+        "section_id": "S3.SS3.SSS1",
+        "heading": "3.3.1. Repair Strategy",
+        "text_sha256": "73201e1b644313805f656e3710486995da06b68c86b35fc036970325efcc4a96"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S3.SS3.SSS1.p4.1",
+        "section_id": "S3.SS3.SSS1",
+        "heading": "3.3.1. Repair Strategy",
+        "text_sha256": "614baf862e19088566c9f77221e8b9e90814ec6da53e1ff3ffe45f40a9567d65"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S3.SS3.SSS1.p5.1",
+        "section_id": "S3.SS3.SSS1",
+        "heading": "3.3.1. Repair Strategy",
+        "text_sha256": "cdb54e8c8d6424fa774f450ee6f3564fc75fbcf086b3e1247a450c853170e768"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S3.SS3.SSS1.p8.1",
+        "section_id": "S3.SS3.SSS1",
+        "heading": "3.3.1. Repair Strategy",
+        "text_sha256": "b27c2e62f5eabe1a27915c1b97677602cd25cdebd0378b7f007305c577c79908"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S3.SS3.SSS1.p10.1",
+        "section_id": "S3.SS3.SSS1",
+        "heading": "3.3.1. Repair Strategy",
+        "text_sha256": "8a8727c8463865a496afa699197d99b407dec27be83ce508e4b023f5607c3156"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.SS3.SSS1.p12.1",
+        "section_id": "S3.SS3.SSS1",
+        "heading": "3.3.1. Repair Strategy",
+        "text_sha256": "dc74c5ef418860606561df3a97b1a394b39e1f28fa98026fa2b65b9231324981"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.SS3.SSS1.p14.1",
+        "section_id": "S3.SS3.SSS1",
+        "heading": "3.3.1. Repair Strategy",
+        "text_sha256": "5f8e0c211cd92ac7606a7dfe9b94a42b564be88a8c3ac938703910d7967284c2"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS3.SSS2.p1.1",
+        "section_id": "S3.SS3.SSS2",
+        "heading": "3.3.2. Coverage-guided Testing Feedback",
+        "text_sha256": "88e5e6013c440150874692e41c3c855992ae2ce4c5b5af957f8977e5403490a7"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.SS3.SSS3.p1.1",
+        "section_id": "S3.SS3.SSS3",
+        "heading": "3.3.3. Positive Prompt Injection",
+        "text_sha256": "89e303a4832920c9f4ba70737284341f7bd3bc870c26b6142e54163786932f6c"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS3.SSS3.p2.1",
+        "section_id": "S3.SS3.SSS3",
+        "heading": "3.3.3. Positive Prompt Injection",
+        "text_sha256": "26c9a10f42ac03641db85ccb5605208b8f412b8d4b1b690c6cb10f74d12f402c"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS3.SSS3.p3.1",
+        "section_id": "S3.SS3.SSS3",
+        "heading": "3.3.3. Positive Prompt Injection",
+        "text_sha256": "b22294694b3e95e7fafae7ee457dacb6c98612eb0e5ace383d27caa4e86fb454"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "4. Experiment Design",
+        "text_sha256": "f4d43d107717413f9161f57ff70c6e78269accc0051831bea0e6a0a4f84e4119"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S4.p2.1",
+        "section_id": "S4",
+        "heading": "4. Experiment Design",
+        "text_sha256": "34412cf774d5e4d08aa8e7092ed47b37497286e643fef7150b46f4bc046ba2f8"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S4.p3.1",
+        "section_id": "S4",
+        "heading": "4. Experiment Design",
+        "text_sha256": "0ffd09b26c2f4804585e8912a5674604570c41f791dfd3c7e72007072bad82cf"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S4.p4.1",
+        "section_id": "S4",
+        "heading": "4. Experiment Design",
+        "text_sha256": "10ba9b95acd2b62f17ac4528365273b14b167e2caf5deff4db6b344f51ce58b1"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S4.p5.1",
+        "section_id": "S4",
+        "heading": "4. Experiment Design",
+        "text_sha256": "f52cbcdda709651596f56468030010ae52b23a3b02bd634f6a4c946dc5d3b34a"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S4.p6.1",
+        "section_id": "S4",
+        "heading": "4. Experiment Design",
+        "text_sha256": "9825059f32e672bbc84dffde41e7bb53bbdfab99620f393a9c6d6e10feda5906"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1. Datasets",
+        "text_sha256": "c64515027c3cda5d0a3cf25e041d249f1dba225684ea942bdd6b62eeb13ae246"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S4.SS1.p2.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1. Datasets",
+        "text_sha256": "113eea0cf1842aec35fd50153b1132333fe3b17300ef998cf822859d0a89a172"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S4.SS1.p3.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1. Datasets",
+        "text_sha256": "751d5381d378a0eb73be05c738e110d76d8bee3615725b0d7c6d6486cc34a925"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S4.SS1.p4.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1. Datasets",
+        "text_sha256": "1b18b4b369d56073734f648808485d1c7de585cac95890ce1a213ba5ca46fe4f"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2. Baselines",
+        "text_sha256": "792dddb12cd73976dc0aac87bec16b9db1c449b9788f2351d77c4272c1790df6"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S4.SS2.p2.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2. Baselines",
+        "text_sha256": "438076e26aeb1082dc8deaab3ab0dcad100297b3822a01d23d36744110876531"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S4.SS2.p3.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2. Baselines",
+        "text_sha256": "7efb0b0299c7e524efdfeab24b1e215a9272aa64fda3e09aa1809c1b1c3ede3d"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S4.SS2.p4.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2. Baselines",
+        "text_sha256": "fa737932120a21ac55f3a02f3ce18334d9f2e3b421393f7253152927c3e7083a"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S4.SS2.p5.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2. Baselines",
+        "text_sha256": "265e73f7992578b622bc5994acd585d64ce682f8c625036a82732cc103b686e1"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S4.SS3.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Evaluation Metrics",
+        "text_sha256": "38144ff949b77e8eb45ab98e6c910955ce7bf942cfc0583b541352c8e6058ad1"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S4.I1.i1.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Evaluation Metrics",
+        "text_sha256": "9c54f6456321cd66edfe33ece8f6b4008985d9ae71581d0249153b97e150d857"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S4.I1.i2.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Evaluation Metrics",
+        "text_sha256": "8c426d957f232a424746e3cf4259df6e413702212e5a5a241bda6e53ad46e5dc"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S4.I1.i3.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Evaluation Metrics",
+        "text_sha256": "8bf2c5921b11591091085e47d4d1ffe0f15f526b484775205e83616284ba33e0"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S4.I1.i4.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Evaluation Metrics",
+        "text_sha256": "937897c375526b0f98d4c9370471ff6dbc7faa7ae919711df08f8c266242af86"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S4.I1.i5.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Evaluation Metrics",
+        "text_sha256": "0f2a9fce6a4a862dd947fd9ff55f2508344e837759bed3d43631a4ee897efbf8"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S4.I1.i6.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Evaluation Metrics",
+        "text_sha256": "586da0d6b9ac3a37add466fe1710c76c38b6a3cd21d735b25eee48418d932ad3"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S4.I1.i7.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Evaluation Metrics",
+        "text_sha256": "ebbc4b04cf5dee2be7d0e9a75ce030d242719c65ab68d5004bc1fed917f55df2"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S4.I1.i8.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Evaluation Metrics",
+        "text_sha256": "9662dd52b4bdbc4b57c71ba61e090a78f414932411daf5f1b3a5dea9e7e37cce"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S4.I1.i9.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Evaluation Metrics",
+        "text_sha256": "f7400b4fd19d74bc5a0b52f036a7d802fcd2397278039942a8a12bf22719f55b"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S4.I1.i10.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Evaluation Metrics",
+        "text_sha256": "cd292e8cfdf451374489fa6c2d8eff436f4fb8251544dc2ad71216c809f3ce69"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "S4.I1.i11.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Evaluation Metrics",
+        "text_sha256": "03c417be1886d0afb4a1b9a6e0e2030678aa50a40a4a012a4edccdd0980e4847"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "S4.I1.i12.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3. Evaluation Metrics",
+        "text_sha256": "f3d912162f07ebe32cac52fed126d428461a2eca5b1cd37204a4564c44c3ae9f"
+      },
+      {
+        "index": 59,
+        "paragraph_id": "S4.SS4.p1.1",
+        "section_id": "S4.SS4",
+        "heading": "4.4. Experimental Setup",
+        "text_sha256": "0d953329715416551c0ea15a0785cdd9138f6667df7636e158f6e65cfe092bbf"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "S5.SS1.p1.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1. Answer to RQ1 (Correctness)",
+        "text_sha256": "c2dbdb117e051626d8d5e6196856b97e33214c32168ed05eb0c8bb8c85afc150"
+      },
+      {
+        "index": 62,
+        "paragraph_id": "S5.SS1.p2.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1. Answer to RQ1 (Correctness)",
+        "text_sha256": "693e552d354ca58869717f65d77acd457bff481a0ea83ec551b59f8a48fcf802"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "S5.SS1.p3.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1. Answer to RQ1 (Correctness)",
+        "text_sha256": "9b44a272f306782eb53af6cd6e3dde025417a8b484fe3f853e0af5a83c5e0698"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "S5.SS2.p1.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2. Answer to RQ2 (Sufficiency)",
+        "text_sha256": "ba880959ac8e50069497a946c1d9be4f326880eb88aafaa07ba372521a70577d"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S5.SS2.p2.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2. Answer to RQ2 (Sufficiency)",
+        "text_sha256": "344de3a5cc9b8f908cb5aa05ae773a4fb2c30766f00f2c5efe30d576efabbe89"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "S5.SS2.p3.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2. Answer to RQ2 (Sufficiency)",
+        "text_sha256": "ef09ee24af7063e1cf040568311b49ece32271bc95e5d2f84ca1757d12188177"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S5.SS3.p1.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3. Answer to RQ3 (Ablation)",
+        "text_sha256": "ad5aa5a1aa6a4a8563b830afcdf0e543817618df35e8f0d2940add053ef48f43"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S5.SS3.p2.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3. Answer to RQ3 (Ablation)",
+        "text_sha256": "486a5e567cca3eca3f5eb821bc98c80cb1b84ab17342a4c77c1fa00e47de8f2a"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S5.SS3.p3.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3. Answer to RQ3 (Ablation)",
+        "text_sha256": "7ff162ccfaeaf6cad4462dc5e9e5f4d0aa5b2216e9d13058cef3e1cb1a90fce0"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S5.SS4.p1.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4. Answer to RQ4 (Generalization)",
+        "text_sha256": "d338598b28517c5135dd2a4f217af961299c6cc88534e67077a93057d44664c7"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S5.SS4.p2.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4. Answer to RQ4 (Generalization)",
+        "text_sha256": "f36dc10521fcc50ff2234de7426c3cd9a9fc7bac93f8e3db9fcf61e8554bf50c"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "S5.SS4.p3.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4. Answer to RQ4 (Generalization)",
+        "text_sha256": "8468acd4ac7abc8d3650f976e66b4708f876cc9ad2f7c1a7a588f52502b528a1"
+      },
+      {
+        "index": 73,
+        "paragraph_id": "S5.SS5.p1.1",
+        "section_id": "S5.SS5",
+        "heading": "5.5. Answer to RQ5 (Cost)",
+        "text_sha256": "3d7f896018bb9530b7c1f58a9fb80ec5fdcaad716bc56ded305f4f8da21209d8"
+      },
+      {
+        "index": 74,
+        "paragraph_id": "S5.SS5.p2.1",
+        "section_id": "S5.SS5",
+        "heading": "5.5. Answer to RQ5 (Cost)",
+        "text_sha256": "3342c217ca64703e26298d246ead740d335baaa67076ecd580c113be269011f0"
+      },
+      {
+        "index": 75,
+        "paragraph_id": "S5.SS5.p3.1",
+        "section_id": "S5.SS5",
+        "heading": "5.5. Answer to RQ5 (Cost)",
+        "text_sha256": "a4b17889c7538641d68335034be428ac96d3fd93d48b9cf472f082552a5d612d"
+      },
+      {
+        "index": 76,
+        "paragraph_id": "S6.I1.i1.p1.1",
+        "section_id": "S6",
+        "heading": "6. Discussion",
+        "text_sha256": "9a15b9d494e6dbd5550431a91234280667f6767ef310e04acf3df103598f8fa4"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Newly read preprocessing explicitly removes comments/blanks and compresses callable dependencies to signatures, preserving focal method bodies. Generation/repair/reinsertion/coverage loop supported.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual main and ablation descriptions verify ChatGPT-only/repair/iteration/full-feedback conditions, with generated test compilation/runtime/coverage/mutation assessment.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Named EvoSuite/A3Test/ChatGPT/ChatUniTest comparators and held-out/industrial studies supported in main design.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Source English-language prompt descriptions accompany Java workflow; they do not establish an injection-label dataset.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All material named original method/arm families in the main and method-bearing appendix scope now actually checked. Unprinted identities/exact image wording remain explicit source-reporting limits rather than invented evidence.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "coverage.additional_structural_receipts",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All added exact-source HTML-node and text hashes independently reproduce. Structural verification is distinct from the actual semantic ranges/sections described in this receipt.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

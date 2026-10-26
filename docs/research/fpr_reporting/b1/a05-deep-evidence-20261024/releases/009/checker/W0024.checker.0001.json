@@ -1,0 +1,185 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0024",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T18:30:20.953440+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\additional-003\\works\\W0024.provider.0001.json",
+  "provider_packet_sha256": "b96896dd57268cf9dcac2d4a028e619a0c8d442bcb0be9487362bbb4c1dd1016",
+  "request_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\ADDITIONAL_SOURCE_REQUESTS_003.json",
+  "request_sha256": "d059c8d0421291b5e9a06d1b553b3720de4d84671a519b3a5be1c3b88bfb3499",
+  "requested_preferred_version": "arxiv:2412.01547v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\406d7d1633e684880a5e7ff7d8166b19c4fa9b3c853048fe9df585dd1c9e8f7c",
+    "raw_sha256": "406d7d1633e684880a5e7ff7d8166b19c4fa9b3c853048fe9df585dd1c9e8f7c",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0053.json",
+    "acquisition_receipt_sha256": "265d345f0d1d3db3c9112bf8979240a376601f505e62ebdd31525983963f22d4",
+    "captured_version_id": "arxiv:2412.01547v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "coverage_disposition": "BOUNDED_ADDITIONAL_CLARIFICATION_CHECKED",
+    "inspected_ranges": [
+      [
+        19,
+        24
+      ],
+      [
+        28,
+        31
+      ]
+    ],
+    "locators": [
+      {
+        "index": 19,
+        "paragraph_id": "Sx4.p1.1",
+        "section_id": "Sx4",
+        "text_sha256": "60fa299afd62fabed7fabd901ba875ff5696060133d5c7681a7039b5214406fa"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "Sx5.p1.1",
+        "section_id": "Sx5",
+        "text_sha256": "0b4d6b721aab3bc1ac880496d2113644f26b04b585d19bfe5c4c954d927ceaf1"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "Sx5.SSx1.p1.1",
+        "section_id": "Sx5.SSx1",
+        "text_sha256": "8e7f529d1f627794c1bad8581372916c99c2a9f8ec4cf8d5de58fa292bde3daa"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "Sx5.SSx2.p1.1",
+        "section_id": "Sx5.SSx2",
+        "text_sha256": "90e3b42e4ae6003832df360479d6f95a4951df455ca8e8518e93dc2d39defe90"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "Sx5.SSx3.p1.1",
+        "section_id": "Sx5.SSx3",
+        "text_sha256": "6704a0a4638ccb4cf11b0f2c4beaf54ec69c59f95ace7bc2819e793a35aa7255"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "Sx5.SSx4.p1.1",
+        "section_id": "Sx5.SSx4",
+        "text_sha256": "f3e51af3a37e49377b6c51b720aa6cd64b35fbbdc1ea78c30dd8fa0c15a20bae"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "Sx6.SSx2.p1.1",
+        "section_id": "Sx6.SSx2",
+        "text_sha256": "20be2567eaf7b1ed45645d0c9823bc55ed5c88914afd6ee5c33c709faa3b14a2"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "Sx6.SSx2.p2.1",
+        "section_id": "Sx6.SSx2",
+        "text_sha256": "50c6a25a43bcb9b18d5e0f7e005aac0ed88f3d2a1a34e6bc161b299f3b508e48"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "Sx6.SSx2.p3.1",
+        "section_id": "Sx6.SSx2",
+        "text_sha256": "8add9a70623694324c20d4b171767e05ec37bcb56a1febea438ed57db28d1971"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "Sx6.SSx2.p4.1",
+        "section_id": "Sx6.SSx2",
+        "text_sha256": "3537872ad4078e6c451af32fff6d50cca1098f6315979b87f467c79e4854cbce"
+      }
+    ],
+    "locator_sha256": "267cd30e1e9e6b7ab4baf68eddb592c5e057ae75b290b7ba809abbdf8fd726c6",
+    "structural_receipts": [
+      {
+        "source_sha256": "406d7d1633e684880a5e7ff7d8166b19c4fa9b3c853048fe9df585dd1c9e8f7c",
+        "section_id": "Sx4",
+        "element_html_sha256": "2708eabade3297e09b2e7fedb2abfe9ca442ec2cfd4ea1591de36742429d19f1",
+        "element_text_sha256": "9d0e0e35bc6464fc372c81e702ee26deef128c49a89ab7fd12068b47fe78dddd",
+        "structural_only_no_text_reproduced": true,
+        "hashes_verified": true
+      },
+      {
+        "source_sha256": "406d7d1633e684880a5e7ff7d8166b19c4fa9b3c853048fe9df585dd1c9e8f7c",
+        "section_id": "Sx5",
+        "element_html_sha256": "8ea01cca2e31738aaabb2e0b78a8f6e8dbe5a075bfa896ff19ddaec402fecddf",
+        "element_text_sha256": "45982d7312e9a0a7e2fbf813ab8917527d4cc66e3acba7caa35054ed121db3e2",
+        "structural_only_no_text_reproduced": true,
+        "hashes_verified": true
+      },
+      {
+        "source_sha256": "406d7d1633e684880a5e7ff7d8166b19c4fa9b3c853048fe9df585dd1c9e8f7c",
+        "section_id": "Sx6.SSx2",
+        "element_html_sha256": "420ca59a8b5b422711668f6d847384a984fc014c2b61dd40b9df7f85a0463351",
+        "element_text_sha256": "148a45413b0e269373e34b762e3a17452ddbbafe8aca82fc639018cf30e9a799",
+        "structural_only_no_text_reproduced": true,
+        "hashes_verified": true
+      }
+    ],
+    "semantic_rationale": "Actual original aggregate labels, classifier definitions and public-model dataset comparisons checked. Dataset-derived jailbreak labels are not silently converted to unsafe-content or untrusted-document injection-presence labels."
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual19 defines aggregate DAN, garak AutoDAN/TAP and jackhhao data, deduplication and label-stratified construction. Main20 explicitly says input jailbreak versus non-jailbreak classification. The construction does not define those classes by a separately injected untrusted-document instruction boundary.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual20-24 defines signed-label nearest-neighbor aggregation, feed-forward argmax and forest/XGBoost classifiers over prompt embeddings. Prior actual embedding-model definitions verify the model roster. Inference consumes input representations and source-derived labels, without a target answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual28 names gelectra/deberta/PromptGuard and GPT-3.5 with the Rebuff prompt over the aggregate data, ToxicChat and JailbreakHub. Exact Rebuff prompt is not printed; no additional protected-answer input is specified.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual30 distinguishes undesirable non-jailbreak ToxicChat prompts from jailbreaks and explicitly retains supplied HuggingFace labels rather than author relabeling. It does not identify the exact label field. Actual31 names JailbreakHub shared jailbreak and benign prompts. These are dataset distinctions, not a newly asserted uniform unsafe-content or clean/injected-document label.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "The inspected construction19-24/28-31 provides no additional evaluated-item language declaration. English exposition and model names are not language proof.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True is approved only for TASK_LABEL_CONSTRUCTION_ONLY: the original aggregate and secondary dataset definitions and inference protocols were actually read, with earlier main11-36 context already independently checked. It does not certify exact source revisions, label-field identities or item-level annotation rules.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.omissions",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Unpinned source revisions, unknown annotation details and unspecified ToxicChat field are preserved as source limits. No clean/injected-document pairing is invented.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "clarification_scope",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Bound to the neutral additional request for original task/label construction only.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual method/data context displayed adjacent source outcome and sample prose; all withheld. Shared filesystem; no freshness or OS-isolation claim. Operational exposure remains disclosed in ROLE.0001.json."
+  }
+}

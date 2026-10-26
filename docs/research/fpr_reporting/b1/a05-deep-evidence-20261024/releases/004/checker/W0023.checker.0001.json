@@ -1,0 +1,338 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0023",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:12:17.628206+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0023.provider.0002.json",
+  "provider_packet_sha256": "f9e2384a1538a0eb5a8c059f94554cccbd24a753bd367cdc27f6ed6192b0557d",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2411.09387v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\445e244b0537f22a2c8aab90c5d7b5de3c783345bfbffe151251405eb666853e",
+    "raw_sha256": "445e244b0537f22a2c8aab90c5d7b5de3c783345bfbffe151251405eb666853e",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0052.json",
+    "acquisition_receipt_sha256": "6f7d73a246145f5372eb3bfe79fcdc1fd9058f4e848b2905ae84b0cb4728ca2b",
+    "captured_version_id": "arxiv:2411.09387v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        13,
+        50
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Main methodology paragraphs14-32 specify infrared/visible image feature fusion and task-text features extracted with LLaMA, rather than a generated language-model answer as the assessed object. False is necessary: paragraph44 explicitly points to external supplementary objective evaluation and parameter analysis, beyond visual demonstrations. That inventory has not been inspected; the main-source family inventory is bounded accordingly.",
+    "visual_check": null,
+    "locator_sha256": "d3a6b18c6d0e8ef8e07f464d4788f3edfedacb3a8a11644434f6b8a42a89516f",
+    "locators": [
+      {
+        "index": 13,
+        "paragraph_id": "S2.SS2.p2.1",
+        "section_id": "S2.SS2",
+        "heading": "2.2 Downstream Task-Embedded Fusion Methods",
+        "text_sha256": "c9de2ecae38e9241137bb24f28da26def1455b70031b401c3f999cacfd002ed0"
+      },
+      {
+        "index": 14,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Overview",
+        "text_sha256": "1fa739aefd6a9eff15d267cd809199952855fa2f7e4ccbdb4aac31dcc8f5b506"
+      },
+      {
+        "index": 15,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Base Fusion Network",
+        "text_sha256": "cbca44ddedae399e07994442a2c09cb1903db5e45d533307d1c9281399fcf27f"
+      },
+      {
+        "index": 16,
+        "paragraph_id": "S3.SS2.p2.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Base Fusion Network",
+        "text_sha256": "fd37aa4a0eba769582e17027215fbbcef39f83bcf1551a820a4863dab68b1a0e"
+      },
+      {
+        "index": 17,
+        "paragraph_id": "S3.SS2.p3.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Base Fusion Network",
+        "text_sha256": "ff90994fb5732b65faadf8499efa594f93480bd659df5c1ef03e28aee9a04d0a"
+      },
+      {
+        "index": 18,
+        "paragraph_id": "S3.SS2.p3.2",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Base Fusion Network",
+        "text_sha256": "775d30a52cbe4108d33a93162031a64846d04bd8de80646e518e171391ab4ec1"
+      },
+      {
+        "index": 19,
+        "paragraph_id": "S3.SS2.p3.3",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Base Fusion Network",
+        "text_sha256": "d08bdcf1fb0933f92f4fae74e710652b2e70153df685b2601542876a237bbbb7"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S3.SS2.p4.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Base Fusion Network",
+        "text_sha256": "7273ca092f16650efe3cb38024162bd30a95a1ba205a2d0d6d6b9e53b53aea0d"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S3.SS2.p4.2",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Base Fusion Network",
+        "text_sha256": "2fadff6ac92ce355ccdd5030011bff5e6273893b75584fb421b690fb71227c40"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S3.SS2.p4.3",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Base Fusion Network",
+        "text_sha256": "73f638b278c07af84ced1560e610aeaa5f13bdff92dd6a74a7c4fdf8329fca8e"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S3.SS2.p4.4",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Base Fusion Network",
+        "text_sha256": "e84ffa9a2629d3b62d640cff556bcb350eaf1f0a76d5347126c1b5eae2cfd05c"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Task-Oriented Adaptive Regulation",
+        "text_sha256": "aadad813312a5f8fc8663ede38d3bbe53b483e6c45ed194a763d09596d1bd729"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.SS3.p2.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Task-Oriented Adaptive Regulation",
+        "text_sha256": "9db8852bc6d7cb567d074babeedd92fa2add622ccf6c810f95244a6ecfe410da"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.SS3.p3.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Task-Oriented Adaptive Regulation",
+        "text_sha256": "743f8ba379aded9583beb09992b0ba9a3b244a4bbf9ddaa0b5f50d193f44a3af"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS3.p3.2",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Task-Oriented Adaptive Regulation",
+        "text_sha256": "006f676b4496fec89ff4a27998d0fa04cd6ff5334adc530272da8a5969c8c0a5"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.SS3.p4.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Task-Oriented Adaptive Regulation",
+        "text_sha256": "4a32d1823aaf5cf9cedcba67a99c95b97dc7e16263ff0e5cf15edbbbf768008d"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS3.p4.2",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Task-Oriented Adaptive Regulation",
+        "text_sha256": "2ac17c3343ada24a806c8fd3e78f2237f956240a73c5d4b5b245119a2bcca47c"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS3.p4.3",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Task-Oriented Adaptive Regulation",
+        "text_sha256": "c78c484a3305e1cef9da00c5a6416f71d38dcf80c05dd56585c04407fb0d5082"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S3.SS3.p5.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Task-Oriented Adaptive Regulation",
+        "text_sha256": "2c28ba2d8e1a1be67781ed499340138ecdaca458c58f4db0a27e599f328144ca"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S3.SS3.p5.2",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Task-Oriented Adaptive Regulation",
+        "text_sha256": "9d06fecd973984d35ac91742ef8be68ebab4b2984171ab0f27e911cce2523d7f"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Datasets",
+        "text_sha256": "d97fb0dc9805588c19dabc58465de1e2859acf56f846632eee183cbd3d863dca"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Implementation Details",
+        "text_sha256": "144237e965783542cd64abf107390b1be8b15c2c1a10c42bcba2e5616a203edd"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S4.SS3.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Evaluation Protocols",
+        "text_sha256": "d25445d6c2de4e94652648f60d16dc6e44f8a4f1ead045796a3ee8c3c9a8ec1d"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S4.SS4.p1.1",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Comparison with State-of-the-art Methods",
+        "text_sha256": "6bacf13d7d13aa8a147c8f7830b9898548e8e7f0bcbba53086ca14e0ab1f9d9c"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S4.T1.5",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Comparison with State-of-the-art Methods",
+        "text_sha256": "a8a44bb23aca075806ce41d13276eeffca870236697252394eba54f23d8a84b2"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S4.SS4.p2.1",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Comparison with State-of-the-art Methods",
+        "text_sha256": "1c362f337c55b2bb89a0b6bc4ae0efab66f72348f7dca2098208587a1b279850"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S4.T2.5",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Comparison with State-of-the-art Methods",
+        "text_sha256": "3f5ae769a16d35e76948e471357b8e7e33c8c0865536213e5083af945d56eb5e"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S4.SS4.p3.1",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Comparison with State-of-the-art Methods",
+        "text_sha256": "f638033f34f306c7c6ffe1b27c0dd4ab1982a32646a6e78e470a49f8d98c9bc0"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S4.SS4.p4.1",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Comparison with State-of-the-art Methods",
+        "text_sha256": "c9fe82c4874a9d5ae52720db6ddb9eb5d8ba1c4a799a120dbfc18381e5c87f16"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S4.T3.5",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Comparison with State-of-the-art Methods",
+        "text_sha256": "df36ea5de2b8433aca4b81863179409b164c5d172782069aad289de6c6579cc2"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S4.SS4.p5.1",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Comparison with State-of-the-art Methods",
+        "text_sha256": "91f47ccbdc1e7ffcb147d114b1e55d727132c552fd70718cc2f485cd6616ac85"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S4.SS4.p6.1",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Comparison with State-of-the-art Methods",
+        "text_sha256": "b3cf47d33ba94b5fdda9967c87585870e578b10cc3db07bde0ffddc623fc8725"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S4.SS5.p1.1",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Ablation Study",
+        "text_sha256": "47d2c4570495e3ce60b89f2ff7aa212a589c469ad47a3dc5da21a10332e8c097"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S4.T4.5",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Ablation Study",
+        "text_sha256": "4a5e559082c6e16e7f91f2e5217b1de57e452e1f44d163ae1afd5743debee752"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S4.SS5.p2.1",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Ablation Study",
+        "text_sha256": "f54f958ed3407b197e49ba8dadccc601f5aa521aba009a9e5d452a5ae7de1837"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S4.SS5.p3.1",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Ablation Study",
+        "text_sha256": "280e1607d78bcf93f0e75293776396e99bbc42407e740cf5933c276ac0926f97"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S4.SS5.p4.1",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Ablation Study",
+        "text_sha256": "a6def059cfc8267ada64d8aad306e96150dae286e0713a16610204bb7a923e98"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S4.SS5.p5.1",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Ablation Study",
+        "text_sha256": "7c5daa513097a043e355236bb5decce3951a3dd380f1a54821d0302a0eb3aacf"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main methodology paragraphs14-32 specify infrared/visible image feature fusion and task-text features extracted with LLaMA, rather than a generated language-model answer as the assessed object.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main setup33-36 and ablation definitions45-50 verify the named fusion comparators and FF/instruction/T-DPI/pooling variants. Vision-task predictions and fusion quality are assessed.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Inspected main methods do not specify task-instruction language; no English evaluation is inferred from English exposition.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False is necessary: paragraph44 explicitly points to external supplementary objective evaluation and parameter analysis, beyond visual demonstrations. That inventory has not been inspected; the main-source family inventory is bounded accordingly.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

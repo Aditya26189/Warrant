@@ -1,0 +1,54 @@
+{
+  "B2": "NOT_AUTHORIZED",
+  "acl_original_bytes": 42574037,
+  "acl_original_sha256": "83b1de6eb8e9af0abd7106886ba7e6decbded519ff6d1259bbb94c8286fa6b5d",
+  "bibliographic_cutoff": "2026-10-17T00:00:00Z",
+  "commit_references": {
+    "A01": "2f20e43b7e2b9e5f694157b0f9babe45dcdd9042",
+    "arxiv_acl_snapshot": "1462499a5ae0987610bf10ec1583bc0514b96158",
+    "openreview_partial_snapshot": "d6c9b15cbc4c492846f6897c815ff418bf7ca661",
+    "original_capture_source": "2628600e618b343151bced7117af00d84a9675a7"
+  },
+  "created_utc": "2026-10-17T17:47:57.409228+00:00",
+  "discovery_indexes": [
+    "arxiv",
+    "acl_anthology"
+  ],
+  "eligibility_before_A02": "NOT_RUN",
+  "excluded_selection_inputs": [
+    "retrieval-02/01-openreview-title-0.body",
+    "PARTIAL_RETURNED_IDS.json"
+  ],
+  "files": {
+    "AMENDMENT_A01_SENTINEL_EXCLUSIONS.md": "a74caf940b5f9c0aa2b73435483bb586480a46539fd869b65bd8bfde001b6efb",
+    "AMENDMENT_A02_RETRIEVAL_SCOPE.md": "bfad507a51bf480127cfbc4da474d49d181ffbf73a1d21f0c004b0817ebd6e81",
+    "APPROVED_FRAME_SOURCE.md": "74e109f800fb40f9d8fe5da61c62baf826b9980357bc87ae4f506fab64d9e6ef",
+    "PARTIAL_RETURNED_IDS.json": "afbbafaf49e959a23857e10728420c390eee66b394081084ca0115d405c7ef83",
+    "PROTOCOL_LOCK.json": "7a3c73d465721fb2ea177c53bdc936e614ec5b504c6fb1fc0ef65ff7acc86f42",
+    "SENTINEL_INVENTORY_AMENDED.json": "dafd88a2eb9e904054dd4dd0eeb579e9e8acabae8bc7062d49ca0355855ed69f",
+    "retrieval-01/01-arxiv-0.body": "132369de6181ce9e47b22cb68da573dcf6242aa75d8374c6f13004dc27a02be6",
+    "retrieval-01/02-arxiv-100.body": "77cf858b62fd864a791797f6faf081233aceac2526b26ccb3d7cb9852469ed3f",
+    "retrieval-01/03-arxiv-200.body": "02f9e1ce347080a2d419b617233f6cd7052b14277162969d4b5e2c0776842dc5",
+    "retrieval-01/04-arxiv-300.body": "2bd01175c18b0ee25a2788b485e3755978eea29bab1333fb1fb56bd74cb543cb",
+    "retrieval-01/05-acl-bulk.body.part01": "f837992b79888498768047c2dca97faa495f5b6b4296607a165e0406ecdca94e",
+    "retrieval-01/05-acl-bulk.body.part02": "05e3d56449be3e3f67ed98f2467eed4756afd45bf0f02cf8560c25fd8eac950e",
+    "retrieval-01/05-acl-bulk.body.part03": "a6fb0ad9f1878233b99ebb910798816c9025ef1a12712e70807747ce229e19d0",
+    "retrieval-01/05-acl-bulk.body.part04": "88e365d0c10d8d88157567772fa71de137ef0959ade11aa79537416a91cb53f3",
+    "retrieval-01/05-acl-bulk.body.part05": "051ba99d0ae150aa69cd424aa56351ff1215f2390a44636f75d8edc2c7fc70b2",
+    "retrieval-01/RETRIEVAL_MANIFEST.json": "5ec45040c7bbf0a7f5cf7152e01b072050d2283cd6e7e53b407723d793e695e7",
+    "retrieval-01/STORAGE_MANIFEST.json": "7d710368f1327a18ba1208f85676277e9737e39aef02b5f9799ec0189871169b",
+    "retrieval-02/01-openreview-title-0.body": "9d0599858f02c1ee58eaaa62d95a774ad6e76e3bf001e2f16fb1ea558b391599",
+    "retrieval-02/RETRIEVAL_MANIFEST.json": "ac84eada2f435e11e4e49f4c004e2cb0d4c7ff19b08cb285411ba13283f0f49d"
+  },
+  "human_six_seed": 20261018,
+  "openreview_discovery_disposition": "EXCLUDED_FROM_SELECTION_FRAME",
+  "openreview_permitted_use": "VERIFICATION_ONLY_FOR_INDEPENDENTLY_RETRIEVED_WORKS_NO_ADDED_CANDIDATES",
+  "python": "3.12.10",
+  "randomization_before_A02": "NOT_RUN",
+  "source_git_commit": "d6c9b15cbc4c492846f6897c815ff418bf7ca661",
+  "source_refresh": "NOT_AUTHORIZED_REUSE_CAPTURED_BYTES",
+  "source_tree_clean_at_start": true,
+  "status": "A02_LOCKED_BEFORE_SCREENING_AFTER_COMMIT",
+  "ten_paper_seed": 20261017,
+  "unique_work_screening_cap": 500
+}

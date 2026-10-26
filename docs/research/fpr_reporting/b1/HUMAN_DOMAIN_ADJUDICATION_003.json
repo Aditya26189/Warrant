@@ -1,0 +1,36 @@
+{
+  "B2_authorized": false,
+  "bibliographic_source": "https://arxiv.org/pdf/2409.13331v1",
+  "decision": "INCLUDE",
+  "event_id": "HUMAN_DOMAIN_003",
+  "human_decision_date_local": "2026-10-18",
+  "human_reported_submission_date": "2024-09-20",
+  "human_reviewed_version": "v1; cutoff-based selected version still pending",
+  "limitations": [
+    "Held-out test split language composition is not explicitly reported.",
+    "A separate English-only evaluation is not established.",
+    "Neither limitation is represented as resolved by this domain judgment."
+  ],
+  "method_rationale": "User reports that most dataset prompts are English, with other languages represented, and the original training/test division is retained. User reports evaluation of prompt-injection classifiers on the held-out test dataset. User adjudicates this as a qualifying predominantly English-language setting.",
+  "outcome_or_claim_classification_use": "NONE",
+  "prior_ledger_sha256": "9d9a89689be02b27d82f42bc733c34ae176eee089000524d8f003f4e5f8bf52a",
+  "prior_records_preserved": true,
+  "reason": "HUMAN_METHOD_ADJUDICATION",
+  "recorded_utc": "2026-10-18T06:10:49.389399+00:00",
+  "remaining_requirements": [
+    "cutoff-based bibliographic version",
+    "prior-exposure exclusions",
+    "other locked eligibility requirements",
+    "PDF accessibility recording"
+  ],
+  "reported_method_locators": [
+    "Section V - Dataset, PDF page 4",
+    "Section VI - Methods, PDF page 4"
+  ],
+  "scope": "DOMAIN_ELIGIBILITY_ONLY",
+  "source": "User response to metadata request003 in current conversation",
+  "source_git_commit": "6ce1cdc3816986678e095092401618bbc89c858c",
+  "title": "Applying Pre-trained Multilingual BERT in Embeddings for Improved Malicious Prompt Injection Attacks Detection",
+  "verification_state": "HUMAN_METHOD_ADJUDICATION_RECEIVED_NOT_INDEPENDENT_CODEX_SOURCE_REVIEW",
+  "work_id": "arxiv:2409.13331"
+}

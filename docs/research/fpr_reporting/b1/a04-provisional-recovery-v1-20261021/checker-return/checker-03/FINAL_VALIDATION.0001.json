@@ -1,0 +1,3573 @@
+{
+  "actor_id": "/root/a04_semantic_restriction_03",
+  "role": "SOURCE_RESTRICTION_CHECKER",
+  "checked_utc": "2026-10-21T18:32:11.306285+00:00",
+  "status": "PASSED",
+  "errors": [],
+  "work_count": 118,
+  "member_count": 129,
+  "context_checked_member_count": 128,
+  "held_member_ids": [
+    "M0326"
+  ],
+  "new_fact_count": 86,
+  "new_html_fact_count": 65,
+  "new_pdf_fact_count": 21,
+  "reused_evidence_count": 211,
+  "pdf_render_replay_count": 41,
+  "checks": [
+    "request and scope binding",
+    "all current metadata and exact raw SHA binding",
+    "reuse IDs and frozen receipt raw binding",
+    "append-only revision chain",
+    "original unmodified HTML paragraph ordinal, nearest section, text hash and protected-ancestor replay",
+    "PDF default page text and exact two-times RGB PNG hash replay",
+    "new method and limitation content gates",
+    "criterion evidence-link and word-limit checks",
+    "source binding basis and uncertainty retention",
+    "identity-held member excluded from method facts"
+  ],
+  "work_records": [
+    {
+      "review_id": "W0249",
+      "work_id": "arxiv:2606.22864",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0249.0002.json",
+      "latest_record_sha256": "6db83b81865a23d86e598caef2fc2277b887dd7c1f31886eeb1ff491bbb529c5",
+      "record_revision": 2,
+      "member_ids": [
+        "M0300"
+      ],
+      "context_checked_member_ids": [
+        "M0300"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0249-F01",
+        "SEM-03-SC03-W0249-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0249-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0249.0001.json",
+          "sha256": "531725afb855ba2fab9bf684846265f17ab3205789c5959edcf6d1a92765cbe3"
+        },
+        {
+          "filename": "W0249.0002.json",
+          "sha256": "6db83b81865a23d86e598caef2fc2277b887dd7c1f31886eeb1ff491bbb529c5"
+        }
+      ]
+    },
+    {
+      "review_id": "W0250",
+      "work_id": "arxiv:2606.23277",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0250.0002.json",
+      "latest_record_sha256": "9a21722f040236e12d180b477381880029174a5972151393593e5337e25af0de",
+      "record_revision": 2,
+      "member_ids": [
+        "M0301"
+      ],
+      "context_checked_member_ids": [
+        "M0301"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0250-F01",
+        "SEM-03-SC03-W0250-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0250-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0250.0001.json",
+          "sha256": "5cd301364331aa688e543aa08a44ee28e5dba05e29f763bd5e08f0d453576a99"
+        },
+        {
+          "filename": "W0250.0002.json",
+          "sha256": "9a21722f040236e12d180b477381880029174a5972151393593e5337e25af0de"
+        }
+      ]
+    },
+    {
+      "review_id": "W0251",
+      "work_id": "arxiv:2606.23416",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0251.0001.json",
+      "latest_record_sha256": "38099cd69e0506b7b639609d6a8e792c08dbb3f1cb6f0c3400ad883be7daa96f",
+      "record_revision": 1,
+      "member_ids": [
+        "M0302"
+      ],
+      "context_checked_member_ids": [
+        "M0302"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0251-F01",
+        "SEM-03-SC03-W0251-F02",
+        "SEM-03-SC03-W0251-F03",
+        "SEM-03-SC03-W0251-F04"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0251.0001.json",
+          "sha256": "38099cd69e0506b7b639609d6a8e792c08dbb3f1cb6f0c3400ad883be7daa96f"
+        }
+      ]
+    },
+    {
+      "review_id": "W0252",
+      "work_id": "arxiv:2606.25487",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0252.0001.json",
+      "latest_record_sha256": "6c46f018b6a7293e2bb8a8ec39956cd7489e74c1d472a293e456d63621396078",
+      "record_revision": 1,
+      "member_ids": [
+        "M0303"
+      ],
+      "context_checked_member_ids": [
+        "M0303"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0252-F01",
+        "SEM-03-SC03-W0252-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0252.0001.json",
+          "sha256": "6c46f018b6a7293e2bb8a8ec39956cd7489e74c1d472a293e456d63621396078"
+        }
+      ]
+    },
+    {
+      "review_id": "W0253",
+      "work_id": "arxiv:2606.25836",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0253.0001.json",
+      "latest_record_sha256": "f0383363a3ef80c527a82e5bc9fb020afcc8491196d9b87e1aec643fea8c21a3",
+      "record_revision": 1,
+      "member_ids": [
+        "M0304"
+      ],
+      "context_checked_member_ids": [
+        "M0304"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0253-F01",
+        "SEM-03-SC03-W0253-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0253.0001.json",
+          "sha256": "f0383363a3ef80c527a82e5bc9fb020afcc8491196d9b87e1aec643fea8c21a3"
+        }
+      ]
+    },
+    {
+      "review_id": "W0254",
+      "work_id": "arxiv:2606.26479",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0254.0001.json",
+      "latest_record_sha256": "55b80b4d948a58fa00e56c86f0902710b09675d28bff67b01772ce76a3ae23e4",
+      "record_revision": 1,
+      "member_ids": [
+        "M0305"
+      ],
+      "context_checked_member_ids": [
+        "M0305"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0254-F01"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "ORIGINAL_EXPERIMENT_SCOPE_NOT_FULLY_ESTABLISHED"
+      ],
+      "history": [
+        {
+          "filename": "W0254.0001.json",
+          "sha256": "55b80b4d948a58fa00e56c86f0902710b09675d28bff67b01772ce76a3ae23e4"
+        }
+      ]
+    },
+    {
+      "review_id": "W0255",
+      "work_id": "arxiv:2606.27567",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0255.0002.json",
+      "latest_record_sha256": "96c8fdea501e394eab36a257c79fc93b229384123ba9aa63924ed8bd8cf375a8",
+      "record_revision": 2,
+      "member_ids": [
+        "M0306"
+      ],
+      "context_checked_member_ids": [
+        "M0306"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0255-F01"
+      ],
+      "new_fact_ids": [
+        "R03-W0255-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0255.0001.json",
+          "sha256": "134d8420b6298396a5089f7e0b18216d9df16e9ac0aec7b468cb53d45da922c9"
+        },
+        {
+          "filename": "W0255.0002.json",
+          "sha256": "96c8fdea501e394eab36a257c79fc93b229384123ba9aa63924ed8bd8cf375a8"
+        }
+      ]
+    },
+    {
+      "review_id": "W0256",
+      "work_id": "arxiv:2607.04222",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0256.0002.json",
+      "latest_record_sha256": "b66623af8b7566e35bceac9680fc3655fbb8e386b5e5cc7e58797d24e97d9778",
+      "record_revision": 2,
+      "member_ids": [
+        "M0307"
+      ],
+      "context_checked_member_ids": [
+        "M0307"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0256-F01"
+      ],
+      "new_fact_ids": [
+        "R03-W0256-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0256.0001.json",
+          "sha256": "f95070c674ade125612570f1a8e14b384056a92e84588136bbfdc1371defe414"
+        },
+        {
+          "filename": "W0256.0002.json",
+          "sha256": "b66623af8b7566e35bceac9680fc3655fbb8e386b5e5cc7e58797d24e97d9778"
+        }
+      ]
+    },
+    {
+      "review_id": "W0257",
+      "work_id": "arxiv:2607.08282",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0257.0002.json",
+      "latest_record_sha256": "664bd94827c420665a5c9a18636356dfaf3f45ab40ea945f6fbbcae47bfa5852",
+      "record_revision": 2,
+      "member_ids": [
+        "M0308"
+      ],
+      "context_checked_member_ids": [
+        "M0308"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0257-F01",
+        "SEM-03-SC03-W0257-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0257-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0257.0001.json",
+          "sha256": "adf84e63413819b88d07656fcd3732fbb74f7d13122e07574ea2a83d1e7fdb4e"
+        },
+        {
+          "filename": "W0257.0002.json",
+          "sha256": "664bd94827c420665a5c9a18636356dfaf3f45ab40ea945f6fbbcae47bfa5852"
+        }
+      ]
+    },
+    {
+      "review_id": "W0258",
+      "work_id": "arxiv:2607.10269",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0258.0002.json",
+      "latest_record_sha256": "5ce78d894d8e1773a1e41a52f076fd05d4e860c462626bc6d1a4a0d1489f2183",
+      "record_revision": 2,
+      "member_ids": [
+        "M0309"
+      ],
+      "context_checked_member_ids": [
+        "M0309"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0258-F01",
+        "SEM-03-SC03-W0258-F02",
+        "SEM-03-SC03-W0258-F03"
+      ],
+      "new_fact_ids": [
+        "R03-W0258-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0258.0001.json",
+          "sha256": "a488f2993ad7e70e3fae61bd5d40f746abdb9755899526727064c34dff2038c9"
+        },
+        {
+          "filename": "W0258.0002.json",
+          "sha256": "5ce78d894d8e1773a1e41a52f076fd05d4e860c462626bc6d1a4a0d1489f2183"
+        }
+      ]
+    },
+    {
+      "review_id": "W0259",
+      "work_id": "arxiv:2607.10712",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0259.0001.json",
+      "latest_record_sha256": "069f0c4404f8e19cb27c215d07368875c3dd91fc61b726c1f732d22b51e40884",
+      "record_revision": 1,
+      "member_ids": [
+        "M0310"
+      ],
+      "context_checked_member_ids": [
+        "M0310"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0259-F01"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "ATTACK_STUDY_AND_JUDGE_SCOPE_NOT_INPUT_CLASSIFIER_PROTOCOL",
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0259.0001.json",
+          "sha256": "069f0c4404f8e19cb27c215d07368875c3dd91fc61b726c1f732d22b51e40884"
+        }
+      ]
+    },
+    {
+      "review_id": "W0260",
+      "work_id": "arxiv:2607.12624",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0260.0002.json",
+      "latest_record_sha256": "80bfbe3275b1a270230a4a5019492513101669c77caf0b8c3633294f60f9914f",
+      "record_revision": 2,
+      "member_ids": [
+        "M0311"
+      ],
+      "context_checked_member_ids": [
+        "M0311"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0260-F01",
+        "SEM-03-SC03-W0260-F02",
+        "SEM-03-SC03-W0260-F03"
+      ],
+      "new_fact_ids": [
+        "R03-W0260-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0260.0001.json",
+          "sha256": "c803602661c32a6927310a0e3b9d05ecdb71dbcc4a47a6830ee2ce96acf28830"
+        },
+        {
+          "filename": "W0260.0002.json",
+          "sha256": "80bfbe3275b1a270230a4a5019492513101669c77caf0b8c3633294f60f9914f"
+        }
+      ]
+    },
+    {
+      "review_id": "W0261",
+      "work_id": "arxiv:2607.13081",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0261.0002.json",
+      "latest_record_sha256": "5a91bb2a4dd49df311b69b0a23574c6de853dcc1a778df75243cb39676489467",
+      "record_revision": 2,
+      "member_ids": [
+        "M0312"
+      ],
+      "context_checked_member_ids": [
+        "M0312"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0261-F01",
+        "SEM-03-SC03-W0261-F02",
+        "SEM-03-SC03-W0261-F03"
+      ],
+      "new_fact_ids": [
+        "R03-W0261-F01",
+        "R03-W0261-F02"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0261.0001.json",
+          "sha256": "d8cd03571aa52b1d1a575306ee7149a3d2f682a96b53cb7ff0b30812af100030"
+        },
+        {
+          "filename": "W0261.0002.json",
+          "sha256": "5a91bb2a4dd49df311b69b0a23574c6de853dcc1a778df75243cb39676489467"
+        }
+      ]
+    },
+    {
+      "review_id": "W0262",
+      "work_id": "arxiv:2607.15977",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0262.0002.json",
+      "latest_record_sha256": "9f9671206e86cbb70b45834b7a46152266455bbba92bcdc0957ef5bb22c8afb5",
+      "record_revision": 2,
+      "member_ids": [
+        "M0313"
+      ],
+      "context_checked_member_ids": [
+        "M0313"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0262-F01",
+        "SEM-03-SC03-W0262-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0262-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0262.0001.json",
+          "sha256": "0f6da854423e3716b2613105e6ccc640db24a00e6daf3ba9ef4608a067ac8152"
+        },
+        {
+          "filename": "W0262.0002.json",
+          "sha256": "9f9671206e86cbb70b45834b7a46152266455bbba92bcdc0957ef5bb22c8afb5"
+        }
+      ]
+    },
+    {
+      "review_id": "W0263",
+      "work_id": "arxiv:2607.16199",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0263.0002.json",
+      "latest_record_sha256": "43d7a29cbcb205475c1b109ecfb0d16e78153c7a8d2e7dfc153d885ac42ac93a",
+      "record_revision": 2,
+      "member_ids": [
+        "M0314"
+      ],
+      "context_checked_member_ids": [
+        "M0314"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0263-F01",
+        "SEM-03-SC03-W0263-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0263-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "KEYWORD_BASELINE_METHOD_CONTEXT_NOT_SEPARATED_FROM_FINDINGS"
+      ],
+      "history": [
+        {
+          "filename": "W0263.0001.json",
+          "sha256": "690c6addabfadd48a9a16d0e224b3f8f94a861ac77422b8bf57541eb492fbaa6"
+        },
+        {
+          "filename": "W0263.0002.json",
+          "sha256": "43d7a29cbcb205475c1b109ecfb0d16e78153c7a8d2e7dfc153d885ac42ac93a"
+        }
+      ]
+    },
+    {
+      "review_id": "W0264",
+      "work_id": "arxiv:2607.18622",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0264.0002.json",
+      "latest_record_sha256": "a0d11126d575f49be8282590e603e6dc96e0c7c804ad0196bc148c45b6a47646",
+      "record_revision": 2,
+      "member_ids": [
+        "M0315"
+      ],
+      "context_checked_member_ids": [
+        "M0315"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0264-F01"
+      ],
+      "new_fact_ids": [
+        "R03-W0264-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0264.0001.json",
+          "sha256": "9b14840d50406f5e1ede5c1b2007b1a39b35667617513529ebb2486bcf8dd77c"
+        },
+        {
+          "filename": "W0264.0002.json",
+          "sha256": "a0d11126d575f49be8282590e603e6dc96e0c7c804ad0196bc148c45b6a47646"
+        }
+      ]
+    },
+    {
+      "review_id": "W0265",
+      "work_id": "arxiv:2607.19396",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0265.0002.json",
+      "latest_record_sha256": "bcd7848ec132a9ce92c1ef3f3167fe2b96e5fa4473c66dfec46158630a40dc8f",
+      "record_revision": 2,
+      "member_ids": [
+        "M0316"
+      ],
+      "context_checked_member_ids": [
+        "M0316"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0265-F01",
+        "SEM-03-SC03-W0265-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0265-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0265.0001.json",
+          "sha256": "2eb7db7d7ce8f92ae43e58b0f63a13c89a9935fccc734c88664770bada406ccf"
+        },
+        {
+          "filename": "W0265.0002.json",
+          "sha256": "bcd7848ec132a9ce92c1ef3f3167fe2b96e5fa4473c66dfec46158630a40dc8f"
+        }
+      ]
+    },
+    {
+      "review_id": "W0266",
+      "work_id": "arxiv:2607.19432",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0266.0002.json",
+      "latest_record_sha256": "ee23c795ab3308c981ad30f168693f88249f461e0ffcebfdde85562bdde86c8c",
+      "record_revision": 2,
+      "member_ids": [
+        "M0317"
+      ],
+      "context_checked_member_ids": [
+        "M0317"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0266-F01"
+      ],
+      "new_fact_ids": [
+        "R03-W0266-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0266.0001.json",
+          "sha256": "76fdbcf36d883b9bda9a76e15765d51ceb365231672ebf7cb508d15ebb2b78f4"
+        },
+        {
+          "filename": "W0266.0002.json",
+          "sha256": "ee23c795ab3308c981ad30f168693f88249f461e0ffcebfdde85562bdde86c8c"
+        }
+      ]
+    },
+    {
+      "review_id": "W0267",
+      "work_id": "arxiv:2607.22545",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0267.0001.json",
+      "latest_record_sha256": "0ca1e797dd83bc50c4ac2331c5267345fb76d951e548b8a4618761ff525ed02d",
+      "record_revision": 1,
+      "member_ids": [
+        "M0318"
+      ],
+      "context_checked_member_ids": [
+        "M0318"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0267-F01",
+        "SEM-03-SC03-W0267-F02",
+        "SEM-03-SC03-W0267-F03"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0267.0001.json",
+          "sha256": "0ca1e797dd83bc50c4ac2331c5267345fb76d951e548b8a4618761ff525ed02d"
+        }
+      ]
+    },
+    {
+      "review_id": "W0268",
+      "work_id": "arxiv:2607.23532",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0268.0002.json",
+      "latest_record_sha256": "bdaaad7db159cecafaae8e18c0fdadeaca94e5a1c24cb68d59fca80bf61f0ea2",
+      "record_revision": 2,
+      "member_ids": [
+        "M0319"
+      ],
+      "context_checked_member_ids": [
+        "M0319"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0268-F01"
+      ],
+      "new_fact_ids": [
+        "R03-W0268-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0268.0001.json",
+          "sha256": "6e2f57cacbc2d19075899fcd79c05c09a88cdf5de63a4158e61b7798f496fd76"
+        },
+        {
+          "filename": "W0268.0002.json",
+          "sha256": "bdaaad7db159cecafaae8e18c0fdadeaca94e5a1c24cb68d59fca80bf61f0ea2"
+        }
+      ]
+    },
+    {
+      "review_id": "W0269",
+      "work_id": "arxiv:2607.24174",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0269.0002.json",
+      "latest_record_sha256": "40c0a5f4af1a6e6d58db8dece93ef2350136890d4522be27ca091acba582309d",
+      "record_revision": 2,
+      "member_ids": [
+        "M0320"
+      ],
+      "context_checked_member_ids": [
+        "M0320"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0269-F01",
+        "SEM-03-SC03-W0269-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0269-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0269.0001.json",
+          "sha256": "89521f85e094e7969cc86835952fd5202aee345233c1ed0f485e454a3309f68c"
+        },
+        {
+          "filename": "W0269.0002.json",
+          "sha256": "40c0a5f4af1a6e6d58db8dece93ef2350136890d4522be27ca091acba582309d"
+        }
+      ]
+    },
+    {
+      "review_id": "W0270",
+      "work_id": "arxiv:2607.25255",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0270.0002.json",
+      "latest_record_sha256": "a011e014b5a83ed22a9eebc78a421e809d1d433b03792b2dbf4a49eff76ad78d",
+      "record_revision": 2,
+      "member_ids": [
+        "M0321"
+      ],
+      "context_checked_member_ids": [
+        "M0321"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0270-F01"
+      ],
+      "new_fact_ids": [
+        "R03-W0270-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0270.0001.json",
+          "sha256": "fd72f137098b3638a757242929b538f2a0d1e6be6b7e66be3274207296e8706c"
+        },
+        {
+          "filename": "W0270.0002.json",
+          "sha256": "a011e014b5a83ed22a9eebc78a421e809d1d433b03792b2dbf4a49eff76ad78d"
+        }
+      ]
+    },
+    {
+      "review_id": "W0271",
+      "work_id": "arxiv:2607.28165",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0271.0002.json",
+      "latest_record_sha256": "ccddf0a2086254d92fd45f6bf0c1f4a37b206a74c9efbef7ed7e7bf18f2424aa",
+      "record_revision": 2,
+      "member_ids": [
+        "M0322"
+      ],
+      "context_checked_member_ids": [
+        "M0322"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0271-F01",
+        "SEM-03-SC03-W0271-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0271-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0271.0001.json",
+          "sha256": "e166e333d873ccc4120986e6e85f7682aff21a7b5814b8e26cbd3580feab35b9"
+        },
+        {
+          "filename": "W0271.0002.json",
+          "sha256": "ccddf0a2086254d92fd45f6bf0c1f4a37b206a74c9efbef7ed7e7bf18f2424aa"
+        }
+      ]
+    },
+    {
+      "review_id": "W0272",
+      "work_id": "arxiv:2608.05430",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0272.0002.json",
+      "latest_record_sha256": "2cb51e828c0fbcccb8ff3ab5ef6ec15288baa677e2ccfdd55f388696cfc86277",
+      "record_revision": 2,
+      "member_ids": [
+        "M0323"
+      ],
+      "context_checked_member_ids": [
+        "M0323"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0272-F01",
+        "SEM-03-SC03-W0272-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0272-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0272.0001.json",
+          "sha256": "273c370b8fb1994f7c977888f643ddf78f9fca08262ae8893cdd08d64de58d16"
+        },
+        {
+          "filename": "W0272.0002.json",
+          "sha256": "2cb51e828c0fbcccb8ff3ab5ef6ec15288baa677e2ccfdd55f388696cfc86277"
+        }
+      ]
+    },
+    {
+      "review_id": "W0273",
+      "work_id": "arxiv:2608.06130",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0273.0002.json",
+      "latest_record_sha256": "cab59165246d0dcf4370f687d2fec252cfd7bc45de6bbff9b9d1e0b9d3899fce",
+      "record_revision": 2,
+      "member_ids": [
+        "M0325"
+      ],
+      "context_checked_member_ids": [
+        "M0325"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0273-F01",
+        "SEM-03-SC03-W0273-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0273-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0273.0001.json",
+          "sha256": "06002b17dacddcc6f333683982ca6849a269b3699adb4b085e35706edf0565a3"
+        },
+        {
+          "filename": "W0273.0002.json",
+          "sha256": "cab59165246d0dcf4370f687d2fec252cfd7bc45de6bbff9b9d1e0b9d3899fce"
+        }
+      ]
+    },
+    {
+      "review_id": "W0274",
+      "work_id": "arxiv:2608.07167",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0274.0001.json",
+      "latest_record_sha256": "73e5358cd824fba1a1bcc703b1dad8ca17f0aab75ebeddcc4a4e569ca9050a06",
+      "record_revision": 1,
+      "member_ids": [
+        "M0326"
+      ],
+      "context_checked_member_ids": [],
+      "reused_evidence_ids": [],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "FIRST_PAGE_AUTHOR_MATCH_DOES_NOT_RESOLVE_TITLE_CHANGE",
+        "SOURCE_IDENTITY_REQUIRES_ADDITIONAL_VERIFICATION"
+      ],
+      "history": [
+        {
+          "filename": "W0274.0001.json",
+          "sha256": "73e5358cd824fba1a1bcc703b1dad8ca17f0aab75ebeddcc4a4e569ca9050a06"
+        }
+      ]
+    },
+    {
+      "review_id": "W0275",
+      "work_id": "arxiv:2608.08027",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0275.0002.json",
+      "latest_record_sha256": "6aacbb840913203134874e71aaee307aee021d82120765a52f34e03721fbda1b",
+      "record_revision": 2,
+      "member_ids": [
+        "M0327"
+      ],
+      "context_checked_member_ids": [
+        "M0327"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0275-F01",
+        "SEM-03-SC03-W0275-F02",
+        "SEM-03-SC03-W0275-F03",
+        "SEM-03-SC03-W0275-F04"
+      ],
+      "new_fact_ids": [
+        "R03-W0275-F01",
+        "R03-W0275-F02"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0275.0001.json",
+          "sha256": "723c74e42efbb03041dc2624a0edf678acb62b8d982af482578dacbe859ecbf9"
+        },
+        {
+          "filename": "W0275.0002.json",
+          "sha256": "6aacbb840913203134874e71aaee307aee021d82120765a52f34e03721fbda1b"
+        }
+      ]
+    },
+    {
+      "review_id": "W0276",
+      "work_id": "arxiv:2608.08100",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0276.0002.json",
+      "latest_record_sha256": "5660dbfb83e4dc972d5d959e4552d23fd5cf693c541c6d3483c6bdbb3aa54579",
+      "record_revision": 2,
+      "member_ids": [
+        "M0328"
+      ],
+      "context_checked_member_ids": [
+        "M0328"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0276-F01",
+        "SEM-03-SC03-W0276-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0276-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0276.0001.json",
+          "sha256": "934e94a647d409d9775c6a950885b1dec0290f57981cfccfaa57bca6f68aba4d"
+        },
+        {
+          "filename": "W0276.0002.json",
+          "sha256": "5660dbfb83e4dc972d5d959e4552d23fd5cf693c541c6d3483c6bdbb3aa54579"
+        }
+      ]
+    },
+    {
+      "review_id": "W0277",
+      "work_id": "arxiv:2608.08468",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0277.0002.json",
+      "latest_record_sha256": "462f8b5dcbe36b80c6e4dab4f306ff62696f1c0fdfa02b648fd49e77131685d1",
+      "record_revision": 2,
+      "member_ids": [
+        "M0329"
+      ],
+      "context_checked_member_ids": [
+        "M0329"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0277-F01",
+        "SEM-03-SC03-W0277-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0277-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0277.0001.json",
+          "sha256": "6edb222cbea7a438f355e24295c1f545813ea81ea477a5e791f041cdb5fc3166"
+        },
+        {
+          "filename": "W0277.0002.json",
+          "sha256": "462f8b5dcbe36b80c6e4dab4f306ff62696f1c0fdfa02b648fd49e77131685d1"
+        }
+      ]
+    },
+    {
+      "review_id": "W0278",
+      "work_id": "arxiv:2608.10260",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0278.0001.json",
+      "latest_record_sha256": "06ebb6395bd2114fdb837754174e48aaa25051d4b233d46496799ab830e2297e",
+      "record_revision": 1,
+      "member_ids": [
+        "M0330"
+      ],
+      "context_checked_member_ids": [
+        "M0330"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0278-F01",
+        "SEM-03-SC03-W0278-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "DETECTION_APPLICATION_CHRONOLOGY_AND_LANGUAGE_NEED_MORE_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0278.0001.json",
+          "sha256": "06ebb6395bd2114fdb837754174e48aaa25051d4b233d46496799ab830e2297e"
+        }
+      ]
+    },
+    {
+      "review_id": "W0279",
+      "work_id": "arxiv:2608.12172",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0279.0002.json",
+      "latest_record_sha256": "07d266546fa78720dbea189e052a6130e4fba5370d7b9acdfae287d9353fc446",
+      "record_revision": 2,
+      "member_ids": [
+        "M0331"
+      ],
+      "context_checked_member_ids": [
+        "M0331"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0279-F01",
+        "SEM-03-SC03-W0279-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0279-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0279.0001.json",
+          "sha256": "f501e7e8deeef636c9a40a7ef725e7c9ee7f2173e1a83605b801393983b6ce45"
+        },
+        {
+          "filename": "W0279.0002.json",
+          "sha256": "07d266546fa78720dbea189e052a6130e4fba5370d7b9acdfae287d9353fc446"
+        }
+      ]
+    },
+    {
+      "review_id": "W0280",
+      "work_id": "arxiv:2608.18136",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0280.0002.json",
+      "latest_record_sha256": "c19ea88350f9db7e61be7d259887ef25a94b8a56718a22b6fef7090dab8f8f8a",
+      "record_revision": 2,
+      "member_ids": [
+        "M0333"
+      ],
+      "context_checked_member_ids": [
+        "M0333"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0280-F01",
+        "SEM-03-SC03-W0280-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0280-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0280.0001.json",
+          "sha256": "c1c60f8d183321e51b64060317d307a088a3d30023abde592b401c4b3fba2976"
+        },
+        {
+          "filename": "W0280.0002.json",
+          "sha256": "c19ea88350f9db7e61be7d259887ef25a94b8a56718a22b6fef7090dab8f8f8a"
+        }
+      ]
+    },
+    {
+      "review_id": "W0281",
+      "work_id": "arxiv:2608.20413",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0281.0001.json",
+      "latest_record_sha256": "d50597a90d26cef5efb51e3d5bcbecf9606d2da6f1d725ee3555895f2ec2d77b",
+      "record_revision": 1,
+      "member_ids": [
+        "M0334"
+      ],
+      "context_checked_member_ids": [
+        "M0334"
+      ],
+      "reused_evidence_ids": [],
+      "new_fact_ids": [
+        "R03-W0281-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0281.0001.json",
+          "sha256": "d50597a90d26cef5efb51e3d5bcbecf9606d2da6f1d725ee3555895f2ec2d77b"
+        }
+      ]
+    },
+    {
+      "review_id": "W0282",
+      "work_id": "arxiv:2608.22248",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0282.0001.json",
+      "latest_record_sha256": "d4f92789cb98686513fd926020c96b416503866847b2fa5b3a2d7a9132d1413f",
+      "record_revision": 1,
+      "member_ids": [
+        "M0335"
+      ],
+      "context_checked_member_ids": [
+        "M0335"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0282-F01",
+        "SEM-03-SC03-W0282-F02",
+        "SEM-03-SC03-W0282-F03"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "PREFILL_VERSUS_GENERATED_READOUT_CHRONOLOGY_NOT_EXPLICIT_IN_INSPECTED_METHOD"
+      ],
+      "history": [
+        {
+          "filename": "W0282.0001.json",
+          "sha256": "d4f92789cb98686513fd926020c96b416503866847b2fa5b3a2d7a9132d1413f"
+        }
+      ]
+    },
+    {
+      "review_id": "W0283",
+      "work_id": "arxiv:2608.24022",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0283.0002.json",
+      "latest_record_sha256": "9c193f6cb6c860c7701cd42d778ab24420490e8911b01c09380091a56838fb48",
+      "record_revision": 2,
+      "member_ids": [
+        "M0336"
+      ],
+      "context_checked_member_ids": [
+        "M0336"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0283-F01",
+        "SEM-03-SC03-W0283-F02",
+        "SEM-03-SC03-W0283-F03",
+        "SEM-03-SC03-W0283-F04"
+      ],
+      "new_fact_ids": [
+        "R03-W0283-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "STATIC_SCANNING_BASELINE_CHRONOLOGY_NOT_SEPARATELY_SPECIFIED"
+      ],
+      "history": [
+        {
+          "filename": "W0283.0001.json",
+          "sha256": "d6bb18f3fc56416d8a51e282d3f27a483407f0b4aafe5e802d7803158d2e4322"
+        },
+        {
+          "filename": "W0283.0002.json",
+          "sha256": "9c193f6cb6c860c7701cd42d778ab24420490e8911b01c09380091a56838fb48"
+        }
+      ]
+    },
+    {
+      "review_id": "W0284",
+      "work_id": "arxiv:2608.26423",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0284.0001.json",
+      "latest_record_sha256": "fdb3b26e0b5b1cc2ef726d68723355e2652296b0654295773c9f9318063d9960",
+      "record_revision": 1,
+      "member_ids": [
+        "M0337"
+      ],
+      "context_checked_member_ids": [
+        "M0337"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0284-F01",
+        "SEM-03-SC03-W0284-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0284-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0284.0001.json",
+          "sha256": "fdb3b26e0b5b1cc2ef726d68723355e2652296b0654295773c9f9318063d9960"
+        }
+      ]
+    },
+    {
+      "review_id": "W0285",
+      "work_id": "arxiv:2608.27990",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0285.0002.json",
+      "latest_record_sha256": "0b64fd7ac56bb31559cc326d34de173b5084dc82132c881d3177cff3bc463672",
+      "record_revision": 2,
+      "member_ids": [
+        "M0338"
+      ],
+      "context_checked_member_ids": [
+        "M0338"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0285-F01",
+        "SEM-03-SC03-W0285-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0285-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0285.0001.json",
+          "sha256": "cbaffb77da4c258f85f632411af5844044f0e81b4213835a7631f4c50079547b"
+        },
+        {
+          "filename": "W0285.0002.json",
+          "sha256": "0b64fd7ac56bb31559cc326d34de173b5084dc82132c881d3177cff3bc463672"
+        }
+      ]
+    },
+    {
+      "review_id": "W0286",
+      "work_id": "arxiv:2608.30041",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0286.0002.json",
+      "latest_record_sha256": "f9c9565148b2030331d579c7d70ec1cc5bd1eee91b8f3cf39d14a4629a315c62",
+      "record_revision": 2,
+      "member_ids": [
+        "M0339"
+      ],
+      "context_checked_member_ids": [
+        "M0339"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0286-F01",
+        "SEM-03-SC03-W0286-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0286-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0286.0001.json",
+          "sha256": "6110b3c88442fd283cfe8aabe85153af635471a179234462f9a8753643e90a24"
+        },
+        {
+          "filename": "W0286.0002.json",
+          "sha256": "f9c9565148b2030331d579c7d70ec1cc5bd1eee91b8f3cf39d14a4629a315c62"
+        }
+      ]
+    },
+    {
+      "review_id": "W0287",
+      "work_id": "arxiv:2608.30083",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0287.0001.json",
+      "latest_record_sha256": "7ab7356cadfd3570389edaa172e700436390d5cf42602360833f11621895c384",
+      "record_revision": 1,
+      "member_ids": [
+        "M0340"
+      ],
+      "context_checked_member_ids": [
+        "M0340"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0287-F01",
+        "SEM-03-SC03-W0287-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "POLICY_PROOF_VERIFICATION_BOUNDARY_RETAINED"
+      ],
+      "history": [
+        {
+          "filename": "W0287.0001.json",
+          "sha256": "7ab7356cadfd3570389edaa172e700436390d5cf42602360833f11621895c384"
+        }
+      ]
+    },
+    {
+      "review_id": "W0288",
+      "work_id": "arxiv:2608.30362",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0288.0002.json",
+      "latest_record_sha256": "003beae691e00d764aee508d6e7bc72d66edb864d8de4a7375ff69f8eabaf4da",
+      "record_revision": 2,
+      "member_ids": [
+        "M0341"
+      ],
+      "context_checked_member_ids": [
+        "M0341"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0288-F01",
+        "SEM-03-SC03-W0288-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0288-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0288.0001.json",
+          "sha256": "f51eb0fe9ecc3ed53eebb09d1b07bccc3767a635999ce0900b59a34f9b173163"
+        },
+        {
+          "filename": "W0288.0002.json",
+          "sha256": "003beae691e00d764aee508d6e7bc72d66edb864d8de4a7375ff69f8eabaf4da"
+        }
+      ]
+    },
+    {
+      "review_id": "W0289",
+      "work_id": "arxiv:2608.30441",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0289.0001.json",
+      "latest_record_sha256": "441aa861a86b4cd9b86e9b8fe868f8ad0711075642f59148d265727c2cc445ff",
+      "record_revision": 1,
+      "member_ids": [
+        "M0342"
+      ],
+      "context_checked_member_ids": [
+        "M0342"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0289-F01",
+        "SEM-03-SC03-W0289-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "SCREENING_DISCUSSION_NOT_SEPARATED_INTO_EXPERIMENTAL_DETECTOR_PROTOCOL"
+      ],
+      "history": [
+        {
+          "filename": "W0289.0001.json",
+          "sha256": "441aa861a86b4cd9b86e9b8fe868f8ad0711075642f59148d265727c2cc445ff"
+        }
+      ]
+    },
+    {
+      "review_id": "W0290",
+      "work_id": "arxiv:2609.00052",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0290.0002.json",
+      "latest_record_sha256": "5ac12aadc02307a648daed2a40c9775981800ae17151911fb4fab9f18b298b27",
+      "record_revision": 2,
+      "member_ids": [
+        "M0343"
+      ],
+      "context_checked_member_ids": [
+        "M0343"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0290-F01",
+        "SEM-03-SC03-W0290-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0290-F01"
+      ],
+      "remaining_fact_codes": [],
+      "history": [
+        {
+          "filename": "W0290.0001.json",
+          "sha256": "246b7eea6f01c41ce05b61078a51819b6392cd9d0bdec128792a7289e9a5836f"
+        },
+        {
+          "filename": "W0290.0002.json",
+          "sha256": "5ac12aadc02307a648daed2a40c9775981800ae17151911fb4fab9f18b298b27"
+        }
+      ]
+    },
+    {
+      "review_id": "W0291",
+      "work_id": "arxiv:2609.01046",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0291.0001.json",
+      "latest_record_sha256": "1870a783303486815d03fc2edfc8e18c519af91b8c721326e64e41a2dd38df19",
+      "record_revision": 1,
+      "member_ids": [
+        "M0344"
+      ],
+      "context_checked_member_ids": [
+        "M0344"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0291-F01",
+        "SEM-03-SC03-W0291-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0291.0001.json",
+          "sha256": "1870a783303486815d03fc2edfc8e18c519af91b8c721326e64e41a2dd38df19"
+        }
+      ]
+    },
+    {
+      "review_id": "W0292",
+      "work_id": "arxiv:2609.01931",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0292.0001.json",
+      "latest_record_sha256": "53756e7879942bc41f5eb5aa7aaba867ff146a0685fd61f511e6295a1ef8df07",
+      "record_revision": 1,
+      "member_ids": [
+        "M0345"
+      ],
+      "context_checked_member_ids": [
+        "M0345"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0292-F01"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "LOG_INTEGRITY_EXPERIMENT_REQUIRES_SEPARATE_BINARY_CONTENT_CLASSIFIER_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0292.0001.json",
+          "sha256": "53756e7879942bc41f5eb5aa7aaba867ff146a0685fd61f511e6295a1ef8df07"
+        }
+      ]
+    },
+    {
+      "review_id": "W0293",
+      "work_id": "arxiv:2609.05074",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0293.0001.json",
+      "latest_record_sha256": "587a6c5093da9a80908d05148685f42956ab7ceb3f46f0d8f0069b46abd20187",
+      "record_revision": 1,
+      "member_ids": [
+        "M0346"
+      ],
+      "context_checked_member_ids": [
+        "M0346"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0293-F01",
+        "SEM-03-SC03-W0293-F02",
+        "SEM-03-SC03-W0293-F03"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0293.0001.json",
+          "sha256": "587a6c5093da9a80908d05148685f42956ab7ceb3f46f0d8f0069b46abd20187"
+        }
+      ]
+    },
+    {
+      "review_id": "W0294",
+      "work_id": "arxiv:2609.05535",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0294.0002.json",
+      "latest_record_sha256": "c76de7095f0e504e53b48b0efc797625d054bb5443604f72e57f1f22e3e30232",
+      "record_revision": 2,
+      "member_ids": [
+        "M0347"
+      ],
+      "context_checked_member_ids": [
+        "M0347"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0294-F01",
+        "SEM-03-SC03-W0294-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0294-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0294.0001.json",
+          "sha256": "4650fb6c615bd477f4a4ec6045a25b705f3d77482928db996126b1a819bf1880"
+        },
+        {
+          "filename": "W0294.0002.json",
+          "sha256": "c76de7095f0e504e53b48b0efc797625d054bb5443604f72e57f1f22e3e30232"
+        }
+      ]
+    },
+    {
+      "review_id": "W0295",
+      "work_id": "arxiv:2609.06966",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0295.0002.json",
+      "latest_record_sha256": "9315703193e4d26ea570c2956b976d58e42c96cb18eda3106fe9e40d435ac657",
+      "record_revision": 2,
+      "member_ids": [
+        "M0348"
+      ],
+      "context_checked_member_ids": [
+        "M0348"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0295-F01"
+      ],
+      "new_fact_ids": [
+        "R03-W0295-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0295.0001.json",
+          "sha256": "56121daca15f45fc68491fe62c75fd15a1450fac3c3acf48d3450055e4023dec"
+        },
+        {
+          "filename": "W0295.0002.json",
+          "sha256": "9315703193e4d26ea570c2956b976d58e42c96cb18eda3106fe9e40d435ac657"
+        }
+      ]
+    },
+    {
+      "review_id": "W0296",
+      "work_id": "arxiv:2609.06972",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0296.0001.json",
+      "latest_record_sha256": "2cdff5dd9ae1cb36115b69a1a16d4b08318f371fba532aa3004cfc108b15dcdf",
+      "record_revision": 1,
+      "member_ids": [
+        "M0349"
+      ],
+      "context_checked_member_ids": [
+        "M0349"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0296-F01",
+        "SEM-03-SC03-W0296-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CORPUS_LABELS_DO_NOT_BY_THEMSELVES_DEFINE_A_DETECTOR_EVALUATION",
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0296.0001.json",
+          "sha256": "2cdff5dd9ae1cb36115b69a1a16d4b08318f371fba532aa3004cfc108b15dcdf"
+        }
+      ]
+    },
+    {
+      "review_id": "W0297",
+      "work_id": "arxiv:2609.10707",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0297.0002.json",
+      "latest_record_sha256": "6b79d9ce2101888d3ad8d08cb7928933c26c1b8e05c66f7e896cd1d8031e2482",
+      "record_revision": 2,
+      "member_ids": [
+        "M0350"
+      ],
+      "context_checked_member_ids": [
+        "M0350"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0297-F01",
+        "SEM-03-SC03-W0297-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0297-F01",
+        "R03-W0297-F02"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0297.0001.json",
+          "sha256": "f0d2608dd8e3db770294972091866f9ea26c8cc22746d4475282ce517790357b"
+        },
+        {
+          "filename": "W0297.0002.json",
+          "sha256": "6b79d9ce2101888d3ad8d08cb7928933c26c1b8e05c66f7e896cd1d8031e2482"
+        }
+      ]
+    },
+    {
+      "review_id": "W0298",
+      "work_id": "arxiv:2609.10854",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0298.0002.json",
+      "latest_record_sha256": "957d247627820f2697b42a477fc970769269cc1c6b7ee9f268c3c24f859ea4bc",
+      "record_revision": 2,
+      "member_ids": [
+        "M0351"
+      ],
+      "context_checked_member_ids": [
+        "M0351"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0298-F01",
+        "SEM-03-SC03-W0298-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0298-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0298.0001.json",
+          "sha256": "f5a03400eea7899a20533cd04921601293cd27197004aa10d62b1f02d6b14918"
+        },
+        {
+          "filename": "W0298.0002.json",
+          "sha256": "957d247627820f2697b42a477fc970769269cc1c6b7ee9f268c3c24f859ea4bc"
+        }
+      ]
+    },
+    {
+      "review_id": "W0299",
+      "work_id": "arxiv:2609.10892",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0299.0001.json",
+      "latest_record_sha256": "97171617b4b313b16c548bbe2ceb0fca255a1420aa37909d42b5e76f9974c5ba",
+      "record_revision": 1,
+      "member_ids": [
+        "M0352"
+      ],
+      "context_checked_member_ids": [
+        "M0352"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0299-F01",
+        "SEM-03-SC03-W0299-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0299.0001.json",
+          "sha256": "97171617b4b313b16c548bbe2ceb0fca255a1420aa37909d42b5e76f9974c5ba"
+        }
+      ]
+    },
+    {
+      "review_id": "W0301",
+      "work_id": "arxiv:2609.15994",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0301.0001.json",
+      "latest_record_sha256": "214c238f87ab2173c8a74e2fdffbe95d556a5f4ec6134342cd4c8403324f7fb0",
+      "record_revision": 1,
+      "member_ids": [
+        "M0355"
+      ],
+      "context_checked_member_ids": [
+        "M0355"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0301-F01",
+        "SEM-03-SC03-W0301-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0301.0001.json",
+          "sha256": "214c238f87ab2173c8a74e2fdffbe95d556a5f4ec6134342cd4c8403324f7fb0"
+        }
+      ]
+    },
+    {
+      "review_id": "W0302",
+      "work_id": "arxiv:2609.16098",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0302.0002.json",
+      "latest_record_sha256": "856f6688c18f8efb582dd44260d402cb498fc9b74f878b0be1b69e6a58014c04",
+      "record_revision": 2,
+      "member_ids": [
+        "M0356"
+      ],
+      "context_checked_member_ids": [
+        "M0356"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0302-F01",
+        "SEM-03-SC03-W0302-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0302-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0302.0001.json",
+          "sha256": "a56a9a42e6a966450c08ec8cc4ccbcaeb5198ab0973339ff1193a9e405eba5c4"
+        },
+        {
+          "filename": "W0302.0002.json",
+          "sha256": "856f6688c18f8efb582dd44260d402cb498fc9b74f878b0be1b69e6a58014c04"
+        }
+      ]
+    },
+    {
+      "review_id": "W0303",
+      "work_id": "arxiv:2609.17320",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0303.0002.json",
+      "latest_record_sha256": "7eb271f19e861da0f47080833cb9a07297c7ffa4810c4f1dc19902fe26dbfbfb",
+      "record_revision": 2,
+      "member_ids": [
+        "M0357"
+      ],
+      "context_checked_member_ids": [
+        "M0357"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0303-F01"
+      ],
+      "new_fact_ids": [
+        "R03-W0303-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0303.0001.json",
+          "sha256": "6e1fc5641da25fe2035ccad0fc0e03ee486d83ab484e3d2880c8e5ca9a6ba991"
+        },
+        {
+          "filename": "W0303.0002.json",
+          "sha256": "7eb271f19e861da0f47080833cb9a07297c7ffa4810c4f1dc19902fe26dbfbfb"
+        }
+      ]
+    },
+    {
+      "review_id": "W0304",
+      "work_id": "arxiv:2609.19587",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0304.0002.json",
+      "latest_record_sha256": "e0b5e9c6125364cb7ca92484013ad660b1d026bdc07b5c77baaa2dfc53719c1c",
+      "record_revision": 2,
+      "member_ids": [
+        "M0358"
+      ],
+      "context_checked_member_ids": [
+        "M0358"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0304-F01",
+        "SEM-03-SC03-W0304-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0304-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0304.0001.json",
+          "sha256": "e8e7b5a11211d8c6b4745f51ea500c1359d829663f29cd3ddcfe6dc70e1a25fa"
+        },
+        {
+          "filename": "W0304.0002.json",
+          "sha256": "e0b5e9c6125364cb7ca92484013ad660b1d026bdc07b5c77baaa2dfc53719c1c"
+        }
+      ]
+    },
+    {
+      "review_id": "W0305",
+      "work_id": "arxiv:2609.20188",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0305.0002.json",
+      "latest_record_sha256": "c16c92360558e117dce667ee2c057c478a707cacf964162c2e4ea380ae2cb4e9",
+      "record_revision": 2,
+      "member_ids": [
+        "M0359"
+      ],
+      "context_checked_member_ids": [
+        "M0359"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0305-F01",
+        "SEM-03-SC03-W0305-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0305-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0305.0001.json",
+          "sha256": "5e548668bfab000364654fc1e5e8f3dfc6d032c699bc191bc12acb173c180f67"
+        },
+        {
+          "filename": "W0305.0002.json",
+          "sha256": "c16c92360558e117dce667ee2c057c478a707cacf964162c2e4ea380ae2cb4e9"
+        }
+      ]
+    },
+    {
+      "review_id": "W0306",
+      "work_id": "arxiv:2609.20722",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0306.0001.json",
+      "latest_record_sha256": "779567c0dda9fdbab5f8d4e3fa16c1b4145102315817242db97f2a3b6724a4d3",
+      "record_revision": 1,
+      "member_ids": [
+        "M0360"
+      ],
+      "context_checked_member_ids": [
+        "M0360"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0306-F01",
+        "SEM-03-SC03-W0306-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0306.0001.json",
+          "sha256": "779567c0dda9fdbab5f8d4e3fa16c1b4145102315817242db97f2a3b6724a4d3"
+        }
+      ]
+    },
+    {
+      "review_id": "W0307",
+      "work_id": "arxiv:2609.22510",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0307.0001.json",
+      "latest_record_sha256": "21dd57324eb327edd5bee49f0cceae27b184bfcf24761016d5388e30524b5998",
+      "record_revision": 1,
+      "member_ids": [
+        "M0361"
+      ],
+      "context_checked_member_ids": [
+        "M0361"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0307-F01",
+        "SEM-03-SC03-W0307-F02",
+        "SEM-03-SC03-W0307-F03"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0307.0001.json",
+          "sha256": "21dd57324eb327edd5bee49f0cceae27b184bfcf24761016d5388e30524b5998"
+        }
+      ]
+    },
+    {
+      "review_id": "W0308",
+      "work_id": "arxiv:2609.22949",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0308.0001.json",
+      "latest_record_sha256": "c4176184e1d32f1effd55b6ea42600c84ae00c68488090e3a8754981c7debc8d",
+      "record_revision": 1,
+      "member_ids": [
+        "M0362"
+      ],
+      "context_checked_member_ids": [
+        "M0362"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0308-F01",
+        "SEM-03-SC03-W0308-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "MONITOR_PROTOCOL_IN_INSPECTED_PARAGRAPH_MIXED_WITH_FINDINGS"
+      ],
+      "history": [
+        {
+          "filename": "W0308.0001.json",
+          "sha256": "c4176184e1d32f1effd55b6ea42600c84ae00c68488090e3a8754981c7debc8d"
+        }
+      ]
+    },
+    {
+      "review_id": "W0309",
+      "work_id": "arxiv:2609.24801",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0309.0001.json",
+      "latest_record_sha256": "6c5e96dc171fafc5692764c2e341285ba614bda43e11005a664f4fdee9a36066",
+      "record_revision": 1,
+      "member_ids": [
+        "M0363"
+      ],
+      "context_checked_member_ids": [
+        "M0363"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0309-F01",
+        "SEM-03-SC03-W0309-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0309.0001.json",
+          "sha256": "6c5e96dc171fafc5692764c2e341285ba614bda43e11005a664f4fdee9a36066"
+        }
+      ]
+    },
+    {
+      "review_id": "W0310",
+      "work_id": "arxiv:2609.27263",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0310.0001.json",
+      "latest_record_sha256": "34f2e330abb5d8002bef54a653b60e5007b010adf3c7ef06229dc99926617b11",
+      "record_revision": 1,
+      "member_ids": [
+        "M0364"
+      ],
+      "context_checked_member_ids": [
+        "M0364"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0310-F01",
+        "SEM-03-SC03-W0310-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0310-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0310.0001.json",
+          "sha256": "34f2e330abb5d8002bef54a653b60e5007b010adf3c7ef06229dc99926617b11"
+        }
+      ]
+    },
+    {
+      "review_id": "W0311",
+      "work_id": "arxiv:2609.29429",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0311.0001.json",
+      "latest_record_sha256": "caa201e3ee251b256cd60bd63ab8c3ade5f6f26020b858d3c580d9759bccbf4d",
+      "record_revision": 1,
+      "member_ids": [
+        "M0365"
+      ],
+      "context_checked_member_ids": [
+        "M0365"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0311-F01",
+        "SEM-03-SC03-W0311-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0311-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0311.0001.json",
+          "sha256": "caa201e3ee251b256cd60bd63ab8c3ade5f6f26020b858d3c580d9759bccbf4d"
+        }
+      ]
+    },
+    {
+      "review_id": "W0312",
+      "work_id": "arxiv:2609.30217",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0312.0001.json",
+      "latest_record_sha256": "962dba8974b1b1ea182e61f4e8cd2d378fa189bfbc2e2506ebacc44875dffeb1",
+      "record_revision": 1,
+      "member_ids": [
+        "M0366"
+      ],
+      "context_checked_member_ids": [
+        "M0366"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0312-F01",
+        "SEM-03-SC03-W0312-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0312-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0312.0001.json",
+          "sha256": "962dba8974b1b1ea182e61f4e8cd2d378fa189bfbc2e2506ebacc44875dffeb1"
+        }
+      ]
+    },
+    {
+      "review_id": "W0313",
+      "work_id": "arxiv:2609.30657",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0313.0001.json",
+      "latest_record_sha256": "4a392cc37023952fcb471f556b08a8ad248a13ccdb6caa7e670573c757bc1dfb",
+      "record_revision": 1,
+      "member_ids": [
+        "M0367"
+      ],
+      "context_checked_member_ids": [
+        "M0367"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0313-F01",
+        "SEM-03-SC03-W0313-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0313-F01",
+        "R03-W0313-F02"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0313.0001.json",
+          "sha256": "4a392cc37023952fcb471f556b08a8ad248a13ccdb6caa7e670573c757bc1dfb"
+        }
+      ]
+    },
+    {
+      "review_id": "W0314",
+      "work_id": "arxiv:2609.33401",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0314.0001.json",
+      "latest_record_sha256": "cdb5a21d82c24fbca9a7342e95abbfb54762c03104cc5e4d9d1506894e1ed9f0",
+      "record_revision": 1,
+      "member_ids": [
+        "M0368"
+      ],
+      "context_checked_member_ids": [
+        "M0368"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0314-F01"
+      ],
+      "new_fact_ids": [
+        "R03-W0314-F01",
+        "R03-W0314-F02"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0314.0001.json",
+          "sha256": "cdb5a21d82c24fbca9a7342e95abbfb54762c03104cc5e4d9d1506894e1ed9f0"
+        }
+      ]
+    },
+    {
+      "review_id": "W0315",
+      "work_id": "arxiv:2609.36570",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0315.0001.json",
+      "latest_record_sha256": "2ee7302f84f50988fcfebbecfef36944752e879a985ce03768eefc6075ba5e6d",
+      "record_revision": 1,
+      "member_ids": [
+        "M0369"
+      ],
+      "context_checked_member_ids": [
+        "M0369"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0315-F01",
+        "SEM-03-SC03-W0315-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "DETECTOR_BASELINE_CHRONOLOGY_NOT_SEPARATED_FROM_PORT_EVALUATION_FINDINGS"
+      ],
+      "history": [
+        {
+          "filename": "W0315.0001.json",
+          "sha256": "2ee7302f84f50988fcfebbecfef36944752e879a985ce03768eefc6075ba5e6d"
+        }
+      ]
+    },
+    {
+      "review_id": "W0316",
+      "work_id": "arxiv:2609.36817",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0316.0001.json",
+      "latest_record_sha256": "ba8bd87a758182bb12941548c5757fef9492da2bf241728fe430cf415b50eeb2",
+      "record_revision": 1,
+      "member_ids": [
+        "M0370"
+      ],
+      "context_checked_member_ids": [
+        "M0370"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0316-F01",
+        "SEM-03-SC03-W0316-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0316-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0316.0001.json",
+          "sha256": "ba8bd87a758182bb12941548c5757fef9492da2bf241728fe430cf415b50eeb2"
+        }
+      ]
+    },
+    {
+      "review_id": "W0317",
+      "work_id": "arxiv:2609.37737",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0317.0001.json",
+      "latest_record_sha256": "0f57c19f85b87962a86d34070c92c60acc9721b2aebe7be647ffc2456c323751",
+      "record_revision": 1,
+      "member_ids": [
+        "M0371"
+      ],
+      "context_checked_member_ids": [
+        "M0371"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0317-F01",
+        "SEM-03-SC03-W0317-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "ACTIVATION_PROBE_AND_TEXT_CLASSIFIER_BASELINE_NEEDS_SEPARATED_METHOD_CONTEXT",
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0317.0001.json",
+          "sha256": "0f57c19f85b87962a86d34070c92c60acc9721b2aebe7be647ffc2456c323751"
+        }
+      ]
+    },
+    {
+      "review_id": "W0318",
+      "work_id": "arxiv:2609.39678",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0318.0001.json",
+      "latest_record_sha256": "f18f8abc123fa54fce2ccd012ea6a1a3f65d02fbc2a49c40787094de7289e4de",
+      "record_revision": 1,
+      "member_ids": [
+        "M0372"
+      ],
+      "context_checked_member_ids": [
+        "M0372"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0318-F01",
+        "SEM-03-SC03-W0318-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0318.0001.json",
+          "sha256": "f18f8abc123fa54fce2ccd012ea6a1a3f65d02fbc2a49c40787094de7289e4de"
+        }
+      ]
+    },
+    {
+      "review_id": "W0319",
+      "work_id": "arxiv:2610.00151",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0319.0001.json",
+      "latest_record_sha256": "b061bf804dc39a44f23a4c78684277e1b8ccc35cab12e426bfa8b1162c859d3d",
+      "record_revision": 1,
+      "member_ids": [
+        "M0373"
+      ],
+      "context_checked_member_ids": [
+        "M0373"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0319-F01",
+        "SEM-03-SC03-W0319-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0319.0001.json",
+          "sha256": "b061bf804dc39a44f23a4c78684277e1b8ccc35cab12e426bfa8b1162c859d3d"
+        }
+      ]
+    },
+    {
+      "review_id": "W0320",
+      "work_id": "arxiv:2610.00430",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0320.0001.json",
+      "latest_record_sha256": "fb6d4bbe814c7ba065e50f80f71077595b55a694196c01cfee08868363ebeaab",
+      "record_revision": 1,
+      "member_ids": [
+        "M0374"
+      ],
+      "context_checked_member_ids": [
+        "M0374"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0320-F01",
+        "SEM-03-SC03-W0320-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0320.0001.json",
+          "sha256": "fb6d4bbe814c7ba065e50f80f71077595b55a694196c01cfee08868363ebeaab"
+        }
+      ]
+    },
+    {
+      "review_id": "W0321",
+      "work_id": "arxiv:2610.02413",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0321.0001.json",
+      "latest_record_sha256": "8bb6a5c70b76149b9a73bd56f33f398618e2287f37e0739a1f52b52abc151a7d",
+      "record_revision": 1,
+      "member_ids": [
+        "M0375"
+      ],
+      "context_checked_member_ids": [
+        "M0375"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0321-F01",
+        "SEM-03-SC03-W0321-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0321.0001.json",
+          "sha256": "8bb6a5c70b76149b9a73bd56f33f398618e2287f37e0739a1f52b52abc151a7d"
+        }
+      ]
+    },
+    {
+      "review_id": "W0322",
+      "work_id": "arxiv:2610.03434",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0322.0001.json",
+      "latest_record_sha256": "7cf546d726ee88ddb4374fdcba9ed917aac5d9376289bab11609aebba52b045b",
+      "record_revision": 1,
+      "member_ids": [
+        "M0376"
+      ],
+      "context_checked_member_ids": [
+        "M0376"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0322-F01",
+        "SEM-03-SC03-W0322-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0322-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0322.0001.json",
+          "sha256": "7cf546d726ee88ddb4374fdcba9ed917aac5d9376289bab11609aebba52b045b"
+        }
+      ]
+    },
+    {
+      "review_id": "W0323",
+      "work_id": "arxiv:2610.03448",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0323.0001.json",
+      "latest_record_sha256": "a7e53b30092094dd6af3028d4bd93e12c8f9d6590611968c234604c37d871e31",
+      "record_revision": 1,
+      "member_ids": [
+        "M0377"
+      ],
+      "context_checked_member_ids": [
+        "M0377"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0323-F01",
+        "SEM-03-SC03-W0323-F02",
+        "SEM-03-SC03-W0323-F03"
+      ],
+      "new_fact_ids": [
+        "R03-W0323-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0323.0001.json",
+          "sha256": "a7e53b30092094dd6af3028d4bd93e12c8f9d6590611968c234604c37d871e31"
+        }
+      ]
+    },
+    {
+      "review_id": "W0324",
+      "work_id": "arxiv:2610.03470",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0324.0001.json",
+      "latest_record_sha256": "20118ec090c4dcf823274b9b1b1dd21df2aa3b944f949f325021314a827310cc",
+      "record_revision": 1,
+      "member_ids": [
+        "M0378"
+      ],
+      "context_checked_member_ids": [
+        "M0378"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0324-F01",
+        "SEM-03-SC03-W0324-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0324.0001.json",
+          "sha256": "20118ec090c4dcf823274b9b1b1dd21df2aa3b944f949f325021314a827310cc"
+        }
+      ]
+    },
+    {
+      "review_id": "W0325",
+      "work_id": "arxiv:2610.04412",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0325.0001.json",
+      "latest_record_sha256": "a9590a357873643792895fa0a527557df64a6a426f1f7f8273d8d6c5c2f71be7",
+      "record_revision": 1,
+      "member_ids": [
+        "M0379"
+      ],
+      "context_checked_member_ids": [
+        "M0379"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0325-F01"
+      ],
+      "new_fact_ids": [
+        "R03-W0325-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0325.0001.json",
+          "sha256": "a9590a357873643792895fa0a527557df64a6a426f1f7f8273d8d6c5c2f71be7"
+        }
+      ]
+    },
+    {
+      "review_id": "W0326",
+      "work_id": "arxiv:2610.04985",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0326.0001.json",
+      "latest_record_sha256": "5c7be56394892112bc8673fda2c6ea9d9b7e70a5f6c010c07c0847b69cefc6e3",
+      "record_revision": 1,
+      "member_ids": [
+        "M0380"
+      ],
+      "context_checked_member_ids": [
+        "M0380"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0326-F01",
+        "SEM-03-SC03-W0326-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0326.0001.json",
+          "sha256": "5c7be56394892112bc8673fda2c6ea9d9b7e70a5f6c010c07c0847b69cefc6e3"
+        }
+      ]
+    },
+    {
+      "review_id": "W0327",
+      "work_id": "arxiv:2610.08571",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0327.0001.json",
+      "latest_record_sha256": "529e5a6ea851064046f65604d6e27f881daa28f91f9e3542c4c818bffed62613",
+      "record_revision": 1,
+      "member_ids": [
+        "M0381"
+      ],
+      "context_checked_member_ids": [
+        "M0381"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0327-F01",
+        "SEM-03-SC03-W0327-F02",
+        "SEM-03-SC03-W0327-F03",
+        "SEM-03-SC03-W0327-F04"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [],
+      "history": [
+        {
+          "filename": "W0327.0001.json",
+          "sha256": "529e5a6ea851064046f65604d6e27f881daa28f91f9e3542c4c818bffed62613"
+        }
+      ]
+    },
+    {
+      "review_id": "W0328",
+      "work_id": "arxiv:2610.10742",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0328.0001.json",
+      "latest_record_sha256": "91579a06b489ab3ce0ff24558997b85f3fcdebbac43768b236c3405a761e2d1e",
+      "record_revision": 1,
+      "member_ids": [
+        "M0382"
+      ],
+      "context_checked_member_ids": [
+        "M0382"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0328-F01",
+        "SEM-03-SC03-W0328-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0328-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0328.0001.json",
+          "sha256": "91579a06b489ab3ce0ff24558997b85f3fcdebbac43768b236c3405a761e2d1e"
+        }
+      ]
+    },
+    {
+      "review_id": "W0329",
+      "work_id": "arxiv:2610.12292",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0329.0001.json",
+      "latest_record_sha256": "7c433405c6252ee93f40195abdad74fb95192fa56d5f7c8b00daf866f8e23728",
+      "record_revision": 1,
+      "member_ids": [
+        "M0383"
+      ],
+      "context_checked_member_ids": [
+        "M0383"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0329-F01",
+        "SEM-03-SC03-W0329-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0329.0001.json",
+          "sha256": "7c433405c6252ee93f40195abdad74fb95192fa56d5f7c8b00daf866f8e23728"
+        }
+      ]
+    },
+    {
+      "review_id": "W0330",
+      "work_id": "arxiv:2610.15177",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0330.0001.json",
+      "latest_record_sha256": "927eda3990b1532debcf06be22415d709074bfc70293a24ea32ebd28602df5b1",
+      "record_revision": 1,
+      "member_ids": [
+        "M0384"
+      ],
+      "context_checked_member_ids": [
+        "M0384"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0330-F01"
+      ],
+      "new_fact_ids": [
+        "R03-W0330-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0330.0001.json",
+          "sha256": "927eda3990b1532debcf06be22415d709074bfc70293a24ea32ebd28602df5b1"
+        }
+      ]
+    },
+    {
+      "review_id": "W0331",
+      "work_id": "arxiv:2610.17457",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0331.0001.json",
+      "latest_record_sha256": "629360a6d0f2eb0f4b40f42270642b011ced334fd212d4d099876261da282282",
+      "record_revision": 1,
+      "member_ids": [
+        "M0385"
+      ],
+      "context_checked_member_ids": [
+        "M0385"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0331-F01",
+        "SEM-03-SC03-W0331-F02",
+        "SEM-03-SC03-W0331-F03"
+      ],
+      "new_fact_ids": [
+        "R03-W0331-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0331.0001.json",
+          "sha256": "629360a6d0f2eb0f4b40f42270642b011ced334fd212d4d099876261da282282"
+        }
+      ]
+    },
+    {
+      "review_id": "W0332",
+      "work_id": "arxiv:2610.18408",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0332.0001.json",
+      "latest_record_sha256": "23bf607a3bd45e5d79f24b98285cf79efd1918e5db259b7a295c194b555dbc6e",
+      "record_revision": 1,
+      "member_ids": [
+        "M0386"
+      ],
+      "context_checked_member_ids": [
+        "M0386"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0332-F01",
+        "SEM-03-SC03-W0332-F02",
+        "SEM-03-SC03-W0332-F03"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0332.0001.json",
+          "sha256": "23bf607a3bd45e5d79f24b98285cf79efd1918e5db259b7a295c194b555dbc6e"
+        }
+      ]
+    },
+    {
+      "review_id": "W0333",
+      "work_id": "arxiv:2610.18508",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0333.0001.json",
+      "latest_record_sha256": "6bd8d8eebca7fc5f1cec3842b17cbdfc90fae0c8c35aeee6514da7377f63f957",
+      "record_revision": 1,
+      "member_ids": [
+        "M0387"
+      ],
+      "context_checked_member_ids": [
+        "M0387"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0333-F01",
+        "SEM-03-SC03-W0333-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0333-F01",
+        "R03-W0333-F02"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0333.0001.json",
+          "sha256": "6bd8d8eebca7fc5f1cec3842b17cbdfc90fae0c8c35aeee6514da7377f63f957"
+        }
+      ]
+    },
+    {
+      "review_id": "W0334",
+      "work_id": "arxiv:2610.19452",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0334.0001.json",
+      "latest_record_sha256": "86a7c2644b3e44ceeafe8db3f2cb9ed392f9b4612c954eb6633212334ae5197d",
+      "record_revision": 1,
+      "member_ids": [
+        "M0388"
+      ],
+      "context_checked_member_ids": [
+        "M0388"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0334-F01",
+        "SEM-03-SC03-W0334-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0334.0001.json",
+          "sha256": "86a7c2644b3e44ceeafe8db3f2cb9ed392f9b4612c954eb6633212334ae5197d"
+        }
+      ]
+    },
+    {
+      "review_id": "W0335",
+      "work_id": "arxiv:2610.20907",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0335.0001.json",
+      "latest_record_sha256": "0c013271c0a8048172e5e8508ec79980bbb209d9157c68575618eabcb31c20a4",
+      "record_revision": 1,
+      "member_ids": [
+        "M0389"
+      ],
+      "context_checked_member_ids": [
+        "M0389"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0335-F01",
+        "SEM-03-SC03-W0335-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0335-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0335.0001.json",
+          "sha256": "0c013271c0a8048172e5e8508ec79980bbb209d9157c68575618eabcb31c20a4"
+        }
+      ]
+    },
+    {
+      "review_id": "W0336",
+      "work_id": "doi:10.1007/978-3-031-80853-1_30",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0336.0001.json",
+      "latest_record_sha256": "70138615203cafaf4f01f21a7890acb0303677c6d193b474311459b62672ce0b",
+      "record_revision": 1,
+      "member_ids": [
+        "M0035"
+      ],
+      "context_checked_member_ids": [
+        "M0035"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0336-F01",
+        "SEM-03-SC03-W0336-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0336.0001.json",
+          "sha256": "70138615203cafaf4f01f21a7890acb0303677c6d193b474311459b62672ce0b"
+        }
+      ]
+    },
+    {
+      "review_id": "W0337",
+      "work_id": "doi:10.1007/s44443-026-01200-9",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0337.0001.json",
+      "latest_record_sha256": "022d8174f923802dea583da81c8edf7c1f5470270f5ea64d44978a6ac5b79e86",
+      "record_revision": 1,
+      "member_ids": [
+        "M0103"
+      ],
+      "context_checked_member_ids": [
+        "M0103"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0337-F01"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "ORIGINAL_EXPERIMENTAL_PROTOCOL_NOT_ESTABLISHED"
+      ],
+      "history": [
+        {
+          "filename": "W0337.0001.json",
+          "sha256": "022d8174f923802dea583da81c8edf7c1f5470270f5ea64d44978a6ac5b79e86"
+        }
+      ]
+    },
+    {
+      "review_id": "W0338",
+      "work_id": "doi:10.1080/08874417.2026.2624670",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0338.0001.json",
+      "latest_record_sha256": "23b0447cb4dd3d56b3b86a93651c79a18fea83a399ee68af3fa185be6f73cf40",
+      "record_revision": 1,
+      "member_ids": [
+        "M0188"
+      ],
+      "context_checked_member_ids": [
+        "M0188"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0338-F01"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "ORIGINAL_EXPERIMENTAL_PROTOCOL_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0338.0001.json",
+          "sha256": "23b0447cb4dd3d56b3b86a93651c79a18fea83a399ee68af3fa185be6f73cf40"
+        }
+      ]
+    },
+    {
+      "review_id": "W0339",
+      "work_id": "doi:10.1109/access.2026.3728186",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0339.0001.json",
+      "latest_record_sha256": "b89149183f3278acd12ad06480bf03020b760d0d64c00e765d225b8e0ebdd550",
+      "record_revision": 1,
+      "member_ids": [
+        "M0354"
+      ],
+      "context_checked_member_ids": [
+        "M0354"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0339-F01",
+        "SEM-03-SC03-W0339-F02",
+        "SEM-03-SC03-W0339-F03",
+        "SEM-03-SC03-W0339-F04"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [],
+      "history": [
+        {
+          "filename": "W0339.0001.json",
+          "sha256": "b89149183f3278acd12ad06480bf03020b760d0d64c00e765d225b8e0ebdd550"
+        }
+      ]
+    },
+    {
+      "review_id": "W0340",
+      "work_id": "doi:10.1109/bigdata66926.2025.11401933",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0340.0001.json",
+      "latest_record_sha256": "185152ccf8432a5380f570bd3e22fd4664518aa24c5e6cbfc6a12b75db16f61d",
+      "record_revision": 1,
+      "member_ids": [
+        "M0058"
+      ],
+      "context_checked_member_ids": [
+        "M0058"
+      ],
+      "reused_evidence_ids": [],
+      "new_fact_ids": [
+        "R03-W0340-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0340.0001.json",
+          "sha256": "185152ccf8432a5380f570bd3e22fd4664518aa24c5e6cbfc6a12b75db16f61d"
+        }
+      ]
+    },
+    {
+      "review_id": "W0342",
+      "work_id": "doi:10.1145/3766882.3767169",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0342.0001.json",
+      "latest_record_sha256": "deebd6acc162b5168b72e213988b6ef68477b4a546621af51d36346c3204cddd",
+      "record_revision": 1,
+      "member_ids": [
+        "M0104"
+      ],
+      "context_checked_member_ids": [
+        "M0104"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0342-F01",
+        "SEM-03-SC03-W0342-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0342.0001.json",
+          "sha256": "deebd6acc162b5168b72e213988b6ef68477b4a546621af51d36346c3204cddd"
+        }
+      ]
+    },
+    {
+      "review_id": "W0343",
+      "work_id": "doi:10.1145/3779116",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0343.0001.json",
+      "latest_record_sha256": "801e5045b5b992e5bbe9f3dd0787e077d8fd7319c5a77e7cd5da9a0b5c42768f",
+      "record_revision": 1,
+      "member_ids": [
+        "M0092"
+      ],
+      "context_checked_member_ids": [
+        "M0092"
+      ],
+      "reused_evidence_ids": [],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "ORIGINAL_BINARY_CLASSIFIER_PROTOCOL_NOT_ESTABLISHED",
+        "SOURCE_METHOD_CONTEXT_ENTANGLED_WITH_FINDINGS"
+      ],
+      "history": [
+        {
+          "filename": "W0343.0001.json",
+          "sha256": "801e5045b5b992e5bbe9f3dd0787e077d8fd7319c5a77e7cd5da9a0b5c42768f"
+        }
+      ]
+    },
+    {
+      "review_id": "W0344",
+      "work_id": "doi:10.1145/3786335.3813127",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0344.0001.json",
+      "latest_record_sha256": "cb76c28bfe27b7ee05ba0c7b6f92c0d1704dd4eca4309e608a330d1657248fe0",
+      "record_revision": 1,
+      "member_ids": [
+        "M0194"
+      ],
+      "context_checked_member_ids": [
+        "M0194"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0344-F01",
+        "SEM-03-SC03-W0344-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0344.0001.json",
+          "sha256": "cb76c28bfe27b7ee05ba0c7b6f92c0d1704dd4eca4309e608a330d1657248fe0"
+        }
+      ]
+    },
+    {
+      "review_id": "W0345",
+      "work_id": "doi:10.1145/3798063.3837198",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0345.0001.json",
+      "latest_record_sha256": "645078a9823204a6ebb54fdfd171767524719e76fc90b426e2025718ee57db4d",
+      "record_revision": 1,
+      "member_ids": [
+        "M0324"
+      ],
+      "context_checked_member_ids": [
+        "M0324"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0345-F01",
+        "SEM-03-SC03-W0345-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0345-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0345.0001.json",
+          "sha256": "645078a9823204a6ebb54fdfd171767524719e76fc90b426e2025718ee57db4d"
+        }
+      ]
+    },
+    {
+      "review_id": "W0346",
+      "work_id": "doi:10.1145/3803804",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0346.0001.json",
+      "latest_record_sha256": "d3c9fe2067fa9bbf68eaceec9263f158b81089c2aac1fea2d0acfff8c048b4e8",
+      "record_revision": 1,
+      "member_ids": [
+        "M0116"
+      ],
+      "context_checked_member_ids": [
+        "M0116"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0346-F01",
+        "SEM-03-SC03-W0346-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0346.0001.json",
+          "sha256": "d3c9fe2067fa9bbf68eaceec9263f158b81089c2aac1fea2d0acfff8c048b4e8"
+        }
+      ]
+    },
+    {
+      "review_id": "W0347",
+      "work_id": "doi:10.18653/v1/2025.acl-long.1468",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0347.0002.json",
+      "latest_record_sha256": "e9a4d411eea32dd23cc4e86b167e2487991eeef5651accb64efb1c72a0bc8da4",
+      "record_revision": 2,
+      "member_ids": [
+        "M0012",
+        "M0050"
+      ],
+      "context_checked_member_ids": [
+        "M0012",
+        "M0050"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0347-F01",
+        "SEM-03-SC03-W0347-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0347-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0347.0001.json",
+          "sha256": "0a0275f2d66cf3fe3fb4172216c2645b0a5d1df8ee316c6d5d4c8ba5f208ae4d"
+        },
+        {
+          "filename": "W0347.0002.json",
+          "sha256": "e9a4d411eea32dd23cc4e86b167e2487991eeef5651accb64efb1c72a0bc8da4"
+        }
+      ]
+    },
+    {
+      "review_id": "W0349",
+      "work_id": "doi:10.18653/v1/2025.acl-long.890",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0349.0002.json",
+      "latest_record_sha256": "a0e428000c38d274458f81a68e014de7f0c9e2ef8a995ac2d33851201306abd9",
+      "record_revision": 2,
+      "member_ids": [
+        "M0005",
+        "M0064"
+      ],
+      "context_checked_member_ids": [
+        "M0005",
+        "M0064"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0349-F01",
+        "SEM-03-SC03-W0349-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0349-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0349.0001.json",
+          "sha256": "3e354ca0ee8ad7b0b3b5ace99593f46e093da7c328050141ea446fbfdb91aa80"
+        },
+        {
+          "filename": "W0349.0002.json",
+          "sha256": "a0e428000c38d274458f81a68e014de7f0c9e2ef8a995ac2d33851201306abd9"
+        }
+      ]
+    },
+    {
+      "review_id": "W0350",
+      "work_id": "doi:10.18653/v1/2025.emnlp-main.431",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0350.0002.json",
+      "latest_record_sha256": "841aed9f3f1cbcc15e6e8558e9b94f385ae707236512165ed8adf100b55e19df",
+      "record_revision": 2,
+      "member_ids": [
+        "M0017",
+        "M0136"
+      ],
+      "context_checked_member_ids": [
+        "M0017",
+        "M0136"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0350-F01"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "EXPERIMENTAL_PROTOCOL_ADJOINS_PROTECTED_FINDINGS"
+      ],
+      "history": [
+        {
+          "filename": "W0350.0001.json",
+          "sha256": "8c44a28597cfe9c123acc347eebec27751b8f5bdc3365d02ffb6249f6b850541"
+        },
+        {
+          "filename": "W0350.0002.json",
+          "sha256": "841aed9f3f1cbcc15e6e8558e9b94f385ae707236512165ed8adf100b55e19df"
+        }
+      ]
+    },
+    {
+      "review_id": "W0351",
+      "work_id": "doi:10.18653/v1/2025.emnlp-main.53",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0351.0002.json",
+      "latest_record_sha256": "744edbef2cbf06ac3e445f9f3ff0a1f606465b6f3747f62a6336bc4b0c19d0e1",
+      "record_revision": 2,
+      "member_ids": [
+        "M0003",
+        "M0112"
+      ],
+      "context_checked_member_ids": [
+        "M0003",
+        "M0112"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0351-F01",
+        "SEM-03-SC03-W0351-F02"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0351.0001.json",
+          "sha256": "1f4ac6133e9a9ea5e6dfa65dcdecd81fd3d5446441aac9f99ce6581df179ae2e"
+        },
+        {
+          "filename": "W0351.0002.json",
+          "sha256": "744edbef2cbf06ac3e445f9f3ff0a1f606465b6f3747f62a6336bc4b0c19d0e1"
+        }
+      ]
+    },
+    {
+      "review_id": "W0353",
+      "work_id": "doi:10.18653/v1/2025.findings-emnlp.528",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0353.0001.json",
+      "latest_record_sha256": "54df03bcacea68bcd064bf52b843228163ffd0d06864972acb2cf7fee48cfda1",
+      "record_revision": 1,
+      "member_ids": [
+        "M0016"
+      ],
+      "context_checked_member_ids": [
+        "M0016"
+      ],
+      "reused_evidence_ids": [],
+      "new_fact_ids": [
+        "R03-W0353-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0353.0001.json",
+          "sha256": "54df03bcacea68bcd064bf52b843228163ffd0d06864972acb2cf7fee48cfda1"
+        }
+      ]
+    },
+    {
+      "review_id": "W0355",
+      "work_id": "doi:10.18653/v1/2025.ijcnlp-long.29",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0355.0002.json",
+      "latest_record_sha256": "05b85250cfe284cb47da3d75b2fb0f68a9e3052c27eb459a504a684c32ddc7ce",
+      "record_revision": 2,
+      "member_ids": [
+        "M0002",
+        "M0100"
+      ],
+      "context_checked_member_ids": [
+        "M0002",
+        "M0100"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0355-F01",
+        "SEM-03-SC03-W0355-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0355-F01",
+        "R03-W0355-F02"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0355.0001.json",
+          "sha256": "7c78a77660ee6251667554e94485eccaa3bcb008b28c23f320d31c08b1b7d5fc"
+        },
+        {
+          "filename": "W0355.0002.json",
+          "sha256": "05b85250cfe284cb47da3d75b2fb0f68a9e3052c27eb459a504a684c32ddc7ce"
+        }
+      ]
+    },
+    {
+      "review_id": "W0357",
+      "work_id": "doi:10.18653/v1/2026.acl-industry.127",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0357.0001.json",
+      "latest_record_sha256": "ab72c9fee0c4f6cb559b965d836da896b400c579d5979a577c6874c975992339",
+      "record_revision": 1,
+      "member_ids": [
+        "M0004"
+      ],
+      "context_checked_member_ids": [
+        "M0004"
+      ],
+      "reused_evidence_ids": [],
+      "new_fact_ids": [
+        "R03-W0357-F01",
+        "R03-W0357-F02"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0357.0001.json",
+          "sha256": "ab72c9fee0c4f6cb559b965d836da896b400c579d5979a577c6874c975992339"
+        }
+      ]
+    },
+    {
+      "review_id": "W0358",
+      "work_id": "doi:10.18653/v1/2026.acl-industry.58",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0358.0001.json",
+      "latest_record_sha256": "d0d5256335394a676b07de25be5a5cf062fa4d75adf17cabcf069a247f0f4579",
+      "record_revision": 1,
+      "member_ids": [
+        "M0025"
+      ],
+      "context_checked_member_ids": [
+        "M0025"
+      ],
+      "reused_evidence_ids": [],
+      "new_fact_ids": [
+        "R03-W0358-F01",
+        "R03-W0358-F02"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0358.0001.json",
+          "sha256": "d0d5256335394a676b07de25be5a5cf062fa4d75adf17cabcf069a247f0f4579"
+        }
+      ]
+    },
+    {
+      "review_id": "W0359",
+      "work_id": "doi:10.18653/v1/2026.acl-long.1515",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0359.0001.json",
+      "latest_record_sha256": "c9a4251e39cde47861c0e49b39186f0a5310928ab9921c8d63f6729fd8e859ff",
+      "record_revision": 1,
+      "member_ids": [
+        "M0020"
+      ],
+      "context_checked_member_ids": [
+        "M0020"
+      ],
+      "reused_evidence_ids": [],
+      "new_fact_ids": [
+        "R03-W0359-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0359.0001.json",
+          "sha256": "c9a4251e39cde47861c0e49b39186f0a5310928ab9921c8d63f6729fd8e859ff"
+        }
+      ]
+    },
+    {
+      "review_id": "W0360",
+      "work_id": "doi:10.18653/v1/2026.acl-long.252",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0360.0002.json",
+      "latest_record_sha256": "42acdd12730cd0a0ce39204156a8eb46a436c7c756c01057e0138a9fa8d99bcd",
+      "record_revision": 2,
+      "member_ids": [
+        "M0022",
+        "M0215"
+      ],
+      "context_checked_member_ids": [
+        "M0022",
+        "M0215"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0360-F01",
+        "SEM-03-SC03-W0360-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0360-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0360.0001.json",
+          "sha256": "afd3ac18859bef6a9c8b18b56839e151ecda7383c6ba810880ea92ca59ac81d4"
+        },
+        {
+          "filename": "W0360.0002.json",
+          "sha256": "42acdd12730cd0a0ce39204156a8eb46a436c7c756c01057e0138a9fa8d99bcd"
+        }
+      ]
+    },
+    {
+      "review_id": "W0361",
+      "work_id": "doi:10.18653/v1/2026.acl-long.541",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0361.0002.json",
+      "latest_record_sha256": "1cac6d004ad31be066e5f2597508104423dd5154711082e46a7b289dfcad5263",
+      "record_revision": 2,
+      "member_ids": [
+        "M0009",
+        "M0128"
+      ],
+      "context_checked_member_ids": [
+        "M0009",
+        "M0128"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0361-F01",
+        "SEM-03-SC03-W0361-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0361-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "MODEL_PROVENANCE_TASK_BOUNDARY_RETAINED"
+      ],
+      "history": [
+        {
+          "filename": "W0361.0001.json",
+          "sha256": "7d51619f281af9e89a1ad0d97e6013945f51a3dc69b7321f8ec6abff6ff9cd06"
+        },
+        {
+          "filename": "W0361.0002.json",
+          "sha256": "1cac6d004ad31be066e5f2597508104423dd5154711082e46a7b289dfcad5263"
+        }
+      ]
+    },
+    {
+      "review_id": "W0362",
+      "work_id": "doi:10.18653/v1/2026.acl-long.954",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0362.0002.json",
+      "latest_record_sha256": "9a0f8cf017db41dbdb6d252638423410320b28090a7b16056f216aa40ce1a7ce",
+      "record_revision": 2,
+      "member_ids": [
+        "M0015",
+        "M0229"
+      ],
+      "context_checked_member_ids": [
+        "M0015",
+        "M0229"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0362-F01",
+        "SEM-03-SC03-W0362-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0362-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0362.0001.json",
+          "sha256": "41311ae9ca33b54ca99f11cac3c0672cad748cf20da4f674101baaa1fc6b22c4"
+        },
+        {
+          "filename": "W0362.0002.json",
+          "sha256": "9a0f8cf017db41dbdb6d252638423410320b28090a7b16056f216aa40ce1a7ce"
+        }
+      ]
+    },
+    {
+      "review_id": "W0363",
+      "work_id": "doi:10.18653/v1/2026.eacl-long.139",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0363.0001.json",
+      "latest_record_sha256": "21d48be7efff97a76439e2d0211db3eaa3e897b00d8cc4a0bd6416f9295b55cb",
+      "record_revision": 1,
+      "member_ids": [
+        "M0007"
+      ],
+      "context_checked_member_ids": [
+        "M0007"
+      ],
+      "reused_evidence_ids": [],
+      "new_fact_ids": [
+        "R03-W0363-F01",
+        "R03-W0363-F02",
+        "R03-W0363-F03"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0363.0001.json",
+          "sha256": "21d48be7efff97a76439e2d0211db3eaa3e897b00d8cc4a0bd6416f9295b55cb"
+        }
+      ]
+    },
+    {
+      "review_id": "W0364",
+      "work_id": "doi:10.18653/v1/2026.findings-acl.1850",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0364.0002.json",
+      "latest_record_sha256": "866ba297632c759d063f663ea8d7285931f5e1c323cad346a1b0105db7fe1131",
+      "record_revision": 2,
+      "member_ids": [
+        "M0014",
+        "M0166"
+      ],
+      "context_checked_member_ids": [
+        "M0014",
+        "M0166"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0364-F01",
+        "SEM-03-SC03-W0364-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0364-F01",
+        "R03-W0364-F02"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0364.0001.json",
+          "sha256": "07dc62e5f78cd7c1753a8b1aeb685f6c83702c271461c62de7391069c8db5e57"
+        },
+        {
+          "filename": "W0364.0002.json",
+          "sha256": "866ba297632c759d063f663ea8d7285931f5e1c323cad346a1b0105db7fe1131"
+        }
+      ]
+    },
+    {
+      "review_id": "W0365",
+      "work_id": "doi:10.18653/v1/2026.findings-acl.240",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0365.0002.json",
+      "latest_record_sha256": "7f15b882749e289b697ea051c4961fa9d9bc0b724f3a7955cc3c041c424bad58",
+      "record_revision": 2,
+      "member_ids": [
+        "M0023",
+        "M0111"
+      ],
+      "context_checked_member_ids": [
+        "M0023",
+        "M0111"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0365-F01",
+        "SEM-03-SC03-W0365-F02"
+      ],
+      "new_fact_ids": [
+        "R03-W0365-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0365.0001.json",
+          "sha256": "24507e08dbe85ebf8f598e0e60862c4718611f00daf32c08e7a39e751ad552df"
+        },
+        {
+          "filename": "W0365.0002.json",
+          "sha256": "7f15b882749e289b697ea051c4961fa9d9bc0b724f3a7955cc3c041c424bad58"
+        }
+      ]
+    },
+    {
+      "review_id": "W0366",
+      "work_id": "doi:10.18653/v1/2026.findings-acl.738",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0366.0001.json",
+      "latest_record_sha256": "5848ae5fd9a24509c4f26cbf6dfbdc7a934e1847e609378332fe65bcdb15f871",
+      "record_revision": 1,
+      "member_ids": [
+        "M0024"
+      ],
+      "context_checked_member_ids": [
+        "M0024"
+      ],
+      "reused_evidence_ids": [],
+      "new_fact_ids": [
+        "R03-W0366-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0366.0001.json",
+          "sha256": "5848ae5fd9a24509c4f26cbf6dfbdc7a934e1847e609378332fe65bcdb15f871"
+        }
+      ]
+    },
+    {
+      "review_id": "W0367",
+      "work_id": "doi:10.5220/0014300000004052",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0367.0001.json",
+      "latest_record_sha256": "11772fa3f6be09783ba59afe5b75bc3ce32fe3dfb04b46278056851238995a6d",
+      "record_revision": 1,
+      "member_ids": [
+        "M0252"
+      ],
+      "context_checked_member_ids": [
+        "M0252"
+      ],
+      "reused_evidence_ids": [],
+      "new_fact_ids": [
+        "R03-W0367-F01",
+        "R03-W0367-F02"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0367.0001.json",
+          "sha256": "11772fa3f6be09783ba59afe5b75bc3ce32fe3dfb04b46278056851238995a6d"
+        }
+      ]
+    },
+    {
+      "review_id": "W0368",
+      "work_id": "doi:10.5281/zenodo.19644135",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0368.0001.json",
+      "latest_record_sha256": "90c314c3bf0adc8df4261099d9545e35fbf47b8b867a802c2038a0db8879add3",
+      "record_revision": 1,
+      "member_ids": [
+        "M0232"
+      ],
+      "context_checked_member_ids": [
+        "M0232"
+      ],
+      "reused_evidence_ids": [],
+      "new_fact_ids": [
+        "R03-W0368-F01",
+        "R03-W0368-F02"
+      ],
+      "remaining_fact_codes": [
+        "CORPUS_DETAILS_ADJOIN_PROTECTED_FINDINGS",
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0368.0001.json",
+          "sha256": "90c314c3bf0adc8df4261099d9545e35fbf47b8b867a802c2038a0db8879add3"
+        }
+      ]
+    },
+    {
+      "review_id": "W0369",
+      "work_id": "doi:10.5281/zenodo.21365017",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0369.0001.json",
+      "latest_record_sha256": "6f8aefa732c9f55ce8b42e727b30ef14dcad38df3116c3b76d11b5eec7390d6e",
+      "record_revision": 1,
+      "member_ids": [
+        "M0332"
+      ],
+      "context_checked_member_ids": [
+        "M0332"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0369-F01"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "PROPOSED_ARCHITECTURE_WITHOUT_MANUSCRIPT_PILOT"
+      ],
+      "history": [
+        {
+          "filename": "W0369.0001.json",
+          "sha256": "6f8aefa732c9f55ce8b42e727b30ef14dcad38df3116c3b76d11b5eec7390d6e"
+        }
+      ]
+    },
+    {
+      "review_id": "W0370",
+      "work_id": "doi:10.63317/5axtpujejwcx",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0370.0002.json",
+      "latest_record_sha256": "95baa340d3c775cb402ea02903ca347693bb4e5def82859ab117308d35144f43",
+      "record_revision": 2,
+      "member_ids": [
+        "M0006",
+        "M0220"
+      ],
+      "context_checked_member_ids": [
+        "M0006",
+        "M0220"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0370-F01"
+      ],
+      "new_fact_ids": [
+        "R03-W0370-F01"
+      ],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT"
+      ],
+      "history": [
+        {
+          "filename": "W0370.0001.json",
+          "sha256": "1cb31f2512266fb4c58a930f1b2e025abfe38d24dba85e5746e182999707666f"
+        },
+        {
+          "filename": "W0370.0002.json",
+          "sha256": "95baa340d3c775cb402ea02903ca347693bb4e5def82859ab117308d35144f43"
+        }
+      ]
+    },
+    {
+      "review_id": "W0371",
+      "work_id": "doi:10.63336/eureka.46",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0371.0001.json",
+      "latest_record_sha256": "92c5aa225d26063a0a83ff2826c0feace24927ced4be7504541c633aba2d53b9",
+      "record_revision": 1,
+      "member_ids": [
+        "M0039"
+      ],
+      "context_checked_member_ids": [
+        "M0039"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0371-F01"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "SURVEYED_TEXT_ORIGIN_TASK_BOUNDARY_RETAINED"
+      ],
+      "history": [
+        {
+          "filename": "W0371.0001.json",
+          "sha256": "92c5aa225d26063a0a83ff2826c0feace24927ced4be7504541c633aba2d53b9"
+        }
+      ]
+    },
+    {
+      "review_id": "W0372",
+      "work_id": "doi:10.63336/eureka.47",
+      "latest_record_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-recovery-20261021\\checker-03\\W0372.0001.json",
+      "latest_record_sha256": "869a663d38c2f4ed97b65ec7ee4a278369940fc6e65a87f046d31df5de027e9d",
+      "record_revision": 1,
+      "member_ids": [
+        "M0045"
+      ],
+      "context_checked_member_ids": [
+        "M0045"
+      ],
+      "reused_evidence_ids": [
+        "SEM-03-SC03-W0372-F01"
+      ],
+      "new_fact_ids": [],
+      "remaining_fact_codes": [
+        "CRITERION_SCOPE_REQUIRES_ADDITIONAL_CONTEXT",
+        "RESOURCE_TAXONOMY_WITHOUT_ORIGINAL_CLASSIFIER_PROTOCOL"
+      ],
+      "history": [
+        {
+          "filename": "W0372.0001.json",
+          "sha256": "869a663d38c2f4ed97b65ec7ee4a278369940fc6e65a87f046d31df5de027e9d"
+        }
+      ]
+    }
+  ],
+  "input_request_sha256": "43706bb2ac98bca7a2246932c3f95a5b8739d2fc3897cdca837a7d71b86efc12",
+  "source_binding_sha256": "4b201dade378fbef5aa56eb881e111f95211a8c12080c9e16c672ec0434a69a7",
+  "eligibility_decision": null
+}

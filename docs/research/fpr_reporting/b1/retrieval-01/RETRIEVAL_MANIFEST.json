@@ -1,0 +1,113 @@
+{
+  "arxiv_query": "(ti:\"prompt injection\" OR abs:\"prompt injection\" OR ti:\"prompt-injection\" OR abs:\"prompt-injection\") AND (ti:detect* OR abs:detect* OR ti:guardrail* OR abs:guardrail* OR ti:classif* OR abs:classif*) AND submittedDate:[202401010000 TO 202610162359]",
+  "bibliographic_cutoff": "2026-10-17T00:00:00Z",
+  "blocker": "RAW_FILE_REVIEW_REQUIRED: acl raw response exceeds staging limit",
+  "blocker_type": "RuntimeError",
+  "capture_script_sha256": "fa4473e7f086d4face48e3e7a578dbc44323dda374ea7bcd474b97d68806c871",
+  "finished_utc": "2026-10-17T14:29:08.533844+00:00",
+  "outcome_extraction": "NOT_RUN",
+  "per_query_cap": 500,
+  "protocol_lock_sha256": "7a3c73d465721fb2ea177c53bdc936e614ec5b504c6fb1fc0ef65ff7acc86f42",
+  "python": "3.12.10",
+  "requests": [
+    {
+      "body_bytes": 240637,
+      "body_file": "01-arxiv-0.body",
+      "body_sha256": "132369de6181ce9e47b22cb68da573dcf6242aa75d8374c6f13004dc27a02be6",
+      "finished_utc": "2026-10-17T14:28:37.336717+00:00",
+      "http_status": 200,
+      "offset": 0,
+      "requested_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22prompt+injection%22+OR+abs%3A%22prompt+injection%22+OR+ti%3A%22prompt-injection%22+OR+abs%3A%22prompt-injection%22%29+AND+%28ti%3Adetect%2A+OR+abs%3Adetect%2A+OR+ti%3Aguardrail%2A+OR+abs%3Aguardrail%2A+OR+ti%3Aclassif%2A+OR+abs%3Aclassif%2A%29+AND+submittedDate%3A%5B202401010000+TO+202610162359%5D&sortBy=submittedDate&sortOrder=ascending&start=0&max_results=100",
+      "response_headers": {
+        "Date": "Sat, 17 Oct 2026 14:28:35 GMT",
+        "content-type": "application/atom+xml; charset=utf-8"
+      },
+      "response_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22prompt+injection%22+OR+abs%3A%22prompt+injection%22+OR+ti%3A%22prompt-injection%22+OR+abs%3A%22prompt-injection%22%29+AND+%28ti%3Adetect%2A+OR+abs%3Adetect%2A+OR+ti%3Aguardrail%2A+OR+abs%3Aguardrail%2A+OR+ti%3Aclassif%2A+OR+abs%3Aclassif%2A%29+AND+submittedDate%3A%5B202401010000+TO+202610162359%5D&sortBy=submittedDate&sortOrder=ascending&start=0&max_results=100",
+      "returned_records": 100,
+      "source": "arxiv",
+      "source_total": 395,
+      "started_utc": "2026-10-17T14:28:36.044816+00:00"
+    },
+    {
+      "body_bytes": 242396,
+      "body_file": "02-arxiv-100.body",
+      "body_sha256": "77cf858b62fd864a791797f6faf081233aceac2526b26ccb3d7cb9852469ed3f",
+      "finished_utc": "2026-10-17T14:28:41.436882+00:00",
+      "http_status": 200,
+      "offset": 100,
+      "requested_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22prompt+injection%22+OR+abs%3A%22prompt+injection%22+OR+ti%3A%22prompt-injection%22+OR+abs%3A%22prompt-injection%22%29+AND+%28ti%3Adetect%2A+OR+abs%3Adetect%2A+OR+ti%3Aguardrail%2A+OR+abs%3Aguardrail%2A+OR+ti%3Aclassif%2A+OR+abs%3Aclassif%2A%29+AND+submittedDate%3A%5B202401010000+TO+202610162359%5D&sortBy=submittedDate&sortOrder=ascending&start=100&max_results=100",
+      "response_headers": {
+        "Date": "Sat, 17 Oct 2026 14:28:39 GMT",
+        "content-type": "application/atom+xml; charset=utf-8"
+      },
+      "response_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22prompt+injection%22+OR+abs%3A%22prompt+injection%22+OR+ti%3A%22prompt-injection%22+OR+abs%3A%22prompt-injection%22%29+AND+%28ti%3Adetect%2A+OR+abs%3Adetect%2A+OR+ti%3Aguardrail%2A+OR+abs%3Aguardrail%2A+OR+ti%3Aclassif%2A+OR+abs%3Aclassif%2A%29+AND+submittedDate%3A%5B202401010000+TO+202610162359%5D&sortBy=submittedDate&sortOrder=ascending&start=100&max_results=100",
+      "returned_records": 100,
+      "source": "arxiv",
+      "source_total": 395,
+      "started_utc": "2026-10-17T14:28:40.446086+00:00"
+    },
+    {
+      "body_bytes": 250611,
+      "body_file": "03-arxiv-200.body",
+      "body_sha256": "02f9e1ce347080a2d419b617233f6cd7052b14277162969d4b5e2c0776842dc5",
+      "finished_utc": "2026-10-17T14:28:45.513603+00:00",
+      "http_status": 200,
+      "offset": 200,
+      "requested_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22prompt+injection%22+OR+abs%3A%22prompt+injection%22+OR+ti%3A%22prompt-injection%22+OR+abs%3A%22prompt-injection%22%29+AND+%28ti%3Adetect%2A+OR+abs%3Adetect%2A+OR+ti%3Aguardrail%2A+OR+abs%3Aguardrail%2A+OR+ti%3Aclassif%2A+OR+abs%3Aclassif%2A%29+AND+submittedDate%3A%5B202401010000+TO+202610162359%5D&sortBy=submittedDate&sortOrder=ascending&start=200&max_results=100",
+      "response_headers": {
+        "Date": "Sat, 17 Oct 2026 14:28:43 GMT",
+        "content-type": "application/atom+xml; charset=utf-8"
+      },
+      "response_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22prompt+injection%22+OR+abs%3A%22prompt+injection%22+OR+ti%3A%22prompt-injection%22+OR+abs%3A%22prompt-injection%22%29+AND+%28ti%3Adetect%2A+OR+abs%3Adetect%2A+OR+ti%3Aguardrail%2A+OR+abs%3Aguardrail%2A+OR+ti%3Aclassif%2A+OR+abs%3Aclassif%2A%29+AND+submittedDate%3A%5B202401010000+TO+202610162359%5D&sortBy=submittedDate&sortOrder=ascending&start=200&max_results=100",
+      "returned_records": 100,
+      "source": "arxiv",
+      "source_total": 395,
+      "started_utc": "2026-10-17T14:28:44.548310+00:00"
+    },
+    {
+      "body_bytes": 246019,
+      "body_file": "04-arxiv-300.body",
+      "body_sha256": "2bd01175c18b0ee25a2788b485e3755978eea29bab1333fb1fb56bd74cb543cb",
+      "finished_utc": "2026-10-17T14:28:49.471854+00:00",
+      "http_status": 200,
+      "offset": 300,
+      "requested_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22prompt+injection%22+OR+abs%3A%22prompt+injection%22+OR+ti%3A%22prompt-injection%22+OR+abs%3A%22prompt-injection%22%29+AND+%28ti%3Adetect%2A+OR+abs%3Adetect%2A+OR+ti%3Aguardrail%2A+OR+abs%3Aguardrail%2A+OR+ti%3Aclassif%2A+OR+abs%3Aclassif%2A%29+AND+submittedDate%3A%5B202401010000+TO+202610162359%5D&sortBy=submittedDate&sortOrder=ascending&start=300&max_results=100",
+      "response_headers": {
+        "Date": "Sat, 17 Oct 2026 14:28:47 GMT",
+        "content-type": "application/atom+xml; charset=utf-8"
+      },
+      "response_url": "https://export.arxiv.org/api/query?search_query=%28ti%3A%22prompt+injection%22+OR+abs%3A%22prompt+injection%22+OR+ti%3A%22prompt-injection%22+OR+abs%3A%22prompt-injection%22%29+AND+%28ti%3Adetect%2A+OR+abs%3Adetect%2A+OR+ti%3Aguardrail%2A+OR+abs%3Aguardrail%2A+OR+ti%3Aclassif%2A+OR+abs%3Aclassif%2A%29+AND+submittedDate%3A%5B202401010000+TO+202610162359%5D&sortBy=submittedDate&sortOrder=ascending&start=300&max_results=100",
+      "returned_records": 95,
+      "source": "arxiv",
+      "source_total": 395,
+      "started_utc": "2026-10-17T14:28:48.623239+00:00"
+    },
+    {
+      "body_bytes": 42574037,
+      "body_file": "05-acl-bulk.body",
+      "body_sha256": "83b1de6eb8e9af0abd7106886ba7e6decbded519ff6d1259bbb94c8286fa6b5d",
+      "error": "RAW_FILE_REVIEW_REQUIRED: acl raw response exceeds staging limit",
+      "error_type": "RuntimeError",
+      "finished_utc": "2026-10-17T14:29:08.424848+00:00",
+      "http_status": 200,
+      "offset": null,
+      "requested_url": "https://aclanthology.org/anthology+abstracts.bib.gz",
+      "response_headers": {
+        "Content-Type": "application/x-gzip",
+        "Date": "Sat, 17 Oct 2026 14:28:49 GMT",
+        "ETag": "\"289a0d5-65e0859aa2bd1\"",
+        "Last-Modified": "Sat, 17 Oct 2026 12:23:37 GMT"
+      },
+      "response_url": "https://aclanthology.org/anthology+abstracts.bib.gz",
+      "source": "acl",
+      "started_utc": "2026-10-17T14:28:49.481865+00:00"
+    }
+  ],
+  "screening": "NOT_RUN",
+  "selection": "NOT_RUN",
+  "source_git_commit": "2628600e618b343151bced7117af00d84a9675a7",
+  "source_tree_clean_at_start": true,
+  "started_utc": "2026-10-17T14:28:35.981820+00:00",
+  "status": "FRAME_BLOCKED",
+  "unique_screening_cap": 500
+}

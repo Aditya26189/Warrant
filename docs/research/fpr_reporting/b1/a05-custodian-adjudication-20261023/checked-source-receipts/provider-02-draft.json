@@ -1,0 +1,227 @@
+{
+  "eligibility_decision": null,
+  "facts": [
+    {
+      "addresses_request_components": [
+        "original_evaluation_units",
+        "binary_input_detection_design"
+      ],
+      "eligibility_decision": null,
+      "fact_id": "A05-SRC02-W0062-F01",
+      "fact_kind": "EVALUATION_UNIT",
+      "limitation": "Detection and task checks share AgentDojo.",
+      "locator": {
+        "evidence_paragraphs": [
+          {
+            "global_p_ltx_p_ordinal": 25,
+            "paragraph_text_sha256": "e30185131ab0d92db647df17879de2525fdc495244ea877576ca7b6e2d47a23a",
+            "section_id": "S4.SS1"
+          },
+          {
+            "global_p_ltx_p_ordinal": 26,
+            "paragraph_text_sha256": "032830e815792104d64e5b42fd5d2a812ddea533bafb77e1ab09009ab710beb1",
+            "section_id": "S4.SS1"
+          },
+          {
+            "global_p_ltx_p_ordinal": 30,
+            "paragraph_text_sha256": "52717f9e1e28293dc57c290fe11f5c8de1eadbb3d58650391421f6bb8fd9ac88",
+            "section_id": "S4.SS1"
+          },
+          {
+            "global_p_ltx_p_ordinal": 35,
+            "paragraph_text_sha256": "14bd5f0f953ef1bf7d64e3f1616920de9198817a792d9fc1d36888da6a1e305e",
+            "section_id": "S4.SS3"
+          }
+        ],
+        "format": "HTML"
+      },
+      "member_id": "M0096",
+      "method_fact": "AgentDojo cases pair user and injected attacker tasks, checked against environment-state criteria. Detection separately assesses clean tool-returned data classified as contaminated and contaminated data classified as clean.",
+      "mixed_context_paragraphs_requiring_checker_attention": [],
+      "provided_utc": "2026-10-23T10:27:36.434954+00:00",
+      "provider_actor_id": "/root/a04_semantic_restriction_02",
+      "provider_status": "PROVIDER_DRAFT_NOT_RELEASED",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "restriction_check_status": "SEPARATE_RESTRICTION_CHECK_REQUIRED",
+      "restriction_checked_by": null,
+      "review_id": "W0062",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "work_id": "arxiv:2507.15219"
+    },
+    {
+      "addresses_request_components": [
+        "original_evaluation_arms",
+        "detector_baselines"
+      ],
+      "eligibility_decision": null,
+      "fact_id": "A05-SRC02-W0062-F02",
+      "fact_kind": "BINARY_PROCEDURE",
+      "limitation": "Shared setup; baseline-specific aggregation is unspecified.",
+      "locator": {
+        "evidence_paragraphs": [
+          {
+            "global_p_ltx_p_ordinal": 28,
+            "paragraph_text_sha256": "10d565b5fcac6e7f1fafa7364ac38132b7d91ac8bece9503526181ad6c2b1d6b",
+            "section_id": "S4.SS1"
+          },
+          {
+            "global_p_ltx_p_ordinal": 29,
+            "paragraph_text_sha256": "2deec3dc6487f032a0df0d7a3cc19785958432c980e1a68d0bf3f6bbca278544",
+            "section_id": "S4.SS1"
+          },
+          {
+            "global_p_ltx_p_ordinal": 30,
+            "paragraph_text_sha256": "52717f9e1e28293dc57c290fe11f5c8de1eadbb3d58650391421f6bb8fd9ac88",
+            "section_id": "S4.SS1"
+          }
+        ],
+        "format": "HTML"
+      },
+      "member_id": "M0096",
+      "method_fact": "The comparison includes DeBERTa and DataSentinel detectors, MELON, Delimiting, Repeat Prompt and Tool Filter, alongside PromptArmor guard-model variants.",
+      "mixed_context_paragraphs_requiring_checker_attention": [
+        28
+      ],
+      "provided_utc": "2026-10-23T10:27:36.434954+00:00",
+      "provider_actor_id": "/root/a04_semantic_restriction_02",
+      "provider_status": "PROVIDER_DRAFT_NOT_RELEASED",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "restriction_check_status": "SEPARATE_RESTRICTION_CHECK_REQUIRED",
+      "restriction_checked_by": null,
+      "review_id": "W0062",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "work_id": "arxiv:2507.15219"
+    },
+    {
+      "addresses_request_components": [
+        "secondary_experiments"
+      ],
+      "eligibility_decision": null,
+      "fact_id": "A05-SRC02-W0062-F03",
+      "fact_kind": "METHOD_BOUNDARY",
+      "limitation": "Prompting setup includes mixed surrounding commentary.",
+      "locator": {
+        "evidence_paragraphs": [
+          {
+            "global_p_ltx_p_ordinal": 33,
+            "paragraph_text_sha256": "53e9bbeca31a60577bf41ed7a35ea8d82ca7b70a802786cf03a2a5e15025e983",
+            "section_id": "S4.SS2"
+          },
+          {
+            "global_p_ltx_p_ordinal": 35,
+            "paragraph_text_sha256": "14bd5f0f953ef1bf7d64e3f1616920de9198817a792d9fc1d36888da6a1e305e",
+            "section_id": "S4.SS3"
+          }
+        ],
+        "format": "HTML"
+      },
+      "member_id": "M0096",
+      "method_fact": "Prompting strategies, reasoning modes and model variants use the same setup, distinguishing detector decisions from agent-task checks.",
+      "mixed_context_paragraphs_requiring_checker_attention": [
+        33
+      ],
+      "provided_utc": "2026-10-23T10:27:36.434954+00:00",
+      "provider_actor_id": "/root/a04_semantic_restriction_02",
+      "provider_status": "PROVIDER_DRAFT_NOT_RELEASED",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "restriction_check_status": "SEPARATE_RESTRICTION_CHECK_REQUIRED",
+      "restriction_checked_by": null,
+      "review_id": "W0062",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "work_id": "arxiv:2507.15219"
+    },
+    {
+      "addresses_request_components": [
+        "secondary_experiments",
+        "evaluation_boundaries"
+      ],
+      "eligibility_decision": null,
+      "fact_id": "A05-SRC02-W0062-F04",
+      "fact_kind": "METHOD_BOUNDARY",
+      "limitation": "These are distinct experimental protocols.",
+      "locator": {
+        "evidence_paragraphs": [
+          {
+            "global_p_ltx_p_ordinal": 38,
+            "paragraph_text_sha256": "9b42094710b551281d9fe2157c8b862199e8fb47fc705cc945be388026f5e7f3",
+            "section_id": "S4.SS4"
+          },
+          {
+            "global_p_ltx_p_ordinal": 40,
+            "paragraph_text_sha256": "776a15940d0839d39d784e757d5f205bf577864d8d12689b723238671abfd91d",
+            "section_id": "S4.SS5"
+          }
+        ],
+        "format": "HTML"
+      },
+      "member_id": "M0096",
+      "method_fact": "A memorization probe compares prefix-conditioned completion with a withheld suffix. Adaptive experiments optimize templates against unguarded or guarded agents, then evaluate detection and task behavior.",
+      "mixed_context_paragraphs_requiring_checker_attention": [],
+      "provided_utc": "2026-10-23T10:27:36.434954+00:00",
+      "provider_actor_id": "/root/a04_semantic_restriction_02",
+      "provider_status": "PROVIDER_DRAFT_NOT_RELEASED",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "restriction_check_status": "SEPARATE_RESTRICTION_CHECK_REQUIRED",
+      "restriction_checked_by": null,
+      "review_id": "W0062",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "work_id": "arxiv:2507.15219"
+    },
+    {
+      "addresses_request_components": [
+        "detector_target_chronology"
+      ],
+      "eligibility_decision": null,
+      "fact_id": "A05-SRC02-W0062-F05",
+      "fact_kind": "PRE_TARGET_TIMING",
+      "limitation": "Guard and backend may share a model.",
+      "locator": {
+        "evidence_paragraphs": [
+          {
+            "global_p_ltx_p_ordinal": 12,
+            "paragraph_text_sha256": "fb1d36768c7d104fc69673ce39c7d3d41dab12653481a8f1f6df665338e9d1e3",
+            "section_id": "S2"
+          },
+          {
+            "global_p_ltx_p_ordinal": 15,
+            "paragraph_text_sha256": "02ee85f91253ebe2aa6818c948d2f1b8e4331e6ee5d28e602c271854017be04e",
+            "section_id": "S3.SS1"
+          },
+          {
+            "global_p_ltx_p_ordinal": 17,
+            "paragraph_text_sha256": "e4f8274433731be1ef7c90d3eb521402f330d4c93bbd9f98a8560bd65283cb0c",
+            "section_id": "S3.SS1"
+          }
+        ],
+        "format": "HTML"
+      },
+      "member_id": "M0096",
+      "method_fact": "PromptArmor identifies injected spans for removal before the backend agent consumes sanitized tool content.",
+      "mixed_context_paragraphs_requiring_checker_attention": [],
+      "provided_utc": "2026-10-23T10:27:36.434954+00:00",
+      "provider_actor_id": "/root/a04_semantic_restriction_02",
+      "provider_status": "PROVIDER_DRAFT_NOT_RELEASED",
+      "raw_source_sha256": "ef4ee11a3b3c7bdc8fe7057c7a8684078cae1a013f6c191085e3e00cfdbe082a",
+      "restriction_check_status": "SEPARATE_RESTRICTION_CHECK_REQUIRED",
+      "restriction_checked_by": null,
+      "review_id": "W0062",
+      "source_url": "https://arxiv.org/html/2507.15219v1",
+      "version": "arxiv:2507.15219v1",
+      "work_id": "arxiv:2507.15219"
+    }
+  ],
+  "member_ids": [
+    "M0096"
+  ],
+  "method_prose_word_count_including_limitations": 131,
+  "provided_utc": "2026-10-23T10:27:36.434954+00:00",
+  "provider_actor_id": "/root/a04_semantic_restriction_02",
+  "provider_status": "PROVIDER_DRAFT_NOT_RELEASED",
+  "restriction_check_status": "SEPARATE_RESTRICTION_CHECK_REQUIRED",
+  "review_id": "W0062",
+  "work_id": "arxiv:2507.15219"
+}

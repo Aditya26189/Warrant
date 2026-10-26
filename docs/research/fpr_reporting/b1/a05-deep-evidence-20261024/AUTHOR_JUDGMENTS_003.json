@@ -1,0 +1,265 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "changes": [
+    {
+      "before_row_sha256": "b2461ab677f126e63dfbb763b6374ad1a21988c5ce05839daf9500ad978049cb",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0004-95a70781c2cd-F01",
+        "A05-DEEP-W0004-95a70781c2cd-F02",
+        "A05-DEEP-W0004-95a70781c2cd-F03",
+        "A05-DEEP-W0004-95a70781c2cd-F04",
+        "A05-DEEP-W0004-95a70781c2cd-F05",
+        "A05-DEEP-W0004-95a70781c2cd-F06",
+        "A05-DEEP-W0004-95a70781c2cd-F07"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0004",
+      "scientific_rationale": "The complete main/appendix inventory covers task refusal/sentiment, fabricated-link summarization, harmful-request demonstrations, training variants, retained math capability and logit/similarity analyses. Its evaluated decisions concern target task completion/refusal/correctness; the response-selected logits and similarity analysis do not establish an original binary injection-input classifier. The absence follows complete method scope, not missing outcome reporting.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "arxiv:2402.05723"
+    },
+    {
+      "before_row_sha256": "9e8d1343bc0c00ea4190c85cd2365efee8bd5fb9fe91e0e5f65076285240300f",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0006-19c9d4f18f79-F01",
+        "A05-DEEP-W0006-19c9d4f18f79-F02",
+        "A05-DEEP-W0006-19c9d4f18f79-F03",
+        "A05-DEEP-W0006-19c9d4f18f79-F04",
+        "A05-DEEP-W0006-19c9d4f18f79-F05",
+        "A05-DEEP-W0006-19c9d4f18f79-F06"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0006",
+      "scientific_rationale": "The complete method inventory covers learned attack triggers, verifier-scored payload execution, transfer trials, RAG-survival and deployed-agent demonstration. Retrieval survival is pre-answer but measures retention/retrieval of the adversarial resource, not whether input contains injected instructions. Other scored decisions require target replies. None is a separate binary injection-input evaluation.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "arxiv:2403.03792"
+    },
+    {
+      "before_row_sha256": "330d39810c2666b644b99cfd5cf87164b1e6bedb3b17b936287d30cc05472d3f",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0007-f5b16097e9a9-F01",
+        "A05-DEEP-W0007-f5b16097e9a9-F02",
+        "A05-DEEP-W0007-f5b16097e9a9-F03",
+        "A05-DEEP-W0007-f5b16097e9a9-F04",
+        "A05-DEEP-W0007-f5b16097e9a9-F05",
+        "A05-DEEP-W0007-f5b16097e9a9-F06"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0007",
+      "scientific_rationale": "Complete original empirical scope consists of generated dialogue/behavior and offensive-code demonstrations alongside cited studies. This is not excluded just because it is called a review: its actual original demonstrations have been considered. They evaluate generated replies/code, with no original binary injection-input classifier experiment in the complete method inventory.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "arxiv:2403.08701"
+    },
+    {
+      "before_row_sha256": "9b672d716fa0787d7de18c1929ab2489a2a872387e70ed084caa06413f55dda9",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0012-f907ae6f0f75-F01",
+        "A05-DEEP-W0012-f907ae6f0f75-F02",
+        "A05-DEEP-W0012-f907ae6f0f75-F03",
+        "A05-DEEP-W0012-f907ae6f0f75-F04",
+        "A05-DEEP-W0012-f907ae6f0f75-F05",
+        "A05-DEEP-W0012-f907ae6f0f75-F06"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0012",
+      "scientific_rationale": "The complete TestART inventory evaluates Java unit-test generation, repair, compilation/execution, coverage, mutation behavior and generation baselines across datasets. These are software-test correctness/sufficiency tasks. They do not classify malicious versus benign injected-instruction input, even though the text matches the bibliographic discovery predicate.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "arxiv:2408.03095"
+    },
+    {
+      "before_row_sha256": "427e91ff51f78f900ed7a5821acbe1d5e7376ef1c5611d499e7aa411ae6e8421",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0014-7e7515aefbdb-F01",
+        "A05-DEEP-W0014-7e7515aefbdb-F02",
+        "A05-DEEP-W0014-7e7515aefbdb-F03",
+        "A05-DEEP-W0014-7e7515aefbdb-F04",
+        "A05-DEEP-W0014-7e7515aefbdb-F05",
+        "A05-DEEP-W0014-7e7515aefbdb-F06",
+        "A05-DEEP-W0014-7e7515aefbdb-F07"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0014",
+      "scientific_rationale": "The complete method/appendix inventory evaluates personal-information extraction, profile modifications and adaptive extraction defenses. Regex, spaCy/BERT and other pre-answer methods extract personal-information fields; they are not binary injected-instruction input classifiers. Injection constructions here are defensive interventions evaluated through downstream extracted values. This is a task/unit exclusion, not an assumption based on an incomplete excerpt.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "arxiv:2408.07291"
+    },
+    {
+      "before_row_sha256": "6f6be7dd58755a4aae6e871960b486a8b74f0fec90690367095a65228dfe7c6f",
+      "criteria": {
+        "before_target_answer": "NOT_MET",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0042-2353eeec1257-F01",
+        "A05-DEEP-W0042-2353eeec1257-F02",
+        "A05-DEEP-W0042-2353eeec1257-F03",
+        "A05-DEEP-W0042-2353eeec1257-F04",
+        "A05-DEEP-W0042-2353eeec1257-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0042",
+      "scientific_rationale": "Complete generation settings, feature construction and comparison methods establish a corpus-pair decision about generating model/distribution or sentiment-steering condition. Perplexity and distribution tests require generated-output corpora. Binary same/different corpus testing is not per-input malicious/benign injection classification.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "arxiv:2504.12335"
+    },
+    {
+      "before_row_sha256": "7d0d88d7e258979782da88d08a3135623926b71b4e44b7128e62e47d36af6fe5",
+      "criteria": {
+        "before_target_answer": "NOT_MET",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0043-8d692a1a2eee-F01",
+        "A05-DEEP-W0043-8d692a1a2eee-F02",
+        "A05-DEEP-W0043-8d692a1a2eee-F03",
+        "A05-DEEP-W0043-8d692a1a2eee-F04",
+        "A05-DEEP-W0043-8d692a1a2eee-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0043",
+      "scientific_rationale": "Complete main/appendix method scope evaluates generated target responses for policy adherence under conflicting user requests, boosters and system-complexity variants, plus an output-based jailbreak comparison. Appendix stratifications reuse that same evaluation. There is no separate original binary injection-input classification experiment.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "arxiv:2504.19521"
+    },
+    {
+      "before_row_sha256": "f27cd0f55714f19237a1aa154dd7138eb03565b9a5608ce352385c0c0fc6d46b",
+      "criteria": {
+        "before_target_answer": "NOT_MET",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0047-d24cf849479c-F01",
+        "A05-DEEP-W0047-d24cf849479c-F02",
+        "A05-DEEP-W0047-d24cf849479c-F03"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0047",
+      "scientific_rationale": "Complete model, training, OWASP category and probe-suite scope evaluates generated target responses under fixed garak vulnerability tests. Training safety variants do not convert response failure aggregation into a binary input-classifier evaluation. Original evaluated units remain target responses, including the injection-related suites.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "arxiv:2505.09974"
+    },
+    {
+      "before_row_sha256": "6fc09d2a054890ed1730d4a28df97ee81736683b1b80ed7960df218b24074c70",
+      "criteria": {
+        "before_target_answer": "NOT_MET",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0050-45e4b541ec25-F01",
+        "A05-DEEP-W0050-45e4b541ec25-F02",
+        "A05-DEEP-W0050-45e4b541ec25-F03",
+        "A05-DEEP-W0050-45e4b541ec25-F04",
+        "A05-DEEP-W0050-45e4b541ec25-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0050",
+      "scientific_rationale": "Complete method and appendix scope covers output watermarks, detector baselines, adaptive removal, transformations, and auxiliary output-quality/perplexity evaluations. The decisions classify generated/suspect text for a watermark or quality. A prompt injection that induces the output watermark is not itself an input-detection evaluation; all relevant detector decisions depend on generated text.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "arxiv:2505.16934"
+    },
+    {
+      "before_row_sha256": "76f69ccaaf8f1edd78f40f018feb0e6c19f31866a3c48dbb192bc42a0722a541",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0051-43f43bad2c15-F01",
+        "A05-DEEP-W0051-43f43bad2c15-F02",
+        "A05-DEEP-W0051-43f43bad2c15-F03",
+        "A05-DEEP-W0051-43f43bad2c15-F04"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0051",
+      "scientific_rationale": "The complete substantive source proposes a prompt gateway, audits, provenance/risk controls and execution optimizations. The original internal-test mentions concern gateway latency and caching/parsers; they do not evaluate malicious/benign injection classification. The proposed input procedure is considered, but the work does not conduct an original binary input-classifier experiment. This exclusion follows the complete described study design, not the absence of performance values or reconstructable counts.",
+      "whole_work_exclusion_ground": "NO_ORIGINAL_QUALIFYING_INPUT_CLASSIFIER_EVALUATION",
+      "work_id": "arxiv:2505.22852"
+    }
+  ],
+  "created_utc": "2026-10-25T02:07:37.129851+00:00",
+  "not_fresh_independent": true,
+  "release_sha256": "581f12be5ddd56c1f4e2e054ba534c689c9499fc8e58888ea48ac80347254d04",
+  "reviewed_unchanged": [
+    {
+      "before_row_sha256": "398c5ccd7f70b55181d44b828e7f42853937ba4065a3d683fe99454c4bd1d3a1",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0009-c71261de0452-F01",
+        "A05-DEEP-W0009-c71261de0452-F02",
+        "A05-DEEP-W0009-c71261de0452-F03",
+        "A05-DEEP-W0009-c71261de0452-F04",
+        "A05-DEEP-W0009-c71261de0452-F05",
+        "A05-DEEP-W0009-c71261de0452-F06",
+        "A05-DEEP-W0009-c71261de0452-F07"
+      ],
+      "rationale": "The completed inventory includes an input query guardrail as well as the TAP target-response evaluation. Clarify separate binary injection-input evaluation versus harmful-query screening/end-to-end guardrail toggles; undisclosed internal architecture is not itself an exclusion.",
+      "review_id": "W0009"
+    },
+    {
+      "before_row_sha256": "231d1b736983dcffbfcf5b830be4991eb252c3f9760f39ad51581256a6256e50",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0046-8c05fb989978-F01",
+        "A05-DEEP-W0046-8c05fb989978-F02",
+        "A05-DEEP-W0046-8c05fb989978-F03",
+        "A05-DEEP-W0046-8c05fb989978-F04",
+        "A05-DEEP-W0046-8c05fb989978-F05"
+      ],
+      "rationale": "Additional textual appendices describe attacks and output/system-prompt defenses. Determine whether remaining screenshots introduce a materially different method; their mere existence is not grounds for incompleteness.",
+      "review_id": "W0046"
+    }
+  ],
+  "schema": "A05_DEEP_CUSTODIAN_JUDGMENTS_v1",
+  "scope": "Whole-work method/task judgments only. No outcomes/counts/assurance classification; no sampling or B2. Partial source histories remain preserved.",
+  "source_git_commit": "2185ec900593a9f8ab46d2aff47613b385a3ca7f",
+  "version_corrections": []
+}

@@ -1,0 +1,236 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0060",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:49:39.195340+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0060.provider.0001.json",
+  "provider_packet_sha256": "a63cab17a6b8b52b216f0afe6d139720f1641f58c53772c4843fd5d2b8ce7185",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2507.13169v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\b26f87620749aee17aa9cc7a1917d7caf32e04252c34d6fc92d1d8f6303ee56e",
+    "raw_sha256": "b26f87620749aee17aa9cc7a1917d7caf32e04252c34d6fc92d1d8f6303ee56e",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0094.json",
+    "acquisition_receipt_sha256": "36d905b33ec3113f687f8654cac9eb468f923a5bd6a7b4e7aa1af344f0386cc3",
+    "captured_version_id": "arxiv:2507.13169v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        64,
+        87
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_REVIEW_SCOPE",
+    "semantic_rationale": "Actual hybrid threat and mitigation context inspected, including attribution boundaries. Earlier taxonomy/background and Appendix A remain uninspected substantively; no claim that the whole work has no original evaluation.",
+    "locator_sha256": "15c3b4818dc1984e33bcde14549422c5d9e3a94f5434a569f407079592d13e01",
+    "locators": [
+      {
+        "n": 64,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Hybrid threat scenarios and attack mechanisms",
+        "sha256": "ab9457051415d39d8d590189e65613b9830492a15ae5b96947ca2b5cf917d110"
+      },
+      {
+        "n": 65,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "section": "4 Hybrid threat scenarios and attack mechanisms",
+        "sha256": "634e02b079bf5669eb3e714f7b3268d57e5d7b1d96875d861e185f5d1dd62e52"
+      },
+      {
+        "n": 66,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Cross-Site Scripting enhanced by prompt injection",
+        "sha256": "0b034cbd5669377e500fbb97bb55fd82ee3355dbdab87c133e17fd64e4ea0d9a"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1 Cross-Site Scripting enhanced by prompt injection",
+        "sha256": "3a753000de206ee90ed9ee523c55f9ed2f7dff2c6d24424ab655b1a10affe511"
+      },
+      {
+        "n": 68,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "section": "4.1 Cross-Site Scripting enhanced by prompt injection",
+        "sha256": "77dbdfb80ad49d817268d93d2d473df9db6b7835e96a6cd5a795f2dc88ba3ecf"
+      },
+      {
+        "n": 69,
+        "kind": "paragraph",
+        "id": "S4.SS1.p3.1",
+        "section": "4.1 Cross-Site Scripting enhanced by prompt injection",
+        "sha256": "f0e365051794673659f15685c392f489657381b082f15fd039abbac5502fb117"
+      },
+      {
+        "n": 70,
+        "kind": "paragraph",
+        "id": "S4.SS1.p4.1",
+        "section": "4.1 Cross-Site Scripting enhanced by prompt injection",
+        "sha256": "1397976a462062eefffa65f4c83dc4cd49b05847b7bb7154d8b95330a35b9727"
+      },
+      {
+        "n": 71,
+        "kind": "paragraph",
+        "id": "S4.SS1.p5.1",
+        "section": "4.1 Cross-Site Scripting enhanced by prompt injection",
+        "sha256": "79e99256d9da99f2502f7c616744b4d375c4e7ef64d464fac1ed99acb8767c78"
+      },
+      {
+        "n": 72,
+        "kind": "paragraph",
+        "id": "S4.SS1.p6.1",
+        "section": "4.1 Cross-Site Scripting enhanced by prompt injection",
+        "sha256": "73f8ff64d8e7166a4dbd0953f70593897126b1945a0b6ba4516f88a693947338"
+      },
+      {
+        "n": 73,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 Cross-Site Request Forgery amplified by AI agents",
+        "sha256": "f29845720c8c1804cff4d0788b67c62fefffeb8d82fa627395a0af7c0d0d87cc"
+      },
+      {
+        "n": 74,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "section": "4.2 Cross-Site Request Forgery amplified by AI agents",
+        "sha256": "5302876e32adfd83b3173f0009cf4738620f5809b7d7b226bc2feed13b043d98"
+      },
+      {
+        "n": 75,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "section": "4.2 Cross-Site Request Forgery amplified by AI agents",
+        "sha256": "14bc039bf23e5002dc997d24e528775ea64f68442251407883d6f420ab824d97"
+      },
+      {
+        "n": 76,
+        "kind": "paragraph",
+        "id": "S4.SS2.p3",
+        "section": "4.2 Cross-Site Request Forgery amplified by AI agents",
+        "sha256": "a81cc9d56a11216ffbe94b47d2cdfdbc45066729b11e14e8c6d27fafce23bc17"
+      },
+      {
+        "n": 77,
+        "kind": "paragraph",
+        "id": "S4.SS2.p4.1",
+        "section": "4.2 Cross-Site Request Forgery amplified by AI agents",
+        "sha256": "46c5df9871803a2d0c12b7c889917e8879b55b0f7df88eb5349aaf6f10d60850"
+      },
+      {
+        "n": 78,
+        "kind": "paragraph",
+        "id": "S4.SS2.p5.1",
+        "section": "4.2 Cross-Site Request Forgery amplified by AI agents",
+        "sha256": "3156baa32ece2e6834e73c96974ae79c88fc1007ce6e6ed256c563c4914977b0"
+      },
+      {
+        "n": 79,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "section": "4.3 Multi-agent infection and propagation",
+        "sha256": "7c7a03113d1c0da2acb73e642648b34d07d2a8db53c55fbea1d7254d10991c7d"
+      },
+      {
+        "n": 80,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "section": "4.3 Multi-agent infection and propagation",
+        "sha256": "f762882d85dd60ceb355c506cdb48225692be6a8771e6025d57b84ea11915d68"
+      },
+      {
+        "n": 81,
+        "kind": "paragraph",
+        "id": "S4.SS3.p2.1",
+        "section": "4.3 Multi-agent infection and propagation",
+        "sha256": "902b88ae131547fe3f748f8c074fba8bb6fe996c19dae5ec622fbfff13c5b98a"
+      },
+      {
+        "n": 82,
+        "kind": "heading",
+        "id": "S5",
+        "section": "5 Mitigation strategies and defense architectures",
+        "sha256": "5c106ed9898103fd032b976ccf203d0982f44b1bb381da21a1b01c4831d57a7e"
+      },
+      {
+        "n": 83,
+        "kind": "paragraph",
+        "id": "S5.p1.1",
+        "section": "5 Mitigation strategies and defense architectures",
+        "sha256": "1a5512c0ffecf5ea0870a179a1b57703591cbd9aff35d6767508b06d022b39ea"
+      },
+      {
+        "n": 84,
+        "kind": "paragraph",
+        "id": "S5.p2.1",
+        "section": "5 Mitigation strategies and defense architectures",
+        "sha256": "b6b3a8dee8e0808a1d10e293d5738173176f35991197f1fb845fda9977447958"
+      },
+      {
+        "n": 85,
+        "kind": "paragraph",
+        "id": "S5.p3.1",
+        "section": "5 Mitigation strategies and defense architectures",
+        "sha256": "7c27f32afef655fe92c7fb541f142e1f55c089182ecf3024014c5ac8f5e127f8"
+      },
+      {
+        "n": 86,
+        "kind": "paragraph",
+        "id": "S5.p4.1",
+        "section": "5 Mitigation strategies and defense architectures",
+        "sha256": "a67df8683ebf440ad714f7763bb354684fcb6c06596647d0dd31ae930cc73a32"
+      },
+      {
+        "n": 87,
+        "kind": "paragraph",
+        "id": "S5.p5.1",
+        "section": "5 Mitigation strategies and defense architectures",
+        "sha256": "ec89b536be016fa4ab3abf703fadd62560333256cc5069dffd5fad96507f750b"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Source section structure organizes delivery/modality/propagation taxonomy; actual hybrid XSS/CSRF/SQL/multi-agent and mitigation text read. Prior-work attributions preserved.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Mitigation paragraphs attribute classifier sanitization to Preamble, capability/provenance isolation to CaMeL, and marking to spotlighting; combination is proposed, not reclassified as original empirical evaluation.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly retains material method/arm omissions. The approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

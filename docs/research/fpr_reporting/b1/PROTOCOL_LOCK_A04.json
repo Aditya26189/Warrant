@@ -1,0 +1,33 @@
+{
+  "amendment": "A04_FRESH_REVIEWER_PATH",
+  "amendment_commit": "651dd24587cdcacd60b50d30e0f5866966485efa",
+  "created_utc": "2026-10-19T12:28:46.137569+00:00",
+  "draw_authorized": false,
+  "files": {
+    "AMENDMENT_A01_SENTINEL_EXCLUSIONS.md": "a74caf940b5f9c0aa2b73435483bb586480a46539fd869b65bd8bfde001b6efb",
+    "AMENDMENT_A02_RETRIEVAL_SCOPE.md": "bfad507a51bf480127cfbc4da474d49d181ffbf73a1d21f0c004b0817ebd6e81",
+    "AMENDMENT_A03_ASSISTANT_METHOD_REVIEW.md": "64b586ef15f73af255e237aa75daae4ac97ef90f1e13d956db8972c106790a40",
+    "AMENDMENT_A04_FRESH_REVIEWER_PATH.md": "2468b1589f75352eed7de4bd65aeb2ad68db4737d352bd160cc6bac716af624c",
+    "APPROVED_FRAME_SOURCE.md": "74e109f800fb40f9d8fe5da61c62baf826b9980357bc87ae4f506fab64d9e6ef",
+    "PROTOCOL_LOCK_A02.json": "a8b736803da62bd399644abcc1f2ffb0a767b983560f16629ce16cf5d84147c7",
+    "PROTOCOL_LOCK_A03.json": "0c11c681b6f08fdf3a1e34a26675f157be79e757ba6d9f55cd7f7cc85689f4f0",
+    "SENTINEL_INVENTORY_AMENDED.json": "dafd88a2eb9e904054dd4dd0eeb579e9e8acabae8bc7062d49ca0355855ed69f",
+    "a02-human-batch001/WORK_RECORDS.json": "dce32691f348356c587f3cbd4ea03637a0af59974b87ae24cf238e6d72cdf34c",
+    "a02-metadata/metadata_union.jsonl": "dea23a8f9198e3ecefd71ab92c91b0680a7b0cfe97f59119880997cfba69b808",
+    "a04-handoff-source/BIBLIOGRAPHIC_CONSTRAINTS.json": "59ddc8eb8a634d3ddc2533f628b8e2618bce4908d3b94b30e2ad714c7b9721a5",
+    "a04-handoff-source/ELIGIBILITY_RULES.md": "e589d7d21be4b44b398a586ae63b66aca120d41f9c345b25342df8ece1e845e3",
+    "a04-handoff-source/EVIDENCE_RECEIPT_BLANK.json": "200aa3d90846c63f504e569bd857ba7753ccf9e054198545885d5626e8b9e433",
+    "a04-handoff-source/READ_FIRST.md": "9759a1314eaf3bd3b94c38a6523d6dab60b6a3527a8ecc36b7ba405f26ca4f5a",
+    "a04-handoff-source/REVIEWER_INTAKE_BLANK.json": "8c7c4d010cb992448c482e708aa4fe2e010ffb0b484e364dc56db75bdaa6b3dd",
+    "a04-handoff-source/verify_package.py": "50d2aad5660c0e40ae3b1774953d81ffa04ba95d877f4974b5681a2c82f3b0e3",
+    "a04-handoff/CUSTODIAN_RECEIPT.json": "2b6ce45346519427b706fa8529a3ec6036e968b3208d2cfc7c1741ae4092ed23",
+    "a04-handoff/FRESH_REVIEWER_INTAKE.zip": "48c903779bda205c2af6231da92cca8b70e6ba9755cfa175f526c107e23e7290",
+    "check_a04_handoff.py": "47b0e1757e31afe758b4fdbbc2bd5113b3afa82a208ebbf0f2bd8d04e51e8695",
+    "prepare_a04_handoff.py": "5cbb747960f897141519a7b33d5402bd69eb8c2c83ef321e296d4f15478c9993"
+  },
+  "gate": "FRAME_BLOCKED",
+  "historical_checkpoint": "03834a066981d5d01869d959aa4e0aacace125d4",
+  "independent_review": "NOT_STARTED",
+  "source_git_commit": "b295d9de0858955d399365e0d7a35613898e785e",
+  "source_tree_clean_at_start": true
+}

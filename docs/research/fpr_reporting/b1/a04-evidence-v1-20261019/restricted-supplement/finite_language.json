@@ -1,0 +1,9 @@
+{
+  "patterns": {
+    "BINARY_FORMULATION_CLAUSE": "\\b(?:we|the authors) (?:formulate|treat|model) (?:the|this|our) (?:task|problem) as (?:a )?binary classification(?: task| problem)?(?![\\w-])",
+    "DATASET_PROCEDURE_CLAUSE": "\\b(?:we|the authors) (?:use|used|utilize|utilise|adopt|employ|evaluate on|evaluate using|conduct experiments on) (?:the )?(?:JailbreakBench|LLMail\\-Inject|OpenAssistant|Do\\-Not\\-Answer|PromptInject|WildGuardMix|TensorTrust|Truthful\\-QA|JailbreakDB|InjecAgent|AlpacaEval|TruthfulQA|AgentDojo|AgentHarm|NotInject|SQuAD\\ 2\\.0|HarmBench|HotpotQA|MS\\ MARCO|AdvBench|PI\\-Bench|Gandalf|MSMARCO|PIBench|LLMail|SQuAD2|Alpaca|XSTest|BIPIA|SQuAD|GSM8K|CoIN|MMLU)(?: (?:dataset|benchmark|corpus))?(?![\\w-])",
+    "ENGLISH_PROCEDURE_CLAUSE": "\\b(?:we|the authors) (?:use|retain|select|collect|evaluate on|evaluate using) (?:only )?(?:English|English-language) (?:text|texts|prompts|documents|inputs|data|examples)(?![\\w-])",
+    "PRE_TARGET_PROCEDURE_CLAUSE": "\\b(?:detection|classification) (?:is performed|is applied|runs) before (?:the (?:target|downstream)(?: language)? model (?:responds|answers)|generation)(?![\\w-])"
+  },
+  "ruleset": "STRUCTURAL_FINITE_PROCEDURE_CLAUSE_V2"
+}

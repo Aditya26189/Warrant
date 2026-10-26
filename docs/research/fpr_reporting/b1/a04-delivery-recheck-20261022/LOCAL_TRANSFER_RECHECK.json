@@ -1,0 +1,90 @@
+{
+  "checked_utc": "2026-10-22T10:41:59.865056+00:00",
+  "clean_worktree_before_check": true,
+  "execution": {
+    "command": [
+      "python",
+      "-I",
+      "verify_recovery.py"
+    ],
+    "exit_code": 0,
+    "fresh_extraction_of_hash_matched_download": true,
+    "initial_sandbox_attempt": "PermissionError in Windows temporary directory; fresh-extraction recheck completed with sandbox escalation; no verifier changes",
+    "stderr": "",
+    "stdout": {
+      "actual_delivery_attested_by_this_check": false,
+      "criterion_responses": 1852,
+      "gate": "FRAME_BLOCKED",
+      "independent_eligibility_decisions": 0,
+      "new_method_facts": 278,
+      "original_archive_verifiers": [
+        {
+          "archive": "FRESH_REVIEWER_INTAKE.zip",
+          "exit_code": 0,
+          "verifier": "verify_package.py"
+        },
+        {
+          "archive": "RESTRICTED_EVIDENCE_SUPPLEMENT.zip",
+          "exit_code": 0,
+          "verifier": "verify_evidence.py"
+        },
+        {
+          "archive": "CONSOLIDATED_RESTRICTED_EVIDENCE.zip",
+          "exit_code": 0,
+          "verifier": "verify_semantic.py"
+        }
+      ],
+      "original_semantic_facts": 549,
+      "requested_memberships": 384,
+      "requested_works": 367,
+      "verification": "PASS"
+    }
+  },
+  "frozen_inventory_recheck": {
+    "exact_all_version_sentinel_work_ids": [
+      "W0053",
+      "W0181",
+      "W0199",
+      "W0224",
+      "W0300"
+    ],
+    "match_type": "Exact locked identifier matches only; no new scientific eligibility judgments",
+    "memberships": 389,
+    "works": 372
+  },
+  "new_return_user_report": {
+    "archive_located": false,
+    "archive_sha256": "74ee6fbac2a914a9a89f0f5b77a3927d1622d959d920717df47c6a01338dfe24",
+    "archive_verified": false,
+    "component_checks": "Reported by reviewer; not rerun against new-return bytes",
+    "confirmed_eligible_reported": 0,
+    "files_reported": 8,
+    "independent_freshness_attestation": "Reviewer explicitly says it cannot be made from that conversation",
+    "sentinel_exclusions_reported": 5,
+    "source": "User-pasted provisional controlled-evidence reconciliation; archive bytes not supplied locally",
+    "unclear_reported": 367
+  },
+  "outer_archive": {
+    "bytes": 1229861,
+    "downloads_copy_byte_identical_to_committed_archive": true,
+    "downloads_copy_present": true,
+    "flat_unique_members": 7,
+    "outer_crc_pass": true,
+    "repository_relative_path": "docs/research/fpr_reporting/b1/a04-provisional-recovery-v1-20261021/REVIEWER_RECOVERY_TRANSFER.zip",
+    "sha256": "d105eed48c37e6532776060b3aec4ab70ece3cad885d1555ce08d54c89cf5142"
+  },
+  "schema_version": 1,
+  "scope": "Custodian-side local transfer recheck; no reviewer delivery or independent eligibility adjudication",
+  "source_head": "28694571d1791d4e3d7b200e8bbb8863a5596c92",
+  "unchanged_gate": {
+    "actual_reviewer_delivery_attested": false,
+    "b2_authorized": false,
+    "completed_independent_eligibility_return": false,
+    "draw_performed": false,
+    "historical_judgment_comparison_performed": false,
+    "new_source_retrieval_performed": false,
+    "reviewer_freshness_attested": false,
+    "reviewer_wrapper_execution_attested": false,
+    "status": "FRAME_BLOCKED"
+  }
+}

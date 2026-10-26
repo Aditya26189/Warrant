@@ -1,0 +1,414 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0037",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T18:25:33.960714+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0037.provider.0001.json",
+  "provider_packet_sha256": "e49fa633be1eb71d6af407e9cb894745a9bcf7eda30571e642de54946605770e",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2503.21464v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q009-1.html",
+    "raw_sha256": "23f877cc66d7a70fab2e4a6dd11165d56d602789bdebe56ebc5abefaabdb0cd6",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0069.json",
+    "acquisition_receipt_sha256": "3bebd46ab62f9e9bfc41739b44ef665e7c14bc7e36a1b5aa2bff53693e9f839d",
+    "captured_version_id": "arxiv:2503.21464v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        19,
+        73
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actual23-32 defines MathInstruct-derived generated reasoning-step labels and TF-IDF random-forest prediction from query text. Main46-59 reuses predicted thought counts for difficulty and adversarial classifiers;61-73 introduces model routing and generated-response utility measurement. False correctly preserves later routing threshold/analysis details. All paragraphs19-73 were independently read without truncation, but that does not close the source inventory beyond the retained omissions.",
+    "visual_check": null,
+    "locator_sha256": "2812acf30e3d2f7cd9ba1cda7a8a9afdbc7dc01a740480d84f217669f75158cb",
+    "locators": [
+      {
+        "index": 19,
+        "paragraph_id": "S2.SS3.p2.1",
+        "section_id": "S2.SS3",
+        "text_sha256": "3580c723ed056cfdcc4f1c0484f158b791952cddfdac6e3ed1d1418e026d9319"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S2.SS3.p3.1",
+        "section_id": "S2.SS3",
+        "text_sha256": "3ebc28651f07735e34c2e18341328730990fd550ec587f09b8008f04cb79153a"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S2.SS3.p4.1",
+        "section_id": "S2.SS3",
+        "text_sha256": "64e2cd6d65f46b54f495820b7f785df846e9f7593d28028236c6ba09a056fd88"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S2.SS3.p5.1",
+        "section_id": "S2.SS3",
+        "text_sha256": "a2dd3e99c245f6dbb969d1cd4df9ed96616f34f2bdecae9c2e8d3b031e640c27"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S3.p1.1",
+        "section_id": "S3",
+        "text_sha256": "393553af1b0866612c62314472c2e4a14d048b004edd547b3b19b64ce4bee491"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "text_sha256": "bd522cebca928d3e1628e19fe3fdffa19b6a076df26a51f92ebe0e21001bc184"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.SS1.p2.1",
+        "section_id": "S3.SS1",
+        "text_sha256": "a00ed28a8ccdf9b8d5be4ea923e467d12699c600ad954388f0dbd8bf95c0c12a"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.SS1.p3.1",
+        "section_id": "S3.SS1",
+        "text_sha256": "d9061dda06a26c8ef308f6d962fbf3e8a3c0eff37fec0b5abcf6adcea793d9a7"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "18a182d8c097c8e0e54d59b3cb2fdfe31eab27f0f3595af3b872009a36de21b1"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.SS2.p2.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "59fd529201c6088f81fae500bb0758bca98c7717ce1b627f7b494f9f699e7d3b"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS2.p3.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "b922f6422348692f5cd6369ed4595a723399f1d39cdb195449f8e9e4bb5a53a7"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS2.p4.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "b6482455a8ae0b3cac6c0d15bc7a4cff44d43017ac0dcc0fc7729a49e4c8cd8a"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S3.SS2.p5.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "b99a6e0f73a0a279dd0cd3b1b9e0a1fdad36880435e8217a761d0673d00e1749"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S3.SS2.p6.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "443dad771abee32732c90df38cd176f71a95716860b127971d75761765bff4eb"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "text_sha256": "33e30349697e88c025ae7f26033f2cdef379149cbbdf8d194aac2691053e30ca"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S3.SS4.p1.1",
+        "section_id": "S3.SS4",
+        "text_sha256": "70e6401137c5da06dae80ca5d0557242030fb30b68bfade0f08807b01f0244ba"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S3.SS4.p2.1",
+        "section_id": "S3.SS4",
+        "text_sha256": "17cdb4cfe726683e1add333f015343b776a01cb419b01d183ec8bcf31132e346"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S3.SS4.SSSx1.p1.1",
+        "section_id": "S3.SS4.SSSx1",
+        "text_sha256": "faf19987b318870155568dd055e5f24409a36ed8e8bcff7c251cc4f2d8617992"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S3.SS4.SSSx1.p2.1",
+        "section_id": "S3.SS4.SSSx1",
+        "text_sha256": "117ba24f320f3a375918bb7998ac7e040644dfa62f63a7000d1b3b6040679d0b"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S3.SS4.SSSx1.p3.1",
+        "section_id": "S3.SS4.SSSx1",
+        "text_sha256": "3398c9412439491c492bbe9decf6809fec1ec0f534c920ebe090c0ca44440c97"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S3.SS4.SSSx1.p4.1",
+        "section_id": "S3.SS4.SSSx1",
+        "text_sha256": "1d4c4d35a79dd49e5426989a5b56105ceca58fb91991699096950e6f095b491b"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S3.SS4.SSSx1.p5.1",
+        "section_id": "S3.SS4.SSSx1",
+        "text_sha256": "4faed0e92df0e67fede977280fd7ac38a152b618a6ec16eb51a4ddb72debfb02"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S3.SS4.SSSx2.p1.1",
+        "section_id": "S3.SS4.SSSx2",
+        "text_sha256": "989d1b25afd6a3a3974885594fbdb39a7e3233863a10d0386beb2bb9faa13dc1"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S3.SS4.SSSx2.p2.1",
+        "section_id": "S3.SS4.SSSx2",
+        "text_sha256": "8d8573174b3b52c46ea2e1339da424c8dc66a26894f8b6a20c64ba563339d377"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S3.SS4.SSSx2.p3.1",
+        "section_id": "S3.SS4.SSSx2",
+        "text_sha256": "b62b982d8e8e8ad0b5ff9d436ec5b940d830fae0aa77a7d39c0b419daa12a0aa"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S3.SS4.SSSx2.p4.1",
+        "section_id": "S3.SS4.SSSx2",
+        "text_sha256": "d72f78992500c0bf573e51f97054ae906fb0b6ddcc38b9992a73130300bd75b6"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S3.SS4.SSSx3.p1.1",
+        "section_id": "S3.SS4.SSSx3",
+        "text_sha256": "9fa267bf435447d690660a8f2d3cbc0265d1e337a73652b27ad23847993c7c38"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "text_sha256": "7dc1dafec521d7e0887560b4e994e006b3d8760a38200493229371a2753d7832"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "text_sha256": "363b1b9f6be6cbb0918fb994cc68793d336a98a3a4ff5ea25593fdd338290d49"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S4.SS1.p2.1",
+        "section_id": "S4.SS1",
+        "text_sha256": "18e52991c9db12ce3053ddfa78b23547566de298fc4138decd385952936ab192"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "text_sha256": "a55cdfa78d6e632cc58dfc9005ef1bf20a397778ff6e3595d536e7226c31efb0"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S4.SS3.p1.1",
+        "section_id": "S4.SS3",
+        "text_sha256": "1b14733602d8ed7d31a28e21ed9117c26e6b43cdfd9df3b773bf9a953fae0d8b"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S4.SS4.p1.1",
+        "section_id": "S4.SS4",
+        "text_sha256": "4a01224662579b0c5c6f0edf40065a065b193d3b056ebcc0f6e192057a91c890"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S4.SS4.p2.1",
+        "section_id": "S4.SS4",
+        "text_sha256": "2ba7193aaa77d6da26b8c0fc01ee3415c858cac56461aaea39bc415a38a082bc"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S4.SS5.p1.1",
+        "section_id": "S4.SS5",
+        "text_sha256": "13adc8b807323b8773df46b68fab800fc842f6016b2dfc54c27c451d1d0c35d5"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S4.SS5.p2.1",
+        "section_id": "S4.SS5",
+        "text_sha256": "ad19b93493bef420561e8ea64db0ff83d3d37a1b9e0399dfa0e300ea87769249"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S4.SS5.p3.1",
+        "section_id": "S4.SS5",
+        "text_sha256": "2cc108053507951e31b8b4f822fe736ac3de641cf6a44f383cf9ae367b8d4781"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S4.SS5.p4.1",
+        "section_id": "S4.SS5",
+        "text_sha256": "ca2e98556d09cc531cb4d8db8c77403762b961a0f013a6288b9b7ea6ac301f90"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "S5.p1.1",
+        "section_id": "S5",
+        "text_sha256": "4d92532555be53687e47b56e453b888165cc5c2773f6fdf3217ec34d1a379daf"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "S5.SS1.p1.1",
+        "section_id": "S5.SS1",
+        "text_sha256": "5e580e20813cba7e4b4edc302eaf988d63af5f6f2da5c341cc9e0b30f2b39f7a"
+      },
+      {
+        "index": 59,
+        "paragraph_id": "S5.SS2.p1.1",
+        "section_id": "S5.SS2",
+        "text_sha256": "d484c012d05e9d405467c429257299c58b986b939173fbe9643d5c739bfd1199"
+      },
+      {
+        "index": 60,
+        "paragraph_id": "S5.SS2.p2.1",
+        "section_id": "S5.SS2",
+        "text_sha256": "cbc94396acd941bf97850421f5791bfc11d6eabee7c2b98826153562ddf3a4b5"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "S6.p1.1",
+        "section_id": "S6",
+        "text_sha256": "32e37a258ccb10de97e0d69ad25318a7b57512c0b9d4c80971e579b0ba5cffcf"
+      },
+      {
+        "index": 62,
+        "paragraph_id": "S6.SS1.p1.1",
+        "section_id": "S6.SS1",
+        "text_sha256": "3ccc499b7a33dc4b20f3026c1ff397cf1de90561952d642f2380b4a423bdbf3e"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "S6.SS2.p1.1",
+        "section_id": "S6.SS2",
+        "text_sha256": "ea50c7d7641d891f8732b9ac7e917eec2c281bd13a7158b7cff73c885b578979"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "S6.SS2.p3.1",
+        "section_id": "S6.SS2",
+        "text_sha256": "53e44550b63d1f3210820d29879160b76e3bdb07a69815b260c6e20213a1ea99"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S6.I1.i1.p1.1",
+        "section_id": "S6.SS2",
+        "text_sha256": "956c700bb2fdbd8af032290e5f0100d5fe516c9cecc8b625e90b7736ca28267e"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "S6.I1.i2.p1.1",
+        "section_id": "S6.SS2",
+        "text_sha256": "4a1f18f00e2174236ae60f4a2fbccbc5350d7be9d632eced1deebb843a97ca87"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S6.I1.i3.p1.1",
+        "section_id": "S6.SS2",
+        "text_sha256": "19e5cdf855ae2ca254b6cdb4f2b9b750a5d8f3bd09521259b68680b3f163c93c"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S6.SS2.p4.1",
+        "section_id": "S6.SS2",
+        "text_sha256": "823072a8d9530d1ca2984c29101865a6fe2648111aaf5bd83316c68632cc06b5"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S6.SS2.p6.1",
+        "section_id": "S6.SS2",
+        "text_sha256": "53e44550b63d1f3210820d29879160b76e3bdb07a69815b260c6e20213a1ea99"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S6.I2.i1.p1.1",
+        "section_id": "S6.SS2",
+        "text_sha256": "e93953ddbfb1767f64a2d96807f3bd1913f9fe353183b0f103527828af517b60"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S6.I2.i2.p1.1",
+        "section_id": "S6.SS2",
+        "text_sha256": "de9757b6747ebebe3090a035c55240278d428470ae2793676376f90f3e882dfc"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "S6.I2.i3.p1.1",
+        "section_id": "S6.SS2",
+        "text_sha256": "9532c4dfdc9d1703970dea02498fc87f39e6ba91bd7301e498a6e9949d71ba26"
+      },
+      {
+        "index": 73,
+        "paragraph_id": "S6.SS2.p7.1",
+        "section_id": "S6.SS2",
+        "text_sha256": "d8539b78dd7c258209b7cd57cd967139cf2a1484ecf4c8477aeb2abf91a009f4"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual23-32 defines MathInstruct-derived generated reasoning-step labels and TF-IDF random-forest prediction from query text. Main46-59 reuses predicted thought counts for difficulty and adversarial classifiers;61-73 introduces model routing and generated-response utility measurement.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual24-33 specifies DeepSeek reasoning parsing and RF estimation plus model-size/TinyR1 controls. The deployed estimator uses prompt features; response-derived training labels do not require a protected answer during estimator inference.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual46-59 specifies expert difficulty/adversarial DIA labels, deepset injection labels, additional forest training, SMOTE, random search, isotonic calibration and threshold selection. These classifiers consume prompt-derived predicted thought counts.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual61-73 describes routing among DeepSeek sizes according to prompt complexity, with generated-response comparison and latency/energy measurement for utility assessment. Routing itself precedes the routed answer; later routing-threshold implementation remains open.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual method Table S3.T1 contains an English question and invoked step-numbering instruction. This confirms a displayed component; MathInstruct/DIA/deepset evaluated-language composition remains unresolved.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves later routing threshold/analysis details. All paragraphs19-73 were independently read without truncation, but that does not close the source inventory beyond the retained omissions.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

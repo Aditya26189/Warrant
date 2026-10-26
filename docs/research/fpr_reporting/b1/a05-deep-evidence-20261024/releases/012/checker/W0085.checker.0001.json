@@ -1,0 +1,306 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0085",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-26T05:41:34.147657+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0085.provider.0001.json",
+  "provider_packet_sha256": "a7732600146498662feb38d3a8ff578e30f04e14e17f30e619bd31fb6ae896de",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2509.21367v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q034-1.html",
+    "raw_sha256": "55c34d9d95674378a7f0c5b139758fb394209d511ddf39089873f3d79fc75186",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0126.json",
+    "acquisition_receipt_sha256": "16f2adaa512d6aa67dd1390ef1d077ee5989beb110807e3b78f4e7e4ab70fba5",
+    "captured_version_id": "arxiv:2509.21367v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        20,
+        56
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "Actual20-56 specifies original tourism-chatbot query trials across undefended, policy, gatekeeper, evidence-grounded and direct-model variants. Input intent/relevance/regex checks and post-generation leak/citation checks operate on different units. True is verified for declared material main variant, gatekeeper, output-check and evaluation-family definitions20-56 plus the complete method decision table. No appendix appears in the exact source heading inventory. Unread exact policy/template wording and language composition remain limited implementation/data details, not proof of a different task family.",
+    "visual_check": null,
+    "locator_sha256": "0643604779d72859dcdccec1934af20bb9dcbf2b260d776bc8e3953a41de25aa",
+    "locators": [
+      {
+        "index": 20,
+        "paragraph_id": "S3.p1.1",
+        "section_id": "S3",
+        "text_sha256": "ae9906756ff18d8eceb5d84b447123749470e9bbea5843aeea84a76d39fefedc"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "text_sha256": "c20647607577618dee6238d619d4e350150f77a4ce76b5bbccf3912567464f9b"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S3.SS1.p2.1",
+        "section_id": "S3.SS1",
+        "text_sha256": "843e2234cced09b179067ed3de36b5fb6470e6b9c1eeb4f2f468d906df4ac7bb"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S3.SS1.p3.1",
+        "section_id": "S3.SS1",
+        "text_sha256": "d84a30c45c19c803dd863c2d2641bde9e6b1bc2c9e5826436a31be31dadb2384"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S3.SS1.p4.1",
+        "section_id": "S3.SS1",
+        "text_sha256": "bfcc7f15d6429a7770b31559b00a5dc7bf8a395639587174ddc69072796fa6f2"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "text_sha256": "0016de6c19556c1376ee443d5b9b30a1503ad7a517ffefb728cec39038f498cc"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.SS2.SSS0.Px1.p1.1",
+        "section_id": "S3.SS2.SSS0.Px1",
+        "text_sha256": "45b8d1287f61677916cdc8deda52f197f7fcca9a3e21301625724263ab34c3a6"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS2.SSS1.p1.1",
+        "section_id": "S3.SS2.SSS1",
+        "text_sha256": "23055bb1d80fac3f84d98ea2508e54a801c899c337fdeb8b55fb82932f1e8c60"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.SS2.SSS1.p2.1",
+        "section_id": "S3.SS2.SSS1",
+        "text_sha256": "a1703a4840ec66e4ba2de3cd423b525dd2ab9ba9d18d44356349157a7349eead"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS2.SSS1.p3.1",
+        "section_id": "S3.SS2.SSS1",
+        "text_sha256": "12b709eafbf588e55c767b9e318ed976f873714a0b3fda8ee6db8dba862d63bd"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS2.SSS2.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "text_sha256": "a279974eda710e9ecec835b1e90b7f49a6a128bdde8fd93aa82d70b4e8961c74"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S3.SS2.SSS2.p2.1",
+        "section_id": "S3.SS2.SSS2",
+        "text_sha256": "01969d79e95f2a369910a8e076c84ec4b3fc95d7dbc09badaff523fb538d5e9c"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S3.I1.i1.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "text_sha256": "b4c63e207f66c0f496f1e8f3e2aa77dc6d635e9a7e72621baed132c34e28de40"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S3.I1.i2.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "text_sha256": "19231eead3db64012d940dbc5e2976629be2c937e2445abacf4b3883bdcc4b35"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S3.I1.i3.p1.1",
+        "section_id": "S3.SS2.SSS2",
+        "text_sha256": "1064611096d346656847064a5898d27fb79d80d26fb538e5cd65ae49c809decc"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S3.SS2.SSS2.p3.1",
+        "section_id": "S3.SS2.SSS2",
+        "text_sha256": "f4a324597358c24d936a9099bea6fe5fa1bf22c1b48f3d10ee38d649c47e74ae"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S3.SS2.SSS3.p1.1",
+        "section_id": "S3.SS2.SSS3",
+        "text_sha256": "07c6959c558d5a44587dca74ecfe50914687cf434c00515900195879604325f7"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S3.SS2.SSS3.p2.1",
+        "section_id": "S3.SS2.SSS3",
+        "text_sha256": "d356392d81157d9d7a382bc5c78b2a6fe28b6f9287fd1ecdda24f81b1e6e21f0"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S3.I2.i1.p1.1",
+        "section_id": "S3.SS2.SSS3",
+        "text_sha256": "a10c2ae4c1935f2fea1802a6fd8cffe2fc47a973a739d0658c1dd4730c46a250"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S3.I2.i2.p1.1",
+        "section_id": "S3.SS2.SSS3",
+        "text_sha256": "dad7830a029a8f53cc8285c927fdc732295486d7d235c3f86ffba6f2fe9fa2db"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S3.I2.i3.p1.1",
+        "section_id": "S3.SS2.SSS3",
+        "text_sha256": "7f7383a6a7eb1371483aee9f96e29708707b93ea9ad97f2c51e7c8cb31f69450"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S3.SS2.SSS3.p3.1",
+        "section_id": "S3.SS2.SSS3",
+        "text_sha256": "1dbaaee95415ecac4475d018e08110b42445d804c57c81a7374160e81a953dd6"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S3.SS2.SSS4.p1.1",
+        "section_id": "S3.SS2.SSS4",
+        "text_sha256": "032878e8bfe3aac36a6f7868170cfde1902ea815822f1c10d6def9fc91ca0b58"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S3.SS2.SSS4.p2.1",
+        "section_id": "S3.SS2.SSS4",
+        "text_sha256": "c2bab0d2f24815607485960c9bc763c2240ce423b0b3698c1484b50339037a86"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S3.SS2.SSS4.p3.1",
+        "section_id": "S3.SS2.SSS4",
+        "text_sha256": "84a2b2b204f0d1d140464bc4ec480190b3ccce3ccadd890456b056cf853a5362"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S3.I3.i1.p1.1",
+        "section_id": "S3.SS2.SSS4",
+        "text_sha256": "3a9524fb024ecfffe6174bd31358cceee4bea97e2e76977e002988212e548623"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S3.I3.i2.p1.1",
+        "section_id": "S3.SS2.SSS4",
+        "text_sha256": "2650e3146f30f19ec23e2f1f2155a29727621850c2336614f59b013977fd4f9a"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S3.SS2.SSS5.p1.1",
+        "section_id": "S3.SS2.SSS5",
+        "text_sha256": "ce6629fa420e7025a139fe7c0aa4272a17a5e3ef706016d029b6667c70ddfb3b"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "text_sha256": "eff630996285704a447fedecebcfa013e587e05585b7be2e7624904cf1a140af"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S3.SS3.p2.1",
+        "section_id": "S3.SS3",
+        "text_sha256": "397bf4ea2008d8d839c46ce58df184bf8c9bdb2e106b7e8ad2fbb3cd6e1411c2"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S3.SS3.p3.1",
+        "section_id": "S3.SS3",
+        "text_sha256": "39591df9f2631061199517b770b2014519b884eb733f82a49091d17fd17ef393"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S3.SS3.p4.1",
+        "section_id": "S3.SS3",
+        "text_sha256": "14f4b4bbd64d38e43c2ab18f74b166437ead870827092f8814db7a85c6b7ae98"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S3.SS3.p5.1",
+        "section_id": "S3.SS3",
+        "text_sha256": "d6fde883d7eb5b926a744bbabd974b70c7cc31fc838c3f1e0a12e0de019140ac"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S3.I4.i1.p1.1",
+        "section_id": "S3.SS4",
+        "text_sha256": "fdc0f55c5985bfeb6d98c54bb8afac2b6b5075556bdb24c6c51da2a0f1594d13"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S3.I4.i2.p1.1",
+        "section_id": "S3.SS4",
+        "text_sha256": "53a0b16daafc37038d3b308c16d8d0d0d8a2f4420c6e760be51c7446880984ce"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S3.I4.i3.p1.1",
+        "section_id": "S3.SS4",
+        "text_sha256": "5e0c80f924dd0617d418216083b11bfb3aa840518dd99bd01c1c9ff8de59ebb9"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S3.I4.i4.p1.1",
+        "section_id": "S3.SS4",
+        "text_sha256": "b0f6566a9b6d8e358283418fdb44affa0999d9aaff211ba0d44dea59eb183691"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual20-56 specifies original tourism-chatbot query trials across undefended, policy, gatekeeper, evidence-grounded and direct-model variants. Input intent/relevance/regex checks and post-generation leak/citation checks operate on different units.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual25-47/51-56 defines V0 through V4, model/scaffolding changes and benign versus adversarial system block/allow evaluation. The input gatekeeper36-40 precedes protected generation; other variants also assess generated replies.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual38-40 and full original decision table S3.T1.1 specify intent classification, query-retrieval relevance and pattern checks. The table separately allows clarification for low relevance; an input decision needs no protected answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual42-46 specifies retrieved-evidence summarization, string leak checks and citation requirements/re-generation. These consume generated summary/reply material, unlike the input gatekeeper.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Taiwan setting, multilingual deployment discussion24 and named source datasets48-49 do not specify an English evaluation subset. No evaluated-language inference is made from English paper prose or policy snippets.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True is verified for declared material main variant, gatekeeper, output-check and evaluation-family definitions20-56 plus the complete method decision table. No appendix appears in the exact source heading inventory. Unread exact policy/template wording and language composition remain limited implementation/data details, not proof of a different task family.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

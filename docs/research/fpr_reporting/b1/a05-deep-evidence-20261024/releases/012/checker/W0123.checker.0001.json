@@ -1,0 +1,338 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0123",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-26T05:48:47.779832+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0123.provider.0002.json",
+  "provider_packet_sha256": "482f1f716ebf751da35932a47c87d4fe554a8a3dccb819dc5a81579a33165700",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2601.10173v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\2a6a9834274ba887276fb7a6f5acee7657e0d7f08f1ed1a47a658f56f6880cf2",
+    "raw_sha256": "2a6a9834274ba887276fb7a6f5acee7657e0d7f08f1ed1a47a658f56f6880cf2",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0167.json",
+    "acquisition_receipt_sha256": "1f8681a19b5f24ae54b30a3d5ce4bca576cd0c55fa24b11f6f07d95d08643a5a",
+    "captured_version_id": "arxiv:2601.10173v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        23,
+        39
+      ],
+      [
+        47,
+        54
+      ],
+      [
+        63,
+        74
+      ],
+      [
+        84,
+        88
+      ]
+    ],
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "Actual27-39 defines synthesized original-user/context/injection examples, highlighted reasoning supervision, LoRA alignment and a DPO-trained logic judge scoring generated reasoning nodes. Safe injection instructions explicitly prevent equating injection with harmful intent. True is verified for corrected material task/arm families after main implementation, complete setup/baseline and ablation/overhead context plus Appendix A/B descriptions. Appendix figure prompt wording remains uninspected, but actual88 bounds it to chosen/rejected thought collection already specified27-39; it does not establish a new task family. Evaluated-language composition remains unresolved; English training triggers or illustration text is not whole-test language proof.",
+    "locator_sha256": "8a2239badd3ed7edcaa979682cd634306ca0d3c245f85fd2afec19cf46c715b6",
+    "locators": [
+      {
+        "n": 23,
+        "kind": "heading",
+        "id": "S4",
+        "sha256": "f21ed05dfa03b5b5a49b6d73451079c07c71f9e776fe9823170cdc7911437fc4"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "sha256": "f9c89966d123ae7b57ab5613a4a5644f7f16d1c2b728698c2be043089b82f9e2"
+      },
+      {
+        "n": 25,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "sha256": "9bf804376a4072bf4c576c512b3681b47a00eb0f01b812f9606ee629bdd236fd"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "sha256": "a5bcf652eeb8ac869410156262b6202c1991a47ff24c4e8f2fbe4c3148ec9b7f"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "sha256": "f2d5af606a6e72244ae796bbffa1b5c4af215d6223764e3e511c44a9210012ee"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S4.SS1.p3.1",
+        "sha256": "f6afbddb477f4833e9ea083c4108be7e5ea8fb94da636236beb1ab35754f4d0b"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S4.SS1.p4.1",
+        "sha256": "6f7f81259d5115fd6ff4b601b845c98102b5eca8e41e37a33721f5b14877562f"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S4.SS1.p5.1",
+        "sha256": "77bc6b15dcfbc1bfd283968769924af7123a27d258500153e0afacde8b3eeda5"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S4.I1.i1.p1.1",
+        "sha256": "14a305b11383d93375481eb0c3cc142b3e13b338bccf3018f177553bd3f05ded"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S4.I1.i2.p1.1",
+        "sha256": "efcd0c8926dafae909f409c37d1f763a272545580d93739ab9808c77ca70d848"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S4.I1.i3.p1.1",
+        "sha256": "bb10811b47ded840ecfd5c052a2caa8d3867546ae50125bede9e000454569e52"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S4.SS1.p7.1",
+        "sha256": "206110d52e06e4c28816321f7d286d4df906ce0700142840155067735f41b5a0"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S4.SS1.p8.1",
+        "sha256": "1c7db91df19e7f08a6c5105ce1ad37e06a3df8682f051c2de539733c52c73713"
+      },
+      {
+        "n": 36,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "sha256": "6c9d26658bf4d0b705454853690b6d1f558b9dcca6ab6685f6594a50394eaddb"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "sha256": "8a324da82ed9494e22f069e1c712efdf0aa76963c059d278c16abfc8f5ef62ff"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "sha256": "79c436ce59130072435a6843b0a2440e3a70ac15fc9a385d0b6971f25de424e2"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S4.SS2.p3.1",
+        "sha256": "49dc2423192bc373b84df0b2308784e9ec4493e85fed5e5a089279b653bf8d94"
+      },
+      {
+        "n": 47,
+        "kind": "heading",
+        "id": "S5.SS1",
+        "sha256": "035769b20e28cf4b5a30f672e08b217b531df4dcf8582720b2535b05bf6dd4a9"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S5.SS1.p1.1",
+        "sha256": "90975518cee4ccd60b8c18ff0018f8f3afea343423dda5094c1a383836e9e30e"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S5.I2.i1.p1.1",
+        "sha256": "c48ec53dd95aac9cc3d3246a7ffbb718829bb791e7a7541d3fabe06218e44e9f"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S5.I2.i2.p1.1",
+        "sha256": "d0b76b28508428fdc0bfc8ddb325a81a4801c435c001ce6838bb2d10613c1262"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S5.I2.i3.p1.1",
+        "sha256": "1b06823199ca9b6787318e765d51e00abdfb9541662a4953f99361b2fbe1d779"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S5.SS1.p3.1",
+        "sha256": "c165ea3c34069d38560e53c64727d4ab9f6c30a05e1a33c5a8e3a75a010f91d8"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S5.SS1.p4.1",
+        "sha256": "bc0e0dea262ee6379f30a47df00c511a8e81a5f8061733bbd16a4398662cf767"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S5.SS1.p5.1",
+        "sha256": "160fe0981f042d752c1aa6e2161ae492955f7ae039f42fbc27bd45c691d22e40"
+      },
+      {
+        "n": 63,
+        "kind": "heading",
+        "id": "S5.SS4",
+        "sha256": "deb377c69baf63a6ece57bd4611b6acec346bbd03ab0a85abb619bf60e4e58c9"
+      },
+      {
+        "n": 64,
+        "kind": "paragraph",
+        "id": "S5.SS4.p1.1",
+        "sha256": "d833693ff6398f69ff0c2564cf8a1a32089ecadc336f8728320ef71ec2968165"
+      },
+      {
+        "n": 65,
+        "kind": "paragraph",
+        "id": "S5.SS4.p2.1",
+        "sha256": "b3624aa0f02f55dba0045beca8a0926e8a60f4495195db6338fba7c36f5cde07"
+      },
+      {
+        "n": 66,
+        "kind": "heading",
+        "id": "S5.SS5",
+        "sha256": "e2f5ab312d632d3add280aa1eb410d61d9cf1847af2abc40288cfd169f2e8650"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "S5.SS5.p1.1",
+        "sha256": "15de38d2bade4dc34d178340af7c9e0442e98b856f467dd6f2c09a030ddec6f5"
+      },
+      {
+        "n": 68,
+        "kind": "paragraph",
+        "id": "S5.SS5.p2.1",
+        "sha256": "5353930ca5a3eef4394f845e6113f7af8ae8a2c07b949deb7cfad70b7b0881f7"
+      },
+      {
+        "n": 69,
+        "kind": "heading",
+        "id": "S5.SS6",
+        "sha256": "8a3a1a4411b0968edff0b5ae74e7701d7be276a82cd3c562433add4b4830ae1e"
+      },
+      {
+        "n": 70,
+        "kind": "paragraph",
+        "id": "S5.SS6.p1.1",
+        "sha256": "49fedaf5e91383b58a485e9aeff43445d213a8b47f92c7ac2fb48dee1bd6392e"
+      },
+      {
+        "n": 71,
+        "kind": "paragraph",
+        "id": "S5.SS6.p2.1",
+        "sha256": "dfc6e75392052625e40e37d12f457f42e917d8aef916c664c6c4f5093e400bee"
+      },
+      {
+        "n": 72,
+        "kind": "heading",
+        "id": "S5.SS7",
+        "sha256": "7d001e1a1689408568d73f1dab8275cf8ab08dc4d335ee534bb643f631370976"
+      },
+      {
+        "n": 73,
+        "kind": "paragraph",
+        "id": "S5.SS7.p1.1",
+        "sha256": "9566c07f95dc6d6d5502ab6d7781ee7a171be4616e263b0556858bdea7ab2419"
+      },
+      {
+        "n": 74,
+        "kind": "paragraph",
+        "id": "S5.SS7.p2.1",
+        "sha256": "82b0e85435de6d42f946d3ae85f80abd7cdae210b18e71cacfe672ceeb158af7"
+      },
+      {
+        "n": 84,
+        "kind": "heading",
+        "id": "A1",
+        "sha256": "388cb9090034ff41ef261ac8bb0fa18c1d1453f8168d3780367976bd061c78fd"
+      },
+      {
+        "n": 85,
+        "kind": "paragraph",
+        "id": "A1.p1.1",
+        "sha256": "558bca863949bdab5645df0ff987f0464e492ba57f19087f9c8f31de63280922"
+      },
+      {
+        "n": 86,
+        "kind": "paragraph",
+        "id": "A1.p2.1",
+        "sha256": "1baac600781fa3043555b88388934af73f647070297ee5e6e3e7030d58a782a7"
+      },
+      {
+        "n": 87,
+        "kind": "heading",
+        "id": "A2",
+        "sha256": "8b228ee18503b3f9f15926da2903c511cbf44380474becf88f37ed4f4ebff546"
+      },
+      {
+        "n": 88,
+        "kind": "paragraph",
+        "id": "A2.p1.1",
+        "sha256": "0baea383cbf69809f7d35acd119991106d1fe17d1c4340db629455ba6ef95e51"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual27-39 defines synthesized original-user/context/injection examples, highlighted reasoning supervision, LoRA alignment and a DPO-trained logic judge scoring generated reasoning nodes. Safe injection instructions explicitly prevent equating injection with harmful intent.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual27-39/53-54/65/67/70 specifies ReasAlign, reasoner/judge alignment, final-answer-only and node-scale variants, base/SecAlign/Meta-SecAlign and agent workflows. The logic judge consumes generated reasoning nodes, and task assessment consumes generated answers/actions.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual48-52 expressly declares general-knowledge, instruction-following utility/security and agent-workflow task families;73 specifies generated-token overhead comparison on successful tasks. The capability controls use completion correctness/utility, not an injection-presence input label. SEP/CySE include attack and no-attack conditions; the family label does not make every instance clean.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True is verified for corrected material task/arm families after main implementation, complete setup/baseline and ablation/overhead context plus Appendix A/B descriptions. Appendix figure prompt wording remains uninspected, but actual88 bounds it to chosen/rejected thought collection already specified27-39; it does not establish a new task family. Evaluated-language composition remains unresolved; English training triggers or illustration text is not whole-test language proof.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "schema": "A05_RESTRICTED_BIBLIOGRAPHIC_SCOPE_CHECK_v1",
+  "review_id": "W0069",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T12:20:41.630236+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_MERGE_SAMPLING_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\additional-002\\W0069.bibliographic-scope.0002.json",
+  "provider_packet_sha256": "1ead3d1eca812e4d34d9358cb5e802fb2466a775522834720fea0b7de0135d04",
+  "request_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\ADDITIONAL_SOURCE_REQUESTS_002.json",
+  "request_sha256": "d6fa90dc94f8a21b231c1c20a23c41378a73e3772fb3c703b6cf05700c7b4548",
+  "requested_preferred_version": "arxiv:2508.04281v5",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q026-1.html",
+    "raw_sha256": "04ed30f3b6888fb453e3afebfa149be90b8cfbbf91d543ca0a215dbac7c1fffe",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0107.json",
+    "acquisition_receipt_sha256": "675393456cae35d973ff0856e24ea6b4363a7cf50af4fccc9ed47d9a585695e4",
+    "captured_version_id": "arxiv:2508.04281v5"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "scope": "Cached bibliographic front matter, introduction scope and exact chapter reuse notes; main paper methods already independently checked. No historical scientific judgments accessed.",
+    "locator_sha256": "7edf7b0f6f05249b8784b517fa5bf0874b08211134e3e96eb3670d9599cdc95f",
+    "locators": [
+      {
+        "html_id": "id1",
+        "normalized_text_sha256": "002a9c5922c8980ced9b533ddb4517fe324f3a1cef5818518b3797d1a6e133cc",
+        "scope": "bibliographic/front-matter paragraph",
+        "normalized_hash_verified": true
+      },
+      {
+        "html_id": "tab1",
+        "normalized_text_sha256": "837abb8fec4cd2bf74c75aab9a6eda68fba01928462f7046306a7222f0b0edba",
+        "scope": "bibliographic/front-matter paragraph",
+        "normalized_hash_verified": true
+      },
+      {
+        "html_id": "S3",
+        "normalized_text_sha256": "f2d9e32e4c78bf7215d1311b462f2007730e60dc5c689932ddf0201d9a8d62a1",
+        "scope": "heading only",
+        "normalized_hash_verified": true
+      },
+      {
+        "html_id": "S4",
+        "normalized_text_sha256": "718da801653af09b80e3497e9f4098795b4ec5e8ec4ef605fbdacf0a0bab7e48",
+        "scope": "heading only",
+        "normalized_hash_verified": true
+      },
+      {
+        "selector": "head/title",
+        "normalized_text_sha256": "002a9c5922c8980ced9b533ddb4517fe324f3a1cef5818518b3797d1a6e133cc",
+        "normalized_hash_verified": true
+      }
+    ],
+    "additional_actual_chapter_heading_locators": [],
+    "cross_source_reuse_pointer": {
+      "raw_sha256": "0966e3528c13cbc940b388aec1b7215f5b5fd89926faef47c4bd16ee0420cb30",
+      "html_id": "Ch3.p3",
+      "normalized_text_sha256": "a39b70f77d08e1c95b92459a30c82508f298f8c2c3b357f816290360f1a0fe68",
+      "version_limit": "Paper identifier only; no specific paper version is named."
+    }
+  },
+  "independent_primary_web_metadata": {
+    "url": "https://arxiv.org/abs/2508.04281v5",
+    "access_mode": "Independently opened exact official arXiv landing page via web tool; parsed metadata only",
+    "original_http_bytes_available": false,
+    "safe_metadata_projection": {
+      "url": "https://arxiv.org/abs/2508.04281v5",
+      "title": "Reasoning Enhances Robustness to Prompt Injection in LLM-Based Consensus",
+      "authors": [
+        "Jairo Gudiño-Rosero",
+        "Juan Ignacio Zambrano",
+        "Umberto Grandi",
+        "César A. Hidalgo"
+      ],
+      "submission_history": {
+        "v1": "2025-08-06 10:10:01 UTC",
+        "v5": "2026-10-07 13:40:55 UTC"
+      }
+    },
+    "safe_metadata_projection_sha256": "2eb1b1395b90678cdbb54e9b067cbd8c6dd785edec2de677bd7a579ef751c08d",
+    "not_an_http_raw_hash": true,
+    "limitation": "No claim of captured raw landing bytes or historical availability of the exact cached full-text bytes."
+  },
+  "per_fact": [
+    {
+      "field_path": "bibliographic_scope_facts.title",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Exact title is verified in cached header/id1, head/title and independently opened official exact-version landing page.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bibliographic_scope_facts.authors",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Corrected Unicode author names match actual cached tab1 and independently opened official exact-version metadata; prior question-mark substitutions are not approved.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bibliographic_scope_facts.whole_document_scope",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual cached main S3/S4 headings and the separately checked full method definitions24-46 support this paper-level declared subject and method scope. No outcomes or eligibility inference is used.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bibliographic_scope_facts.edition",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Independently opened official exact-version landing page submission history verifies initial v1 and exact v5 timestamps. Original HTTP bytes are unavailable; the sanitized parsed-metadata projection is hashed separately and is not represented as an HTTP raw hash.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "bibliographic_scope_facts.source_declared_relationship",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual exact thesis-v1 Ch3.p3 names this paper title and arXiv identifier without a version suffix. The statement is chapter-level source-declared reuse, not edition equivalence or whole-document identity.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "sample_counts_transferred": false,
+    "assurance_transferred": false,
+    "eligibility_or_canonical_merge_transferred": false,
+    "provider_incidental_exposure": [
+      "Cached title/front matter, chapter headings, introduction scope paragraphs and direct chapter reuse notes inspected. Adjacent abstract/results material appeared in an overbroad initial HTML tool output; no outcomes transferred.",
+      "Exact arXiv submission timestamps came from parsed official landing pages; their original response bytes were not acquired.",
+      "Shared filesystem and operational board access as previously disclosed; no historical scientific reviewer files or human sheet inspected.",
+      "No eligibility, sampling-unit or canonical-merge decision made."
+    ],
+    "checker_exposure": "Cached introduction scope and official landing metadata inspection incidentally displayed adjacent abstract outcome prose. Such outcomes are withheld; only bounded bibliography, source-declared chapter scope and reuse fields are approved. Shared filesystem; no freshness or OS isolation claim."
+  }
+}

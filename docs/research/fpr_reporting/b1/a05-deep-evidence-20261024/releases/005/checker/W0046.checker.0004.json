@@ -1,0 +1,488 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0046",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T12:06:47.589509+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0046.provider.0003.json",
+  "provider_packet_sha256": "7c80ccb02a8610997aa74543695f46a4710180bc4647fce090bb670895f26f8b",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2505.06643v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\ca6b31ea7b46218c80c7db60133dcbf3e539c78f43de49428f38fec54c547476",
+    "raw_sha256": "ca6b31ea7b46218c80c7db60133dcbf3e539c78f43de49428f38fec54c547476",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0079.json",
+    "acquisition_receipt_sha256": "7542fa2ba5cad490bfdf58af8e6ccbe88537fed27f1dad62c321fdfc12dd6de2",
+    "captured_version_id": "arxiv:2505.06643v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        24,
+        59
+      ],
+      [
+        65,
+        68
+      ],
+      [
+        75,
+        83
+      ],
+      [
+        87,
+        91
+      ],
+      [
+        96,
+        97
+      ]
+    ],
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "Main attack/setup source checks and current34-38 reread establish RTO interruption, the prior/compressed attack comparison and derivative jailbreak families. Appendix textual prompts82-83 and90-91 define paired ordinary and token-assumption inputs; main68 identifies suggested output/system-prompt defenses. True is approved for named material method-family inventory because main34/38 identifies the same token-example/compressed-prompt families illustrated in Appendix A/B. Exact image wording remains unavailable and uninspected. That limitation does not by itself add an unaccounted evaluated family; no outcome-image inspection or invented visual decoding is claimed. Main/Appendix C/D text methods were actually read.",
+    "locator_sha256": "2dfdd21872b5163b55dc82baa2a61b3a48d201bdeb625074577e77f96ff7af16",
+    "locators": [
+      {
+        "n": 24,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "section": "3.2 Reasoning Token Overflow: Response to Question 1",
+        "sha256": "ab32175eecf5a3d20fa354e703f1491fb6c2f59153e7dc559ded9f516d791d16"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.1",
+        "section": "3.2 Reasoning Token Overflow: Response to Question 1",
+        "sha256": "13bdd286aa4b6babfc725f8eda1c79b5ee9677c6fec10f3dcfc67e0d17d0e38e"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S3.SS2.p2.1",
+        "section": "3.2 Reasoning Token Overflow: Response to Question 1",
+        "sha256": "6236bff107b1dd2efaf83d16ad96470f643fb63a1481d2c4af9bd67197f6b528"
+      },
+      {
+        "n": 27,
+        "kind": "heading",
+        "id": "S3.SS3",
+        "section": "3.3 Unable to Control Reasoning Token Count: Response to Question 2",
+        "sha256": "c1a3acde73919b96e34d6448cf6e0040e98a88dd3f9ed7c9df2b742566840244"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S3.SS3.p1.1",
+        "section": "3.3 Unable to Control Reasoning Token Count: Response to Question 2",
+        "sha256": "b5bcd17717b7cbb6c6bf1e637094603e51a6c1cfb0ed2256bf975d6406404003"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S3.SS3.p2.1",
+        "section": "3.3 Unable to Control Reasoning Token Count: Response to Question 2",
+        "sha256": "644357538612cd7ec4fef0003234231520fdf30769a3f7d2e0d1090453efb6da"
+      },
+      {
+        "n": 30,
+        "kind": "heading",
+        "id": "S3.SS4",
+        "section": "3.4 Enforcement of Final Answer Generation: Response to Question 3",
+        "sha256": "e1d0092331478d8d988f52c7af33b787360b7b21e614484c518858bcd38c31f8"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S3.SS4.p1.1",
+        "section": "3.4 Enforcement of Final Answer Generation: Response to Question 3",
+        "sha256": "62eb733bd745a7f9bbdddf4e7624568fe520ff00d6119ba54dbb53ea31042931"
+      },
+      {
+        "n": 32,
+        "kind": "heading",
+        "id": "S3.SS5",
+        "section": "3.5 Comprehensive Analysis",
+        "sha256": "9e5dd88e94ad238786b3e8ccaeb72e60fea0f7249d5fe857d65753336e44300c"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S3.SS5.p1.1",
+        "section": "3.5 Comprehensive Analysis",
+        "sha256": "ea7b8080d2a4daf0851806ffdbf279fee9659391337581bf701b065d74ea3d18"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S3.SS5.p2.1",
+        "section": "3.5 Comprehensive Analysis",
+        "sha256": "20d295ee575c572e4f2ac90cb79ff08ed68d4fa610500d79207f867e539b28df"
+      },
+      {
+        "n": 35,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Practical Reasoning Interruption Attacks",
+        "sha256": "582d8f6335d4145c8b1e9c439ccab269e787b0b309987a67049e0d9038d3fa3f"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "section": "4 Practical Reasoning Interruption Attacks",
+        "sha256": "92cd6b113ac95381a382664d62f0c0dcc3d42382b53d7f03a676e39c1a29beb1"
+      },
+      {
+        "n": 37,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Practicality Analysis of Prior Attack Methods",
+        "sha256": "fe032be1377d9e168c94a3ffdea2829f3b640d258051e03c29ffc43769c8c577"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1 Practicality Analysis of Prior Attack Methods",
+        "sha256": "91950c37e6ed6232c688817c7136b7e694670b7d0abc62466c98574ec9e96d8d"
+      },
+      {
+        "n": 39,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 RTO-based Reasoning Interruption Attack",
+        "sha256": "df3afeb3b4dac7b2f47ff4d265e48d102ad3dcd31eab245b2d8e6ff3a7a02b7c"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "section": "4.2 RTO-based Reasoning Interruption Attack",
+        "sha256": "faa99eff881e1bdd4d3035e0c7befeb454c9cd16fbc402d3fcabc6730a02ede4"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "section": "4.2 RTO-based Reasoning Interruption Attack",
+        "sha256": "f43997440c9dd568401e0d5cde4ad71013d3e376e39a458b9d55a8227a9ff8fc"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S4.I1.i1.p1.1",
+        "section": "4.2 RTO-based Reasoning Interruption Attack",
+        "sha256": "1b20e3e7a99ee2f9cf4e4d70ca9586d5179a791c0a0d51c13afada9cc16436ea"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S4.I1.i2.p1.1",
+        "section": "4.2 RTO-based Reasoning Interruption Attack",
+        "sha256": "36f05b5d8bdb2965fe245c5b4705ca18dc979259b723204fb71ddcca26e3b908"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S4.I1.i3.p1.1",
+        "section": "4.2 RTO-based Reasoning Interruption Attack",
+        "sha256": "f2b08a829a1ed4c994feed07d1ebab81ee4e366fd1cca63802a6e24b7cdc6933"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S4.SS2.p4.1",
+        "section": "4.2 RTO-based Reasoning Interruption Attack",
+        "sha256": "e732a47438cacafb36fe42871f7193e2caa27b99dafc8eabb9997e13bb9dcf00"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S4.I2.i1.p1.1",
+        "section": "4.2 RTO-based Reasoning Interruption Attack",
+        "sha256": "30fe9fabf7d7a0b31f01d8993c3d9f5311552b0060ee03aba9a57d013481ba32"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S4.I2.i2.p1.1",
+        "section": "4.2 RTO-based Reasoning Interruption Attack",
+        "sha256": "93026174a2f25903f36c46efd4f2404202301320e9799ee7db2c9f125a8ce307"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S4.I2.i3.p1.1",
+        "section": "4.2 RTO-based Reasoning Interruption Attack",
+        "sha256": "db0fbbe7d9a2742c818cdaf9a8477332b9891f021582f2d8707426d50a761c23"
+      },
+      {
+        "n": 49,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "section": "4.3 Jailbreak Attack based on Reasoning Token Overflow",
+        "sha256": "0695ccef05a933b0e8fa222f3bbac1d44fb972815f2debc77e0e13f20e7f4b70"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "section": "4.3 Jailbreak Attack based on Reasoning Token Overflow",
+        "sha256": "1b43f3909aed1a12e427021d4f39de15367b90892b9093d18b030a9c6e3e36b1"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S4.SS3.p2.1",
+        "section": "4.3 Jailbreak Attack based on Reasoning Token Overflow",
+        "sha256": "7af523b91adb2e7e6984f34c74f05c3ced3c1a7d0d8e419e0ee04f49fce344ed"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S4.SS3.p3.1",
+        "section": "4.3 Jailbreak Attack based on Reasoning Token Overflow",
+        "sha256": "afeaf421fc1b6b00c0ae72da4393eb82ae314975ec42646bdcf0889c49cf3de9"
+      },
+      {
+        "n": 53,
+        "kind": "heading",
+        "id": "S5",
+        "section": "5 Experiments",
+        "sha256": "b04dd6925cb197150212cde98dfc3178a5368f679920c1e6d8509fbbcccf6258"
+      },
+      {
+        "n": 54,
+        "kind": "heading",
+        "id": "S5.SS1",
+        "section": "5.1 Experimental Setup",
+        "sha256": "035769b20e28cf4b5a30f672e08b217b531df4dcf8582720b2535b05bf6dd4a9"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S5.SS1.p1.1",
+        "section": "5.1 Experimental Setup",
+        "sha256": "75042d51f80f80c5e25d7221384939c58fe9309574392837289c48f7f6b68bd9"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S5.SS1.p2.1",
+        "section": "5.1 Experimental Setup",
+        "sha256": "078c8d010674a0a90742d4ac55d787fb0e43f54ca9927829fa0b93cbb625f3c9"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S5.SS1.p3.1",
+        "section": "5.1 Experimental Setup",
+        "sha256": "03d8ce51ddc28a37bd71bbbfde1eea93a969090cee0ab9ade1151653feea44c9"
+      },
+      {
+        "n": 58,
+        "kind": "heading",
+        "id": "S5.SS2",
+        "section": "5.2 Evaluation Metrics",
+        "sha256": "a62892f66d302aa03674a03d1638a7d791b8bc8fdf43167a9306e6edb34c95ab"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "S5.SS2.p1.1",
+        "section": "5.2 Evaluation Metrics",
+        "sha256": "00634981efb4c62e97a8e398c5043a28ebf631be676845ab0d10548743bb3ecc"
+      },
+      {
+        "n": 65,
+        "kind": "heading",
+        "id": "S7.SS1",
+        "section": "7.1 Profound Significance of RTO",
+        "sha256": "80f9c849c0f24a43e0cd035c4aaf5819e8ee59bbd3ff531d2e5b675e2011be4c"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "S7.SS1.p1.1",
+        "section": "7.1 Profound Significance of RTO",
+        "sha256": "ef520812ce30879d7d5b305007fc68e8a6dace706bf758992a47b1a0ba4eb70b"
+      },
+      {
+        "n": 67,
+        "kind": "heading",
+        "id": "S7.SS2",
+        "section": "7.2 Defense Methods",
+        "sha256": "c187b6e17d9c5efb1d49bc20069a05039309cd134a1d6a67883817b2e7bcd129"
+      },
+      {
+        "n": 68,
+        "kind": "paragraph",
+        "id": "S7.SS2.p1.1",
+        "section": "7.2 Defense Methods",
+        "sha256": "607b90b2b8ea42bb4323c4f79ae43b3018479b1acfe56ece323c3513d9ae7bcb"
+      },
+      {
+        "n": 75,
+        "kind": "heading",
+        "id": "A1",
+        "section": "Appendix A Different Special Tokens",
+        "sha256": "43702e90ebfa0e40dd1a5dbae486858de600a60cba5470c024756efda85c932f"
+      },
+      {
+        "n": 76,
+        "kind": "heading",
+        "id": "A2",
+        "section": "Appendix B Prompts",
+        "sha256": "8b228ee18503b3f9f15926da2903c511cbf44380474becf88f37ed4f4ebff546"
+      },
+      {
+        "n": 77,
+        "kind": "heading",
+        "id": "A3",
+        "section": "Appendix C Jailbreak Attacks",
+        "sha256": "01a5a06ac61419ebe1493740dd617059e0debcec4841b878092ec8256374c12c"
+      },
+      {
+        "n": 78,
+        "kind": "paragraph",
+        "id": "A3.p1.1",
+        "section": "Appendix C Jailbreak Attacks",
+        "sha256": "039f484d431f6e1830a0e6fae0719e59b27d0a1d3495eff79ac54778476eeed2"
+      },
+      {
+        "n": 79,
+        "kind": "heading",
+        "id": "A3.SS1",
+        "section": "C.1 Without Any Warnings",
+        "sha256": "90892356916b1a58a50df242028237c2915e48eae923435fcfce5130d70af440"
+      },
+      {
+        "n": 80,
+        "kind": "paragraph",
+        "id": "A3.SS1.p1.1",
+        "section": "C.1 Without Any Warnings",
+        "sha256": "ad697bfbdbb858ad6013a4b94376dc2af308a0a5659421176d0cc4755e371afd"
+      },
+      {
+        "n": 81,
+        "kind": "heading",
+        "id": "A3.SS1.SSS1",
+        "section": "C.1.1 Prompts",
+        "sha256": "a47e265435c4448803c9de4247ffd3a20df70f070cb84f403aea17967d81da8b"
+      },
+      {
+        "n": 82,
+        "kind": "paragraph",
+        "id": "A3.SS1.SSS1.p1",
+        "section": "C.1.1 Prompts",
+        "sha256": "3096485541250047d18468c4c9730b9d1c9b34177b507ba53aab5d77e879430b"
+      },
+      {
+        "n": 83,
+        "kind": "paragraph",
+        "id": "A3.SS1.SSS1.p2",
+        "section": "C.1.1 Prompts",
+        "sha256": "f9cc23c498fca7a4a92a1ab0fd6114bd286290b8ec2095b6d37d35362fdd0d0e"
+      },
+      {
+        "n": 87,
+        "kind": "heading",
+        "id": "A3.SS2",
+        "section": "C.2 Disclosure of Harmful Content",
+        "sha256": "38b47a677eb03d46b33829216757972477de236e9ebc8cdd98d7fe49e0d34106"
+      },
+      {
+        "n": 88,
+        "kind": "paragraph",
+        "id": "A3.SS2.p1.1",
+        "section": "C.2 Disclosure of Harmful Content",
+        "sha256": "6fe0929a511fde13947f49eaddeae80ee0a5b298587c60b86bff90668ccf9d58"
+      },
+      {
+        "n": 89,
+        "kind": "heading",
+        "id": "A3.SS2.SSS1",
+        "section": "C.2.1 Prompts",
+        "sha256": "5b8d3a95c6626b910c3e4fd8626a52f360b6c2b43512625a32c2732016090e5d"
+      },
+      {
+        "n": 90,
+        "kind": "paragraph",
+        "id": "A3.SS2.SSS1.p1",
+        "section": "C.2.1 Prompts",
+        "sha256": "7a56c52f6e2095ca9fc600b724a1d6353ecb81820b417b60f998b31c58e9952e"
+      },
+      {
+        "n": 91,
+        "kind": "paragraph",
+        "id": "A3.SS2.SSS1.p2",
+        "section": "C.2.1 Prompts",
+        "sha256": "143f7111a3b01d15efba56d5e208a2ddd2b7768517c9a91530c08b4366a1b9b6"
+      },
+      {
+        "n": 96,
+        "kind": "heading",
+        "id": "A4",
+        "section": "Appendix D Principle for Constructing Defenses",
+        "sha256": "e48c722de49455e652cff4b9b2c28f2eed00a36a16de0502869661e7329df147"
+      },
+      {
+        "n": 97,
+        "kind": "paragraph",
+        "id": "A4.p1",
+        "section": "Appendix D Principle for Constructing Defenses",
+        "sha256": "e4fa5e84ecf368a7fab127e74e5fe414f13baa5ade95fd67331e08893968f6f7"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main attack/setup source checks and current34-38 reread establish RTO interruption, the prior/compressed attack comparison and derivative jailbreak families. Appendix textual prompts82-83 and90-91 define paired ordinary and token-assumption inputs; main68 identifies suggested output/system-prompt defenses.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main34 explicitly identifies official/unofficial special-token variants;38 explicitly describes the compressed prior-prompt variant. Thus the named Appendix A/B example families are already identified in main prose. Their exact image pixels or prompt wording are not claimed inspected. Assessment consumes target reasoning/final output.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "The jailbreak family assesses generated harmful content, as distinct from input-injection classification; actual paired attack-input definitions and main experimental setup were checked.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main68 defines generated special-token output detection and system-prompt prevention as suggestions. Appendix97 illustrates the exposed-token detection target; it is not a separately specified clean/injected input-classifier evaluation.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True is approved for named material method-family inventory because main34/38 identifies the same token-example/compressed-prompt families illustrated in Appendix A/B. Exact image wording remains unavailable and uninspected. That limitation does not by itself add an unaccounted evaluated family; no outcome-image inspection or invented visual decoding is claimed. Main/Appendix C/D text methods were actually read.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

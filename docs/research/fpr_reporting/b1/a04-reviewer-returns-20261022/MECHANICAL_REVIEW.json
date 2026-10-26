@@ -1,0 +1,1567 @@
+{
+  "B2_authorized": false,
+  "accepted_rows_citing_other_versions": {
+    "A": [],
+    "B": [
+      {
+        "method_source_versions": [
+          "acl:2025.findings-emnlp.1060:publication",
+          "arxiv:2505.06311v2"
+        ],
+        "review_id": "W0352",
+        "selected_version_id": "acl:2025.findings-emnlp.1060:publication"
+      }
+    ]
+  },
+  "archive_pins": {
+    "B1_SUBSTANTIVE_REVIEW.zip": "b2f0d658ebc0bf7e27d214029e1007327c363f4fd73a4c480833103e1eb8bcbb",
+    "ELIGIBILITY_REVIEWS.zip": "b8d9352eb67b69765497b09818184f022127ffc79216495cea61cc096ef54fe7"
+  },
+  "counts": {
+    "A": {
+      "EXCLUDE": 8,
+      "INCLUDE": 6,
+      "UNCLEAR": 358
+    },
+    "B": {
+      "ELIGIBLE": 6,
+      "EXCLUDED": 8,
+      "UNCLEAR": 358
+    }
+  },
+  "date_issues": {
+    "A": [],
+    "B": [
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2025/8"
+        ],
+        "reported_version_date": "2025-08-31",
+        "review_id": "W0001",
+        "selected_version_id": "acl:2025.llmsec-1.2:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2026/6"
+        ],
+        "reported_version_date": "2026-06-30",
+        "review_id": "W0002",
+        "selected_version_id": "acl:2026.nlpaics-1.17:publication"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2024-05-02"
+        ],
+        "reported_version_date": "2024/03/06",
+        "review_id": "W0006",
+        "selected_version_id": "arxiv:2403.03792v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2024-03-19"
+        ],
+        "reported_version_date": "2024/03/13",
+        "review_id": "W0007",
+        "selected_version_id": "arxiv:2403.08701v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-08-24"
+        ],
+        "reported_version_date": "2024/03/26",
+        "review_id": "W0008",
+        "selected_version_id": "arxiv:2403.17710v5"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2024-09-09"
+        ],
+        "reported_version_date": "2024/04/05",
+        "review_id": "W0009",
+        "selected_version_id": "arxiv:2404.04392v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-01-17"
+        ],
+        "reported_version_date": "2024/05/21",
+        "review_id": "W0010",
+        "selected_version_id": "arxiv:2405.12750v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-03-06"
+        ],
+        "reported_version_date": "2024/06/02",
+        "review_id": "W0011",
+        "selected_version_id": "arxiv:2406.00799v6"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-03-31"
+        ],
+        "reported_version_date": "2024/08/06",
+        "review_id": "W0012",
+        "selected_version_id": "arxiv:2408.03095v6"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2024-09-09"
+        ],
+        "reported_version_date": "2024/08/07",
+        "review_id": "W0013",
+        "selected_version_id": "arxiv:2408.03515v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-04-07"
+        ],
+        "reported_version_date": "2024/08/14",
+        "review_id": "W0014",
+        "selected_version_id": "arxiv:2408.07291v4"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-04-09"
+        ],
+        "reported_version_date": "2024/10/03",
+        "review_id": "W0017",
+        "selected_version_id": "arxiv:2410.02916v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2024-11-18"
+        ],
+        "reported_version_date": "2024/10/28",
+        "review_id": "W0019",
+        "selected_version_id": "arxiv:2410.20911v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2024-11-07"
+        ],
+        "reported_version_date": "2024/10/28",
+        "review_id": "W0021",
+        "selected_version_id": "arxiv:2410.21337v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-06-12"
+        ],
+        "reported_version_date": "2024/12/14",
+        "review_id": "W0025",
+        "selected_version_id": "arxiv:2412.10807v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-04-12"
+        ],
+        "reported_version_date": "2025/01/25",
+        "review_id": "W0028",
+        "selected_version_id": "arxiv:2501.15145v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-06-10"
+        ],
+        "reported_version_date": "2025/02/07",
+        "review_id": "W0029",
+        "selected_version_id": "arxiv:2502.05174v4"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-02-14"
+        ],
+        "reported_version_date": "2025/02/13",
+        "review_id": "W0030",
+        "selected_version_id": "arxiv:2502.08966v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-10-01"
+        ],
+        "reported_version_date": "2025/02/18",
+        "review_id": "W0031",
+        "selected_version_id": "arxiv:2502.13141v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-07-04"
+        ],
+        "reported_version_date": "2025/03/12",
+        "review_id": "W0033",
+        "selected_version_id": "arxiv:2503.09066v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-05-19"
+        ],
+        "reported_version_date": "2025/03/20",
+        "review_id": "W0035",
+        "selected_version_id": "arxiv:2503.15772v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-07-09"
+        ],
+        "reported_version_date": "2025/03/20",
+        "review_id": "W0036",
+        "selected_version_id": "arxiv:2503.16248v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-04-17"
+        ],
+        "reported_version_date": "2025/04/13",
+        "review_id": "W0039",
+        "selected_version_id": "arxiv:2504.09593v2"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2025/8"
+        ],
+        "reported_version_date": "2025-08-31",
+        "review_id": "W0040",
+        "selected_version_id": "acl:2025.llmsec-1.8:publication"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-11-12"
+        ],
+        "reported_version_date": "2025/04/15",
+        "review_id": "W0041",
+        "selected_version_id": "arxiv:2504.11358v4"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-08-21"
+        ],
+        "reported_version_date": "2025/04/28",
+        "review_id": "W0043",
+        "selected_version_id": "arxiv:2504.19521v4"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-08-24"
+        ],
+        "reported_version_date": "2025/04/28",
+        "review_id": "W0044",
+        "selected_version_id": "arxiv:2504.19793v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-09-17"
+        ],
+        "reported_version_date": "2025/05/15",
+        "review_id": "W0047",
+        "selected_version_id": "arxiv:2505.09974v2"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2025/8"
+        ],
+        "reported_version_date": "2025-08-31",
+        "review_id": "W0048",
+        "selected_version_id": "acl:2025.llmsec-1.13:publication"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-09-30"
+        ],
+        "reported_version_date": "2025/05/21",
+        "review_id": "W0049",
+        "selected_version_id": "arxiv:2505.15420v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-04-03"
+        ],
+        "reported_version_date": "2025/05/22",
+        "review_id": "W0050",
+        "selected_version_id": "arxiv:2505.16934v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-03-26"
+        ],
+        "reported_version_date": "2025/06/13",
+        "review_id": "W0056",
+        "selected_version_id": "arxiv:2506.12104v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-12-06"
+        ],
+        "reported_version_date": "2025/07/08",
+        "review_id": "W0058",
+        "selected_version_id": "arxiv:2507.05630v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-01-05"
+        ],
+        "reported_version_date": "2025/07/28",
+        "review_id": "W0064",
+        "selected_version_id": "arxiv:2507.20704v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-01-07"
+        ],
+        "reported_version_date": "2025/08/04",
+        "review_id": "W0066",
+        "selected_version_id": "arxiv:2508.02110v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-10-01"
+        ],
+        "reported_version_date": "2025/08/04",
+        "review_id": "W0067",
+        "selected_version_id": "arxiv:2508.02961v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-04-17"
+        ],
+        "reported_version_date": "2025/08/05",
+        "review_id": "W0068",
+        "selected_version_id": "arxiv:2508.03793v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-10-07"
+        ],
+        "reported_version_date": "2025/08/06",
+        "review_id": "W0069",
+        "selected_version_id": "arxiv:2508.04281v5"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-04-25"
+        ],
+        "reported_version_date": "2025/08/11",
+        "review_id": "W0071",
+        "selected_version_id": "arxiv:2508.08127v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-08-18"
+        ],
+        "reported_version_date": "2025/08/12",
+        "review_id": "W0072",
+        "selected_version_id": "arxiv:2508.09288v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-10-23"
+        ],
+        "reported_version_date": "2025/08/25",
+        "review_id": "W0074",
+        "selected_version_id": "arxiv:2508.17884v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-09-16"
+        ],
+        "reported_version_date": "2025/08/28",
+        "review_id": "W0076",
+        "selected_version_id": "arxiv:2508.20890v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-10-09"
+        ],
+        "reported_version_date": "2025/08/27",
+        "review_id": "W0077",
+        "selected_version_id": "arxiv:2509.00088v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-02-28"
+        ],
+        "reported_version_date": "2025/09/06",
+        "review_id": "W0078",
+        "selected_version_id": "arxiv:2509.05608v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-06-28"
+        ],
+        "reported_version_date": "2025/09/06",
+        "review_id": "W0079",
+        "selected_version_id": "arxiv:2509.05755v6"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-12-17"
+        ],
+        "reported_version_date": "2025/09/16",
+        "review_id": "W0082",
+        "selected_version_id": "arxiv:2509.14285v4"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-11-07"
+        ],
+        "reported_version_date": "2025/09/28",
+        "review_id": "W0086",
+        "selected_version_id": "arxiv:2509.23994v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-05-08"
+        ],
+        "reported_version_date": "2025/09/30",
+        "review_id": "W0087",
+        "selected_version_id": "arxiv:2509.25926v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-09-23"
+        ],
+        "reported_version_date": "2025/10/01",
+        "review_id": "W0088",
+        "selected_version_id": "arxiv:2510.01354v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-01-24"
+        ],
+        "reported_version_date": "2025/10/15",
+        "review_id": "W0095",
+        "selected_version_id": "arxiv:2510.14005v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-10-29"
+        ],
+        "reported_version_date": "2025/10/22",
+        "review_id": "W0096",
+        "selected_version_id": "arxiv:2510.19169v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-02-04"
+        ],
+        "reported_version_date": "2025/10/22",
+        "review_id": "W0097",
+        "selected_version_id": "arxiv:2510.19207v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-05-01"
+        ],
+        "reported_version_date": "2025/10/26",
+        "review_id": "W0099",
+        "selected_version_id": "arxiv:2510.22628v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-06-19"
+        ],
+        "reported_version_date": "2025/10/27",
+        "review_id": "W0100",
+        "selected_version_id": "arxiv:2510.22963v4"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-09-07"
+        ],
+        "reported_version_date": "2025/11/03",
+        "review_id": "W0101",
+        "selected_version_id": "arxiv:2511.01287v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-01-22"
+        ],
+        "reported_version_date": "2025/11/08",
+        "review_id": "W0104",
+        "selected_version_id": "arxiv:2511.05867v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-03-24"
+        ],
+        "reported_version_date": "2025/11/08",
+        "review_id": "W0105",
+        "selected_version_id": "arxiv:2511.05919v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-10-13"
+        ],
+        "reported_version_date": "2025/11/23",
+        "review_id": "W0110",
+        "selected_version_id": "arxiv:2511.21752v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-05-21"
+        ],
+        "reported_version_date": "2025/12/06",
+        "review_id": "W0112",
+        "selected_version_id": "arxiv:2512.06556v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-08-12"
+        ],
+        "reported_version_date": "2025/12/09",
+        "review_id": "W0113",
+        "selected_version_id": "arxiv:2512.08417v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-12-14"
+        ],
+        "reported_version_date": "2025/12/10",
+        "review_id": "W0114",
+        "selected_version_id": "arxiv:2512.10104v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-08-30"
+        ],
+        "reported_version_date": "2026/01/18",
+        "review_id": "W0126",
+        "selected_version_id": "arxiv:2601.12449v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-02-06"
+        ],
+        "reported_version_date": "2026/01/28",
+        "review_id": "W0129",
+        "selected_version_id": "arxiv:2601.21083v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-04-01"
+        ],
+        "reported_version_date": "2026/01/31",
+        "review_id": "W0130",
+        "selected_version_id": "arxiv:2602.00750v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-05-24"
+        ],
+        "reported_version_date": "2026/02/04",
+        "review_id": "W0133",
+        "selected_version_id": "arxiv:2602.04653v4"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-10-05"
+        ],
+        "reported_version_date": "2026/02/05",
+        "review_id": "W0134",
+        "selected_version_id": "arxiv:2602.05484v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-06-25"
+        ],
+        "reported_version_date": "2026/02/09",
+        "review_id": "W0137",
+        "selected_version_id": "arxiv:2602.08995v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-03-05"
+        ],
+        "reported_version_date": "2026/02/11",
+        "review_id": "W0140",
+        "selected_version_id": "arxiv:2602.11247v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-02-21"
+        ],
+        "reported_version_date": "2026/02/14",
+        "review_id": "W0141",
+        "selected_version_id": "arxiv:2602.13597v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-07-19"
+        ],
+        "reported_version_date": "2026/02/15",
+        "review_id": "W0142",
+        "selected_version_id": "arxiv:2602.14161v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-07-10"
+        ],
+        "reported_version_date": "2026/02/23",
+        "review_id": "W0144",
+        "selected_version_id": "arxiv:2602.20064v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-03-10"
+        ],
+        "reported_version_date": "2026/03/07",
+        "review_id": "W0151",
+        "selected_version_id": "arxiv:2603.07191v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-10-13"
+        ],
+        "reported_version_date": "2026/03/10",
+        "review_id": "W0153",
+        "selected_version_id": "arxiv:2603.09781v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-04-15"
+        ],
+        "reported_version_date": "2026/03/12",
+        "review_id": "W0155",
+        "selected_version_id": "arxiv:2603.11875v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-08-03"
+        ],
+        "reported_version_date": "2026/03/20",
+        "review_id": "W0159",
+        "selected_version_id": "arxiv:2603.20381v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-08-11"
+        ],
+        "reported_version_date": "2026/03/24",
+        "review_id": "W0164",
+        "selected_version_id": "arxiv:2603.22928v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-07-25"
+        ],
+        "reported_version_date": "2026/04/01",
+        "review_id": "W0168",
+        "selected_version_id": "arxiv:2604.01194v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-07-31"
+        ],
+        "reported_version_date": "2026/04/06",
+        "review_id": "W0172",
+        "selected_version_id": "arxiv:2604.05150v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-08-09"
+        ],
+        "reported_version_date": "2026/04/08",
+        "review_id": "W0173",
+        "selected_version_id": "arxiv:2604.07223v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-05-10"
+        ],
+        "reported_version_date": "2026/04/18",
+        "review_id": "W0180",
+        "selected_version_id": "arxiv:2604.16838v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-07-10"
+        ],
+        "reported_version_date": "2026/05/01",
+        "review_id": "W0194",
+        "selected_version_id": "arxiv:2605.01143v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-07-08"
+        ],
+        "reported_version_date": "2026/05/05",
+        "review_id": "W0196",
+        "selected_version_id": "arxiv:2605.03378v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-08-04"
+        ],
+        "reported_version_date": "2026/05/08",
+        "review_id": "W0201",
+        "selected_version_id": "arxiv:2605.08442v5"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-09-18"
+        ],
+        "reported_version_date": "2026/05/11",
+        "review_id": "W0203",
+        "selected_version_id": "arxiv:2605.11217v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-10-08"
+        ],
+        "reported_version_date": "2026/05/22",
+        "review_id": "W0212",
+        "selected_version_id": "arxiv:2605.23201v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-06-15"
+        ],
+        "reported_version_date": "2026/05/26",
+        "review_id": "W0215",
+        "selected_version_id": "arxiv:2605.26595v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-05-28"
+        ],
+        "reported_version_date": "2026/05/27",
+        "review_id": "W0218",
+        "selected_version_id": "arxiv:2605.28017v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-08-26"
+        ],
+        "reported_version_date": "2026/05/29",
+        "review_id": "W0223",
+        "selected_version_id": "arxiv:2605.30837v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-07-17"
+        ],
+        "reported_version_date": "2026/06/01",
+        "review_id": "W0225",
+        "selected_version_id": "arxiv:2606.02240v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-06-19"
+        ],
+        "reported_version_date": "2026/06/05",
+        "review_id": "W0230",
+        "selected_version_id": "arxiv:2606.07131v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-06-12"
+        ],
+        "reported_version_date": "2026/06/09",
+        "review_id": "W0234",
+        "selected_version_id": "arxiv:2606.10322v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-06-16"
+        ],
+        "reported_version_date": "2026/06/12",
+        "review_id": "W0236",
+        "selected_version_id": "arxiv:2606.14517v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-09-12"
+        ],
+        "reported_version_date": "2026/06/16",
+        "review_id": "W0240",
+        "selected_version_id": "arxiv:2606.17467v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-08-26"
+        ],
+        "reported_version_date": "2026/06/17",
+        "review_id": "W0242",
+        "selected_version_id": "arxiv:2606.19660v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-09-30"
+        ],
+        "reported_version_date": "2026/06/18",
+        "review_id": "W0243",
+        "selected_version_id": "arxiv:2606.20470v4"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-10-15"
+        ],
+        "reported_version_date": "2026/06/16",
+        "review_id": "W0244",
+        "selected_version_id": "arxiv:2606.20717v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-06-25"
+        ],
+        "reported_version_date": "2026/06/24",
+        "review_id": "W0252",
+        "selected_version_id": "arxiv:2606.25487v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-09-04"
+        ],
+        "reported_version_date": "2026/06/24",
+        "review_id": "W0253",
+        "selected_version_id": "arxiv:2606.25836v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-07-30"
+        ],
+        "reported_version_date": "2026/07/21",
+        "review_id": "W0264",
+        "selected_version_id": "arxiv:2607.18622v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-08-02"
+        ],
+        "reported_version_date": "2026/07/03",
+        "review_id": "W0265",
+        "selected_version_id": "arxiv:2607.19396v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-10-11"
+        ],
+        "reported_version_date": "2026/07/26",
+        "review_id": "W0268",
+        "selected_version_id": "arxiv:2607.23532v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-07-29"
+        ],
+        "reported_version_date": "2026/07/28",
+        "review_id": "W0270",
+        "selected_version_id": "arxiv:2607.25255v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-07-31"
+        ],
+        "reported_version_date": "2026/07/30",
+        "review_id": "W0271",
+        "selected_version_id": "arxiv:2607.28165v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-09-23"
+        ],
+        "reported_version_date": "2026/08/06",
+        "review_id": "W0273",
+        "selected_version_id": "arxiv:2608.06130v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-08-27"
+        ],
+        "reported_version_date": "2026/08/07",
+        "review_id": "W0274",
+        "selected_version_id": "arxiv:2608.07167v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-10-06"
+        ],
+        "reported_version_date": "2026/08/26",
+        "review_id": "W0284",
+        "selected_version_id": "arxiv:2608.26423v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-10-02"
+        ],
+        "reported_version_date": "2026/08/31",
+        "review_id": "W0288",
+        "selected_version_id": "arxiv:2608.30362v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-09-06"
+        ],
+        "reported_version_date": "2026/08/31",
+        "review_id": "W0289",
+        "selected_version_id": "arxiv:2608.30441v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-09-16"
+        ],
+        "reported_version_date": "2026/09/09",
+        "review_id": "W0298",
+        "selected_version_id": "arxiv:2609.10854v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-09-27"
+        ],
+        "reported_version_date": "2026/09/17",
+        "review_id": "W0304",
+        "selected_version_id": "arxiv:2609.19587v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-10-03"
+        ],
+        "reported_version_date": "2026/09/27",
+        "review_id": "W0314",
+        "selected_version_id": "arxiv:2609.33401v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-10-05"
+        ],
+        "reported_version_date": "2026/09/30",
+        "review_id": "W0318",
+        "selected_version_id": "arxiv:2609.39678v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-10-02"
+        ],
+        "reported_version_date": "2026/09/30",
+        "review_id": "W0320",
+        "selected_version_id": "arxiv:2610.00430v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-09-14"
+        ],
+        "reported_version_date": "2025/08/04",
+        "review_id": "W0337",
+        "selected_version_id": "arxiv:2508.02312v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-07-20"
+        ],
+        "reported_version_date": "2026/02/22",
+        "review_id": "W0338",
+        "selected_version_id": "arxiv:2602.19021v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-11-23"
+        ],
+        "reported_version_date": "2025/01/30",
+        "review_id": "W0340",
+        "selected_version_id": "arxiv:2501.18416v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-09-15"
+        ],
+        "reported_version_date": "2024/10/18",
+        "review_id": "W0341",
+        "selected_version_id": "arxiv:2410.14827v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-08-15"
+        ],
+        "reported_version_date": "2025/08/02",
+        "review_id": "W0342",
+        "selected_version_id": "arxiv:2508.02736v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-08-17"
+        ],
+        "reported_version_date": "2025/07/08",
+        "review_id": "W0343",
+        "selected_version_id": "arxiv:2507.06185v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-05-07"
+        ],
+        "reported_version_date": "2026/03/01",
+        "review_id": "W0344",
+        "selected_version_id": "arxiv:2603.00991v2"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-03-30"
+        ],
+        "reported_version_date": "2025/08/28",
+        "review_id": "W0346",
+        "selected_version_id": "arxiv:2508.20863v3"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2025/7"
+        ],
+        "reported_version_date": "2025-07-31",
+        "review_id": "W0347",
+        "selected_version_id": "acl:2025.acl-long.1468:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2025/7"
+        ],
+        "reported_version_date": "2025-07-31",
+        "review_id": "W0348",
+        "selected_version_id": "acl:2025.acl-long.359:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2025/7"
+        ],
+        "reported_version_date": "2025-07-31",
+        "review_id": "W0349",
+        "selected_version_id": "acl:2025.acl-long.890:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2025/11"
+        ],
+        "reported_version_date": "2025-11-30",
+        "review_id": "W0350",
+        "selected_version_id": "acl:2025.emnlp-main.431:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2025/11"
+        ],
+        "reported_version_date": "2025-11-30",
+        "review_id": "W0351",
+        "selected_version_id": "acl:2025.emnlp-main.53:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2025/11"
+        ],
+        "reported_version_date": "2025-11-30",
+        "review_id": "W0352",
+        "selected_version_id": "acl:2025.findings-emnlp.1060:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2025/11"
+        ],
+        "reported_version_date": "2025-11-30",
+        "review_id": "W0353",
+        "selected_version_id": "acl:2025.findings-emnlp.528:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2025/4"
+        ],
+        "reported_version_date": "2025-04-30",
+        "review_id": "W0354",
+        "selected_version_id": "acl:2025.findings-naacl.123:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2025/12"
+        ],
+        "reported_version_date": "2025-12-31",
+        "review_id": "W0355",
+        "selected_version_id": "acl:2025.ijcnlp-long.29:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2025/12"
+        ],
+        "reported_version_date": "2025-12-31",
+        "review_id": "W0356",
+        "selected_version_id": "acl:2025.ijcnlp-long.33:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2026/7"
+        ],
+        "reported_version_date": "2026-07-31",
+        "review_id": "W0357",
+        "selected_version_id": "acl:2026.acl-industry.127:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2026/7"
+        ],
+        "reported_version_date": "2026-07-31",
+        "review_id": "W0358",
+        "selected_version_id": "acl:2026.acl-industry.58:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2026/7"
+        ],
+        "reported_version_date": "2026-07-31",
+        "review_id": "W0359",
+        "selected_version_id": "acl:2026.acl-long.1515:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2026/7"
+        ],
+        "reported_version_date": "2026-07-31",
+        "review_id": "W0360",
+        "selected_version_id": "acl:2026.acl-long.252:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2026/7"
+        ],
+        "reported_version_date": "2026-07-31",
+        "review_id": "W0361",
+        "selected_version_id": "acl:2026.acl-long.541:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2026/7"
+        ],
+        "reported_version_date": "2026-07-31",
+        "review_id": "W0362",
+        "selected_version_id": "acl:2026.acl-long.954:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2026/3"
+        ],
+        "reported_version_date": "2026-03-31",
+        "review_id": "W0363",
+        "selected_version_id": "acl:2026.eacl-long.139:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2026/7"
+        ],
+        "reported_version_date": "2026-07-31",
+        "review_id": "W0364",
+        "selected_version_id": "acl:2026.findings-acl.1850:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2026/7"
+        ],
+        "reported_version_date": "2026-07-31",
+        "review_id": "W0365",
+        "selected_version_id": "acl:2026.findings-acl.240:publication"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2026/7"
+        ],
+        "reported_version_date": "2026-07-31",
+        "review_id": "W0366",
+        "selected_version_id": "acl:2026.findings-acl.738:publication"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-07-30"
+        ],
+        "reported_version_date": "2026/04/20",
+        "review_id": "W0368",
+        "selected_version_id": "arxiv:2604.18248v4"
+      },
+      {
+        "issue": "DAY_PRECISION_NOT_SUPPORTED_BY_MONTH_ONLY_RECORD",
+        "official_publication_literals": [
+          "2026/5"
+        ],
+        "reported_version_date": "2026-05-31",
+        "review_id": "W0370",
+        "selected_version_id": "acl:2026.lrec-1.775:publication"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2025-11-25"
+        ],
+        "reported_version_date": "2024/09/12",
+        "review_id": "W0371",
+        "selected_version_id": "arxiv:2409.08087v3"
+      },
+      {
+        "issue": "SELECTED_REVISION_DATE_MISMATCH",
+        "official_revision_dates": [
+          "2026-05-27"
+        ],
+        "reported_version_date": "2024/10/20",
+        "review_id": "W0372",
+        "selected_version_id": "arxiv:2410.15236v4"
+      }
+    ]
+  },
+  "decision_disagreements": [
+    {
+      "A": "INCLUDE",
+      "B": "UNCLEAR",
+      "review_id": "W0011",
+      "work_id": "arxiv:2406.00799"
+    },
+    {
+      "A": "UNCLEAR",
+      "B": "EXCLUDED",
+      "review_id": "W0021",
+      "work_id": "arxiv:2410.21337"
+    },
+    {
+      "A": "INCLUDE",
+      "B": "UNCLEAR",
+      "review_id": "W0062",
+      "work_id": "arxiv:2507.15219"
+    },
+    {
+      "A": "UNCLEAR",
+      "B": "EXCLUDED",
+      "review_id": "W0067",
+      "work_id": "arxiv:2508.02961"
+    },
+    {
+      "A": "INCLUDE",
+      "B": "UNCLEAR",
+      "review_id": "W0095",
+      "work_id": "arxiv:2510.14005"
+    },
+    {
+      "A": "EXCLUDE",
+      "B": "UNCLEAR",
+      "review_id": "W0127",
+      "work_id": "arxiv:2601.17548"
+    },
+    {
+      "A": "EXCLUDE",
+      "B": "UNCLEAR",
+      "review_id": "W0164",
+      "work_id": "arxiv:2603.22928"
+    },
+    {
+      "A": "UNCLEAR",
+      "B": "ELIGIBLE",
+      "review_id": "W0208",
+      "work_id": "arxiv:2605.18918"
+    },
+    {
+      "A": "UNCLEAR",
+      "B": "EXCLUDED",
+      "review_id": "W0290",
+      "work_id": "arxiv:2609.00052"
+    },
+    {
+      "A": "UNCLEAR",
+      "B": "ELIGIBLE",
+      "review_id": "W0339",
+      "work_id": "doi:10.1109/access.2026.3728186"
+    },
+    {
+      "A": "UNCLEAR",
+      "B": "ELIGIBLE",
+      "review_id": "W0352",
+      "work_id": "doi:10.18653/v1/2025.findings-emnlp.1060"
+    },
+    {
+      "A": "EXCLUDE",
+      "B": "UNCLEAR",
+      "review_id": "W0369",
+      "work_id": "doi:10.5281/zenodo.21365017"
+    }
+  ],
+  "draw_performed": false,
+  "gate": "FRAME_BLOCKED",
+  "historical_custodian_judgments_read_or_compared": false,
+  "included_ids": {
+    "A": [
+      "W0011",
+      "W0020",
+      "W0062",
+      "W0095",
+      "W0200",
+      "W0327"
+    ],
+    "B": [
+      "W0020",
+      "W0200",
+      "W0208",
+      "W0327",
+      "W0339",
+      "W0352"
+    ],
+    "common": [
+      "W0020",
+      "W0200",
+      "W0327"
+    ],
+    "union_not_a_frame": [
+      "W0011",
+      "W0020",
+      "W0062",
+      "W0095",
+      "W0200",
+      "W0208",
+      "W0327",
+      "W0339",
+      "W0352"
+    ]
+  },
+  "independence": {
+    "A_declares_freshness": false,
+    "B_claims_independent_in_README": true,
+    "B_has_separate_intake_or_delivery_receipt": false,
+    "custodian_does_not_fabricate_or_resolve_conflicting_attestations": true,
+    "user_states_fresh_reviewer_provenance": true
+  },
+  "inventory": {
+    "memberships": 389,
+    "works": 372
+  },
+  "locked_all_version_sentinel_ids": [
+    "W0053",
+    "W0181",
+    "W0199",
+    "W0224",
+    "W0300"
+  ],
+  "performed_utc": "2026-10-22T18:06:49.153380+00:00",
+  "provider_flag_comparison_B": {
+    "cells": 1468,
+    "differences": [
+      {
+        "criterion": "before_target_answer",
+        "provider_projection": "MET",
+        "review_B": "UNCLEAR",
+        "review_id": "W0290"
+      },
+      {
+        "criterion": "binary_evaluation",
+        "provider_projection": "MET",
+        "review_B": "NOT_MET",
+        "review_id": "W0290"
+      },
+      {
+        "criterion": "input_injection_task",
+        "provider_projection": "MET",
+        "review_B": "NOT_MET",
+        "review_id": "W0290"
+      }
+    ],
+    "interpretation": "Exact agreement is observable; it does not prove how the review was produced or establish scientific independence.",
+    "matching_cells": 1465,
+    "pairs": [
+      {
+        "cells": 527,
+        "provider_projection": "MET",
+        "review_B": "MET"
+      },
+      {
+        "cells": 2,
+        "provider_projection": "MET",
+        "review_B": "NOT_MET"
+      },
+      {
+        "cells": 1,
+        "provider_projection": "MET",
+        "review_B": "UNCLEAR"
+      },
+      {
+        "cells": 938,
+        "provider_projection": "UNCLEAR",
+        "review_B": "UNCLEAR"
+      }
+    ]
+  },
+  "reference_issues": {
+    "A": [],
+    "B": []
+  },
+  "review_A_fact_text_issues": [],
+  "review_A_manifest": "PASS",
+  "review_A_original_verifier": {
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "{\"decisions\": {\"EXCLUDE\": 8, \"INCLUDE\": 6, \"UNCLEAR\": 358}, \"fresh_A04_attestation\": false, \"gate\": \"FRAME_BLOCKED\", \"members\": 389, \"method_facts\": 828, \"requests\": 1302, \"status\": \"PASS\", \"works\": 372}\n"
+  },
+  "review_A_rationale_source_issues": [],
+  "review_A_requests": {
+    "by_criterion": {
+      "before_target_answer": 328,
+      "binary_evaluation": 297,
+      "english_evaluation": 352,
+      "input_injection_task": 291,
+      "version": 34
+    },
+    "items": 1302,
+    "work_ids": 357
+  },
+  "review_A_source_receipt_commitments": [
+    {
+      "component": "intake",
+      "manifest_hash_matches_original": true,
+      "payload_hashes_match_original": true
+    },
+    {
+      "component": "base",
+      "manifest_hash_matches_original": true,
+      "payload_hashes_match_original": true
+    },
+    {
+      "component": "semantic",
+      "manifest_hash_matches_original": true,
+      "payload_hashes_match_original": true
+    },
+    {
+      "component": "recovery",
+      "manifest_hash_matches_original": true,
+      "payload_hashes_match_original": true
+    }
+  ],
+  "review_B_individual_files_and_index": "PASS",
+  "scope": "MECHANICAL_AND_EVIDENCE_PROVENANCE_REVIEW_ONLY_NO_ELIGIBILITY_ADJUDICATION",
+  "source_head": "1f347c36586b548453b57bb56f03ed520f3a9ec9"
+}

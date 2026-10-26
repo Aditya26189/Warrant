@@ -1,0 +1,172 @@
+{
+  "B2_executed": false,
+  "acquisition": {
+    "attempted_membership_count": 389,
+    "attempted_work_count": 372,
+    "available_hash_verified_bodies": 387,
+    "body_version_unconfirmed_memberships": 40,
+    "exact_captured_body_version_memberships": 347,
+    "exact_captured_body_version_works": 347,
+    "final_preferred_versions_independently_settled": 0,
+    "unavailable_memberships": 2,
+    "works_with_bodies": 370
+  },
+  "actual_delivery_to_fresh_reviewer": 0,
+  "created_utc": "2026-10-20T10:26:57.183895+00:00",
+  "draw_executed": false,
+  "evidence_role_limit": "Actual separate fork-none source-restriction contexts; shared filesystem, no OS isolation or independent eligibility role claimed.",
+  "evidence_status": "B1_EVIDENCE_READY_FOR_REVIEW",
+  "frame_status": "FRAME_BLOCKED",
+  "full_frame_reprojection": {
+    "actual_full_frame_reprojection": "PASS",
+    "checked_utc": "2026-10-20T10:25:08.132458+00:00",
+    "context_checked_memberships": 347,
+    "context_checked_works": 347,
+    "delivered_to_reviewer": 0,
+    "independent_eligibility_judgments": 0,
+    "members": 389,
+    "method_facts": 549,
+    "reproduced_payload_sha256": {
+      "RESTRICTION_EXCEPTIONS.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "SEMANTIC_COVERAGE.json": "4fc2b63a31561d3775219b1c8a4e38011dae952e61e3dbc6e5202519366bb544",
+      "SEMANTIC_EVIDENCE_RECEIPTS.json": "027010372dd3636894e41e8a7a33d9518d7e5c008c9018941c8a04c5e0c8e740",
+      "SEMANTIC_METHOD_FACTS.json": "606e583b5ec85f8ce4797ce93404f62ca45c1598af59468ca88ef2c2565d74aa"
+    },
+    "source_git_commit": "174e9f03cdd499d928c61b87a485013b5d660b5a",
+    "works": 372,
+    "works_with_method_facts": 320
+  },
+  "independent_eligibility_judgments_received_locally": 0,
+  "lint_and_syntax": {
+    "checked_utc": "2026-10-20T10:16:12.539280+00:00",
+    "files": [
+      "docs/research/fpr_reporting/b1/a04-evidence-source/verify_evidence.py",
+      "docs/research/fpr_reporting/b1/a04-evidence-v1-20261019/restricted-supplement/verify_evidence.py",
+      "docs/research/fpr_reporting/b1/a04-semantic-source/verify_semantic.py",
+      "docs/research/fpr_reporting/b1/a04_access_followup.py",
+      "docs/research/fpr_reporting/b1/a04_evidence.py",
+      "docs/research/fpr_reporting/b1/a04_freeze_evidence.py",
+      "docs/research/fpr_reporting/b1/a04_method_clauses.py",
+      "docs/research/fpr_reporting/b1/a04_semantic_release.py",
+      "docs/research/fpr_reporting/b1/check_a04_evidence.py",
+      "docs/research/fpr_reporting/b1/check_a04_semantic_release.py",
+      "docs/research/fpr_reporting/b1/check_a04_transfer.py"
+    ],
+    "ruff_output": "All checks passed!\n",
+    "ruff_returncode": 0,
+    "source_git_commit": "e9e10d0429c91f4f20680878a129c24826da9aac",
+    "syntax": "PASS"
+  },
+  "method_coverage": {
+    "actual_context_checked_memberships": 347,
+    "actual_context_checked_works": 347,
+    "release_checked_paraphrases": 549,
+    "works_with_access_blockers": 2,
+    "works_with_body_version_blockers": 23,
+    "works_with_bounded_context_or_separation_blockers": 27,
+    "works_with_release_checked_paraphrases": 320,
+    "works_without_paraphrases": 52
+  },
+  "runtime": {
+    "PyMuPDF": "1.26.7",
+    "beautifulsoup4": "4.12.3",
+    "pypdf": "6.9.2",
+    "ruff": "0.16.6"
+  },
+  "scope_and_hash_checks": {
+    "all_files_under_10MB": true,
+    "artifact_git_commit": "174e9f03cdd499d928c61b87a485013b5d660b5a",
+    "changed_paths": 51,
+    "checked_utc": "2026-10-20T10:23:11.221541+00:00",
+    "git_committed_payloads_match_archive": true,
+    "historical_files_byte_identical": 148,
+    "outer_text_crlf_counts": {
+      "CHECKER_ROLE_RECEIPTS.json": 0,
+      "MANIFEST.json": 0,
+      "README.md": 0,
+      "RESTRICTION_EXCEPTIONS.json": 0,
+      "SEMANTIC_COVERAGE.json": 0,
+      "SEMANTIC_EVIDENCE_RECEIPTS.json": 0,
+      "SEMANTIC_METHOD_FACTS.json": 0,
+      "verify_semantic.py": 0
+    },
+    "protocols": {
+      "historical_locks": {
+        "PROTOCOL_LOCK.json": "7a3c73d465721fb2ea177c53bdc936e614ec5b504c6fb1fc0ef65ff7acc86f42",
+        "PROTOCOL_LOCK_A02.json": "a8b736803da62bd399644abcc1f2ffb0a767b983560f16629ce16cf5d84147c7",
+        "PROTOCOL_LOCK_A03.json": "0c11c681b6f08fdf3a1e34a26675f157be79e757ba6d9f55cd7f7cc85689f4f0",
+        "PROTOCOL_LOCK_A04.json": "00856fbdcc796ac4d04b52e67de46c79fdc8bb5b9d26115ef48d3c46c4cafbaf"
+      },
+      "intake_sha256": "48c903779bda205c2af6231da92cca8b70e6ba9755cfa175f526c107e23e7290"
+    },
+    "scope": "B1_ONLY"
+  },
+  "scoped_tests": {
+    "failed": 0,
+    "passed": 88,
+    "receipt": {
+      "checked_utc": "2026-10-20T10:15:42.992382+00:00",
+      "command": [
+        "C:\\Users\\LawLight\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "docs/research/fpr_reporting/b1",
+        "-p",
+        "check_a04*.py",
+        "-v"
+      ],
+      "log_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\final-validation-20261020\\a04-scoped-tests-v2.log",
+      "log_sha256": "a93dfc41fd61ac8aa9fbdd53df302864bf1992f08fddbbd97feaa7f9d68fa723",
+      "returncode": 0,
+      "source_git_commit": "e9e10d0429c91f4f20680878a129c24826da9aac"
+    }
+  },
+  "source_pipeline_resumability": {
+    "basis": "Completed earlier execution check; see execution log and preserved custodian session records.",
+    "completed_clean_checkpoint": "1296c86d469f69d3704d027c981c7b0596c09f63",
+    "members_resumed_without_network": 389,
+    "original_partial_source_payloads_replayed_byte_identically": 8,
+    "receipt_bytes_unchanged": true
+  },
+  "transfer_verification": {
+    "archive_bytes": 444516,
+    "archive_sha256": "8158e43ee8ad8c55854aab59c526b979b7e5a89b23f804eb65b408b384621a71",
+    "checked_utc": "2026-10-20T10:21:10.459190+00:00",
+    "crc": "PASS",
+    "deterministic_repack_byte_identical": true,
+    "generated_payload_bytes_match_archive": true,
+    "git_blob_check_commit": "174e9f03cdd499d928c61b87a485013b5d660b5a",
+    "git_committed_payloads_match_archive": true,
+    "historical_protocols": {
+      "historical_locks": {
+        "PROTOCOL_LOCK.json": "7a3c73d465721fb2ea177c53bdc936e614ec5b504c6fb1fc0ef65ff7acc86f42",
+        "PROTOCOL_LOCK_A02.json": "a8b736803da62bd399644abcc1f2ffb0a767b983560f16629ce16cf5d84147c7",
+        "PROTOCOL_LOCK_A03.json": "0c11c681b6f08fdf3a1e34a26675f157be79e757ba6d9f55cd7f7cc85689f4f0",
+        "PROTOCOL_LOCK_A04.json": "00856fbdcc796ac4d04b52e67de46c79fdc8bb5b9d26115ef48d3c46c4cafbaf"
+      },
+      "intake_sha256": "48c903779bda205c2af6231da92cca8b70e6ba9755cfa175f526c107e23e7290"
+    },
+    "nested_base": {
+      "gate": "FRAME_BLOCKED",
+      "independent_review": "NOT_COMPLETED",
+      "integrity": "PASS",
+      "members": 389,
+      "method_clauses": 1,
+      "works": 372
+    },
+    "nested_base_files": 15,
+    "offline_verifier_mode": "Python -I; standard-library-only verifiers; no network calls",
+    "outer": {
+      "gate": "FRAME_BLOCKED",
+      "independent_eligibility_review": "NOT_RECEIVED",
+      "integrity": "PASS",
+      "members": 389,
+      "method_facts": 549,
+      "works": 372
+    },
+    "outer_files": 9
+  },
+  "validation_source_git_commit": "174e9f03cdd499d928c61b87a485013b5d660b5a"
+}

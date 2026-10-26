@@ -1,0 +1,507 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0074",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T12:15:33.165264+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\additional-001\\works\\W0074.provider.0001.json",
+  "provider_packet_sha256": "8008e0e00fc7eb7a76b140ae34e763fa8fa8607439f3ddc5a23dd2a4c77a4ad0",
+  "request_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\ADDITIONAL_SOURCE_REQUESTS_001.json",
+  "request_sha256": "da9d2ad6bc12937fbd85eec284c96ccfb01660fe90ed9aed12a66ffa3902f061",
+  "requested_preferred_version": "arxiv:2508.17884v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q028-1.html",
+    "raw_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0114.json",
+    "acquisition_receipt_sha256": "f6df377a7e555f396ec06017b8de126c4e7be71d3b4c2d8d86b762ca92384433",
+    "captured_version_id": null,
+    "version_state": "EXACT_VERSION_SELF_LINK",
+    "independent_raw_self_links": [
+      "/abs/2508.17884v2",
+      "/pdf/2508.17884v2"
+    ]
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": [],
+    "exact_version_self_links_verified_despite_null_captured_version_id": true
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        25,
+        65
+      ],
+      [
+        68,
+        72
+      ]
+    ],
+    "range_unit": "global zero-based HTML paragraph",
+    "nonparagraph_context_actually_read": [
+      "alg1",
+      "alg2"
+    ],
+    "coverage_disposition": "DECLARED_MATERIAL_METHOD_TASK_FAMILIES_VERIFIED",
+    "semantic_rationale": "Actually read all design and implementation paragraphs40-59, default experiment setup60-64, accepted-paper audit construction65, real-document collection/visibility-label construction68-70, local detection-event definition71 and runtime setup72. Algorithms1/2 read in full. The default MiniLM/OCR implementation is linked by experimental setup61; optional LLMGuard is not promoted into a separate evaluated comparator. Exact document-level Boolean API is not invented from returned overlap spans.",
+    "locator_sha256": "4ef95b3bf1623dc85c06706294b176584161b7c6cbfbdad2596b465a30144025",
+    "locators": [
+      {
+        "index": 25,
+        "paragraph_id": "S2.SS2.p1.1",
+        "section_id": "S2.SS2",
+        "heading": "2.2 Hiding Text in Structured Documents",
+        "text_sha256": "27a08f71ff7118854574904c3838e1c0169ef9c8e679b5af3e5078451476c315"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S2.SS2.SSS0.Px1.p1.1",
+        "section_id": "S2.SS2.SSS0.Px1",
+        "heading": "Matching Text and Background",
+        "text_sha256": "a04a0e7139e1bfb1adb24c1922456e66087f685591e5574f635c50aea497e2cb"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S2.SS2.SSS0.Px1.p2.1",
+        "section_id": "S2.SS2.SSS0.Px1",
+        "heading": "Matching Text and Background",
+        "text_sha256": "408fc99280d3c0cc6e6c00f747ce76b0bd4b088968952b4acd8b5548a0ab174e"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S2.SS2.SSS0.Px2.p1.1",
+        "section_id": "S2.SS2.SSS0.Px2",
+        "heading": "Invisible Content",
+        "text_sha256": "db26ca801d28f9d321d305e6480732edf9a1322e9d6cbafa49b4e4e339f89ac2"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S2.SS2.SSS0.Px2.p2.1",
+        "section_id": "S2.SS2.SSS0.Px2",
+        "heading": "Invisible Content",
+        "text_sha256": "944b1aff34219ea52a4a1f4ef8917fbb2705debb5241926b71deea7287dd9fe2"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S2.SS2.SSS0.Px2.p3.1",
+        "section_id": "S2.SS2.SSS0.Px2",
+        "heading": "Invisible Content",
+        "text_sha256": "03799af0c3486cf7e40187185742444f62d2fbb0a5328f352b640e0cfabda8d5"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S2.SS2.SSS0.Px3.p1.1",
+        "section_id": "S2.SS2.SSS0.Px3",
+        "heading": "Tiny Text Size",
+        "text_sha256": "976528dfeb0e751cbee05f33b5951f64a469488ba8e84d8f8b5d2f56a91d1ba1"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S2.SS2.SSS0.Px4.p1.1",
+        "section_id": "S2.SS2.SSS0.Px4",
+        "heading": "Obscured Text",
+        "text_sha256": "88be4f4cf2bcaac672c4bbb6afbb8de5f74a7bc36f20feef674736d03ac15547"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S2.SS2.SSS0.Px4.p2.1",
+        "section_id": "S2.SS2.SSS0.Px4",
+        "heading": "Obscured Text",
+        "text_sha256": "a7dc0ed9748742a70db76c5cc7f70039ba1acfb45aa732b59724d3ea46618116"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S2.SS2.SSS0.Px5.p1.1",
+        "section_id": "S2.SS2.SSS0.Px5",
+        "heading": "Offpage Text",
+        "text_sha256": "60bf9003d989ae5e4f8a4b335c36fbfc2203291e9583b1178652e359a91c9b90"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S2.SS2.SSS0.Px5.p2.1",
+        "section_id": "S2.SS2.SSS0.Px5",
+        "heading": "Offpage Text",
+        "text_sha256": "1c9f5c2fbc1fbe1fa17f6242b5cb6ba337d1cd4db664f5ba22aecd9d1debf954"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S2.SS2.SSS0.Px6.p1.1",
+        "section_id": "S2.SS2.SSS0.Px6",
+        "heading": "Zero-Area Clipping",
+        "text_sha256": "bac759fda754f37c4e3edaf81729a4bbaaedaad829db98d5fd1044efe9182364"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S2.SS2.SSS0.Px7.p1.1",
+        "section_id": "S2.SS2.SSS0.Px7",
+        "heading": "Zero-Opacity Text",
+        "text_sha256": "401efe6d6811ec4a9d23563715467499e5d8585ec3716f1d76c74a2620864cf3"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S2.SS2.SSS0.Px8.p1.1",
+        "section_id": "S2.SS2.SSS0.Px8",
+        "heading": "Malicious Fonts",
+        "text_sha256": "450718610bf8841594352d8ec71f74a538e0f65eaa32162f70d209d9d512b09a"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S2.SS2.SSS0.Px9.p1.1",
+        "section_id": "S2.SS2.SSS0.Px9",
+        "heading": "Hidden-Visibility Content",
+        "text_sha256": "b0aadb849f6714182421533bdcef4f4c7dca01c764c275701467640271b3c79d"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S3.p1.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "84d3117a7e41b4dad0de031e6fda50f2400d270b2e177ca1c5ae5b2078b5f9c3"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S3.p2.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "051953b529d53a19d1a30c8051d1cf4c8539c24b695f9a76e8b52c4bdb868ce6"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S3.p3.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "ccee5de396cc63ece2b6d044a7337406c185cbba4a6528e2ce348b88dc671388"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S3.p3.2.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "72b66016b998125ad15111e2c2a865b792a997b4051617289203cfb02acc5cbb"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S3.p4.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "1296b9255399403cf3c6dd45b7b5d01c702047dc3561c755f7343d39e3ee7111"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S3.p5.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "bfc938e0f9fecd12c73cd04d912b876a38e452e9f0e1728195e92bb104faedb8"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S3.p6.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "778ccaa60a053c350808e823a0240ef5ac5ecc9e9b339199d2adcf99c68a0d8e"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S3.p7.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "459422d0734c44dc97f6d0d3a569d5d1b803499f3ae298a4c3a03282b6368b78"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S3.p8.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "e720acfdddaebe8633b7807b1e32c90b60e26fd39e48062d60307340315df0d5"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S3.p9.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "66f8aa58da3aa8cae155a96cb1c5136f43d8b59f95f717de2649c9952b16b418"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S3.p10.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "a0c94dcaccc6aaf5137a381e5a1e492612c9e30a737181c195b6a83b5673328d"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S3.p11.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "42e3573472164c60ff786100b346da241614de2d3728954db25edc44a2c15d5d"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S3.p12.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "4f39455d6ff224398a83b79bb432bdebd3cf77709c42bee77a9e0219bc168185"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S3.p13.1",
+        "section_id": "S3",
+        "heading": "3 Design",
+        "text_sha256": "73b04c73abd6a38f09a9b2d2cb81c6fecfb82e127df179b35d08a9026993fa10"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "4 Implementation",
+        "text_sha256": "7c6a35ce66437702f0823a9b41a67ace401489f98826c377c724d7251e44b8ef"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S4.p2.1",
+        "section_id": "S4",
+        "heading": "4 Implementation",
+        "text_sha256": "30c390b7da415d9ac63668267a53dce18b544993ae68c7b3deb6e7bb701391fe"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S4.p3.1",
+        "section_id": "S4",
+        "heading": "4 Implementation",
+        "text_sha256": "0cbcc391157af3a4900c891f4b031c90e2632d01ca07ac287040919e2628f541"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "S4.p4.1",
+        "section_id": "S4",
+        "heading": "4 Implementation",
+        "text_sha256": "e68b87c48c1dd1ed8c74c924b78e922796661198bee6573d752cf51ef49663ad"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "S4.p5.1",
+        "section_id": "S4",
+        "heading": "4 Implementation",
+        "text_sha256": "daedf487e268d9d465b51f98250cfd3f6e30165e1e3e8ce27c606500cf256337"
+      },
+      {
+        "index": 59,
+        "paragraph_id": "S4.p6.1",
+        "section_id": "S4",
+        "heading": "4 Implementation",
+        "text_sha256": "f4904932722140c3271fab4b508a099c4e9d7ee08616b1283c24aac22805d6a9"
+      },
+      {
+        "index": 60,
+        "paragraph_id": "S5.p1.1",
+        "section_id": "S5",
+        "heading": "5 Evaluation",
+        "text_sha256": "4da71c138782489d0f29bb7232be3c6ab5215976c56ba53e4b611e3350968734"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "S5.SS0.SSS0.Px1.p1.1",
+        "section_id": "S5.SS0.SSS0.Px1",
+        "heading": "Experiment Setup",
+        "text_sha256": "5061f3d51d69144b1730a9670971d95e4782c92aa1f27558499177e44fd33871"
+      },
+      {
+        "index": 62,
+        "paragraph_id": "S5.F1.2",
+        "section_id": "S5.SS0.SSS0.Px1",
+        "heading": "Experiment Setup",
+        "text_sha256": "38696f6624beaa6d565aa563bd1abbcb9bb5a8c870d78a31549c3c334a1d4534"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "S5.SS1.p1.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 RQ1: Generality",
+        "text_sha256": "271fb436d52d2e62aecff5263fb504439048792c24257c20c2c1ab14a6f32da7"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "S5.SS1.p2.1",
+        "section_id": "S5.SS1",
+        "heading": "5.1 RQ1: Generality",
+        "text_sha256": "90c07b7040170459b278b6610f03e1046d0c78df3fb14f260585297f1e58d337"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S5.SS2.p1.1",
+        "section_id": "S5.SS2",
+        "heading": "5.2 RQ2: Low False Positive Rate",
+        "text_sha256": "4acaedec816d5b6ea62795d621a832dc38d1c55ab5cb45f1b38b4a7ee620da98"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S5.SS3.p1.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3 RQ3: Practical Utility",
+        "text_sha256": "1523b44a9ec2b9d1fa377e3e9436bf8b3c7f8363d6536c403e17b8b7fa6fdc5a"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S5.SS3.p2.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3 RQ3: Practical Utility",
+        "text_sha256": "2c7703a43f03b30d73d67b66e707214bd0e407ec9d0799d2bc02ebde126848c5"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S5.SS3.p3.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3 RQ3: Practical Utility",
+        "text_sha256": "806015bbb1c73afe75ecfa3f723c9b9243db10b1c40b9c58ca13112550e51433"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S5.SS3.p4.1",
+        "section_id": "S5.SS3",
+        "heading": "5.3 RQ3: Practical Utility",
+        "text_sha256": "2e56525fea4fd7632fb221312687ae12ca521f2195c5639eb035b80b5e544ba4"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "S5.SS4.p1.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4 RQ4: Performance",
+        "text_sha256": "cb41fe327cbd6b54e3b38d455e8ff54626791ce76112037c61040ae8012e97e5"
+      }
+    ],
+    "structural_receipts": [
+      {
+        "source_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "section_id": "S3",
+        "element_html_sha256": "9b94e5b108b65aa8e247eddfdb0a15290c2c02eba39dd2b5f2f833b062639b26",
+        "element_text_sha256": "2514727bff718fda9522c1c2649de1b6faf0a9683de43ccb464a6304f2ff629b",
+        "structural_only_no_text_reproduced": true,
+        "hashes_verified": true
+      },
+      {
+        "source_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "section_id": "S4",
+        "element_html_sha256": "3793051a09fa94c11cec24142067e53cffc8b40049c85288a002a6e6980b7029",
+        "element_text_sha256": "095586011863fc41c5cf1669094ed1502d5bd97eda6bbc644b138d2d3ec4bd8e",
+        "structural_only_no_text_reproduced": true,
+        "hashes_verified": true
+      },
+      {
+        "source_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "section_id": "S5.SS0.SSS0.Px1",
+        "element_html_sha256": "42f7ec1932eb33def83aa1cd71516a3275549db1e0f84458e88ed3ef73bb6130",
+        "element_text_sha256": "689f3c70780b363890ff9938d311a2299beebf22e17e0484128a78c585d0e19f",
+        "structural_only_no_text_reproduced": true,
+        "hashes_verified": true
+      },
+      {
+        "source_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "section_id": "S5.SS1",
+        "element_html_sha256": "98bef4dabfac0a9fc47c92ad532b7cad184f49c228a570e8e95962b6a68980fc",
+        "element_text_sha256": "51195a3574fceb6cf5e0c0f48dfb2201a22aed78f5211302af5c0088b3d878ec",
+        "structural_only_no_text_reproduced": true,
+        "hashes_verified": true
+      },
+      {
+        "source_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "section_id": "S5.SS2",
+        "element_html_sha256": "f4619c9072b227dedb2144c0aaf4d30fd802ecaa5b7b1a578e3a057a9448ad08",
+        "element_text_sha256": "0b79c797a5d155d4f0aa3a0393d06ed7e4aaee4557bc85ba31dbb78884e5c207",
+        "structural_only_no_text_reproduced": true,
+        "hashes_verified": true
+      },
+      {
+        "source_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "section_id": "S5.SS3",
+        "element_html_sha256": "41c4bf0211505e3933751f650a4383f95b18c41f58987a82af9a8aa519ef1911",
+        "element_text_sha256": "230f4b66557e077da358293db47d4721e408c813ec050605e269b9b7f4412432",
+        "structural_only_no_text_reproduced": true,
+        "hashes_verified": true
+      },
+      {
+        "source_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "section_id": "S5.SS4",
+        "element_html_sha256": "a639b39c77d769fc14aeedaf8b114b4c0e517740b4d1ffdac78198c083ba74c8",
+        "element_text_sha256": "951a6e26d4168ac7b72feb52df673c256bd69b950f2a1870038131513e51b515",
+        "structural_only_no_text_reproduced": true,
+        "hashes_verified": true
+      },
+      {
+        "source_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "section_id": "alg1",
+        "element_html_sha256": "1f9a227671ae4d8f19b408098d5d72cf15a6bc1f5fd6f03e4b0bdaa1b168682e",
+        "element_text_sha256": "a7133840d2bc8169d0b14b1a29dcea70c4c6e55d69d31d8cf14fbb7c94d35ada",
+        "structural_only_no_text_reproduced": true,
+        "hashes_verified": true
+      },
+      {
+        "source_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "section_id": "alg2",
+        "element_html_sha256": "340ba0b388989a9f5d3cfc7c3ada7744b105ce54fe8d2e35c99aded513b17e21",
+        "element_text_sha256": "ec5f9035fd48bd60c9ea2c375211bd0f02cbba35b9aecdd992681c1590d6d99a",
+        "structural_only_no_text_reproduced": true,
+        "hashes_verified": true
+      },
+      {
+        "source_sha256": "64dcc42ff386cff2cf294cd1048b33edfa649032cfaa4d014677ccd6d3099a3b",
+        "section_id": "S5.F1",
+        "element_html_sha256": "4572d8ad0ea527529610f9f04cf48b9b591cd8aa741fe5b41a50095cf5c65453",
+        "element_text_sha256": "e3c6cfdfcfacfc75062ef3acda74e4766c7732580d132de664e5da06c9ae3031",
+        "structural_only_no_text_reproduced": true,
+        "hashes_verified": true
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main implementation57 explicitly specifies default MiniLM phrase matching and alternative LLMGuard. Setup61 explicitly selects default configuration/default bad phrases for the experiments; synthetic63-64 and real-document68-71 trials therefore have direct procedure linkage.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Design45-53 and actual Algorithms1/2 define phrase-span analysis, rendered-region OCR and overlap with text absent from OCR. Implementation55-59 specifies PDF/HTML processing, MiniLM and OCR. Synthetic63-64 tests hidden-prompt hiding strategies. The detector consumes documents/text spans, with no protected LLM task answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Accepted-paper audit setup65, real-document collection and human visible/hidden labels68-70, and runtime evaluation72 verify these distinct evaluation families under setup61 default configuration. Paragraph71 defines document detection as a reported region overlapping the hidden prompt; this is a presence event, not proof that Algorithm2 exposes a standalone Boolean API or that the accepted-paper audit supplies exhaustively labeled negatives.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Setup61 selects the default bad-phrase list, whose actual English phrases are printed in62. Synthetic construction64 explicitly inserts English example prompt phrases into synthetic PDF/HTML documents. This directly supports English construction in those evaluated document trials; full natural-document language composition is not inferred.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True is verified for declared material main design/implementation and all evaluation-family methods after actual40-65 and68-72 plus full algorithm reads. There is no appendix. Optional Analyze implementation and evaluated default are distinguished; unseen result plots/captions are not needed to establish the task/family scope.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "request_provenance",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Exact neutral additional request bytes and hash verified; this work is bound to ADDITIONAL_SOURCE_REQUESTS_001, not silently inserted into the main request set.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "exact_version_validation",
+      "decision": "APPROVE",
+      "semantic_fidelity": "The acquisition mapping retains null captured_version_id. Independently inspected raw source hrefs point to exact abs/pdf2508.17884v2; no earlier or alternate version substituted.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual method/evaluation context displayed adjacent outcomes and sample values; withheld from receipt. No source outcome figure was visually decoded. Shared filesystem, no freshness or OS-isolation claim; operational exposure remains in ROLE.0001.json."
+  }
+}

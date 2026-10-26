@@ -1,0 +1,21 @@
+{
+  "run_id": "a04-evidence-v1-20261019",
+  "historical_checkpoint": "d2b760df052c138401964e95f456c944394501ff",
+  "intake_archive_sha256": "48c903779bda205c2af6231da92cca8b70e6ba9755cfa175f526c107e23e7290",
+  "cache_root": "C:/Users/LawLight/Desktop/accenture/.venv/fpr-a04-evidence-v1-20261019",
+  "legacy_cache": "C:/Users/LawLight/Desktop/accenture/.venv/fpr-b1-method-cache-20261019",
+  "provider_id": "codex-fpr-b1-evidence-20261019_EXPOSED_CUSTODIAN",
+  "max_workers": 3,
+  "minimum_request_interval_seconds": 0.8,
+  "timeout_seconds": 25,
+  "max_attempts_per_url": 2,
+  "retry_backoff_seconds": 3,
+  "max_body_bytes": 40000000,
+  "bibliographic_cutoff": "2026-10-17T00:00:00Z",
+  "allowed_hosts": ["arxiv.org", "export.arxiv.org", "aclanthology.org"],
+  "release_ruleset": "STRUCTURAL_CLOSED_GRAMMAR_V1",
+  "max_verified_method_items_per_member": 8,
+  "max_quarantine_proposals_per_member": 12,
+  "draw_authorized": false,
+  "B2_authorized": false
+}

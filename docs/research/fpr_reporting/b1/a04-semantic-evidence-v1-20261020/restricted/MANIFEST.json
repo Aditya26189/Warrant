@@ -1,0 +1,33 @@
+{
+  "B2": "NOT_AUTHORIZED",
+  "actual_delivery": "NOT_PERFORMED",
+  "actual_independent_eligibility_review": "NOT_RECEIVED",
+  "base_supplement_sha256": "066c27ae28ad941ea9ebf963f3fc5d854b2bcd39d1fb060a16b52b5cc4294c08",
+  "coverage": {
+    "context_checked_memberships": 347,
+    "context_checked_works": 347,
+    "delivered_to_reviewer": 0,
+    "independent_eligibility_judgments": 0,
+    "members": 389,
+    "quarantined_fact_count": 0,
+    "released_method_facts": 549,
+    "works": 372,
+    "works_with_method_facts": 320
+  },
+  "created_utc": "2026-10-20T10:20:17.979031+00:00",
+  "draw_executed": false,
+  "files": {
+    "BASE_EVIDENCE_SUPPLEMENT.zip": "066c27ae28ad941ea9ebf963f3fc5d854b2bcd39d1fb060a16b52b5cc4294c08",
+    "CHECKER_ROLE_RECEIPTS.json": "c586ef6c55036e3c66cdb3bd607becf63815e1a330bec60be98576258fd873e9",
+    "README.md": "0ad22664978d2b5188bb7614c0ddc6d0e5d051560ec376a79a533ac9e5f3b692",
+    "RESTRICTION_EXCEPTIONS.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "SEMANTIC_COVERAGE.json": "4fc2b63a31561d3775219b1c8a4e38011dae952e61e3dbc6e5202519366bb544",
+    "SEMANTIC_EVIDENCE_RECEIPTS.json": "027010372dd3636894e41e8a7a33d9518d7e5c008c9018941c8a04c5e0c8e740",
+    "SEMANTIC_METHOD_FACTS.json": "606e583b5ec85f8ce4797ce93404f62ca45c1598af59468ca88ef2c2565d74aa",
+    "verify_semantic.py": "8bc348b4e1cb4f1d7c77d04a67d646277d77ec297de01359662fa95ea25a5168"
+  },
+  "gate": "FRAME_BLOCKED",
+  "original_intake_sha256": "48c903779bda205c2af6231da92cca8b70e6ba9755cfa175f526c107e23e7290",
+  "source_git_commit": "a9533738f1c3536c29246871e6456676d8acb0f3",
+  "source_tree_clean_at_start": true
+}

@@ -1,0 +1,690 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0050",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:57:57.735858+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0050.provider.0004.json",
+  "provider_packet_sha256": "0a34e27ac419e5b59cbe56485884f9454d4dbe24989b9debdb832068cf7dcafa",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2505.16934v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\c278d18cfa1f1ee2af1c4826438c0b5641d4042bee410710542aa0ab63c570af",
+    "raw_sha256": "c278d18cfa1f1ee2af1c4826438c0b5641d4042bee410710542aa0ab63c570af",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0083.json",
+    "acquisition_receipt_sha256": "473a3683421a8c0393b8030105fc282a164fa5164b7e07d4476158d7d89d58ee",
+    "captured_version_id": "arxiv:2505.16934v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        18,
+        61
+      ],
+      [
+        86,
+        100
+      ],
+      [
+        112,
+        138
+      ]
+    ],
+    "coverage_disposition": "VERIFIED_DECLARED_METHOD_INVENTORY",
+    "semantic_rationale": "Append-only .0004 explicitly inventories auxiliary output-quality and robustness/length variants identified in actual added source check. All named families checked; theory derivation is not a new evaluated detector family and no assurance claim released.",
+    "locator_sha256": "5d94955a8ecf72878e00b0fad14bc0ca6fbfcf45c21b9003379ec220416be352",
+    "locators": [
+      {
+        "n": 18,
+        "kind": "heading",
+        "id": "S3",
+        "section": "3 In-Context Watermarks",
+        "sha256": "0e0849913acd404c5c334c19fa628cbb14ee426464dcc1bf7f09c6ab187c6f6d"
+      },
+      {
+        "n": 19,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "section": "3.1 Problem Formulation",
+        "sha256": "8d309b961bf98f33ccaf2bf7181a3d88c962ac80aac41cbf00d05b0ceb11a00a"
+      },
+      {
+        "n": 20,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "section": "3.1 Problem Formulation",
+        "sha256": "ce7e809fa7bdfcda0a8513c72d9c8159ba9c5ed9b6cea98eff59fea9b6e06f97"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.1",
+        "section": "3.1 Problem Formulation",
+        "sha256": "55d6909d287633f18e6d78925bbf2aa97330ded82046c08b515be70943384041"
+      },
+      {
+        "n": 22,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.2",
+        "section": "3.1 Problem Formulation",
+        "sha256": "30eeb1df41e0b4adf2cbdd19dd58f9be48a2ba3a9e6efc7c2bea0f95aaeada0b"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S3.SS1.p3.1",
+        "section": "3.1 Problem Formulation",
+        "sha256": "c524207da9643c5fe7881fc2ffc8d7a5c512a791762ffac033c15aad5720d9f2"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S3.SS1.p3.2",
+        "section": "3.1 Problem Formulation",
+        "sha256": "5263ed448596870bc67052e4338e9a4b55a592cb3c2368f63b8309e47b142dad"
+      },
+      {
+        "n": 25,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "section": "3.2 Indirect Prompt Injection (IPI) Setting",
+        "sha256": "b64ba193f518350b7e521ca55379f27774d7f678592e9c61da232e600dc9f8cb"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.1",
+        "section": "3.2 Indirect Prompt Injection (IPI) Setting",
+        "sha256": "b6c64ace1761ac2a07eacf7e5b6310ed32c9f0a82191e11f0c12f91a5f5f39e4"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S3.SS2.p2.1",
+        "section": "3.2 Indirect Prompt Injection (IPI) Setting",
+        "sha256": "f42e7d9ea4d5a0c3e8d6676bc78bb454974322814fdf1e05abb363a7b625c460"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S3.SS2.p3.1",
+        "section": "3.2 Indirect Prompt Injection (IPI) Setting",
+        "sha256": "8f6dd66cc92a557883330ba1a911759aef33faad13f0c829f0dd2ea528173955"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S3.SS2.p3.2",
+        "section": "3.2 Indirect Prompt Injection (IPI) Setting",
+        "sha256": "a37fa78ce629d2287a7ca16a411ad67ba584f92a3900add4ad31f1c1e88f21b0"
+      },
+      {
+        "n": 30,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Exploration of Different ICW Methods",
+        "sha256": "e149b0d57d2bc658868da941559c94e486ba1e9cd9860b1bc6521bff048c147e"
+      },
+      {
+        "n": 31,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Preview of Different ICW Methods",
+        "sha256": "867dc1ccb8ad3f7c1a4650fd656a522eb42733ae78e3381a76ed41ab491d774c"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1 Preview of Different ICW Methods",
+        "sha256": "01a06d094a4d9fe83aa8edbc1f6c2ce2ee08ba8f8b89b66b183dbd43e7fc9f0c"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "section": "4.1 Preview of Different ICW Methods",
+        "sha256": "4ab9c3cbfaf2df6518cb87900788bd13162fb762df6843baefc37798fc83a3eb"
+      },
+      {
+        "n": 34,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 ICW Methods",
+        "sha256": "f6c71208b0c096d4cb66ca798dc6f674d6859bf99f7d834386d4b03f40515bab"
+      },
+      {
+        "n": 35,
+        "kind": "heading",
+        "id": "S4.SS2.SSS1",
+        "section": "4.2.1 Unicode ICW",
+        "sha256": "f1149c117d1c9aacbff4f9f3da7b3b13bf2897e8c12e8a3eae8d8ad2afc48d9a"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS1.p1.1",
+        "section": "4.2.1 Unicode ICW",
+        "sha256": "7c546ed881b21759cd4992bdbf53203d0fa1dbebf1afb0892ac986cf4df9a571"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS1.p2",
+        "section": "4.2.1 Unicode ICW",
+        "sha256": "f38ed5d28b73b4bd5fd3ba9a3e4175ca5598a2cfa069fe07dcf8fa0b09b4425b"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS1.p3.1",
+        "section": "4.2.1 Unicode ICW",
+        "sha256": "dc70c66193beceef15df67c0c67988c530d30358bd6d4acea6c60a6cd5dc8910"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS1.p4.1",
+        "section": "4.2.1 Unicode ICW",
+        "sha256": "c46b2cf644ac15bee1c1cd516d579e69d5dc6f29de9004ac440f042d86b3cdc6"
+      },
+      {
+        "n": 40,
+        "kind": "heading",
+        "id": "S4.SS2.SSS2",
+        "section": "4.2.2 Initials ICW",
+        "sha256": "14be5f525308f3b89049238785b6b218304c742cfde57a2217f425adb1b58c80"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS2.p1.1",
+        "section": "4.2.2 Initials ICW",
+        "sha256": "b3d181dae59f561d4e1175107f6c70ea3e98996e006d7c820c1a4a2319eb8ff9"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS2.p2",
+        "section": "4.2.2 Initials ICW",
+        "sha256": "0d0a97ab5680fddc42456e2c8eac4921c06ca1456f2a94c59860b57c116d53e5"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS2.p3.1",
+        "section": "4.2.2 Initials ICW",
+        "sha256": "fe68588acbeb823d69ddaf12de29ff8a5bee23c4fbba398597cb3963c2f9fccc"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS2.p4.1",
+        "section": "4.2.2 Initials ICW",
+        "sha256": "dd2d81df77472a3f3e4564d0c19c534e58600adfb2465e2b34b3388279296685"
+      },
+      {
+        "n": 45,
+        "kind": "heading",
+        "id": "S4.SS2.SSS3",
+        "section": "4.2.3 Lexical ICW",
+        "sha256": "fb8dc2bffd53e7042dd90ff8fe7778519f05af5d7e54c14b6852d904999591b1"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS3.p1.1",
+        "section": "4.2.3 Lexical ICW",
+        "sha256": "aa67575b28e092ca373c6e06688d6fc32df98ec8b9d6220ab6129122ea803c75"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS3.p2",
+        "section": "4.2.3 Lexical ICW",
+        "sha256": "a4c88f808d7841f56ba56f3ee37cb895b766fe1f9be3fd33a8996e161397f8fc"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS3.p3.1",
+        "section": "4.2.3 Lexical ICW",
+        "sha256": "4094975df8b4739a892bf0c793c19eb829097659130f3ddc52f4183e48b22605"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS3.p4.1",
+        "section": "4.2.3 Lexical ICW",
+        "sha256": "a21d09abe1a08ae005a311debd94f5ba3260a9f80062fc68ea5658a93c57010b"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS3.p5.1",
+        "section": "4.2.3 Lexical ICW",
+        "sha256": "793ce10c29df070cd9cb44aa2d86ad39ce1479c8d01b4dae47a015b3654dbab3"
+      },
+      {
+        "n": 51,
+        "kind": "heading",
+        "id": "S4.SS2.SSS4",
+        "section": "4.2.4 Acrostics ICW",
+        "sha256": "5653f1f3e9901a8d2fb1bd42e82f37ca9a2c279d337e561afb298b6b320feba9"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS4.p1.1",
+        "section": "4.2.4 Acrostics ICW",
+        "sha256": "ff5423a89bfe0f7b751fe3a73b6516203933afa9f7b11dab11431fbbfb3bde82"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS4.p2",
+        "section": "4.2.4 Acrostics ICW",
+        "sha256": "d3c000134d0d6bd3fba37712344afc9c469e79bcad9153642ba228de57cfdcd0"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS4.p3.1",
+        "section": "4.2.4 Acrostics ICW",
+        "sha256": "b0cda5f6ec4464b22a4d1f5bdb34e1f8c3ae65ba66065991c3e07611854072c1"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS4.p4.1",
+        "section": "4.2.4 Acrostics ICW",
+        "sha256": "52200af86e9d09a0a459986c16808502a9fbd6497e284cd79de699dc8ae76586"
+      },
+      {
+        "n": 56,
+        "kind": "heading",
+        "id": "S5",
+        "section": "5 Experiments",
+        "sha256": "b04dd6925cb197150212cde98dfc3178a5368f679920c1e6d8509fbbcccf6258"
+      },
+      {
+        "n": 57,
+        "kind": "heading",
+        "id": "S5.SS1",
+        "section": "5.1 Experiment Settings",
+        "sha256": "fe87da9608c5e3063fd15b6581e765bbb18b9cbe69ddeb75371974a62f668227"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S5.SS1.p1.1",
+        "section": "5.1 Experiment Settings",
+        "sha256": "bc72486cb9ff031f4a70711ecb721a2b11409b4f90ac1e70def8604eb96cdbef"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "S5.SS1.p2.1",
+        "section": "5.1 Experiment Settings",
+        "sha256": "27a821f3dd6763ff63c25fe689ebf98e70d6bacd67e18c5e97fbc3d4ef64c969"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "S5.SS1.p3.1",
+        "section": "5.1 Experiment Settings",
+        "sha256": "be2f4755f21860d44ea45c5333f7eb64c595312ef5db54f201c157126c8b2db8"
+      },
+      {
+        "n": 61,
+        "kind": "paragraph",
+        "id": "S5.SS1.p4.1",
+        "section": "5.1 Experiment Settings",
+        "sha256": "ca9e9a57b28c0f5d7b56101f052e65832e329a0d34fc5ab6e4a27b412ad64a39"
+      },
+      {
+        "n": 86,
+        "kind": "heading",
+        "id": "A1",
+        "section": "Appendix A Watermarking Instructions",
+        "sha256": "d16a0665e8557601f07903aed764e5b7b906a44ce70ff45ccf056380f221ee12"
+      },
+      {
+        "n": 87,
+        "kind": "heading",
+        "id": "A1.SS1",
+        "section": "A.1 DTS Setting",
+        "sha256": "13fb45f96ba22777fc7affa9b309b569e90b795136459631a6221f1a24849710"
+      },
+      {
+        "n": 88,
+        "kind": "paragraph",
+        "id": "A1.SS1.p1",
+        "section": "A.1 DTS Setting",
+        "sha256": "21a4cb826464d1cd7a8cd652ff576f1b79e47b9f1cf4358804c56046a47e9046"
+      },
+      {
+        "n": 89,
+        "kind": "paragraph",
+        "id": "A1.SS1.p2",
+        "section": "A.1 DTS Setting",
+        "sha256": "d9b001fc07505af49be6b3b3d6c3886f2e9c55d419a9f2e00e84abefd279cb6b"
+      },
+      {
+        "n": 90,
+        "kind": "paragraph",
+        "id": "A1.SS1.p3",
+        "section": "A.1 DTS Setting",
+        "sha256": "e6f459ac1ade87ac96c1aad671b3ef2b4ff944bc7a854863b306a65055d0b929"
+      },
+      {
+        "n": 91,
+        "kind": "paragraph",
+        "id": "A1.SS1.p4",
+        "section": "A.1 DTS Setting",
+        "sha256": "8ebaeadf230d304f11b926cd90dcbb78784954294e983dd97be6e9e55b399af4"
+      },
+      {
+        "n": 92,
+        "kind": "heading",
+        "id": "A1.SS2",
+        "section": "A.2 IPI Setting",
+        "sha256": "0e14cb3b2f5d73cfdfa18455d76a9900f7526e9728edb16f2f2e3c48524b29c2"
+      },
+      {
+        "n": 93,
+        "kind": "paragraph",
+        "id": "A1.SS2.p1.1",
+        "section": "A.2 IPI Setting",
+        "sha256": "e85b4223e3ea200f36b84332574d14039c626ad8f239e4080677d19a726407eb"
+      },
+      {
+        "n": 94,
+        "kind": "paragraph",
+        "id": "A1.SS2.p2.1",
+        "section": "A.2 IPI Setting",
+        "sha256": "47a177a42224d6b76bd1d79e4136110ddd6a552e2ce1b0ba2ffdf3c62e580575"
+      },
+      {
+        "n": 95,
+        "kind": "paragraph",
+        "id": "A1.SS2.p3",
+        "section": "A.2 IPI Setting",
+        "sha256": "b932183aae9e8e56411ccc0190f85b84cf7eea9316ead342b739d6b32dbd427b"
+      },
+      {
+        "n": 96,
+        "kind": "paragraph",
+        "id": "A1.SS2.p4",
+        "section": "A.2 IPI Setting",
+        "sha256": "28ff0aad3fcb770fc9e28ace601d487d5f108f21b3cd24b0d2544b5fe8798cfb"
+      },
+      {
+        "n": 97,
+        "kind": "paragraph",
+        "id": "A1.SS2.p5",
+        "section": "A.2 IPI Setting",
+        "sha256": "904f32346bde823ff9c2d940f2c2305b8af443ee910ef413fbe0564761db28a0"
+      },
+      {
+        "n": 98,
+        "kind": "paragraph",
+        "id": "A1.SS2.p6",
+        "section": "A.2 IPI Setting",
+        "sha256": "beb76acbc04bc12f30afa1af26aec24e286b36346f2a4d1616f21ff562d7f1e3"
+      },
+      {
+        "n": 99,
+        "kind": "paragraph",
+        "id": "A1.SS2.p7",
+        "section": "A.2 IPI Setting",
+        "sha256": "2e7b0c51e48b19575b46f7caadd924d0e2ef056cbbdcd60114ead7613fc94060"
+      },
+      {
+        "n": 100,
+        "kind": "paragraph",
+        "id": "A1.SS2.p8",
+        "section": "A.2 IPI Setting",
+        "sha256": "d106fa185358ebcd89d2c3e889a8b3e0d89726591565eb1510638479785c6098"
+      },
+      {
+        "n": 112,
+        "kind": "heading",
+        "id": "A3",
+        "section": "Appendix C Experiment Settings",
+        "sha256": "1be684ed6fd61a6c970103dcda34542b96a36aace6cf4b3b269c46f6cd32b0b9"
+      },
+      {
+        "n": 113,
+        "kind": "paragraph",
+        "id": "A3.p1.1",
+        "section": "Appendix C Experiment Settings",
+        "sha256": "b1b0d61ed2e941234192d41258f7ff1c188b28a27f830e2c095ed251443d4342"
+      },
+      {
+        "n": 114,
+        "kind": "paragraph",
+        "id": "A3.I1.i1.p1.1",
+        "section": "Appendix C Experiment Settings",
+        "sha256": "6e505d83f122e7dbe95bdba0d0b8a6792365e0244574449a363770d1f23b358a"
+      },
+      {
+        "n": 115,
+        "kind": "paragraph",
+        "id": "A3.I1.i2.p1.1",
+        "section": "Appendix C Experiment Settings",
+        "sha256": "cd4c8ed1ddf7d09d606af85ccfc4d39477cd450248f829b3cfd91e021e73d327"
+      },
+      {
+        "n": 116,
+        "kind": "paragraph",
+        "id": "A3.I1.i3.p1.1",
+        "section": "Appendix C Experiment Settings",
+        "sha256": "e69da29adad8deb97ad6aa9f1fc3183f4cc207f3312e92d8264dfbc457dcff34"
+      },
+      {
+        "n": 117,
+        "kind": "paragraph",
+        "id": "A3.p2.1",
+        "section": "Appendix C Experiment Settings",
+        "sha256": "897bb8357bf4b41880cd2ef4ac2111114bab6bae96c77165f0c95ee0b41b4756"
+      },
+      {
+        "n": 118,
+        "kind": "heading",
+        "id": "A4",
+        "section": "Appendix D Extra Experiments",
+        "sha256": "ea40dbb831243c3ae39edc433814e63fdeba09c88f73e014f56f9ae900be464e"
+      },
+      {
+        "n": 119,
+        "kind": "heading",
+        "id": "A4.SS1",
+        "section": "D.1 Extra Main Results",
+        "sha256": "4752a550cb4a306bbbaec0f658125e23441e6ee1fe69bfa7ce523aa8b00ce947"
+      },
+      {
+        "n": 120,
+        "kind": "paragraph",
+        "id": "A4.SS1.p1.1",
+        "section": "D.1 Extra Main Results",
+        "sha256": "026b445837f4ca8d6e7b38a3bf2e3b07d2fbd0b80bbe547fe7970b0754db56b8"
+      },
+      {
+        "n": 121,
+        "kind": "paragraph",
+        "id": "A4.SS1.p2.1",
+        "section": "D.1 Extra Main Results",
+        "sha256": "05be82db2ae7337388c6e50aa4f5c076f5bcdf51e98ec5138a297a874d1fb67b"
+      },
+      {
+        "n": 122,
+        "kind": "paragraph",
+        "id": "A4.SS1.p3.1",
+        "section": "D.1 Extra Main Results",
+        "sha256": "fd4718beee1c0f2d1bc0bf9c7388347bbe0298671b5da9a48d3137e81432e821"
+      },
+      {
+        "n": 123,
+        "kind": "paragraph",
+        "id": "A4.SS1.p4.1",
+        "section": "D.1 Extra Main Results",
+        "sha256": "c3ce35f9e75730d10ec477acb3708510284db087c502159f96cf6b81cc9e6596"
+      },
+      {
+        "n": 124,
+        "kind": "heading",
+        "id": "A4.SS2",
+        "section": "D.2 Potential Attacks",
+        "sha256": "768d0f6887775ccacf28e0083c56f77f5c00fa17327123f43480acb644b61a29"
+      },
+      {
+        "n": 125,
+        "kind": "paragraph",
+        "id": "A4.SS2.p1.1",
+        "section": "D.2 Potential Attacks",
+        "sha256": "d89c086b4ba861d0e087aac9c1e75e7cacc92f6d9271da22bd1e303a4faa6801"
+      },
+      {
+        "n": 126,
+        "kind": "paragraph",
+        "id": "A4.SS2.p2.1",
+        "section": "D.2 Potential Attacks",
+        "sha256": "f3fa5d23247c34e9db6675be711a6d385f49a2e7958d71c94036b619743ae397"
+      },
+      {
+        "n": 127,
+        "kind": "paragraph",
+        "id": "A4.SS2.p3",
+        "section": "D.2 Potential Attacks",
+        "sha256": "f61c9efa5ad791af183be949f814752f2c71f2f3be5c42758cf0f40149fc8449"
+      },
+      {
+        "n": 128,
+        "kind": "paragraph",
+        "id": "A4.SS2.p4.1",
+        "section": "D.2 Potential Attacks",
+        "sha256": "4dfe0ee1a67106fefcdfeda341b1c934c92b36fe15449508c3f3a607f039b9cb"
+      },
+      {
+        "n": 129,
+        "kind": "paragraph",
+        "id": "A4.SS2.p5.1",
+        "section": "D.2 Potential Attacks",
+        "sha256": "e3ad1c58b5e9d58ebb9f4148ebd16c44f481ceb117d2e8163c418ceac59bc4c9"
+      },
+      {
+        "n": 130,
+        "kind": "heading",
+        "id": "A4.SS3",
+        "section": "D.3 Discussion of More ICW strategies",
+        "sha256": "083a29136291fbca573cfe4e800c49b4112bb1973a90fcab25bf619ed54450e1"
+      },
+      {
+        "n": 131,
+        "kind": "paragraph",
+        "id": "A4.SS3.p1.1",
+        "section": "D.3 Discussion of More ICW strategies",
+        "sha256": "2691f26cdb38990b497a633393cf1038f2e89830d9bff4672aceea1c7ed9a604"
+      },
+      {
+        "n": 132,
+        "kind": "paragraph",
+        "id": "A4.SS3.p2.1",
+        "section": "D.3 Discussion of More ICW strategies",
+        "sha256": "54f067aa6097b9504237c8c2680e6cf137705df27a749cc15e8c56cc95fdc1db"
+      },
+      {
+        "n": 133,
+        "kind": "paragraph",
+        "id": "A4.SS3.p3.1",
+        "section": "D.3 Discussion of More ICW strategies",
+        "sha256": "ede9b5923a002d93365cc4ee0b44b69161b2f0914b9e6f416c039a7173cec31c"
+      },
+      {
+        "n": 134,
+        "kind": "paragraph",
+        "id": "A4.SS3.p4.1",
+        "section": "D.3 Discussion of More ICW strategies",
+        "sha256": "a19e7987daac29cb0b18884cea741dd0c18f46c9b3d7d35251a41fd1282c9eaa"
+      },
+      {
+        "n": 135,
+        "kind": "paragraph",
+        "id": "A4.SS3.p5.1",
+        "section": "D.3 Discussion of More ICW strategies",
+        "sha256": "d6b38f735e0a293bfba582cd2a7c68c0d9dd97f3a4c2e7f969d47bbabc18b643"
+      },
+      {
+        "n": 136,
+        "kind": "heading",
+        "id": "A5",
+        "section": "Appendix E Other Prompts",
+        "sha256": "ecc4c3b55f81467b8edac47b8b49a3b71a6b23b684403e1d7b1f191fff7d0179"
+      },
+      {
+        "n": 137,
+        "kind": "paragraph",
+        "id": "A5.p1",
+        "section": "Appendix E Other Prompts",
+        "sha256": "10c8e2794eaf7e3d048efe5cf293e807d5ba14e171e50f231c50ff88d96a3a05"
+      },
+      {
+        "n": 138,
+        "kind": "heading",
+        "id": "A6",
+        "section": "Appendix F Examples of ICW",
+        "sha256": "ce0dc77b82bf3796fef5846cfe649340677dd4aa8e28e85c903ba9e30af286aa"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Full Appendix A direct/paper-injection construction checked; lexical candidate selection and output watermark families supported.",
+      "restriction_rationale": "Method/scope only; no outcomes, assurance or sample counts."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Unicode/initials/lexical/acrostics and token/letter variants operate on generated text; detector definitions checked.",
+      "restriction_rationale": "Method/scope only; no outcomes, assurance or sample counts."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Post-processing/post-hoc comparator and adaptive detection/removal operate on generated text.",
+      "restriction_rationale": "Method/scope only; no outcomes, assurance or sample counts."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "New auxiliary assessment arm source-verified: generated-text Llama perplexity/Gemini quality judgment, robustness transformations, context/output/list length and ignore-prior-prompt variants. Protected original output is assessed; no new pre-answer detector inferred.",
+      "restriction_rationale": "Method/scope only; no outcomes, assurance or sample counts."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Original watermark, comparator/adaptive and auxiliary output-assessment families now explicitly inventoried and independently checked in main and Appendix A/C/D/E.",
+      "restriction_rationale": "Method/scope only; no outcomes, assurance or sample counts."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

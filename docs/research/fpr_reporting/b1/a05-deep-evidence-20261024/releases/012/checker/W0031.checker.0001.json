@@ -1,0 +1,554 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0031",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T13:08:48.590529+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0031.provider.0001.json",
+  "provider_packet_sha256": "20d17e64e32b3ac7f8c563cbfb5f5d52cdeb329472fbf665e8af5dbef66dfc05",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2502.13141v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q007-1.html",
+    "raw_sha256": "5fd6a6c1e351f18b62b62495c81fa62ee998d37867f9892b58781e67d852c770",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0062.json",
+    "acquisition_receipt_sha256": "b7f60cbb05119ee19736cc6e3669b2f7afe7289b0f9c791839496dc03997e162",
+    "captured_version_id": "arxiv:2502.13141v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        40,
+        54
+      ],
+      [
+        70,
+        70
+      ],
+      [
+        101,
+        129
+      ],
+      [
+        150,
+        165
+      ],
+      [
+        178,
+        180
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actual main41-50 defines masking-induced base-generation logit shifts, and single-forward batching replays base tokens into masked rows. First-step logits and later generated-prefix dependence are distinguished. False retains full attack-generation/main setup and other appendix context omissions. Source128-129 selects successful attacks using target-generated replies for evaluation construction; this is kept distinct from standalone comparator inference dependency. No complete arm inventory or global absence is inferred.",
+    "visual_check": null,
+    "locator_sha256": "f3bb38e9764ade72f07e4d480e23f422f4160aeb8567df88fc52eba73934f9ae",
+    "locators": [
+      {
+        "index": 40,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "4 Methodology: UniGuardian",
+        "text_sha256": "4d1636d38b16be19e4e663c9deb1a74ddd86cc49a3aac4c9b48ce261193af127"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Overview of UniGuardian",
+        "text_sha256": "a2aaa9d8d3ce17b8782b36856e8686e95353e441e1525fc871a17c19498a6308"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S4.SS1.p2.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Overview of UniGuardian",
+        "text_sha256": "4b2a4e7a992e5388b3551d367ad18769ba82916f3d1a14eb157af64fa535f12d"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S4.SS1.p3.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Overview of UniGuardian",
+        "text_sha256": "22dcc989f04ecab63431523c73e6b860d7d86982926b4726d004c2bc16bd693a"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S4.SS1.p4.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Overview of UniGuardian",
+        "text_sha256": "11c58176af9b0a652ca1faaead5970eefb59e73a74854f58e5d5fabeeb81b5fc"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S4.SS1.p5.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Overview of UniGuardian",
+        "text_sha256": "8325feb5298465d5e18dfcd3797ec074013ea51999027064ba968392102d36ca"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S4.SS1.p6.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Overview of UniGuardian",
+        "text_sha256": "916cffaa438a47e290f92db4e02dec8bfa6b0d8f5fabea8bb67cd86aa00ff2d4"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Single-Forward Strategy",
+        "text_sha256": "518a366ac251151684c7eebd2e8b5fae3cc1421ceef8c60078716aede9d78728"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S4.SS2.p2.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Single-Forward Strategy",
+        "text_sha256": "2ad279d28ffc578aa1e67ef73e83a41a0d21234ca9ce032a58d4e4feba3af27c"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S4.SS2.p3.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Single-Forward Strategy",
+        "text_sha256": "47f8ea7150f227bb100e4d8e5e963d4d99125d4684cd2cb727a66d4c908de6eb"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S4.SS2.p4.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Single-Forward Strategy",
+        "text_sha256": "c516d4193c5ce61d326db67eff43080ff78a8dcf67ac44c2d64e528bf9d2c3e4"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S4.SS2.p5.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Single-Forward Strategy",
+        "text_sha256": "8f169830689886e79de752597ef74962dc26b42992a6d7409c8bae82c0ae61fc"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S4.SS2.p6.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Single-Forward Strategy",
+        "text_sha256": "df480eff84d50110979f186a9c59d5a963874d20255f5623d1ec99c8fe3d6330"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S5.p1.1",
+        "section_id": "S5",
+        "heading": "5 Experimental Evaluation",
+        "text_sha256": "07948a19206aa609505883766e7f102629e3f866e46d5dc7a7c6f01c6702371c"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S5.p2.1",
+        "section_id": "S5",
+        "heading": "5 Experimental Evaluation",
+        "text_sha256": "67a3b78e2c54b5bf0f0bcd3711572b181153c02bcd61a091757c621a07dced5d"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S5.SS4.p1.1",
+        "section_id": "S5.SS4",
+        "heading": "5.4 Evaluation on GSM8K",
+        "text_sha256": "e921c0ad18343437c06822f910a50119abf239303064fb903183ee8ed99e759a"
+      },
+      {
+        "index": 101,
+        "paragraph_id": "A2.SS1.p1.1",
+        "section_id": "A2.SS1",
+        "heading": "B.1 Systems",
+        "text_sha256": "a66d8b6ec84c7412bfdec2b567344222ff09e31bea3649a939249dfffc7ad11e"
+      },
+      {
+        "index": 102,
+        "paragraph_id": "A2.SS2.p1.1",
+        "section_id": "A2.SS2",
+        "heading": "B.2 Victim Models",
+        "text_sha256": "74222e4f34f5910d6b9bff248f715d8fcaf15767910fd318bcf397221617fb62"
+      },
+      {
+        "index": 103,
+        "paragraph_id": "A2.SS3.p1.1",
+        "section_id": "A2.SS3",
+        "heading": "B.3 Datasets",
+        "text_sha256": "ef15537f2264f0706b778be2b95c7950350b7d671aa045525af73dc9700899f1"
+      },
+      {
+        "index": 104,
+        "paragraph_id": "A2.I1.i1.p1.1",
+        "section_id": "A2.SS3",
+        "heading": "B.3 Datasets",
+        "text_sha256": "d97cc090614e601a64c137eb455a3bb7a326219c76587c2ade2d9c0e6eaaf4d9"
+      },
+      {
+        "index": 105,
+        "paragraph_id": "A2.I1.i2.p1.1",
+        "section_id": "A2.SS3",
+        "heading": "B.3 Datasets",
+        "text_sha256": "ab66ed4c62a410a2721d6aadd1c0d2eca0354657ee02db46d1b54bb97fd815b1"
+      },
+      {
+        "index": 106,
+        "paragraph_id": "A2.I1.i3.p1.1",
+        "section_id": "A2.SS3",
+        "heading": "B.3 Datasets",
+        "text_sha256": "118381516d9cee12a9e0d74424693b132e2792dbf03a417d6be50671ecd674a5"
+      },
+      {
+        "index": 107,
+        "paragraph_id": "A2.I1.i4.p1.1",
+        "section_id": "A2.SS3",
+        "heading": "B.3 Datasets",
+        "text_sha256": "81de8594d55e4e27a5d4e4f156f475d62002e4a4c9cb378f101e7942db88513c"
+      },
+      {
+        "index": 108,
+        "paragraph_id": "A2.I1.i5.p1.1",
+        "section_id": "A2.SS3",
+        "heading": "B.3 Datasets",
+        "text_sha256": "9cb7647a715872dba8f70426ab4448194d984cda0b273e1d84942dab850ce8c6"
+      },
+      {
+        "index": 109,
+        "paragraph_id": "A2.I1.i6.p1.1",
+        "section_id": "A2.SS3",
+        "heading": "B.3 Datasets",
+        "text_sha256": "e3ad99557a8132bd8530a9199b5f977c7706d32e66a8178e5777f198664fa67a"
+      },
+      {
+        "index": 110,
+        "paragraph_id": "A2.SS3.p2.1",
+        "section_id": "A2.SS3",
+        "heading": "B.3 Datasets",
+        "text_sha256": "e16b751e0cdea1d077286578c4eed39b5e1604d74813838f4f43dbd3f7b937ea"
+      },
+      {
+        "index": 111,
+        "paragraph_id": "A2.SS4.p1.1",
+        "section_id": "A2.SS4",
+        "heading": "B.4 Prompt Templates",
+        "text_sha256": "4b4c661066b354cc745702be5cc2723fe5d34e5c5b106a56cdc086152841a666"
+      },
+      {
+        "index": 112,
+        "paragraph_id": "A2.I2.i1.p1.1",
+        "section_id": "A2.SS4",
+        "heading": "B.4 Prompt Templates",
+        "text_sha256": "c4964ef526ba7c9e08b8274ab99ec0b9f8aa3e5573887f082d3c02d4fbbfb9d3"
+      },
+      {
+        "index": 113,
+        "paragraph_id": "A2.I2.i2.p1.1",
+        "section_id": "A2.SS4",
+        "heading": "B.4 Prompt Templates",
+        "text_sha256": "52e1c956fe3a92d0e8759d6044dca2180094da2af7e819ce7fc2d1af30a0b4a3"
+      },
+      {
+        "index": 114,
+        "paragraph_id": "A2.I2.i3.p1.1",
+        "section_id": "A2.SS4",
+        "heading": "B.4 Prompt Templates",
+        "text_sha256": "0295c728599a6ce877b3ef7e531d198d6caaf7bebf54ca96f5d452b40e680d06"
+      },
+      {
+        "index": 115,
+        "paragraph_id": "A2.I2.i4.p1.1",
+        "section_id": "A2.SS4",
+        "heading": "B.4 Prompt Templates",
+        "text_sha256": "806359565979764a484c033001d72bf623d8eb81df14486028a610cdd002a97d"
+      },
+      {
+        "index": 116,
+        "paragraph_id": "A2.F3.2",
+        "section_id": "A2.SS4",
+        "heading": "B.4 Prompt Templates",
+        "text_sha256": "9672cbaf66ddacd8c8bec8633f012d8b429726e039e5c3227df499bfe99feccf"
+      },
+      {
+        "index": 117,
+        "paragraph_id": "A2.SS5.p1.1",
+        "section_id": "A2.SS5",
+        "heading": "B.5 Baselines",
+        "text_sha256": "f902dcece30fda5e88a98f15cae0f3d3517caa6dc674cee2646655e5a76487ac"
+      },
+      {
+        "index": 118,
+        "paragraph_id": "A2.I3.i1.p1.1",
+        "section_id": "A2.SS5",
+        "heading": "B.5 Baselines",
+        "text_sha256": "c531854b8d2611176e6f5df7af219e856e6a3dfc368791454975232c7af10caa"
+      },
+      {
+        "index": 119,
+        "paragraph_id": "A2.I3.i2.p1.1",
+        "section_id": "A2.SS5",
+        "heading": "B.5 Baselines",
+        "text_sha256": "b87d8e1fe5fb7c19cc95e8af61d0821443f260b3ea7c013407df32438b0e77ce"
+      },
+      {
+        "index": 120,
+        "paragraph_id": "A2.I3.i3.p1.1",
+        "section_id": "A2.SS5",
+        "heading": "B.5 Baselines",
+        "text_sha256": "c732b395406b6b1f231eda7fdcac74a6c0af2845ea263a40a8a06f04f2bb7fc0"
+      },
+      {
+        "index": 121,
+        "paragraph_id": "A2.I3.i4.p1.1",
+        "section_id": "A2.SS5",
+        "heading": "B.5 Baselines",
+        "text_sha256": "175947de629a9d932de7fd2801e56690b941603b86e77b8baf5654194ba880b3"
+      },
+      {
+        "index": 122,
+        "paragraph_id": "A2.I3.i5.p1.1",
+        "section_id": "A2.SS5",
+        "heading": "B.5 Baselines",
+        "text_sha256": "e2b3c02166cb9bfbee3c5d09d67f81f34f23956e208924a8b981a1984a103590"
+      },
+      {
+        "index": 123,
+        "paragraph_id": "A2.I3.i6.p1.1",
+        "section_id": "A2.SS5",
+        "heading": "B.5 Baselines",
+        "text_sha256": "94964b884849337606a5a7920c0b655b4a16ebf5b65f8192057169dace6f4484"
+      },
+      {
+        "index": 124,
+        "paragraph_id": "A2.I3.i7.p1.1",
+        "section_id": "A2.SS5",
+        "heading": "B.5 Baselines",
+        "text_sha256": "cdf37b8129a4efb2c0bef3885f1ffc52cbab69452ee21de2acc5d242b339470c"
+      },
+      {
+        "index": 125,
+        "paragraph_id": "A2.I3.i8.p1.1",
+        "section_id": "A2.SS5",
+        "heading": "B.5 Baselines",
+        "text_sha256": "d41432327712968e6bf66e84c7de96e4a55f4af54195e5d63d2c5652999a941d"
+      },
+      {
+        "index": 126,
+        "paragraph_id": "A2.I3.i9.p1.1",
+        "section_id": "A2.SS5",
+        "heading": "B.5 Baselines",
+        "text_sha256": "e0ad33adfed8b534b792b84ad9c808979f48193c1dfd96cfdf4300fc5d3e8754"
+      },
+      {
+        "index": 127,
+        "paragraph_id": "A2.F4.2",
+        "section_id": "A2.SS5",
+        "heading": "B.5 Baselines",
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "index": 128,
+        "paragraph_id": "A3.p1.1",
+        "section_id": "A3",
+        "heading": "Appendix C Judge of Successful Attacks",
+        "text_sha256": "18986d7fdac15d20bfaa26a15485db2a9874f9b1cd6587d69860c54dd724c8cd"
+      },
+      {
+        "index": 129,
+        "paragraph_id": "A3.p2.1",
+        "section_id": "A3",
+        "heading": "Appendix C Judge of Successful Attacks",
+        "text_sha256": "4bb0d23c824357e289d7ddcaa056dff7f616608878f3a67af05b8b006a8558c3"
+      },
+      {
+        "index": 150,
+        "paragraph_id": "A7.p1.1",
+        "section_id": "A7",
+        "heading": "Appendix G Threshold Selection",
+        "text_sha256": "e26459f4f9383584449dda947cdaa6aa5b31d7a6aaf5c6d439cd0a00276d1355"
+      },
+      {
+        "index": 151,
+        "paragraph_id": "A7.p2.1",
+        "section_id": "A7",
+        "heading": "Appendix G Threshold Selection",
+        "text_sha256": "f8f1606777f200fae434c41116b10c62719cd3cb78ac16da3cf1ff76a411bc3a"
+      },
+      {
+        "index": 152,
+        "paragraph_id": "A7.p3.1",
+        "section_id": "A7",
+        "heading": "Appendix G Threshold Selection",
+        "text_sha256": "5b436ab59af26b34b88310b4aec8977a75abe6489ca3da828b3bdb989eb1d081"
+      },
+      {
+        "index": 153,
+        "paragraph_id": "A7.p4.1",
+        "section_id": "A7",
+        "heading": "Appendix G Threshold Selection",
+        "text_sha256": "fc97944047b0ea3acf5ee7594d8779a8e46d895f58a19165f0e3aaeb452e3c9b"
+      },
+      {
+        "index": 154,
+        "paragraph_id": "A7.p5.1",
+        "section_id": "A7",
+        "heading": "Appendix G Threshold Selection",
+        "text_sha256": "065f4c592314c91a9d8d93878a5d99f35f072463e6ab2f376dcad6dc5b80c556"
+      },
+      {
+        "index": 155,
+        "paragraph_id": "A8.p1.1",
+        "section_id": "A8",
+        "heading": "Appendix H Adaptive Adversarial and Rephrasing Attacks",
+        "text_sha256": "a0855056f359896a7657d6dd927935eac17f80ac531173dc05963418b8ef6964"
+      },
+      {
+        "index": 156,
+        "paragraph_id": "A8.p2.1",
+        "section_id": "A8",
+        "heading": "Appendix H Adaptive Adversarial and Rephrasing Attacks",
+        "text_sha256": "9f6fcb064ac969b84f19110073aa3b58b29ab49c57486b3c0251a0928385f0a2"
+      },
+      {
+        "index": 157,
+        "paragraph_id": "A9.p1.1",
+        "section_id": "A9",
+        "heading": "Appendix I Detection under Distributed Multi-Trigger Backdoor Attacks",
+        "text_sha256": "2ff1efe034eb73d7fdd01753bb8df2dcaf3854ac477a47aec733552cc0f19840"
+      },
+      {
+        "index": 158,
+        "paragraph_id": "A9.p2.1",
+        "section_id": "A9",
+        "heading": "Appendix I Detection under Distributed Multi-Trigger Backdoor Attacks",
+        "text_sha256": "439865d17b75ae3af33cb82a7c2823314ed4283cee8f55946d19735d80a5afd0"
+      },
+      {
+        "index": 159,
+        "paragraph_id": "A9.p3.1",
+        "section_id": "A9",
+        "heading": "Appendix I Detection under Distributed Multi-Trigger Backdoor Attacks",
+        "text_sha256": "69a95f02e1b90f8d0ec028442b93f443e1caa1a8809a6ce104adbbc6d41cf68b"
+      },
+      {
+        "index": 160,
+        "paragraph_id": "A9.p4.1",
+        "section_id": "A9",
+        "heading": "Appendix I Detection under Distributed Multi-Trigger Backdoor Attacks",
+        "text_sha256": "5c809058ca39b70d25c8b89d8ea0cc46828a843e61411225613cc4b0a41f8949"
+      },
+      {
+        "index": 161,
+        "paragraph_id": "A9.p5.1",
+        "section_id": "A9",
+        "heading": "Appendix I Detection under Distributed Multi-Trigger Backdoor Attacks",
+        "text_sha256": "dcc697b7f868d4bba21860cc37533bce8959477ff6bc06dee7482fb81d393d06"
+      },
+      {
+        "index": 162,
+        "paragraph_id": "A9.p6.1",
+        "section_id": "A9",
+        "heading": "Appendix I Detection under Distributed Multi-Trigger Backdoor Attacks",
+        "text_sha256": "7b8344a81b926daf395802c89f3059708177decae32339d7b3a17177e67f8376"
+      },
+      {
+        "index": 163,
+        "paragraph_id": "A10.p1.1",
+        "section_id": "A10",
+        "heading": "Appendix J Evaluation on Jailbreak Benchmarks",
+        "text_sha256": "08057a34a38816a119bd35198ba1dd6e30a089d78a8587e0dd05f86eaf208331"
+      },
+      {
+        "index": 164,
+        "paragraph_id": "A10.p2.1",
+        "section_id": "A10",
+        "heading": "Appendix J Evaluation on Jailbreak Benchmarks",
+        "text_sha256": "b44d48faf63f5eb3b6fd74adabe8ae1de7c0fcba94e1757412b0e02bdc9cebe3"
+      },
+      {
+        "index": 165,
+        "paragraph_id": "A10.p3.1",
+        "section_id": "A10",
+        "heading": "Appendix J Evaluation on Jailbreak Benchmarks",
+        "text_sha256": "70362d2a9aacb3ebcb33156fc8ae0df88dca4f9bea64ca6499ca34f7b1a4ff0b"
+      },
+      {
+        "index": 178,
+        "paragraph_id": "A13.p1.1",
+        "section_id": "A13",
+        "heading": "Appendix M Ablation Study",
+        "text_sha256": "6a49abdadd2d559a25a3f92dba75f74077474f94f5d9316fe1daaeeab396cd64"
+      },
+      {
+        "index": 179,
+        "paragraph_id": "A13.SS1.p1.1",
+        "section_id": "A13.SS1",
+        "heading": "M.1 Number of Masked Prompts",
+        "text_sha256": "b814d3b8981dd5bb9921eafce3370a96b8c640cbb3ec394fa2da412932e13235"
+      },
+      {
+        "index": 180,
+        "paragraph_id": "A13.SS2.p1.1",
+        "section_id": "A13.SS2",
+        "heading": "M.2 Number of Masks per Prompt",
+        "text_sha256": "fb10233d14b5d2de856368c7315363ff895f15be9771ce03001d8a17b5b92b61"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual main41-50 defines masking-induced base-generation logit shifts, and single-forward batching replays base tokens into masked rows. First-step logits and later generated-prefix dependence are distinguished.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main42-50 verifies the suspicion score and generated-prefix/logit procedure. The first streaming step computes logits from base/masked prompts, then chooses tokens; subsequent steps use the base generated prefix and aggregate generated positions. The packet is approved in that documented sense, not as requiring a complete final task answer before any score. Main70 verifies controlled GSM8K trigger/refusal trials; Appendix155-165/178-180 verifies adaptive/distributed/jailbreak/masking conditions.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual118 explicitly inputs only clean/poisoned prompt text to PromptGuard without generated output;119 defines ONION word-removal perplexity on prompt text. Neither requires the original protected answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual116 and120-124 includes prompt and generation in Llama-Guard/Granite/prompted-LLM/Moderation inputs. Generated protected text is part of those evaluated comparator units.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[3]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual125 defines RAP loss/probability perturbation under official code, with generation dependency not expanded beyond the source;126 explicitly compares perturbed generated replies/refusal keywords for SmoothLLM.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual112-115 prints English task templates, while111 uses original PI/Jailbreak dataset text unchanged. These templates and dataset names do not establish all evaluated-item language composition.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False retains full attack-generation/main setup and other appendix context omissions. Source128-129 selects successful attacks using target-generated replies for evaluation construction; this is kept distinct from standalone comparator inference dependency. No complete arm inventory or global absence is inferred.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

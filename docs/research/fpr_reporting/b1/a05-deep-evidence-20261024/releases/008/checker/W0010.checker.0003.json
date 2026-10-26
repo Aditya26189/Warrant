@@ -1,0 +1,1347 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0010",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T12:06:46.213958+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0010.provider.0003.json",
+  "provider_packet_sha256": "4a990c1388b52131adfa2accedfa7ad876b3057f10b1f8f1f527dbccc39e212c",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2405.12750v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\b84e7e1ad84634aa2c31198f9c5eb871e14f4817b0d10da6f7b6358060b6d93b",
+    "raw_sha256": "b84e7e1ad84634aa2c31198f9c5eb871e14f4817b0d10da6f7b6358060b6d93b",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0033.json",
+    "acquisition_receipt_sha256": "c7dea50da8914b38be0365132babb76c74266cd80ca1422433798d6aae974f34",
+    "captured_version_id": "arxiv:2405.12750v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        1,
+        8
+      ],
+      [
+        16,
+        23
+      ],
+      [
+        79,
+        120
+      ],
+      [
+        135,
+        154
+      ],
+      [
+        167,
+        267
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "The review explicitly includes original comparison sections: main contribution18 states cybersecurity-dataset evaluation; V-B142 defines hardware-code bug and CWE judgments; V-C145 defines CyberMetric question-answer comparisons. Pure review framing alone would omit these evaluated families. True is verified for the review's declared original comparison-family inventory after actual V-B/V-C method checks, introduction scope16-23, full application-review context79-120, code-vulnerability attribution167-173, and main mitigation/deployment/evaluation guidance174-267. Reviewed external studies and prospective guidance are kept separate from the paper's own hardware/CyberMetric comparisons. No appendix is present in this exact source. Internal table performance cells are withheld.",
+    "visual_check": null,
+    "locator_sha256": "550f6aae624aaf211b71630ead57845966945b1c919259f39e13eead7801c4d8",
+    "locators": [
+      {
+        "index": 1,
+        "paragraph_id": "abstract1.1",
+        "section_id": null,
+        "heading": "Generative AI in Cybersecurity: A Comprehensive Review of LLM Applications and Vulnerabilities",
+        "text_sha256": "7431eb1971579ca3dfc1de70c7b367e1299998b5bddc293e5786fa5a3dace8f8"
+      },
+      {
+        "index": 2,
+        "paragraph_id": "S1.p1.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "05605dd70b46f6857e3f3195d99c702fc04191bace7e75caf12190d884473acf"
+      },
+      {
+        "index": 3,
+        "paragraph_id": "S1.p2.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "7ae01e827ef340761612f9267636cfd473899f8c3a9523f6f95579515f69a2ff"
+      },
+      {
+        "index": 4,
+        "paragraph_id": "S1.p3.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "167222c9220b421895a157a3cf04a74bcd529d33c0c8cdc985cac9331b089550"
+      },
+      {
+        "index": 5,
+        "paragraph_id": "S1.I1.i1.p1.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "404cef1e5dd98f2e0ff54b355fc444f4491a3fe86c72ea18cf0369b1a839b146"
+      },
+      {
+        "index": 6,
+        "paragraph_id": "S1.I1.i2.p1.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "fe6f58e429206845830f4da7840b2508aa6e6b43e5ef596e132fac3e75cf3e7e"
+      },
+      {
+        "index": 7,
+        "paragraph_id": "S1.I1.i3.p1.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "b30b2f5a5e65374d41789be57e0decb4a5bbb8e1b6930e54f4538a147a2fbaae"
+      },
+      {
+        "index": 8,
+        "paragraph_id": "S1.I1.i4.p1.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "58c12426c9f11ef5e3fe9662c16230affa2af80526aa12c2d6a202a00bafb25b"
+      },
+      {
+        "index": 16,
+        "paragraph_id": "S1.I2.i2.p1.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "c21ab8eb9c64a3e4942b6de80467923a70d6e8eea78f51e10a0a9d9de5759afc"
+      },
+      {
+        "index": 17,
+        "paragraph_id": "S1.I2.i3.p1.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "584cf196a2315bd5201d75060689942f38fa07af6234a0d687c5b456edd850a2"
+      },
+      {
+        "index": 18,
+        "paragraph_id": "S1.I2.i4.p1.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "f85b2e540bba7f8a7dd6c1496371c26b87ae4ae3a09a2c09ee816f900f660cd2"
+      },
+      {
+        "index": 19,
+        "paragraph_id": "S1.I2.i5.p1.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "d36ceb0c278620b5bbeb788e469ad19db1741fa890d94c185a626f8d8cdc0c95"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S1.I2.i6.p1.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "28aedd4558c7417df1b70d7ccc232b0c5b72c03cac3d32728dff3e4bab07557c"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S1.I2.i7.p1.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "6cb7bd60a67e251d05989a043aca7451a1b83db1bd1b82535f3f5367df27766a"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S1.p7.1",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "9021d80b89e2b4f9330cc550ce1788fb465340a3d444d55d94045c9b4324d2ce"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S1.T1.3",
+        "section_id": "S1",
+        "heading": "I Introduction",
+        "text_sha256": "7b45ff99d81a73eaece977ac955f53ac975c9263f32ee925347f4882194d1af2"
+      },
+      {
+        "index": 79,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "IV LLMs-based models for Cyber Security",
+        "text_sha256": "5dcc8e8505a2295dcd91a89f2c673f9a245eeadb497ffa4bcb52a504a89b450f"
+      },
+      {
+        "index": 80,
+        "paragraph_id": "S4.SS1.SSS1.p1.1",
+        "section_id": "S4.SS1.SSS1",
+        "heading": "IV-A 1 Intrusion Detection",
+        "text_sha256": "2e3d5f5a12492eb5dae01070f2060aa53065481f146a129fd71bcddd4a6fca6f"
+      },
+      {
+        "index": 81,
+        "paragraph_id": "S4.SS1.SSS1.p2.1",
+        "section_id": "S4.SS1.SSS1",
+        "heading": "IV-A 1 Intrusion Detection",
+        "text_sha256": "b5d8ce459dfc548a9091a89afd0ac1cd593ea01c4c901b5c8474ccdcc0a821d5"
+      },
+      {
+        "index": 82,
+        "paragraph_id": "S4.SS1.SSS1.p3.1",
+        "section_id": "S4.SS1.SSS1",
+        "heading": "IV-A 1 Intrusion Detection",
+        "text_sha256": "575fb4fb4bd79d7c93970575946ab783565fa947cbdbce84741140077492f695"
+      },
+      {
+        "index": 83,
+        "paragraph_id": "S4.SS1.SSS1.p4.1",
+        "section_id": "S4.SS1.SSS1",
+        "heading": "IV-A 1 Intrusion Detection",
+        "text_sha256": "f630aa7aa3a4251c48c3ba9f06d40698fb0666dd5af490682eab86b6dc60d1d1"
+      },
+      {
+        "index": 84,
+        "paragraph_id": "S4.SS1.SSS2.p1.1",
+        "section_id": "S4.SS1.SSS2",
+        "heading": "IV-A 2 Software Security",
+        "text_sha256": "e50b102a32880d6770cdc17300007e26177ac6aa34228ba7ba77d6f44810bfc6"
+      },
+      {
+        "index": 85,
+        "paragraph_id": "S4.SS1.SSS3.p1.1",
+        "section_id": "S4.SS1.SSS3",
+        "heading": "IV-A 3 Detection of Deepfake Videos",
+        "text_sha256": "ed9718604f31df80aec503acbc184159ca2a23ad44c1634f1b67bd7453f98bee"
+      },
+      {
+        "index": 86,
+        "paragraph_id": "S4.SS1.SSS3.p2.1",
+        "section_id": "S4.SS1.SSS3",
+        "heading": "IV-A 3 Detection of Deepfake Videos",
+        "text_sha256": "7ce2042b9fbe9592c394a31d8128fb55aa41a78fe082779d324e8fe538921b01"
+      },
+      {
+        "index": 87,
+        "paragraph_id": "S4.SS2.SSS1.p1.1",
+        "section_id": "S4.SS2.SSS1",
+        "heading": "IV-B 1 Cloud Threat Forensics",
+        "text_sha256": "2ed82a55e8d9ebf0088c42bd5426d2d31acfb27fcbd366166e85ba09311c29d5"
+      },
+      {
+        "index": 88,
+        "paragraph_id": "S4.SS2.SSS1.p2.1",
+        "section_id": "S4.SS2.SSS1",
+        "heading": "IV-B 1 Cloud Threat Forensics",
+        "text_sha256": "68130ecbdf9df5d97a482aec8e3dfc51900b1cd881623ad50dfc328f6c98d4f5"
+      },
+      {
+        "index": 89,
+        "paragraph_id": "S4.SS2.SSS2.p1.1",
+        "section_id": "S4.SS2.SSS2",
+        "heading": "IV-B 2 Malware classification",
+        "text_sha256": "bd596500ccc872765bf2b1107706ea7a98f427c1407ba019221ff0d2296288d5"
+      },
+      {
+        "index": 90,
+        "paragraph_id": "S4.SS2.SSS2.p2.1",
+        "section_id": "S4.SS2.SSS2",
+        "heading": "IV-B 2 Malware classification",
+        "text_sha256": "6a8591931ea621cd838a5e89c9b814fc0d63e704ff954774163daad31e4ee538"
+      },
+      {
+        "index": 91,
+        "paragraph_id": "S4.SS2.SSS2.p3.1",
+        "section_id": "S4.SS2.SSS2",
+        "heading": "IV-B 2 Malware classification",
+        "text_sha256": "008b4ece1ff3c89a3768fffb9213a6e665c77577812510d1d8d4bbeb137afc88"
+      },
+      {
+        "index": 92,
+        "paragraph_id": "S4.SS2.SSS3.p1.1",
+        "section_id": "S4.SS2.SSS3",
+        "heading": "IV-B 3 Intrusion Detection",
+        "text_sha256": "88bf5ec245ff28af0dc4a57265c30ab45752a6579394b519b1f84a193f563a38"
+      },
+      {
+        "index": 93,
+        "paragraph_id": "S4.SS2.SSS4.p1.1",
+        "section_id": "S4.SS2.SSS4",
+        "heading": "IV-B 4 Software Vulnerability Detection",
+        "text_sha256": "a9e293001634f3d74bc58b95de34b2d3a0e4e193add13fa4ea890b882b4095c4"
+      },
+      {
+        "index": 94,
+        "paragraph_id": "S4.SS2.SSS4.p2.1",
+        "section_id": "S4.SS2.SSS4",
+        "heading": "IV-B 4 Software Vulnerability Detection",
+        "text_sha256": "33d6e052d5744ec2c60bd31ca549b49c04dfe81033c56db8fd0cc5294e547165"
+      },
+      {
+        "index": 95,
+        "paragraph_id": "S4.SS2.SSS4.p3.1",
+        "section_id": "S4.SS2.SSS4",
+        "heading": "IV-B 4 Software Vulnerability Detection",
+        "text_sha256": "60a71f6ed7bed9f94afab80250663e21370bb7a23b3681384de96edc91331d67"
+      },
+      {
+        "index": 96,
+        "paragraph_id": "S4.SS2.SSS4.p4.1",
+        "section_id": "S4.SS2.SSS4",
+        "heading": "IV-B 4 Software Vulnerability Detection",
+        "text_sha256": "3c62df27058fd088735e22fcf7b27a11dd4a4b5e1727845eae5ac6b374245fc0"
+      },
+      {
+        "index": 97,
+        "paragraph_id": "S4.SS2.SSS4.p5.1",
+        "section_id": "S4.SS2.SSS4",
+        "heading": "IV-B 4 Software Vulnerability Detection",
+        "text_sha256": "b2dbe44390a82970119ff9b7cbd53f166b2a82b335a085a5f9efc11605d323d2"
+      },
+      {
+        "index": 98,
+        "paragraph_id": "S4.SS2.SSS4.p6.1",
+        "section_id": "S4.SS2.SSS4",
+        "heading": "IV-B 4 Software Vulnerability Detection",
+        "text_sha256": "1b722b86cca9ebdccb22ad3854acfa76e3cd84d76c9ceea823f14f489c038e42"
+      },
+      {
+        "index": 99,
+        "paragraph_id": "S4.SS2.SSS4.p7.1",
+        "section_id": "S4.SS2.SSS4",
+        "heading": "IV-B 4 Software Vulnerability Detection",
+        "text_sha256": "10974b8af7aa0397f836672596a88a9a8431bfdc31dc9e1e226ac968ae4a419f"
+      },
+      {
+        "index": 100,
+        "paragraph_id": "S4.SS2.SSS5.p1.1",
+        "section_id": "S4.SS2.SSS5",
+        "heading": "IV-B 5 Cyber Threat Intelligence",
+        "text_sha256": "e64aec9ee1381f4b2efcc83378ce361c7491ddc7fc80f8b9c6361bf4d8812c95"
+      },
+      {
+        "index": 101,
+        "paragraph_id": "S4.SS2.SSS5.p2.1",
+        "section_id": "S4.SS2.SSS5",
+        "heading": "IV-B 5 Cyber Threat Intelligence",
+        "text_sha256": "055e85bbb666d4224dae7935762cda86e75b414493ff9090d18cc0cb64004d48"
+      },
+      {
+        "index": 102,
+        "paragraph_id": "S4.SS2.SSS6.p1.1",
+        "section_id": "S4.SS2.SSS6",
+        "heading": "IV-B 6 Phishing and spam detection",
+        "text_sha256": "cd44b33383050fbf301dcffb6e2fd48b605ddb27b94a1972ee29cce3b3eb59d1"
+      },
+      {
+        "index": 103,
+        "paragraph_id": "S4.SS2.SSS6.p2.1",
+        "section_id": "S4.SS2.SSS6",
+        "heading": "IV-B 6 Phishing and spam detection",
+        "text_sha256": "d3569328bddf845333142f5e14a78d76abbf0fca98c66e46276d36f2e20bd52e"
+      },
+      {
+        "index": 104,
+        "paragraph_id": "S4.SS2.SSS6.p3.1",
+        "section_id": "S4.SS2.SSS6",
+        "heading": "IV-B 6 Phishing and spam detection",
+        "text_sha256": "22d8024fdc8270e6df9c5b4c2bb4197101842738bbaeb2d7e435266f7a9e9ccf"
+      },
+      {
+        "index": 105,
+        "paragraph_id": "S4.SS2.SSS6.p4.1",
+        "section_id": "S4.SS2.SSS6",
+        "heading": "IV-B 6 Phishing and spam detection",
+        "text_sha256": "7ccf16d008d0e03ddb8e61b63e18f30b22df3e09dcfdb6378884526242e87c80"
+      },
+      {
+        "index": 106,
+        "paragraph_id": "S4.SS2.SSS7.p1.1",
+        "section_id": "S4.SS2.SSS7",
+        "heading": "IV-B 7 Hardware Security Evaluation",
+        "text_sha256": "c17346d939390faf3dd28651abede5adb0bb9e0a09958e4a57ea177f6052f29f"
+      },
+      {
+        "index": 107,
+        "paragraph_id": "S4.SS2.SSS7.p2.1",
+        "section_id": "S4.SS2.SSS7",
+        "heading": "IV-B 7 Hardware Security Evaluation",
+        "text_sha256": "bebfae29b0484c4628e14ca77cbe25b2355bbdb7a8c1784909a55defa76ac919"
+      },
+      {
+        "index": 108,
+        "paragraph_id": "S4.SS2.SSS7.p3.1",
+        "section_id": "S4.SS2.SSS7",
+        "heading": "IV-B 7 Hardware Security Evaluation",
+        "text_sha256": "4a9c24e1a66bdb885e9cdffe01f79a16efc4aaea023a267b380dcf5228494af0"
+      },
+      {
+        "index": 109,
+        "paragraph_id": "S4.SS2.SSS7.p4.1",
+        "section_id": "S4.SS2.SSS7",
+        "heading": "IV-B 7 Hardware Security Evaluation",
+        "text_sha256": "e4e7fb4dc8b8c445549aa4783cb8d047a0d362ae3f214b8feb4a8aece2e19e41"
+      },
+      {
+        "index": 110,
+        "paragraph_id": "S4.SS2.SSS7.p5.1",
+        "section_id": "S4.SS2.SSS7",
+        "heading": "IV-B 7 Hardware Security Evaluation",
+        "text_sha256": "1828bc266b30ff72f0611f01ed09ad906928356723487bd391b78f4aadf90ca9"
+      },
+      {
+        "index": 111,
+        "paragraph_id": "S4.SS2.SSS7.p6.1",
+        "section_id": "S4.SS2.SSS7",
+        "heading": "IV-B 7 Hardware Security Evaluation",
+        "text_sha256": "2f744ce577d1efdcc7c2b3d0ffcd456b184e94ce1c068fa6cd0f2c1b37442b9e"
+      },
+      {
+        "index": 112,
+        "paragraph_id": "S4.SS2.SSS8.p1.1",
+        "section_id": "S4.SS2.SSS8",
+        "heading": "IV-B 8 Hardware design & Verification",
+        "text_sha256": "05af4433846314e870bbad076201ee64df23e13e828e9428a130685af617ff71"
+      },
+      {
+        "index": 113,
+        "paragraph_id": "S4.SS2.SSS8.p2.1",
+        "section_id": "S4.SS2.SSS8",
+        "heading": "IV-B 8 Hardware design & Verification",
+        "text_sha256": "8921a3d2833d29d4260560ea092ced0e94c66c03caff08bfbe3080e9b71e11b5"
+      },
+      {
+        "index": 114,
+        "paragraph_id": "S4.SS2.SSS9.p1.1",
+        "section_id": "S4.SS2.SSS9",
+        "heading": "IV-B 9 Protocols verification",
+        "text_sha256": "fb1403a6c1370888102921030d21187a435d6f9afdfdaae8fa9dc92bd009d21c"
+      },
+      {
+        "index": 115,
+        "paragraph_id": "S4.SS2.SSS9.p2.1",
+        "section_id": "S4.SS2.SSS9",
+        "heading": "IV-B 9 Protocols verification",
+        "text_sha256": "7586585708d9a6bd87087eebe2954da97c0efd086b3354df9bb3a27757741979"
+      },
+      {
+        "index": 116,
+        "paragraph_id": "S4.SS2.SSS9.p3.1",
+        "section_id": "S4.SS2.SSS9",
+        "heading": "IV-B 9 Protocols verification",
+        "text_sha256": "5223150957d0f59e83794971ac37af592345d39ee58a6e4f225d86895f5c10b7"
+      },
+      {
+        "index": 117,
+        "paragraph_id": "S4.SS2.SSS9.p4.1",
+        "section_id": "S4.SS2.SSS9",
+        "heading": "IV-B 9 Protocols verification",
+        "text_sha256": "fa48bdddc3377aa5bb024ffb58e1b9c83bfcb5858f8889e994d99d89fb0e4466"
+      },
+      {
+        "index": 118,
+        "paragraph_id": "S4.SS2.SSS9.p5.1",
+        "section_id": "S4.SS2.SSS9",
+        "heading": "IV-B 9 Protocols verification",
+        "text_sha256": "c46ad28723edd16154e16a80a2139ac866309da69e69bbd94160612318244ab7"
+      },
+      {
+        "index": 119,
+        "paragraph_id": "S4.SS2.SSS9.p6.1",
+        "section_id": "S4.SS2.SSS9",
+        "heading": "IV-B 9 Protocols verification",
+        "text_sha256": "d6638fbc06b1284682ac46744323a7665a199e2b03946d99520c72feb6e7ec3c"
+      },
+      {
+        "index": 120,
+        "paragraph_id": "S4.SS2.SSS10.p1.1",
+        "section_id": "S4.SS2.SSS10",
+        "heading": "IV-B 10 Blockchain Security",
+        "text_sha256": "ba57f56025f4b3e8d9cb13409b97b444ec8fbfe995e12734ec1d5c45e6849281"
+      },
+      {
+        "index": 135,
+        "paragraph_id": "S5.SS1.SSS14.p1.1",
+        "section_id": "S5.SS1.SSS14",
+        "heading": "V-A 14 LLaMA2",
+        "text_sha256": "e9f233c7ec641171e78c357dc2de9483858c9b64063363c50ee4c64e248bdd30"
+      },
+      {
+        "index": 136,
+        "paragraph_id": "S5.SS1.SSS15.p1.1",
+        "section_id": "S5.SS1.SSS15",
+        "heading": "V-A 15 GShard",
+        "text_sha256": "4cd8b11a8f540344785198d68a431d533ef2d9181571c6104d906da3f63394f0"
+      },
+      {
+        "index": 137,
+        "paragraph_id": "S5.SS1.SSS16.p1.1",
+        "section_id": "S5.SS1.SSS16",
+        "heading": "V-A 16 ELECTRA",
+        "text_sha256": "4cd386123a2346838d67cd2fb0d740c5ffdd5eac9bbe258b67210ba4007d8a82"
+      },
+      {
+        "index": 138,
+        "paragraph_id": "S5.SS1.SSS17.p1.1",
+        "section_id": "S5.SS1.SSS17",
+        "heading": "V-A 17 MPT-30B",
+        "text_sha256": "fe0cb2a4cd86b670cc0f58e0899facdacf30436cf352f00a2733ddfd60cb1865"
+      },
+      {
+        "index": 139,
+        "paragraph_id": "S5.SS1.SSS18.p1.1",
+        "section_id": "S5.SS1.SSS18",
+        "heading": "V-A 18 Yi-34B",
+        "text_sha256": "0ca83abf97ecdc6c02f36ce347ce8e71b7e2ddfc2415c73d006f963cb3a30b6b"
+      },
+      {
+        "index": 140,
+        "paragraph_id": "S5.SS1.SSS19.p1.1",
+        "section_id": "S5.SS1.SSS19",
+        "heading": "V-A 19 Falcon2-11B",
+        "text_sha256": "7b8f8f9ce16935d63e59b7e43caa276f723a1e533bc4efd5f18e2ff4f3545741"
+      },
+      {
+        "index": 141,
+        "paragraph_id": "S5.T8.3",
+        "section_id": "S5.SS1.SSS19",
+        "heading": "V-A 19 Falcon2-11B",
+        "text_sha256": "525636acf8c1da47acfbb777da1243b3e7888fb63c42f95fd1bde73dfb81e2f8"
+      },
+      {
+        "index": 142,
+        "paragraph_id": "S5.SS2.p1.1",
+        "section_id": "S5.SS2",
+        "heading": "V-B LLMs performance in the hardware cybersecurity",
+        "text_sha256": "6ae22b59ad4e87cdbbfcdd1a3446354b7279b7a5ee83739ef5daf92c2441a311"
+      },
+      {
+        "index": 143,
+        "paragraph_id": "S5.SS2.p2.1",
+        "section_id": "S5.SS2",
+        "heading": "V-B LLMs performance in the hardware cybersecurity",
+        "text_sha256": "5fdb387ec08ddaecbdf80cd8da1b8601f1f5d82330ca231b868d972ed3b71833"
+      },
+      {
+        "index": 144,
+        "paragraph_id": "S5.SS2.p3.1",
+        "section_id": "S5.SS2",
+        "heading": "V-B LLMs performance in the hardware cybersecurity",
+        "text_sha256": "0870689cb81d962ccbe42a64104bf4ba5315aaf77e0704752690ee5f0acbe571"
+      },
+      {
+        "index": 145,
+        "paragraph_id": "S5.SS3.p1.1",
+        "section_id": "S5.SS3",
+        "heading": "V-C LLMs performance in the cybersecurity knowledge",
+        "text_sha256": "a3239c10bb1fe22d99373a8abb195f114b34c941869fb67c661d3bd300c27630"
+      },
+      {
+        "index": 146,
+        "paragraph_id": "S5.SS3.p2.1",
+        "section_id": "S5.SS3",
+        "heading": "V-C LLMs performance in the cybersecurity knowledge",
+        "text_sha256": "8613d0897541e8e20eab3df42f805250382c6cedb23066eeb5e2afd4763d9ac1"
+      },
+      {
+        "index": 147,
+        "paragraph_id": "S5.SS3.p3.1",
+        "section_id": "S5.SS3",
+        "heading": "V-C LLMs performance in the cybersecurity knowledge",
+        "text_sha256": "9e16155f0fc186b19fc7114f2fa704c1568be64bfae97e7fc3aa5ea3c7057b09"
+      },
+      {
+        "index": 148,
+        "paragraph_id": "S5.SS3.p4.1",
+        "section_id": "S5.SS3",
+        "heading": "V-C LLMs performance in the cybersecurity knowledge",
+        "text_sha256": "334c4d86f9c26c19311030898ec606e873408754e003605d7cfb8e5216e3ad69"
+      },
+      {
+        "index": 149,
+        "paragraph_id": "S5.SS3.p5.1",
+        "section_id": "S5.SS3",
+        "heading": "V-C LLMs performance in the cybersecurity knowledge",
+        "text_sha256": "dfc41f365ba0ad04d2089a2e1337d9af71e4200b142e80cccaa51e402507458d"
+      },
+      {
+        "index": 150,
+        "paragraph_id": "S5.SS3.p6.1",
+        "section_id": "S5.SS3",
+        "heading": "V-C LLMs performance in the cybersecurity knowledge",
+        "text_sha256": "5157dccca4ad7182def93a1778f3b4fa97b3cca774085c8ed8f5a415b5abfe9c"
+      },
+      {
+        "index": 151,
+        "paragraph_id": "S6.p1.1",
+        "section_id": "S6",
+        "heading": "VI Code-specific LLMs",
+        "text_sha256": "374f950fe2d488f60dee07a7a37202379f95f734eae55223dc068b3deafbe9bd"
+      },
+      {
+        "index": 152,
+        "paragraph_id": "S6.SS1.SSS1.p1.1",
+        "section_id": "S6.SS1.SSS1",
+        "heading": "VI-A 1 SantaCoder",
+        "text_sha256": "41a6f575494a1ae1a621d31039b2eb18a213029b5e640e1b563dc1e9891657ca"
+      },
+      {
+        "index": 153,
+        "paragraph_id": "S6.SS1.SSS2.p1.1",
+        "section_id": "S6.SS1.SSS2",
+        "heading": "VI-A 2 StarCoder",
+        "text_sha256": "4e4a638d0c0a0ba8a30db435f86c7c71b4b8796139821ca036752a4ed6ecaf2d"
+      },
+      {
+        "index": 154,
+        "paragraph_id": "S6.SS1.SSS3.p1.1",
+        "section_id": "S6.SS1.SSS3",
+        "heading": "VI-A 3 StarChat-Alpha",
+        "text_sha256": "86a36a015122ca59168665e2d14de0ae283c88544e1892fbae30498717cc1c47"
+      },
+      {
+        "index": 167,
+        "paragraph_id": "S6.SS2.p1.1",
+        "section_id": "S6.SS2",
+        "heading": "VI-B Datasets Development for Code-centric LLM Models",
+        "text_sha256": "fa7e731400cc9a4b68a07bddaadf5e9e787cc832104a02d09b7945f320a00158"
+      },
+      {
+        "index": 168,
+        "paragraph_id": "S6.SS2.p2.1",
+        "section_id": "S6.SS2",
+        "heading": "VI-B Datasets Development for Code-centric LLM Models",
+        "text_sha256": "03e782824908c97c0ddb9cdd65b0baba61605076d1798fe3f9b8f21ce64141ec"
+      },
+      {
+        "index": 169,
+        "paragraph_id": "S6.SS3.p1.1",
+        "section_id": "S6.SS3",
+        "heading": "VI-C Vulnerabilities Analysis of LLM-Generated Code",
+        "text_sha256": "cd8d666129b9ee80e7fdf6196a409c00b4a896a6a5e566f272605e108d6633ac"
+      },
+      {
+        "index": 170,
+        "paragraph_id": "S6.SS3.p2.1",
+        "section_id": "S6.SS3",
+        "heading": "VI-C Vulnerabilities Analysis of LLM-Generated Code",
+        "text_sha256": "daa21343377cfe9caa1a13917ad08d8d0c0acd53e2f364901ecfd16076be6910"
+      },
+      {
+        "index": 171,
+        "paragraph_id": "S6.SS3.p3.1",
+        "section_id": "S6.SS3",
+        "heading": "VI-C Vulnerabilities Analysis of LLM-Generated Code",
+        "text_sha256": "e783faf30cc14d05dd13f07ed27c56c23dc33c903913501a8edb4353d23e94af"
+      },
+      {
+        "index": 172,
+        "paragraph_id": "S6.SS3.p4.1",
+        "section_id": "S6.SS3",
+        "heading": "VI-C Vulnerabilities Analysis of LLM-Generated Code",
+        "text_sha256": "b6c205af5a3af0a441a69146183331f5a41c6b210d84881abf0816d2f35a4cd9"
+      },
+      {
+        "index": 173,
+        "paragraph_id": "S6.SS3.p5.1",
+        "section_id": "S6.SS3",
+        "heading": "VI-C Vulnerabilities Analysis of LLM-Generated Code",
+        "text_sha256": "00eb89875b5f717d508d9a9194019c253e5b8d84ce25838f7493cdfee8cfd62d"
+      },
+      {
+        "index": 174,
+        "paragraph_id": "S7.SS1.p1.1",
+        "section_id": "S7.SS1",
+        "heading": "VII-A Cyber Security Dataset Lifecycle",
+        "text_sha256": "d8e91dc418d838763ba0fb26c0fb9f862115cfa0d7871f301351187717210c6f"
+      },
+      {
+        "index": 175,
+        "paragraph_id": "S7.SS1.SSS1.p1.1",
+        "section_id": "S7.SS1.SSS1",
+        "heading": "VII-A 1 Define Objectives",
+        "text_sha256": "7c503e8825c86b8acde315a01b398a682bc2fc4f003ad5bcb9ee034008aa9e50"
+      },
+      {
+        "index": 176,
+        "paragraph_id": "S7.SS1.SSS2.p1.1",
+        "section_id": "S7.SS1.SSS2",
+        "heading": "VII-A 2 Scope and Content Gathering",
+        "text_sha256": "75c9e2607851c3818c432d53ae82486984106313c8211de3a90803d60e7f7c22"
+      },
+      {
+        "index": 177,
+        "paragraph_id": "S7.SS1.SSS3.p1.1",
+        "section_id": "S7.SS1.SSS3",
+        "heading": "VII-A 3 Data Cleaning and Preprocessing",
+        "text_sha256": "6560049672fcdd94aba0eb046a954640b075209974bf7d9a1866bfb58a945ad3"
+      },
+      {
+        "index": 178,
+        "paragraph_id": "S7.SS1.SSS4.p1.1",
+        "section_id": "S7.SS1.SSS4",
+        "heading": "VII-A 4 Annotation and Labeling",
+        "text_sha256": "bf49a06b58c2371016fe44fd1b453642a1a892656266529818fe8d8feea89961"
+      },
+      {
+        "index": 179,
+        "paragraph_id": "S7.SS2.p1.1",
+        "section_id": "S7.SS2",
+        "heading": "VII-B Software Cyber Security datasets",
+        "text_sha256": "85bda4ac5281957a331c7802f1d9a2c3f063f502f15bec9ca88a852dcca70b5a"
+      },
+      {
+        "index": 180,
+        "paragraph_id": "S7.SS2.SSS1.p1.1",
+        "section_id": "S7.SS2.SSS1",
+        "heading": "VII-B 1 Sate IV - Juliet dataset",
+        "text_sha256": "d8f2f376e029f3cf806fd2347d070dd2639615f62919ff706d94fd5ce7b3577f"
+      },
+      {
+        "index": 181,
+        "paragraph_id": "S7.SS2.SSS2.p1.1",
+        "section_id": "S7.SS2.SSS2",
+        "heading": "VII-B 2 Draper dataset",
+        "text_sha256": "381306292ca348086d11d4411129026bdc0fac08ceea7412e02733a907fe991d"
+      },
+      {
+        "index": 182,
+        "paragraph_id": "S7.SS2.SSS3.p1.1",
+        "section_id": "S7.SS2.SSS3",
+        "heading": "VII-B 3 Reveal dataset",
+        "text_sha256": "369d52772ed1732c7a04c82464944ed0694922d37dc89ddc1786da409361e84d"
+      },
+      {
+        "index": 183,
+        "paragraph_id": "S7.SS2.SSS4.p1.1",
+        "section_id": "S7.SS2.SSS4",
+        "heading": "VII-B 4 Devign dataset",
+        "text_sha256": "097e527bd15be827b312b3b5eb403ec609ec3de5821a95aab3598ffaa60c3b02"
+      },
+      {
+        "index": 184,
+        "paragraph_id": "S7.SS2.SSS5.p1.1",
+        "section_id": "S7.SS2.SSS5",
+        "heading": "VII-B 5 VUDENC",
+        "text_sha256": "1b0db2649d174c14174496f048364eb3f915caa30ed9f63c5da70349388b2645"
+      },
+      {
+        "index": 185,
+        "paragraph_id": "S7.SS2.SSS6.p1.1",
+        "section_id": "S7.SS2.SSS6",
+        "heading": "VII-B 6 BigVul dataset",
+        "text_sha256": "8a82ce1603798d6a0eaa2eb23694d0d2ace8bcf1addd6034e90c570b7a7c4cde"
+      },
+      {
+        "index": 186,
+        "paragraph_id": "S7.SS2.SSS7.p1.1",
+        "section_id": "S7.SS2.SSS7",
+        "heading": "VII-B 7 D2A dataset",
+        "text_sha256": "3a6e054e35d59d63624696be8115413e9e09d33b9b83c51608240589540f0bdb"
+      },
+      {
+        "index": 187,
+        "paragraph_id": "S7.SS2.SSS8.p1.1",
+        "section_id": "S7.SS2.SSS8",
+        "heading": "VII-B 8 CVEfixes",
+        "text_sha256": "25a84c73742cef4cdb18af1e93250976f3f6cebe0ee5d0aa512260d184b7653a"
+      },
+      {
+        "index": 188,
+        "paragraph_id": "S7.SS2.SSS9.p1.1",
+        "section_id": "S7.SS2.SSS9",
+        "heading": "VII-B 9 CrossVul",
+        "text_sha256": "aaa50388164f162cc203c605229a051c5717d4548c6d9cdfb65992c662982ecc"
+      },
+      {
+        "index": 189,
+        "paragraph_id": "S7.SS2.SSS10.p1.1",
+        "section_id": "S7.SS2.SSS10",
+        "heading": "VII-B 10 SySeVR dataset",
+        "text_sha256": "6a3c4af2bd54308d25b851e9e79c5d34a897055fb2d806b6b84278e65eb70dcb"
+      },
+      {
+        "index": 190,
+        "paragraph_id": "S7.SS2.SSS11.p1.1",
+        "section_id": "S7.SS2.SSS11",
+        "heading": "VII-B 11 DiverseVul dataset",
+        "text_sha256": "572aa81932a9fb63c962a89e9283b2106453257932365d0a83f06a9ed9b3ec25"
+      },
+      {
+        "index": 191,
+        "paragraph_id": "S7.SS2.SSS12.p1.1",
+        "section_id": "S7.SS2.SSS12",
+        "heading": "VII-B 12 FormAI dataset",
+        "text_sha256": "d72224d76a07328568aa7eeca7bda429fc97afe01bd7cc10551ff5fb7171bdde"
+      },
+      {
+        "index": 192,
+        "paragraph_id": "S7.SS2.SSS13.p1.1",
+        "section_id": "S7.SS2.SSS13",
+        "heading": "VII-B 13 Chrysalis-HLS",
+        "text_sha256": "70d95a26513db2b6d79622b88e0f0807aa15007d6c92a5355a7f88e7efa496f0"
+      },
+      {
+        "index": 193,
+        "paragraph_id": "S7.SS2.SSS14.p1.1",
+        "section_id": "S7.SS2.SSS14",
+        "heading": "VII-B 14 ReFormAI",
+        "text_sha256": "2b983e77fe6550da97509c82b5fcd3449fc953b3c37664338185c7ae057f5f70"
+      },
+      {
+        "index": 194,
+        "paragraph_id": "S7.SS2.SSS15.p1.1",
+        "section_id": "S7.SS2.SSS15",
+        "heading": "VII-B 15 PrimeVul",
+        "text_sha256": "51db19ae684e7eea2eddfcef47984fdf0e98aa8dd2fc720fd84e984a3793b3ad"
+      },
+      {
+        "index": 195,
+        "paragraph_id": "S7.SS2.SSS16.p1.1",
+        "section_id": "S7.SS2.SSS16",
+        "heading": "VII-B 16 X1",
+        "text_sha256": "7e547158039d09b23ba2d9a0b0468567ec21b1ad925bbb0434727a69c08dc6b2"
+      },
+      {
+        "index": 196,
+        "paragraph_id": "S7.T14.3",
+        "section_id": "S7.SS2.SSS16",
+        "heading": "VII-B 16 X1",
+        "text_sha256": "3620ad54bbdd4cf785b181fffac35f3bd29f139dc869915a14d07f06aa22b5df"
+      },
+      {
+        "index": 197,
+        "paragraph_id": "S8.p1.1",
+        "section_id": "S8",
+        "heading": "VIII LLM vulnerabilities and Mitigation",
+        "text_sha256": "6b9aa724ab4fe365d9ba1b1917c318dda366f1ccf4f57e622cef5830c6f059c5"
+      },
+      {
+        "index": 198,
+        "paragraph_id": "S8.SS1.p1.1",
+        "section_id": "S8.SS1",
+        "heading": "VIII-A Prompt Injection",
+        "text_sha256": "f35c3c980a8b6e121d0cad4a429011f04050c3235b1b54ae74394760f57f5ca9"
+      },
+      {
+        "index": 199,
+        "paragraph_id": "S8.SS1.SSS1.p1.1",
+        "section_id": "S8.SS1.SSS1",
+        "heading": "VIII-A 1 Nature of Prompt Injection Attacks",
+        "text_sha256": "26387fbacb6215a91294c67239a130656efaee8ba509e9fe8bbf9060e53aa7b8"
+      },
+      {
+        "index": 200,
+        "paragraph_id": "S8.SS1.SSS2.p1.1",
+        "section_id": "S8.SS1.SSS2",
+        "heading": "VIII-A 2 Mitigation Strategies",
+        "text_sha256": "2295c1852db2afe78b5e5bea9c5fe1e8847be624c22f999357ab6f48ba13de9d"
+      },
+      {
+        "index": 201,
+        "paragraph_id": "S8.SS1.SSS3.p1.1",
+        "section_id": "S8.SS1.SSS3",
+        "heading": "VIII-A 3 Potential Attack Scenarios",
+        "text_sha256": "c8c1c96732a42c5fe346459db3de47bdb1a3ff3290fb367302f1cb2fe269ab5d"
+      },
+      {
+        "index": 202,
+        "paragraph_id": "S8.SS2.p1.1",
+        "section_id": "S8.SS2",
+        "heading": "VIII-B Insecure Output Handling",
+        "text_sha256": "4cd513e3bd2929493c748171d9cee0b506febb28a960e0544a16929fb08ac173"
+      },
+      {
+        "index": 203,
+        "paragraph_id": "S8.SS2.SSS1.p1.1",
+        "section_id": "S8.SS2.SSS1",
+        "heading": "VIII-B 1 Nature of Insecure Output Handling Vulnerabilities",
+        "text_sha256": "3c90cb5ef6d37d376c867733f2d467b91db88669a2c6946de9a701d468a89f20"
+      },
+      {
+        "index": 204,
+        "paragraph_id": "S8.SS2.SSS2.p1.1",
+        "section_id": "S8.SS2.SSS2",
+        "heading": "VIII-B 2 Prevention Strategies",
+        "text_sha256": "8520cfaa4a7abf73ad032aba49d1b68c0facccf3716533d8de2aafd2001b953e"
+      },
+      {
+        "index": 205,
+        "paragraph_id": "S8.SS2.SSS3.p1.1",
+        "section_id": "S8.SS2.SSS3",
+        "heading": "VIII-B 3 Potential Attack Scenarios",
+        "text_sha256": "1af5393a2da16580797f1fa129d8c8b1784933be8d45aaf2a5cdf452d995a9b8"
+      },
+      {
+        "index": 206,
+        "paragraph_id": "S8.SS3.p1.1",
+        "section_id": "S8.SS3",
+        "heading": "VIII-C Adversarial Natural Language Instructions",
+        "text_sha256": "d04f5471a5f368abd2550d22d2a8fa91efd1fe51a5c92d9da329338782ca6a04"
+      },
+      {
+        "index": 207,
+        "paragraph_id": "S8.SS3.SSS1.p1.1",
+        "section_id": "S8.SS3.SSS1",
+        "heading": "VIII-C 1 Prevention Strategies",
+        "text_sha256": "85b367d1ad3d4992328a67883bc5db8c0e2c6377718c67f3931acf46d5ebbf4c"
+      },
+      {
+        "index": 208,
+        "paragraph_id": "S8.SS3.SSS2.p1.1",
+        "section_id": "S8.SS3.SSS2",
+        "heading": "VIII-C 2 Potential Attack Scenarios",
+        "text_sha256": "224246dbf77e40030a83be3952143e341f99b5b90b4035e3ae7442c85777f51d"
+      },
+      {
+        "index": 209,
+        "paragraph_id": "S8.SS4.SSS1.p1.1",
+        "section_id": "S8.SS4.SSS1",
+        "heading": "VIII-D 1 Nature of the Attack",
+        "text_sha256": "7be4d392d5b5952831115ecac27508d76a41827f4a32e6dfdd49c0d600aea634"
+      },
+      {
+        "index": 210,
+        "paragraph_id": "S8.SS4.SSS2.p1.1",
+        "section_id": "S8.SS4.SSS2",
+        "heading": "VIII-D 2 Prevention Strategies",
+        "text_sha256": "d9ce84e5d89ba9b58ffd705d2d4d87344adf9cc4ebcd2b2eca7e0922e51b1a08"
+      },
+      {
+        "index": 211,
+        "paragraph_id": "S8.I25.i1.p1.1",
+        "section_id": "S8.SS4.SSS2",
+        "heading": "VIII-D 2 Prevention Strategies",
+        "text_sha256": "32d9946fa437f20803e8c9a6d7592295560c6c1252801da3640d5c72040e5097"
+      },
+      {
+        "index": 212,
+        "paragraph_id": "S8.I25.i2.p1.1",
+        "section_id": "S8.SS4.SSS2",
+        "heading": "VIII-D 2 Prevention Strategies",
+        "text_sha256": "dc84d819f98b84ff8b5f3d9c950fe3380ff0a20c95598f8a1e9a743999e2fa78"
+      },
+      {
+        "index": 213,
+        "paragraph_id": "S8.I25.i3.p1.1",
+        "section_id": "S8.SS4.SSS2",
+        "heading": "VIII-D 2 Prevention Strategies",
+        "text_sha256": "9934721027cdc9b9a85025aefdd0625b285bd03a1c049e8984316776fe918413"
+      },
+      {
+        "index": 214,
+        "paragraph_id": "S8.I25.i4.p1.1",
+        "section_id": "S8.SS4.SSS2",
+        "heading": "VIII-D 2 Prevention Strategies",
+        "text_sha256": "b8f8b4e03b5bc4fc20775899b4a31140178d8445c5165a6ad43e6da91b9fc1cb"
+      },
+      {
+        "index": 215,
+        "paragraph_id": "S8.SS4.SSS3.p1.1",
+        "section_id": "S8.SS4.SSS3",
+        "heading": "VIII-D 3 Potential Attack Scenarios",
+        "text_sha256": "d3e5527c56094df5c274ca77c69dd5f48704f174c1051a1d3a0d6b1fab3d7f57"
+      },
+      {
+        "index": 216,
+        "paragraph_id": "S8.I26.i1.p1.1",
+        "section_id": "S8.SS4.SSS3",
+        "heading": "VIII-D 3 Potential Attack Scenarios",
+        "text_sha256": "1192a0906b678c846c518eb2381a1d654a053683a1920fe54b7b6c8ff1a4efc3"
+      },
+      {
+        "index": 217,
+        "paragraph_id": "S8.I26.i2.p1.1",
+        "section_id": "S8.SS4.SSS3",
+        "heading": "VIII-D 3 Potential Attack Scenarios",
+        "text_sha256": "7ba16c505cd81ffd20309cfd334b6f325f77a97ab733dfabebf8fce23dbc7e10"
+      },
+      {
+        "index": 218,
+        "paragraph_id": "S8.I26.i3.p1.1",
+        "section_id": "S8.SS4.SSS3",
+        "heading": "VIII-D 3 Potential Attack Scenarios",
+        "text_sha256": "d738fc8ddf202f5f632a328f2e2151a801480fcb2c3d57f693b90a4d03374d7c"
+      },
+      {
+        "index": 219,
+        "paragraph_id": "S8.SS5.p1.1",
+        "section_id": "S8.SS5",
+        "heading": "VIII-E Training Data Poisoning",
+        "text_sha256": "4c8e1e2eee7c085bc25ea5d0221f3ea68caf6e20e4c4f664f441206a921cd1b6"
+      },
+      {
+        "index": 220,
+        "paragraph_id": "S8.SS5.SSS1.p1.1",
+        "section_id": "S8.SS5.SSS1",
+        "heading": "VIII-E 1 Nature of Training Data Poisoning",
+        "text_sha256": "7bb0e134a10a77ca3e37896500913e6ab42f3741fab01394e2264d861c7d94da"
+      },
+      {
+        "index": 221,
+        "paragraph_id": "S8.SS5.SSS2.p1.1",
+        "section_id": "S8.SS5.SSS2",
+        "heading": "VIII-E 2 Prevention Strategies",
+        "text_sha256": "79984242f852b7f924d739bade036dcf6cd85b56c262738ed449e1b7b6e906a6"
+      },
+      {
+        "index": 222,
+        "paragraph_id": "S8.SS5.SSS2.p2.1",
+        "section_id": "S8.SS5.SSS2",
+        "heading": "VIII-E 2 Prevention Strategies",
+        "text_sha256": "8e3d6e739e9c55c53bdbfa777d35892357da48647b73e0a6263001422fea5096"
+      },
+      {
+        "index": 223,
+        "paragraph_id": "S8.SS5.SSS3.p1.1",
+        "section_id": "S8.SS5.SSS3",
+        "heading": "VIII-E 3 Potential Attack Scenarios",
+        "text_sha256": "9ca250318d67c5279f1823815a709c1c52252309fca4408feb3a867a04e59ae6"
+      },
+      {
+        "index": 224,
+        "paragraph_id": "S8.SS6.SSS1.p1.1",
+        "section_id": "S8.SS6.SSS1",
+        "heading": "VIII-F 1 Nature of Inference Data Poisoning",
+        "text_sha256": "3c5c83ed5a3deceb62609c5dbef3ae9845718fa5cd432d0a78da04220f725165"
+      },
+      {
+        "index": 225,
+        "paragraph_id": "S8.SS6.SSS2.p1.1",
+        "section_id": "S8.SS6.SSS2",
+        "heading": "VIII-F 2 Prevention Strategies",
+        "text_sha256": "3fa9472fc8b0465a15a6c68676c6646f848a3e8b9b7eb0c1d21bb363b7d764ab"
+      },
+      {
+        "index": 226,
+        "paragraph_id": "S8.SS6.SSS3.p1.1",
+        "section_id": "S8.SS6.SSS3",
+        "heading": "VIII-F 3 Potential Attack Scenarios",
+        "text_sha256": "063f8e4907292327a7c231a276a3306b54c34efc05ac98101d8015c5a2970554"
+      },
+      {
+        "index": 227,
+        "paragraph_id": "S8.SS7.SSS1.p1.1",
+        "section_id": "S8.SS7.SSS1",
+        "heading": "VIII-G 1 Nature of Insecure Plugins",
+        "text_sha256": "fe3fa1b8fed98bb78caa2de2c0221125f68f2e3337ac1c69017fc274479a3601"
+      },
+      {
+        "index": 228,
+        "paragraph_id": "S8.SS7.SSS2.p1.1",
+        "section_id": "S8.SS7.SSS2",
+        "heading": "VIII-G 2 Prevention Strategies",
+        "text_sha256": "422298c5a330c64fdc2b8abf2f7fa400fc10033189d8364a5a5429d5ded5ef5f"
+      },
+      {
+        "index": 229,
+        "paragraph_id": "S8.SS7.SSS3.p1.1",
+        "section_id": "S8.SS7.SSS3",
+        "heading": "VIII-G 3 Potential Attack Scenarios",
+        "text_sha256": "60350ad0e207ebf4a7db624834beee8930708aa3a85de5a08127e4a9e27f1a2f"
+      },
+      {
+        "index": 230,
+        "paragraph_id": "S8.SS8.SSS1.p1.1",
+        "section_id": "S8.SS8.SSS1",
+        "heading": "VIII-H 1 Nature of DoS attack",
+        "text_sha256": "58e689fe21d7def6b82f8d74a6547b187ded0e7666cab871b1931442ab73c14f"
+      },
+      {
+        "index": 231,
+        "paragraph_id": "S8.SS8.SSS2.p1.1",
+        "section_id": "S8.SS8.SSS2",
+        "heading": "VIII-H 2 Potential Attack Scenarios",
+        "text_sha256": "85ac183d59858e70a4da274f482260bdf9362c353781e1207c7e10e14d2115c8"
+      },
+      {
+        "index": 232,
+        "paragraph_id": "S8.I27.i1.p1.1",
+        "section_id": "S8.SS8.SSS2",
+        "heading": "VIII-H 2 Potential Attack Scenarios",
+        "text_sha256": "49354afcaad824fa3ab1051d9ad26312351079858df05efcc34a1711f651d2da"
+      },
+      {
+        "index": 233,
+        "paragraph_id": "S8.I27.i2.p1.1",
+        "section_id": "S8.SS8.SSS2",
+        "heading": "VIII-H 2 Potential Attack Scenarios",
+        "text_sha256": "74c0102d6fc6fe98df0f7066d352c799f56f78117f3f28e23a08e3fa9ddf1a88"
+      },
+      {
+        "index": 234,
+        "paragraph_id": "S8.I27.i3.p1.1",
+        "section_id": "S8.SS8.SSS2",
+        "heading": "VIII-H 2 Potential Attack Scenarios",
+        "text_sha256": "7e47f943dac3f5510c8f3293bdb3f865b74491ae9a5837c7d295c95dc8bf5463"
+      },
+      {
+        "index": 235,
+        "paragraph_id": "S8.SS8.SSS3.p1.1",
+        "section_id": "S8.SS8.SSS3",
+        "heading": "VIII-H 3 Prevention Strategies",
+        "text_sha256": "26b11101decd63c79a4b2b7725f7fbc4091b7cf80239c6d756105eac0b15c367"
+      },
+      {
+        "index": 236,
+        "paragraph_id": "S8.I28.i1.p1.1",
+        "section_id": "S8.SS8.SSS3",
+        "heading": "VIII-H 3 Prevention Strategies",
+        "text_sha256": "f7484cd42e803b0d9ac6d5e1872653c1e2b0d192302fe9e6d7335e6fee21681e"
+      },
+      {
+        "index": 237,
+        "paragraph_id": "S8.I28.i2.p1.1",
+        "section_id": "S8.SS8.SSS3",
+        "heading": "VIII-H 3 Prevention Strategies",
+        "text_sha256": "5b09d17d31482d95468afb65de9184130aa3ca5382d17da023dca5cc6db268b2"
+      },
+      {
+        "index": 238,
+        "paragraph_id": "S8.I28.i3.p1.1",
+        "section_id": "S8.SS8.SSS3",
+        "heading": "VIII-H 3 Prevention Strategies",
+        "text_sha256": "f0d534da2a95e42009d67c8ceec5b7b4706e236274a9203455e6b4b5422dc52f"
+      },
+      {
+        "index": 239,
+        "paragraph_id": "S9.SS1.SSS1.p1.1",
+        "section_id": "S9.SS1.SSS1",
+        "heading": "IX-A 1 Adapting to Sophisticated Phishing Techniques",
+        "text_sha256": "9f2f664be82d64d6974f7fcf74154a6b6ec9d3fd93ad2a8f3c53baee2db9e691"
+      },
+      {
+        "index": 240,
+        "paragraph_id": "S9.SS1.SSS2.p1.1",
+        "section_id": "S9.SS1.SSS2",
+        "heading": "IX-A 2 Managing Data Overload in Enterprise Applications",
+        "text_sha256": "72b204eea1e3e430a69ce9fe245b378a49a9c95f56d532de377cb373e639aaf4"
+      },
+      {
+        "index": 241,
+        "paragraph_id": "S9.SS1.SSS3.p1.1",
+        "section_id": "S9.SS1.SSS3",
+        "heading": "IX-A 3 Training Data Availability and Quality",
+        "text_sha256": "77741bd87eb258d984c744c85d83ab561cf3b8aecd21f8c8f6a2a9171a17242e"
+      },
+      {
+        "index": 242,
+        "paragraph_id": "S9.SS1.SSS4.p1.1",
+        "section_id": "S9.SS1.SSS4",
+        "heading": "IX-A 4 Developing and Training Custom Models for Unique Cybersecurity Domains",
+        "text_sha256": "55ac0fe6c792bebe32a2a2bc21496803b2fb761a63f24218bffe215ea6ee8d26"
+      },
+      {
+        "index": 243,
+        "paragraph_id": "S9.SS1.SSS5.p1.1",
+        "section_id": "S9.SS1.SSS5",
+        "heading": "IX-A 5 Real-Time Information Provision by Security Copilots",
+        "text_sha256": "8f8cf059afd68b7de8021d80c237f8a3d9400a6059b84261f526657573e2771d"
+      },
+      {
+        "index": 244,
+        "paragraph_id": "S9.SS2.p1.1",
+        "section_id": "S9.SS2",
+        "heading": "IX-B LLM Cybersecurity Insights",
+        "text_sha256": "bedc3c5bdaf0bac8fbaf687d0a2c2610d1abcfbd5e39f36751d248465aff3924"
+      },
+      {
+        "index": 245,
+        "paragraph_id": "S9.SS2.SSS1.p1.1",
+        "section_id": "S9.SS2.SSS1",
+        "heading": "IX-B 1 LLM architecture",
+        "text_sha256": "f314601b72a40ef64b0c5f4d38377a6e9b38dc655b1606c6cccf55b9d0021288"
+      },
+      {
+        "index": 246,
+        "paragraph_id": "S9.SS2.SSS2.p1.1",
+        "section_id": "S9.SS2.SSS2",
+        "heading": "IX-B 2 Building Cyber Security dataset",
+        "text_sha256": "2ab7dfdc89108c4103264fb2145e7b5a5c7790dc9b161fc8916da3c31aceb20b"
+      },
+      {
+        "index": 247,
+        "paragraph_id": "S9.SS2.SSS3.p1.1",
+        "section_id": "S9.SS2.SSS3",
+        "heading": "IX-B 3 Pre-training models",
+        "text_sha256": "25c82d6509d1c87552929230f7e8f0b04753d6f5fdaa72cf441fc9224cfde4ac"
+      },
+      {
+        "index": 248,
+        "paragraph_id": "S9.SS2.SSS3.p2.1",
+        "section_id": "S9.SS2.SSS3",
+        "heading": "IX-B 3 Pre-training models",
+        "text_sha256": "21bba7ebf4156e095a849a464fb5814b1b372839c3b312a3c9e72cf57e3cb040"
+      },
+      {
+        "index": 249,
+        "paragraph_id": "S9.SS2.SSS4.p1.1",
+        "section_id": "S9.SS2.SSS4",
+        "heading": "IX-B 4 Supervised Fine-Tuning",
+        "text_sha256": "76fb93a9e3c14d014706db5b9d56adfe345b1f275c274d45bc360e45ed5baede"
+      },
+      {
+        "index": 250,
+        "paragraph_id": "S9.SS2.SSS4.p2.1",
+        "section_id": "S9.SS2.SSS4",
+        "heading": "IX-B 4 Supervised Fine-Tuning",
+        "text_sha256": "d5793f2a405541759473b3067aed1fa6aeecbef348069c6d74d2e4c8d08637bd"
+      },
+      {
+        "index": 251,
+        "paragraph_id": "S9.SS2.SSS5.p1.1",
+        "section_id": "S9.SS2.SSS5",
+        "heading": "IX-B 5 Cyber Security Evaluation",
+        "text_sha256": "8bd10f082cb2ffc0151d28fc0a1178b30108d88e3bf327779b87a3406505cc1d"
+      },
+      {
+        "index": 252,
+        "paragraph_id": "S9.SS2.SSS5.p2.1",
+        "section_id": "S9.SS2.SSS5",
+        "heading": "IX-B 5 Cyber Security Evaluation",
+        "text_sha256": "fc3bcc675bd01fd4f17421c426c518bb1a8fdc46eb8fc4b42a68c4542fa9a12d"
+      },
+      {
+        "index": 253,
+        "paragraph_id": "S9.SS2.SSS5.p3.1",
+        "section_id": "S9.SS2.SSS5",
+        "heading": "IX-B 5 Cyber Security Evaluation",
+        "text_sha256": "259698aad9cbc8e01f390f4b89af5be932e4b6428717114102fe35110f20b80f"
+      },
+      {
+        "index": 254,
+        "paragraph_id": "S9.SS2.SSS5.p4.1",
+        "section_id": "S9.SS2.SSS5",
+        "heading": "IX-B 5 Cyber Security Evaluation",
+        "text_sha256": "b5006c469d739affffdb7602eb36e98db558bb3ad5b1598bafcffc095db9b594"
+      },
+      {
+        "index": 255,
+        "paragraph_id": "S9.SS2.SSS5.p5.1",
+        "section_id": "S9.SS2.SSS5",
+        "heading": "IX-B 5 Cyber Security Evaluation",
+        "text_sha256": "daac9976d64f67eb4f5ba8d9a746d4a74b632e05cbade198b72409c23392907f"
+      },
+      {
+        "index": 256,
+        "paragraph_id": "S9.SS2.SSS6.p1.1",
+        "section_id": "S9.SS2.SSS6",
+        "heading": "IX-B 6 Advanced LLM techniques (RAG and RLHF)",
+        "text_sha256": "a7d036e1810e4f1f88f0919b2b115e3765de34b671f0acb788fe6d47e03fe24f"
+      },
+      {
+        "index": 257,
+        "paragraph_id": "S9.SS2.SSS6.p2.1",
+        "section_id": "S9.SS2.SSS6",
+        "heading": "IX-B 6 Advanced LLM techniques (RAG and RLHF)",
+        "text_sha256": "c761c78128de606a8349733a5b6ce7d17723ad5c9379b186ef0e6b8a09a7b298"
+      },
+      {
+        "index": 258,
+        "paragraph_id": "S9.SS2.SSS6.p3.1",
+        "section_id": "S9.SS2.SSS6",
+        "heading": "IX-B 6 Advanced LLM techniques (RAG and RLHF)",
+        "text_sha256": "d97d1003b238728ac4035319f0902142bc297668cb78a3b9d602f6915b047fc4"
+      },
+      {
+        "index": 259,
+        "paragraph_id": "S9.SS2.SSS7.p1.1",
+        "section_id": "S9.SS2.SSS7",
+        "heading": "IX-B 7 LLM deployments",
+        "text_sha256": "4a27c36ef271d80e05b6998ddedcef9395b669ef1ee0a12149b6457c067e2a46"
+      },
+      {
+        "index": 260,
+        "paragraph_id": "S9.SS2.SSS7.p2.1",
+        "section_id": "S9.SS2.SSS7",
+        "heading": "IX-B 7 LLM deployments",
+        "text_sha256": "22f1a4066ad7418289999dd72f2ed61c55d6232b76b7ade18dc6cbd22b92e166"
+      },
+      {
+        "index": 261,
+        "paragraph_id": "S9.SS2.SSS8.p1.1",
+        "section_id": "S9.SS2.SSS8",
+        "heading": "IX-B 8 Securing LLMs",
+        "text_sha256": "6d1e988c93be16a5b2f0887689eee98441454db177c832dd6c336ce0ed10adc7"
+      },
+      {
+        "index": 262,
+        "paragraph_id": "S9.SS2.SSS8.p2.1",
+        "section_id": "S9.SS2.SSS8",
+        "heading": "IX-B 8 Securing LLMs",
+        "text_sha256": "122b3bd86bfb3d5a6ef51571fe26ca10799fc9f9e296ac9d3a662624691235f5"
+      },
+      {
+        "index": 263,
+        "paragraph_id": "S9.SS2.SSS9.p1.1",
+        "section_id": "S9.SS2.SSS9",
+        "heading": "IX-B 9 Optimizing LLMs",
+        "text_sha256": "579de51b62004128b9fc4b4e759f7f36bc808c19958156c3c0c2cefc551a9c4e"
+      },
+      {
+        "index": 264,
+        "paragraph_id": "S9.SS2.SSS9.p2.1",
+        "section_id": "S9.SS2.SSS9",
+        "heading": "IX-B 9 Optimizing LLMs",
+        "text_sha256": "3f318c16a8cb89e03574d03043ee154d49351ecccd34c9d663817c67d2516425"
+      },
+      {
+        "index": 265,
+        "paragraph_id": "S9.SS2.SSS9.p3.1",
+        "section_id": "S9.SS2.SSS9",
+        "heading": "IX-B 9 Optimizing LLMs",
+        "text_sha256": "144db458ec6e87af151e9cf6602aa7901dceee4db73694db771612213b4ef38b"
+      },
+      {
+        "index": 266,
+        "paragraph_id": "S9.SS2.SSS9.p4.1",
+        "section_id": "S9.SS2.SSS9",
+        "heading": "IX-B 9 Optimizing LLMs",
+        "text_sha256": "19fe00f4012c7020105ceca6d540eda9bfe0cf8a707c49fe52e5c10f0fa61e0f"
+      },
+      {
+        "index": 267,
+        "paragraph_id": "S9.SS2.SSS9.p5.1",
+        "section_id": "S9.SS2.SSS9",
+        "heading": "IX-B 9 Optimizing LLMs",
+        "text_sha256": "63a4211adee1a721142937ed6d1b4c24f49305ac77455491f1ff1aa715af7f6d"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "The review explicitly includes original comparison sections: main contribution18 states cybersecurity-dataset evaluation; V-B142 defines hardware-code bug and CWE judgments; V-C145 defines CyberMetric question-answer comparisons. Pure review framing alone would omit these evaluated families.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "V-B142 defines code input, yes/no bug judgment and requested CWE-number output; the named model roster was independently checked in the method-name column of TableVIII. These generated classification answers are the assessed task outputs.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "V-C145 defines cybersecurity questions and correct-answer assessment, with the named model roster independently checked in the method-name column of TableIX. The source is approved as a comparison presented in this paper; execution provenance of every CyberMetric table entry is not expanded beyond the source description.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Revised wording correctly leaves input language unresolved: English exposition and output labels do not establish the language composition of actual evaluated inputs.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True is verified for the review's declared original comparison-family inventory after actual V-B/V-C method checks, introduction scope16-23, full application-review context79-120, code-vulnerability attribution167-173, and main mitigation/deployment/evaluation guidance174-267. Reviewed external studies and prospective guidance are kept separate from the paper's own hardware/CyberMetric comparisons. No appendix is present in this exact source. Internal table performance cells are withheld.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

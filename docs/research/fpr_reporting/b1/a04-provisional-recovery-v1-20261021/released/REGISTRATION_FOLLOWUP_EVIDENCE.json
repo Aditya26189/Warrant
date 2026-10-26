@@ -1,0 +1,122 @@
+[
+  {
+    "doi": "10.1145/3798063.3837198",
+    "eligibility_decision": null,
+    "error_type": "HTTPError",
+    "evidence_id": "R01-DOI-FOLLOWUP-cf70f227c71202c6",
+    "finished_utc": "2026-10-21T12:35:35.296311+00:00",
+    "http_status": 403,
+    "member_ids": [
+      "M0324"
+    ],
+    "official_fields": null,
+    "prior_receipt_sha256": "3f5d8d778fadda30db6da2e5a74b74a78e167ebc0bf4ed2c5ca3ab4767f8b2ad",
+    "raw_source_sha256": null,
+    "source_git_commit": "8fdcfc8120e03aa9010544faaab1f970fcb92cc4",
+    "source_kind": "PUBLISHER_CITATION_METADATA",
+    "source_url": "https://dl.acm.org/doi/10.1145/3798063.3837198",
+    "started_utc": "2026-10-21T12:35:34.746104+00:00"
+  },
+  {
+    "doi": "10.1145/3803804",
+    "eligibility_decision": null,
+    "error_type": "HTTPError",
+    "evidence_id": "R01-DOI-FOLLOWUP-88cf0c1bab6fec0f",
+    "finished_utc": "2026-10-21T12:35:35.552117+00:00",
+    "http_status": 403,
+    "member_ids": [
+      "M0116"
+    ],
+    "official_fields": null,
+    "prior_receipt_sha256": "497bc703356ed23f36e1c7f44b474aa586228aadaa43471005e3357cc17b3480",
+    "raw_source_sha256": null,
+    "source_git_commit": "8fdcfc8120e03aa9010544faaab1f970fcb92cc4",
+    "source_kind": "PUBLISHER_CITATION_METADATA",
+    "source_url": "https://dl.acm.org/doi/10.1145/3803804",
+    "started_utc": "2026-10-21T12:35:35.301949+00:00"
+  },
+  {
+    "doi": "10.5281/zenodo.19644135",
+    "eligibility_decision": null,
+    "evidence_id": "R01-DOI-FOLLOWUP-570b666902a5133b",
+    "finished_utc": "2026-10-21T12:35:36.681058+00:00",
+    "http_status": 200,
+    "member_ids": [
+      "M0232"
+    ],
+    "official_fields": {
+      "date_fields": {
+        "created": "2026-04-18T16:44:53.000Z",
+        "published": "2026",
+        "registered": "2026-04-18T16:44:53.000Z",
+        "updated": "2026-09-15T10:42:00.000Z"
+      },
+      "dated_events": [
+        {
+          "date": "2026-04-18",
+          "dateType": "Issued"
+        }
+      ],
+      "doi": "10.5281/zenodo.19644135",
+      "limitation_codes": [
+        "REGISTERED_RESOURCE_METADATA_NOT_PROTOCOL_VERSION_DECISION"
+      ],
+      "preferred_version_decision": null,
+      "publication_year": 2026,
+      "registration_agency": "DataCite",
+      "title_identity_sha256": [
+        "62958869e2964a90a4dd9a7a718d73f887e979cbe15ecc880665133f6fcb7855"
+      ]
+    },
+    "prior_receipt_sha256": "62124da992fe26854c52ff5ac7c5fd631d4ddbfdbc52ff9f3b49a939a2067cc2",
+    "raw_source_sha256": "13c6497eac1e9bf5ae3883c558557d0351f9140fd7a0d652a2fde0551c330707",
+    "source_git_commit": "8fdcfc8120e03aa9010544faaab1f970fcb92cc4",
+    "source_kind": "DATACITE",
+    "source_url": "https://api.datacite.org/dois/10.5281/zenodo.19644135",
+    "started_utc": "2026-10-21T12:35:35.557128+00:00"
+  },
+  {
+    "doi": "10.5281/zenodo.21365017",
+    "eligibility_decision": null,
+    "evidence_id": "R01-DOI-FOLLOWUP-98217ba7ac41e561",
+    "finished_utc": "2026-10-21T12:35:37.805263+00:00",
+    "http_status": 200,
+    "member_ids": [
+      "M0332"
+    ],
+    "official_fields": {
+      "date_fields": {
+        "created": "2026-07-14T22:48:25.000Z",
+        "published": "2026",
+        "registered": "2026-07-14T22:48:25.000Z",
+        "updated": "2026-09-04T14:13:05.000Z"
+      },
+      "dated_events": [
+        {
+          "date": "2026-07-14",
+          "dateType": "Issued"
+        },
+        {
+          "date": "2026-07-09",
+          "dateType": "Submitted"
+        }
+      ],
+      "doi": "10.5281/zenodo.21365017",
+      "limitation_codes": [
+        "REGISTERED_RESOURCE_METADATA_NOT_PROTOCOL_VERSION_DECISION"
+      ],
+      "preferred_version_decision": null,
+      "publication_year": 2026,
+      "registration_agency": "DataCite",
+      "title_identity_sha256": [
+        "162e6b5d9ed2b9e1cc6f255199755c360343e5ecb794ce5222cb1eae3ffc30d8"
+      ]
+    },
+    "prior_receipt_sha256": "43925f664ddf1f1da9dec8af9358d6eb7eebfc8917cdad99af9814bce9fc6645",
+    "raw_source_sha256": "3589547869dc9e03e4747d9aa233d9aae0078a748088174ab873629f10540c96",
+    "source_git_commit": "8fdcfc8120e03aa9010544faaab1f970fcb92cc4",
+    "source_kind": "DATACITE",
+    "source_url": "https://api.datacite.org/dois/10.5281/zenodo.21365017",
+    "started_utc": "2026-10-21T12:35:36.686273+00:00"
+  }
+]

@@ -1,0 +1,568 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0077",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T18:27:57.383108+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0077.provider.0001.json",
+  "provider_packet_sha256": "17ab10b3690d14dbc1d8ef7f86581df13c9324b4f2e4a2e84e749cbd04c78482",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2509.00088v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q030-1.html",
+    "raw_sha256": "605baca9618dad9c3969f1c9fa299f0de03d5f01ec2d0773b03193b3e03ebb2c",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0118.json",
+    "acquisition_receipt_sha256": "349809b069b02d7fe817ee2d67fa148f7cc6d5ed2985ccdba1aff8428e5c4a6b",
+    "captured_version_id": "arxiv:2509.00088v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        30,
+        78
+      ],
+      [
+        94,
+        108
+      ],
+      [
+        110,
+        127
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actual31-59 defines alternating attack/defense prompt optimization for assignment grading with generated grading and detection feedback. Main74 distinguishes generated benign training articles from anonymized student-submitted malicious/benign evaluation articles. False retains undecoded exact detector/algorithm table bodies and per-instance scoring details. Main TGO+ and ablation design prose were additionally read, but not every remaining prompt body. No grade outcome, success count or model performance is released.",
+    "locator_sha256": "c3d5bb093ae0bd5a5978a5c5a435547d8565709bc496736d77b26df36d124dc5",
+    "locators": [
+      {
+        "n": 30,
+        "kind": "heading",
+        "id": "S3",
+        "sha256": "800157aa516b354192b8a9b19600a9e1d6e5696bbc18397a6460f7e671a655e6"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S3.p1.1",
+        "sha256": "b224ffe406763188e42a0ef148c557eba8d5e84d2b019b1434234fecbbc5f5c4"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S3.p2.1",
+        "sha256": "00d3ece711321e10e4ae02613fd3fe351af72cc38c02a173c9f9bd76243e3033"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S3.p3.1",
+        "sha256": "4201977a11a5a50a460e3ceb609e1237fe93b90b3b50a56adf08f8f705842efa"
+      },
+      {
+        "n": 34,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "sha256": "7330a8ab591b43a416c934c08c30c9d7e2763a733301424abff20a9d743a1c07"
+      },
+      {
+        "n": 35,
+        "kind": "heading",
+        "id": "S3.SS1.SSS1",
+        "sha256": "0f8ccf47045289fea014e0b41c704dab7f27432a0f1848c88686f34d81754019"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p1.1",
+        "sha256": "195bd5dc0b1d3abcc143d851f21caa2830cd2459503299a85800a21ac4a70d9e"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p2.1",
+        "sha256": "cf9089aaf8939f451b0fe4889cc4724e459a7f2f02ced8a932b2d08df51e186d"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p3.1",
+        "sha256": "4036edb285fe747f19c7c8ab8fade11388afaaa2d18ae9992e9ddb880bd285e2"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S3.I1.i1.p1.1",
+        "sha256": "e5ddc0a7dd08f4eae2490b79f090d619ca757b7e75631cd12ef39652830e10da"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S3.I1.i2.p1.1",
+        "sha256": "1a3f29d01427069f498539a83a2cbb63032e115e8daba22df49371715def2a21"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S3.I1.i3.p1.1",
+        "sha256": "e39e7e0a4991f3b5a6807234a4fd05a9e91138466d4c091da55589556ce7459d"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p5.1",
+        "sha256": "56488166f0812cf65601549803143d7394b254186a9da901ece03fa21bd5e8b3"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p6",
+        "sha256": "905219717192ee2423f01e24c32699c2298708f08e48429ef34231dfb75298a4"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p7.1",
+        "sha256": "570aaa1dbdf6bea77f4fc01f8ee88c76677180207a480c99140c016c7ab6e0f8"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p8.1",
+        "sha256": "1f9b44be648c3123ff3b404ebf92588c99368b7857d643ae7f2188305fa44b0c"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p9.1",
+        "sha256": "6a78fb39a463478149f8375062ed69af017b555630add1f4407923e42071591c"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p9.2",
+        "sha256": "d73defaf88e7ad05d8efced151c8c6c83003fd3458c38f8869d498741afd415d"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p10.1",
+        "sha256": "8d5145f12b661c9d1ec482532fc05ce7f464553cbd7ab043cff4825ece511eea"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p11.1",
+        "sha256": "a8426910f4348b43f89706278f431fa3932662c09d4818d79deecd832d5ec2fc"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p12.1",
+        "sha256": "397693443994e912c3ab6f8ed3215e041b88ad2b5d8f1d44ca79efcd7468ed16"
+      },
+      {
+        "n": 51,
+        "kind": "heading",
+        "id": "S3.SS1.SSS2",
+        "sha256": "c812f509621a98ec80579563527b2647c4090ef5783b752936103a62ffdafc0f"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS2.p1.1",
+        "sha256": "497945f497902be02a51020fed7cbd538c22f09ce713cf7b76ab454478f2136b"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS2.p2.1",
+        "sha256": "580b893e8e2c59686bbef9002c80d689ef50c67af482fd630c6c200d7075bde6"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS2.p3.1",
+        "sha256": "c702ae76f1b229e6feff0a312709ea3f0d16780c26589ef67b700aab6ebae7b4"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS2.p4.1",
+        "sha256": "fb52bd7e4cca871ab94f8380cbf95cd2ad875a5122986a5d44e3fdd3b1bda723"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS2.p5.1",
+        "sha256": "3c9cfbb38df5e904bccdef0f224098b1b6af72ab9a0520fd4c4ded2dc521053c"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS2.p6.1",
+        "sha256": "6cc18a85c40168eb93a17b96f683521898ced1c437800e3fda1d0c65ef434823"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS2.p6.2",
+        "sha256": "a725cac586f0684d1fd00f112dd2cc722a168b6646fe5bc444a9e43c7879d2e0"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS2.p7.1",
+        "sha256": "a4f7d258f8c65714f7a1045dcba63ead6be121afa6263eea94c4b0a96bc950e8"
+      },
+      {
+        "n": 60,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "sha256": "03abe1050042a86efc6055ac72c60abf576c199b60cddb6c36f5d7ce24c3b0ba"
+      },
+      {
+        "n": 61,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.1",
+        "sha256": "25e7f698af16dbf7a717c5d62bda9f0e806218d9c69661040bd5cbac3d40d263"
+      },
+      {
+        "n": 62,
+        "kind": "heading",
+        "id": "S3.SS2.SSS1",
+        "sha256": "08a45b964758a7013323da95e29f1798fce8704c5832d3389721d16c5127a7e6"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS1.p1.1",
+        "sha256": "2f650d792d2e38bfec3c40f244d965a578a2d1f18a80eef8d3f2c36821fc1298"
+      },
+      {
+        "n": 64,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS1.p2.1",
+        "sha256": "f3d57954d050604dd8afd366b9085da0e016224112c36e87fc1cc6f55eca1673"
+      },
+      {
+        "n": 65,
+        "kind": "heading",
+        "id": "S3.SS2.SSS2",
+        "sha256": "6723fab38a94fb9f6da7bc30ca3676a98d3cd8b7e69430e888dee586dc4cce29"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS2.p1.1",
+        "sha256": "372985e314d9813c5ae015ac9221cfff6f6bfba4ce6801fe36b87c5b4171b181"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS2.p2.1",
+        "sha256": "663a4866fb699c8e511dc9abfc850c898f0eff7f04150bc9fde8d856907f8f8c"
+      },
+      {
+        "n": 68,
+        "kind": "heading",
+        "id": "S3.SS2.SSS3",
+        "sha256": "30d50fcd01f3778067533c1c83ffb6fcb26959f71079d941992c665d4846e488"
+      },
+      {
+        "n": 69,
+        "kind": "paragraph",
+        "id": "S3.SS2.SSS3.p1.1",
+        "sha256": "11edb4add036d2a0b8bcda5549476180c507b870b1a7e1884400d6922df50a6b"
+      },
+      {
+        "n": 70,
+        "kind": "paragraph",
+        "id": "S3.I2.i1.p1.1",
+        "sha256": "40043b11dd9e3bcb9aef574628522fb1c777439addbc36c8e88f9aa4a07c1d87"
+      },
+      {
+        "n": 71,
+        "kind": "paragraph",
+        "id": "S3.I2.i2.p1.1",
+        "sha256": "46213da28a459978500883f8684cea590a9c878e794bc1eb6a4d77699f06f3c7"
+      },
+      {
+        "n": 72,
+        "kind": "heading",
+        "id": "S4",
+        "sha256": "ece34411811a0a732567bb7b7282ef860079309888b2109c3291c6938d3e3caf"
+      },
+      {
+        "n": 73,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "sha256": "bf39c12338b351637d22dbf06164fd328e37aca28066df3b9f5533d3792ecaee"
+      },
+      {
+        "n": 74,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "sha256": "5ce169fc5c53408d248caf0465e81f7ca51ad13a40142784ab369cf0fb6636b4"
+      },
+      {
+        "n": 75,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "sha256": "786ce7a3ef82803186a5d0b55c00a6a7e1f98ded3156f93770ba5ba6f2126fe2"
+      },
+      {
+        "n": 76,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "sha256": "501f3b2b2a5cf15ed6d00c5f28b52056a9dd02caf00c4c360c210a206fae5833"
+      },
+      {
+        "n": 77,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "sha256": "a6aa6b87407f279ba06c63d6e2fbc3c94a8503e9b4a1b24ce44004d40c3ebe6f"
+      },
+      {
+        "n": 78,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "sha256": "d5cb5a669e60bdf8959ecbdc00364c32837f7d523ea19a1ad7ce46e24e5f0e60"
+      },
+      {
+        "n": 94,
+        "kind": "paragraph",
+        "id": "S5.SS3.SSS2.p2.1",
+        "sha256": "d832477962dded2aa978fd148028ab5aba36873cee78eac0aa1b1d13d083e677"
+      },
+      {
+        "n": 95,
+        "kind": "heading",
+        "id": "S6",
+        "sha256": "c296fea9f75ce3a4748dccfb55cac333dae249a8c2a1130139f74f8dfe9bdae5"
+      },
+      {
+        "n": 96,
+        "kind": "paragraph",
+        "id": "S6.p1.1",
+        "sha256": "9d06412b7fd684ff6702146b567567efb612f03364827a82a9308196fbddf102"
+      },
+      {
+        "n": 97,
+        "kind": "heading",
+        "id": "S6.SS1",
+        "sha256": "385059bbc5e13fbdbb7d661acd0191f9fa8f4bd53c8ca88771ba15ee572e9db4"
+      },
+      {
+        "n": 98,
+        "kind": "paragraph",
+        "id": "S6.SS1.p1.1",
+        "sha256": "a11a2b6badfcb3f41dd2040c8cd63db4fe902906ad10c71bf0662ec32b78ae92"
+      },
+      {
+        "n": 99,
+        "kind": "heading",
+        "id": "S6.SS2",
+        "sha256": "1888d91388889121d82e89fd2bf146a9b0b4081eaf1fa5766ef3f70b3d4c9f3d"
+      },
+      {
+        "n": 100,
+        "kind": "paragraph",
+        "id": "S6.SS2.p1.1",
+        "sha256": "59c19e22c9cb6d5bb769e24d3102949c90cbde50417e667b875532f8ffbb452d"
+      },
+      {
+        "n": 101,
+        "kind": "heading",
+        "id": "S6.SS3",
+        "sha256": "2f20aa02657d2e1c2ccc6278655284264874693e4a840b2eb2bf9806b84726fd"
+      },
+      {
+        "n": 102,
+        "kind": "paragraph",
+        "id": "S6.SS3.p1.1",
+        "sha256": "f4e3e90ecf87d8d903106a15e5433a359d8cd977818c34312ed9fa33a0f83ab9"
+      },
+      {
+        "n": 103,
+        "kind": "paragraph",
+        "id": "S6.SS3.p2.1",
+        "sha256": "50764add7fa32df40f3f5ca67a4409bc2969a57f7f125bd9a1df1a013ba37176"
+      },
+      {
+        "n": 104,
+        "kind": "heading",
+        "id": "S7",
+        "sha256": "a5e6fd6a5ad77cd6b11dc679ee3543c1e09b2af85fb19c2a5af082e629a61ecd"
+      },
+      {
+        "n": 105,
+        "kind": "paragraph",
+        "id": "S7.p1.1",
+        "sha256": "5c1b3dcbc5f7ceb3d81339124fc28e4f42cb94155140a7b2cc15d533dabc1810"
+      },
+      {
+        "n": 106,
+        "kind": "paragraph",
+        "id": "S7.p2.1",
+        "sha256": "5846d3fe7b58eacdba5e4a4e8a60bd475a36d3e2b362c9a10597c024effe8ba1"
+      },
+      {
+        "n": 107,
+        "kind": "heading",
+        "id": "Sx1",
+        "sha256": "9c8e8a7df0ee3a0270adebc6d9c1312750e0b3a3a1341d5ad8f67fac41e47869"
+      },
+      {
+        "n": 108,
+        "kind": "paragraph",
+        "id": "Sx1.p1.1",
+        "sha256": "7a77a050f380cb017aedb3e00420571cefb7d85fbf18159d439202c66c435e20"
+      },
+      {
+        "n": 110,
+        "kind": "heading",
+        "id": "A1",
+        "sha256": "9e8c2f8228545e9fa926a92758de345332212e1720a8065e2b762e53a51ec177"
+      },
+      {
+        "n": 111,
+        "kind": "heading",
+        "id": "A1.SS1",
+        "sha256": "bd1973e1d625dac92e40bf99f6c9edc6fc51d72e33489b8c3cd8748c0e0d5560"
+      },
+      {
+        "n": 112,
+        "kind": "paragraph",
+        "id": "A1.SS1.p1.1",
+        "sha256": "3c417c059d3fd65ce59b52227144482cd23f35cdd7ac599f5514c06e8e51b904"
+      },
+      {
+        "n": 113,
+        "kind": "heading",
+        "id": "A1.SS2",
+        "sha256": "012fde09ff302cf710436a18b99aa4d9f8eaaa8e40bf7bef5ace5c2ac5700ef2"
+      },
+      {
+        "n": 114,
+        "kind": "paragraph",
+        "id": "A1.SS2.p1.1",
+        "sha256": "bd06c9ef63081fa24cc7007aeee88c6a23217300e709042294d6bf81a1a54c91"
+      },
+      {
+        "n": 115,
+        "kind": "heading",
+        "id": "A1.SS3",
+        "sha256": "8331b4945f75bb7b08c7c17f0c7d3564d8329b856502d19a57304e3709491496"
+      },
+      {
+        "n": 116,
+        "kind": "paragraph",
+        "id": "A1.SS3.p1.1",
+        "sha256": "99447f6808b9bfe274ff10d67fef584569e7175d5eab74910c449924694e472a"
+      },
+      {
+        "n": 117,
+        "kind": "heading",
+        "id": "A1.SS4",
+        "sha256": "945809bb16da67c7eb8ea016c6e33055929e2698d5d8ed41373587b41a536806"
+      },
+      {
+        "n": 118,
+        "kind": "paragraph",
+        "id": "A1.SS4.p1.1",
+        "sha256": "04d289bc7146d704a48b695e330dde714f0f04c735ea74e7231f2ffba827475c"
+      },
+      {
+        "n": 119,
+        "kind": "paragraph",
+        "id": "A1.SS4.p2.1",
+        "sha256": "7f109571c31ccb3c246d6abfebe61608952e2ef694a06789912766f8cd407d91"
+      },
+      {
+        "n": 120,
+        "kind": "heading",
+        "id": "A1.SS5",
+        "sha256": "cee424ded3911f553d9cb3356ac7b231c12468d463e51a9d9539595af8828936"
+      },
+      {
+        "n": 121,
+        "kind": "paragraph",
+        "id": "A1.SS5.p1.1",
+        "sha256": "c79acc9dd9b004e102272622b5da7a84e898b5784f6b7f52e07659b58e96c5a4"
+      },
+      {
+        "n": 122,
+        "kind": "heading",
+        "id": "A1.SS5.SSS1",
+        "sha256": "b01c585e73721317732486e45f2afd27bc81d691e4d3667d45e63b91620678a3"
+      },
+      {
+        "n": 123,
+        "kind": "paragraph",
+        "id": "A1.SS5.SSS1.p1.1",
+        "sha256": "17823c5a7a444f77ee1a5e66bec16c8e4549340f84f5916aae2fbc5ed22b5efa"
+      },
+      {
+        "n": 124,
+        "kind": "heading",
+        "id": "A1.SS5.SSS2",
+        "sha256": "3ab988584395acb08fc3d82072fc9c2f3553f5d86bd8d70fee25ed932633e879"
+      },
+      {
+        "n": 125,
+        "kind": "paragraph",
+        "id": "A1.SS5.SSS2.p1.1",
+        "sha256": "364ed2c25c04606316a922628153fd2a765e06f4ec29b873b9f32ed97ddf888d"
+      },
+      {
+        "n": 126,
+        "kind": "heading",
+        "id": "A1.SS6",
+        "sha256": "467b6a6987548fceb28802763faaffcb54da7f5c1ef3b61239c44b2dfce889b9"
+      },
+      {
+        "n": 127,
+        "kind": "paragraph",
+        "id": "A1.SS6.p1.1",
+        "sha256": "303825d6f8ca3f1376e78d8ddf683283da8178e59b3f212bad35e2895bf2e5b3"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual31-59 defines alternating attack/defense prompt optimization for assignment grading with generated grading and detection feedback. Main74 distinguishes generated benign training articles from anonymized student-submitted malicious/benign evaluation articles.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual36-59 specifies attacker candidate generation, grading-based feedback, article injection detection and validation selection. Actual61-71 and98/100/102 additionally verify gradient buffering, multi-route/single-objective and one-side variants; Appendix127 identifies the manually modified article-detection prompt comparator. Detector inference inspects the article, while optimization also uses generated grading/detection responses. Exact per-instance prompt/scoring implementation remains incomplete.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False retains undecoded exact detector/algorithm table bodies and per-instance scoring details. Main TGO+ and ablation design prose were additionally read, but not every remaining prompt body. No grade outcome, success count or model performance is released.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}
