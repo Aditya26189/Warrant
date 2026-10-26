@@ -1,0 +1,996 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0126",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-26T05:51:45.697224+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0126.provider.0001.json",
+  "provider_packet_sha256": "167b9b213c777c720d7f62df5d46bfc52dc42e3b359cf8a2e3c53ca4fa99d4aa",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2601.12449v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\eeffe3e6c5f88c90de47fe1526a7a150092faf994414172032add2ec7a1774fb",
+    "raw_sha256": "eeffe3e6c5f88c90de47fe1526a7a150092faf994414172032add2ec7a1774fb",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0170.json",
+    "acquisition_receipt_sha256": "bf30c01245cf8df8aee8f1e1d29b82438b1314432908607f3ae12b9673c5c532",
+    "captured_version_id": "arxiv:2601.12449v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        18,
+        68
+      ],
+      [
+        92,
+        193
+      ]
+    ],
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "Actual19-41 defines offline code/activation-trace tool-inventory validation and online exposure, generated-call judgment and status tracking. Main44-68 and full Appendix B/C/D/E method prose distinguishes inventory, agent-injection, tool-description and mock safety-policy evaluations. True is verified for declared material main and Appendix B/C/D/E/F method families after actual18-68 and92-193, including extraction variants, metadata schemes, orchestrator-targeted attacks and mock safety policies. Exact image-rendered prompt wording remains unknown, but actual181-193 explicitly bounds its role to already specified components. Source outcomes, fabricated-tool counts and assurance rhetoric are withheld.",
+    "locator_sha256": "53e4c84392946f7f3ff0941c4200a1bb521fea095122a965f50f73979200e096",
+    "locators": [
+      {
+        "n": 18,
+        "kind": "heading",
+        "id": "S3",
+        "sha256": "abe02c5c127f19269ed33746b123f2d94b677e020a101aa83dfbefebbb653817"
+      },
+      {
+        "n": 19,
+        "kind": "paragraph",
+        "id": "S3.p1.1",
+        "sha256": "9242bdb89a6ded02234efcdd9749b41be6c7043cc217e1ef08aff34dab31af65"
+      },
+      {
+        "n": 20,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "sha256": "75ef8213908823f1fb99bb2e7db976419d6a579b525b4306c0011c3102f3bfc6"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "sha256": "f30e484d84aa34be3fbf3c0b8cf798e4a5ad25d6b086661c7c6b4d1795e2ffa7"
+      },
+      {
+        "n": 22,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.1",
+        "sha256": "bc9ccc5cf27b5be3f3f2796d70acdc20b188a8f6ab94eda1a773fdd4f3ac67e2"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S3.SS1.p3.1",
+        "sha256": "611288ba05f52361722e13b5e4427e96585b7fd052badb901d6138cd79c3f632"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S3.SS1.p4.1",
+        "sha256": "2d1332ee31f841f96f770162252a8c811d12ace7f02de2aa1fbc731a16a01e05"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S3.SS1.p4.2",
+        "sha256": "4ece58ebc0443782df463e855063235d530fe35cf9bcdc51dee42cd32df1ba3e"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S3.SS1.p5.1",
+        "sha256": "7c4f44fa6e06011c574af7f21003d38228703c130f874349a6223196bf181b6a"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S3.SS1.p6.1",
+        "sha256": "ac61f7af2d20f6efaa6273151e781c0b3a111a707b9687dd92df31fd0edbfee9"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S3.SS1.p6.2",
+        "sha256": "8e7dcc06f88da7c398ac645af875ac8c489a3eac2e5935cf35c3f9504208db8f"
+      },
+      {
+        "n": 29,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "sha256": "119b8a27b4913e41f1abda72031935468d46ac453da9c44336f64b8cdd158d2f"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.1",
+        "sha256": "6e8ae8f4638aa1dd26c80f4083c122562ab8d990e3b9837e0e76eb2bc392ab82"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S3.SS2.p2.1",
+        "sha256": "6180e722b79f2759584da7325654b050c82a95f3026fbd0cf0b7434ae9940a10"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S3.SS2.p3.1",
+        "sha256": "49cb9e87fcb4a40b5363ec5e5dadb347e575c7394c4041fec7521673a6480336"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S3.SS2.p4.1",
+        "sha256": "0aca854ae11cdca53d5137a2135c903c4cfe57e85dfa0699312d7bae35de8cc8"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S3.SS2.p5.1",
+        "sha256": "9983e5ea9029c3834d34e51bb621a9300f590c0440b813d280c62278fb1e065c"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S3.SS2.p5.2",
+        "sha256": "2d64cc3977477cb4fd4b512d4ee6a264bd2d96eac4b10684e54e5f268480de96"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S3.SS2.p6.1",
+        "sha256": "782b7673a7b6dedc25e69ed2995bc1192c1d2d9f2a0b2153271188208c78a0ee"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S3.SS2.p7.1",
+        "sha256": "576b98af44425571e1762e73fdc44e885a0f98ea50b1b4761f20181f3e1fff4b"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S3.SS2.p7.2",
+        "sha256": "89dc28477ffee7e1c105b478e66315ed347f028a5e44a2dca4861ab4429001e5"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S3.SS2.p8.1",
+        "sha256": "01afb95e4a15c208e8087057e26204ebbbc466f5b68857d4ee12b646f0df2f2b"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S3.SS2.p8.2",
+        "sha256": "6393c896e31dd14ff4ce1755fc33a9da897104b1eee827c8dbfba76a753271e0"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S3.SS2.p9.1",
+        "sha256": "abdc696d6f11c1d18a08f0d220ddf7c021b14f4e94e82f50b22db9d72b4474df"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S3.SS2.p10.1",
+        "sha256": "6111f4d216b2681d45a06a83332a6145c6c6f32627b94c6ad03cfe6f243b2dde"
+      },
+      {
+        "n": 43,
+        "kind": "heading",
+        "id": "S4",
+        "sha256": "cc4f57d26bda2f5e14a1b83e7d1124ee1df046895ca3f0870d6717b84dfbb32b"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "sha256": "63aacdefeda5010968e83ae0215629de984ccaa2c6b327fc816f3d304dd0a144"
+      },
+      {
+        "n": 45,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "sha256": "66182cc41345b6453d4419a859f553c06f074fab224947955b50106e641be00f"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "sha256": "8b94763242e6df29f3be95bd3e91f3d2afe32824de743bdf57a053e04bab45cb"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "sha256": "3080e6308766027896aaa4fbf727494d925e0f27a1f8208feb4fa510cd7dc6ef"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S4.SS1.p3.1",
+        "sha256": "666db6e2d1b302996eb7b8b9920a92cf996c5da448ef9ef959ae4d44e1453efa"
+      },
+      {
+        "n": 49,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "sha256": "16db380ad9dc61a740bab77e1cacef8d4cbf204ed7cfaf16c52d9173d6ebbdbf"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "sha256": "d99dad54e0302edc3f6e78362a9ccd7ebfe3423e57094dd985a886ba7bc4047a"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "sha256": "f5821cfd229f57894ec71fa9b8a6af34883218a6c26f9ea3e179fe1f0740369e"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S4.SS2.p3.1",
+        "sha256": "dc41e6e8dd32e2166860cdc9a83fcb44a1dc297e139b026017d8d02d62d49e70"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S4.SS2.p4.1",
+        "sha256": "7bb7ad7e4b5c356f4bb006a8fcca5be17ab1eb7042381d69272eac748d1e0ab7"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S4.SS2.p5.1",
+        "sha256": "6ec2b6a1c272868291a8bb7e630b2e71030b9eae2be6661fe8849c504b2ffdfc"
+      },
+      {
+        "n": 55,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "sha256": "4984c23def7e9ecc1aea5c4276a593a62d104c33f50beae115ed58c25fde2315"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "sha256": "5970de7df2a561aeece517c90c2935a047c35019c7ea9f5950644818c031da4c"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S4.SS3.p2.1",
+        "sha256": "1c718f16101af006c62b3fef9881139b42bc839699a2d8e85b6663a86e0d30a7"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S4.SS3.p3.1",
+        "sha256": "f444d270e2447c365db012258f2045b4d4143d116d4390ef314621caa994c7ed"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "S4.SS3.p4.1",
+        "sha256": "7e6cb4899fa3c3892ed464a3c1d2fd43b84a37987f4c09c56deb47cf8632b6ae"
+      },
+      {
+        "n": 60,
+        "kind": "heading",
+        "id": "S4.SS4",
+        "sha256": "bcbf5a83f764962a81192d0c15105becb14d1154763baa6c619acb087fdb1782"
+      },
+      {
+        "n": 61,
+        "kind": "paragraph",
+        "id": "S4.SS4.p1.1",
+        "sha256": "601bce90c95168afe8b4bf1c6e10da1442925485645b1ce079bb71c97e40c4ee"
+      },
+      {
+        "n": 62,
+        "kind": "paragraph",
+        "id": "S4.SS4.p2.1",
+        "sha256": "bb77f52df7eed1718716206edad3a9cfd04df6c07fbce12edc3664823bb36d18"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "S4.SS4.p3.1",
+        "sha256": "22194b68693f062ad0d989bb8eb30132c6f059fc80408b99fadbb4273c44160d"
+      },
+      {
+        "n": 64,
+        "kind": "paragraph",
+        "id": "S4.SS4.p4.1",
+        "sha256": "13339a1fdb6d16b61dc45e920f6e987beceb57693c7a281f7b312fe216be04e6"
+      },
+      {
+        "n": 65,
+        "kind": "heading",
+        "id": "S4.SS5",
+        "sha256": "4f8e44cfff5851ef2519578d2af8b52a1fcf38496bc892a94ebebf1f64977961"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "S4.SS5.p1.1",
+        "sha256": "01eeec7e529882d82a2d468b0425e30c66ad28ee648e2148ba4b7d7976573bb9"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "S4.SS5.p2.1",
+        "sha256": "6d691b9338da2da3f9e1ebe07fe655d90c934780a298dfcbbb754d43bb2e4c2c"
+      },
+      {
+        "n": 68,
+        "kind": "paragraph",
+        "id": "S4.SS5.p3.1",
+        "sha256": "afb433329638f943ba555b1f814c6922738e755fef9564360669aac4d5d0ab5d"
+      },
+      {
+        "n": 92,
+        "kind": "heading",
+        "id": "A2",
+        "sha256": "c7b8e93faec2aab401da0155a1834f10a1b1bcdda900b49eabb5fa60221041cc"
+      },
+      {
+        "n": 93,
+        "kind": "paragraph",
+        "id": "A2.p1.1",
+        "sha256": "a594cdb623e03f46e654c313cc389ddcba80d7c37b355ea44fd6a58a8d0bf783"
+      },
+      {
+        "n": 94,
+        "kind": "paragraph",
+        "id": "A2.p2.1",
+        "sha256": "e6d8a60275dcbd08fd87fff465f13c64cfd333d269c56f60f906447ed925dd39"
+      },
+      {
+        "n": 95,
+        "kind": "paragraph",
+        "id": "A2.I1.i1.p1.1",
+        "sha256": "9e71b8266bc7b7710a331d5de84dc247caa5ac17442f59fcb320f4c1486c9186"
+      },
+      {
+        "n": 96,
+        "kind": "paragraph",
+        "id": "A2.I1.i2.p1.1",
+        "sha256": "f8cbc428d4074eaad6df3990a55a909b4e58696edb31d89f1d6b6d958582bdf0"
+      },
+      {
+        "n": 97,
+        "kind": "paragraph",
+        "id": "A2.I1.i3.p1.1",
+        "sha256": "e49513d1dfd19afdf4b28dcac3ab6253bb6fffac3e50cc9b34499c9ebb10dede"
+      },
+      {
+        "n": 98,
+        "kind": "paragraph",
+        "id": "A2.I1.i4.p1.1",
+        "sha256": "138b5326a870e3dfd0075d4fff62f1595bd43b0c40635dd45aab708806aa53b8"
+      },
+      {
+        "n": 99,
+        "kind": "paragraph",
+        "id": "A2.p2.2",
+        "sha256": "3664716aaf342389805e9ba32197612c855f125fea355a8aa209dc9685df045f"
+      },
+      {
+        "n": 100,
+        "kind": "heading",
+        "id": "A2.SS1",
+        "sha256": "6a2a5b238c2e66cc099d3e306482f33d0dd94cdcbcd5d2c4851036eda82068a7"
+      },
+      {
+        "n": 101,
+        "kind": "paragraph",
+        "id": "A2.SS1.p1.1",
+        "sha256": "9774455c95d220be24377ef26bc2e340b0b776964bdb9e12cda07483c7b90a8e"
+      },
+      {
+        "n": 102,
+        "kind": "paragraph",
+        "id": "A2.I2.i1.p1.1",
+        "sha256": "6b560d80e8856e461e24da3d5387884e02920c6ae00b07b06a353e6ed49927ef"
+      },
+      {
+        "n": 103,
+        "kind": "paragraph",
+        "id": "A2.I2.i2.p1.1",
+        "sha256": "51acdd00c59f09f047bdd799db5fc271849185952bd6ee595385e534fb74ba0c"
+      },
+      {
+        "n": 104,
+        "kind": "paragraph",
+        "id": "A2.I2.i3.p1.1",
+        "sha256": "d650cc08730ac1506909025e6dccb809b2981f6ab0df6e0f4238e76307e0ec70"
+      },
+      {
+        "n": 105,
+        "kind": "paragraph",
+        "id": "A2.SS1.p3.1",
+        "sha256": "fe98faf64c9d8511bf115660e2d3778e24eb8c937f92a38080a2721f4a03c2dc"
+      },
+      {
+        "n": 106,
+        "kind": "heading",
+        "id": "A2.SS2",
+        "sha256": "e53373fb470060f6cad0c5026055f9931304c51641a77cff97172bf539b93775"
+      },
+      {
+        "n": 107,
+        "kind": "paragraph",
+        "id": "A2.SS2.p1.1",
+        "sha256": "aec4abfbd7b26bbd448a594b014749a737dafda82d43697e8e8399b49957e10d"
+      },
+      {
+        "n": 108,
+        "kind": "heading",
+        "id": "A2.SS3",
+        "sha256": "bd9ca25a84dce034fd762877bfdd6b71d13e82b67c57a6c03ace347f3cad2c06"
+      },
+      {
+        "n": 109,
+        "kind": "paragraph",
+        "id": "A2.SS3.p1.1",
+        "sha256": "82b1a6c343253d44fdd05739352c359a7a9e40ff46a2e9f52b64b44c7d57e27e"
+      },
+      {
+        "n": 110,
+        "kind": "paragraph",
+        "id": "A2.SS3.p2.1",
+        "sha256": "0a60902c6910eaf960449feb3d08b0ecbdbc8671711b9548d38ced5a781f5de8"
+      },
+      {
+        "n": 111,
+        "kind": "heading",
+        "id": "A2.SS4",
+        "sha256": "93ac1bab5643e0998ec9857727ddc38566790cf17e2e96bc256a16455dce8108"
+      },
+      {
+        "n": 112,
+        "kind": "paragraph",
+        "id": "A2.SS4.p1.1",
+        "sha256": "bf1a3b52196c7256a829754d44363b183ba7b9b44deb8ead7523a0eb48d8426f"
+      },
+      {
+        "n": 113,
+        "kind": "paragraph",
+        "id": "A2.SS4.p2.1",
+        "sha256": "3b0c41bfb113458fbe55a96bd7d6d4375f0057f890917f17248a8a79e943b02b"
+      },
+      {
+        "n": 114,
+        "kind": "heading",
+        "id": "A2.SS5",
+        "sha256": "14fb2fd2a9fd135c4c71737e4d975b464f24f17586534ac7f3837b801e90f64c"
+      },
+      {
+        "n": 115,
+        "kind": "paragraph",
+        "id": "A2.SS5.p1.1",
+        "sha256": "2b3ed976dd44c864258f90456510c1e7868fe00bcc00e947d82a8b0cfeb3a54c"
+      },
+      {
+        "n": 116,
+        "kind": "heading",
+        "id": "A3",
+        "sha256": "c3e09ea5c8cd8d39536badcf6e0e3bd68a9845bc53b1222d8a6765b8172cee36"
+      },
+      {
+        "n": 117,
+        "kind": "paragraph",
+        "id": "A3.p1.1",
+        "sha256": "4866efb48d8209b7fec36b2a332d04e9e65ca2c95c4c4b089160192544ea1594"
+      },
+      {
+        "n": 118,
+        "kind": "heading",
+        "id": "A3.SS1",
+        "sha256": "5e7da33aa9b0580ce1983810755ca48d791accefa0b71efcccbf78f68d9ba5a8"
+      },
+      {
+        "n": 119,
+        "kind": "paragraph",
+        "id": "A3.SS1.p1.1",
+        "sha256": "fd2a694f1afb20352b04ff0eb0937930432ca3ea058a994dfa94302eade66b69"
+      },
+      {
+        "n": 120,
+        "kind": "paragraph",
+        "id": "A3.SS1.p2.1",
+        "sha256": "66eb6a9e628970107d1bd4a20626f0562fff88d519d3fb517a4b55dd338090b6"
+      },
+      {
+        "n": 121,
+        "kind": "heading",
+        "id": "A3.SS2",
+        "sha256": "a06d547c5eaf57df54341cf267c32742f2b7a5aa925f49589d5f8458cb27ce0f"
+      },
+      {
+        "n": 122,
+        "kind": "paragraph",
+        "id": "A3.SS2.p1.1",
+        "sha256": "f7e35869b6df3a444534bd86881a9ff979761e9d4ca69f1bc0ce2985b74794a2"
+      },
+      {
+        "n": 123,
+        "kind": "paragraph",
+        "id": "A3.SS2.p2.1",
+        "sha256": "b45a69b8d6a6b999fffe0a10d10f022103564810204ebe4884ca7d64e56bc8fd"
+      },
+      {
+        "n": 124,
+        "kind": "paragraph",
+        "id": "A3.SS2.p3.1",
+        "sha256": "ff27cdd6b74436a6bf78ebdcef2f58a45152e6e48b253d55aa219074adae0aad"
+      },
+      {
+        "n": 125,
+        "kind": "heading",
+        "id": "A3.SS3",
+        "sha256": "489be29bc69042a82145a730211298e83154e71628befabafb20e4d0087cc49c"
+      },
+      {
+        "n": 126,
+        "kind": "paragraph",
+        "id": "A3.SS3.p1.1",
+        "sha256": "925341eb616385343f3aec1cc8db6ba2d98d19785384ede0167fbc6d1f3a8e3e"
+      },
+      {
+        "n": 127,
+        "kind": "paragraph",
+        "id": "A3.SS3.p2",
+        "sha256": "25d14978819d4201edb010cf77edf4da201eb0018a1af395262ea85e2c51fff9"
+      },
+      {
+        "n": 128,
+        "kind": "paragraph",
+        "id": "A3.SS3.p3",
+        "sha256": "61fb7136ccb0148dada7c8977a01087b8876322001928eda177614b3794ae767"
+      },
+      {
+        "n": 129,
+        "kind": "paragraph",
+        "id": "A3.SS3.p4.1",
+        "sha256": "a1ddc9114fc49432a694ca818e5e5e48d30a09c7c7fb35503920d9a24d672c59"
+      },
+      {
+        "n": 130,
+        "kind": "paragraph",
+        "id": "A3.SS3.p5",
+        "sha256": "1c352c4358eb77323f3e3ef34714f8d022705099fbf00e0d0c558d8b649a1731"
+      },
+      {
+        "n": 131,
+        "kind": "paragraph",
+        "id": "A3.SS3.p6.1",
+        "sha256": "f4ddf79d368fdd86a517b671aec6cd92c7f379d798bb457718a9e07a75970d86"
+      },
+      {
+        "n": 132,
+        "kind": "heading",
+        "id": "A3.SS4",
+        "sha256": "755b7d02161ba995cd2cf48fdc4914ad5a3eb943491fef7f246420b2a120a9f9"
+      },
+      {
+        "n": 133,
+        "kind": "paragraph",
+        "id": "A3.SS4.p1.1",
+        "sha256": "31163926af17ef86711cf39098e3d15f1cc0fe346e5c9e13d4fa6968e98a5997"
+      },
+      {
+        "n": 134,
+        "kind": "heading",
+        "id": "A3.SS5",
+        "sha256": "821951152588d959ee0436191e0772b865bce82c60b4179735f605c0e209b473"
+      },
+      {
+        "n": 135,
+        "kind": "paragraph",
+        "id": "A3.SS5.p1.1",
+        "sha256": "7b4cd772cf5d8d9b68e3d8918855b237153a4691c6761729cdc35415cb45ab95"
+      },
+      {
+        "n": 136,
+        "kind": "paragraph",
+        "id": "A3.SS5.p2.1",
+        "sha256": "911112ff4f9f76029f2e91439facaaa375954dd00c58e096d86da64eea4d54f0"
+      },
+      {
+        "n": 137,
+        "kind": "paragraph",
+        "id": "A3.SS5.p3.1",
+        "sha256": "b29840f8be1f7dc86a26250ffd27595c6fee5e6719f58359a25b7a012501a97c"
+      },
+      {
+        "n": 138,
+        "kind": "paragraph",
+        "id": "A3.SS5.p4.1",
+        "sha256": "a632ed5bee7dd235e5ea48026d72f365c4400eed706888af6e28c107248f313b"
+      },
+      {
+        "n": 139,
+        "kind": "paragraph",
+        "id": "A3.SS5.p5.1",
+        "sha256": "fd79e916a021a1a8476875b36f4b3a2a74ee919d637c62b7731ac7df37d8d710"
+      },
+      {
+        "n": 140,
+        "kind": "heading",
+        "id": "A3.SS6",
+        "sha256": "fda39b1cce11b743697516f9e8ba55ce9606cacaf97681e208ca9002281b6bd7"
+      },
+      {
+        "n": 141,
+        "kind": "paragraph",
+        "id": "A3.SS6.p1.1",
+        "sha256": "14d9c3c1b66eadfa9ba4cccf770cf73d78646cb0b37c79b8681ccce8414312c9"
+      },
+      {
+        "n": 142,
+        "kind": "paragraph",
+        "id": "A3.SS6.p2.1",
+        "sha256": "6b428df89dc5dccbbc7f10d5c26c19b0f3b6cee245b1b8a2af46d6f867c7f02c"
+      },
+      {
+        "n": 143,
+        "kind": "heading",
+        "id": "A4",
+        "sha256": "15b878e7dd912ac255bf1a0ef4da4b8d252aa7e96c200cefd429ef7384a5b3d5"
+      },
+      {
+        "n": 144,
+        "kind": "paragraph",
+        "id": "A4.p1.1",
+        "sha256": "506cc0cfc6f3de508a03aaee00ba4abff7303265c0e5f0aea35ba995456de28c"
+      },
+      {
+        "n": 145,
+        "kind": "paragraph",
+        "id": "A4.p2.1",
+        "sha256": "b8e7c7a0d10b8ea6a05994e7ceedd572c5e36fbee7dc22cacb07b1a2d20ec9f3"
+      },
+      {
+        "n": 146,
+        "kind": "heading",
+        "id": "A4.SS1",
+        "sha256": "e6f0d4d77fdaa3ab0b75b6d968687891c534d82906bddec5820dc70626bd0240"
+      },
+      {
+        "n": 147,
+        "kind": "paragraph",
+        "id": "A4.SS1.p1.1",
+        "sha256": "805863ed61c8564efef81ce76f41cfc9989645c125392a127b37019a2dcce2f1"
+      },
+      {
+        "n": 148,
+        "kind": "paragraph",
+        "id": "A4.SS1.p2.1",
+        "sha256": "040f05d022c94d8f00519bff131b2dfad295b4190ea69b06332471ec58d28a6e"
+      },
+      {
+        "n": 149,
+        "kind": "paragraph",
+        "id": "A4.SS1.p3.1",
+        "sha256": "d7d4a95981c8e1499fab699a3dd93e71932e426d54697d0bf523783c8e01530e"
+      },
+      {
+        "n": 150,
+        "kind": "paragraph",
+        "id": "A4.SS1.p4",
+        "sha256": "52185262d86609580d16b0096cc735db486db85b1c9678d7d9cf3252dbfa314f"
+      },
+      {
+        "n": 151,
+        "kind": "paragraph",
+        "id": "A4.SS1.p5",
+        "sha256": "5dcc367250b0715c99d4fed96a98770a51792e98654d8c3218da0c34ce5c5ba4"
+      },
+      {
+        "n": 152,
+        "kind": "paragraph",
+        "id": "A4.SS1.p6.1",
+        "sha256": "f871d690011334e32c30f1ab424e32ac2c631a44d7a04177d3e2821958cff0dd"
+      },
+      {
+        "n": 153,
+        "kind": "paragraph",
+        "id": "A4.SS1.p7",
+        "sha256": "fbcbdbdfba710c97fa461dbc42940de3f6e9c03c26ca59892d6511b9ba872237"
+      },
+      {
+        "n": 154,
+        "kind": "paragraph",
+        "id": "A4.SS1.p8.1",
+        "sha256": "0e85b93ff98bdf00326b2483c4cea02e2d72dc45168372fddb0da93057ff7c61"
+      },
+      {
+        "n": 155,
+        "kind": "paragraph",
+        "id": "A4.SS1.p9.1",
+        "sha256": "2e0825f263d77f766c99320cdbfc4befcd5add731215504518412bfe09f4d8af"
+      },
+      {
+        "n": 156,
+        "kind": "heading",
+        "id": "A4.SS2",
+        "sha256": "7e3d65edd91dd63f5f24bb400502057817d0262aac7c1c4b1005be2c19503c04"
+      },
+      {
+        "n": 157,
+        "kind": "paragraph",
+        "id": "A4.SS2.p1.1",
+        "sha256": "495ba69ac887d54c4f75f98c01f9a35a13d49ff6c7c1db1b468ced3a51e3d04c"
+      },
+      {
+        "n": 158,
+        "kind": "paragraph",
+        "id": "A4.SS2.p2.1",
+        "sha256": "29329c88a703dd53f4afb6928282ccc45fa691b2cc131ab6f11592af7183959d"
+      },
+      {
+        "n": 159,
+        "kind": "paragraph",
+        "id": "A4.SS2.p3.1",
+        "sha256": "365036ee22112154693f5eeada6761ddf971806dc379f7a52b45857f1aa3d5dd"
+      },
+      {
+        "n": 160,
+        "kind": "paragraph",
+        "id": "A4.SS2.p4.1",
+        "sha256": "0f3db57d7543aa6f7e906b03f671b1b06afe74f8be9a0fa3035d192c92fc4deb"
+      },
+      {
+        "n": 161,
+        "kind": "paragraph",
+        "id": "A4.SS2.p5.1",
+        "sha256": "125e03477b8a221e63b456d08d9f66734126d3b2e2e8e2c9d0c49b716bd30a6d"
+      },
+      {
+        "n": 162,
+        "kind": "paragraph",
+        "id": "A4.SS2.p6",
+        "sha256": "fe8853f7c1c88e72846716227ac8a51cc2162179d1a69be255be5199b8117ee4"
+      },
+      {
+        "n": 163,
+        "kind": "paragraph",
+        "id": "A4.SS2.p7",
+        "sha256": "c7cf061310901effdf6e7757d25d80f2d9b8cf7a1e530dcce9e67c5764b54d06"
+      },
+      {
+        "n": 164,
+        "kind": "paragraph",
+        "id": "A4.SS2.p8.1",
+        "sha256": "32dcb07c88678d76d8361984d90e7148e6f5a57ed228ab9e3c6313cf95cb2551"
+      },
+      {
+        "n": 165,
+        "kind": "paragraph",
+        "id": "A4.SS2.p9",
+        "sha256": "52c779a9e196405858ab2038e4efca277ff092f5c4226b89a233a48abd5928cc"
+      },
+      {
+        "n": 166,
+        "kind": "paragraph",
+        "id": "A4.SS2.p10.1",
+        "sha256": "40a7b39d93e3900348580e955fa1b4622999e5fb76b606224fe27152eb0c9d7c"
+      },
+      {
+        "n": 167,
+        "kind": "paragraph",
+        "id": "A4.SS2.p11.1",
+        "sha256": "cde25be57fd09aa65a46a573f224eafc35679804d51c2f94f3b51dbf56e2a5a6"
+      },
+      {
+        "n": 168,
+        "kind": "heading",
+        "id": "A5",
+        "sha256": "c0977f03b20a982648bf627efac3a4a850ba3db693f25741a9eeab32f9bb996c"
+      },
+      {
+        "n": 169,
+        "kind": "paragraph",
+        "id": "A5.p1.1",
+        "sha256": "e14752f069a925e3125095496366c8a9fca1de43ca27aa2de529cfd7d60674c3"
+      },
+      {
+        "n": 170,
+        "kind": "paragraph",
+        "id": "A5.p2.1",
+        "sha256": "6b24701db135fa1067dc7b92c9a3f14c5695a09113037a628f1e25ac924a4ad6"
+      },
+      {
+        "n": 171,
+        "kind": "paragraph",
+        "id": "A5.p3.1",
+        "sha256": "ceda15460c5faf9d2113c8085259364ccd3af9b0b6640ba278e357033f2e1dc2"
+      },
+      {
+        "n": 172,
+        "kind": "paragraph",
+        "id": "A5.p4.1",
+        "sha256": "5da624009ceb2d800e98f3aa0784ade9c7391c6cb83751f402dfdd6300621fe3"
+      },
+      {
+        "n": 173,
+        "kind": "paragraph",
+        "id": "A5.I1.i1.p1.1",
+        "sha256": "65fd712503130363ab92e7c8ff29b7b2a6fe3096f546918e0b5f6b423bc37ca8"
+      },
+      {
+        "n": 174,
+        "kind": "paragraph",
+        "id": "A5.I1.i2.p1.1",
+        "sha256": "777c34a9a560e54293f789ffec9f1cf968046b7def9271f026e611f0ab376100"
+      },
+      {
+        "n": 175,
+        "kind": "paragraph",
+        "id": "A5.I1.i3.p1.1",
+        "sha256": "d7b2b2f618983769d1cb3fb8722f02a6eb1e0a0e6ecf1ecadd757a2db0bcbd3c"
+      },
+      {
+        "n": 176,
+        "kind": "paragraph",
+        "id": "A5.p4.2",
+        "sha256": "08e5fd7d61e2a4be967d2823bb9f9b2ea65aa5f49f683a8aff3b474d2d5d07ee"
+      },
+      {
+        "n": 177,
+        "kind": "paragraph",
+        "id": "A5.p5.1",
+        "sha256": "29a71344d3000e287259500cef637c678c10531a3dce5ac974e5f7ccd371bdac"
+      },
+      {
+        "n": 178,
+        "kind": "paragraph",
+        "id": "A5.p6.1",
+        "sha256": "cdb5840d7b6b263d6ccc5164528117395e1f653c973057d7b4bdb7c46e54bed0"
+      },
+      {
+        "n": 179,
+        "kind": "paragraph",
+        "id": "A5.p7.1",
+        "sha256": "d5cd20cf880430a8c306263b942cfce4fd0ad2339b592b5acc5c6d5f0e8c8663"
+      },
+      {
+        "n": 180,
+        "kind": "heading",
+        "id": "A6",
+        "sha256": "8c96931898fbc6a0b1c19b98b78b0b156e3ece0a3fcc8482075cabe84970034e"
+      },
+      {
+        "n": 181,
+        "kind": "paragraph",
+        "id": "A6.p1.1",
+        "sha256": "484830728917224046f0dd20bb3aae4d5cc6743b2b2c4f83390ae06e0093c934"
+      },
+      {
+        "n": 182,
+        "kind": "heading",
+        "id": "A6.SS1",
+        "sha256": "0d732b872c7ceee6cc0bface13a8144993c40eebacc632fbc8697c191c6a039b"
+      },
+      {
+        "n": 183,
+        "kind": "paragraph",
+        "id": "A6.SS1.p1.1",
+        "sha256": "cf15a7cd7cb8fd1a4ff0f56b7b4a797ab1f465751146acb225bdde6e69e6685c"
+      },
+      {
+        "n": 184,
+        "kind": "paragraph",
+        "id": "A6.SS1.p2.1",
+        "sha256": "7e0a4c5905c36b636745f31a234d048c93c82d5045ab32827b0f9fbf79fc7884"
+      },
+      {
+        "n": 185,
+        "kind": "paragraph",
+        "id": "A6.SS1.p3.1",
+        "sha256": "1d3fe6fdd4a0096a881de485cce080dc78501e63b5c6f20c43c964558c49d04d"
+      },
+      {
+        "n": 186,
+        "kind": "paragraph",
+        "id": "A6.SS1.p4.1",
+        "sha256": "0d342a45873f883f80694cf3f2ffd338cb5d237de3e9b44aa0a54fa4e55307e7"
+      },
+      {
+        "n": 187,
+        "kind": "heading",
+        "id": "A6.SS2",
+        "sha256": "d0f36a935ce0f24ecf9e09595858f898374ea7204920986c69bde93497bf63a9"
+      },
+      {
+        "n": 188,
+        "kind": "paragraph",
+        "id": "A6.SS2.p1.1",
+        "sha256": "fc5ef863b0c42823d2cdaf8851f42cd8ebd487861280f0595dac3ac493626a70"
+      },
+      {
+        "n": 189,
+        "kind": "paragraph",
+        "id": "A6.SS2.p2.1",
+        "sha256": "2f571a664774f679b49eec655f584ca710f2c223524e610eea4b039bcb3aa5d0"
+      },
+      {
+        "n": 190,
+        "kind": "paragraph",
+        "id": "A6.SS2.p3.1",
+        "sha256": "c6b99f31c10466ec9c32026d091e5d7310219e60cd4e64e53b31f0d9dbd18b9c"
+      },
+      {
+        "n": 191,
+        "kind": "paragraph",
+        "id": "A6.SS2.p4.1",
+        "sha256": "a0d890693bbafd08e2109d3a628ab6151c774d1108d64216787adfa75b181f5c"
+      },
+      {
+        "n": 192,
+        "kind": "heading",
+        "id": "A6.SS3",
+        "sha256": "01c124f2a36e2290f32c5a351bc0a6b477b0b34d6a01d93cd5ddae93a6b743f7"
+      },
+      {
+        "n": 193,
+        "kind": "paragraph",
+        "id": "A6.SS3.p1.1",
+        "sha256": "b0165cc6d729689517ea75858c3544d54146dda1b37fcf72e48c7113995aba04"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual19-41 defines offline code/activation-trace tool-inventory validation and online exposure, generated-call judgment and status tracking. Main44-68 and full Appendix B/C/D/E method prose distinguishes inventory, agent-injection, tool-description and mock safety-policy evaluations.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual21-27/46-47/101-115 specifies code/self-report candidates, generated activation queries, trace validation and discovery variants with callable-tool ground truth. Actual30-41/50/57-68/133-141 specifies dynamic exposure, status/call-judge and metadata/backbone/targeted variants. Appendix145-179 verifies description attacks and mocked functional/safety-tool sequence trials. Inventory validation and online judgments consume agent-generated calls/traces; mock safety tools are not independently measured semantic content classifiers.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual50/122-124 names PI Detector, formatter, Tool Filter, Repeat Prompt and CaMeL/MELON/Progent/AgentArmor comparisons. The appendix describes both published-source comparisons and available-code reproductions, with inconsistent availability wording across paragraphs; no stronger uniform original-run provenance is inferred. PI Detector internals are unspecified here; source names alone do not establish its exact input/output dependency.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True is verified for declared material main and Appendix B/C/D/E/F method families after actual18-68 and92-193, including extraction variants, metadata schemes, orchestrator-targeted attacks and mock safety policies. Exact image-rendered prompt wording remains unknown, but actual181-193 explicitly bounds its role to already specified components. Source outcomes, fabricated-tool counts and assurance rhetoric are withheld.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

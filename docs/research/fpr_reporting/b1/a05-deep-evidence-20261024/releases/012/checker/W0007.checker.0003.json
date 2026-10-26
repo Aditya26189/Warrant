@@ -1,0 +1,634 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0007",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:02:30.065145+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0007.provider.0002.json",
+  "provider_packet_sha256": "9e6e5e3ead713f67c974614dfc0894ef1e2ab881dc581d538bf89a6216d0a79f",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2403.08701v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\50b1ac341eacfa8274f14ca02eedbdffb748b9ac8440803d00df680ae6afe48e",
+    "raw_sha256": "50b1ac341eacfa8274f14ca02eedbdffb748b9ac8440803d00df680ae6afe48e",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0030.json",
+    "acquisition_receipt_sha256": "359737afe50fa4e770ed2c5df96867e1fcac00050776be023c21c86f3f73117c",
+    "captured_version_id": "arxiv:2403.08701v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        15,
+        87
+      ],
+      [
+        103,
+        107
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "VERIFIED_DECLARED_ORIGINAL_METHOD_FAMILIES",
+    "semantic_rationale": "Additional actual review sections read to preserve own-versus-cited boundaries. Named original families are reply/code demonstrations; external cybersecurity classifier studies remain attributed literature rather than this paper experiments. No screenshot outcome analysis required.",
+    "visual_check": null,
+    "locator_sha256": "03b650c9c572fe791658ae79a34862e11a79d9f6edda1496deb709561ab716c3",
+    "locators": [
+      {
+        "index": 15,
+        "paragraph_id": "S2.p1.1",
+        "section_id": "S2",
+        "heading": "2 Attacking GenAI",
+        "text_sha256": "9a1161e55e405c23d4f5d0e89f9e301c2b3c1dc7a5002e494addb4cb1206ac5b"
+      },
+      {
+        "index": 16,
+        "paragraph_id": "S2.SS1.p1.1",
+        "section_id": "S2.SS1",
+        "heading": "2.1 Jailbreaks",
+        "text_sha256": "4378dca3369028036238c0d63c883761c8633e85ab05f916662393ea1bfc5313"
+      },
+      {
+        "index": 17,
+        "paragraph_id": "S2.SS1.p3.1",
+        "section_id": "S2.SS1",
+        "heading": "2.1 Jailbreaks",
+        "text_sha256": "ed488fdb1cc35a43ee79749feec205e9c4dc2285f51081255362288db9329de1"
+      },
+      {
+        "index": 18,
+        "paragraph_id": "S2.SS1.p4.1",
+        "section_id": "S2.SS1",
+        "heading": "2.1 Jailbreaks",
+        "text_sha256": "75fd245b0e115f2dccd4dd170aa8fd49f4493085338562681756164db0ad0899"
+      },
+      {
+        "index": 19,
+        "paragraph_id": "S2.SS2.p1.1",
+        "section_id": "S2.SS2",
+        "heading": "2.2 Reverse psychology",
+        "text_sha256": "c22b8aae23e050375c3486534dcf7535e0f3e5f66e344f5d7063eb54953a9c77"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S2.SS2.p2.1",
+        "section_id": "S2.SS2",
+        "heading": "2.2 Reverse psychology",
+        "text_sha256": "0abc1e636d5a907a4ec1022cf69dc8cf91b41419fac1f3b72c16c5467c5c2f50"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S2.SS2.p3.1",
+        "section_id": "S2.SS2",
+        "heading": "2.2 Reverse psychology",
+        "text_sha256": "3888690575f7e2d0f63b28b7e846091fe8268b7f999bc95fcfe27b8c53ecb705"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S2.SS3.p1.1",
+        "section_id": "S2.SS3",
+        "heading": "2.3 Prompt injection",
+        "text_sha256": "e7efa41d40517381159300e29b045b356767ebec23ad81e8cbfbf1dd132a1b8a"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S2.SS3.p2.1",
+        "section_id": "S2.SS3",
+        "heading": "2.3 Prompt injection",
+        "text_sha256": "0838f0948192877419b825f0e5b4a40d4a8eb522370abb01164ca302396e5ea4"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S3.p1.1",
+        "section_id": "S3",
+        "heading": "3 Cyber Offense",
+        "text_sha256": "158254d35ebbb342aedf69a33311693c476ed197e83b605baa2e8a3c9afcbdcd"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.p2.1",
+        "section_id": "S3",
+        "heading": "3 Cyber Offense",
+        "text_sha256": "e2bc7b0288ecea912016328da5b315281c77467d597381da751dbb6c059d3cf9"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.p3.1",
+        "section_id": "S3",
+        "heading": "3 Cyber Offense",
+        "text_sha256": "b58b500c8e730579da2ddddf2e57ca7b8ee3e3f88b88b955f606c6991a465ff3"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Social engineering",
+        "text_sha256": "d32be1d92d9a7e1e56db11c105856f8ea67963865d68a9257dcf86cf72e1478c"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Phishing emails",
+        "text_sha256": "7a350aa27b8caa1acbcfbb747109ec0b8d86c8aa6078e7f4ebe2b4dd9e34946b"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS2.p2.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Phishing emails",
+        "text_sha256": "ce7354d102775ece890d289d328dd4fcdbdfa81650fff0355c625b4bf61a6637"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Automated hacking",
+        "text_sha256": "bc2168b380a0bdb9dcab8ff6a8cd7924a2fb6017ba7b868dc25573a36c4cdfea"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S3.SS3.p2.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Automated hacking",
+        "text_sha256": "48695c14759f64bb0c3cf72ab799af73abf512f29d8811681236521984f7f38b"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S3.SS4.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Attack payload generation",
+        "text_sha256": "f837987d51473243661d76605e7dd488da56977edcd735122afa7f0594672b80"
+      },
+      {
+        "index": 33,
+        "paragraph_id": "S3.I1.i1.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Attack payload generation",
+        "text_sha256": "5f78c9740988b35a2a44f342305429849e23951af4cc8efd564433e6961c1f5d"
+      },
+      {
+        "index": 34,
+        "paragraph_id": "S3.I1.i2.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Attack payload generation",
+        "text_sha256": "0d35839959597b2c39136dfe1b30e24221c8f2dc68f1386a0a143bd5012c86ab"
+      },
+      {
+        "index": 35,
+        "paragraph_id": "S3.I1.i3.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Attack payload generation",
+        "text_sha256": "b9626830d5ad946c6849480cd0f3b07b38778633856f67f2513e32c040c5e7ae"
+      },
+      {
+        "index": 36,
+        "paragraph_id": "S3.I1.i4.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Attack payload generation",
+        "text_sha256": "bfacd5324f30a1a20a6d78994917d1cfbe30c6a7ded2d035d6e8700cc63b4477"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S3.I1.i5.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Attack payload generation",
+        "text_sha256": "f7129a591c687cc326ba7e5ea91706fb92f123c8b48f7fb955864db48f58992a"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S3.I1.i6.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Attack payload generation",
+        "text_sha256": "fe372dccfa7e3ca576cdc15e09c47c737e45c1300f65ddbd238bd562231b4e34"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S3.SS5.p1.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Malware Code Generation",
+        "text_sha256": "a08ea89fa67bead02358b71311583d56966699b6012e6d0f2f377dec73c1bf88"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S3.SS6.p1.1",
+        "section_id": "S3.SS6",
+        "heading": "3.6 Polymorphic malware",
+        "text_sha256": "629dbfffdafe1a4b0bf8e8e4ce9238a9452387ff23c10549acb6f9dd049de54e"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S3.SS7.p1.1",
+        "section_id": "S3.SS7",
+        "heading": "3.7 Reversing cryptography",
+        "text_sha256": "9dd8d6a81955c6fec63b21a5f9ea0161801c586cf905d26dc0b124218739c817"
+      },
+      {
+        "index": 42,
+        "paragraph_id": "S3.SS7.p2.1",
+        "section_id": "S3.SS7",
+        "heading": "3.7 Reversing cryptography",
+        "text_sha256": "36159f42e798be4c7f1e219365d7d259a1b87622608eacf7ad8e2f26a0f51591"
+      },
+      {
+        "index": 43,
+        "paragraph_id": "S4.p1.1",
+        "section_id": "S4",
+        "heading": "4 Cyber Defence",
+        "text_sha256": "be5a5c3600529d132b9426bd80efc5124b122cf722dabd590ecb4e35a2193f4b"
+      },
+      {
+        "index": 44,
+        "paragraph_id": "S4.SS1.p1.1",
+        "section_id": "S4.SS1",
+        "heading": "4.1 Cyber Defence Automation",
+        "text_sha256": "5aca462de44296a9717e7f7e7b427b153554a8d2c5498529ae776edbd8c03215"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S4.SS2.p1.1",
+        "section_id": "S4.SS2",
+        "heading": "4.2 Cybersecurity Reporting",
+        "text_sha256": "65a1135e686bb0fe5d7071a462899e7e60496bbd23097061c7a872a571397fa2"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S4.SS3.p1.1",
+        "section_id": "S4.SS3",
+        "heading": "4.3 Threat Intelligence",
+        "text_sha256": "c20f23219a2fd899fbc4a0bea5a09932cbf00d98db48e45a2d9db5c8855427db"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S4.SS4.p1.1",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Secure Code Generation and Detection",
+        "text_sha256": "567ca4017a39a44be37194cc10b26f866a0777b92e87e8cd63f68f3d90fab096"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S4.SS4.p2.1",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Secure Code Generation and Detection",
+        "text_sha256": "f61906ca9195b114ed3ffa1f815d680aa57202fac397e532ac3bcfe7c53a2f30"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S4.I1.i1.p1.1",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Secure Code Generation and Detection",
+        "text_sha256": "58c56c39168870887e5099e4c2b5cfa0ad9942507640609e8d6a3fd7837644da"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S4.I1.i2.p1.1",
+        "section_id": "S4.SS4",
+        "heading": "4.4 Secure Code Generation and Detection",
+        "text_sha256": "6637bb28229b2ebc13453ff4b62b1b333b0d2c07fc6b3077ced3524e283b2d02"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S4.SS5.p1.1",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Vulnerability Detection and Repair",
+        "text_sha256": "cc4708ef7435089f5f5fc195b0bb05b0e3ad3a24cc34537a5d3294ebacb3a749"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S4.SS5.p2.1",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Vulnerability Detection and Repair",
+        "text_sha256": "906a1ee06d819260f426c26e68d34e3df81e58c76ffb622865484ea74a933f26"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S4.SS5.p3.1",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Vulnerability Detection and Repair",
+        "text_sha256": "81ee6ee1a172d3f3c2d428e811429c83aab24ec474bf62869dd88ca447cc3b05"
+      },
+      {
+        "index": 54,
+        "paragraph_id": "S4.SS5.p4.1",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Vulnerability Detection and Repair",
+        "text_sha256": "4adccd017660c86ea91d676ed70d77cb5d8341e8f9a95d295a6a61cd70555291"
+      },
+      {
+        "index": 55,
+        "paragraph_id": "S4.SS5.p5.1",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Vulnerability Detection and Repair",
+        "text_sha256": "43a54781903dbf0fa3eaa4a8f3f25271ffcf9abca5b835a19a01126b4cf1ff3e"
+      },
+      {
+        "index": 56,
+        "paragraph_id": "S4.SS5.p6.1",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Vulnerability Detection and Repair",
+        "text_sha256": "701ec8e3b80e681d3788b60310dc02ec62d94e4777dd53c73b2b3acd1c1980fe"
+      },
+      {
+        "index": 57,
+        "paragraph_id": "S4.SS5.p7.1",
+        "section_id": "S4.SS5",
+        "heading": "4.5 Vulnerability Detection and Repair",
+        "text_sha256": "36a2f86019222c91386bf09564e93727b6aa32978d103be3c1cca084abe227e8"
+      },
+      {
+        "index": 58,
+        "paragraph_id": "S4.SS6.p1.1",
+        "section_id": "S4.SS6",
+        "heading": "4.6 Evaluating GenAI for Code Security",
+        "text_sha256": "b1ab9c2ba0edd9a0bbacab184f9fc043907a1469ea4ea03b4a5b6daabc7d630a"
+      },
+      {
+        "index": 59,
+        "paragraph_id": "S4.SS6.p2.1",
+        "section_id": "S4.SS6",
+        "heading": "4.6 Evaluating GenAI for Code Security",
+        "text_sha256": "a17ff637a18c299dd4577a2f274e870cfec2ad936a5021f6856ab6f414dd466a"
+      },
+      {
+        "index": 60,
+        "paragraph_id": "S4.SS7.p1.1",
+        "section_id": "S4.SS7",
+        "heading": "4.7 Developing Ethical Guidelines",
+        "text_sha256": "3d2572c7bca97e69957890f6dba76c478069fa69bd55088cb1d7cd0839b9257d"
+      },
+      {
+        "index": 61,
+        "paragraph_id": "S4.I2.i1.p1.1",
+        "section_id": "S4.SS7",
+        "heading": "4.7 Developing Ethical Guidelines",
+        "text_sha256": "60d07817ecf04cd5c2156d2e1788363641fa56c3cb254e286e4e7092a90c6450"
+      },
+      {
+        "index": 62,
+        "paragraph_id": "S4.I2.i2.p1.1",
+        "section_id": "S4.SS7",
+        "heading": "4.7 Developing Ethical Guidelines",
+        "text_sha256": "37d0dffad4da18997abd55c580ce8532bbbe6dffd3b922a16badca7086ec3dbf"
+      },
+      {
+        "index": 63,
+        "paragraph_id": "S4.I2.i3.p1.1",
+        "section_id": "S4.SS7",
+        "heading": "4.7 Developing Ethical Guidelines",
+        "text_sha256": "795737c19ded001d004d9479282431994f74c44a555cc1650ccae84d4aa1a03c"
+      },
+      {
+        "index": 64,
+        "paragraph_id": "S4.I2.i4.p1.1",
+        "section_id": "S4.SS7",
+        "heading": "4.7 Developing Ethical Guidelines",
+        "text_sha256": "e86e86c0525c8b439bfba89181929e8df557af2886f90da4721c23361518348a"
+      },
+      {
+        "index": 65,
+        "paragraph_id": "S4.I2.i5.p1.1",
+        "section_id": "S4.SS7",
+        "heading": "4.7 Developing Ethical Guidelines",
+        "text_sha256": "4fa86e3b21b6a47e2ee8d027449a1194d58034f1c3ca3f6ccbc11a4aa433ad78"
+      },
+      {
+        "index": 66,
+        "paragraph_id": "S4.I2.i6.p1.1",
+        "section_id": "S4.SS7",
+        "heading": "4.7 Developing Ethical Guidelines",
+        "text_sha256": "89ef08869ba42899b84b5e779bc4ba76f256c8e6ddacd1a31c3d153de964944b"
+      },
+      {
+        "index": 67,
+        "paragraph_id": "S4.SS8.p1.1",
+        "section_id": "S4.SS8",
+        "heading": "4.8 Incident Response and Digital Forensics",
+        "text_sha256": "e4408de82e527a54334a6dd2f5a775d8b564dbb8b16c800f73bee3429b1681b2"
+      },
+      {
+        "index": 68,
+        "paragraph_id": "S4.SS8.p2.1",
+        "section_id": "S4.SS8",
+        "heading": "4.8 Incident Response and Digital Forensics",
+        "text_sha256": "824effb42cd99d5e6b8d6f4c38e2b51fb8d3b44cfb9e847af503c534378d2b69"
+      },
+      {
+        "index": 69,
+        "paragraph_id": "S4.SS8.p3.1",
+        "section_id": "S4.SS8",
+        "heading": "4.8 Incident Response and Digital Forensics",
+        "text_sha256": "c76d6aed53be8a8da5220829f643d6903bf091bf64dfe231632a2437ad436bb5"
+      },
+      {
+        "index": 70,
+        "paragraph_id": "S4.SS9.p1.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "104188cf572d512b9f10d0cc39428b8889d00629a462606db6237ac6cc487108"
+      },
+      {
+        "index": 71,
+        "paragraph_id": "S4.SS9.p2.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "c12ae5e50d4436dd07fcdfd36a11e949fe781db258cd20b1f949d146fdcb1fc6"
+      },
+      {
+        "index": 72,
+        "paragraph_id": "S4.I3.i1.p1.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "9402c4d3d96ea020da00873e357a74f99f7d8ec45c94408f4964b7ddae50efbc"
+      },
+      {
+        "index": 73,
+        "paragraph_id": "S4.I3.i2.p1.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "f80da67003e6d06e37d7e67fbf5d2f1393fe792e95c75fed464fe1fe903cfbf1"
+      },
+      {
+        "index": 74,
+        "paragraph_id": "S4.I3.i3.p1.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "75272164009bdbf1bb968a45b054d8ba59a418965bbfe2af4825cc2372a3413f"
+      },
+      {
+        "index": 75,
+        "paragraph_id": "S4.I3.i4.p1.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "a0b136cb9ce66755ebb816dac29a2388637a9cba81741da57b2a0c95db0f417d"
+      },
+      {
+        "index": 76,
+        "paragraph_id": "S4.I3.i5.p1.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "aaaf2b6ca2ef5d073bd7c044c393ab1fcb3a6d8eeb74718e7ca1e2ba9c37fa06"
+      },
+      {
+        "index": 77,
+        "paragraph_id": "S4.I3.i6.p1.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "dff7019f04bc4822f13bd3aabf9e64402870dd29240f51c55a3be66a4baaaf74"
+      },
+      {
+        "index": 78,
+        "paragraph_id": "S4.I3.i7.p1.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "31f634ae24596f63e96b053dc2ac5626c6a0de7e1b653e2fdb818b7e50208644"
+      },
+      {
+        "index": 79,
+        "paragraph_id": "S4.I3.i8.p1.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "224ec5d75e8f6c5e05819c1f35568dd5ec4a1c117afbf9bce0beefaac18db409"
+      },
+      {
+        "index": 80,
+        "paragraph_id": "S4.I3.i9.p1.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "66ac417693d405d22ae56a5e4e33946315d1e333ef890644ed3dfe07d0338a64"
+      },
+      {
+        "index": 81,
+        "paragraph_id": "S4.I3.i10.p1.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "df361f3fefb4115c1e0ab956a1d9e93d61637a4528a343f9c2a96c33ff392d48"
+      },
+      {
+        "index": 82,
+        "paragraph_id": "S4.SS9.p4.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "3d3438b62a2ce1a24f5ab98ed2774123b7395079644f6b94d2f2d7da668d8ebb"
+      },
+      {
+        "index": 83,
+        "paragraph_id": "S4.SS9.p5.1",
+        "section_id": "S4.SS9",
+        "heading": "4.9 Identification of Cyber attacks",
+        "text_sha256": "3a66e95dc637420e45d2eec2e86b61aff4dbe7a98dabd0160b0707bf900dbf9e"
+      },
+      {
+        "index": 84,
+        "paragraph_id": "S4.SS10.p1.1",
+        "section_id": "S4.SS10",
+        "heading": "4.10 Dataset Generation",
+        "text_sha256": "25553207580369828e15b40f63278242991bc6f542edd3446c56a7e386f902e9"
+      },
+      {
+        "index": 85,
+        "paragraph_id": "S4.I4.i1.p1.1",
+        "section_id": "S4.SS10",
+        "heading": "4.10 Dataset Generation",
+        "text_sha256": "eb8fd9ae708dd91e373d09fe3959e39f6fac7ddf9abf329efe8957c31304fbcd"
+      },
+      {
+        "index": 86,
+        "paragraph_id": "S4.I4.i2.p1.1",
+        "section_id": "S4.SS10",
+        "heading": "4.10 Dataset Generation",
+        "text_sha256": "a826436c0cdd460d4135dce19345cba7b94787c618d26c928db20c77d3f29393"
+      },
+      {
+        "index": 87,
+        "paragraph_id": "S4.SS10.p2.1",
+        "section_id": "S4.SS10",
+        "heading": "4.10 Dataset Generation",
+        "text_sha256": "30f0df4316fb5b5d12246aa1f4f3f476761e6afd158f4d1c54d6688be551b5a3"
+      },
+      {
+        "index": 103,
+        "paragraph_id": "S8.SS1.p1.1",
+        "section_id": "S8.SS1",
+        "heading": "8.1 Expression of Abilities in OCO",
+        "text_sha256": "8b1217fb85cd616f62b2b7004230e08b06d20a5c895a556b12954d9d12c5a351"
+      },
+      {
+        "index": 104,
+        "paragraph_id": "S8.SS2.p1.1",
+        "section_id": "S8.SS2",
+        "heading": "8.2 Self-replicating simple virus",
+        "text_sha256": "d2f4c4115f22008eafadbb1e1586a1e71af37aa61a7d96402fad7f11c5138351"
+      },
+      {
+        "index": 105,
+        "paragraph_id": "S8.SS3.p1.1",
+        "section_id": "S8.SS3",
+        "heading": "8.3 Polymorphism",
+        "text_sha256": "42bb59eb7fb74847d5864fda3a17806f16125b3995fe84efb24daa2972cca83c"
+      },
+      {
+        "index": 106,
+        "paragraph_id": "S8.SS4.p1.1",
+        "section_id": "S8.SS4",
+        "heading": "8.4 Rootkit",
+        "text_sha256": "a663762819fcf693f849a6b667259e91505c1d2920ddcce522a0a6e33311dadd"
+      },
+      {
+        "index": 107,
+        "paragraph_id": "S8.SS5.p1.1",
+        "section_id": "S8.SS5",
+        "heading": "8.5 Stealthy Data Exfiltration",
+        "text_sha256": "e1ebaed7a34dabf789a1301241f2149304cbc50da23c8d04a4a86d40999031e4"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual main review passages interleave explicitly cited third-party work with the authors own dialogue and script demonstrations.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Own main GPT4/Gemini jailbreak/reverse-psychology/injection narratives support reply-based conversational demonstrations.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual main payload/PDF and DAN/ransomware demonstrations plus Appendix8 own code examples support every named generated-script family.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Printed English dialogue examples support component language; no language-audited evaluated corpus specified by these demonstrations.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All material named original method/arm families in the main and method-bearing appendix scope now actually checked. Unprinted identities/exact image wording remain explicit source-reporting limits rather than invented evidence.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    },
+    {
+      "field_path": "coverage.additional_structural_receipts",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All added exact-source HTML-node and text hashes independently reproduce. Structural verification is distinct from the actual semantic ranges/sections described in this receipt.",
+      "restriction_rationale": "Bounded source method/scope statement; no outcomes, counts, assurance or caption prose."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

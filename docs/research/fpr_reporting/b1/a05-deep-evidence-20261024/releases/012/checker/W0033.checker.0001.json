@@ -1,0 +1,263 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0033",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T13:05:18.647995+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0033.provider.0001.json",
+  "provider_packet_sha256": "6dc03fc235253d7686517fe6ebc9f2078ca262c602fe6e0ca7b1d27be8562aaa",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2503.09066v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\9ff4198fe53e1942d66a67f87d8d5134eac00ea428d48ee1aa9ae89c717aa700",
+    "raw_sha256": "9ff4198fe53e1942d66a67f87d8d5134eac00ea428d48ee1aa9ae89c717aa700",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0065.json",
+    "acquisition_receipt_sha256": "0e6792f4f975b34f935de80acedea19c2a95d6fde690547cf8176b0467354de0",
+    "captured_version_id": "arxiv:2503.09066v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        17,
+        32
+      ],
+      [
+        45,
+        53
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actual dataset18-23 replaces prior labels using local-model generated replies and a GPT-4o malicious-content judgment, then24-26 classifies prompt-time representations. Answer-derived training labels are kept distinct from inference-time input dependency. False correctly retains missing opening model/setup details and uninspected later intervention/example context. Verified input arms are positive local facts; no complete inventory or universal absence is inferred.",
+    "visual_check": null,
+    "locator_sha256": "9536086caf2f773f39219b6f93b32f56d264389bb802719db87e67fb7882e714",
+    "locators": [
+      {
+        "index": 17,
+        "paragraph_id": "S3.SS2.p1.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Dataset",
+        "text_sha256": "31badad486e6590e526227b995c4db61d2c8aa08524cd4910ad6c2a11f540ce2"
+      },
+      {
+        "index": 18,
+        "paragraph_id": "S3.SS2.p2.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Dataset",
+        "text_sha256": "7153194664c1cbecd102d47b435ae7b60752e4272b6b734318c37296cefbf00c"
+      },
+      {
+        "index": 19,
+        "paragraph_id": "S3.SS2.p3.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Dataset",
+        "text_sha256": "97ad887e1657f2878e30cb50eb53edd86f80b4de32156ad66845e9027f10bd14"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S3.SS2.p4.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Dataset",
+        "text_sha256": "7d5146821d45ffe653f4188c800d909ecf71613201dc8ea55b722db52a906c84"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S3.SS2.p5.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Dataset",
+        "text_sha256": "82a8717c7a6048e499e690de7dc848d5fb049c40340c8df0cff13d45615bbed3"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S3.SS2.p6.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Dataset",
+        "text_sha256": "0e4e897b44f0c28e242f55f081205df79f99bc6a2f0456e9bd82bbe5fe421a0d"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S3.SS2.p7.1",
+        "section_id": "S3.SS2",
+        "heading": "3.2 Dataset",
+        "text_sha256": "3984205e4e2e867f9b3dfc754f3db5355f1f73b8d9a21b0fc950d65e68035874"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S3.SS3.p1.1",
+        "section_id": "S3.SS3",
+        "heading": "3.3 Extracting Hidden Representation",
+        "text_sha256": "b9b5a9c9583f687facd1f920516697d366c1aacca6963d7011cd53b1db30f0bd"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.SS4.p1.1",
+        "section_id": "S3.SS4",
+        "heading": "3.4 Classification of Hidden Representations",
+        "text_sha256": "cd3627adf8404cc43c15f3d0b4033f499a565572c05f868193f6bd6b582f34ad"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.SS5.p1.1",
+        "section_id": "S3.SS5",
+        "heading": "3.5 Classification of Pre-inference Embeddings",
+        "text_sha256": "ace0ca152f4cd713efe81c4a42342df9b8359b5cecb26f2422a9f7b1c45e7490"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS6.p1.1",
+        "section_id": "S3.SS6",
+        "heading": "3.6 Projecting Latent Subspace Representation",
+        "text_sha256": "6c822835b7fa601893b5e0dd655802f1f4e2aab87ee4bd60ea33e1c9156ddcf9"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.SS7.p1.1",
+        "section_id": "S3.SS7",
+        "heading": "3.7 Targeted Perturbation",
+        "text_sha256": "79b523b48e3e5eba3529a3177b5e7bb35776cc071f162128367e1ae530b0457e"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS7.p3.1",
+        "section_id": "S3.SS7",
+        "heading": "3.7 Targeted Perturbation",
+        "text_sha256": "3b5a91cd75400f7deb59b2301895fb221ec6f2e729459b5cb42c611cbf88ade7"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS7.p5.1",
+        "section_id": "S3.SS7",
+        "heading": "3.7 Targeted Perturbation",
+        "text_sha256": "3a8d92781b6a45b533d12f7fa3ff05a5b5a6bb189a93614354dc3841ec30e552"
+      },
+      {
+        "index": 31,
+        "paragraph_id": "S3.SS7.p7.1",
+        "section_id": "S3.SS7",
+        "heading": "3.7 Targeted Perturbation",
+        "text_sha256": "92080c2ec7ffd9ca06af32789795a7f97e6fe8ab361a2c322094e39160da6385"
+      },
+      {
+        "index": 32,
+        "paragraph_id": "S3.SS8.p1.1",
+        "section_id": "S3.SS8",
+        "heading": "3.8 Characterizing the Effects of Targeted Perturbation",
+        "text_sha256": "8c8e8ff0662dbfaebbde0d2e7595b98d6f99e433d5a7297305aaeaffb33b6167"
+      },
+      {
+        "index": 45,
+        "paragraph_id": "S7.SS1.p1.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 A. Representative examples of model responses:",
+        "text_sha256": "fc8bf782b5cecf87e0478efae430a4e0d3415cced277a0708f7fa440af04c4d8"
+      },
+      {
+        "index": 46,
+        "paragraph_id": "S7.SS1.p2.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 A. Representative examples of model responses:",
+        "text_sha256": "aae212830dcd5babbacac02762732c2997a3f931de6cfbc8ae4f6a6a4556fd33"
+      },
+      {
+        "index": 47,
+        "paragraph_id": "S7.SS1.p3.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 A. Representative examples of model responses:",
+        "text_sha256": "3059d5b43eb896cb9c31f1f80e1bf42bc4a6fc0772c5ce5a2b22cc734bb80f28"
+      },
+      {
+        "index": 48,
+        "paragraph_id": "S7.SS1.p4.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 A. Representative examples of model responses:",
+        "text_sha256": "792caaca6fc62914a3e16c2e9cc27a6b521eac5bc5304feab7d434d6c9841042"
+      },
+      {
+        "index": 49,
+        "paragraph_id": "S7.SS1.p5.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 A. Representative examples of model responses:",
+        "text_sha256": "29c5960c8db37a4fe8ca4df7e92ac7a15ba792f0fe186576eeabfe6261d54b86"
+      },
+      {
+        "index": 50,
+        "paragraph_id": "S7.SS1.p6.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 A. Representative examples of model responses:",
+        "text_sha256": "df5cc21645ab453db82daf76d61fbea5ed6407a3661ee574e153bbb3bbb08705"
+      },
+      {
+        "index": 51,
+        "paragraph_id": "S7.SS1.p7.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 A. Representative examples of model responses:",
+        "text_sha256": "c88edba42658a6d4b3e728e04336c7eed264309262ad9697892d3831d6201198"
+      },
+      {
+        "index": 52,
+        "paragraph_id": "S7.SS1.p8.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 A. Representative examples of model responses:",
+        "text_sha256": "9851df8c7eee8efde5496bbc00a87cd4c5486414878ec1e348d6bcff36f9dd39"
+      },
+      {
+        "index": 53,
+        "paragraph_id": "S7.SS1.p9.1",
+        "section_id": "S7.SS1",
+        "heading": "7.1 A. Representative examples of model responses:",
+        "text_sha256": "baaa7c99e0c998b08340737ab30e51a6103edc42e7bc24526b854b0720cec50a"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual dataset18-23 replaces prior labels using local-model generated replies and a GPT-4o malicious-content judgment, then24-26 classifies prompt-time representations. Answer-derived training labels are kept distinct from inference-time input dependency.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main24 explicitly extracts the final prompt token before the first generated output token, and25 trains pre/post-attention RBF SVMs. Main18-23 labels successful versus failed malicious prompt-inject attempts; the safe class is not a general benign non-injection corpus. No target answer is required at classifier inference.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main26 explicitly evaluates an all-MiniLM-L6-v2 embedding SVM control on prompt-inject text with the same label procedure, without the protected target answer as inference input.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main27-32 defines LDA projection, mean-direction targeted perturbations, random-perturbation controls and downstream response/state assessment. Intervention evaluation consumes generated answers, unlike input-classifier inference.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main21 prints the post-answer evaluator prompt in English, which alone is not input-language evidence. Actual Appendix47-53 displays an evaluated roleplay input with English text and some Italian snippets; full evaluated prompt-language composition remains unresolved.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly retains missing opening model/setup details and uninspected later intervention/example context. Verified input arms are positive local facts; no complete inventory or universal absence is inferred.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

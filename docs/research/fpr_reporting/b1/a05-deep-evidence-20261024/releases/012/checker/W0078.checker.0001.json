@@ -1,0 +1,384 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0078",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T18:27:58.157593+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0078.provider.0001.json",
+  "provider_packet_sha256": "e311ddd1fb93e26116b1867debd6e1f525bfa22572ac9de131d9cdb84a794a34",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2509.05608v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q031-1.html",
+    "raw_sha256": "8071b3f327171375940e8aa5fe2d4e3b18606e5d0c09f95089904924111fb625",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0119.json",
+    "acquisition_receipt_sha256": "38060645867c02c523df2286e5b0dce27bf7b4d0c6e939694d126f0eba159174",
+    "captured_version_id": "arxiv:2509.05608v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        13,
+        54
+      ],
+      [
+        106,
+        114
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actual20-38 defines prompt PII redaction, embeddings, sign quantization, randomized bit flips and Hamming matching. Main50 explicitly defines related attack-variant pairs versus unrelated benign pairs; this is pair correlation rather than standalone maliciousness. False preserves generation-prompt bodies, scaling implementation and language composition. Local pair labels and secondary detector study presence are source-checked without asserting a complete inventory or all-English evaluation.",
+    "locator_sha256": "971aaa83185c0fcf9b972a15f732d904b03f05ff368108a6effcd137ea9dcdaf",
+    "locators": [
+      {
+        "n": 13,
+        "kind": "heading",
+        "id": "S2",
+        "sha256": "77d78b32592f03ceccf8a01c1e2a5ff977181a9a6c055f866e73557b1c49dc34"
+      },
+      {
+        "n": 14,
+        "kind": "paragraph",
+        "id": "S2.p1.1",
+        "sha256": "e130aeb34053413ee84877354010cdbf50fcba471941f0ef6b4f15f24522e0fb"
+      },
+      {
+        "n": 15,
+        "kind": "paragraph",
+        "id": "S2.p2.1",
+        "sha256": "7a0afae2f1306e5f45ba189850c7ffca063c742a9607713375f2277e1ce4c371"
+      },
+      {
+        "n": 16,
+        "kind": "paragraph",
+        "id": "S2.p3.1",
+        "sha256": "6aa63c72859472011c48d40abc4871a4d346f27e3c05162b3b7860fe0c880bdc"
+      },
+      {
+        "n": 17,
+        "kind": "heading",
+        "id": "S2.SS1",
+        "sha256": "b583371140aef8151e0718b1049857213b940e7bda08a52fdb0954e2d15542a9"
+      },
+      {
+        "n": 18,
+        "kind": "paragraph",
+        "id": "S2.SS1.p1.1",
+        "sha256": "60ee58a2c161bc5518f79656264a70fb0571d7fb9d987ba871e9da305d9f506f"
+      },
+      {
+        "n": 19,
+        "kind": "heading",
+        "id": "S2.SS1.SSS1",
+        "sha256": "94ac0c81a3e68b3ca9aa2c769da5d50f5f140c05a772122a526a843c0a5d2fcd"
+      },
+      {
+        "n": 20,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS1.p1.1",
+        "sha256": "bd00ad7b6951e0a9b120e892f1b7e7209e9c2ea4b68b1a446a7a514331c0401e"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS1.p2.1",
+        "sha256": "000b6b1d168f8c4b7b238295a915247bc8cc646f86991d8dbbbbf5664aff19f3"
+      },
+      {
+        "n": 22,
+        "kind": "heading",
+        "id": "S2.SS1.SSS2",
+        "sha256": "df796980e2e76b21dc8e98628c3833a06695d5cac6bc276a133ee184d605c90b"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS2.p1.1",
+        "sha256": "1e09feffcc1f486891a9c858dca48b3b58de121a4b974ad3d929398c6c19ee68"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS2.p2.1",
+        "sha256": "b2b32b2009003e831fc2b1472a99b5c031dc084996d69a4c39f3fdea53515be2"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS2.p3",
+        "sha256": "3618d2e812b4c03093067c8e2fb182e41abb3d247ab9157ff758f0b471fcd94e"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS2.p4.1",
+        "sha256": "64d9bd56fdbd25381e1b8152734a5eafa6f9eaba422427735604b79246024e5e"
+      },
+      {
+        "n": 27,
+        "kind": "heading",
+        "id": "S2.SS1.SSS3",
+        "sha256": "b873b43cc5c0393c0c5fbf86209da7bec2c8da9c8475b3779d0c377cdf69d7b8"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS3.p1.1",
+        "sha256": "bdc96abc7bb739757ae9cdd8a7f98f66dbb54f0d4c5374e203d2575d6b72fbf5"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS3.p2.1",
+        "sha256": "7f69de517933c1923da02b2047a940d0d3500391c35532b6196a743b789f8f57"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS3.p3.1",
+        "sha256": "2a50abadb82d9c23d38e5d74a1046f28b59561a16eb7b19214c68102c1feedd7"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS3.p4.1",
+        "sha256": "697f60b3bae752c141319843b2a1fb386739206e06d3e47479c69b48d5d45622"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS3.p4.2",
+        "sha256": "86cbff4a4a031bdabac3a67c03f57df48387235a648ea7749be5621bbe0a8879"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS3.p4.3",
+        "sha256": "1bf2c07a1238178475099bd862e9adbc9330cb6bb26ef63c038fb1e46757da55"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS3.p5.1",
+        "sha256": "86ad20cdfbd0fba174314c6ace1cd301ae6d723e5ec2e886f850418a6f3e27e8"
+      },
+      {
+        "n": 35,
+        "kind": "heading",
+        "id": "S2.SS1.SSS4",
+        "sha256": "4216147e8850fad7f59c1391b01dd0947cc3381640afb1189a7205c2a5b7bf3e"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS4.p1.1",
+        "sha256": "445403af01a97a1ed4b0cdf2a0d13b2813db6a0744b1dbb65e984ded1cdb8f11"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS4.p2",
+        "sha256": "afaa354c9e2eca7ed65fd22f2fc0b860e512235bcf3e372381e3cd9891206b38"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS4.p3.1",
+        "sha256": "fd7443b720fc64b83a9529d6ba265518ea1541e931165a4d99755306904c38f2"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S2.SS1.SSS4.p4.1",
+        "sha256": "a380a1206cbc23ef7b71a278e490ee27959a4231e3af281747993107c4394853"
+      },
+      {
+        "n": 40,
+        "kind": "heading",
+        "id": "S3",
+        "sha256": "7711b4daf4d3b55b9879b7e16e88b040f42c2257c44ee70032d50ac14c5bfc1c"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S3.p1.1",
+        "sha256": "d6258b415e0e747974ccc38766a9bbba36ae54be0b518671ce4c7e1b5a21fda5"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S3.I1.i1.p1.1",
+        "sha256": "5fb029ccdaa56226a1e0c49723d74411838549157b953b114517754805f63bde"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S3.I1.i2.p1.1",
+        "sha256": "14b0cc06f10f4a191a6e22e2a9d54fd2da4a2e65a3b04291fceb8acc47ba868e"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S3.I1.i3.p1.1",
+        "sha256": "7715c87090d659bb733eeee241f5ac2cf38af0f037920e1447ab6471363820b4"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S3.I1.i4.p1.1",
+        "sha256": "6940c3125f965b8f1bbda68eb96c3e1fcc92d60f959a3f69f91df932e21d9543"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S3.I1.i5.p1.1",
+        "sha256": "9b7089eb616d190d954bcf5bba0734060db28e5dcf09f3e5882291988414ffec"
+      },
+      {
+        "n": 47,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "sha256": "58d5b43ac09415d7d75ef1b83144721eb8edffe2afb8d370893fafdb2cbfa01f"
+      },
+      {
+        "n": 48,
+        "kind": "heading",
+        "id": "S3.SS1.SSS1",
+        "sha256": "b7b4e338b75bdaedd1fc820c717d17c4070f8702b613daae50af4ff23a40b470"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p1.1",
+        "sha256": "dd04a53350da5a26a01df01e03576c8b8491b4497222078975e11591988ed7c5"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS1.p2.1",
+        "sha256": "7bb439966bf529e7b37cf12c62a19952adb26e512c2373233701ccc0e7c452b5"
+      },
+      {
+        "n": 51,
+        "kind": "heading",
+        "id": "S3.SS1.SSS2",
+        "sha256": "d688f3dd3861b74b40dafa3da67a45b17b910a20d39cd84e16a57c6a1bda0d34"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS2.p1.1",
+        "sha256": "74c2b97daa8b468b7c7701bc579089e942472871f16960c84bafae6a092b0145"
+      },
+      {
+        "n": 53,
+        "kind": "heading",
+        "id": "S3.SS1.SSS3",
+        "sha256": "d6d819ec74467d4b8900b18c3f5747f5beb86926041c72e17883b403a7a7495e"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S3.SS1.SSS3.p1.1",
+        "sha256": "c943369a0af1e80dbbb45de0bc75c8fee6e5d8f788a1b86a86f27aa5fea5eaf1"
+      },
+      {
+        "n": 106,
+        "kind": "heading",
+        "id": "A0.SS1",
+        "sha256": "34331887e8d458ccec5a87f74a41c4fbf9a57d23e2933d49e4178c3bdea9cbba"
+      },
+      {
+        "n": 107,
+        "kind": "paragraph",
+        "id": "A0.SS1.p1.1",
+        "sha256": "b44bfde46a7033b808f55a2de2f383a5e4fbe8b7c27022ef27357a77a360793f"
+      },
+      {
+        "n": 108,
+        "kind": "heading",
+        "id": "A0.SS2",
+        "sha256": "4cad11b76a0c49cf4117c425ba947278b8f8dfea276edd8a9ba94a6a9faab006"
+      },
+      {
+        "n": 109,
+        "kind": "paragraph",
+        "id": "A0.SS2.p1.1",
+        "sha256": "5cb90734162ab96da98e288a2545dffc06859d4f25253c47bc0a538d06c8d544"
+      },
+      {
+        "n": 110,
+        "kind": "paragraph",
+        "id": "A0.SS2.p2.1",
+        "sha256": "9bf7f13d038e4bf4662fca427913ab2e042de1d81344b194915befdec830509c"
+      },
+      {
+        "n": 111,
+        "kind": "paragraph",
+        "id": "A0.SS2.p3.1",
+        "sha256": "3e7fda0f9996f7a7bc76c7d926bb08607c14bdc55b0e3d08c4c4a04afb55b1eb"
+      },
+      {
+        "n": 112,
+        "kind": "heading",
+        "id": "A0.SS3",
+        "sha256": "eb0b0526a23eb02d102f6677d311c295ec53f2f9311f00e3d4f61d5368facf79"
+      },
+      {
+        "n": 113,
+        "kind": "paragraph",
+        "id": "A0.SS3.p1.1",
+        "sha256": "633e55cd5b9a6397611ef35ace7e5de7ee770897086737e1b6e92a266f85bc30"
+      },
+      {
+        "n": 114,
+        "kind": "paragraph",
+        "id": "A0.SS3.p2.1",
+        "sha256": "d87460e2291041253c5d4a147244a614e16721d8a3eef76870ba8c99a03734ca"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual20-38 defines prompt PII redaction, embeddings, sign quantization, randomized bit flips and Hamming matching. Main50 explicitly defines related attack-variant pairs versus unrelated benign pairs; this is pair correlation rather than standalone maliciousness.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual50/52 specifies GPT-4o synonym/paraphrase construction, paired labels, ModernBERT/OpenAI embedding alternatives and SimHash comparison. Main29-38 and research questions42-46 verify randomization/corpus-scaling families at the stated family level; exact scaling protocol remains unresolved. The pair-matching score does not consume a protected generated answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual Appendix113 names GPT-4.1-nano combined with Azure Prompt Shields in the secondary original-versus-synthetic attack-detection study. The source does not fully specify the division of input/response work between them; the packet correctly leaves generated-answer dependency unresolved.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False preserves generation-prompt bodies, scaling implementation and language composition. Local pair labels and secondary detector study presence are source-checked without asserting a complete inventory or all-English evaluation.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

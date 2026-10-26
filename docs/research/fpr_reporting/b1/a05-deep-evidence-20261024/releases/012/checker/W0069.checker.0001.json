@@ -1,0 +1,642 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0069",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:12:24.414426+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0069.provider.0001.json",
+  "provider_packet_sha256": "17b406f4c1c092b4f365f343f7df1635027a4f01ddee87c3988fbf6324845cca",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2508.04281v5",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q026-1.html",
+    "raw_sha256": "04ed30f3b6888fb453e3afebfa149be90b8cfbbf91d543ca0a215dbac7c1fffe",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0107.json",
+    "acquisition_receipt_sha256": "675393456cae35d973ff0856e24ea6b4363a7cf50af4fccc9ed47d9a585695e4",
+    "captured_version_id": "arxiv:2508.04281v5",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        24,
+        46
+      ],
+      [
+        113,
+        145
+      ],
+      [
+        217,
+        240
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Main27-46 distinguishes participant opinion valence, generated consensus stance assessment, individual opinion/injection detection, structured summaries and aligned majority-rule aggregation. Appendix F supplies actual English parser examples and a judgment template. Only the listed method families and inspected source context are approved; retained omissions remain open.",
+    "locator_sha256": "93cbcffb88c75fb2e126ee17d1adb735b2e66bcf07be5bf658c0503d7f37e71c",
+    "locators": [
+      {
+        "n": 24,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Dataset & Methods",
+        "sha256": "718da801653af09b80e3497e9f4098795b4ec5e8ec4ef605fbdacf0a0bab7e48"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "section": "4 Dataset & Methods",
+        "sha256": "cedb011fee3b546fd9b920440cf2a2ebbdcc76717086bc37d5500ee3e01733f4"
+      },
+      {
+        "n": 26,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 Collective statements dataset",
+        "sha256": "3b3f1a6c8c73712081ae28bfa49c388f53028845cb0c06137b2d03b31b131515"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1 Collective statements dataset",
+        "sha256": "fd3f2014841bb24938febee4e63f530d05f1da34f90d1b0f5fd4f9351b4f8fda"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "section": "4.1 Collective statements dataset",
+        "sha256": "c07dd7fc3a69c13319a1fe49b4da27d9a6a67235154d922f5ebfed6277270cd9"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S4.SS1.p3.1",
+        "section": "4.1 Collective statements dataset",
+        "sha256": "f4c34285553f5cc68afb18811052416d951982daf6a4fae2090082debda8adea"
+      },
+      {
+        "n": 30,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 Testing Vulnerability to Prompt Injections",
+        "sha256": "4473961841616b3e64fca00c84a526a9e9fd2131029826fcbe8b2fe5365139f9"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "section": "4.2 Testing Vulnerability to Prompt Injections",
+        "sha256": "74899781050b74f6c65576e77ff0f3c9f66e288ed6d51bbc4e4566af177f32f3"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "section": "4.2 Testing Vulnerability to Prompt Injections",
+        "sha256": "153fcbe6d44e4d94a0aae8c84d6b36abd764b21674bbb1e4545accc5f4caa461"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S4.SS2.p3.1",
+        "section": "4.2 Testing Vulnerability to Prompt Injections",
+        "sha256": "b784967cc9fd8ee3e658df093ed8fdbfba06aa29929f7760794c67d9f8d41917"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S4.SS2.p4.1",
+        "section": "4.2 Testing Vulnerability to Prompt Injections",
+        "sha256": "24710abd70e4cf39b515171872706b57fc92bc6f0723f72fa0db40c8672dfd6e"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S4.SS2.p5.1",
+        "section": "4.2 Testing Vulnerability to Prompt Injections",
+        "sha256": "e2a640a70d7efcb84ec9208c032350f32e9059c1609cbc0ca23c64010ef8fb1d"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S4.SS2.p6.1",
+        "section": "4.2 Testing Vulnerability to Prompt Injections",
+        "sha256": "af3405c255fcbb89bb4512649cd6ced83faac408e552fe92d92be00ab633a716"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S4.SS2.p7.1",
+        "section": "4.2 Testing Vulnerability to Prompt Injections",
+        "sha256": "b59cbe0b08714db9f1ce86c8d3f62dca6b920b244d84467bc61d652dbfbe1769"
+      },
+      {
+        "n": 38,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "section": "4.3 Testing Robustness against Prompt Injections",
+        "sha256": "eb73f7a97834e71764f1348893b5916da854d33410c13e7b8f2fcbd26ee18b48"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "section": "4.3 Testing Robustness against Prompt Injections",
+        "sha256": "f713ecd23bb4e87852052574447bba472251d4a63cb72acaca051b671b0751be"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S4.SS3.p2.1",
+        "section": "4.3 Testing Robustness against Prompt Injections",
+        "sha256": "5d312baae2d3149f61d18cc88e0ddcf676a2577a22d4c8698930e2e9cf21bebc"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S4.SS3.p3.1",
+        "section": "4.3 Testing Robustness against Prompt Injections",
+        "sha256": "ec812b1201ab5eef122ce7046fba0dcf4e0ac31b0cfe7df16f7df93aeb9121fb"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S4.SS3.p4.1",
+        "section": "4.3 Testing Robustness against Prompt Injections",
+        "sha256": "193ab8e7d7b959cdde6542b611313df34854ac8a3bb8e3a75ed18026a255ad49"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S4.SS3.p5.1",
+        "section": "4.3 Testing Robustness against Prompt Injections",
+        "sha256": "23402133295fdc218c61bc5ead6d60113bf3907946474db58c314ded1f0b5123"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S4.SS3.p6.1",
+        "section": "4.3 Testing Robustness against Prompt Injections",
+        "sha256": "69cbb701b3b1e7075bafd9fd0db1dd9fd2dcb4c8c41c2a338b22afb407ee5531"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S4.SS3.p7.1",
+        "section": "4.3 Testing Robustness against Prompt Injections",
+        "sha256": "bdc47105d7cbe7f3f8bbbe5b4522049e5305d48401097da622a02ad4383b7c6c"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S4.SS3.p8.1",
+        "section": "4.3 Testing Robustness against Prompt Injections",
+        "sha256": "99b5c86fcc46b951ba4494d4c60aa97805f3ad6a4add11588e5ff961945222bf"
+      },
+      {
+        "n": 113,
+        "kind": "heading",
+        "id": "A6",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "0fb77c013c1d9b0890f7906f1cd61116049ea6f4abb388caa43b7b7e5835704e"
+      },
+      {
+        "n": 114,
+        "kind": "paragraph",
+        "id": "A6.p1.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "079b15729324dd727ea032ad489552ea1d680a61ea8b4f2b7e181e5c9b999565"
+      },
+      {
+        "n": 115,
+        "kind": "paragraph",
+        "id": "A6.p2.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "2a42f4ef8b9a8cd39853d52e98b86e99f3ddd000f0166fcb5dbfcc4b5bb7b5c8"
+      },
+      {
+        "n": 116,
+        "kind": "paragraph",
+        "id": "A6.p3.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "c28eb68720fac20d5b2a5cc42a0fd66aac998107d0d19b58d336cffafb6d7acf"
+      },
+      {
+        "n": 117,
+        "kind": "paragraph",
+        "id": "A6.p4.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "3b5400be2f2449548d6d44a7b0924cbdd3256c46ccab15f8341859c184a25d83"
+      },
+      {
+        "n": 118,
+        "kind": "paragraph",
+        "id": "A6.I1.i1.p1.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "93a83be097f3b17f971338833f33aa3e5bb2f9b631ade6184dae2d0b83e389cb"
+      },
+      {
+        "n": 119,
+        "kind": "paragraph",
+        "id": "A6.I1.i2.p1.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "f05ade9a343d56a9c86bef8b4de8f41effdc0bf803bed88c9a6b3b6253741cdf"
+      },
+      {
+        "n": 120,
+        "kind": "paragraph",
+        "id": "A6.I1.i3.p1.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "d44a3347b4352fc143f4710082ec3e826dbafa3f17c83e0105ebe57bd2afefd7"
+      },
+      {
+        "n": 121,
+        "kind": "paragraph",
+        "id": "A6.I1.i4.p1.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "8594064cb5782402fe087f14ab5e5173c9b0ae500772902fc4e3a091f605bc22"
+      },
+      {
+        "n": 122,
+        "kind": "paragraph",
+        "id": "A6.I1.i5.p1.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "7b2888eb30dd61b078d7dfe1975325490a8404dc5e207d0ba6d8f23943360265"
+      },
+      {
+        "n": 123,
+        "kind": "paragraph",
+        "id": "A6.I1.i6.p1.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "38f89e9de8f81a4da1e4e27f7f3d183fb11c05ab224061522e3302858ac95ca7"
+      },
+      {
+        "n": 124,
+        "kind": "paragraph",
+        "id": "A6.I1.i7.p1.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "1c20c0465d87d1e25be328dabe31b13f6f4b9ebfbb6449ccb9a8d6886a283f7b"
+      },
+      {
+        "n": 125,
+        "kind": "paragraph",
+        "id": "A6.p6.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "1efe91c1bd1deb3984e8f42d91229bc3634821997701c10fd39c840a1708e47a"
+      },
+      {
+        "n": 126,
+        "kind": "paragraph",
+        "id": "A6.p7.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "2935a8a75c08e4a7b4b024bb255894ab179c9f5584de97f351c57511be9b6cef"
+      },
+      {
+        "n": 127,
+        "kind": "paragraph",
+        "id": "A6.p8.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "cd7e2686db5ebb8bc6d14eb22c04e04ba12b1eaa41bfd940c3cfea6e32d0f8db"
+      },
+      {
+        "n": 128,
+        "kind": "paragraph",
+        "id": "A6.p9.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "18eadb1a51605144a8b74df4ff6d7c5b39f66f892a49a385411f3d69210a81e1"
+      },
+      {
+        "n": 129,
+        "kind": "paragraph",
+        "id": "A6.p10.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "cf668df7b25d13cae21365136ed9c8b8217d02c9cb36aef83d340f48848ca6e0"
+      },
+      {
+        "n": 130,
+        "kind": "paragraph",
+        "id": "A6.p11.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "5cb6cd5dd2fa0b3de2d24973cd140a6171156e6264be00cd84b445273b6985b3"
+      },
+      {
+        "n": 131,
+        "kind": "paragraph",
+        "id": "A6.p12.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "95e28458965796567c092feefa3427307dfd32b017e67ac1ac6fa777dd2c780d"
+      },
+      {
+        "n": 132,
+        "kind": "paragraph",
+        "id": "A6.p13.1.1",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "b52d125ce46a42c8b6f99053d986702a20ba22587ffec7f6d773488e3497f795"
+      },
+      {
+        "n": 133,
+        "kind": "paragraph",
+        "id": "A6.p13.1.2",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "e2877178cd61f296fc84f45564d0e52b955e499e82d9d4129c9a9a24db3d1c36"
+      },
+      {
+        "n": 134,
+        "kind": "paragraph",
+        "id": "A6.p13.1.3",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "6b59b500e5e6f4471f1966f37f8f793d129da249c4929a536301e303c9700231"
+      },
+      {
+        "n": 135,
+        "kind": "paragraph",
+        "id": "A6.p13.1.4",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "c842f1e468e267cf008968549ee5ec187bad3ce03847b454170769146e72fb6f"
+      },
+      {
+        "n": 136,
+        "kind": "paragraph",
+        "id": "A6.p13.1.5",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "607f64c0b8812edde6869e3b5a82c946faaa3455633ca95bf076783a18dd222d"
+      },
+      {
+        "n": 137,
+        "kind": "paragraph",
+        "id": "A6.p13.1.6",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "e7a6c1e7eadbb6957c1bdffe38cdf8709473261707c6ad0c7b261cc0ec6dfcda"
+      },
+      {
+        "n": 138,
+        "kind": "paragraph",
+        "id": "A6.p13.1.7",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "91ec9a2d04b447c836610d2b94de07f1c811c7d77e4768d94113fd1507e2eae9"
+      },
+      {
+        "n": 139,
+        "kind": "paragraph",
+        "id": "A6.p13.1.8",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "5fdd4cbd72bd1c14d52bd9ff52d478a19d31ddaa0edbc95e3837d13aab348f34"
+      },
+      {
+        "n": 140,
+        "kind": "paragraph",
+        "id": "A6.p13.1.9",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "57c8415b4e18d808dcb2ca33891cb73132218e03f4dc2e1c8d4963efc03b3361"
+      },
+      {
+        "n": 141,
+        "kind": "paragraph",
+        "id": "A6.p13.1.10",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "458a7a6bf226285b225406357891c6c5185edd54f3e0674fa4ab2938f0c94ed3"
+      },
+      {
+        "n": 142,
+        "kind": "paragraph",
+        "id": "A6.p13.1.11",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "1c870a925604af6e00a8db9aa9d265f5b1abfa666d2cc490348a8421cdad0a22"
+      },
+      {
+        "n": 143,
+        "kind": "paragraph",
+        "id": "A6.p13.1.12",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "105bdb78740bc9c575fa23a47e5c4935725ec1288804d5f0acadb075c74b353b"
+      },
+      {
+        "n": 144,
+        "kind": "paragraph",
+        "id": "A6.p13.1.13",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "848eb600f8be1a806ca0d14fc7c3abc010ce770e7136a1d451d3867dd6cff05e"
+      },
+      {
+        "n": 145,
+        "kind": "paragraph",
+        "id": "A6.p13.1.14",
+        "section": "Appendix F Prompt Injection Detectors in Digital Democracy",
+        "sha256": "0431587c14f03c324152ee91fe2fdc28545c2f715b2b93d3fefb1683f15f223f"
+      },
+      {
+        "n": 217,
+        "kind": "heading",
+        "id": "A8.SS1",
+        "section": "H.1 Direct Policy Optimization (DPO)",
+        "sha256": "cee6d1422ce2410411f3200e428cc4d08fcd7bed47aad378820c4d4f5d8dad21"
+      },
+      {
+        "n": 218,
+        "kind": "paragraph",
+        "id": "A8.SS1.p1.1",
+        "section": "H.1 Direct Policy Optimization (DPO)",
+        "sha256": "64ba3ccc6c0c0f6836ee71962ba5a529dfcdb273d86ab499ece6ddadc2fac17a"
+      },
+      {
+        "n": 219,
+        "kind": "paragraph",
+        "id": "A8.SS1.p2.1",
+        "section": "H.1 Direct Policy Optimization (DPO)",
+        "sha256": "f1948d0a6a6bbbcf26b91038e3de4c4bf8467556a35b199ca871ef19b0f8aae8"
+      },
+      {
+        "n": 220,
+        "kind": "paragraph",
+        "id": "A8.SS1.p3.1",
+        "section": "H.1 Direct Policy Optimization (DPO)",
+        "sha256": "7b2c6555a1d51eceee061a4d5d14a1cac5b583770fb4f27d2f89bdd97563063b"
+      },
+      {
+        "n": 221,
+        "kind": "paragraph",
+        "id": "A8.SS1.p4.1",
+        "section": "H.1 Direct Policy Optimization (DPO)",
+        "sha256": "c2cd02d8cf866443001ac6f0c44577485499518d3434b1b0336efdad5e7790a4"
+      },
+      {
+        "n": 222,
+        "kind": "paragraph",
+        "id": "A8.SS1.p5.1",
+        "section": "H.1 Direct Policy Optimization (DPO)",
+        "sha256": "783d5972bbbac22d82a5e33bd33ef6fac442c6b28b124dc03d28b873b33f5c4e"
+      },
+      {
+        "n": 223,
+        "kind": "heading",
+        "id": "A8.SS2",
+        "section": "H.2 Defensive Tokens",
+        "sha256": "734414502dc2a6277ac6d1ee630e2e0129631cbd0a90d40c5850564f42abe20e"
+      },
+      {
+        "n": 224,
+        "kind": "paragraph",
+        "id": "A8.SS2.p1.1",
+        "section": "H.2 Defensive Tokens",
+        "sha256": "580ac8a66afa95ee2d3fd22d2717bc9511bcd2c60c0116cfc45f4db7c7c06e79"
+      },
+      {
+        "n": 225,
+        "kind": "paragraph",
+        "id": "A8.SS2.p2.1",
+        "section": "H.2 Defensive Tokens",
+        "sha256": "7f2b837fa921f6d6e1dfa64a86e614f14b62fafa971acc34e9a175aed6d3f4de"
+      },
+      {
+        "n": 226,
+        "kind": "paragraph",
+        "id": "A8.SS2.p3.1",
+        "section": "H.2 Defensive Tokens",
+        "sha256": "c3fb8e409bfc4f0234330527712106a2bbbacc6fa0a1719f85d57be8427ae119"
+      },
+      {
+        "n": 227,
+        "kind": "paragraph",
+        "id": "A8.SS2.p4.1",
+        "section": "H.2 Defensive Tokens",
+        "sha256": "6009c37479502589aba0907376820e3d2258b4cfc3c77f46c4da7914d68b8efa"
+      },
+      {
+        "n": 228,
+        "kind": "paragraph",
+        "id": "A8.SS2.p5",
+        "section": "H.2 Defensive Tokens",
+        "sha256": "7b8213c3626906c0478ec9986c7775526f1123ade3b86ae2ba8c8252ef48dc65"
+      },
+      {
+        "n": 229,
+        "kind": "paragraph",
+        "id": "A8.SS2.p6.1",
+        "section": "H.2 Defensive Tokens",
+        "sha256": "d34fd275f9ff6f54d4215a5c9c14406db1198a299c3ed4dd451f62692eb1eb93"
+      },
+      {
+        "n": 230,
+        "kind": "paragraph",
+        "id": "A8.SS2.p7.1",
+        "section": "H.2 Defensive Tokens",
+        "sha256": "6487392619c3d439061c7f7628b8938e6ef8b4f1d3b73133943c05f219ae3081"
+      },
+      {
+        "n": 231,
+        "kind": "paragraph",
+        "id": "A8.SS2.p8.1",
+        "section": "H.2 Defensive Tokens",
+        "sha256": "b2467b4a23fcd63712ca6ce3b1aa3a1d364fc31349cb188262073244740de4d8"
+      },
+      {
+        "n": 232,
+        "kind": "paragraph",
+        "id": "A8.SS2.p9.1",
+        "section": "H.2 Defensive Tokens",
+        "sha256": "5d144a51c64ca0960e44c5ccbbe85064ee74a74d5613a302d20140927a40ec62"
+      },
+      {
+        "n": 233,
+        "kind": "heading",
+        "id": "A8.SS2.SSS0.Px1",
+        "section": "Optimizer choice.",
+        "sha256": "2b9fecd54457ad8554b48ceb3e745cf40ae2f842c0c4489646222b8ac0ed8e97"
+      },
+      {
+        "n": 234,
+        "kind": "paragraph",
+        "id": "A8.SS2.SSS0.Px1.p1.1",
+        "section": "Optimizer choice.",
+        "sha256": "eaad44347803f906c0d212c0dbe38660d556c90845b6f3da7e22463a8a47ab1c"
+      },
+      {
+        "n": 235,
+        "kind": "heading",
+        "id": "A8.SS2.SSS0.Px2",
+        "section": "Label masking.",
+        "sha256": "3aeba499269422fec7aaee3b7f04a5f34da51a46fac9b52cdf533fd67dba10a0"
+      },
+      {
+        "n": 236,
+        "kind": "paragraph",
+        "id": "A8.SS2.SSS0.Px2.p1.1",
+        "section": "Label masking.",
+        "sha256": "7dcd2f2d2c72ac6f913d66f1019239297bcb6988e021654f55629bf64b227cd1"
+      },
+      {
+        "n": 237,
+        "kind": "heading",
+        "id": "A8.SS3",
+        "section": "H.3 SecAlign++",
+        "sha256": "3c8e14033200c620ad1cae695022aa70fa564e82445d44fbde82de0ff306ae63"
+      },
+      {
+        "n": 238,
+        "kind": "paragraph",
+        "id": "A8.SS3.p1.1",
+        "section": "H.3 SecAlign++",
+        "sha256": "439350c0c8c016bb0fa0479b92b89a578cf2c4249b1b2673cf0fcb2b7b88b0a5"
+      },
+      {
+        "n": 239,
+        "kind": "paragraph",
+        "id": "A8.SS3.p2.1",
+        "section": "H.3 SecAlign++",
+        "sha256": "7a93563633ab62c50cb440dc1028286c40f60c9906a367ec7e6c9b29b831c52d"
+      },
+      {
+        "n": 240,
+        "kind": "paragraph",
+        "id": "A8.SS3.p3.1",
+        "section": "H.3 SecAlign++",
+        "sha256": "d09179686a71f52acffeb18a9b0a73d88f12a62be0afa8df22bbca3639eb3e17"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main27-46 distinguishes participant opinion valence, generated consensus stance assessment, individual opinion/injection detection, structured summaries and aligned majority-rule aggregation. Appendix F supplies actual English parser examples and a judgment template.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Appendix114-145 explicitly defines SDP imperative-count rules, Qwen3Guard Jailbreak category and GPT-OSS policy/JSON judgments on each opinion/injection text individually. These do not consume the original consensus answer.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main31-46 and Appendix218-240 distinguish BERT input-valence classification from generated-consensus evaluation and DPO/DefensiveTokens/SecAlign++ training, plus calculator/two-agent alternatives. No protected-answer dependence is inferred merely from response-based training labels.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions. Approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

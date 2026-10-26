@@ -1,0 +1,707 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0068",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T02:12:22.682853+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0068.provider.0002.json",
+  "provider_packet_sha256": "05ac075b212697835987ec0e5fd3fdaa6cf893cf2d022c766019a5ed4230057b",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2508.03793v3",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q025-1.html",
+    "raw_sha256": "8b5d5ea3cd0cce453141fcd5f02dc12ef605e78d95e7f9940ffa6559faed5803",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0106.json",
+    "acquisition_receipt_sha256": "8ebf7e1d9b0993e65f218097a97d2f680cd767737fb67313a125f3e15371b2ff",
+    "captured_version_id": "arxiv:2508.03793v3",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        43,
+        60
+      ],
+      [
+        72,
+        90
+      ],
+      [
+        99,
+        139
+      ],
+      [
+        155,
+        163
+      ]
+    ],
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "Actual method44-60 defines attention-based output-to-context attribution; setup73-83 specifies injected QA/summarization, poisoned retrieval and traceback comparators;111 specifies agent-memory attribution. True is verified for the corrected declared material family inventory after actual main method/setup/baseline, ablation, case-study, adaptive-attack, discussion-comparator and Appendix B/C/D checks. The prior packet omitted material families and was not approved for completeness. Exact outcome plots/tables and meta-review are not needed for this inventory; no assurance or outcomes are transferred.",
+    "locator_sha256": "ae5d43cf990e0e7c4ff984a509cbc5e6cc4bd838bea778a03ad770fcecaa9b4c",
+    "locators": [
+      {
+        "n": 43,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "IV-B An Attention-based Baseline",
+        "sha256": "1af88f4271c7839a11bd2d9f1f62cd0e91555a533cf16ff2376ed5eadb03af05"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "section": "IV-B An Attention-based Baseline",
+        "sha256": "efcb1bba90404275ce15abdbf32e2e999f44657c4408ab7c4c68afae4e9f2460"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.2",
+        "section": "IV-B An Attention-based Baseline",
+        "sha256": "0639c2302f031594acecb2d02d8f890206c7e70f87658e3529784ba5ec946cd7"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "section": "IV-B An Attention-based Baseline",
+        "sha256": "afa05e298585fe411a3deae9b63bc1c2a5903a403fd5fe35ad835a272dc63c93"
+      },
+      {
+        "n": 47,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "section": "IV-C Limitations of the Above Baseline",
+        "sha256": "23d624d1dff0de3df1caa7fa0528713605be6eb820717169e5166f600289609f"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "section": "IV-C Limitations of the Above Baseline",
+        "sha256": "4edcc2e7fdf608c630a2db2d23111ad6b284511098e948bdb95aaf2f310a4a4e"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S4.SS3.p2.1",
+        "section": "IV-C Limitations of the Above Baseline",
+        "sha256": "f45b70b68b5ce52bf1a5fe92ec4250f9cb262e3b99a764dfc2607b12dd46ff3e"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S4.SS3.p3.1",
+        "section": "IV-C Limitations of the Above Baseline",
+        "sha256": "b40897eb50a37fc8f136b3e220a841c393e767f2e6311c871197f6ed207994f0"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S4.SS3.p4.1",
+        "section": "IV-C Limitations of the Above Baseline",
+        "sha256": "605571dedb4954572ec324a2834d84eecb8dbac8f8a7090dd51e5906d2a903a3"
+      },
+      {
+        "n": 52,
+        "kind": "heading",
+        "id": "S4.SS4",
+        "section": "IV-D Design of AttnTrace",
+        "sha256": "f70843cb7710604138153eebd4cb07700c5d96be9721a05f36c5034ecda4f273"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S4.SS4.p1.1",
+        "section": "IV-D Design of AttnTrace",
+        "sha256": "412b6f557b22504414aed39dc54a2cae9c48a5d1bb8486622bd7bcadd6abf9d0"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S4.SS4.p2.1",
+        "section": "IV-D Design of AttnTrace",
+        "sha256": "a12c9e3cb41d998cd6b5f88da5d6c643591a3100e9ab65037dac1fcfb181d545"
+      },
+      {
+        "n": 55,
+        "kind": "heading",
+        "id": "S4.SS4.SSS1",
+        "section": "IV-D 1 Averaging Attention Weights of Top- K K Tokens",
+        "sha256": "b8c1c4840adc005d92c8971e6ad17a7fff070d383cd305c881a085fd18d4c61e"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS1.p1.1",
+        "section": "IV-D 1 Averaging Attention Weights of Top- K K Tokens",
+        "sha256": "73b1b6560e1de29ac0b48d8d7643f999067b6c40990d7f0d87d3e428f9fd8163"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS1.p1.2",
+        "section": "IV-D 1 Averaging Attention Weights of Top- K K Tokens",
+        "sha256": "4ae22efabcff6f0a1ce8fd5ee4ddecbc40d634ad92494699ed68a7654c5c7e46"
+      },
+      {
+        "n": 58,
+        "kind": "heading",
+        "id": "S4.SS4.SSS2",
+        "section": "IV-D 2 Context Subsampling",
+        "sha256": "103c26325fd2a847d248cbbce337f638fe1808262610e10973e44b7d389b37f4"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS2.p1.1",
+        "section": "IV-D 2 Context Subsampling",
+        "sha256": "5dfd2fa0afad6b4de819a5e77ce722ee3b17c864ce11d4e0f897fba329f8ca0c"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS2.p1.2",
+        "section": "IV-D 2 Context Subsampling",
+        "sha256": "cbfe17cb9d0e9be5ad0b8206e627ee8aaf1dfacd392ccbbd19ca49d8d0bddd28"
+      },
+      {
+        "n": 72,
+        "kind": "heading",
+        "id": "S5.SS1",
+        "section": "V-A Experimental Setup",
+        "sha256": "08642d1019f9599c8711a6c9246ce543764f7f4d7d1ceaa02f08ca24e3cc1285"
+      },
+      {
+        "n": 73,
+        "kind": "paragraph",
+        "id": "S5.SS1.p1.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "5b4442f653c1158f3c7bd60a941b071b424195b1fd629c5c3b53019855975968"
+      },
+      {
+        "n": 74,
+        "kind": "paragraph",
+        "id": "S5.SS1.p2.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "09e5cd76813bc6d9acd6d95484345b64e096bb13e3def48307eefabc2f7cadcb"
+      },
+      {
+        "n": 75,
+        "kind": "paragraph",
+        "id": "S5.I1.i1.p1.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "a3e008556f0f87fef9872c319cbe954bb6ffe5600d8f426fef55af4cf7bcf041"
+      },
+      {
+        "n": 76,
+        "kind": "paragraph",
+        "id": "S5.I1.i1.p2.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "596f16a7c0dd49d952520074bda992e4024da51e841b5993fa5633c0b1bbd159"
+      },
+      {
+        "n": 77,
+        "kind": "paragraph",
+        "id": "S5.I1.i2.p1.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "73d2c6eb14c21733c3a1ad56e30a493b4da6d4c0be22de07c75baeacc5a63c7e"
+      },
+      {
+        "n": 78,
+        "kind": "paragraph",
+        "id": "S5.SS1.p3.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "bff84a5afe0ca729599effe4e1f638d4a2fa59fc74fde77166f5e1433fe3bd9d"
+      },
+      {
+        "n": 79,
+        "kind": "paragraph",
+        "id": "S5.I2.i1.p1.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "032bebcb8b32df64da6717eb9b125d9b1cf9ea120f43ae0c04eac77f19227822"
+      },
+      {
+        "n": 80,
+        "kind": "paragraph",
+        "id": "S5.I2.i1.p2.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "95c9165834955221d0717ce8f2d9436ecdf0e3afbca3d3b2bc80661bae27acb8"
+      },
+      {
+        "n": 81,
+        "kind": "paragraph",
+        "id": "S5.I2.i2.p1.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "dc88756175689dfb409881ec3bd073e853dbf77328d762e981c56ce70a71333b"
+      },
+      {
+        "n": 82,
+        "kind": "paragraph",
+        "id": "S5.I2.i3.p1.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "e3d101b45d38abef35065d978862c6940c55b0be23f835c0786c81021cf602d0"
+      },
+      {
+        "n": 83,
+        "kind": "paragraph",
+        "id": "S5.SS1.p3.2",
+        "section": "V-A Experimental Setup",
+        "sha256": "83df7fe3198fe59b19ab4683b454373216dfd0fdcedb3471cba2c8053e484c8d"
+      },
+      {
+        "n": 84,
+        "kind": "paragraph",
+        "id": "S5.SS1.p4.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "d714655aeecfc264aedfd99976da89f8203160294d820573a0e818ef9a2d17fb"
+      },
+      {
+        "n": 85,
+        "kind": "paragraph",
+        "id": "S5.I3.i1.p1.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "41399a679dcb24fe5db753f5faff61fd88037db79a3014b0e75fe05eb7b958c8"
+      },
+      {
+        "n": 86,
+        "kind": "paragraph",
+        "id": "S5.I3.i1.p2.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "fd0425144180e08175d3efc1c20f23781b64434d14fddafb172a2f022d662de8"
+      },
+      {
+        "n": 87,
+        "kind": "paragraph",
+        "id": "S5.I3.i2.p1.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "bf41f051defad217725b9bcc42d29bf3f4251e35a2d2d07fc4c7015028c3c2ed"
+      },
+      {
+        "n": 88,
+        "kind": "paragraph",
+        "id": "S5.I3.i3.p1.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "82806d5a8c4715c90eb4bfe7de46f37d6d9b7448c88bfb0f95190985763fdd8b"
+      },
+      {
+        "n": 89,
+        "kind": "paragraph",
+        "id": "S5.SS1.p4.2",
+        "section": "V-A Experimental Setup",
+        "sha256": "e0af85491252b0b4f08f3051c9bb03d073a0420869563c05059b3aceb9be0416"
+      },
+      {
+        "n": 90,
+        "kind": "paragraph",
+        "id": "S5.SS1.p5.1",
+        "section": "V-A Experimental Setup",
+        "sha256": "2a33fd9b7f541e4ceff2173e497aaec2a628d45af690149ea79a74e6f1af474f"
+      },
+      {
+        "n": 99,
+        "kind": "paragraph",
+        "id": "S5.SS2.p8.1",
+        "section": "V-B Main Results",
+        "sha256": "11011e0f7fbae337733f5689d56f46555639c2d5bc9f413f7a8fc3dacb30eb30"
+      },
+      {
+        "n": 100,
+        "kind": "heading",
+        "id": "S5.SS3",
+        "section": "V-C Ablation Study",
+        "sha256": "3acba369859448979e75f57a1684cbf0bbcbe0e84a78355ae67a78c220880d96"
+      },
+      {
+        "n": 101,
+        "kind": "paragraph",
+        "id": "S5.SS3.p1.1",
+        "section": "V-C Ablation Study",
+        "sha256": "eb331eda671313d7a144612f72c60226b9e22731ed2ac6a31afb6ef0be36958f"
+      },
+      {
+        "n": 102,
+        "kind": "paragraph",
+        "id": "S5.SS3.p2.1",
+        "section": "V-C Ablation Study",
+        "sha256": "afe33015cb39858eaa31edbff4ee889a7f62c23c491c3038814d0f68e835003e"
+      },
+      {
+        "n": 103,
+        "kind": "paragraph",
+        "id": "S5.SS3.p3.1",
+        "section": "V-C Ablation Study",
+        "sha256": "6194c777da4ed51559869c3b6d9adfe69a756f8f3caf1601d2033aeb9e3dcdaa"
+      },
+      {
+        "n": 104,
+        "kind": "paragraph",
+        "id": "S5.SS3.p4.1",
+        "section": "V-C Ablation Study",
+        "sha256": "13cf36e522809866822031fb34a9d8f434d208fc662cacde18690426bd48292f"
+      },
+      {
+        "n": 105,
+        "kind": "paragraph",
+        "id": "S5.SS3.p5.1",
+        "section": "V-C Ablation Study",
+        "sha256": "0cd135ea7859a508cd4ef4eb00a7a6b6f77677310ff596c121e3b3510952df26"
+      },
+      {
+        "n": 106,
+        "kind": "paragraph",
+        "id": "S5.SS3.p6.1",
+        "section": "V-C Ablation Study",
+        "sha256": "8113eafe21d33b09d8a198536cf88f2388c6a693026b7feb3b57c3e4b1c4eac4"
+      },
+      {
+        "n": 107,
+        "kind": "paragraph",
+        "id": "S5.SS3.p7.1",
+        "section": "V-C Ablation Study",
+        "sha256": "7bca60553c7f7f5dc05a7f201838a780b00f92faaf28cc156f997e323192b790"
+      },
+      {
+        "n": 108,
+        "kind": "paragraph",
+        "id": "S5.SS3.p8.1",
+        "section": "V-C Ablation Study",
+        "sha256": "07eadc1b22740d538a241b0c6a6121a19891ae98cf7b4732a1740503e927b8b6"
+      },
+      {
+        "n": 109,
+        "kind": "heading",
+        "id": "S5.SS4",
+        "section": "V-D AttnTrace for LLM Agent Security",
+        "sha256": "61e3ef43734b5d725d72eafe7441c31dd9275da4d45377b4c5c02648d0dbf34f"
+      },
+      {
+        "n": 110,
+        "kind": "paragraph",
+        "id": "S5.SS4.p1.1",
+        "section": "V-D AttnTrace for LLM Agent Security",
+        "sha256": "a79558359ab97072afb28527bd47d2e56c75fa2fa0bd7b95e39713b3b67f49d7"
+      },
+      {
+        "n": 111,
+        "kind": "paragraph",
+        "id": "S5.SS4.p2.1",
+        "section": "V-D AttnTrace for LLM Agent Security",
+        "sha256": "f84fe27101741e2a4b6dd2916ecf3042b5c2857035ad4da4e490d38a1e9bbb18"
+      },
+      {
+        "n": 112,
+        "kind": "paragraph",
+        "id": "S5.SS4.p3.1",
+        "section": "V-D AttnTrace for LLM Agent Security",
+        "sha256": "bb3d40df005596c49a477d07ec88b7e288648e01a243b8631887f396b1523a71"
+      },
+      {
+        "n": 113,
+        "kind": "heading",
+        "id": "S5.SS5",
+        "section": "V-E Attribution-Before-Detection: AttnTrace Can Improve Existing Detection Defenses",
+        "sha256": "54fc588d50c8363c9cd9d28ef5350346a388f4af7281a7eecbca3d4b44671538"
+      },
+      {
+        "n": 114,
+        "kind": "paragraph",
+        "id": "S5.SS5.p1.1",
+        "section": "V-E Attribution-Before-Detection: AttnTrace Can Improve Existing Detection Defenses",
+        "sha256": "d32dcaead73b9783e62d1a21ee2afb1d85d4d9013d34b8ae88c84bcb8d715056"
+      },
+      {
+        "n": 115,
+        "kind": "paragraph",
+        "id": "S5.SS5.p2.1",
+        "section": "V-E Attribution-Before-Detection: AttnTrace Can Improve Existing Detection Defenses",
+        "sha256": "73a042ebc22121022a2f66468d50e669ca2055d9c84805120f4548f538a4fffb"
+      },
+      {
+        "n": 116,
+        "kind": "paragraph",
+        "id": "S5.SS5.p3.1",
+        "section": "V-E Attribution-Before-Detection: AttnTrace Can Improve Existing Detection Defenses",
+        "sha256": "45c97d042dfec532e9bd690553370bb48a0b2bb3a7c0c04536a34c4a0fc09f07"
+      },
+      {
+        "n": 117,
+        "kind": "heading",
+        "id": "S5.SS6",
+        "section": "V-F Case Study: Tracing Back for Prompt Injection that Manipulates LLM Generated Review",
+        "sha256": "af92295bae115fcf25f0d4d2cd065ee8f946d7a5937e7adc2aeabfc944248c6d"
+      },
+      {
+        "n": 118,
+        "kind": "paragraph",
+        "id": "S5.SS6.p1.1",
+        "section": "V-F Case Study: Tracing Back for Prompt Injection that Manipulates LLM Generated Review",
+        "sha256": "25656bb20f8ed2fa7d7ea0e27f10c92232c3e62a67f5c273a8d466aebb728921"
+      },
+      {
+        "n": 119,
+        "kind": "paragraph",
+        "id": "S5.SS6.p2.1",
+        "section": "V-F Case Study: Tracing Back for Prompt Injection that Manipulates LLM Generated Review",
+        "sha256": "3762b9abea7a7459e866a7f18ae6fd0526ff4381a58aee46ca6280a20c093bc3"
+      },
+      {
+        "n": 120,
+        "kind": "heading",
+        "id": "S5.SS7",
+        "section": "V-G Strong Adaptive Attacks",
+        "sha256": "d2d0995bb8cc21ff5daa6944bf36822241d297ebd929d57eb05e0eaf864e2432"
+      },
+      {
+        "n": 121,
+        "kind": "heading",
+        "id": "S5.SS7.SSS1",
+        "section": "V-G 1 Attention weight attack",
+        "sha256": "780aa0b01ec2205517b7b82b83e92e43454271eba78cdc5ba6e527a2a8aa2a85"
+      },
+      {
+        "n": 122,
+        "kind": "paragraph",
+        "id": "S5.SS7.SSS1.p1.1",
+        "section": "V-G 1 Attention weight attack",
+        "sha256": "eb3d984da5186c52c4ab03c4ae89ce14767b836523d932bdca21fc7e529619ba"
+      },
+      {
+        "n": 123,
+        "kind": "paragraph",
+        "id": "S5.SS7.SSS1.p2.1",
+        "section": "V-G 1 Attention weight attack",
+        "sha256": "b8231e468546ddb9636b304fa40b4475d02fba5aaa768d0b923f7b35934e9e0c"
+      },
+      {
+        "n": 124,
+        "kind": "paragraph",
+        "id": "S5.SS7.SSS1.p2.2",
+        "section": "V-G 1 Attention weight attack",
+        "sha256": "79262ca8099fbd72f1b1db8f9660316edc0e50e83046f98bfea8b5cc794fc34e"
+      },
+      {
+        "n": 125,
+        "kind": "paragraph",
+        "id": "S5.SS7.SSS1.p3.1",
+        "section": "V-G 1 Attention weight attack",
+        "sha256": "082af96bb8f9d63d6336142793c9b2661344a38ed294fa1e05c29cef3400d4fc"
+      },
+      {
+        "n": 126,
+        "kind": "paragraph",
+        "id": "S5.SS7.SSS1.p4.1",
+        "section": "V-G 1 Attention weight attack",
+        "sha256": "17afe04c253189803ecf67480db1256b0b08867c7214c33869387ab7e2477d88"
+      },
+      {
+        "n": 127,
+        "kind": "heading",
+        "id": "S5.SS7.SSS2",
+        "section": "V-G 2 Payload splitting attack",
+        "sha256": "de78f7331c03265a954bc64915664523e126389212626e3be68269ea0cfdd389"
+      },
+      {
+        "n": 128,
+        "kind": "paragraph",
+        "id": "S5.SS7.SSS2.p1.1",
+        "section": "V-G 2 Payload splitting attack",
+        "sha256": "4f0ef1217dd84c601e02542f858841c858c3ee85bd00fc27c71200b4f614515e"
+      },
+      {
+        "n": 129,
+        "kind": "paragraph",
+        "id": "S5.SS7.SSS2.p2.1",
+        "section": "V-G 2 Payload splitting attack",
+        "sha256": "be4efe974fdc4c07a3f616c966de8bddd2184e25b78f7e2b6ad9e5d959463559"
+      },
+      {
+        "n": 130,
+        "kind": "heading",
+        "id": "S6",
+        "section": "VI Discussion and Limitation",
+        "sha256": "ec8d405b3d3290bf37067613881b3180b14c4bea25ef89c841021a53bf4f2889"
+      },
+      {
+        "n": 131,
+        "kind": "paragraph",
+        "id": "S6.p1.1",
+        "section": "VI Discussion and Limitation",
+        "sha256": "f1d3e5d44be910139cbc0fe0463f278e33376fcb460b8e82fadaca515e3a614e"
+      },
+      {
+        "n": 132,
+        "kind": "paragraph",
+        "id": "S6.p2.1",
+        "section": "VI Discussion and Limitation",
+        "sha256": "51fd969989ec7b423a324de49911a7067d2d220f24ab57b93fbe0389c9ac5346"
+      },
+      {
+        "n": 133,
+        "kind": "paragraph",
+        "id": "S6.p3.1",
+        "section": "VI Discussion and Limitation",
+        "sha256": "145902f9d13fc67d2f705c59027bd341f155a24c0dde7ddcfcfb5c17ffd5cb2c"
+      },
+      {
+        "n": 134,
+        "kind": "paragraph",
+        "id": "S6.p4.1",
+        "section": "VI Discussion and Limitation",
+        "sha256": "eede236d02c76bf0ec608aa17c74e02eafc2de8c76baf8141495d154261cd56a"
+      },
+      {
+        "n": 135,
+        "kind": "paragraph",
+        "id": "S6.p5.1",
+        "section": "VI Discussion and Limitation",
+        "sha256": "9ef21dc29671b209eb1195d1d9db92390520e917983846ad5b2a5f60e78a5b9e"
+      },
+      {
+        "n": 136,
+        "kind": "heading",
+        "id": "S7",
+        "section": "VII Conclusion and Future Work",
+        "sha256": "c7b04e36f7438425a3114483d4b39412c81cd0a310ac7fde53d0cba063091763"
+      },
+      {
+        "n": 137,
+        "kind": "paragraph",
+        "id": "S7.p1.1",
+        "section": "VII Conclusion and Future Work",
+        "sha256": "ba96b6ecdb75cb658953e7d7eff44b31dfeab32d981cd0aa73004b1c7b920d27"
+      },
+      {
+        "n": 138,
+        "kind": "paragraph",
+        "id": "S7.p2.1",
+        "section": "VII Conclusion and Future Work",
+        "sha256": "10a9bb8d281a73525bae4e82abdc4f7e0217cc4f449016c4140a57bcced70b49"
+      },
+      {
+        "n": 139,
+        "kind": "heading",
+        "id": "bib",
+        "section": "References",
+        "sha256": "69824d3b0e70ca6aaa0da1613b65fd914c442bf1f7ad1bb22bcdfbdfe1a05e39"
+      },
+      {
+        "n": 155,
+        "kind": "heading",
+        "id": "A2",
+        "section": "Appendix B Additional Experimental Setup for Section V",
+        "sha256": "aee885a3815f68fea8b926077da127ed9d7bab8577ed66c393b7ce7de8670050"
+      },
+      {
+        "n": 156,
+        "kind": "paragraph",
+        "id": "A2.p1.1",
+        "section": "Appendix B Additional Experimental Setup for Section V",
+        "sha256": "471bfb531e75f657967672e1f9d07fdb4760afada6a7d83ccf6cdd341a914bf7"
+      },
+      {
+        "n": 157,
+        "kind": "heading",
+        "id": "A3",
+        "section": "Appendix C Additional Experimental Setup for Section V-E",
+        "sha256": "b73cb2acfc0e841c4ead54c337636fc6908b36cdc4ed0ec2280b203290d4b8b8"
+      },
+      {
+        "n": 158,
+        "kind": "paragraph",
+        "id": "A3.p1.1",
+        "section": "Appendix C Additional Experimental Setup for Section V-E",
+        "sha256": "d7ec1deb66b5bd80bb8ad9b2f2ca57879e68cdb406aaaab289fcd7a7681da2db"
+      },
+      {
+        "n": 159,
+        "kind": "heading",
+        "id": "A4",
+        "section": "Appendix D Additional Experimental Setup for Section V-G",
+        "sha256": "15951dbdda3d78d43fdae6a2560e8f2d2940b4f445d58f287e09b3a00d18b5ca"
+      },
+      {
+        "n": 160,
+        "kind": "paragraph",
+        "id": "A4.p1.1",
+        "section": "Appendix D Additional Experimental Setup for Section V-G",
+        "sha256": "b6969108755f3cba51e044088ff9972a4828da8c5bb732b15df38f95bc944d42"
+      },
+      {
+        "n": 161,
+        "kind": "paragraph",
+        "id": "A4.p2.1",
+        "section": "Appendix D Additional Experimental Setup for Section V-G",
+        "sha256": "613ebf921faf46172d1920da28d2771d973b119f93df93af5f0f0b0e1103d52e"
+      },
+      {
+        "n": 162,
+        "kind": "paragraph",
+        "id": "A4.p3.1",
+        "section": "Appendix D Additional Experimental Setup for Section V-G",
+        "sha256": "ab7dde20fff526230474267bb480ac7cad9a5d74e7cd738c2ab45c8b7a1ee755"
+      },
+      {
+        "n": 163,
+        "kind": "paragraph",
+        "id": "A4.p4.1",
+        "section": "Appendix D Additional Experimental Setup for Section V-G",
+        "sha256": "aff46ff5dcf70d03ed041f98ea32ebb5d2a018eb328e4bb04ad50ba303f9bd89"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual method44-60 defines attention-based output-to-context attribution; setup73-83 specifies injected QA/summarization, poisoned retrieval and traceback comparators;111 specifies agent-memory attribution.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "The named attribution families79-83 assess contextual contribution to a given generated output. Main method44 and56 explicitly concatenate the output for attribution; no pre-answer prompt-detector interpretation is substituted.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main114-115 and Appendix158 distinguish standalone DataSentinel/AttentionTracker input decisions from attribution-before-detection requiring a generated output. Threshold selection and chunk-minimum focus scoring are specified in158.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Blocks134-135 explicitly add PromptLocate localizing injected instructions using a prompt detector and RAGForensics/RAGOrigin independent contextual contribution comparisons. The dependency description is approved at the family level of input-detector localization versus given-output contextual traceback; internal algorithms of cited methods are not independently established here.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[3]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main101-108 verifies parameter/model/segmentation variations;119 defines review-generation attribution;122-129 plus Appendix160-163 defines adaptive target-answer/attention-loss prefix-suffix and split-payload trials. Attribution assesses a supplied generated output.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True is verified for the corrected declared material family inventory after actual main method/setup/baseline, ablation, case-study, adaptive-attack, discussion-comparator and Appendix B/C/D checks. The prior packet omitted material families and was not approved for completeness. Exact outcome plots/tables and meta-review are not needed for this inventory; no assurance or outcomes are transferred.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

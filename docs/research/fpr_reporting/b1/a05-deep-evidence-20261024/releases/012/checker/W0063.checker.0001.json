@@ -1,0 +1,213 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0063",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-24T16:49:40.992710+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0063.provider.0001.json",
+  "provider_packet_sha256": "3bf369fc2b5d8bb905bb46338842b1d694e3e9abfec92d3f5a46787fddc0e5f7",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2507.15330v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\7b4c8225f0b44122562e3efe9b0a0141399c59cccea9c80d8cb997633d3a8279",
+    "raw_sha256": "7b4c8225f0b44122562e3efe9b0a0141399c59cccea9c80d8cb997633d3a8279",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0097.json",
+    "acquisition_receipt_sha256": "7b836e479e7190eb3ee7bd90648ece9a8df5ea67c5a2b9a206cb94f0b9818317",
+    "captured_version_id": "arxiv:2507.15330v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        47,
+        55
+      ],
+      [
+        106,
+        108
+      ],
+      [
+        118,
+        118
+      ],
+      [
+        130,
+        135
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Actually read architecture/control definitions, cognitive-nonsense test construction and response-labeling methodology. Control tables/other cases not all inspected; no complete classifier-absence claim.",
+    "locator_sha256": "2bcb57843f1167e02322d53a554d009d4da9969e89b94716a3de3f6a4392f085",
+    "locators": [
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S3.I3.i1.p1.1",
+        "section": "3.2 QSAF Domain 10 Framework Architecture Overview",
+        "sha256": "6371971b957f9f9da508988f356ded1d23c41ccc6d9d1a21cd3c45344e94afdc"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S3.I3.i2.p1.1",
+        "section": "3.2 QSAF Domain 10 Framework Architecture Overview",
+        "sha256": "9019432c87de1564ee5c5ee0a6920ce58bb4d6c044c54349f37f05959f051564"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S3.I3.i3.p1.1",
+        "section": "3.2 QSAF Domain 10 Framework Architecture Overview",
+        "sha256": "029d542fcc9a943b72f8c2ba32fc1a6708cadf51edc628fbf7722311c8727540"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S3.I3.i4.p1.1",
+        "section": "3.2 QSAF Domain 10 Framework Architecture Overview",
+        "sha256": "a46fe14253454da1a8c3a0712c3acbda0bea32c9235564072c485d8c33cc2c9b"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S3.I3.i5.p1.1",
+        "section": "3.2 QSAF Domain 10 Framework Architecture Overview",
+        "sha256": "8a542a2e370ff00fc8364a2f1d75a73afbc71de50b7447c0249a2717ddac2753"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S3.SS2.p5.1",
+        "section": "3.2 QSAF Domain 10 Framework Architecture Overview",
+        "sha256": "c90df946b4f18782cd73b6f430a0a7d3b821d5f0da97f65917edcb7569d0b1c2"
+      },
+      {
+        "n": 53,
+        "kind": "heading",
+        "id": "S3.SS3",
+        "section": "3.3 QSAF-BC Controls and Targeted Attack Vectors",
+        "sha256": "4f917bef27c9b855d4436537d9ace08e36f9b08b1c07e81220edbc9285380d48"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S3.SS3.p1.1",
+        "section": "3.3 QSAF-BC Controls and Targeted Attack Vectors",
+        "sha256": "9357c90f7ec20c6bc3a2da0e029aa21247e700571b3507af1525a5038c6a6eaf"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S3.SS3.p2.1",
+        "section": "3.3 QSAF-BC Controls and Targeted Attack Vectors",
+        "sha256": "b5fef81a8afacd3276fc853a8297758f61e80104ca2e75beb5bab5e10610920b"
+      },
+      {
+        "n": 106,
+        "kind": "paragraph",
+        "id": "S4.SS4.p1.1",
+        "section": "4.4 QSAF Test Case Report: Cognitive Nonsense Resilience (QSAF-BC-003)",
+        "sha256": "4c5d3fd14969af0c33f2e6f48e898c5ebaff51c2c28e1dab51feccfbd02f7039"
+      },
+      {
+        "n": 107,
+        "kind": "heading",
+        "id": "S4.SS4.SSS1",
+        "section": "4.4.1 Test Case Summary",
+        "sha256": "0356bd69584ea8af7ec57cdf32cc40173a0c5016dacf40ef7aeba2784080cf1f"
+      },
+      {
+        "n": 108,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS1.p1.1",
+        "section": "4.4.1 Test Case Summary",
+        "sha256": "081c9b7866614b0e8ef12e54b9c4aec971e130b73adeac6b6c49a99aae206863"
+      },
+      {
+        "n": 118,
+        "kind": "paragraph",
+        "id": "S4.I8.i2.p1.1",
+        "section": "4.4.2 Prompt Evidence",
+        "sha256": "1175e77a8369e830e93fe1a6e2ee01bad841754080a9c0d340146045a515a730"
+      },
+      {
+        "n": 130,
+        "kind": "paragraph",
+        "id": "S4.SS4.SSS6.p1.1",
+        "section": "4.4.6 Tools and Methodology",
+        "sha256": "09241e06492f4db19a7d815ab7af5437b7aae9e95577019f50e2161566b34f44"
+      },
+      {
+        "n": 131,
+        "kind": "paragraph",
+        "id": "S4.I10.i1.p1.1",
+        "section": "4.4.6 Tools and Methodology",
+        "sha256": "6476548995c93a450c035c48ca0825abc6293f91c03394cc420f134680106db3"
+      },
+      {
+        "n": 132,
+        "kind": "paragraph",
+        "id": "S4.I10.i2.p1.1",
+        "section": "4.4.6 Tools and Methodology",
+        "sha256": "61bb8cd0878649d9374563eeb0951b4563861dcb221b4f83f6ae552e1727e73c"
+      },
+      {
+        "n": 133,
+        "kind": "paragraph",
+        "id": "S4.I10.i3.p1.1",
+        "section": "4.4.6 Tools and Methodology",
+        "sha256": "c360743695d0abae193b60325842c70cdd07ebffe88c3514f08576de220b42b4"
+      },
+      {
+        "n": 134,
+        "kind": "paragraph",
+        "id": "S4.I10.i4.p1.1",
+        "section": "4.4.6 Tools and Methodology",
+        "sha256": "c2d0fb0d3506cea67988fbfe6bc46c0b271fc7e36dec997516b90d5fcba9bc84"
+      },
+      {
+        "n": 135,
+        "kind": "paragraph",
+        "id": "S4.I10.i5.p1.1",
+        "section": "4.4.6 Tools and Methodology",
+        "sha256": "60a93a8022c6d65367447f653a04c0db98e13d2c611f27f09e17fa6c4232ef21"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Framework defines health/latency/token/fallback/lifecycle modules; test case includes an obfuscated base64 prompt with a decoded English-looking sentence. Full implementation/language composition unresolved.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Runtime modules inspect health telemetry and proposed controls; evaluation method explicitly labels generated responses Pass/Warning/Vulnerability with NLP classifiers. Not converted into pre-answer prompt detection.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly retains material method/arm omissions. The approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data statement; outcomes, assurance and sample counts withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

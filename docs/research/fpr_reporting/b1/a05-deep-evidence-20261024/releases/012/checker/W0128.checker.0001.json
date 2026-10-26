@@ -1,0 +1,488 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0128",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-26T05:51:46.231462+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0128.provider.0001.json",
+  "provider_packet_sha256": "1441b706d9d9cdc5f100f101b1843781443e951f1f17a6c4661ae5779cf89219",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2601.19051v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q053-1.html",
+    "raw_sha256": "140e3a40cda672dd721ed83a9252711778551d30d9611e6532de2d68bdae1d5e",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0172.json",
+    "acquisition_receipt_sha256": "348179fb3130778ee593f4ef676cf43cb8840a73fb90f3d2380a085d7cdc344c",
+    "captured_version_id": "arxiv:2601.19051v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        41,
+        109
+      ]
+    ],
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "Actual45-76 defines seed collection, generated prompt/response filtering, fuzzing, separate benign-data incorporation and iterative input-detector training;79-109 specifies original/base and hard-mining/fuzzing configurations and held-out benchmarking. True is verified for declared public main method/configuration families after actual41-109 and source heading inventory with no appendix. Actual49 says generation prompt bodies are withheld by authors, while tested generator roles and downstream families are explicitly specified. This disclosure does not justify inventing their contents or evaluated language; no performance, sample values or assurance is transferred.",
+    "locator_sha256": "e0e88527a3a7708ab483b200899ca3592c2c08b3d18ffb172b6c4b94b33d6e8f",
+    "locators": [
+      {
+        "n": 41,
+        "kind": "heading",
+        "id": "S3",
+        "sha256": "9348c4697053cb1c4d17528c7f70b0eeb03dbbfe2e21c5fa72358679baf8c351"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S3.p1.1",
+        "sha256": "185eacbc3c2248417c09efab15d079f2f3f68e01139538bf80510c942b4fac5e"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S3.p2.1",
+        "sha256": "cdc80544297a95a4a4f8be4794fe083d41b17744ce70f91777dd33f40b5cb766"
+      },
+      {
+        "n": 44,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "sha256": "25842752c4f255f9fc96aa1f759c4fdfe142fa206fd06da15613e58b819b0f3e"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "sha256": "d38be921c1f367264a13d1f281000490ae68a2bd10cebac456a40cc346080ad4"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.1",
+        "sha256": "b0127936ed2ff2c1847d52037f915d3c9613d59dd297aeca9ce107737a7f7c6d"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S3.SS1.p3.1",
+        "sha256": "620cdcbadff2a6d35bae21d2488843438b2b780f73cbe9b5babb42fdbfccecf3"
+      },
+      {
+        "n": 48,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "sha256": "7e3b78272d3d537bce56cba6653942e13b7988bdc0cb24ae7b3b4f0aa6c0f044"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.1",
+        "sha256": "4be108429ba490d33bd202fead9161741704cc5cd86cb054b595d6e4777a2915"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S3.SS2.p2.1",
+        "sha256": "5779f2da4e7d20c0dd4b0f71ae2e847e2e49fb522f2016b79b5c4e7ded36aba3"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S3.I1.i1.p1.1",
+        "sha256": "79e2e678a4f92d6f1607a47dda6888a097769412dad206c7d8a2a192a8933954"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S3.I1.i2.p1.1",
+        "sha256": "db7a2dfb40f6da419181a8d488a4651041f8b8e555a9bfb589664ca2b9117d2b"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S3.I1.i3.p1.1",
+        "sha256": "15aa007906e413734f6e2e49955cad4fcdde5661b9f567c9c0600c9a1f309084"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S3.SS2.p3.1",
+        "sha256": "8cce01a944aecadc09f352c91f25c4974c948faee1cbfe067e4f9511f6ea1669"
+      },
+      {
+        "n": 55,
+        "kind": "heading",
+        "id": "S3.SS3",
+        "sha256": "eca93ff7069e79e257f7652855351258f71f4ebe4f58a44419bd1196bdfcf293"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S3.SS3.p1.1",
+        "sha256": "c18f5ee9bcb34b442580396088b0c6e9f9446e0b728741b51c544b54503a3ea9"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S3.SS3.p2.1",
+        "sha256": "d96ef587ac015330f76b68fa75288b9daf7aa728c41bda829bd64500bfeaf3c5"
+      },
+      {
+        "n": 58,
+        "kind": "heading",
+        "id": "S3.SS4",
+        "sha256": "bba1eabf73bb555b1ef06d5c145e0bafa1a6aec510f19d64bb662f9b7062819b"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "S3.SS4.p1.1",
+        "sha256": "5c9c963c6333c89bd8a891b365187cd461061944669b0f24c426d390845a14ce"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "S3.SS4.p2.1",
+        "sha256": "c26b8da76c9c1dbd9a129b4352a3a30270e87aaa794a89a5f94ca0fc5c5f801e"
+      },
+      {
+        "n": 61,
+        "kind": "paragraph",
+        "id": "S3.SS4.p3.1",
+        "sha256": "7d2340c056f0b66b0ff689d1ffc223373b59c3a0c9099e80ac0b65814455e9c6"
+      },
+      {
+        "n": 62,
+        "kind": "paragraph",
+        "id": "S3.I2.i1.p1.1",
+        "sha256": "fb470a84498c0bd835d51f7a133fee8b5e7440177466033d66a9ab607eb623c2"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "S3.I2.i2.p1.1",
+        "sha256": "a6400f46365347e1113f57d28a38eab229ee444c6c359515ddc172274ecb202d"
+      },
+      {
+        "n": 64,
+        "kind": "paragraph",
+        "id": "S3.I2.i3.p1.1",
+        "sha256": "6748d9791ec36e74c7cc13d2e33403d108ab69aab248a65b15419e691b649659"
+      },
+      {
+        "n": 65,
+        "kind": "paragraph",
+        "id": "S3.SS4.p4.1",
+        "sha256": "944a7400b31aa589424b4134641441d182185722bac6535daa1bbc0ea4682778"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "S3.SS4.p5.1",
+        "sha256": "8c17e785180d35a8443de4cb7fb6cfe44b6096c903e691602ba02e03f54a9b48"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "S3.SS4.p6.1",
+        "sha256": "1bf10a5bada00498fdfea242e30cdb4dd6b24970facb82e64b3bed718077134d"
+      },
+      {
+        "n": 68,
+        "kind": "heading",
+        "id": "S3.SS5",
+        "sha256": "6fdefc69ada4880a016ce5ee56a3035836ff216da3ca43db3130ab64f60506df"
+      },
+      {
+        "n": 69,
+        "kind": "paragraph",
+        "id": "S3.SS5.p1.1",
+        "sha256": "9cde628362cf0fc0ffce647262f9f58ad4c9e0c90ac019ac56973903437e4482"
+      },
+      {
+        "n": 70,
+        "kind": "paragraph",
+        "id": "S3.SS5.p2.1",
+        "sha256": "a4d87f41266df25a8c892f574111698c2dbd5bc60bf1cb2595484c83b5564f44"
+      },
+      {
+        "n": 71,
+        "kind": "paragraph",
+        "id": "S3.SS5.p3.1",
+        "sha256": "d1a37d39f970389068f4bac14540e262dae33b60af40fdb9614d86563825ad0b"
+      },
+      {
+        "n": 72,
+        "kind": "paragraph",
+        "id": "S3.SS5.p4.1",
+        "sha256": "3844eea3bdc9893421ae6808d128b314f6860150316b05b5da378e0240ef1559"
+      },
+      {
+        "n": 73,
+        "kind": "heading",
+        "id": "S3.SS6",
+        "sha256": "84424b43aee84533eecbd745513d829d1a96e1430834ab3e1f06799e39802708"
+      },
+      {
+        "n": 74,
+        "kind": "paragraph",
+        "id": "S3.SS6.p1.1",
+        "sha256": "724c5a9c770ca9c83f5f268810adb7dfdce3f4ed340c674043b8564d85f7f451"
+      },
+      {
+        "n": 75,
+        "kind": "paragraph",
+        "id": "S3.SS6.p2.1",
+        "sha256": "f78380e1baa515176b82334237a35db2dd6f067c77f74d1b117ea1e27d209fb5"
+      },
+      {
+        "n": 76,
+        "kind": "paragraph",
+        "id": "S3.SS6.p3.1",
+        "sha256": "5d809362ed8df930abe9765cd287a2ca9b71f6f33f05d67979b9f0893835a65a"
+      },
+      {
+        "n": 77,
+        "kind": "paragraph",
+        "id": "S3.SS6.p4.1",
+        "sha256": "fb3c9d59da68e0063e2cc5c1209e6de854bb39ab713605a96938166cfc646dd3"
+      },
+      {
+        "n": 78,
+        "kind": "heading",
+        "id": "S4",
+        "sha256": "89fdf359a857ca11b49e50e383e2aa2c78f538e6381a57370d149d690b79ce95"
+      },
+      {
+        "n": 79,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "sha256": "bc360375f62fa25ca9bc0d901e74bda15ba50a2d1243633b1344d11efb9313d5"
+      },
+      {
+        "n": 80,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "sha256": "3a0c57c662f3c75372695979ecd7b10eedf3f3f46567c5eb73e761db48c3ca7e"
+      },
+      {
+        "n": 81,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "sha256": "c1358d7c837b43482270fca49dc52ec343cfe6fe3277b8f8bd80996d92bc52d7"
+      },
+      {
+        "n": 82,
+        "kind": "paragraph",
+        "id": "S4.I1.i1.p1.1",
+        "sha256": "aa339ad80098147234e679a77b19ac650f6d3ad2cc401c47dd7eff45f793ad47"
+      },
+      {
+        "n": 83,
+        "kind": "paragraph",
+        "id": "S4.I1.i2.p1.1",
+        "sha256": "54eeb1d3b94b6766ee62c060fc76ec4d4f60bda2cbeb8e4fb24eab2974bc91f6"
+      },
+      {
+        "n": 84,
+        "kind": "paragraph",
+        "id": "S4.I1.i3.p1.1",
+        "sha256": "0b39698154c1309a20e6a7c16ffe1e0f15d8e07df655aa3db30966187616c657"
+      },
+      {
+        "n": 85,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "sha256": "337b3872eb0e4d14087a956d1459a75050e7da64dc450aaba1ba74d418f982b3"
+      },
+      {
+        "n": 86,
+        "kind": "paragraph",
+        "id": "S4.SS1.p3.1",
+        "sha256": "bff7d6d8d1ff9ccc80fecd097107839003a0bce282c2b134b497de9da9688b1b"
+      },
+      {
+        "n": 87,
+        "kind": "heading",
+        "id": "S4.SS1.SSS0.Px1",
+        "sha256": "a58da793c7250f1b3b8f8710efd7c7ee7e1a2dac4208f355dad42458a421e4ec"
+      },
+      {
+        "n": 88,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS0.Px1.p1.1",
+        "sha256": "b95b402e63e081aebf7b92a1c0f75ae141afe9a25ceb3a3000830345fd72c908"
+      },
+      {
+        "n": 89,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "sha256": "7df6692903fc1c46ba8db1d24ba9e928b4b9eaf433d7d7325b911b47e635b29f"
+      },
+      {
+        "n": 90,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "sha256": "ff36e442202bf3c673c7264e8228d191b5d08c0f3a3865dbab5a4e56e58c597a"
+      },
+      {
+        "n": 91,
+        "kind": "heading",
+        "id": "S4.SS2.SSS0.Px1",
+        "sha256": "7b790708ff1b171315a152018f3712e8c71c82f4f9000635f77a1336c34f1893"
+      },
+      {
+        "n": 92,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS0.Px1.p1.1",
+        "sha256": "bdf9e0430eb610f107b4980f9039687e73f9d7f1d4f417eff681c2dcd836ba25"
+      },
+      {
+        "n": 93,
+        "kind": "heading",
+        "id": "S4.SS2.SSS0.Px2",
+        "sha256": "40536dd8a0e2d0c77825529561e1c5091310fe90a8a94524c7bd9b4c8f1fc091"
+      },
+      {
+        "n": 94,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS0.Px2.p1.1",
+        "sha256": "b6c3f389e9d2a6792457186bd094260f38c49fd82b06bf82d616c4368e10d3a8"
+      },
+      {
+        "n": 95,
+        "kind": "paragraph",
+        "id": "S4.I2.i1.p1.1",
+        "sha256": "2f6b8c51b7285f00419b66e34e599091724f12b8bc831aafcff96c1a0c15e7cd"
+      },
+      {
+        "n": 96,
+        "kind": "paragraph",
+        "id": "S4.I2.i2.p1.1",
+        "sha256": "7ea07fd4c98d5207bdcfbf5e897704e42d97e74ddf1dc4925dce08295272ad78"
+      },
+      {
+        "n": 97,
+        "kind": "paragraph",
+        "id": "S4.I2.i3.p1.1",
+        "sha256": "fd3948472d3b46c65c7dfafde3cb25a0f2b4642315e8b65f30d1c92c5202676b"
+      },
+      {
+        "n": 98,
+        "kind": "heading",
+        "id": "S4.SS2.SSS0.Px3",
+        "sha256": "163e44b102626149bbbfb058eee4fcfa7748b40949629e0a1a4ff058f3bb548b"
+      },
+      {
+        "n": 99,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS0.Px3.p1.1",
+        "sha256": "9a725c84cba63704bc0b04f60da48afebbaf384fb36fb7f5fabda9dcade7d7cb"
+      },
+      {
+        "n": 100,
+        "kind": "paragraph",
+        "id": "S4.I3.i1.p1.1",
+        "sha256": "7afe8ce43245fcad8e1b27203f87a82e441c35d0bbb11352767c3cbec43ed8fe"
+      },
+      {
+        "n": 101,
+        "kind": "paragraph",
+        "id": "S4.I3.i2.p1.1",
+        "sha256": "ae12033eba8187d129f0288f752c2583a1bc71319cc6a381760edc0f779a41b4"
+      },
+      {
+        "n": 102,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS0.Px3.p1.2",
+        "sha256": "f3b47a6a678a8c6337d963d42c56152ce4a3dbe40c342446ce96e2e72dfbb11b"
+      },
+      {
+        "n": 103,
+        "kind": "heading",
+        "id": "S4.SS2.SSS0.Px4",
+        "sha256": "382b44b866b3ee498fa2d0358a3ae3bfa58753b1a02273fae24696dec7e22f51"
+      },
+      {
+        "n": 104,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS0.Px4.p1.1",
+        "sha256": "c1b4c34c7278c9d2ca60f5de2c7bde5d36e273079d977c17871cffeca5fd2eb9"
+      },
+      {
+        "n": 105,
+        "kind": "heading",
+        "id": "S4.SS2.SSS0.Px5",
+        "sha256": "dd7c5e4e2c7d9a5938606b441cd70d4dad5383d303a69cbe1b5d021e653b7264"
+      },
+      {
+        "n": 106,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS0.Px5.p1.1",
+        "sha256": "6627cce9723b3e9180d819409f1a5e3756b15cb86e678081863824586038200b"
+      },
+      {
+        "n": 107,
+        "kind": "heading",
+        "id": "S4.SS2.SSS0.Px6",
+        "sha256": "ae04644b5f09b64e7eb2b7c6f8edd53736c16b508b58e2042fbaf2b77846fb28"
+      },
+      {
+        "n": 108,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS0.Px6.p1.1",
+        "sha256": "458a21cf19687617e8fc187145432be0f476cb085ec47f0a0b044e4651dfe19a"
+      },
+      {
+        "n": 109,
+        "kind": "paragraph",
+        "id": "S4.SS2.SSS0.Px6.p2.1",
+        "sha256": "14491764b471197ee4124b61df475acd54796e50391b2eb4b6733630069c1267"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual45-76 defines seed collection, generated prompt/response filtering, fuzzing, separate benign-data incorporation and iterative input-detector training;79-109 specifies original/base and hard-mining/fuzzing configurations and held-out benchmarking.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual45/61-76/81-109 specifies input DeBERTa classification before/after retraining, semantic/syntactic/format variants and hard-example feedback. Detector inference consumes the prompt rather than the original target answer; source-derived malicious/benign labels are not silently redefined as an untrusted-document boundary.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual56/99-104 specifies GPT4o target responses followed by JailJudge prompt-response scoring to filter generated candidates. This data-generation assessment consumes the target response and is separate from the trained detector inference.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True is verified for declared public main method/configuration families after actual41-109 and source heading inventory with no appendix. Actual49 says generation prompt bodies are withheld by authors, while tested generator roles and downstream families are explicitly specified. This disclosure does not justify inventing their contents or evaluated language; no performance, sample values or assurance is transferred.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}

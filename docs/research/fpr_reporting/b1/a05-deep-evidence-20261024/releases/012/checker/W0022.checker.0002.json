@@ -1,0 +1,235 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0022",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T12:06:47.050972+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0022.provider.0002.json",
+  "provider_packet_sha256": "af63a381027563098089d7b4f1d49bf2ea402069fe35675655bc3faec3d4baf9",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2410.22284v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q003-1.html",
+    "raw_sha256": "6b4bec27c9cc14b4c38104be738bf1f6f9ff83ecf26bdac448c7a4e7889b5300",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0049.json",
+    "acquisition_receipt_sha256": "0e4fa03e8083cd356c37781760e6e718a4c50849e907e65fb685b79c546da75f",
+    "captured_version_id": "arxiv:2410.22284v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_ranges": [
+      [
+        15,
+        30
+      ],
+      [
+        37,
+        41
+      ]
+    ],
+    "range_unit": "physical one-based PDF page / global zero-based HTML paragraph",
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "Original main methods23-30 define deduplication, stratified prompt splits, embeddings, visualization and binary classifiers;37 defines pretrained input-classifier comparisons. True remains verified for the complete declared embedding/classifier/visualization-family inventory. External dataset-card evidence is limited to constituent provenance; neither exact paper revision nor merged held-out English composition is established.",
+    "visual_check": null,
+    "locator_sha256": "273b220deab3bac6f3f34c9be44820386d56e7990747c4b0da393413029d903f",
+    "locators": [
+      {
+        "index": 15,
+        "paragraph_id": "S2.SS1.p2.1",
+        "section_id": "S2.SS1",
+        "heading": "2.1 Prompt Injection Attacks",
+        "text_sha256": "6dc21b476c619ae56c23391c4fb0482f6d16f3c78c9f189b4d286ec534b83afa"
+      },
+      {
+        "index": 16,
+        "paragraph_id": "S2.SS2.p1.1",
+        "section_id": "S2.SS2",
+        "heading": "2.2 Embedding Models",
+        "text_sha256": "9c55e75031c96d2e76d697a65b66cb67148794698b6c7bee8337df388eeddec6"
+      },
+      {
+        "index": 17,
+        "paragraph_id": "S2.SS2.p2.1",
+        "section_id": "S2.SS2",
+        "heading": "2.2 Embedding Models",
+        "text_sha256": "b1664cc7e26675581bfd269bba1126425e4a2880a9835bee0e4b9bcae3fb83ea"
+      },
+      {
+        "index": 18,
+        "paragraph_id": "S2.SS3.p1.1",
+        "section_id": "S2.SS3",
+        "heading": "2.3 Related Work",
+        "text_sha256": "08f01a334a9edb790a531cf6799a2221929b32e7a0ca7c7aae6469d2f3da3762"
+      },
+      {
+        "index": 19,
+        "paragraph_id": "S2.SS3.p2.1",
+        "section_id": "S2.SS3",
+        "heading": "2.3 Related Work",
+        "text_sha256": "001357e430f36af58256eb586646917e5e51944334ffcde5ba9765a41626359d"
+      },
+      {
+        "index": 20,
+        "paragraph_id": "S2.SS3.SSS0.Px1.p1.1",
+        "section_id": "S2.SS3.SSS0.Px1",
+        "heading": "Guardrail-based (AI Firewall) Defense.",
+        "text_sha256": "aab670e75ce9e6c80123083c253693dd9bd6c31a1a4f5df15c5165b3815b0726"
+      },
+      {
+        "index": 21,
+        "paragraph_id": "S2.SS3.SSS0.Px2.p1.1",
+        "section_id": "S2.SS3.SSS0.Px2",
+        "heading": "LLM-based Defense.",
+        "text_sha256": "036cd2f70fef596b21951c711b5896244b3383d3eba6de14db362668f15db3ab"
+      },
+      {
+        "index": 22,
+        "paragraph_id": "S2.SS3.SSS0.Px3.p1.1",
+        "section_id": "S2.SS3.SSS0.Px3",
+        "heading": "Our Approach.",
+        "text_sha256": "d8e6b6a1d143b9906bf5554b9c8082e4164d84e5696c635a4a284692e2e57b34"
+      },
+      {
+        "index": 23,
+        "paragraph_id": "S3.SS1.p1.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Dataset Construction",
+        "text_sha256": "0c33fd29bbf4483f2053aaef0d5336ff5dd433db7e581310ebf9f35e08c39cde"
+      },
+      {
+        "index": 24,
+        "paragraph_id": "S3.SS1.p2.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Dataset Construction",
+        "text_sha256": "631d0b032b877c297dcbe4cecbbf30bf0d20fa73927ba310282f0be0c9512360"
+      },
+      {
+        "index": 25,
+        "paragraph_id": "S3.SS1.p3.1",
+        "section_id": "S3.SS1",
+        "heading": "3.1 Dataset Construction",
+        "text_sha256": "ef2d8dcd88554305884d1a89303263e74be8e87d4297f0a16f7d3bcf054f001c"
+      },
+      {
+        "index": 26,
+        "paragraph_id": "S3.SS2.SSS0.Px1.p1.1",
+        "section_id": "S3.SS2.SSS0.Px1",
+        "heading": "Methodology to Address RQ1: Visualization of Embeddings after Dimension Reduction.",
+        "text_sha256": "3ec434eb1ec941b77cb9e8a5f70d55f430c31afab5818400dd240a5e6749fb42"
+      },
+      {
+        "index": 27,
+        "paragraph_id": "S3.SS2.SSS0.Px1.p2.1",
+        "section_id": "S3.SS2.SSS0.Px1",
+        "heading": "Methodology to Address RQ1: Visualization of Embeddings after Dimension Reduction.",
+        "text_sha256": "4acf66cbe8fb1f1a4bdb048b2f2a0118a777fd6077931faeda0cd0586bde8894"
+      },
+      {
+        "index": 28,
+        "paragraph_id": "S3.SS2.SSS0.Px1.p3.1",
+        "section_id": "S3.SS2.SSS0.Px1",
+        "heading": "Methodology to Address RQ1: Visualization of Embeddings after Dimension Reduction.",
+        "text_sha256": "7cd3ba2e2eaf3d84fc05d7e49b5abee10b72e6c8d0926ed9010e145341817fb2"
+      },
+      {
+        "index": 29,
+        "paragraph_id": "S3.SS2.SSS0.Px1.p4.1",
+        "section_id": "S3.SS2.SSS0.Px1",
+        "heading": "Methodology to Address RQ1: Visualization of Embeddings after Dimension Reduction.",
+        "text_sha256": "abe35d756849f3bfbfc302cca33ef279c6b1d7029f52b3c7fce2b659f5676dd1"
+      },
+      {
+        "index": 30,
+        "paragraph_id": "S3.SS2.SSS0.Px2.p1.1",
+        "section_id": "S3.SS2.SSS0.Px2",
+        "heading": "Methodology to Address RQ2: Binary Classification.",
+        "text_sha256": "d88f5313d2a9801b00940e6972e434dfd08ae486ee81dd0a4eb46b2adb73a204"
+      },
+      {
+        "index": 37,
+        "paragraph_id": "S4.SS2.SSS0.Px1.p1.1",
+        "section_id": "S4.SS2.SSS0.Px1",
+        "heading": "Comparison with State-of-the-Art Classifiers.",
+        "text_sha256": "6398ce960f7e7c00e347b1950cee07f0e26d6732e0a3972feb0807c934564051"
+      },
+      {
+        "index": 38,
+        "paragraph_id": "S4.SS2.SSS0.Px1.p2.1",
+        "section_id": "S4.SS2.SSS0.Px1",
+        "heading": "Comparison with State-of-the-Art Classifiers.",
+        "text_sha256": "4c769f88937163f99138b81fc3a62533e59f83e26c43ccde4349ab7845386647"
+      },
+      {
+        "index": 39,
+        "paragraph_id": "S5.p1.1",
+        "section_id": "S5",
+        "heading": "5 Discussion and Conclusion",
+        "text_sha256": "63b7c939abae5fdf6ad52097982bcb1e2eb8041fc107271a9090f65052bec8e4"
+      },
+      {
+        "index": 40,
+        "paragraph_id": "S5.p2.1",
+        "section_id": "S5",
+        "heading": "5 Discussion and Conclusion",
+        "text_sha256": "3b5a115b09d0f0332221c00b7f18c0ff82bcc773f24e3943cc1c34f5ba3926b1"
+      },
+      {
+        "index": 41,
+        "paragraph_id": "S5.p3.1",
+        "section_id": "S5",
+        "heading": "5 Discussion and Conclusion",
+        "text_sha256": "b94d926901885d47253515e771753724dac7f330c5f0d8ca4b762218437c2bd3"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Original main methods23-30 define deduplication, stratified prompt splits, embeddings, visualization and binary classifiers;37 defines pretrained input-classifier comparisons.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main24 and30 verify OpenAI/GTE/MiniLM embeddings feeding logistic regression, random forest and XGBoost on benign/malicious prompt labels without original protected answers.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main37 explicitly evaluates the named SetFit/ProtectAI original-v2/Deepset text classifiers on common test prompts. These consume prompt text, not protected task responses.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Main26-29 defines PCA/t-SNE/UMAP visualization of prompt embeddings; these are not binary detector outputs.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Paper dataset construction23 and actual Table S3.T1 name reshabhs SPML as a constituent. Independently verified the exact frozen official README, commit metadata and language lines5-6 declaring English. The recorded commit predates the paper; the paper does not pin that revision or identify source-specific held-out membership, so only English source-component provenance is approved.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "True remains verified for the complete declared embedding/classifier/visualization-family inventory. External dataset-card evidence is limited to constituent provenance; neither exact paper revision nor merged held-out English composition is established.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual source-context inspection may display adjacent numeric/qualitative outcomes and sample values. These are withheld; no reliance on them for release. Required operational-board aggregate history exposure is recorded in ROLE.0001.json."
+  }
+}

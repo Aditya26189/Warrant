@@ -1,0 +1,305 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0072",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-25T13:03:26.940038+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0072.provider.0001.json",
+  "provider_packet_sha256": "cf56b40c51b6818d5182e73c8c2ec05e3daca9921b64ec6b1899a64d1c80e6cb",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2508.09288v2",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\773e7066af0db3dd89e20eeadd7e8cb48bc9f2022d54185793a1d1c02fd269b0",
+    "raw_sha256": "773e7066af0db3dd89e20eeadd7e8cb48bc9f2022d54185793a1d1c02fd269b0",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0110.json",
+    "acquisition_receipt_sha256": "8ba28394e5c4d6253335b9488c77ec1bb65ded20c3fbeb08b8dd2738488ccac9",
+    "captured_version_id": "arxiv:2508.09288v2",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        39,
+        71
+      ]
+    ],
+    "coverage_disposition": "PARTIAL_METHOD_SCOPE",
+    "semantic_rationale": "Architecture41-58 defines provenance-tagged tokens, trust masks, optional residual/FFN gates and trust-aware cache. Setup63-67 defines the named defense comparison and jailbreak/benign task sets; assurance rhetoric and outcomes are withheld. Only the listed method families and inspected source context are approved; retained omissions remain open.",
+    "locator_sha256": "5f710d6f8cbcd9fee7755c4601b0ba275034b5f4f744e17ecc0960d5d1359862",
+    "locators": [
+      {
+        "n": 39,
+        "kind": "heading",
+        "id": "S4",
+        "section": "4 Architecture of CIV",
+        "sha256": "c70c1b070bc18dd0d83857ff4a30ebf39c380692ae2ac551e93e67b6204b51bf"
+      },
+      {
+        "n": 40,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "section": "4.1 System Overview",
+        "sha256": "63db7d86730030f35169efa79b5bedc7880cfaba2f671b15b537ccacac54f8e8"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "section": "4.1 System Overview",
+        "sha256": "973963cc7adeb07120c23612f91da5af338c6fa7364f7624995c77ac2b10b8e7"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S4.I1.i1.p1.1",
+        "section": "4.1 System Overview",
+        "sha256": "7b31adc3982aa914aa642e888ab87a5121c02c7bf72aa3fd50d415beba59d8d6"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S4.I1.i2.p1.1",
+        "section": "4.1 System Overview",
+        "sha256": "bfbc09f863b34283a4c47526fa1fd92613ac0a5e93b5eaa62d08717104293488"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S4.I1.i3.p1.1",
+        "section": "4.1 System Overview",
+        "sha256": "1616d958ac308da7a98e739b329f4c202395f34cf483693e2d59a30f384f1913"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S4.I1.i4.p1.1",
+        "section": "4.1 System Overview",
+        "sha256": "3443e893553b8123903eb4360763a00a209d6e30dbc49badc089f7c9ca7aa88b"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S4.I1.i5.p1.1",
+        "section": "4.1 System Overview",
+        "sha256": "0e5e2a40eb2633e14a35542cad4fa0d7514807f71e03769fd7322802c4e8b059"
+      },
+      {
+        "n": 47,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "section": "4.2 Cryptographic Namespace Tagging",
+        "sha256": "10b7eff7d385b0ea1a2209484dbc92548ea5eec5bcaf912793b92f35ea196231"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "section": "4.2 Cryptographic Namespace Tagging",
+        "sha256": "397f690740bba501af46a61f87ce28161db944f1e6be6454dfe48d05c6d67d1a"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.2",
+        "section": "4.2 Cryptographic Namespace Tagging",
+        "sha256": "27677b8b9692da7b3ea7cb20b5a1635a0c16391f003b034a3274a4cae000d678"
+      },
+      {
+        "n": 50,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "section": "4.3 Trust-Constrained Attention (Hard Mask)",
+        "sha256": "82547fdad3b504d53ac9b5396506e0db03a907c6ab133c9e03ceb563327573a2"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "section": "4.3 Trust-Constrained Attention (Hard Mask)",
+        "sha256": "4b1b82d69298b8e8f14536426af94bc7c2aabdd26bbb16552effefe244259148"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S4.SS3.p2.1",
+        "section": "4.3 Trust-Constrained Attention (Hard Mask)",
+        "sha256": "66ba61428d8383291f4f6a0239abffb4b61ec6659ba56e7d986b23f4c4c4fe41"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S4.SS3.p2.2",
+        "section": "4.3 Trust-Constrained Attention (Hard Mask)",
+        "sha256": "addc8eafe34c28c17f9031dacf4bf162ea0d700609afb6977b5a9978a59d0471"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S4.SS3.p3.1",
+        "section": "4.3 Trust-Constrained Attention (Hard Mask)",
+        "sha256": "4423d2e5d8d47cbe505b895957916a0080671e995a00ec4ee9945fa8f2fc7940"
+      },
+      {
+        "n": 55,
+        "kind": "heading",
+        "id": "S4.SS4",
+        "section": "4.4 Namespace-Aware FFN and Residual (Robustness Gate)",
+        "sha256": "be41bffb0ef983a65c7fe4ff587832983d4b8999aaf18a1cc7464beb25d1f75b"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S4.SS4.p1.1",
+        "section": "4.4 Namespace-Aware FFN and Residual (Robustness Gate)",
+        "sha256": "869ae3e4b2d82a0b0c9b92e2763784a12654cde39b7a49c24255a91b2fda3fd5"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S4.SS4.p2.1",
+        "section": "4.4 Namespace-Aware FFN and Residual (Robustness Gate)",
+        "sha256": "31a9d0598478a9618d1901027d5f39d94eeba0abab17ea59482de6d29e716654"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S4.SS4.p2.2",
+        "section": "4.4 Namespace-Aware FFN and Residual (Robustness Gate)",
+        "sha256": "5d981206342d84673ad7d37a4cb17f13ff7bbd430e9f7867e325676527a96b7b"
+      },
+      {
+        "n": 59,
+        "kind": "heading",
+        "id": "S4.SS5",
+        "section": "4.5 Memory Overhead",
+        "sha256": "3729d2b9d00fe9b3abea451557bd3400412dc1a05cd69bb8116b2733101373fc"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "S4.SS5.p1.1",
+        "section": "4.5 Memory Overhead",
+        "sha256": "7d77cf286ec88baec22d3b322e8b3d8ee5169a7a89d76e1e6b540f0c0e454d64"
+      },
+      {
+        "n": 61,
+        "kind": "heading",
+        "id": "S5",
+        "section": "5 Experimental Evaluation",
+        "sha256": "f12b71b60533351c9212ab0aded0479cc7287089cabf67110fab34022669a1f7"
+      },
+      {
+        "n": 62,
+        "kind": "heading",
+        "id": "S5.SS1",
+        "section": "5.1 Setup",
+        "sha256": "e8b01af1434d780ff43283ddc4b475c3148f0af66d4bcba6fdeb3209937df416"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "S5.SS1.p1.1",
+        "section": "5.1 Setup",
+        "sha256": "fa3d29ad29e7525aec6a7f9ddfed805eb77abcee5b1eb8aa3baad3d90f56305d"
+      },
+      {
+        "n": 64,
+        "kind": "heading",
+        "id": "S5.SS2",
+        "section": "5.2 Datasets",
+        "sha256": "30e33a21ef193e8880ecdb89a54b3bc5636bb35d3eb588f58e7b96647b211fb5"
+      },
+      {
+        "n": 65,
+        "kind": "paragraph",
+        "id": "S5.I1.i1.p1.1",
+        "section": "5.2 Datasets",
+        "sha256": "18c2502eff1e6224992db29e8c99e6fcd5e28975f4977028652c4823e4e23cf4"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "S5.I1.i2.p1.1",
+        "section": "5.2 Datasets",
+        "sha256": "cc2c0d04f68e9d9ad9f69c87a6794cf76f42314c00db230e26e479b96f3c18ef"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "S5.I1.i3.p1.1",
+        "section": "5.2 Datasets",
+        "sha256": "4a0bf3021aada619b47f12beb5bb403c213e04f7332ba6daeff466f287e96b0e"
+      },
+      {
+        "n": 68,
+        "kind": "heading",
+        "id": "S5.SS3",
+        "section": "5.3 Results: The Numbers Speak",
+        "sha256": "5aa641297e0fae82928f4548bd0c51b0d061a7f6f79a67618acbb2714084d5f1"
+      },
+      {
+        "n": 69,
+        "kind": "paragraph",
+        "id": "S5.SS3.p1.1",
+        "section": "5.3 Results: The Numbers Speak",
+        "sha256": "8cc9ea3a79e8e717816a31f3e8edeb90d144279630bc043ab6b89f5402c156a7"
+      },
+      {
+        "n": 70,
+        "kind": "heading",
+        "id": "S5.SS4",
+        "section": "5.4 Ablation Studies: Dissecting the Architecture",
+        "sha256": "20372c8df8c9447d250dd03a359bff6ef818ec8b9aab603c8ca33996c94d5292"
+      },
+      {
+        "n": 71,
+        "kind": "paragraph",
+        "id": "S5.SS4.p1.1",
+        "section": "5.4 Ablation Studies: Dissecting the Architecture",
+        "sha256": "190ea454af963ea3b3b496f8adfddbafe117a9c77a856d5461f38c33c13ba9df"
+      }
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Architecture41-58 defines provenance-tagged tokens, trust masks, optional residual/FFN gates and trust-aware cache. Setup63-67 defines the named defense comparison and jailbreak/benign task sets; assurance rhetoric and outcomes are withheld.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual41-58 defines cryptographic checks and transformer execution controls;71 identifies component-removal conditions. Experimental attack/benign behavior assessment in63-67 concerns generated execution/output, without inferring an input-injection classifier from structural controls.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Setup63 explicitly names LLM-Guard, Rebuff Strong and PromptArmor. Exact scanner protocol and per-arm input/output dependency are not given in the inspected setup, so the packet correctly leaves them unresolved.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly preserves material omissions. Approved local facts cannot establish whole-work absence.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Actual primary source inspection displayed adjacent outcome/sample prose. These are withheld. Operational board exposure in ROLE.0001.json; no freshness or OS isolation claim."
+  }
+}
