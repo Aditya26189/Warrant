@@ -157,6 +157,9 @@ def apply_domain(row: dict, change: dict, evidence: dict) -> None:
                 raise ValueError("BIBLIOGRAPHY_IS_NOT_DOMAIN_PROOF")
         row["positive_experiment_binding"] = {"review_id": rid, "criterion_evidence_ids": proof,
             "experiment_and_inference_rationale": change["scientific_rationale"]}
+    elif row.get("positive_experiment_binding"):
+        row["superseded_positive_experiment_binding"] = row["positive_experiment_binding"]
+        row["positive_experiment_binding"] = None
     row.update({"criteria": criteria, "whole_work_exclusion_ground": ground,
                 "scientific_rationale": change["scientific_rationale"],
                 "considered_method_evidence_ids": sorted(set(row["considered_method_evidence_ids"] + change["new_evidence_ids"])),

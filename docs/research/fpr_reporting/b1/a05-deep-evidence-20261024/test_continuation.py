@@ -39,6 +39,15 @@ class ScientificBoundaryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "PARTIAL_SCOPE"):
             c.apply_domain(self.row, self.change, self.evidence)
 
+    def test_withdrawing_positive_support_preserves_but_supersedes_old_binding(self) -> None:
+        self.row["positive_experiment_binding"] = {"criterion_evidence_ids": {"english_evaluation": ["old"]}}
+        old = copy.deepcopy(self.row["positive_experiment_binding"])
+        self.change.update(before_row_sha256=r.sha(r.encoded(self.row)),
+                           whole_work_exclusion_ground=None, exclusion_basis=None)
+        c.apply_domain(self.row, self.change, self.evidence)
+        self.assertIsNone(self.row["positive_experiment_binding"])
+        self.assertEqual(self.row["superseded_positive_experiment_binding"], old)
+
     def test_explicit_task_scope_requires_a_checked_whole_study_statement(self) -> None:
         self.change["exclusion_basis"] = "EXPLICIT_WHOLE_STUDY_TASK_SCOPE"
         self.change["criteria"]["input_injection_task"] = "NOT_MET"
