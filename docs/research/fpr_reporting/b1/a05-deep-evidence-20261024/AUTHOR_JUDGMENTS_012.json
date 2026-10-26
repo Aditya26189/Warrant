@@ -1,0 +1,100 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "changes": [
+    {
+      "before_row_sha256": "cf17e5ce475c28c6ce0f45cfbfa1c5d822e1e2dfaebe4d59b2233d82a58aa7be",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "REC-REC-01-W0008-F01",
+        "REC-REC-01-W0008-F02",
+        "REC-REC-01-W0008-F03",
+        "SEM-01-W0008-F01"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0008",
+      "scientific_rationale": "The released English secret-repetition and question/response formatting facts describe the auxiliary detector prompt, not the language of the candidate response being classified by that detector. English field labels or formatting cannot establish English evaluated candidate content. Apply the existing evaluated-input language rule consistently: retain independently supported injection-task, binary-evaluation and pre-target-answer criteria, but withdraw the unsupported language inference. This is a source-linked custodian self-correction, not new source evidence or an exclusion; actual evaluated-input construction/language remains to be checked. No results, counts or assurance wording are used.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2403.17710"
+    },
+    {
+      "before_row_sha256": "73426419e8aa848d9ecc9e7a8b2e0d0fe86ea1bee0dbdd1d5dc114006fc69949",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "REC-REC-01-W0041-F01",
+        "SEM-01-W0041-F02",
+        "REC-REC-01-W0041-F02",
+        "SEM-01-W0041-F01"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0041",
+      "scientific_rationale": "The released English secret-repetition instruction is the detector instruction applied to target data. It does not establish the language of that target data or its injected text. Named task datasets alone do not resolve that linkage. Apply the existing evaluated-input language rule consistently: retain independently supported injection-task, binary-evaluation and pre-target-answer criteria, but withdraw the unsupported language inference. This is a source-linked custodian self-correction, not new source evidence or an exclusion; actual evaluated-input construction/language remains to be checked. No results, counts or assurance wording are used.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2504.11358"
+    },
+    {
+      "before_row_sha256": "60bfddeaa6881f1c31edc0f98de4f0cb4f2e90ad6d756c50cccad7c66ef5e3c4",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "REC-REC-01-W0044-F01",
+        "REC-REC-01-W0044-F02",
+        "SEM-01-W0044-F01"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0044",
+      "scientific_rationale": "The released English secret-repetition instruction is used by the known-answer detector. This does not establish English in the untrusted tool-description content that the detector classifies. Apply the existing evaluated-input language rule consistently: retain independently supported injection-task, binary-evaluation and pre-target-answer criteria, but withdraw the unsupported language inference. This is a source-linked custodian self-correction, not new source evidence or an exclusion; actual evaluated-input construction/language remains to be checked. No results, counts or assurance wording are used.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2504.19793"
+    },
+    {
+      "before_row_sha256": "4462bdaede5304cb6ed34a1526b82fdd9893f1a99a8b7f4166294cd48396aed1",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "SEM-01-W0058-F02",
+        "REC-REC-01-W0058-F01",
+        "SEM-01-W0058-F01",
+        "REC-REC-01-W0058-F02"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0058",
+      "scientific_rationale": "The released English instruction asks an auxiliary detector to repeat a key while ignoring appended data. The instruction language does not establish the language of the appended evaluated input. Apply the existing evaluated-input language rule consistently: retain independently supported injection-task, binary-evaluation and pre-target-answer criteria, but withdraw the unsupported language inference. This is a source-linked custodian self-correction, not new source evidence or an exclusion; actual evaluated-input construction/language remains to be checked. No results, counts or assurance wording are used.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2507.05630"
+    }
+  ],
+  "interpretation_documents": {
+    "ENGLISH_EVIDENCE_APPLICATION.md": "8f842cd879937d19f7e7f448e9dd84e0933fcd716098cb13778975f82bbc32b9"
+  },
+  "not_fresh_independent": true,
+  "recorded_utc": "2026-10-26T23:16:15.923696+00:00",
+  "release_sha256": "ef013d919bc8ddaa2530031654032a645277f5efba6d7f985f05077ce9a44bb0",
+  "reviewed_unchanged": [],
+  "schema": "A05_DEEP_EXPOSED_CUSTODIAN_JUDGMENTS",
+  "scope": "B1_ONLY_NO_OUTCOMES_NO_DRAW_NO_B2",
+  "source_git_commit": "b7d91f04f4c05e336b2b8e2192526a9b066bbdc0",
+  "version_corrections": []
+}

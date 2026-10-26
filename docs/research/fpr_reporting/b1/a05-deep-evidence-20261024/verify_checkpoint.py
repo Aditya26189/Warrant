@@ -11,6 +11,34 @@ import release_deep as r
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[4]
+# Explicitly approved main integration; never infer this pin from a moving ref.
+# The frozen scientific-history baseline remains c.BASELINE below.
+SCOPE_BASELINE = "2187f8524b96ee1f356da15c894f64e833bafc2c"
+
+
+def scope_changes() -> list[str]:
+    """Permit approved integration history without waiving new research scope."""
+    ancestor = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", SCOPE_BASELINE, "HEAD"], cwd=ROOT,
+        check=False)
+    if ancestor.returncode:
+        raise ValueError("SCOPE_BASELINE_NOT_ANCESTOR")
+    changed = subprocess.check_output(
+        ["git", "diff", "--name-only", SCOPE_BASELINE, "HEAD"], cwd=ROOT,
+        text=True).splitlines()
+    mutable = "docs/research/fpr_reporting/b1/B1_CURRENT_STATUS.md"
+    allowed = "docs/research/fpr_reporting/b1/a05-deep-evidence-20261024/"
+    if any(name != mutable and not name.startswith(allowed) for name in changed):
+        raise ValueError("OUT_OF_SCOPE_CHANGE")
+    integrated = set(subprocess.check_output(
+        ["git", "ls-tree", "-r", "--name-only", SCOPE_BASELINE, "--",
+         "docs/research/fpr_reporting/b1"], cwd=ROOT, text=True).splitlines())
+    # New helpers may be refactored; prior evidence, judgments and checkpoints
+    # remain frozen even when introduced after the older scientific baseline.
+    if any(name in integrated and name != mutable and not name.endswith(".py")
+           for name in changed):
+        raise ValueError("FROZEN_CONTINUATION_CHANGED")
+    return changed
 
 
 def audit(checkpoint: Path) -> dict:
@@ -27,10 +55,7 @@ def audit(checkpoint: Path) -> dict:
         if (ROOT / name).read_bytes() != expected:
             raise ValueError("HISTORICAL_RESEARCH_CHANGED:" + name)
         checked[name] = r.sha(expected)
-    changed = subprocess.check_output(["git", "diff", "--name-only", c.BASELINE, "HEAD"], cwd=ROOT, text=True).splitlines()
-    allowed = "docs/research/fpr_reporting/b1/a05-deep-evidence-20261024/"
-    if any(name != mutable and not name.startswith(allowed) for name in changed):
-        raise ValueError("OUT_OF_SCOPE_CHANGE")
+    changed = scope_changes()
     proposal = json.loads((checkpoint / "FRAME_PROPOSAL.json").read_bytes())
     generated_head = proposal["summary"]["source_git_commit"]
     expected = c.assemble(generated_head)
@@ -60,6 +85,8 @@ def audit(checkpoint: Path) -> dict:
     return {"status": "PASS", "checkpoint": str(checkpoint.relative_to(HERE)),
             "generated_source_commit": generated_head, "frozen_history_baseline": c.BASELINE,
             "historical_files_byte_identical": len(checked), "historical_file_hashes": checked,
+            "scope_change_baseline": SCOPE_BASELINE, "new_scope_paths": changed,
+            "integrated_frozen_artifacts_check": "PASS",
             "scope_check": "RESEARCH_CONTINUATION_AND_ACTIVE_POINTER_ONLY",
             "checkpoint_payloads": payloads, "exact_replay": True, "releases": files,
             "unique_new_checked_method_fields": len(methods),
