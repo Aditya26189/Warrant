@@ -1,0 +1,49 @@
+{
+  "selection_rule": "ascending SHA256(prefix + task_id), calibration excluded",
+  "prefix": "warrant-gate1-20261026:",
+  "population_count": 164,
+  "calibration_id": "HumanEval/0",
+  "reserved_ids": [
+    "HumanEval/87",
+    "HumanEval/57",
+    "HumanEval/18"
+  ],
+  "reserved": [
+    {
+      "task_id": "HumanEval/87",
+      "prompt": "\ndef get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n",
+      "contract": "\n    assert type(x) == int, \"invalid inputs\" # $_CONTRACT_$\n    assert type(lst) == list, \"invalid inputs\" # $_CONTRACT_$\n    assert all(type(y) == list for y in lst), \"invalid inputs\" # $_CONTRACT_$\n",
+      "entry_point": "get_row",
+      "raw_record_sha256": "2438940437dce63398e0afd8a36320281ddc9d7810e18c1d860d7a2e42eb9f5f",
+      "runtime_eligibility": "UNVERIFIED_NOT_EXECUTED"
+    },
+    {
+      "task_id": "HumanEval/57",
+      "prompt": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n",
+      "contract": "\n    assert type(l) == list, \"invalid inputs\" # $_CONTRACT_$\n    assert all(type(x) in (int, float, bool) for x in l), \"invalid inputs\" # $_CONTRACT_$\n",
+      "entry_point": "monotonic",
+      "raw_record_sha256": "28cacbd89ef494dd34aa6b6e1963e6b18647a94de93c731d34cb34798a8801a9",
+      "runtime_eligibility": "UNVERIFIED_NOT_EXECUTED"
+    },
+    {
+      "task_id": "HumanEval/18",
+      "prompt": "\n\ndef how_many_times(string: str, substring: str) -> int:\n    \"\"\" Find how many times a given substring can be found in the original string. Count overlaping cases.\n    >>> how_many_times('', 'a')\n    0\n    >>> how_many_times('aaa', 'a')\n    3\n    >>> how_many_times('aaaa', 'aa')\n    3\n    \"\"\"\n",
+      "contract": "\n    assert isinstance(string, str) and isinstance(substring, str), \"invalid inputs\" # $_CONTRACT_$\n    assert substring != \"\", \"invalid inputs\" # $_CONTRACT_$\n",
+      "entry_point": "how_many_times",
+      "raw_record_sha256": "cd08e1827e79f87cf388b3371fad59550c3f648c1725919ae3199012fe37796a",
+      "runtime_eligibility": "UNVERIFIED_NOT_EXECUTED"
+    }
+  ],
+  "calibration_raw_record_sha256": "48301fdf165591d98537dba7f67e2df80bec18346e0610d01f810895f2ab0d5d",
+  "exposure": "Reserved records parsed and hashed for transport; only prompts, contracts and identities exported. No reserved execution or test/reference inspection. Not access-controlled blinding.",
+  "prepared_at_utc": "2026-10-26T09:07:02.949134+00:00",
+  "source_revision": "9fdb2f5d1fa4f21f083e9377f6aa0c5b37727793",
+  "source_dirty": false,
+  "config_sha256": "d0dc885ae97afe9b6e190c5fb07c0535d688e745e88e6a86535fa2e1bdf3d74d",
+  "dataset_url": "https://github.com/evalplus/humanevalplus_release/releases/download/v0.1.10/HumanEvalPlus.jsonl.gz",
+  "dataset_sha256": "272720b90ac375502c8ed23cd791c2a93dfb22a911641a494da74a426c09f101",
+  "evalplus_revision": "26d6d00bb1fd0fa37f39c99d5290da67891d1c5e",
+  "calibration_file_sha256": "4e417fa6071cbf9812cf35c18fb5378e23328def9e26faede6d7a566cbc47178",
+  "EVALPLUS-LICENSE_sha256": "fcc1f77fe5443b21bfc4dfcc3d66f7654f599b91582df771850e5e876986a103",
+  "HUMANEVAL-LICENSE_sha256": "bcba3de214851cce46ed5af42d6698044616eeace887c3231bc7a20474ab639e"
+}
