@@ -1,0 +1,28 @@
+{
+  "b2_authorized": false,
+  "checked_utc": "2026-10-26T05:56:47.362586+00:00",
+  "limitations": [
+    "Focused research validation; production behavior unchanged and full core suite not rerun.",
+    "Proposals remain exposed-custodian judgments, not fresh independent final review.",
+    "Local exact-source replay uses retained private source/provider caches in addition to committed restricted receipts; no fresh-clone replay is claimed.",
+    "Earlier release attempts rejected unsupported schema fields and capture-identity keys before freezing output; subsequent code commits preserve the boundaries and corrected runs."
+  ],
+  "preservation_audit": "CHECKPOINT_AUDIT_004.json",
+  "ruff": "PASS",
+  "sampling_executed": false,
+  "scientific_checkpoint": "checkpoints/010",
+  "scoped_tests": {
+    "command": "python -m pytest -q -p no:cacheprovider -o addopts=--strict-markers [the five research test modules]",
+    "failed": 0,
+    "modules": [
+      "test_release_deep.py",
+      "test_continuation.py",
+      "../a05-custodian-adjudication-20261023/test_adjudication.py",
+      "../a04-custodian-repair-20261023/test_repair_review.py",
+      "../a04-reviewer-returns-20261022/test_audit_returns.py"
+    ],
+    "passed": 59
+  },
+  "source_git_commit": "4d482e0189cb9151c06947883734633ee2a383b5",
+  "whitespace": "PASS"
+}
