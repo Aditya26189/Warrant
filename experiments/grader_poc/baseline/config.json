@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "phase": "GATE2_CALIBRATION_BASELINE_ONLY",
+  "task_id": "HumanEval/0",
+  "method": "custom token-preserving implementation of conventional first-order operators; not a mutmut/PIT run",
+  "operators": ["relational_boundary", "comparison_negation", "arithmetic_swap", "numeric_offset", "boolean_flip", "constant_guard"],
+  "candidate_order": "ascending source byte start, source byte end, operator name, replacement text; exact duplicate candidate bytes removed",
+  "candidate_cap": 64,
+  "outer_timeout_seconds": 30,
+  "total_execution_cap_seconds": 600,
+  "witness_count": 200,
+  "witness_source": "the existing Gate1 seeded cases only, in their existing order",
+  "seed": 1729,
+  "held_out_executions": 0,
+  "recorded_assistant_start_utc": "2026-10-26T16:39:43+00:00",
+  "human_active_minutes": null,
+  "stop_rule": "retain every generated candidate; no post-result operator/input tuning, no coverage ranking or held-out runs in this step"
+}
