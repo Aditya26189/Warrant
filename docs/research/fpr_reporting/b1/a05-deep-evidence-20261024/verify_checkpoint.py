@@ -30,6 +30,14 @@ def scope_changes() -> list[str]:
     allowed = "docs/research/fpr_reporting/b1/a05-deep-evidence-20261024/"
     if any(name != mutable and not name.startswith(allowed) for name in changed):
         raise ValueError("OUT_OF_SCOPE_CHANGE")
+    integrated = set(subprocess.check_output(
+        ["git", "ls-tree", "-r", "--name-only", SCOPE_BASELINE, "--",
+         "docs/research/fpr_reporting/b1"], cwd=ROOT, text=True).splitlines())
+    # New helpers may be refactored; prior evidence, judgments and checkpoints
+    # remain frozen even when introduced after the older scientific baseline.
+    if any(name in integrated and name != mutable and not name.endswith(".py")
+           for name in changed):
+        raise ValueError("FROZEN_CONTINUATION_CHANGED")
     return changed
 
 
@@ -78,6 +86,7 @@ def audit(checkpoint: Path) -> dict:
             "generated_source_commit": generated_head, "frozen_history_baseline": c.BASELINE,
             "historical_files_byte_identical": len(checked), "historical_file_hashes": checked,
             "scope_change_baseline": SCOPE_BASELINE, "new_scope_paths": changed,
+            "integrated_frozen_artifacts_check": "PASS",
             "scope_check": "RESEARCH_CONTINUATION_AND_ACTIVE_POINTER_ONLY",
             "checkpoint_payloads": payloads, "exact_replay": True, "releases": files,
             "unique_new_checked_method_fields": len(methods),

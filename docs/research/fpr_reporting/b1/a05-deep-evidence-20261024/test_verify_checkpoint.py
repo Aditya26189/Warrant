@@ -25,6 +25,8 @@ class IntegratedScopeTests(unittest.TestCase):
         self.write(self.frozen, b"original\n")
         self.original = self.commit()
         self.write("controlplane/approved.py", b"already_approved = True\n")
+        self.checkpoint = "docs/research/fpr_reporting/b1/a05-deep-evidence-20261024/checkpoints/011/REPORT.md"
+        self.write(self.checkpoint, b"frozen continuation\n")
         self.integration = self.commit()
         self.root_patch = patch.object(v, "ROOT", self.root)
         self.scope_patch = patch.object(v, "SCOPE_BASELINE", self.integration)
@@ -61,6 +63,12 @@ class IntegratedScopeTests(unittest.TestCase):
         self.write(self.frozen, b"changed\n")
         self.commit()
         with self.assertRaisesRegex(ValueError, "OUT_OF_SCOPE_CHANGE"):
+            v.scope_changes()
+
+    def test_previous_continuation_artifact_cannot_be_rewritten(self) -> None:
+        self.write(self.checkpoint, b"rewritten continuation\n")
+        self.commit()
+        with self.assertRaisesRegex(ValueError, "FROZEN_CONTINUATION_CHANGED"):
             v.scope_changes()
 
     def test_unrelated_history_cannot_reuse_the_scope_pin(self) -> None:
