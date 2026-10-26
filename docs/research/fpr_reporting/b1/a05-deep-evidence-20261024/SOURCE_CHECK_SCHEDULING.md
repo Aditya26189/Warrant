@@ -32,3 +32,7 @@ Use only the existing actors/models/accounts. Do not rotate identities or retry
 to evade service limits. If a limit occurs, preserve the completed source/check
 checkpoint and stop that role until ordinary authorized resumption is available.
 After the reserved check block, original source allocations remain authorized.
+
+The original checker had already completed indices108?113 (W0121/W0122/W0123/
+W0124/W0126/W0128) before this reservation. Those checks stay with its next sealed
+main checkpoint; actor A starts at114 and does not repeat the completed six.
