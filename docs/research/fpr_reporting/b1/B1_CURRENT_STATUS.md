@@ -7,6 +7,8 @@ adjudication. The previous requirement for an independently authored final frame
 is prospectively superseded. B's original recorded independent intake remains
 accepted; another freshness/transfer setup is not required.
 
+The [27 October continuation summary](a05-deep-evidence-20261024/CONTINUATION_REPORT_20261027.md) records the latest corrections and actual dependencies.
+
 The current deliverable is the deeper continuation's
 [generated report](a05-deep-evidence-20261024/checkpoints/012/REPORT.md),
 [full proposal](a05-deep-evidence-20261024/checkpoints/012/FRAME_PROPOSAL.json)
