@@ -1,0 +1,268 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "changes": [
+    {
+      "before_row_sha256": "07782434cc761258187e15b9079fe25e259b40fa786b83444eed09bbd11cee3f",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0029-55f2edb610e9-F01",
+        "A05-DEEP-W0029-55f2edb610e9-F02",
+        "A05-DEEP-W0029-55f2edb610e9-F03",
+        "A05-DEEP-W0029-55f2edb610e9-F04",
+        "A05-DEEP-W0029-55f2edb610e9-F05",
+        "A05-DEEP-W0029-55f2edb610e9-F06"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0029",
+      "scientific_rationale": "Self-review corrects the earlier English inference: the approved detector question/template is English, but that alone does not establish English in the original text/document being classified. The previous positive binding relied on an auxiliary instruction component. Preserve supported injection-input task, binary decision and pre-target timing, but return input evaluation language to UNCLEAR pending primary data/construction linkage. Neither all-English test data nor a language-specific result table is required; no missing-outcome exclusion is made. The prior positive binding is retained as superseded, and old checkpoints remain unchanged.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2502.05174"
+    },
+    {
+      "before_row_sha256": "3a70cfa1d05d622bf70821d67c110f401ef61a32ebac839da255bb47ea2d6b8a",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0035-69cf452af0c1-F01",
+        "A05-DEEP-W0035-69cf452af0c1-F02",
+        "A05-DEEP-W0035-69cf452af0c1-F03",
+        "A05-DEEP-W0035-69cf452af0c1-F04",
+        "A05-DEEP-W0035-69cf452af0c1-F05",
+        "A05-DEEP-W0035-69cf452af0c1-F06"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0035",
+      "scientific_rationale": "Self-review corrects the earlier English inference: the approved detector question/template is English, but that alone does not establish English in the original text/document being classified. The previous positive binding relied on an auxiliary instruction component. Preserve supported injection-input task, binary decision and pre-target timing, but return input evaluation language to UNCLEAR pending primary data/construction linkage. Neither all-English test data nor a language-specific result table is required; no missing-outcome exclusion is made. The prior positive binding is retained as superseded, and old checkpoints remain unchanged.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2503.15772"
+    },
+    {
+      "before_row_sha256": "06e1c580ef05cc2c32d959682bb2d2ec960cf4e8ea03be4ab14f6c3bbf805920",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0040-17c09cb98f9d-F01",
+        "A05-DEEP-W0040-17c09cb98f9d-F02",
+        "A05-DEEP-W0040-17c09cb98f9d-F03",
+        "A05-DEEP-W0040-17c09cb98f9d-F04",
+        "A05-DEEP-W0040-17c09cb98f9d-F05"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0040-17c09cb98f9d-F02"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0040-17c09cb98f9d-F02"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0040-17c09cb98f9d-F04",
+          "A05-DEEP-W0040-17c09cb98f9d-F03"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0040-17c09cb98f9d-F02"
+        ]
+      },
+      "review_id": "W0040",
+      "scientific_rationale": "The selected ACL publication evaluates original input guardrail classifications and adversarial perturbations, separately from target-output functionality checks. Its checked appendix contains original/perturbed English attack-input examples linked to those evaluation constructions. This supports an English evaluated-input component, rather than merely an English detector instruction, without claiming an exhaustive language audit. Input guardrail decisions need no protected GPT answer. Positive experiment evidence does not depend on declaring the incomplete remaining appendix inventory globally complete.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2504.11168"
+    },
+    {
+      "before_row_sha256": "c587c7da006d9f9d2bb3406d4f512fc4e3fb9594969676020081e248f743e87c",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0038-36e305f358a4-F01",
+        "A05-DEEP-W0038-36e305f358a4-F02",
+        "A05-DEEP-W0038-36e305f358a4-F03",
+        "A05-DEEP-W0038-36e305f358a4-F04"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0038",
+      "scientific_rationale": "The complete declared design/scenario inventory proposes permission-carrying encrypted prompts and action authorization, illustrated through malicious-user/web-content/model scenarios and server/on-device designs. Permission-envelope checks and generated-API-call authorization are not an original empirical binary injection-input evaluation. Exclude under complete design/task scope; English illustrative scenarios do not establish an empirical dataset, and missing result reporting is not the ground.",
+      "whole_work_exclusion_ground": "PERMISSION_DESIGN_WITHOUT_ORIGINAL_BINARY_INJECTION_INPUT_EVALUATION",
+      "work_id": "arxiv:2503.23250"
+    },
+    {
+      "before_row_sha256": "593a03bbd60b174812a2f300af6c34c48a2814f72e2de8e71b64606debbb22d9",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0036-e771c53aafba-F01",
+        "A05-DEEP-W0036-e771c53aafba-F02",
+        "A05-DEEP-W0036-e771c53aafba-F03",
+        "A05-DEEP-W0036-e771c53aafba-F04",
+        "A05-DEEP-W0036-e771c53aafba-F05",
+        "A05-DEEP-W0036-e771c53aafba-F06"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0036",
+      "scientific_rationale": "CrAIBench includes separately evaluated PromptGuard2/ProtectAI2/DataSentinel screening of malicious/benign injected-memory payloads, before protected agent generation. Other attack/SFT arms require generated function calls but do not invalidate the qualifying input baseline. Set binary/timing MET; retain English UNCLEAR because English descriptions have not yet been explicitly bound to actual evaluated payload construction. Full appendix-family coverage remains partial.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2503.16248"
+    },
+    {
+      "before_row_sha256": "5ac8b66109ada84c773a5c1fa12d6110f5dc8da8d0cccc68b953ba1a905704ee",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0037-4daaf721842c-F01",
+        "A05-DEEP-W0037-4daaf721842c-F02",
+        "A05-DEEP-W0037-4daaf721842c-F03",
+        "A05-DEEP-W0037-4daaf721842c-F04",
+        "A05-DEEP-W0037-4daaf721842c-F05",
+        "A05-DEEP-W0037-4daaf721842c-F06"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0037",
+      "scientific_rationale": "The thought-count estimator is not itself a binary detector, but the separate adversarial random-forest arm assigns prompt adversarial-status decisions using predicted thought-count features before target generation. Answer-derived training labels do not make inference post-answer. This resolves binary evaluation; evaluated input language remains UNCLEAR because English thought-count instructions and corpus names alone are insufficient.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2503.21464"
+    },
+    {
+      "before_row_sha256": "05cf692512eb6fb9e0587d183cd5f4ef1c4b4acd9eb40f46ce723f169168f5cd",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0077-6b72a44e1664-F01",
+        "A05-DEEP-W0077-6b72a44e1664-F02",
+        "A05-DEEP-W0077-6b72a44e1664-F03"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0077",
+      "scientific_rationale": "The selected AEGIS edition evaluates a co-evolved/human-crafted input detector inspecting student articles with injected/benign labels. Optimization uses protected grading outputs, but detector inference consumes the article, not its later grade. This supports binary input evaluation before the protected answer. Retain English UNCLEAR and incomplete appendix-family scope; student-article location or generic detector instructions do not establish text language.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2509.00088"
+    }
+  ],
+  "created_utc": "2026-10-26T05:41:13.014046+00:00",
+  "interpretation_documents": {
+    "ENGLISH_EVIDENCE_APPLICATION.md": "8f842cd879937d19f7e7f448e9dd84e0933fcd716098cb13778975f82bbc32b9",
+    "TASK_BOUNDARY_APPLICATION.md": "7caafdd7a0798b81707292907263315f4a824f659c7dca551e5c5e72da6cb034"
+  },
+  "not_fresh_independent": true,
+  "release_sha256": "2d59f3297d9a67424de2e9083fee426b25fda423b74a1fba9785263341c15a32",
+  "reviewed_unchanged": [
+    {
+      "before_row_sha256": "11d768db317419de94d80570c96ba4ed0594772b0415400c793c151b52a9dcac",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0039-96cd4449c366-F01",
+        "A05-DEEP-W0039-96cd4449c366-F02",
+        "A05-DEEP-W0039-96cd4449c366-F03",
+        "A05-DEEP-W0039-96cd4449c366-F04",
+        "A05-DEEP-W0039-96cd4449c366-F05",
+        "A05-DEEP-W0039-96cd4449c366-F06"
+      ],
+      "rationale": "Incoming-query activation distances support the existing input-time binary risk procedure, but injection-task versus broader risk labels and evaluated English linkage remain unresolved. The source merely names known-answer and other comparator methods; do not infer their decision inputs or timing from names. Preserve partial scope and uncertainty.",
+      "review_id": "W0039"
+    },
+    {
+      "before_row_sha256": "f66fe28bc54f8b18856e8f8259d7625f3a1817cc366510b59d4a70d19246215b",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0083-af43db7dd729-F01",
+        "A05-DEEP-W0083-af43db7dd729-F02",
+        "A05-DEEP-W0083-af43db7dd729-F03",
+        "A05-DEEP-W0083-af43db7dd729-F04"
+      ],
+      "rationale": "Thresholded regex/rate/JSON-risk monitoring contains input-side alert procedures and a travel demonstration. Its partial method inventory does not yet establish original binary injection-task evaluation or language construction clearly enough to resolve the remaining criteria. Separate hallucination checks may consume generated claims; do not transfer that dependency to every alert arm.",
+      "review_id": "W0083"
+    },
+    {
+      "before_row_sha256": "c5f24fbeaa20f7f78733f0d310ceccc5c0ee0ee42e7c401dfdb69fe1a9e79a0f",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0078-4545924435de-F01",
+        "A05-DEEP-W0078-4545924435de-F02",
+        "A05-DEEP-W0078-4545924435de-F03",
+        "A05-DEEP-W0078-4545924435de-F04"
+      ],
+      "rationale": "BinaryShield main labels concern related-attack versus unrelated-benign prompt pairs rather than standalone injected-instruction presence. A secondary Azure input-detection comparison exists, but its task/unit and language construction remain insufficiently detailed. Retain UNCLEAR; do not exclude the whole work from the main pair-matching task alone.",
+      "review_id": "W0078"
+    },
+    {
+      "before_row_sha256": "10ee2e0e9dc9965579a6f2ba7b6dd0e247e395e43507d40f89f74f0bf941b5a3",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0079-72dbfa87b7fa-F01",
+        "A05-DEEP-W0079-72dbfa87b7fa-F02",
+        "A05-DEEP-W0079-72dbfa87b7fa-F03",
+        "A05-DEEP-W0079-72dbfa87b7fa-F04",
+        "A05-DEEP-W0079-72dbfa87b7fa-F05",
+        "A05-DEEP-W0079-72dbfa87b7fa-F06"
+      ],
+      "rationale": "Complete method-family coverage distinguishes description/input PPL and PromptGuard decisions from generated invocation traces and the native pending-command guard. The input detectors support existing binary/task/timing judgments. No exact evaluated English text construction is yet established, so retain the specific language uncertainty; source wording and backend/model names are not language proof.",
+      "review_id": "W0079"
+    },
+    {
+      "before_row_sha256": "5c87b884246dae320eac545b562e928dcb20aa48bf69655e5392154f42929073",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0080-0cc8854598e9-F01",
+        "A05-DEEP-W0080-0cc8854598e9-F02",
+        "A05-DEEP-W0080-0cc8854598e9-F03",
+        "A05-DEEP-W0080-0cc8854598e9-F04"
+      ],
+      "rationale": "The inspected EchoLeak classifier and exploit-chain safeguards are described through analysis of a published exploit; recommendations are separate. Original empirical binary input-evaluation status and language remain unresolved, and full method-family coverage is not yet established. Do not infer inclusion from a named classifier or whole-work exclusion from partial evidence.",
+      "review_id": "W0080"
+    },
+    {
+      "before_row_sha256": "79afdea7fff37de5753bc23ab0aa5d79e600cf0e28da7a5c3383d1402a8c780d",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0081-70f51d32c75a-F01",
+        "A05-DEEP-W0081-70f51d32c75a-F02",
+        "A05-DEEP-W0081-70f51d32c75a-F03"
+      ],
+      "rationale": "The inspected prototype uses credential/role/action/resource authorization. Those families are tool/access-control tasks, but the full long-method/case-study inventory remains incomplete. Retain UNCLEAR until affirmative whole-study scope or a qualifying original input-classifier arm is established.",
+      "review_id": "W0081"
+    },
+    {
+      "before_row_sha256": "c16154b8ee0e7bcffb2be1dfdb5f848e10eab415972b99440d3cf946dde6ff9f",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0082-fe3d61c0bc1f-F01",
+        "A05-DEEP-W0082-fe3d61c0bc1f-F02",
+        "A05-DEEP-W0082-fe3d61c0bc1f-F03",
+        "A05-DEEP-W0082-fe3d61c0bc1f-F04"
+      ],
+      "rationale": "The input taxonomy/coordinator routing and output Guard are distinct procedures. HPI attack categories and malicious/benign routing labels need further task-construction evidence to distinguish input injection from broader harmful/jailbreak requests; evaluated English input is also unresolved. Retain the existing partial-support criteria and incomplete scope.",
+      "review_id": "W0082"
+    }
+  ],
+  "schema": "A05_DEEP_EXPOSED_CUSTODIAN_JUDGMENTS",
+  "scope": "B1_ONLY_NO_OUTCOMES_NO_DRAW_NO_B2",
+  "source_git_commit": "fcd6cdd28ee8692c1f2a453cbf5ecc196587a8e6",
+  "version_corrections": []
+}
