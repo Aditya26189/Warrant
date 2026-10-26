@@ -1,10 +1,11 @@
 # Grader auditing: bounded feasibility protocol
 
-Status: Gate1 calibration and the subsequently authorized Gate2 conventional
-baseline on that calibration are implemented. This document incorporates the
-user's accepted corrections to the pasted experiment. Broader task feasibility,
-human effort, coverage ordering and held-out evaluation remain unverified.
-Later gates are a conditional research design, not instructions to execute them.
+Status: the bounded study is closed after Gate1 calibration, the Gate2
+conventional baseline and the subsequently authorized transfer to the three
+reserved tasks. No confirmed omission was found by the frozen mutation method.
+Coverage ranking was not built; the condition for an external finding packet
+was not met. Human productivity, commercial value and broad effectiveness
+remain unverified. See the closing transfer report for scope and limitations.
 
 ## Question and limits
 
@@ -63,7 +64,8 @@ Discovering an omission would require a separate prior-report/stronger-test
 check before calling it previously unknown.
 
 HumanEval/0 is familiar calibration. The fixed SHA256 ranking reserves /87,
-/57 and /18. Their eligibility remains provisional. No replacement after
+/57 and /18. Gate1 left their eligibility provisional; the later transfer
+report records measured feasibility and remaining scope limits. No replacement after
 observing results; any exclusion and its pre-outcome reason must be retained.
 Task57's strict/weak monotonicity ambiguity must be resolved from authoritative
 requirements or avoided with an explicitly narrower property, never decided
@@ -98,9 +100,22 @@ Payments remains an existing exposed example; it was not rerun in this step.
 No human review arm or direct-reference coverage comparison was performed.
 Coverage ranking is not added merely because the conventional pool yields no
 finding: changing order cannot make a fully rejected fixed pool produce a
-survivor. Generalization beyond this calibration remains untested.
+survivor. The subsequent transfer results are reported separately below.
 
-## Gates3-4: conditional comparisons, not implemented
+## Gates3-4: ordering omitted; frozen transfer completed
+
+Decision G023 authorizes the original reserved identities with task-specific
+properties, alternatives and generators committed before reference/test
+extraction. The existing mutation generator, source order and caps are unchanged.
+The monotonicity property abstains on equality and other ambiguous inputs;
+full-grader acceptance does not settle those specification questions. All
+prepared bytes and outcomes are retained in the
+[transfer report](../reports/GATE4-TRANSFER.md). This is held out from method
+tuning, not access-controlled or independent blinding. No ordering comparison
+was added after the calibration failed to find a survivor.
+
+The following requirements apply if any later study reopens a comparison;
+they are not a claim that these omitted arms were run:
 
 Use one candidate pool with identical operators, inputs, oracle, witness budgets
 and total resource caps for C/D. C uses declared source order (and a predeclared
@@ -126,7 +141,7 @@ Do not add complexity if conventional mutation already suffices. No ordering
 advantage means drop ordering. Repeated bespoke oracle work can justify ending
 this pilot, but is not universal evidence against amortized repeated auditing.
 
-## Gate5: external evidence, separately authorized
+## Gate5: condition not met; no external submission
 
 Only a task-specification-backed finding supports a maintainer packet. Retain
 the quoted requirement, pinned grader/candidate, witness, expected/observed
@@ -136,13 +151,14 @@ the user's instruction; this protocol does not send anything.
 
 ## Source-of-record files
 
-- [Decisions](../experiments/grader_poc/DECISIONS.md), G019-G022.
+- [Decisions](../experiments/grader_poc/DECISIONS.md), G019-G024.
 - [Frozen config](../experiments/grader_poc/feasibility/config.json).
 - [Prompt-only reservation manifest](../experiments/grader_poc/feasibility/fixtures/selection.json).
 - [Calibration property](../experiments/grader_poc/feasibility/calibration.py).
 - [Closing Gate1 report](../reports/GATE1-FEASIBILITY.md).
 - [Gate2 baseline config](../experiments/grader_poc/baseline/config.json).
 - [Closing Gate2 report](../reports/GATE2-BASELINE.md).
+- [Closing transfer study](../reports/GATE4-TRANSFER.md).
 
 Primary references checked 26 October 2026: [EvalPlus source](https://github.com/evalplus/evalplus/tree/26d6d00bb1fd0fa37f39c99d5290da67891d1c5e),
 [EvalPlus paper](https://arxiv.org/abs/2305.01210),

@@ -1,0 +1,150 @@
+{
+  "conclusion": "NO_CONFIRMED_OMISSION",
+  "human_active_minutes": null,
+  "preparation_source_revision": "63cc0026ebdc99792c9d61c0ea60b3beb936d7d3",
+  "run_source_revision": "63cc0026ebdc99792c9d61c0ea60b3beb936d7d3",
+  "status": "COMPLETED",
+  "tasks": [
+    {
+      "base_survivors": [],
+      "cap_excluded": 0,
+      "classifications": {
+        "REJECTED_BY_FULL_GRADER": 10
+      },
+      "confirmation_yield": null,
+      "confirmed_violating_candidates": 0,
+      "control_property_checks": 600,
+      "control_times": [
+        {
+          "full_grader_seconds": 0.1306436630547978,
+          "id": "reference-before",
+          "outer_seconds": 3.9982517949538305
+        },
+        {
+          "full_grader_seconds": 0.08074857998872176,
+          "id": "alternative-before",
+          "outer_seconds": 3.2497897900175303
+        },
+        {
+          "full_grader_seconds": 0.04375865898327902,
+          "id": "reference-after",
+          "outer_seconds": 1.7762951399781741
+        }
+      ],
+      "distinct_omissions": 0,
+      "evaluated_mutants": 10,
+      "full_survivors": 0,
+      "generated": 10,
+      "grader_input_checks": 2769,
+      "grader_split_invocations": 26,
+      "invalid_controls": [],
+      "mutant_property_checks": 0,
+      "plus_rejections_after_base_pass": [],
+      "status": "COMPLETED",
+      "task_execution_seconds": 20.909535988001153,
+      "task_id": "HumanEval/87",
+      "unique_witness_inputs": 178,
+      "unused_execution_budget_seconds": 579.0904640119988
+    },
+    {
+      "base_survivors": [
+        "mutant-005",
+        "mutant-009"
+      ],
+      "cap_excluded": 0,
+      "classifications": {
+        "REJECTED_BY_FULL_GRADER": 21
+      },
+      "confirmation_yield": null,
+      "confirmed_violating_candidates": 0,
+      "control_property_checks": 600,
+      "control_times": [
+        {
+          "full_grader_seconds": 0.058047721977345645,
+          "id": "reference-before",
+          "outer_seconds": 2.012296211963985
+        },
+        {
+          "full_grader_seconds": 0.06333319895202294,
+          "id": "alternative-before",
+          "outer_seconds": 2.2682454789755866
+        },
+        {
+          "full_grader_seconds": 0.06975377001799643,
+          "id": "reference-after",
+          "outer_seconds": 2.5082872009952553
+        }
+      ],
+      "distinct_omissions": 0,
+      "evaluated_mutants": 21,
+      "full_survivors": 0,
+      "generated": 21,
+      "grader_input_checks": 23496,
+      "grader_split_invocations": 48,
+      "invalid_controls": [],
+      "mutant_property_checks": 0,
+      "plus_rejections_after_base_pass": [
+        "mutant-005",
+        "mutant-009"
+      ],
+      "status": "COMPLETED",
+      "task_execution_seconds": 35.89742745197145,
+      "task_id": "HumanEval/57",
+      "unique_witness_inputs": 199,
+      "unused_execution_budget_seconds": 564.1025725480285
+    },
+    {
+      "base_survivors": [],
+      "cap_excluded": 0,
+      "classifications": {
+        "REJECTED_BY_FULL_GRADER": 6
+      },
+      "confirmation_yield": null,
+      "confirmed_violating_candidates": 0,
+      "control_property_checks": 600,
+      "control_times": [
+        {
+          "full_grader_seconds": 0.06527833401923999,
+          "id": "reference-before",
+          "outer_seconds": 1.8938563889823854
+        },
+        {
+          "full_grader_seconds": 0.05832797597395256,
+          "id": "alternative-before",
+          "outer_seconds": 1.761725962976925
+        },
+        {
+          "full_grader_seconds": 0.06281829194631428,
+          "id": "reference-after",
+          "outer_seconds": 2.2254292399738915
+        }
+      ],
+      "distinct_omissions": 0,
+      "evaluated_mutants": 6,
+      "full_survivors": 0,
+      "generated": 6,
+      "grader_input_checks": 9036,
+      "grader_split_invocations": 18,
+      "invalid_controls": [],
+      "mutant_property_checks": 0,
+      "plus_rejections_after_base_pass": [],
+      "status": "COMPLETED",
+      "task_execution_seconds": 12.571191037015524,
+      "task_id": "HumanEval/18",
+      "unique_witness_inputs": 196,
+      "unused_execution_budget_seconds": 587.4288089629845
+    }
+  ],
+  "total_execution_seconds": 75.24058125296142,
+  "totals": {
+    "cap_excluded": 0,
+    "confirmed_violating_candidates": 0,
+    "control_property_checks": 1800,
+    "evaluated_mutants": 37,
+    "full_survivors": 0,
+    "generated": 37,
+    "grader_input_checks": 35301,
+    "grader_split_invocations": 92,
+    "mutant_property_checks": 0
+  }
+}

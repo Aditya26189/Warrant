@@ -1,0 +1,117 @@
+{
+  "candidates": [
+    {
+      "end_byte": 831,
+      "id": "mutant-001",
+      "operator": "arithmetic_swap",
+      "original": "-",
+      "replacement": "+",
+      "sha256": "400df0b380fef433b62240e2f3f0626c9fd5e621ecd2bb0d701e5f5c0776f0f3",
+      "source": "\ndef get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n\n    res = []\n    for i, l in enumerate(lst):\n        for j in range(len(l) + 1, -1, -1):\n            if l[j] == x: res.append((i, j))\n    return res\n\n",
+      "start_byte": 830,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 833,
+      "id": "mutant-002",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "0",
+      "sha256": "16ee3d7e37fea7b4f00cb355ec414498b41ae6c061f779eb365b57034a0edc91",
+      "source": "\ndef get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n\n    res = []\n    for i, l in enumerate(lst):\n        for j in range(len(l) - 0, -1, -1):\n            if l[j] == x: res.append((i, j))\n    return res\n\n",
+      "start_byte": 832,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 833,
+      "id": "mutant-003",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "2",
+      "sha256": "1b628d926c0263edb5c6765f75d0a6b7a8c282d82606ced96c95e09eb6054e4a",
+      "source": "\ndef get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n\n    res = []\n    for i, l in enumerate(lst):\n        for j in range(len(l) - 2, -1, -1):\n            if l[j] == x: res.append((i, j))\n    return res\n\n",
+      "start_byte": 832,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 837,
+      "id": "mutant-004",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "0",
+      "sha256": "9badced53a0e0da1d80b660b3d7bee575859604ac7c339359ff7c7aa95cec381",
+      "source": "\ndef get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n\n    res = []\n    for i, l in enumerate(lst):\n        for j in range(len(l) - 1, -0, -1):\n            if l[j] == x: res.append((i, j))\n    return res\n\n",
+      "start_byte": 836,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 837,
+      "id": "mutant-005",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "2",
+      "sha256": "928cabb42bd96e52ea27e9bc0f10c0f256181766c43953671a7130da7bab11a5",
+      "source": "\ndef get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n\n    res = []\n    for i, l in enumerate(lst):\n        for j in range(len(l) - 1, -2, -1):\n            if l[j] == x: res.append((i, j))\n    return res\n\n",
+      "start_byte": 836,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 841,
+      "id": "mutant-006",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "0",
+      "sha256": "6c8efec9744e0f5cad0a1b17dbd5484a7a72be97cd4898da3f3e3b347365e4bf",
+      "source": "\ndef get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n\n    res = []\n    for i, l in enumerate(lst):\n        for j in range(len(l) - 1, -1, -0):\n            if l[j] == x: res.append((i, j))\n    return res\n\n",
+      "start_byte": 840,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 841,
+      "id": "mutant-007",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "2",
+      "sha256": "cb5254fa8206ca8e64f6cf7590dbe136c39e2bf1daac626fe27aa8a3946ee60f",
+      "source": "\ndef get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n\n    res = []\n    for i, l in enumerate(lst):\n        for j in range(len(l) - 1, -1, -2):\n            if l[j] == x: res.append((i, j))\n    return res\n\n",
+      "start_byte": 840,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 868,
+      "id": "mutant-008",
+      "operator": "constant_guard",
+      "original": "l[j] == x",
+      "replacement": "False",
+      "sha256": "a0af7df61a2d685d913e353aaf5d564befdfacca9b75ffa34ba1301b35060dac",
+      "source": "\ndef get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n\n    res = []\n    for i, l in enumerate(lst):\n        for j in range(len(l) - 1, -1, -1):\n            if False: res.append((i, j))\n    return res\n\n",
+      "start_byte": 859,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 868,
+      "id": "mutant-009",
+      "operator": "constant_guard",
+      "original": "l[j] == x",
+      "replacement": "True",
+      "sha256": "2c19dc317eda1d193204fa4f3b6721776fed3389cc320aec315b72069be4e0d6",
+      "source": "\ndef get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n\n    res = []\n    for i, l in enumerate(lst):\n        for j in range(len(l) - 1, -1, -1):\n            if True: res.append((i, j))\n    return res\n\n",
+      "start_byte": 859,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 866,
+      "id": "mutant-010",
+      "operator": "comparison_negation",
+      "original": "==",
+      "replacement": "!=",
+      "sha256": "bda48b7fe542824785eb0f907443438ea5b02fd9f2c5cc9d2d0f51ac2d55eed4",
+      "source": "\ndef get_row(lst, x):\n    \"\"\"\n    You are given a 2 dimensional data, as a nested lists,\n    which is similar to matrix, however, unlike matrices,\n    each row may contain a different number of columns.\n    Given lst, and integer x, find integers x in the list,\n    and return list of tuples, [(x1, y1), (x2, y2) ...] such that\n    each tuple is a coordinate - (row, columns), starting with 0.\n    Sort coordinates initially by rows in ascending order.\n    Also, sort coordinates of the row by columns in descending order.\n    \n    Examples:\n    get_row([\n      [1,2,3,4,5,6],\n      [1,2,3,4,1,6],\n      [1,2,3,4,5,1]\n    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]\n    get_row([], 1) == []\n    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]\n    \"\"\"\n\n    res = []\n    for i, l in enumerate(lst):\n        for j in range(len(l) - 1, -1, -1):\n            if l[j] != x: res.append((i, j))\n    return res\n\n",
+      "start_byte": 864,
+      "syntax": "VALID"
+    }
+  ],
+  "excluded_by_cap": [],
+  "generated_count": 10,
+  "reference_sha256": "6f02c4aae5e58afa3d014e1cccb19a8e0ace6b9bd43b1eed269950b9d11f01c9"
+}

@@ -1,0 +1,73 @@
+{
+  "candidates": [
+    {
+      "end_byte": 315,
+      "id": "mutant-001",
+      "operator": "numeric_offset",
+      "original": "0",
+      "replacement": "-1",
+      "sha256": "18102e902f784db595723db65efb272b006725de854a9cf089b56f235a9026d7",
+      "source": "\n\ndef how_many_times(string: str, substring: str) -> int:\n    \"\"\" Find how many times a given substring can be found in the original string. Count overlaping cases.\n    >>> how_many_times('', 'a')\n    0\n    >>> how_many_times('aaa', 'a')\n    3\n    >>> how_many_times('aaaa', 'aa')\n    3\n    \"\"\"\n\n\n    occurences = -1\n    for i in range(len(string)):\n        if string[i:].startswith(substring):\n            occurences += 1\n    return occurences\n\n",
+      "start_byte": 314,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 315,
+      "id": "mutant-002",
+      "operator": "numeric_offset",
+      "original": "0",
+      "replacement": "1",
+      "sha256": "51a70697f62ddbb5903b58eb940e81f6d0603acba9ba004a6bd567cf59cdc267",
+      "source": "\n\ndef how_many_times(string: str, substring: str) -> int:\n    \"\"\" Find how many times a given substring can be found in the original string. Count overlaping cases.\n    >>> how_many_times('', 'a')\n    0\n    >>> how_many_times('aaa', 'a')\n    3\n    >>> how_many_times('aaaa', 'aa')\n    3\n    \"\"\"\n\n\n    occurences = 1\n    for i in range(len(string)):\n        if string[i:].startswith(substring):\n            occurences += 1\n    return occurences\n\n",
+      "start_byte": 314,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 392,
+      "id": "mutant-003",
+      "operator": "constant_guard",
+      "original": "string[i:].startswith(substring)",
+      "replacement": "False",
+      "sha256": "cd73e8145a2f904e133a686545989b4db7225bda77617c998325dc1ae7f368a5",
+      "source": "\n\ndef how_many_times(string: str, substring: str) -> int:\n    \"\"\" Find how many times a given substring can be found in the original string. Count overlaping cases.\n    >>> how_many_times('', 'a')\n    0\n    >>> how_many_times('aaa', 'a')\n    3\n    >>> how_many_times('aaaa', 'aa')\n    3\n    \"\"\"\n\n\n    occurences = 0\n    for i in range(len(string)):\n        if False:\n            occurences += 1\n    return occurences\n\n",
+      "start_byte": 360,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 392,
+      "id": "mutant-004",
+      "operator": "constant_guard",
+      "original": "string[i:].startswith(substring)",
+      "replacement": "True",
+      "sha256": "034982a437575add2649bd6e0351293b5deb27e6ad4e4e20be4edafabff94f46",
+      "source": "\n\ndef how_many_times(string: str, substring: str) -> int:\n    \"\"\" Find how many times a given substring can be found in the original string. Count overlaping cases.\n    >>> how_many_times('', 'a')\n    0\n    >>> how_many_times('aaa', 'a')\n    3\n    >>> how_many_times('aaaa', 'aa')\n    3\n    \"\"\"\n\n\n    occurences = 0\n    for i in range(len(string)):\n        if True:\n            occurences += 1\n    return occurences\n\n",
+      "start_byte": 360,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 421,
+      "id": "mutant-005",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "0",
+      "sha256": "b2fbefc8e7082ff5af6922349d4b32cbd633f1bddfcd03151d8aac2d9d40c31a",
+      "source": "\n\ndef how_many_times(string: str, substring: str) -> int:\n    \"\"\" Find how many times a given substring can be found in the original string. Count overlaping cases.\n    >>> how_many_times('', 'a')\n    0\n    >>> how_many_times('aaa', 'a')\n    3\n    >>> how_many_times('aaaa', 'aa')\n    3\n    \"\"\"\n\n\n    occurences = 0\n    for i in range(len(string)):\n        if string[i:].startswith(substring):\n            occurences += 0\n    return occurences\n\n",
+      "start_byte": 420,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 421,
+      "id": "mutant-006",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "2",
+      "sha256": "37087b0e7e475f5cc9f0e7515dd99858fcadec7c342b8a6f416a3214b0aeee28",
+      "source": "\n\ndef how_many_times(string: str, substring: str) -> int:\n    \"\"\" Find how many times a given substring can be found in the original string. Count overlaping cases.\n    >>> how_many_times('', 'a')\n    0\n    >>> how_many_times('aaa', 'a')\n    3\n    >>> how_many_times('aaaa', 'aa')\n    3\n    \"\"\"\n\n\n    occurences = 0\n    for i in range(len(string)):\n        if string[i:].startswith(substring):\n            occurences += 2\n    return occurences\n\n",
+      "start_byte": 420,
+      "syntax": "VALID"
+    }
+  ],
+  "excluded_by_cap": [],
+  "generated_count": 6,
+  "reference_sha256": "c1e9e634a2b0588fe6bc02c2acb1223e511b8352fbcd2da2e68e04b33b944d82"
+}
