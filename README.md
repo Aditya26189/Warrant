@@ -102,6 +102,14 @@ broader correct-implementation coverage and customer demand remain open. Read th
 [experiment guide and replay instructions](experiments/grader_poc/README.md) for
 the evidence packets, runner cleanup checks, dependency requirements and limits.
 
+The [calibration feasibility scaffold](experiments/grader_poc/feasibility/) is an
+in-progress experiment; its reserved tasks remain behind their execution gate.
+The separate [FPR reporting study](docs/research/fpr_reporting/b1/B1_CURRENT_STATUS.md)
+remains at a blocked evidence-completion stage, with no pilot draw or outcome
+extraction. Its [adaptive-bound audit issue](docs/research/fpr_reporting/issues/FPR-001-adaptive-bound.md)
+remains open. Publishing these research records does not change production
+certification behavior or approve later experiments.
+
 <br/>
 
 <div align="center">
