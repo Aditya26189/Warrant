@@ -170,6 +170,9 @@ def apply_version(row: dict, correction: dict, evidence: dict | None = None) -> 
     """Remove only the disclosed, extra timestamp condition; retain its evidence."""
     if r.sha(r.encoded(row)) != correction["before_row_sha256"]:
         raise ValueError("VERSION_PRIOR_CHANGED")
+    if correction["action"] == "SELECT_CHECKED_PUBLISHER_EDITION":
+        apply_publisher_selection(row, correction, evidence or {})
+        return
     if correction["action"] == "RECLASSIFY_REPOSITORY_DOI_AS_PREPRINT":
         if row["review_id"] != "W0368" or correction["selected_version_id"] != row["selected_version_id"] or evidence is None:
             raise ValueError("UNSUPPORTED_REPOSITORY_CORRECTION")
@@ -220,6 +223,55 @@ def apply_version(row: dict, correction: dict, evidence: dict | None = None) -> 
     bib["historical_byte_authentication"] = "NOT_ESTABLISHED_NOT_A_LOCKED_UNIVERSAL_REQUIREMENT"
     bib["retained_limitations"] = correction["retained_limitations"]
     row["version_correction_rationale"] = correction["rationale"]
+
+
+def apply_publisher_selection(row: dict, correction: dict, evidence: dict) -> None:
+    """Prefer a checked publisher edition without borrowing preprint science."""
+    dates = {"W0336": "2025-02-16", "W0337": "2026-08-25",
+             "W0371": "2026-05-30", "W0372": "2026-03-31"}
+    rid = row["review_id"]
+    if (rid not in dates or row["selected_version_id"] != correction["previous_selected_version_id"]
+            or correction["selected_version_id"] != row["work_id"] + ":publisher:declared-" + dates[rid]):
+        raise ValueError("UNSUPPORTED_PUBLISHER_SELECTION")
+    if (correction["rule_document"] != "PUBLISHER_EDITION_APPLICATION.md"
+            or r.sha((HERE / correction["rule_document"]).read_bytes()) != correction["rule_document_sha256"]):
+        raise ValueError("PUBLISHER_RULE_CHANGED")
+    refs = correction["evidence_ids"]
+    validate_refs(refs, rid, evidence)
+    facts = {evidence[eid]["field_path"].removeprefix("bibliographic_scope_facts."): evidence[eid]["value"] for eid in refs}
+    if (any(evidence[eid].get("release_status") != "CHECKED_BIBLIOGRAPHIC_SCOPE_NOT_ELIGIBILITY" for eid in refs)
+            or not {"title", "authors", "document_type", "declared_dates", "edition_statement"} <= facts.keys()
+            or facts["declared_dates"].get("published") != dates[rid]
+            or not correction["rationale"] or not correction["retained_limitations"]):
+        raise ValueError("PUBLISHER_HEADER_PROOF_INCOMPLETE")
+    sources = evidence[refs[0]]["source_identity"]
+    pdfs = [x for x in sources if x["body"]["kind"] == "PDF" and x["body"]["status"] == 200]
+    if len(pdfs) != 1:
+        raise ValueError("PUBLISHER_PDF_BINDING_MISSING")
+    source = pdfs[0]
+    capture = row["work_id"] + ":publisher-capture:sha256-" + source["body"]["sha256"]
+    if any(evidence[eid]["version"] != capture or evidence[eid]["source_identity"] != sources for eid in refs):
+        raise ValueError("MIXED_PUBLISHER_CAPTURES")
+    bib = row["bibliography"]
+    if bib["version_issues"] != ["KNOWN_PUBLISHER_VOR_AVAILABILITY_OR_EXACT_VERSION_UNRESOLVED"]:
+        raise ValueError("DIFFERENT_PUBLISHER_VERSION_PROBLEM")
+    row["superseded_domain_support_for_previous_edition"] = {
+        "version": row["selected_version_id"], "criteria": row["criteria"],
+        "positive_experiment_binding": row["positive_experiment_binding"],
+        "scientific_rationale": row["scientific_rationale"]}
+    bib["superseded_selection"] = copy.deepcopy(bib["selected"])
+    bib["superseded_version_issues"] = bib["version_issues"]
+    bib["selected"] = {"version": correction["selected_version_id"], "priority": 0,
+                       "date_interval": [dates[rid]] * 2, "evidence_ids": refs,
+                       "publisher_source": source, "capture_identity": capture,
+                       "designation_basis": "EXPLICIT_VOR_HISTORY" if rid == "W0337" else "PUBLISHER_IMPRINT_AND_PUBLICATION_HISTORY",
+                       "withdrawn": False}
+    bib.update(status="MET", version_issues=[], selected_method_body_supported=False,
+               retained_limitations=correction["retained_limitations"])
+    row.update(selected_version_id=correction["selected_version_id"],
+               criteria={k: "UNCLEAR" for k in CRITERIA}, positive_experiment_binding=None,
+               whole_work_exclusion_ground=None, version_correction_rationale=correction["rationale"],
+               scientific_rationale="Checked publisher edition selected; exact-edition scientific method evidence is pending. Earlier preprint method support is preserved but not transferred.")
 
 
 def apply_identity(rows: dict, correction: dict, evidence: dict) -> set[str]:

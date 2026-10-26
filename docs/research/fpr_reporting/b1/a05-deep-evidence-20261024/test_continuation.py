@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import copy
+import json
 import unittest
 
 import compile_continuation as c
@@ -179,6 +180,45 @@ class ScientificBoundaryTests(unittest.TestCase):
         self.assertEqual(row["selected_version_id"], "arxiv:2604.18248v4")
         self.assertEqual(row["bibliography"]["first_public_date_interval"], ["2026-04-18"] * 2)
         self.assertEqual(row["bibliography"]["status"], "MET")
+
+    def publisher_fixture(self) -> tuple[dict, dict, dict]:
+        """Use frozen checked publisher metadata to exercise edition isolation."""
+        row = copy.deepcopy(next(x for x in json.loads((c.HERE / "checkpoints/009/FRAME_PROPOSAL.json").read_bytes())["rows"] if x["review_id"] == "W0337"))
+        evidence = {x["evidence_id"]: copy.deepcopy(x) for x in json.loads((c.HERE / "releases/011/FACTS.json").read_bytes())["facts"] if x["review_id"] == "W0337"}
+        correction = {"action": "SELECT_CHECKED_PUBLISHER_EDITION",
+                      "before_row_sha256": r.sha(r.encoded(row)),
+                      "previous_selected_version_id": row["selected_version_id"],
+                      "selected_version_id": row["work_id"] + ":publisher:declared-2026-08-25",
+                      "rule_document": "PUBLISHER_EDITION_APPLICATION.md",
+                      "rule_document_sha256": r.sha((c.HERE / "PUBLISHER_EDITION_APPLICATION.md").read_bytes()),
+                      "evidence_ids": list(evidence), "rationale": "Checked VOR history overrides issue month.",
+                      "retained_limitations": ["No scientific support transferred."]}
+        return row, correction, evidence
+
+    def test_publisher_preference_preserves_memberships_and_resets_science(self) -> None:
+        row, correction, evidence = self.publisher_fixture()
+        original = copy.deepcopy(row)
+        c.apply_version(row, correction, evidence)
+        self.assertEqual(row["memberships"], original["memberships"])
+        self.assertEqual(row["bibliography"]["first_public_date_interval"], original["bibliography"]["first_public_date_interval"])
+        self.assertEqual(row["bibliography"]["selected"]["date_interval"], ["2026-08-25"] * 2)
+        self.assertEqual(set(row["criteria"].values()), {"UNCLEAR"})
+        self.assertFalse(row["bibliography"]["selected_method_body_supported"])
+        self.assertIsNone(row["positive_experiment_binding"])
+
+    def test_publisher_issue_month_cannot_replace_primary_publication_date(self) -> None:
+        row, correction, evidence = self.publisher_fixture()
+        for fact in evidence.values():
+            if fact["field_path"] == "bibliographic_scope_facts.declared_dates":
+                fact["value"]["published"] = "2026-09"
+        with self.assertRaisesRegex(ValueError, "HEADER_PROOF_INCOMPLETE"):
+            c.apply_version(row, correction, evidence)
+
+    def test_publisher_metadata_cannot_bind_a_different_capture(self) -> None:
+        row, correction, evidence = self.publisher_fixture()
+        next(iter(evidence.values()))["version"] += "-different"
+        with self.assertRaisesRegex(ValueError, "MIXED_PUBLISHER_CAPTURES"):
+            c.apply_version(row, correction, evidence)
 
 
 if __name__ == "__main__":
