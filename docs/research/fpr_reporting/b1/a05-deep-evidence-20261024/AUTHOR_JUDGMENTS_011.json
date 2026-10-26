@@ -1,0 +1,194 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "changes": [
+    {
+      "before_row_sha256": "7b0cb719895718a97488aaa72131b992a2322279bf4219e921de8e0f2feda3f8",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "UNCLEAR",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0086-3445c1bb3236-F01",
+        "A05-DEEP-W0086-3445c1bb3236-F02",
+        "A05-DEEP-W0086-3445c1bb3236-F03",
+        "A05-DEEP-W0086-3445c1bb3236-F04",
+        "A05-DEEP-W0086-3445c1bb3236-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0086",
+      "scientific_rationale": "The complete material inventory establishes policy-tree extraction from design sentences and separate in-domain/out-of-domain input classification/output auditing. The evaluated labels target security-rule extraction and application-policy compliance, not a separately defined injected-instruction-presence task. The input JSON decision can precede a protected answer, so timing alone is not the reason for exclusion. Exclude under the declared complete task scope without assuming original input classifiers are absent or consulting outcome reporting.",
+      "whole_work_exclusion_ground": "COMPLETE_EVALUATED_TASK_SCOPE_WITHOUT_QUALIFYING_INJECTION_INPUT_CLASSIFIER",
+      "work_id": "arxiv:2509.23994"
+    },
+    {
+      "before_row_sha256": "64d71985ab862de2a34fe6e92d711b3a18f2cc571bd56080245603245f858a42",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0121-3df11ded8723-F01",
+        "A05-DEEP-W0121-3df11ded8723-F02",
+        "A05-DEEP-W0121-3df11ded8723-F03",
+        "A05-DEEP-W0121-3df11ded8723-F04",
+        "A05-DEEP-W0121-3df11ded8723-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0121",
+      "scientific_rationale": "The complete original inventory covers optimized abstract paraphrases, reviewer rating/content analysis and defenses that rewrite manuscripts before generated review. The separately checked human paired-abstract arm assesses semantic equivalence/naturalness on ordinal scales; it is not a binary input-injection detector. The paper explicitly uses English manuscripts, but no original qualifying binary injection-input evaluation is established by these complete task families. Exclude on the binary detector task criterion, not language or missing performance reporting.",
+      "whole_work_exclusion_ground": "COMPLETE_EVALUATED_TASK_SCOPE_WITHOUT_QUALIFYING_INJECTION_INPUT_CLASSIFIER",
+      "work_id": "arxiv:2601.06884"
+    },
+    {
+      "before_row_sha256": "ccd282b634e1205d4a45087fa14f1d8aaaf15c668e479bcb987bbde5848423c7",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0123-eb7949ae558c-F01",
+        "A05-DEEP-W0123-eb7949ae558c-F02",
+        "A05-DEEP-W0123-eb7949ae558c-F03",
+        "A05-DEEP-W0123-eb7949ae558c-F04"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0123",
+      "scientific_rationale": "The complete main/appendix family inventory evaluates generated structured reasoning/completions, logic-judge scoring of generated nodes and clean capability/utility/token controls. The logic judge consumes protected generated nodes, while SecAlign/Meta-SecAlign are completion/task comparator arms rather than a separate input-classifier evaluation. Safe injected instructions correctly distinguish injection from harmful intent, but do not establish an original binary input-detection experiment. Exclude under complete evaluated scope; no sample/outcome values are used.",
+      "whole_work_exclusion_ground": "COMPLETE_EVALUATED_TASK_SCOPE_WITHOUT_QUALIFYING_INJECTION_INPUT_CLASSIFIER",
+      "work_id": "arxiv:2601.10173"
+    },
+    {
+      "before_row_sha256": "f04ab54a2bb3cd5261c998ed0de3c9d77aecd41f9e7d5d7b6e3b70dcc67a6ccd",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0084-833f47f34efa-F01",
+        "A05-DEEP-W0084-833f47f34efa-F02",
+        "A05-DEEP-W0084-833f47f34efa-F03",
+        "A05-DEEP-W0084-833f47f34efa-F04",
+        "A05-DEEP-W0084-833f47f34efa-F05",
+        "A05-DEEP-W0084-833f47f34efa-F06"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0084",
+      "scientific_rationale": "The actual contextual guard risk score/cutoff and evaluated length-plus-guard combination establish a binary incoming-message decision before the protected worker. The suggested common-PII bypass is not a separately executed classifier trial. The inspected out-of-context/malicious label construction does not yet settle a separate injection-presence task, and authentic business messages/public repositories do not by themselves establish evaluated English. Resolve binary evaluation only; retain remaining uncertainties and partial scope.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2509.18557"
+    },
+    {
+      "before_row_sha256": "a891644d8b61ec14e88ff6bf25c0a56e8c7e9fe1a01097119852c1558bf984fd",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "UNCLEAR"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0122-bac432c94cbd-F01",
+        "A05-DEEP-W0122-bac432c94cbd-F02",
+        "A05-DEEP-W0122-bac432c94cbd-F03",
+        "A05-DEEP-W0122-bac432c94cbd-F04"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0122",
+      "scientific_rationale": "The separately described Input Filtering baseline uses perplexity-based adversarial/benign input detection without protected responses. This supports binary evaluation and pre-target timing, unlike response-compliance/training arms. The input artifact/task label still needs injection-specific construction and evaluated English linkage, and full appendix-family coverage remains partial. Retain those uncertainties rather than infer inclusion from the filter name or exclusion from the main method response dependence.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2601.07835"
+    }
+  ],
+  "created_utc": "2026-10-26T08:58:05.515610+00:00",
+  "not_fresh_independent": true,
+  "release_sha256": "ef013d919bc8ddaa2530031654032a645277f5efba6d7f985f05077ce9a44bb0",
+  "reviewed_unchanged": [
+    {
+      "before_row_sha256": "354960d7e51d110789e8d2d077a62fb89cc3566be8bbb3c12e691b84f857d64e",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0034-a1b7b3a251cb-F01",
+        "A05-DEEP-W0034-a1b7b3a251cb-F02",
+        "A05-DEEP-W0034-a1b7b3a251cb-F03",
+        "A05-DEEP-W0034-a1b7b3a251cb-F04"
+      ],
+      "rationale": "The inspected OVON generation/sanitization/policy/KPI pipeline operates on protected front-end responses, but material appendix/source scope remains partial. Do not infer complete-work absence of a qualifying input arm; retain the unresolved criteria.",
+      "review_id": "W0034"
+    },
+    {
+      "before_row_sha256": "9c305050118442f2798cea3cdd47f6d582191eea41df6011282a3469cbe7f7ac",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0085-5d50c54d5d74-F01",
+        "A05-DEEP-W0085-5d50c54d5d74-F02",
+        "A05-DEEP-W0085-5d50c54d5d74-F03",
+        "A05-DEEP-W0085-5d50c54d5d74-F04",
+        "A05-DEEP-W0085-5d50c54d5d74-F05",
+        "A05-DEEP-W0085-5d50c54d5d74-F06"
+      ],
+      "rationale": "Complete tourism-system coverage includes intent/relevance/regex input gating and response leak/citation checks. Off-topic relevance, attack/benign tourism labels and regex-pattern rejection do not yet separately establish injected-instruction-presence evaluation. Taiwan location and named public/partner datasets do not establish evaluated English. Retain task/language uncertainties rather than exclude by location or include from gatekeeper naming.",
+      "review_id": "W0085"
+    },
+    {
+      "before_row_sha256": "c7d94ed1931eeb63955e0f82090bfa430704b29ce3e61a03d12c0bbc9be18277",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0087-867842e2ac14-F01",
+        "A05-DEEP-W0087-867842e2ac14-F02",
+        "A05-DEEP-W0087-867842e2ac14-F03",
+        "A05-DEEP-W0087-867842e2ac14-F04"
+      ],
+      "rationale": "The checked architecture and task-specific assessments use generated typed handoffs/actions. This narrows those procedures only; the source/checker explicitly retains incomplete material-family scope. Do not infer a whole-work timing exclusion from typed handoff design, and do not use English enum values as evaluated-input language proof.",
+      "review_id": "W0087"
+    },
+    {
+      "before_row_sha256": "f7d6d6850c91c2386d8a1638cc1248c6fdb6ff50ad1446a83b539af9521e12f1",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0088-8eacf2327b97-F01",
+        "A05-DEEP-W0088-8eacf2327b97-F02",
+        "A05-DEEP-W0088-8eacf2327b97-F03",
+        "A05-DEEP-W0088-8eacf2327b97-F04",
+        "A05-DEEP-W0088-8eacf2327b97-F05",
+        "A05-DEEP-W0088-8eacf2327b97-F06"
+      ],
+      "rationale": "Original web-text input detector, image and ensemble families are now separately inventoried, including auxiliary detector generation that does not require protected agent answers. Existing task/binary/timing support remains, but English detector instructions and dataset names do not establish the language of the classified web segments. Keep that specific uncertainty and partial scope.",
+      "review_id": "W0088"
+    },
+    {
+      "before_row_sha256": "bf462f87ff086929c2c8f50f6256a9863aeac112b6d6c9dc0e782d1854ed2603",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0126-b6a30a64e180-F01",
+        "A05-DEEP-W0126-b6a30a64e180-F02",
+        "A05-DEEP-W0126-b6a30a64e180-F03",
+        "A05-DEEP-W0126-b6a30a64e180-F04"
+      ],
+      "rationale": "Complete method-family inventory distinguishes tool inventory/call authorization and trace-dependent policy methods from named PI Detector benchmark comparison. Its actual detector inputs/procedure remain unspecified in the checked material; the comparator name alone cannot establish binary pre-answer injection evaluation. Retain unresolved binary/timing/language facts despite complete family coverage.",
+      "review_id": "W0126"
+    },
+    {
+      "before_row_sha256": "9c4ce970a6c0f126302818a767eed322e90e4c7bb08a64471dc4c1001b1062d9",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0128-f7aa90f6da50-F01",
+        "A05-DEEP-W0128-f7aa90f6da50-F02",
+        "A05-DEEP-W0128-f7aa90f6da50-F03",
+        "A05-DEEP-W0128-f7aa90f6da50-F04"
+      ],
+      "rationale": "The newly checked classifier/retraining arm corroborates the earlier explicitly source-checked binary prompt-injection benchmark on input prompts before a target answer. Target/JailJudge response-dependent data preparation is separate from detector inference. Complete family coverage does not establish English in held-out inputs; retain the language question without regressing supported task/timing facts solely because generation appears in training.",
+      "review_id": "W0128"
+    }
+  ],
+  "schema": "A05_DEEP_EXPOSED_CUSTODIAN_JUDGMENTS",
+  "scope": "B1_ONLY_NO_OUTCOMES_NO_DRAW_NO_B2",
+  "source_git_commit": "2bc7f22b5f179dafa9c8e47d40ad0246eb5b5358",
+  "version_corrections": []
+}
