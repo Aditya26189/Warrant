@@ -40,6 +40,13 @@ class ReleaseBoundaryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "SEPARATE_ACTUAL_ACTORS"):
             r.checked_fields(check, self.packet, self.raw)
 
+    def test_capture_identity_cannot_release_scientific_methods(self) -> None:
+        check = copy.deepcopy(self.check)
+        check["requested_capture_identity"] = "publisher-bytes"
+        check["restriction_check"]["scientific_methods_transferred"] = False
+        with self.assertRaisesRegex(ValueError, "CAPTURE_METADATA_IS_NOT_SCIENTIFIC_METHOD"):
+            r.checked_fields(check, self.packet, self.raw)
+
     def test_foreign_work_rejected(self) -> None:
         check = copy.deepcopy(self.check)
         check["review_id"] = "W0002"

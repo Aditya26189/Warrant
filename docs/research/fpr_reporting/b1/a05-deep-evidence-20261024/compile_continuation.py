@@ -26,7 +26,7 @@ BASELINE = "e073ce2cb94c240e5570a51446a4d0a36fda51e5"
 def validate_fact_receipt(fact: dict, checker: dict, release_request_sha256: str) -> None:
     """Prevent relabeling an approved field as another work or edition."""
     if (checker["review_id"] != fact["review_id"]
-            or checker["requested_preferred_version"] != fact["version"]
+            or checker.get("requested_preferred_version", checker.get("requested_capture_identity")) != fact["version"]
             or checker["request_sha256"] != release_request_sha256):
         raise ValueError("FACT_CHECKER_WORK_VERSION_OR_REQUEST_CHANGED")
 

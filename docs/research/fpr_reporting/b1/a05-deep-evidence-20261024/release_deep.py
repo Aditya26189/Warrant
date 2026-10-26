@@ -43,7 +43,7 @@ def field(packet: dict, path: str) -> object:
     match = re.fullmatch(r"coverage\.([a-z_]+)", path)
     if match:
         return packet["coverage"][match[1]]
-    match = re.fullmatch(r"bibliographic_scope_facts\.(title|author|authors|document_type|whole_document_scope|edition|source_declared_relationship)", path)
+    match = re.fullmatch(r"bibliographic_scope_facts\.(title|author|authors|document_type|whole_document_scope|edition|source_declared_relationship|declared_dates|edition_statement)", path)
     if match:
         return packet["bibliographic_scope_facts"][match[1]]
     raise ValueError("UNRELEASEABLE_FIELD:" + path)
@@ -66,7 +66,8 @@ def checked_fields(check: dict, packet: dict, packet_raw: bytes) -> list[dict]:
     if mechanical.get("raw_body_available") is False and mechanical.get("acquisition_hash_verified"):
         # An authenticated access gap must not become a scientific method fact.
         return []
-    if (not mechanical.get("raw_hash_verified") or not mechanical.get("acquisition_hash_verified")
+    if (not mechanical.get("raw_hash_verified", mechanical.get("raw_hashes_verified"))
+            or not mechanical.get("acquisition_hash_verified", mechanical.get("acquisition_hashes_verified"))
             or mechanical.get("provider_locator_mismatches")):
         raise ValueError("SOURCE_BINDING_NOT_VERIFIED")
     result = []
@@ -75,8 +76,12 @@ def checked_fields(check: dict, packet: dict, packet_raw: bytes) -> list[dict]:
         if row["decision"] != "APPROVE":
             continue
         path = row["field_path"]
-        if path in {"request_provenance", "exact_version_validation"}:
+        if path in {"request_provenance", "exact_version_validation", "requested_capture_identity"}:
             continue  # Retained in the exact checker receipt, not method prose.
+        if "requested_capture_identity" in check and (
+                not path.startswith("bibliographic_scope_facts.")
+                or restriction.get("scientific_methods_transferred") is not False):
+            raise ValueError("CAPTURE_METADATA_IS_NOT_SCIENTIFIC_METHOD")
         if path in seen:
             raise ValueError("DUPLICATE_APPROVAL")
         seen.add(path)
@@ -120,7 +125,8 @@ def build(checkpoint_path: Path, requests_path: Path | None = None) -> tuple[dic
         if rid != check["review_id"] or check["request_sha256"] != sha(requests_raw):
             raise ValueError("REQUEST_OR_ID_CHANGED")
         request = inventory[rid]
-        if check["requested_preferred_version"] != request["requested_preferred_version"]:
+        checked_identity = check.get("requested_preferred_version", check.get("requested_capture_identity"))
+        if checked_identity != request["requested_preferred_version"]:
             raise ValueError("REQUESTED_VERSION_CHANGED")
         packet_raw = Path(check["provider_packet"]).read_bytes()
         packet = json.loads(packet_raw)
@@ -136,7 +142,7 @@ def build(checkpoint_path: Path, requests_path: Path | None = None) -> tuple[dic
         for n, item in enumerate(released, 1):
             facts.append({"evidence_id": "A05-DEEP-" + rid + "-" + sha(raw)[:12] + "-F" + str(n).zfill(2),
                           "review_id": rid, "work_id": request["work_id"],
-                          "version": check["requested_preferred_version"],
+                          "version": checked_identity,
                           "source_identity": check["source_identity"],
                           "provider_packet_sha256": sha(packet_raw),
                           "checker_receipt": receipt_name, "checker_receipt_sha256": sha(raw),
