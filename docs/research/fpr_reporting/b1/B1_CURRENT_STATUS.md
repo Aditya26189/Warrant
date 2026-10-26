@@ -8,12 +8,12 @@ is prospectively superseded. B's original recorded independent intake remains
 accepted; another freshness/transfer setup is not required.
 
 The current deliverable is the deeper continuation's
-[generated report](a05-deep-evidence-20261024/checkpoints/010/REPORT.md),
-[full proposal](a05-deep-evidence-20261024/checkpoints/010/FRAME_PROPOSAL.json)
-and [remaining source questions](a05-deep-evidence-20261024/checkpoints/010/REMAINING_QUESTIONS.json).
+[generated report](a05-deep-evidence-20261024/checkpoints/011/REPORT.md),
+[full proposal](a05-deep-evidence-20261024/checkpoints/011/FRAME_PROPOSAL.json)
+and [remaining source questions](a05-deep-evidence-20261024/checkpoints/011/REMAINING_QUESTIONS.json).
 It is an evidence-based proposal with unresolved requirements, not a valid
 complete sampling frame. Its checks are in
-[VALIDATION.json](a05-deep-evidence-20261024/checkpoints/010/VALIDATION.json).
+[VALIDATION.json](a05-deep-evidence-20261024/checkpoints/011/VALIDATION.json).
 
 The continuation adds separately checked main/appendix method inventories and
 exact-edition language evidence. It also corrects the treatment of publisher
@@ -29,7 +29,7 @@ remaining controlled evidence adjudication and obtain explicit frame approval
 before the prespecified draw. No new permission is needed for the already
 authorized A05 evidence work; selection and B2 are separate gates.
 
-Checkpoint 010 supports 29 works pointwise, excludes 31 and retains 312 UNCLEAR.
+Checkpoint 011 supports 29 works pointwise, excludes 34 and retains 309 UNCLEAR.
 All 372 works and 389 memberships remain. The separately checked paper/thesis
 relationship preserves both whole documents and records shared underlying study,
 without transferring their method evidence or claiming independent replication.
@@ -44,11 +44,19 @@ are preferred under the original hierarchy. Earlier arXiv scientific support is
 preserved, but the current criteria are reset until those exact publisher methods
 are checked. See PUBLISHER_EDITION_APPLICATION.md and the before-hash judgments.
 
-Source work has resumed after reported capacity resets. The frozen main source
-checkpoint covers 72 works (70 with verified bodies and two access-only records),
-with further substantial main/targeted checks underway. Existing source actors
+Source work has resumed after reported capacity resets. The latest frozen main source
+receipts cover 83 works (81 with verified bodies and two access-only records).
+The last 11 actual checker receipts were complete before a service limit, but
+the intended 84-work batch was not sealed. A custodian manifest preserves those
+existing checks without claiming a new check or the unfinished 84th work. Existing source actors
 may check another actor's packets with actual source/context inspection and honest
 role attribution; self-checks are prohibited. This is source checking, not a fresh
 independent final eligibility review. The active source questions include original
 task-label semantics, evaluated-input English linkage, remaining whole-work scopes
 and selected publisher-edition methods. No draw or B2 has begun.
+
+The source-role service currently reports a capacity stop until 4:08 PM India
+time on 26 October. Completed checks are preserved; incomplete publisher-method,
+input-language and foreign-check drafts are not promoted. No new methodological
+approval is needed for the already authorized evidence continuation. Complete-frame
+approval and later sampling/B2 authorization remain separate gates.
