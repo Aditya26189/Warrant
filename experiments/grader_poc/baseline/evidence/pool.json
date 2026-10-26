@@ -1,0 +1,150 @@
+{
+  "candidates": [
+    {
+      "end_byte": 427,
+      "id": "mutant-001",
+      "operator": "arithmetic_swap",
+      "original": "-",
+      "replacement": "+",
+      "sha256": "b2527ed7faa5c4b7c0ef79544fdf385b844695531567ede27054fd797d226b14",
+      "source": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) + 1):\n        if sorted_numbers[i + 1] - sorted_numbers[i] < threshold:\n            return True\n    return False\n\n",
+      "start_byte": 426,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 429,
+      "id": "mutant-002",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "0",
+      "sha256": "5d21578805aa474814ddb7f6c7083c5eb48a611338f595e5b7a0b90f0f568cc9",
+      "source": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) - 0):\n        if sorted_numbers[i + 1] - sorted_numbers[i] < threshold:\n            return True\n    return False\n\n",
+      "start_byte": 428,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 429,
+      "id": "mutant-003",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "2",
+      "sha256": "a014248643ed5ec0a0277a7483752e39fdfed5fdd4d705af7fb9c3a3c5274b28",
+      "source": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) - 2):\n        if sorted_numbers[i + 1] - sorted_numbers[i] < threshold:\n            return True\n    return False\n\n",
+      "start_byte": 428,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 496,
+      "id": "mutant-004",
+      "operator": "constant_guard",
+      "original": "sorted_numbers[i + 1] - sorted_numbers[i] < threshold",
+      "replacement": "False",
+      "sha256": "252c2c37f40fc08382f6eef93e58aa5e1354071cf1079640a2e8a5d347d88330",
+      "source": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) - 1):\n        if False:\n            return True\n    return False\n\n",
+      "start_byte": 443,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 496,
+      "id": "mutant-005",
+      "operator": "constant_guard",
+      "original": "sorted_numbers[i + 1] - sorted_numbers[i] < threshold",
+      "replacement": "True",
+      "sha256": "19bfc8d602ec8b097ecc138738a268f785142089699c9553c617442030e4d7f1",
+      "source": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) - 1):\n        if True:\n            return True\n    return False\n\n",
+      "start_byte": 443,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 461,
+      "id": "mutant-006",
+      "operator": "arithmetic_swap",
+      "original": "+",
+      "replacement": "-",
+      "sha256": "b03f0c3530c722a25115609519a5f423e3d16899c1f4ae79c4a83fd4ef0ebab9",
+      "source": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) - 1):\n        if sorted_numbers[i - 1] - sorted_numbers[i] < threshold:\n            return True\n    return False\n\n",
+      "start_byte": 460,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 463,
+      "id": "mutant-007",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "0",
+      "sha256": "de01b57b4f6ece26ce4cbb334ab41c0485f5a44a370ba183116e18430397c0eb",
+      "source": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) - 1):\n        if sorted_numbers[i + 0] - sorted_numbers[i] < threshold:\n            return True\n    return False\n\n",
+      "start_byte": 462,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 463,
+      "id": "mutant-008",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "2",
+      "sha256": "5b39da4e353c78a9d21892cae0da2a9eb2285b988a8327bd20b2193962786cb0",
+      "source": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) - 1):\n        if sorted_numbers[i + 2] - sorted_numbers[i] < threshold:\n            return True\n    return False\n\n",
+      "start_byte": 462,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 466,
+      "id": "mutant-009",
+      "operator": "arithmetic_swap",
+      "original": "-",
+      "replacement": "+",
+      "sha256": "3f42d6b9efa0bec92b7627246bb76649884088fa85df5ef791e7d0eb0ec791f0",
+      "source": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) - 1):\n        if sorted_numbers[i + 1] + sorted_numbers[i] < threshold:\n            return True\n    return False\n\n",
+      "start_byte": 465,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 486,
+      "id": "mutant-010",
+      "operator": "comparison_negation",
+      "original": "<",
+      "replacement": ">=",
+      "sha256": "8352a43265714ad529846d3a85e0dd38bceb341bda0bb2868d266c9c6c8d54a7",
+      "source": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) - 1):\n        if sorted_numbers[i + 1] - sorted_numbers[i] >= threshold:\n            return True\n    return False\n\n",
+      "start_byte": 485,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 486,
+      "id": "mutant-011",
+      "operator": "relational_boundary",
+      "original": "<",
+      "replacement": "<=",
+      "sha256": "01051d0240d7ec5dcb122a7c27d8b8847ec37eedaf08b9fb93dbed6be151fb78",
+      "source": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) - 1):\n        if sorted_numbers[i + 1] - sorted_numbers[i] <= threshold:\n            return True\n    return False\n\n",
+      "start_byte": 485,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 521,
+      "id": "mutant-012",
+      "operator": "boolean_flip",
+      "original": "True",
+      "replacement": "False",
+      "sha256": "3052ec67b168caa5a21f86890c54bc63a7aafebfa9296aafc909d09ec841e073",
+      "source": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) - 1):\n        if sorted_numbers[i + 1] - sorted_numbers[i] < threshold:\n            return False\n    return False\n\n",
+      "start_byte": 517,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 538,
+      "id": "mutant-013",
+      "operator": "boolean_flip",
+      "original": "False",
+      "replacement": "True",
+      "sha256": "2ff45e301927c8568c6ba1fbfff17c2c2c990e577659af6eda79c3c684d9ccdb",
+      "source": "from typing import List\n\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    \"\"\" Check if in given list of numbers, are any two numbers closer to each other than\n    given threshold.\n    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)\n    False\n    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)\n    True\n    \"\"\"\n\n\n    sorted_numbers = sorted(numbers)\n    for i in range(len(sorted_numbers) - 1):\n        if sorted_numbers[i + 1] - sorted_numbers[i] < threshold:\n            return True\n    return True\n\n",
+      "start_byte": 533,
+      "syntax": "VALID"
+    }
+  ],
+  "excluded_by_cap": [],
+  "generated_count": 13,
+  "reference_sha256": "8a5ef48dad7efb1cebfec51b05941aa78eab9c3c8cd4377b6b2903b1f92793c6"
+}

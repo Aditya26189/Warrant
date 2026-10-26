@@ -1,8 +1,10 @@
 # Grader auditing: bounded feasibility protocol
 
-Status: only Gate1 is authorized and implemented. This document incorporates
-the user's accepted corrections to the pasted experiment. Later gates are a
-conditional research design, not instructions to execute them now.
+Status: Gate1 calibration and the subsequently authorized Gate2 conventional
+baseline on that calibration are implemented. This document incorporates the
+user's accepted corrections to the pasted experiment. Broader task feasibility,
+human effort, coverage ordering and held-out evaluation remain unverified.
+Later gates are a conditional research design, not instructions to execute them.
 
 ## Question and limits
 
@@ -44,7 +46,7 @@ correct controls. State only preservation on those controls and validation
 inputs, not all valid implementations. Count distinct requirement omissions,
 not every mutant sharing an omission. No automatic patch submission.
 
-## Gate1: current scope
+## Gate1: completed calibration scope
 
 Use one deterministic CPU function family. Pin source, dataset bytes, license,
 calibration identity and held-out reservation rule before measuring outcomes.
@@ -80,7 +82,25 @@ about held-out feasibility, human effort savings or discovery advantage. The
 human setup cap cannot be scored without human measurements; disclose agent
 intervals separately, including acquisition and environment friction.
 
-## Gates2-4: conditional comparisons, not yet implemented
+## Gate2: completed conventional calibration baseline
+
+Decision G022 fixes a custom, source-preserving implementation of conventional
+first-order mutations on calibration only. This is not an actual PIT/mutmut
+comparison. Reuse the pinned full grader and the seeded Gate1 witness subset;
+do not weaken tests or tune the pool after seeing results. Grade both controls
+before candidates and the reference again afterward. Keep original base and
+additional plus results separate; only a full-grader survivor is eligible for
+a specification-backed omission claim. Preserve raw output, all candidates,
+timeouts, invalid runs and undefined ratios. See the
+[baseline report](../reports/GATE2-BASELINE.md) and its generated evidence.
+
+Payments remains an existing exposed example; it was not rerun in this step.
+No human review arm or direct-reference coverage comparison was performed.
+Coverage ranking is not added merely because the conventional pool yields no
+finding: changing order cannot make a fully rejected fixed pool produce a
+survivor. Generalization beyond this calibration remains untested.
+
+## Gates3-4: conditional comparisons, not implemented
 
 Use one candidate pool with identical operators, inputs, oracle, witness budgets
 and total resource caps for C/D. C uses declared source order (and a predeclared
@@ -116,11 +136,13 @@ the user's instruction; this protocol does not send anything.
 
 ## Source-of-record files
 
-- [Decisions](../experiments/grader_poc/DECISIONS.md), G019-G021.
+- [Decisions](../experiments/grader_poc/DECISIONS.md), G019-G022.
 - [Frozen config](../experiments/grader_poc/feasibility/config.json).
 - [Prompt-only reservation manifest](../experiments/grader_poc/feasibility/fixtures/selection.json).
 - [Calibration property](../experiments/grader_poc/feasibility/calibration.py).
 - [Closing Gate1 report](../reports/GATE1-FEASIBILITY.md).
+- [Gate2 baseline config](../experiments/grader_poc/baseline/config.json).
+- [Closing Gate2 report](../reports/GATE2-BASELINE.md).
 
 Primary references checked 26 October 2026: [EvalPlus source](https://github.com/evalplus/evalplus/tree/26d6d00bb1fd0fa37f39c99d5290da67891d1c5e),
 [EvalPlus paper](https://arxiv.org/abs/2305.01210),
