@@ -1,0 +1,4012 @@
+{
+  "requests": [
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0008",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2403.17710v5",
+      "work_id": "arxiv:2403.17710"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "2599ff9fdcf7a1f23cd5d3aa451b7aef947f4e1978945ca795a4186c5566f0b0",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0013-ba16b4192c4c-F01",
+          "A05-DEEP-W0013-ba16b4192c4c-F02",
+          "A05-DEEP-W0013-ba16b4192c4c-F03",
+          "A05-DEEP-W0013-ba16b4192c4c-F04",
+          "A05-DEEP-W0013-ba16b4192c4c-F05",
+          "A05-DEEP-W0013-ba16b4192c4c-F06",
+          "A05-DEEP-W0013-ba16b4192c4c-F07",
+          "A05-DEEP-W0013-ba16b4192c4c-F08"
+        ],
+        "rationale": "The separately viewed Figure 3 and checked architecture clarification show one LLM stage, downstream safety validation and prior-command feedback. Generated modality perception/reasoning precedes the attack flag, but exact API completion boundaries and current-command token ordering are unspecified. This does not establish an already completed movement command as detector input. Preserve timing UNCLEAR without imposing a universal API-trace requirement or inventing a separate downstream model.",
+        "review_id": "W0013"
+      },
+      "missing_components": [
+        "before_target_answer"
+      ],
+      "review_id": "W0013",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2408.03515v2",
+      "work_id": "arxiv:2408.03515"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "7b9ead0854871d9614c81012105ee71e570c01fe0e847450857a38e93c3e4ffd",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0019-fcd6817ba248-F01",
+          "A05-DEEP-W0019-fcd6817ba248-F02",
+          "A05-DEEP-W0019-fcd6817ba248-F03",
+          "A05-DEEP-W0019-fcd6817ba248-F04"
+        ],
+        "rationale": "Decoy activation and sabotage-objective checks are agent-service interaction methods. Whole-work secondary-input-evaluation scope remains partial.",
+        "review_id": "W0019"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0019",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2410.20911v2",
+      "work_id": "arxiv:2410.20911"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation",
+        "selected_body_source_binding"
+      ],
+      "review_id": "W0021",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2410.21337v2",
+      "work_id": "arxiv:2410.21337"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "e74b7056ccb77da1ab6582a29b80d24990cb9199fd2264f26a70611ef1cdaaaa",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0024-019d08408eb8-F01",
+          "A05-DEEP-W0024-019d08408eb8-F02",
+          "A05-DEEP-W0024-019d08408eb8-F03",
+          "A05-DEEP-W0024-019d08408eb8-F04",
+          "A05-DEEP-W0024-019d08408eb8-F05",
+          "A05-DEEP-W0024-019d08408eb8-F06",
+          "A05-DEEP-W0024-019d08408eb8-F07",
+          "A05-DEEP-W0024-019d08408eb8-F08"
+        ],
+        "rationale": "The targeted source construction confirms aggregate jailbreak/non-jailbreak labels, but ToxicChat supplied labels are not identified and are not uniformly harmful-content labels. Public-model comparisons reuse those datasets with partly inherited label semantics. This does not conclusively settle whether a separate qualifying injected-instruction label is present. Retain task and language UNCLEAR; do not invent a source-dataset label field or infer exclusion from an absent explicit document boundary. Clarification-scope completeness is not whole-work completeness.",
+        "review_id": "W0024"
+      },
+      "missing_components": [
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0024",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2412.01547v1",
+      "work_id": "arxiv:2412.01547"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "583df006c87f972726b54c89a37a0d15300cb99fce8465a27d919d0a664fe575",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0025-84c1b0c36522-F01",
+          "A05-DEEP-W0025-84c1b0c36522-F02",
+          "A05-DEEP-W0025-84c1b0c36522-F03",
+          "A05-DEEP-W0025-84c1b0c36522-F04",
+          "A05-DEEP-W0025-84c1b0c36522-F05",
+          "A05-DEEP-W0025-84c1b0c36522-F06"
+        ],
+        "rationale": "Query-side dictionary, SQL-operation and prompted detector components are identified; original standalone binary injection evaluation, relevant label scope and evaluated English need source support.",
+        "review_id": "W0025"
+      },
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0025",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2412.10807v2",
+      "work_id": "arxiv:2412.10807"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "bfdecee4de0f5bfb5ab3a8b19880be467886ab4eb6d619001586fc75ed940463",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0027-cec6c6dfa87f-F01",
+          "A05-DEEP-W0027-cec6c6dfa87f-F02",
+          "A05-DEEP-W0027-cec6c6dfa87f-F03",
+          "A05-DEEP-W0027-cec6c6dfa87f-F04",
+          "A05-DEEP-W0027-cec6c6dfa87f-F05",
+          "A05-DEEP-W0027-cec6c6dfa87f-F06"
+        ],
+        "rationale": "Bias detection is input-side, injection vulnerability testing is target-response-dependent and task optimization evaluates generated answers. Complete secondary/task family scope still needed.",
+        "review_id": "W0027"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0027",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2501.12521v1",
+      "work_id": "arxiv:2501.12521"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0029",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2502.05174v4",
+      "work_id": "arxiv:2502.05174"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "56c5a6e84552b08414de2369bd38e1c93cdf0a01afca54a7c67aae4c00fc2776",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0030-7d97ed1cf2da-F01",
+          "A05-DEEP-W0030-7d97ed1cf2da-F02",
+          "A05-DEEP-W0030-7d97ed1cf2da-F03",
+          "A05-DEEP-W0030-7d97ed1cf2da-F04",
+          "A05-DEEP-W0030-7d97ed1cf2da-F05",
+          "A05-DEEP-W0030-7d97ed1cf2da-F06"
+        ],
+        "rationale": "Context-region relevance and generated-output dependency screeners support distinct information-flow arms. The incomplete inventory does not establish a separate binary injected-instruction-presence evaluation. Retain task/binary/timing/language uncertainties; no exclusion from incompleteness.",
+        "review_id": "W0030"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0030",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2502.08966v2",
+      "work_id": "arxiv:2502.08966"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0031",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2502.13141v2",
+      "work_id": "arxiv:2502.13141"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "a2fb6b0b2363de96639d8a9528ae5268c915b2346fc90b6db0e7ae5d52f1fa44",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0032-b7af16608c64-F01",
+          "A05-DEEP-W0032-b7af16608c64-F02",
+          "A05-DEEP-W0032-b7af16608c64-F03",
+          "A05-DEEP-W0032-b7af16608c64-F04",
+          "A05-DEEP-W0032-b7af16608c64-F05"
+        ],
+        "rationale": "The inspected families concern hallucination/factuality of generated answers, but appendix baseline scope remains incomplete. Retain unresolved status rather than infer whole-work absence of a qualifying secondary input detector.",
+        "review_id": "W0032"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0032",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2502.13490v1",
+      "work_id": "arxiv:2502.13490"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "915acfee47edbea50135985034250bd27f02d580bd188dc0caaabd28fa8da4a1",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0033-3181ab946aff-F01",
+          "A05-DEEP-W0033-3181ab946aff-F02",
+          "A05-DEEP-W0033-3181ab946aff-F03",
+          "A05-DEEP-W0033-3181ab946aff-F04",
+          "A05-DEEP-W0033-3181ab946aff-F05",
+          "A05-DEEP-W0033-3181ab946aff-F06"
+        ],
+        "rationale": "Prompt-time SVM inference precedes generation, while training labels derive from judged jailbreak success. Those labels are not automatically injected-instruction presence. Task semantics and evaluated English linkage remain unresolved; answer-derived training labels alone do not make inference post-answer.",
+        "review_id": "W0033"
+      },
+      "missing_components": [
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0033",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2503.09066v2",
+      "work_id": "arxiv:2503.09066"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "354960d7e51d110789e8d2d077a62fb89cc3566be8bbb3c12e691b84f857d64e",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0034-a1b7b3a251cb-F01",
+          "A05-DEEP-W0034-a1b7b3a251cb-F02",
+          "A05-DEEP-W0034-a1b7b3a251cb-F03",
+          "A05-DEEP-W0034-a1b7b3a251cb-F04"
+        ],
+        "rationale": "The inspected OVON generation/sanitization/policy/KPI pipeline operates on protected front-end responses, but material appendix/source scope remains partial. Do not infer complete-work absence of a qualifying input arm; retain the unresolved criteria.",
+        "review_id": "W0034"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0034",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2503.11517v1",
+      "work_id": "arxiv:2503.11517"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0035",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2503.15772v2",
+      "work_id": "arxiv:2503.15772"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0036",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2503.16248v3",
+      "work_id": "arxiv:2503.16248"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0037",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2503.21464v1",
+      "work_id": "arxiv:2503.21464"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "11d768db317419de94d80570c96ba4ed0594772b0415400c793c151b52a9dcac",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0039-96cd4449c366-F01",
+          "A05-DEEP-W0039-96cd4449c366-F02",
+          "A05-DEEP-W0039-96cd4449c366-F03",
+          "A05-DEEP-W0039-96cd4449c366-F04",
+          "A05-DEEP-W0039-96cd4449c366-F05",
+          "A05-DEEP-W0039-96cd4449c366-F06"
+        ],
+        "rationale": "Incoming-query activation distances support the existing input-time binary risk procedure, but injection-task versus broader risk labels and evaluated English linkage remain unresolved. The source merely names known-answer and other comparator methods; do not infer their decision inputs or timing from names. Preserve partial scope and uncertainty.",
+        "review_id": "W0039"
+      },
+      "missing_components": [
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0039",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2504.09593v2",
+      "work_id": "arxiv:2504.09593"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0041",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2504.11358v4",
+      "work_id": "arxiv:2504.11358"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0044",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2504.19793v3",
+      "work_id": "arxiv:2504.19793"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "5ef5439b76173fb3441dc5c29a3ccba9ac02e205a296c58c37f033860f0eee46",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0045-4141affb29c7-F01",
+          "A05-DEEP-W0045-4141affb29c7-F02",
+          "A05-DEEP-W0045-4141affb29c7-F03",
+          "A05-DEEP-W0045-4141affb29c7-F04",
+          "A05-DEEP-W0045-4141affb29c7-F05",
+          "A05-DEEP-W0045-4141affb29c7-F06"
+        ],
+        "rationale": "Separate message scorer is pre-answer, but method evidence must link a binary input-injection evaluation and its English setting rather than only trace utility/direct harmful jailbreak evaluation.",
+        "review_id": "W0045"
+      },
+      "missing_components": [
+        "binary_evaluation"
+      ],
+      "review_id": "W0045",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2505.03574v1",
+      "work_id": "arxiv:2505.03574"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "e55d94369ce4fdd6ce31df8af3baa200f285f6ebfd9d2c1ebf923fbd4fb1fe3b",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0049-ec69981352de-F01",
+          "A05-DEEP-W0049-ec69981352de-F02",
+          "A05-DEEP-W0049-ec69981352de-F03",
+          "A05-DEEP-W0049-ec69981352de-F04",
+          "A05-DEEP-W0049-ec69981352de-F05",
+          "A05-DEEP-W0049-ec69981352de-F06"
+        ],
+        "rationale": "Pre-retrieval Boolean query guards exist, but methods have not established a separate binary injection-input evaluation rather than end-to-end extraction success.",
+        "review_id": "W0049"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0049",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2505.15420v2",
+      "work_id": "arxiv:2505.15420"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "156c71acaa9cc1df036580c1c9eec0fceed63dc956a133755e9f8369ddb0c9c2",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0052-dbaef8a0901f-F01",
+          "A05-DEEP-W0052-dbaef8a0901f-F02",
+          "A05-DEEP-W0052-dbaef8a0901f-F03",
+          "A05-DEEP-W0052-dbaef8a0901f-F04"
+        ],
+        "rationale": "Input-only binary scoring is supported; exact method-linked injected-instruction evaluation and English test construction remain unresolved.",
+        "review_id": "W0052"
+      },
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0052",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2506.05446v1",
+      "work_id": "arxiv:2506.05446"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "1ea360eb57addf84bed00f8f119c3611f362a663d2902e391376307c1ae33d43",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0056-9fc1a638e362-F01",
+          "A05-DEEP-W0056-9fc1a638e362-F02",
+          "A05-DEEP-W0056-9fc1a638e362-F03",
+          "A05-DEEP-W0056-9fc1a638e362-F04"
+        ],
+        "rationale": "An input-side isolator and ProtectAI baseline are present, but separate binary input evaluation and actual English construction remain unestablished.",
+        "review_id": "W0056"
+      },
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0056",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2506.12104v3",
+      "work_id": "arxiv:2506.12104"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "ce3731a4839c7abd9b55bb7651c21067ba3ee4a3b6bdb2505b5466e90b708e4a",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0057-0df7bc297502-F01",
+          "A05-DEEP-W0057-0df7bc297502-F02",
+          "A05-DEEP-W0057-0df7bc297502-F03",
+          "A05-DEEP-W0057-0df7bc297502-F04"
+        ],
+        "rationale": "Original pre-answer input-scanner evaluation is supported. English-alphabet substitutions alone do not establish the language of the evaluated prompt corpus.",
+        "review_id": "W0057"
+      },
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0057",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2506.19109v1",
+      "work_id": "arxiv:2506.19109"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0058",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2507.05630v3",
+      "work_id": "arxiv:2507.05630"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "b82ad924503fdf8d9075672fa595584ee7e56bd92e3da21fbfa217a92c622568",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0059-e1a50d3fa05a-F01",
+          "A05-DEEP-W0059-e1a50d3fa05a-F02",
+          "A05-DEEP-W0059-e1a50d3fa05a-F03",
+          "A05-DEEP-W0059-e1a50d3fa05a-F04"
+        ],
+        "rationale": "Known architecture comparison uses generated outputs/actions; need complete declared method/baseline/appendix scope before whole-work exclusion.",
+        "review_id": "W0059"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0059",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2507.06323v1",
+      "work_id": "arxiv:2507.06323"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "84c0601c7ea54b47d6d352e22d0f05e6b3c9b8466464c145a2b5b9353a76d981",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0060-6970912df411-F01",
+          "A05-DEEP-W0060-6970912df411-F02",
+          "A05-DEEP-W0060-6970912df411-F03"
+        ],
+        "rationale": "Inspected defense procedures are attributed to prior work. Need complete substantive review/proposal scope to establish absence of an original detector experiment.",
+        "review_id": "W0060"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0060",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2507.13169v1",
+      "work_id": "arxiv:2507.13169"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0061",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2507.15042v1",
+      "work_id": "arxiv:2507.15042"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "5891d72ffccc317c0b6bdd456186b508298caba119f8c45942b8c887b88f59c8",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0063-136256d40df0-F01",
+          "A05-DEEP-W0063-136256d40df0-F02",
+          "A05-DEEP-W0063-136256d40df0-F03"
+        ],
+        "rationale": "Known runtime/response controls use telemetry or generated target output. Need complete empirical scope to resolve any separate input-classification arm.",
+        "review_id": "W0063"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0063",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2507.15330v1",
+      "work_id": "arxiv:2507.15330"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "035b5a156e7698326b605ca97e625a0eff0e98d4feeccdadb4a6f732beca4783",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0064-ab61b2c422a1-F01",
+          "A05-DEEP-W0064-ab61b2c422a1-F02",
+          "A05-DEEP-W0064-ab61b2c422a1-F03"
+        ],
+        "rationale": "Original response relevance/refusal and multimodal task checks require target outputs; retain uncertainty until material original main/appendix task scope is established.",
+        "review_id": "W0064"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0064",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2507.20704v2",
+      "work_id": "arxiv:2507.20704"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "0fb160d7e0c614012c1591bcd3e8b525c8e606e9f866cc77f2b76104468d184d",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0066-05a195177d2b-F01",
+          "A05-DEEP-W0066-05a195177d2b-F02",
+          "A05-DEEP-W0066-05a195177d2b-F03",
+          "A05-DEEP-W0066-05a195177d2b-F04"
+        ],
+        "rationale": "Tool-metadata optimization and query rewrite/prompt refusal methods evaluate agent tool selection/actions. Need complete original task/baseline scope before whole-work exclusion.",
+        "review_id": "W0066"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0066",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2508.02110v2",
+      "work_id": "arxiv:2508.02110"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation",
+        "selected_body_source_binding"
+      ],
+      "review_id": "W0067",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2508.02961v2",
+      "work_id": "arxiv:2508.02961"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0068",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2508.03793v3",
+      "work_id": "arxiv:2508.03793"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "baf51a8dec29b12ba1adf7f5daa89760cb8067d806143b5fd3972ab3bac3598f",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0070-15ccf7eb89ff-F01",
+          "A05-DEEP-W0070-15ccf7eb89ff-F02",
+          "A05-DEEP-W0070-15ccf7eb89ff-F03"
+        ],
+        "rationale": "The selected-edition input-token activation/anchor procedure and injection construction support existing task, binary and timing judgments. A named QA corpus alone does not establish evaluated English construction. Retain language UNCLEAR and partial scope.",
+        "review_id": "W0070"
+      },
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0070",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2508.06418v1",
+      "work_id": "arxiv:2508.06418"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "458c4732501f06f44bc89cd7c301c7b6549e4498b2de47f015f84239b1992290",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0071-bb550cbf84ea-F01",
+          "A05-DEEP-W0071-bb550cbf84ea-F02",
+          "A05-DEEP-W0071-bb550cbf84ea-F03",
+          "A05-DEEP-W0071-bb550cbf84ea-F04"
+        ],
+        "rationale": "The inspected graph-anomaly and attacker variants use generated agent replies; complete appendix/baseline scope is not established. Retain unresolved whole-work status instead of excluding from only these response-dependent arms.",
+        "review_id": "W0071"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0071",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2508.08127v2",
+      "work_id": "arxiv:2508.08127"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "882245c198e5e7f03ece72391fd6b68446b9bc36fa4c0bc9cb958f8dad02db4d",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0072-8347ffc926c2-F01",
+          "A05-DEEP-W0072-8347ffc926c2-F02",
+          "A05-DEEP-W0072-8347ffc926c2-F03",
+          "A05-DEEP-W0072-8347ffc926c2-F04"
+        ],
+        "rationale": "CIV evaluates generation/execution behavior, while named input-defense comparators have unestablished per-arm configurations. Retain binary and language questions; do not infer a detector implementation or evaluated task from comparator names.",
+        "review_id": "W0072"
+      },
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0072",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2508.09288v2",
+      "work_id": "arxiv:2508.09288"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "2907d72485964813bfcf8133803837c00ad06234df462c995642d4f28d91b5eb",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0075-a4718e538460-F01",
+          "A05-DEEP-W0075-a4718e538460-F02",
+          "A05-DEEP-W0075-a4718e538460-F03",
+          "A05-DEEP-W0075-a4718e538460-F04"
+        ],
+        "rationale": "The inspected monitor and human-escalation procedures consume generated trajectories/chunks. Remaining appendix method families are not fully inventoried. Retain UNCLEAR; no complete-work timing exclusion or missing-evidence exclusion.",
+        "review_id": "W0075"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0075",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2508.19461v1",
+      "work_id": "arxiv:2508.19461"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "fc717889ebf13c5407af3140411607aa60be4e10f37c05026cc863fce10bb9f9",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0076-09544bee7e1e-F01",
+          "A05-DEEP-W0076-09544bee7e1e-F02",
+          "A05-DEEP-W0076-09544bee7e1e-F03",
+          "A05-DEEP-W0076-09544bee7e1e-F04",
+          "A05-DEEP-W0076-09544bee7e1e-F05"
+        ],
+        "rationale": "PromptSleuth has a qualifying input classification procedure before backend forwarding, distinct from its now checked persistent-memory target-generation case. Its summary mentions English construction examples, but the approved detailed fields do not yet bind actual evaluated English inputs precisely enough to clear the language question. Retain that specific uncertainty; auxiliary detector summaries are not protected target answers.",
+        "review_id": "W0076"
+      },
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0076",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2508.20890v2",
+      "work_id": "arxiv:2508.20890"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0077",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2509.00088v2",
+      "work_id": "arxiv:2509.00088"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "c5f24fbeaa20f7f78733f0d310ceccc5c0ee0ee42e7c401dfdb69fe1a9e79a0f",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0078-4545924435de-F01",
+          "A05-DEEP-W0078-4545924435de-F02",
+          "A05-DEEP-W0078-4545924435de-F03",
+          "A05-DEEP-W0078-4545924435de-F04"
+        ],
+        "rationale": "BinaryShield main labels concern related-attack versus unrelated-benign prompt pairs rather than standalone injected-instruction presence. A secondary Azure input-detection comparison exists, but its task/unit and language construction remain insufficiently detailed. Retain UNCLEAR; do not exclude the whole work from the main pair-matching task alone.",
+        "review_id": "W0078"
+      },
+      "missing_components": [
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0078",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2509.05608v2",
+      "work_id": "arxiv:2509.05608"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "10ee2e0e9dc9965579a6f2ba7b6dd0e247e395e43507d40f89f74f0bf941b5a3",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0079-72dbfa87b7fa-F01",
+          "A05-DEEP-W0079-72dbfa87b7fa-F02",
+          "A05-DEEP-W0079-72dbfa87b7fa-F03",
+          "A05-DEEP-W0079-72dbfa87b7fa-F04",
+          "A05-DEEP-W0079-72dbfa87b7fa-F05",
+          "A05-DEEP-W0079-72dbfa87b7fa-F06"
+        ],
+        "rationale": "Complete method-family coverage distinguishes description/input PPL and PromptGuard decisions from generated invocation traces and the native pending-command guard. The input detectors support existing binary/task/timing judgments. No exact evaluated English text construction is yet established, so retain the specific language uncertainty; source wording and backend/model names are not language proof.",
+        "review_id": "W0079"
+      },
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0079",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2509.05755v6",
+      "work_id": "arxiv:2509.05755"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "5c87b884246dae320eac545b562e928dcb20aa48bf69655e5392154f42929073",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0080-0cc8854598e9-F01",
+          "A05-DEEP-W0080-0cc8854598e9-F02",
+          "A05-DEEP-W0080-0cc8854598e9-F03",
+          "A05-DEEP-W0080-0cc8854598e9-F04"
+        ],
+        "rationale": "The inspected EchoLeak classifier and exploit-chain safeguards are described through analysis of a published exploit; recommendations are separate. Original empirical binary input-evaluation status and language remain unresolved, and full method-family coverage is not yet established. Do not infer inclusion from a named classifier or whole-work exclusion from partial evidence.",
+        "review_id": "W0080"
+      },
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0080",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2509.10540v1",
+      "work_id": "arxiv:2509.10540"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "79afdea7fff37de5753bc23ab0aa5d79e600cf0e28da7a5c3383d1402a8c780d",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0081-70f51d32c75a-F01",
+          "A05-DEEP-W0081-70f51d32c75a-F02",
+          "A05-DEEP-W0081-70f51d32c75a-F03"
+        ],
+        "rationale": "The inspected prototype uses credential/role/action/resource authorization. Those families are tool/access-control tasks, but the full long-method/case-study inventory remains incomplete. Retain UNCLEAR until affirmative whole-study scope or a qualifying original input-classifier arm is established.",
+        "review_id": "W0081"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0081",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2509.11431v1",
+      "work_id": "arxiv:2509.11431"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "c16154b8ee0e7bcffb2be1dfdb5f848e10eab415972b99440d3cf946dde6ff9f",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0082-fe3d61c0bc1f-F01",
+          "A05-DEEP-W0082-fe3d61c0bc1f-F02",
+          "A05-DEEP-W0082-fe3d61c0bc1f-F03",
+          "A05-DEEP-W0082-fe3d61c0bc1f-F04"
+        ],
+        "rationale": "The input taxonomy/coordinator routing and output Guard are distinct procedures. HPI attack categories and malicious/benign routing labels need further task-construction evidence to distinguish input injection from broader harmful/jailbreak requests; evaluated English input is also unresolved. Retain the existing partial-support criteria and incomplete scope.",
+        "review_id": "W0082"
+      },
+      "missing_components": [
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0082",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2509.14285v4",
+      "work_id": "arxiv:2509.14285"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "f66fe28bc54f8b18856e8f8259d7625f3a1817cc366510b59d4a70d19246215b",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0083-af43db7dd729-F01",
+          "A05-DEEP-W0083-af43db7dd729-F02",
+          "A05-DEEP-W0083-af43db7dd729-F03",
+          "A05-DEEP-W0083-af43db7dd729-F04"
+        ],
+        "rationale": "Thresholded regex/rate/JSON-risk monitoring contains input-side alert procedures and a travel demonstration. Its partial method inventory does not yet establish original binary injection-task evaluation or language construction clearly enough to resolve the remaining criteria. Separate hallucination checks may consume generated claims; do not transfer that dependency to every alert arm.",
+        "review_id": "W0083"
+      },
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0083",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2509.14956v1",
+      "work_id": "arxiv:2509.14956"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0084",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2509.18557v1",
+      "work_id": "arxiv:2509.18557"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "9c305050118442f2798cea3cdd47f6d582191eea41df6011282a3469cbe7f7ac",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0085-5d50c54d5d74-F01",
+          "A05-DEEP-W0085-5d50c54d5d74-F02",
+          "A05-DEEP-W0085-5d50c54d5d74-F03",
+          "A05-DEEP-W0085-5d50c54d5d74-F04",
+          "A05-DEEP-W0085-5d50c54d5d74-F05",
+          "A05-DEEP-W0085-5d50c54d5d74-F06"
+        ],
+        "rationale": "Complete tourism-system coverage includes intent/relevance/regex input gating and response leak/citation checks. Off-topic relevance, attack/benign tourism labels and regex-pattern rejection do not yet separately establish injected-instruction-presence evaluation. Taiwan location and named public/partner datasets do not establish evaluated English. Retain task/language uncertainties rather than exclude by location or include from gatekeeper naming.",
+        "review_id": "W0085"
+      },
+      "missing_components": [
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0085",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2509.21367v1",
+      "work_id": "arxiv:2509.21367"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "c7d94ed1931eeb63955e0f82090bfa430704b29ce3e61a03d12c0bbc9be18277",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0087-867842e2ac14-F01",
+          "A05-DEEP-W0087-867842e2ac14-F02",
+          "A05-DEEP-W0087-867842e2ac14-F03",
+          "A05-DEEP-W0087-867842e2ac14-F04"
+        ],
+        "rationale": "The checked architecture and task-specific assessments use generated typed handoffs/actions. This narrows those procedures only; the source/checker explicitly retains incomplete material-family scope. Do not infer a whole-work timing exclusion from typed handoff design, and do not use English enum values as evaluated-input language proof.",
+        "review_id": "W0087"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0087",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2509.25926v2",
+      "work_id": "arxiv:2509.25926"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "f7d6d6850c91c2386d8a1638cc1248c6fdb6ff50ad1446a83b539af9521e12f1",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0088-8eacf2327b97-F01",
+          "A05-DEEP-W0088-8eacf2327b97-F02",
+          "A05-DEEP-W0088-8eacf2327b97-F03",
+          "A05-DEEP-W0088-8eacf2327b97-F04",
+          "A05-DEEP-W0088-8eacf2327b97-F05",
+          "A05-DEEP-W0088-8eacf2327b97-F06"
+        ],
+        "rationale": "Original web-text input detector, image and ensemble families are now separately inventoried, including auxiliary detector generation that does not require protected agent answers. Existing task/binary/timing support remains, but English detector instructions and dataset names do not establish the language of the classified web segments. Keep that specific uncertainty and partial scope.",
+        "review_id": "W0088"
+      },
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0088",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2510.01354v2",
+      "work_id": "arxiv:2510.01354"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0089",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2510.01586v1",
+      "work_id": "arxiv:2510.01586"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0090",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2510.04257v1",
+      "work_id": "arxiv:2510.04257"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0091",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2510.04528v1",
+      "work_id": "arxiv:2510.04528"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0092",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2510.04885v1",
+      "work_id": "arxiv:2510.04885"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0093",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2510.08829v1",
+      "work_id": "arxiv:2510.08829"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0094",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2510.13351v1",
+      "work_id": "arxiv:2510.13351"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0096",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2510.19169v2",
+      "work_id": "arxiv:2510.19169"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0098",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2510.19844v1",
+      "work_id": "arxiv:2510.19844"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0099",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2510.22628v2",
+      "work_id": "arxiv:2510.22628"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0100",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2510.22963v4",
+      "work_id": "arxiv:2510.22963"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0101",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2511.01287v2",
+      "work_id": "arxiv:2511.01287"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0102",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2511.03247v1",
+      "work_id": "arxiv:2511.03247"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0103",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2511.04508v1",
+      "work_id": "arxiv:2511.04508"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0104",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2511.05867v3",
+      "work_id": "arxiv:2511.05867"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0105",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2511.05919v3",
+      "work_id": "arxiv:2511.05919"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0106",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2511.06212v1",
+      "work_id": "arxiv:2511.06212"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0107",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2511.12295v1",
+      "work_id": "arxiv:2511.12295"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0108",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2511.15203v1",
+      "work_id": "arxiv:2511.15203"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0109",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2511.15759v1",
+      "work_id": "arxiv:2511.15759"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer"
+      ],
+      "review_id": "W0110",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2511.21752v3",
+      "work_id": "arxiv:2511.21752"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0111",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2512.05745v1",
+      "work_id": "arxiv:2512.05745"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0112",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2512.06556v2",
+      "work_id": "arxiv:2512.06556"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0113",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2512.08417v3",
+      "work_id": "arxiv:2512.08417"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0114",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2512.10104v2",
+      "work_id": "arxiv:2512.10104"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0115",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2512.12583v1",
+      "work_id": "arxiv:2512.12583"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0116",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2512.12921v1",
+      "work_id": "arxiv:2512.12921"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0117",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2512.15081v1",
+      "work_id": "arxiv:2512.15081"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0118",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2512.16307v1",
+      "work_id": "arxiv:2512.16307"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0119",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2512.23557v1",
+      "work_id": "arxiv:2512.23557"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0120",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2601.04795v1",
+      "work_id": "arxiv:2601.04795"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation",
+        "input_injection_task"
+      ],
+      "review_id": "W0122",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2601.07835v1",
+      "work_id": "arxiv:2601.07835"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation"
+      ],
+      "review_id": "W0124",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2601.10338v1",
+      "work_id": "arxiv:2601.10338"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "bf462f87ff086929c2c8f50f6256a9863aeac112b6d6c9dc0e782d1854ed2603",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0126-b6a30a64e180-F01",
+          "A05-DEEP-W0126-b6a30a64e180-F02",
+          "A05-DEEP-W0126-b6a30a64e180-F03",
+          "A05-DEEP-W0126-b6a30a64e180-F04"
+        ],
+        "rationale": "Complete method-family inventory distinguishes tool inventory/call authorization and trace-dependent policy methods from named PI Detector benchmark comparison. Its actual detector inputs/procedure remain unspecified in the checked material; the comparator name alone cannot establish binary pre-answer injection evaluation. Retain unresolved binary/timing/language facts despite complete family coverage.",
+        "review_id": "W0126"
+      },
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0126",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2601.12449v2",
+      "work_id": "arxiv:2601.12449"
+    },
+    {
+      "deep_review": {
+        "before_row_sha256": "9c4ce970a6c0f126302818a767eed322e90e4c7bb08a64471dc4c1001b1062d9",
+        "checked_evidence_ids": [
+          "A05-DEEP-W0128-f7aa90f6da50-F01",
+          "A05-DEEP-W0128-f7aa90f6da50-F02",
+          "A05-DEEP-W0128-f7aa90f6da50-F03",
+          "A05-DEEP-W0128-f7aa90f6da50-F04"
+        ],
+        "rationale": "The newly checked classifier/retraining arm corroborates the earlier explicitly source-checked binary prompt-injection benchmark on input prompts before a target answer. Target/JailJudge response-dependent data preparation is separate from detector inference. Complete family coverage does not establish English in held-out inputs; retain the language question without regressing supported task/timing facts solely because generation appears in training.",
+        "review_id": "W0128"
+      },
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0128",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2601.19051v1",
+      "work_id": "arxiv:2601.19051"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0129",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2601.21083v3",
+      "work_id": "arxiv:2601.21083"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0130",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.00750v2",
+      "work_id": "arxiv:2602.00750"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0131",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.01795v1",
+      "work_id": "arxiv:2602.01795"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0132",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.03792v1",
+      "work_id": "arxiv:2602.03792"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0133",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.04653v4",
+      "work_id": "arxiv:2602.04653"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0134",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.05484v2",
+      "work_id": "arxiv:2602.05484"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0135",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.07918v1",
+      "work_id": "arxiv:2602.07918"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0136",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.08062v1",
+      "work_id": "arxiv:2602.08062"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0137",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.08995v2",
+      "work_id": "arxiv:2602.08995"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0138",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.09433v1",
+      "work_id": "arxiv:2602.09433"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0139",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.10481v1",
+      "work_id": "arxiv:2602.10481"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0140",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.11247v2",
+      "work_id": "arxiv:2602.11247"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0141",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.13597v2",
+      "work_id": "arxiv:2602.13597"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0142",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.14161v2",
+      "work_id": "arxiv:2602.14161"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0143",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.18514v1",
+      "work_id": "arxiv:2602.18514"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0144",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.20064v2",
+      "work_id": "arxiv:2602.20064"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0145",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.20708v1",
+      "work_id": "arxiv:2602.20708"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0146",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.22450v1",
+      "work_id": "arxiv:2602.22450"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0147",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.22724v1",
+      "work_id": "arxiv:2602.22724"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0148",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.00472v1",
+      "work_id": "arxiv:2603.00472"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0149",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.01574v1",
+      "work_id": "arxiv:2603.01574"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0150",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.06588v1",
+      "work_id": "arxiv:2603.06588"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer"
+      ],
+      "review_id": "W0151",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.07191v2",
+      "work_id": "arxiv:2603.07191"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0152",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.07708v1",
+      "work_id": "arxiv:2603.07708"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0153",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.09781v3",
+      "work_id": "arxiv:2603.09781"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0154",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.11853v1",
+      "work_id": "arxiv:2603.11853"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0155",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.11875v2",
+      "work_id": "arxiv:2603.11875"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0156",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.18433v1",
+      "work_id": "arxiv:2603.18433"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0157",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.19974v1",
+      "work_id": "arxiv:2603.19974"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0158",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.20214v1",
+      "work_id": "arxiv:2603.20214"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0159",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.20381v2",
+      "work_id": "arxiv:2603.20381"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0160",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.20976v1",
+      "work_id": "arxiv:2603.20976"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0161",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.21642v1",
+      "work_id": "arxiv:2603.21642"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0162",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.21975v1",
+      "work_id": "arxiv:2603.21975"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0163",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.22489v1",
+      "work_id": "arxiv:2603.22489"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0165",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.23791v1",
+      "work_id": "arxiv:2603.23791"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0166",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.24203v1",
+      "work_id": "arxiv:2603.24203"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0167",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.28807v1",
+      "work_id": "arxiv:2603.28807"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0168",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.01194v2",
+      "work_id": "arxiv:2604.01194"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0169",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.03598v1",
+      "work_id": "arxiv:2604.03598"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0170",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.03912v1",
+      "work_id": "arxiv:2604.03912"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0171",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.04426v1",
+      "work_id": "arxiv:2604.04426"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0172",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.05150v2",
+      "work_id": "arxiv:2604.05150"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0173",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.07223v2",
+      "work_id": "arxiv:2604.07223"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0174",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.07536v1",
+      "work_id": "arxiv:2604.07536"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0175",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.08352v1",
+      "work_id": "arxiv:2604.08352"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0176",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.09378v1",
+      "work_id": "arxiv:2604.09378"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0177",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.11806v1",
+      "work_id": "arxiv:2604.11806"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0178",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.12284v1",
+      "work_id": "arxiv:2604.12284"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0179",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.15368v1",
+      "work_id": "arxiv:2604.15368"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0180",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.16838v2",
+      "work_id": "arxiv:2604.16838"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0182",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.17562v1",
+      "work_id": "arxiv:2604.17562"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0183",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.18658v1",
+      "work_id": "arxiv:2604.18658"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0184",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.22888v1",
+      "work_id": "arxiv:2604.22888"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0185",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.23374v1",
+      "work_id": "arxiv:2604.23374"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0186",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.24020v1",
+      "work_id": "arxiv:2604.24020"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0187",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.24118v1",
+      "work_id": "arxiv:2604.24118"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0188",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.24542v1",
+      "work_id": "arxiv:2604.24542"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0189",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.25562v1",
+      "work_id": "arxiv:2604.25562"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer"
+      ],
+      "review_id": "W0190",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.26986v1",
+      "work_id": "arxiv:2604.26986"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0191",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.27202v1",
+      "work_id": "arxiv:2604.27202"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task"
+      ],
+      "review_id": "W0192",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.28129v1",
+      "work_id": "arxiv:2604.28129"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0193",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.00460v1",
+      "work_id": "arxiv:2605.00460"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0194",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.01143v2",
+      "work_id": "arxiv:2605.01143"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0195",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.01449v1",
+      "work_id": "arxiv:2605.01449"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0196",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.03378v2",
+      "work_id": "arxiv:2605.03378"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0197",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.05260v1",
+      "work_id": "arxiv:2605.05260"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0198",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.06393v1",
+      "work_id": "arxiv:2605.06393"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0201",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.08442v5",
+      "work_id": "arxiv:2605.08442"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0203",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.11217v2",
+      "work_id": "arxiv:2605.11217"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0204",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.13044v1",
+      "work_id": "arxiv:2605.13044"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0205",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.17380v1",
+      "work_id": "arxiv:2605.17380"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0206",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.17634v1",
+      "work_id": "arxiv:2605.17634"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0207",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.17830v1",
+      "work_id": "arxiv:2605.17830"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0209",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.19159v1",
+      "work_id": "arxiv:2605.19159"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0210",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.20704v1",
+      "work_id": "arxiv:2605.20704"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0211",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.23196v1",
+      "work_id": "arxiv:2605.23196"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0212",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.23201v2",
+      "work_id": "arxiv:2605.23201"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0213",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.24421v1",
+      "work_id": "arxiv:2605.24421"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0214",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.26497v1",
+      "work_id": "arxiv:2605.26497"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0215",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.26595v2",
+      "work_id": "arxiv:2605.26595"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0216",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.26999v1",
+      "work_id": "arxiv:2605.26999"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0217",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.27823v1",
+      "work_id": "arxiv:2605.27823"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0218",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.28017v2",
+      "work_id": "arxiv:2605.28017"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0219",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.28999v1",
+      "work_id": "arxiv:2605.28999"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0220",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.30189v1",
+      "work_id": "arxiv:2605.30189"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0221",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.30667v1",
+      "work_id": "arxiv:2605.30667"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0222",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.30677v1",
+      "work_id": "arxiv:2605.30677"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0223",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.30837v3",
+      "work_id": "arxiv:2605.30837"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0225",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.02240v3",
+      "work_id": "arxiv:2606.02240"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0226",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.02959v1",
+      "work_id": "arxiv:2606.02959"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0227",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.04141v1",
+      "work_id": "arxiv:2606.04141"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0228",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.04612v1",
+      "work_id": "arxiv:2606.04612"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0229",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.05566v1",
+      "work_id": "arxiv:2606.05566"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0230",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.07131v3",
+      "work_id": "arxiv:2606.07131"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0231",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.07683v1",
+      "work_id": "arxiv:2606.07683"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0232",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.07992v1",
+      "work_id": "arxiv:2606.07992"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0233",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.08403v1",
+      "work_id": "arxiv:2606.08403"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0234",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.10322v2",
+      "work_id": "arxiv:2606.10322"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0235",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.14154v1",
+      "work_id": "arxiv:2606.14154"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0236",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.14517v2",
+      "work_id": "arxiv:2606.14517"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0237",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.15609v1",
+      "work_id": "arxiv:2606.15609"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0238",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.15899v1",
+      "work_id": "arxiv:2606.15899"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0239",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.16242v1",
+      "work_id": "arxiv:2606.16242"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0240",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.17467v3",
+      "work_id": "arxiv:2606.17467"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0241",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.19235v1",
+      "work_id": "arxiv:2606.19235"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0242",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.19660v2",
+      "work_id": "arxiv:2606.19660"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0243",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.20470v4",
+      "work_id": "arxiv:2606.20470"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0244",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.20717v2",
+      "work_id": "arxiv:2606.20717"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0245",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.20746v1",
+      "work_id": "arxiv:2606.20746"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0246",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.20922v1",
+      "work_id": "arxiv:2606.20922"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0247",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.22659v1",
+      "work_id": "arxiv:2606.22659"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0248",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.22779v1",
+      "work_id": "arxiv:2606.22779"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0249",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.22864v1",
+      "work_id": "arxiv:2606.22864"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0250",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.23277v1",
+      "work_id": "arxiv:2606.23277"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0251",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.23416v1",
+      "work_id": "arxiv:2606.23416"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0252",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.25487v2",
+      "work_id": "arxiv:2606.25487"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0253",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.25836v3",
+      "work_id": "arxiv:2606.25836"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0254",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.26479v1",
+      "work_id": "arxiv:2606.26479"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0255",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2606.27567v1",
+      "work_id": "arxiv:2606.27567"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0256",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.04222v1",
+      "work_id": "arxiv:2607.04222"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0257",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.08282v1",
+      "work_id": "arxiv:2607.08282"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation"
+      ],
+      "review_id": "W0258",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.10269v1",
+      "work_id": "arxiv:2607.10269"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0259",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.10712v1",
+      "work_id": "arxiv:2607.10712"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0260",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.12624v1",
+      "work_id": "arxiv:2607.12624"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task"
+      ],
+      "review_id": "W0261",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.13081v1",
+      "work_id": "arxiv:2607.13081"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0262",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.15977v1",
+      "work_id": "arxiv:2607.15977"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0263",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.16199v1",
+      "work_id": "arxiv:2607.16199"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0264",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.18622v2",
+      "work_id": "arxiv:2607.18622"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0265",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.19396v2",
+      "work_id": "arxiv:2607.19396"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0266",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.19432v1",
+      "work_id": "arxiv:2607.19432"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "before_target_answer"
+      ],
+      "review_id": "W0267",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.22545v1",
+      "work_id": "arxiv:2607.22545"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0268",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.23532v3",
+      "work_id": "arxiv:2607.23532"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0269",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.24174v1",
+      "work_id": "arxiv:2607.24174"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0270",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.25255v2",
+      "work_id": "arxiv:2607.25255"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0271",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2607.28165v2",
+      "work_id": "arxiv:2607.28165"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0272",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.05430v1",
+      "work_id": "arxiv:2608.05430"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0273",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.06130v2",
+      "work_id": "arxiv:2608.06130"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation",
+        "selected_body_source_binding",
+        "RETRIEVED_BODY_IDENTITY_MISMATCH"
+      ],
+      "review_id": "W0274",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.07167v2",
+      "work_id": "arxiv:2608.07167"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0275",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.08027v1",
+      "work_id": "arxiv:2608.08027"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0276",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.08100v1",
+      "work_id": "arxiv:2608.08100"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0277",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.08468v1",
+      "work_id": "arxiv:2608.08468"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0278",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.10260v1",
+      "work_id": "arxiv:2608.10260"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0279",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.12172v1",
+      "work_id": "arxiv:2608.12172"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0280",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.18136v1",
+      "work_id": "arxiv:2608.18136"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0281",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.20413v1",
+      "work_id": "arxiv:2608.20413"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0282",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.22248v1",
+      "work_id": "arxiv:2608.22248"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0283",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.24022v1",
+      "work_id": "arxiv:2608.24022"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0284",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.26423v2",
+      "work_id": "arxiv:2608.26423"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0285",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.27990v1",
+      "work_id": "arxiv:2608.27990"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0286",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.30041v1",
+      "work_id": "arxiv:2608.30041"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0287",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.30083v1",
+      "work_id": "arxiv:2608.30083"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0288",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.30362v3",
+      "work_id": "arxiv:2608.30362"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0289",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.30441v2",
+      "work_id": "arxiv:2608.30441"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer"
+      ],
+      "review_id": "W0290",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.00052v1",
+      "work_id": "arxiv:2609.00052"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0291",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.01046v1",
+      "work_id": "arxiv:2609.01046"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0292",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.01931v1",
+      "work_id": "arxiv:2609.01931"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0293",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.05074v1",
+      "work_id": "arxiv:2609.05074"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0294",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.05535v1",
+      "work_id": "arxiv:2609.05535"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0295",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.06966v1",
+      "work_id": "arxiv:2609.06966"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0296",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.06972v1",
+      "work_id": "arxiv:2609.06972"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0297",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.10707v1",
+      "work_id": "arxiv:2609.10707"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0298",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.10854v2",
+      "work_id": "arxiv:2609.10854"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0299",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.10892v1",
+      "work_id": "arxiv:2609.10892"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0301",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.15994v1",
+      "work_id": "arxiv:2609.15994"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0302",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.16098v1",
+      "work_id": "arxiv:2609.16098"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0303",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.17320v1",
+      "work_id": "arxiv:2609.17320"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0304",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.19587v2",
+      "work_id": "arxiv:2609.19587"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0305",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.20188v1",
+      "work_id": "arxiv:2609.20188"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0306",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.20722v1",
+      "work_id": "arxiv:2609.20722"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0307",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.22510v1",
+      "work_id": "arxiv:2609.22510"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0308",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.22949v1",
+      "work_id": "arxiv:2609.22949"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0310",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.27263v1",
+      "work_id": "arxiv:2609.27263"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0311",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.29429v1",
+      "work_id": "arxiv:2609.29429"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0312",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.30217v1",
+      "work_id": "arxiv:2609.30217"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0313",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.30657v1",
+      "work_id": "arxiv:2609.30657"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0314",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.33401v3",
+      "work_id": "arxiv:2609.33401"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0315",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.36570v1",
+      "work_id": "arxiv:2609.36570"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0316",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.36817v1",
+      "work_id": "arxiv:2609.36817"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0317",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.37737v1",
+      "work_id": "arxiv:2609.37737"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0318",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2609.39678v2",
+      "work_id": "arxiv:2609.39678"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0319",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.00151v1",
+      "work_id": "arxiv:2610.00151"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0320",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.00430v2",
+      "work_id": "arxiv:2610.00430"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0321",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.02413v1",
+      "work_id": "arxiv:2610.02413"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0322",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.03434v1",
+      "work_id": "arxiv:2610.03434"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0323",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.03448v1",
+      "work_id": "arxiv:2610.03448"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0324",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.03470v1",
+      "work_id": "arxiv:2610.03470"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0326",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.04985v1",
+      "work_id": "arxiv:2610.04985"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0328",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.10742v1",
+      "work_id": "arxiv:2610.10742"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0329",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.12292v1",
+      "work_id": "arxiv:2610.12292"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0330",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.15177v1",
+      "work_id": "arxiv:2610.15177"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0331",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.17457v1",
+      "work_id": "arxiv:2610.17457"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0332",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.18408v1",
+      "work_id": "arxiv:2610.18408"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0333",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.18508v1",
+      "work_id": "arxiv:2610.18508"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0334",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.19452v1",
+      "work_id": "arxiv:2610.19452"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0335",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2610.20907v1",
+      "work_id": "arxiv:2610.20907"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task",
+        "selected_body_source_binding"
+      ],
+      "review_id": "W0336",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "doi:10.1007/978-3-031-80853-1_30:publisher:declared-2025-02-16",
+      "work_id": "doi:10.1007/978-3-031-80853-1_30"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task",
+        "selected_body_source_binding"
+      ],
+      "review_id": "W0337",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "doi:10.1007/s44443-026-01200-9:publisher:declared-2026-08-25",
+      "work_id": "doi:10.1007/s44443-026-01200-9"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation",
+        "preferred_version_or_date"
+      ],
+      "review_id": "W0338",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2602.19021v2",
+      "work_id": "doi:10.1080/08874417.2026.2624670"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation",
+        "preferred_version_or_date"
+      ],
+      "review_id": "W0340",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2501.18416v2",
+      "work_id": "doi:10.1109/bigdata66926.2025.11401933"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation",
+        "preferred_version_or_date"
+      ],
+      "review_id": "W0341",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2410.14827v3",
+      "work_id": "doi:10.1145/3733799.3762963"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation",
+        "preferred_version_or_date"
+      ],
+      "review_id": "W0342",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2508.02736v2",
+      "work_id": "doi:10.1145/3766882.3767169"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation",
+        "preferred_version_or_date"
+      ],
+      "review_id": "W0343",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2507.06185v2",
+      "work_id": "doi:10.1145/3779116"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation",
+        "preferred_version_or_date"
+      ],
+      "review_id": "W0344",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2603.00991v2",
+      "work_id": "doi:10.1145/3786335.3813127"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation",
+        "preferred_version_or_date"
+      ],
+      "review_id": "W0345",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2608.05495v1",
+      "work_id": "doi:10.1145/3798063.3837198"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation",
+        "preferred_version_or_date"
+      ],
+      "review_id": "W0346",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2508.20863v3",
+      "work_id": "doi:10.1145/3803804"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0347",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2025.acl-long.1468:publication",
+      "work_id": "doi:10.18653/v1/2025.acl-long.1468"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0348",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2025.acl-long.359:publication",
+      "work_id": "doi:10.18653/v1/2025.acl-long.359"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0349",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2025.acl-long.890:publication",
+      "work_id": "doi:10.18653/v1/2025.acl-long.890"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0350",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2025.emnlp-main.431:publication",
+      "work_id": "doi:10.18653/v1/2025.emnlp-main.431"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0351",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2025.emnlp-main.53:publication",
+      "work_id": "doi:10.18653/v1/2025.emnlp-main.53"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0353",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2025.findings-emnlp.528:publication",
+      "work_id": "doi:10.18653/v1/2025.findings-emnlp.528"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0354",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2025.findings-naacl.123:publication",
+      "work_id": "doi:10.18653/v1/2025.findings-naacl.123"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0355",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2025.ijcnlp-long.29:publication",
+      "work_id": "doi:10.18653/v1/2025.ijcnlp-long.29"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "before_target_answer"
+      ],
+      "review_id": "W0356",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2025.ijcnlp-long.33:publication",
+      "work_id": "doi:10.18653/v1/2025.ijcnlp-long.33"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0357",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2026.acl-industry.127:publication",
+      "work_id": "doi:10.18653/v1/2026.acl-industry.127"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation"
+      ],
+      "review_id": "W0358",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2026.acl-industry.58:publication",
+      "work_id": "doi:10.18653/v1/2026.acl-industry.58"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0359",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2026.acl-long.1515:publication",
+      "work_id": "doi:10.18653/v1/2026.acl-long.1515"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0360",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2026.acl-long.252:publication",
+      "work_id": "doi:10.18653/v1/2026.acl-long.252"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0361",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2026.acl-long.541:publication",
+      "work_id": "doi:10.18653/v1/2026.acl-long.541"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0362",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2026.acl-long.954:publication",
+      "work_id": "doi:10.18653/v1/2026.acl-long.954"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0363",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2026.eacl-long.139:publication",
+      "work_id": "doi:10.18653/v1/2026.eacl-long.139"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0364",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2026.findings-acl.1850:publication",
+      "work_id": "doi:10.18653/v1/2026.findings-acl.1850"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "before_target_answer",
+        "english_evaluation"
+      ],
+      "review_id": "W0365",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2026.findings-acl.240:publication",
+      "work_id": "doi:10.18653/v1/2026.findings-acl.240"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0366",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2026.findings-acl.738:publication",
+      "work_id": "doi:10.18653/v1/2026.findings-acl.738"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "binary_evaluation",
+        "english_evaluation",
+        "preferred_version_or_date"
+      ],
+      "review_id": "W0367",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2605.10176v1",
+      "work_id": "doi:10.5220/0014300000004052"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "english_evaluation"
+      ],
+      "review_id": "W0368",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "arxiv:2604.18248v4",
+      "work_id": "doi:10.5281/zenodo.19644135"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "input_injection_task",
+        "english_evaluation"
+      ],
+      "review_id": "W0370",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "acl:2026.lrec-1.775:publication",
+      "work_id": "doi:10.63317/5axtpujejwcx"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task",
+        "selected_body_source_binding"
+      ],
+      "review_id": "W0371",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "doi:10.63336/eureka.46:publisher:declared-2026-05-30",
+      "work_id": "doi:10.63336/eureka.46"
+    },
+    {
+      "deep_review": null,
+      "missing_components": [
+        "before_target_answer",
+        "binary_evaluation",
+        "english_evaluation",
+        "input_injection_task",
+        "selected_body_source_binding"
+      ],
+      "review_id": "W0372",
+      "scope": "Primary methods/data/bibliography only; no results/counts/assurance classes.",
+      "selected_version_id": "doi:10.63336/eureka.47:publisher:declared-2026-03-31",
+      "work_id": "doi:10.63336/eureka.47"
+    }
+  ],
+  "status": "FRAME_BLOCKED"
+}

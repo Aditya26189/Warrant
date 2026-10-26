@@ -1,0 +1,13 @@
+# Deeper B1 scientific continuation
+
+Generated from clean committed source `2d350c7af991bb99fafc3a4e1a75efd0b59a4dad`. Status: **FRAME_BLOCKED**.
+
+All 372 frozen works and 389 memberships are preserved. Pointwise supported pending complete-frame approval: 25; excluded: 34; unresolved: 313. All four domain criteria supported in a documented edition: 25.
+
+New source evidence inventories secondary arms and separates protected-answer dependence from auxiliary detection. Complete declared method scope or an explicit nonempirical design supports a scope exclusion; a partial inventory does not. Exact-edition English construction can establish an English component without asserting every item is English.
+
+W0339 retains its checked publisher edition and transport caveat. The added requirement to authenticate historical PDF bytes is removed under VERSION_RULE_APPLICATION.md; no dates or source checks are rewritten.
+
+The W0368 repository DOI is explicitly a preprint, so it receives no publisher-edition preference. Its earlier repository-declared publication date is retained separately from the selected later arXiv revision. Prior task assumptions for W0018 and W0061 were narrowed: binary jailbreak/adversarial-query labels alone do not establish injected-instruction detection.
+
+These are exposed-custodian judgments informed by preserved reviewer returns, not a fresh independent final review. Unresolved works are not exclusions. No literature prevalence, performance, assurance or publication-readiness claim follows. No draw, human assignment or B2 is authorized. Original packages and prior proposals remain unchanged.
