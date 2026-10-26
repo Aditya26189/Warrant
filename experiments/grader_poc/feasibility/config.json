@@ -5,6 +5,7 @@
   "evalplus_repository": "https://github.com/evalplus/evalplus",
   "evalplus_revision": "26d6d00bb1fd0fa37f39c99d5290da67891d1c5e",
   "dataset_url": "https://github.com/evalplus/humanevalplus_release/releases/download/v0.1.10/HumanEvalPlus.jsonl.gz",
+  "dataset_sha256": "272720b90ac375502c8ed23cd791c2a93dfb22a911641a494da74a426c09f101",
   "calibration_id": "HumanEval/0",
   "reservation_prefix": "warrant-gate1-20261026:",
   "reserved_count": 3,
@@ -12,5 +13,20 @@
   "outer_timeout_seconds": 30,
   "repetitions": 3,
   "calibration_engineering_cap_minutes": 90,
+  "domain": {
+    "tick_denominator": 4,
+    "number_tick_min": -16,
+    "number_tick_max": 16,
+    "max_length": 8,
+    "threshold_tick_min": 1,
+    "threshold_tick_max": 16
+  },
+  "corpus": {
+    "exhaustive_number_ticks": [-2, -1, 0, 1, 2],
+    "exhaustive_max_length": 4,
+    "exhaustive_threshold_ticks": [1, 2, 3, 4],
+    "random_inputs": 200,
+    "seed": 1729
+  },
   "hypothesis": "One documented calibration contract and independent alternative can run locally at low setup cost; discovery advantage is not tested."
 }
