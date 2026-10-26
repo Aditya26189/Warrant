@@ -1,0 +1,77 @@
+{
+  "baseline_commit": "9aeff364e6269bfd049c0919f176262bf8c8b6a1",
+  "created_utc": "2026-10-26T05:41:39.777043+00:00",
+  "requests": [
+    {
+      "identifiers": [
+        "arxiv:2502.05174"
+      ],
+      "questions": [
+        "Locate exact-edition evidence for language of the input units actually evaluated in the original binary injection-detector arm(s), distinguishing it from task-neutral masking instructions, evaluator questions, exposition or an illustrative example unlinked to evaluation.",
+        "Use explicit paper method/data statements or actual examples expressly used in evaluation. If an explicitly linked source dataset has an official language card, verify a paper-era revision where feasible and retain the construction/held-out/revision limitations; dataset/model names alone are insufficient. Do not assert all-English held-out composition from source-level or mixed-language evidence.",
+        "Return source-linked bounded language/construction facts and locators only, with uncertainties; no performance/FPR outcomes, sample/false-positive counts, assurance/eligibility judgments or new discovery."
+      ],
+      "requested_preferred_version": "arxiv:2502.05174v4",
+      "review_id": "W0029",
+      "sources": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0059.json",
+          "acquisition_receipt_sha256": "b164d22b90eec440e29e8332b5c723612f7917cf2e2208cc27d0b8a20a5df61b",
+          "body": {
+            "bytes": 325797,
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2502.05174v4",
+            "finished_utc": "2026-10-19T13:20:26.862802+00:00",
+            "kind": "HTML",
+            "mode": "PRIMARY_RETRIEVAL",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\fe8ff3bf4095323401ef37f4955ffcacf4ed28ff8de1451f2e28873f6444d250",
+            "sha256": "fe8ff3bf4095323401ef37f4955ffcacf4ed28ff8de1451f2e28873f6444d250",
+            "started_utc": "2026-10-19T13:20:26.253774+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2502.05174v4",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2502.05174v4",
+          "member_id": "M0059"
+        }
+      ],
+      "work_id": "arxiv:2502.05174"
+    },
+    {
+      "identifiers": [
+        "arxiv:2503.15772"
+      ],
+      "questions": [
+        "Locate exact-edition evidence for language of the input units actually evaluated in the original binary injection-detector arm(s), distinguishing it from task-neutral masking instructions, evaluator questions, exposition or an illustrative example unlinked to evaluation.",
+        "Use explicit paper method/data statements or actual examples expressly used in evaluation. If an explicitly linked source dataset has an official language card, verify a paper-era revision where feasible and retain the construction/held-out/revision limitations; dataset/model names alone are insufficient. Do not assert all-English held-out composition from source-level or mixed-language evidence.",
+        "Return source-linked bounded language/construction facts and locators only, with uncertainties; no performance/FPR outcomes, sample/false-positive counts, assurance/eligibility judgments or new discovery."
+      ],
+      "requested_preferred_version": "arxiv:2503.15772v2",
+      "review_id": "W0035",
+      "sources": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0067.json",
+          "acquisition_receipt_sha256": "ae71614381d20a366cfb0b63cb434f21b13c465c86eca0c533d1aac10a3678f3",
+          "body": {
+            "bytes": 348717,
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2503.15772v2",
+            "finished_utc": "2026-10-19T13:20:32.123437+00:00",
+            "kind": "HTML",
+            "mode": "PRIMARY_RETRIEVAL",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\cdef6959f7755b4d82ed6eb25b4a4dfd957d43aeecf557d02276829aa51a0af9",
+            "sha256": "cdef6959f7755b4d82ed6eb25b4a4dfd957d43aeecf557d02276829aa51a0af9",
+            "started_utc": "2026-10-19T13:20:31.134710+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2503.15772v2",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2503.15772v2",
+          "member_id": "M0067"
+        }
+      ],
+      "work_id": "arxiv:2503.15772"
+    }
+  ],
+  "scope": "Known-work evaluation-input language clarification only; separate from auxiliary instruction language. No discovery/sampling/outcomes."
+}
