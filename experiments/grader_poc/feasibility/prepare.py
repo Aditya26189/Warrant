@@ -4,9 +4,10 @@ import argparse
 import gzip
 import hashlib
 import json
-import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
+
+from experiments.grader_poc.run_trial import git_output
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
@@ -15,13 +16,6 @@ ROOT = HERE.parents[2]
 def digest(data: bytes) -> str:
     """Bind retained inputs without interpreting reserved grader contents."""
     return hashlib.sha256(data).hexdigest()
-
-
-def git_output(root: Path, *args: str) -> str:
-    """Read provenance with Windows long-path handling kept process-local."""
-    return subprocess.check_output(
-        ["git", "-c", "core.longpaths=true", "-C", str(root), *args], text=True
-    ).strip()
 
 
 def clean_revision(root: Path) -> str:
