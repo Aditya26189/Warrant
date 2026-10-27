@@ -1,6 +1,9 @@
 # TMLR direction assessment — 27 October 2026
 
 Planning memo, not a protocol amendment, completed paper or readiness verdict.
+The subsequent [paper prospectus](PAPER_PROSPECTUS.md) records the deeper
+prior-art stress test and independently reproduced exact diagnostic. Read it
+for the current contribution boundary and execution path.
 The user requested a publication direction and specifically asked to inspect
 newly pushed branches. A successful `git fetch origin` confirmed the latest
 remote tips available in this repository: main `c2e61a7` and
