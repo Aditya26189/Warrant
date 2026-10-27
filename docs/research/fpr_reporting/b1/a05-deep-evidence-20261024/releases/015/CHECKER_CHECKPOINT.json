@@ -1,0 +1,28 @@
+{
+  "schema": "A05_SOURCE_CHECKER_ADDITIONAL_CHECKPOINT_v1",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-27T06:43:04.530697+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_FINAL_RELEASE",
+  "request_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\ADDITIONAL_SOURCE_REQUESTS_006.json",
+  "request_sha256": "a7baf8fe40a534e41520dc5b8ade6dfd47b27791572a76433c67127c16ee3c39",
+  "unique_checked_works": 2,
+  "files": [
+    {
+      "path": "additional-006/checked/W0029.checker.0001.json",
+      "sha256": "dd44374dd5a21b3bcba295623315edf16270f0eb2148f62022ee6daba22df246"
+    },
+    {
+      "path": "additional-006/checked/W0035.checker.0001.json",
+      "sha256": "530549fc607ec6d7522d18721902a16521cfaa2ef7c1a3ac0534955a3ad084f9"
+    }
+  ],
+  "latest_receipts": {
+    "W0029": "additional-006/checked/W0029.checker.0001.json",
+    "W0035": "additional-006/checked/W0035.checker.0001.json"
+  },
+  "limitations": [
+    "Language clarification only; prior whole-work inventories are not repeated.",
+    "W0029 supports a linked English injected-tool-message construction component; W0035 detector-condition language remains unresolved.",
+    "No outcomes, counts, assurance, eligibility or final release decisions transferred."
+  ]
+}
