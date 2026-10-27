@@ -1,0 +1,238 @@
+{
+  "candidates": [
+    {
+      "end_byte": 263,
+      "id": "mutant-001",
+      "operator": "boolean_flip",
+      "original": "True",
+      "replacement": "False",
+      "sha256": "584327e27bf509631a3b5feb5124c3d21e90c38e2475b46def8927ef84f64480",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = False, True\n    for i in range(len(l) - 1):\n        if l[i] > l[i + 1]: inc = False\n        if l[i] < l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 259,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 269,
+      "id": "mutant-002",
+      "operator": "boolean_flip",
+      "original": "True",
+      "replacement": "False",
+      "sha256": "212e60a5634a406a714f591a2b2170599a32c6beb5322fd47225a686ac3dcea4",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, False\n    for i in range(len(l) - 1):\n        if l[i] > l[i + 1]: inc = False\n        if l[i] < l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 265,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 297,
+      "id": "mutant-003",
+      "operator": "arithmetic_swap",
+      "original": "-",
+      "replacement": "+",
+      "sha256": "092c40d336ee6bfe7813b2e661f561e7bcd1d5606c874a26222c1b097c7b28bb",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) + 1):\n        if l[i] > l[i + 1]: inc = False\n        if l[i] < l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 296,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 299,
+      "id": "mutant-004",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "0",
+      "sha256": "d131b92d66f582ff7f0af5d3cc4052068db932fded89136216d8b1e3b398cc20",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 0):\n        if l[i] > l[i + 1]: inc = False\n        if l[i] < l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 298,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 299,
+      "id": "mutant-005",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "2",
+      "sha256": "dafe2e2492b182094a88fd3d75e5f0a47a5547cb5a54ebe173394f4287f0a41e",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 2):\n        if l[i] > l[i + 1]: inc = False\n        if l[i] < l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 298,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 328,
+      "id": "mutant-006",
+      "operator": "constant_guard",
+      "original": "l[i] > l[i + 1]",
+      "replacement": "False",
+      "sha256": "f61e9178ee1a40445aa8ceb1e936ea1cb53a50195b91c18124b685fd10722fc2",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if False: inc = False\n        if l[i] < l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 313,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 328,
+      "id": "mutant-007",
+      "operator": "constant_guard",
+      "original": "l[i] > l[i + 1]",
+      "replacement": "True",
+      "sha256": "4206e3670bc06d98cf6fb2386c8308c2ee1cb08a1c23e295e12b60aed2c3e565",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if True: inc = False\n        if l[i] < l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 313,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 319,
+      "id": "mutant-008",
+      "operator": "comparison_negation",
+      "original": ">",
+      "replacement": "<=",
+      "sha256": "eb810f0a835bc014cf7a08d71fa3b9c65f558ebb855ebfcb78e43587533ebe04",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] <= l[i + 1]: inc = False\n        if l[i] < l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 318,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 319,
+      "id": "mutant-009",
+      "operator": "relational_boundary",
+      "original": ">",
+      "replacement": ">=",
+      "sha256": "0a6de82864a8d8bcb12560486b99641e545859ad4e1a7993362eabf1805e902f",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] >= l[i + 1]: inc = False\n        if l[i] < l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 318,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 325,
+      "id": "mutant-010",
+      "operator": "arithmetic_swap",
+      "original": "+",
+      "replacement": "-",
+      "sha256": "b7f325aaf6aea7ae0d9f1cc0636adbeb60f0b5aa9c9f78f40474bff73b3b3ac4",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] > l[i - 1]: inc = False\n        if l[i] < l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 324,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 327,
+      "id": "mutant-011",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "0",
+      "sha256": "0b3a60b154747fce0602291cf923bfad9d937f1533c9de6ea81f58738872b70a",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] > l[i + 0]: inc = False\n        if l[i] < l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 326,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 327,
+      "id": "mutant-012",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "2",
+      "sha256": "96e6dc3bd905cf422354e4bcfcdb613a464291991e738ecb2cce6deb3ccac29e",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] > l[i + 2]: inc = False\n        if l[i] < l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 326,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 341,
+      "id": "mutant-013",
+      "operator": "boolean_flip",
+      "original": "False",
+      "replacement": "True",
+      "sha256": "46bd18a49999712fe6dc4d6a4ac55fd842a46b882d811a1d9ab59e3ef6d4bdd1",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] > l[i + 1]: inc = True\n        if l[i] < l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 336,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 368,
+      "id": "mutant-014",
+      "operator": "constant_guard",
+      "original": "l[i] < l[i + 1]",
+      "replacement": "False",
+      "sha256": "450cb0a22acd2219dd2a9a833b09241cb09aeefec51b9c2587f6f482ad1c3d9c",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] > l[i + 1]: inc = False\n        if False: dec = False\n    return inc or dec\n\n",
+      "start_byte": 353,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 368,
+      "id": "mutant-015",
+      "operator": "constant_guard",
+      "original": "l[i] < l[i + 1]",
+      "replacement": "True",
+      "sha256": "1cef3ad7aa0abd9bd4c47f6598457cf418caee82e1c2a5f71b365e922de90adc",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] > l[i + 1]: inc = False\n        if True: dec = False\n    return inc or dec\n\n",
+      "start_byte": 353,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 359,
+      "id": "mutant-016",
+      "operator": "comparison_negation",
+      "original": "<",
+      "replacement": ">=",
+      "sha256": "e3c33d5291f567c9ac665392a368a30219941277c9741b98623a759948b22d1b",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] > l[i + 1]: inc = False\n        if l[i] >= l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 358,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 359,
+      "id": "mutant-017",
+      "operator": "relational_boundary",
+      "original": "<",
+      "replacement": "<=",
+      "sha256": "26cd1581474fe990c467276dc8b7fc5be899864b018404b8af1caf9c5844ea84",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] > l[i + 1]: inc = False\n        if l[i] <= l[i + 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 358,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 365,
+      "id": "mutant-018",
+      "operator": "arithmetic_swap",
+      "original": "+",
+      "replacement": "-",
+      "sha256": "f2f87a63e9f07da5c2251c76acaea1c630e054212cf0b17db91f99a59846d8a7",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] > l[i + 1]: inc = False\n        if l[i] < l[i - 1]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 364,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 367,
+      "id": "mutant-019",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "0",
+      "sha256": "affd6d5eb7ec12bc8450c90c8f00b07294203ca623ca8ad3260d637ab91c3908",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] > l[i + 1]: inc = False\n        if l[i] < l[i + 0]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 366,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 367,
+      "id": "mutant-020",
+      "operator": "numeric_offset",
+      "original": "1",
+      "replacement": "2",
+      "sha256": "03548195b401f14c093cdd4be2937e342439901f84e589e508ffee4604b2ffd9",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] > l[i + 1]: inc = False\n        if l[i] < l[i + 2]: dec = False\n    return inc or dec\n\n",
+      "start_byte": 366,
+      "syntax": "VALID"
+    },
+    {
+      "end_byte": 381,
+      "id": "mutant-021",
+      "operator": "boolean_flip",
+      "original": "False",
+      "replacement": "True",
+      "sha256": "b0e1134c3a987da1cff98d5a23bec2ddb4d3c43250931b79221f41645e368874",
+      "source": "\n\ndef monotonic(l: list):\n    \"\"\"Return True is list elements are monotonically increasing or decreasing.\n    >>> monotonic([1, 2, 4, 20])\n    True\n    >>> monotonic([1, 20, 4, 10])\n    False\n    >>> monotonic([4, 1, 0, -10])\n    True\n    \"\"\"\n\n    inc, dec = True, True\n    for i in range(len(l) - 1):\n        if l[i] > l[i + 1]: inc = False\n        if l[i] < l[i + 1]: dec = True\n    return inc or dec\n\n",
+      "start_byte": 376,
+      "syntax": "VALID"
+    }
+  ],
+  "excluded_by_cap": [],
+  "generated_count": 21,
+  "reference_sha256": "572edc41f3035909727778a8c51812f02b026de666d2a23a9030f4c67e4ee2b9"
+}

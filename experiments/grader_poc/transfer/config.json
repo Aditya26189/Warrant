@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "phase": "FROZEN_BASELINE_RESERVED_TASK_TRANSFER",
+  "task_ids": ["HumanEval/87", "HumanEval/57", "HumanEval/18"],
+  "baseline_revision": "c98f1ea5a93b4cff0123df3719faa4e3e47c7a84",
+  "seed": 1729,
+  "witness_count": 200,
+  "recorded_assistant_start_utc": "2026-10-26T20:31:26+00:00",
+  "human_active_minutes": null,
+  "domains": {
+    "HumanEval/87": {"max_rows": 6, "max_columns": 8, "minimum_integer": -3, "maximum_integer": 3},
+    "HumanEval/57": {"min_length": 2, "max_length": 8, "minimum_integer": -8, "maximum_integer": 8, "distinct_elements_required": true},
+    "HumanEval/18": {"alphabet": "ab", "max_text_length": 16, "min_substring_length": 1, "max_substring_length": 5}
+  },
+  "ambiguities": {
+    "HumanEval/57": "Oracle abstains outside distinct bounded integer lists of length at least two. Strict and weak monotonicity coincide there. Alternative uses weak monotonicity outside this scope as a pre-outcome assumption, not a specification claim; if rejected, retain infeasibility rather than tune."
+  },
+  "stop_rule": "Keep frozen operators/order/caps from baseline. Preserve failed controls, ambiguous scopes, exhausted budgets and no-finding outcomes. No task replacement or tuning against held-out results."
+}
