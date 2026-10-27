@@ -109,7 +109,8 @@ for the completed study, historical evidence packets and execution limits.
 
 The [calibration feasibility study](reports/GATE1-FEASIBILITY.md) passed its
 control checks. The [conventional baseline](reports/GATE2-BASELINE.md) found no
-new grader omission on calibration; reserved tasks remain behind their execution gate.
+new grader omission on calibration. The reserved-task transfer is now complete,
+with its negative result and limits recorded in the closing report.
 The separate [FPR reporting study](docs/research/fpr_reporting/b1/B1_CURRENT_STATUS.md)
 remains at a blocked evidence-completion stage, with no pilot draw or outcome
 extraction. Its [adaptive-bound audit issue](docs/research/fpr_reporting/issues/FPR-001-adaptive-bound.md)
