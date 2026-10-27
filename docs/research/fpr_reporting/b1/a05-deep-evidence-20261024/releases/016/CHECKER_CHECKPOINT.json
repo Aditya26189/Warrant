@@ -1,0 +1,75 @@
+{
+  "created_utc": "2026-10-27T11:57:15.557215+00:00",
+  "files": [
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\checker\\checked\\W0124.checker.0001.json",
+      "sha256": "01cfb978c5e9e33da6ea73ae5932fa568d3d7f7683a461fbd5770749611644f5"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0130.checker.0002.json",
+      "sha256": "cdb9d39c03bbd80e6369bfb7580a171375fdd411952f42967bc807a13dc3b166"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0131.checker.0002.json",
+      "sha256": "644135181c1e51a8b8268e46660c530497a20bb23dcbf821054b99da416ab6ce"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0132.checker.0002.json",
+      "sha256": "c7a6f1b0ce9dfdfa011b18d7917f4e9c3570227b08280ef656869ecbf5b43756"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0133.checker.0001.json",
+      "sha256": "90fd306ce6117376fba617bed2c6fa743c3c7d88ffb17a5eb20effac55cc5244"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0134.checker.0001.json",
+      "sha256": "fe9700edb24279407dac083052c9d2cd85680893779111ca9f433d33474d8031"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\foreign-checks\\W0159.checker.0001.json",
+      "sha256": "3e7df027a24f4c3f71c545eae57ac7b272762fdb94db24028b49883e44a41e73"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\foreign-checks\\W0160.checker.0002.json",
+      "sha256": "d0819bda45b89dd97571df53d130fdb8028be1df93e9ba1e0ec0b39136b8d0ed"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\foreign-checks\\W0161.checker.0001.json",
+      "sha256": "f041209f3b8f5408c8e2f5d9a7eeb527ece51bb776e94fb7e2a3137da8051c79"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\foreign-checks\\W0162.checker.0001.json",
+      "sha256": "146cbbfae59f6d9d80beaaac012fe3475473882da84e6f3ea42e46a8ce92f5a4"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\foreign-checks\\W0163.checker.0001.json",
+      "sha256": "7e042467819bfd23c12524564447fa0ef7335b11c7a67cd456c3c773ae14042e"
+    }
+  ],
+  "latest_receipts": {
+    "W0124": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\checker\\checked\\W0124.checker.0001.json",
+    "W0130": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0130.checker.0002.json",
+    "W0131": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0131.checker.0002.json",
+    "W0132": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0132.checker.0002.json",
+    "W0133": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0133.checker.0001.json",
+    "W0134": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0134.checker.0001.json",
+    "W0159": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\foreign-checks\\W0159.checker.0001.json",
+    "W0160": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\foreign-checks\\W0160.checker.0002.json",
+    "W0161": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\foreign-checks\\W0161.checker.0001.json",
+    "W0162": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\foreign-checks\\W0162.checker.0001.json",
+    "W0163": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\foreign-checks\\W0163.checker.0001.json"
+  },
+  "limitations": [
+    "Freezes eleven actually completed receipts only, including the corrected W0130 inventory and W0124 original-checker receipt; no completion of either reserved foreign batch is asserted.",
+    "Provider/checker actors remain distinct and attributed; this custodian manifest is not an actor batch seal, new source check or fresh independent review.",
+    "All prior manifests, receipts and judgments remain unchanged; only individually approved fields may be released. Held scope is not complete coverage.",
+    "The same three roles each reported service limit with try-again time4:56PM; no supplied timezone/date is inferred, and no retry loop or actor/model/account substitution is used.",
+    "No outcome/count/assurance extraction, discovery, paper draw, human assignment or B2."
+  ],
+  "prepared_by": "EXPOSED_CUSTODIAN_ROOT",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "schema": "A05_CUSTODIAN_FREEZE_OF_EXISTING_SOURCE_CHECKS_v1",
+  "source_git_commit": "24b0c02c64a9b5a1242432f25b1650c7966c0d20",
+  "status": "EXISTING_RECEIPTS_FROZEN_NOT_NEW_SOURCE_CHECK_OR_INDEPENDENT_REVIEW",
+  "unique_checked_works": 11
+}

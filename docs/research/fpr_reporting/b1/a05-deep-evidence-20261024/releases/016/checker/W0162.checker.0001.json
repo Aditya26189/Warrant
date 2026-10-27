@@ -1,0 +1,294 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0162",
+  "actor": "codex-a05-deep-provider-b-20261024",
+  "created_utc": "2026-10-27T06:41:59.065432+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0162.provider.0001.json",
+  "provider_packet_sha256": "2e3183159b9389f05b0a01079ca856423259b096dc63824af7fecd1078d963fd",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "neutral_request_index": 147,
+  "requested_preferred_version": "arxiv:2603.21975v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\7986f0c44211616c978f439937d947bb8f7b11c404454a6fe769bba1bfade3f5",
+    "raw_sha256": "7986f0c44211616c978f439937d947bb8f7b11c404454a6fe769bba1bfade3f5",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0208.json",
+    "acquisition_receipt_sha256": "bc07337906c3f540882b63f24b27dc0816e2860c69ad74449614ef0076cd5b37",
+    "captured_version_id": "arxiv:2603.21975v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": [],
+    "provider_locator_normalizer": "BeautifulSoup get_text(space, strip=True), internal newlines preserved.",
+    "pdf_locator_check": "Not applicable to HTML; PDF units require explicit separate check when encountered."
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        12,
+        25
+      ],
+      [
+        27,
+        46
+      ]
+    ],
+    "semantic_rationale": "Exact main data curation and all experimental classifier setup/variants independently read.",
+    "coverage_rationale": "True is supported for original response-level task/method families without whole-work claims about hypothetical deployment.",
+    "locators": [
+      {
+        "n": 12,
+        "kind": "heading",
+        "id": "S3",
+        "sha256": "dc47bb32a0edf157a922802716b1f6b608ce470f7b45ae61d34c3ccafa97ebee"
+      },
+      {
+        "n": 13,
+        "kind": "paragraph",
+        "id": "S3.p1.1",
+        "sha256": "f91f0d01086abcb62cf78bfbac401484edce616d18f4b1026774e320b3f902f3"
+      },
+      {
+        "n": 14,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "sha256": "1c0f3cff99d262715bca5b2536626f5146bd8ba6a82a09c4c4c49f4d43b817c9"
+      },
+      {
+        "n": 15,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "sha256": "57876d4a45c7865340c856490b8d2c554bf41627c5e0d49aa9462b0cee6b3ace"
+      },
+      {
+        "n": 16,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.1",
+        "sha256": "957fbe843f441f6caf7cb9875084bb3a8bb1d296c03c1cd1d5bb6ac95466b69b"
+      },
+      {
+        "n": 17,
+        "kind": "paragraph",
+        "id": "S3.SS1.p3.1",
+        "sha256": "e3d4cbb93ed16a1e3cc861b3231e2a3ab1ff6bc25207fe51cd1b173ffaa3b343"
+      },
+      {
+        "n": 18,
+        "kind": "heading",
+        "id": "S3.SS2",
+        "sha256": "6538074759acd754805076aff340d227d3afd5df8dbb2c98096ddbe256854232"
+      },
+      {
+        "n": 19,
+        "kind": "paragraph",
+        "id": "S3.SS2.p1.1",
+        "sha256": "0c9cd56c3c99ca4d8c092cdc80ee1700ca8594834134b1052a79a85e22db9769"
+      },
+      {
+        "n": 20,
+        "kind": "paragraph",
+        "id": "S3.SS2.p2.1",
+        "sha256": "976ebd3b86f64f041c8244233a2b634579fcf61c1c9d8f8efee5b05e5798ff4a"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S3.SS2.p3.1",
+        "sha256": "d7041875d7530ab8f4b9a3a88175c3cb5f098d9b9a82f3c0e24e11cceeba00a4"
+      },
+      {
+        "n": 22,
+        "kind": "paragraph",
+        "id": "S3.SS2.p4.1",
+        "sha256": "a2db598b7c5756b51496917dae51b52a7eccfe8704b614cae806c43c6fd8319f"
+      },
+      {
+        "n": 23,
+        "kind": "heading",
+        "id": "S3.SS3",
+        "sha256": "85ceb9076b0083708a5a4ab9ea8b35b650d137b6c8dfef7b78c991928a60f404"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S3.SS3.p1.1",
+        "sha256": "f1b9a005b9779fcc7e674ea1cdb8493f67430024924cc6bee6d666d4b52d3223"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S3.SS3.p2.1",
+        "sha256": "b3304c6c1a7d276b57c682d44c1b17fb3d24d192fb71de3ac3ee74d7c73fa358"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S3.SS3.p4.1",
+        "sha256": "255bd068acca1922b6de6389c80a738ca6338d60b78f33735ed2a0d8e429075d"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S3.SS3.p5.1",
+        "sha256": "43bf567ff3785a9b07444d86d99263d4e7dd76c52eb4ae943d7720293adc6047"
+      },
+      {
+        "n": 29,
+        "kind": "heading",
+        "id": "S4",
+        "sha256": "be6cc89dbbbeb370cf5bb0e98db063f0050e8364939201945e5106cfb5005a6a"
+      },
+      {
+        "n": 30,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "sha256": "abb1affe593ea3cff87eac20458152eefd1c9e2cc528820df931c471d6bf726d"
+      },
+      {
+        "n": 31,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "sha256": "b314c1cc7736148eecdeea6efda1b8c3a370067e13303db0c0a376518fd95303"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "sha256": "92ed75d6909f8799eac0db7af7532146ab39502222b6f835c72a45022d8952ef"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2.1",
+        "sha256": "de675f96043af744067c51a3cc20ebf3a8e10ef1b164b5aa1f5f9208bdad0aaf"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S4.SS1.p3.1",
+        "sha256": "d7dc061c5fb3eab8414f6bd9eea740c12be652ec07ef9ee97cc5b3bc850d4cb3"
+      },
+      {
+        "n": 35,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "sha256": "734865423535744af7f5d2ca87fa907c45db0bc28532741f3b62baf82e64373e"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "sha256": "8208ff4e164395b8a23624fa8262176905497932c1612a5eb778122a0d94541e"
+      },
+      {
+        "n": 37,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "sha256": "41e0f2e83453d5680d1f1fa17ab626a8c21331c4044609363180b039e1f191dc"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "sha256": "aa3d3a4df4eddf1f10457d5d6d46a1451400ef04b2aa43f1220f4d1984306863"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S4.SS3.p2.1",
+        "sha256": "71c9d55651e920d9f9905da4763d9742bfa9ecb0e0153183bce98e819b37c347"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S4.SS3.p3.1",
+        "sha256": "e5a86f25ca90e6552c4a92fee79202568319d7af86e3b408c7b3dd755de137de"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S4.SS3.p4.1",
+        "sha256": "03d084bbdc2cdb4c5982fff09390a61e55d67fa610ec50c3798f694022499327"
+      },
+      {
+        "n": 42,
+        "kind": "heading",
+        "id": "S4.SS4",
+        "sha256": "bafd87b33c22403c8399c85a498ed509e713cb2dec606814c382a6b3b4dc2d62"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S4.SS4.p1.1",
+        "sha256": "abca2a867d0e2f6b99b433ea9c6ac01737d4d378406b1c42a0ba0a7ea11d1dbc"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S4.SS4.p2.1",
+        "sha256": "54d7d37be54843865823e471cf17e95467b5cf2e2b1294693754b8f4af12f305"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S4.SS4.p3.1",
+        "sha256": "1960a8dfcd4e7afa6ac311935740758d013a8827a6b33bebbe04fb69061b7e5b"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S4.SS4.p4.1",
+        "sha256": "04593f8714a23ba369af08e39816b6ed849ba55c4be64cb9ccb047a598af5342"
+      }
+    ],
+    "locator_sha256": "0a62113e82dd72d2d1804841ec2cfeb71ec19853fd818e479d226d25019bc3f8"
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Original dataset curation and safety classification explicitly concern generated responses.",
+      "restriction_rationale": "Bounded source method/data or coverage only; no outcomes, experimental counts, assurance or eligibility judgments transferred."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Source16/17 lists response-generating families and independent human response annotations.",
+      "restriction_rationale": "Bounded source method/data or coverage only; no outcomes, experimental counts, assurance or eligibility judgments transferred."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Exact32?34/38/43 define base and LoRA response classification and category comparisons.",
+      "restriction_rationale": "Bounded source method/data or coverage only; no outcomes, experimental counts, assurance or eligibility judgments transferred."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual41 separately evaluates a Qwen2.5 small supervised response classifier; architecture claims are retained as source-described only.",
+      "restriction_rationale": "Bounded source method/data or coverage only; no outcomes, experimental counts, assurance or eligibility judgments transferred."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "This is a bounded evidence gap; inspected curation/setup do not establish evaluated corpus language. No dataset-name inference used.",
+      "restriction_rationale": "Bounded source method/data or coverage only; no outcomes, experimental counts, assurance or eligibility judgments transferred."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "All original curation and response-classifier families inspected. Main22 prompt-prefiltering is prospective deployment, distinct from original response trials; no appendix listed.",
+      "restriction_rationale": "Bounded source method/data or coverage only; no outcomes, experimental counts, assurance or eligibility judgments transferred."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual exact primary-source context inspected; adjacent outcomes/counts may have been visible and are withheld. Operational board previously displayed historical research-status prose. No custodian eligibility/proposal/outcome/human sheets read. Shared filesystem; no isolation/fresh-independence claim.",
+    "approval_scope": "Only explicit APPROVE field paths; source_heading_inventory and all raw context/heading prose are outside approval."
+  }
+}
