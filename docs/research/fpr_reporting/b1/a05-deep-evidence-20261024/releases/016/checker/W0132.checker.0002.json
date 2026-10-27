@@ -1,0 +1,363 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0132",
+  "actor": "codex-a05-deep-provider-a-20261024",
+  "created_utc": "2026-10-27T06:40:49.434936+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0132.provider.0002.json",
+  "provider_packet_sha256": "5f113b6deebce353fba337d07d2772c9c4b0ad65b2a6037545cc0e21fec54e2f",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2602.03792v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\707202b952e6efb137cf5df73a12e013fd654042deb4e5816f8600f07fb3a414",
+    "raw_sha256": "707202b952e6efb137cf5df73a12e013fd654042deb4e5816f8600f07fb3a414",
+    "URL": "https://arxiv.org/html/2602.03792v1",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0176.json",
+    "acquisition_receipt_sha256": "da1b5053bec86deee8177947f03a18da8eddcbf9843b8405fa75dd6b86e751ac",
+    "captured_version_id": "arxiv:2602.03792v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        13,
+        46
+      ],
+      [
+        49,
+        57
+      ]
+    ],
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "Provider-origin .0002 compared against the actual full source context already inspected. The missing adaptive action/judge family is corrected; ordinary outcome figures are unnecessary to establish those task families. No English corpus-language positive is approved.",
+    "locators": [
+      {
+        "n": 13,
+        "kind": "heading",
+        "id": "S3",
+        "sha256": "3e7995b8c0da29bb1a2067a315c584c827cb5f7d1c23d0201e2b2595fc8f9bab"
+      },
+      {
+        "n": 14,
+        "kind": "paragraph",
+        "id": "S3.p1.1",
+        "sha256": "3b0a74494e28900aa94bd07d6ecbda474402fd644e925c6ba47747f8ad114e46"
+      },
+      {
+        "n": 15,
+        "kind": "heading",
+        "id": "S4",
+        "sha256": "3ae409f11986cdc2ce39cc25dcbb3198b906ee3e47af3404493d9e401ab03ece"
+      },
+      {
+        "n": 16,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "sha256": "5c042e0735dd9cbd66c68ac312a05047158be9a879249d099a4b42c8853f8d86"
+      },
+      {
+        "n": 17,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "sha256": "9cd9860e4d3e8265df66ad9ea442443282b551eb9653289804148b5892df81ac"
+      },
+      {
+        "n": 18,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "sha256": "30fae9cb0daae2ac6c30ce46d055fd4626fa382aa445a37f5984325f13bbed8a"
+      },
+      {
+        "n": 19,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "sha256": "bb9aff240f2022818f74bfaa430fdbd9aabe46edf27836c2a8bcde90b164e52e"
+      },
+      {
+        "n": 20,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2.1",
+        "sha256": "f93f314ee861e18714f02a23712e5e99753b295740b4c2c8d0ea2484f806e7a8"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S4.SS2.p3.1",
+        "sha256": "dc8cef150feff47465cd438c370ecfcde4c72cccdbfae945848a6dbc09ea30e2"
+      },
+      {
+        "n": 22,
+        "kind": "paragraph",
+        "id": "S4.SS2.p4.1",
+        "sha256": "744f778f0891211f210bbd86c4f0a6ae54c489b01d4ab7d76e8d84fd7a3062ea"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S4.SS2.p5.1",
+        "sha256": "cc1cfe091ae4ae96c5a9a9105e7893865eefbb8048b207e179e605b6b6b03e62"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S4.SS2.p6.1",
+        "sha256": "3a735dff2020d498b806e72a678a0cd88b66fec89ebf5a530145696a51434a0f"
+      },
+      {
+        "n": 25,
+        "kind": "paragraph",
+        "id": "S4.SS2.p7.1",
+        "sha256": "a36e7292d60b760edf0db3689e99d97570b997b0c522479d730414a8fe929f44"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S4.SS2.p8.1",
+        "sha256": "c7e0a2ec579926b4c42858c58b44a927e3752642fff3e730fc9db8065f2ecdc6"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S4.SS2.p9.1",
+        "sha256": "9b19a1972b4d42007a22496e42da073fbb43825aea87a1d31b5004664f6c8c4a"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S4.SS2.p10.1",
+        "sha256": "0809122e49099506fcf652ac3a9f1b0f861b971ac630641dbe3321567b6107ca"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S4.SS2.p11.1",
+        "sha256": "8fd1e7a0a1bb6fc4de17e5963b35ec61de74086ce7536d7fb4f5f5eb8f2c24c1"
+      },
+      {
+        "n": 30,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "sha256": "c8c3b05b7c9ce0e4a4777bedf798b7a8dfedd18f3302a48764874c50e7d4ee8d"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "sha256": "9c897cdd957c3741397a0cc35504a7e690a27bc90e9941c04db1318c419315ca"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S4.SS3.p2.1",
+        "sha256": "77f178efc469d761ad785caadf4ca212cfc42039256abda865e4c1f17f2790ec"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S4.SS3.p3.1",
+        "sha256": "770810de87252593c969a44670ec525b4cce90cfdd447ecadccf49b7af1397af"
+      },
+      {
+        "n": 34,
+        "kind": "paragraph",
+        "id": "S4.SS3.p4.1",
+        "sha256": "fca277fc48221121251ae645d034c87e3c5fec92bbc4b886fea98b71a9ea1c75"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S4.SS3.p5.1",
+        "sha256": "391ebd67622e5a7dfe34f4361af6e42cfa9ba73b6537a1ee7f34a7d85ca5bf5d"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S4.SS3.p6.1",
+        "sha256": "72c7e3608778b272bc0f7c7ee74992ad4fc020f9a9a39b38f2cee38c821ad4bd"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S4.SS3.p7.1",
+        "sha256": "c0bf7e6fb3e9efc985a9b0cfe4ff3a7987d8acd4b0c0216db419f853468d9887"
+      },
+      {
+        "n": 38,
+        "kind": "paragraph",
+        "id": "S4.SS3.p8.1",
+        "sha256": "36f94ab71404c87582dfd207d51c23917ecf88c855380641fff6280a5d9efc5d"
+      },
+      {
+        "n": 39,
+        "kind": "heading",
+        "id": "S5",
+        "sha256": "38efa4d8ab1946ba7cb68f4a58fe07a5dac8bab4a00778ce10aad9d1d68149e1"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S5.p1.1",
+        "sha256": "ce4382b13ab5c0b16be7cf39a07eb6936b7cb5f7a68c9bb40c334c24c293841e"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S5.p2.1",
+        "sha256": "3f5623473dee749a7860f3e14e85f67b44aef40c053287fa2a550ee7c3759992"
+      },
+      {
+        "n": 42,
+        "kind": "paragraph",
+        "id": "S5.p3.1",
+        "sha256": "280b3bfbec807618da9d02f68c14bac9020c5a94087af254beb9f342ca295c05"
+      },
+      {
+        "n": 43,
+        "kind": "heading",
+        "id": "S6",
+        "sha256": "38178427550b6ae78ae5abcd135de2ebbfc22e2b96fb4947a4413fb488b740bd"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S6.p1.1",
+        "sha256": "36f820cdfc6aed6b7f9407d42831230eeda4eab004032d60efcd7156610e9789"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S6.p2.1",
+        "sha256": "31d39c98c21775f06adb285a7f398ca0973d16c65c6134b7aa4d926a749d1e1f"
+      },
+      {
+        "n": 46,
+        "kind": "paragraph",
+        "id": "S6.p3.1",
+        "sha256": "27f5d65a693d095f52e487e4d97cb07f2fe50affc2e417d6d6861c11b3f19fb6"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S6.p6.1",
+        "sha256": "5e698f67e78776d29da8e3656a845565368f14bfdf640afe65482f64be4ffc9d"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S6.p7.1",
+        "sha256": "cd4410012b286318c4cc503b6838be1c07217fc8b5403363122a39b140505e8a"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S6.p8.1",
+        "sha256": "eb171317eb4396df641a871ad7585615a36cea3692d1b2427f806320d8816834"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S6.p9.1",
+        "sha256": "29b780ad1cf92a97efd0b9893297ee7319e3404d4b5ef8be025f81851714c758"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S6.p10.1",
+        "sha256": "59318dd776a9c50b929d5b2b34a93719c2b5f00423c9bada1b347567f17c2ee6"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S6.p11.1",
+        "sha256": "fd65fee3db0f758dbf355ebe749fd6e343f189277afe052e1c55bf8f9eca7e58"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S6.p12.1",
+        "sha256": "b8bb1d970b81316b59a8ed17fe537057e04654089adf2fce17caf1bfbcbb5f41"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S6.p13.1",
+        "sha256": "975686853a34ea180e351704b4b9c863d19500641548ce8761506825fb7ca69a"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S6.p14.1",
+        "sha256": "79bf8111cea796080c56a5491157c34a446b07971c5950ffdba97c7da68b601e"
+      }
+    ],
+    "locator_sha256": "2a03644a5144c1cf3c04ce4d8cf268b7acf1366f24b5ae62f26ee8bc0238ee7d",
+    "nonparagraph_section_receipts": [
+      {
+        "id": "S4",
+        "element_html_sha256": "24f6773a7cb17b3d50beddea48600b74efed3532c563650ecbdae916facd2aa4",
+        "element_text_sha256": "fa5f28cd497bbb54f39c0ddc9f64cc79c813a137ba6881edd48d46c7ec35252b"
+      },
+      {
+        "id": "S5",
+        "element_html_sha256": "5853a5ecf2808270388cb1dfc1e98f15ead77a2dafbfcf34257054b08e6f7b20",
+        "element_text_sha256": "252d86852afffb8d00071c654355f1c7e54a190104453bff49425e47fe022820"
+      },
+      {
+        "id": "S6",
+        "element_html_sha256": "fbe896aa96ba28bad7db11356f3e8a3642bf09e7b45bd016d4e034e69b360a63",
+        "element_text_sha256": "142131ade6c6b923824b5b4bb068fc9d67c8b75c7d005c313ed88bd2535d98bd"
+      }
+    ],
+    "omissions": [
+      "Figure-embedded prompt pixels and ordinary outcome tables/captions withheld; exact comparator internal settings and evaluated input language remain unspecified."
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual17/20?42 supports segment extraction, pruned contextual analysis and contaminated/counterpart-clean construction.",
+      "restriction_rationale": "Bounded method/data or scope fact only; no source outcomes, counts, assurance or eligibility transferred."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual14/17/31?38/49?56 defines input contamination/localization and component variants; no protected agent answer is input.",
+      "restriction_rationale": "Bounded method/data or scope fact only; no source outcomes, counts, assurance or eligibility transferred."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual44?46 supports the listed page/segment/screenshot comparators and released backbones. Actual57 supports the separate adaptive next-action dependency qualification.",
+      "restriction_rationale": "Bounded method/data or scope fact only; no source outcomes, counts, assurance or eligibility transferred."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual57 explicitly defines AgentVigil black-box segment optimization, single-turn GPT-4o action and VPI-objective LLM judging.",
+      "restriction_rationale": "Bounded method/data or scope fact only; no source outcomes, counts, assurance or eligibility transferred."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Provider .0002 now separately inventories the original adaptive execution/judging family. Actual complete main methods/data/setup/ablation/adaptive context covers declared material families; missing prompt-image wording remains an exact-setting limitation.",
+      "restriction_rationale": "Bounded method/data or scope fact only; no source outcomes, counts, assurance or eligibility transferred."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Same existing provider-a actor, now checking only other actor B at explicit user direction. Shared filesystem; no OS isolation/fresh-independence claim. Read COORDINATION.md, earlier SHARED_CONTEXT.md and operational board; earlier board and parent coordination incidentally displayed research statuses/counts. Latest operational read after515 was parsed for status metadata without displaying message prose. Read neutral requests, other-provider source packets/helper parsing code, exact frozen bodies/receipts and one checker schema example. No custodian eligibility documents, A03 logs or human sheets accessed. Source context may interleave outcomes/counts; these are withheld and not used as method evidence."
+  }
+}

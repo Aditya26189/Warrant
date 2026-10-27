@@ -1,0 +1,28 @@
+{
+  "schema": "A05_SOURCE_CHECKER_ADDITIONAL_CHECKPOINT_v1",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-27T06:43:02.999130+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_FINAL_RELEASE",
+  "request_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\ADDITIONAL_SOURCE_REQUESTS_005.json",
+  "request_sha256": "ebc59c9e31b1f3942d2847cbf755424a1e3833032dca52e2c8eb9a531509648e",
+  "unique_checked_works": 2,
+  "files": [
+    {
+      "path": "additional-005/checked/W0031.checker.0001.json",
+      "sha256": "18c6a4c7801e3ab03c468b3cc8c429d57a7de5c715503459ef0620123993c218"
+    },
+    {
+      "path": "additional-005/checked/W0040.checker.0001.json",
+      "sha256": "804e61ee173da37a1a803c72e88fc6dca05e2ae552e23f0cbd79734804fc3696"
+    }
+  ],
+  "latest_receipts": {
+    "W0031": "additional-005/checked/W0031.checker.0001.json",
+    "W0040": "additional-005/checked/W0040.checker.0001.json"
+  },
+  "limitations": [
+    "This first checkpoint checks only provider-A W0031/W0040; the five provider-B language packets remain separate pending checks.",
+    "W0031 construction-component support does not certify all corpora or every held-out input; W0040 evaluated-subset English membership remains unresolved.",
+    "No outcomes, counts, assurance, eligibility or final release decisions transferred."
+  ]
+}

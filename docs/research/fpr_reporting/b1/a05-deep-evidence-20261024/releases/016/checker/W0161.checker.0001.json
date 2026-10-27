@@ -1,0 +1,528 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0161",
+  "actor": "codex-a05-deep-provider-b-20261024",
+  "created_utc": "2026-10-27T06:41:58.482171+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\works\\W0161.provider.0001.json",
+  "provider_packet_sha256": "d82288a1dd9b5d593b28caae0261c1ae8d7e31dbb990d4deb4431d26c9c379e1",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "neutral_request_index": 146,
+  "requested_preferred_version": "arxiv:2603.21642v1",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\c764f9046bd7c77fc0755ed6d090395c213935ef1c2033a9ab5c153170647c2f",
+    "raw_sha256": "c764f9046bd7c77fc0755ed6d090395c213935ef1c2033a9ab5c153170647c2f",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0207.json",
+    "acquisition_receipt_sha256": "94a289e645ff0e5691b732f210e4fe28d671d2924d109ebe2f2b3daf3faa5802",
+    "captured_version_id": "arxiv:2603.21642v1",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": [],
+    "provider_locator_normalizer": "BeautifulSoup get_text(space, strip=True), internal newlines preserved.",
+    "pdf_locator_check": "Not applicable to HTML; PDF units require explicit separate check when encountered."
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        28,
+        66
+      ],
+      [
+        79,
+        112
+      ]
+    ],
+    "semantic_rationale": "Exact source4 and5.2 fully inspected; tool name metadata verified separately, with observed results/classes withheld.",
+    "coverage_rationale": "True is supported for declared original method families; documentation-only sandboxing and classifier-protocol limits remain bounded.",
+    "locators": [
+      {
+        "n": 28,
+        "kind": "heading",
+        "id": "S4",
+        "sha256": "a19d6ccd7334f504f7b09c94b623d336e425e981e328ddd1c5e82adaeaff5614"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "sha256": "0f5caaa96105c2dc0edef11e24a98763164edf5f13e89a7798f1c27810a44d7d"
+      },
+      {
+        "n": 30,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "sha256": "764bb644f1eda166cc9d65b1b2424178342252ac3726d751766d863a948c739d"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "sha256": "de13787f3261213d863f3d128ca6e6e6fa89e5ee786c3389311fc69a45c91171"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S4.SS1.p2",
+        "sha256": "811a7cd75719bc5ed372c00f7ad440a0ccd32ea2c2f16de2b5c5e699ac1c86d5"
+      },
+      {
+        "n": 33,
+        "kind": "paragraph",
+        "id": "S4.SS1.p3.1",
+        "sha256": "6ecf82d63a54377c9977647c489c155236e367691492999358b12e18402de3db"
+      },
+      {
+        "n": 34,
+        "kind": "heading",
+        "id": "S4.SS1.SSS1",
+        "sha256": "4b064fe152d72241ee40f0f4f460e9ca3583421b6031db27d592be375f6a16bc"
+      },
+      {
+        "n": 35,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS1.p1.1",
+        "sha256": "bb41bac024a2801c8d624195d928abbfe711231e1d93c53e968be3bd384d7f19"
+      },
+      {
+        "n": 36,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS1.p2",
+        "sha256": "6bd8106ca5c2c019d7487fd863e95c59a7f89f28aac0ba668702ecda0d19b5ac"
+      },
+      {
+        "n": 37,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS1.p3.1",
+        "sha256": "9be852dcfe1d59e713c4dc03d17bb7071ec9dc64e0d8778c076160b0a2d9516c"
+      },
+      {
+        "n": 38,
+        "kind": "heading",
+        "id": "S4.SS1.SSS2",
+        "sha256": "ce6d65a6c23ddb5868325288e25b93e157573bbdbe4f7faa7d43b8f297706ff8"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS2.p1.1",
+        "sha256": "69e57705fcc59fc2062cf180955c9d38899f08c866690cf78d783e16c99d169b"
+      },
+      {
+        "n": 40,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS2.p2",
+        "sha256": "50b5a913d833f36b8ba02069e163d521a15d6aa8ff0d7757af18821a5411c1b3"
+      },
+      {
+        "n": 41,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS2.p3.1",
+        "sha256": "3382209b7b7a7fc25142d6480676fc220adc0e4458572e6b8c7df6057ad47b47"
+      },
+      {
+        "n": 42,
+        "kind": "heading",
+        "id": "S4.SS1.SSS3",
+        "sha256": "a38bcf15dcd01e4c2e5c094b81bea56811a8922c83ba7614e6498a2f59a04d7a"
+      },
+      {
+        "n": 43,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS3.p1.1",
+        "sha256": "0bb393fd9bcdb2b3f6da5c02f683f1467188148095c9ed29c00bf38ae29b60c7"
+      },
+      {
+        "n": 44,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS3.p2",
+        "sha256": "cd893757ff160415064246a111a7d7ae2a268953ca3df4c76a139758dad2a941"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS3.p3.1",
+        "sha256": "7da07c99723baf57c4cf46753d45db9994247f17e2ed2e296f0cc8fd8b6423e8"
+      },
+      {
+        "n": 46,
+        "kind": "heading",
+        "id": "S4.SS1.SSS4",
+        "sha256": "fe7a38cf7df9c393adfb224875a2f4fd8e754b882696ad84b5e00b8fe6e2ebbe"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS4.p1.1",
+        "sha256": "9cb8bd43026fe70a382d89e90ea052a357b71c53cfd31bec15fffddf7e1b380a"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS4.p2",
+        "sha256": "44c489a721d00c339b9758f10f8bac0909cf1ca9ca15e0002c9be0cf23d49703"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S4.SS1.SSS4.p3.1",
+        "sha256": "50112d852dc898cc54ffff35ca6947c96c13ddba9c329e064e4081ecf38dac9a"
+      },
+      {
+        "n": 50,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "sha256": "8d33a92ffd60f9d3b75e6ca7852acfbd6b6e9803e50f9261873a762f7e20a4f4"
+      },
+      {
+        "n": 51,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "sha256": "3d34739fb3eb78274ddf0b41545685e248b06527e7684b8e8464b5f8cc98b084"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S4.I1.i1.p1.1",
+        "sha256": "316e4f6061c851894afcdaa8a5f00ccb3fcdb59136f692437fd132df14ec6b25"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S4.I1.i2.p1.1",
+        "sha256": "e1c198639c36cae865aefbcfc5e90827637b909fe8af5caad2a13547cf8a4385"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S4.I1.i3.p1.1",
+        "sha256": "08aa8724f2c756a8fb12890718b80e119df8fbe87fb3f2cee48c70f6fd53e0c0"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S4.I1.i4.p1.1",
+        "sha256": "8dfba7b07c941327cf9e0e13d872a7180d855aae1dcd48b2328d976c3dcbf6df"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S4.I1.i5.p1.1",
+        "sha256": "32e7386728245a7a5788764fa68a5c309d06039f19fcb7a3660680f46422bbc6"
+      },
+      {
+        "n": 57,
+        "kind": "paragraph",
+        "id": "S4.I1.i6.p1.1",
+        "sha256": "3f08a947dd1431fa6d13ad7d0e4fca9b814a70b545c69a4f1509815127c98b98"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S4.I1.i6.I1.i1.p1.1",
+        "sha256": "623518de8c4ce1e2aae973d641ffe6859a7714b5003f329f7e145476bf85e21d"
+      },
+      {
+        "n": 59,
+        "kind": "paragraph",
+        "id": "S4.I1.i6.I1.i2.p1.1",
+        "sha256": "054395c2a1b687f03cfd6db7d86d1c76084e414430af8ad00f5c49560f4827d5"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "S4.I1.i6.I1.i3.p1.1",
+        "sha256": "37f7c9d163f4e8b76ecacdfab354e08274a827956f56c841394bcdba89b148d0"
+      },
+      {
+        "n": 61,
+        "kind": "paragraph",
+        "id": "S4.I1.i7.p1.1",
+        "sha256": "8374592cf0b6be3e443543400ff26a5ecafcab107c04f65f85953663aa13a556"
+      },
+      {
+        "n": 62,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "sha256": "0fdca25947be188b06c6b976319a4170c4934c3f34432902dc399ae0398cf97d"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "sha256": "33a3a5bda607bda649a548fee4192e09a52e81007f02814642220677678e6545"
+      },
+      {
+        "n": 64,
+        "kind": "paragraph",
+        "id": "S4.I2.i1.p1.1",
+        "sha256": "594fa17d0d61f2b8cdbcab973fabc1f0d4ea9b90852a20d804a1021a3b4b5968"
+      },
+      {
+        "n": 65,
+        "kind": "paragraph",
+        "id": "S4.I2.i2.p1.1",
+        "sha256": "a525a12078fadc7217a992c683faffbac3f26a4fef0e620b1ddf88f6ff767d0c"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "S4.I2.i3.p1.1",
+        "sha256": "73e556a1a3fe93fd85e6c6f7adf819827cdc5b95366665a5ce7b53cc0789bd61"
+      },
+      {
+        "n": 79,
+        "kind": "paragraph",
+        "id": "S5.SS2.p1.1",
+        "sha256": "19d6f7e9dc66f771ec5a1831594d07cf04dddff6a888d8d2ec95ea3a5e6b4c12"
+      },
+      {
+        "n": 80,
+        "kind": "heading",
+        "id": "S5.SS2.SSS1",
+        "sha256": "7cf7e2b1c1b37f361097f0d79a92856733834f0881b65348acef64a7a280eda0"
+      },
+      {
+        "n": 81,
+        "kind": "paragraph",
+        "id": "S5.SS2.SSS1.p1.1",
+        "sha256": "6d1138cfc71bce20cd20ef65f1c735478911740f139ea72e87e49a57d1b4d6d7"
+      },
+      {
+        "n": 82,
+        "kind": "paragraph",
+        "id": "S5.I1.i1.p1.1",
+        "sha256": "2802d731c6f0ed821a18030754993b8445d82ab3ad92a70ba73bbc8242c157d2"
+      },
+      {
+        "n": 83,
+        "kind": "paragraph",
+        "id": "S5.I1.i2.p1.1",
+        "sha256": "9e15291f72ad5a8f84b12724e288b7ca0a68d6990d0d8878609bd12088e58c23"
+      },
+      {
+        "n": 84,
+        "kind": "paragraph",
+        "id": "S5.I1.i3.p1.1",
+        "sha256": "234fc9bed3795a29e02bf2a307c7fd9840f3e2b4c1780ad48de5ec5ebb4f64db"
+      },
+      {
+        "n": 85,
+        "kind": "heading",
+        "id": "S5.SS2.SSS2",
+        "sha256": "9100b58beeb83062b940b36570c224f478a6406ad5af47a0ae6cf75bf3aa587e"
+      },
+      {
+        "n": 86,
+        "kind": "paragraph",
+        "id": "S5.SS2.SSS2.p1.1",
+        "sha256": "7084321d4a919e649800b0bce94c4d0b592f893a12b3c24a75c9581e7bf36026"
+      },
+      {
+        "n": 87,
+        "kind": "paragraph",
+        "id": "S5.I2.i1.p1.1",
+        "sha256": "136c008cee7aaf445b079f730ea36419aa46260abe35d5c00339da2bd04dcd8a"
+      },
+      {
+        "n": 88,
+        "kind": "paragraph",
+        "id": "S5.I2.i2.p1.1",
+        "sha256": "f1812afce7a893d5ea2b5c5623baa571f60af9360e49c8bd5538c1aaf35e312c"
+      },
+      {
+        "n": 89,
+        "kind": "paragraph",
+        "id": "S5.I2.i3.p1.1",
+        "sha256": "cf36d0bc980366a9e20d12ff86d9086b9ca96da8ba6e353e53acb27bbecdbee3"
+      },
+      {
+        "n": 90,
+        "kind": "heading",
+        "id": "S5.SS2.SSS3",
+        "sha256": "d0bcf1fa80fe4d5df93a2e761241587fb264cb7d251373e0ff7fff4f16a7e590"
+      },
+      {
+        "n": 91,
+        "kind": "paragraph",
+        "id": "S5.SS2.SSS3.p1.1",
+        "sha256": "4c5ea704d485589faaeb6246f3d2d75a12efadc0ef4b636af2140b88a0ed0770"
+      },
+      {
+        "n": 92,
+        "kind": "paragraph",
+        "id": "S5.I3.i1.p1.1",
+        "sha256": "eaff8b56d39fa5983b2b62558397efeaa507ac49448746bdd2cd9ee37d401247"
+      },
+      {
+        "n": 93,
+        "kind": "paragraph",
+        "id": "S5.I3.i2.p1.1",
+        "sha256": "a9ddc906e29f349e7a71e86807609b0aea6a6791e7a8295d9da8d25d5d64955d"
+      },
+      {
+        "n": 94,
+        "kind": "paragraph",
+        "id": "S5.I3.i3.p1.1",
+        "sha256": "e9ddf7eadc4fc8ab2459cf7fd36fbac79167c014162d0e7554b89aafa623377b"
+      },
+      {
+        "n": 95,
+        "kind": "paragraph",
+        "id": "S5.I3.i4.p1.1",
+        "sha256": "20b76facafe8c522389f252e45da40e09f187134cffd0501054d4f87b0779b74"
+      },
+      {
+        "n": 96,
+        "kind": "heading",
+        "id": "S5.SS2.SSS4",
+        "sha256": "a673bc8d5a2c15981e6808b4e4791465691a2328104e678812ed06791ae30f0a"
+      },
+      {
+        "n": 97,
+        "kind": "paragraph",
+        "id": "S5.SS2.SSS4.p1.1",
+        "sha256": "3dcdb956f9195a308f800c59d30e301c64b1941c6914713310193564ae0eb76b"
+      },
+      {
+        "n": 98,
+        "kind": "paragraph",
+        "id": "S5.I4.i1.p1.1",
+        "sha256": "efeff470085e87e4d72a164de78e63d51eae9a070fc7cca92495162f43b2f6b3"
+      },
+      {
+        "n": 99,
+        "kind": "paragraph",
+        "id": "S5.I4.i2.p1.1",
+        "sha256": "8673dbdf9e17bbe34a1c08e909c24dc3e473172bb8a887185f41487a362d57ad"
+      },
+      {
+        "n": 100,
+        "kind": "paragraph",
+        "id": "S5.I4.i3.p1.1",
+        "sha256": "54abf6dbaf8858121ff5916380f49997065869f358a15acd8e4e84f7720ed772"
+      },
+      {
+        "n": 101,
+        "kind": "heading",
+        "id": "S5.SS2.SSS5",
+        "sha256": "e8c53dc6650c5e86fed0966ba9ec3def63ff261326ca2377495ebe634daccf09"
+      },
+      {
+        "n": 102,
+        "kind": "paragraph",
+        "id": "S5.SS2.SSS5.p1.1",
+        "sha256": "ec56c6661ae28a0464f4ec47e449dc44d1de3fceada52216206c788364df8feb"
+      },
+      {
+        "n": 103,
+        "kind": "paragraph",
+        "id": "S5.I5.i1.p1.1",
+        "sha256": "78eb282cc8388a09625536989945f07cbb5c0050c31643921e0b48105bff082e"
+      },
+      {
+        "n": 104,
+        "kind": "paragraph",
+        "id": "S5.I5.i2.p1.1",
+        "sha256": "46dec0002d496fd9753e6a0d10de3c3f3c8af3f3489815e5e5e3a84f136cd793"
+      },
+      {
+        "n": 105,
+        "kind": "paragraph",
+        "id": "S5.I5.i3.p1.1",
+        "sha256": "fbb6ac080113784561ba38a89400bb554b1cbdd6e94cdbcdc79dfd71ee276c17"
+      },
+      {
+        "n": 106,
+        "kind": "paragraph",
+        "id": "S5.I5.i4.p1.1",
+        "sha256": "e3c41516d6cde1952486b0787b254165c19295b55f5470e13835973b9e945888"
+      },
+      {
+        "n": 107,
+        "kind": "heading",
+        "id": "S5.SS2.SSS6",
+        "sha256": "4ef1d62ff7a1364fae70a012f2cb94531aa7b593baf0217d85b431d2aa4b5709"
+      },
+      {
+        "n": 108,
+        "kind": "paragraph",
+        "id": "S5.SS2.SSS6.p1.1",
+        "sha256": "d124ccf21e6fbd5508c114f4c3a25af4abdc7a935edb4f980cd03a95ad950e95"
+      },
+      {
+        "n": 109,
+        "kind": "paragraph",
+        "id": "S5.I6.i1.p1.1",
+        "sha256": "c998eb4e87d001613fba42ab0f89a865500c69513c64d6f59f833f176669e04c"
+      },
+      {
+        "n": 110,
+        "kind": "paragraph",
+        "id": "S5.I6.i2.p1.1",
+        "sha256": "7895fdb2543a919de4ca32adb9a093bf85c68546b3afdedcbbbd32d5e1b39e2a"
+      },
+      {
+        "n": 111,
+        "kind": "paragraph",
+        "id": "S5.I6.i3.p1.1",
+        "sha256": "8c0bf07c7d14c04ccae912710fd8827292e0050dea2532c39da7b03cf32bd390"
+      },
+      {
+        "n": 112,
+        "kind": "paragraph",
+        "id": "S5.I6.i4.p1.1",
+        "sha256": "e372dc9698c1fa0e4fc2b572d2f7c66177449de02b5a23027e8c9411aace6301"
+      }
+    ],
+    "locator_sha256": "f98c31dbbd5ffaeb494c47ee67f12ef558123a611c10e482bb76994ce261889d"
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Exact original local poisoning tests and feature-assessment procedures are distinguished from the cited comparative survey.",
+      "restriction_rationale": "Bounded source method/data or coverage only; no outcomes, experimental counts, assurance or eligibility judgments transferred."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Client names verified in original Table2 first column; method registers poisoned server and observes session decisions, parameters, UI/logs.",
+      "restriction_rationale": "Bounded source method/data or coverage only; no outcomes, experimental counts, assurance or eligibility judgments transferred."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual4.1 defines file, logging-priority, phishing and remote-script scenarios; evaluated behavior requires actions/output.",
+      "restriction_rationale": "Bounded source method/data or coverage only; no outcomes, experimental counts, assurance or eligibility judgments transferred."
+    },
+    {
+      "field_path": "arm_inventory[2]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual5.2 separately defines registration, UI, pattern/model detection, warning and logging assessments; sandboxing is expressly documentation-based.",
+      "restriction_rationale": "Bounded source method/data or coverage only; no outcomes, experimental counts, assurance or eligibility judgments transferred."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual evaluated tool-description source strings and benign request are printed in English in4.1/4.2; no corpus-wide claim added.",
+      "restriction_rationale": "Bounded source method/data or coverage only; no outcomes, experimental counts, assurance or eligibility judgments transferred."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Complete original attack/setup and feature-assessment contexts inspected; no appendix listed. Proposed/expected controls are not promoted into new evaluated classifiers.",
+      "restriction_rationale": "Bounded source method/data or coverage only; no outcomes, experimental counts, assurance or eligibility judgments transferred."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual exact primary-source context inspected; adjacent outcomes/counts may have been visible and are withheld. Operational board previously displayed historical research-status prose. No custodian eligibility/proposal/outcome/human sheets read. Shared filesystem; no isolation/fresh-independence claim.",
+    "approval_scope": "Only explicit APPROVE field paths; source_heading_inventory and all raw context/heading prose are outside approval."
+  }
+}

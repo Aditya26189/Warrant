@@ -1,0 +1,650 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0133",
+  "actor": "codex-a05-deep-provider-a-20261024",
+  "created_utc": "2026-10-27T06:39:20.010658+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0133.provider.0001.json",
+  "provider_packet_sha256": "9c1c7958c8f93b4c8d4d681fb755bc0089c064b513669bd85220178b09835ba3",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2602.04653v4",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\ddd8f9a5aaa2ea34852b81a361a94343f860f97cd8dcceee6f05da4564554e40",
+    "raw_sha256": "ddd8f9a5aaa2ea34852b81a361a94343f860f97cd8dcceee6f05da4564554e40",
+    "URL": "https://arxiv.org/html/2602.04653v4",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0177.json",
+    "acquisition_receipt_sha256": "077c7a9b62eeb9fd9583c30e830248f4549ae292b3c2bd8ff79163fb9f89e451",
+    "captured_version_id": "arxiv:2602.04653v4",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        43,
+        70
+      ],
+      [
+        78,
+        79
+      ],
+      [
+        83,
+        84
+      ],
+      [
+        87,
+        93
+      ],
+      [
+        97,
+        99
+      ],
+      [
+        105,
+        109
+      ],
+      [
+        119,
+        131
+      ],
+      [
+        133,
+        134
+      ],
+      [
+        142,
+        142
+      ],
+      [
+        200,
+        209
+      ],
+      [
+        224,
+        230
+      ]
+    ],
+    "coverage_disposition": "HOLD_MATERIAL_ARM_INVENTORY",
+    "semantic_rationale": "Actual full attack specification, model and agent setups, platform-upload scanning methodology, countermeasures and defensive template method, plus all material Appendix D/E setup inspected. Local arms are supported. Whole-paper completeness held for an omitted original platform artifact-scanning family, not ordinary result tables or parameter settings. No platform scan outcome is transferred.",
+    "locators": [
+      {
+        "n": 43,
+        "kind": "heading",
+        "id": "S4",
+        "sha256": "4a96593f5b712957621cfc9ea5e9fe8b992a6863246b92e2ae96b2a481407ba7"
+      },
+      {
+        "n": 44,
+        "kind": "heading",
+        "id": "S4.SS1",
+        "sha256": "938fc087498cd5b84bafd4e1a0f393f7f3fbca864c44f1cc6553e50f5a7ade37"
+      },
+      {
+        "n": 45,
+        "kind": "paragraph",
+        "id": "S4.SS1.p1.1",
+        "sha256": "5d9fcf76c5d579c21cf00e0f992263a96d5b134091d8a7c67efbcc8754a6c938"
+      },
+      {
+        "n": 46,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "sha256": "706bd9e89a93db5e9c78b349601c39614c7f80099c855dacb2fb76f11ddf9154"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "sha256": "c3eaa9547d0d2a15a8568149377174330f8f9f09e279946458ba03b74591c40f"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S4.SS2.p2",
+        "sha256": "31cbb0abd0d8793f16c64a1a27b18a1dc3f6a9ffdd6085470ab81f6e1233cb4f"
+      },
+      {
+        "n": 49,
+        "kind": "paragraph",
+        "id": "S4.SS2.p3.1",
+        "sha256": "6f63b1e36951577e86c5c5da6ff826f896e43a5b492bf411085a51507c9c9017"
+      },
+      {
+        "n": 50,
+        "kind": "paragraph",
+        "id": "S4.SS2.p4.1",
+        "sha256": "b7373660b68edbdaeabc46daeec99ff02b8794b8c8c034edacf44fcde133ccf1"
+      },
+      {
+        "n": 51,
+        "kind": "heading",
+        "id": "S4.SS3",
+        "sha256": "6c2ed6048ecb28eae9aca44b8ac847f8141f33ff8ec79cbf4fa435b875d31650"
+      },
+      {
+        "n": 52,
+        "kind": "paragraph",
+        "id": "S4.SS3.p1.1",
+        "sha256": "8913004007df0b64c8455d80582910b0fcb3f0c4e1019bf96e7a5cdd808b0c80"
+      },
+      {
+        "n": 53,
+        "kind": "paragraph",
+        "id": "S4.SS3.p2.1",
+        "sha256": "6faa1286d09a3f2dcc274af169d45187f41f29823f0ce9458ccbe20e26dced87"
+      },
+      {
+        "n": 54,
+        "kind": "paragraph",
+        "id": "S4.SS3.p3.1",
+        "sha256": "32f77b59999ffeddf990da9925cee20a9d4e07bc4f512dba7442b48754c9d2d7"
+      },
+      {
+        "n": 55,
+        "kind": "paragraph",
+        "id": "S4.SS3.p4.1",
+        "sha256": "2773ef9495125652e890079660844cf355cf3c4f08f8a33765dd2654e24aa56e"
+      },
+      {
+        "n": 56,
+        "kind": "paragraph",
+        "id": "S4.SS3.p5.1",
+        "sha256": "170611f0dfd873d5c985cd5c4ba67b394096c588d3230f073ab9f52178bb4192"
+      },
+      {
+        "n": 57,
+        "kind": "heading",
+        "id": "S4.SS4",
+        "sha256": "11a4f7b01c6b25a4697ff60e7fd00ac8cf18686cb6600a0bcd43a0368b43d4d8"
+      },
+      {
+        "n": 58,
+        "kind": "paragraph",
+        "id": "S4.SS4.p1.1",
+        "sha256": "35b17fd70d1da41efe50ed3bea87578112e5d9e4f58ce6d6b15f0875e37b2299"
+      },
+      {
+        "n": 59,
+        "kind": "heading",
+        "id": "S4.SS5",
+        "sha256": "7fae48a13ce60936dbb04745ffcbc6242ea6aa636e00cd2a09cfde80571c0bc4"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "S4.SS5.p1.1",
+        "sha256": "c617bd780bfaa95131d018df81482087477dc39371e466113c88648d94df6527"
+      },
+      {
+        "n": 61,
+        "kind": "paragraph",
+        "id": "S4.SS5.p2.1",
+        "sha256": "0ed6864d937478c5b994de4eec474017f774b434a5770f04f63feb1f57b7371b"
+      },
+      {
+        "n": 62,
+        "kind": "heading",
+        "id": "S5",
+        "sha256": "0b7de060777f82ae4ca27c29608c836db4d607d8900862b32e96b67504380e00"
+      },
+      {
+        "n": 63,
+        "kind": "paragraph",
+        "id": "S5.p1.1",
+        "sha256": "0ce168c0be2b497238488849b78da57f72c3ef98ec3d310d906113238ab31f7e"
+      },
+      {
+        "n": 64,
+        "kind": "heading",
+        "id": "S5.SS1",
+        "sha256": "fc65afb9bd465d23713ab1c5436b5dddf30efd401142518556bde5e329706468"
+      },
+      {
+        "n": 65,
+        "kind": "heading",
+        "id": "S5.SS1.SSS0.Px1",
+        "sha256": "f24563c79ea2631877edd228e9b60af3a2948abdc845d42e1a96af3ab33da734"
+      },
+      {
+        "n": 66,
+        "kind": "paragraph",
+        "id": "S5.SS1.SSS0.Px1.p1.1",
+        "sha256": "e565488eaf1c760d84ead887a20d6951eb2280deab7080ad82358dafb384c8fe"
+      },
+      {
+        "n": 67,
+        "kind": "paragraph",
+        "id": "S5.SS1.SSS0.Px1.p2.1",
+        "sha256": "8c05274394d979039f8c9f75ccf9a40585010a2cda2395cce3f0bd7ea15816e4"
+      },
+      {
+        "n": 68,
+        "kind": "heading",
+        "id": "S5.SS2",
+        "sha256": "0bb9422328b1d05026137f376e22ea544aea44b9fc52a025ab27bc000cdc6e50"
+      },
+      {
+        "n": 69,
+        "kind": "heading",
+        "id": "S5.SS2.SSS0.Px1",
+        "sha256": "1164e7f89bfe1ebc397d0a22b8c1adf70a82f14bfa8c5a58d5c98ec60f34e0a7"
+      },
+      {
+        "n": 70,
+        "kind": "paragraph",
+        "id": "S5.SS2.SSS0.Px1.p1.1",
+        "sha256": "34684156268df8a84d7b03f1ff90daee30a8fed6783795bfb3552431e28415a9"
+      },
+      {
+        "n": 78,
+        "kind": "heading",
+        "id": "S5.SS3.SSS0.Px1",
+        "sha256": "1164e7f89bfe1ebc397d0a22b8c1adf70a82f14bfa8c5a58d5c98ec60f34e0a7"
+      },
+      {
+        "n": 79,
+        "kind": "paragraph",
+        "id": "S5.SS3.SSS0.Px1.p1.1",
+        "sha256": "4f072016e0c5ffdf43b4a8fda2800ca0f5b0a819bb080b3fe55cee14375f5c21"
+      },
+      {
+        "n": 83,
+        "kind": "paragraph",
+        "id": "S5.SS4.p1.1",
+        "sha256": "46e32bef2e8811a3ef983f69fe72309ed919bad6fcf211e68619c31bbb3191c8"
+      },
+      {
+        "n": 84,
+        "kind": "paragraph",
+        "id": "S5.SS4.p2.1",
+        "sha256": "d8ea4067edbf0531d39c1b35297c0ab9a8c636efc456efe10bc9f51d495bb135"
+      },
+      {
+        "n": 87,
+        "kind": "paragraph",
+        "id": "S6.p2.1",
+        "sha256": "8fd8320d963b368932e58a031e84fc2b2b04bbc00deac92d5f6f5e380b0ee75b"
+      },
+      {
+        "n": 88,
+        "kind": "heading",
+        "id": "S6.SS1",
+        "sha256": "69f2c04fa15746db9e130036332441b5fc04589ec8545f8f73e85df56220d092"
+      },
+      {
+        "n": 89,
+        "kind": "paragraph",
+        "id": "S6.SS1.p1.1",
+        "sha256": "c4f6fa0012a227f5e2a750a603bd14ec7d9ee1e820ee50848fc37c0a3e150c9d"
+      },
+      {
+        "n": 90,
+        "kind": "heading",
+        "id": "S6.SS1.SSS1",
+        "sha256": "67a4c217d3de548150ece3fe1982b56d623ef4b37a47000d1c6c923dd9d8d9ab"
+      },
+      {
+        "n": 91,
+        "kind": "paragraph",
+        "id": "S6.SS1.SSS1.p1.1",
+        "sha256": "b751e9ad4b46a01454ca02fe27a481d6ae26388a30485e147447ff1ffff7733f"
+      },
+      {
+        "n": 92,
+        "kind": "heading",
+        "id": "S6.SS1.SSS1.Px1",
+        "sha256": "b1e6dbc181ac270aeb8bda0282ac34e4fac03bd718258d6490244255aac47414"
+      },
+      {
+        "n": 93,
+        "kind": "paragraph",
+        "id": "S6.SS1.SSS1.Px1.p1.1",
+        "sha256": "4ca4fc1705584599f1dc833d5de2085bfa11aa3f96b36fe364a45d9c9cf98249"
+      },
+      {
+        "n": 97,
+        "kind": "paragraph",
+        "id": "S6.SS1.SSS2.p1.1",
+        "sha256": "541d4088a4e0c142e1b1904f8354ffb384a3c1a201377595d239125c81d9d552"
+      },
+      {
+        "n": 98,
+        "kind": "heading",
+        "id": "S6.SS1.SSS2.Px1",
+        "sha256": "b1e6dbc181ac270aeb8bda0282ac34e4fac03bd718258d6490244255aac47414"
+      },
+      {
+        "n": 99,
+        "kind": "paragraph",
+        "id": "S6.SS1.SSS2.Px1.p1.1",
+        "sha256": "2cd85c51f75d3bd34380d10a0c01cc357d3d301f691dd7b6d20c62cc08552063"
+      },
+      {
+        "n": 105,
+        "kind": "paragraph",
+        "id": "S6.SS2.p1.1",
+        "sha256": "769679832cca44cae6e75917fa7fd2532673823214f8d062d34724a698fb3c27"
+      },
+      {
+        "n": 106,
+        "kind": "heading",
+        "id": "S6.SS2.SSS1",
+        "sha256": "b778c02a58ae62fc9ff928ea1ad411abcf9b30c4307b47531f22f564c5f769cb"
+      },
+      {
+        "n": 107,
+        "kind": "paragraph",
+        "id": "S6.SS2.SSS1.p1.1",
+        "sha256": "7cf2974e64f5be3e05469f4a8f3c4b7c6c69378e5edf5243e2d0093fc7197218"
+      },
+      {
+        "n": 108,
+        "kind": "paragraph",
+        "id": "S6.SS2.SSS1.p2.1",
+        "sha256": "856f43862051af64f276ac523dfa17c35bbb179696629d832713c21e4c31106b"
+      },
+      {
+        "n": 109,
+        "kind": "paragraph",
+        "id": "S6.SS2.SSS1.p3.1",
+        "sha256": "caeeb221beb6c4a4277d99706ab18c69c9a8bea94077ec4ba1ed719e4535a8b7"
+      },
+      {
+        "n": 119,
+        "kind": "heading",
+        "id": "S7",
+        "sha256": "091b4ecbcb175d6e4ef325b5529a45b04754eb644ff911d0bca55b2b5e2c2ed5"
+      },
+      {
+        "n": 120,
+        "kind": "paragraph",
+        "id": "S7.p1.1",
+        "sha256": "63d536f1b730f1c196bae60394f3257bc988f8005fbd139652f0f8c7bc258da4"
+      },
+      {
+        "n": 121,
+        "kind": "paragraph",
+        "id": "S7.p2.1",
+        "sha256": "f5613efc7f5a83b97034908eae55838958b4fb50195e88daa5e6012352a905f9"
+      },
+      {
+        "n": 122,
+        "kind": "paragraph",
+        "id": "S7.p3.1",
+        "sha256": "4ca535e04823b496b0c9b9a745885d8fc6d8f1bc10089a638fb7f6452d152f15"
+      },
+      {
+        "n": 123,
+        "kind": "heading",
+        "id": "S8",
+        "sha256": "24d4684fbd97c57922d56e135b07fdd8a464a1de10b28cef7fc98cd2ffabc7c3"
+      },
+      {
+        "n": 124,
+        "kind": "paragraph",
+        "id": "S8.p1.1",
+        "sha256": "93a44aa62c8d9e50463468ce7355224a5a943937c2ba55ff9b9a79fa1b5d1590"
+      },
+      {
+        "n": 125,
+        "kind": "heading",
+        "id": "S8.SS1",
+        "sha256": "cce7a3da2b37d1deffba64bc7359ec1c35f212a640f82409aee5b98d76c765d3"
+      },
+      {
+        "n": 126,
+        "kind": "heading",
+        "id": "S8.SS1.SSS1",
+        "sha256": "88cba3849cac397da34207739ee79de60b5c45c4d191e484c1c7717384675032"
+      },
+      {
+        "n": 127,
+        "kind": "paragraph",
+        "id": "S8.SS1.SSS1.p1.1",
+        "sha256": "109502c12965b660e078d929623942b8d43f5b7af3ddf6c360fa87e5988783d2"
+      },
+      {
+        "n": 128,
+        "kind": "heading",
+        "id": "S8.SS1.SSS2",
+        "sha256": "1d846545c56ea44643bd2245f0451f129f52787a077fe84aba84caadc86e356b"
+      },
+      {
+        "n": 129,
+        "kind": "paragraph",
+        "id": "S8.SS1.SSS2.p1.1",
+        "sha256": "24b0c75b2ba6858aa10fff8d8499ebcdcd805611be9a67dcebd395ca2dc8b947"
+      },
+      {
+        "n": 130,
+        "kind": "heading",
+        "id": "S8.SS1.SSS3",
+        "sha256": "47072ca8b85b2019baf1c23a9f390ed1356b27a6c545e21aa05c2db881397696"
+      },
+      {
+        "n": 131,
+        "kind": "paragraph",
+        "id": "S8.SS1.SSS3.p1.1",
+        "sha256": "52832e9023b2db966ea29898ab433dd8d7489ac6539cb11da27a62cb11fb4c59"
+      },
+      {
+        "n": 133,
+        "kind": "paragraph",
+        "id": "S9.p1.1",
+        "sha256": "7349e7f563c90d8969c60953753ba75616c6b7cd4728d907ca264f2900919dd0"
+      },
+      {
+        "n": 134,
+        "kind": "paragraph",
+        "id": "S9.p2.1",
+        "sha256": "5b449461530353f1c7448b5279a9a01535c5c4914704032f5f35791631b98dea"
+      },
+      {
+        "n": 142,
+        "kind": "paragraph",
+        "id": "S11.p1.1",
+        "sha256": "3afef998be94906135f362ae451d0c6995cff34b838a0567630005ce554c9a77"
+      },
+      {
+        "n": 200,
+        "kind": "paragraph",
+        "id": "A4.p1.1",
+        "sha256": "a8fc32f174a73da3e569046ddb185872a2f25281ffaa0de73e2e4700c184d200"
+      },
+      {
+        "n": 201,
+        "kind": "paragraph",
+        "id": "A4.I1.i1.p1.1",
+        "sha256": "b705ae45d6b72b86603423f27e8a4128075557b7eaf362c4a634da8d2e433fbe"
+      },
+      {
+        "n": 202,
+        "kind": "paragraph",
+        "id": "A4.I1.i2.p1.1",
+        "sha256": "165d36ae797dc892d26c9dd38eed25c4f89b42a7b87126b7922ee985e8b80ec0"
+      },
+      {
+        "n": 203,
+        "kind": "paragraph",
+        "id": "A4.I1.i3.p1.1",
+        "sha256": "e1db0c174a36d2a2e536eff529206815817bf0fd5dfd696b0b7119b7c94de8c7"
+      },
+      {
+        "n": 204,
+        "kind": "paragraph",
+        "id": "A4.p3.1",
+        "sha256": "39a7b9b777f86030fe72bc1ba8915a3e33ef2d2925af00db809f9cd9f2474d42"
+      },
+      {
+        "n": 205,
+        "kind": "heading",
+        "id": "A4.SS1",
+        "sha256": "31ed12113c0b02884348be11a057f22c3c21fdabcbc1aca82baf1f1e9e945728"
+      },
+      {
+        "n": 206,
+        "kind": "paragraph",
+        "id": "A4.SS1.p1.1",
+        "sha256": "b5b1a0224abc1ab96fbb66cb282cb5f751997e6e9e7d60c385b9bece0f5b26fe"
+      },
+      {
+        "n": 207,
+        "kind": "heading",
+        "id": "A5",
+        "sha256": "6b3c4c8e43a307df5c5c1580157a1db7c6acfc2cc6c88bd490489495bac4de4b"
+      },
+      {
+        "n": 208,
+        "kind": "heading",
+        "id": "A5.SS1",
+        "sha256": "a4a1632b3d197e3e305c8b415d97e83e2cae2d0d340d7cd718bd8d9e2fdbc082"
+      },
+      {
+        "n": 209,
+        "kind": "paragraph",
+        "id": "A5.SS1.p1.1",
+        "sha256": "c82d20588fd9ee9852e400ed092c47fae5804f9eddda02fb6ed1494d6f8399fa"
+      },
+      {
+        "n": 224,
+        "kind": "paragraph",
+        "id": "A5.SS8.p1.1",
+        "sha256": "6a5600a38c864e089f45b536ee1d791c160696e12abfe19fee0b1ff07a7d59ce"
+      },
+      {
+        "n": 225,
+        "kind": "heading",
+        "id": "A5.SS8.SSS0.Px1",
+        "sha256": "a4206a320dd171e481d6881c4e243f28ed10a80725f4d166121880318446decb"
+      },
+      {
+        "n": 226,
+        "kind": "paragraph",
+        "id": "A5.SS8.SSS0.Px1.p1.1",
+        "sha256": "ce394a60fb1008fec356fb5771636ed8ce4a7e59aea059abacaa4696fbc60c7a"
+      },
+      {
+        "n": 227,
+        "kind": "heading",
+        "id": "A5.SS9",
+        "sha256": "c6848d7773284f8afc4291c9f5403c035194367c252150dc765aa9a9f00a7bdd"
+      },
+      {
+        "n": 228,
+        "kind": "paragraph",
+        "id": "A5.SS9.p1.1",
+        "sha256": "1bba48ed49243e836c7d111667fd7deda7c0bba51b61a553316806aeb571409a"
+      },
+      {
+        "n": 229,
+        "kind": "heading",
+        "id": "A5.SS10",
+        "sha256": "9c5ee207a07a9b715c9c8fc8456b16b2e68d7e3df757cdb7a6a4c77160ba589a"
+      },
+      {
+        "n": 230,
+        "kind": "paragraph",
+        "id": "A5.SS10.p1.1",
+        "sha256": "9d32a0f763dd5356e1cc1b0b54214e23eb62673cc2104ae86ed694b9beaf9b5b"
+      }
+    ],
+    "locator_sha256": "d9bbb5ad81b5bd5600888287bec0377f835c50a27e95c8b6f92fcfade60e8b8b",
+    "nonparagraph_section_receipts": [
+      {
+        "id": "S4",
+        "element_html_sha256": "073bf2ec6c795a7eb00343ef0dcb5125877989bf6865beb187639cb878f4272c",
+        "element_text_sha256": "7f3c8cb587f46bad66b350d14db6e1d5d7ea8967e13f00a91ae65fd0148dcf10"
+      },
+      {
+        "id": "S5.SS1",
+        "element_html_sha256": "9dfd8a8cd1ff4e7cd21f418ab7beec42fb6ce1d9070e1bf87233718ac362c4bb",
+        "element_text_sha256": "b988f8bea6090aa1d21572ed2afe2d7285b347c05c51d144644b6dab935e5dc8"
+      },
+      {
+        "id": "S6.SS2",
+        "element_html_sha256": "15420dd2dc29e8992ae493786e0816958190889742acfb3496929e93ea658095",
+        "element_text_sha256": "b13d81b66942f2ff24eab06eae9cf40455e7ef2be2f544d44ebe1cbef3ca8d46"
+      },
+      {
+        "id": "S7",
+        "element_html_sha256": "69443a8cf17477d19e8bd564a9ac7a54591974e7696d07e1bed24a7c50bbee7d",
+        "element_text_sha256": "5baf7e3c2402f42358bf11737a93d66456c50f09ca68b9e8f254ad213b0f1673"
+      },
+      {
+        "id": "S8",
+        "element_html_sha256": "2379480269135bda6bdd4a3c3966b4b6f92430c4cf1f6945f329a9c473ce152f",
+        "element_text_sha256": "bad854eab79471b1f821d5c9ad89d4a5a371450e1d1162b90524cfc1feda928d"
+      },
+      {
+        "id": "S9",
+        "element_html_sha256": "ff1c8ca5c6d85d10844649c5f61f0e62c0a457b71b9b2ab2720ed533659c6999",
+        "element_text_sha256": "4782b8731eeaea52e943dea008a5d2fa6cf42ec29bd52086c0dec6b5a20bef50"
+      },
+      {
+        "id": "A4",
+        "element_html_sha256": "0949dcb85981e22cd345bc974c921e8d00aa1275ccd4b4b6d20f5d0bb766cb7c",
+        "element_text_sha256": "28170e7eb32e8a0790be37df84a1475dfbed62209087e729ac0c677c9eb2e838"
+      },
+      {
+        "id": "A5.SS1",
+        "element_html_sha256": "8beb57a5926ce3423c4c012b823ee8f383b2874ea8bbea751c6c00164b7a055e",
+        "element_text_sha256": "5c81242934b5fe24fa3dea84f547cf1bb1d13beaf4fc0275a68b8b3733b3440e"
+      },
+      {
+        "id": "A5.SS8",
+        "element_html_sha256": "0c38f9877e89ab55f7e477b484530085450c0fdd552fe5c5c9ee15a9e8cb8e4f",
+        "element_text_sha256": "50dcb4f9eede25e7435eab49cc3f773dad0b3ef886a6dc61f4c57fb4119ddf72"
+      },
+      {
+        "id": "A5.SS9",
+        "element_html_sha256": "33afa937c4073033cf92836bc75dd932e337a2343750f32732d7e4844fc8148d",
+        "element_text_sha256": "6b934650d8a23b25dc64bb2f4ba959453cfcb51b1ea681bb3af0589808881af2"
+      }
+    ],
+    "omissions": [
+      "Ordinary outcome tables/captions, demonstrations and scanner outcome screenshot withheld. Artifact-level scan procedure is a checker-origin pointer until provider supplies its method inventory. No evaluated-language composition claim approved."
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual45?60/67/70/79/93/99/107?109/134 describes trigger-conditioned template replacement, model/agent factorial evaluation and distinct defensive prompt/template study.",
+      "restriction_rationale": "Bounded method/data or scope fact only; no source outcomes, counts, assurance or eligibility transferred."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual67/70/79/84/93/99/107?109 supports clean/backdoored and trigger controls, output/URL variants, engine and agent benchmarks. These evaluations consume generated answers or actions.",
+      "restriction_rationale": "Bounded method/data or scope fact only; no source outcomes, counts, assurance or eligibility transferred."
+    },
+    {
+      "field_path": "arm_inventory[1]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual129/131/134/224?228 distinguishes implemented reference-template hash/diff comparison, proposed structural heuristics and original protective prompt/template configurations. Comparison itself is artifact-only; protective behavior requires generation.",
+      "restriction_rationale": "Bounded method/data or scope fact only; no source outcomes, counts, assurance or eligibility transferred."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "HOLD",
+      "semantic_fidelity": "Actual120?121 describes original poisoned-GGUF upload trials through existing platform security scanners (malware/deserialization/model-format/binary-vulnerability checks). This separate artifact-scanning evaluation is not inventoried; provider-origin addition needed.",
+      "restriction_rationale": "Bounded method/data or scope fact only; no source outcomes, counts, assurance or eligibility transferred."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Same existing provider-a actor, now checking only other actor B at explicit user direction. Shared filesystem; no OS isolation/fresh-independence claim. Read COORDINATION.md, earlier SHARED_CONTEXT.md and operational board; earlier board and parent coordination incidentally displayed research statuses/counts. Latest operational read after515 was parsed for status metadata without displaying message prose. Read neutral requests, other-provider source packets/helper parsing code, exact frozen bodies/receipts and one checker schema example. No custodian eligibility documents, A03 logs or human sheets accessed. Source context may interleave outcomes/counts; these are withheld and not used as method evidence."
+  }
+}

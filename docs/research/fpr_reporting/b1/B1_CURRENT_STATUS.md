@@ -2,78 +2,61 @@
 
 27 October 2026: **FRAME_BLOCKED / no draw / B2 not authorized**.
 
-The user adopted A05, allowing disclosed, reviewer-informed custodian scientific
-adjudication. The previous requirement for an independently authored final frame
-is prospectively superseded. B's original recorded independent intake remains
-accepted; another freshness/transfer setup is not required.
+The user adopted A05, allowing disclosed, reviewer-informed exposed-custodian
+scientific adjudication. This is not a fresh independent final review. The
+accepted original independent intake remains preserved; no additional freshness
+or transfer setup is required.
 
-The [27 October continuation summary](a05-deep-evidence-20261024/CONTINUATION_REPORT_20261027.md) records the latest corrections and actual dependencies.
+The current proposal is [checkpoint 014](a05-deep-evidence-20261024/checkpoints/014/REPORT.md),
+with its [full inventory](a05-deep-evidence-20261024/checkpoints/014/FRAME_PROPOSAL.json),
+[remaining questions](a05-deep-evidence-20261024/checkpoints/014/REMAINING_QUESTIONS.json)
+and [validation](a05-deep-evidence-20261024/checkpoints/014/VALIDATION.json).
+It supports 27 works pointwise pending complete-frame approval, excludes 39 and
+retains 306 UNCLEAR. All 372 works and 389 source memberships are preserved. This is
+not a complete approved sampling frame.
 
-The current deliverable is the deeper continuation's
-[generated report](a05-deep-evidence-20261024/checkpoints/012/REPORT.md),
-[full proposal](a05-deep-evidence-20261024/checkpoints/012/FRAME_PROPOSAL.json)
-and [remaining source questions](a05-deep-evidence-20261024/checkpoints/012/REMAINING_QUESTIONS.json).
-It is an evidence-based proposal with unresolved requirements, not a valid
-complete sampling frame. Its checks are in
-[VALIDATION.json](a05-deep-evidence-20261024/checkpoints/012/VALIDATION.json).
+The [27 October continuation addendum](a05-deep-evidence-20261024/CONTINUATION_ADDENDUM_20261027.md)
+records the exact judgments, commits, checks, hashes and dependencies. The earlier
+same-day report and all preceding artifacts remain historical and unchanged.
 
-The continuation adds separately checked main/appendix method inventories and
-exact-edition language evidence. It also corrects the treatment of publisher
-edition dates versus HTTP transport timestamps, repository DOIs versus publisher
-editions, and task inferences from generic adversarial/jailbreak labels. See the
-[prospective version-rule application](a05-deep-evidence-20261024/VERSION_RULE_APPLICATION.md)
-and the attributed before-hash judgment records in that folder. Unchecked source
-drafts are not scientific decisions or released evidence.
+Checked method evidence now covers 95 works / 645 unique fields, up from 83 works / 560
+fields. Two are access-only records, not verified bodies. The original checker
+sealed 84 main works; eleven other works have actual checks of another provider's
+packets. Actual role attribution and exposure limits are preserved; self-checks
+are prohibited. Custodian manifests freeze completed receipts without inventing
+completion of larger batches or independent review.
 
-All earlier status documents, original review ZIPs, locks and research artifacts
-remain historical records. No papers have been selected under A05. Complete the
-remaining controlled evidence adjudication and obtain explicit frame approval
-before the prespecified draw. No new permission is needed for the already
-authorized A05 evidence work; selection and B2 are separate gates.
+Judgments 013/014 add five complete-scope task exclusions and two pointwise
+supports relative to published 012. W0029 now has actual English injected-tool
+construction linked to its qualifying input-detector comparison; W0131 has
+linked English attack construction. W0031 still needs an experiment-level
+language mapping. W0040 retains its earlier limited checked appendix-input
+binding; the new corpus gap does not assert test-wide language composition.
+W0130 now has a complete corrected method-family inventory but unresolved
+English. Other uncertainty is retained rather than converted into exclusion.
 
-Checkpoint 012 supports 25 works pointwise, excludes 34 and retains 313 UNCLEAR.
-All 372 works and 389 memberships remain. The separately checked paper/thesis
-relationship preserves both whole documents and records shared underlying study,
-without transferring their method evidence or claiming independent replication.
+The continuation's exact-edition version and English-evidence application rules
+remain unchanged. The narrow page-inspection import repair admits only a checked
+boolean and cannot supply a whole-work language failure. Five new receipts omit
+an optional coverage enum; scientific scope relies on their explicit per-field
+approvals, not the exporter's convenience fallback. See the addendum for limits.
 
-The latest language self-review returns W0029/W0035 to UNCLEAR: English detector
-instructions alone do not establish English in the text being classified. Earlier
-positive bindings remain preserved as superseded. The thesis English construction
-is independently supported within its own selected edition.
+[Audit008](a05-deep-evidence-20261024/CHECKPOINT_AUDIT_008.json) replays all four
+checkpoint 014 payloads exactly and verifies 345 original frozen files unchanged.
+The research-only scope and integrated-artifact preservation checks pass.
+There were 66 scoped research test passes, plus Ruff and CRLF-aware whitespace
+checks. Production certification behavior and historical certificates are
+unchanged; [FPR-001](../issues/FPR-001-adaptive-bound.md) remains open.
 
-Four known publisher editions now have checked bibliographic headers/history and
-are preferred under the original hierarchy. Earlier arXiv scientific support is
-preserved, but the current criteria are reset until those exact publisher methods
-are checked. See PUBLISHER_EDITION_APPLICATION.md and the before-hash judgments.
+All three existing source actors resumed ordinarily, completed real progress,
+then reported a service limit naming 4:56 PM with no date/timezone supplied.
+No reset deadline is inferred. No model, account or actor was substituted and
+no retry loop was used. Completed publisher 007 drafts remain unchecked;
+additional 005/008/009 and remaining original/foreign work are pending actual
+source checks. Work is already authorized and needs no new methodological
+approval merely to resume when the existing roles are available.
 
-Source work has resumed after reported capacity resets. The latest frozen main source
-receipts cover 83 works (81 with verified bodies and two access-only records).
-The last 11 actual checker receipts were complete before a service limit, but
-the intended 84-work batch was not sealed. A custodian manifest preserves those
-existing checks without claiming a new check or the unfinished 84th work. Existing source actors
-may check another actor's packets with actual source/context inspection and honest
-role attribution; self-checks are prohibited. This is source checking, not a fresh
-independent final eligibility review. The active source questions include original
-task-label semantics, evaluated-input English linkage, remaining whole-work scopes
-and selected publisher-edition methods. No draw or B2 has begun.
-
-27 October bounded language-binding self-review also returns W0008/W0041/W0044/
-W0058 to UNCLEAR for evaluated-input English. Their supporting passages establish
-auxiliary detector instruction language, not the classified text language. Task,
-binary and timing support remains; these are not new exclusions. Judgment012
-preserves the old bindings as superseded; neutral additional008 requests the
-missing primary linkage without results. This applies the existing rule and is
-not a new English-only requirement or fresh independent review.
-
-All three existing source actors were resumed ordinarily. A briefly confirmed
-availability, then also reported the same service limit as B and the original
-checker. The error names 2:36 AM without a date/timezone; no reset date is inferred.
-No new completed separate check or foreign-check receipt was produced. Previously
-completed drafts remain quarantined until actual separate checking. No identity,
-model or account was rotated and no retry loop was used.
-
-The research branch now contains the approved main integration. The audit pins
-new-change scope to that exact approved commit, while preserving the original
-frozen scientific-history baseline. Complete-frame approval and later sampling/
-B2 authorization remain separate gates. No new methodological approval is needed
-to resume already authorized evidence work when the existing roles are available.
+No paper draw, six-paper assignment, human outcome-sheet access or B2 extraction
+has occurred. Complete-frame approval is required before the prespecified draw;
+sampling and B2 remain separate gates. Publishing completed research or isolated
+grader-experiment records does not remove these scientific restrictions.

@@ -1,0 +1,308 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "additional_release_sha256": [
+    "7de9914b2e567882401f7678f1901021ea3b2d6c92bd6fe9eaf24d10ced775fe",
+    "9ea419fff4b63e07daf5b5471bc544812fb3258635512259ca611a5325da5a7e"
+  ],
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "changes": [
+    {
+      "before_row_sha256": "fa7796e68dbc3010555e046b5f82d79eb34c944037ade5eb442175b88e8819af",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0029-dd44374dd5a2-F01",
+        "A05-DEEP-W0029-dd44374dd5a2-F02",
+        "A05-DEEP-W0029-dd44374dd5a2-F03",
+        "A05-DEEP-W0029-dd44374dd5a2-F04",
+        "A05-DEEP-W0029-dd44374dd5a2-F05"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0029-55f2edb610e9-F03"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0029-55f2edb610e9-F03"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0029-dd44374dd5a2-F01",
+          "A05-DEEP-W0029-dd44374dd5a2-F02"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0029-55f2edb610e9-F03"
+        ]
+      },
+      "review_id": "W0029",
+      "scientific_rationale": "The newly checked main attack construction and linked Appendix C.1 establish English directives in injected tool messages inspected by the original ProtectAI/GPT-4o input-detector comparisons. This supplies the missing classified-input English linkage, independently of MELON masking or detector-question language. Bind task, binary decision and pre-target-answer timing to the separately evaluated retrieved-text comparators, not MELON itself, which requires generated tool calls. The English component does not establish every base context or the separate VWA-Adv setting as English. Preserve the superseded instruction-only binding; this new positive binding uses actual injected input construction and no outcomes.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2502.05174"
+    },
+    {
+      "before_row_sha256": "888994a5debba5698d5b4ac04ac7ba9e6db565b3a36fd1d494b597b7abe2de58",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0130-cdb9d39c03bb-F01",
+        "A05-DEEP-W0130-cdb9d39c03bb-F02",
+        "A05-DEEP-W0130-cdb9d39c03bb-F03",
+        "A05-DEEP-W0130-cdb9d39c03bb-F04",
+        "A05-DEEP-W0130-cdb9d39c03bb-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0130",
+      "scientific_rationale": "The corrected provider-origin inventory and separate source check now include the paired generated-response analysis omitted before. The original input-forward probe and evasion/retraining families still establish injection task, binary classification and pre-target-answer timing. The later response analysis is a distinct answer-dependent family and is not used for timing. Completeness is now explicitly checked, replacing the prior held inventory state without rewriting it; evaluated-input English remains unresolved, so no positive frame decision follows.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2602.00750"
+    },
+    {
+      "before_row_sha256": "f76e3bba961eb5fe63e392d5c20620e49eb40d1957988c83acd5722b5bdc74b7",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "MET",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0131-644135181c1e-F01",
+        "A05-DEEP-W0131-644135181c1e-F02",
+        "A05-DEEP-W0131-644135181c1e-F03",
+        "A05-DEEP-W0131-644135181c1e-F04",
+        "A05-DEEP-W0131-644135181c1e-F05"
+      ],
+      "positive_criterion_evidence_ids": {
+        "before_target_answer": [
+          "A05-DEEP-W0131-644135181c1e-F02",
+          "A05-DEEP-W0131-644135181c1e-F04"
+        ],
+        "binary_evaluation": [
+          "A05-DEEP-W0131-644135181c1e-F02",
+          "A05-DEEP-W0131-644135181c1e-F04"
+        ],
+        "english_evaluation": [
+          "A05-DEEP-W0131-644135181c1e-F01",
+          "A05-DEEP-W0131-644135181c1e-F02"
+        ],
+        "input_injection_task": [
+          "A05-DEEP-W0131-644135181c1e-F02",
+          "A05-DEEP-W0131-644135181c1e-F04"
+        ]
+      },
+      "review_id": "W0131",
+      "scientific_rationale": "The selected edition separately evaluates input-side PromptLocate/DataSentinel binary localization calls and detector-oriented inspection/sidecar decisions before protected task generation. The checked Alpaca-Farm/NQ construction uses an English print-exactly injected command with a UUID slot; this links an English injected-input component to those detection trials, rather than merely an English detector instruction. RedVisor inspection-generated reasoning and the main guided-generation answer are distinguished: the qualifying input-detector comparison does not require the protected answer. English corpus-wide composition and every filled context remain unpinned and are not asserted. Task-generation baselines are separate arms.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2602.01795"
+    },
+    {
+      "before_row_sha256": "49c8cd9f4582a6d696fe3091ff9fa6a04ddecde25df3e6699d1d1ed8ba83a7d7",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0134-fe9700edb242-F01",
+        "A05-DEEP-W0134-fe9700edb242-F02",
+        "A05-DEEP-W0134-fe9700edb242-F03",
+        "A05-DEEP-W0134-fe9700edb242-F04"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0134",
+      "scientific_rationale": "Complete checked main/appendix evaluated families harden phishing classification and page component predictions. The binary target is phishing or credential-requiring content; brand extraction and detector-output schema validity are additional targets. Injected HTML/URL/visual instructions attack those tasks, but the evaluated labels do not separately classify injection presence in untrusted input. Exclude on affirmative complete evaluated-task scope, not source-language uncertainty or missing outcomes. A detector-generated phishing decision is not silently treated as an injection detector.",
+      "whole_work_exclusion_ground": "COMPLETE_PHISHING_AND_PAGE_COMPONENT_SCOPE_NOT_INJECTION_PRESENCE_CLASSIFICATION",
+      "work_id": "arxiv:2602.05484"
+    },
+    {
+      "before_row_sha256": "c6061e7ed74dfd009ee87df8d5d64742f612ad0907c1bc474b7d17b7090cc7e5",
+      "criteria": {
+        "before_target_answer": "NOT_MET",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0159-3e7df027a24f-F01",
+        "A05-DEEP-W0159-3e7df027a24f-F02",
+        "A05-DEEP-W0159-3e7df027a24f-F03",
+        "A05-DEEP-W0159-3e7df027a24f-F04",
+        "A05-DEEP-W0159-3e7df027a24f-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0159",
+      "scientific_rationale": "The actual separately checked complete original methods study persona-conditioned ambiguous-word interpretations, secondary sense labels and model-level semantic/benchmark associations. The classifier consumes generated interpretations and predicts word meaning rather than injected-instruction presence. Conceptual safety-filter applications are not additional original input-detector experiments. Exclude on this affirmative complete task scope; do not use English exposition or example language to infer a qualifying experiment. The release convenience coverage_disposition uses an exporter fallback because this checker omitted that optional enum; the authoritative complete-scope evidence is the explicit approved coverage field and its per-field main/appendix rationale.",
+      "whole_work_exclusion_ground": "COMPLETE_SEMANTIC_INTERPRETATION_SCOPE_NOT_INJECTION_INPUT_DETECTION",
+      "work_id": "arxiv:2603.20381"
+    },
+    {
+      "before_row_sha256": "939dafb6aa50a4a53a2bab57f13623381ced972761bc622d56bcfb31b471e8b4",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0160-d0819bda45b8-F01",
+        "A05-DEEP-W0160-d0819bda45b8-F02",
+        "A05-DEEP-W0160-d0819bda45b8-F03",
+        "A05-DEEP-W0160-d0819bda45b8-F04",
+        "A05-DEEP-W0160-d0819bda45b8-F05"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0160",
+      "scientific_rationale": "The complete checked original methods classify malicious versus helpful AI behavior from serialized human-AI trivia trajectories, including prior answer choices, chat history and streaming windows. The binary label concerns actor behavior, not presence of injected instructions in untrusted input. Exclude on complete evaluated-task scope while retaining timing and English uncertainty; English observer instructions alone do not establish the classified trajectory language. Use the explicitly approved complete-coverage field and per-field context rationale, not the exporter fallback coverage_disposition enum.",
+      "whole_work_exclusion_ground": "COMPLETE_TRAJECTORY_BEHAVIOR_SCOPE_NOT_INJECTION_INPUT_CLASSIFICATION",
+      "work_id": "arxiv:2603.20976"
+    },
+    {
+      "before_row_sha256": "3dceab4f12d8e9be54b1311a80fd9f3262cbb1d8b1aad24d1ae657699056e6e0",
+      "criteria": {
+        "before_target_answer": "NOT_MET",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "NOT_MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0162-146cbbfae59f-F01",
+        "A05-DEEP-W0162-146cbbfae59f-F02",
+        "A05-DEEP-W0162-146cbbfae59f-F03",
+        "A05-DEEP-W0162-146cbbfae59f-F04",
+        "A05-DEEP-W0162-146cbbfae59f-F05",
+        "A05-DEEP-W0162-146cbbfae59f-F06"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0162",
+      "scientific_rationale": "The complete checked original curation and base/fine-tuned classifier trials label generated model responses safe or unsafe. The inspected response text is required, and the binary target is response harmfulness rather than injection presence. Prospective prompt-prefilter deployment prose does not add an original prompt-injection input experiment. Exclude on the affirmative full evaluated-arm inventory; do not infer non-English language from missing declarations. Complete scope is supported by the approved coverage field and detailed checker context even though its optional coverage_disposition enum was absent and the exporter supplied a bibliographic fallback.",
+      "whole_work_exclusion_ground": "COMPLETE_RESPONSE_SAFETY_SCOPE_NOT_PREANSWER_INJECTION_INPUT_DETECTION",
+      "work_id": "arxiv:2603.21975"
+    }
+  ],
+  "interpretation_documents": {
+    "ENGLISH_EVIDENCE_APPLICATION.md": "8f842cd879937d19f7e7f448e9dd84e0933fcd716098cb13778975f82bbc32b9",
+    "SOURCE_INSPECTION_FIELD_APPLICATION.md": "bec8aab7088342de8fe379ca9a57c5b703b2349a61977276ca9dc00bf584cf1f"
+  },
+  "not_fresh_independent": true,
+  "recorded_utc": "2026-10-27T12:03:23.526729+00:00",
+  "release_sha256": "295dee1567756d59de191e5b1d27bd08bbbf200f0743431d315ea1aee178a576",
+  "reviewed_unchanged": [
+    {
+      "before_row_sha256": "a54adc273873265f91006c069e5ebc87730126480734993c180937e5bb16a0ef",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0031-18c6a4c7801e-F01",
+        "A05-DEEP-W0031-18c6a4c7801e-F02",
+        "A05-DEEP-W0031-18c6a4c7801e-F03",
+        "A05-DEEP-W0031-18c6a4c7801e-F04",
+        "A05-DEEP-W0031-18c6a4c7801e-F05"
+      ],
+      "review_id": "W0031",
+      "scientific_rationale": "New source facts establish an actual English SST2 sentiment-wrapper and injected directive construction, not merely detector instructions. The existing input-only PromptGuard/ONION arm is distinct from response-dependent UniGuardian. The released clarification does not establish that those input-only comparators were evaluated on this SST2 construction rather than another dataset condition. Retain UNCLEAR until that experiment-level mapping is checked; do not borrow English from the answer-dependent main arm or infer every corpus is English."
+    },
+    {
+      "before_row_sha256": "93205edfda9fbf0b8434534b3277f66da2d2039992cf92fc75a91f13f5a95fff",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0035-530549fc607e-F01",
+        "A05-DEEP-W0035-530549fc607e-F02",
+        "A05-DEEP-W0035-530549fc607e-F03",
+        "A05-DEEP-W0035-530549fc607e-F04",
+        "A05-DEEP-W0035-530549fc607e-F05",
+        "A05-DEEP-W0035-530549fc607e-F06"
+      ],
+      "review_id": "W0035",
+      "scientific_rationale": "The new selected-edition check preserves actual English hidden-instruction variants and the separate detector condition, but their variant-specific evaluation linkage remains unresolved. English detector questions and generated-review language do not resolve the classified paper language. The false language-declaration flag concerns the supplied conference-call page alone; it proves no universal absence and supplies no exclusion. Retain UNCLEAR."
+    },
+    {
+      "before_row_sha256": "806a2086a9bfd354aece2413274d545f0665791000bd0f4d5a82fb02d4e7c1d2",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0040-804e61ee173d-F01",
+        "A05-DEEP-W0040-804e61ee173d-F02",
+        "A05-DEEP-W0040-804e61ee173d-F03",
+        "A05-DEEP-W0040-804e61ee173d-F04",
+        "A05-DEEP-W0040-804e61ee173d-F05"
+      ],
+      "review_id": "W0040",
+      "scientific_rationale": "The new corpus provenance cannot establish which English items survive the undocumented jailbreak filtering, and no complete held-out language composition is asserted. This limitation does not contradict the earlier separately checked English original/perturbed appendix inputs explicitly bound to the qualifying guardrail evaluation. Retain the existing limited positive binding to those appendix examples; do not replace it with unlinked corpus rows or upgrade it to a source-wide/test-wide English declaration. This is a documented unchanged review, not a new proof from the corpus gap."
+    },
+    {
+      "before_row_sha256": "9b54f9dc1c5de721825e3221a32fa103a056eab3d16f024bdd925acb6dda7634",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0124-01cfb978c5e9-F01",
+        "A05-DEEP-W0124-01cfb978c5e9-F02",
+        "A05-DEEP-W0124-01cfb978c5e9-F03",
+        "A05-DEEP-W0124-01cfb978c5e9-F04",
+        "A05-DEEP-W0124-01cfb978c5e9-F05",
+        "A05-DEEP-W0124-01cfb978c5e9-F06",
+        "A05-DEEP-W0124-01cfb978c5e9-F07"
+      ],
+      "review_id": "W0124",
+      "scientific_rationale": "The corrected complete main/appendix inventory now includes purpose coding and the author-profile heuristic alongside skill vulnerability scanning, comparators and dynamic execution. Preserve the original English skill filtering and input scanning facts. Artifact-level vulnerable/benign and broad category outputs do not yet establish a separately evaluated binary injection-presence protocol. Neither complete family inventory nor the mere existence of an injection scanner resolves that specific label/protocol question. Retain UNCLEAR and request the exact category-specific evaluation design without results."
+    },
+    {
+      "before_row_sha256": "16db1c957bbec9de497886b4b33164a0dead43bc53fc199b9e07b7c4c2f3d790",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0132-c7a6f1b0ce9d-F01",
+        "A05-DEEP-W0132-c7a6f1b0ce9d-F02",
+        "A05-DEEP-W0132-c7a6f1b0ce9d-F03",
+        "A05-DEEP-W0132-c7a6f1b0ce9d-F04",
+        "A05-DEEP-W0132-c7a6f1b0ce9d-F05"
+      ],
+      "review_id": "W0132",
+      "scientific_rationale": "The corrected complete inventory distinguishes input-only page/segment contamination detection and comparator/localization methods from the answer-dependent adaptive webpage attack assessment. Existing task/binary/timing criteria remain supported for the text-input detector arm. No evaluated English construction is released; retain UNCLEAR rather than infer it from model names or paper prose."
+    },
+    {
+      "before_row_sha256": "c25d86a75f480171a0e33a88e3bbf79cf17ae8fbd84614df9711a51b63e116fd",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0133-90fd306ce611-F01",
+        "A05-DEEP-W0133-90fd306ce611-F02",
+        "A05-DEEP-W0133-90fd306ce611-F03"
+      ],
+      "review_id": "W0133",
+      "scientific_rationale": "Only the individually approved chat-template attack, artifact comparison/scanner proposal and protective-template methods are considered. Whole-work scope was held for a material inventory gap. No qualifying binary input-classification experiment is yet established, but this partial inventory cannot support exclusion. Retain UNCLEAR and request the omitted original family/dependency context."
+    },
+    {
+      "before_row_sha256": "e7147352b2e3f35c7331fba837482dd6e9da58409aeb6fa3ba0b4b141adea5d4",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0161-f041209f3b8f-F01",
+        "A05-DEEP-W0161-f041209f3b8f-F02",
+        "A05-DEEP-W0161-f041209f3b8f-F03",
+        "A05-DEEP-W0161-f041209f3b8f-F04",
+        "A05-DEEP-W0161-f041209f3b8f-F05",
+        "A05-DEEP-W0161-f041209f3b8f-F06"
+      ],
+      "review_id": "W0161",
+      "scientific_rationale": "Checked complete original client poisoning and feature-assessment families include registration validation, injection-detection controls and runtime behavior observations. They establish injected-tool attack construction but do not yet unambiguously distinguish an original binary input-presence classification protocol from manual feature availability, warnings or model refusal. Retain UNCLEAR; exact English attack descriptions alone must not be transferred to an unestablished classifier condition. Preserve locked DISTINCT_WORKS from W0163. The exporter convenience coverage enum is a missing-value fallback; explicit per-field scope approval remains authoritative."
+    },
+    {
+      "before_row_sha256": "8c1ebf9136f9b32a3891a16e3528958d9c2d9a852f471987e020f95e4f94ec62",
+      "checked_evidence_ids": [
+        "A05-DEEP-W0163-7e042467819b-F01",
+        "A05-DEEP-W0163-7e042467819b-F02",
+        "A05-DEEP-W0163-7e042467819b-F03",
+        "A05-DEEP-W0163-7e042467819b-F04",
+        "A05-DEEP-W0163-7e042467819b-F05",
+        "A05-DEEP-W0163-7e042467819b-F06",
+        "A05-DEEP-W0163-7e042467819b-F07"
+      ],
+      "review_id": "W0163",
+      "scientific_rationale": "The checked complete analytical threat-modeling, proposed layered controls and original MCP-client attack/feature methods remain distinct. An explicit binary input-classifier protocol, its decision unit and pre-protected-answer boundary are still unclear within registration/feature observations; proposed controls are not empirical detector trials. Retain UNCLEAR rather than exclude merely from a broad family summary. Preserve locked DISTINCT_WORKS from W0161, and bind all method evidence to this edition. The missing optional enum produces an exporter fallback, not a checker determination that methods were bibliographic only."
+    }
+  ],
+  "schema": "A05_DEEP_EXPOSED_CUSTODIAN_JUDGMENTS",
+  "scope": "B1_ONLY_NO_OUTCOMES_NO_DRAW_NO_B2",
+  "source_git_commit": "200af57fd0fba843457f4e9e7e88a56d8306c3ec",
+  "version_corrections": []
+}

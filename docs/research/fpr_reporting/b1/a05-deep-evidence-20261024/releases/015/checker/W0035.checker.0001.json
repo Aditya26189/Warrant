@@ -1,0 +1,244 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0035",
+  "actor": "codex-a05-deep-checker-20261024",
+  "created_utc": "2026-10-27T06:43:04.504009+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\additional-006\\works\\W0035.provider.0001.json",
+  "provider_packet_sha256": "9abb457efa554ff8b94e8fcdefdc61689f18d98bdc573dc0a2667b4aba2c0c15",
+  "provider_manifest": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\additional-006\\MANIFEST.additional006.json",
+  "provider_manifest_sha256": "31144651579f2671720402b4be4bea648713222d0849796702e4ed213ab652ba",
+  "request_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\ADDITIONAL_SOURCE_REQUESTS_006.json",
+  "request_sha256": "a7baf8fe40a534e41520dc5b8ade6dfd47b27791572a76433c67127c16ee3c39",
+  "requested_preferred_version": "arxiv:2503.15772v2",
+  "source_identity": [
+    {
+      "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0067.json",
+      "acquisition_receipt_sha256": "ae71614381d20a366cfb0b63cb434f21b13c465c86eca0c533d1aac10a3678f3",
+      "body": {
+        "bytes": 348717,
+        "content_type": "text/html; charset=utf-8",
+        "final_url": "https://arxiv.org/html/2503.15772v2",
+        "finished_utc": "2026-10-19T13:20:32.123437+00:00",
+        "kind": "HTML",
+        "mode": "PRIMARY_RETRIEVAL",
+        "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\cdef6959f7755b4d82ed6eb25b4a4dfd957d43aeecf557d02276829aa51a0af9",
+        "sha256": "cdef6959f7755b4d82ed6eb25b4a4dfd957d43aeecf557d02276829aa51a0af9",
+        "started_utc": "2026-10-19T13:20:31.134710+00:00",
+        "status": 200,
+        "url": "https://arxiv.org/html/2503.15772v2",
+        "version_state": "EXACT_VERSION_SELF_LINK"
+      },
+      "captured_version_id": "arxiv:2503.15772v2",
+      "member_id": "M0067"
+    }
+  ],
+  "mechanical_check": {
+    "raw_hashes_verified": true,
+    "acquisition_hashes_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "coverage_disposition": "BOUNDED_EVALUATED_INPUT_LANGUAGE_CLARIFICATION",
+    "inspected_ranges": [
+      [
+        26,
+        29
+      ],
+      [
+        30,
+        35
+      ],
+      [
+        59,
+        62
+      ],
+      [
+        66,
+        67
+      ]
+    ],
+    "locators": [
+      {
+        "index": 26,
+        "section_id": "S2.SS1.SSS3",
+        "paragraph_id": "S2.SS1.SSS3.p1.1",
+        "text_sha256": "8871e6bfbd2cc82fa300b06d186133597f64a553b824716fba9c568cb6ef5ee0"
+      },
+      {
+        "index": 27,
+        "section_id": "S2.SS1.SSS3.Px1",
+        "paragraph_id": "S2.SS1.SSS3.Px1.p1.1",
+        "text_sha256": "3503c41b65a3285cd3f9afb8fc54642f4d89d41a2ed04d591ab36aa6ce5fc5a7"
+      },
+      {
+        "index": 28,
+        "section_id": "S2.SS1.SSS3.Px2",
+        "paragraph_id": "S2.SS1.SSS3.Px2.p1.1",
+        "text_sha256": "f61fa55fd9743be9128b281976505127b2a7eb133d929df5e27a7587fd3d9256"
+      },
+      {
+        "index": 29,
+        "section_id": "S2.SS1.SSS3.Px3",
+        "paragraph_id": "S2.SS1.SSS3.Px3.p1.1",
+        "text_sha256": "a72db50a816e25d9150abb36c36ffb51af38b80afd47a56814970ce18204ddcd"
+      },
+      {
+        "index": 30,
+        "section_id": "S2.SS2",
+        "paragraph_id": "S2.SS2.p1.1",
+        "text_sha256": "46f4d9a0e262dd61168a8747ace414b0cddd186253940b28e77ce8e3002805d4"
+      },
+      {
+        "index": 31,
+        "section_id": "S2.SS2.SSS0.Px1",
+        "paragraph_id": "S2.SS2.SSS0.Px1.p1.1",
+        "text_sha256": "9b2ce043c0df3cbc8cf000942315369eb3514ba74f1196397c77173ae3c0a830"
+      },
+      {
+        "index": 32,
+        "section_id": "S2.SS2.SSS0.Px2",
+        "paragraph_id": "S2.SS2.SSS0.Px2.p1.1",
+        "text_sha256": "e1972756ea472d5b3c058a7e9454961ecebce453b6831f44b50232befcecddd3"
+      },
+      {
+        "index": 33,
+        "section_id": "S2.SS2.SSS0.Px3",
+        "paragraph_id": "S2.SS2.SSS0.Px3.p1.1",
+        "text_sha256": "40d6951ea29ceea1cbff3fbeb020bc8656dc22b5ef8ea631c84533fb6ee91efc"
+      },
+      {
+        "index": 34,
+        "section_id": "S2.SS2.SSS0.Px4",
+        "paragraph_id": "S2.SS2.SSS0.Px4.p1.1",
+        "text_sha256": "a31dafe19dd91c567d5f43f3138819cf29907ef5138e104abcce8db44ac9b162"
+      },
+      {
+        "index": 35,
+        "section_id": "S2.SS2.SSS0.Px4",
+        "paragraph_id": "S2.SS2.SSS0.Px4.p2.1",
+        "text_sha256": "61f80ca2a24550a7e1dafca0903e48a9fe212ab8aa02e39c38a7d692973d05aa"
+      },
+      {
+        "index": 59,
+        "section_id": "S3.SS1",
+        "paragraph_id": "S3.SS1.p1.1",
+        "text_sha256": "e2c070a48ca7dbfd51d84f96fa58b6468e3bc2d619b78eb0fd1bc88cf5f8fdf7"
+      },
+      {
+        "index": 60,
+        "section_id": "S3.SS1",
+        "paragraph_id": "S3.SS1.p2.1",
+        "text_sha256": "14b90c13b510ff2df43e167ce9a44be6039f9d66be3a1156627356874a53452f"
+      },
+      {
+        "index": 61,
+        "section_id": "S3.SS1",
+        "paragraph_id": "S3.SS1.p3.1",
+        "text_sha256": "fe2c37c6d49121429d0d992b890c93300d7a00fe3135c0b18d501d72381045b3"
+      },
+      {
+        "index": 62,
+        "section_id": "S3.SS1",
+        "paragraph_id": "S3.SS1.p4.1",
+        "text_sha256": "32df23a7caae8f9e2daeaff835517623ddffa37b107835c334b572c4a7ba9b67"
+      },
+      {
+        "index": 66,
+        "section_id": "S3.SS2.SSS2",
+        "paragraph_id": "S3.SS2.SSS2.p1.1",
+        "text_sha256": "12b33eb5cfe49689adf941225e6efa37e405faa55f3b13ce34bf30653e1a3a90"
+      },
+      {
+        "index": 67,
+        "section_id": "S3.SS2.SSS2",
+        "paragraph_id": "S3.SS2.SSS2.p2.1",
+        "text_sha256": "61300146092e7866ab40cdf9c404146824c72c131f10e52af51098bbf38f978c"
+      }
+    ],
+    "locator_sha256": "55650f1cc01da1bdb85606773206607c4cf316e4feac21702de57d6547cab270",
+    "structural_receipts": [
+      {
+        "source_sha256": "cdef6959f7755b4d82ed6eb25b4a4dfd957d43aeecf557d02276829aa51a0af9",
+        "section_id": "S2.SS1.SSS3",
+        "element_html_sha256": "96ff56ae677b0caac473143ac83f34b46baa1e7e402d21daf71f911b72c77c05",
+        "element_text_sha256": "fa967c86e6a1580144cf1a0c51b7b464cdc38965af921c7e179efcc9381e3d24",
+        "structural_only_no_text_reproduced": true
+      },
+      {
+        "source_sha256": "cdef6959f7755b4d82ed6eb25b4a4dfd957d43aeecf557d02276829aa51a0af9",
+        "section_id": "S2.SS2",
+        "element_html_sha256": "3d4b6df1bc62524b4df6b1368582c4ef4ba1deb3467acfbf6751385c8a0cbeec",
+        "element_text_sha256": "51c7366713a8355ab6d09ac09ff9b58f6ef84b2497f4f2bc2307c5e44200d8ee",
+        "structural_only_no_text_reproduced": true
+      },
+      {
+        "source_sha256": "cdef6959f7755b4d82ed6eb25b4a4dfd957d43aeecf557d02276829aa51a0af9",
+        "section_id": "S3.SS1",
+        "element_html_sha256": "a0a1eb0a2572117f66ca10cd081c912e8109e70da660875e53f3fc59f335313a",
+        "element_text_sha256": "59736dc58996882c85a3ff8b447b3348fd2d6424933096f91f5bfcaa96f89e4c",
+        "structural_only_no_text_reproduced": true
+      },
+      {
+        "source_sha256": "cdef6959f7755b4d82ed6eb25b4a4dfd957d43aeecf557d02276829aa51a0af9",
+        "section_id": "S3.SS2.SSS2",
+        "element_html_sha256": "7f57d60f9778ca3978960bf8e2ac228720cd123de88a063df0cbfca819b81e84",
+        "element_text_sha256": "3abd30e8150c89cec41e5b52fbd387e9e6572982afff7af8bed3354df93f48aa",
+        "structural_only_no_text_reproduced": true
+      }
+    ],
+    "external_primary_checks": {
+      "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\additional-006\\dataset-provenance\\W0035.ICLR2024.CFP.0001.html",
+      "raw_sha256": "d92e3ab7618e3e67f61e0f31818bc5ec69fea7bc7168a3971bcb3f8e4dad8567",
+      "receipt_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\additional-006\\dataset-provenance\\W0035.ICLR2024.CFP.receipt.0001.json",
+      "receipt_sha256": "710806d8b5c8daae0a6fe6cd8a3f0ad8632b266d53407b000965dfe1ed3d1aa9",
+      "inspection_scope": "Actual supplied official call main text read; no explicit English-language requirement found on this page. No global policy-absence inference."
+    },
+    "semantic_rationale": "Actual constructor26-35, generation59-62 and separate detector66-67 read. English hidden constructors and French variants are distinct. The paper-input detector does not identify the selected language variant or paper IDs, leaving its evaluated-input English linkage unresolved."
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual section2.1.3 prints English hidden constructors; section2.2 defines white-text, font and French variants. Section3.2.2 separately asks a model to detect hidden instructions in papers, without pinning its language condition.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "english_evaluation_support",
+      "decision": "APPROVE",
+      "semantic_fidelity": "English auxiliary detector wording and generated-review language do not establish classified PDF language. Exact official call main text was also read and supplies no English-language declaration on the captured page.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False correctly bounds this to the requested evaluated-input language clarification. A new whole-work inventory is not asserted.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "coverage.omissions",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Retained limits agree with the actual source linkage and distinguish source construction from whole held-out composition.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "clarification_scope",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Matches the neutral request for evaluated-input language linkage only.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    },
+    {
+      "field_path": "additional_source_inspection.language_declaration_found",
+      "decision": "APPROVE",
+      "semantic_fidelity": "False is accurate for the supplied official ICLR 2024 call page actually read. This is bounded page inspection, not an assertion about all conference policies.",
+      "restriction_rationale": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": "Source extraction includes method/results interleaving; qualitative and numeric source outcomes were incidentally visible. They are not reproduced or used as method evidence.",
+    "checker_exposure": "Actual method/data/constructor context was read before this receipt. Adjacent source outcome, sample and corpus-description prose was incidentally visible and withheld. No result-table examples used for language proof. Shared filesystem; no freshness or OS-isolation claim. Operational board aggregate exposure remains disclosed in ROLE.0001.json."
+  }
+}
