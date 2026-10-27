@@ -1,0 +1,54 @@
+{
+  "actor": "EXPOSED_CUSTODIAN_ROOT",
+  "baseline_proposal_sha256": "d0924d61e6ca5b60ac681199639df527c55e29c6c0c202b4d73174df515a1581",
+  "changes": [
+    {
+      "before_row_sha256": "4fa0ecbf669ee9cc9486afce54ef00ccad6ab71e0c5745f63705017661f7d00d",
+      "criteria": {
+        "before_target_answer": "UNCLEAR",
+        "binary_evaluation": "NOT_MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": "COMPLETE_EVALUATED_ARM_SCOPE",
+      "new_evidence_ids": [
+        "A05-DEEP-W0129-be58e13c9ab2-F01",
+        "A05-DEEP-W0129-be58e13c9ab2-F02",
+        "A05-DEEP-W0129-be58e13c9ab2-F03"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0129",
+      "scientific_rationale": "The separately checked complete declared main and appendix method families score incident-response episodes and executed agent actions, including attribution, containment and injection violation, and train the defender with decomposed rewards. These are operational action outcomes rather than a separately evaluated binary injection-input classifier. The complete method inventory supports a binary-evaluation failure for this selected edition; the presence of injected evidence still supports the injection-task criterion. Retain English and pre-answer criteria as unresolved rather than infer unnecessary failures. Exclusion relies on affirmative complete evaluated-arm scope, not a missing abstract statement, language uncertainty or numerical outcomes.",
+      "whole_work_exclusion_ground": "COMPLETE_EVALUATED_TASK_SCOPE_WITHOUT_QUALIFYING_INJECTION_INPUT_CLASSIFIER",
+      "work_id": "arxiv:2601.21083"
+    },
+    {
+      "before_row_sha256": "cb4db3ef46466ba812d93e385b098ad73bc5d91913bc1da70150c2146f9f3890",
+      "criteria": {
+        "before_target_answer": "MET",
+        "binary_evaluation": "MET",
+        "english_evaluation": "UNCLEAR",
+        "input_injection_task": "MET"
+      },
+      "exclusion_basis": null,
+      "new_evidence_ids": [
+        "A05-DEEP-W0130-517a5565da0f-F01",
+        "A05-DEEP-W0130-517a5565da0f-F02",
+        "A05-DEEP-W0130-517a5565da0f-F03"
+      ],
+      "positive_criterion_evidence_ids": null,
+      "review_id": "W0130",
+      "scientific_rationale": "The checked input-forward activation deltas feed clean/secondary-instruction logistic probes and their adversarially retrained variants. The probe-evasion objective does not require a completed protected-model answer; generated-response behavior is a separate analysis. This establishes the pre-target-answer criterion for the input-probe evaluation while retaining prior binary/task support. Evaluated-input English remains unestablished. The checker expressly held whole-work completeness because a generation-behavior comparison was omitted from the provider inventory: do not release that completeness claim, infer an exclusion or claim all evaluated families are accounted for. This remains an unresolved work, not a positive final frame decision.",
+      "whole_work_exclusion_ground": null,
+      "work_id": "arxiv:2602.00750"
+    }
+  ],
+  "not_fresh_independent": true,
+  "recorded_utc": "2026-10-27T06:35:06.952613+00:00",
+  "release_sha256": "61ce2dae5d05d2eeec89534002b19b4d29c4860e3b4b008b08cec37c8a8dfed1",
+  "reviewed_unchanged": [],
+  "schema": "A05_DEEP_EXPOSED_CUSTODIAN_JUDGMENTS",
+  "scope": "B1_ONLY_NO_OUTCOMES_NO_DRAW_NO_B2",
+  "source_git_commit": "5c873488edb8bc948d1f2b5fafa8503dce8490e0",
+  "version_corrections": []
+}
