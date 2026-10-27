@@ -1,0 +1,535 @@
+{
+  "access_only_records": [],
+  "checkpoint_sha256": "5d7647b375610ab4d3b630e9d8d924b94678e01a4a76d6fe8edd53b9b98086be",
+  "facts": [
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0031.checker.0001.json",
+      "checker_receipt_sha256": "18c6a4c7801e3ab03c468b3cc8c429d57a7de5c715503459ef0620123993c218",
+      "clarification_scope": "EVALUATED_INPUT_LANGUAGE_LINKAGE_ONLY",
+      "coverage_disposition": "BOUNDED_EVALUATED_INPUT_LANGUAGE_CLARIFICATION",
+      "evidence_id": "A05-DEEP-W0031-18c6a4c7801e-F01",
+      "field_path": "method_summary",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "4f5881b9e14eb1689ae4d257629610a688e2927fa96380dee39cb1b9890eb75a",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0031",
+      "semantic_check": "Main60 defines the injected suffix applied to selected inputs; Appendix106/110/112 connects official SST2 test data and English sentiment wrapper. These are classified poisoned inputs, distinct from detector masking prompts.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0062.json",
+          "acquisition_receipt_sha256": "b7f60cbb05119ee19736cc6e3669b2f7afe7289b0f9c791839496dc03997e162",
+          "body": {
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2502.13141v2",
+            "finished_utc": "2026-10-19T06:38:02.816984+00:00",
+            "kind": "HTML",
+            "mode": "VERIFIED_LEGACY_RAW_BODY",
+            "original_receipt_sha256": "84077cd26ae37df5d63a739832eeaf49e3b9273ab3783cba9a90ac0c499fbe1f",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q007-1.html",
+            "sha256": "5fd6a6c1e351f18b62b62495c81fa62ee998d37867f9892b58781e67d852c770",
+            "started_utc": "2026-10-19T06:38:01.541891+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2502.13141v2",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2502.13141v2",
+          "member_id": "M0062"
+        }
+      ],
+      "value": "The original injection-detection experiment uses SST2 test texts in an English sentiment-task wrapper and appends an English instruction-override/apology directive to selected inputs. These are classified poisoned inputs, distinct from UniGuardian?s masking/detection probe instructions.",
+      "value_sha256": "8956ec6679cabda83196f00db9ad2000d2a170cc891018189edb35c0ec68437a",
+      "version": "arxiv:2502.13141v2",
+      "work_id": "arxiv:2502.13141"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0031.checker.0001.json",
+      "checker_receipt_sha256": "18c6a4c7801e3ab03c468b3cc8c429d57a7de5c715503459ef0620123993c218",
+      "clarification_scope": "EVALUATED_INPUT_LANGUAGE_LINKAGE_ONLY",
+      "coverage_disposition": "BOUNDED_EVALUATED_INPUT_LANGUAGE_CLARIFICATION",
+      "evidence_id": "A05-DEEP-W0031-18c6a4c7801e-F02",
+      "field_path": "english_evaluation_support",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "4f5881b9e14eb1689ae4d257629610a688e2927fa96380dee39cb1b9890eb75a",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0031",
+      "semantic_check": "Actual linked SST2 README language lines and commit metadata were read. The paper does not pin revision or item membership, and this evidence is not transferred to every other named corpus.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0062.json",
+          "acquisition_receipt_sha256": "b7f60cbb05119ee19736cc6e3669b2f7afe7289b0f9c791839496dc03997e162",
+          "body": {
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2502.13141v2",
+            "finished_utc": "2026-10-19T06:38:02.816984+00:00",
+            "kind": "HTML",
+            "mode": "VERIFIED_LEGACY_RAW_BODY",
+            "original_receipt_sha256": "84077cd26ae37df5d63a739832eeaf49e3b9273ab3783cba9a90ac0c499fbe1f",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q007-1.html",
+            "sha256": "5fd6a6c1e351f18b62b62495c81fa62ee998d37867f9892b58781e67d852c770",
+            "started_utc": "2026-10-19T06:38:01.541891+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2502.13141v2",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2502.13141v2",
+          "member_id": "M0062"
+        }
+      ],
+      "value": "Appendix B.3 directly links stanfordnlp/sst2 and specifies test splits; B.4 prints the task wrapper; ?5.1 defines the actual injected suffix. Official SST2 README at an earlier commit declares language en. This supports the SST2 English construction component with revision limits.",
+      "value_sha256": "b02b3299ecf17f3962f3330ec8538443c1bbca05be70d64b9dcfc1e95e2b5ce1",
+      "version": "arxiv:2502.13141v2",
+      "work_id": "arxiv:2502.13141"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0031.checker.0001.json",
+      "checker_receipt_sha256": "18c6a4c7801e3ab03c468b3cc8c429d57a7de5c715503459ef0620123993c218",
+      "clarification_scope": "EVALUATED_INPUT_LANGUAGE_LINKAGE_ONLY",
+      "coverage_disposition": "BOUNDED_EVALUATED_INPUT_LANGUAGE_CLARIFICATION",
+      "evidence_id": "A05-DEEP-W0031-18c6a4c7801e-F03",
+      "field_path": "coverage.scope_completeness",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "4f5881b9e14eb1689ae4d257629610a688e2927fa96380dee39cb1b9890eb75a",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0031",
+      "semantic_check": "False correctly bounds this to the requested evaluated-input language clarification. A new whole-work inventory is not asserted.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0062.json",
+          "acquisition_receipt_sha256": "b7f60cbb05119ee19736cc6e3669b2f7afe7289b0f9c791839496dc03997e162",
+          "body": {
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2502.13141v2",
+            "finished_utc": "2026-10-19T06:38:02.816984+00:00",
+            "kind": "HTML",
+            "mode": "VERIFIED_LEGACY_RAW_BODY",
+            "original_receipt_sha256": "84077cd26ae37df5d63a739832eeaf49e3b9273ab3783cba9a90ac0c499fbe1f",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q007-1.html",
+            "sha256": "5fd6a6c1e351f18b62b62495c81fa62ee998d37867f9892b58781e67d852c770",
+            "started_utc": "2026-10-19T06:38:01.541891+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2502.13141v2",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2502.13141v2",
+          "member_id": "M0062"
+        }
+      ],
+      "value": false,
+      "value_sha256": "2ed27c1421e6928dbe13dbfdb5c59e1045b30341fe7ebe05700006bc5ac572c0",
+      "version": "arxiv:2502.13141v2",
+      "work_id": "arxiv:2502.13141"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0031.checker.0001.json",
+      "checker_receipt_sha256": "18c6a4c7801e3ab03c468b3cc8c429d57a7de5c715503459ef0620123993c218",
+      "clarification_scope": "EVALUATED_INPUT_LANGUAGE_LINKAGE_ONLY",
+      "coverage_disposition": "BOUNDED_EVALUATED_INPUT_LANGUAGE_CLARIFICATION",
+      "evidence_id": "A05-DEEP-W0031-18c6a4c7801e-F04",
+      "field_path": "coverage.omissions",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "4f5881b9e14eb1689ae4d257629610a688e2927fa96380dee39cb1b9890eb75a",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0031",
+      "semantic_check": "Retained limits agree with the actual source linkage and distinguish source construction from whole held-out composition.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0062.json",
+          "acquisition_receipt_sha256": "b7f60cbb05119ee19736cc6e3669b2f7afe7289b0f9c791839496dc03997e162",
+          "body": {
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2502.13141v2",
+            "finished_utc": "2026-10-19T06:38:02.816984+00:00",
+            "kind": "HTML",
+            "mode": "VERIFIED_LEGACY_RAW_BODY",
+            "original_receipt_sha256": "84077cd26ae37df5d63a739832eeaf49e3b9273ab3783cba9a90ac0c499fbe1f",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q007-1.html",
+            "sha256": "5fd6a6c1e351f18b62b62495c81fa62ee998d37867f9892b58781e67d852c770",
+            "started_utc": "2026-10-19T06:38:01.541891+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2502.13141v2",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2502.13141v2",
+          "member_id": "M0062"
+        }
+      ],
+      "value": [
+        "Language clarification only; whole-paper arm inventory is not repeated. The paper does not pin a dataset revision or sample identifiers, and the official source declaration does not establish every evaluated corpus as English."
+      ],
+      "value_sha256": "89320227f510f978f91ff2e0fa715b2f939eef552fc4b2aa3978591538463413",
+      "version": "arxiv:2502.13141v2",
+      "work_id": "arxiv:2502.13141"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0031.checker.0001.json",
+      "checker_receipt_sha256": "18c6a4c7801e3ab03c468b3cc8c429d57a7de5c715503459ef0620123993c218",
+      "clarification_scope": "EVALUATED_INPUT_LANGUAGE_LINKAGE_ONLY",
+      "coverage_disposition": "BOUNDED_EVALUATED_INPUT_LANGUAGE_CLARIFICATION",
+      "evidence_id": "A05-DEEP-W0031-18c6a4c7801e-F05",
+      "field_path": "clarification_scope",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "4f5881b9e14eb1689ae4d257629610a688e2927fa96380dee39cb1b9890eb75a",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0031",
+      "semantic_check": "Matches the neutral request for evaluated-input language linkage only.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0062.json",
+          "acquisition_receipt_sha256": "b7f60cbb05119ee19736cc6e3669b2f7afe7289b0f9c791839496dc03997e162",
+          "body": {
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2502.13141v2",
+            "finished_utc": "2026-10-19T06:38:02.816984+00:00",
+            "kind": "HTML",
+            "mode": "VERIFIED_LEGACY_RAW_BODY",
+            "original_receipt_sha256": "84077cd26ae37df5d63a739832eeaf49e3b9273ab3783cba9a90ac0c499fbe1f",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q007-1.html",
+            "sha256": "5fd6a6c1e351f18b62b62495c81fa62ee998d37867f9892b58781e67d852c770",
+            "started_utc": "2026-10-19T06:38:01.541891+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2502.13141v2",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2502.13141v2",
+          "member_id": "M0062"
+        }
+      ],
+      "value": "EVALUATED_INPUT_LANGUAGE_LINKAGE_ONLY",
+      "value_sha256": "2abd729a97d0a251892cf461fbefb4ddc0209c422670a44800c3eefb4ddb8a4d",
+      "version": "arxiv:2502.13141v2",
+      "work_id": "arxiv:2502.13141"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0040.checker.0001.json",
+      "checker_receipt_sha256": "804e61ee173da37a1a803c72e88fc6dca05e2ae552e23f0cbd79734804fc3696",
+      "clarification_scope": "EVALUATED_INPUT_LANGUAGE_LINKAGE_ONLY",
+      "coverage_disposition": "BOUNDED_EVALUATED_INPUT_LANGUAGE_CLARIFICATION",
+      "evidence_id": "A05-DEEP-W0040-804e61ee173d-F01",
+      "field_path": "method_summary",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "9aec6114000049454789ae41b677d50718e8acf4acd7ca41f9c3febcff3d4239",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0040",
+      "semantic_check": "Actual ACL p5 block4 specifies official safe-guard test adversarial inputs after jailbreak removal; p4 block10 defines guardrail classification before the target model. Packet separates source-corpus examples from the unspecified retained subset.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0008.json",
+          "acquisition_receipt_sha256": "12039b1ea211559b6eefc9aebad49b13b18273e98fd4ee32189e8f7bca8eaef1",
+          "body": {
+            "bytes": 605473,
+            "content_type": "application/pdf",
+            "final_url": "https://aclanthology.org/2025.llmsec-1.8.pdf",
+            "finished_utc": "2026-10-19T13:19:10.213172+00:00",
+            "kind": "PDF",
+            "mode": "PRIMARY_RETRIEVAL",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\054e85d16105c0550ac4191048347c710601e9471f7ca66888c8d985e1069d3a",
+            "sha256": "054e85d16105c0550ac4191048347c710601e9471f7ca66888c8d985e1069d3a",
+            "started_utc": "2026-10-19T13:19:08.008912+00:00",
+            "status": 200,
+            "url": "https://aclanthology.org/2025.llmsec-1.8.pdf",
+            "version_state": "EXPLICIT_URL_ONLY_BODY_VERSION_UNCONFIRMED"
+          },
+          "captured_version_id": null,
+          "member_id": "M0008"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0072.json",
+          "acquisition_receipt_sha256": "9383d631fc2cf4882083dca9cbee09819c9e1cbb5bdaf328cc04b7ea97608ab9",
+          "body": {
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2504.11168v3",
+            "finished_utc": "2026-10-19T06:38:42.993746+00:00",
+            "kind": "HTML",
+            "mode": "VERIFIED_LEGACY_RAW_BODY",
+            "original_receipt_sha256": "0b26f402f002b16166bc4a3efa7de85c7bfffcccd2c4e3716ea9ebd01a26e3cf",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q011-1.html",
+            "sha256": "38c9178a8e32abeefa4321918ab82f6a4273835b2373d54a7c82e2a3e9cfcfed",
+            "started_utc": "2026-10-19T06:38:42.359754+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2504.11168v3",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2504.11168v3",
+          "member_id": "M0072"
+        }
+      ],
+      "value": "The ACL edition specifies safe-guard-prompt-injection test adversarial inputs with jailbreaks removed. Its cited official test parquet contains directly inspected English positive instructions, including instruction override; the paper does not identify retained items or pin its corpus revision.",
+      "value_sha256": "c53b7413006c94d810c8fe49730d75a61a65744be42c0fc14caf260487b9b163",
+      "version": "acl:2025.llmsec-1.8:publication",
+      "work_id": "arxiv:2504.11168"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0040.checker.0001.json",
+      "checker_receipt_sha256": "804e61ee173da37a1a803c72e88fc6dca05e2ae552e23f0cbd79734804fc3696",
+      "clarification_scope": "EVALUATED_INPUT_LANGUAGE_LINKAGE_ONLY",
+      "coverage_disposition": "BOUNDED_EVALUATED_INPUT_LANGUAGE_CLARIFICATION",
+      "evidence_id": "A05-DEEP-W0040-804e61ee173d-F02",
+      "field_path": "english_evaluation_support",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "9aec6114000049454789ae41b677d50718e8acf4acd7ca41f9c3febcff3d4239",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0040",
+      "semantic_check": "Direct English test rows support corpus-level provenance only. Paper-retained item IDs and source revision are unknown. Official README provides no language declaration; result examples are not used as proof.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0008.json",
+          "acquisition_receipt_sha256": "12039b1ea211559b6eefc9aebad49b13b18273e98fd4ee32189e8f7bca8eaef1",
+          "body": {
+            "bytes": 605473,
+            "content_type": "application/pdf",
+            "final_url": "https://aclanthology.org/2025.llmsec-1.8.pdf",
+            "finished_utc": "2026-10-19T13:19:10.213172+00:00",
+            "kind": "PDF",
+            "mode": "PRIMARY_RETRIEVAL",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\054e85d16105c0550ac4191048347c710601e9471f7ca66888c8d985e1069d3a",
+            "sha256": "054e85d16105c0550ac4191048347c710601e9471f7ca66888c8d985e1069d3a",
+            "started_utc": "2026-10-19T13:19:08.008912+00:00",
+            "status": 200,
+            "url": "https://aclanthology.org/2025.llmsec-1.8.pdf",
+            "version_state": "EXPLICIT_URL_ONLY_BODY_VERSION_UNCONFIRMED"
+          },
+          "captured_version_id": null,
+          "member_id": "M0008"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0072.json",
+          "acquisition_receipt_sha256": "9383d631fc2cf4882083dca9cbee09819c9e1cbb5bdaf328cc04b7ea97608ab9",
+          "body": {
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2504.11168v3",
+            "finished_utc": "2026-10-19T06:38:42.993746+00:00",
+            "kind": "HTML",
+            "mode": "VERIFIED_LEGACY_RAW_BODY",
+            "original_receipt_sha256": "0b26f402f002b16166bc4a3efa7de85c7bfffcccd2c4e3716ea9ebd01a26e3cf",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q011-1.html",
+            "sha256": "38c9178a8e32abeefa4321918ab82f6a4273835b2373d54a7c82e2a3e9cfcfed",
+            "started_utc": "2026-10-19T06:38:42.359754+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2504.11168v3",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2504.11168v3",
+          "member_id": "M0072"
+        }
+      ],
+      "value": "English is directly observed in original source-test text rows at a pre-publication commit. This is corpus-level provenance only; undocumented jailbreak filtering and revision selection prevent asserting an English evaluated subset or all-English composition.",
+      "value_sha256": "fd88f1e185549ae18102d1b4306ec88e2246dae0ba39d45b7769e9c3c9aaaaab",
+      "version": "acl:2025.llmsec-1.8:publication",
+      "work_id": "arxiv:2504.11168"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0040.checker.0001.json",
+      "checker_receipt_sha256": "804e61ee173da37a1a803c72e88fc6dca05e2ae552e23f0cbd79734804fc3696",
+      "clarification_scope": "EVALUATED_INPUT_LANGUAGE_LINKAGE_ONLY",
+      "coverage_disposition": "BOUNDED_EVALUATED_INPUT_LANGUAGE_CLARIFICATION",
+      "evidence_id": "A05-DEEP-W0040-804e61ee173d-F03",
+      "field_path": "coverage.scope_completeness",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "9aec6114000049454789ae41b677d50718e8acf4acd7ca41f9c3febcff3d4239",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0040",
+      "semantic_check": "False correctly bounds this to the requested evaluated-input language clarification. A new whole-work inventory is not asserted.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0008.json",
+          "acquisition_receipt_sha256": "12039b1ea211559b6eefc9aebad49b13b18273e98fd4ee32189e8f7bca8eaef1",
+          "body": {
+            "bytes": 605473,
+            "content_type": "application/pdf",
+            "final_url": "https://aclanthology.org/2025.llmsec-1.8.pdf",
+            "finished_utc": "2026-10-19T13:19:10.213172+00:00",
+            "kind": "PDF",
+            "mode": "PRIMARY_RETRIEVAL",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\054e85d16105c0550ac4191048347c710601e9471f7ca66888c8d985e1069d3a",
+            "sha256": "054e85d16105c0550ac4191048347c710601e9471f7ca66888c8d985e1069d3a",
+            "started_utc": "2026-10-19T13:19:08.008912+00:00",
+            "status": 200,
+            "url": "https://aclanthology.org/2025.llmsec-1.8.pdf",
+            "version_state": "EXPLICIT_URL_ONLY_BODY_VERSION_UNCONFIRMED"
+          },
+          "captured_version_id": null,
+          "member_id": "M0008"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0072.json",
+          "acquisition_receipt_sha256": "9383d631fc2cf4882083dca9cbee09819c9e1cbb5bdaf328cc04b7ea97608ab9",
+          "body": {
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2504.11168v3",
+            "finished_utc": "2026-10-19T06:38:42.993746+00:00",
+            "kind": "HTML",
+            "mode": "VERIFIED_LEGACY_RAW_BODY",
+            "original_receipt_sha256": "0b26f402f002b16166bc4a3efa7de85c7bfffcccd2c4e3716ea9ebd01a26e3cf",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q011-1.html",
+            "sha256": "38c9178a8e32abeefa4321918ab82f6a4273835b2373d54a7c82e2a3e9cfcfed",
+            "started_utc": "2026-10-19T06:38:42.359754+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2504.11168v3",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2504.11168v3",
+          "member_id": "M0072"
+        }
+      ],
+      "value": false,
+      "value_sha256": "2ed27c1421e6928dbe13dbfdb5c59e1045b30341fe7ebe05700006bc5ac572c0",
+      "version": "acl:2025.llmsec-1.8:publication",
+      "work_id": "arxiv:2504.11168"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0040.checker.0001.json",
+      "checker_receipt_sha256": "804e61ee173da37a1a803c72e88fc6dca05e2ae552e23f0cbd79734804fc3696",
+      "clarification_scope": "EVALUATED_INPUT_LANGUAGE_LINKAGE_ONLY",
+      "coverage_disposition": "BOUNDED_EVALUATED_INPUT_LANGUAGE_CLARIFICATION",
+      "evidence_id": "A05-DEEP-W0040-804e61ee173d-F04",
+      "field_path": "coverage.omissions",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "9aec6114000049454789ae41b677d50718e8acf4acd7ca41f9c3febcff3d4239",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0040",
+      "semantic_check": "Retained limits agree with the actual source linkage and distinguish source construction from whole held-out composition.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0008.json",
+          "acquisition_receipt_sha256": "12039b1ea211559b6eefc9aebad49b13b18273e98fd4ee32189e8f7bca8eaef1",
+          "body": {
+            "bytes": 605473,
+            "content_type": "application/pdf",
+            "final_url": "https://aclanthology.org/2025.llmsec-1.8.pdf",
+            "finished_utc": "2026-10-19T13:19:10.213172+00:00",
+            "kind": "PDF",
+            "mode": "PRIMARY_RETRIEVAL",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\054e85d16105c0550ac4191048347c710601e9471f7ca66888c8d985e1069d3a",
+            "sha256": "054e85d16105c0550ac4191048347c710601e9471f7ca66888c8d985e1069d3a",
+            "started_utc": "2026-10-19T13:19:08.008912+00:00",
+            "status": 200,
+            "url": "https://aclanthology.org/2025.llmsec-1.8.pdf",
+            "version_state": "EXPLICIT_URL_ONLY_BODY_VERSION_UNCONFIRMED"
+          },
+          "captured_version_id": null,
+          "member_id": "M0008"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0072.json",
+          "acquisition_receipt_sha256": "9383d631fc2cf4882083dca9cbee09819c9e1cbb5bdaf328cc04b7ea97608ab9",
+          "body": {
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2504.11168v3",
+            "finished_utc": "2026-10-19T06:38:42.993746+00:00",
+            "kind": "HTML",
+            "mode": "VERIFIED_LEGACY_RAW_BODY",
+            "original_receipt_sha256": "0b26f402f002b16166bc4a3efa7de85c7bfffcccd2c4e3716ea9ebd01a26e3cf",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q011-1.html",
+            "sha256": "38c9178a8e32abeefa4321918ab82f6a4273835b2373d54a7c82e2a3e9cfcfed",
+            "started_utc": "2026-10-19T06:38:42.359754+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2504.11168v3",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2504.11168v3",
+          "member_id": "M0072"
+        }
+      ],
+      "value": [
+        "Language clarification only. Actual paper method blocks read: physical p4 block10 and p5 block4; p1 block0 confirms ACL publication. The exact filtered evaluation subset?s English membership remains unresolved. Official README supplies no language declaration. Result-table examples/captions are not used as language evidence."
+      ],
+      "value_sha256": "dd68bc25bcdd8a4e14d9de9151f2c29121ac4b548d8862a1fd503a323f7da3a5",
+      "version": "acl:2025.llmsec-1.8:publication",
+      "work_id": "arxiv:2504.11168"
+    },
+    {
+      "checker_actor": "codex-a05-deep-checker-20261024",
+      "checker_receipt": "checker/W0040.checker.0001.json",
+      "checker_receipt_sha256": "804e61ee173da37a1a803c72e88fc6dca05e2ae552e23f0cbd79734804fc3696",
+      "clarification_scope": "EVALUATED_INPUT_LANGUAGE_LINKAGE_ONLY",
+      "coverage_disposition": "BOUNDED_EVALUATED_INPUT_LANGUAGE_CLARIFICATION",
+      "evidence_id": "A05-DEEP-W0040-804e61ee173d-F05",
+      "field_path": "clarification_scope",
+      "provider_actor": "codex-a05-deep-provider-a-20261024",
+      "provider_packet_sha256": "9aec6114000049454789ae41b677d50718e8acf4acd7ca41f9c3febcff3d4239",
+      "release_status": "CHECKED_METHOD_FIELD_NOT_ELIGIBILITY",
+      "restriction_check": "Bounded method/data or coverage fact only; source outcomes, sample counts, assurance, and eligibility judgments withheld.",
+      "review_id": "W0040",
+      "semantic_check": "Matches the neutral request for evaluated-input language linkage only.",
+      "source_identity": [
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0008.json",
+          "acquisition_receipt_sha256": "12039b1ea211559b6eefc9aebad49b13b18273e98fd4ee32189e8f7bca8eaef1",
+          "body": {
+            "bytes": 605473,
+            "content_type": "application/pdf",
+            "final_url": "https://aclanthology.org/2025.llmsec-1.8.pdf",
+            "finished_utc": "2026-10-19T13:19:10.213172+00:00",
+            "kind": "PDF",
+            "mode": "PRIMARY_RETRIEVAL",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\054e85d16105c0550ac4191048347c710601e9471f7ca66888c8d985e1069d3a",
+            "sha256": "054e85d16105c0550ac4191048347c710601e9471f7ca66888c8d985e1069d3a",
+            "started_utc": "2026-10-19T13:19:08.008912+00:00",
+            "status": 200,
+            "url": "https://aclanthology.org/2025.llmsec-1.8.pdf",
+            "version_state": "EXPLICIT_URL_ONLY_BODY_VERSION_UNCONFIRMED"
+          },
+          "captured_version_id": null,
+          "member_id": "M0008"
+        },
+        {
+          "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0072.json",
+          "acquisition_receipt_sha256": "9383d631fc2cf4882083dca9cbee09819c9e1cbb5bdaf328cc04b7ea97608ab9",
+          "body": {
+            "content_type": "text/html; charset=utf-8",
+            "final_url": "https://arxiv.org/html/2504.11168v3",
+            "finished_utc": "2026-10-19T06:38:42.993746+00:00",
+            "kind": "HTML",
+            "mode": "VERIFIED_LEGACY_RAW_BODY",
+            "original_receipt_sha256": "0b26f402f002b16166bc4a3efa7de85c7bfffcccd2c4e3716ea9ebd01a26e3cf",
+            "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-b1-method-cache-20261019\\Q011-1.html",
+            "sha256": "38c9178a8e32abeefa4321918ab82f6a4273835b2373d54a7c82e2a3e9cfcfed",
+            "started_utc": "2026-10-19T06:38:42.359754+00:00",
+            "status": 200,
+            "url": "https://arxiv.org/html/2504.11168v3",
+            "version_state": "EXACT_VERSION_SELF_LINK"
+          },
+          "captured_version_id": "arxiv:2504.11168v3",
+          "member_id": "M0072"
+        }
+      ],
+      "value": "EVALUATED_INPUT_LANGUAGE_LINKAGE_ONLY",
+      "value_sha256": "2abd729a97d0a251892cf461fbefb4ddc0209c422670a44800c3eefb4ddb8a4d",
+      "version": "acl:2025.llmsec-1.8:publication",
+      "work_id": "arxiv:2504.11168"
+    }
+  ],
+  "limits": [
+    "Only individually approved fields are released. Held fields and unapproved coverage are not evidence.",
+    "Requested version is retained; source identity/binding limits must be assessed separately.",
+    "Actual source-role separation on shared filesystem; no fresh independent final eligibility review.",
+    "No outcomes, sample/false-positive counts, assurance classes, draw, assignment or B2."
+  ],
+  "released_by": "EXPOSED_CUSTODIAN_ROOT",
+  "request_sha256": "ebc59c9e31b1f3942d2847cbf755424a1e3833032dca52e2c8eb9a531509648e",
+  "schema": "A05_DEEP_CHECKED_METHOD_RELEASE_v1",
+  "source_files": {
+    "CHECKER_CHECKPOINT.json": "5d7647b375610ab4d3b630e9d8d924b94678e01a4a76d6fe8edd53b9b98086be",
+    "checker/W0031.checker.0001.json": "18c6a4c7801e3ab03c468b3cc8c429d57a7de5c715503459ef0620123993c218",
+    "checker/W0040.checker.0001.json": "804e61ee173da37a1a803c72e88fc6dca05e2ae552e23f0cbd79734804fc3696"
+  },
+  "source_git_commit": "53efbe7f0e44bd189728e0f2cd03892f5b1d221a"
+}
