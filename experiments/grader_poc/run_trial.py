@@ -11,7 +11,7 @@ import json
 import os
 import platform
 import signal
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 import subprocess
 import sys
 import time
@@ -23,11 +23,20 @@ from experiments.grader_poc.harbor_resources import HarborResources, defer_inter
 def git_output(root: Path, *args: str) -> str:
     """Read provenance from the named repository, never the caller's checkout."""
     executable, directory = "git", str(root)
-    # Windows-created worktrees have an absolute C:/... gitdir pointer. Use
-    # Windows Git under WSL without rewriting metadata used by other sessions.
+    # Only Windows-created worktrees need Windows Git under WSL. Native Linux
+    # clones must keep native Git's path and ownership semantics (G025).
     if sys.platform == "linux" and "microsoft" in platform.release().lower():
-        executable = "git.exe"
-        directory = subprocess.check_output(["wslpath", "-w", str(root)], text=True).strip()
+        resolved = root.resolve()
+        for parent in (resolved, *resolved.parents):
+            marker = parent / ".git"
+            if marker.is_dir():
+                break
+            if marker.is_file():
+                label, _, target = marker.read_text(encoding="utf-8").strip().partition(":")
+                if label == "gitdir" and PureWindowsPath(target.strip()).is_absolute():
+                    executable = "git.exe"
+                    directory = subprocess.check_output(["wslpath", "-w", str(resolved)], text=True).strip()
+                break
     return subprocess.check_output([executable, "-c", "core.longpaths=true", "-C", directory, *args], text=True).strip()
 
 

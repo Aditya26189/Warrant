@@ -105,6 +105,7 @@ receipts. Every output path must be absent; do not overwrite historical evidence
   --prepared experiments/grader_poc/transfer/evidence/prepared \
   --raw "$REPLAY_DIR/run" --out "$REPLAY_DIR/package"
 "$REPLAY_PYTHON" -m unittest \
+  experiments.grader_poc.test_provenance \
   experiments.grader_poc.feasibility.test_feasibility \
   experiments.grader_poc.baseline.test_baseline \
   experiments.grader_poc.transfer.test_transfer -v
