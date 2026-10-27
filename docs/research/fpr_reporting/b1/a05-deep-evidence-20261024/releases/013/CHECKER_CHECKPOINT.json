@@ -1,0 +1,29 @@
+{
+  "created_utc": "2026-10-27T06:28:55.352757+00:00",
+  "files": [
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0129.checker.0001.json",
+      "sha256": "be58e13c9ab2a7d70c764463766c35d5cf57d54cef7c58eb1a06fcab49010e51"
+    },
+    {
+      "path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0130.checker.0001.json",
+      "sha256": "517a5565da0fe1a7ac0a80877d4d295adb8e31250dcb8b40a341fea84003b796"
+    }
+  ],
+  "latest_receipts": {
+    "W0129": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0129.checker.0001.json",
+    "W0130": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-a\\foreign-checks\\W0130.checker.0001.json"
+  },
+  "limitations": [
+    "Freezes exactly two already completed foreign-provider source/restriction checks; no provider-A batch completion is asserted.",
+    "Actual provider B and checker A are distinct existing actors; no new actor, fresh independent final review, source recheck or fabricated seal is claimed.",
+    "All earlier freezes and receipts remain unchanged. Only individually approved fields may be released; held scope is not a whole-work exclusion.",
+    "No outcomes, counts, assurance classification, discovery, sampling or B2."
+  ],
+  "prepared_by": "EXPOSED_CUSTODIAN_ROOT",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "schema": "A05_CUSTODIAN_FREEZE_OF_EXISTING_SOURCE_CHECKS_v1",
+  "source_git_commit": "23187a9da213bf3cfe68268266d7de676ca41e6e",
+  "status": "EXISTING_RECEIPTS_FROZEN_NOT_NEW_SOURCE_CHECK_OR_INDEPENDENT_REVIEW",
+  "unique_checked_works": 2
+}

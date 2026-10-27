@@ -1,0 +1,275 @@
+{
+  "schema": "A05_RESTRICTED_SOURCE_CHECK_v1",
+  "review_id": "W0129",
+  "actor": "codex-a05-deep-provider-a-20261024",
+  "created_utc": "2026-10-27T03:34:05.872966+00:00",
+  "status": "SOURCE_CHECK_ONLY_NOT_ELIGIBILITY_OR_FINAL_RELEASE",
+  "provider_packet": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a05-deep-20261024\\provider-b\\works\\W0129.provider.0001.json",
+  "provider_packet_sha256": "73594829e105a8a85fc6f18c2569cec97b29a6fd9f39724ab5f8e896c502165a",
+  "request_sha256": "9c2490d94a69088889609d86ace0b19be4cfa4cd7feacec3e311bd24ee4fe45e",
+  "requested_preferred_version": "arxiv:2601.21083v3",
+  "source_identity": {
+    "raw_path": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\raw\\c6e56f19b1bc36cd0e8b2c809ab7859d59a1850f76a35104fe3b9f16d18a002d",
+    "raw_sha256": "c6e56f19b1bc36cd0e8b2c809ab7859d59a1850f76a35104fe3b9f16d18a002d",
+    "URL": "https://arxiv.org/html/2601.21083v3",
+    "acquisition_receipt": "C:\\Users\\LawLight\\Desktop\\accenture\\.venv\\fpr-a04-evidence-v1-20261019\\acquisition\\M0173.json",
+    "acquisition_receipt_sha256": "b25fbc7b00ee70fcbfb5c98f343338915992dbfb3e2f2d03605bb6c7c6b71659",
+    "captured_version_id": "arxiv:2601.21083v3",
+    "version_state": "EXACT_VERSION_SELF_LINK"
+  },
+  "mechanical_check": {
+    "raw_hash_verified": true,
+    "acquisition_hash_verified": true,
+    "provider_locator_mismatches": []
+  },
+  "actual_context_check": {
+    "inspected_block_ranges": [
+      [
+        12,
+        32
+      ],
+      [
+        38,
+        39
+      ],
+      [
+        47,
+        48
+      ],
+      [
+        59,
+        62
+      ]
+    ],
+    "coverage_disposition": "DECLARED_METHOD_FAMILIES_VERIFIED",
+    "semantic_rationale": "Actual main environment, reward, baseline setup, operational metric definitions and only appendix method were inspected. Declared study scope is simulated incident episodes and action calibration under injected evidence; baseline execution and decomposed-reward training are covered. All provider locator hashes match exact preferred version. Language composition remains unestablished beyond the explicit multilingual payload stratum.",
+    "locators": [
+      {
+        "n": 12,
+        "kind": "heading",
+        "id": "S2",
+        "sha256": "174938cfe1d8c04d58f35f4c099060720fab92ec4b3c92df412888a52f82f336"
+      },
+      {
+        "n": 13,
+        "kind": "paragraph",
+        "id": "S2.p1.1",
+        "sha256": "1a7e021b85b92ece2ae7c213cdbc888ea81a1187896ac3cce3868630f291094b"
+      },
+      {
+        "n": 14,
+        "kind": "paragraph",
+        "id": "S2.p2.1",
+        "sha256": "a15304b741d0075fc868b4a7008a63e2fa68b1b4e526984500a479c92b070aeb"
+      },
+      {
+        "n": 15,
+        "kind": "paragraph",
+        "id": "S2.p3.1",
+        "sha256": "fa757221afeb9113b3ea6e96dbe3e3665f0f44a8657c32d908fbbc201698bc84"
+      },
+      {
+        "n": 16,
+        "kind": "heading",
+        "id": "S2.SS1",
+        "sha256": "396ba90695029e97d58372ecc7bb56ca93f8c18546b22ea39c2d51f30780350e"
+      },
+      {
+        "n": 17,
+        "kind": "paragraph",
+        "id": "S2.SS1.p1.1",
+        "sha256": "d1ecfbd160902829c8909b116fd9ddd2b84b590c45df12fff790e37b24da00c7"
+      },
+      {
+        "n": 18,
+        "kind": "paragraph",
+        "id": "S2.SS1.p2.1",
+        "sha256": "9e7b4a92f0ebb2978ffd3c4ff294c3a4c429511b878b4a5d30fcda5064d3e166"
+      },
+      {
+        "n": 19,
+        "kind": "paragraph",
+        "id": "S2.SS1.p3.1",
+        "sha256": "fe3948ff72d8f6b9bf07ed5aaab175133fc847039e8d0f5a737ab386f4ea55fb"
+      },
+      {
+        "n": 20,
+        "kind": "paragraph",
+        "id": "S2.SS1.p4.1",
+        "sha256": "ecf10dd0df8faede0a2d360c7903a5bca4eb9f9d1c4122dcc4370245e3450c89"
+      },
+      {
+        "n": 21,
+        "kind": "paragraph",
+        "id": "S2.SS1.p5.1",
+        "sha256": "815e81aa47df02ef2c6ee6b8a67b4214439d7add4ec579c4c6a5abfd63e14d1a"
+      },
+      {
+        "n": 22,
+        "kind": "heading",
+        "id": "S3",
+        "sha256": "84746268e5ef5b2b4b107f1bdc39653b630add2959f680c319f56bc7efffa4c3"
+      },
+      {
+        "n": 23,
+        "kind": "paragraph",
+        "id": "S3.p1.1",
+        "sha256": "4cab39ce6d471fe3b864a3e7128ffb9bbf3b0a5cfee115b780a240c94893209c"
+      },
+      {
+        "n": 24,
+        "kind": "paragraph",
+        "id": "S3.p2.1",
+        "sha256": "cf0a5c54f07754486164f470e2419aa3e486ec2a0da290a629a4e1c8a8891d88"
+      },
+      {
+        "n": 25,
+        "kind": "heading",
+        "id": "S3.SS1",
+        "sha256": "a463addf99d1f8bb4a26e8668e98a50cb9eef89a6399187fd59fbe635946ed0e"
+      },
+      {
+        "n": 26,
+        "kind": "paragraph",
+        "id": "S3.SS1.p1.1",
+        "sha256": "5bc8a883cfa5c412814388a155a290d574d850d012e3df40286ffc6956b327f1"
+      },
+      {
+        "n": 27,
+        "kind": "paragraph",
+        "id": "S3.SS1.p2.1",
+        "sha256": "1a6d9c0e97777b899d9530fdc30d6b73d3f4330cfd2753ce1c799261f5551315"
+      },
+      {
+        "n": 28,
+        "kind": "paragraph",
+        "id": "S3.SS1.p3.1",
+        "sha256": "efe62a7e65ea32357b125479480543ca3da6dfeff934897237e275b97a770712"
+      },
+      {
+        "n": 29,
+        "kind": "paragraph",
+        "id": "S3.SS1.p4.1",
+        "sha256": "0a1a1680b7d784a2e59b0fb98b252c3969478d76ef8db6a284e3c95f79abec94"
+      },
+      {
+        "n": 30,
+        "kind": "heading",
+        "id": "S4",
+        "sha256": "64f812ee1ac77fefdaaf147aa31f7c9cb05909a7f42347a46f704ce5860d99fa"
+      },
+      {
+        "n": 31,
+        "kind": "paragraph",
+        "id": "S4.p1.1",
+        "sha256": "1adf2768add78c9eddf00e19ac74b7c75903a1cd22f2c8685c40c018e7c55327"
+      },
+      {
+        "n": 32,
+        "kind": "paragraph",
+        "id": "S4.p2.1",
+        "sha256": "72bd9870abe2cf48f39b8161871bb362084c2fb11a7b91787c21fb5490c09cc5"
+      },
+      {
+        "n": 38,
+        "kind": "heading",
+        "id": "S4.SS2",
+        "sha256": "11d81a8d5da991edd0443634b0623e35ff68fe1717d6e6f29622c396b22fffcd"
+      },
+      {
+        "n": 39,
+        "kind": "paragraph",
+        "id": "S4.SS2.p1.1",
+        "sha256": "46d872c08a1b9c555be1e5bd1e3c2e167d631330772508e826fc36fb9f4f4a7c"
+      },
+      {
+        "n": 47,
+        "kind": "paragraph",
+        "id": "S6.p1.1",
+        "sha256": "df8e6aa51057d476e29c8c1b4d54da174fe11b69fac9c348b0e9521b1fdce0f5"
+      },
+      {
+        "n": 48,
+        "kind": "paragraph",
+        "id": "S6.p2.1",
+        "sha256": "8526ae6cbe6ac7f4642b40f02ed56b9beb7ef58661611dccc97dec6fc685ab10"
+      },
+      {
+        "n": 59,
+        "kind": "heading",
+        "id": "A1",
+        "sha256": "81898d8f1def9b43110af3ac109e4bf89b9e64e5f2dbd958397c00a70cfdc55d"
+      },
+      {
+        "n": 60,
+        "kind": "paragraph",
+        "id": "A1.p1.1",
+        "sha256": "16216c9401596624f59dd4e112f504026329ee862698e2926286f517c627f388"
+      },
+      {
+        "n": 61,
+        "kind": "heading",
+        "id": "A1.SS1",
+        "sha256": "7fdbe7984bb89283060df10c46c0946b14a5d4315aa77fdbb8f07a8c9b8ee9fc"
+      },
+      {
+        "n": 62,
+        "kind": "paragraph",
+        "id": "A1.SS1.p1.1",
+        "sha256": "4becd87fb791fac88ad8e33accdf7224dc96736e46e3a681cb5ea50bbfc13fc3"
+      }
+    ],
+    "locator_sha256": "bbbbb3a29e717f82788224a6fff6f56028047434627b3ae222ac9085439dc281",
+    "nonparagraph_section_receipts": [
+      {
+        "id": "S2",
+        "element_html_sha256": "d1af6b755dcde8b03baa735182e249aff5edf2d2a4e2ae52e194508517d9cb89",
+        "element_text_sha256": "3c14536024e879115fcb4f8c54321f2d4a3f430c422d78fdf0b3a1e41db0ee55"
+      },
+      {
+        "id": "S3",
+        "element_html_sha256": "1c729bd2fc79a90aa2fb8aa7d8027de710184e55faa0877dd677ba4cd54eeac7",
+        "element_text_sha256": "596d0071edafa1f9d2a035495ae9bf8b2176f7a061475d6c959a854c478ff3b8"
+      },
+      {
+        "id": "A1.SS1",
+        "element_html_sha256": "fa0567e49babd4c46ac9168283e0f28b57e11dad65131c9cc936d385efd6bdc8",
+        "element_text_sha256": "440bb94495cb0c59f6d97438a46f693d5e85819ea1de2d2d49bd6f8b40e42ca3"
+      }
+    ],
+    "omissions": [
+      "Ordinary outcome table/caption and result/interpretation findings withheld; later discussion/limitations checked only for methodological scope. Full prompt templates and all underlying scenario languages are unspecified."
+    ]
+  },
+  "per_fact": [
+    {
+      "field_path": "method_summary",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual13?21/32 defines simulated log/alert/email evidence, fixed state-machine attacker and explicit payload strata; the summary reports construction only.",
+      "restriction_rationale": "Bounded method/data or scope fact only; no source outcomes, counts, assurance or eligibility transferred."
+    },
+    {
+      "field_path": "arm_inventory[0]",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual23?29/31?32/39 defines executed-action/state scoring, attribution/containment and payload-substring violation; actual62 specifies original Qwen GDPO training with decomposed rewards. Generated defender actions are required; report prose is not containment execution.",
+      "restriction_rationale": "Bounded method/data or scope fact only; no source outcomes, counts, assurance or eligibility transferred."
+    },
+    {
+      "field_path": "coverage.scope_completeness",
+      "decision": "APPROVE",
+      "semantic_fidelity": "Actual full main environment/reward/setup and Appendix A method cover declared original incident-response baseline and training families. Operational metrics extend the same executed-action task. Exact model names are not needed to infer another task family; no English corpus-composition claim is approved.",
+      "restriction_rationale": "Bounded method/data or scope fact only; no source outcomes, counts, assurance or eligibility transferred."
+    }
+  ],
+  "restriction_check": {
+    "outcomes_transferred": false,
+    "eligibility_judgments_transferred": false,
+    "raw_source_quotes_transferred": false,
+    "provider_incidental_exposure": [
+      "Shared filesystem, no OS isolation or fresh-independence claim.",
+      "Operational COORDINATION.md and generated SHARED_CONTEXT.md accessed; board output included historical research-status prose. No scientific eligibility files or human sheet inspected.",
+      "Adjacent source outcomes may have been visible in inspected blocks; none are transferred in this draft."
+    ],
+    "checker_exposure": "Same existing provider-a actor, now checking only other actor B at explicit user direction. Shared filesystem; no OS isolation/fresh-independence claim. Read COORDINATION.md, earlier SHARED_CONTEXT.md and operational board; earlier board content incidentally displayed research statuses/counts. Latest operational read after515 was parsed for status metadata without displaying message prose. Read neutral requests, other-provider source packets, exact frozen bodies/receipts and one checker schema example. No custodian eligibility documents, A03 logs or human sheets accessed. Source context may interleave outcomes/counts; these are withheld and not used as method evidence."
+  }
+}
