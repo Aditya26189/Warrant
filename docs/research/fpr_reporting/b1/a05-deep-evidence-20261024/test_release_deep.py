@@ -78,6 +78,19 @@ class ReleaseBoundaryTests(unittest.TestCase):
         check["mechanical_check"] = {"raw_body_available": False, "acquisition_hash_verified": True}
         self.assertEqual(r.checked_fields(check, self.packet, self.raw), [])
 
+    def test_bounded_page_language_inspection_requires_a_boolean(self) -> None:
+        path = "additional_source_inspection.language_declaration_found"
+        for value in (False, True):
+            packet = {"additional_source_inspection": {"language_declaration_found": value}}
+            self.assertIs(r.field(packet, path), value)
+        for value in (None, "false", 0, {"language": "English"}):
+            packet = {"additional_source_inspection": {"language_declaration_found": value}}
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                r.field(packet, path)
+        with self.assertRaises(ValueError):
+            r.field({"additional_source_inspection": {"outcomes": []}},
+                    "additional_source_inspection.outcomes")
+
     def test_access_gap_still_requires_explicit_restriction_pass(self) -> None:
         check = copy.deepcopy(self.check)
         check["mechanical_check"] = {"raw_body_available": False, "acquisition_hash_verified": True}
