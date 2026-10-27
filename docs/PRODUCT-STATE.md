@@ -2,9 +2,9 @@
 
 This page is the current entry point for assessing Warrant as software. It
 began with the 1 October 2026 root-release review and was updated after the
-7 October week-one gate. This entry point was updated on 25 October 2026
-to include the isolated grader-audit track and correct the historical verification
-reference. The [claim table](../README.md)
+7 October week-one gate. This entry point was updated on 27 October 2026
+to reflect the closed grader-audit feasibility study; the earlier verification
+references remain tied to their recorded commits. The [claim table](../README.md)
 and [results](../results/RESULTS.md) hold measured research numbers; this page
 does not restate them. [The code tour](CODE_TOUR.md) explains each package,
 and [limitations](LIMITATIONS.md) carries the detailed statistical caveats.
@@ -72,7 +72,7 @@ for refusal and error behavior.
 | Research pipeline | Question-time activation extraction, frozen evaluation sets and scores, probe training, statistical controls, model and text-detector adapters, validation, a detector-by-envelope matrix, report generation and claim verification. | [Results](../results/RESULTS.md) and the [claim table](../README.md) are reproducible claims about the named evaluation envelopes. They do not establish performance on another model, task or customer's traffic. Some matrix cells and detector tiers are fixtures, explicitly separated from measurements. |
 | Monitoring and policy demonstrations | Drift checks and revocation traces, a Rego policy path, an action-gate implementation, a LiteLLM adapter and simulated on-traffic sampling and cost studies. | [Architecture](ARCHITECTURE.md), [results](../results/), and [case matrix](CASES.md) document the exercises. These are not a running gateway, live traffic monitor, production policy service or robustness study. |
 | Evidence infrastructure | Committed frozen-score artifacts, source/config provenance, content-hashed evaluation sets, an append-only methodological decision log, claim checks and clean-clone records. | [`scripts/verify.py`](../scripts/verify.py) can recompute published claims from retained artifacts. The [artifact guide](ARTIFACTS.md) distinguishes frozen scores, fixtures, declared scenarios and generated reports. The [full clean-clone record](../results/clean_clone.json) names the later integrated source it tested; read that commit before applying its pass to another head. |
-| Experimental grader audit | Pinned task/candidate hashes, scoped counterexamples, repair controls, abstentions, retained failed attempts and scoped Docker cleanup. The latest payments regression runs through real Kafka and HTTP in a local synthetic stack. | [Experiment guide](../experiments/grader_poc/README.md), [payments report](../reports/PHASE-GRADER-PAYMENTS-E2E.md), [P2 comparison](../reports/PHASE-GRADER-P2.md) and [cleanup correction](../reports/PHASE-GRADER-CANCELLATION.md). This is outside the shipped CLI and statistical certification. No comparative discovery advantage, independent human replication or production use is established. |
+| Experimental grader audit | Retained known omissions and repair controls, followed by a closed conventional-mutation study that found no new omission in calibration or reserved tasks. Packets retain task/candidate hashes, scoped properties, failed attempts and execution receipts. | [Closing study](../reports/GATE4-TRANSFER.md) and [experiment guide](../experiments/grader_poc/README.md), including the earlier [payments regression](../reports/PHASE-GRADER-PAYMENTS-E2E.md). The decision is to stop custom discovery-engine development on this evidence. This is outside the shipped CLI and statistical certification; no comparative discovery advantage, human effort savings or product demand is established. |
 | Test infrastructure | Source, installed-wheel, document, claim and acceptance tests, with Linux and Windows CI jobs declared. | [Testing guide](TESTING.md) and [CI configuration](../.github/workflows/ci.yml) show what is exercised. The [test inventory](../results/test_inventory.json) records collection only; it is not proof that the full suite or remote CI passed at the current head. |
 
 ## Deployment and assurance gaps

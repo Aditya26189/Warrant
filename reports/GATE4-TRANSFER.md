@@ -185,15 +185,12 @@ no patch or message was submitted upstream.
   original source whitespace; it must not be normalized merely to silence
   generic lint/diff warnings on copied upstream code.
 
-From clean committed source, using the Gate1 pinned EvalPlus checkout and
-Linux environment, write each output to a fresh directory outside the repo:
-
-```sh
-python -m experiments.grader_poc.transfer.prepare --archive ../HumanEvalPlus-v0.1.10-feasibility.jsonl.gz --out ../fresh-transfer-prepared
-/tmp/warrant-gate1-20261026-venv/bin/python -m experiments.grader_poc.transfer.run --evalplus-root ../evalplus-feasibility-source --prepared ../fresh-transfer-prepared --out ../fresh-transfer-run
-python -m experiments.grader_poc.transfer.package --prepared ../fresh-transfer-prepared --raw ../fresh-transfer-run --out ../fresh-transfer-package
-python -m unittest experiments.grader_poc.feasibility.test_feasibility experiments.grader_poc.baseline.test_baseline experiments.grader_poc.transfer.test_transfer -v
-```
+Use the [portable Linux/WSL replay instructions](../experiments/grader_poc/README.md#replay-the-closed-transfer-study-cpu-only)
+for a fresh virtual environment, pinned dependency installation, exact EvalPlus
+checkout, run, packaging and focused tests. They support replay from the committed
+prepared packet and optional preparation from the hash-checked original archive.
+No temporary path from the producing assistant's environment is required. Keep
+all new outputs outside the clean source checkout; preserve the historical packet.
 
 The reproduction target is matching pools, scoped properties and verdicts;
 timing and source metadata naturally differ. Held-out reservations have now

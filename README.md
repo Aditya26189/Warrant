@@ -89,18 +89,23 @@ counterexample, repair controls, abstentions and failed attempts. This is eviden
 about a source of evaluation labels; it does not itself establish a statistical
 warrant or label correctness outside the tested scope.
 
-The latest [payments experiment](reports/PHASE-GRADER-PAYMENTS-E2E.md) reproduces
-an accepted faulty worker through real Kafka and HTTP in a local synthetic stack.
-The appended boundary checks reject that worker while accepting the supplied
-reference and equivalent implementation. The report retains an invalid harness
-attempt and limits the result to the tested conditions and observation window.
+The latest [bounded feasibility study](reports/GATE4-TRANSFER.md) is complete.
+The frozen conventional mutation method found no new omission in calibration or
+the reserved tasks: the full existing graders rejected every generated candidate.
+The closing decision is to stop custom discovery-engine development on this
+evidence. This finite negative result does not establish that grader auditing
+in general is ineffective; human effort savings and customer demand remain
+unmeasured.
 
-**Status: experimental, outside the shipped `warrant` CLI.** The
-[broader comparison](reports/PHASE-GRADER-P2.md) has not demonstrated an advantage
-over manual assertion review or ordinary mutation testing. Independent replication,
-broader correct-implementation coverage and customer demand remain open. Read the
-[experiment guide and replay instructions](experiments/grader_poc/README.md) for
-the evidence packets, runner cleanup checks, dependency requirements and limits.
+The earlier [payments experiment](reports/PHASE-GRADER-PAYMENTS-E2E.md) retains a
+reproducible known omission through real Kafka and HTTP in a local synthetic
+stack. Its repair rejects the faulty worker while accepting the supplied
+reference and equivalent implementation under the tested conditions. It does
+not supply new-discovery evidence or an advantage over ordinary assertion review.
+
+**Status: retained experimental evidence, outside the shipped `warrant` CLI.**
+Read the [experiment guide and replay instructions](experiments/grader_poc/README.md)
+for the completed study, historical evidence packets and execution limits.
 
 <br/>
 

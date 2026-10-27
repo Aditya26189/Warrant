@@ -23,6 +23,7 @@
 | You are… | Read, in this order |
 |:---|:---|
 | **Assessing what has actually shipped** | [PRODUCT-STATE.md](PRODUCT-STATE.md) -> [LIMITATIONS.md](LIMITATIONS.md) -> [TESTING.md](TESTING.md) |
+| **Reviewing the completed grader-audit experiment** | [Closing study](../reports/GATE4-TRANSFER.md) -> [evidence and replay guide](../experiments/grader_poc/README.md) -> [protocol](FEASIBILITY_EXPERIMENT_SPEC.md) |
 | 🛡️ **Running it on your own detector** | [SETUP.md](SETUP.md) §0 → [INPUT.md](INPUT.md) → [../examples/README.md](../examples/README.md) → [TROUBLESHOOTING.md](TROUBLESHOOTING.md) → [FAQ.md](FAQ.md) |
 | 📋 **Preparing evidence for a validation function** | [RELEASE.md](RELEASE.md) → [EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md) → [LIMITATIONS.md](LIMITATIONS.md) §3.5–3.7 |
 | 🏦 **Assessing it for a regulated buyer** | [RBI-MRM-2026-CROSSWALK.md](RBI-MRM-2026-CROSSWALK.md) → [PILOT-PROTOCOL.md](PILOT-PROTOCOL.md) → [LIMITATIONS.md](LIMITATIONS.md) |
