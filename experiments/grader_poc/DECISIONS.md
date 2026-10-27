@@ -169,3 +169,22 @@ This is held-out from method tuning, not secured or independent blinding. Human 
 ## G024 - 2026-10-27: close bounded discovery study with a negative result
 
 At clean63cc002, all three reserved tasks completed:10/21/6mutants, all37rejected by the full grader, no survivor or new omission; all9control trials passed. Two task57mutations pass base inputs but are rejected by existing plus tests. No invalid control, worker timeout or apparatus failure occurred in the scientific run. Preserve all evidence; combined with calibration,50frozen mutations yielded no new omission. The human-cost gate remains unmeasured; native grader time meets2seconds but complete control workers sometimes exceed it. Alternatives87/57 share core algorithms with their subsequently exposed references, limiting control diversity. Close the bounded study and recommend no further custom-engine development on this evidence. Do not add ranking, operators or new datasets to rescue this result; no external repair packet condition was met. Earlier known-omission evidence and production Warrant remain unchanged.
+
+
+## G025 - 2026-10-27: repair mixed-filesystem WSL provenance during closeout
+
+Fresh replay of the portable documentation at clean343ff2b installed the pinned
+runtime and cloned the pinned EvalPlus revision in a Linux temporary directory.
+Before candidate execution, the run failed with HARNESS_ERROR: the existing
+git_output helper selects Windows Git for every WSL path, and Windows Git rejects
+the native Linux checkout's ownership. The failed run remains at
+/tmp/warrant-transfer-replay.cIh08Z/run; its receipt is not a grader rejection.
+
+Choose Git per repository metadata: native Git for normal Linux checkouts and
+POSIX worktrees, Windows Git plus wslpath only for a worktree whose gitdir pointer
+is an absolute Windows path. Preserve normal Git errors and ownership checks;
+do not add global safe.directory exceptions. Add focused regression tests and
+replay from a new clean source commit and fresh outputs. No change to task
+selection, candidate pools, scoped properties, budgets, upstream code or the
+closed study's decision. Preserve all historical packets. The new replay checks
+handoff portability, not independent replication or additional discovery evidence.

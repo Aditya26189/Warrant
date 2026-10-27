@@ -1,6 +1,14 @@
 # Bounded grader experiment
 
-Start with the latest [payments end-to-end report](../../reports/PHASE-GRADER-PAYMENTS-E2E.md) and [machine-readable summary](payments_e2e/evidence/summary.json). This directory is an isolated experiment, outside Warrant's shipped CLI and certification pipeline. The report describes the result and its limits; this file describes the evidence and replay.
+Start with the [closing feasibility report](../../reports/GATE4-TRANSFER.md) and
+[machine-readable transfer summary](transfer/evidence/summary.json). The bounded
+study is complete, with a negative discovery result and a decision to stop custom
+discovery-engine development on this evidence. This directory is an isolated
+research experiment, outside Warrant's shipped CLI and certification pipeline.
+
+Use [the transfer replay below](#replay-the-closed-transfer-study-cpu-only) for the
+latest study. The Harbor/Docker instructions later in this guide reproduce the
+earlier known-omission examples; they are not prerequisites for transfer replay.
 
 The original [session-window phase report](../../reports/PHASE-GRADER-P0-P1.md) and [observed summary](results/summary.json) remain the historical starting point.
 
@@ -10,7 +18,20 @@ The [P2 validation report](../../reports/PHASE-GRADER-P2.md) records additional-
 
 ## Current result and limits
 
-The latest payments extension tests the known zero-balance omission through real
+The frozen conventional mutation method found no specification-backed omission
+in the [calibration baseline](../../reports/GATE2-BASELINE.md) or the subsequent
+[reserved-task transfer](../../reports/GATE4-TRANSFER.md). Full existing EvalPlus
+graders rejected every generated mutant. Correct controls passed, but no mutant
+reached witness search. The benchmark discovery path therefore remains untested
+end-to-end on an accepted faulty candidate.
+
+This finite result does not estimate the prevalence of grader defects. Human
+setup effort, a human-review comparison, method superiority and customer demand
+were not established. Coverage ordering was not built; no new omission qualified
+for a repair or upstream submission. Reopening needs a concrete external evaluator
+problem and a measurable repeated workflow, as defined in the closing report.
+
+The earlier payments extension tests the known zero-balance omission through real
 Kafka and HTTP in a synthetic local stack. The original grader accepts the faulty
 worker; the appended boundary checks reject it while accepting the supplied
 reference and equivalent implementation. The invalid first reference attempt is
@@ -29,6 +50,9 @@ gate, collection repair and verification scope.
 
 ## Inspect without execution
 
+- [Closed protocol](../../docs/FEASIBILITY_EXPERIMENT_SPEC.md) and [decision log](DECISIONS.md): frozen scope, omissions in the comparison and the stopping decision.
+- [Gate1 calibration](../../reports/GATE1-FEASIBILITY.md), [Gate2 baseline](../../reports/GATE2-BASELINE.md) and [closing transfer](../../reports/GATE4-TRANSFER.md): read in order for the study's development; earlier reports retain their historical next-step advice.
+- [Transfer summary](transfer/evidence/summary.json), [trial measurements](transfer/evidence/MEASUREMENTS.md) and [manifest](transfer/evidence/manifest.json): derived totals, each trial and hashes binding the prepared/raw evidence. These are integrity records, not independent attestation.
 - [Payments report](../../reports/PHASE-GRADER-PAYMENTS-E2E.md), [summary](payments_e2e/evidence/summary.json) and [manifest](payments_e2e/evidence/manifest.json): real-stack observations, controls, failed attempt, source bindings, omitted runtime snapshots and raw/packaged hashes.
 - [Grader-only payments patch](payments_e2e/evidence/grader-payments-e2e-cases-002/reference-repaired.patch): appended tests and helper, without a worker mutation; reviewable locally, not submitted upstream.
 - [P2 report](../../reports/PHASE-GRADER-P2.md) and [cancellation correction](../../reports/PHASE-GRADER-CANCELLATION.md): broader comparisons, negative results, cleanup evidence and scope limits.
@@ -42,7 +66,76 @@ gate, collection repair and verification scope.
 
 Terminal-Bench-derived files retain upstream canary comments and are covered by `results/TERMINAL_BENCH_LICENSE.txt`. Patches under `results/cases/` identify the changes made. Do not use this task or its solutions as uncontaminated model-training/evaluation data.
 
-## Replay prerequisites
+## Replay the closed transfer study (CPU only)
+
+Use Linux or WSL with Python 3.12 and Git, from a clean committed checkout
+containing this guide. Keep full Git history: preparation checks the frozen
+baseline revision with `git show`. On Windows-created worktrees under WSL,
+the provenance helper also needs `git.exe` and `wslpath`. Preserve tracked file
+bytes; line-ending conversion can invalidate the prepared-source hash bindings.
+
+This replay needs neither Harbor nor Docker. It executes only the reviewed
+benchmark controls and their fixed mutations; the process runner is not a
+hostile-code sandbox or an arbitrary submission service. Use normal Python
+execution, without `-O` or `PYTHONOPTIMIZE`, because integrity checks use asserts.
+
+The following Bash setup creates fresh directories outside the checkout. Initial
+dependency/source acquisition needs network access. Once acquired, execution is
+local and needs no GPU, API credits or paid service. The requirements file pins
+the small runtime dependency set separately from Warrant's production packages.
+
+```bash
+REPLAY_DIR=$(mktemp -d "${TMPDIR:-/tmp}/warrant-transfer-replay.XXXXXX")
+python3.12 -m venv "$REPLAY_DIR/venv"
+REPLAY_PYTHON="$REPLAY_DIR/venv/bin/python"
+"$REPLAY_PYTHON" -m pip install -r experiments/grader_poc/feasibility/requirements.txt
+git -c core.autocrlf=false clone https://github.com/evalplus/evalplus "$REPLAY_DIR/evalplus"
+git -C "$REPLAY_DIR/evalplus" checkout --detach 26d6d00bb1fd0fa37f39c99d5290da67891d1c5e
+```
+
+Replay using the committed prepared packet, then verify and package the new raw
+receipts. Every output path must be absent; do not overwrite historical evidence.
+
+```bash
+"$REPLAY_PYTHON" -m experiments.grader_poc.transfer.run \
+  --evalplus-root "$REPLAY_DIR/evalplus" \
+  --prepared experiments/grader_poc/transfer/evidence/prepared \
+  --out "$REPLAY_DIR/run"
+"$REPLAY_PYTHON" -m experiments.grader_poc.transfer.package \
+  --prepared experiments/grader_poc/transfer/evidence/prepared \
+  --raw "$REPLAY_DIR/run" --out "$REPLAY_DIR/package"
+"$REPLAY_PYTHON" -m unittest \
+  experiments.grader_poc.test_provenance \
+  experiments.grader_poc.feasibility.test_feasibility \
+  experiments.grader_poc.baseline.test_baseline \
+  experiments.grader_poc.transfer.test_transfer -v
+```
+
+Check `run/outcome.json`, `package/summary.json` and `package/MEASUREMENTS.md`.
+The target is matching candidate pools, scoped properties and verdicts, not
+identical durations, timestamps or source-revision fields. A matching replay
+does not turn the already exposed reservations into new holdouts or provide
+independent scientific validation.
+
+To also reproduce preparation from the original dataset, acquire the archive
+identified in [the pinned config](feasibility/config.json). The preparation CLI
+checks its SHA-256 and the reserved-record hashes before using it:
+
+```bash
+curl --fail --location \
+  https://github.com/evalplus/humanevalplus_release/releases/download/v0.1.10/HumanEvalPlus.jsonl.gz \
+  --output "$REPLAY_DIR/HumanEvalPlus.jsonl.gz"
+"$REPLAY_PYTHON" -m experiments.grader_poc.transfer.prepare \
+  --archive "$REPLAY_DIR/HumanEvalPlus.jsonl.gz" --out "$REPLAY_DIR/prepared"
+```
+
+Then rerun the two replay/packaging commands with `--prepared "$REPLAY_DIR/prepared"`
+and fresh output names, such as `run-from-archive` and `package-from-archive`.
+License copies are retained with the calibration fixtures:
+[EvalPlus](feasibility/fixtures/EVALPLUS-LICENSE) and
+[original HumanEval](feasibility/fixtures/HUMANEVAL-LICENSE).
+
+## Historical Harbor replay prerequisites
 
 Use Linux or WSL with Python 3.12, Git, Docker Engine and Docker Compose. Windows can execute the diagnostic using Docker Desktop; full Harbor trials in the recorded run used WSL. Docker must have access to the task and output paths. Downloading packages/images requires internet; no paid API credentials, GPU or model are needed.
 
