@@ -1,0 +1,9 @@
+{
+  "source_url": "https://github.com/lzwhehe/benign-instruction-bench",
+  "expected_source_commit": "5d0ae7c438a7b01be2ac0a2e8bc943e45c8f851f",
+  "score_glob": "results/many/*.json",
+  "reviewed_paths": ["README.md", "LICENSE", "analysis/compute_robust.py", "scripts/score_many.py", "scripts/collect_agentdojo_outputs.py", "scripts/collect_agentdojo_pairs.py", "scripts/collect_taubench.py", "reproduce.sh"],
+  "identity_fields": ["id", "ids", "sample_ids", "task", "task_ids", "groups", "suite", "text_hashes"],
+  "scope": "metadata and schema only; no thresholds, rates, score quantiles or rankings",
+  "seed": null
+}
