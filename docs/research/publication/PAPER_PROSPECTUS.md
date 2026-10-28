@@ -6,6 +6,10 @@
 This advances the [initial direction assessment](TMLR_DIRECTION_20261027.md).
 The existing B1 protocol, taxonomy and human-verification gates remain binding;
 the paper-level analyses below are proposals for a successful pilot's follow-up.
+The [28 October route assessment](SUBMISSION_ROUTE_20261028.md) recommends
+testing a separate controlled reproducibility extension before making a large
+commitment to this reporting-audit candidate. This prospectus remains historical
+planning for the audit and supplies no outcomes for the new candidate.
 
 ## Research decision
 

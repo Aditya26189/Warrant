@@ -4,6 +4,9 @@ Planning memo, not a protocol amendment, completed paper or readiness verdict.
 The subsequent [paper prospectus](PAPER_PROSPECTUS.md) records the deeper
 prior-art stress test and independently reproduced exact diagnostic. Read it
 for the current contribution boundary and execution path.
+The [28 October submission-route research](SUBMISSION_ROUTE_20261028.md)
+identifies a separate controlled reproducibility candidate and checks its
+public data availability; it does not amend the reporting pilot.
 The user requested a publication direction and specifically asked to inspect
 newly pushed branches. A successful `git fetch origin` confirmed the latest
 remote tips available in this repository: main `c2e61a7` and
