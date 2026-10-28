@@ -78,3 +78,30 @@ were recorded before retrieval; no reward fields had yet been read. Preserve
 these receipts as discovery only. Commit protocol/code and regenerate all
 canonical scientific outputs from a clean tree before interpreting results.
 This is a workflow failure, not a clean-provenance claim.
+
+## U003 — Freeze the final-release census and narrower estimands
+
+Gate B supports the released-final-record accounting question; see
+FEASIBILITY.md. Preserve the original-attempt/retry and website-authority gaps.
+Freeze PROTOCOL.md and config.json before bulk outcome retrieval/comparisons.
+The census includes every named final directory in all inventoried jobs, with
+all exclusions and contradictions retained. No outcome-selected subset.
+
+Additional discovery exposure: U002 job summaries were read for counters/schema
+and means. They include scored exceptions, null-reward counters and an unfinished
+grok part1 summary counting more records than released directories. This motivates
+reconciliation, not exclusion, prevalence estimation or a corrected ranking.
+The ten trial discovery records were scored; no missingness selection follows.
+
+Native artifact means are reproduced before any policy sensitivity. Unknown
+completion and observed-only denominators are distinct estimands from native
+operational zero accounting. Exact task definitions and fixed weights govern
+all compatible pair comparisons. The recorded configuration declares a census
+and exact arithmetic; no random seed is used because no random operation occurs.
+
+Acquisition reserves 80 MiB for other-source retrieval including failed/capped
+reads. Within the terminal cache, failed requests conservatively count their
+full read limit plus one byte; successful responses count actual bytes. This
+prevents discarded oversized responses from escaping the aggregate ceiling.
+Two extra immutable attempts per required source are allowed; retrying HTTP
+retrieval is distinct from benchmark execution retry lineage.
