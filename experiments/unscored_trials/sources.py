@@ -34,6 +34,7 @@ def retrieve(url: str, destination: Path, limit_bytes: int, timeout: float) -> d
         request = Request(url, headers={"User-Agent": "Warrant-unscored-audit/1.0"})
         with urlopen(request, timeout=timeout) as response:
             data = response.read(limit_bytes + 1)
+            receipt["bytes_read"] = len(data)
             if len(data) > limit_bytes:
                 raise ValueError("response exceeds configured byte limit")
             receipt.update(

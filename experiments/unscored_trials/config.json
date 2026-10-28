@@ -1,0 +1,18 @@
+{
+  "dataset": "harborframework/terminal-bench-2-leaderboard",
+  "revision": "572b2614be2c0cb2527e14f5b1e4026f1072e6c1",
+  "official_task_git_url": "https://github.com/laude-institute/terminal-bench-2.git",
+  "official_task_revision": "69671fbaac6d67a7ef0dfec016cc38a64ef7a77c",
+  "reward_channel": "reward",
+  "native_absolute_tolerance": "0.000000000001",
+  "task_count": 89,
+  "max_download_bytes": 2147483648,
+  "trial_limit_bytes": 131072,
+  "job_limit_bytes": 4194304,
+  "request_timeout_seconds": 30,
+  "workers": 8,
+  "max_batch_requests": 6000,
+  "max_extra_attempts": 2,
+  "random_seed": null,
+  "seed_reason": "deterministic census and exact arithmetic; no random sampling"
+}

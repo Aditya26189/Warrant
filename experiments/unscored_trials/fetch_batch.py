@@ -8,6 +8,8 @@ import math
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
+from tqdm import tqdm
+
 from sources import retrieve_cached
 
 
@@ -34,7 +36,9 @@ def run(manifest: Path, data_root: Path, workers: int, budget_bytes: int) -> lis
         return {"path": row["path"], **receipt}
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
-        receipts = list(pool.map(fetch, zip(requests, destinations, strict=True)))
+        receipts = list(tqdm(pool.map(fetch, zip(requests, destinations, strict=True)),
+                             total=len(requests), desc="Public source records",
+                             miniters=200, mininterval=5))
     print(json.dumps({
         "requests": len(receipts),
         "success": sum(row["status"] == "success" for row in receipts),
