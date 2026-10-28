@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -13,6 +14,10 @@ from sources import retrieve_cached
 def run(manifest: Path, data_root: Path, workers: int, budget_bytes: int) -> list[dict]:
     """Fetch named sources, rejecting path escape and a worst-case budget overrun."""
     requests = json.loads(manifest.read_bytes())
+    if any(type(row["limit_bytes"]) is not int or row["limit_bytes"] <= 0
+           or not math.isfinite(row["timeout"]) or row["timeout"] <= 0
+           for row in requests):
+        raise ValueError("each request requires positive finite limits")
     if workers < 1 or sum(row["limit_bytes"] for row in requests) > budget_bytes:
         raise ValueError("worker count or worst-case request budget invalid")
     root = data_root.resolve()
