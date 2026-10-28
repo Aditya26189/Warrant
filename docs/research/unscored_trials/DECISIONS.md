@@ -105,3 +105,16 @@ full read limit plus one byte; successful responses count actual bytes. This
 prevents discarded oversized responses from escaping the aggregate ceiling.
 Two extra immutable attempts per required source are allowed; retrying HTTP
 retrieval is distinct from benchmark execution retry lineage.
+
+## U004 — Fail closed on incomplete Git cleanliness inspection
+
+The first canonical metadata invocation emitted Git warnings about two
+inaccessible pytest cache directories created by scoped test attempts. Although
+tracked source was committed, its clean-tree check had ignored Git stderr.
+Preserve that output outside Git as a diagnostic, remove only the two named
+owned test caches, and make provenance reject any Git stderr. Regenerate the
+inventory from clean committed source. No extension score comparison had run.
+This supersedes the initial cleanliness claim rather than silently repairing
+its provenance. Expected scientific counts do not change; the clean rerun will
+establish them. Temporary test-directory ACL failures and mixed-line-ending
+checks remain retained failures, not successful validations.

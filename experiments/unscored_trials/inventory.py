@@ -288,7 +288,11 @@ def clean_provenance() -> dict:
     repo = Path(__file__).resolve().parents[2]
 
     def git(*args: str) -> str:
-        return subprocess.check_output(["git", "-C", str(repo), *args], text=True).strip()
+        result = subprocess.run(["git", "-C", str(repo), *args], text=True,
+                                capture_output=True, check=True)
+        if result.stderr.strip():
+            raise RuntimeError("Git cleanliness cannot be established: " + result.stderr.strip())
+        return result.stdout.strip()
 
     dirty = bool(git("status", "--porcelain"))
     if dirty:
