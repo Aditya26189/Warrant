@@ -40,12 +40,29 @@ def retrieve(url: str, destination: Path, limit_bytes: int, timeout: float) -> d
                 status="success", http_status=response.status,
                 final_url=response.url, size_bytes=len(data),
                 sha256=hashlib.sha256(data).hexdigest(),
+                pagination_link=response.headers.get("Link"),
+                content_length=response.headers.get("Content-Length"),
             )
         destination.write_bytes(data)
     except (HTTPError, URLError, TimeoutError, ValueError, OSError) as exc:
         receipt.update(status="failed", error_type=type(exc).__name__, error=str(exc))
     receipt_path.write_bytes((json.dumps(receipt, indent=2) + "\n").encode())
     return receipt
+
+
+def retrieve_cached(url: str, destination: Path, limit_bytes: int, timeout: float) -> dict:
+    """Reuse only hash-verified successful bytes from the identical request."""
+    receipt_path = destination.with_name(destination.name + ".receipt.json")
+    if receipt_path.exists():
+        receipt = json.loads(receipt_path.read_bytes())
+        if receipt.get("status") != "success" or receipt.get("url") != url:
+            raise ValueError("prior failure or request mismatch; retain it and use a new path")
+        data = destination.read_bytes()
+        if (len(data) != receipt["size_bytes"] or len(data) > limit_bytes
+                or hashlib.sha256(data).hexdigest() != receipt["sha256"]):
+            raise ValueError("cached bytes do not match receipt or configured limit")
+        return receipt
+    return retrieve(url, destination, limit_bytes, timeout)
 
 
 def main() -> None:
