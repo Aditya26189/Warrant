@@ -10,6 +10,7 @@ from urllib.parse import quote
 
 from fetch_batch import run
 from inventory import build_inventory, clean_provenance
+from sources import retrieve_cached
 
 
 def prepare(data_root: Path, config: dict) -> list[dict]:
@@ -69,18 +70,50 @@ def _fetch_or_retain(manifest_path: Path, rows: list[dict], data_root: Path,
             else by_path[row["path"]] for row in rows]
 
 
+def validate_request(row: dict, config: dict) -> None:
+    """Bind resumed requests to the same official dataset, path and limits."""
+    expected = (f'https://huggingface.co/datasets/{config["dataset"]}/raw/'
+                f'{config["revision"]}/{quote(row["source_path"], safe="/")}')
+    if (row["url"] != expected or row["kind"] not in {"job", "trial"}
+            or row["limit_bytes"] != config[f'{row["kind"]}_limit_bytes']
+            or row["timeout"] != config["request_timeout_seconds"]
+            or not row["source_path"].startswith(row["job"] + "/")
+            or not row["source_path"].endswith("/result.json")):
+        raise ValueError("frozen request identity or limits differ from protocol")
+
+
+def verify_completed(rows: list[dict], data_root: Path, config: dict) -> None:
+    """Reverify resumed completed sources, including all successful byte hashes."""
+    root = data_root.resolve()
+    for row in rows:
+        validate_request(row, config)
+        destination = (root / row["path"]).resolve()
+        if not destination.is_relative_to(root):
+            raise ValueError("completed source escapes working-data root")
+        receipt = json.loads(destination.with_name(destination.name + ".receipt.json").read_bytes())
+        if receipt["url"] != row["url"]:
+            raise ValueError("completed receipt request mismatch")
+        if receipt["status"] == "success":
+            retrieve_cached(row["url"], destination, row["limit_bytes"], row["timeout"])
+        elif receipt["status"] != "failed" or destination.exists():
+            raise ValueError("ambiguous completed failure")
+
+
 def acquire(data_root: Path, config: dict, other_source_bytes: int) -> dict:
     """Stop before aggregate worst-case reservation exceeds remaining allowance."""
     provenance = clean_provenance()
+    if other_source_bytes < 0:
+        raise ValueError("nonnegative other-source reserve required")
     manifest_path = data_root / "census-requests.json"
     if manifest_path.exists():
         requests = json.loads(manifest_path.read_bytes())
-        for row in requests:
-            if f'/{config["revision"]}/' not in row["url"]:
-                raise ValueError("frozen census revision differs")
     else:
         requests = prepare(data_root, config)
         manifest_path.write_bytes((json.dumps(requests, indent=2) + "\n").encode())
+    for row in requests:
+        validate_request(row, config)
+    if len({row["source_path"] for row in requests}) != len(requests):
+        raise ValueError("duplicate frozen source identity")
     receipts_dir = data_root / "acquisition"
     receipts_dir.mkdir(exist_ok=True)
     batch_index = 0
@@ -91,6 +124,7 @@ def acquire(data_root: Path, config: dict, other_source_bytes: int) -> dict:
             completed_rows = json.loads(completed_path.read_bytes())
             if [r["source_path"] for r in completed_rows] != [r["source_path"] for r in chunk]:
                 raise ValueError("completed batch differs from frozen source paths")
+            verify_completed(completed_rows, data_root, config)
             batch_index += 1
             continue
         remaining = config["max_download_bytes"] - other_source_bytes - consumed_bytes(data_root)
@@ -134,6 +168,8 @@ def acquire(data_root: Path, config: dict, other_source_bytes: int) -> dict:
     if ([row["source_path"] for row in completed] != [row["source_path"] for row in requests]
             or len({row["source_path"] for row in completed}) != len(requests)):
         raise ValueError("completed census differs from frozen population")
+    if other_source_bytes + consumed_bytes(data_root) > config["max_download_bytes"]:
+        raise ValueError("completed sources exceed aggregate download ceiling")
     manifest = {"provenance": provenance, "config": config,
                 "config_sha256": hashlib.sha256(json.dumps(config, sort_keys=True).encode()).hexdigest(),
                 "requests": completed, "other_source_bytes_reserved": other_source_bytes}
