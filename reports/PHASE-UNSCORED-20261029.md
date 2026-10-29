@@ -62,3 +62,19 @@ original roster/attempt lineage and pinned website importer/adjudication evidenc
 are precisely identified remaining work, not completed publication artifacts.
 No conditional manuscript stage was started. Stop here unless new evidence
 justifies reopening the gate.
+
+## Local gate and publication status
+
+The complete evidence gate is retained locally at `008aae9`, tagged
+`unscored-decision-report-20261029`. The working tree was clean. A later read-only
+remote check still found main at the authorized handoff commit `b5e34e9` and no
+remote research branch/tag.
+
+Automatic approval review rejected a compound action that would publish the
+full research branch and tag. Its stated reason was that explicit authorization
+covered the plan documents on main, while the potentially sensitive evidence
+package required separate export approval. The rejected compound action did not
+run. The local commit/tag were then created with a separate local-only command.
+No workaround or export was attempted after that rejection. Publishing this
+reviewable branch/tag remains pending user approval; the research gate itself is
+complete. Authentication was not the blocker.
