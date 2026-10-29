@@ -179,3 +179,23 @@ tolerance or selection rule. Synthetic serial/parallel outputs must agree.
 Human audit cases use the first source hash in each prespecified category and
 remain PENDING. Equal task names alone cannot qualify the repeated-task case;
 the Git task identity and checksum must also match.
+
+## U007 — Post hoc explanation of joint reconciliation flags
+
+The first clean census analysis and offline replay are complete at source
+`92f162a8fee29f8f65bdd9293269e0bacb4d6411`. Its native job status jointly tests
+metric arithmetic, indexes, counters and identity; it is not a count of numerical
+score errors. After seeing those outputs, add an all-job diagnostic which keeps
+these dimensions separate. Compare the whole raw job's native null-zero mean
+with a single available published mean, without silently combining or renaming
+evaluation groups. This is explanatory arithmetic, not a recovered native group
+or a new ranking. Check summary-internal arithmetic only when the documented
+completed counter agrees with the complete named reward/exception union. Keep
+rewarded exceptions' rewards; do not use scored-only counts or declared totals
+as the denominator. Unsupported or ambiguous cases remain unavailable.
+
+Record this as post hoc, with its own clean source/provenance and synthetic
+fixtures. Do not change primary eligibility, task signatures, weights, policies,
+tolerance or pair classifications. Matching means do not resolve identity or
+population conflicts; mismatching raw and summary means do not establish which
+export reflects the original run. Assistant cross-checks are not human review.
