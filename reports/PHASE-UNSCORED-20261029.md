@@ -75,6 +75,9 @@ full research branch and tag. Its stated reason was that explicit authorization
 covered the plan documents on main, while the potentially sensitive evidence
 package required separate export approval. The rejected compound action did not
 run. The local commit/tag were then created with a separate local-only command.
-No workaround or export was attempted after that rejection. Publishing this
-reviewable branch/tag remains pending user approval; the research gate itself is
-complete. Authentication was not the blocker.
+No workaround was attempted. The user subsequently explicitly approved publishing
+the reviewable branch and tag. The normal push succeeded. At 16:26 UTC, read-only
+remote verification found the branch at `50525f5`, the gate tag peeled to
+`008aae9`, and main still at `b5e34e9`. Authentication was not a blocker. This
+closeout receipt is a subsequent documentation-only update on the approved branch;
+the scientific gate tag remains unchanged.
