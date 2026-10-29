@@ -53,11 +53,15 @@ arithmetic. They must not be reported as 20 numerical score errors. The
 [native table](../../../results/unscored_trials/20261029-terminal-bench2/native_score_reproduction.csv)
 and indexed job checks preserve each dimension.
 
-Post hoc all-job explanation (U007) separates whole-job arithmetic from native
-group reconciliation. An assistant source check of the 28 nonmatching jobs finds
-19 matching whole-job means, three differing means and six without one supported
-published mean. Pooling for this diagnostic does not repair group identities or
-change primary eligibility.
+The [post hoc all-job explanation](../../../results/unscored_trials/20261029-terminal-bench2/explanation/summary.json)
+(U007) separates whole-job arithmetic from native group reconciliation. It finds
+236 matching whole-job means, three differing means and six without one supported
+published mean. Within the 28 jobs outside strict joint reconciliation, the
+corresponding counts are 19, three and six. The separate assistant source check
+agrees. Pooling for this diagnostic does not repair group identities or change
+primary eligibility. All three differing means match their own summary-indexed
+populations. Present old/new global counters also agree with raw counts in every
+strictly matching job; unavailable fields are not silently treated as verified.
 
 | Differing exported account | Raw final-record mean | Summary mean | Supported explanation |
 |---|---|---|---|
@@ -108,7 +112,8 @@ and [raw support](../../../results/unscored_trials/20261029-terminal-bench2/raw_
 The canonical run used clean source `92f162a8fee29f8f65bdd9293269e0bacb4d6411`,
 configuration SHA-256 `b00bbb68f957ee89345e1451f6d07243f276ce2c879491f5c993241e4b28f683`.
 Its blocked-network replay matched all 107 canonical files byte-for-byte;
-time/environment provenance is retained separately. Source-level and synthetic
+time/environment provenance is retained separately. All 133 focused tests pass
+at clean source `28edd34`; scoped Ruff passes. Source-level and synthetic
 tests cover outcome distinctions, scored exceptions, source corruption,
 identity/version conflicts, exact bounds, cap rejection and unsupported retry
 lineage. Actual test receipts and earlier failed checks are retained with the
@@ -125,3 +130,7 @@ The strongest objection is closest-work overlap plus unresolved export causes.
 See [RELATED_WORK.md](RELATED_WORK.md) and [CLAIM_LEDGER.md](CLAIM_LEDGER.md).
 The evidence supports preserving a technical report and stopping this decision
 study, with no manuscript submission claim.
+
+This work was generated and checked with AI assistance. OpenAI develops models
+evaluated in the source corpus. No human authorship, endorsement or independent
+review is invented; the accountable human review step remains outstanding.

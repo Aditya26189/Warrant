@@ -36,7 +36,8 @@ The clean canonical run at `92f162a8fee29f8f65bdd9293269e0bacb4d6411` passed its
 blocked-network replay: all 107 canonical files byte-identical. The preserved
 baseline reproduced all 15 numerical files with 21 tests passing. Scoped test
 receipts cover retrieval integrity, normalization, exact bounds, reconciliation
-and the post hoc explanatory arithmetic. Publication smoke checks and the
+and the post hoc explanatory arithmetic: 133 pass at clean source `28edd34`,
+with scoped Ruff passing. Publication smoke checks and the
 repository's non-activation verification also passed; no production behavior
 changed.
 
