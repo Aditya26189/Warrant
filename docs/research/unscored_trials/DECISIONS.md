@@ -199,3 +199,33 @@ fixtures. Do not change primary eligibility, task signatures, weights, policies,
 tolerance or pair classifications. Matching means do not resolve identity or
 population conflicts; mismatching raw and summary means do not establish which
 export reflects the original run. Assistant cross-checks are not human review.
+
+## U008 — Portable numerical closeout without acquisition-history dependence
+
+The user requests a bounded technical-report closeout, retaining REPORT and the
+frozen scientific tag. Verify existing scientific/source hashes and reuse their
+checks. Add versioned explanatory tables for eligibility conditioning, uniform
+repetitions and the equality-compatible subtypes; do not overwrite old outputs.
+Native agreement in the strict cohort is partly an inclusion rule. Uniform
+within-submission repetitions imply equal-task and pooled weights coincide;
+this is structural and an implementation check, not a general empirical result.
+
+Publish a reviewed allowlisted projection of the already pinned source records
+as a small derived input bundle. Export rereads original inputs and verifies
+their byte hashes; raw logs/config kwargs/traces/transcripts are omitted. Keep
+original hashes, transformation identity and derived hashes. Preserve opaque
+original configuration/system/semantic digests where normalization cannot
+recompute them after redaction, and label these as attestations that do not
+independently verify omitted content. Keep the dataset's Apache-2.0 attribution
+separate from Warrant's code license. No new benchmark or model evaluation.
+
+The portable route recomputes normalization, reconciliation, eligibility and
+exact arithmetic from those observations/config projections/listings, not from
+final scores or classifications. Historical retrieval receipts/timestamps and
+download-byte totals remain archival provenance, not numerical prerequisites.
+Validate from a clean fresh checkout and empty study-data directory with reads
+of the old cache/baseline forbidden and networking disabled. Compare all reported
+scientific tables/quantities with the frozen references; formatting of equal
+rational numbers may differ, numerical quantities may not. Report generation,
+input acquisition/integrity, numerical comparison and archival replay are
+separate stages. Human fields remain PENDING. No frozen tag is moved.
