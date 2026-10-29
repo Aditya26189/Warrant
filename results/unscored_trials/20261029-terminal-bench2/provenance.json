@@ -1,0 +1,37 @@
+{
+  "analysis_config": {
+    "dataset": "harborframework/terminal-bench-2-leaderboard",
+    "io_prefetch_records": 256,
+    "job_limit_bytes": 4194304,
+    "max_batch_requests": 6000,
+    "max_download_bytes": 2147483648,
+    "max_extra_attempts": 2,
+    "native_absolute_tolerance": "0.000000000001",
+    "official_task_git_url": "https://github.com/laude-institute/terminal-bench-2.git",
+    "official_task_revision": "69671fbaac6d67a7ef0dfec016cc38a64ef7a77c",
+    "random_seed": null,
+    "request_timeout_seconds": 30,
+    "revision": "572b2614be2c0cb2527e14f5b1e4026f1072e6c1",
+    "reward_channel": "reward",
+    "seed_reason": "deterministic census and exact arithmetic; no random sampling",
+    "task_count": 89,
+    "trial_limit_bytes": 131072,
+    "workers": 8
+  },
+  "config_sha256": "b00bbb68f957ee89345e1451f6d07243f276ce2c879491f5c993241e4b28f683",
+  "dirty": false,
+  "generated_utc": "2026-10-29T03:50:21.529206+00:00",
+  "git_commit": "92f162a8fee29f8f65bdd9293269e0bacb4d6411",
+  "git_version": "git version 2.47.1.windows.2",
+  "module_sha256": {
+    "analyze.py": "ed42fb3e8bf682b0501e0a3123e3e8c19b6f30d37f917a192f3388bd1387efcb",
+    "bounds.py": "82f1e93531ed3959725a1198b6d120d8dfaa1f811038818475b6d459024d2400",
+    "inventory.py": "fb0c03560830f0d74096b62823103fe39483059da9db964b5267be8d7fd2381b",
+    "normalize.py": "221acdd654aa9bd2028e3ada3e6692c43c12572f7d4df9e2f5e3611c8c1db124"
+  },
+  "offline": true,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "source_sha256": "fb0c03560830f0d74096b62823103fe39483059da9db964b5267be8d7fd2381b",
+  "task_spec_sha256": "bd7ad58bb59954b8fffeecfc53651c8ebc116a50cb4ff0336d29bb09c812f6bc"
+}

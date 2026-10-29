@@ -1,0 +1,347 @@
+{
+  "all_saved_payload_hashes_verified": true,
+  "provenance": {
+    "dirty": false,
+    "generated_utc": "2026-10-29T03:50:21.593215+00:00",
+    "git_commit": "92f162a8fee29f8f65bdd9293269e0bacb4d6411",
+    "git_version": "git version 2.47.1.windows.2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "source_sha256": "fb0c03560830f0d74096b62823103fe39483059da9db964b5267be8d7fd2381b"
+  },
+  "purpose": "Read-only native-contract investigation; no upstream source execution",
+  "registry_sha256": "da1446bce05eabbd72a25eb9eef5a2f5db94645ce88c28e2497581433b3d2e60",
+  "sources": [
+    {
+      "bytes": 4876,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:11:02.155927+00:00",
+      "cache_file": "harbor-20260101-commit.json",
+      "sha256": "7cbd7e973831bd81e103ba082ead1f91312b3d3a85e0fd98d4d0fa42abbda3d6",
+      "url": "https://api.github.com/repos/harbor-framework/harbor/commits?until=2026-01-01T23:59:59Z&per_page=1"
+    },
+    {
+      "bytes": 2156,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:11:30.229374+00:00",
+      "cache_file": "harbor-20260101-pyproject.toml",
+      "sha256": "c1368119e1768313b5437f628f81a17ee2e6764bb133d3a1fa57677c911d14eb",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/1c0f38644b94c2a9a5fa4a8b77667d8175d0869e/pyproject.toml"
+    },
+    {
+      "bytes": 11317,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:11:27.655357+00:00",
+      "cache_file": "harbor-20260101-src__harbor__job.py",
+      "sha256": "1710f11066a380d396856bc8a168fe7cddb53a4aaa31d2d7c8912137c1648ac3",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/1c0f38644b94c2a9a5fa4a8b77667d8175d0869e/src/harbor/job.py"
+    },
+    {
+      "bytes": 610,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:11:28.166501+00:00",
+      "cache_file": "harbor-20260101-src__harbor__metrics__mean.py",
+      "sha256": "3a88b64141ca2fb7db40340660bfcda55b92b4b8a4bcbe5c500fd6dad499db21",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/1c0f38644b94c2a9a5fa4a8b77667d8175d0869e/src/harbor/metrics/mean.py"
+    },
+    {
+      "bytes": 6664,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:11:24.937390+00:00",
+      "cache_file": "harbor-20260101-src__harbor__models__job__config.py",
+      "sha256": "5f792b32fd198911ccdccd12091ea5ef4fe363013b1276465d76bd4ccafc6de2",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/1c0f38644b94c2a9a5fa4a8b77667d8175d0869e/src/harbor/models/job/config.py"
+    },
+    {
+      "bytes": 2769,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:11:25.445678+00:00",
+      "cache_file": "harbor-20260101-src__harbor__models__job__result.py",
+      "sha256": "088d34d18963b38562f61be5795355d837049f188cb0ec0a2edd14b90a43e7e1",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/1c0f38644b94c2a9a5fa4a8b77667d8175d0869e/src/harbor/models/job/result.py"
+    },
+    {
+      "bytes": 686,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:12:16.378782+00:00",
+      "cache_file": "harbor-20260101-src__harbor__models__task__id.py",
+      "sha256": "cb2c711273216a3b15132f59724902dd4731b12003a049dd8348977e861108e5",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/1c0f38644b94c2a9a5fa4a8b77667d8175d0869e/src/harbor/models/task/id.py"
+    },
+    {
+      "bytes": 3644,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:11:25.925913+00:00",
+      "cache_file": "harbor-20260101-src__harbor__models__trial__config.py",
+      "sha256": "fa815779c84732ba5b397d6afd9e36c86d2e2086d0e418584c7942417183fdbe",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/1c0f38644b94c2a9a5fa4a8b77667d8175d0869e/src/harbor/models/trial/config.py"
+    },
+    {
+      "bytes": 1988,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:11:26.397068+00:00",
+      "cache_file": "harbor-20260101-src__harbor__models__trial__result.py",
+      "sha256": "03ef0bcc4832f6415c5c615cdb38d666a0e726a985298a6c9b2b15d86cafd8d6",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/1c0f38644b94c2a9a5fa4a8b77667d8175d0869e/src/harbor/models/trial/result.py"
+    },
+    {
+      "bytes": 116,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:12:16.811346+00:00",
+      "cache_file": "harbor-20260101-src__harbor__models__verifier__result.py",
+      "sha256": "4ce7378d3782f9f11082db66341e55058919145955b17745167e987d6bad93df",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/1c0f38644b94c2a9a5fa4a8b77667d8175d0869e/src/harbor/models/verifier/result.py"
+    },
+    {
+      "bytes": 1810,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:11:29.720790+00:00",
+      "cache_file": "harbor-20260101-src__harbor__orchestrators__base.py",
+      "sha256": "5892b84d41121c4db071a3310090acff30db623b09a074786fbc45b33d52560b",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/1c0f38644b94c2a9a5fa4a8b77667d8175d0869e/src/harbor/orchestrators/base.py"
+    },
+    {
+      "bytes": 11714,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:11:29.160702+00:00",
+      "cache_file": "harbor-20260101-src__harbor__orchestrators__local.py",
+      "sha256": "94adf8dd6d5666183869839066335f75902aa26b88b7ec8847b44b3881cb9ad7",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/1c0f38644b94c2a9a5fa4a8b77667d8175d0869e/src/harbor/orchestrators/local.py"
+    },
+    {
+      "bytes": 13313,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:12:15.858003+00:00",
+      "cache_file": "harbor-20260101-src__harbor__trial__trial.py",
+      "sha256": "6d03b49173a24cf50338c007b11ce8b61d2908f1ec9e98dacc48d5d53df18e17",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/1c0f38644b94c2a9a5fa4a8b77667d8175d0869e/src/harbor/trial/trial.py"
+    },
+    {
+      "bytes": 3290,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:10:12.409908+00:00",
+      "cache_file": "harbor-20260515-commit.json",
+      "sha256": "65df983288ded4c66d6fb0137f397ba58e7e98691c82df633aa2092ad67ca50f",
+      "url": "https://api.github.com/repos/harbor-framework/harbor/commits?until=2026-05-15T23:59:59Z&per_page=1"
+    },
+    {
+      "bytes": 3197,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:10:39.463050+00:00",
+      "cache_file": "harbor-20260515-pyproject.toml",
+      "sha256": "fbba93a99c98f336af6b7fa0c9a11d492b1c7fc64516342ce3b1d5fd3c7eab60",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/5a22a1dd4cc42fff8418bcb1e796ceb3624df931/pyproject.toml"
+    },
+    {
+      "bytes": 13654627,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:13:27.731534+00:00",
+      "cache_file": "harbor-20260515-registry.json",
+      "sha256": "da1446bce05eabbd72a25eb9eef5a2f5db94645ce88c28e2497581433b3d2e60",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/5a22a1dd4cc42fff8418bcb1e796ceb3624df931/registry.json"
+    },
+    {
+      "bytes": 34595,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:10:34.712912+00:00",
+      "cache_file": "harbor-20260515-src__harbor__job.py",
+      "sha256": "d363d7c0d7fa4c66655b1952d4bf66724b0b511a1ed040713faa7fcc0d14818c",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/5a22a1dd4cc42fff8418bcb1e796ceb3624df931/src/harbor/job.py"
+    },
+    {
+      "bytes": 990,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:10:35.665361+00:00",
+      "cache_file": "harbor-20260515-src__harbor__metrics__base.py",
+      "sha256": "2ee9dfef4a5d9cbc115f6b1e669527cd21f5475e0a8993de64dbb55a5762902c",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/5a22a1dd4cc42fff8418bcb1e796ceb3624df931/src/harbor/metrics/base.py"
+    },
+    {
+      "bytes": 354,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:10:35.209905+00:00",
+      "cache_file": "harbor-20260515-src__harbor__metrics__mean.py",
+      "sha256": "475a6901d296483b6e7474ba5856c6ee1b526a960d982ebc25b55fce7e84fe57",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/5a22a1dd4cc42fff8418bcb1e796ceb3624df931/src/harbor/metrics/mean.py"
+    },
+    {
+      "bytes": 11538,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:10:32.823124+00:00",
+      "cache_file": "harbor-20260515-src__harbor__models__job__config.py",
+      "sha256": "15fbe0c87487f123b6b3a20f188babce6475f4071b170d76e6ca02bc07613317",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/5a22a1dd4cc42fff8418bcb1e796ceb3624df931/src/harbor/models/job/config.py"
+    },
+    {
+      "bytes": 11007,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:10:33.292751+00:00",
+      "cache_file": "harbor-20260515-src__harbor__models__job__result.py",
+      "sha256": "9a55089a001c86e4fa0e3cd1ee01a4e13f8aad160a1e2be4c4fa3d37a01ebdac",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/5a22a1dd4cc42fff8418bcb1e796ceb3624df931/src/harbor/models/job/result.py"
+    },
+    {
+      "bytes": 2844,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:10:36.159996+00:00",
+      "cache_file": "harbor-20260515-src__harbor__models__registry.py",
+      "sha256": "1dac233bb49a1e601dd9735a51fa2414af87cf690773925bd9144d75bd8e2a89",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/5a22a1dd4cc42fff8418bcb1e796ceb3624df931/src/harbor/models/registry.py"
+    },
+    {
+      "bytes": 9001,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:10:33.739910+00:00",
+      "cache_file": "harbor-20260515-src__harbor__models__trial__config.py",
+      "sha256": "0678fe91067419ff95996b620bb683ba2d699aa3b2efedca76c03ec3e8f2168d",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/5a22a1dd4cc42fff8418bcb1e796ceb3624df931/src/harbor/models/trial/config.py"
+    },
+    {
+      "bytes": 4323,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:10:34.217907+00:00",
+      "cache_file": "harbor-20260515-src__harbor__models__trial__result.py",
+      "sha256": "08e59cba3e2d792910a8555ddc07785d191dceb6cae98d537c9a2f33ac1e33de",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/5a22a1dd4cc42fff8418bcb1e796ceb3624df931/src/harbor/models/trial/result.py"
+    },
+    {
+      "bytes": 7533,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:09:50.444476+00:00",
+      "cache_file": "harbor-main-pyproject.toml",
+      "sha256": "668239c8c1ad84b843e9cd059f2f6b92dbf90588e8203866c15e27d2c64fef09",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/2f424cd003ee1a94b5ed262471d5e36e4948f93f/pyproject.toml"
+    },
+    {
+      "bytes": 54738,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:09:45.991521+00:00",
+      "cache_file": "harbor-main-src__harbor__job.py",
+      "sha256": "5693249e8d74482b391b8209e4976c5b829d8012e9af5fe963c3681b9cde1138",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/2f424cd003ee1a94b5ed262471d5e36e4948f93f/src/harbor/job.py"
+    },
+    {
+      "bytes": 396,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:09:46.475949+00:00",
+      "cache_file": "harbor-main-src__harbor__metrics__mean.py",
+      "sha256": "fcebbfd69bb2b52c52da59af9ca4ef6080bd7064d8c3a301a9762353ed71efbc",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/2f424cd003ee1a94b5ed262471d5e36e4948f93f/src/harbor/metrics/mean.py"
+    },
+    {
+      "bytes": 21851,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:09:43.529111+00:00",
+      "cache_file": "harbor-main-src__harbor__models__job__config.py",
+      "sha256": "2f29f4d0ab1f4289f6962ce50fb9a1d764388fc50392a4578702c1bfedd42cb8",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/2f424cd003ee1a94b5ed262471d5e36e4948f93f/src/harbor/models/job/config.py"
+    },
+    {
+      "bytes": 11041,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:09:44.095782+00:00",
+      "cache_file": "harbor-main-src__harbor__models__job__result.py",
+      "sha256": "caa09a62a06aab2dda7ccab18ceaeba0232b082be459ebfe5a01eeee05584f6f",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/2f424cd003ee1a94b5ed262471d5e36e4948f93f/src/harbor/models/job/result.py"
+    },
+    {
+      "bytes": 2844,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:09:47.001372+00:00",
+      "cache_file": "harbor-main-src__harbor__models__registry.py",
+      "sha256": "1dac233bb49a1e601dd9735a51fa2414af87cf690773925bd9144d75bd8e2a89",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/2f424cd003ee1a94b5ed262471d5e36e4948f93f/src/harbor/models/registry.py"
+    },
+    {
+      "bytes": 21633,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:09:44.620586+00:00",
+      "cache_file": "harbor-main-src__harbor__models__trial__config.py",
+      "sha256": "7c6b8cac3f3e5a45d3ea8e772ef558c1bbf19691989b7692690a982d4cd88bed",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/2f424cd003ee1a94b5ed262471d5e36e4948f93f/src/harbor/models/trial/config.py"
+    },
+    {
+      "bytes": 5938,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:09:45.160084+00:00",
+      "cache_file": "harbor-main-src__harbor__models__trial__result.py",
+      "sha256": "39d2b165cda698ce668a135b17cd8dde946dced4e9b21528158c41145f739e28",
+      "url": "https://raw.githubusercontent.com/harbor-framework/harbor/2f424cd003ee1a94b5ed262471d5e36e4948f93f/src/harbor/models/trial/result.py"
+    },
+    {
+      "bytes": 28214,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:08:36.042609+00:00",
+      "cache_file": "harbor-main.json",
+      "sha256": "3327e5d57ab85ae20b09318a8901d0ebd98b3564b9b5808dfcc0469a89459f97",
+      "url": "https://api.github.com/repos/harbor-framework/harbor/commits/main"
+    },
+    {
+      "bytes": 1241757,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:09:21.768662+00:00",
+      "cache_file": "harbor-tree.json",
+      "sha256": "14005dc52f0eff9582021ca31f1c02eefaa7b638bdac342636a48ffda66e21b4",
+      "url": "https://api.github.com/repos/harbor-framework/harbor/git/trees/2f424cd003ee1a94b5ed262471d5e36e4948f93f?recursive=1"
+    },
+    {
+      "bytes": 14544112,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:08:41.343709+00:00",
+      "cache_file": "hf-info.json",
+      "sha256": "3ac871737bf8b05d46e295101247d1d24771f91080ae7f33bc40d44f21b7b385",
+      "url": "https://huggingface.co/api/datasets/harborframework/terminal-bench-2-leaderboard"
+    },
+    {
+      "bytes": 3256,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:09:23.863545+00:00",
+      "cache_file": "hf-README.md",
+      "sha256": "5ab292f7640f8eb757bc7e17cc188492be3e591588df5e89a2cdf3782ab47402",
+      "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/resolve/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/README.md"
+    },
+    {
+      "bytes": 12867,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:11:01.668927+00:00",
+      "cache_file": "mean-history.json",
+      "sha256": "f14525f4e81977623218e4592a60be445e800448761a546eb22cd8365be4c431",
+      "url": "https://api.github.com/repos/harbor-framework/harbor/commits?path=src/harbor/metrics/mean.py&per_page=100"
+    },
+    {
+      "bytes": 6688,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:08:36.526601+00:00",
+      "cache_file": "tb-main.json",
+      "sha256": "dc96c04a538e20167c6d0f723b00db60785c52ae3fc01bc61cede2f727e6899e",
+      "url": "https://api.github.com/repos/harbor-framework/terminal-bench/commits/main"
+    },
+    {
+      "bytes": 1699140,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:09:23.009324+00:00",
+      "cache_file": "tb-tree.json",
+      "sha256": "e0bc6dfeb14b2b883c4f61cf13a17b4d3fd453e08e3ad433d0ca8f7c674b3a26",
+      "url": "https://api.github.com/repos/harbor-framework/terminal-bench/git/trees/02a6a833ef2a706a98de77dd7135665c44564406?recursive=1"
+    },
+    {
+      "bytes": 10048,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:10:12.931710+00:00",
+      "cache_file": "tb1-main.json",
+      "sha256": "4e4f07051fdae5a0831d65c489bf78ec7bce4a13c0558441e405a9dafde14e60",
+      "url": "https://api.github.com/repos/harbor-framework/terminal-bench-1/commits/main"
+    },
+    {
+      "bytes": 855240,
+      "cache_creation_is_retrieval_time_proxy": true,
+      "cache_creation_utc": "2026-10-28T22:10:14.411855+00:00",
+      "cache_file": "tb1-tree.json",
+      "sha256": "d04c5a2f3b5abc6dc09f02fb0326e3f5795bb621d4e12a87898e48bb12c988e6",
+      "url": "https://api.github.com/repos/harbor-framework/terminal-bench-1/git/trees/main?recursive=1"
+    }
+  ],
+  "task_spec_matches_registry_pointer": true,
+  "task_spec_sha256": "bd7ad58bb59954b8fffeecfc53651c8ebc116a50cb4ff0336d29bb09c812f6bc",
+  "total_saved_source_bytes": 32324725
+}

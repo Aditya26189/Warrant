@@ -1,0 +1,1693 @@
+{
+  "kind": "assistant_advisory_source_crosscheck_not_canonical_generation",
+  "entries": [
+    {
+      "job": "submissions/terminal-bench/2.0/0error-Ledger__Claude-Opus-4.7/tbench-2.1-k5-v01",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 445,
+      "raw_reward_mass": "177",
+      "raw_operational_mean": "177/445",
+      "published_means": [
+        [
+          "scaffold-agent__anthropic/claude-opus-4-7__terminal-bench/terminal-bench-2-1",
+          "39775280898876403/100000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 241,
+      "raw_null": 204,
+      "raw_errors": 215,
+      "raw_source_labels": {
+        "terminal-bench/terminal-bench-2-1": 445
+      },
+      "task_id_shapes": {
+        "['name', 'org', 'ref']": 445
+      },
+      "global_n_trials": null,
+      "global_n_completed_trials": 445,
+      "global_n_errors": null,
+      "global_n_errored_trials": 215,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/0error-Ledger__Claude-Opus-4.7/tbench-2.1-k5-v01",
+        "kind": "job",
+        "path": "results/4529047f1055735c34c140b8e087f0bb320d4cad3b9c6b757d60373460a7d45a.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/0error-Ledger__Claude-Opus-4.7/tbench-2.1-k5-v01/result.json",
+        "source_sha256": "c553b0fc91ba3e15341e3c3e7236650f5683efc52ed6b25f6c5f1b7c27619183",
+        "status": "success",
+        "submission": "0error-Ledger__Claude-Opus-4.7",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/0error-Ledger__Claude-Opus-4.7/tbench-2.1-k5-v01/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "scaffold-agent__anthropic/claude-opus-4-7__terminal-bench/terminal-bench-2-1",
+          "native_status": "match",
+          "row_count": 445,
+          "native_mean_fraction": "177/445",
+          "published_mean": "0.39775280898876403",
+          "counter_match": true,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/BashAgent__TermiGen-32B/qwen_claude_5",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 445,
+      "raw_reward_mass": "86",
+      "raw_operational_mean": "86/445",
+      "published_means": [
+        [
+          "qwen-agent__terminal-bench",
+          "129438202247191/800000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": false,
+      "raw_scored": 436,
+      "raw_null": 9,
+      "raw_errors": 162,
+      "raw_source_labels": {
+        "terminal-bench": 445
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 445
+      },
+      "global_n_trials": 445,
+      "global_n_completed_trials": null,
+      "global_n_errors": 167,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/BashAgent__TermiGen-32B/qwen_claude_5",
+        "kind": "job",
+        "path": "results/6727b9df1c1db0e64e3564db6a836a41a29bdfe208aad7eb3e7f27f33715c688.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/BashAgent__TermiGen-32B/qwen_claude_5/result.json",
+        "source_sha256": "f5eb144577611e61fcecb544252bb09703a2ea4668a5381a452fabd61c791cd4",
+        "status": "success",
+        "submission": "BashAgent__TermiGen-32B",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/BashAgent__TermiGen-32B/qwen_claude_5/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "qwen-agent__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 445,
+          "native_mean_fraction": "86/445",
+          "published_mean": "0.16179775280898875",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/Capy__Claude-Opus-4.6/eval-terminal-bench-2-0-anthropic-claude-opus-4-6-ae1eef84-1773189792834",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "68",
+      "raw_operational_mean": "68/89",
+      "published_means": [
+        [
+          "capy-build__claude-opus-4-6__terminal-bench",
+          "1810344827586207/2500000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": false,
+      "raw_scored": 88,
+      "raw_null": 1,
+      "raw_errors": 14,
+      "raw_source_labels": {
+        "terminal-bench": 89
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 89
+      },
+      "global_n_trials": 29,
+      "global_n_completed_trials": null,
+      "global_n_errors": 4,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/Capy__Claude-Opus-4.6/eval-terminal-bench-2-0-anthropic-claude-opus-4-6-ae1eef84-1773189792834",
+        "kind": "job",
+        "path": "results/3d0dff1adcbc30871a2a3d4471fe8a95d02769e1280a04ef45b621c29fdafe4c.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/Capy__Claude-Opus-4.6/eval-terminal-bench-2-0-anthropic-claude-opus-4-6-ae1eef84-1773189792834/result.json",
+        "source_sha256": "bcff49b5b4524bb62289df729879be21451d22499af969b3d3a69658bda51207",
+        "status": "success",
+        "submission": "Capy__Claude-Opus-4.6",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/Capy__Claude-Opus-4.6/eval-terminal-bench-2-0-anthropic-claude-opus-4-6-ae1eef84-1773189792834/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "capy-build__claude-opus-4-6__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 89,
+          "native_mean_fraction": "68/89",
+          "published_mean": "0.7241379310344828",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/Crux__Claude-Opus-4.6/submission-run",
+      "canonical_status": "unavailable",
+      "raw_count": 445,
+      "raw_reward_mass": "272",
+      "raw_operational_mean": "272/445",
+      "published_means": [],
+      "whole_job_numeric_match": null,
+      "raw_scored": 406,
+      "raw_null": 39,
+      "raw_errors": 78,
+      "raw_source_labels": {
+        "terminal-bench": 445
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 445
+      },
+      "global_n_trials": null,
+      "global_n_completed_trials": null,
+      "global_n_errors": null,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/Crux__Claude-Opus-4.6/submission-run",
+        "kind": "job",
+        "path": "retry1/bc3845b775cd4e9d442fb47f09fbc06e038656c112978ac252bf146d086afb8f.json",
+        "prior_failed_path": "results/bc3845b775cd4e9d442fb47f09fbc06e038656c112978ac252bf146d086afb8f.json",
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/Crux__Claude-Opus-4.6/submission-run/result.json",
+        "source_sha256": "980825ea42c9ad9d8eb46083d1b9e298ed336771c8eeab5b01a8a032bacf99be",
+        "status": "success",
+        "submission": "Crux__Claude-Opus-4.6",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/Crux__Claude-Opus-4.6/submission-run/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "claude-code-enhanced__terminal-bench",
+          "native_status": "unavailable",
+          "row_count": 434,
+          "native_mean_fraction": "263/434",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        },
+        {
+          "eval_key": "claude-code__terminal-bench",
+          "native_status": "unavailable",
+          "row_count": 2,
+          "native_mean_fraction": "1/2",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        },
+        {
+          "eval_key": "codex__terminal-bench",
+          "native_status": "unavailable",
+          "row_count": 3,
+          "native_mean_fraction": "1/1",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        },
+        {
+          "eval_key": "factory-droid__terminal-bench",
+          "native_status": "unavailable",
+          "row_count": 3,
+          "native_mean_fraction": "2/3",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        },
+        {
+          "eval_key": "oracle__terminal-bench",
+          "native_status": "unavailable",
+          "row_count": 3,
+          "native_mean_fraction": "1/1",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/Dirac__Gemini-3-Flash-Preview/2026-04-18__15-04-03",
+      "canonical_status": "unavailable",
+      "raw_count": 445,
+      "raw_reward_mass": "290",
+      "raw_operational_mean": "58/89",
+      "published_means": [],
+      "whole_job_numeric_match": null,
+      "raw_scored": 445,
+      "raw_null": 0,
+      "raw_errors": 64,
+      "raw_source_labels": {
+        "terminal-bench/terminal-bench-2": 445
+      },
+      "task_id_shapes": {
+        "['name', 'org', 'ref']": 445
+      },
+      "global_n_trials": 445,
+      "global_n_completed_trials": null,
+      "global_n_errors": 64,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/Dirac__Gemini-3-Flash-Preview/2026-04-18__15-04-03",
+        "kind": "job",
+        "path": "results/5d1b9cf4966fbb4594fe3f034ae878950b600553fad4215c6458438da64e68fa.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/Dirac__Gemini-3-Flash-Preview/2026-04-18__15-04-03/result.json",
+        "source_sha256": "75316bb5dabdab676b15e0794afbe9cc4251525689566a0390d27e3f47511f97",
+        "status": "success",
+        "submission": "Dirac__Gemini-3-Flash-Preview",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/Dirac__Gemini-3-Flash-Preview/2026-04-18__15-04-03/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "dirac__terminal-bench-terminal-bench-2",
+          "native_status": "unavailable",
+          "row_count": 445,
+          "native_mean_fraction": "58/89",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/JJAgent__Multiple/2026-05-04__14-46-15",
+      "canonical_status": "unavailable",
+      "raw_count": 445,
+      "raw_reward_mass": "385",
+      "raw_operational_mean": "77/89",
+      "published_means": [
+        [
+          "jj-agent-harness__multiple__terminal-bench",
+          "8651685393258427/10000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 445,
+      "raw_null": 0,
+      "raw_errors": 10,
+      "raw_source_labels": {
+        "terminal-bench": 445
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 445
+      },
+      "global_n_trials": null,
+      "global_n_completed_trials": 445,
+      "global_n_errors": null,
+      "global_n_errored_trials": 10,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/JJAgent__Multiple/2026-05-04__14-46-15",
+        "kind": "job",
+        "path": "results/3ea11013574b16905ac0bbad02b79795c24d70efb2d84dbc926f798fb4f98dae.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/JJAgent__Multiple/2026-05-04__14-46-15/result.json",
+        "source_sha256": "0b92337005bd66d3a98f451945802e5ed24bd3acd09e992763cc6458a9b2c2c8",
+        "status": "success",
+        "submission": "JJAgent__Multiple",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/JJAgent__Multiple/2026-05-04__14-46-15/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "jj-agent-harness__Multiple__terminal-bench",
+          "native_status": "unavailable",
+          "row_count": 445,
+          "native_mean_fraction": "77/89",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        },
+        {
+          "eval_key": "jj-agent-harness__multiple__terminal-bench",
+          "native_status": "unavailable",
+          "row_count": 0,
+          "native_mean_fraction": null,
+          "published_mean": "0.8651685393258427",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/JJAgent__Multiple/2026-05-05__18-36-48",
+      "canonical_status": "unavailable",
+      "raw_count": 445,
+      "raw_reward_mass": "390",
+      "raw_operational_mean": "78/89",
+      "published_means": [
+        [
+          "jj-agent-harness__multiple__terminal-bench",
+          "350561797752809/400000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 445,
+      "raw_null": 0,
+      "raw_errors": 9,
+      "raw_source_labels": {
+        "terminal-bench": 445
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 445
+      },
+      "global_n_trials": null,
+      "global_n_completed_trials": 445,
+      "global_n_errors": null,
+      "global_n_errored_trials": 9,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/JJAgent__Multiple/2026-05-05__18-36-48",
+        "kind": "job",
+        "path": "results/f7693d007559a128ab2d330cae34f3a3a54121a7f32fe702891594718dfcb2c0.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/JJAgent__Multiple/2026-05-05__18-36-48/result.json",
+        "source_sha256": "329f2082a7f9b0c3761c6c57f11821359c265c59b5aa3807ad8d6e940ffb242c",
+        "status": "success",
+        "submission": "JJAgent__Multiple",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/JJAgent__Multiple/2026-05-05__18-36-48/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "jj-agent-harness__Multiple__terminal-bench",
+          "native_status": "unavailable",
+          "row_count": 445,
+          "native_mean_fraction": "78/89",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        },
+        {
+          "eval_key": "jj-agent-harness__multiple__terminal-bench",
+          "native_status": "unavailable",
+          "row_count": 0,
+          "native_mean_fraction": null,
+          "published_mean": "0.8764044943820225",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-11-13__09-25-32",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "38",
+      "raw_operational_mean": "38/89",
+      "published_means": [
+        [
+          "final__terminal-bench",
+          "8539325842696629/20000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 86,
+      "raw_null": 3,
+      "raw_errors": 3,
+      "raw_source_labels": {
+        "terminal-bench": 89
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 89
+      },
+      "global_n_trials": 89,
+      "global_n_completed_trials": null,
+      "global_n_errors": 13,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 3,
+      "null_records_indexed_as_reward_values": {
+        "0.0": 3
+      },
+      "first_null_index_pointer": [
+        {
+          "name": "make-doom-for-mips__QEUdDCf",
+          "summary_reward": "0.0",
+          "trial_source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-11-13__09-25-32/make-doom-for-mips__QEUdDCf/result.json"
+        }
+      ],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-11-13__09-25-32",
+        "kind": "job",
+        "path": "results/b2f7260e1792ec41b361122bf7a7ff672ce8210a2cf38f5c625894748391702c.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-11-13__09-25-32/result.json",
+        "source_sha256": "d690bd1f9cd4e892118c70d35a4ff206805b961e57ea978e4a473fd97defb0c5",
+        "status": "success",
+        "submission": "MAYA__Claude-4.5-sonnet",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-11-13__09-25-32/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "final__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 89,
+          "native_mean_fraction": "38/89",
+          "published_mean": "0.42696629213483145",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-05__06-20-00",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "38",
+      "raw_operational_mean": "38/89",
+      "published_means": [
+        [
+          "final__terminal-bench",
+          "8539325842696629/20000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 86,
+      "raw_null": 3,
+      "raw_errors": 3,
+      "raw_source_labels": {
+        "terminal-bench": 89
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 89
+      },
+      "global_n_trials": 89,
+      "global_n_completed_trials": null,
+      "global_n_errors": 3,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 3,
+      "null_records_indexed_as_reward_values": {
+        "0.0": 3
+      },
+      "first_null_index_pointer": [
+        {
+          "name": "make-doom-for-mips__b5wWg4Z",
+          "summary_reward": "0.0",
+          "trial_source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-05__06-20-00/make-doom-for-mips__b5wWg4Z/result.json"
+        }
+      ],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-05__06-20-00",
+        "kind": "job",
+        "path": "results/5ace5a2f33b77bfd9dc3941e3d9452ec08895b5abb7b00ce6b33287bbd457f52.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-05__06-20-00/result.json",
+        "source_sha256": "ba62f9297c8ef4952c7fe98e2d2da127dd69f737d484365447f57e75d5d1eda9",
+        "status": "success",
+        "submission": "MAYA__Claude-4.5-sonnet",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-05__06-20-00/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "final__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 89,
+          "native_mean_fraction": "38/89",
+          "published_mean": "0.42696629213483145",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-05__16-42-55",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "38",
+      "raw_operational_mean": "38/89",
+      "published_means": [
+        [
+          "final__terminal-bench",
+          "8539325842696629/20000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 87,
+      "raw_null": 2,
+      "raw_errors": 2,
+      "raw_source_labels": {
+        "terminal-bench": 89
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 89
+      },
+      "global_n_trials": 89,
+      "global_n_completed_trials": null,
+      "global_n_errors": 2,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 2,
+      "null_records_indexed_as_reward_values": {
+        "0.0": 2
+      },
+      "first_null_index_pointer": [
+        {
+          "name": "hf-model-inference__DHXTs53",
+          "summary_reward": "0.0",
+          "trial_source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-05__16-42-55/hf-model-inference__DHXTs53/result.json"
+        }
+      ],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-05__16-42-55",
+        "kind": "job",
+        "path": "results/d5e09e8f64d137db843b0d6ca417112e605537dcd08fb18dc60b282de7dc2dba.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-05__16-42-55/result.json",
+        "source_sha256": "7853ae35a4d61af109e48e52ffacb3a27e31bf24ab97658de765df6a08ff0fad",
+        "status": "success",
+        "submission": "MAYA__Claude-4.5-sonnet",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-05__16-42-55/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "final__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 89,
+          "native_mean_fraction": "38/89",
+          "published_mean": "0.42696629213483145",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-06__16-31-45",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "38",
+      "raw_operational_mean": "38/89",
+      "published_means": [
+        [
+          "final__terminal-bench",
+          "8539325842696629/20000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 84,
+      "raw_null": 5,
+      "raw_errors": 5,
+      "raw_source_labels": {
+        "terminal-bench": 89
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 89
+      },
+      "global_n_trials": 89,
+      "global_n_completed_trials": null,
+      "global_n_errors": 5,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 5,
+      "null_records_indexed_as_reward_values": {
+        "0.0": 5
+      },
+      "first_null_index_pointer": [
+        {
+          "name": "hf-model-inference__2K2cCCg",
+          "summary_reward": "0.0",
+          "trial_source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-06__16-31-45/hf-model-inference__2K2cCCg/result.json"
+        }
+      ],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-06__16-31-45",
+        "kind": "job",
+        "path": "results/04f8416e35d148586fd16180922ec4d3ecc6ffeb25e7deab1366a699ca90065e.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-06__16-31-45/result.json",
+        "source_sha256": "4ef41e8dec9204e7928f12f71e753eaa13eb321e2528e2b0f5b085fbbe566390",
+        "status": "success",
+        "submission": "MAYA__Claude-4.5-sonnet",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-06__16-31-45/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "final__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 89,
+          "native_mean_fraction": "38/89",
+          "published_mean": "0.42696629213483145",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-09__13-26-21",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "38",
+      "raw_operational_mean": "38/89",
+      "published_means": [
+        [
+          "final__terminal-bench",
+          "8539325842696629/20000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 88,
+      "raw_null": 1,
+      "raw_errors": 1,
+      "raw_source_labels": {
+        "terminal-bench": 89
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 89
+      },
+      "global_n_trials": 89,
+      "global_n_completed_trials": null,
+      "global_n_errors": 1,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 1,
+      "null_records_indexed_as_reward_values": {
+        "0.0": 1
+      },
+      "first_null_index_pointer": [
+        {
+          "name": "overfull-hbox__3kXhHNb",
+          "summary_reward": "0.0",
+          "trial_source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-09__13-26-21/overfull-hbox__3kXhHNb/result.json"
+        }
+      ],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-09__13-26-21",
+        "kind": "job",
+        "path": "results/65e5ea0fc061b21660c7982cb54c4c7773bd1f0d1aa9bde5174bff7a40321995.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-09__13-26-21/result.json",
+        "source_sha256": "22115268af4485f8d894930c9b1a140e169495509a39399e2e47ff62fde6fa1c",
+        "status": "success",
+        "submission": "MAYA__Claude-4.5-sonnet",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/MAYA__Claude-4.5-sonnet/2025-12-09__13-26-21/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "final__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 89,
+          "native_mean_fraction": "38/89",
+          "published_mean": "0.42696629213483145",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-02-27__16-48-59",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "65",
+      "raw_operational_mean": "65/89",
+      "published_means": [
+        [
+          "final__terminal-bench",
+          "3651685393258427/5000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 88,
+      "raw_null": 1,
+      "raw_errors": 1,
+      "raw_source_labels": {
+        "terminal-bench": 89
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 89
+      },
+      "global_n_trials": 89,
+      "global_n_completed_trials": null,
+      "global_n_errors": 1,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 1,
+      "null_records_indexed_as_reward_values": {
+        "0.0": 1
+      },
+      "first_null_index_pointer": [
+        {
+          "name": "path-tracing-reverse__rUPdFvz",
+          "summary_reward": "0.0",
+          "trial_source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-02-27__16-48-59/path-tracing-reverse__rUPdFvz/result.json"
+        }
+      ],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-02-27__16-48-59",
+        "kind": "job",
+        "path": "results/a49a556288bd39f79bbdcda526369a72ae0818b535f640196f31baf9cc81cddd.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-02-27__16-48-59/result.json",
+        "source_sha256": "2efba7c00d4048851cfd615ae8f3a259015f661afb7918a2258beb4c455bb9a8",
+        "status": "success",
+        "submission": "MAYA__Claude-4.6-opus",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-02-27__16-48-59/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "final__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 89,
+          "native_mean_fraction": "65/89",
+          "published_mean": "0.7303370786516854",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-02__08-17-24",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "66",
+      "raw_operational_mean": "66/89",
+      "published_means": [
+        [
+          "final__terminal-bench",
+          "1853932584269663/2500000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 85,
+      "raw_null": 4,
+      "raw_errors": 4,
+      "raw_source_labels": {
+        "terminal-bench": 89
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 89
+      },
+      "global_n_trials": 89,
+      "global_n_completed_trials": null,
+      "global_n_errors": 4,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 4,
+      "null_records_indexed_as_reward_values": {
+        "0.0": 4
+      },
+      "first_null_index_pointer": [
+        {
+          "name": "adaptive-rejection-sampler__vNUv5FM",
+          "summary_reward": "0.0",
+          "trial_source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-02__08-17-24/adaptive-rejection-sampler__vNUv5FM/result.json"
+        }
+      ],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-02__08-17-24",
+        "kind": "job",
+        "path": "results/55de2bca1015cb016bea9c965f71e7b2615221d5ffd2262c8d762905c7470002.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-02__08-17-24/result.json",
+        "source_sha256": "d426aa6f536d9aa0381e336b155e4e0c4841cc66a7b4aeb816f9d7e258b86190",
+        "status": "success",
+        "submission": "MAYA__Claude-4.6-opus",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-02__08-17-24/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "final__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 89,
+          "native_mean_fraction": "66/89",
+          "published_mean": "0.7415730337078652",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-04__07-44-02",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "63",
+      "raw_operational_mean": "63/89",
+      "published_means": [
+        [
+          "final__terminal-bench",
+          "3539325842696629/5000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 86,
+      "raw_null": 3,
+      "raw_errors": 3,
+      "raw_source_labels": {
+        "terminal-bench": 89
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 89
+      },
+      "global_n_trials": 89,
+      "global_n_completed_trials": null,
+      "global_n_errors": 3,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 3,
+      "null_records_indexed_as_reward_values": {
+        "0.0": 3
+      },
+      "first_null_index_pointer": [
+        {
+          "name": "filter-js-from-html__qFAo8cP",
+          "summary_reward": "0.0",
+          "trial_source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-04__07-44-02/filter-js-from-html__qFAo8cP/result.json"
+        }
+      ],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-04__07-44-02",
+        "kind": "job",
+        "path": "results/2cf37c79f4c06fa02667a911a8bc779d528ac5b57a656bffd4b0d85631ff627c.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-04__07-44-02/result.json",
+        "source_sha256": "be8da2460fbeb239f07121d24fcb7aa4434a18fc47b41c835c26231b9c1c6d12",
+        "status": "success",
+        "submission": "MAYA__Claude-4.6-opus",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-04__07-44-02/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "final__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 89,
+          "native_mean_fraction": "63/89",
+          "published_mean": "0.7078651685393258",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-05__07-04-22",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "61",
+      "raw_operational_mean": "61/89",
+      "published_means": [
+        [
+          "final__terminal-bench",
+          "6853932584269663/10000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 87,
+      "raw_null": 2,
+      "raw_errors": 2,
+      "raw_source_labels": {
+        "terminal-bench": 89
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 89
+      },
+      "global_n_trials": 89,
+      "global_n_completed_trials": null,
+      "global_n_errors": 2,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 2,
+      "null_records_indexed_as_reward_values": {
+        "0.0": 2
+      },
+      "first_null_index_pointer": [
+        {
+          "name": "filter-js-from-html__3KAriza",
+          "summary_reward": "0.0",
+          "trial_source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-05__07-04-22/filter-js-from-html__3KAriza/result.json"
+        }
+      ],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-05__07-04-22",
+        "kind": "job",
+        "path": "results/556cc58fb4c7da62ded753e56ff3bce1704456588062b73b1bc28fdfd221d1c7.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-05__07-04-22/result.json",
+        "source_sha256": "e60c096d0d11ac888005e749a8789d6511b6a49321d8a71ec99643bd6facbc51",
+        "status": "success",
+        "submission": "MAYA__Claude-4.6-opus",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-05__07-04-22/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "final__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 89,
+          "native_mean_fraction": "61/89",
+          "published_mean": "0.6853932584269663",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-09__08-44-46",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "65",
+      "raw_operational_mean": "65/89",
+      "published_means": [
+        [
+          "final__terminal-bench",
+          "3651685393258427/5000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 88,
+      "raw_null": 1,
+      "raw_errors": 1,
+      "raw_source_labels": {
+        "terminal-bench": 89
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 89
+      },
+      "global_n_trials": 89,
+      "global_n_completed_trials": null,
+      "global_n_errors": 1,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 1,
+      "null_records_indexed_as_reward_values": {
+        "0.0": 1
+      },
+      "first_null_index_pointer": [
+        {
+          "name": "extract-elf__uWQfoFP",
+          "summary_reward": "0.0",
+          "trial_source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-09__08-44-46/extract-elf__uWQfoFP/result.json"
+        }
+      ],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-09__08-44-46",
+        "kind": "job",
+        "path": "results/8c2b30574e68f1bc11e4d76d96282d9d8df78fd095f2985b3fb8540ec33339dd.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-09__08-44-46/result.json",
+        "source_sha256": "6aedff8ff60180e6ee75657fdaac7843fee2cedc2bdeeec6904a7058fab7e47b",
+        "status": "success",
+        "submission": "MAYA__Claude-4.6-opus",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/MAYA__Claude-4.6-opus/2026-03-09__08-44-46/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "final__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 89,
+          "native_mean_fraction": "65/89",
+          "published_mean": "0.7303370786516854",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-1",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "74",
+      "raw_operational_mean": "74/89",
+      "published_means": [
+        [
+          "nexau__terminal-bench",
+          "4157303370786517/5000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 87,
+      "raw_null": 2,
+      "raw_errors": 4,
+      "raw_source_labels": {
+        "terminal-bench": 88,
+        "terminal-bench-2": 1
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 88,
+        "['path']": 1
+      },
+      "global_n_trials": 89,
+      "global_n_completed_trials": null,
+      "global_n_errors": 4,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-1",
+        "kind": "job",
+        "path": "retry1/e0d6494169a080f80e12e4b65a503e6e50b80437fc065d5bc1cf70134f6ed618.json",
+        "prior_failed_path": "results/e0d6494169a080f80e12e4b65a503e6e50b80437fc065d5bc1cf70134f6ed618.json",
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-1/result.json",
+        "source_sha256": "670cea90b9d861edc9875b7c8e77863744e2707e84e08e4904436df0e8220e4a",
+        "status": "success",
+        "submission": "NexAU-AHE__gpt-5.5",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-1/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "nexau__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 88,
+          "native_mean_fraction": "73/88",
+          "published_mean": "0.8314606741573034",
+          "counter_match": false,
+          "schema_issues": []
+        },
+        {
+          "eval_key": "nexau__terminal-bench-2",
+          "native_status": "unavailable",
+          "row_count": 1,
+          "native_mean_fraction": "1/1",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-2",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "76",
+      "raw_operational_mean": "76/89",
+      "published_means": [
+        [
+          "nexau__terminal-bench",
+          "8539325842696629/10000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 89,
+      "raw_null": 0,
+      "raw_errors": 2,
+      "raw_source_labels": {
+        "terminal-bench": 88,
+        "terminal-bench-2": 1
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 88,
+        "['path']": 1
+      },
+      "global_n_trials": 89,
+      "global_n_completed_trials": null,
+      "global_n_errors": 2,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-2",
+        "kind": "job",
+        "path": "retry1/c94d48c765537483b991b4f405107b093ebfbabeae09150535324e0f33328daf.json",
+        "prior_failed_path": "results/c94d48c765537483b991b4f405107b093ebfbabeae09150535324e0f33328daf.json",
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-2/result.json",
+        "source_sha256": "7e7f1737800246a09fe4055af4b90240254cf6a08e21cc9d149050dbe92f3367",
+        "status": "success",
+        "submission": "NexAU-AHE__gpt-5.5",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-2/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "nexau__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 88,
+          "native_mean_fraction": "75/88",
+          "published_mean": "0.8539325842696629",
+          "counter_match": false,
+          "schema_issues": []
+        },
+        {
+          "eval_key": "nexau__terminal-bench-2",
+          "native_status": "unavailable",
+          "row_count": 1,
+          "native_mean_fraction": "1/1",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-3",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 178,
+      "raw_reward_mass": "151",
+      "raw_operational_mean": "151/178",
+      "published_means": [
+        [
+          "nexau__terminal-bench",
+          "848314606741573/1000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 177,
+      "raw_null": 1,
+      "raw_errors": 2,
+      "raw_source_labels": {
+        "terminal-bench": 176,
+        "terminal-bench-2": 2
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 176,
+        "['path']": 2
+      },
+      "global_n_trials": 178,
+      "global_n_completed_trials": null,
+      "global_n_errors": 2,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-3",
+        "kind": "job",
+        "path": "discovery/2f6691b80dc385e4.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-3/result.json",
+        "source_sha256": "4f6fa06cf63d86aea8af7ec8b1c64ac95d4b27391c32b40f9d48e202b418d9db",
+        "status": "success",
+        "submission": "NexAU-AHE__gpt-5.5",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-3/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "nexau__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 176,
+          "native_mean_fraction": "149/176",
+          "published_mean": "0.848314606741573",
+          "counter_match": false,
+          "schema_issues": []
+        },
+        {
+          "eval_key": "nexau__terminal-bench-2",
+          "native_status": "unavailable",
+          "row_count": 2,
+          "native_mean_fraction": "1/1",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-4",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 89,
+      "raw_reward_mass": "75",
+      "raw_operational_mean": "75/89",
+      "published_means": [
+        [
+          "nexau__terminal-bench",
+          "8426966292134831/10000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 88,
+      "raw_null": 1,
+      "raw_errors": 2,
+      "raw_source_labels": {
+        "terminal-bench": 88,
+        "terminal-bench-2": 1
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 88,
+        "['path']": 1
+      },
+      "global_n_trials": 89,
+      "global_n_completed_trials": null,
+      "global_n_errors": 2,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-4",
+        "kind": "job",
+        "path": "retry1/e9c351052bdf82be69f38e458a9ab78529cfc5123efe0afae697e7da3528547e.json",
+        "prior_failed_path": "results/e9c351052bdf82be69f38e458a9ab78529cfc5123efe0afae697e7da3528547e.json",
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-4/result.json",
+        "source_sha256": "e7d87a0526b9d540c1fc59b70fbf52762537aaaff4b4593fb4f81a13658d58b3",
+        "status": "success",
+        "submission": "NexAU-AHE__gpt-5.5",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/NexAU-AHE__gpt-5.5/run-4/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "nexau__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 88,
+          "native_mean_fraction": "37/44",
+          "published_mean": "0.8426966292134831",
+          "counter_match": false,
+          "schema_issues": []
+        },
+        {
+          "eval_key": "nexau__terminal-bench-2",
+          "native_status": "unavailable",
+          "row_count": 1,
+          "native_mean_fraction": "1/1",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/WOZCODE__Claude-Opus-4-7/2026-04-19__20-07-00",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 445,
+      "raw_reward_mass": "357",
+      "raw_operational_mean": "357/445",
+      "published_means": [
+        [
+          "claude-wozcode-plugin__terminal-bench",
+          "200561797752809/250000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 445,
+      "raw_null": 0,
+      "raw_errors": 35,
+      "raw_source_labels": {
+        "terminal-bench": 445
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 445
+      },
+      "global_n_trials": 445,
+      "global_n_completed_trials": null,
+      "global_n_errors": 47,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/WOZCODE__Claude-Opus-4-7/2026-04-19__20-07-00",
+        "kind": "job",
+        "path": "retry1/835d90019f16d14334b5a9c653465dfb3ee911979caedc5b9b12ad6ef37fc49d.json",
+        "prior_failed_path": "results/835d90019f16d14334b5a9c653465dfb3ee911979caedc5b9b12ad6ef37fc49d.json",
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/WOZCODE__Claude-Opus-4-7/2026-04-19__20-07-00/result.json",
+        "source_sha256": "b111d7f2c19582fdc5a9a053e391bfbc85987cc05130f03e3fcd02c401a26d27",
+        "status": "success",
+        "submission": "WOZCODE__Claude-Opus-4-7",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/WOZCODE__Claude-Opus-4-7/2026-04-19__20-07-00/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "claude-wozcode-plugin__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 445,
+          "native_mean_fraction": "357/445",
+          "published_mean": "0.802247191011236",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/Wecode__GPT-5.5/wecode-tb2-4-30-5",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 445,
+      "raw_reward_mass": "392",
+      "raw_operational_mean": "392/445",
+      "published_means": [
+        [
+          "wecode-installed-thin__wecode-tb2-4-30-5",
+          "550561797752809/625000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": true,
+      "raw_scored": 445,
+      "raw_null": 0,
+      "raw_errors": 101,
+      "raw_source_labels": {
+        "wecode-tb2-4-30-5": 445
+      },
+      "task_id_shapes": {
+        "['path']": 445
+      },
+      "global_n_trials": 445,
+      "global_n_completed_trials": null,
+      "global_n_errors": 101,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/Wecode__GPT-5.5/wecode-tb2-4-30-5",
+        "kind": "job",
+        "path": "results/911da9cad98a62ce3d1218670a807bb664ec6c8111682965b2046ab4209597c5.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/Wecode__GPT-5.5/wecode-tb2-4-30-5/result.json",
+        "source_sha256": "ddff110af67ba08a19847b7782721c0845d4ffd82361d1cb163e146995d7f8a4",
+        "status": "success",
+        "submission": "Wecode__GPT-5.5",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/Wecode__GPT-5.5/wecode-tb2-4-30-5/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "wecode-installed-thin__wecode-tb2-4-30-5",
+          "native_status": "match",
+          "row_count": 445,
+          "native_mean_fraction": "392/445",
+          "published_mean": "0.8808988764044944",
+          "counter_match": true,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/WozCode__Claude-Opus-4.6/2026-03-28__16-52-39",
+      "canonical_status": "unavailable",
+      "raw_count": 445,
+      "raw_reward_mass": "303",
+      "raw_operational_mean": "303/445",
+      "published_means": [],
+      "whole_job_numeric_match": null,
+      "raw_scored": 443,
+      "raw_null": 2,
+      "raw_errors": 52,
+      "raw_source_labels": {
+        "terminal-bench": 445
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 445
+      },
+      "global_n_trials": null,
+      "global_n_completed_trials": null,
+      "global_n_errors": null,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/WozCode__Claude-Opus-4.6/2026-03-28__16-52-39",
+        "kind": "job",
+        "path": "retry2/16dbd62b156cf4c8bd975711abc5c86e8d7bfbb24108dc6dace070b2e87b685a.json",
+        "prior_failed_path": "retry1/16dbd62b156cf4c8bd975711abc5c86e8d7bfbb24108dc6dace070b2e87b685a.json",
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/WozCode__Claude-Opus-4.6/2026-03-28__16-52-39/result.json",
+        "source_sha256": null,
+        "status": "failed",
+        "submission": "WozCode__Claude-Opus-4.6",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/WozCode__Claude-Opus-4.6/2026-03-28__16-52-39/result.json"
+      },
+      "actual_job_bytes_available": false,
+      "canonical_job_available_flag": false,
+      "canonical_evals": [
+        {
+          "eval_key": "claude-wozcode-plugin__terminal-bench",
+          "native_status": "unavailable",
+          "row_count": 445,
+          "native_mean_fraction": "303/445",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/grok-cli__grok-4.20-0309-reasoning/job-part1",
+      "canonical_status": "unresolved_mismatch",
+      "raw_count": 130,
+      "raw_reward_mass": "81",
+      "raw_operational_mean": "81/130",
+      "published_means": [
+        [
+          "grok-cli__terminal-bench",
+          "6183206106870229/10000000000000000"
+        ]
+      ],
+      "whole_job_numeric_match": false,
+      "raw_scored": 130,
+      "raw_null": 0,
+      "raw_errors": 9,
+      "raw_source_labels": {
+        "terminal-bench": 130
+      },
+      "task_id_shapes": {
+        "['git_commit_id', 'git_url', 'path']": 130
+      },
+      "global_n_trials": 131,
+      "global_n_completed_trials": null,
+      "global_n_errors": 9,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/grok-cli__grok-4.20-0309-reasoning/job-part1",
+        "kind": "job",
+        "path": "discovery/4f608c30009e5afe.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/grok-cli__grok-4.20-0309-reasoning/job-part1/result.json",
+        "source_sha256": "8254093a45d5cde08a78ddc8ec7673c42b1554b97536c6540a8cc6cd521e7bb7",
+        "status": "success",
+        "submission": "grok-cli__grok-4.20-0309-reasoning",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/grok-cli__grok-4.20-0309-reasoning/job-part1/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "grok-cli__terminal-bench",
+          "native_status": "unresolved_mismatch",
+          "row_count": 130,
+          "native_mean_fraction": "81/130",
+          "published_mean": "0.6183206106870229",
+          "counter_match": false,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/logos-latest__claude-opus-4.7/2026-04-21",
+      "canonical_status": "unavailable",
+      "raw_count": 445,
+      "raw_reward_mass": "372",
+      "raw_operational_mean": "372/445",
+      "published_means": [],
+      "whole_job_numeric_match": null,
+      "raw_scored": 437,
+      "raw_null": 8,
+      "raw_errors": 43,
+      "raw_source_labels": {
+        "terminal-bench/terminal-bench-2": 445
+      },
+      "task_id_shapes": {
+        "['name', 'org', 'ref']": 445
+      },
+      "global_n_trials": 445,
+      "global_n_completed_trials": null,
+      "global_n_errors": 43,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/logos-latest__claude-opus-4.7/2026-04-21",
+        "kind": "job",
+        "path": "results/cec1ce6055ef19ac6a38fc9a262db17f9c820388f4e0d03bfd4aef342363f4a0.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/logos-latest__claude-opus-4.7/2026-04-21/result.json",
+        "source_sha256": "d218d19006603011ee29dd8926b07b3c3cc66ec996817a8cf9a13c387925e9aa",
+        "status": "success",
+        "submission": "logos-latest__claude-opus-4.7",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/logos-latest__claude-opus-4.7/2026-04-21/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "logos__terminal-bench-terminal-bench-2",
+          "native_status": "unavailable",
+          "row_count": 445,
+          "native_mean_fraction": "372/445",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/logos-ts__claude-opus-4.7/2026-04-19",
+      "canonical_status": "unavailable",
+      "raw_count": 445,
+      "raw_reward_mass": "356",
+      "raw_operational_mean": "4/5",
+      "published_means": [],
+      "whole_job_numeric_match": null,
+      "raw_scored": 441,
+      "raw_null": 4,
+      "raw_errors": 200,
+      "raw_source_labels": {
+        "terminal-bench/terminal-bench-2": 445
+      },
+      "task_id_shapes": {
+        "['name', 'org', 'ref']": 445
+      },
+      "global_n_trials": 445,
+      "global_n_completed_trials": null,
+      "global_n_errors": 200,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/logos-ts__claude-opus-4.7/2026-04-19",
+        "kind": "job",
+        "path": "results/6f710ff4f44e6cb71131659f142b3233e6d6d0e2803ae175607d504879fe61fb.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/logos-ts__claude-opus-4.7/2026-04-19/result.json",
+        "source_sha256": "9ce9bf3d75668e231cb05875e742490ba32d7bb1127ff1d8d7c1a82b7deb0c37",
+        "status": "success",
+        "submission": "logos-ts__claude-opus-4.7",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/logos-ts__claude-opus-4.7/2026-04-19/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "logos__terminal-bench-terminal-bench-2",
+          "native_status": "unavailable",
+          "row_count": 445,
+          "native_mean_fraction": "4/5",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        }
+      ]
+    },
+    {
+      "job": "submissions/terminal-bench/2.0/logos__claude-opus-4.6/2026-04-09",
+      "canonical_status": "unavailable",
+      "raw_count": 445,
+      "raw_reward_mass": "295",
+      "raw_operational_mean": "59/89",
+      "published_means": [],
+      "whole_job_numeric_match": null,
+      "raw_scored": 430,
+      "raw_null": 15,
+      "raw_errors": 133,
+      "raw_source_labels": {
+        "terminal-bench/terminal-bench-2": 445
+      },
+      "task_id_shapes": {
+        "['name', 'org', 'ref']": 445
+      },
+      "global_n_trials": 445,
+      "global_n_completed_trials": null,
+      "global_n_errors": 133,
+      "global_n_errored_trials": null,
+      "null_records_indexed_as_reward_count": 0,
+      "null_records_indexed_as_reward_values": {},
+      "first_null_index_pointer": [],
+      "job_request": {
+        "job": "submissions/terminal-bench/2.0/logos__claude-opus-4.6/2026-04-09",
+        "kind": "job",
+        "path": "results/4540f1f4a38bf7e7913ab90ef2a7db34e39c721a7e16cba9ad093cb4cbda6ed2.json",
+        "prior_failed_path": null,
+        "size_metadata_path": null,
+        "source_path": "submissions/terminal-bench/2.0/logos__claude-opus-4.6/2026-04-09/result.json",
+        "source_sha256": "48f419c8870c39e079c282580d2a143f4f4bce28f69fc2ca95e3a87d02e66aa0",
+        "status": "success",
+        "submission": "logos__claude-opus-4.6",
+        "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/submissions/terminal-bench/2.0/logos__claude-opus-4.6/2026-04-09/result.json"
+      },
+      "actual_job_bytes_available": true,
+      "canonical_job_available_flag": true,
+      "canonical_evals": [
+        {
+          "eval_key": "logos__terminal-bench-terminal-bench-2",
+          "native_status": "unavailable",
+          "row_count": 445,
+          "native_mean_fraction": "59/89",
+          "published_mean": null,
+          "counter_match": true,
+          "schema_issues": []
+        }
+      ]
+    }
+  ]
+}

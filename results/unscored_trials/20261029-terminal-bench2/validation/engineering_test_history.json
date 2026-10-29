@@ -1,0 +1,53 @@
+{
+  "original_external_receipts": [
+    {
+      "path": "research-tests-preanalysis.xml",
+      "sha256": "57e3ff0b9023a1dc5e71ae618f0cc95b5ea898878ffcfa1ec5e4aba86958dbc7",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "2",
+          "skipped": "0",
+          "tests": "115",
+          "time": "7.286",
+          "timestamp": "2026-10-29T09:15:58.212041",
+          "hostname": "DESKTOP-IB2ODBB"
+        }
+      ]
+    },
+    {
+      "path": "research-tests-preanalysis-fixed.xml",
+      "sha256": "eb626ddd0d48399fe8d948e0ab65a78167b63041a42e94d6108f7eb631c1917d",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "115",
+          "time": "6.495",
+          "timestamp": "2026-10-29T09:17:47.631105",
+          "hostname": "DESKTOP-IB2ODBB"
+        }
+      ]
+    },
+    {
+      "path": "research-tests-diagnostic-source.xml",
+      "sha256": "05b827fdd88c633d73dcd333b61d9e20e604346c587b15bd4d0696c4f12e8cf6",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "133",
+          "time": "10.756",
+          "timestamp": "2026-10-29T13:13:34.503135",
+          "hostname": "DESKTOP-IB2ODBB"
+        }
+      ]
+    }
+  ],
+  "note": "First fixture run failed two Fraction JSON serializations; repaired fixtures and clean committed runs pass. Other workflow failures are described in the decision log. Original files retained externally."
+}

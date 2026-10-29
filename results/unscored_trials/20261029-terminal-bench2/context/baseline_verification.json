@@ -1,0 +1,489 @@
+{
+  "path_portability": "local prefixes replaced; original receipt hashes retained",
+  "provenance": {
+    "dirty": false,
+    "generated_utc": "2026-10-29T03:50:21.593215+00:00",
+    "git_commit": "92f162a8fee29f8f65bdd9293269e0bacb4d6411",
+    "git_version": "git version 2.47.1.windows.2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "source_sha256": "fb0c03560830f0d74096b62823103fe39483059da9db964b5267be8d7fd2381b"
+  },
+  "receipts": {
+    "canonical-comparisons.json": {
+      "original_receipt_sha256": "9290ee5ee66f05f84bc9de71c6885ac329fb3327b9bd2a4a6899dcffa8e67216",
+      "portable_data": [
+        {
+          "baseline_sha256": "3021ee767c0cf35d95de1a56fc1a41cef0100ae4a7ea8b8eec47f07a84beb06e",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/analysis-provenance.json",
+          "replay_sha256": "3021ee767c0cf35d95de1a56fc1a41cef0100ae4a7ea8b8eec47f07a84beb06e"
+        },
+        {
+          "baseline_sha256": "d26ddce361c07c9aba80c66f9f9f159cc6ffcb5d535972405e3b3606d123a530",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/benchmark-summary.csv",
+          "replay_sha256": "d26ddce361c07c9aba80c66f9f9f159cc6ffcb5d535972405e3b3606d123a530"
+        },
+        {
+          "baseline_sha256": "2d7018a243e6303ddddb801a5ca044226224cca08e15a38d5ed30fa5a03a7914",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/cells.csv",
+          "replay_sha256": "2d7018a243e6303ddddb801a5ca044226224cca08e15a38d5ed30fa5a03a7914"
+        },
+        {
+          "baseline_sha256": "1fc9bcfcb9553830c57fa8468499bb3ee4b95ba3c768647bfa87a4bc17ff2cbf",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/decimal-crosscheck.json",
+          "replay_sha256": "1fc9bcfcb9553830c57fa8468499bb3ee4b95ba3c768647bfa87a4bc17ff2cbf"
+        },
+        {
+          "baseline_sha256": "6de65361fca900786c628c18c897ae6e73980793db62b96d12b787d20f9cbf53",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/endpoint-check.json",
+          "replay_sha256": "6de65361fca900786c628c18c897ae6e73980793db62b96d12b787d20f9cbf53"
+        },
+        {
+          "baseline_sha256": "7ba2c08744f6e2a93a0868d44488f727d7153ab546c708bd76cc0e8affa8bfa9",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/pairs-envelope.csv",
+          "replay_sha256": "7ba2c08744f6e2a93a0868d44488f727d7153ab546c708bd76cc0e8affa8bfa9"
+        },
+        {
+          "baseline_sha256": "716a0b244f7171be0acd0dacf4a1689f3b25bdf4a3c02b590d3288792c00673f",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/pairs.csv",
+          "replay_sha256": "716a0b244f7171be0acd0dacf4a1689f3b25bdf4a3c02b590d3288792c00673f"
+        },
+        {
+          "baseline_sha256": "0a13395bd0067391fb1ab2aa5719e4f6e494a516fd7cd563c49db51e7abd64f8",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/policy-sensitivity.csv",
+          "replay_sha256": "0a13395bd0067391fb1ab2aa5719e4f6e494a516fd7cd563c49db51e7abd64f8"
+        },
+        {
+          "baseline_sha256": "3fdcb0bb8fef0cb09c8e2771888a32965706534c7ae4a1c745264b6ae2d85462",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/quarantine.csv",
+          "replay_sha256": "3fdcb0bb8fef0cb09c8e2771888a32965706534c7ae4a1c745264b6ae2d85462"
+        },
+        {
+          "baseline_sha256": "3fb5dad90a7bb93008d18166471336ee50ff5af112dda8219498daa7b7105a8e",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/summary.json",
+          "replay_sha256": "3fb5dad90a7bb93008d18166471336ee50ff5af112dda8219498daa7b7105a8e"
+        },
+        {
+          "baseline_sha256": "e50373f5a67ee53da2b75468d17025f13d77912c22a4158fbb54c5000f581b49",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/tau-cells.csv",
+          "replay_sha256": "e50373f5a67ee53da2b75468d17025f13d77912c22a4158fbb54c5000f581b49"
+        },
+        {
+          "baseline_sha256": "50058d9f60c98b69fd646fb85311dc8ba5a2f0ca5463917cea6d69b1e5713de6",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/tau-slot-ledger.csv",
+          "replay_sha256": "50058d9f60c98b69fd646fb85311dc8ba5a2f0ca5463917cea6d69b1e5713de6"
+        },
+        {
+          "baseline_sha256": "52a49894d8e0c175e2c86c20e51761baa42c3e49a26ce2c71917c9ee35a9a27b",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/tau-summary.json",
+          "replay_sha256": "52a49894d8e0c175e2c86c20e51761baa42c3e49a26ce2c71917c9ee35a9a27b"
+        },
+        {
+          "baseline_sha256": "dd4275ef37f4675f77bb226a2ce5452b52db35ec2c85cfb7fc16179f3a2aeba1",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/validation.json",
+          "replay_sha256": "dd4275ef37f4675f77bb226a2ce5452b52db35ec2c85cfb7fc16179f3a2aeba1"
+        },
+        {
+          "baseline_sha256": "580125a757685e17a63283a53c3d907ca583bc64394df37785ea0adad30d8770",
+          "bytes_equal": true,
+          "canonical_equal": true,
+          "path": "results/verified-sources.json",
+          "replay_sha256": "580125a757685e17a63283a53c3d907ca583bc64394df37785ea0adad30d8770"
+        }
+      ]
+    },
+    "command-receipts.json": {
+      "original_receipt_sha256": "70f05a0d8200228290d6d0bc756547df64735303b552fe22d33dc0aa5ed37f32",
+      "portable_data": [
+        {
+          "command": [
+            "$PYTHON",
+            "-B",
+            "src/verify_artifact.py"
+          ],
+          "cwd": "$WARRANT_RESEARCH_DATA_DIR\\baseline-verification\\replay-copy\\warrant-exclusion-study",
+          "elapsed_seconds": 0.8719019999261945,
+          "ended_utc": "2026-10-28T22:08:35.509605+00:00",
+          "exit_code": 0,
+          "started_utc": "2026-10-28T22:08:34.637789+00:00",
+          "stderr": "01-stderr.log",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "01-stdout.log",
+          "stdout_sha256": "f944edabe7ade15d1175b573a98d106a140bceb985377aef637d13d4afcb089f"
+        },
+        {
+          "command": [
+            "$PYTHON",
+            "-B",
+            "src/analyze.py"
+          ],
+          "cwd": "$WARRANT_RESEARCH_DATA_DIR\\baseline-verification\\replay-copy\\warrant-exclusion-study",
+          "elapsed_seconds": 0.9401477000210434,
+          "ended_utc": "2026-10-28T22:08:36.465603+00:00",
+          "exit_code": 0,
+          "started_utc": "2026-10-28T22:08:35.525606+00:00",
+          "stderr": "02-stderr.log",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "02-stdout.log",
+          "stdout_sha256": "786c79c4b9e03634607176d8d17c77a0255a2067768841792c4aa6d826c375ac"
+        },
+        {
+          "command": [
+            "$PYTHON",
+            "-B",
+            "src/analyze_tau.py"
+          ],
+          "cwd": "$WARRANT_RESEARCH_DATA_DIR\\baseline-verification\\replay-copy\\warrant-exclusion-study",
+          "elapsed_seconds": 4.50295599992387,
+          "ended_utc": "2026-10-28T22:08:40.973710+00:00",
+          "exit_code": 0,
+          "started_utc": "2026-10-28T22:08:36.470631+00:00",
+          "stderr": "03-stderr.log",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "03-stdout.log",
+          "stdout_sha256": "2f6112891ee715b7febbab415739ace961ddb68408571e75537f09c989efef60"
+        },
+        {
+          "command": [
+            "$PYTHON",
+            "-B",
+            "src/crosscheck.py"
+          ],
+          "cwd": "$WARRANT_RESEARCH_DATA_DIR\\baseline-verification\\replay-copy\\warrant-exclusion-study",
+          "elapsed_seconds": 0.3291211000178009,
+          "ended_utc": "2026-10-28T22:08:41.316705+00:00",
+          "exit_code": 0,
+          "started_utc": "2026-10-28T22:08:40.987705+00:00",
+          "stderr": "04-stderr.log",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout": "04-stdout.log",
+          "stdout_sha256": "1fc9bcfcb9553830c57fa8468499bb3ee4b95ba3c768647bfa87a4bc17ff2cbf"
+        },
+        {
+          "command": [
+            "$PYTHON",
+            "-B",
+            "-W",
+            "error::ResourceWarning",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-v"
+          ],
+          "cwd": "$WARRANT_RESEARCH_DATA_DIR\\baseline-verification\\replay-copy\\warrant-exclusion-study",
+          "elapsed_seconds": 1.0140760999638587,
+          "ended_utc": "2026-10-28T22:08:42.334958+00:00",
+          "exit_code": 0,
+          "started_utc": "2026-10-28T22:08:41.320704+00:00",
+          "stderr": "05-stderr.log",
+          "stderr_sha256": "93e208340f9cdde949fdc98b08d9926f749475a81910c3f72a6adafb89b6640f",
+          "stdout": "05-stdout.log",
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    "review-receipt.json": {
+      "original_receipt_sha256": "b1bef3bd009e512f5e9736de918b8bde660284b6c55fba810fd6c756545ecece",
+      "portable_data": {
+        "active_effort_minutes_estimate": 3,
+        "additional_paid_compute_api_cost_inr": 0,
+        "agent": "plan_review",
+        "effort_estimation_method": "Wall interval while actively reading, constructing isolation wrapper, running short commands and inspecting outputs; rounded estimate, not a timesheet measurement",
+        "limitations": [
+          "Same assistant/system computational replay, not independent human adjudication or independent replication",
+          "No public inputs refreshed and no outcome label verification",
+          "Original aggregate population and historical final-slot scope retained",
+          "No PDF rebuilt",
+          "No repo files written"
+        ],
+        "original_unmanifested_files": [
+          "MANIFEST.sha256.json",
+          "src/__pycache__/analyze.cpython-312.pyc",
+          "src/__pycache__/analyze_tau.cpython-312.pyc",
+          "src/__pycache__/crosscheck.cpython-312.pyc",
+          "src/__pycache__/fetch_initial.cpython-312.pyc",
+          "src/__pycache__/fetch_tau.cpython-312.pyc",
+          "src/__pycache__/figures.cpython-312.pyc",
+          "src/__pycache__/manuscript.cpython-312.pyc",
+          "src/__pycache__/render_pdf.cpython-312.pyc",
+          "src/__pycache__/reproduce.cpython-312.pyc",
+          "src/__pycache__/retrieve.cpython-312.pyc",
+          "src/__pycache__/verify_artifact.cpython-312.pyc",
+          "tests/__pycache__/test_analysis.cpython-312.pyc",
+          "tests/__pycache__/test_tau.cpython-312.pyc"
+        ],
+        "read_files": [
+          {
+            "path": "README.md",
+            "sha256": "a4628d00dbcc42aaa7090ede999005f7fb1c0f68faa44c4f8fc97530458bbb72"
+          },
+          {
+            "path": "PROTOCOL.md",
+            "sha256": "f483c51b30fcc172de852a38faafde4c0a04727141e05da34d82c3d58f9f3e5c"
+          },
+          {
+            "path": "DECISIONS.md",
+            "sha256": "167c8ae3058fac43cdae645d3b5ddd06c73dac74c86d2247238fd5f5df3440af"
+          },
+          {
+            "path": "PUBLICATION-ASSESSMENT.md",
+            "sha256": "ed5f3e1d61aea84d5e3ddedb29f5b709951e9cc836a7c0dee621520e60e79518"
+          },
+          {
+            "path": "DATA-AVAILABILITY.md",
+            "sha256": "406fd2033981d114336e57bec7682efddc35275c502d87bada2e06e629a3b699"
+          },
+          {
+            "path": "CLAIM-LEDGER.md",
+            "sha256": "fb043fc76f6b1be3a9b9c8c82f01feba185a8b69cd846def37e53cc5fd497dee"
+          },
+          {
+            "path": "src/analyze.py",
+            "sha256": "d5e493332b503e567589171baa3600c2cd4e42967a3ff3e9ed38be2680cf30f8"
+          },
+          {
+            "path": "src/analyze_tau.py",
+            "sha256": "515eee8e4c74eac9db5c6d774a4cea8644303b4651f1bb2044bab8b3cbc1c6ff"
+          },
+          {
+            "path": "src/crosscheck.py",
+            "sha256": "ad021998d4e6e738185c57da166eb0105848fa3164bf5c9b64d87a9abe3d2500"
+          },
+          {
+            "path": "src/verify_artifact.py",
+            "sha256": "192bf9ed177bef7d6966e11260d5ef1485a94dfe3fe85c8cd97e75040d22ffa1"
+          }
+        ],
+        "review_end_utc": "2026-10-28T22:09:08.045659+00:00",
+        "review_start_utc": "2026-10-28T22:07:32+00:00",
+        "scope": "Stage A baseline identity, isolated offline numerical reproduction and scope review only",
+        "scope_corrections_confirmed": {
+          "all_eligible_cells_within_10pct": true,
+          "eight_eligible_cells_exceed_5pct": true,
+          "max_missing_fraction": "20/205",
+          "retry_history_unverified": true
+        },
+        "tests": {
+          "elapsed_seconds_reported_by_unittest": 0.647,
+          "failed": 0,
+          "ran": 21
+        },
+        "verification_summary_sha256": "102b523b41766789d43517e0b5b0cbd42cd72c046274b371134a20a5b4ff9d77",
+        "wrapper_sha256": "b365eb0f865059f18d090cafdb17ca3fb37bbad49e11ea0728294030e6b526a4"
+      }
+    },
+    "verification-summary.json": {
+      "original_receipt_sha256": "102b523b41766789d43517e0b5b0cbd42cd72c046274b371134a20a5b4ff9d77",
+      "portable_data": {
+        "all_bytes_equal": true,
+        "all_canonical_equal": true,
+        "archive": {
+          "bytes": 32732418,
+          "expected_sha256": "620e321c99c86f1870f2ec10a8c99848db3fdd03c580522b876780401de755ed",
+          "path": "$WARRANT_BASELINE_PARENT\\warrant-unscored-trials-research-artifact.zip",
+          "sha256": "620e321c99c86f1870f2ec10a8c99848db3fdd03c580522b876780401de755ed"
+        },
+        "archive_after": {
+          "bytes": 32732418,
+          "sha256": "620e321c99c86f1870f2ec10a8c99848db3fdd03c580522b876780401de755ed"
+        },
+        "cap_correction": {
+          "above_10pct": 0,
+          "above_5pct": 8,
+          "eligible_cells": 86,
+          "largest_missing_examples": [
+            {
+              "attempted": "205",
+              "benchmark": "bixbench-pi",
+              "missing": "20",
+              "missing_fraction": "0.0975609756097561",
+              "model": "Qwen/Qwen3.6-35B-A3B"
+            }
+          ],
+          "largest_missing_fraction": 0.0975609756097561
+        },
+        "commands": [
+          {
+            "command": [
+              "$PYTHON",
+              "-B",
+              "src/verify_artifact.py"
+            ],
+            "cwd": "$WARRANT_RESEARCH_DATA_DIR\\baseline-verification\\replay-copy\\warrant-exclusion-study",
+            "elapsed_seconds": 0.8719019999261945,
+            "ended_utc": "2026-10-28T22:08:35.509605+00:00",
+            "exit_code": 0,
+            "started_utc": "2026-10-28T22:08:34.637789+00:00",
+            "stderr": "01-stderr.log",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout": "01-stdout.log",
+            "stdout_sha256": "f944edabe7ade15d1175b573a98d106a140bceb985377aef637d13d4afcb089f"
+          },
+          {
+            "command": [
+              "$PYTHON",
+              "-B",
+              "src/analyze.py"
+            ],
+            "cwd": "$WARRANT_RESEARCH_DATA_DIR\\baseline-verification\\replay-copy\\warrant-exclusion-study",
+            "elapsed_seconds": 0.9401477000210434,
+            "ended_utc": "2026-10-28T22:08:36.465603+00:00",
+            "exit_code": 0,
+            "started_utc": "2026-10-28T22:08:35.525606+00:00",
+            "stderr": "02-stderr.log",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout": "02-stdout.log",
+            "stdout_sha256": "786c79c4b9e03634607176d8d17c77a0255a2067768841792c4aa6d826c375ac"
+          },
+          {
+            "command": [
+              "$PYTHON",
+              "-B",
+              "src/analyze_tau.py"
+            ],
+            "cwd": "$WARRANT_RESEARCH_DATA_DIR\\baseline-verification\\replay-copy\\warrant-exclusion-study",
+            "elapsed_seconds": 4.50295599992387,
+            "ended_utc": "2026-10-28T22:08:40.973710+00:00",
+            "exit_code": 0,
+            "started_utc": "2026-10-28T22:08:36.470631+00:00",
+            "stderr": "03-stderr.log",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout": "03-stdout.log",
+            "stdout_sha256": "2f6112891ee715b7febbab415739ace961ddb68408571e75537f09c989efef60"
+          },
+          {
+            "command": [
+              "$PYTHON",
+              "-B",
+              "src/crosscheck.py"
+            ],
+            "cwd": "$WARRANT_RESEARCH_DATA_DIR\\baseline-verification\\replay-copy\\warrant-exclusion-study",
+            "elapsed_seconds": 0.3291211000178009,
+            "ended_utc": "2026-10-28T22:08:41.316705+00:00",
+            "exit_code": 0,
+            "started_utc": "2026-10-28T22:08:40.987705+00:00",
+            "stderr": "04-stderr.log",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout": "04-stdout.log",
+            "stdout_sha256": "1fc9bcfcb9553830c57fa8468499bb3ee4b95ba3c768647bfa87a4bc17ff2cbf"
+          },
+          {
+            "command": [
+              "$PYTHON",
+              "-B",
+              "-W",
+              "error::ResourceWarning",
+              "-m",
+              "unittest",
+              "discover",
+              "-s",
+              "tests",
+              "-v"
+            ],
+            "cwd": "$WARRANT_RESEARCH_DATA_DIR\\baseline-verification\\replay-copy\\warrant-exclusion-study",
+            "elapsed_seconds": 1.0140760999638587,
+            "ended_utc": "2026-10-28T22:08:42.334958+00:00",
+            "exit_code": 0,
+            "started_utc": "2026-10-28T22:08:41.320704+00:00",
+            "stderr": "05-stderr.log",
+            "stderr_sha256": "93e208340f9cdde949fdc98b08d9926f749475a81910c3f72a6adafb89b6640f",
+            "stdout": "05-stdout.log",
+            "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "comparison_count": 15,
+        "copy_changes": [],
+        "elapsed_seconds": 19.863708999939263,
+        "eligible_cells": 86,
+        "ended_utc": "2026-10-28T22:08:44.471358+00:00",
+        "environment": {
+          "executable": "$PYTHON",
+          "machine": "AMD64",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+        },
+        "excluded_cells": 2,
+        "extracted_manifest": {
+          "checked": 160,
+          "failures": [],
+          "manifest_sha256": "7341edd3fbf148d0161384319da2bf0c2346765ebe74389448c2538223a6f067"
+        },
+        "human_adjudication": false,
+        "independent_replication": false,
+        "missing_eligible": 180,
+        "network_refresh": false,
+        "original_file_count": 174,
+        "original_manifest": {
+          "checked": 160,
+          "failures": [],
+          "manifest_sha256": "7341edd3fbf148d0161384319da2bf0c2346765ebe74389448c2538223a6f067"
+        },
+        "original_preserved": true,
+        "pdf_rebuilt": false,
+        "primary_summary": {
+          "ambiguous_pairs": 36,
+          "identified_ties": 2,
+          "native_ties": 4,
+          "pairs": 421,
+          "robust_pairs": 383,
+          "robust_reversals": 0,
+          "strict_native_unresolved": 34,
+          "strict_reversal_possible": 22,
+          "unresolved_pairs": 38
+        },
+        "replay_root": "$WARRANT_RESEARCH_DATA_DIR\\baseline-verification\\replay-copy\\warrant-exclusion-study",
+        "reported_attempted_eligible": 13462,
+        "started_utc": "2026-10-28T22:08:24.608476+00:00",
+        "tau_summary": {
+          "absent_slots": 0,
+          "cells": 12,
+          "dates": [
+            "2025-06-04",
+            "2025-06-05",
+            "2025-06-06"
+          ],
+          "domains": 3,
+          "duplicate_slots": 0,
+          "expected_slots": 4448,
+          "models": 4,
+          "retained_slots": 4448,
+          "scope": "Released final slots conditional on stored task rosters; discarded retries and original pre-release schedules not verified",
+          "scored_slots": 4448,
+          "unexpected_slots": 0,
+          "unknown_slots": 0,
+          "unscored_retained": 0
+        }
+      }
+    }
+  }
+}

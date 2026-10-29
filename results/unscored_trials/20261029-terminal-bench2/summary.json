@@ -1,0 +1,64 @@
+{
+  "compatibility_signature_counts": {
+    "5f7b91d76e09c13a5d802657481d44241810449f8c3a995fbbece88c04762a55": 54,
+    "a8715e06cbd8d98cc103a89589c2e3b8c1f78a269a06398600cabab34dbbed39": 1,
+    "b9ef863d8f3da3ec40b752bb0385584bfaffcc220803995c7e1c082280f7fb95": 1
+  },
+  "compatible_unordered_primary_pairs": 1431,
+  "conservative_total_bytes_including_other_source_reserve": 1271914104,
+  "cross_submission_conflicting_uuid_count": 0,
+  "cross_submission_shared_uuid_count": 0,
+  "dataset": "harborframework/terminal-bench-2-leaderboard",
+  "download_ceiling_bytes": 2147483648,
+  "duplicate_export_groups": 0,
+  "eligible_pair_count": 1540,
+  "eligible_primary_submissions": 56,
+  "exact_original_roster_established": false,
+  "failed_source_receipts": 6359,
+  "fractional_scored_records": 0,
+  "job_count": 245,
+  "job_native_status_counts": {
+    "match": 217,
+    "unavailable": 8,
+    "unresolved_mismatch": 20
+  },
+  "jobs_with_declared_total_different_from_listed_directories": 3,
+  "larger_record_recovery_status_counts": {
+    "success": 30
+  },
+  "maximum_absolute_pooled_minus_equal_task_mean": "0/1",
+  "named_final_record_count": 32803,
+  "native_matched_informative_null_evaluations": 81,
+  "official_website_reproduction": "unavailable_without_pinned_importer_and_adjudications",
+  "pair_classification_counts_equal_task": {
+    "equality_compatible": 14,
+    "identified_tie": 1,
+    "reversal_compatible": 56,
+    "strict_robust": 1360
+  },
+  "pair_exclusion_reason_counts": {
+    "incompatible_task_definition_or_checksum": 109
+  },
+  "positive_scored_records_with_exceptions": 845,
+  "primary_submissions_with_nonzero_weight_sensitivity": 0,
+  "quarantined_uuid_conflict_groups": 0,
+  "raw_supported_but_native_unreconciled_submissions": 8,
+  "raw_supported_submissions": 64,
+  "requested_result_sources": 33048,
+  "retained_successful_terminal_source_bytes": 178898337,
+  "retry_policy": {
+    "inferred_retries": null,
+    "reason": "No explicit retry lineage is supplied; repeated final trials do not establish retries.",
+    "status": "unavailable"
+  },
+  "revision": "572b2614be2c0cb2527e14f5b1e4026f1072e6c1",
+  "reward_status_counts": {
+    "null_verifier": 926,
+    "scored_positive": 20648,
+    "scored_zero": 11229
+  },
+  "scope": "published_final_record_native_metrics_and_explicit_policy_sensitivities",
+  "scored_records_with_exceptions": 4472,
+  "submission_count": 75,
+  "successful_source_receipts": 33718
+}
