@@ -237,3 +237,119 @@ def test_result_request_trial_must_name_one_listed_child_directory() -> None:
     for source_path in ["submission/job/task__absent/result.json", "submission/job/outer/task__a/result.json", "submission/job/task__a/config.json"]:
         with pytest.raises(ValueError, match="kind/source"):
             analysis._validate_result_request({**valid, "source_path": source_path}, jobs)
+
+
+def test_parallel_source_reads_preserve_all_canonical_results(tmp_path: Path) -> None:
+    data, config, spec, output = fixture(tmp_path)
+    provenance = {"dirty": False, "git_commit": "synthetic_fixture_not_empirical"}
+    analysis.run_analysis(data, config, spec, output, provenance=provenance, progress=False)
+    settings = json.loads(config.read_bytes())
+    settings.update(workers=4, io_prefetch_records=2)
+    config.write_text(json.dumps(settings))
+    parallel = tmp_path / "parallel"
+    analysis.run_analysis(data, config, spec, parallel, provenance=provenance, progress=False)
+    for path in output.rglob("*"):
+        if path.is_file() and path.name != "provenance.json":
+            assert path.read_bytes() == (parallel / path.relative_to(output)).read_bytes()
+
+
+def test_raw_support_does_not_claim_missing_native_metric_reproduction(tmp_path: Path) -> None:
+    data, config, spec, output = fixture(tmp_path)
+    path = data / "census/job.json"
+    value = json.loads(path.read_bytes())
+    value["stats"]["evals"]["agent__terminal-bench"]["metrics"] = []
+    payload = json.dumps(value).encode()
+    path.write_bytes(payload)
+    receipt_path = Path(str(path) + ".receipt.json")
+    receipt = json.loads(receipt_path.read_bytes())
+    receipt.update(size_bytes=len(payload), sha256=analysis._digest(payload))
+    receipt_path.write_text(json.dumps(receipt))
+    summary = analysis.run_analysis(data, config, spec, output,
+                                    provenance={"dirty": False, "git_commit": "synthetic"}, progress=False)
+    assert summary["raw_supported_submissions"] == 1
+    assert summary["eligible_primary_submissions"] == 0
+    assert summary["raw_supported_but_native_unreconciled_submissions"] == 1
+    assert (output / "pairwise_comparisons.csv").read_text().strip() == "status"
+
+
+def test_source_byte_ceiling_is_checked_before_publishing_outputs(tmp_path: Path) -> None:
+    data, config, spec, output = fixture(tmp_path)
+    settings = json.loads(config.read_bytes())
+    settings["max_download_bytes"] = 1
+    config.write_text(json.dumps(settings))
+    with pytest.raises(ValueError, match="download ceiling"):
+        analysis.run_analysis(data, config, spec, output,
+                              provenance={"dirty": False, "git_commit": "synthetic"}, progress=False)
+    assert not output.exists()
+
+
+def test_absent_job_summary_does_not_erase_complete_raw_trial_population(tmp_path: Path) -> None:
+    data, config, spec, output = fixture(tmp_path)
+    path = data / "census/job.json"
+    path.unlink()
+    receipt_path = Path(str(path) + ".receipt.json")
+    receipt = json.loads(receipt_path.read_bytes())
+    receipt.update(status="failed", error_type="HTTPError")
+    receipt.pop("sha256")
+    receipt.pop("size_bytes")
+    receipt_path.write_text(json.dumps(receipt))
+    summary = analysis.run_analysis(data, config, spec, output,
+                                    provenance={"dirty": False, "git_commit": "synthetic"}, progress=False)
+    assert summary["named_final_record_count"] == 2
+    assert summary["eligible_primary_submissions"] == 0
+    assert summary["raw_supported_submissions"] == 1
+    assert summary["job_native_status_counts"] == {"unavailable": 1}
+
+
+def recovery_fixture(tmp_path: Path) -> tuple[Path, Path, Path, Path]:
+    data, config, spec, output = fixture(tmp_path)
+    manifest_path = data / "census-completed.json"
+    manifest = json.loads(manifest_path.read_bytes())
+    original = next(row for row in manifest["requests"] if row["path"] == "census/task__a.json")
+    original["limit_bytes"] = 4
+    manifest_path.write_text(json.dumps(manifest))
+    original_path = data / original["path"]
+    payload = original_path.read_bytes()
+    original_path.unlink()
+    Path(str(original_path) + ".receipt.json").write_text(json.dumps({
+        "url": original["url"], "status": "failed", "error_type": "ValueError",
+        "limit_bytes": 4, "bytes_read": 5}))
+    recovery = {**original, "path": "larger/task__a.json", "limit_bytes": len(payload),
+                "prior_failed_path": original["path"], "size_metadata_path": "larger/task-size.json"}
+    path = data / recovery["path"]
+    path.parent.mkdir()
+    path.write_bytes(payload)
+    Path(str(path) + ".receipt.json").write_text(json.dumps({
+        "url": original["url"], "status": "success", "size_bytes": len(payload),
+        "sha256": analysis._digest(payload), "limit_bytes": len(payload)}))
+    parent = original["source_path"].removesuffix("/result.json")
+    metadata = json.dumps([{"path": original["source_path"], "type": "file", "size": len(payload)}]).encode()
+    metadata_path = data / recovery["size_metadata_path"]
+    metadata_path.write_bytes(metadata)
+    Path(str(metadata_path) + ".receipt.json").write_text(json.dumps({
+        "url": f"https://huggingface.co/api/datasets/{inventory.DATASET}/tree/{inventory.REVISION}/{parent}?recursive=false&limit=1000",
+        "status": "success", "size_bytes": len(metadata), "sha256": analysis._digest(metadata), "limit_bytes": 1000000}))
+    (data / "large-record-recoveries.json").write_text(json.dumps([recovery]))
+    return data, config, spec, output
+
+
+def test_larger_record_recovery_requires_pinned_size_and_original_failure(tmp_path: Path) -> None:
+    data, config, spec, output = recovery_fixture(tmp_path)
+    summary = analysis.run_analysis(data, config, spec, output,
+                                    provenance={"dirty": False, "git_commit": "synthetic"}, progress=False)
+    assert summary["named_final_record_count"] == 2
+    assert summary["job_native_status_counts"] == {"match": 1}
+    assert summary["larger_record_recovery_status_counts"] == {"success": 1}
+
+
+@pytest.mark.parametrize("change", [{"limit_bytes": 999999}, {"prior_failed_path": "other.json"}])
+def test_unsubstantiated_larger_recovery_fails(tmp_path: Path, change: dict) -> None:
+    data, config, spec, output = recovery_fixture(tmp_path)
+    path = data / "large-record-recoveries.json"
+    rows = json.loads(path.read_bytes())
+    rows[0].update(change)
+    path.write_text(json.dumps(rows))
+    with pytest.raises(ValueError):
+        analysis.run_analysis(data, config, spec, output,
+                              provenance={"dirty": False, "git_commit": "synthetic"}, progress=False)
+    assert not output.exists()

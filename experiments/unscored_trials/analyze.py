@@ -13,11 +13,12 @@ import hashlib
 import io
 import json
 from collections import Counter, defaultdict
+from concurrent.futures import ThreadPoolExecutor
 from decimal import Decimal
 from fractions import Fraction
 from itertools import combinations
 from pathlib import Path, PurePosixPath
-from typing import Any
+from typing import Any, Iterator
 from urllib.parse import parse_qs, unquote, urlsplit
 
 from tqdm import tqdm
@@ -59,14 +60,14 @@ def _inside(root: Path, name: str) -> Path:
 class VerifiedCache:
     """Read each successful source once and verify bytes before interpretation."""
 
-    def __init__(self, root: Path):
+    def __init__(self, root: Path, workers: int = 1):
         self.root = root.resolve()
         self.receipts: dict[str, dict] = {}
         self.verified: set[str] = set()
         self.memo: dict[str, Any] = {}
         immutable_url_hashes: dict[str, str] = {}
-        allowed = {"url", "final_url", "retrieved_utc", "status", "http_status", "size_bytes", "sha256", "limit_bytes", "timeout_seconds", "pagination_link", "content_length", "error_type"}
-        for path in sorted(self.root.rglob("*.receipt.json")):
+        allowed = {"url", "final_url", "retrieved_utc", "status", "http_status", "size_bytes", "sha256", "limit_bytes", "timeout_seconds", "pagination_link", "content_length", "error_type", "bytes_read"}
+        def read_receipt(path: Path) -> tuple[str, dict, str]:
             data = path.read_bytes()
             raw = json.loads(data)
             name = path.relative_to(self.root).as_posix().removesuffix(".receipt.json")
@@ -74,6 +75,11 @@ class VerifiedCache:
                 raise ValueError("malformed source receipt")
             if raw["status"] == "failed" and _inside(self.root, name).exists():
                 raise ValueError("failed source has ambiguous payload")
+            return name, raw, _digest(data)
+
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            receipt_rows = list(pool.map(read_receipt, sorted(self.root.rglob("*.receipt.json"))))
+        for name, raw, receipt_sha256 in receipt_rows:
             if raw["status"] == "success":
                 url = raw.get("url")
                 metadata_api = f"https://huggingface.co/api/datasets/{inventory.DATASET}"
@@ -82,7 +88,7 @@ class VerifiedCache:
                     if url in immutable_url_hashes and immutable_url_hashes[url] != raw.get("sha256"):
                         raise ValueError("immutable source URL has conflicting successful hashes")
                     immutable_url_hashes[url] = raw.get("sha256")
-            self.receipts[name] = {"local_path": name, "receipt_sha256": _digest(data), **{key: raw[key] for key in allowed if key in raw}}
+            self.receipts[name] = {"local_path": name, "receipt_sha256": receipt_sha256, **{key: raw[key] for key in allowed if key in raw}}
 
     def read(self, name: str, *, memo: bool = True) -> Any:
         """Return parsed verified JSON; memoize only small metadata/job sources."""
@@ -116,6 +122,26 @@ class VerifiedCache:
         for name, receipt in self.receipts.items():
             if receipt["status"] == "success" and name not in self.verified:
                 self.verify(name)
+
+
+def prefetched_records(requests: list[dict], cache: VerifiedCache, workers: int,
+                       batch_size: int) -> Iterator[tuple[dict, Any, Exception | None]]:
+    """Overlap bounded immutable reads while preserving frozen numerical order."""
+    if workers < 1 or batch_size < 1:
+        raise ValueError("positive I/O concurrency and prefetch size required")
+
+    def load(request: dict) -> tuple[dict, Any, Exception | None]:
+        if cache.receipts[request["path"]]["status"] != "success":
+            return request, None, None
+        try:
+            return request, cache.read(request["path"], memo=request["kind"] == "job"), None
+        except (ValueError, TypeError, KeyError, ArithmeticError) as exc:
+            return request, None, exc
+
+    ordered = sorted(requests, key=lambda row: row["source_path"])
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        for start in range(0, len(ordered), batch_size):
+            yield from pool.map(load, ordered[start:start + batch_size])
 
 
 def _tree(cache: VerifiedCache, name: str, parent: str) -> list[dict]:
@@ -397,14 +423,14 @@ def run_analysis(
             or any(entry.get("git_url") != config["official_task_git_url"] or entry.get("git_commit_id") != config["official_task_revision"] for entry in tasks)):
         raise ValueError("official task manifest does not match frozen definitions")
     tolerance = Decimal(config["native_absolute_tolerance"])
-    cache = VerifiedCache(data_root)
+    cache = VerifiedCache(data_root, workers=config.get("workers", 1))
     metadata = cache.read("dataset-metadata.json")
     if metadata.get("id") != inventory.DATASET or metadata.get("sha") != inventory.REVISION:
         raise ValueError("official dataset metadata revision differs")
     manifests = []
     request_lists = {}
-    for name in ("submission-requests.json", "job-tree-requests.json", "config-requests.json", "discovery-requests.json", "census-completed.json"):
-        if name == "discovery-requests.json" and not (data_root / name).exists():
+    for name in ("submission-requests.json", "job-tree-requests.json", "config-requests.json", "discovery-requests.json", "census-completed.json", "large-record-recoveries.json"):
+        if name in {"discovery-requests.json", "large-record-recoveries.json"} and not (data_root / name).exists():
             request_lists[name] = []
             continue
         rows, digest = _request_rows(data_root / name)
@@ -447,6 +473,39 @@ def run_analysis(
         else:
             job["population_config"], job["config_status"] = None, "unavailable"
     requests = request_lists["census-completed.json"]
+    if len(requests) != len({row["source_path"] for row in requests}):
+        raise ValueError("original census contains duplicate source identities")
+    recovery_rows = []
+    by_source = {row["source_path"]: row for row in requests}
+    seen_recoveries = set()
+    for recovery in request_lists["large-record-recoveries.json"]:
+        source = recovery["source_path"]
+        if source not in by_source or source in seen_recoveries:
+            raise ValueError("recovery is not one unique frozen census source")
+        seen_recoveries.add(source)
+        original = by_source[source]
+        prior = cache.receipts[original["path"]]
+        if (recovery.get("prior_failed_path") != original["path"]
+                or prior["status"] != "failed" or prior.get("error_type") != "ValueError"
+                or prior.get("bytes_read") != original["limit_bytes"] + 1
+                or any(recovery[key] != original[key] for key in ("source_path", "url", "kind", "job", "submission"))):
+            raise ValueError("larger recovery lacks exact oversized-source evidence")
+        parent = PurePosixPath(source).parent.as_posix()
+        entries = _tree(cache, recovery["size_metadata_path"], parent)
+        entry = next((row for row in entries if row["path"] == source and row["type"] == "file"), None)
+        if (entry is None or type(entry.get("size")) is not int
+                or entry["size"] <= original["limit_bytes"]
+                or recovery["limit_bytes"] != entry["size"]):
+            raise ValueError("larger recovery size differs from pinned file metadata")
+        receipt = cache.receipts[recovery["path"]]
+        if receipt["status"] == "success":
+            if receipt["size_bytes"] != entry["size"]:
+                raise ValueError("larger recovered payload size differs from pinned metadata")
+            by_source[source] = recovery
+        recovery_rows.append({"source_path": source, "original_failed_path": original["path"],
+                              "recovery_path": recovery["path"], "size_metadata_path": recovery["size_metadata_path"],
+                              "advertised_size": entry["size"], "recovery_status": receipt["status"]})
+    requests = list(by_source.values())
     expected = {path + "/result.json" for path in jobs}
     expected.update(path + "/" + name + "/result.json" for path, job in jobs.items() for name in job["directories"])
     if len(requests) != len({row["source_path"] for row in requests}) or {row["source_path"] for row in requests} != expected:
@@ -456,11 +515,13 @@ def run_analysis(
     failures: dict[str, list[dict]] = defaultdict(list)
     job_raws = {}
     request_manifest_rows = []
-    for request in tqdm(sorted(requests, key=lambda row: row["source_path"]), disable=not progress, desc="Verify and normalize final files", unit="file"):
+    source_records = prefetched_records(requests, cache, config.get("workers", 1),
+                                        config.get("io_prefetch_records", config.get("workers", 1)))
+    for request, raw, read_error in tqdm(source_records, total=len(requests), disable=not progress, desc="Verify and normalize final files", unit="file"):
         _validate_result_request(request, jobs)
         job_path = request["job"]
         receipt = cache.receipts[request["path"]]
-        record = {key: request.get(key) for key in ("path", "source_path", "kind", "job", "submission", "url", "prior_failed_path")}
+        record = {key: request.get(key) for key in ("path", "source_path", "kind", "job", "submission", "url", "prior_failed_path", "size_metadata_path")}
         record.update({"status": receipt["status"], "source_sha256": receipt.get("sha256")})
         request_manifest_rows.append(record)
         if receipt["status"] != "success":
@@ -470,7 +531,8 @@ def run_analysis(
                 by_submission[request["submission"]].append(failure)
             continue
         try:
-            raw = cache.read(request["path"], memo=request["kind"] == "job")
+            if read_error is not None:
+                raise read_error
             if not isinstance(raw, dict):
                 raise ValueError("record must be an object")
             if request["kind"] == "job":
@@ -514,6 +576,7 @@ def run_analysis(
                 conflicting_global_uuids.add(trial_uuid)
             cross_uuid_ledger.append({"trial_uuid": trial_uuid, "submissions": submissions, "source_aliases": sorted(row["source_path"] for row in rows), "status": "conflicting_cross_submission_semantics" if conflict else "shared_explicit_execution_alias"})
     eligibility, policy_rows, dedup_ledger, populations = [], [], [], {}
+    raw_support = []
     checks_by_submission: dict[str, list[dict]] = defaultdict(list)
     for check in job_checks:
         checks_by_submission[check["submission"]].append(check)
@@ -540,6 +603,18 @@ def run_analysis(
         system_hashes = sorted({row["system_config_hash"] for row in records})
         eligible = not reasons and policy is not None
         eligibility.append({"submission": submission, "source_path": submission_path, "eligible_primary": eligible, "reasons": reasons, "job_count": len(checks), "requested_trial_files": len(source_rows), "named_final_records": len(records), "retained_unique_uuid_records": len(retained), "task_count": len({row.get("task_name") for row in retained}), "task_definition_signature": signature, "declared_system_config_hash_count": len(system_hashes), "declared_system_config_hashes": system_hashes, "system_interpretation": "released_submission_mixture_or_single_declared_config; hashes show configuration-byte variation, not proven behavioral heterogeneity", "native_job_status_counts": dict(Counter(check["native_status"] for check in checks)), "exact_planned_roster_established": False, "retry_lineage_status": "unavailable"})
+        raw_reasons = [reason for reason in reasons if reason != "native_job_population_unreconciled"]
+        if not any(row["record_kind"] != "named_final_record" for row in source_rows):
+            # Missing job summaries cannot erase an otherwise complete raw
+            # population; their native reporting remains unreproduced.
+            raw_reasons = [reason for reason in raw_reasons if reason != "missing_or_malformed_requested_source"]
+        raw_supported = not raw_reasons and policy is not None
+        raw_support.append({"submission": submission, "raw_population_supported": raw_supported,
+                            "eligible_primary": eligible, "raw_exclusion_reasons": raw_reasons,
+                            "native_job_status_counts": dict(Counter(check["native_status"] for check in checks)),
+                            "record_count": len(retained), "task_definition_signature": signature,
+                            "raw_equal_task_zero_filled_mean": policy["equal_task"]["native_mean"] if raw_supported else None,
+                            "interpretation": "descriptive_named_raw_final_population_only; unavailable_native_metric_is_not_reproduced; no_secondary_rank_comparison"})
         if not eligible:
             continue
         populations[submission] = {"policy": policy, "signature": signature, "uuids": {row["trial_uuid"] for row in retained}}
@@ -549,6 +624,12 @@ def run_analysis(
             policy_rows.append({"submission": submission, "policy": policy_name, "population": "deduplicated_named_final_records", "record_count": policy["record_count"], "task_count": policy["task_count"], "unknown_record_count": policy["unknown_record_count"], "native_operational_zero_mean": values["native_mean"], "score_completion_lower": values["bounds"][0], "score_completion_upper": values["bounds"][1], "unknown_weight": values["missing_weight"], "score_completion_interpretation": "free_[0,1]_score_completion_envelope_for_named_unscored_final_records", "pooled_observed_only_mean": sum((Fraction(value) for value in observed), Fraction()) / len(observed) if observed else None, "observed_only_population_caveat": "conditions_on_scored_records_and_changes_weights", "pooled_minus_equal_task_operational_mean": policy["pooled"]["native_mean"] - policy["equal_task"]["native_mean"], "task_repetition_counts": policy["task_counts"], "task_definition_signature": signature})
     compatibility, pairs = compare_populations(populations)
     cache.finish()
+    acquisition_header = json.loads((data_root / "census-completed.json").read_bytes())
+    other_reserve = acquisition_header.get("other_source_bytes_reserved", 0) if isinstance(acquisition_header, dict) else 0
+    retained_bytes = sum(row.get("size_bytes", 0) for row in cache.receipts.values() if row["status"] == "success")
+    conservative_bytes = retained_bytes + sum(row.get("limit_bytes", 0) + 1 for row in cache.receipts.values() if row["status"] == "failed") + other_reserve
+    if config.get("max_download_bytes") is not None and conservative_bytes > config["max_download_bytes"]:
+        raise ValueError("retained source accounting exceeds frozen download ceiling")
     module_paths = [Path(__file__), Path(inventory.__file__), Path(normalize.__file__), Path(bounds.__file__)]
     provenance = {**provenance, "analysis_config": config, "config_sha256": _digest(config_bytes), "task_spec_sha256": _digest(task_spec_bytes), "module_sha256": {path.name: _digest(path.read_bytes()) for path in module_paths}, "offline": True}
     summary = {"dataset": inventory.DATASET, "revision": inventory.REVISION, "submission_count": len(submission_paths), "job_count": len(jobs), "requested_result_sources": len(requests), "successful_source_receipts": sum(row["status"] == "success" for row in cache.receipts.values()), "failed_source_receipts": sum(row["status"] == "failed" for row in cache.receipts.values()), "named_final_record_count": sum(len(rows) for rows in by_job.values()), "reward_status_counts": dict(Counter(row["reward_status"] for rows in by_job.values() for row in rows)), "job_native_status_counts": dict(Counter(row["native_status"] for row in job_checks)), "eligible_primary_submissions": sum(row["eligible_primary"] for row in eligibility), "compatibility_signature_counts": dict(Counter(value["signature"] for value in populations.values())), "eligible_pair_count": len(compatibility), "pair_exclusion_reason_counts": dict(Counter(reason for row in compatibility for reason in row["exclusion_reasons"])), "cross_submission_shared_uuid_count": len(cross_uuid_ledger), "cross_submission_conflicting_uuid_count": len(conflicting_global_uuids), "compatible_unordered_primary_pairs": sum(row["policy"] == "equal_task" for row in pairs), "pair_classification_counts_equal_task": dict(Counter(row["classification"] for row in pairs if row["policy"] == "equal_task")), "duplicate_export_groups": sum(row["status"] == "identical_export_aliases" for row in dedup_ledger), "quarantined_uuid_conflict_groups": sum(row["status"] == "quarantined_conflict" for row in dedup_ledger), "official_website_reproduction": "unavailable_without_pinned_importer_and_adjudications", "exact_original_roster_established": False, "retry_policy": bounds.retry_diagnostic(), "scope": "published_final_record_native_metrics_and_explicit_policy_sensitivities"}
@@ -559,8 +640,16 @@ def run_analysis(
         executions_index.extend(_execution_shards(output_dir, submission, by_submission[submission]))
     _csv(output_dir / "executions.csv", executions_index)
     _csv(output_dir / "reconciliation.csv", reconciliation)
-    _csv(output_dir / "native_score_reproduction.csv", native_rows)
+    native_table = []
+    for row in native_rows:
+        compact = {key: value for key, value in row.items() if not isinstance(value, (list, dict))}
+        compact.update({key + "_count": len(value) for key, value in row.items() if isinstance(value, (list, dict))})
+        native_table.append(compact)
+    # Full name-level evidence remains in the indexed jobchecks JSON shards.
+    _csv(output_dir / "native_score_reproduction.csv", native_table)
     _csv(output_dir / "eligibility.csv", eligibility)
+    _csv(output_dir / "raw_population_support.csv", raw_support)
+    _csv(output_dir / "large_record_recoveries.csv", recovery_rows)
     _csv(output_dir / "policy_comparisons.csv", policy_rows)
     _csv(output_dir / "pairwise_comparisons.csv", pairs)
     _csv(output_dir / "compatibility_matrix.csv", compatibility)
@@ -571,6 +660,23 @@ def run_analysis(
     source_shards = _json_shards(output_dir, "source_manifest", list(cache.receipts.values()))
     request_shards = _json_shards(output_dir, "source_requests", request_manifest_rows)
     _json_file(output_dir / "source_manifest.json", {"dataset": inventory.DATASET, "revision": inventory.REVISION, "license": "apache-2.0", "sources": source_shards, "result_requests": request_shards, "request_manifests": manifests, "task_spec_sha256": _digest(task_spec_bytes)})
+    summary.update(raw_supported_submissions=sum(row["raw_population_supported"] for row in raw_support),
+                   raw_supported_but_native_unreconciled_submissions=sum(row["raw_population_supported"] and not row["eligible_primary"] for row in raw_support),
+                   retained_successful_terminal_source_bytes=retained_bytes,
+                   conservative_total_bytes_including_other_source_reserve=conservative_bytes,
+                   download_ceiling_bytes=config.get("max_download_bytes"),
+                   larger_record_recovery_status_counts=dict(Counter(row["recovery_status"] for row in recovery_rows)))
+    all_records = [row for rows in by_job.values() for row in rows]
+    deltas = [row["pooled_minus_equal_task_operational_mean"] for row in policy_rows if row["policy"] == "equal_task"]
+    summary.update(
+        scored_records_with_exceptions=sum(bool(row["score_present"] and row["exception_present"]) for row in all_records),
+        positive_scored_records_with_exceptions=sum(bool(row["score_present"] and row["exception_present"] and Decimal(row["reward_decimal"]) > 0) for row in all_records),
+        fractional_scored_records=sum(bool(row["score_present"] and Decimal(0) < Decimal(row["reward_decimal"]) < Decimal(1)) for row in all_records),
+        native_matched_informative_null_evaluations=sum(row.get("native_status") == "match" and row.get("unknown_count", 0) > 0 and Decimal(row.get("observed_reward_mass") or "0") > 0 for row in native_rows),
+        jobs_with_declared_total_different_from_listed_directories=sum(row["declared_total_equals_listed_directories"] is False for row in job_checks),
+        primary_submissions_with_nonzero_weight_sensitivity=sum(delta != 0 for delta in deltas),
+        maximum_absolute_pooled_minus_equal_task_mean=max((abs(delta) for delta in deltas), default=Fraction()),
+    )
     _json_file(output_dir / "summary.json", summary)
     _json_file(output_dir / "provenance.json", provenance)
     oversized = [path.name for path in output_dir.rglob("*") if path.is_file() and path.stat().st_size >= 10_000_000]
@@ -589,7 +695,7 @@ def main() -> None:
     args = parser.parse_args()
     provenance = inventory.clean_provenance()
     summary = run_analysis(args.data_root, args.config, args.task_spec, args.output_dir, provenance=provenance)
-    print(json.dumps(summary, sort_keys=True, indent=2))
+    print(json.dumps(summary, sort_keys=True, indent=2, default=_json_default, allow_nan=False))
 
 
 if __name__ == "__main__":

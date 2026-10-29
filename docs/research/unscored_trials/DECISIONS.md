@@ -149,3 +149,33 @@ was observed. Earlier web-only inaccessibility is superseded by these receipts.
 Assistant subtasks reached an account usage limit during the inactive interval.
 No credits or services were purchased. Root continues with existing files and
 records the inactive elapsed interval separately from active effort estimates.
+
+## U006 — Resolve source-size limits without changing the primary comparison
+
+The completed frozen census has 31 exhausted retrievals: 30 responses exceeded
+the initial per-record cap and one WozCode job-summary URL returned HTTP 404.
+These are retrieval outcomes, not unscored executions. Pinned nonrecursive
+metadata establishes exact sizes for all 30 larger records (about seven MB
+combined). Use the plan's explicit larger-record route: one separately named
+GET per such file, capped at its advertised size, preserving all earlier failed
+receipts. This is a size-qualified recovery, not inferred execution retry
+lineage or unbounded network retrying. Keep the same source identities,
+33048 requested files and 2 GiB ceiling; the prior conservative accounting plus
+the other-source reserve and new bounded requests stays below that ceiling.
+The engine must verify the metadata pointer, prior over-cap receipt and exact
+recovered size before using a replacement. A failed recovery remains unavailable.
+
+Before first empirical comparison, add a descriptive raw-population support
+ledger for every submission. It tests the same task/reward/UUID/source rules
+as primary eligibility, but does not require an available matching job summary.
+No secondary ranking or pair comparison is made. Missing trial records still
+fail this ledger; missing job summaries do not erase present trials. Primary
+cohort rules and pair exclusions remain unchanged. This follows the closest
+audit's known summary-only scope, not a selected score or favorable new ranking.
+
+Local immutable reads may use bounded concurrency with ordered consumption.
+Register io_prefetch_records=256; this is an I/O setting, not a statistical
+tolerance or selection rule. Synthetic serial/parallel outputs must agree.
+Human audit cases use the first source hash in each prespecified category and
+remain PENDING. Equal task names alone cannot qualify the repeated-task case;
+the Git task identity and checksum must also match.

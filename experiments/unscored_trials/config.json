@@ -14,5 +14,6 @@
   "max_batch_requests": 6000,
   "max_extra_attempts": 2,
   "random_seed": null,
-  "seed_reason": "deterministic census and exact arithmetic; no random sampling"
+  "seed_reason": "deterministic census and exact arithmetic; no random sampling",
+  "io_prefetch_records": 256
 }
