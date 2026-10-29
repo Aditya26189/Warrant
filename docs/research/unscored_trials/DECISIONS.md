@@ -118,3 +118,34 @@ This supersedes the initial cleanliness claim rather than silently repairing
 its provenance. Expected scientific counts do not change; the clean rerun will
 establish them. Temporary test-directory ACL failures and mixed-line-ending
 checks remain retained failures, not successful validations.
+
+## U005 — Preserve the census while adapting download reservations
+
+The first full acquisition stopped after four batches at the conservative byte
+reservation gate. This was a safe stop, not a completed census. Preserve its log
+and completed manifests. Resume with smaller batches that fit the same remaining
+2 GiB allowance; do not increase that allowance, alter the frozen source order,
+or exclude records. Completed markers must preserve every frozen identity field
+and cached hashes. A mocked regression exposed a submission-rebinding gap in
+the first resume implementation; repair it before resuming.
+
+Before first comparative analysis, make two conservative identity details
+explicit: same UUIDs across submissions are shared-execution evidence and those
+pairs are excluded from independently unconstrained primary contrasts. Within
+a submission, UUID aliases require matching task, outcome, exception, time and
+relevant system semantics. Full trial-config digest variation alone does not
+establish system heterogeneity. These rules were reviewed without census score
+comparisons. They narrow interpretation without using performance for selection.
+
+The linked honestboard repository became accessible through approved direct
+HTTP retrieval at `97bd812d07c9c852d05666128ff3b59cbe461a0c`. Its source/paper
+already preserve rewarded exceptions, count exception-only names as zero and
+pool jobs by task. It uses job summaries and trial-name task parsing rather than
+raw UUID/task-checksum/native metric reconciliation. This is prior-art overlap,
+not evidence that those simplifications change an actual result. The retained
+issue 2246 API snapshot is open with no comments; no maintainer confirmation
+was observed. Earlier web-only inaccessibility is superseded by these receipts.
+
+Assistant subtasks reached an account usage limit during the inactive interval.
+No credits or services were purchased. Root continues with existing files and
+records the inactive elapsed interval separately from active effort estimates.

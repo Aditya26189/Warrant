@@ -90,7 +90,10 @@ def verify_completed(rows: list[dict], data_root: Path, config: dict) -> None:
         destination = (root / row["path"]).resolve()
         if not destination.is_relative_to(root):
             raise ValueError("completed source escapes working-data root")
-        receipt = json.loads(destination.with_name(destination.name + ".receipt.json").read_bytes())
+        receipt_path = destination.with_name(destination.name + ".receipt.json")
+        if not receipt_path.is_file():
+            raise ValueError("completed source lacks its retained receipt")
+        receipt = json.loads(receipt_path.read_bytes())
         if receipt["url"] != row["url"]:
             raise ValueError("completed receipt request mismatch")
         if receipt["status"] == "success":
@@ -117,19 +120,30 @@ def acquire(data_root: Path, config: dict, other_source_bytes: int) -> dict:
     receipts_dir = data_root / "acquisition"
     receipts_dir.mkdir(exist_ok=True)
     batch_index = 0
-    for start in range(0, len(requests), config["max_batch_requests"]):
-        chunk = requests[start:start + config["max_batch_requests"]]
+    start = 0
+    identity_fields = ("source_path", "url", "kind", "job", "submission", "limit_bytes", "timeout")
+    while start < len(requests):
         completed_path = receipts_dir / f"batch-{batch_index:03d}-completed.json"
         if completed_path.exists():
             completed_rows = json.loads(completed_path.read_bytes())
-            if [r["source_path"] for r in completed_rows] != [r["source_path"] for r in chunk]:
+            frozen_rows = requests[start:start + len(completed_rows)]
+            if (not completed_rows or len(frozen_rows) != len(completed_rows)
+                    or any(any(row.get(key) != frozen.get(key) for key in identity_fields)
+                           for row, frozen in zip(completed_rows, frozen_rows, strict=True))):
                 raise ValueError("completed batch differs from frozen source paths")
             verify_completed(completed_rows, data_root, config)
+            start += len(completed_rows)
             batch_index += 1
             continue
         remaining = config["max_download_bytes"] - other_source_bytes - consumed_bytes(data_root)
-        if sum(row["limit_bytes"] + 1 for row in chunk) > remaining:
-            raise ValueError("batch worst-case exceeds remaining total download ceiling")
+        chunk, reserved = [], 0
+        for row in requests[start:start + config["max_batch_requests"]]:
+            if reserved + row["limit_bytes"] + 1 > remaining:
+                break
+            chunk.append(row)
+            reserved += row["limit_bytes"] + 1
+        if not chunk:
+            raise ValueError("next source cannot fit remaining total download ceiling")
         chunk_path = receipts_dir / f"batch-{batch_index:03d}.json"
         receipts = _fetch_or_retain(chunk_path, chunk, data_root, config, remaining)
         # Preserve failures in place, then use separate bounded attempts.
@@ -159,10 +173,10 @@ def acquire(data_root: Path, config: dict, other_source_bytes: int) -> dict:
         print(json.dumps({"batch": batch_index, "requests_completed": start + len(chunk),
                           "total_requests": len(requests), "consumed_bytes": consumed_bytes(data_root),
                           "remaining_failures": sum(r["status"] != "success" for r in receipts)}), flush=True)
+        start += len(chunk)
         batch_index += 1
     completed = []
-    expected_batches = (len(requests) + config["max_batch_requests"] - 1) // config["max_batch_requests"]
-    for index in range(expected_batches):
+    for index in range(batch_index):
         path = receipts_dir / f"batch-{index:03d}-completed.json"
         completed.extend(json.loads(path.read_bytes()))
     if ([row["source_path"] for row in completed] != [row["source_path"] for row in requests]
