@@ -26,7 +26,9 @@ aggregation is not adopted without a pinned official importer.
 The release-level differences found here are reproducible, but different export
 populations, schemas or snapshots explain them at least as well as a scoring
 policy defect. No observed difference supplies original retry history. The
-strict eligible cohort has no equal-task versus pooled weighting effect. These
+strict eligible cohort has uniform within-submission repetitions, making
+equal-task and pooled weights algebraically identical. Its native agreement is
+partly an inclusion condition. These
 are useful limits for a technical report; they do not yet establish a sufficiently
 distinct empirical contribution for a submission.
 

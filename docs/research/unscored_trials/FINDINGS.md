@@ -53,6 +53,11 @@ arithmetic. They must not be reported as 20 numerical score errors. The
 [native table](../../../results/unscored_trials/20261029-terminal-bench2/native_score_reproduction.csv)
 and indexed job checks preserve each dimension.
 
+These are full-census counts. Primary eligibility excludes unreconciled native
+job populations. Consequently, native agreement within the strict cohort is
+partly an inclusion condition, not independent evidence that all released jobs
+reconcile. Keep the full census and selected-cohort accounting separate.
+
 The [post hoc all-job explanation](../../../results/unscored_trials/20261029-terminal-bench2/explanation/summary.json)
 (U007) separates whole-job arithmetic from native group reconciliation. It finds
 236 matching whole-job means, three differing means and six without one supported
@@ -89,6 +94,11 @@ definitions/checksums. All 1,431 compatible pairs are analyzed:
 | Equality-compatible ambiguity | 14 |
 | Identified tie | 1 |
 
+The 14 equality-compatible cases comprise eight existing strict orders that can
+become ties without reversing and six existing native ties that can break. They
+are not all tie-only losses. The historical canonical classifications are
+preserved; the closeout adds a separate explanatory table.
+
 These are independently free [0,1] completions of present unscored outcomes on
 the same retained population. They are not observed corrected rankings or
 estimates of capability under repaired infrastructure. Matching task IDs does
@@ -96,9 +106,12 @@ not tighten the difference interval `[L_A-H_B, H_A-L_B]` without further
 restrictions. No missing planned slots were invented.
 
 Equal-task and pooled-final policies give exactly equal primary scores: the
-maximum absolute difference is zero. The retained repetitions provide no
-weighting effect in this cohort. This is a negative result conditional on the
-conservative eligibility rules, not a claim about every released submission.
+maximum absolute difference is zero. Of the 56 retained submissions, 53 have five
+records per task and three have one per task, uniformly across their tasks.
+For T tasks and r records per task, both schemes give each record weight 1/(Tr).
+Their equality therefore follows algebraically from the retained population and
+is an implementation check. It is not strong empirical evidence that weighting
+is unimportant generally; nonuniform repetitions can change the estimand.
 No UUID aliases/conflicts or shared cross-submission UUIDs were found.
 
 A descriptive ledger supports raw populations for 64 submissions, including

@@ -8,8 +8,10 @@ research decision, not a claim that all desirable data have been recovered.
 The strongest objection is that the closest audit already studies this release's
 denominators and rank sensitivity, while the additional raw-record reconciliation
 mostly identifies export, schema and identity differences whose causes cannot be
-established. Native null-zero scoring reproduces on the strict cohort. Equal-task
-and pooled policies give the same primary scores. The completion envelopes apply
+established. Native agreement on the strict cohort is partly its inclusion
+condition; the full census has unresolved and unavailable jobs. Uniform retained
+repetitions make equal-task and pooled weights identical algebraically, rather
+than demonstrating that weighting is generally unimportant. The completion envelopes apply
 established algebra to a hypothetical target; they do not reveal corrected ranks.
 These results support a careful technical report, but do not yet demonstrate a
 distinct, actionable empirical lesson sufficient to justify submission work.
