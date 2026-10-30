@@ -57,3 +57,28 @@ Only after Gate B passes would the irreversible abandon/original-continuation
 intervention, frozen development settings and pilot be implemented. The stated
 95% retention target and approximately 5% cost-per-retained-success criterion
 come from the brief and must not move after results are seen.
+
+## S004 — STOP at Gate B for the predeclared expense question
+
+The clean source-bound validation at `6e96f44` retrieved the same two complete
+engineering-example records and pinned cards. Header revisions and original
+payload hashes matched; the convenience rows have ordered tool interactions
+and recorded outcomes, but no structured call usage, timing or cumulative cost.
+Metadata/footer checks agree for the inspected representations. A matched,
+linked two-configuration cohort remains unestablished; the available groups
+must not be represented as an isolated model-change experiment.
+
+Missing dollar billing alone is not fatal, and mixed workload shifts are allowed.
+An interaction-count/token replay could answer a narrower descriptive question.
+It cannot identify S002's heterogeneous remaining execution-expense mechanism:
+repeated context, cache treatment, omitted reasoning, compaction and tool runtime
+are not recoverable from these fields. The weaker replay has no established
+distinguishing contribution beyond existing transcript-token economics and
+selective-label auditing. We therefore stop rather than silently change the
+estimand or invent a proxy finding. This is not evidence that stopping is
+unprofitable, that all public data are inadequate, or that count-based research
+is intrinsically invalid. The two example failures are not a success-rate estimate.
+
+No policy fitting, threshold/audit-budget selection, cost-quality replay,
+confirmation, manuscript, remote publication or outreach follows this decision.
+The remaining work is evidence packaging and local reproducibility checks only.
