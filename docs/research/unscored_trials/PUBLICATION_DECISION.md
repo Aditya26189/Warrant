@@ -28,6 +28,11 @@ The [findings](FINDINGS.md), [claim ledger](CLAIM_LEDGER.md),
 baseline and its historical artifacts. Corrections to its interpretation are
 documented here; it has not been silently rewritten.
 
+The completed [standalone technical report](../../../results/unscored_trials/closeout-20261029/report/technical_report.md)
+and portable numerical closeout now accompany those documents. The new route
+reproduces retained-field quantities from reviewed inputs; it does not resolve
+the publication objection or supply independent human adjudication.
+
 Reopen the gate only with a specific evidence-bearing advance:
 
 - For original accounting: an exact planned roster, durable attempt/retry lineage,

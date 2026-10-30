@@ -132,8 +132,19 @@ identity/version conflicts, exact bounds, cap rejection and unsupported retry
 lineage. Actual test receipts and earlier failed checks are retained with the
 results. The post hoc explanation has separate source/provenance.
 
+The later [technical-report closeout](../../../results/unscored_trials/closeout-20261029/report/technical_report.md)
+adds a reviewed scalar-input bundle and an actual clean empty-data numerical
+route. At source `93f6f34`, ten scientific tables, 31 scientific summary fields
+and the full post hoc summary matched, with networking disabled and both private
+roots blocked. All 199 scoped tests passed. This route independently recomputes
+the retained-field arithmetic, but opaque original hashes do not verify omitted
+raw configurations, transcripts or traces. See [REPRODUCING.md](REPRODUCING.md)
+for the separate portable and archival contracts.
+
 The [human audit worksheet](../../../results/unscored_trials/20261029-terminal-bench2/validation/human_audit_worksheet.csv)
 remains PENDING; assistant cross-checks are not independent human adjudication.
+The closeout also supplies a smaller [prioritized human worksheet](../../../results/unscored_trials/closeout-20261029/report/human_review_worksheet.md),
+with every human-review field still PENDING.
 Original planned slots, full attempt history and official website import/
 adjudication reproduction remain unavailable. HAL was not used as a fallback:
 the narrowed Terminal-Bench audit passed feasibility, and a cleaned response
