@@ -6,6 +6,7 @@ import hashlib
 import importlib.util
 import io
 import json
+import subprocess
 import urllib.error
 from pathlib import Path
 
@@ -122,3 +123,23 @@ def test_run_charges_failed_partial_body_against_later_requests(tmp_path: Path, 
     assert report["total_body_bytes"] == 4 and opener.calls == 1 and not report["complete"]
     assert report["requests"][1]["effective_max_bytes"] == 0
     assert report["provenance"]["config_sha256"] == hashlib.sha256(raw).hexdigest()
+
+
+def test_nested_source_provenance_uses_root_relative_tracked_paths(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    repo = tmp_path / "repo"
+    nested = repo / "study"
+    nested.mkdir(parents=True)
+    source = nested / "recon.py"
+    source.write_bytes(b"# synthetic provenance fixture\n")
+    config = nested / "config.json"
+    config.write_bytes(b"{}\n")
+    for args in (["init", "-q"], ["add", "--", "study/recon.py", "study/config.json"],
+                 ["-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid", "commit", "-qm", "fixture"]):
+        subprocess.run(["git", "-C", str(repo), *args], check=True, capture_output=True)
+    monkeypatch.setattr(recon, "__file__", str(source))
+    provenance = recon.clean_git_provenance(config)
+    assert provenance["dirty"] is False and provenance["source_path"] == "study/recon.py"
+    assert provenance["source_sha256"] == hashlib.sha256(source.read_bytes()).hexdigest()
+    source.write_bytes(b"# changed synthetic fixture\n")
+    with pytest.raises(RuntimeError, match="clean Git"):
+        recon.clean_git_provenance(config)

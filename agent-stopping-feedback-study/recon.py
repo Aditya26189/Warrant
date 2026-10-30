@@ -116,7 +116,8 @@ def clean_git_provenance(config_path: Path) -> dict[str, Any]:
         raise RuntimeError("Scientific acquisition requires a clean Git worktree")
     for path in (source, config_path.resolve()):
         relative = path.relative_to(root).as_posix()
-        git("ls-files", "--error-unmatch", relative)
+        subprocess.check_output(["git", "-C", str(root), "ls-files", "--error-unmatch", relative],
+                                text=True, encoding="utf-8")
     return {
         "git_root": str(root), "git_commit": git("rev-parse", "HEAD"), "dirty": False,
         "source_path": source.relative_to(root).as_posix(),
