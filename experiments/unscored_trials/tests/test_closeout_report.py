@@ -233,7 +233,7 @@ class ReportBuildTests(unittest.TestCase):
         output = self.root / "report"
         text = (output / "technical_report.md").read_text(encoding="utf8")
         self.assertIn("](../numerical/reconciliation.csv)", text)
-        self.assertIn("](../../../../docs/research/unscored_trials/REPRODUCING.md)", text)
+        self.assertIn("](https://github.com/Aditya26189/Warrant/blob/research/unscored-trials-20261029/docs/research/unscored_trials/REPRODUCING.md)", text)
         for row in report._rows(output / "census_accounting.csv"):
             self.assertTrue((output / row["source_file"]).is_file())
         cases = report._rows(output / "human_review_worksheet.csv")
