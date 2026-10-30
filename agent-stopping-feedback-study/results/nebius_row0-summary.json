@@ -1,0 +1,436 @@
+{
+  "acquisition_sha256": "95bccb012801d8da2bd9c8d0566f0c95cdd63b097e638099e899467db3898a9a",
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "trajectory_id",
+      "type": {
+        "_type": "Value",
+        "dtype": "string"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "instance_id",
+      "type": {
+        "_type": "Value",
+        "dtype": "string"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "repo",
+      "type": {
+        "_type": "Value",
+        "dtype": "string"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "trajectory",
+      "type": {
+        "_type": "List",
+        "feature": {
+          "content": {
+            "_type": "Value",
+            "dtype": "string"
+          },
+          "name": {
+            "_type": "Value",
+            "dtype": "string"
+          },
+          "role": {
+            "_type": "Value",
+            "dtype": "string"
+          },
+          "tool_call_id": {
+            "_type": "Value",
+            "dtype": "string"
+          },
+          "tool_calls": {
+            "_type": "List",
+            "feature": {
+              "function": {
+                "arguments": {
+                  "_type": "Value",
+                  "dtype": "string"
+                },
+                "name": {
+                  "_type": "Value",
+                  "dtype": "string"
+                }
+              },
+              "id": {
+                "_type": "Value",
+                "dtype": "string"
+              },
+              "type": {
+                "_type": "Value",
+                "dtype": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "tools",
+      "type": {
+        "_type": "List",
+        "feature": {
+          "function": {
+            "description": {
+              "_type": "Value",
+              "dtype": "string"
+            },
+            "name": {
+              "_type": "Value",
+              "dtype": "string"
+            },
+            "parameters": {
+              "additionalProperties": {
+                "_type": "Value",
+                "dtype": "bool"
+              },
+              "properties": {
+                "command": {
+                  "description": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  },
+                  "enum": {
+                    "_type": "List",
+                    "feature": {
+                      "_type": "Value",
+                      "dtype": "string"
+                    }
+                  },
+                  "type": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  }
+                },
+                "file_text": {
+                  "description": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  },
+                  "type": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  }
+                },
+                "insert_line": {
+                  "description": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  },
+                  "type": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  }
+                },
+                "is_input": {
+                  "description": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  },
+                  "enum": {
+                    "_type": "List",
+                    "feature": {
+                      "_type": "Value",
+                      "dtype": "string"
+                    }
+                  },
+                  "type": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  }
+                },
+                "message": {
+                  "description": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  },
+                  "type": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  }
+                },
+                "new_str": {
+                  "description": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  },
+                  "type": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  }
+                },
+                "old_str": {
+                  "description": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  },
+                  "type": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  }
+                },
+                "path": {
+                  "description": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  },
+                  "type": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  }
+                },
+                "task_list": {
+                  "description": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  },
+                  "items": {
+                    "additionalProperties": {
+                      "_type": "Value",
+                      "dtype": "bool"
+                    },
+                    "properties": {
+                      "id": {
+                        "description": {
+                          "_type": "Value",
+                          "dtype": "string"
+                        },
+                        "type": {
+                          "_type": "Value",
+                          "dtype": "string"
+                        }
+                      },
+                      "notes": {
+                        "description": {
+                          "_type": "Value",
+                          "dtype": "string"
+                        },
+                        "type": {
+                          "_type": "Value",
+                          "dtype": "string"
+                        }
+                      },
+                      "status": {
+                        "description": {
+                          "_type": "Value",
+                          "dtype": "string"
+                        },
+                        "enum": {
+                          "_type": "List",
+                          "feature": {
+                            "_type": "Value",
+                            "dtype": "string"
+                          }
+                        },
+                        "type": {
+                          "_type": "Value",
+                          "dtype": "string"
+                        }
+                      },
+                      "title": {
+                        "description": {
+                          "_type": "Value",
+                          "dtype": "string"
+                        },
+                        "type": {
+                          "_type": "Value",
+                          "dtype": "string"
+                        }
+                      }
+                    },
+                    "required": {
+                      "_type": "List",
+                      "feature": {
+                        "_type": "Value",
+                        "dtype": "string"
+                      }
+                    },
+                    "type": {
+                      "_type": "Value",
+                      "dtype": "string"
+                    }
+                  },
+                  "type": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  }
+                },
+                "thought": {
+                  "description": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  },
+                  "type": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  }
+                },
+                "timeout": {
+                  "description": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  },
+                  "type": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  }
+                },
+                "view_range": {
+                  "description": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  },
+                  "items": {
+                    "type": {
+                      "_type": "Value",
+                      "dtype": "string"
+                    }
+                  },
+                  "type": {
+                    "_type": "Value",
+                    "dtype": "string"
+                  }
+                }
+              },
+              "required": {
+                "_type": "List",
+                "feature": {
+                  "_type": "Value",
+                  "dtype": "string"
+                }
+              },
+              "type": {
+                "_type": "Value",
+                "dtype": "string"
+              }
+            }
+          },
+          "type": {
+            "_type": "Value",
+            "dtype": "string"
+          }
+        }
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "model_patch",
+      "type": {
+        "_type": "Value",
+        "dtype": "string"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "exit_status",
+      "type": {
+        "_type": "Value",
+        "dtype": "string"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "resolved",
+      "type": {
+        "_type": "Value",
+        "dtype": "int64"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "gen_tests_correct",
+      "type": {
+        "_type": "Value",
+        "dtype": "float64"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "pred_passes_gen_tests",
+      "type": {
+        "_type": "Value",
+        "dtype": "float64"
+      }
+    }
+  ],
+  "provenance": {
+    "dirty": false,
+    "git_commit": "6e96f4421cb78674ecf66d0c2fb5f271878d7f13",
+    "inspection_source_sha256": "4ac4161ce0ebbdc9745fb206503d1ad70e8b1c737ec5c4456c16371ce9f00fdd",
+    "source_path": "agent-stopping-feedback-study/recon.py",
+    "source_sha256": "d4aedc29b7fbcbf759c60ac952e0b1f064eb3e2a0a36f5de89e8fc62e0c950ec"
+  },
+  "reported_rows_total": 67074,
+  "row_total_warning": "provider configuration count, not an unfiltered deployment population",
+  "rows": [
+    {
+      "cost_unit_warning": "Message/tool counts and UTF8 bytes are descriptive proxies, not billable usage or measured compute/time.",
+      "excluded_from_any_future_prefix_features": [
+        "model_patch",
+        "exit_status",
+        "resolved",
+        "gen_tests_correct",
+        "pred_passes_gen_tests"
+      ],
+      "exit_status_if_present": "submit",
+      "first_message_roles": [
+        "system",
+        "user",
+        "assistant",
+        "tool",
+        "assistant",
+        "tool"
+      ],
+      "harness_version_recorded": false,
+      "issue_id": "PlasmaFAIR__sdf-xarray-24",
+      "label_available": true,
+      "last_message_role": "assistant",
+      "message_count": 185,
+      "message_field": "trajectory",
+      "nontext_content_message_count": 0,
+      "observed_content_utf8_bytes": 246147,
+      "observed_reasoning_utf8_bytes": 0,
+      "population_claim": "one initial convenience record; no prevalence, representativeness, issue overlap or duplicate-rate claim",
+      "reconstructed_tokens": "not computed; tokenizer alone cannot restore per-call context/cache/reasoning usage",
+      "recorded_resolved": 0,
+      "recorded_tool_call_count": 92,
+      "repository": "PlasmaFAIR/sdf-xarray",
+      "role_counts": {
+        "assistant": 92,
+        "system": 1,
+        "tool": 91,
+        "user": 1
+      },
+      "row_index": 0,
+      "sample": "nebius_row0",
+      "schema_fields": [
+        "exit_status",
+        "gen_tests_correct",
+        "instance_id",
+        "model_patch",
+        "pred_passes_gen_tests",
+        "repo",
+        "resolved",
+        "tools",
+        "trajectory",
+        "trajectory_id"
+      ],
+      "structured_accounting_field_paths": [],
+      "task_source_if_present": null,
+      "teacher_model_record": {},
+      "trajectory_id": "chatcmpl-27dd0152801d38b5a37ff92d729c9fc1"
+    }
+  ],
+  "source_revision": "35455389ab51bf5e2306bfd436ef72d0f98bf882",
+  "source_sha256": "54270287b38d6031c5c3548bf0bfcf63b6267eacbf322ffca3c3b2a07239cf75",
+  "source_url": "https://datasets-server.huggingface.co/rows?dataset=nebius%2FSWE-rebench-openhands-trajectories&config=default&split=train&offset=0&length=1"
+}

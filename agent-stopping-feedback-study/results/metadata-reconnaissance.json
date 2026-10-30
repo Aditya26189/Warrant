@@ -1,0 +1,221 @@
+{
+  "access_plan": "After Gate A, use HF /rows length2-4 with explicit config/split and inspect X-Revision or dataset_git_revision; official docs list no revision parameter. If revision cannot be verified, disclose service response as a separate dated schema convenience sample; do not claim pinned exact corpus samples. Source footer/chunk route with normal PyArrow would exceed combined16MiB complete-message record budget; do not download whole corpora.",
+  "converted_refs": {
+    "nebius": "a7f635573ee3828f7b9e84ad9ff7dddb991ce282",
+    "nvidia": "35748409c10e21052cdbc3727632434877fea3a9"
+  },
+  "cost_boundary": "No typed per-call usage, token, billing, time or duration fields in3 initially inspected pinned schemas, also confirmed for2 smallest NVIDIA shards. Only recorded text/tool interaction proxies are directly available. Reconstructed model tokens are not billable usage and cannot establish currency savings without serving/context/caching/price information. Arbitrary content strings could mention costs but are not validated accounting records.",
+  "datasets": [
+    {
+      "api_url": "https://huggingface.co/api/datasets/nebius/SWE-rebench-openhands-trajectories",
+      "card_bytes": 6924,
+      "card_executor": "Qwen3-Coder-480B-A35B-Instruct / OpenHands0.54.0",
+      "card_sha256": "90fa586c747d9ed1022c28847439489576049cde7de1fdfb80d24b2a0ae77b32",
+      "card_url": "https://huggingface.co/datasets/nebius/SWE-rebench-openhands-trajectories/raw/35455389ab51bf5e2306bfd436ef72d0f98bf882/README.md",
+      "config_bytes": 7261,
+      "config_sha256": "d77ab00872c0929474c71ae989fe7cf4046706a7fccf19392e4ddb6953322191",
+      "config_url": "https://huggingface.co/datasets/nebius/SWE-rebench-openhands-trajectories/raw/35455389ab51bf5e2306bfd436ef72d0f98bf882/config.toml",
+      "dataset": "nebius/SWE-rebench-openhands-trajectories",
+      "last_modified_api": "2025-12-27T14:08:07.000Z",
+      "license": "CC-BY-4.0",
+      "license_bytes": 18656,
+      "license_sha256": "9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94",
+      "parquet_count": 1,
+      "parquet_total_bytes": 2079503354,
+      "record_cost_fields_schema": [],
+      "release_filter": "Official collection blog says removes generated patches that fail to apply. Both successful and unsuccessful attempts retained. Success-only RFT training must not be confused with release selection.",
+      "revision": "35455389ab51bf5e2306bfd436ef72d0f98bf882",
+      "schema_top_level": [
+        "trajectory_id",
+        "instance_id",
+        "repo",
+        "trajectory",
+        "tools",
+        "model_patch",
+        "exit_status",
+        "resolved",
+        "gen_tests_correct",
+        "pred_passes_gen_tests"
+      ],
+      "successful_count_card": 32161,
+      "total_records_card_and_footer": 67074
+    },
+    {
+      "card_bytes": 10057,
+      "card_sha256": "4eb4502718850e80e214e8aa92c87a7b019980876b8c0aad4f7f5eb220e3236d",
+      "card_url": "https://huggingface.co/datasets/nvidia/Open-SWE-Traces/raw/4fa4c2ae9afc6b397bc50391d43450c79993c138/README.md",
+      "comparability": "Two same-harness SWE-rebench-v2 groups exist: OpenHands/Qwen3.8-27B and OpenHands/Qwen3.8-Flash-Next. Actual overlap and config identity require records. Release dates do not establish deployment chronology.",
+      "current_harnesses": [
+        "openhands",
+        "sweagent",
+        "minisweagent",
+        "claudecode",
+        "opencode"
+      ],
+      "dataset": "nvidia/Open-SWE-Traces",
+      "distribution_bytes": 13583,
+      "distribution_sha256": "816becdaf3d2b49b69a0d0d8327e0e171819a998b9f8f9353d9391cacae149b5",
+      "distribution_url": "https://huggingface.co/datasets/nvidia/Open-SWE-Traces/raw/4fa4c2ae9afc6b397bc50391d43450c79993c138/data_distribution.md",
+      "last_modified_api": "2026-10-28T18:30:09.000Z",
+      "license": "CC-BY-4.0 (card; no separate LICENSE in pinned tree)",
+      "metadata_fields": [
+        "category",
+        "teacher_model.name",
+        "teacher_model.enable_thinking",
+        "teacher_model.reasoning_effort",
+        "reference_patch.patch",
+        "reference_patch.num_modified_files",
+        "reference_patch.num_modified_lines",
+        "model_patch.patch",
+        "model_patch.num_modified_files",
+        "model_patch.num_modified_lines"
+      ],
+      "parquet_count": 484,
+      "parquet_total_bytes": 97939464900,
+      "record_cost_fields_schema": [],
+      "release_filter": "v1.0 card says207k cleaned to151k removing git hacking. Official historical paper2.3-2.4 additionally describes incomplete/environment-error, iteration-limit, empty/test-alteringpatch, malformed/repeatedtool-error exclusions. Do not assert every historical filter applies to current2.0 absent version-specific evidence. Includes resolved0/1/-1, not success-only.",
+      "revision": "4fa4c2ae9afc6b397bc50391d43450c79993c138",
+      "schema_top_level": [
+        "instance_id",
+        "repo",
+        "license",
+        "language",
+        "trajectory_id",
+        "messages",
+        "tools",
+        "resolved",
+        "metadata",
+        "hf_dataset_name"
+      ],
+      "versions": [
+        "v1.0",
+        "v1.1",
+        "v1.2",
+        "v2.0"
+      ]
+    }
+  ],
+  "date_utc": "2026-10-30",
+  "engineering_record_probe": {
+    "actual_record_body_bytes": 474954,
+    "nebius_complete_response_bytes": 395268,
+    "nebius_complete_response_sha256": "54270287b38d6031c5c3548bf0bfcf63b6267eacbf322ffca3c3b2a07239cf75",
+    "new_info_body_bytes": 7778,
+    "new_max_process_peak_working_set_bytes": 31711232,
+    "not_frozen_experiment": true,
+    "not_representative": true,
+    "nvidia_complete_response_bytes": 79686,
+    "nvidia_complete_response_sha256": "3fd9c15650a874ab5344a9d6b0ff96be865e166eb5a2b703928a0b2bebb79067",
+    "partial": false,
+    "receipts_directory": "${PRIVATE_RAW}/agent-stopping-feedback-access-probe-20261030",
+    "remaining_gateB": "Only step/toolcall/text proxies observable; cumulative/billable/remainingcost absent. Tiny records cannot establish cohort overlap, repeatedattempts, missingness or a deploymentstream.",
+    "source_revision_header": "X-Revision exactly matched pinned expected revisions before body read",
+    "status": "2complete1recordresponses across Nebius Qwen3-Coder480B and NVIDIA Flash-Nextxhigh; desired NVIDIA Qwen3.8-27B endpoint unavailable after2HTTP500s",
+    "truncated_cells": []
+  },
+  "failures": [
+    "Sandbox default direct network refused connections; authorized escalated read-only requests succeeded.",
+    "Two initial pinned README body fetches succeeded but stdout JSON encoding failed for Unicode in Windows charmap; repeated ASCII-safe JSON display succeeded. Both response bodies counted.",
+    "Web reader timed out on Nebius blog; bounded direct HTTP read succeeded.",
+    "First peak-memory helper was invalid; corrected measurement recorded separately."
+  ],
+  "footer_inspections": [
+    {
+      "bytes": 2079503354,
+      "dataset": "nebius",
+      "footer_range": "bytes=-340164",
+      "footer_sha256": "54cdb7d5d74c4aef523d0ac9e0a6faf369f3f086d74fe84c1f02f28ff47eb2b7",
+      "path": "trajectories.parquet",
+      "rowgroup0_content_compressed_bytes": 84831305,
+      "rowgroup0_rows": 4096,
+      "rowgroup0_tool_arguments_compressed_bytes": 24207787,
+      "rowgroups": 17,
+      "sha256_full_file_tree_attestation": "14048dd1fcd22ce094b6e85f8a38f223a9ef1327031aaaad052804870212efa1"
+    },
+    {
+      "bytes": 86778135,
+      "content_compressed_bytes": 31848392,
+      "dataset": "nvidia",
+      "footer_range": "bytes=-14112",
+      "footer_sha256": "379053901f03f843d52282af570a1f648dd79ebf0e492dce8a04c2a36d1a88e0",
+      "path": "data/openhands/qwen38_27b/swe-rebench-v2/train-00005-of-00006.parquet",
+      "reasoning_content_compressed_bytes": 35653492,
+      "rowgroups": 1,
+      "rows": 558,
+      "sha256_full_file_tree_attestation": "7cfaa42d53077a420fe355b76fd0103cef0b6826a535d2cd61ae1b974b7d1665",
+      "tool_arguments_compressed_bytes": 7399571
+    },
+    {
+      "bytes": 40318013,
+      "content_compressed_bytes": 14980582,
+      "dataset": "nvidia",
+      "footer_range": "bytes=-16459",
+      "footer_sha256": "195429120dd1905d8f7da9295ab00d9b297282870c9617d6599f9dccfe40c673",
+      "path": "data/openhands/qwen38_flash_next/swe-rebench-v2/train-00005-of-00006.parquet",
+      "reasoning_content_compressed_bytes": 15805339,
+      "rowgroups": 1,
+      "rows": 256,
+      "sha256_full_file_tree_attestation": "ecb804fd78dc936befd70196a6a153395d1257d1b3eda3db573364ae20f98429",
+      "tool_arguments_compressed_bytes": 3724296
+    }
+  ],
+  "hf_parquet_docs": "https://huggingface.co/docs/dataset-viewer/parquet",
+  "hf_rows_docs": "https://huggingface.co/docs/dataset-viewer/rows",
+  "interval_utc": [
+    "03:23:20",
+    "03:28:44"
+  ],
+  "kind": "Subagent metadata reconnaissance; not a Gate B actual-record audit",
+  "monitor_boundary": "No monitor scores/predictions listed in either pinned dataset tree/schema. StopLoss repository evidence delegated to literature reviewer. Released monitor weights alone would not establish CPU-affordable predictions.",
+  "official_collection_sources": [
+    {
+      "downloaded_body_bytes": 316534,
+      "sha256": "5ef22eb0d9d0de2fce85ef328232a49265c56d6272d1f77d2de4994fdfeacaf9",
+      "url": "https://nebius.com/blog/posts/openhands-trajectories-with-qwen3-coder-480b"
+    },
+    {
+      "sections_read": "2.1-2.4; browser PDF bytes not metered",
+      "url": "https://aclanthology.org/2026.findings-emnlp.131.pdf"
+    }
+  ],
+  "resources": {
+    "browser_tool_response_bytes": "not available; excluded from direct total",
+    "direct_metadata_http_request_count": 29,
+    "direct_metadata_http_response_body_bytes": 1693464,
+    "direct_metadata_plus_engineering_probe_http_body_bytes": 2176196,
+    "first_footer_pass_body_bytes": 374222,
+    "first_footer_peak_helper": "invalid returned0 due incorrectly typed Windows API; not a0memorymeasurement; corrected psutil used for second pass",
+    "incremental_paid_api_gpu_inr": 0,
+    "second_footer_pass_body_bytes": 370759,
+    "second_footer_pass_measured_process_peak_working_set_bytes": 54231040,
+    "second_footer_pass_sum_wall_seconds": 8.658
+  },
+  "scope": "Metadata/cards/tree and bounded Parquet footers only. No rowgroup data intentionally accessed. Official cards incidentally embedded ten preview rows each, including resolved outcomes; disclosed prior exposure. No policy fitting or selection used these previews.",
+  "search_queries": [
+    {
+      "date": "2026-10-30",
+      "q": "site:github.com/TIGER-AI-Lab/StopLoss predictions monitor scores Open-SWE-Traces"
+    },
+    {
+      "date": "2026-10-30",
+      "q": "site:huggingface.co/datasets/nvidia/Open-SWE-Traces \"cost\" \"tokens\""
+    },
+    {
+      "date": "2026-10-30",
+      "q": "site:huggingface.co/datasets/nebius/SWE-rebench-openhands-trajectories filtering failed"
+    },
+    {
+      "date": "2026-10-30",
+      "q": "site:nebius.com/blog/posts/openhands-trajectories-with-qwen3-coder-480b \"filtered\""
+    },
+    {
+      "date": "2026-10-30",
+      "q": "site:nebius.com/blog/posts/openhands-trajectories-with-qwen3-coder-480b \"cost\""
+    },
+    {
+      "date": "2026-10-30",
+      "q": "site:nebius.com/blog/posts/openhands-trajectories-with-qwen3-coder-480b \"100\""
+    }
+  ],
+  "status": "Metadata + authorized engineering schema probe; Gate B has not passed."
+}

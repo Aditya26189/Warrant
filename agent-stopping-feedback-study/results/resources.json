@@ -1,0 +1,29 @@
+{
+  "accounting_boundary": "Counts are returned body bytes including deliberate repeated validation; not unique corpus bytes or complete wire traffic. Browser/search transfer sizes and aggregate concurrent-process peak memory are unavailable. Process high-water marks are not summed.",
+  "experimental_model_calls": 0,
+  "experimental_models_or_gpu_used": false,
+  "final_clean_validation": {
+    "environment": {
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python_version": "3.12.10"
+    },
+    "max_total_bytes": 16777216,
+    "memory_measurement": "psutil.Process.memory_info.peak_wset",
+    "peak_working_set_bytes": 37892096,
+    "psutil_version": "7.1.0",
+    "total_body_bytes": 491935,
+    "wall_seconds": 6.369948599953204
+  },
+  "incremental_paid_api_gpu_inr": 0,
+  "invalid_measurement": "An early Windows helper returned0; invalid and superseded by positive psutil peak measurements, never treated as zero resource use.",
+  "other_reconnaissance": {
+    "footer_pass_sum_request_wall_seconds": 8.658,
+    "footer_process_peak_working_set_bytes": 54231040,
+    "metadata_and_engineering_sample_body_bytes": 2176196,
+    "prior_art_direct_body_bytes_reported_by_agent": 99072,
+    "prior_art_sum_request_wall_seconds_reported_by_agent": 90.211,
+    "record_engineering_probe_peak_working_set_bytes": 31711232
+  },
+  "quota_interval": "A helper hit the subscription usage limit; no experimental model inference or additional credits were used. User continuation resumed independent study work.",
+  "unmetered_browser_bytes": null
+}

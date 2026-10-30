@@ -1,0 +1,17 @@
+{
+  "command": "python -B -m pytest agent-stopping-feedback-study/tests -q -p no:cacheprovider --junitxml=${PRIVATE_RAW}/agent-stopping-feedback-tests-fixed-20261030.xml",
+  "exit_code": 0,
+  "junit": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 14
+  },
+  "original_junit_sha256": "14c36666e9dce21d88a9420dfa8ee853e7b120bf8a4185c83069b92daca2db1b",
+  "ruff": {
+    "command": "python -m ruff check agent-stopping-feedback-study",
+    "exit_code": 0
+  },
+  "scope": "new study only; no complete repository suite claim",
+  "source_state": "Offline tests on the working-copy provenance fix whose bytes became6e96f44; no scientific outputs from fixtures. Actual acquisition and inspection then used clean6e96f44."
+}
