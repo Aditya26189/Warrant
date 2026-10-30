@@ -1,0 +1,59 @@
+{
+  "canonical_outputs_modified": false,
+  "decision": "REPORT",
+  "empty_cache_reproduction_attested_by_report_generator": false,
+  "equality_subtype_counts": {
+    "native_tie_can_break": 6,
+    "strict_order_can_become_tie": 8
+  },
+  "generated_files": {
+    "census_accounting.csv": "c87b9b9d00a3bb37047e145c20d9d31f0815686102faf5b192d06c4033adb465",
+    "human_review_worksheet.csv": "5236dd713c13141f92e9d4fa1c2b39f62400d030ba78f0e29a768e6b38010b92",
+    "human_review_worksheet.md": "ffb9cb91083fa792950e96584115876d765f81ba52b4f2f577def978199afed9",
+    "pairwise_explanation.csv": "a86c48199ed245a5a0713c3aed757aed57d5684f342cd85a7248d16eb2dca19d",
+    "technical_report.md": "de4b3173c6417b8cdf64c16ab1199fd7842c4693fbec352f1f5e8b41363d5d41",
+    "weighting_structure.csv": "4887b2fc0a1aaf5f9ae5af531dd4aa27a56528f9893398809abd59274b9c2c87"
+  },
+  "human_review_completed": false,
+  "input_sha256": {
+    "eligibility.csv": "e9e800068c8997899701ccf3b395e2dabeca7d120970012eef2d6b90cd6c86f4",
+    "executions.json.gz": "dabe0f841ae1adfc3756b83d261a844017efb1e0ae23b44b1b8296608e99c4c3",
+    "input_manifest.json": "3f9ce76c34905f4fe877f3def72991299e0d1a984699bf1bca4a6ed0e34fa4eb",
+    "native_score_reproduction.csv": "54a08bf333a718f98b0152f11b46936f2cb183732bbadc5974721cc57efa7d4e",
+    "pairwise_comparisons.csv": "3cb0ca2d6bc7ac05bf4182740b82729fee725934c18a68c552ed79768c2703be",
+    "policy_comparisons.csv": "b5ad3b2748754aadcabf607408c01b00e0585d405dd9b69a1591c9232c2d2c4b",
+    "reconciliation.csv": "4d8ff0c15e32db6972eb74bf023dd9109c46665620373fe0ac628efa2f21c4e3",
+    "summary.json": "65091078ed3f48d11db5dc7b6e13a359fc25aa88373162419dc620eb0af971e4",
+    "whole_job_diagnostics.csv": "54aeb774fcdafa33cc008c3a74d532d2e509562052b21309a42afa5a13f9b37e"
+  },
+  "joint_job_counts": {
+    "match": 217,
+    "unavailable": 8,
+    "unresolved_mismatch": 20
+  },
+  "module_sha256": "b0020feb5ea8eab10d4b06b1767ec6c07ffacaae9fbbe5de479e892bf9f8b481",
+  "numerical_counts": {
+    "compatible_unordered_primary_pairs": 1431,
+    "eligible_primary_submissions": 56,
+    "job_count": 245,
+    "named_final_record_count": 32803,
+    "submission_count": 75
+  },
+  "pair_class_counts": {
+    "equality_compatible": 14,
+    "identified_tie": 1,
+    "reversal_compatible": 56,
+    "strict_robust": 1360
+  },
+  "provenance": {
+    "dirty": false,
+    "generated_utc": "2026-10-30T00:17:24.521634+00:00",
+    "git_commit": "93f6f34e967c21d33d2b4586fe27339af0991dec",
+    "git_version": "git version 2.47.1.windows.2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "source_sha256": "fb0c03560830f0d74096b62823103fe39483059da9db964b5267be8d7fd2381b"
+  },
+  "representation_limit": "retained_scalar_arithmetic; raw hashes and opaque private-field hashes attest omitted bytes rather than independently verify them",
+  "scientific_input_link_prefix": "../numerical"
+}

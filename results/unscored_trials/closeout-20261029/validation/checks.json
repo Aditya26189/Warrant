@@ -1,0 +1,85 @@
+{
+  "commands": [
+    {
+      "command": "python -B -m pytest experiments/unscored_trials/tests -q -p no:cacheprovider --junitxml=${RUN}/fresh-final-tests.xml",
+      "exit_code": 0,
+      "junit": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 199
+      },
+      "original_receipt_name": "fresh-final-tests.xml",
+      "original_receipt_sha256": "20eac380d7a5fa1f65568b16fde4198089d6ad91d47b9f7bcf0aeb385dd5e2d0"
+    },
+    {
+      "command": "python -B -m pytest experiments/unscored_trials/tests/test_closeout_report.py -q -p no:cacheprovider --junitxml=${RUN}/report-final-tests.xml",
+      "exit_code": 0,
+      "junit": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 21
+      },
+      "original_receipt_name": "report-final-tests.xml",
+      "original_receipt_sha256": "bef7a84f9b312660f775af3cbf5142a74f3dfa7f333ce273294a83ccfaaee857"
+    },
+    {
+      "command": "python -B scripts/smoke.py",
+      "exit_code": 0,
+      "original_log_name": "fresh-smoke.log",
+      "original_log_sha256": "fb1f635a59767a998d22f63cf1085fa02b40824d750270787c1d2c35cba8cdf8",
+      "result": {
+        "passed": 7,
+        "total": 7
+      }
+    },
+    {
+      "command": "python -B scripts/verify.py --no-activations",
+      "exit_code": 0,
+      "original_log_name": "fresh-verify.log",
+      "original_log_sha256": "23c230d118322408be1568fb64c3504f592a962abbe7c2b43cb3c2c425dcb856",
+      "result": {
+        "activations": "SKIPPED; not run",
+        "claim_table": "92/92",
+        "frozen_scores": "25/25"
+      }
+    },
+    {
+      "command": "python -m ruff check experiments/unscored_trials",
+      "exit_code": 0,
+      "result": "All checks passed; final source Python unchanged since this check"
+    }
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "cleared",
+    "checkout": "fresh shallow local-file clone of the committed research branch; not a new dependency installation",
+    "clean_source": true,
+    "pytest": "8.2.2",
+    "python": "3.12.10",
+    "ruff": "0.16.6",
+    "tqdm": "4.67.1"
+  },
+  "original_logs": "retained in local Temp/warrant-closeout-run-20261029; raw XML/logs with user paths remain external",
+  "portable_commands": [
+    {
+      "command": "python -B -m experiments.unscored_trials.portable reproduce --study-data-dir ${RUN}/empty-data-001 --forbid-path ${ORIGINAL_STUDY} --forbid-path ${ORIGINAL_BASELINE}",
+      "exit_code": 0,
+      "source_commit": "537e57cb80561e48194e6fb7ef403e51235b4b94",
+      "stdout_log": "fresh-001.log",
+      "stdout_sha256": "8b7bfe3ec59cdaffd5d1a4849ba5019f27317a5f1b7ffee852be425b4c63b2d5",
+      "validation_sha256": "4839a1dc6245844adefd4b6c6034a34254b5f614f8f5a584e5b67115f7b86249"
+    },
+    {
+      "command": "python -B -m experiments.unscored_trials.portable reproduce --study-data-dir ${RUN}/empty-data-002 --forbid-path ${ORIGINAL_STUDY} --forbid-path ${ORIGINAL_BASELINE}",
+      "exit_code": 0,
+      "source_commit": "93f6f34e967c21d33d2b4586fe27339af0991dec",
+      "stdout_log": "fresh-002.log",
+      "stdout_sha256": "8b7bfe3ec59cdaffd5d1a4849ba5019f27317a5f1b7ffee852be425b4c63b2d5",
+      "validation_sha256": "1df8c4dda0d0e230a861453a123b584e495f26e10234c752be74daee184d594e"
+    }
+  ],
+  "scope": "unscored-trials and relevant offline repository checks; not the complete repository suite",
+  "source_commit": "93f6f34e967c21d33d2b4586fe27339af0991dec"
+}

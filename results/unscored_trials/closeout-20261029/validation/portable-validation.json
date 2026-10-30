@@ -1,0 +1,200 @@
+{
+  "archival_replay": "separate existing107-file receipt; not rerun by this command",
+  "completed": true,
+  "input_acquisition": {
+    "method": "locate reviewed versioned bundle in clean checkout; copy to empty study-data directory"
+  },
+  "input_integrity": {
+    "job_observations": 245,
+    "manifest_sha256": "1f410807b14f171e5222138f6693c6c27ab6a99cc8bfc1b9998816813922264e",
+    "match": true,
+    "trial_observations": 32803
+  },
+  "networking_disabled": true,
+  "numerical_reproduction": {
+    "diagnostic_excluded_column": "raw_ledger_shards is an archival output-file locator, not a scientific observation",
+    "match": true,
+    "not_compared": [
+      "historical acquisition receipts/timestamps/byte totals",
+      "invocation paths/time/environment",
+      "archival shard/rendering byte layout"
+    ],
+    "post_hoc_summary_match": true,
+    "summary_fields_compared": 31,
+    "tables": [
+      {
+        "compared_columns": 36,
+        "comparison": "exact values; equal rational spellings normalized",
+        "excluded_columns": [],
+        "file": "reconciliation.csv",
+        "match": true,
+        "rows": 245
+      },
+      {
+        "compared_columns": 24,
+        "comparison": "exact values; equal rational spellings normalized",
+        "excluded_columns": [],
+        "file": "native_score_reproduction.csv",
+        "match": true,
+        "rows": 255
+      },
+      {
+        "compared_columns": 16,
+        "comparison": "exact values; equal rational spellings normalized",
+        "excluded_columns": [],
+        "file": "eligibility.csv",
+        "match": true,
+        "rows": 75
+      },
+      {
+        "compared_columns": 9,
+        "comparison": "exact values; equal rational spellings normalized",
+        "excluded_columns": [],
+        "file": "raw_population_support.csv",
+        "match": true,
+        "rows": 75
+      },
+      {
+        "compared_columns": 16,
+        "comparison": "exact values; equal rational spellings normalized",
+        "excluded_columns": [],
+        "file": "policy_comparisons.csv",
+        "match": true,
+        "rows": 112
+      },
+      {
+        "compared_columns": 17,
+        "comparison": "exact values; equal rational spellings normalized",
+        "excluded_columns": [],
+        "file": "pairwise_comparisons.csv",
+        "match": true,
+        "rows": 2862
+      },
+      {
+        "compared_columns": 6,
+        "comparison": "exact values; equal rational spellings normalized",
+        "excluded_columns": [],
+        "file": "compatibility_matrix.csv",
+        "match": true,
+        "rows": 1540
+      },
+      {
+        "compared_columns": 1,
+        "comparison": "exact values; equal rational spellings normalized",
+        "excluded_columns": [],
+        "file": "uuid_reconciliation.csv",
+        "match": true,
+        "rows": 0
+      },
+      {
+        "compared_columns": 1,
+        "comparison": "exact values; equal rational spellings normalized",
+        "excluded_columns": [],
+        "file": "cross_submission_uuid_reconciliation.csv",
+        "match": true,
+        "rows": 0
+      },
+      {
+        "compared_columns": 34,
+        "comparison": "exact values; equal rational spellings normalized",
+        "excluded_columns": [
+          "raw_ledger_shards"
+        ],
+        "file": "whole_job_diagnostics.csv",
+        "match": true,
+        "rows": 245
+      }
+    ]
+  },
+  "private_read_guard_probes_blocked": 2,
+  "private_roots_forbidden_count": 2,
+  "provenance": {
+    "config_sha256": "b00bbb68f957ee89345e1451f6d07243f276ce2c879491f5c993241e4b28f683",
+    "dirty": false,
+    "environment": {
+      "python": "3.12.10",
+      "tqdm": "4.67.1"
+    },
+    "generated_utc": "2026-10-30T00:16:26.168336+00:00",
+    "git_commit": "93f6f34e967c21d33d2b4586fe27339af0991dec",
+    "git_version": "git version 2.47.1.windows.2",
+    "input_manifest_sha256": "1f410807b14f171e5222138f6693c6c27ab6a99cc8bfc1b9998816813922264e",
+    "module_sha256": {
+      "analyze.py": "ed42fb3e8bf682b0501e0a3123e3e8c19b6f30d37f917a192f3388bd1387efcb",
+      "bounds.py": "82f1e93531ed3959725a1198b6d120d8dfaa1f811038818475b6d459024d2400",
+      "closeout_report.py": "b0020feb5ea8eab10d4b06b1767ec6c07ffacaae9fbbe5de479e892bf9f8b481",
+      "explain.py": "97cedcf95ffda11cffbe1b34d9fdff8a3ae0ccec4a1b4c52cc176293e48c36d2",
+      "normalize.py": "221acdd654aa9bd2028e3ada3e6692c43c12572f7d4df9e2f5e3611c8c1db124",
+      "portable_inputs.py": "f0cb8b797e30b81b881c30ca89966ad2cde343a0acbe7f2f7065825896897e5d"
+    },
+    "numerical_route": "reviewed_source_projection_v1; opaque digests attested",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "portable_module_sha256": "78051131f5dccedd4b91364df19c5957ed476b2dd442b47cf749ee40915c5a4a",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "seed": null,
+    "seed_reason": "deterministic census and exact arithmetic",
+    "source_sha256": "fb0c03560830f0d74096b62823103fe39483059da9db964b5267be8d7fd2381b"
+  },
+  "report_generation": {
+    "completed": true,
+    "summary": {
+      "canonical_outputs_modified": false,
+      "decision": "REPORT",
+      "empty_cache_reproduction_attested_by_report_generator": false,
+      "equality_subtype_counts": {
+        "native_tie_can_break": 6,
+        "strict_order_can_become_tie": 8
+      },
+      "generated_files": {
+        "census_accounting.csv": "c87b9b9d00a3bb37047e145c20d9d31f0815686102faf5b192d06c4033adb465",
+        "human_review_worksheet.csv": "5236dd713c13141f92e9d4fa1c2b39f62400d030ba78f0e29a768e6b38010b92",
+        "human_review_worksheet.md": "ffb9cb91083fa792950e96584115876d765f81ba52b4f2f577def978199afed9",
+        "pairwise_explanation.csv": "a86c48199ed245a5a0713c3aed757aed57d5684f342cd85a7248d16eb2dca19d",
+        "technical_report.md": "de4b3173c6417b8cdf64c16ab1199fd7842c4693fbec352f1f5e8b41363d5d41",
+        "weighting_structure.csv": "4887b2fc0a1aaf5f9ae5af531dd4aa27a56528f9893398809abd59274b9c2c87"
+      },
+      "human_review_completed": false,
+      "input_sha256": {
+        "eligibility.csv": "e9e800068c8997899701ccf3b395e2dabeca7d120970012eef2d6b90cd6c86f4",
+        "executions.json.gz": "dabe0f841ae1adfc3756b83d261a844017efb1e0ae23b44b1b8296608e99c4c3",
+        "input_manifest.json": "3f9ce76c34905f4fe877f3def72991299e0d1a984699bf1bca4a6ed0e34fa4eb",
+        "native_score_reproduction.csv": "54a08bf333a718f98b0152f11b46936f2cb183732bbadc5974721cc57efa7d4e",
+        "pairwise_comparisons.csv": "3cb0ca2d6bc7ac05bf4182740b82729fee725934c18a68c552ed79768c2703be",
+        "policy_comparisons.csv": "b5ad3b2748754aadcabf607408c01b00e0585d405dd9b69a1591c9232c2d2c4b",
+        "reconciliation.csv": "4d8ff0c15e32db6972eb74bf023dd9109c46665620373fe0ac628efa2f21c4e3",
+        "summary.json": "65091078ed3f48d11db5dc7b6e13a359fc25aa88373162419dc620eb0af971e4",
+        "whole_job_diagnostics.csv": "54aeb774fcdafa33cc008c3a74d532d2e509562052b21309a42afa5a13f9b37e"
+      },
+      "joint_job_counts": {
+        "match": 217,
+        "unavailable": 8,
+        "unresolved_mismatch": 20
+      },
+      "module_sha256": "b0020feb5ea8eab10d4b06b1767ec6c07ffacaae9fbbe5de479e892bf9f8b481",
+      "numerical_counts": {
+        "compatible_unordered_primary_pairs": 1431,
+        "eligible_primary_submissions": 56,
+        "job_count": 245,
+        "named_final_record_count": 32803,
+        "submission_count": 75
+      },
+      "pair_class_counts": {
+        "equality_compatible": 14,
+        "identified_tie": 1,
+        "reversal_compatible": 56,
+        "strict_robust": 1360
+      },
+      "provenance": {
+        "dirty": false,
+        "generated_utc": "2026-10-30T00:17:24.521634+00:00",
+        "git_commit": "93f6f34e967c21d33d2b4586fe27339af0991dec",
+        "git_version": "git version 2.47.1.windows.2",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+        "source_sha256": "fb0c03560830f0d74096b62823103fe39483059da9db964b5267be8d7fd2381b"
+      },
+      "representation_limit": "retained_scalar_arithmetic; raw hashes and opaque private-field hashes attest omitted bytes rather than independently verify them",
+      "scientific_input_link_prefix": "../numerical"
+    }
+  }
+}
