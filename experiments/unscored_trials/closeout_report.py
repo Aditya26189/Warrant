@@ -14,6 +14,7 @@ import hashlib
 import json
 import os
 from collections import Counter, defaultdict
+from decimal import Decimal
 from fractions import Fraction
 from pathlib import Path
 from typing import Any
@@ -278,30 +279,43 @@ def human_cases(analysis_dir: Path, summary: dict, records: list[dict], native: 
         "null_reward": lambda row: row["reward_status"] in _NULL,
     }
     result = []
+    joint_by_job = {row["job_path"]: row["strict_joint_native_status"] for row in diagnostics}
     for category, predicate in predicates.items():
         selected = next((row for row in ordered if predicate(row)), None)
         if selected is None:
             raise ValueError(f"requested human review category unavailable: {category}")
-        result.append(_record_case(category, selected, summary, analysis_dir, native))
+        case = _record_case(category, selected, summary, analysis_dir, native)
+        joint_status = joint_by_job.get(selected["job_path"], "unavailable")
+        case["input_values"]["job_joint_reconciliation_status"] = joint_status
+        case["limitations"] += f" Job joint reconciliation is {joint_status}; the record contribution does not establish whole-job index/population agreement."
+        result.append(case)
     differences = sorted((row for row in diagnostics if row["whole_job_numeric_status"] == "difference"),
                          key=lambda row: row["job_path"])
     if not differences:
         raise ValueError("requested raw/summary review case unavailable")
     job = differences[0]
+    denominator_fields = _object(job.get("summary_denominator_counter_fields", "[]"), list)
+    configuration_path = Path(__file__).with_name("config.json")
+    native_tolerance = str(Decimal(json.loads(configuration_path.read_bytes())["native_absolute_tolerance"]).normalize())
+    difference_values = {key: job.get(key) for key in (
+        "raw_named_final_record_count", "raw_native_reward_mass", "raw_native_zero_mean",
+        "summary_denominator", "summary_reward_mass", "summary_mean", "published_mean",
+        "summary_only_name_count", "raw_only_name_count", "summary_vs_raw_name_population")}
+    difference_values.update(native_absolute_tolerance=native_tolerance,
+                             configuration_source_url="https://raw.githubusercontent.com/Aditya26189/Warrant/46961e95324ba0f5ae3fab348a2a8766e3efafd5/experiments/unscored_trials/config.json",
+                             configuration_sha256=_sha(configuration_path),
+                             configuration_json_pointer="/native_absolute_tolerance")
     result.append({
         "category": "raw_summary_difference", "claim": "A differing raw/summary mean requires population and index investigation before any score-error claim.",
         "selection_rule": "first(job_path) among all post_hoc whole-job numeric differences",
         "source_file": job["job_source_path"], "source_sha256": job["job_source_sha256"],
         "source_url": job.get("job_source_url") or _raw_url(summary, job["job_source_path"]),
-        "json_pointers": _object(job["published_mean_pointers"], list) + ["/stats/evals", "/stats/n_trials", "/stats/n_completed_trials"],
+        "json_pointers": _object(job["published_mean_pointers"], list) + ["/stats/evals"] + ["/stats/" + field for field in denominator_fields if field in {"n_trials", "n_completed_trials"}],
         "source_selector": {},
         "supporting_inputs": [_support(analysis_dir, "whole_job_diagnostics.csv", {"job_path": job["job_path"]}),
                               _support(analysis_dir, "executions.json.gz", {"job_path": job["job_path"]})],
-        "input_values": {key: job.get(key) for key in (
-            "raw_named_final_record_count", "raw_native_reward_mass", "raw_native_zero_mean",
-            "summary_denominator", "summary_reward_mass", "summary_mean", "published_mean",
-            "summary_only_name_count", "raw_only_name_count", "summary_vs_raw_name_population")},
-        "arithmetic_or_reasoning": f"Raw {job['raw_native_reward_mass']}/{job['raw_named_final_record_count']} = {job['raw_native_zero_mean']}; summary {job['summary_reward_mass']}/{job['summary_denominator']} = {job['summary_mean']}. Compare the published decimal at the frozen tolerance, then inspect named reward/exception indexes.",
+        "input_values": difference_values,
+        "arithmetic_or_reasoning": f"Raw reward mass {_ratio(job['raw_native_reward_mass'])} divided by {job['raw_named_final_record_count']} = {_ratio(job['raw_native_zero_mean'])}; summary mass {_ratio(job['summary_reward_mass'])} divided by {job['summary_denominator']} = {_ratio(job['summary_mean'])}. Compare the published decimal at the frozen tolerance {native_tolerance}, then inspect named reward/exception indexes.",
         "expected_output": {key: job.get(key) for key in ("whole_job_numeric_status", "summary_internal_status", "strict_joint_native_status")},
         "limitations": "No retry/export cause or intended official population can be established from this arithmetic alone.",
     })
@@ -384,7 +398,7 @@ def _technical_report(summary: dict, census: list[dict], weighting: list[dict], 
         "Source: [generated census accounting](census_accounting.csv), with selectors into [all-job reconciliation](../reconciliation.csv). Joint reconciliation tests identity, name indexes and counters as well as means. An unresolved joint status is not synonymous with a numerical score error.", "",
         f"Primary eligibility retains {len(weighting):,} submissions and excludes unreconciled native job populations. Therefore native agreement on the strict cohort is partly an **inclusion condition**, rather than an independent claim that every released job reconciles. See [eligibility](../eligibility.csv) for every exclusion.", "",
         f"The separately labeled post hoc whole-job diagnostic gives {whole['match']:,} matching means, {whole['difference']:,} differing means and {whole['unavailable']:,} unavailable supported means across the full census. Whole-job pooling does not repair evaluation-group aliases, indexes, task identities or primary eligibility, and does not reconstruct an official leaderboard.", "",
-        _table(["Differing exported account", "Raw mass / final records", "Own summary mass / denominator", "Summary-internal status"], [[f"[{row['submission']} / {row['job_path'].rsplit('/', 1)[-1]}]({row['job_source_url']})", f"{row['raw_native_reward_mass']} / {row['raw_named_final_record_count']}", f"{row['summary_reward_mass']} / {row['summary_denominator']}", row["summary_internal_status"]] for row in differences]), "",
+        _table(["Differing exported account", "Raw mass / final records", "Own summary mass / denominator", "Summary-internal status"], [[f"[{row['submission']} / {row['job_path'].rsplit('/', 1)[-1]}]({row['job_source_url']})", f"{_ratio(row['raw_native_reward_mass'])} / {row['raw_named_final_record_count']}", f"{_ratio(row['summary_reward_mass'])} / {row['summary_denominator']}", row["summary_internal_status"]] for row in differences]), "",
         "Source: [whole-job diagnostics](../whole_job_diagnostics.csv), including immutable source hashes and published-mean JSON pointers. Equal record counts do not prove equal outcomes; differing named populations can each have internally coherent means. A summary-recorded zero without a raw file is already observed summary evidence, not an invented unknown reward. Export causes, intended historical populations and website adjudication remain unresolved.", "",
         f"Raw outcomes include {rewards['scored_positive']:,} positive scores, {rewards['scored_zero']:,} recorded zeros and {sum(rewards[status] for status in _NULL):,} genuinely unscored retained records. Scores coexist with exceptions in {scored_exceptions:,} records, including {positive_exceptions:,} positive scores. A valid reward survives its exception label; the label alone establishes no causal diagnosis.", "",
         "[Pinned Harbor source](https://raw.githubusercontent.com/harbor-framework/harbor/1c0f38644b94c2a9a5fa4a8b77667d8175d0869e/src/harbor/metrics/mean.py) documents null-as-zero operational means for the supported single reward channel. Free [0,1] completion changes the target: it assigns hypothetical rewards to present unscored outcomes. It is not a recovery of corrected ranks, missing original executions or capability under repaired infrastructure.", "",
@@ -416,6 +430,15 @@ def _technical_report(summary: dict, census: list[dict], weighting: list[dict], 
         "Reopen only with specific evidence: an original roster/attempt lineage and pinned importer/harness history relevant to an accounting claim, or a demonstrated substantive consequence beyond the closest audit. More benchmark rows alone are insufficient. Human responsibility for source checks and the text is still required before authorship/publication claims.", "",
         "This work was generated and checked with AI assistance, including OpenAI's Codex. OpenAI develops models evaluated in the corpus, creating a relevant maker conflict for this AI-assisted analysis. No human authors, affiliations, funding, endorsement or independent review are invented. No paper submission or outreach is part of this study.", "",
     ])
+    if "eligible_pair_count" in summary:
+        candidate_pairs = summary["eligible_pair_count"]
+        signature_sizes = sorted(summary.get("compatibility_signature_counts", {}).values(), reverse=True)
+        explanation = (f"The {len(weighting)} eligible submissions form {candidate_pairs:,} unordered candidate pairs; "
+                       f"{candidate_pairs - len(pairs):,} are excluded by the frozen compatibility rules, leaving all {len(pairs):,} compatible pairs analyzed. "
+                       f"Reported task-definition/checksum signature group sizes are {signature_sizes}. "
+                       "See the [frozen compatibility matrix](https://github.com/Aditya26189/Warrant/blob/46961e95324ba0f5ae3fab348a2a8766e3efafd5/results/unscored_trials/20261029-terminal-bench2/compatibility_matrix.csv).")
+        marker = "Source: [weighting structure](weighting_structure.csv), with exact record weights and policy selectors. The historical policies remain unchanged."
+        sections[sections.index(marker) + 1:sections.index(marker) + 1] = ["", explanation]
     return "\n".join(sections)
 
 

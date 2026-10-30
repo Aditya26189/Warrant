@@ -164,6 +164,7 @@ class ReportBuildTests(unittest.TestCase):
                                 "raw_named_final_record_count": "2" if differing else "4",
                                 "raw_native_reward_mass": "1" if differing else "2",
                                 "raw_native_zero_mean": "1/2", "summary_denominator": "3" if differing else "4",
+                                "summary_denominator_counter_fields": '["n_trials"]',
                                 "summary_reward_mass": "1" if differing else "2", "summary_mean": "1/3" if differing else "1/2",
                                 "published_mean": "3333333333333333/10000000000000000" if differing else "1/2",
                                 "summary_internal_status": "match", "summary_only_name_count": "1" if differing else "0",
@@ -218,6 +219,22 @@ class ReportBuildTests(unittest.TestCase):
         tied = next(row for row in cases if row["category"] == "native_tie_can_break")
         self.assertIn("[-1/2,-1/4]", robust["arithmetic_or_reasoning"])
         self.assertIn("[0,1/4]", tied["arithmetic_or_reasoning"])
+
+    def test_review_pointers_only_include_present_counters_and_explicit_tolerance(self) -> None:
+        self._build()
+        cases = report._rows(self.root / "report/human_review_worksheet.csv")
+        difference = next(row for row in cases if row["category"] == "raw_summary_difference")
+        pointers = json.loads(difference["json_pointers"])
+        self.assertIn("/stats/n_trials", pointers)
+        self.assertNotIn("/stats/n_completed_trials", pointers)
+        values = json.loads(difference["input_values"])
+        self.assertEqual(report._exact(values["native_absolute_tolerance"]), report._exact("1e-12"))
+        self.assertEqual(values["configuration_json_pointer"], "/native_absolute_tolerance")
+        self.assertEqual(len(values["configuration_sha256"]), 64)
+        self.assertIn("mass 1 divided by 2 = 1/2", difference["arithmetic_or_reasoning"])
+        positive = next(row for row in cases if row["category"] == "scored_exception")
+        self.assertEqual(json.loads(positive["input_values"])["job_joint_reconciliation_status"], "match")
+        self.assertIn("does not establish whole-job", positive["limitations"])
 
     def test_report_never_claims_omitted_raw_content_was_verified(self) -> None:
         receipt = self._build()
