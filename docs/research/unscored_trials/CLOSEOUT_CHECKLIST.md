@@ -10,10 +10,18 @@ frozen gate still peels to `008aae9`. Canonical code is `92f162a`, post hoc code
 - [x] Verify interpretation counts from actual policy/pair/reconciliation tables.
   Closeout must explain conditioning, algebraic weighting equality and ambiguity
   subtypes rather than merely repeat the headline counts.
-- [ ] Package reviewed minimal inputs with source/derived hashes and licenses.
-- [ ] Demonstrate empty-cache numerical reproduction with old-cache reads blocked.
-- [ ] Generate a standalone exploratory report and prioritized pending human sheet.
-- [ ] Run focused checks, inspect the exact scoped diff, publish and verify refs.
+- [x] Package reviewed minimal inputs with source/derived hashes and licenses.
+  See [dependency audit](CLOSEOUT_AUDIT.md) and [guide](REPRODUCING.md).
+- [x] Demonstrate empty-cache numerical reproduction with old-cache reads blocked.
+  Two actual runs passed; final source `93f6f34`, ten tables plus 31 scientific
+  summary fields and the full post hoc summary matched; two guard probes blocked.
+- [x] Generate a standalone exploratory report and prioritized pending human sheet.
+  The [report](../../../results/unscored_trials/closeout-20261029/report/technical_report.md)
+  is REPORT; all six cases' human fields remain PENDING.
+- [x] Run focused checks and inspect the scoped contents/diff. Final scoped suite
+  passed 199 tests; relevant smoke/claim/frozen-score checks passed. Activation
+  checks were skipped. See [phase report](../../../reports/PHASE-UNSCORED-CLOSEOUT-20261029.md).
+- [ ] Publish reviewed closeout to the research branch and verify remote refs.
 
 This is a closeout checklist, not a new research agenda. REPORT, original inputs,
 historical outputs and scientific tags remain preserved. Human review and absent
