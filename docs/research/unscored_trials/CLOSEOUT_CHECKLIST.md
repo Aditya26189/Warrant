@@ -21,7 +21,10 @@ frozen gate still peels to `008aae9`. Canonical code is `92f162a`, post hoc code
 - [x] Run focused checks and inspect the scoped contents/diff. Final scoped suite
   passed 199 tests; relevant smoke/claim/frozen-score checks passed. Activation
   checks were skipped. See [phase report](../../../reports/PHASE-UNSCORED-CLOSEOUT-20261029.md).
-- [ ] Publish reviewed closeout to the research branch and verify remote refs.
+- [x] Publish reviewed closeout to the research branch and verify remote refs.
+  Reviewed package `7a3b4f5` was pushed normally and verified remotely; main and
+  the gate tag were unchanged. The [publication receipt](../../../results/unscored_trials/closeout-20261029/validation/publication.json)
+  follows that verified package commit.
 
 This is a closeout checklist, not a new research agenda. REPORT, original inputs,
 historical outputs and scientific tags remain preserved. Human review and absent

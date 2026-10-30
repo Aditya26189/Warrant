@@ -81,6 +81,7 @@ records commands, exit statuses, original log/XML hashes and environment.
 | --- | --- |
 | Scoped unscored-trials tests, final clean source | 199 passed; zero failures/errors/skips |
 | Focused final report regressions | 21 passed |
+| Documentation and repository fixture-smoke tests | 108 passed; zero failures/errors/skips |
 | Scoped Ruff | Passed |
 | Repository smoke | 7/7 |
 | README claim reproduction | 92/92 |
@@ -95,8 +96,14 @@ assertion became stale, and Windows temporary-directory ACLs required approved
 fixture access. They were corrected/retested. An approval-capacity interruption
 did not execute the requested retry; the later authorized continuation passed.
 A historical long-path warning during clone was resolved for the validation
-checkout. No scientific mismatch or unresolved software failure remains.
+checkout. No scientific mismatch or unresolved software failure remains. The additional
+documentation/fixture suite emitted existing SWIG deprecation warnings and exited
+0; its source-state note distinguishes temporary synthetic fixtures from the
+clean-source scientific invocations.
 Raw XML/logs containing local paths remain external, with hashes in the receipt.
+Original closeout receipts were also preserved in a new private
+`closeout-20261030` directory under the existing external study; old inputs and
+baseline files were not overwritten.
 
 ## Source history and publication boundary
 
@@ -115,6 +122,8 @@ Closeout commits are scoped to research tooling, documents and new artifacts:
 | `0cb251d` | Correct interpretation without changing quantities |
 | `93f6f34` | Precise worksheet pointers/tolerance and report presentation; final numerical source |
 | `641edf7` | Retain actual portable numerical/report outputs and receipts |
+| `10bb967` | Portable guide, dependency audit, index and phase handoff |
+| `7a3b4f5` | Link current findings/claims to verified closeout; reviewed package published |
 
 At the pre-publication remote check, research remained
 `46961e95324ba0f5ae3fab348a2a8766e3efafd5` and main remained
@@ -122,8 +131,11 @@ At the pre-publication remote check, research remained
 `unscored-decision-report-20261029` still peeled to
 `008aae923a7baf5aa37968a1911fe9ab0806715f`. Only a normal research-branch push is
 authorized for this closeout. Main and unrelated branches are preserved.
-The final publication check is recorded after the reviewed push; no frozen tag
-is moved.
+The reviewed package `7a3b4f5aaefdf5f42d0741a01f742e46978e3904` was pushed
+normally and verified with `git ls-remote` on 30 October at 00:29 UTC. Remote
+main and the tag object/peeled commit were unchanged. The [publication receipt](../results/unscored_trials/closeout-20261029/validation/publication.json)
+follows that reviewed package; its subsequent receipt commit is verified
+separately at closeout. No frozen tag is moved.
 
 ## Human-only work and reopening evidence
 

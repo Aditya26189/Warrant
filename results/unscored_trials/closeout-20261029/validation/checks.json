@@ -1,6 +1,7 @@
 {
   "commands": [
     {
+      "clean_source": true,
       "command": "python -B -m pytest experiments/unscored_trials/tests -q -p no:cacheprovider --junitxml=${RUN}/fresh-final-tests.xml",
       "exit_code": 0,
       "junit": {
@@ -10,9 +11,11 @@
         "tests": 199
       },
       "original_receipt_name": "fresh-final-tests.xml",
-      "original_receipt_sha256": "20eac380d7a5fa1f65568b16fde4198089d6ad91d47b9f7bcf0aeb385dd5e2d0"
+      "original_receipt_sha256": "20eac380d7a5fa1f65568b16fde4198089d6ad91d47b9f7bcf0aeb385dd5e2d0",
+      "source_commit": "93f6f34e967c21d33d2b4586fe27339af0991dec"
     },
     {
+      "clean_source": false,
       "command": "python -B -m pytest experiments/unscored_trials/tests/test_closeout_report.py -q -p no:cacheprovider --junitxml=${RUN}/report-final-tests.xml",
       "exit_code": 0,
       "junit": {
@@ -22,9 +25,11 @@
         "tests": 21
       },
       "original_receipt_name": "report-final-tests.xml",
-      "original_receipt_sha256": "bef7a84f9b312660f775af3cbf5142a74f3dfa7f333ce273294a83ccfaaee857"
+      "original_receipt_sha256": "bef7a84f9b312660f775af3cbf5142a74f3dfa7f333ce273294a83ccfaaee857",
+      "source_state": "Working report fixes before commit93f6f34, whose committed report/test bytes contain the tested changes; temporary unit fixtures only, not scientific generation."
     },
     {
+      "clean_source": true,
       "command": "python -B scripts/smoke.py",
       "exit_code": 0,
       "original_log_name": "fresh-smoke.log",
@@ -32,9 +37,11 @@
       "result": {
         "passed": 7,
         "total": 7
-      }
+      },
+      "source_commit": "93f6f34e967c21d33d2b4586fe27339af0991dec"
     },
     {
+      "clean_source": true,
       "command": "python -B scripts/verify.py --no-activations",
       "exit_code": 0,
       "original_log_name": "fresh-verify.log",
@@ -43,25 +50,45 @@
         "activations": "SKIPPED; not run",
         "claim_table": "92/92",
         "frozen_scores": "25/25"
-      }
+      },
+      "source_commit": "93f6f34e967c21d33d2b4586fe27339af0991dec"
     },
     {
       "command": "python -m ruff check experiments/unscored_trials",
       "exit_code": 0,
-      "result": "All checks passed; final source Python unchanged since this check"
+      "result": "All checks passed; final source Python unchanged since this check",
+      "source_state": "Final report fixes in working copy before commit93f6f34; scoped Python unchanged since that commit."
+    },
+    {
+      "clean_source": false,
+      "command": "python -B -m pytest tests/test_docs_index.py tests/test_smoke.py -q -p no:cacheprovider --junitxml=${RUN}/docs-smoke-tests.xml",
+      "exit_code": 0,
+      "junit": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 108
+      },
+      "original_log_name": "docs-smoke-tests.log",
+      "original_log_sha256": "0fa4d2079f2ffcc711b424496aa9b4f3d9d23c0fe35b984403585496918d46ad",
+      "original_receipt_name": "docs-smoke-tests.xml",
+      "original_receipt_sha256": "518f74e0d0600a07a86b5ac2ff0a4dd33dc45a3cebf7002e41c0cd07db01d9aa",
+      "seconds": 692.217,
+      "source_state": "Started on641edf7 with documentation working-copy edits; those docs were committed10bb967 and further prose7a3b4f5 during the run. Production/test Python unchanged throughout. Outputs are temporary synthetic regression fixtures, not accepted scientific results.",
+      "warnings": "Existing SWIG __module__ deprecation warnings, including a shutdown warning rendered by PowerShell as NativeCommandError text; native process exit0, JUnit108pass."
     }
   ],
   "environment": {
     "PYTHONDONTWRITEBYTECODE": "1",
     "PYTHONPATH": "cleared",
     "checkout": "fresh shallow local-file clone of the committed research branch; not a new dependency installation",
-    "clean_source": true,
+    "clean_scientific_source": true,
     "pytest": "8.2.2",
     "python": "3.12.10",
     "ruff": "0.16.6",
     "tqdm": "4.67.1"
   },
-  "original_logs": "retained in local Temp/warrant-closeout-run-20261029; raw XML/logs with user paths remain external",
+  "original_logs": "Original Temp receipts also preserved privately under the existing external study directory, closeout-20261030; raw logs/XML with user paths remain outside Git.",
   "portable_commands": [
     {
       "command": "python -B -m experiments.unscored_trials.portable reproduce --study-data-dir ${RUN}/empty-data-001 --forbid-path ${ORIGINAL_STUDY} --forbid-path ${ORIGINAL_BASELINE}",
@@ -81,5 +108,6 @@
     }
   ],
   "scope": "unscored-trials and relevant offline repository checks; not the complete repository suite",
-  "source_commit": "93f6f34e967c21d33d2b4586fe27339af0991dec"
+  "source_commit": "93f6f34e967c21d33d2b4586fe27339af0991dec",
+  "source_commit_role": "Final clean numerical invocation and full scoped199-test suite; earlier focused unit/ruff checks have their own source-state notes."
 }
