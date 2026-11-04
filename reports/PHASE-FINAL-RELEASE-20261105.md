@@ -37,6 +37,13 @@ set core.longpaths in each new clone before checkout, and show that option in
 the PowerShell quickstart. This preserves the original evidence layout and
 does not require changing a user's global Git configuration.
 
+The report-discovery guard initially rejected the two retained unscored-trial
+reports and this release report because it recognized only numbered and grader
+series. Its supported-series discovery now includes these dated names and
+checks their minimum content size. An unsupported prefix or undated draft still
+fails the guard. The first long verification attempts were interrupted after
+this focused failure was reproduced; they are not counted as passing runs.
+
 ## Remaining limits
 
 This is an installable local evaluation toolkit and research artifact. No
