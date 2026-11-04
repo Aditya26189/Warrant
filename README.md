@@ -599,7 +599,7 @@ examples/              two scored files: one certifies, one refuses
 evalsets/ & results/   frozen content-hashed evaluation sets; every artifact behind the table above
 scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
-tests/                 2316 tests collected, including the ones that enforce this README
+tests/                 2322 tests collected, including the ones that enforce this README
 docs/                  guides, orientation, methods, limitations, the case matrix
 DECISIONS.md           the append-only decision log, with dated addenda
 reports/               one close-out report per sprint, leading with the answer
@@ -685,7 +685,7 @@ the action gate, are in [docs/DIAGRAMS.md](docs/DIAGRAMS.md); the prose version 
 | Target | Without `make` | Requires | Time | Proves |
 |:---|:---|:---|:---|:---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | The clone works and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | Varies by machine | 2316 tests collected |
+| `make test` | `python -m pytest tests/ -q` | CPU | Varies by machine | 2322 tests collected |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **Every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` (tier 3) | `python scripts/verify.py` | CPU + cached activations | ~4 min | The frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | Activations regenerate from the source model |
