@@ -1,0 +1,47 @@
+name: Research checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'experiments/assurance_semantics/**'
+      - 'experiments/unscored_trials/**'
+      - 'agent-stopping-feedback-study/**'
+      - '.github/workflows/research.yml'
+  pull_request:
+    paths:
+      - 'experiments/assurance_semantics/**'
+      - 'experiments/unscored_trials/**'
+      - 'agent-stopping-feedback-study/**'
+      - '.github/workflows/research.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-research:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Assurance semantics
+            target: experiments/assurance_semantics/test_exact.py
+          - name: Unscored-trial accounting
+            target: experiments/unscored_trials/tests
+          - name: Stopping-feedback feasibility
+            target: agent-stopping-feedback-study/tests
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-customer.txt
+      - name: Install offline test dependencies
+        run: python -m pip install pytest tqdm psutil
+      - name: Run the retained study's software checks
+        run: python -m pytest -o addopts= -q ${{ matrix.target }}
