@@ -11,7 +11,7 @@ rewrite experimental outcomes or reopen stopped studies.
 | research/tmlr-direction-20261027 | c12023b | Merged: exact assurance diagnostic, source inventory, and exploratory publication planning. Planning remains historical rather than a completed-paper claim. |
 | research/unscored-trials-20261029 | b2b468d | Merged: completed technical report, portable inputs, numerical reproduction, source-accounting evidence, and pending human review. REPORT decision preserved. |
 | research/agent-stopping-feedback-20261030 | 94b9e70 | Merged: bounded source-inspection code, safe summaries, failure history, and closed STOP decision. |
-| All other pre-existing local and fetched remote tips | See inventory below | Already ancestors of the starting GitHub main; no redundant merges or reversions. |
+| All other distinct pre-existing local and fetched remote tips | See inventory below | Already ancestors of the starting GitHub main; no redundant merges or reversions. |
 
 The integration started from GitHub main b5e34e9. The shared desktop checkout
 was on an earlier release branch, so the integration used a separate worktree.

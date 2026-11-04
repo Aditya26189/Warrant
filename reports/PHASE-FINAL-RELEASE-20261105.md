@@ -25,11 +25,38 @@ environment mismatch. A whitespace check initially treated preserved CRLF
 scientific evidence as trailing whitespace; recognizing CR-at-EOL allowed the
 check without rewriting the evidence bytes.
 
-The integrated artifact and numerical verification completed; activation
-re-derivation is outside this CPU release pass. Final clean-source suite and
-clone-gate results are recorded below once the release source is committed.
-No new model extraction, benchmark acquisition, label adjudication, or paid
-compute was performed.
+The integrated artifact and numerical verification completed. No new model
+extraction, benchmark acquisition, label adjudication, or paid compute was
+performed. Activation re-derivation is explicitly skipped.
+
+## Completed local checks
+
+| Check | Result | Source and scope |
+|---|---|---|
+| Lint | Passed | Core code, scripts, tests, CLI, and all three newly integrated research suites |
+| Windows fresh-clone and gate-contract regressions | 27 passed | Clone repair at `5ca1e09`; uses repository-local long-path configuration |
+| Report-series guard | 124 passed | `a2041af`; includes the three newly retained named reports |
+| Assurance semantics | 3 passed | Clean source `d17f6fa` |
+| Unscored-trial software suite | 199 passed | Clean source `d17f6fa` |
+| Stopping-feedback software suite | 14 passed | Clean source `d17f6fa` |
+| Test inventory | 2,326 collected | Generated on clean source `a2041af`; collection is not execution |
+| Fresh tracked-files-only clone | Passed | Clean source `b0e6e03`; 3,568 tracked files; smoke and evidence checks |
+| Artifact-backed claim verification in the clone | 92/92 reproduced | Source `b0e6e03`; no claim-table rows changed |
+| Frozen-score metric verification in the clone | 25/25 reproduced | Source `b0e6e03`; original score artifacts retained |
+| Activation replay | Skipped | Extraction caches are not part of this CPU release check |
+
+The [local clone receipt](../results/final_release_20261105.json) records the
+exact source, environment, steps and output tails. Its invocation used
+`--no-tests`: it does **not** claim a completed local full-suite run. The earlier
+canonical [full clone-gate receipt](../results/clean_clone.json) is preserved for
+its original source rather than overwritten by a narrower check.
+
+The full core suite is enforced separately by [Core CI](https://github.com/Aditya26189/Warrant/actions/workflows/ci.yml)
+on the published commit, alongside minimal-dependency customer jobs and the
+Windows/Python 3.10 installed-package job. The [research workflow](https://github.com/Aditya26189/Warrant/actions/workflows/research.yml)
+checks the three retained study suites separately. Consult the runs for the
+exact commit: this local receipt does not substitute a collection count or an
+older CI result for execution on the release.
 
 The real fresh-clone acceptance test also exposed a Windows path-length
 failure in the retained grader fixtures. Decision 241 records the repair:
