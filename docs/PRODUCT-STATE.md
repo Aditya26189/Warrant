@@ -47,6 +47,20 @@ No customer data, pilot, buyer interview, design partner, revenue or production
 deployment has been supplied to this project. Those absences limit both product
 and commercial claims.
 
+## Consolidated research release
+
+The November consolidation preserves the completed unscored-trials report,
+the assurance/publication exploration, and the closed stopping-feedback
+feasibility study on the same release line. It changes discoverability and
+branch integration, not the existing detector measurements or statistical
+contracts.
+
+The [project overview](PROJECT-OVERVIEW.md) routes through every workstream.
+The [final release report](../reports/PHASE-FINAL-RELEASE-20261105.md) records
+the new checks; historical gate records retain their original source revisions.
+The [branch audit](BRANCH-INTEGRATION.md) explains what was integrated and
+which local drafts remain outside the published artifact.
+
 ## What a user can run today
 
 | Surface | Implemented behavior | Entry point and evidence | Boundary |

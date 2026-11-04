@@ -1,158 +1,85 @@
-<div align="center">
+<p align="center">
+  <img src="docs/assets/warrant-banner.svg" alt="Warrant — evidence for AI evaluation decisions" width="100%">
+</p>
 
-<!-- Gradient banner line -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1a1b27,100:2d333b&height=200&section=header&text=🛡️%20Warrant&fontSize=42&fontColor=e6edf3&animation=fadeIn&fontAlignY=35&desc=The%20instrument%20a%20validation%20function%20runs&descSize=18&descAlignY=55&descColor=8b949e" width="100%" />
+<p align="center">
+  <a href="https://github.com/Aditya26189/Warrant/actions/workflows/ci.yml"><img src="https://github.com/Aditya26189/Warrant/actions/workflows/ci.yml/badge.svg" alt="Core CI"></a>
+  <a href="https://github.com/Aditya26189/Warrant/actions/workflows/research.yml"><img src="https://github.com/Aditya26189/Warrant/actions/workflows/research.yml/badge.svg" alt="Research checks"></a>
+  <a href="pyproject.toml"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB" alt="Python 3.10 or newer"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-2da44e" alt="MIT license"></a>
+</p>
 
-<br/>
+**Measure what an AI detector can support. Retain the evidence. Refuse unsupported claims.**
 
-**A detector produces a score. A warrant is a separate, time-bounded, evidence-backed statement about what that score is worth on this distribution right now.**
+Warrant is a local Python toolkit for evaluating a detector against a declared
+false-positive budget, recording the result, and replaying the evidence later.
+Give it a scored, labelled file: it selects a supported operating point or
+explains why the evidence is insufficient. The installable command needs
+NumPy, SciPy and PyYAML; evaluation runs locally without model calls or telemetry.
 
-<br/>
+The repository also contains the research behind the tool: activation probes,
+distribution-shift experiments, review-budget estimation, grader audits, and
+benchmark-accounting studies. Completed studies retain their unfavorable
+findings and explicit stopping decisions alongside their code and artifacts.
 
-<!-- The command a customer runs needs only the first three -->
-[![Python 3.11 and 3.12 in CI](https://img.shields.io/badge/Python-3.11_%7C_3.12_in_CI-3776AB?style=flat&logo=python&logoColor=white)](docs/SETUP.md#requirements)
-[![Customer path](https://img.shields.io/badge/warrant_command-numpy_·_scipy_·_PyYAML-2da44e?style=flat)](requirements-customer.txt)
-[![No network](https://img.shields.io/badge/network-none-2da44e?style=flat)](docs/INPUT.md)
-[![License MIT](https://img.shields.io/badge/License-MIT-22c55e?style=flat)](LICENSE)
+[Run the examples](#-quickstart--certify-your-own-detector) ·
+[Explore the work](docs/PROJECT-OVERVIEW.md) ·
+[Inspect the evidence](#-the-claim-table) ·
+[Reproduce](#-reproduction) ·
+[Read the limits](docs/LIMITATIONS.md)
 
-<!-- The research pipeline behind the claim table -->
-[![PyTorch](https://img.shields.io/badge/PyTorch-NF4-EE4C2C?style=flat&logo=pytorch&logoColor=white)](https://pytorch.org)
-[![scikit-learn](https://img.shields.io/badge/scikit--learn-Probe-F7931E?style=flat&logo=scikitlearn&logoColor=white)](https://scikit-learn.org)
-[![Qwen2.5-7B](https://img.shields.io/badge/Qwen2.5--7B-Instruct-7C3AED?style=flat)](https://huggingface.co/Qwen)
-[![Presidio](https://img.shields.io/badge/Presidio-PII-0078D4?style=flat&logo=microsoft&logoColor=white)](https://microsoft.github.io/presidio/)
-[![Rego via regopy](https://img.shields.io/badge/Rego-via_regopy,_not_OPA-7D929E?style=flat)](docs/LIMITATIONS.md#33-other-declared-absences)
+## Start with your question
 
-<br/>
+| You want to… | Start here | What you get |
+|---|---|---|
+| Evaluate your own detector | [Quickstart](#-quickstart--certify-your-own-detector) → [input contract](docs/INPUT.md) | A local certification result or an explicit refusal |
+| Understand the project's contribution | [Project overview](docs/PROJECT-OVERVIEW.md) → [architecture](docs/ARCHITECTURE.md) | The problem, implementation, engineering choices, and evidence |
+| Review a research result | [Research portfolio](#research-portfolio) → [claim table](#-the-claim-table) | Findings linked to retained data, methods, and limitations |
+| Check a release decision | [Release workflow](docs/RELEASE.md) → [evidence handoff](docs/EVIDENCE-HANDOFF.md) | Registered criteria, retained evaluation, and replay |
+| Audit the software | [Product state](docs/PRODUCT-STATE.md) → [tests](docs/TESTING.md) → [branch integration](docs/BRANCH-INTEGRATION.md) | Implemented scope, verification boundaries, and consolidated history |
 
-**Certify or refuse · Recheck and revoke · Price the labels · Gate the action**
+## What the toolkit does
 
-<br/>
+| Capability | Practical use | Implementation |
+|---|---|---|
+| Prepare and certify | Normalize a declared export and evaluate a false-positive budget | [Scored-file intake](controlplane/intake/) |
+| Recheck and revoke | Examine fresh labelled batches and retain a linked decision history | [Recheck and chain](controlplane/intake/recheck.py) |
+| Register release evidence | Freeze a decision contract and verify the retained holdout evaluation | [Release workflow](controlplane/release/) |
+| Plan review effort | Estimate label requirements for a declared workload | [Sampling and economics](controlplane/sampling/) |
+| Reproduce research claims | Resolve published figures to artifacts and recompute frozen-score metrics | [Claim verification](controlplane/report/) |
 
-[Quickstart](#-quickstart--certify-your-own-detector) •
-[Commands](#-the-commands) •
-[Claim table](#-the-claim-table) •
-[Product state](docs/PRODUCT-STATE.md) •
-[Grader audit experiment](#experimental-track-auditing-evaluation-graders) •
-[Architecture](#how-it-fits-together) •
-[Reproduction](#-reproduction) •
-[Documents](#-documents) •
-[Limitations](#%EF%B8%8F-limitations-and-open-items)
+The command produces scoped local evidence. Its records do not authenticate an
+author, establish label truth, or demonstrate performance on unseen customer
+traffic. The policy, drift, and action-gate components are demonstrations;
+a deployed enterprise service and customer validation are not claimed.
+[Product state and evidence map](docs/PRODUCT-STATE.md).
 
-<br/>
+## Research portfolio
 
-<img src="https://img.shields.io/badge/Tests-2316_collected-2da44e?style=for-the-badge&logo=pytest&logoColor=white" alt="2316 tests collected" />
-&nbsp;
-<img src="https://img.shields.io/badge/Claims-92_verified-2da44e?style=for-the-badge" alt="92 claims verified" />
-&nbsp;
-<img src="https://img.shields.io/badge/AUROC-0.8256-6366f1?style=for-the-badge" alt="AUROC 0.8256" />
-&nbsp;
-<img src="https://img.shields.io/badge/Extraction_GPU-T4_16GB-76B900?style=for-the-badge&logo=nvidia&logoColor=white" alt="GPU T4, extraction only" />
+| Track | Question | Retained outcome and entry point |
+|---|---|---|
+| Activation probes and transfer | Can model activations select responses worth checking, and does that signal survive a changed envelope? | [Measured claims](#-the-claim-table), [full results](results/RESULTS.md), and [limitations](docs/LIMITATIONS.md) |
+| Statistical assurance | What evidence supports a false-positive budget, and how do dependence and threshold selection affect the claim? | [Methods](docs/METHODS.md), [exact witness](docs/research/publication/EXACT_WITNESS.md), and the [blocked reporting-pilot status](docs/research/fpr_reporting/b1/B1_CURRENT_STATUS.md) |
+| Evaluation-grader audits | Can an incorrect implementation pass a grader, and can a targeted repair reject it without rejecting correct controls? | [Known omissions and repairs](experiments/grader_poc/README.md); the [later feasibility study](reports/GATE4-TRANSFER.md) found no new omission under its frozen mutation method and stopped |
+| Unscored-trial accounting | What do released final-trial records support about benchmark accounting and unresolved outcomes? | [Completed technical report](results/unscored_trials/closeout-20261029/report/technical_report.md), [portable reproduction](docs/research/unscored_trials/REPRODUCING.md), and [REPORT decision](docs/research/unscored_trials/PUBLICATION_DECISION.md) |
+| Stopping-feedback feasibility | Do the inspected traces contain the accounting needed to study the proposed expense mechanism? | [STOP decision](agent-stopping-feedback-study/DECISION.md): the inspected data did not support the predeclared study; [code and checks](agent-stopping-feedback-study/REPRODUCING.md) remain available |
 
-</div>
+Research modules are separate from the installed customer command. A completed
+audit, an exploratory proposal, and an unrun experiment are different kinds of
+work; the [overview](docs/PROJECT-OVERVIEW.md) makes those boundaries explicit.
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0d1117,50:161b22,100:0d1117&height=2" width="100%" />
+<details>
+<summary><strong>Earlier grader-audit evidence and the closing decision</strong></summary>
 
-<br/>
+The earlier [payments experiment](reports/PHASE-GRADER-PAYMENTS-E2E.md) retains
+an executable omission and repair controls. The subsequent
+[bounded feasibility study](reports/GATE4-TRANSFER.md) found no new omission in
+calibration or reserved tasks under the frozen conventional mutation method.
+That decision closes custom discovery-engine development on the retained
+evidence. It does not establish that grader auditing generally fails or that
+customer demand has been measured.
 
-Everyone ships detectors. Almost nobody ships the second thing — so a guardrail
-that has quietly stopped working looks exactly like one that works, and the
-dashboard stays green either way. **Warrant is the instrument a model-validation
-function runs.** It measures a detector on a named evaluation envelope, certifies
-it against a threshold registered *before* the measurement, and **refuses when
-the evidence does not support one**; policy then reads the warrant rather than
-the score.
-
-It issues no external certificate and it is not a gateway. It is the bench
-instrument a second line of defence points at a control it is being asked to
-rely on — bounded in time, revocable when the distribution moves, and willing to
-return nothing at all.
-
-**What is actually shipped:** an installable, local scored-file command and a
-reproducible research harness. The gate, policy, drift and on-traffic studies in
-this repository are demonstrations, not a deployed customer service. No customer
-traffic, pilot or revenue has been evidenced. Read the [product-state and evidence
-map](docs/PRODUCT-STATE.md) for the implemented surfaces, verification status and
-remaining enterprise gaps before treating the claims below as a deployment claim.
-
-**Start with the local tool or its evidence.** Run `warrant` on your own detector's scored
-file: no GPU, no model, no network, three dependencies
-([Quickstart](#-quickstart--certify-your-own-detector)). Or check this project's
-own measurements, every number in the [claim table](#-the-claim-table), on a
-laptop ([Reproduction](#-reproduction)).
-
-## Experimental track: auditing evaluation graders
-
-An optional research track asks whether a grader can accept an incorrect
-implementation, and whether a targeted repair rejects it while retaining correct
-controls. It records the grader and candidate hashes, property scope, executable
-counterexample, repair controls, abstentions and failed attempts. This is evidence
-about a source of evaluation labels; it does not itself establish a statistical
-warrant or label correctness outside the tested scope.
-
-The latest [bounded feasibility study](reports/GATE4-TRANSFER.md) is complete.
-The frozen conventional mutation method found no new omission in calibration or
-the reserved tasks: the full existing graders rejected every generated candidate.
-The closing decision is to stop custom discovery-engine development on this
-evidence. This finite negative result does not establish that grader auditing
-in general is ineffective; human effort savings and customer demand remain
-unmeasured.
-
-The earlier [payments experiment](reports/PHASE-GRADER-PAYMENTS-E2E.md) retains a
-reproducible known omission through real Kafka and HTTP in a local synthetic
-stack. Its repair rejects the faulty worker while accepting the supplied
-reference and equivalent implementation under the tested conditions. It does
-not supply new-discovery evidence or an advantage over ordinary assertion review.
-
-**Status: retained experimental evidence, outside the shipped `warrant` CLI.**
-Read the [experiment guide and replay instructions](experiments/grader_poc/README.md)
-for the completed study, historical evidence packets and execution limits.
-
-The [calibration feasibility study](reports/GATE1-FEASIBILITY.md) passed its
-control checks. The [conventional baseline](reports/GATE2-BASELINE.md) found no
-new grader omission on calibration. The reserved-task transfer is now complete,
-with its negative result and limits recorded in the closing report.
-The separate [FPR reporting study](docs/research/fpr_reporting/b1/B1_CURRENT_STATUS.md)
-remains at a blocked evidence-completion stage, with no pilot draw or outcome
-extraction. Its [adaptive-bound audit issue](docs/research/fpr_reporting/issues/FPR-001-adaptive-bound.md)
-remains open. Publishing these research records does not change production
-certification behavior or approve later experiments.
-
-<br/>
-
-<div align="center">
-<table>
-<tr>
-<td align="center" width="25%">
-<br/>
-<img src="https://img.shields.io/badge/🎯-Warrant_Based-6366f1?style=for-the-badge&labelColor=0d1117" /><br/><br/>
-<sub><b>Evidence-backed, time-bounded</b><br/>keyed by detector, operating point and envelope</sub>
-<br/><br/>
-</td>
-<td align="center" width="25%">
-<br/>
-<img src="https://img.shields.io/badge/🔬-Reproducible-22c55e?style=for-the-badge&labelColor=0d1117" /><br/><br/>
-<sub><b>Every claim traces to an artifact</b><br/><code>make verify</code> proves it</sub>
-<br/><br/>
-</td>
-<td align="center" width="25%">
-<br/>
-<img src="https://img.shields.io/badge/⚡-Lightweight-f59e0b?style=for-the-badge&labelColor=0d1117" /><br/><br/>
-<sub><b>Binomial arithmetic on your file</b><br/>no GPU, no model, no network</sub>
-<br/><br/>
-</td>
-<td align="center" width="25%">
-<br/>
-<img src="https://img.shields.io/badge/🛡️-Honest-d1242f?style=for-the-badge&labelColor=0d1117" /><br/><br/>
-<sub><b>Refuses warrants</b><br/>when evidence is absent, with no override</sub>
-<br/><br/>
-</td>
-</tr>
-</table>
-</div>
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0d1117,50:161b22,100:0d1117&height=2" width="100%" />
-
-<br/>
+</details>
 
 ## 🧭 The three clauses, and where each one is proved
 
@@ -240,7 +167,7 @@ activation script is needed. This also works in PowerShell 5.1, where `&&` is
 not a command separator:
 
 ```powershell
-git clone https://github.com/Aditya26189/Warrant.git
+git clone -c core.longpaths=true https://github.com/Aditya26189/Warrant.git
 cd Warrant
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-customer.txt

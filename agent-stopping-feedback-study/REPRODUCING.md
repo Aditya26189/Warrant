@@ -1,5 +1,10 @@
 # Reproduce the bounded feasibility evidence
 
+> Release navigation: the completed study is included in the consolidated main
+> branch. The branch-specific commands and source revisions below describe the
+> original validation; those historical receipts are preserved. See the
+> repository's project overview for the current release entry point.
+
 Worktree: the local branch `research/agent-stopping-feedback-20261030`.
 The successful acquisition/inspection source was
 `6e96f4421cb78674ecf66d0c2fb5f271878d7f13`; configuration and module hashes

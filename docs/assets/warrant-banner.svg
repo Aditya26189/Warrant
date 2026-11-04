@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+<title id="title">Warrant</title>
+<desc id="desc">Evidence for AI evaluation decisions. Statistical contracts, replayable records, and reproducible research.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101d32"/><stop offset="1" stop-color="#081321"/></linearGradient>
+  <linearGradient id="accent"><stop stop-color="#55d6be"/><stop offset="1" stop-color="#81aaff"/></linearGradient>
+  <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#6c90b5" stroke-opacity=".08"/></pattern>
+</defs>
+<rect width="1200" height="300" rx="18" fill="url(#bg)"/>
+<rect width="1200" height="300" rx="18" fill="url(#grid)"/>
+<rect x="48" y="44" width="5" height="210" rx="2.5" fill="url(#accent)"/>
+<g font-family="Segoe UI,Arial,sans-serif">
+  <text x="80" y="78" fill="#8fa7c4" font-size="13" font-weight="600" letter-spacing="3">AI EVALUATION INFRASTRUCTURE</text>
+  <text x="76" y="151" fill="#f2f7ff" font-size="68" font-weight="700" letter-spacing="-2">Warrant</text>
+  <text x="80" y="193" fill="#c2d0e3" font-size="22">Evidence for decisions you can defend.</text>
+  <text x="80" y="245" fill="#7f96b3" font-size="14">STATISTICAL CONTRACTS</text>
+  <circle cx="293" cy="240" r="2" fill="#55d6be"/>
+  <text x="312" y="245" fill="#7f96b3" font-size="14">REPLAYABLE RECORDS</text>
+  <circle cx="510" cy="240" r="2" fill="#55d6be"/>
+  <text x="529" y="245" fill="#7f96b3" font-size="14">REPRODUCIBLE RESEARCH</text>
+</g>
+<g transform="translate(915 55)" fill="none">
+  <rect x="0" y="0" width="210" height="190" rx="14" stroke="#263e5b" fill="#132238" fill-opacity=".6"/>
+  <path d="M66 44h80M66 67h58M66 90h80" stroke="#53718e" stroke-width="5" stroke-linecap="round"/>
+  <path d="M35 42l6 6 10-12M35 65l6 6 10-12M35 88l6 6 10-12" stroke="#55d6be" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="29" y="124" width="151" height="36" rx="6" stroke="#55d6be" stroke-opacity=".5"/>
+  <path d="M49 142h51M114 142h46" stroke="#81aaff" stroke-width="3" stroke-linecap="round"/>
+</g>
+</svg>

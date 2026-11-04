@@ -1,5 +1,10 @@
 # Portable numerical reproduction
 
+> Release navigation: the completed study is included in the consolidated main
+> branch. The branch-specific commands and source revisions below describe the
+> original validation; those historical receipts are preserved. See the
+> repository's project overview for the current release entry point.
+
 The portable route regenerates the scientific tables from committed, reviewed scalar observations. It needs a clean checkout, Python 3.12 and tqdm (observed 4.67.1), an empty study-data destination, and no private cache, model, GPU or paid API. The input bundle is `experiments/unscored_trials/portable_inputs/`; its manifest identifies input roles, pinned original URLs/revisions, original and derived hashes, transformations and licenses.
 
 For a new public checkout on Windows (choose a new path):
