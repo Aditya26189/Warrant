@@ -1,0 +1,64 @@
+{
+  "actual_bundle_reviewed": true,
+  "common_pattern_hits": [],
+  "files": {
+    "ATTRIBUTION.txt": {
+      "bytes": 863,
+      "sha256": "27f6abe20c596854e2615f210407a2dd939c6bcb6f6c993fdc287a6cb9d8968d"
+    },
+    "LICENSE-APACHE-2.0.txt": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "LICENSE-HARBOR.txt": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "NOTICE.md": {
+      "bytes": 1754,
+      "sha256": "8a2fa6d5e59f8639ca17b91316468de518bd282dd2f2117be06bcefc7c61875c"
+    },
+    "config.json": {
+      "bytes": 717,
+      "sha256": "b00bbb68f957ee89345e1451f6d07243f276ce2c879491f5c993241e4b28f683"
+    },
+    "jobs.json.gz": {
+      "bytes": 418715,
+      "sha256": "e408c6d57638055c5855a7475bc53aa868cdc8394be020af61401b851534c6a5"
+    },
+    "manifest.json": {
+      "bytes": 3975236,
+      "sha256": "1f410807b14f171e5222138f6693c6c27ab6a99cc8bfc1b9998816813922264e"
+    },
+    "task_spec.json": {
+      "bytes": 22069,
+      "sha256": "bd7ad58bb59954b8fffeecfc53651c8ebc116a50cb4ff0336d29bb09c812f6bc"
+    },
+    "trials.json.gz": {
+      "bytes": 8875410,
+      "sha256": "e8f7a832aae9769f4d606dcb19909726fbdf8cf4c6a2fd5c5b4ea0539f6e15c8"
+    }
+  },
+  "forbidden_field_keys": [],
+  "human_review_status": "PENDING",
+  "independent_adjudication": false,
+  "jobs": 245,
+  "license_declaration": {
+    "declared_license": "Apache-2.0",
+    "sha256": "5ab292f7640f8eb757bc7e17cc188492be3e591588df5e89a2cdf3782ab47402",
+    "url": "https://huggingface.co/datasets/harborframework/terminal-bench-2-leaderboard/raw/572b2614be2c0cb2527e14f5b1e4026f1072e6c1/README.md"
+  },
+  "normalization_and_job_projection_equivalence": "export checked every original source and preserved all frozen-normalized fields except explicitly attested opaque digests",
+  "provenance": {
+    "dirty": false,
+    "generated_utc": "2026-10-29T17:24:13.821248+00:00",
+    "git_commit": "0313fadbb975f2995530d5454d51efd8830a8ed9",
+    "git_version": "git version 2.47.1.windows.2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "source_sha256": "fb0c03560830f0d74096b62823103fe39483059da9db964b5267be8d7fd2381b"
+  },
+  "strings_scanned": 847468,
+  "submissions": 75,
+  "trial_records": 32803
+}

@@ -1,0 +1,138 @@
+{
+  "dataset": "harborframework/terminal-bench-2-leaderboard",
+  "license": "apache-2.0",
+  "request_manifests": [
+    {
+      "local_path": "submission-requests.json",
+      "sha256": "16ce3249c198d211839ad5adfdbff697869b9b987a89a4aa8e03c8290bfa404c"
+    },
+    {
+      "local_path": "job-tree-requests.json",
+      "sha256": "5ac5f9b65ef82f4bd1835740d382ce6814ee20ae3c424d7f1bef480df25a5fbd"
+    },
+    {
+      "local_path": "config-requests.json",
+      "sha256": "efa51ad85fa2d0ab70c51f11b0f5387d31cba0decc03f47d82d7419a3f4a1471"
+    },
+    {
+      "local_path": "discovery-requests.json",
+      "sha256": "b8bbdd99be1f583280e4a78f9af4252f1bc6c54ffab76405e7bf757fbdc9d3a0"
+    },
+    {
+      "local_path": "census-completed.json",
+      "sha256": "57fa4fd6267cfdeed91a311a3f758cb4112f4d83201dd16b3a5a87db7831fa7f"
+    },
+    {
+      "local_path": "large-record-recoveries.json",
+      "sha256": "470574fa8f28a1f56ae7189902e01e45b5cb2c14789d7f9c5e8b42bb848889f5"
+    }
+  ],
+  "result_requests": [
+    {
+      "bytes": 4100489,
+      "entries": 4822,
+      "path": "source_requests/0000.json",
+      "sha256": "8a7f5a8d309a21cfb623b0ced239d86eb2bf47b3682c90cc4d4eaa3ed3c13200"
+    },
+    {
+      "bytes": 4102493,
+      "entries": 4891,
+      "path": "source_requests/0001.json",
+      "sha256": "98fa99bde712a95c846fda5ce034bbe5b3f3bd161891e71fd448d4bf0a136858"
+    },
+    {
+      "bytes": 4100287,
+      "entries": 4803,
+      "path": "source_requests/0002.json",
+      "sha256": "6eb936cb7b88e5b7c379ccce9e16728f6a66d4fcce31c90286dcd75ed00dc925"
+    },
+    {
+      "bytes": 4094339,
+      "entries": 4498,
+      "path": "source_requests/0003.json",
+      "sha256": "dfa4fd94f82710fea3c390057fb106acc43b3ac4ca1fa594766ec1a32a6bce47"
+    },
+    {
+      "bytes": 4098190,
+      "entries": 4716,
+      "path": "source_requests/0004.json",
+      "sha256": "b637f6aee2ca3ba483ffc01cc05cb7a0c68b7430ef273145fc688358cae5339c"
+    },
+    {
+      "bytes": 4102404,
+      "entries": 4899,
+      "path": "source_requests/0005.json",
+      "sha256": "b95c301acbf764dab0b3517291da8c30bc47fd6e4839566c5a69ca83409c2992"
+    },
+    {
+      "bytes": 3741508,
+      "entries": 4419,
+      "path": "source_requests/0006.json",
+      "sha256": "49d8750cc548e2a738e60f58af40282dee14bd080d0f602c75481f4cb62170a1"
+    }
+  ],
+  "revision": "572b2614be2c0cb2527e14f5b1e4026f1072e6c1",
+  "sources": [
+    {
+      "bytes": 4112381,
+      "entries": 4193,
+      "path": "source_manifest/0000.json",
+      "sha256": "1036aca45c8f59006ae6e5140c562ce1f73fe7f3f89765b180b98ecd07217f21"
+    },
+    {
+      "bytes": 4111102,
+      "entries": 4185,
+      "path": "source_manifest/0001.json",
+      "sha256": "10ee1918e4312da555826254badb737337e28170e1826563b283a9efaf8c3c99"
+    },
+    {
+      "bytes": 4111795,
+      "entries": 4180,
+      "path": "source_manifest/0002.json",
+      "sha256": "ed0a8deab6a61ecf5f3e04fc7d3944bf521bfd59dd4de755b618b8b951d606f9"
+    },
+    {
+      "bytes": 4111737,
+      "entries": 4206,
+      "path": "source_manifest/0003.json",
+      "sha256": "c7941f4b6bc823e2a7cabf1f97e3824051b457ad2bbfa8cce2405086a9fc699b"
+    },
+    {
+      "bytes": 4111621,
+      "entries": 4177,
+      "path": "source_manifest/0004.json",
+      "sha256": "955559d8ea33da73572503a534e53115c64802c3cb4bab90efda5b26ed0ed80f"
+    },
+    {
+      "bytes": 4111412,
+      "entries": 4192,
+      "path": "source_manifest/0005.json",
+      "sha256": "c969ffa8eae3bc503ccbc848a86874663b52d1be6cc0e07c236fe08a0f023797"
+    },
+    {
+      "bytes": 4111311,
+      "entries": 4197,
+      "path": "source_manifest/0006.json",
+      "sha256": "23bb9f29284fe3c905eb555e7674648f4a47b5ca4ec56adf5a71ea65aec5941f"
+    },
+    {
+      "bytes": 4111675,
+      "entries": 4189,
+      "path": "source_manifest/0007.json",
+      "sha256": "91fff43e25d106a4dd144e0e7c46a630184b99869fd458b58910002df70a1d85"
+    },
+    {
+      "bytes": 4111504,
+      "entries": 3898,
+      "path": "source_manifest/0008.json",
+      "sha256": "6e28a591d580f64ee371dde7a4fee6804c452c45d22b4de67f83805ce92f5c1e"
+    },
+    {
+      "bytes": 2792599,
+      "entries": 2660,
+      "path": "source_manifest/0009.json",
+      "sha256": "ba0aed13580117ed3ee320f1c4cd924ac217d69e746ad2f9791ca1d8718440c5"
+    }
+  ],
+  "task_spec_sha256": "bd7ad58bb59954b8fffeecfc53651c8ebc116a50cb4ff0336d29bb09c812f6bc"
+}

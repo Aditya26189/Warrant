@@ -23,6 +23,7 @@
 | You are… | Read, in this order |
 |:---|:---|
 | **Assessing what has actually shipped** | [PRODUCT-STATE.md](PRODUCT-STATE.md) -> [LIMITATIONS.md](LIMITATIONS.md) -> [TESTING.md](TESTING.md) |
+| **Reviewing unscored-trial accounting (REPORT)** | [Exploratory technical report](../results/unscored_trials/closeout-20261029/report/technical_report.md) -> [portable reproduction](research/unscored_trials/REPRODUCING.md) -> [pending human worksheet](../results/unscored_trials/closeout-20261029/report/human_review_worksheet.md) |
 | **Reviewing the completed grader-audit experiment** | [Closing study](../reports/GATE4-TRANSFER.md) -> [evidence and replay guide](../experiments/grader_poc/README.md) -> [protocol](FEASIBILITY_EXPERIMENT_SPEC.md) |
 | 🛡️ **Running it on your own detector** | [SETUP.md](SETUP.md) §0 → [INPUT.md](INPUT.md) → [../examples/README.md](../examples/README.md) → [TROUBLESHOOTING.md](TROUBLESHOOTING.md) → [FAQ.md](FAQ.md) |
 | 📋 **Preparing evidence for a validation function** | [RELEASE.md](RELEASE.md) → [EVIDENCE-HANDOFF.md](EVIDENCE-HANDOFF.md) → [LIMITATIONS.md](LIMITATIONS.md) §3.5–3.7 |

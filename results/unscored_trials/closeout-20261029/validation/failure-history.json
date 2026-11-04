@@ -1,0 +1,55 @@
+{
+  "events": [
+    {
+      "exit_code": 1,
+      "junit": {
+        "errors": 0,
+        "failures": 1,
+        "skipped": 0,
+        "tests": 15
+      },
+      "receipt_name": "warrant-closeout-20261029-artifact-tests.xml",
+      "resolution": "Synthetic comparison fixture used a generic identifier column, which is intentionally not normalized as a scientific number; corrected fixture uses a scientific numeric column and 16 tests passed.",
+      "sha256": "da5e1c918c4530151cb2a0469c1fccb546d38cf0785203b11bcfe837f1b71ba8",
+      "unresolved": false
+    },
+    {
+      "exit_code": 1,
+      "junit": {
+        "errors": 0,
+        "failures": 1,
+        "skipped": 0,
+        "tests": 20
+      },
+      "receipt_name": "warrant-closeout-report-links.xml",
+      "resolution": "A stale test expected the previous relative documentation URL after the generator was corrected for arbitrary output directories; assertion updated, 20 tests then passed.",
+      "sha256": "3c1f8ef6de2036d57d3a2f75bd6f49b23fe89a02e9714c37d4f82859bb7175ca",
+      "unresolved": false
+    },
+    {
+      "event": "Windows temporary-fixture ACL setup errors",
+      "exit_code": "nonzero setup failure; exact original tool records retained externally",
+      "resolution": "Re-ran with approved fixture access. Final clean199-test receipt has no failures/errors/skips.",
+      "unresolved": false
+    },
+    {
+      "event": "Automatic approval capacity / quota interruption",
+      "execution": "requested retry was not executed before reset",
+      "resolution": "User continued after reset; approved focused rerun passed. No alternate credential or approval bypass.",
+      "unresolved": false
+    },
+    {
+      "event": "Fresh shallow clone emitted a historical closed-grader long-path attributes warning",
+      "exit_code": 0,
+      "resolution": "Clone completed; core.longpaths enabled in validation checkout; subsequent clean status and full tracked-file inventory succeeded.",
+      "unresolved": false
+    }
+  ],
+  "nonessential_diagnostic": "Get-CimInstance process inspection denied; not needed for validation and not retried with more privilege",
+  "nonfatal_warnings": [
+    "Additional108documentation/fixture-smoke tests exited0 and all passed; existing SWIG __module__ deprecation warnings were retained in the private original log."
+  ],
+  "scientific_mismatches": [],
+  "scope": "closeout engineering/test failures; original study acquisition failures remain historical receipts",
+  "unresolved_software_failures": []
+}
