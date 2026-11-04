@@ -89,6 +89,16 @@ for refusal and error behavior.
 | Experimental grader audit | Retained known omissions and repair controls, followed by a closed conventional-mutation study that found no new omission in calibration or reserved tasks. Packets retain task/candidate hashes, scoped properties, failed attempts and execution receipts. | [Closing study](../reports/GATE4-TRANSFER.md) and [experiment guide](../experiments/grader_poc/README.md), including the earlier [payments regression](../reports/PHASE-GRADER-PAYMENTS-E2E.md). The decision is to stop custom discovery-engine development on this evidence. This is outside the shipped CLI and statistical certification; no comparative discovery advantage, human effort savings or product demand is established. |
 | Test infrastructure | Source, installed-wheel, document, claim and acceptance tests, with Linux and Windows CI jobs declared. | [Testing guide](TESTING.md) and [CI configuration](../.github/workflows/ci.yml) show what is exercised. The [test inventory](../results/test_inventory.json) records collection only; it is not proof that the full suite or remote CI passed at the current head. |
 
+## Open adaptive-bound review
+
+[FPR-001](research/fpr_reporting/issues/FPR-001-adaptive-bound.md) preserves a
+native tied-score counterexample to a general coverage interpretation of the
+returned adaptive numerical bound. The fixed requested-budget assertion is a
+different claim and is not falsified by that example. Source-level/statistical
+review and any versioned production correction remain outstanding. This
+consolidation preserves the existing behavior and makes the issue discoverable;
+passing software checks do not close the statistical review.
+
 ## Deployment and assurance gaps
 
 These are blockers to representing the current repository as a production

@@ -42,6 +42,8 @@ does not require changing a user's global Git configuration.
 This is an installable local evaluation toolkit and research artifact. No
 production deployment, commercial validation, authenticated provenance, or
 independent human source adjudication is established by presentation polish.
+The adaptive returned-bound issue FPR-001 remains open and is linked from the
+entry pages; this release does not apply an unreviewed statistical repair.
 The closed grader, unscored-trial, and stopping-feedback decisions remain
 closed. Publication proposals are historical planning material.
 
