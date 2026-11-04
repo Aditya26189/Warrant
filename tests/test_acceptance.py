@@ -69,7 +69,7 @@ def test_a_fresh_clone_reaches_a_warrant_and_a_refusal(tmp_path: Path) -> None:
     """The acceptance test. Clone, run the README's commands, check both outcomes."""
     clone = tmp_path / "clone"
     result = subprocess.run(
-        ["git", "clone", "--depth", "1", "--quiet", PROJECT_ROOT.as_uri(), str(clone)],
+        ["git", "clone", "--config", "core.longpaths=true", "--depth", "1", "--quiet", PROJECT_ROOT.as_uri(), str(clone)],
         capture_output=True, text=True, timeout=900,
     )
     assert result.returncode == 0, f"clone failed:\n{result.stderr}"

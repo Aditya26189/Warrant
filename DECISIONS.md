@@ -12001,3 +12001,15 @@ exactly as after a chained revocation.
 **Decision.** Keep the same `tests/` selection, one quiet flag, strict markers and two-hour timeout. Override only pytest's duplicate default quiet option for the gate's full-suite command with `-o addopts=--strict-markers`. Retain the actual command and output tail in the artifact. Do not infer passes from the collection inventory, and do not modify pytest's repository-wide defaults. If the final suite still lacks a summary, report that limitation rather than inventing a count.
 
 **Validation and limit.** Add a subprocess regression that runs a tiny passing pytest file under a `pytest.ini` with default `-q --strict-markers` and proves the gate command retains `1 passed` in its tail. Keep the existing preflight/full-suite selection tests. Then run the real clean tracked-file clone gate and report the exact retained count, exit status, verifier tiers and cleanup result. This improves QA evidence, not model validity, customer adoption or remote CI coverage.
+
+
+## 241 - Preserve long paths in fresh release clones (2026-11-05)
+
+The final branch consolidation retains deeply nested grader fixtures. A real
+fresh-clone acceptance run on Windows failed with "Filename too long" before
+it could execute the documented examples. Enable core.longpaths in the new
+clone's own configuration before checkout, both in the acceptance test and the
+clean-clone gate, and document it in the PowerShell quickstart. This avoids a
+machine-global Git setting and preserves the retained fixture paths and bytes.
+The change affects checkout compatibility, not a statistical estimator,
+threshold, dataset, or measured claim. Re-run the actual fresh-clone workflow.

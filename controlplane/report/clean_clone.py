@@ -438,7 +438,7 @@ def run_clean_clone_gate(
     try:
         cloned = _run(
             "git clone",
-            ["git", "clone", "--quiet", str(root), str(target)],
+            ["git", "clone", "--config", "core.longpaths=true", "--quiet", str(root), str(target)],
             cwd=clone,
             timeout=600,
         )
