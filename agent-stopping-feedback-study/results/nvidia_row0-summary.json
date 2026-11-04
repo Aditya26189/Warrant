@@ -1,0 +1,241 @@
+{
+  "acquisition_sha256": "95bccb012801d8da2bd9c8d0566f0c95cdd63b097e638099e899467db3898a9a",
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "instance_id",
+      "type": {
+        "_type": "Value",
+        "dtype": "string"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "repo",
+      "type": {
+        "_type": "Value",
+        "dtype": "string"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "license",
+      "type": {
+        "_type": "Value",
+        "dtype": "string"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "language",
+      "type": {
+        "_type": "Value",
+        "dtype": "string"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "trajectory_id",
+      "type": {
+        "_type": "Value",
+        "dtype": "string"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "messages",
+      "type": {
+        "_type": "List",
+        "feature": {
+          "content": {
+            "_type": "Value",
+            "dtype": "string"
+          },
+          "reasoning_content": {
+            "_type": "Value",
+            "dtype": "string"
+          },
+          "role": {
+            "_type": "Value",
+            "dtype": "string"
+          },
+          "tool_calls": {
+            "_type": "List",
+            "feature": {
+              "function": {
+                "arguments": {
+                  "_type": "Value",
+                  "dtype": "string"
+                },
+                "name": {
+                  "_type": "Value",
+                  "dtype": "string"
+                }
+              },
+              "id": {
+                "_type": "Value",
+                "dtype": "string"
+              },
+              "type": {
+                "_type": "Value",
+                "dtype": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "tools",
+      "type": {
+        "_type": "List",
+        "feature": {
+          "_type": "Value",
+          "dtype": "string"
+        }
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "resolved",
+      "type": {
+        "_type": "Value",
+        "dtype": "int32"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "metadata",
+      "type": {
+        "category": {
+          "_type": "Value",
+          "dtype": "string"
+        },
+        "model_patch": {
+          "num_modified_files": {
+            "_type": "Value",
+            "dtype": "int64"
+          },
+          "num_modified_lines": {
+            "_type": "Value",
+            "dtype": "int64"
+          },
+          "patch": {
+            "_type": "Value",
+            "dtype": "string"
+          }
+        },
+        "reference_patch": {
+          "num_modified_files": {
+            "_type": "Value",
+            "dtype": "int64"
+          },
+          "num_modified_lines": {
+            "_type": "Value",
+            "dtype": "int64"
+          },
+          "patch": {
+            "_type": "Value",
+            "dtype": "string"
+          }
+        },
+        "teacher_model": {
+          "enable_thinking": {
+            "_type": "Value",
+            "dtype": "bool"
+          },
+          "name": {
+            "_type": "Value",
+            "dtype": "string"
+          },
+          "reasoning_effort": {
+            "_type": "Value",
+            "dtype": "string"
+          }
+        }
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "hf_dataset_name",
+      "type": {
+        "_type": "Value",
+        "dtype": "string"
+      }
+    }
+  ],
+  "provenance": {
+    "dirty": false,
+    "git_commit": "6e96f4421cb78674ecf66d0c2fb5f271878d7f13",
+    "inspection_source_sha256": "4ac4161ce0ebbdc9745fb206503d1ad70e8b1c737ec5c4456c16371ce9f00fdd",
+    "source_path": "agent-stopping-feedback-study/recon.py",
+    "source_sha256": "d4aedc29b7fbcbf759c60ac952e0b1f064eb3e2a0a36f5de89e8fc62e0c950ec"
+  },
+  "reported_rows_total": 82292,
+  "row_total_warning": "provider configuration count, not an unfiltered deployment population",
+  "rows": [
+    {
+      "cost_unit_warning": "Message/tool counts and UTF8 bytes are descriptive proxies, not billable usage or measured compute/time.",
+      "excluded_from_any_future_prefix_features": [
+        "resolved",
+        "metadata.reference_patch",
+        "metadata.model_patch"
+      ],
+      "exit_status_if_present": null,
+      "first_message_roles": [
+        "system",
+        "user",
+        "assistant",
+        "tool",
+        "assistant",
+        "tool"
+      ],
+      "harness_version_recorded": false,
+      "issue_id": "saltstack_libnacl_pr89",
+      "label_available": true,
+      "last_message_role": "assistant",
+      "message_count": 33,
+      "message_field": "messages",
+      "nontext_content_message_count": 0,
+      "observed_content_utf8_bytes": 44126,
+      "observed_reasoning_utf8_bytes": 11047,
+      "population_claim": "one initial convenience record; no prevalence, representativeness, issue overlap or duplicate-rate claim",
+      "reconstructed_tokens": "not computed; tokenizer alone cannot restore per-call context/cache/reasoning usage",
+      "recorded_resolved": 0,
+      "recorded_tool_call_count": 16,
+      "repository": "saltstack/libnacl",
+      "role_counts": {
+        "assistant": 16,
+        "system": 1,
+        "tool": 15,
+        "user": 1
+      },
+      "row_index": 0,
+      "sample": "nvidia_row0",
+      "schema_fields": [
+        "hf_dataset_name",
+        "instance_id",
+        "language",
+        "license",
+        "messages",
+        "metadata",
+        "repo",
+        "resolved",
+        "tools",
+        "trajectory_id"
+      ],
+      "structured_accounting_field_paths": [],
+      "task_source_if_present": "AweAI-Team/Scale-SWE",
+      "teacher_model_record": {
+        "enable_thinking": true,
+        "name": "Qwen3.8-Flash-Next",
+        "reasoning_effort": "xhigh"
+      },
+      "trajectory_id": "0103d14f-1314-48cb-87f1-ac67a7c9525d"
+    }
+  ],
+  "source_revision": "4fa4c2ae9afc6b397bc50391d43450c79993c138",
+  "source_sha256": "3fd9c15650a874ab5344a9d6b0ff96be865e166eb5a2b703928a0b2bebb79067",
+  "source_url": "https://datasets-server.huggingface.co/rows?dataset=nvidia%2FOpen-SWE-Traces&config=v2.0&split=openhands&offset=0&length=1"
+}

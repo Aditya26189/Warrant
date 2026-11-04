@@ -1,0 +1,28 @@
+{
+  "max_total_bytes": 16777216,
+  "timeout_seconds": 30,
+  "requests": [
+    {
+      "label": "nebius_card",
+      "url": "https://huggingface.co/datasets/nebius/SWE-rebench-openhands-trajectories/raw/35455389ab51bf5e2306bfd436ef72d0f98bf882/README.md",
+      "max_bytes": 262144
+    },
+    {
+      "label": "nvidia_card",
+      "url": "https://huggingface.co/datasets/nvidia/Open-SWE-Traces/raw/4fa4c2ae9afc6b397bc50391d43450c79993c138/README.md",
+      "max_bytes": 262144
+    },
+    {
+      "label": "nebius_row0",
+      "url": "https://datasets-server.huggingface.co/rows?dataset=nebius%2FSWE-rebench-openhands-trajectories&config=default&split=train&offset=0&length=1",
+      "max_bytes": 2097152,
+      "expected_revision": "35455389ab51bf5e2306bfd436ef72d0f98bf882"
+    },
+    {
+      "label": "nvidia_row0",
+      "url": "https://datasets-server.huggingface.co/rows?dataset=nvidia%2FOpen-SWE-Traces&config=v2.0&split=openhands&offset=0&length=1",
+      "max_bytes": 2097152,
+      "expected_revision": "4fa4c2ae9afc6b397bc50391d43450c79993c138"
+    }
+  ]
+}

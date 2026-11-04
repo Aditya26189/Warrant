@@ -1,0 +1,122 @@
+{
+  "complete": true,
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.12.10"
+  },
+  "max_total_bytes": 16777216,
+  "memory_measurement": "psutil.Process.memory_info.peak_wset",
+  "peak_working_set_bytes": 37892096,
+  "provenance": {
+    "config_sha256": "f78dd8a0141749abfe0b2525175787bb12174b90edbaa61589f71cf83ae37b0c",
+    "dirty": false,
+    "git_commit": "6e96f4421cb78674ecf66d0c2fb5f271878d7f13",
+    "source_path": "agent-stopping-feedback-study/recon.py",
+    "source_sha256": "d4aedc29b7fbcbf759c60ac952e0b1f064eb3e2a0a36f5de89e8fc62e0c950ec"
+  },
+  "psutil_version": "7.1.0",
+  "requests": [
+    {
+      "body_bytes": 6924,
+      "body_complete": true,
+      "body_file": "000-nebius_card.body",
+      "body_sha256": "90fa586c747d9ed1022c28847439489576049cde7de1fdfb80d24b2a0ae77b32",
+      "effective_max_bytes": 262144,
+      "error": null,
+      "expected_revision": null,
+      "headers": {
+        "content-length": "6924",
+        "content-type": "text/plain; charset=utf-8",
+        "date": "Fri, 30 Oct 2026 05:10:09 GMT",
+        "etag": "\"b0177ffe77f8a60d407991c281ad6bf9f6e65d02\"",
+        "x-repo-commit": "35455389ab51bf5e2306bfd436ef72d0f98bf882"
+      },
+      "label": "nebius_card",
+      "observed_revision": null,
+      "ok": true,
+      "original_url": "https://huggingface.co/datasets/nebius/SWE-rebench-openhands-trajectories/raw/35455389ab51bf5e2306bfd436ef72d0f98bf882/README.md",
+      "requested_max_bytes": 262144,
+      "revision_observations": {},
+      "status": 200,
+      "wall_seconds": 0.4572051002178341
+    },
+    {
+      "body_bytes": 10057,
+      "body_complete": true,
+      "body_file": "001-nvidia_card.body",
+      "body_sha256": "4eb4502718850e80e214e8aa92c87a7b019980876b8c0aad4f7f5eb220e3236d",
+      "effective_max_bytes": 262144,
+      "error": null,
+      "expected_revision": null,
+      "headers": {
+        "content-length": "10057",
+        "content-type": "text/plain; charset=utf-8",
+        "date": "Fri, 30 Oct 2026 05:10:10 GMT",
+        "etag": "\"4e0da8c706844951b8c3aaad5504e51342a507e6\"",
+        "x-repo-commit": "4fa4c2ae9afc6b397bc50391d43450c79993c138"
+      },
+      "label": "nvidia_card",
+      "observed_revision": null,
+      "ok": true,
+      "original_url": "https://huggingface.co/datasets/nvidia/Open-SWE-Traces/raw/4fa4c2ae9afc6b397bc50391d43450c79993c138/README.md",
+      "requested_max_bytes": 262144,
+      "revision_observations": {},
+      "status": 200,
+      "wall_seconds": 0.4203850000631064
+    },
+    {
+      "body_bytes": 395268,
+      "body_complete": true,
+      "body_file": "002-nebius_row0.body",
+      "body_sha256": "54270287b38d6031c5c3548bf0bfcf63b6267eacbf322ffca3c3b2a07239cf75",
+      "effective_max_bytes": 2097152,
+      "error": null,
+      "expected_revision": "35455389ab51bf5e2306bfd436ef72d0f98bf882",
+      "headers": {
+        "content-length": "395268",
+        "content-type": "application/json",
+        "date": "Fri, 30 Oct 2026 05:10:11 GMT",
+        "x-revision": "35455389ab51bf5e2306bfd436ef72d0f98bf882"
+      },
+      "label": "nebius_row0",
+      "observed_revision": "35455389ab51bf5e2306bfd436ef72d0f98bf882",
+      "ok": true,
+      "original_url": "https://datasets-server.huggingface.co/rows?dataset=nebius%2FSWE-rebench-openhands-trajectories&config=default&split=train&offset=0&length=1",
+      "requested_max_bytes": 2097152,
+      "revision_observations": {
+        "x-revision": "35455389ab51bf5e2306bfd436ef72d0f98bf882"
+      },
+      "status": 200,
+      "wall_seconds": 2.1917189999949187
+    },
+    {
+      "body_bytes": 79686,
+      "body_complete": true,
+      "body_file": "003-nvidia_row0.body",
+      "body_sha256": "3fd9c15650a874ab5344a9d6b0ff96be865e166eb5a2b703928a0b2bebb79067",
+      "effective_max_bytes": 2097152,
+      "error": null,
+      "expected_revision": "4fa4c2ae9afc6b397bc50391d43450c79993c138",
+      "headers": {
+        "content-length": "79686",
+        "content-type": "application/json",
+        "date": "Fri, 30 Oct 2026 05:10:14 GMT",
+        "x-revision": "4fa4c2ae9afc6b397bc50391d43450c79993c138"
+      },
+      "label": "nvidia_row0",
+      "observed_revision": "4fa4c2ae9afc6b397bc50391d43450c79993c138",
+      "ok": true,
+      "original_url": "https://datasets-server.huggingface.co/rows?dataset=nvidia%2FOpen-SWE-Traces&config=v2.0&split=openhands&offset=0&length=1",
+      "requested_max_bytes": 2097152,
+      "revision_observations": {
+        "x-revision": "4fa4c2ae9afc6b397bc50391d43450c79993c138"
+      },
+      "status": 200,
+      "wall_seconds": 2.5738307998981327
+    }
+  ],
+  "schema_version": 1,
+  "started_utc": "2026-10-30T05:10:09.652755+00:00",
+  "total_body_bytes": 491935,
+  "wall_seconds": 6.369948599953204
+}
