@@ -21,6 +21,12 @@ dependencies = [
     "PyYAML>=6.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/Aditya26189/Warrant"
+Documentation = "https://github.com/Aditya26189/Warrant/blob/main/docs/README.md"
+Source = "https://github.com/Aditya26189/Warrant"
+Issues = "https://github.com/Aditya26189/Warrant/issues"
+
 [project.scripts]
 warrant = "controlplane.cli:main"
 
