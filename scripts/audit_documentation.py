@@ -13,9 +13,6 @@ from controlplane.report.documentation_audit import (  # noqa: E402
     generated_reference_differences,
     reference_pages,
     collect_audit,
-    read_json,
-    render_claims,
-    render_families,
     write_audit,
 )
 
@@ -49,25 +46,17 @@ def main() -> int:
         help="also check root, specialist, research and phase guides",
     )
     args = parser.parse_args()
-    if args.render_references:
-        for name, body in reference_pages(ROOT).items():
-            (ROOT / "docs/handbook" / name).write_bytes(body.encode("utf-8"))
+    if args.render_references or args.render:
+        pages = reference_pages(ROOT)
+        names = pages if args.render_references else ("claims.md", "claim-families.md")
+        for name in names:
+            (ROOT / "docs/handbook" / name).write_bytes(pages[name].encode("utf-8"))
     if args.check_generated:
         differences = generated_reference_differences(ROOT)
         if differences:
             print("\n".join(differences))
             return 1
         print("All four generated reference pages match their declared sources.")
-    if args.render:
-        receipt = read_json(
-            ROOT / "results/documentation_audit/20261105-final/audit.json"
-        )
-        registry = read_json(ROOT / "docs/handbook/claim-families.json")
-        for name, text in (
-            ("claims.md", render_claims(receipt, registry)),
-            ("claim-families.md", render_families(registry)),
-        ):
-            (ROOT / "docs/handbook" / name).write_bytes((text.rstrip() + "\n").encode())
     report = write_audit(ROOT, args.out) if args.out else collect_audit(ROOT)
     print(report["summary"])
     if args.links or args.links_all:
