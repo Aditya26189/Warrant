@@ -1,11 +1,24 @@
-"""Rendering results into markdown and plots.
+"""Report rendering and evidence tools with optional plotting imports deferred."""
 
-Nothing here computes a number. Everything it draws or prints comes from an
-artifact in ``results/``, which is what makes "every number in a document is
-computed by code" (invariant 8) checkable rather than aspirational.
-"""
+from __future__ import annotations
 
-from .plots import plot_tier_ladder
-from .results import FIXTURE_MARKER, ResultsRefusal, render_results
+from importlib import import_module
 
 __all__ = ["FIXTURE_MARKER", "ResultsRefusal", "plot_tier_ladder", "render_results"]
+
+_EXPORTS = {
+    "FIXTURE_MARKER": (".results", "FIXTURE_MARKER"),
+    "ResultsRefusal": (".results", "ResultsRefusal"),
+    "plot_tier_ladder": (".plots", "plot_tier_ladder"),
+    "render_results": (".results", "render_results"),
+}
+
+
+def __getattr__(name: str):
+    """Load established public exports only when callers request them."""
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    module, attribute = _EXPORTS[name]
+    value = getattr(import_module(module, __name__), attribute)
+    globals()[name] = value
+    return value

@@ -12037,3 +12037,14 @@ artifacts are read-only. Refresh the QA collection inventory only if meaningful
 new documentation checks change its count. The notebook discussion is a final
 Markdown cell emitted by its existing generator; preserve preceding code,
 metadata and outputs. No new model inference or paid compute is required.
+
+## 243 - Keep publication and audit imports independent of plotting (2026-11-05)
+
+The isolated documentation environment failed before running its checks because
+importing any controlplane.report submodule eagerly imported plotting and the
+research validation stack. Preserve the four established report exports through
+lazy module attributes so the source audit and LaTeX builder can run on their
+declared documentation/customer dependencies. Test the actual import boundary
+in a fresh subprocess. This changes import timing, not metric calculations,
+thresholds, research inputs or existing results. Keep publication tools optional
+and outside the installed command's runtime requirements.

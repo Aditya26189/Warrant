@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx,longtable,array}
+\usepackage{graphicx,tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{enumitem}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xcolor}
+\definecolor{navy}{HTML}{153449}
+\definecolor{teal}{HTML}{087D8B}
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{colorlinks=true,linkcolor=navy,citecolor=teal,urlcolor=teal}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Warrant: evaluation and evidence}
+\fancyhead[R]{\small Technical preprint}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{2em}
+\setlist{nosep,leftmargin=*}
+\input{generated/metadata.tex}
+\input{generated/claims.tex}
+\newcommand{\claim}[1]{\csname claim#1\endcsname}
+\newcommand{\ci}[1]{\csname ci#1\endcsname}
+\newcommand{\code}[1]{\texttt{#1}}
+\title{\vspace{-10mm}\textbf{\PaperTitle}}
+\author{\PaperAuthor\\\small \PaperAffiliation}
+\date{\PaperDate\\[3pt]\small Version \PaperVersion\ -- Technical preprint, not peer reviewed}
+\begin{document}
+\maketitle
+\thispagestyle{plain}
+\begin{abstract}
+A detector score is not itself evidence that an operating decision satisfies a
+declared requirement. Warrant is a local Python toolkit connecting scored,
+labelled inputs to explicit decisions, retained records and arithmetic replay.
+This report describes its architecture and investigates the scope of its
+empirical and statistical claims. Retained benchmark results show within-envelope
+error-label discrimination alongside low recall at a restrictive threshold,
+and a constructed context-transfer experiment in which a proposed pooling
+strategy did not remain robust. Other artifacts cover configuration,
+declared-workload sampling, monitoring simulations and bounded audit studies.
+A source-connected investigation finds that all \AuditClaims{} quantitative
+README rows match retained fields across \AuditArtifacts{} artifacts, while
+\DirtyClaims{} rows point directly to dirty-source records. A separately
+implemented rank/count oracle agrees on \PointTargets{} frozen-score targets,
+directly covering \DirectPointClaims{} README point claims. A preserved
+tied-score counterexample also limits the general interpretation of the native
+adaptive returned false-positive bound. These observations support an
+inspectable evaluation and evidence-management artifact, not universal
+assurance, independently adjudicated labels or production validation.
+\end{abstract}
+\noindent\textbf{Keywords:} detector evaluation; reproducibility; evidence
+provenance; statistical interpretation; operating points; monitoring.
+
+\noindent\small Manuscript and LaTeX source:
+\href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0}.
+Code and third-party inputs retain their separate licenses.\normalsize
+
+\input{sections/introduction.tex}
+\input{sections/system-methods.tex}
+\input{sections/results-audit.tex}
+\input{sections/discussion.tex}
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

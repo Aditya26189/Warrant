@@ -1,0 +1,184 @@
+\section{Retained findings}
+\subsection{Discrimination and operating trade-offs}
+The main held-out AUROC is \claim{C001}, with recorded interval \ci{C001}.
+At its operating point, recall is \claim{C002}, precision \claim{C003} and
+flag rate \claim{C004} (Table~\ref{tab:operating}).
+
+The independently checked block has \BasePositive{} positive rows among
+\BaseRows{} total rows, with \BaseFlagged{} flagged and \BaseTP{} true positives.
+High ranking association therefore coexists with many missed positive rows at
+that cut. Different targets explain the coexistence arithmetically; AUROC
+does not guarantee application usefulness.
+
+\begin{table}[t]
+\centering
+\caption{The main operating point. Intervals come from retained artifacts;
+the point oracle does not independently validate their coverage. Claim IDs
+identify the full source ledger.}
+\label{tab:operating}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Quantity&Value&Recorded interval&Claim\\
+\midrule
+AUROC&\claim{C001}&\ci{C001}&C001\\
+Recall&\claim{C002}&\ci{C002}&C002\\
+Precision&\claim{C003}&\ci{C003}&C003\\
+Flag rate&\claim{C004}&\ci{C004}&C004\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The broader budget sweep illustrates a trade-off, but its largest-favorable-budget
+headline is selected from an observed grid. The validation-selected/test-scored
+sweep adds split separation while retaining dirty-source provenance. Neither
+creates a fresh external confirmation collection.
+
+\subsection{The pooling rescue did not hold}
+In the constructed context transfer, last-token AUROC remains \claim{C029},
+mean pooling is near chance at \claim{C030}, and rolling maximum is
+\claim{C031} (Table~\ref{tab:transfer}). The latter flags \claim{C032} of
+target rows.
+
+\begin{table}[t]
+\centering
+\caption{Constructed feature transfer. Questions, original responses and labels
+are reused; this is not fresh long-context generation accuracy.}
+\label{tab:transfer}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Pooling&Target AUROC&Recorded interval&Claim\\
+\midrule
+Last token&\claim{C029}&\ci{C029}&C029\\
+Mean&\claim{C030}&\ci{C030}&C030\\
+Max rolling means&\claim{C031}&\ci{C031}&C031\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Global averaging may dilute a local feature; maxima over many windows may
+emphasize distractor extremes. Position and general feature-distribution changes
+are other possible mechanisms. The experiment does not isolate them. The
+rolling-window motivation remains a hypothesis that did not establish the
+predicted robust alternative.
+
+A stronger mechanism study would predeclare interventions on distractor length,
+position and content, keep the source fit fixed, and confirm on independent
+questions. That study was not performed.
+
+\subsection{Configuration, planning and monitoring}
+Stock PII recall is \claim{C040} and the custom-augmented configuration's recall
+is \claim{C044} on the authored challenge. This supports configuration coverage
+as important within that inventory. Custom patterns were informed by base
+forms, the companion set shares construction choices, and enrichment makes
+precision population-specific. Broad superiority to current upstream systems
+is not established.
+
+For confirmed positives \(TP\), unflagged volume \(N_u\) and unflagged error
+prevalence \(q\), recall on traffic satisfies
+\begin{equation}
+R(q)=\frac{TP}{TP+qN_u},\qquad
+\frac{\partial R}{\partial q}
+=-\frac{TPN_u}{(TP+qN_u)^2}.
+\end{equation}
+The declared workload's derivative is \claim{C056}. Sizing prevalence directly
+in recall units targeted the wrong quantity. The retained first-month plan is
+\claim{C059} labels under its assumptions; the superseded \claim{C061} remains
+failure evidence. Discrete, finite-population and assurance calculations also
+matter; the derivative alone is not the headline rule.
+
+Coverage \claim{C063} concerns \claim{C064} simulated trials. No customer
+labeling process or commercial saving was measured. Similarly, the year-long
+repeated-fixed-test and chained S0 cells report \claim{C066} and
+\claim{C067} simulated revocation shares, conditional on their rules and
+horizon. The historical capped-monitor cell is not a measurement of the later
+repaired runtime.
+
+\subsection{Finite demonstrations and closed extensions}
+The gate retains \claim{C086} selected detector-independent comparisons and
+blocks \claim{C090} of \claim{C091} authored legitimate workflows. These are
+finite-set counts, not production robustness or false-block rates.
+
+The score-free experiment uses conditionally independent simulated votes.
+Its results are an optimistic model-specific scenario, not a universal upper
+bound for real judges.
+
+The later frozen grader-discovery extension found no new omission under its
+bounded method, despite accepted controls. The unscored-trial work closed as a
+technical report: strict-cohort agreement is partly an eligibility condition,
+and no original execution roster or corrected official ranking is recovered.
+Stopping-feedback closed at data feasibility; no policy effect was estimated.
+These outcomes remain part of the evidence.
+
+\section{Source audit and assurance limits}
+\subsection{Matching values does not reconstruct source}
+All \AuditClaims{} numerical rows match their retained fields across
+\AuditArtifacts{} artifacts (Table~\ref{tab:audit}). This is not independent
+regeneration of every result.
+
+\begin{table}[t]
+\centering
+\caption{Final source-audit scope, generated from the retained receipt.}
+\label{tab:audit}
+\begin{tabularx}{\linewidth}{@{}l r X@{}}
+\toprule
+Check&Count&Meaning\\
+\midrule
+Matching README rows&\AuditClaims&Agreement at stated precision\\
+Result artifacts&\AuditArtifacts&Files directly named by the table\\
+Reviewed families&\AuditFamilies&Shared method and source context\\
+Dirty-source rows&\DirtyClaims&Producing state not fully identified\\
+Frozen-score point targets&\PointTargets&Separate rank/count arithmetic agrees\\
+Directly backed README points&\DirectPointClaims&Subset linked to those targets\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Dirty-source rows C006--C007, C016--C019 and C020--C028 concern reconciliation,
+the out-of-sample sweep and resplit policy results. A dirty flag may reflect an
+unrelated untracked file or a substantive edit. Its metadata does not establish
+which, so the named commit alone cannot reconstruct the complete original state.
+
+Downstream use requires the same context even when a later writer was clean.
+Relabeling an old result under a clean later commit would hide the gap. An
+archived original state or a separately identified new study is required.
+
+The point oracle directly backs \DirectPointClaims{} current table claims.
+Other rows include counts, statuses, calculations, simulations and measurements
+with different reproduction requirements. Standard frozen-score replay also
+reconstructs supported intervals using their historical method. That is not
+independent interval validation or fresh warrant issuance.
+
+\subsection{Controlled returned-bound counterexample}
+\label{sec:witness}
+The preserved diagnostic sets \(n=\WitnessN\), \(B=\WitnessBudget\),
+\(\delta=\WitnessAlpha\) and design count \(K=\WitnessK\). IID scores in
+\(\{0,1,2\}\) have tail probabilities \(q_1=\WitnessQone\) and
+\(q_2=\WitnessQtwo\).
+
+Let \(M_1,M_2\) count scores at least 1 and 2. Under the preserved
+successor-threshold convention, returned-bound noncoverage is the disjoint union
+\begin{equation}
+\{M_1\leq1\}\ \cup\ \{M_1\geq2,\ M_2=0\}.
+\end{equation}
+Its probability is
+\begin{equation}
+(1-q_2)^n+nq_2(1-q_1)^{n-1}
+\approx \WitnessNoncoverage > \WitnessAlpha.
+\end{equation}
+The exact program enumerates \WitnessStates{} multinomial count states and
+checks the closed form with rational arithmetic.
+
+Every selected population risk in this example is \(0,q_1\) or \(q_2\), below
+\(B\). The witness challenges the general adaptive returned-U interpretation
+without a requested-budget violation in that distribution. It is a known
+internal witness reproduced arithmetically, not a new general theorem or a
+completed independent production review. FPR-001 remains open.
+
+\subsection{Scope and terminology}
+The matrix includes synthetic fixtures and historical method records. A
+VALID-cell count is not independently validated model coverage. Historical
+dependent-row intervals remain historical despite successful replay.
+
+The vote simulation is likewise an optimistic independent-vote scenario rather
+than a universal upper bound. Narrower wording can be scientifically necessary
+even when no measured value changes.
