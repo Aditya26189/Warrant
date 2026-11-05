@@ -12076,3 +12076,14 @@ it alone identifies neither accuracy against truth nor an error margin on recall
 Correct those statements in the contributor context and agreement docstring,
 and record the late finding in Phase 56. Keep the estimator, bootstrap behavior,
 interval-withholding rules, labels, thresholds and all frozen results unchanged.
+
+## 246 - Keep the uncertainty contract and enforcement register aligned (2026-11-05)
+
+The full suite at 2b69329 failed one invariant-register test: the corrected
+invariant-4 headline in CLAUDE.md had not been copied to its declarative register.
+Update that register to the explicit-uncertainty contract, retaining the existing
+interval checks and naming existing sample-size and withheld-interval tests.
+Run the unchanged invariant suite in fast documentation CI as well, so contract
+edits cannot wait for the full research environment to expose this mismatch.
+Record the failed run and repair in Phase 56. No test is skipped or weakened,
+and no rate calculation or original scientific artifact changes.
