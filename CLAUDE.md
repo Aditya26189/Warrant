@@ -68,7 +68,7 @@ These produce plausible output with nothing raised. They are why the control sui
 
 **Neyman allocation on day one.** Neyman needs per-band prevalence `q_h` you don't have yet. Month one runs proportional allocation at full SRS cost. Design for it; say it in the README.
 
-**Label noise swallowing the interval.** A ±5pp recall interval is meaningless at inter-rater κ = 0.5. Double-label ~10% of both strata and publish κ next to every warrant.
+**Label disagreement is distinct from sampling uncertainty.** A sampling interval alone does not cover reference-label error. Blinded second review can expose disagreement, but κ alone neither measures truth nor proves a recall interval invalid. Report review coverage, disputes and applicable interval limits. The original ~10% double-labelling fraction is a design guideline, not a validated universal assurance threshold.
 
 **Fitting the scaler on the full set.** Train indices only.
 

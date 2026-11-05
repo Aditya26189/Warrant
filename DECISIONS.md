@@ -12066,3 +12066,13 @@ add deterministic render/check modes to the existing audit tool, and exercise
 the maintenance contract in CI. Do not change statistical implementations,
 original results, the manuscript bytes or its version-1.0 tag. New operational
 review records are separate from historical scientific artifacts.
+
+## 245 - Do not turn reviewer agreement into a label-error bound (2026-11-05)
+
+The final semantic pass found old prose saying a recall interval is necessarily
+meaningless at kappa 0.5 and that reviewer variability is then necessarily larger
+than sampling variability. Kappa describes agreement between recorded reviewers;
+it alone identifies neither accuracy against truth nor an error margin on recall.
+Correct those statements in the contributor context and agreement docstring,
+and record the late finding in Phase 56. Keep the estimator, bootstrap behavior,
+interval-withholding rules, labels, thresholds and all frozen results unchanged.
