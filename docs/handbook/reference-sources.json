@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "claim_receipt": "results/documentation_audit/20261105-final/audit.json",
+  "api_modules": [
+    "controlplane/model/metrics.py",
+    "controlplane/intake/contract.py",
+    "controlplane/intake/certify.py",
+    "controlplane/intake/verify.py",
+    "controlplane/release/contract.py",
+    "controlplane/release/evaluate.py",
+    "controlplane/sampling/estimator.py"
+  ]
+}

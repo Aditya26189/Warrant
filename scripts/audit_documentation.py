@@ -9,6 +9,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from controlplane.report.documentation_audit import (  # noqa: E402
     check_links,
+    documentation_pages,
+    generated_reference_differences,
+    reference_pages,
     collect_audit,
     read_json,
     render_claims,
@@ -30,7 +33,31 @@ def main() -> int:
     parser.add_argument(
         "--links", action="store_true", help="check handbook and paper repository links"
     )
+    parser.add_argument(
+        "--render-references",
+        action="store_true",
+        help="regenerate all four declared reference pages",
+    )
+    parser.add_argument(
+        "--check-generated",
+        action="store_true",
+        help="refuse missing or stale generated reference pages",
+    )
+    parser.add_argument(
+        "--links-all",
+        action="store_true",
+        help="also check root, specialist, research and phase guides",
+    )
     args = parser.parse_args()
+    if args.render_references:
+        for name, body in reference_pages(ROOT).items():
+            (ROOT / "docs/handbook" / name).write_bytes(body.encode("utf-8"))
+    if args.check_generated:
+        differences = generated_reference_differences(ROOT)
+        if differences:
+            print("\n".join(differences))
+            return 1
+        print("All four generated reference pages match their declared sources.")
     if args.render:
         receipt = read_json(
             ROOT / "results/documentation_audit/20261105-final/audit.json"
@@ -43,9 +70,8 @@ def main() -> int:
             (ROOT / "docs/handbook" / name).write_bytes((text.rstrip() + "\n").encode())
     report = write_audit(ROOT, args.out) if args.out else collect_audit(ROOT)
     print(report["summary"])
-    if args.links:
-        pages = sorted((ROOT / "docs/handbook").rglob("*.md"))
-        pages += sorted((ROOT / "paper").glob("*.md"))
+    if args.links or args.links_all:
+        pages = documentation_pages(ROOT, include_specialist=args.links_all)
         broken = check_links(ROOT, pages)
         if broken:
             print("\n".join(broken))
