@@ -510,6 +510,8 @@ def test_every_script_has_a_smoke_test() -> None:
         if not path.name.startswith("_")
     }
     covered = {
+        # tests/test_documentation_audit.py::test_audit_cli_smoke
+        "audit_documentation.py",
         "01_build_evalsets.py",
         "02_validate.py",
         "03_matrix.py",
@@ -1282,7 +1284,7 @@ def test_smoke_scorefree(tmp_path: Path) -> None:
     assert payload["declared"]["draws_per_cell"] == 3
     assert "SIMULATED" in payload["scope"], (
         "the scope caveat must travel with the numbers; every figure here is an "
-        "upper bound because a real judge's runs are correlated"
+        "simulated under an explicit independent-vote model"
     )
 
     # C1: notches bound the operating points, exactly and always.

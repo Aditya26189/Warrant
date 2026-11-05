@@ -329,3 +329,16 @@ What `warrant certify` must do with a file nobody here has seen. The procedure i
 | yield and rate | precision exact, recall estimated | `test_precision_is_exact_and_recall_is_estimated` | — |
 | the review queue | blinded | `test_blinding` | — |
 | a label budget | realises its margin with the declared assurance | `test_c1_the_estimator_realises_the_margin_as_often_as_computed` | `results/on_traffic/on_traffic.json` |
+
+
+## 17. Documentation audit and preprint
+
+| case | expected behaviour | test | artifact |
+|---|---|---|---|
+| retained quantitative claims | complete field agreement with source cautions retained | `test_real_claims_are_complete_but_source_cautions_remain` | `results/documentation_audit/20261105-final/audit.json` |
+| source changes during an audit | refuse a receipt rather than misidentify its source | `test_source_changes_during_audit_refuse_the_receipt` | — |
+| equivalent selectors | link to the same actual metric object | `test_equivalent_selectors_link_to_the_same_oracle_block` | — |
+| manuscript inputs | numeric macros and bibliography remain current | `test_generated_paper_values_are_current` | `paper/generated/claims.tex` |
+| dirty manuscript build | stop before invoking the compiler | `test_build_refuses_dirty_source_before_invoking_engine` | — |
+| prepared deposit | exclude private files and never upload | `test_packaging_exports_tracked_source_and_excludes_private_files` | `paper/metadata.json` |
+| publication imports | do not load optional plotting/model stacks | `test_publication_and_audit_imports_do_not_load_plotting_or_model_stacks` | — |

@@ -354,3 +354,25 @@ other.
 ---
 
 **See also:** [SETUP.md](SETUP.md) to get the environment right · [ARTIFACTS.md](ARTIFACTS.md) for what each output file contains · [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for what a failure means.
+
+
+## Documentation, evidence audit and preprint
+
+The [handbook](handbook/index.md) is the ordered entry point. Its
+[developer guide](handbook/developer-guide.md) explains generated references.
+
+| Entry point | Reads | Writes / boundary |
+| --- | --- | --- |
+| `python scripts/audit_documentation.py` | README claim table, reviewed family registry, retained artifacts and frozen scores | Prints consistency/point-oracle summary; no scientific result is overwritten |
+| `python scripts/audit_documentation.py --links` | Handbook/paper Markdown | Checks repository files and Markdown fragments; does not fetch remote URLs |
+| `python scripts/audit_documentation.py --out ../new-audit` | Same evidence plus clean source identity | New guarded receipt; existing destination refused |
+| `python scripts/audit_documentation.py --render` | Retained final audit and registry | Regenerates the two claim reference pages |
+| `python paper/build.py --check` | Metadata, numeric inputs, generated LaTeX and BibTeX | Checks source consistency; no typesetting |
+| `python paper/build.py --engine /path/to/tectonic --out ../new-paper` | Clean committed manuscript source | Isolated PDF, logs, hashes and build receipt; separate visual QA required |
+| `python paper/build.py --package-out ../new-deposit` | Clean tracked HEAD and reviewed PDF | Local deposit package; no Zenodo upload |
+
+Install `requirements-docs.txt` in addition to the customer requirements for
+site/PDF tools. Use Python 3.11 or newer for the handbook toolchain. For the
+precise compiler pins, license and deposit procedure, see
+[the paper guide](../paper/README.md). A compiled manuscript is a presentation
+artifact, not an additional model experiment.

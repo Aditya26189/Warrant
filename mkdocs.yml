@@ -1,0 +1,76 @@
+site_name: Warrant Documentation
+site_description: User guides, implementation manuals, research evidence and claim provenance.
+site_url: ""
+repo_url: https://github.com/Aditya26189/Warrant
+repo_name: Aditya26189/Warrant
+edit_uri: edit/main/docs/handbook/
+docs_dir: docs/handbook
+site_dir: ../warrant-handbook-site
+use_directory_urls: false
+strict: true
+theme:
+  name: material
+  font: false
+  palette:
+    primary: blue grey
+    accent: teal
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+plugins:
+  - search
+hooks:
+  - docs/handbook/hooks.py
+extra_css:
+  - assets/handbook.css
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+validation:
+  nav:
+    omitted_files: warn
+  links:
+    not_found: warn
+    anchors: warn
+    unrecognized_links: warn
+nav:
+  - Home: index.md
+  - Getting started:
+      - Introduction: introduction.md
+      - Quickstart: quickstart.md
+  - Using Warrant:
+      - Workflows: workflows.md
+      - Records and protocols: records-and-protocols.md
+      - Command reference: cli-reference.md
+  - Design and implementation:
+      - Architecture: architecture.md
+      - Statistical methods: methods.md
+      - Library reference: api-reference.md
+  - Research and evidence:
+      - Findings and discussion: findings.md
+      - Data origins: data-sources.md
+      - How to read the audit: claim-audit.md
+      - Claim families: claim-families.md
+      - Individual claims: claims.md
+      - Qualitative claims: qualitative-claims.md
+      - Primary sources: sources.md
+  - Maintaining and reproducing:
+      - Testing: testing.md
+      - Reproduction: reproduction.md
+      - Developer guide: developer-guide.md
+      - Limitations: limitations.md
+  - Preprint:
+      - Manuscript and Zenodo: technical-report.md
+      - Notebook discussion: discussion-cell.md

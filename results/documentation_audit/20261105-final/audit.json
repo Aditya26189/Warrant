@@ -1,0 +1,3207 @@
+{
+  "schema_version": 1,
+  "kind": "documentation_evidence_audit",
+  "claim_table_sha256": "f453ca929c410db0d3962bb30f36d75bb75180e241aead25dc9058fb7a60959a",
+  "registry_sha256": "40727a42b0a1232e81b411757e5414219b3e2eb40d9aaa38df3c1e141ee51f09",
+  "scope": "All quantitative README claim-table rows, with contextual source review; not independent human adjudication of labels or a proof of every statistical guarantee.",
+  "summary": {
+    "claims": 92,
+    "artifact_matches": 92,
+    "distinct_artifacts": 21,
+    "families": 18,
+    "dirty_source_claims": 15,
+    "dirty_source_claim_ids": [
+      "C006",
+      "C007",
+      "C016",
+      "C017",
+      "C018",
+      "C019",
+      "C020",
+      "C021",
+      "C022",
+      "C023",
+      "C024",
+      "C025",
+      "C026",
+      "C027",
+      "C028"
+    ],
+    "dirty_source_artifacts": [
+      "results/fpr_sweep_oos/sweep.json",
+      "results/policy-triviaqa-2400-t960.json",
+      "results/reconciliation.json"
+    ],
+    "frozen_score_targets": 25,
+    "point_oracle_targets_passed": 25,
+    "claim_points_with_independent_evidence": 19
+  },
+  "claims": [
+    {
+      "id": "C001",
+      "label": "Probe AUROC, triviaqa-600, n=600",
+      "value": "0.8256",
+      "interval": "[0.7934, 0.8567]",
+      "artifact": "results/validation-T1-last_token.json",
+      "field": "metrics.auroc.value",
+      "command": "make verify",
+      "resolved_value": 0.8255524136312324,
+      "artifact_sha256": "ea20380d90002de6429aef8bddb8d3a7344728ae69d902cc1864769be79a6968",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F01",
+      "evidence_kind": "measured_benchmark",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/validation-T1-last_token.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C002",
+      "label": "Probe recall at its operating point",
+      "value": "0.0794",
+      "interval": "[0.0496, 0.1115]",
+      "artifact": "results/validation-T1-last_token.json",
+      "field": "metrics.recall.value",
+      "command": "make verify",
+      "resolved_value": 0.07942238267148015,
+      "artifact_sha256": "ea20380d90002de6429aef8bddb8d3a7344728ae69d902cc1864769be79a6968",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F01",
+      "evidence_kind": "measured_benchmark",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/validation-T1-last_token.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C003",
+      "label": "Probe precision there",
+      "value": "0.8800",
+      "interval": "[0.7500, 1.0000]",
+      "artifact": "results/validation-T1-last_token.json",
+      "field": "metrics.precision.value",
+      "command": "make verify",
+      "resolved_value": 0.88,
+      "artifact_sha256": "ea20380d90002de6429aef8bddb8d3a7344728ae69d902cc1864769be79a6968",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F01",
+      "evidence_kind": "measured_benchmark",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/validation-T1-last_token.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C004",
+      "label": "Measured flag rate there",
+      "value": "0.0417",
+      "interval": "[0.0267, 0.0583]",
+      "artifact": "results/validation-T1-last_token.json",
+      "field": "metrics.flag_rate.value",
+      "command": "make verify",
+      "resolved_value": 0.041666666666666664,
+      "artifact_sha256": "ea20380d90002de6429aef8bddb8d3a7344728ae69d902cc1864769be79a6968",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F01",
+      "evidence_kind": "measured_benchmark",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/validation-T1-last_token.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C005",
+      "label": "Base error rate of that envelope",
+      "value": "0.4617",
+      "interval": "-",
+      "artifact": "results/validation-T1-last_token.json",
+      "field": "base_rate",
+      "command": "make verify",
+      "resolved_value": 0.46166666666666667,
+      "artifact_sha256": "ea20380d90002de6429aef8bddb8d3a7344728ae69d902cc1864769be79a6968",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F01",
+      "evidence_kind": "measured_benchmark",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C006",
+      "label": "Round 1 reproduced on Round 2's pipeline",
+      "value": "0.8256",
+      "interval": "-",
+      "artifact": "results/reconciliation.json",
+      "field": "round2.T1-last_token.test_auroc",
+      "command": "make verify",
+      "resolved_value": 0.8255524136312324,
+      "artifact_sha256": "375250d1dd5576638c8d22a5fc72231930a840a62f0699d6d385522b890ee1a3",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F02",
+      "evidence_kind": "historical_comparison",
+      "source_provenance": {
+        "git_commit": "efa1291e418d33c90a79aa00bf70ab2161209caf",
+        "dirty": true,
+        "config_hash": "b4ca1ec022266551",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C007",
+      "label": "...landing inside Round 1's published interval",
+      "value": "A",
+      "interval": "-",
+      "artifact": "results/reconciliation.json",
+      "field": "branch",
+      "command": "make verify",
+      "resolved_value": "A",
+      "artifact_sha256": "375250d1dd5576638c8d22a5fc72231930a840a62f0699d6d385522b890ee1a3",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F02",
+      "evidence_kind": "historical_comparison",
+      "source_provenance": {
+        "git_commit": "efa1291e418d33c90a79aa00bf70ab2161209caf",
+        "dirty": true,
+        "config_hash": "b4ca1ec022266551",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C008",
+      "label": "Cost of the training reduction, paired on 600 held-out items",
+      "value": "-0.0110",
+      "interval": "[-0.0200, -0.0026]",
+      "artifact": "results/paired_comparison.json",
+      "field": "pinned_to_baseline_threshold[quantity=auroc].difference",
+      "command": "make verify",
+      "resolved_value": -0.01102033060991825,
+      "artifact_sha256": "0d4e49fbfe375e71a63127f115cd51aac7cf6895c8ff1d66c332a420fe830094",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F03",
+      "evidence_kind": "measured_paired_comparison",
+      "source_provenance": {
+        "git_commit": "9fca6b94b36da86f51892d16539ff1c1e64089f7",
+        "dirty": false,
+        "config_hash": "ae6eec9d1f8897af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C009",
+      "label": "Selection-aware widening of the recall bound",
+      "value": "1.5922",
+      "interval": "-",
+      "artifact": "results/paired_comparison.json",
+      "field": "selection_aware_bounds[operating_point_id=P-customer-support].widening",
+      "command": "make verify",
+      "resolved_value": 1.5921684994040646,
+      "artifact_sha256": "0d4e49fbfe375e71a63127f115cd51aac7cf6895c8ff1d66c332a420fe830094",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F03",
+      "evidence_kind": "measured_paired_comparison",
+      "source_provenance": {
+        "git_commit": "9fca6b94b36da86f51892d16539ff1c1e64089f7",
+        "dirty": false,
+        "config_hash": "ae6eec9d1f8897af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C010",
+      "label": "Largest FPR budget where lift still holds",
+      "value": "0.20",
+      "interval": "-",
+      "artifact": "results/fpr_sweep/sweep.json",
+      "field": "sweeps[eval_set_id=triviaqa-600].headline.largest_target_fpr_where_lift_holds",
+      "command": "python scripts/19_fpr_sweep.py",
+      "resolved_value": 0.2,
+      "artifact_sha256": "3a15821c418adad31e881c6738be3160de79dfb3e6655410c42b4edd273ce74f",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F04",
+      "evidence_kind": "exploratory_measured_sweep",
+      "source_provenance": {
+        "git_commit": "8356af74cc70dd0a602ca39eae8c154c1616f363",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C011",
+      "label": "Recall there — the same probe, a looser budget",
+      "value": "0.6462",
+      "interval": "[0.5950, 0.7051]",
+      "artifact": "results/fpr_sweep/sweep.json",
+      "field": "sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].recall.value",
+      "command": "python scripts/19_fpr_sweep.py",
+      "resolved_value": 0.6462093862815884,
+      "artifact_sha256": "3a15821c418adad31e881c6738be3160de79dfb3e6655410c42b4edd273ce74f",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F04",
+      "evidence_kind": "exploratory_measured_sweep",
+      "source_provenance": {
+        "git_commit": "8356af74cc70dd0a602ca39eae8c154c1616f363",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C012",
+      "label": "Precision there",
+      "value": "0.7749",
+      "interval": "[0.7227, 0.8290]",
+      "artifact": "results/fpr_sweep/sweep.json",
+      "field": "sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].precision.value",
+      "command": "python scripts/19_fpr_sweep.py",
+      "resolved_value": 0.7748917748917749,
+      "artifact_sha256": "3a15821c418adad31e881c6738be3160de79dfb3e6655410c42b4edd273ce74f",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F04",
+      "evidence_kind": "exploratory_measured_sweep",
+      "source_provenance": {
+        "git_commit": "8356af74cc70dd0a602ca39eae8c154c1616f363",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C013",
+      "label": "Lift there, against a 2.17 ceiling",
+      "value": "1.678",
+      "interval": "[1.545, 1.831]",
+      "artifact": "results/fpr_sweep/sweep.json",
+      "field": "sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].lift.value",
+      "command": "python scripts/19_fpr_sweep.py",
+      "resolved_value": 1.6784659383937361,
+      "artifact_sha256": "3a15821c418adad31e881c6738be3160de79dfb3e6655410c42b4edd273ce74f",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F04",
+      "evidence_kind": "exploratory_measured_sweep",
+      "source_provenance": {
+        "git_commit": "8356af74cc70dd0a602ca39eae8c154c1616f363",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C014",
+      "label": "...and it survives the long-context shift",
+      "value": "0.6209",
+      "interval": "[0.5667, 0.6815]",
+      "artifact": "results/fpr_sweep/sweep.json",
+      "field": "sweeps[eval_set_id=triviaqa-longctx-600].points[target_fpr=0.2].recall.value",
+      "command": "python scripts/19_fpr_sweep.py",
+      "resolved_value": 0.6209386281588448,
+      "artifact_sha256": "3a15821c418adad31e881c6738be3160de79dfb3e6655410c42b4edd273ce74f",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F04",
+      "evidence_kind": "exploratory_measured_sweep",
+      "source_provenance": {
+        "git_commit": "8356af74cc70dd0a602ca39eae8c154c1616f363",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C015",
+      "label": "...its precision there",
+      "value": "0.7679",
+      "interval": "[0.7137, 0.8214]",
+      "artifact": "results/fpr_sweep/sweep.json",
+      "field": "sweeps[eval_set_id=triviaqa-longctx-600].points[target_fpr=0.2].precision.value",
+      "command": "python scripts/19_fpr_sweep.py",
+      "resolved_value": 0.7678571428571429,
+      "artifact_sha256": "3a15821c418adad31e881c6738be3160de79dfb3e6655410c42b4edd273ce74f",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F04",
+      "evidence_kind": "exploratory_measured_sweep",
+      "source_provenance": {
+        "git_commit": "8356af74cc70dd0a602ca39eae8c154c1616f363",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C016",
+      "label": "Out-of-sample recall at the same budget",
+      "value": "0.6318",
+      "interval": "[0.5782, 0.6880]",
+      "artifact": "results/fpr_sweep_oos/sweep.json",
+      "field": "sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].recall.value",
+      "command": "python scripts/20_fpr_sweep_oos.py",
+      "resolved_value": 0.631768953068592,
+      "artifact_sha256": "70f8d8310c5b07d25ea77ad781cf48b78a7c424912e4d11ab4fc8c2056521938",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F05",
+      "evidence_kind": "held_out_calculation_with_provenance_gap",
+      "source_provenance": {
+        "git_commit": "3523da8748801a14209f4689f783c6d722ffa88d",
+        "dirty": true,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [
+        "results/scores/valsplit-T1-last_token.json"
+      ],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C017",
+      "label": "...its precision",
+      "value": "0.7743",
+      "interval": "[0.7220, 0.8281]",
+      "artifact": "results/fpr_sweep_oos/sweep.json",
+      "field": "sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].precision.value",
+      "command": "python scripts/20_fpr_sweep_oos.py",
+      "resolved_value": 0.7743362831858407,
+      "artifact_sha256": "70f8d8310c5b07d25ea77ad781cf48b78a7c424912e4d11ab4fc8c2056521938",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F05",
+      "evidence_kind": "held_out_calculation_with_provenance_gap",
+      "source_provenance": {
+        "git_commit": "3523da8748801a14209f4689f783c6d722ffa88d",
+        "dirty": true,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [
+        "results/scores/valsplit-T1-last_token.json"
+      ],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C018",
+      "label": "...its lift",
+      "value": "1.677",
+      "interval": "[1.535, 1.826]",
+      "artifact": "results/fpr_sweep_oos/sweep.json",
+      "field": "sweeps[eval_set_id=triviaqa-600].points[target_fpr=0.2].lift.value",
+      "command": "python scripts/20_fpr_sweep_oos.py",
+      "resolved_value": 1.6772627072617488,
+      "artifact_sha256": "70f8d8310c5b07d25ea77ad781cf48b78a7c424912e4d11ab4fc8c2056521938",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F05",
+      "evidence_kind": "held_out_calculation_with_provenance_gap",
+      "source_provenance": {
+        "git_commit": "3523da8748801a14209f4689f783c6d722ffa88d",
+        "dirty": true,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [
+        "results/scores/valsplit-T1-last_token.json"
+      ],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C019",
+      "label": "Thresholds certified on validation, scored on test",
+      "value": "True",
+      "interval": "-",
+      "artifact": "results/fpr_sweep_oos/sweep.json",
+      "field": "sweeps[eval_set_id=triviaqa-600].out_of_sample",
+      "command": "python scripts/20_fpr_sweep_oos.py",
+      "resolved_value": true,
+      "artifact_sha256": "70f8d8310c5b07d25ea77ad781cf48b78a7c424912e4d11ab4fc8c2056521938",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F05",
+      "evidence_kind": "held_out_calculation_with_provenance_gap",
+      "source_provenance": {
+        "git_commit": "3523da8748801a14209f4689f783c6d722ffa88d",
+        "dirty": true,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [
+        "results/scores/valsplit-T1-last_token.json"
+      ],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C020",
+      "label": "customer_support recall, n=960",
+      "value": "0.2171",
+      "interval": "[0.1800, 0.2564]",
+      "artifact": "results/policy-triviaqa-2400-t960.json",
+      "field": "operating_points[operating_point.operating_point_id=P-customer-support].metrics.recall.value",
+      "command": "make verify",
+      "resolved_value": 0.21709006928406466,
+      "artifact_sha256": "32f7141dfcdfe0a855ca89526ba9444c9c9a0d858bb90d5ceadbb362e669f507",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F06",
+      "evidence_kind": "measured_resplit_study_with_provenance_gap",
+      "source_provenance": {
+        "git_commit": "0ad8c769527b7345edf6abae92ec611780948b14",
+        "dirty": true,
+        "config_hash": "ae6eec9d1f8897af",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C021",
+      "label": "customer_support measured flag rate",
+      "value": "0.1062",
+      "interval": "[0.0885, 0.1260]",
+      "artifact": "results/policy-triviaqa-2400-t960.json",
+      "field": "operating_points[operating_point.operating_point_id=P-customer-support].metrics.flag_rate.value",
+      "command": "make verify",
+      "resolved_value": 0.10625,
+      "artifact_sha256": "32f7141dfcdfe0a855ca89526ba9444c9c9a0d858bb90d5ceadbb362e669f507",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F06",
+      "evidence_kind": "measured_resplit_study_with_provenance_gap",
+      "source_provenance": {
+        "git_commit": "0ad8c769527b7345edf6abae92ec611780948b14",
+        "dirty": true,
+        "config_hash": "ae6eec9d1f8897af",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C022",
+      "label": "customer_support precision",
+      "value": "0.9216",
+      "interval": "[0.8676, 0.9684]",
+      "artifact": "results/policy-triviaqa-2400-t960.json",
+      "field": "operating_points[operating_point.operating_point_id=P-customer-support].metrics.precision.value",
+      "command": "make verify",
+      "resolved_value": 0.9215686274509803,
+      "artifact_sha256": "32f7141dfcdfe0a855ca89526ba9444c9c9a0d858bb90d5ceadbb362e669f507",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F06",
+      "evidence_kind": "measured_resplit_study_with_provenance_gap",
+      "source_provenance": {
+        "git_commit": "0ad8c769527b7345edf6abae92ec611780948b14",
+        "dirty": true,
+        "config_hash": "ae6eec9d1f8897af",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C023",
+      "label": "internal_knowledge recall, n=960",
+      "value": "0.3603",
+      "interval": "[0.3173, 0.4063]",
+      "artifact": "results/policy-triviaqa-2400-t960.json",
+      "field": "operating_points[operating_point.operating_point_id=P-internal-knowledge].metrics.recall.value",
+      "command": "make verify",
+      "resolved_value": 0.36027713625866054,
+      "artifact_sha256": "32f7141dfcdfe0a855ca89526ba9444c9c9a0d858bb90d5ceadbb362e669f507",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F06",
+      "evidence_kind": "measured_resplit_study_with_provenance_gap",
+      "source_provenance": {
+        "git_commit": "0ad8c769527b7345edf6abae92ec611780948b14",
+        "dirty": true,
+        "config_hash": "ae6eec9d1f8897af",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C024",
+      "label": "internal_knowledge measured flag rate",
+      "value": "0.1865",
+      "interval": "[0.1635, 0.2125]",
+      "artifact": "results/policy-triviaqa-2400-t960.json",
+      "field": "operating_points[operating_point.operating_point_id=P-internal-knowledge].metrics.flag_rate.value",
+      "command": "make verify",
+      "resolved_value": 0.18645833333333334,
+      "artifact_sha256": "32f7141dfcdfe0a855ca89526ba9444c9c9a0d858bb90d5ceadbb362e669f507",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F06",
+      "evidence_kind": "measured_resplit_study_with_provenance_gap",
+      "source_provenance": {
+        "git_commit": "0ad8c769527b7345edf6abae92ec611780948b14",
+        "dirty": true,
+        "config_hash": "ae6eec9d1f8897af",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C025",
+      "label": "internal_knowledge precision",
+      "value": "0.8715",
+      "interval": "[0.8218, 0.9214]",
+      "artifact": "results/policy-triviaqa-2400-t960.json",
+      "field": "operating_points[operating_point.operating_point_id=P-internal-knowledge].metrics.precision.value",
+      "command": "make verify",
+      "resolved_value": 0.8715083798882681,
+      "artifact_sha256": "32f7141dfcdfe0a855ca89526ba9444c9c9a0d858bb90d5ceadbb362e669f507",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F06",
+      "evidence_kind": "measured_resplit_study_with_provenance_gap",
+      "source_provenance": {
+        "git_commit": "0ad8c769527b7345edf6abae92ec611780948b14",
+        "dirty": true,
+        "config_hash": "ae6eec9d1f8897af",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C026",
+      "label": "decision_support recall, n=960",
+      "value": "0.7367",
+      "interval": "[0.6974, 0.7783]",
+      "artifact": "results/policy-triviaqa-2400-t960.json",
+      "field": "operating_points[operating_point.operating_point_id=P-decision-support].metrics.recall.value",
+      "command": "make verify",
+      "resolved_value": 0.7367205542725174,
+      "artifact_sha256": "32f7141dfcdfe0a855ca89526ba9444c9c9a0d858bb90d5ceadbb362e669f507",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F06",
+      "evidence_kind": "measured_resplit_study_with_provenance_gap",
+      "source_provenance": {
+        "git_commit": "0ad8c769527b7345edf6abae92ec611780948b14",
+        "dirty": true,
+        "config_hash": "ae6eec9d1f8897af",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C027",
+      "label": "decision_support measured flag rate",
+      "value": "0.4677",
+      "interval": "[0.4365, 0.4990]",
+      "artifact": "results/policy-triviaqa-2400-t960.json",
+      "field": "operating_points[operating_point.operating_point_id=P-decision-support].metrics.flag_rate.value",
+      "command": "make verify",
+      "resolved_value": 0.46770833333333334,
+      "artifact_sha256": "32f7141dfcdfe0a855ca89526ba9444c9c9a0d858bb90d5ceadbb362e669f507",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F06",
+      "evidence_kind": "measured_resplit_study_with_provenance_gap",
+      "source_provenance": {
+        "git_commit": "0ad8c769527b7345edf6abae92ec611780948b14",
+        "dirty": true,
+        "config_hash": "ae6eec9d1f8897af",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C028",
+      "label": "decision_support precision",
+      "value": "0.7105",
+      "interval": "[0.6690, 0.7506]",
+      "artifact": "results/policy-triviaqa-2400-t960.json",
+      "field": "operating_points[operating_point.operating_point_id=P-decision-support].metrics.precision.value",
+      "command": "make verify",
+      "resolved_value": 0.7104677060133631,
+      "artifact_sha256": "32f7141dfcdfe0a855ca89526ba9444c9c9a0d858bb90d5ceadbb362e669f507",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F06",
+      "evidence_kind": "measured_resplit_study_with_provenance_gap",
+      "source_provenance": {
+        "git_commit": "0ad8c769527b7345edf6abae92ec611780948b14",
+        "dirty": true,
+        "config_hash": "ae6eec9d1f8897af",
+        "seed": 1729
+      },
+      "source_flags": [
+        "DIRTY_SOURCE"
+      ],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C029",
+      "label": "Last-token probe survives the long-context shift",
+      "value": "0.8135",
+      "interval": "[0.7797, 0.8447]",
+      "artifact": "results/transfer-T1-last_token.json",
+      "field": "target.metrics.auroc.value",
+      "command": "make verify",
+      "resolved_value": 0.8134814632674274,
+      "artifact_sha256": "4675122d88b2d9bcc0a3ec13d882ee3f2122541127ef178cf6abcb3ea539d779",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F07",
+      "evidence_kind": "paired_distribution_shift_measurement",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/transfer-T1-last_token.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C030",
+      "label": "Mean-pool probe collapses to chance under it",
+      "value": "0.5015",
+      "interval": "[0.4546, 0.5479]",
+      "artifact": "results/transfer-T1-mean_pool.json",
+      "field": "target.metrics.auroc.value",
+      "command": "make verify",
+      "resolved_value": 0.5015144571984218,
+      "artifact_sha256": "39981530977e7c123b27c66ca07fc2cd1afce038d8ca0d4f575b61cfae56fc68",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F07",
+      "evidence_kind": "paired_distribution_shift_measurement",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/transfer-T1-mean_pool.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C031",
+      "label": "Max-rolling-means probe under it",
+      "value": "0.5553",
+      "interval": "[0.5105, 0.6015]",
+      "artifact": "results/transfer-T1-max_rolling_means.json",
+      "field": "target.metrics.auroc.value",
+      "command": "make verify",
+      "resolved_value": 0.5552972471527087,
+      "artifact_sha256": "783464e608ae49ca1065770aa1f37d5b5cea5ff092087f948eec862adc1a18e6",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F07",
+      "evidence_kind": "paired_distribution_shift_measurement",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/transfer-T1-max_rolling_means.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C032",
+      "label": "...and it flags 54% of the stream",
+      "value": "0.5433",
+      "interval": "[0.5050, 0.5833]",
+      "artifact": "results/transfer-T1-max_rolling_means.json",
+      "field": "target.metrics.flag_rate.value",
+      "command": "make verify",
+      "resolved_value": 0.5433333333333333,
+      "artifact_sha256": "783464e608ae49ca1065770aa1f37d5b5cea5ff092087f948eec862adc1a18e6",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F07",
+      "evidence_kind": "paired_distribution_shift_measurement",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/transfer-T1-max_rolling_means.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C033",
+      "label": "Replayed shift to long context begins at request",
+      "value": "401",
+      "interval": "-",
+      "artifact": "results/drift/revocation_trace.json",
+      "field": "stream.shift_starts_at_request",
+      "command": "python scripts/28_revocation_trace.py",
+      "resolved_value": 401,
+      "artifact_sha256": "21bee4cdb356084f361e2faa2af196e830fb58f1a70a095aa80b019ca29bb3ab",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F08",
+      "evidence_kind": "controlled_replay",
+      "source_provenance": {
+        "git_commit": "71d24345b4cb940af55751301666a6c7de49351c",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C034",
+      "label": "...the probe's warrant is revoked at request",
+      "value": "450",
+      "interval": "-",
+      "artifact": "results/drift/revocation_trace.json",
+      "field": "revocation.at_request",
+      "command": "python scripts/28_revocation_trace.py",
+      "resolved_value": 450,
+      "artifact_sha256": "21bee4cdb356084f361e2faa2af196e830fb58f1a70a095aa80b019ca29bb3ab",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F08",
+      "evidence_kind": "controlled_replay",
+      "source_provenance": {
+        "git_commit": "71d24345b4cb940af55751301666a6c7de49351c",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C035",
+      "label": "...at a PSI of",
+      "value": "0.3526",
+      "interval": "-",
+      "artifact": "results/drift/revocation_trace.json",
+      "field": "checkpoints[after_request=450].psi",
+      "command": "python scripts/28_revocation_trace.py",
+      "resolved_value": 0.35264742238016006,
+      "artifact_sha256": "21bee4cdb356084f361e2faa2af196e830fb58f1a70a095aa80b019ca29bb3ab",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F08",
+      "evidence_kind": "controlled_replay",
+      "source_provenance": {
+        "git_commit": "71d24345b4cb940af55751301666a6c7de49351c",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C036",
+      "label": "...where the last all-normal window read",
+      "value": "0.0543",
+      "interval": "-",
+      "artifact": "results/drift/revocation_trace.json",
+      "field": "checkpoints[after_request=400].psi",
+      "command": "python scripts/28_revocation_trace.py",
+      "resolved_value": 0.054291097019110515,
+      "artifact_sha256": "21bee4cdb356084f361e2faa2af196e830fb58f1a70a095aa80b019ca29bb3ab",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F08",
+      "evidence_kind": "controlled_replay",
+      "source_provenance": {
+        "git_commit": "71d24345b4cb940af55751301666a6c7de49351c",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C037",
+      "label": "Warrant matrix cells VALID",
+      "value": "13",
+      "interval": "-",
+      "artifact": "results/warrant_matrix.json",
+      "field": "matrix.summary.VALID",
+      "command": "make verify",
+      "resolved_value": 13,
+      "artifact_sha256": "6aa90bbd58ea8328269b996e7e90d79cdc500d85e73253369125c36c44b01d5e",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F09",
+      "evidence_kind": "mixed_measured_and_fixture_inventory",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C038",
+      "label": "Warrant matrix cells REFUSED",
+      "value": "4",
+      "interval": "-",
+      "artifact": "results/warrant_matrix.json",
+      "field": "matrix.summary.REFUSED",
+      "command": "make verify",
+      "resolved_value": 4,
+      "artifact_sha256": "6aa90bbd58ea8328269b996e7e90d79cdc500d85e73253369125c36c44b01d5e",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F09",
+      "evidence_kind": "mixed_measured_and_fixture_inventory",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C039",
+      "label": "Warrant matrix cells never measured",
+      "value": "39",
+      "interval": "-",
+      "artifact": "results/warrant_matrix.json",
+      "field": "matrix.summary.UNVALIDATED",
+      "command": "make verify",
+      "resolved_value": 39,
+      "artifact_sha256": "6aa90bbd58ea8328269b996e7e90d79cdc500d85e73253369125c36c44b01d5e",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F09",
+      "evidence_kind": "mixed_measured_and_fixture_inventory",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C040",
+      "label": "presidio-stock recall on Hinglish PII, REFUSED",
+      "value": "0.1176",
+      "interval": "[0.0500, 0.2000]",
+      "artifact": "results/detectors.json",
+      "field": "runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200].metrics.recall.value",
+      "command": "make verify",
+      "resolved_value": 0.11764705882352941,
+      "artifact_sha256": "49c2eb238b1095819fbe466f242f5c900ef66994860e5384f53f131bacc026fc",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F10",
+      "evidence_kind": "measured_handcrafted_challenge_set",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/text-presidio-stock-hinglish-pii-200.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C041",
+      "label": "...its precision there",
+      "value": "0.5455",
+      "interval": "[0.2592, 0.9002]",
+      "artifact": "results/detectors.json",
+      "field": "runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200].metrics.precision.value",
+      "command": "make verify",
+      "resolved_value": 0.5454545454545454,
+      "artifact_sha256": "49c2eb238b1095819fbe466f242f5c900ef66994860e5384f53f131bacc026fc",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F10",
+      "evidence_kind": "measured_handcrafted_challenge_set",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/text-presidio-stock-hinglish-pii-200.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C042",
+      "label": "presidio-enabled recall, REFUSED",
+      "value": "0.2843",
+      "interval": "[0.2075, 0.3810]",
+      "artifact": "results/detectors.json",
+      "field": "runs[detector_id=presidio-enabled,eval_set_id=hinglish-pii-200].metrics.recall.value",
+      "command": "make verify",
+      "resolved_value": 0.28431372549019607,
+      "artifact_sha256": "49c2eb238b1095819fbe466f242f5c900ef66994860e5384f53f131bacc026fc",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F10",
+      "evidence_kind": "measured_handcrafted_challenge_set",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/text-presidio-enabled-hinglish-pii-200.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C043",
+      "label": "...its precision there",
+      "value": "0.7436",
+      "interval": "[0.5416, 0.9584]",
+      "artifact": "results/detectors.json",
+      "field": "runs[detector_id=presidio-enabled,eval_set_id=hinglish-pii-200].metrics.precision.value",
+      "command": "make verify",
+      "resolved_value": 0.7435897435897436,
+      "artifact_sha256": "49c2eb238b1095819fbe466f242f5c900ef66994860e5384f53f131bacc026fc",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F10",
+      "evidence_kind": "measured_handcrafted_challenge_set",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/text-presidio-enabled-hinglish-pii-200.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C044",
+      "label": "presidio-enabled_plus_custom recall, VALID",
+      "value": "0.6176",
+      "interval": "[0.5185, 0.7128]",
+      "artifact": "results/detectors.json",
+      "field": "runs[detector_id=presidio-enabled_plus_custom,eval_set_id=hinglish-pii-200].metrics.recall.value",
+      "command": "make verify",
+      "resolved_value": 0.6176470588235294,
+      "artifact_sha256": "49c2eb238b1095819fbe466f242f5c900ef66994860e5384f53f131bacc026fc",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F10",
+      "evidence_kind": "measured_handcrafted_challenge_set",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/text-presidio-enabled_plus_custom-hinglish-pii-200.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C045",
+      "label": "...its precision there",
+      "value": "0.8630",
+      "interval": "[0.7262, 0.9828]",
+      "artifact": "results/detectors.json",
+      "field": "runs[detector_id=presidio-enabled_plus_custom,eval_set_id=hinglish-pii-200].metrics.precision.value",
+      "command": "make verify",
+      "resolved_value": 0.863013698630137,
+      "artifact_sha256": "49c2eb238b1095819fbe466f242f5c900ef66994860e5384f53f131bacc026fc",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F10",
+      "evidence_kind": "measured_handcrafted_challenge_set",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/text-presidio-enabled_plus_custom-hinglish-pii-200.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C046",
+      "label": "Our pii-reference recall, VALID",
+      "value": "0.7941",
+      "interval": "[0.6981, 0.8846]",
+      "artifact": "results/detectors.json",
+      "field": "runs[detector_id=pii-reference,eval_set_id=hinglish-pii-200].metrics.recall.value",
+      "command": "make verify",
+      "resolved_value": 0.7941176470588235,
+      "artifact_sha256": "49c2eb238b1095819fbe466f242f5c900ef66994860e5384f53f131bacc026fc",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F10",
+      "evidence_kind": "measured_handcrafted_challenge_set",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/text-pii-reference-hinglish-pii-200.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C047",
+      "label": "...its precision there",
+      "value": "0.6532",
+      "interval": "[0.5114, 0.8100]",
+      "artifact": "results/detectors.json",
+      "field": "runs[detector_id=pii-reference,eval_set_id=hinglish-pii-200].metrics.precision.value",
+      "command": "make verify",
+      "resolved_value": 0.6532258064516129,
+      "artifact_sha256": "49c2eb238b1095819fbe466f242f5c900ef66994860e5384f53f131bacc026fc",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F10",
+      "evidence_kind": "measured_handcrafted_challenge_set",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/text-pii-reference-hinglish-pii-200.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C048",
+      "label": "presidio-stock reproduces out of sample",
+      "value": "0.1471",
+      "interval": "[0.0714, 0.2341]",
+      "artifact": "results/holdout/detectors.json",
+      "field": "runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200b].metrics.recall.value",
+      "command": "make verify",
+      "resolved_value": 0.14705882352941177,
+      "artifact_sha256": "4ee28992c807f70bc42e2ed884db7171ce49aaff1ea1c521f9def95479815b1f",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F10",
+      "evidence_kind": "measured_handcrafted_challenge_set",
+      "source_provenance": {
+        "git_commit": "cd1cc243750e05e646b7d961e70aca7aae1589a7",
+        "dirty": false,
+        "config_hash": "ae6eec9d1f8897af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/text-presidio-stock-hinglish-pii-200b.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C049",
+      "label": "...its precision there",
+      "value": "0.5357",
+      "interval": "[0.2812, 0.8621]",
+      "artifact": "results/holdout/detectors.json",
+      "field": "runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200b].metrics.precision.value",
+      "command": "make verify",
+      "resolved_value": 0.5357142857142857,
+      "artifact_sha256": "4ee28992c807f70bc42e2ed884db7171ce49aaff1ea1c521f9def95479815b1f",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F10",
+      "evidence_kind": "measured_handcrafted_challenge_set",
+      "source_provenance": {
+        "git_commit": "cd1cc243750e05e646b7d961e70aca7aae1589a7",
+        "dirty": false,
+        "config_hash": "ae6eec9d1f8897af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/text-presidio-stock-hinglish-pii-200b.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C050",
+      "label": "pii-reference historical row flag rate on a hand-built benign set",
+      "value": "0.0000",
+      "interval": "[0.0000, 0.0183]",
+      "artifact": "results/validation-pii-reference-hard-negatives-200.json",
+      "field": "metrics.flag_rate.value",
+      "command": "make verify",
+      "resolved_value": 0.0,
+      "artifact_sha256": "77ad0d6f33088578804e05a8ca8ca95305d5d4d73eaf97104ce790985355a60d",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F11",
+      "evidence_kind": "historical_dependent_rows",
+      "source_provenance": {
+        "git_commit": "05b2a52193f089943edfbbb4c547bf5b9625a3d8",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [
+        {
+          "score_file": "results/scores/text-pii-reference-hard-negatives-200.json",
+          "point_oracle_ok": true,
+          "intervals_independently_checked": false
+        }
+      ],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C051",
+      "label": "Abstention floor at a 5% residual-risk target",
+      "value": "0.4221",
+      "interval": "-",
+      "artifact": "results/feasibility.json",
+      "field": "abstention_floor[target_risk=0.05].floor",
+      "command": "python scripts/11_feasibility.py",
+      "resolved_value": 0.4221491228070176,
+      "artifact_sha256": "8b366a92eff835210a983bedd2263ef56f98da68af9a5e865bddd2be402d5402",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F12",
+      "evidence_kind": "declared_scenario_calculation",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [
+        "results/policy-triviaqa-2400-t960.json"
+      ],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C052",
+      "label": "...at a 10% target",
+      "value": "0.3900",
+      "interval": "-",
+      "artifact": "results/feasibility.json",
+      "field": "abstention_floor[target_risk=0.1].floor",
+      "command": "python scripts/11_feasibility.py",
+      "resolved_value": 0.39004629629629634,
+      "artifact_sha256": "8b366a92eff835210a983bedd2263ef56f98da68af9a5e865bddd2be402d5402",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F12",
+      "evidence_kind": "declared_scenario_calculation",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [
+        "results/policy-triviaqa-2400-t960.json"
+      ],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C053",
+      "label": "Residual risk decision_support actually ships",
+      "value": "0.2231",
+      "interval": "-",
+      "artifact": "results/feasibility.json",
+      "field": "profiles[operating_point_id=P-decision-support].achieved_risk.residual_risk",
+      "command": "python scripts/11_feasibility.py",
+      "resolved_value": 0.22309197651663404,
+      "artifact_sha256": "8b366a92eff835210a983bedd2263ef56f98da68af9a5e865bddd2be402d5402",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F12",
+      "evidence_kind": "declared_scenario_calculation",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [
+        "results/policy-triviaqa-2400-t960.json"
+      ],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C054",
+      "label": "...costing this multiple of the perfect-selector floor",
+      "value": "1.5941",
+      "interval": "-",
+      "artifact": "results/feasibility.json",
+      "field": "profiles[operating_point_id=P-decision-support].achieved_risk.efficiency",
+      "command": "python scripts/11_feasibility.py",
+      "resolved_value": 1.594063833021829,
+      "artifact_sha256": "8b366a92eff835210a983bedd2263ef56f98da68af9a5e865bddd2be402d5402",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F12",
+      "evidence_kind": "declared_scenario_calculation",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [
+        "results/policy-triviaqa-2400-t960.json"
+      ],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C055",
+      "label": "customer_support at the same measure",
+      "value": "1.1490",
+      "interval": "-",
+      "artifact": "results/feasibility.json",
+      "field": "profiles[operating_point_id=P-customer-support].achieved_risk.efficiency",
+      "command": "python scripts/11_feasibility.py",
+      "resolved_value": 1.1489777314754515,
+      "artifact_sha256": "8b366a92eff835210a983bedd2263ef56f98da68af9a5e865bddd2be402d5402",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F12",
+      "evidence_kind": "declared_scenario_calculation",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [
+        "results/policy-triviaqa-2400-t960.json"
+      ],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C056",
+      "label": "dR/dq at the declared workload",
+      "value": "-4.6496",
+      "interval": "-",
+      "artifact": "results/on_traffic/on_traffic.json",
+      "field": "headline.derivative",
+      "command": "python scripts/25_on_traffic.py",
+      "resolved_value": -4.64958704,
+      "artifact_sha256": "883f3c3dfd126747d83ae02f8bff8f16edfee21b17192044e1e8ff94731abb25",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F13",
+      "evidence_kind": "simulation_and_declared_workload",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C057",
+      "label": "Unflagged pool against confirmed true positives",
+      "value": "231.9",
+      "interval": "-",
+      "artifact": "results/on_traffic/on_traffic.json",
+      "field": "headline.amplification_over_confirmed_errors",
+      "command": "python scripts/25_on_traffic.py",
+      "resolved_value": 231.89312617702447,
+      "artifact_sha256": "883f3c3dfd126747d83ae02f8bff8f16edfee21b17192044e1e8ff94731abb25",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F13",
+      "evidence_kind": "simulation_and_declared_workload",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C058",
+      "label": "...against the flagged pool, which is a different ratio",
+      "value": "66.0",
+      "interval": "-",
+      "artifact": "results/on_traffic/on_traffic.json",
+      "field": "headline.pool_ratio_over_flagged",
+      "command": "python scripts/25_on_traffic.py",
+      "resolved_value": 66.0331143584931,
+      "artifact_sha256": "883f3c3dfd126747d83ae02f8bff8f16edfee21b17192044e1e8ff94731abb25",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F13",
+      "evidence_kind": "simulation_and_declared_workload",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C059",
+      "label": "Labels for recall +/-0.05, month one, full SRS cost, 0.80 assurance",
+      "value": "1399",
+      "interval": "-",
+      "artifact": "results/on_traffic/on_traffic.json",
+      "field": "headline.labels_month_one_5pp",
+      "command": "python scripts/25_on_traffic.py",
+      "resolved_value": 1399,
+      "artifact_sha256": "883f3c3dfd126747d83ae02f8bff8f16edfee21b17192044e1e8ff94731abb25",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F13",
+      "evidence_kind": "simulation_and_declared_workload",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C060",
+      "label": "...at steady state, Neyman at the measured design effect",
+      "value": "1109",
+      "interval": "-",
+      "artifact": "results/on_traffic/on_traffic.json",
+      "field": "headline.labels_steady_state_5pp",
+      "command": "python scripts/25_on_traffic.py",
+      "resolved_value": 1109,
+      "artifact_sha256": "883f3c3dfd126747d83ae02f8bff8f16edfee21b17192044e1e8ff94731abb25",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F13",
+      "evidence_kind": "simulation_and_declared_workload",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C061",
+      "label": "...what the superseded sizing quoted (DECISIONS 147)",
+      "value": "187",
+      "interval": "-",
+      "artifact": "results/on_traffic/on_traffic.json",
+      "field": "headline.superseded_sizing_5pp",
+      "command": "python scripts/25_on_traffic.py",
+      "resolved_value": 187,
+      "artifact_sha256": "883f3c3dfd126747d83ae02f8bff8f16edfee21b17192044e1e8ff94731abb25",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F13",
+      "evidence_kind": "simulation_and_declared_workload",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C062",
+      "label": "Labels for recall +/-0.02, month one",
+      "value": "6518",
+      "interval": "-",
+      "artifact": "results/on_traffic/on_traffic.json",
+      "field": "headline.labels_month_one_2pp",
+      "command": "python scripts/25_on_traffic.py",
+      "resolved_value": 6518,
+      "artifact_sha256": "883f3c3dfd126747d83ae02f8bff8f16edfee21b17192044e1e8ff94731abb25",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F13",
+      "evidence_kind": "simulation_and_declared_workload",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C063",
+      "label": "Recall-interval coverage, 1000 trials, nominal 0.95",
+      "value": "0.9680",
+      "interval": "-",
+      "artifact": "results/on_traffic/on_traffic.json",
+      "field": "headline.coverage",
+      "command": "python scripts/25_on_traffic.py",
+      "resolved_value": 0.968,
+      "artifact_sha256": "883f3c3dfd126747d83ae02f8bff8f16edfee21b17192044e1e8ff94731abb25",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F13",
+      "evidence_kind": "simulation_and_declared_workload",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C064",
+      "label": "...over how many trials",
+      "value": "1000",
+      "interval": "-",
+      "artifact": "results/on_traffic/on_traffic.json",
+      "field": "headline.coverage_trials",
+      "command": "python scripts/25_on_traffic.py",
+      "resolved_value": 1000,
+      "artifact_sha256": "883f3c3dfd126747d83ae02f8bff8f16edfee21b17192044e1e8ff94731abb25",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F13",
+      "evidence_kind": "simulation_and_declared_workload",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C065",
+      "label": "Measured Neyman design effect vs the declared 0.67",
+      "value": "0.7929",
+      "interval": "-",
+      "artifact": "results/on_traffic/on_traffic.json",
+      "field": "headline.measured_design_effect",
+      "command": "python scripts/25_on_traffic.py",
+      "resolved_value": 0.7929127169444011,
+      "artifact_sha256": "883f3c3dfd126747d83ae02f8bff8f16edfee21b17192044e1e8ff94731abb25",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F13",
+      "evidence_kind": "simulation_and_declared_workload",
+      "source_provenance": {
+        "git_commit": "478b02af7619a5aa822ea73fac451ca16c9f3e8b",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C066",
+      "label": "A year of weekly per-recheck tests revokes a detector that kept its promise, share of simulated years (DECISIONS 187)",
+      "value": "0.8515",
+      "interval": "-",
+      "artifact": "results/recheck_schedules/comparison.json",
+      "field": "cells[rule=fixed,cadence=weekly,scenario=S0].revoked_in_year.value",
+      "command": "python scripts/29_recheck_schedules.py",
+      "resolved_value": 0.8515,
+      "artifact_sha256": "a1ff3cb8ee7a4e15ef92695a0d59c451e2f2451bad1d17f683997b2d6e003890",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F14",
+      "evidence_kind": "historical_simulation",
+      "source_provenance": {
+        "git_commit": "b8b0f00c38170bed8c4d7a42d5380c304e1eddd6",
+        "dirty": false,
+        "config_hash": "91a7d65c347e688c",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C067",
+      "label": "...a chained recheck on the same labels (DECISIONS 193)",
+      "value": "0.0085",
+      "interval": "-",
+      "artifact": "results/recheck_schedules/comparison.json",
+      "field": "cells[rule=e_detector,cadence=weekly,scenario=S0].revoked_in_year.value",
+      "command": "python scripts/29_recheck_schedules.py",
+      "resolved_value": 0.0085,
+      "artifact_sha256": "a1ff3cb8ee7a4e15ef92695a0d59c451e2f2451bad1d17f683997b2d6e003890",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F14",
+      "evidence_kind": "historical_simulation",
+      "source_provenance": {
+        "git_commit": "b8b0f00c38170bed8c4d7a42d5380c304e1eddd6",
+        "dirty": false,
+        "config_hash": "91a7d65c347e688c",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C068",
+      "label": "A breach after six months at the certified rate, caught within 13 weeks, by the historical capped monitor (Decision 187; not the repaired runtime)",
+      "value": "0.0005",
+      "interval": "-",
+      "artifact": "results/recheck_schedules/comparison.json",
+      "field": "cells[rule=monitor,cadence=weekly,scenario=S3].caught_in_window.value",
+      "command": "python scripts/29_recheck_schedules.py",
+      "resolved_value": 0.0005,
+      "artifact_sha256": "a1ff3cb8ee7a4e15ef92695a0d59c451e2f2451bad1d17f683997b2d6e003890",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F14",
+      "evidence_kind": "historical_simulation",
+      "source_provenance": {
+        "git_commit": "b8b0f00c38170bed8c4d7a42d5380c304e1eddd6",
+        "dirty": false,
+        "config_hash": "91a7d65c347e688c",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C069",
+      "label": "...by the chained recheck",
+      "value": "1.0000",
+      "interval": "-",
+      "artifact": "results/recheck_schedules/comparison.json",
+      "field": "cells[rule=e_detector,cadence=weekly,scenario=S3].caught_in_window.value",
+      "command": "python scripts/29_recheck_schedules.py",
+      "resolved_value": 1.0,
+      "artifact_sha256": "a1ff3cb8ee7a4e15ef92695a0d59c451e2f2451bad1d17f683997b2d6e003890",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F14",
+      "evidence_kind": "historical_simulation",
+      "source_provenance": {
+        "git_commit": "b8b0f00c38170bed8c4d7a42d5380c304e1eddd6",
+        "dirty": false,
+        "config_hash": "91a7d65c347e688c",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C070",
+      "label": "Monthly chained rechecks, 628 negatives each, catch a 1.5x breach within three months, share of simulated years (DECISIONS 196)",
+      "value": "0.8325",
+      "interval": "-",
+      "artifact": "results/chain_detection/grid.json",
+      "field": "cells[breach=0.075,cadence=monthly-6,scenario=S2,rule=e_detector].caught_in_window.value",
+      "command": "python scripts/31_chain_detection.py",
+      "resolved_value": 0.8325,
+      "artifact_sha256": "50e6ac0abb5477af25bcf5322c1b78a647146a3edf3c751e0447dd67ee93bf56",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F15",
+      "evidence_kind": "finite_horizon_simulation",
+      "source_provenance": {
+        "git_commit": "c300d2769243842164cc25e76c2c94698fb02f67",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C071",
+      "label": "...weekly, a 1.5x breach from week 26, within 13 weeks",
+      "value": "0.9965",
+      "interval": "-",
+      "artifact": "results/chain_detection/grid.json",
+      "field": "cells[breach=0.075,cadence=weekly-26,scenario=S2,rule=e_detector].caught_in_window.value",
+      "command": "python scripts/31_chain_detection.py",
+      "resolved_value": 0.9965,
+      "artifact_sha256": "50e6ac0abb5477af25bcf5322c1b78a647146a3edf3c751e0447dd67ee93bf56",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F15",
+      "evidence_kind": "finite_horizon_simulation",
+      "source_provenance": {
+        "git_commit": "c300d2769243842164cc25e76c2c94698fb02f67",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C072",
+      "label": "This project's measured TriviaQA certificates: the fewest flagged positives that, if really clean, take one below 0.80 confidence, over all certified rows (DECISIONS 199)",
+      "value": "2",
+      "interval": "-",
+      "artifact": "results/label_sensitivity/triviaqa.json",
+      "field": "criteria.reported.flagged_clean_errors_to_fall_below_0_80_min",
+      "command": "python scripts/32_label_sensitivity.py",
+      "resolved_value": 2,
+      "artifact_sha256": "235e3a676dfc84e20a127b4fa5500f73d9d7333acb07e6acadf6417a01ffda48",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F16",
+      "evidence_kind": "exact_sensitivity_on_recorded_labels",
+      "source_provenance": {
+        "git_commit": "bb800beeb00aeaeaf0a40e7dfb43e2850c321591",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C073",
+      "label": "...the most, over the same rows",
+      "value": "8",
+      "interval": "-",
+      "artifact": "results/label_sensitivity/triviaqa.json",
+      "field": "criteria.reported.flagged_clean_errors_to_fall_below_0_80_max",
+      "command": "python scripts/32_label_sensitivity.py",
+      "resolved_value": 8,
+      "artifact_sha256": "235e3a676dfc84e20a127b4fa5500f73d9d7333acb07e6acadf6417a01ffda48",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F16",
+      "evidence_kind": "exact_sensitivity_on_recorded_labels",
+      "source_provenance": {
+        "git_commit": "bb800beeb00aeaeaf0a40e7dfb43e2850c321591",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C074",
+      "label": "...certified rows in that range (3 probes x 20 budgets)",
+      "value": "60",
+      "interval": "-",
+      "artifact": "results/label_sensitivity/triviaqa.json",
+      "field": "criteria.reported.certified_rows",
+      "command": "python scripts/32_label_sensitivity.py",
+      "resolved_value": 60,
+      "artifact_sha256": "235e3a676dfc84e20a127b4fa5500f73d9d7333acb07e6acadf6417a01ffda48",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F16",
+      "evidence_kind": "exact_sensitivity_on_recorded_labels",
+      "source_provenance": {
+        "git_commit": "bb800beeb00aeaeaf0a40e7dfb43e2850c321591",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C075",
+      "label": "...the lowest confidence among them if every strict-vs-lenient matching dispute were a lenient labelling error",
+      "value": "0.8127",
+      "interval": "-",
+      "artifact": "results/label_sensitivity/triviaqa.json",
+      "field": "criteria.reported.confidence_at_disputes_min",
+      "command": "python scripts/32_label_sensitivity.py",
+      "resolved_value": 0.8127327260224584,
+      "artifact_sha256": "235e3a676dfc84e20a127b4fa5500f73d9d7333acb07e6acadf6417a01ffda48",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F16",
+      "evidence_kind": "exact_sensitivity_on_recorded_labels",
+      "source_provenance": {
+        "git_commit": "bb800beeb00aeaeaf0a40e7dfb43e2850c321591",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C076",
+      "label": "...the highest",
+      "value": "0.9412",
+      "interval": "-",
+      "artifact": "results/label_sensitivity/triviaqa.json",
+      "field": "criteria.reported.confidence_at_disputes_max",
+      "command": "python scripts/32_label_sensitivity.py",
+      "resolved_value": 0.9412341697204966,
+      "artifact_sha256": "235e3a676dfc84e20a127b4fa5500f73d9d7333acb07e6acadf6417a01ffda48",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F16",
+      "evidence_kind": "exact_sensitivity_on_recorded_labels",
+      "source_provenance": {
+        "git_commit": "bb800beeb00aeaeaf0a40e7dfb43e2850c321591",
+        "dirty": false,
+        "config_hash": "2640a176a26a80a0",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C077",
+      "label": "Tightest budget a single-sample judge can certify",
+      "value": "0.1045",
+      "interval": "-",
+      "artifact": "results/scorefree/scorefree.json",
+      "field": "headline.single_sample_floor_median",
+      "command": "python scripts/26_scorefree.py",
+      "resolved_value": 0.10453339606247256,
+      "artifact_sha256": "a421626446f42dd3037c6fc43ddd3bf029ac556b42e4646e814bfda968ed0740",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F17",
+      "evidence_kind": "simulated_independent_judge_votes",
+      "source_provenance": {
+        "git_commit": "62f74ae012029e270b18a7487c1726c102c25741",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C078",
+      "label": "...distinct operating points it offers",
+      "value": "1",
+      "interval": "-",
+      "artifact": "results/scorefree/scorefree.json",
+      "field": "headline.operating_points_at_k1",
+      "command": "python scripts/26_scorefree.py",
+      "resolved_value": 1,
+      "artifact_sha256": "a421626446f42dd3037c6fc43ddd3bf029ac556b42e4646e814bfda968ed0740",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F17",
+      "evidence_kind": "simulated_independent_judge_votes",
+      "source_provenance": {
+        "git_commit": "62f74ae012029e270b18a7487c1726c102c25741",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C079",
+      "label": "Notches at k=50",
+      "value": "51",
+      "interval": "-",
+      "artifact": "results/scorefree/scorefree.json",
+      "field": "headline.notches_at_k50",
+      "command": "python scripts/26_scorefree.py",
+      "resolved_value": 51,
+      "artifact_sha256": "a421626446f42dd3037c6fc43ddd3bf029ac556b42e4646e814bfda968ed0740",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F17",
+      "evidence_kind": "simulated_independent_judge_votes",
+      "source_provenance": {
+        "git_commit": "62f74ae012029e270b18a7487c1726c102c25741",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C080",
+      "label": "...distinct operating points they actually buy",
+      "value": "10",
+      "interval": "-",
+      "artifact": "results/scorefree/scorefree.json",
+      "field": "headline.operating_points_at_k50",
+      "command": "python scripts/26_scorefree.py",
+      "resolved_value": 10,
+      "artifact_sha256": "a421626446f42dd3037c6fc43ddd3bf029ac556b42e4646e814bfda968ed0740",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F17",
+      "evidence_kind": "simulated_independent_judge_votes",
+      "source_provenance": {
+        "git_commit": "62f74ae012029e270b18a7487c1726c102c25741",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C081",
+      "label": "Samples before granularity stops binding, 200 negatives",
+      "value": "3",
+      "interval": "-",
+      "artifact": "results/scorefree/scorefree.json",
+      "field": "headline.crossover_k_smallest_pool",
+      "command": "python scripts/26_scorefree.py",
+      "resolved_value": 3,
+      "artifact_sha256": "a421626446f42dd3037c6fc43ddd3bf029ac556b42e4646e814bfda968ed0740",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F17",
+      "evidence_kind": "simulated_independent_judge_votes",
+      "source_provenance": {
+        "git_commit": "62f74ae012029e270b18a7487c1726c102c25741",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C082",
+      "label": "...at 20,000 negatives",
+      "value": "7",
+      "interval": "-",
+      "artifact": "results/scorefree/scorefree.json",
+      "field": "headline.crossover_k_largest_pool",
+      "command": "python scripts/26_scorefree.py",
+      "resolved_value": 7,
+      "artifact_sha256": "a421626446f42dd3037c6fc43ddd3bf029ac556b42e4646e814bfda968ed0740",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F17",
+      "evidence_kind": "simulated_independent_judge_votes",
+      "source_provenance": {
+        "git_commit": "62f74ae012029e270b18a7487c1726c102c25741",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C083",
+      "label": "AUROC lost to a single sample",
+      "value": "0.2288",
+      "interval": "-",
+      "artifact": "results/scorefree/scorefree.json",
+      "field": "headline.auroc_gap_at_k1",
+      "command": "python scripts/26_scorefree.py",
+      "resolved_value": 0.2287891516516517,
+      "artifact_sha256": "a421626446f42dd3037c6fc43ddd3bf029ac556b42e4646e814bfda968ed0740",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F17",
+      "evidence_kind": "simulated_independent_judge_votes",
+      "source_provenance": {
+        "git_commit": "62f74ae012029e270b18a7487c1726c102c25741",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C084",
+      "label": "...at nine samples",
+      "value": "0.0215",
+      "interval": "-",
+      "artifact": "results/scorefree/scorefree.json",
+      "field": "headline.auroc_gap_at_k9",
+      "command": "python scripts/26_scorefree.py",
+      "resolved_value": 0.021450863363363326,
+      "artifact_sha256": "a421626446f42dd3037c6fc43ddd3bf029ac556b42e4646e814bfda968ed0740",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F17",
+      "evidence_kind": "simulated_independent_judge_votes",
+      "source_provenance": {
+        "git_commit": "62f74ae012029e270b18a7487c1726c102c25741",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C085",
+      "label": "Certified at k=9, deployed at k=1: breach of the bound",
+      "value": "2.3521",
+      "interval": "-",
+      "artifact": "results/scorefree/scorefree.json",
+      "field": "headline.breach_factor_deploying_at_k1",
+      "command": "python scripts/26_scorefree.py",
+      "resolved_value": 2.352070535679752,
+      "artifact_sha256": "a421626446f42dd3037c6fc43ddd3bf029ac556b42e4646e814bfda968ed0740",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F17",
+      "evidence_kind": "simulated_independent_judge_votes",
+      "source_provenance": {
+        "git_commit": "62f74ae012029e270b18a7487c1726c102c25741",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C086",
+      "label": "Gate decisions made without reading any detector",
+      "value": "33",
+      "interval": "-",
+      "artifact": "results/gate/gate.json",
+      "field": "headline.decisions_identical_without_a_detector",
+      "command": "python scripts/27_gate.py",
+      "resolved_value": 33,
+      "artifact_sha256": "62e57f8f259ff40bafe5c6950a493d54c74edc345cea6b222afa72b4d6e8f531",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F18",
+      "evidence_kind": "finite_controlled_software_demonstration",
+      "source_provenance": {
+        "git_commit": "4a6413079cec37f3f2e64f10e1d3910d1dfe8ab5",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C087",
+      "label": "...of how many rule-1/rule-2 decisions swept",
+      "value": "33",
+      "interval": "-",
+      "artifact": "results/gate/gate.json",
+      "field": "headline.decisions_compared",
+      "command": "python scripts/27_gate.py",
+      "resolved_value": 33,
+      "artifact_sha256": "62e57f8f259ff40bafe5c6950a493d54c74edc345cea6b222afa72b4d6e8f531",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F18",
+      "evidence_kind": "finite_controlled_software_demonstration",
+      "source_provenance": {
+        "git_commit": "4a6413079cec37f3f2e64f10e1d3910d1dfe8ab5",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C088",
+      "label": "Injection blocked at step",
+      "value": "4",
+      "interval": "-",
+      "artifact": "results/gate/gate.json",
+      "field": "headline.injection_blocked_at_step",
+      "command": "python scripts/27_gate.py",
+      "resolved_value": 4,
+      "artifact_sha256": "62e57f8f259ff40bafe5c6950a493d54c74edc345cea6b222afa72b4d6e8f531",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F18",
+      "evidence_kind": "finite_controlled_software_demonstration",
+      "source_provenance": {
+        "git_commit": "4a6413079cec37f3f2e64f10e1d3910d1dfe8ab5",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C089",
+      "label": "...and the detector that flagged it",
+      "value": "False",
+      "interval": "-",
+      "artifact": "results/gate/gate.json",
+      "field": "headline.injection_flagged_by_detector",
+      "command": "python scripts/27_gate.py",
+      "resolved_value": false,
+      "artifact_sha256": "62e57f8f259ff40bafe5c6950a493d54c74edc345cea6b222afa72b4d6e8f531",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F18",
+      "evidence_kind": "finite_controlled_software_demonstration",
+      "source_provenance": {
+        "git_commit": "4a6413079cec37f3f2e64f10e1d3910d1dfe8ab5",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C090",
+      "label": "Legitimate workflows the gate blocks (EXACT, declared set)",
+      "value": "2",
+      "interval": "-",
+      "artifact": "results/gate/gate.json",
+      "field": "headline.legitimate_workflows_blocked",
+      "command": "python scripts/27_gate.py",
+      "resolved_value": 2,
+      "artifact_sha256": "62e57f8f259ff40bafe5c6950a493d54c74edc345cea6b222afa72b4d6e8f531",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F18",
+      "evidence_kind": "finite_controlled_software_demonstration",
+      "source_provenance": {
+        "git_commit": "4a6413079cec37f3f2e64f10e1d3910d1dfe8ab5",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C091",
+      "label": "...of how many declared",
+      "value": "8",
+      "interval": "-",
+      "artifact": "results/gate/gate.json",
+      "field": "headline.legitimate_workflows",
+      "command": "python scripts/27_gate.py",
+      "resolved_value": 8,
+      "artifact_sha256": "62e57f8f259ff40bafe5c6950a493d54c74edc345cea6b222afa72b4d6e8f531",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F18",
+      "evidence_kind": "finite_controlled_software_demonstration",
+      "source_provenance": {
+        "git_commit": "4a6413079cec37f3f2e64f10e1d3910d1dfe8ab5",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    },
+    {
+      "id": "C092",
+      "label": "...that a new session recovers",
+      "value": "2",
+      "interval": "-",
+      "artifact": "results/gate/gate.json",
+      "field": "headline.blocked_workflows_recoverable",
+      "command": "python scripts/27_gate.py",
+      "resolved_value": 2,
+      "artifact_sha256": "62e57f8f259ff40bafe5c6950a493d54c74edc345cea6b222afa72b4d6e8f531",
+      "artifact_match": true,
+      "artifact_match_detail": "matches",
+      "family": "F18",
+      "evidence_kind": "finite_controlled_software_demonstration",
+      "source_provenance": {
+        "git_commit": "4a6413079cec37f3f2e64f10e1d3910d1dfe8ab5",
+        "dirty": false,
+        "config_hash": "533fb74983fcd8af",
+        "seed": 1729
+      },
+      "source_flags": [],
+      "declared_input_dirty_flags": [],
+      "independent_point_evidence": [],
+      "scientific_validity": "NOT_ESTABLISHED_BY_ARTIFACT_MATCH"
+    }
+  ],
+  "frozen_score_point_checks": [
+    {
+      "score_file": "results/scores/text-pii-reference-hard-negatives-200.json",
+      "score_sha256": "95eed823f3c9de90df3df5e7afe0df085375b7da311dbf8c273c188aaedfc850",
+      "artifact": "results/detectors.json",
+      "metrics_path": "runs[detector_id=pii-reference,eval_set_id=hard-negatives-200].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 0,
+        "n_negative": 200,
+        "n_flagged": 0,
+        "true_positives": 0,
+        "false_positives": 0
+      },
+      "defined_points_checked": {
+        "flag_rate": 0.0
+      },
+      "undefined_quantities": [
+        "auroc",
+        "recall",
+        "precision"
+      ],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-pii-reference-hard-negatives-200.json",
+      "score_sha256": "95eed823f3c9de90df3df5e7afe0df085375b7da311dbf8c273c188aaedfc850",
+      "artifact": "results/holdout/detectors.json",
+      "metrics_path": "runs[detector_id=pii-reference,eval_set_id=hard-negatives-200].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 0,
+        "n_negative": 200,
+        "n_flagged": 0,
+        "true_positives": 0,
+        "false_positives": 0
+      },
+      "defined_points_checked": {
+        "flag_rate": 0.0
+      },
+      "undefined_quantities": [
+        "auroc",
+        "recall",
+        "precision"
+      ],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-pii-reference-hard-negatives-200.json",
+      "score_sha256": "95eed823f3c9de90df3df5e7afe0df085375b7da311dbf8c273c188aaedfc850",
+      "artifact": "results/validation-pii-reference-hard-negatives-200.json",
+      "metrics_path": "metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 0,
+        "n_negative": 200,
+        "n_flagged": 0,
+        "true_positives": 0,
+        "false_positives": 0
+      },
+      "defined_points_checked": {
+        "flag_rate": 0.0
+      },
+      "undefined_quantities": [
+        "auroc",
+        "recall",
+        "precision"
+      ],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-pii-reference-hinglish-pii-200.json",
+      "score_sha256": "41d121db7cecc838d05b8bf1a3a79f82e6461350e18fd9ed6bbdbbc144ee6990",
+      "artifact": "results/detectors.json",
+      "metrics_path": "runs[detector_id=pii-reference,eval_set_id=hinglish-pii-200].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 102,
+        "n_negative": 98,
+        "n_flagged": 124,
+        "true_positives": 81,
+        "false_positives": 43
+      },
+      "defined_points_checked": {
+        "auroc": 0.7734093637454982,
+        "recall": 0.7941176470588235,
+        "precision": 0.6532258064516129,
+        "flag_rate": 0.62
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-pii-reference-hinglish-pii-200.json",
+      "score_sha256": "41d121db7cecc838d05b8bf1a3a79f82e6461350e18fd9ed6bbdbbc144ee6990",
+      "artifact": "results/validation-pii-reference-hinglish-pii-200.json",
+      "metrics_path": "metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 102,
+        "n_negative": 98,
+        "n_flagged": 124,
+        "true_positives": 81,
+        "false_positives": 43
+      },
+      "defined_points_checked": {
+        "auroc": 0.7734093637454982,
+        "recall": 0.7941176470588235,
+        "precision": 0.6532258064516129,
+        "flag_rate": 0.62
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-pii-reference-hinglish-pii-200b.json",
+      "score_sha256": "c0466537a60a8ae581d6cc17d0eaac52fbf4153295acc2d7eff6730f9d8eb5a9",
+      "artifact": "results/holdout/detectors.json",
+      "metrics_path": "runs[detector_id=pii-reference,eval_set_id=hinglish-pii-200b].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 102,
+        "n_negative": 98,
+        "n_flagged": 128,
+        "true_positives": 85,
+        "false_positives": 43
+      },
+      "defined_points_checked": {
+        "auroc": 0.7924169667867147,
+        "recall": 0.8333333333333334,
+        "precision": 0.6640625,
+        "flag_rate": 0.64
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-presidio-enabled-hard-negatives-200.json",
+      "score_sha256": "49bf9ac3659d5b18ca1909f041ea7e3e94177b52a5c80939ac94e34e40b993d7",
+      "artifact": "results/detectors.json",
+      "metrics_path": "runs[detector_id=presidio-enabled,eval_set_id=hard-negatives-200].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 0,
+        "n_negative": 200,
+        "n_flagged": 0,
+        "true_positives": 0,
+        "false_positives": 0
+      },
+      "defined_points_checked": {
+        "flag_rate": 0.0
+      },
+      "undefined_quantities": [
+        "auroc",
+        "recall",
+        "precision"
+      ],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-presidio-enabled-hard-negatives-200.json",
+      "score_sha256": "49bf9ac3659d5b18ca1909f041ea7e3e94177b52a5c80939ac94e34e40b993d7",
+      "artifact": "results/holdout/detectors.json",
+      "metrics_path": "runs[detector_id=presidio-enabled,eval_set_id=hard-negatives-200].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 0,
+        "n_negative": 200,
+        "n_flagged": 0,
+        "true_positives": 0,
+        "false_positives": 0
+      },
+      "defined_points_checked": {
+        "flag_rate": 0.0
+      },
+      "undefined_quantities": [
+        "auroc",
+        "recall",
+        "precision"
+      ],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-presidio-enabled-hinglish-pii-200.json",
+      "score_sha256": "608ec0d9e97048cb1b3c140fa933f3967895b1518ccc2a3314450eaa0d7cced1",
+      "artifact": "results/detectors.json",
+      "metrics_path": "runs[detector_id=presidio-enabled,eval_set_id=hinglish-pii-200].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 102,
+        "n_negative": 98,
+        "n_flagged": 39,
+        "true_positives": 29,
+        "false_positives": 10
+      },
+      "defined_points_checked": {
+        "auroc": 0.5997398959583834,
+        "recall": 0.28431372549019607,
+        "precision": 0.7435897435897436,
+        "flag_rate": 0.195
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-presidio-enabled-hinglish-pii-200b.json",
+      "score_sha256": "131002d4c0761230aaf9ee9a18d9b5dc71e71a5221d6b67e31c074fc73e938e5",
+      "artifact": "results/holdout/detectors.json",
+      "metrics_path": "runs[detector_id=presidio-enabled,eval_set_id=hinglish-pii-200b].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 102,
+        "n_negative": 98,
+        "n_flagged": 45,
+        "true_positives": 32,
+        "false_positives": 13
+      },
+      "defined_points_checked": {
+        "auroc": 0.5996398559423769,
+        "recall": 0.3137254901960784,
+        "precision": 0.7111111111111111,
+        "flag_rate": 0.225
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-presidio-enabled_plus_custom-hard-negatives-200.json",
+      "score_sha256": "4dba239642f6ec2b6fd1c762c61f97dcf771e3497aaaea6d2875bc2836356554",
+      "artifact": "results/detectors.json",
+      "metrics_path": "runs[detector_id=presidio-enabled_plus_custom,eval_set_id=hard-negatives-200].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 0,
+        "n_negative": 200,
+        "n_flagged": 8,
+        "true_positives": 0,
+        "false_positives": 8
+      },
+      "defined_points_checked": {
+        "flag_rate": 0.04
+      },
+      "undefined_quantities": [
+        "auroc",
+        "recall",
+        "precision"
+      ],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-presidio-enabled_plus_custom-hard-negatives-200.json",
+      "score_sha256": "4dba239642f6ec2b6fd1c762c61f97dcf771e3497aaaea6d2875bc2836356554",
+      "artifact": "results/holdout/detectors.json",
+      "metrics_path": "runs[detector_id=presidio-enabled_plus_custom,eval_set_id=hard-negatives-200].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 0,
+        "n_negative": 200,
+        "n_flagged": 8,
+        "true_positives": 0,
+        "false_positives": 8
+      },
+      "defined_points_checked": {
+        "flag_rate": 0.04
+      },
+      "undefined_quantities": [
+        "auroc",
+        "recall",
+        "precision"
+      ],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-presidio-enabled_plus_custom-hinglish-pii-200.json",
+      "score_sha256": "902f81e1304caa537904720b3aea5ff37c7b59c3450452f91869008767e76c26",
+      "artifact": "results/detectors.json",
+      "metrics_path": "runs[detector_id=presidio-enabled_plus_custom,eval_set_id=hinglish-pii-200].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 102,
+        "n_negative": 98,
+        "n_flagged": 73,
+        "true_positives": 63,
+        "false_positives": 10
+      },
+      "defined_points_checked": {
+        "auroc": 0.775610244097639,
+        "recall": 0.6176470588235294,
+        "precision": 0.863013698630137,
+        "flag_rate": 0.365
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-presidio-enabled_plus_custom-hinglish-pii-200b.json",
+      "score_sha256": "c73a4db0a2a62813c2dbde89722da497abfe37864bde2c2a00839371ca4c720b",
+      "artifact": "results/holdout/detectors.json",
+      "metrics_path": "runs[detector_id=presidio-enabled_plus_custom,eval_set_id=hinglish-pii-200b].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 102,
+        "n_negative": 98,
+        "n_flagged": 79,
+        "true_positives": 66,
+        "false_positives": 13
+      },
+      "defined_points_checked": {
+        "auroc": 0.7777611044417767,
+        "recall": 0.6470588235294118,
+        "precision": 0.8354430379746836,
+        "flag_rate": 0.395
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-presidio-stock-hard-negatives-200.json",
+      "score_sha256": "f64379d7e5f2605365a25cedc5f91baacd05dce14d89f1bbb24158ca91b495f0",
+      "artifact": "results/detectors.json",
+      "metrics_path": "runs[detector_id=presidio-stock,eval_set_id=hard-negatives-200].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 0,
+        "n_negative": 200,
+        "n_flagged": 0,
+        "true_positives": 0,
+        "false_positives": 0
+      },
+      "defined_points_checked": {
+        "flag_rate": 0.0
+      },
+      "undefined_quantities": [
+        "auroc",
+        "recall",
+        "precision"
+      ],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-presidio-stock-hard-negatives-200.json",
+      "score_sha256": "f64379d7e5f2605365a25cedc5f91baacd05dce14d89f1bbb24158ca91b495f0",
+      "artifact": "results/holdout/detectors.json",
+      "metrics_path": "runs[detector_id=presidio-stock,eval_set_id=hard-negatives-200].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 0,
+        "n_negative": 200,
+        "n_flagged": 0,
+        "true_positives": 0,
+        "false_positives": 0
+      },
+      "defined_points_checked": {
+        "flag_rate": 0.0
+      },
+      "undefined_quantities": [
+        "auroc",
+        "recall",
+        "precision"
+      ],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-presidio-stock-hinglish-pii-200.json",
+      "score_sha256": "7f98f66dd5137bfc88e3133a86d35a1d7f629ee931cd8410c80bfa057d18cb1a",
+      "artifact": "results/detectors.json",
+      "metrics_path": "runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 102,
+        "n_negative": 98,
+        "n_flagged": 22,
+        "true_positives": 12,
+        "false_positives": 10
+      },
+      "defined_points_checked": {
+        "auroc": 0.5079031612645059,
+        "recall": 0.11764705882352941,
+        "precision": 0.5454545454545454,
+        "flag_rate": 0.11
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/text-presidio-stock-hinglish-pii-200b.json",
+      "score_sha256": "7ab32b6f6859b83d2136a302d55fb122f96565674d35cca696b2fec18e5042aa",
+      "artifact": "results/holdout/detectors.json",
+      "metrics_path": "runs[detector_id=presidio-stock,eval_set_id=hinglish-pii-200b].metrics",
+      "threshold": 0.35,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 200,
+        "n_positive": 102,
+        "n_negative": 98,
+        "n_flagged": 28,
+        "true_positives": 15,
+        "false_positives": 13
+      },
+      "defined_points_checked": {
+        "auroc": 0.506452581032413,
+        "recall": 0.14705882352941177,
+        "precision": 0.5357142857142857,
+        "flag_rate": 0.14
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/transfer-T1-last_token.json",
+      "score_sha256": "fbdf61e9b9144ecd067f6bca52f5dfbd75dca9e7279a9400a84c125450271583",
+      "artifact": "results/transfer-T1-last_token.json",
+      "metrics_path": "target.metrics",
+      "threshold": 0.9403371394300616,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 600,
+        "n_positive": 277,
+        "n_negative": 323,
+        "n_flagged": 39,
+        "true_positives": 35,
+        "false_positives": 4
+      },
+      "defined_points_checked": {
+        "auroc": 0.8134814632674274,
+        "recall": 0.1263537906137184,
+        "precision": 0.8974358974358975,
+        "flag_rate": 0.065
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/transfer-T1-max_rolling_means.json",
+      "score_sha256": "a26488fca3485dcf664d2227ea5545b0cad6ab046f265fd007632c0844b2dab3",
+      "artifact": "results/transfer-T1-max_rolling_means.json",
+      "metrics_path": "target.metrics",
+      "threshold": 0.9023906031996711,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 600,
+        "n_positive": 277,
+        "n_negative": 323,
+        "n_flagged": 326,
+        "true_positives": 162,
+        "false_positives": 164
+      },
+      "defined_points_checked": {
+        "auroc": 0.5552972471527087,
+        "recall": 0.5848375451263538,
+        "precision": 0.49693251533742333,
+        "flag_rate": 0.5433333333333333
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/transfer-T1-mean_pool.json",
+      "score_sha256": "7559ae0dd9e2e646c158f85afe5b814f62c8bce2e2caeeccc499fbd42adf1528",
+      "artifact": "results/transfer-T1-mean_pool.json",
+      "metrics_path": "target.metrics",
+      "threshold": 0.9050946376086847,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 600,
+        "n_positive": 277,
+        "n_negative": 323,
+        "n_flagged": 0,
+        "true_positives": 0,
+        "false_positives": 0
+      },
+      "defined_points_checked": {
+        "auroc": 0.5015144571984218,
+        "recall": 0.0,
+        "flag_rate": 0.0
+      },
+      "undefined_quantities": [
+        "precision"
+      ],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/validation-T1-last_token.json",
+      "score_sha256": "e664eafa48e03f4f7dec40b1fe9e95c4dfd517237ded4adc6b5b6743fcff5930",
+      "artifact": "results/validation-T1-last_token.json",
+      "metrics_path": "metrics",
+      "threshold": 0.9403371394300616,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 600,
+        "n_positive": 277,
+        "n_negative": 323,
+        "n_flagged": 25,
+        "true_positives": 22,
+        "false_positives": 3
+      },
+      "defined_points_checked": {
+        "auroc": 0.8255524136312324,
+        "recall": 0.07942238267148015,
+        "precision": 0.88,
+        "flag_rate": 0.041666666666666664
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/validation-T1-max_rolling_means.json",
+      "score_sha256": "2231e6478e037ff082ed7ab8321535cb06d2b741774bec01233e2ce379a816a5",
+      "artifact": "results/validation-T1-max_rolling_means.json",
+      "metrics_path": "metrics",
+      "threshold": 0.9023906031996711,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 600,
+        "n_positive": 277,
+        "n_negative": 323,
+        "n_flagged": 25,
+        "true_positives": 23,
+        "false_positives": 2
+      },
+      "defined_points_checked": {
+        "auroc": 0.7853382660303339,
+        "recall": 0.08303249097472924,
+        "precision": 0.92,
+        "flag_rate": 0.041666666666666664
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/validation-T1-mean_pool.json",
+      "score_sha256": "552bb0970af3bb411f7fddd2e6e88b971cd914c2a7546da982516a064988b21f",
+      "artifact": "results/validation-T1-mean_pool.json",
+      "metrics_path": "metrics",
+      "threshold": 0.9050946376086847,
+      "score_provenance_dirty": false,
+      "counts": {
+        "n_rows": 600,
+        "n_positive": 277,
+        "n_negative": 323,
+        "n_flagged": 24,
+        "true_positives": 22,
+        "false_positives": 2
+      },
+      "defined_points_checked": {
+        "auroc": 0.7854612108951504,
+        "recall": 0.07942238267148015,
+        "precision": 0.9166666666666666,
+        "flag_rate": 0.04
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    },
+    {
+      "score_file": "results/scores/valsplit-T1-last_token.json",
+      "score_sha256": "6d1f51a516679b433edecf4e7a3b3ea3db2a1ba77d3e5ac6def8bf9ca4d0f2be",
+      "artifact": "results/fpr_sweep_oos/sweep.json",
+      "metrics_path": "certifying_split_metrics",
+      "threshold": 0.9403371394300616,
+      "score_provenance_dirty": true,
+      "counts": {
+        "n_rows": 600,
+        "n_positive": 271,
+        "n_negative": 329,
+        "n_flagged": 30,
+        "true_positives": 27,
+        "false_positives": 3
+      },
+      "defined_points_checked": {
+        "auroc": 0.8201303289628641,
+        "recall": 0.0996309963099631,
+        "precision": 0.9,
+        "flag_rate": 0.05
+      },
+      "undefined_quantities": [],
+      "differences": [],
+      "ok": true,
+      "intervals_independently_checked": false,
+      "issuance_status_recomputed": false
+    }
+  ],
+  "ok": true,
+  "does_not_check": [
+    "label truth",
+    "independent sampling",
+    "interval coverage",
+    "source reconstruction of dirty runs",
+    "activation extraction",
+    "causal mechanisms",
+    "production behavior",
+    "research novelty"
+  ],
+  "provenance": {
+    "git_commit": "c789c9514a1cdba09de63d0c77cd51a593837ba3",
+    "dirty": false,
+    "timestamp_utc": "2026-11-05T03:11:04.443049+00:00",
+    "method": "artifact field check plus independent frozen-score rank/count oracle"
+  }
+}

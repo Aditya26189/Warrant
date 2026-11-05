@@ -24,6 +24,8 @@ findings and explicit stopping decisions alongside their code and artifacts.
 
 [Run the examples](#-quickstart--certify-your-own-detector) ·
 [Explore the work](docs/PROJECT-OVERVIEW.md) ·
+[Read the handbook](docs/handbook/index.md) ·
+[Technical preprint](paper/README.md) ·
 [Inspect the evidence](#-the-claim-table) ·
 [Reproduce](#-reproduction) ·
 [Read the limits](docs/LIMITATIONS.md)
@@ -60,6 +62,11 @@ scores tie. A general coverage interpretation of that returned bound remains
 under review; this consolidation does not change its statistical behavior.
 Read [FPR-001](docs/research/fpr_reporting/issues/FPR-001-adaptive-bound.md)
 before relying on that interpretation.
+
+**Evidence audit:** [the source-connected claim ledger](docs/handbook/claims.md)
+checks every quantitative table row and records historical source limitations.
+Artifact agreement and separate point arithmetic do not establish label truth
+or statistical coverage. See [findings and discussion](docs/handbook/findings.md).
 
 ## Research portfolio
 
@@ -125,9 +132,10 @@ with 50 samples buys **10** operating points, not 51.
 
 On a *simulated* judge whose runs are independent draws, that floor is **0.105**
 against a data floor three orders of magnitude tighter, and five to ten samples
-buys everything more samples can buy. **The judge is simulated and a real one's
-repeated runs are correlated**, so that figure is an upper bound on what
-sampling buys and it certifies no real detector.
+buys everything more samples can buy. **The judge is simulated under conditionally independent votes.** This is an
+optimistic model-specific scenario, not a universal upper bound for real judges
+or a certification of a real detector. Correlation and other changes require
+their own analysis.
 ([`results/scorefree/`](results/scorefree/SCOREFREE.md))
 
 An F1 table cannot show either, because F1 is computed wherever the detector
@@ -606,7 +614,7 @@ examples/              two scored files: one certifies, one refuses
 evalsets/ & results/   frozen content-hashed evaluation sets; every artifact behind the table above
 scripts/ & demo/       thin CLI wrappers, the two-pane demo runner
 notebooks/             the Kaggle GPU notebook (generated, never hand-edited)
-tests/                 2326 tests collected, including the ones that enforce this README
+tests/                 2364 tests collected, including the ones that enforce this README
 docs/                  guides, orientation, methods, limitations, the case matrix
 DECISIONS.md           the append-only decision log, with dated addenda
 reports/               one close-out report per sprint, leading with the answer
@@ -692,7 +700,7 @@ the action gate, are in [docs/DIAGRAMS.md](docs/DIAGRAMS.md); the prose version 
 | Target | Without `make` | Requires | Time | Proves |
 |:---|:---|:---|:---|:---|
 | `make smoke` | `python scripts/smoke.py` | CPU, no network | < 60s | The clone works and the package imports |
-| `make test` | `python -m pytest tests/ -q` | CPU | Varies by machine | 2326 tests collected |
+| `make test` | `python -m pytest tests/ -q` | CPU | Varies by machine | 2364 tests collected |
 | `make verify` | `python scripts/verify.py` | CPU | ~3 min | **Every claim reproduces, and every metric recomputes from frozen scores** |
 | `make verify` (tier 3) | `python scripts/verify.py` | CPU + cached activations | ~4 min | The frozen scores re-derive from the activations |
 | `make extract` | `python scripts/00_extract.py --config config.yaml` | GPU, 16 GB | ~1 h | Activations regenerate from the source model |

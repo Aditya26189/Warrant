@@ -12013,3 +12013,38 @@ clean-clone gate, and document it in the PowerShell quickstart. This avoids a
 machine-global Git setting and preserves the retained fixture paths and bytes.
 The change affects checkout compatibility, not a statistical estimator,
 threshold, dataset, or measured claim. Re-run the actual fresh-clone workflow.
+
+## 242 - Audit the documentation as evidence, not as an endorsement (2026-11-05)
+
+The user requested a comprehensive OSS handbook, an in-depth investigation of
+our claims and their sources, and a concise scientific discussion at the end
+of the main notebook. Build a structured handbook with tutorials, concepts,
+architecture, interface references, research findings and developer procedures.
+Keep historical contracts and closed research decisions identifiable as such.
+
+Audit every row of the README claim table against the original artifact and
+selector, retain hashes and provenance, and provide a reviewed family-level
+explanation of the dataset, writer, statistical quantity and limitations. Add
+a separate register for qualitative claims and prior release statements. An
+arithmetic match is not independent reproduction, valid uncertainty, trusted
+labels, a causal explanation, novelty, or deployment evidence. Record missing
+inputs and unresolved statistical issues explicitly rather than repairing or
+rewriting frozen results during this documentation phase.
+
+Generate audit receipts only from clean committed source into a new result
+directory, with code and receipts committed separately. Existing scientific
+artifacts are read-only. Refresh the QA collection inventory only if meaningful
+new documentation checks change its count. The notebook discussion is a final
+Markdown cell emitted by its existing generator; preserve preceding code,
+metadata and outputs. No new model inference or paid compute is required.
+
+## 243 - Keep publication and audit imports independent of plotting (2026-11-05)
+
+The isolated documentation environment failed before running its checks because
+importing any controlplane.report submodule eagerly imported plotting and the
+research validation stack. Preserve the four established report exports through
+lazy module attributes so the source audit and LaTeX builder can run on their
+declared documentation/customer dependencies. Test the actual import boundary
+in a fresh subprocess. This changes import timing, not metric calculations,
+thresholds, research inputs or existing results. Keep publication tools optional
+and outside the installed command's runtime requirements.

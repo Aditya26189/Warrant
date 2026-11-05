@@ -1,0 +1,158 @@
+\section{System design}
+\subsection{Contracts, calculations and publication}
+The customer workflow consumes \code{id,label,score} records with a declared
+positive condition and score direction. Optional groups and second labels carry
+additional structure. The reader validates syntax and supported values; it
+cannot establish a scientifically correct rubric from arbitrary columns.
+
+The architecture separates input contracts, calculation, publication and replay
+(Figure~\ref{fig:architecture}). A malformed file is an input error. Insufficient
+evidence can produce a normal refusal. A changed record can fail replay. Those
+outcomes should not collapse into one generic process-success indicator.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+box/.style={draw=teal,rounded corners,text width=25mm,minimum height=14mm,
+align=center,font=\small},
+>={Stealth[length=2mm]},every path/.style={draw=teal,thick}]
+\node[box] (rows) {Scored rows};
+\node[box,right=4mm of rows] (contract) {Explicit contracts};
+\node[box,right=4mm of contract] (calc) {Statistical workflow};
+\node[box,right=4mm of calc] (record) {Retained records};
+\node[box,right=4mm of record] (replay) {Arithmetic replay};
+\draw[->] (rows)--(contract);
+\draw[->] (contract)--(calc);
+\draw[->] (calc)--(record);
+\draw[->] (record)--(replay);
+\node[below=6mm of calc,align=center,font=\small,text width=140mm]
+ {External assumptions: label truth, sampling design, deployment identity and authentic origin.};
+\end{tikzpicture}
+\caption{Logical layers of the local toolkit, not a deployed multi-tenant
+service. Publication correctness and replay do not authenticate external
+assumptions.}
+\label{fig:architecture}
+\end{figure}
+
+\subsection{Different records answer different questions}
+Preparation retains an explicit source mapping. Native certification selects an
+operating point for a requested budget. A frontier retains a declared grid and
+selection evidence. Ordinary rechecks use fresh batches; chains additionally
+retain a monitoring horizon and sequence prefix. Release registration instead
+freezes an already chosen threshold, criteria, identity and holdout membership.
+
+Local publication distinguishes complete artifacts from interrupted writes and
+coordinates chain continuation. Hashes detect changes relative to retained
+reference material. They do not supply an external signing authority, trusted
+time or proof that no alternate private history exists.
+
+GPU extraction is separate from the ordinary customer path. Fitting and study
+code can later use caches or frozen scores. The small customer environment does
+not need to load a language model to evaluate an existing scored file.
+
+\section{Data and methods}
+\subsection{Recorded question-answer data}
+The question source is TriviaQA \citep{joshi2017}. The retained main collection
+contains \CorpusRows{} selected questions, partitioned into \TrainRows{}
+training, \ValidationRows{} validation and \TestRows{} test rows. The recorded
+model is Qwen2.5-7B-Instruct \citep{qwenmodel}, under the manifest's generation
+and quantization settings.
+
+The positive label marks a response that fails the project's matching rule.
+Lenient alias matching is an operational reference rather than independent
+human adjudication. Strict matching supplies sensitivity information, not an
+automatically correct replacement.
+
+The last-token feature is the final real prompt position \emph{before}
+generation. The classifier standardizes features and fits logistic regression on
+training indices; regularization selection uses the declared validation split.
+Later project analyses reuse the collection, so not every subsequent use is
+described as pristine confirmation.
+
+The model/tokenizer loader does not pass an explicit immutable revision.
+Its provenance method records model name and configuration facts rather than a
+complete historical weight hash. Model-level reconstruction needs more than a
+later download of the same identifier.
+
+\subsection{Constructed transfer and challenge data}
+The context-transfer experiment changes prompt context for feature extraction
+while reusing the original questions, short-context answers and labels. It
+measures representation transfer relative to fixed outcomes, not newly generated
+long-context answer accuracy.
+
+The PII studies use authored scenarios, systematic forms and synthetic
+identifiers. A companion variant set extends forms beyond the base inventory.
+Positive enrichment and shared construction limit transport and independence.
+
+The benign challenge repeats scenarios in different framings. Historical
+row-binomial intervals remain replayable but are not current independent-unit
+assurance. Selected canaries are regression tripwires, not independent quality
+evidence.
+
+\subsection{Quantities and uncertainty}
+At a fixed threshold,
+\begin{align}
+\mathrm{recall}&=\frac{TP}{TP+FN},&
+\mathrm{precision}&=\frac{TP}{TP+FP},\\
+\mathrm{FPR}&=\frac{FP}{FP+TN},&
+\mathrm{flag\ rate}&=\frac{TP+FP}{N}.
+\end{align}
+AUROC is a positive-versus-negative pair-ranking probability with half credit
+for ties. Lift is recall divided by realized flag rate on the same population,
+equivalently precision divided by prevalence.
+
+These quantities have different denominators. Precision is undefined when
+nothing is flagged; ranking metrics are withheld on a single-class challenge.
+Research intervals retain their bootstrap count, seed, grouping and method.
+Arithmetic reconstruction does not establish their coverage.
+
+For a fixed rule and independent negative trials, the one-sided exact-binomial
+upper bound is
+\begin{equation}
+U(k,n,\delta)=
+\begin{cases}
+\mathrm{Beta}^{-1}(1-\delta;k+1,n-k),&k<n,\\
+1,&k=n.
+\end{cases}
+\end{equation}
+Selection and dependence require additional arguments.
+
+\subsection{Requested budget and returned number}
+Under an appropriate independently fixed scorer and IID calibration design, an
+order-statistic procedure can target a fixed-budget proposition
+\begin{equation}
+\Pr_D\{R(t(D))>B\}\leq\delta.
+\label{eq:budget}
+\end{equation}
+Complete independent review of the implementation/assumption mapping remains
+outstanding. The proposition is different from a general claim about a
+data-dependent numerical return:
+\begin{equation}
+\Pr_D\{R(t(D))>U(D)\}\leq\delta.
+\label{eq:adaptive}
+\end{equation}
+Section~\ref{sec:witness} gives a preserved witness against
+Equation~\ref{eq:adaptive}, without a violation of Equation~\ref{eq:budget}
+in that specified distribution.
+
+Registered release evaluation has a fixed threshold before the holdout.
+Its implementation allocates error across five rate intervals and applies the
+registered FPR/recall acceptance criteria. The union bound does not require
+independence between interval events; each binomial calculation still needs the
+appropriate IID design. Grouped release input is unsupported.
+
+\subsection{Independent point audit}
+The audit parses every current README-table row, resolves its field uniquely,
+checks stated precision and records artifact hashes and source metadata.
+A reviewed family registry connects data references, writers, interpretations
+and reproduction boundaries.
+
+A separate oracle computes confusion counts and tied-pair AUROC. For each
+positive score, binary searches in sorted negative scores count strict wins and
+ties. It does not use the original metric-builder formulas to obtain those
+points. This is calculation independence, not an independent investigator or
+label source.
+
+Missing classifications, invalid score evidence and source changes during
+receipt generation are refused. Original scientific artifacts are never
+rewritten.

@@ -1,0 +1,32 @@
+{
+  "kind": "preprint_typesetting_receipt",
+  "source_commit": "5f01077e9f8bcd8c8b25e8851d3fdc8879289c13",
+  "dirty": false,
+  "timestamp_utc": "2026-11-05T04:29:24.012219+00:00",
+  "engine": "Tectonic 0.17.0",
+  "command": [
+    "C:\\Users\\LawLight\\Documents\\Codex\\2026-10-30\\i-would-aim-higher-than-the\\work\\tectonic-0.17.0\\tectonic.exe",
+    "--untrusted",
+    "--keep-logs",
+    "--keep-intermediates",
+    "--outdir",
+    "C:\\Users\\LawLight\\Documents\\Codex\\2026-10-30\\i-would-aim-higher-than-the\\work\\output\\pdf\\warrant-preprint-build-04",
+    "warrant.tex"
+  ],
+  "latex_inputs_sha256": {
+    "generated/claims.tex": "cccff64d69f6c294b112888d1d81b5eaeea4c3d6b00f7e87a298f97df60a515d",
+    "generated/metadata.tex": "27580a2b19675a0f37ed816e0645c29c2807951ddbcaa64ad231141fe9f64706",
+    "references.bib": "74798b228e396b26638fa32b3259dcfba530908dcfafe3eb5c1f781c0234618d",
+    "sections/discussion.tex": "ed37fdb7db74389ac3ffc332535863f704f3ce7bb388e1093f143c03dadac430",
+    "sections/introduction.tex": "c474aa4d37f5a66c3991fefc47027ded43ccbff9b2a6cb69f086d132e952c4b4",
+    "sections/results-audit.tex": "f9879d99c8e2a8199eb23a7e0e84796a01fa0c55e2a5d9293b933c77a46588da",
+    "sections/system-methods.tex": "b49ea9cfe80ef2feb8c882ce6cab9e38113af697386932675fff2a62f473e741",
+    "warrant.tex": "681270ab96717154f8224a825cee791ffc9e17321817147682c4be10adb199ba"
+  },
+  "pdf_sha256": "496628332da0628834f348c0a55c4e5aa42b09841fad758704b5194938d23ffb",
+  "pages": 10,
+  "undefined_references": false,
+  "overfull_boxes_over_1pt": false,
+  "visual_review": "REQUIRED_SEPARATELY",
+  "new_model_or_benchmark_experiment": false
+}

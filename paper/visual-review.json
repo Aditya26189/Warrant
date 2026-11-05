@@ -1,0 +1,40 @@
+{
+  "kind": "assistant_visual_layout_review",
+  "source_commit": "5f01077e9f8bcd8c8b25e8851d3fdc8879289c13",
+  "pdf_sha256": "496628332da0628834f348c0a55c4e5aa42b09841fad758704b5194938d23ffb",
+  "render_tool": "Poppler pdftoppm, 110 DPI PNG",
+  "pages_inspected": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "review_basis": "All build-03 pages inspected individually; final page 8 re-inspected and all other PNGs byte-identical to inspected images.",
+  "checks": [
+    "readable text and glyphs",
+    "headers and page numbers",
+    "table and diagram placement",
+    "margins and source hashes",
+    "references and equations"
+  ],
+  "visible_clipping_overlap_or_missing_glyphs": false,
+  "reviewer": "Codex assistant; not independent human scientific review",
+  "rendered_pages_sha256": {
+    "page-01.png": "dfd6f4a170d10371dbf456ad5caac064e8e9bef8107e3c09dae92e292a72cbf2",
+    "page-02.png": "188d9a5095053e7c33b4d23bea64f4fafac02a21da78eab9b63cbf126631a7d3",
+    "page-03.png": "c9e719d9c119672ef7d10156e0c9759f8cbd8ea30242b2d51c9335ac5378f122",
+    "page-04.png": "de3e9dca22b6aa586a6c00dcea835f17e8dfd5513371b5fb154a2906ae175dc7",
+    "page-05.png": "8123507954afe5bde0eb08fe9439ae181539c74dd074e219058b248faab3a1e9",
+    "page-06.png": "75d03691b85eee0a6a235dbbc50db7eb2c895764e16c32fbb14e0a727c855c63",
+    "page-07.png": "18023765e5f3969295816954b1f19765f48dce4ea6ac96b5d016d72deb12df8d",
+    "page-08.png": "b90f58175b2dc638355a7456beea3f56cae79837166979eb78b73bcb6bba5b56",
+    "page-09.png": "7f2da22682e98a895179c6e1df21d43459222f2a50e9de3cd4a9aaca3e059c60",
+    "page-10.png": "11c7d402fccf43577fe3b2dbe0b451b562bafca214fc5d2b402ea28d09d7bf7d"
+  }
+}
