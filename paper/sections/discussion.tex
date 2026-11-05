@@ -86,7 +86,7 @@ publication claims require additional evidence.
 The complete per-claim ledger and qualitative register accompany the source.
 These families are not one homogeneous experiment.
 
-\begin{longtable}{@{}p{16mm}p{43mm}p{91mm}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{16mm}>{\raggedright\arraybackslash}p{43mm}>{\raggedright\arraybackslash}p{91mm}@{}}
 \toprule
 Family&Question&Evidence and boundary\\
 \midrule
@@ -115,8 +115,9 @@ adversarial robustness.\\
 \section{Audit and manuscript provenance}
 The original consolidated system baseline is
 \path{9dbdee03e77b698c497186b9b00297ee506cd0fe}.
-The final numerical audit records producing source
-\texttt{\AuditSourceCommit}. Its JSON retains selectors, raw hashes,
+The final numerical audit records producing source:
+\begin{quote}\small\texttt{\AuditSourceCommit}\end{quote}
+Its JSON retains selectors, raw hashes,
 source flags and explicit exclusions.
 
 Initial and final guarded receipts are both retained. Guard refinements check
