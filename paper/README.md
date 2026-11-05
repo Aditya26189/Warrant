@@ -39,7 +39,7 @@ email, ORCID, institutional endorsement, DOI or acceptance is inferred.
 
 ## Build and verify
 
-Use Python 3.10 or newer. From the repository root:
+Use Python 3.11 or newer for the publication toolchain. From the repository root:
 
 ```sh
 python -m pip install -r requirements-customer.txt -r requirements-docs.txt

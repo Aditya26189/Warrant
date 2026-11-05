@@ -96,3 +96,41 @@ or separately held caches and fuller model provenance. Independent blinded
 label adjudication, external scientific review and operational validation remain
 future evidence requirements. A Zenodo deposit needs the author's review and
 publication action, including the accompanying source/evidence supplement.
+
+
+## Closing local verification
+
+- The isolated documentation/customer environment passed **119 focused tests**:
+  audit, manuscript contracts, documentation indexing and case references.
+  It has no plotting/model stack requirement for those commands.
+- The existing notebook/index/case/report selection passed **217 tests**, with
+  **33 deselected** and two reported SWIG deprecation warnings. The selection
+  is not the full core suite.
+- `python scripts/verify.py --no-activations` reproduced **92/92 claim rows**
+  and **25/25 frozen-score blocks**. The activation tier was explicitly SKIPPED.
+- A real fresh clone at `0d412cff6174` contained 3,624 tracked files and
+  passed clone identity, smoke, claim replay and frozen-score replay. The
+  gate used `--no-tests`; its new retained receipt does not claim a full-suite
+  execution or activation replay.
+- The strict MkDocs build passed. The repository link checker checked 24
+  handbook/paper Markdown pages. The optional localhost browser preview was
+  rejected by the browser approval gate because access was declined; no
+  browser layout verification is claimed.
+- Tectonic 0.17.0 built the final ten-page manuscript from clean source
+  `5f01077e9f8bcd8c8b25e8851d3fdc8879289c13`. The first rejected layout
+  attempt exposed an overfull source-hash line; subsequent commits fixed
+  that line and float ordering. Final logs have no unresolved citations or
+  overfull boxes above one point. A nonfatal font-configuration diagnostic and
+  an underfull paragraph warning remain in the retained logs.
+- Every final page was checked as a Poppler PNG. Nine final renders are
+  byte-identical to already inspected build-03 images; the changed page 8 was
+  inspected again after adding the source URL. The PDF hash, source inputs
+  and page-render hashes are retained with the manuscript.
+- The generated inventory records **2,364 collected tests**, produced from
+  clean `b54daa344e72`. Collection is not execution.
+- Full-tree Ruff checks passed. Frozen scientific result files and the original
+  numeric claim-table rows were preserved byte-for-byte.
+
+The full core release workflow is a separate check on the published main
+revision; consult that revision's GitHub Actions status rather than treating
+the local selections or prior baseline run as a new full-suite pass.
