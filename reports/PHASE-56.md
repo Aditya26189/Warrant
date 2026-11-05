@@ -186,3 +186,14 @@ The closing collection inventory and clean-clone checks use committed source.
 As in Phase 55, full release CI is assessed on its published source revision;
 the baseline's pass and this focused selection are not substitutes for that
 later result. The final response identifies the actual completed release checks.
+
+
+The clean-clone gate passed at `3894dc2049cf0b2f44e3fe6f8a7b70911290784e`:
+3,630 tracked files, smoke success, 92/92 claim rows and 25/25 frozen-score
+blocks reproduced. It used `--no-tests` and explicitly skipped activation
+replay. The [new receipt](audits/closure-20261105/clean-clone.json) retains
+that clean producing source; it does not claim a full-suite run.
+
+The refreshed [collection inventory](../results/test_inventory.json) records
+2,370 tests collected from clean `12a22fc7b71f63a1d0ef399c3091bb1e808ac2f6`.
+Collection remains separate from completed execution.
