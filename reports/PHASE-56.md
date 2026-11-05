@@ -197,3 +197,18 @@ that clean producing source; it does not claim a full-suite run.
 The refreshed [collection inventory](../results/test_inventory.json) records
 2,370 tests collected from clean `12a22fc7b71f63a1d0ef399c3091bb1e808ac2f6`.
 Collection remains separate from completed execution.
+
+
+## Late semantic finding before the final gate
+
+The last prose pass found an old statement in the contributor context and
+agreement module docstring claiming that kappa 0.5 necessarily makes a recall
+interval meaningless and that reviewer uncertainty is then necessarily larger.
+That does not follow from kappa. Agreement between reviewers does not identify
+accuracy against truth, nor does one kappa value yield a recall-error bound.
+
+Decision 245 records the correction. Only the module docstring and contributor
+wording changed; an AST comparison excluding the module docstring confirms that
+all agreement calculations, bootstrap logic and interval-withholding behavior
+are unchanged. The final published revision must receive its own release CI;
+the earlier baseline runs do not stand in for that check.

@@ -1,14 +1,15 @@
-"""Cohen's kappa, published next to every warrant it qualifies.
+"""Cohen's kappa for the recorded doubly reviewed pairs.
 
-``CLAUDE.md``: *a +/-5pp recall interval is meaningless at inter-rater
-kappa = 0.5.*
+A sampling interval does not by itself account for errors in the reference
+labels. Reviewer agreement is an additional diagnostic, conditional on the
+observed pairs and review process; it is not accuracy against independent truth.
 
-The reason is that every interval this project publishes is a statement about
-**sampling** error and nothing else. It answers "how much would this number move
-if I drew a different sample?" It is silent on "how much would it move if a
-different person reviewed the same sample?" -- and at kappa 0.5 the second
-question has the larger answer. A narrow interval over labels two reviewers
-disagree about is a precise measurement of one reviewer's opinion.
+Kappa alone does not identify label-error rates or translate into a bound on
+recall. In particular, a value of 0.5 does not establish that reviewer uncertainty
+is larger than sampling uncertainty, or that a particular recall interval is
+invalid. Such conclusions require an explicit error model and additional
+evidence. Report paired coverage, observed disputes and the applicable
+population-interval limitations with the agreement statistic.
 
 **Kappa is reported with an interval of its own**, because it is estimated from
 a handful of doubly-labelled items and a point estimate of an agreement
