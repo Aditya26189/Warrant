@@ -138,6 +138,13 @@ the out-of-sample sweep and resplit policy results. A dirty flag may reflect an
 unrelated untracked file or a substantive edit. Its metadata does not establish
 which, so the named commit alone cannot reconstruct the complete original state.
 
+None of these fifteen claim fields is directly recomputed by the frozen-score
+tier of \texttt{verify.py --no-activations}: its target in the sweep artifact is
+\texttt{certifying\_split\_metrics}, not the C016--C018 sweep entries, and it has
+no target for the reconciliation or resplit-policy artifacts. All fifteen
+still pass table-to-artifact agreement; that check alone does not establish
+reproducible arithmetic for those fields or recover their original source state.
+
 Downstream use requires the same context even when a later writer was clean.
 Relabeling an old result under a clean later commit would hide the gap. An
 archived original state or a separately identified new study is required.
@@ -153,7 +160,18 @@ independent interval validation or fresh warrant issuance.
 The preserved diagnostic sets \(n=\WitnessN\), \(B=\WitnessBudget\),
 \(\delta=\WitnessAlpha\) and design count \(K=\WitnessK\). IID scores in
 \(\{0,1,2\}\) have tail probabilities \(q_1=\WitnessQone\) and
-\(q_2=\WitnessQtwo\).
+\(q_2=\WitnessQtwo\). The one-sided bounds from Eq.~(3) are
+\[
+\begin{aligned}
+U(0,100,0.05)&\approx\WitnessUzero,\\
+U(1,100,0.05)&\approx\WitnessUone,\\
+U(2,100,0.05)&\approx\WitnessUtwo.
+\end{aligned}
+\]
+Thus counts zero and one clear budget \(B\), while count two does not:
+when threshold 1 is selected at count at most one, its returned bound is
+below \(q_1\); when threshold 1 fails and threshold 2 has count zero,
+its returned bound is below \(q_2\).
 
 Let \(M_1,M_2\) count scores at least 1 and 2. Under the preserved
 successor-threshold convention, returned-bound noncoverage is the disjoint union
