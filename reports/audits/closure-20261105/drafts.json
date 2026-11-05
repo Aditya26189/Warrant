@@ -1,0 +1,675 @@
+{
+  "kind": "historical_draft_comparison_not_semantic_proof",
+  "baseline": "7d31bceb6506e6f769f81b8d0e5667f6d6d2ce74",
+  "method": "Raw byte and AST comparison supplemented by the source/contract review in PHASE-56.md.",
+  "paths": [
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "AGENTS.md",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "DECISIONS.md",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "Makefile",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "README.md",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "controlplane/cli.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_frontier",
+        "_version"
+      ],
+      "common_symbols_changed": [
+        "_certify",
+        "_chain",
+        "_plan",
+        "_recheck",
+        "build_parser",
+        "main"
+      ]
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "controlplane/coordination/board.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_agent",
+        "_atomic_write",
+        "_literal",
+        "_overlap",
+        "_path",
+        "active_claims",
+        "post",
+        "read_events",
+        "refresh",
+        "render_board"
+      ],
+      "common_symbols_changed": []
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "controlplane/intake/certify.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_lift_of",
+        "certify_budget",
+        "input_sha256"
+      ],
+      "common_symbols_changed": [
+        "CertificationResult",
+        "certify_items"
+      ]
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "controlplane/intake/contract.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "InputError",
+        "ScoredItems",
+        "_parse_label",
+        "_parse_score",
+        "_require_columns"
+      ],
+      "common_symbols_changed": [
+        "_rows_from_csv",
+        "_rows_from_jsonl",
+        "_unique_json_object",
+        "load_scored_items"
+      ]
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "controlplane/intake/labels.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "BrokenBoundDisputes",
+        "Disputes",
+        "LabelSensitivity",
+        "Ladder",
+        "RecheckDisputes",
+        "RecheckSensitivity",
+        "_pools",
+        "chained_sensitivity",
+        "confidence_after",
+        "disputes_upper_bound",
+        "errors_below",
+        "errors_to_revoke",
+        "label_sensitivity",
+        "lower_bound",
+        "recheck_label_sensitivity",
+        "single_label_groups"
+      ],
+      "common_symbols_changed": [
+        "SecondReview",
+        "_agreement",
+        "recheck_second_review",
+        "second_review"
+      ]
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "controlplane/intake/recheck.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_lower_bound_at",
+        "_upper_bound_at",
+        "chain_units",
+        "drift_verdict",
+        "negative_cluster_maxima",
+        "negative_cluster_units",
+        "negatives_needed_to_detect",
+        "require_chain_replaced",
+        "score_distribution",
+        "smallest_detectable_breach"
+      ],
+      "common_symbols_changed": [
+        "RecheckResult",
+        "_verdict",
+        "apply_chain",
+        "recheck_items"
+      ]
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "controlplane/intake/render.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_metric_line",
+        "_pct",
+        "_wrap",
+        "render_frontier",
+        "render_plan",
+        "render_summary"
+      ],
+      "common_symbols_changed": [
+        "_label_lines",
+        "_recheck_label_lines",
+        "render_recheck"
+      ]
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "controlplane/release/evaluate.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_validated_arrays",
+        "binomial_rate",
+        "evaluate",
+        "identity_for",
+        "seal_evaluation",
+        "verify_evaluation"
+      ],
+      "common_symbols_changed": [
+        "software_provenance"
+      ]
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "controlplane/report/clean_clone.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "GateResult",
+        "StepResult",
+        "check_record",
+        "head_step",
+        "render"
+      ],
+      "common_symbols_changed": [
+        "_remove_clone",
+        "_run",
+        "_verify_tiers",
+        "run_clean_clone_gate",
+        "write_artifact"
+      ]
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "controlplane/validation/label_error.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": true,
+      "ast_identical": true,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_items",
+        "_sweep_rows",
+        "evaluate_criteria",
+        "run_study"
+      ],
+      "common_symbols_changed": []
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "docs/INPUT.md",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "docs/LIMITATIONS.md",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "docs/README.md",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "docs/RELEASE.md",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "docs/SPEC.md",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "docs/decisions/CODEX-PARALLEL.json",
+      "current_exists": false,
+      "draft_exists": true
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "docs/decisions/CODEX-PARALLEL.md",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "reports/PHASE-12.md",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "results/clean_clone.json",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "results/label_sensitivity/triviaqa.json",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": true
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "results/test_inventory.json",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "scripts/32_label_sensitivity.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": true,
+      "ast_identical": true,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "main"
+      ],
+      "common_symbols_changed": []
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "scripts/clean_clone_gate.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [],
+      "common_symbols_changed": [
+        "main"
+      ]
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "tests/test_clean_clone.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_gate",
+        "_step",
+        "test_a_drifted_tier_fails_the_gate",
+        "test_a_failed_cleanup_is_reported_rather_than_swallowed",
+        "test_a_failed_step_fails_the_gate",
+        "test_a_skipped_step_is_rendered_as_skipped_not_as_a_pass",
+        "test_all_three_tiers_running_is_reported_as_such",
+        "test_each_verify_tier_gets_its_own_row",
+        "test_prose_alone_is_not_enough",
+        "test_the_artifact_records_every_step_and_its_provenance",
+        "test_the_clone_must_be_the_commit_the_record_names",
+        "test_the_committed_gate_artifact_is_readable_and_passed",
+        "test_the_record_is_written_only_for_one_clean_unchanged_state",
+        "test_the_script_refuses_to_write_when_the_source_moved"
+      ],
+      "common_symbols_changed": [
+        "test_a_tier_missing_from_the_summary_is_not_counted_as_a_pass"
+      ]
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "tests/test_decisions_integrity.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [
+        "_assert_parallel_archive",
+        "_citations",
+        "_unresolved",
+        "test_parallel_archive_preserves_the_original_bytes_and_mapping",
+        "test_parallel_archive_rejects_history_mutation",
+        "test_scoped_citations_do_not_fall_back_to_a_different_log"
+      ],
+      "common_symbols_identical": [
+        "_entries",
+        "_tracked_text_files",
+        "test_append_only_heading_variants_remain_citable",
+        "test_both_heading_formats_are_still_parsed",
+        "test_every_open_entry_says_what_would_close_it",
+        "test_the_log_is_contiguous_with_no_duplicates"
+      ],
+      "common_symbols_changed": [
+        "test_every_decisions_citation_in_the_repository_resolves"
+      ]
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "tests/test_label_error_study.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": true,
+      "ast_identical": true,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_row",
+        "test_a_set_the_sweep_never_ran_is_null_not_a_pass",
+        "test_no_checked_row_cannot_pass_c0",
+        "test_p1_p2_and_the_reported_range_read_certified_rows_only",
+        "test_the_registered_design_is_what_199_says"
+      ],
+      "common_symbols_changed": []
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "tests/test_label_sensitivity.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_largest_certifying_k",
+        "_rows",
+        "_write",
+        "fast",
+        "test_a_certificate_carries_its_sensitivity_and_the_disputes_count_what_they_say",
+        "test_a_file_without_label_2_has_none",
+        "test_a_fragility_index_would_be_one_on_every_row",
+        "test_a_grouped_file_with_a_mixed_group_has_no_sensitivity",
+        "test_a_label_2_column_blank_on_every_row_is_refused",
+        "test_a_non_binary_label_2_is_refused_by_name",
+        "test_a_refusal_carries_no_count_of_relabellings",
+        "test_a_single_label_grouped_file_counts_whole_groups",
+        "test_errors_below_matches_a_scan_and_says_none_when_out_of_reach",
+        "test_label_2_in_jsonl_accepts_null_and_a_missing_key",
+        "test_label_2_is_read_blank_as_not_reviewed_and_is_not_passed_through",
+        "test_no_reviewed_flagged_positive_is_a_warning_not_a_bound",
+        "test_the_confidence_is_the_level_at_which_the_corrected_bound_equals_the_budget",
+        "test_the_confidence_never_rises_as_errors_are_added",
+        "test_the_dispute_bound_covers_every_true_count",
+        "test_the_dispute_bound_is_exact_when_every_item_was_reviewed",
+        "test_the_dispute_bound_is_the_largest_count_not_rejected",
+        "test_the_file_level_figure_needs_both_pools_reviewed",
+        "test_the_review_table_for_the_unflagged_error_is_what_the_code_computes",
+        "test_the_summary_says_what_the_confidence_is_not",
+        "test_the_table_in_decisions_197_is_what_the_code_computes",
+        "test_the_unflagged_direction_removes_a_negative_unit",
+        "test_the_unflagged_ladder_matches_a_scan"
+      ],
+      "common_symbols_changed": [
+        "_comparable",
+        "test_label_2_changes_no_status_threshold_bound_or_metric"
+      ]
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "tests/test_recheck_label_sensitivity.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": true,
+      "ast_identical": true,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_critical",
+        "_file",
+        "fast",
+        "result_alpha",
+        "test_a_broken_bound_carries_no_count",
+        "test_a_chained_recheck_carries_no_per_file_count",
+        "test_a_chained_result_that_kept_per_file_counts_is_refused",
+        "test_a_count_out_of_reach_is_none",
+        "test_a_file_with_no_negatives_carries_no_count",
+        "test_a_recheck_whose_bound_holds_carries_both_counts",
+        "test_grouped_rechecks_count_whole_groups_or_nothing",
+        "test_label_2_changes_no_recheck_verdict",
+        "test_the_count_is_not_critical_minus_k",
+        "test_the_counts_match_a_scan_of_the_recheck_bound",
+        "test_the_lower_bound_is_the_one_recheck_revokes_on",
+        "test_the_table_in_decisions_198_is_what_the_code_computes"
+      ],
+      "common_symbols_changed": []
+    },
+    {
+      "worktree": "customer-evidence-worktree",
+      "path": "tests/test_smoke.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_run_bare",
+        "run_script",
+        "test_canary_is_all_positive_and_clears_its_own_threshold",
+        "test_every_notebook_code_cell_compiles",
+        "test_extraction_script_imports_cleanly",
+        "test_kaggle_runner_refuses_before_it_can_spend_quota",
+        "test_notebook_has_no_stray_real_newlines_in_string_literals",
+        "test_notebook_is_generated_from_its_script",
+        "test_notebook_source_entries_keep_their_newlines",
+        "test_reconciliation_branches_are_fixed_constants",
+        "test_results_is_measured_only",
+        "test_smoke_build_evalsets",
+        "test_smoke_build_lock",
+        "test_smoke_calibration_power",
+        "test_smoke_chain_detection",
+        "test_smoke_detectors",
+        "test_smoke_feasibility",
+        "test_smoke_fpr_sweep",
+        "test_smoke_frontier_selection",
+        "test_smoke_gate",
+        "test_smoke_label_sensitivity",
+        "test_smoke_matrix",
+        "test_smoke_on_traffic",
+        "test_smoke_paired_fixture",
+        "test_smoke_pilot_freeze",
+        "test_smoke_pilot_null_band",
+        "test_smoke_pilot_seed_stability",
+        "test_smoke_policy_fixture",
+        "test_smoke_presidio_coverage",
+        "test_smoke_recheck_schedules",
+        "test_smoke_the_smoke_check_itself",
+        "test_smoke_validate_fixture",
+        "test_smoke_verify_claims_only",
+        "test_the_pilot_artifact_still_carries_its_scores",
+        "test_transfer_refuses_a_mismatched_cache",
+        "test_universal_refusal_is_treated_as_a_pipeline_bug",
+        "test_verify_exits_non_zero_on_drift"
+      ],
+      "common_symbols_changed": [
+        "test_every_script_has_a_smoke_test",
+        "test_smoke_scorefree"
+      ]
+    },
+    {
+      "worktree": "grouped-agreement-worktree",
+      "path": "controlplane/intake/certify.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_lift_of",
+        "certify_budget",
+        "input_sha256"
+      ],
+      "common_symbols_changed": [
+        "CertificationResult",
+        "certify_items"
+      ]
+    },
+    {
+      "worktree": "grouped-agreement-worktree",
+      "path": "controlplane/intake/labels.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [
+        "_descriptive_agreement"
+      ],
+      "common_symbols_identical": [
+        "BrokenBoundDisputes",
+        "Disputes",
+        "LabelSensitivity",
+        "Ladder",
+        "RecheckDisputes",
+        "RecheckSensitivity",
+        "_pools",
+        "chained_sensitivity",
+        "confidence_after",
+        "disputes_upper_bound",
+        "errors_below",
+        "errors_to_revoke",
+        "label_sensitivity",
+        "lower_bound",
+        "recheck_label_sensitivity",
+        "single_label_groups"
+      ],
+      "common_symbols_changed": [
+        "SecondReview",
+        "_agreement",
+        "recheck_second_review",
+        "second_review"
+      ]
+    },
+    {
+      "worktree": "grouped-agreement-worktree",
+      "path": "controlplane/intake/recheck.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_lower_bound_at",
+        "_upper_bound_at",
+        "chain_units",
+        "drift_verdict",
+        "negative_cluster_maxima",
+        "negative_cluster_units",
+        "negatives_needed_to_detect",
+        "require_chain_replaced",
+        "score_distribution",
+        "smallest_detectable_breach"
+      ],
+      "common_symbols_changed": [
+        "RecheckResult",
+        "_verdict",
+        "apply_chain",
+        "recheck_items"
+      ]
+    },
+    {
+      "worktree": "grouped-agreement-worktree",
+      "path": "controlplane/intake/render.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "_metric_line",
+        "_pct",
+        "_wrap",
+        "render_frontier",
+        "render_plan",
+        "render_summary"
+      ],
+      "common_symbols_changed": [
+        "_label_lines",
+        "_recheck_label_lines",
+        "render_recheck"
+      ]
+    },
+    {
+      "worktree": "grouped-agreement-worktree",
+      "path": "controlplane/sampling/agreement.py",
+      "current_exists": true,
+      "draft_exists": true,
+      "byte_identical": false,
+      "ast_identical": false,
+      "draft_symbols_missing_from_current": [],
+      "common_symbols_identical": [
+        "AgreementError",
+        "_band",
+        "_kappa"
+      ],
+      "common_symbols_changed": [
+        "Agreement",
+        "cohens_kappa"
+      ]
+    }
+  ]
+}

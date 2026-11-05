@@ -342,3 +342,12 @@ What `warrant certify` must do with a file nobody here has seen. The procedure i
 | dirty manuscript build | stop before invoking the compiler | `test_build_refuses_dirty_source_before_invoking_engine` | — |
 | prepared deposit | exclude private files and never upload | `test_packaging_exports_tracked_source_and_excludes_private_files` | `paper/metadata.json` |
 | publication imports | do not load optional plotting/model stacks | `test_publication_and_audit_imports_do_not_load_plotting_or_model_stacks` | — |
+
+
+## 18. Generated reference maintenance
+
+| case | expected behaviour | test | artifact |
+|---|---|---|---|
+| current reference sources | all four reference pages match their declared source | `test_declared_generated_references_match_the_current_interfaces` | `docs/handbook/reference-sources.json` |
+| changed command help | report drift without rewriting the reading copy | `test_changed_cli_help_is_reported_without_rewriting_reference` | — |
+| private root working papers | excluded from the broader maintained-guide scan | `test_specialist_link_scope_includes_guides_but_excludes_private_root_material` | — |

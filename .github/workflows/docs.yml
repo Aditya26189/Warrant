@@ -2,10 +2,50 @@ name: Documentation and preprint
 
 on:
   push:
-    branches: [main, "phase/55-documentation-audit"]
-    paths: ["docs/**", "paper/**", "controlplane/report/documentation_audit.py", "controlplane/report/technical_paper.py", "scripts/audit_documentation.py", "scripts/build_notebooks.py", "notebooks/**", "mkdocs.yml", "requirements-docs.txt", ".github/workflows/docs.yml"]
+    branches: [main, "phase/**", "review/**"]
+    paths:
+      - "README.md"
+      - "AGENTS.md"
+      - "CLAUDE.md"
+      - "COORDINATION.md"
+      - "DECISIONS.md"
+      - "docs/**"
+      - "paper/**"
+      - "reports/**"
+      - "examples/**"
+      - "controlplane/**"
+      - "scripts/**"
+      - "notebooks/**"
+      - "tests/test_documentation_audit.py"
+      - "tests/test_technical_paper.py"
+      - "tests/test_docs_index.py"
+      - "tests/test_cases_matrix.py"
+      - "mkdocs.yml"
+      - "requirements-docs.txt"
+      - "requirements-customer.txt"
+      - ".github/workflows/docs.yml"
   pull_request:
-    paths: ["docs/**", "paper/**", "mkdocs.yml", "requirements-docs.txt"]
+    paths:
+      - "README.md"
+      - "AGENTS.md"
+      - "CLAUDE.md"
+      - "COORDINATION.md"
+      - "DECISIONS.md"
+      - "docs/**"
+      - "paper/**"
+      - "reports/**"
+      - "examples/**"
+      - "controlplane/**"
+      - "scripts/**"
+      - "notebooks/**"
+      - "tests/test_documentation_audit.py"
+      - "tests/test_technical_paper.py"
+      - "tests/test_docs_index.py"
+      - "tests/test_cases_matrix.py"
+      - "mkdocs.yml"
+      - "requirements-docs.txt"
+      - "requirements-customer.txt"
+      - ".github/workflows/docs.yml"
   workflow_dispatch:
 
 permissions:
@@ -28,7 +68,7 @@ jobs:
       - name: Check source, links and focused contracts
         run: |
           python paper/build.py --check
-          python scripts/audit_documentation.py --links
+          python scripts/audit_documentation.py --check-generated --links-all
           python -m pytest tests/test_documentation_audit.py tests/test_technical_paper.py tests/test_docs_index.py tests/test_cases_matrix.py -q
       - name: Build strict handbook
         run: python -m mkdocs build --strict --site-dir "$RUNNER_TEMP/warrant-handbook"

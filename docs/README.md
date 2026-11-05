@@ -14,6 +14,10 @@ below remain available as specialist references.
 | Read or reproduce the paper | [Preprint](../paper/README.md) → [Reproduction](handbook/reproduction.md) → [Limitations](handbook/limitations.md) |
 | Review consolidated work | [Project overview](PROJECT-OVERVIEW.md) → [Branch integration](BRANCH-INTEGRATION.md) → [Current product state](PRODUCT-STATE.md) |
 
+## Final repository review
+
+[Layout and source ownership](handbook/repository-layout.md) → [closure findings](../reports/PHASE-56.md). The review separates integrated branches, tested release behavior and preserved local drafts.
+
 ## Grader feasibility study
 
 [Study specification](FEASIBILITY_EXPERIMENT_SPEC.md) → [closing report](../reports/GATE4-TRANSFER.md) → [replay guide](../experiments/grader_poc/README.md). The study retained its original stopping outcome.

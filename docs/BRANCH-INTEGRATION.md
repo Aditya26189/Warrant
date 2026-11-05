@@ -4,6 +4,10 @@ This release consolidates the completed committed work into the main release
 line. It preserves the prior Git history and scientific artifacts; it does not
 rewrite experimental outcomes or reopen stopped studies.
 
+## Later closure review
+
+The inventory below is the earlier consolidation snapshot. The [Phase 56 review](../reports/PHASE-56.md) rechecks all fetched tips and real worktree state, classifies local drafts, and distinguishes release CI from historical per-branch gates. A preserved branch name is not an unfinished merge, and an ancestor is not independent scientific verification.
+
 ## Integration decisions
 
 | Branch | Retained tip | Disposition |

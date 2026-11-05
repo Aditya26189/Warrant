@@ -131,3 +131,25 @@ main and record the exact CI result. Never substitute a collection count for
 a completed suite.
 
 The [phase report](../../reports/PHASE-55.md) records this documentation effort.
+
+
+## Reproduce and check every generated reference
+
+The [source declaration](reference-sources.json) names the retained claim audit
+and API modules. Regenerate the claim ledger, family catalog, command help and
+selected API reference together:
+
+```shell
+python scripts/audit_documentation.py --render-references
+python scripts/audit_documentation.py --check-generated --links-all
+```
+
+The checker reports missing and stale pages without rewriting them. Run it after
+changing a parser flag, a selected function signature/docstring, a claim receipt
+or the family registry. CI checks the same contract. The older `--render` option
+continues to regenerate only the two claim pages.
+
+The [layout guide](repository-layout.md) explains current manuals, historical
+records and directories that should not be relocated casually. Read the
+[closure review](../../reports/PHASE-56.md) for later branch/worktree findings;
+Phase 55 remains the record of the original handbook/preprint build.
