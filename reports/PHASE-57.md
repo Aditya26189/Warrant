@@ -92,8 +92,8 @@ provenance-bearing gate. Final clean-clone acceptance must use stable source.
 
 ## Verification
 
-The focused publication/audit/docs/invariant selection passed before the final
-typesetting-only changes. Source generation and bibliography checks, strict
+The final focused publication/audit/docs/invariant/report/decision selection
+and the exact assurance-semantic checks completed with 329 passes. Source generation and bibliography checks, strict
 handbook compilation, all four generated reference pages, maintained Markdown
 links, and Ruff checks passed. The native verifier completed claim-table and
 frozen-score tiers; activation replay was explicitly skipped.
