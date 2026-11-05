@@ -68,6 +68,7 @@ certificate of scientific validity.
 | [Testing](testing.md) | Positive checks, negative controls and known gaps |
 | [Reproduction](reproduction.md) | CPU, cached-activation and GPU paths |
 | [Developer guide](developer-guide.md) | Contributor and maintainer procedures |
+| [Repository layout](repository-layout.md) | Source ownership, historical records and closure boundaries |
 | [Limitations](limitations.md) | Open issues and the evidence needed to close them |
 | [Sources](sources.md) | Primary references and the role each plays |
 | [Technical preprint](technical-report.md) | LaTeX manuscript, PDF and Zenodo preparation |

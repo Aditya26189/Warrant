@@ -1,12 +1,19 @@
 # CLAUDE.md
 
-Persistent context. Read fully before writing code. `SPEC.md` has the technical detail, `TASKS.md` the build order, `CONTRIBUTING.md` the git and documentation rules, `DECISIONS.md` the rationale log, `DEMO.md` the thing this all has to produce.
+Persistent contributor context. Read fully before writing code. The [specification](docs/SPEC.md), [historical phase plan](docs/TASKS.md), [contribution rules](docs/CONTRIBUTING.md) and [decision log](DECISIONS.md) retain their distinct roles. Begin with the [current handbook](docs/handbook/index.md) and [product state](docs/PRODUCT-STATE.md); original goals and pseudocode are not proof that a service or experiment shipped.
 
 ---
 
 ## What we are building
 
-**A warrant layer on top of AI detection.**
+**A local detector-evaluation toolkit and retained research harness.**
+
+Native certification selects an operating point for a declared budget.
+Registered release evaluation instead tests a previously fixed threshold.
+Their records and guarantees differ; ordinary certify records do not establish
+authenticated identity or expiry. The [open FPR-bound interpretation](docs/research/fpr_reporting/issues/FPR-001-adaptive-bound.md)
+remains a review requirement. The three-clause vision below is the original
+design aim; simulations and demonstrations do not establish customer outcomes.
 
 A detector produces a score. A **warrant** is a separate, time-bounded, evidence-backed statement about what that score is worth *right now, on this input distribution*. The product is not detection. It is the ability to say, with intervals:
 
@@ -38,7 +45,7 @@ Breaking any of these invalidates the result. If a change would require it, stop
 1. **Warrants are keyed by (detector, operating_point, eval_set).** Never by detector alone. An envelope violation is a property of the *input distribution*, so it invalidates every detector measured on that distribution simultaneously.
 2. **Three warrant states, three behaviours.** `VALID` (validated, cleared), `REFUSED` (validated, failed), `UNVALIDATED` (never tested here). `UNVALIDATED` is the modal state in production and must never collapse into either of the others.
 3. **Refusal has no override.** No flag, no env var, no admin bypass. If one exists, the entire product is theatre and a reviewer will look for exactly that.
-4. **No point estimate reaches a user.** Every rate carries a 95% interval. Every interval names its `n`.
+4. **Uncertainty is explicit.** Estimated rates carry their protocol-declared intervals and sample sizes when supported. Undefined quantities or withheld population intervals are named explicitly; descriptive grouped points are not promoted into population assurance. The original 95% shorthand does not override registered confidence/error allocations (Decisions 201, 216, 217 and 218).
 5. **Precision and recall travel together.** Never lift alone, never recall alone, never a blended F1 anywhere in the codebase.
 6. **One declared workload.** All economics derive from a single parameter block in `config.yaml`. Mixing a flag rate from one scenario with a base rate from another is silently wrong and produces numbers that don't survive a reviewer with a calculator.
 7. **Reviewers are blind.** The label queue never exposes flag status, score, stratum, or ordering signal. Anchoring across strata biases the estimator in the direction that flatters us.
@@ -138,7 +145,7 @@ Edit the script, regenerate, then execute to populate outputs.
 
 ## Coding standards
 
-- Python 3.11+. Type hints on every public function. Google-style docstrings that say *why*.
+- Customer runtime supports Python 3.10+ as declared in `pyproject.toml`; the handbook/publication toolchain uses Python 3.11+. Check minimum-version compatibility before adding syntax or stdlib dependencies. Type hints on public functions; docstrings explain contracts and reasons.
 - **No logic in scripts, notebooks, or the demo runner.** They call `controlplane/`. Logic that lives only in a notebook is unreviewable.
 - **No hardcoded constants.** Everything from `config.yaml`.
 - Frozen dataclasses for the core model objects. These are records, not mutable state.
@@ -262,9 +269,11 @@ clone-and-run path, produces:
 Warrant. Formerly ControlPlane. The Python package remains `controlplane`;
 this is deliberate and is not a rename target (see D-0001).
 
-The product is the instrument a model-validation function runs. It certifies
-a detector against a pre-registered threshold, or it refuses. It does not
-issue external certificates and it is not a gateway.
+The shipped product is a local evaluation instrument. Native certify selects
+a threshold against a requested budget or refuses; registered release evaluation
+uses a threshold fixed before the holdout. Neither issues an external accredited
+certificate. The repository includes adapters and demonstrations, not a running
+gateway service.
 
 ## Working rules
 
@@ -281,7 +290,7 @@ issue external certificates and it is not a gateway.
   DECISIONS.md entry that explicitly records the original and the reason.
 - No artifact is produced from a dirty tree. Commit or stash first; record
   the clean SHA inside the artifact.
-- Numbers derived from synthetic fixtures are never rendered as numbers.
+- Synthetic fixture measurements must never appear as real model/customer measurements. The research renderer suppresses fixture envelopes. Explicitly scoped simulations and exact authored-workflow counts may be reported as such.
 - When blocked, choose the option that changes least and claims least,
   log it as OPEN — needs human review, and continue.
 

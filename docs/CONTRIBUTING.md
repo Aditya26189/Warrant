@@ -6,11 +6,16 @@ Git and documentation workflow. Binding on agents and humans. Read alongside `CL
 
 ## Why this matters here
 
-1. **This repo is a judged public artifact.** Round 2 is submitted as a public GitHub repository. A history of one commit called `final` reads as a student project; a legible history of atomic commits reads as engineers who have shipped. The history is part of the deliverable.
+1. **The repository is a reviewable artifact.** Its original competition brief required a public submission. Current access and publication status must be stated explicitly; a private repository is not publicly reproducible by its URL alone. Atomic commits and retained source snapshots make the work inspectable.
 2. **Phases are expensive and interdependent.** When something downstream is wrong, you return to a tagged known-good state rather than debugging forward.
 3. **Numbers here are claims.** This project's entire thesis is that unbacked claims are the problem. A repo whose numbers can't be traced to the run that produced them would be self-refuting.
 
-Not doing: release branches, semver, CI pipelines, coverage gates, changelogs. Wrong tools for this timeline.
+The original competition workflow grew into an installable package with CI.
+[Core, research and documentation workflows](../.github/workflows/) now check
+separate surfaces. Package versioning is declared in [pyproject.toml](../pyproject.toml);
+phase and preprint tags identify different artifacts. A changelog and a hosted
+service are not implied. Read the [maintainer guide](handbook/developer-guide.md)
+and [repository map](handbook/repository-layout.md) for the current process.
 
 ---
 
@@ -84,7 +89,7 @@ config_hash: 8b21f04c
 - all source, tests, config, policies, documentation
 - `evalsets/` manifests and hashes (and the sets themselves if under size)
 - `results/*.json`, `results/RESULTS.md`, `results/*.png`
-- the demo notebook **with outputs intact** — it renders on GitHub for judges who will never run it. Do not add `nbstripout`.
+- generated notebooks, preserving any legitimate existing execution outputs. The main and pilot notebooks in the preprint release are unexecuted; do not fabricate outputs or imply that generation ran the experiment.
 
 **Not committed — regenerable and large:**
 - `results/activations.npz`, `results/*.parquet`, model weights, caches, venvs
@@ -103,11 +108,13 @@ Every artifact embeds the git commit it was generated from. Committing the artif
 
 Sequence: commit code → run script → commit artifacts as a separate `exp:` commit. **Never run a script against a dirty tree** — the recorded hash would be a lie. `provenance()` runs `git status --porcelain` and records `dirty: true` when the tree isn't clean.
 
-If an artifact does get generated from a dirty tree, regenerate it on a clean
-one and commit that as its own `exp:` commit stating that only the provenance
-block moved — verified field by field, not asserted. That happened on
-2026-08-29 to the score sets and `results/feasibility.json`, and it is what
-the dirty flag is for: it was visible, so it got fixed.
+A dirty flag records a real source-state limitation. Preserve the original
+artifact and flag; never replace its metadata with a later clean commit.
+If a clean rerun is appropriate and authorized, use a new destination, record
+its actual producing source and inputs, and compare it with the historical
+result. Equal values do not reconstruct the old working tree. Existing frozen
+results remain read-only. The August provenance-only regeneration is historical
+practice, not the current repair rule (Decisions 242 and 244).
 
 ---
 
@@ -207,7 +214,7 @@ Audit at the Phase 12 gate, reported line by line:
 - every `SPEC.md` section matches shipped behaviour; flag drift
 - every number in `README.md` traces to a file in `results/`
 - **every statistical claim states the quantity estimated and the propagation used**
-- every `DECISIONS.md` entry still accurate
+- historical `DECISIONS.md` entries preserved; current interpretations follow explicit corrections and superseding decisions
 - no TODO or placeholder in any committed document
 
 ---

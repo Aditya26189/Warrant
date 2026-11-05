@@ -1,5 +1,12 @@
 # SPEC.md — technical specification
 
+Current reader note: this file combines the original design with later contract
+updates. HTTP-style endpoint snippets and routing pseudocode describe intended
+semantics; they do not establish a shipped HTTP service, automatic live
+validation queue or production gateway. Use the [current workflows](handbook/workflows.md),
+[CLI reference](handbook/cli-reference.md) and [product state](PRODUCT-STATE.md)
+to identify implemented surfaces. Historical predictions remain identified below.
+
 Companion to `CLAUDE.md`. Reference snippets are illustrative; preserve the semantics exactly.
 
 Customer extension (DECISIONS 184): `controlplane.release` registers identity,

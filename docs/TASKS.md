@@ -1,5 +1,11 @@
 # TASKS.md — build order
 
+Historical plan: these are the original competition phases and their gates.
+The list is not a current backlog or evidence that every optional feature ran.
+Later phase reports preserve subsequent implementation and stopping decisions.
+Read the [product state](PRODUCT-STATE.md) and [closure review](../reports/PHASE-56.md)
+for the current shipped scope and remaining limitations.
+
 Phases are ordered so **you have a submittable system at the end of every phase**. Each has a gate. Do not begin a phase until the previous gate passes and is reported.
 
 ## Applies to every phase

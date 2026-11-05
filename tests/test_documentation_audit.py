@@ -193,3 +193,61 @@ def test_source_changes_during_audit_refuse_the_receipt(
     with pytest.raises(ValueError, match="source changed"):
         write_audit(tmp_path, tmp_path / "never-created")
     assert not (tmp_path / "never-created").exists()
+
+
+def test_declared_generated_references_match_the_current_interfaces() -> None:
+    from controlplane.report.documentation_audit import generated_reference_differences
+
+    assert generated_reference_differences(ROOT) == []
+
+
+def test_changed_cli_help_is_reported_without_rewriting_reference(monkeypatch) -> None:
+    from controlplane.report import documentation_audit as audit
+
+    before = (ROOT / "docs/handbook/cli-reference.md").read_bytes()
+    monkeypatch.setattr(audit, "cli_reference", lambda: "# Changed parser interface\n")
+    errors = audit.generated_reference_differences(ROOT)
+    assert errors == ["stale generated reference: cli-reference.md"]
+    assert (ROOT / "docs/handbook/cli-reference.md").read_bytes() == before
+
+
+def test_missing_reference_and_stale_reference_are_distinguished(
+    tmp_path, monkeypatch
+) -> None:
+    from controlplane.report import documentation_audit as audit
+
+    (tmp_path / "docs/handbook").mkdir(parents=True)
+    (tmp_path / "docs/handbook/stale.md").write_text("old\n", encoding="utf-8")
+    monkeypatch.setattr(
+        audit,
+        "reference_pages",
+        lambda root: {"missing.md": "expected\n", "stale.md": "expected\n"},
+    )
+    assert audit.generated_reference_differences(tmp_path) == [
+        "missing generated reference: missing.md",
+        "stale generated reference: stale.md",
+    ]
+
+
+def test_specialist_link_scope_includes_guides_but_excludes_private_root_material(
+    tmp_path,
+):
+    from controlplane.report.documentation_audit import documentation_pages
+
+    included = [
+        "README.md",
+        "docs/handbook/index.md",
+        "docs/INPUT.md",
+        "docs/research/study.md",
+        "paper/README.md",
+        "reports/PHASE-0.md",
+        "examples/README.md",
+    ]
+    for name in included + ["ARC180_BRIEF.md", "SHARED_CONTEXT.md", "round1/README.md"]:
+        target = tmp_path / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text("# Example\n", encoding="utf-8")
+    assert {
+        p.relative_to(tmp_path).as_posix()
+        for p in documentation_pages(tmp_path, include_specialist=True)
+    } == set(included)

@@ -572,6 +572,63 @@ def cli_reference() -> str:
     return "\n".join(out)
 
 
+def documentation_pages(root: Path, *, include_specialist: bool = False) -> list[Path]:
+    """Select maintained guides without following private root working papers."""
+    if not include_specialist:
+        return sorted((root / "docs/handbook").rglob("*.md")) + sorted(
+            (root / "paper").glob("*.md")
+        )
+    pages = {
+        root / name
+        for name in (
+            "README.md",
+            "AGENTS.md",
+            "CLAUDE.md",
+            "COORDINATION.md",
+            "DECISIONS.md",
+        )
+        if (root / name).is_file()
+    }
+    for directory in ("docs", "paper", "reports", "examples"):
+        pages.update((root / directory).rglob("*.md"))
+    return sorted(pages)
+
+
+def reference_pages(root: Path) -> dict[str, str]:
+    """Recompute the four declared reference pages without changing files."""
+    config = read_json(repo_file(root, "docs/handbook/reference-sources.json"))
+    if config.get("schema_version") != 1:
+        raise ValueError("unsupported reference source schema")
+    modules = config.get("api_modules")
+    if (
+        not isinstance(modules, list)
+        or not modules
+        or not all(isinstance(name, str) and name.endswith(".py") for name in modules)
+    ):
+        raise ValueError("api_modules must declare Python source files")
+    receipt = read_json(repo_file(root, config["claim_receipt"]))
+    registry = read_json(repo_file(root, "docs/handbook/claim-families.json"))
+    pages = {
+        "claims.md": render_claims(receipt, registry),
+        "claim-families.md": render_families(registry),
+        "cli-reference.md": cli_reference(),
+        "api-reference.md": public_api(root, modules),
+    }
+    return {name: text.rstrip() + "\n" for name, text in pages.items()}
+
+
+def generated_reference_differences(root: Path) -> list[str]:
+    """Name missing or stale references; this check never repairs them."""
+    errors = []
+    for name, expected in reference_pages(root).items():
+        path = root / "docs/handbook" / name
+        if not path.exists():
+            errors.append(f"missing generated reference: {name}")
+        elif path.read_text(encoding="utf-8") != expected:
+            errors.append(f"stale generated reference: {name}")
+    return errors
+
+
 def write_audit(root: Path, destination: Path) -> dict:
     """Write new audit evidence only from clean source; never replace a run."""
     from datetime import datetime, timezone
