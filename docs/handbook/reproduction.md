@@ -105,7 +105,7 @@ python -m mkdocs build --strict --site-dir ../warrant-handbook-site
 Build instructions for the LaTeX preprint and archival package are in
 [the paper directory](../../paper/README.md). Compilation requires the declared
 TeX engine or a compatible TeX installation. A first Tectonic run may download
-its pinned typesetting resources; later compilation can use its cache.
+its typesetting resource bundle; later compilation can use its cache.
 
 ## What to record
 
