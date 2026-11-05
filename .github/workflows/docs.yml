@@ -20,6 +20,7 @@ on:
       - "tests/test_technical_paper.py"
       - "tests/test_docs_index.py"
       - "tests/test_cases_matrix.py"
+      - "tests/test_invariants.py"
       - "mkdocs.yml"
       - "requirements-docs.txt"
       - "requirements-customer.txt"
@@ -42,6 +43,7 @@ on:
       - "tests/test_technical_paper.py"
       - "tests/test_docs_index.py"
       - "tests/test_cases_matrix.py"
+      - "tests/test_invariants.py"
       - "mkdocs.yml"
       - "requirements-docs.txt"
       - "requirements-customer.txt"
@@ -69,7 +71,7 @@ jobs:
         run: |
           python paper/build.py --check
           python scripts/audit_documentation.py --check-generated --links-all
-          python -m pytest tests/test_documentation_audit.py tests/test_technical_paper.py tests/test_docs_index.py tests/test_cases_matrix.py -q
+          python -m pytest tests/test_documentation_audit.py tests/test_technical_paper.py tests/test_docs_index.py tests/test_cases_matrix.py tests/test_invariants.py -q
       - name: Build strict handbook
         run: python -m mkdocs build --strict --site-dir "$RUNNER_TEMP/warrant-handbook"
       - name: Install checksum-verified Tectonic

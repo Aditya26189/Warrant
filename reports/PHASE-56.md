@@ -212,3 +212,26 @@ wording changed; an AST comparison excluding the module docstring confirms that
 all agreement calculations, bootstrap logic and interval-withholding behavior
 are unchanged. The final published revision must receive its own release CI;
 the earlier baseline runs do not stand in for that check.
+
+
+## Full-gate failure and repair
+
+The full CI run at `2b693296722304ae46a2044b7856cb581362bd8a`
+([retained failed run](https://github.com/Aditya26189/Warrant/actions/runs/42000148400))
+completed with **1 failed, 2,366 passed, 2 skipped, 1 expected failure and
+4 warnings**. The single failure was
+`test_the_registered_headline_matches_the_contract[inv4]`. The uncertainty
+wording in `CLAUDE.md` had been corrected without updating the declarative
+headline in `controlplane/report/invariants.py`. This was a review-introduced
+documentation/register mismatch, not a failed statistical computation.
+
+Decision 246 records the repair. The register now uses the corrected explicit
+uncertainty headline, retains both original enforcing checks, and also names
+existing sample-size/estimator and withheld-grouped-interval tests. The invariant
+test itself is unchanged. Documentation CI now runs the invariant suite and
+triggers on its source, so this contract mismatch is caught by the fast gate.
+
+The expanded local selection passed **314 tests** after the repair, and
+full-tree Ruff checks passed. A new full release run is required on the corrected
+published revision; the failed run remains part of the evidence and is not
+relabelled as a pass.
