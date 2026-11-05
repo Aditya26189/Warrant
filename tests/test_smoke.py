@@ -510,6 +510,8 @@ def test_every_script_has_a_smoke_test() -> None:
         if not path.name.startswith("_")
     }
     covered = {
+        # tests/test_documentation_audit.py::test_audit_cli_smoke
+        "audit_documentation.py",
         "01_build_evalsets.py",
         "02_validate.py",
         "03_matrix.py",
