@@ -5,6 +5,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 import hashlib
 import json
+from math import comb
 from pathlib import Path
 import re
 import shutil
@@ -35,6 +36,29 @@ def tex_escape(value: str) -> str:
         "^": r"\textasciicircum{}",
     }
     return "".join(mapping.get(c, c) for c in value)
+
+
+def _witness_cp_values(n: int, alpha: float) -> tuple[float, float, float]:
+    """Invert three binomial tails for manuscript intuition, not issuance.
+
+    Each upper endpoint solves P(Binomial(n, p) <= k) = alpha.
+    Bisection keeps this explanatory calculation free of model dependencies.
+    """
+    values = []
+    for k in range(3):
+        low, high = 0.0, 1.0
+        for _ in range(100):
+            midpoint = (low + high) / 2
+            cdf = sum(
+                comb(n, j) * midpoint**j * (1 - midpoint) ** (n - j)
+                for j in range(k + 1)
+            )
+            if cdf > alpha:
+                low = midpoint
+            else:
+                high = midpoint
+        values.append((low + high) / 2)
+    return values[0], values[1], values[2]
 
 
 def generated_sources(root: Path) -> dict[str, str]:
@@ -72,6 +96,9 @@ def generated_sources(root: Path) -> dict[str, str]:
         for x in audit["frozen_score_point_checks"]
         if x["artifact"] == "results/validation-T1-last_token.json"
     )
+    cp_values = _witness_cp_values(
+        witness["config"]["n"], float(witness["config"]["alpha"])
+    )
     macros = {
         "AuditClaims": summary["claims"],
         "AuditArtifacts": summary["distinct_artifacts"],
@@ -94,6 +121,9 @@ def generated_sources(root: Path) -> dict[str, str]:
         "WitnessK": witness["config"]["design_k"],
         "WitnessQone": witness["config"]["q1"],
         "WitnessQtwo": witness["config"]["q2"],
+        "WitnessUzero": f"{cp_values[0]:.11f}",
+        "WitnessUone": f"{cp_values[1]:.11f}",
+        "WitnessUtwo": f"{cp_values[2]:.11f}",
         "WitnessStates": witness["result"]["count_states"],
         "WitnessNoncoverage": f"{witness['result']['returned_realized_count_bound_noncoverage']['approximation']:.9f}",
     }

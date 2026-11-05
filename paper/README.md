@@ -1,6 +1,6 @@
 # Warrant technical preprint
 
-**Aditya Singh, IIT Kharagpur · Version 1.0 · 5 November 2026**
+**Aditya Singh, IIT Kharagpur · Version 1.0.1 · 5 November 2026**
 
 **Warrant: Reproducible Evaluation and Evidence Management for AI Detectors**
 
@@ -20,6 +20,17 @@ contribution is claimed.
 
 The author identity and affiliation were supplied by the author. No degree,
 email, ORCID, institutional endorsement, DOI or acceptance is inferred.
+
+## Revision 1.0.1
+
+This correction prints the three exact-binomial upper-bound approximations and
+explains the counterexample selection events. It distinguishes native replay
+of a metrics block from coverage of every claim in its artifact, and removes
+the requested assistance/sign-off sentences. The C031 closing bracket was
+already present in both source and the reviewed rendering; its interval is
+unchanged. No scientific result is replaced. Version 1.0 remains available at
+the immutable `warrant-preprint-v1.0` tag; this revision uses
+`warrant-preprint-v1.0.1`.
 
 ## Source structure
 

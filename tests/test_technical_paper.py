@@ -19,6 +19,21 @@ def test_generated_paper_values_are_current():
     assert paper.validate_sources(ROOT) == []
 
 
+def test_explanatory_witness_bounds_match_independent_beta_quantiles():
+    """The narrow gap below q1 must survive the displayed precision."""
+    from scipy.stats import beta
+
+    witness = paper.read_json(ROOT / "results/publication/assurance_semantics.json")
+    n, alpha = witness["config"]["n"], float(witness["config"]["alpha"])
+    actual = paper._witness_cp_values(n, alpha)
+    expected = tuple(float(beta.ppf(1 - alpha, k + 1, n - k)) for k in range(3))
+    assert actual == pytest.approx(expected, abs=1e-14, rel=0)
+    shown = tuple(float(f"{value:.11f}") for value in actual)
+    assert shown[0] < float(witness["config"]["q2"]) < shown[1]
+    assert shown[1] < float(witness["config"]["q1"]) <= float(witness["config"]["budget"])
+    assert shown[2] > float(witness["config"]["budget"])
+
+
 def test_author_metadata_is_escaped_as_text():
     assert paper.tex_escape(r"A&B_%\input{x}") == r"A\&B\_\%\textbackslash{}input\{x\}"
 
