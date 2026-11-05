@@ -789,6 +789,8 @@ for path in sorted(staging.rglob("*")):
 """
         ),
     ]
+    cells.append(markdown((PROJECT_ROOT / "docs" / "handbook" /
+                           "discussion-cell.md").read_text(encoding="utf-8")))
     return {
         "cells": cells,
         "metadata": {

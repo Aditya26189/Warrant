@@ -24,6 +24,8 @@ findings and explicit stopping decisions alongside their code and artifacts.
 
 [Run the examples](#-quickstart--certify-your-own-detector) ·
 [Explore the work](docs/PROJECT-OVERVIEW.md) ·
+[Read the handbook](docs/handbook/index.md) ·
+[Technical preprint](paper/README.md) ·
 [Inspect the evidence](#-the-claim-table) ·
 [Reproduce](#-reproduction) ·
 [Read the limits](docs/LIMITATIONS.md)
@@ -60,6 +62,11 @@ scores tie. A general coverage interpretation of that returned bound remains
 under review; this consolidation does not change its statistical behavior.
 Read [FPR-001](docs/research/fpr_reporting/issues/FPR-001-adaptive-bound.md)
 before relying on that interpretation.
+
+**Evidence audit:** [the source-connected claim ledger](docs/handbook/claims.md)
+checks every quantitative table row and records historical source limitations.
+Artifact agreement and separate point arithmetic do not establish label truth
+or statistical coverage. See [findings and discussion](docs/handbook/findings.md).
 
 ## Research portfolio
 
@@ -125,9 +132,10 @@ with 50 samples buys **10** operating points, not 51.
 
 On a *simulated* judge whose runs are independent draws, that floor is **0.105**
 against a data floor three orders of magnitude tighter, and five to ten samples
-buys everything more samples can buy. **The judge is simulated and a real one's
-repeated runs are correlated**, so that figure is an upper bound on what
-sampling buys and it certifies no real detector.
+buys everything more samples can buy. **The judge is simulated under conditionally independent votes.** This is an
+optimistic model-specific scenario, not a universal upper bound for real judges
+or a certification of a real detector. Correlation and other changes require
+their own analysis.
 ([`results/scorefree/`](results/scorefree/SCOREFREE.md))
 
 An F1 table cannot show either, because F1 is computed wherever the detector

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 550" role="img" aria-labelledby="title desc">
+<title id="title">Warrant architecture and evidence flow</title>
+<desc id="desc">Scored rows enter explicit contracts, statistical workflows, local publication and replay. A separate research path produces frozen evidence. Labels, sampling and deployment identity remain external assumptions.</desc>
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#167d8b"/></marker>
+  <style>text{font-family:system-ui,sans-serif} .box{fill:#fff;stroke:#bdd1d9;stroke-width:2} .label{font-size:20px;font-weight:650;fill:#173c4d} .sub{font-size:15px;fill:#486470} .edge{stroke:#167d8b;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>
+</defs>
+<rect width="1200" height="550" rx="14" fill="#f3f7f9"/>
+<rect width="1200" height="78" rx="14" fill="#123349"/>
+<text x="34" y="47" font-size="28" font-weight="700" fill="white">Warrant: decisions with retained evidence</text>
+<text x="34" y="115" class="sub">LOCAL CUSTOMER PATH</text>
+<g transform="translate(30,145)"><rect class="box" width="200" height="114" rx="10"/><text x="18" y="34" class="label">Scored rows</text><text x="18" y="63" class="sub">IDs, labels, scores</text><text x="18" y="88" class="sub">Optional groups/review</text></g>
+<g transform="translate(265,145)"><rect class="box" width="200" height="114" rx="10"/><text x="18" y="34" class="label">Contracts</text><text x="18" y="63" class="sub">Parse and validate</text><text x="18" y="88" class="sub">Explicit declarations</text></g>
+<g transform="translate(500,145)"><rect class="box" width="200" height="114" rx="10"/><text x="18" y="34" class="label">Calculation</text><text x="18" y="63" class="sub">Certify / release</text><text x="18" y="88" class="sub">Recheck / chain</text></g>
+<g transform="translate(735,145)"><rect class="box" width="200" height="114" rx="10"/><text x="18" y="34" class="label">Publication</text><text x="18" y="63" class="sub">Versioned local records</text><text x="18" y="88" class="sub">Rows, links and hashes</text></g>
+<g transform="translate(970,145)"><rect class="box" width="200" height="114" rx="10"/><text x="18" y="34" class="label">Replay</text><text x="18" y="63" class="sub">Retained input</text><text x="18" y="88" class="sub">Material calculation</text></g>
+<path class="edge" d="M230 202 H260"/><path class="edge" d="M465 202 H495"/><path class="edge" d="M700 202 H730"/><path class="edge" d="M935 202 H965"/>
+<text x="34" y="310" class="sub">SEPARATE RESEARCH PATH</text>
+<g transform="translate(30,335)"><rect class="box" width="315" height="90" rx="10"/><text x="18" y="34" class="label">Model and study inputs</text><text x="18" y="64" class="sub">Extraction, fitting, authored scenarios</text></g>
+<g transform="translate(415,335)"><rect class="box" width="315" height="90" rx="10"/><text x="18" y="34" class="label">Frozen evidence</text><text x="18" y="64" class="sub">Scores, results, protocols, source</text></g>
+<g transform="translate(800,335)"><rect class="box" width="370" height="90" rx="10"/><text x="18" y="34" class="label">Verification and source audit</text><text x="18" y="64" class="sub">Field matching, point oracle, provenance</text></g>
+<path class="edge" d="M345 380 H410"/><path class="edge" d="M730 380 H795"/>
+<text x="34" y="478" class="label" font-size="17">External assumptions remain external.</text>
+<text x="34" y="511" class="sub">File validation and replay do not establish label truth, independent sampling, authentic origin or deployment identity.</text>
+</svg>
