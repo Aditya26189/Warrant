@@ -102,9 +102,11 @@ INVARIANTS: tuple[Invariant, ...] = (
     ),
     Invariant(
         number=4,
-        headline="No point estimate reaches a user",
+        headline="Uncertainty is explicit",
         enforced_by=(
             "tests/test_claims.py::test_a_hand_edited_interval_is_caught",
+            "tests/test_model.py::test_estimated_metric_must_name_its_n_and_estimator",
+            "tests/test_grouped_agreement.py::test_grouped_certify_and_recheck_cli_explain_withheld_intervals",
             "tests/test_demo.py::test_the_banner_never_shows_a_rate_without_its_interval",
         ),
         breaks_as=(
