@@ -12048,3 +12048,21 @@ declared documentation/customer dependencies. Test the actual import boundary
 in a fresh subprocess. This changes import timing, not metric calculations,
 thresholds, research inputs or existing results. Keep publication tools optional
 and outside the installed command's runtime requirements.
+
+## 244 - Review repository closure without equating ancestry with verification (2026-11-05)
+
+The author requested a thorough documentation/layout review and confirmation
+that all branches are accounted for. Audit fetched refs, real worktree state,
+retained drafts, current guide coverage and executable reproduction. Preserve
+all private inputs, stale checkout registrations and other sessions' edits.
+An ancestor check establishes integration, not an independently rerun historical
+gate or scientific sign-off. Classify those claims separately in the closeout.
+
+Correct stale contributor guidance about CI, supported Python versions and
+dirty-source records. Provide a stable repository map rather than moving frozen
+or heavily cited research paths. The generated command/API references currently
+lack a committed regeneration entry point and drift gate: declare their sources,
+add deterministic render/check modes to the existing audit tool, and exercise
+the maintenance contract in CI. Do not change statistical implementations,
+original results, the manuscript bytes or its version-1.0 tag. New operational
+review records are separate from historical scientific artifacts.
