@@ -12087,3 +12087,23 @@ Run the unchanged invariant suite in fast documentation CI as well, so contract
 edits cannot wait for the full research environment to expose this mismatch.
 Record the failed run and repair in Phase 56. No test is skipped or weakened,
 and no rate calculation or original scientific artifact changes.
+
+
+## 247 - Clarify the manuscript without expanding its evidence (2026-11-05)
+
+The author requested four final preprint corrections. Verify the C031 interval
+bracket in source and rendering before claiming it was missing. Print the
+three Clopper-Pearson bounds that explain the retained returned-bound witness;
+calculate them from its declared n and alpha, retaining enough precision to
+distinguish q1 from U(1). Do not copy an inaccurate rounded value from feedback.
+
+State exactly which dirty-source claim fields the native frozen-score verifier
+recomputes. An artifact-level target is insufficient when it selects a different
+metrics block; equal numbers do not establish original source identity. Preserve
+all frozen results, open assurance issues and the v1.0 tag. Remove the requested
+assistance/sign-off wording without inventing external review or peer review.
+
+Release these manuscript clarifications as version 1.0.1 with a fresh clean-source
+build, visual inspection and local deposit package. No new model experiment or
+Zenodo upload is authorized or needed. Keep the original manuscript accessible
+through its immutable tag; record the revision and checks in Phase 57.
